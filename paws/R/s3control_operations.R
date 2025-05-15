@@ -410,14 +410,15 @@ s3control_create_access_grants_location <- function(AccountId, LocationScope, IA
 }
 .s3control$operations$create_access_grants_location <- s3control_create_access_grants_location
 
-#' This operation is not supported by directory buckets
+#' Creates an access point and associates it to a specified bucket
 #'
 #' @description
-#' This operation is not supported by directory buckets.
-#' 
-#' Creates an access point and associates it with the specified bucket. For
-#' more information, see [Managing Data Access with Amazon S3 Access
-#' Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html)
+#' Creates an access point and associates it to a specified bucket. For
+#' more information, see [Managing access to shared datasets in general
+#' purpose buckets with access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html)
+#' or [Managing access to shared datasets in directory buckets with access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' S3 on Outposts only supports VPC-style access points.
@@ -445,14 +446,24 @@ s3control_create_access_grants_location <- function(AccountId, LocationScope, IA
 #' -   [`delete_access_point`][s3control_delete_access_point]
 #' 
 #' -   [`list_access_points`][s3control_list_access_points]
+#' 
+#' -   [`list_access_points_for_directory_buckets`][s3control_list_access_points_for_directory_buckets]
 #'
 #' @usage
 #' s3control_create_access_point(AccountId, Name, Bucket, VpcConfiguration,
-#'   PublicAccessBlockConfiguration, BucketAccountId)
+#'   PublicAccessBlockConfiguration, BucketAccountId, Scope)
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID for the account that owns the
 #' specified access point.
 #' @param Name &#91;required&#93; The name you want to assign to this access point.
+#' 
+#' For directory buckets, the access point name must consist of a base name
+#' that you provide and suffix that includes the `ZoneID` (Amazon Web
+#' Services Availability Zone or Local Zone) of your bucket location,
+#' followed by `--xa-s3`. For more information, see [Managing access to
+#' shared datasets in directory buckets with access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets.html)
+#' in the Amazon S3 User Guide.
 #' @param Bucket &#91;required&#93; The name of the bucket that you want to associate this access point
 #' with.
 #' 
@@ -482,6 +493,14 @@ s3control_create_access_grants_location <- function(AccountId, LocationScope, IA
 #' to the same account owner, the `BucketAccountId` is not required. For
 #' cross-account access point when your bucket and access point are not in
 #' the same account, the `BucketAccountId` is required.
+#' @param Scope For directory buckets, you can filter access control to specific
+#' prefixes, API operations, or a combination of both. For more
+#' information, see [Managing access to shared datasets in directory
+#' buckets with access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets.html)
+#' in the Amazon S3 User Guide.
+#' 
+#' Scope is not supported for access points for general purpose buckets.
 #'
 #' @return
 #' A list with the following syntax:
@@ -507,7 +526,15 @@ s3control_create_access_grants_location <- function(AccountId, LocationScope, IA
 #'     BlockPublicPolicy = TRUE|FALSE,
 #'     RestrictPublicBuckets = TRUE|FALSE
 #'   ),
-#'   BucketAccountId = "string"
+#'   BucketAccountId = "string",
+#'   Scope = list(
+#'     Prefixes = list(
+#'       "string"
+#'     ),
+#'     Permissions = list(
+#'       "GetObject"|"GetObjectAttributes"|"ListMultipartUploadParts"|"ListBucket"|"ListBucketMultipartUploads"|"PutObject"|"DeleteObject"|"AbortMultipartUpload"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -516,7 +543,7 @@ s3control_create_access_grants_location <- function(AccountId, LocationScope, IA
 #' @rdname s3control_create_access_point
 #'
 #' @aliases s3control_create_access_point
-s3control_create_access_point <- function(AccountId, Name, Bucket, VpcConfiguration = NULL, PublicAccessBlockConfiguration = NULL, BucketAccountId = NULL) {
+s3control_create_access_point <- function(AccountId, Name, Bucket, VpcConfiguration = NULL, PublicAccessBlockConfiguration = NULL, BucketAccountId = NULL, Scope = NULL) {
   op <- new_operation(
     name = "CreateAccessPoint",
     http_method = "PUT",
@@ -525,7 +552,7 @@ s3control_create_access_point <- function(AccountId, Name, Bucket, VpcConfigurat
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3control$create_access_point_input(AccountId = AccountId, Name = Name, Bucket = Bucket, VpcConfiguration = VpcConfiguration, PublicAccessBlockConfiguration = PublicAccessBlockConfiguration, BucketAccountId = BucketAccountId)
+  input <- .s3control$create_access_point_input(AccountId = AccountId, Name = Name, Bucket = Bucket, VpcConfiguration = VpcConfiguration, PublicAccessBlockConfiguration = PublicAccessBlockConfiguration, BucketAccountId = BucketAccountId, Scope = Scope)
   output <- .s3control$create_access_point_output()
   config <- get_config()
   svc <- .s3control$service(config, op)
@@ -1526,11 +1553,9 @@ s3control_delete_access_grants_location <- function(AccountId, AccessGrantsLocat
 }
 .s3control$operations$delete_access_grants_location <- s3control_delete_access_grants_location
 
-#' This operation is not supported by directory buckets
+#' Deletes the specified access point
 #'
 #' @description
-#' This operation is not supported by directory buckets.
-#' 
 #' Deletes the specified access point.
 #' 
 #' All Amazon S3 on Outposts REST API requests for this action require an
@@ -1665,11 +1690,9 @@ s3control_delete_access_point_for_object_lambda <- function(AccountId, Name) {
 }
 .s3control$operations$delete_access_point_for_object_lambda <- s3control_delete_access_point_for_object_lambda
 
-#' This operation is not supported by directory buckets
+#' Deletes the access point policy for the specified access point
 #'
 #' @description
-#' This operation is not supported by directory buckets.
-#' 
 #' Deletes the access point policy for the specified access point.
 #' 
 #' All Amazon S3 on Outposts REST API requests for this action require an
@@ -1799,6 +1822,62 @@ s3control_delete_access_point_policy_for_object_lambda <- function(AccountId, Na
   return(response)
 }
 .s3control$operations$delete_access_point_policy_for_object_lambda <- s3control_delete_access_point_policy_for_object_lambda
+
+#' Deletes an existing access point scope for a directory bucket
+#'
+#' @description
+#' Deletes an existing access point scope for a directory bucket.
+#' 
+#' When you delete the scope of an access point, all prefixes and
+#' permissions are deleted.
+#' 
+#' To use this operation, you must have the permission to perform the
+#' `s3express:DeleteAccessPointScope` action.
+#' 
+#' For information about REST API errors, see [REST error
+#' responses](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses).
+#'
+#' @usage
+#' s3control_delete_access_point_scope(AccountId, Name)
+#'
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID that owns the access point with the
+#' scope that you want to delete.
+#' @param Name &#91;required&#93; The name of the access point with the scope that you want to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_access_point_scope(
+#'   AccountId = "string",
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_delete_access_point_scope
+#'
+#' @aliases s3control_delete_access_point_scope
+s3control_delete_access_point_scope <- function(AccountId, Name) {
+  op <- new_operation(
+    name = "DeleteAccessPointScope",
+    http_method = "DELETE",
+    http_path = "/v20180820/accesspoint/{name}/scope",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3control$delete_access_point_scope_input(AccountId = AccountId, Name = Name)
+  output <- .s3control$delete_access_point_scope_output()
+  config <- get_config()
+  svc <- .s3control$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$delete_access_point_scope <- s3control_delete_access_point_scope
 
 #' This action deletes an Amazon S3 on Outposts bucket
 #'
@@ -3455,11 +3534,9 @@ s3control_get_access_grants_location <- function(AccountId, AccessGrantsLocation
 }
 .s3control$operations$get_access_grants_location <- s3control_get_access_grants_location
 
-#' This operation is not supported by directory buckets
+#' Returns configuration information about the specified access point
 #'
 #' @description
-#' This operation is not supported by directory buckets.
-#' 
 #' Returns configuration information about the specified access point.
 #' 
 #' All Amazon S3 on Outposts REST API requests for this action require an
@@ -3719,11 +3796,10 @@ s3control_get_access_point_for_object_lambda <- function(AccountId, Name) {
 }
 .s3control$operations$get_access_point_for_object_lambda <- s3control_get_access_point_for_object_lambda
 
-#' This operation is not supported by directory buckets
+#' Returns the access point policy associated with the specified access
+#' point
 #'
 #' @description
-#' This operation is not supported by directory buckets.
-#' 
 #' Returns the access point policy associated with the specified access
 #' point.
 #' 
@@ -3970,6 +4046,71 @@ s3control_get_access_point_policy_status_for_object_lambda <- function(AccountId
   return(response)
 }
 .s3control$operations$get_access_point_policy_status_for_object_lambda <- s3control_get_access_point_policy_status_for_object_lambda
+
+#' Returns the access point scope for a directory bucket
+#'
+#' @description
+#' Returns the access point scope for a directory bucket.
+#' 
+#' To use this operation, you must have the permission to perform the
+#' `s3express:GetAccessPointScope` action.
+#' 
+#' For information about REST API errors, see [REST error
+#' responses](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses).
+#'
+#' @usage
+#' s3control_get_access_point_scope(AccountId, Name)
+#'
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID that owns the access point with the
+#' scope that you want to retrieve.
+#' @param Name &#91;required&#93; The name of the access point with the scope you want to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Scope = list(
+#'     Prefixes = list(
+#'       "string"
+#'     ),
+#'     Permissions = list(
+#'       "GetObject"|"GetObjectAttributes"|"ListMultipartUploadParts"|"ListBucket"|"ListBucketMultipartUploads"|"PutObject"|"DeleteObject"|"AbortMultipartUpload"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_access_point_scope(
+#'   AccountId = "string",
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_get_access_point_scope
+#'
+#' @aliases s3control_get_access_point_scope
+s3control_get_access_point_scope <- function(AccountId, Name) {
+  op <- new_operation(
+    name = "GetAccessPointScope",
+    http_method = "GET",
+    http_path = "/v20180820/accesspoint/{name}/scope",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3control$get_access_point_scope_input(AccountId = AccountId, Name = Name)
+  output <- .s3control$get_access_point_scope_output()
+  config <- get_config()
+  svc <- .s3control$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$get_access_point_scope <- s3control_get_access_point_scope
 
 #' Gets an Amazon S3 on Outposts bucket
 #'
@@ -4795,7 +4936,11 @@ s3control_get_bucket_versioning <- function(AccountId, Bucket) {
 #'       "2015-01-01"
 #'     )
 #'   ),
-#'   MatchedGrantTarget = "string"
+#'   MatchedGrantTarget = "string",
+#'   Grantee = list(
+#'     GranteeType = "DIRECTORY_USER"|"DIRECTORY_GROUP"|"IAM",
+#'     GranteeIdentifier = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -6058,6 +6203,98 @@ s3control_list_access_points <- function(AccountId, Bucket = NULL, NextToken = N
 }
 .s3control$operations$list_access_points <- s3control_list_access_points
 
+#' Returns a list of the access points that are owned by the Amazon Web
+#' Services account and that are associated with the specified directory
+#' bucket
+#'
+#' @description
+#' Returns a list of the access points that are owned by the Amazon Web
+#' Services account and that are associated with the specified directory
+#' bucket.
+#' 
+#' To list access points for general purpose buckets, see
+#' [ListAccesspoints](https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPoints.html).
+#' 
+#' To use this operation, you must have the permission to perform the
+#' `s3express:ListAccessPointsForDirectoryBuckets` action.
+#' 
+#' For information about REST API errors, see [REST error
+#' responses](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses).
+#'
+#' @usage
+#' s3control_list_access_points_for_directory_buckets(AccountId,
+#'   DirectoryBucket, NextToken, MaxResults)
+#'
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID that owns the access points.
+#' @param DirectoryBucket The name of the directory bucket associated with the access points you
+#' want to list.
+#' @param NextToken If `NextToken` is returned, there are more access points available than
+#' requested in the `maxResults` value. The value of `NextToken` is a
+#' unique pagination token for each page. Make the call again using the
+#' returned token to retrieve the next page. Keep all other arguments
+#' unchanged. Each pagination token expires after 24 hours.
+#' @param MaxResults The maximum number of access points that you would like returned in the
+#' [`list_access_points_for_directory_buckets`][s3control_list_access_points_for_directory_buckets]
+#' response. If the directory bucket is associated with more than this
+#' number of access points, the results include the pagination token
+#' `NextToken`. Make another call using the `NextToken` to retrieve more
+#' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccessPointList = list(
+#'     list(
+#'       Name = "string",
+#'       NetworkOrigin = "Internet"|"VPC",
+#'       VpcConfiguration = list(
+#'         VpcId = "string"
+#'       ),
+#'       Bucket = "string",
+#'       AccessPointArn = "string",
+#'       Alias = "string",
+#'       BucketAccountId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_access_points_for_directory_buckets(
+#'   AccountId = "string",
+#'   DirectoryBucket = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_list_access_points_for_directory_buckets
+#'
+#' @aliases s3control_list_access_points_for_directory_buckets
+s3control_list_access_points_for_directory_buckets <- function(AccountId, DirectoryBucket = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListAccessPointsForDirectoryBuckets",
+    http_method = "GET",
+    http_path = "/v20180820/accesspointfordirectory",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AccessPointList"),
+    stream_api = FALSE
+  )
+  input <- .s3control$list_access_points_for_directory_buckets_input(AccountId = AccountId, DirectoryBucket = DirectoryBucket, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .s3control$list_access_points_for_directory_buckets_output()
+  config <- get_config()
+  svc <- .s3control$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$list_access_points_for_directory_buckets <- s3control_list_access_points_for_directory_buckets
+
 #' This operation is not supported by directory buckets
 #'
 #' @description
@@ -6890,11 +7127,9 @@ s3control_put_access_point_configuration_for_object_lambda <- function(AccountId
 }
 .s3control$operations$put_access_point_configuration_for_object_lambda <- s3control_put_access_point_configuration_for_object_lambda
 
-#' This operation is not supported by directory buckets
+#' Associates an access policy with the specified access point
 #'
 #' @description
-#' This operation is not supported by directory buckets.
-#' 
 #' Associates an access policy with the specified access point. Each access
 #' point can have only one policy, so a request made to this API replaces
 #' any existing policy associated with the specified access point.
@@ -6937,9 +7172,11 @@ s3control_put_access_point_configuration_for_object_lambda <- function(AccountId
 #' `arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/accesspoint/reports-ap`.
 #' The value must be URL encoded.
 #' @param Policy &#91;required&#93; The policy that you want to apply to the specified access point. For
-#' more information about access point policies, see [Managing data access
-#' with Amazon S3 access
+#' more information about access point policies, see [Managing access to
+#' shared datasets in general purpose buckets with access
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html)
+#' or [Managing access to shared datasets in directory bucekts with access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets.html)
 #' in the *Amazon S3 User Guide*.
 #'
 #' @return
@@ -7039,6 +7276,74 @@ s3control_put_access_point_policy_for_object_lambda <- function(AccountId, Name,
   return(response)
 }
 .s3control$operations$put_access_point_policy_for_object_lambda <- s3control_put_access_point_policy_for_object_lambda
+
+#' Creates or replaces the access point scope for a directory bucket
+#'
+#' @description
+#' Creates or replaces the access point scope for a directory bucket. You
+#' can use the access point scope to restrict access to specific prefixes,
+#' API operations, or a combination of both.
+#' 
+#' You can specify any amount of prefixes, but the total length of
+#' characters of all prefixes must be less than 256 bytes in size.
+#' 
+#' To use this operation, you must have the permission to perform the
+#' `s3express:PutAccessPointScope` action.
+#' 
+#' For information about REST API errors, see [REST error
+#' responses](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses).
+#'
+#' @usage
+#' s3control_put_access_point_scope(AccountId, Name, Scope)
+#'
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID that owns the access point with scope
+#' that you want to create or replace.
+#' @param Name &#91;required&#93; The name of the access point with the scope that you want to create or
+#' replace.
+#' @param Scope &#91;required&#93; Object prefixes, API operations, or a combination of both.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_access_point_scope(
+#'   AccountId = "string",
+#'   Name = "string",
+#'   Scope = list(
+#'     Prefixes = list(
+#'       "string"
+#'     ),
+#'     Permissions = list(
+#'       "GetObject"|"GetObjectAttributes"|"ListMultipartUploadParts"|"ListBucket"|"ListBucketMultipartUploads"|"PutObject"|"DeleteObject"|"AbortMultipartUpload"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_put_access_point_scope
+#'
+#' @aliases s3control_put_access_point_scope
+s3control_put_access_point_scope <- function(AccountId, Name, Scope) {
+  op <- new_operation(
+    name = "PutAccessPointScope",
+    http_method = "PUT",
+    http_path = "/v20180820/accesspoint/{name}/scope",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3control$put_access_point_scope_input(AccountId = AccountId, Name = Name, Scope = Scope)
+  output <- .s3control$put_access_point_scope_output()
+  config <- get_config()
+  svc <- .s3control$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$put_access_point_scope <- s3control_put_access_point_scope
 
 #' This action puts a lifecycle configuration to an Amazon S3 on Outposts
 #' bucket

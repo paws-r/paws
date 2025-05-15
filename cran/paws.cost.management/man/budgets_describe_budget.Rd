@@ -4,13 +4,18 @@
 \alias{budgets_describe_budget}
 \title{Describes a budget}
 \usage{
-budgets_describe_budget(AccountId, BudgetName)
+budgets_describe_budget(AccountId, BudgetName, ShowFilterExpression = NULL)
 }
 \arguments{
 \item{AccountId}{[required] The \code{accountId} that is associated with the budget that you want a
 description of.}
 
 \item{BudgetName}{[required] The name of the budget that you want a description of.}
+
+\item{ShowFilterExpression}{Specifies whether the response includes the filter expression associated
+with the budget. By showing the filter expression, you can see detailed
+filtering logic applied to the budget, such as Amazon Web Services
+services or tags that are being tracked.}
 }
 \description{
 Describes a budget.

@@ -7,8 +7,8 @@ specified permission set}
 \usage{
 ssoadmin_detach_managed_policy_from_permission_set(
   InstanceArn,
-  ManagedPolicyArn,
-  PermissionSetArn
+  PermissionSetArn,
+  ManagedPolicyArn
 )
 }
 \arguments{
@@ -17,10 +17,10 @@ will be executed. For more information about ARNs, see Amazon Resource
 Names (ARNs) and Amazon Web Services Service Namespaces in the \emph{Amazon
 Web Services General Reference}.}
 
+\item{PermissionSetArn}{[required] The ARN of the PermissionSet from which the policy should be detached.}
+
 \item{ManagedPolicyArn}{[required] The Amazon Web Services managed policy ARN to be detached from a
 permission set.}
-
-\item{PermissionSetArn}{[required] The ARN of the PermissionSet from which the policy should be detached.}
 }
 \description{
 Detaches the attached Amazon Web Services managed policy ARN from the specified permission set.

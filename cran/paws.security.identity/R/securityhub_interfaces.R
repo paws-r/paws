@@ -47,7 +47,7 @@ NULL
 
 .securityhub$batch_disable_standards_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StandardsSubscriptions = structure(list(structure(list(StandardsSubscriptionArn = structure(logical(0), tags = list(type = "string")), StandardsArn = structure(logical(0), tags = list(type = "string")), StandardsInput = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), StandardsStatus = structure(logical(0), tags = list(type = "string")), StandardsStatusReason = structure(list(StatusReasonCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(StandardsSubscriptions = structure(list(structure(list(StandardsSubscriptionArn = structure(logical(0), tags = list(type = "string")), StandardsArn = structure(logical(0), tags = list(type = "string")), StandardsInput = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), StandardsStatus = structure(logical(0), tags = list(type = "string")), StandardsControlsUpdatable = structure(logical(0), tags = list(type = "string")), StandardsStatusReason = structure(list(StatusReasonCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -59,7 +59,7 @@ NULL
 
 .securityhub$batch_enable_standards_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StandardsSubscriptions = structure(list(structure(list(StandardsSubscriptionArn = structure(logical(0), tags = list(type = "string")), StandardsArn = structure(logical(0), tags = list(type = "string")), StandardsInput = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), StandardsStatus = structure(logical(0), tags = list(type = "string")), StandardsStatusReason = structure(list(StatusReasonCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(StandardsSubscriptions = structure(list(structure(list(StandardsSubscriptionArn = structure(logical(0), tags = list(type = "string")), StandardsArn = structure(logical(0), tags = list(type = "string")), StandardsInput = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), StandardsStatus = structure(logical(0), tags = list(type = "string")), StandardsControlsUpdatable = structure(logical(0), tags = list(type = "string")), StandardsStatusReason = structure(list(StatusReasonCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -539,7 +539,7 @@ NULL
 
 .securityhub$get_enabled_standards_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StandardsSubscriptions = structure(list(structure(list(StandardsSubscriptionArn = structure(logical(0), tags = list(type = "string")), StandardsArn = structure(logical(0), tags = list(type = "string")), StandardsInput = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), StandardsStatus = structure(logical(0), tags = list(type = "string")), StandardsStatusReason = structure(list(StatusReasonCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(StandardsSubscriptions = structure(list(structure(list(StandardsSubscriptionArn = structure(logical(0), tags = list(type = "string")), StandardsArn = structure(logical(0), tags = list(type = "string")), StandardsInput = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), StandardsStatus = structure(logical(0), tags = list(type = "string")), StandardsControlsUpdatable = structure(logical(0), tags = list(type = "string")), StandardsStatusReason = structure(list(StatusReasonCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

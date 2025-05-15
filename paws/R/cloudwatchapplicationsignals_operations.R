@@ -81,6 +81,12 @@ NULL
 #'               Period = 123,
 #'               AccountId = "string"
 #'             )
+#'           ),
+#'           DependencyConfig = list(
+#'             DependencyKeyAttributes = list(
+#'               "string"
+#'             ),
+#'             DependencyOperationName = "string"
 #'           )
 #'         ),
 #'         MetricThreshold = 123.0,
@@ -169,6 +175,12 @@ NULL
 #'                 AccountId = "string"
 #'               )
 #'             )
+#'           ),
+#'           DependencyConfig = list(
+#'             DependencyKeyAttributes = list(
+#'               "string"
+#'             ),
+#'             DependencyOperationName = "string"
 #'           )
 #'         ),
 #'         MetricThreshold = 123.0,
@@ -240,6 +252,103 @@ cloudwatchapplicationsignals_batch_get_service_level_objective_budget_report <- 
 }
 .cloudwatchapplicationsignals$operations$batch_get_service_level_objective_budget_report <- cloudwatchapplicationsignals_batch_get_service_level_objective_budget_report
 
+#' Add or remove time window exclusions for one or more Service Level
+#' Objectives (SLOs)
+#'
+#' @description
+#' Add or remove time window exclusions for one or more Service Level
+#' Objectives (SLOs).
+#'
+#' @usage
+#' cloudwatchapplicationsignals_batch_update_exclusion_windows(SloIds,
+#'   AddExclusionWindows, RemoveExclusionWindows)
+#'
+#' @param SloIds &#91;required&#93; The list of SLO IDs to add or remove exclusion windows from.
+#' @param AddExclusionWindows A list of exclusion windows to add to the specified SLOs. You can add up
+#' to 10 exclusion windows per SLO.
+#' @param RemoveExclusionWindows A list of exclusion windows to remove from the specified SLOs. The
+#' window configuration must match an existing exclusion window.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SloIds = list(
+#'     "string"
+#'   ),
+#'   Errors = list(
+#'     list(
+#'       SloId = "string",
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_update_exclusion_windows(
+#'   SloIds = list(
+#'     "string"
+#'   ),
+#'   AddExclusionWindows = list(
+#'     list(
+#'       Window = list(
+#'         DurationUnit = "MINUTE"|"HOUR"|"DAY"|"MONTH",
+#'         Duration = 123
+#'       ),
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       RecurrenceRule = list(
+#'         Expression = "string"
+#'       ),
+#'       Reason = "string"
+#'     )
+#'   ),
+#'   RemoveExclusionWindows = list(
+#'     list(
+#'       Window = list(
+#'         DurationUnit = "MINUTE"|"HOUR"|"DAY"|"MONTH",
+#'         Duration = 123
+#'       ),
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       RecurrenceRule = list(
+#'         Expression = "string"
+#'       ),
+#'       Reason = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchapplicationsignals_batch_update_exclusion_windows
+#'
+#' @aliases cloudwatchapplicationsignals_batch_update_exclusion_windows
+cloudwatchapplicationsignals_batch_update_exclusion_windows <- function(SloIds, AddExclusionWindows = NULL, RemoveExclusionWindows = NULL) {
+  op <- new_operation(
+    name = "BatchUpdateExclusionWindows",
+    http_method = "PATCH",
+    http_path = "/exclusion-windows",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchapplicationsignals$batch_update_exclusion_windows_input(SloIds = SloIds, AddExclusionWindows = AddExclusionWindows, RemoveExclusionWindows = RemoveExclusionWindows)
+  output <- .cloudwatchapplicationsignals$batch_update_exclusion_windows_output()
+  config <- get_config()
+  svc <- .cloudwatchapplicationsignals$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchapplicationsignals$operations$batch_update_exclusion_windows <- cloudwatchapplicationsignals_batch_update_exclusion_windows
+
 #' Creates a service level objective (SLO), which can help you ensure that
 #' your critical business operations are meeting customer expectations
 #'
@@ -262,6 +371,10 @@ cloudwatchapplicationsignals_batch_get_service_level_objective_budget_report <- 
 #' Application Signals, using critical metrics such as latency and
 #' availability. You can also set SLOs against any CloudWatch metric or
 #' math expression that produces a time series.
+#' 
+#' You can't create an SLO for a service operation that was discovered by
+#' Application Signals until after that operation has reported standard
+#' metrics to Application Signals.
 #' 
 #' When you create an SLO, you specify whether it is a *period-based SLO*
 #' or a *request-based SLO*. Each type of SLO has a different way of
@@ -403,6 +516,12 @@ cloudwatchapplicationsignals_batch_get_service_level_objective_budget_report <- 
 #'             Period = 123,
 #'             AccountId = "string"
 #'           )
+#'         ),
+#'         DependencyConfig = list(
+#'           DependencyKeyAttributes = list(
+#'             "string"
+#'           ),
+#'           DependencyOperationName = "string"
 #'         )
 #'       ),
 #'       MetricThreshold = 123.0,
@@ -491,6 +610,12 @@ cloudwatchapplicationsignals_batch_get_service_level_objective_budget_report <- 
 #'               AccountId = "string"
 #'             )
 #'           )
+#'         ),
+#'         DependencyConfig = list(
+#'           DependencyKeyAttributes = list(
+#'             "string"
+#'           ),
+#'           DependencyOperationName = "string"
 #'         )
 #'       ),
 #'       MetricThreshold = 123.0,
@@ -518,7 +643,8 @@ cloudwatchapplicationsignals_batch_get_service_level_objective_budget_report <- 
 #'       list(
 #'         LookBackWindowMinutes = 123
 #'       )
-#'     )
+#'     ),
+#'     MetricSourceType = "ServiceOperation"|"CloudWatchMetric"|"ServiceDependency"
 #'   )
 #' )
 #' ```
@@ -561,6 +687,12 @@ cloudwatchapplicationsignals_batch_get_service_level_objective_budget_report <- 
 #'           Period = 123,
 #'           AccountId = "string"
 #'         )
+#'       ),
+#'       DependencyConfig = list(
+#'         DependencyKeyAttributes = list(
+#'           "string"
+#'         ),
+#'         DependencyOperationName = "string"
 #'       )
 #'     ),
 #'     MetricThreshold = 123.0,
@@ -649,6 +781,12 @@ cloudwatchapplicationsignals_batch_get_service_level_objective_budget_report <- 
 #'             AccountId = "string"
 #'           )
 #'         )
+#'       ),
+#'       DependencyConfig = list(
+#'         DependencyKeyAttributes = list(
+#'           "string"
+#'         ),
+#'         DependencyOperationName = "string"
 #'       )
 #'     ),
 #'     MetricThreshold = 123.0,
@@ -818,7 +956,8 @@ cloudwatchapplicationsignals_delete_service_level_objective <- function(Id) {
 #'             Value = "string"
 #'           )
 #'         ),
-#'         MetricName = "string"
+#'         MetricName = "string",
+#'         AccountId = "string"
 #'       )
 #'     ),
 #'     LogGroupReferences = list(
@@ -938,6 +1077,12 @@ cloudwatchapplicationsignals_get_service <- function(StartTime, EndTime, KeyAttr
 #'             Period = 123,
 #'             AccountId = "string"
 #'           )
+#'         ),
+#'         DependencyConfig = list(
+#'           DependencyKeyAttributes = list(
+#'             "string"
+#'           ),
+#'           DependencyOperationName = "string"
 #'         )
 #'       ),
 #'       MetricThreshold = 123.0,
@@ -1026,6 +1171,12 @@ cloudwatchapplicationsignals_get_service <- function(StartTime, EndTime, KeyAttr
 #'               AccountId = "string"
 #'             )
 #'           )
+#'         ),
+#'         DependencyConfig = list(
+#'           DependencyKeyAttributes = list(
+#'             "string"
+#'           ),
+#'           DependencyOperationName = "string"
 #'         )
 #'       ),
 #'       MetricThreshold = 123.0,
@@ -1053,7 +1204,8 @@ cloudwatchapplicationsignals_get_service <- function(StartTime, EndTime, KeyAttr
 #'       list(
 #'         LookBackWindowMinutes = 123
 #'       )
-#'     )
+#'     ),
+#'     MetricSourceType = "ServiceOperation"|"CloudWatchMetric"|"ServiceDependency"
 #'   )
 #' )
 #' ```
@@ -1165,7 +1317,8 @@ cloudwatchapplicationsignals_get_service_level_objective <- function(Id) {
 #'               Value = "string"
 #'             )
 #'           ),
-#'           MetricName = "string"
+#'           MetricName = "string",
+#'           AccountId = "string"
 #'         )
 #'       )
 #'     )
@@ -1292,7 +1445,8 @@ cloudwatchapplicationsignals_list_service_dependencies <- function(StartTime, En
 #'               Value = "string"
 #'             )
 #'           ),
-#'           MetricName = "string"
+#'           MetricName = "string",
+#'           AccountId = "string"
 #'         )
 #'       )
 #'     )
@@ -1342,6 +1496,81 @@ cloudwatchapplicationsignals_list_service_dependents <- function(StartTime, EndT
 }
 .cloudwatchapplicationsignals$operations$list_service_dependents <- cloudwatchapplicationsignals_list_service_dependents
 
+#' Retrieves all exclusion windows configured for a specific SLO
+#'
+#' @description
+#' Retrieves all exclusion windows configured for a specific SLO.
+#'
+#' @usage
+#' cloudwatchapplicationsignals_list_service_level_objective_exclusion_windows(
+#'   Id, MaxResults, NextToken)
+#'
+#' @param Id &#91;required&#93; The ID of the SLO to list exclusion windows for.
+#' @param MaxResults The maximum number of results to return in one operation. If you omit
+#' this parameter, the default of 50 is used.
+#' 
+#'      </p> 
+#' @param NextToken Include this value, if it was returned by the previous operation, to get
+#' the next set of service level objectives.
+#' 
+#'      </p> 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ExclusionWindows = list(
+#'     list(
+#'       Window = list(
+#'         DurationUnit = "MINUTE"|"HOUR"|"DAY"|"MONTH",
+#'         Duration = 123
+#'       ),
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       RecurrenceRule = list(
+#'         Expression = "string"
+#'       ),
+#'       Reason = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_service_level_objective_exclusion_windows(
+#'   Id = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchapplicationsignals_lis_ser_lev_obj_exc_win
+#'
+#' @aliases cloudwatchapplicationsignals_list_service_level_objective_exclusion_windows
+cloudwatchapplicationsignals_list_service_level_objective_exclusion_windows <- function(Id, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListServiceLevelObjectiveExclusionWindows",
+    http_method = "GET",
+    http_path = "/slo/{Id}/exclusion-windows",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ExclusionWindows"),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchapplicationsignals$list_service_level_objective_exclusion_windows_input(Id = Id, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .cloudwatchapplicationsignals$list_service_level_objective_exclusion_windows_output()
+  config <- get_config()
+  svc <- .cloudwatchapplicationsignals$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchapplicationsignals$operations$list_service_level_objective_exclusion_windows <- cloudwatchapplicationsignals_list_service_level_objective_exclusion_windows
+
 #' Returns a list of SLOs created in this account
 #'
 #' @description
@@ -1349,7 +1578,8 @@ cloudwatchapplicationsignals_list_service_dependents <- function(StartTime, EndT
 #'
 #' @usage
 #' cloudwatchapplicationsignals_list_service_level_objectives(
-#'   KeyAttributes, OperationName, MaxResults, NextToken)
+#'   KeyAttributes, OperationName, DependencyConfig, MaxResults, NextToken,
+#'   MetricSourceTypes, IncludeLinkedAccounts, SloOwnerAwsAccountId)
 #'
 #' @param KeyAttributes You can use this optional field to specify which services you want to
 #' retrieve SLO information for.
@@ -1373,10 +1603,25 @@ cloudwatchapplicationsignals_list_service_dependents <- function(StartTime, EndT
 #' -   `Environment` specifies the location where this object is hosted, or
 #'     what it belongs to.
 #' @param OperationName The name of the operation that this SLO is associated with.
+#' @param DependencyConfig Identifies the dependency using the `DependencyKeyAttributes` and
+#' `DependencyOperationName`.
 #' @param MaxResults The maximum number of results to return in one operation. If you omit
 #' this parameter, the default of 50 is used.
 #' @param NextToken Include this value, if it was returned by the previous operation, to get
 #' the next set of service level objectives.
+#' @param MetricSourceTypes Use this optional field to only include SLOs with the specified metric
+#' source types in the output. Supported types are:
+#' 
+#' -   Service operation
+#' 
+#' -   Service dependency
+#' 
+#' -   CloudWatch metric
+#' @param IncludeLinkedAccounts If you are using this operation in a monitoring account, specify `true`
+#' to include SLO from source accounts in the returned data.
+#' 
+#'      </p> <p>When you are monitoring an account, you can use Amazon Web Services account ID in <code>KeyAttribute</code> filter for service source account and <code>SloOwnerawsaccountID</code> for SLO source account with <code>IncludeLinkedAccounts</code> to filter the returned data to only a single source account. </p> 
+#' @param SloOwnerAwsAccountId SLO's Amazon Web Services account ID.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1390,9 +1635,17 @@ cloudwatchapplicationsignals_list_service_dependents <- function(StartTime, EndT
 #'         "string"
 #'       ),
 #'       OperationName = "string",
+#'       DependencyConfig = list(
+#'         DependencyKeyAttributes = list(
+#'           "string"
+#'         ),
+#'         DependencyOperationName = "string"
+#'       ),
 #'       CreatedTime = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       EvaluationType = "PeriodBased"|"RequestBased",
+#'       MetricSourceType = "ServiceOperation"|"CloudWatchMetric"|"ServiceDependency"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1406,8 +1659,19 @@ cloudwatchapplicationsignals_list_service_dependents <- function(StartTime, EndT
 #'     "string"
 #'   ),
 #'   OperationName = "string",
+#'   DependencyConfig = list(
+#'     DependencyKeyAttributes = list(
+#'       "string"
+#'     ),
+#'     DependencyOperationName = "string"
+#'   ),
 #'   MaxResults = 123,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   MetricSourceTypes = list(
+#'     "ServiceOperation"|"CloudWatchMetric"|"ServiceDependency"
+#'   ),
+#'   IncludeLinkedAccounts = TRUE|FALSE,
+#'   SloOwnerAwsAccountId = "string"
 #' )
 #' ```
 #'
@@ -1416,7 +1680,7 @@ cloudwatchapplicationsignals_list_service_dependents <- function(StartTime, EndT
 #' @rdname cloudwatchapplicationsignals_list_service_level_objectives
 #'
 #' @aliases cloudwatchapplicationsignals_list_service_level_objectives
-cloudwatchapplicationsignals_list_service_level_objectives <- function(KeyAttributes = NULL, OperationName = NULL, MaxResults = NULL, NextToken = NULL) {
+cloudwatchapplicationsignals_list_service_level_objectives <- function(KeyAttributes = NULL, OperationName = NULL, DependencyConfig = NULL, MaxResults = NULL, NextToken = NULL, MetricSourceTypes = NULL, IncludeLinkedAccounts = NULL, SloOwnerAwsAccountId = NULL) {
   op <- new_operation(
     name = "ListServiceLevelObjectives",
     http_method = "POST",
@@ -1425,7 +1689,7 @@ cloudwatchapplicationsignals_list_service_level_objectives <- function(KeyAttrib
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SloSummaries"),
     stream_api = FALSE
   )
-  input <- .cloudwatchapplicationsignals$list_service_level_objectives_input(KeyAttributes = KeyAttributes, OperationName = OperationName, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .cloudwatchapplicationsignals$list_service_level_objectives_input(KeyAttributes = KeyAttributes, OperationName = OperationName, DependencyConfig = DependencyConfig, MaxResults = MaxResults, NextToken = NextToken, MetricSourceTypes = MetricSourceTypes, IncludeLinkedAccounts = IncludeLinkedAccounts, SloOwnerAwsAccountId = SloOwnerAwsAccountId)
   output <- .cloudwatchapplicationsignals$list_service_level_objectives_output()
   config <- get_config()
   svc <- .cloudwatchapplicationsignals$service(config, op)
@@ -1507,7 +1771,8 @@ cloudwatchapplicationsignals_list_service_level_objectives <- function(KeyAttrib
 #'               Value = "string"
 #'             )
 #'           ),
-#'           MetricName = "string"
+#'           MetricName = "string",
+#'           AccountId = "string"
 #'         )
 #'       )
 #'     )
@@ -1568,7 +1833,7 @@ cloudwatchapplicationsignals_list_service_operations <- function(StartTime, EndT
 #'
 #' @usage
 #' cloudwatchapplicationsignals_list_services(StartTime, EndTime,
-#'   MaxResults, NextToken)
+#'   MaxResults, NextToken, IncludeLinkedAccounts, AwsAccountId)
 #'
 #' @param StartTime &#91;required&#93; The start of the time period to retrieve information about. When used in
 #' a raw HTTP Query API, it is formatted as be epoch time in seconds. For
@@ -1584,6 +1849,11 @@ cloudwatchapplicationsignals_list_service_operations <- function(StartTime, EndT
 #' this parameter, the default of 50 is used.
 #' @param NextToken Include this value, if it was returned by the previous operation, to get
 #' the next set of services.
+#' @param IncludeLinkedAccounts If you are using this operation in a monitoring account, specify `true`
+#' to include services from source accounts in the returned data.
+#' 
+#'      </p> 
+#' @param AwsAccountId Amazon Web Services Account ID.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1615,7 +1885,8 @@ cloudwatchapplicationsignals_list_service_operations <- function(StartTime, EndT
 #'               Value = "string"
 #'             )
 #'           ),
-#'           MetricName = "string"
+#'           MetricName = "string",
+#'           AccountId = "string"
 #'         )
 #'       )
 #'     )
@@ -1634,7 +1905,9 @@ cloudwatchapplicationsignals_list_service_operations <- function(StartTime, EndT
 #'     "2015-01-01"
 #'   ),
 #'   MaxResults = 123,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   IncludeLinkedAccounts = TRUE|FALSE,
+#'   AwsAccountId = "string"
 #' )
 #' ```
 #'
@@ -1643,7 +1916,7 @@ cloudwatchapplicationsignals_list_service_operations <- function(StartTime, EndT
 #' @rdname cloudwatchapplicationsignals_list_services
 #'
 #' @aliases cloudwatchapplicationsignals_list_services
-cloudwatchapplicationsignals_list_services <- function(StartTime, EndTime, MaxResults = NULL, NextToken = NULL) {
+cloudwatchapplicationsignals_list_services <- function(StartTime, EndTime, MaxResults = NULL, NextToken = NULL, IncludeLinkedAccounts = NULL, AwsAccountId = NULL) {
   op <- new_operation(
     name = "ListServices",
     http_method = "GET",
@@ -1652,7 +1925,7 @@ cloudwatchapplicationsignals_list_services <- function(StartTime, EndTime, MaxRe
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ServiceSummaries"),
     stream_api = FALSE
   )
-  input <- .cloudwatchapplicationsignals$list_services_input(StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .cloudwatchapplicationsignals$list_services_input(StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken, IncludeLinkedAccounts = IncludeLinkedAccounts, AwsAccountId = AwsAccountId)
   output <- .cloudwatchapplicationsignals$list_services_output()
   config <- get_config()
   svc <- .cloudwatchapplicationsignals$service(config, op)
@@ -2004,6 +2277,12 @@ cloudwatchapplicationsignals_untag_resource <- function(ResourceArn, TagKeys) {
 #'             Period = 123,
 #'             AccountId = "string"
 #'           )
+#'         ),
+#'         DependencyConfig = list(
+#'           DependencyKeyAttributes = list(
+#'             "string"
+#'           ),
+#'           DependencyOperationName = "string"
 #'         )
 #'       ),
 #'       MetricThreshold = 123.0,
@@ -2092,6 +2371,12 @@ cloudwatchapplicationsignals_untag_resource <- function(ResourceArn, TagKeys) {
 #'               AccountId = "string"
 #'             )
 #'           )
+#'         ),
+#'         DependencyConfig = list(
+#'           DependencyKeyAttributes = list(
+#'             "string"
+#'           ),
+#'           DependencyOperationName = "string"
 #'         )
 #'       ),
 #'       MetricThreshold = 123.0,
@@ -2119,7 +2404,8 @@ cloudwatchapplicationsignals_untag_resource <- function(ResourceArn, TagKeys) {
 #'       list(
 #'         LookBackWindowMinutes = 123
 #'       )
-#'     )
+#'     ),
+#'     MetricSourceType = "ServiceOperation"|"CloudWatchMetric"|"ServiceDependency"
 #'   )
 #' )
 #' ```
@@ -2162,6 +2448,12 @@ cloudwatchapplicationsignals_untag_resource <- function(ResourceArn, TagKeys) {
 #'           Period = 123,
 #'           AccountId = "string"
 #'         )
+#'       ),
+#'       DependencyConfig = list(
+#'         DependencyKeyAttributes = list(
+#'           "string"
+#'         ),
+#'         DependencyOperationName = "string"
 #'       )
 #'     ),
 #'     MetricThreshold = 123.0,
@@ -2250,6 +2542,12 @@ cloudwatchapplicationsignals_untag_resource <- function(ResourceArn, TagKeys) {
 #'             AccountId = "string"
 #'           )
 #'         )
+#'       ),
+#'       DependencyConfig = list(
+#'         DependencyKeyAttributes = list(
+#'           "string"
+#'         ),
+#'         DependencyOperationName = "string"
 #'       )
 #'     ),
 #'     MetricThreshold = 123.0,

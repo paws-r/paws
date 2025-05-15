@@ -158,7 +158,7 @@ NULL
 #'  \link[=cloudwatchlogs_describe_export_tasks]{describe_export_tasks} \tab Lists the specified export tasks\cr
 #'  \link[=cloudwatchlogs_describe_field_indexes]{describe_field_indexes} \tab Returns a list of field indexes listed in the field index policies of one or more log groups\cr
 #'  \link[=cloudwatchlogs_describe_index_policies]{describe_index_policies} \tab Returns the field index policies of one or more log groups\cr
-#'  \link[=cloudwatchlogs_describe_log_groups]{describe_log_groups} \tab Lists the specified log groups\cr
+#'  \link[=cloudwatchlogs_describe_log_groups]{describe_log_groups} \tab Returns information about log groups\cr
 #'  \link[=cloudwatchlogs_describe_log_streams]{describe_log_streams} \tab Lists the log streams for the specified log group\cr
 #'  \link[=cloudwatchlogs_describe_metric_filters]{describe_metric_filters} \tab Lists the specified metric filters\cr
 #'  \link[=cloudwatchlogs_describe_queries]{describe_queries} \tab Returns a list of CloudWatch Logs Insights queries that are scheduled, running, or have been run recently in this account\cr
@@ -182,6 +182,7 @@ NULL
 #'  \link[=cloudwatchlogs_list_anomalies]{list_anomalies} \tab Returns a list of anomalies that log anomaly detectors have found\cr
 #'  \link[=cloudwatchlogs_list_integrations]{list_integrations} \tab Returns a list of integrations between CloudWatch Logs and other services in this account\cr
 #'  \link[=cloudwatchlogs_list_log_anomaly_detectors]{list_log_anomaly_detectors} \tab Retrieves a list of the log anomaly detectors in the account\cr
+#'  \link[=cloudwatchlogs_list_log_groups]{list_log_groups} \tab Returns a list of log groups in the Region in your account\cr
 #'  \link[=cloudwatchlogs_list_log_groups_for_query]{list_log_groups_for_query} \tab Returns a list of the log groups that were analyzed during a single CloudWatch Logs Insights query\cr
 #'  \link[=cloudwatchlogs_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a CloudWatch Logs resource\cr
 #'  \link[=cloudwatchlogs_list_tags_log_group]{list_tags_log_group} \tab The ListTagsLogGroup operation is on the path to deprecation\cr
@@ -244,7 +245,7 @@ cloudwatchlogs <- function(config = list(), credentials = list(), endpoint = NUL
 
 .cloudwatchlogs$metadata <- list(
   service_name = "logs",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "logs.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "logs.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "logs.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "logs.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "logs.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "logs.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "logs.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "logs.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "logs.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "logs.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "logs.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "logs.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "logs.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "logs.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "logs.{region}.amazonaws.eu", global = FALSE)),
   service_id = "CloudWatch Logs",
   api_version = "2014-03-28",
   signing_name = "logs",

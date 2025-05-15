@@ -3963,7 +3963,7 @@ storagegateway_describe_smb_file_shares <- function(FileShareARNList) {
 #' list(
 #'   GatewayARN = "string",
 #'   DomainName = "string",
-#'   ActiveDirectoryStatus = "ACCESS_DENIED"|"DETACHED"|"JOINED"|"JOINING"|"NETWORK_ERROR"|"TIMEOUT"|"UNKNOWN_ERROR",
+#'   ActiveDirectoryStatus = "ACCESS_DENIED"|"DETACHED"|"JOINED"|"JOINING"|"NETWORK_ERROR"|"TIMEOUT"|"UNKNOWN_ERROR"|"INSUFFICIENT_PERMISSIONS",
 #'   SMBGuestPasswordSet = TRUE|FALSE,
 #'   SMBSecurityStrategy = "ClientSpecified"|"MandatorySigning"|"MandatoryEncryption"|"MandatoryEncryptionNoAes128",
 #'   FileSharesVisible = TRUE|FALSE,
@@ -4912,6 +4912,87 @@ storagegateway_disassociate_file_system <- function(FileSystemAssociationARN, Fo
 }
 .storagegateway$operations$disassociate_file_system <- storagegateway_disassociate_file_system
 
+#' Starts a process that cleans the specified file share's cache of file
+#' entries that are failing upload to Amazon S3
+#'
+#' @description
+#' Starts a process that cleans the specified file share's cache of file
+#' entries that are failing upload to Amazon S3. This API operation reports
+#' success if the request is received with valid arguments, and there are
+#' no other cache clean operations currently in-progress for the specified
+#' file share. After a successful request, the cache clean operation occurs
+#' asynchronously and reports progress using CloudWatch logs and
+#' notifications.
+#' 
+#' If `ForceRemove` is set to `True`, the cache clean operation will delete
+#' file data from the gateway which might otherwise be recoverable. We
+#' recommend using this operation only after all other methods to clear
+#' files failing upload have been exhausted, and if your business need
+#' outweighs the potential data loss.
+#'
+#' @usage
+#' storagegateway_evict_files_failing_upload(FileShareARN, ForceRemove)
+#'
+#' @param FileShareARN &#91;required&#93; The Amazon Resource Name (ARN) of the file share for which you want to
+#' start the cache clean operation.
+#' @param ForceRemove Specifies whether cache entries with full or partial file data currently
+#' stored on the gateway will be forcibly removed by the cache clean
+#' operation.
+#' 
+#' Valid arguments:
+#' 
+#' -   `False` - The cache clean operation skips cache entries failing
+#'     upload if they are associated with data currently stored on the
+#'     gateway. This preserves the cached data.
+#' 
+#' -   `True` - The cache clean operation removes cache entries failing
+#'     upload even if they are associated with data currently stored on the
+#'     gateway. This deletes the cached data.
+#' 
+#'     If `ForceRemove` is set to `True`, the cache clean operation will
+#'     delete file data from the gateway which might otherwise be
+#'     recoverable.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NotificationId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$evict_files_failing_upload(
+#'   FileShareARN = "string",
+#'   ForceRemove = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname storagegateway_evict_files_failing_upload
+#'
+#' @aliases storagegateway_evict_files_failing_upload
+storagegateway_evict_files_failing_upload <- function(FileShareARN, ForceRemove = NULL) {
+  op <- new_operation(
+    name = "EvictFilesFailingUpload",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .storagegateway$evict_files_failing_upload_input(FileShareARN = FileShareARN, ForceRemove = ForceRemove)
+  output <- .storagegateway$evict_files_failing_upload_output()
+  config <- get_config()
+  svc <- .storagegateway$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.storagegateway$operations$evict_files_failing_upload <- storagegateway_evict_files_failing_upload
+
 #' Adds a file gateway to an Active Directory domain
 #'
 #' @description
@@ -4958,7 +5039,7 @@ storagegateway_disassociate_file_system <- function(FileSystemAssociationARN, Fo
 #' ```
 #' list(
 #'   GatewayARN = "string",
-#'   ActiveDirectoryStatus = "ACCESS_DENIED"|"DETACHED"|"JOINED"|"JOINING"|"NETWORK_ERROR"|"TIMEOUT"|"UNKNOWN_ERROR"
+#'   ActiveDirectoryStatus = "ACCESS_DENIED"|"DETACHED"|"JOINED"|"JOINING"|"NETWORK_ERROR"|"TIMEOUT"|"UNKNOWN_ERROR"|"INSUFFICIENT_PERMISSIONS"
 #' )
 #' ```
 #'
@@ -5152,7 +5233,7 @@ storagegateway_list_cache_reports <- function(Marker = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "CacheReportList"),
     stream_api = FALSE
   )
   input <- .storagegateway$list_cache_reports_input(Marker = Marker)
@@ -6717,14 +6798,14 @@ storagegateway_start_availability_monitor_test <- function(GatewayARN) {
 #'
 #' @param FileShareARN &#91;required&#93; 
 #' @param Role &#91;required&#93; The ARN of the IAM role used when saving the cache report to Amazon S3.
-#' @param LocationARN &#91;required&#93; The ARN of the Amazon S3 bucket where the cache report will be saved.
+#' @param LocationARN &#91;required&#93; The ARN of the Amazon S3 bucket where you want to save the cache report.
 #' 
 #' We do not recommend saving the cache report to the same Amazon S3 bucket
 #' for which you are generating the report.
 #' 
 #' This field does not accept access point ARNs.
-#' @param BucketRegion &#91;required&#93; The Amazon Web Services Region of the Amazon S3 bucket associated with
-#' the file share for which you want to generate the cache report.
+#' @param BucketRegion &#91;required&#93; The Amazon Web Services Region of the Amazon S3 bucket where you want to
+#' save the cache report.
 #' @param VPCEndpointDNSName The DNS name of the VPC endpoint associated with the Amazon S3 where you
 #' want to save the cache report. Optional.
 #' @param InclusionFilters The list of filters and parameters that determine which files are

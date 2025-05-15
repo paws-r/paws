@@ -98,6 +98,10 @@ count of attributes provided in \code{NonKeyAttributes}, summed
 across all of the secondary indexes, must not exceed 100. If you
 project the same attribute into two different indexes, this
 counts as two distinct attributes when determining the total.
+This limit only applies when you specify the ProjectionType of
+\code{INCLUDE}. You still can specify the ProjectionType of \code{ALL} to
+project all attributes from the source table, even if the table
+has more than 100 attributes.
 }
 }}
 
@@ -130,6 +134,10 @@ count of attributes provided in \code{NonKeyAttributes}, summed
 across all of the secondary indexes, must not exceed 100. If you
 project the same attribute into two different indexes, this
 counts as two distinct attributes when determining the total.
+This limit only applies when you specify the ProjectionType of
+\code{INCLUDE}. You still can specify the ProjectionType of \code{ALL} to
+project all attributes from the source table, even if the table
+has more than 100 attributes.
 }
 \item \code{ProvisionedThroughput} - The provisioned throughput settings for
 the global secondary index, consisting of read and write capacity
@@ -139,11 +147,13 @@ units.
 \item{BillingMode}{Controls how you are charged for read and write throughput and how you
 manage capacity. This setting can be changed later.
 \itemize{
-\item \code{PROVISIONED} - We recommend using \code{PROVISIONED} for predictable
-workloads. \code{PROVISIONED} sets the billing mode to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/provisioned-capacity-mode.html}{Provisioned capacity mode}.
-\item \code{PAY_PER_REQUEST} - We recommend using \code{PAY_PER_REQUEST} for
-unpredictable workloads. \code{PAY_PER_REQUEST} sets the billing mode to
+\item \code{PAY_PER_REQUEST} - We recommend using \code{PAY_PER_REQUEST} for most
+DynamoDB workloads. \code{PAY_PER_REQUEST} sets the billing mode to
 \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/on-demand-capacity-mode.html}{On-demand capacity mode}.
+\item \code{PROVISIONED} - We recommend using \code{PROVISIONED} for steady
+workloads with predictable growth where capacity requirements can be
+reliably forecasted. \code{PROVISIONED} sets the billing mode to
+\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/provisioned-capacity-mode.html}{Provisioned capacity mode}.
 }}
 
 \item{ProvisionedThroughput}{Represents the provisioned throughput settings for a specified table or

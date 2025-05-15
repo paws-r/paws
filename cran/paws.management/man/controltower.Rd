@@ -62,8 +62,10 @@ these types of resources:
 \item \code{\link[=controltower_disable_control]{disable_control}}
 \item \code{\link[=controltower_enable_control]{enable_control}}
 \item \code{\link[=controltower_get_enabled_control]{get_enabled_control}}
+\item \code{\link[=controltower_get_control_operation]{get_control_operation}}
 \item \code{\link[=controltower_list_control_operations]{list_control_operations}}
 \item \code{\link[=controltower_list_enabled_controls]{list_enabled_controls}}
+\item \code{\link[=controltower_reset_enabled_control]{reset_enabled_control}}
 \item \code{\link[=controltower_update_enabled_control]{update_enabled_control}}
 }
 \item \href{https://docs.aws.amazon.com/controltower/latest/userguide/lz-api-launch.html}{\emph{Landing zones}}
@@ -175,7 +177,7 @@ that OU.
 You can configure and launch an Amazon Web Services Control Tower
 landing zone with APIs. For an introduction and steps, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/getting-started-apis.html}{Getting started with Amazon Web Services Control Tower using APIs}.
 
-For an overview of landing zone API operations, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/2023-all.html#landing-zone-apis}{Amazon Web Services Control Tower supports landing zone APIs}.
+For an overview of landing zone API operations, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/#landing-zone-apis}{Amazon Web Services Control Tower supports landing zone APIs}.
 The individual API operations for landing zones are detailed in this
 document, the \href{https://docs.aws.amazon.com/controltower/latest/APIReference/API_Operations.html}{API reference manual},
 in the "Actions" section.

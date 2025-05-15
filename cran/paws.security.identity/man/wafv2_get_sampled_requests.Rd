@@ -23,7 +23,7 @@ sample of requests.}
 which you want a sample of requests.}
 
 \item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon
-CloudFront distribution.
+CloudFront distribution. For an Amplify application, use \code{CLOUDFRONT}.
 
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:

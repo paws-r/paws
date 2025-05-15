@@ -10,6 +10,7 @@ lakeformation_grant_permissions(
   Principal,
   Resource,
   Permissions,
+  Condition = NULL,
   PermissionsWithGrantOption = NULL
 )
 }
@@ -35,6 +36,8 @@ defines privileges to grant and revoke access to metadata in the Data
 Catalog and data organized in underlying data storage such as Amazon S3.
 Lake Formation requires that each principal be authorized to perform a
 specific task on Lake Formation resources.}
+
+\item{Condition}{}
 
 \item{PermissionsWithGrantOption}{Indicates a list of the granted permissions that the principal may pass
 to other users. These permissions may only be a subset of the

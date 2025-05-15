@@ -22,15 +22,15 @@ storagegateway_start_cache_report(
 
 \item{Role}{[required] The ARN of the IAM role used when saving the cache report to Amazon S3.}
 
-\item{LocationARN}{[required] The ARN of the Amazon S3 bucket where the cache report will be saved.
+\item{LocationARN}{[required] The ARN of the Amazon S3 bucket where you want to save the cache report.
 
 We do not recommend saving the cache report to the same Amazon S3 bucket
 for which you are generating the report.
 
 This field does not accept access point ARNs.}
 
-\item{BucketRegion}{[required] The Amazon Web Services Region of the Amazon S3 bucket associated with
-the file share for which you want to generate the cache report.}
+\item{BucketRegion}{[required] The Amazon Web Services Region of the Amazon S3 bucket where you want to
+save the cache report.}
 
 \item{VPCEndpointDNSName}{The DNS name of the VPC endpoint associated with the Amazon S3 where you
 want to save the cache report. Optional.}

@@ -11,6 +11,7 @@ apigatewayv2_create_api(
   Description = NULL,
   DisableSchemaValidation = NULL,
   DisableExecuteApiEndpoint = NULL,
+  IpAddressType = NULL,
   Name,
   ProtocolType,
   RouteKey = NULL,
@@ -46,6 +47,8 @@ execute-api endpoint. By default, clients can invoke your API with the
 default https://\{api_id\}.execute-api.\{region\}.amazonaws.com
 endpoint. To require that clients use a custom domain name to invoke
 your API, disable the default endpoint.}
+
+\item{IpAddressType}{The IP address types that can invoke the API.}
 
 \item{Name}{[required] The name of the API.}
 

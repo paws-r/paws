@@ -5,14 +5,22 @@
 \title{Updates the platform software of a SageMaker HyperPod cluster for
 security patching}
 \usage{
-sagemaker_update_cluster_software(ClusterName)
+sagemaker_update_cluster_software(
+  ClusterName,
+  InstanceGroups = NULL,
+  DeploymentConfig = NULL
+)
 }
 \arguments{
 \item{ClusterName}{[required] Specify the name or the Amazon Resource Name (ARN) of the SageMaker
 HyperPod cluster you want to update for security patching.}
+
+\item{InstanceGroups}{The array of instance groups for which to update AMI versions.}
+
+\item{DeploymentConfig}{The configuration to use when updating the AMI versions.}
 }
 \description{
-Updates the platform software of a SageMaker HyperPod cluster for security patching. To learn how to use this API, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod-operate.html#sagemaker-hyperpod-operate-cli-command-update-cluster-software}{Update the SageMaker HyperPod platform software of a cluster}.
+Updates the platform software of a SageMaker HyperPod cluster for security patching. To learn how to use this API, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod-operate-slurm.html#sagemaker-hyperpod-operate-cli-command-update-cluster-software}{Update the SageMaker HyperPod platform software of a cluster}.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_cluster_software/} for full documentation.
 }

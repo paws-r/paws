@@ -22,7 +22,7 @@ servicecatalog_search_provisioned_products(
 \item \code{zh} - Chinese
 }}
 
-\item{AccessLevelFilter}{The access level to use to obtain results. The default is \code{User}.}
+\item{AccessLevelFilter}{The access level to use to obtain results. The default is \code{Account}.}
 
 \item{Filters}{The search filters.
 

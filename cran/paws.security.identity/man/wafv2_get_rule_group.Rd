@@ -11,7 +11,7 @@ wafv2_get_rule_group(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL)
 after you create it.}
 
 \item{Scope}{Specifies whether this is for a global resource type, such as a Amazon
-CloudFront distribution.
+CloudFront distribution. For an Amplify application, use \code{CLOUDFRONT}.
 
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:

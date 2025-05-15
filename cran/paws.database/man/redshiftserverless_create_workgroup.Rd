@@ -17,6 +17,7 @@ redshiftserverless_create_workgroup(
   securityGroupIds = NULL,
   subnetIds = NULL,
   tags = NULL,
+  trackName = NULL,
   workgroupName
 )
 }
@@ -57,6 +58,10 @@ public network.}
 \item{subnetIds}{An array of VPC subnet IDs to associate with the workgroup.}
 
 \item{tags}{A array of tag instances.}
+
+\item{trackName}{An optional parameter for the name of the track for the workgroup. If
+you don't provide a track name, the workgroup is assigned to the
+\code{current} track.}
 
 \item{workgroupName}{[required] The name of the created workgroup.}
 }

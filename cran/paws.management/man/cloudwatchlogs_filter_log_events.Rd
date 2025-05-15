@@ -78,7 +78,7 @@ To use this operation with this parameter, you must be signed into an
 account with the \code{logs:Unmask} permission.}
 }
 \description{
-Lists log events from the specified log group. You can list all the log events or filter the results using a filter pattern, a time range, and the name of the log stream.
+Lists log events from the specified log group. You can list all the log events or filter the results using one or more of the following:
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_filter_log_events/} for full documentation.
 }

@@ -4,13 +4,15 @@
 \alias{bedrock_list_prompt_routers}
 \title{Retrieves a list of prompt routers}
 \usage{
-bedrock_list_prompt_routers(maxResults = NULL, nextToken = NULL)
+bedrock_list_prompt_routers(maxResults = NULL, nextToken = NULL, type = NULL)
 }
 \arguments{
 \item{maxResults}{The maximum number of prompt routers to return in one page of results.}
 
 \item{nextToken}{Specify the pagination token from a previous request to retrieve the
 next page of results.}
+
+\item{type}{The type of the prompt routers, such as whether it's default or custom.}
 }
 \description{
 Retrieves a list of prompt routers.

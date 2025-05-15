@@ -59,3 +59,7 @@ test_that("list_integrations", {
 test_that("list_log_anomaly_detectors", {
   expect_error(svc$list_log_anomaly_detectors(), NA)
 })
+
+test_that("list_log_groups", {
+  expect_error(svc$list_log_groups(), NA)
+})

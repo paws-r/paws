@@ -459,6 +459,11 @@ redshiftdataapiservice_list_schemas <- function(ClusterIdentifier = NULL, Connec
 #'
 #' See [https://www.paws-r-sdk.com/docs/redshiftdataapiservice_list_statements/](https://www.paws-r-sdk.com/docs/redshiftdataapiservice_list_statements/) for full documentation.
 #'
+#' @param ClusterIdentifier The cluster identifier. Only statements that ran on this cluster are
+#' returned. When providing `ClusterIdentifier`, then `WorkgroupName` can't
+#' be specified.
+#' @param Database The name of the database when listing statements run against a
+#' `ClusterIdentifier` or `WorkgroupName`.
 #' @param MaxResults The maximum number of SQL statements to return in the response. If more
 #' SQL statements exist than fit in one response, then `NextToken` is
 #' returned to page through the results.
@@ -497,11 +502,14 @@ redshiftdataapiservice_list_schemas <- function(ClusterIdentifier = NULL, Connec
 #' -   STARTED - The query run has started.
 #' 
 #' -   SUBMITTED - The query was submitted, but not yet processed.
+#' @param WorkgroupName The serverless workgroup name or Amazon Resource Name (ARN). Only
+#' statements that ran on this workgroup are returned. When providing
+#' `WorkgroupName`, then `ClusterIdentifier` can't be specified.
 #'
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_list_statements
-redshiftdataapiservice_list_statements <- function(MaxResults = NULL, NextToken = NULL, RoleLevel = NULL, StatementName = NULL, Status = NULL) {
+redshiftdataapiservice_list_statements <- function(ClusterIdentifier = NULL, Database = NULL, MaxResults = NULL, NextToken = NULL, RoleLevel = NULL, StatementName = NULL, Status = NULL, WorkgroupName = NULL) {
   op <- new_operation(
     name = "ListStatements",
     http_method = "POST",
@@ -510,7 +518,7 @@ redshiftdataapiservice_list_statements <- function(MaxResults = NULL, NextToken 
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Statements"),
     stream_api = FALSE
   )
-  input <- .redshiftdataapiservice$list_statements_input(MaxResults = MaxResults, NextToken = NextToken, RoleLevel = RoleLevel, StatementName = StatementName, Status = Status)
+  input <- .redshiftdataapiservice$list_statements_input(ClusterIdentifier = ClusterIdentifier, Database = Database, MaxResults = MaxResults, NextToken = NextToken, RoleLevel = RoleLevel, StatementName = StatementName, Status = Status, WorkgroupName = WorkgroupName)
   output <- .redshiftdataapiservice$list_statements_output()
   config <- get_config()
   svc <- .redshiftdataapiservice$service(config, op)

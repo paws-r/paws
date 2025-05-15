@@ -15,7 +15,8 @@ licensemanager_create_license(
   Beneficiary,
   ConsumptionConfiguration,
   LicenseMetadata = NULL,
-  ClientToken
+  ClientToken,
+  Tags = NULL
 )
 }
 \arguments{
@@ -44,6 +45,10 @@ a borrow configuration for workloads with offline usage.}
 
 \item{ClientToken}{[required] Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
+
+\item{Tags}{Tags to add to the license. For more information about tagging support
+in License Manager, see the
+\code{\link[=licensemanager_tag_resource]{tag_resource}} operation.}
 }
 \description{
 Creates a license.

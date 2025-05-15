@@ -177,7 +177,10 @@ NULL
 #'  \link[=verifiedpermissions_list_policies]{list_policies} \tab Returns a paginated list of all policies stored in the specified policy store\cr
 #'  \link[=verifiedpermissions_list_policy_stores]{list_policy_stores} \tab Returns a paginated list of all policy stores in the calling Amazon Web Services account\cr
 #'  \link[=verifiedpermissions_list_policy_templates]{list_policy_templates} \tab Returns a paginated list of all policy templates in the specified policy store\cr
+#'  \link[=verifiedpermissions_list_tags_for_resource]{list_tags_for_resource} \tab Returns the tags associated with the specified Amazon Verified Permissions resource\cr
 #'  \link[=verifiedpermissions_put_schema]{put_schema} \tab Creates or updates the policy schema in the specified policy store\cr
+#'  \link[=verifiedpermissions_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified Amazon Verified Permissions resource\cr
+#'  \link[=verifiedpermissions_untag_resource]{untag_resource} \tab Removes one or more tags from the specified Amazon Verified Permissions resource\cr
 #'  \link[=verifiedpermissions_update_identity_source]{update_identity_source} \tab Updates the specified identity source to use a new identity provider (IdP), or to change the mapping of identities from the IdP to a different principal entity type\cr
 #'  \link[=verifiedpermissions_update_policy]{update_policy} \tab Modifies a Cedar static policy in the specified policy store\cr
 #'  \link[=verifiedpermissions_update_policy_store]{update_policy_store} \tab Modifies the validation setting for a policy store\cr
@@ -213,7 +216,7 @@ verifiedpermissions <- function(config = list(), credentials = list(), endpoint 
 
 .verifiedpermissions$metadata <- list(
   service_name = "verifiedpermissions",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.amazonaws.eu", global = FALSE)),
   service_id = "VerifiedPermissions",
   api_version = "2021-12-01",
   signing_name = "verifiedpermissions",

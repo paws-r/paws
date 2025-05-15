@@ -26,13 +26,13 @@ NULL
 #' HTTPS requests that are forwarded to a protected resource. Protected
 #' resource types include Amazon CloudFront distribution, Amazon API
 #' Gateway REST API, Application Load Balancer, AppSync GraphQL API, Amazon
-#' Cognito user pool, App Runner service, and Amazon Web Services Verified
-#' Access instance. WAF also lets you control access to your content, to
-#' protect the Amazon Web Services resource that WAF is monitoring. Based
-#' on conditions that you specify, such as the IP addresses that requests
-#' originate from or the values of query strings, the protected resource
-#' responds to requests with either the requested content, an HTTP 403
-#' status code (Forbidden), or with a custom response.
+#' Cognito user pool, App Runner service, Amplify application, and Amazon
+#' Web Services Verified Access instance. WAF also lets you control access
+#' to your content, to protect the Amazon Web Services resource that WAF is
+#' monitoring. Based on conditions that you specify, such as the IP
+#' addresses that requests originate from or the values of query strings,
+#' the protected resource responds to requests with either the requested
+#' content, an HTTP 403 status code (Forbidden), or with a custom response.
 #' 
 #' This API guide is for developers who need detailed information about WAF
 #' API actions, data types, and errors. For detailed information about WAF
@@ -49,8 +49,8 @@ NULL
 #'     Amazon Cognito user pool, an App Runner service, or an Amazon Web
 #'     Services Verified Access instance.
 #' 
-#' -   For Amazon CloudFront, you must use the API endpoint listed for US
-#'     East (N. Virginia): us-east-1.
+#' -   For Amazon CloudFront and Amplify, you must use the API endpoint
+#'     listed for US East (N. Virginia): us-east-1.
 #' 
 #' Alternatively, you can use one of the Amazon Web Services SDKs to access
 #' an API that's tailored to the programming language or platform that
@@ -225,7 +225,7 @@ wafv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
 
 .wafv2$metadata <- list(
   service_name = "wafv2",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "wafv2.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "wafv2.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "wafv2.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "wafv2.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "wafv2.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "wafv2.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "wafv2.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "wafv2.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "wafv2.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "wafv2.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "wafv2.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "wafv2.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "wafv2.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "wafv2.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "wafv2.{region}.amazonaws.eu", global = FALSE)),
   service_id = "WAFV2",
   api_version = "2019-07-29",
   signing_name = "wafv2",

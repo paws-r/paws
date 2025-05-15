@@ -135,12 +135,12 @@ across multiple Amazon Web Services accounts and on-premises servers.
 \link[=licensemanager_list_received_licenses]{list_received_licenses} \tab Lists received licenses\cr
 \link[=licensemanager_list_received_licenses_for_organization]{list_received_licenses_for_organization} \tab Lists the licenses received for all accounts in the organization\cr
 \link[=licensemanager_list_resource_inventory]{list_resource_inventory} \tab Lists resources managed using Systems Manager inventory\cr
-\link[=licensemanager_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified license configuration\cr
+\link[=licensemanager_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource\cr
 \link[=licensemanager_list_tokens]{list_tokens} \tab Lists your tokens\cr
 \link[=licensemanager_list_usage_for_license_configuration]{list_usage_for_license_configuration} \tab Lists all license usage records for a license configuration, displaying license consumption details by resource at a selected point in time\cr
 \link[=licensemanager_reject_grant]{reject_grant} \tab Rejects the specified grant\cr
-\link[=licensemanager_tag_resource]{tag_resource} \tab Adds the specified tags to the specified license configuration\cr
-\link[=licensemanager_untag_resource]{untag_resource} \tab Removes the specified tags from the specified license configuration\cr
+\link[=licensemanager_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
+\link[=licensemanager_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource\cr
 \link[=licensemanager_update_license_configuration]{update_license_configuration} \tab Modifies the attributes of an existing license configuration\cr
 \link[=licensemanager_update_license_manager_report_generator]{update_license_manager_report_generator} \tab Updates a report generator\cr
 \link[=licensemanager_update_license_specifications_for_resource]{update_license_specifications_for_resource} \tab Adds or removes the specified license configurations for the specified Amazon Web Services resource\cr

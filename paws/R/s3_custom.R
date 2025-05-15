@@ -224,9 +224,8 @@ s3_generate_presigned_url <- function(
     "`params` must be a list of parameters for client_method" = is.list(params),
     "`expires` must be numeric" = is.numeric(expires_in),
     "`expires_in` must be greater than 0" = expires_in > 0L,
-    "`http_method` must be a character" = (
-      is.character(http_method) || is.null(http_method)
-    )
+    "`http_method` must be a character" = (is.character(http_method) ||
+      is.null(http_method))
   )
 
   pkg_name <- "paws.storage"
@@ -272,9 +271,10 @@ s3_generate_presigned_url <- function(
   )
 
   # create: output from client_method
-  output <- get(.pkg_api, envir = getNamespace(pkg_name))[[
-    sprintf("%s_input", client_method)
-  ]]()
+  output <- get(.pkg_api, envir = getNamespace(pkg_name))[[sprintf(
+    "%s_input",
+    client_method
+  )]]()
 
   # get config
   config <- get_config()
@@ -316,13 +316,11 @@ s3_generate_presigned_url <- function(
     request$http_request$url$scheme <- http_method
   }
 
-  return(
-    do.call(
-      "build_url",
-      list(url = request$http_request$url),
-      envir = getNamespace("paws.common")
-    )
-  )
+  return(do.call(
+    "build_url",
+    list(url = request$http_request$url),
+    envir = getNamespace("paws.common")
+  ))
 }
 
 .s3$operations$generate_presigned_url <- s3_generate_presigned_url

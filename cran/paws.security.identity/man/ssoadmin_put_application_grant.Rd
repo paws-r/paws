@@ -2,19 +2,19 @@
 % Please edit documentation in R/ssoadmin_operations.R
 \name{ssoadmin_put_application_grant}
 \alias{ssoadmin_put_application_grant}
-\title{Adds a grant to an application}
+\title{Creates a configuration for an application to use grants}
 \usage{
-ssoadmin_put_application_grant(ApplicationArn, Grant, GrantType)
+ssoadmin_put_application_grant(ApplicationArn, GrantType, Grant)
 }
 \arguments{
 \item{ApplicationArn}{[required] Specifies the ARN of the application to update.}
 
-\item{Grant}{[required] Specifies a structure that describes the grant to update.}
-
 \item{GrantType}{[required] Specifies the type of grant to update.}
+
+\item{Grant}{[required] Specifies a structure that describes the grant to update.}
 }
 \description{
-Adds a grant to an application.
+Creates a configuration for an application to use grants. Conceptually grants are authorization to request actions related to tokens. This configuration will be used when parties are requesting and receiving tokens during the trusted identity propagation process. For more information on the IAM Identity Center supported grant workflows, see \href{https://docs.aws.amazon.com/singlesignon/latest/userguide/customermanagedapps-saml2-oauth2.html}{SAML 2.0 and OAuth 2.0}.
 
 See \url{https://www.paws-r-sdk.com/docs/ssoadmin_put_application_grant/} for full documentation.
 }

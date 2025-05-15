@@ -494,7 +494,7 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' accept custom names, such as EC2 instances, use the resource import
 #' feature instead. For more information, see [Import Amazon Web Services
 #' resources into a CloudFormation stack with a resource
-#' import](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import.html)
+#' import](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/import-resources.html)
 #' in the *CloudFormation User Guide*.
 #'
 #' @keywords internal
@@ -1041,10 +1041,12 @@ cloudformation_create_stack_refactor <- function(Description = NULL, EnableStack
 #' 
 #' Specify an IAM role only if you are using customized administrator roles
 #' to control which users or groups can manage specific stack sets within
-#' the same administrator account. For more information, see [Prerequisites
-#' for using
-#' StackSets](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)
+#' the same administrator account. For more information, see [Grant
+#' self-managed
+#' permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html)
 #' in the *CloudFormation User Guide*.
+#' 
+#' Valid only if the permissions model is `SELF_MANAGED`.
 #' @param ExecutionRoleName The name of the IAM execution role to use to create the stack set. If
 #' you do not specify an execution role, CloudFormation uses the
 #' `AWSCloudFormationStackSetExecutionRole` role for the stack set
@@ -1053,6 +1055,8 @@ cloudformation_create_stack_refactor <- function(Description = NULL, EnableStack
 #' Specify an IAM role only if you are using customized execution roles to
 #' control which stack resources users and groups can include in their
 #' stack sets.
+#' 
+#' Valid only if the permissions model is `SELF_MANAGED`.
 #' @param PermissionModel Describes how the IAM roles required for stack set operations are
 #' created. By default, `SELF-MANAGED` is specified.
 #' 
@@ -1068,10 +1072,16 @@ cloudformation_create_stack_refactor <- function(Description = NULL, EnableStack
 #'     Organizations](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-activate-trusted-access.html).
 #' @param AutoDeployment Describes whether StackSets automatically deploys to Organizations
 #' accounts that are added to the target organization or organizational
-#' unit (OU). Specify only if `PermissionModel` is `SERVICE_MANAGED`.
-#' @param CallAs \[Service-managed permissions\] Specifies whether you are acting as an
-#' account administrator in the organization's management account or as a
-#' delegated administrator in a member account.
+#' unit (OU). For more information, see [Manage automatic deployments for
+#' CloudFormation StackSets that use service-managed
+#' permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-manage-auto-deployment.html)
+#' in the *CloudFormation User Guide*.
+#' 
+#' Required if the permissions model is `SERVICE_MANAGED`. (Not used with
+#' self-managed permissions.)
+#' @param CallAs Specifies whether you are acting as an account administrator in the
+#' organization's management account or as a delegated administrator in a
+#' member account.
 #' 
 #' By default, `SELF` is specified. Use `SELF` for stack sets with
 #' self-managed permissions.
@@ -1091,6 +1101,8 @@ cloudformation_create_stack_refactor <- function(Description = NULL, EnableStack
 #' Stack sets with service-managed permissions are created in the
 #' management account, including stack sets that are created by delegated
 #' administrators.
+#' 
+#' Valid only if the permissions model is `SERVICE_MANAGED`.
 #' @param ClientRequestToken A unique identifier for this
 #' [`create_stack_set`][cloudformation_create_stack_set] request. Specify
 #' this token if you plan to retry requests so that CloudFormation knows
@@ -1819,8 +1831,6 @@ cloudformation_describe_stack_drift_detection_status <- function(StackDriftDetec
 #'     unique stack ID.
 #' 
 #' -   Deleted stacks: You must specify the unique stack ID.
-#' 
-#' Default: There is no default value.
 #' @param NextToken A string that identifies the next page of events that you want to
 #' retrieve.
 #'
@@ -1945,11 +1955,7 @@ cloudformation_describe_stack_refactor <- function(StackRefactorId) {
 #'     unique stack ID.
 #' 
 #' -   Deleted stacks: You must specify the unique stack ID.
-#' 
-#' Default: There is no default value.
 #' @param LogicalResourceId &#91;required&#93; The logical name of the resource as specified in the template.
-#' 
-#' Default: There is no default value.
 #'
 #' @keywords internal
 #'
@@ -2039,13 +2045,9 @@ cloudformation_describe_stack_resource_drifts <- function(StackName, StackResour
 #' 
 #' -   Deleted stacks: You must specify the unique stack ID.
 #' 
-#' Default: There is no default value.
-#' 
 #' Required: Conditional. If you don't specify `StackName`, you must
 #' specify `PhysicalResourceId`.
 #' @param LogicalResourceId The logical name of the resource as specified in the template.
-#' 
-#' Default: There is no default value.
 #' @param PhysicalResourceId The name or unique identifier that corresponds to a physical instance ID
 #' of a resource supported by CloudFormation.
 #' 
@@ -2058,8 +2060,6 @@ cloudformation_describe_stack_resource_drifts <- function(StackName, StackResour
 #' 
 #' Required: Conditional. If you don't specify `PhysicalResourceId`, you
 #' must specify `StackName`.
-#' 
-#' Default: There is no default value.
 #'
 #' @keywords internal
 #'
@@ -2212,8 +2212,6 @@ cloudformation_describe_stack_set_operation <- function(StackSetName, OperationI
 #'     unique stack ID.
 #' 
 #' -   Deleted stacks: You must specify the unique stack ID.
-#' 
-#' Default: There is no default value.
 #' @param NextToken A string that identifies the next page of stacks that you want to
 #' retrieve.
 #'
@@ -2679,8 +2677,6 @@ cloudformation_get_stack_policy <- function(StackName) {
 #'     unique stack ID.
 #' 
 #' -   Deleted stacks: You must specify the unique stack ID.
-#' 
-#' Default: There is no default value.
 #' @param ChangeSetName The name or Amazon Resource Name (ARN) of a change set for which
 #' CloudFormation returns the associated template. If you specify a name,
 #' you must also specify the `StackName`.
@@ -3121,11 +3117,13 @@ cloudformation_list_resource_scan_resources <- function(ResourceScanId, Resource
 #' includes a `NextToken` value that you can use for the `NextToken`
 #' parameter to get the next set of results. The default value is 10. The
 #' maximum value is 100.
+#' @param ScanTypeFilter The scan type that you want to get summary information about. The
+#' default is `FULL`.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudformation_list_resource_scans
-cloudformation_list_resource_scans <- function(NextToken = NULL, MaxResults = NULL) {
+cloudformation_list_resource_scans <- function(NextToken = NULL, MaxResults = NULL, ScanTypeFilter = NULL) {
   op <- new_operation(
     name = "ListResourceScans",
     http_method = "POST",
@@ -3134,7 +3132,7 @@ cloudformation_list_resource_scans <- function(NextToken = NULL, MaxResults = NU
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ResourceScanSummaries"),
     stream_api = FALSE
   )
-  input <- .cloudformation$list_resource_scans_input(NextToken = NextToken, MaxResults = MaxResults)
+  input <- .cloudformation$list_resource_scans_input(NextToken = NextToken, MaxResults = MaxResults, ScanTypeFilter = ScanTypeFilter)
   output <- .cloudformation$list_resource_scans_output()
   config <- get_config()
   svc <- .cloudformation$service(config, op)
@@ -3382,8 +3380,6 @@ cloudformation_list_stack_refactors <- function(ExecutionStatusFilter = NULL, Ne
 #'     unique stack ID.
 #' 
 #' -   Deleted stacks: You must specify the unique stack ID.
-#' 
-#' Default: There is no default value.
 #' @param NextToken A string that identifies the next page of stack resources that you want
 #' to retrieve.
 #'
@@ -3651,7 +3647,7 @@ cloudformation_list_stack_sets <- function(NextToken = NULL, MaxResults = NULL, 
 #' specified StackStatusFilter
 #'
 #' @description
-#' Returns the summary information for stacks whose status matches the specified StackStatusFilter. Summary information for stacks that have been deleted is kept for 90 days after the stack is deleted. If no StackStatusFilter is specified, summary information for all stacks is returned (including existing stacks and stacks that have been deleted).
+#' Returns the summary information for stacks whose status matches the specified `StackStatusFilter`. Summary information for stacks that have been deleted is kept for 90 days after the stack is deleted. If no `StackStatusFilter` is specified, summary information for all stacks is returned (including existing stacks and stacks that have been deleted).
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudformation_list_stacks/](https://www.paws-r-sdk.com/docs/cloudformation_list_stacks/) for full documentation.
 #'
@@ -4380,11 +4376,12 @@ cloudformation_signal_resource <- function(StackName, LogicalResourceId, UniqueI
 #' [`start_resource_scan`][cloudformation_start_resource_scan] request.
 #' Specify this token if you plan to retry requests so that CloudFormation
 #' knows that you're not attempting to start a new resource scan.
+#' @param ScanFilters The scan filters to use.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudformation_start_resource_scan
-cloudformation_start_resource_scan <- function(ClientRequestToken = NULL) {
+cloudformation_start_resource_scan <- function(ClientRequestToken = NULL, ScanFilters = NULL) {
   op <- new_operation(
     name = "StartResourceScan",
     http_method = "POST",
@@ -4393,7 +4390,7 @@ cloudformation_start_resource_scan <- function(ClientRequestToken = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudformation$start_resource_scan_input(ClientRequestToken = ClientRequestToken)
+  input <- .cloudformation$start_resource_scan_input(ClientRequestToken = ClientRequestToken, ScanFilters = ScanFilters)
   output <- .cloudformation$start_resource_scan_output()
   config <- get_config()
   svc <- .cloudformation$service(config, op)
@@ -4915,11 +4912,11 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 }
 .cloudformation$operations$update_stack_instances <- cloudformation_update_stack_instances
 
-#' Updates the stack set, and associated stack instances in the specified
+#' Updates the stack set and associated stack instances in the specified
 #' accounts and Amazon Web Services Regions
 #'
 #' @description
-#' Updates the stack set, and associated stack instances in the specified accounts and Amazon Web Services Regions.
+#' Updates the stack set and associated stack instances in the specified accounts and Amazon Web Services Regions.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudformation_update_stack_set/](https://www.paws-r-sdk.com/docs/cloudformation_update_stack_set/) for full documentation.
 #'
@@ -5038,24 +5035,24 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #' [`update_stack_set`][cloudformation_update_stack_set] action fails with
 #' an `access denied` error, and the stack set is not updated.
 #' @param OperationPreferences Preferences for how CloudFormation performs this stack set operation.
-#' @param AdministrationRoleARN The Amazon Resource Name (ARN) of the IAM role to use to update this
-#' stack set.
+#' @param AdministrationRoleARN \[Self-managed permissions\] The Amazon Resource Name (ARN) of the IAM
+#' role to use to update this stack set.
 #' 
 #' Specify an IAM role only if you are using customized administrator roles
 #' to control which users or groups can manage specific stack sets within
-#' the same administrator account. For more information, see [Prerequisites
-#' for using CloudFormation
-#' StackSets](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)
+#' the same administrator account. For more information, see [Grant
+#' self-managed
+#' permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html)
 #' in the *CloudFormation User Guide*.
 #' 
 #' If you specified a customized administrator role when you created the
 #' stack set, you must specify a customized administrator role, even if it
 #' is the same customized administrator role used with this stack set
 #' previously.
-#' @param ExecutionRoleName The name of the IAM execution role to use to update the stack set. If
-#' you do not specify an execution role, CloudFormation uses the
-#' `AWSCloudFormationStackSetExecutionRole` role for the stack set
-#' operation.
+#' @param ExecutionRoleName \[Self-managed permissions\] The name of the IAM execution role to use
+#' to update the stack set. If you do not specify an execution role,
+#' CloudFormation uses the `AWSCloudFormationStackSetExecutionRole` role
+#' for the stack set operation.
 #' 
 #' Specify an IAM role only if you are using customized execution roles to
 #' control which stack resources users and groups can include in their
@@ -5096,7 +5093,11 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #'     Organizations](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-activate-trusted-access.html).
 #' @param AutoDeployment \[Service-managed permissions\] Describes whether StackSets
 #' automatically deploys to Organizations accounts that are added to a
-#' target organization or organizational unit (OU).
+#' target organization or organizational unit (OU). For more information,
+#' see [Manage automatic deployments for CloudFormation StackSets that use
+#' service-managed
+#' permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-manage-auto-deployment.html)
+#' in the *CloudFormation User Guide*.
 #' 
 #' If you specify `AutoDeployment`, don't specify `DeploymentTargets` or
 #' `Regions`.

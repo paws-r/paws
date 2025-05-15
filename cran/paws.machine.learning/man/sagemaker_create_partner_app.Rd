@@ -8,6 +8,7 @@ sagemaker_create_partner_app(
   Name,
   Type,
   ExecutionRoleArn,
+  KmsKeyId = NULL,
   MaintenanceConfig = NULL,
   Tier,
   ApplicationConfig = NULL,
@@ -25,6 +26,10 @@ following: \code{lakera-guard}, \code{comet}, \code{deepchecks-llm-evaluation}, 
 \code{fiddler}.}
 
 \item{ExecutionRoleArn}{[required] The ARN of the IAM role that the partner application uses.}
+
+\item{KmsKeyId}{SageMaker Partner AI Apps uses Amazon Web Services KMS to encrypt data
+at rest using an Amazon Web Services managed key by default. For more
+control, specify a customer managed key.}
 
 \item{MaintenanceConfig}{Maintenance configuration settings for the SageMaker Partner AI App.}
 

@@ -6,15 +6,26 @@
 Identity Center}
 \usage{
 ssoadmin_create_trusted_token_issuer(
-  ClientToken = NULL,
   InstanceArn,
   Name,
-  Tags = NULL,
+  TrustedTokenIssuerType,
   TrustedTokenIssuerConfiguration,
-  TrustedTokenIssuerType
+  ClientToken = NULL,
+  Tags = NULL
 )
 }
 \arguments{
+\item{InstanceArn}{[required] Specifies the ARN of the instance of IAM Identity Center to contain the
+new trusted token issuer configuration.}
+
+\item{Name}{[required] Specifies the name of the new trusted token issuer configuration.}
+
+\item{TrustedTokenIssuerType}{[required] Specifies the type of the new trusted token issuer.}
+
+\item{TrustedTokenIssuerConfiguration}{[required] Specifies settings that apply to the new trusted token issuer
+configuration. The settings that are available depend on what
+\code{TrustedTokenIssuerType} you specify.}
+
 \item{ClientToken}{Specifies a unique, case-sensitive ID that you provide to ensure the
 idempotency of the request. This lets you safely retry the request
 without accidentally performing the same operation a second time.
@@ -29,19 +40,8 @@ If you retry the operation with the same \code{ClientToken}, but with
 different parameters, the retry fails with an
 \code{IdempotentParameterMismatch} error.}
 
-\item{InstanceArn}{[required] Specifies the ARN of the instance of IAM Identity Center to contain the
-new trusted token issuer configuration.}
-
-\item{Name}{[required] Specifies the name of the new trusted token issuer configuration.}
-
 \item{Tags}{Specifies tags to be attached to the new trusted token issuer
 configuration.}
-
-\item{TrustedTokenIssuerConfiguration}{[required] Specifies settings that apply to the new trusted token issuer
-configuration. The settings that are available depend on what
-\code{TrustedTokenIssuerType} you specify.}
-
-\item{TrustedTokenIssuerType}{[required] Specifies the type of the new trusted token issuer.}
 }
 \description{
 Creates a connection to a trusted token issuer in an instance of IAM Identity Center. A trusted token issuer enables trusted identity propagation to be used with applications that authenticate outside of Amazon Web Services.

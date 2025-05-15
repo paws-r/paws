@@ -1627,19 +1627,21 @@ connect_create_agent_status <- function(InstanceId, Name, Description = NULL, St
 }
 .connect$operations$create_agent_status <- connect_create_agent_status
 
-#' Only the EMAIL channel is supported
+#' Only the EMAIL and VOICE channels are supported
 #'
 #' @description
-#' Only the EMAIL channel is supported. The supported initiation methods
-#' are: OUTBOUND, AGENT_REPLY, and FLOW.
+#' Only the EMAIL and VOICE channels are supported. The supported
+#' initiation methods for EMAIL are: OUTBOUND, AGENT_REPLY, and FLOW. For
+#' VOICE the supported initiation methods are TRANSFER and the subtype
+#' connect:ExternalAudio.
 #' 
-#' Creates a new EMAIL contact.
+#' Creates a new EMAIL or VOICE contact.
 #'
 #' @usage
 #' connect_create_contact(InstanceId, ClientToken, RelatedContactId,
 #'   Attributes, References, Channel, InitiationMethod,
 #'   ExpiryDurationInMinutes, UserInfo, InitiateAs, Name, Description,
-#'   SegmentAttributes)
+#'   SegmentAttributes, PreviousContactId)
 #'
 #' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
 #' instance
@@ -1663,15 +1665,19 @@ connect_create_agent_status <- function(InstanceId, Name, Description = NULL, St
 #' creation: URL | NUMBER | STRING | DATE | EMAIL | ATTACHMENT.
 #' @param Channel &#91;required&#93; The channel for the contact
 #' 
-#' CreateContact only supports the EMAIL channel. The following information
-#' that states other channels are supported is incorrect. We are working to
-#' update this topic.
+#' CreateContact only supports the EMAIL and VOICE channels. The following
+#' information that states other channels are supported is incorrect. We
+#' are working to update this topic.
 #' @param InitiationMethod &#91;required&#93; Indicates how the contact was initiated.
 #' 
-#' CreateContact only supports the following initiation methods: OUTBOUND,
-#' AGENT_REPLY, and FLOW. The following information that states other
-#' initiation methods are supported is incorrect. We are working to update
-#' this topic.
+#' CreateContact only supports the following initiation methods:
+#' 
+#' -   For EMAIL: OUTBOUND, AGENT_REPLY, and FLOW.
+#' 
+#' -   For VOICE: TRANSFER and the subtype connect:ExternalAudio.
+#' 
+#' The following information that states other initiation methods are
+#' supported is incorrect. We are working to update this topic.
 #' @param ExpiryDurationInMinutes Number of minutes the contact will be active for before expiring
 #' @param UserInfo User details for the contact
 #' @param InitiateAs Initial state of the contact when it's created
@@ -1690,6 +1696,12 @@ connect_create_agent_status <- function(InstanceId, Name, Description = NULL, St
 #' integer number of minutes the contact will be active for before
 #' expiring, with `SegmentAttributes` like \{
 #' ` "connect:ContactExpiry": \{"ValueMap" : \{ "ExpiryDuration": \{ "ValueInteger": 135\}\}\}\}`.
+#' @param PreviousContactId The ID of the previous contact when creating a transfer contact. This
+#' value can be provided only for external audio contacts. For more
+#' information, see [Integrate Amazon Connect Contact Lens with external
+#' voice
+#' systems](https://docs.aws.amazon.com/connect/latest/adminguide/contact-lens-integration.html)
+#' in the *Amazon Connect Administrator Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1735,7 +1747,8 @@ connect_create_agent_status <- function(InstanceId, Name, Description = NULL, St
 #'       ),
 #'       ValueInteger = 123
 #'     )
-#'   )
+#'   ),
+#'   PreviousContactId = "string"
 #' )
 #' ```
 #'
@@ -1744,7 +1757,7 @@ connect_create_agent_status <- function(InstanceId, Name, Description = NULL, St
 #' @rdname connect_create_contact
 #'
 #' @aliases connect_create_contact
-connect_create_contact <- function(InstanceId, ClientToken = NULL, RelatedContactId = NULL, Attributes = NULL, References = NULL, Channel, InitiationMethod, ExpiryDurationInMinutes = NULL, UserInfo = NULL, InitiateAs = NULL, Name = NULL, Description = NULL, SegmentAttributes = NULL) {
+connect_create_contact <- function(InstanceId, ClientToken = NULL, RelatedContactId = NULL, Attributes = NULL, References = NULL, Channel, InitiationMethod, ExpiryDurationInMinutes = NULL, UserInfo = NULL, InitiateAs = NULL, Name = NULL, Description = NULL, SegmentAttributes = NULL, PreviousContactId = NULL) {
   op <- new_operation(
     name = "CreateContact",
     http_method = "PUT",
@@ -1753,7 +1766,7 @@ connect_create_contact <- function(InstanceId, ClientToken = NULL, RelatedContac
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connect$create_contact_input(InstanceId = InstanceId, ClientToken = ClientToken, RelatedContactId = RelatedContactId, Attributes = Attributes, References = References, Channel = Channel, InitiationMethod = InitiationMethod, ExpiryDurationInMinutes = ExpiryDurationInMinutes, UserInfo = UserInfo, InitiateAs = InitiateAs, Name = Name, Description = Description, SegmentAttributes = SegmentAttributes)
+  input <- .connect$create_contact_input(InstanceId = InstanceId, ClientToken = ClientToken, RelatedContactId = RelatedContactId, Attributes = Attributes, References = References, Channel = Channel, InitiationMethod = InitiationMethod, ExpiryDurationInMinutes = ExpiryDurationInMinutes, UserInfo = UserInfo, InitiateAs = InitiateAs, Name = Name, Description = Description, SegmentAttributes = SegmentAttributes, PreviousContactId = PreviousContactId)
   output <- .connect$create_contact_output()
   config <- get_config()
   svc <- .connect$service(config, op)
@@ -3262,13 +3275,13 @@ connect_create_routing_profile <- function(InstanceId, Name, Description, Defaul
 #'   InstanceId = "string",
 #'   Name = "string",
 #'   TriggerEventSource = list(
-#'     EventSourceName = "OnPostCallAnalysisAvailable"|"OnRealTimeCallAnalysisAvailable"|"OnRealTimeChatAnalysisAvailable"|"OnPostChatAnalysisAvailable"|"OnZendeskTicketCreate"|"OnZendeskTicketStatusUpdate"|"OnSalesforceCaseCreate"|"OnContactEvaluationSubmit"|"OnMetricDataUpdate"|"OnCaseCreate"|"OnCaseUpdate",
+#'     EventSourceName = "OnPostCallAnalysisAvailable"|"OnRealTimeCallAnalysisAvailable"|"OnRealTimeChatAnalysisAvailable"|"OnPostChatAnalysisAvailable"|"OnZendeskTicketCreate"|"OnZendeskTicketStatusUpdate"|"OnSalesforceCaseCreate"|"OnContactEvaluationSubmit"|"OnMetricDataUpdate"|"OnCaseCreate"|"OnCaseUpdate"|"OnSlaBreach",
 #'     IntegrationAssociationId = "string"
 #'   ),
 #'   Function = "string",
 #'   Actions = list(
 #'     list(
-#'       ActionType = "CREATE_TASK"|"ASSIGN_CONTACT_CATEGORY"|"GENERATE_EVENTBRIDGE_EVENT"|"SEND_NOTIFICATION"|"CREATE_CASE"|"UPDATE_CASE"|"END_ASSOCIATED_TASKS"|"SUBMIT_AUTO_EVALUATION",
+#'       ActionType = "CREATE_TASK"|"ASSIGN_CONTACT_CATEGORY"|"GENERATE_EVENTBRIDGE_EVENT"|"SEND_NOTIFICATION"|"CREATE_CASE"|"UPDATE_CASE"|"ASSIGN_SLA"|"END_ASSOCIATED_TASKS"|"SUBMIT_AUTO_EVALUATION",
 #'       TaskAction = list(
 #'         Name = "string",
 #'         Description = "string",
@@ -3326,6 +3339,23 @@ connect_create_routing_profile <- function(InstanceId, Name, Description, Defaul
 #'               StringValue = "string"
 #'             )
 #'           )
+#'         )
+#'       ),
+#'       AssignSlaAction = list(
+#'         SlaAssignmentType = "CASES",
+#'         CaseSlaConfiguration = list(
+#'           Name = "string",
+#'           Type = "CaseField",
+#'           FieldId = "string",
+#'           TargetFieldValues = list(
+#'             list(
+#'               BooleanValue = TRUE|FALSE,
+#'               DoubleValue = 123.0,
+#'               EmptyValue = list(),
+#'               StringValue = "string"
+#'             )
+#'           ),
+#'           TargetSlaMinutes = 123
 #'         )
 #'       ),
 #'       EndAssociatedTasksAction = list(),
@@ -5861,8 +5891,8 @@ connect_describe_authentication_profile <- function(AuthenticationProfileId, Ins
 #' 
 #' Describes the specified contact.
 #' 
-#' -   `CustomerEndpoint` and `SystemEndpoint` are only populated for EMAIL
-#'     contacts.
+#' -   `SystemEndpoint` is not populated for contacts with initiation
+#'     method of MONITOR, QUEUE_TRANSFER, or CALLBACK
 #' 
 #' -   Contact information remains available in Amazon Connect for 24
 #'     months from the `InitiationTimestamp`, and then it is deleted. Only
@@ -5929,6 +5959,25 @@ connect_describe_authentication_profile <- function(AuthenticationProfileId, Ins
 #'       Capabilities = list(
 #'         Video = "SEND",
 #'         ScreenShare = "SEND"
+#'       ),
+#'       AfterContactWorkDuration = 123,
+#'       AfterContactWorkStartTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AfterContactWorkEndTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AgentInitiatedHoldDuration = 123,
+#'       StateTransitions = list(
+#'         list(
+#'           State = "INITIAL"|"CONNECTED"|"DISCONNECTED"|"MISSED",
+#'           StateStartTimestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           StateEndTimestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     InitiationTimestamp = as.POSIXct(
@@ -6099,6 +6148,49 @@ connect_describe_authentication_profile <- function(AuthenticationProfileId, Ins
 #'         ),
 #'         ValueInteger = 123
 #'       )
+#'     ),
+#'     Recordings = list(
+#'       list(
+#'         StorageType = "S3"|"KINESIS_VIDEO_STREAM"|"KINESIS_STREAM"|"KINESIS_FIREHOSE",
+#'         Location = "string",
+#'         MediaStreamType = "AUDIO"|"VIDEO",
+#'         ParticipantType = "ALL"|"MANAGER"|"AGENT"|"CUSTOMER"|"THIRDPARTY",
+#'         FragmentStartNumber = "string",
+#'         FragmentStopNumber = "string",
+#'         StartTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         StopTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Status = "AVAILABLE"|"DELETED",
+#'         DeletionReason = "string"
+#'       )
+#'     ),
+#'     DisconnectReason = "string",
+#'     ContactEvaluations = list(
+#'       list(
+#'         FormId = "string",
+#'         EvaluationArn = "string",
+#'         Status = "COMPLETE"|"IN_PROGRESS"|"DELETED",
+#'         StartTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EndTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         DeleteTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ExportLocation = "string"
+#'       )
+#'     ),
+#'     ContactDetails = list(
+#'       Name = "string",
+#'       Description = "string"
+#'     ),
+#'     Attributes = list(
+#'       "string"
 #'     )
 #'   )
 #' )
@@ -7554,13 +7646,13 @@ connect_describe_routing_profile <- function(InstanceId, RoutingProfileId) {
 #'     RuleId = "string",
 #'     RuleArn = "string",
 #'     TriggerEventSource = list(
-#'       EventSourceName = "OnPostCallAnalysisAvailable"|"OnRealTimeCallAnalysisAvailable"|"OnRealTimeChatAnalysisAvailable"|"OnPostChatAnalysisAvailable"|"OnZendeskTicketCreate"|"OnZendeskTicketStatusUpdate"|"OnSalesforceCaseCreate"|"OnContactEvaluationSubmit"|"OnMetricDataUpdate"|"OnCaseCreate"|"OnCaseUpdate",
+#'       EventSourceName = "OnPostCallAnalysisAvailable"|"OnRealTimeCallAnalysisAvailable"|"OnRealTimeChatAnalysisAvailable"|"OnPostChatAnalysisAvailable"|"OnZendeskTicketCreate"|"OnZendeskTicketStatusUpdate"|"OnSalesforceCaseCreate"|"OnContactEvaluationSubmit"|"OnMetricDataUpdate"|"OnCaseCreate"|"OnCaseUpdate"|"OnSlaBreach",
 #'       IntegrationAssociationId = "string"
 #'     ),
 #'     Function = "string",
 #'     Actions = list(
 #'       list(
-#'         ActionType = "CREATE_TASK"|"ASSIGN_CONTACT_CATEGORY"|"GENERATE_EVENTBRIDGE_EVENT"|"SEND_NOTIFICATION"|"CREATE_CASE"|"UPDATE_CASE"|"END_ASSOCIATED_TASKS"|"SUBMIT_AUTO_EVALUATION",
+#'         ActionType = "CREATE_TASK"|"ASSIGN_CONTACT_CATEGORY"|"GENERATE_EVENTBRIDGE_EVENT"|"SEND_NOTIFICATION"|"CREATE_CASE"|"UPDATE_CASE"|"ASSIGN_SLA"|"END_ASSOCIATED_TASKS"|"SUBMIT_AUTO_EVALUATION",
 #'         TaskAction = list(
 #'           Name = "string",
 #'           Description = "string",
@@ -7618,6 +7710,23 @@ connect_describe_routing_profile <- function(InstanceId, RoutingProfileId) {
 #'                 StringValue = "string"
 #'               )
 #'             )
+#'           )
+#'         ),
+#'         AssignSlaAction = list(
+#'           SlaAssignmentType = "CASES",
+#'           CaseSlaConfiguration = list(
+#'             Name = "string",
+#'             Type = "CaseField",
+#'             FieldId = "string",
+#'             TargetFieldValues = list(
+#'               list(
+#'                 BooleanValue = TRUE|FALSE,
+#'                 DoubleValue = 123.0,
+#'                 EmptyValue = list(),
+#'                 StringValue = "string"
+#'               )
+#'             ),
+#'             TargetSlaMinutes = 123
 #'           )
 #'         ),
 #'         EndAssociatedTasksAction = list(),
@@ -9254,8 +9363,8 @@ connect_get_contact_attributes <- function(InstanceId, InitialContactId) {
 #' Gets the real-time metric data from the specified Amazon Connect
 #' instance.
 #' 
-#' For a description of each metric, see [Real-time Metrics
-#' Definitions](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html)
+#' For a description of each metric, see [Metrics
+#' definitions](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html)
 #' in the *Amazon Connect Administrator Guide*.
 #'
 #' @usage
@@ -9308,8 +9417,8 @@ connect_get_contact_attributes <- function(InstanceId, InitialContactId) {
 #'     `ROUTING_STEP_EXPRESSION` is required.
 #' @param CurrentMetrics &#91;required&#93; The metrics to retrieve. Specify the name and unit for each metric. The
 #' following metrics are available. For a description of all the metrics,
-#' see [Real-time Metrics
-#' Definitions](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html)
+#' see [Metrics
+#' definitions](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html)
 #' in the *Amazon Connect Administrator Guide*.
 #' 
 #' **AGENTS_AFTER_CONTACT_WORK**
@@ -9317,70 +9426,70 @@ connect_get_contact_attributes <- function(InstanceId, InitialContactId) {
 #' Unit: COUNT
 #' 
 #' Name in real-time metrics report:
-#' [ACW](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#aftercallwork-real-time)
+#' [ACW](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#aftercallwork-real-time)
 #' 
 #' **AGENTS_AVAILABLE**
 #' 
 #' Unit: COUNT
 #' 
 #' Name in real-time metrics report:
-#' [Available](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#available-real-time)
+#' [Available](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#available-real-time)
 #' 
 #' **AGENTS_ERROR**
 #' 
 #' Unit: COUNT
 #' 
 #' Name in real-time metrics report:
-#' [Error](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#error-real-time)
+#' [Error](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#error-real-time)
 #' 
 #' **AGENTS_NON_PRODUCTIVE**
 #' 
 #' Unit: COUNT
 #' 
 #' Name in real-time metrics report: [NPT (Non-Productive
-#' Time)](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#non-productive-time-real-time)
+#' Time)](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#non-productive-time-real-time)
 #' 
 #' **AGENTS_ON_CALL**
 #' 
 #' Unit: COUNT
 #' 
 #' Name in real-time metrics report: [On
-#' contact](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#on-call-real-time)
+#' contact](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#on-call-real-time)
 #' 
 #' **AGENTS_ON_CONTACT**
 #' 
 #' Unit: COUNT
 #' 
 #' Name in real-time metrics report: [On
-#' contact](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#on-call-real-time)
+#' contact](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#on-call-real-time)
 #' 
 #' **AGENTS_ONLINE**
 #' 
 #' Unit: COUNT
 #' 
 #' Name in real-time metrics report:
-#' [Online](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#online-real-time)
+#' [Online](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#online-real-time)
 #' 
 #' **AGENTS_STAFFED**
 #' 
 #' Unit: COUNT
 #' 
 #' Name in real-time metrics report:
-#' [Staffed](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#staffed-real-time)
+#' [Staffed](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#staffed-real-time)
 #' 
 #' **CONTACTS_IN_QUEUE**
 #' 
 #' Unit: COUNT
 #' 
 #' Name in real-time metrics report: [In
-#' queue](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#in-queue-real-time)
+#' queue](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#in-queue-real-time)
 #' 
 #' **CONTACTS_SCHEDULED**
 #' 
 #' Unit: COUNT
 #' 
 #' Name in real-time metrics report:
-#' [Scheduled](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#scheduled-real-time)
+#' [Scheduled](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#scheduled-real-time)
 #' 
 #' **OLDEST_CONTACT_AGE**
 #' 
@@ -9403,21 +9512,21 @@ connect_get_contact_attributes <- function(InstanceId, InitialContactId) {
 #' queue will be counted starting from 10, not 0.
 #' 
 #' Name in real-time metrics report:
-#' [Oldest](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#oldest-real-time)
+#' [Oldest](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#oldest-real-time)
 #' 
 #' **SLOTS_ACTIVE**
 #' 
 #' Unit: COUNT
 #' 
 #' Name in real-time metrics report:
-#' [Active](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#active-real-time)
+#' [Active](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#active-real-time)
 #' 
 #' **SLOTS_AVAILABLE**
 #' 
 #' Unit: COUNT
 #' 
 #' Name in real-time metrics report:
-#' [Availability](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#availability-real-time)
+#' [Availability](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#availability-real-time)
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
@@ -9921,8 +10030,8 @@ connect_get_flow_association <- function(InstanceId, ResourceId, ResourceType) {
 #' @description
 #' Gets historical metric data from the specified Amazon Connect instance.
 #' 
-#' For a description of each historical metric, see [Historical Metrics
-#' Definitions](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html)
+#' For a description of each historical metric, see [Metrics
+#' definitions](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html)
 #' in the *Amazon Connect Administrator Guide*.
 #' 
 #' We recommend using the
@@ -9980,8 +10089,8 @@ connect_get_flow_association <- function(InstanceId, ResourceId, ResourceType) {
 #' recommend switching to GetMetricDataV2 for more up-to-date features.
 #' @param HistoricalMetrics &#91;required&#93; The metrics to retrieve. Specify the name, unit, and statistic for each
 #' metric. The following historical metrics are available. For a
-#' description of each metric, see [Historical Metrics
-#' Definitions](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html)
+#' description of each metric, see [Metrics
+#' definition](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html)
 #' in the *Amazon Connect Administrator Guide*.
 #' 
 #' This API does not support a contacts incoming metric (there's no
@@ -10267,8 +10376,8 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' 
 #' For a description of the historical metrics that are supported by
 #' [`get_metric_data_v2`][connect_get_metric_data_v2] and
-#' [`get_metric_data`][connect_get_metric_data], see [Historical metrics
-#' definitions](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html)
+#' [`get_metric_data`][connect_get_metric_data], see [Metrics
+#' definitions](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html)
 #' in the *Amazon Connect Administrator Guide*.
 #'
 #' @usage
@@ -10434,8 +10543,8 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Required: No
 #' @param Metrics &#91;required&#93; The metrics to retrieve. Specify the name, groupings, and filters for
 #' each metric. The following historical metrics are available. For a
-#' description of each metric, see [Historical metrics
-#' definitions](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html)
+#' description of each metric, see [Metrics
+#' definition](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html)
 #' in the *Amazon Connect Administrator Guide*.
 #' 
 #' **ABANDONMENT_RATE**
@@ -10447,7 +10556,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' in Connect
 #' 
 #' UI name: [Abandonment
-#' rate](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#abandonment-rate-historical)
+#' rate](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#abandonment-rate)
 #' 
 #' **AGENT_ADHERENT_TIME**
 #' 
@@ -10462,7 +10571,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy
 #' 
 #' UI name: [Adherent
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#adherent-time-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#adherent-time)
 #' 
 #' **AGENT_ANSWER_RATE**
 #' 
@@ -10472,7 +10581,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy
 #' 
 #' UI name: [Agent answer
-#' rate](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#agent-answer-rate-historical)
+#' rate](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#agent-answer-rate)
 #' 
 #' **AGENT_NON_ADHERENT_TIME**
 #' 
@@ -10482,7 +10591,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy
 #' 
 #' UI name: [Non-adherent
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#non-adherent-time)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#non-adherent-time)
 #' 
 #' **AGENT_NON_RESPONSE**
 #' 
@@ -10492,7 +10601,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy
 #' 
 #' UI name: [Agent
-#' non-response](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#agent-non-response)
+#' non-response](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#agent-non-response)
 #' 
 #' **AGENT_NON_RESPONSE_WITHOUT_CUSTOMER_ABANDONS**
 #' 
@@ -10505,7 +10614,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' GMT.
 #' 
 #' UI name: [Agent non-response without customer
-#' abandons](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#agent-nonresponse-no-abandon-historical)
+#' abandons](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#agent-non-response-without-customer-abandons)
 #' 
 #' **AGENT_OCCUPANCY**
 #' 
@@ -10514,7 +10623,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Valid groupings and filters: Routing Profile, Agent, Agent Hierarchy
 #' 
 #' UI name:
-#' [Occupancy](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#occupancy-historical)
+#' [Occupancy](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#occupancy)
 #' 
 #' **AGENT_SCHEDULE_ADHERENCE**
 #' 
@@ -10529,7 +10638,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy
 #' 
 #' UI name:
-#' [Adherence](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#adherence-historical)
+#' [Adherence](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#adherence)
 #' 
 #' **AGENT_SCHEDULED_TIME**
 #' 
@@ -10544,7 +10653,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy
 #' 
 #' UI name: [Scheduled
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#scheduled-time-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#scheduled-time)
 #' 
 #' **AVG_ABANDON_TIME**
 #' 
@@ -10555,7 +10664,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' in Connect
 #' 
 #' UI name: [Average queue abandon
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-queue-abandon-time-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-queue-abandon-time)
 #' 
 #' **AVG_ACTIVE_TIME**
 #' 
@@ -10565,7 +10674,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, Q in Connect
 #' 
 #' UI name: [Average active
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-active-time-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-active-time)
 #' 
 #' **AVG_AFTER_CONTACT_WORK_TIME**
 #' 
@@ -10578,7 +10687,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' in Connect
 #' 
 #' UI name: [Average after contact work
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-acw-time-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#after-contact-work-time)
 #' 
 #' Feature is a valid filter but not a valid grouping.
 #' 
@@ -10594,7 +10703,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy
 #' 
 #' UI name: [Average agent API connecting
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#htm-avg-agent-api-connecting-time)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-agent-api-connecting-time)
 #' 
 #' The `Negate` key in metric-level filters is not applicable for this
 #' metric.
@@ -10607,7 +10716,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, Q in Connect
 #' 
 #' UI name: [Average agent pause
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-agent-pause-time-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-agent-pause-time)
 #' 
 #' **AVG_BOT_CONVERSATION_TIME**
 #' 
@@ -10620,7 +10729,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' method, Invoking resource type, Parent flows resource ID
 #' 
 #' UI name: [Average bot conversation
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/bot-metrics.html#average-bot-conversation-time-metric)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/bot-metrics.html#average-bot-conversation-time)
 #' 
 #' **AVG_BOT_CONVERSATION_TURNS**
 #' 
@@ -10633,7 +10742,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' method, Invoking resource type, Parent flows resource ID
 #' 
 #' UI name: [Average bot conversation
-#' turns](https://docs.aws.amazon.com/connect/latest/adminguide/bot-metrics.html#average-bot-conversation-turns-metric)
+#' turns](https://docs.aws.amazon.com/connect/latest/adminguide/bot-metrics.html#average-bot-conversation-turns)
 #' 
 #' **AVG_CASE_RELATED_CONTACTS**
 #' 
@@ -10644,7 +10753,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Valid groupings and filters: CASE_TEMPLATE_ARN, CASE_STATUS
 #' 
 #' UI name: [Average contacts per
-#' case](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-contacts-case-historical)
+#' case](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-contacts-per-case)
 #' 
 #' **AVG_CASE_RESOLUTION_TIME**
 #' 
@@ -10655,7 +10764,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Valid groupings and filters: CASE_TEMPLATE_ARN, CASE_STATUS
 #' 
 #' UI name: [Average case resolution
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-case-resolution-time-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-case-resolution-time)
 #' 
 #' **AVG_CONTACT_DURATION**
 #' 
@@ -10666,7 +10775,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' in Connect
 #' 
 #' UI name: [Average contact
-#' duration](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-contact-duration-historical)
+#' duration](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-contact-duration)
 #' 
 #' Feature is a valid filter but not a valid grouping.
 #' 
@@ -10679,7 +10788,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' in Connect
 #' 
 #' UI name: [Average conversation
-#' duration](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-conversation-duration-historical)
+#' duration](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-conversation-duration)
 #' 
 #' **AVG_DIALS_PER_MINUTE**
 #' 
@@ -10691,7 +10800,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Valid groupings and filters: Agent, Campaign, Queue, Routing Profile
 #' 
 #' UI name: [Average dials per
-#' minute](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-dials-historical)
+#' minute](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-dials-per-minute)
 #' 
 #' **AVG_EVALUATION_SCORE**
 #' 
@@ -10701,8 +10810,8 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Form ID, Evaluation Section ID, Evaluation Question ID, Evaluation
 #' Source, Form Version, Queue, Routing Profile
 #' 
-#' UI name: [Average agent evaluation
-#' score](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-agent-evaluation-score-historical)
+#' UI name: [Average evaluation
+#' score](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-evaluation-score)
 #' 
 #' **AVG_FLOW_TIME**
 #' 
@@ -10715,7 +10824,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' timestamp
 #' 
 #' UI name: [Average flow
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-flow-time-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-flow-time)
 #' 
 #' **AVG_GREETING_TIME_AGENT**
 #' 
@@ -10728,7 +10837,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Average agent greeting
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-greeting-time-agent-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-agent-greeting-time)
 #' 
 #' **AVG_HANDLE_TIME**
 #' 
@@ -10739,7 +10848,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' RoutingStepExpression
 #' 
 #' UI name: [Average handle
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-handle-time-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-handle-time)
 #' 
 #' Feature is a valid filter but not a valid grouping.
 #' 
@@ -10752,7 +10861,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' in Connect
 #' 
 #' UI name: [Average customer hold
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-customer-hold-time-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-customer-hold-time)
 #' 
 #' Feature is a valid filter but not a valid grouping.
 #' 
@@ -10764,7 +10873,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Average customer hold time all
-#' contacts](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#avg-customer-hold-time-all-contacts-historical)
+#' contacts](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-customer-hold-time-all-contacts)
 #' 
 #' **AVG_HOLDS**
 #' 
@@ -10775,7 +10884,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' in Connect
 #' 
 #' UI name: [Average
-#' holds](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-holds-historical)
+#' holds](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-holds)
 #' 
 #' Feature is a valid filter but not a valid grouping.
 #' 
@@ -10787,7 +10896,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Average agent interaction and customer hold
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-agent-interaction-customer-hold-time-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-agent-interaction-and-customer-hold-time)
 #' 
 #' **AVG_INTERACTION_TIME**
 #' 
@@ -10799,7 +10908,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Average agent interaction
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-agent-interaction-time-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-agent-interaction-time)
 #' 
 #' Feature is a valid filter but not a valid grouping.
 #' 
@@ -10814,7 +10923,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Average agent
-#' interruptions](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-interruptions-agent-historical)
+#' interruptions](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-agent-interruptions)
 #' 
 #' **AVG_INTERRUPTION_TIME_AGENT**
 #' 
@@ -10827,7 +10936,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Average agent interruption
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-interruptions-time-agent-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-agent-interruption-time)
 #' 
 #' **AVG_NON_TALK_TIME**
 #' 
@@ -10840,7 +10949,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Average non-talk
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html##average-non-talk-time-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-non-talk-time)
 #' 
 #' **AVG_QUEUE_ANSWER_TIME**
 #' 
@@ -10850,7 +10959,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Average queue answer
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-queue-answer-time-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-queue-answer-time)
 #' 
 #' Feature is a valid filter but not a valid grouping.
 #' 
@@ -10862,7 +10971,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Average resolution
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-resolution-time-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-resolution-time)
 #' 
 #' **AVG_TALK_TIME**
 #' 
@@ -10875,7 +10984,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Average talk
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-talk-time-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-talk-time)
 #' 
 #' **AVG_TALK_TIME_AGENT**
 #' 
@@ -10888,7 +10997,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Average agent talk
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-talk-time-agent-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-agent-talk-time)
 #' 
 #' **AVG_TALK_TIME_CUSTOMER**
 #' 
@@ -10901,7 +11010,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Average customer talk
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-talk-time-customer-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-customer-talk-time)
 #' 
 #' **AVG_WAIT_TIME_AFTER_CUSTOMER_CONNECTION**
 #' 
@@ -10913,7 +11022,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Valid groupings and filters: Campaign
 #' 
 #' UI name: [Average wait time after customer
-#' connection](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-wait-time-historical)
+#' connection](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-wait-time-after-customer-connection)
 #' 
 #' **AVG_WEIGHTED_EVALUATION_SCORE**
 #' 
@@ -10923,8 +11032,8 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Form Id, Evaluation Section ID, Evaluation Question ID, Evaluation
 #' Source, Form Version, Queue, Routing Profile
 #' 
-#' UI name: [Average weighted agent evaluation
-#' score](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-weighted-agent-evaluation-score-historical)
+#' UI name: [Average weighted evaluation
+#' score](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-weighted-evaluation-score)
 #' 
 #' **BOT_CONVERSATIONS_COMPLETED**
 #' 
@@ -10936,8 +11045,8 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' type, Flow action ID, Invoking resource published timestamp, Initiation
 #' method, Invoking resource type, Parent flows resource ID
 #' 
-#' UI name: [Bot
-#' conversations](https://docs.aws.amazon.com/connect/latest/adminguide/bot-metrics.html#bot-conversations-completed-metric)
+#' UI name: [Bot conversations
+#' completed](https://docs.aws.amazon.com/connect/latest/adminguide/bot-metrics.html#bot-conversations-completed)
 #' 
 #' **BOT_INTENTS_COMPLETED**
 #' 
@@ -10951,7 +11060,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' resource ID
 #' 
 #' UI name: [Bot intents
-#' completed](https://docs.aws.amazon.com/connect/latest/adminguide/bot-metrics.html#bot-intents-completed-metric)
+#' completed](https://docs.aws.amazon.com/connect/latest/adminguide/bot-metrics.html#bot-intents-completed)
 #' 
 #' **CAMPAIGN_CONTACTS_ABANDONED_AFTER_X**
 #' 
@@ -10967,7 +11076,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' *Greater than*).
 #' 
 #' UI name: [Campaign contacts abandoned after
-#' X](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#campaign-contacts-abandoned-historical)
+#' X](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#campaign-contacts-abandoned-after-x)
 #' 
 #' **CAMPAIGN_CONTACTS_ABANDONED_AFTER_X_RATE**
 #' 
@@ -10983,7 +11092,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' *Greater than*).
 #' 
 #' UI name: [Campaign contacts abandoned after X
-#' rate](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#campaign-contacts-abandoned-rate-historical)
+#' rate](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#campaign-contacts-abandoned-after-x-rate)
 #' 
 #' **CAMPAIGN_INTERACTIONS**
 #' 
@@ -10997,7 +11106,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Valid groupings and filters: Campaign
 #' 
 #' UI name: [Campaign
-#' interactions](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#campaign-interactions-historical)
+#' interactions](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#campaign-interactions)
 #' 
 #' **CAMPAIGN_SEND_ATTEMPTS**
 #' 
@@ -11009,7 +11118,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' contact/segmentAttributes/connect:Subtype
 #' 
 #' UI name: [Campaign send
-#' attempts](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#campaign-send-attempts-historical)
+#' attempts](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#campaign-send-attempts)
 #' 
 #' **CASES_CREATED**
 #' 
@@ -11020,7 +11129,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Valid groupings and filters: CASE_TEMPLATE_ARN, CASE_STATUS
 #' 
 #' UI name: [Cases
-#' created](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#cases-created-historical)
+#' created](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#cases-created)
 #' 
 #' **CONTACTS_CREATED**
 #' 
@@ -11032,7 +11141,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Contacts
-#' created](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-created-historical)
+#' created](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-created)
 #' 
 #' Feature is a valid filter but not a valid grouping.
 #' 
@@ -11047,7 +11156,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' RoutingStepExpression, Q in Connect
 #' 
 #' UI name: [API contacts
-#' handled](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#api-contacts-handled-historical)
+#' handled](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#api-contacts-handled)
 #' 
 #' Feature is a valid filter but not a valid grouping.
 #' 
@@ -11061,7 +11170,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Contacts handled (connected to agent
-#' timestamp)](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-handled-by-connected-to-agent-historical)
+#' timestamp)](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-handled-by-connected-to-agent-timestamp)
 #' 
 #' **CONTACTS_HOLD_ABANDONS**
 #' 
@@ -11071,7 +11180,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Contacts hold
-#' disconnect](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-handled-by-connected-to-agent-historical)
+#' disconnect](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-hold-disconnect)
 #' 
 #' **CONTACTS_ON_HOLD_AGENT_DISCONNECT**
 #' 
@@ -11081,7 +11190,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, Q in Connect
 #' 
 #' UI name: [Contacts hold agent
-#' disconnect](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-hold-agent-disconnect-historical)
+#' disconnect](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-hold-agent-disconnect)
 #' 
 #' **CONTACTS_ON_HOLD_CUSTOMER_DISCONNECT**
 #' 
@@ -11091,7 +11200,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, Q in Connect
 #' 
 #' UI name: [Contacts hold customer
-#' disconnect](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-hold-customer-disconnect-historical)
+#' disconnect](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-hold-customer-disconnect)
 #' 
 #' **CONTACTS_PUT_ON_HOLD**
 #' 
@@ -11101,7 +11210,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, Q in Connect
 #' 
 #' UI name: [Contacts put on
-#' hold](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-hold-customer-disconnect-historical)
+#' hold](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-put-on-hold)
 #' 
 #' **CONTACTS_TRANSFERRED_OUT_EXTERNAL**
 #' 
@@ -11111,7 +11220,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, Q in Connect
 #' 
 #' UI name: [Contacts transferred out
-#' external](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-transferred-out-external-historical)
+#' external](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-transferred-out-external)
 #' 
 #' **CONTACTS_TRANSFERRED_OUT_INTERNAL**
 #' 
@@ -11121,7 +11230,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, Q in Connect
 #' 
 #' UI name: [Contacts transferred out
-#' internal](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-transferred-out-internal-historical)
+#' internal](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-transferred-out-internal)
 #' 
 #' **CONTACTS_QUEUED**
 #' 
@@ -11131,7 +11240,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Contacts
-#' queued](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-queued-historical)
+#' queued](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-queued)
 #' 
 #' **CONTACTS_QUEUED_BY_ENQUEUE**
 #' 
@@ -11141,7 +11250,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' contact/segmentAttributes/connect:Subtype
 #' 
 #' UI name: [Contacts queued (enqueue
-#' timestamp)](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-queued-by-enqueue-historical)
+#' timestamp)](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-queued-by-enqueue)
 #' 
 #' **CONTACTS_REMOVED_FROM_QUEUE_IN_X**
 #' 
@@ -11155,7 +11264,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' than") or `LTE` (for "Less than equal").
 #' 
 #' UI name: [Contacts removed from queue in X
-#' seconds](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-removed-historical)
+#' seconds](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-removed-from-queue)
 #' 
 #' **CONTACTS_RESOLVED_IN_X**
 #' 
@@ -11169,7 +11278,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' than") or `LTE` (for "Less than equal").
 #' 
 #' UI name: [Contacts resolved in
-#' X](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-resolved-historical)
+#' X](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-resolved)
 #' 
 #' **CONTACTS_TRANSFERRED_OUT**
 #' 
@@ -11180,7 +11289,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' in Connect
 #' 
 #' UI name: [Contacts transferred
-#' out](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-transferred-out-historical)
+#' out](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-transferred-out)
 #' 
 #' Feature is a valid filter but not a valid grouping.
 #' 
@@ -11192,7 +11301,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Contacts transferred out by
-#' agent](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-transferred-out-by-agent-historical)
+#' agent](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-transferred-out-by-agent)
 #' 
 #' **CONTACTS_TRANSFERRED_OUT_FROM_QUEUE**
 #' 
@@ -11202,7 +11311,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Contacts transferred out
-#' queue](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-transferred-out-by-agent-historical)
+#' queue](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-transferred-out-queue)
 #' 
 #' **CURRENT_CASES**
 #' 
@@ -11213,7 +11322,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Valid groupings and filters: CASE_TEMPLATE_ARN, CASE_STATUS
 #' 
 #' UI name: [Current
-#' cases](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#current-cases-historical)
+#' cases](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#current-cases)
 #' 
 #' **DELIVERY_ATTEMPTS**
 #' 
@@ -11230,7 +11339,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Routing Profile
 #' 
 #' UI name: [Delivery
-#' attempts](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#delivery-attempts-historical)
+#' attempts](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#delivery-attempts)
 #' 
 #' Campaign Delivery EventType filter and grouping are only available for
 #' SMS and Email campaign delivery modes. Agent, Queue, Routing Profile,
@@ -11253,7 +11362,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Reason, Queue, Routing Profile
 #' 
 #' UI name: [Delivery attempt disposition
-#' rate](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#delivery-attempt-disposition-rate-historical)
+#' rate](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#delivery-attempt-disposition-rate)
 #' 
 #' Campaign Delivery Event Type filter and grouping are only available for
 #' SMS and Email campaign delivery modes. Agent, Queue, Routing Profile,
@@ -11268,7 +11377,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Form ID, Evaluation Source, Form Version, Queue, Routing Profile
 #' 
 #' UI name: [Evaluations
-#' performed](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#evaluations-performed-historical)
+#' performed](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#evaluations-performed)
 #' 
 #' **FLOWS_OUTCOME**
 #' 
@@ -11281,7 +11390,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' timestamp
 #' 
 #' UI name: [Flows
-#' outcome](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#flows-outcome-historical)
+#' outcome](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#flows-outcome)
 #' 
 #' **FLOWS_STARTED**
 #' 
@@ -11293,7 +11402,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' timestamp
 #' 
 #' UI name: [Flows
-#' started](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#flows-started-historical)
+#' started](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#flows-started)
 #' 
 #' **HUMAN_ANSWERED_CALLS**
 #' 
@@ -11306,7 +11415,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Valid groupings and filters: Agent, Campaign
 #' 
 #' UI name: [Human
-#' answered](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#human-answered-historical)
+#' answered](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#human-answered)
 #' 
 #' **MAX_FLOW_TIME**
 #' 
@@ -11319,7 +11428,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' timestamp
 #' 
 #' UI name: [Maximum flow
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#maximum-flow-time-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#maximum-flow-time)
 #' 
 #' **MAX_QUEUED_TIME**
 #' 
@@ -11329,7 +11438,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Maximum queued
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#maximum-queued-time-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#maximum-queued-time)
 #' 
 #' **MIN_FLOW_TIME**
 #' 
@@ -11342,7 +11451,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' timestamp
 #' 
 #' UI name: [Minimum flow
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#minimum-flow-time-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#minimum-flow-time)
 #' 
 #' **PERCENT_AUTOMATIC_FAILS**
 #' 
@@ -11352,7 +11461,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Form ID, Evaluation Source, Form Version, Queue, Routing Profile
 #' 
 #' UI name: [Automatic fails
-#' percent](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#percent-evaluation-automatic-failures-historical)
+#' percent](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#automatic-fails-percent)
 #' 
 #' **PERCENT_BOT_CONVERSATIONS_OUTCOME**
 #' 
@@ -11365,7 +11474,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' method, Invoking resource type, Parent flows resource ID
 #' 
 #' UI name: [Percent bot conversations
-#' outcome](https://docs.aws.amazon.com/connect/latest/adminguide/bot-metrics.html#percent-bot-conversations-outcome-metric)
+#' outcome](https://docs.aws.amazon.com/connect/latest/adminguide/bot-metrics.html#percent-bot-conversations-outcome)
 #' 
 #' **PERCENT_BOT_INTENTS_OUTCOME**
 #' 
@@ -11379,7 +11488,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' resource ID
 #' 
 #' UI name: [Percent bot intents
-#' outcome](https://docs.aws.amazon.com/connect/latest/adminguide/bot-metrics.html#percent-bot-intents-outcome-metric)
+#' outcome](https://docs.aws.amazon.com/connect/latest/adminguide/bot-metrics.html#percent-bot-intents-outcome)
 #' 
 #' **PERCENT_CASES_FIRST_CONTACT_RESOLVED**
 #' 
@@ -11390,7 +11499,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Valid groupings and filters: CASE_TEMPLATE_ARN, CASE_STATUS
 #' 
 #' UI name: [Cases resolved on first
-#' contact](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#cases-resolved-first-contact-historical)
+#' contact](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#cases-resolved-on-first-contact)
 #' 
 #' **PERCENT_CONTACTS_STEP_EXPIRED**
 #' 
@@ -11423,7 +11532,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' timestamp
 #' 
 #' UI name: [Flows outcome
-#' percentage](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#flows-outcome-percentage-historical).
+#' percentage](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#flows-outcome-percentage).
 #' 
 #' The `FLOWS_OUTCOME_TYPE` is not a valid grouping.
 #' 
@@ -11438,7 +11547,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Non-talk time
-#' percent](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#ntt-historical)
+#' percent](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#non-talk-time-percent)
 #' 
 #' **PERCENT_TALK_TIME**
 #' 
@@ -11451,7 +11560,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Talk time
-#' percent](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#tt-historical)
+#' percent](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#talk-time-percent)
 #' 
 #' **PERCENT_TALK_TIME_AGENT**
 #' 
@@ -11464,7 +11573,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Agent talk time
-#' percent](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#ttagent-historical)
+#' percent](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#agent-talk-time-percent)
 #' 
 #' **PERCENT_TALK_TIME_CUSTOMER**
 #' 
@@ -11477,7 +11586,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Customer talk time
-#' percent](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#ttcustomer-historical)
+#' percent](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#customer-talk-time-percent)
 #' 
 #' **REOPENED_CASE_ACTIONS**
 #' 
@@ -11488,7 +11597,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Valid groupings and filters: CASE_TEMPLATE_ARN, CASE_STATUS
 #' 
 #' UI name: [Cases
-#' reopened](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#cases-reopened-historical)
+#' reopened](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#cases-reopened)
 #' 
 #' **RESOLVED_CASE_ACTIONS**
 #' 
@@ -11499,7 +11608,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Valid groupings and filters: CASE_TEMPLATE_ARN, CASE_STATUS
 #' 
 #' UI name: [Cases
-#' resolved](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#cases-resolved-historical)
+#' resolved](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#cases-resolved)
 #' 
 #' **SERVICE_LEVEL**
 #' 
@@ -11515,7 +11624,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' than") or `LTE` (for "Less than equal").
 #' 
 #' UI name: [Service level
-#' X](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#service-level-historical)
+#' X](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#service-level)
 #' 
 #' **STEP_CONTACTS_QUEUED**
 #' 
@@ -11534,7 +11643,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, Q in Connect
 #' 
 #' UI name: [After contact work
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#acw-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#after-contact-work-time)
 #' 
 #' **SUM_CONNECTING_TIME_AGENT**
 #' 
@@ -11548,7 +11657,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy
 #' 
 #' UI name: [Agent API connecting
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#htm-agent-api-connecting-time)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#agent-api-connecting-time)
 #' 
 #' The `Negate` key in metric-level filters is not applicable for this
 #' metric.
@@ -11567,7 +11676,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' RoutingStepExpression, Q in Connect
 #' 
 #' UI name: [Contact
-#' abandoned](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-abandoned-historical)
+#' abandoned](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-abandoned)
 #' 
 #' **SUM_CONTACTS_ABANDONED_IN_X**
 #' 
@@ -11581,7 +11690,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' than") or `LTE` (for "Less than equal").
 #' 
 #' UI name: [Contacts abandoned in X
-#' seconds](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-abandoned-x-historical)
+#' seconds](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-abandoned-in-x-seconds)
 #' 
 #' **SUM_CONTACTS_ANSWERED_IN_X**
 #' 
@@ -11595,7 +11704,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' than") or `LTE` (for "Less than equal").
 #' 
 #' UI name: [Contacts answered in X
-#' seconds](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-answered-x-historical)
+#' seconds](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contacts-answered-in-x-seconds)
 #' 
 #' **SUM_CONTACT_FLOW_TIME**
 #' 
@@ -11605,7 +11714,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, Q in Connect
 #' 
 #' UI name: [Contact flow
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contact-flow-time-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contact-flow-time)
 #' 
 #' **SUM_CONTACT_TIME_AGENT**
 #' 
@@ -11614,7 +11723,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Valid groupings and filters: Routing Profile, Agent, Agent Hierarchy
 #' 
 #' UI name: [Agent on contact
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#agent-on-contact-time-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#agent-on-contact-time)
 #' 
 #' **SUM_CONTACTS_DISCONNECTED**
 #' 
@@ -11626,7 +11735,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Contact
-#' disconnected](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contact-disconnected-historical)
+#' disconnected](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contact-disconnected)
 #' 
 #' **SUM_ERROR_STATUS_TIME_AGENT**
 #' 
@@ -11635,7 +11744,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Valid groupings and filters: Routing Profile, Agent, Agent Hierarchy
 #' 
 #' UI name: [Error status
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#error-status-time-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#error-status-time)
 #' 
 #' **SUM_HANDLE_TIME**
 #' 
@@ -11645,7 +11754,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, Q in Connect
 #' 
 #' UI name: [Contact handle
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contact-handle-time-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#contact-handle-time)
 #' 
 #' **SUM_HOLD_TIME**
 #' 
@@ -11655,7 +11764,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, Q in Connect
 #' 
 #' UI name: [Customer hold
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#customer-hold-time-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#customer-hold-time)
 #' 
 #' **SUM_IDLE_TIME_AGENT**
 #' 
@@ -11664,7 +11773,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Valid groupings and filters: Routing Profile, Agent, Agent Hierarchy
 #' 
 #' UI name: [Agent idle
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#agent-idle-time-historica)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#agent-idle-time)
 #' 
 #' **SUM_INTERACTION_AND_HOLD_TIME**
 #' 
@@ -11674,7 +11783,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy, Q in Connect
 #' 
 #' UI name: [Agent interaction and hold
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#agent-interaction-hold-time-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#agent-interaction-and-hold-time)
 #' 
 #' **SUM_INTERACTION_TIME**
 #' 
@@ -11684,7 +11793,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Agent Hierarchy
 #' 
 #' UI name: [Agent interaction
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#agent-interaction-time-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#agent-interaction-time)
 #' 
 #' **SUM_NON_PRODUCTIVE_TIME_AGENT**
 #' 
@@ -11692,8 +11801,8 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' 
 #' Valid groupings and filters: Routing Profile, Agent, Agent Hierarchy
 #' 
-#' UI name: [Non-Productive
-#' Time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#npt-historical)
+#' UI name: [Agent non-productive
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#agent-non-productive-time)
 #' 
 #' **SUM_ONLINE_TIME_AGENT**
 #' 
@@ -11702,7 +11811,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Valid groupings and filters: Routing Profile, Agent, Agent Hierarchy
 #' 
 #' UI name: [Online
-#' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#online-time-historical)
+#' time](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#online-time)
 #' 
 #' **SUM_RETRY_CALLBACK_ATTEMPTS**
 #' 
@@ -11712,7 +11821,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' contact/segmentAttributes/connect:Subtype, Q in Connect
 #' 
 #' UI name: [Callback
-#' attempts](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#callback-attempts-historical)
+#' attempts](https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#callback-attempts)
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
@@ -14644,10 +14753,15 @@ connect_list_quick_connects <- function(InstanceId, NextToken = NULL, MaxResults
 }
 .connect$operations$list_quick_connects <- connect_list_quick_connects
 
-#' Provides a list of analysis segments for a real-time analysis session
+#' Provides a list of analysis segments for a real-time chat analysis
+#' session
 #'
 #' @description
-#' Provides a list of analysis segments for a real-time analysis session.
+#' Provides a list of analysis segments for a real-time chat analysis
+#' session. This API supports CHAT channels only.
+#' 
+#' This API does not support VOICE. If you attempt to use it for VOICE, an
+#' `InvalidRequestException` occurs.
 #'
 #' @usage
 #' connect_list_realtime_contact_analysis_segments_v2(InstanceId,
@@ -14996,11 +15110,11 @@ connect_list_routing_profiles <- function(InstanceId, NextToken = NULL, MaxResul
 #'       Name = "string",
 #'       RuleId = "string",
 #'       RuleArn = "string",
-#'       EventSourceName = "OnPostCallAnalysisAvailable"|"OnRealTimeCallAnalysisAvailable"|"OnRealTimeChatAnalysisAvailable"|"OnPostChatAnalysisAvailable"|"OnZendeskTicketCreate"|"OnZendeskTicketStatusUpdate"|"OnSalesforceCaseCreate"|"OnContactEvaluationSubmit"|"OnMetricDataUpdate"|"OnCaseCreate"|"OnCaseUpdate",
+#'       EventSourceName = "OnPostCallAnalysisAvailable"|"OnRealTimeCallAnalysisAvailable"|"OnRealTimeChatAnalysisAvailable"|"OnPostChatAnalysisAvailable"|"OnZendeskTicketCreate"|"OnZendeskTicketStatusUpdate"|"OnSalesforceCaseCreate"|"OnContactEvaluationSubmit"|"OnMetricDataUpdate"|"OnCaseCreate"|"OnCaseUpdate"|"OnSlaBreach",
 #'       PublishStatus = "DRAFT"|"PUBLISHED",
 #'       ActionSummaries = list(
 #'         list(
-#'           ActionType = "CREATE_TASK"|"ASSIGN_CONTACT_CATEGORY"|"GENERATE_EVENTBRIDGE_EVENT"|"SEND_NOTIFICATION"|"CREATE_CASE"|"UPDATE_CASE"|"END_ASSOCIATED_TASKS"|"SUBMIT_AUTO_EVALUATION"
+#'           ActionType = "CREATE_TASK"|"ASSIGN_CONTACT_CATEGORY"|"GENERATE_EVENTBRIDGE_EVENT"|"SEND_NOTIFICATION"|"CREATE_CASE"|"UPDATE_CASE"|"ASSIGN_SLA"|"END_ASSOCIATED_TASKS"|"SUBMIT_AUTO_EVALUATION"
 #'         )
 #'       ),
 #'       CreatedTime = as.POSIXct(
@@ -15020,7 +15134,7 @@ connect_list_routing_profiles <- function(InstanceId, NextToken = NULL, MaxResul
 #' svc$list_rules(
 #'   InstanceId = "string",
 #'   PublishStatus = "DRAFT"|"PUBLISHED",
-#'   EventSourceName = "OnPostCallAnalysisAvailable"|"OnRealTimeCallAnalysisAvailable"|"OnRealTimeChatAnalysisAvailable"|"OnPostChatAnalysisAvailable"|"OnZendeskTicketCreate"|"OnZendeskTicketStatusUpdate"|"OnSalesforceCaseCreate"|"OnContactEvaluationSubmit"|"OnMetricDataUpdate"|"OnCaseCreate"|"OnCaseUpdate",
+#'   EventSourceName = "OnPostCallAnalysisAvailable"|"OnRealTimeCallAnalysisAvailable"|"OnRealTimeChatAnalysisAvailable"|"OnPostChatAnalysisAvailable"|"OnZendeskTicketCreate"|"OnZendeskTicketStatusUpdate"|"OnSalesforceCaseCreate"|"OnContactEvaluationSubmit"|"OnMetricDataUpdate"|"OnCaseCreate"|"OnCaseUpdate"|"OnSlaBreach",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -18866,6 +18980,8 @@ connect_send_chat_integration_event <- function(SourceId, DestinationId, Subtype
 #' @param AdditionalRecipients The additional recipients address of the email in CC.
 #' @param EmailMessage &#91;required&#93; The email message body to be sent to the newly created email.
 #' @param TrafficType &#91;required&#93; Denotes the class of traffic.
+#' 
+#' Only the CAMPAIGN traffic type is supported.
 #' @param SourceCampaign A Campaign object need for Campaign traffic type.
 #' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If not provided, the Amazon Web Services SDK
@@ -19938,8 +20054,11 @@ connect_start_outbound_email_contact <- function(InstanceId, ContactId, FromEmai
 #'
 #' @param Name The name of a voice contact that is shown to an agent in the Contact
 #' Control Panel (CCP).
-#' @param Description A description of the voice contact that is shown to an agent in the
-#' Contact Control Panel (CCP).
+#' @param Description A description of the voice contact that appears in the agent's snapshot
+#' in the CCP logs. For more information about CCP logs, see [Download and
+#' review CCP
+#' logs](https://docs.aws.amazon.com/connect/latest/adminguide/download-ccp-logs.html)
+#' in the *Amazon Connect Administrator Guide*.
 #' @param References A formatted URL that is shown to an agent in the Contact Control Panel
 #' (CCP). Contacts can have the following reference types at the time of
 #' creation: `URL` | `NUMBER` | `STRING` | `DATE` | `EMAIL`. `ATTACHMENT`
@@ -20721,20 +20840,23 @@ connect_submit_contact_evaluation <- function(InstanceId, EvaluationId, Answers 
 .connect$operations$submit_contact_evaluation <- connect_submit_contact_evaluation
 
 #' When a contact is being recorded, this API suspends recording whatever
-#' is selected in the flow configuration: call, screen, or both
+#' is selected in the flow configuration: call (IVR or agent), screen, or
+#' both
 #'
 #' @description
 #' When a contact is being recorded, this API suspends recording whatever
-#' is selected in the flow configuration: call, screen, or both. If only
-#' call recording or only screen recording is enabled, then it would be
-#' suspended. For example, you might suspend the screen recording while
-#' collecting sensitive information, such as a credit card number. Then use
-#' ResumeContactRecording to restart recording the screen.
+#' is selected in the flow configuration: call (IVR or agent), screen, or
+#' both. If only call recording or only screen recording is enabled, then
+#' it would be suspended. For example, you might suspend the screen
+#' recording while collecting sensitive information, such as a credit card
+#' number. Then use
+#' [`resume_contact_recording`][connect_resume_contact_recording] to
+#' restart recording the screen.
 #' 
 #' The period of time that the recording is suspended is filled with
 #' silence in the final recording.
 #' 
-#' Voice and screen recordings are supported.
+#' Voice (IVR, agent) and screen recordings are supported.
 #'
 #' @usage
 #' connect_suspend_contact_recording(InstanceId, ContactId,
@@ -20905,20 +21027,20 @@ connect_tag_resource <- function(resourceArn, tags) {
 }
 .connect$operations$tag_resource <- connect_tag_resource
 
-#' Transfers contacts from one agent or queue to another agent or queue at
-#' any point after a contact is created
+#' Transfers TASK or EMAIL contacts from one agent or queue to another
+#' agent or queue at any point after a contact is created
 #'
 #' @description
-#' Transfers contacts from one agent or queue to another agent or queue at
-#' any point after a contact is created. You can transfer a contact to
-#' another queue by providing the flow which orchestrates the contact to
-#' the destination queue. This gives you more control over contact handling
-#' and helps you adhere to the service level agreement (SLA) guaranteed to
-#' your customers.
+#' Transfers `TASK` or `EMAIL` contacts from one agent or queue to another
+#' agent or queue at any point after a contact is created. You can transfer
+#' a contact to another queue by providing the flow which orchestrates the
+#' contact to the destination queue. This gives you more control over
+#' contact handling and helps you adhere to the service level agreement
+#' (SLA) guaranteed to your customers.
 #' 
 #' Note the following requirements:
 #' 
-#' -   Transfer is supported for only `TASK` contacts.
+#' -   Transfer is only supported for `TASK` and `EMAIL` contacts.
 #' 
 #' -   Do not use both `QueueId` and `UserId` in the same call.
 #' 
@@ -23768,7 +23890,7 @@ connect_update_routing_profile_queues <- function(InstanceId, RoutingProfileId, 
 #'   Function = "string",
 #'   Actions = list(
 #'     list(
-#'       ActionType = "CREATE_TASK"|"ASSIGN_CONTACT_CATEGORY"|"GENERATE_EVENTBRIDGE_EVENT"|"SEND_NOTIFICATION"|"CREATE_CASE"|"UPDATE_CASE"|"END_ASSOCIATED_TASKS"|"SUBMIT_AUTO_EVALUATION",
+#'       ActionType = "CREATE_TASK"|"ASSIGN_CONTACT_CATEGORY"|"GENERATE_EVENTBRIDGE_EVENT"|"SEND_NOTIFICATION"|"CREATE_CASE"|"UPDATE_CASE"|"ASSIGN_SLA"|"END_ASSOCIATED_TASKS"|"SUBMIT_AUTO_EVALUATION",
 #'       TaskAction = list(
 #'         Name = "string",
 #'         Description = "string",
@@ -23826,6 +23948,23 @@ connect_update_routing_profile_queues <- function(InstanceId, RoutingProfileId, 
 #'               StringValue = "string"
 #'             )
 #'           )
+#'         )
+#'       ),
+#'       AssignSlaAction = list(
+#'         SlaAssignmentType = "CASES",
+#'         CaseSlaConfiguration = list(
+#'           Name = "string",
+#'           Type = "CaseField",
+#'           FieldId = "string",
+#'           TargetFieldValues = list(
+#'             list(
+#'               BooleanValue = TRUE|FALSE,
+#'               DoubleValue = 123.0,
+#'               EmptyValue = list(),
+#'               StringValue = "string"
+#'             )
+#'           ),
+#'           TargetSlaMinutes = 123
 #'         )
 #'       ),
 #'       EndAssociatedTasksAction = list(),

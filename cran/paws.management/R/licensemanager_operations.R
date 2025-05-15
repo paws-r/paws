@@ -170,11 +170,14 @@ licensemanager_checkout_license <- function(ProductSKU, CheckoutType, KeyFingerp
 #'     organization.
 #' @param HomeRegion &#91;required&#93; Home Region of the grant.
 #' @param AllowedOperations &#91;required&#93; Allowed operations for the grant.
+#' @param Tags Tags to add to the grant. For more information about tagging support in
+#' License Manager, see the [`tag_resource`][licensemanager_tag_resource]
+#' operation.
 #'
 #' @keywords internal
 #'
 #' @rdname licensemanager_create_grant
-licensemanager_create_grant <- function(ClientToken, GrantName, LicenseArn, Principals, HomeRegion, AllowedOperations) {
+licensemanager_create_grant <- function(ClientToken, GrantName, LicenseArn, Principals, HomeRegion, AllowedOperations, Tags = NULL) {
   op <- new_operation(
     name = "CreateGrant",
     http_method = "POST",
@@ -183,7 +186,7 @@ licensemanager_create_grant <- function(ClientToken, GrantName, LicenseArn, Prin
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .licensemanager$create_grant_input(ClientToken = ClientToken, GrantName = GrantName, LicenseArn = LicenseArn, Principals = Principals, HomeRegion = HomeRegion, AllowedOperations = AllowedOperations)
+  input <- .licensemanager$create_grant_input(ClientToken = ClientToken, GrantName = GrantName, LicenseArn = LicenseArn, Principals = Principals, HomeRegion = HomeRegion, AllowedOperations = AllowedOperations, Tags = Tags)
   output <- .licensemanager$create_grant_output()
   config <- get_config()
   svc <- .licensemanager$service(config, op)
@@ -254,11 +257,14 @@ licensemanager_create_grant_version <- function(ClientToken, GrantArn, GrantName
 #' @param LicenseMetadata Information about the license.
 #' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
+#' @param Tags Tags to add to the license. For more information about tagging support
+#' in License Manager, see the
+#' [`tag_resource`][licensemanager_tag_resource] operation.
 #'
 #' @keywords internal
 #'
 #' @rdname licensemanager_create_license
-licensemanager_create_license <- function(LicenseName, ProductName, ProductSKU, Issuer, HomeRegion, Validity, Entitlements, Beneficiary, ConsumptionConfiguration, LicenseMetadata = NULL, ClientToken) {
+licensemanager_create_license <- function(LicenseName, ProductName, ProductSKU, Issuer, HomeRegion, Validity, Entitlements, Beneficiary, ConsumptionConfiguration, LicenseMetadata = NULL, ClientToken, Tags = NULL) {
   op <- new_operation(
     name = "CreateLicense",
     http_method = "POST",
@@ -267,7 +273,7 @@ licensemanager_create_license <- function(LicenseName, ProductName, ProductSKU, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .licensemanager$create_license_input(LicenseName = LicenseName, ProductName = ProductName, ProductSKU = ProductSKU, Issuer = Issuer, HomeRegion = HomeRegion, Validity = Validity, Entitlements = Entitlements, Beneficiary = Beneficiary, ConsumptionConfiguration = ConsumptionConfiguration, LicenseMetadata = LicenseMetadata, ClientToken = ClientToken)
+  input <- .licensemanager$create_license_input(LicenseName = LicenseName, ProductName = ProductName, ProductSKU = ProductSKU, Issuer = Issuer, HomeRegion = HomeRegion, Validity = Validity, Entitlements = Entitlements, Beneficiary = Beneficiary, ConsumptionConfiguration = ConsumptionConfiguration, LicenseMetadata = LicenseMetadata, ClientToken = ClientToken, Tags = Tags)
   output <- .licensemanager$create_license_output()
   config <- get_config()
   svc <- .licensemanager$service(config, op)
@@ -297,9 +303,8 @@ licensemanager_create_license <- function(LicenseName, ProductName, ProductSKU, 
 #' -   `Cores` dimension: `allowedTenancy` | `licenseAffinityToHost` |
 #'     `maximumCores` | `minimumCores`
 #' 
-#' -   `Instances` dimension: `allowedTenancy` | `maximumCores` |
-#'     `minimumCores` | `maximumSockets` | `minimumSockets` |
-#'     `maximumVcpus` | `minimumVcpus`
+#' -   `Instances` dimension: `allowedTenancy` | `maximumVcpus` |
+#'     `minimumVcpus`
 #' 
 #' -   `Sockets` dimension: `allowedTenancy` | `licenseAffinityToHost` |
 #'     `maximumSockets` | `minimumSockets`
@@ -1077,15 +1082,13 @@ licensemanager_list_failures_for_license_configuration_operations <- function(Li
 #' 
 #' -   `licenseCountingType` - The dimension for which licenses are
 #'     counted. Possible values are `vCPU` | `Instance` | `Core` |
-#'     `Socket`. Logical operators are `EQUALS` | `NOT_EQUALS`.
+#'     `Socket`.
 #' 
 #' -   `enforceLicenseCount` - A Boolean value that indicates whether hard
-#'     license enforcement is used. Logical operators are `EQUALS` |
-#'     `NOT_EQUALS`.
+#'     license enforcement is used.
 #' 
 #' -   `usagelimitExceeded` - A Boolean value that indicates whether the
-#'     available licenses have been exceeded. Logical operators are
-#'     `EQUALS` | `NOT_EQUALS`.
+#'     available licenses have been exceeded.
 #'
 #' @keywords internal
 #'
@@ -1505,14 +1508,14 @@ licensemanager_list_resource_inventory <- function(MaxResults = NULL, NextToken 
 }
 .licensemanager$operations$list_resource_inventory <- licensemanager_list_resource_inventory
 
-#' Lists the tags for the specified license configuration
+#' Lists the tags for the specified resource
 #'
 #' @description
-#' Lists the tags for the specified license configuration.
+#' Lists the tags for the specified resource. For more information about tagging support in License Manager, see the [`tag_resource`][licensemanager_tag_resource] operation.
 #'
 #' See [https://www.paws-r-sdk.com/docs/licensemanager_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/licensemanager_list_tags_for_resource/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the license configuration.
+#' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the resource.
 #'
 #' @keywords internal
 #'
@@ -1587,14 +1590,11 @@ licensemanager_list_tokens <- function(TokenIds = NULL, Filters = NULL, NextToke
 #' operators are supported:
 #' 
 #' -   `resourceArn` - The ARN of the license configuration resource.
-#'     Logical operators are `EQUALS` | `NOT_EQUALS`.
 #' 
 #' -   `resourceType` - The resource type (`EC2_INSTANCE` | `EC2_HOST` |
-#'     `EC2_AMI` | `SYSTEMS_MANAGER_MANAGED_INSTANCE`). Logical operators
-#'     are `EQUALS` | `NOT_EQUALS`.
+#'     `EC2_AMI` | `SYSTEMS_MANAGER_MANAGED_INSTANCE`).
 #' 
 #' -   `resourceAccount` - The ID of the account that owns the resource.
-#'     Logical operators are `EQUALS` | `NOT_EQUALS`.
 #'
 #' @keywords internal
 #'
@@ -1649,14 +1649,27 @@ licensemanager_reject_grant <- function(GrantArn) {
 }
 .licensemanager$operations$reject_grant <- licensemanager_reject_grant
 
-#' Adds the specified tags to the specified license configuration
+#' Adds the specified tags to the specified resource
 #'
 #' @description
-#' Adds the specified tags to the specified license configuration.
+#' Adds the specified tags to the specified resource. The following resources support tagging in License Manager:
 #'
 #' See [https://www.paws-r-sdk.com/docs/licensemanager_tag_resource/](https://www.paws-r-sdk.com/docs/licensemanager_tag_resource/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the license configuration.
+#' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the resource. The following examples
+#' provide an example ARN for each supported resource in License Manager:
+#' 
+#' -   Licenses -
+#'     `arn:aws:license-manager::111122223333:license:l-EXAMPLE2da7646d6861033667f20e895`
+#' 
+#' -   Grants -
+#'     `arn:aws:license-manager::111122223333:grant:g-EXAMPLE7b19f4a0ab73679b0beb52707`
+#' 
+#' -   License configurations -
+#'     `arn:aws:license-manager:us-east-1:111122223333:license-configuration:lic-EXAMPLE6a788d4c8acd4264ff0ecf2ed2d`
+#' 
+#' -   Report generators -
+#'     `arn:aws:license-manager:us-east-1:111122223333:report-generator:r-EXAMPLE825b4a4f8fe5a3e0c88824e5fc6`
 #' @param Tags &#91;required&#93; One or more tags.
 #'
 #' @keywords internal
@@ -1681,14 +1694,14 @@ licensemanager_tag_resource <- function(ResourceArn, Tags) {
 }
 .licensemanager$operations$tag_resource <- licensemanager_tag_resource
 
-#' Removes the specified tags from the specified license configuration
+#' Removes the specified tags from the specified resource
 #'
 #' @description
-#' Removes the specified tags from the specified license configuration.
+#' Removes the specified tags from the specified resource.
 #'
 #' See [https://www.paws-r-sdk.com/docs/licensemanager_untag_resource/](https://www.paws-r-sdk.com/docs/licensemanager_untag_resource/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the license configuration.
+#' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the resource.
 #' @param TagKeys &#91;required&#93; Keys identifying the tags to remove.
 #'
 #' @keywords internal

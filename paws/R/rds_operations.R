@@ -2396,13 +2396,14 @@ rds_create_custom_db_engine_version <- function(Engine, EngineVersion, DatabaseI
 #' 
 #' The following values are valid for each DB engine:
 #' 
-#' -   Aurora MySQL - `audit | error | general | instance | slowquery`
+#' -   Aurora MySQL -
+#'     `audit | error | general | instance | slowquery | iam-db-auth-error`
 #' 
-#' -   Aurora PostgreSQL - `instance | postgresql`
+#' -   Aurora PostgreSQL - `instance | postgresql | iam-db-auth-error`
 #' 
-#' -   RDS for MySQL - `error | general | slowquery`
+#' -   RDS for MySQL - `error | general | slowquery | iam-db-auth-error`
 #' 
-#' -   RDS for PostgreSQL - `postgresql | upgrade`
+#' -   RDS for PostgreSQL - `postgresql | upgrade | iam-db-auth-error`
 #' 
 #' For more information about exporting CloudWatch Logs for Amazon RDS, see
 #' [Publishing Database Logs to Amazon CloudWatch
@@ -2593,7 +2594,11 @@ rds_create_custom_db_engine_version <- function(Engine, EngineVersion, DatabaseI
 #' DB cluster during the maintenance window. By default, minor engine
 #' upgrades are applied automatically.
 #' 
-#' Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB cluster
+#' Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB cluster.
+#' 
+#' For more information about automatic minor version upgrades, see
+#' [Automatically upgrading the minor engine
+#' version](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Upgrading.html#USER_UpgradeDBInstance.Upgrading.AutoMinorVersionUpgrades).
 #' @param MonitoringInterval The interval, in seconds, between points when Enhanced Monitoring
 #' metrics are collected for the DB cluster. To turn off collecting
 #' Enhanced Monitoring metrics, specify `0`.
@@ -4123,6 +4128,10 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' 
 #' If you create an RDS Custom DB instance, you must set
 #' `AutoMinorVersionUpgrade` to `false`.
+#' 
+#' For more information about automatic minor version upgrades, see
+#' [Automatically upgrading the minor engine
+#' version](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Upgrading.html#USER_UpgradeDBInstance.Upgrading.AutoMinorVersionUpgrades).
 #' @param LicenseModel The license model information for this DB instance.
 #' 
 #' License models for RDS for Db2 require additional configuration. The
@@ -4236,7 +4245,7 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' 
 #' Valid Values: `gp2 | gp3 | io1 | io2 | standard`
 #' 
-#' Default: `io1`, if the `Iops` parameter is specified. Otherwise, `gp2`.
+#' Default: `io1`, if the `Iops` parameter is specified. Otherwise, `gp3`.
 #' @param TdeCredentialArn The ARN from the key store with which to associate the instance for TDE
 #' encryption.
 #' 
@@ -4440,17 +4449,19 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' 
 #' The following values are valid for each DB engine:
 #' 
-#' -   RDS for Db2 - `diag.log | notify.log`
+#' -   RDS for Db2 - `diag.log | notify.log | iam-db-auth-error`
 #' 
-#' -   RDS for MariaDB - `audit | error | general | slowquery`
+#' -   RDS for MariaDB -
+#'     `audit | error | general | slowquery | iam-db-auth-error`
 #' 
 #' -   RDS for Microsoft SQL Server - `agent | error`
 #' 
-#' -   RDS for MySQL - `audit | error | general | slowquery`
+#' -   RDS for MySQL -
+#'     `audit | error | general | slowquery | iam-db-auth-error`
 #' 
 #' -   RDS for Oracle - `alert | audit | listener | trace | oemagent`
 #' 
-#' -   RDS for PostgreSQL - `postgresql | upgrade`
+#' -   RDS for PostgreSQL - `postgresql | upgrade | iam-db-auth-error`
 #' @param ProcessorFeatures The number of CPU cores and the number of threads per core for the DB
 #' instance class of the DB instance.
 #' 
@@ -5120,6 +5131,10 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' This setting doesn't apply to RDS Custom DB instances.
 #' 
 #' Default: Inherits the value from the source DB instance.
+#' 
+#' For more information about automatic minor version upgrades, see
+#' [Automatically upgrading the minor engine
+#' version](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Upgrading.html#USER_UpgradeDBInstance.Upgrading.AutoMinorVersionUpgrades).
 #' @param Iops The amount of Provisioned IOPS (input/output operations per second) to
 #' initially allocate for the DB instance.
 #' @param OptionGroupName The option group to associate the DB instance with. If not specified,
@@ -5207,7 +5222,7 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' 
 #' Valid Values: `gp2 | gp3 | io1 | io2 | standard`
 #' 
-#' Default: `io1` if the `Iops` parameter is specified. Otherwise, `gp2`.
+#' Default: `io1` if the `Iops` parameter is specified. Otherwise, `gp3`.
 #' @param CopyTagsToSnapshot Specifies whether to copy all tags from the read replica to snapshots of
 #' the read replica. By default, tags aren't copied.
 #' @param MonitoringInterval The interval, in seconds, between points when Enhanced Monitoring
@@ -7461,7 +7476,8 @@ rds_create_option_group <- function(OptionGroupName, EngineName, MajorEngineVers
 #' @usage
 #' rds_create_tenant_database(DBInstanceIdentifier, TenantDBName,
 #'   MasterUsername, MasterUserPassword, CharacterSetName,
-#'   NcharCharacterSetName, Tags)
+#'   NcharCharacterSetName, ManageMasterUserPassword,
+#'   MasterUserSecretKmsKeyId, Tags)
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The user-supplied DB instance identifier. RDS creates your tenant
 #' database in this DB instance. This parameter isn't case-sensitive.
@@ -7479,7 +7495,7 @@ rds_create_option_group <- function(OptionGroupName, EngineName, MajorEngineVers
 #' -   First character must be a letter.
 #' 
 #' -   Can't be a reserved word for the chosen database engine.
-#' @param MasterUserPassword &#91;required&#93; The password for the master user in your tenant database.
+#' @param MasterUserPassword The password for the master user in your tenant database.
 #' 
 #' Constraints:
 #' 
@@ -7488,9 +7504,43 @@ rds_create_option_group <- function(OptionGroupName, EngineName, MajorEngineVers
 #' -   Can include any printable ASCII character except forward slash
 #'     (`/`), double quote (`\"`), at symbol (`@@`), ampersand (`&`), or
 #'     single quote (`\'`).
+#' 
+#' -   Can't be specified when `ManageMasterUserPassword` is enabled.
 #' @param CharacterSetName The character set for your tenant database. If you don't specify a
 #' value, the character set name defaults to `AL32UTF8`.
 #' @param NcharCharacterSetName The `NCHAR` value for the tenant database.
+#' @param ManageMasterUserPassword Specifies whether to manage the master user password with Amazon Web
+#' Services Secrets Manager.
+#' 
+#' For more information, see [Password management with Amazon Web Services
+#' Secrets
+#' Manager](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-secrets-manager.html)
+#' in the *Amazon RDS User Guide.*
+#' 
+#' Constraints:
+#' 
+#' -   Can't manage the master user password with Amazon Web Services
+#'     Secrets Manager if `MasterUserPassword` is specified.
+#' @param MasterUserSecretKmsKeyId The Amazon Web Services KMS key identifier to encrypt a secret that is
+#' automatically generated and managed in Amazon Web Services Secrets
+#' Manager.
+#' 
+#' This setting is valid only if the master user password is managed by RDS
+#' in Amazon Web Services Secrets Manager for the DB instance.
+#' 
+#' The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+#' ARN, or alias name for the KMS key. To use a KMS key in a different
+#' Amazon Web Services account, specify the key ARN or alias ARN.
+#' 
+#' If you don't specify `MasterUserSecretKmsKeyId`, then the
+#' `aws/secretsmanager` KMS key is used to encrypt the secret. If the
+#' secret is in a different Amazon Web Services account, then you can't use
+#' the `aws/secretsmanager` KMS key to encrypt the secret, and you must use
+#' a customer managed KMS key.
+#' 
+#' There is a default KMS key for your Amazon Web Services account. Your
+#' Amazon Web Services account has a different default KMS key for each
+#' Amazon Web Services Region.
 #' @param Tags 
 #'
 #' @return
@@ -7515,6 +7565,11 @@ rds_create_option_group <- function(OptionGroupName, EngineName, MajorEngineVers
 #'       MasterUserPassword = "string",
 #'       TenantDBName = "string"
 #'     ),
+#'     MasterUserSecret = list(
+#'       SecretArn = "string",
+#'       SecretStatus = "string",
+#'       KmsKeyId = "string"
+#'     ),
 #'     TagList = list(
 #'       list(
 #'         Key = "string",
@@ -7534,6 +7589,8 @@ rds_create_option_group <- function(OptionGroupName, EngineName, MajorEngineVers
 #'   MasterUserPassword = "string",
 #'   CharacterSetName = "string",
 #'   NcharCharacterSetName = "string",
+#'   ManageMasterUserPassword = TRUE|FALSE,
+#'   MasterUserSecretKmsKeyId = "string",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -7548,7 +7605,7 @@ rds_create_option_group <- function(OptionGroupName, EngineName, MajorEngineVers
 #' @rdname rds_create_tenant_database
 #'
 #' @aliases rds_create_tenant_database
-rds_create_tenant_database <- function(DBInstanceIdentifier, TenantDBName, MasterUsername, MasterUserPassword, CharacterSetName = NULL, NcharCharacterSetName = NULL, Tags = NULL) {
+rds_create_tenant_database <- function(DBInstanceIdentifier, TenantDBName, MasterUsername, MasterUserPassword = NULL, CharacterSetName = NULL, NcharCharacterSetName = NULL, ManageMasterUserPassword = NULL, MasterUserSecretKmsKeyId = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateTenantDatabase",
     http_method = "POST",
@@ -7557,7 +7614,7 @@ rds_create_tenant_database <- function(DBInstanceIdentifier, TenantDBName, Maste
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .rds$create_tenant_database_input(DBInstanceIdentifier = DBInstanceIdentifier, TenantDBName = TenantDBName, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, CharacterSetName = CharacterSetName, NcharCharacterSetName = NcharCharacterSetName, Tags = Tags)
+  input <- .rds$create_tenant_database_input(DBInstanceIdentifier = DBInstanceIdentifier, TenantDBName = TenantDBName, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, CharacterSetName = CharacterSetName, NcharCharacterSetName = NcharCharacterSetName, ManageMasterUserPassword = ManageMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId, Tags = Tags)
   output <- .rds$create_tenant_database_output()
   config <- get_config()
   svc <- .rds$service(config, op)
@@ -9846,6 +9903,11 @@ rds_delete_option_group <- function(OptionGroupName) {
 #'     PendingModifiedValues = list(
 #'       MasterUserPassword = "string",
 #'       TenantDBName = "string"
+#'     ),
+#'     MasterUserSecret = list(
+#'       SecretArn = "string",
+#'       SecretStatus = "string",
+#'       KmsKeyId = "string"
 #'     ),
 #'     TagList = list(
 #'       list(
@@ -16286,6 +16348,11 @@ rds_describe_source_regions <- function(RegionName = NULL, MaxRecords = NULL, Ma
 #'         MasterUserPassword = "string",
 #'         TenantDBName = "string"
 #'       ),
+#'       MasterUserSecret = list(
+#'         SecretArn = "string",
+#'         SecretStatus = "string",
+#'         KmsKeyId = "string"
+#'       ),
 #'       TagList = list(
 #'         list(
 #'           Key = "string",
@@ -17879,13 +17946,14 @@ rds_modify_custom_db_engine_version <- function(Engine, EngineVersion, Descripti
 #' 
 #' The following values are valid for each DB engine:
 #' 
-#' -   Aurora MySQL - `audit | error | general | instance | slowquery`
+#' -   Aurora MySQL -
+#'     `audit | error | general | instance | slowquery | iam-db-auth-error`
 #' 
-#' -   Aurora PostgreSQL - `instance | postgresql`
+#' -   Aurora PostgreSQL - `instance | postgresql | iam-db-auth-error`
 #' 
-#' -   RDS for MySQL - `error | general | slowquery`
+#' -   RDS for MySQL - `error | general | slowquery | iam-db-auth-error`
 #' 
-#' -   RDS for PostgreSQL - `postgresql | upgrade`
+#' -   RDS for PostgreSQL - `postgresql | upgrade | iam-db-auth-error`
 #' 
 #' For more information about exporting CloudWatch Logs for Amazon RDS, see
 #' [Publishing Database Logs to Amazon CloudWatch
@@ -18071,7 +18139,11 @@ rds_modify_custom_db_engine_version <- function(Engine, EngineVersion, Descripti
 #' DB cluster during the maintenance window. By default, minor engine
 #' upgrades are applied automatically.
 #' 
-#' Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
+#' Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters.
+#' 
+#' For more information about automatic minor version upgrades, see
+#' [Automatically upgrading the minor engine
+#' version](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Upgrading.html#USER_UpgradeDBInstance.Upgrading.AutoMinorVersionUpgrades).
 #' @param MonitoringInterval The interval, in seconds, between points when Enhanced Monitoring
 #' metrics are collected for the DB cluster. To turn off collecting
 #' Enhanced Monitoring metrics, specify `0`.
@@ -19094,11 +19166,17 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' 
 #' This setting doesn't apply to the following DB instances:
 #' 
-#' -   Amazon Aurora (The password for the master user is managed by the DB
-#'     cluster. For more information, see
-#'     [`modify_db_cluster`][rds_modify_db_cluster].)
+#' -   Amazon Aurora
+#' 
+#'     The password for the master user is managed by the DB cluster. For
+#'     more information, see [`modify_db_cluster`][rds_modify_db_cluster].
 #' 
 #' -   RDS Custom
+#' 
+#' -   RDS for Oracle CDBs in the multi-tenant configuration
+#' 
+#'     Specify the master password in
+#'     [`modify_tenant_database`][rds_modify_tenant_database] instead.
 #' 
 #' Default: Uses existing setting
 #' 
@@ -19280,6 +19358,10 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' 
 #' For an RDS Custom DB instance, don't enable this setting. Otherwise, the
 #' operation returns an error.
+#' 
+#' For more information about automatic minor version upgrades, see
+#' [Automatically upgrading the minor engine
+#' version](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Upgrading.html#USER_UpgradeDBInstance.Upgrading.AutoMinorVersionUpgrades).
 #' @param LicenseModel The license model for the DB instance.
 #' 
 #' This setting doesn't apply to Amazon Aurora or RDS Custom DB instances.
@@ -19614,13 +19696,14 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' 
 #' The following values are valid for each DB engine:
 #' 
-#' -   Aurora MySQL - `audit | error | general | slowquery`
+#' -   Aurora MySQL -
+#'     `audit | error | general | slowquery | iam-db-auth-error`
 #' 
-#' -   Aurora PostgreSQL - `postgresql`
+#' -   Aurora PostgreSQL - `postgresql | iam-db-auth-error`
 #' 
-#' -   RDS for MySQL - `error | general | slowquery`
+#' -   RDS for MySQL - `error | general | slowquery | iam-db-auth-error`
 #' 
-#' -   RDS for PostgreSQL - `postgresql | upgrade`
+#' -   RDS for PostgreSQL - `postgresql | upgrade | iam-db-auth-error`
 #' 
 #' For more information about exporting CloudWatch Logs for Amazon RDS, see
 #' [Publishing Database Logs to Amazon CloudWatch
@@ -19773,11 +19856,18 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' 
 #' -   Can't manage the master user password with Amazon Web Services
 #'     Secrets Manager if `MasterUserPassword` is specified.
+#' 
+#' -   Can't specify for RDS for Oracle CDB instances in the multi-tenant
+#'     configuration. Use
+#'     [`modify_tenant_database`][rds_modify_tenant_database] instead.
+#' 
+#' -   Can't specify the parameters `ManageMasterUserPassword` and
+#'     `MultiTenant` in the same operation.
 #' @param RotateMasterUserPassword Specifies whether to rotate the secret managed by Amazon Web Services
 #' Secrets Manager for the master user password.
 #' 
 #' This setting is valid only if the master user password is managed by RDS
-#' in Amazon Web Services Secrets Manager for the DB cluster. The secret
+#' in Amazon Web Services Secrets Manager for the DB instance. The secret
 #' value contains the updated password.
 #' 
 #' For more information, see [Password management with Amazon Web Services
@@ -21816,7 +21906,8 @@ rds_modify_option_group <- function(OptionGroupName, OptionsToInclude = NULL, Op
 #'
 #' @usage
 #' rds_modify_tenant_database(DBInstanceIdentifier, TenantDBName,
-#'   MasterUserPassword, NewTenantDBName)
+#'   MasterUserPassword, NewTenantDBName, ManageMasterUserPassword,
+#'   RotateMasterUserPassword, MasterUserSecretKmsKeyId)
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The identifier of the DB instance that contains the tenant database that
 #' you are modifying. This parameter isn't case-sensitive.
@@ -21854,6 +21945,84 @@ rds_modify_option_group <- function(OptionGroupName, OptionsToInclude = NULL, Op
 #' -   Can't be the string null or any other reserved word.
 #' 
 #' -   Can't be longer than 8 characters.
+#' @param ManageMasterUserPassword Specifies whether to manage the master user password with Amazon Web
+#' Services Secrets Manager.
+#' 
+#' If the tenant database doesn't manage the master user password with
+#' Amazon Web Services Secrets Manager, you can turn on this management. In
+#' this case, you can't specify `MasterUserPassword`.
+#' 
+#' If the tenant database already manages the master user password with
+#' Amazon Web Services Secrets Manager, and you specify that the master
+#' user password is not managed with Amazon Web Services Secrets Manager,
+#' then you must specify `MasterUserPassword`. In this case, Amazon RDS
+#' deletes the secret and uses the new password for the master user
+#' specified by `MasterUserPassword`.
+#' 
+#' For more information, see [Password management with Amazon Web Services
+#' Secrets
+#' Manager](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-secrets-manager.html)
+#' in the *Amazon RDS User Guide.*
+#' 
+#' Constraints:
+#' 
+#' -   Can't manage the master user password with Amazon Web Services
+#'     Secrets Manager if `MasterUserPassword` is specified.
+#' @param RotateMasterUserPassword Specifies whether to rotate the secret managed by Amazon Web Services
+#' Secrets Manager for the master user password.
+#' 
+#' This setting is valid only if the master user password is managed by RDS
+#' in Amazon Web Services Secrets Manager for the DB instance. The secret
+#' value contains the updated password.
+#' 
+#' For more information, see [Password management with Amazon Web Services
+#' Secrets
+#' Manager](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-secrets-manager.html)
+#' in the *Amazon RDS User Guide.*
+#' 
+#' Constraints:
+#' 
+#' -   You must apply the change immediately when rotating the master user
+#'     password.
+#' @param MasterUserSecretKmsKeyId The Amazon Web Services KMS key identifier to encrypt a secret that is
+#' automatically generated and managed in Amazon Web Services Secrets
+#' Manager.
+#' 
+#' This setting is valid only if both of the following conditions are met:
+#' 
+#' -   The tenant database doesn't manage the master user password in
+#'     Amazon Web Services Secrets Manager.
+#' 
+#'     If the tenant database already manages the master user password in
+#'     Amazon Web Services Secrets Manager, you can't change the KMS key
+#'     used to encrypt the secret.
+#' 
+#' -   You're turning on `ManageMasterUserPassword` to manage the master
+#'     user password in Amazon Web Services Secrets Manager.
+#' 
+#'     If you're turning on `ManageMasterUserPassword` and don't specify
+#'     `MasterUserSecretKmsKeyId`, then the `aws/secretsmanager` KMS key is
+#'     used to encrypt the secret. If the secret is in a different Amazon
+#'     Web Services account, then you can't use the `aws/secretsmanager`
+#'     KMS key to encrypt the secret, and you must use a self-managed KMS
+#'     key.
+#' 
+#' The Amazon Web Services KMS key identifier is any of the following:
+#' 
+#' -   Key ARN
+#' 
+#' -   Key ID
+#' 
+#' -   Alias ARN
+#' 
+#' -   Alias name for the KMS key
+#' 
+#' To use a KMS key in a different Amazon Web Services account, specify the
+#' key ARN or alias ARN.
+#' 
+#' A default KMS key exists for your Amazon Web Services account. Your
+#' Amazon Web Services account has a different default KMS key for each
+#' Amazon Web Services Region.
 #'
 #' @return
 #' A list with the following syntax:
@@ -21877,6 +22046,11 @@ rds_modify_option_group <- function(OptionGroupName, OptionsToInclude = NULL, Op
 #'       MasterUserPassword = "string",
 #'       TenantDBName = "string"
 #'     ),
+#'     MasterUserSecret = list(
+#'       SecretArn = "string",
+#'       SecretStatus = "string",
+#'       KmsKeyId = "string"
+#'     ),
 #'     TagList = list(
 #'       list(
 #'         Key = "string",
@@ -21893,7 +22067,10 @@ rds_modify_option_group <- function(OptionGroupName, OptionsToInclude = NULL, Op
 #'   DBInstanceIdentifier = "string",
 #'   TenantDBName = "string",
 #'   MasterUserPassword = "string",
-#'   NewTenantDBName = "string"
+#'   NewTenantDBName = "string",
+#'   ManageMasterUserPassword = TRUE|FALSE,
+#'   RotateMasterUserPassword = TRUE|FALSE,
+#'   MasterUserSecretKmsKeyId = "string"
 #' )
 #' ```
 #'
@@ -21902,7 +22079,7 @@ rds_modify_option_group <- function(OptionGroupName, OptionsToInclude = NULL, Op
 #' @rdname rds_modify_tenant_database
 #'
 #' @aliases rds_modify_tenant_database
-rds_modify_tenant_database <- function(DBInstanceIdentifier, TenantDBName, MasterUserPassword = NULL, NewTenantDBName = NULL) {
+rds_modify_tenant_database <- function(DBInstanceIdentifier, TenantDBName, MasterUserPassword = NULL, NewTenantDBName = NULL, ManageMasterUserPassword = NULL, RotateMasterUserPassword = NULL, MasterUserSecretKmsKeyId = NULL) {
   op <- new_operation(
     name = "ModifyTenantDatabase",
     http_method = "POST",
@@ -21911,7 +22088,7 @@ rds_modify_tenant_database <- function(DBInstanceIdentifier, TenantDBName, Maste
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .rds$modify_tenant_database_input(DBInstanceIdentifier = DBInstanceIdentifier, TenantDBName = TenantDBName, MasterUserPassword = MasterUserPassword, NewTenantDBName = NewTenantDBName)
+  input <- .rds$modify_tenant_database_input(DBInstanceIdentifier = DBInstanceIdentifier, TenantDBName = TenantDBName, MasterUserPassword = MasterUserPassword, NewTenantDBName = NewTenantDBName, ManageMasterUserPassword = ManageMasterUserPassword, RotateMasterUserPassword = RotateMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId)
   output <- .rds$modify_tenant_database_output()
   config <- get_config()
   svc <- .rds$service(config, op)
@@ -24170,12 +24347,12 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
 #' 
 #' **Aurora MySQL**
 #' 
-#' Possible values are `audit`, `error`, `general`, `instance`, and
-#' `slowquery`.
+#' Possible values are `audit`, `error`, `general`, `instance`,
+#' `slowquery`, and `iam-db-auth-error`.
 #' 
 #' **Aurora PostgreSQL**
 #' 
-#' Possible value are `instance` and `postgresql`.
+#' Possible value are `instance`, `postgresql`, and `iam-db-auth-error`.
 #' 
 #' For more information about exporting CloudWatch Logs for Amazon RDS, see
 #' [Publishing Database Logs to Amazon CloudWatch
@@ -24787,20 +24964,21 @@ rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupReten
 #' 
 #' **RDS for MySQL**
 #' 
-#' Possible values are `error`, `general`, and `slowquery`.
+#' Possible values are `error`, `general`, `slowquery`, and
+#' `iam-db-auth-error`.
 #' 
 #' **RDS for PostgreSQL**
 #' 
-#' Possible values are `postgresql` and `upgrade`.
+#' Possible values are `postgresql`, `upgrade`, and `iam-db-auth-error`.
 #' 
 #' **Aurora MySQL**
 #' 
-#' Possible values are `audit`, `error`, `general`, `instance`, and
-#' `slowquery`.
+#' Possible values are `audit`, `error`, `general`, `instance`,
+#' `slowquery`, and `iam-db-auth-error`.
 #' 
 #' **Aurora PostgreSQL**
 #' 
-#' Possible value are `instance` and `postgresql`.
+#' Possible value are `instance`, `postgresql`, and `iam-db-auth-error`.
 #' 
 #' For more information about exporting CloudWatch Logs for Amazon RDS, see
 #' [Publishing Database Logs to Amazon CloudWatch
@@ -25348,7 +25526,10 @@ rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClu
 #' `BackupRetentionPeriod` days. The target DB cluster is created from the
 #' source DB cluster with the same configuration as the original DB
 #' cluster, except that the new DB cluster is created with the default DB
-#' security group.
+#' security group. Unless the `RestoreType` is set to `copy-on-write`, the
+#' restore may occur in a different Availability Zone (AZ) from the
+#' original DB cluster. The AZ where RDS restores the DB cluster depends on
+#' the AZs in the specified subnet group.
 #' 
 #' For Aurora, this operation only restores the DB cluster, not the DB
 #' instances for that DB cluster. You must invoke the
@@ -25518,20 +25699,21 @@ rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClu
 #' 
 #' **RDS for MySQL**
 #' 
-#' Possible values are `error`, `general`, and `slowquery`.
+#' Possible values are `error`, `general`, `slowquery`, and
+#' `iam-db-auth-error`.
 #' 
 #' **RDS for PostgreSQL**
 #' 
-#' Possible values are `postgresql` and `upgrade`.
+#' Possible values are `postgresql`, `upgrade`, and `iam-db-auth-error`.
 #' 
 #' **Aurora MySQL**
 #' 
-#' Possible values are `audit`, `error`, `general`, `instance`, and
-#' `slowquery`.
+#' Possible values are `audit`, `error`, `general`, `instance`,
+#' `slowquery`, and `iam-db-auth-error`.
 #' 
 #' **Aurora PostgreSQL**
 #' 
-#' Possible value are `instance` and `postgresql`.
+#' Possible value are `instance`, `postgresql`, and `iam-db-auth-error`.
 #' 
 #' For more information about exporting CloudWatch Logs for Amazon RDS, see
 #' [Publishing Database Logs to Amazon CloudWatch
@@ -26128,7 +26310,8 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #'   EnableCustomerOwnedIp, CustomIamInstanceProfile, BackupTarget,
 #'   NetworkType, StorageThroughput, DBClusterSnapshotIdentifier,
 #'   AllocatedStorage, DedicatedLogVolume, CACertificateIdentifier,
-#'   EngineLifecycleSupport)
+#'   EngineLifecycleSupport, ManageMasterUserPassword,
+#'   MasterUserSecretKmsKeyId)
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The name of the DB instance to create from the DB snapshot. This
 #' parameter isn't case-sensitive.
@@ -26210,6 +26393,10 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' 
 #' If you restore an RDS Custom DB instance, you must disable this
 #' parameter.
+#' 
+#' For more information about automatic minor version upgrades, see
+#' [Automatically upgrading the minor engine
+#' version](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Upgrading.html#USER_UpgradeDBInstance.Upgrading.AutoMinorVersionUpgrades).
 #' @param LicenseModel License model information for the restored DB instance.
 #' 
 #' License models for RDS for Db2 require additional configuration. The
@@ -26308,7 +26495,7 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' If you specify `io1`, `io2`, or `gp3`, you must also include a value for
 #' the `Iops` parameter.
 #' 
-#' Default: `io1` if the `Iops` parameter is specified, otherwise `gp2`
+#' Default: `io1` if the `Iops` parameter is specified, otherwise `gp3`
 #' @param TdeCredentialArn The ARN from the key store with which to associate the instance for TDE
 #' encryption.
 #' 
@@ -26561,6 +26748,37 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' `open-source-rds-extended-support | open-source-rds-extended-support-disabled`
 #' 
 #' Default: `open-source-rds-extended-support`
+#' @param ManageMasterUserPassword Specifies whether to manage the master user password with Amazon Web
+#' Services Secrets Manager in the restored DB instance.
+#' 
+#' For more information, see [Password management with Amazon Web Services
+#' Secrets
+#' Manager](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-secrets-manager.html)
+#' in the *Amazon RDS User Guide*.
+#' 
+#' Constraints:
+#' 
+#' -   Applies to RDS for Oracle only.
+#' @param MasterUserSecretKmsKeyId The Amazon Web Services KMS key identifier to encrypt a secret that is
+#' automatically generated and managed in Amazon Web Services Secrets
+#' Manager.
+#' 
+#' This setting is valid only if the master user password is managed by RDS
+#' in Amazon Web Services Secrets Manager for the DB instance.
+#' 
+#' The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+#' ARN, or alias name for the KMS key. To use a KMS key in a different
+#' Amazon Web Services account, specify the key ARN or alias ARN.
+#' 
+#' If you don't specify `MasterUserSecretKmsKeyId`, then the
+#' `aws/secretsmanager` KMS key is used to encrypt the secret. If the
+#' secret is in a different Amazon Web Services account, then you can't use
+#' the `aws/secretsmanager` KMS key to encrypt the secret, and you must use
+#' a customer managed KMS key.
+#' 
+#' There is a default KMS key for your Amazon Web Services account. Your
+#' Amazon Web Services account has a different default KMS key for each
+#' Amazon Web Services Region.
 #'
 #' @return
 #' A list with the following syntax:
@@ -26866,7 +27084,9 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #'   AllocatedStorage = 123,
 #'   DedicatedLogVolume = TRUE|FALSE,
 #'   CACertificateIdentifier = "string",
-#'   EngineLifecycleSupport = "string"
+#'   EngineLifecycleSupport = "string",
+#'   ManageMasterUserPassword = TRUE|FALSE,
+#'   MasterUserSecretKmsKeyId = "string"
 #' )
 #' ```
 #'
@@ -26884,7 +27104,7 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' @rdname rds_restore_db_instance_from_db_snapshot
 #'
 #' @aliases rds_restore_db_instance_from_db_snapshot
-rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSnapshotIdentifier = NULL, DBInstanceClass = NULL, Port = NULL, AvailabilityZone = NULL, DBSubnetGroupName = NULL, MultiAZ = NULL, PubliclyAccessible = NULL, AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, DBName = NULL, Engine = NULL, Iops = NULL, OptionGroupName = NULL, Tags = NULL, StorageType = NULL, TdeCredentialArn = NULL, TdeCredentialPassword = NULL, VpcSecurityGroupIds = NULL, Domain = NULL, DomainFqdn = NULL, DomainOu = NULL, DomainAuthSecretArn = NULL, DomainDnsIps = NULL, CopyTagsToSnapshot = NULL, DomainIAMRoleName = NULL, EnableIAMDatabaseAuthentication = NULL, EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, DBParameterGroupName = NULL, DeletionProtection = NULL, EnableCustomerOwnedIp = NULL, CustomIamInstanceProfile = NULL, BackupTarget = NULL, NetworkType = NULL, StorageThroughput = NULL, DBClusterSnapshotIdentifier = NULL, AllocatedStorage = NULL, DedicatedLogVolume = NULL, CACertificateIdentifier = NULL, EngineLifecycleSupport = NULL) {
+rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSnapshotIdentifier = NULL, DBInstanceClass = NULL, Port = NULL, AvailabilityZone = NULL, DBSubnetGroupName = NULL, MultiAZ = NULL, PubliclyAccessible = NULL, AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, DBName = NULL, Engine = NULL, Iops = NULL, OptionGroupName = NULL, Tags = NULL, StorageType = NULL, TdeCredentialArn = NULL, TdeCredentialPassword = NULL, VpcSecurityGroupIds = NULL, Domain = NULL, DomainFqdn = NULL, DomainOu = NULL, DomainAuthSecretArn = NULL, DomainDnsIps = NULL, CopyTagsToSnapshot = NULL, DomainIAMRoleName = NULL, EnableIAMDatabaseAuthentication = NULL, EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, DBParameterGroupName = NULL, DeletionProtection = NULL, EnableCustomerOwnedIp = NULL, CustomIamInstanceProfile = NULL, BackupTarget = NULL, NetworkType = NULL, StorageThroughput = NULL, DBClusterSnapshotIdentifier = NULL, AllocatedStorage = NULL, DedicatedLogVolume = NULL, CACertificateIdentifier = NULL, EngineLifecycleSupport = NULL, ManageMasterUserPassword = NULL, MasterUserSecretKmsKeyId = NULL) {
   op <- new_operation(
     name = "RestoreDBInstanceFromDBSnapshot",
     http_method = "POST",
@@ -26893,7 +27113,7 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .rds$restore_db_instance_from_db_snapshot_input(DBInstanceIdentifier = DBInstanceIdentifier, DBSnapshotIdentifier = DBSnapshotIdentifier, DBInstanceClass = DBInstanceClass, Port = Port, AvailabilityZone = AvailabilityZone, DBSubnetGroupName = DBSubnetGroupName, MultiAZ = MultiAZ, PubliclyAccessible = PubliclyAccessible, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, DBName = DBName, Engine = Engine, Iops = Iops, OptionGroupName = OptionGroupName, Tags = Tags, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, TdeCredentialPassword = TdeCredentialPassword, VpcSecurityGroupIds = VpcSecurityGroupIds, Domain = Domain, DomainFqdn = DomainFqdn, DomainOu = DomainOu, DomainAuthSecretArn = DomainAuthSecretArn, DomainDnsIps = DomainDnsIps, CopyTagsToSnapshot = CopyTagsToSnapshot, DomainIAMRoleName = DomainIAMRoleName, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, ProcessorFeatures = ProcessorFeatures, UseDefaultProcessorFeatures = UseDefaultProcessorFeatures, DBParameterGroupName = DBParameterGroupName, DeletionProtection = DeletionProtection, EnableCustomerOwnedIp = EnableCustomerOwnedIp, CustomIamInstanceProfile = CustomIamInstanceProfile, BackupTarget = BackupTarget, NetworkType = NetworkType, StorageThroughput = StorageThroughput, DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier, AllocatedStorage = AllocatedStorage, DedicatedLogVolume = DedicatedLogVolume, CACertificateIdentifier = CACertificateIdentifier, EngineLifecycleSupport = EngineLifecycleSupport)
+  input <- .rds$restore_db_instance_from_db_snapshot_input(DBInstanceIdentifier = DBInstanceIdentifier, DBSnapshotIdentifier = DBSnapshotIdentifier, DBInstanceClass = DBInstanceClass, Port = Port, AvailabilityZone = AvailabilityZone, DBSubnetGroupName = DBSubnetGroupName, MultiAZ = MultiAZ, PubliclyAccessible = PubliclyAccessible, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, DBName = DBName, Engine = Engine, Iops = Iops, OptionGroupName = OptionGroupName, Tags = Tags, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, TdeCredentialPassword = TdeCredentialPassword, VpcSecurityGroupIds = VpcSecurityGroupIds, Domain = Domain, DomainFqdn = DomainFqdn, DomainOu = DomainOu, DomainAuthSecretArn = DomainAuthSecretArn, DomainDnsIps = DomainDnsIps, CopyTagsToSnapshot = CopyTagsToSnapshot, DomainIAMRoleName = DomainIAMRoleName, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, ProcessorFeatures = ProcessorFeatures, UseDefaultProcessorFeatures = UseDefaultProcessorFeatures, DBParameterGroupName = DBParameterGroupName, DeletionProtection = DeletionProtection, EnableCustomerOwnedIp = EnableCustomerOwnedIp, CustomIamInstanceProfile = CustomIamInstanceProfile, BackupTarget = BackupTarget, NetworkType = NetworkType, StorageThroughput = StorageThroughput, DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier, AllocatedStorage = AllocatedStorage, DedicatedLogVolume = DedicatedLogVolume, CACertificateIdentifier = CACertificateIdentifier, EngineLifecycleSupport = EngineLifecycleSupport, ManageMasterUserPassword = ManageMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId)
   output <- .rds$restore_db_instance_from_db_snapshot_output()
   config <- get_config()
   svc <- .rds$service(config, op)
@@ -27085,6 +27305,10 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' @param AutoMinorVersionUpgrade Specifies whether to automatically apply minor engine upgrades to the DB
 #' instance during the maintenance window. By default, minor engine
 #' upgrades are not applied automatically.
+#' 
+#' For more information about automatic minor version upgrades, see
+#' [Automatically upgrading the minor engine
+#' version](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Upgrading.html#USER_UpgradeDBInstance.Upgrading.AutoMinorVersionUpgrades).
 #' @param LicenseModel The license model for this DB instance. Use `general-public-license`.
 #' @param Iops The amount of Provisioned IOPS (input/output operations per second) to
 #' allocate initially for the DB instance. For information about valid IOPS
@@ -27709,7 +27933,8 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #'   SourceDBInstanceAutomatedBackupsArn, EnableCustomerOwnedIp,
 #'   CustomIamInstanceProfile, BackupTarget, NetworkType, StorageThroughput,
 #'   AllocatedStorage, DedicatedLogVolume, CACertificateIdentifier,
-#'   EngineLifecycleSupport)
+#'   EngineLifecycleSupport, ManageMasterUserPassword,
+#'   MasterUserSecretKmsKeyId)
 #'
 #' @param SourceDBInstanceIdentifier The identifier of the source DB instance from which to restore.
 #' 
@@ -27804,6 +28029,10 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' the DB instance during the maintenance window.
 #' 
 #' This setting doesn't apply to RDS Custom.
+#' 
+#' For more information about automatic minor version upgrades, see
+#' [Automatically upgrading the minor engine
+#' version](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Upgrading.html#USER_UpgradeDBInstance.Upgrading.AutoMinorVersionUpgrades).
 #' @param LicenseModel The license model information for the restored DB instance.
 #' 
 #' License models for RDS for Db2 require additional configuration. The
@@ -27902,7 +28131,7 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' 
 #' Valid Values: `gp2 | gp3 | io1 | io2 | standard`
 #' 
-#' Default: `io1`, if the `Iops` parameter is specified. Otherwise, `gp2`.
+#' Default: `io1`, if the `Iops` parameter is specified. Otherwise, `gp3`.
 #' 
 #' Constraints:
 #' 
@@ -28150,6 +28379,37 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' `open-source-rds-extended-support | open-source-rds-extended-support-disabled`
 #' 
 #' Default: `open-source-rds-extended-support`
+#' @param ManageMasterUserPassword Specifies whether to manage the master user password with Amazon Web
+#' Services Secrets Manager in the restored DB instance.
+#' 
+#' For more information, see [Password management with Amazon Web Services
+#' Secrets
+#' Manager](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-secrets-manager.html)
+#' in the *Amazon RDS User Guide*.
+#' 
+#' Constraints:
+#' 
+#' -   Applies to RDS for Oracle only.
+#' @param MasterUserSecretKmsKeyId The Amazon Web Services KMS key identifier to encrypt a secret that is
+#' automatically generated and managed in Amazon Web Services Secrets
+#' Manager.
+#' 
+#' This setting is valid only if the master user password is managed by RDS
+#' in Amazon Web Services Secrets Manager for the DB instance.
+#' 
+#' The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+#' ARN, or alias name for the KMS key. To use a KMS key in a different
+#' Amazon Web Services account, specify the key ARN or alias ARN.
+#' 
+#' If you don't specify `MasterUserSecretKmsKeyId`, then the
+#' `aws/secretsmanager` KMS key is used to encrypt the secret. If the
+#' secret is in a different Amazon Web Services account, then you can't use
+#' the `aws/secretsmanager` KMS key to encrypt the secret, and you must use
+#' a customer managed KMS key.
+#' 
+#' There is a default KMS key for your Amazon Web Services account. Your
+#' Amazon Web Services account has a different default KMS key for each
+#' Amazon Web Services Region.
 #'
 #' @return
 #' A list with the following syntax:
@@ -28461,7 +28721,9 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #'   AllocatedStorage = 123,
 #'   DedicatedLogVolume = TRUE|FALSE,
 #'   CACertificateIdentifier = "string",
-#'   EngineLifecycleSupport = "string"
+#'   EngineLifecycleSupport = "string",
+#'   ManageMasterUserPassword = TRUE|FALSE,
+#'   MasterUserSecretKmsKeyId = "string"
 #' )
 #' ```
 #'
@@ -28481,7 +28743,7 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' @rdname rds_restore_db_instance_to_point_in_time
 #'
 #' @aliases rds_restore_db_instance_to_point_in_time
-rds_restore_db_instance_to_point_in_time <- function(SourceDBInstanceIdentifier = NULL, TargetDBInstanceIdentifier, RestoreTime = NULL, UseLatestRestorableTime = NULL, DBInstanceClass = NULL, Port = NULL, AvailabilityZone = NULL, DBSubnetGroupName = NULL, MultiAZ = NULL, PubliclyAccessible = NULL, AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, DBName = NULL, Engine = NULL, Iops = NULL, OptionGroupName = NULL, CopyTagsToSnapshot = NULL, Tags = NULL, StorageType = NULL, TdeCredentialArn = NULL, TdeCredentialPassword = NULL, VpcSecurityGroupIds = NULL, Domain = NULL, DomainIAMRoleName = NULL, DomainFqdn = NULL, DomainOu = NULL, DomainAuthSecretArn = NULL, DomainDnsIps = NULL, EnableIAMDatabaseAuthentication = NULL, EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, DBParameterGroupName = NULL, DeletionProtection = NULL, SourceDbiResourceId = NULL, MaxAllocatedStorage = NULL, SourceDBInstanceAutomatedBackupsArn = NULL, EnableCustomerOwnedIp = NULL, CustomIamInstanceProfile = NULL, BackupTarget = NULL, NetworkType = NULL, StorageThroughput = NULL, AllocatedStorage = NULL, DedicatedLogVolume = NULL, CACertificateIdentifier = NULL, EngineLifecycleSupport = NULL) {
+rds_restore_db_instance_to_point_in_time <- function(SourceDBInstanceIdentifier = NULL, TargetDBInstanceIdentifier, RestoreTime = NULL, UseLatestRestorableTime = NULL, DBInstanceClass = NULL, Port = NULL, AvailabilityZone = NULL, DBSubnetGroupName = NULL, MultiAZ = NULL, PubliclyAccessible = NULL, AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, DBName = NULL, Engine = NULL, Iops = NULL, OptionGroupName = NULL, CopyTagsToSnapshot = NULL, Tags = NULL, StorageType = NULL, TdeCredentialArn = NULL, TdeCredentialPassword = NULL, VpcSecurityGroupIds = NULL, Domain = NULL, DomainIAMRoleName = NULL, DomainFqdn = NULL, DomainOu = NULL, DomainAuthSecretArn = NULL, DomainDnsIps = NULL, EnableIAMDatabaseAuthentication = NULL, EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, DBParameterGroupName = NULL, DeletionProtection = NULL, SourceDbiResourceId = NULL, MaxAllocatedStorage = NULL, SourceDBInstanceAutomatedBackupsArn = NULL, EnableCustomerOwnedIp = NULL, CustomIamInstanceProfile = NULL, BackupTarget = NULL, NetworkType = NULL, StorageThroughput = NULL, AllocatedStorage = NULL, DedicatedLogVolume = NULL, CACertificateIdentifier = NULL, EngineLifecycleSupport = NULL, ManageMasterUserPassword = NULL, MasterUserSecretKmsKeyId = NULL) {
   op <- new_operation(
     name = "RestoreDBInstanceToPointInTime",
     http_method = "POST",
@@ -28490,7 +28752,7 @@ rds_restore_db_instance_to_point_in_time <- function(SourceDBInstanceIdentifier 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .rds$restore_db_instance_to_point_in_time_input(SourceDBInstanceIdentifier = SourceDBInstanceIdentifier, TargetDBInstanceIdentifier = TargetDBInstanceIdentifier, RestoreTime = RestoreTime, UseLatestRestorableTime = UseLatestRestorableTime, DBInstanceClass = DBInstanceClass, Port = Port, AvailabilityZone = AvailabilityZone, DBSubnetGroupName = DBSubnetGroupName, MultiAZ = MultiAZ, PubliclyAccessible = PubliclyAccessible, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, DBName = DBName, Engine = Engine, Iops = Iops, OptionGroupName = OptionGroupName, CopyTagsToSnapshot = CopyTagsToSnapshot, Tags = Tags, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, TdeCredentialPassword = TdeCredentialPassword, VpcSecurityGroupIds = VpcSecurityGroupIds, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName, DomainFqdn = DomainFqdn, DomainOu = DomainOu, DomainAuthSecretArn = DomainAuthSecretArn, DomainDnsIps = DomainDnsIps, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, ProcessorFeatures = ProcessorFeatures, UseDefaultProcessorFeatures = UseDefaultProcessorFeatures, DBParameterGroupName = DBParameterGroupName, DeletionProtection = DeletionProtection, SourceDbiResourceId = SourceDbiResourceId, MaxAllocatedStorage = MaxAllocatedStorage, SourceDBInstanceAutomatedBackupsArn = SourceDBInstanceAutomatedBackupsArn, EnableCustomerOwnedIp = EnableCustomerOwnedIp, CustomIamInstanceProfile = CustomIamInstanceProfile, BackupTarget = BackupTarget, NetworkType = NetworkType, StorageThroughput = StorageThroughput, AllocatedStorage = AllocatedStorage, DedicatedLogVolume = DedicatedLogVolume, CACertificateIdentifier = CACertificateIdentifier, EngineLifecycleSupport = EngineLifecycleSupport)
+  input <- .rds$restore_db_instance_to_point_in_time_input(SourceDBInstanceIdentifier = SourceDBInstanceIdentifier, TargetDBInstanceIdentifier = TargetDBInstanceIdentifier, RestoreTime = RestoreTime, UseLatestRestorableTime = UseLatestRestorableTime, DBInstanceClass = DBInstanceClass, Port = Port, AvailabilityZone = AvailabilityZone, DBSubnetGroupName = DBSubnetGroupName, MultiAZ = MultiAZ, PubliclyAccessible = PubliclyAccessible, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, DBName = DBName, Engine = Engine, Iops = Iops, OptionGroupName = OptionGroupName, CopyTagsToSnapshot = CopyTagsToSnapshot, Tags = Tags, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, TdeCredentialPassword = TdeCredentialPassword, VpcSecurityGroupIds = VpcSecurityGroupIds, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName, DomainFqdn = DomainFqdn, DomainOu = DomainOu, DomainAuthSecretArn = DomainAuthSecretArn, DomainDnsIps = DomainDnsIps, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, ProcessorFeatures = ProcessorFeatures, UseDefaultProcessorFeatures = UseDefaultProcessorFeatures, DBParameterGroupName = DBParameterGroupName, DeletionProtection = DeletionProtection, SourceDbiResourceId = SourceDbiResourceId, MaxAllocatedStorage = MaxAllocatedStorage, SourceDBInstanceAutomatedBackupsArn = SourceDBInstanceAutomatedBackupsArn, EnableCustomerOwnedIp = EnableCustomerOwnedIp, CustomIamInstanceProfile = CustomIamInstanceProfile, BackupTarget = BackupTarget, NetworkType = NetworkType, StorageThroughput = StorageThroughput, AllocatedStorage = AllocatedStorage, DedicatedLogVolume = DedicatedLogVolume, CACertificateIdentifier = CACertificateIdentifier, EngineLifecycleSupport = EngineLifecycleSupport, ManageMasterUserPassword = ManageMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId)
   output <- .rds$restore_db_instance_to_point_in_time_output()
   config <- get_config()
   svc <- .rds$service(config, op)
@@ -29403,7 +29665,10 @@ rds_start_db_instance_automated_backups_replication <- function(SourceDBInstance
 #' Starts an export of DB snapshot or DB cluster data to Amazon S3. The
 #' provided IAM role must have access to the S3 bucket.
 #' 
-#' You can't export snapshot data from Db2 or RDS Custom DB instances.
+#' You can't export snapshot data from RDS Custom DB instances. For more
+#' information, see [Supported Regions and DB engines for exporting
+#' snapshots to S3 in Amazon
+#' RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RDS_Fea_Regions_DB-eng.Feature.ExportSnapshotToS3.html).
 #' 
 #' For more information on exporting DB snapshot data, see [Exporting DB
 #' snapshot data to Amazon

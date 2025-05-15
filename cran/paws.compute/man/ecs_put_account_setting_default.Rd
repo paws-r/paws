@@ -86,6 +86,17 @@ permissions to create tags. Therefore, you must grant explicit
 permissions to use the \code{ecs:TagResource} action. For more
 information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/supported-iam-actions-tagging.html}{Grant permission to tag resources on creation}
 in the \emph{Amazon ECS Developer Guide}.
+\item \code{defaultLogDriverMode} -Amazon ECS supports setting a default
+delivery mode of log messages from a container to the \code{logDriver}
+that you specify in the container's \code{logConfiguration}. The delivery
+mode affects application stability when the flow of logs from the
+container to the log driver is interrupted. The
+\code{defaultLogDriverMode} setting supports two values: \code{blocking} and
+\code{non-blocking}. If you don't specify a delivery mode in your
+container definition's \code{logConfiguration}, the mode you specify
+using this account setting will be used as the default. For more
+information about log delivery modes, see
+\href{https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html}{LogConfiguration}.
 \item \code{guardDutyActivate} - The \code{guardDutyActivate} parameter is read-only
 in Amazon ECS and indicates whether Amazon ECS Runtime Monitoring is
 enabled or disabled by your security administrator in your Amazon

@@ -17,7 +17,9 @@ glue_create_integration_table_properties(
 
 \item{TableName}{[required] The name of the table to be replicated.}
 
-\item{SourceTableConfig}{A structure for the source table configuration.}
+\item{SourceTableConfig}{A structure for the source table configuration. See the
+\code{SourceTableConfig} structure to see list of supported source
+properties.}
 
 \item{TargetTableConfig}{A structure for the target table configuration.}
 }

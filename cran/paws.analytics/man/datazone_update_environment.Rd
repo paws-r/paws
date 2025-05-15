@@ -5,14 +5,19 @@
 \title{Updates the specified environment in Amazon DataZone}
 \usage{
 datazone_update_environment(
+  blueprintVersion = NULL,
   description = NULL,
   domainIdentifier,
   glossaryTerms = NULL,
   identifier,
-  name = NULL
+  name = NULL,
+  userParameters = NULL
 )
 }
 \arguments{
+\item{blueprintVersion}{The blueprint version to which the environment should be updated. You
+can only specify the following string for this parameter: \code{latest}.}
+
 \item{description}{The description to be updated as part of the
 \code{\link[=datazone_update_environment]{update_environment}} action.}
 
@@ -25,6 +30,8 @@ datazone_update_environment(
 
 \item{name}{The name to be updated as part of the
 \code{\link[=datazone_update_environment]{update_environment}} action.}
+
+\item{userParameters}{The user parameters of the environment.}
 }
 \description{
 Updates the specified environment in Amazon DataZone.

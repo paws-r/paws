@@ -48,7 +48,7 @@ to identity pools to categorize and manage them in different ways, such
 as by purpose, owner, environment, or other criteria.}
 }
 \description{
-Creates a new identity pool. The identity pool is a store of user identity information that is specific to your AWS account. The keys for \code{SupportedLoginProviders} are as follows:
+Creates a new identity pool. The identity pool is a store of user identity information that is specific to your Amazon Web Services account. The keys for \code{SupportedLoginProviders} are as follows:
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentity_create_identity_pool/} for full documentation.
 }

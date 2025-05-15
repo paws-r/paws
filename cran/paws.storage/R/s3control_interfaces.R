@@ -51,7 +51,7 @@ NULL
 
 .s3control$create_access_point_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccountId = structure(logical(0), tags = list(hostLabel = TRUE, location = "header", locationName = "x-amz-account-id", type = "string")), Name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), Bucket = structure(logical(0), tags = list(type = "string")), VpcConfiguration = structure(list(VpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PublicAccessBlockConfiguration = structure(list(BlockPublicAcls = structure(logical(0), tags = list(locationName = "BlockPublicAcls", type = "boolean")), IgnorePublicAcls = structure(logical(0), tags = list(locationName = "IgnorePublicAcls", type = "boolean")), BlockPublicPolicy = structure(logical(0), tags = list(locationName = "BlockPublicPolicy", type = "boolean")), RestrictPublicBuckets = structure(logical(0), tags = list(locationName = "RestrictPublicBuckets", type = "boolean"))), tags = list(type = "structure")), BucketAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", locationName = "CreateAccessPointRequest", xmlNamespace = "http://awss3control.amazonaws.com/doc/2018-08-20/"))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(hostLabel = TRUE, location = "header", locationName = "x-amz-account-id", type = "string")), Name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), Bucket = structure(logical(0), tags = list(type = "string")), VpcConfiguration = structure(list(VpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PublicAccessBlockConfiguration = structure(list(BlockPublicAcls = structure(logical(0), tags = list(locationName = "BlockPublicAcls", type = "boolean")), IgnorePublicAcls = structure(logical(0), tags = list(locationName = "IgnorePublicAcls", type = "boolean")), BlockPublicPolicy = structure(logical(0), tags = list(locationName = "BlockPublicPolicy", type = "boolean")), RestrictPublicBuckets = structure(logical(0), tags = list(locationName = "RestrictPublicBuckets", type = "boolean"))), tags = list(type = "structure")), BucketAccountId = structure(logical(0), tags = list(type = "string")), Scope = structure(list(Prefixes = structure(list(structure(logical(0), tags = list(locationName = "Prefix", type = "string"))), tags = list(locationNameList = "Prefix", locationName = "Prefixes", type = "list")), Permissions = structure(list(structure(logical(0), tags = list(locationName = "Permission", type = "string"))), tags = list(locationNameList = "Permission", locationName = "Permissions", type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", locationName = "CreateAccessPointRequest", xmlNamespace = "http://awss3control.amazonaws.com/doc/2018-08-20/"))
   return(populate(args, shape))
 }
 
@@ -196,6 +196,16 @@ NULL
 }
 
 .s3control$delete_access_point_policy_for_object_lambda_output <- function(...) {
+  list()
+}
+
+.s3control$delete_access_point_scope_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(hostLabel = TRUE, location = "header", locationName = "x-amz-account-id", type = "string")), Name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.s3control$delete_access_point_scope_output <- function(...) {
   list()
 }
 
@@ -493,6 +503,18 @@ NULL
   return(populate(args, shape))
 }
 
+.s3control$get_access_point_scope_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(hostLabel = TRUE, location = "header", locationName = "x-amz-account-id", type = "string")), Name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.s3control$get_access_point_scope_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Scope = structure(list(Prefixes = structure(list(structure(logical(0), tags = list(locationName = "Prefix", type = "string"))), tags = list(locationNameList = "Prefix", locationName = "Prefixes", type = "list")), Permissions = structure(list(structure(logical(0), tags = list(locationName = "Permission", type = "string"))), tags = list(locationNameList = "Permission", locationName = "Permissions", type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .s3control$get_bucket_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(AccountId = structure(logical(0), tags = list(hostLabel = TRUE, location = "header", locationName = "x-amz-account-id", type = "string")), Bucket = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string"))), tags = list(type = "structure"))
@@ -573,7 +595,7 @@ NULL
 
 .s3control$get_data_access_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Credentials = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), SecretAccessKey = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), SessionToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure", sensitive = TRUE)), MatchedGrantTarget = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Credentials = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), SecretAccessKey = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), SessionToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure", sensitive = TRUE)), MatchedGrantTarget = structure(logical(0), tags = list(type = "string")), Grantee = structure(list(GranteeType = structure(logical(0), tags = list(type = "string")), GranteeIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -733,6 +755,18 @@ NULL
   return(populate(args, shape))
 }
 
+.s3control$list_access_points_for_directory_buckets_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(hostLabel = TRUE, location = "header", locationName = "x-amz-account-id", type = "string")), DirectoryBucket = structure(logical(0), tags = list(location = "querystring", locationName = "directoryBucket", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.s3control$list_access_points_for_directory_buckets_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccessPointList = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), NetworkOrigin = structure(logical(0), tags = list(type = "string")), VpcConfiguration = structure(list(VpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Bucket = structure(logical(0), tags = list(type = "string")), AccessPointArn = structure(logical(0), tags = list(type = "string")), Alias = structure(logical(0), tags = list(type = "string")), BucketAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "AccessPoint", type = "structure"))), tags = list(locationNameList = "AccessPoint", type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .s3control$list_access_points_for_object_lambda_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(AccountId = structure(logical(0), tags = list(hostLabel = TRUE, location = "header", locationName = "x-amz-account-id", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
@@ -868,6 +902,16 @@ NULL
 }
 
 .s3control$put_access_point_policy_for_object_lambda_output <- function(...) {
+  list()
+}
+
+.s3control$put_access_point_scope_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(hostLabel = TRUE, location = "header", locationName = "x-amz-account-id", type = "string")), Name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), Scope = structure(list(Prefixes = structure(list(structure(logical(0), tags = list(locationName = "Prefix", type = "string"))), tags = list(locationNameList = "Prefix", locationName = "Prefixes", type = "list")), Permissions = structure(list(structure(logical(0), tags = list(locationName = "Permission", type = "string"))), tags = list(locationNameList = "Permission", locationName = "Permissions", type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", locationName = "PutAccessPointScopeRequest", xmlNamespace = "http://awss3control.amazonaws.com/doc/2018-08-20/"))
+  return(populate(args, shape))
+}
+
+.s3control$put_access_point_scope_output <- function(...) {
   list()
 }
 

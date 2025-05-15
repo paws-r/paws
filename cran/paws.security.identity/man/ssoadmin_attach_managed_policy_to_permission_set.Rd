@@ -6,8 +6,8 @@
 \usage{
 ssoadmin_attach_managed_policy_to_permission_set(
   InstanceArn,
-  ManagedPolicyArn,
-  PermissionSetArn
+  PermissionSetArn,
+  ManagedPolicyArn
 )
 }
 \arguments{
@@ -16,11 +16,11 @@ will be executed. For more information about ARNs, see Amazon Resource
 Names (ARNs) and Amazon Web Services Service Namespaces in the \emph{Amazon
 Web Services General Reference}.}
 
-\item{ManagedPolicyArn}{[required] The Amazon Web Services managed policy ARN to be attached to a
-permission set.}
-
 \item{PermissionSetArn}{[required] The ARN of the PermissionSet that the managed policy should be attached
 to.}
+
+\item{ManagedPolicyArn}{[required] The Amazon Web Services managed policy ARN to be attached to a
+permission set.}
 }
 \description{
 Attaches an Amazon Web Services managed policy ARN to a permission set.

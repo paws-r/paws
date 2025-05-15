@@ -2,15 +2,15 @@
 % Please edit documentation in R/licensemanager_operations.R
 \name{licensemanager_list_tags_for_resource}
 \alias{licensemanager_list_tags_for_resource}
-\title{Lists the tags for the specified license configuration}
+\title{Lists the tags for the specified resource}
 \usage{
 licensemanager_list_tags_for_resource(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required] Amazon Resource Name (ARN) of the license configuration.}
+\item{ResourceArn}{[required] Amazon Resource Name (ARN) of the resource.}
 }
 \description{
-Lists the tags for the specified license configuration.
+Lists the tags for the specified resource. For more information about tagging support in License Manager, see the \code{\link[=licensemanager_tag_resource]{tag_resource}} operation.
 
 See \url{https://www.paws-r-sdk.com/docs/licensemanager_list_tags_for_resource/} for full documentation.
 }

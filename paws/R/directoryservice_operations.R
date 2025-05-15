@@ -2605,7 +2605,9 @@ directoryservice_disable_client_authentication <- function(DirectoryId, Type) {
 #'
 #' @description
 #' Deactivates access to directory data via the Directory Service Data API
-#' for the specified directory.
+#' for the specified directory. For more information, see [Directory
+#' Service Data API
+#' Reference](https://docs.aws.amazon.com/directoryservicedata/latest/DirectoryServiceDataAPIReference/Welcome.html).
 #'
 #' @usage
 #' directoryservice_disable_directory_data_access(DirectoryId)
@@ -2855,7 +2857,9 @@ directoryservice_enable_client_authentication <- function(DirectoryId, Type) {
 #'
 #' @description
 #' Enables access to directory data via the Directory Service Data API for
-#' the specified directory.
+#' the specified directory. For more information, see [Directory Service
+#' Data API
+#' Reference](https://docs.aws.amazon.com/directoryservicedata/latest/DirectoryServiceDataAPIReference/Welcome.html).
 #'
 #' @usage
 #' directoryservice_enable_directory_data_access(DirectoryId)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_put_access_point_policy}
 \alias{s3control_put_access_point_policy}
-\title{This operation is not supported by directory buckets}
+\title{Associates an access policy with the specified access point}
 \usage{
 s3control_put_access_point_policy(AccountId, Name, Policy)
 }
@@ -27,11 +27,12 @@ the URL encoding of
 The value must be URL encoded.}
 
 \item{Policy}{[required] The policy that you want to apply to the specified access point. For
-more information about access point policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html}{Managing data access with Amazon S3 access points}
+more information about access point policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html}{Managing access to shared datasets in general purpose buckets with access points}
+or \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets.html}{Managing access to shared datasets in directory bucekts with access points}
 in the \emph{Amazon S3 User Guide}.}
 }
 \description{
-This operation is not supported by directory buckets.
+Associates an access policy with the specified access point. Each access point can have only one policy, so a request made to this API replaces any existing policy associated with the specified access point.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_put_access_point_policy/} for full documentation.
 }

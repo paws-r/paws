@@ -141,14 +141,21 @@ By default, all associations use \code{AUTO} mode.}
 
 \item{ApplyOnlyAtCronInterval}{By default, when you create a new association, the system runs it
 immediately after it is created and then according to the schedule you
-specified. Specify this option if you don't want an association to run
-immediately after you create it. This parameter isn't supported for rate
-expressions.}
+specified and when target changes are detected. Specify \code{true} for
+\code{ApplyOnlyAtCronInterval}if you want the association to run only
+according to the schedule you specified.
 
-\item{CalendarNames}{The names or Amazon Resource Names (ARNs) of the Change Calendar type
+For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/state-manager-about.html#state-manager-about-scheduling}{Understanding when associations are applied to resources}
+and \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/state-manager-about.html#runbook-target-updates}{\>About target updates with Automation runbooks}
+in the \emph{Amazon Web Services Systems Manager User Guide}.
+
+This parameter isn't supported for rate expressions.}
+
+\item{CalendarNames}{The names of Amazon Resource Names (ARNs) of the Change Calendar type
 documents you want to gate your associations under. The associations
 only run when that change calendar is open. For more information, see
-\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html}{Amazon Web Services Systems Manager Change Calendar}.}
+\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html}{Amazon Web Services Systems Manager Change Calendar}
+in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{TargetLocations}{A location is a combination of Amazon Web Services Regions and Amazon
 Web Services accounts where you want to run the association. Use this

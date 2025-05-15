@@ -603,6 +603,13 @@ controltower_get_control_operation <- function(operationIdentifier) {
 #'     arn = "string",
 #'     baselineIdentifier = "string",
 #'     baselineVersion = "string",
+#'     driftStatusSummary = list(
+#'       types = list(
+#'         inheritance = list(
+#'           status = "IN_SYNC"|"DRIFTED"
+#'         )
+#'       )
+#'     ),
 #'     parameters = list(
 #'       list(
 #'         key = "string",
@@ -1026,6 +1033,13 @@ controltower_list_control_operations <- function(filter = NULL, maxResults = NUL
 #'       arn = "string",
 #'       baselineIdentifier = "string",
 #'       baselineVersion = "string",
+#'       driftStatusSummary = list(
+#'         types = list(
+#'           inheritance = list(
+#'             status = "IN_SYNC"|"DRIFTED"
+#'           )
+#'         )
+#'       ),
 #'       parentIdentifier = "string",
 #'       statusSummary = list(
 #'         lastOperationIdentifier = "string",
@@ -1045,8 +1059,14 @@ controltower_list_control_operations <- function(filter = NULL, maxResults = NUL
 #'     baselineIdentifiers = list(
 #'       "string"
 #'     ),
+#'     inheritanceDriftStatuses = list(
+#'       "IN_SYNC"|"DRIFTED"
+#'     ),
 #'     parentIdentifiers = list(
 #'       "string"
+#'     ),
+#'     statuses = list(
+#'       "SUCCEEDED"|"FAILED"|"UNDER_CHANGE"
 #'     ),
 #'     targetIdentifiers = list(
 #'       "string"

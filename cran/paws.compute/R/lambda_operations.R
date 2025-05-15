@@ -343,10 +343,10 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' @param MetricsConfig The metrics configuration for your event source. For more information,
 #' see [Event source mapping
 #' metrics](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics-types.html#event-source-mapping-metrics).
-#' @param ProvisionedPollerConfig (Amazon MSK and self-managed Apache Kafka only) The Provisioned Mode
+#' @param ProvisionedPollerConfig (Amazon MSK and self-managed Apache Kafka only) The provisioned mode
 #' configuration for the event source. For more information, see
-#' [Provisioned
-#' Mode](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html#invocation-eventsourcemapping-provisioned-mode).
+#' [provisioned
+#' mode](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html#invocation-eventsourcemapping-provisioned-mode).
 #'
 #' @keywords internal
 #'
@@ -544,8 +544,8 @@ lambda_create_function <- function(FunctionName, Runtime = NULL, Role, Handler =
 #' function
 #' URLs](https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html).
 #' @param Cors The [cross-origin resource sharing
-#' (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) settings
-#' for your function URL.
+#' (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS)
+#' settings for your function URL.
 #' @param InvokeMode Use one of the following options:
 #' 
 #' -   `BUFFERED` – This is the default option. Lambda invokes your
@@ -3165,10 +3165,10 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #' @param MetricsConfig The metrics configuration for your event source. For more information,
 #' see [Event source mapping
 #' metrics](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics-types.html#event-source-mapping-metrics).
-#' @param ProvisionedPollerConfig (Amazon MSK and self-managed Apache Kafka only) The Provisioned Mode
+#' @param ProvisionedPollerConfig (Amazon MSK and self-managed Apache Kafka only) The provisioned mode
 #' configuration for the event source. For more information, see
-#' [Provisioned
-#' Mode](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html#invocation-eventsourcemapping-provisioned-mode).
+#' [provisioned
+#' mode](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html#invocation-eventsourcemapping-provisioned-mode).
 #'
 #' @keywords internal
 #'
@@ -3491,8 +3491,8 @@ lambda_update_function_event_invoke_config <- function(FunctionName, Qualifier =
 #' function
 #' URLs](https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html).
 #' @param Cors The [cross-origin resource sharing
-#' (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) settings
-#' for your function URL.
+#' (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS)
+#' settings for your function URL.
 #' @param InvokeMode Use one of the following options:
 #' 
 #' -   `BUFFERED` – This is the default option. Lambda invokes your

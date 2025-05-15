@@ -113,7 +113,7 @@ NULL
 
 .redshiftdataapiservice$list_statements_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), RoleLevel = structure(logical(0), tags = list(type = "boolean", box = TRUE)), StatementName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ClusterIdentifier = structure(logical(0), tags = list(type = "string")), Database = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), RoleLevel = structure(logical(0), tags = list(type = "boolean", box = TRUE)), StatementName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), WorkgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

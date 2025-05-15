@@ -389,14 +389,20 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
 #' you might choose a software version pattern, such as 1.0.0, or a date,
 #' such as 2021.01.01.
 #' @param components &#91;required&#93; The components included in the image recipe.
-#' @param parentImage &#91;required&#93; The base image of the image recipe. The value of the string can be the
-#' ARN of the base image or an AMI ID. The format for the ARN follows this
-#' example:
-#' `arn:aws:imagebuilder:us-west-2:aws:image/windows-server-2016-english-full-base-x86/x.x.x`.
-#' You can provide the specific version that you want to use, or you can
-#' use a wildcard in all of the fields. If you enter an AMI ID for the
-#' string value, you must have access to the AMI, and the AMI must be in
-#' the same Region in which you are using Image Builder.
+#' @param parentImage &#91;required&#93; The base image for customizations specified in the image recipe. You can
+#' specify the parent image using one of the following options:
+#' 
+#' -   AMI ID
+#' 
+#' -   Image Builder image Amazon Resource Name (ARN)
+#' 
+#' -   Amazon Web Services Systems Manager (SSM) Parameter Store Parameter,
+#'     prefixed by `ssm:`, followed by the parameter name or ARN.
+#' 
+#' -   Amazon Web Services Marketplace product ID
+#' 
+#' If you enter an AMI ID or an SSM parameter that contains the AMI ID, you
+#' must have access to the AMI, and the AMI must be in the source Region.
 #' @param blockDeviceMappings The block device mappings of the image recipe.
 #' @param tags The tags of the image recipe.
 #' @param workingDirectory The working directory used during build and test workflows.

@@ -21,10 +21,16 @@ without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{Force}{Forces the instances to stop. The instances do not have an opportunity
-to flush file system caches or file system metadata. If you use this
-option, you must perform file system check and repair procedures. This
-option is not recommended for Windows instances.
+\item{Force}{Forces the instance to stop. The instance will first attempt a graceful
+shutdown, which includes flushing file system caches and metadata. If
+the graceful shutdown fails to complete within the timeout period, the
+instance shuts down forcibly without flushing the file system caches and
+metadata.
+
+After using this option, you must perform file system check and repair
+procedures. This option is not recommended for Windows instances. For
+more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesStopping.html}{Troubleshoot Amazon EC2 instance stop issues}
+in the \emph{Amazon EC2 User Guide}.
 
 Default: \code{false}}
 }

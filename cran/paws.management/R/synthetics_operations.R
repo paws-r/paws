@@ -80,14 +80,24 @@ synthetics_associate_resource <- function(GroupIdentifier, ResourceArn) {
 #' @param RunConfig A structure that contains the configuration for individual canary runs,
 #' such as timeout value and environment variables.
 #' 
-#' The environment variables keys and values are not encrypted. Do not
-#' store sensitive information in this field.
+#' Environment variable keys and values are encrypted at rest using Amazon
+#' Web Services owned KMS keys. However, the environment variables are not
+#' encrypted on the client side. Do not store sensitive information in
+#' them.
 #' @param SuccessRetentionPeriodInDays The number of days to retain data about successful runs of this canary.
 #' If you omit this field, the default of 31 days is used. The valid range
 #' is 1 to 455 days.
+#' 
+#' This setting affects the range of information returned by
+#' [`get_canary_runs`][synthetics_get_canary_runs], as well as the range of
+#' information displayed in the Synthetics console.
 #' @param FailureRetentionPeriodInDays The number of days to retain data about failed runs of this canary. If
 #' you omit this field, the default of 31 days is used. The valid range is
 #' 1 to 455 days.
+#' 
+#' This setting affects the range of information returned by
+#' [`get_canary_runs`][synthetics_get_canary_runs], as well as the range of
+#' information displayed in the Synthetics console.
 #' @param RuntimeVersion &#91;required&#93; Specifies the runtime version to use for the canary. For a list of valid
 #' runtime versions and more information about runtime versions, see
 #' [Canary Runtime
@@ -441,11 +451,13 @@ synthetics_disassociate_resource <- function(GroupIdentifier, ResourceArn) {
 #' See [https://www.paws-r-sdk.com/docs/synthetics_get_canary/](https://www.paws-r-sdk.com/docs/synthetics_get_canary/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the canary that you want details for.
+#' @param DryRunId The DryRunId associated with an existing canary’s dry run. You can use
+#' this DryRunId to retrieve information about the dry run.
 #'
 #' @keywords internal
 #'
 #' @rdname synthetics_get_canary
-synthetics_get_canary <- function(Name) {
+synthetics_get_canary <- function(Name, DryRunId = NULL) {
   op <- new_operation(
     name = "GetCanary",
     http_method = "GET",
@@ -454,7 +466,7 @@ synthetics_get_canary <- function(Name) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .synthetics$get_canary_input(Name = Name)
+  input <- .synthetics$get_canary_input(Name = Name, DryRunId = DryRunId)
   output <- .synthetics$get_canary_output()
   config <- get_config()
   svc <- .synthetics$service(config, op)
@@ -476,14 +488,31 @@ synthetics_get_canary <- function(Name) {
 #' this token in a subsequent
 #' [`get_canary_runs`][synthetics_get_canary_runs] operation to retrieve
 #' the next set of results.
+#' 
+#' When auto retry is enabled for the canary, the first subsequent retry is
+#' suffixed with *1 indicating its the first retry and the next subsequent
+#' try is suffixed with *2.
 #' @param MaxResults Specify this parameter to limit how many runs are returned each time you
 #' use the [`get_canary_runs`][synthetics_get_canary_runs] operation. If
 #' you omit this parameter, the default of 100 is used.
+#' @param DryRunId The DryRunId associated with an existing canary’s dry run. You can use
+#' this DryRunId to retrieve information about the dry run.
+#' @param RunType -   When you provide `RunType=CANARY_RUN` and `dryRunId`, you will get
+#'     an exception
+#' 
+#' -   When a value is not provided for `RunType`, the default value is
+#'     `CANARY_RUN`
+#' 
+#' -   When `CANARY_RUN` is provided, all canary runs excluding dry runs
+#'     are returned
+#' 
+#' -   When `DRY_RUN` is provided, all dry runs excluding canary runs are
+#'     returned
 #'
 #' @keywords internal
 #'
 #' @rdname synthetics_get_canary_runs
-synthetics_get_canary_runs <- function(Name, NextToken = NULL, MaxResults = NULL) {
+synthetics_get_canary_runs <- function(Name, NextToken = NULL, MaxResults = NULL, DryRunId = NULL, RunType = NULL) {
   op <- new_operation(
     name = "GetCanaryRuns",
     http_method = "POST",
@@ -492,7 +521,7 @@ synthetics_get_canary_runs <- function(Name, NextToken = NULL, MaxResults = NULL
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
-  input <- .synthetics$get_canary_runs_input(Name = Name, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .synthetics$get_canary_runs_input(Name = Name, NextToken = NextToken, MaxResults = MaxResults, DryRunId = DryRunId, RunType = RunType)
   output <- .synthetics$get_canary_runs_output()
   config <- get_config()
   svc <- .synthetics$service(config, op)
@@ -719,6 +748,76 @@ synthetics_start_canary <- function(Name) {
 }
 .synthetics$operations$start_canary <- synthetics_start_canary
 
+#' Use this operation to start a dry run for a canary that has already been
+#' created
+#'
+#' @description
+#' Use this operation to start a dry run for a canary that has already been created
+#'
+#' See [https://www.paws-r-sdk.com/docs/synthetics_start_canary_dry_run/](https://www.paws-r-sdk.com/docs/synthetics_start_canary_dry_run/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the canary that you want to dry run. To find canary names,
+#' use [`describe_canaries`][synthetics_describe_canaries].
+#' @param Code 
+#' @param RuntimeVersion Specifies the runtime version to use for the canary. For a list of valid
+#' runtime versions and for more information about runtime versions, see
+#' [Canary Runtime
+#' Versions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Library.html).
+#' @param RunConfig 
+#' @param VpcConfig 
+#' @param ExecutionRoleArn The ARN of the IAM role to be used to run the canary. This role must
+#' already exist, and must include `lambda.amazonaws.com` as a principal in
+#' the trust policy. The role must also have the following permissions:
+#' @param SuccessRetentionPeriodInDays The number of days to retain data on the failed runs for this canary.
+#' The valid range is 1 to 455 days.
+#' 
+#' This setting affects the range of information returned by
+#' [`get_canary_runs`][synthetics_get_canary_runs], as well as the range of
+#' information displayed in the Synthetics console.
+#' @param FailureRetentionPeriodInDays The number of days to retain data on the failed runs for this canary.
+#' The valid range is 1 to 455 days.
+#' 
+#' This setting affects the range of information returned by
+#' [`get_canary_runs`][synthetics_get_canary_runs], as well as the range of
+#' information displayed in the Synthetics console.
+#' @param VisualReference 
+#' @param ArtifactS3Location The location in Amazon S3 where Synthetics stores artifacts from the
+#' test runs of this canary. Artifacts include the log file, screenshots,
+#' and HAR files. The name of the Amazon S3 bucket can't include a period
+#' (.).
+#' @param ArtifactConfig 
+#' @param ProvisionedResourceCleanup Specifies whether to also delete the Lambda functions and layers used by
+#' this canary when the canary is deleted. If the value of this parameter
+#' is `AUTOMATIC`, it means that the Lambda functions and layers will be
+#' deleted when the canary is deleted.
+#' 
+#' If the value of this parameter is `OFF`, then the value of the
+#' `DeleteLambda` parameter of the
+#' [`delete_canary`][synthetics_delete_canary] operation determines whether
+#' the Lambda functions and layers will be deleted.
+#'
+#' @keywords internal
+#'
+#' @rdname synthetics_start_canary_dry_run
+synthetics_start_canary_dry_run <- function(Name, Code = NULL, RuntimeVersion = NULL, RunConfig = NULL, VpcConfig = NULL, ExecutionRoleArn = NULL, SuccessRetentionPeriodInDays = NULL, FailureRetentionPeriodInDays = NULL, VisualReference = NULL, ArtifactS3Location = NULL, ArtifactConfig = NULL, ProvisionedResourceCleanup = NULL) {
+  op <- new_operation(
+    name = "StartCanaryDryRun",
+    http_method = "POST",
+    http_path = "/canary/{name}/dry-run/start",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .synthetics$start_canary_dry_run_input(Name = Name, Code = Code, RuntimeVersion = RuntimeVersion, RunConfig = RunConfig, VpcConfig = VpcConfig, ExecutionRoleArn = ExecutionRoleArn, SuccessRetentionPeriodInDays = SuccessRetentionPeriodInDays, FailureRetentionPeriodInDays = FailureRetentionPeriodInDays, VisualReference = VisualReference, ArtifactS3Location = ArtifactS3Location, ArtifactConfig = ArtifactConfig, ProvisionedResourceCleanup = ProvisionedResourceCleanup)
+  output <- .synthetics$start_canary_dry_run_output()
+  config <- get_config()
+  svc <- .synthetics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.synthetics$operations$start_canary_dry_run <- synthetics_start_canary_dry_run
+
 #' Stops the canary to prevent all future runs
 #'
 #' @description
@@ -869,10 +968,20 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param RunConfig A structure that contains the timeout value that is used for each
 #' individual run of the canary.
 #' 
-#' The environment variables keys and values are not encrypted. Do not
-#' store sensitive information in this field.
+#' Environment variable keys and values are encrypted at rest using Amazon
+#' Web Services owned KMS keys. However, the environment variables are not
+#' encrypted on the client side. Do not store sensitive information in
+#' them.
 #' @param SuccessRetentionPeriodInDays The number of days to retain data about successful runs of this canary.
+#' 
+#' This setting affects the range of information returned by
+#' [`get_canary_runs`][synthetics_get_canary_runs], as well as the range of
+#' information displayed in the Synthetics console.
 #' @param FailureRetentionPeriodInDays The number of days to retain data about failed runs of this canary.
+#' 
+#' This setting affects the range of information returned by
+#' [`get_canary_runs`][synthetics_get_canary_runs], as well as the range of
+#' information displayed in the Synthetics console.
 #' @param VpcConfig If this canary is to test an endpoint in a VPC, this structure contains
 #' information about the subnet and security groups of the VPC endpoint.
 #' For more information, see [Running a Canary in a
@@ -901,11 +1010,17 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 #' `DeleteLambda` parameter of the
 #' [`delete_canary`][synthetics_delete_canary] operation determines whether
 #' the Lambda functions and layers will be deleted.
+#' @param DryRunId Update the existing canary using the updated configurations from the
+#' DryRun associated with the DryRunId.
+#' 
+#' When you use the `dryRunId` field when updating a canary, the only other
+#' field you can provide is the `Schedule`. Adding any other field will
+#' thrown an exception.
 #'
 #' @keywords internal
 #'
 #' @rdname synthetics_update_canary
-synthetics_update_canary <- function(Name, Code = NULL, ExecutionRoleArn = NULL, RuntimeVersion = NULL, Schedule = NULL, RunConfig = NULL, SuccessRetentionPeriodInDays = NULL, FailureRetentionPeriodInDays = NULL, VpcConfig = NULL, VisualReference = NULL, ArtifactS3Location = NULL, ArtifactConfig = NULL, ProvisionedResourceCleanup = NULL) {
+synthetics_update_canary <- function(Name, Code = NULL, ExecutionRoleArn = NULL, RuntimeVersion = NULL, Schedule = NULL, RunConfig = NULL, SuccessRetentionPeriodInDays = NULL, FailureRetentionPeriodInDays = NULL, VpcConfig = NULL, VisualReference = NULL, ArtifactS3Location = NULL, ArtifactConfig = NULL, ProvisionedResourceCleanup = NULL, DryRunId = NULL) {
   op <- new_operation(
     name = "UpdateCanary",
     http_method = "PATCH",
@@ -914,7 +1029,7 @@ synthetics_update_canary <- function(Name, Code = NULL, ExecutionRoleArn = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .synthetics$update_canary_input(Name = Name, Code = Code, ExecutionRoleArn = ExecutionRoleArn, RuntimeVersion = RuntimeVersion, Schedule = Schedule, RunConfig = RunConfig, SuccessRetentionPeriodInDays = SuccessRetentionPeriodInDays, FailureRetentionPeriodInDays = FailureRetentionPeriodInDays, VpcConfig = VpcConfig, VisualReference = VisualReference, ArtifactS3Location = ArtifactS3Location, ArtifactConfig = ArtifactConfig, ProvisionedResourceCleanup = ProvisionedResourceCleanup)
+  input <- .synthetics$update_canary_input(Name = Name, Code = Code, ExecutionRoleArn = ExecutionRoleArn, RuntimeVersion = RuntimeVersion, Schedule = Schedule, RunConfig = RunConfig, SuccessRetentionPeriodInDays = SuccessRetentionPeriodInDays, FailureRetentionPeriodInDays = FailureRetentionPeriodInDays, VpcConfig = VpcConfig, VisualReference = VisualReference, ArtifactS3Location = ArtifactS3Location, ArtifactConfig = ArtifactConfig, ProvisionedResourceCleanup = ProvisionedResourceCleanup, DryRunId = DryRunId)
   output <- .synthetics$update_canary_output()
   config <- get_config()
   svc <- .synthetics$service(config, op)

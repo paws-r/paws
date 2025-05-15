@@ -17,7 +17,13 @@ memorydb_create_multi_region_cluster(
 )
 }
 \arguments{
-\item{MultiRegionClusterNameSuffix}{[required] A suffix to be added to the multi-Region cluster name.}
+\item{MultiRegionClusterNameSuffix}{[required] A suffix to be added to the Multi-Region cluster name. Amazon MemoryDB
+automatically applies a prefix to the Multi-Region cluster Name when it
+is created. Each Amazon Region has its own prefix. For instance, a
+Multi-Region cluster Name created in the US-West-1 region will begin
+with "virxk", along with the suffix name you provide. The suffix
+guarantees uniqueness of the Multi-Region cluster name across multiple
+regions.}
 
 \item{Description}{A description for the multi-Region cluster.}
 

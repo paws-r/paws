@@ -12,7 +12,7 @@ first day of the month (a billing start date). Dates can't precede the
 previous twelve months, or in the future.}
 }
 \description{
-Request a cost allocation tag backfill. This will backfill the activation status (either \code{active} or \code{inactive}) for all tag keys from \code{para:BackfillFrom} up to the when this request is made.
+Request a cost allocation tag backfill. This will backfill the activation status (either \code{active} or \code{inactive}) for all tag keys from \code{para:BackfillFrom} up to the time this request is made.
 
 See \url{https://www.paws-r-sdk.com/docs/costexplorer_start_cost_allocation_tag_backfill/} for full documentation.
 }

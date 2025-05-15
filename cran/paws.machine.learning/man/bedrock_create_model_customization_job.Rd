@@ -60,7 +60,7 @@ different models, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide
 
 \item{vpcConfig}{The configuration of the Virtual Private Cloud (VPC) that contains the
 resources that you're using for this job. For more information, see
-\href{https://docs.aws.amazon.com/bedrock/latest/userguide/vpc-model-customization.html}{Protect your model customization jobs using a VPC}.}
+\href{https://docs.aws.amazon.com/bedrock/latest/userguide/}{Protect your model customization jobs using a VPC}.}
 
 \item{customizationConfig}{The customization configuration for the model customization job.}
 }

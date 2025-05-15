@@ -131,7 +131,7 @@ NULL
 #'  \link[=memorydb_list_tags]{list_tags} \tab Lists all tags currently on a named resource\cr
 #'  \link[=memorydb_purchase_reserved_nodes_offering]{purchase_reserved_nodes_offering} \tab Allows you to purchase a reserved node offering\cr
 #'  \link[=memorydb_reset_parameter_group]{reset_parameter_group} \tab Modifies the parameters of a parameter group to the engine or system default value\cr
-#'  \link[=memorydb_tag_resource]{tag_resource} \tab A tag is a key-value pair where the key and value are case-sensitive\cr
+#'  \link[=memorydb_tag_resource]{tag_resource} \tab Use this operation to add tags to a resource\cr
 #'  \link[=memorydb_untag_resource]{untag_resource} \tab Use this operation to remove tags on a resource\cr
 #'  \link[=memorydb_update_acl]{update_acl} \tab Changes the list of users that belong to the Access Control List\cr
 #'  \link[=memorydb_update_cluster]{update_cluster} \tab Modifies the settings for a cluster\cr
@@ -170,7 +170,7 @@ memorydb <- function(config = list(), credentials = list(), endpoint = NULL, reg
 
 .memorydb$metadata <- list(
   service_name = "memorydb",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "memory-db.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "memory-db.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "memory-db.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "memory-db.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "memory-db.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "memory-db.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "memory-db.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "memory-db.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "memory-db.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "memory-db.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "memory-db.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "memory-db.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "memory-db.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "memory-db.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "memory-db.{region}.amazonaws.eu", global = FALSE)),
   service_id = "MemoryDB",
   api_version = "2021-01-01",
   signing_name = "memorydb",

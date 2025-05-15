@@ -177,7 +177,10 @@ mutating (create and update) operations.
 \link[paws.security.identity:verifiedpermissions_list_policies]{list_policies} \tab Returns a paginated list of all policies stored in the specified policy store\cr
 \link[paws.security.identity:verifiedpermissions_list_policy_stores]{list_policy_stores} \tab Returns a paginated list of all policy stores in the calling Amazon Web Services account\cr
 \link[paws.security.identity:verifiedpermissions_list_policy_templates]{list_policy_templates} \tab Returns a paginated list of all policy templates in the specified policy store\cr
+\link[paws.security.identity:verifiedpermissions_list_tags_for_resource]{list_tags_for_resource} \tab Returns the tags associated with the specified Amazon Verified Permissions resource\cr
 \link[paws.security.identity:verifiedpermissions_put_schema]{put_schema} \tab Creates or updates the policy schema in the specified policy store\cr
+\link[paws.security.identity:verifiedpermissions_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified Amazon Verified Permissions resource\cr
+\link[paws.security.identity:verifiedpermissions_untag_resource]{untag_resource} \tab Removes one or more tags from the specified Amazon Verified Permissions resource\cr
 \link[paws.security.identity:verifiedpermissions_update_identity_source]{update_identity_source} \tab Updates the specified identity source to use a new identity provider (IdP), or to change the mapping of identities from the IdP to a different principal entity type\cr
 \link[paws.security.identity:verifiedpermissions_update_policy]{update_policy} \tab Modifies a Cedar static policy in the specified policy store\cr
 \link[paws.security.identity:verifiedpermissions_update_policy_store]{update_policy_store} \tab Modifies the validation setting for a policy store\cr

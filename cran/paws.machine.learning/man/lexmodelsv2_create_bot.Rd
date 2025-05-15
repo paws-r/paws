@@ -13,7 +13,8 @@ lexmodelsv2_create_bot(
   botTags = NULL,
   testBotAliasTags = NULL,
   botType = NULL,
-  botMembers = NULL
+  botMembers = NULL,
+  errorLogSettings = NULL
 )
 }
 \arguments{
@@ -51,6 +52,8 @@ update tags. To update tags on the test alias, use the
 \item{botType}{The type of a bot to create.}
 
 \item{botMembers}{The list of bot members in a network to be created.}
+
+\item{errorLogSettings}{Specifies the configuration for error logging during bot creation.}
 }
 \description{
 Creates an Amazon Lex conversational bot.

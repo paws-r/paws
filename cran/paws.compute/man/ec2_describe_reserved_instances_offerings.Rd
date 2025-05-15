@@ -14,6 +14,7 @@ ec2_describe_reserved_instances_offerings(
   OfferingClass = NULL,
   ProductDescription = NULL,
   ReservedInstancesOfferingIds = NULL,
+  AvailabilityZoneId = NULL,
   DryRun = NULL,
   Filters = NULL,
   InstanceTenancy = NULL,
@@ -23,7 +24,10 @@ ec2_describe_reserved_instances_offerings(
 )
 }
 \arguments{
-\item{AvailabilityZone}{The Availability Zone in which the Reserved Instance can be used.}
+\item{AvailabilityZone}{The Availability Zone in which the Reserved Instance can be used.
+
+Either \code{AvailabilityZone} or \code{AvailabilityZoneId} can be specified, but
+not both.}
 
 \item{IncludeMarketplace}{Include Reserved Instance Marketplace offerings in the response.}
 
@@ -53,6 +57,11 @@ include \verb{(Amazon VPC)} in the description are for use with Amazon VPC.}
 
 \item{ReservedInstancesOfferingIds}{One or more Reserved Instances offering IDs.}
 
+\item{AvailabilityZoneId}{The ID of the Availability Zone.
+
+Either \code{AvailabilityZone} or \code{AvailabilityZoneId} can be specified, but
+not both.}
+
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
@@ -62,6 +71,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \itemize{
 \item \code{availability-zone} - The Availability Zone where the Reserved
 Instance can be used.
+\item \code{availability-zone-id} - The ID of the Availability Zone where the
+Reserved Instance can be used.
 \item \code{duration} - The duration of the Reserved Instance (for example, one
 year or three years), in seconds (\code{31536000} | \code{94608000}).
 \item \code{fixed-price} - The purchase price of the Reserved Instance (for

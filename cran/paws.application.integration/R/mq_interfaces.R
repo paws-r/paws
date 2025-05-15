@@ -61,6 +61,18 @@ NULL
   return(populate(args, shape))
 }
 
+.mq$delete_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConfigurationId = structure(logical(0), tags = list(location = "uri", locationName = "configuration-id", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mq$delete_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConfigurationId = structure(logical(0), tags = list(locationName = "configurationId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .mq$delete_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resource-arn", type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))

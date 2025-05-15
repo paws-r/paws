@@ -6,9 +6,11 @@
 Services account that is not managed by Organizations or a member Amazon
 Web Services account in an organization}
 \usage{
-ssoadmin_create_instance(ClientToken = NULL, Name = NULL, Tags = NULL)
+ssoadmin_create_instance(Name = NULL, ClientToken = NULL, Tags = NULL)
 }
 \arguments{
+\item{Name}{The name of the instance of IAM Identity Center.}
+
 \item{ClientToken}{Specifies a unique, case-sensitive ID that you provide to ensure the
 idempotency of the request. This lets you safely retry the request
 without accidentally performing the same operation a second time.
@@ -22,8 +24,6 @@ random one for you.
 If you retry the operation with the same \code{ClientToken}, but with
 different parameters, the retry fails with an
 \code{IdempotentParameterMismatch} error.}
-
-\item{Name}{The name of the instance of IAM Identity Center.}
 
 \item{Tags}{Specifies tags to be attached to the instance of IAM Identity Center.}
 }

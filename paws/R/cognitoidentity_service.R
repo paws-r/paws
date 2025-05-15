@@ -17,8 +17,8 @@ NULL
 #' Login with Amazon) or an Amazon Cognito user pool, and you can also
 #' choose to support unauthenticated access from your app. Cognito delivers
 #' a unique identifier for each user and acts as an OpenID token provider
-#' trusted by AWS Security Token Service (STS) to access temporary,
-#' limited-privilege AWS credentials.
+#' trusted by Security Token Service (STS) to access temporary,
+#' limited-privilege Amazon Web Services credentials.
 #' 
 #' For a description of the authentication flow from the Amazon Cognito
 #' Developer Guide see [Authentication
@@ -116,7 +116,7 @@ NULL
 #'  \link[=cognitoidentity_describe_identity]{describe_identity} \tab Returns metadata related to the given identity, including when the identity was created and any associated linked logins\cr
 #'  \link[=cognitoidentity_describe_identity_pool]{describe_identity_pool} \tab Gets details about a particular identity pool, including the pool name, ID description, creation date, and current number of users\cr
 #'  \link[=cognitoidentity_get_credentials_for_identity]{get_credentials_for_identity} \tab Returns credentials for the provided identity ID\cr
-#'  \link[=cognitoidentity_get_id]{get_id} \tab Generates (or retrieves) a Cognito ID\cr
+#'  \link[=cognitoidentity_get_id]{get_id} \tab Generates (or retrieves) IdentityID\cr
 #'  \link[=cognitoidentity_get_identity_pool_roles]{get_identity_pool_roles} \tab Gets the roles for an identity pool\cr
 #'  \link[=cognitoidentity_get_open_id_token]{get_open_id_token} \tab Gets an OpenID token, using a known Cognito ID\cr
 #'  \link[=cognitoidentity_get_open_id_token_for_developer_identity]{get_open_id_token_for_developer_identity} \tab Registers (or retrieves) a Cognito IdentityId and an OpenID Connect token for a user authenticated by your backend authentication process\cr
@@ -132,7 +132,7 @@ NULL
 #'  \link[=cognitoidentity_unlink_developer_identity]{unlink_developer_identity} \tab Unlinks a DeveloperUserIdentifier from an existing identity\cr
 #'  \link[=cognitoidentity_unlink_identity]{unlink_identity} \tab Unlinks a federated identity from an existing account\cr
 #'  \link[=cognitoidentity_untag_resource]{untag_resource} \tab Removes the specified tags from the specified Amazon Cognito identity pool\cr
-#'  \link[=cognitoidentity_update_identity_pool]{update_identity_pool} \tab Updates an identity pool
+#'  \link[=cognitoidentity_update_identity_pool]{update_identity_pool} \tab Updates the configuration of an identity pool
 #' }
 #'
 #' @return
@@ -164,7 +164,7 @@ cognitoidentity <- function(config = list(), credentials = list(), endpoint = NU
 
 .cognitoidentity$metadata <- list(
   service_name = "cognito-identity",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "cognito-identity.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "cognito-identity.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "cognito-identity.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "cognito-identity.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "cognito-identity.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "cognito-identity.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "cognito-identity.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "cognito-identity.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "cognito-identity.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "cognito-identity.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "cognito-identity.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "cognito-identity.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "cognito-identity.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "cognito-identity.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "cognito-identity.{region}.amazonaws.eu", global = FALSE)),
   service_id = "Cognito Identity",
   api_version = "2014-06-30",
   signing_name = "cognito-identity",

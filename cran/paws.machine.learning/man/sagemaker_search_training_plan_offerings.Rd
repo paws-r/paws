@@ -6,23 +6,23 @@
 criteria}
 \usage{
 sagemaker_search_training_plan_offerings(
-  InstanceType,
-  InstanceCount,
+  InstanceType = NULL,
+  InstanceCount = NULL,
   StartTimeAfter = NULL,
   EndTimeBefore = NULL,
-  DurationHours = NULL,
+  DurationHours,
   TargetResources
 )
 }
 \arguments{
-\item{InstanceType}{[required] The type of instance you want to search for in the available training
+\item{InstanceType}{The type of instance you want to search for in the available training
 plan offerings. This field allows you to filter the search results based
 on the specific compute resources you require for your SageMaker
 training jobs or SageMaker HyperPod clusters. When searching for
 training plan offerings, specifying the instance type helps you find
 Reserved Instances that match your computational needs.}
 
-\item{InstanceCount}{[required] The number of instances you want to reserve in the training plan
+\item{InstanceCount}{The number of instances you want to reserve in the training plan
 offerings. This allows you to specify the quantity of compute resources
 needed for your SageMaker training jobs or SageMaker HyperPod clusters,
 helping you find reserved capacity offerings that match your
@@ -34,7 +34,7 @@ specified date.}
 \item{EndTimeBefore}{A filter to search for reserved capacity offerings with an end time
 before a specified date.}
 
-\item{DurationHours}{The desired duration in hours for the training plan offerings.}
+\item{DurationHours}{[required] The desired duration in hours for the training plan offerings.}
 
 \item{TargetResources}{[required] The target resources (e.g., SageMaker Training Jobs, SageMaker HyperPod)
 to search for in the offerings.

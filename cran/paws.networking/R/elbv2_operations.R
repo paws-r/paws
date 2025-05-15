@@ -258,11 +258,13 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL,
 #' @param EnablePrefixForIpv6SourceNat \[Network Load Balancers with UDP listeners\] Indicates whether to use
 #' an IPv6 prefix from each subnet for source NAT. The IP address type must
 #' be `dualstack`. The default value is `off`.
+#' @param IpamPools \[Application Load Balancers\] The IPAM pools to use with the load
+#' balancer.
 #'
 #' @keywords internal
 #'
 #' @rdname elbv2_create_load_balancer
-elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NULL, SecurityGroups = NULL, Scheme = NULL, Tags = NULL, Type = NULL, IpAddressType = NULL, CustomerOwnedIpv4Pool = NULL, EnablePrefixForIpv6SourceNat = NULL) {
+elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NULL, SecurityGroups = NULL, Scheme = NULL, Tags = NULL, Type = NULL, IpAddressType = NULL, CustomerOwnedIpv4Pool = NULL, EnablePrefixForIpv6SourceNat = NULL, IpamPools = NULL) {
   op <- new_operation(
     name = "CreateLoadBalancer",
     http_method = "POST",
@@ -271,7 +273,7 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .elbv2$create_load_balancer_input(Name = Name, Subnets = Subnets, SubnetMappings = SubnetMappings, SecurityGroups = SecurityGroups, Scheme = Scheme, Tags = Tags, Type = Type, IpAddressType = IpAddressType, CustomerOwnedIpv4Pool = CustomerOwnedIpv4Pool, EnablePrefixForIpv6SourceNat = EnablePrefixForIpv6SourceNat)
+  input <- .elbv2$create_load_balancer_input(Name = Name, Subnets = Subnets, SubnetMappings = SubnetMappings, SecurityGroups = SecurityGroups, Scheme = Scheme, Tags = Tags, Type = Type, IpAddressType = IpAddressType, CustomerOwnedIpv4Pool = CustomerOwnedIpv4Pool, EnablePrefixForIpv6SourceNat = EnablePrefixForIpv6SourceNat, IpamPools = IpamPools)
   output <- .elbv2$create_load_balancer_output()
   config <- get_config()
   svc <- .elbv2$service(config, op)
@@ -1368,6 +1370,40 @@ elbv2_modify_capacity_reservation <- function(LoadBalancerArn, MinimumLoadBalanc
   return(response)
 }
 .elbv2$operations$modify_capacity_reservation <- elbv2_modify_capacity_reservation
+
+#' &#91;Application Load Balancers&#93; Modify the IP pool associated to a
+#' load balancer
+#'
+#' @description
+#' \[Application Load Balancers\] Modify the IP pool associated to a load balancer.
+#'
+#' See [https://www.paws-r-sdk.com/docs/elbv2_modify_ip_pools/](https://www.paws-r-sdk.com/docs/elbv2_modify_ip_pools/) for full documentation.
+#'
+#' @param LoadBalancerArn &#91;required&#93; The Amazon Resource Name (ARN) of the load balancer.
+#' @param IpamPools The IPAM pools to be modified.
+#' @param RemoveIpamPools Remove the IP pools in use by the load balancer.
+#'
+#' @keywords internal
+#'
+#' @rdname elbv2_modify_ip_pools
+elbv2_modify_ip_pools <- function(LoadBalancerArn, IpamPools = NULL, RemoveIpamPools = NULL) {
+  op <- new_operation(
+    name = "ModifyIpPools",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .elbv2$modify_ip_pools_input(LoadBalancerArn = LoadBalancerArn, IpamPools = IpamPools, RemoveIpamPools = RemoveIpamPools)
+  output <- .elbv2$modify_ip_pools_output()
+  config <- get_config()
+  svc <- .elbv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elbv2$operations$modify_ip_pools <- elbv2_modify_ip_pools
 
 #' Replaces the specified properties of the specified listener
 #'

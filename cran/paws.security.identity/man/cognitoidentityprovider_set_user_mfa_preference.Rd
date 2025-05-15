@@ -19,15 +19,18 @@ available.}
 
 \item{SoftwareTokenMfaSettings}{User preferences for time-based one-time password (TOTP) MFA. Activates
 or deactivates TOTP MFA and sets it as the preferred MFA method when
-multiple methods are available.}
+multiple methods are available. Users must register a TOTP authenticator
+before they set this as their preferred MFA method.}
 
 \item{EmailMfaSettings}{User preferences for email message MFA. Activates or deactivates email
 MFA and sets it as the preferred MFA method when multiple methods are
-available. To activate this setting, \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-threat-protection.html}{advanced security features}
-must be active in your user pool.}
+available. To activate this setting, your user pool must be in the
+\href{https://docs.aws.amazon.com/cognito/latest/developerguide/feature-plans-features-essentials.html}{Essentials tier}
+or higher.}
 
-\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the user whose MFA
-preference you want to set.}
+\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the currently
+signed-in user. Must include a scope claim for
+\code{aws.cognito.signin.user.admin}.}
 }
 \description{
 Set the user's multi-factor authentication (MFA) method preference, including which MFA factors are activated and if any are preferred. Only one factor can be set as preferred. The preferred MFA factor will be used to authenticate a user if multiple factors are activated. If multiple options are activated and no preference is set, a challenge to choose an MFA option will be returned during sign-in. If an MFA type is activated for a user, the user will be prompted for MFA during all sign-in attempts unless device tracking is turned on and the device has been trusted. If you want MFA to be applied selectively based on the assessed risk level of sign-in attempts, deactivate MFA for users and turn on Adaptive Authentication for the user pool.

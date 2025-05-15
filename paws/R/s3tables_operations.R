@@ -80,14 +80,21 @@ s3tables_create_namespace <- function(tableBucketARN, namespace) {
 #' 
 #' ### Permissions
 #' 
-#' You must have the `s3tables:CreateTable` permission to use this
-#' operation.
+#' -   You must have the `s3tables:CreateTable` permission to use this
+#'     operation.
 #' 
-#' Additionally, you must have the `s3tables:PutTableData` permission to
-#' use this operation with the optional `metadata` request parameter.
+#' -   If you use this operation with the optional `metadata` request
+#'     parameter you must have the `s3tables:PutTableData` permission.
+#' 
+#' -   If you use this operation with the optional
+#'     `encryptionConfiguration` request parameter you must have the
+#'     `s3tables:PutTableEncryption` permission.
+#' 
+#' Additionally,
 #'
 #' @usage
-#' s3tables_create_table(tableBucketARN, namespace, name, format, metadata)
+#' s3tables_create_table(tableBucketARN, namespace, name, format, metadata,
+#'   encryptionConfiguration)
 #'
 #' @param tableBucketARN &#91;required&#93; The Amazon Resource Name (ARN) of the table bucket to create the table
 #' in.
@@ -95,6 +102,14 @@ s3tables_create_namespace <- function(tableBucketARN, namespace) {
 #' @param name &#91;required&#93; The name for the table.
 #' @param format &#91;required&#93; The format for the table.
 #' @param metadata The metadata for the table.
+#' @param encryptionConfiguration The encryption configuration to use for the table. This configuration
+#' specifies the encryption algorithm and, if using SSE-KMS, the KMS key to
+#' use for encrypting the table.
+#' 
+#' If you choose SSE-KMS encryption you must grant the S3 Tables
+#' maintenance principal access to your KMS key. For more information, see
+#' [Permissions requirements for S3 Tables SSE-KMS
+#' encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-kms-permissions.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -124,6 +139,10 @@ s3tables_create_namespace <- function(tableBucketARN, namespace) {
 #'         )
 #'       )
 #'     )
+#'   ),
+#'   encryptionConfiguration = list(
+#'     sseAlgorithm = "AES256"|"aws:kms",
+#'     kmsKeyArn = "string"
 #'   )
 #' )
 #' ```
@@ -133,7 +152,7 @@ s3tables_create_namespace <- function(tableBucketARN, namespace) {
 #' @rdname s3tables_create_table
 #'
 #' @aliases s3tables_create_table
-s3tables_create_table <- function(tableBucketARN, namespace, name, format, metadata = NULL) {
+s3tables_create_table <- function(tableBucketARN, namespace, name, format, metadata = NULL, encryptionConfiguration = NULL) {
   op <- new_operation(
     name = "CreateTable",
     http_method = "PUT",
@@ -142,7 +161,7 @@ s3tables_create_table <- function(tableBucketARN, namespace, name, format, metad
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3tables$create_table_input(tableBucketARN = tableBucketARN, namespace = namespace, name = name, format = format, metadata = metadata)
+  input <- .s3tables$create_table_input(tableBucketARN = tableBucketARN, namespace = namespace, name = name, format = format, metadata = metadata, encryptionConfiguration = encryptionConfiguration)
   output <- .s3tables$create_table_output()
   config <- get_config()
   svc <- .s3tables$service(config, op)
@@ -161,13 +180,22 @@ s3tables_create_table <- function(tableBucketARN, namespace, name, format, metad
 #' 
 #' ### Permissions
 #' 
-#' You must have the `s3tables:CreateTableBucket` permission to use this
-#' operation.
+#' -   You must have the `s3tables:CreateTableBucket` permission to use
+#'     this operation.
+#' 
+#' -   If you use this operation with the optional
+#'     `encryptionConfiguration` parameter you must have the
+#'     `s3tables:PutTableBucketEncryption` permission.
 #'
 #' @usage
-#' s3tables_create_table_bucket(name)
+#' s3tables_create_table_bucket(name, encryptionConfiguration)
 #'
 #' @param name &#91;required&#93; The name for the table bucket.
+#' @param encryptionConfiguration The encryption configuration to use for the table bucket. This
+#' configuration specifies the default encryption settings that will be
+#' applied to all tables created in this bucket unless overridden at the
+#' table level. The configuration includes the encryption algorithm and, if
+#' using SSE-KMS, the KMS key to use.
 #'
 #' @return
 #' A list with the following syntax:
@@ -180,7 +208,11 @@ s3tables_create_table <- function(tableBucketARN, namespace, name, format, metad
 #' @section Request syntax:
 #' ```
 #' svc$create_table_bucket(
-#'   name = "string"
+#'   name = "string",
+#'   encryptionConfiguration = list(
+#'     sseAlgorithm = "AES256"|"aws:kms",
+#'     kmsKeyArn = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -189,7 +221,7 @@ s3tables_create_table <- function(tableBucketARN, namespace, name, format, metad
 #' @rdname s3tables_create_table_bucket
 #'
 #' @aliases s3tables_create_table_bucket
-s3tables_create_table_bucket <- function(name) {
+s3tables_create_table_bucket <- function(name, encryptionConfiguration = NULL) {
   op <- new_operation(
     name = "CreateTableBucket",
     http_method = "PUT",
@@ -198,7 +230,7 @@ s3tables_create_table_bucket <- function(name) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3tables$create_table_bucket_input(name = name)
+  input <- .s3tables$create_table_bucket_input(name = name, encryptionConfiguration = encryptionConfiguration)
   output <- .s3tables$create_table_bucket_output()
   config <- get_config()
   svc <- .s3tables$service(config, op)
@@ -371,6 +403,55 @@ s3tables_delete_table_bucket <- function(tableBucketARN) {
 }
 .s3tables$operations$delete_table_bucket <- s3tables_delete_table_bucket
 
+#' Deletes the encryption configuration for a table bucket
+#'
+#' @description
+#' Deletes the encryption configuration for a table bucket.
+#' 
+#' ### Permissions
+#' 
+#' You must have the `s3tables:DeleteTableBucketEncryption` permission to
+#' use this operation.
+#'
+#' @usage
+#' s3tables_delete_table_bucket_encryption(tableBucketARN)
+#'
+#' @param tableBucketARN &#91;required&#93; The Amazon Resource Name (ARN) of the table bucket.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_table_bucket_encryption(
+#'   tableBucketARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3tables_delete_table_bucket_encryption
+#'
+#' @aliases s3tables_delete_table_bucket_encryption
+s3tables_delete_table_bucket_encryption <- function(tableBucketARN) {
+  op <- new_operation(
+    name = "DeleteTableBucketEncryption",
+    http_method = "DELETE",
+    http_path = "/buckets/{tableBucketARN}/encryption",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3tables$delete_table_bucket_encryption_input(tableBucketARN = tableBucketARN)
+  output <- .s3tables$delete_table_bucket_encryption_output()
+  config <- get_config()
+  svc <- .s3tables$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3tables$operations$delete_table_bucket_encryption <- s3tables_delete_table_bucket_encryption
+
 #' Deletes a table bucket policy
 #'
 #' @description
@@ -508,7 +589,9 @@ s3tables_delete_table_policy <- function(tableBucketARN, namespace, name) {
 #'     "2015-01-01"
 #'   ),
 #'   createdBy = "string",
-#'   ownerAccountId = "string"
+#'   ownerAccountId = "string",
+#'   namespaceId = "string",
+#'   tableBucketId = "string"
 #' )
 #' ```
 #'
@@ -573,6 +656,7 @@ s3tables_get_namespace <- function(tableBucketARN, namespace) {
 #'   namespace = list(
 #'     "string"
 #'   ),
+#'   namespaceId = "string",
 #'   versionToken = "string",
 #'   metadataLocation = "string",
 #'   warehouseLocation = "string",
@@ -586,7 +670,8 @@ s3tables_get_namespace <- function(tableBucketARN, namespace) {
 #'   ),
 #'   modifiedBy = "string",
 #'   ownerAccountId = "string",
-#'   format = "ICEBERG"
+#'   format = "ICEBERG",
+#'   tableBucketId = "string"
 #' )
 #' ```
 #'
@@ -650,7 +735,8 @@ s3tables_get_table <- function(tableBucketARN, namespace, name) {
 #'   ownerAccountId = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   tableBucketId = "string"
 #' )
 #' ```
 #'
@@ -684,6 +770,63 @@ s3tables_get_table_bucket <- function(tableBucketARN) {
   return(response)
 }
 .s3tables$operations$get_table_bucket <- s3tables_get_table_bucket
+
+#' Gets the encryption configuration for a table bucket
+#'
+#' @description
+#' Gets the encryption configuration for a table bucket.
+#' 
+#' ### Permissions
+#' 
+#' You must have the `s3tables:GetTableBucketEncryption` permission to use
+#' this operation.
+#'
+#' @usage
+#' s3tables_get_table_bucket_encryption(tableBucketARN)
+#'
+#' @param tableBucketARN &#91;required&#93; The Amazon Resource Name (ARN) of the table bucket.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   encryptionConfiguration = list(
+#'     sseAlgorithm = "AES256"|"aws:kms",
+#'     kmsKeyArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_table_bucket_encryption(
+#'   tableBucketARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3tables_get_table_bucket_encryption
+#'
+#' @aliases s3tables_get_table_bucket_encryption
+s3tables_get_table_bucket_encryption <- function(tableBucketARN) {
+  op <- new_operation(
+    name = "GetTableBucketEncryption",
+    http_method = "GET",
+    http_path = "/buckets/{tableBucketARN}/encryption",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3tables$get_table_bucket_encryption_input(tableBucketARN = tableBucketARN)
+  output <- .s3tables$get_table_bucket_encryption_output()
+  config <- get_config()
+  svc <- .s3tables$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3tables$operations$get_table_bucket_encryption <- s3tables_get_table_bucket_encryption
 
 #' Gets details about a maintenance configuration for a given table bucket
 #'
@@ -810,6 +953,67 @@ s3tables_get_table_bucket_policy <- function(tableBucketARN) {
   return(response)
 }
 .s3tables$operations$get_table_bucket_policy <- s3tables_get_table_bucket_policy
+
+#' Gets the encryption configuration for a table
+#'
+#' @description
+#' Gets the encryption configuration for a table.
+#' 
+#' ### Permissions
+#' 
+#' You must have the `s3tables:GetTableEncryption` permission to use this
+#' operation.
+#'
+#' @usage
+#' s3tables_get_table_encryption(tableBucketARN, namespace, name)
+#'
+#' @param tableBucketARN &#91;required&#93; The Amazon Resource Name (ARN) of the table bucket containing the table.
+#' @param namespace &#91;required&#93; The namespace associated with the table.
+#' @param name &#91;required&#93; The name of the table.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   encryptionConfiguration = list(
+#'     sseAlgorithm = "AES256"|"aws:kms",
+#'     kmsKeyArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_table_encryption(
+#'   tableBucketARN = "string",
+#'   namespace = "string",
+#'   name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3tables_get_table_encryption
+#'
+#' @aliases s3tables_get_table_encryption
+s3tables_get_table_encryption <- function(tableBucketARN, namespace, name) {
+  op <- new_operation(
+    name = "GetTableEncryption",
+    http_method = "GET",
+    http_path = "/tables/{tableBucketARN}/{namespace}/{name}/encryption",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3tables$get_table_encryption_input(tableBucketARN = tableBucketARN, namespace = namespace, name = name)
+  output <- .s3tables$get_table_encryption_output()
+  config <- get_config()
+  svc <- .s3tables$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3tables$operations$get_table_encryption <- s3tables_get_table_encryption
 
 #' Gets details about the maintenance configuration of a table
 #'
@@ -1120,7 +1324,9 @@ s3tables_get_table_policy <- function(tableBucketARN, namespace, name) {
 #'         "2015-01-01"
 #'       ),
 #'       createdBy = "string",
-#'       ownerAccountId = "string"
+#'       ownerAccountId = "string",
+#'       namespaceId = "string",
+#'       tableBucketId = "string"
 #'     )
 #'   ),
 #'   continuationToken = "string"
@@ -1195,7 +1401,8 @@ s3tables_list_namespaces <- function(tableBucketARN, prefix = NULL, continuation
 #'       ownerAccountId = "string",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       tableBucketId = "string"
 #'     )
 #'   ),
 #'   continuationToken = "string"
@@ -1277,7 +1484,9 @@ s3tables_list_table_buckets <- function(prefix = NULL, continuationToken = NULL,
 #'       ),
 #'       modifiedAt = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       namespaceId = "string",
+#'       tableBucketId = "string"
 #'     )
 #'   ),
 #'   continuationToken = "string"
@@ -1318,6 +1527,66 @@ s3tables_list_tables <- function(tableBucketARN, namespace = NULL, prefix = NULL
   return(response)
 }
 .s3tables$operations$list_tables <- s3tables_list_tables
+
+#' Sets the encryption configuration for a table bucket
+#'
+#' @description
+#' Sets the encryption configuration for a table bucket.
+#' 
+#' ### Permissions
+#' 
+#' You must have the `s3tables:PutTableBucketEncryption` permission to use
+#' this operation.
+#' 
+#' If you choose SSE-KMS encryption you must grant the S3 Tables
+#' maintenance principal access to your KMS key. For more information, see
+#' [Permissions requirements for S3 Tables SSE-KMS
+#' encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-kms-permissions.html)
+#'
+#' @usage
+#' s3tables_put_table_bucket_encryption(tableBucketARN,
+#'   encryptionConfiguration)
+#'
+#' @param tableBucketARN &#91;required&#93; The Amazon Resource Name (ARN) of the table bucket.
+#' @param encryptionConfiguration &#91;required&#93; The encryption configuration to apply to the table bucket.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_table_bucket_encryption(
+#'   tableBucketARN = "string",
+#'   encryptionConfiguration = list(
+#'     sseAlgorithm = "AES256"|"aws:kms",
+#'     kmsKeyArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3tables_put_table_bucket_encryption
+#'
+#' @aliases s3tables_put_table_bucket_encryption
+s3tables_put_table_bucket_encryption <- function(tableBucketARN, encryptionConfiguration) {
+  op <- new_operation(
+    name = "PutTableBucketEncryption",
+    http_method = "PUT",
+    http_path = "/buckets/{tableBucketARN}/encryption",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3tables$put_table_bucket_encryption_input(tableBucketARN = tableBucketARN, encryptionConfiguration = encryptionConfiguration)
+  output <- .s3tables$put_table_bucket_encryption_output()
+  config <- get_config()
+  svc <- .s3tables$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3tables$operations$put_table_bucket_encryption <- s3tables_put_table_bucket_encryption
 
 #' Creates a new maintenance configuration or replaces an existing
 #' maintenance configuration for a table bucket

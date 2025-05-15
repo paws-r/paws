@@ -5,20 +5,20 @@
 \title{Attaches an inline policy to a permission set}
 \usage{
 ssoadmin_put_inline_policy_to_permission_set(
-  InlinePolicy,
   InstanceArn,
-  PermissionSetArn
+  PermissionSetArn,
+  InlinePolicy
 )
 }
 \arguments{
-\item{InlinePolicy}{[required] The inline policy to attach to a PermissionSet.}
-
 \item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation
 will be executed. For more information about ARNs, see Amazon Resource
 Names (ARNs) and Amazon Web Services Service Namespaces in the \emph{Amazon
 Web Services General Reference}.}
 
 \item{PermissionSetArn}{[required] The ARN of the permission set.}
+
+\item{InlinePolicy}{[required] The inline policy to attach to a PermissionSet.}
 }
 \description{
 Attaches an inline policy to a permission set.

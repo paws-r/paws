@@ -96,6 +96,38 @@ codebuild_batch_get_builds <- function(ids) {
 }
 .codebuild$operations$batch_get_builds <- codebuild_batch_get_builds
 
+#' Gets information about the command executions
+#'
+#' @description
+#' Gets information about the command executions.
+#'
+#' See [https://www.paws-r-sdk.com/docs/codebuild_batch_get_command_executions/](https://www.paws-r-sdk.com/docs/codebuild_batch_get_command_executions/) for full documentation.
+#'
+#' @param sandboxId &#91;required&#93; A `sandboxId` or `sandboxArn`.
+#' @param commandExecutionIds &#91;required&#93; A comma separated list of `commandExecutionIds`.
+#'
+#' @keywords internal
+#'
+#' @rdname codebuild_batch_get_command_executions
+codebuild_batch_get_command_executions <- function(sandboxId, commandExecutionIds) {
+  op <- new_operation(
+    name = "BatchGetCommandExecutions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .codebuild$batch_get_command_executions_input(sandboxId = sandboxId, commandExecutionIds = commandExecutionIds)
+  output <- .codebuild$batch_get_command_executions_output()
+  config <- get_config()
+  svc <- .codebuild$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codebuild$operations$batch_get_command_executions <- codebuild_batch_get_command_executions
+
 #' Gets information about one or more compute fleets
 #'
 #' @description
@@ -221,6 +253,37 @@ codebuild_batch_get_reports <- function(reportArns) {
   return(response)
 }
 .codebuild$operations$batch_get_reports <- codebuild_batch_get_reports
+
+#' Gets information about the sandbox status
+#'
+#' @description
+#' Gets information about the sandbox status.
+#'
+#' See [https://www.paws-r-sdk.com/docs/codebuild_batch_get_sandboxes/](https://www.paws-r-sdk.com/docs/codebuild_batch_get_sandboxes/) for full documentation.
+#'
+#' @param ids &#91;required&#93; A comma separated list of `sandboxIds` or `sandboxArns`.
+#'
+#' @keywords internal
+#'
+#' @rdname codebuild_batch_get_sandboxes
+codebuild_batch_get_sandboxes <- function(ids) {
+  op <- new_operation(
+    name = "BatchGetSandboxes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .codebuild$batch_get_sandboxes_input(ids = ids)
+  output <- .codebuild$batch_get_sandboxes_output()
+  config <- get_config()
+  svc <- .codebuild$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codebuild$operations$batch_get_sandboxes <- codebuild_batch_get_sandboxes
 
 #' Creates a compute fleet
 #'
@@ -1352,6 +1415,41 @@ codebuild_list_builds_for_project <- function(projectName, sortOrder = NULL, nex
 }
 .codebuild$operations$list_builds_for_project <- codebuild_list_builds_for_project
 
+#' Gets a list of command executions for a sandbox
+#'
+#' @description
+#' Gets a list of command executions for a sandbox.
+#'
+#' See [https://www.paws-r-sdk.com/docs/codebuild_list_command_executions_for_sandbox/](https://www.paws-r-sdk.com/docs/codebuild_list_command_executions_for_sandbox/) for full documentation.
+#'
+#' @param sandboxId &#91;required&#93; A `sandboxId` or `sandboxArn`.
+#' @param maxResults The maximum number of sandbox records to be retrieved.
+#' @param sortOrder The order in which sandbox records should be retrieved.
+#' @param nextToken The next token, if any, to get paginated results. You will get this
+#' value from previous execution of list sandboxes.
+#'
+#' @keywords internal
+#'
+#' @rdname codebuild_list_command_executions_for_sandbox
+codebuild_list_command_executions_for_sandbox <- function(sandboxId, maxResults = NULL, sortOrder = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListCommandExecutionsForSandbox",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "commandExecutions"),
+    stream_api = FALSE
+  )
+  input <- .codebuild$list_command_executions_for_sandbox_input(sandboxId = sandboxId, maxResults = maxResults, sortOrder = sortOrder, nextToken = nextToken)
+  output <- .codebuild$list_command_executions_for_sandbox_output()
+  config <- get_config()
+  svc <- .codebuild$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codebuild$operations$list_command_executions_for_sandbox <- codebuild_list_command_executions_for_sandbox
+
 #' Gets information about Docker images that are managed by CodeBuild
 #'
 #' @description
@@ -1644,6 +1742,75 @@ codebuild_list_reports_for_report_group <- function(reportGroupArn, nextToken = 
   return(response)
 }
 .codebuild$operations$list_reports_for_report_group <- codebuild_list_reports_for_report_group
+
+#' Gets a list of sandboxes
+#'
+#' @description
+#' Gets a list of sandboxes.
+#'
+#' See [https://www.paws-r-sdk.com/docs/codebuild_list_sandboxes/](https://www.paws-r-sdk.com/docs/codebuild_list_sandboxes/) for full documentation.
+#'
+#' @param maxResults The maximum number of sandbox records to be retrieved.
+#' @param sortOrder The order in which sandbox records should be retrieved.
+#' @param nextToken The next token, if any, to get paginated results. You will get this
+#' value from previous execution of list sandboxes.
+#'
+#' @keywords internal
+#'
+#' @rdname codebuild_list_sandboxes
+codebuild_list_sandboxes <- function(maxResults = NULL, sortOrder = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListSandboxes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "ids"),
+    stream_api = FALSE
+  )
+  input <- .codebuild$list_sandboxes_input(maxResults = maxResults, sortOrder = sortOrder, nextToken = nextToken)
+  output <- .codebuild$list_sandboxes_output()
+  config <- get_config()
+  svc <- .codebuild$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codebuild$operations$list_sandboxes <- codebuild_list_sandboxes
+
+#' Gets a list of sandboxes for a given project
+#'
+#' @description
+#' Gets a list of sandboxes for a given project.
+#'
+#' See [https://www.paws-r-sdk.com/docs/codebuild_list_sandboxes_for_project/](https://www.paws-r-sdk.com/docs/codebuild_list_sandboxes_for_project/) for full documentation.
+#'
+#' @param projectName &#91;required&#93; The CodeBuild project name.
+#' @param maxResults The maximum number of sandbox records to be retrieved.
+#' @param sortOrder The order in which sandbox records should be retrieved.
+#' @param nextToken The next token, if any, to get paginated results. You will get this
+#' value from previous execution of list sandboxes.
+#'
+#' @keywords internal
+#'
+#' @rdname codebuild_list_sandboxes_for_project
+codebuild_list_sandboxes_for_project <- function(projectName, maxResults = NULL, sortOrder = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListSandboxesForProject",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "ids"),
+    stream_api = FALSE
+  )
+  input <- .codebuild$list_sandboxes_for_project_input(projectName = projectName, maxResults = maxResults, sortOrder = sortOrder, nextToken = nextToken)
+  output <- .codebuild$list_sandboxes_for_project_output()
+  config <- get_config()
+  svc <- .codebuild$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codebuild$operations$list_sandboxes_for_project <- codebuild_list_sandboxes_for_project
 
 #' Gets a list of projects that are shared with other Amazon Web Services
 #' accounts or users
@@ -2258,6 +2425,102 @@ codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = 
 }
 .codebuild$operations$start_build_batch <- codebuild_start_build_batch
 
+#' Starts a command execution
+#'
+#' @description
+#' Starts a command execution.
+#'
+#' See [https://www.paws-r-sdk.com/docs/codebuild_start_command_execution/](https://www.paws-r-sdk.com/docs/codebuild_start_command_execution/) for full documentation.
+#'
+#' @param sandboxId &#91;required&#93; A `sandboxId` or `sandboxArn`.
+#' @param command &#91;required&#93; The command that needs to be executed.
+#' @param type The command type.
+#'
+#' @keywords internal
+#'
+#' @rdname codebuild_start_command_execution
+codebuild_start_command_execution <- function(sandboxId, command, type = NULL) {
+  op <- new_operation(
+    name = "StartCommandExecution",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .codebuild$start_command_execution_input(sandboxId = sandboxId, command = command, type = type)
+  output <- .codebuild$start_command_execution_output()
+  config <- get_config()
+  svc <- .codebuild$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codebuild$operations$start_command_execution <- codebuild_start_command_execution
+
+#' Starts a sandbox
+#'
+#' @description
+#' Starts a sandbox.
+#'
+#' See [https://www.paws-r-sdk.com/docs/codebuild_start_sandbox/](https://www.paws-r-sdk.com/docs/codebuild_start_sandbox/) for full documentation.
+#'
+#' @param projectName The CodeBuild project name.
+#' @param idempotencyToken A unique client token.
+#'
+#' @keywords internal
+#'
+#' @rdname codebuild_start_sandbox
+codebuild_start_sandbox <- function(projectName = NULL, idempotencyToken = NULL) {
+  op <- new_operation(
+    name = "StartSandbox",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .codebuild$start_sandbox_input(projectName = projectName, idempotencyToken = idempotencyToken)
+  output <- .codebuild$start_sandbox_output()
+  config <- get_config()
+  svc <- .codebuild$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codebuild$operations$start_sandbox <- codebuild_start_sandbox
+
+#' Starts a sandbox connection
+#'
+#' @description
+#' Starts a sandbox connection.
+#'
+#' See [https://www.paws-r-sdk.com/docs/codebuild_start_sandbox_connection/](https://www.paws-r-sdk.com/docs/codebuild_start_sandbox_connection/) for full documentation.
+#'
+#' @param sandboxId &#91;required&#93; A `sandboxId` or `sandboxArn`.
+#'
+#' @keywords internal
+#'
+#' @rdname codebuild_start_sandbox_connection
+codebuild_start_sandbox_connection <- function(sandboxId) {
+  op <- new_operation(
+    name = "StartSandboxConnection",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .codebuild$start_sandbox_connection_input(sandboxId = sandboxId)
+  output <- .codebuild$start_sandbox_connection_output()
+  config <- get_config()
+  svc <- .codebuild$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codebuild$operations$start_sandbox_connection <- codebuild_start_sandbox_connection
+
 #' Attempts to stop running a build
 #'
 #' @description
@@ -2319,6 +2582,37 @@ codebuild_stop_build_batch <- function(id) {
   return(response)
 }
 .codebuild$operations$stop_build_batch <- codebuild_stop_build_batch
+
+#' Stops a sandbox
+#'
+#' @description
+#' Stops a sandbox.
+#'
+#' See [https://www.paws-r-sdk.com/docs/codebuild_stop_sandbox/](https://www.paws-r-sdk.com/docs/codebuild_stop_sandbox/) for full documentation.
+#'
+#' @param id &#91;required&#93; Information about the requested sandbox ID.
+#'
+#' @keywords internal
+#'
+#' @rdname codebuild_stop_sandbox
+codebuild_stop_sandbox <- function(id) {
+  op <- new_operation(
+    name = "StopSandbox",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .codebuild$stop_sandbox_input(id = id)
+  output <- .codebuild$stop_sandbox_output()
+  config <- get_config()
+  svc <- .codebuild$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codebuild$operations$stop_sandbox <- codebuild_stop_sandbox
 
 #' Updates a compute fleet
 #'

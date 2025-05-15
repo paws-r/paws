@@ -7,21 +7,21 @@ PermissionSet}
 \usage{
 ssoadmin_list_customer_managed_policy_references_in_permission_set(
   InstanceArn,
+  PermissionSetArn,
   MaxResults = NULL,
-  NextToken = NULL,
-  PermissionSetArn
+  NextToken = NULL
 )
 }
 \arguments{
 \item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation
 will be executed.}
 
+\item{PermissionSetArn}{[required] The ARN of the \code{PermissionSet}.}
+
 \item{MaxResults}{The maximum number of results to display for the list call.}
 
 \item{NextToken}{The pagination token for the list API. Initially the value is null. Use
 the output of previous API calls to make subsequent calls.}
-
-\item{PermissionSetArn}{[required] The ARN of the \code{PermissionSet}.}
 }
 \description{
 Lists all customer managed policies attached to a specified PermissionSet.

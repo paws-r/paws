@@ -2,9 +2,9 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_verify_software_token}
 \alias{cognitoidentityprovider_verify_software_token}
-\title{Use this API to register a user's entered time-based one-time password
-(TOTP) code and mark the user's software token MFA status as "verified"
-if successful}
+\title{Registers the current user's time-based one-time password (TOTP)
+authenticator with a code generated in their authenticator app from a
+private key that's supplied by your user pool}
 \usage{
 cognitoidentityprovider_verify_software_token(
   AccessToken = NULL,
@@ -14,19 +14,20 @@ cognitoidentityprovider_verify_software_token(
 )
 }
 \arguments{
-\item{AccessToken}{A valid access token that Amazon Cognito issued to the user whose
-software token you want to verify.}
+\item{AccessToken}{A valid access token that Amazon Cognito issued to the currently
+signed-in user. Must include a scope claim for
+\code{aws.cognito.signin.user.admin}.}
 
-\item{Session}{The session that should be passed both ways in challenge-response calls
-to the service.}
+\item{Session}{The session ID from an
+\code{\link[=cognitoidentityprovider_associate_software_token]{associate_software_token}}
+request.}
 
-\item{UserCode}{[required] The one- time password computed using the secret code returned by
-\code{\link[=cognitoidentityprovider_associate_software_token]{associate_software_token}}.}
+\item{UserCode}{[required] A TOTP that the user generated in their configured authenticator app.}
 
-\item{FriendlyDeviceName}{The friendly device name.}
+\item{FriendlyDeviceName}{A friendly name for the device that's running the TOTP authenticator.}
 }
 \description{
-Use this API to register a user's entered time-based one-time password (TOTP) code and mark the user's software token MFA status as "verified" if successful. The request takes an access token or a session string, but not both.
+Registers the current user's time-based one-time password (TOTP) authenticator with a code generated in their authenticator app from a private key that's supplied by your user pool. Marks the user's software token MFA status as "verified" if successful. The request takes an access token or a session string, but not both.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_verify_software_token/} for full documentation.
 }

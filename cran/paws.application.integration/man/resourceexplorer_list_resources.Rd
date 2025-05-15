@@ -13,7 +13,22 @@ resourceexplorer_list_resources(
 )
 }
 \arguments{
-\item{Filters}{}
+\item{Filters}{An array of strings that specify which resources are included in the
+results of queries made using this view. When you use this view in a
+\code{\link[=resourceexplorer_search]{search}} operation, the filter string is
+combined with the search's \code{QueryString} parameter using a logical \code{AND}
+operator.
+
+For information about the supported syntax, see \href{https://docs.aws.amazon.com/resource-explorer/latest/userguide/using-search-query-syntax.html}{Search query reference for Resource Explorer}
+in the \emph{Amazon Web Services Resource Explorer User Guide}.
+
+This query string in the context of this operation supports only \href{https://docs.aws.amazon.com/resource-explorer/latest/userguide/using-search-query-syntax.html#query-syntax-filters}{filter prefixes}
+with optional
+\href{https://docs.aws.amazon.com/resource-explorer/latest/userguide/using-search-query-syntax.html#query-syntax-operators}{operators}.
+It doesn't support free-form text. For example, the string
+\code{region:us* service:ec2 -tag:stage=prod} includes all Amazon EC2
+resources in any Amazon Web Services Region that begins with the letters
+\code{us} and is \emph{not} tagged with a key \code{Stage} that has the value \code{prod}.}
 
 \item{MaxResults}{The maximum number of results that you want included on each page of the
 response. If you do not include this parameter, it defaults to a value
@@ -31,7 +46,10 @@ every operation to ensure that you receive all of the results.}
 \code{NextToken} response in a previous request. A \code{NextToken} response
 indicates that more output is available. Set this parameter to the value
 of the previous call's \code{NextToken} response to indicate where the output
-should continue from. The pagination tokens expire after 24 hours.}
+should continue from. The pagination tokens expire after 24 hours.
+
+The \code{\link[=resourceexplorer_list_resources]{list_resources}} operation does
+not generate a \code{NextToken} if you set \code{MaxResults} to 1000.}
 
 \item{ViewArn}{Specifies the Amazon resource name (ARN) of the view to use for the
 query. If you don't specify a value for this parameter, then the

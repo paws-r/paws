@@ -219,8 +219,9 @@ cloudwatchlogs_create_export_task <- function(taskName = NULL, logGroupName, log
 #' this key and for the anomaly detector to retrieve information about the
 #' anomalies that it finds.
 #' 
-#' For more information about using a KMS key and to see the required IAM
-#' policy, see [Use a KMS key with an anomaly
+#' Make sure the value provided is a valid KMS key ARN. For more
+#' information about using a KMS key and to see the required IAM policy,
+#' see [Use a KMS key with an anomaly
 #' detector](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/LogsAnomalyDetection-KMS.html).
 #' @param anomalyVisibilityTime The number of days to have visibility on an anomaly. After this time
 #' period has elapsed for an anomaly, it will be automatically baselined
@@ -279,12 +280,18 @@ cloudwatchlogs_create_log_anomaly_detector <- function(logGroupArnList, detector
 #' [Controlling access to Amazon Web Services resources using
 #' tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html).
 #' @param logGroupClass Use this parameter to specify the log group class for this log group.
-#' There are two classes:
+#' There are three classes:
 #' 
 #' -   The `Standard` log class supports all CloudWatch Logs features.
 #' 
 #' -   The `Infrequent Access` log class supports a subset of CloudWatch
 #'     Logs features and incurs lower costs.
+#' 
+#' -   Use the `Delivery` log class only for delivering Lambda logs to
+#'     store in Amazon S3 or Amazon Data Firehose. Log events in log groups
+#'     in the Delivery class are kept in CloudWatch Logs for only one day.
+#'     This log class doesn't offer rich CloudWatch Logs capabilities such
+#'     as CloudWatch Logs Insights queries.
 #' 
 #' If you omit this parameter, the default of `STANDARD` is used.
 #' 
@@ -1267,14 +1274,14 @@ cloudwatchlogs_describe_index_policies <- function(logGroupIdentifiers, nextToke
 }
 .cloudwatchlogs$operations$describe_index_policies <- cloudwatchlogs_describe_index_policies
 
-#' Lists the specified log groups
+#' Returns information about log groups
 #'
 #' @description
-#' Lists the specified log groups. You can list all your log groups or filter the results by prefix. The results are ASCII-sorted by log group name.
+#' Returns information about log groups. You can return all your log groups or filter the results by prefix. The results are ASCII-sorted by log group name.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_log_groups/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_log_groups/) for full documentation.
 #'
-#' @param accountIdentifiers When `includeLinkedAccounts` is set to `True`, use this parameter to
+#' @param accountIdentifiers When `includeLinkedAccounts` is set to `true`, use this parameter to
 #' specify the list of accounts to search. You can specify as many as 20
 #' account IDs in the array.
 #' @param logGroupNamePrefix The prefix to match.
@@ -1296,7 +1303,7 @@ cloudwatchlogs_describe_index_policies <- function(logGroupIdentifiers, nextToke
 #' from a previous call.)
 #' @param limit The maximum number of items returned. If you don't specify a value, the
 #' default is up to 50 items.
-#' @param includeLinkedAccounts If you are using a monitoring account, set this to `True` to have the
+#' @param includeLinkedAccounts If you are using a monitoring account, set this to `true` to have the
 #' operation return log groups in the accounts listed in
 #' `accountIdentifiers`.
 #' 
@@ -1304,20 +1311,42 @@ cloudwatchlogs_describe_index_policies <- function(logGroupIdentifiers, nextToke
 #' null value, the operation returns all log groups in the monitoring
 #' account and all log groups in all source accounts that are linked to the
 #' monitoring account.
-#' @param logGroupClass Specifies the log group class for this log group. There are two classes:
+#' 
+#' The default for this parameter is `false`.
+#' @param logGroupClass Use this parameter to limit the results to only those log groups in the
+#' specified log group class. If you omit this parameter, log groups of all
+#' classes can be returned.
+#' 
+#' Specifies the log group class for this log group. There are three
+#' classes:
 #' 
 #' -   The `Standard` log class supports all CloudWatch Logs features.
 #' 
 #' -   The `Infrequent Access` log class supports a subset of CloudWatch
 #'     Logs features and incurs lower costs.
 #' 
+#' -   Use the `Delivery` log class only for delivering Lambda logs to
+#'     store in Amazon S3 or Amazon Data Firehose. Log events in log groups
+#'     in the Delivery class are kept in CloudWatch Logs for only one day.
+#'     This log class doesn't offer rich CloudWatch Logs capabilities such
+#'     as CloudWatch Logs Insights queries.
+#' 
 #' For details about the features supported by each class, see [Log
 #' classes](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch_Logs_Log_Classes.html)
+#' @param logGroupIdentifiers Use this array to filter the list of log groups returned. If you specify
+#' this parameter, the only other filter that you can choose to specify is
+#' `includeLinkedAccounts`.
+#' 
+#' If you are using this operation in a monitoring account, you can specify
+#' the ARNs of log groups in source accounts and in the monitoring account
+#' itself. If you are using this operation in an account that is not a
+#' cross-account monitoring account, you can specify only log group names
+#' in the same account as the operation.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_describe_log_groups
-cloudwatchlogs_describe_log_groups <- function(accountIdentifiers = NULL, logGroupNamePrefix = NULL, logGroupNamePattern = NULL, nextToken = NULL, limit = NULL, includeLinkedAccounts = NULL, logGroupClass = NULL) {
+cloudwatchlogs_describe_log_groups <- function(accountIdentifiers = NULL, logGroupNamePrefix = NULL, logGroupNamePattern = NULL, nextToken = NULL, limit = NULL, includeLinkedAccounts = NULL, logGroupClass = NULL, logGroupIdentifiers = NULL) {
   op <- new_operation(
     name = "DescribeLogGroups",
     http_method = "POST",
@@ -1326,7 +1355,7 @@ cloudwatchlogs_describe_log_groups <- function(accountIdentifiers = NULL, logGro
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "limit", result_key = "logGroups"),
     stream_api = FALSE
   )
-  input <- .cloudwatchlogs$describe_log_groups_input(accountIdentifiers = accountIdentifiers, logGroupNamePrefix = logGroupNamePrefix, logGroupNamePattern = logGroupNamePattern, nextToken = nextToken, limit = limit, includeLinkedAccounts = includeLinkedAccounts, logGroupClass = logGroupClass)
+  input <- .cloudwatchlogs$describe_log_groups_input(accountIdentifiers = accountIdentifiers, logGroupNamePrefix = logGroupNamePrefix, logGroupNamePattern = logGroupNamePattern, nextToken = nextToken, limit = limit, includeLinkedAccounts = includeLinkedAccounts, logGroupClass = logGroupClass, logGroupIdentifiers = logGroupIdentifiers)
   output <- .cloudwatchlogs$describe_log_groups_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config, op)
@@ -1650,7 +1679,7 @@ cloudwatchlogs_disassociate_kms_key <- function(logGroupName = NULL, resourceIde
 #' Lists log events from the specified log group
 #'
 #' @description
-#' Lists log events from the specified log group. You can list all the log events or filter the results using a filter pattern, a time range, and the name of the log stream.
+#' Lists log events from the specified log group. You can list all the log events or filter the results using one or more of the following:
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_filter_log_events/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_filter_log_events/) for full documentation.
 #'
@@ -1920,7 +1949,7 @@ cloudwatchlogs_get_integration <- function(integrationName) {
 #' Retrieves information about the log anomaly detector that you specify
 #'
 #' @description
-#' Retrieves information about the log anomaly detector that you specify.
+#' Retrieves information about the log anomaly detector that you specify. The KMS key ARN detected is valid.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_log_anomaly_detector/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_log_anomaly_detector/) for full documentation.
 #'
@@ -2276,6 +2305,73 @@ cloudwatchlogs_list_log_anomaly_detectors <- function(filterLogGroupArn = NULL, 
   return(response)
 }
 .cloudwatchlogs$operations$list_log_anomaly_detectors <- cloudwatchlogs_list_log_anomaly_detectors
+
+#' Returns a list of log groups in the Region in your account
+#'
+#' @description
+#' Returns a list of log groups in the Region in your account. If you are performing this action in a monitoring account, you can choose to also return log groups from source accounts that are linked to the monitoring account. For more information about using cross-account observability to set up monitoring accounts and source accounts, see [CloudWatch cross-account observability](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_list_log_groups/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_list_log_groups/) for full documentation.
+#'
+#' @param logGroupNamePattern Use this parameter to limit the returned log groups to only those with
+#' names that match the pattern that you specify. This parameter is a
+#' regular expression that can match prefixes and substrings, and supports
+#' wildcard matching and matching multiple patterns, as in the following
+#' examples.
+#' 
+#' -   Use `^` to match log group names by prefix.
+#' 
+#' -   For a substring match, specify the string to match. All matches are
+#'     case sensitive
+#' 
+#' -   To match multiple patterns, separate them with a `|` as in the
+#'     example `^/aws/lambda|discovery`
+#' 
+#' You can specify as many as five different regular expression patterns in
+#' this field, each of which must be between 3 and 24 characters. You can
+#' include the `^` symbol as many as five times, and include the `|` symbol
+#' as many as four times.
+#' @param logGroupClass Use this parameter to limit the results to only those log groups in the
+#' specified log group class. If you omit this parameter, log groups of all
+#' classes can be returned.
+#' @param includeLinkedAccounts If you are using a monitoring account, set this to `true` to have the
+#' operation return log groups in the accounts listed in
+#' `accountIdentifiers`.
+#' 
+#' If this parameter is set to `true` and `accountIdentifiers` contains a
+#' null value, the operation returns all log groups in the monitoring
+#' account and all log groups in all source accounts that are linked to the
+#' monitoring account.
+#' 
+#' The default for this parameter is `false`.
+#' @param accountIdentifiers When `includeLinkedAccounts` is set to `true`, use this parameter to
+#' specify the list of accounts to search. You can specify as many as 20
+#' account IDs in the array.
+#' @param nextToken 
+#' @param limit The maximum number of log groups to return. If you omit this parameter,
+#' the default is up to 50 log groups.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_list_log_groups
+cloudwatchlogs_list_log_groups <- function(logGroupNamePattern = NULL, logGroupClass = NULL, includeLinkedAccounts = NULL, accountIdentifiers = NULL, nextToken = NULL, limit = NULL) {
+  op <- new_operation(
+    name = "ListLogGroups",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchlogs$list_log_groups_input(logGroupNamePattern = logGroupNamePattern, logGroupClass = logGroupClass, includeLinkedAccounts = includeLinkedAccounts, accountIdentifiers = accountIdentifiers, nextToken = nextToken, limit = limit)
+  output <- .cloudwatchlogs$list_log_groups_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$list_log_groups <- cloudwatchlogs_list_log_groups
 
 #' Returns a list of the log groups that were analyzed during a single
 #' CloudWatch Logs Insights query

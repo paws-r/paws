@@ -12,14 +12,14 @@ NULL
 #'
 #' @usage
 #' ssoadmin_attach_customer_managed_policy_reference_to_permission_set(
-#'   CustomerManagedPolicyReference, InstanceArn, PermissionSetArn)
+#'   InstanceArn, PermissionSetArn, CustomerManagedPolicyReference)
 #'
-#' @param CustomerManagedPolicyReference &#91;required&#93; Specifies the name and path of a customer managed policy. You must have
-#' an IAM policy that matches the name and path in each Amazon Web Services
-#' account where you want to deploy your permission set.
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the `PermissionSet`.
+#' @param CustomerManagedPolicyReference &#91;required&#93; Specifies the name and path of a customer managed policy. You must have
+#' an IAM policy that matches the name and path in each Amazon Web Services
+#' account where you want to deploy your permission set.
 #'
 #' @return
 #' An empty list.
@@ -27,12 +27,12 @@ NULL
 #' @section Request syntax:
 #' ```
 #' svc$attach_customer_managed_policy_reference_to_permission_set(
+#'   InstanceArn = "string",
+#'   PermissionSetArn = "string",
 #'   CustomerManagedPolicyReference = list(
 #'     Name = "string",
 #'     Path = "string"
-#'   ),
-#'   InstanceArn = "string",
-#'   PermissionSetArn = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -41,7 +41,7 @@ NULL
 #' @rdname ssoadmin_attac_custo_manag_polic_refer_to_permi_set
 #'
 #' @aliases ssoadmin_attach_customer_managed_policy_reference_to_permission_set
-ssoadmin_attach_customer_managed_policy_reference_to_permission_set <- function(CustomerManagedPolicyReference, InstanceArn, PermissionSetArn) {
+ssoadmin_attach_customer_managed_policy_reference_to_permission_set <- function(InstanceArn, PermissionSetArn, CustomerManagedPolicyReference) {
   op <- new_operation(
     name = "AttachCustomerManagedPolicyReferenceToPermissionSet",
     http_method = "POST",
@@ -50,7 +50,7 @@ ssoadmin_attach_customer_managed_policy_reference_to_permission_set <- function(
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$attach_customer_managed_policy_reference_to_permission_set_input(CustomerManagedPolicyReference = CustomerManagedPolicyReference, InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn)
+  input <- .ssoadmin$attach_customer_managed_policy_reference_to_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, CustomerManagedPolicyReference = CustomerManagedPolicyReference)
   output <- .ssoadmin$attach_customer_managed_policy_reference_to_permission_set_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -74,16 +74,16 @@ ssoadmin_attach_customer_managed_policy_reference_to_permission_set <- function(
 #'
 #' @usage
 #' ssoadmin_attach_managed_policy_to_permission_set(InstanceArn,
-#'   ManagedPolicyArn, PermissionSetArn)
+#'   PermissionSetArn, ManagedPolicyArn)
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
 #' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
 #' Web Services General Reference*.
-#' @param ManagedPolicyArn &#91;required&#93; The Amazon Web Services managed policy ARN to be attached to a
-#' permission set.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the PermissionSet that the managed policy should be attached
 #' to.
+#' @param ManagedPolicyArn &#91;required&#93; The Amazon Web Services managed policy ARN to be attached to a
+#' permission set.
 #'
 #' @return
 #' An empty list.
@@ -92,8 +92,8 @@ ssoadmin_attach_customer_managed_policy_reference_to_permission_set <- function(
 #' ```
 #' svc$attach_managed_policy_to_permission_set(
 #'   InstanceArn = "string",
-#'   ManagedPolicyArn = "string",
-#'   PermissionSetArn = "string"
+#'   PermissionSetArn = "string",
+#'   ManagedPolicyArn = "string"
 #' )
 #' ```
 #'
@@ -102,7 +102,7 @@ ssoadmin_attach_customer_managed_policy_reference_to_permission_set <- function(
 #' @rdname ssoadmin_attach_managed_policy_to_permission_set
 #'
 #' @aliases ssoadmin_attach_managed_policy_to_permission_set
-ssoadmin_attach_managed_policy_to_permission_set <- function(InstanceArn, ManagedPolicyArn, PermissionSetArn) {
+ssoadmin_attach_managed_policy_to_permission_set <- function(InstanceArn, PermissionSetArn, ManagedPolicyArn) {
   op <- new_operation(
     name = "AttachManagedPolicyToPermissionSet",
     http_method = "POST",
@@ -111,7 +111,7 @@ ssoadmin_attach_managed_policy_to_permission_set <- function(InstanceArn, Manage
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$attach_managed_policy_to_permission_set_input(InstanceArn = InstanceArn, ManagedPolicyArn = ManagedPolicyArn, PermissionSetArn = PermissionSetArn)
+  input <- .ssoadmin$attach_managed_policy_to_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, ManagedPolicyArn = ManagedPolicyArn)
   output <- .ssoadmin$attach_managed_policy_to_permission_set_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -147,41 +147,41 @@ ssoadmin_attach_managed_policy_to_permission_set <- function(InstanceArn, Manage
 #' to describe the status of an assignment creation request.
 #'
 #' @usage
-#' ssoadmin_create_account_assignment(InstanceArn, PermissionSetArn,
-#'   PrincipalId, PrincipalType, TargetId, TargetType)
+#' ssoadmin_create_account_assignment(InstanceArn, TargetId, TargetType,
+#'   PermissionSetArn, PrincipalType, PrincipalId)
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
 #' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
 #' Web Services General Reference*.
+#' @param TargetId &#91;required&#93; TargetID is an Amazon Web Services account identifier, (For example,
+#' 123456789012).
+#' @param TargetType &#91;required&#93; The entity type for which the assignment will be created.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the permission set that the admin wants to grant the
 #' principal access to.
+#' @param PrincipalType &#91;required&#93; The entity type for which the assignment will be created.
 #' @param PrincipalId &#91;required&#93; An identifier for an object in IAM Identity Center, such as a user or
 #' group. PrincipalIds are GUIDs (For example,
 #' f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For more information about
 #' PrincipalIds in IAM Identity Center, see the IAM Identity Center
 #' Identity Store API Reference.
-#' @param PrincipalType &#91;required&#93; The entity type for which the assignment will be created.
-#' @param TargetId &#91;required&#93; TargetID is an Amazon Web Services account identifier, (For example,
-#' 123456789012).
-#' @param TargetType &#91;required&#93; The entity type for which the assignment will be created.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   AccountAssignmentCreationStatus = list(
+#'     Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED",
+#'     RequestId = "string",
+#'     FailureReason = "string",
+#'     TargetId = "string",
+#'     TargetType = "AWS_ACCOUNT",
+#'     PermissionSetArn = "string",
+#'     PrincipalType = "USER"|"GROUP",
+#'     PrincipalId = "string",
 #'     CreatedDate = as.POSIXct(
 #'       "2015-01-01"
-#'     ),
-#'     FailureReason = "string",
-#'     PermissionSetArn = "string",
-#'     PrincipalId = "string",
-#'     PrincipalType = "USER"|"GROUP",
-#'     RequestId = "string",
-#'     Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED",
-#'     TargetId = "string",
-#'     TargetType = "AWS_ACCOUNT"
+#'     )
 #'   )
 #' )
 #' ```
@@ -190,11 +190,11 @@ ssoadmin_attach_managed_policy_to_permission_set <- function(InstanceArn, Manage
 #' ```
 #' svc$create_account_assignment(
 #'   InstanceArn = "string",
-#'   PermissionSetArn = "string",
-#'   PrincipalId = "string",
-#'   PrincipalType = "USER"|"GROUP",
 #'   TargetId = "string",
-#'   TargetType = "AWS_ACCOUNT"
+#'   TargetType = "AWS_ACCOUNT",
+#'   PermissionSetArn = "string",
+#'   PrincipalType = "USER"|"GROUP",
+#'   PrincipalId = "string"
 #' )
 #' ```
 #'
@@ -203,7 +203,7 @@ ssoadmin_attach_managed_policy_to_permission_set <- function(InstanceArn, Manage
 #' @rdname ssoadmin_create_account_assignment
 #'
 #' @aliases ssoadmin_create_account_assignment
-ssoadmin_create_account_assignment <- function(InstanceArn, PermissionSetArn, PrincipalId, PrincipalType, TargetId, TargetType) {
+ssoadmin_create_account_assignment <- function(InstanceArn, TargetId, TargetType, PermissionSetArn, PrincipalType, PrincipalId) {
   op <- new_operation(
     name = "CreateAccountAssignment",
     http_method = "POST",
@@ -212,7 +212,7 @@ ssoadmin_create_account_assignment <- function(InstanceArn, PermissionSetArn, Pr
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$create_account_assignment_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, PrincipalId = PrincipalId, PrincipalType = PrincipalType, TargetId = TargetId, TargetType = TargetType)
+  input <- .ssoadmin$create_account_assignment_input(InstanceArn = InstanceArn, TargetId = TargetId, TargetType = TargetType, PermissionSetArn = PermissionSetArn, PrincipalType = PrincipalType, PrincipalId = PrincipalId)
   output <- .ssoadmin$create_account_assignment_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -222,18 +222,38 @@ ssoadmin_create_account_assignment <- function(InstanceArn, PermissionSetArn, Pr
 }
 .ssoadmin$operations$create_account_assignment <- ssoadmin_create_account_assignment
 
-#' Creates an application in IAM Identity Center for the given application
-#' provider
+#' Creates an OAuth 2
 #'
 #' @description
-#' Creates an application in IAM Identity Center for the given application
-#' provider.
+#' Creates an OAuth 2.0 customer managed application in IAM Identity Center
+#' for the given application provider.
+#' 
+#' This API does not support creating SAML 2.0 customer managed
+#' applications or Amazon Web Services managed applications. To learn how
+#' to create an Amazon Web Services managed application, see the
+#' application user guide. You can create a SAML 2.0 customer managed
+#' application in the Amazon Web Services Management Console only. See
+#' [Setting up customer managed SAML 2.0
+#' applications](https://docs.aws.amazon.com/singlesignon/latest/userguide/customermanagedapps-saml2-setup.html).
+#' For more information on these application types, see [Amazon Web
+#' Services managed
+#' applications](https://docs.aws.amazon.com/singlesignon/latest/userguide/awsapps.html).
 #'
 #' @usage
-#' ssoadmin_create_application(ApplicationProviderArn, ClientToken,
-#'   Description, InstanceArn, Name, PortalOptions, Status, Tags)
+#' ssoadmin_create_application(InstanceArn, ApplicationProviderArn, Name,
+#'   Description, PortalOptions, Tags, Status, ClientToken)
 #'
+#' @param InstanceArn &#91;required&#93; The ARN of the instance of IAM Identity Center under which the operation
+#' will run. For more information about ARNs, see Amazon Resource Names
+#' (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web
+#' Services General Reference*.
 #' @param ApplicationProviderArn &#91;required&#93; The ARN of the application provider under which the operation will run.
+#' @param Name &#91;required&#93; The name of the .
+#' @param Description The description of the .
+#' @param PortalOptions A structure that describes the options for the portal associated with an
+#' application.
+#' @param Tags Specifies tags to be attached to the application.
+#' @param Status Specifies whether the application is enabled or disabled.
 #' @param ClientToken Specifies a unique, case-sensitive ID that you provide to ensure the
 #' idempotency of the request. This lets you safely retry the request
 #' without accidentally performing the same operation a second time.
@@ -248,16 +268,6 @@ ssoadmin_create_account_assignment <- function(InstanceArn, PermissionSetArn, Pr
 #' If you retry the operation with the same `ClientToken`, but with
 #' different parameters, the retry fails with an
 #' `IdempotentParameterMismatch` error.
-#' @param Description The description of the .
-#' @param InstanceArn &#91;required&#93; The ARN of the instance of IAM Identity Center under which the operation
-#' will run. For more information about ARNs, see Amazon Resource Names
-#' (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web
-#' Services General Reference*.
-#' @param Name &#91;required&#93; The name of the .
-#' @param PortalOptions A structure that describes the options for the portal associated with an
-#' application.
-#' @param Status Specifies whether the application is enabled or disabled.
-#' @param Tags Specifies tags to be attached to the application.
 #'
 #' @return
 #' A list with the following syntax:
@@ -270,25 +280,25 @@ ssoadmin_create_account_assignment <- function(InstanceArn, PermissionSetArn, Pr
 #' @section Request syntax:
 #' ```
 #' svc$create_application(
-#'   ApplicationProviderArn = "string",
-#'   ClientToken = "string",
-#'   Description = "string",
 #'   InstanceArn = "string",
+#'   ApplicationProviderArn = "string",
 #'   Name = "string",
+#'   Description = "string",
 #'   PortalOptions = list(
 #'     SignInOptions = list(
-#'       ApplicationUrl = "string",
-#'       Origin = "IDENTITY_CENTER"|"APPLICATION"
+#'       Origin = "IDENTITY_CENTER"|"APPLICATION",
+#'       ApplicationUrl = "string"
 #'     ),
 #'     Visibility = "ENABLED"|"DISABLED"
 #'   ),
-#'   Status = "ENABLED"|"DISABLED",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   Status = "ENABLED"|"DISABLED",
+#'   ClientToken = "string"
 #' )
 #' ```
 #'
@@ -297,7 +307,7 @@ ssoadmin_create_account_assignment <- function(InstanceArn, PermissionSetArn, Pr
 #' @rdname ssoadmin_create_application
 #'
 #' @aliases ssoadmin_create_application
-ssoadmin_create_application <- function(ApplicationProviderArn, ClientToken = NULL, Description = NULL, InstanceArn, Name, PortalOptions = NULL, Status = NULL, Tags = NULL) {
+ssoadmin_create_application <- function(InstanceArn, ApplicationProviderArn, Name, Description = NULL, PortalOptions = NULL, Tags = NULL, Status = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateApplication",
     http_method = "POST",
@@ -306,7 +316,7 @@ ssoadmin_create_application <- function(ApplicationProviderArn, ClientToken = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$create_application_input(ApplicationProviderArn = ApplicationProviderArn, ClientToken = ClientToken, Description = Description, InstanceArn = InstanceArn, Name = Name, PortalOptions = PortalOptions, Status = Status, Tags = Tags)
+  input <- .ssoadmin$create_application_input(InstanceArn = InstanceArn, ApplicationProviderArn = ApplicationProviderArn, Name = Name, Description = Description, PortalOptions = PortalOptions, Tags = Tags, Status = Status, ClientToken = ClientToken)
   output <- .ssoadmin$create_application_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -325,12 +335,13 @@ ssoadmin_create_application <- function(ApplicationProviderArn, ClientToken = NU
 #' ssoadmin_create_application_assignment(ApplicationArn, PrincipalId,
 #'   PrincipalType)
 #'
-#' @param ApplicationArn &#91;required&#93; The ARN of the application provider under which the operation will run.
+#' @param ApplicationArn &#91;required&#93; The ARN of the application for which the assignment is created.
 #' @param PrincipalId &#91;required&#93; An identifier for an object in IAM Identity Center, such as a user or
 #' group. PrincipalIds are GUIDs (For example,
 #' f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For more information about
-#' PrincipalIds in IAM Identity Center, see the IAM Identity Center
-#' Identity Store API Reference.
+#' PrincipalIds in IAM Identity Center, see the [IAM Identity Center
+#' Identity Store API
+#' Reference](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/welcome.html).
 #' @param PrincipalType &#91;required&#93; The entity type for which the assignment will be created.
 #'
 #' @return
@@ -386,8 +397,9 @@ ssoadmin_create_application_assignment <- function(ApplicationArn, PrincipalId, 
 #' -   An instance already exists in the same account.
 #'
 #' @usage
-#' ssoadmin_create_instance(ClientToken, Name, Tags)
+#' ssoadmin_create_instance(Name, ClientToken, Tags)
 #'
+#' @param Name The name of the instance of IAM Identity Center.
 #' @param ClientToken Specifies a unique, case-sensitive ID that you provide to ensure the
 #' idempotency of the request. This lets you safely retry the request
 #' without accidentally performing the same operation a second time.
@@ -402,7 +414,6 @@ ssoadmin_create_application_assignment <- function(ApplicationArn, PrincipalId, 
 #' If you retry the operation with the same `ClientToken`, but with
 #' different parameters, the retry fails with an
 #' `IdempotentParameterMismatch` error.
-#' @param Name The name of the instance of IAM Identity Center.
 #' @param Tags Specifies tags to be attached to the instance of IAM Identity Center.
 #'
 #' @return
@@ -416,8 +427,8 @@ ssoadmin_create_application_assignment <- function(ApplicationArn, PrincipalId, 
 #' @section Request syntax:
 #' ```
 #' svc$create_instance(
-#'   ClientToken = "string",
 #'   Name = "string",
+#'   ClientToken = "string",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -432,7 +443,7 @@ ssoadmin_create_application_assignment <- function(ApplicationArn, PrincipalId, 
 #' @rdname ssoadmin_create_instance
 #'
 #' @aliases ssoadmin_create_instance
-ssoadmin_create_instance <- function(ClientToken = NULL, Name = NULL, Tags = NULL) {
+ssoadmin_create_instance <- function(Name = NULL, ClientToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateInstance",
     http_method = "POST",
@@ -441,7 +452,7 @@ ssoadmin_create_instance <- function(ClientToken = NULL, Name = NULL, Tags = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$create_instance_input(ClientToken = ClientToken, Name = Name, Tags = Tags)
+  input <- .ssoadmin$create_instance_input(Name = Name, ClientToken = ClientToken, Tags = Tags)
   output <- .ssoadmin$create_instance_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -468,8 +479,10 @@ ssoadmin_create_instance <- function(ClientToken = NULL, Name = NULL, Tags = NUL
 #'
 #' @usage
 #' ssoadmin_create_instance_access_control_attribute_configuration(
-#'   InstanceAccessControlAttributeConfiguration, InstanceArn)
+#'   InstanceArn, InstanceAccessControlAttributeConfiguration)
 #'
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed.
 #' @param InstanceAccessControlAttributeConfiguration &#91;required&#93; Specifies the IAM Identity Center identity store attributes to add to
 #' your ABAC configuration. When using an external identity provider as an
 #' identity source, you can pass attributes through the SAML assertion.
@@ -477,8 +490,6 @@ ssoadmin_create_instance <- function(ClientToken = NULL, Name = NULL, Tags = NUL
 #' Identity Center identity store. If a SAML assertion passes any of these
 #' attributes, IAM Identity Center will replace the attribute value with
 #' the value from the IAM Identity Center identity store.
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed.
 #'
 #' @return
 #' An empty list.
@@ -486,6 +497,7 @@ ssoadmin_create_instance <- function(ClientToken = NULL, Name = NULL, Tags = NUL
 #' @section Request syntax:
 #' ```
 #' svc$create_instance_access_control_attribute_configuration(
+#'   InstanceArn = "string",
 #'   InstanceAccessControlAttributeConfiguration = list(
 #'     AccessControlAttributes = list(
 #'       list(
@@ -497,8 +509,7 @@ ssoadmin_create_instance <- function(ClientToken = NULL, Name = NULL, Tags = NUL
 #'         )
 #'       )
 #'     )
-#'   ),
-#'   InstanceArn = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -507,7 +518,7 @@ ssoadmin_create_instance <- function(ClientToken = NULL, Name = NULL, Tags = NUL
 #' @rdname ssoadmin_create_instanc_access_control_attribu_configu
 #'
 #' @aliases ssoadmin_create_instance_access_control_attribute_configuration
-ssoadmin_create_instance_access_control_attribute_configuration <- function(InstanceAccessControlAttributeConfiguration, InstanceArn) {
+ssoadmin_create_instance_access_control_attribute_configuration <- function(InstanceArn, InstanceAccessControlAttributeConfiguration) {
   op <- new_operation(
     name = "CreateInstanceAccessControlAttributeConfiguration",
     http_method = "POST",
@@ -516,7 +527,7 @@ ssoadmin_create_instance_access_control_attribute_configuration <- function(Inst
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$create_instance_access_control_attribute_configuration_input(InstanceAccessControlAttributeConfiguration = InstanceAccessControlAttributeConfiguration, InstanceArn = InstanceArn)
+  input <- .ssoadmin$create_instance_access_control_attribute_configuration_input(InstanceArn = InstanceArn, InstanceAccessControlAttributeConfiguration = InstanceAccessControlAttributeConfiguration)
   output <- .ssoadmin$create_instance_access_control_attribute_configuration_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -537,19 +548,19 @@ ssoadmin_create_instance_access_control_attribute_configuration <- function(Inst
 #' [`create_account_assignment`][ssoadmin_create_account_assignment].
 #'
 #' @usage
-#' ssoadmin_create_permission_set(Description, InstanceArn, Name,
-#'   RelayState, SessionDuration, Tags)
+#' ssoadmin_create_permission_set(Name, Description, InstanceArn,
+#'   SessionDuration, RelayState, Tags)
 #'
+#' @param Name &#91;required&#93; The name of the PermissionSet.
 #' @param Description The description of the PermissionSet.
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
 #' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
 #' Web Services General Reference*.
-#' @param Name &#91;required&#93; The name of the PermissionSet.
-#' @param RelayState Used to redirect users within the application during the federation
-#' authentication process.
 #' @param SessionDuration The length of time that the application user sessions are valid in the
 #' ISO-8601 standard.
+#' @param RelayState Used to redirect users within the application during the federation
+#' authentication process.
 #' @param Tags The tags to attach to the new PermissionSet.
 #'
 #' @return
@@ -557,14 +568,14 @@ ssoadmin_create_instance_access_control_attribute_configuration <- function(Inst
 #' ```
 #' list(
 #'   PermissionSet = list(
+#'     Name = "string",
+#'     PermissionSetArn = "string",
+#'     Description = "string",
 #'     CreatedDate = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     Description = "string",
-#'     Name = "string",
-#'     PermissionSetArn = "string",
-#'     RelayState = "string",
-#'     SessionDuration = "string"
+#'     SessionDuration = "string",
+#'     RelayState = "string"
 #'   )
 #' )
 #' ```
@@ -572,11 +583,11 @@ ssoadmin_create_instance_access_control_attribute_configuration <- function(Inst
 #' @section Request syntax:
 #' ```
 #' svc$create_permission_set(
+#'   Name = "string",
 #'   Description = "string",
 #'   InstanceArn = "string",
-#'   Name = "string",
-#'   RelayState = "string",
 #'   SessionDuration = "string",
+#'   RelayState = "string",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -591,7 +602,7 @@ ssoadmin_create_instance_access_control_attribute_configuration <- function(Inst
 #' @rdname ssoadmin_create_permission_set
 #'
 #' @aliases ssoadmin_create_permission_set
-ssoadmin_create_permission_set <- function(Description = NULL, InstanceArn, Name, RelayState = NULL, SessionDuration = NULL, Tags = NULL) {
+ssoadmin_create_permission_set <- function(Name, Description = NULL, InstanceArn, SessionDuration = NULL, RelayState = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreatePermissionSet",
     http_method = "POST",
@@ -600,7 +611,7 @@ ssoadmin_create_permission_set <- function(Description = NULL, InstanceArn, Name
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$create_permission_set_input(Description = Description, InstanceArn = InstanceArn, Name = Name, RelayState = RelayState, SessionDuration = SessionDuration, Tags = Tags)
+  input <- .ssoadmin$create_permission_set_input(Name = Name, Description = Description, InstanceArn = InstanceArn, SessionDuration = SessionDuration, RelayState = RelayState, Tags = Tags)
   output <- .ssoadmin$create_permission_set_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -625,9 +636,17 @@ ssoadmin_create_permission_set <- function(Description = NULL, InstanceArn, Name
 #' tokens for authentication.
 #'
 #' @usage
-#' ssoadmin_create_trusted_token_issuer(ClientToken, InstanceArn, Name,
-#'   Tags, TrustedTokenIssuerConfiguration, TrustedTokenIssuerType)
+#' ssoadmin_create_trusted_token_issuer(InstanceArn, Name,
+#'   TrustedTokenIssuerType, TrustedTokenIssuerConfiguration, ClientToken,
+#'   Tags)
 #'
+#' @param InstanceArn &#91;required&#93; Specifies the ARN of the instance of IAM Identity Center to contain the
+#' new trusted token issuer configuration.
+#' @param Name &#91;required&#93; Specifies the name of the new trusted token issuer configuration.
+#' @param TrustedTokenIssuerType &#91;required&#93; Specifies the type of the new trusted token issuer.
+#' @param TrustedTokenIssuerConfiguration &#91;required&#93; Specifies settings that apply to the new trusted token issuer
+#' configuration. The settings that are available depend on what
+#' `TrustedTokenIssuerType` you specify.
 #' @param ClientToken Specifies a unique, case-sensitive ID that you provide to ensure the
 #' idempotency of the request. This lets you safely retry the request
 #' without accidentally performing the same operation a second time.
@@ -642,15 +661,8 @@ ssoadmin_create_permission_set <- function(Description = NULL, InstanceArn, Name
 #' If you retry the operation with the same `ClientToken`, but with
 #' different parameters, the retry fails with an
 #' `IdempotentParameterMismatch` error.
-#' @param InstanceArn &#91;required&#93; Specifies the ARN of the instance of IAM Identity Center to contain the
-#' new trusted token issuer configuration.
-#' @param Name &#91;required&#93; Specifies the name of the new trusted token issuer configuration.
 #' @param Tags Specifies tags to be attached to the new trusted token issuer
 #' configuration.
-#' @param TrustedTokenIssuerConfiguration &#91;required&#93; Specifies settings that apply to the new trusted token issuer
-#' configuration. The settings that are available depend on what
-#' `TrustedTokenIssuerType` you specify.
-#' @param TrustedTokenIssuerType &#91;required&#93; Specifies the type of the new trusted token issuer.
 #'
 #' @return
 #' A list with the following syntax:
@@ -663,24 +675,24 @@ ssoadmin_create_permission_set <- function(Description = NULL, InstanceArn, Name
 #' @section Request syntax:
 #' ```
 #' svc$create_trusted_token_issuer(
-#'   ClientToken = "string",
 #'   InstanceArn = "string",
 #'   Name = "string",
+#'   TrustedTokenIssuerType = "OIDC_JWT",
+#'   TrustedTokenIssuerConfiguration = list(
+#'     OidcJwtConfiguration = list(
+#'       IssuerUrl = "string",
+#'       ClaimAttributePath = "string",
+#'       IdentityStoreAttributePath = "string",
+#'       JwksRetrievalOption = "OPEN_ID_DISCOVERY"
+#'     )
+#'   ),
+#'   ClientToken = "string",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   ),
-#'   TrustedTokenIssuerConfiguration = list(
-#'     OidcJwtConfiguration = list(
-#'       ClaimAttributePath = "string",
-#'       IdentityStoreAttributePath = "string",
-#'       IssuerUrl = "string",
-#'       JwksRetrievalOption = "OPEN_ID_DISCOVERY"
-#'     )
-#'   ),
-#'   TrustedTokenIssuerType = "OIDC_JWT"
+#'   )
 #' )
 #' ```
 #'
@@ -689,7 +701,7 @@ ssoadmin_create_permission_set <- function(Description = NULL, InstanceArn, Name
 #' @rdname ssoadmin_create_trusted_token_issuer
 #'
 #' @aliases ssoadmin_create_trusted_token_issuer
-ssoadmin_create_trusted_token_issuer <- function(ClientToken = NULL, InstanceArn, Name, Tags = NULL, TrustedTokenIssuerConfiguration, TrustedTokenIssuerType) {
+ssoadmin_create_trusted_token_issuer <- function(InstanceArn, Name, TrustedTokenIssuerType, TrustedTokenIssuerConfiguration, ClientToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateTrustedTokenIssuer",
     http_method = "POST",
@@ -698,7 +710,7 @@ ssoadmin_create_trusted_token_issuer <- function(ClientToken = NULL, InstanceArn
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$create_trusted_token_issuer_input(ClientToken = ClientToken, InstanceArn = InstanceArn, Name = Name, Tags = Tags, TrustedTokenIssuerConfiguration = TrustedTokenIssuerConfiguration, TrustedTokenIssuerType = TrustedTokenIssuerType)
+  input <- .ssoadmin$create_trusted_token_issuer_input(InstanceArn = InstanceArn, Name = Name, TrustedTokenIssuerType = TrustedTokenIssuerType, TrustedTokenIssuerConfiguration = TrustedTokenIssuerConfiguration, ClientToken = ClientToken, Tags = Tags)
   output <- .ssoadmin$create_trusted_token_issuer_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -720,40 +732,40 @@ ssoadmin_create_trusted_token_issuer <- function(ClientToken = NULL, InstanceArn
 #' to describe the status of an assignment deletion request.
 #'
 #' @usage
-#' ssoadmin_delete_account_assignment(InstanceArn, PermissionSetArn,
-#'   PrincipalId, PrincipalType, TargetId, TargetType)
+#' ssoadmin_delete_account_assignment(InstanceArn, TargetId, TargetType,
+#'   PermissionSetArn, PrincipalType, PrincipalId)
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
 #' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
 #' Web Services General Reference*.
+#' @param TargetId &#91;required&#93; TargetID is an Amazon Web Services account identifier, (For example,
+#' 123456789012).
+#' @param TargetType &#91;required&#93; The entity type for which the assignment will be deleted.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the permission set that will be used to remove access.
+#' @param PrincipalType &#91;required&#93; The entity type for which the assignment will be deleted.
 #' @param PrincipalId &#91;required&#93; An identifier for an object in IAM Identity Center, such as a user or
 #' group. PrincipalIds are GUIDs (For example,
 #' f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For more information about
 #' PrincipalIds in IAM Identity Center, see the IAM Identity Center
 #' Identity Store API Reference.
-#' @param PrincipalType &#91;required&#93; The entity type for which the assignment will be deleted.
-#' @param TargetId &#91;required&#93; TargetID is an Amazon Web Services account identifier, (For example,
-#' 123456789012).
-#' @param TargetType &#91;required&#93; The entity type for which the assignment will be deleted.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   AccountAssignmentDeletionStatus = list(
+#'     Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED",
+#'     RequestId = "string",
+#'     FailureReason = "string",
+#'     TargetId = "string",
+#'     TargetType = "AWS_ACCOUNT",
+#'     PermissionSetArn = "string",
+#'     PrincipalType = "USER"|"GROUP",
+#'     PrincipalId = "string",
 #'     CreatedDate = as.POSIXct(
 #'       "2015-01-01"
-#'     ),
-#'     FailureReason = "string",
-#'     PermissionSetArn = "string",
-#'     PrincipalId = "string",
-#'     PrincipalType = "USER"|"GROUP",
-#'     RequestId = "string",
-#'     Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED",
-#'     TargetId = "string",
-#'     TargetType = "AWS_ACCOUNT"
+#'     )
 #'   )
 #' )
 #' ```
@@ -762,11 +774,11 @@ ssoadmin_create_trusted_token_issuer <- function(ClientToken = NULL, InstanceArn
 #' ```
 #' svc$delete_account_assignment(
 #'   InstanceArn = "string",
-#'   PermissionSetArn = "string",
-#'   PrincipalId = "string",
-#'   PrincipalType = "USER"|"GROUP",
 #'   TargetId = "string",
-#'   TargetType = "AWS_ACCOUNT"
+#'   TargetType = "AWS_ACCOUNT",
+#'   PermissionSetArn = "string",
+#'   PrincipalType = "USER"|"GROUP",
+#'   PrincipalId = "string"
 #' )
 #' ```
 #'
@@ -775,7 +787,7 @@ ssoadmin_create_trusted_token_issuer <- function(ClientToken = NULL, InstanceArn
 #' @rdname ssoadmin_delete_account_assignment
 #'
 #' @aliases ssoadmin_delete_account_assignment
-ssoadmin_delete_account_assignment <- function(InstanceArn, PermissionSetArn, PrincipalId, PrincipalType, TargetId, TargetType) {
+ssoadmin_delete_account_assignment <- function(InstanceArn, TargetId, TargetType, PermissionSetArn, PrincipalType, PrincipalId) {
   op <- new_operation(
     name = "DeleteAccountAssignment",
     http_method = "POST",
@@ -784,7 +796,7 @@ ssoadmin_delete_account_assignment <- function(InstanceArn, PermissionSetArn, Pr
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$delete_account_assignment_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, PrincipalId = PrincipalId, PrincipalType = PrincipalType, TargetId = TargetId, TargetType = TargetType)
+  input <- .ssoadmin$delete_account_assignment_input(InstanceArn = InstanceArn, TargetId = TargetId, TargetType = TargetType, PermissionSetArn = PermissionSetArn, PrincipalType = PrincipalType, PrincipalId = PrincipalId)
   output <- .ssoadmin$delete_account_assignment_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -902,8 +914,9 @@ ssoadmin_delete_application_access_scope <- function(ApplicationArn, Scope) {
 #' @param PrincipalId &#91;required&#93; An identifier for an object in IAM Identity Center, such as a user or
 #' group. PrincipalIds are GUIDs (For example,
 #' f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For more information about
-#' PrincipalIds in IAM Identity Center, see the IAM Identity Center
-#' Identity Store API Reference.
+#' PrincipalIds in IAM Identity Center, see the [IAM Identity Center
+#' Identity Store API
+#' Reference](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/welcome.html).
 #' @param PrincipalType &#91;required&#93; The entity type for which the assignment will be deleted.
 #'
 #' @return
@@ -1341,31 +1354,31 @@ ssoadmin_delete_trusted_token_issuer <- function(TrustedTokenIssuerArn) {
 #' Describes the status of the assignment creation request.
 #'
 #' @usage
-#' ssoadmin_describe_account_assignment_creation_status(
-#'   AccountAssignmentCreationRequestId, InstanceArn)
+#' ssoadmin_describe_account_assignment_creation_status(InstanceArn,
+#'   AccountAssignmentCreationRequestId)
 #'
-#' @param AccountAssignmentCreationRequestId &#91;required&#93; The identifier that is used to track the request operation progress.
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
 #' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
 #' Web Services General Reference*.
+#' @param AccountAssignmentCreationRequestId &#91;required&#93; The identifier that is used to track the request operation progress.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   AccountAssignmentCreationStatus = list(
+#'     Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED",
+#'     RequestId = "string",
+#'     FailureReason = "string",
+#'     TargetId = "string",
+#'     TargetType = "AWS_ACCOUNT",
+#'     PermissionSetArn = "string",
+#'     PrincipalType = "USER"|"GROUP",
+#'     PrincipalId = "string",
 #'     CreatedDate = as.POSIXct(
 #'       "2015-01-01"
-#'     ),
-#'     FailureReason = "string",
-#'     PermissionSetArn = "string",
-#'     PrincipalId = "string",
-#'     PrincipalType = "USER"|"GROUP",
-#'     RequestId = "string",
-#'     Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED",
-#'     TargetId = "string",
-#'     TargetType = "AWS_ACCOUNT"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1373,8 +1386,8 @@ ssoadmin_delete_trusted_token_issuer <- function(TrustedTokenIssuerArn) {
 #' @section Request syntax:
 #' ```
 #' svc$describe_account_assignment_creation_status(
-#'   AccountAssignmentCreationRequestId = "string",
-#'   InstanceArn = "string"
+#'   InstanceArn = "string",
+#'   AccountAssignmentCreationRequestId = "string"
 #' )
 #' ```
 #'
@@ -1383,7 +1396,7 @@ ssoadmin_delete_trusted_token_issuer <- function(TrustedTokenIssuerArn) {
 #' @rdname ssoadmin_describe_account_assignment_creation_status
 #'
 #' @aliases ssoadmin_describe_account_assignment_creation_status
-ssoadmin_describe_account_assignment_creation_status <- function(AccountAssignmentCreationRequestId, InstanceArn) {
+ssoadmin_describe_account_assignment_creation_status <- function(InstanceArn, AccountAssignmentCreationRequestId) {
   op <- new_operation(
     name = "DescribeAccountAssignmentCreationStatus",
     http_method = "POST",
@@ -1392,7 +1405,7 @@ ssoadmin_describe_account_assignment_creation_status <- function(AccountAssignme
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$describe_account_assignment_creation_status_input(AccountAssignmentCreationRequestId = AccountAssignmentCreationRequestId, InstanceArn = InstanceArn)
+  input <- .ssoadmin$describe_account_assignment_creation_status_input(InstanceArn = InstanceArn, AccountAssignmentCreationRequestId = AccountAssignmentCreationRequestId)
   output <- .ssoadmin$describe_account_assignment_creation_status_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -1408,31 +1421,31 @@ ssoadmin_describe_account_assignment_creation_status <- function(AccountAssignme
 #' Describes the status of the assignment deletion request.
 #'
 #' @usage
-#' ssoadmin_describe_account_assignment_deletion_status(
-#'   AccountAssignmentDeletionRequestId, InstanceArn)
+#' ssoadmin_describe_account_assignment_deletion_status(InstanceArn,
+#'   AccountAssignmentDeletionRequestId)
 #'
-#' @param AccountAssignmentDeletionRequestId &#91;required&#93; The identifier that is used to track the request operation progress.
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
 #' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
 #' Web Services General Reference*.
+#' @param AccountAssignmentDeletionRequestId &#91;required&#93; The identifier that is used to track the request operation progress.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   AccountAssignmentDeletionStatus = list(
+#'     Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED",
+#'     RequestId = "string",
+#'     FailureReason = "string",
+#'     TargetId = "string",
+#'     TargetType = "AWS_ACCOUNT",
+#'     PermissionSetArn = "string",
+#'     PrincipalType = "USER"|"GROUP",
+#'     PrincipalId = "string",
 #'     CreatedDate = as.POSIXct(
 #'       "2015-01-01"
-#'     ),
-#'     FailureReason = "string",
-#'     PermissionSetArn = "string",
-#'     PrincipalId = "string",
-#'     PrincipalType = "USER"|"GROUP",
-#'     RequestId = "string",
-#'     Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED",
-#'     TargetId = "string",
-#'     TargetType = "AWS_ACCOUNT"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1440,8 +1453,8 @@ ssoadmin_describe_account_assignment_creation_status <- function(AccountAssignme
 #' @section Request syntax:
 #' ```
 #' svc$describe_account_assignment_deletion_status(
-#'   AccountAssignmentDeletionRequestId = "string",
-#'   InstanceArn = "string"
+#'   InstanceArn = "string",
+#'   AccountAssignmentDeletionRequestId = "string"
 #' )
 #' ```
 #'
@@ -1450,7 +1463,7 @@ ssoadmin_describe_account_assignment_creation_status <- function(AccountAssignme
 #' @rdname ssoadmin_describe_account_assignment_deletion_status
 #'
 #' @aliases ssoadmin_describe_account_assignment_deletion_status
-ssoadmin_describe_account_assignment_deletion_status <- function(AccountAssignmentDeletionRequestId, InstanceArn) {
+ssoadmin_describe_account_assignment_deletion_status <- function(InstanceArn, AccountAssignmentDeletionRequestId) {
   op <- new_operation(
     name = "DescribeAccountAssignmentDeletionStatus",
     http_method = "POST",
@@ -1459,7 +1472,7 @@ ssoadmin_describe_account_assignment_deletion_status <- function(AccountAssignme
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$describe_account_assignment_deletion_status_input(AccountAssignmentDeletionRequestId = AccountAssignmentDeletionRequestId, InstanceArn = InstanceArn)
+  input <- .ssoadmin$describe_account_assignment_deletion_status_input(InstanceArn = InstanceArn, AccountAssignmentDeletionRequestId = AccountAssignmentDeletionRequestId)
   output <- .ssoadmin$describe_account_assignment_deletion_status_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -1487,23 +1500,23 @@ ssoadmin_describe_account_assignment_deletion_status <- function(AccountAssignme
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   ApplicationAccount = "string",
 #'   ApplicationArn = "string",
 #'   ApplicationProviderArn = "string",
-#'   CreatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Description = "string",
-#'   InstanceArn = "string",
 #'   Name = "string",
+#'   ApplicationAccount = "string",
+#'   InstanceArn = "string",
+#'   Status = "ENABLED"|"DISABLED",
 #'   PortalOptions = list(
 #'     SignInOptions = list(
-#'       ApplicationUrl = "string",
-#'       Origin = "IDENTITY_CENTER"|"APPLICATION"
+#'       Origin = "IDENTITY_CENTER"|"APPLICATION",
+#'       ApplicationUrl = "string"
 #'     ),
 #'     Visibility = "ENABLED"|"DISABLED"
 #'   ),
-#'   Status = "ENABLED"|"DISABLED"
+#'   Description = "string",
+#'   CreatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
 #' )
 #' ```
 #'
@@ -1558,17 +1571,18 @@ ssoadmin_describe_application <- function(ApplicationArn) {
 #' @param PrincipalId &#91;required&#93; An identifier for an object in IAM Identity Center, such as a user or
 #' group. PrincipalIds are GUIDs (For example,
 #' f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For more information about
-#' PrincipalIds in IAM Identity Center, see the IAM Identity Center
-#' Identity Store API Reference.
+#' PrincipalIds in IAM Identity Center, see the [IAM Identity Center
+#' Identity Store API
+#' Reference](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/welcome.html).
 #' @param PrincipalType &#91;required&#93; The entity type for which the assignment will be created.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   ApplicationArn = "string",
+#'   PrincipalType = "USER"|"GROUP",
 #'   PrincipalId = "string",
-#'   PrincipalType = "USER"|"GROUP"
+#'   ApplicationArn = "string"
 #' )
 #' ```
 #'
@@ -1625,17 +1639,17 @@ ssoadmin_describe_application_assignment <- function(ApplicationArn, PrincipalId
 #' ```
 #' list(
 #'   ApplicationProviderArn = "string",
-#'   DisplayData = list(
-#'     Description = "string",
-#'     DisplayName = "string",
-#'     IconUrl = "string"
-#'   ),
 #'   FederationProtocol = "SAML"|"OAUTH",
+#'   DisplayData = list(
+#'     DisplayName = "string",
+#'     IconUrl = "string",
+#'     Description = "string"
+#'   ),
 #'   ResourceServerConfig = list(
 #'     Scopes = list(
 #'       list(
-#'         DetailedTitle = "string",
-#'         LongDescription = "string"
+#'         LongDescription = "string",
+#'         DetailedTitle = "string"
 #'       )
 #'     )
 #'   )
@@ -1700,13 +1714,13 @@ ssoadmin_describe_application_provider <- function(ApplicationProviderArn) {
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   InstanceArn = "string",
+#'   IdentityStoreId = "string",
+#'   OwnerAccountId = "string",
+#'   Name = "string",
 #'   CreatedDate = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   IdentityStoreId = "string",
-#'   InstanceArn = "string",
-#'   Name = "string",
-#'   OwnerAccountId = "string",
 #'   Status = "CREATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"ACTIVE"
 #' )
 #' ```
@@ -1765,6 +1779,8 @@ ssoadmin_describe_instance <- function(InstanceArn) {
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   Status = "ENABLED"|"CREATION_IN_PROGRESS"|"CREATION_FAILED",
+#'   StatusReason = "string",
 #'   InstanceAccessControlAttributeConfiguration = list(
 #'     AccessControlAttributes = list(
 #'       list(
@@ -1776,9 +1792,7 @@ ssoadmin_describe_instance <- function(InstanceArn) {
 #'         )
 #'       )
 #'     )
-#'   ),
-#'   Status = "ENABLED"|"CREATION_IN_PROGRESS"|"CREATION_FAILED",
-#'   StatusReason = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -1832,14 +1846,14 @@ ssoadmin_describe_instance_access_control_attribute_configuration <- function(In
 #' ```
 #' list(
 #'   PermissionSet = list(
+#'     Name = "string",
+#'     PermissionSetArn = "string",
+#'     Description = "string",
 #'     CreatedDate = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     Description = "string",
-#'     Name = "string",
-#'     PermissionSetArn = "string",
-#'     RelayState = "string",
-#'     SessionDuration = "string"
+#'     SessionDuration = "string",
+#'     RelayState = "string"
 #'   )
 #' )
 #' ```
@@ -1898,14 +1912,14 @@ ssoadmin_describe_permission_set <- function(InstanceArn, PermissionSetArn) {
 #' ```
 #' list(
 #'   PermissionSetProvisioningStatus = list(
+#'     Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED",
+#'     RequestId = "string",
 #'     AccountId = "string",
+#'     PermissionSetArn = "string",
+#'     FailureReason = "string",
 #'     CreatedDate = as.POSIXct(
 #'       "2015-01-01"
-#'     ),
-#'     FailureReason = "string",
-#'     PermissionSetArn = "string",
-#'     RequestId = "string",
-#'     Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1962,17 +1976,17 @@ ssoadmin_describe_permission_set_provisioning_status <- function(InstanceArn, Pr
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   Name = "string",
 #'   TrustedTokenIssuerArn = "string",
+#'   Name = "string",
+#'   TrustedTokenIssuerType = "OIDC_JWT",
 #'   TrustedTokenIssuerConfiguration = list(
 #'     OidcJwtConfiguration = list(
+#'       IssuerUrl = "string",
 #'       ClaimAttributePath = "string",
 #'       IdentityStoreAttributePath = "string",
-#'       IssuerUrl = "string",
 #'       JwksRetrievalOption = "OPEN_ID_DISCOVERY"
 #'     )
-#'   ),
-#'   TrustedTokenIssuerType = "OIDC_JWT"
+#'   )
 #' )
 #' ```
 #'
@@ -2016,14 +2030,14 @@ ssoadmin_describe_trusted_token_issuer <- function(TrustedTokenIssuerArn) {
 #'
 #' @usage
 #' ssoadmin_detach_customer_managed_policy_reference_from_permission_set(
-#'   CustomerManagedPolicyReference, InstanceArn, PermissionSetArn)
+#'   InstanceArn, PermissionSetArn, CustomerManagedPolicyReference)
 #'
-#' @param CustomerManagedPolicyReference &#91;required&#93; Specifies the name and path of a customer managed policy. You must have
-#' an IAM policy that matches the name and path in each Amazon Web Services
-#' account where you want to deploy your permission set.
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the `PermissionSet`.
+#' @param CustomerManagedPolicyReference &#91;required&#93; Specifies the name and path of a customer managed policy. You must have
+#' an IAM policy that matches the name and path in each Amazon Web Services
+#' account where you want to deploy your permission set.
 #'
 #' @return
 #' An empty list.
@@ -2031,12 +2045,12 @@ ssoadmin_describe_trusted_token_issuer <- function(TrustedTokenIssuerArn) {
 #' @section Request syntax:
 #' ```
 #' svc$detach_customer_managed_policy_reference_from_permission_set(
+#'   InstanceArn = "string",
+#'   PermissionSetArn = "string",
 #'   CustomerManagedPolicyReference = list(
 #'     Name = "string",
 #'     Path = "string"
-#'   ),
-#'   InstanceArn = "string",
-#'   PermissionSetArn = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -2045,7 +2059,7 @@ ssoadmin_describe_trusted_token_issuer <- function(TrustedTokenIssuerArn) {
 #' @rdname ssoadmin_detac_custo_manag_polic_refer_from_permi_set
 #'
 #' @aliases ssoadmin_detach_customer_managed_policy_reference_from_permission_set
-ssoadmin_detach_customer_managed_policy_reference_from_permission_set <- function(CustomerManagedPolicyReference, InstanceArn, PermissionSetArn) {
+ssoadmin_detach_customer_managed_policy_reference_from_permission_set <- function(InstanceArn, PermissionSetArn, CustomerManagedPolicyReference) {
   op <- new_operation(
     name = "DetachCustomerManagedPolicyReferenceFromPermissionSet",
     http_method = "POST",
@@ -2054,7 +2068,7 @@ ssoadmin_detach_customer_managed_policy_reference_from_permission_set <- functio
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$detach_customer_managed_policy_reference_from_permission_set_input(CustomerManagedPolicyReference = CustomerManagedPolicyReference, InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn)
+  input <- .ssoadmin$detach_customer_managed_policy_reference_from_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, CustomerManagedPolicyReference = CustomerManagedPolicyReference)
   output <- .ssoadmin$detach_customer_managed_policy_reference_from_permission_set_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -2073,15 +2087,15 @@ ssoadmin_detach_customer_managed_policy_reference_from_permission_set <- functio
 #'
 #' @usage
 #' ssoadmin_detach_managed_policy_from_permission_set(InstanceArn,
-#'   ManagedPolicyArn, PermissionSetArn)
+#'   PermissionSetArn, ManagedPolicyArn)
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
 #' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
 #' Web Services General Reference*.
+#' @param PermissionSetArn &#91;required&#93; The ARN of the PermissionSet from which the policy should be detached.
 #' @param ManagedPolicyArn &#91;required&#93; The Amazon Web Services managed policy ARN to be detached from a
 #' permission set.
-#' @param PermissionSetArn &#91;required&#93; The ARN of the PermissionSet from which the policy should be detached.
 #'
 #' @return
 #' An empty list.
@@ -2090,8 +2104,8 @@ ssoadmin_detach_customer_managed_policy_reference_from_permission_set <- functio
 #' ```
 #' svc$detach_managed_policy_from_permission_set(
 #'   InstanceArn = "string",
-#'   ManagedPolicyArn = "string",
-#'   PermissionSetArn = "string"
+#'   PermissionSetArn = "string",
+#'   ManagedPolicyArn = "string"
 #' )
 #' ```
 #'
@@ -2100,7 +2114,7 @@ ssoadmin_detach_customer_managed_policy_reference_from_permission_set <- functio
 #' @rdname ssoadmin_detach_managed_policy_from_permission_set
 #'
 #' @aliases ssoadmin_detach_managed_policy_from_permission_set
-ssoadmin_detach_managed_policy_from_permission_set <- function(InstanceArn, ManagedPolicyArn, PermissionSetArn) {
+ssoadmin_detach_managed_policy_from_permission_set <- function(InstanceArn, PermissionSetArn, ManagedPolicyArn) {
   op <- new_operation(
     name = "DetachManagedPolicyFromPermissionSet",
     http_method = "POST",
@@ -2109,7 +2123,7 @@ ssoadmin_detach_managed_policy_from_permission_set <- function(InstanceArn, Mana
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$detach_managed_policy_from_permission_set_input(InstanceArn = InstanceArn, ManagedPolicyArn = ManagedPolicyArn, PermissionSetArn = PermissionSetArn)
+  input <- .ssoadmin$detach_managed_policy_from_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, ManagedPolicyArn = ManagedPolicyArn)
   output <- .ssoadmin$detach_managed_policy_from_permission_set_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -2138,10 +2152,10 @@ ssoadmin_detach_managed_policy_from_permission_set <- function(InstanceArn, Mana
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   Scope = "string",
 #'   AuthorizedTargets = list(
 #'     "string"
-#'   ),
-#'   Scope = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -2309,10 +2323,10 @@ ssoadmin_get_application_authentication_method <- function(ApplicationArn, Authe
 #'     JwtBearer = list(
 #'       AuthorizedTokenIssuers = list(
 #'         list(
+#'           TrustedTokenIssuerArn = "string",
 #'           AuthorizedAudiences = list(
 #'             "string"
-#'           ),
-#'           TrustedTokenIssuerArn = "string"
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -2476,10 +2490,9 @@ ssoadmin_get_permissions_boundary_for_permission_set <- function(InstanceArn, Pe
 #' requests for a specified IAM Identity Center instance.
 #'
 #' @usage
-#' ssoadmin_list_account_assignment_creation_status(Filter, InstanceArn,
-#'   MaxResults, NextToken)
+#' ssoadmin_list_account_assignment_creation_status(InstanceArn,
+#'   MaxResults, NextToken, Filter)
 #'
-#' @param Filter Filters results based on the passed attribute value.
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
 #' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
@@ -2487,6 +2500,7 @@ ssoadmin_get_permissions_boundary_for_permission_set <- function(InstanceArn, Pe
 #' @param MaxResults The maximum number of results to display for the assignment.
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
 #' the output of previous API calls to make subsequent calls.
+#' @param Filter Filters results based on the passed attribute value.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2494,11 +2508,11 @@ ssoadmin_get_permissions_boundary_for_permission_set <- function(InstanceArn, Pe
 #' list(
 #'   AccountAssignmentsCreationStatus = list(
 #'     list(
+#'       Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED",
+#'       RequestId = "string",
 #'       CreatedDate = as.POSIXct(
 #'         "2015-01-01"
-#'       ),
-#'       RequestId = "string",
-#'       Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED"
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2508,12 +2522,12 @@ ssoadmin_get_permissions_boundary_for_permission_set <- function(InstanceArn, Pe
 #' @section Request syntax:
 #' ```
 #' svc$list_account_assignment_creation_status(
-#'   Filter = list(
-#'     Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED"
-#'   ),
 #'   InstanceArn = "string",
 #'   MaxResults = 123,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   Filter = list(
+#'     Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED"
+#'   )
 #' )
 #' ```
 #'
@@ -2522,7 +2536,7 @@ ssoadmin_get_permissions_boundary_for_permission_set <- function(InstanceArn, Pe
 #' @rdname ssoadmin_list_account_assignment_creation_status
 #'
 #' @aliases ssoadmin_list_account_assignment_creation_status
-ssoadmin_list_account_assignment_creation_status <- function(Filter = NULL, InstanceArn, MaxResults = NULL, NextToken = NULL) {
+ssoadmin_list_account_assignment_creation_status <- function(InstanceArn, MaxResults = NULL, NextToken = NULL, Filter = NULL) {
   op <- new_operation(
     name = "ListAccountAssignmentCreationStatus",
     http_method = "POST",
@@ -2531,7 +2545,7 @@ ssoadmin_list_account_assignment_creation_status <- function(Filter = NULL, Inst
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AccountAssignmentsCreationStatus"),
     stream_api = FALSE
   )
-  input <- .ssoadmin$list_account_assignment_creation_status_input(Filter = Filter, InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .ssoadmin$list_account_assignment_creation_status_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, Filter = Filter)
   output <- .ssoadmin$list_account_assignment_creation_status_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -2549,10 +2563,9 @@ ssoadmin_list_account_assignment_creation_status <- function(Filter = NULL, Inst
 #' requests for a specified IAM Identity Center instance.
 #'
 #' @usage
-#' ssoadmin_list_account_assignment_deletion_status(Filter, InstanceArn,
-#'   MaxResults, NextToken)
+#' ssoadmin_list_account_assignment_deletion_status(InstanceArn,
+#'   MaxResults, NextToken, Filter)
 #'
-#' @param Filter Filters results based on the passed attribute value.
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
 #' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
@@ -2560,6 +2573,7 @@ ssoadmin_list_account_assignment_creation_status <- function(Filter = NULL, Inst
 #' @param MaxResults The maximum number of results to display for the assignment.
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
 #' the output of previous API calls to make subsequent calls.
+#' @param Filter Filters results based on the passed attribute value.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2567,11 +2581,11 @@ ssoadmin_list_account_assignment_creation_status <- function(Filter = NULL, Inst
 #' list(
 #'   AccountAssignmentsDeletionStatus = list(
 #'     list(
+#'       Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED",
+#'       RequestId = "string",
 #'       CreatedDate = as.POSIXct(
 #'         "2015-01-01"
-#'       ),
-#'       RequestId = "string",
-#'       Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED"
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2581,12 +2595,12 @@ ssoadmin_list_account_assignment_creation_status <- function(Filter = NULL, Inst
 #' @section Request syntax:
 #' ```
 #' svc$list_account_assignment_deletion_status(
-#'   Filter = list(
-#'     Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED"
-#'   ),
 #'   InstanceArn = "string",
 #'   MaxResults = 123,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   Filter = list(
+#'     Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED"
+#'   )
 #' )
 #' ```
 #'
@@ -2595,7 +2609,7 @@ ssoadmin_list_account_assignment_creation_status <- function(Filter = NULL, Inst
 #' @rdname ssoadmin_list_account_assignment_deletion_status
 #'
 #' @aliases ssoadmin_list_account_assignment_deletion_status
-ssoadmin_list_account_assignment_deletion_status <- function(Filter = NULL, InstanceArn, MaxResults = NULL, NextToken = NULL) {
+ssoadmin_list_account_assignment_deletion_status <- function(InstanceArn, MaxResults = NULL, NextToken = NULL, Filter = NULL) {
   op <- new_operation(
     name = "ListAccountAssignmentDeletionStatus",
     http_method = "POST",
@@ -2604,7 +2618,7 @@ ssoadmin_list_account_assignment_deletion_status <- function(Filter = NULL, Inst
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AccountAssignmentsDeletionStatus"),
     stream_api = FALSE
   )
-  input <- .ssoadmin$list_account_assignment_deletion_status_input(Filter = Filter, InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .ssoadmin$list_account_assignment_deletion_status_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, Filter = Filter)
   output <- .ssoadmin$list_account_assignment_deletion_status_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -2622,19 +2636,19 @@ ssoadmin_list_account_assignment_deletion_status <- function(Filter = NULL, Inst
 #' specified permission set.
 #'
 #' @usage
-#' ssoadmin_list_account_assignments(AccountId, InstanceArn, MaxResults,
-#'   NextToken, PermissionSetArn)
+#' ssoadmin_list_account_assignments(InstanceArn, AccountId,
+#'   PermissionSetArn, MaxResults, NextToken)
 #'
-#' @param AccountId &#91;required&#93; The identifier of the Amazon Web Services account from which to list the
-#' assignments.
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
 #' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
 #' Web Services General Reference*.
+#' @param AccountId &#91;required&#93; The identifier of the Amazon Web Services account from which to list the
+#' assignments.
+#' @param PermissionSetArn &#91;required&#93; The ARN of the permission set from which to list assignments.
 #' @param MaxResults The maximum number of results to display for the assignment.
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
 #' the output of previous API calls to make subsequent calls.
-#' @param PermissionSetArn &#91;required&#93; The ARN of the permission set from which to list assignments.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2644,8 +2658,8 @@ ssoadmin_list_account_assignment_deletion_status <- function(Filter = NULL, Inst
 #'     list(
 #'       AccountId = "string",
 #'       PermissionSetArn = "string",
-#'       PrincipalId = "string",
-#'       PrincipalType = "USER"|"GROUP"
+#'       PrincipalType = "USER"|"GROUP",
+#'       PrincipalId = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2655,11 +2669,11 @@ ssoadmin_list_account_assignment_deletion_status <- function(Filter = NULL, Inst
 #' @section Request syntax:
 #' ```
 #' svc$list_account_assignments(
-#'   AccountId = "string",
 #'   InstanceArn = "string",
+#'   AccountId = "string",
+#'   PermissionSetArn = "string",
 #'   MaxResults = 123,
-#'   NextToken = "string",
-#'   PermissionSetArn = "string"
+#'   NextToken = "string"
 #' )
 #' ```
 #'
@@ -2668,7 +2682,7 @@ ssoadmin_list_account_assignment_deletion_status <- function(Filter = NULL, Inst
 #' @rdname ssoadmin_list_account_assignments
 #'
 #' @aliases ssoadmin_list_account_assignments
-ssoadmin_list_account_assignments <- function(AccountId, InstanceArn, MaxResults = NULL, NextToken = NULL, PermissionSetArn) {
+ssoadmin_list_account_assignments <- function(InstanceArn, AccountId, PermissionSetArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListAccountAssignments",
     http_method = "POST",
@@ -2677,7 +2691,7 @@ ssoadmin_list_account_assignments <- function(AccountId, InstanceArn, MaxResults
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AccountAssignments"),
     stream_api = FALSE
   )
-  input <- .ssoadmin$list_account_assignments_input(AccountId = AccountId, InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, PermissionSetArn = PermissionSetArn)
+  input <- .ssoadmin$list_account_assignments_input(InstanceArn = InstanceArn, AccountId = AccountId, PermissionSetArn = PermissionSetArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_account_assignments_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -2692,16 +2706,27 @@ ssoadmin_list_account_assignments <- function(AccountId, InstanceArn, MaxResults
 #'
 #' @description
 #' Retrieves a list of the IAM Identity Center associated Amazon Web
-#' Services accounts that the principal has access to.
+#' Services accounts that the principal has access to. This action must be
+#' called from the management account containing your organization instance
+#' of IAM Identity Center. This action is not valid for account instances
+#' of IAM Identity Center.
 #'
 #' @usage
-#' ssoadmin_list_account_assignments_for_principal(Filter, InstanceArn,
-#'   MaxResults, NextToken, PrincipalId, PrincipalType)
+#' ssoadmin_list_account_assignments_for_principal(InstanceArn,
+#'   PrincipalId, PrincipalType, Filter, NextToken, MaxResults)
 #'
-#' @param Filter Specifies an Amazon Web Services account ID number. Results are filtered
-#' to only those that match this ID number.
 #' @param InstanceArn &#91;required&#93; Specifies the ARN of the instance of IAM Identity Center that contains
 #' the principal.
+#' @param PrincipalId &#91;required&#93; Specifies the principal for which you want to retrieve the list of
+#' account assignments.
+#' @param PrincipalType &#91;required&#93; Specifies the type of the principal.
+#' @param Filter Specifies an Amazon Web Services account ID number. Results are filtered
+#' to only those that match this ID number.
+#' @param NextToken Specifies that you want to receive the next page of results. Valid only
+#' if you received a `NextToken` response in the previous request. If you
+#' did, it indicates that more output is available. Set this parameter to
+#' the value provided by the previous call's `NextToken` response to
+#' request the next page of results.
 #' @param MaxResults Specifies the total number of results that you want included in each
 #' response. If additional items exist beyond the number you specify, the
 #' `NextToken` response element is returned with a value (not null).
@@ -2710,14 +2735,6 @@ ssoadmin_list_account_assignments <- function(AccountId, InstanceArn, MaxResults
 #' service might return fewer results than the maximum even when there are
 #' more results available. You should check `NextToken` after every
 #' operation to ensure that you receive all of the results.
-#' @param NextToken Specifies that you want to receive the next page of results. Valid only
-#' if you received a `NextToken` response in the previous request. If you
-#' did, it indicates that more output is available. Set this parameter to
-#' the value provided by the previous call's `NextToken` response to
-#' request the next page of results.
-#' @param PrincipalId &#91;required&#93; Specifies the principal for which you want to retrieve the list of
-#' account assignments.
-#' @param PrincipalType &#91;required&#93; Specifies the type of the principal.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2738,14 +2755,14 @@ ssoadmin_list_account_assignments <- function(AccountId, InstanceArn, MaxResults
 #' @section Request syntax:
 #' ```
 #' svc$list_account_assignments_for_principal(
+#'   InstanceArn = "string",
+#'   PrincipalId = "string",
+#'   PrincipalType = "USER"|"GROUP",
 #'   Filter = list(
 #'     AccountId = "string"
 #'   ),
-#'   InstanceArn = "string",
-#'   MaxResults = 123,
 #'   NextToken = "string",
-#'   PrincipalId = "string",
-#'   PrincipalType = "USER"|"GROUP"
+#'   MaxResults = 123
 #' )
 #' ```
 #'
@@ -2754,7 +2771,7 @@ ssoadmin_list_account_assignments <- function(AccountId, InstanceArn, MaxResults
 #' @rdname ssoadmin_list_account_assignments_for_principal
 #'
 #' @aliases ssoadmin_list_account_assignments_for_principal
-ssoadmin_list_account_assignments_for_principal <- function(Filter = NULL, InstanceArn, MaxResults = NULL, NextToken = NULL, PrincipalId, PrincipalType) {
+ssoadmin_list_account_assignments_for_principal <- function(InstanceArn, PrincipalId, PrincipalType, Filter = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListAccountAssignmentsForPrincipal",
     http_method = "POST",
@@ -2763,7 +2780,7 @@ ssoadmin_list_account_assignments_for_principal <- function(Filter = NULL, Insta
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AccountAssignments"),
     stream_api = FALSE
   )
-  input <- .ssoadmin$list_account_assignments_for_principal_input(Filter = Filter, InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, PrincipalId = PrincipalId, PrincipalType = PrincipalType)
+  input <- .ssoadmin$list_account_assignments_for_principal_input(InstanceArn = InstanceArn, PrincipalId = PrincipalId, PrincipalType = PrincipalType, Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssoadmin$list_account_assignments_for_principal_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -2782,19 +2799,19 @@ ssoadmin_list_account_assignments_for_principal <- function(Filter = NULL, Insta
 #'
 #' @usage
 #' ssoadmin_list_accounts_for_provisioned_permission_set(InstanceArn,
-#'   MaxResults, NextToken, PermissionSetArn, ProvisioningStatus)
+#'   PermissionSetArn, ProvisioningStatus, MaxResults, NextToken)
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
 #' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
 #' Web Services General Reference*.
-#' @param MaxResults The maximum number of results to display for the PermissionSet.
-#' @param NextToken The pagination token for the list API. Initially the value is null. Use
-#' the output of previous API calls to make subsequent calls.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the PermissionSet from which the associated Amazon Web
 #' Services accounts will be listed.
 #' @param ProvisioningStatus The permission set provisioning status for an Amazon Web Services
 #' account.
+#' @param MaxResults The maximum number of results to display for the PermissionSet.
+#' @param NextToken The pagination token for the list API. Initially the value is null. Use
+#' the output of previous API calls to make subsequent calls.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2811,10 +2828,10 @@ ssoadmin_list_account_assignments_for_principal <- function(Filter = NULL, Insta
 #' ```
 #' svc$list_accounts_for_provisioned_permission_set(
 #'   InstanceArn = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string",
 #'   PermissionSetArn = "string",
-#'   ProvisioningStatus = "LATEST_PERMISSION_SET_PROVISIONED"|"LATEST_PERMISSION_SET_NOT_PROVISIONED"
+#'   ProvisioningStatus = "LATEST_PERMISSION_SET_PROVISIONED"|"LATEST_PERMISSION_SET_NOT_PROVISIONED",
+#'   MaxResults = 123,
+#'   NextToken = "string"
 #' )
 #' ```
 #'
@@ -2823,7 +2840,7 @@ ssoadmin_list_account_assignments_for_principal <- function(Filter = NULL, Insta
 #' @rdname ssoadmin_list_accounts_for_provisioned_permission_set
 #'
 #' @aliases ssoadmin_list_accounts_for_provisioned_permission_set
-ssoadmin_list_accounts_for_provisioned_permission_set <- function(InstanceArn, MaxResults = NULL, NextToken = NULL, PermissionSetArn, ProvisioningStatus = NULL) {
+ssoadmin_list_accounts_for_provisioned_permission_set <- function(InstanceArn, PermissionSetArn, ProvisioningStatus = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListAccountsForProvisionedPermissionSet",
     http_method = "POST",
@@ -2832,7 +2849,7 @@ ssoadmin_list_accounts_for_provisioned_permission_set <- function(InstanceArn, M
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AccountIds"),
     stream_api = FALSE
   )
-  input <- .ssoadmin$list_accounts_for_provisioned_permission_set_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, PermissionSetArn = PermissionSetArn, ProvisioningStatus = ProvisioningStatus)
+  input <- .ssoadmin$list_accounts_for_provisioned_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, ProvisioningStatus = ProvisioningStatus, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_accounts_for_provisioned_permission_set_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -2872,15 +2889,15 @@ ssoadmin_list_accounts_for_provisioned_permission_set <- function(InstanceArn, M
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   NextToken = "string",
 #'   Scopes = list(
 #'     list(
+#'       Scope = "string",
 #'       AuthorizedTargets = list(
 #'         "string"
-#'       ),
-#'       Scope = "string"
+#'       )
 #'     )
-#'   )
+#'   ),
+#'   NextToken = "string"
 #' )
 #' ```
 #'
@@ -2994,16 +3011,30 @@ ssoadmin_list_application_assignments <- function(ApplicationArn, MaxResults = N
 #' Lists the applications to which a specified principal is assigned
 #'
 #' @description
-#' Lists the applications to which a specified principal is assigned.
+#' Lists the applications to which a specified principal is assigned. You
+#' must provide a filter when calling this action from a member account
+#' against your organization instance of IAM Identity Center. A filter is
+#' not required when called from the management account against an
+#' organization instance of IAM Identity Center, or from a member account
+#' against an account instance of IAM Identity Center in the same account.
 #'
 #' @usage
-#' ssoadmin_list_application_assignments_for_principal(Filter, InstanceArn,
-#'   MaxResults, NextToken, PrincipalId, PrincipalType)
+#' ssoadmin_list_application_assignments_for_principal(InstanceArn,
+#'   PrincipalId, PrincipalType, Filter, NextToken, MaxResults)
 #'
-#' @param Filter Filters the output to include only assignments associated with the
-#' application that has the specified ARN.
 #' @param InstanceArn &#91;required&#93; Specifies the instance of IAM Identity Center that contains principal
 #' and applications.
+#' @param PrincipalId &#91;required&#93; Specifies the unique identifier of the principal for which you want to
+#' retrieve its assignments.
+#' @param PrincipalType &#91;required&#93; Specifies the type of the principal for which you want to retrieve its
+#' assignments.
+#' @param Filter Filters the output to include only assignments associated with the
+#' application that has the specified ARN.
+#' @param NextToken Specifies that you want to receive the next page of results. Valid only
+#' if you received a `NextToken` response in the previous request. If you
+#' did, it indicates that more output is available. Set this parameter to
+#' the value provided by the previous call's `NextToken` response to
+#' request the next page of results.
 #' @param MaxResults Specifies the total number of results that you want included in each
 #' response. If additional items exist beyond the number you specify, the
 #' `NextToken` response element is returned with a value (not null).
@@ -3012,15 +3043,6 @@ ssoadmin_list_application_assignments <- function(ApplicationArn, MaxResults = N
 #' service might return fewer results than the maximum even when there are
 #' more results available. You should check `NextToken` after every
 #' operation to ensure that you receive all of the results.
-#' @param NextToken Specifies that you want to receive the next page of results. Valid only
-#' if you received a `NextToken` response in the previous request. If you
-#' did, it indicates that more output is available. Set this parameter to
-#' the value provided by the previous call's `NextToken` response to
-#' request the next page of results.
-#' @param PrincipalId &#91;required&#93; Specifies the unique identifier of the principal for which you want to
-#' retrieve its assignments.
-#' @param PrincipalType &#91;required&#93; Specifies the type of the principal for which you want to retrieve its
-#' assignments.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3040,14 +3062,14 @@ ssoadmin_list_application_assignments <- function(ApplicationArn, MaxResults = N
 #' @section Request syntax:
 #' ```
 #' svc$list_application_assignments_for_principal(
+#'   InstanceArn = "string",
+#'   PrincipalId = "string",
+#'   PrincipalType = "USER"|"GROUP",
 #'   Filter = list(
 #'     ApplicationArn = "string"
 #'   ),
-#'   InstanceArn = "string",
-#'   MaxResults = 123,
 #'   NextToken = "string",
-#'   PrincipalId = "string",
-#'   PrincipalType = "USER"|"GROUP"
+#'   MaxResults = 123
 #' )
 #' ```
 #'
@@ -3056,7 +3078,7 @@ ssoadmin_list_application_assignments <- function(ApplicationArn, MaxResults = N
 #' @rdname ssoadmin_list_application_assignments_for_principal
 #'
 #' @aliases ssoadmin_list_application_assignments_for_principal
-ssoadmin_list_application_assignments_for_principal <- function(Filter = NULL, InstanceArn, MaxResults = NULL, NextToken = NULL, PrincipalId, PrincipalType) {
+ssoadmin_list_application_assignments_for_principal <- function(InstanceArn, PrincipalId, PrincipalType, Filter = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListApplicationAssignmentsForPrincipal",
     http_method = "POST",
@@ -3065,7 +3087,7 @@ ssoadmin_list_application_assignments_for_principal <- function(Filter = NULL, I
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ApplicationAssignments"),
     stream_api = FALSE
   )
-  input <- .ssoadmin$list_application_assignments_for_principal_input(Filter = Filter, InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, PrincipalId = PrincipalId, PrincipalType = PrincipalType)
+  input <- .ssoadmin$list_application_assignments_for_principal_input(InstanceArn = InstanceArn, PrincipalId = PrincipalId, PrincipalType = PrincipalType, Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssoadmin$list_application_assignments_for_principal_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -3100,12 +3122,12 @@ ssoadmin_list_application_assignments_for_principal <- function(Filter = NULL, I
 #' list(
 #'   AuthenticationMethods = list(
 #'     list(
+#'       AuthenticationMethodType = "IAM",
 #'       AuthenticationMethod = list(
 #'         Iam = list(
 #'           ActorPolicy = list()
 #'         )
-#'       ),
-#'       AuthenticationMethodType = "IAM"
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -3165,6 +3187,7 @@ ssoadmin_list_application_authentication_methods <- function(ApplicationArn, Nex
 #' list(
 #'   Grants = list(
 #'     list(
+#'       GrantType = "authorization_code"|"refresh_token"|"urn:ietf:params:oauth:grant-type:jwt-bearer"|"urn:ietf:params:oauth:grant-type:token-exchange",
 #'       Grant = list(
 #'         AuthorizationCode = list(
 #'           RedirectUris = list(
@@ -3174,17 +3197,16 @@ ssoadmin_list_application_authentication_methods <- function(ApplicationArn, Nex
 #'         JwtBearer = list(
 #'           AuthorizedTokenIssuers = list(
 #'             list(
+#'               TrustedTokenIssuerArn = "string",
 #'               AuthorizedAudiences = list(
 #'                 "string"
-#'               ),
-#'               TrustedTokenIssuerArn = "string"
+#'               )
 #'             )
 #'           )
 #'         ),
 #'         RefreshToken = list(),
 #'         TokenExchange = list()
-#'       ),
-#'       GrantType = "authorization_code"|"refresh_token"|"urn:ietf:params:oauth:grant-type:jwt-bearer"|"urn:ietf:params:oauth:grant-type:token-exchange"
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -3254,17 +3276,17 @@ ssoadmin_list_application_grants <- function(ApplicationArn, NextToken = NULL) {
 #'   ApplicationProviders = list(
 #'     list(
 #'       ApplicationProviderArn = "string",
-#'       DisplayData = list(
-#'         Description = "string",
-#'         DisplayName = "string",
-#'         IconUrl = "string"
-#'       ),
 #'       FederationProtocol = "SAML"|"OAUTH",
+#'       DisplayData = list(
+#'         DisplayName = "string",
+#'         IconUrl = "string",
+#'         Description = "string"
+#'       ),
 #'       ResourceServerConfig = list(
 #'         Scopes = list(
 #'           list(
-#'             DetailedTitle = "string",
-#'             LongDescription = "string"
+#'             LongDescription = "string",
+#'             DetailedTitle = "string"
 #'           )
 #'         )
 #'       )
@@ -3311,14 +3333,15 @@ ssoadmin_list_application_providers <- function(MaxResults = NULL, NextToken = N
 #'
 #' @description
 #' Lists all applications associated with the instance of IAM Identity
-#' Center. When listing applications for an instance in the management
-#' account, member accounts must use the `applicationAccount` parameter to
-#' filter the list to only applications created from that account.
+#' Center. When listing applications for an organization instance in the
+#' management account, member accounts must use the `applicationAccount`
+#' parameter to filter the list to only applications created from that
+#' account. When listing applications for an account instance in the same
+#' member account, a filter is not required.
 #'
 #' @usage
-#' ssoadmin_list_applications(Filter, InstanceArn, MaxResults, NextToken)
+#' ssoadmin_list_applications(InstanceArn, MaxResults, NextToken, Filter)
 #'
-#' @param Filter Filters response results.
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center application under which the operation
 #' will run. For more information about ARNs, see Amazon Resource Names
 #' (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web
@@ -3336,6 +3359,7 @@ ssoadmin_list_application_providers <- function(MaxResults = NULL, NextToken = N
 #' did, it indicates that more output is available. Set this parameter to
 #' the value provided by the previous call's `NextToken` response to
 #' request the next page of results.
+#' @param Filter Filters response results.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3343,23 +3367,23 @@ ssoadmin_list_application_providers <- function(MaxResults = NULL, NextToken = N
 #' list(
 #'   Applications = list(
 #'     list(
-#'       ApplicationAccount = "string",
 #'       ApplicationArn = "string",
 #'       ApplicationProviderArn = "string",
-#'       CreatedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Description = "string",
-#'       InstanceArn = "string",
 #'       Name = "string",
+#'       ApplicationAccount = "string",
+#'       InstanceArn = "string",
+#'       Status = "ENABLED"|"DISABLED",
 #'       PortalOptions = list(
 #'         SignInOptions = list(
-#'           ApplicationUrl = "string",
-#'           Origin = "IDENTITY_CENTER"|"APPLICATION"
+#'           Origin = "IDENTITY_CENTER"|"APPLICATION",
+#'           ApplicationUrl = "string"
 #'         ),
 #'         Visibility = "ENABLED"|"DISABLED"
 #'       ),
-#'       Status = "ENABLED"|"DISABLED"
+#'       Description = "string",
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -3369,13 +3393,13 @@ ssoadmin_list_application_providers <- function(MaxResults = NULL, NextToken = N
 #' @section Request syntax:
 #' ```
 #' svc$list_applications(
+#'   InstanceArn = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string",
 #'   Filter = list(
 #'     ApplicationAccount = "string",
 #'     ApplicationProvider = "string"
-#'   ),
-#'   InstanceArn = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -3384,7 +3408,7 @@ ssoadmin_list_application_providers <- function(MaxResults = NULL, NextToken = N
 #' @rdname ssoadmin_list_applications
 #'
 #' @aliases ssoadmin_list_applications
-ssoadmin_list_applications <- function(Filter = NULL, InstanceArn, MaxResults = NULL, NextToken = NULL) {
+ssoadmin_list_applications <- function(InstanceArn, MaxResults = NULL, NextToken = NULL, Filter = NULL) {
   op <- new_operation(
     name = "ListApplications",
     http_method = "POST",
@@ -3393,7 +3417,7 @@ ssoadmin_list_applications <- function(Filter = NULL, InstanceArn, MaxResults = 
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Applications"),
     stream_api = FALSE
   )
-  input <- .ssoadmin$list_applications_input(Filter = Filter, InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .ssoadmin$list_applications_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, Filter = Filter)
   output <- .ssoadmin$list_applications_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -3412,14 +3436,14 @@ ssoadmin_list_applications <- function(Filter = NULL, InstanceArn, MaxResults = 
 #'
 #' @usage
 #' ssoadmin_list_customer_managed_policy_references_in_permission_set(
-#'   InstanceArn, MaxResults, NextToken, PermissionSetArn)
+#'   InstanceArn, PermissionSetArn, MaxResults, NextToken)
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed.
+#' @param PermissionSetArn &#91;required&#93; The ARN of the `PermissionSet`.
 #' @param MaxResults The maximum number of results to display for the list call.
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
 #' the output of previous API calls to make subsequent calls.
-#' @param PermissionSetArn &#91;required&#93; The ARN of the `PermissionSet`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3439,9 +3463,9 @@ ssoadmin_list_applications <- function(Filter = NULL, InstanceArn, MaxResults = 
 #' ```
 #' svc$list_customer_managed_policy_references_in_permission_set(
 #'   InstanceArn = "string",
+#'   PermissionSetArn = "string",
 #'   MaxResults = 123,
-#'   NextToken = "string",
-#'   PermissionSetArn = "string"
+#'   NextToken = "string"
 #' )
 #' ```
 #'
@@ -3450,7 +3474,7 @@ ssoadmin_list_applications <- function(Filter = NULL, InstanceArn, MaxResults = 
 #' @rdname ssoadmin_list_custo_manag_polic_refer_in_permi_set
 #'
 #' @aliases ssoadmin_list_customer_managed_policy_references_in_permission_set
-ssoadmin_list_customer_managed_policy_references_in_permission_set <- function(InstanceArn, MaxResults = NULL, NextToken = NULL, PermissionSetArn) {
+ssoadmin_list_customer_managed_policy_references_in_permission_set <- function(InstanceArn, PermissionSetArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListCustomerManagedPolicyReferencesInPermissionSet",
     http_method = "POST",
@@ -3459,7 +3483,7 @@ ssoadmin_list_customer_managed_policy_references_in_permission_set <- function(I
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CustomerManagedPolicyReferences"),
     stream_api = FALSE
   )
-  input <- .ssoadmin$list_customer_managed_policy_references_in_permission_set_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, PermissionSetArn = PermissionSetArn)
+  input <- .ssoadmin$list_customer_managed_policy_references_in_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_customer_managed_policy_references_in_permission_set_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -3491,13 +3515,13 @@ ssoadmin_list_customer_managed_policy_references_in_permission_set <- function(I
 #' list(
 #'   Instances = list(
 #'     list(
+#'       InstanceArn = "string",
+#'       IdentityStoreId = "string",
+#'       OwnerAccountId = "string",
+#'       Name = "string",
 #'       CreatedDate = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       IdentityStoreId = "string",
-#'       InstanceArn = "string",
-#'       Name = "string",
-#'       OwnerAccountId = "string",
 #'       Status = "CREATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"ACTIVE"
 #'     )
 #'   ),
@@ -3546,16 +3570,16 @@ ssoadmin_list_instances <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @usage
 #' ssoadmin_list_managed_policies_in_permission_set(InstanceArn,
-#'   MaxResults, NextToken, PermissionSetArn)
+#'   PermissionSetArn, MaxResults, NextToken)
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
 #' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
 #' Web Services General Reference*.
+#' @param PermissionSetArn &#91;required&#93; The ARN of the PermissionSet whose managed policies will be listed.
 #' @param MaxResults The maximum number of results to display for the PermissionSet.
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
 #' the output of previous API calls to make subsequent calls.
-#' @param PermissionSetArn &#91;required&#93; The ARN of the PermissionSet whose managed policies will be listed.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3563,8 +3587,8 @@ ssoadmin_list_instances <- function(MaxResults = NULL, NextToken = NULL) {
 #' list(
 #'   AttachedManagedPolicies = list(
 #'     list(
-#'       Arn = "string",
-#'       Name = "string"
+#'       Name = "string",
+#'       Arn = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -3575,9 +3599,9 @@ ssoadmin_list_instances <- function(MaxResults = NULL, NextToken = NULL) {
 #' ```
 #' svc$list_managed_policies_in_permission_set(
 #'   InstanceArn = "string",
+#'   PermissionSetArn = "string",
 #'   MaxResults = 123,
-#'   NextToken = "string",
-#'   PermissionSetArn = "string"
+#'   NextToken = "string"
 #' )
 #' ```
 #'
@@ -3586,7 +3610,7 @@ ssoadmin_list_instances <- function(MaxResults = NULL, NextToken = NULL) {
 #' @rdname ssoadmin_list_managed_policies_in_permission_set
 #'
 #' @aliases ssoadmin_list_managed_policies_in_permission_set
-ssoadmin_list_managed_policies_in_permission_set <- function(InstanceArn, MaxResults = NULL, NextToken = NULL, PermissionSetArn) {
+ssoadmin_list_managed_policies_in_permission_set <- function(InstanceArn, PermissionSetArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListManagedPoliciesInPermissionSet",
     http_method = "POST",
@@ -3595,7 +3619,7 @@ ssoadmin_list_managed_policies_in_permission_set <- function(InstanceArn, MaxRes
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AttachedManagedPolicies"),
     stream_api = FALSE
   )
-  input <- .ssoadmin$list_managed_policies_in_permission_set_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, PermissionSetArn = PermissionSetArn)
+  input <- .ssoadmin$list_managed_policies_in_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_managed_policies_in_permission_set_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -3613,10 +3637,9 @@ ssoadmin_list_managed_policies_in_permission_set <- function(InstanceArn, MaxRes
 #' specified IAM Identity Center instance.
 #'
 #' @usage
-#' ssoadmin_list_permission_set_provisioning_status(Filter, InstanceArn,
-#'   MaxResults, NextToken)
+#' ssoadmin_list_permission_set_provisioning_status(InstanceArn,
+#'   MaxResults, NextToken, Filter)
 #'
-#' @param Filter Filters results based on the passed attribute value.
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
 #' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
@@ -3624,33 +3647,34 @@ ssoadmin_list_managed_policies_in_permission_set <- function(InstanceArn, MaxRes
 #' @param MaxResults The maximum number of results to display for the assignment.
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
 #' the output of previous API calls to make subsequent calls.
+#' @param Filter Filters results based on the passed attribute value.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   NextToken = "string",
 #'   PermissionSetsProvisioningStatus = list(
 #'     list(
+#'       Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED",
+#'       RequestId = "string",
 #'       CreatedDate = as.POSIXct(
 #'         "2015-01-01"
-#'       ),
-#'       RequestId = "string",
-#'       Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED"
+#'       )
 #'     )
-#'   )
+#'   ),
+#'   NextToken = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_permission_set_provisioning_status(
-#'   Filter = list(
-#'     Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED"
-#'   ),
 #'   InstanceArn = "string",
 #'   MaxResults = 123,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   Filter = list(
+#'     Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED"
+#'   )
 #' )
 #' ```
 #'
@@ -3659,7 +3683,7 @@ ssoadmin_list_managed_policies_in_permission_set <- function(InstanceArn, MaxRes
 #' @rdname ssoadmin_list_permission_set_provisioning_status
 #'
 #' @aliases ssoadmin_list_permission_set_provisioning_status
-ssoadmin_list_permission_set_provisioning_status <- function(Filter = NULL, InstanceArn, MaxResults = NULL, NextToken = NULL) {
+ssoadmin_list_permission_set_provisioning_status <- function(InstanceArn, MaxResults = NULL, NextToken = NULL, Filter = NULL) {
   op <- new_operation(
     name = "ListPermissionSetProvisioningStatus",
     http_method = "POST",
@@ -3668,7 +3692,7 @@ ssoadmin_list_permission_set_provisioning_status <- function(Filter = NULL, Inst
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PermissionSetsProvisioningStatus"),
     stream_api = FALSE
   )
-  input <- .ssoadmin$list_permission_set_provisioning_status_input(Filter = Filter, InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .ssoadmin$list_permission_set_provisioning_status_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, Filter = Filter)
   output <- .ssoadmin$list_permission_set_provisioning_status_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -3684,24 +3708,24 @@ ssoadmin_list_permission_set_provisioning_status <- function(Filter = NULL, Inst
 #' Lists the PermissionSets in an IAM Identity Center instance.
 #'
 #' @usage
-#' ssoadmin_list_permission_sets(InstanceArn, MaxResults, NextToken)
+#' ssoadmin_list_permission_sets(InstanceArn, NextToken, MaxResults)
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
 #' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
 #' Web Services General Reference*.
-#' @param MaxResults The maximum number of results to display for the assignment.
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
 #' the output of previous API calls to make subsequent calls.
+#' @param MaxResults The maximum number of results to display for the assignment.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   NextToken = "string",
 #'   PermissionSets = list(
 #'     "string"
-#'   )
+#'   ),
+#'   NextToken = "string"
 #' )
 #' ```
 #'
@@ -3709,8 +3733,8 @@ ssoadmin_list_permission_set_provisioning_status <- function(Filter = NULL, Inst
 #' ```
 #' svc$list_permission_sets(
 #'   InstanceArn = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   MaxResults = 123
 #' )
 #' ```
 #'
@@ -3719,7 +3743,7 @@ ssoadmin_list_permission_set_provisioning_status <- function(Filter = NULL, Inst
 #' @rdname ssoadmin_list_permission_sets
 #'
 #' @aliases ssoadmin_list_permission_sets
-ssoadmin_list_permission_sets <- function(InstanceArn, MaxResults = NULL, NextToken = NULL) {
+ssoadmin_list_permission_sets <- function(InstanceArn, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListPermissionSets",
     http_method = "POST",
@@ -3728,7 +3752,7 @@ ssoadmin_list_permission_sets <- function(InstanceArn, MaxResults = NULL, NextTo
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PermissionSets"),
     stream_api = FALSE
   )
-  input <- .ssoadmin$list_permission_sets_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .ssoadmin$list_permission_sets_input(InstanceArn = InstanceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssoadmin$list_permission_sets_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -3746,19 +3770,19 @@ ssoadmin_list_permission_sets <- function(InstanceArn, MaxResults = NULL, NextTo
 #' Web Services account.
 #'
 #' @usage
-#' ssoadmin_list_permission_sets_provisioned_to_account(AccountId,
-#'   InstanceArn, MaxResults, NextToken, ProvisioningStatus)
+#' ssoadmin_list_permission_sets_provisioned_to_account(InstanceArn,
+#'   AccountId, ProvisioningStatus, MaxResults, NextToken)
 #'
-#' @param AccountId &#91;required&#93; The identifier of the Amazon Web Services account from which to list the
-#' assignments.
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
 #' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
 #' Web Services General Reference*.
+#' @param AccountId &#91;required&#93; The identifier of the Amazon Web Services account from which to list the
+#' assignments.
+#' @param ProvisioningStatus The status object for the permission set provisioning operation.
 #' @param MaxResults The maximum number of results to display for the assignment.
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
 #' the output of previous API calls to make subsequent calls.
-#' @param ProvisioningStatus The status object for the permission set provisioning operation.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3774,11 +3798,11 @@ ssoadmin_list_permission_sets <- function(InstanceArn, MaxResults = NULL, NextTo
 #' @section Request syntax:
 #' ```
 #' svc$list_permission_sets_provisioned_to_account(
-#'   AccountId = "string",
 #'   InstanceArn = "string",
+#'   AccountId = "string",
+#'   ProvisioningStatus = "LATEST_PERMISSION_SET_PROVISIONED"|"LATEST_PERMISSION_SET_NOT_PROVISIONED",
 #'   MaxResults = 123,
-#'   NextToken = "string",
-#'   ProvisioningStatus = "LATEST_PERMISSION_SET_PROVISIONED"|"LATEST_PERMISSION_SET_NOT_PROVISIONED"
+#'   NextToken = "string"
 #' )
 #' ```
 #'
@@ -3787,7 +3811,7 @@ ssoadmin_list_permission_sets <- function(InstanceArn, MaxResults = NULL, NextTo
 #' @rdname ssoadmin_list_permission_sets_provisioned_to_account
 #'
 #' @aliases ssoadmin_list_permission_sets_provisioned_to_account
-ssoadmin_list_permission_sets_provisioned_to_account <- function(AccountId, InstanceArn, MaxResults = NULL, NextToken = NULL, ProvisioningStatus = NULL) {
+ssoadmin_list_permission_sets_provisioned_to_account <- function(InstanceArn, AccountId, ProvisioningStatus = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListPermissionSetsProvisionedToAccount",
     http_method = "POST",
@@ -3796,7 +3820,7 @@ ssoadmin_list_permission_sets_provisioned_to_account <- function(AccountId, Inst
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PermissionSets"),
     stream_api = FALSE
   )
-  input <- .ssoadmin$list_permission_sets_provisioned_to_account_input(AccountId = AccountId, InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, ProvisioningStatus = ProvisioningStatus)
+  input <- .ssoadmin$list_permission_sets_provisioned_to_account_input(InstanceArn = InstanceArn, AccountId = AccountId, ProvisioningStatus = ProvisioningStatus, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_permission_sets_provisioned_to_account_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -3812,27 +3836,27 @@ ssoadmin_list_permission_sets_provisioned_to_account <- function(AccountId, Inst
 #' Lists the tags that are attached to a specified resource.
 #'
 #' @usage
-#' ssoadmin_list_tags_for_resource(InstanceArn, NextToken, ResourceArn)
+#' ssoadmin_list_tags_for_resource(InstanceArn, ResourceArn, NextToken)
 #'
 #' @param InstanceArn The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
 #' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
 #' Web Services General Reference*.
+#' @param ResourceArn &#91;required&#93; The ARN of the resource with the tags to be listed.
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
 #' the output of previous API calls to make subsequent calls.
-#' @param ResourceArn &#91;required&#93; The ARN of the resource with the tags to be listed.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   NextToken = "string",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   NextToken = "string"
 #' )
 #' ```
 #'
@@ -3840,8 +3864,8 @@ ssoadmin_list_permission_sets_provisioned_to_account <- function(AccountId, Inst
 #' ```
 #' svc$list_tags_for_resource(
 #'   InstanceArn = "string",
-#'   NextToken = "string",
-#'   ResourceArn = "string"
+#'   ResourceArn = "string",
+#'   NextToken = "string"
 #' )
 #' ```
 #'
@@ -3850,7 +3874,7 @@ ssoadmin_list_permission_sets_provisioned_to_account <- function(AccountId, Inst
 #' @rdname ssoadmin_list_tags_for_resource
 #'
 #' @aliases ssoadmin_list_tags_for_resource
-ssoadmin_list_tags_for_resource <- function(InstanceArn = NULL, NextToken = NULL, ResourceArn) {
+ssoadmin_list_tags_for_resource <- function(InstanceArn = NULL, ResourceArn, NextToken = NULL) {
   op <- new_operation(
     name = "ListTagsForResource",
     http_method = "POST",
@@ -3859,7 +3883,7 @@ ssoadmin_list_tags_for_resource <- function(InstanceArn = NULL, NextToken = NULL
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Tags"),
     stream_api = FALSE
   )
-  input <- .ssoadmin$list_tags_for_resource_input(InstanceArn = InstanceArn, NextToken = NextToken, ResourceArn = ResourceArn)
+  input <- .ssoadmin$list_tags_for_resource_input(InstanceArn = InstanceArn, ResourceArn = ResourceArn, NextToken = NextToken)
   output <- .ssoadmin$list_tags_for_resource_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -3899,14 +3923,14 @@ ssoadmin_list_tags_for_resource <- function(InstanceArn = NULL, NextToken = NULL
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   NextToken = "string",
 #'   TrustedTokenIssuers = list(
 #'     list(
-#'       Name = "string",
 #'       TrustedTokenIssuerArn = "string",
+#'       Name = "string",
 #'       TrustedTokenIssuerType = "OIDC_JWT"
 #'     )
-#'   )
+#'   ),
+#'   NextToken = "string"
 #' )
 #' ```
 #'
@@ -3968,14 +3992,14 @@ ssoadmin_list_trusted_token_issuers <- function(InstanceArn, MaxResults = NULL, 
 #' ```
 #' list(
 #'   PermissionSetProvisioningStatus = list(
+#'     Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED",
+#'     RequestId = "string",
 #'     AccountId = "string",
+#'     PermissionSetArn = "string",
+#'     FailureReason = "string",
 #'     CreatedDate = as.POSIXct(
 #'       "2015-01-01"
-#'     ),
-#'     FailureReason = "string",
-#'     PermissionSetArn = "string",
-#'     RequestId = "string",
-#'     Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED"
+#'     )
 #'   )
 #' )
 #' ```
@@ -4022,15 +4046,15 @@ ssoadmin_provision_permission_set <- function(InstanceArn, PermissionSetArn, Tar
 #' Center access scope for an application.
 #'
 #' @usage
-#' ssoadmin_put_application_access_scope(ApplicationArn, AuthorizedTargets,
-#'   Scope)
+#' ssoadmin_put_application_access_scope(Scope, AuthorizedTargets,
+#'   ApplicationArn)
 #'
-#' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application with the access scope with the
-#' targets to add or update.
-#' @param AuthorizedTargets Specifies an array list of ARNs that represent the authorized targets
-#' for this access scope.
 #' @param Scope &#91;required&#93; Specifies the name of the access scope to be associated with the
 #' specified targets.
+#' @param AuthorizedTargets Specifies an array list of ARNs that represent the authorized targets
+#' for this access scope.
+#' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application with the access scope with the
+#' targets to add or update.
 #'
 #' @return
 #' An empty list.
@@ -4038,11 +4062,11 @@ ssoadmin_provision_permission_set <- function(InstanceArn, PermissionSetArn, Tar
 #' @section Request syntax:
 #' ```
 #' svc$put_application_access_scope(
-#'   ApplicationArn = "string",
+#'   Scope = "string",
 #'   AuthorizedTargets = list(
 #'     "string"
 #'   ),
-#'   Scope = "string"
+#'   ApplicationArn = "string"
 #' )
 #' ```
 #'
@@ -4051,7 +4075,7 @@ ssoadmin_provision_permission_set <- function(InstanceArn, PermissionSetArn, Tar
 #' @rdname ssoadmin_put_application_access_scope
 #'
 #' @aliases ssoadmin_put_application_access_scope
-ssoadmin_put_application_access_scope <- function(ApplicationArn, AuthorizedTargets = NULL, Scope) {
+ssoadmin_put_application_access_scope <- function(Scope, AuthorizedTargets = NULL, ApplicationArn) {
   op <- new_operation(
     name = "PutApplicationAccessScope",
     http_method = "POST",
@@ -4060,7 +4084,7 @@ ssoadmin_put_application_access_scope <- function(ApplicationArn, AuthorizedTarg
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$put_application_access_scope_input(ApplicationArn = ApplicationArn, AuthorizedTargets = AuthorizedTargets, Scope = Scope)
+  input <- .ssoadmin$put_application_access_scope_input(Scope = Scope, AuthorizedTargets = AuthorizedTargets, ApplicationArn = ApplicationArn)
   output <- .ssoadmin$put_application_access_scope_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -4138,15 +4162,15 @@ ssoadmin_put_application_assignment_configuration <- function(ApplicationArn, As
 #'
 #' @usage
 #' ssoadmin_put_application_authentication_method(ApplicationArn,
-#'   AuthenticationMethod, AuthenticationMethodType)
+#'   AuthenticationMethodType, AuthenticationMethod)
 #'
 #' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application with the authentication method to
 #' add or update.
+#' @param AuthenticationMethodType &#91;required&#93; Specifies the type of the authentication method that you want to add or
+#' update.
 #' @param AuthenticationMethod &#91;required&#93; Specifies a structure that describes the authentication method to add or
 #' update. The structure type you provide is determined by the
 #' `AuthenticationMethodType` parameter.
-#' @param AuthenticationMethodType &#91;required&#93; Specifies the type of the authentication method that you want to add or
-#' update.
 #'
 #' @return
 #' An empty list.
@@ -4155,12 +4179,12 @@ ssoadmin_put_application_assignment_configuration <- function(ApplicationArn, As
 #' ```
 #' svc$put_application_authentication_method(
 #'   ApplicationArn = "string",
+#'   AuthenticationMethodType = "IAM",
 #'   AuthenticationMethod = list(
 #'     Iam = list(
 #'       ActorPolicy = list()
 #'     )
-#'   ),
-#'   AuthenticationMethodType = "IAM"
+#'   )
 #' )
 #' ```
 #'
@@ -4169,7 +4193,7 @@ ssoadmin_put_application_assignment_configuration <- function(ApplicationArn, As
 #' @rdname ssoadmin_put_application_authentication_method
 #'
 #' @aliases ssoadmin_put_application_authentication_method
-ssoadmin_put_application_authentication_method <- function(ApplicationArn, AuthenticationMethod, AuthenticationMethodType) {
+ssoadmin_put_application_authentication_method <- function(ApplicationArn, AuthenticationMethodType, AuthenticationMethod) {
   op <- new_operation(
     name = "PutApplicationAuthenticationMethod",
     http_method = "POST",
@@ -4178,7 +4202,7 @@ ssoadmin_put_application_authentication_method <- function(ApplicationArn, Authe
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$put_application_authentication_method_input(ApplicationArn = ApplicationArn, AuthenticationMethod = AuthenticationMethod, AuthenticationMethodType = AuthenticationMethodType)
+  input <- .ssoadmin$put_application_authentication_method_input(ApplicationArn = ApplicationArn, AuthenticationMethodType = AuthenticationMethodType, AuthenticationMethod = AuthenticationMethod)
   output <- .ssoadmin$put_application_authentication_method_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -4188,17 +4212,71 @@ ssoadmin_put_application_authentication_method <- function(ApplicationArn, Authe
 }
 .ssoadmin$operations$put_application_authentication_method <- ssoadmin_put_application_authentication_method
 
-#' Adds a grant to an application
+#' Creates a configuration for an application to use grants
 #'
 #' @description
-#' Adds a grant to an application.
+#' Creates a configuration for an application to use grants. Conceptually
+#' grants are authorization to request actions related to tokens. This
+#' configuration will be used when parties are requesting and receiving
+#' tokens during the trusted identity propagation process. For more
+#' information on the IAM Identity Center supported grant workflows, see
+#' [SAML 2.0 and OAuth
+#' 2.0](https://docs.aws.amazon.com/singlesignon/latest/userguide/customermanagedapps-saml2-oauth2.html).
+#' 
+#' A grant is created between your applications and Identity Center
+#' instance which enables an application to use specified mechanisms to
+#' obtain tokens. These tokens are used by your applications to gain access
+#' to Amazon Web Services resources on behalf of users. The following
+#' elements are within these exchanges:
+#' 
+#' -   **Requester** - The application requesting access to Amazon Web
+#'     Services resources.
+#' 
+#' -   **Subject** - Typically the user that is requesting access to Amazon
+#'     Web Services resources.
+#' 
+#' -   **Grant** - Conceptually, a grant is authorization to access Amazon
+#'     Web Services resources. These grants authorize token generation for
+#'     authenticating access to the requester and for the request to make
+#'     requests on behalf of the subjects. There are four types of grants:
+#' 
+#'     -   **AuthorizationCode** - Allows an application to request
+#'         authorization through a series of user-agent redirects.
+#' 
+#'     -   **JWT bearer** - Authorizes an application to exchange a JSON
+#'         Web Token that came from an external identity provider. To learn
+#'         more, see [RFC
+#'         6479](https://datatracker.ietf.org/doc/html/rfc6749).
+#' 
+#'     -   **Refresh token** - Enables application to request new access
+#'         tokens to replace expiring or expired access tokens.
+#' 
+#'     -   **Exchange token** - A grant that requests tokens from the
+#'         authorization server by providing a ‘subject’ token with access
+#'         scope authorizing trusted identity propagation to this
+#'         application. To learn more, see [RFC
+#'         8693](https://datatracker.ietf.org/doc/html/rfc8693).
+#' 
+#' -   **Authorization server** - IAM Identity Center requests tokens.
+#' 
+#' User credentials are never shared directly within these exchanges.
+#' Instead, applications use grants to request access tokens from IAM
+#' Identity Center. For more information, see [RFC
+#' 6479](https://datatracker.ietf.org/doc/html/rfc6749).
+#' 
+#' **Use cases**
+#' 
+#' -   Connecting to custom applications.
+#' 
+#' -   Configuring an Amazon Web Services service to make calls to another
+#'     Amazon Web Services services using JWT tokens.
 #'
 #' @usage
-#' ssoadmin_put_application_grant(ApplicationArn, Grant, GrantType)
+#' ssoadmin_put_application_grant(ApplicationArn, GrantType, Grant)
 #'
 #' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application to update.
-#' @param Grant &#91;required&#93; Specifies a structure that describes the grant to update.
 #' @param GrantType &#91;required&#93; Specifies the type of grant to update.
+#' @param Grant &#91;required&#93; Specifies a structure that describes the grant to update.
 #'
 #' @return
 #' An empty list.
@@ -4207,6 +4285,7 @@ ssoadmin_put_application_authentication_method <- function(ApplicationArn, Authe
 #' ```
 #' svc$put_application_grant(
 #'   ApplicationArn = "string",
+#'   GrantType = "authorization_code"|"refresh_token"|"urn:ietf:params:oauth:grant-type:jwt-bearer"|"urn:ietf:params:oauth:grant-type:token-exchange",
 #'   Grant = list(
 #'     AuthorizationCode = list(
 #'       RedirectUris = list(
@@ -4216,17 +4295,16 @@ ssoadmin_put_application_authentication_method <- function(ApplicationArn, Authe
 #'     JwtBearer = list(
 #'       AuthorizedTokenIssuers = list(
 #'         list(
+#'           TrustedTokenIssuerArn = "string",
 #'           AuthorizedAudiences = list(
 #'             "string"
-#'           ),
-#'           TrustedTokenIssuerArn = "string"
+#'           )
 #'         )
 #'       )
 #'     ),
 #'     RefreshToken = list(),
 #'     TokenExchange = list()
-#'   ),
-#'   GrantType = "authorization_code"|"refresh_token"|"urn:ietf:params:oauth:grant-type:jwt-bearer"|"urn:ietf:params:oauth:grant-type:token-exchange"
+#'   )
 #' )
 #' ```
 #'
@@ -4235,7 +4313,7 @@ ssoadmin_put_application_authentication_method <- function(ApplicationArn, Authe
 #' @rdname ssoadmin_put_application_grant
 #'
 #' @aliases ssoadmin_put_application_grant
-ssoadmin_put_application_grant <- function(ApplicationArn, Grant, GrantType) {
+ssoadmin_put_application_grant <- function(ApplicationArn, GrantType, Grant) {
   op <- new_operation(
     name = "PutApplicationGrant",
     http_method = "POST",
@@ -4244,7 +4322,7 @@ ssoadmin_put_application_grant <- function(ApplicationArn, Grant, GrantType) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$put_application_grant_input(ApplicationArn = ApplicationArn, Grant = Grant, GrantType = GrantType)
+  input <- .ssoadmin$put_application_grant_input(ApplicationArn = ApplicationArn, GrantType = GrantType, Grant = Grant)
   output <- .ssoadmin$put_application_grant_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -4266,15 +4344,15 @@ ssoadmin_put_application_grant <- function(ApplicationArn, Grant, GrantType) {
 #' assigned accounts.
 #'
 #' @usage
-#' ssoadmin_put_inline_policy_to_permission_set(InlinePolicy, InstanceArn,
-#'   PermissionSetArn)
+#' ssoadmin_put_inline_policy_to_permission_set(InstanceArn,
+#'   PermissionSetArn, InlinePolicy)
 #'
-#' @param InlinePolicy &#91;required&#93; The inline policy to attach to a PermissionSet.
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
 #' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
 #' Web Services General Reference*.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the permission set.
+#' @param InlinePolicy &#91;required&#93; The inline policy to attach to a PermissionSet.
 #'
 #' @return
 #' An empty list.
@@ -4282,9 +4360,9 @@ ssoadmin_put_application_grant <- function(ApplicationArn, Grant, GrantType) {
 #' @section Request syntax:
 #' ```
 #' svc$put_inline_policy_to_permission_set(
-#'   InlinePolicy = "string",
 #'   InstanceArn = "string",
-#'   PermissionSetArn = "string"
+#'   PermissionSetArn = "string",
+#'   InlinePolicy = "string"
 #' )
 #' ```
 #'
@@ -4293,7 +4371,7 @@ ssoadmin_put_application_grant <- function(ApplicationArn, Grant, GrantType) {
 #' @rdname ssoadmin_put_inline_policy_to_permission_set
 #'
 #' @aliases ssoadmin_put_inline_policy_to_permission_set
-ssoadmin_put_inline_policy_to_permission_set <- function(InlinePolicy, InstanceArn, PermissionSetArn) {
+ssoadmin_put_inline_policy_to_permission_set <- function(InstanceArn, PermissionSetArn, InlinePolicy) {
   op <- new_operation(
     name = "PutInlinePolicyToPermissionSet",
     http_method = "POST",
@@ -4302,7 +4380,7 @@ ssoadmin_put_inline_policy_to_permission_set <- function(InlinePolicy, InstanceA
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$put_inline_policy_to_permission_set_input(InlinePolicy = InlinePolicy, InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn)
+  input <- .ssoadmin$put_inline_policy_to_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, InlinePolicy = InlinePolicy)
   output <- .ssoadmin$put_inline_policy_to_permission_set_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -4485,17 +4563,17 @@ ssoadmin_untag_resource <- function(InstanceArn = NULL, ResourceArn, TagKeys) {
 #' Updates application properties.
 #'
 #' @usage
-#' ssoadmin_update_application(ApplicationArn, Description, Name,
-#'   PortalOptions, Status)
+#' ssoadmin_update_application(ApplicationArn, Name, Description, Status,
+#'   PortalOptions)
 #'
 #' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application. For more information about ARNs,
 #' see Amazon Resource Names (ARNs) and Amazon Web Services Service
 #' Namespaces in the *Amazon Web Services General Reference*.
-#' @param Description The description of the .
 #' @param Name Specifies the updated name for the application.
+#' @param Description The description of the .
+#' @param Status Specifies whether the application is enabled or disabled.
 #' @param PortalOptions A structure that describes the options for the portal associated with an
 #' application.
-#' @param Status Specifies whether the application is enabled or disabled.
 #'
 #' @return
 #' An empty list.
@@ -4504,15 +4582,15 @@ ssoadmin_untag_resource <- function(InstanceArn = NULL, ResourceArn, TagKeys) {
 #' ```
 #' svc$update_application(
 #'   ApplicationArn = "string",
-#'   Description = "string",
 #'   Name = "string",
+#'   Description = "string",
+#'   Status = "ENABLED"|"DISABLED",
 #'   PortalOptions = list(
 #'     SignInOptions = list(
-#'       ApplicationUrl = "string",
-#'       Origin = "IDENTITY_CENTER"|"APPLICATION"
+#'       Origin = "IDENTITY_CENTER"|"APPLICATION",
+#'       ApplicationUrl = "string"
 #'     )
-#'   ),
-#'   Status = "ENABLED"|"DISABLED"
+#'   )
 #' )
 #' ```
 #'
@@ -4521,7 +4599,7 @@ ssoadmin_untag_resource <- function(InstanceArn = NULL, ResourceArn, TagKeys) {
 #' @rdname ssoadmin_update_application
 #'
 #' @aliases ssoadmin_update_application
-ssoadmin_update_application <- function(ApplicationArn, Description = NULL, Name = NULL, PortalOptions = NULL, Status = NULL) {
+ssoadmin_update_application <- function(ApplicationArn, Name = NULL, Description = NULL, Status = NULL, PortalOptions = NULL) {
   op <- new_operation(
     name = "UpdateApplication",
     http_method = "POST",
@@ -4530,7 +4608,7 @@ ssoadmin_update_application <- function(ApplicationArn, Description = NULL, Name
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$update_application_input(ApplicationArn = ApplicationArn, Description = Description, Name = Name, PortalOptions = PortalOptions, Status = Status)
+  input <- .ssoadmin$update_application_input(ApplicationArn = ApplicationArn, Name = Name, Description = Description, Status = Status, PortalOptions = PortalOptions)
   output <- .ssoadmin$update_application_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -4548,13 +4626,13 @@ ssoadmin_update_application <- function(ApplicationArn, Description = NULL, Name
 #' by the Amazon Web Services account.
 #'
 #' @usage
-#' ssoadmin_update_instance(InstanceArn, Name)
+#' ssoadmin_update_instance(Name, InstanceArn)
 #'
+#' @param Name &#91;required&#93; Updates the instance name.
 #' @param InstanceArn &#91;required&#93; The ARN of the instance of IAM Identity Center under which the operation
 #' will run. For more information about ARNs, see Amazon Resource Names
 #' (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web
 #' Services General Reference*.
-#' @param Name &#91;required&#93; Updates the instance name.
 #'
 #' @return
 #' An empty list.
@@ -4562,8 +4640,8 @@ ssoadmin_update_application <- function(ApplicationArn, Description = NULL, Name
 #' @section Request syntax:
 #' ```
 #' svc$update_instance(
-#'   InstanceArn = "string",
-#'   Name = "string"
+#'   Name = "string",
+#'   InstanceArn = "string"
 #' )
 #' ```
 #'
@@ -4572,7 +4650,7 @@ ssoadmin_update_application <- function(ApplicationArn, Description = NULL, Name
 #' @rdname ssoadmin_update_instance
 #'
 #' @aliases ssoadmin_update_instance
-ssoadmin_update_instance <- function(InstanceArn, Name) {
+ssoadmin_update_instance <- function(Name, InstanceArn) {
   op <- new_operation(
     name = "UpdateInstance",
     http_method = "POST",
@@ -4581,7 +4659,7 @@ ssoadmin_update_instance <- function(InstanceArn, Name) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$update_instance_input(InstanceArn = InstanceArn, Name = Name)
+  input <- .ssoadmin$update_instance_input(Name = Name, InstanceArn = InstanceArn)
   output <- .ssoadmin$update_instance_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -4608,11 +4686,11 @@ ssoadmin_update_instance <- function(InstanceArn, Name) {
 #'
 #' @usage
 #' ssoadmin_update_instance_access_control_attribute_configuration(
-#'   InstanceAccessControlAttributeConfiguration, InstanceArn)
+#'   InstanceArn, InstanceAccessControlAttributeConfiguration)
 #'
-#' @param InstanceAccessControlAttributeConfiguration &#91;required&#93; Updates the attributes for your ABAC configuration.
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed.
+#' @param InstanceAccessControlAttributeConfiguration &#91;required&#93; Updates the attributes for your ABAC configuration.
 #'
 #' @return
 #' An empty list.
@@ -4620,6 +4698,7 @@ ssoadmin_update_instance <- function(InstanceArn, Name) {
 #' @section Request syntax:
 #' ```
 #' svc$update_instance_access_control_attribute_configuration(
+#'   InstanceArn = "string",
 #'   InstanceAccessControlAttributeConfiguration = list(
 #'     AccessControlAttributes = list(
 #'       list(
@@ -4631,8 +4710,7 @@ ssoadmin_update_instance <- function(InstanceArn, Name) {
 #'         )
 #'       )
 #'     )
-#'   ),
-#'   InstanceArn = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -4641,7 +4719,7 @@ ssoadmin_update_instance <- function(InstanceArn, Name) {
 #' @rdname ssoadmin_update_instanc_access_control_attribu_configu
 #'
 #' @aliases ssoadmin_update_instance_access_control_attribute_configuration
-ssoadmin_update_instance_access_control_attribute_configuration <- function(InstanceAccessControlAttributeConfiguration, InstanceArn) {
+ssoadmin_update_instance_access_control_attribute_configuration <- function(InstanceArn, InstanceAccessControlAttributeConfiguration) {
   op <- new_operation(
     name = "UpdateInstanceAccessControlAttributeConfiguration",
     http_method = "POST",
@@ -4650,7 +4728,7 @@ ssoadmin_update_instance_access_control_attribute_configuration <- function(Inst
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$update_instance_access_control_attribute_configuration_input(InstanceAccessControlAttributeConfiguration = InstanceAccessControlAttributeConfiguration, InstanceArn = InstanceArn)
+  input <- .ssoadmin$update_instance_access_control_attribute_configuration_input(InstanceArn = InstanceArn, InstanceAccessControlAttributeConfiguration = InstanceAccessControlAttributeConfiguration)
   output <- .ssoadmin$update_instance_access_control_attribute_configuration_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -4666,19 +4744,19 @@ ssoadmin_update_instance_access_control_attribute_configuration <- function(Inst
 #' Updates an existing permission set.
 #'
 #' @usage
-#' ssoadmin_update_permission_set(Description, InstanceArn,
-#'   PermissionSetArn, RelayState, SessionDuration)
+#' ssoadmin_update_permission_set(InstanceArn, PermissionSetArn,
+#'   Description, SessionDuration, RelayState)
 #'
-#' @param Description The description of the PermissionSet.
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
 #' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
 #' Web Services General Reference*.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the permission set.
-#' @param RelayState Used to redirect users within the application during the federation
-#' authentication process.
+#' @param Description The description of the PermissionSet.
 #' @param SessionDuration The length of time that the application user sessions are valid for in
 #' the ISO-8601 standard.
+#' @param RelayState Used to redirect users within the application during the federation
+#' authentication process.
 #'
 #' @return
 #' An empty list.
@@ -4686,11 +4764,11 @@ ssoadmin_update_instance_access_control_attribute_configuration <- function(Inst
 #' @section Request syntax:
 #' ```
 #' svc$update_permission_set(
-#'   Description = "string",
 #'   InstanceArn = "string",
 #'   PermissionSetArn = "string",
-#'   RelayState = "string",
-#'   SessionDuration = "string"
+#'   Description = "string",
+#'   SessionDuration = "string",
+#'   RelayState = "string"
 #' )
 #' ```
 #'
@@ -4699,7 +4777,7 @@ ssoadmin_update_instance_access_control_attribute_configuration <- function(Inst
 #' @rdname ssoadmin_update_permission_set
 #'
 #' @aliases ssoadmin_update_permission_set
-ssoadmin_update_permission_set <- function(Description = NULL, InstanceArn, PermissionSetArn, RelayState = NULL, SessionDuration = NULL) {
+ssoadmin_update_permission_set <- function(InstanceArn, PermissionSetArn, Description = NULL, SessionDuration = NULL, RelayState = NULL) {
   op <- new_operation(
     name = "UpdatePermissionSet",
     http_method = "POST",
@@ -4708,7 +4786,7 @@ ssoadmin_update_permission_set <- function(Description = NULL, InstanceArn, Perm
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$update_permission_set_input(Description = Description, InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, RelayState = RelayState, SessionDuration = SessionDuration)
+  input <- .ssoadmin$update_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, Description = Description, SessionDuration = SessionDuration, RelayState = RelayState)
   output <- .ssoadmin$update_permission_set_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -4732,13 +4810,13 @@ ssoadmin_update_permission_set <- function(Description = NULL, InstanceArn, Perm
 #' token issuer.
 #'
 #' @usage
-#' ssoadmin_update_trusted_token_issuer(Name, TrustedTokenIssuerArn,
+#' ssoadmin_update_trusted_token_issuer(TrustedTokenIssuerArn, Name,
 #'   TrustedTokenIssuerConfiguration)
 #'
-#' @param Name Specifies the updated name to be applied to the trusted token issuer
-#' configuration.
 #' @param TrustedTokenIssuerArn &#91;required&#93; Specifies the ARN of the trusted token issuer configuration that you
 #' want to update.
+#' @param Name Specifies the updated name to be applied to the trusted token issuer
+#' configuration.
 #' @param TrustedTokenIssuerConfiguration Specifies a structure with settings to apply to the specified trusted
 #' token issuer. The settings that you can provide are determined by the
 #' type of the trusted token issuer that you are updating.
@@ -4749,8 +4827,8 @@ ssoadmin_update_permission_set <- function(Description = NULL, InstanceArn, Perm
 #' @section Request syntax:
 #' ```
 #' svc$update_trusted_token_issuer(
-#'   Name = "string",
 #'   TrustedTokenIssuerArn = "string",
+#'   Name = "string",
 #'   TrustedTokenIssuerConfiguration = list(
 #'     OidcJwtConfiguration = list(
 #'       ClaimAttributePath = "string",
@@ -4766,7 +4844,7 @@ ssoadmin_update_permission_set <- function(Description = NULL, InstanceArn, Perm
 #' @rdname ssoadmin_update_trusted_token_issuer
 #'
 #' @aliases ssoadmin_update_trusted_token_issuer
-ssoadmin_update_trusted_token_issuer <- function(Name = NULL, TrustedTokenIssuerArn, TrustedTokenIssuerConfiguration = NULL) {
+ssoadmin_update_trusted_token_issuer <- function(TrustedTokenIssuerArn, Name = NULL, TrustedTokenIssuerConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateTrustedTokenIssuer",
     http_method = "POST",
@@ -4775,7 +4853,7 @@ ssoadmin_update_trusted_token_issuer <- function(Name = NULL, TrustedTokenIssuer
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$update_trusted_token_issuer_input(Name = Name, TrustedTokenIssuerArn = TrustedTokenIssuerArn, TrustedTokenIssuerConfiguration = TrustedTokenIssuerConfiguration)
+  input <- .ssoadmin$update_trusted_token_issuer_input(TrustedTokenIssuerArn = TrustedTokenIssuerArn, Name = Name, TrustedTokenIssuerConfiguration = TrustedTokenIssuerConfiguration)
   output <- .ssoadmin$update_trusted_token_issuer_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)

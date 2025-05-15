@@ -455,6 +455,7 @@ ec2_allocate_address <- function(Domain = NULL, Address = NULL, PublicIpv4Pool =
 #' 
 #' -   If you specify both **AssetIds** and **Quantity**, then the value
 #'     for **Quantity** must be equal to the number of asset IDs specified.
+#' @param AvailabilityZoneId The ID of the Availability Zone.
 #' @param AutoPlacement Indicates whether the host accepts any untargeted instance launches that
 #' match its instance type configuration, or if it only accepts Host
 #' tenancy instance launches that specify its unique host ID. For more
@@ -481,12 +482,12 @@ ec2_allocate_address <- function(Domain = NULL, Address = NULL, PublicIpv4Pool =
 #' If you specify both **AssetIds** and **Quantity**, then the value that
 #' you specify for **Quantity** must be equal to the number of asset IDs
 #' specified.
-#' @param AvailabilityZone &#91;required&#93; The Availability Zone in which to allocate the Dedicated Host.
+#' @param AvailabilityZone The Availability Zone in which to allocate the Dedicated Host.
 #'
 #' @keywords internal
 #'
 #' @rdname ec2_allocate_hosts
-ec2_allocate_hosts <- function(InstanceFamily = NULL, TagSpecifications = NULL, HostRecovery = NULL, OutpostArn = NULL, HostMaintenance = NULL, AssetIds = NULL, AutoPlacement = NULL, ClientToken = NULL, InstanceType = NULL, Quantity = NULL, AvailabilityZone) {
+ec2_allocate_hosts <- function(InstanceFamily = NULL, TagSpecifications = NULL, HostRecovery = NULL, OutpostArn = NULL, HostMaintenance = NULL, AssetIds = NULL, AvailabilityZoneId = NULL, AutoPlacement = NULL, ClientToken = NULL, InstanceType = NULL, Quantity = NULL, AvailabilityZone = NULL) {
   op <- new_operation(
     name = "AllocateHosts",
     http_method = "POST",
@@ -495,7 +496,7 @@ ec2_allocate_hosts <- function(InstanceFamily = NULL, TagSpecifications = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ec2$allocate_hosts_input(InstanceFamily = InstanceFamily, TagSpecifications = TagSpecifications, HostRecovery = HostRecovery, OutpostArn = OutpostArn, HostMaintenance = HostMaintenance, AssetIds = AssetIds, AutoPlacement = AutoPlacement, ClientToken = ClientToken, InstanceType = InstanceType, Quantity = Quantity, AvailabilityZone = AvailabilityZone)
+  input <- .ec2$allocate_hosts_input(InstanceFamily = InstanceFamily, TagSpecifications = TagSpecifications, HostRecovery = HostRecovery, OutpostArn = OutpostArn, HostMaintenance = HostMaintenance, AssetIds = AssetIds, AvailabilityZoneId = AvailabilityZoneId, AutoPlacement = AutoPlacement, ClientToken = ClientToken, InstanceType = InstanceType, Quantity = Quantity, AvailabilityZone = AvailabilityZone)
   output <- .ec2$allocate_hosts_output()
   config <- get_config()
   svc <- .ec2$service(config, op)
@@ -1132,6 +1133,42 @@ ec2_associate_nat_gateway_address <- function(NatGatewayId, AllocationIds, Priva
 }
 .ec2$operations$associate_nat_gateway_address <- ec2_associate_nat_gateway_address
 
+#' Associates a route server with a VPC to enable dynamic route updates
+#'
+#' @description
+#' Associates a route server with a VPC to enable dynamic route updates.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_associate_route_server/](https://www.paws-r-sdk.com/docs/ec2_associate_route_server/) for full documentation.
+#'
+#' @param RouteServerId &#91;required&#93; The unique identifier for the route server to be associated.
+#' @param VpcId &#91;required&#93; The ID of the VPC to associate with the route server.
+#' @param DryRun A check for whether you have the required permissions for the action
+#' without actually making the request and provides an error response. If
+#' you have the required permissions, the error response is
+#' `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_associate_route_server
+ec2_associate_route_server <- function(RouteServerId, VpcId, DryRun = NULL) {
+  op <- new_operation(
+    name = "AssociateRouteServer",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$associate_route_server_input(RouteServerId = RouteServerId, VpcId = VpcId, DryRun = DryRun)
+  output <- .ec2$associate_route_server_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$associate_route_server <- ec2_associate_route_server
+
 #' Associates a subnet in your VPC or an internet gateway or virtual
 #' private gateway attached to your VPC with a route table in your VPC
 #'
@@ -1548,6 +1585,7 @@ ec2_attach_internet_gateway <- function(DryRun = NULL, InternetGatewayId, VpcId)
 #' card index 0. The default is network card index 0.
 #' @param EnaSrdSpecification Configures ENA Express for the network interface that this action
 #' attaches to the instance.
+#' @param EnaQueueCount The number of ENA queues to be created with the instance.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -1559,7 +1597,7 @@ ec2_attach_internet_gateway <- function(DryRun = NULL, InternetGatewayId, VpcId)
 #' @keywords internal
 #'
 #' @rdname ec2_attach_network_interface
-ec2_attach_network_interface <- function(NetworkCardIndex = NULL, EnaSrdSpecification = NULL, DryRun = NULL, NetworkInterfaceId, InstanceId, DeviceIndex) {
+ec2_attach_network_interface <- function(NetworkCardIndex = NULL, EnaSrdSpecification = NULL, EnaQueueCount = NULL, DryRun = NULL, NetworkInterfaceId, InstanceId, DeviceIndex) {
   op <- new_operation(
     name = "AttachNetworkInterface",
     http_method = "POST",
@@ -1568,7 +1606,7 @@ ec2_attach_network_interface <- function(NetworkCardIndex = NULL, EnaSrdSpecific
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ec2$attach_network_interface_input(NetworkCardIndex = NetworkCardIndex, EnaSrdSpecification = EnaSrdSpecification, DryRun = DryRun, NetworkInterfaceId = NetworkInterfaceId, InstanceId = InstanceId, DeviceIndex = DeviceIndex)
+  input <- .ec2$attach_network_interface_input(NetworkCardIndex = NetworkCardIndex, EnaSrdSpecification = EnaSrdSpecification, EnaQueueCount = EnaQueueCount, DryRun = DryRun, NetworkInterfaceId = NetworkInterfaceId, InstanceId = InstanceId, DeviceIndex = DeviceIndex)
   output <- .ec2$attach_network_interface_output()
   config <- get_config()
   svc <- .ec2$service(config, op)
@@ -2465,6 +2503,17 @@ ec2_copy_fpga_image <- function(DryRun = NULL, SourceFpgaImageId, Description = 
 #' 
 #' To tag an AMI or snapshot after it has been created, see
 #' [`create_tags`][ec2_create_tags].
+#' @param SnapshotCopyCompletionDurationMinutes Specify a completion duration, in 15 minute increments, to initiate a
+#' time-based AMI copy. The specified completion duration applies to each
+#' of the snapshots associated with the AMI. Each snapshot associated with
+#' the AMI will be completed within the specified completion duration,
+#' regardless of their size.
+#' 
+#' If you do not specify a value, the AMI copy operation is completed on a
+#' best-effort basis.
+#' 
+#' For more information, see [Time-based
+#' copies](https://docs.aws.amazon.com/ebs/latest/userguide/time-based-copies.html).
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -2473,7 +2522,7 @@ ec2_copy_fpga_image <- function(DryRun = NULL, SourceFpgaImageId, Description = 
 #' @keywords internal
 #'
 #' @rdname ec2_copy_image
-ec2_copy_image <- function(ClientToken = NULL, Description = NULL, Encrypted = NULL, KmsKeyId = NULL, Name, SourceImageId, SourceRegion, DestinationOutpostArn = NULL, CopyImageTags = NULL, TagSpecifications = NULL, DryRun = NULL) {
+ec2_copy_image <- function(ClientToken = NULL, Description = NULL, Encrypted = NULL, KmsKeyId = NULL, Name, SourceImageId, SourceRegion, DestinationOutpostArn = NULL, CopyImageTags = NULL, TagSpecifications = NULL, SnapshotCopyCompletionDurationMinutes = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CopyImage",
     http_method = "POST",
@@ -2482,7 +2531,7 @@ ec2_copy_image <- function(ClientToken = NULL, Description = NULL, Encrypted = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ec2$copy_image_input(ClientToken = ClientToken, Description = Description, Encrypted = Encrypted, KmsKeyId = KmsKeyId, Name = Name, SourceImageId = SourceImageId, SourceRegion = SourceRegion, DestinationOutpostArn = DestinationOutpostArn, CopyImageTags = CopyImageTags, TagSpecifications = TagSpecifications, DryRun = DryRun)
+  input <- .ec2$copy_image_input(ClientToken = ClientToken, Description = Description, Encrypted = Encrypted, KmsKeyId = KmsKeyId, Name = Name, SourceImageId = SourceImageId, SourceRegion = SourceRegion, DestinationOutpostArn = DestinationOutpostArn, CopyImageTags = CopyImageTags, TagSpecifications = TagSpecifications, SnapshotCopyCompletionDurationMinutes = SnapshotCopyCompletionDurationMinutes, DryRun = DryRun)
   output <- .ec2$copy_image_output()
   config <- get_config()
   svc <- .ec2$service(config, op)
@@ -2999,15 +3048,26 @@ ec2_create_carrier_gateway <- function(VpcId, TagSpecifications = NULL, DryRun =
 #' @param ClientLoginBannerOptions Options for enabling a customizable text banner that will be displayed
 #' on Amazon Web Services provided clients when a VPN session is
 #' established.
+#' @param ClientRouteEnforcementOptions Client route enforcement is a feature of the Client VPN service that
+#' helps enforce administrator defined routes on devices connected through
+#' the VPN. T his feature helps improve your security posture by ensuring
+#' that network traffic originating from a connected client is not
+#' inadvertently sent outside the VPN tunnel.
+#' 
+#' Client route enforcement works by monitoring the route table of a
+#' connected device for routing policy changes to the VPN connection. If
+#' the feature detects any VPN routing policy modifications, it will
+#' automatically force an update to the route table, reverting it back to
+#' the expected route configurations.
 #' @param DisconnectOnSessionTimeout Indicates whether the client VPN session is disconnected after the
 #' maximum timeout specified in `SessionTimeoutHours` is reached. If
 #' `true`, users are prompted to reconnect client VPN. If `false`, client
-#' VPN attempts to reconnect automatically. The default value is `false`.
+#' VPN attempts to reconnect automatically. The default value is `true`.
 #'
 #' @keywords internal
 #'
 #' @rdname ec2_create_client_vpn_endpoint
-ec2_create_client_vpn_endpoint <- function(ClientCidrBlock, ServerCertificateArn, AuthenticationOptions, ConnectionLogOptions, DnsServers = NULL, TransportProtocol = NULL, VpnPort = NULL, Description = NULL, SplitTunnel = NULL, DryRun = NULL, ClientToken = NULL, TagSpecifications = NULL, SecurityGroupIds = NULL, VpcId = NULL, SelfServicePortal = NULL, ClientConnectOptions = NULL, SessionTimeoutHours = NULL, ClientLoginBannerOptions = NULL, DisconnectOnSessionTimeout = NULL) {
+ec2_create_client_vpn_endpoint <- function(ClientCidrBlock, ServerCertificateArn, AuthenticationOptions, ConnectionLogOptions, DnsServers = NULL, TransportProtocol = NULL, VpnPort = NULL, Description = NULL, SplitTunnel = NULL, DryRun = NULL, ClientToken = NULL, TagSpecifications = NULL, SecurityGroupIds = NULL, VpcId = NULL, SelfServicePortal = NULL, ClientConnectOptions = NULL, SessionTimeoutHours = NULL, ClientLoginBannerOptions = NULL, ClientRouteEnforcementOptions = NULL, DisconnectOnSessionTimeout = NULL) {
   op <- new_operation(
     name = "CreateClientVpnEndpoint",
     http_method = "POST",
@@ -3016,7 +3076,7 @@ ec2_create_client_vpn_endpoint <- function(ClientCidrBlock, ServerCertificateArn
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ec2$create_client_vpn_endpoint_input(ClientCidrBlock = ClientCidrBlock, ServerCertificateArn = ServerCertificateArn, AuthenticationOptions = AuthenticationOptions, ConnectionLogOptions = ConnectionLogOptions, DnsServers = DnsServers, TransportProtocol = TransportProtocol, VpnPort = VpnPort, Description = Description, SplitTunnel = SplitTunnel, DryRun = DryRun, ClientToken = ClientToken, TagSpecifications = TagSpecifications, SecurityGroupIds = SecurityGroupIds, VpcId = VpcId, SelfServicePortal = SelfServicePortal, ClientConnectOptions = ClientConnectOptions, SessionTimeoutHours = SessionTimeoutHours, ClientLoginBannerOptions = ClientLoginBannerOptions, DisconnectOnSessionTimeout = DisconnectOnSessionTimeout)
+  input <- .ec2$create_client_vpn_endpoint_input(ClientCidrBlock = ClientCidrBlock, ServerCertificateArn = ServerCertificateArn, AuthenticationOptions = AuthenticationOptions, ConnectionLogOptions = ConnectionLogOptions, DnsServers = DnsServers, TransportProtocol = TransportProtocol, VpnPort = VpnPort, Description = Description, SplitTunnel = SplitTunnel, DryRun = DryRun, ClientToken = ClientToken, TagSpecifications = TagSpecifications, SecurityGroupIds = SecurityGroupIds, VpcId = VpcId, SelfServicePortal = SelfServicePortal, ClientConnectOptions = ClientConnectOptions, SessionTimeoutHours = SessionTimeoutHours, ClientLoginBannerOptions = ClientLoginBannerOptions, ClientRouteEnforcementOptions = ClientRouteEnforcementOptions, DisconnectOnSessionTimeout = DisconnectOnSessionTimeout)
   output <- .ec2$create_client_vpn_endpoint_output()
   config <- get_config()
   svc <- .ec2$service(config, op)
@@ -3919,11 +3979,24 @@ ec2_create_internet_gateway <- function(TagSpecifications = NULL, DryRun = NULL)
 #' tab](https://aws.amazon.com/vpc/pricing/).
 #' @param EnablePrivateGua Enable this option to use your own GUA ranges as private IPv6 addresses.
 #' This option is disabled by default.
+#' @param MeteredAccount A metered account is an Amazon Web Services account that is charged for
+#' active IP addresses managed in IPAM. For more information, see [Enable
+#' cost
+#' distribution](https://docs.aws.amazon.com/vpc/latest/ipam/ipam-enable-cost-distro.html)
+#' in the *Amazon VPC IPAM User Guide*.
+#' 
+#' Possible values:
+#' 
+#' -   `ipam-owner` (default): The Amazon Web Services account which owns
+#'     the IPAM is charged for all active IP addresses managed in IPAM.
+#' 
+#' -   `resource-owner`: The Amazon Web Services account that owns the IP
+#'     address is charged for the active IP address.
 #'
 #' @keywords internal
 #'
 #' @rdname ec2_create_ipam
-ec2_create_ipam <- function(DryRun = NULL, Description = NULL, OperatingRegions = NULL, TagSpecifications = NULL, ClientToken = NULL, Tier = NULL, EnablePrivateGua = NULL) {
+ec2_create_ipam <- function(DryRun = NULL, Description = NULL, OperatingRegions = NULL, TagSpecifications = NULL, ClientToken = NULL, Tier = NULL, EnablePrivateGua = NULL, MeteredAccount = NULL) {
   op <- new_operation(
     name = "CreateIpam",
     http_method = "POST",
@@ -3932,7 +4005,7 @@ ec2_create_ipam <- function(DryRun = NULL, Description = NULL, OperatingRegions 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ec2$create_ipam_input(DryRun = DryRun, Description = Description, OperatingRegions = OperatingRegions, TagSpecifications = TagSpecifications, ClientToken = ClientToken, Tier = Tier, EnablePrivateGua = EnablePrivateGua)
+  input <- .ec2$create_ipam_input(DryRun = DryRun, Description = Description, OperatingRegions = OperatingRegions, TagSpecifications = TagSpecifications, ClientToken = ClientToken, Tier = Tier, EnablePrivateGua = EnablePrivateGua, MeteredAccount = MeteredAccount)
   output <- .ec2$create_ipam_output()
   config <- get_config()
   svc <- .ec2$service(config, op)
@@ -4232,7 +4305,10 @@ ec2_create_key_pair <- function(KeyName, KeyType = NULL, TagSpecifications = NUL
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency
-#' of the request. For more information, see [Ensuring
+#' of the request. If a client token isn't specified, a randomly generated
+#' token is used in the request to ensure idempotency.
+#' 
+#' For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' 
 #' Constraint: Maximum 128 ASCII characters.
@@ -4283,7 +4359,10 @@ ec2_create_launch_template <- function(DryRun = NULL, ClientToken = NULL, Launch
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency
-#' of the request. For more information, see [Ensuring
+#' of the request. If a client token isn't specified, a randomly generated
+#' token is used in the request to ensure idempotency.
+#' 
+#' For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' 
 #' Constraint: Maximum 128 ASCII characters.
@@ -4311,7 +4390,7 @@ ec2_create_launch_template <- function(DryRun = NULL, ClientToken = NULL, Launch
 #' @param ResolveAlias If `true`, and if a Systems Manager parameter is specified for
 #' `ImageId`, the AMI ID is displayed in the response for `imageID`. For
 #' more information, see [Use a Systems Manager parameter instead of an AMI
-#' ID](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#use-an-ssm-parameter-instead-of-an-ami-id)
+#' ID](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-launch-template.html#use-an-ssm-parameter-instead-of-an-ami-id)
 #' in the *Amazon EC2 User Guide*.
 #' 
 #' Default: `false`
@@ -4493,6 +4572,94 @@ ec2_create_local_gateway_route_table_vpc_association <- function(LocalGatewayRou
   return(response)
 }
 .ec2$operations$create_local_gateway_route_table_vpc_association <- ec2_create_local_gateway_route_table_vpc_association
+
+#' Create a virtual interface for a local gateway
+#'
+#' @description
+#' Create a virtual interface for a local gateway.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_create_local_gateway_virtual_interface/](https://www.paws-r-sdk.com/docs/ec2_create_local_gateway_virtual_interface/) for full documentation.
+#'
+#' @param LocalGatewayVirtualInterfaceGroupId &#91;required&#93; The ID of the local gateway virtual interface group.
+#' @param OutpostLagId &#91;required&#93; References the Link Aggregation Group (LAG) that connects the Outpost to
+#' on-premises network devices.
+#' @param Vlan &#91;required&#93; The virtual local area network (VLAN) used for the local gateway virtual
+#' interface.
+#' @param LocalAddress &#91;required&#93; The IP address assigned to the local gateway virtual interface on the
+#' Outpost side. Only IPv4 is supported.
+#' @param PeerAddress &#91;required&#93; The peer IP address for the local gateway virtual interface. Only IPv4
+#' is supported.
+#' @param PeerBgpAsn The Autonomous System Number (ASN) of the Border Gateway Protocol (BGP)
+#' peer.
+#' @param TagSpecifications The tags to apply to a resource when the local gateway virtual interface
+#' is being created.
+#' @param DryRun Checks whether you have the required permissions for the action, without
+#' actually making the request, and provides an error response. If you have
+#' the required permissions, the error response is `DryRunOperation`.
+#' Otherwise, it is `UnauthorizedOperation`.
+#' @param PeerBgpAsnExtended The extended 32-bit ASN of the BGP peer for use with larger ASN values.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_create_local_gateway_virtual_interface
+ec2_create_local_gateway_virtual_interface <- function(LocalGatewayVirtualInterfaceGroupId, OutpostLagId, Vlan, LocalAddress, PeerAddress, PeerBgpAsn = NULL, TagSpecifications = NULL, DryRun = NULL, PeerBgpAsnExtended = NULL) {
+  op <- new_operation(
+    name = "CreateLocalGatewayVirtualInterface",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$create_local_gateway_virtual_interface_input(LocalGatewayVirtualInterfaceGroupId = LocalGatewayVirtualInterfaceGroupId, OutpostLagId = OutpostLagId, Vlan = Vlan, LocalAddress = LocalAddress, PeerAddress = PeerAddress, PeerBgpAsn = PeerBgpAsn, TagSpecifications = TagSpecifications, DryRun = DryRun, PeerBgpAsnExtended = PeerBgpAsnExtended)
+  output <- .ec2$create_local_gateway_virtual_interface_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$create_local_gateway_virtual_interface <- ec2_create_local_gateway_virtual_interface
+
+#' Create a local gateway virtual interface group
+#'
+#' @description
+#' Create a local gateway virtual interface group.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_create_local_gateway_virtual_interface_group/](https://www.paws-r-sdk.com/docs/ec2_create_local_gateway_virtual_interface_group/) for full documentation.
+#'
+#' @param LocalGatewayId &#91;required&#93; The ID of the local gateway.
+#' @param LocalBgpAsn The Autonomous System Number(ASN) for the local Border Gateway Protocol
+#' (BGP).
+#' @param LocalBgpAsnExtended The extended 32-bit ASN for the local BGP configuration.
+#' @param TagSpecifications The tags to apply to the local gateway virtual interface group when the
+#' resource is being created.
+#' @param DryRun Checks whether you have the required permissions for the action, without
+#' actually making the request, and provides an error response. If you have
+#' the required permissions, the error response is `DryRunOperation`.
+#' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_create_local_gateway_virtual_interface_group
+ec2_create_local_gateway_virtual_interface_group <- function(LocalGatewayId, LocalBgpAsn = NULL, LocalBgpAsnExtended = NULL, TagSpecifications = NULL, DryRun = NULL) {
+  op <- new_operation(
+    name = "CreateLocalGatewayVirtualInterfaceGroup",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$create_local_gateway_virtual_interface_group_input(LocalGatewayId = LocalGatewayId, LocalBgpAsn = LocalBgpAsn, LocalBgpAsnExtended = LocalBgpAsnExtended, TagSpecifications = TagSpecifications, DryRun = DryRun)
+  output <- .ec2$create_local_gateway_virtual_interface_group_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$create_local_gateway_virtual_interface_group <- ec2_create_local_gateway_virtual_interface_group
 
 #' Creates a managed prefix list
 #'
@@ -5089,11 +5256,35 @@ ec2_create_public_ipv_4_pool <- function(DryRun = NULL, TagSpecifications = NULL
 #' volume, specify `true`. If you choose to keep the original root volume
 #' after the replacement task completes, you must manually delete it when
 #' you no longer need it.
+#' @param VolumeInitializationRate Specifies the Amazon EBS Provisioned Rate for Volume Initialization
+#' (volume initialization rate), in MiB/s, at which to download the
+#' snapshot blocks from Amazon S3 to the replacement root volume. This is
+#' also known as *volume initialization*. Specifying a volume
+#' initialization rate ensures that the volume is initialized at a
+#' predictable and consistent rate after creation.
+#' 
+#' Omit this parameter if:
+#' 
+#' -   You want to create the volume using fast snapshot restore. You must
+#'     specify a snapshot that is enabled for fast snapshot restore. In
+#'     this case, the volume is fully initialized at creation.
+#' 
+#'     If you specify a snapshot that is enabled for fast snapshot restore
+#'     and a volume initialization rate, the volume will be initialized at
+#'     the specified rate instead of fast snapshot restore.
+#' 
+#' -   You want to create a volume that is initialized at the default rate.
+#' 
+#' For more information, see [Initialize Amazon EBS
+#' volumes](https://docs.aws.amazon.com/ebs/latest/userguide/initalize-volume.html)
+#' in the *Amazon EC2 User Guide*.
+#' 
+#' Valid range: 100 - 300 MiB/s
 #'
 #' @keywords internal
 #'
 #' @rdname ec2_create_replace_root_volume_task
-ec2_create_replace_root_volume_task <- function(InstanceId, SnapshotId = NULL, ClientToken = NULL, DryRun = NULL, TagSpecifications = NULL, ImageId = NULL, DeleteReplacedRootVolume = NULL) {
+ec2_create_replace_root_volume_task <- function(InstanceId, SnapshotId = NULL, ClientToken = NULL, DryRun = NULL, TagSpecifications = NULL, ImageId = NULL, DeleteReplacedRootVolume = NULL, VolumeInitializationRate = NULL) {
   op <- new_operation(
     name = "CreateReplaceRootVolumeTask",
     http_method = "POST",
@@ -5102,7 +5293,7 @@ ec2_create_replace_root_volume_task <- function(InstanceId, SnapshotId = NULL, C
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ec2$create_replace_root_volume_task_input(InstanceId = InstanceId, SnapshotId = SnapshotId, ClientToken = ClientToken, DryRun = DryRun, TagSpecifications = TagSpecifications, ImageId = ImageId, DeleteReplacedRootVolume = DeleteReplacedRootVolume)
+  input <- .ec2$create_replace_root_volume_task_input(InstanceId = InstanceId, SnapshotId = SnapshotId, ClientToken = ClientToken, DryRun = DryRun, TagSpecifications = TagSpecifications, ImageId = ImageId, DeleteReplacedRootVolume = DeleteReplacedRootVolume, VolumeInitializationRate = VolumeInitializationRate)
   output <- .ec2$create_replace_root_volume_task_output()
   config <- get_config()
   svc <- .ec2$service(config, op)
@@ -5261,6 +5452,139 @@ ec2_create_route <- function(DestinationPrefixListId = NULL, VpcEndpointId = NUL
 }
 .ec2$operations$create_route <- ec2_create_route
 
+#' Creates a new route server to manage dynamic routing in a VPC
+#'
+#' @description
+#' Creates a new route server to manage dynamic routing in a VPC.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_create_route_server/](https://www.paws-r-sdk.com/docs/ec2_create_route_server/) for full documentation.
+#'
+#' @param AmazonSideAsn &#91;required&#93; The private Autonomous System Number (ASN) for the Amazon side of the
+#' BGP session. Valid values are from 1 to 4294967295. We recommend using a
+#' private ASN in the 64512–65534 (16-bit ASN) or 4200000000–4294967294
+#' (32-bit ASN) range.
+#' @param ClientToken Unique, case-sensitive identifier to ensure idempotency of the request.
+#' @param DryRun A check for whether you have the required permissions for the action
+#' without actually making the request and provides an error response. If
+#' you have the required permissions, the error response is
+#' `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param PersistRoutes Indicates whether routes should be persisted after all BGP sessions are
+#' terminated.
+#' @param PersistRoutesDuration The number of minutes a route server will wait after BGP is
+#' re-established to unpersist the routes in the FIB and RIB. Value must be
+#' in the range of 1-5. Required if PersistRoutes is `enabled`.
+#' 
+#' If you set the duration to 1 minute, then when your network appliance
+#' re-establishes BGP with route server, it has 1 minute to relearn it's
+#' adjacent network and advertise those routes to route server before route
+#' server resumes normal functionality. In most cases, 1 minute is probably
+#' sufficient. If, however, you have concerns that your BGP network may not
+#' be capable of fully re-establishing and re-learning everything in 1
+#' minute, you can increase the duration up to 5 minutes.
+#' @param SnsNotificationsEnabled Indicates whether SNS notifications should be enabled for route server
+#' events. Enabling SNS notifications persists BGP status changes to an SNS
+#' topic provisioned by Amazon Web Services.
+#' @param TagSpecifications The tags to apply to the route server during creation.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_create_route_server
+ec2_create_route_server <- function(AmazonSideAsn, ClientToken = NULL, DryRun = NULL, PersistRoutes = NULL, PersistRoutesDuration = NULL, SnsNotificationsEnabled = NULL, TagSpecifications = NULL) {
+  op <- new_operation(
+    name = "CreateRouteServer",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$create_route_server_input(AmazonSideAsn = AmazonSideAsn, ClientToken = ClientToken, DryRun = DryRun, PersistRoutes = PersistRoutes, PersistRoutesDuration = PersistRoutesDuration, SnsNotificationsEnabled = SnsNotificationsEnabled, TagSpecifications = TagSpecifications)
+  output <- .ec2$create_route_server_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$create_route_server <- ec2_create_route_server
+
+#' Creates a new endpoint for a route server in a specified subnet
+#'
+#' @description
+#' Creates a new endpoint for a route server in a specified subnet.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_create_route_server_endpoint/](https://www.paws-r-sdk.com/docs/ec2_create_route_server_endpoint/) for full documentation.
+#'
+#' @param RouteServerId &#91;required&#93; The ID of the route server for which to create an endpoint.
+#' @param SubnetId &#91;required&#93; The ID of the subnet in which to create the route server endpoint.
+#' @param ClientToken Unique, case-sensitive identifier to ensure idempotency of the request.
+#' @param DryRun A check for whether you have the required permissions for the action
+#' without actually making the request and provides an error response. If
+#' you have the required permissions, the error response is
+#' `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param TagSpecifications The tags to apply to the route server endpoint during creation.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_create_route_server_endpoint
+ec2_create_route_server_endpoint <- function(RouteServerId, SubnetId, ClientToken = NULL, DryRun = NULL, TagSpecifications = NULL) {
+  op <- new_operation(
+    name = "CreateRouteServerEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$create_route_server_endpoint_input(RouteServerId = RouteServerId, SubnetId = SubnetId, ClientToken = ClientToken, DryRun = DryRun, TagSpecifications = TagSpecifications)
+  output <- .ec2$create_route_server_endpoint_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$create_route_server_endpoint <- ec2_create_route_server_endpoint
+
+#' Creates a new BGP peer for a specified route server endpoint
+#'
+#' @description
+#' Creates a new BGP peer for a specified route server endpoint.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_create_route_server_peer/](https://www.paws-r-sdk.com/docs/ec2_create_route_server_peer/) for full documentation.
+#'
+#' @param RouteServerEndpointId &#91;required&#93; The ID of the route server endpoint for which to create a peer.
+#' @param PeerAddress &#91;required&#93; The IPv4 address of the peer device.
+#' @param BgpOptions &#91;required&#93; The BGP options for the peer, including ASN (Autonomous System Number)
+#' and BFD (Bidrectional Forwarding Detection) settings.
+#' @param DryRun A check for whether you have the required permissions for the action
+#' without actually making the request and provides an error response. If
+#' you have the required permissions, the error response is
+#' `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param TagSpecifications The tags to apply to the route server peer during creation.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_create_route_server_peer
+ec2_create_route_server_peer <- function(RouteServerEndpointId, PeerAddress, BgpOptions, DryRun = NULL, TagSpecifications = NULL) {
+  op <- new_operation(
+    name = "CreateRouteServerPeer",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$create_route_server_peer_input(RouteServerEndpointId = RouteServerEndpointId, PeerAddress = PeerAddress, BgpOptions = BgpOptions, DryRun = DryRun, TagSpecifications = TagSpecifications)
+  output <- .ec2$create_route_server_peer_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$create_route_server_peer <- ec2_create_route_server_peer
+
 #' Creates a route table for the specified VPC
 #'
 #' @description
@@ -5313,9 +5637,10 @@ ec2_create_route_table <- function(TagSpecifications = NULL, ClientToken = NULL,
 #' 
 #' Valid characters: a-z, A-Z, 0-9, spaces, and
 #' ._-:/()#,@@\[\]+=&;\{\}!$*
-#' @param GroupName &#91;required&#93; The name of the security group.
+#' @param GroupName &#91;required&#93; The name of the security group. Names are case-insensitive and must be
+#' unique within the VPC.
 #' 
-#' Constraints: Up to 255 characters in length. Cannot start with `sg-`.
+#' Constraints: Up to 255 characters in length. Can't start with `sg-`.
 #' 
 #' Valid characters: a-z, A-Z, 0-9, spaces, and
 #' ._-:/()#,@@\[\]+=&;\{\}!$*
@@ -6668,6 +6993,31 @@ ec2_create_verified_access_trust_provider <- function(TrustProviderType, UserTru
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. For more information, see [Ensure
 #' Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' @param VolumeInitializationRate Specifies the Amazon EBS Provisioned Rate for Volume Initialization
+#' (volume initialization rate), in MiB/s, at which to download the
+#' snapshot blocks from Amazon S3 to the volume. This is also known as
+#' *volume initialization*. Specifying a volume initialization rate ensures
+#' that the volume is initialized at a predictable and consistent rate
+#' after creation.
+#' 
+#' This parameter is supported only for volumes created from snapshots.
+#' Omit this parameter if:
+#' 
+#' -   You want to create the volume using fast snapshot restore. You must
+#'     specify a snapshot that is enabled for fast snapshot restore. In
+#'     this case, the volume is fully initialized at creation.
+#' 
+#'     If you specify a snapshot that is enabled for fast snapshot restore
+#'     and a volume initialization rate, the volume will be initialized at
+#'     the specified rate instead of fast snapshot restore.
+#' 
+#' -   You want to create a volume that is initialized at the default rate.
+#' 
+#' For more information, see [Initialize Amazon EBS
+#' volumes](https://docs.aws.amazon.com/ebs/latest/userguide/initalize-volume.html)
+#' in the *Amazon EC2 User Guide*.
+#' 
+#' Valid range: 100 - 300 MiB/s
 #' @param Operator Reserved for internal use.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
@@ -6677,7 +7027,7 @@ ec2_create_verified_access_trust_provider <- function(TrustProviderType, UserTru
 #' @keywords internal
 #'
 #' @rdname ec2_create_volume
-ec2_create_volume <- function(AvailabilityZone, Encrypted = NULL, Iops = NULL, KmsKeyId = NULL, OutpostArn = NULL, Size = NULL, SnapshotId = NULL, VolumeType = NULL, TagSpecifications = NULL, MultiAttachEnabled = NULL, Throughput = NULL, ClientToken = NULL, Operator = NULL, DryRun = NULL) {
+ec2_create_volume <- function(AvailabilityZone, Encrypted = NULL, Iops = NULL, KmsKeyId = NULL, OutpostArn = NULL, Size = NULL, SnapshotId = NULL, VolumeType = NULL, TagSpecifications = NULL, MultiAttachEnabled = NULL, Throughput = NULL, ClientToken = NULL, VolumeInitializationRate = NULL, Operator = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateVolume",
     http_method = "POST",
@@ -6686,7 +7036,7 @@ ec2_create_volume <- function(AvailabilityZone, Encrypted = NULL, Iops = NULL, K
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ec2$create_volume_input(AvailabilityZone = AvailabilityZone, Encrypted = Encrypted, Iops = Iops, KmsKeyId = KmsKeyId, OutpostArn = OutpostArn, Size = Size, SnapshotId = SnapshotId, VolumeType = VolumeType, TagSpecifications = TagSpecifications, MultiAttachEnabled = MultiAttachEnabled, Throughput = Throughput, ClientToken = ClientToken, Operator = Operator, DryRun = DryRun)
+  input <- .ec2$create_volume_input(AvailabilityZone = AvailabilityZone, Encrypted = Encrypted, Iops = Iops, KmsKeyId = KmsKeyId, OutpostArn = OutpostArn, Size = Size, SnapshotId = SnapshotId, VolumeType = VolumeType, TagSpecifications = TagSpecifications, MultiAttachEnabled = MultiAttachEnabled, Throughput = Throughput, ClientToken = ClientToken, VolumeInitializationRate = VolumeInitializationRate, Operator = Operator, DryRun = DryRun)
   output <- .ec2$create_volume_output()
   config <- get_config()
   svc <- .ec2$service(config, op)
@@ -6877,8 +7227,6 @@ ec2_create_vpc_block_public_access_exclusion <- function(DryRun = NULL, SubnetId
 #' to `true`: `enableDnsHostnames` and `enableDnsSupport`. Use
 #' [`modify_vpc_attribute`][ec2_modify_vpc_attribute] to set the VPC
 #' attributes.
-#' 
-#' Default: `true`
 #' @param TagSpecifications The tags to associate with the endpoint.
 #' @param SubnetConfigurations The subnet configurations for the endpoint.
 #' @param ServiceNetworkArn The Amazon Resource Name (ARN) of a service network that will be
@@ -7450,10 +7798,10 @@ ec2_delete_egress_only_internet_gateway <- function(DryRun = NULL, EgressOnlyInt
 }
 .ec2$operations$delete_egress_only_internet_gateway <- ec2_delete_egress_only_internet_gateway
 
-#' Deletes the specified EC2 Fleets
+#' Deletes the specified EC2 Fleet request
 #'
 #' @description
-#' Deletes the specified EC2 Fleets.
+#' Deletes the specified EC2 Fleet request.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_delete_fleets/](https://www.paws-r-sdk.com/docs/ec2_delete_fleets/) for full documentation.
 #'
@@ -8147,6 +8495,76 @@ ec2_delete_local_gateway_route_table_vpc_association <- function(LocalGatewayRou
 }
 .ec2$operations$delete_local_gateway_route_table_vpc_association <- ec2_delete_local_gateway_route_table_vpc_association
 
+#' Deletes the specified local gateway virtual interface
+#'
+#' @description
+#' Deletes the specified local gateway virtual interface.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_delete_local_gateway_virtual_interface/](https://www.paws-r-sdk.com/docs/ec2_delete_local_gateway_virtual_interface/) for full documentation.
+#'
+#' @param LocalGatewayVirtualInterfaceId &#91;required&#93; The ID of the local virtual interface to delete.
+#' @param DryRun Checks whether you have the required permissions for the action, without
+#' actually making the request, and provides an error response. If you have
+#' the required permissions, the error response is `DryRunOperation`.
+#' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_delete_local_gateway_virtual_interface
+ec2_delete_local_gateway_virtual_interface <- function(LocalGatewayVirtualInterfaceId, DryRun = NULL) {
+  op <- new_operation(
+    name = "DeleteLocalGatewayVirtualInterface",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$delete_local_gateway_virtual_interface_input(LocalGatewayVirtualInterfaceId = LocalGatewayVirtualInterfaceId, DryRun = DryRun)
+  output <- .ec2$delete_local_gateway_virtual_interface_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$delete_local_gateway_virtual_interface <- ec2_delete_local_gateway_virtual_interface
+
+#' Delete the specified local gateway interface group
+#'
+#' @description
+#' Delete the specified local gateway interface group.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_delete_local_gateway_virtual_interface_group/](https://www.paws-r-sdk.com/docs/ec2_delete_local_gateway_virtual_interface_group/) for full documentation.
+#'
+#' @param LocalGatewayVirtualInterfaceGroupId &#91;required&#93; The ID of the local gateway virtual interface group to delete.
+#' @param DryRun Checks whether you have the required permissions for the action, without
+#' actually making the request, and provides an error response. If you have
+#' the required permissions, the error response is `DryRunOperation`.
+#' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_delete_local_gateway_virtual_interface_group
+ec2_delete_local_gateway_virtual_interface_group <- function(LocalGatewayVirtualInterfaceGroupId, DryRun = NULL) {
+  op <- new_operation(
+    name = "DeleteLocalGatewayVirtualInterfaceGroup",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$delete_local_gateway_virtual_interface_group_input(LocalGatewayVirtualInterfaceGroupId = LocalGatewayVirtualInterfaceGroupId, DryRun = DryRun)
+  output <- .ec2$delete_local_gateway_virtual_interface_group_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$delete_local_gateway_virtual_interface_group <- ec2_delete_local_gateway_virtual_interface_group
+
 #' Deletes the specified managed prefix list
 #'
 #' @description
@@ -8652,6 +9070,111 @@ ec2_delete_route <- function(DestinationPrefixListId = NULL, DryRun = NULL, Rout
   return(response)
 }
 .ec2$operations$delete_route <- ec2_delete_route
+
+#' Deletes the specified route server
+#'
+#' @description
+#' Deletes the specified route server.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_delete_route_server/](https://www.paws-r-sdk.com/docs/ec2_delete_route_server/) for full documentation.
+#'
+#' @param RouteServerId &#91;required&#93; The ID of the route server to delete.
+#' @param DryRun A check for whether you have the required permissions for the action
+#' without actually making the request and provides an error response. If
+#' you have the required permissions, the error response is
+#' `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_delete_route_server
+ec2_delete_route_server <- function(RouteServerId, DryRun = NULL) {
+  op <- new_operation(
+    name = "DeleteRouteServer",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$delete_route_server_input(RouteServerId = RouteServerId, DryRun = DryRun)
+  output <- .ec2$delete_route_server_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$delete_route_server <- ec2_delete_route_server
+
+#' Deletes the specified route server endpoint
+#'
+#' @description
+#' Deletes the specified route server endpoint.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_delete_route_server_endpoint/](https://www.paws-r-sdk.com/docs/ec2_delete_route_server_endpoint/) for full documentation.
+#'
+#' @param RouteServerEndpointId &#91;required&#93; The ID of the route server endpoint to delete.
+#' @param DryRun A check for whether you have the required permissions for the action
+#' without actually making the request and provides an error response. If
+#' you have the required permissions, the error response is
+#' `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_delete_route_server_endpoint
+ec2_delete_route_server_endpoint <- function(RouteServerEndpointId, DryRun = NULL) {
+  op <- new_operation(
+    name = "DeleteRouteServerEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$delete_route_server_endpoint_input(RouteServerEndpointId = RouteServerEndpointId, DryRun = DryRun)
+  output <- .ec2$delete_route_server_endpoint_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$delete_route_server_endpoint <- ec2_delete_route_server_endpoint
+
+#' Deletes the specified BGP peer from a route server
+#'
+#' @description
+#' Deletes the specified BGP peer from a route server.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_delete_route_server_peer/](https://www.paws-r-sdk.com/docs/ec2_delete_route_server_peer/) for full documentation.
+#'
+#' @param RouteServerPeerId &#91;required&#93; The ID of the route server peer to delete.
+#' @param DryRun A check for whether you have the required permissions for the action
+#' without actually making the request and provides an error response. If
+#' you have the required permissions, the error response is
+#' `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_delete_route_server_peer
+ec2_delete_route_server_peer <- function(RouteServerPeerId, DryRun = NULL) {
+  op <- new_operation(
+    name = "DeleteRouteServerPeer",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$delete_route_server_peer_input(RouteServerPeerId = RouteServerPeerId, DryRun = DryRun)
+  output <- .ec2$delete_route_server_peer_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$delete_route_server_peer <- ec2_delete_route_server_peer
 
 #' Deletes the specified route table
 #'
@@ -10099,7 +10622,7 @@ ec2_deprovision_public_ipv_4_pool_cidr <- function(DryRun = NULL, PoolId, Cidr) 
 #' Deregisters the specified AMI
 #'
 #' @description
-#' Deregisters the specified AMI. After you deregister an AMI, it can't be used to launch new instances.
+#' Deregisters the specified AMI. A deregistered AMI can't be used to launch new instances.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_deregister_image/](https://www.paws-r-sdk.com/docs/ec2_deregister_image/) for full documentation.
 #'
@@ -10469,7 +10992,7 @@ ec2_describe_aggregate_id_format <- function(DryRun = NULL) {
 #' are available to you
 #'
 #' @description
-#' Describes the Availability Zones, Local Zones, and Wavelength Zones that are available to you. If there is an event impacting a zone, you can use this request to view the state and any provided messages for that zone.
+#' Describes the Availability Zones, Local Zones, and Wavelength Zones that are available to you.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_describe_availability_zones/](https://www.paws-r-sdk.com/docs/ec2_describe_availability_zones/) for full documentation.
 #'
@@ -10485,6 +11008,12 @@ ec2_describe_aggregate_id_format <- function(DryRun = NULL) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param Filters The filters.
+#' 
+#' -   `group-long-name` - The long name of the zone group for the
+#'     Availability Zone (for example, `US West (Oregon) 1`), the Local
+#'     Zone (for example, for Zone group `us-west-2-lax-1`, it is
+#'     `US West (Los Angeles)`, or the Wavelength Zone (for example, for
+#'     Zone group `us-east-1-wl1`, it is `US East (Verizon)`.
 #' 
 #' -   `group-name` - The name of the zone group for the Availability Zone
 #'     (for example, `us-east-1-zg-1`), the Local Zone (for example,
@@ -10508,7 +11037,7 @@ ec2_describe_aggregate_id_format <- function(DryRun = NULL) {
 #'     `us-east-1`).
 #' 
 #' -   `state` - The state of the Availability Zone, the Local Zone, or the
-#'     Wavelength Zone (`available`).
+#'     Wavelength Zone (`available` | `unavailable` | `constrained`).
 #' 
 #' -   `zone-id` - The ID of the Availability Zone (for example,
 #'     `use1-az1`), the Local Zone (for example, `usw2-lax1-az1`), or the
@@ -10795,10 +11324,14 @@ ec2_describe_capacity_block_extension_offerings <- function(DryRun = NULL, Capac
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param InstanceType The type of instance for which the Capacity Block offering reserves
 #' capacity.
-#' @param InstanceCount The number of instances for which to reserve capacity.
+#' @param InstanceCount The number of instances for which to reserve capacity. Each Capacity
+#' Block can have up to 64 instances, and you can have up to 256 instances
+#' across Capacity Blocks.
 #' @param StartDateRange The earliest start date for the Capacity Block offering.
 #' @param EndDateRange The latest end date for the Capacity Block offering.
-#' @param CapacityDurationHours &#91;required&#93; The number of hours for which to reserve Capacity Block.
+#' @param CapacityDurationHours &#91;required&#93; The reservation duration for the Capacity Block, in hours. You must
+#' specify the duration in 1-day increments up 14 days, and in 7-day
+#' increments up to 182 days.
 #' @param NextToken The token to use to retrieve the next page of results.
 #' @param MaxResults The maximum number of items to return for this request. To get the next
 #' page of items, make another request with the token returned in the
@@ -13509,6 +14042,9 @@ ec2_describe_instance_type_offerings <- function(DryRun = NULL, LocationType = N
 #'     latest generation instance type of an instance family (`true` |
 #'     `false`).
 #' 
+#' -   `dedicated-hosts-supported` - Indicates whether the instance type
+#'     supports Dedicated Hosts. (`true` | `false`)
+#' 
 #' -   `ebs-info.ebs-optimized-info.baseline-bandwidth-in-mbps` - The
 #'     baseline bandwidth performance for an EBS-optimized instance type,
 #'     in Mbps.
@@ -13590,6 +14126,9 @@ ec2_describe_instance_type_offerings <- function(DryRun = NULL, LocationType = N
 #' -   `network-info.ena-support` - Indicates whether Elastic Network
 #'     Adapter (ENA) is supported or required (`required` | `supported` |
 #'     `unsupported`).
+#' 
+#' -   `network-info.flexible-ena-queues-support` - Indicates whether an
+#'     instance supports flexible ENA queues (`supported` | `unsupported`).
 #' 
 #' -   `network-info.encryption-in-transit-supported` - Indicates whether
 #'     the instance type automatically encrypts in-transit traffic between
@@ -14734,7 +15273,7 @@ ec2_describe_key_pairs <- function(KeyNames = NULL, KeyPairIds = NULL, IncludePu
 #' 
 #' For more information, see [Use a Systems Manager parameter instead of an
 #' AMI
-#' ID](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#use-an-ssm-parameter-instead-of-an-ami-id)
+#' ID](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-launch-template.html#use-an-ssm-parameter-instead-of-an-ami-id)
 #' in the *Amazon EC2 User Guide*.
 #' 
 #' Default: `false`
@@ -15949,6 +16488,73 @@ ec2_describe_network_interfaces <- function(NextToken = NULL, MaxResults = NULL,
 }
 .ec2$operations$describe_network_interfaces <- ec2_describe_network_interfaces
 
+#' Describes the Outposts link aggregation groups (LAGs)
+#'
+#' @description
+#' Describes the Outposts link aggregation groups (LAGs).
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_describe_outpost_lags/](https://www.paws-r-sdk.com/docs/ec2_describe_outpost_lags/) for full documentation.
+#'
+#' @param OutpostLagIds The IDs of the Outpost LAGs.
+#' @param Filters The filters to use for narrowing down the request. The following filters
+#' are supported:
+#' 
+#' -   `service-link-virtual-interface-id` - The ID of the service link
+#'     virtual interface.
+#' 
+#' -   `service-link-virtual-interface-arn` - The ARN of the service link
+#'     virtual interface.
+#' 
+#' -   `outpost-id` - The Outpost ID.
+#' 
+#' -   `outpost-arn` - The Outpost ARN.
+#' 
+#' -   `owner-id` - The ID of the Amazon Web Services account that owns the
+#'     service link virtual interface.
+#' 
+#' -   `vlan` - The ID of the address pool.
+#' 
+#' -   `local-address` - The local address.
+#' 
+#' -   `peer-address` - The peer address.
+#' 
+#' -   `peer-bgp-asn` - The peer BGP ASN.
+#' 
+#' -   `outpost-lag-id` - The Outpost LAG ID.
+#' 
+#' -   `configuration-state` - The configuration state of the service link
+#'     virtual interface.
+#' @param MaxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#' @param NextToken The token for the next page of results.
+#' @param DryRun Checks whether you have the required permissions for the action, without
+#' actually making the request, and provides an error response. If you have
+#' the required permissions, the error response is `DryRunOperation`.
+#' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_describe_outpost_lags
+ec2_describe_outpost_lags <- function(OutpostLagIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
+  op <- new_operation(
+    name = "DescribeOutpostLags",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$describe_outpost_lags_input(OutpostLagIds = OutpostLagIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
+  output <- .ec2$describe_outpost_lags_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$describe_outpost_lags <- ec2_describe_outpost_lags
+
 #' Describes the specified placement groups or all of your placement groups
 #'
 #' @description
@@ -16273,6 +16879,9 @@ ec2_describe_replace_root_volume_tasks <- function(ReplaceRootVolumeTaskIds = NU
 #' -   `availability-zone` - The Availability Zone where the Reserved
 #'     Instance can be used.
 #' 
+#' -   `availability-zone-id` - The ID of the Availability Zone where the
+#'     Reserved Instance can be used.
+#' 
 #' -   `duration` - The duration of the Reserved Instance (one year or
 #'     three years), in seconds (`31536000` | `94608000`).
 #' 
@@ -16411,6 +17020,9 @@ ec2_describe_reserved_instances_listings <- function(ReservedInstancesId = NULL,
 #' -   `modification-result.target-configuration.availability-zone` - The
 #'     Availability Zone for the new Reserved Instances.
 #' 
+#' -   `modification-result.target-configuration.availability-zone-id` -
+#'     The ID of the Availability Zone for the new Reserved Instances.
+#' 
 #' -   `modification-result.target-configuration.instance-count ` - The
 #'     number of new Reserved Instances.
 #' 
@@ -16460,6 +17072,9 @@ ec2_describe_reserved_instances_modifications <- function(ReservedInstancesModif
 #' See [https://www.paws-r-sdk.com/docs/ec2_describe_reserved_instances_offerings/](https://www.paws-r-sdk.com/docs/ec2_describe_reserved_instances_offerings/) for full documentation.
 #'
 #' @param AvailabilityZone The Availability Zone in which the Reserved Instance can be used.
+#' 
+#' Either `AvailabilityZone` or `AvailabilityZoneId` can be specified, but
+#' not both.
 #' @param IncludeMarketplace Include Reserved Instance Marketplace offerings in the response.
 #' @param InstanceType The instance type that the reservation will cover (for example,
 #' `m1.small`). For more information, see [Amazon EC2 instance
@@ -16481,6 +17096,10 @@ ec2_describe_reserved_instances_modifications <- function(ReservedInstancesModif
 #' @param ProductDescription The Reserved Instance product platform description. Instances that
 #' include `(Amazon VPC)` in the description are for use with Amazon VPC.
 #' @param ReservedInstancesOfferingIds One or more Reserved Instances offering IDs.
+#' @param AvailabilityZoneId The ID of the Availability Zone.
+#' 
+#' Either `AvailabilityZone` or `AvailabilityZoneId` can be specified, but
+#' not both.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -16489,6 +17108,9 @@ ec2_describe_reserved_instances_modifications <- function(ReservedInstancesModif
 #' 
 #' -   `availability-zone` - The Availability Zone where the Reserved
 #'     Instance can be used.
+#' 
+#' -   `availability-zone-id` - The ID of the Availability Zone where the
+#'     Reserved Instance can be used.
 #' 
 #' -   `duration` - The duration of the Reserved Instance (for example, one
 #'     year or three years), in seconds (`31536000` | `94608000`).
@@ -16542,7 +17164,7 @@ ec2_describe_reserved_instances_modifications <- function(ReservedInstancesModif
 #' @keywords internal
 #'
 #' @rdname ec2_describe_reserved_instances_offerings
-ec2_describe_reserved_instances_offerings <- function(AvailabilityZone = NULL, IncludeMarketplace = NULL, InstanceType = NULL, MaxDuration = NULL, MaxInstanceCount = NULL, MinDuration = NULL, OfferingClass = NULL, ProductDescription = NULL, ReservedInstancesOfferingIds = NULL, DryRun = NULL, Filters = NULL, InstanceTenancy = NULL, OfferingType = NULL, NextToken = NULL, MaxResults = NULL) {
+ec2_describe_reserved_instances_offerings <- function(AvailabilityZone = NULL, IncludeMarketplace = NULL, InstanceType = NULL, MaxDuration = NULL, MaxInstanceCount = NULL, MinDuration = NULL, OfferingClass = NULL, ProductDescription = NULL, ReservedInstancesOfferingIds = NULL, AvailabilityZoneId = NULL, DryRun = NULL, Filters = NULL, InstanceTenancy = NULL, OfferingType = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeReservedInstancesOfferings",
     http_method = "POST",
@@ -16551,7 +17173,7 @@ ec2_describe_reserved_instances_offerings <- function(AvailabilityZone = NULL, I
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ReservedInstancesOfferings"),
     stream_api = FALSE
   )
-  input <- .ec2$describe_reserved_instances_offerings_input(AvailabilityZone = AvailabilityZone, IncludeMarketplace = IncludeMarketplace, InstanceType = InstanceType, MaxDuration = MaxDuration, MaxInstanceCount = MaxInstanceCount, MinDuration = MinDuration, OfferingClass = OfferingClass, ProductDescription = ProductDescription, ReservedInstancesOfferingIds = ReservedInstancesOfferingIds, DryRun = DryRun, Filters = Filters, InstanceTenancy = InstanceTenancy, OfferingType = OfferingType, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .ec2$describe_reserved_instances_offerings_input(AvailabilityZone = AvailabilityZone, IncludeMarketplace = IncludeMarketplace, InstanceType = InstanceType, MaxDuration = MaxDuration, MaxInstanceCount = MaxInstanceCount, MinDuration = MinDuration, OfferingClass = OfferingClass, ProductDescription = ProductDescription, ReservedInstancesOfferingIds = ReservedInstancesOfferingIds, AvailabilityZoneId = AvailabilityZoneId, DryRun = DryRun, Filters = Filters, InstanceTenancy = InstanceTenancy, OfferingType = OfferingType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_reserved_instances_offerings_output()
   config <- get_config()
   svc <- .ec2$service(config, op)
@@ -16560,6 +17182,120 @@ ec2_describe_reserved_instances_offerings <- function(AvailabilityZone = NULL, I
   return(response)
 }
 .ec2$operations$describe_reserved_instances_offerings <- ec2_describe_reserved_instances_offerings
+
+#' Describes one or more route server endpoints
+#'
+#' @description
+#' Describes one or more route server endpoints.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_describe_route_server_endpoints/](https://www.paws-r-sdk.com/docs/ec2_describe_route_server_endpoints/) for full documentation.
+#'
+#' @param RouteServerEndpointIds The IDs of the route server endpoints to describe.
+#' @param NextToken The token for the next page of results.
+#' @param MaxResults The maximum number of results to return with a single call.
+#' @param Filters One or more filters to apply to the describe request.
+#' @param DryRun A check for whether you have the required permissions for the action
+#' without actually making the request and provides an error response. If
+#' you have the required permissions, the error response is
+#' `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_describe_route_server_endpoints
+ec2_describe_route_server_endpoints <- function(RouteServerEndpointIds = NULL, NextToken = NULL, MaxResults = NULL, Filters = NULL, DryRun = NULL) {
+  op <- new_operation(
+    name = "DescribeRouteServerEndpoints",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RouteServerEndpoints"),
+    stream_api = FALSE
+  )
+  input <- .ec2$describe_route_server_endpoints_input(RouteServerEndpointIds = RouteServerEndpointIds, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, DryRun = DryRun)
+  output <- .ec2$describe_route_server_endpoints_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$describe_route_server_endpoints <- ec2_describe_route_server_endpoints
+
+#' Describes one or more route server peers
+#'
+#' @description
+#' Describes one or more route server peers.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_describe_route_server_peers/](https://www.paws-r-sdk.com/docs/ec2_describe_route_server_peers/) for full documentation.
+#'
+#' @param RouteServerPeerIds The IDs of the route server peers to describe.
+#' @param NextToken The token for the next page of results.
+#' @param MaxResults The maximum number of results to return with a single call.
+#' @param Filters One or more filters to apply to the describe request.
+#' @param DryRun A check for whether you have the required permissions for the action
+#' without actually making the request and provides an error response. If
+#' you have the required permissions, the error response is
+#' `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_describe_route_server_peers
+ec2_describe_route_server_peers <- function(RouteServerPeerIds = NULL, NextToken = NULL, MaxResults = NULL, Filters = NULL, DryRun = NULL) {
+  op <- new_operation(
+    name = "DescribeRouteServerPeers",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RouteServerPeers"),
+    stream_api = FALSE
+  )
+  input <- .ec2$describe_route_server_peers_input(RouteServerPeerIds = RouteServerPeerIds, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, DryRun = DryRun)
+  output <- .ec2$describe_route_server_peers_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$describe_route_server_peers <- ec2_describe_route_server_peers
+
+#' Describes one or more route servers
+#'
+#' @description
+#' Describes one or more route servers.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_describe_route_servers/](https://www.paws-r-sdk.com/docs/ec2_describe_route_servers/) for full documentation.
+#'
+#' @param RouteServerIds The IDs of the route servers to describe.
+#' @param NextToken The token for the next page of results.
+#' @param MaxResults The maximum number of results to return with a single call.
+#' @param Filters One or more filters to apply to the describe request.
+#' @param DryRun A check for whether you have the required permissions for the action
+#' without actually making the request and provides an error response. If
+#' you have the required permissions, the error response is
+#' `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_describe_route_servers
+ec2_describe_route_servers <- function(RouteServerIds = NULL, NextToken = NULL, MaxResults = NULL, Filters = NULL, DryRun = NULL) {
+  op <- new_operation(
+    name = "DescribeRouteServers",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RouteServers"),
+    stream_api = FALSE
+  )
+  input <- .ec2$describe_route_servers_input(RouteServerIds = RouteServerIds, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, DryRun = DryRun)
+  output <- .ec2$describe_route_servers_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$describe_route_servers <- ec2_describe_route_servers
 
 #' Describes your route tables
 #'
@@ -17059,6 +17795,64 @@ ec2_describe_security_groups <- function(GroupIds = NULL, GroupNames = NULL, Nex
   return(response)
 }
 .ec2$operations$describe_security_groups <- ec2_describe_security_groups
+
+#' Describes the Outpost service link virtual interfaces
+#'
+#' @description
+#' Describes the Outpost service link virtual interfaces.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_describe_service_link_virtual_interfaces/](https://www.paws-r-sdk.com/docs/ec2_describe_service_link_virtual_interfaces/) for full documentation.
+#'
+#' @param ServiceLinkVirtualInterfaceIds The IDs of the service link virtual interfaces.
+#' @param Filters The filters to use for narrowing down the request. The following filters
+#' are supported:
+#' 
+#' -   `outpost-lag-id` - The ID of the Outpost LAG.
+#' 
+#' -   `outpost-arn` - The Outpost ARN.
+#' 
+#' -   `owner-id` - The ID of the Amazon Web Services account that owns the
+#'     service link virtual interface.
+#' 
+#' -   `state` - The state of the Outpost LAG.
+#' 
+#' -   `vlan` - The ID of the address pool.
+#' 
+#' -   `service-link-virtual-interface-id` - The ID of the service link
+#'     virtual interface.
+#' 
+#' -   `local-gateway-virtual-interface-id` - The ID of the local gateway
+#'     virtual interface.
+#' @param MaxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#' @param NextToken The token for the next page of results.
+#' @param DryRun Checks whether you have the required permissions for the action, without
+#' actually making the request, and provides an error response. If you have
+#' the required permissions, the error response is `DryRunOperation`.
+#' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_describe_service_link_virtual_interfaces
+ec2_describe_service_link_virtual_interfaces <- function(ServiceLinkVirtualInterfaceIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
+  op <- new_operation(
+    name = "DescribeServiceLinkVirtualInterfaces",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$describe_service_link_virtual_interfaces_input(ServiceLinkVirtualInterfaceIds = ServiceLinkVirtualInterfaceIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
+  output <- .ec2$describe_service_link_virtual_interfaces_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$describe_service_link_virtual_interfaces <- ec2_describe_service_link_virtual_interfaces
 
 #' Describes the specified attribute of the specified snapshot
 #'
@@ -19679,7 +20473,7 @@ ec2_describe_vpc_endpoint_service_configurations <- function(DryRun = NULL, Serv
 #' discover your VPC endpoint service
 #'
 #' @description
-#' Describes the principals (service consumers) that are permitted to discover your VPC endpoint service.
+#' Describes the principals (service consumers) that are permitted to discover your VPC endpoint service. Principal ARNs with path components aren't supported.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_describe_vpc_endpoint_service_permissions/](https://www.paws-r-sdk.com/docs/ec2_describe_vpc_endpoint_service_permissions/) for full documentation.
 #'
@@ -20822,6 +21616,43 @@ ec2_disable_ipam_organization_admin_account <- function(DryRun = NULL, Delegated
 }
 .ec2$operations$disable_ipam_organization_admin_account <- ec2_disable_ipam_organization_admin_account
 
+#' Disables route propagation from a route server to a specified route
+#' table
+#'
+#' @description
+#' Disables route propagation from a route server to a specified route table.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_disable_route_server_propagation/](https://www.paws-r-sdk.com/docs/ec2_disable_route_server_propagation/) for full documentation.
+#'
+#' @param RouteServerId &#91;required&#93; The ID of the route server for which to disable propagation.
+#' @param RouteTableId &#91;required&#93; The ID of the route table for which to disable route server propagation.
+#' @param DryRun A check for whether you have the required permissions for the action
+#' without actually making the request and provides an error response. If
+#' you have the required permissions, the error response is
+#' `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_disable_route_server_propagation
+ec2_disable_route_server_propagation <- function(RouteServerId, RouteTableId, DryRun = NULL) {
+  op <- new_operation(
+    name = "DisableRouteServerPropagation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$disable_route_server_propagation_input(RouteServerId = RouteServerId, RouteTableId = RouteTableId, DryRun = DryRun)
+  output <- .ec2$disable_route_server_propagation_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$disable_route_server_propagation <- ec2_disable_route_server_propagation
+
 #' Disables access to the EC2 serial console of all instances for your
 #' account
 #'
@@ -21360,6 +22191,42 @@ ec2_disassociate_nat_gateway_address <- function(NatGatewayId, AssociationIds, M
   return(response)
 }
 .ec2$operations$disassociate_nat_gateway_address <- ec2_disassociate_nat_gateway_address
+
+#' Disassociates a route server from a VPC
+#'
+#' @description
+#' Disassociates a route server from a VPC.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_disassociate_route_server/](https://www.paws-r-sdk.com/docs/ec2_disassociate_route_server/) for full documentation.
+#'
+#' @param RouteServerId &#91;required&#93; The ID of the route server to disassociate.
+#' @param VpcId &#91;required&#93; The ID of the VPC to disassociate from the route server.
+#' @param DryRun A check for whether you have the required permissions for the action
+#' without actually making the request and provides an error response. If
+#' you have the required permissions, the error response is
+#' `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_disassociate_route_server
+ec2_disassociate_route_server <- function(RouteServerId, VpcId, DryRun = NULL) {
+  op <- new_operation(
+    name = "DisassociateRouteServer",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$disassociate_route_server_input(RouteServerId = RouteServerId, VpcId = VpcId, DryRun = DryRun)
+  output <- .ec2$disassociate_route_server_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$disassociate_route_server <- ec2_disassociate_route_server
 
 #' Disassociates a subnet or gateway from a route table
 #'
@@ -22107,6 +22974,42 @@ ec2_enable_reachability_analyzer_organization_sharing <- function(DryRun = NULL)
   return(response)
 }
 .ec2$operations$enable_reachability_analyzer_organization_sharing <- ec2_enable_reachability_analyzer_organization_sharing
+
+#' Defines which route tables the route server can update with routes
+#'
+#' @description
+#' Defines which route tables the route server can update with routes.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_enable_route_server_propagation/](https://www.paws-r-sdk.com/docs/ec2_enable_route_server_propagation/) for full documentation.
+#'
+#' @param RouteServerId &#91;required&#93; The ID of the route server for which to enable propagation.
+#' @param RouteTableId &#91;required&#93; The ID of the route table to which route server will propagate routes.
+#' @param DryRun A check for whether you have the required permissions for the action
+#' without actually making the request and provides an error response. If
+#' you have the required permissions, the error response is
+#' `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_enable_route_server_propagation
+ec2_enable_route_server_propagation <- function(RouteServerId, RouteTableId, DryRun = NULL) {
+  op <- new_operation(
+    name = "EnableRouteServerPropagation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$enable_route_server_propagation_input(RouteServerId = RouteServerId, RouteTableId = RouteTableId, DryRun = DryRun)
+  output <- .ec2$enable_route_server_propagation_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$enable_route_server_propagation <- ec2_enable_route_server_propagation
 
 #' Enables access to the EC2 serial console of all instances for your
 #' account
@@ -23921,6 +24824,117 @@ ec2_get_reserved_instances_exchange_quote <- function(DryRun = NULL, ReservedIns
 }
 .ec2$operations$get_reserved_instances_exchange_quote <- ec2_get_reserved_instances_exchange_quote
 
+#' Gets information about the associations for the specified route server
+#'
+#' @description
+#' Gets information about the associations for the specified route server.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_get_route_server_associations/](https://www.paws-r-sdk.com/docs/ec2_get_route_server_associations/) for full documentation.
+#'
+#' @param RouteServerId &#91;required&#93; The ID of the route server for which to get association information.
+#' @param DryRun A check for whether you have the required permissions for the action
+#' without actually making the request and provides an error response. If
+#' you have the required permissions, the error response is
+#' `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_get_route_server_associations
+ec2_get_route_server_associations <- function(RouteServerId, DryRun = NULL) {
+  op <- new_operation(
+    name = "GetRouteServerAssociations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$get_route_server_associations_input(RouteServerId = RouteServerId, DryRun = DryRun)
+  output <- .ec2$get_route_server_associations_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$get_route_server_associations <- ec2_get_route_server_associations
+
+#' Gets information about the route propagations for the specified route
+#' server
+#'
+#' @description
+#' Gets information about the route propagations for the specified route server.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_get_route_server_propagations/](https://www.paws-r-sdk.com/docs/ec2_get_route_server_propagations/) for full documentation.
+#'
+#' @param RouteServerId &#91;required&#93; The ID of the route server for which to get propagation information.
+#' @param RouteTableId The ID of the route table for which to get propagation information.
+#' @param DryRun A check for whether you have the required permissions for the action
+#' without actually making the request and provides an error response. If
+#' you have the required permissions, the error response is
+#' `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_get_route_server_propagations
+ec2_get_route_server_propagations <- function(RouteServerId, RouteTableId = NULL, DryRun = NULL) {
+  op <- new_operation(
+    name = "GetRouteServerPropagations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$get_route_server_propagations_input(RouteServerId = RouteServerId, RouteTableId = RouteTableId, DryRun = DryRun)
+  output <- .ec2$get_route_server_propagations_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$get_route_server_propagations <- ec2_get_route_server_propagations
+
+#' Gets the routing database for the specified route server
+#'
+#' @description
+#' Gets the routing database for the specified route server. The [Routing Information Base (RIB)](https://en.wikipedia.org/wiki/Routing_table) serves as a database that stores all the routing information and network topology data collected by a router or routing system, such as routes learned from BGP peers. The RIB is constantly updated as new routing information is received or existing routes change. This ensures that the route server always has the most current view of the network topology and can make optimal routing decisions.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_get_route_server_routing_database/](https://www.paws-r-sdk.com/docs/ec2_get_route_server_routing_database/) for full documentation.
+#'
+#' @param RouteServerId &#91;required&#93; The ID of the route server for which to get the routing database.
+#' @param NextToken The token for the next page of results.
+#' @param MaxResults The maximum number of routing database entries to return in a single
+#' response.
+#' @param DryRun A check for whether you have the required permissions for the action
+#' without actually making the request and provides an error response. If
+#' you have the required permissions, the error response is
+#' `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#' @param Filters Filters to apply to the routing database query.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_get_route_server_routing_database
+ec2_get_route_server_routing_database <- function(RouteServerId, NextToken = NULL, MaxResults = NULL, DryRun = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "GetRouteServerRoutingDatabase",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$get_route_server_routing_database_input(RouteServerId = RouteServerId, NextToken = NextToken, MaxResults = MaxResults, DryRun = DryRun, Filters = Filters)
+  output <- .ec2$get_route_server_routing_database_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$get_route_server_routing_database <- ec2_get_route_server_routing_database
+
 #' Gets security groups that can be associated by the Amazon Web Services
 #' account making the request with network interfaces in the specified VPC
 #'
@@ -25536,15 +26550,26 @@ ec2_modify_capacity_reservation_fleet <- function(CapacityReservationFleetId, To
 #' @param ClientLoginBannerOptions Options for enabling a customizable text banner that will be displayed
 #' on Amazon Web Services provided clients when a VPN session is
 #' established.
+#' @param ClientRouteEnforcementOptions Client route enforcement is a feature of the Client VPN service that
+#' helps enforce administrator defined routes on devices connected through
+#' the VPN. T his feature helps improve your security posture by ensuring
+#' that network traffic originating from a connected client is not
+#' inadvertently sent outside the VPN tunnel.
+#' 
+#' Client route enforcement works by monitoring the route table of a
+#' connected device for routing policy changes to the VPN connection. If
+#' the feature detects any VPN routing policy modifications, it will
+#' automatically force an update to the route table, reverting it back to
+#' the expected route configurations.
 #' @param DisconnectOnSessionTimeout Indicates whether the client VPN session is disconnected after the
 #' maximum timeout specified in `sessionTimeoutHours` is reached. If
 #' `true`, users are prompted to reconnect client VPN. If `false`, client
-#' VPN attempts to reconnect automatically. The default value is `false`.
+#' VPN attempts to reconnect automatically. The default value is `true`.
 #'
 #' @keywords internal
 #'
 #' @rdname ec2_modify_client_vpn_endpoint
-ec2_modify_client_vpn_endpoint <- function(ClientVpnEndpointId, ServerCertificateArn = NULL, ConnectionLogOptions = NULL, DnsServers = NULL, VpnPort = NULL, Description = NULL, SplitTunnel = NULL, DryRun = NULL, SecurityGroupIds = NULL, VpcId = NULL, SelfServicePortal = NULL, ClientConnectOptions = NULL, SessionTimeoutHours = NULL, ClientLoginBannerOptions = NULL, DisconnectOnSessionTimeout = NULL) {
+ec2_modify_client_vpn_endpoint <- function(ClientVpnEndpointId, ServerCertificateArn = NULL, ConnectionLogOptions = NULL, DnsServers = NULL, VpnPort = NULL, Description = NULL, SplitTunnel = NULL, DryRun = NULL, SecurityGroupIds = NULL, VpcId = NULL, SelfServicePortal = NULL, ClientConnectOptions = NULL, SessionTimeoutHours = NULL, ClientLoginBannerOptions = NULL, ClientRouteEnforcementOptions = NULL, DisconnectOnSessionTimeout = NULL) {
   op <- new_operation(
     name = "ModifyClientVpnEndpoint",
     http_method = "POST",
@@ -25553,7 +26578,7 @@ ec2_modify_client_vpn_endpoint <- function(ClientVpnEndpointId, ServerCertificat
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ec2$modify_client_vpn_endpoint_input(ClientVpnEndpointId = ClientVpnEndpointId, ServerCertificateArn = ServerCertificateArn, ConnectionLogOptions = ConnectionLogOptions, DnsServers = DnsServers, VpnPort = VpnPort, Description = Description, SplitTunnel = SplitTunnel, DryRun = DryRun, SecurityGroupIds = SecurityGroupIds, VpcId = VpcId, SelfServicePortal = SelfServicePortal, ClientConnectOptions = ClientConnectOptions, SessionTimeoutHours = SessionTimeoutHours, ClientLoginBannerOptions = ClientLoginBannerOptions, DisconnectOnSessionTimeout = DisconnectOnSessionTimeout)
+  input <- .ec2$modify_client_vpn_endpoint_input(ClientVpnEndpointId = ClientVpnEndpointId, ServerCertificateArn = ServerCertificateArn, ConnectionLogOptions = ConnectionLogOptions, DnsServers = DnsServers, VpnPort = VpnPort, Description = Description, SplitTunnel = SplitTunnel, DryRun = DryRun, SecurityGroupIds = SecurityGroupIds, VpcId = VpcId, SelfServicePortal = SelfServicePortal, ClientConnectOptions = ClientConnectOptions, SessionTimeoutHours = SessionTimeoutHours, ClientLoginBannerOptions = ClientLoginBannerOptions, ClientRouteEnforcementOptions = ClientRouteEnforcementOptions, DisconnectOnSessionTimeout = DisconnectOnSessionTimeout)
   output <- .ec2$modify_client_vpn_endpoint_output()
   config <- get_config()
   svc <- .ec2$service(config, op)
@@ -25984,6 +27009,13 @@ ec2_modify_image_attribute <- function(Attribute = NULL, Description = NULL, Ima
 #' `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 #' @param InstanceId &#91;required&#93; The ID of the instance.
 #' @param Attribute The name of the attribute to modify.
+#' 
+#' When changing the instance type: If the original instance type is
+#' configured for configurable bandwidth, and the desired instance type
+#' doesn't support configurable bandwidth, first set the existing bandwidth
+#' configuration to `default` using the
+#' [`modify_instance_network_performance_options`][ec2_modify_instance_network_performance_options]
+#' operation.
 #' 
 #' You can modify the following attributes only: `disableApiTermination` |
 #' `instanceType` | `kernel` | `ramdisk` |
@@ -26590,11 +27622,24 @@ ec2_modify_instance_placement <- function(GroupName = NULL, PartitionNumber = NU
 #' tab](https://aws.amazon.com/vpc/pricing/).
 #' @param EnablePrivateGua Enable this option to use your own GUA ranges as private IPv6 addresses.
 #' This option is disabled by default.
+#' @param MeteredAccount A metered account is an Amazon Web Services account that is charged for
+#' active IP addresses managed in IPAM. For more information, see [Enable
+#' cost
+#' distribution](https://docs.aws.amazon.com/vpc/latest/ipam/ipam-enable-cost-distro.html)
+#' in the *Amazon VPC IPAM User Guide*.
+#' 
+#' Possible values:
+#' 
+#' -   `ipam-owner` (default): The Amazon Web Services account which owns
+#'     the IPAM is charged for all active IP addresses managed in IPAM.
+#' 
+#' -   `resource-owner`: The Amazon Web Services account that owns the IP
+#'     address is charged for the active IP address.
 #'
 #' @keywords internal
 #'
 #' @rdname ec2_modify_ipam
-ec2_modify_ipam <- function(DryRun = NULL, IpamId, Description = NULL, AddOperatingRegions = NULL, RemoveOperatingRegions = NULL, Tier = NULL, EnablePrivateGua = NULL) {
+ec2_modify_ipam <- function(DryRun = NULL, IpamId, Description = NULL, AddOperatingRegions = NULL, RemoveOperatingRegions = NULL, Tier = NULL, EnablePrivateGua = NULL, MeteredAccount = NULL) {
   op <- new_operation(
     name = "ModifyIpam",
     http_method = "POST",
@@ -26603,7 +27648,7 @@ ec2_modify_ipam <- function(DryRun = NULL, IpamId, Description = NULL, AddOperat
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ec2$modify_ipam_input(DryRun = DryRun, IpamId = IpamId, Description = Description, AddOperatingRegions = AddOperatingRegions, RemoveOperatingRegions = RemoveOperatingRegions, Tier = Tier, EnablePrivateGua = EnablePrivateGua)
+  input <- .ec2$modify_ipam_input(DryRun = DryRun, IpamId = IpamId, Description = Description, AddOperatingRegions = AddOperatingRegions, RemoveOperatingRegions = RemoveOperatingRegions, Tier = Tier, EnablePrivateGua = EnablePrivateGua, MeteredAccount = MeteredAccount)
   output <- .ec2$modify_ipam_output()
   config <- get_config()
   svc <- .ec2$service(config, op)
@@ -26839,7 +27884,10 @@ ec2_modify_ipam_scope <- function(DryRun = NULL, IpamScopeId, Description = NULL
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency
-#' of the request. For more information, see [Ensuring
+#' of the request. If a client token isn't specified, a randomly generated
+#' token is used in the request to ensure idempotency.
+#' 
+#' For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' 
 #' Constraint: Maximum 128 ASCII characters.
@@ -27113,6 +28161,67 @@ ec2_modify_reserved_instances <- function(ReservedInstancesIds, ClientToken = NU
   return(response)
 }
 .ec2$operations$modify_reserved_instances <- ec2_modify_reserved_instances
+
+#' Modifies the configuration of an existing route server
+#'
+#' @description
+#' Modifies the configuration of an existing route server.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ec2_modify_route_server/](https://www.paws-r-sdk.com/docs/ec2_modify_route_server/) for full documentation.
+#'
+#' @param RouteServerId &#91;required&#93; The ID of the route server to modify.
+#' @param PersistRoutes Specifies whether to persist routes after all BGP sessions are
+#' terminated.
+#' 
+#' -   enable: Routes will be persisted in FIB and RIB after all BGP
+#'     sessions are terminated.
+#' 
+#' -   disable: Routes will not be persisted in FIB and RIB after all BGP
+#'     sessions are terminated.
+#' 
+#' -   reset: If a route server has persisted routes due to all BGP
+#'     sessions having ended, reset will withdraw all routes and reset
+#'     route server to an empty FIB and RIB.
+#' @param PersistRoutesDuration The number of minutes a route server will wait after BGP is
+#' re-established to unpersist the routes in the FIB and RIB. Value must be
+#' in the range of 1-5. Required if PersistRoutes is `enabled`.
+#' 
+#' If you set the duration to 1 minute, then when your network appliance
+#' re-establishes BGP with route server, it has 1 minute to relearn it's
+#' adjacent network and advertise those routes to route server before route
+#' server resumes normal functionality. In most cases, 1 minute is probably
+#' sufficient. If, however, you have concerns that your BGP network may not
+#' be capable of fully re-establishing and re-learning everything in 1
+#' minute, you can increase the duration up to 5 minutes.
+#' @param SnsNotificationsEnabled Specifies whether to enable SNS notifications for route server events.
+#' Enabling SNS notifications persists BGP status changes to an SNS topic
+#' provisioned by Amazon Web Services.
+#' @param DryRun A check for whether you have the required permissions for the action
+#' without actually making the request and provides an error response. If
+#' you have the required permissions, the error response is
+#' `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @keywords internal
+#'
+#' @rdname ec2_modify_route_server
+ec2_modify_route_server <- function(RouteServerId, PersistRoutes = NULL, PersistRoutesDuration = NULL, SnsNotificationsEnabled = NULL, DryRun = NULL) {
+  op <- new_operation(
+    name = "ModifyRouteServer",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ec2$modify_route_server_input(RouteServerId = RouteServerId, PersistRoutes = PersistRoutes, PersistRoutesDuration = PersistRoutesDuration, SnsNotificationsEnabled = SnsNotificationsEnabled, DryRun = DryRun)
+  output <- .ec2$modify_route_server_output()
+  config <- get_config()
+  svc <- .ec2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ec2$operations$modify_route_server <- ec2_modify_route_server
 
 #' Modifies the rules of a security group
 #'
@@ -28372,7 +29481,7 @@ ec2_modify_vpc_endpoint_service_payer_responsibility <- function(DryRun = NULL, 
 #' Modifies the permissions for your VPC endpoint service
 #'
 #' @description
-#' Modifies the permissions for your VPC endpoint service. You can add or remove permissions for service consumers (Amazon Web Services accounts, users, and IAM roles) to connect to your endpoint service.
+#' Modifies the permissions for your VPC endpoint service. You can add or remove permissions for service consumers (Amazon Web Services accounts, users, and IAM roles) to connect to your endpoint service. Principal ARNs with path components aren't supported.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_modify_vpc_endpoint_service_permissions/](https://www.paws-r-sdk.com/docs/ec2_modify_vpc_endpoint_service_permissions/) for full documentation.
 #'
@@ -31602,6 +32711,8 @@ ec2_start_network_insights_access_scope_analysis <- function(NetworkInsightsAcce
 #' @param AdditionalAccounts The member accounts that contain resources that the path can traverse.
 #' @param FilterInArns The Amazon Resource Names (ARN) of the resources that the path must
 #' traverse.
+#' @param FilterOutArns The Amazon Resource Names (ARN) of the resources that the path will
+#' ignore.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -31614,7 +32725,7 @@ ec2_start_network_insights_access_scope_analysis <- function(NetworkInsightsAcce
 #' @keywords internal
 #'
 #' @rdname ec2_start_network_insights_analysis
-ec2_start_network_insights_analysis <- function(NetworkInsightsPathId, AdditionalAccounts = NULL, FilterInArns = NULL, DryRun = NULL, TagSpecifications = NULL, ClientToken) {
+ec2_start_network_insights_analysis <- function(NetworkInsightsPathId, AdditionalAccounts = NULL, FilterInArns = NULL, FilterOutArns = NULL, DryRun = NULL, TagSpecifications = NULL, ClientToken) {
   op <- new_operation(
     name = "StartNetworkInsightsAnalysis",
     http_method = "POST",
@@ -31623,7 +32734,7 @@ ec2_start_network_insights_analysis <- function(NetworkInsightsPathId, Additiona
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ec2$start_network_insights_analysis_input(NetworkInsightsPathId = NetworkInsightsPathId, AdditionalAccounts = AdditionalAccounts, FilterInArns = FilterInArns, DryRun = DryRun, TagSpecifications = TagSpecifications, ClientToken = ClientToken)
+  input <- .ec2$start_network_insights_analysis_input(NetworkInsightsPathId = NetworkInsightsPathId, AdditionalAccounts = AdditionalAccounts, FilterInArns = FilterInArns, FilterOutArns = FilterOutArns, DryRun = DryRun, TagSpecifications = TagSpecifications, ClientToken = ClientToken)
   output <- .ec2$start_network_insights_analysis_output()
   config <- get_config()
   svc <- .ec2$service(config, op)
@@ -31688,10 +32799,17 @@ ec2_start_vpc_endpoint_service_private_dns_verification <- function(DryRun = NUL
 #' without actually making the request, and provides an error response. If
 #' you have the required permissions, the error response is
 #' `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
-#' @param Force Forces the instances to stop. The instances do not have an opportunity
-#' to flush file system caches or file system metadata. If you use this
-#' option, you must perform file system check and repair procedures. This
-#' option is not recommended for Windows instances.
+#' @param Force Forces the instance to stop. The instance will first attempt a graceful
+#' shutdown, which includes flushing file system caches and metadata. If
+#' the graceful shutdown fails to complete within the timeout period, the
+#' instance shuts down forcibly without flushing the file system caches and
+#' metadata.
+#' 
+#' After using this option, you must perform file system check and repair
+#' procedures. This option is not recommended for Windows instances. For
+#' more information, see [Troubleshoot Amazon EC2 instance stop
+#' issues](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesStopping.html)
+#' in the *Amazon EC2 User Guide*.
 #' 
 #' Default: `false`
 #'
@@ -31759,7 +32877,7 @@ ec2_terminate_client_vpn_connections <- function(ClientVpnEndpointId, Connection
 #' Shuts down the specified instances
 #'
 #' @description
-#' Shuts down the specified instances. This operation is idempotent; if you terminate an instance more than once, each call succeeds.
+#' Shuts down the specified instances. This operation is [idempotent](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html); if you terminate an instance more than once, each call succeeds.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_terminate_instances/](https://www.paws-r-sdk.com/docs/ec2_terminate_instances/) for full documentation.
 #'

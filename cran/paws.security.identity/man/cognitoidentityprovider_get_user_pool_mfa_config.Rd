@@ -2,15 +2,17 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_get_user_pool_mfa_config}
 \alias{cognitoidentityprovider_get_user_pool_mfa_config}
-\title{Gets the user pool multi-factor authentication (MFA) configuration}
+\title{Given a user pool ID, returns configuration for sign-in with WebAuthn
+authenticators and for multi-factor authentication (MFA)}
 \usage{
 cognitoidentityprovider_get_user_pool_mfa_config(UserPoolId)
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to query WebAuthn and MFA
+configuration.}
 }
 \description{
-Gets the user pool multi-factor authentication (MFA) configuration.
+Given a user pool ID, returns configuration for sign-in with WebAuthn authenticators and for multi-factor authentication (MFA). This operation describes the following:
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_user_pool_mfa_config/} for full documentation.
 }

@@ -17,9 +17,9 @@ arczonalshift_list_zonal_shifts(
 \item{maxResults}{The number of objects that you want to return with this call.}
 
 \item{nextToken}{Specifies that you want to receive the next page of results. Valid only
-if you received a \code{NextToken} response in the previous request. If you
+if you received a \code{nextToken} response in the previous request. If you
 did, it indicates that more output is available. Set this parameter to
-the value provided by the previous call's \code{NextToken} response to
+the value provided by the previous call's \code{nextToken} response to
 request the next page of results.}
 
 \item{resourceIdentifier}{The identifier for the resource that you want to list zonal shifts for.
@@ -36,7 +36,7 @@ exceeded).
 }}
 }
 \description{
-Lists all active and completed zonal shifts in Amazon Route 53 Application Recovery Controller in your Amazon Web Services account in this Amazon Web Services Region. \code{\link[=arczonalshift_list_zonal_shifts]{list_zonal_shifts}} returns customer-initiated zonal shifts, as well as practice run zonal shifts that Route 53 ARC started on your behalf for zonal autoshift.
+Lists all active and completed zonal shifts in Amazon Route 53 Application Recovery Controller in your Amazon Web Services account in this Amazon Web Services Region.
 
 See \url{https://www.paws-r-sdk.com/docs/arczonalshift_list_zonal_shifts/} for full documentation.
 }

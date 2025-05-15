@@ -8,8 +8,8 @@ cognitoidentityprovider_delete_user_pool_domain(Domain, UserPoolId)
 }
 \arguments{
 \item{Domain}{[required] The domain that you want to delete. For custom domains, this is the
-fully-qualified domain name, such as \code{auth.example.com}. For Amazon
-Cognito prefix domains, this is the prefix alone, such as \code{auth}.}
+fully-qualified domain name like \code{auth.example.com}. For Amazon Cognito
+prefix domains, this is the prefix alone, like \code{myprefix}.}
 
 \item{UserPoolId}{[required] The ID of the user pool where you want to delete the domain.}
 }

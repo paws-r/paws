@@ -15,6 +15,7 @@ redshiftserverless_update_workgroup(
   publiclyAccessible = NULL,
   securityGroupIds = NULL,
   subnetIds = NULL,
+  trackName = NULL,
   workgroupName
 )
 }
@@ -51,6 +52,10 @@ public network.}
 \item{securityGroupIds}{An array of security group IDs to associate with the workgroup.}
 
 \item{subnetIds}{An array of VPC subnet IDs to associate with the workgroup.}
+
+\item{trackName}{An optional parameter for the name of the track for the workgroup. If
+you don't provide a track name, the workgroup is assigned to the
+\code{current} track.}
 
 \item{workgroupName}{[required] The name of the workgroup to update. You can't update the name of a
 workgroup once it is created.}

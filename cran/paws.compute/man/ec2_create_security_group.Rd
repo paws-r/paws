@@ -20,9 +20,10 @@ Constraints: Up to 255 characters in length
 Valid characters: a-z, A-Z, 0-9, spaces, and
 ._-:/()#,@[]+=&;\{\}!$*}
 
-\item{GroupName}{[required] The name of the security group.
+\item{GroupName}{[required] The name of the security group. Names are case-insensitive and must be
+unique within the VPC.
 
-Constraints: Up to 255 characters in length. Cannot start with \verb{sg-}.
+Constraints: Up to 255 characters in length. Can't start with \verb{sg-}.
 
 Valid characters: a-z, A-Z, 0-9, spaces, and
 ._-:/()#,@[]+=&;\{\}!$*}

@@ -26,6 +26,8 @@ ID is only available when the status of the modification is
 \code{fulfilled}.
 \item \code{modification-result.target-configuration.availability-zone} - The
 Availability Zone for the new Reserved Instances.
+\item \code{modification-result.target-configuration.availability-zone-id} -
+The ID of the Availability Zone for the new Reserved Instances.
 \item \code{modification-result.target-configuration.instance-count } - The
 number of new Reserved Instances.
 \item \code{modification-result.target-configuration.instance-type} - The

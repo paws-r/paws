@@ -2,8 +2,8 @@
 % Please edit documentation in R/cloudfront_operations.R
 \name{cloudfront_create_monitoring_subscription}
 \alias{cloudfront_create_monitoring_subscription}
-\title{Enables additional CloudWatch metrics for the specified CloudFront
-distribution}
+\title{Enables or disables additional Amazon CloudWatch metrics for the
+specified CloudFront distribution}
 \usage{
 cloudfront_create_monitoring_subscription(
   DistributionId,
@@ -18,7 +18,7 @@ whether additional CloudWatch metrics are enabled for a given CloudFront
 distribution.}
 }
 \description{
-Enables additional CloudWatch metrics for the specified CloudFront distribution. The additional metrics incur an additional cost.
+Enables or disables additional Amazon CloudWatch metrics for the specified CloudFront distribution. The additional metrics incur an additional cost.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudfront_create_monitoring_subscription/} for full documentation.
 }

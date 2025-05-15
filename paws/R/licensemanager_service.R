@@ -131,12 +131,12 @@ NULL
 #'  \link[=licensemanager_list_received_licenses]{list_received_licenses} \tab Lists received licenses\cr
 #'  \link[=licensemanager_list_received_licenses_for_organization]{list_received_licenses_for_organization} \tab Lists the licenses received for all accounts in the organization\cr
 #'  \link[=licensemanager_list_resource_inventory]{list_resource_inventory} \tab Lists resources managed using Systems Manager inventory\cr
-#'  \link[=licensemanager_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified license configuration\cr
+#'  \link[=licensemanager_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource\cr
 #'  \link[=licensemanager_list_tokens]{list_tokens} \tab Lists your tokens\cr
 #'  \link[=licensemanager_list_usage_for_license_configuration]{list_usage_for_license_configuration} \tab Lists all license usage records for a license configuration, displaying license consumption details by resource at a selected point in time\cr
 #'  \link[=licensemanager_reject_grant]{reject_grant} \tab Rejects the specified grant\cr
-#'  \link[=licensemanager_tag_resource]{tag_resource} \tab Adds the specified tags to the specified license configuration\cr
-#'  \link[=licensemanager_untag_resource]{untag_resource} \tab Removes the specified tags from the specified license configuration\cr
+#'  \link[=licensemanager_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
+#'  \link[=licensemanager_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource\cr
 #'  \link[=licensemanager_update_license_configuration]{update_license_configuration} \tab Modifies the attributes of an existing license configuration\cr
 #'  \link[=licensemanager_update_license_manager_report_generator]{update_license_manager_report_generator} \tab Updates a report generator\cr
 #'  \link[=licensemanager_update_license_specifications_for_resource]{update_license_specifications_for_resource} \tab Adds or removes the specified license configurations for the specified Amazon Web Services resource\cr
@@ -172,7 +172,7 @@ licensemanager <- function(config = list(), credentials = list(), endpoint = NUL
 
 .licensemanager$metadata <- list(
   service_name = "licensemanager",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "license-manager.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "license-manager.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "license-manager.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "license-manager.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "license-manager.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "license-manager.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "license-manager.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "license-manager.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "license-manager.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "license-manager.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "license-manager.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "license-manager.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "license-manager.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "license-manager.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "license-manager.{region}.amazonaws.eu", global = FALSE)),
   service_id = "License Manager",
   api_version = "2018-08-01",
   signing_name = "license-manager",

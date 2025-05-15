@@ -22,7 +22,7 @@ pcaconnectorad_create_connector(
 
 \item{Tags}{Metadata assigned to a connector consisting of a key-value pair.}
 
-\item{VpcInformation}{[required] Security group IDs that describe the inbound and outbound rules.}
+\item{VpcInformation}{[required] Information about your VPC and security groups used with the connector.}
 }
 \description{
 Creates a connector between Amazon Web Services Private CA and an Active Directory. You must specify the private CA, directory ID, and security groups.

@@ -10,7 +10,7 @@ cloudfront_create_anycast_ip_list(Name, IpCount, Tags = NULL)
 \item{Name}{[required] Name of the Anycast static IP list.}
 
 \item{IpCount}{[required] The number of static IP addresses that are allocated to the Anycast
-static IP list.}
+static IP list. Valid values: 21 or 3.}
 
 \item{Tags}{}
 }

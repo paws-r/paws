@@ -6,20 +6,20 @@
 Center access scope for an application}
 \usage{
 ssoadmin_put_application_access_scope(
-  ApplicationArn,
+  Scope,
   AuthorizedTargets = NULL,
-  Scope
+  ApplicationArn
 )
 }
 \arguments{
-\item{ApplicationArn}{[required] Specifies the ARN of the application with the access scope with the
-targets to add or update.}
+\item{Scope}{[required] Specifies the name of the access scope to be associated with the
+specified targets.}
 
 \item{AuthorizedTargets}{Specifies an array list of ARNs that represent the authorized targets
 for this access scope.}
 
-\item{Scope}{[required] Specifies the name of the access scope to be associated with the
-specified targets.}
+\item{ApplicationArn}{[required] Specifies the ARN of the application with the access scope with the
+targets to add or update.}
 }
 \description{
 Adds or updates the list of authorized targets for an IAM Identity Center access scope for an application.

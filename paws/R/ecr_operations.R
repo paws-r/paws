@@ -451,26 +451,36 @@ ecr_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadI
 #'
 #' @usage
 #' ecr_create_pull_through_cache_rule(ecrRepositoryPrefix,
-#'   upstreamRegistryUrl, registryId, upstreamRegistry, credentialArn)
+#'   upstreamRegistryUrl, registryId, upstreamRegistry, credentialArn,
+#'   customRoleArn, upstreamRepositoryPrefix)
 #'
 #' @param ecrRepositoryPrefix &#91;required&#93; The repository name prefix to use when caching images from the source
 #' registry.
+#' 
+#' There is always an assumed `/` applied to the end of the prefix. If you
+#' specify `ecr-public` as the prefix, Amazon ECR treats that as
+#' `ecr-public/`.
 #' @param upstreamRegistryUrl &#91;required&#93; The registry URL of the upstream public registry to use as the source
 #' for the pull through cache rule. The following is the syntax to use for
 #' each supported upstream registry.
 #' 
-#' -   Amazon ECR Public (`ecr-public`) - `public.ecr.aws`
+#' -   Amazon ECR (`ecr`) – `dkr.ecr.<region>.amazonaws.com`
 #' 
-#' -   Docker Hub (`docker-hub`) - `registry-1.docker.io`
+#' -   Amazon ECR Public (`ecr-public`) – `public.ecr.aws`
 #' 
-#' -   Quay (`quay`) - `quay.io`
+#' -   Docker Hub (`docker-hub`) – `registry-1.docker.io`
 #' 
-#' -   Kubernetes (`k8s`) - `registry.k8s.io`
+#' -   GitHub Container Registry (`github-container-registry`) – `ghcr.io`
 #' 
-#' -   GitHub Container Registry (`github-container-registry`) - `ghcr.io`
+#' -   GitLab Container Registry (`gitlab-container-registry`) –
+#'     `registry.gitlab.com`
 #' 
-#' -   Microsoft Azure Container Registry (`azure-container-registry`) -
+#' -   Kubernetes (`k8s`) – `registry.k8s.io`
+#' 
+#' -   Microsoft Azure Container Registry (`azure-container-registry`) –
 #'     `<custom>.azurecr.io`
+#' 
+#' -   Quay (`quay`) – `quay.io`
 #' @param registryId The Amazon Web Services account ID associated with the registry to
 #' create the pull through cache rule for. If you do not specify a
 #' registry, the default registry is assumed.
@@ -478,6 +488,12 @@ ecr_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadI
 #' @param credentialArn The Amazon Resource Name (ARN) of the Amazon Web Services Secrets
 #' Manager secret that identifies the credentials to authenticate to the
 #' upstream registry.
+#' @param customRoleArn Amazon Resource Name (ARN) of the IAM role to be assumed by Amazon ECR
+#' to authenticate to the ECR upstream registry. This role must be in the
+#' same account as the registry that you are configuring.
+#' @param upstreamRepositoryPrefix The repository name prefix of the upstream registry to match with the
+#' upstream repository name. When this field isn't specified, Amazon ECR
+#' will use the `ROOT`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -489,8 +505,10 @@ ecr_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadI
 #'     "2015-01-01"
 #'   ),
 #'   registryId = "string",
-#'   upstreamRegistry = "ecr-public"|"quay"|"k8s"|"docker-hub"|"github-container-registry"|"azure-container-registry"|"gitlab-container-registry",
-#'   credentialArn = "string"
+#'   upstreamRegistry = "ecr"|"ecr-public"|"quay"|"k8s"|"docker-hub"|"github-container-registry"|"azure-container-registry"|"gitlab-container-registry",
+#'   credentialArn = "string",
+#'   customRoleArn = "string",
+#'   upstreamRepositoryPrefix = "string"
 #' )
 #' ```
 #'
@@ -500,8 +518,10 @@ ecr_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadI
 #'   ecrRepositoryPrefix = "string",
 #'   upstreamRegistryUrl = "string",
 #'   registryId = "string",
-#'   upstreamRegistry = "ecr-public"|"quay"|"k8s"|"docker-hub"|"github-container-registry"|"azure-container-registry"|"gitlab-container-registry",
-#'   credentialArn = "string"
+#'   upstreamRegistry = "ecr"|"ecr-public"|"quay"|"k8s"|"docker-hub"|"github-container-registry"|"azure-container-registry"|"gitlab-container-registry",
+#'   credentialArn = "string",
+#'   customRoleArn = "string",
+#'   upstreamRepositoryPrefix = "string"
 #' )
 #' ```
 #'
@@ -510,7 +530,7 @@ ecr_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadI
 #' @rdname ecr_create_pull_through_cache_rule
 #'
 #' @aliases ecr_create_pull_through_cache_rule
-ecr_create_pull_through_cache_rule <- function(ecrRepositoryPrefix, upstreamRegistryUrl, registryId = NULL, upstreamRegistry = NULL, credentialArn = NULL) {
+ecr_create_pull_through_cache_rule <- function(ecrRepositoryPrefix, upstreamRegistryUrl, registryId = NULL, upstreamRegistry = NULL, credentialArn = NULL, customRoleArn = NULL, upstreamRepositoryPrefix = NULL) {
   op <- new_operation(
     name = "CreatePullThroughCacheRule",
     http_method = "POST",
@@ -519,7 +539,7 @@ ecr_create_pull_through_cache_rule <- function(ecrRepositoryPrefix, upstreamRegi
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ecr$create_pull_through_cache_rule_input(ecrRepositoryPrefix = ecrRepositoryPrefix, upstreamRegistryUrl = upstreamRegistryUrl, registryId = registryId, upstreamRegistry = upstreamRegistry, credentialArn = credentialArn)
+  input <- .ecr$create_pull_through_cache_rule_input(ecrRepositoryPrefix = ecrRepositoryPrefix, upstreamRegistryUrl = upstreamRegistryUrl, registryId = registryId, upstreamRegistry = upstreamRegistry, credentialArn = credentialArn, customRoleArn = customRoleArn, upstreamRepositoryPrefix = upstreamRepositoryPrefix)
   output <- .ecr$create_pull_through_cache_rule_output()
   config <- get_config()
   svc <- .ecr$service(config, op)
@@ -864,7 +884,9 @@ ecr_delete_lifecycle_policy <- function(registryId = NULL, repositoryName) {
 #'     "2015-01-01"
 #'   ),
 #'   registryId = "string",
-#'   credentialArn = "string"
+#'   credentialArn = "string",
+#'   customRoleArn = "string",
+#'   upstreamRepositoryPrefix = "string"
 #' )
 #' ```
 #'
@@ -1638,7 +1660,9 @@ ecr_describe_images <- function(registryId = NULL, repositoryName, imageIds = NU
 #'       ),
 #'       registryId = "string",
 #'       credentialArn = "string",
-#'       upstreamRegistry = "ecr-public"|"quay"|"k8s"|"docker-hub"|"github-container-registry"|"azure-container-registry"|"gitlab-container-registry",
+#'       customRoleArn = "string",
+#'       upstreamRepositoryPrefix = "string",
+#'       upstreamRegistry = "ecr"|"ecr-public"|"quay"|"k8s"|"docker-hub"|"github-container-registry"|"azure-container-registry"|"gitlab-container-registry",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -3621,16 +3645,19 @@ ecr_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @usage
 #' ecr_update_pull_through_cache_rule(registryId, ecrRepositoryPrefix,
-#'   credentialArn)
+#'   credentialArn, customRoleArn)
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry
 #' associated with the pull through cache rule. If you do not specify a
 #' registry, the default registry is assumed.
 #' @param ecrRepositoryPrefix &#91;required&#93; The repository name prefix to use when caching images from the source
 #' registry.
-#' @param credentialArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Web Services Secrets
+#' @param credentialArn The Amazon Resource Name (ARN) of the Amazon Web Services Secrets
 #' Manager secret that identifies the credentials to authenticate to the
 #' upstream registry.
+#' @param customRoleArn Amazon Resource Name (ARN) of the IAM role to be assumed by Amazon ECR
+#' to authenticate to the ECR upstream registry. This role must be in the
+#' same account as the registry that you are configuring.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3641,7 +3668,9 @@ ecr_untag_resource <- function(resourceArn, tagKeys) {
 #'   updatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   credentialArn = "string"
+#'   credentialArn = "string",
+#'   customRoleArn = "string",
+#'   upstreamRepositoryPrefix = "string"
 #' )
 #' ```
 #'
@@ -3650,7 +3679,8 @@ ecr_untag_resource <- function(resourceArn, tagKeys) {
 #' svc$update_pull_through_cache_rule(
 #'   registryId = "string",
 #'   ecrRepositoryPrefix = "string",
-#'   credentialArn = "string"
+#'   credentialArn = "string",
+#'   customRoleArn = "string"
 #' )
 #' ```
 #'
@@ -3659,7 +3689,7 @@ ecr_untag_resource <- function(resourceArn, tagKeys) {
 #' @rdname ecr_update_pull_through_cache_rule
 #'
 #' @aliases ecr_update_pull_through_cache_rule
-ecr_update_pull_through_cache_rule <- function(registryId = NULL, ecrRepositoryPrefix, credentialArn) {
+ecr_update_pull_through_cache_rule <- function(registryId = NULL, ecrRepositoryPrefix, credentialArn = NULL, customRoleArn = NULL) {
   op <- new_operation(
     name = "UpdatePullThroughCacheRule",
     http_method = "POST",
@@ -3668,7 +3698,7 @@ ecr_update_pull_through_cache_rule <- function(registryId = NULL, ecrRepositoryP
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ecr$update_pull_through_cache_rule_input(registryId = registryId, ecrRepositoryPrefix = ecrRepositoryPrefix, credentialArn = credentialArn)
+  input <- .ecr$update_pull_through_cache_rule_input(registryId = registryId, ecrRepositoryPrefix = ecrRepositoryPrefix, credentialArn = credentialArn, customRoleArn = customRoleArn)
   output <- .ecr$update_pull_through_cache_rule_output()
   config <- get_config()
   svc <- .ecr$service(config, op)
@@ -3908,6 +3938,8 @@ ecr_upload_layer_part <- function(registryId = NULL, repositoryName, uploadId, p
 #'   registryId = "string",
 #'   upstreamRegistryUrl = "string",
 #'   credentialArn = "string",
+#'   customRoleArn = "string",
+#'   upstreamRepositoryPrefix = "string",
 #'   isValid = TRUE|FALSE,
 #'   failure = "string"
 #' )

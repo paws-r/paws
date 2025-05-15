@@ -7,7 +7,6 @@
 workspaces_register_workspace_directory(
   DirectoryId = NULL,
   SubnetIds = NULL,
-  EnableWorkDocs = NULL,
   EnableSelfService = NULL,
   Tenancy = NULL,
   Tags = NULL,
@@ -33,11 +32,6 @@ are not using for WorkSpaces, and try again.}
 Make sure that the subnets are in supported Availability Zones. The
 subnets must also be in separate Availability Zones. If these conditions
 are not met, you will receive an OperationNotSupportedException error.}
-
-\item{EnableWorkDocs}{Indicates whether Amazon WorkDocs is enabled or disabled. If you have
-enabled this parameter and WorkDocs is not available in the Region, you
-will receive an OperationNotSupportedException error. Set
-\code{EnableWorkDocs} to disabled, and try again.}
 
 \item{EnableSelfService}{Indicates whether self-service capabilities are enabled or disabled.}
 

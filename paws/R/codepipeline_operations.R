@@ -350,7 +350,8 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'             environmentVariables = list(
 #'               list(
 #'                 name = "string",
-#'                 value = "string"
+#'                 value = "string",
+#'                 type = "PLAINTEXT"|"SECRETS_MANAGER"
 #'               )
 #'             )
 #'           )
@@ -608,7 +609,8 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'             environmentVariables = list(
 #'               list(
 #'                 name = "string",
-#'                 value = "string"
+#'                 value = "string",
+#'                 type = "PLAINTEXT"|"SECRETS_MANAGER"
 #'               )
 #'             )
 #'           )
@@ -1470,7 +1472,8 @@ codepipeline_get_job_details <- function(jobId) {
 #'             environmentVariables = list(
 #'               list(
 #'                 name = "string",
-#'                 value = "string"
+#'                 value = "string",
+#'                 type = "PLAINTEXT"|"SECRETS_MANAGER"
 #'               )
 #'             )
 #'           )
@@ -4337,7 +4340,8 @@ codepipeline_update_action_type <- function(actionType) {
 #'             environmentVariables = list(
 #'               list(
 #'                 name = "string",
-#'                 value = "string"
+#'                 value = "string",
+#'                 type = "PLAINTEXT"|"SECRETS_MANAGER"
 #'               )
 #'             )
 #'           )
@@ -4589,7 +4593,8 @@ codepipeline_update_action_type <- function(actionType) {
 #'             environmentVariables = list(
 #'               list(
 #'                 name = "string",
-#'                 value = "string"
+#'                 value = "string",
+#'                 type = "PLAINTEXT"|"SECRETS_MANAGER"
 #'               )
 #'             )
 #'           )

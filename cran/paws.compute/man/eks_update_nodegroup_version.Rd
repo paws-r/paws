@@ -47,7 +47,9 @@ in the \emph{Amazon EKS User Guide}.}
 
 \item{launchTemplate}{An object representing a node group's launch template specification. You
 can only update a node group using a launch template if the node group
-was originally deployed with a launch template.}
+was originally deployed with a launch template. When updating, you must
+specify the same launch template ID or name that was used to create the
+node group.}
 
 \item{force}{Force the update if any \code{Pod} on the existing node group can't be
 drained due to a \code{Pod} disruption budget issue. If an update fails

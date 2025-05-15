@@ -2,17 +2,17 @@
 % Please edit documentation in R/licensemanager_operations.R
 \name{licensemanager_untag_resource}
 \alias{licensemanager_untag_resource}
-\title{Removes the specified tags from the specified license configuration}
+\title{Removes the specified tags from the specified resource}
 \usage{
 licensemanager_untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
-\item{ResourceArn}{[required] Amazon Resource Name (ARN) of the license configuration.}
+\item{ResourceArn}{[required] Amazon Resource Name (ARN) of the resource.}
 
 \item{TagKeys}{[required] Keys identifying the tags to remove.}
 }
 \description{
-Removes the specified tags from the specified license configuration.
+Removes the specified tags from the specified resource.
 
 See \url{https://www.paws-r-sdk.com/docs/licensemanager_untag_resource/} for full documentation.
 }

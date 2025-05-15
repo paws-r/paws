@@ -17,9 +17,13 @@ NULL
 #' 
 #'     -   [`get_enabled_control`][controltower_get_enabled_control]
 #' 
+#'     -   [`get_control_operation`][controltower_get_control_operation]
+#' 
 #'     -   [`list_control_operations`][controltower_list_control_operations]
 #' 
 #'     -   [`list_enabled_controls`][controltower_list_enabled_controls]
+#' 
+#'     -   [`reset_enabled_control`][controltower_reset_enabled_control]
 #' 
 #'     -   [`update_enabled_control`][controltower_update_enabled_control]
 #' 
@@ -162,7 +166,7 @@ NULL
 #' 
 #' For an overview of landing zone API operations, see [Amazon Web Services
 #' Control Tower supports landing zone
-#' APIs](https://docs.aws.amazon.com/controltower/latest/userguide/2023-all.html#landing-zone-apis).
+#' APIs](https://docs.aws.amazon.com/controltower/latest/userguide/#landing-zone-apis).
 #' The individual API operations for landing zones are detailed in this
 #' document, the [API reference
 #' manual](https://docs.aws.amazon.com/controltower/latest/APIReference/API_Operations.html),
@@ -402,7 +406,7 @@ controltower <- function(config = list(), credentials = list(), endpoint = NULL,
 
 .controltower$metadata <- list(
   service_name = "controltower",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.amazonaws.eu", global = FALSE)),
   service_id = "ControlTower",
   api_version = "2018-05-10",
   signing_name = "controltower",

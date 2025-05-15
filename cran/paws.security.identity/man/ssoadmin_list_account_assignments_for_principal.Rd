@@ -6,20 +6,31 @@
 Services accounts that the principal has access to}
 \usage{
 ssoadmin_list_account_assignments_for_principal(
-  Filter = NULL,
   InstanceArn,
-  MaxResults = NULL,
-  NextToken = NULL,
   PrincipalId,
-  PrincipalType
+  PrincipalType,
+  Filter = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
 )
 }
 \arguments{
+\item{InstanceArn}{[required] Specifies the ARN of the instance of IAM Identity Center that contains
+the principal.}
+
+\item{PrincipalId}{[required] Specifies the principal for which you want to retrieve the list of
+account assignments.}
+
+\item{PrincipalType}{[required] Specifies the type of the principal.}
+
 \item{Filter}{Specifies an Amazon Web Services account ID number. Results are filtered
 to only those that match this ID number.}
 
-\item{InstanceArn}{[required] Specifies the ARN of the instance of IAM Identity Center that contains
-the principal.}
+\item{NextToken}{Specifies that you want to receive the next page of results. Valid only
+if you received a \code{NextToken} response in the previous request. If you
+did, it indicates that more output is available. Set this parameter to
+the value provided by the previous call's \code{NextToken} response to
+request the next page of results.}
 
 \item{MaxResults}{Specifies the total number of results that you want included in each
 response. If additional items exist beyond the number you specify, the
@@ -29,20 +40,9 @@ next call to the operation to get the next set of results. Note that the
 service might return fewer results than the maximum even when there are
 more results available. You should check \code{NextToken} after every
 operation to ensure that you receive all of the results.}
-
-\item{NextToken}{Specifies that you want to receive the next page of results. Valid only
-if you received a \code{NextToken} response in the previous request. If you
-did, it indicates that more output is available. Set this parameter to
-the value provided by the previous call's \code{NextToken} response to
-request the next page of results.}
-
-\item{PrincipalId}{[required] Specifies the principal for which you want to retrieve the list of
-account assignments.}
-
-\item{PrincipalType}{[required] Specifies the type of the principal.}
 }
 \description{
-Retrieves a list of the IAM Identity Center associated Amazon Web Services accounts that the principal has access to.
+Retrieves a list of the IAM Identity Center associated Amazon Web Services accounts that the principal has access to. This action must be called from the management account containing your organization instance of IAM Identity Center. This action is not valid for account instances of IAM Identity Center.
 
 See \url{https://www.paws-r-sdk.com/docs/ssoadmin_list_account_assignments_for_principal/} for full documentation.
 }

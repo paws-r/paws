@@ -11,7 +11,7 @@ directoryservice_disable_directory_data_access(DirectoryId)
 \item{DirectoryId}{[required] The directory identifier.}
 }
 \description{
-Deactivates access to directory data via the Directory Service Data API for the specified directory.
+Deactivates access to directory data via the Directory Service Data API for the specified directory. For more information, see \href{https://docs.aws.amazon.com/directoryservicedata/latest/DirectoryServiceDataAPIReference/Welcome.html}{Directory Service Data API Reference}.
 
 See \url{https://www.paws-r-sdk.com/docs/directoryservice_disable_directory_data_access/} for full documentation.
 }

@@ -1,6 +1,6 @@
 Package: paws.networking
 Title: 'Amazon Web Services' Networking & Content Delivery Services
-Version: 0.9.0
+Version: 0.10.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
@@ -13,7 +13,8 @@ Description: Interface to 'Amazon Web Services' networking and content
     <https://aws.amazon.com/>.
 License: Apache License (>= 2.0)
 URL: https://github.com/paws-r/paws,
-    https://paws-r.r-universe.dev/paws.networking
+    https://paws-r.r-universe.dev/paws.networking,
+    https://www.paws-r-sdk.com
 BugReports: https://github.com/paws-r/paws/issues
 Imports: 
     paws.common (>= 0.8.0)

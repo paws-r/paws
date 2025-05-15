@@ -44,9 +44,11 @@ verifiedpermissions_batch_get_policy <- function(requests) {
 #'
 #' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store. Policies in this policy store will
 #' be used to make the authorization decisions for the input.
-#' @param entities Specifies the list of resources and principals and their associated
-#' attributes that Verified Permissions can examine when evaluating the
-#' policies.
+#' @param entities (Optional) Specifies the list of resources and principals and their
+#' associated attributes that Verified Permissions can examine when
+#' evaluating the policies. These additional entities and their attributes
+#' can be referenced and checked by conditional elements in the policies in
+#' the specified policy store.
 #' 
 #' You can include only principal and resource entities in this parameter;
 #' you can't include actions. You must specify actions in the schema.
@@ -99,8 +101,11 @@ verifiedpermissions_batch_is_authorized <- function(policyStoreId, entities = NU
 #' 
 #' Must be an access token. Verified Permissions returns an error if the
 #' `token_use` claim in the submitted token isn't `access`.
-#' @param entities Specifies the list of resources and their associated attributes that
-#' Verified Permissions can examine when evaluating the policies.
+#' @param entities (Optional) Specifies the list of resources and their associated
+#' attributes that Verified Permissions can examine when evaluating the
+#' policies. These additional entities and their attributes can be
+#' referenced and checked by conditional elements in the policies in the
+#' specified policy store.
 #' 
 #' You can't include principals in this parameter, only resource and action
 #' entities. This parameter can't include any entities of a type that
@@ -286,11 +291,16 @@ verifiedpermissions_create_policy <- function(clientToken = NULL, policyStoreId,
 #' to turn validation back on.
 #' @param description Descriptive text that you can provide to help with identification of the
 #' current policy store.
+#' @param deletionProtection Specifies whether the policy store can be deleted. If enabled, the
+#' policy store can't be deleted.
+#' 
+#' The default state is `DISABLED`.
+#' @param tags The list of key-value pairs to associate with the policy store.
 #'
 #' @keywords internal
 #'
 #' @rdname verifiedpermissions_create_policy_store
-verifiedpermissions_create_policy_store <- function(clientToken = NULL, validationSettings, description = NULL) {
+verifiedpermissions_create_policy_store <- function(clientToken = NULL, validationSettings, description = NULL, deletionProtection = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreatePolicyStore",
     http_method = "POST",
@@ -299,7 +309,7 @@ verifiedpermissions_create_policy_store <- function(clientToken = NULL, validati
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .verifiedpermissions$create_policy_store_input(clientToken = clientToken, validationSettings = validationSettings, description = description)
+  input <- .verifiedpermissions$create_policy_store_input(clientToken = clientToken, validationSettings = validationSettings, description = description, deletionProtection = deletionProtection, tags = tags)
   output <- .verifiedpermissions$create_policy_store_output()
   config <- get_config()
   svc <- .verifiedpermissions$service(config, op)
@@ -565,11 +575,18 @@ verifiedpermissions_get_policy <- function(policyStoreId, policyId) {
 #' See [https://www.paws-r-sdk.com/docs/verifiedpermissions_get_policy_store/](https://www.paws-r-sdk.com/docs/verifiedpermissions_get_policy_store/) for full documentation.
 #'
 #' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store that you want information about.
+#' @param tags Specifies whether to return the tags that are attached to the policy
+#' store. If this parameter is included in the API call, the tags are
+#' returned, otherwise they are not returned.
+#' 
+#' If this parameter is included in the API call but there are no tags
+#' attached to the policy store, the `tags` response parameter is omitted
+#' from the response.
 #'
 #' @keywords internal
 #'
 #' @rdname verifiedpermissions_get_policy_store
-verifiedpermissions_get_policy_store <- function(policyStoreId) {
+verifiedpermissions_get_policy_store <- function(policyStoreId, tags = NULL) {
   op <- new_operation(
     name = "GetPolicyStore",
     http_method = "POST",
@@ -578,7 +595,7 @@ verifiedpermissions_get_policy_store <- function(policyStoreId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .verifiedpermissions$get_policy_store_input(policyStoreId = policyStoreId)
+  input <- .verifiedpermissions$get_policy_store_input(policyStoreId = policyStoreId, tags = tags)
   output <- .verifiedpermissions$get_policy_store_output()
   config <- get_config()
   svc <- .verifiedpermissions$service(config, op)
@@ -672,9 +689,11 @@ verifiedpermissions_get_schema <- function(policyStoreId) {
 #' made.
 #' @param context Specifies additional context that can be used to make more granular
 #' authorization decisions.
-#' @param entities Specifies the list of resources and principals and their associated
-#' attributes that Verified Permissions can examine when evaluating the
-#' policies.
+#' @param entities (Optional) Specifies the list of resources and principals and their
+#' associated attributes that Verified Permissions can examine when
+#' evaluating the policies. These additional entities and their attributes
+#' can be referenced and checked by conditional elements in the policies in
+#' the specified policy store.
 #' 
 #' You can include only principal and resource entities in this parameter;
 #' you can't include actions. You must specify actions in the schema.
@@ -731,8 +750,11 @@ verifiedpermissions_is_authorized <- function(policyStoreId, principal = NULL, a
 #' example, is the principal allowed to perform the action on the resource?
 #' @param context Specifies additional context that can be used to make more granular
 #' authorization decisions.
-#' @param entities Specifies the list of resources and their associated attributes that
-#' Verified Permissions can examine when evaluating the policies.
+#' @param entities (Optional) Specifies the list of resources and their associated
+#' attributes that Verified Permissions can examine when evaluating the
+#' policies. These additional entities and their attributes can be
+#' referenced and checked by conditional elements in the policies in the
+#' specified policy store.
 #' 
 #' You can't include principals in this parameter, only resource and action
 #' entities. This parameter can't include any entities of a type that
@@ -971,6 +993,38 @@ verifiedpermissions_list_policy_templates <- function(policyStoreId, nextToken =
 }
 .verifiedpermissions$operations$list_policy_templates <- verifiedpermissions_list_policy_templates
 
+#' Returns the tags associated with the specified Amazon Verified
+#' Permissions resource
+#'
+#' @description
+#' Returns the tags associated with the specified Amazon Verified Permissions resource. In Verified Permissions, policy stores can be tagged.
+#'
+#' See [https://www.paws-r-sdk.com/docs/verifiedpermissions_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/verifiedpermissions_list_tags_for_resource/) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The ARN of the resource for which you want to view tags.
+#'
+#' @keywords internal
+#'
+#' @rdname verifiedpermissions_list_tags_for_resource
+verifiedpermissions_list_tags_for_resource <- function(resourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .verifiedpermissions$list_tags_for_resource_input(resourceArn = resourceArn)
+  output <- .verifiedpermissions$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .verifiedpermissions$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.verifiedpermissions$operations$list_tags_for_resource <- verifiedpermissions_list_tags_for_resource
+
 #' Creates or updates the policy schema in the specified policy store
 #'
 #' @description
@@ -1003,6 +1057,72 @@ verifiedpermissions_put_schema <- function(policyStoreId, definition) {
   return(response)
 }
 .verifiedpermissions$operations$put_schema <- verifiedpermissions_put_schema
+
+#' Assigns one or more tags (key-value pairs) to the specified Amazon
+#' Verified Permissions resource
+#'
+#' @description
+#' Assigns one or more tags (key-value pairs) to the specified Amazon Verified Permissions resource. Tags can help you organize and categorize your resources. You can also use them to scope user permissions by granting a user permission to access or change only resources with certain tag values. In Verified Permissions, policy stores can be tagged.
+#'
+#' See [https://www.paws-r-sdk.com/docs/verifiedpermissions_tag_resource/](https://www.paws-r-sdk.com/docs/verifiedpermissions_tag_resource/) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The ARN of the resource that you're adding tags to.
+#' @param tags &#91;required&#93; The list of key-value pairs to associate with the resource.
+#'
+#' @keywords internal
+#'
+#' @rdname verifiedpermissions_tag_resource
+verifiedpermissions_tag_resource <- function(resourceArn, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .verifiedpermissions$tag_resource_input(resourceArn = resourceArn, tags = tags)
+  output <- .verifiedpermissions$tag_resource_output()
+  config <- get_config()
+  svc <- .verifiedpermissions$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.verifiedpermissions$operations$tag_resource <- verifiedpermissions_tag_resource
+
+#' Removes one or more tags from the specified Amazon Verified Permissions
+#' resource
+#'
+#' @description
+#' Removes one or more tags from the specified Amazon Verified Permissions resource. In Verified Permissions, policy stores can be tagged.
+#'
+#' See [https://www.paws-r-sdk.com/docs/verifiedpermissions_untag_resource/](https://www.paws-r-sdk.com/docs/verifiedpermissions_untag_resource/) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The ARN of the resource from which you are removing tags.
+#' @param tagKeys &#91;required&#93; The list of tag keys to remove from the resource.
+#'
+#' @keywords internal
+#'
+#' @rdname verifiedpermissions_untag_resource
+verifiedpermissions_untag_resource <- function(resourceArn, tagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .verifiedpermissions$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
+  output <- .verifiedpermissions$untag_resource_output()
+  config <- get_config()
+  svc <- .verifiedpermissions$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.verifiedpermissions$operations$untag_resource <- verifiedpermissions_untag_resource
 
 #' Updates the specified identity source to use a new identity provider
 #' (IdP), or to change the mapping of identities from the IdP to a
@@ -1105,13 +1225,19 @@ verifiedpermissions_update_policy <- function(policyStoreId, policyId, definitio
 #' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store that you want to update
 #' @param validationSettings &#91;required&#93; A structure that defines the validation settings that want to enable for
 #' the policy store.
+#' @param deletionProtection Specifies whether the policy store can be deleted. If enabled, the
+#' policy store can't be deleted.
+#' 
+#' When you call
+#' [`update_policy_store`][verifiedpermissions_update_policy_store], this
+#' parameter is unchanged unless explicitly included in the call.
 #' @param description Descriptive text that you can provide to help with identification of the
 #' current policy store.
 #'
 #' @keywords internal
 #'
 #' @rdname verifiedpermissions_update_policy_store
-verifiedpermissions_update_policy_store <- function(policyStoreId, validationSettings, description = NULL) {
+verifiedpermissions_update_policy_store <- function(policyStoreId, validationSettings, deletionProtection = NULL, description = NULL) {
   op <- new_operation(
     name = "UpdatePolicyStore",
     http_method = "POST",
@@ -1120,7 +1246,7 @@ verifiedpermissions_update_policy_store <- function(policyStoreId, validationSet
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .verifiedpermissions$update_policy_store_input(policyStoreId = policyStoreId, validationSettings = validationSettings, description = description)
+  input <- .verifiedpermissions$update_policy_store_input(policyStoreId = policyStoreId, validationSettings = validationSettings, deletionProtection = deletionProtection, description = description)
   output <- .verifiedpermissions$update_policy_store_output()
   config <- get_config()
   svc <- .verifiedpermissions$service(config, op)

@@ -17,7 +17,8 @@ synthetics_update_canary(
   VisualReference = NULL,
   ArtifactS3Location = NULL,
   ArtifactConfig = NULL,
-  ProvisionedResourceCleanup = NULL
+  ProvisionedResourceCleanup = NULL,
+  DryRunId = NULL
 )
 }
 \arguments{
@@ -53,12 +54,22 @@ run, and when these runs are to stop.}
 \item{RunConfig}{A structure that contains the timeout value that is used for each
 individual run of the canary.
 
-The environment variables keys and values are not encrypted. Do not
-store sensitive information in this field.}
+Environment variable keys and values are encrypted at rest using Amazon
+Web Services owned KMS keys. However, the environment variables are not
+encrypted on the client side. Do not store sensitive information in
+them.}
 
-\item{SuccessRetentionPeriodInDays}{The number of days to retain data about successful runs of this canary.}
+\item{SuccessRetentionPeriodInDays}{The number of days to retain data about successful runs of this canary.
 
-\item{FailureRetentionPeriodInDays}{The number of days to retain data about failed runs of this canary.}
+This setting affects the range of information returned by
+\code{\link[=synthetics_get_canary_runs]{get_canary_runs}}, as well as the range of
+information displayed in the Synthetics console.}
+
+\item{FailureRetentionPeriodInDays}{The number of days to retain data about failed runs of this canary.
+
+This setting affects the range of information returned by
+\code{\link[=synthetics_get_canary_runs]{get_canary_runs}}, as well as the range of
+information displayed in the Synthetics console.}
 
 \item{VpcConfig}{If this canary is to test an endpoint in a VPC, this structure contains
 information about the subnet and security groups of the VPC endpoint.
@@ -89,6 +100,13 @@ If the value of this parameter is \code{OFF}, then the value of the
 \code{DeleteLambda} parameter of the
 \code{\link[=synthetics_delete_canary]{delete_canary}} operation determines whether
 the Lambda functions and layers will be deleted.}
+
+\item{DryRunId}{Update the existing canary using the updated configurations from the
+DryRun associated with the DryRunId.
+
+When you use the \code{dryRunId} field when updating a canary, the only other
+field you can provide is the \code{Schedule}. Adding any other field will
+thrown an exception.}
 }
 \description{
 Updates the configuration of a canary that has already been created.

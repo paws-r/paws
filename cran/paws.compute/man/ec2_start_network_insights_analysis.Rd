@@ -8,6 +8,7 @@ ec2_start_network_insights_analysis(
   NetworkInsightsPathId,
   AdditionalAccounts = NULL,
   FilterInArns = NULL,
+  FilterOutArns = NULL,
   DryRun = NULL,
   TagSpecifications = NULL,
   ClientToken
@@ -20,6 +21,9 @@ ec2_start_network_insights_analysis(
 
 \item{FilterInArns}{The Amazon Resource Names (ARN) of the resources that the path must
 traverse.}
+
+\item{FilterOutArns}{The Amazon Resource Names (ARN) of the resources that the path will
+ignore.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

@@ -23,28 +23,18 @@ cognitoidentityprovider_admin_initiate_auth(
 
 \item{AuthFlow}{[required] The authentication flow that you want to initiate. Each \code{AuthFlow} has
 linked \code{AuthParameters} that you must submit. The following are some
-example flows and their parameters.
-\itemize{
-\item \code{USER_AUTH}: Request a preferred authentication type or review
-available authentication types. From the offered authentication
-types, select one in a challenge response and then authenticate with
-that method in an additional challenge response.
-\item \code{REFRESH_TOKEN_AUTH}: Receive new ID and access tokens when you pass
-a \code{REFRESH_TOKEN} parameter with a valid refresh token as the value.
-\item \code{USER_SRP_AUTH}: Receive secure remote password (SRP) variables for
-the next challenge, \code{PASSWORD_VERIFIER}, when you pass \code{USERNAME}
-and \code{SRP_A} parameters..
-\item \code{ADMIN_USER_PASSWORD_AUTH}: Receive new tokens or the next
-challenge, for example \code{SOFTWARE_TOKEN_MFA}, when you pass
-\code{USERNAME} and \code{PASSWORD} parameters.
-}
-
-\emph{All flows}
+example flows.
 
 \strong{USER_AUTH}
 
-The entry point for sign-in with passwords, one-time passwords, and
-WebAuthN authenticators.
+The entry point for \href{https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-selection-sdk.html#authentication-flows-selection-choice}{choice-based authentication}
+with passwords, one-time passwords, and WebAuthn authenticators. Request
+a preferred authentication type or review available authentication
+types. From the offered authentication types, select one in a challenge
+response and then authenticate with that method in an additional
+challenge response. To activate this setting, your user pool must be in
+the \href{https://docs.aws.amazon.com/cognito/latest/developerguide/feature-plans-features-essentials.html}{Essentials tier}
+or higher.
 
 \strong{USER_SRP_AUTH}
 
@@ -53,8 +43,9 @@ protocol. For more information, see \href{https://docs.aws.amazon.com/cognito/la
 
 \strong{REFRESH_TOKEN_AUTH and REFRESH_TOKEN}
 
-Provide a valid refresh token and receive new ID and access tokens. For
-more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-the-refresh-token.html}{Using the refresh token}.
+Receive new ID and access tokens when you pass a \code{REFRESH_TOKEN}
+parameter with a valid refresh token as the value. For more information,
+see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-the-refresh-token.html}{Using the refresh token}.
 
 \strong{CUSTOM_AUTH}
 
@@ -63,16 +54,13 @@ Custom authentication with Lambda triggers. For more information, see
 
 \strong{ADMIN_USER_PASSWORD_AUTH}
 
-Username-password authentication with the password sent directly in the
-request. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/authentication.html#Built-in-authentication-flow-and-challenges}{Admin authentication flow}.
-
-\code{USER_PASSWORD_AUTH} is a flow type of
-\code{\link[=cognitoidentityprovider_initiate_auth]{initiate_auth}} and isn't valid
-for AdminInitiateAuth.}
+Server-side username-password authentication with the password sent
+directly in the request. For more information about client-side and
+server-side authentication, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html}{SDK authorization models}.}
 
 \item{AuthParameters}{The authentication parameters. These are inputs corresponding to the
 \code{AuthFlow} that you're invoking. The required values depend on the value
-of \code{AuthFlow}:
+of \code{AuthFlow} for example:
 \itemize{
 \item For \code{USER_AUTH}: \code{USERNAME} (required), \code{PREFERRED_CHALLENGE}. If
 you don't provide a value for \code{PREFERRED_CHALLENGE}, Amazon Cognito
@@ -130,7 +118,7 @@ the ClientMetadata value as input:
 \item Custom SMS sender
 }
 
-For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Using Lambda triggers}
 in the \emph{Amazon Cognito Developer Guide}.
 
 When you use the \code{ClientMetadata} parameter, note that Amazon Cognito
@@ -145,10 +133,13 @@ the \code{ClientMetadata} parameter serves no purpose.
 in this parameter.
 }}
 
-\item{AnalyticsMetadata}{The analytics metadata for collecting Amazon Pinpoint metrics.}
+\item{AnalyticsMetadata}{Information that supports analytics outcomes with Amazon Pinpoint,
+including the user's endpoint ID. The endpoint ID is a destination for
+Amazon Pinpoint push notifications, for example a device identifier,
+email address, or phone number.}
 
-\item{ContextData}{Contextual data about your user session, such as the device fingerprint,
-IP address, or location. Amazon Cognito advanced security evaluates the
+\item{ContextData}{Contextual data about your user session like the device fingerprint, IP
+address, or location. Amazon Cognito threat protection evaluates the
 risk of an authentication event based on the context that your app
 generates and passes to Amazon Cognito when it makes API requests.
 

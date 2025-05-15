@@ -48,21 +48,24 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-IAM Identity Center (successor to Single Sign-On) helps you securely
-create, or connect, your workforce identities and manage their access
-centrally across Amazon Web Services accounts and applications. IAM
-Identity Center is the recommended approach for workforce authentication
-and authorization in Amazon Web Services, for organizations of any size
-and type.
+IAM Identity Center is the Amazon Web Services solution for connecting
+your workforce users to Amazon Web Services managed applications and
+other Amazon Web Services resources. You can connect your existing
+identity provider and synchronize users and groups from your directory,
+or create and manage your users directly in IAM Identity Center. You can
+then use IAM Identity Center for either or both of the following:
+\itemize{
+\item User access to applications
+\item User access to Amazon Web Services accounts
+}
+
+This guide provides information about single sign-on operations that you
+can use for access to applications and Amazon Web Services accounts. For
+information about IAM Identity Center features, see the \href{https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html}{IAM Identity Center User Guide}.
 
 IAM Identity Center uses the \code{sso} and \code{identitystore} API namespaces.
 
-This reference guide provides information on single sign-on operations
-which could be used for access management of Amazon Web Services
-accounts. For information about IAM Identity Center features, see the
-\href{https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html}{IAM Identity Center User Guide}.
-
-Many operations in the IAM Identity Center APIs rely on identifiers for
+Many API operations for IAM Identity Center rely on identifiers for
 users and groups, known as principals. For more information about how to
 work with principals and principal IDs in IAM Identity Center, see the
 \href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/welcome.html}{Identity Store API Reference}.
@@ -116,7 +119,7 @@ including how to download and install them, see \href{https://aws.amazon.com/dev
 \link[=ssoadmin_attach_customer_managed_policy_reference_to_permission_set]{attach_customer_managed_policy_reference_to_permission_set} \tab Attaches the specified customer managed policy to the specified PermissionSet\cr
 \link[=ssoadmin_attach_managed_policy_to_permission_set]{attach_managed_policy_to_permission_set} \tab Attaches an Amazon Web Services managed policy ARN to a permission set\cr
 \link[=ssoadmin_create_account_assignment]{create_account_assignment} \tab Assigns access to a principal for a specified Amazon Web Services account using a specified permission set\cr
-\link[=ssoadmin_create_application]{create_application} \tab Creates an application in IAM Identity Center for the given application provider\cr
+\link[=ssoadmin_create_application]{create_application} \tab Creates an OAuth 2\cr
 \link[=ssoadmin_create_application_assignment]{create_application_assignment} \tab Grant application access to a user or group\cr
 \link[=ssoadmin_create_instance]{create_instance} \tab Creates an instance of IAM Identity Center for a standalone Amazon Web Services account that is not managed by Organizations or a member Amazon Web Services account in an organization\cr
 \link[=ssoadmin_create_instance_access_control_attribute_configuration]{create_instance_access_control_attribute_configuration} \tab Enables the attributes-based access control (ABAC) feature for the specified IAM Identity Center instance\cr
@@ -176,7 +179,7 @@ including how to download and install them, see \href{https://aws.amazon.com/dev
 \link[=ssoadmin_put_application_access_scope]{put_application_access_scope} \tab Adds or updates the list of authorized targets for an IAM Identity Center access scope for an application\cr
 \link[=ssoadmin_put_application_assignment_configuration]{put_application_assignment_configuration} \tab Configure how users gain access to an application\cr
 \link[=ssoadmin_put_application_authentication_method]{put_application_authentication_method} \tab Adds or updates an authentication method for an application\cr
-\link[=ssoadmin_put_application_grant]{put_application_grant} \tab Adds a grant to an application\cr
+\link[=ssoadmin_put_application_grant]{put_application_grant} \tab Creates a configuration for an application to use grants\cr
 \link[=ssoadmin_put_inline_policy_to_permission_set]{put_inline_policy_to_permission_set} \tab Attaches an inline policy to a permission set\cr
 \link[=ssoadmin_put_permissions_boundary_to_permission_set]{put_permissions_boundary_to_permission_set} \tab Attaches an Amazon Web Services managed or customer managed policy to the specified PermissionSet as a permissions boundary\cr
 \link[=ssoadmin_tag_resource]{tag_resource} \tab Associates a set of tags with a specified resource\cr

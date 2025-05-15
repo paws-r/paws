@@ -641,7 +641,7 @@ NULL
 
 .athena$start_calculation_execution_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SessionId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CalculationConfiguration = structure(list(CodeBlock = structure(logical(0), tags = list(type = "string"))), tags = list(deprecated = TRUE, deprecatedMessage = "Kepler Post GA Tasks : https://sim.amazon.com/issues/ATHENA-39828", type = "structure")), CodeBlock = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(SessionId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CalculationConfiguration = structure(list(CodeBlock = structure(logical(0), tags = list(type = "string"))), tags = list(deprecated = TRUE, deprecatedMessage = "Structure is deprecated.", type = "structure")), CodeBlock = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

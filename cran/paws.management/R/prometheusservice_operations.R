@@ -133,7 +133,8 @@ prometheusservice_create_rule_groups_namespace <- function(clientToken = NULL, d
 #' @param clientToken (Optional) A unique, case-sensitive identifier that you can provide to
 #' ensure the idempotency of the request.
 #' @param destination &#91;required&#93; The Amazon Managed Service for Prometheus workspace to send metrics to.
-#' @param roleConfiguration The scraper role configuration for the workspace.
+#' @param roleConfiguration Use this structure to enable cross-account access, so that you can use a
+#' target account to access Prometheus metrics from source accounts.
 #' @param scrapeConfiguration &#91;required&#93; The configuration file to use in the new scraper. For more information,
 #' see [Scraper
 #' configuration](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html#AMP-collector-configuration)
@@ -534,6 +535,40 @@ prometheusservice_describe_workspace <- function(workspaceId) {
   return(response)
 }
 .prometheusservice$operations$describe_workspace <- prometheusservice_describe_workspace
+
+#' Use this operation to return information about the configuration of a
+#' workspace
+#'
+#' @description
+#' Use this operation to return information about the configuration of a workspace. The configuration details returned include workspace configuration status, label set limits, and retention period.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_describe_workspace_configuration/](https://www.paws-r-sdk.com/docs/prometheusservice_describe_workspace_configuration/) for full documentation.
+#'
+#' @param workspaceId &#91;required&#93; The ID of the workspace that you want to retrieve information for. To
+#' find the IDs of your workspaces, use the
+#' [`list_workspaces`][prometheusservice_list_workspaces] operation.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_describe_workspace_configuration
+prometheusservice_describe_workspace_configuration <- function(workspaceId) {
+  op <- new_operation(
+    name = "DescribeWorkspaceConfiguration",
+    http_method = "GET",
+    http_path = "/workspaces/{workspaceId}/configuration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .prometheusservice$describe_workspace_configuration_input(workspaceId = workspaceId)
+  output <- .prometheusservice$describe_workspace_configuration_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$describe_workspace_configuration <- prometheusservice_describe_workspace_configuration
 
 #' The GetDefaultScraperConfiguration operation returns the default scraper
 #' configuration used when Amazon EKS creates a scraper for you
@@ -937,7 +972,8 @@ prometheusservice_update_logging_configuration <- function(clientToken = NULL, l
 #' the request. Case-sensitive.
 #' @param destination The new Amazon Managed Service for Prometheus workspace to send metrics
 #' to.
-#' @param roleConfiguration The scraper role configuration for the workspace.
+#' @param roleConfiguration Use this structure to enable cross-account access, so that you can use a
+#' target account to access Prometheus metrics from source accounts.
 #' @param scrapeConfiguration Contains the base-64 encoded YAML configuration for the scraper.
 #' 
 #' For more information about configuring a scraper, see [Using an Amazon
@@ -1004,3 +1040,44 @@ prometheusservice_update_workspace_alias <- function(alias = NULL, clientToken =
   return(response)
 }
 .prometheusservice$operations$update_workspace_alias <- prometheusservice_update_workspace_alias
+
+#' Use this operation to create or update the label sets, label set limits,
+#' and retention period of a workspace
+#'
+#' @description
+#' Use this operation to create or update the label sets, label set limits, and retention period of a workspace.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_update_workspace_configuration/](https://www.paws-r-sdk.com/docs/prometheusservice_update_workspace_configuration/) for full documentation.
+#'
+#' @param clientToken You can include a token in your operation to make it an idempotent
+#' opeartion.
+#' @param limitsPerLabelSet This is an array of structures, where each structure defines a label set
+#' for the workspace, and defines the ingestion limit for active time
+#' series for each of those label sets. Each label name in a label set must
+#' be unique.
+#' @param retentionPeriodInDays Specifies how many days that metrics will be retained in the workspace.
+#' @param workspaceId &#91;required&#93; The ID of the workspace that you want to update. To find the IDs of your
+#' workspaces, use the
+#' [`list_workspaces`][prometheusservice_list_workspaces] operation.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_update_workspace_configuration
+prometheusservice_update_workspace_configuration <- function(clientToken = NULL, limitsPerLabelSet = NULL, retentionPeriodInDays = NULL, workspaceId) {
+  op <- new_operation(
+    name = "UpdateWorkspaceConfiguration",
+    http_method = "PATCH",
+    http_path = "/workspaces/{workspaceId}/configuration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .prometheusservice$update_workspace_configuration_input(clientToken = clientToken, limitsPerLabelSet = limitsPerLabelSet, retentionPeriodInDays = retentionPeriodInDays, workspaceId = workspaceId)
+  output <- .prometheusservice$update_workspace_configuration_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$update_workspace_configuration <- prometheusservice_update_workspace_configuration

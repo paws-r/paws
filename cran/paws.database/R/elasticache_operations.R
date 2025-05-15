@@ -548,12 +548,12 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' @param LogDeliveryConfigurations Specifies the destination, format and type of the logs.
 #' @param TransitEncryptionEnabled A flag that enables in-transit encryption when set to true.
 #' @param NetworkType Must be either `ipv4` | `ipv6` | `dual_stack`. IPv6 is supported for
-#' workloads using Valkey 7.2 and above, Redis OSS engine version 6.2 and
-#' above or Memcached engine version 1.6.6 and above on all instances built
+#' workloads using Valkey 7.2 and above, Redis OSS engine version 6.2 to
+#' 7.1 and Memcached engine version 1.6.6 and above on all instances built
 #' on the [Nitro system](https://aws.amazon.com/ec2/nitro/).
 #' @param IpDiscovery The network type you choose when modifying a cluster, either `ipv4` |
 #' `ipv6`. IPv6 is supported for workloads using Valkey 7.2 and above,
-#' Redis OSS engine version 6.2 and above or Memcached engine version 1.6.6
+#' Redis OSS engine version 6.2 to 7.1 and Memcached engine version 1.6.6
 #' and above on all instances built on the [Nitro
 #' system](https://aws.amazon.com/ec2/nitro/).
 #'
@@ -590,9 +590,9 @@ elasticache_create_cache_cluster <- function(CacheClusterId, ReplicationGroupId 
 #' @param CacheParameterGroupFamily &#91;required&#93; The name of the cache parameter group family that the cache parameter
 #' group can be used with.
 #' 
-#' Valid values are: `memcached1.4` | `memcached1.5` | `memcached1.6` |
-#' `redis2.6` | `redis2.8` | `redis3.2` | `redis4.0` | `redis5.0` |
-#' `redis6.x` | `redis7`
+#' Valid values are: `valkey8` | `valkey7` | `memcached1.4` |
+#' `memcached1.5` | `memcached1.6` | `redis2.6` | `redis2.8` | `redis3.2` |
+#' `redis4.0` | `redis5.0` | `redis6.x` | `redis7`
 #' @param Description &#91;required&#93; A user-specified description for the cache parameter group.
 #' @param Tags A list of tags to be added to this resource. A tag is a key-value pair.
 #' A tag key must be accompanied by a tag value, although null is accepted.
@@ -940,7 +940,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' -   The configuration variables `appendonly` and `appendfsync` are not
 #'     supported on Valkey, or on Redis OSS version 2.8.22 and later.
 #' @param Engine The name of the cache engine to be used for the clusters in this
-#' replication group. The value must be set to `Redis`.
+#' replication group. The value must be set to `valkey` or `redis`.
 #' @param EngineVersion The version number of the cache engine to be used for the clusters in
 #' this replication group. To view the supported cache engine versions, use
 #' the
@@ -1090,9 +1090,10 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' you create the replication group.
 #' 
 #' **Required:** Only available when creating a replication group in an
-#' Amazon VPC using Redis OSS version `3.2.6`, `4.x` or later.
+#' Amazon VPC using Valkey 7.2 and later, Redis OSS version `3.2.6`, or
+#' Redis OSS `4.x` and later.
 #' 
-#' Default: `false`
+#' Default: `true` when using Valkey, `false` when using Redis OSS
 #' @param KmsKeyId The ID of the KMS key used to encrypt the disk in the cluster.
 #' @param UserGroupIds The user group to associate with the replication group.
 #' @param LogDeliveryConfigurations Specifies the destination, format and type of the logs.
@@ -1101,13 +1102,13 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' using r6gd nodes. For more information, see [Data
 #' tiering](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/data-tiering.html).
 #' @param NetworkType Must be either `ipv4` | `ipv6` | `dual_stack`. IPv6 is supported for
-#' workloads using Valkey 7.2 and above, Redis OSS engine version 6.2 and
-#' above or Memcached engine version 1.6.6 and above on all instances built
+#' workloads using Valkey 7.2 and above, Redis OSS engine version 6.2 to
+#' 7.1 and Memcached engine version 1.6.6 and above on all instances built
 #' on the [Nitro system](https://aws.amazon.com/ec2/nitro/).
 #' @param IpDiscovery The network type you choose when creating a replication group, either
 #' `ipv4` | `ipv6`. IPv6 is supported for workloads using Valkey 7.2 and
-#' above, Redis OSS engine version 6.2 and above or Memcached engine
-#' version 1.6.6 and above on all instances built on the [Nitro
+#' above, Redis OSS engine version 6.2 to 7.1 or Memcached engine version
+#' 1.6.6 and above on all instances built on the [Nitro
 #' system](https://aws.amazon.com/ec2/nitro/).
 #' @param TransitEncryptionMode A setting that allows you to migrate your clients to use in-transit
 #' encryption, with no downtime.
@@ -1304,13 +1305,13 @@ elasticache_create_snapshot <- function(ReplicationGroupId = NULL, CacheClusterI
 #' For Valkey engine version 7
 #'
 #' @description
-#' For Valkey engine version 7.2 onwards and Redis OSS 6.0 and onwards: Creates a user. For more information, see [Using Role Based Access Control (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Clusters.RBAC.html).
+#' For Valkey engine version 7.2 onwards and Redis OSS 6.0 to 7.1: Creates a user. For more information, see [Using Role Based Access Control (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Clusters.RBAC.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/elasticache_create_user/](https://www.paws-r-sdk.com/docs/elasticache_create_user/) for full documentation.
 #'
 #' @param UserId &#91;required&#93; The ID of the user.
 #' @param UserName &#91;required&#93; The username of the user.
-#' @param Engine &#91;required&#93; The current supported value is Redis.
+#' @param Engine &#91;required&#93; The options are valkey or redis.
 #' @param Passwords Passwords used for this user. You can create up to two passwords for
 #' each user.
 #' @param AccessString &#91;required&#93; Access permissions string used for this user.
@@ -1344,12 +1345,12 @@ elasticache_create_user <- function(UserId, UserName, Engine, Passwords = NULL, 
 #' For Valkey engine version 7
 #'
 #' @description
-#' For Valkey engine version 7.2 onwards and Redis OSS 6.0 onwards: Creates a user group. For more information, see [Using Role Based Access Control (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Clusters.RBAC.html)
+#' For Valkey engine version 7.2 onwards and Redis OSS 6.0 to 7.1: Creates a user group. For more information, see [Using Role Based Access Control (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Clusters.RBAC.html)
 #'
 #' See [https://www.paws-r-sdk.com/docs/elasticache_create_user_group/](https://www.paws-r-sdk.com/docs/elasticache_create_user_group/) for full documentation.
 #'
 #' @param UserGroupId &#91;required&#93; The ID of the user group.
-#' @param Engine &#91;required&#93; The current supported value is Redis user.
+#' @param Engine &#91;required&#93; Sets the engine listed in a user group. The options are valkey or redis.
 #' @param UserIds The list of user IDs that belong to the user group.
 #' @param Tags A list of tags to be added to this resource. A tag is a key-value pair.
 #' A tag key must be accompanied by a tag value, although null is accepted.
@@ -1452,9 +1453,9 @@ elasticache_decrease_node_groups_in_global_replication_group <- function(GlobalR
 #' -   Valkey or Redis OSS (cluster mode enabled): 0 (though you will not
 #'     be able to failover to a replica if your primary node fails)
 #' @param ReplicaConfiguration A list of `ConfigureShard` objects that can be used to configure each
-#' shard in a Valkey or Redis OSS (cluster mode enabled) replication group.
-#' The `ConfigureShard` has three members: `NewReplicaCount`,
-#' `NodeGroupId`, and `PreferredAvailabilityZones`.
+#' shard in a Valkey or Redis OSS replication group. The `ConfigureShard`
+#' has three members: `NewReplicaCount`, `NodeGroupId`, and
+#' `PreferredAvailabilityZones`.
 #' @param ReplicasToRemove A list of the node ids to remove from the replication group or node
 #' group (shard).
 #' @param ApplyImmediately &#91;required&#93; If `True`, the number of replica nodes is decreased immediately.
@@ -3435,8 +3436,8 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' Valid values: `true` | `false`
 #' 
 #' Default: `false`
-#' @param Engine Modifies the engine listed in a cluster message. The options are redis,
-#' memcached or valkey.
+#' @param Engine The engine type used by the cache cluster. The options are valkey,
+#' memcached or redis.
 #' @param EngineVersion The upgraded version of the cache engine to be run on the cache nodes.
 #' 
 #' **Important:** You can upgrade to a newer engine version (see [Selecting
@@ -3486,14 +3487,16 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' @param LogDeliveryConfigurations Specifies the destination, format and type of the logs.
 #' @param IpDiscovery The network type you choose when modifying a cluster, either `ipv4` |
 #' `ipv6`. IPv6 is supported for workloads using Valkey 7.2 and above,
-#' Redis OSS engine version 6.2 and above or Memcached engine version 1.6.6
+#' Redis OSS engine version 6.2 to 7.1 or Memcached engine version 1.6.6
 #' and above on all instances built on the [Nitro
 #' system](https://aws.amazon.com/ec2/nitro/).
+#' @param ScaleConfig Configures horizontal or vertical scaling for Memcached clusters,
+#' specifying the scaling percentage and interval.
 #'
 #' @keywords internal
 #'
 #' @rdname elasticache_modify_cache_cluster
-elasticache_modify_cache_cluster <- function(CacheClusterId, NumCacheNodes = NULL, CacheNodeIdsToRemove = NULL, AZMode = NULL, NewAvailabilityZones = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL, CacheParameterGroupName = NULL, NotificationTopicStatus = NULL, ApplyImmediately = NULL, Engine = NULL, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, CacheNodeType = NULL, AuthToken = NULL, AuthTokenUpdateStrategy = NULL, LogDeliveryConfigurations = NULL, IpDiscovery = NULL) {
+elasticache_modify_cache_cluster <- function(CacheClusterId, NumCacheNodes = NULL, CacheNodeIdsToRemove = NULL, AZMode = NULL, NewAvailabilityZones = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL, CacheParameterGroupName = NULL, NotificationTopicStatus = NULL, ApplyImmediately = NULL, Engine = NULL, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, CacheNodeType = NULL, AuthToken = NULL, AuthTokenUpdateStrategy = NULL, LogDeliveryConfigurations = NULL, IpDiscovery = NULL, ScaleConfig = NULL) {
   op <- new_operation(
     name = "ModifyCacheCluster",
     http_method = "POST",
@@ -3502,7 +3505,7 @@ elasticache_modify_cache_cluster <- function(CacheClusterId, NumCacheNodes = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .elasticache$modify_cache_cluster_input(CacheClusterId = CacheClusterId, NumCacheNodes = NumCacheNodes, CacheNodeIdsToRemove = CacheNodeIdsToRemove, AZMode = AZMode, NewAvailabilityZones = NewAvailabilityZones, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, CacheParameterGroupName = CacheParameterGroupName, NotificationTopicStatus = NotificationTopicStatus, ApplyImmediately = ApplyImmediately, Engine = Engine, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, CacheNodeType = CacheNodeType, AuthToken = AuthToken, AuthTokenUpdateStrategy = AuthTokenUpdateStrategy, LogDeliveryConfigurations = LogDeliveryConfigurations, IpDiscovery = IpDiscovery)
+  input <- .elasticache$modify_cache_cluster_input(CacheClusterId = CacheClusterId, NumCacheNodes = NumCacheNodes, CacheNodeIdsToRemove = CacheNodeIdsToRemove, AZMode = AZMode, NewAvailabilityZones = NewAvailabilityZones, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, CacheParameterGroupName = CacheParameterGroupName, NotificationTopicStatus = NotificationTopicStatus, ApplyImmediately = ApplyImmediately, Engine = Engine, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, CacheNodeType = CacheNodeType, AuthToken = AuthToken, AuthTokenUpdateStrategy = AuthTokenUpdateStrategy, LogDeliveryConfigurations = LogDeliveryConfigurations, IpDiscovery = IpDiscovery, ScaleConfig = ScaleConfig)
   output <- .elasticache$modify_cache_cluster_output()
   config <- get_config()
   svc <- .elasticache$service(config, op)
@@ -3780,7 +3783,7 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #' @param LogDeliveryConfigurations Specifies the destination, format and type of the logs.
 #' @param IpDiscovery The network type you choose when modifying a cluster, either `ipv4` |
 #' `ipv6`. IPv6 is supported for workloads using Valkey 7.2 and above,
-#' Redis OSS engine version 6.2 and above or Memcached engine version 1.6.6
+#' Redis OSS engine version 6.2 to 7.1 and Memcached engine version 1.6.6
 #' and above on all instances built on the [Nitro
 #' system](https://aws.amazon.com/ec2/nitro/).
 #' @param TransitEncryptionEnabled A flag that enables in-transit encryption when set to true. If you are
@@ -3961,7 +3964,7 @@ elasticache_modify_serverless_cache <- function(ServerlessCacheName, Description
 #' @param Passwords The passwords belonging to the user. You are allowed up to two.
 #' @param NoPasswordRequired Indicates no password is required for the user.
 #' @param AuthenticationMode Specifies how to authenticate the user.
-#' @param Engine The engine for a specific user.
+#' @param Engine Modifies the engine listed for a user. The options are valkey or redis.
 #'
 #' @keywords internal
 #'
@@ -3995,7 +3998,8 @@ elasticache_modify_user <- function(UserId, AccessString = NULL, AppendAccessStr
 #' @param UserGroupId &#91;required&#93; The ID of the user group.
 #' @param UserIdsToAdd The list of user IDs to add to the user group.
 #' @param UserIdsToRemove The list of user IDs to remove from the user group.
-#' @param Engine The engine for a user group.
+#' @param Engine Modifies the engine listed in a user group. The options are valkey or
+#' redis.
 #'
 #' @keywords internal
 #'

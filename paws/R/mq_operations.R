@@ -485,6 +485,55 @@ mq_delete_broker <- function(BrokerId) {
 }
 .mq$operations$delete_broker <- mq_delete_broker
 
+#' Deletes the specified configuration
+#'
+#' @description
+#' Deletes the specified configuration.
+#'
+#' @usage
+#' mq_delete_configuration(ConfigurationId)
+#'
+#' @param ConfigurationId &#91;required&#93; The unique ID that Amazon MQ generates for the configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConfigurationId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_configuration(
+#'   ConfigurationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mq_delete_configuration
+#'
+#' @aliases mq_delete_configuration
+mq_delete_configuration <- function(ConfigurationId) {
+  op <- new_operation(
+    name = "DeleteConfiguration",
+    http_method = "DELETE",
+    http_path = "/v1/configurations/{configuration-id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .mq$delete_configuration_input(ConfigurationId = ConfigurationId)
+  output <- .mq$delete_configuration_output()
+  config <- get_config()
+  svc <- .mq$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mq$operations$delete_configuration <- mq_delete_configuration
+
 #' Removes a tag from a resource
 #'
 #' @description

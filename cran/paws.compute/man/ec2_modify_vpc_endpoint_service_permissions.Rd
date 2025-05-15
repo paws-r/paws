@@ -27,7 +27,7 @@ principals, specify an asterisk (*).}
 revoked for principals in this list.}
 }
 \description{
-Modifies the permissions for your VPC endpoint service. You can add or remove permissions for service consumers (Amazon Web Services accounts, users, and IAM roles) to connect to your endpoint service.
+Modifies the permissions for your VPC endpoint service. You can add or remove permissions for service consumers (Amazon Web Services accounts, users, and IAM roles) to connect to your endpoint service. Principal ARNs with path components aren't supported.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_modify_vpc_endpoint_service_permissions/} for full documentation.
 }

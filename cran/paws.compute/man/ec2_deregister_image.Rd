@@ -15,7 +15,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Deregisters the specified AMI. After you deregister an AMI, it can't be used to launch new instances.
+Deregisters the specified AMI. A deregistered AMI can't be used to launch new instances.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_deregister_image/} for full documentation.
 }

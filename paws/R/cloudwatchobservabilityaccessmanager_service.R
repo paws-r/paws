@@ -10,8 +10,10 @@ NULL
 #' *CloudWatch cross-account observability*. With CloudWatch cross-account
 #' observability, you can monitor and troubleshoot applications that span
 #' multiple accounts within a Region. Seamlessly search, visualize, and
-#' analyze your metrics, logs, traces, and Application Insights
-#' applications in any of the linked accounts without account boundaries.
+#' analyze your metrics, logs, traces, Application Signals services,
+#' service level objectives (SLOs), Application Insights applications, and
+#' internet monitors in any of the linked accounts without account
+#' boundaries.
 #' 
 #' Set up one or more Amazon Web Services accounts as *monitoring accounts*
 #' and link them with multiple *source accounts*. A monitoring account is a
@@ -21,8 +23,14 @@ NULL
 #' data for the resources that reside in it. Source accounts share their
 #' observability data with the monitoring account. The shared observability
 #' data can include metrics in Amazon CloudWatch, logs in Amazon CloudWatch
-#' Logs, traces in X-Ray, and applications in Amazon CloudWatch Application
-#' Insights.
+#' Logs, traces in X-Ray, Application Signals services, service level
+#' objectives (SLOs), applications in Amazon CloudWatch Application
+#' Insights, and internet monitors in CloudWatch Internet Monitor.
+#' 
+#' When you set up a link, you can choose to share the metrics from all
+#' namespaces with the monitoring account, or filter to a subset of
+#' namespaces. And for CloudWatch Logs, you can choose to share all log
+#' groups with the monitoring account, or filter to a subset of log groups.
 #'
 #' @param
 #' config
@@ -153,7 +161,7 @@ cloudwatchobservabilityaccessmanager <- function(config = list(), credentials = 
 
 .cloudwatchobservabilityaccessmanager$metadata <- list(
   service_name = "cloudwatchobservabilityaccessmanager",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "oam.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "oam.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "oam.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "oam.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "oam.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "oam.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "oam.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "oam.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "oam.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "oam.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "oam.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "oam.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "oam.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "oam.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "oam.{region}.amazonaws.eu", global = FALSE)),
   service_id = "OAM",
   api_version = "2022-06-10",
   signing_name = "oam",

@@ -6,15 +6,13 @@
 Center}
 \usage{
 ssoadmin_list_applications(
-  Filter = NULL,
   InstanceArn,
   MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  Filter = NULL
 )
 }
 \arguments{
-\item{Filter}{Filters response results.}
-
 \item{InstanceArn}{[required] The ARN of the IAM Identity Center application under which the operation
 will run. For more information about ARNs, see Amazon Resource Names
 (ARNs) and Amazon Web Services Service Namespaces in the \emph{Amazon Web
@@ -34,9 +32,11 @@ if you received a \code{NextToken} response in the previous request. If you
 did, it indicates that more output is available. Set this parameter to
 the value provided by the previous call's \code{NextToken} response to
 request the next page of results.}
+
+\item{Filter}{Filters response results.}
 }
 \description{
-Lists all applications associated with the instance of IAM Identity Center. When listing applications for an instance in the management account, member accounts must use the \code{applicationAccount} parameter to filter the list to only applications created from that account.
+Lists all applications associated with the instance of IAM Identity Center. When listing applications for an organization instance in the management account, member accounts must use the \code{applicationAccount} parameter to filter the list to only applications created from that account. When listing applications for an account instance in the same member account, a filter is not required.
 
 See \url{https://www.paws-r-sdk.com/docs/ssoadmin_list_applications/} for full documentation.
 }

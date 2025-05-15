@@ -14,11 +14,19 @@ NULL
 #' @param guardrailVersion &#91;required&#93; The guardrail version used in the request to apply the guardrail.
 #' @param source &#91;required&#93; The source of data used in the request to apply the guardrail.
 #' @param content &#91;required&#93; The content details used in the request to apply the guardrail.
+#' @param outputScope Specifies the scope of the output that you get in the response. Set to
+#' `FULL` to return the entire output, including any detected and
+#' non-detected entries in the response for enhanced debugging.
+#' 
+#' Note that the full output scope doesn't apply to word filters or regex
+#' in sensitive information filters. It does apply to all other filtering
+#' policies, including sensitive information with filters that can detect
+#' personally identifiable information (PII).
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockruntime_apply_guardrail
-bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion, source, content) {
+bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion, source, content, outputScope = NULL) {
   op <- new_operation(
     name = "ApplyGuardrail",
     http_method = "POST",
@@ -27,7 +35,7 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockruntime$apply_guardrail_input(guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion, source = source, content = content)
+  input <- .bedrockruntime$apply_guardrail_input(guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion, source = source, content = content, outputScope = outputScope)
   output <- .bedrockruntime$apply_guardrail_output()
   config <- get_config()
   svc <- .bedrockruntime$service(config, op)
@@ -391,6 +399,47 @@ bedrockruntime_invoke_model <- function(body = NULL, contentType = NULL, accept 
   return(response)
 }
 .bedrockruntime$operations$invoke_model <- bedrockruntime_invoke_model
+
+#' Invoke the specified Amazon Bedrock model to run inference using the
+#' bidirectional stream
+#'
+#' @description
+#' Invoke the specified Amazon Bedrock model to run inference using the bidirectional stream. The response is returned in a stream that remains open for 8 minutes. A single session can contain multiple prompts and responses from the model. The prompts to the model are provided as audio files and the model's responses are spoken back to the user and transcribed.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockruntime_invoke_model_with_bidirectional_stream/](https://www.paws-r-sdk.com/docs/bedrockruntime_invoke_model_with_bidirectional_stream/) for full documentation.
+#'
+#' @param modelId &#91;required&#93; The model ID or ARN of the model ID to use. Currently, only
+#' `amazon.nova-sonic-v1:0` is supported.
+#' @param body &#91;required&#93; The prompt and inference parameters in the format specified in the
+#' `BidirectionalInputPayloadPart` in the header. You must provide the body
+#' in JSON format. To see the format and content of the request and
+#' response bodies for different models, refer to [Inference
+#' parameters](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html).
+#' For more information, see [Run
+#' inference](https://docs.aws.amazon.com/bedrock/latest/userguide/inference.html)
+#' in the Bedrock User Guide.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockruntime_invoke_model_with_bidirectional_stream
+bedrockruntime_invoke_model_with_bidirectional_stream <- function(modelId, body) {
+  op <- new_operation(
+    name = "InvokeModelWithBidirectionalStream",
+    http_method = "POST",
+    http_path = "/model/{modelId}/invoke-with-bidirectional-stream",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = TRUE
+  )
+  input <- .bedrockruntime$invoke_model_with_bidirectional_stream_input(modelId = modelId, body = body)
+  output <- .bedrockruntime$invoke_model_with_bidirectional_stream_output()
+  config <- get_config()
+  svc <- .bedrockruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockruntime$operations$invoke_model_with_bidirectional_stream <- bedrockruntime_invoke_model_with_bidirectional_stream
 
 #' Invoke the specified Amazon Bedrock model to run inference using the
 #' prompt and inference parameters provided in the request body

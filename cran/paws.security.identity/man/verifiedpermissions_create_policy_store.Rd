@@ -7,7 +7,9 @@
 verifiedpermissions_create_policy_store(
   clientToken = NULL,
   validationSettings,
-  description = NULL
+  description = NULL,
+  deletionProtection = NULL,
+  tags = NULL
 )
 }
 \arguments{
@@ -43,6 +45,13 @@ to turn validation back on.}
 
 \item{description}{Descriptive text that you can provide to help with identification of the
 current policy store.}
+
+\item{deletionProtection}{Specifies whether the policy store can be deleted. If enabled, the
+policy store can't be deleted.
+
+The default state is \code{DISABLED}.}
+
+\item{tags}{The list of key-value pairs to associate with the policy store.}
 }
 \description{
 Creates a policy store. A policy store is a container for policy resources.

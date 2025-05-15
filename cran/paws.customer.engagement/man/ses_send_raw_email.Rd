@@ -48,8 +48,8 @@ line.
 \item All of the required header fields must be present in the message.
 \item Each part of a multipart MIME message must be formatted properly.
 \item Attachments must be of a content type that Amazon SES supports. For
-a list on unsupported content types, see \href{https://docs.aws.amazon.com/ses/latest/dg/mime-types.html}{Unsupported Attachment Types} in
-the \emph{Amazon SES Developer Guide}.
+a list on unsupported content types, see \href{https://docs.aws.amazon.com/ses/latest/dg/}{Unsupported Attachment Types} in the \emph{Amazon
+SES Developer Guide}.
 \item The entire message must be base64-encoded.
 \item If any of the MIME parts in your message contain content that is
 outside of the 7-bit ASCII character range, we highly recommend that

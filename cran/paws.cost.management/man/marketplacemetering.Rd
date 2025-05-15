@@ -53,59 +53,106 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-AWS Marketplace Metering Service
+Amazon Web Services Marketplace Metering Service
 
-This reference provides descriptions of the low-level AWS Marketplace
+This reference provides descriptions of the low-level Marketplace
 Metering Service API.
 
-AWS Marketplace sellers can use this API to submit usage data for custom
-usage dimensions.
+Amazon Web Services Marketplace sellers can use this API to submit usage
+data for custom usage dimensions.
 
-For information on the permissions you need to use this API, see \href{https://docs.aws.amazon.com/marketplace/latest/userguide/iam-user-policy-for-aws-marketplace-actions.html}{AWS Marketplace metering and entitlement API permissions}
-in the \emph{AWS Marketplace Seller Guide.}
+For information about the permissions that you need to use this API, see
+\href{https://docs.aws.amazon.com/marketplace/latest/userguide/iam-user-policy-for-aws-marketplace-actions.html}{Amazon Web Services Marketplace metering and entitlement API permissions}
+in the \emph{Amazon Web Services Marketplace Seller Guide.}
 
-\strong{Submitting Metering Records}
+\strong{Submitting metering records}
+
+\emph{MeterUsage}
 \itemize{
-\item \emph{MeterUsage} - Submits the metering record for an AWS Marketplace
-product. \code{\link[=marketplacemetering_meter_usage]{meter_usage}} is called
-from an EC2 instance or a container running on EKS or ECS.
-\item \emph{BatchMeterUsage} - Submits the metering record for a set of
-customers.
-\code{\link[=marketplacemetering_batch_meter_usage]{batch_meter_usage}} is
-called from a software-as-a-service (SaaS) application.
+\item Submits the metering record for an Amazon Web Services Marketplace
+product.
+\item Called from: Amazon Elastic Compute Cloud (Amazon EC2) instance or a
+container running on either Amazon Elastic Kubernetes Service
+(Amazon EKS) or Amazon Elastic Container Service (Amazon ECS)
+\item Supported product types: Amazon Machine Images (AMIs) and containers
+\item Vendor-metered tagging: Supported allocation tagging
 }
 
-\strong{Accepting New Customers}
+\emph{BatchMeterUsage}
 \itemize{
-\item \emph{ResolveCustomer} - Called by a SaaS application during the
-registration process. When a buyer visits your website during the
-registration process, the buyer submits a Registration Token through
-the browser. The Registration Token is resolved through this API to
-obtain a \code{CustomerIdentifier} along with the \code{CustomerAWSAccountId}
-and \code{ProductCode}.
+\item Submits the metering record for a set of customers.
+\code{\link[=marketplacemetering_batch_meter_usage]{batch_meter_usage}} API
+calls are captured by CloudTrail. You can use CloudTrail to verify
+that the software as a subscription (SaaS) metering records that you
+sent are accurate by searching for records with the \code{eventName} of
+\code{\link[=marketplacemetering_batch_meter_usage]{batch_meter_usage}}. You
+can also use CloudTrail to audit records over time. For more
+information, see the \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html}{CloudTrail User Guide}.
+\item Called from: SaaS applications
+\item Supported product type: SaaS
+\item Vendor-metered tagging: Supports allocation tagging
 }
 
-\strong{Entitlement and Metering for Paid Container Products}
+\strong{Accepting new customers}
+
+\emph{ResolveCustomer}
 \itemize{
-\item Paid container software products sold through AWS Marketplace must
-integrate with the AWS Marketplace Metering Service and call the
-\code{\link[=marketplacemetering_register_usage]{register_usage}} operation for
-software entitlement and metering. Free and BYOL products for Amazon
-ECS or Amazon EKS aren't required to call
-\code{\link[=marketplacemetering_register_usage]{register_usage}}, but you can
-do so if you want to receive usage data in your seller reports. For
-more information on using the
+\item Resolves the registration token that the buyer submits through the
+browser during the registration process. Obtains a
+\code{CustomerIdentifier} along with the \code{CustomerAWSAccountId} and
+\code{ProductCode}.
+\item Called from: SaaS application during the registration process
+\item Supported product type: SaaS
+\item Vendor-metered tagging: Not applicable
+}
+
+\strong{Entitlement and metering for paid container products}
+
+\emph{RegisteredUsage}
+\itemize{
+\item Provides software entitlement and metering. Paid container software
+products sold through Amazon Web Services Marketplace must integrate
+with the Marketplace Metering Service and call the
+\code{\link[=marketplacemetering_register_usage]{register_usage}} operation.
+Free and Bring Your Own License model (BYOL) products for Amazon ECS
+or Amazon EKS aren't required to call
+\code{\link[=marketplacemetering_register_usage]{register_usage}}. However, you
+can do so if you want to receive usage data in your seller reports.
+For more information about using the
 \code{\link[=marketplacemetering_register_usage]{register_usage}} operation,
-see \href{https://docs.aws.amazon.com/marketplace/latest/userguide/container-based-products.html}{Container-Based Products}.
+see \href{https://docs.aws.amazon.com/marketplace/latest/userguide/container-based-products.html}{Container-based products}.
+\item Called from: Paid container software products
+\item Supported product type: Containers
+\item Vendor-metered tagging: Not applicable
 }
 
-\code{\link[=marketplacemetering_batch_meter_usage]{batch_meter_usage}} API calls
-are captured by AWS CloudTrail. You can use Cloudtrail to verify that
-the SaaS metering records that you sent are accurate by searching for
-records with the \code{eventName} of
-\code{\link[=marketplacemetering_batch_meter_usage]{batch_meter_usage}}. You can
-also use CloudTrail to audit records over time. For more information,
-see the \emph{\href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html}{AWS CloudTrail User Guide}.}
+\strong{Entitlement custom metering for container products}
+\itemize{
+\item MeterUsage API is available in GovCloud Regions but only supports
+AMI FCP products in GovCloud Regions. Flexible Consumption Pricing
+(FCP) Container products aren’t supported in GovCloud Regions:
+us-gov-west-1 and us-gov-east-1. For more information, see
+\href{https://docs.aws.amazon.com/marketplace/latest/userguide/container-based-products.html}{Container-based products}.
+\item Custom metering for container products are called using the
+MeterUsage API. The API is used for FCP AMI and FCP Container
+product metering.
+}
+
+\strong{Custom metering for Amazon EKS is available in 17 Amazon Web Services
+Regions}
+\itemize{
+\item The metering service supports Amazon ECS and EKS for Flexible
+Consumption Pricing (FCP) products using MeterUsage API. Amazon ECS
+is supported in all Amazon Web Services Regions that MeterUsage API
+is available except for GovCloud.
+\item Amazon EKS is supported in the following: us-east-1, us-east-2,
+us-west-1, us-west-2, eu-west-1, eu-central-1, eu-west-2, eu-west-3,
+eu-north-1, ap-east-1, ap-southeast-1, ap-northeast-1,
+ap-southeast-2, ap-northeast-2, ap-south-1, ca-central-1, sa-east-1.
+
+For questions about adding Amazon Web Services Regions for metering,
+contact \href{mailto://aws.amazon.com/marketplace/management/contact-us/}{Amazon Web Services Marketplace Seller Operations}.
+}
 }
 \section{Service syntax}{
 
@@ -146,9 +193,9 @@ see the \emph{\href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/c
 \section{Operations}{
 
 \tabular{ll}{
-\link[=marketplacemetering_batch_meter_usage]{batch_meter_usage} \tab BatchMeterUsage is called from a SaaS application listed on AWS Marketplace to post metering records for a set of customers\cr
+\link[=marketplacemetering_batch_meter_usage]{batch_meter_usage} \tab The CustomerIdentifier parameter is scheduled for deprecation\cr
 \link[=marketplacemetering_meter_usage]{meter_usage} \tab API to emit metering records\cr
-\link[=marketplacemetering_register_usage]{register_usage} \tab Paid container software products sold through AWS Marketplace must integrate with the AWS Marketplace Metering Service and call the RegisterUsage operation for software entitlement and metering\cr
+\link[=marketplacemetering_register_usage]{register_usage} \tab Paid container software products sold through Amazon Web Services Marketplace must integrate with the Amazon Web Services Marketplace Metering Service and call the RegisterUsage operation for software entitlement and metering\cr
 \link[=marketplacemetering_resolve_customer]{resolve_customer} \tab ResolveCustomer is called by a SaaS application during the registration process
 }
 }
