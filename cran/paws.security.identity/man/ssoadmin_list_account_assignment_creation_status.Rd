@@ -6,15 +6,13 @@
 requests for a specified IAM Identity Center instance}
 \usage{
 ssoadmin_list_account_assignment_creation_status(
-  Filter = NULL,
   InstanceArn,
   MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  Filter = NULL
 )
 }
 \arguments{
-\item{Filter}{Filters results based on the passed attribute value.}
-
 \item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation
 will be executed. For more information about ARNs, see Amazon Resource
 Names (ARNs) and Amazon Web Services Service Namespaces in the \emph{Amazon
@@ -24,6 +22,8 @@ Web Services General Reference}.}
 
 \item{NextToken}{The pagination token for the list API. Initially the value is null. Use
 the output of previous API calls to make subsequent calls.}
+
+\item{Filter}{Filters results based on the passed attribute value.}
 }
 \description{
 Lists the status of the Amazon Web Services account assignment creation requests for a specified IAM Identity Center instance.

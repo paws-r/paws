@@ -13,6 +13,7 @@ bedrock_update_guardrail(
   wordPolicyConfig = NULL,
   sensitiveInformationPolicyConfig = NULL,
   contextualGroundingPolicyConfig = NULL,
+  crossRegionConfig = NULL,
   blockedInputMessaging,
   blockedOutputsMessaging,
   kmsKeyId = NULL
@@ -35,6 +36,12 @@ bedrock_update_guardrail(
 
 \item{contextualGroundingPolicyConfig}{The contextual grounding policy configuration used to update a
 guardrail.}
+
+\item{crossRegionConfig}{The system-defined guardrail profile that you're using with your
+guardrail. Guardrail profiles define the destination Amazon Web Services
+Regions where guardrail inference requests can be automatically routed.
+
+For more information, see the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-cross-region.html}{Amazon Bedrock User Guide}.}
 
 \item{blockedInputMessaging}{[required] The message to return when the guardrail blocks a prompt.}
 

@@ -25,8 +25,8 @@ moved to other Availability Zones in the Amazon Web Services Region.}
 is retained; no comment history is maintained. A new comment overwrites
 any existing comment string.}
 
-\item{expiresIn}{[required] The length of time that you want a zonal shift to be active, which Route
-53 ARC converts to an expiry time (expiration time). Zonal shifts are
+\item{expiresIn}{[required] The length of time that you want a zonal shift to be active, which ARC
+converts to an expiry time (expiration time). Zonal shifts are
 temporary. You can set a zonal shift to be active initially for up to
 three days (72 hours).
 
@@ -52,7 +52,7 @@ At this time, supported resources are Network Load Balancers and
 Application Load Balancers with cross-zone load balancing turned off.}
 }
 \description{
-You start a zonal shift to temporarily move load balancer traffic away from an Availability Zone in an Amazon Web Services Region, to help your application recover immediately, for example, from a developer's bad code deployment or from an Amazon Web Services infrastructure failure in a single Availability Zone. You can start a zonal shift in Route 53 ARC only for managed resources in your Amazon Web Services account in an Amazon Web Services Region. Resources are automatically registered with Route 53 ARC by Amazon Web Services services.
+You start a zonal shift to temporarily move load balancer traffic away from an Availability Zone in an Amazon Web Services Region, to help your application recover immediately, for example, from a developer's bad code deployment or from an Amazon Web Services infrastructure failure in a single Availability Zone. You can start a zonal shift in ARC only for managed resources in your Amazon Web Services account in an Amazon Web Services Region. Resources are automatically registered with ARC by Amazon Web Services services.
 
 See \url{https://www.paws-r-sdk.com/docs/arczonalshift_start_zonal_shift/} for full documentation.
 }

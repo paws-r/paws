@@ -125,6 +125,7 @@ NULL
 #'  \link[=synthetics_list_groups]{list_groups} \tab Returns a list of all groups in the account, displaying their names, unique IDs, and ARNs\cr
 #'  \link[=synthetics_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a canary or group\cr
 #'  \link[=synthetics_start_canary]{start_canary} \tab Use this operation to run a canary that has already been created\cr
+#'  \link[=synthetics_start_canary_dry_run]{start_canary_dry_run} \tab Use this operation to start a dry run for a canary that has already been created\cr
 #'  \link[=synthetics_stop_canary]{stop_canary} \tab Stops the canary to prevent all future runs\cr
 #'  \link[=synthetics_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified canary or group\cr
 #'  \link[=synthetics_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource\cr
@@ -160,7 +161,7 @@ synthetics <- function(config = list(), credentials = list(), endpoint = NULL, r
 
 .synthetics$metadata <- list(
   service_name = "synthetics",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "synthetics.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "synthetics.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "synthetics.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "synthetics.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "synthetics.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "synthetics.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "synthetics.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "synthetics.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "synthetics.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "synthetics.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "synthetics.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "synthetics.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "synthetics.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "synthetics.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "synthetics.{region}.amazonaws.eu", global = FALSE)),
   service_id = "synthetics",
   api_version = "2017-10-11",
   signing_name = "synthetics",

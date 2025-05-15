@@ -3,7 +3,7 @@
 \name{servicequotas_list_aws_default_service_quotas}
 \alias{servicequotas_list_aws_default_service_quotas}
 \title{Lists the default values for the quotas for the specified Amazon Web
-Service}
+Services service}
 \usage{
 servicequotas_list_aws_default_service_quotas(
   ServiceCode,
@@ -35,7 +35,7 @@ there are more results available. You should check \code{NextToken} after
 every operation to ensure that you receive all of the results.}
 }
 \description{
-Lists the default values for the quotas for the specified Amazon Web Service. A default value does not reflect any quota increases.
+Lists the default values for the quotas for the specified Amazon Web Services service. A default value does not reflect any quota increases.
 
 See \url{https://www.paws-r-sdk.com/docs/servicequotas_list_aws_default_service_quotas/} for full documentation.
 }

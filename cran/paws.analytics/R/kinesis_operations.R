@@ -11,7 +11,9 @@ NULL
 #' See [https://www.paws-r-sdk.com/docs/kinesis_add_tags_to_stream/](https://www.paws-r-sdk.com/docs/kinesis_add_tags_to_stream/) for full documentation.
 #'
 #' @param StreamName The name of the stream.
-#' @param Tags &#91;required&#93; A set of up to 10 key-value pairs to use to create the tags.
+#' @param Tags &#91;required&#93; A set of up to 50 key-value pairs to use to create the tags. A tag
+#' consists of a required key and an optional value. You can add up to 50
+#' tags per resource.
 #' @param StreamARN The ARN of the stream.
 #'
 #' @keywords internal
@@ -55,7 +57,8 @@ kinesis_add_tags_to_stream <- function(StreamName = NULL, Tags, StreamARN = NULL
 #' @param StreamModeDetails Indicates the capacity mode of the data stream. Currently, in Kinesis
 #' Data Streams, you can choose between an **on-demand** capacity mode and
 #' a **provisioned** capacity mode for your data streams.
-#' @param Tags A set of up to 10 key-value pairs to use to create the tags.
+#' @param Tags A set of up to 50 key-value pairs to use to create the tags. A tag
+#' consists of a required key and an optional value.
 #'
 #' @keywords internal
 #'
@@ -866,6 +869,38 @@ kinesis_list_streams <- function(Limit = NULL, ExclusiveStartStreamName = NULL, 
 }
 .kinesis$operations$list_streams <- kinesis_list_streams
 
+#' List all tags added to the specified Kinesis resource
+#'
+#' @description
+#' List all tags added to the specified Kinesis resource. Each tag is a label consisting of a user-defined key and value. Tags can help you manage, identify, organize, search for, and filter resources.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kinesis_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/kinesis_list_tags_for_resource/) for full documentation.
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the Kinesis resource for which to list
+#' tags.
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_list_tags_for_resource
+kinesis_list_tags_for_resource <- function(ResourceARN) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kinesis$list_tags_for_resource_input(ResourceARN = ResourceARN)
+  output <- .kinesis$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .kinesis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$list_tags_for_resource <- kinesis_list_tags_for_resource
+
 #' Lists the tags for the specified Kinesis data stream
 #'
 #' @description
@@ -1076,11 +1111,13 @@ kinesis_put_resource_policy <- function(ResourceARN, Policy) {
 #' Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kinesis-streams).
 #' @param ConsumerName &#91;required&#93; For a given Kinesis data stream, each consumer must have a unique name.
 #' However, consumer names don't have to be unique across data streams.
+#' @param Tags A set of up to 50 key-value pairs. A tag consists of a required key and
+#' an optional value.
 #'
 #' @keywords internal
 #'
 #' @rdname kinesis_register_stream_consumer
-kinesis_register_stream_consumer <- function(StreamARN, ConsumerName) {
+kinesis_register_stream_consumer <- function(StreamARN, ConsumerName, Tags = NULL) {
   op <- new_operation(
     name = "RegisterStreamConsumer",
     http_method = "POST",
@@ -1089,7 +1126,7 @@ kinesis_register_stream_consumer <- function(StreamARN, ConsumerName) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kinesis$register_stream_consumer_input(StreamARN = StreamARN, ConsumerName = ConsumerName)
+  input <- .kinesis$register_stream_consumer_input(StreamARN = StreamARN, ConsumerName = ConsumerName, Tags = Tags)
   output <- .kinesis$register_stream_consumer_output()
   config <- get_config()
   svc <- .kinesis$service(config, op)
@@ -1313,6 +1350,78 @@ kinesis_subscribe_to_shard <- function(ConsumerARN, ShardId, StartingPosition) {
   return(response)
 }
 .kinesis$operations$subscribe_to_shard <- kinesis_subscribe_to_shard
+
+#' Adds or updates tags for the specified Kinesis resource
+#'
+#' @description
+#' Adds or updates tags for the specified Kinesis resource. Each tag is a label consisting of a user-defined key and value. Tags can help you manage, identify, organize, search for, and filter resources. You can assign up to 50 tags to a Kinesis resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kinesis_tag_resource/](https://www.paws-r-sdk.com/docs/kinesis_tag_resource/) for full documentation.
+#'
+#' @param Tags &#91;required&#93; An array of tags to be added to the Kinesis resource. A tag consists of
+#' a required key and an optional value. You can add up to 50 tags per
+#' resource.
+#' 
+#' Tags may only contain Unicode letters, digits, white space, or these
+#' symbols: _ . : / = + - @@.
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the Kinesis resource to which to add
+#' tags.
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_tag_resource
+kinesis_tag_resource <- function(Tags, ResourceARN) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kinesis$tag_resource_input(Tags = Tags, ResourceARN = ResourceARN)
+  output <- .kinesis$tag_resource_output()
+  config <- get_config()
+  svc <- .kinesis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$tag_resource <- kinesis_tag_resource
+
+#' Removes tags from the specified Kinesis resource
+#'
+#' @description
+#' Removes tags from the specified Kinesis resource. Removed tags are deleted and can't be recovered after this operation completes successfully.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kinesis_untag_resource/](https://www.paws-r-sdk.com/docs/kinesis_untag_resource/) for full documentation.
+#'
+#' @param TagKeys &#91;required&#93; A list of tag key-value pairs. Existing tags of the resource whose keys
+#' are members of this list will be removed from the Kinesis resource.
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the Kinesis resource from which to
+#' remove tags.
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_untag_resource
+kinesis_untag_resource <- function(TagKeys, ResourceARN) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kinesis$untag_resource_input(TagKeys = TagKeys, ResourceARN = ResourceARN)
+  output <- .kinesis$untag_resource_output()
+  config <- get_config()
+  svc <- .kinesis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$untag_resource <- kinesis_untag_resource
 
 #' Updates the shard count of the specified stream to the specified number
 #' of shards

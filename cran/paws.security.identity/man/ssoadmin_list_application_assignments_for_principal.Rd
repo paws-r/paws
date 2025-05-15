@@ -5,20 +5,32 @@
 \title{Lists the applications to which a specified principal is assigned}
 \usage{
 ssoadmin_list_application_assignments_for_principal(
-  Filter = NULL,
   InstanceArn,
-  MaxResults = NULL,
-  NextToken = NULL,
   PrincipalId,
-  PrincipalType
+  PrincipalType,
+  Filter = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
 )
 }
 \arguments{
+\item{InstanceArn}{[required] Specifies the instance of IAM Identity Center that contains principal
+and applications.}
+
+\item{PrincipalId}{[required] Specifies the unique identifier of the principal for which you want to
+retrieve its assignments.}
+
+\item{PrincipalType}{[required] Specifies the type of the principal for which you want to retrieve its
+assignments.}
+
 \item{Filter}{Filters the output to include only assignments associated with the
 application that has the specified ARN.}
 
-\item{InstanceArn}{[required] Specifies the instance of IAM Identity Center that contains principal
-and applications.}
+\item{NextToken}{Specifies that you want to receive the next page of results. Valid only
+if you received a \code{NextToken} response in the previous request. If you
+did, it indicates that more output is available. Set this parameter to
+the value provided by the previous call's \code{NextToken} response to
+request the next page of results.}
 
 \item{MaxResults}{Specifies the total number of results that you want included in each
 response. If additional items exist beyond the number you specify, the
@@ -28,21 +40,9 @@ next call to the operation to get the next set of results. Note that the
 service might return fewer results than the maximum even when there are
 more results available. You should check \code{NextToken} after every
 operation to ensure that you receive all of the results.}
-
-\item{NextToken}{Specifies that you want to receive the next page of results. Valid only
-if you received a \code{NextToken} response in the previous request. If you
-did, it indicates that more output is available. Set this parameter to
-the value provided by the previous call's \code{NextToken} response to
-request the next page of results.}
-
-\item{PrincipalId}{[required] Specifies the unique identifier of the principal for which you want to
-retrieve its assignments.}
-
-\item{PrincipalType}{[required] Specifies the type of the principal for which you want to retrieve its
-assignments.}
 }
 \description{
-Lists the applications to which a specified principal is assigned.
+Lists the applications to which a specified principal is assigned. You must provide a filter when calling this action from a member account against your organization instance of IAM Identity Center. A filter is not required when called from the management account against an organization instance of IAM Identity Center, or from a member account against an account instance of IAM Identity Center in the same account.
 
 See \url{https://www.paws-r-sdk.com/docs/ssoadmin_list_application_assignments_for_principal/} for full documentation.
 }

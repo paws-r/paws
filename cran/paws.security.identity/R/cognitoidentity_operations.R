@@ -6,7 +6,7 @@ NULL
 #' Creates a new identity pool
 #'
 #' @description
-#' Creates a new identity pool. The identity pool is a store of user identity information that is specific to your AWS account. The keys for `SupportedLoginProviders` are as follows:
+#' Creates a new identity pool. The identity pool is a store of user identity information that is specific to your Amazon Web Services account. The keys for `SupportedLoginProviders` are as follows:
 #'
 #' See [https://www.paws-r-sdk.com/docs/cognitoidentity_create_identity_pool/](https://www.paws-r-sdk.com/docs/cognitoidentity_create_identity_pool/) for full documentation.
 #'
@@ -184,7 +184,7 @@ cognitoidentity_describe_identity_pool <- function(IdentityPoolId) {
 #' Returns credentials for the provided identity ID
 #'
 #' @description
-#' Returns credentials for the provided identity ID. Any provided logins will be validated against supported login providers. If the token is for cognito-identity.amazonaws.com, it will be passed through to AWS Security Token Service with the appropriate role for the token.
+#' Returns credentials for the provided identity ID. Any provided logins will be validated against supported login providers. If the token is for `cognito-identity.amazonaws.com`, it will be passed through to Security Token Service with the appropriate role for the token.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cognitoidentity_get_credentials_for_identity/](https://www.paws-r-sdk.com/docs/cognitoidentity_get_credentials_for_identity/) for full documentation.
 #'
@@ -228,14 +228,14 @@ cognitoidentity_get_credentials_for_identity <- function(IdentityId, Logins = NU
 }
 .cognitoidentity$operations$get_credentials_for_identity <- cognitoidentity_get_credentials_for_identity
 
-#' Generates (or retrieves) a Cognito ID
+#' Generates (or retrieves) IdentityID
 #'
 #' @description
-#' Generates (or retrieves) a Cognito ID. Supplying multiple logins will create an implicit linked account.
+#' Generates (or retrieves) IdentityID. Supplying multiple logins will create an implicit linked account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cognitoidentity_get_id/](https://www.paws-r-sdk.com/docs/cognitoidentity_get_id/) for full documentation.
 #'
-#' @param AccountId A standard AWS account ID (9+ digits).
+#' @param AccountId A standard Amazon Web Services account ID (9+ digits).
 #' @param IdentityPoolId &#91;required&#93; An identity pool ID in the format REGION:GUID.
 #' @param Logins A set of optional name-value pairs that map provider names to provider
 #' tokens. The available provider names for `Logins` are as follows:
@@ -367,12 +367,12 @@ cognitoidentity_get_open_id_token <- function(IdentityId, Logins = NULL) {
 #' @param TokenDuration The expiration time of the token, in seconds. You can specify a custom
 #' expiration time for the token so that you can cache it. If you don't
 #' provide an expiration time, the token is valid for 15 minutes. You can
-#' exchange the token with Amazon STS for temporary AWS credentials, which
-#' are valid for a maximum of one hour. The maximum token duration you can
-#' set is 24 hours. You should take care in setting the expiration time for
-#' a token, as there are significant security implications: an attacker
-#' could use a leaked token to access your AWS resources for the token's
-#' duration.
+#' exchange the token with Amazon STS for temporary Amazon Web Services
+#' credentials, which are valid for a maximum of one hour. The maximum
+#' token duration you can set is 24 hours. You should take care in setting
+#' the expiration time for a token, as there are significant security
+#' implications: an attacker could use a leaked token to access your Amazon
+#' Web Services resources for the token's duration.
 #' 
 #' Please provide for a small grace period, usually no more than 5 minutes,
 #' to account for clock skew.
@@ -538,7 +538,7 @@ cognitoidentity_list_tags_for_resource <- function(ResourceArn) {
 #' for an existing identity
 #'
 #' @description
-#' Retrieves the `IdentityID` associated with a `DeveloperUserIdentifier` or the list of `DeveloperUserIdentifier` values associated with an `IdentityId` for an existing identity. Either `IdentityID` or `DeveloperUserIdentifier` must not be null. If you supply only one of these values, the other value will be searched in the database and returned as a part of the response. If you supply both, `DeveloperUserIdentifier` will be matched against `IdentityID`. If the values are verified against the database, the response returns both values and is the same as the request. Otherwise a `ResourceConflictException` is thrown.
+#' Retrieves the `IdentityID` associated with a `DeveloperUserIdentifier` or the list of `DeveloperUserIdentifier` values associated with an `IdentityId` for an existing identity. Either `IdentityID` or `DeveloperUserIdentifier` must not be null. If you supply only one of these values, the other value will be searched in the database and returned as a part of the response. If you supply both, `DeveloperUserIdentifier` will be matched against `IdentityID`. If the values are verified against the database, the response returns both values and is the same as the request. Otherwise, a `ResourceConflictException` is thrown.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cognitoidentity_lookup_developer_identity/](https://www.paws-r-sdk.com/docs/cognitoidentity_lookup_developer_identity/) for full documentation.
 #'
@@ -632,8 +632,8 @@ cognitoidentity_merge_developer_identities <- function(SourceUserIdentifier, Des
 #' be the Role ARN.
 #' @param RoleMappings How users for a specific identity provider are to mapped to roles. This
 #' is a string to RoleMapping object map. The string identifies the
-#' identity provider, for example, "graph.facebook.com" or
-#' "cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".
+#' identity provider, for example, `graph.facebook.com` or
+#' `cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id`.
 #' 
 #' Up to 25 rules can be specified per identity provider.
 #'
@@ -829,10 +829,10 @@ cognitoidentity_untag_resource <- function(ResourceArn, TagKeys) {
 }
 .cognitoidentity$operations$untag_resource <- cognitoidentity_untag_resource
 
-#' Updates an identity pool
+#' Updates the configuration of an identity pool
 #'
 #' @description
-#' Updates an identity pool.
+#' Updates the configuration of an identity pool.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cognitoidentity_update_identity_pool/](https://www.paws-r-sdk.com/docs/cognitoidentity_update_identity_pool/) for full documentation.
 #'

@@ -2,21 +2,25 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_list_groups}
 \alias{cognitoidentityprovider_list_groups}
-\title{Lists the groups associated with a user pool}
+\title{Given a user pool ID, returns user pool groups and their details}
 \usage{
 cognitoidentityprovider_list_groups(UserPoolId, Limit = NULL, NextToken = NULL)
 }
 \arguments{
-\item{UserPoolId}{[required] The ID of the user pool.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to list user groups.}
 
-\item{Limit}{The limit of the request to list groups.}
+\item{Limit}{The maximum number of groups that you want Amazon Cognito to return in
+the response.}
 
-\item{NextToken}{An identifier that was returned from the previous call to this
-operation, which can be used to return the next set of items in the
-list.}
+\item{NextToken}{This API operation returns a limited number of results. The pagination
+token is an identifier that you can present in an additional API request
+with the same parameters. When you include the pagination token, Amazon
+Cognito returns the next set of items after the current list. Subsequent
+requests return a new pagination token. By use of this token, you can
+paginate through the full list of items.}
 }
 \description{
-Lists the groups associated with a user pool.
+Given a user pool ID, returns user pool groups and their details.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_groups/} for full documentation.
 }

@@ -718,12 +718,13 @@ omics_create_reference_store <- function(name, description = NULL, sseConfig = N
 #' You can create a run cache to save the task outputs from completed tasks
 #' in a run for a private workflow. Subsequent runs use the task outputs
 #' from the cache, rather than computing the task outputs again. You
-#' specify an Amazon S3 location where HealthOmics saves the cached data.
-#' This data must be immediately accessible (not in an archived state).
+#' specify an Amazon S3 location where Amazon Web Services HealthOmics
+#' saves the cached data. This data must be immediately accessible (not in
+#' an archived state).
 #' 
 #' For more information, see [Creating a run
 #' cache](https://docs.aws.amazon.com/omics/latest/dev/workflow-cache-create.html)
-#' in the AWS HealthOmics User Guide.
+#' in the Amazon Web Services HealthOmics User Guide.
 #'
 #' @usage
 #' omics_create_run_cache(cacheBehavior, cacheS3Location, description,
@@ -748,18 +749,18 @@ omics_create_reference_store <- function(name, description = NULL, sseConfig = N
 #' 
 #' For more information, see [Run cache
 #' behavior](https://docs.aws.amazon.com/omics/latest/dev/how-run-cache.html#run-cache-behavior)
-#' in the AWS HealthOmics User Guide.
+#' in the Amazon Web Services HealthOmics User Guide.
 #' @param cacheS3Location &#91;required&#93; Specify the S3 location for storing the cached task outputs. This data
 #' must be immediately accessible (not in an archived state).
 #' @param description Enter a description of the run cache.
 #' @param name Enter a user-friendly name for the run cache.
 #' @param requestId &#91;required&#93; A unique request token, to ensure idempotency. If you don't specify a
-#' token, HealthOmics automatically generates a universally unique
-#' identifier (UUID) for the request.
+#' token, Amazon Web Services HealthOmics automatically generates a
+#' universally unique identifier (UUID) for the request.
 #' @param tags Specify one or more tags to associate with this run cache.
-#' @param cacheBucketOwnerId The AWS account ID of the expected owner of the S3 bucket for the run
-#' cache. If not provided, your account ID is set as the owner of the
-#' bucket.
+#' @param cacheBucketOwnerId The Amazon Web Services account ID of the expected owner of the S3
+#' bucket for the run cache. If not provided, your account ID is set as the
+#' owner of the bucket.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1127,28 +1128,60 @@ omics_create_variant_store <- function(reference, name = NULL, description = NUL
 }
 .omics$operations$create_variant_store <- omics_create_variant_store
 
-#' Creates a workflow
+#' Creates a private workflow
 #'
 #' @description
-#' Creates a workflow.
+#' Creates a private workflow.Private workflows depend on a variety of
+#' resources that you create and configure before creating the workflow:
+#' 
+#' -   *Input data*: Input data for the workflow, stored in an S3 bucket or
+#'     a Amazon Web Services HealthOmics sequence store.
+#' 
+#' -   *Workflow definition files*: Define your workflow in one or more
+#'     workflow definition files, written in WDL, Nextflow, or CWL. The
+#'     workflow definition specifies the inputs and outputs for runs that
+#'     use the workflow. It also includes specifications for the runs and
+#'     run tasks for your workflow, including compute and memory
+#'     requirements.
+#' 
+#' -   *Parameter template files*: Define run parameters using a parameter
+#'     template file (written in JSON).
+#' 
+#' -   *ECR container images*: Create one or more container images for the
+#'     workflow. Store the images in a private ECR repository.
+#' 
+#' -   (Optional) *Sentieon licenses*: Request a Sentieon license if you
+#'     plan to use Sentieon software in a private workflow.
+#' 
+#' For more information, see [Creating or updating a private workflow in
+#' Amazon Web Services
+#' HealthOmics](https://docs.aws.amazon.com/omics/latest/dev/creating-private-workflows.html)
+#' in the Amazon Web Services HealthOmics User Guide.
 #'
 #' @usage
 #' omics_create_workflow(name, description, engine, definitionZip,
 #'   definitionUri, main, parameterTemplate, storageCapacity, tags,
-#'   requestId, accelerators)
+#'   requestId, accelerators, storageType)
 #'
 #' @param name A name for the workflow.
 #' @param description A description for the workflow.
-#' @param engine An engine for the workflow.
+#' @param engine The workflow engine for the workflow.
 #' @param definitionZip A ZIP archive for the workflow.
 #' @param definitionUri The URI of a definition for the workflow.
 #' @param main The path of the main definition file for the workflow.
 #' @param parameterTemplate A parameter template for the workflow.
-#' @param storageCapacity The default storage capacity for the workflow runs, in gibibytes.
+#' @param storageCapacity The default static storage capacity (in gibibytes) for runs that use
+#' this workflow or workflow version.
 #' @param tags Tags for the workflow.
 #' @param requestId &#91;required&#93; To ensure that requests don't run multiple times, specify a unique ID
 #' for each request.
 #' @param accelerators The computational accelerator specified to run the workflow.
+#' @param storageType The default storage type for runs that use this workflow. STATIC storage
+#' allocates a fixed amount of storage. DYNAMIC storage dynamically scales
+#' the storage up or down, based on file system utilization. For more
+#' information about static and dynamic storage, see [Running
+#' workflows](https://docs.aws.amazon.com/omics/latest/dev/) in the *Amazon
+#' Web Services HealthOmics User Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1159,7 +1192,8 @@ omics_create_variant_store <- function(reference, name = NULL, description = NUL
 #'   status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETED"|"FAILED"|"INACTIVE",
 #'   tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   uuid = "string"
 #' )
 #' ```
 #'
@@ -1183,7 +1217,8 @@ omics_create_variant_store <- function(reference, name = NULL, description = NUL
 #'     "string"
 #'   ),
 #'   requestId = "string",
-#'   accelerators = "GPU"
+#'   accelerators = "GPU",
+#'   storageType = "STATIC"|"DYNAMIC"
 #' )
 #' ```
 #'
@@ -1192,7 +1227,7 @@ omics_create_variant_store <- function(reference, name = NULL, description = NUL
 #' @rdname omics_create_workflow
 #'
 #' @aliases omics_create_workflow
-omics_create_workflow <- function(name = NULL, description = NULL, engine = NULL, definitionZip = NULL, definitionUri = NULL, main = NULL, parameterTemplate = NULL, storageCapacity = NULL, tags = NULL, requestId, accelerators = NULL) {
+omics_create_workflow <- function(name = NULL, description = NULL, engine = NULL, definitionZip = NULL, definitionUri = NULL, main = NULL, parameterTemplate = NULL, storageCapacity = NULL, tags = NULL, requestId, accelerators = NULL, storageType = NULL) {
   op <- new_operation(
     name = "CreateWorkflow",
     http_method = "POST",
@@ -1201,7 +1236,7 @@ omics_create_workflow <- function(name = NULL, description = NULL, engine = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .omics$create_workflow_input(name = name, description = description, engine = engine, definitionZip = definitionZip, definitionUri = definitionUri, main = main, parameterTemplate = parameterTemplate, storageCapacity = storageCapacity, tags = tags, requestId = requestId, accelerators = accelerators)
+  input <- .omics$create_workflow_input(name = name, description = description, engine = engine, definitionZip = definitionZip, definitionUri = definitionUri, main = main, parameterTemplate = parameterTemplate, storageCapacity = storageCapacity, tags = tags, requestId = requestId, accelerators = accelerators, storageType = storageType)
   output <- .omics$create_workflow_output()
   config <- get_config()
   svc <- .omics$service(config, op)
@@ -1210,6 +1245,135 @@ omics_create_workflow <- function(name = NULL, description = NULL, engine = NULL
   return(response)
 }
 .omics$operations$create_workflow <- omics_create_workflow
+
+#' Creates a new workflow version for the workflow that you specify with
+#' the workflowId parameter
+#'
+#' @description
+#' Creates a new workflow version for the workflow that you specify with
+#' the `workflowId` parameter.
+#' 
+#' When you create a new version of a workflow, you need to specify the
+#' configuration for the new version. It doesn't inherit any configuration
+#' values from the workflow.
+#' 
+#' Provide a version name that is unique for this workflow. You cannot
+#' change the name after HealthOmics creates the version.
+#' 
+#' Don’t include any personally identifiable information (PII) in the
+#' version name. Version names appear in the workflow version ARN.
+#' 
+#' For more information, see [Workflow versioning in Amazon Web Services
+#' HealthOmics](https://docs.aws.amazon.com/omics/latest/dev/workflow-versions.html)
+#' in the Amazon Web Services HealthOmics User Guide.
+#'
+#' @usage
+#' omics_create_workflow_version(workflowId, versionName, definitionZip,
+#'   definitionUri, accelerators, description, engine, main,
+#'   parameterTemplate, requestId, storageType, storageCapacity, tags,
+#'   workflowBucketOwnerId)
+#'
+#' @param workflowId &#91;required&#93; The ID of the workflow where you are creating the new version.
+#' @param versionName &#91;required&#93; A name for the workflow version. Provide a version name that is unique
+#' for this workflow. You cannot change the name after HealthOmics creates
+#' the version.
+#' 
+#' The version name must start with a letter or number and it can include
+#' upper-case and lower-case letters, numbers, hyphens, periods and
+#' underscores. The maximum length is 64 characters. You can use a simple
+#' naming scheme, such as version1, version2, version3. You can also match
+#' your workflow versions with your own internal versioning conventions,
+#' such as 2.7.0, 2.7.1, 2.7.2.
+#' @param definitionZip A zip archive containing the workflow definition for this workflow
+#' version.
+#' @param definitionUri The URI specifies the location of the workflow definition for this
+#' workflow version.
+#' @param accelerators The computational accelerator for this workflow version.
+#' @param description A description for this workflow version.
+#' @param engine The workflow engine for this workflow version.
+#' @param main The path of the main definition file for this workflow version.
+#' @param parameterTemplate The parameter template defines the input parameters for runs that use
+#' this workflow version.
+#' @param requestId &#91;required&#93; To ensure that requests don't run multiple times, specify a unique ID
+#' for each request.
+#' @param storageType The default storage type for runs that use this workflow. STATIC storage
+#' allocates a fixed amount of storage. DYNAMIC storage dynamically scales
+#' the storage up or down, based on file system utilization. For more
+#' information about static and dynamic storage, see [Running
+#' workflows](https://docs.aws.amazon.com/omics/latest/dev/) in the *Amazon
+#' Web Services HealthOmics User Guide*.
+#' @param storageCapacity The default static storage capacity (in gibibytes) for runs that use
+#' this workflow or workflow version.
+#' @param tags Optional tags to associate with this workflow version.
+#' @param workflowBucketOwnerId Amazon Web Services Id of the owner of the S3 bucket that contains the
+#' workflow definition. You need to specify this parameter if your account
+#' is not the bucket owner.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   workflowId = "string",
+#'   versionName = "string",
+#'   status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETED"|"FAILED"|"INACTIVE",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   uuid = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_workflow_version(
+#'   workflowId = "string",
+#'   versionName = "string",
+#'   definitionZip = raw,
+#'   definitionUri = "string",
+#'   accelerators = "GPU",
+#'   description = "string",
+#'   engine = "WDL"|"NEXTFLOW"|"CWL",
+#'   main = "string",
+#'   parameterTemplate = list(
+#'     list(
+#'       description = "string",
+#'       optional = TRUE|FALSE
+#'     )
+#'   ),
+#'   requestId = "string",
+#'   storageType = "STATIC"|"DYNAMIC",
+#'   storageCapacity = 123,
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   workflowBucketOwnerId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname omics_create_workflow_version
+#'
+#' @aliases omics_create_workflow_version
+omics_create_workflow_version <- function(workflowId, versionName, definitionZip = NULL, definitionUri = NULL, accelerators = NULL, description = NULL, engine = NULL, main = NULL, parameterTemplate = NULL, requestId, storageType = NULL, storageCapacity = NULL, tags = NULL, workflowBucketOwnerId = NULL) {
+  op <- new_operation(
+    name = "CreateWorkflowVersion",
+    http_method = "POST",
+    http_path = "/workflow/{workflowId}/version",
+    host_prefix = "workflows-",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .omics$create_workflow_version_input(workflowId = workflowId, versionName = versionName, definitionZip = definitionZip, definitionUri = definitionUri, accelerators = accelerators, description = description, engine = engine, main = main, parameterTemplate = parameterTemplate, requestId = requestId, storageType = storageType, storageCapacity = storageCapacity, tags = tags, workflowBucketOwnerId = workflowBucketOwnerId)
+  output <- .omics$create_workflow_version_output()
+  config <- get_config()
+  svc <- .omics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.omics$operations$create_workflow_version <- omics_create_workflow_version
 
 #' Deletes an annotation store
 #'
@@ -1468,7 +1632,7 @@ omics_delete_run <- function(id) {
 #' 
 #' For more information, see [Deleting a run
 #' cache](https://docs.aws.amazon.com/omics/latest/dev/workflow-cache-delete.html)
-#' in the AWS HealthOmics User Guide.
+#' in the Amazon Web Services HealthOmics User Guide.
 #'
 #' @usage
 #' omics_delete_run_cache(id)
@@ -1786,6 +1950,57 @@ omics_delete_workflow <- function(id) {
   return(response)
 }
 .omics$operations$delete_workflow <- omics_delete_workflow
+
+#' Deletes a workflow version
+#'
+#' @description
+#' Deletes a workflow version. Deleting a workflow version doesn't affect
+#' any ongoing runs that are using the workflow version.
+#' 
+#' For more information, see [Workflow versioning in Amazon Web Services
+#' HealthOmics](https://docs.aws.amazon.com/omics/latest/dev/workflow-versions.html)
+#' in the Amazon Web Services HealthOmics User Guide.
+#'
+#' @usage
+#' omics_delete_workflow_version(workflowId, versionName)
+#'
+#' @param workflowId &#91;required&#93; The workflow's ID.
+#' @param versionName &#91;required&#93; The workflow version name.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_workflow_version(
+#'   workflowId = "string",
+#'   versionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname omics_delete_workflow_version
+#'
+#' @aliases omics_delete_workflow_version
+omics_delete_workflow_version <- function(workflowId, versionName) {
+  op <- new_operation(
+    name = "DeleteWorkflowVersion",
+    http_method = "DELETE",
+    http_path = "/workflow/{workflowId}/version/{versionName}",
+    host_prefix = "workflows-",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .omics$delete_workflow_version_input(workflowId = workflowId, versionName = versionName)
+  output <- .omics$delete_workflow_version_output()
+  config <- get_config()
+  svc <- .omics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.omics$operations$delete_workflow_version <- omics_delete_workflow_version
 
 #' Gets information about an annotation import job
 #'
@@ -2704,12 +2919,12 @@ omics_get_reference_store <- function(id) {
 #' If a workflow is shared with you, you cannot export information about
 #' the run.
 #' 
-#' HealthOmics stores a fixed number of runs that are available to the
-#' console and API. If GetRun doesn't return the requested run, you can
-#' find run logs for all runs in the CloudWatch logs. For more information
-#' about viewing the run logs, see [CloudWatch
-#' logs](https://docs.aws.amazon.com/omics/latest/dev/) in the *AWS
-#' HealthOmics User Guide*.
+#' Amazon Web Services HealthOmics stores a fixed number of runs that are
+#' available to the console and API. If GetRun doesn't return the requested
+#' run, you can find run logs for all runs in the CloudWatch logs. For more
+#' information about viewing the run logs, see [CloudWatch
+#' logs](https://docs.aws.amazon.com/omics/latest/dev/) in the *in the
+#' Amazon Web Services HealthOmics User Guide*.
 #'
 #' @usage
 #' omics_get_run(id, export)
@@ -2767,7 +2982,9 @@ omics_get_reference_store <- function(id) {
 #'   uuid = "string",
 #'   runOutputUri = "string",
 #'   storageType = "STATIC"|"DYNAMIC",
-#'   workflowOwnerId = "string"
+#'   workflowOwnerId = "string",
+#'   workflowVersionName = "string",
+#'   workflowUuid = "string"
 #' )
 #' ```
 #'
@@ -2810,9 +3027,9 @@ omics_get_run <- function(id, export = NULL) {
 #' @description
 #' Retrieve the details for the specified run cache.
 #' 
-#' For more information, see [Call caching for HealthOmics
-#' runs](https://docs.aws.amazon.com/omics/latest/dev/) in the AWS
-#' HealthOmics User Guide.
+#' For more information, see [Call caching for Amazon Web Services
+#' HealthOmics runs](https://docs.aws.amazon.com/omics/latest/dev/) in the
+#' Amazon Web Services HealthOmics User Guide.
 #'
 #' @usage
 #' omics_get_run_cache(id)
@@ -3386,7 +3603,9 @@ omics_get_variant_store <- function(name) {
 #'   metadata = list(
 #'     "string"
 #'   ),
-#'   accelerators = "GPU"
+#'   accelerators = "GPU",
+#'   storageType = "STATIC"|"DYNAMIC",
+#'   uuid = "string"
 #' )
 #' ```
 #'
@@ -3425,6 +3644,99 @@ omics_get_workflow <- function(id, type = NULL, export = NULL, workflowOwnerId =
   return(response)
 }
 .omics$operations$get_workflow <- omics_get_workflow
+
+#' Gets information about a workflow version
+#'
+#' @description
+#' Gets information about a workflow version. For more information, see
+#' [Workflow versioning in Amazon Web Services
+#' HealthOmics](https://docs.aws.amazon.com/omics/latest/dev/workflow-versions.html)
+#' in the Amazon Web Services HealthOmics User Guide.
+#'
+#' @usage
+#' omics_get_workflow_version(workflowId, versionName, type, export,
+#'   workflowOwnerId)
+#'
+#' @param workflowId &#91;required&#93; The workflow's ID.
+#' @param versionName &#91;required&#93; The workflow version name.
+#' @param type The workflow's type.
+#' @param export The export format for the workflow.
+#' @param workflowOwnerId Amazon Web Services Id of the owner of the workflow.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   workflowId = "string",
+#'   versionName = "string",
+#'   accelerators = "GPU",
+#'   creationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   description = "string",
+#'   definition = "string",
+#'   digest = "string",
+#'   engine = "WDL"|"NEXTFLOW"|"CWL",
+#'   main = "string",
+#'   metadata = list(
+#'     "string"
+#'   ),
+#'   parameterTemplate = list(
+#'     list(
+#'       description = "string",
+#'       optional = TRUE|FALSE
+#'     )
+#'   ),
+#'   status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETED"|"FAILED"|"INACTIVE",
+#'   statusMessage = "string",
+#'   storageType = "STATIC"|"DYNAMIC",
+#'   storageCapacity = 123,
+#'   type = "PRIVATE"|"READY2RUN",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   uuid = "string",
+#'   workflowBucketOwnerId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_workflow_version(
+#'   workflowId = "string",
+#'   versionName = "string",
+#'   type = "PRIVATE"|"READY2RUN",
+#'   export = list(
+#'     "DEFINITION"
+#'   ),
+#'   workflowOwnerId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname omics_get_workflow_version
+#'
+#' @aliases omics_get_workflow_version
+omics_get_workflow_version <- function(workflowId, versionName, type = NULL, export = NULL, workflowOwnerId = NULL) {
+  op <- new_operation(
+    name = "GetWorkflowVersion",
+    http_method = "GET",
+    http_path = "/workflow/{workflowId}/version/{versionName}",
+    host_prefix = "workflows-",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .omics$get_workflow_version_input(workflowId = workflowId, versionName = versionName, type = type, export = export, workflowOwnerId = workflowOwnerId)
+  output <- .omics$get_workflow_version_output()
+  config <- get_config()
+  svc <- .omics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.omics$operations$get_workflow_version <- omics_get_workflow_version
 
 #' Retrieves a list of annotation import jobs
 #'
@@ -4626,12 +4938,13 @@ omics_list_run_tasks <- function(id, status = NULL, startingToken = NULL, maxRes
 #' @description
 #' Retrieves a list of runs.
 #' 
-#' HealthOmics stores a fixed number of runs that are available to the
-#' console and API. If the ListRuns response doesn't include specific runs
-#' that you expected, you can find run logs for all runs in the CloudWatch
-#' logs. For more information about viewing the run logs, see [CloudWatch
-#' logs](https://docs.aws.amazon.com/omics/latest/dev/) in the *AWS
-#' HealthOmics User Guide*.
+#' Amazon Web Services HealthOmics stores a fixed number of runs that are
+#' available to the console and API. If the ListRuns response doesn't
+#' include specific runs that you expected, you can find run logs for all
+#' runs in the CloudWatch logs. For more information about viewing the run
+#' logs, see [CloudWatch
+#' logs](https://docs.aws.amazon.com/omics/latest/dev/) in the *Amazon Web
+#' Services HealthOmics User Guide*.
 #'
 #' @usage
 #' omics_list_runs(name, runGroupId, startingToken, maxResults, status)
@@ -4665,7 +4978,8 @@ omics_list_run_tasks <- function(id, status = NULL, startingToken = NULL, maxRes
 #'       stopTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       storageType = "STATIC"|"DYNAMIC"
+#'       storageType = "STATIC"|"DYNAMIC",
+#'       workflowVersionName = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -5101,6 +5415,85 @@ omics_list_variant_stores <- function(maxResults = NULL, ids = NULL, nextToken =
   return(response)
 }
 .omics$operations$list_variant_stores <- omics_list_variant_stores
+
+#' Lists the workflow versions for the specified workflow
+#'
+#' @description
+#' Lists the workflow versions for the specified workflow. For more
+#' information, see [Workflow versioning in Amazon Web Services
+#' HealthOmics](https://docs.aws.amazon.com/omics/latest/dev/workflow-versions.html)
+#' in the Amazon Web Services HealthOmics User Guide.
+#'
+#' @usage
+#' omics_list_workflow_versions(workflowId, type, workflowOwnerId,
+#'   startingToken, maxResults)
+#'
+#' @param workflowId &#91;required&#93; The workflow's ID.
+#' @param type The workflow type.
+#' @param workflowOwnerId Amazon Web Services Id of the owner of the workflow.
+#' @param startingToken Specify the pagination token from a previous request to retrieve the
+#' next page of results.
+#' @param maxResults The maximum number of workflows to return in one page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   items = list(
+#'     list(
+#'       arn = "string",
+#'       workflowId = "string",
+#'       versionName = "string",
+#'       description = "string",
+#'       status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETED"|"FAILED"|"INACTIVE",
+#'       type = "PRIVATE"|"READY2RUN",
+#'       digest = "string",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       metadata = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_workflow_versions(
+#'   workflowId = "string",
+#'   type = "PRIVATE"|"READY2RUN",
+#'   workflowOwnerId = "string",
+#'   startingToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname omics_list_workflow_versions
+#'
+#' @aliases omics_list_workflow_versions
+omics_list_workflow_versions <- function(workflowId, type = NULL, workflowOwnerId = NULL, startingToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListWorkflowVersions",
+    http_method = "GET",
+    http_path = "/workflow/{workflowId}/version",
+    host_prefix = "workflows-",
+    paginator = list(input_token = "startingToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
+  )
+  input <- .omics$list_workflow_versions_input(workflowId = workflowId, type = type, workflowOwnerId = workflowOwnerId, startingToken = startingToken, maxResults = maxResults)
+  output <- .omics$list_workflow_versions_output()
+  config <- get_config()
+  svc <- .omics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.omics$operations$list_workflow_versions <- omics_list_workflow_versions
 
 #' Retrieves a list of workflows
 #'
@@ -5599,33 +5992,28 @@ omics_start_reference_import_job <- function(referenceStoreId, roleArn, clientTo
 }
 .omics$operations$start_reference_import_job <- omics_start_reference_import_job
 
-#' Starts a workflow run
+#' Starts a new run or duplicates an existing run
 #'
 #' @description
-#' Starts a workflow run. To duplicate a run, specify the run's ID and a
-#' role ARN. The remaining parameters are copied from the previous run.
+#' Starts a new run or duplicates an existing run.
 #' 
-#' StartRun will not support re-run for a workflow that is shared with you.
+#' For a new run, specify a unique `requestId`, the `workflowId`, and a
+#' role ARN. If you're using static run storage (the default), specify the
+#' required `storageCapacity`.
 #' 
-#' HealthOmics stores a fixed number of runs that are available to the
-#' console and API. By default, HealthOmics doesn't any remove any runs. If
-#' HealthOmics reaches the maximum number of runs, you must manually remove
-#' runs. To have older runs removed automatically, set the retention mode
-#' to `REMOVE`.
+#' You duplicate a run by specifing a unique `requestId`, the `runID` of
+#' the run to duplicate, and a role ARN.
 #' 
-#' By default, the run uses STATIC storage. For STATIC storage, set the
-#' `storageCapacity` field. You can set the storage type to DYNAMIC. You do
-#' not set `storageCapacity`, because HealthOmics dynamically scales the
-#' storage up or down as required. For more information about static and
-#' dynamic storage, see [Running
-#' workflows](https://docs.aws.amazon.com/omics/latest/dev/) in the *AWS
-#' HealthOmics User Guide*.
+#' For more information about the optional parameters in the StartRun
+#' request, see [Starting a
+#' run](https://docs.aws.amazon.com/omics/latest/dev/starting-a-run.html)
+#' in the *Amazon Web Services HealthOmics User Guide*.
 #'
 #' @usage
 #' omics_start_run(workflowId, workflowType, runId, roleArn, name, cacheId,
 #'   cacheBehavior, runGroupId, priority, parameters, storageCapacity,
 #'   outputUri, logLevel, tags, requestId, retentionMode, storageType,
-#'   workflowOwnerId)
+#'   workflowOwnerId, workflowVersionName)
 #'
 #' @param workflowId The run's workflow ID.
 #' @param workflowType The run's workflow type.
@@ -5638,13 +6026,13 @@ omics_start_reference_import_job <- function(referenceStoreId, roleArn, clientTo
 #' override the default behavior for the cache. You had set the default
 #' value when you created the cache. For more information, see [Run cache
 #' behavior](https://docs.aws.amazon.com/omics/latest/dev/how-run-cache.html#run-cache-behavior)
-#' in the AWS HealthOmics User Guide.
+#' in the Amazon Web Services HealthOmics User Guide.
 #' @param runGroupId The run's group ID.
 #' @param priority A priority for the run.
 #' @param parameters Parameters for the run.
-#' @param storageCapacity A storage capacity for the run in gibibytes. This field is not required
-#' if the storage type is dynamic (the system ignores any value that you
-#' enter).
+#' @param storageCapacity The static storage capacity (in gibibytes) for this run. This field is
+#' not required if the storage type is dynamic (the system ignores any
+#' value that you enter).
 #' @param outputUri An output URI for the run.
 #' @param logLevel A log level for the run.
 #' @param tags Tags for the run.
@@ -5652,22 +6040,27 @@ omics_start_reference_import_job <- function(referenceStoreId, roleArn, clientTo
 #' for each request.
 #' @param retentionMode The retention mode for the run. The default value is RETAIN.
 #' 
-#' HealthOmics stores a fixed number of runs that are available to the
-#' console and API. In the default mode (RETAIN), you need to remove runs
-#' manually when the number of run exceeds the maximum. If you set the
-#' retention mode to `REMOVE`, HealthOmics automatically removes runs (that
-#' have mode set to REMOVE) when the number of run exceeds the maximum. All
-#' run logs are available in CloudWatch logs, if you need information about
-#' a run that is no longer available to the API.
+#' Amazon Web Services HealthOmics stores a fixed number of runs that are
+#' available to the console and API. In the default mode (RETAIN), you need
+#' to remove runs manually when the number of run exceeds the maximum. If
+#' you set the retention mode to `REMOVE`, Amazon Web Services HealthOmics
+#' automatically removes runs (that have mode set to REMOVE) when the
+#' number of run exceeds the maximum. All run logs are available in
+#' CloudWatch logs, if you need information about a run that is no longer
+#' available to the API.
 #' 
 #' For more information about retention mode, see [Specifying run retention
 #' mode](https://docs.aws.amazon.com/omics/latest/dev/starting-a-run.html)
-#' in the *AWS HealthOmics User Guide*.
-#' @param storageType The run's storage type. By default, the run uses STATIC storage type,
-#' which allocates a fixed amount of storage. If you set the storage type
-#' to DYNAMIC, HealthOmics dynamically scales the storage up or down, based
-#' on file system utilization.
+#' in the *Amazon Web Services HealthOmics User Guide*.
+#' @param storageType The storage type for the run. By default, the run uses STATIC storage
+#' type, which allocates a fixed amount of storage. If you set the storage
+#' type to DYNAMIC, Amazon Web Services HealthOmics dynamically scales the
+#' storage up or down, based on file system utilization. For more
+#' information about static and dynamic storage, see [Running
+#' workflows](https://docs.aws.amazon.com/omics/latest/dev/) in the *Amazon
+#' Web Services HealthOmics User Guide*.
 #' @param workflowOwnerId The ID of the workflow owner.
+#' @param workflowVersionName The name of the workflow version.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5706,7 +6099,8 @@ omics_start_reference_import_job <- function(referenceStoreId, roleArn, clientTo
 #'   requestId = "string",
 #'   retentionMode = "RETAIN"|"REMOVE",
 #'   storageType = "STATIC"|"DYNAMIC",
-#'   workflowOwnerId = "string"
+#'   workflowOwnerId = "string",
+#'   workflowVersionName = "string"
 #' )
 #' ```
 #'
@@ -5715,7 +6109,7 @@ omics_start_reference_import_job <- function(referenceStoreId, roleArn, clientTo
 #' @rdname omics_start_run
 #'
 #' @aliases omics_start_run
-omics_start_run <- function(workflowId = NULL, workflowType = NULL, runId = NULL, roleArn, name = NULL, cacheId = NULL, cacheBehavior = NULL, runGroupId = NULL, priority = NULL, parameters = NULL, storageCapacity = NULL, outputUri = NULL, logLevel = NULL, tags = NULL, requestId, retentionMode = NULL, storageType = NULL, workflowOwnerId = NULL) {
+omics_start_run <- function(workflowId = NULL, workflowType = NULL, runId = NULL, roleArn, name = NULL, cacheId = NULL, cacheBehavior = NULL, runGroupId = NULL, priority = NULL, parameters = NULL, storageCapacity = NULL, outputUri = NULL, logLevel = NULL, tags = NULL, requestId, retentionMode = NULL, storageType = NULL, workflowOwnerId = NULL, workflowVersionName = NULL) {
   op <- new_operation(
     name = "StartRun",
     http_method = "POST",
@@ -5724,7 +6118,7 @@ omics_start_run <- function(workflowId = NULL, workflowType = NULL, runId = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .omics$start_run_input(workflowId = workflowId, workflowType = workflowType, runId = runId, roleArn = roleArn, name = name, cacheId = cacheId, cacheBehavior = cacheBehavior, runGroupId = runGroupId, priority = priority, parameters = parameters, storageCapacity = storageCapacity, outputUri = outputUri, logLevel = logLevel, tags = tags, requestId = requestId, retentionMode = retentionMode, storageType = storageType, workflowOwnerId = workflowOwnerId)
+  input <- .omics$start_run_input(workflowId = workflowId, workflowType = workflowType, runId = runId, roleArn = roleArn, name = name, cacheId = cacheId, cacheBehavior = cacheBehavior, runGroupId = runGroupId, priority = priority, parameters = parameters, storageCapacity = storageCapacity, outputUri = outputUri, logLevel = logLevel, tags = tags, requestId = requestId, retentionMode = retentionMode, storageType = storageType, workflowOwnerId = workflowOwnerId, workflowVersionName = workflowVersionName)
   output <- .omics$start_run_output()
   config <- get_config()
   svc <- .omics$service(config, op)
@@ -6296,17 +6690,29 @@ omics_update_variant_store <- function(name, description = NULL) {
 }
 .omics$operations$update_variant_store <- omics_update_variant_store
 
-#' Updates a workflow
+#' Updates information about a workflow
 #'
 #' @description
-#' Updates a workflow.
+#' Updates information about a workflow. For more information, see [Update
+#' a private
+#' workflow](https://docs.aws.amazon.com/omics/latest/dev/update-private-workflow.html)
+#' in the Amazon Web Services HealthOmics User Guide.
 #'
 #' @usage
-#' omics_update_workflow(id, name, description)
+#' omics_update_workflow(id, name, description, storageType,
+#'   storageCapacity)
 #'
 #' @param id &#91;required&#93; The workflow's ID.
 #' @param name A name for the workflow.
 #' @param description A description for the workflow.
+#' @param storageType The default storage type for runs that use this workflow. STATIC storage
+#' allocates a fixed amount of storage. DYNAMIC storage dynamically scales
+#' the storage up or down, based on file system utilization. For more
+#' information about static and dynamic storage, see [Running
+#' workflows](https://docs.aws.amazon.com/omics/latest/dev/) in the *Amazon
+#' Web Services HealthOmics User Guide*.
+#' @param storageCapacity The default static storage capacity (in gibibytes) for runs that use
+#' this workflow or workflow version.
 #'
 #' @return
 #' An empty list.
@@ -6316,7 +6722,9 @@ omics_update_variant_store <- function(name, description = NULL) {
 #' svc$update_workflow(
 #'   id = "string",
 #'   name = "string",
-#'   description = "string"
+#'   description = "string",
+#'   storageType = "STATIC"|"DYNAMIC",
+#'   storageCapacity = 123
 #' )
 #' ```
 #'
@@ -6325,7 +6733,7 @@ omics_update_variant_store <- function(name, description = NULL) {
 #' @rdname omics_update_workflow
 #'
 #' @aliases omics_update_workflow
-omics_update_workflow <- function(id, name = NULL, description = NULL) {
+omics_update_workflow <- function(id, name = NULL, description = NULL, storageType = NULL, storageCapacity = NULL) {
   op <- new_operation(
     name = "UpdateWorkflow",
     http_method = "POST",
@@ -6334,7 +6742,7 @@ omics_update_workflow <- function(id, name = NULL, description = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .omics$update_workflow_input(id = id, name = name, description = description)
+  input <- .omics$update_workflow_input(id = id, name = name, description = description, storageType = storageType, storageCapacity = storageCapacity)
   output <- .omics$update_workflow_output()
   config <- get_config()
   svc <- .omics$service(config, op)
@@ -6343,6 +6751,68 @@ omics_update_workflow <- function(id, name = NULL, description = NULL) {
   return(response)
 }
 .omics$operations$update_workflow <- omics_update_workflow
+
+#' Updates information about the workflow version
+#'
+#' @description
+#' Updates information about the workflow version. For more information,
+#' see [Workflow versioning in Amazon Web Services
+#' HealthOmics](https://docs.aws.amazon.com/omics/latest/dev/workflow-versions.html)
+#' in the Amazon Web Services HealthOmics User Guide.
+#'
+#' @usage
+#' omics_update_workflow_version(workflowId, versionName, description,
+#'   storageType, storageCapacity)
+#'
+#' @param workflowId &#91;required&#93; The workflow's ID.
+#' @param versionName &#91;required&#93; The name of the workflow version.
+#' @param description Description of the workflow version.
+#' @param storageType The default storage type for runs that use this workflow. STATIC storage
+#' allocates a fixed amount of storage. DYNAMIC storage dynamically scales
+#' the storage up or down, based on file system utilization. For more
+#' information about static and dynamic storage, see [Running
+#' workflows](https://docs.aws.amazon.com/omics/latest/dev/) in the *Amazon
+#' Web Services HealthOmics User Guide*.
+#' @param storageCapacity The default static storage capacity (in gibibytes) for runs that use
+#' this workflow or workflow version.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_workflow_version(
+#'   workflowId = "string",
+#'   versionName = "string",
+#'   description = "string",
+#'   storageType = "STATIC"|"DYNAMIC",
+#'   storageCapacity = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname omics_update_workflow_version
+#'
+#' @aliases omics_update_workflow_version
+omics_update_workflow_version <- function(workflowId, versionName, description = NULL, storageType = NULL, storageCapacity = NULL) {
+  op <- new_operation(
+    name = "UpdateWorkflowVersion",
+    http_method = "POST",
+    http_path = "/workflow/{workflowId}/version/{versionName}",
+    host_prefix = "workflows-",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .omics$update_workflow_version_input(workflowId = workflowId, versionName = versionName, description = description, storageType = storageType, storageCapacity = storageCapacity)
+  output <- .omics$update_workflow_version_output()
+  config <- get_config()
+  svc <- .omics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.omics$operations$update_workflow_version <- omics_update_workflow_version
 
 #' This operation uploads a specific part of a read set
 #'

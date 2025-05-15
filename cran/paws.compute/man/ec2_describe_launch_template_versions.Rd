@@ -94,7 +94,7 @@ template version is the default version.
 If \code{false}, and if a Systems Manager parameter is specified for
 \code{ImageId}, the parameter is displayed in the response for \code{imageId}.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#use-an-ssm-parameter-instead-of-an-ami-id}{Use a Systems Manager parameter instead of an AMI ID}
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-launch-template.html#use-an-ssm-parameter-instead-of-an-ami-id}{Use a Systems Manager parameter instead of an AMI ID}
 in the \emph{Amazon EC2 User Guide}.
 
 Default: \code{false}}

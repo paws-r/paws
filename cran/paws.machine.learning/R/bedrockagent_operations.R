@@ -207,27 +207,50 @@ bedrockagent_create_agent <- function(agentCollaboration = NULL, agentName, agen
 #' @param description A description of the action group.
 #' @param functionSchema Contains details about the function schema for the action group or the
 #' JSON or YAML-formatted payload defining the schema.
-#' @param parentActionGroupSignature To allow your agent to request the user for additional information when
-#' trying to complete a task, set this field to `AMAZON.UserInput`. You
-#' must leave the `description`, `apiSchema`, and `actionGroupExecutor`
-#' fields blank for this action group.
+#' @param parentActionGroupSignature Specify a built-in or computer use action for this action group. If you
+#' specify a value, you must leave the `description`, `apiSchema`, and
+#' `actionGroupExecutor` fields empty for this action group.
 #' 
-#' To allow your agent to generate, run, and troubleshoot code when trying
-#' to complete a task, set this field to `AMAZON.CodeInterpreter`. You must
-#' leave the `description`, `apiSchema`, and `actionGroupExecutor` fields
-#' blank for this action group.
+#' -   To allow your agent to request the user for additional information
+#'     when trying to complete a task, set this field to
+#'     `AMAZON.UserInput`.
 #' 
-#' During orchestration, if your agent determines that it needs to invoke
-#' an API in an action group, but doesn't have enough information to
-#' complete the API request, it will invoke this action group instead and
-#' return an
-#' [Observation](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_Observation.html)
-#' reprompting the user for more information.
+#' -   To allow your agent to generate, run, and troubleshoot code when
+#'     trying to complete a task, set this field to
+#'     `AMAZON.CodeInterpreter`.
+#' 
+#' -   To allow your agent to use an Anthropic computer use tool, specify
+#'     one of the following values.
+#' 
+#'     Computer use is a new Anthropic Claude model capability (in beta)
+#'     available with Anthropic Claude 3.7 Sonnet and Claude 3.5 Sonnet v2
+#'     only. When operating computer use functionality, we recommend taking
+#'     additional security precautions, such as executing computer actions
+#'     in virtual environments with restricted data access and limited
+#'     internet connectivity. For more information, see [Configure an
+#'     Amazon Bedrock Agent to complete tasks with computer use
+#'     tools](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-computer-use.html).
+#' 
+#'     -   `ANTHROPIC.Computer` - Gives the agent permission to use the
+#'         mouse and keyboard and take screenshots.
+#' 
+#'     -   `ANTHROPIC.TextEditor` - Gives the agent permission to view,
+#'         create and edit files.
+#' 
+#'     -   `ANTHROPIC.Bash` - Gives the agent permission to run commands in
+#'         a bash shell.
+#' @param parentActionGroupSignatureParams The configuration settings for a computer use action.
+#' 
+#' Computer use is a new Anthropic Claude model capability (in beta)
+#' available with Anthropic Claude 3.7 Sonnet and Claude 3.5 Sonnet v2
+#' only. For more information, see [Configure an Amazon Bedrock Agent to
+#' complete tasks with computer use
+#' tools](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-computer-use.html).
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_create_agent_action_group
-bedrockagent_create_agent_action_group <- function(actionGroupExecutor = NULL, actionGroupName, actionGroupState = NULL, agentId, agentVersion, apiSchema = NULL, clientToken = NULL, description = NULL, functionSchema = NULL, parentActionGroupSignature = NULL) {
+bedrockagent_create_agent_action_group <- function(actionGroupExecutor = NULL, actionGroupName, actionGroupState = NULL, agentId, agentVersion, apiSchema = NULL, clientToken = NULL, description = NULL, functionSchema = NULL, parentActionGroupSignature = NULL, parentActionGroupSignatureParams = NULL) {
   op <- new_operation(
     name = "CreateAgentActionGroup",
     http_method = "PUT",
@@ -236,7 +259,7 @@ bedrockagent_create_agent_action_group <- function(actionGroupExecutor = NULL, a
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$create_agent_action_group_input(actionGroupExecutor = actionGroupExecutor, actionGroupName = actionGroupName, actionGroupState = actionGroupState, agentId = agentId, agentVersion = agentVersion, apiSchema = apiSchema, clientToken = clientToken, description = description, functionSchema = functionSchema, parentActionGroupSignature = parentActionGroupSignature)
+  input <- .bedrockagent$create_agent_action_group_input(actionGroupExecutor = actionGroupExecutor, actionGroupName = actionGroupName, actionGroupState = actionGroupState, agentId = agentId, agentVersion = agentVersion, apiSchema = apiSchema, clientToken = clientToken, description = description, functionSchema = functionSchema, parentActionGroupSignature = parentActionGroupSignature, parentActionGroupSignatureParams = parentActionGroupSignatureParams)
   output <- .bedrockagent$create_agent_action_group_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -2450,10 +2473,38 @@ bedrockagent_update_agent <- function(agentCollaboration = NULL, agentId, agentN
 #' @param description Specifies a new name for the action group.
 #' @param functionSchema Contains details about the function schema for the action group or the
 #' JSON or YAML-formatted payload defining the schema.
-#' @param parentActionGroupSignature To allow your agent to request the user for additional information when
-#' trying to complete a task, set this field to `AMAZON.UserInput`. You
-#' must leave the `description`, `apiSchema`, and `actionGroupExecutor`
-#' fields blank for this action group.
+#' @param parentActionGroupSignature Update the built-in or computer use action for this action group. If you
+#' specify a value, you must leave the `description`, `apiSchema`, and
+#' `actionGroupExecutor` fields empty for this action group.
+#' 
+#' -   To allow your agent to request the user for additional information
+#'     when trying to complete a task, set this field to
+#'     `AMAZON.UserInput`.
+#' 
+#' -   To allow your agent to generate, run, and troubleshoot code when
+#'     trying to complete a task, set this field to
+#'     `AMAZON.CodeInterpreter`.
+#' 
+#' -   To allow your agent to use an Anthropic computer use tool, specify
+#'     one of the following values.
+#' 
+#'     Computer use is a new Anthropic Claude model capability (in beta)
+#'     available with Anthropic Claude 3.7 Sonnet and Claude 3.5 Sonnet v2
+#'     only. When operating computer use functionality, we recommend taking
+#'     additional security precautions, such as executing computer actions
+#'     in virtual environments with restricted data access and limited
+#'     internet connectivity. For more information, see [Configure an
+#'     Amazon Bedrock Agent to complete tasks with computer use
+#'     tools](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-computer-use.html).
+#' 
+#'     -   `ANTHROPIC.Computer` - Gives the agent permission to use the
+#'         mouse and keyboard and take screenshots.
+#' 
+#'     -   `ANTHROPIC.TextEditor` - Gives the agent permission to view,
+#'         create and edit files.
+#' 
+#'     -   `ANTHROPIC.Bash` - Gives the agent permission to run commands in
+#'         a bash shell.
 #' 
 #' During orchestration, if your agent determines that it needs to invoke
 #' an API in an action group, but doesn't have enough information to
@@ -2461,11 +2512,18 @@ bedrockagent_update_agent <- function(agentCollaboration = NULL, agentId, agentN
 #' return an
 #' [Observation](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_Observation.html)
 #' reprompting the user for more information.
+#' @param parentActionGroupSignatureParams The configuration settings for a computer use action.
+#' 
+#' Computer use is a new Anthropic Claude model capability (in beta)
+#' available with Claude 3.7 Sonnet and Claude 3.5 Sonnet v2 only. For more
+#' information, see [Configure an Amazon Bedrock Agent to complete tasks
+#' with computer use
+#' tools](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-computer-use.html).
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_update_agent_action_group
-bedrockagent_update_agent_action_group <- function(actionGroupExecutor = NULL, actionGroupId, actionGroupName, actionGroupState = NULL, agentId, agentVersion, apiSchema = NULL, description = NULL, functionSchema = NULL, parentActionGroupSignature = NULL) {
+bedrockagent_update_agent_action_group <- function(actionGroupExecutor = NULL, actionGroupId, actionGroupName, actionGroupState = NULL, agentId, agentVersion, apiSchema = NULL, description = NULL, functionSchema = NULL, parentActionGroupSignature = NULL, parentActionGroupSignatureParams = NULL) {
   op <- new_operation(
     name = "UpdateAgentActionGroup",
     http_method = "PUT",
@@ -2474,7 +2532,7 @@ bedrockagent_update_agent_action_group <- function(actionGroupExecutor = NULL, a
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$update_agent_action_group_input(actionGroupExecutor = actionGroupExecutor, actionGroupId = actionGroupId, actionGroupName = actionGroupName, actionGroupState = actionGroupState, agentId = agentId, agentVersion = agentVersion, apiSchema = apiSchema, description = description, functionSchema = functionSchema, parentActionGroupSignature = parentActionGroupSignature)
+  input <- .bedrockagent$update_agent_action_group_input(actionGroupExecutor = actionGroupExecutor, actionGroupId = actionGroupId, actionGroupName = actionGroupName, actionGroupState = actionGroupState, agentId = agentId, agentVersion = agentVersion, apiSchema = apiSchema, description = description, functionSchema = functionSchema, parentActionGroupSignature = parentActionGroupSignature, parentActionGroupSignatureParams = parentActionGroupSignatureParams)
   output <- .bedrockagent$update_agent_action_group_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)

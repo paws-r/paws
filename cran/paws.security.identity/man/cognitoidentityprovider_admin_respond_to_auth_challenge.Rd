@@ -23,9 +23,88 @@ challenge.}
 
 \item{ClientId}{[required] The ID of the app client where you initiated sign-in.}
 
-\item{ChallengeName}{[required] The name of the challenge that you are responding to. You can find more
-information about values for \code{ChallengeName} in the response parameters
-of \code{\link[=cognitoidentityprovider_admin_initiate_auth]{admin_initiate_auth}}.}
+\item{ChallengeName}{[required] The name of the challenge that you are responding to.
+
+Possible challenges include the following:
+
+All of the following challenges require \code{USERNAME} and, when the app
+client has a client secret, \code{SECRET_HASH} in the parameters.
+\itemize{
+\item \code{WEB_AUTHN}: Respond to the challenge with the results of a
+successful authentication with a WebAuthn authenticator, or passkey.
+Examples of WebAuthn authenticators include biometric devices and
+security keys.
+\item \code{PASSWORD}: Respond with \code{USER_PASSWORD_AUTH} parameters: \code{USERNAME}
+(required), \code{PASSWORD} (required), \code{SECRET_HASH} (required if the
+app client is configured with a client secret), \code{DEVICE_KEY}.
+\item \code{PASSWORD_SRP}: Respond with \code{USER_SRP_AUTH} parameters: \code{USERNAME}
+(required), \code{SRP_A} (required), \code{SECRET_HASH} (required if the app
+client is configured with a client secret), \code{DEVICE_KEY}.
+\item \code{SELECT_CHALLENGE}: Respond to the challenge with \code{USERNAME} and an
+\code{ANSWER} that matches one of the challenge types in the
+\code{AvailableChallenges} response parameter.
+\item \code{SMS_MFA}: Respond with an \code{SMS_MFA_CODE} that your user pool
+delivered in an SMS message.
+\item \code{EMAIL_OTP}: Respond with an \code{EMAIL_OTP_CODE} that your user pool
+delivered in an email message.
+\item \code{PASSWORD_VERIFIER}: Respond with \code{PASSWORD_CLAIM_SIGNATURE},
+\code{PASSWORD_CLAIM_SECRET_BLOCK}, and \code{TIMESTAMP} after client-side SRP
+calculations.
+\item \code{CUSTOM_CHALLENGE}: This is returned if your custom authentication
+flow determines that the user should pass another challenge before
+tokens are issued. The parameters of the challenge are determined by
+your Lambda function.
+\item \code{DEVICE_SRP_AUTH}: Respond with the initial parameters of device SRP
+authentication. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html#user-pools-remembered-devices-signing-in-with-a-device}{Signing in with a device}.
+\item \code{DEVICE_PASSWORD_VERIFIER}: Respond with \code{PASSWORD_CLAIM_SIGNATURE},
+\code{PASSWORD_CLAIM_SECRET_BLOCK}, and \code{TIMESTAMP} after client-side SRP
+calculations. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html#user-pools-remembered-devices-signing-in-with-a-device}{Signing in with a device}.
+\item \code{NEW_PASSWORD_REQUIRED}: For users who are required to change their
+passwords after successful first login. Respond to this challenge
+with \code{NEW_PASSWORD} and any required attributes that Amazon Cognito
+returned in the \code{requiredAttributes} parameter. You can also set
+values for attributes that aren't required by your user pool and
+that your app client can write.
+
+Amazon Cognito only returns this challenge for users who have
+temporary passwords. When you create passwordless users, you must
+provide values for all required attributes.
+
+In a \code{NEW_PASSWORD_REQUIRED} challenge response, you can't modify a
+required attribute that already has a value. In
+\code{\link[=cognitoidentityprovider_admin_respond_to_auth_challenge]{admin_respond_to_auth_challenge}}
+or
+\code{\link[=cognitoidentityprovider_respond_to_auth_challenge]{respond_to_auth_challenge}},
+set a value for any keys that Amazon Cognito returned in the
+\code{requiredAttributes} parameter, then use the
+\code{\link[=cognitoidentityprovider_admin_update_user_attributes]{admin_update_user_attributes}}
+or
+\code{\link[=cognitoidentityprovider_update_user_attributes]{update_user_attributes}}
+API operation to modify the value of any additional attributes.
+\item \code{MFA_SETUP}: For users who are required to setup an MFA factor
+before they can sign in. The MFA types activated for the user pool
+will be listed in the challenge parameters \code{MFAS_CAN_SETUP} value.
+
+To set up time-based one-time password (TOTP) MFA, use the session
+returned in this challenge from
+\code{\link[=cognitoidentityprovider_initiate_auth]{initiate_auth}} or
+\code{\link[=cognitoidentityprovider_admin_initiate_auth]{admin_initiate_auth}}
+as an input to
+\code{\link[=cognitoidentityprovider_associate_software_token]{associate_software_token}}.
+Then, use the session returned by
+\code{\link[=cognitoidentityprovider_verify_software_token]{verify_software_token}}
+as an input to
+\code{\link[=cognitoidentityprovider_respond_to_auth_challenge]{respond_to_auth_challenge}}
+or
+\code{\link[=cognitoidentityprovider_admin_respond_to_auth_challenge]{admin_respond_to_auth_challenge}}
+with challenge name \code{MFA_SETUP} to complete sign-in.
+
+To set up SMS or email MFA, collect a \code{phone_number} or \code{email}
+attribute for the user. Then restart the authentication flow with an
+\code{\link[=cognitoidentityprovider_initiate_auth]{initiate_auth}} or
+\code{\link[=cognitoidentityprovider_admin_initiate_auth]{admin_initiate_auth}}
+request.
+}}
 
 \item{ChallengeResponses}{The responses to the challenge that you received in the previous
 request. Each challenge has its own required response parameters. The
@@ -104,9 +183,13 @@ user pool.
 
 In a \code{NEW_PASSWORD_REQUIRED} challenge response, you can't modify a
 required attribute that already has a value. In
+\code{\link[=cognitoidentityprovider_admin_respond_to_auth_challenge]{admin_respond_to_auth_challenge}}
+or
 \code{\link[=cognitoidentityprovider_respond_to_auth_challenge]{respond_to_auth_challenge}},
 set a value for any keys that Amazon Cognito returned in the
 \code{requiredAttributes} parameter, then use the
+\code{\link[=cognitoidentityprovider_admin_update_user_attributes]{admin_update_user_attributes}}
+or
 \code{\link[=cognitoidentityprovider_update_user_attributes]{update_user_attributes}}
 API operation to modify the value of any additional attributes.
 
@@ -143,12 +226,13 @@ parameters. Send this session identifier, unmodified, to the next
 \code{\link[=cognitoidentityprovider_admin_respond_to_auth_challenge]{admin_respond_to_auth_challenge}}
 request.}
 
-\item{AnalyticsMetadata}{The analytics metadata for collecting Amazon Pinpoint metrics for
-\code{\link[=cognitoidentityprovider_admin_respond_to_auth_challenge]{admin_respond_to_auth_challenge}}
-calls.}
+\item{AnalyticsMetadata}{Information that supports analytics outcomes with Amazon Pinpoint,
+including the user's endpoint ID. The endpoint ID is a destination for
+Amazon Pinpoint push notifications, for example a device identifier,
+email address, or phone number.}
 
-\item{ContextData}{Contextual data about your user session, such as the device fingerprint,
-IP address, or location. Amazon Cognito advanced security evaluates the
+\item{ContextData}{Contextual data about your user session like the device fingerprint, IP
+address, or location. Amazon Cognito threat protection evaluates the
 risk of an authentication event based on the context that your app
 generates and passes to Amazon Cognito when it makes API requests.
 
@@ -179,7 +263,7 @@ the ClientMetadata parameter in your AdminRespondToAuthChallenge
 request. In your function code in Lambda, you can process the
 \code{clientMetadata} value to enhance your workflow for your specific needs.
 
-For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Using Lambda triggers}
 in the \emph{Amazon Cognito Developer Guide}.
 
 When you use the \code{ClientMetadata} parameter, note that Amazon Cognito

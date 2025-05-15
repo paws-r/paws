@@ -56,16 +56,26 @@ run and when these test runs are to stop.}
 \item{RunConfig}{A structure that contains the configuration for individual canary runs,
 such as timeout value and environment variables.
 
-The environment variables keys and values are not encrypted. Do not
-store sensitive information in this field.}
+Environment variable keys and values are encrypted at rest using Amazon
+Web Services owned KMS keys. However, the environment variables are not
+encrypted on the client side. Do not store sensitive information in
+them.}
 
 \item{SuccessRetentionPeriodInDays}{The number of days to retain data about successful runs of this canary.
 If you omit this field, the default of 31 days is used. The valid range
-is 1 to 455 days.}
+is 1 to 455 days.
+
+This setting affects the range of information returned by
+\code{\link[=synthetics_get_canary_runs]{get_canary_runs}}, as well as the range of
+information displayed in the Synthetics console.}
 
 \item{FailureRetentionPeriodInDays}{The number of days to retain data about failed runs of this canary. If
 you omit this field, the default of 31 days is used. The valid range is
-1 to 455 days.}
+1 to 455 days.
+
+This setting affects the range of information returned by
+\code{\link[=synthetics_get_canary_runs]{get_canary_runs}}, as well as the range of
+information displayed in the Synthetics console.}
 
 \item{RuntimeVersion}{[required] Specifies the runtime version to use for the canary. For a list of valid
 runtime versions and more information about runtime versions, see

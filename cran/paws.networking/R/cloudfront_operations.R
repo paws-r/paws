@@ -36,6 +36,76 @@ cloudfront_associate_alias <- function(TargetDistributionId, Alias) {
 }
 .cloudfront$operations$associate_alias <- cloudfront_associate_alias
 
+#' Associates the WAF web ACL with a distribution tenant
+#'
+#' @description
+#' Associates the WAF web ACL with a distribution tenant.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_associate_distribution_tenant_web_acl/](https://www.paws-r-sdk.com/docs/cloudfront_associate_distribution_tenant_web_acl/) for full documentation.
+#'
+#' @param Id &#91;required&#93; The ID of the distribution tenant.
+#' @param WebACLArn &#91;required&#93; The Amazon Resource Name (ARN) of the WAF web ACL to associate.
+#' @param IfMatch The current `ETag` of the distribution tenant. This value is returned in
+#' the response of the
+#' [`get_distribution_tenant`][cloudfront_get_distribution_tenant] API
+#' operation.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_associate_distribution_tenant_web_acl
+cloudfront_associate_distribution_tenant_web_acl <- function(Id, WebACLArn, IfMatch = NULL) {
+  op <- new_operation(
+    name = "AssociateDistributionTenantWebACL",
+    http_method = "PUT",
+    http_path = "/2020-05-31/distribution-tenant/{Id}/associate-web-acl",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$associate_distribution_tenant_web_acl_input(Id = Id, WebACLArn = WebACLArn, IfMatch = IfMatch)
+  output <- .cloudfront$associate_distribution_tenant_web_acl_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$associate_distribution_tenant_web_acl <- cloudfront_associate_distribution_tenant_web_acl
+
+#' Associates the WAF web ACL with a distribution
+#'
+#' @description
+#' Associates the WAF web ACL with a distribution.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_associate_distribution_web_acl/](https://www.paws-r-sdk.com/docs/cloudfront_associate_distribution_web_acl/) for full documentation.
+#'
+#' @param Id &#91;required&#93; The ID of the distribution.
+#' @param WebACLArn &#91;required&#93; The Amazon Resource Name (ARN) of the WAF web ACL to associate.
+#' @param IfMatch The value of the `ETag` header that you received when retrieving the
+#' distribution that you're associating with the WAF web ACL.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_associate_distribution_web_acl
+cloudfront_associate_distribution_web_acl <- function(Id, WebACLArn, IfMatch = NULL) {
+  op <- new_operation(
+    name = "AssociateDistributionWebACL",
+    http_method = "PUT",
+    http_path = "/2020-05-31/distribution/{Id}/associate-web-acl",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$associate_distribution_web_acl_input(Id = Id, WebACLArn = WebACLArn, IfMatch = IfMatch)
+  output <- .cloudfront$associate_distribution_web_acl_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$associate_distribution_web_acl <- cloudfront_associate_distribution_web_acl
+
 #' Creates a staging distribution using the configuration of the provided
 #' primary distribution
 #'
@@ -95,7 +165,7 @@ cloudfront_copy_distribution <- function(PrimaryDistributionId, Staging = NULL, 
 #'
 #' @param Name &#91;required&#93; Name of the Anycast static IP list.
 #' @param IpCount &#91;required&#93; The number of static IP addresses that are allocated to the Anycast
-#' static IP list.
+#' static IP list. Valid values: 21 or 3.
 #' @param Tags 
 #'
 #' @keywords internal
@@ -182,6 +252,46 @@ cloudfront_create_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 }
 .cloudfront$operations$create_cloud_front_origin_access_identity <- cloudfront_create_cloud_front_origin_access_identity
 
+#' Creates a connection group
+#'
+#' @description
+#' Creates a connection group.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_create_connection_group/](https://www.paws-r-sdk.com/docs/cloudfront_create_connection_group/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the connection group. Enter a friendly identifier that is
+#' unique within your Amazon Web Services account. This name can't be
+#' updated after you create the connection group.
+#' @param Ipv6Enabled Enable IPv6 for the connection group. The default is `true`. For more
+#' information, see [Enable
+#' IPv6](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesEnableIPv6)
+#' in the *Amazon CloudFront Developer Guide*.
+#' @param Tags 
+#' @param AnycastIpListId The ID of the Anycast static IP list.
+#' @param Enabled Enable the connection group.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_create_connection_group
+cloudfront_create_connection_group <- function(Name, Ipv6Enabled = NULL, Tags = NULL, AnycastIpListId = NULL, Enabled = NULL) {
+  op <- new_operation(
+    name = "CreateConnectionGroup",
+    http_method = "POST",
+    http_path = "/2020-05-31/connection-group",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$create_connection_group_input(Name = Name, Ipv6Enabled = Ipv6Enabled, Tags = Tags, AnycastIpListId = AnycastIpListId, Enabled = Enabled)
+  output <- .cloudfront$create_connection_group_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$create_connection_group <- cloudfront_create_connection_group
+
 #' Creates a continuous deployment policy that distributes traffic for a
 #' custom domain name to two different CloudFront distributions
 #'
@@ -244,6 +354,59 @@ cloudfront_create_distribution <- function(DistributionConfig) {
   return(response)
 }
 .cloudfront$operations$create_distribution <- cloudfront_create_distribution
+
+#' Creates a distribution tenant
+#'
+#' @description
+#' Creates a distribution tenant.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_create_distribution_tenant/](https://www.paws-r-sdk.com/docs/cloudfront_create_distribution_tenant/) for full documentation.
+#'
+#' @param DistributionId &#91;required&#93; The ID of the multi-tenant distribution to use for creating the
+#' distribution tenant.
+#' @param Name &#91;required&#93; The name of the distribution tenant. Enter a friendly identifier that is
+#' unique within your Amazon Web Services account. This name can't be
+#' updated after you create the distribution tenant.
+#' @param Domains &#91;required&#93; The domains associated with the distribution tenant. You must specify at
+#' least one domain in the request.
+#' @param Tags 
+#' @param Customizations Customizations for the distribution tenant. For each distribution
+#' tenant, you can specify the geographic restrictions, and the Amazon
+#' Resource Names (ARNs) for the ACM certificate and WAF web ACL. These are
+#' specific values that you can override or disable from the multi-tenant
+#' distribution that was used to create the distribution tenant.
+#' @param Parameters A list of parameter values to add to the resource. A parameter is
+#' specified as a key-value pair. A valid parameter value must exist for
+#' any parameter that is marked as required in the multi-tenant
+#' distribution.
+#' @param ConnectionGroupId The ID of the connection group to associate with the distribution
+#' tenant.
+#' @param ManagedCertificateRequest The configuration for the CloudFront managed ACM certificate request.
+#' @param Enabled Indicates whether the distribution tenant should be enabled when
+#' created. If the distribution tenant is disabled, the distribution tenant
+#' won't serve traffic.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_create_distribution_tenant
+cloudfront_create_distribution_tenant <- function(DistributionId, Name, Domains, Tags = NULL, Customizations = NULL, Parameters = NULL, ConnectionGroupId = NULL, ManagedCertificateRequest = NULL, Enabled = NULL) {
+  op <- new_operation(
+    name = "CreateDistributionTenant",
+    http_method = "POST",
+    http_path = "/2020-05-31/distribution-tenant",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$create_distribution_tenant_input(DistributionId = DistributionId, Name = Name, Domains = Domains, Tags = Tags, Customizations = Customizations, Parameters = Parameters, ConnectionGroupId = ConnectionGroupId, ManagedCertificateRequest = ManagedCertificateRequest, Enabled = Enabled)
+  output <- .cloudfront$create_distribution_tenant_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$create_distribution_tenant <- cloudfront_create_distribution_tenant
 
 #' Create a new distribution with tags
 #'
@@ -407,6 +570,38 @@ cloudfront_create_invalidation <- function(DistributionId, InvalidationBatch) {
 }
 .cloudfront$operations$create_invalidation <- cloudfront_create_invalidation
 
+#' Creates an invalidation for a distribution tenant
+#'
+#' @description
+#' Creates an invalidation for a distribution tenant. For more information, see [Invalidating files](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html) in the *Amazon CloudFront Developer Guide*.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_create_invalidation_for_distribution_tenant/](https://www.paws-r-sdk.com/docs/cloudfront_create_invalidation_for_distribution_tenant/) for full documentation.
+#'
+#' @param Id &#91;required&#93; The ID of the distribution tenant.
+#' @param InvalidationBatch &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_create_invalidation_for_distribution_tenant
+cloudfront_create_invalidation_for_distribution_tenant <- function(Id, InvalidationBatch) {
+  op <- new_operation(
+    name = "CreateInvalidationForDistributionTenant",
+    http_method = "POST",
+    http_path = "/2020-05-31/distribution-tenant/{Id}/invalidation",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$create_invalidation_for_distribution_tenant_input(Id = Id, InvalidationBatch = InvalidationBatch)
+  output <- .cloudfront$create_invalidation_for_distribution_tenant_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$create_invalidation_for_distribution_tenant <- cloudfront_create_invalidation_for_distribution_tenant
+
 #' Creates a key group that you can use with CloudFront signed URLs and
 #' signed cookies
 #'
@@ -474,11 +669,11 @@ cloudfront_create_key_value_store <- function(Name, Comment = NULL, ImportSource
 }
 .cloudfront$operations$create_key_value_store <- cloudfront_create_key_value_store
 
-#' Enables additional CloudWatch metrics for the specified CloudFront
-#' distribution
+#' Enables or disables additional Amazon CloudWatch metrics for the
+#' specified CloudFront distribution
 #'
 #' @description
-#' Enables additional CloudWatch metrics for the specified CloudFront distribution. The additional metrics incur an additional cost.
+#' Enables or disables additional Amazon CloudWatch metrics for the specified CloudFront distribution. The additional metrics incur an additional cost.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudfront_create_monitoring_subscription/](https://www.paws-r-sdk.com/docs/cloudfront_create_monitoring_subscription/) for full documentation.
 #'
@@ -874,6 +1069,39 @@ cloudfront_delete_cloud_front_origin_access_identity <- function(Id, IfMatch = N
 }
 .cloudfront$operations$delete_cloud_front_origin_access_identity <- cloudfront_delete_cloud_front_origin_access_identity
 
+#' Deletes a connection group
+#'
+#' @description
+#' Deletes a connection group.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_delete_connection_group/](https://www.paws-r-sdk.com/docs/cloudfront_delete_connection_group/) for full documentation.
+#'
+#' @param Id &#91;required&#93; The ID of the connection group to delete.
+#' @param IfMatch &#91;required&#93; The value of the `ETag` header that you received when retrieving the
+#' connection group to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_delete_connection_group
+cloudfront_delete_connection_group <- function(Id, IfMatch) {
+  op <- new_operation(
+    name = "DeleteConnectionGroup",
+    http_method = "DELETE",
+    http_path = "/2020-05-31/connection-group/{Id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$delete_connection_group_input(Id = Id, IfMatch = IfMatch)
+  output <- .cloudfront$delete_connection_group_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$delete_connection_group <- cloudfront_delete_connection_group
+
 #' Deletes a continuous deployment policy
 #'
 #' @description
@@ -940,6 +1168,41 @@ cloudfront_delete_distribution <- function(Id, IfMatch = NULL) {
   return(response)
 }
 .cloudfront$operations$delete_distribution <- cloudfront_delete_distribution
+
+#' Deletes a distribution tenant
+#'
+#' @description
+#' Deletes a distribution tenant. If you use this API operation to delete a distribution tenant that is currently enabled, the request will fail.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_delete_distribution_tenant/](https://www.paws-r-sdk.com/docs/cloudfront_delete_distribution_tenant/) for full documentation.
+#'
+#' @param Id &#91;required&#93; The ID of the distribution tenant to delete.
+#' @param IfMatch &#91;required&#93; The value of the `ETag` header that you received when retrieving the
+#' distribution tenant. This value is returned in the response of the
+#' [`get_distribution_tenant`][cloudfront_get_distribution_tenant] API
+#' operation.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_delete_distribution_tenant
+cloudfront_delete_distribution_tenant <- function(Id, IfMatch) {
+  op <- new_operation(
+    name = "DeleteDistributionTenant",
+    http_method = "DELETE",
+    http_path = "/2020-05-31/distribution-tenant/{Id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$delete_distribution_tenant_input(Id = Id, IfMatch = IfMatch)
+  output <- .cloudfront$delete_distribution_tenant_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$delete_distribution_tenant <- cloudfront_delete_distribution_tenant
 
 #' Remove a field-level encryption configuration
 #'
@@ -1453,6 +1716,75 @@ cloudfront_describe_key_value_store <- function(Name) {
 }
 .cloudfront$operations$describe_key_value_store <- cloudfront_describe_key_value_store
 
+#' Disassociates a distribution tenant from the WAF web ACL
+#'
+#' @description
+#' Disassociates a distribution tenant from the WAF web ACL.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_disassociate_distribution_tenant_web_acl/](https://www.paws-r-sdk.com/docs/cloudfront_disassociate_distribution_tenant_web_acl/) for full documentation.
+#'
+#' @param Id &#91;required&#93; The ID of the distribution tenant.
+#' @param IfMatch The current version of the distribution tenant that you're
+#' disassociating from the WAF web ACL. This is the `ETag` value returned
+#' in the response to the
+#' [`get_distribution_tenant`][cloudfront_get_distribution_tenant] API
+#' operation.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_disassociate_distribution_tenant_web_acl
+cloudfront_disassociate_distribution_tenant_web_acl <- function(Id, IfMatch = NULL) {
+  op <- new_operation(
+    name = "DisassociateDistributionTenantWebACL",
+    http_method = "PUT",
+    http_path = "/2020-05-31/distribution-tenant/{Id}/disassociate-web-acl",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$disassociate_distribution_tenant_web_acl_input(Id = Id, IfMatch = IfMatch)
+  output <- .cloudfront$disassociate_distribution_tenant_web_acl_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$disassociate_distribution_tenant_web_acl <- cloudfront_disassociate_distribution_tenant_web_acl
+
+#' Disassociates a distribution from the WAF web ACL
+#'
+#' @description
+#' Disassociates a distribution from the WAF web ACL.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_disassociate_distribution_web_acl/](https://www.paws-r-sdk.com/docs/cloudfront_disassociate_distribution_web_acl/) for full documentation.
+#'
+#' @param Id &#91;required&#93; The ID of the distribution.
+#' @param IfMatch The value of the `ETag` header that you received when retrieving the
+#' distribution that you're disassociating from the WAF web ACL.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_disassociate_distribution_web_acl
+cloudfront_disassociate_distribution_web_acl <- function(Id, IfMatch = NULL) {
+  op <- new_operation(
+    name = "DisassociateDistributionWebACL",
+    http_method = "PUT",
+    http_path = "/2020-05-31/distribution/{Id}/disassociate-web-acl",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$disassociate_distribution_web_acl_input(Id = Id, IfMatch = IfMatch)
+  output <- .cloudfront$disassociate_distribution_web_acl_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$disassociate_distribution_web_acl <- cloudfront_disassociate_distribution_web_acl
+
 #' Gets an Anycast static IP list
 #'
 #' @description
@@ -1618,6 +1950,70 @@ cloudfront_get_cloud_front_origin_access_identity_config <- function(Id) {
 }
 .cloudfront$operations$get_cloud_front_origin_access_identity_config <- cloudfront_get_cloud_front_origin_access_identity_config
 
+#' Gets information about a connection group
+#'
+#' @description
+#' Gets information about a connection group.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_get_connection_group/](https://www.paws-r-sdk.com/docs/cloudfront_get_connection_group/) for full documentation.
+#'
+#' @param Identifier &#91;required&#93; The ID, name, or Amazon Resource Name (ARN) of the connection group.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_get_connection_group
+cloudfront_get_connection_group <- function(Identifier) {
+  op <- new_operation(
+    name = "GetConnectionGroup",
+    http_method = "GET",
+    http_path = "/2020-05-31/connection-group/{Identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$get_connection_group_input(Identifier = Identifier)
+  output <- .cloudfront$get_connection_group_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$get_connection_group <- cloudfront_get_connection_group
+
+#' Gets information about a connection group by using the endpoint that you
+#' specify
+#'
+#' @description
+#' Gets information about a connection group by using the endpoint that you specify.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_get_connection_group_by_routing_endpoint/](https://www.paws-r-sdk.com/docs/cloudfront_get_connection_group_by_routing_endpoint/) for full documentation.
+#'
+#' @param RoutingEndpoint &#91;required&#93; The routing endpoint for the target connection group, such as
+#' d111111abcdef8.cloudfront.net.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_get_connection_group_by_routing_endpoint
+cloudfront_get_connection_group_by_routing_endpoint <- function(RoutingEndpoint) {
+  op <- new_operation(
+    name = "GetConnectionGroupByRoutingEndpoint",
+    http_method = "GET",
+    http_path = "/2020-05-31/connection-group",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$get_connection_group_by_routing_endpoint_input(RoutingEndpoint = RoutingEndpoint)
+  output <- .cloudfront$get_connection_group_by_routing_endpoint_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$get_connection_group_by_routing_endpoint <- cloudfront_get_connection_group_by_routing_endpoint
+
 #' Gets a continuous deployment policy, including metadata (the policy's
 #' identifier and the date and time when the policy was last modified)
 #'
@@ -1745,6 +2141,69 @@ cloudfront_get_distribution_config <- function(Id) {
   return(response)
 }
 .cloudfront$operations$get_distribution_config <- cloudfront_get_distribution_config
+
+#' Gets information about a distribution tenant
+#'
+#' @description
+#' Gets information about a distribution tenant.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_get_distribution_tenant/](https://www.paws-r-sdk.com/docs/cloudfront_get_distribution_tenant/) for full documentation.
+#'
+#' @param Identifier &#91;required&#93; The identifier of the distribution tenant. You can specify the ARN, ID,
+#' or name of the distribution tenant.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_get_distribution_tenant
+cloudfront_get_distribution_tenant <- function(Identifier) {
+  op <- new_operation(
+    name = "GetDistributionTenant",
+    http_method = "GET",
+    http_path = "/2020-05-31/distribution-tenant/{Identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$get_distribution_tenant_input(Identifier = Identifier)
+  output <- .cloudfront$get_distribution_tenant_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$get_distribution_tenant <- cloudfront_get_distribution_tenant
+
+#' Gets information about a distribution tenant by the associated domain
+#'
+#' @description
+#' Gets information about a distribution tenant by the associated domain.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_get_distribution_tenant_by_domain/](https://www.paws-r-sdk.com/docs/cloudfront_get_distribution_tenant_by_domain/) for full documentation.
+#'
+#' @param Domain &#91;required&#93; A domain name associated with the target distribution tenant.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_get_distribution_tenant_by_domain
+cloudfront_get_distribution_tenant_by_domain <- function(Domain) {
+  op <- new_operation(
+    name = "GetDistributionTenantByDomain",
+    http_method = "GET",
+    http_path = "/2020-05-31/distribution-tenant",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$get_distribution_tenant_by_domain_input(Domain = Domain)
+  output <- .cloudfront$get_distribution_tenant_by_domain_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$get_distribution_tenant_by_domain <- cloudfront_get_distribution_tenant_by_domain
 
 #' Get the field-level encryption configuration information
 #'
@@ -1936,6 +2395,38 @@ cloudfront_get_invalidation <- function(DistributionId, Id) {
 }
 .cloudfront$operations$get_invalidation <- cloudfront_get_invalidation
 
+#' Gets information about a specific invalidation for a distribution tenant
+#'
+#' @description
+#' Gets information about a specific invalidation for a distribution tenant.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_get_invalidation_for_distribution_tenant/](https://www.paws-r-sdk.com/docs/cloudfront_get_invalidation_for_distribution_tenant/) for full documentation.
+#'
+#' @param DistributionTenantId &#91;required&#93; The ID of the distribution tenant.
+#' @param Id &#91;required&#93; The ID of the invalidation to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_get_invalidation_for_distribution_tenant
+cloudfront_get_invalidation_for_distribution_tenant <- function(DistributionTenantId, Id) {
+  op <- new_operation(
+    name = "GetInvalidationForDistributionTenant",
+    http_method = "GET",
+    http_path = "/2020-05-31/distribution-tenant/{DistributionTenantId}/invalidation/{Id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$get_invalidation_for_distribution_tenant_input(DistributionTenantId = DistributionTenantId, Id = Id)
+  output <- .cloudfront$get_invalidation_for_distribution_tenant_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$get_invalidation_for_distribution_tenant <- cloudfront_get_invalidation_for_distribution_tenant
+
 #' Gets a key group, including the date and time when the key group was
 #' last modified
 #'
@@ -2000,6 +2491,38 @@ cloudfront_get_key_group_config <- function(Id) {
   return(response)
 }
 .cloudfront$operations$get_key_group_config <- cloudfront_get_key_group_config
+
+#' Gets details about the CloudFront managed ACM certificate
+#'
+#' @description
+#' Gets details about the CloudFront managed ACM certificate.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_get_managed_certificate_details/](https://www.paws-r-sdk.com/docs/cloudfront_get_managed_certificate_details/) for full documentation.
+#'
+#' @param Identifier &#91;required&#93; The identifier of the distribution tenant. You can specify the ARN, ID,
+#' or name of the distribution tenant.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_get_managed_certificate_details
+cloudfront_get_managed_certificate_details <- function(Identifier) {
+  op <- new_operation(
+    name = "GetManagedCertificateDetails",
+    http_method = "GET",
+    http_path = "/2020-05-31/managed-certificate/{Identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$get_managed_certificate_details_input(Identifier = Identifier)
+  output <- .cloudfront$get_managed_certificate_details_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$get_managed_certificate_details <- cloudfront_get_managed_certificate_details
 
 #' Gets information about whether additional CloudWatch metrics are enabled
 #' for the specified CloudFront distribution
@@ -2598,6 +3121,39 @@ cloudfront_list_conflicting_aliases <- function(DistributionId, Alias, Marker = 
 }
 .cloudfront$operations$list_conflicting_aliases <- cloudfront_list_conflicting_aliases
 
+#' Lists the connection groups in your Amazon Web Services account
+#'
+#' @description
+#' Lists the connection groups in your Amazon Web Services account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_list_connection_groups/](https://www.paws-r-sdk.com/docs/cloudfront_list_connection_groups/) for full documentation.
+#'
+#' @param AssociationFilter Filter by associated Anycast IP list ID.
+#' @param Marker The marker for the next set of connection groups to retrieve.
+#' @param MaxItems The maximum number of connection groups to return.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_connection_groups
+cloudfront_list_connection_groups <- function(AssociationFilter = NULL, Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListConnectionGroups",
+    http_method = "POST",
+    http_path = "/2020-05-31/connection-groups",
+    host_prefix = "",
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "ConnectionGroups"),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$list_connection_groups_input(AssociationFilter = AssociationFilter, Marker = Marker, MaxItems = MaxItems)
+  output <- .cloudfront$list_connection_groups_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_connection_groups <- cloudfront_list_connection_groups
+
 #' Gets a list of the continuous deployment policies in your Amazon Web
 #' Services account
 #'
@@ -2635,6 +3191,74 @@ cloudfront_list_continuous_deployment_policies <- function(Marker = NULL, MaxIte
   return(response)
 }
 .cloudfront$operations$list_continuous_deployment_policies <- cloudfront_list_continuous_deployment_policies
+
+#' Lists the distribution tenants in your Amazon Web Services account
+#'
+#' @description
+#' Lists the distribution tenants in your Amazon Web Services account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_list_distribution_tenants/](https://www.paws-r-sdk.com/docs/cloudfront_list_distribution_tenants/) for full documentation.
+#'
+#' @param AssociationFilter 
+#' @param Marker The marker for the next set of results.
+#' @param MaxItems The maximum number of distribution tenants to return.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_distribution_tenants
+cloudfront_list_distribution_tenants <- function(AssociationFilter = NULL, Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListDistributionTenants",
+    http_method = "POST",
+    http_path = "/2020-05-31/distribution-tenants",
+    host_prefix = "",
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "DistributionTenantList"),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$list_distribution_tenants_input(AssociationFilter = AssociationFilter, Marker = Marker, MaxItems = MaxItems)
+  output <- .cloudfront$list_distribution_tenants_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_distribution_tenants <- cloudfront_list_distribution_tenants
+
+#' Lists distribution tenants by the customization that you specify
+#'
+#' @description
+#' Lists distribution tenants by the customization that you specify.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_list_distribution_tenants_by_customization/](https://www.paws-r-sdk.com/docs/cloudfront_list_distribution_tenants_by_customization/) for full documentation.
+#'
+#' @param WebACLArn Filter by the ARN of the associated WAF web ACL.
+#' @param CertificateArn Filter by the ARN of the associated ACM certificate.
+#' @param Marker The marker for the next set of results.
+#' @param MaxItems The maximum number of distribution tenants to return by the specified
+#' customization.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_distribution_tenants_by_customization
+cloudfront_list_distribution_tenants_by_customization <- function(WebACLArn = NULL, CertificateArn = NULL, Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListDistributionTenantsByCustomization",
+    http_method = "POST",
+    http_path = "/2020-05-31/distribution-tenants-by-customization",
+    host_prefix = "",
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "DistributionTenantList"),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$list_distribution_tenants_by_customization_input(WebACLArn = WebACLArn, CertificateArn = CertificateArn, Marker = Marker, MaxItems = MaxItems)
+  output <- .cloudfront$list_distribution_tenants_by_customization_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_distribution_tenants_by_customization <- cloudfront_list_distribution_tenants_by_customization
 
 #' List CloudFront distributions
 #'
@@ -2748,6 +3372,39 @@ cloudfront_list_distributions_by_cache_policy_id <- function(Marker = NULL, MaxI
   return(response)
 }
 .cloudfront$operations$list_distributions_by_cache_policy_id <- cloudfront_list_distributions_by_cache_policy_id
+
+#' Lists the distributions by the connection mode that you specify
+#'
+#' @description
+#' Lists the distributions by the connection mode that you specify.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_list_distributions_by_connection_mode/](https://www.paws-r-sdk.com/docs/cloudfront_list_distributions_by_connection_mode/) for full documentation.
+#'
+#' @param Marker The marker for the next set of distributions to retrieve.
+#' @param MaxItems The maximum number of distributions to return.
+#' @param ConnectionMode &#91;required&#93; The connection mode to filter distributions by.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_distributions_by_connection_mode
+cloudfront_list_distributions_by_connection_mode <- function(Marker = NULL, MaxItems = NULL, ConnectionMode) {
+  op <- new_operation(
+    name = "ListDistributionsByConnectionMode",
+    http_method = "GET",
+    http_path = "/2020-05-31/distributionsByConnectionMode/{ConnectionMode}",
+    host_prefix = "",
+    paginator = list(input_token = "Marker", output_token = "DistributionList.NextMarker", limit_key = "MaxItems", result_key = "DistributionList.Items"),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$list_distributions_by_connection_mode_input(Marker = Marker, MaxItems = MaxItems, ConnectionMode = ConnectionMode)
+  output <- .cloudfront$list_distributions_by_connection_mode_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_distributions_by_connection_mode <- cloudfront_list_distributions_by_connection_mode
 
 #' Gets a list of distribution IDs for distributions that have a cache
 #' behavior that references the specified key group
@@ -2988,6 +3645,43 @@ cloudfront_list_distributions_by_web_acl_id <- function(Marker = NULL, MaxItems 
 }
 .cloudfront$operations$list_distributions_by_web_acl_id <- cloudfront_list_distributions_by_web_acl_id
 
+#' Lists existing domain associations that conflict with the domain that
+#' you specify
+#'
+#' @description
+#' Lists existing domain associations that conflict with the domain that you specify.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_list_domain_conflicts/](https://www.paws-r-sdk.com/docs/cloudfront_list_domain_conflicts/) for full documentation.
+#'
+#' @param Domain &#91;required&#93; The domain to check for conflicts.
+#' @param DomainControlValidationResource &#91;required&#93; The distribution resource identifier. This can be the distribution or
+#' distribution tenant that has a valid certificate, which covers the
+#' domain that you specify.
+#' @param MaxItems The maximum number of domain conflicts to return.
+#' @param Marker The marker for the next set of domain conflicts.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_domain_conflicts
+cloudfront_list_domain_conflicts <- function(Domain, DomainControlValidationResource, MaxItems = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "ListDomainConflicts",
+    http_method = "POST",
+    http_path = "/2020-05-31/domain-conflicts",
+    host_prefix = "",
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "DomainConflicts"),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$list_domain_conflicts_input(Domain = Domain, DomainControlValidationResource = DomainControlValidationResource, MaxItems = MaxItems, Marker = Marker)
+  output <- .cloudfront$list_domain_conflicts_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_domain_conflicts <- cloudfront_list_domain_conflicts
+
 #' List all field-level encryption configurations that have been created in
 #' CloudFront for this account
 #'
@@ -3142,6 +3836,46 @@ cloudfront_list_invalidations <- function(DistributionId, Marker = NULL, MaxItem
   return(response)
 }
 .cloudfront$operations$list_invalidations <- cloudfront_list_invalidations
+
+#' Lists the invalidations for a distribution tenant
+#'
+#' @description
+#' Lists the invalidations for a distribution tenant.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_list_invalidations_for_distribution_tenant/](https://www.paws-r-sdk.com/docs/cloudfront_list_invalidations_for_distribution_tenant/) for full documentation.
+#'
+#' @param Id &#91;required&#93; The ID of the distribution tenant.
+#' @param Marker Use this parameter when paginating results to indicate where to begin in
+#' your list of invalidation batches. Because the results are returned in
+#' decreasing order from most recent to oldest, the most recent results are
+#' on the first page, the second page will contain earlier results, and so
+#' on. To get the next page of results, set `Marker` to the value of the
+#' `NextMarker` from the current page's response. This value is the same as
+#' the ID of the last invalidation batch on that page.
+#' @param MaxItems The maximum number of invalidations to return for the distribution
+#' tenant.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_invalidations_for_distribution_tenant
+cloudfront_list_invalidations_for_distribution_tenant <- function(Id, Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListInvalidationsForDistributionTenant",
+    http_method = "GET",
+    http_path = "/2020-05-31/distribution-tenant/{Id}/invalidation",
+    host_prefix = "",
+    paginator = list(input_token = "Marker", output_token = "InvalidationList.NextMarker", limit_key = "MaxItems", result_key = "InvalidationList.Items"),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$list_invalidations_for_distribution_tenant_input(Id = Id, Marker = Marker, MaxItems = MaxItems)
+  output <- .cloudfront$list_invalidations_for_distribution_tenant_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_invalidations_for_distribution_tenant <- cloudfront_list_invalidations_for_distribution_tenant
 
 #' Gets a list of key groups
 #'
@@ -3719,6 +4453,44 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 }
 .cloudfront$operations$update_cloud_front_origin_access_identity <- cloudfront_update_cloud_front_origin_access_identity
 
+#' Updates a connection group
+#'
+#' @description
+#' Updates a connection group.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_update_connection_group/](https://www.paws-r-sdk.com/docs/cloudfront_update_connection_group/) for full documentation.
+#'
+#' @param Id &#91;required&#93; The ID of the connection group.
+#' @param Ipv6Enabled Enable IPv6 for the connection group. For more information, see [Enable
+#' IPv6](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesEnableIPv6)
+#' in the *Amazon CloudFront Developer Guide*.
+#' @param IfMatch &#91;required&#93; The value of the `ETag` header that you received when retrieving the
+#' connection group that you're updating.
+#' @param AnycastIpListId The ID of the Anycast static IP list.
+#' @param Enabled Whether the connection group is enabled.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_update_connection_group
+cloudfront_update_connection_group <- function(Id, Ipv6Enabled = NULL, IfMatch, AnycastIpListId = NULL, Enabled = NULL) {
+  op <- new_operation(
+    name = "UpdateConnectionGroup",
+    http_method = "PUT",
+    http_path = "/2020-05-31/connection-group/{Id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$update_connection_group_input(Id = Id, Ipv6Enabled = Ipv6Enabled, IfMatch = IfMatch, AnycastIpListId = AnycastIpListId, Enabled = Enabled)
+  output <- .cloudfront$update_connection_group_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$update_connection_group <- cloudfront_update_connection_group
+
 #' Updates a continuous deployment policy
 #'
 #' @description
@@ -3788,6 +4560,59 @@ cloudfront_update_distribution <- function(DistributionConfig, Id, IfMatch = NUL
 }
 .cloudfront$operations$update_distribution <- cloudfront_update_distribution
 
+#' Updates a distribution tenant
+#'
+#' @description
+#' Updates a distribution tenant.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_update_distribution_tenant/](https://www.paws-r-sdk.com/docs/cloudfront_update_distribution_tenant/) for full documentation.
+#'
+#' @param Id &#91;required&#93; The ID of the distribution tenant.
+#' @param DistributionId The ID for the multi-tenant distribution.
+#' @param Domains The domains to update for the distribution tenant. A domain object can
+#' contain only a domain property. You must specify at least one domain.
+#' Each distribution tenant can have up to 5 domains.
+#' @param Customizations Customizations for the distribution tenant. For each distribution
+#' tenant, you can specify the geographic restrictions, and the Amazon
+#' Resource Names (ARNs) for the ACM certificate and WAF web ACL. These are
+#' specific values that you can override or disable from the multi-tenant
+#' distribution that was used to create the distribution tenant.
+#' @param Parameters A list of parameter values to add to the resource. A parameter is
+#' specified as a key-value pair. A valid parameter value must exist for
+#' any parameter that is marked as required in the multi-tenant
+#' distribution.
+#' @param ConnectionGroupId The ID of the target connection group.
+#' @param IfMatch &#91;required&#93; The value of the `ETag` header that you received when retrieving the
+#' distribution tenant to update. This value is returned in the response of
+#' the [`get_distribution_tenant`][cloudfront_get_distribution_tenant] API
+#' operation.
+#' @param ManagedCertificateRequest An object that contains the CloudFront managed ACM certificate request.
+#' @param Enabled Indicates whether the distribution tenant should be updated to an
+#' enabled state. If you update the distribution tenant and it's not
+#' enabled, the distribution tenant won't serve traffic.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_update_distribution_tenant
+cloudfront_update_distribution_tenant <- function(Id, DistributionId = NULL, Domains = NULL, Customizations = NULL, Parameters = NULL, ConnectionGroupId = NULL, IfMatch, ManagedCertificateRequest = NULL, Enabled = NULL) {
+  op <- new_operation(
+    name = "UpdateDistributionTenant",
+    http_method = "PUT",
+    http_path = "/2020-05-31/distribution-tenant/{Id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$update_distribution_tenant_input(Id = Id, DistributionId = DistributionId, Domains = Domains, Customizations = Customizations, Parameters = Parameters, ConnectionGroupId = ConnectionGroupId, IfMatch = IfMatch, ManagedCertificateRequest = ManagedCertificateRequest, Enabled = Enabled)
+  output <- .cloudfront$update_distribution_tenant_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$update_distribution_tenant <- cloudfront_update_distribution_tenant
+
 #' Copies the staging distribution's configuration to its corresponding
 #' primary distribution
 #'
@@ -3826,6 +4651,42 @@ cloudfront_update_distribution_with_staging_config <- function(Id, StagingDistri
   return(response)
 }
 .cloudfront$operations$update_distribution_with_staging_config <- cloudfront_update_distribution_with_staging_config
+
+#' Moves a domain from its current distribution or distribution tenant to
+#' another one
+#'
+#' @description
+#' Moves a domain from its current distribution or distribution tenant to another one.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_update_domain_association/](https://www.paws-r-sdk.com/docs/cloudfront_update_domain_association/) for full documentation.
+#'
+#' @param Domain &#91;required&#93; The domain to update.
+#' @param TargetResource &#91;required&#93; The target distribution resource for the domain. You can specify either
+#' `DistributionId` or `DistributionTenantId`, but not both.
+#' @param IfMatch The value of the `ETag` identifier for the distribution or distribution
+#' tenant that will be associated with the domain.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_update_domain_association
+cloudfront_update_domain_association <- function(Domain, TargetResource, IfMatch = NULL) {
+  op <- new_operation(
+    name = "UpdateDomainAssociation",
+    http_method = "POST",
+    http_path = "/2020-05-31/domain-association",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$update_domain_association_input(Domain = Domain, TargetResource = TargetResource, IfMatch = IfMatch)
+  output <- .cloudfront$update_domain_association_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$update_domain_association <- cloudfront_update_domain_association
 
 #' Update a field-level encryption configuration
 #'
@@ -4255,3 +5116,36 @@ cloudfront_update_vpc_origin <- function(VpcOriginEndpointConfig, Id, IfMatch) {
   return(response)
 }
 .cloudfront$operations$update_vpc_origin <- cloudfront_update_vpc_origin
+
+#' Verify the DNS configuration for your domain names
+#'
+#' @description
+#' Verify the DNS configuration for your domain names. This API operation checks whether your domain name points to the correct routing endpoint of the connection group, such as d111111abcdef8.cloudfront.net. You can use this API operation to troubleshoot and resolve DNS configuration issues.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_verify_dns_configuration/](https://www.paws-r-sdk.com/docs/cloudfront_verify_dns_configuration/) for full documentation.
+#'
+#' @param Domain The domain name that you're verifying.
+#' @param Identifier &#91;required&#93; The identifier of the distribution tenant. You can specify the ARN, ID,
+#' or name of the distribution tenant.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_verify_dns_configuration
+cloudfront_verify_dns_configuration <- function(Domain = NULL, Identifier) {
+  op <- new_operation(
+    name = "VerifyDnsConfiguration",
+    http_method = "POST",
+    http_path = "/2020-05-31/verify-dns-configuration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$verify_dns_configuration_input(Domain = Domain, Identifier = Identifier)
+  output <- .cloudfront$verify_dns_configuration_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$verify_dns_configuration <- cloudfront_verify_dns_configuration

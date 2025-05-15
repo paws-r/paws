@@ -14,12 +14,12 @@ marketplacemetering_meter_usage(
 )
 }
 \arguments{
-\item{ProductCode}{[required] Product code is used to uniquely identify a product in AWS Marketplace.
-The product code should be the same as the one used during the
-publishing of a new product.}
+\item{ProductCode}{[required] Product code is used to uniquely identify a product in Amazon Web
+Services Marketplace. The product code should be the same as the one
+used during the publishing of a new product.}
 
 \item{Timestamp}{[required] Timestamp, in UTC, for which the usage is being reported. Your
-application can meter usage for up to one hour in the past. Make sure
+application can meter usage for up to six hours in the past. Make sure
 the \code{timestamp} value is not before the start of the software usage.}
 
 \item{UsageDimension}{[required] It will be one of the fcp dimension name provided during the publishing
@@ -40,7 +40,7 @@ request, and each \code{UsageAllocation} must have a unique set of tags
 (include no tags).}
 }
 \description{
-API to emit metering records. For identical requests, the API is idempotent. It simply returns the metering record ID.
+API to emit metering records. For identical requests, the API is idempotent and returns the metering record ID. This is used for metering flexible consumption pricing (FCP) Amazon Machine Images (AMI) and container products.
 
 See \url{https://www.paws-r-sdk.com/docs/marketplacemetering_meter_usage/} for full documentation.
 }

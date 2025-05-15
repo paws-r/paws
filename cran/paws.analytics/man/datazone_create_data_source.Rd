@@ -55,7 +55,11 @@ data source.}
 
 \item{schedule}{The schedule of the data source runs.}
 
-\item{type}{[required] The type of the data source.}
+\item{type}{[required] The type of the data source. In Amazon DataZone, you can use data
+sources to import technical metadata of assets (data) from the source
+databases or data warehouses into Amazon DataZone. In the current
+release of Amazon DataZone, you can create and run data sources for
+Amazon Web Services Glue and Amazon Redshift.}
 }
 \description{
 Creates an Amazon DataZone data source.

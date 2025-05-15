@@ -31,6 +31,8 @@ type is a burstable performance T instance type (\code{true} | \code{false}).
 \item \code{current-generation} - Indicates whether this instance type is the
 latest generation instance type of an instance family (\code{true} |
 \code{false}).
+\item \code{dedicated-hosts-supported} - Indicates whether the instance type
+supports Dedicated Hosts. (\code{true} | \code{false})
 \item \verb{ebs-info.ebs-optimized-info.baseline-bandwidth-in-mbps} - The
 baseline bandwidth performance for an EBS-optimized instance type,
 in Mbps.
@@ -88,6 +90,8 @@ supports Elastic Fabric Adapter (EFA) (\code{true} | \code{false}).
 \item \code{network-info.ena-support} - Indicates whether Elastic Network
 Adapter (ENA) is supported or required (\code{required} | \code{supported} |
 \code{unsupported}).
+\item \code{network-info.flexible-ena-queues-support} - Indicates whether an
+instance supports flexible ENA queues (\code{supported} | \code{unsupported}).
 \item \verb{network-info.encryption-in-transit-supported} - Indicates whether
 the instance type automatically encrypts in-transit traffic between
 instances (\code{true} | \code{false}).

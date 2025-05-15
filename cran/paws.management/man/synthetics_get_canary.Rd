@@ -4,10 +4,13 @@
 \alias{synthetics_get_canary}
 \title{Retrieves complete information about one canary}
 \usage{
-synthetics_get_canary(Name)
+synthetics_get_canary(Name, DryRunId = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the canary that you want details for.}
+
+\item{DryRunId}{The DryRunId associated with an existing canary’s dry run. You can use
+this DryRunId to retrieve information about the dry run.}
 }
 \description{
 Retrieves complete information about one canary. You must specify the name of the canary that you want. To get a list of canaries and their names, use \code{\link[=synthetics_describe_canaries]{describe_canaries}}.

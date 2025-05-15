@@ -353,12 +353,15 @@ datazone_add_entity_owner <- function(clientToken = NULL, domainIdentifier, enti
 #'     ),
 #'     overrideProjectOwners = list(
 #'       includeChildDomainUnits = TRUE|FALSE
+#'     ),
+#'     useAssetType = list(
+#'       domainUnitId = "string"
 #'     )
 #'   ),
 #'   domainIdentifier = "string",
 #'   entityIdentifier = "string",
-#'   entityType = "DOMAIN_UNIT"|"ENVIRONMENT_BLUEPRINT_CONFIGURATION"|"ENVIRONMENT_PROFILE",
-#'   policyType = "CREATE_DOMAIN_UNIT"|"OVERRIDE_DOMAIN_UNIT_OWNERS"|"ADD_TO_PROJECT_MEMBER_POOL"|"OVERRIDE_PROJECT_OWNERS"|"CREATE_GLOSSARY"|"CREATE_FORM_TYPE"|"CREATE_ASSET_TYPE"|"CREATE_PROJECT"|"CREATE_ENVIRONMENT_PROFILE"|"DELEGATE_CREATE_ENVIRONMENT_PROFILE"|"CREATE_ENVIRONMENT"|"CREATE_ENVIRONMENT_FROM_BLUEPRINT"|"CREATE_PROJECT_FROM_PROJECT_PROFILE",
+#'   entityType = "DOMAIN_UNIT"|"ENVIRONMENT_BLUEPRINT_CONFIGURATION"|"ENVIRONMENT_PROFILE"|"ASSET_TYPE",
+#'   policyType = "CREATE_DOMAIN_UNIT"|"OVERRIDE_DOMAIN_UNIT_OWNERS"|"ADD_TO_PROJECT_MEMBER_POOL"|"OVERRIDE_PROJECT_OWNERS"|"CREATE_GLOSSARY"|"CREATE_FORM_TYPE"|"CREATE_ASSET_TYPE"|"CREATE_PROJECT"|"CREATE_ENVIRONMENT_PROFILE"|"DELEGATE_CREATE_ENVIRONMENT_PROFILE"|"CREATE_ENVIRONMENT"|"CREATE_ENVIRONMENT_FROM_BLUEPRINT"|"CREATE_PROJECT_FROM_PROJECT_PROFILE"|"USE_ASSET_TYPE",
 #'   principal = list(
 #'     domainUnit = list(
 #'       domainUnitDesignation = "OWNER",
@@ -1835,7 +1838,11 @@ datazone_create_data_product_revision <- function(clientToken = NULL, descriptio
 #' @param recommendation Specifies whether the business name generation is to be enabled for this
 #' data source.
 #' @param schedule The schedule of the data source runs.
-#' @param type &#91;required&#93; The type of the data source.
+#' @param type &#91;required&#93; The type of the data source. In Amazon DataZone, you can use data
+#' sources to import technical metadata of assets (data) from the source
+#' databases or data warehouses into Amazon DataZone. In the current
+#' release of Amazon DataZone, you can create and run data sources for
+#' Amazon Web Services Glue and Amazon Redshift.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2092,6 +2099,7 @@ datazone_create_data_source <- function(assetFormsInput = NULL, clientToken = NU
 #'   rootDomainUnitId = "string",
 #'   serviceRole = "string",
 #'   singleSignOn = list(
+#'     idcInstanceArn = "string",
 #'     type = "IAM_IDC"|"DISABLED",
 #'     userAssignment = "AUTOMATIC"|"MANUAL"
 #'   ),
@@ -2113,6 +2121,7 @@ datazone_create_data_source <- function(assetFormsInput = NULL, clientToken = NU
 #'   name = "string",
 #'   serviceRole = "string",
 #'   singleSignOn = list(
+#'     idcInstanceArn = "string",
 #'     type = "IAM_IDC"|"DISABLED",
 #'     userAssignment = "AUTOMATIC"|"MANUAL"
 #'   ),
@@ -2283,6 +2292,7 @@ datazone_create_domain_unit <- function(clientToken = NULL, description = NULL, 
 #'     )
 #'   ),
 #'   environmentBlueprintId = "string",
+#'   environmentConfigurationId = "string",
 #'   environmentProfileId = "string",
 #'   glossaryTerms = list(
 #'     "string"
@@ -2960,10 +2970,11 @@ datazone_create_listing_change_set <- function(action, clientToken = NULL, domai
 #'   ),
 #'   name = "string",
 #'   projectProfileId = "string",
-#'   projectStatus = "ACTIVE"|"DELETING"|"DELETE_FAILED",
+#'   projectStatus = "ACTIVE"|"DELETING"|"DELETE_FAILED"|"UPDATING"|"UPDATE_FAILED",
 #'   userParameters = list(
 #'     list(
 #'       environmentConfigurationName = "string",
+#'       environmentId = "string",
 #'       environmentParameters = list(
 #'         list(
 #'           name = "string",
@@ -2989,6 +3000,7 @@ datazone_create_listing_change_set <- function(action, clientToken = NULL, domai
 #'   userParameters = list(
 #'     list(
 #'       environmentConfigurationName = "string",
+#'       environmentId = "string",
 #'       environmentParameters = list(
 #'         list(
 #'           name = "string",
@@ -3251,7 +3263,7 @@ datazone_create_project_profile <- function(description = NULL, domainIdentifier
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   action = "CREATE_SUBSCRIPTION_REQUEST",
+#'   action = "CREATE_LISTING_CHANGE_SET"|"CREATE_SUBSCRIPTION_REQUEST",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -3298,7 +3310,7 @@ datazone_create_project_profile <- function(description = NULL, domainIdentifier
 #' @section Request syntax:
 #' ```
 #' svc$create_rule(
-#'   action = "CREATE_SUBSCRIPTION_REQUEST",
+#'   action = "CREATE_LISTING_CHANGE_SET"|"CREATE_SUBSCRIPTION_REQUEST",
 #'   clientToken = "string",
 #'   description = "string",
 #'   detail = list(
@@ -6144,6 +6156,7 @@ datazone_get_data_source_run <- function(domainIdentifier, identifier) {
 #'   rootDomainUnitId = "string",
 #'   serviceRole = "string",
 #'   singleSignOn = list(
+#'     idcInstanceArn = "string",
 #'     type = "IAM_IDC"|"DISABLED",
 #'     userAssignment = "AUTOMATIC"|"MANUAL"
 #'   ),
@@ -6298,6 +6311,7 @@ datazone_get_domain_unit <- function(domainIdentifier, identifier) {
 #'     )
 #'   ),
 #'   environmentBlueprintId = "string",
+#'   environmentConfigurationId = "string",
 #'   environmentProfileId = "string",
 #'   glossaryTerms = list(
 #'     "string"
@@ -7547,10 +7561,11 @@ datazone_get_metadata_generation_run <- function(domainIdentifier, identifier) {
 #'   ),
 #'   name = "string",
 #'   projectProfileId = "string",
-#'   projectStatus = "ACTIVE"|"DELETING"|"DELETE_FAILED",
+#'   projectStatus = "ACTIVE"|"DELETING"|"DELETE_FAILED"|"UPDATING"|"UPDATE_FAILED",
 #'   userParameters = list(
 #'     list(
 #'       environmentConfigurationName = "string",
+#'       environmentId = "string",
 #'       environmentParameters = list(
 #'         list(
 #'           name = "string",
@@ -7717,7 +7732,7 @@ datazone_get_project_profile <- function(domainIdentifier, identifier) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   action = "CREATE_SUBSCRIPTION_REQUEST",
+#'   action = "CREATE_LISTING_CHANGE_SET"|"CREATE_SUBSCRIPTION_REQUEST",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -9827,6 +9842,7 @@ datazone_list_environment_profiles <- function(awsAccountId = NULL, awsAccountRe
 #'       createdBy = "string",
 #'       description = "string",
 #'       domainId = "string",
+#'       environmentConfigurationId = "string",
 #'       environmentProfileId = "string",
 #'       id = "string",
 #'       name = "string",
@@ -10461,6 +10477,9 @@ datazone_list_notifications <- function(afterTimestamp = NULL, beforeTimestamp =
 #'         ),
 #'         overrideProjectOwners = list(
 #'           includeChildDomainUnits = TRUE|FALSE
+#'         ),
+#'         useAssetType = list(
+#'           domainUnitId = "string"
 #'         )
 #'       ),
 #'       principal = list(
@@ -10500,10 +10519,10 @@ datazone_list_notifications <- function(afterTimestamp = NULL, beforeTimestamp =
 #' svc$list_policy_grants(
 #'   domainIdentifier = "string",
 #'   entityIdentifier = "string",
-#'   entityType = "DOMAIN_UNIT"|"ENVIRONMENT_BLUEPRINT_CONFIGURATION"|"ENVIRONMENT_PROFILE",
+#'   entityType = "DOMAIN_UNIT"|"ENVIRONMENT_BLUEPRINT_CONFIGURATION"|"ENVIRONMENT_PROFILE"|"ASSET_TYPE",
 #'   maxResults = 123,
 #'   nextToken = "string",
-#'   policyType = "CREATE_DOMAIN_UNIT"|"OVERRIDE_DOMAIN_UNIT_OWNERS"|"ADD_TO_PROJECT_MEMBER_POOL"|"OVERRIDE_PROJECT_OWNERS"|"CREATE_GLOSSARY"|"CREATE_FORM_TYPE"|"CREATE_ASSET_TYPE"|"CREATE_PROJECT"|"CREATE_ENVIRONMENT_PROFILE"|"DELEGATE_CREATE_ENVIRONMENT_PROFILE"|"CREATE_ENVIRONMENT"|"CREATE_ENVIRONMENT_FROM_BLUEPRINT"|"CREATE_PROJECT_FROM_PROJECT_PROFILE"
+#'   policyType = "CREATE_DOMAIN_UNIT"|"OVERRIDE_DOMAIN_UNIT_OWNERS"|"ADD_TO_PROJECT_MEMBER_POOL"|"OVERRIDE_PROJECT_OWNERS"|"CREATE_GLOSSARY"|"CREATE_FORM_TYPE"|"CREATE_ASSET_TYPE"|"CREATE_PROJECT"|"CREATE_ENVIRONMENT_PROFILE"|"DELEGATE_CREATE_ENVIRONMENT_PROFILE"|"CREATE_ENVIRONMENT"|"CREATE_ENVIRONMENT_FROM_BLUEPRINT"|"CREATE_PROJECT_FROM_PROJECT_PROFILE"|"USE_ASSET_TYPE"
 #' )
 #' ```
 #'
@@ -10751,7 +10770,7 @@ datazone_list_project_profiles <- function(domainIdentifier, maxResults = NULL, 
 #'       ),
 #'       id = "string",
 #'       name = "string",
-#'       projectStatus = "ACTIVE"|"DELETING"|"DELETE_FAILED",
+#'       projectStatus = "ACTIVE"|"DELETING"|"DELETE_FAILED"|"UPDATING"|"UPDATE_FAILED",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -10842,7 +10861,7 @@ datazone_list_projects <- function(domainIdentifier, groupIdentifier = NULL, max
 #' list(
 #'   items = list(
 #'     list(
-#'       action = "CREATE_SUBSCRIPTION_REQUEST",
+#'       action = "CREATE_LISTING_CHANGE_SET"|"CREATE_SUBSCRIPTION_REQUEST",
 #'       identifier = "string",
 #'       lastUpdatedBy = "string",
 #'       name = "string",
@@ -10882,7 +10901,7 @@ datazone_list_projects <- function(domainIdentifier, groupIdentifier = NULL, max
 #' @section Request syntax:
 #' ```
 #' svc$list_rules(
-#'   action = "CREATE_SUBSCRIPTION_REQUEST",
+#'   action = "CREATE_LISTING_CHANGE_SET"|"CREATE_SUBSCRIPTION_REQUEST",
 #'   assetTypes = list(
 #'     "string"
 #'   ),
@@ -12178,8 +12197,8 @@ datazone_remove_entity_owner <- function(clientToken = NULL, domainIdentifier, e
 #'   clientToken = "string",
 #'   domainIdentifier = "string",
 #'   entityIdentifier = "string",
-#'   entityType = "DOMAIN_UNIT"|"ENVIRONMENT_BLUEPRINT_CONFIGURATION"|"ENVIRONMENT_PROFILE",
-#'   policyType = "CREATE_DOMAIN_UNIT"|"OVERRIDE_DOMAIN_UNIT_OWNERS"|"ADD_TO_PROJECT_MEMBER_POOL"|"OVERRIDE_PROJECT_OWNERS"|"CREATE_GLOSSARY"|"CREATE_FORM_TYPE"|"CREATE_ASSET_TYPE"|"CREATE_PROJECT"|"CREATE_ENVIRONMENT_PROFILE"|"DELEGATE_CREATE_ENVIRONMENT_PROFILE"|"CREATE_ENVIRONMENT"|"CREATE_ENVIRONMENT_FROM_BLUEPRINT"|"CREATE_PROJECT_FROM_PROJECT_PROFILE",
+#'   entityType = "DOMAIN_UNIT"|"ENVIRONMENT_BLUEPRINT_CONFIGURATION"|"ENVIRONMENT_PROFILE"|"ASSET_TYPE",
+#'   policyType = "CREATE_DOMAIN_UNIT"|"OVERRIDE_DOMAIN_UNIT_OWNERS"|"ADD_TO_PROJECT_MEMBER_POOL"|"OVERRIDE_PROJECT_OWNERS"|"CREATE_GLOSSARY"|"CREATE_FORM_TYPE"|"CREATE_ASSET_TYPE"|"CREATE_PROJECT"|"CREATE_ENVIRONMENT_PROFILE"|"DELEGATE_CREATE_ENVIRONMENT_PROFILE"|"CREATE_ENVIRONMENT"|"CREATE_ENVIRONMENT_FROM_BLUEPRINT"|"CREATE_PROJECT_FROM_PROJECT_PROFILE"|"USE_ASSET_TYPE",
 #'   principal = list(
 #'     domainUnit = list(
 #'       domainUnitDesignation = "OWNER",
@@ -14135,6 +14154,7 @@ datazone_update_data_source <- function(assetFormsInput = NULL, configuration = 
 #'   rootDomainUnitId = "string",
 #'   serviceRole = "string",
 #'   singleSignOn = list(
+#'     idcInstanceArn = "string",
 #'     type = "IAM_IDC"|"DISABLED",
 #'     userAssignment = "AUTOMATIC"|"MANUAL"
 #'   )
@@ -14151,6 +14171,7 @@ datazone_update_data_source <- function(assetFormsInput = NULL, configuration = 
 #'   name = "string",
 #'   serviceRole = "string",
 #'   singleSignOn = list(
+#'     idcInstanceArn = "string",
 #'     type = "IAM_IDC"|"DISABLED",
 #'     userAssignment = "AUTOMATIC"|"MANUAL"
 #'   )
@@ -14265,9 +14286,11 @@ datazone_update_domain_unit <- function(description = NULL, domainIdentifier, id
 #' Updates the specified environment in Amazon DataZone.
 #'
 #' @usage
-#' datazone_update_environment(description, domainIdentifier,
-#'   glossaryTerms, identifier, name)
+#' datazone_update_environment(blueprintVersion, description,
+#'   domainIdentifier, glossaryTerms, identifier, name, userParameters)
 #'
+#' @param blueprintVersion The blueprint version to which the environment should be updated. You
+#' can only specify the following string for this parameter: `latest`.
 #' @param description The description to be updated as part of the
 #' [`update_environment`][datazone_update_environment] action.
 #' @param domainIdentifier &#91;required&#93; The identifier of the domain in which the environment is to be updated.
@@ -14276,6 +14299,7 @@ datazone_update_domain_unit <- function(description = NULL, domainIdentifier, id
 #' @param identifier &#91;required&#93; The identifier of the environment that is to be updated.
 #' @param name The name to be updated as part of the
 #' [`update_environment`][datazone_update_environment] action.
+#' @param userParameters The user parameters of the environment.
 #'
 #' @return
 #' A list with the following syntax:
@@ -14306,6 +14330,7 @@ datazone_update_domain_unit <- function(description = NULL, domainIdentifier, id
 #'     )
 #'   ),
 #'   environmentBlueprintId = "string",
+#'   environmentConfigurationId = "string",
 #'   environmentProfileId = "string",
 #'   glossaryTerms = list(
 #'     "string"
@@ -14360,13 +14385,20 @@ datazone_update_domain_unit <- function(description = NULL, domainIdentifier, id
 #' @section Request syntax:
 #' ```
 #' svc$update_environment(
+#'   blueprintVersion = "string",
 #'   description = "string",
 #'   domainIdentifier = "string",
 #'   glossaryTerms = list(
 #'     "string"
 #'   ),
 #'   identifier = "string",
-#'   name = "string"
+#'   name = "string",
+#'   userParameters = list(
+#'     list(
+#'       name = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -14375,7 +14407,7 @@ datazone_update_domain_unit <- function(description = NULL, domainIdentifier, id
 #' @rdname datazone_update_environment
 #'
 #' @aliases datazone_update_environment
-datazone_update_environment <- function(description = NULL, domainIdentifier, glossaryTerms = NULL, identifier, name = NULL) {
+datazone_update_environment <- function(blueprintVersion = NULL, description = NULL, domainIdentifier, glossaryTerms = NULL, identifier, name = NULL, userParameters = NULL) {
   op <- new_operation(
     name = "UpdateEnvironment",
     http_method = "PATCH",
@@ -14384,7 +14416,7 @@ datazone_update_environment <- function(description = NULL, domainIdentifier, gl
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_environment_input(description = description, domainIdentifier = domainIdentifier, glossaryTerms = glossaryTerms, identifier = identifier, name = name)
+  input <- .datazone$update_environment_input(blueprintVersion = blueprintVersion, description = description, domainIdentifier = domainIdentifier, glossaryTerms = glossaryTerms, identifier = identifier, name = name, userParameters = userParameters)
   output <- .datazone$update_environment_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -14794,7 +14826,8 @@ datazone_update_group_profile <- function(domainIdentifier, groupIdentifier, sta
 #'
 #' @usage
 #' datazone_update_project(description, domainIdentifier,
-#'   environmentDeploymentDetails, glossaryTerms, identifier, name)
+#'   environmentDeploymentDetails, glossaryTerms, identifier, name,
+#'   projectProfileVersion, userParameters)
 #'
 #' @param description The description to be updated as part of the
 #' [`update_project`][datazone_update_project] action.
@@ -14805,6 +14838,9 @@ datazone_update_group_profile <- function(domainIdentifier, groupIdentifier, sta
 #' @param identifier &#91;required&#93; The identifier of the project that is to be updated.
 #' @param name The name to be updated as part of the
 #' [`update_project`][datazone_update_project] action.
+#' @param projectProfileVersion The project profile version to which the project should be updated. You
+#' can only specify the following string for this parameter: `latest`.
+#' @param userParameters The user parameters of the project.
 #'
 #' @return
 #' A list with the following syntax:
@@ -14843,10 +14879,11 @@ datazone_update_group_profile <- function(domainIdentifier, groupIdentifier, sta
 #'   ),
 #'   name = "string",
 #'   projectProfileId = "string",
-#'   projectStatus = "ACTIVE"|"DELETING"|"DELETE_FAILED",
+#'   projectStatus = "ACTIVE"|"DELETING"|"DELETE_FAILED"|"UPDATING"|"UPDATE_FAILED",
 #'   userParameters = list(
 #'     list(
 #'       environmentConfigurationName = "string",
+#'       environmentId = "string",
 #'       environmentParameters = list(
 #'         list(
 #'           name = "string",
@@ -14878,7 +14915,20 @@ datazone_update_group_profile <- function(domainIdentifier, groupIdentifier, sta
 #'     "string"
 #'   ),
 #'   identifier = "string",
-#'   name = "string"
+#'   name = "string",
+#'   projectProfileVersion = "string",
+#'   userParameters = list(
+#'     list(
+#'       environmentConfigurationName = "string",
+#'       environmentId = "string",
+#'       environmentParameters = list(
+#'         list(
+#'           name = "string",
+#'           value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -14887,7 +14937,7 @@ datazone_update_group_profile <- function(domainIdentifier, groupIdentifier, sta
 #' @rdname datazone_update_project
 #'
 #' @aliases datazone_update_project
-datazone_update_project <- function(description = NULL, domainIdentifier, environmentDeploymentDetails = NULL, glossaryTerms = NULL, identifier, name = NULL) {
+datazone_update_project <- function(description = NULL, domainIdentifier, environmentDeploymentDetails = NULL, glossaryTerms = NULL, identifier, name = NULL, projectProfileVersion = NULL, userParameters = NULL) {
   op <- new_operation(
     name = "UpdateProject",
     http_method = "PATCH",
@@ -14896,7 +14946,7 @@ datazone_update_project <- function(description = NULL, domainIdentifier, enviro
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_project_input(description = description, domainIdentifier = domainIdentifier, environmentDeploymentDetails = environmentDeploymentDetails, glossaryTerms = glossaryTerms, identifier = identifier, name = name)
+  input <- .datazone$update_project_input(description = description, domainIdentifier = domainIdentifier, environmentDeploymentDetails = environmentDeploymentDetails, glossaryTerms = glossaryTerms, identifier = identifier, name = name, projectProfileVersion = projectProfileVersion, userParameters = userParameters)
   output <- .datazone$update_project_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -15079,7 +15129,7 @@ datazone_update_project_profile <- function(description = NULL, domainIdentifier
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   action = "CREATE_SUBSCRIPTION_REQUEST",
+#'   action = "CREATE_LISTING_CHANGE_SET"|"CREATE_SUBSCRIPTION_REQUEST",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),

@@ -1666,7 +1666,8 @@ workspaces_describe_workspaces_connection_status <- function(WorkspaceIds = NULL
 #'
 #' @param PoolId &#91;required&#93; The identifier of the pool.
 #' @param UserId The identifier of the user.
-#' @param Limit The maximum number of items to return.
+#' @param Limit The maximum size of each page of results. The default value is 20 and
+#' the maximum value is 50.
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
 #' provide this token to receive the next set of results.
 #'
@@ -2166,6 +2167,40 @@ workspaces_modify_client_properties <- function(ResourceId, ClientProperties) {
 }
 .workspaces$operations$modify_client_properties <- workspaces_modify_client_properties
 
+#' Modifies the endpoint encryption mode that allows you to configure the
+#' specified directory between Standard TLS and FIPS 140-2 validated mode
+#'
+#' @description
+#' Modifies the endpoint encryption mode that allows you to configure the specified directory between Standard TLS and FIPS 140-2 validated mode.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workspaces_modify_endpoint_encryption_mode/](https://www.paws-r-sdk.com/docs/workspaces_modify_endpoint_encryption_mode/) for full documentation.
+#'
+#' @param DirectoryId &#91;required&#93; The identifier of the directory.
+#' @param EndpointEncryptionMode &#91;required&#93; The encryption mode used for endpoint connections when streaming to
+#' WorkSpaces Personal or WorkSpace Pools.
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_modify_endpoint_encryption_mode
+workspaces_modify_endpoint_encryption_mode <- function(DirectoryId, EndpointEncryptionMode) {
+  op <- new_operation(
+    name = "ModifyEndpointEncryptionMode",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .workspaces$modify_endpoint_encryption_mode_input(DirectoryId = DirectoryId, EndpointEncryptionMode = EndpointEncryptionMode)
+  output <- .workspaces$modify_endpoint_encryption_mode_output()
+  config <- get_config()
+  svc <- .workspaces$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$modify_endpoint_encryption_mode <- workspaces_modify_endpoint_encryption_mode
+
 #' Modifies multiple properties related to SAML 2
 #'
 #' @description
@@ -2482,10 +2517,6 @@ workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests) {
 #' Make sure that the subnets are in supported Availability Zones. The
 #' subnets must also be in separate Availability Zones. If these conditions
 #' are not met, you will receive an OperationNotSupportedException error.
-#' @param EnableWorkDocs Indicates whether Amazon WorkDocs is enabled or disabled. If you have
-#' enabled this parameter and WorkDocs is not available in the Region, you
-#' will receive an OperationNotSupportedException error. Set
-#' `EnableWorkDocs` to disabled, and try again.
 #' @param EnableSelfService Indicates whether self-service capabilities are enabled or disabled.
 #' @param Tenancy Indicates whether your WorkSpace directory is dedicated or shared. To
 #' use Bring Your Own License (BYOL) images, this value must be set to
@@ -2506,7 +2537,7 @@ workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests) {
 #' @keywords internal
 #'
 #' @rdname workspaces_register_workspace_directory
-workspaces_register_workspace_directory <- function(DirectoryId = NULL, SubnetIds = NULL, EnableWorkDocs = NULL, EnableSelfService = NULL, Tenancy = NULL, Tags = NULL, WorkspaceDirectoryName = NULL, WorkspaceDirectoryDescription = NULL, UserIdentityType = NULL, IdcInstanceArn = NULL, MicrosoftEntraConfig = NULL, WorkspaceType = NULL, ActiveDirectoryConfig = NULL) {
+workspaces_register_workspace_directory <- function(DirectoryId = NULL, SubnetIds = NULL, EnableSelfService = NULL, Tenancy = NULL, Tags = NULL, WorkspaceDirectoryName = NULL, WorkspaceDirectoryDescription = NULL, UserIdentityType = NULL, IdcInstanceArn = NULL, MicrosoftEntraConfig = NULL, WorkspaceType = NULL, ActiveDirectoryConfig = NULL) {
   op <- new_operation(
     name = "RegisterWorkspaceDirectory",
     http_method = "POST",
@@ -2515,7 +2546,7 @@ workspaces_register_workspace_directory <- function(DirectoryId = NULL, SubnetId
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspaces$register_workspace_directory_input(DirectoryId = DirectoryId, SubnetIds = SubnetIds, EnableWorkDocs = EnableWorkDocs, EnableSelfService = EnableSelfService, Tenancy = Tenancy, Tags = Tags, WorkspaceDirectoryName = WorkspaceDirectoryName, WorkspaceDirectoryDescription = WorkspaceDirectoryDescription, UserIdentityType = UserIdentityType, IdcInstanceArn = IdcInstanceArn, MicrosoftEntraConfig = MicrosoftEntraConfig, WorkspaceType = WorkspaceType, ActiveDirectoryConfig = ActiveDirectoryConfig)
+  input <- .workspaces$register_workspace_directory_input(DirectoryId = DirectoryId, SubnetIds = SubnetIds, EnableSelfService = EnableSelfService, Tenancy = Tenancy, Tags = Tags, WorkspaceDirectoryName = WorkspaceDirectoryName, WorkspaceDirectoryDescription = WorkspaceDirectoryDescription, UserIdentityType = UserIdentityType, IdcInstanceArn = IdcInstanceArn, MicrosoftEntraConfig = MicrosoftEntraConfig, WorkspaceType = WorkspaceType, ActiveDirectoryConfig = ActiveDirectoryConfig)
   output <- .workspaces$register_workspace_directory_output()
   config <- get_config()
   svc <- .workspaces$service(config, op)

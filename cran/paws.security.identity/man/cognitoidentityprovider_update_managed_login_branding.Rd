@@ -18,7 +18,7 @@ that you want to update.}
 
 \item{ManagedLoginBrandingId}{The ID of the managed login branding style that you want to update.}
 
-\item{UseCognitoProvidedValues}{When true, applies the default branding style options. This option
+\item{UseCognitoProvidedValues}{When \code{true}, applies the default branding style options. This option
 reverts to default style options that are managed by Amazon Cognito. You
 can modify them later in the branding designer.
 

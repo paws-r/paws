@@ -1404,7 +1404,7 @@ directoryservice_disable_client_authentication <- function(DirectoryId, Type) {
 #' for the specified directory
 #'
 #' @description
-#' Deactivates access to directory data via the Directory Service Data API for the specified directory.
+#' Deactivates access to directory data via the Directory Service Data API for the specified directory. For more information, see [Directory Service Data API Reference](https://docs.aws.amazon.com/directoryservicedata/latest/DirectoryServiceDataAPIReference/Welcome.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/directoryservice_disable_directory_data_access/](https://www.paws-r-sdk.com/docs/directoryservice_disable_directory_data_access/) for full documentation.
 #'
@@ -1581,7 +1581,7 @@ directoryservice_enable_client_authentication <- function(DirectoryId, Type) {
 #' the specified directory
 #'
 #' @description
-#' Enables access to directory data via the Directory Service Data API for the specified directory.
+#' Enables access to directory data via the Directory Service Data API for the specified directory. For more information, see [Directory Service Data API Reference](https://docs.aws.amazon.com/directoryservicedata/latest/DirectoryServiceDataAPIReference/Welcome.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/directoryservice_enable_directory_data_access/](https://www.paws-r-sdk.com/docs/directoryservice_enable_directory_data_access/) for full documentation.
 #'

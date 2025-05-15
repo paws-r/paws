@@ -6,31 +6,25 @@
 metadata explaining their dataset and how to use it}
 \usage{
 entityresolution_create_id_namespace(
-  description = NULL,
-  idMappingWorkflowProperties = NULL,
   idNamespaceName,
+  description = NULL,
   inputSourceConfig = NULL,
+  idMappingWorkflowProperties = NULL,
+  type,
   roleArn = NULL,
-  tags = NULL,
-  type
+  tags = NULL
 )
 }
 \arguments{
-\item{description}{The description of the ID namespace.}
-
-\item{idMappingWorkflowProperties}{Determines the properties of \code{IdMappingWorflow} where this \code{IdNamespace}
-can be used as a \code{Source} or a \code{Target}.}
-
 \item{idNamespaceName}{[required] The name of the ID namespace.}
+
+\item{description}{The description of the ID namespace.}
 
 \item{inputSourceConfig}{A list of \code{InputSource} objects, which have the fields \code{InputSourceARN}
 and \code{SchemaName}.}
 
-\item{roleArn}{The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
-assumes this role to access the resources defined in this \code{IdNamespace}
-on your behalf as part of the workflow run.}
-
-\item{tags}{The tags used to organize, track, or control access for this resource.}
+\item{idMappingWorkflowProperties}{Determines the properties of \code{IdMappingWorflow} where this \code{IdNamespace}
+can be used as a \code{Source} or a \code{Target}.}
 
 \item{type}{[required] The type of ID namespace. There are two types: \code{SOURCE} and \code{TARGET}.
 
@@ -39,6 +33,12 @@ processed in an ID mapping workflow.
 
 The \code{TARGET} contains a configuration of \code{targetId} to which all
 \code{sourceIds} will resolve to.}
+
+\item{roleArn}{The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
+assumes this role to access the resources defined in this \code{IdNamespace}
+on your behalf as part of the workflow run.}
+
+\item{tags}{The tags used to organize, track, or control access for this resource.}
 }
 \description{
 Creates an ID namespace object which will help customers provide metadata explaining their dataset and how to use it. Each ID namespace must have a unique name. To modify an existing ID namespace, use the \code{\link[=entityresolution_update_id_namespace]{update_id_namespace}} API.

@@ -2,12 +2,12 @@
 % Please edit documentation in R/arczonalshift_operations.R
 \name{arczonalshift_get_autoshift_observer_notification_status}
 \alias{arczonalshift_get_autoshift_observer_notification_status}
-\title{Returns the status of autoshift observer notification}
+\title{Returns the status of the autoshift observer notification}
 \usage{
 arczonalshift_get_autoshift_observer_notification_status()
 }
 \description{
-Returns the status of autoshift observer notification. Autoshift observer notification enables you to be notified, through Amazon EventBridge, when there is an autoshift event for zonal autoshift.
+Returns the status of the autoshift observer notification. Autoshift observer notifications notify you through Amazon EventBridge when there is an autoshift event for zonal autoshift. The status can be \code{ENABLED} or \code{DISABLED}. When \code{ENABLED}, a notification is sent when an autoshift is triggered. When \code{DISABLED}, notifications are not sent.
 
 See \url{https://www.paws-r-sdk.com/docs/arczonalshift_get_autoshift_observer_notification_status/} for full documentation.
 }

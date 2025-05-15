@@ -27,7 +27,8 @@ for greater provisioned throughput.}
 Data Streams, you can choose between an \strong{on-demand} capacity mode and
 a \strong{provisioned} capacity mode for your data streams.}
 
-\item{Tags}{A set of up to 10 key-value pairs to use to create the tags.}
+\item{Tags}{A set of up to 50 key-value pairs to use to create the tags. A tag
+consists of a required key and an optional value.}
 }
 \description{
 Creates a Kinesis data stream. A stream captures and transports data records that are continuously emitted from different data sources or \emph{producers}. Scale-out within a stream is explicitly supported by means of shards, which are uniquely identified groups of data records in a stream.

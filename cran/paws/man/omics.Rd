@@ -107,7 +107,8 @@ HealthOmics User Guide}.
 \link[paws.storage:omics_create_sequence_store]{create_sequence_store} \tab Creates a sequence store\cr
 \link[paws.storage:omics_create_share]{create_share} \tab Creates a cross-account shared resource\cr
 \link[paws.storage:omics_create_variant_store]{create_variant_store} \tab Creates a variant store\cr
-\link[paws.storage:omics_create_workflow]{create_workflow} \tab Creates a workflow\cr
+\link[paws.storage:omics_create_workflow]{create_workflow} \tab Creates a private workflow\cr
+\link[paws.storage:omics_create_workflow_version]{create_workflow_version} \tab Creates a new workflow version for the workflow that you specify with the workflowId parameter\cr
 \link[paws.storage:omics_delete_annotation_store]{delete_annotation_store} \tab Deletes an annotation store\cr
 \link[paws.storage:omics_delete_annotation_store_versions]{delete_annotation_store_versions} \tab Deletes one or multiple versions of an annotation store\cr
 \link[paws.storage:omics_delete_reference]{delete_reference} \tab Deletes a genome reference\cr
@@ -120,6 +121,7 @@ HealthOmics User Guide}.
 \link[paws.storage:omics_delete_share]{delete_share} \tab Deletes a resource share\cr
 \link[paws.storage:omics_delete_variant_store]{delete_variant_store} \tab Deletes a variant store\cr
 \link[paws.storage:omics_delete_workflow]{delete_workflow} \tab Deletes a workflow\cr
+\link[paws.storage:omics_delete_workflow_version]{delete_workflow_version} \tab Deletes a workflow version\cr
 \link[paws.storage:omics_get_annotation_import_job]{get_annotation_import_job} \tab Gets information about an annotation import job\cr
 \link[paws.storage:omics_get_annotation_store]{get_annotation_store} \tab Gets information about an annotation store\cr
 \link[paws.storage:omics_get_annotation_store_version]{get_annotation_store_version} \tab Retrieves the metadata for an annotation store version\cr
@@ -142,6 +144,7 @@ HealthOmics User Guide}.
 \link[paws.storage:omics_get_variant_import_job]{get_variant_import_job} \tab Gets information about a variant import job\cr
 \link[paws.storage:omics_get_variant_store]{get_variant_store} \tab Gets information about a variant store\cr
 \link[paws.storage:omics_get_workflow]{get_workflow} \tab Gets information about a workflow\cr
+\link[paws.storage:omics_get_workflow_version]{get_workflow_version} \tab Gets information about a workflow version\cr
 \link[paws.storage:omics_list_annotation_import_jobs]{list_annotation_import_jobs} \tab Retrieves a list of annotation import jobs\cr
 \link[paws.storage:omics_list_annotation_stores]{list_annotation_stores} \tab Retrieves a list of annotation stores\cr
 \link[paws.storage:omics_list_annotation_store_versions]{list_annotation_store_versions} \tab Lists the versions of an annotation store\cr
@@ -164,13 +167,14 @@ HealthOmics User Guide}.
 \link[paws.storage:omics_list_variant_import_jobs]{list_variant_import_jobs} \tab Retrieves a list of variant import jobs\cr
 \link[paws.storage:omics_list_variant_stores]{list_variant_stores} \tab Retrieves a list of variant stores\cr
 \link[paws.storage:omics_list_workflows]{list_workflows} \tab Retrieves a list of workflows\cr
+\link[paws.storage:omics_list_workflow_versions]{list_workflow_versions} \tab Lists the workflow versions for the specified workflow\cr
 \link[paws.storage:omics_put_s3_access_policy]{put_s3_access_policy} \tab Adds an access policy to the specified store\cr
 \link[paws.storage:omics_start_annotation_import_job]{start_annotation_import_job} \tab Starts an annotation import job\cr
 \link[paws.storage:omics_start_read_set_activation_job]{start_read_set_activation_job} \tab Activates an archived read set\cr
 \link[paws.storage:omics_start_read_set_export_job]{start_read_set_export_job} \tab Exports a read set to Amazon S3\cr
 \link[paws.storage:omics_start_read_set_import_job]{start_read_set_import_job} \tab Starts a read set import job\cr
 \link[paws.storage:omics_start_reference_import_job]{start_reference_import_job} \tab Starts a reference import job\cr
-\link[paws.storage:omics_start_run]{start_run} \tab Starts a workflow run\cr
+\link[paws.storage:omics_start_run]{start_run} \tab Starts a new run or duplicates an existing run\cr
 \link[paws.storage:omics_start_variant_import_job]{start_variant_import_job} \tab Starts a variant import job\cr
 \link[paws.storage:omics_tag_resource]{tag_resource} \tab Tags a resource\cr
 \link[paws.storage:omics_untag_resource]{untag_resource} \tab Removes tags from a resource\cr
@@ -180,7 +184,8 @@ HealthOmics User Guide}.
 \link[paws.storage:omics_update_run_group]{update_run_group} \tab Updates a run group\cr
 \link[paws.storage:omics_update_sequence_store]{update_sequence_store} \tab Update one or more parameters for the sequence store\cr
 \link[paws.storage:omics_update_variant_store]{update_variant_store} \tab Updates a variant store\cr
-\link[paws.storage:omics_update_workflow]{update_workflow} \tab Updates a workflow\cr
+\link[paws.storage:omics_update_workflow]{update_workflow} \tab Updates information about a workflow\cr
+\link[paws.storage:omics_update_workflow_version]{update_workflow_version} \tab Updates information about the workflow version\cr
 \link[paws.storage:omics_upload_read_set_part]{upload_read_set_part} \tab This operation uploads a specific part of a read set
 }
 }

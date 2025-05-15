@@ -337,7 +337,8 @@ lexmodelsv2_build_bot_locale <- function(botId, botVersion, localeId) {
 #'
 #' @usage
 #' lexmodelsv2_create_bot(botName, description, roleArn, dataPrivacy,
-#'   idleSessionTTLInSeconds, botTags, testBotAliasTags, botType, botMembers)
+#'   idleSessionTTLInSeconds, botTags, testBotAliasTags, botType, botMembers,
+#'   errorLogSettings)
 #'
 #' @param botName &#91;required&#93; The name of the bot. The bot name must be unique in the account that
 #' creates the bot.
@@ -365,6 +366,7 @@ lexmodelsv2_build_bot_locale <- function(botId, botVersion, localeId) {
 #' [`tag_resource`][lexmodelsv2_tag_resource] operation.
 #' @param botType The type of a bot to create.
 #' @param botMembers The list of bot members in a network to be created.
+#' @param errorLogSettings Specifies the configuration for error logging during bot creation.
 #'
 #' @return
 #' A list with the following syntax:
@@ -397,6 +399,9 @@ lexmodelsv2_build_bot_locale <- function(botId, botVersion, localeId) {
 #'       botMemberAliasName = "string",
 #'       botMemberVersion = "string"
 #'     )
+#'   ),
+#'   errorLogSettings = list(
+#'     enabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -426,6 +431,9 @@ lexmodelsv2_build_bot_locale <- function(botId, botVersion, localeId) {
 #'       botMemberAliasName = "string",
 #'       botMemberVersion = "string"
 #'     )
+#'   ),
+#'   errorLogSettings = list(
+#'     enabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -435,7 +443,7 @@ lexmodelsv2_build_bot_locale <- function(botId, botVersion, localeId) {
 #' @rdname lexmodelsv2_create_bot
 #'
 #' @aliases lexmodelsv2_create_bot
-lexmodelsv2_create_bot <- function(botName, description = NULL, roleArn, dataPrivacy, idleSessionTTLInSeconds, botTags = NULL, testBotAliasTags = NULL, botType = NULL, botMembers = NULL) {
+lexmodelsv2_create_bot <- function(botName, description = NULL, roleArn, dataPrivacy, idleSessionTTLInSeconds, botTags = NULL, testBotAliasTags = NULL, botType = NULL, botMembers = NULL, errorLogSettings = NULL) {
   op <- new_operation(
     name = "CreateBot",
     http_method = "PUT",
@@ -444,7 +452,7 @@ lexmodelsv2_create_bot <- function(botName, description = NULL, roleArn, dataPri
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lexmodelsv2$create_bot_input(botName = botName, description = description, roleArn = roleArn, dataPrivacy = dataPrivacy, idleSessionTTLInSeconds = idleSessionTTLInSeconds, botTags = botTags, testBotAliasTags = testBotAliasTags, botType = botType, botMembers = botMembers)
+  input <- .lexmodelsv2$create_bot_input(botName = botName, description = description, roleArn = roleArn, dataPrivacy = dataPrivacy, idleSessionTTLInSeconds = idleSessionTTLInSeconds, botTags = botTags, testBotAliasTags = testBotAliasTags, botType = botType, botMembers = botMembers, errorLogSettings = errorLogSettings)
   output <- .lexmodelsv2$create_bot_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config, op)
@@ -1103,7 +1111,8 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #'   parentIntentSignature, sampleUtterances, dialogCodeHook,
 #'   fulfillmentCodeHook, intentConfirmationSetting, intentClosingSetting,
 #'   inputContexts, outputContexts, kendraConfiguration, botId, botVersion,
-#'   localeId, initialResponseSetting, qnAIntentConfiguration)
+#'   localeId, initialResponseSetting, qnAIntentConfiguration,
+#'   qInConnectIntentConfiguration)
 #'
 #' @param intentName &#91;required&#93; The name of the intent. Intent names must be unique in the locale that
 #' contains the intent and cannot match the name of any built-in intent.
@@ -1182,6 +1191,7 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #' `AMAZON.QnAIntent` intent is called when Amazon Lex can't determine
 #' another intent to invoke. If you specify this field, you can't specify
 #' the `kendraConfiguration` field.
+#' @param qInConnectIntentConfiguration Qinconnect intent configuration details for the create intent request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4899,6 +4909,11 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #'       traceStatus = "ENABLED"|"DISABLED",
 #'       customPrompt = "string"
 #'     )
+#'   ),
+#'   qInConnectIntentConfiguration = list(
+#'     qInConnectAssistantConfiguration = list(
+#'       assistantArn = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -8614,6 +8629,11 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #'       traceStatus = "ENABLED"|"DISABLED",
 #'       customPrompt = "string"
 #'     )
+#'   ),
+#'   qInConnectIntentConfiguration = list(
+#'     qInConnectAssistantConfiguration = list(
+#'       assistantArn = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -8623,7 +8643,7 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #' @rdname lexmodelsv2_create_intent
 #'
 #' @aliases lexmodelsv2_create_intent
-lexmodelsv2_create_intent <- function(intentName, description = NULL, parentIntentSignature = NULL, sampleUtterances = NULL, dialogCodeHook = NULL, fulfillmentCodeHook = NULL, intentConfirmationSetting = NULL, intentClosingSetting = NULL, inputContexts = NULL, outputContexts = NULL, kendraConfiguration = NULL, botId, botVersion, localeId, initialResponseSetting = NULL, qnAIntentConfiguration = NULL) {
+lexmodelsv2_create_intent <- function(intentName, description = NULL, parentIntentSignature = NULL, sampleUtterances = NULL, dialogCodeHook = NULL, fulfillmentCodeHook = NULL, intentConfirmationSetting = NULL, intentClosingSetting = NULL, inputContexts = NULL, outputContexts = NULL, kendraConfiguration = NULL, botId, botVersion, localeId, initialResponseSetting = NULL, qnAIntentConfiguration = NULL, qInConnectIntentConfiguration = NULL) {
   op <- new_operation(
     name = "CreateIntent",
     http_method = "PUT",
@@ -8632,7 +8652,7 @@ lexmodelsv2_create_intent <- function(intentName, description = NULL, parentInte
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lexmodelsv2$create_intent_input(intentName = intentName, description = description, parentIntentSignature = parentIntentSignature, sampleUtterances = sampleUtterances, dialogCodeHook = dialogCodeHook, fulfillmentCodeHook = fulfillmentCodeHook, intentConfirmationSetting = intentConfirmationSetting, intentClosingSetting = intentClosingSetting, inputContexts = inputContexts, outputContexts = outputContexts, kendraConfiguration = kendraConfiguration, botId = botId, botVersion = botVersion, localeId = localeId, initialResponseSetting = initialResponseSetting, qnAIntentConfiguration = qnAIntentConfiguration)
+  input <- .lexmodelsv2$create_intent_input(intentName = intentName, description = description, parentIntentSignature = parentIntentSignature, sampleUtterances = sampleUtterances, dialogCodeHook = dialogCodeHook, fulfillmentCodeHook = fulfillmentCodeHook, intentConfirmationSetting = intentConfirmationSetting, intentClosingSetting = intentClosingSetting, inputContexts = inputContexts, outputContexts = outputContexts, kendraConfiguration = kendraConfiguration, botId = botId, botVersion = botVersion, localeId = localeId, initialResponseSetting = initialResponseSetting, qnAIntentConfiguration = qnAIntentConfiguration, qInConnectIntentConfiguration = qInConnectIntentConfiguration)
   output <- .lexmodelsv2$create_intent_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config, op)
@@ -13660,6 +13680,9 @@ lexmodelsv2_delete_utterances <- function(botId, localeId = NULL, sessionId = NU
 #'   ),
 #'   failureReasons = list(
 #'     "string"
+#'   ),
+#'   errorLogSettings = list(
+#'     enabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -14449,6 +14472,9 @@ lexmodelsv2_describe_export <- function(exportId) {
 #'       roleArn = "string",
 #'       dataPrivacy = list(
 #'         childDirected = TRUE|FALSE
+#'       ),
+#'       errorLogSettings = list(
+#'         enabled = TRUE|FALSE
 #'       ),
 #'       idleSessionTTLInSeconds = 123,
 #'       botTags = list(
@@ -18279,6 +18305,11 @@ lexmodelsv2_describe_import <- function(importId) {
 #'       ),
 #'       traceStatus = "ENABLED"|"DISABLED",
 #'       customPrompt = "string"
+#'     )
+#'   ),
+#'   qInConnectIntentConfiguration = list(
+#'     qInConnectAssistantConfiguration = list(
+#'       assistantArn = "string"
 #'     )
 #'   )
 #' )
@@ -24595,6 +24626,9 @@ lexmodelsv2_start_bot_resource_generation <- function(generationInputPrompt, bot
 #'       dataPrivacy = list(
 #'         childDirected = TRUE|FALSE
 #'       ),
+#'       errorLogSettings = list(
+#'         enabled = TRUE|FALSE
+#'       ),
 #'       idleSessionTTLInSeconds = 123,
 #'       botTags = list(
 #'         "string"
@@ -24655,6 +24689,9 @@ lexmodelsv2_start_bot_resource_generation <- function(generationInputPrompt, bot
 #'       roleArn = "string",
 #'       dataPrivacy = list(
 #'         childDirected = TRUE|FALSE
+#'       ),
+#'       errorLogSettings = list(
+#'         enabled = TRUE|FALSE
 #'       ),
 #'       idleSessionTTLInSeconds = 123,
 #'       botTags = list(
@@ -25093,7 +25130,8 @@ lexmodelsv2_untag_resource <- function(resourceARN, tagKeys) {
 #'
 #' @usage
 #' lexmodelsv2_update_bot(botId, botName, description, roleArn,
-#'   dataPrivacy, idleSessionTTLInSeconds, botType, botMembers)
+#'   dataPrivacy, idleSessionTTLInSeconds, botType, botMembers,
+#'   errorLogSettings)
 #'
 #' @param botId &#91;required&#93; The unique identifier of the bot to update. This identifier is returned
 #' by the [`create_bot`][lexmodelsv2_create_bot] operation.
@@ -25115,6 +25153,9 @@ lexmodelsv2_untag_resource <- function(resourceARN, tagKeys) {
 #' @param botType The type of the bot to be updated.
 #' @param botMembers The list of bot members in the network associated with the update
 #' action.
+#' @param errorLogSettings Allows you to modify how Amazon Lex logs errors during bot interactions,
+#' including destinations for error logs and the types of errors to be
+#' captured.
 #'
 #' @return
 #' A list with the following syntax:
@@ -25144,6 +25185,9 @@ lexmodelsv2_untag_resource <- function(resourceARN, tagKeys) {
 #'       botMemberAliasName = "string",
 #'       botMemberVersion = "string"
 #'     )
+#'   ),
+#'   errorLogSettings = list(
+#'     enabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -25168,6 +25212,9 @@ lexmodelsv2_untag_resource <- function(resourceARN, tagKeys) {
 #'       botMemberAliasName = "string",
 #'       botMemberVersion = "string"
 #'     )
+#'   ),
+#'   errorLogSettings = list(
+#'     enabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -25177,7 +25224,7 @@ lexmodelsv2_untag_resource <- function(resourceARN, tagKeys) {
 #' @rdname lexmodelsv2_update_bot
 #'
 #' @aliases lexmodelsv2_update_bot
-lexmodelsv2_update_bot <- function(botId, botName, description = NULL, roleArn, dataPrivacy, idleSessionTTLInSeconds, botType = NULL, botMembers = NULL) {
+lexmodelsv2_update_bot <- function(botId, botName, description = NULL, roleArn, dataPrivacy, idleSessionTTLInSeconds, botType = NULL, botMembers = NULL, errorLogSettings = NULL) {
   op <- new_operation(
     name = "UpdateBot",
     http_method = "PUT",
@@ -25186,7 +25233,7 @@ lexmodelsv2_update_bot <- function(botId, botName, description = NULL, roleArn, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lexmodelsv2$update_bot_input(botId = botId, botName = botName, description = description, roleArn = roleArn, dataPrivacy = dataPrivacy, idleSessionTTLInSeconds = idleSessionTTLInSeconds, botType = botType, botMembers = botMembers)
+  input <- .lexmodelsv2$update_bot_input(botId = botId, botName = botName, description = description, roleArn = roleArn, dataPrivacy = dataPrivacy, idleSessionTTLInSeconds = idleSessionTTLInSeconds, botType = botType, botMembers = botMembers, errorLogSettings = errorLogSettings)
   output <- .lexmodelsv2$update_bot_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config, op)
@@ -25732,7 +25779,8 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #'   fulfillmentCodeHook, slotPriorities, intentConfirmationSetting,
 #'   intentClosingSetting, inputContexts, outputContexts,
 #'   kendraConfiguration, botId, botVersion, localeId,
-#'   initialResponseSetting, qnAIntentConfiguration)
+#'   initialResponseSetting, qnAIntentConfiguration,
+#'   qInConnectIntentConfiguration)
 #'
 #' @param intentId &#91;required&#93; The unique identifier of the intent to update.
 #' @param intentName &#91;required&#93; The new name for the intent.
@@ -25767,6 +25815,7 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #' `AMAZON.QnAIntent` intent is called when Amazon Lex can't determine
 #' another intent to invoke. If you specify this field, you can't specify
 #' the `kendraConfiguration` field.
+#' @param qInConnectIntentConfiguration Qinconnect intent configuration details for the update intent request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -29492,6 +29541,11 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #'       ),
 #'       traceStatus = "ENABLED"|"DISABLED",
 #'       customPrompt = "string"
+#'     )
+#'   ),
+#'   qInConnectIntentConfiguration = list(
+#'     qInConnectAssistantConfiguration = list(
+#'       assistantArn = "string"
 #'     )
 #'   )
 #' )
@@ -33215,6 +33269,11 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #'       traceStatus = "ENABLED"|"DISABLED",
 #'       customPrompt = "string"
 #'     )
+#'   ),
+#'   qInConnectIntentConfiguration = list(
+#'     qInConnectAssistantConfiguration = list(
+#'       assistantArn = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -33224,7 +33283,7 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #' @rdname lexmodelsv2_update_intent
 #'
 #' @aliases lexmodelsv2_update_intent
-lexmodelsv2_update_intent <- function(intentId, intentName, description = NULL, parentIntentSignature = NULL, sampleUtterances = NULL, dialogCodeHook = NULL, fulfillmentCodeHook = NULL, slotPriorities = NULL, intentConfirmationSetting = NULL, intentClosingSetting = NULL, inputContexts = NULL, outputContexts = NULL, kendraConfiguration = NULL, botId, botVersion, localeId, initialResponseSetting = NULL, qnAIntentConfiguration = NULL) {
+lexmodelsv2_update_intent <- function(intentId, intentName, description = NULL, parentIntentSignature = NULL, sampleUtterances = NULL, dialogCodeHook = NULL, fulfillmentCodeHook = NULL, slotPriorities = NULL, intentConfirmationSetting = NULL, intentClosingSetting = NULL, inputContexts = NULL, outputContexts = NULL, kendraConfiguration = NULL, botId, botVersion, localeId, initialResponseSetting = NULL, qnAIntentConfiguration = NULL, qInConnectIntentConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateIntent",
     http_method = "PUT",
@@ -33233,7 +33292,7 @@ lexmodelsv2_update_intent <- function(intentId, intentName, description = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lexmodelsv2$update_intent_input(intentId = intentId, intentName = intentName, description = description, parentIntentSignature = parentIntentSignature, sampleUtterances = sampleUtterances, dialogCodeHook = dialogCodeHook, fulfillmentCodeHook = fulfillmentCodeHook, slotPriorities = slotPriorities, intentConfirmationSetting = intentConfirmationSetting, intentClosingSetting = intentClosingSetting, inputContexts = inputContexts, outputContexts = outputContexts, kendraConfiguration = kendraConfiguration, botId = botId, botVersion = botVersion, localeId = localeId, initialResponseSetting = initialResponseSetting, qnAIntentConfiguration = qnAIntentConfiguration)
+  input <- .lexmodelsv2$update_intent_input(intentId = intentId, intentName = intentName, description = description, parentIntentSignature = parentIntentSignature, sampleUtterances = sampleUtterances, dialogCodeHook = dialogCodeHook, fulfillmentCodeHook = fulfillmentCodeHook, slotPriorities = slotPriorities, intentConfirmationSetting = intentConfirmationSetting, intentClosingSetting = intentClosingSetting, inputContexts = inputContexts, outputContexts = outputContexts, kendraConfiguration = kendraConfiguration, botId = botId, botVersion = botVersion, localeId = localeId, initialResponseSetting = initialResponseSetting, qnAIntentConfiguration = qnAIntentConfiguration, qInConnectIntentConfiguration = qInConnectIntentConfiguration)
   output <- .lexmodelsv2$update_intent_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config, op)

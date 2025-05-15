@@ -219,6 +219,7 @@ NULL
 #'  \link[=storagegateway_detach_volume]{detach_volume} \tab Disconnects a volume from an iSCSI connection and then detaches the volume from the specified gateway\cr
 #'  \link[=storagegateway_disable_gateway]{disable_gateway} \tab Disables a tape gateway when the gateway is no longer functioning\cr
 #'  \link[=storagegateway_disassociate_file_system]{disassociate_file_system} \tab Disassociates an Amazon FSx file system from the specified gateway\cr
+#'  \link[=storagegateway_evict_files_failing_upload]{evict_files_failing_upload} \tab Starts a process that cleans the specified file share's cache of file entries that are failing upload to Amazon S3\cr
 #'  \link[=storagegateway_join_domain]{join_domain} \tab Adds a file gateway to an Active Directory domain\cr
 #'  \link[=storagegateway_list_automatic_tape_creation_policies]{list_automatic_tape_creation_policies} \tab Lists the automatic tape creation policies for a gateway\cr
 #'  \link[=storagegateway_list_cache_reports]{list_cache_reports} \tab Returns a list of existing cache reports for all file shares associated with your Amazon Web Services account\cr
@@ -290,7 +291,7 @@ storagegateway <- function(config = list(), credentials = list(), endpoint = NUL
 
 .storagegateway$metadata <- list(
   service_name = "storagegateway",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "storagegateway.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "storagegateway.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "storagegateway.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "storagegateway.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "storagegateway.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "storagegateway.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "storagegateway.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "storagegateway.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "storagegateway.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "storagegateway.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "storagegateway.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "storagegateway.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "storagegateway.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "storagegateway.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "storagegateway.{region}.amazonaws.eu", global = FALSE)),
   service_id = "Storage Gateway",
   api_version = "2013-06-30",
   signing_name = "storagegateway",

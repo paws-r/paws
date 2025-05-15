@@ -240,7 +240,7 @@ supported on Valkey, or on Redis OSS version 2.8.22 and later.
 }}
 
 \item{Engine}{The name of the cache engine to be used for the clusters in this
-replication group. The value must be set to \code{Redis}.}
+replication group. The value must be set to \code{valkey} or \code{redis}.}
 
 \item{EngineVersion}{The version number of the cache engine to be used for the clusters in
 this replication group. To view the supported cache engine versions, use
@@ -397,9 +397,10 @@ replication group you must set \code{AtRestEncryptionEnabled} to \code{true} whe
 you create the replication group.
 
 \strong{Required:} Only available when creating a replication group in an
-Amazon VPC using Redis OSS version \verb{3.2.6}, \verb{4.x} or later.
+Amazon VPC using Valkey 7.2 and later, Redis OSS version \verb{3.2.6}, or
+Redis OSS \verb{4.x} and later.
 
-Default: \code{false}}
+Default: \code{true} when using Valkey, \code{false} when using Redis OSS}
 
 \item{KmsKeyId}{The ID of the KMS key used to encrypt the disk in the cluster.}
 
@@ -412,14 +413,14 @@ groups using the r6gd node type. This parameter must be set to true when
 using r6gd nodes. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/data-tiering.html}{Data tiering}.}
 
 \item{NetworkType}{Must be either \code{ipv4} | \code{ipv6} | \code{dual_stack}. IPv6 is supported for
-workloads using Valkey 7.2 and above, Redis OSS engine version 6.2 and
-above or Memcached engine version 1.6.6 and above on all instances built
+workloads using Valkey 7.2 and above, Redis OSS engine version 6.2 to
+7.1 and Memcached engine version 1.6.6 and above on all instances built
 on the \href{https://aws.amazon.com/ec2/nitro/}{Nitro system}.}
 
 \item{IpDiscovery}{The network type you choose when creating a replication group, either
 \code{ipv4} | \code{ipv6}. IPv6 is supported for workloads using Valkey 7.2 and
-above, Redis OSS engine version 6.2 and above or Memcached engine
-version 1.6.6 and above on all instances built on the \href{https://aws.amazon.com/ec2/nitro/}{Nitro system}.}
+above, Redis OSS engine version 6.2 to 7.1 or Memcached engine version
+1.6.6 and above on all instances built on the \href{https://aws.amazon.com/ec2/nitro/}{Nitro system}.}
 
 \item{TransitEncryptionMode}{A setting that allows you to migrate your clients to use in-transit
 encryption, with no downtime.

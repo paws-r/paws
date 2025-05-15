@@ -47,9 +47,11 @@ a key-value pair. Each key and value is limited to 256 characters, as
 specified by the \verb{Length Constraint}.
 
 Do not include any security-sensitive information including account
-access IDs, secrets or tokens in any hyperparameter field. If the use of
-security-sensitive credentials are detected, SageMaker will reject your
-training job request and return an exception error.}
+access IDs, secrets, or tokens in any hyperparameter fields. As part of
+the shared responsibility model, you are responsible for any potential
+exposure, unauthorized access, or compromise of your sensitive data if
+caused by any security-sensitive information included in the request
+hyperparameter variable or plain text fields.}
 
 \item{AlgorithmSpecification}{[required] The registry path of the Docker image that contains the training
 algorithm and algorithm-specific metadata, including the input mode. For
@@ -120,7 +122,14 @@ training are not lost.}
 
 \item{Tags}{An array of key-value pairs. You can use tags to categorize your Amazon
 Web Services resources in different ways, for example, by purpose,
-owner, or environment. For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources}.}
+owner, or environment. For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources}.
+
+Do not include any security-sensitive information including account
+access IDs, secrets, or tokens in any tags. As part of the shared
+responsibility model, you are responsible for any potential exposure,
+unauthorized access, or compromise of your sensitive data if caused by
+any security-sensitive information included in the request tag variable
+or plain text fields.}
 
 \item{EnableNetworkIsolation}{Isolates the training container. No inbound or outbound network calls
 can be made, except for calls between peers within a training cluster
@@ -165,7 +174,14 @@ debugging output tensors.}
 \item{ProfilerRuleConfigurations}{Configuration information for Amazon SageMaker Debugger rules for
 profiling system and framework metrics.}
 
-\item{Environment}{The environment variables to set in the Docker container.}
+\item{Environment}{The environment variables to set in the Docker container.
+
+Do not include any security-sensitive information including account
+access IDs, secrets, or tokens in any environment fields. As part of the
+shared responsibility model, you are responsible for any potential
+exposure, unauthorized access, or compromise of your sensitive data if
+caused by security-sensitive information included in the request
+environment variable or plain text fields.}
 
 \item{RetryStrategy}{The number of times to retry the job when the job fails due to an
 \code{InternalServerError}.}

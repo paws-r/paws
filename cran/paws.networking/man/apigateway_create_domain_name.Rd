@@ -54,7 +54,7 @@ used by regional endpoint for this domain name. Certificate Manager is
 the only supported source.}
 
 \item{endpointConfiguration}{The endpoint configuration of this DomainName showing the endpoint types
-of the domain name.}
+and IP address types of the domain name.}
 
 \item{tags}{The key-value map of strings. The valid character set is
 [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not

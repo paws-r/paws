@@ -29,6 +29,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \itemize{
 \item \code{availability-zone} - The Availability Zone where the Reserved
 Instance can be used.
+\item \code{availability-zone-id} - The ID of the Availability Zone where the
+Reserved Instance can be used.
 \item \code{duration} - The duration of the Reserved Instance (one year or
 three years), in seconds (\code{31536000} | \code{94608000}).
 \item \code{end} - The time when the Reserved Instance expires (for example,

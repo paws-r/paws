@@ -2,7 +2,8 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_update_identity_provider}
 \alias{cognitoidentityprovider_update_identity_provider}
-\title{Updates IdP information for a user pool}
+\title{Modifies the configuration and trust relationship between a third-party
+identity provider (IdP) and a user pool}
 \usage{
 cognitoidentityprovider_update_identity_provider(
   UserPoolId,
@@ -13,9 +14,12 @@ cognitoidentityprovider_update_identity_provider(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID.}
+\item{UserPoolId}{[required] The Id of the user pool where you want to update your IdP.}
 
-\item{ProviderName}{[required] The IdP name.}
+\item{ProviderName}{[required] The name of the IdP that you want to update. You can pass the identity
+provider name in the \code{identity_provider} query parameter of requests to
+the \href{https://docs.aws.amazon.com/cognito/latest/developerguide/authorization-endpoint.html}{Authorize endpoint}
+to silently redirect to sign-in with the associated IdP.}
 
 \item{ProviderDetails}{The scopes, URLs, and identifiers for your external identity provider.
 The following examples describe the provider detail keys for each IdP
@@ -80,12 +84,19 @@ Create or update request:
 Describe response:
 \verb{"ProviderDetails": \{ "api_version": "v17.0", "attributes_url": "https://graph.facebook.com/v17.0/me?fields=", "attributes_url_add_attributes": "true", "authorize_scopes": "public_profile, email", "authorize_url": "https://www.facebook.com/v17.0/dialog/oauth", "client_id": "1example23456789", "client_secret": "provider-app-client-secret", "token_request_method": "GET", "token_url": "https://graph.facebook.com/v17.0/oauth/access_token" \}}}
 
-\item{AttributeMapping}{The IdP attribute mapping to be changed.}
+\item{AttributeMapping}{A mapping of IdP attributes to standard and custom user pool attributes.
+Specify a user pool attribute as the key of the key-value pair, and the
+IdP attribute claim name as the value.}
 
-\item{IdpIdentifiers}{A list of IdP identifiers.}
+\item{IdpIdentifiers}{An array of IdP identifiers, for example
+\verb{"IdPIdentifiers": [ "MyIdP", "MyIdP2" ]}. Identifiers are friendly
+names that you can pass in the \code{idp_identifier} query parameter of
+requests to the \href{https://docs.aws.amazon.com/cognito/latest/developerguide/authorization-endpoint.html}{Authorize endpoint}
+to silently redirect to sign-in with the associated IdP. Identifiers in
+a domain format also enable the use of \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-managing-saml-idp-naming.html}{email-address matching with SAML providers}.}
 }
 \description{
-Updates IdP information for a user pool.
+Modifies the configuration and trust relationship between a third-party identity provider (IdP) and a user pool. Amazon Cognito accepts sign-in with third-party identity providers through managed login and OIDC relying-party libraries. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-identity-federation.html}{Third-party IdP sign-in}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_identity_provider/} for full documentation.
 }

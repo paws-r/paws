@@ -95,24 +95,38 @@ bases.
 \section{Operations}{
 
 \tabular{ll}{
+\link[=bedrockagentruntime_create_invocation]{create_invocation} \tab Creates a new invocation within a session\cr
+\link[=bedrockagentruntime_create_session]{create_session} \tab Creates a session to temporarily store conversations for generative AI (GenAI) applications built with open-source frameworks such as LangGraph and LlamaIndex\cr
 \link[=bedrockagentruntime_delete_agent_memory]{delete_agent_memory} \tab Deletes memory from the specified memory identifier\cr
+\link[=bedrockagentruntime_delete_session]{delete_session} \tab Deletes a session that you ended\cr
+\link[=bedrockagentruntime_end_session]{end_session} \tab Ends the session\cr
 \link[=bedrockagentruntime_generate_query]{generate_query} \tab Generates an SQL query from a natural language query\cr
 \link[=bedrockagentruntime_get_agent_memory]{get_agent_memory} \tab Gets the sessions stored in the memory of the agent\cr
+\link[=bedrockagentruntime_get_invocation_step]{get_invocation_step} \tab Retrieves the details of a specific invocation step within an invocation in a session\cr
+\link[=bedrockagentruntime_get_session]{get_session} \tab Retrieves details about a specific session\cr
 \link[=bedrockagentruntime_invoke_agent]{invoke_agent} \tab Sends a prompt for the agent to process and respond to\cr
 \link[=bedrockagentruntime_invoke_flow]{invoke_flow} \tab Invokes an alias of a flow to run the inputs that you specify and return the output of each node as a stream\cr
 \link[=bedrockagentruntime_invoke_inline_agent]{invoke_inline_agent} \tab Invokes an inline Amazon Bedrock agent using the configurations you provide with the request\cr
+\link[=bedrockagentruntime_list_invocations]{list_invocations} \tab Lists all invocations associated with a specific session\cr
+\link[=bedrockagentruntime_list_invocation_steps]{list_invocation_steps} \tab Lists all invocation steps associated with a session and optionally, an invocation within the session\cr
+\link[=bedrockagentruntime_list_sessions]{list_sessions} \tab Lists all sessions in your Amazon Web Services account\cr
+\link[=bedrockagentruntime_list_tags_for_resource]{list_tags_for_resource} \tab List all the tags for the resource you specify\cr
 \link[=bedrockagentruntime_optimize_prompt]{optimize_prompt} \tab Optimizes a prompt for the task that you specify\cr
+\link[=bedrockagentruntime_put_invocation_step]{put_invocation_step} \tab Add an invocation step to an invocation in a session\cr
 \link[=bedrockagentruntime_rerank]{rerank} \tab Reranks the relevance of sources based on queries\cr
 \link[=bedrockagentruntime_retrieve]{retrieve} \tab Queries a knowledge base and retrieves information from it\cr
 \link[=bedrockagentruntime_retrieve_and_generate]{retrieve_and_generate} \tab Queries a knowledge base and generates responses based on the retrieved results and using the specified foundation model or inference profile\cr
-\link[=bedrockagentruntime_retrieve_and_generate_stream]{retrieve_and_generate_stream} \tab Queries a knowledge base and generates responses based on the retrieved results, with output in streaming format
+\link[=bedrockagentruntime_retrieve_and_generate_stream]{retrieve_and_generate_stream} \tab Queries a knowledge base and generates responses based on the retrieved results, with output in streaming format\cr
+\link[=bedrockagentruntime_tag_resource]{tag_resource} \tab Associate tags with a resource\cr
+\link[=bedrockagentruntime_untag_resource]{untag_resource} \tab Remove tags from a resource\cr
+\link[=bedrockagentruntime_update_session]{update_session} \tab Updates the metadata or encryption settings of a session
 }
 }
 
 \examples{
 \dontrun{
 svc <- bedrockagentruntime()
-svc$delete_agent_memory(
+svc$create_invocation(
   Foo = 123
 )
 }

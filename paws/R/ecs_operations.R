@@ -1023,6 +1023,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'               volumeType = "string",
 #'               sizeInGiB = 123,
 #'               snapshotId = "string",
+#'               volumeInitializationRate = 123,
 #'               iops = 123,
 #'               throughput = 123,
 #'               tagSpecifications = list(
@@ -1246,6 +1247,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'         volumeType = "string",
 #'         sizeInGiB = 123,
 #'         snapshotId = "string",
+#'         volumeInitializationRate = 123,
 #'         iops = 123,
 #'         throughput = 123,
 #'         tagSpecifications = list(
@@ -1635,7 +1637,7 @@ ecs_create_task_set <- function(service, cluster, externalId = NULL, taskDefinit
 #' ```
 #' list(
 #'   setting = list(
-#'     name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate",
+#'     name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate"|"defaultLogDriverMode",
 #'     value = "string",
 #'     principalArn = "string",
 #'     type = "user"|"aws_managed"
@@ -1646,7 +1648,7 @@ ecs_create_task_set <- function(service, cluster, externalId = NULL, taskDefinit
 #' @section Request syntax:
 #' ```
 #' svc$delete_account_setting(
-#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate",
+#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate"|"defaultLogDriverMode",
 #'   principalArn = "string"
 #' )
 #' ```
@@ -2250,6 +2252,7 @@ ecs_delete_cluster <- function(cluster) {
 #'               volumeType = "string",
 #'               sizeInGiB = 123,
 #'               snapshotId = "string",
+#'               volumeInitializationRate = 123,
 #'               iops = 123,
 #'               throughput = 123,
 #'               tagSpecifications = list(
@@ -3901,8 +3904,9 @@ ecs_describe_container_instances <- function(cluster = NULL, containerInstances,
 #' Describes one or more of your service deployments.
 #' 
 #' A service deployment happens when you release a software update for the
-#' service. For more information, see [Amazon ECS service
-#' deployments](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/).
+#' service. For more information, see [View service history using Amazon
+#' ECS service
+#' deployments](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-deployment.html).
 #'
 #' @usage
 #' ecs_describe_service_deployments(serviceDeploymentArns)
@@ -3949,7 +3953,7 @@ ecs_describe_container_instances <- function(cluster = NULL, containerInstances,
 #'         runningTaskCount = 123,
 #'         pendingTaskCount = 123
 #'       ),
-#'       status = "PENDING"|"SUCCESSFUL"|"STOPPED"|"STOP_REQUESTED"|"IN_PROGRESS"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_SUCCESSFUL"|"ROLLBACK_FAILED",
+#'       status = "PENDING"|"SUCCESSFUL"|"STOPPED"|"STOP_REQUESTED"|"IN_PROGRESS"|"ROLLBACK_REQUESTED"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_SUCCESSFUL"|"ROLLBACK_FAILED",
 #'       statusReason = "string",
 #'       deploymentConfiguration = list(
 #'         deploymentCircuitBreaker = list(
@@ -4160,6 +4164,7 @@ ecs_describe_service_deployments <- function(serviceDeploymentArns) {
 #'             volumeType = "string",
 #'             sizeInGiB = 123,
 #'             snapshotId = "string",
+#'             volumeInitializationRate = 123,
 #'             iops = 123,
 #'             throughput = 123,
 #'             tagSpecifications = list(
@@ -4479,6 +4484,7 @@ ecs_describe_service_revisions <- function(serviceRevisionArns) {
 #'                 volumeType = "string",
 #'                 sizeInGiB = 123,
 #'                 snapshotId = "string",
+#'                 volumeInitializationRate = 123,
 #'                 iops = 123,
 #'                 throughput = 123,
 #'                 tagSpecifications = list(
@@ -5660,7 +5666,7 @@ ecs_get_task_protection <- function(cluster, tasks = NULL) {
 #' list(
 #'   settings = list(
 #'     list(
-#'       name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate",
+#'       name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate"|"defaultLogDriverMode",
 #'       value = "string",
 #'       principalArn = "string",
 #'       type = "user"|"aws_managed"
@@ -5673,7 +5679,7 @@ ecs_get_task_protection <- function(cluster, tasks = NULL) {
 #' @section Request syntax:
 #' ```
 #' svc$list_account_settings(
-#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate",
+#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate"|"defaultLogDriverMode",
 #'   value = "string",
 #'   principalArn = "string",
 #'   effectiveSettings = TRUE|FALSE,
@@ -6069,7 +6075,7 @@ ecs_list_container_instances <- function(cluster = NULL, filter = NULL, nextToke
 #'         "2015-01-01"
 #'       ),
 #'       targetServiceRevisionArn = "string",
-#'       status = "PENDING"|"SUCCESSFUL"|"STOPPED"|"STOP_REQUESTED"|"IN_PROGRESS"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_SUCCESSFUL"|"ROLLBACK_FAILED",
+#'       status = "PENDING"|"SUCCESSFUL"|"STOPPED"|"STOP_REQUESTED"|"IN_PROGRESS"|"ROLLBACK_REQUESTED"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_SUCCESSFUL"|"ROLLBACK_FAILED",
 #'       statusReason = "string"
 #'     )
 #'   ),
@@ -6083,7 +6089,7 @@ ecs_list_container_instances <- function(cluster = NULL, filter = NULL, nextToke
 #'   service = "string",
 #'   cluster = "string",
 #'   status = list(
-#'     "PENDING"|"SUCCESSFUL"|"STOPPED"|"STOP_REQUESTED"|"IN_PROGRESS"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_SUCCESSFUL"|"ROLLBACK_FAILED"
+#'     "PENDING"|"SUCCESSFUL"|"STOPPED"|"STOP_REQUESTED"|"IN_PROGRESS"|"ROLLBACK_REQUESTED"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_SUCCESSFUL"|"ROLLBACK_FAILED"
 #'   ),
 #'   createdAt = list(
 #'     before = as.POSIXct(
@@ -6746,12 +6752,6 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #'     You must turn on this setting to use Amazon ECS features such as
 #'     resource tagging.
 #' 
-#' -   `fargateFIPSMode` - When turned on, you can run Fargate workloads in
-#'     a manner that is compliant with Federal Information Processing
-#'     Standard (FIPS-140). For more information, see [Fargate Federal
-#'     Information Processing Standard
-#'     (FIPS-140)](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-fips-compliance.html).
-#' 
 #' -   `containerInstanceLongArnFormat` - When modified, the Amazon
 #'     Resource Name (ARN) and resource ID format of the resource type for
 #'     a specified user, role, or the root user for an account is affected.
@@ -6822,6 +6822,18 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #'     creation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/supported-iam-actions-tagging.html)
 #'     in the *Amazon ECS Developer Guide*.
 #' 
+#' -   `defaultLogDriverMode` - Amazon ECS supports setting a default
+#'     delivery mode of log messages from a container to the `logDriver`
+#'     that you specify in the container's `logConfiguration`. The delivery
+#'     mode affects application stability when the flow of logs from the
+#'     container to the log driver is interrupted. The
+#'     `defaultLogDriverMode` setting supports two values: `blocking` and
+#'     `non-blocking`. If you don't specify a delivery mode in your
+#'     container definition's `logConfiguration`, the mode you specify
+#'     using this account setting will be used as the default. For more
+#'     information about log delivery modes, see
+#'     [LogConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html).
+#' 
 #' -   `guardDutyActivate` - The `guardDutyActivate` parameter is read-only
 #'     in Amazon ECS and indicates whether Amazon ECS Runtime Monitoring is
 #'     enabled or disabled by your security administrator in your Amazon
@@ -6860,7 +6872,7 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #' ```
 #' list(
 #'   setting = list(
-#'     name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate",
+#'     name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate"|"defaultLogDriverMode",
 #'     value = "string",
 #'     principalArn = "string",
 #'     type = "user"|"aws_managed"
@@ -6871,7 +6883,7 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #' @section Request syntax:
 #' ```
 #' svc$put_account_setting(
-#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate",
+#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate"|"defaultLogDriverMode",
 #'   value = "string",
 #'   principalArn = "string"
 #' )
@@ -7030,6 +7042,18 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 #'     creation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/supported-iam-actions-tagging.html)
 #'     in the *Amazon ECS Developer Guide*.
 #' 
+#' -   `defaultLogDriverMode` -Amazon ECS supports setting a default
+#'     delivery mode of log messages from a container to the `logDriver`
+#'     that you specify in the container's `logConfiguration`. The delivery
+#'     mode affects application stability when the flow of logs from the
+#'     container to the log driver is interrupted. The
+#'     `defaultLogDriverMode` setting supports two values: `blocking` and
+#'     `non-blocking`. If you don't specify a delivery mode in your
+#'     container definition's `logConfiguration`, the mode you specify
+#'     using this account setting will be used as the default. For more
+#'     information about log delivery modes, see
+#'     [LogConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html).
+#' 
 #' -   `guardDutyActivate` - The `guardDutyActivate` parameter is read-only
 #'     in Amazon ECS and indicates whether Amazon ECS Runtime Monitoring is
 #'     enabled or disabled by your security administrator in your Amazon
@@ -7057,7 +7081,7 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 #' ```
 #' list(
 #'   setting = list(
-#'     name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate",
+#'     name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate"|"defaultLogDriverMode",
 #'     value = "string",
 #'     principalArn = "string",
 #'     type = "user"|"aws_managed"
@@ -7068,7 +7092,7 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 #' @section Request syntax:
 #' ```
 #' svc$put_account_setting_default(
-#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate",
+#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate"|"defaultLogDriverMode",
 #'   value = "string"
 #' )
 #' ```
@@ -8569,6 +8593,19 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #'     command returns an accurate response. Apply an exponential backoff
 #'     algorithm starting with a couple of seconds of wait time, and
 #'     increase gradually up to about five minutes of wait time.
+#' 
+#' If you get a `ConflictException` error, the [`run_task`][ecs_run_task]
+#' request could not be processed due to conflicts. The provided
+#' `clientToken` is already in use with a different
+#' [`run_task`][ecs_run_task] request. The `resourceIds` are the existing
+#' task ARNs which are already associated with the `clientToken`.
+#' 
+#' To fix this issue:
+#' 
+#' -   Run [`run_task`][ecs_run_task] with a unique `clientToken`.
+#' 
+#' -   Run [`run_task`][ecs_run_task] with the `clientToken` and the
+#'     original set of parameters
 #'
 #' @usage
 #' ecs_run_task(capacityProviderStrategy, cluster, count,
@@ -8592,6 +8629,9 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster to run
 #' your task on. If you do not specify a cluster, the default cluster is
 #' assumed.
+#' 
+#' Each account receives a default cluster the first time you use the
+#' service, but you may also create other clusters.
 #' @param count The number of instantiations of the specified task to place on your
 #' cluster. You can specify up to 10 tasks for each call.
 #' @param enableECSManagedTags Specifies whether to use Amazon ECS managed tags for the task. For more
@@ -9036,6 +9076,7 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #'         volumeType = "string",
 #'         sizeInGiB = 123,
 #'         snapshotId = "string",
+#'         volumeInitializationRate = 123,
 #'         iops = 123,
 #'         throughput = 123,
 #'         tagSpecifications = list(
@@ -9484,6 +9525,7 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #'         volumeType = "string",
 #'         sizeInGiB = 123,
 #'         snapshotId = "string",
+#'         volumeInitializationRate = 123,
 #'         iops = 123,
 #'         throughput = 123,
 #'         tagSpecifications = list(
@@ -9532,6 +9574,61 @@ ecs_start_task <- function(cluster = NULL, containerInstances, enableECSManagedT
   return(response)
 }
 .ecs$operations$start_task <- ecs_start_task
+
+#' Stops an ongoing service deployment
+#'
+#' @description
+#' Stops an ongoing service deployment.
+#' 
+#' StopServiceDeployment isn't currently supported.
+#'
+#' @usage
+#' ecs_stop_service_deployment(serviceDeploymentArn, stopType)
+#'
+#' @param serviceDeploymentArn &#91;required&#93; The ARN of the service deployment that you want to stop.
+#' @param stopType How you want Amazon ECS to stop the service.
+#' 
+#' The ROLLBACK and ABORT stopType aren't supported.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   serviceDeploymentArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_service_deployment(
+#'   serviceDeploymentArn = "string",
+#'   stopType = "ABORT"|"ROLLBACK"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_stop_service_deployment
+#'
+#' @aliases ecs_stop_service_deployment
+ecs_stop_service_deployment <- function(serviceDeploymentArn, stopType = NULL) {
+  op <- new_operation(
+    name = "StopServiceDeployment",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecs$stop_service_deployment_input(serviceDeploymentArn = serviceDeploymentArn, stopType = stopType)
+  output <- .ecs$stop_service_deployment_output()
+  config <- get_config()
+  svc <- .ecs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$stop_service_deployment <- ecs_stop_service_deployment
 
 #' Stops a running task
 #'
@@ -11532,6 +11629,7 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'               volumeType = "string",
 #'               sizeInGiB = 123,
 #'               snapshotId = "string",
+#'               volumeInitializationRate = 123,
 #'               iops = 123,
 #'               throughput = 123,
 #'               tagSpecifications = list(
@@ -11743,6 +11841,7 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'         volumeType = "string",
 #'         sizeInGiB = 123,
 #'         snapshotId = "string",
+#'         volumeInitializationRate = 123,
 #'         iops = 123,
 #'         throughput = 123,
 #'         tagSpecifications = list(

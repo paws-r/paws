@@ -2,7 +2,9 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_get_identity_provider_by_identifier}
 \alias{cognitoidentityprovider_get_identity_provider_by_identifier}
-\title{Gets the specified IdP}
+\title{Given the identifier of an identity provider (IdP), for example
+examplecorp, returns information about the user pool configuration for
+that IdP}
 \usage{
 cognitoidentityprovider_get_identity_provider_by_identifier(
   UserPoolId,
@@ -10,12 +12,15 @@ cognitoidentityprovider_get_identity_provider_by_identifier(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to get information about the IdP.}
 
-\item{IdpIdentifier}{[required] The IdP identifier.}
+\item{IdpIdentifier}{[required] The identifier that you assigned to your user pool. The identifier is an
+alternative name for an IdP that is distinct from the IdP name. For
+example, an IdP with a name of \code{MyIdP} might have an identifier of the
+email domain \code{example.com}.}
 }
 \description{
-Gets the specified IdP.
+Given the identifier of an identity provider (IdP), for example \code{examplecorp}, returns information about the user pool configuration for that IdP. For more information about IdPs, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-identity-federation.html}{Third-party IdP sign-in}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_identity_provider_by_identifier/} for full documentation.
 }

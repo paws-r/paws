@@ -5,13 +5,13 @@ NULL
 
 .route53recoverycontrolconfig$create_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ClusterName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ClusterName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), NetworkType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .route53recoverycontrolconfig$create_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Cluster = structure(list(ClusterArn = structure(logical(0), tags = list(type = "string")), ClusterEndpoints = structure(list(structure(list(Endpoint = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Cluster = structure(list(ClusterArn = structure(logical(0), tags = list(type = "string")), ClusterEndpoints = structure(list(structure(list(Endpoint = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), NetworkType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -107,7 +107,7 @@ NULL
 
 .route53recoverycontrolconfig$describe_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Cluster = structure(list(ClusterArn = structure(logical(0), tags = list(type = "string")), ClusterEndpoints = structure(list(structure(list(Endpoint = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Cluster = structure(list(ClusterArn = structure(logical(0), tags = list(type = "string")), ClusterEndpoints = structure(list(structure(list(Endpoint = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), NetworkType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -179,7 +179,7 @@ NULL
 
 .route53recoverycontrolconfig$list_clusters_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Clusters = structure(list(structure(list(ClusterArn = structure(logical(0), tags = list(type = "string")), ClusterEndpoints = structure(list(structure(list(Endpoint = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Clusters = structure(list(structure(list(ClusterArn = structure(logical(0), tags = list(type = "string")), ClusterEndpoints = structure(list(structure(list(Endpoint = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), NetworkType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -252,6 +252,18 @@ NULL
 .route53recoverycontrolconfig$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53recoverycontrolconfig$update_cluster_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ClusterArn = structure(logical(0), tags = list(type = "string")), NetworkType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53recoverycontrolconfig$update_cluster_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Cluster = structure(list(ClusterArn = structure(logical(0), tags = list(type = "string")), ClusterEndpoints = structure(list(structure(list(Endpoint = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), NetworkType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

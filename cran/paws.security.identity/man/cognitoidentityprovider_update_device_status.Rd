@@ -2,7 +2,9 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_update_device_status}
 \alias{cognitoidentityprovider_update_device_status}
-\title{Updates the device status}
+\title{Updates the status of a the currently signed-in user's device so that it
+is marked as remembered or not remembered for the purpose of device
+authentication}
 \usage{
 cognitoidentityprovider_update_device_status(
   AccessToken,
@@ -11,15 +13,18 @@ cognitoidentityprovider_update_device_status(
 )
 }
 \arguments{
-\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the user whose device
-status you want to update.}
+\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the currently
+signed-in user. Must include a scope claim for
+\code{aws.cognito.signin.user.admin}.}
 
-\item{DeviceKey}{[required] The device key.}
+\item{DeviceKey}{[required] The device key of the device you want to update, for example
+\verb{us-west-2_a1b2c3d4-5678-90ab-cdef-EXAMPLE11111}.}
 
-\item{DeviceRememberedStatus}{The status of whether a device is remembered.}
+\item{DeviceRememberedStatus}{To enable device authentication with the specified device, set to
+\code{remembered}.To disable, set to \code{not_remembered}.}
 }
 \description{
-Updates the device status. For more information about device authentication, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html}{Working with user devices in your user pool}.
+Updates the status of a the currently signed-in user's device so that it is marked as remembered or not remembered for the purpose of device authentication. Device authentication is a "remember me" mechanism that silently completes sign-in from trusted devices with a device key instead of a user-provided MFA code. This operation changes the status of a device without deleting it, so you can enable it again later. For more information about device authentication, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html}{Working with devices}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_device_status/} for full documentation.
 }

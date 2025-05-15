@@ -116,6 +116,7 @@ Application Recovery Controller
 \link[paws.networking:route53recoverycontrolconfig_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for a resource\cr
 \link[paws.networking:route53recoverycontrolconfig_tag_resource]{tag_resource} \tab Adds a tag to a resource\cr
 \link[paws.networking:route53recoverycontrolconfig_untag_resource]{untag_resource} \tab Removes a tag from a resource\cr
+\link[paws.networking:route53recoverycontrolconfig_update_cluster]{update_cluster} \tab Updates an existing cluster\cr
 \link[paws.networking:route53recoverycontrolconfig_update_control_panel]{update_control_panel} \tab Updates a control panel\cr
 \link[paws.networking:route53recoverycontrolconfig_update_routing_control]{update_routing_control} \tab Updates a routing control\cr
 \link[paws.networking:route53recoverycontrolconfig_update_safety_rule]{update_safety_rule} \tab Update a safety rule (an assertion rule or gating rule)

@@ -34,7 +34,7 @@ When you start a run that uses this cache, you can override the default
 cache behavior.
 
 For more information, see \href{https://docs.aws.amazon.com/omics/latest/dev/how-run-cache.html#run-cache-behavior}{Run cache behavior}
-in the AWS HealthOmics User Guide.}
+in the Amazon Web Services HealthOmics User Guide.}
 
 \item{cacheS3Location}{[required] Specify the S3 location for storing the cached task outputs. This data
 must be immediately accessible (not in an archived state).}
@@ -44,17 +44,17 @@ must be immediately accessible (not in an archived state).}
 \item{name}{Enter a user-friendly name for the run cache.}
 
 \item{requestId}{[required] A unique request token, to ensure idempotency. If you don't specify a
-token, HealthOmics automatically generates a universally unique
-identifier (UUID) for the request.}
+token, Amazon Web Services HealthOmics automatically generates a
+universally unique identifier (UUID) for the request.}
 
 \item{tags}{Specify one or more tags to associate with this run cache.}
 
-\item{cacheBucketOwnerId}{The AWS account ID of the expected owner of the S3 bucket for the run
-cache. If not provided, your account ID is set as the owner of the
-bucket.}
+\item{cacheBucketOwnerId}{The Amazon Web Services account ID of the expected owner of the S3
+bucket for the run cache. If not provided, your account ID is set as the
+owner of the bucket.}
 }
 \description{
-You can create a run cache to save the task outputs from completed tasks in a run for a private workflow. Subsequent runs use the task outputs from the cache, rather than computing the task outputs again. You specify an Amazon S3 location where HealthOmics saves the cached data. This data must be immediately accessible (not in an archived state).
+You can create a run cache to save the task outputs from completed tasks in a run for a private workflow. Subsequent runs use the task outputs from the cache, rather than computing the task outputs again. You specify an Amazon S3 location where Amazon Web Services HealthOmics saves the cached data. This data must be immediately accessible (not in an archived state).
 
 See \url{https://www.paws-r-sdk.com/docs/omics_create_run_cache/} for full documentation.
 }

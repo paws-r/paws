@@ -103,6 +103,9 @@ Amazon Bedrock Data Automation BuildTime
 \link[paws.machine.learning:bedrockdataautomation_get_data_automation_project]{get_data_automation_project} \tab Gets an existing Amazon Bedrock Data Automation Project\cr
 \link[paws.machine.learning:bedrockdataautomation_list_blueprints]{list_blueprints} \tab Lists all existing Amazon Bedrock Data Automation Blueprints\cr
 \link[paws.machine.learning:bedrockdataautomation_list_data_automation_projects]{list_data_automation_projects} \tab Lists all existing Amazon Bedrock Data Automation Projects\cr
+\link[paws.machine.learning:bedrockdataautomation_list_tags_for_resource]{list_tags_for_resource} \tab List tags for an Amazon Bedrock Data Automation resource\cr
+\link[paws.machine.learning:bedrockdataautomation_tag_resource]{tag_resource} \tab Tag an Amazon Bedrock Data Automation resource\cr
+\link[paws.machine.learning:bedrockdataautomation_untag_resource]{untag_resource} \tab Untag an Amazon Bedrock Data Automation resource\cr
 \link[paws.machine.learning:bedrockdataautomation_update_blueprint]{update_blueprint} \tab Updates an existing Amazon Bedrock Data Automation Blueprint\cr
 \link[paws.machine.learning:bedrockdataautomation_update_data_automation_project]{update_data_automation_project} \tab Updates an existing Amazon Bedrock Data Automation Project
 }

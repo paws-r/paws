@@ -14,7 +14,8 @@ eks_update_cluster_config(
   zonalShiftConfig = NULL,
   computeConfig = NULL,
   kubernetesNetworkConfig = NULL,
-  storageConfig = NULL
+  storageConfig = NULL,
+  remoteNetworkConfig = NULL
 )
 }
 \arguments{
@@ -67,9 +68,11 @@ cluster. For example, enable the capability.}
 
 \item{storageConfig}{Update the configuration of the block storage capability of your EKS
 Auto Mode cluster. For example, enable the capability.}
+
+\item{remoteNetworkConfig}{}
 }
 \description{
-Updates an Amazon EKS cluster configuration. Your cluster continues to function during the update. The response output includes an update ID that you can use to track the status of your cluster update with \code{\link[=eks_describe_update]{describe_update}}"/\>.
+Updates an Amazon EKS cluster configuration. Your cluster continues to function during the update. The response output includes an update ID that you can use to track the status of your cluster update with \code{\link[=eks_describe_update]{describe_update}}.
 
 See \url{https://www.paws-r-sdk.com/docs/eks_update_cluster_config/} for full documentation.
 }

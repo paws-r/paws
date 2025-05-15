@@ -210,7 +210,10 @@ versions, see \code{\link[=rds_create_db_instance]{create_db_instance}}, or call
 
 \item{AutoMinorVersionUpgrade}{Specifies whether to automatically apply minor engine upgrades to the DB
 instance during the maintenance window. By default, minor engine
-upgrades are not applied automatically.}
+upgrades are not applied automatically.
+
+For more information about automatic minor version upgrades, see
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Upgrading.html#USER_UpgradeDBInstance.Upgrading.AutoMinorVersionUpgrades}{Automatically upgrading the minor engine version}.}
 
 \item{LicenseModel}{The license model for this DB instance. Use \code{general-public-license}.}
 

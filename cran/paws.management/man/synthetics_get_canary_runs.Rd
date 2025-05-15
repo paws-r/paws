@@ -4,7 +4,13 @@
 \alias{synthetics_get_canary_runs}
 \title{Retrieves a list of runs for a specified canary}
 \usage{
-synthetics_get_canary_runs(Name, NextToken = NULL, MaxResults = NULL)
+synthetics_get_canary_runs(
+  Name,
+  NextToken = NULL,
+  MaxResults = NULL,
+  DryRunId = NULL,
+  RunType = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The name of the canary that you want to see runs for.}
@@ -12,11 +18,29 @@ synthetics_get_canary_runs(Name, NextToken = NULL, MaxResults = NULL)
 \item{NextToken}{A token that indicates that there is more data available. You can use
 this token in a subsequent
 \code{\link[=synthetics_get_canary_runs]{get_canary_runs}} operation to retrieve
-the next set of results.}
+the next set of results.
+
+When auto retry is enabled for the canary, the first subsequent retry is
+suffixed with *1 indicating its the first retry and the next subsequent
+try is suffixed with *2.}
 
 \item{MaxResults}{Specify this parameter to limit how many runs are returned each time you
 use the \code{\link[=synthetics_get_canary_runs]{get_canary_runs}} operation. If
 you omit this parameter, the default of 100 is used.}
+
+\item{DryRunId}{The DryRunId associated with an existing canary’s dry run. You can use
+this DryRunId to retrieve information about the dry run.}
+
+\item{RunType}{\itemize{
+\item When you provide \code{RunType=CANARY_RUN} and \code{dryRunId}, you will get
+an exception
+\item When a value is not provided for \code{RunType}, the default value is
+\code{CANARY_RUN}
+\item When \code{CANARY_RUN} is provided, all canary runs excluding dry runs
+are returned
+\item When \code{DRY_RUN} is provided, all dry runs excluding canary runs are
+returned
+}}
 }
 \description{
 Retrieves a list of runs for a specified canary.

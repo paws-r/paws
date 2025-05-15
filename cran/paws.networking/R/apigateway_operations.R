@@ -325,7 +325,7 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #' used by regional endpoint for this domain name. Certificate Manager is
 #' the only supported source.
 #' @param endpointConfiguration The endpoint configuration of this DomainName showing the endpoint types
-#' of the domain name.
+#' and IP address types of the domain name.
 #' @param tags The key-value map of strings. The valid character set is
 #' \[a-zA-Z+-=._:/\]. The tag key can be up to 128 characters and must not
 #' start with `aws:`. The tag value can be up to 256 characters.
@@ -528,8 +528,8 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 #' plan. Valid values are: `HEADER` to read the API key from the
 #' `X-API-Key` header of a request. `AUTHORIZER` to read the API key from
 #' the `UsageIdentifierKey` from a custom authorizer.
-#' @param endpointConfiguration The endpoint configuration of this RestApi showing the endpoint types of
-#' the API.
+#' @param endpointConfiguration The endpoint configuration of this RestApi showing the endpoint types
+#' and IP address types of the API.
 #' @param policy A stringified JSON policy document that applies to this RestApi
 #' regardless of the caller and Method configuration.
 #' @param tags The key-value map of strings. The valid character set is

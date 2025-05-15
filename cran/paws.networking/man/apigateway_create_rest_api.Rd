@@ -42,8 +42,8 @@ plan. Valid values are: \code{HEADER} to read the API key from the
 \code{X-API-Key} header of a request. \code{AUTHORIZER} to read the API key from
 the \code{UsageIdentifierKey} from a custom authorizer.}
 
-\item{endpointConfiguration}{The endpoint configuration of this RestApi showing the endpoint types of
-the API.}
+\item{endpointConfiguration}{The endpoint configuration of this RestApi showing the endpoint types
+and IP address types of the API.}
 
 \item{policy}{A stringified JSON policy document that applies to this RestApi
 regardless of the caller and Method configuration.}

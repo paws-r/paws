@@ -89,7 +89,7 @@ NULL
 
 .costexplorer$get_anomalies_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MonitorArn = structure(logical(0), tags = list(type = "string")), DateInterval = structure(list(StartDate = structure(logical(0), tags = list(type = "string")), EndDate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Feedback = structure(logical(0), tags = list(type = "string")), TotalImpact = structure(list(NumericOperator = structure(logical(0), tags = list(type = "string")), StartValue = structure(logical(0), tags = list(type = "double")), EndValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), NextPageToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(MonitorArn = structure(logical(0), tags = list(type = "string")), DateInterval = structure(list(StartDate = structure(logical(0), tags = list(type = "string")), EndDate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Feedback = structure(logical(0), tags = list(type = "string")), TotalImpact = structure(list(NumericOperator = structure(logical(0), tags = list(type = "string")), StartValue = structure(logical(0), tags = list(type = "double")), EndValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), NextPageToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -101,7 +101,7 @@ NULL
 
 .costexplorer$get_anomaly_monitors_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MonitorArnList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextPageToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(MonitorArnList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextPageToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -113,7 +113,7 @@ NULL
 
 .costexplorer$get_anomaly_subscriptions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SubscriptionArnList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MonitorArn = structure(logical(0), tags = list(type = "string")), NextPageToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(SubscriptionArnList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MonitorArn = structure(logical(0), tags = list(type = "string")), NextPageToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_create_application}
 \alias{opensearchservice_create_application}
-\title{Creates an OpenSearch Application}
+\title{Creates an OpenSearch UI application}
 \usage{
 opensearchservice_create_application(
   clientToken = NULL,
@@ -14,24 +14,23 @@ opensearchservice_create_application(
 )
 }
 \arguments{
-\item{clientToken}{A unique client idempotency token. It will be auto generated if not
-provided.}
+\item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
 
-\item{name}{[required] Name of the OpenSearch Appication to create. Application names are
-unique across the applications owned by an account within an Amazon Web
-Services Region.}
+\item{name}{[required] The unique name of the OpenSearch application. Names must be unique
+within an Amazon Web Services Region for each account.}
 
-\item{dataSources}{Data sources to be associated with the OpenSearch Application.}
+\item{dataSources}{The data sources to link to the OpenSearch application.}
 
-\item{iamIdentityCenterOptions}{Settings of IAM Identity Center for the OpenSearch Application.}
+\item{iamIdentityCenterOptions}{Configuration settings for integrating Amazon Web Services IAM Identity
+Center with the OpenSearch application.}
 
-\item{appConfigs}{Configurations of the OpenSearch Application, inlcuding admin
-configuration.}
+\item{appConfigs}{Configuration settings for the OpenSearch application, including
+administrative options.}
 
 \item{tagList}{}
 }
 \description{
-Creates an OpenSearch Application.
+Creates an OpenSearch UI application. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/application.html}{Using the OpenSearch user interface in Amazon OpenSearch Service}.
 
 See \url{https://www.paws-r-sdk.com/docs/opensearchservice_create_application/} for full documentation.
 }

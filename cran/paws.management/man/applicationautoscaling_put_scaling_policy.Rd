@@ -76,6 +76,9 @@ specified using the cluster ARN. Example:
 \item Amazon ElastiCache replication group - The resource type is
 \code{replication-group} and the unique identifier is the replication
 group name. Example: \code{replication-group/mycluster}.
+\item Amazon ElastiCache cache cluster - The resource type is
+\code{cache-cluster} and the unique identifier is the cache cluster name.
+Example: \code{cache-cluster/mycluster}.
 \item Neptune cluster - The resource type is \code{cluster} and the unique
 identifier is the cluster name. Example: \code{cluster:mycluster}.
 \item SageMaker serverless endpoint - The resource type is \code{variant} and
@@ -128,6 +131,8 @@ for an Amazon Keyspaces table.
 capacity for an Amazon Keyspaces table.
 \item \code{kafka:broker-storage:VolumeSize} - The provisioned volume size (in
 GiB) for brokers in an Amazon MSK cluster.
+\item \code{elasticache:cache-cluster:Nodes} - The number of nodes for an
+Amazon ElastiCache cache cluster.
 \item \code{elasticache:replication-group:NodeGroups} - The number of node
 groups for an Amazon ElastiCache replication group.
 \item \code{elasticache:replication-group:Replicas} - The number of replicas
@@ -152,8 +157,11 @@ The following policy types are supported:
 \code{StepScaling}—Not supported for DynamoDB, Amazon Comprehend, Lambda,
 Amazon Keyspaces, Amazon MSK, Amazon ElastiCache, or Neptune.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html}{Target tracking scaling policies}
-and \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html}{Step scaling policies}
+\code{PredictiveScaling}—Only supported for Amazon ECS.
+
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html}{Target tracking scaling policies},
+\href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html}{Step scaling policies},
+and \href{https://docs.aws.amazon.com/autoscaling/application/userguide/aas-create-predictive-scaling-policy.html}{Predictive scaling policies}
 in the \emph{Application Auto Scaling User Guide}.}
 
 \item{StepScalingPolicyConfiguration}{A step scaling policy.

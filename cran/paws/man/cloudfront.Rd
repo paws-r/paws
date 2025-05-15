@@ -98,20 +98,25 @@ features, see the \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/Deve
 
 \tabular{ll}{
 \link[paws.networking:cloudfront_associate_alias]{associate_alias} \tab Associates an alias (also known as a CNAME or an alternate domain name) with a CloudFront distribution\cr
+\link[paws.networking:cloudfront_associate_distribution_tenant_web_acl]{associate_distribution_tenant_web_acl} \tab Associates the WAF web ACL with a distribution tenant\cr
+\link[paws.networking:cloudfront_associate_distribution_web_acl]{associate_distribution_web_acl} \tab Associates the WAF web ACL with a distribution\cr
 \link[paws.networking:cloudfront_copy_distribution]{copy_distribution} \tab Creates a staging distribution using the configuration of the provided primary distribution\cr
 \link[paws.networking:cloudfront_create_anycast_ip_list]{create_anycast_ip_list} \tab Creates an Anycast static IP list\cr
 \link[paws.networking:cloudfront_create_cache_policy]{create_cache_policy} \tab Creates a cache policy\cr
 \link[paws.networking:cloudfront_create_cloud_front_origin_access_identity]{create_cloud_front_origin_access_identity} \tab Creates a new origin access identity\cr
+\link[paws.networking:cloudfront_create_connection_group]{create_connection_group} \tab Creates a connection group\cr
 \link[paws.networking:cloudfront_create_continuous_deployment_policy]{create_continuous_deployment_policy} \tab Creates a continuous deployment policy that distributes traffic for a custom domain name to two different CloudFront distributions\cr
 \link[paws.networking:cloudfront_create_distribution]{create_distribution} \tab Creates a CloudFront distribution\cr
+\link[paws.networking:cloudfront_create_distribution_tenant]{create_distribution_tenant} \tab Creates a distribution tenant\cr
 \link[paws.networking:cloudfront_create_distribution_with_tags]{create_distribution_with_tags} \tab Create a new distribution with tags\cr
 \link[paws.networking:cloudfront_create_field_level_encryption_config]{create_field_level_encryption_config} \tab Create a new field-level encryption configuration\cr
 \link[paws.networking:cloudfront_create_field_level_encryption_profile]{create_field_level_encryption_profile} \tab Create a field-level encryption profile\cr
 \link[paws.networking:cloudfront_create_function]{create_function} \tab Creates a CloudFront function\cr
 \link[paws.networking:cloudfront_create_invalidation]{create_invalidation} \tab Create a new invalidation\cr
+\link[paws.networking:cloudfront_create_invalidation_for_distribution_tenant]{create_invalidation_for_distribution_tenant} \tab Creates an invalidation for a distribution tenant\cr
 \link[paws.networking:cloudfront_create_key_group]{create_key_group} \tab Creates a key group that you can use with CloudFront signed URLs and signed cookies\cr
 \link[paws.networking:cloudfront_create_key_value_store]{create_key_value_store} \tab Specifies the key value store resource to add to your account\cr
-\link[paws.networking:cloudfront_create_monitoring_subscription]{create_monitoring_subscription} \tab Enables additional CloudWatch metrics for the specified CloudFront distribution\cr
+\link[paws.networking:cloudfront_create_monitoring_subscription]{create_monitoring_subscription} \tab Enables or disables additional Amazon CloudWatch metrics for the specified CloudFront distribution\cr
 \link[paws.networking:cloudfront_create_origin_access_control]{create_origin_access_control} \tab Creates a new origin access control in CloudFront\cr
 \link[paws.networking:cloudfront_create_origin_request_policy]{create_origin_request_policy} \tab Creates an origin request policy\cr
 \link[paws.networking:cloudfront_create_public_key]{create_public_key} \tab Uploads a public key to CloudFront that you can use with signed URLs and signed cookies, or with field-level encryption\cr
@@ -123,8 +128,10 @@ features, see the \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/Deve
 \link[paws.networking:cloudfront_delete_anycast_ip_list]{delete_anycast_ip_list} \tab Deletes an Anycast static IP list\cr
 \link[paws.networking:cloudfront_delete_cache_policy]{delete_cache_policy} \tab Deletes a cache policy\cr
 \link[paws.networking:cloudfront_delete_cloud_front_origin_access_identity]{delete_cloud_front_origin_access_identity} \tab Delete an origin access identity\cr
+\link[paws.networking:cloudfront_delete_connection_group]{delete_connection_group} \tab Deletes a connection group\cr
 \link[paws.networking:cloudfront_delete_continuous_deployment_policy]{delete_continuous_deployment_policy} \tab Deletes a continuous deployment policy\cr
 \link[paws.networking:cloudfront_delete_distribution]{delete_distribution} \tab Delete a distribution\cr
+\link[paws.networking:cloudfront_delete_distribution_tenant]{delete_distribution_tenant} \tab Deletes a distribution tenant\cr
 \link[paws.networking:cloudfront_delete_field_level_encryption_config]{delete_field_level_encryption_config} \tab Remove a field-level encryption configuration\cr
 \link[paws.networking:cloudfront_delete_field_level_encryption_profile]{delete_field_level_encryption_profile} \tab Remove a field-level encryption profile\cr
 \link[paws.networking:cloudfront_delete_function]{delete_function} \tab Deletes a CloudFront function\cr
@@ -140,23 +147,31 @@ features, see the \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/Deve
 \link[paws.networking:cloudfront_delete_vpc_origin]{delete_vpc_origin} \tab Delete an Amazon CloudFront VPC origin\cr
 \link[paws.networking:cloudfront_describe_function]{describe_function} \tab Gets configuration information and metadata about a CloudFront function, but not the function's code\cr
 \link[paws.networking:cloudfront_describe_key_value_store]{describe_key_value_store} \tab Specifies the key value store and its configuration\cr
+\link[paws.networking:cloudfront_disassociate_distribution_tenant_web_acl]{disassociate_distribution_tenant_web_acl} \tab Disassociates a distribution tenant from the WAF web ACL\cr
+\link[paws.networking:cloudfront_disassociate_distribution_web_acl]{disassociate_distribution_web_acl} \tab Disassociates a distribution from the WAF web ACL\cr
 \link[paws.networking:cloudfront_get_anycast_ip_list]{get_anycast_ip_list} \tab Gets an Anycast static IP list\cr
 \link[paws.networking:cloudfront_get_cache_policy]{get_cache_policy} \tab Gets a cache policy, including the following metadata:\cr
 \link[paws.networking:cloudfront_get_cache_policy_config]{get_cache_policy_config} \tab Gets a cache policy configuration\cr
 \link[paws.networking:cloudfront_get_cloud_front_origin_access_identity]{get_cloud_front_origin_access_identity} \tab Get the information about an origin access identity\cr
 \link[paws.networking:cloudfront_get_cloud_front_origin_access_identity_config]{get_cloud_front_origin_access_identity_config} \tab Get the configuration information about an origin access identity\cr
+\link[paws.networking:cloudfront_get_connection_group]{get_connection_group} \tab Gets information about a connection group\cr
+\link[paws.networking:cloudfront_get_connection_group_by_routing_endpoint]{get_connection_group_by_routing_endpoint} \tab Gets information about a connection group by using the endpoint that you specify\cr
 \link[paws.networking:cloudfront_get_continuous_deployment_policy]{get_continuous_deployment_policy} \tab Gets a continuous deployment policy, including metadata (the policy's identifier and the date and time when the policy was last modified)\cr
 \link[paws.networking:cloudfront_get_continuous_deployment_policy_config]{get_continuous_deployment_policy_config} \tab Gets configuration information about a continuous deployment policy\cr
 \link[paws.networking:cloudfront_get_distribution]{get_distribution} \tab Get the information about a distribution\cr
 \link[paws.networking:cloudfront_get_distribution_config]{get_distribution_config} \tab Get the configuration information about a distribution\cr
+\link[paws.networking:cloudfront_get_distribution_tenant]{get_distribution_tenant} \tab Gets information about a distribution tenant\cr
+\link[paws.networking:cloudfront_get_distribution_tenant_by_domain]{get_distribution_tenant_by_domain} \tab Gets information about a distribution tenant by the associated domain\cr
 \link[paws.networking:cloudfront_get_field_level_encryption]{get_field_level_encryption} \tab Get the field-level encryption configuration information\cr
 \link[paws.networking:cloudfront_get_field_level_encryption_config]{get_field_level_encryption_config} \tab Get the field-level encryption configuration information\cr
 \link[paws.networking:cloudfront_get_field_level_encryption_profile]{get_field_level_encryption_profile} \tab Get the field-level encryption profile information\cr
 \link[paws.networking:cloudfront_get_field_level_encryption_profile_config]{get_field_level_encryption_profile_config} \tab Get the field-level encryption profile configuration information\cr
 \link[paws.networking:cloudfront_get_function]{get_function} \tab Gets the code of a CloudFront function\cr
 \link[paws.networking:cloudfront_get_invalidation]{get_invalidation} \tab Get the information about an invalidation\cr
+\link[paws.networking:cloudfront_get_invalidation_for_distribution_tenant]{get_invalidation_for_distribution_tenant} \tab Gets information about a specific invalidation for a distribution tenant\cr
 \link[paws.networking:cloudfront_get_key_group]{get_key_group} \tab Gets a key group, including the date and time when the key group was last modified\cr
 \link[paws.networking:cloudfront_get_key_group_config]{get_key_group_config} \tab Gets a key group configuration\cr
+\link[paws.networking:cloudfront_get_managed_certificate_details]{get_managed_certificate_details} \tab Gets details about the CloudFront managed ACM certificate\cr
 \link[paws.networking:cloudfront_get_monitoring_subscription]{get_monitoring_subscription} \tab Gets information about whether additional CloudWatch metrics are enabled for the specified CloudFront distribution\cr
 \link[paws.networking:cloudfront_get_origin_access_control]{get_origin_access_control} \tab Gets a CloudFront origin access control, including its unique identifier\cr
 \link[paws.networking:cloudfront_get_origin_access_control_config]{get_origin_access_control_config} \tab Gets a CloudFront origin access control configuration\cr
@@ -174,20 +189,26 @@ features, see the \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/Deve
 \link[paws.networking:cloudfront_list_cache_policies]{list_cache_policies} \tab Gets a list of cache policies\cr
 \link[paws.networking:cloudfront_list_cloud_front_origin_access_identities]{list_cloud_front_origin_access_identities} \tab Lists origin access identities\cr
 \link[paws.networking:cloudfront_list_conflicting_aliases]{list_conflicting_aliases} \tab Gets a list of aliases (also called CNAMEs or alternate domain names) that conflict or overlap with the provided alias, and the associated CloudFront distributions and Amazon Web Services accounts for each conflicting alias\cr
+\link[paws.networking:cloudfront_list_connection_groups]{list_connection_groups} \tab Lists the connection groups in your Amazon Web Services account\cr
 \link[paws.networking:cloudfront_list_continuous_deployment_policies]{list_continuous_deployment_policies} \tab Gets a list of the continuous deployment policies in your Amazon Web Services account\cr
 \link[paws.networking:cloudfront_list_distributions]{list_distributions} \tab List CloudFront distributions\cr
 \link[paws.networking:cloudfront_list_distributions_by_anycast_ip_list_id]{list_distributions_by_anycast_ip_list_id} \tab Lists the distributions in your account that are associated with the specified AnycastIpListId\cr
 \link[paws.networking:cloudfront_list_distributions_by_cache_policy_id]{list_distributions_by_cache_policy_id} \tab Gets a list of distribution IDs for distributions that have a cache behavior that's associated with the specified cache policy\cr
+\link[paws.networking:cloudfront_list_distributions_by_connection_mode]{list_distributions_by_connection_mode} \tab Lists the distributions by the connection mode that you specify\cr
 \link[paws.networking:cloudfront_list_distributions_by_key_group]{list_distributions_by_key_group} \tab Gets a list of distribution IDs for distributions that have a cache behavior that references the specified key group\cr
 \link[paws.networking:cloudfront_list_distributions_by_origin_request_policy_id]{list_distributions_by_origin_request_policy_id} \tab Gets a list of distribution IDs for distributions that have a cache behavior that's associated with the specified origin request policy\cr
 \link[paws.networking:cloudfront_list_distributions_by_realtime_log_config]{list_distributions_by_realtime_log_config} \tab Gets a list of distributions that have a cache behavior that's associated with the specified real-time log configuration\cr
 \link[paws.networking:cloudfront_list_distributions_by_response_headers_policy_id]{list_distributions_by_response_headers_policy_id} \tab Gets a list of distribution IDs for distributions that have a cache behavior that's associated with the specified response headers policy\cr
 \link[paws.networking:cloudfront_list_distributions_by_vpc_origin_id]{list_distributions_by_vpc_origin_id} \tab List CloudFront distributions by their VPC origin ID\cr
 \link[paws.networking:cloudfront_list_distributions_by_web_acl_id]{list_distributions_by_web_acl_id} \tab List the distributions that are associated with a specified WAF web ACL\cr
+\link[paws.networking:cloudfront_list_distribution_tenants]{list_distribution_tenants} \tab Lists the distribution tenants in your Amazon Web Services account\cr
+\link[paws.networking:cloudfront_list_distribution_tenants_by_customization]{list_distribution_tenants_by_customization} \tab Lists distribution tenants by the customization that you specify\cr
+\link[paws.networking:cloudfront_list_domain_conflicts]{list_domain_conflicts} \tab Lists existing domain associations that conflict with the domain that you specify\cr
 \link[paws.networking:cloudfront_list_field_level_encryption_configs]{list_field_level_encryption_configs} \tab List all field-level encryption configurations that have been created in CloudFront for this account\cr
 \link[paws.networking:cloudfront_list_field_level_encryption_profiles]{list_field_level_encryption_profiles} \tab Request a list of field-level encryption profiles that have been created in CloudFront for this account\cr
 \link[paws.networking:cloudfront_list_functions]{list_functions} \tab Gets a list of all CloudFront functions in your Amazon Web Services account\cr
 \link[paws.networking:cloudfront_list_invalidations]{list_invalidations} \tab Lists invalidation batches\cr
+\link[paws.networking:cloudfront_list_invalidations_for_distribution_tenant]{list_invalidations_for_distribution_tenant} \tab Lists the invalidations for a distribution tenant\cr
 \link[paws.networking:cloudfront_list_key_groups]{list_key_groups} \tab Gets a list of key groups\cr
 \link[paws.networking:cloudfront_list_key_value_stores]{list_key_value_stores} \tab Specifies the key value stores to list\cr
 \link[paws.networking:cloudfront_list_origin_access_controls]{list_origin_access_controls} \tab Gets the list of CloudFront origin access controls (OACs) in this Amazon Web Services account\cr
@@ -204,9 +225,12 @@ features, see the \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/Deve
 \link[paws.networking:cloudfront_untag_resource]{untag_resource} \tab Remove tags from a CloudFront resource\cr
 \link[paws.networking:cloudfront_update_cache_policy]{update_cache_policy} \tab Updates a cache policy configuration\cr
 \link[paws.networking:cloudfront_update_cloud_front_origin_access_identity]{update_cloud_front_origin_access_identity} \tab Update an origin access identity\cr
+\link[paws.networking:cloudfront_update_connection_group]{update_connection_group} \tab Updates a connection group\cr
 \link[paws.networking:cloudfront_update_continuous_deployment_policy]{update_continuous_deployment_policy} \tab Updates a continuous deployment policy\cr
 \link[paws.networking:cloudfront_update_distribution]{update_distribution} \tab Updates the configuration for a CloudFront distribution\cr
+\link[paws.networking:cloudfront_update_distribution_tenant]{update_distribution_tenant} \tab Updates a distribution tenant\cr
 \link[paws.networking:cloudfront_update_distribution_with_staging_config]{update_distribution_with_staging_config} \tab Copies the staging distribution's configuration to its corresponding primary distribution\cr
+\link[paws.networking:cloudfront_update_domain_association]{update_domain_association} \tab Moves a domain from its current distribution or distribution tenant to another one\cr
 \link[paws.networking:cloudfront_update_field_level_encryption_config]{update_field_level_encryption_config} \tab Update a field-level encryption configuration\cr
 \link[paws.networking:cloudfront_update_field_level_encryption_profile]{update_field_level_encryption_profile} \tab Update a field-level encryption profile\cr
 \link[paws.networking:cloudfront_update_function]{update_function} \tab Updates a CloudFront function\cr
@@ -218,7 +242,8 @@ features, see the \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/Deve
 \link[paws.networking:cloudfront_update_realtime_log_config]{update_realtime_log_config} \tab Updates a real-time log configuration\cr
 \link[paws.networking:cloudfront_update_response_headers_policy]{update_response_headers_policy} \tab Updates a response headers policy\cr
 \link[paws.networking:cloudfront_update_streaming_distribution]{update_streaming_distribution} \tab Update a streaming distribution\cr
-\link[paws.networking:cloudfront_update_vpc_origin]{update_vpc_origin} \tab Update an Amazon CloudFront VPC origin in your account
+\link[paws.networking:cloudfront_update_vpc_origin]{update_vpc_origin} \tab Update an Amazon CloudFront VPC origin in your account\cr
+\link[paws.networking:cloudfront_verify_dns_configuration]{verify_dns_configuration} \tab Verify the DNS configuration for your domain names
 }
 }
 

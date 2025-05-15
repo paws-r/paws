@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_delete_fleets}
 \alias{ec2_delete_fleets}
-\title{Deletes the specified EC2 Fleets}
+\title{Deletes the specified EC2 Fleet request}
 \usage{
 ec2_delete_fleets(DryRun = NULL, FleetIds, TerminateInstances)
 }
@@ -28,7 +28,7 @@ For \code{instant} fleets, you cannot specify \code{NoTerminateInstances}. A
 deleted \code{instant} fleet with running instances is not supported.}
 }
 \description{
-Deletes the specified EC2 Fleets.
+Deletes the specified EC2 Fleet request.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_delete_fleets/} for full documentation.
 }

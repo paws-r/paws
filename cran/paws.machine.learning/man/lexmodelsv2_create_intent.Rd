@@ -20,7 +20,8 @@ lexmodelsv2_create_intent(
   botVersion,
   localeId,
   initialResponseSetting = NULL,
-  qnAIntentConfiguration = NULL
+  qnAIntentConfiguration = NULL,
+  qInConnectIntentConfiguration = NULL
 )
 }
 \arguments{
@@ -115,6 +116,8 @@ beginning of a conversation, before eliciting slot values.}
 \code{AMAZON.QnAIntent} intent is called when Amazon Lex can't determine
 another intent to invoke. If you specify this field, you can't specify
 the \code{kendraConfiguration} field.}
+
+\item{qInConnectIntentConfiguration}{Qinconnect intent configuration details for the create intent request.}
 }
 \description{
 Creates an intent.

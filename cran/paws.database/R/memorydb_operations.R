@@ -188,11 +188,24 @@ memorydb_create_acl <- function(ACLName, UserNames = NULL, Tags = NULL) {
 #' the r6gd node type. This parameter must be set when using r6gd nodes.
 #' For more information, see [Data
 #' tiering](https://docs.aws.amazon.com/memorydb/latest/devguide/data-tiering.html).
+#' @param NetworkType Specifies the IP address type for the cluster. Valid values are 'ipv4',
+#' 'ipv6', or 'dual_stack'. When set to 'ipv4', the cluster will only be
+#' accessible via IPv4 addresses. When set to 'ipv6', the cluster will only
+#' be accessible via IPv6 addresses. When set to 'dual_stack', the cluster
+#' will be accessible via both IPv4 and IPv6 addresses. If not specified,
+#' the default is 'ipv4'.
+#' @param IpDiscovery The mechanism for discovering IP addresses for the cluster discovery
+#' protocol. Valid values are 'ipv4' or 'ipv6'. When set to 'ipv4', cluster
+#' discovery functions such as cluster slots, cluster shards, and cluster
+#' nodes return IPv4 addresses for cluster nodes. When set to 'ipv6', the
+#' cluster discovery functions return IPv6 addresses for cluster nodes. The
+#' value must be compatible with the NetworkType parameter. If not
+#' specified, the default is 'ipv4'.
 #'
 #' @keywords internal
 #'
 #' @rdname memorydb_create_cluster
-memorydb_create_cluster <- function(ClusterName, NodeType, MultiRegionClusterName = NULL, ParameterGroupName = NULL, Description = NULL, NumShards = NULL, NumReplicasPerShard = NULL, SubnetGroupName = NULL, SecurityGroupIds = NULL, MaintenanceWindow = NULL, Port = NULL, SnsTopicArn = NULL, TLSEnabled = NULL, KmsKeyId = NULL, SnapshotArns = NULL, SnapshotName = NULL, SnapshotRetentionLimit = NULL, Tags = NULL, SnapshotWindow = NULL, ACLName, Engine = NULL, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, DataTiering = NULL) {
+memorydb_create_cluster <- function(ClusterName, NodeType, MultiRegionClusterName = NULL, ParameterGroupName = NULL, Description = NULL, NumShards = NULL, NumReplicasPerShard = NULL, SubnetGroupName = NULL, SecurityGroupIds = NULL, MaintenanceWindow = NULL, Port = NULL, SnsTopicArn = NULL, TLSEnabled = NULL, KmsKeyId = NULL, SnapshotArns = NULL, SnapshotName = NULL, SnapshotRetentionLimit = NULL, Tags = NULL, SnapshotWindow = NULL, ACLName, Engine = NULL, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, DataTiering = NULL, NetworkType = NULL, IpDiscovery = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
@@ -201,7 +214,7 @@ memorydb_create_cluster <- function(ClusterName, NodeType, MultiRegionClusterNam
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .memorydb$create_cluster_input(ClusterName = ClusterName, NodeType = NodeType, MultiRegionClusterName = MultiRegionClusterName, ParameterGroupName = ParameterGroupName, Description = Description, NumShards = NumShards, NumReplicasPerShard = NumReplicasPerShard, SubnetGroupName = SubnetGroupName, SecurityGroupIds = SecurityGroupIds, MaintenanceWindow = MaintenanceWindow, Port = Port, SnsTopicArn = SnsTopicArn, TLSEnabled = TLSEnabled, KmsKeyId = KmsKeyId, SnapshotArns = SnapshotArns, SnapshotName = SnapshotName, SnapshotRetentionLimit = SnapshotRetentionLimit, Tags = Tags, SnapshotWindow = SnapshotWindow, ACLName = ACLName, Engine = Engine, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, DataTiering = DataTiering)
+  input <- .memorydb$create_cluster_input(ClusterName = ClusterName, NodeType = NodeType, MultiRegionClusterName = MultiRegionClusterName, ParameterGroupName = ParameterGroupName, Description = Description, NumShards = NumShards, NumReplicasPerShard = NumReplicasPerShard, SubnetGroupName = SubnetGroupName, SecurityGroupIds = SecurityGroupIds, MaintenanceWindow = MaintenanceWindow, Port = Port, SnsTopicArn = SnsTopicArn, TLSEnabled = TLSEnabled, KmsKeyId = KmsKeyId, SnapshotArns = SnapshotArns, SnapshotName = SnapshotName, SnapshotRetentionLimit = SnapshotRetentionLimit, Tags = Tags, SnapshotWindow = SnapshotWindow, ACLName = ACLName, Engine = Engine, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, DataTiering = DataTiering, NetworkType = NetworkType, IpDiscovery = IpDiscovery)
   output <- .memorydb$create_cluster_output()
   config <- get_config()
   svc <- .memorydb$service(config, op)
@@ -218,7 +231,13 @@ memorydb_create_cluster <- function(ClusterName, NodeType, MultiRegionClusterNam
 #'
 #' See [https://www.paws-r-sdk.com/docs/memorydb_create_multi_region_cluster/](https://www.paws-r-sdk.com/docs/memorydb_create_multi_region_cluster/) for full documentation.
 #'
-#' @param MultiRegionClusterNameSuffix &#91;required&#93; A suffix to be added to the multi-Region cluster name.
+#' @param MultiRegionClusterNameSuffix &#91;required&#93; A suffix to be added to the Multi-Region cluster name. Amazon MemoryDB
+#' automatically applies a prefix to the Multi-Region cluster Name when it
+#' is created. Each Amazon Region has its own prefix. For instance, a
+#' Multi-Region cluster Name created in the US-West-1 region will begin
+#' with "virxk", along with the suffix name you provide. The suffix
+#' guarantees uniqueness of the Multi-Region cluster name across multiple
+#' regions.
 #' @param Description A description for the multi-Region cluster.
 #' @param Engine The name of the engine to be used for the multi-Region cluster.
 #' @param EngineVersion The version of the engine to be used for the multi-Region cluster.
@@ -1369,10 +1388,10 @@ memorydb_reset_parameter_group <- function(ParameterGroupName, AllParameters = N
 }
 .memorydb$operations$reset_parameter_group <- memorydb_reset_parameter_group
 
-#' A tag is a key-value pair where the key and value are case-sensitive
+#' Use this operation to add tags to a resource
 #'
 #' @description
-#' A tag is a key-value pair where the key and value are case-sensitive. You can use tags to categorize and track all your MemoryDB resources. When you add or remove tags on clusters, those actions will be replicated to all nodes in the cluster. For more information, see [Resource-level permissions](https://docs.aws.amazon.com/memorydb/latest/devguide/iam.resourcelevelpermissions.html).
+#' Use this operation to add tags to a resource. A tag is a key-value pair where the key and value are case-sensitive. You can use tags to categorize and track all your MemoryDB resources. For more information, see [Tagging your MemoryDB resources](https://docs.aws.amazon.com/memorydb/latest/devguide/).
 #'
 #' See [https://www.paws-r-sdk.com/docs/memorydb_tag_resource/](https://www.paws-r-sdk.com/docs/memorydb_tag_resource/) for full documentation.
 #'
@@ -1406,7 +1425,7 @@ memorydb_tag_resource <- function(ResourceArn, Tags) {
 #' Use this operation to remove tags on a resource
 #'
 #' @description
-#' Use this operation to remove tags on a resource.
+#' Use this operation to remove tags on a resource. A tag is a key-value pair where the key and value are case-sensitive. You can use tags to categorize and track all your MemoryDB resources. For more information, see [Tagging your MemoryDB resources](https://docs.aws.amazon.com/memorydb/latest/devguide/).
 #'
 #' See [https://www.paws-r-sdk.com/docs/memorydb_untag_resource/](https://www.paws-r-sdk.com/docs/memorydb_untag_resource/) for full documentation.
 #'
@@ -1521,11 +1540,18 @@ memorydb_update_acl <- function(ACLName, UserNamesToAdd = NULL, UserNamesToRemov
 #' @param ReplicaConfiguration The number of replicas that will reside in each shard.
 #' @param ShardConfiguration The number of shards in the cluster.
 #' @param ACLName The Access Control List that is associated with the cluster.
+#' @param IpDiscovery The mechanism for discovering IP addresses for the cluster discovery
+#' protocol. Valid values are 'ipv4' or 'ipv6'. When set to 'ipv4', cluster
+#' discovery functions such as cluster slots, cluster shards, and cluster
+#' nodes will return IPv4 addresses for cluster nodes. When set to 'ipv6',
+#' the cluster discovery functions return IPv6 addresses for cluster nodes.
+#' The value must be compatible with the NetworkType parameter. If not
+#' specified, the default is 'ipv4'.
 #'
 #' @keywords internal
 #'
 #' @rdname memorydb_update_cluster
-memorydb_update_cluster <- function(ClusterName, Description = NULL, SecurityGroupIds = NULL, MaintenanceWindow = NULL, SnsTopicArn = NULL, SnsTopicStatus = NULL, ParameterGroupName = NULL, SnapshotWindow = NULL, SnapshotRetentionLimit = NULL, NodeType = NULL, Engine = NULL, EngineVersion = NULL, ReplicaConfiguration = NULL, ShardConfiguration = NULL, ACLName = NULL) {
+memorydb_update_cluster <- function(ClusterName, Description = NULL, SecurityGroupIds = NULL, MaintenanceWindow = NULL, SnsTopicArn = NULL, SnsTopicStatus = NULL, ParameterGroupName = NULL, SnapshotWindow = NULL, SnapshotRetentionLimit = NULL, NodeType = NULL, Engine = NULL, EngineVersion = NULL, ReplicaConfiguration = NULL, ShardConfiguration = NULL, ACLName = NULL, IpDiscovery = NULL) {
   op <- new_operation(
     name = "UpdateCluster",
     http_method = "POST",
@@ -1534,7 +1560,7 @@ memorydb_update_cluster <- function(ClusterName, Description = NULL, SecurityGro
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .memorydb$update_cluster_input(ClusterName = ClusterName, Description = Description, SecurityGroupIds = SecurityGroupIds, MaintenanceWindow = MaintenanceWindow, SnsTopicArn = SnsTopicArn, SnsTopicStatus = SnsTopicStatus, ParameterGroupName = ParameterGroupName, SnapshotWindow = SnapshotWindow, SnapshotRetentionLimit = SnapshotRetentionLimit, NodeType = NodeType, Engine = Engine, EngineVersion = EngineVersion, ReplicaConfiguration = ReplicaConfiguration, ShardConfiguration = ShardConfiguration, ACLName = ACLName)
+  input <- .memorydb$update_cluster_input(ClusterName = ClusterName, Description = Description, SecurityGroupIds = SecurityGroupIds, MaintenanceWindow = MaintenanceWindow, SnsTopicArn = SnsTopicArn, SnsTopicStatus = SnsTopicStatus, ParameterGroupName = ParameterGroupName, SnapshotWindow = SnapshotWindow, SnapshotRetentionLimit = SnapshotRetentionLimit, NodeType = NodeType, Engine = Engine, EngineVersion = EngineVersion, ReplicaConfiguration = ReplicaConfiguration, ShardConfiguration = ShardConfiguration, ACLName = ACLName, IpDiscovery = IpDiscovery)
   output <- .memorydb$update_cluster_output()
   config <- get_config()
   svc <- .memorydb$service(config, op)
@@ -1557,7 +1583,8 @@ memorydb_update_cluster <- function(ClusterName, Description = NULL, SecurityGro
 #' @param EngineVersion The new engine version to be used for the multi-Region cluster.
 #' @param ShardConfiguration 
 #' @param MultiRegionParameterGroupName The new multi-Region parameter group to be associated with the cluster.
-#' @param UpdateStrategy Whether to force the update even if it may cause data loss.
+#' @param UpdateStrategy The strategy to use for the update operation. Supported values are
+#' "coordinated" or "uncoordinated".
 #'
 #' @keywords internal
 #'

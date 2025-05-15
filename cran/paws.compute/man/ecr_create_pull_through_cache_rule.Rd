@@ -9,24 +9,33 @@ ecr_create_pull_through_cache_rule(
   upstreamRegistryUrl,
   registryId = NULL,
   upstreamRegistry = NULL,
-  credentialArn = NULL
+  credentialArn = NULL,
+  customRoleArn = NULL,
+  upstreamRepositoryPrefix = NULL
 )
 }
 \arguments{
 \item{ecrRepositoryPrefix}{[required] The repository name prefix to use when caching images from the source
-registry.}
+registry.
+
+There is always an assumed \code{/} applied to the end of the prefix. If you
+specify \code{ecr-public} as the prefix, Amazon ECR treats that as
+\verb{ecr-public/}.}
 
 \item{upstreamRegistryUrl}{[required] The registry URL of the upstream public registry to use as the source
 for the pull through cache rule. The following is the syntax to use for
 each supported upstream registry.
 \itemize{
-\item Amazon ECR Public (\code{ecr-public}) - \code{public.ecr.aws}
-\item Docker Hub (\code{docker-hub}) - \verb{registry-1.docker.io}
-\item Quay (\code{quay}) - \code{quay.io}
-\item Kubernetes (\code{k8s}) - \code{registry.k8s.io}
-\item GitHub Container Registry (\code{github-container-registry}) - \code{ghcr.io}
-\item Microsoft Azure Container Registry (\code{azure-container-registry}) -
+\item Amazon ECR (\code{ecr}) – \verb{dkr.ecr.<region>.amazonaws.com}
+\item Amazon ECR Public (\code{ecr-public}) – \code{public.ecr.aws}
+\item Docker Hub (\code{docker-hub}) – \verb{registry-1.docker.io}
+\item GitHub Container Registry (\code{github-container-registry}) – \code{ghcr.io}
+\item GitLab Container Registry (\code{gitlab-container-registry}) –
+\code{registry.gitlab.com}
+\item Kubernetes (\code{k8s}) – \code{registry.k8s.io}
+\item Microsoft Azure Container Registry (\code{azure-container-registry}) –
 \verb{<custom>.azurecr.io}
+\item Quay (\code{quay}) – \code{quay.io}
 }}
 
 \item{registryId}{The Amazon Web Services account ID associated with the registry to
@@ -38,6 +47,14 @@ registry, the default registry is assumed.}
 \item{credentialArn}{The Amazon Resource Name (ARN) of the Amazon Web Services Secrets
 Manager secret that identifies the credentials to authenticate to the
 upstream registry.}
+
+\item{customRoleArn}{Amazon Resource Name (ARN) of the IAM role to be assumed by Amazon ECR
+to authenticate to the ECR upstream registry. This role must be in the
+same account as the registry that you are configuring.}
+
+\item{upstreamRepositoryPrefix}{The repository name prefix of the upstream registry to match with the
+upstream repository name. When this field isn't specified, Amazon ECR
+will use the \code{ROOT}.}
 }
 \description{
 Creates a pull through cache rule. A pull through cache rule provides a way to cache images from an upstream registry source in your Amazon ECR private registry. For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/pull-through-cache.html}{Using pull through cache rules} in the \emph{Amazon Elastic Container Registry User Guide}.

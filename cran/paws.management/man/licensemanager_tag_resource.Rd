@@ -2,17 +2,28 @@
 % Please edit documentation in R/licensemanager_operations.R
 \name{licensemanager_tag_resource}
 \alias{licensemanager_tag_resource}
-\title{Adds the specified tags to the specified license configuration}
+\title{Adds the specified tags to the specified resource}
 \usage{
 licensemanager_tag_resource(ResourceArn, Tags)
 }
 \arguments{
-\item{ResourceArn}{[required] Amazon Resource Name (ARN) of the license configuration.}
+\item{ResourceArn}{[required] Amazon Resource Name (ARN) of the resource. The following examples
+provide an example ARN for each supported resource in License Manager:
+\itemize{
+\item Licenses -
+\verb{arn:aws:license-manager::111122223333:license:l-EXAMPLE2da7646d6861033667f20e895}
+\item Grants -
+\verb{arn:aws:license-manager::111122223333:grant:g-EXAMPLE7b19f4a0ab73679b0beb52707}
+\item License configurations -
+\code{arn:aws:license-manager:us-east-1:111122223333:license-configuration:lic-EXAMPLE6a788d4c8acd4264ff0ecf2ed2d}
+\item Report generators -
+\code{arn:aws:license-manager:us-east-1:111122223333:report-generator:r-EXAMPLE825b4a4f8fe5a3e0c88824e5fc6}
+}}
 
 \item{Tags}{[required] One or more tags.}
 }
 \description{
-Adds the specified tags to the specified license configuration.
+Adds the specified tags to the specified resource. The following resources support tagging in License Manager:
 
 See \url{https://www.paws-r-sdk.com/docs/licensemanager_tag_resource/} for full documentation.
 }

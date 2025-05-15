@@ -196,6 +196,9 @@ ssooidc_create_token <- function(clientId, clientSecret, grantType, deviceCode =
 #'   issuedTokenType = "string",
 #'   scope = list(
 #'     "string"
+#'   ),
+#'   awsAdditionalDetails = list(
+#'     identityContext = "string"
 #'   )
 #' )
 #' ```

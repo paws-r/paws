@@ -161,7 +161,7 @@ it.
 \link[paws.management:cloudwatchlogs_describe_export_tasks]{describe_export_tasks} \tab Lists the specified export tasks\cr
 \link[paws.management:cloudwatchlogs_describe_field_indexes]{describe_field_indexes} \tab Returns a list of field indexes listed in the field index policies of one or more log groups\cr
 \link[paws.management:cloudwatchlogs_describe_index_policies]{describe_index_policies} \tab Returns the field index policies of one or more log groups\cr
-\link[paws.management:cloudwatchlogs_describe_log_groups]{describe_log_groups} \tab Lists the specified log groups\cr
+\link[paws.management:cloudwatchlogs_describe_log_groups]{describe_log_groups} \tab Returns information about log groups\cr
 \link[paws.management:cloudwatchlogs_describe_log_streams]{describe_log_streams} \tab Lists the log streams for the specified log group\cr
 \link[paws.management:cloudwatchlogs_describe_metric_filters]{describe_metric_filters} \tab Lists the specified metric filters\cr
 \link[paws.management:cloudwatchlogs_describe_queries]{describe_queries} \tab Returns a list of CloudWatch Logs Insights queries that are scheduled, running, or have been run recently in this account\cr
@@ -185,6 +185,7 @@ it.
 \link[paws.management:cloudwatchlogs_list_anomalies]{list_anomalies} \tab Returns a list of anomalies that log anomaly detectors have found\cr
 \link[paws.management:cloudwatchlogs_list_integrations]{list_integrations} \tab Returns a list of integrations between CloudWatch Logs and other services in this account\cr
 \link[paws.management:cloudwatchlogs_list_log_anomaly_detectors]{list_log_anomaly_detectors} \tab Retrieves a list of the log anomaly detectors in the account\cr
+\link[paws.management:cloudwatchlogs_list_log_groups]{list_log_groups} \tab Returns a list of log groups in the Region in your account\cr
 \link[paws.management:cloudwatchlogs_list_log_groups_for_query]{list_log_groups_for_query} \tab Returns a list of the log groups that were analyzed during a single CloudWatch Logs Insights query\cr
 \link[paws.management:cloudwatchlogs_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a CloudWatch Logs resource\cr
 \link[paws.management:cloudwatchlogs_list_tags_log_group]{list_tags_log_group} \tab The ListTagsLogGroup operation is on the path to deprecation\cr

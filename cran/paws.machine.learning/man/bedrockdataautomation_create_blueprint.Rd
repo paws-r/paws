@@ -10,7 +10,8 @@ bedrockdataautomation_create_blueprint(
   blueprintStage = NULL,
   schema,
   clientToken = NULL,
-  encryptionConfiguration = NULL
+  encryptionConfiguration = NULL,
+  tags = NULL
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ bedrockdataautomation_create_blueprint(
 \item{clientToken}{}
 
 \item{encryptionConfiguration}{}
+
+\item{tags}{}
 }
 \description{
 Creates an Amazon Bedrock Data Automation Blueprint

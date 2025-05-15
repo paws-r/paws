@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_get_log_delivery_configuration}
 \alias{cognitoidentityprovider_get_log_delivery_configuration}
-\title{Gets the logging configuration of a user pool}
+\title{Given a user pool ID, returns the logging configuration}
 \usage{
 cognitoidentityprovider_get_log_delivery_configuration(UserPoolId)
 }
@@ -11,7 +11,7 @@ cognitoidentityprovider_get_log_delivery_configuration(UserPoolId)
 to view.}
 }
 \description{
-Gets the logging configuration of a user pool.
+Given a user pool ID, returns the logging configuration. User pools can export message-delivery error and threat-protection activity logs to external Amazon Web Services services. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/exporting-quotas-and-usage.html}{Exporting user pool logs}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_log_delivery_configuration/} for full documentation.
 }

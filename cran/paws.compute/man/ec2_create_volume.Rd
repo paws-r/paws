@@ -18,6 +18,7 @@ ec2_create_volume(
   MultiAttachEnabled = NULL,
   Throughput = NULL,
   ClientToken = NULL,
+  VolumeInitializationRate = NULL,
   Operator = NULL,
   DryRun = NULL
 )
@@ -131,6 +132,31 @@ Valid Range: Minimum value of 125. Maximum value of 1000.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensure Idempotency}.}
+
+\item{VolumeInitializationRate}{Specifies the Amazon EBS Provisioned Rate for Volume Initialization
+(volume initialization rate), in MiB/s, at which to download the
+snapshot blocks from Amazon S3 to the volume. This is also known as
+\emph{volume initialization}. Specifying a volume initialization rate ensures
+that the volume is initialized at a predictable and consistent rate
+after creation.
+
+This parameter is supported only for volumes created from snapshots.
+Omit this parameter if:
+\itemize{
+\item You want to create the volume using fast snapshot restore. You must
+specify a snapshot that is enabled for fast snapshot restore. In
+this case, the volume is fully initialized at creation.
+
+If you specify a snapshot that is enabled for fast snapshot restore
+and a volume initialization rate, the volume will be initialized at
+the specified rate instead of fast snapshot restore.
+\item You want to create a volume that is initialized at the default rate.
+}
+
+For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/initalize-volume.html}{Initialize Amazon EBS volumes}
+in the \emph{Amazon EC2 User Guide}.
+
+Valid range: 100 - 300 MiB/s}
 
 \item{Operator}{Reserved for internal use.}
 

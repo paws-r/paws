@@ -22,7 +22,10 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ClientToken}{Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.
+of the request. If a client token isn't specified, a randomly generated
+token is used in the request to ensure idempotency.
+
+For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.
 
 Constraint: Maximum 128 ASCII characters.}
 
@@ -54,7 +57,7 @@ parameters that you specify for the new version.}
 
 \item{ResolveAlias}{If \code{true}, and if a Systems Manager parameter is specified for
 \code{ImageId}, the AMI ID is displayed in the response for \code{imageID}. For
-more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#use-an-ssm-parameter-instead-of-an-ami-id}{Use a Systems Manager parameter instead of an AMI ID}
+more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-launch-template.html#use-an-ssm-parameter-instead-of-an-ami-id}{Use a Systems Manager parameter instead of an AMI ID}
 in the \emph{Amazon EC2 User Guide}.
 
 Default: \code{false}}

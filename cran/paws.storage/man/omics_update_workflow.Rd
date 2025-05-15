@@ -2,9 +2,15 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_update_workflow}
 \alias{omics_update_workflow}
-\title{Updates a workflow}
+\title{Updates information about a workflow}
 \usage{
-omics_update_workflow(id, name = NULL, description = NULL)
+omics_update_workflow(
+  id,
+  name = NULL,
+  description = NULL,
+  storageType = NULL,
+  storageCapacity = NULL
+)
 }
 \arguments{
 \item{id}{[required] The workflow's ID.}
@@ -12,9 +18,18 @@ omics_update_workflow(id, name = NULL, description = NULL)
 \item{name}{A name for the workflow.}
 
 \item{description}{A description for the workflow.}
+
+\item{storageType}{The default storage type for runs that use this workflow. STATIC storage
+allocates a fixed amount of storage. DYNAMIC storage dynamically scales
+the storage up or down, based on file system utilization. For more
+information about static and dynamic storage, see \href{https://docs.aws.amazon.com/omics/latest/dev/}{Running workflows} in the \emph{Amazon
+Web Services HealthOmics User Guide}.}
+
+\item{storageCapacity}{The default static storage capacity (in gibibytes) for runs that use
+this workflow or workflow version.}
 }
 \description{
-Updates a workflow.
+Updates information about a workflow. For more information, see \href{https://docs.aws.amazon.com/omics/latest/dev/update-private-workflow.html}{Update a private workflow} in the Amazon Web Services HealthOmics User Guide.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_update_workflow/} for full documentation.
 }

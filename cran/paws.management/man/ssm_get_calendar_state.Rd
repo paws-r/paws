@@ -8,7 +8,7 @@ at the current time or a specified time}
 ssm_get_calendar_state(CalendarNames, AtTime = NULL)
 }
 \arguments{
-\item{CalendarNames}{[required] The names or Amazon Resource Names (ARNs) of the Systems Manager
+\item{CalendarNames}{[required] The names of Amazon Resource Names (ARNs) of the Systems Manager
 documents (SSM documents) that represent the calendar entries for which
 you want to get the state.}
 

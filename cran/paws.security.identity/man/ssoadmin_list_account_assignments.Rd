@@ -6,28 +6,28 @@
 specified permission set}
 \usage{
 ssoadmin_list_account_assignments(
-  AccountId,
   InstanceArn,
+  AccountId,
+  PermissionSetArn,
   MaxResults = NULL,
-  NextToken = NULL,
-  PermissionSetArn
+  NextToken = NULL
 )
 }
 \arguments{
-\item{AccountId}{[required] The identifier of the Amazon Web Services account from which to list the
-assignments.}
-
 \item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation
 will be executed. For more information about ARNs, see Amazon Resource
 Names (ARNs) and Amazon Web Services Service Namespaces in the \emph{Amazon
 Web Services General Reference}.}
 
+\item{AccountId}{[required] The identifier of the Amazon Web Services account from which to list the
+assignments.}
+
+\item{PermissionSetArn}{[required] The ARN of the permission set from which to list assignments.}
+
 \item{MaxResults}{The maximum number of results to display for the assignment.}
 
 \item{NextToken}{The pagination token for the list API. Initially the value is null. Use
 the output of previous API calls to make subsequent calls.}
-
-\item{PermissionSetArn}{[required] The ARN of the permission set from which to list assignments.}
 }
 \description{
 Lists the assignee of the specified Amazon Web Services account with the specified permission set.

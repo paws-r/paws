@@ -52,11 +52,11 @@ An Amazon S3 table represents a structured dataset consisting of tabular
 data in \href{https://parquet.apache.org/docs/}{Apache Parquet} format and
 related metadata. This data is stored inside an S3 table as a
 subresource. All tables in a table bucket are stored in the \href{https://iceberg.apache.org/docs/latest/}{Apache Iceberg} table format. Through
-integration with the AWS Glue Data Catalog you can interact with your
-tables using AWS analytics services, such as Amazon Athena and Amazon
-Redshift. Amazon S3 manages maintenance of your tables through automatic
-file compaction and snapshot management. For more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-buckets.html}{Amazon S3 table buckets}.
+integration with the Amazon Web Services Glue Data Catalog you can
+interact with your tables using Amazon Web Services analytics services,
+such as Amazon Athena and Amazon Redshift. Amazon S3 manages maintenance
+of your tables through automatic file compaction and snapshot
+management. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-buckets.html}{Amazon S3 table buckets}.
 }
 \section{Service syntax}{
 
@@ -103,13 +103,16 @@ file compaction and snapshot management. For more information, see
 \link[=s3tables_delete_namespace]{delete_namespace} \tab Deletes a namespace\cr
 \link[=s3tables_delete_table]{delete_table} \tab Deletes a table\cr
 \link[=s3tables_delete_table_bucket]{delete_table_bucket} \tab Deletes a table bucket\cr
+\link[=s3tables_delete_table_bucket_encryption]{delete_table_bucket_encryption} \tab Deletes the encryption configuration for a table bucket\cr
 \link[=s3tables_delete_table_bucket_policy]{delete_table_bucket_policy} \tab Deletes a table bucket policy\cr
 \link[=s3tables_delete_table_policy]{delete_table_policy} \tab Deletes a table policy\cr
 \link[=s3tables_get_namespace]{get_namespace} \tab Gets details about a namespace\cr
 \link[=s3tables_get_table]{get_table} \tab Gets details about a table\cr
 \link[=s3tables_get_table_bucket]{get_table_bucket} \tab Gets details on a table bucket\cr
+\link[=s3tables_get_table_bucket_encryption]{get_table_bucket_encryption} \tab Gets the encryption configuration for a table bucket\cr
 \link[=s3tables_get_table_bucket_maintenance_configuration]{get_table_bucket_maintenance_configuration} \tab Gets details about a maintenance configuration for a given table bucket\cr
 \link[=s3tables_get_table_bucket_policy]{get_table_bucket_policy} \tab Gets details about a table bucket policy\cr
+\link[=s3tables_get_table_encryption]{get_table_encryption} \tab Gets the encryption configuration for a table\cr
 \link[=s3tables_get_table_maintenance_configuration]{get_table_maintenance_configuration} \tab Gets details about the maintenance configuration of a table\cr
 \link[=s3tables_get_table_maintenance_job_status]{get_table_maintenance_job_status} \tab Gets the status of a maintenance job for a table\cr
 \link[=s3tables_get_table_metadata_location]{get_table_metadata_location} \tab Gets the location of the table metadata\cr
@@ -117,6 +120,7 @@ file compaction and snapshot management. For more information, see
 \link[=s3tables_list_namespaces]{list_namespaces} \tab Lists the namespaces within a table bucket\cr
 \link[=s3tables_list_table_buckets]{list_table_buckets} \tab Lists table buckets for your account\cr
 \link[=s3tables_list_tables]{list_tables} \tab List tables in the given table bucket\cr
+\link[=s3tables_put_table_bucket_encryption]{put_table_bucket_encryption} \tab Sets the encryption configuration for a table bucket\cr
 \link[=s3tables_put_table_bucket_maintenance_configuration]{put_table_bucket_maintenance_configuration} \tab Creates a new maintenance configuration or replaces an existing maintenance configuration for a table bucket\cr
 \link[=s3tables_put_table_bucket_policy]{put_table_bucket_policy} \tab Creates a new maintenance configuration or replaces an existing table bucket policy for a table bucket\cr
 \link[=s3tables_put_table_maintenance_configuration]{put_table_maintenance_configuration} \tab Creates a new maintenance configuration or replaces an existing maintenance configuration for a table\cr

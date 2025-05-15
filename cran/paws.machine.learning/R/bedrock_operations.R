@@ -110,6 +110,12 @@ bedrock_create_evaluation_job <- function(jobName, jobDescription = NULL, client
 #' @param sensitiveInformationPolicyConfig The sensitive information policy to configure for the guardrail.
 #' @param contextualGroundingPolicyConfig The contextual grounding policy configuration used to create a
 #' guardrail.
+#' @param crossRegionConfig The system-defined guardrail profile that you're using with your
+#' guardrail. Guardrail profiles define the destination Amazon Web Services
+#' Regions where guardrail inference requests can be automatically routed.
+#' 
+#' For more information, see the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-cross-region.html).
 #' @param blockedInputMessaging &#91;required&#93; The message to return when the guardrail blocks a prompt.
 #' @param blockedOutputsMessaging &#91;required&#93; The message to return when the guardrail blocks a model response.
 #' @param kmsKeyId The ARN of the KMS key that you use to encrypt the guardrail.
@@ -124,7 +130,7 @@ bedrock_create_evaluation_job <- function(jobName, jobDescription = NULL, client
 #' @keywords internal
 #'
 #' @rdname bedrock_create_guardrail
-bedrock_create_guardrail <- function(name, description = NULL, topicPolicyConfig = NULL, contentPolicyConfig = NULL, wordPolicyConfig = NULL, sensitiveInformationPolicyConfig = NULL, contextualGroundingPolicyConfig = NULL, blockedInputMessaging, blockedOutputsMessaging, kmsKeyId = NULL, tags = NULL, clientRequestToken = NULL) {
+bedrock_create_guardrail <- function(name, description = NULL, topicPolicyConfig = NULL, contentPolicyConfig = NULL, wordPolicyConfig = NULL, sensitiveInformationPolicyConfig = NULL, contextualGroundingPolicyConfig = NULL, crossRegionConfig = NULL, blockedInputMessaging, blockedOutputsMessaging, kmsKeyId = NULL, tags = NULL, clientRequestToken = NULL) {
   op <- new_operation(
     name = "CreateGuardrail",
     http_method = "POST",
@@ -133,7 +139,7 @@ bedrock_create_guardrail <- function(name, description = NULL, topicPolicyConfig
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrock$create_guardrail_input(name = name, description = description, topicPolicyConfig = topicPolicyConfig, contentPolicyConfig = contentPolicyConfig, wordPolicyConfig = wordPolicyConfig, sensitiveInformationPolicyConfig = sensitiveInformationPolicyConfig, contextualGroundingPolicyConfig = contextualGroundingPolicyConfig, blockedInputMessaging = blockedInputMessaging, blockedOutputsMessaging = blockedOutputsMessaging, kmsKeyId = kmsKeyId, tags = tags, clientRequestToken = clientRequestToken)
+  input <- .bedrock$create_guardrail_input(name = name, description = description, topicPolicyConfig = topicPolicyConfig, contentPolicyConfig = contentPolicyConfig, wordPolicyConfig = wordPolicyConfig, sensitiveInformationPolicyConfig = sensitiveInformationPolicyConfig, contextualGroundingPolicyConfig = contextualGroundingPolicyConfig, crossRegionConfig = crossRegionConfig, blockedInputMessaging = blockedInputMessaging, blockedOutputsMessaging = blockedOutputsMessaging, kmsKeyId = kmsKeyId, tags = tags, clientRequestToken = clientRequestToken)
   output <- .bedrock$create_guardrail_output()
   config <- get_config()
   svc <- .bedrock$service(config, op)
@@ -348,7 +354,7 @@ bedrock_create_model_copy_job <- function(sourceModelArn, targetModelName, model
 #' @param vpcConfig The configuration of the Virtual Private Cloud (VPC) that contains the
 #' resources that you're using for this job. For more information, see
 #' [Protect your model customization jobs using a
-#' VPC](https://docs.aws.amazon.com/bedrock/latest/userguide/vpc-model-customization.html).
+#' VPC](https://docs.aws.amazon.com/bedrock/latest/userguide/).
 #' @param customizationConfig The customization configuration for the model customization job.
 #'
 #' @keywords internal
@@ -471,6 +477,51 @@ bedrock_create_model_invocation_job <- function(jobName, roleArn, clientRequestT
   return(response)
 }
 .bedrock$operations$create_model_invocation_job <- bedrock_create_model_invocation_job
+
+#' Creates a prompt router that manages the routing of requests between
+#' multiple foundation models based on the routing criteria
+#'
+#' @description
+#' Creates a prompt router that manages the routing of requests between multiple foundation models based on the routing criteria.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrock_create_prompt_router/](https://www.paws-r-sdk.com/docs/bedrock_create_prompt_router/) for full documentation.
+#'
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure
+#' idempotency of your requests. If not specified, the Amazon Web Services
+#' SDK automatically generates one for you.
+#' @param promptRouterName &#91;required&#93; The name of the prompt router. The name must be unique within your
+#' Amazon Web Services account in the current region.
+#' @param models &#91;required&#93; A list of foundation models that the prompt router can route requests
+#' to. At least one model must be specified.
+#' @param description An optional description of the prompt router to help identify its
+#' purpose.
+#' @param routingCriteria &#91;required&#93; The criteria, which is the response quality difference, used to
+#' determine how incoming requests are routed to different models.
+#' @param fallbackModel &#91;required&#93; The default model to use when the routing criteria is not met.
+#' @param tags An array of key-value pairs to apply to this resource as tags. You can
+#' use tags to categorize and manage your Amazon Web Services resources.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_create_prompt_router
+bedrock_create_prompt_router <- function(clientRequestToken = NULL, promptRouterName, models, description = NULL, routingCriteria, fallbackModel, tags = NULL) {
+  op <- new_operation(
+    name = "CreatePromptRouter",
+    http_method = "POST",
+    http_path = "/prompt-routers",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$create_prompt_router_input(clientRequestToken = clientRequestToken, promptRouterName = promptRouterName, models = models, description = description, routingCriteria = routingCriteria, fallbackModel = fallbackModel, tags = tags)
+  output <- .bedrock$create_prompt_router_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$create_prompt_router <- bedrock_create_prompt_router
 
 #' Creates dedicated throughput for a base or custom model with the model
 #' units and for the duration that you specify
@@ -729,6 +780,37 @@ bedrock_delete_model_invocation_logging_configuration <- function() {
   return(response)
 }
 .bedrock$operations$delete_model_invocation_logging_configuration <- bedrock_delete_model_invocation_logging_configuration
+
+#' Deletes a specified prompt router
+#'
+#' @description
+#' Deletes a specified prompt router. This action cannot be undone.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrock_delete_prompt_router/](https://www.paws-r-sdk.com/docs/bedrock_delete_prompt_router/) for full documentation.
+#'
+#' @param promptRouterArn &#91;required&#93; The Amazon Resource Name (ARN) of the prompt router to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_delete_prompt_router
+bedrock_delete_prompt_router <- function(promptRouterArn) {
+  op <- new_operation(
+    name = "DeletePromptRouter",
+    http_method = "DELETE",
+    http_path = "/prompt-routers/{promptRouterArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$delete_prompt_router_input(promptRouterArn = promptRouterArn)
+  output <- .bedrock$delete_prompt_router_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$delete_prompt_router <- bedrock_delete_prompt_router
 
 #' Deletes a Provisioned Throughput
 #'
@@ -1723,7 +1805,7 @@ bedrock_list_model_import_jobs <- function(creationTimeAfter = NULL, creationTim
 #' 
 #' -   Failed – This job has failed. Check the failure message for any
 #'     further details. For further assistance, reach out to the Amazon Web
-#'     Services Support Center.
+#'     ServicesSupport Center.
 #' 
 #' -   Stopped – This job was stopped by a user.
 #' 
@@ -1774,11 +1856,12 @@ bedrock_list_model_invocation_jobs <- function(submitTimeAfter = NULL, submitTim
 #' @param maxResults The maximum number of prompt routers to return in one page of results.
 #' @param nextToken Specify the pagination token from a previous request to retrieve the
 #' next page of results.
+#' @param type The type of the prompt routers, such as whether it's default or custom.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrock_list_prompt_routers
-bedrock_list_prompt_routers <- function(maxResults = NULL, nextToken = NULL) {
+bedrock_list_prompt_routers <- function(maxResults = NULL, nextToken = NULL, type = NULL) {
   op <- new_operation(
     name = "ListPromptRouters",
     http_method = "GET",
@@ -1787,7 +1870,7 @@ bedrock_list_prompt_routers <- function(maxResults = NULL, nextToken = NULL) {
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "promptRouterSummaries"),
     stream_api = FALSE
   )
-  input <- .bedrock$list_prompt_routers_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .bedrock$list_prompt_routers_input(maxResults = maxResults, nextToken = nextToken, type = type)
   output <- .bedrock$list_prompt_routers_output()
   config <- get_config()
   svc <- .bedrock$service(config, op)
@@ -2116,6 +2199,12 @@ bedrock_untag_resource <- function(resourceARN, tagKeys) {
 #' @param sensitiveInformationPolicyConfig The sensitive information policy to configure for the guardrail.
 #' @param contextualGroundingPolicyConfig The contextual grounding policy configuration used to update a
 #' guardrail.
+#' @param crossRegionConfig The system-defined guardrail profile that you're using with your
+#' guardrail. Guardrail profiles define the destination Amazon Web Services
+#' Regions where guardrail inference requests can be automatically routed.
+#' 
+#' For more information, see the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-cross-region.html).
 #' @param blockedInputMessaging &#91;required&#93; The message to return when the guardrail blocks a prompt.
 #' @param blockedOutputsMessaging &#91;required&#93; The message to return when the guardrail blocks a model response.
 #' @param kmsKeyId The ARN of the KMS key with which to encrypt the guardrail.
@@ -2123,7 +2212,7 @@ bedrock_untag_resource <- function(resourceARN, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname bedrock_update_guardrail
-bedrock_update_guardrail <- function(guardrailIdentifier, name, description = NULL, topicPolicyConfig = NULL, contentPolicyConfig = NULL, wordPolicyConfig = NULL, sensitiveInformationPolicyConfig = NULL, contextualGroundingPolicyConfig = NULL, blockedInputMessaging, blockedOutputsMessaging, kmsKeyId = NULL) {
+bedrock_update_guardrail <- function(guardrailIdentifier, name, description = NULL, topicPolicyConfig = NULL, contentPolicyConfig = NULL, wordPolicyConfig = NULL, sensitiveInformationPolicyConfig = NULL, contextualGroundingPolicyConfig = NULL, crossRegionConfig = NULL, blockedInputMessaging, blockedOutputsMessaging, kmsKeyId = NULL) {
   op <- new_operation(
     name = "UpdateGuardrail",
     http_method = "PUT",
@@ -2132,7 +2221,7 @@ bedrock_update_guardrail <- function(guardrailIdentifier, name, description = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrock$update_guardrail_input(guardrailIdentifier = guardrailIdentifier, name = name, description = description, topicPolicyConfig = topicPolicyConfig, contentPolicyConfig = contentPolicyConfig, wordPolicyConfig = wordPolicyConfig, sensitiveInformationPolicyConfig = sensitiveInformationPolicyConfig, contextualGroundingPolicyConfig = contextualGroundingPolicyConfig, blockedInputMessaging = blockedInputMessaging, blockedOutputsMessaging = blockedOutputsMessaging, kmsKeyId = kmsKeyId)
+  input <- .bedrock$update_guardrail_input(guardrailIdentifier = guardrailIdentifier, name = name, description = description, topicPolicyConfig = topicPolicyConfig, contentPolicyConfig = contentPolicyConfig, wordPolicyConfig = wordPolicyConfig, sensitiveInformationPolicyConfig = sensitiveInformationPolicyConfig, contextualGroundingPolicyConfig = contextualGroundingPolicyConfig, crossRegionConfig = crossRegionConfig, blockedInputMessaging = blockedInputMessaging, blockedOutputsMessaging = blockedOutputsMessaging, kmsKeyId = kmsKeyId)
   output <- .bedrock$update_guardrail_output()
   config <- get_config()
   svc <- .bedrock$service(config, op)

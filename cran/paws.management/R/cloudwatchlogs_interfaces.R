@@ -375,7 +375,7 @@ NULL
 
 .cloudwatchlogs$describe_log_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(accountIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), logGroupNamePrefix = structure(logical(0), tags = list(type = "string")), logGroupNamePattern = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), limit = structure(logical(0), tags = list(type = "integer")), includeLinkedAccounts = structure(logical(0), tags = list(type = "boolean")), logGroupClass = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(accountIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), logGroupNamePrefix = structure(logical(0), tags = list(type = "string")), logGroupNamePattern = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), limit = structure(logical(0), tags = list(type = "integer")), includeLinkedAccounts = structure(logical(0), tags = list(type = "boolean")), logGroupClass = structure(logical(0), tags = list(type = "string")), logGroupIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -656,6 +656,18 @@ NULL
 .cloudwatchlogs$list_log_anomaly_detectors_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(anomalyDetectors = structure(list(structure(list(anomalyDetectorArn = structure(logical(0), tags = list(type = "string")), detectorName = structure(logical(0), tags = list(type = "string")), logGroupArnList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), evaluationFrequency = structure(logical(0), tags = list(type = "string")), filterPattern = structure(logical(0), tags = list(type = "string")), anomalyDetectorStatus = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), creationTimeStamp = structure(logical(0), tags = list(type = "long")), lastModifiedTimeStamp = structure(logical(0), tags = list(type = "long")), anomalyVisibilityTime = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$list_log_groups_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(logGroupNamePattern = structure(logical(0), tags = list(type = "string")), logGroupClass = structure(logical(0), tags = list(type = "string")), includeLinkedAccounts = structure(logical(0), tags = list(type = "boolean")), accountIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string")), limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$list_log_groups_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(logGroups = structure(list(structure(list(logGroupName = structure(logical(0), tags = list(type = "string")), logGroupArn = structure(logical(0), tags = list(type = "string")), logGroupClass = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

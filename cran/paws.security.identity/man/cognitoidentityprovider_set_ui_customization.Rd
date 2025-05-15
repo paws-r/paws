@@ -2,8 +2,8 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_set_ui_customization}
 \alias{cognitoidentityprovider_set_ui_customization}
-\title{Sets the user interface (UI) customization information for a user pool's
-built-in app UI}
+\title{Configures UI branding settings for domains with the hosted UI (classic)
+branding version}
 \usage{
 cognitoidentityprovider_set_ui_customization(
   UserPoolId,
@@ -13,16 +13,24 @@ cognitoidentityprovider_set_ui_customization(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The ID of the user pool.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to apply branding to the classic
+hosted UI.}
 
-\item{ClientId}{The client ID for the client app.}
+\item{ClientId}{The ID of the app client that you want to customize. To apply a default
+style to all app clients not configured with client-level branding, set
+this parameter value to \code{ALL}.}
 
-\item{CSS}{The CSS values in the UI customization.}
+\item{CSS}{A plaintext CSS file that contains the custom fields that you want to
+apply to your user pool or app client. To download a template, go to the
+Amazon Cognito console. Navigate to your user pool \emph{App clients} tab,
+select \emph{Login pages}, edit \emph{Hosted UI (classic) style}, and select the
+link to \verb{CSS template.css}.}
 
-\item{ImageFile}{The uploaded logo image for the UI customization.}
+\item{ImageFile}{The image that you want to set as your login in the classic hosted UI,
+as a Base64-formatted binary object.}
 }
 \description{
-Sets the user interface (UI) customization information for a user pool's built-in app UI.
+Configures UI branding settings for domains with the hosted UI (classic) branding version. Your user pool must have a domain. Configure a domain with .
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_set_ui_customization/} for full documentation.
 }

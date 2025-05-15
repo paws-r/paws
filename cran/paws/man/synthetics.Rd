@@ -125,6 +125,7 @@ considerations. For more information, see \href{https://docs.aws.amazon.com/Amaz
 \link[paws.management:synthetics_list_groups]{list_groups} \tab Returns a list of all groups in the account, displaying their names, unique IDs, and ARNs\cr
 \link[paws.management:synthetics_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a canary or group\cr
 \link[paws.management:synthetics_start_canary]{start_canary} \tab Use this operation to run a canary that has already been created\cr
+\link[paws.management:synthetics_start_canary_dry_run]{start_canary_dry_run} \tab Use this operation to start a dry run for a canary that has already been created\cr
 \link[paws.management:synthetics_stop_canary]{stop_canary} \tab Stops the canary to prevent all future runs\cr
 \link[paws.management:synthetics_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified canary or group\cr
 \link[paws.management:synthetics_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource\cr

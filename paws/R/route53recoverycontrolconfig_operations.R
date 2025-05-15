@@ -15,13 +15,15 @@ NULL
 #'
 #' @usage
 #' route53recoverycontrolconfig_create_cluster(ClientToken, ClusterName,
-#'   Tags)
+#'   Tags, NetworkType)
 #'
 #' @param ClientToken A unique, case-sensitive string of up to 64 ASCII characters. To make an
 #' idempotent API request with an action, specify a client token in the
 #' request.
 #' @param ClusterName &#91;required&#93; The name of the cluster.
 #' @param Tags The tags associated with the cluster.
+#' @param NetworkType The network type of the cluster. NetworkType can be one of the
+#' following: IPV4, DUALSTACK.
 #'
 #' @return
 #' A list with the following syntax:
@@ -37,7 +39,8 @@ NULL
 #'     ),
 #'     Name = "string",
 #'     Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION",
-#'     Owner = "string"
+#'     Owner = "string",
+#'     NetworkType = "IPV4"|"DUALSTACK"
 #'   )
 #' )
 #' ```
@@ -49,7 +52,8 @@ NULL
 #'   ClusterName = "string",
 #'   Tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   NetworkType = "IPV4"|"DUALSTACK"
 #' )
 #' ```
 #'
@@ -58,7 +62,7 @@ NULL
 #' @rdname route53recoverycontrolconfig_create_cluster
 #'
 #' @aliases route53recoverycontrolconfig_create_cluster
-route53recoverycontrolconfig_create_cluster <- function(ClientToken = NULL, ClusterName, Tags = NULL) {
+route53recoverycontrolconfig_create_cluster <- function(ClientToken = NULL, ClusterName, Tags = NULL, NetworkType = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
@@ -67,7 +71,7 @@ route53recoverycontrolconfig_create_cluster <- function(ClientToken = NULL, Clus
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .route53recoverycontrolconfig$create_cluster_input(ClientToken = ClientToken, ClusterName = ClusterName, Tags = Tags)
+  input <- .route53recoverycontrolconfig$create_cluster_input(ClientToken = ClientToken, ClusterName = ClusterName, Tags = Tags, NetworkType = NetworkType)
   output <- .route53recoverycontrolconfig$create_cluster_output()
   config <- get_config()
   svc <- .route53recoverycontrolconfig$service(config, op)
@@ -568,7 +572,8 @@ route53recoverycontrolconfig_delete_safety_rule <- function(SafetyRuleArn) {
 #'     ),
 #'     Name = "string",
 #'     Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION",
-#'     Owner = "string"
+#'     Owner = "string",
+#'     NetworkType = "IPV4"|"DUALSTACK"
 #'   )
 #' )
 #' ```
@@ -940,7 +945,8 @@ route53recoverycontrolconfig_list_associated_route_53_health_checks <- function(
 #'       ),
 #'       Name = "string",
 #'       Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION",
-#'       Owner = "string"
+#'       Owner = "string",
+#'       NetworkType = "IPV4"|"DUALSTACK"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1352,6 +1358,71 @@ route53recoverycontrolconfig_untag_resource <- function(ResourceArn, TagKeys) {
   return(response)
 }
 .route53recoverycontrolconfig$operations$untag_resource <- route53recoverycontrolconfig_untag_resource
+
+#' Updates an existing cluster
+#'
+#' @description
+#' Updates an existing cluster. You can only update the network type of a
+#' cluster.
+#'
+#' @usage
+#' route53recoverycontrolconfig_update_cluster(ClusterArn, NetworkType)
+#'
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) of the cluster.
+#' @param NetworkType &#91;required&#93; The network type of the cluster. NetworkType can be one of the
+#' following: IPV4, DUALSTACK.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Cluster = list(
+#'     ClusterArn = "string",
+#'     ClusterEndpoints = list(
+#'       list(
+#'         Endpoint = "string",
+#'         Region = "string"
+#'       )
+#'     ),
+#'     Name = "string",
+#'     Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION",
+#'     Owner = "string",
+#'     NetworkType = "IPV4"|"DUALSTACK"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_cluster(
+#'   ClusterArn = "string",
+#'   NetworkType = "IPV4"|"DUALSTACK"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53recoverycontrolconfig_update_cluster
+#'
+#' @aliases route53recoverycontrolconfig_update_cluster
+route53recoverycontrolconfig_update_cluster <- function(ClusterArn, NetworkType) {
+  op <- new_operation(
+    name = "UpdateCluster",
+    http_method = "PUT",
+    http_path = "/cluster",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .route53recoverycontrolconfig$update_cluster_input(ClusterArn = ClusterArn, NetworkType = NetworkType)
+  output <- .route53recoverycontrolconfig$update_cluster_output()
+  config <- get_config()
+  svc <- .route53recoverycontrolconfig$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53recoverycontrolconfig$operations$update_cluster <- route53recoverycontrolconfig_update_cluster
 
 #' Updates a control panel
 #'

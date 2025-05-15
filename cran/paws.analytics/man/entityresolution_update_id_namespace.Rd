@@ -5,23 +5,23 @@
 \title{Updates an existing ID namespace}
 \usage{
 entityresolution_update_id_namespace(
-  description = NULL,
-  idMappingWorkflowProperties = NULL,
   idNamespaceName,
+  description = NULL,
   inputSourceConfig = NULL,
+  idMappingWorkflowProperties = NULL,
   roleArn = NULL
 )
 }
 \arguments{
-\item{description}{The description of the ID namespace.}
-
-\item{idMappingWorkflowProperties}{Determines the properties of \code{IdMappingWorkflow} where this
-\code{IdNamespace} can be used as a \code{Source} or a \code{Target}.}
-
 \item{idNamespaceName}{[required] The name of the ID namespace.}
+
+\item{description}{The description of the ID namespace.}
 
 \item{inputSourceConfig}{A list of \code{InputSource} objects, which have the fields \code{InputSourceARN}
 and \code{SchemaName}.}
+
+\item{idMappingWorkflowProperties}{Determines the properties of \code{IdMappingWorkflow} where this
+\code{IdNamespace} can be used as a \code{Source} or a \code{Target}.}
 
 \item{roleArn}{The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
 assumes this role to access the resources defined in this \code{IdNamespace}

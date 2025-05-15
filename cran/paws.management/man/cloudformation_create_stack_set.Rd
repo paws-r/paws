@@ -124,8 +124,10 @@ stack set.
 
 Specify an IAM role only if you are using customized administrator roles
 to control which users or groups can manage specific stack sets within
-the same administrator account. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html}{Prerequisites for using StackSets}
-in the \emph{CloudFormation User Guide}.}
+the same administrator account. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html}{Grant self-managed permissions}
+in the \emph{CloudFormation User Guide}.
+
+Valid only if the permissions model is \code{SELF_MANAGED}.}
 
 \item{ExecutionRoleName}{The name of the IAM execution role to use to create the stack set. If
 you do not specify an execution role, CloudFormation uses the
@@ -134,7 +136,9 @@ operation.
 
 Specify an IAM role only if you are using customized execution roles to
 control which stack resources users and groups can include in their
-stack sets.}
+stack sets.
+
+Valid only if the permissions model is \code{SELF_MANAGED}.}
 
 \item{PermissionModel}{Describes how the IAM roles required for stack set operations are
 created. By default, \code{SELF-MANAGED} is specified.
@@ -149,11 +153,15 @@ Organizations. For more information, see \href{https://docs.aws.amazon.com/AWSCl
 
 \item{AutoDeployment}{Describes whether StackSets automatically deploys to Organizations
 accounts that are added to the target organization or organizational
-unit (OU). Specify only if \code{PermissionModel} is \code{SERVICE_MANAGED}.}
+unit (OU). For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-manage-auto-deployment.html}{Manage automatic deployments for CloudFormation StackSets that use service-managed permissions}
+in the \emph{CloudFormation User Guide}.
 
-\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
-account administrator in the organization's management account or as a
-delegated administrator in a member account.
+Required if the permissions model is \code{SERVICE_MANAGED}. (Not used with
+self-managed permissions.)}
+
+\item{CallAs}{Specifies whether you are acting as an account administrator in the
+organization's management account or as a delegated administrator in a
+member account.
 
 By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
 self-managed permissions.
@@ -170,7 +178,9 @@ in the \emph{CloudFormation User Guide}.
 
 Stack sets with service-managed permissions are created in the
 management account, including stack sets that are created by delegated
-administrators.}
+administrators.
+
+Valid only if the permissions model is \code{SERVICE_MANAGED}.}
 
 \item{ClientRequestToken}{A unique identifier for this
 \code{\link[=cloudformation_create_stack_set]{create_stack_set}} request. Specify

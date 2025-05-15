@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_set_user_pool_mfa_config}
 \alias{cognitoidentityprovider_set_user_pool_mfa_config}
-\title{Sets the user pool multi-factor authentication (MFA) and passkey
+\title{Sets user pool multi-factor authentication (MFA) and passkey
 configuration}
 \usage{
 cognitoidentityprovider_set_user_pool_mfa_config(
@@ -23,28 +23,29 @@ the SMS message sending configuration for Amazon SNS.}
 \item{SoftwareTokenMfaConfiguration}{Configures a user pool for time-based one-time password (TOTP) MFA.
 Enables or disables TOTP.}
 
-\item{EmailMfaConfiguration}{Configures user pool email messages for MFA. Sets the subject and body
-of the email message template for MFA messages. To activate this
-setting, \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-threat-protection.html}{advanced security features}
-must be active in your user pool.}
+\item{EmailMfaConfiguration}{Sets configuration for user pool email message MFA and sign-in with
+one-time passwords (OTPs). Includes the subject and body of the email
+message template for sign-in and MFA messages. To activate this setting,
+your user pool must be in the \href{https://docs.aws.amazon.com/cognito/latest/developerguide/feature-plans-features-essentials.html}{Essentials tier}
+or higher.}
 
-\item{MfaConfiguration}{The MFA configuration. If you set the MfaConfiguration value to ‘ON’,
-only users who have set up an MFA factor can sign in. To learn more, see
-\href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-mfa.html}{Adding Multi-Factor Authentication (MFA) to a user pool}.
-Valid values include:
-\itemize{
-\item \code{OFF} MFA won't be used for any users.
-\item \code{ON} MFA is required for all users to sign in.
-\item \code{OPTIONAL} MFA will be required only for individual users who have
-an MFA factor activated.
-}}
+\item{MfaConfiguration}{Sets multi-factor authentication (MFA) to be on, off, or optional. When
+\code{ON}, all users must set up MFA before they can sign in. When
+\code{OPTIONAL}, your application must make a client-side determination of
+whether a user wants to register an MFA device. For user pools with
+adaptive authentication with threat protection, choose \code{OPTIONAL}.
 
-\item{WebAuthnConfiguration}{The configuration of your user pool for passkey, or webauthN,
+When \code{MfaConfiguration} is \code{OPTIONAL}, managed login doesn't
+automatically prompt users to set up MFA. Amazon Cognito generates MFA
+prompts in API responses and in managed login for users who have chosen
+and configured a preferred MFA factor.}
+
+\item{WebAuthnConfiguration}{The configuration of your user pool for passkey, or WebAuthn,
 authentication and registration. You can set this configuration
 independent of the MFA configuration options in this operation.}
 }
 \description{
-Sets the user pool multi-factor authentication (MFA) and passkey configuration.
+Sets user pool multi-factor authentication (MFA) and passkey configuration. For more information about user pool MFA, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-mfa.html}{Adding MFA}. For more information about WebAuthn passkeys see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-authentication-flow-methods.html#amazon-cognito-user-pools-authentication-flow-methods-passkey}{Authentication flows}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_set_user_pool_mfa_config/} for full documentation.
 }

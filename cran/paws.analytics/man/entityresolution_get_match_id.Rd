@@ -3,22 +3,23 @@
 \name{entityresolution_get_match_id}
 \alias{entityresolution_get_match_id}
 \title{Returns the corresponding Match ID of a customer record if the record
-has been processed}
+has been processed in a rule-based matching workflow or ML matching
+workflow}
 \usage{
-entityresolution_get_match_id(applyNormalization = NULL, record, workflowName)
+entityresolution_get_match_id(workflowName, record, applyNormalization = NULL)
 }
 \arguments{
+\item{workflowName}{[required] The name of the workflow.}
+
+\item{record}{[required] The record to fetch the Match ID for.}
+
 \item{applyNormalization}{Normalizes the attributes defined in the schema in the input data. For
 example, if an attribute has an \code{AttributeType} of \code{PHONE_NUMBER}, and
 the data in the input table is in a format of 1234567890, Entity
 Resolution will normalize this field in the output to (123)-456-7890.}
-
-\item{record}{[required] The record to fetch the Match ID for.}
-
-\item{workflowName}{[required] The name of the workflow.}
 }
 \description{
-Returns the corresponding Match ID of a customer record if the record has been processed.
+Returns the corresponding Match ID of a customer record if the record has been processed in a rule-based matching workflow or ML matching workflow.
 
 See \url{https://www.paws-r-sdk.com/docs/entityresolution_get_match_id/} for full documentation.
 }

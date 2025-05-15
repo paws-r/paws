@@ -2,16 +2,15 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_delete_application}
 \alias{opensearchservice_delete_application}
-\title{Deletes an existing OpenSearch Application}
+\title{Deletes a specified OpenSearch application}
 \usage{
 opensearchservice_delete_application(id)
 }
 \arguments{
-\item{id}{[required] Unique identifier for the OpenSearch Application that you want to
-delete.}
+\item{id}{[required] The unique identifier of the OpenSearch application to delete.}
 }
 \description{
-Deletes an existing OpenSearch Application.
+Deletes a specified OpenSearch application.
 
 See \url{https://www.paws-r-sdk.com/docs/opensearchservice_delete_application/} for full documentation.
 }

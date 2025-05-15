@@ -7,8 +7,14 @@ NULL
 #'
 #' @description
 #' GetEntitlements retrieves entitlement values for a given product. The
-#' results can be filtered based on customer identifier or product
-#' dimensions.
+#' results can be filtered based on customer identifier, AWS account ID, or
+#' product dimensions.
+#' 
+#' The `CustomerIdentifier` parameter is on path for deprecation. Use
+#' `CustomerAWSAccountID` instead.
+#' 
+#' These parameters are mutually exclusive. You can't specify both
+#' `CustomerIdentifier` and `CustomerAWSAccountID` in the same request.
 #'
 #' @usage
 #' marketplaceentitlementservice_get_entitlements(ProductCode, Filter,
@@ -21,6 +27,9 @@ NULL
 #' specific dimension. Filters are described as keys mapped to a lists of
 #' values. Filtered requests are *unioned* for each value in the value
 #' list, and then *intersected* for each filter key.
+#' 
+#' `CustomerIdentifier` and `CustomerAWSAccountID` are mutually exclusive.
+#' You can't specify both in the same request.
 #' @param NextToken For paginated calls to GetEntitlements, pass the NextToken from the
 #' previous GetEntitlementsResult.
 #' @param MaxResults The maximum number of items to retrieve from the GetEntitlements
@@ -36,6 +45,7 @@ NULL
 #'       ProductCode = "string",
 #'       Dimension = "string",
 #'       CustomerIdentifier = "string",
+#'       CustomerAWSAccountId = "string",
 #'       Value = list(
 #'         IntegerValue = 123,
 #'         DoubleValue = 123.0,

@@ -1679,9 +1679,10 @@ directconnect_create_connection <- function(location, bandwidth, connectionName,
 #'
 #' @usage
 #' directconnect_create_direct_connect_gateway(directConnectGatewayName,
-#'   amazonSideAsn)
+#'   tags, amazonSideAsn)
 #'
 #' @param directConnectGatewayName &#91;required&#93; The name of the Direct Connect gateway.
+#' @param tags The key-value pair tags associated with the request.
 #' @param amazonSideAsn The autonomous system number (ASN) for Border Gateway Protocol (BGP) to
 #' be configured on the Amazon side of the connection. The ASN must be in
 #' the private range of 64,512 to 65,534 or 4,200,000,000 to 4,294,967,294.
@@ -1697,7 +1698,13 @@ directconnect_create_connection <- function(location, bandwidth, connectionName,
 #'     amazonSideAsn = 123,
 #'     ownerAccount = "string",
 #'     directConnectGatewayState = "pending"|"available"|"deleting"|"deleted",
-#'     stateChangeError = "string"
+#'     stateChangeError = "string",
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -1706,6 +1713,12 @@ directconnect_create_connection <- function(location, bandwidth, connectionName,
 #' ```
 #' svc$create_direct_connect_gateway(
 #'   directConnectGatewayName = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
 #'   amazonSideAsn = 123
 #' )
 #' ```
@@ -1715,7 +1728,7 @@ directconnect_create_connection <- function(location, bandwidth, connectionName,
 #' @rdname directconnect_create_direct_connect_gateway
 #'
 #' @aliases directconnect_create_direct_connect_gateway
-directconnect_create_direct_connect_gateway <- function(directConnectGatewayName, amazonSideAsn = NULL) {
+directconnect_create_direct_connect_gateway <- function(directConnectGatewayName, tags = NULL, amazonSideAsn = NULL) {
   op <- new_operation(
     name = "CreateDirectConnectGateway",
     http_method = "POST",
@@ -1724,7 +1737,7 @@ directconnect_create_direct_connect_gateway <- function(directConnectGatewayName
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directconnect$create_direct_connect_gateway_input(directConnectGatewayName = directConnectGatewayName, amazonSideAsn = amazonSideAsn)
+  input <- .directconnect$create_direct_connect_gateway_input(directConnectGatewayName = directConnectGatewayName, tags = tags, amazonSideAsn = amazonSideAsn)
   output <- .directconnect$create_direct_connect_gateway_output()
   config <- get_config()
   svc <- .directconnect$service(config, op)
@@ -2842,7 +2855,13 @@ directconnect_delete_connection <- function(connectionId) {
 #'     amazonSideAsn = 123,
 #'     ownerAccount = "string",
 #'     directConnectGatewayState = "pending"|"available"|"deleting"|"deleted",
-#'     stateChangeError = "string"
+#'     stateChangeError = "string",
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -3686,6 +3705,16 @@ directconnect_describe_direct_connect_gateway_association_proposals <- function(
 #' 
 #'     The response contains the association between the Direct Connect
 #'     gateway and transit gateway.
+#' 
+#' -   A Direct Connect gateway and a virtual private gateway
+#' 
+#'     The response contains the association between the Direct Connect
+#'     gateway and virtual private gateway.
+#' 
+#' -   A Direct Connect gateway association to a Cloud WAN core network
+#' 
+#'     The response contains the Cloud WAN core network ID that the Direct
+#'     Connect gateway is associated to.
 #'
 #' @usage
 #' directconnect_describe_direct_connect_gateway_associations(
@@ -3887,7 +3916,13 @@ directconnect_describe_direct_connect_gateway_attachments <- function(directConn
 #'       amazonSideAsn = 123,
 #'       ownerAccount = "string",
 #'       directConnectGatewayState = "pending"|"available"|"deleting"|"deleted",
-#'       stateChangeError = "string"
+#'       stateChangeError = "string",
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -5344,7 +5379,13 @@ directconnect_update_connection <- function(connectionId, connectionName = NULL,
 #'     amazonSideAsn = 123,
 #'     ownerAccount = "string",
 #'     directConnectGatewayState = "pending"|"available"|"deleting"|"deleted",
-#'     stateChangeError = "string"
+#'     stateChangeError = "string",
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```

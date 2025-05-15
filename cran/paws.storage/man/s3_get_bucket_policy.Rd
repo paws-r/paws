@@ -31,8 +31,7 @@ point alias in a request is not valid, the error code
 \code{InvalidAccessPointAliasError} is returned. For more information about
 \code{InvalidAccessPointAliasError}, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList}{List of Error Codes}.
 
-Access points and Object Lambda access points are not supported by
-directory buckets.}
+Object Lambda access points are not supported by directory buckets.}
 
 \item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
 provide does not match the actual owner of the bucket, the request fails

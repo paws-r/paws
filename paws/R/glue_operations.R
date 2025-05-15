@@ -2729,6 +2729,7 @@ glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, 
 #'             IcebergMetrics = list(
 #'               NumberOfBytesCompacted = 123,
 #'               NumberOfFilesCompacted = 123,
+#'               DpuHours = 123.0,
 #'               NumberOfDpus = 123,
 #'               JobDurationInHour = 123.0
 #'             )
@@ -2738,6 +2739,7 @@ glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, 
 #'               NumberOfDataFilesDeleted = 123,
 #'               NumberOfManifestFilesDeleted = 123,
 #'               NumberOfManifestListsDeleted = 123,
+#'               DpuHours = 123.0,
 #'               NumberOfDpus = 123,
 #'               JobDurationInHour = 123.0
 #'             )
@@ -2745,6 +2747,7 @@ glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, 
 #'           orphanFileDeletionMetrics = list(
 #'             IcebergMetrics = list(
 #'               NumberOfOrphanFilesDeleted = 123,
+#'               DpuHours = 123.0,
 #'               NumberOfDpus = 123,
 #'               JobDurationInHour = 123.0
 #'             )
@@ -3913,7 +3916,8 @@ glue_create_blueprint <- function(Name, Description = NULL, BlueprintLocation, T
 #'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     AllowFullTableExternalDataAccess = "True"|"False"
 #'   ),
 #'   Tags = list(
 #'     "string"
@@ -4818,7 +4822,8 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #'
 #' @usage
 #' glue_create_integration(IntegrationName, SourceArn, TargetArn,
-#'   Description, DataFilter, KmsKeyId, AdditionalEncryptionContext, Tags)
+#'   Description, DataFilter, KmsKeyId, AdditionalEncryptionContext, Tags,
+#'   IntegrationConfig)
 #'
 #' @param IntegrationName &#91;required&#93; A unique name for an integration in Glue.
 #' @param SourceArn &#91;required&#93; The ARN of the source resource for the integration.
@@ -4831,6 +4836,7 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' `KMSKeyId` is provided.
 #' @param Tags Metadata assigned to the resource consisting of a list of key-value
 #' pairs.
+#' @param IntegrationConfig The configuration settings.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4861,7 +4867,10 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #'       ErrorMessage = "string"
 #'     )
 #'   ),
-#'   DataFilter = "string"
+#'   DataFilter = "string",
+#'   IntegrationConfig = list(
+#'     RefreshInterval = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -4882,6 +4891,9 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #'       key = "string",
 #'       value = "string"
 #'     )
+#'   ),
+#'   IntegrationConfig = list(
+#'     RefreshInterval = "string"
 #'   )
 #' )
 #' ```
@@ -4891,7 +4903,7 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' @rdname glue_create_integration
 #'
 #' @aliases glue_create_integration
-glue_create_integration <- function(IntegrationName, SourceArn, TargetArn, Description = NULL, DataFilter = NULL, KmsKeyId = NULL, AdditionalEncryptionContext = NULL, Tags = NULL) {
+glue_create_integration <- function(IntegrationName, SourceArn, TargetArn, Description = NULL, DataFilter = NULL, KmsKeyId = NULL, AdditionalEncryptionContext = NULL, Tags = NULL, IntegrationConfig = NULL) {
   op <- new_operation(
     name = "CreateIntegration",
     http_method = "POST",
@@ -4900,7 +4912,7 @@ glue_create_integration <- function(IntegrationName, SourceArn, TargetArn, Descr
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$create_integration_input(IntegrationName = IntegrationName, SourceArn = SourceArn, TargetArn = TargetArn, Description = Description, DataFilter = DataFilter, KmsKeyId = KmsKeyId, AdditionalEncryptionContext = AdditionalEncryptionContext, Tags = Tags)
+  input <- .glue$create_integration_input(IntegrationName = IntegrationName, SourceArn = SourceArn, TargetArn = TargetArn, Description = Description, DataFilter = DataFilter, KmsKeyId = KmsKeyId, AdditionalEncryptionContext = AdditionalEncryptionContext, Tags = Tags, IntegrationConfig = IntegrationConfig)
   output <- .glue$create_integration_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -5005,7 +5017,9 @@ glue_create_integration_resource_property <- function(ResourceArn, SourceProcess
 #'
 #' @param ResourceArn &#91;required&#93; The connection ARN of the source, or the database ARN of the target.
 #' @param TableName &#91;required&#93; The name of the table to be replicated.
-#' @param SourceTableConfig A structure for the source table configuration.
+#' @param SourceTableConfig A structure for the source table configuration. See the
+#' `SourceTableConfig` structure to see list of supported source
+#' properties.
 #' @param TargetTableConfig A structure for the target table configuration.
 #'
 #' @return
@@ -10366,6 +10380,9 @@ glue_describe_entity <- function(ConnectionName, CatalogId = NULL, EntityName, N
 #'       CreateTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
+#'       IntegrationConfig = list(
+#'         RefreshInterval = "string"
+#'       ),
 #'       Errors = list(
 #'         list(
 #'           ErrorCode = "string",
@@ -10453,6 +10470,9 @@ glue_describe_inbound_integrations <- function(IntegrationArn = NULL, Marker = N
 #'       Status = "CREATING"|"ACTIVE"|"MODIFYING"|"FAILED"|"DELETING"|"SYNCING"|"NEEDS_ATTENTION",
 #'       CreateTime = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       IntegrationConfig = list(
+#'         RefreshInterval = "string"
 #'       ),
 #'       Errors = list(
 #'         list(
@@ -10791,7 +10811,8 @@ glue_get_blueprint_runs <- function(BlueprintName, NextToken = NULL, MaxResults 
 #'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     AllowFullTableExternalDataAccess = "True"|"False"
 #'   )
 #' )
 #' ```
@@ -10971,7 +10992,8 @@ glue_get_catalog_import_status <- function(CatalogId = NULL) {
 #'             "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       AllowFullTableExternalDataAccess = "True"|"False"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -19249,6 +19271,7 @@ glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId =
 #'         IcebergMetrics = list(
 #'           NumberOfBytesCompacted = 123,
 #'           NumberOfFilesCompacted = 123,
+#'           DpuHours = 123.0,
 #'           NumberOfDpus = 123,
 #'           JobDurationInHour = 123.0
 #'         )
@@ -19258,6 +19281,7 @@ glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId =
 #'           NumberOfDataFilesDeleted = 123,
 #'           NumberOfManifestFilesDeleted = 123,
 #'           NumberOfManifestListsDeleted = 123,
+#'           DpuHours = 123.0,
 #'           NumberOfDpus = 123,
 #'           JobDurationInHour = 123.0
 #'         )
@@ -19265,6 +19289,7 @@ glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId =
 #'       orphanFileDeletionMetrics = list(
 #'         IcebergMetrics = list(
 #'           NumberOfOrphanFilesDeleted = 123,
+#'           DpuHours = 123.0,
 #'           NumberOfDpus = 123,
 #'           JobDurationInHour = 123.0
 #'         )
@@ -23805,6 +23830,7 @@ glue_list_statements <- function(SessionId, RequestOrigin = NULL, NextToken = NU
 #'         IcebergMetrics = list(
 #'           NumberOfBytesCompacted = 123,
 #'           NumberOfFilesCompacted = 123,
+#'           DpuHours = 123.0,
 #'           NumberOfDpus = 123,
 #'           JobDurationInHour = 123.0
 #'         )
@@ -23814,6 +23840,7 @@ glue_list_statements <- function(SessionId, RequestOrigin = NULL, NextToken = NU
 #'           NumberOfDataFilesDeleted = 123,
 #'           NumberOfManifestFilesDeleted = 123,
 #'           NumberOfManifestListsDeleted = 123,
+#'           DpuHours = 123.0,
 #'           NumberOfDpus = 123,
 #'           JobDurationInHour = 123.0
 #'         )
@@ -23821,6 +23848,7 @@ glue_list_statements <- function(SessionId, RequestOrigin = NULL, NextToken = NU
 #'       orphanFileDeletionMetrics = list(
 #'         IcebergMetrics = list(
 #'           NumberOfOrphanFilesDeleted = 123,
+#'           DpuHours = 123.0,
 #'           NumberOfDpus = 123,
 #'           JobDurationInHour = 123.0
 #'         )
@@ -26835,7 +26863,8 @@ glue_update_blueprint <- function(Name, Description = NULL, BlueprintLocation) {
 #'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     AllowFullTableExternalDataAccess = "True"|"False"
 #'   )
 #' )
 #' ```

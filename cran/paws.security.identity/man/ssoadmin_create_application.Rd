@@ -2,22 +2,37 @@
 % Please edit documentation in R/ssoadmin_operations.R
 \name{ssoadmin_create_application}
 \alias{ssoadmin_create_application}
-\title{Creates an application in IAM Identity Center for the given application
-provider}
+\title{Creates an OAuth 2}
 \usage{
 ssoadmin_create_application(
-  ApplicationProviderArn,
-  ClientToken = NULL,
-  Description = NULL,
   InstanceArn,
+  ApplicationProviderArn,
   Name,
+  Description = NULL,
   PortalOptions = NULL,
+  Tags = NULL,
   Status = NULL,
-  Tags = NULL
+  ClientToken = NULL
 )
 }
 \arguments{
+\item{InstanceArn}{[required] The ARN of the instance of IAM Identity Center under which the operation
+will run. For more information about ARNs, see Amazon Resource Names
+(ARNs) and Amazon Web Services Service Namespaces in the \emph{Amazon Web
+Services General Reference}.}
+
 \item{ApplicationProviderArn}{[required] The ARN of the application provider under which the operation will run.}
+
+\item{Name}{[required] The name of the .}
+
+\item{Description}{The description of the .}
+
+\item{PortalOptions}{A structure that describes the options for the portal associated with an
+application.}
+
+\item{Tags}{Specifies tags to be attached to the application.}
+
+\item{Status}{Specifies whether the application is enabled or disabled.}
 
 \item{ClientToken}{Specifies a unique, case-sensitive ID that you provide to ensure the
 idempotency of the request. This lets you safely retry the request
@@ -32,25 +47,9 @@ random one for you.
 If you retry the operation with the same \code{ClientToken}, but with
 different parameters, the retry fails with an
 \code{IdempotentParameterMismatch} error.}
-
-\item{Description}{The description of the .}
-
-\item{InstanceArn}{[required] The ARN of the instance of IAM Identity Center under which the operation
-will run. For more information about ARNs, see Amazon Resource Names
-(ARNs) and Amazon Web Services Service Namespaces in the \emph{Amazon Web
-Services General Reference}.}
-
-\item{Name}{[required] The name of the .}
-
-\item{PortalOptions}{A structure that describes the options for the portal associated with an
-application.}
-
-\item{Status}{Specifies whether the application is enabled or disabled.}
-
-\item{Tags}{Specifies tags to be attached to the application.}
 }
 \description{
-Creates an application in IAM Identity Center for the given application provider.
+Creates an OAuth 2.0 customer managed application in IAM Identity Center for the given application provider.
 
 See \url{https://www.paws-r-sdk.com/docs/ssoadmin_create_application/} for full documentation.
 }

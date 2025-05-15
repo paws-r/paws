@@ -14,9 +14,15 @@ ssm_list_nodes_summary(
 )
 }
 \arguments{
-\item{SyncName}{The name of the resource data sync to retrieve information about.
-Required for cross-account/cross-Region configuration. Optional for
-single account/single-Region configurations.}
+\item{SyncName}{The name of the Amazon Web Services managed resource data sync to
+retrieve information about.
+
+For cross-account/cross-Region configurations, this parameter is
+required, and the name of the supported resource data sync is
+\code{AWS-QuickSetup-ManagedNode}.
+
+For single account/single-Region configurations, the parameter is not
+required.}
 
 \item{Filters}{One or more filters. Use a filter to generate a summary that matches
 your specified filter criteria.}

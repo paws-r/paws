@@ -36,7 +36,9 @@ and we prepend a prefix to it, the actual catalog name limit for
 \code{GLUE} for an Glue Data Catalog, and \code{HIVE} for an external Apache Hive
 metastore. \code{FEDERATED} is a federated catalog for which Athena creates
 the connection and the Lambda function for you based on the parameters
-that you pass.}
+that you pass.
+
+For \code{FEDERATED} type, we do not support IAM identity center.}
 
 \item{Description}{A description of the data catalog to be created.}
 

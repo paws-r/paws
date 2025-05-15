@@ -7,10 +7,10 @@ permission set is provisioned}
 \usage{
 ssoadmin_list_accounts_for_provisioned_permission_set(
   InstanceArn,
-  MaxResults = NULL,
-  NextToken = NULL,
   PermissionSetArn,
-  ProvisioningStatus = NULL
+  ProvisioningStatus = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
 )
 }
 \arguments{
@@ -19,16 +19,16 @@ will be executed. For more information about ARNs, see Amazon Resource
 Names (ARNs) and Amazon Web Services Service Namespaces in the \emph{Amazon
 Web Services General Reference}.}
 
-\item{MaxResults}{The maximum number of results to display for the PermissionSet.}
-
-\item{NextToken}{The pagination token for the list API. Initially the value is null. Use
-the output of previous API calls to make subsequent calls.}
-
 \item{PermissionSetArn}{[required] The ARN of the PermissionSet from which the associated Amazon Web
 Services accounts will be listed.}
 
 \item{ProvisioningStatus}{The permission set provisioning status for an Amazon Web Services
 account.}
+
+\item{MaxResults}{The maximum number of results to display for the PermissionSet.}
+
+\item{NextToken}{The pagination token for the list API. Initially the value is null. Use
+the output of previous API calls to make subsequent calls.}
 }
 \description{
 Lists all the Amazon Web Services accounts where the specified permission set is provisioned.

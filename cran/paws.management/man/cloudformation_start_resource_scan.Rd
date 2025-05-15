@@ -4,13 +4,18 @@
 \alias{cloudformation_start_resource_scan}
 \title{Starts a scan of the resources in this account in this Region}
 \usage{
-cloudformation_start_resource_scan(ClientRequestToken = NULL)
+cloudformation_start_resource_scan(
+  ClientRequestToken = NULL,
+  ScanFilters = NULL
+)
 }
 \arguments{
 \item{ClientRequestToken}{A unique identifier for this
 \code{\link[=cloudformation_start_resource_scan]{start_resource_scan}} request.
 Specify this token if you plan to retry requests so that CloudFormation
 knows that you're not attempting to start a new resource scan.}
+
+\item{ScanFilters}{The scan filters to use.}
 }
 \description{
 Starts a scan of the resources in this account in this Region. You can the status of a scan using the \code{\link[=cloudformation_list_resource_scans]{list_resource_scans}} API action.

@@ -7,6 +7,7 @@
 ec2_attach_network_interface(
   NetworkCardIndex = NULL,
   EnaSrdSpecification = NULL,
+  EnaQueueCount = NULL,
   DryRun = NULL,
   NetworkInterfaceId,
   InstanceId,
@@ -20,6 +21,8 @@ card index 0. The default is network card index 0.}
 
 \item{EnaSrdSpecification}{Configures ENA Express for the network interface that this action
 attaches to the instance.}
+
+\item{EnaQueueCount}{The number of ENA queues to be created with the instance.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

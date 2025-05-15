@@ -11,11 +11,12 @@ ec2_allocate_hosts(
   OutpostArn = NULL,
   HostMaintenance = NULL,
   AssetIds = NULL,
+  AvailabilityZoneId = NULL,
   AutoPlacement = NULL,
   ClientToken = NULL,
   InstanceType = NULL,
   Quantity = NULL,
-  AvailabilityZone
+  AvailabilityZone = NULL
 )
 }
 \arguments{
@@ -61,6 +62,8 @@ hardware asset.
 for \strong{Quantity} must be equal to the number of asset IDs specified.
 }}
 
+\item{AvailabilityZoneId}{The ID of the Availability Zone.}
+
 \item{AutoPlacement}{Indicates whether the host accepts any untargeted instance launches that
 match its instance type configuration, or if it only accepts Host
 tenancy instance launches that specify its unique host ID. For more
@@ -89,7 +92,7 @@ If you specify both \strong{AssetIds} and \strong{Quantity}, then the value that
 you specify for \strong{Quantity} must be equal to the number of asset IDs
 specified.}
 
-\item{AvailabilityZone}{[required] The Availability Zone in which to allocate the Dedicated Host.}
+\item{AvailabilityZone}{The Availability Zone in which to allocate the Dedicated Host.}
 }
 \description{
 Allocates a Dedicated Host to your account. At a minimum, specify the supported instance type or instance family, the Availability Zone in which to allocate the host, and the number of hosts to allocate.

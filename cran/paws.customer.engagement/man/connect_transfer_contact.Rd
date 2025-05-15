@@ -2,8 +2,8 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_transfer_contact}
 \alias{connect_transfer_contact}
-\title{Transfers contacts from one agent or queue to another agent or queue at
-any point after a contact is created}
+\title{Transfers TASK or EMAIL contacts from one agent or queue to another
+agent or queue at any point after a contact is created}
 \usage{
 connect_transfer_contact(
   InstanceId,
@@ -32,7 +32,7 @@ populates this field. For more information about idempotency, see
 \href{https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/}{Making retries safe with idempotent APIs}.}
 }
 \description{
-Transfers contacts from one agent or queue to another agent or queue at any point after a contact is created. You can transfer a contact to another queue by providing the flow which orchestrates the contact to the destination queue. This gives you more control over contact handling and helps you adhere to the service level agreement (SLA) guaranteed to your customers.
+Transfers \code{TASK} or \code{EMAIL} contacts from one agent or queue to another agent or queue at any point after a contact is created. You can transfer a contact to another queue by providing the flow which orchestrates the contact to the destination queue. This gives you more control over contact handling and helps you adhere to the service level agreement (SLA) guaranteed to your customers.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_transfer_contact/} for full documentation.
 }

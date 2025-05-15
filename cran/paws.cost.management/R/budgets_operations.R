@@ -307,11 +307,15 @@ budgets_delete_subscriber <- function(AccountId, BudgetName, Notification, Subsc
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget that you want a
 #' description of.
 #' @param BudgetName &#91;required&#93; The name of the budget that you want a description of.
+#' @param ShowFilterExpression Specifies whether the response includes the filter expression associated
+#' with the budget. By showing the filter expression, you can see detailed
+#' filtering logic applied to the budget, such as Amazon Web Services
+#' services or tags that are being tracked.
 #'
 #' @keywords internal
 #'
 #' @rdname budgets_describe_budget
-budgets_describe_budget <- function(AccountId, BudgetName) {
+budgets_describe_budget <- function(AccountId, BudgetName, ShowFilterExpression = NULL) {
   op <- new_operation(
     name = "DescribeBudget",
     http_method = "POST",
@@ -320,7 +324,7 @@ budgets_describe_budget <- function(AccountId, BudgetName) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .budgets$describe_budget_input(AccountId = AccountId, BudgetName = BudgetName)
+  input <- .budgets$describe_budget_input(AccountId = AccountId, BudgetName = BudgetName, ShowFilterExpression = ShowFilterExpression)
   output <- .budgets$describe_budget_output()
   config <- get_config()
   svc <- .budgets$service(config, op)
@@ -550,11 +554,15 @@ budgets_describe_budget_performance_history <- function(AccountId, BudgetName, T
 #' contains. The default is 100.
 #' @param NextToken The pagination token that you include in your request to indicate the
 #' next set of results that you want to retrieve.
+#' @param ShowFilterExpression Specifies whether the response includes the filter expression associated
+#' with the budgets. By showing the filter expression, you can see detailed
+#' filtering logic applied to the budgets, such as Amazon Web Services
+#' services or tags that are being tracked.
 #'
 #' @keywords internal
 #'
 #' @rdname budgets_describe_budgets
-budgets_describe_budgets <- function(AccountId, MaxResults = NULL, NextToken = NULL) {
+budgets_describe_budgets <- function(AccountId, MaxResults = NULL, NextToken = NULL, ShowFilterExpression = NULL) {
   op <- new_operation(
     name = "DescribeBudgets",
     http_method = "POST",
@@ -563,7 +571,7 @@ budgets_describe_budgets <- function(AccountId, MaxResults = NULL, NextToken = N
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Budgets"),
     stream_api = FALSE
   )
-  input <- .budgets$describe_budgets_input(AccountId = AccountId, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .budgets$describe_budgets_input(AccountId = AccountId, MaxResults = MaxResults, NextToken = NextToken, ShowFilterExpression = ShowFilterExpression)
   output <- .budgets$describe_budgets_output()
   config <- get_config()
   svc <- .budgets$service(config, op)

@@ -7,17 +7,17 @@ attribute or destination attribute for a trusted token issuer
 configuration}
 \usage{
 ssoadmin_update_trusted_token_issuer(
-  Name = NULL,
   TrustedTokenIssuerArn,
+  Name = NULL,
   TrustedTokenIssuerConfiguration = NULL
 )
 }
 \arguments{
-\item{Name}{Specifies the updated name to be applied to the trusted token issuer
-configuration.}
-
 \item{TrustedTokenIssuerArn}{[required] Specifies the ARN of the trusted token issuer configuration that you
 want to update.}
+
+\item{Name}{Specifies the updated name to be applied to the trusted token issuer
+configuration.}
 
 \item{TrustedTokenIssuerConfiguration}{Specifies a structure with settings to apply to the specified trusted
 token issuer. The settings that you can provide are determined by the

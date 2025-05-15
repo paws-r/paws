@@ -9,11 +9,18 @@ NULL
 #' Creates a budget and, if included, notifications and subscribers.
 #' 
 #' Only one of `BudgetLimit` or `PlannedBudgetLimits` can be present in the
-#' syntax at one time. Use the syntax that matches your case. The Request
-#' Syntax section shows the `BudgetLimit` syntax. For
+#' syntax at one time. Use the syntax that matches your use case. The
+#' Request Syntax section shows the `BudgetLimit` syntax. For
 #' `PlannedBudgetLimits`, see the
 #' [Examples](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_CreateBudget.html#API_CreateBudget_Examples)
 #' section.
+#' 
+#' Similarly, only one set of filter and metric selections can be present
+#' in the syntax at one time. Either `FilterExpression` and `Metrics` or
+#' `CostFilters` and `CostTypes`, not both or a different combination. We
+#' recommend using `FilterExpression` and `Metrics` as they provide more
+#' flexible and powerful filtering capabilities. The Request Syntax section
+#' shows the `FilterExpression`/`Metrics` syntax.
 #'
 #' @usage
 #' budgets_create_budget(AccountId, Budget, NotificationsWithSubscribers,
@@ -99,6 +106,45 @@ NULL
 #'       LastAutoAdjustTime = as.POSIXct(
 #'         "2015-01-01"
 #'       )
+#'     ),
+#'     FilterExpression = list(
+#'       Or = list(
+#'         list()
+#'       ),
+#'       And = list(
+#'         list()
+#'       ),
+#'       Not = list(),
+#'       Dimensions = list(
+#'         Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"INVOICING_ENTITY"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"RESERVATION_MODIFIED"|"TAG_KEY"|"COST_CATEGORY_NAME",
+#'         Values = list(
+#'           "string"
+#'         ),
+#'         MatchOptions = list(
+#'           "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"GREATER_THAN_OR_EQUAL"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         )
+#'       ),
+#'       Tags = list(
+#'         Key = "string",
+#'         Values = list(
+#'           "string"
+#'         ),
+#'         MatchOptions = list(
+#'           "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"GREATER_THAN_OR_EQUAL"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         )
+#'       ),
+#'       CostCategories = list(
+#'         Key = "string",
+#'         Values = list(
+#'           "string"
+#'         ),
+#'         MatchOptions = list(
+#'           "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"GREATER_THAN_OR_EQUAL"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         )
+#'       )
+#'     ),
+#'     Metrics = list(
+#'       "BlendedCost"|"UnblendedCost"|"AmortizedCost"|"NetUnblendedCost"|"NetAmortizedCost"|"UsageQuantity"|"NormalizedUsageAmount"|"Hours"
 #'     )
 #'   ),
 #'   NotificationsWithSubscribers = list(
@@ -679,11 +725,15 @@ budgets_delete_subscriber <- function(AccountId, BudgetName, Notification, Subsc
 #' section.
 #'
 #' @usage
-#' budgets_describe_budget(AccountId, BudgetName)
+#' budgets_describe_budget(AccountId, BudgetName, ShowFilterExpression)
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget that you want a
 #' description of.
 #' @param BudgetName &#91;required&#93; The name of the budget that you want a description of.
+#' @param ShowFilterExpression Specifies whether the response includes the filter expression associated
+#' with the budget. By showing the filter expression, you can see detailed
+#' filtering logic applied to the budget, such as Amazon Web Services
+#' services or tags that are being tracked.
 #'
 #' @return
 #' A list with the following syntax:
@@ -751,6 +801,45 @@ budgets_delete_subscriber <- function(AccountId, BudgetName, Notification, Subsc
 #'       LastAutoAdjustTime = as.POSIXct(
 #'         "2015-01-01"
 #'       )
+#'     ),
+#'     FilterExpression = list(
+#'       Or = list(
+#'         list()
+#'       ),
+#'       And = list(
+#'         list()
+#'       ),
+#'       Not = list(),
+#'       Dimensions = list(
+#'         Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"INVOICING_ENTITY"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"RESERVATION_MODIFIED"|"TAG_KEY"|"COST_CATEGORY_NAME",
+#'         Values = list(
+#'           "string"
+#'         ),
+#'         MatchOptions = list(
+#'           "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"GREATER_THAN_OR_EQUAL"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         )
+#'       ),
+#'       Tags = list(
+#'         Key = "string",
+#'         Values = list(
+#'           "string"
+#'         ),
+#'         MatchOptions = list(
+#'           "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"GREATER_THAN_OR_EQUAL"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         )
+#'       ),
+#'       CostCategories = list(
+#'         Key = "string",
+#'         Values = list(
+#'           "string"
+#'         ),
+#'         MatchOptions = list(
+#'           "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"GREATER_THAN_OR_EQUAL"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         )
+#'       )
+#'     ),
+#'     Metrics = list(
+#'       "BlendedCost"|"UnblendedCost"|"AmortizedCost"|"NetUnblendedCost"|"NetAmortizedCost"|"UsageQuantity"|"NormalizedUsageAmount"|"Hours"
 #'     )
 #'   )
 #' )
@@ -760,7 +849,8 @@ budgets_delete_subscriber <- function(AccountId, BudgetName, Notification, Subsc
 #' ```
 #' svc$describe_budget(
 #'   AccountId = "string",
-#'   BudgetName = "string"
+#'   BudgetName = "string",
+#'   ShowFilterExpression = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -769,7 +859,7 @@ budgets_delete_subscriber <- function(AccountId, BudgetName, Notification, Subsc
 #' @rdname budgets_describe_budget
 #'
 #' @aliases budgets_describe_budget
-budgets_describe_budget <- function(AccountId, BudgetName) {
+budgets_describe_budget <- function(AccountId, BudgetName, ShowFilterExpression = NULL) {
   op <- new_operation(
     name = "DescribeBudget",
     http_method = "POST",
@@ -778,7 +868,7 @@ budgets_describe_budget <- function(AccountId, BudgetName) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .budgets$describe_budget_input(AccountId = AccountId, BudgetName = BudgetName)
+  input <- .budgets$describe_budget_input(AccountId = AccountId, BudgetName = BudgetName, ShowFilterExpression = ShowFilterExpression)
   output <- .budgets$describe_budget_output()
   config <- get_config()
   svc <- .budgets$service(config, op)
@@ -1411,7 +1501,8 @@ budgets_describe_budget_performance_history <- function(AccountId, BudgetName, T
 #' section.
 #'
 #' @usage
-#' budgets_describe_budgets(AccountId, MaxResults, NextToken)
+#' budgets_describe_budgets(AccountId, MaxResults, NextToken,
+#'   ShowFilterExpression)
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budgets that you want to
 #' describe.
@@ -1419,6 +1510,10 @@ budgets_describe_budget_performance_history <- function(AccountId, BudgetName, T
 #' contains. The default is 100.
 #' @param NextToken The pagination token that you include in your request to indicate the
 #' next set of results that you want to retrieve.
+#' @param ShowFilterExpression Specifies whether the response includes the filter expression associated
+#' with the budgets. By showing the filter expression, you can see detailed
+#' filtering logic applied to the budgets, such as Amazon Web Services
+#' services or tags that are being tracked.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1487,6 +1582,45 @@ budgets_describe_budget_performance_history <- function(AccountId, BudgetName, T
 #'         LastAutoAdjustTime = as.POSIXct(
 #'           "2015-01-01"
 #'         )
+#'       ),
+#'       FilterExpression = list(
+#'         Or = list(
+#'           list()
+#'         ),
+#'         And = list(
+#'           list()
+#'         ),
+#'         Not = list(),
+#'         Dimensions = list(
+#'           Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"INVOICING_ENTITY"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"RESERVATION_MODIFIED"|"TAG_KEY"|"COST_CATEGORY_NAME",
+#'           Values = list(
+#'             "string"
+#'           ),
+#'           MatchOptions = list(
+#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"GREATER_THAN_OR_EQUAL"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'           )
+#'         ),
+#'         Tags = list(
+#'           Key = "string",
+#'           Values = list(
+#'             "string"
+#'           ),
+#'           MatchOptions = list(
+#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"GREATER_THAN_OR_EQUAL"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'           )
+#'         ),
+#'         CostCategories = list(
+#'           Key = "string",
+#'           Values = list(
+#'             "string"
+#'           ),
+#'           MatchOptions = list(
+#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"GREATER_THAN_OR_EQUAL"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'           )
+#'         )
+#'       ),
+#'       Metrics = list(
+#'         "BlendedCost"|"UnblendedCost"|"AmortizedCost"|"NetUnblendedCost"|"NetAmortizedCost"|"UsageQuantity"|"NormalizedUsageAmount"|"Hours"
 #'       )
 #'     )
 #'   ),
@@ -1499,7 +1633,8 @@ budgets_describe_budget_performance_history <- function(AccountId, BudgetName, T
 #' svc$describe_budgets(
 #'   AccountId = "string",
 #'   MaxResults = 123,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   ShowFilterExpression = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -1508,7 +1643,7 @@ budgets_describe_budget_performance_history <- function(AccountId, BudgetName, T
 #' @rdname budgets_describe_budgets
 #'
 #' @aliases budgets_describe_budgets
-budgets_describe_budgets <- function(AccountId, MaxResults = NULL, NextToken = NULL) {
+budgets_describe_budgets <- function(AccountId, MaxResults = NULL, NextToken = NULL, ShowFilterExpression = NULL) {
   op <- new_operation(
     name = "DescribeBudgets",
     http_method = "POST",
@@ -1517,7 +1652,7 @@ budgets_describe_budgets <- function(AccountId, MaxResults = NULL, NextToken = N
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Budgets"),
     stream_api = FALSE
   )
-  input <- .budgets$describe_budgets_input(AccountId = AccountId, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .budgets$describe_budgets_input(AccountId = AccountId, MaxResults = MaxResults, NextToken = NextToken, ShowFilterExpression = ShowFilterExpression)
   output <- .budgets$describe_budgets_output()
   config <- get_config()
   svc <- .budgets$service(config, op)
@@ -1894,6 +2029,13 @@ budgets_untag_resource <- function(ResourceARN, ResourceTagKeys) {
 #' `PlannedBudgetLimits`, see the
 #' [Examples](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_UpdateBudget.html#API_UpdateBudget_Examples)
 #' section.
+#' 
+#' Similarly, only one set of filter and metric selections can be present
+#' in the syntax at one time. Either `FilterExpression` and `Metrics` or
+#' `CostFilters` and `CostTypes`, not both or a different combination. We
+#' recommend using `FilterExpression` and `Metrics` as they provide more
+#' flexible and powerful filtering capabilities. The Request Syntax section
+#' shows the `FilterExpression`/`Metrics` syntax.
 #'
 #' @usage
 #' budgets_update_budget(AccountId, NewBudget)
@@ -1971,6 +2113,45 @@ budgets_untag_resource <- function(ResourceARN, ResourceTagKeys) {
 #'       LastAutoAdjustTime = as.POSIXct(
 #'         "2015-01-01"
 #'       )
+#'     ),
+#'     FilterExpression = list(
+#'       Or = list(
+#'         list()
+#'       ),
+#'       And = list(
+#'         list()
+#'       ),
+#'       Not = list(),
+#'       Dimensions = list(
+#'         Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"INVOICING_ENTITY"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"RESERVATION_MODIFIED"|"TAG_KEY"|"COST_CATEGORY_NAME",
+#'         Values = list(
+#'           "string"
+#'         ),
+#'         MatchOptions = list(
+#'           "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"GREATER_THAN_OR_EQUAL"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         )
+#'       ),
+#'       Tags = list(
+#'         Key = "string",
+#'         Values = list(
+#'           "string"
+#'         ),
+#'         MatchOptions = list(
+#'           "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"GREATER_THAN_OR_EQUAL"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         )
+#'       ),
+#'       CostCategories = list(
+#'         Key = "string",
+#'         Values = list(
+#'           "string"
+#'         ),
+#'         MatchOptions = list(
+#'           "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"GREATER_THAN_OR_EQUAL"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         )
+#'       )
+#'     ),
+#'     Metrics = list(
+#'       "BlendedCost"|"UnblendedCost"|"AmortizedCost"|"NetUnblendedCost"|"NetAmortizedCost"|"UsageQuantity"|"NormalizedUsageAmount"|"Hours"
 #'     )
 #'   )
 #' )

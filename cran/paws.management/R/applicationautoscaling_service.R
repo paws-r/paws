@@ -20,7 +20,8 @@ NULL
 #' 
 #' -   Amazon ECS services
 #' 
-#' -   Amazon ElastiCache for Redis clusters (replication groups)
+#' -   Amazon ElastiCache replication groups (Redis OSS and Valkey) and
+#'     Memcached clusters
 #' 
 #' -   Amazon EMR clusters
 #' 
@@ -205,7 +206,7 @@ applicationautoscaling <- function(config = list(), credentials = list(), endpoi
 
 .applicationautoscaling$metadata <- list(
   service_name = "autoscaling",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.amazonaws.eu", global = FALSE)),
   service_id = "Application Auto Scaling",
   api_version = "2016-02-06",
   signing_name = "application-autoscaling",

@@ -251,6 +251,9 @@ dynamodb_batch_execute_statement <- function(Statements, ReturnConsumedCapacity 
 #' according to the type of read. For more information, see [Working with
 #' Tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#CapacityUnitCalculations)
 #' in the *Amazon DynamoDB Developer Guide*.
+#' 
+#' [`batch_get_item`][dynamodb_batch_get_item] will result in a
+#' `ValidationException` if the same key is specified multiple times.
 #'
 #' @usage
 #' dynamodb_batch_get_item(RequestItems, ReturnConsumedCapacity)
@@ -1326,6 +1329,10 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'         across all of the secondary indexes, must not exceed 100. If you
 #'         project the same attribute into two different indexes, this
 #'         counts as two distinct attributes when determining the total.
+#'         This limit only applies when you specify the ProjectionType of
+#'         `INCLUDE`. You still can specify the ProjectionType of `ALL` to
+#'         project all attributes from the source table, even if the table
+#'         has more than 100 attributes.
 #' @param GlobalSecondaryIndexes One or more global secondary indexes (the maximum is 20) to be created
 #' on the table. Each global secondary index in the array includes the
 #' following:
@@ -1359,6 +1366,10 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'         across all of the secondary indexes, must not exceed 100. If you
 #'         project the same attribute into two different indexes, this
 #'         counts as two distinct attributes when determining the total.
+#'         This limit only applies when you specify the ProjectionType of
+#'         `INCLUDE`. You still can specify the ProjectionType of `ALL` to
+#'         project all attributes from the source table, even if the table
+#'         has more than 100 attributes.
 #' 
 #' -   `ProvisionedThroughput` - The provisioned throughput settings for
 #'     the global secondary index, consisting of read and write capacity
@@ -1366,15 +1377,16 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' @param BillingMode Controls how you are charged for read and write throughput and how you
 #' manage capacity. This setting can be changed later.
 #' 
-#' -   `PROVISIONED` - We recommend using `PROVISIONED` for predictable
-#'     workloads. `PROVISIONED` sets the billing mode to [Provisioned
-#'     capacity
-#'     mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/provisioned-capacity-mode.html).
-#' 
-#' -   `PAY_PER_REQUEST` - We recommend using `PAY_PER_REQUEST` for
-#'     unpredictable workloads. `PAY_PER_REQUEST` sets the billing mode to
+#' -   `PAY_PER_REQUEST` - We recommend using `PAY_PER_REQUEST` for most
+#'     DynamoDB workloads. `PAY_PER_REQUEST` sets the billing mode to
 #'     [On-demand capacity
 #'     mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/on-demand-capacity-mode.html).
+#' 
+#' -   `PROVISIONED` - We recommend using `PROVISIONED` for steady
+#'     workloads with predictable growth where capacity requirements can be
+#'     reliably forecasted. `PROVISIONED` sets the billing mode to
+#'     [Provisioned capacity
+#'     mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/provisioned-capacity-mode.html).
 #' @param ProvisionedThroughput Represents the provisioned throughput settings for a specified table or
 #' index. The settings can be modified using the
 #' [`update_table`][dynamodb_update_table] operation.
@@ -9013,8 +9025,8 @@ dynamodb_untag_resource <- function(ResourceArn, TagKeys) {
 #' 
 #' `LatestRestorableDateTime` is typically 5 minutes before the current
 #' time. You can restore your table to any point in time in the last 35
-#' days. You can set the recovery period to any value between 1 and 35
-#' days.
+#' days. You can set the `RecoveryPeriodInDays` to any value between 1 and
+#' 35 days.
 #'
 #' @usage
 #' dynamodb_update_continuous_backups(TableName,
@@ -10189,15 +10201,16 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #' write capacity of your table and global secondary indexes over the past
 #' 30 minutes.
 #' 
-#' -   `PROVISIONED` - We recommend using `PROVISIONED` for predictable
-#'     workloads. `PROVISIONED` sets the billing mode to [Provisioned
-#'     capacity
-#'     mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/provisioned-capacity-mode.html).
-#' 
-#' -   `PAY_PER_REQUEST` - We recommend using `PAY_PER_REQUEST` for
-#'     unpredictable workloads. `PAY_PER_REQUEST` sets the billing mode to
+#' -   `PAY_PER_REQUEST` - We recommend using `PAY_PER_REQUEST` for most
+#'     DynamoDB workloads. `PAY_PER_REQUEST` sets the billing mode to
 #'     [On-demand capacity
 #'     mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/on-demand-capacity-mode.html).
+#' 
+#' -   `PROVISIONED` - We recommend using `PROVISIONED` for steady
+#'     workloads with predictable growth where capacity requirements can be
+#'     reliably forecasted. `PROVISIONED` sets the billing mode to
+#'     [Provisioned capacity
+#'     mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/provisioned-capacity-mode.html).
 #' @param ProvisionedThroughput The new provisioned throughput settings for the specified table or
 #' index.
 #' @param GlobalSecondaryIndexUpdates An array of one or more global secondary indexes for the table. For each
@@ -10234,7 +10247,9 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #' @param MultiRegionConsistency Specifies the consistency mode for a new global table. This parameter is
 #' only valid when you create a global table by specifying one or more
 #' [Create](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_ReplicationGroupUpdate.html#DDB-Type-ReplicationGroupUpdate-Create)
-#' actions in the ReplicaUpdates action list.
+#' actions in the
+#' [ReplicaUpdates](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_UpdateTable.html#DDB-UpdateTable-request-ReplicaUpdates)
+#' action list.
 #' 
 #' You can specify one of the following consistency modes:
 #' 

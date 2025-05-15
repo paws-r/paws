@@ -7,7 +7,8 @@
 route53recoverycontrolconfig_create_cluster(
   ClientToken = NULL,
   ClusterName,
-  Tags = NULL
+  Tags = NULL,
+  NetworkType = NULL
 )
 }
 \arguments{
@@ -18,6 +19,9 @@ request.}
 \item{ClusterName}{[required] The name of the cluster.}
 
 \item{Tags}{The tags associated with the cluster.}
+
+\item{NetworkType}{The network type of the cluster. NetworkType can be one of the
+following: IPV4, DUALSTACK.}
 }
 \description{
 Create a new cluster. A cluster is a set of redundant Regional endpoints against which you can run API calls to update or get the state of one or more routing controls. Each cluster has a name, status, Amazon Resource Name (ARN), and an array of the five cluster endpoints (one for each supported Amazon Web Services Region) that you can use with API calls to the cluster data plane.

@@ -17,9 +17,7 @@ aren't always interchangeable:
 \item Running stacks: You can specify either the stack's name or its
 unique stack ID.
 \item Deleted stacks: You must specify the unique stack ID.
-}
-
-Default: There is no default value.}
+}}
 
 \item{ChangeSetName}{The name or Amazon Resource Name (ARN) of a change set for which
 CloudFormation returns the associated template. If you specify a name,

@@ -2,7 +2,8 @@
 % Please edit documentation in R/servicequotas_operations.R
 \name{servicequotas_get_service_quota}
 \alias{servicequotas_get_service_quota}
-\title{Retrieves the applied quota value for the specified quota}
+\title{Retrieves the applied quota value for the specified account-level or
+resource-level quota}
 \usage{
 servicequotas_get_service_quota(ServiceCode, QuotaCode, ContextId = NULL)
 }
@@ -17,12 +18,10 @@ quota, use the
 and look for the \code{QuotaCode} response in the output for the quota you
 want.}
 
-\item{ContextId}{Specifies the Amazon Web Services account or resource to which the quota
-applies. The value in this field depends on the context scope associated
-with the specified service quota.}
+\item{ContextId}{Specifies the resource with an Amazon Resource Name (ARN).}
 }
 \description{
-Retrieves the applied quota value for the specified quota. For some quotas, only the default values are available. If the applied quota value is not available for a quota, the quota is not retrieved.
+Retrieves the applied quota value for the specified account-level or resource-level quota. For some quotas, only the default values are available. If the applied quota value is not available for a quota, the quota is not retrieved.
 
 See \url{https://www.paws-r-sdk.com/docs/servicequotas_get_service_quota/} for full documentation.
 }

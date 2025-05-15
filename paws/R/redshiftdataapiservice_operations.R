@@ -1053,15 +1053,27 @@ redshiftdataapiservice_list_schemas <- function(ClusterIdentifier = NULL, Connec
 #' List of SQL statements. By default, only finished statements are shown.
 #' A token is returned to page through the statement list.
 #' 
+#' When you use identity-enhanced role sessions to list statements, you
+#' must provide either the `cluster-identifier` or `workgroup-name`
+#' parameter. This ensures that the IdC user can only access the Amazon
+#' Redshift IdC applications they are assigned. For more information, see
+#' [Trusted identity propagation
+#' overview](https://docs.aws.amazon.com/singlesignon/latest/userguide/trustedidentitypropagation-overview.html).
+#' 
 #' For more information about the Amazon Redshift Data API and CLI usage
 #' examples, see [Using the Amazon Redshift Data
 #' API](https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html) in
 #' the *Amazon Redshift Management Guide*.
 #'
 #' @usage
-#' redshiftdataapiservice_list_statements(MaxResults, NextToken, RoleLevel,
-#'   StatementName, Status)
+#' redshiftdataapiservice_list_statements(ClusterIdentifier, Database,
+#'   MaxResults, NextToken, RoleLevel, StatementName, Status, WorkgroupName)
 #'
+#' @param ClusterIdentifier The cluster identifier. Only statements that ran on this cluster are
+#' returned. When providing `ClusterIdentifier`, then `WorkgroupName` can't
+#' be specified.
+#' @param Database The name of the database when listing statements run against a
+#' `ClusterIdentifier` or `WorkgroupName`.
 #' @param MaxResults The maximum number of SQL statements to return in the response. If more
 #' SQL statements exist than fit in one response, then `NextToken` is
 #' returned to page through the results.
@@ -1100,6 +1112,9 @@ redshiftdataapiservice_list_schemas <- function(ClusterIdentifier = NULL, Connec
 #' -   STARTED - The query run has started.
 #' 
 #' -   SUBMITTED - The query was submitted, but not yet processed.
+#' @param WorkgroupName The serverless workgroup name or Amazon Resource Name (ARN). Only
+#' statements that ran on this workgroup are returned. When providing
+#' `WorkgroupName`, then `ClusterIdentifier` can't be specified.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1139,11 +1154,14 @@ redshiftdataapiservice_list_schemas <- function(ClusterIdentifier = NULL, Connec
 #' @section Request syntax:
 #' ```
 #' svc$list_statements(
+#'   ClusterIdentifier = "string",
+#'   Database = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string",
 #'   RoleLevel = TRUE|FALSE,
 #'   StatementName = "string",
-#'   Status = "SUBMITTED"|"PICKED"|"STARTED"|"FINISHED"|"ABORTED"|"FAILED"|"ALL"
+#'   Status = "SUBMITTED"|"PICKED"|"STARTED"|"FINISHED"|"ABORTED"|"FAILED"|"ALL",
+#'   WorkgroupName = "string"
 #' )
 #' ```
 #'
@@ -1152,7 +1170,7 @@ redshiftdataapiservice_list_schemas <- function(ClusterIdentifier = NULL, Connec
 #' @rdname redshiftdataapiservice_list_statements
 #'
 #' @aliases redshiftdataapiservice_list_statements
-redshiftdataapiservice_list_statements <- function(MaxResults = NULL, NextToken = NULL, RoleLevel = NULL, StatementName = NULL, Status = NULL) {
+redshiftdataapiservice_list_statements <- function(ClusterIdentifier = NULL, Database = NULL, MaxResults = NULL, NextToken = NULL, RoleLevel = NULL, StatementName = NULL, Status = NULL, WorkgroupName = NULL) {
   op <- new_operation(
     name = "ListStatements",
     http_method = "POST",
@@ -1161,7 +1179,7 @@ redshiftdataapiservice_list_statements <- function(MaxResults = NULL, NextToken 
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Statements"),
     stream_api = FALSE
   )
-  input <- .redshiftdataapiservice$list_statements_input(MaxResults = MaxResults, NextToken = NextToken, RoleLevel = RoleLevel, StatementName = StatementName, Status = Status)
+  input <- .redshiftdataapiservice$list_statements_input(ClusterIdentifier = ClusterIdentifier, Database = Database, MaxResults = MaxResults, NextToken = NextToken, RoleLevel = RoleLevel, StatementName = StatementName, Status = Status, WorkgroupName = WorkgroupName)
   output <- .redshiftdataapiservice$list_statements_output()
   config <- get_config()
   svc <- .redshiftdataapiservice$service(config, op)

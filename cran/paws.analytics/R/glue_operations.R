@@ -1258,11 +1258,12 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' `KMSKeyId` is provided.
 #' @param Tags Metadata assigned to the resource consisting of a list of key-value
 #' pairs.
+#' @param IntegrationConfig The configuration settings.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_create_integration
-glue_create_integration <- function(IntegrationName, SourceArn, TargetArn, Description = NULL, DataFilter = NULL, KmsKeyId = NULL, AdditionalEncryptionContext = NULL, Tags = NULL) {
+glue_create_integration <- function(IntegrationName, SourceArn, TargetArn, Description = NULL, DataFilter = NULL, KmsKeyId = NULL, AdditionalEncryptionContext = NULL, Tags = NULL, IntegrationConfig = NULL) {
   op <- new_operation(
     name = "CreateIntegration",
     http_method = "POST",
@@ -1271,7 +1272,7 @@ glue_create_integration <- function(IntegrationName, SourceArn, TargetArn, Descr
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$create_integration_input(IntegrationName = IntegrationName, SourceArn = SourceArn, TargetArn = TargetArn, Description = Description, DataFilter = DataFilter, KmsKeyId = KmsKeyId, AdditionalEncryptionContext = AdditionalEncryptionContext, Tags = Tags)
+  input <- .glue$create_integration_input(IntegrationName = IntegrationName, SourceArn = SourceArn, TargetArn = TargetArn, Description = Description, DataFilter = DataFilter, KmsKeyId = KmsKeyId, AdditionalEncryptionContext = AdditionalEncryptionContext, Tags = Tags, IntegrationConfig = IntegrationConfig)
   output <- .glue$create_integration_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -1325,7 +1326,9 @@ glue_create_integration_resource_property <- function(ResourceArn, SourceProcess
 #'
 #' @param ResourceArn &#91;required&#93; The connection ARN of the source, or the database ARN of the target.
 #' @param TableName &#91;required&#93; The name of the table to be replicated.
-#' @param SourceTableConfig A structure for the source table configuration.
+#' @param SourceTableConfig A structure for the source table configuration. See the
+#' `SourceTableConfig` structure to see list of supported source
+#' properties.
 #' @param TargetTableConfig A structure for the target table configuration.
 #'
 #' @keywords internal

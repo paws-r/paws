@@ -197,6 +197,8 @@ athena_create_capacity_reservation <- function(TargetDpus, Name, Tags = NULL) {
 #' metastore. `FEDERATED` is a federated catalog for which Athena creates
 #' the connection and the Lambda function for you based on the parameters
 #' that you pass.
+#' 
+#' For `FEDERATED` type, we do not support IAM identity center.
 #' @param Description A description of the data catalog to be created.
 #' @param Parameters Specifies the Lambda function or functions to use for creating the data
 #' catalog. This is a mapping whose values depend on the catalog type.

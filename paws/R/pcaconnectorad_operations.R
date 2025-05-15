@@ -19,7 +19,7 @@ NULL
 #' @param ClientToken Idempotency token.
 #' @param DirectoryId &#91;required&#93; The identifier of the Active Directory.
 #' @param Tags Metadata assigned to a connector consisting of a key-value pair.
-#' @param VpcInformation &#91;required&#93; Security group IDs that describe the inbound and outbound rules.
+#' @param VpcInformation &#91;required&#93; Information about your VPC and security groups used with the connector.
 #'
 #' @return
 #' A list with the following syntax:
@@ -39,6 +39,7 @@ NULL
 #'     "string"
 #'   ),
 #'   VpcInformation = list(
+#'     IpAddressType = "IPV4"|"DUALSTACK",
 #'     SecurityGroupIds = list(
 #'       "string"
 #'     )
@@ -819,11 +820,12 @@ pcaconnectorad_delete_template_group_access_control_entry <- function(GroupSecur
 #'     ),
 #'     DirectoryId = "string",
 #'     Status = "CREATING"|"ACTIVE"|"DELETING"|"FAILED",
-#'     StatusReason = "DIRECTORY_ACCESS_DENIED"|"INTERNAL_FAILURE"|"PRIVATECA_ACCESS_DENIED"|"PRIVATECA_RESOURCE_NOT_FOUND"|"SECURITY_GROUP_NOT_IN_VPC"|"VPC_ACCESS_DENIED"|"VPC_ENDPOINT_LIMIT_EXCEEDED"|"VPC_RESOURCE_NOT_FOUND",
+#'     StatusReason = "CA_CERTIFICATE_REGISTRATION_FAILED"|"DIRECTORY_ACCESS_DENIED"|"INTERNAL_FAILURE"|"INSUFFICIENT_FREE_ADDRESSES"|"INVALID_SUBNET_IP_PROTOCOL"|"PRIVATECA_ACCESS_DENIED"|"PRIVATECA_RESOURCE_NOT_FOUND"|"SECURITY_GROUP_NOT_IN_VPC"|"VPC_ACCESS_DENIED"|"VPC_ENDPOINT_LIMIT_EXCEEDED"|"VPC_RESOURCE_NOT_FOUND",
 #'     UpdatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     VpcInformation = list(
+#'       IpAddressType = "IPV4"|"DUALSTACK",
 #'       SecurityGroupIds = list(
 #'         "string"
 #'       )
@@ -951,7 +953,7 @@ pcaconnectorad_get_directory_registration <- function(DirectoryRegistrationArn) 
 #'     ),
 #'     DirectoryRegistrationArn = "string",
 #'     Status = "CREATING"|"ACTIVE"|"DELETING"|"FAILED",
-#'     StatusReason = "DIRECTORY_ACCESS_DENIED"|"DIRECTORY_NOT_REACHABLE"|"DIRECTORY_RESOURCE_NOT_FOUND"|"SPN_EXISTS_ON_DIFFERENT_AD_OBJECT"|"INTERNAL_FAILURE",
+#'     StatusReason = "DIRECTORY_ACCESS_DENIED"|"DIRECTORY_NOT_REACHABLE"|"DIRECTORY_RESOURCE_NOT_FOUND"|"SPN_EXISTS_ON_DIFFERENT_AD_OBJECT"|"SPN_LIMIT_EXCEEDED"|"INTERNAL_FAILURE",
 #'     UpdatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     )
@@ -1400,11 +1402,12 @@ pcaconnectorad_get_template_group_access_control_entry <- function(GroupSecurity
 #'       ),
 #'       DirectoryId = "string",
 #'       Status = "CREATING"|"ACTIVE"|"DELETING"|"FAILED",
-#'       StatusReason = "DIRECTORY_ACCESS_DENIED"|"INTERNAL_FAILURE"|"PRIVATECA_ACCESS_DENIED"|"PRIVATECA_RESOURCE_NOT_FOUND"|"SECURITY_GROUP_NOT_IN_VPC"|"VPC_ACCESS_DENIED"|"VPC_ENDPOINT_LIMIT_EXCEEDED"|"VPC_RESOURCE_NOT_FOUND",
+#'       StatusReason = "CA_CERTIFICATE_REGISTRATION_FAILED"|"DIRECTORY_ACCESS_DENIED"|"INTERNAL_FAILURE"|"INSUFFICIENT_FREE_ADDRESSES"|"INVALID_SUBNET_IP_PROTOCOL"|"PRIVATECA_ACCESS_DENIED"|"PRIVATECA_RESOURCE_NOT_FOUND"|"SECURITY_GROUP_NOT_IN_VPC"|"VPC_ACCESS_DENIED"|"VPC_ENDPOINT_LIMIT_EXCEEDED"|"VPC_RESOURCE_NOT_FOUND",
 #'       UpdatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       VpcInformation = list(
+#'         IpAddressType = "IPV4"|"DUALSTACK",
 #'         SecurityGroupIds = list(
 #'           "string"
 #'         )
@@ -1556,7 +1559,7 @@ pcaconnectorad_list_directory_registrations <- function(MaxResults = NULL, NextT
 #'       ),
 #'       DirectoryRegistrationArn = "string",
 #'       Status = "CREATING"|"ACTIVE"|"DELETING"|"FAILED",
-#'       StatusReason = "DIRECTORY_ACCESS_DENIED"|"DIRECTORY_NOT_REACHABLE"|"DIRECTORY_RESOURCE_NOT_FOUND"|"SPN_EXISTS_ON_DIFFERENT_AD_OBJECT"|"INTERNAL_FAILURE",
+#'       StatusReason = "DIRECTORY_ACCESS_DENIED"|"DIRECTORY_NOT_REACHABLE"|"DIRECTORY_RESOURCE_NOT_FOUND"|"SPN_EXISTS_ON_DIFFERENT_AD_OBJECT"|"SPN_LIMIT_EXCEEDED"|"INTERNAL_FAILURE",
 #'       UpdatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       )

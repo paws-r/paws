@@ -548,6 +548,14 @@ test_that("describe_network_interfaces", {
   expect_error(svc$describe_network_interfaces(MaxResults = 20), NA)
 })
 
+test_that("describe_outpost_lags", {
+  expect_error(svc$describe_outpost_lags(), NA)
+})
+
+test_that("describe_outpost_lags", {
+  expect_error(svc$describe_outpost_lags(MaxResults = 20), NA)
+})
+
 test_that("describe_placement_groups", {
   expect_error(svc$describe_placement_groups(), NA)
 })
@@ -596,6 +604,30 @@ test_that("describe_reserved_instances_offerings", {
   expect_error(svc$describe_reserved_instances_offerings(MaxResults = 20), NA)
 })
 
+test_that("describe_route_server_endpoints", {
+  expect_error(svc$describe_route_server_endpoints(), NA)
+})
+
+test_that("describe_route_server_endpoints", {
+  expect_error(svc$describe_route_server_endpoints(MaxResults = 20), NA)
+})
+
+test_that("describe_route_server_peers", {
+  expect_error(svc$describe_route_server_peers(), NA)
+})
+
+test_that("describe_route_server_peers", {
+  expect_error(svc$describe_route_server_peers(MaxResults = 20), NA)
+})
+
+test_that("describe_route_servers", {
+  expect_error(svc$describe_route_servers(), NA)
+})
+
+test_that("describe_route_servers", {
+  expect_error(svc$describe_route_servers(MaxResults = 20), NA)
+})
+
 test_that("describe_route_tables", {
   expect_error(svc$describe_route_tables(), NA)
 })
@@ -634,6 +666,14 @@ test_that("describe_security_groups", {
 
 test_that("describe_security_groups", {
   expect_error(svc$describe_security_groups(MaxResults = 20), NA)
+})
+
+test_that("describe_service_link_virtual_interfaces", {
+  expect_error(svc$describe_service_link_virtual_interfaces(), NA)
+})
+
+test_that("describe_service_link_virtual_interfaces", {
+  expect_error(svc$describe_service_link_virtual_interfaces(MaxResults = 20), NA)
 })
 
 test_that("describe_snapshot_tier_status", {

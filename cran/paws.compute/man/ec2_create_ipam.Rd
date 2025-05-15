@@ -11,7 +11,8 @@ ec2_create_ipam(
   TagSpecifications = NULL,
   ClientToken = NULL,
   Tier = NULL,
-  EnablePrivateGua = NULL
+  EnablePrivateGua = NULL,
+  MeteredAccount = NULL
 )
 }
 \arguments{
@@ -45,6 +46,18 @@ associated with the tiers, see \href{https://aws.amazon.com/vpc/pricing/}{Amazon
 
 \item{EnablePrivateGua}{Enable this option to use your own GUA ranges as private IPv6 addresses.
 This option is disabled by default.}
+
+\item{MeteredAccount}{A metered account is an Amazon Web Services account that is charged for
+active IP addresses managed in IPAM. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/ipam/ipam-enable-cost-distro.html}{Enable cost distribution}
+in the \emph{Amazon VPC IPAM User Guide}.
+
+Possible values:
+\itemize{
+\item \code{ipam-owner} (default): The Amazon Web Services account which owns
+the IPAM is charged for all active IP addresses managed in IPAM.
+\item \code{resource-owner}: The Amazon Web Services account that owns the IP
+address is charged for the active IP address.
+}}
 }
 \description{
 Create an IPAM. Amazon VPC IP Address Manager (IPAM) is a VPC feature that you can use to automate your IP address management workflows including assigning, tracking, troubleshooting, and auditing IP addresses across Amazon Web Services Regions and accounts throughout your Amazon Web Services Organization.

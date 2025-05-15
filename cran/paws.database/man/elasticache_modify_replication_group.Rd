@@ -196,7 +196,7 @@ group.}
 
 \item{IpDiscovery}{The network type you choose when modifying a cluster, either \code{ipv4} |
 \code{ipv6}. IPv6 is supported for workloads using Valkey 7.2 and above,
-Redis OSS engine version 6.2 and above or Memcached engine version 1.6.6
+Redis OSS engine version 6.2 to 7.1 and Memcached engine version 1.6.6
 and above on all instances built on the \href{https://aws.amazon.com/ec2/nitro/}{Nitro system}.}
 
 \item{TransitEncryptionEnabled}{A flag that enables in-transit encryption when set to true. If you are

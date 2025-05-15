@@ -599,7 +599,10 @@ DB instance during the maintenance window. By default, minor engine
 upgrades are applied automatically.
 
 If you create an RDS Custom DB instance, you must set
-\code{AutoMinorVersionUpgrade} to \code{false}.}
+\code{AutoMinorVersionUpgrade} to \code{false}.
+
+For more information about automatic minor version upgrades, see
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Upgrading.html#USER_UpgradeDBInstance.Upgrading.AutoMinorVersionUpgrades}{Automatically upgrading the minor engine version}.}
 
 \item{LicenseModel}{The license model information for this DB instance.
 
@@ -715,7 +718,7 @@ managed by the DB cluster.
 
 Valid Values: \code{gp2 | gp3 | io1 | io2 | standard}
 
-Default: \code{io1}, if the \code{Iops} parameter is specified. Otherwise, \code{gp2}.}
+Default: \code{io1}, if the \code{Iops} parameter is specified. Otherwise, \code{gp3}.}
 
 \item{TdeCredentialArn}{The ARN from the key store with which to associate the instance for TDE
 encryption.
@@ -933,12 +936,14 @@ cluster.)
 
 The following values are valid for each DB engine:
 \itemize{
-\item RDS for Db2 - \code{diag.log | notify.log}
-\item RDS for MariaDB - \code{audit | error | general | slowquery}
+\item RDS for Db2 - \code{diag.log | notify.log | iam-db-auth-error}
+\item RDS for MariaDB -
+\code{audit | error | general | slowquery | iam-db-auth-error}
 \item RDS for Microsoft SQL Server - \code{agent | error}
-\item RDS for MySQL - \code{audit | error | general | slowquery}
+\item RDS for MySQL -
+\code{audit | error | general | slowquery | iam-db-auth-error}
 \item RDS for Oracle - \code{alert | audit | listener | trace | oemagent}
-\item RDS for PostgreSQL - \code{postgresql | upgrade}
+\item RDS for PostgreSQL - \code{postgresql | upgrade | iam-db-auth-error}
 }}
 
 \item{ProcessorFeatures}{The number of CPU cores and the number of threads per core for the DB

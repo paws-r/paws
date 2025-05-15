@@ -85,11 +85,13 @@ paymentcryptographycontrolplane_create_alias <- function(AliasName, KeyArn = NUL
 #' 
 #' Tagging or untagging an Amazon Web Services Payment Cryptography key can
 #' allow or deny permission to the key.
+#' @param DeriveKeyUsage The cryptographic usage of an ECDH derived key as defined in section
+#' A.5.2 of the TR-31 spec.
 #'
 #' @keywords internal
 #'
 #' @rdname paymentcryptographycontrolplane_create_key
-paymentcryptographycontrolplane_create_key <- function(KeyAttributes, KeyCheckValueAlgorithm = NULL, Exportable, Enabled = NULL, Tags = NULL) {
+paymentcryptographycontrolplane_create_key <- function(KeyAttributes, KeyCheckValueAlgorithm = NULL, Exportable, Enabled = NULL, Tags = NULL, DeriveKeyUsage = NULL) {
   op <- new_operation(
     name = "CreateKey",
     http_method = "POST",
@@ -98,7 +100,7 @@ paymentcryptographycontrolplane_create_key <- function(KeyAttributes, KeyCheckVa
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .paymentcryptographycontrolplane$create_key_input(KeyAttributes = KeyAttributes, KeyCheckValueAlgorithm = KeyCheckValueAlgorithm, Exportable = Exportable, Enabled = Enabled, Tags = Tags)
+  input <- .paymentcryptographycontrolplane$create_key_input(KeyAttributes = KeyAttributes, KeyCheckValueAlgorithm = KeyCheckValueAlgorithm, Exportable = Exportable, Enabled = Enabled, Tags = Tags, DeriveKeyUsage = DeriveKeyUsage)
   output <- .paymentcryptographycontrolplane$create_key_output()
   config <- get_config()
   svc <- .paymentcryptographycontrolplane$service(config, op)

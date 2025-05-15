@@ -109,10 +109,12 @@ NULL
 #'  \link[=codebuild_batch_delete_builds]{batch_delete_builds} \tab Deletes one or more builds\cr
 #'  \link[=codebuild_batch_get_build_batches]{batch_get_build_batches} \tab Retrieves information about one or more batch builds\cr
 #'  \link[=codebuild_batch_get_builds]{batch_get_builds} \tab Gets information about one or more builds\cr
+#'  \link[=codebuild_batch_get_command_executions]{batch_get_command_executions} \tab Gets information about the command executions\cr
 #'  \link[=codebuild_batch_get_fleets]{batch_get_fleets} \tab Gets information about one or more compute fleets\cr
 #'  \link[=codebuild_batch_get_projects]{batch_get_projects} \tab Gets information about one or more build projects\cr
 #'  \link[=codebuild_batch_get_report_groups]{batch_get_report_groups} \tab Returns an array of report groups\cr
 #'  \link[=codebuild_batch_get_reports]{batch_get_reports} \tab Returns an array of reports\cr
+#'  \link[=codebuild_batch_get_sandboxes]{batch_get_sandboxes} \tab Gets information about the sandbox status\cr
 #'  \link[=codebuild_create_fleet]{create_fleet} \tab Creates a compute fleet\cr
 #'  \link[=codebuild_create_project]{create_project} \tab Creates a build project\cr
 #'  \link[=codebuild_create_report_group]{create_report_group} \tab Creates a report group\cr
@@ -135,12 +137,15 @@ NULL
 #'  \link[=codebuild_list_build_batches_for_project]{list_build_batches_for_project} \tab Retrieves the identifiers of the build batches for a specific project\cr
 #'  \link[=codebuild_list_builds]{list_builds} \tab Gets a list of build IDs, with each build ID representing a single build\cr
 #'  \link[=codebuild_list_builds_for_project]{list_builds_for_project} \tab Gets a list of build identifiers for the specified build project, with each build identifier representing a single build\cr
+#'  \link[=codebuild_list_command_executions_for_sandbox]{list_command_executions_for_sandbox} \tab Gets a list of command executions for a sandbox\cr
 #'  \link[=codebuild_list_curated_environment_images]{list_curated_environment_images} \tab Gets information about Docker images that are managed by CodeBuild\cr
 #'  \link[=codebuild_list_fleets]{list_fleets} \tab Gets a list of compute fleet names with each compute fleet name representing a single compute fleet\cr
 #'  \link[=codebuild_list_projects]{list_projects} \tab Gets a list of build project names, with each build project name representing a single build project\cr
 #'  \link[=codebuild_list_report_groups]{list_report_groups} \tab Gets a list ARNs for the report groups in the current Amazon Web Services account\cr
 #'  \link[=codebuild_list_reports]{list_reports} \tab Returns a list of ARNs for the reports in the current Amazon Web Services account\cr
 #'  \link[=codebuild_list_reports_for_report_group]{list_reports_for_report_group} \tab Returns a list of ARNs for the reports that belong to a ReportGroup\cr
+#'  \link[=codebuild_list_sandboxes]{list_sandboxes} \tab Gets a list of sandboxes\cr
+#'  \link[=codebuild_list_sandboxes_for_project]{list_sandboxes_for_project} \tab Gets a list of sandboxes for a given project\cr
 #'  \link[=codebuild_list_shared_projects]{list_shared_projects} \tab Gets a list of projects that are shared with other Amazon Web Services accounts or users\cr
 #'  \link[=codebuild_list_shared_report_groups]{list_shared_report_groups} \tab Gets a list of report groups that are shared with other Amazon Web Services accounts or users\cr
 #'  \link[=codebuild_list_source_credentials]{list_source_credentials} \tab Returns a list of SourceCredentialsInfo objects\cr
@@ -149,8 +154,12 @@ NULL
 #'  \link[=codebuild_retry_build_batch]{retry_build_batch} \tab Restarts a failed batch build\cr
 #'  \link[=codebuild_start_build]{start_build} \tab Starts running a build with the settings defined in the project\cr
 #'  \link[=codebuild_start_build_batch]{start_build_batch} \tab Starts a batch build for a project\cr
+#'  \link[=codebuild_start_command_execution]{start_command_execution} \tab Starts a command execution\cr
+#'  \link[=codebuild_start_sandbox]{start_sandbox} \tab Starts a sandbox\cr
+#'  \link[=codebuild_start_sandbox_connection]{start_sandbox_connection} \tab Starts a sandbox connection\cr
 #'  \link[=codebuild_stop_build]{stop_build} \tab Attempts to stop running a build\cr
 #'  \link[=codebuild_stop_build_batch]{stop_build_batch} \tab Stops a running batch build\cr
+#'  \link[=codebuild_stop_sandbox]{stop_sandbox} \tab Stops a sandbox\cr
 #'  \link[=codebuild_update_fleet]{update_fleet} \tab Updates a compute fleet\cr
 #'  \link[=codebuild_update_project]{update_project} \tab Changes the settings of a build project\cr
 #'  \link[=codebuild_update_project_visibility]{update_project_visibility} \tab Changes the public visibility for a project\cr
@@ -187,7 +196,7 @@ codebuild <- function(config = list(), credentials = list(), endpoint = NULL, re
 
 .codebuild$metadata <- list(
   service_name = "codebuild",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "codebuild.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "codebuild.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "codebuild.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "codebuild.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "codebuild.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "codebuild.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "codebuild.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "codebuild.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "codebuild.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "codebuild.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "codebuild.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "codebuild.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "codebuild.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "codebuild.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "codebuild.{region}.amazonaws.eu", global = FALSE)),
   service_id = "CodeBuild",
   api_version = "2016-10-06",
   signing_name = "codebuild",

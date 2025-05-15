@@ -2110,12 +2110,6 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #'     You must turn on this setting to use Amazon ECS features such as
 #'     resource tagging.
 #' 
-#' -   `fargateFIPSMode` - When turned on, you can run Fargate workloads in
-#'     a manner that is compliant with Federal Information Processing
-#'     Standard (FIPS-140). For more information, see [Fargate Federal
-#'     Information Processing Standard
-#'     (FIPS-140)](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-fips-compliance.html).
-#' 
 #' -   `containerInstanceLongArnFormat` - When modified, the Amazon
 #'     Resource Name (ARN) and resource ID format of the resource type for
 #'     a specified user, role, or the root user for an account is affected.
@@ -2185,6 +2179,18 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #'     information, see [Grant permission to tag resources on
 #'     creation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/supported-iam-actions-tagging.html)
 #'     in the *Amazon ECS Developer Guide*.
+#' 
+#' -   `defaultLogDriverMode` - Amazon ECS supports setting a default
+#'     delivery mode of log messages from a container to the `logDriver`
+#'     that you specify in the container's `logConfiguration`. The delivery
+#'     mode affects application stability when the flow of logs from the
+#'     container to the log driver is interrupted. The
+#'     `defaultLogDriverMode` setting supports two values: `blocking` and
+#'     `non-blocking`. If you don't specify a delivery mode in your
+#'     container definition's `logConfiguration`, the mode you specify
+#'     using this account setting will be used as the default. For more
+#'     information about log delivery modes, see
+#'     [LogConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html).
 #' 
 #' -   `guardDutyActivate` - The `guardDutyActivate` parameter is read-only
 #'     in Amazon ECS and indicates whether Amazon ECS Runtime Monitoring is
@@ -2343,6 +2349,18 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 #'     information, see [Grant permission to tag resources on
 #'     creation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/supported-iam-actions-tagging.html)
 #'     in the *Amazon ECS Developer Guide*.
+#' 
+#' -   `defaultLogDriverMode` -Amazon ECS supports setting a default
+#'     delivery mode of log messages from a container to the `logDriver`
+#'     that you specify in the container's `logConfiguration`. The delivery
+#'     mode affects application stability when the flow of logs from the
+#'     container to the log driver is interrupted. The
+#'     `defaultLogDriverMode` setting supports two values: `blocking` and
+#'     `non-blocking`. If you don't specify a delivery mode in your
+#'     container definition's `logConfiguration`, the mode you specify
+#'     using this account setting will be used as the default. For more
+#'     information about log delivery modes, see
+#'     [LogConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html).
 #' 
 #' -   `guardDutyActivate` - The `guardDutyActivate` parameter is read-only
 #'     in Amazon ECS and indicates whether Amazon ECS Runtime Monitoring is
@@ -2887,6 +2905,9 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster to run
 #' your task on. If you do not specify a cluster, the default cluster is
 #' assumed.
+#' 
+#' Each account receives a default cluster the first time you use the
+#' service, but you may also create other clusters.
 #' @param count The number of instantiations of the specified task to place on your
 #' cluster. You can specify up to 10 tasks for each call.
 #' @param enableECSManagedTags Specifies whether to use Amazon ECS managed tags for the task. For more
@@ -3165,6 +3186,40 @@ ecs_start_task <- function(cluster = NULL, containerInstances, enableECSManagedT
   return(response)
 }
 .ecs$operations$start_task <- ecs_start_task
+
+#' Stops an ongoing service deployment
+#'
+#' @description
+#' Stops an ongoing service deployment.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ecs_stop_service_deployment/](https://www.paws-r-sdk.com/docs/ecs_stop_service_deployment/) for full documentation.
+#'
+#' @param serviceDeploymentArn &#91;required&#93; The ARN of the service deployment that you want to stop.
+#' @param stopType How you want Amazon ECS to stop the service.
+#' 
+#' The ROLLBACK and ABORT stopType aren't supported.
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_stop_service_deployment
+ecs_stop_service_deployment <- function(serviceDeploymentArn, stopType = NULL) {
+  op <- new_operation(
+    name = "StopServiceDeployment",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecs$stop_service_deployment_input(serviceDeploymentArn = serviceDeploymentArn, stopType = stopType)
+  output <- .ecs$stop_service_deployment_output()
+  config <- get_config()
+  svc <- .ecs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$stop_service_deployment <- ecs_stop_service_deployment
 
 #' Stops a running task
 #'

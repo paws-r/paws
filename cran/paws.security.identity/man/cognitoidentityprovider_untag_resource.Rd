@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_untag_resource}
 \alias{cognitoidentityprovider_untag_resource}
-\title{Removes the specified tags from an Amazon Cognito user pool}
+\title{Given tag IDs that you previously assigned to a user pool, removes them}
 \usage{
 cognitoidentityprovider_untag_resource(ResourceArn, TagKeys)
 }
@@ -10,10 +10,10 @@ cognitoidentityprovider_untag_resource(ResourceArn, TagKeys)
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the user pool that the tags are
 assigned to.}
 
-\item{TagKeys}{[required] The keys of the tags to remove from the user pool.}
+\item{TagKeys}{[required] An array of tag keys that you want to remove from the user pool.}
 }
 \description{
-Removes the specified tags from an Amazon Cognito user pool. You can use this action up to 5 times per second, per account.
+Given tag IDs that you previously assigned to a user pool, removes them.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_untag_resource/} for full documentation.
 }

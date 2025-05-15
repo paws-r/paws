@@ -59,7 +59,7 @@ returned.
 
 \item{CurrentMetrics}{[required] The metrics to retrieve. Specify the name and unit for each metric. The
 following metrics are available. For a description of all the metrics,
-see \href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html}{Real-time Metrics Definitions}
+see \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html}{Metrics definitions}
 in the \emph{Amazon Connect Administrator Guide}.
 
 \strong{AGENTS_AFTER_CONTACT_WORK}
@@ -67,66 +67,66 @@ in the \emph{Amazon Connect Administrator Guide}.
 Unit: COUNT
 
 Name in real-time metrics report:
-\href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#aftercallwork-real-time}{ACW}
+\href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#aftercallwork-real-time}{ACW}
 
 \strong{AGENTS_AVAILABLE}
 
 Unit: COUNT
 
 Name in real-time metrics report:
-\href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#available-real-time}{Available}
+\href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#available-real-time}{Available}
 
 \strong{AGENTS_ERROR}
 
 Unit: COUNT
 
 Name in real-time metrics report:
-\href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#error-real-time}{Error}
+\href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#error-real-time}{Error}
 
 \strong{AGENTS_NON_PRODUCTIVE}
 
 Unit: COUNT
 
-Name in real-time metrics report: \href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#non-productive-time-real-time}{NPT (Non-Productive Time)}
+Name in real-time metrics report: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#non-productive-time-real-time}{NPT (Non-Productive Time)}
 
 \strong{AGENTS_ON_CALL}
 
 Unit: COUNT
 
-Name in real-time metrics report: \href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#on-call-real-time}{On contact}
+Name in real-time metrics report: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#on-call-real-time}{On contact}
 
 \strong{AGENTS_ON_CONTACT}
 
 Unit: COUNT
 
-Name in real-time metrics report: \href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#on-call-real-time}{On contact}
+Name in real-time metrics report: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#on-call-real-time}{On contact}
 
 \strong{AGENTS_ONLINE}
 
 Unit: COUNT
 
 Name in real-time metrics report:
-\href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#online-real-time}{Online}
+\href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#online-real-time}{Online}
 
 \strong{AGENTS_STAFFED}
 
 Unit: COUNT
 
 Name in real-time metrics report:
-\href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#staffed-real-time}{Staffed}
+\href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#staffed-real-time}{Staffed}
 
 \strong{CONTACTS_IN_QUEUE}
 
 Unit: COUNT
 
-Name in real-time metrics report: \href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#in-queue-real-time}{In queue}
+Name in real-time metrics report: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#in-queue-real-time}{In queue}
 
 \strong{CONTACTS_SCHEDULED}
 
 Unit: COUNT
 
 Name in real-time metrics report:
-\href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#scheduled-real-time}{Scheduled}
+\href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#scheduled-real-time}{Scheduled}
 
 \strong{OLDEST_CONTACT_AGE}
 
@@ -149,21 +149,21 @@ queued under \verb{<Expression 1>} for 10 seconds has expired and
 queue will be counted starting from 10, not 0.
 
 Name in real-time metrics report:
-\href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#oldest-real-time}{Oldest}
+\href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#oldest-real-time}{Oldest}
 
 \strong{SLOTS_ACTIVE}
 
 Unit: COUNT
 
 Name in real-time metrics report:
-\href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#active-real-time}{Active}
+\href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#active-real-time}{Active}
 
 \strong{SLOTS_AVAILABLE}
 
 Unit: COUNT
 
 Name in real-time metrics report:
-\href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#availability-real-time}{Availability}}
+\href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#availability-real-time}{Availability}}
 
 \item{NextToken}{The token for the next set of results. Use the value returned in the
 previous response in the next request to retrieve the next set of

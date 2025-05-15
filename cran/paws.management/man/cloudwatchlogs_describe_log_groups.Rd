@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudwatchlogs_operations.R
 \name{cloudwatchlogs_describe_log_groups}
 \alias{cloudwatchlogs_describe_log_groups}
-\title{Lists the specified log groups}
+\title{Returns information about log groups}
 \usage{
 cloudwatchlogs_describe_log_groups(
   accountIdentifiers = NULL,
@@ -11,11 +11,12 @@ cloudwatchlogs_describe_log_groups(
   nextToken = NULL,
   limit = NULL,
   includeLinkedAccounts = NULL,
-  logGroupClass = NULL
+  logGroupClass = NULL,
+  logGroupIdentifiers = NULL
 )
 }
 \arguments{
-\item{accountIdentifiers}{When \code{includeLinkedAccounts} is set to \code{True}, use this parameter to
+\item{accountIdentifiers}{When \code{includeLinkedAccounts} is set to \code{true}, use this parameter to
 specify the list of accounts to search. You can specify as many as 20
 account IDs in the array.}
 
@@ -42,26 +43,48 @@ from a previous call.)}
 \item{limit}{The maximum number of items returned. If you don't specify a value, the
 default is up to 50 items.}
 
-\item{includeLinkedAccounts}{If you are using a monitoring account, set this to \code{True} to have the
+\item{includeLinkedAccounts}{If you are using a monitoring account, set this to \code{true} to have the
 operation return log groups in the accounts listed in
 \code{accountIdentifiers}.
 
 If this parameter is set to \code{true} and \code{accountIdentifiers} contains a
 null value, the operation returns all log groups in the monitoring
 account and all log groups in all source accounts that are linked to the
-monitoring account.}
+monitoring account.
 
-\item{logGroupClass}{Specifies the log group class for this log group. There are two classes:
+The default for this parameter is \code{false}.}
+
+\item{logGroupClass}{Use this parameter to limit the results to only those log groups in the
+specified log group class. If you omit this parameter, log groups of all
+classes can be returned.
+
+Specifies the log group class for this log group. There are three
+classes:
 \itemize{
 \item The \code{Standard} log class supports all CloudWatch Logs features.
 \item The \verb{Infrequent Access} log class supports a subset of CloudWatch
 Logs features and incurs lower costs.
+\item Use the \code{Delivery} log class only for delivering Lambda logs to
+store in Amazon S3 or Amazon Data Firehose. Log events in log groups
+in the Delivery class are kept in CloudWatch Logs for only one day.
+This log class doesn't offer rich CloudWatch Logs capabilities such
+as CloudWatch Logs Insights queries.
 }
 
 For details about the features supported by each class, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch_Logs_Log_Classes.html}{Log classes}}
+
+\item{logGroupIdentifiers}{Use this array to filter the list of log groups returned. If you specify
+this parameter, the only other filter that you can choose to specify is
+\code{includeLinkedAccounts}.
+
+If you are using this operation in a monitoring account, you can specify
+the ARNs of log groups in source accounts and in the monitoring account
+itself. If you are using this operation in an account that is not a
+cross-account monitoring account, you can specify only log group names
+in the same account as the operation.}
 }
 \description{
-Lists the specified log groups. You can list all your log groups or filter the results by prefix. The results are ASCII-sorted by log group name.
+Returns information about log groups. You can return all your log groups or filter the results by prefix. The results are ASCII-sorted by log group name.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_log_groups/} for full documentation.
 }

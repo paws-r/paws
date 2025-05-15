@@ -2,18 +2,21 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_forget_device}
 \alias{cognitoidentityprovider_forget_device}
-\title{Forgets the specified device}
+\title{Given a device key, deletes a remembered device as the currently
+signed-in user}
 \usage{
 cognitoidentityprovider_forget_device(AccessToken = NULL, DeviceKey)
 }
 \arguments{
-\item{AccessToken}{A valid access token that Amazon Cognito issued to the user whose
-registered device you want to forget.}
+\item{AccessToken}{A valid access token that Amazon Cognito issued to the currently
+signed-in user. Must include a scope claim for
+\code{aws.cognito.signin.user.admin}.}
 
-\item{DeviceKey}{[required] The device key.}
+\item{DeviceKey}{[required] The unique identifier, or device key, of the device that the user wants
+to forget.}
 }
 \description{
-Forgets the specified device. For more information about device authentication, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html}{Working with user devices in your user pool}.
+Given a device key, deletes a remembered device as the currently signed-in user. For more information about device authentication, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html}{Working with user devices in your user pool}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_forget_device/} for full documentation.
 }

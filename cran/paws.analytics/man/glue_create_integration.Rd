@@ -13,7 +13,8 @@ glue_create_integration(
   DataFilter = NULL,
   KmsKeyId = NULL,
   AdditionalEncryptionContext = NULL,
-  Tags = NULL
+  Tags = NULL,
+  IntegrationConfig = NULL
 )
 }
 \arguments{
@@ -35,6 +36,8 @@ contextual information for encryption. This can only be provided if
 
 \item{Tags}{Metadata assigned to the resource consisting of a list of key-value
 pairs.}
+
+\item{IntegrationConfig}{The configuration settings.}
 }
 \description{
 Creates a Zero-ETL integration in the caller's account between two resources with Amazon Resource Names (ARNs): the \code{SourceArn} and \code{TargetArn}.

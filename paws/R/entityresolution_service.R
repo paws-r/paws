@@ -120,7 +120,7 @@ NULL
 #'  \link[=entityresolution_get_id_mapping_job]{get_id_mapping_job} \tab Gets the status, metrics, and errors (if there are any) that are associated with a job\cr
 #'  \link[=entityresolution_get_id_mapping_workflow]{get_id_mapping_workflow} \tab Returns the IdMappingWorkflow with a given name, if it exists\cr
 #'  \link[=entityresolution_get_id_namespace]{get_id_namespace} \tab Returns the IdNamespace with a given name, if it exists\cr
-#'  \link[=entityresolution_get_match_id]{get_match_id} \tab Returns the corresponding Match ID of a customer record if the record has been processed\cr
+#'  \link[=entityresolution_get_match_id]{get_match_id} \tab Returns the corresponding Match ID of a customer record if the record has been processed in a rule-based matching workflow or ML matching workflow\cr
 #'  \link[=entityresolution_get_matching_job]{get_matching_job} \tab Gets the status, metrics, and errors (if there are any) that are associated with a job\cr
 #'  \link[=entityresolution_get_matching_workflow]{get_matching_workflow} \tab Returns the MatchingWorkflow with a given name, if it exists\cr
 #'  \link[=entityresolution_get_policy]{get_policy} \tab Returns the resource-based policy\cr
@@ -174,7 +174,7 @@ entityresolution <- function(config = list(), credentials = list(), endpoint = N
 
 .entityresolution$metadata <- list(
   service_name = "entityresolution",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "entityresolution.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "entityresolution.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "entityresolution.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "entityresolution.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "entityresolution.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "entityresolution.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "entityresolution.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "entityresolution.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "entityresolution.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "entityresolution.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "entityresolution.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "entityresolution.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "entityresolution.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "entityresolution.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "entityresolution.{region}.amazonaws.eu", global = FALSE)),
   service_id = "EntityResolution",
   api_version = "2018-05-10",
   signing_name = "entityresolution",
