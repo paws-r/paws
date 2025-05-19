@@ -151,7 +151,7 @@ eu-north-1, ap-east-1, ap-southeast-1, ap-northeast-1,
 ap-southeast-2, ap-northeast-2, ap-south-1, ca-central-1, sa-east-1.
 
 For questions about adding Amazon Web Services Regions for metering,
-contact \href{mailto://aws.amazon.com/marketplace/management/contact-us/}{Amazon Web Services Marketplace Seller Operations}.
+contact Amazon Web Services Marketplace Seller Operations.
 }
 }
 \section{Service syntax}{

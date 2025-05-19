@@ -63,7 +63,7 @@ more information about using this service, see the \href{https://docs.aws.amazon
 \strong{Support and feedback for Organizations}
 
 We welcome your feedback. Send your comments to
-\href{mailto:feedback-awsorganizations@amazon.com}{feedback-awsorganizations@amazon.com} or post your feedback and
+\email{feedback-awsorganizations@amazon.com} or post your feedback and
 questions in the Organizations support forum. For more information about
 the Amazon Web Services support forums, see Forums Help.
 

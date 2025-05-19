@@ -55,7 +55,7 @@ Explicitly sets the quantity of devices to renew for an offering,
 starting from the \code{effectiveDate} of the next period. The API returns a
 \code{NotEligible} error if the user is not permitted to invoke the
 operation. If you must be able to invoke this operation, contact
-\href{mailto:aws-devicefarm-support@amazon.com}{aws-devicefarm-support@amazon.com}.
+\email{aws-devicefarm-support@amazon.com}.
 }
 \section{Request syntax}{
 \preformatted{svc$renew_offering(

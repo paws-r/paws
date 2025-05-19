@@ -116,8 +116,7 @@ NULL
 #'     ap-southeast-2, ap-northeast-2, ap-south-1, ca-central-1, sa-east-1.
 #' 
 #'     For questions about adding Amazon Web Services Regions for metering,
-#'     contact [Amazon Web Services Marketplace Seller
-#'     Operations](mailto://aws.amazon.com/marketplace/management/contact-us/).
+#'     contact Amazon Web Services Marketplace Seller Operations.
 #'
 #' @param
 #' config
