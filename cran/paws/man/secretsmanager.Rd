@@ -71,7 +71,7 @@ For a list of endpoints, see \href{https://docs.aws.amazon.com/secretsmanager/la
 \strong{Support and Feedback for Amazon Web Services Secrets Manager}
 
 We welcome your feedback. Send your comments to
-\href{mailto:awssecretsmanager-feedback@amazon.com}{awssecretsmanager-feedback@amazon.com}, or post your feedback and
+\email{awssecretsmanager-feedback@amazon.com}, or post your feedback and
 questions in the Amazon Web Services Secrets Manager Discussion Forum.
 For more information about the Amazon Web Services Discussion Forums,
 see Forums Help.

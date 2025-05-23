@@ -72,7 +72,7 @@ an AWS account. The response indicates how many offerings are currently
 available and the offerings that will be available in the next period.
 The API returns a \code{NotEligible} error if the user is not permitted to
 invoke the operation. If you must be able to invoke this operation,
-contact \href{mailto:aws-devicefarm-support@amazon.com}{aws-devicefarm-support@amazon.com}.
+contact \email{aws-devicefarm-support@amazon.com}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_offering_status(

@@ -41,7 +41,7 @@ the API. Each offering record indicates the recurring price per unit and
 the frequency for that offering. The API returns a \code{NotEligible} error
 if the user is not permitted to invoke the operation. If you must be
 able to invoke this operation, contact
-\href{mailto:aws-devicefarm-support@amazon.com}{aws-devicefarm-support@amazon.com}.
+\email{aws-devicefarm-support@amazon.com}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_offerings(
