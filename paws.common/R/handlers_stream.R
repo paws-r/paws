@@ -89,10 +89,10 @@ StreamHandler <- function(body, unmarshal, interface, metadata) {
   return(paws_stream_handler)
 }
 
-paws_con <- function(con, unmarshal, interface) {
-  con$paws_metadata <- list(unmarshal = unmarshal, interface = interface)
-  class(con) <- c("paws_connection", class(con))
-  return(con)
+paws_con <- function(conn, unmarshal, interface) {
+  conn$paws_metadata <- list(unmarshal = unmarshal, interface = interface)
+  class(conn) <- c("paws_connection", class(conn))
+  return(conn)
 }
 
 #' @export
@@ -113,22 +113,71 @@ print.PawsStreamHandler <- function(x, ...) {
 
 #' @name paws_stream
 #' @export
-paws_stream_parser <- function(con) {
-  if (!isIncomplete(con$body)) {
-    close(con)
+paws_stream_parser <- function(conn) {
+  if (!conn_is_valid(conn$body)) {
+    stop("paws_connection has already been closed.", call. = FALSE)
+  }
+
+  # get buffer
+  buffer <- get_aws_buffer(conn)
+
+  if (is.null(buffer)) {
     return(NULL)
   }
-  buffer <- readBin(con$body, raw(), n = .PAYLOAD_KB)
-  if (is.null(boundary <- aws_boundary(buffer))) {
-    close(con)
-    return(NULL)
-  }
+
+  # parse buffer
   return(eventstream_parser(
+    conn,
     buffer,
-    unmarshal = con$paws_metadata$unmarshal,
-    interface = con$paws_metadata$interface,
-    boundary = boundary
+    unmarshal = conn$paws_metadata$unmarshal,
+    interface = conn$paws_metadata$interface
   ))
+}
+
+# Developed from httr2:::resp_boundary_pushback
+# https://github.com/r-lib/httr2/blob/main/R/resp-stream.R#L279-L373
+get_aws_buffer <- function(conn) {
+  if (check_conn(conn)) {
+    close(conn$body)
+    return(NULL)
+  }
+
+  # Grab the buffer from the cache if it exists
+  buffer <- conn$cache$push_back %||% raw()
+  conn$cache$push_back <- raw()
+
+  repeat {
+    if (!is.null(boundary <- aws_boundary(buffer))) {
+      result <- split_buffer(buffer, boundary)
+      conn$cache$push_back <- result$remaining
+      return(result$matched)
+    }
+
+    chunk <- readBin(conn$body, raw(), n = .PAYLOAD_KB)
+
+    if (length(chunk) == 0) {
+      if (!isIncomplete(conn$body)) {
+        # We've truly reached the end of the connection; no more data is coming
+        if (length(buffer) == 0) {
+          return(NULL)
+        }
+      } else {
+        conn$cache$push_back <- buffer
+        return(NULL)
+      }
+    }
+    buffer <- c(buffer, chunk)
+  }
+}
+
+# Developed from httr2:::isValid
+# https://github.com/r-lib/httr2/blob/main/R/resp-stream.R#L479-L491
+conn_is_valid <- function(conn) {
+  tryCatch(identical(getConnection(conn), conn), error = function(cnd) FALSE)
+}
+
+check_conn <- function(conn) {
+  !isIncomplete(conn$body) && length(conn$cache$push_back) == 0
 }
 
 ################ stream unmarshal ################
@@ -165,16 +214,10 @@ stream_raw <- function(con) {
 }
 
 ################ parse event stream ################
-eventstream_parser <- function(buffer, unmarshal, interface, boundary) {
-  # chunk loop
-  while (!is.null(boundary)) {
-    result <- split_buffer(buffer, boundary)
-    data <- parse_aws_event(result$matched)
-    (nms <- data$headers[[":event-type"]])
-    interface[[nms]] <- unmarshal(data$payload, interface[[nms]])
-    buffer <- result$remaining
-    boundary <- aws_boundary(buffer)
-  }
+eventstream_parser <- function(resp, buffer, unmarshal, interface) {
+  data <- parse_aws_event(buffer)
+  nms <- data$headers[[":event-type"]]
+  interface[[nms]] <- unmarshal(data$payload, interface[[nms]])
   return(tag_del(interface))
 }
 
@@ -333,13 +376,8 @@ hex_to_raw <- function(x) {
   as.raw(strtoi(pairs, 16L))
 }
 
-# Get the CRC of a raw vector.
-crc32 <- function(raw) {
-  return(digest(raw, algo = "crc32", serialize = FALSE))
-}
-
 validate_checksum <- function(data, crc) {
-  computed_checksum <- crc32(data)
+  computed_checksum <- digest(data, algo = "crc32", serialize = FALSE)
   if (computed_checksum != crc) {
     stopf("Checksum mismatch: expected %s, calculated %s", crc, computed_checksum)
   }

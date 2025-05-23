@@ -1,3 +1,6 @@
+# paws.common 0.8.3.9000
+* fix ensure byte buffer push back is working correctly in paws_stream_parser (#930). Thanks to @joeramirez for raising issue.
+
 # paws.common 0.8.3
 * fix query being incorrectly parsed (#923). Thanks to @joeramirez for raising issue.
 
