@@ -118,6 +118,11 @@ paws_stream_parser <- function(conn) {
     stop("paws_connection has already been closed.", call. = FALSE)
   }
 
+  if (check_push_back(conn)) {
+    close(conn$body)
+    return(NULL)
+  }
+
   # get buffer
   buffer <- get_aws_buffer(conn)
 
@@ -137,11 +142,6 @@ paws_stream_parser <- function(conn) {
 # Developed from httr2:::resp_boundary_pushback
 # https://github.com/r-lib/httr2/blob/main/R/resp-stream.R#L279-L373
 get_aws_buffer <- function(conn) {
-  if (check_conn(conn)) {
-    close(conn$body)
-    return(NULL)
-  }
-
   # Grab the buffer from the cache if it exists
   buffer <- conn$cache$push_back %||% raw()
   conn$cache$push_back <- raw()
@@ -176,7 +176,7 @@ conn_is_valid <- function(conn) {
   tryCatch(identical(getConnection(conn), conn), error = function(cnd) FALSE)
 }
 
-check_conn <- function(conn) {
+check_push_back <- function(conn) {
   !isIncomplete(conn$body) && length(conn$cache$push_back) == 0
 }
 
