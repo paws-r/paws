@@ -1,7 +1,7 @@
 Package: paws.common
 Type: Package
 Title: Paws Low-Level Amazon Web Services API
-Version: 0.8.3.9000
+Version: 0.8.4
 Authors@R: c(
         person("David", "Kretch", email = "david.kretch@gmail.com", role = "aut"),
         person("Adam", "Banker", email = "adam.banker39@gmail.com", role = "aut"),
