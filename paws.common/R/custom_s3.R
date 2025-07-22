@@ -132,7 +132,7 @@ update_endpoint_for_s3_config <- function(request) {
   if (request$config$s3_force_path_style) {
     use_virtual_host_style <- FALSE
   }
-  if (request$client_info$custom_endpoint) {
+  if (request$client_info$custom_endpoint && isFALSE(request$config$s3_virtual_address)) {
     use_virtual_host_style <- FALSE
   }
 
