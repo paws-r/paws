@@ -114,9 +114,13 @@ query_parse_map <- function(values, value, prefix, tag, is_ec2 = FALSE) {
       map_value <- value[[map_key]]
 
       key_name <- tag_get(value, "locationNameKey")
-      if (key_name == "") key_name <- "key"
+      if (key_name == "") {
+        key_name <- "key"
+      }
       value_name <- tag_get(value, "locationNameValue")
-      if (value_name == "") value_name <- "value"
+      if (value_name == "") {
+        value_name <- "value"
+      }
 
       # Serialize the key.
       if (prefix == "") {

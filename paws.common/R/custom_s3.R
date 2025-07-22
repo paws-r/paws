@@ -103,7 +103,9 @@ get_access_point_endpoint <- function(access_point) {
 
 remove_bucket_from_url <- function(url) {
   url$path <- gsub("\\{Bucket+?\\}", "", url$path)
-  if (url$path == "") url$path <- "/"
+  if (url$path == "") {
+    url$path <- "/"
+  }
   return(url)
 }
 
@@ -127,7 +129,9 @@ update_endpoint_for_s3_config <- function(request) {
   }
 
   use_virtual_host_style <- TRUE
-  if (request$config$s3_force_path_style) use_virtual_host_style <- FALSE
+  if (request$config$s3_force_path_style) {
+    use_virtual_host_style <- FALSE
+  }
   if (request$client_info$custom_endpoint) {
     use_virtual_host_style <- FALSE
   }
@@ -231,7 +235,9 @@ content_md5 <- function(request) {
   # https://github.com/aws/aws-sdk-go/blob/e2d6cb448883e4f4fcc5246650f89bde349041ec/private/checksum/content_md5.go#L18
   if (is.null(request$http_request$header[["Content-MD5"]])) {
     body <- request$body
-    if (length(body) == 0) body <- raw(0)
+    if (length(body) == 0) {
+      body <- raw(0)
+    }
     hash <- digest::digest(body, serialize = FALSE, raw = TRUE)
     base64_hash <- base64enc::base64encode(hash)
     request$http_request$header$`Content-Md5` <- base64_hash
@@ -253,7 +259,9 @@ s3_unmarshal_get_bucket_location <- function(request) {
   } else {
     location <- location[[1]]
   }
-  if (location == "EU") location <- "eu-west-1"
+  if (location == "EU") {
+    location <- "eu-west-1"
+  }
   data$LocationConstraint <- location
   request$data <- data
   return(request)
@@ -444,8 +452,11 @@ set_request_url <- function(original_endpoint, new_endpoint, use_new_scheme = TR
   if (use_new_scheme) {
     scheme <- new_endpoint_components[["scheme"]]
   }
-  path <- (if (final_endpoint_components[["path"]] == "/") "" else
-    final_endpoint_components[["path"]])
+  path <- (if (final_endpoint_components[["path"]] == "/") {
+    ""
+  } else {
+    final_endpoint_components[["path"]]
+  })
   final_endpoint_components[["host"]] <- new_endpoint_components$host
   final_endpoint_components[["scheme"]] <- scheme
   final_endpoint_components[["path"]] <- path

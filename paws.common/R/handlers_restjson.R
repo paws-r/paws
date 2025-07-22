@@ -56,8 +56,12 @@ restjson_unmarshal_error <- function(request) {
   }
   error <- decode_json(request$http_response$body)
   code <- request$http_response$header[["X-Amzn-Errortype"]]
-  if (is.null(code)) code <- error$code
-  if (is.null(code)) code <- error$`__type`
+  if (is.null(code)) {
+    code <- error$code
+  }
+  if (is.null(code)) {
+    code <- error$`__type`
+  }
   if (is.null(code)) {
     code <- ""
   } else {
@@ -65,7 +69,9 @@ restjson_unmarshal_error <- function(request) {
   }
 
   message <- ""
-  if (!is.null(error$message)) message <- error$message
+  if (!is.null(error$message)) {
+    message <- error$message
+  }
 
   request$error <- Error(
     code = code,

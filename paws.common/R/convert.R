@@ -74,6 +74,8 @@ get_timestamp_format <- function(name) {
     iso8601 = "%Y-%m-%dT%H:%M:%SZ",
     rfc822 = "%a, %d %b %Y %H:%M:%S %Z"
   )
-  if (is.null(format_string)) stop("invalid timestamp format")
+  if (is.null(format_string)) {
+    stop("invalid timestamp format")
+  }
   return(format_string)
 }

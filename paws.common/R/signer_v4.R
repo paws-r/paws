@@ -163,7 +163,9 @@ sign_with_body <- function(
     curr_time_fn <- now
   }
 
-  if (is.null(body)) body <- ""
+  if (is.null(body)) {
+    body <- ""
+  }
 
   ctx <- SigningContext(
     request = request,

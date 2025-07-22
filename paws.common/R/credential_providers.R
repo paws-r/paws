@@ -30,7 +30,9 @@ env_provider <- function() {
   secret_access_key <- get_env("AWS_SECRET_ACCESS_KEY")
   session_token <- get_env("AWS_SESSION_TOKEN")
   expiration <- as_timestamp(get_env("AWS_CREDENTIAL_EXPIRATION"), "iso8601")
-  if (is.na(expiration)) expiration <- Inf
+  if (is.na(expiration)) {
+    expiration <- Inf
+  }
 
   if (access_key_id != "" && secret_access_key != "") {
     creds <- Creds(
@@ -103,7 +105,9 @@ config_file_provider <- function(profile = "") {
   config <- read_ini(config_path)
 
   profile_name <- get_profile_name(profile)
-  if (profile_name != "default") profile_name <- paste("profile", profile_name)
+  if (profile_name != "default") {
+    profile_name <- paste("profile", profile_name)
+  }
   if (is.null(config[[profile_name]])) {
     log_info("Profile '%s' not found in '%s'", profile_name, config_path)
     return(NULL)
@@ -219,10 +223,14 @@ config_file_credential_process <- function(command) {
   }
 
   session_token <- data$SessionToken
-  if (is.null(session_token)) session_token <- ""
+  if (is.null(session_token)) {
+    session_token <- ""
+  }
 
   expiration <- as_timestamp(data$Expiration, "iso8601")
-  if (length(expiration) == 0) expiration <- Inf
+  if (length(expiration) == 0) {
+    expiration <- Inf
+  }
 
   creds <- Creds(
     access_key_id = access_key_id,
@@ -344,7 +352,9 @@ config_file_source_profile <- function(
   source_profile
 ) {
   creds <- credentials_file_provider(source_profile)
-  if (is.null(creds)) creds <- config_file_provider(source_profile)
+  if (is.null(creds)) {
+    creds <- config_file_provider(source_profile)
+  }
   if (is.null(creds)) {
     return(NULL)
   }

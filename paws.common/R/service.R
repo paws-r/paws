@@ -107,7 +107,9 @@ new_service <- function(metadata, handlers, cfgs = NULL, operation = Operation()
   )
 
   signing_name <- metadata$signing_name
-  if (is.null(signing_name)) signing_name <- cfg$signing_name
+  if (is.null(signing_name)) {
+    signing_name <- cfg$signing_name
+  }
   custom_endpoint <- cfg$config$endpoint != "" || cfg$custom_endpoint
   client_info <- ClientInfo(
     service_name = metadata$service_name,
