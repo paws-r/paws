@@ -14,7 +14,8 @@
   "sleep_delay",
   "disable_rest_protocol_uri_cleaning",
   "provider",
-  "provider_name"
+  "provider_name",
+  "partition_name"
 )
 
 firstup <- function(x) {

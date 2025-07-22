@@ -31,6 +31,7 @@
 #' @param max_retries Max number of retries call AWS API (default set to 3).
 #' @param s3_force_path_style Set this to `true` to force the request to use path-style
 #' addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.
+#' @param s3_virtual_address Set this to `true` to force the request to use virtual-hosted-style
 #' @param sts_regional_endpoint Set sts regional endpoint resolver to regional or
 #' legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}
 #' @param signature_version The signature version used when signing requests.

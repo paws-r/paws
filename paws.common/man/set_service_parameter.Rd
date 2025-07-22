@@ -17,6 +17,7 @@ config(
   max_retries = 3,
   connect_timeout = 60,
   s3_force_path_style = FALSE,
+  s3_virtual_address = FALSE,
   sts_regional_endpoint = "",
   signature_version = ""
 )
@@ -67,6 +68,8 @@ when attempting to make a connection. The default is 60 seconds.}
 
 \item{s3_force_path_style}{Set this to \code{true} to force the request to use path-style
 addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+
+\item{s3_virtual_address}{Set this to \code{true} to force the request to use virtual-hosted-style}
 
 \item{sts_regional_endpoint}{Set sts regional endpoint resolver to regional or
 legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}

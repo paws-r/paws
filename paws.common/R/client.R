@@ -20,6 +20,7 @@ Config <- struct(
   disable_param_validation = FALSE,
   disable_compute_checksums = FALSE,
   s3_force_path_style = FALSE,
+  s3_virtual_address = FALSE,
   s3_disable_100_continue = FALSE,
   s3_use_accelerate = FALSE,
   s3_disable_content_md5_validation = FALSE,
