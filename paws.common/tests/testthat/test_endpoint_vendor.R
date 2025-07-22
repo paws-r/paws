@@ -107,3 +107,35 @@ test_that("resolver_endpoint js", {
     )
   )
 })
+
+
+test_that("resolve_host_prefix", {
+  host_prefix <- c("", "foo", "{foo}", "{foo}{bar}")
+  endpoint <- "example.com"
+  params <- structure(list(
+    foo = structure("test.", tags = list(hostLabel = TRUE)),
+    bar = structure("123.", tags = list(hostLabel = TRUE))
+  ))
+  expected <- c(
+    "example.com",
+    "fooexample.com",
+    "test.example.com",
+    "test.123.example.com"
+  )
+  for (i in seq_along(host_prefix)) {
+    expect_equal(resolve_host_prefix(host_prefix[i], endpoint, params), expected[i])
+  }
+})
+
+test_that("resolve_host_prefix bad label", {
+  host_prefix <- "{foo}{bar}"
+  endpoint <- "example.com"
+  params <- structure(list(
+    foo = structure("test.", tags = list(hostLabel = TRUE)),
+    bar = structure("!", tags = list(hostLabel = TRUE))
+  ))
+  expect_error(
+    resolve_host_prefix(host_prefix, endpoint, params),
+    "Invalid value for parameter\\(s\\): \\{bar: \\!\\} Must contain only alphanumeric characters, hyphen, or period."
+  )
+})

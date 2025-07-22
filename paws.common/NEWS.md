@@ -1,5 +1,6 @@
 # paws.common 0.8.4.9000
 * restrict httr2 version (#933). Thanks to @idavydov for raising issue.
+* fix host prefix allowing for parameters to be passed in based on hostLabel (#941). Thanks to @dannypage for raising issue.
 
 # paws.common 0.8.4
 * fix ensure byte buffer push back is working correctly in paws_stream_parser (#930). Thanks to @joeramirez for raising issue.
