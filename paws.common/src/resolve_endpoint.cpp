@@ -35,53 +35,6 @@ LogicalVector check_global(List endpoint)
 }
 
 /**
- * @brief Unescape endpoint
- *
- * @param endpoint AWS escaped endpoint vendor aws botocore
- * @param service AWS service
- * @param region AWS region
- */
-//' @useDynLib paws.common _paws_common_endpoint_unescape
-//' @importFrom Rcpp evalCpp
-// [[Rcpp::export]]
-std::string endpoint_unescape(std::string endpoint, const std::string &region)
-{
-  size_t pos = 0;
-  if ((pos = endpoint.find("{region}", 0)) != std::string::npos)
-  {
-    endpoint.replace(pos, 8, region);
-  };
-  return endpoint;
-}
-
-// Unescape endpoint
-// param endpoint AWS escaped endpoint
-// param service AWS service
-// param region AWS region
-
-/**
- * @brief Unescape endpoint using vendor aws js sdk
- *
- * @param endpoint AWS escaped endpoint
- * @param service AWS service
- * @param region AWS region
- */
-//' @useDynLib paws.common _paws_common_endpoint_unescape_js
-//' @importFrom Rcpp evalCpp
-// [[Rcpp::export]]
-std::string endpoint_unescape_js(std::string endpoint, const std::string& service, const std::string& region) {
- size_t pos = 0;
- if ((pos = endpoint.find("{service}", pos)) != std::string::npos) {
-   endpoint.replace(pos, 9, service);
- };
-
- if ((pos = endpoint.find("{region}", 0)) != std::string::npos) {
-   endpoint.replace(pos, 8, region);
- };
- return endpoint;
-}
-
-/**
  * @brief Get region pattern based on region using aws js sdk vendor
  *
  * @param region_pattern AWS escaped endpoint

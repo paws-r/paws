@@ -13,23 +13,33 @@ Object <- function(..., .tags = NULL, type) {
 }
 
 Structure <- function(..., .tags = NULL) {
-  if (is.null(names(list(...)))) stop("a structure must have names")
+  if (is.null(names(list(...)))) {
+    stop("a structure must have names")
+  }
   return(Object(..., .tags = .tags, type = "structure"))
 }
 
 List <- function(..., .tags = NULL) {
-  if (!is.null(names(list(...)))) stop("a list must not have names")
+  if (!is.null(names(list(...)))) {
+    stop("a list must not have names")
+  }
   return(Object(..., .tags = .tags, type = "list"))
 }
 
 Map <- function(..., .tags = NULL) {
-  if (!is.null(names(list(...)))) stop("a map must not have names")
+  if (!is.null(names(list(...)))) {
+    stop("a map must not have names")
+  }
   return(Object(..., .tags = .tags, type = "map"))
 }
 
 Scalar <- function(value = NULL, .tags = NULL, type = "scalar") {
-  if (length(value) > 1 || !is_atomic(value)) stop("a scalar must be length <= 1")
-  if (is.null(value)) value <- logical(0)
+  if (length(value) > 1 || !is_atomic(value)) {
+    stop("a scalar must be length <= 1")
+  }
+  if (is.null(value)) {
+    value <- logical(0)
+  }
   tags <- c(list(type = type), .tags)
   value <- tag_add(value, tags)
   return(value)

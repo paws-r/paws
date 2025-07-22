@@ -13,6 +13,12 @@ paws_url_unencoder <- function(urls) {
     .Call('_paws_common_paws_url_unencoder', PACKAGE = 'paws.common', urls)
 }
 
+#' @useDynLib paws.common _paws_common_fstring
+#' @importFrom Rcpp evalCpp
+fstring <- function(templateStr, variables) {
+    .Call('_paws_common_fstring', PACKAGE = 'paws.common', templateStr, variables)
+}
+
 #' @useDynLib paws.common _paws_common_scan_ini_file
 #' @importFrom Rcpp evalCpp
 scan_ini_file <- function(filename) {
@@ -35,18 +41,6 @@ json_convert_string <- function(x) {
 #' @importFrom Rcpp evalCpp
 check_global <- function(endpoint) {
     .Call('_paws_common_check_global', PACKAGE = 'paws.common', endpoint)
-}
-
-#' @useDynLib paws.common _paws_common_endpoint_unescape
-#' @importFrom Rcpp evalCpp
-endpoint_unescape <- function(endpoint, region) {
-    .Call('_paws_common_endpoint_unescape', PACKAGE = 'paws.common', endpoint, region)
-}
-
-#' @useDynLib paws.common _paws_common_endpoint_unescape_js
-#' @importFrom Rcpp evalCpp
-endpoint_unescape_js <- function(endpoint, service, region) {
-    .Call('_paws_common_endpoint_unescape_js', PACKAGE = 'paws.common', endpoint, service, region)
 }
 
 #' @useDynLib paws.common _paws_common_get_region_pattern_js

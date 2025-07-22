@@ -62,7 +62,9 @@ xml_build_body <- function(request) {
   body_list <- xml_build(params)
 
   if (length(body_list)) {
-    if (xmlns != "") body_list <- add_xmlns(body_list, xmlns)
+    if (xmlns != "") {
+      body_list <- add_xmlns(body_list, xmlns)
+    }
     body_xml <- list_to_xml(body_list)
   } else {
     body_xml <- ""
@@ -107,7 +109,9 @@ xml_build_structure <- function(params) {
 
     if (!is_empty_xml(parsed)) {
       location_name <- tag_get(child, "locationName")
-      if (location_name == "") location_name <- name
+      if (location_name == "") {
+        location_name <- name
+      }
 
       flattened <- tag_get(child, "flattened") != ""
 
@@ -139,7 +143,9 @@ xml_build_list <- function(params) {
     names(result) <- rep(location_name, length(children))
   } else {
     location_name_list <- tag_get(params, "locationNameList")
-    if (location_name_list == "") location_name_list <- "member"
+    if (location_name_list == "") {
+      location_name_list <- "member"
+    }
     result <- children
     names(result) <- rep(location_name_list, length(children))
   }
@@ -417,7 +423,9 @@ xml_parse_scalar <- function(
     long = as.numeric,
     timestamp = function(x) as_timestamp(x, format = "iso8601"),
     function(x) {
-      if (identical(x, "")) x <- NULL
+      if (identical(x, "")) {
+        x <- NULL
+      }
       as.character(x)
     }
   )

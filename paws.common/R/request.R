@@ -10,8 +10,7 @@ Operation <- struct(
   host_prefix = "",
   paginator = list(),
   stream_api = FALSE,
-  before_presign_fn = function() {
-  }
+  before_presign_fn = function() {}
 )
 
 #' Return an API operation object
@@ -128,6 +127,14 @@ new_request <- function(client, operation, params, data, dest = NULL) {
 
   http_req$url <- parse_url(paste0(client$client_info$endpoint, operation$http_path))
 
+  if (!client$client_info$custom_endpoint) {
+    http_req[["url"]][["host"]] <- resolve_host_prefix(
+      host_prefix = operation[["host_prefix"]],
+      endpoint = http_req[["url"]][["host"]],
+      params = params
+    )
+  }
+
   http_req <- sanitize_host_for_header(http_req)
 
   req <- Request(
@@ -172,7 +179,6 @@ send_request <- function(request) {
   if (!is.null(request$error)) {
     stop(aws_error(request$error))
   }
-
   request <- send(request)
   request <- unmarshal_meta(request)
   request <- validate_response(request)
@@ -226,7 +232,9 @@ get_host <- function(http_request) {
 # Return the port from an HTTP request.
 get_port <- function(host) {
   port <- strsplit(host, ":")[[1]][-1]
-  if (length(port) == 0) port <- ""
+  if (length(port) == 0) {
+    port <- ""
+  }
   return(port)
 }
 

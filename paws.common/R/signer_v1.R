@@ -133,7 +133,9 @@ sign_with_body_query <- function(
   auth_path,
   anonymous
 ) {
-  if (is.null(body)) body <- ""
+  if (is.null(body)) {
+    body <- ""
+  }
 
   ctx <- SigningContextQuery(
     request = request,

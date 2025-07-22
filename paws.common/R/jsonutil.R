@@ -169,10 +169,14 @@ json_parse_structure <- function(node, interface) {
 
   for (name in names(interface)) {
     # Skip fields that don't come from the response body.
-    if (tag_get(interface[[name]], "location") != "") next
+    if (tag_get(interface[[name]], "location") != "") {
+      next
+    }
 
     node_name <- tag_get(interface[[name]], "locationName")
-    if (node_name == "") node_name <- name
+    if (node_name == "") {
+      node_name <- name
+    }
     parsed <- json_parse(node[[node_name]], interface[[name]])
     result[[name]] <- parsed
   }

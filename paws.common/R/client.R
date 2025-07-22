@@ -104,7 +104,6 @@ resolver_endpoint <- function(
   endpoints,
   sts_regional_endpoint = "",
   scheme = "https",
-  host_prefix = "",
   partition_name = ""
 ) {
   switch(
@@ -115,7 +114,6 @@ resolver_endpoint <- function(
       endpoints = endpoints,
       sts_regional_endpoint = sts_regional_endpoint,
       scheme = scheme,
-      host_prefix = host_prefix,
       partition_name = partition_name
     ),
     "js" = resolver_endpoint_js(
@@ -123,8 +121,7 @@ resolver_endpoint <- function(
       region = region,
       endpoints = endpoints,
       sts_regional_endpoint = sts_regional_endpoint,
-      scheme = scheme,
-      host_prefix = host_prefix
+      scheme = scheme
     )
   )
 }
@@ -135,12 +132,13 @@ resolver_endpoint_boto <- function(
   endpoints,
   sts_regional_endpoint,
   scheme,
-  host_prefix,
   partition_name
 ) {
   # Set default region for s3 if not provided
   # https://github.com/boto/botocore/blob/develop/botocore/regions.py#L200-L205
-  if (service == 's3' && !nzchar(region)) region <- 'us-east-1'
+  if (service == 's3' && !nzchar(region)) {
+    region <- 'us-east-1'
+  }
   global_found <- check_global(endpoints)
   global_endpoints <- global_found[global_found]
 
@@ -158,10 +156,7 @@ resolver_endpoint_boto <- function(
     e[["endpoint"]] <- set_sts_regional_endpoint(sts_regional_endpoint, e[["endpoint"]])
     e[["signing_region"]] <- set_sts_region(sts_regional_endpoint, region)
   }
-  endpoint <- endpoint_unescape(e[["endpoint"]], e[["signing_region"]])
-  if (grepl(HOST_PREFIX_RE, host_prefix)) {
-    endpoint <- sprintf("%s%s", host_prefix, endpoint)
-  }
+  endpoint <- fstring(e[["endpoint"]], list(region = e[["signing_region"]]))
   endpoint <- gsub("^(.+://)?", sprintf("%s://", scheme), endpoint)
 
   return(list(endpoint = endpoint, signing_region = e[["signing_region"]]))
@@ -173,20 +168,24 @@ resolver_endpoint_js <- function(
   region,
   endpoints,
   sts_regional_endpoint,
-  scheme,
-  host_prefix
+  scheme
 ) {
   # Set default region for s3:
   # https://github.com/boto/botocore/blob/develop/botocore/regions.py#L189-L220
-  if (service == 's3' && !nzchar(region)) region <- 'us-east-1'
+  if (service == 's3' && !nzchar(region)) {
+    region <- 'us-east-1'
+  }
   # locate global endpoint
   global_found <- check_global(endpoints)
   global_region <- (region == "aws-global")
   if (!any(global_found) & global_region) {
     stop("No region provided and no global region found.")
   }
-  search_region <- (if (any(global_found) & global_region)
-    names(global_found[global_found][1]) else region)
+  search_region <- (if (any(global_found) & global_region) {
+    names(global_found[global_found][1])
+  } else {
+    region
+  })
   e <- endpoints[[get_region_pattern_js(names(endpoints), search_region)]]
   if (is.character(e)) {
     e <- list(endpoint = e, global = FALSE)
@@ -196,10 +195,7 @@ resolver_endpoint_js <- function(
     region <- set_sts_region(sts_regional_endpoint, region)
   }
   signing_region <- if (e[["global"]]) "us-east-1" else region
-  endpoint <- endpoint_unescape_js(e[["endpoint"]], service, signing_region)
-  if (grepl(HOST_PREFIX_RE, host_prefix)) {
-    endpoint <- sprintf("%s%s", host_prefix, endpoint)
-  }
+  endpoint <- fstring(e[["endpoint"]], list(service = service, region = signing_region))
   endpoint <- gsub("^(.+://)?", sprintf("%s://", scheme), endpoint)
 
   return(list(endpoint = endpoint, signing_region = signing_region))
@@ -238,8 +234,37 @@ get_region_pattern <- function(endpoints, region, partition_name = "") {
     result <- endpoints[["^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$"]]
   }
 
-  if (is.null(result[["signing_region"]])) result[["signing_region"]] <- region
+  if (is.null(result[["signing_region"]])) {
+    result[["signing_region"]] <- region
+  }
   return(result)
+}
+
+resolve_host_prefix <- function(host_prefix, endpoint, params) {
+  if (host_prefix == "") {
+    return(endpoint)
+  }
+
+  # return host prefix expression
+  if (!grepl("{", host_prefix, fixed = T)) {
+    return(sprintf("%s%s", host_prefix, endpoint))
+  }
+
+  host_labels <- params[vapply(params, \(param) get_host_label(param), FALSE)]
+  if (any(bad_label <- !grepl(HOST_PREFIX_RE, host_labels))) {
+    bad_label <- host_labels[bad_label]
+    stopf(
+      "Invalid value for parameter(s): {%s} Must contain only alphanumeric characters, hyphen, or period.",
+      paste(sprintf("%s: %s", names(bad_label), bad_label), collapse = ", ")
+    )
+  }
+
+  return(sprintf("%s%s", fstring(host_prefix, host_labels), endpoint))
+}
+
+get_host_label <- function(param) {
+  tags <- attr(param, "tags", exact = TRUE)
+  !is.null(tags[["hostLabel"]])
 }
 
 # client_config returns a ClientConfig configured for the service.
@@ -271,7 +296,6 @@ client_config <- function(
         signing_region,
         endpoints,
         sess[["config"]][["sts_regional_endpoint"]],
-        host_prefix = operation[["host_prefix"]],
         partition_name = sess[["config"]][["partition_name"]]
       )
       endpoint <- re[["endpoint"]]
