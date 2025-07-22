@@ -19,8 +19,7 @@ config(
   s3_force_path_style = FALSE,
   s3_virtual_address = FALSE,
   sts_regional_endpoint = "",
-  signature_version = "",
-  partition_name = ""
+  signature_version = ""
 )
 
 credentials(

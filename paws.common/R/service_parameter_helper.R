@@ -80,7 +80,7 @@ config <- function (credentials = list(creds = list(access_key_id = "",
     expiration = Inf), profile = "", anonymous = FALSE), endpoint = "", 
     region = "", close_connection = FALSE, max_retries = 3, connect_timeout = 60, 
     s3_force_path_style = FALSE, s3_virtual_address = FALSE, 
-    sts_regional_endpoint = "", signature_version = "", partition_name = "") 
+    sts_regional_endpoint = "", signature_version = "") 
 {
     .args <- as.list(environment(), all.names = TRUE)
     class(.args) <- "struct"
