@@ -273,7 +273,9 @@ get_profile_name <- function(profile = "") {
   if (!is.null(profile) && profile != "") {
     return(profile)
   }
-  if ((profile <- get_env("AWS_PROFILE")) == "") profile <- "default"
+  if ((profile <- get_env("AWS_PROFILE")) == "") {
+    profile <- "default"
+  }
   return(profile)
 }
 
@@ -287,7 +289,9 @@ check_config_file_region <- function(profile = "") {
   }
 
   profile <- get_profile_name(profile)
-  if (profile != "default") profile <- paste("profile", profile)
+  if (profile != "default") {
+    profile <- paste("profile", profile)
+  }
 
   config_values <- read_ini(config_path)
 
@@ -339,7 +343,9 @@ check_config_file_endpoint <- function(profile = "", service_id = "") {
     return(NULL)
   }
   profile_name <- get_profile_name(profile)
-  if (profile_name != "default") profile_name <- paste("profile", profile_name)
+  if (profile_name != "default") {
+    profile_name <- paste("profile", profile_name)
+  }
   config_values <- read_ini(config_path)
   if (is.null(profile <- config_values[[profile_name]])) {
     return(NULL)
@@ -363,7 +369,9 @@ get_role_arn <- function(role_arn = "") {
 
   role_arn <- get_env("AWS_ROLE_ARN")
 
-  if (role_arn == "") stop("No Role ARN provided")
+  if (role_arn == "") {
+    stop("No Role ARN provided")
+  }
 
   return(role_arn)
 }
@@ -376,7 +384,9 @@ get_role_session_name <- function(role_session_name = "") {
 
   role_session_name <- get_env("AWS_ROLE_SESSION_NAME")
 
-  if (role_session_name == "") role_session_name <- "default"
+  if (role_session_name == "") {
+    role_session_name <- "default"
+  }
 
   return(role_session_name)
 }
@@ -389,7 +399,9 @@ get_web_identity_token_file <- function(web_identity_token_file = "") {
 
   web_identity_token_file <- get_env("AWS_WEB_IDENTITY_TOKEN_FILE")
 
-  if (web_identity_token_file == "") stop("No WebIdentityToken file available")
+  if (web_identity_token_file == "") {
+    stop("No WebIdentityToken file available")
+  }
 
   return(web_identity_token_file)
 }
@@ -406,7 +418,9 @@ check_config_file_sts_regional_endpoint <- function(profile = "") {
   }
 
   profile <- get_profile_name(profile)
-  if (profile != "default") profile <- paste("profile", profile)
+  if (profile != "default") {
+    profile <- paste("profile", profile)
+  }
 
   config_values <- read_ini(config_path)
 
