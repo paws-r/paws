@@ -61,6 +61,10 @@ default_json_scalar.NULL <- function(values) {
   return("[]")
 }
 
+default_json_scalar.character <- function(values) {
+  return(json_convert_string(values))
+}
+
 default_json_scalar.POSIXct <- function() {
   return(as.character(as.numeric(values)))
 }
