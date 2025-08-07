@@ -17,8 +17,7 @@ convert_type <- function(value, timestamp_format) {
 # Convert a value to a base64-encoded string.
 # e.g. "foo" (raw: 66 6f 6f) -> "Zm9v".
 convert_blob <- function(blob) {
-  string <- raw_to_base64(blob)
-  return(string)
+  return(raw_to_base64(blob))
 }
 
 # Convert a "truthy" R value to a string.
@@ -36,6 +35,34 @@ convert_timestamp <- function(timestamp, timestamp_format) {
     string <- format(timestamp, format = format_string)
   }
   return(string)
+}
+
+default_json_scalar <- function(values) {
+  UseMethod("default_json_scalar")
+}
+
+default_json_scalar.default <- function(values) {
+  return(sprintf('"%s"', values))
+}
+
+default_json_scalar.raw <- function(values) {
+  return(raw_to_base64(blob))
+}
+
+default_json_scalar.logical <- function(values) {
+  return(convert_boolean(values))
+}
+
+default_json_scalar.numeric <- function(values) {
+  return(as.character(values))
+}
+
+default_json_scalar.NULL <- function(values) {
+  return("[]")
+}
+
+default_json_scalar.POSIXct <- function() {
+  return(as.character(as.numeric(values)))
 }
 
 #-------------------------------------------------------------------------------
