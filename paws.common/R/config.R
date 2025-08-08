@@ -456,25 +456,26 @@ build_config <- function(cfg) {
   add_list <- function(x) if (length(x) == 0) NULL else x
 
   # Pre-compute names once (avoid repeated function calls)
-  config_names <- names(Config())
   credentials_names <- names(Credentials())
   cred_names <- names(Creds())
 
   # Filter names vectorized (avoid loops)
   cred_names <- cred_names[cred_names != "provider_name"]
   credentials_names <- credentials_names[!(credentials_names %in% c("provider", "creds"))]
-  config_names <- config_names[config_names != "credentials"]
 
-  if (!is.null(credentials <- cfg[["credentials"]])) {
+  if (length(credentials <- as.list(cfg[["credentials"]])) > 0) {
     nms <- names(credentials) %in% credentials_names
     credentials[nms] <- credentials[nms]
 
-    if (!is.null(creds <- credentials[["creds"]])) {
+    if (length(creds <- as.list(credentials[["creds"]])) > 0) {
       credentials[["creds"]] <- add_list(creds[names(creds) %in% cred_names])
     }
   }
-  config <- cfg[names(cfg) %in% config_names]
+  config <- list()
   config[["credentials"]] <- add_list(credentials)
+  cfg <- cfg[lengths(cfg) > 0]
+  cfg_nms <- names(cfg)[names(cfg) != "credentials"]
+  config[cfg_nms] <- cfg[cfg_nms]
   return(config)
 }
 
