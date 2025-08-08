@@ -46,7 +46,7 @@ default_json_scalar.default <- function(values) {
 }
 
 default_json_scalar.raw <- function(values) {
-  return(raw_to_base64(blob))
+  return(raw_to_base64(values))
 }
 
 default_json_scalar.logical <- function(values) {
@@ -65,7 +65,7 @@ default_json_scalar.character <- function(values) {
   return(json_convert_string(values))
 }
 
-default_json_scalar.POSIXct <- function() {
+default_json_scalar.POSIXct <- function(values) {
   return(as.character(as.numeric(values)))
 }
 

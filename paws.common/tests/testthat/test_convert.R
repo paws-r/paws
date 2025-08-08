@@ -35,3 +35,13 @@ test_that("convert_type", {
   expect_equal("1262304000", convert_type(value, timestamp_format = "unix"))
   expect_error(convert_type(value, timestamp_format = "invalid"))
 })
+
+
+test_that("default_json_scalar", {
+  expect_equal(default_json_scalar("foo"), '"foo"')
+  expect_equal(default_json_scalar(charToRaw("foo")), "Zm9v")
+  expect_equal(default_json_scalar(TRUE), 'true')
+  expect_equal(default_json_scalar(123), '123')
+  expect_equal(default_json_scalar(NULL), '[]')
+  expect_equal(default_json_scalar(as.POSIXct("2025-01-01", tz = "UTC")), "1735689600")
+})
