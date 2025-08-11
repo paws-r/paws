@@ -46,7 +46,7 @@ populate_list <- function(input, interface) {
     return(input)
   }
   attrs <- attributes(interface)
-  interface <- lapply(input, function(x) populate(x, interface[[1]]))
+  interface <- lapply(input, populate, interface = interface[[1]])
   attributes(interface) <- attrs
   return(interface)
 }
@@ -58,10 +58,8 @@ populate_map <- function(input, interface) {
   if (length(interface) == 0) {
     return(input)
   }
-  result <- list()
-  for (name in names(input)) {
-    result[[name]] <- populate(input[[name]], interface[[1]])
-  }
+  result <- lapply(input, populate, interface = interface[[1]])
+  names(result) <- names(input)
   attributes(result) <- c(attributes(result), attributes(interface))
   return(result)
 }
