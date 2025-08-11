@@ -58,10 +58,11 @@ rest_build_location_elements <- function(request, values, build_get_query) {
 
 rest_build_header_map <- function(header, values) {
   prefix <- tag_get(values, "locationName")
-  for (key in names(values)) {
-    value <- values[[key]]
-    header[[paste0(prefix, key)]] <- convert_type(value, timestamp_format = "unix")
-  }
+  header[paste0(prefix, names(values))] <- lapply(
+    values,
+    convert_type,
+    timestamp_format = "unix"
+  )
   return(header)
 }
 
@@ -94,9 +95,8 @@ rest_build_query_string <- function(query, field, name) {
   if (t == "list") {
     query[[name]] <- field
   } else if (t == "map") {
-    for (key in char_sort(names(field))) {
-      query[[key]] <- field[[key]]
-    }
+    sorted_keys <- char_sort(names(field))
+    query[sorted_keys] <- field[sorted_keys]
   } else {
     query[[name]] <- convert_type(field, timestamp_format = "iso8601")
   }
