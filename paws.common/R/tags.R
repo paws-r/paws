@@ -88,23 +88,20 @@ tag_add <- function(object, tags) {
 #' @rdname tags
 #' @export
 tag_del <- function(object, tags = NULL) {
-  result <- object
   if (is.null(tags)) {
-    attr(result, "tags") <- NULL
+    attr(object, "tags") <- NULL
   } else {
     this_tags <- attr(object, "tags", exact = TRUE)
-    for (tag in tags) {
-      this_tags[[tag]] <- NULL
-    }
-    attr(result, "tags") <- this_tags
+    this_tags[tags] <- NULL
+    attr(object, "tags") <- this_tags
   }
-  if (is_atomic(result)) {
-    return(result)
+  if (is_atomic(object)) {
+    return(object)
   }
-  for (i in seq_along(result)) {
-    result[[i]] <- tag_del(result[[i]], tags)
+  for (i in seq_along(object)) {
+    object[[i]] <- tag_del(object[[i]], tags)
   }
-  return(result)
+  return(object)
 }
 
 #-------------------------------------------------------------------------------
