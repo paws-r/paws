@@ -1,3 +1,6 @@
+# paws.common 0.8.5.9000
+* fix default json scalar from standard `'"%s"'` and use R classes to determine json parsing.
+
 # paws.common 0.8.5
 * restrict httr2 version (#933). Thanks to @idavydov for raising the issue.
 * fix host prefix allowing for parameters to be passed in based on hostLabel (#941). Thanks to @dannypage for raising the issue.

@@ -109,7 +109,10 @@ set_paws_vendor <- function() {
   where <- topenv(parent.frame(n = 2))
   pkg_name <- get0(".packageName", where, inherits = FALSE)
   if (!is.null(pkg_name) && startsWith(pkg_name, "paws.") && pkg_name != "paws.common") {
-    vendor <- (if (packageVersion(pkg_name) >= numeric_version("0.8.0")) "boto" else "js")
+    vendor <- "js"
+    if (packageVersion(pkg_name) >= numeric_version("0.8.0")) {
+      vendor <- "boto"
+    }
     vendor_cache[["vendor"]] <- vendor
   }
 }
@@ -452,32 +455,27 @@ get_sts_regional_endpoint <- function(profile = "") {
 build_config <- function(cfg) {
   add_list <- function(x) if (length(x) == 0) NULL else x
 
-  creds <- list()
-  credentials <- list()
-  config <- list()
-
+  # Pre-compute names once (avoid repeated function calls)
+  credentials_names <- names(Credentials())
   cred_names <- names(Creds())
-  credentails_names <- names(Credentials())
-  cred_names <- cred_names[cred_names != "provider_name"]
-  credentails_names <- credentails_names[credentails_names != "provider"]
 
-  for (cfg_name in names(cfg)) {
-    if (cfg_name == "credentials") {
-      for (credentails_name in credentails_names) {
-        if (credentails_name == "creds") {
-          for (cred_name in cred_names) {
-            creds[[cred_name]] <- cfg[[cfg_name]][[credentails_name]][[cred_name]]
-          }
-          credentials[[credentails_name]] <- add_list(creds)
-        } else {
-          credentials[[credentails_name]] <- cfg[[cfg_name]][[credentails_name]]
-        }
-      }
-      config[[cfg_name]] <- add_list(credentials)
-    } else {
-      config[[cfg_name]] <- cfg[[cfg_name]]
+  # Filter names vectorized (avoid loops)
+  cred_names <- cred_names[cred_names != "provider_name"]
+  credentials_names <- credentials_names[!(credentials_names %in% c("provider", "creds"))]
+
+  if (length(credentials <- as.list(cfg[["credentials"]])) > 0) {
+    nms <- names(credentials) %in% credentials_names
+    credentials[nms] <- credentials[nms]
+
+    if (length(creds <- as.list(credentials[["creds"]])) > 0) {
+      credentials[["creds"]] <- add_list(creds[names(creds) %in% cred_names])
     }
   }
+  config <- list()
+  config[["credentials"]] <- add_list(credentials)
+  cfg <- cfg[lengths(cfg) > 0]
+  cfg_nms <- names(cfg)[names(cfg) != "credentials"]
+  config[cfg_nms] <- cfg[cfg_nms]
   return(config)
 }
 

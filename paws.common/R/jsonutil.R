@@ -130,7 +130,7 @@ json_build_scalar <- function(values) {
     long = as.character(values),
     string = json_convert_string(values),
     timestamp = as.character(as.numeric(values)),
-    sprintf('"%s"', values)
+    default_json_scalar(values)
   )
   return(s)
 }

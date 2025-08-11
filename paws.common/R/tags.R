@@ -41,18 +41,14 @@ NULL
 #' @export
 tag_get <- function(object, tag) {
   tags <- attr(object, "tags", exact = TRUE)
-  if (tag %in% names(tags)) {
-    return(tags[[tag]])
-  }
-  return("")
+  if (!is.null(result <- tags[[tag]])) result else ""
 }
 
 # Returns all tags on an object as a list.
 #' @rdname tags
 #' @export
 tag_get_all <- function(object) {
-  tags <- attr(object, "tags", exact = TRUE)
-  return(tags)
+  return(attr(object, "tags", exact = TRUE))
 }
 
 # Returns whether the object has the given tag.
@@ -60,7 +56,7 @@ tag_get_all <- function(object) {
 #' @export
 tag_has <- function(object, tag) {
   tags <- attr(object, "tags", exact = TRUE)
-  return(tag %in% names(tags))
+  return(!is.null(tags[[tag]]))
 }
 
 # Add a tag to an object.
@@ -72,12 +68,11 @@ tag_has <- function(object, tag) {
 #' @export
 tag_add <- function(object, tags) {
   keys_to_ignore <- c("documentation")
-
-  keys_to_add <- setdiff(names(tags), keys_to_ignore)
+  keys_to_add <- set_diff(names(tags), keys_to_ignore)
   tags_to_add <- tags[keys_to_add]
 
   existing_tags <- attr(object, "tags")
-  tags_to_keep <- existing_tags[setdiff(names(existing_tags), keys_to_add)]
+  tags_to_keep <- existing_tags[set_diff(names(existing_tags), keys_to_add)]
 
   attr(object, "tags") <- c(tags_to_keep, tags_to_add)
   return(object)
@@ -88,23 +83,20 @@ tag_add <- function(object, tags) {
 #' @rdname tags
 #' @export
 tag_del <- function(object, tags = NULL) {
-  result <- object
   if (is.null(tags)) {
-    attr(result, "tags") <- NULL
+    attr(object, "tags") <- NULL
   } else {
     this_tags <- attr(object, "tags", exact = TRUE)
-    for (tag in tags) {
-      this_tags[[tag]] <- NULL
-    }
-    attr(result, "tags") <- this_tags
+    this_tags[tags] <- NULL
+    attr(object, "tags") <- this_tags
   }
-  if (is_atomic(result)) {
-    return(result)
+  if (is_atomic(object)) {
+    return(object)
   }
-  for (i in seq_along(result)) {
-    result[[i]] <- tag_del(result[[i]], tags)
+  for (i in seq_along(object)) {
+    object[[i]] <- tag_del(object[[i]], tags)
   }
-  return(result)
+  return(object)
 }
 
 #-------------------------------------------------------------------------------

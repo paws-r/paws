@@ -263,3 +263,14 @@ set_paws_options <- function() {
 
   do.call(options, paws_options)
 }
+
+set_diff <- function(x, y) {
+  if (is.null(x)) {
+    return(NULL)
+  }
+  x <- unique(x)
+  y <- unique(y)
+  result <- x[match(x, y, 0L) == 0L]
+  names(result) <- NULL
+  return(result)
+}
