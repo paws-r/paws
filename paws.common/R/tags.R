@@ -72,12 +72,11 @@ tag_has <- function(object, tag) {
 #' @export
 tag_add <- function(object, tags) {
   keys_to_ignore <- c("documentation")
-
-  keys_to_add <- setdiff(names(tags), keys_to_ignore)
+  keys_to_add <- set_diff(names(tags), keys_to_ignore)
   tags_to_add <- tags[keys_to_add]
 
   existing_tags <- attr(object, "tags")
-  tags_to_keep <- existing_tags[setdiff(names(existing_tags), keys_to_add)]
+  tags_to_keep <- existing_tags[set_diff(names(existing_tags), keys_to_add)]
 
   attr(object, "tags") <- c(tags_to_keep, tags_to_add)
   return(object)
