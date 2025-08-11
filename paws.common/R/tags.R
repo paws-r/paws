@@ -41,18 +41,14 @@ NULL
 #' @export
 tag_get <- function(object, tag) {
   tags <- attr(object, "tags", exact = TRUE)
-  if (tag %in% names(tags)) {
-    return(tags[[tag]])
-  }
-  return("")
+  if (!is.null(result <- tags[[tag]])) result else ""
 }
 
 # Returns all tags on an object as a list.
 #' @rdname tags
 #' @export
 tag_get_all <- function(object) {
-  tags <- attr(object, "tags", exact = TRUE)
-  return(tags)
+  return(attr(object, "tags", exact = TRUE))
 }
 
 # Returns whether the object has the given tag.
@@ -60,7 +56,7 @@ tag_get_all <- function(object) {
 #' @export
 tag_has <- function(object, tag) {
   tags <- attr(object, "tags", exact = TRUE)
-  return(tag %in% names(tags))
+  return(!is.null(tags[[tag]]))
 }
 
 # Add a tag to an object.
