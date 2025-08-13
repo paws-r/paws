@@ -67,6 +67,17 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// json_build_any
+std::string json_build_any(SEXP values);
+RcppExport SEXP _paws_common_json_build_any(SEXP valuesSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type values(valuesSEXP);
+    rcpp_result_gen = Rcpp::wrap(json_build_any(values));
+    return rcpp_result_gen;
+END_RCPP
+}
 // json_convert_string
 CharacterVector json_convert_string(CharacterVector x);
 RcppExport SEXP _paws_common_json_convert_string(SEXP xSEXP) {
@@ -174,6 +185,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_paws_common_fstring", (DL_FUNC) &_paws_common_fstring, 2},
     {"_paws_common_scan_ini_file", (DL_FUNC) &_paws_common_scan_ini_file, 1},
     {"_paws_common_process_profile_name", (DL_FUNC) &_paws_common_process_profile_name, 1},
+    {"_paws_common_json_build_any", (DL_FUNC) &_paws_common_json_build_any, 1},
     {"_paws_common_json_convert_string", (DL_FUNC) &_paws_common_json_convert_string, 1},
     {"_paws_common_check_global", (DL_FUNC) &_paws_common_check_global, 1},
     {"_paws_common_get_region_pattern_js", (DL_FUNC) &_paws_common_get_region_pattern_js, 2},

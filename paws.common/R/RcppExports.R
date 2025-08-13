@@ -31,6 +31,12 @@ process_profile_name <- function(vec) {
     .Call('_paws_common_process_profile_name', PACKAGE = 'paws.common', vec)
 }
 
+#' @useDynLib paws.common _paws_common_json_build_any
+#' @importFrom Rcpp evalCpp
+json_build_any <- function(values) {
+    .Call('_paws_common_json_build_any', PACKAGE = 'paws.common', values)
+}
+
 #' @useDynLib paws.common _paws_common_json_convert_string
 #' @importFrom Rcpp evalCpp
 json_convert_string <- function(x) {

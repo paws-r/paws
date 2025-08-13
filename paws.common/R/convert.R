@@ -37,38 +37,6 @@ convert_timestamp <- function(timestamp, timestamp_format) {
   return(string)
 }
 
-default_json_scalar <- function(values) {
-  UseMethod("default_json_scalar")
-}
-
-default_json_scalar.default <- function(values) {
-  return(sprintf('"%s"', values))
-}
-
-default_json_scalar.raw <- function(values) {
-  return(raw_to_base64(values))
-}
-
-default_json_scalar.logical <- function(values) {
-  return(convert_boolean(values))
-}
-
-default_json_scalar.numeric <- function(values) {
-  return(as.character(values))
-}
-
-default_json_scalar.NULL <- function(values) {
-  return("[]")
-}
-
-default_json_scalar.character <- function(values) {
-  return(json_convert_string(values))
-}
-
-default_json_scalar.POSIXct <- function(values) {
-  return(as.character(as.numeric(values)))
-}
-
 #-------------------------------------------------------------------------------
 
 # Convert a base64-encoded value to a raw vector.

@@ -3,6 +3,8 @@
 #include <array>
 #include <cstdio>
 
+#include "utils.h"
+
 using namespace Rcpp;
 
 /**
@@ -75,4 +77,33 @@ CharacterVector uuid_v4(size_t n = 1)
   }
 
   return uuids;
+}
+
+// -------------------- Base64 --------------------
+static const std::string base64_chars =
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  "abcdefghijklmnopqrstuvwxyz"
+  "0123456789+/";
+
+std::string base64_encode(const Rcpp::RawVector& bytes) {
+  if (bytes.size() == 0) return "";
+  
+  std::string ret;
+  ret.reserve(((bytes.size() + 2) / 3) * 4); // More precise allocation
+  
+  const unsigned char* data = bytes.begin();
+  size_t len = bytes.size();
+  
+  for (size_t i = 0; i < len; i += 3) {
+    uint32_t val = static_cast<uint32_t>(data[i]) << 16;
+    if (i + 1 < len) val |= static_cast<uint32_t>(data[i + 1]) << 8;
+    if (i + 2 < len) val |= static_cast<uint32_t>(data[i + 2]);
+    
+    ret += base64_chars[(val >> 18) & 0x3F];
+    ret += base64_chars[(val >> 12) & 0x3F];
+    ret += (i + 1 < len) ? base64_chars[(val >> 6) & 0x3F] : '=';
+    ret += (i + 2 < len) ? base64_chars[val & 0x3F] : '=';
+  }
+  
+  return ret;
 }
