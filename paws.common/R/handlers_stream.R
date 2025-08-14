@@ -119,7 +119,7 @@ paws_stream_parser <- function(con) {
   }
 
   if (check_push_back(con)) {
-    close(con$body)
+    con_close(con$body)
     return(NULL)
   }
 
@@ -153,10 +153,10 @@ get_aws_buffer <- function(con) {
       return(result$matched)
     }
 
-    chunk <- readBin(con$body, raw(), n = .PAYLOAD_KB)
+    chunk <- con_read_stream(con$body, n = .PAYLOAD_KB)
 
     if (length(chunk) == 0) {
-      if (!isIncomplete(con$body)) {
+      if (con_is_complete(con$body)) {
         # We've truly reached the end of the connection; no more data is coming
         if (length(buffer) == 0) {
           return(NULL)
@@ -170,14 +170,59 @@ get_aws_buffer <- function(con) {
   }
 }
 
+###### Helper methods for curl & StreamingBody ######
+con_is_complete <- function(con) {
+  UseMethod("con_is_complete")
+}
+
+con_is_complete.rawConnection <- con_is_complete.curl <- function(con) {
+  return(!isIncomplete(con))
+}
+
+con_is_complete.StreamingBody <- function(con) {
+  return(con$is_complete())
+}
+
+con_close <- function(con) {
+  UseMethod("con_close")
+}
+
+con_close.rawConnection <- con_close.curl <- function(con) {
+  return(close(con))
+}
+
+con_close.StreamingBody <- function(con) {
+  return(con$close())
+}
+
+con_is_valid <- function(con) {
+  UseMethod("con_is_valid")
+}
+
 # Developed from httr2:::isValid
 # https://github.com/r-lib/httr2/blob/main/R/resp-stream.R#L479-L491
-con_is_valid <- function(con) {
+con_is_valid.rawConnection <- con_is_valid.curl <- function(con) {
   tryCatch(identical(getConnection(con), con), error = function(cnd) FALSE)
 }
 
+con_is_valid.StreamingBody <- function(con) {
+  return(con$is_open())
+}
+
+con_read_stream <- function(con, n = .PAYLOAD_KB) {
+  UseMethod("con_read_stream")
+}
+
+con_read_stream.rawConnection <- con_read_stream.curl <- function(con, n = .PAYLOAD_KB) {
+  readBin(con, raw(), n = n)
+}
+
+con_read_stream.StreamingBody <- function(con, n = .PAYLOAD_KB) {
+  con$read(n = n)
+}
+
 check_push_back <- function(con) {
-  !isIncomplete(con$body) && length(con$cache$push_back) == 0
+  con_is_complete(con$body) && length(con$cache$push_back) == 0
 }
 
 ################ stream unmarshal ################
@@ -204,11 +249,12 @@ get_connection_error <- function(payload, stream_api) {
   return(payload)
 }
 
+# Support older versions of httr2
 stream_raw <- function(con) {
-  on.exit(close(con))
+  on.exit(con_close(con))
   total <- raw()
-  while (isIncomplete(con)) {
-    total <- c(total, readBin(con, raw(), n = .PAYLOAD_KB))
+  while (!con_is_complete(con)) {
+    total <- c(total, con_read_stream(con, n = .PAYLOAD_KB))
   }
   return(total)
 }

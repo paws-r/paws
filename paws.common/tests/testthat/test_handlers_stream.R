@@ -234,8 +234,8 @@ test_that("check json paws_stream_parser", {
 })
 
 test_that("check stream_raw", {
-  mock_isIncomplete <- mock2(TRUE, FALSE)
-  mockery::stub(stream_raw, "isIncomplete", mock_isIncomplete)
+  mock_isIncomplete <- mock2(FALSE, TRUE)
+  mockery::stub(stream_raw, "con_is_complete", mock_isIncomplete)
 
   bytes <- as.raw(as.integer(runif(100) * 100))
   con <- rawConnection(bytes)
