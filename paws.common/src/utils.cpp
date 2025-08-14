@@ -86,23 +86,42 @@ static const std::string base64_chars =
   "0123456789+/";
 
 std::string base64_encode(const Rcpp::RawVector& bytes) {
-  if (bytes.size() == 0) return "";
+  const size_t len = bytes.size();
+  if (len == 0) return "";
   
-  std::string ret;
-  ret.reserve(((bytes.size() + 2) / 3) * 4); // More precise allocation
+  const size_t output_len = ((len + 2) / 3) * 4;
+  std::string ret(output_len, '\0');
+  char* out = &ret[0];
   
-  const unsigned char* data = bytes.begin();
-  size_t len = bytes.size();
+  const unsigned char* in = bytes.begin();
+  const unsigned char* end = in + len;
   
-  for (size_t i = 0; i < len; i += 3) {
-    uint32_t val = static_cast<uint32_t>(data[i]) << 16;
-    if (i + 1 < len) val |= static_cast<uint32_t>(data[i + 1]) << 8;
-    if (i + 2 < len) val |= static_cast<uint32_t>(data[i + 2]);
+  // Process groups of 3 bytes at a time
+  while (in + 2 < end) {
+    const uint32_t val = (static_cast<uint32_t>(in[0]) << 16) |
+                        (static_cast<uint32_t>(in[1]) << 8) |
+                         static_cast<uint32_t>(in[2]);
     
-    ret += base64_chars[(val >> 18) & 0x3F];
-    ret += base64_chars[(val >> 12) & 0x3F];
-    ret += (i + 1 < len) ? base64_chars[(val >> 6) & 0x3F] : '=';
-    ret += (i + 2 < len) ? base64_chars[val & 0x3F] : '=';
+    out[0] = base64_chars[val >> 18];
+    out[1] = base64_chars[(val >> 12) & 0x3F];
+    out[2] = base64_chars[(val >> 6) & 0x3F];
+    out[3] = base64_chars[val & 0x3F];
+    
+    in += 3;
+    out += 4;
+  }
+  
+  // Handle remaining 1 or 2 bytes
+  if (in < end) {
+    uint32_t val = static_cast<uint32_t>(in[0]) << 16;
+    if (in + 1 < end) {
+      val |= static_cast<uint32_t>(in[1]) << 8;
+    }
+    
+    out[0] = base64_chars[val >> 18];
+    out[1] = base64_chars[(val >> 12) & 0x3F];
+    out[2] = (in + 1 < end) ? base64_chars[(val >> 6) & 0x3F] : '=';
+    out[3] = '=';
   }
   
   return ret;
