@@ -1,5 +1,6 @@
 #include <Rcpp.h>
 using namespace Rcpp;
+#include "json_escape.h"
 
 // Developed from:
 // https://stackoverflow.com/questions/25609174/fast-escaping-deparsing-of-character-vectors-in-r
@@ -122,6 +123,7 @@ std::string json_escape(std::string x)
 
   return out;
 }
+
 
 /**
  * @brief Escapes Json string
