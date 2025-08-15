@@ -249,7 +249,6 @@ get_connection_error <- function(payload, stream_api) {
   return(payload)
 }
 
-# Support older versions of httr2
 stream_raw <- function(con) {
   on.exit(con_close(con))
   total <- raw()
