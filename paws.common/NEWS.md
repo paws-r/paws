@@ -1,5 +1,6 @@
-# paws.common 0.8.5.9000
+# paws.common 0.8.6
 * fix default json scalar from standard `'"%s"'` and use R classes to determine json parsing.
+* support `httr2:::StreamingBody` class
 
 # paws.common 0.8.5
 * restrict httr2 version (#933). Thanks to @idavydov for raising the issue.
