@@ -135,7 +135,7 @@ services/"
       # ignore this as this only available in IMDSv2.
       mock_imdsv1_response_for_imdsv2_request <- HttpResponse(
         status_code = 404,
-        header = c(
+        header = list(
           "Server" = "EC2ws",
           "Connection" = "Close",
           "Content-Type" = "text/plain",
@@ -155,7 +155,7 @@ services/"
       # provide response according to IMDSv1
       mock_imdsv1_metadata_response <- HttpResponse(
         status_code = 200,
-        header = c(
+        header = list(
           "Server" = "EC2ws",
           "Connection" = "Close",
           "Content-Type" = "text/plain",
@@ -169,7 +169,7 @@ services/"
     # if there is an invalid request in general return a HTTP error code
     mock_imdsv1_response_invalid_request <- HttpResponse(
       status_code = 405,
-      header = c(
+      header = list(
         "Server" = "EC2ws",
         "Connection" = "Close",
         "Content-Type" = "text/plain",
@@ -227,7 +227,7 @@ services/"
       # provide a valid IMDSv2 metadata service token
       mock_imdsv2_token_response <- HttpResponse(
         status_code = 200,
-        header = c(
+        header = list(
           "Server" = "EC2ws",
           "Connection" = "Close",
           "Content-Type" = "text/plain",
@@ -249,7 +249,7 @@ services/"
       # provide response according to IMDSv1
       mock_imdsv2_metadata_response <- HttpResponse(
         status_code = 200,
-        header = c(
+        header = list(
           "Server" = "EC2ws",
           "Connection" = "Close",
           "Content-Type" = "text/plain",
@@ -264,7 +264,7 @@ services/"
     # if there is an invalid request in general return a HTTP error code
     mock_imdsv1_response_invalid_request <- HttpResponse(
       status_code = 405,
-      header = c(
+      header = list(
         "Server" = "EC2ws",
         "Connection" = "Close",
         "Content-Type" = "text/plain",

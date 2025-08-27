@@ -218,7 +218,7 @@ get_instance_metadata <- function(query_path = "") {
     "PUT",
     metadata_token_url,
     timeout = 1,
-    header = c("X-aws-ec2-metadata-token-ttl-seconds" = token_ttl)
+    header = list("X-aws-ec2-metadata-token-ttl-seconds" = token_ttl)
   )
   metadata_token_response <- tryCatch(
     {
@@ -239,7 +239,7 @@ get_instance_metadata <- function(query_path = "") {
       "GET",
       metadata_url,
       timeout = 1,
-      header = c("X-aws-ec2-metadata-token" = token)
+      header = list("X-aws-ec2-metadata-token" = token)
     )
   } else {
     metadata_request <- new_http_request("GET", metadata_url, timeout = 1)
