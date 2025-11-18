@@ -3,9 +3,8 @@
 #' @include util.R
 
 ini_cache <- new.env(parent = emptyenv())
-
 os_env_cache <- new.env(parent = emptyenv())
-
+bearer_token_cache <- new.env(parent = emptyenv())
 vendor_cache <- list2env(list(vendor = "boto"), parent = emptyenv())
 
 set_os_env_cache <- function() {
@@ -27,9 +26,11 @@ set_os_env_cache <- function() {
 #' @description Clears down the cache environments.
 #' * `ini_cache`: an environment that stores the results from `read_ini`, mainly used for storing AWS config files.
 #' * `os_env_cache`: an environment that stores environmental variables from Unix Operating Systems.
+#' * `bearer_token_cache`: an environment that stores bearer tokens
 #' @export
 paws_reset_cache <- function() {
   rm(list = names(ini_cache), envir = ini_cache)
+  rm(list = names(bearer_token_cache), envir = bearer_token_cache)
   if (.Platform$OS.type == "unix") {
     rm(list = names(os_env_cache), envir = os_env_cache)
     set_os_env_cache()

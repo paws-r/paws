@@ -1,6 +1,7 @@
 #' @include credentials.R
 #' @include struct.R
 #' @include util.R
+#' @include signer_bearer.R
 NULL
 
 # AWS Signature Version 4 signing process.
@@ -95,7 +96,21 @@ SigningContext <- struct(
 
 # Signs an SDK request with the V4 signature.
 # See https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
+# If the service supports bearer authentication and a bearer token is available,
+# uses bearer authentication instead.
 v4_sign_request_handler <- function(request) {
+  # Check for service-specific bearer token for supported services
+  # Service-specific tokens (e.g., AWS_BEARER_TOKEN_BEDROCK) always take
+  # precedence over generic tokens (AWS_BEARER_TOKEN)
+  signing_name <- request$client_info$signing_name
+  if (signing_name %in% get_bearer_auth_supported_services()) {
+    service_creds <- get_bearer_token_for_service(signing_name)
+    if (!is.null(service_creds)) {
+      request$config$credentials$creds <- service_creds
+      return(bearer_sign_request_handler(request))
+    }
+  }
+  # Default to V4 signing
   return(sign_sdk_request_with_curr_time(request))
 }
 

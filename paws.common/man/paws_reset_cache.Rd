@@ -11,5 +11,6 @@ Clears down the cache environments.
 \itemize{
 \item \code{ini_cache}: an environment that stores the results from \code{read_ini}, mainly used for storing AWS config files.
 \item \code{os_env_cache}: an environment that stores environmental variables from Unix Operating Systems.
+\item \code{bearer_token_cache}: an environment that stores bearer tokens
 }
 }

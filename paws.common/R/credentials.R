@@ -10,6 +10,7 @@ Credentials <- struct(
   anonymous = FALSE,
   provider = list(
     anonymous_provider,
+    bearer_token_env_provider,
     env_provider,
     credentials_file_provider,
     config_file_provider,
@@ -61,8 +62,13 @@ is_credentials_provided <- function(creds, window = 5 * 60) {
     return(FALSE)
   }
   if (!is.null(creds$access_token) && creds$access_token != "") {
+    # Check if bearer token needs refresh
+    if (check_if_cred_needs_refresh(creds, window)) {
+      return(FALSE)
+    }
     return(TRUE)
   }
+  # Check for AWS access key credentials
   if (is.null(creds$access_key_id) || creds$access_key_id == "") {
     return(FALSE)
   }

@@ -161,3 +161,75 @@ test_that("check locate_credentials", {
 
   Sys.unsetenv(names(env))
 })
+
+# Test bearer token credentials validation
+test_that("bearer token credentials are provided", {
+  creds <- Creds(access_token = "my-bearer-token")
+
+  expect_true(is_credentials_provided(creds))
+})
+
+test_that("bearer token credentials not provided when token is empty", {
+  creds <- Creds(access_token = "")
+
+  expect_false(is_credentials_provided(creds))
+})
+
+test_that("bearer token credentials not provided when token is NULL", {
+  creds <- Creds(access_token = NULL)
+
+  expect_false(is_credentials_provided(creds))
+})
+
+test_that("bearer token credentials expired", {
+  # Expired token (1 second in past)
+  creds <- Creds(access_token = "token", expiration = 1000)
+
+  expect_false(is_credentials_provided(creds))
+
+  # Expired token (5 minutes in past)
+  creds <- Creds(access_token = "token", expiration = Sys.time() - 5 * 60)
+
+  expect_false(is_credentials_provided(creds))
+
+  # Valid token (30 minutes in future)
+  creds <- Creds(access_token = "token", expiration = Sys.time() + 30 * 60)
+
+  expect_true(is_credentials_provided(creds))
+
+  # Valid token (no expiration)
+  creds <- Creds(access_token = "token", expiration = Inf)
+
+  expect_true(is_credentials_provided(creds))
+})
+
+test_that("bearer token takes precedence over access keys", {
+  # When both are present, bearer token should be validated first
+  creds <- Creds(access_token = "valid-token", access_key_id = "", secret_access_key = "")
+
+  expect_true(is_credentials_provided(creds))
+})
+
+test_that("falls back to access keys when no bearer token", {
+  # When no bearer token, should validate access keys
+  creds <- Creds(access_token = "", access_key_id = "AKID", secret_access_key = "SECRET")
+
+  expect_true(is_credentials_provided(creds))
+})
+
+test_that("bearer token credential chain order", {
+  # Test that bearer token provider comes before standard env provider
+  env <- list(
+    "AWS_BEARER_TOKEN" = "my-bearer-token",
+    "AWS_ACCESS_KEY_ID" = "AKID",
+    "AWS_SECRET_ACCESS_KEY" = "SECRET"
+  )
+  do.call(Sys.setenv, env)
+
+  actual <- locate_credentials()
+
+  # Should get bearer token, not access keys
+  expect_equal(actual$access_token, "my-bearer-token")
+
+  Sys.unsetenv(names(env))
+})

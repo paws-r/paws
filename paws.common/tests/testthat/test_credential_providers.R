@@ -23,6 +23,110 @@ test_that("env_provider", {
   expect_null(creds)
 })
 
+test_that("bearer_token_env_provider", {
+  Sys.setenv("AWS_BEARER_TOKEN" = "test-token-abc")
+  creds <- bearer_token_env_provider()
+  expect_equal(creds$access_token, "test-token-abc")
+  expect_equal(creds$expiration, Inf)
+  expect_equal(creds$provider_name, "BearerTokenEnvProvider")
+
+  # Test with expiration
+  test_time <- format(Sys.time() + 3600, "%Y-%m-%dT%H:%M:%SZ")
+  Sys.setenv(
+    "AWS_BEARER_TOKEN" = "test-token-def",
+    "AWS_BEARER_TOKEN_EXPIRATION" = test_time
+  )
+  creds <- bearer_token_env_provider()
+  expect_equal(creds$access_token, "test-token-def")
+  expect_s3_class(creds$expiration, "POSIXct")
+  expect_true(is.finite(creds$expiration))
+
+  # Test returns NULL when no token
+  Sys.unsetenv(c("AWS_BEARER_TOKEN", "AWS_BEARER_TOKEN_EXPIRATION"))
+  creds <- bearer_token_env_provider()
+  expect_null(creds)
+})
+
+test_that("get_bearer_token_for_service", {
+  # Test service-specific token takes precedence
+  Sys.setenv(
+    "AWS_BEARER_TOKEN_BEDROCK" = "bedrock-token",
+    "AWS_BEARER_TOKEN" = "generic-token"
+  )
+  creds <- get_bearer_token_for_service("bedrock")
+  expect_equal(creds$access_token, "bedrock-token")
+  expect_equal(creds$provider_name, "BearerTokenServiceProvider")
+
+  # Test fallback to generic token
+  Sys.unsetenv("AWS_BEARER_TOKEN_BEDROCK")
+  paws_reset_cache() # Clear cache after unsetting env var
+  creds <- get_bearer_token_for_service("bedrock")
+  expect_equal(creds$access_token, "generic-token")
+
+  # Test service-specific expiration
+  test_time <- format(Sys.time() + 7200, "%Y-%m-%dT%H:%M:%SZ")
+  Sys.setenv(
+    "AWS_BEARER_TOKEN_S3" = "s3-token",
+    "AWS_BEARER_TOKEN_S3_EXPIRATION" = test_time
+  )
+  creds <- get_bearer_token_for_service("s3")
+  expect_equal(creds$access_token, "s3-token")
+  expect_s3_class(creds$expiration, "POSIXct")
+  expect_true(is.finite(creds$expiration))
+
+  # Test signing name with hyphens (e.g., bedrock-runtime)
+  Sys.setenv(
+    "AWS_BEARER_TOKEN_BEDROCK_RUNTIME" = "runtime-token",
+    "AWS_BEARER_TOKEN" = "generic-token"
+  )
+  creds <- get_bearer_token_for_service("bedrock-runtime")
+  expect_equal(creds$access_token, "runtime-token")
+
+  # Test returns NULL when no tokens
+  Sys.unsetenv(c(
+    "AWS_BEARER_TOKEN",
+    "AWS_BEARER_TOKEN_BEDROCK",
+    "AWS_BEARER_TOKEN_S3",
+    "AWS_BEARER_TOKEN_S3_EXPIRATION",
+    "AWS_BEARER_TOKEN_BEDROCK_RUNTIME"
+  ))
+  paws_reset_cache() # Clear cache after unsetting env vars
+  creds <- get_bearer_token_for_service("dynamodb")
+  expect_null(creds)
+})
+
+test_that("get_bearer_env_var_name", {
+  # Test basic signing name
+  expect_equal(
+    get_bearer_env_var_name("bedrock"),
+    "AWS_BEARER_TOKEN_BEDROCK"
+  )
+
+  # Test signing name with hyphens (should be replaced with underscores)
+  expect_equal(
+    get_bearer_env_var_name("bedrock-runtime"),
+    "AWS_BEARER_TOKEN_BEDROCK_RUNTIME"
+  )
+
+  # Test signing name with spaces (should be replaced with underscores)
+  expect_equal(
+    get_bearer_env_var_name("test service"),
+    "AWS_BEARER_TOKEN_TEST_SERVICE"
+  )
+
+  # Test signing name with mixed case (should be uppercased)
+  expect_equal(
+    get_bearer_env_var_name("BedrockRuntime"),
+    "AWS_BEARER_TOKEN_BEDROCKRUNTIME"
+  )
+
+  # Test signing name with hyphens and mixed case
+  expect_equal(
+    get_bearer_env_var_name("Bedrock-Runtime"),
+    "AWS_BEARER_TOKEN_BEDROCK_RUNTIME"
+  )
+})
+
 test_that("get_creds_from_sts_resp()", {
   test_access_key_id <- "AccessKeyId"
   test_secret_access_key <- "SecretAccessKey"

@@ -5,6 +5,7 @@
 #' @include iniutil.R
 #' @include logging.R
 #' @include util.R
+#' @include cache.R
 NULL
 
 Creds <- struct(
@@ -22,6 +23,71 @@ anonymous_provider <- function(anonymous) {
     return(NULL)
   }
   return(Creds())
+}
+
+# Retrieve bearer token from environment variables.
+# Bearer tokens can be service-specific (AWS_BEARER_TOKEN_<SERVICE>) or generic (AWS_BEARER_TOKEN).
+bearer_token_env_provider <- function() {
+  if (nzchar(bearer_token <- get_env("AWS_BEARER_TOKEN"))) {
+    expiration <- get_env("AWS_BEARER_TOKEN_EXPIRATION")
+    if (nzchar(expiration)) {
+      expiration <- as_timestamp(expiration, "iso8601")
+    } else {
+      expiration <- Inf
+    }
+    return(Creds(
+      access_token = bearer_token,
+      expiration = expiration,
+      provider_name = "BearerTokenEnvProvider"
+    ))
+  }
+  return(NULL)
+}
+
+# Get the environment variable name for a bearer token based on signing name.
+# Matches botocore's _get_bearer_env_var_name behavior:
+# - Replace hyphens and spaces with underscores
+# - Uppercase the result
+get_bearer_env_var_name <- function(signing_name) {
+  bearer_name <- gsub(" ", "_", gsub("-", "_", signing_name, fixed = TRUE), fixed = TRUE)
+  return(paste0("AWS_BEARER_TOKEN_", toupper(bearer_name)))
+}
+
+# Get bearer token for a specific service using its signing name.
+# Checks signing-name-specific environment variable first, then falls back to generic.
+get_bearer_token_for_service <- function(signing_name) {
+  # Check cache first
+  env_var_name <- get_bearer_env_var_name(signing_name)
+  token <- bearer_token_cache[[signing_name]]
+  if (is.null(token)) {
+    if (!nzchar(token <- get_env(env_var_name))) {
+      if (!nzchar(token <- get_env("AWS_BEARER_TOKEN"))) {
+        return(NULL)
+      }
+    }
+    # Cache the token
+    bearer_token_cache[[signing_name]] <- token
+  }
+
+  expiration <- get_expiration_timestamp(env_var_name)
+  return(Creds(
+    access_token = token,
+    expiration = expiration,
+    provider_name = "BearerTokenServiceProvider"
+  ))
+}
+
+# Helper function to handle expiration logic
+get_expiration_timestamp <- function(env_var_name) {
+  expiration <- get_env(paste0(env_var_name, "_EXPIRATION"))
+  if (nzchar(expiration)) {
+    return(as_timestamp(expiration, "iso8601"))
+  }
+  expiration <- get_env("AWS_BEARER_TOKEN_EXPIRATION")
+  if (nzchar(expiration)) {
+    return(as_timestamp(expiration, "iso8601"))
+  }
+  return(Inf)
 }
 
 # Retrieve credentials stored in R or OS environment variables.

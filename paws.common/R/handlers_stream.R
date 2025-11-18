@@ -175,10 +175,15 @@ con_is_complete <- function(con) {
   UseMethod("con_is_complete")
 }
 
-con_is_complete.rawConnection <- con_is_complete.curl <- function(con) {
+#' @export
+con_is_complete.rawConnection <- function(con) {
   return(!isIncomplete(con))
 }
 
+#' @export
+con_is_complete.curl <- con_is_complete.rawConnection
+
+#' @export
 con_is_complete.StreamingBody <- function(con) {
   return(con$is_complete())
 }
@@ -187,10 +192,15 @@ con_close <- function(con) {
   UseMethod("con_close")
 }
 
-con_close.rawConnection <- con_close.curl <- function(con) {
+#' @export
+con_close.rawConnection <- function(con) {
   return(close(con))
 }
 
+#' @export
+con_close.curl <- con_close.rawConnection
+
+#' @export
 con_close.StreamingBody <- function(con) {
   return(con$close())
 }
@@ -201,10 +211,15 @@ con_is_valid <- function(con) {
 
 # Developed from httr2:::isValid
 # https://github.com/r-lib/httr2/blob/main/R/resp-stream.R#L479-L491
-con_is_valid.rawConnection <- con_is_valid.curl <- function(con) {
+#' @export
+con_is_valid.rawConnection <- function(con) {
   tryCatch(identical(getConnection(con), con), error = function(cnd) FALSE)
 }
 
+#' @export
+con_is_valid.curl <- con_is_valid.rawConnection
+
+#' @export
 con_is_valid.StreamingBody <- function(con) {
   return(con$is_open())
 }
@@ -213,10 +228,15 @@ con_read_stream <- function(con, n = .PAYLOAD_KB) {
   UseMethod("con_read_stream")
 }
 
+#' @export
 con_read_stream.rawConnection <- con_read_stream.curl <- function(con, n = .PAYLOAD_KB) {
   readBin(con, raw(), n = n)
 }
 
+#' @export
+con_read_stream.curl <- con_read_stream.rawConnection
+
+#' @export
 con_read_stream.StreamingBody <- function(con, n = .PAYLOAD_KB) {
   con$read(n = n)
 }
