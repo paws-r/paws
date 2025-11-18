@@ -107,5 +107,3 @@ If you encounter issues with bearer token authentication:
 3.  Review the Bedrock service quotas and limits for your account
 
 For operations that require IAM credentials, refer to the [credentials documentation](credentials.md).
-
-[Original AWS Reference Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/api-keys-use.html)
