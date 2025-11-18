@@ -39,7 +39,7 @@ Suggests:
     testthat (>= 3.0.0)
 SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Collate:
     'RcppExports.R'
     'util.R'
@@ -86,6 +86,7 @@ Collate:
     'request.R'
     'retry.R'
     'service_parameter_helper.R'
+    'signer_bearer.R'
     'signer_v4.R'
     'signer_s3.R'
     'signer_s3v4.R'

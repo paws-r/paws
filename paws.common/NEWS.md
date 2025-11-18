@@ -1,6 +1,7 @@
 # paws.common 0.8.6
 * fix default json scalar from standard `'"%s"'` and use R classes to determine json parsing.
 * support `httr2:::StreamingBody` class
+* add support for bearer token authentication for AWS services (e.g., Bedrock). Bearer tokens can be provided via environment variables `AWS_BEARER_TOKEN` (generic) or `AWS_BEARER_TOKEN_<SERVICE>` (service-specific, e.g., `AWS_BEARER_TOKEN_BEDROCK`). Optional expiration can be set via `AWS_BEARER_TOKEN_EXPIRATION`. When available, bearer authentication is automatically used instead of AWS Signature V4 for supported services, following RFC 6750 Section 2.1 (#952). Thanks to @benhmin for raising issue.
 
 # paws.common 0.8.5
 * restrict httr2 version (#933). Thanks to @idavydov for raising the issue.
