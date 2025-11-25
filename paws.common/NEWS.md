@@ -1,5 +1,5 @@
 # paws.common 0.8.7
-* fix timezone handling in bearer token tests
+* fix timezone handling in bearer token tests (#955). Thanks to @kyleam for raising issue.
 
 # paws.common 0.8.6
 * fix default json scalar from standard `'"%s"'` and use R classes to determine json parsing.
