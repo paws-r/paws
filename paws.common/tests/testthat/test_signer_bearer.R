@@ -24,7 +24,7 @@ test_that("bearer_token_env_provider returns credentials with token", {
 })
 
 test_that("bearer_token_env_provider returns credentials with token and expiration", {
-  test_expiration <- format(Sys.time() + 3600, "%Y-%m-%dT%H:%M:%SZ")
+  test_expiration <- format(Sys.time() + 3600, "%Y-%m-%dT%H:%M:%SZ", tz = "GMT")
   Sys.setenv(
     "AWS_BEARER_TOKEN" = "test-bearer-token-456",
     "AWS_BEARER_TOKEN_EXPIRATION" = test_expiration
@@ -93,7 +93,7 @@ test_that("get_bearer_token_for_service falls back to generic token", {
 })
 
 test_that("get_bearer_token_for_service handles service-specific expiration", {
-  test_expiration <- format(Sys.time() + 7200, "%Y-%m-%dT%H:%M:%SZ")
+  test_expiration <- format(Sys.time() + 7200, "%Y-%m-%dT%H:%M:%SZ", tz = "GMT")
 
   withr::local_envvar(list(
     "AWS_BEARER_TOKEN_BEDROCK" = "bedrock-token",

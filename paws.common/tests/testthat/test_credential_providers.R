@@ -31,7 +31,7 @@ test_that("bearer_token_env_provider", {
   expect_equal(creds$provider_name, "BearerTokenEnvProvider")
 
   # Test with expiration
-  test_time <- format(Sys.time() + 3600, "%Y-%m-%dT%H:%M:%SZ")
+  test_time <- format(Sys.time() + 3600, "%Y-%m-%dT%H:%M:%SZ", tz = "GMT")
   Sys.setenv(
     "AWS_BEARER_TOKEN" = "test-token-def",
     "AWS_BEARER_TOKEN_EXPIRATION" = test_time
@@ -64,7 +64,7 @@ test_that("get_bearer_token_for_service", {
   expect_equal(creds$access_token, "generic-token")
 
   # Test service-specific expiration
-  test_time <- format(Sys.time() + 7200, "%Y-%m-%dT%H:%M:%SZ")
+  test_time <- format(Sys.time() + 7200, "%Y-%m-%dT%H:%M:%SZ", tz = "GMT")
   Sys.setenv(
     "AWS_BEARER_TOKEN_S3" = "s3-token",
     "AWS_BEARER_TOKEN_S3_EXPIRATION" = test_time
