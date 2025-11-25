@@ -1,5 +1,5 @@
 ## Submission
-This release addresses a couple of bugs.
+This release addresses unit test timezone issue
 
 ## Test environments
 
