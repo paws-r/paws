@@ -38,7 +38,7 @@ Suggests:
     withr,
     rstudioapi,
     testthat (>= 3.0.0)
-SystemRequirements: C++14, pandoc (>= 1.12.3) - http://pandoc.org
+SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
 RoxygenNote: 7.3.3
 Collate:

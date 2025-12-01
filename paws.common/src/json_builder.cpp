@@ -427,7 +427,7 @@ inline std::string json_build_map(SEXP values)
 
   // Sort the vector based on the string key in each pair
   std::sort(named_elements.begin(), named_elements.end(),
-            [](const auto &a, const auto &b)
+            [](const std::pair<std::string, SEXP> &a, const std::pair<std::string, SEXP> &b)
             {
               return a.first < b.first;
             });
