@@ -1,3 +1,6 @@
+# paws.common 0.8.8
+* fix C++ standard compatibility for older R versions by explicitly requiring C++14 and R >= 4.1.0 (#957). Thanks to @detule for raising the issue.
+
 # paws.common 0.8.7
 * fix timezone handling in bearer token tests (#955). Thanks to @kyleam for raising issue.
 

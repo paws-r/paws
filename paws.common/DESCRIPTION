@@ -1,7 +1,7 @@
 Package: paws.common
 Type: Package
 Title: Paws Low-Level Amazon Web Services API
-Version: 0.8.7
+Version: 0.8.8
 Authors@R: c(
         person("David", "Kretch", email = "david.kretch@gmail.com", role = "aut"),
         person("Adam", "Banker", email = "adam.banker39@gmail.com", role = "aut"),
@@ -14,6 +14,7 @@ Description: Functions for making low-level API requests to Amazon Web Services
     higher-level interfaces to individual services, such as Simple Storage
     Service (S3).
 License: Apache License (>= 2.0)
+Depends: R (>= 4.1.0)
 URL: https://github.com/paws-r/paws, https://paws-r.r-universe.dev/paws.common, https://www.paws-r-sdk.com
 BugReports: https://github.com/paws-r/paws/issues
 Encoding: UTF-8
@@ -37,7 +38,7 @@ Suggests:
     withr,
     rstudioapi,
     testthat (>= 3.0.0)
-SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org
+SystemRequirements: C++14, pandoc (>= 1.12.3) - http://pandoc.org
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
 RoxygenNote: 7.3.3
 Collate:
