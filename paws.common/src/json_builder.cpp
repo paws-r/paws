@@ -67,7 +67,7 @@ inline std::string tag_get(SEXP object, const char *tag)
       case STRSXP:
         if (Rf_length(val) > 0)
         {
-          return std::string(CHAR(STRING_ELT(val, 0)));
+          return std::string(Rf_translateCharUTF8(STRING_ELT(val, 0)));
         }
         break;
       case LGLSXP:
@@ -151,17 +151,17 @@ std::string safe_as_string(SEXP x)
   switch (type)
   {
   case STRSXP:
-    // Directly return string for character SEXPs
-    return std::string(CHAR(STRING_ELT(x, 0)));
+    // Directly return string for character SEXPs, ensuring UTF-8 encoding
+    return std::string(Rf_translateCharUTF8(STRING_ELT(x, 0)));
   case INTSXP:
   case REALSXP:
   case LGLSXP:
   case RAWSXP:
     // Coerce to character and then return string for numeric, logical, raw
-    return std::string(CHAR(STRING_ELT(Rf_coerceVector(x, STRSXP), 0)));
+    return std::string(Rf_translateCharUTF8(STRING_ELT(Rf_coerceVector(x, STRSXP), 0)));
   default:
     // Coerce any other type to character as a fallback
-    return std::string(CHAR(STRING_ELT(Rf_coerceVector(x, STRSXP), 0)));
+    return std::string(Rf_translateCharUTF8(STRING_ELT(Rf_coerceVector(x, STRSXP), 0)));
   }
 }
 
@@ -360,7 +360,7 @@ std::string json_build_structure(SEXP values)
       val = uuid_val;                   // Use the newly created UUID SEXP
     }
 
-    std::string key = CHAR(STRING_ELT(names, i));         // Get the field name
+    std::string key = Rf_translateCharUTF8(STRING_ELT(names, i));         // Get the field name
     std::string loc_name = tag_get(val, "locationName");  // Check for locationName tag
     std::string name = loc_name.empty() ? key : loc_name; // Use locationName if present
 
@@ -420,7 +420,7 @@ inline std::string json_build_map(SEXP values)
   // Populate the vector with key-value pairs from the R object
   for (R_xlen_t i = 0; i < n; ++i)
   {
-    std::string key = CHAR(STRING_ELT(names_sexp, i));
+    std::string key = Rf_translateCharUTF8(STRING_ELT(names_sexp, i));
     SEXP val = VECTOR_ELT(values, i);
     named_elements.push_back({key, val});
   }
