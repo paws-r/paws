@@ -18,11 +18,21 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - { os: "ubuntu-latest", R: "latest" }
-          - { os: "macOS-latest", R: "latest" }
+
+          # Check latest R versions
+          - { os: "ubuntu-latest",  R: "latest" }
+          - { os: "macOS-latest",   R: "latest" }
           - { os: "windows-latest", R: "latest" }
-          - { os: "ubuntu-latest", R: "devel" }
+          - { os: "ubuntu-latest",  R: "devel" }
           - { os: "windows-latest", R: "devel" }
+
+          # Check older versions of R
+          - { os: "ubuntu-latest",  R: 'oldrel-1'}
+          - { os: "ubuntu-latest",  R: 'oldrel-2'}
+          - { os: "ubuntu-latest",  R: 'oldrel-3'}
+          - { os: "ubuntu-latest",  R: 'oldrel-4'}
+
+          - { os: "windows-latest", R: "oldrel-4" }
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}

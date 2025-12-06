@@ -143,6 +143,7 @@ CharacterVector json_convert_string(CharacterVector x)
   for (int i = 0; i < n; ++i)
   {
     String cur = x[i];
+    cur.set_encoding(CE_UTF8); // Ensure UTF-8 encoding
     out[i] = json_escape(cur);
   }
   return out;

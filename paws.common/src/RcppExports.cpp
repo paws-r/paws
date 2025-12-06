@@ -68,7 +68,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // json_build_any
-std::string json_build_any(SEXP values);
+CharacterVector json_build_any(SEXP values);
 RcppExport SEXP _paws_common_json_build_any(SEXP valuesSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;

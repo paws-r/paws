@@ -67,7 +67,7 @@ inline std::string tag_get(SEXP object, const char *tag)
       case STRSXP:
         if (Rf_length(val) > 0)
         {
-          return std::string(CHAR(STRING_ELT(val, 0)));
+          return std::string(Rf_translateCharUTF8(STRING_ELT(val, 0)));
         }
         break;
       case LGLSXP:
@@ -135,8 +135,8 @@ std::string type(SEXP object)
 }
 
 // -------------------- Forward declaration --------------------
-// This function will be defined later and called recursively
-std::string json_build_any(SEXP values);
+// Internal function that builds JSON and returns std::string (used internally)
+std::string json_build_internal(SEXP values);
 
 // -------------------- Helper function to safely convert to string --------------------
 // This function converts an SEXP to a string representation, handling various R types.
@@ -151,17 +151,17 @@ std::string safe_as_string(SEXP x)
   switch (type)
   {
   case STRSXP:
-    // Directly return string for character SEXPs
-    return std::string(CHAR(STRING_ELT(x, 0)));
+    // Directly return string for character SEXPs, ensuring UTF-8 encoding
+    return std::string(Rf_translateCharUTF8(STRING_ELT(x, 0)));
   case INTSXP:
   case REALSXP:
   case LGLSXP:
   case RAWSXP:
     // Coerce to character and then return string for numeric, logical, raw
-    return std::string(CHAR(STRING_ELT(Rf_coerceVector(x, STRSXP), 0)));
+    return std::string(Rf_translateCharUTF8(STRING_ELT(Rf_coerceVector(x, STRSXP), 0)));
   default:
     // Coerce any other type to character as a fallback
-    return std::string(CHAR(STRING_ELT(Rf_coerceVector(x, STRSXP), 0)));
+    return std::string(Rf_translateCharUTF8(STRING_ELT(Rf_coerceVector(x, STRSXP), 0)));
   }
 }
 
@@ -255,7 +255,7 @@ std::string json_build_list(SEXP values)
   for (R_xlen_t i = 0; i < n; i++)
   {
     // Recursively build JSON for each element
-    std::string elem_json = json_build_any(VECTOR_ELT(values, i));
+    std::string elem_json = json_build_internal(VECTOR_ELT(values, i));
     // Only add non-empty elements, excluding "empty" JSON array/object strings
     if (!elem_json.empty() && elem_json != "[]" && elem_json != "{}")
     {
@@ -325,7 +325,7 @@ std::string json_build_structure(SEXP values)
     }
 
     // Recursively build JSON for the payload's value
-    return json_build_any(payload_val);
+    return json_build_internal(payload_val);
   }
 
   SEXP names = Rf_getAttrib(values, symbol_cache.names_sym);
@@ -360,11 +360,11 @@ std::string json_build_structure(SEXP values)
       val = uuid_val;                   // Use the newly created UUID SEXP
     }
 
-    std::string key = CHAR(STRING_ELT(names, i));         // Get the field name
+    std::string key = Rf_translateCharUTF8(STRING_ELT(names, i));         // Get the field name
     std::string loc_name = tag_get(val, "locationName");  // Check for locationName tag
     std::string name = loc_name.empty() ? key : loc_name; // Use locationName if present
 
-    std::string json_val = json_build_any(val); // Recursively build JSON for field value
+    std::string json_val = json_build_internal(val); // Recursively build JSON for field value
     // Only add non-empty fields, excluding "empty" JSON array/object strings
     if (!json_val.empty() && json_val != "[]" && json_val != "{}")
     {
@@ -420,14 +420,14 @@ inline std::string json_build_map(SEXP values)
   // Populate the vector with key-value pairs from the R object
   for (R_xlen_t i = 0; i < n; ++i)
   {
-    std::string key = CHAR(STRING_ELT(names_sexp, i));
+    std::string key = Rf_translateCharUTF8(STRING_ELT(names_sexp, i));
     SEXP val = VECTOR_ELT(values, i);
     named_elements.push_back({key, val});
   }
 
   // Sort the vector based on the string key in each pair
   std::sort(named_elements.begin(), named_elements.end(),
-            [](const auto &a, const auto &b)
+            [](const std::pair<std::string, SEXP> &a, const std::pair<std::string, SEXP> &b)
             {
               return a.first < b.first;
             });
@@ -442,7 +442,7 @@ inline std::string json_build_map(SEXP values)
     SEXP val = element.second;
 
     // Recursively build JSON for the value
-    std::string json_val = json_build_any(val);
+    std::string json_val = json_build_internal(val);
 
     // Only add non-empty pairs to the final JSON string
     if (!json_val.empty() && json_val != "[]" && json_val != "{}")
@@ -469,17 +469,8 @@ inline std::string json_build_map(SEXP values)
   return result;
 }
 
-/**
- * @brief Build Json Strings Using AWS Attributes for JSON Template
- *
- * @param object A list to be parsed into JSON string
- *
- * @return a JSON String
- */
-//' @useDynLib paws.common _paws_common_json_build_any
-//' @importFrom Rcpp evalCpp
-// [[Rcpp::export]]
-std::string json_build_any(SEXP values)
+// Internal implementation that returns std::string (used by recursive calls)
+std::string json_build_internal(SEXP values)
 {
   // Determine the effective type of the R object for JSON building
   std::string t = type(values);
@@ -493,4 +484,21 @@ std::string json_build_any(SEXP values)
     return json_build_map(values);
   // Default to scalar if none of the above, or if `type` returns "scalar"
   return json_build_scalar(values);
+}
+
+/**
+ * @brief Build Json Strings Using AWS Attributes for JSON Template
+ *
+ * @param object A list to be parsed into JSON string
+ *
+ * @return a JSON String
+ */
+//' @useDynLib paws.common _paws_common_json_build_any
+//' @importFrom Rcpp evalCpp
+// [[Rcpp::export]]
+CharacterVector json_build_any(SEXP values)
+{
+  // Call internal implementation and UTF-8 encode result
+  std::string result = json_build_internal(values);
+  return CharacterVector::create(String(result, CE_UTF8));
 }
