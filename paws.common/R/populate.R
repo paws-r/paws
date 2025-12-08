@@ -18,11 +18,28 @@ check_location_name <- function(name, interface) {
 # Populate the interface for a given API operation with the parameters
 # that the user submitted.
 populate_structure <- function(input, interface) {
-  # If interface is empty (input shape is incomplete), return the input data.
-  # Only needed because input shapes have fixed depth, and some services,
-  # e.g. DynamoDB, can accept data of arbitrary depth.
+  # If interface is empty (input shape is incomplete), recursively populate
+  # to ensure type tags are inferred and added. Only needed because input shapes
+  # have fixed depth, and some services, e.g. DynamoDB, can accept data of arbitrary depth.
   if (length(interface) == 0) {
-    return(input)
+    # Create an empty interface for each field and recursively populate
+    result <- list()
+    for (name in names(input)) {
+      result[[name]] <- populate(input[[name]], list())
+    }
+    # Preserve structure type tag from interface if present, otherwise add it
+    attrs <- attributes(interface)
+    if (is.null(attrs$tags$type)) {
+      if (is.null(attrs$tags)) {
+        attrs$tags <- list(type = "structure")
+      } else {
+        attrs$tags$type <- "structure"
+      }
+    }
+    # Preserve the names attribute when setting other attributes
+    attrs$names <- names(result)
+    attributes(result) <- attrs
+    return(result)
   }
   for (name in names(input)) {
     if (!(name) %in% names(interface)) {
@@ -66,6 +83,30 @@ populate_map <- function(input, interface) {
 
 populate_scalar <- function(input, interface) {
   attrs <- c(attributes(input), attributes(interface))
+
+  # If no type tag is present, infer it from the R type
+  if (is.null(attrs$tags$type)) {
+    inferred_type <- if (is.character(input)) {
+      "string"
+    } else if (is.numeric(input)) {
+      "string" # Numeric values default to "string" to preserve precision
+    } else if (is.logical(input)) {
+      "boolean"
+    } else if (is.raw(input)) {
+      "blob"
+    } else {
+      NULL
+    }
+
+    if (!is.null(inferred_type)) {
+      if (is.null(attrs$tags)) {
+        attrs$tags <- list(type = inferred_type)
+      } else {
+        attrs$tags$type <- inferred_type
+      }
+    }
+  }
+
   interface <- input
   attributes(interface) <- attrs
   return(interface)
