@@ -15,6 +15,25 @@ check_location_name <- function(name, interface) {
   return(location_index)
 }
 
+# Empty template interfaces
+empty_struct_interface <- structure(list(), tags = list(type = "structure"))
+empty_list_interface <- structure(list(), tags = list(type = "list"))
+
+infer_empty_interface <- function(elem) {
+  # Determine interface type based on element type
+  if (is.list(elem) && !is.null(names(elem))) {
+    # Named list -> structure
+    empty_struct_interface
+  } else if (is.list(elem)) {
+    # Unnamed list -> list
+    empty_list_interface
+  } else {
+    # Scalar
+    list()
+  }
+}
+
+
 # Populate the interface for a given API operation with the parameters
 # that the user submitted.
 populate_structure <- function(input, interface) {
@@ -22,10 +41,9 @@ populate_structure <- function(input, interface) {
   # to ensure type tags are inferred and added. Only needed because input shapes
   # have fixed depth, and some services, e.g. DynamoDB, can accept data of arbitrary depth.
   if (length(interface) == 0) {
-    # Create an empty interface for each field and recursively populate
     result <- list()
     for (name in names(input)) {
-      result[[name]] <- populate(input[[name]], list())
+      result[[name]] <- populate(input[[name]], infer_empty_interface(input[[name]]))
     }
     # Preserve structure type tag from interface if present, otherwise add it
     attrs <- attributes(interface)
@@ -56,11 +74,26 @@ populate_structure <- function(input, interface) {
 }
 
 populate_list <- function(input, interface) {
-  # If interface is empty (input shape is incomplete), return the input data.
-  # Only needed because input shapes have fixed depth, and some services,
-  # e.g. DynamoDB, can accept data of arbitrary depth.
+  # If interface is empty (input shape is incomplete), recursively populate
+  # to ensure type tags are inferred and added. Only needed because input shapes
+  # have fixed depth, and some services, e.g. DynamoDB, can accept data of arbitrary depth.
   if (length(interface) == 0) {
-    return(input)
+    # Recursively populate each element with appropriate interface type
+    result <- lapply(input, function(elem) {
+      populate(elem, infer_empty_interface(elem))
+    })
+
+    # Preserve list type tag from interface if present, otherwise add it
+    attrs <- attributes(interface)
+    if (is.null(attrs$tags$type)) {
+      if (is.null(attrs$tags)) {
+        attrs$tags <- list(type = "list")
+      } else {
+        attrs$tags$type <- "list"
+      }
+    }
+    attributes(result) <- attrs
+    return(result)
   }
   attrs <- attributes(interface)
   interface <- lapply(input, populate, interface = interface[[1]])
@@ -69,11 +102,29 @@ populate_list <- function(input, interface) {
 }
 
 populate_map <- function(input, interface) {
-  # If interface is empty (input shape is incomplete), return the input data.
-  # Only needed because input shapes have fixed depth, and some services,
-  # e.g. DynamoDB, can accept data of arbitrary depth.
+  # If interface is empty (input shape is incomplete), recursively populate
+  # to ensure type tags are inferred and added. Only needed because input shapes
+  # have fixed depth, and some services, e.g. DynamoDB, can accept data of arbitrary depth.
   if (length(interface) == 0) {
-    return(input)
+    # Recursively populate each element with appropriate interface type
+    result <- lapply(input, function(elem) {
+      populate(elem, infer_empty_interface(elem))
+    })
+    names(result) <- names(input)
+
+    # Preserve map type tag from interface if present, otherwise add it
+    attrs <- attributes(interface)
+    if (is.null(attrs$tags$type)) {
+      if (is.null(attrs$tags)) {
+        attrs$tags <- list(type = "map")
+      } else {
+        attrs$tags$type <- "map"
+      }
+    }
+    # Preserve the names attribute when setting other attributes
+    attrs$names <- names(result)
+    attributes(result) <- attrs
+    return(result)
   }
   result <- lapply(input, populate, interface = interface[[1]])
   names(result) <- names(input)
