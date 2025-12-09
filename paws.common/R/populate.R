@@ -41,10 +41,13 @@ populate_structure <- function(input, interface) {
   # to ensure type tags are inferred and added. Only needed because input shapes
   # have fixed depth, and some services, e.g. DynamoDB, can accept data of arbitrary depth.
   if (length(interface) == 0) {
-    result <- list()
-    for (name in names(input)) {
-      result[[name]] <- populate(input[[name]], infer_empty_interface(input[[name]]))
+    if (length(input) == 0) {
+      return(input)
     }
+    # Recursively populate each element with appropriate interface type
+    result <- lapply(input, function(elem) {
+      populate(elem, infer_empty_interface(elem))
+    })
     # Preserve structure type tag from interface if present, otherwise add it
     attrs <- attributes(interface)
     if (is.null(attrs$tags$type)) {
@@ -78,6 +81,9 @@ populate_list <- function(input, interface) {
   # to ensure type tags are inferred and added. Only needed because input shapes
   # have fixed depth, and some services, e.g. DynamoDB, can accept data of arbitrary depth.
   if (length(interface) == 0) {
+    if (length(input) == 0) {
+      return(input)
+    }
     # Recursively populate each element with appropriate interface type
     result <- lapply(input, function(elem) {
       populate(elem, infer_empty_interface(elem))
@@ -134,30 +140,6 @@ populate_map <- function(input, interface) {
 
 populate_scalar <- function(input, interface) {
   attrs <- c(attributes(input), attributes(interface))
-
-  # If no type tag is present, infer it from the R type
-  if (is.null(attrs$tags$type)) {
-    inferred_type <- if (is.character(input)) {
-      "string"
-    } else if (is.numeric(input)) {
-      "string" # Numeric values default to "string" to preserve precision
-    } else if (is.logical(input)) {
-      "boolean"
-    } else if (is.raw(input)) {
-      "blob"
-    } else {
-      NULL
-    }
-
-    if (!is.null(inferred_type)) {
-      if (is.null(attrs$tags)) {
-        attrs$tags <- list(type = inferred_type)
-      } else {
-        attrs$tags$type <- inferred_type
-      }
-    }
-  }
-
   interface <- input
   attributes(interface) <- attrs
   return(interface)
