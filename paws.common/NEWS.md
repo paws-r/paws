@@ -1,3 +1,6 @@
+# paws.common 0.8.8.9000
+* fix `populate` function to correctly infer and add type tags for nested structures, particularly for numeric values inside map attributes in DynamoDB operations (#959). Thanks to @dleopold for raising the issue.
+
 # paws.common 0.8.8
 * fix C++ compilation issues on older R versions by refactoring code to use C++11 standard and requiring R >= 4.1.0 (#957). Thanks to @detule for raising the issue.
 
