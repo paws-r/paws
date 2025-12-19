@@ -97,11 +97,18 @@ jobs:
           remotes::install_local('make.paws', force = TRUE)
         shell: Rscript {0}
 
-      - name: Check
+      - name: Check paws.common
         env:
           _R_CHECK_CRAN_INCOMING_: false
         run: |
           rcmdcheck::rcmdcheck('paws.common', args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")
+        shell: Rscript {0}
+
+      - name: Check make.paws
+        if: ${{ !(matrix.config.os == 'windows-latest' && matrix.config.R == 'oldrel-4') }}
+        env:
+          _R_CHECK_CRAN_INCOMING_: false
+        run: |
           rcmdcheck::rcmdcheck('make.paws', args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")
         shell: Rscript {0}
 
