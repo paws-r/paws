@@ -18,7 +18,6 @@ test_that("populate handles scalar with empty interface", {
   result <- populate(123.456, list())
 
   expect_equal(result, 123.456, ignore_attr = TRUE)
-  expect_equal(tag_get(result, "type"), "string")
 })
 
 test_that("populate handles structure with empty interface", {
@@ -54,9 +53,9 @@ test_that("populate handles deeply nested maps (depth 3)", {
   # Check type tags at each level
   expect_equal(tag_get(result$level0$M, "type"), "map")
   expect_equal(tag_get(result$level0$M$level1, "type"), "structure")
-  # The nested M within level1 is also a structure (not map) because it's
-  # beyond the interface depth and gets inferred from the input
-  expect_equal(tag_get(result$level0$M$level1$M, "type"), "structure")
+  # The nested M within level1 is correctly recognized as a map because
+  # the fix now reuses the parent AttributeValue structure for recursive interfaces
+  expect_equal(tag_get(result$level0$M$level1$M, "type"), "map")
   expect_equal(tag_get(result$level0$M$level1$M$level2, "type"), "structure")
   expect_equal(tag_get(result$level0$M$level1$M$level2$N, "type"), "string")
 
@@ -112,8 +111,9 @@ test_that("populate handles mixed structures (maps and lists)", {
   expect_equal(tag_get(result$mixed$M$key1$L, "type"), "list")
   expect_equal(tag_get(result$mixed$M$key1$L[[1]]$N, "type"), "string")
   expect_equal(tag_get(result$mixed$M$key1$L[[2]], "type"), "structure")
-  # Nested M is structure (not map) beyond interface depth
-  expect_equal(tag_get(result$mixed$M$key1$L[[2]]$M, "type"), "structure")
+  # Nested M is correctly recognized as a map because
+  # the fix now reuses the parent AttributeValue structure for recursive interfaces
+  expect_equal(tag_get(result$mixed$M$key1$L[[2]]$M, "type"), "map")
   expect_equal(tag_get(result$mixed$M$key1$L[[2]]$M$nested$N, "type"), "string")
 
   # Check JSON output

@@ -33,10 +33,21 @@ infer_empty_interface <- function(elem) {
   }
 }
 
+# Helper function to find the parent structure for recursive interfaces
+# This is used when we encounter an empty structure placeholder in a map or list,
+# indicating that the structure is recursive (e.g., DynamoDB AttributeValue).
+find_recursive_parent <- function(parent_interface) {
+  # If parent_interface is a structure with fields, it's the recursive parent
+  if (tag_get(parent_interface, "type") == "structure" && length(parent_interface) > 0) {
+    return(parent_interface)
+  }
+  return(NULL)
+}
+
 
 # Populate the interface for a given API operation with the parameters
 # that the user submitted.
-populate_structure <- function(input, interface) {
+populate_structure <- function(input, interface, parent = NULL) {
   # If interface is empty (input shape is incomplete), recursively populate
   # to ensure type tags are inferred and added. Only needed because input shapes
   # have fixed depth, and some services, e.g. DynamoDB, can accept data of arbitrary depth.
@@ -46,7 +57,7 @@ populate_structure <- function(input, interface) {
     }
     # Recursively populate each element with appropriate interface type
     result <- lapply(input, function(elem) {
-      populate(elem, infer_empty_interface(elem))
+      populate(elem, infer_empty_interface(elem), parent = interface)
     })
     # Preserve structure type tag from interface if present, otherwise add it
     attrs <- attributes(interface)
@@ -68,15 +79,19 @@ populate_structure <- function(input, interface) {
       if (!check_location) {
         stopf("invalid name: %s", name)
       }
-      interface[[check_location]] <- populate(input[[name]], interface[[check_location]])
+      interface[[check_location]] <- populate(
+        input[[name]],
+        interface[[check_location]],
+        parent = interface
+      )
     } else {
-      interface[[name]] <- populate(input[[name]], interface[[name]])
+      interface[[name]] <- populate(input[[name]], interface[[name]], parent = interface)
     }
   }
   return(interface)
 }
 
-populate_list <- function(input, interface) {
+populate_list <- function(input, interface, parent = NULL) {
   # If interface is empty (input shape is incomplete), recursively populate
   # to ensure type tags are inferred and added. Only needed because input shapes
   # have fixed depth, and some services, e.g. DynamoDB, can accept data of arbitrary depth.
@@ -86,7 +101,7 @@ populate_list <- function(input, interface) {
     }
     # Recursively populate each element with appropriate interface type
     result <- lapply(input, function(elem) {
-      populate(elem, infer_empty_interface(elem))
+      populate(elem, infer_empty_interface(elem), parent = interface)
     })
 
     # Preserve list type tag from interface if present, otherwise add it
@@ -102,19 +117,35 @@ populate_list <- function(input, interface) {
     return(result)
   }
   attrs <- attributes(interface)
-  interface <- lapply(input, populate, interface = interface[[1]])
+  element_interface <- interface[[1]]
+
+  # If element_interface is an empty structure and we have a parent structure,
+  # this indicates a recursive interface (e.g., DynamoDB AttributeValue where
+  # L contains more AttributeValues). Reuse the parent structure instead.
+  if (
+    tag_get(element_interface, "type") == "structure" &&
+      length(element_interface) == 0 &&
+      !is.null(parent)
+  ) {
+    recursive_parent <- find_recursive_parent(parent)
+    if (!is.null(recursive_parent)) {
+      element_interface <- recursive_parent
+    }
+  }
+
+  interface <- lapply(input, populate, interface = element_interface, parent = interface)
   attributes(interface) <- attrs
   return(interface)
 }
 
-populate_map <- function(input, interface) {
+populate_map <- function(input, interface, parent = NULL) {
   # If interface is empty (input shape is incomplete), recursively populate
   # to ensure type tags are inferred and added. Only needed because input shapes
   # have fixed depth, and some services, e.g. DynamoDB, can accept data of arbitrary depth.
   if (length(interface) == 0) {
     # Recursively populate each element with appropriate interface type
     result <- lapply(input, function(elem) {
-      populate(elem, infer_empty_interface(elem))
+      populate(elem, infer_empty_interface(elem), parent = interface)
     })
     names(result) <- names(input)
 
@@ -132,13 +163,30 @@ populate_map <- function(input, interface) {
     attributes(result) <- attrs
     return(result)
   }
-  result <- lapply(input, populate, interface = interface[[1]])
+
+  value_interface <- interface[[1]]
+
+  # If value_interface is an empty structure and we have a parent structure,
+  # this indicates a recursive interface (e.g., DynamoDB AttributeValue where
+  # M contains more AttributeValues). Reuse the parent structure instead.
+  if (
+    tag_get(value_interface, "type") == "structure" &&
+      length(value_interface) == 0 &&
+      !is.null(parent)
+  ) {
+    recursive_parent <- find_recursive_parent(parent)
+    if (!is.null(recursive_parent)) {
+      value_interface <- recursive_parent
+    }
+  }
+
+  result <- lapply(input, populate, interface = value_interface, parent = interface)
   names(result) <- names(input)
   attributes(result) <- c(attributes(result), attributes(interface))
   return(result)
 }
 
-populate_scalar <- function(input, interface) {
+populate_scalar <- function(input, interface, parent = NULL) {
   attrs <- c(attributes(input), attributes(interface))
   interface <- input
   attributes(interface) <- attrs
@@ -153,6 +201,7 @@ populate_scalar <- function(input, interface) {
 #'
 #' @param input A list with data to copy.
 #' @param interface A list of a similar shape to copy data into.
+#' @param parent Internal parameter used to track parent interface for recursive structures.
 #'
 #' @examples
 #' # Make an interface with metadata, e.g. type.
@@ -162,7 +211,7 @@ populate_scalar <- function(input, interface) {
 #' populate(list(foo = 1, bar = 2), interface)
 #'
 #' @export
-populate <- function(input, interface) {
+populate <- function(input, interface, parent = NULL) {
   t <- tag_get(interface, "type")
   populate_fn <- switch(
     t,
@@ -171,6 +220,6 @@ populate <- function(input, interface) {
     map = populate_map,
     populate_scalar
   )
-  interface <- populate_fn(input, interface)
+  interface <- populate_fn(input, interface, parent = parent)
   return(interface)
 }
