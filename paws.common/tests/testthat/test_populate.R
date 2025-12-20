@@ -196,31 +196,6 @@ test_that("populate handles empty lists and maps at deep nesting", {
   expect_true(grepl("\\{\\}", json_output) || grepl("\\[\\]", json_output))
 })
 
-test_that("infer_empty_interface returns correct interface for named list", {
-  named_list <- list(a = 1, b = 2)
-  result <- infer_empty_interface(named_list)
-
-  expect_equal(tag_get(result, "type"), "structure")
-  expect_equal(length(result), 0)
-})
-
-test_that("infer_empty_interface returns correct interface for unnamed list", {
-  unnamed_list <- list(1, 2, 3)
-  result <- infer_empty_interface(unnamed_list)
-
-  expect_equal(tag_get(result, "type"), "list")
-  expect_equal(length(result), 0)
-})
-
-test_that("infer_empty_interface returns correct interface for scalar", {
-  scalar <- 123.456
-  result <- infer_empty_interface(scalar)
-
-  # Scalar interface should be an empty list with no type tag
-  expect_equal(length(result), 0)
-  expect_equal(tag_get(result, "type"), "")
-})
-
 test_that("populate preserves existing attributes when interface is not empty", {
   # Create interface with specific attributes
   interface <- structure(
@@ -259,4 +234,88 @@ test_that("populate handles very deep nesting (depth 5)", {
   # Check JSON output
   json_output <- json_build(result)
   expect_match(json_output, '"N":"999.999"')
+})
+
+test_that("populate throws error for invalid field names", {
+  interface <- structure(
+    list(valid_field = structure(logical(0), tags = list(type = "string"))),
+    tags = list(type = "structure")
+  )
+  input <- list(invalid_field = "value")
+
+  expect_error(populate(input, interface), "invalid name: invalid_field")
+})
+
+test_that("populate handles NULL input", {
+  interface <- structure(logical(0), tags = list(type = "string"))
+  result <- populate(NULL, interface)
+
+  expect_true(is.list(result))
+  expect_length(result, 0)
+})
+
+test_that("populate handles atomic vectors in lists", {
+  interface <- List(Scalar(type = "string"))
+
+  # Logical vector
+  result_logical <- populate(c(TRUE, FALSE, TRUE), interface)
+  expect_length(result_logical, 3)
+  expect_equal(result_logical[[1]], TRUE, ignore_attr = TRUE)
+  expect_equal(result_logical[[2]], FALSE, ignore_attr = TRUE)
+  expect_equal(result_logical[[3]], TRUE, ignore_attr = TRUE)
+
+  # Integer vector
+  result_int <- populate(c(1L, 2L, 3L), interface)
+  expect_length(result_int, 3)
+  expect_equal(result_int[[1]], 1L, ignore_attr = TRUE)
+  expect_equal(result_int[[2]], 2L, ignore_attr = TRUE)
+  expect_equal(result_int[[3]], 3L, ignore_attr = TRUE)
+
+  # Numeric vector
+  result_num <- populate(c(1.1, 2.2, 3.3), interface)
+  expect_length(result_num, 3)
+  expect_equal(result_num[[1]], 1.1, ignore_attr = TRUE)
+  expect_equal(result_num[[2]], 2.2, ignore_attr = TRUE)
+  expect_equal(result_num[[3]], 3.3, ignore_attr = TRUE)
+})
+
+test_that("populate handles complex and raw vectors", {
+  interface <- List(Scalar(type = "string"))
+
+  # Complex vector
+  result_complex <- populate(c(1 + 2i, 3 + 4i), interface)
+  expect_length(result_complex, 2)
+  expect_equal(result_complex[[1]], 1 + 2i, ignore_attr = TRUE)
+  expect_equal(result_complex[[2]], 3 + 4i, ignore_attr = TRUE)
+
+  # Raw vector
+  result_raw <- populate(as.raw(c(1, 2, 3)), interface)
+  expect_length(result_raw, 3)
+  expect_equal(result_raw[[1]], as.raw(1), ignore_attr = TRUE)
+  expect_equal(result_raw[[2]], as.raw(2), ignore_attr = TRUE)
+  expect_equal(result_raw[[3]], as.raw(3), ignore_attr = TRUE)
+})
+
+test_that("populate handles character vectors", {
+  interface <- List(Scalar(type = "string"))
+
+  # Character vector
+  result_char <- populate(c("a", "b", "c"), interface)
+  expect_length(result_char, 3)
+  expect_equal(result_char[[1]], "a", ignore_attr = TRUE)
+  expect_equal(result_char[[2]], "b", ignore_attr = TRUE)
+  expect_equal(result_char[[3]], "c", ignore_attr = TRUE)
+})
+
+test_that("populate handles NULL input with interface containing attributes", {
+  interface <- structure(
+    logical(0),
+    tags = list(type = "string", locationName = "test_field")
+  )
+  result <- populate(NULL, interface)
+
+  expect_true(is.list(result))
+  expect_length(result, 0)
+  expect_equal(tag_get(result, "type"), "string")
+  expect_equal(tag_get(result, "locationName"), "test_field")
 })
