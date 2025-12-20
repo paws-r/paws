@@ -124,4 +124,9 @@ jobs:
 
       - name: Get code coverage
         run: |
-          Rscript script/codecov.R paws.common make.paws
+          if [ "${{ matrix.config.os }}" = "windows-latest" ] && [ "${{ matrix.config.R }}" = "oldrel-4" ]; then
+            Rscript script/codecov.R paws.common
+          else
+            Rscript script/codecov.R paws.common make.paws
+          fi
+        shell: bash
