@@ -162,6 +162,42 @@ inline SEXP find_recursive_parent_cpp(SEXP parent_interface) {
   return R_NilValue;
 }
 
+// Helper to get element from list or atomic vector
+inline SEXP get_element(SEXP x, int i) {
+  if (Rf_isVectorList(x)) {
+    return VECTOR_ELT(x, i);
+  } else {
+    // For atomic vectors, we need to extract element as SEXP
+    // Character vectors
+    if (Rf_isString(x)) {
+      return Rf_ScalarString(STRING_ELT(x, i));
+    }
+    // Logical vectors
+    else if (Rf_isLogical(x)) {
+      return Rf_ScalarLogical(LOGICAL(x)[i]);
+    }
+    // Integer vectors
+    else if (Rf_isInteger(x)) {
+      return Rf_ScalarInteger(INTEGER(x)[i]);
+    }
+    // Numeric vectors
+    else if (Rf_isReal(x)) {
+      return Rf_ScalarReal(REAL(x)[i]);
+    }
+    // Complex vectors
+    else if (Rf_isComplex(x)) {
+      Rcomplex val = COMPLEX(x)[i];
+      return Rf_ScalarComplex(val);
+    }
+    // Raw vectors
+    else if (TYPEOF(x) == RAWSXP) {
+      return Rf_ScalarRaw(RAW(x)[i]);
+    }
+  }
+  // Fallback: return NULL
+  return R_NilValue;
+}
+
 // Optimized populate structure - O(n) instead of O(n²)
 SEXP populate_structure_cpp(SEXP input, SEXP interface, SEXP parent) {
   int interface_len = Rf_length(interface);
@@ -175,7 +211,7 @@ SEXP populate_structure_cpp(SEXP input, SEXP interface, SEXP parent) {
     SEXP input_names = Rf_getAttrib(input, R_NamesSymbol);
 
     for (int i = 0; i < input_len; i++) {
-      SEXP elem = VECTOR_ELT(input, i);
+      SEXP elem = get_element(input, i);
       SEXP inferred = infer_empty_interface_cpp(elem);
       SET_VECTOR_ELT(result, i, populate_cpp_impl(elem, inferred, interface));
     }
@@ -243,7 +279,7 @@ SEXP populate_list_cpp(SEXP input, SEXP interface, SEXP parent) {
 
     SEXP result = PROTECT(Rf_allocVector(VECSXP, input_len));
     for (int i = 0; i < input_len; i++) {
-      SEXP elem = VECTOR_ELT(input, i);
+      SEXP elem = get_element(input, i);
       SEXP inferred = infer_empty_interface_cpp(elem);
       SET_VECTOR_ELT(result, i, populate_cpp_impl(elem, inferred, interface));
     }
@@ -281,7 +317,7 @@ SEXP populate_list_cpp(SEXP input, SEXP interface, SEXP parent) {
   SEXP result = PROTECT(Rf_allocVector(VECSXP, input_len));
   for (int i = 0; i < input_len; i++) {
     SET_VECTOR_ELT(result, i,
-                   populate_cpp_impl(VECTOR_ELT(input, i),
+                   populate_cpp_impl(get_element(input, i),
                                     cached_interface,
                                     interface));
   }
@@ -306,7 +342,7 @@ SEXP populate_map_cpp(SEXP input, SEXP interface, SEXP parent) {
   if (interface_len == 0) {
     SEXP result = PROTECT(Rf_allocVector(VECSXP, input_len));
     for (int i = 0; i < input_len; i++) {
-      SEXP elem = VECTOR_ELT(input, i);
+      SEXP elem = get_element(input, i);
       SEXP inferred = infer_empty_interface_cpp(elem);
       SET_VECTOR_ELT(result, i, populate_cpp_impl(elem, inferred, interface));
     }
@@ -346,7 +382,7 @@ SEXP populate_map_cpp(SEXP input, SEXP interface, SEXP parent) {
   SEXP result = PROTECT(Rf_allocVector(VECSXP, input_len));
   for (int i = 0; i < input_len; i++) {
     SET_VECTOR_ELT(result, i,
-                   populate_cpp_impl(VECTOR_ELT(input, i),
+                   populate_cpp_impl(get_element(input, i),
                                     cached_interface,
                                     interface));
   }
@@ -365,6 +401,19 @@ SEXP populate_map_cpp(SEXP input, SEXP interface, SEXP parent) {
 
 // Optimized populate scalar - avoid unnecessary List conversions
 SEXP populate_scalar_cpp(SEXP input, SEXP interface, SEXP parent) {
+  // Handle NULL input - R behavior: setting attributes on NULL creates empty list
+  if (input == R_NilValue) {
+    SEXP interface_attrs = ATTRIB(interface);
+    if (interface_attrs != R_NilValue) {
+      // Create empty list and set attributes from interface
+      SEXP result = PROTECT(Rf_allocVector(VECSXP, 0));
+      SET_ATTRIB(result, Rf_duplicate(interface_attrs));
+      UNPROTECT(1);
+      return result;
+    }
+    return interface;
+  }
+
   // Fast path: if interface has no attributes, just return input as-is
   SEXP interface_attrs = ATTRIB(interface);
   if (interface_attrs == R_NilValue) {
