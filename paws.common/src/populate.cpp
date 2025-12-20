@@ -234,14 +234,39 @@ SEXP populate_structure_cpp(SEXP input, SEXP interface, SEXP parent) {
     return result;
   }
 
-  // Build hash map for O(1) name lookups
+  // Build hash maps for O(1) name lookups - both regular names and locationName
   SEXP interface_names = Rf_getAttrib(interface, R_NamesSymbol);
   std::unordered_map<const char*, int, std::hash<std::string>,
                      std::equal_to<std::string>> name_to_idx;
+  std::unordered_map<const char*, int, std::hash<std::string>,
+                     std::equal_to<std::string>> location_to_idx;
   name_to_idx.reserve(interface_len);
+  location_to_idx.reserve(interface_len);
 
+  // Build both maps
   for (int i = 0; i < interface_len; i++) {
-    name_to_idx[CHAR(STRING_ELT(interface_names, i))] = i;
+    const char* name = CHAR(STRING_ELT(interface_names, i));
+    name_to_idx[name] = i;
+
+    // Check for locationName in tags
+    SEXP elem_tags = get_tags_raw(VECTOR_ELT(interface, i));
+    if (elem_tags != R_NilValue && Rf_isVectorList(elem_tags)) {
+      SEXP tag_names = Rf_getAttrib(elem_tags, R_NamesSymbol);
+      if (tag_names != R_NilValue) {
+        int n_tags = Rf_length(elem_tags);
+        for (int j = 0; j < n_tags; j++) {
+          const char* tag_name = CHAR(STRING_ELT(tag_names, j));
+          if (strcmp(tag_name, "locationName") == 0) {
+            SEXP location_val = VECTOR_ELT(elem_tags, j);
+            if (Rf_isString(location_val) && Rf_length(location_val) > 0) {
+              const char* location_name = CHAR(STRING_ELT(location_val, 0));
+              location_to_idx[location_name] = i;
+            }
+            break;
+          }
+        }
+      }
+    }
   }
 
   // Clone the interface to modify it - use shallow copy approach
@@ -252,14 +277,28 @@ SEXP populate_structure_cpp(SEXP input, SEXP interface, SEXP parent) {
   for (int i = 0; i < input_len; i++) {
     const char* input_name = CHAR(STRING_ELT(input_names, i));
 
+    // Try regular name first
     auto it = name_to_idx.find(input_name);
     if (it != name_to_idx.end()) {
       int idx = it->second;
-      // Recursively populate - this preserves tags on nested elements
       SET_VECTOR_ELT(result, idx,
                      populate_cpp_impl(VECTOR_ELT(input, i),
                                       VECTOR_ELT(result, idx),
                                       interface));
+    } else {
+      // Try locationName
+      auto loc_it = location_to_idx.find(input_name);
+      if (loc_it != location_to_idx.end()) {
+        int idx = loc_it->second;
+        SET_VECTOR_ELT(result, idx,
+                       populate_cpp_impl(VECTOR_ELT(input, i),
+                                        VECTOR_ELT(result, idx),
+                                        interface));
+      } else {
+        // Name not found in either map - invalid name
+        UNPROTECT(1);
+        Rf_error("invalid name: %s", input_name);
+      }
     }
   }
 
