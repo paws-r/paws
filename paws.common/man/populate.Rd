@@ -4,12 +4,14 @@
 \alias{populate}
 \title{Populate a list with data from another list}
 \usage{
-populate(input, interface)
+populate(input, interface, parent = NULL)
 }
 \arguments{
 \item{input}{A list with data to copy.}
 
 \item{interface}{A list of a similar shape to copy data into.}
+
+\item{parent}{Internal parameter used to track parent interface for recursive structures.}
 }
 \description{
 \code{populate} copies data from a list (e.g. input by a user) to another list
