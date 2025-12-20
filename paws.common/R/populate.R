@@ -57,7 +57,7 @@ populate_structure <- function(input, interface, parent = NULL) {
     }
     # Recursively populate each element with appropriate interface type
     result <- lapply(input, function(elem) {
-      populate(elem, infer_empty_interface(elem), parent = interface)
+      populate_r(elem, infer_empty_interface(elem), parent = interface)
     })
     # Preserve structure type tag from interface if present, otherwise add it
     attrs <- attributes(interface)
@@ -79,13 +79,17 @@ populate_structure <- function(input, interface, parent = NULL) {
       if (!check_location) {
         stopf("invalid name: %s", name)
       }
-      interface[[check_location]] <- populate(
+      interface[[check_location]] <- populate_r(
         input[[name]],
         interface[[check_location]],
         parent = interface
       )
     } else {
-      interface[[name]] <- populate(input[[name]], interface[[name]], parent = interface)
+      interface[[name]] <- populate_r(
+        input[[name]],
+        interface[[name]],
+        parent = interface
+      )
     }
   }
   return(interface)
@@ -101,7 +105,7 @@ populate_list <- function(input, interface, parent = NULL) {
     }
     # Recursively populate each element with appropriate interface type
     result <- lapply(input, function(elem) {
-      populate(elem, infer_empty_interface(elem), parent = interface)
+      populate_r(elem, infer_empty_interface(elem), parent = interface)
     })
 
     # Preserve list type tag from interface if present, otherwise add it
@@ -133,7 +137,12 @@ populate_list <- function(input, interface, parent = NULL) {
     }
   }
 
-  interface <- lapply(input, populate, interface = element_interface, parent = interface)
+  interface <- lapply(
+    input,
+    populate_r,
+    interface = element_interface,
+    parent = interface
+  )
   attributes(interface) <- attrs
   return(interface)
 }
@@ -145,7 +154,7 @@ populate_map <- function(input, interface, parent = NULL) {
   if (length(interface) == 0) {
     # Recursively populate each element with appropriate interface type
     result <- lapply(input, function(elem) {
-      populate(elem, infer_empty_interface(elem), parent = interface)
+      populate_r(elem, infer_empty_interface(elem), parent = interface)
     })
     names(result) <- names(input)
 
@@ -180,7 +189,7 @@ populate_map <- function(input, interface, parent = NULL) {
     }
   }
 
-  result <- lapply(input, populate, interface = value_interface, parent = interface)
+  result <- lapply(input, populate_r, interface = value_interface, parent = interface)
   names(result) <- names(input)
   attributes(result) <- c(attributes(result), attributes(interface))
   return(result)

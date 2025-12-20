@@ -18,48 +18,85 @@ enum TypeCode {
   TYPE_SCALAR = 4
 };
 
-// Get type code directly without string allocation
+// Type code cache using SEXP pointer as key
+static std::unordered_map<SEXP, TypeCode> type_code_cache;
+
+// Get type code with caching
 inline TypeCode get_type_code(SEXP x) {
+  // Check cache first
+  auto cached = type_code_cache.find(x);
+  if (cached != type_code_cache.end()) {
+    return cached->second;
+  }
+
+  // Not in cache, compute it
   SEXP tags_attr = Rf_getAttrib(x, s_tags);
-  if (tags_attr == R_NilValue) return TYPE_SCALAR;
-  if (!Rf_isVectorList(tags_attr)) return TYPE_SCALAR;
+  TypeCode result = TYPE_SCALAR;
 
-  // Find "type" element in named list
-  SEXP names = Rf_getAttrib(tags_attr, R_NamesSymbol);
-  if (names == R_NilValue) return TYPE_SCALAR;
+  if (tags_attr != R_NilValue && Rf_isVectorList(tags_attr)) {
+    // Find "type" element in named list - optimized for common case where "type" is first
+    SEXP names = Rf_getAttrib(tags_attr, R_NamesSymbol);
+    if (names != R_NilValue) {
+      int n = Rf_length(tags_attr);
 
-  int n = Rf_length(tags_attr);
-  SEXP type_val = R_NilValue;
+      // Fast path: check if "type" is the first element (most common case)
+      if (n > 0) {
+        const char* first_name = CHAR(STRING_ELT(names, 0));
+        if (strcmp(first_name, "type") == 0) {
+          SEXP type_val = VECTOR_ELT(tags_attr, 0);
+          if (type_val != R_NilValue && Rf_isString(type_val) && Rf_length(type_val) > 0) {
+            const char* type_str = CHAR(STRING_ELT(type_val, 0));
+            char first_char = type_str[0];
 
-  for (int i = 0; i < n; i++) {
-    const char* name = CHAR(STRING_ELT(names, i));
-    if (strcmp(name, "type") == 0) {
-      type_val = VECTOR_ELT(tags_attr, i);
-      break;
+            // Fast switch on first character
+            switch (first_char) {
+              case 's':
+                if (strcmp(type_str, "structure") == 0) result = TYPE_STRUCTURE;
+                break;
+              case 'l':
+                if (strcmp(type_str, "list") == 0) result = TYPE_LIST;
+                break;
+              case 'm':
+                if (strcmp(type_str, "map") == 0) result = TYPE_MAP;
+                break;
+            }
+          }
+        } else {
+          // Slow path: search for "type"
+          for (int i = 1; i < n; i++) {
+            const char* name = CHAR(STRING_ELT(names, i));
+            if (strcmp(name, "type") == 0) {
+              SEXP type_val = VECTOR_ELT(tags_attr, i);
+              if (type_val != R_NilValue && Rf_isString(type_val) && Rf_length(type_val) > 0) {
+                const char* type_str = CHAR(STRING_ELT(type_val, 0));
+                char first_char = type_str[0];
+
+                switch (first_char) {
+                  case 's':
+                    if (strcmp(type_str, "structure") == 0) result = TYPE_STRUCTURE;
+                    break;
+                  case 'l':
+                    if (strcmp(type_str, "list") == 0) result = TYPE_LIST;
+                    break;
+                  case 'm':
+                    if (strcmp(type_str, "map") == 0) result = TYPE_MAP;
+                    break;
+                }
+              }
+              break;
+            }
+          }
+        }
+      }
     }
   }
 
-  if (type_val == R_NilValue || !Rf_isString(type_val) || Rf_length(type_val) == 0) {
-    return TYPE_SCALAR;
+  // Cache the result - limit cache size to prevent unbounded growth
+  if (type_code_cache.size() < 10000) {
+    type_code_cache[x] = result;
   }
 
-  const char* type_str = CHAR(STRING_ELT(type_val, 0));
-  char first_char = type_str[0];
-
-  // Fast switch on first character, then verify full string if needed
-  switch (first_char) {
-    case 's':
-      if (strcmp(type_str, "structure") == 0) return TYPE_STRUCTURE;
-      break;
-    case 'l':
-      if (strcmp(type_str, "list") == 0) return TYPE_LIST;
-      break;
-    case 'm':
-      if (strcmp(type_str, "map") == 0) return TYPE_MAP;
-      break;
-  }
-
-  return TYPE_SCALAR;
+  return result;
 }
 
 // Fast type check without full string extraction
@@ -328,18 +365,38 @@ SEXP populate_map_cpp(SEXP input, SEXP interface, SEXP parent) {
 
 // Optimized populate scalar - avoid unnecessary List conversions
 SEXP populate_scalar_cpp(SEXP input, SEXP interface, SEXP parent) {
-  // Clone input to create result
-  SEXP result = PROTECT(Rf_duplicate(input));
-
-  // Fast path: if interface has no attributes, just return cloned input
+  // Fast path: if interface has no attributes, just return input as-is
   SEXP interface_attrs = ATTRIB(interface);
   if (interface_attrs == R_NilValue) {
-    UNPROTECT(1);
-    return result;
+    return input;
   }
 
   // Get input attributes
   SEXP input_attrs = ATTRIB(input);
+
+  // If input has no attributes and it's a scalar (not a list), we can avoid duplication
+  if (input_attrs == R_NilValue && !Rf_isVectorList(input)) {
+    // Check if interface only has "tags" attribute (common case)
+    bool only_tags = true;
+    int attr_count = 0;
+    for (SEXP a = interface_attrs; a != R_NilValue; a = CDR(a)) {
+      attr_count++;
+      if (TAG(a) != s_tags) {
+        only_tags = false;
+      }
+    }
+
+    if (only_tags && attr_count == 1) {
+      // Just copy the tags attribute - lightweight operation
+      SEXP result = PROTECT(Rf_shallow_duplicate(input));
+      Rf_setAttrib(result, s_tags, Rf_getAttrib(interface, s_tags));
+      UNPROTECT(1);
+      return result;
+    }
+  }
+
+  // General case: clone and merge attributes
+  SEXP result = PROTECT(Rf_duplicate(input));
 
   // If input has no attributes, just copy interface attributes
   if (input_attrs == R_NilValue) {
