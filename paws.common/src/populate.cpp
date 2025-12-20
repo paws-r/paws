@@ -541,6 +541,7 @@ SEXP populate_cpp_impl(SEXP input, SEXP interface, SEXP parent) {
 //' # Combine data and the metadata from the interface.
 //' populate(list(foo = 1, bar = 2), interface)
 //'
+//' @export
 //' @useDynLib paws.common _paws_common_populate
 //' @importFrom Rcpp evalCpp
 // [[Rcpp::export]]
