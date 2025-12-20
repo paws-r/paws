@@ -43,8 +43,10 @@ json_convert_string <- function(x) {
     .Call('_paws_common_json_convert_string', PACKAGE = 'paws.common', x)
 }
 
-populate_cpp <- function(input, interface, parent = NULL) {
-    .Call('_paws_common_populate_cpp', PACKAGE = 'paws.common', input, interface, parent)
+#' @useDynLib paws.common _paws_common_populate
+#' @importFrom Rcpp evalCpp
+populate <- function(input, interface, parent = NULL) {
+    .Call('_paws_common_populate', PACKAGE = 'paws.common', input, interface, parent)
 }
 
 #' @useDynLib paws.common _paws_common_check_global
