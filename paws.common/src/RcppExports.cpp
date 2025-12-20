@@ -89,6 +89,19 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// populate_cpp
+SEXP populate_cpp(SEXP input, SEXP interface, SEXP parent);
+RcppExport SEXP _paws_common_populate_cpp(SEXP inputSEXP, SEXP interfaceSEXP, SEXP parentSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type input(inputSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type interface(interfaceSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type parent(parentSEXP);
+    rcpp_result_gen = Rcpp::wrap(populate_cpp(input, interface, parent));
+    return rcpp_result_gen;
+END_RCPP
+}
 // check_global
 LogicalVector check_global(List endpoint);
 RcppExport SEXP _paws_common_check_global(SEXP endpointSEXP) {
@@ -187,6 +200,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_paws_common_process_profile_name", (DL_FUNC) &_paws_common_process_profile_name, 1},
     {"_paws_common_json_build_any", (DL_FUNC) &_paws_common_json_build_any, 1},
     {"_paws_common_json_convert_string", (DL_FUNC) &_paws_common_json_convert_string, 1},
+    {"_paws_common_populate_cpp", (DL_FUNC) &_paws_common_populate_cpp, 3},
     {"_paws_common_check_global", (DL_FUNC) &_paws_common_check_global, 1},
     {"_paws_common_get_region_pattern_js", (DL_FUNC) &_paws_common_get_region_pattern_js, 2},
     {"_paws_common_set_partition_name", (DL_FUNC) &_paws_common_set_partition_name, 1},

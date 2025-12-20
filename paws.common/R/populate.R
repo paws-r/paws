@@ -212,6 +212,11 @@ populate_scalar <- function(input, interface, parent = NULL) {
 #'
 #' @export
 populate <- function(input, interface, parent = NULL) {
+  populate_cpp(input, interface, parent)
+}
+
+
+populate_r <- function(input, interface, parent = NULL) {
   t <- tag_get(interface, "type")
   populate_fn <- switch(
     t,
@@ -220,6 +225,6 @@ populate <- function(input, interface, parent = NULL) {
     map = populate_map,
     populate_scalar
   )
-  interface <- populate_fn(input, interface, parent = parent)
+  interface <- populate_fn(input, interface, parent)
   return(interface)
 }
