@@ -123,10 +123,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Get code coverage
+        if: ${{ !(matrix.config.os == 'windows-latest' && matrix.config.R == 'oldrel-4') }}
         run: |
-          if [ "${{ matrix.config.os }}" = "windows-latest" ] && [ "${{ matrix.config.R }}" = "oldrel-4" ]; then
-            Rscript script/codecov.R paws.common
-          else
-            Rscript script/codecov.R paws.common make.paws
-          fi
+          Rscript script/codecov.R paws.common make.paws
         shell: bash
