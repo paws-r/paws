@@ -2,7 +2,8 @@
 % Please edit documentation in R/appstream_operations.R
 \name{appstream_create_streaming_url}
 \alias{appstream_create_streaming_url}
-\title{Creates a temporary URL to start an AppStream 2}
+\title{Creates a temporary URL to start an WorkSpaces Applications streaming
+session for the specified user}
 \usage{
 appstream_create_streaming_url(
   StackName,
@@ -30,10 +31,10 @@ launch directly to the operating system desktop. To do so, specify
 value between 1 and 604800 seconds. The default is 60 seconds.}
 
 \item{SessionContext}{The session context. For more information, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters}{Session Context}
-in the \emph{Amazon AppStream 2.0 Administration Guide}.}
+in the \emph{Amazon WorkSpaces Applications Administration Guide}.}
 }
 \description{
-Creates a temporary URL to start an AppStream 2.0 streaming session for the specified user. A streaming URL enables application streaming to be tested without user setup.
+Creates a temporary URL to start an WorkSpaces Applications streaming session for the specified user. A streaming URL enables application streaming to be tested without user setup.
 
 See \url{https://www.paws-r-sdk.com/docs/appstream_create_streaming_url/} for full documentation.
 }

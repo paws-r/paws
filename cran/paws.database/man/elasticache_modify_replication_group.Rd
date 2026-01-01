@@ -171,8 +171,7 @@ length
 '\%'
 }
 
-For more information, see AUTH password at
-\href{https://redis.io/docs/latest/commands/auth/}{AUTH}.}
+For more information, see AUTH password at AUTH.}
 
 \item{AuthTokenUpdateStrategy}{Specifies the strategy to use to update the AUTH token. This parameter
 must be specified with the \code{auth-token} parameter. Possible values:

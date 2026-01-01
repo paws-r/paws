@@ -19,7 +19,7 @@ maintenance configuration.}
 
 \item{namespace}{[required] The namespace of the table.}
 
-\item{name}{[required] The name of the maintenance configuration.}
+\item{name}{[required] The name of the table.}
 
 \item{type}{[required] The type of the maintenance configuration.}
 

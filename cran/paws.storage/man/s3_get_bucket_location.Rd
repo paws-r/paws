@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_bucket_location}
 \alias{s3_get_bucket_location}
-\title{This operation is not supported for directory buckets}
+\title{Using the GetBucketLocation operation is no longer a best practice}
 \usage{
 s3_get_bucket_location(Bucket, ExpectedBucketOwner = NULL)
 }
@@ -23,7 +23,7 @@ provide does not match the actual owner of the bucket, the request fails
 with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-This operation is not supported for directory buckets.
+Using the \code{\link[=s3_get_bucket_location]{get_bucket_location}} operation is no longer a best practice. To return the Region that a bucket resides in, we recommend that you use the \code{\link[=s3_head_bucket]{head_bucket}} operation instead. For backward compatibility, Amazon S3 continues to support the \code{\link[=s3_get_bucket_location]{get_bucket_location}} operation.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_location/} for full documentation.
 }

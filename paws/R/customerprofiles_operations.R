@@ -107,7 +107,10 @@ customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainN
 #'       DisplayName = "string",
 #'       IsDataPartial = "string",
 #'       ProfileId = "string",
-#'       Value = "string"
+#'       Value = "string",
+#'       LastObjectTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   ),
 #'   ConditionOverrides = list(
@@ -263,7 +266,26 @@ customerprofiles_batch_get_calculated_attribute_for_profile <- function(Calculat
 #'         )
 #'       ),
 #'       PartyTypeString = "string",
-#'       GenderString = "string"
+#'       GenderString = "string",
+#'       ProfileType = "ACCOUNT_PROFILE"|"PROFILE",
+#'       EngagementPreferences = list(
+#'         Phone = list(
+#'           list(
+#'             KeyName = "string",
+#'             KeyValue = "string",
+#'             ProfileId = "string",
+#'             ContactType = "PhoneNumber"|"MobilePhoneNumber"|"HomePhoneNumber"|"BusinessPhoneNumber"|"EmailAddress"|"PersonalEmailAddress"|"BusinessEmailAddress"
+#'           )
+#'         ),
+#'         Email = list(
+#'           list(
+#'             KeyName = "string",
+#'             KeyValue = "string",
+#'             ProfileId = "string",
+#'             ContactType = "PhoneNumber"|"MobilePhoneNumber"|"HomePhoneNumber"|"BusinessPhoneNumber"|"EmailAddress"|"PersonalEmailAddress"|"BusinessEmailAddress"
+#'           )
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -317,7 +339,7 @@ customerprofiles_batch_get_profile <- function(DomainName, ProfileIds) {
 #' @usage
 #' customerprofiles_create_calculated_attribute_definition(DomainName,
 #'   CalculatedAttributeName, DisplayName, Description, AttributeDetails,
-#'   Conditions, Filter, Statistic, Tags)
+#'   Conditions, Filter, Statistic, UseHistoricalData, Tags)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param CalculatedAttributeName &#91;required&#93; The unique name of the calculated attribute.
@@ -330,6 +352,8 @@ customerprofiles_batch_get_profile <- function(DomainName, ProfileIds) {
 #' @param Filter Defines how to filter incoming objects to include part of the Calculated
 #' Attribute.
 #' @param Statistic &#91;required&#93; The aggregation operation to perform for the calculated attribute.
+#' @param UseHistoricalData Whether historical data ingested before the Calculated Attribute was
+#' created should be included in calculations.
 #' @param Tags The tags used to organize, track, or control access for this resource.
 #'
 #' @return
@@ -350,7 +374,13 @@ customerprofiles_batch_get_profile <- function(DomainName, ProfileIds) {
 #'   Conditions = list(
 #'     Range = list(
 #'       Value = 123,
-#'       Unit = "DAYS"
+#'       Unit = "DAYS",
+#'       ValueRange = list(
+#'         Start = 123,
+#'         End = 123
+#'       ),
+#'       TimestampSource = "string",
+#'       TimestampFormat = "string"
 #'     ),
 #'     ObjectCount = 123,
 #'     Threshold = list(
@@ -385,6 +415,12 @@ customerprofiles_batch_get_profile <- function(DomainName, ProfileIds) {
 #'   LastUpdatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
+#'   UseHistoricalData = TRUE|FALSE,
+#'   Status = "PREPARING"|"IN_PROGRESS"|"COMPLETED"|"FAILED",
+#'   Readiness = list(
+#'     ProgressPercentage = 123,
+#'     Message = "string"
+#'   ),
 #'   Tags = list(
 #'     "string"
 #'   )
@@ -409,7 +445,13 @@ customerprofiles_batch_get_profile <- function(DomainName, ProfileIds) {
 #'   Conditions = list(
 #'     Range = list(
 #'       Value = 123,
-#'       Unit = "DAYS"
+#'       Unit = "DAYS",
+#'       ValueRange = list(
+#'         Start = 123,
+#'         End = 123
+#'       ),
+#'       TimestampSource = "string",
+#'       TimestampFormat = "string"
 #'     ),
 #'     ObjectCount = 123,
 #'     Threshold = list(
@@ -438,6 +480,7 @@ customerprofiles_batch_get_profile <- function(DomainName, ProfileIds) {
 #'     )
 #'   ),
 #'   Statistic = "FIRST_OCCURRENCE"|"LAST_OCCURRENCE"|"COUNT"|"SUM"|"MINIMUM"|"MAXIMUM"|"AVERAGE"|"MAX_OCCURRENCE",
+#'   UseHistoricalData = TRUE|FALSE,
 #'   Tags = list(
 #'     "string"
 #'   )
@@ -449,7 +492,7 @@ customerprofiles_batch_get_profile <- function(DomainName, ProfileIds) {
 #' @rdname customerprofiles_create_calculated_attribute_definition
 #'
 #' @aliases customerprofiles_create_calculated_attribute_definition
-customerprofiles_create_calculated_attribute_definition <- function(DomainName, CalculatedAttributeName, DisplayName = NULL, Description = NULL, AttributeDetails, Conditions = NULL, Filter = NULL, Statistic, Tags = NULL) {
+customerprofiles_create_calculated_attribute_definition <- function(DomainName, CalculatedAttributeName, DisplayName = NULL, Description = NULL, AttributeDetails, Conditions = NULL, Filter = NULL, Statistic, UseHistoricalData = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateCalculatedAttributeDefinition",
     http_method = "POST",
@@ -458,7 +501,7 @@ customerprofiles_create_calculated_attribute_definition <- function(DomainName, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .customerprofiles$create_calculated_attribute_definition_input(DomainName = DomainName, CalculatedAttributeName = CalculatedAttributeName, DisplayName = DisplayName, Description = Description, AttributeDetails = AttributeDetails, Conditions = Conditions, Filter = Filter, Statistic = Statistic, Tags = Tags)
+  input <- .customerprofiles$create_calculated_attribute_definition_input(DomainName = DomainName, CalculatedAttributeName = CalculatedAttributeName, DisplayName = DisplayName, Description = Description, AttributeDetails = AttributeDetails, Conditions = Conditions, Filter = Filter, Statistic = Statistic, UseHistoricalData = UseHistoricalData, Tags = Tags)
   output <- .customerprofiles$create_calculated_attribute_definition_output()
   config <- get_config()
   svc <- .customerprofiles$service(config, op)
@@ -503,7 +546,7 @@ customerprofiles_create_calculated_attribute_definition <- function(DomainName, 
 #' @usage
 #' customerprofiles_create_domain(DomainName, DefaultExpirationDays,
 #'   DefaultEncryptionKey, DeadLetterQueueUrl, Matching, RuleBasedMatching,
-#'   Tags)
+#'   DataStore, Tags)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param DefaultExpirationDays &#91;required&#93; The default number of days until the data within the domain expires.
@@ -534,6 +577,7 @@ customerprofiles_create_calculated_attribute_definition <- function(DomainName, 
 #' to return and review the results. Also, if you have configured
 #' `ExportingConfig` in the `RuleBasedMatchingRequest`, you can download
 #' the results from S3.
+#' @param DataStore Set to true to enabled data store for this domain.
 #' @param Tags The tags used to organize, track, or control access for this resource.
 #'
 #' @return
@@ -605,6 +649,13 @@ customerprofiles_create_calculated_attribute_definition <- function(DomainName, 
 #'         S3BucketName = "string",
 #'         S3KeyName = "string"
 #'       )
+#'     )
+#'   ),
+#'   DataStore = list(
+#'     Enabled = TRUE|FALSE,
+#'     Readiness = list(
+#'       ProgressPercentage = 123,
+#'       Message = "string"
 #'     )
 #'   ),
 #'   CreatedAt = as.POSIXct(
@@ -688,6 +739,9 @@ customerprofiles_create_calculated_attribute_definition <- function(DomainName, 
 #'       )
 #'     )
 #'   ),
+#'   DataStore = list(
+#'     Enabled = TRUE|FALSE
+#'   ),
 #'   Tags = list(
 #'     "string"
 #'   )
@@ -699,7 +753,7 @@ customerprofiles_create_calculated_attribute_definition <- function(DomainName, 
 #' @rdname customerprofiles_create_domain
 #'
 #' @aliases customerprofiles_create_domain
-customerprofiles_create_domain <- function(DomainName, DefaultExpirationDays, DefaultEncryptionKey = NULL, DeadLetterQueueUrl = NULL, Matching = NULL, RuleBasedMatching = NULL, Tags = NULL) {
+customerprofiles_create_domain <- function(DomainName, DefaultExpirationDays, DefaultEncryptionKey = NULL, DeadLetterQueueUrl = NULL, Matching = NULL, RuleBasedMatching = NULL, DataStore = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDomain",
     http_method = "POST",
@@ -708,7 +762,7 @@ customerprofiles_create_domain <- function(DomainName, DefaultExpirationDays, De
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .customerprofiles$create_domain_input(DomainName = DomainName, DefaultExpirationDays = DefaultExpirationDays, DefaultEncryptionKey = DefaultEncryptionKey, DeadLetterQueueUrl = DeadLetterQueueUrl, Matching = Matching, RuleBasedMatching = RuleBasedMatching, Tags = Tags)
+  input <- .customerprofiles$create_domain_input(DomainName = DomainName, DefaultExpirationDays = DefaultExpirationDays, DefaultEncryptionKey = DefaultEncryptionKey, DeadLetterQueueUrl = DeadLetterQueueUrl, Matching = Matching, RuleBasedMatching = RuleBasedMatching, DataStore = DataStore, Tags = Tags)
   output <- .customerprofiles$create_domain_output()
   config <- get_config()
   svc <- .customerprofiles$service(config, op)
@@ -717,6 +771,92 @@ customerprofiles_create_domain <- function(DomainName, DefaultExpirationDays, De
   return(response)
 }
 .customerprofiles$operations$create_domain <- customerprofiles_create_domain
+
+#' Creates the layout to view data for a specific domain
+#'
+#' @description
+#' Creates the layout to view data for a specific domain. This API can only
+#' be invoked from the Amazon Connect admin website.
+#'
+#' @usage
+#' customerprofiles_create_domain_layout(DomainName, LayoutDefinitionName,
+#'   Description, DisplayName, IsDefault, LayoutType, Layout, Tags)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param LayoutDefinitionName &#91;required&#93; The unique name of the layout.
+#' @param Description &#91;required&#93; The description of the layout
+#' @param DisplayName &#91;required&#93; The display name of the layout
+#' @param IsDefault If set to true for a layout, this layout will be used by default to view
+#' data. If set to false, then the layout will not be used by default, but
+#' it can be used to view data by explicitly selecting it in the console.
+#' @param LayoutType &#91;required&#93; The type of layout that can be used to view data under a Customer
+#' Profiles domain.
+#' @param Layout &#91;required&#93; A customizable layout that can be used to view data under a Customer
+#' Profiles domain.
+#' @param Tags The tags used to organize, track, or control access for this resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LayoutDefinitionName = "string",
+#'   Description = "string",
+#'   DisplayName = "string",
+#'   IsDefault = TRUE|FALSE,
+#'   LayoutType = "PROFILE_EXPLORER",
+#'   Layout = "string",
+#'   Version = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_domain_layout(
+#'   DomainName = "string",
+#'   LayoutDefinitionName = "string",
+#'   Description = "string",
+#'   DisplayName = "string",
+#'   IsDefault = TRUE|FALSE,
+#'   LayoutType = "PROFILE_EXPLORER",
+#'   Layout = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_create_domain_layout
+#'
+#' @aliases customerprofiles_create_domain_layout
+customerprofiles_create_domain_layout <- function(DomainName, LayoutDefinitionName, Description, DisplayName, IsDefault = NULL, LayoutType, Layout, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateDomainLayout",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/layouts/{LayoutDefinitionName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$create_domain_layout_input(DomainName = DomainName, LayoutDefinitionName = LayoutDefinitionName, Description = Description, DisplayName = DisplayName, IsDefault = IsDefault, LayoutType = LayoutType, Layout = Layout, Tags = Tags)
+  output <- .customerprofiles$create_domain_layout_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$create_domain_layout <- customerprofiles_create_domain_layout
 
 #' Creates an event stream, which is a subscription to real-time events,
 #' such as when profiles are created and updated through Amazon Connect
@@ -1101,10 +1241,10 @@ customerprofiles_create_integration_workflow <- function(DomainName, WorkflowTyp
 #'   HomePhoneNumber, BusinessPhoneNumber, EmailAddress,
 #'   PersonalEmailAddress, BusinessEmailAddress, Address, ShippingAddress,
 #'   MailingAddress, BillingAddress, Attributes, PartyTypeString,
-#'   GenderString)
+#'   GenderString, ProfileType, EngagementPreferences)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
-#' @param AccountNumber An account number that you have given to the customer.
+#' @param AccountNumber An account number that you have assigned to the customer.
 #' @param AdditionalInformation Any additional information relevant to the customer’s profile.
 #' @param PartyType The type of profile used to describe the customer.
 #' @param BusinessName The name of the customer’s business.
@@ -1130,6 +1270,8 @@ customerprofiles_create_integration_workflow <- function(DomainName, WorkflowTyp
 #' @param Attributes A key value pair of attributes of a customer profile.
 #' @param PartyTypeString An alternative to `PartyType` which accepts any string as input.
 #' @param GenderString An alternative to `Gender` which accepts any string as input.
+#' @param ProfileType The type of the profile.
+#' @param EngagementPreferences Object that defines the preferred methods of engagement, per channel.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1211,7 +1353,26 @@ customerprofiles_create_integration_workflow <- function(DomainName, WorkflowTyp
 #'     "string"
 #'   ),
 #'   PartyTypeString = "string",
-#'   GenderString = "string"
+#'   GenderString = "string",
+#'   ProfileType = "ACCOUNT_PROFILE"|"PROFILE",
+#'   EngagementPreferences = list(
+#'     Phone = list(
+#'       list(
+#'         KeyName = "string",
+#'         KeyValue = "string",
+#'         ProfileId = "string",
+#'         ContactType = "PhoneNumber"|"MobilePhoneNumber"|"HomePhoneNumber"|"BusinessPhoneNumber"|"EmailAddress"|"PersonalEmailAddress"|"BusinessEmailAddress"
+#'       )
+#'     ),
+#'     Email = list(
+#'       list(
+#'         KeyName = "string",
+#'         KeyValue = "string",
+#'         ProfileId = "string",
+#'         ContactType = "PhoneNumber"|"MobilePhoneNumber"|"HomePhoneNumber"|"BusinessPhoneNumber"|"EmailAddress"|"PersonalEmailAddress"|"BusinessEmailAddress"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -1220,7 +1381,7 @@ customerprofiles_create_integration_workflow <- function(DomainName, WorkflowTyp
 #' @rdname customerprofiles_create_profile
 #'
 #' @aliases customerprofiles_create_profile
-customerprofiles_create_profile <- function(DomainName, AccountNumber = NULL, AdditionalInformation = NULL, PartyType = NULL, BusinessName = NULL, FirstName = NULL, MiddleName = NULL, LastName = NULL, BirthDate = NULL, Gender = NULL, PhoneNumber = NULL, MobilePhoneNumber = NULL, HomePhoneNumber = NULL, BusinessPhoneNumber = NULL, EmailAddress = NULL, PersonalEmailAddress = NULL, BusinessEmailAddress = NULL, Address = NULL, ShippingAddress = NULL, MailingAddress = NULL, BillingAddress = NULL, Attributes = NULL, PartyTypeString = NULL, GenderString = NULL) {
+customerprofiles_create_profile <- function(DomainName, AccountNumber = NULL, AdditionalInformation = NULL, PartyType = NULL, BusinessName = NULL, FirstName = NULL, MiddleName = NULL, LastName = NULL, BirthDate = NULL, Gender = NULL, PhoneNumber = NULL, MobilePhoneNumber = NULL, HomePhoneNumber = NULL, BusinessPhoneNumber = NULL, EmailAddress = NULL, PersonalEmailAddress = NULL, BusinessEmailAddress = NULL, Address = NULL, ShippingAddress = NULL, MailingAddress = NULL, BillingAddress = NULL, Attributes = NULL, PartyTypeString = NULL, GenderString = NULL, ProfileType = NULL, EngagementPreferences = NULL) {
   op <- new_operation(
     name = "CreateProfile",
     http_method = "POST",
@@ -1229,7 +1390,7 @@ customerprofiles_create_profile <- function(DomainName, AccountNumber = NULL, Ad
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .customerprofiles$create_profile_input(DomainName = DomainName, AccountNumber = AccountNumber, AdditionalInformation = AdditionalInformation, PartyType = PartyType, BusinessName = BusinessName, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, BirthDate = BirthDate, Gender = Gender, PhoneNumber = PhoneNumber, MobilePhoneNumber = MobilePhoneNumber, HomePhoneNumber = HomePhoneNumber, BusinessPhoneNumber = BusinessPhoneNumber, EmailAddress = EmailAddress, PersonalEmailAddress = PersonalEmailAddress, BusinessEmailAddress = BusinessEmailAddress, Address = Address, ShippingAddress = ShippingAddress, MailingAddress = MailingAddress, BillingAddress = BillingAddress, Attributes = Attributes, PartyTypeString = PartyTypeString, GenderString = GenderString)
+  input <- .customerprofiles$create_profile_input(DomainName = DomainName, AccountNumber = AccountNumber, AdditionalInformation = AdditionalInformation, PartyType = PartyType, BusinessName = BusinessName, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, BirthDate = BirthDate, Gender = Gender, PhoneNumber = PhoneNumber, MobilePhoneNumber = MobilePhoneNumber, HomePhoneNumber = HomePhoneNumber, BusinessPhoneNumber = BusinessPhoneNumber, EmailAddress = EmailAddress, PersonalEmailAddress = PersonalEmailAddress, BusinessEmailAddress = BusinessEmailAddress, Address = Address, ShippingAddress = ShippingAddress, MailingAddress = MailingAddress, BillingAddress = BillingAddress, Attributes = Attributes, PartyTypeString = PartyTypeString, GenderString = GenderString, ProfileType = ProfileType, EngagementPreferences = EngagementPreferences)
   output <- .customerprofiles$create_profile_output()
   config <- get_config()
   svc <- .customerprofiles$service(config, op)
@@ -1239,6 +1400,81 @@ customerprofiles_create_profile <- function(DomainName, AccountNumber = NULL, Ad
 }
 .customerprofiles$operations$create_profile <- customerprofiles_create_profile
 
+#' Creates a recommender
+#'
+#' @description
+#' Creates a recommender
+#'
+#' @usage
+#' customerprofiles_create_recommender(DomainName, RecommenderName,
+#'   RecommenderRecipeName, RecommenderConfig, Description, Tags)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param RecommenderName &#91;required&#93; The name of the recommender.
+#' @param RecommenderRecipeName &#91;required&#93; The name of the recommeder recipe.
+#' @param RecommenderConfig The recommender configuration.
+#' @param Description The description of the domain object type.
+#' @param Tags The tags used to organize, track, or control access for this resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RecommenderArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_recommender(
+#'   DomainName = "string",
+#'   RecommenderName = "string",
+#'   RecommenderRecipeName = "recommended-for-you"|"similar-items"|"frequently-paired-items"|"popular-items"|"trending-now",
+#'   RecommenderConfig = list(
+#'     EventsConfig = list(
+#'       EventParametersList = list(
+#'         list(
+#'           EventType = "string",
+#'           EventValueThreshold = 123.0
+#'         )
+#'       )
+#'     ),
+#'     TrainingFrequency = 123
+#'   ),
+#'   Description = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_create_recommender
+#'
+#' @aliases customerprofiles_create_recommender
+customerprofiles_create_recommender <- function(DomainName, RecommenderName, RecommenderRecipeName, RecommenderConfig = NULL, Description = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateRecommender",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/recommenders/{RecommenderName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$create_recommender_input(DomainName = DomainName, RecommenderName = RecommenderName, RecommenderRecipeName = RecommenderRecipeName, RecommenderConfig = RecommenderConfig, Description = Description, Tags = Tags)
+  output <- .customerprofiles$create_recommender_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$create_recommender <- customerprofiles_create_recommender
+
 #' Creates a segment definition associated to the given domain
 #'
 #' @description
@@ -1246,14 +1482,16 @@ customerprofiles_create_profile <- function(DomainName, AccountNumber = NULL, Ad
 #'
 #' @usage
 #' customerprofiles_create_segment_definition(DomainName,
-#'   SegmentDefinitionName, DisplayName, Description, SegmentGroups, Tags)
+#'   SegmentDefinitionName, DisplayName, Description, SegmentGroups,
+#'   SegmentSqlQuery, Tags)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param SegmentDefinitionName &#91;required&#93; The unique name of the segment definition.
 #' @param DisplayName &#91;required&#93; The display name of the segment definition.
 #' @param Description The description of the segment definition.
-#' @param SegmentGroups &#91;required&#93; Specifies the base segments and dimensions for a segment definition
+#' @param SegmentGroups Specifies the base segments and dimensions for a segment definition
 #' along with their respective relationship.
+#' @param SegmentSqlQuery The segment SQL query.
 #' @param Tags The tags used to organize, track, or control access for this resource.
 #'
 #' @return
@@ -1541,6 +1779,12 @@ customerprofiles_create_profile <- function(DomainName, AccountNumber = NULL, Ad
 #'                     "string"
 #'                   )
 #'                 )
+#'               ),
+#'               ProfileType = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE",
+#'                 Values = list(
+#'                   "ACCOUNT_PROFILE"|"PROFILE"
+#'                 )
 #'               )
 #'             ),
 #'             CalculatedAttributes = list(
@@ -1571,6 +1815,7 @@ customerprofiles_create_profile <- function(DomainName, AccountNumber = NULL, Ad
 #'     ),
 #'     Include = "ALL"|"ANY"|"NONE"
 #'   ),
+#'   SegmentSqlQuery = "string",
 #'   Tags = list(
 #'     "string"
 #'   )
@@ -1582,7 +1827,7 @@ customerprofiles_create_profile <- function(DomainName, AccountNumber = NULL, Ad
 #' @rdname customerprofiles_create_segment_definition
 #'
 #' @aliases customerprofiles_create_segment_definition
-customerprofiles_create_segment_definition <- function(DomainName, SegmentDefinitionName, DisplayName, Description = NULL, SegmentGroups, Tags = NULL) {
+customerprofiles_create_segment_definition <- function(DomainName, SegmentDefinitionName, DisplayName, Description = NULL, SegmentGroups = NULL, SegmentSqlQuery = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateSegmentDefinition",
     http_method = "POST",
@@ -1591,7 +1836,7 @@ customerprofiles_create_segment_definition <- function(DomainName, SegmentDefini
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .customerprofiles$create_segment_definition_input(DomainName = DomainName, SegmentDefinitionName = SegmentDefinitionName, DisplayName = DisplayName, Description = Description, SegmentGroups = SegmentGroups, Tags = Tags)
+  input <- .customerprofiles$create_segment_definition_input(DomainName = DomainName, SegmentDefinitionName = SegmentDefinitionName, DisplayName = DisplayName, Description = Description, SegmentGroups = SegmentGroups, SegmentSqlQuery = SegmentSqlQuery, Tags = Tags)
   output <- .customerprofiles$create_segment_definition_output()
   config <- get_config()
   svc <- .customerprofiles$service(config, op)
@@ -1607,10 +1852,12 @@ customerprofiles_create_segment_definition <- function(DomainName, SegmentDefini
 #' Creates a segment estimate query.
 #'
 #' @usage
-#' customerprofiles_create_segment_estimate(DomainName, SegmentQuery)
+#' customerprofiles_create_segment_estimate(DomainName, SegmentQuery,
+#'   SegmentSqlQuery)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
-#' @param SegmentQuery &#91;required&#93; The segment query for calculating a segment estimate.
+#' @param SegmentQuery The segment query for calculating a segment estimate.
+#' @param SegmentSqlQuery The segment SQL query.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1887,6 +2134,12 @@ customerprofiles_create_segment_definition <- function(DomainName, SegmentDefini
 #'                     "string"
 #'                   )
 #'                 )
+#'               ),
+#'               ProfileType = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE",
+#'                 Values = list(
+#'                   "ACCOUNT_PROFILE"|"PROFILE"
+#'                 )
 #'               )
 #'             ),
 #'             CalculatedAttributes = list(
@@ -1916,7 +2169,8 @@ customerprofiles_create_segment_definition <- function(DomainName, SegmentDefini
 #'       )
 #'     ),
 #'     Include = "ALL"|"ANY"|"NONE"
-#'   )
+#'   ),
+#'   SegmentSqlQuery = "string"
 #' )
 #' ```
 #'
@@ -1925,7 +2179,7 @@ customerprofiles_create_segment_definition <- function(DomainName, SegmentDefini
 #' @rdname customerprofiles_create_segment_estimate
 #'
 #' @aliases customerprofiles_create_segment_estimate
-customerprofiles_create_segment_estimate <- function(DomainName, SegmentQuery) {
+customerprofiles_create_segment_estimate <- function(DomainName, SegmentQuery = NULL, SegmentSqlQuery = NULL) {
   op <- new_operation(
     name = "CreateSegmentEstimate",
     http_method = "POST",
@@ -1934,7 +2188,7 @@ customerprofiles_create_segment_estimate <- function(DomainName, SegmentQuery) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .customerprofiles$create_segment_estimate_input(DomainName = DomainName, SegmentQuery = SegmentQuery)
+  input <- .customerprofiles$create_segment_estimate_input(DomainName = DomainName, SegmentQuery = SegmentQuery, SegmentSqlQuery = SegmentSqlQuery)
   output <- .customerprofiles$create_segment_estimate_output()
   config <- get_config()
   svc <- .customerprofiles$service(config, op)
@@ -2009,6 +2263,76 @@ customerprofiles_create_segment_snapshot <- function(DomainName, SegmentDefiniti
   return(response)
 }
 .customerprofiles$operations$create_segment_snapshot <- customerprofiles_create_segment_snapshot
+
+#' Creates an Upload job to ingest data for segment imports
+#'
+#' @description
+#' Creates an Upload job to ingest data for segment imports. The metadata
+#' is created for the job with the provided field mapping and unique key.
+#'
+#' @usage
+#' customerprofiles_create_upload_job(DomainName, DisplayName, Fields,
+#'   UniqueKey, DataExpiry)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain. Domain should be exists for the upload
+#' job to be created.
+#' @param DisplayName &#91;required&#93; The unique name of the upload job. Could be a file name to identify the
+#' upload job.
+#' @param Fields &#91;required&#93; The mapping between CSV Columns and Profile Object attributes. A map of
+#' the name and ObjectType field.
+#' @param UniqueKey &#91;required&#93; The unique key columns for de-duping the profiles used to map data to
+#' the profile.
+#' @param DataExpiry The expiry duration for the profiles ingested with the job. If not
+#' provided, the system default of 2 weeks is used.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_upload_job(
+#'   DomainName = "string",
+#'   DisplayName = "string",
+#'   Fields = list(
+#'     list(
+#'       Source = "string",
+#'       Target = "string",
+#'       ContentType = "STRING"|"NUMBER"|"PHONE_NUMBER"|"EMAIL_ADDRESS"|"NAME"
+#'     )
+#'   ),
+#'   UniqueKey = "string",
+#'   DataExpiry = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_create_upload_job
+#'
+#' @aliases customerprofiles_create_upload_job
+customerprofiles_create_upload_job <- function(DomainName, DisplayName, Fields, UniqueKey, DataExpiry = NULL) {
+  op <- new_operation(
+    name = "CreateUploadJob",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/upload-jobs",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$create_upload_job_input(DomainName = DomainName, DisplayName = DisplayName, Fields = Fields, UniqueKey = UniqueKey, DataExpiry = DataExpiry)
+  output <- .customerprofiles$create_upload_job_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$create_upload_job <- customerprofiles_create_upload_job
 
 #' Deletes an existing calculated attribute definition
 #'
@@ -2111,6 +2435,104 @@ customerprofiles_delete_domain <- function(DomainName) {
   return(response)
 }
 .customerprofiles$operations$delete_domain <- customerprofiles_delete_domain
+
+#' Deletes the layout used to view data for a specific domain
+#'
+#' @description
+#' Deletes the layout used to view data for a specific domain. This API can
+#' only be invoked from the Amazon Connect admin website.
+#'
+#' @usage
+#' customerprofiles_delete_domain_layout(DomainName, LayoutDefinitionName)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param LayoutDefinitionName &#91;required&#93; The unique name of the layout.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Message = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_domain_layout(
+#'   DomainName = "string",
+#'   LayoutDefinitionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_delete_domain_layout
+#'
+#' @aliases customerprofiles_delete_domain_layout
+customerprofiles_delete_domain_layout <- function(DomainName, LayoutDefinitionName) {
+  op <- new_operation(
+    name = "DeleteDomainLayout",
+    http_method = "DELETE",
+    http_path = "/domains/{DomainName}/layouts/{LayoutDefinitionName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$delete_domain_layout_input(DomainName = DomainName, LayoutDefinitionName = LayoutDefinitionName)
+  output <- .customerprofiles$delete_domain_layout_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$delete_domain_layout <- customerprofiles_delete_domain_layout
+
+#' Delete a DomainObjectType for the given Domain and ObjectType name
+#'
+#' @description
+#' Delete a DomainObjectType for the given Domain and ObjectType name.
+#'
+#' @usage
+#' customerprofiles_delete_domain_object_type(DomainName, ObjectTypeName)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param ObjectTypeName &#91;required&#93; The unique name of the domain object type.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_domain_object_type(
+#'   DomainName = "string",
+#'   ObjectTypeName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_delete_domain_object_type
+#'
+#' @aliases customerprofiles_delete_domain_object_type
+customerprofiles_delete_domain_object_type <- function(DomainName, ObjectTypeName) {
+  op <- new_operation(
+    name = "DeleteDomainObjectType",
+    http_method = "DELETE",
+    http_path = "/domains/{DomainName}/domain-object-types/{ObjectTypeName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$delete_domain_object_type_input(DomainName = DomainName, ObjectTypeName = ObjectTypeName)
+  output <- .customerprofiles$delete_domain_object_type_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$delete_domain_object_type <- customerprofiles_delete_domain_object_type
 
 #' Disables and deletes the specified event stream
 #'
@@ -2487,6 +2909,52 @@ customerprofiles_delete_profile_object_type <- function(DomainName, ObjectTypeNa
 }
 .customerprofiles$operations$delete_profile_object_type <- customerprofiles_delete_profile_object_type
 
+#' Deletes a recommender
+#'
+#' @description
+#' Deletes a recommender.
+#'
+#' @usage
+#' customerprofiles_delete_recommender(DomainName, RecommenderName)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param RecommenderName &#91;required&#93; The recommender name.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_recommender(
+#'   DomainName = "string",
+#'   RecommenderName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_delete_recommender
+#'
+#' @aliases customerprofiles_delete_recommender
+customerprofiles_delete_recommender <- function(DomainName, RecommenderName) {
+  op <- new_operation(
+    name = "DeleteRecommender",
+    http_method = "DELETE",
+    http_path = "/domains/{DomainName}/recommenders/{RecommenderName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$delete_recommender_input(DomainName = DomainName, RecommenderName = RecommenderName)
+  output <- .customerprofiles$delete_recommender_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$delete_recommender <- customerprofiles_delete_recommender
+
 #' Deletes a segment definition from the domain
 #'
 #' @description
@@ -2617,7 +3085,7 @@ customerprofiles_delete_workflow <- function(DomainName, WorkflowId) {
 #'         list(
 #'           list(
 #'             StandardIdentifiers = list(
-#'               "PROFILE"|"ASSET"|"CASE"|"ORDER"|"COMMUNICATION_RECORD"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
+#'               "PROFILE"|"ASSET"|"CASE"|"ORDER"|"COMMUNICATION_RECORD"|"AIR_PREFERENCE"|"HOTEL_PREFERENCE"|"AIR_BOOKING"|"AIR_SEGMENT"|"HOTEL_RESERVATION"|"HOTEL_STAY_REVENUE"|"LOYALTY"|"LOYALTY_TRANSACTION"|"LOYALTY_PROMOTION"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
 #'             ),
 #'             FieldNames = list(
 #'               "string"
@@ -2801,7 +3269,13 @@ customerprofiles_get_auto_merging_preview <- function(DomainName, Consolidation,
 #'   Conditions = list(
 #'     Range = list(
 #'       Value = 123,
-#'       Unit = "DAYS"
+#'       Unit = "DAYS",
+#'       ValueRange = list(
+#'         Start = 123,
+#'         End = 123
+#'       ),
+#'       TimestampSource = "string",
+#'       TimestampFormat = "string"
 #'     ),
 #'     ObjectCount = 123,
 #'     Threshold = list(
@@ -2816,6 +3290,12 @@ customerprofiles_get_auto_merging_preview <- function(DomainName, Consolidation,
 #'       )
 #'     ),
 #'     Expression = "string"
+#'   ),
+#'   UseHistoricalData = TRUE|FALSE,
+#'   Status = "PREPARING"|"IN_PROGRESS"|"COMPLETED"|"FAILED",
+#'   Readiness = list(
+#'     ProgressPercentage = 123,
+#'     Message = "string"
 #'   ),
 #'   Tags = list(
 #'     "string"
@@ -2875,7 +3355,10 @@ customerprofiles_get_calculated_attribute_definition <- function(DomainName, Cal
 #'   CalculatedAttributeName = "string",
 #'   DisplayName = "string",
 #'   IsDataPartial = "string",
-#'   Value = "string"
+#'   Value = "string",
+#'   LastObjectTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
 #' )
 #' ```
 #'
@@ -2999,6 +3482,13 @@ customerprofiles_get_calculated_attribute_for_profile <- function(DomainName, Pr
 #'       )
 #'     )
 #'   ),
+#'   DataStore = list(
+#'     Enabled = TRUE|FALSE,
+#'     Readiness = list(
+#'       ProgressPercentage = 123,
+#'       Message = "string"
+#'     )
+#'   ),
 #'   CreatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -3041,6 +3531,143 @@ customerprofiles_get_domain <- function(DomainName) {
   return(response)
 }
 .customerprofiles$operations$get_domain <- customerprofiles_get_domain
+
+#' Gets the layout to view data for a specific domain
+#'
+#' @description
+#' Gets the layout to view data for a specific domain. This API can only be
+#' invoked from the Amazon Connect admin website.
+#'
+#' @usage
+#' customerprofiles_get_domain_layout(DomainName, LayoutDefinitionName)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param LayoutDefinitionName &#91;required&#93; The unique name of the layout.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LayoutDefinitionName = "string",
+#'   Description = "string",
+#'   DisplayName = "string",
+#'   IsDefault = TRUE|FALSE,
+#'   LayoutType = "PROFILE_EXPLORER",
+#'   Layout = "string",
+#'   Version = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_domain_layout(
+#'   DomainName = "string",
+#'   LayoutDefinitionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_domain_layout
+#'
+#' @aliases customerprofiles_get_domain_layout
+customerprofiles_get_domain_layout <- function(DomainName, LayoutDefinitionName) {
+  op <- new_operation(
+    name = "GetDomainLayout",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/layouts/{LayoutDefinitionName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$get_domain_layout_input(DomainName = DomainName, LayoutDefinitionName = LayoutDefinitionName)
+  output <- .customerprofiles$get_domain_layout_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_domain_layout <- customerprofiles_get_domain_layout
+
+#' Return a DomainObjectType for the input Domain and ObjectType names
+#'
+#' @description
+#' Return a DomainObjectType for the input Domain and ObjectType names.
+#'
+#' @usage
+#' customerprofiles_get_domain_object_type(DomainName, ObjectTypeName)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param ObjectTypeName &#91;required&#93; The unique name of the domain object type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ObjectTypeName = "string",
+#'   Description = "string",
+#'   EncryptionKey = "string",
+#'   Fields = list(
+#'     list(
+#'       Source = "string",
+#'       Target = "string",
+#'       ContentType = "STRING"|"NUMBER",
+#'       FeatureType = "TEXTUAL"|"CATEGORICAL"
+#'     )
+#'   ),
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_domain_object_type(
+#'   DomainName = "string",
+#'   ObjectTypeName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_domain_object_type
+#'
+#' @aliases customerprofiles_get_domain_object_type
+customerprofiles_get_domain_object_type <- function(DomainName, ObjectTypeName) {
+  op <- new_operation(
+    name = "GetDomainObjectType",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/domain-object-types/{ObjectTypeName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$get_domain_object_type_input(DomainName = DomainName, ObjectTypeName = ObjectTypeName)
+  output <- .customerprofiles$get_domain_object_type_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_domain_object_type <- customerprofiles_get_domain_object_type
 
 #' Returns information about the specified event stream in a specific
 #' domain
@@ -3341,7 +3968,8 @@ customerprofiles_get_identity_resolution_job <- function(DomainName, JobId) {
 #'   RoleArn = "string",
 #'   EventTriggerNames = list(
 #'     "string"
-#'   )
+#'   ),
+#'   Scope = "PROFILE"|"DOMAIN"
 #' )
 #' ```
 #'
@@ -3489,6 +4117,156 @@ customerprofiles_get_matches <- function(NextToken = NULL, MaxResults = NULL, Do
 }
 .customerprofiles$operations$get_matches <- customerprofiles_get_matches
 
+#' The GetObjectTypeAttributeValues API delivers statistical insights about
+#' attributes within a specific object type, but is exclusively available
+#' for domains with data store enabled
+#'
+#' @description
+#' The GetObjectTypeAttributeValues API delivers statistical insights about
+#' attributes within a specific object type, but is exclusively available
+#' for domains with data store enabled. This API performs daily
+#' calculations to provide statistical information about your attribute
+#' values, helping you understand patterns and trends in your data. The
+#' statistical calculations are performed once per day, providing a
+#' consistent snapshot of your attribute data characteristics.
+#' 
+#' You'll receive null values in two scenarios:
+#' 
+#' During the first period after enabling data vault (unless a calculation
+#' cycle occurs, which happens once daily).
+#' 
+#' For attributes that don't contain numeric values.
+#'
+#' @usage
+#' customerprofiles_get_object_type_attribute_statistics(DomainName,
+#'   ObjectTypeName, AttributeName)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param ObjectTypeName &#91;required&#93; The unique name of the domain object type.
+#' @param AttributeName &#91;required&#93; The attribute name.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Statistics = list(
+#'     Maximum = 123.0,
+#'     Minimum = 123.0,
+#'     Average = 123.0,
+#'     StandardDeviation = 123.0,
+#'     Percentiles = list(
+#'       P5 = 123.0,
+#'       P25 = 123.0,
+#'       P50 = 123.0,
+#'       P75 = 123.0,
+#'       P95 = 123.0
+#'     )
+#'   ),
+#'   CalculatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_object_type_attribute_statistics(
+#'   DomainName = "string",
+#'   ObjectTypeName = "string",
+#'   AttributeName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_object_type_attribute_statistics
+#'
+#' @aliases customerprofiles_get_object_type_attribute_statistics
+customerprofiles_get_object_type_attribute_statistics <- function(DomainName, ObjectTypeName, AttributeName) {
+  op <- new_operation(
+    name = "GetObjectTypeAttributeStatistics",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/object-types/{ObjectTypeName}/attributes/{AttributeName}/statistics",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$get_object_type_attribute_statistics_input(DomainName = DomainName, ObjectTypeName = ObjectTypeName, AttributeName = AttributeName)
+  output <- .customerprofiles$get_object_type_attribute_statistics_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_object_type_attribute_statistics <- customerprofiles_get_object_type_attribute_statistics
+
+#' Returns a history record for a specific profile, for a specific domain
+#'
+#' @description
+#' Returns a history record for a specific profile, for a specific domain.
+#'
+#' @usage
+#' customerprofiles_get_profile_history_record(DomainName, ProfileId, Id)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain for which to return a profile history
+#' record.
+#' @param ProfileId &#91;required&#93; The unique identifier of the profile for which to return a history
+#' record.
+#' @param Id &#91;required&#93; The unique identifier of the profile history record to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   ObjectTypeName = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ActionType = "ADDED_PROFILE_KEY"|"DELETED_PROFILE_KEY"|"CREATED"|"UPDATED"|"INGESTED"|"DELETED_BY_CUSTOMER"|"EXPIRED"|"MERGED"|"DELETED_BY_MERGE",
+#'   ProfileObjectUniqueKey = "string",
+#'   Content = "string",
+#'   PerformedBy = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_profile_history_record(
+#'   DomainName = "string",
+#'   ProfileId = "string",
+#'   Id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_profile_history_record
+#'
+#' @aliases customerprofiles_get_profile_history_record
+customerprofiles_get_profile_history_record <- function(DomainName, ProfileId, Id) {
+  op <- new_operation(
+    name = "GetProfileHistoryRecord",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/profiles/{ProfileId}/history-records/{Id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$get_profile_history_record_input(DomainName = DomainName, ProfileId = ProfileId, Id = Id)
+  output <- .customerprofiles$get_profile_history_record_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_profile_history_record <- customerprofiles_get_profile_history_record
+
 #' Returns the object types for a specific domain
 #'
 #' @description
@@ -3524,7 +4302,7 @@ customerprofiles_get_matches <- function(NextToken = NULL, MaxResults = NULL, Do
 #'     list(
 #'       list(
 #'         StandardIdentifiers = list(
-#'           "PROFILE"|"ASSET"|"CASE"|"ORDER"|"COMMUNICATION_RECORD"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
+#'           "PROFILE"|"ASSET"|"CASE"|"ORDER"|"COMMUNICATION_RECORD"|"AIR_PREFERENCE"|"HOTEL_PREFERENCE"|"AIR_BOOKING"|"AIR_SEGMENT"|"HOTEL_RESERVATION"|"HOTEL_STAY_REVENUE"|"LOYALTY"|"LOYALTY_TRANSACTION"|"LOYALTY_PROMOTION"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
 #'         ),
 #'         FieldNames = list(
 #'           "string"
@@ -3612,7 +4390,7 @@ customerprofiles_get_profile_object_type <- function(DomainName, ObjectTypeName)
 #'     list(
 #'       list(
 #'         StandardIdentifiers = list(
-#'           "PROFILE"|"ASSET"|"CASE"|"ORDER"|"COMMUNICATION_RECORD"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
+#'           "PROFILE"|"ASSET"|"CASE"|"ORDER"|"COMMUNICATION_RECORD"|"AIR_PREFERENCE"|"HOTEL_PREFERENCE"|"AIR_BOOKING"|"AIR_SEGMENT"|"HOTEL_RESERVATION"|"HOTEL_STAY_REVENUE"|"LOYALTY"|"LOYALTY_TRANSACTION"|"LOYALTY_PROMOTION"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
 #'         ),
 #'         FieldNames = list(
 #'           "string"
@@ -3653,6 +4431,205 @@ customerprofiles_get_profile_object_type_template <- function(TemplateId) {
   return(response)
 }
 .customerprofiles$operations$get_profile_object_type_template <- customerprofiles_get_profile_object_type_template
+
+#' Fetches the recommendations for a profile in the input Customer Profiles
+#' domain
+#'
+#' @description
+#' Fetches the recommendations for a profile in the input Customer Profiles
+#' domain. Fetches all the profile recommendations
+#'
+#' @usage
+#' customerprofiles_get_profile_recommendations(DomainName, ProfileId,
+#'   RecommenderName, Context, MaxResults)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param ProfileId &#91;required&#93; The unique identifier of the profile for which to retrieve
+#' recommendations.
+#' @param RecommenderName &#91;required&#93; The unique name of the recommender.
+#' @param Context The contextual metadata used to provide dynamic runtime information to
+#' tailor recommendations.
+#' @param MaxResults The maximum number of recommendations to return. The default value is
+#' 10.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Recommendations = list(
+#'     list(
+#'       CatalogItem = list(
+#'         Id = "string",
+#'         Name = "string",
+#'         Code = "string",
+#'         Type = "string",
+#'         Category = "string",
+#'         Description = "string",
+#'         AdditionalInformation = "string",
+#'         ImageLink = "string",
+#'         Link = "string",
+#'         CreatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Price = "string",
+#'         Attributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Score = 123.0
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_profile_recommendations(
+#'   DomainName = "string",
+#'   ProfileId = "string",
+#'   RecommenderName = "string",
+#'   Context = list(
+#'     "string"
+#'   ),
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_profile_recommendations
+#'
+#' @aliases customerprofiles_get_profile_recommendations
+customerprofiles_get_profile_recommendations <- function(DomainName, ProfileId, RecommenderName, Context = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "GetProfileRecommendations",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/profiles/{ProfileId}/recommendations",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$get_profile_recommendations_input(DomainName = DomainName, ProfileId = ProfileId, RecommenderName = RecommenderName, Context = Context, MaxResults = MaxResults)
+  output <- .customerprofiles$get_profile_recommendations_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_profile_recommendations <- customerprofiles_get_profile_recommendations
+
+#' Retrieves a recommender
+#'
+#' @description
+#' Retrieves a recommender.
+#'
+#' @usage
+#' customerprofiles_get_recommender(DomainName, RecommenderName,
+#'   TrainingMetricsCount)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param RecommenderName &#91;required&#93; The name of the recommender.
+#' @param TrainingMetricsCount The number of training metrics to retrieve for the recommender.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RecommenderName = "string",
+#'   RecommenderRecipeName = "recommended-for-you"|"similar-items"|"frequently-paired-items"|"popular-items"|"trending-now",
+#'   RecommenderConfig = list(
+#'     EventsConfig = list(
+#'       EventParametersList = list(
+#'         list(
+#'           EventType = "string",
+#'           EventValueThreshold = 123.0
+#'         )
+#'       )
+#'     ),
+#'     TrainingFrequency = 123
+#'   ),
+#'   Description = "string",
+#'   Status = "PENDING"|"IN_PROGRESS"|"ACTIVE"|"FAILED"|"STOPPING"|"INACTIVE"|"STARTING"|"DELETING",
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   FailureReason = "string",
+#'   LatestRecommenderUpdate = list(
+#'     RecommenderConfig = list(
+#'       EventsConfig = list(
+#'         EventParametersList = list(
+#'           list(
+#'             EventType = "string",
+#'             EventValueThreshold = 123.0
+#'           )
+#'         )
+#'       ),
+#'       TrainingFrequency = 123
+#'     ),
+#'     Status = "PENDING"|"IN_PROGRESS"|"ACTIVE"|"FAILED"|"STOPPING"|"INACTIVE"|"STARTING"|"DELETING",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     FailureReason = "string"
+#'   ),
+#'   TrainingMetrics = list(
+#'     list(
+#'       Time = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Metrics = list(
+#'         123.0
+#'       )
+#'     )
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_recommender(
+#'   DomainName = "string",
+#'   RecommenderName = "string",
+#'   TrainingMetricsCount = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_recommender
+#'
+#' @aliases customerprofiles_get_recommender
+customerprofiles_get_recommender <- function(DomainName, RecommenderName, TrainingMetricsCount = NULL) {
+  op <- new_operation(
+    name = "GetRecommender",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/recommenders/{RecommenderName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$get_recommender_input(DomainName = DomainName, RecommenderName = RecommenderName, TrainingMetricsCount = TrainingMetricsCount)
+  output <- .customerprofiles$get_recommender_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_recommender <- customerprofiles_get_recommender
 
 #' Gets a segment definition from the domain
 #'
@@ -3934,6 +4911,12 @@ customerprofiles_get_profile_object_type_template <- function(TemplateId) {
 #'                     "string"
 #'                   )
 #'                 )
+#'               ),
+#'               ProfileType = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE",
+#'                 Values = list(
+#'                   "ACCOUNT_PROFILE"|"PROFILE"
+#'                 )
 #'               )
 #'             ),
 #'             CalculatedAttributes = list(
@@ -3970,7 +4953,9 @@ customerprofiles_get_profile_object_type_template <- function(TemplateId) {
 #'   ),
 #'   Tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   SegmentSqlQuery = "string",
+#'   SegmentType = "CLASSIC"|"ENHANCED"
 #' )
 #' ```
 #'
@@ -4165,7 +5150,26 @@ customerprofiles_get_segment_estimate <- function(DomainName, EstimateId) {
 #'           )
 #'         ),
 #'         PartyTypeString = "string",
-#'         GenderString = "string"
+#'         GenderString = "string",
+#'         ProfileType = "ACCOUNT_PROFILE"|"PROFILE",
+#'         EngagementPreferences = list(
+#'           Phone = list(
+#'             list(
+#'               KeyName = "string",
+#'               KeyValue = "string",
+#'               ProfileId = "string",
+#'               ContactType = "PhoneNumber"|"MobilePhoneNumber"|"HomePhoneNumber"|"BusinessPhoneNumber"|"EmailAddress"|"PersonalEmailAddress"|"BusinessEmailAddress"
+#'             )
+#'           ),
+#'           Email = list(
+#'             list(
+#'               KeyName = "string",
+#'               KeyValue = "string",
+#'               ProfileId = "string",
+#'               ContactType = "PhoneNumber"|"MobilePhoneNumber"|"HomePhoneNumber"|"BusinessPhoneNumber"|"EmailAddress"|"PersonalEmailAddress"|"BusinessEmailAddress"
+#'             )
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -4175,6 +5179,9 @@ customerprofiles_get_segment_estimate <- function(DomainName, EstimateId) {
 #'       Message = "string",
 #'       Status = 123
 #'     )
+#'   ),
+#'   LastComputedAt = as.POSIXct(
+#'     "2015-01-01"
 #'   )
 #' )
 #' ```
@@ -4346,6 +5353,138 @@ customerprofiles_get_similar_profiles <- function(NextToken = NULL, MaxResults =
   return(response)
 }
 .customerprofiles$operations$get_similar_profiles <- customerprofiles_get_similar_profiles
+
+#' This API retrieves the details of a specific upload job
+#'
+#' @description
+#' This API retrieves the details of a specific upload job.
+#'
+#' @usage
+#' customerprofiles_get_upload_job(DomainName, JobId)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain containing the upload job.
+#' @param JobId &#91;required&#93; The unique identifier of the upload job to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string",
+#'   DisplayName = "string",
+#'   Status = "CREATED"|"IN_PROGRESS"|"PARTIALLY_SUCCEEDED"|"SUCCEEDED"|"FAILED"|"STOPPED",
+#'   StatusReason = "VALIDATION_FAILURE"|"INTERNAL_FAILURE",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CompletedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Fields = list(
+#'     list(
+#'       Source = "string",
+#'       Target = "string",
+#'       ContentType = "STRING"|"NUMBER"|"PHONE_NUMBER"|"EMAIL_ADDRESS"|"NAME"
+#'     )
+#'   ),
+#'   UniqueKey = "string",
+#'   ResultsSummary = list(
+#'     UpdatedRecords = 123,
+#'     CreatedRecords = 123,
+#'     FailedRecords = 123
+#'   ),
+#'   DataExpiry = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_upload_job(
+#'   DomainName = "string",
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_upload_job
+#'
+#' @aliases customerprofiles_get_upload_job
+customerprofiles_get_upload_job <- function(DomainName, JobId) {
+  op <- new_operation(
+    name = "GetUploadJob",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/upload-jobs/{JobId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$get_upload_job_input(DomainName = DomainName, JobId = JobId)
+  output <- .customerprofiles$get_upload_job_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_upload_job <- customerprofiles_get_upload_job
+
+#' This API retrieves the pre-signed URL and client token for uploading the
+#' file associated with the upload job
+#'
+#' @description
+#' This API retrieves the pre-signed URL and client token for uploading the
+#' file associated with the upload job.
+#'
+#' @usage
+#' customerprofiles_get_upload_job_path(DomainName, JobId)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain containing the upload job.
+#' @param JobId &#91;required&#93; The unique identifier of the upload job to retrieve the upload path for.
+#' This is generated from the CreateUploadJob API.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Url = "string",
+#'   ClientToken = "string",
+#'   ValidUntil = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_upload_job_path(
+#'   DomainName = "string",
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_upload_job_path
+#'
+#' @aliases customerprofiles_get_upload_job_path
+customerprofiles_get_upload_job_path <- function(DomainName, JobId) {
+  op <- new_operation(
+    name = "GetUploadJobPath",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/upload-jobs/{JobId}/path",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$get_upload_job_path_input(DomainName = DomainName, JobId = JobId)
+  output <- .customerprofiles$get_upload_job_path_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_upload_job_path <- customerprofiles_get_upload_job_path
 
 #' Get details of specified workflow
 #'
@@ -4542,7 +5681,8 @@ customerprofiles_get_workflow_steps <- function(DomainName, WorkflowId, NextToke
 #'       RoleArn = "string",
 #'       EventTriggerNames = list(
 #'         "string"
-#'       )
+#'       ),
+#'       Scope = "PROFILE"|"DOMAIN"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -4613,6 +5753,8 @@ customerprofiles_list_account_integrations <- function(Uri, NextToken = NULL, Ma
 #'       LastUpdatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
+#'       UseHistoricalData = TRUE|FALSE,
+#'       Status = "PREPARING"|"IN_PROGRESS"|"COMPLETED"|"FAILED",
 #'       Tags = list(
 #'         "string"
 #'       )
@@ -4679,7 +5821,10 @@ customerprofiles_list_calculated_attribute_definitions <- function(DomainName, N
 #'       CalculatedAttributeName = "string",
 #'       DisplayName = "string",
 #'       IsDataPartial = "string",
-#'       Value = "string"
+#'       Value = "string",
+#'       LastObjectTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -4719,6 +5864,149 @@ customerprofiles_list_calculated_attributes_for_profile <- function(NextToken = 
   return(response)
 }
 .customerprofiles$operations$list_calculated_attributes_for_profile <- customerprofiles_list_calculated_attributes_for_profile
+
+#' Lists the existing layouts that can be used to view data for a specific
+#' domain
+#'
+#' @description
+#' Lists the existing layouts that can be used to view data for a specific
+#' domain. This API can only be invoked from the Amazon Connect admin
+#' website.
+#'
+#' @usage
+#' customerprofiles_list_domain_layouts(DomainName, NextToken, MaxResults)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param NextToken Identifies the next page of results to return.
+#' @param MaxResults The maximum number of objects returned per page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       LayoutDefinitionName = "string",
+#'       Description = "string",
+#'       DisplayName = "string",
+#'       IsDefault = TRUE|FALSE,
+#'       LayoutType = "PROFILE_EXPLORER",
+#'       Tags = list(
+#'         "string"
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_domain_layouts(
+#'   DomainName = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_list_domain_layouts
+#'
+#' @aliases customerprofiles_list_domain_layouts
+customerprofiles_list_domain_layouts <- function(DomainName, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListDomainLayouts",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/layouts",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$list_domain_layouts_input(DomainName = DomainName, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .customerprofiles$list_domain_layouts_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$list_domain_layouts <- customerprofiles_list_domain_layouts
+
+#' List all DomainObjectType(s) in a Customer Profiles domain
+#'
+#' @description
+#' List all DomainObjectType(s) in a Customer Profiles domain.
+#'
+#' @usage
+#' customerprofiles_list_domain_object_types(DomainName, MaxResults,
+#'   NextToken)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param MaxResults The maximum number of domain object types returned per page.
+#' @param NextToken The pagination token from the previous call to ListDomainObjectTypes.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       ObjectTypeName = "string",
+#'       Description = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_domain_object_types(
+#'   DomainName = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_list_domain_object_types
+#'
+#' @aliases customerprofiles_list_domain_object_types
+customerprofiles_list_domain_object_types <- function(DomainName, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListDomainObjectTypes",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/domain-object-types",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$list_domain_object_types_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .customerprofiles$list_domain_object_types_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$list_domain_object_types <- customerprofiles_list_domain_object_types
 
 #' Returns a list of all the domains for an AWS account that have been
 #' created
@@ -5053,7 +6341,8 @@ customerprofiles_list_identity_resolution_jobs <- function(DomainName, NextToken
 #'       RoleArn = "string",
 #'       EventTriggerNames = list(
 #'         "string"
-#'       )
+#'       ),
+#'       Scope = "PROFILE"|"DOMAIN"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -5093,6 +6382,82 @@ customerprofiles_list_integrations <- function(DomainName, NextToken = NULL, Max
   return(response)
 }
 .customerprofiles$operations$list_integrations <- customerprofiles_list_integrations
+
+#' The ListObjectTypeAttributeValues API provides access to the most recent
+#' distinct values for any specified attribute, making it valuable for
+#' real-time data validation and consistency checks within your object
+#' types
+#'
+#' @description
+#' The ListObjectTypeAttributeValues API provides access to the most recent
+#' distinct values for any specified attribute, making it valuable for
+#' real-time data validation and consistency checks within your object
+#' types. This API works across domain, supporting both custom and standard
+#' object types. The API accepts the object type name, attribute name, and
+#' domain name as input parameters and returns values up to the storage
+#' limit of approximately 350KB.
+#'
+#' @usage
+#' customerprofiles_list_object_type_attribute_values(NextToken,
+#'   MaxResults, DomainName, ObjectTypeName, AttributeName)
+#'
+#' @param NextToken The pagination token from the previous call.
+#' @param MaxResults The maximum number of objects returned per page. Valid Range: Minimum
+#' value of 1. Maximum value of 100. If not provided default as 100.
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param ObjectTypeName &#91;required&#93; The unique name of the domain object type.
+#' @param AttributeName &#91;required&#93; The attribute name.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       Value = "string",
+#'       LastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_object_type_attribute_values(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   DomainName = "string",
+#'   ObjectTypeName = "string",
+#'   AttributeName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_list_object_type_attribute_values
+#'
+#' @aliases customerprofiles_list_object_type_attribute_values
+customerprofiles_list_object_type_attribute_values <- function(NextToken = NULL, MaxResults = NULL, DomainName, ObjectTypeName, AttributeName) {
+  op <- new_operation(
+    name = "ListObjectTypeAttributeValues",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/object-types/{ObjectTypeName}/attributes/{AttributeName}/values",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$list_object_type_attribute_values_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName, ObjectTypeName = ObjectTypeName, AttributeName = AttributeName)
+  output <- .customerprofiles$list_object_type_attribute_values_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$list_object_type_attribute_values <- customerprofiles_list_object_type_attribute_values
 
 #' Fetch the possible attribute values given the attribute name
 #'
@@ -5216,6 +6581,93 @@ customerprofiles_list_profile_attribute_values <- function(DomainName, Attribute
   return(response)
 }
 .customerprofiles$operations$list_profile_attribute_values <- customerprofiles_list_profile_attribute_values
+
+#' Returns a list of history records for a specific profile, for a specific
+#' domain
+#'
+#' @description
+#' Returns a list of history records for a specific profile, for a specific
+#' domain.
+#'
+#' @usage
+#' customerprofiles_list_profile_history_records(DomainName, ProfileId,
+#'   ObjectTypeName, NextToken, MaxResults, ActionType, PerformedBy)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain for which to return profile history
+#' records.
+#' @param ProfileId &#91;required&#93; The identifier of the profile to be taken.
+#' @param ObjectTypeName Applies a filter to include profile history records only with the
+#' specified `ObjectTypeName` value in the response.
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#' @param MaxResults The maximum number of results to return per page.
+#' @param ActionType Applies a filter to include profile history records only with the
+#' specified `ActionType` value in the response.
+#' @param PerformedBy Applies a filter to include profile history records only with the
+#' specified `PerformedBy` value in the response. The `PerformedBy` value
+#' can be the Amazon Resource Name (ARN) of the person or service principal
+#' who performed the action.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProfileHistoryRecords = list(
+#'     list(
+#'       Id = "string",
+#'       ObjectTypeName = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ActionType = "ADDED_PROFILE_KEY"|"DELETED_PROFILE_KEY"|"CREATED"|"UPDATED"|"INGESTED"|"DELETED_BY_CUSTOMER"|"EXPIRED"|"MERGED"|"DELETED_BY_MERGE",
+#'       ProfileObjectUniqueKey = "string",
+#'       PerformedBy = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_profile_history_records(
+#'   DomainName = "string",
+#'   ProfileId = "string",
+#'   ObjectTypeName = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   ActionType = "ADDED_PROFILE_KEY"|"DELETED_PROFILE_KEY"|"CREATED"|"UPDATED"|"INGESTED"|"DELETED_BY_CUSTOMER"|"EXPIRED"|"MERGED"|"DELETED_BY_MERGE",
+#'   PerformedBy = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_list_profile_history_records
+#'
+#' @aliases customerprofiles_list_profile_history_records
+customerprofiles_list_profile_history_records <- function(DomainName, ProfileId, ObjectTypeName = NULL, NextToken = NULL, MaxResults = NULL, ActionType = NULL, PerformedBy = NULL) {
+  op <- new_operation(
+    name = "ListProfileHistoryRecords",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/profiles/history-records",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$list_profile_history_records_input(DomainName = DomainName, ProfileId = ProfileId, ObjectTypeName = ObjectTypeName, NextToken = NextToken, MaxResults = MaxResults, ActionType = ActionType, PerformedBy = PerformedBy)
+  output <- .customerprofiles$list_profile_history_records_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$list_profile_history_records <- customerprofiles_list_profile_history_records
 
 #' Lists all of the template information for object types
 #'
@@ -5422,6 +6874,172 @@ customerprofiles_list_profile_objects <- function(NextToken = NULL, MaxResults =
 }
 .customerprofiles$operations$list_profile_objects <- customerprofiles_list_profile_objects
 
+#' Returns a list of available recommender recipes that can be used to
+#' create recommenders
+#'
+#' @description
+#' Returns a list of available recommender recipes that can be used to
+#' create recommenders.
+#'
+#' @usage
+#' customerprofiles_list_recommender_recipes(MaxResults, NextToken)
+#'
+#' @param MaxResults The maximum number of recommender recipes to return in the response. The
+#' default value is 100.
+#' @param NextToken A token received from a previous ListRecommenderRecipes call to retrieve
+#' the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   RecommenderRecipes = list(
+#'     list(
+#'       name = "recommended-for-you"|"similar-items"|"frequently-paired-items"|"popular-items"|"trending-now",
+#'       description = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_recommender_recipes(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_list_recommender_recipes
+#'
+#' @aliases customerprofiles_list_recommender_recipes
+customerprofiles_list_recommender_recipes <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListRecommenderRecipes",
+    http_method = "GET",
+    http_path = "/recommender-recipes",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecommenderRecipes"),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$list_recommender_recipes_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .customerprofiles$list_recommender_recipes_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$list_recommender_recipes <- customerprofiles_list_recommender_recipes
+
+#' Returns a list of recommenders in the specified domain
+#'
+#' @description
+#' Returns a list of recommenders in the specified domain.
+#'
+#' @usage
+#' customerprofiles_list_recommenders(DomainName, MaxResults, NextToken)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param MaxResults The maximum number of recommenders to return in the response. The
+#' default value is 100.
+#' @param NextToken A token received from a previous ListRecommenders call to retrieve the
+#' next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Recommenders = list(
+#'     list(
+#'       RecommenderName = "string",
+#'       RecipeName = "recommended-for-you"|"similar-items"|"frequently-paired-items"|"popular-items"|"trending-now",
+#'       RecommenderConfig = list(
+#'         EventsConfig = list(
+#'           EventParametersList = list(
+#'             list(
+#'               EventType = "string",
+#'               EventValueThreshold = 123.0
+#'             )
+#'           )
+#'         ),
+#'         TrainingFrequency = 123
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Description = "string",
+#'       Status = "PENDING"|"IN_PROGRESS"|"ACTIVE"|"FAILED"|"STOPPING"|"INACTIVE"|"STARTING"|"DELETING",
+#'       LastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Tags = list(
+#'         "string"
+#'       ),
+#'       FailureReason = "string",
+#'       LatestRecommenderUpdate = list(
+#'         RecommenderConfig = list(
+#'           EventsConfig = list(
+#'             EventParametersList = list(
+#'               list(
+#'                 EventType = "string",
+#'                 EventValueThreshold = 123.0
+#'               )
+#'             )
+#'           ),
+#'           TrainingFrequency = 123
+#'         ),
+#'         Status = "PENDING"|"IN_PROGRESS"|"ACTIVE"|"FAILED"|"STOPPING"|"INACTIVE"|"STARTING"|"DELETING",
+#'         CreatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         LastUpdatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         FailureReason = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_recommenders(
+#'   DomainName = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_list_recommenders
+#'
+#' @aliases customerprofiles_list_recommenders
+customerprofiles_list_recommenders <- function(DomainName, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListRecommenders",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/recommenders",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Recommenders"),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$list_recommenders_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .customerprofiles$list_recommenders_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$list_recommenders <- customerprofiles_list_recommenders
+
 #' Returns a set of MatchIds that belong to the given domain
 #'
 #' @description
@@ -5510,7 +7128,8 @@ customerprofiles_list_rule_based_matches <- function(NextToken = NULL, MaxResult
 #'       ),
 #'       Tags = list(
 #'         "string"
-#'       )
+#'       ),
+#'       SegmentType = "CLASSIC"|"ENHANCED"
 #'     )
 #'   )
 #' )
@@ -5602,6 +7221,75 @@ customerprofiles_list_tags_for_resource <- function(resourceArn) {
   return(response)
 }
 .customerprofiles$operations$list_tags_for_resource <- customerprofiles_list_tags_for_resource
+
+#' This API retrieves a list of upload jobs for the specified domain
+#'
+#' @description
+#' This API retrieves a list of upload jobs for the specified domain.
+#'
+#' @usage
+#' customerprofiles_list_upload_jobs(DomainName, MaxResults, NextToken)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain to list upload jobs for.
+#' @param MaxResults The maximum number of upload jobs to return per page.
+#' @param NextToken The pagination token from the previous call to retrieve the next page of
+#' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Items = list(
+#'     list(
+#'       JobId = "string",
+#'       DisplayName = "string",
+#'       Status = "CREATED"|"IN_PROGRESS"|"PARTIALLY_SUCCEEDED"|"SUCCEEDED"|"FAILED"|"STOPPED",
+#'       StatusReason = "VALIDATION_FAILURE"|"INTERNAL_FAILURE",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CompletedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DataExpiry = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_upload_jobs(
+#'   DomainName = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_list_upload_jobs
+#'
+#' @aliases customerprofiles_list_upload_jobs
+customerprofiles_list_upload_jobs <- function(DomainName, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListUploadJobs",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/upload-jobs",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$list_upload_jobs_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .customerprofiles$list_upload_jobs_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$list_upload_jobs <- customerprofiles_list_upload_jobs
 
 #' Query to list all workflows
 #'
@@ -5771,7 +7459,9 @@ customerprofiles_list_workflows <- function(DomainName, WorkflowType = NULL, Sta
 #'     BillingAddress = "string",
 #'     Attributes = list(
 #'       "string"
-#'     )
+#'     ),
+#'     ProfileType = "string",
+#'     EngagementPreferences = "string"
 #'   )
 #' )
 #' ```
@@ -5800,6 +7490,98 @@ customerprofiles_merge_profiles <- function(DomainName, MainProfileId, ProfileId
 }
 .customerprofiles$operations$merge_profiles <- customerprofiles_merge_profiles
 
+#' Create/Update a DomainObjectType in a Customer Profiles domain
+#'
+#' @description
+#' Create/Update a DomainObjectType in a Customer Profiles domain. To
+#' create a new DomainObjectType, Data Store needs to be enabled on the
+#' Domain.
+#'
+#' @usage
+#' customerprofiles_put_domain_object_type(DomainName, ObjectTypeName,
+#'   Description, EncryptionKey, Fields, Tags)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param ObjectTypeName &#91;required&#93; The unique name of the domain object type.
+#' @param Description The description of the domain object type.
+#' @param EncryptionKey The customer provided KMS key used to encrypt this type of domain
+#' object.
+#' @param Fields &#91;required&#93; A map of field names to their corresponding domain object type field
+#' definitions.
+#' @param Tags The tags used to organize, track, or control access for this resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ObjectTypeName = "string",
+#'   Description = "string",
+#'   EncryptionKey = "string",
+#'   Fields = list(
+#'     list(
+#'       Source = "string",
+#'       Target = "string",
+#'       ContentType = "STRING"|"NUMBER",
+#'       FeatureType = "TEXTUAL"|"CATEGORICAL"
+#'     )
+#'   ),
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_domain_object_type(
+#'   DomainName = "string",
+#'   ObjectTypeName = "string",
+#'   Description = "string",
+#'   EncryptionKey = "string",
+#'   Fields = list(
+#'     list(
+#'       Source = "string",
+#'       Target = "string",
+#'       ContentType = "STRING"|"NUMBER",
+#'       FeatureType = "TEXTUAL"|"CATEGORICAL"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_put_domain_object_type
+#'
+#' @aliases customerprofiles_put_domain_object_type
+customerprofiles_put_domain_object_type <- function(DomainName, ObjectTypeName, Description = NULL, EncryptionKey = NULL, Fields, Tags = NULL) {
+  op <- new_operation(
+    name = "PutDomainObjectType",
+    http_method = "PUT",
+    http_path = "/domains/{DomainName}/domain-object-types/{ObjectTypeName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$put_domain_object_type_input(DomainName = DomainName, ObjectTypeName = ObjectTypeName, Description = Description, EncryptionKey = EncryptionKey, Fields = Fields, Tags = Tags)
+  output <- .customerprofiles$put_domain_object_type_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$put_domain_object_type <- customerprofiles_put_domain_object_type
+
 #' Adds an integration between the service and a third-party service, which
 #' includes Amazon AppFlow and Amazon Connect
 #'
@@ -5815,15 +7597,13 @@ customerprofiles_merge_profiles <- function(DomainName, MainProfileId, ProfileId
 #' [UntagResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_UntagResource.html).
 #'
 #' @usage
-#' customerprofiles_put_integration(DomainName, Uri, ObjectTypeName, Tags,
-#'   FlowDefinition, ObjectTypeNames, RoleArn, EventTriggerNames)
+#' customerprofiles_put_integration(DomainName, Uri, ObjectTypeName,
+#'   ObjectTypeNames, Tags, FlowDefinition, RoleArn, EventTriggerNames,
+#'   Scope)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param Uri The URI of the S3 bucket or any other type of data source.
 #' @param ObjectTypeName The name of the profile object type.
-#' @param Tags The tags used to organize, track, or control access for this resource.
-#' @param FlowDefinition The configuration that controls how Customer Profiles retrieves data
-#' from the source.
 #' @param ObjectTypeNames A map in which each key is an event type from an external application
 #' such as Segment or Shopify, and each value is an `ObjectTypeName`
 #' (template) used to ingest the event. It supports the following event
@@ -5831,10 +7611,16 @@ customerprofiles_merge_profiles <- function(DomainName, MainProfileId, ProfileId
 #' `ShopifyUpdateCustomers`, `ShopifyCreateDraftOrders`,
 #' `ShopifyUpdateDraftOrders`, `ShopifyCreateOrders`, and
 #' `ShopifyUpdatedOrders`.
+#' @param Tags The tags used to organize, track, or control access for this resource.
+#' @param FlowDefinition The configuration that controls how Customer Profiles retrieves data
+#' from the source.
 #' @param RoleArn The Amazon Resource Name (ARN) of the IAM role. The Integration uses
 #' this role to make Customer Profiles requests on your behalf.
 #' @param EventTriggerNames A list of unique names for active event triggers associated with the
 #' integration.
+#' @param Scope Specifies whether the integration applies to profile level data
+#' (associated with profiles) or domain level data (not associated with any
+#' specific profile). The default value is PROFILE.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5860,7 +7646,8 @@ customerprofiles_merge_profiles <- function(DomainName, MainProfileId, ProfileId
 #'   RoleArn = "string",
 #'   EventTriggerNames = list(
 #'     "string"
-#'   )
+#'   ),
+#'   Scope = "PROFILE"|"DOMAIN"
 #' )
 #' ```
 #'
@@ -5870,6 +7657,9 @@ customerprofiles_merge_profiles <- function(DomainName, MainProfileId, ProfileId
 #'   DomainName = "string",
 #'   Uri = "string",
 #'   ObjectTypeName = "string",
+#'   ObjectTypeNames = list(
+#'     "string"
+#'   ),
 #'   Tags = list(
 #'     "string"
 #'   ),
@@ -5944,13 +7734,11 @@ customerprofiles_merge_profiles <- function(DomainName, MainProfileId, ProfileId
 #'       )
 #'     )
 #'   ),
-#'   ObjectTypeNames = list(
-#'     "string"
-#'   ),
 #'   RoleArn = "string",
 #'   EventTriggerNames = list(
 #'     "string"
-#'   )
+#'   ),
+#'   Scope = "PROFILE"|"DOMAIN"
 #' )
 #' ```
 #'
@@ -5959,7 +7747,7 @@ customerprofiles_merge_profiles <- function(DomainName, MainProfileId, ProfileId
 #' @rdname customerprofiles_put_integration
 #'
 #' @aliases customerprofiles_put_integration
-customerprofiles_put_integration <- function(DomainName, Uri = NULL, ObjectTypeName = NULL, Tags = NULL, FlowDefinition = NULL, ObjectTypeNames = NULL, RoleArn = NULL, EventTriggerNames = NULL) {
+customerprofiles_put_integration <- function(DomainName, Uri = NULL, ObjectTypeName = NULL, ObjectTypeNames = NULL, Tags = NULL, FlowDefinition = NULL, RoleArn = NULL, EventTriggerNames = NULL, Scope = NULL) {
   op <- new_operation(
     name = "PutIntegration",
     http_method = "PUT",
@@ -5968,7 +7756,7 @@ customerprofiles_put_integration <- function(DomainName, Uri = NULL, ObjectTypeN
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .customerprofiles$put_integration_input(DomainName = DomainName, Uri = Uri, ObjectTypeName = ObjectTypeName, Tags = Tags, FlowDefinition = FlowDefinition, ObjectTypeNames = ObjectTypeNames, RoleArn = RoleArn, EventTriggerNames = EventTriggerNames)
+  input <- .customerprofiles$put_integration_input(DomainName = DomainName, Uri = Uri, ObjectTypeName = ObjectTypeName, ObjectTypeNames = ObjectTypeNames, Tags = Tags, FlowDefinition = FlowDefinition, RoleArn = RoleArn, EventTriggerNames = EventTriggerNames, Scope = Scope)
   output <- .customerprofiles$put_integration_output()
   config <- get_config()
   svc <- .customerprofiles$service(config, op)
@@ -6109,7 +7897,7 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 #'     list(
 #'       list(
 #'         StandardIdentifiers = list(
-#'           "PROFILE"|"ASSET"|"CASE"|"ORDER"|"COMMUNICATION_RECORD"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
+#'           "PROFILE"|"ASSET"|"CASE"|"ORDER"|"COMMUNICATION_RECORD"|"AIR_PREFERENCE"|"HOTEL_PREFERENCE"|"AIR_BOOKING"|"AIR_SEGMENT"|"HOTEL_RESERVATION"|"HOTEL_STAY_REVENUE"|"LOYALTY"|"LOYALTY_TRANSACTION"|"LOYALTY_PROMOTION"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
 #'         ),
 #'         FieldNames = list(
 #'           "string"
@@ -6152,7 +7940,7 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 #'     list(
 #'       list(
 #'         StandardIdentifiers = list(
-#'           "PROFILE"|"ASSET"|"CASE"|"ORDER"|"COMMUNICATION_RECORD"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
+#'           "PROFILE"|"ASSET"|"CASE"|"ORDER"|"COMMUNICATION_RECORD"|"AIR_PREFERENCE"|"HOTEL_PREFERENCE"|"AIR_BOOKING"|"AIR_SEGMENT"|"HOTEL_RESERVATION"|"HOTEL_STAY_REVENUE"|"LOYALTY"|"LOYALTY_TRANSACTION"|"LOYALTY_PROMOTION"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
 #'         ),
 #'         FieldNames = list(
 #'           "string"
@@ -6327,7 +8115,26 @@ customerprofiles_put_profile_object_type <- function(DomainName, ObjectTypeName,
 #'         )
 #'       ),
 #'       PartyTypeString = "string",
-#'       GenderString = "string"
+#'       GenderString = "string",
+#'       ProfileType = "ACCOUNT_PROFILE"|"PROFILE",
+#'       EngagementPreferences = list(
+#'         Phone = list(
+#'           list(
+#'             KeyName = "string",
+#'             KeyValue = "string",
+#'             ProfileId = "string",
+#'             ContactType = "PhoneNumber"|"MobilePhoneNumber"|"HomePhoneNumber"|"BusinessPhoneNumber"|"EmailAddress"|"PersonalEmailAddress"|"BusinessEmailAddress"
+#'           )
+#'         ),
+#'         Email = list(
+#'           list(
+#'             KeyName = "string",
+#'             KeyValue = "string",
+#'             ProfileId = "string",
+#'             ContactType = "PhoneNumber"|"MobilePhoneNumber"|"HomePhoneNumber"|"BusinessPhoneNumber"|"EmailAddress"|"PersonalEmailAddress"|"BusinessEmailAddress"
+#'           )
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -6379,6 +8186,192 @@ customerprofiles_search_profiles <- function(NextToken = NULL, MaxResults = NULL
   return(response)
 }
 .customerprofiles$operations$search_profiles <- customerprofiles_search_profiles
+
+#' Starts a recommender that was previously stopped
+#'
+#' @description
+#' Starts a recommender that was previously stopped. Starting a recommender
+#' resumes its ability to generate recommendations.
+#'
+#' @usage
+#' customerprofiles_start_recommender(DomainName, RecommenderName)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param RecommenderName &#91;required&#93; The name of the recommender to start.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_recommender(
+#'   DomainName = "string",
+#'   RecommenderName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_start_recommender
+#'
+#' @aliases customerprofiles_start_recommender
+customerprofiles_start_recommender <- function(DomainName, RecommenderName) {
+  op <- new_operation(
+    name = "StartRecommender",
+    http_method = "PUT",
+    http_path = "/domains/{DomainName}/recommenders/{RecommenderName}/start",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$start_recommender_input(DomainName = DomainName, RecommenderName = RecommenderName)
+  output <- .customerprofiles$start_recommender_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$start_recommender <- customerprofiles_start_recommender
+
+#' This API starts the processing of an upload job to ingest profile data
+#'
+#' @description
+#' This API starts the processing of an upload job to ingest profile data.
+#'
+#' @usage
+#' customerprofiles_start_upload_job(DomainName, JobId)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain containing the upload job to start.
+#' @param JobId &#91;required&#93; The unique identifier of the upload job to start.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_upload_job(
+#'   DomainName = "string",
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_start_upload_job
+#'
+#' @aliases customerprofiles_start_upload_job
+customerprofiles_start_upload_job <- function(DomainName, JobId) {
+  op <- new_operation(
+    name = "StartUploadJob",
+    http_method = "PUT",
+    http_path = "/domains/{DomainName}/upload-jobs/{JobId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$start_upload_job_input(DomainName = DomainName, JobId = JobId)
+  output <- .customerprofiles$start_upload_job_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$start_upload_job <- customerprofiles_start_upload_job
+
+#' Stops a recommender, suspending its ability to generate recommendations
+#'
+#' @description
+#' Stops a recommender, suspending its ability to generate recommendations.
+#' The recommender can be restarted later using StartRecommender.
+#'
+#' @usage
+#' customerprofiles_stop_recommender(DomainName, RecommenderName)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param RecommenderName &#91;required&#93; The name of the recommender to stop.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_recommender(
+#'   DomainName = "string",
+#'   RecommenderName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_stop_recommender
+#'
+#' @aliases customerprofiles_stop_recommender
+customerprofiles_stop_recommender <- function(DomainName, RecommenderName) {
+  op <- new_operation(
+    name = "StopRecommender",
+    http_method = "PUT",
+    http_path = "/domains/{DomainName}/recommenders/{RecommenderName}/stop",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$stop_recommender_input(DomainName = DomainName, RecommenderName = RecommenderName)
+  output <- .customerprofiles$stop_recommender_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$stop_recommender <- customerprofiles_stop_recommender
+
+#' This API stops the processing of an upload job
+#'
+#' @description
+#' This API stops the processing of an upload job.
+#'
+#' @usage
+#' customerprofiles_stop_upload_job(DomainName, JobId)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain containing the upload job to stop.
+#' @param JobId &#91;required&#93; The unique identifier of the upload job to stop.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_upload_job(
+#'   DomainName = "string",
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_stop_upload_job
+#'
+#' @aliases customerprofiles_stop_upload_job
+customerprofiles_stop_upload_job <- function(DomainName, JobId) {
+  op <- new_operation(
+    name = "StopUploadJob",
+    http_method = "PUT",
+    http_path = "/domains/{DomainName}/upload-jobs/{JobId}/stop",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$stop_upload_job_input(DomainName = DomainName, JobId = JobId)
+  output <- .customerprofiles$stop_upload_job_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$stop_upload_job <- customerprofiles_stop_upload_job
 
 #' Assigns one or more tags (key-value pairs) to the specified Amazon
 #' Connect Customer Profiles resource
@@ -6532,7 +8525,13 @@ customerprofiles_untag_resource <- function(resourceArn, tagKeys) {
 #'   Conditions = list(
 #'     Range = list(
 #'       Value = 123,
-#'       Unit = "DAYS"
+#'       Unit = "DAYS",
+#'       ValueRange = list(
+#'         Start = 123,
+#'         End = 123
+#'       ),
+#'       TimestampSource = "string",
+#'       TimestampFormat = "string"
 #'     ),
 #'     ObjectCount = 123,
 #'     Threshold = list(
@@ -6547,6 +8546,12 @@ customerprofiles_untag_resource <- function(resourceArn, tagKeys) {
 #'       )
 #'     ),
 #'     Expression = "string"
+#'   ),
+#'   UseHistoricalData = TRUE|FALSE,
+#'   Status = "PREPARING"|"IN_PROGRESS"|"COMPLETED"|"FAILED",
+#'   Readiness = list(
+#'     ProgressPercentage = 123,
+#'     Message = "string"
 #'   ),
 #'   Tags = list(
 #'     "string"
@@ -6564,7 +8569,13 @@ customerprofiles_untag_resource <- function(resourceArn, tagKeys) {
 #'   Conditions = list(
 #'     Range = list(
 #'       Value = 123,
-#'       Unit = "DAYS"
+#'       Unit = "DAYS",
+#'       ValueRange = list(
+#'         Start = 123,
+#'         End = 123
+#'       ),
+#'       TimestampSource = "string",
+#'       TimestampFormat = "string"
 #'     ),
 #'     ObjectCount = 123,
 #'     Threshold = list(
@@ -6624,7 +8635,7 @@ customerprofiles_update_calculated_attribute_definition <- function(DomainName, 
 #' @usage
 #' customerprofiles_update_domain(DomainName, DefaultExpirationDays,
 #'   DefaultEncryptionKey, DeadLetterQueueUrl, Matching, RuleBasedMatching,
-#'   Tags)
+#'   DataStore, Tags)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param DefaultExpirationDays The default number of days until the data within the domain expires.
@@ -6657,6 +8668,7 @@ customerprofiles_update_calculated_attribute_definition <- function(DomainName, 
 #' to return and review the results. Also, if you have configured
 #' `ExportingConfig` in the `RuleBasedMatchingRequest`, you can download
 #' the results from S3.
+#' @param DataStore Set to true to enabled data store for this domain.
 #' @param Tags The tags used to organize, track, or control access for this resource.
 #'
 #' @return
@@ -6728,6 +8740,13 @@ customerprofiles_update_calculated_attribute_definition <- function(DomainName, 
 #'         S3BucketName = "string",
 #'         S3KeyName = "string"
 #'       )
+#'     )
+#'   ),
+#'   DataStore = list(
+#'     Enabled = TRUE|FALSE,
+#'     Readiness = list(
+#'       ProgressPercentage = 123,
+#'       Message = "string"
 #'     )
 #'   ),
 #'   CreatedAt = as.POSIXct(
@@ -6811,6 +8830,9 @@ customerprofiles_update_calculated_attribute_definition <- function(DomainName, 
 #'       )
 #'     )
 #'   ),
+#'   DataStore = list(
+#'     Enabled = TRUE|FALSE
+#'   ),
 #'   Tags = list(
 #'     "string"
 #'   )
@@ -6822,7 +8844,7 @@ customerprofiles_update_calculated_attribute_definition <- function(DomainName, 
 #' @rdname customerprofiles_update_domain
 #'
 #' @aliases customerprofiles_update_domain
-customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = NULL, DefaultEncryptionKey = NULL, DeadLetterQueueUrl = NULL, Matching = NULL, RuleBasedMatching = NULL, Tags = NULL) {
+customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = NULL, DefaultEncryptionKey = NULL, DeadLetterQueueUrl = NULL, Matching = NULL, RuleBasedMatching = NULL, DataStore = NULL, Tags = NULL) {
   op <- new_operation(
     name = "UpdateDomain",
     http_method = "PUT",
@@ -6831,7 +8853,7 @@ customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .customerprofiles$update_domain_input(DomainName = DomainName, DefaultExpirationDays = DefaultExpirationDays, DefaultEncryptionKey = DefaultEncryptionKey, DeadLetterQueueUrl = DeadLetterQueueUrl, Matching = Matching, RuleBasedMatching = RuleBasedMatching, Tags = Tags)
+  input <- .customerprofiles$update_domain_input(DomainName = DomainName, DefaultExpirationDays = DefaultExpirationDays, DefaultEncryptionKey = DefaultEncryptionKey, DeadLetterQueueUrl = DeadLetterQueueUrl, Matching = Matching, RuleBasedMatching = RuleBasedMatching, DataStore = DataStore, Tags = Tags)
   output <- .customerprofiles$update_domain_output()
   config <- get_config()
   svc <- .customerprofiles$service(config, op)
@@ -6840,6 +8862,88 @@ customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = N
   return(response)
 }
 .customerprofiles$operations$update_domain <- customerprofiles_update_domain
+
+#' Updates the layout used to view data for a specific domain
+#'
+#' @description
+#' Updates the layout used to view data for a specific domain. This API can
+#' only be invoked from the Amazon Connect admin website.
+#'
+#' @usage
+#' customerprofiles_update_domain_layout(DomainName, LayoutDefinitionName,
+#'   Description, DisplayName, IsDefault, LayoutType, Layout)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param LayoutDefinitionName &#91;required&#93; The unique name of the layout.
+#' @param Description The description of the layout
+#' @param DisplayName The display name of the layout
+#' @param IsDefault If set to true for a layout, this layout will be used by default to view
+#' data. If set to false, then the layout will not be used by default, but
+#' it can be used to view data by explicitly selecting it in the console.
+#' @param LayoutType The type of layout that can be used to view data under a Customer
+#' Profiles domain.
+#' @param Layout A customizable layout that can be used to view data under a Customer
+#' Profiles domain.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LayoutDefinitionName = "string",
+#'   Description = "string",
+#'   DisplayName = "string",
+#'   IsDefault = TRUE|FALSE,
+#'   LayoutType = "PROFILE_EXPLORER",
+#'   Layout = "string",
+#'   Version = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_domain_layout(
+#'   DomainName = "string",
+#'   LayoutDefinitionName = "string",
+#'   Description = "string",
+#'   DisplayName = "string",
+#'   IsDefault = TRUE|FALSE,
+#'   LayoutType = "PROFILE_EXPLORER",
+#'   Layout = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_update_domain_layout
+#'
+#' @aliases customerprofiles_update_domain_layout
+customerprofiles_update_domain_layout <- function(DomainName, LayoutDefinitionName, Description = NULL, DisplayName = NULL, IsDefault = NULL, LayoutType = NULL, Layout = NULL) {
+  op <- new_operation(
+    name = "UpdateDomainLayout",
+    http_method = "PUT",
+    http_path = "/domains/{DomainName}/layouts/{LayoutDefinitionName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$update_domain_layout_input(DomainName = DomainName, LayoutDefinitionName = LayoutDefinitionName, Description = Description, DisplayName = DisplayName, IsDefault = IsDefault, LayoutType = LayoutType, Layout = Layout)
+  output <- .customerprofiles$update_domain_layout_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$update_domain_layout <- customerprofiles_update_domain_layout
 
 #' Update the properties of an Event Trigger
 #'
@@ -6995,12 +9099,12 @@ customerprofiles_update_event_trigger <- function(DomainName, EventTriggerName, 
 #'   MobilePhoneNumber, HomePhoneNumber, BusinessPhoneNumber, EmailAddress,
 #'   PersonalEmailAddress, BusinessEmailAddress, Address, ShippingAddress,
 #'   MailingAddress, BillingAddress, Attributes, PartyTypeString,
-#'   GenderString)
+#'   GenderString, ProfileType, EngagementPreferences)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param ProfileId &#91;required&#93; The unique identifier of a customer profile.
 #' @param AdditionalInformation Any additional information relevant to the customer’s profile.
-#' @param AccountNumber An account number that you have given to the customer.
+#' @param AccountNumber An account number that you have assigned to the customer.
 #' @param PartyType The type of profile used to describe the customer.
 #' @param BusinessName The name of the customer’s business.
 #' @param FirstName The customer’s first name.
@@ -7025,6 +9129,8 @@ customerprofiles_update_event_trigger <- function(DomainName, EventTriggerName, 
 #' @param Attributes A key value pair of attributes of a customer profile.
 #' @param PartyTypeString An alternative to `PartyType` which accepts any string as input.
 #' @param GenderString An alternative to `Gender` which accepts any string as input.
+#' @param ProfileType Determines the type of the profile.
+#' @param EngagementPreferences Object that defines users preferred methods of engagement.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7107,7 +9213,26 @@ customerprofiles_update_event_trigger <- function(DomainName, EventTriggerName, 
 #'     "string"
 #'   ),
 #'   PartyTypeString = "string",
-#'   GenderString = "string"
+#'   GenderString = "string",
+#'   ProfileType = "ACCOUNT_PROFILE"|"PROFILE",
+#'   EngagementPreferences = list(
+#'     Phone = list(
+#'       list(
+#'         KeyName = "string",
+#'         KeyValue = "string",
+#'         ProfileId = "string",
+#'         ContactType = "PhoneNumber"|"MobilePhoneNumber"|"HomePhoneNumber"|"BusinessPhoneNumber"|"EmailAddress"|"PersonalEmailAddress"|"BusinessEmailAddress"
+#'       )
+#'     ),
+#'     Email = list(
+#'       list(
+#'         KeyName = "string",
+#'         KeyValue = "string",
+#'         ProfileId = "string",
+#'         ContactType = "PhoneNumber"|"MobilePhoneNumber"|"HomePhoneNumber"|"BusinessPhoneNumber"|"EmailAddress"|"PersonalEmailAddress"|"BusinessEmailAddress"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -7116,7 +9241,7 @@ customerprofiles_update_event_trigger <- function(DomainName, EventTriggerName, 
 #' @rdname customerprofiles_update_profile
 #'
 #' @aliases customerprofiles_update_profile
-customerprofiles_update_profile <- function(DomainName, ProfileId, AdditionalInformation = NULL, AccountNumber = NULL, PartyType = NULL, BusinessName = NULL, FirstName = NULL, MiddleName = NULL, LastName = NULL, BirthDate = NULL, Gender = NULL, PhoneNumber = NULL, MobilePhoneNumber = NULL, HomePhoneNumber = NULL, BusinessPhoneNumber = NULL, EmailAddress = NULL, PersonalEmailAddress = NULL, BusinessEmailAddress = NULL, Address = NULL, ShippingAddress = NULL, MailingAddress = NULL, BillingAddress = NULL, Attributes = NULL, PartyTypeString = NULL, GenderString = NULL) {
+customerprofiles_update_profile <- function(DomainName, ProfileId, AdditionalInformation = NULL, AccountNumber = NULL, PartyType = NULL, BusinessName = NULL, FirstName = NULL, MiddleName = NULL, LastName = NULL, BirthDate = NULL, Gender = NULL, PhoneNumber = NULL, MobilePhoneNumber = NULL, HomePhoneNumber = NULL, BusinessPhoneNumber = NULL, EmailAddress = NULL, PersonalEmailAddress = NULL, BusinessEmailAddress = NULL, Address = NULL, ShippingAddress = NULL, MailingAddress = NULL, BillingAddress = NULL, Attributes = NULL, PartyTypeString = NULL, GenderString = NULL, ProfileType = NULL, EngagementPreferences = NULL) {
   op <- new_operation(
     name = "UpdateProfile",
     http_method = "PUT",
@@ -7125,7 +9250,7 @@ customerprofiles_update_profile <- function(DomainName, ProfileId, AdditionalInf
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .customerprofiles$update_profile_input(DomainName = DomainName, ProfileId = ProfileId, AdditionalInformation = AdditionalInformation, AccountNumber = AccountNumber, PartyType = PartyType, BusinessName = BusinessName, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, BirthDate = BirthDate, Gender = Gender, PhoneNumber = PhoneNumber, MobilePhoneNumber = MobilePhoneNumber, HomePhoneNumber = HomePhoneNumber, BusinessPhoneNumber = BusinessPhoneNumber, EmailAddress = EmailAddress, PersonalEmailAddress = PersonalEmailAddress, BusinessEmailAddress = BusinessEmailAddress, Address = Address, ShippingAddress = ShippingAddress, MailingAddress = MailingAddress, BillingAddress = BillingAddress, Attributes = Attributes, PartyTypeString = PartyTypeString, GenderString = GenderString)
+  input <- .customerprofiles$update_profile_input(DomainName = DomainName, ProfileId = ProfileId, AdditionalInformation = AdditionalInformation, AccountNumber = AccountNumber, PartyType = PartyType, BusinessName = BusinessName, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, BirthDate = BirthDate, Gender = Gender, PhoneNumber = PhoneNumber, MobilePhoneNumber = MobilePhoneNumber, HomePhoneNumber = HomePhoneNumber, BusinessPhoneNumber = BusinessPhoneNumber, EmailAddress = EmailAddress, PersonalEmailAddress = PersonalEmailAddress, BusinessEmailAddress = BusinessEmailAddress, Address = Address, ShippingAddress = ShippingAddress, MailingAddress = MailingAddress, BillingAddress = BillingAddress, Attributes = Attributes, PartyTypeString = PartyTypeString, GenderString = GenderString, ProfileType = ProfileType, EngagementPreferences = EngagementPreferences)
   output <- .customerprofiles$update_profile_output()
   config <- get_config()
   svc <- .customerprofiles$service(config, op)
@@ -7134,3 +9259,72 @@ customerprofiles_update_profile <- function(DomainName, ProfileId, AdditionalInf
   return(response)
 }
 .customerprofiles$operations$update_profile <- customerprofiles_update_profile
+
+#' Updates the properties of an existing recommender, allowing you to
+#' modify its configuration and description
+#'
+#' @description
+#' Updates the properties of an existing recommender, allowing you to
+#' modify its configuration and description.
+#'
+#' @usage
+#' customerprofiles_update_recommender(DomainName, RecommenderName,
+#'   Description, RecommenderConfig)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param RecommenderName &#91;required&#93; The name of the recommender to update.
+#' @param Description The new description to assign to the recommender.
+#' @param RecommenderConfig The new configuration settings to apply to the recommender, including
+#' updated parameters and settings that define its behavior.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RecommenderName = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_recommender(
+#'   DomainName = "string",
+#'   RecommenderName = "string",
+#'   Description = "string",
+#'   RecommenderConfig = list(
+#'     EventsConfig = list(
+#'       EventParametersList = list(
+#'         list(
+#'           EventType = "string",
+#'           EventValueThreshold = 123.0
+#'         )
+#'       )
+#'     ),
+#'     TrainingFrequency = 123
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_update_recommender
+#'
+#' @aliases customerprofiles_update_recommender
+customerprofiles_update_recommender <- function(DomainName, RecommenderName, Description = NULL, RecommenderConfig = NULL) {
+  op <- new_operation(
+    name = "UpdateRecommender",
+    http_method = "PATCH",
+    http_path = "/domains/{DomainName}/recommenders/{RecommenderName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$update_recommender_input(DomainName = DomainName, RecommenderName = RecommenderName, Description = Description, RecommenderConfig = RecommenderConfig)
+  output <- .customerprofiles$update_recommender_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$update_recommender <- customerprofiles_update_recommender

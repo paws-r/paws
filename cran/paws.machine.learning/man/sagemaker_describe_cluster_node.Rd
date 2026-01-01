@@ -5,13 +5,22 @@
 \title{Retrieves information of a node (also called a instance interchangeably)
 of a SageMaker HyperPod cluster}
 \usage{
-sagemaker_describe_cluster_node(ClusterName, NodeId)
+sagemaker_describe_cluster_node(
+  ClusterName,
+  NodeId = NULL,
+  NodeLogicalId = NULL
+)
 }
 \arguments{
 \item{ClusterName}{[required] The string name or the Amazon Resource Name (ARN) of the SageMaker
 HyperPod cluster in which the node is.}
 
-\item{NodeId}{[required] The ID of the SageMaker HyperPod cluster node.}
+\item{NodeId}{The ID of the SageMaker HyperPod cluster node.}
+
+\item{NodeLogicalId}{The logical identifier of the node to describe. You can specify either
+\code{NodeLogicalId} or \code{InstanceId}, but not both. \code{NodeLogicalId} can be
+used to describe nodes that are still being provisioned and don't yet
+have an \code{InstanceId} assigned.}
 }
 \description{
 Retrieves information of a node (also called a \emph{instance} interchangeably) of a SageMaker HyperPod cluster.

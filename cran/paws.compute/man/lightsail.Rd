@@ -64,7 +64,7 @@ snapshots (backups) - for a low, predictable monthly price.
 
 You can manage your Lightsail resources using the Lightsail console,
 Lightsail API, Command Line Interface (CLI), or SDKs. For more
-information about Lightsail concepts and tasks, see the \href{https://docs.aws.amazon.com/lightsail/latest/userguide/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli.html}{Amazon Lightsail Developer Guide}.
+information about Lightsail concepts and tasks, see the \href{https://docs.aws.amazon.com/lightsail/latest/userguide/lightsail-how-to-set-up-and-configure-aws-cli.html}{Amazon Lightsail Developer Guide}.
 
 This API Reference provides detailed information about the actions, data
 types, parameters, and errors of the Lightsail service. For more

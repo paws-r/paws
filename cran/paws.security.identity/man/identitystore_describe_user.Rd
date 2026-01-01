@@ -5,7 +5,7 @@
 \title{Retrieves the user metadata and attributes from the UserId in an
 identity store}
 \usage{
-identitystore_describe_user(IdentityStoreId, UserId)
+identitystore_describe_user(IdentityStoreId, UserId, Extensions = NULL)
 }
 \arguments{
 \item{IdentityStoreId}{[required] The globally unique identifier for the identity store, such as
@@ -15,6 +15,10 @@ lower case letters. This value is generated at the time that a new
 identity store is created.}
 
 \item{UserId}{[required] The identifier for a user in the identity store.}
+
+\item{Extensions}{A collection of extension names indicating what extensions the service
+should retrieve alongside other user attributes.
+\code{aws:identitystore:enterprise} is the only supported extension name.}
 }
 \description{
 Retrieves the user metadata and attributes from the \code{UserId} in an identity store.

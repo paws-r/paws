@@ -2,7 +2,7 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_get_reference_import_job}
 \alias{omics_get_reference_import_job}
-\title{Gets information about a reference import job}
+\title{Monitors the status of a reference import job}
 \usage{
 omics_get_reference_import_job(id, referenceStoreId)
 }
@@ -12,7 +12,7 @@ omics_get_reference_import_job(id, referenceStoreId)
 \item{referenceStoreId}{[required] The job's reference store ID.}
 }
 \description{
-Gets information about a reference import job.
+Monitors the status of a reference import job. This operation can be called after calling the \code{\link[=omics_start_reference_import_job]{start_reference_import_job}} operation.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_get_reference_import_job/} for full documentation.
 }

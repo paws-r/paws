@@ -111,10 +111,12 @@ results and solving your specific problems instead.
 \link[paws.compute:batch_create_consumable_resource]{create_consumable_resource} \tab Creates an Batch consumable resource\cr
 \link[paws.compute:batch_create_job_queue]{create_job_queue} \tab Creates an Batch job queue\cr
 \link[paws.compute:batch_create_scheduling_policy]{create_scheduling_policy} \tab Creates an Batch scheduling policy\cr
+\link[paws.compute:batch_create_service_environment]{create_service_environment} \tab Creates a service environment for running service jobs\cr
 \link[paws.compute:batch_delete_compute_environment]{delete_compute_environment} \tab Deletes an Batch compute environment\cr
 \link[paws.compute:batch_delete_consumable_resource]{delete_consumable_resource} \tab Deletes the specified consumable resource\cr
 \link[paws.compute:batch_delete_job_queue]{delete_job_queue} \tab Deletes the specified job queue\cr
 \link[paws.compute:batch_delete_scheduling_policy]{delete_scheduling_policy} \tab Deletes the specified scheduling policy\cr
+\link[paws.compute:batch_delete_service_environment]{delete_service_environment} \tab Deletes a Service environment\cr
 \link[paws.compute:batch_deregister_job_definition]{deregister_job_definition} \tab Deregisters an Batch job definition\cr
 \link[paws.compute:batch_describe_compute_environments]{describe_compute_environments} \tab Describes one or more of your compute environments\cr
 \link[paws.compute:batch_describe_consumable_resource]{describe_consumable_resource} \tab Returns a description of the specified consumable resource\cr
@@ -122,21 +124,27 @@ results and solving your specific problems instead.
 \link[paws.compute:batch_describe_job_queues]{describe_job_queues} \tab Describes one or more of your job queues\cr
 \link[paws.compute:batch_describe_jobs]{describe_jobs} \tab Describes a list of Batch jobs\cr
 \link[paws.compute:batch_describe_scheduling_policies]{describe_scheduling_policies} \tab Describes one or more of your scheduling policies\cr
+\link[paws.compute:batch_describe_service_environments]{describe_service_environments} \tab Describes one or more of your service environments\cr
+\link[paws.compute:batch_describe_service_job]{describe_service_job} \tab The details of a service job\cr
 \link[paws.compute:batch_get_job_queue_snapshot]{get_job_queue_snapshot} \tab Provides a list of the first 100 RUNNABLE jobs associated to a single job queue\cr
 \link[paws.compute:batch_list_consumable_resources]{list_consumable_resources} \tab Returns a list of Batch consumable resources\cr
 \link[paws.compute:batch_list_jobs]{list_jobs} \tab Returns a list of Batch jobs\cr
 \link[paws.compute:batch_list_jobs_by_consumable_resource]{list_jobs_by_consumable_resource} \tab Returns a list of Batch jobs that require a specific consumable resource\cr
 \link[paws.compute:batch_list_scheduling_policies]{list_scheduling_policies} \tab Returns a list of Batch scheduling policies\cr
+\link[paws.compute:batch_list_service_jobs]{list_service_jobs} \tab Returns a list of service jobs for a specified job queue\cr
 \link[paws.compute:batch_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for an Batch resource\cr
 \link[paws.compute:batch_register_job_definition]{register_job_definition} \tab Registers an Batch job definition\cr
 \link[paws.compute:batch_submit_job]{submit_job} \tab Submits an Batch job from a job definition\cr
+\link[paws.compute:batch_submit_service_job]{submit_service_job} \tab Submits a service job to a specified job queue to run on SageMaker AI\cr
 \link[paws.compute:batch_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn\cr
 \link[paws.compute:batch_terminate_job]{terminate_job} \tab Terminates a job in a job queue\cr
+\link[paws.compute:batch_terminate_service_job]{terminate_service_job} \tab Terminates a service job in a job queue\cr
 \link[paws.compute:batch_untag_resource]{untag_resource} \tab Deletes specified tags from an Batch resource\cr
 \link[paws.compute:batch_update_compute_environment]{update_compute_environment} \tab Updates an Batch compute environment\cr
 \link[paws.compute:batch_update_consumable_resource]{update_consumable_resource} \tab Updates a consumable resource\cr
 \link[paws.compute:batch_update_job_queue]{update_job_queue} \tab Updates a job queue\cr
-\link[paws.compute:batch_update_scheduling_policy]{update_scheduling_policy} \tab Updates a scheduling policy
+\link[paws.compute:batch_update_scheduling_policy]{update_scheduling_policy} \tab Updates a scheduling policy\cr
+\link[paws.compute:batch_update_service_environment]{update_service_environment} \tab Updates a service environment
 }
 }
 

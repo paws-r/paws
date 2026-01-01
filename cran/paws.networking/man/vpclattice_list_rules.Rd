@@ -5,20 +5,20 @@
 \title{Lists the rules for the specified listener}
 \usage{
 vpclattice_list_rules(
+  serviceIdentifier,
   listenerIdentifier,
   maxResults = NULL,
-  nextToken = NULL,
-  serviceIdentifier
+  nextToken = NULL
 )
 }
 \arguments{
+\item{serviceIdentifier}{[required] The ID or ARN of the service.}
+
 \item{listenerIdentifier}{[required] The ID or ARN of the listener.}
 
 \item{maxResults}{The maximum number of results to return.}
 
 \item{nextToken}{A pagination token for the next page of results.}
-
-\item{serviceIdentifier}{[required] The ID or ARN of the service.}
 }
 \description{
 Lists the rules for the specified listener.

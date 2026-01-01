@@ -22,7 +22,7 @@ Suggests:
     testthat
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Collate: 
     'applicationautoscaling_service.R'
     'applicationautoscaling_interfaces.R'
@@ -99,12 +99,6 @@ Collate:
     'managedgrafana_service.R'
     'managedgrafana_interfaces.R'
     'managedgrafana_operations.R'
-    'opsworks_service.R'
-    'opsworks_interfaces.R'
-    'opsworks_operations.R'
-    'opsworkscm_service.R'
-    'opsworkscm_interfaces.R'
-    'opsworkscm_operations.R'
     'organizations_service.R'
     'organizations_interfaces.R'
     'organizations_operations.R'

@@ -9,7 +9,8 @@ rds_start_db_instance_automated_backups_replication(
   SourceDBInstanceArn,
   BackupRetentionPeriod = NULL,
   KmsKeyId = NULL,
-  PreSignedUrl = NULL
+  PreSignedUrl = NULL,
+  Tags = NULL
 )
 }
 \arguments{
@@ -46,6 +47,8 @@ specify \code{SourceRegion} (or \code{--source-region} for the CLI) instead of
 specifying \code{PreSignedUrl} manually. Specifying \code{SourceRegion}
 autogenerates a presigned URL that is a valid request for the operation
 that can run in the source Amazon Web Services Region.}
+
+\item{Tags}{A list of tags to associate with the replicated automated backups.}
 }
 \description{
 Enables replication of automated backups to a different Amazon Web Services Region.

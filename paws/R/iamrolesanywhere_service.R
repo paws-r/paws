@@ -174,7 +174,7 @@ iamrolesanywhere <- function(config = list(), credentials = list(), endpoint = N
   service_id = "RolesAnywhere",
   api_version = "2018-05-10",
   signing_name = "rolesanywhere",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 

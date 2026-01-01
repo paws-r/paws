@@ -34,6 +34,13 @@ are associated with that account's usage of that service. You can nest
 more information, see
 \href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html}{Expression}.
 
+The
+\code{\link[=costexplorer_get_cost_and_usage_with_resources]{get_cost_and_usage_with_resources}}
+operation requires that you either group by or filter by a \code{ResourceId}.
+It requires the
+\href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html}{Expression}
+\code{"SERVICE = Amazon Elastic Compute Cloud - Compute"} in the filter.
+
 Valid values for \code{MatchOptions} for \code{Dimensions} are \code{EQUALS} and
 \code{CASE_SENSITIVE}.
 

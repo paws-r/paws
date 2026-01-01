@@ -83,6 +83,10 @@ NULL
 #' -   [`list_parts`][s3_list_parts]
 #' 
 #' -   [`list_multipart_uploads`][s3_list_multipart_uploads]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_abort_multipart_upload(Bucket, Key, UploadId, RequestPayer,
@@ -349,6 +353,10 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' -   [`list_parts`][s3_list_parts]
 #' 
 #' -   [`list_multipart_uploads`][s3_list_multipart_uploads]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_complete_multipart_upload(Bucket, Key, MultipartUpload, UploadId,
@@ -516,7 +524,7 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #'   ChecksumSHA1 = "string",
 #'   ChecksumSHA256 = "string",
 #'   ChecksumType = "COMPOSITE"|"FULL_OBJECT",
-#'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
 #'   VersionId = "string",
 #'   SSEKMSKeyId = "string",
 #'   BucketKeyEnabled = TRUE|FALSE,
@@ -611,7 +619,17 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' @description
 #' Creates a copy of an object that is already stored in Amazon S3.
 #' 
-#' You can store individual objects of up to 5 TB in Amazon S3. You create
+#' End of support notice: As of October 1, 2025, Amazon S3 has discontinued
+#' support for Email Grantee Access Control Lists (ACLs). If you attempt to
+#' use an Email Grantee ACL in a request after October 1, 2025, the request
+#' will receive an `HTTP 405` (Method Not Allowed) error.
+#' 
+#' This change affects the following Amazon Web Services Regions: US East
+#' (N. Virginia), US West (N. California), US West (Oregon), Asia Pacific
+#' (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Europe
+#' (Ireland), and South America (São Paulo).
+#' 
+#' You can store individual objects of up to 50 TB in Amazon S3. You create
 #' a copy of your object up to 5 GB in size in a single atomic action using
 #' this API. However, to copy an object greater than 5 GB, you must use the
 #' multipart upload Upload Part - Copy (UploadPartCopy) API. For more
@@ -784,21 +802,25 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' -   [`put_object`][s3_put_object]
 #' 
 #' -   [`get_object`][s3_get_object]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_copy_object(ACL, Bucket, CacheControl, ChecksumAlgorithm,
 #'   ContentDisposition, ContentEncoding, ContentLanguage, ContentType,
 #'   CopySource, CopySourceIfMatch, CopySourceIfModifiedSince,
 #'   CopySourceIfNoneMatch, CopySourceIfUnmodifiedSince, Expires,
-#'   GrantFullControl, GrantRead, GrantReadACP, GrantWriteACP, Key, Metadata,
-#'   MetadataDirective, TaggingDirective, ServerSideEncryption, StorageClass,
-#'   WebsiteRedirectLocation, SSECustomerAlgorithm, SSECustomerKey,
-#'   SSECustomerKeyMD5, SSEKMSKeyId, SSEKMSEncryptionContext,
-#'   BucketKeyEnabled, CopySourceSSECustomerAlgorithm,
-#'   CopySourceSSECustomerKey, CopySourceSSECustomerKeyMD5, RequestPayer,
-#'   Tagging, ObjectLockMode, ObjectLockRetainUntilDate,
-#'   ObjectLockLegalHoldStatus, ExpectedBucketOwner,
-#'   ExpectedSourceBucketOwner)
+#'   GrantFullControl, GrantRead, GrantReadACP, GrantWriteACP, IfMatch,
+#'   IfNoneMatch, Key, Metadata, MetadataDirective, TaggingDirective,
+#'   ServerSideEncryption, StorageClass, WebsiteRedirectLocation,
+#'   SSECustomerAlgorithm, SSECustomerKey, SSECustomerKeyMD5, SSEKMSKeyId,
+#'   SSEKMSEncryptionContext, BucketKeyEnabled,
+#'   CopySourceSSECustomerAlgorithm, CopySourceSSECustomerKey,
+#'   CopySourceSSECustomerKeyMD5, RequestPayer, Tagging, ObjectLockMode,
+#'   ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus,
+#'   ExpectedBucketOwner, ExpectedSourceBucketOwner)
 #'
 #' @param ACL The canned access control list (ACL) to apply to the object.
 #' 
@@ -1034,6 +1056,27 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' -   This functionality is not supported for directory buckets.
 #' 
 #' -   This functionality is not supported for Amazon S3 on Outposts.
+#' @param IfMatch Copies the object if the entity tag (ETag) of the destination object
+#' matches the specified tag. If the ETag values do not match, the
+#' operation returns a `412 Precondition Failed` error. If a concurrent
+#' operation occurs during the upload S3 returns a
+#' `409 ConditionalRequestConflict` response. On a 409 failure you should
+#' fetch the object's ETag and retry the upload.
+#' 
+#' Expects the ETag value as a string.
+#' 
+#' For more information about conditional requests, see [RFC
+#' 7232](https://datatracker.ietf.org/doc/html/rfc7232).
+#' @param IfNoneMatch Copies the object only if the object key name at the destination does
+#' not already exist in the bucket specified. Otherwise, Amazon S3 returns
+#' a `412 Precondition Failed` error. If a concurrent operation occurs
+#' during the upload S3 returns a `409 ConditionalRequestConflict`
+#' response. On a 409 failure you should retry the upload.
+#' 
+#' Expects the '*' (asterisk) character.
+#' 
+#' For more information about conditional requests, see [RFC
+#' 7232](https://datatracker.ietf.org/doc/html/rfc7232).
 #' @param Key &#91;required&#93; The key of the destination object.
 #' @param Metadata A map of metadata to store with the object in S3.
 #' @param MetadataDirective Specifies whether the metadata is copied from the source object or
@@ -1173,6 +1216,14 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #'     must ensure the encryption key is the same customer managed key that
 #'     you specified for the directory bucket's default encryption
 #'     configuration.
+#' 
+#' -   **S3 access points for Amazon FSx** - When accessing data stored in
+#'     Amazon FSx file systems using S3 access points, the only valid
+#'     server side encryption option is `aws:fsx`. All Amazon FSx file
+#'     systems have encryption configured by default and are encrypted at
+#'     rest. Data is automatically encrypted before being written to the
+#'     file system, and automatically decrypted as it is read. These
+#'     processes are handled transparently by Amazon FSx.
 #' @param StorageClass If the `x-amz-storage-class` header is not used, the copied object will
 #' be stored in the `STANDARD` Storage Class by default. The `STANDARD`
 #' storage class provides high durability and high availability. Depending
@@ -1419,7 +1470,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #'   Expiration = "string",
 #'   CopySourceVersionId = "string",
 #'   VersionId = "string",
-#'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
 #'   SSECustomerAlgorithm = "string",
 #'   SSECustomerKeyMD5 = "string",
 #'   SSEKMSKeyId = "string",
@@ -1449,21 +1500,21 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #'   CopySourceIfUnmodifiedSince = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   Expires = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
+#'   Expires = "string",
 #'   GrantFullControl = "string",
 #'   GrantRead = "string",
 #'   GrantReadACP = "string",
 #'   GrantWriteACP = "string",
+#'   IfMatch = "string",
+#'   IfNoneMatch = "string",
 #'   Key = "string",
 #'   Metadata = list(
 #'     "string"
 #'   ),
 #'   MetadataDirective = "COPY"|"REPLACE",
 #'   TaggingDirective = "COPY"|"REPLACE",
-#'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
-#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
+#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP",
 #'   WebsiteRedirectLocation = "string",
 #'   SSECustomerAlgorithm = "string",
 #'   SSECustomerKey = "string",
@@ -1501,7 +1552,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' @rdname s3_copy_object
 #'
 #' @aliases s3_copy_object
-s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgorithm = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentType = NULL, CopySource, CopySourceIfMatch = NULL, CopySourceIfModifiedSince = NULL, CopySourceIfNoneMatch = NULL, CopySourceIfUnmodifiedSince = NULL, Expires = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, Key, Metadata = NULL, MetadataDirective = NULL, TaggingDirective = NULL, ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, SSEKMSEncryptionContext = NULL, BucketKeyEnabled = NULL, CopySourceSSECustomerAlgorithm = NULL, CopySourceSSECustomerKey = NULL, CopySourceSSECustomerKeyMD5 = NULL, RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL, ExpectedBucketOwner = NULL, ExpectedSourceBucketOwner = NULL) {
+s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgorithm = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentType = NULL, CopySource, CopySourceIfMatch = NULL, CopySourceIfModifiedSince = NULL, CopySourceIfNoneMatch = NULL, CopySourceIfUnmodifiedSince = NULL, Expires = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, IfMatch = NULL, IfNoneMatch = NULL, Key, Metadata = NULL, MetadataDirective = NULL, TaggingDirective = NULL, ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, SSEKMSEncryptionContext = NULL, BucketKeyEnabled = NULL, CopySourceSSECustomerAlgorithm = NULL, CopySourceSSECustomerKey = NULL, CopySourceSSECustomerKeyMD5 = NULL, RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL, ExpectedBucketOwner = NULL, ExpectedSourceBucketOwner = NULL) {
   op <- new_operation(
     name = "CopyObject",
     http_method = "PUT",
@@ -1510,7 +1561,7 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$copy_object_input(ACL = ACL, Bucket = Bucket, CacheControl = CacheControl, ChecksumAlgorithm = ChecksumAlgorithm, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentType = ContentType, CopySource = CopySource, CopySourceIfMatch = CopySourceIfMatch, CopySourceIfModifiedSince = CopySourceIfModifiedSince, CopySourceIfNoneMatch = CopySourceIfNoneMatch, CopySourceIfUnmodifiedSince = CopySourceIfUnmodifiedSince, Expires = Expires, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWriteACP = GrantWriteACP, Key = Key, Metadata = Metadata, MetadataDirective = MetadataDirective, TaggingDirective = TaggingDirective, ServerSideEncryption = ServerSideEncryption, StorageClass = StorageClass, WebsiteRedirectLocation = WebsiteRedirectLocation, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, SSEKMSKeyId = SSEKMSKeyId, SSEKMSEncryptionContext = SSEKMSEncryptionContext, BucketKeyEnabled = BucketKeyEnabled, CopySourceSSECustomerAlgorithm = CopySourceSSECustomerAlgorithm, CopySourceSSECustomerKey = CopySourceSSECustomerKey, CopySourceSSECustomerKeyMD5 = CopySourceSSECustomerKeyMD5, RequestPayer = RequestPayer, Tagging = Tagging, ObjectLockMode = ObjectLockMode, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus, ExpectedBucketOwner = ExpectedBucketOwner, ExpectedSourceBucketOwner = ExpectedSourceBucketOwner)
+  input <- .s3$copy_object_input(ACL = ACL, Bucket = Bucket, CacheControl = CacheControl, ChecksumAlgorithm = ChecksumAlgorithm, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentType = ContentType, CopySource = CopySource, CopySourceIfMatch = CopySourceIfMatch, CopySourceIfModifiedSince = CopySourceIfModifiedSince, CopySourceIfNoneMatch = CopySourceIfNoneMatch, CopySourceIfUnmodifiedSince = CopySourceIfUnmodifiedSince, Expires = Expires, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWriteACP = GrantWriteACP, IfMatch = IfMatch, IfNoneMatch = IfNoneMatch, Key = Key, Metadata = Metadata, MetadataDirective = MetadataDirective, TaggingDirective = TaggingDirective, ServerSideEncryption = ServerSideEncryption, StorageClass = StorageClass, WebsiteRedirectLocation = WebsiteRedirectLocation, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, SSEKMSKeyId = SSEKMSKeyId, SSEKMSEncryptionContext = SSEKMSEncryptionContext, BucketKeyEnabled = BucketKeyEnabled, CopySourceSSECustomerAlgorithm = CopySourceSSECustomerAlgorithm, CopySourceSSECustomerKey = CopySourceSSECustomerKey, CopySourceSSECustomerKeyMD5 = CopySourceSSECustomerKeyMD5, RequestPayer = RequestPayer, Tagging = Tagging, ObjectLockMode = ObjectLockMode, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus, ExpectedBucketOwner = ExpectedBucketOwner, ExpectedSourceBucketOwner = ExpectedSourceBucketOwner)
   output <- .s3$copy_object_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -1660,6 +1711,10 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgo
 #' -   [`put_object`][s3_put_object]
 #' 
 #' -   [`delete_bucket`][s3_delete_bucket]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_create_bucket(ACL, Bucket, CreateBucketConfiguration,
@@ -1717,7 +1772,8 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgo
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   Location = "string"
+#'   Location = "string",
+#'   BucketArn = "string"
 #' )
 #' ```
 #'
@@ -1735,6 +1791,12 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgo
 #'     Bucket = list(
 #'       DataRedundancy = "SingleAvailabilityZone"|"SingleLocalZone",
 #'       Type = "Directory"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
 #'     )
 #'   ),
 #'   GrantFullControl = "string",
@@ -1788,10 +1850,161 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 }
 .s3$operations$create_bucket <- s3_create_bucket
 
-#' Creates a metadata table configuration for a general purpose bucket
+#' Creates an S3 Metadata V2 metadata configuration for a general purpose
+#' bucket
 #'
 #' @description
-#' Creates a metadata table configuration for a general purpose bucket. For
+#' Creates an S3 Metadata V2 metadata configuration for a general purpose
+#' bucket. For more information, see [Accelerating data discovery with S3
+#' Metadata](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-overview.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' ### Permissions
+#' 
+#' To use this operation, you must have the following permissions. For more
+#' information, see [Setting up permissions for configuring metadata
+#' tables](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-permissions.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' If you want to encrypt your metadata tables with server-side encryption
+#' with Key Management Service (KMS) keys (SSE-KMS), you need additional
+#' permissions in your KMS key policy. For more information, see [Setting
+#' up permissions for configuring metadata
+#' tables](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-permissions.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' If you also want to integrate your table bucket with Amazon Web Services
+#' analytics services so that you can query your metadata table, you need
+#' additional permissions. For more information, see [Integrating Amazon S3
+#' Tables with Amazon Web Services analytics
+#' services](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-integrating-aws.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' To query your metadata tables, you need additional permissions. For more
+#' information, see [Permissions for querying metadata
+#' tables](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-bucket-query-permissions.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' -   `s3:CreateBucketMetadataTableConfiguration`
+#' 
+#'     The IAM policy action name is the same for the V1 and V2 API
+#'     operations.
+#' 
+#' -   `s3tables:CreateTableBucket`
+#' 
+#' -   `s3tables:CreateNamespace`
+#' 
+#' -   `s3tables:GetTable`
+#' 
+#' -   `s3tables:CreateTable`
+#' 
+#' -   `s3tables:PutTablePolicy`
+#' 
+#' -   `s3tables:PutTableEncryption`
+#' 
+#' -   `kms:DescribeKey`
+#' 
+#' The following operations are related to
+#' [`create_bucket_metadata_configuration`][s3_create_bucket_metadata_configuration]:
+#' 
+#' -   [`delete_bucket_metadata_configuration`][s3_delete_bucket_metadata_configuration]
+#' 
+#' -   [`get_bucket_metadata_configuration`][s3_get_bucket_metadata_configuration]
+#' 
+#' -   [`update_bucket_metadata_inventory_table_configuration`][s3_update_bucket_metadata_inventory_table_configuration]
+#' 
+#' -   [`update_bucket_metadata_journal_table_configuration`][s3_update_bucket_metadata_journal_table_configuration]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
+#'
+#' @usage
+#' s3_create_bucket_metadata_configuration(Bucket, ContentMD5,
+#'   ChecksumAlgorithm, MetadataConfiguration, ExpectedBucketOwner)
+#'
+#' @param Bucket &#91;required&#93; The general purpose bucket that you want to create the metadata
+#' configuration for.
+#' @param ContentMD5 The `Content-MD5` header for the metadata configuration.
+#' @param ChecksumAlgorithm The checksum algorithm to use with your metadata configuration.
+#' @param MetadataConfiguration &#91;required&#93; The contents of your metadata configuration.
+#' @param ExpectedBucketOwner The expected owner of the general purpose bucket that corresponds to
+#' your metadata configuration.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_bucket_metadata_configuration(
+#'   Bucket = "string",
+#'   ContentMD5 = "string",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   MetadataConfiguration = list(
+#'     JournalTableConfiguration = list(
+#'       RecordExpiration = list(
+#'         Expiration = "ENABLED"|"DISABLED",
+#'         Days = 123
+#'       ),
+#'       EncryptionConfiguration = list(
+#'         SseAlgorithm = "aws:kms"|"AES256",
+#'         KmsKeyArn = "string"
+#'       )
+#'     ),
+#'     InventoryTableConfiguration = list(
+#'       ConfigurationState = "ENABLED"|"DISABLED",
+#'       EncryptionConfiguration = list(
+#'         SseAlgorithm = "aws:kms"|"AES256",
+#'         KmsKeyArn = "string"
+#'       )
+#'     )
+#'   ),
+#'   ExpectedBucketOwner = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3_create_bucket_metadata_configuration
+#'
+#' @aliases s3_create_bucket_metadata_configuration
+s3_create_bucket_metadata_configuration <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = NULL, MetadataConfiguration, ExpectedBucketOwner = NULL) {
+  op <- new_operation(
+    name = "CreateBucketMetadataConfiguration",
+    http_method = "POST",
+    http_path = "/{Bucket}?metadataConfiguration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3$create_bucket_metadata_configuration_input(Bucket = Bucket, ContentMD5 = ContentMD5, ChecksumAlgorithm = ChecksumAlgorithm, MetadataConfiguration = MetadataConfiguration, ExpectedBucketOwner = ExpectedBucketOwner)
+  output <- .s3$create_bucket_metadata_configuration_output()
+  config <- get_config()
+  svc <- .s3$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3$operations$create_bucket_metadata_configuration <- s3_create_bucket_metadata_configuration
+
+#' We recommend that you create your S3 Metadata configurations by using
+#' the V2 CreateBucketMetadataConfiguration API operation
+#'
+#' @description
+#' We recommend that you create your S3 Metadata configurations by using
+#' the V2
+#' [`create_bucket_metadata_configuration`][s3_create_bucket_metadata_configuration]
+#' API operation. We no longer recommend using the V1
+#' [`create_bucket_metadata_table_configuration`][s3_create_bucket_metadata_table_configuration]
+#' API operation.
+#' 
+#' If you created your S3 Metadata configuration before July 15, 2025, we
+#' recommend that you delete and re-create your configuration by using
+#' [`create_bucket_metadata_configuration`][s3_create_bucket_metadata_configuration]
+#' so that you can expire journal table records and create a live inventory
+#' table.
+#' 
+#' Creates a V1 S3 Metadata configuration for a general purpose bucket. For
 #' more information, see [Accelerating data discovery with S3
 #' Metadata](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-overview.html)
 #' in the *Amazon S3 User Guide*.
@@ -1800,6 +2013,13 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' 
 #' To use this operation, you must have the following permissions. For more
 #' information, see [Setting up permissions for configuring metadata
+#' tables](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-permissions.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' If you want to encrypt your metadata tables with server-side encryption
+#' with Key Management Service (KMS) keys (SSE-KMS), you need additional
+#' permissions. For more information, see [Setting up permissions for
+#' configuring metadata
 #' tables](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-permissions.html)
 #' in the *Amazon S3 User Guide*.
 #' 
@@ -1826,18 +2046,22 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' -   [`delete_bucket_metadata_table_configuration`][s3_delete_bucket_metadata_table_configuration]
 #' 
 #' -   [`get_bucket_metadata_table_configuration`][s3_get_bucket_metadata_table_configuration]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_create_bucket_metadata_table_configuration(Bucket, ContentMD5,
 #'   ChecksumAlgorithm, MetadataTableConfiguration, ExpectedBucketOwner)
 #'
 #' @param Bucket &#91;required&#93; The general purpose bucket that you want to create the metadata table
-#' configuration in.
+#' configuration for.
 #' @param ContentMD5 The `Content-MD5` header for the metadata table configuration.
 #' @param ChecksumAlgorithm The checksum algorithm to use with your metadata table configuration.
 #' @param MetadataTableConfiguration &#91;required&#93; The contents of your metadata table configuration.
-#' @param ExpectedBucketOwner The expected owner of the general purpose bucket that contains your
-#' metadata table configuration.
+#' @param ExpectedBucketOwner The expected owner of the general purpose bucket that corresponds to
+#' your metadata table configuration.
 #'
 #' @return
 #' An empty list.
@@ -1882,9 +2106,20 @@ s3_create_bucket_metadata_table_configuration <- function(Bucket, ContentMD5 = N
 }
 .s3$operations$create_bucket_metadata_table_configuration <- s3_create_bucket_metadata_table_configuration
 
-#' This action initiates a multipart upload and returns an upload ID
+#' End of support notice: As of October 1, 2025, Amazon S3 has discontinued
+#' support for Email Grantee Access Control Lists (ACLs)
 #'
 #' @description
+#' End of support notice: As of October 1, 2025, Amazon S3 has discontinued
+#' support for Email Grantee Access Control Lists (ACLs). If you attempt to
+#' use an Email Grantee ACL in a request after October 1, 2025, the request
+#' will receive an `HTTP 405` (Method Not Allowed) error.
+#' 
+#' This change affects the following Amazon Web Services Regions: US East
+#' (N. Virginia), US West (N. California), US West (Oregon), Asia Pacific
+#' (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Europe
+#' (Ireland), and South America (São Paulo).
+#' 
 #' This action initiates a multipart upload and returns an upload ID. This
 #' upload ID is used to associate all of the parts in the specific
 #' multipart upload. You specify this upload ID in each of your subsequent
@@ -2145,6 +2380,10 @@ s3_create_bucket_metadata_table_configuration <- function(Bucket, ContentMD5 = N
 #' -   [`list_parts`][s3_list_parts]
 #' 
 #' -   [`list_multipart_uploads`][s3_list_multipart_uploads]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_create_multipart_upload(ACL, Bucket, CacheControl,
@@ -2448,7 +2687,7 @@ s3_create_bucket_metadata_table_configuration <- function(Bucket, ContentMD5 = N
 #' @param Key &#91;required&#93; Object key for which the multipart upload is to be initiated.
 #' @param Metadata A map of metadata to store with the object in S3.
 #' @param ServerSideEncryption The server-side encryption algorithm used when you store this object in
-#' Amazon S3 (for example, `AES256`, `aws:kms`).
+#' Amazon S3 or Amazon FSx.
 #' 
 #' -   **Directory buckets** - For directory buckets, there are only two
 #'     supported options for server-side encryption: server-side encryption
@@ -2494,6 +2733,14 @@ s3_create_bucket_metadata_table_configuration <- function(Bucket, ContentMD5 = N
 #'     [`upload_part_copy`][s3_upload_part_copy]), the encryption request
 #'     headers must match the default encryption configuration of the
 #'     directory bucket.
+#' 
+#' -   **S3 access points for Amazon FSx** - When accessing data stored in
+#'     Amazon FSx file systems using S3 access points, the only valid
+#'     server side encryption option is `aws:fsx`. All Amazon FSx file
+#'     systems have encryption configured by default and are encrypted at
+#'     rest. Data is automatically encrypted before being written to the
+#'     file system, and automatically decrypted as it is read. These
+#'     processes are handled transparently by Amazon FSx.
 #' @param StorageClass By default, Amazon S3 uses the STANDARD Storage Class to store newly
 #' created objects. The STANDARD storage class provides high durability and
 #' high availability. Depending on performance needs, you can specify a
@@ -2622,7 +2869,7 @@ s3_create_bucket_metadata_table_configuration <- function(Bucket, ContentMD5 = N
 #'   Bucket = "string",
 #'   Key = "string",
 #'   UploadId = "string",
-#'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
 #'   SSECustomerAlgorithm = "string",
 #'   SSECustomerKeyMD5 = "string",
 #'   SSEKMSKeyId = "string",
@@ -2644,9 +2891,7 @@ s3_create_bucket_metadata_table_configuration <- function(Bucket, ContentMD5 = N
 #'   ContentEncoding = "string",
 #'   ContentLanguage = "string",
 #'   ContentType = "string",
-#'   Expires = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
+#'   Expires = "string",
 #'   GrantFullControl = "string",
 #'   GrantRead = "string",
 #'   GrantReadACP = "string",
@@ -2655,8 +2900,8 @@ s3_create_bucket_metadata_table_configuration <- function(Bucket, ContentMD5 = N
 #'   Metadata = list(
 #'     "string"
 #'   ),
-#'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
-#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
+#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP",
 #'   WebsiteRedirectLocation = "string",
 #'   SSECustomerAlgorithm = "string",
 #'   SSECustomerKey = "string",
@@ -2875,6 +3120,10 @@ s3_create_multipart_upload <- function(ACL = NULL, Bucket, CacheControl = NULL, 
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
 #' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`.
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_create_session(SessionMode, Bucket, ServerSideEncryption,
@@ -2901,6 +3150,14 @@ s3_create_multipart_upload <- function(ACL = NULL, Bucket, CacheControl = NULL, 
 #' For more information, see [Protecting data with server-side
 #' encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html)
 #' in the *Amazon S3 User Guide*.
+#' 
+#' **S3 access points for Amazon FSx** - When accessing data stored in
+#' Amazon FSx file systems using S3 access points, the only valid server
+#' side encryption option is `aws:fsx`. All Amazon FSx file systems have
+#' encryption configured by default and are encrypted at rest. Data is
+#' automatically encrypted before being written to the file system, and
+#' automatically decrypted as it is read. These processes are handled
+#' transparently by Amazon FSx.
 #' @param SSEKMSKeyId If you specify `x-amz-server-side-encryption` with `aws:kms`, you must
 #' specify the ` x-amz-server-side-encryption-aws-kms-key-id` header with
 #' the ID (Key ID or Key ARN) of the KMS symmetric encryption customer
@@ -2953,7 +3210,7 @@ s3_create_multipart_upload <- function(ACL = NULL, Bucket, CacheControl = NULL, 
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
 #'   SSEKMSKeyId = "string",
 #'   SSEKMSEncryptionContext = "string",
 #'   BucketKeyEnabled = TRUE|FALSE,
@@ -2973,7 +3230,7 @@ s3_create_multipart_upload <- function(ACL = NULL, Bucket, CacheControl = NULL, 
 #' svc$create_session(
 #'   SessionMode = "ReadOnly"|"ReadWrite",
 #'   Bucket = "string",
-#'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
 #'   SSEKMSKeyId = "string",
 #'   SSEKMSEncryptionContext = "string",
 #'   BucketKeyEnabled = TRUE|FALSE
@@ -3055,6 +3312,10 @@ s3_create_session <- function(SessionMode = NULL, Bucket, ServerSideEncryption =
 #' -   [`create_bucket`][s3_create_bucket]
 #' 
 #' -   [`delete_object`][s3_delete_object]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_delete_bucket(Bucket, ExpectedBucketOwner)
@@ -3152,6 +3413,10 @@ s3_delete_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' -   [`list_bucket_analytics_configurations`][s3_list_bucket_analytics_configurations]
 #' 
 #' -   [`put_bucket_analytics_configuration`][s3_put_bucket_analytics_configuration]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_delete_bucket_analytics_configuration(Bucket, Id,
@@ -3219,6 +3484,10 @@ s3_delete_bucket_analytics_configuration <- function(Bucket, Id, ExpectedBucketO
 #' -   [`put_bucket_cors`][s3_put_bucket_cors]
 #' 
 #' -   [RESTOPTIONSobject](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTOPTIONSobject.html)
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_delete_bucket_cors(Bucket, ExpectedBucketOwner)
@@ -3325,6 +3594,10 @@ s3_delete_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' -   [`put_bucket_encryption`][s3_put_bucket_encryption]
 #' 
 #' -   [`get_bucket_encryption`][s3_get_bucket_encryption]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_delete_bucket_encryption(Bucket, ExpectedBucketOwner)
@@ -3423,13 +3696,21 @@ s3_delete_bucket_encryption <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' -   [`put_bucket_intelligent_tiering_configuration`][s3_put_bucket_intelligent_tiering_configuration]
 #' 
 #' -   [`list_bucket_intelligent_tiering_configurations`][s3_list_bucket_intelligent_tiering_configurations]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
-#' s3_delete_bucket_intelligent_tiering_configuration(Bucket, Id)
+#' s3_delete_bucket_intelligent_tiering_configuration(Bucket, Id,
+#'   ExpectedBucketOwner)
 #'
 #' @param Bucket &#91;required&#93; The name of the Amazon S3 bucket whose configuration you want to modify
 #' or retrieve.
 #' @param Id &#91;required&#93; The ID used to identify the S3 Intelligent-Tiering configuration.
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @return
 #' An empty list.
@@ -3438,7 +3719,8 @@ s3_delete_bucket_encryption <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' ```
 #' svc$delete_bucket_intelligent_tiering_configuration(
 #'   Bucket = "string",
-#'   Id = "string"
+#'   Id = "string",
+#'   ExpectedBucketOwner = "string"
 #' )
 #' ```
 #'
@@ -3447,7 +3729,7 @@ s3_delete_bucket_encryption <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @rdname s3_delete_bucket_intelligent_tiering_configuration
 #'
 #' @aliases s3_delete_bucket_intelligent_tiering_configuration
-s3_delete_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
+s3_delete_bucket_intelligent_tiering_configuration <- function(Bucket, Id, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "DeleteBucketIntelligentTieringConfiguration",
     http_method = "DELETE",
@@ -3456,7 +3738,7 @@ s3_delete_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$delete_bucket_intelligent_tiering_configuration_input(Bucket = Bucket, Id = Id)
+  input <- .s3$delete_bucket_intelligent_tiering_configuration_input(Bucket = Bucket, Id = Id, ExpectedBucketOwner = ExpectedBucketOwner)
   output <- .s3$delete_bucket_intelligent_tiering_configuration_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -3471,8 +3753,8 @@ s3_delete_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
 #' @description
 #' This operation is not supported for directory buckets.
 #' 
-#' Deletes an inventory configuration (identified by the inventory ID) from
-#' the bucket.
+#' Deletes an S3 Inventory configuration (identified by the inventory ID)
+#' from the bucket.
 #' 
 #' To use this operation, you must have permissions to perform the
 #' `s3:PutInventoryConfiguration` action. The bucket owner has this
@@ -3495,6 +3777,10 @@ s3_delete_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
 #' -   [`put_bucket_inventory_configuration`][s3_put_bucket_inventory_configuration]
 #' 
 #' -   [`list_bucket_inventory_configurations`][s3_list_bucket_inventory_configurations]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_delete_bucket_inventory_configuration(Bucket, Id,
@@ -3607,6 +3893,10 @@ s3_delete_bucket_inventory_configuration <- function(Bucket, Id, ExpectedBucketO
 #' -   [`put_bucket_lifecycle_configuration`][s3_put_bucket_lifecycle_configuration]
 #' 
 #' -   [`get_bucket_lifecycle_configuration`][s3_get_bucket_lifecycle_configuration]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_delete_bucket_lifecycle(Bucket, ExpectedBucketOwner)
@@ -3662,13 +3952,127 @@ s3_delete_bucket_lifecycle <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$delete_bucket_lifecycle <- s3_delete_bucket_lifecycle
 
-#' Deletes a metadata table configuration from a general purpose bucket
+#' Deletes an S3 Metadata configuration from a general purpose bucket
 #'
 #' @description
-#' Deletes a metadata table configuration from a general purpose bucket.
+#' Deletes an S3 Metadata configuration from a general purpose bucket. For
+#' more information, see [Accelerating data discovery with S3
+#' Metadata](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-overview.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' You can use the V2
+#' [`delete_bucket_metadata_configuration`][s3_delete_bucket_metadata_configuration]
+#' API operation with V1 or V2 metadata configurations. However, if you try
+#' to use the V1
+#' [`delete_bucket_metadata_table_configuration`][s3_delete_bucket_metadata_table_configuration]
+#' API operation with V2 configurations, you will receive an HTTP
+#' `405 Method Not Allowed` error.
+#' 
+#' ### Permissions
+#' 
+#' To use this operation, you must have the
+#' `s3:DeleteBucketMetadataTableConfiguration` permission. For more
+#' information, see [Setting up permissions for configuring metadata
+#' tables](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-permissions.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' The IAM policy action name is the same for the V1 and V2 API operations.
+#' 
+#' The following operations are related to
+#' [`delete_bucket_metadata_configuration`][s3_delete_bucket_metadata_configuration]:
+#' 
+#' -   [`create_bucket_metadata_configuration`][s3_create_bucket_metadata_configuration]
+#' 
+#' -   [`get_bucket_metadata_configuration`][s3_get_bucket_metadata_configuration]
+#' 
+#' -   [`update_bucket_metadata_inventory_table_configuration`][s3_update_bucket_metadata_inventory_table_configuration]
+#' 
+#' -   [`update_bucket_metadata_journal_table_configuration`][s3_update_bucket_metadata_journal_table_configuration]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
+#'
+#' @usage
+#' s3_delete_bucket_metadata_configuration(Bucket, ExpectedBucketOwner)
+#'
+#' @param Bucket &#91;required&#93; The general purpose bucket that you want to remove the metadata
+#' configuration from.
+#' @param ExpectedBucketOwner The expected bucket owner of the general purpose bucket that you want to
+#' remove the metadata table configuration from.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_bucket_metadata_configuration(
+#'   Bucket = "string",
+#'   ExpectedBucketOwner = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3_delete_bucket_metadata_configuration
+#'
+#' @aliases s3_delete_bucket_metadata_configuration
+s3_delete_bucket_metadata_configuration <- function(Bucket, ExpectedBucketOwner = NULL) {
+  op <- new_operation(
+    name = "DeleteBucketMetadataConfiguration",
+    http_method = "DELETE",
+    http_path = "/{Bucket}?metadataConfiguration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3$delete_bucket_metadata_configuration_input(Bucket = Bucket, ExpectedBucketOwner = ExpectedBucketOwner)
+  output <- .s3$delete_bucket_metadata_configuration_output()
+  config <- get_config()
+  svc <- .s3$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3$operations$delete_bucket_metadata_configuration <- s3_delete_bucket_metadata_configuration
+
+#' We recommend that you delete your S3 Metadata configurations by using
+#' the V2 DeleteBucketMetadataTableConfiguration API operation
+#'
+#' @description
+#' We recommend that you delete your S3 Metadata configurations by using
+#' the V2
+#' [`delete_bucket_metadata_table_configuration`][s3_delete_bucket_metadata_table_configuration]
+#' API operation. We no longer recommend using the V1
+#' [`delete_bucket_metadata_table_configuration`][s3_delete_bucket_metadata_table_configuration]
+#' API operation.
+#' 
+#' If you created your S3 Metadata configuration before July 15, 2025, we
+#' recommend that you delete and re-create your configuration by using
+#' [`create_bucket_metadata_configuration`][s3_create_bucket_metadata_configuration]
+#' so that you can expire journal table records and create a live inventory
+#' table.
+#' 
+#' Deletes a V1 S3 Metadata configuration from a general purpose bucket.
 #' For more information, see [Accelerating data discovery with S3
 #' Metadata](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-overview.html)
 #' in the *Amazon S3 User Guide*.
+#' 
+#' You can use the V2
+#' [`delete_bucket_metadata_configuration`][s3_delete_bucket_metadata_configuration]
+#' API operation with V1 or V2 metadata table configurations. However, if
+#' you try to use the V1
+#' [`delete_bucket_metadata_table_configuration`][s3_delete_bucket_metadata_table_configuration]
+#' API operation with V2 configurations, you will receive an HTTP
+#' `405 Method Not Allowed` error.
+#' 
+#' Make sure that you update your processes to use the new V2 API
+#' operations
+#' ([`create_bucket_metadata_configuration`][s3_create_bucket_metadata_configuration],
+#' [`get_bucket_metadata_configuration`][s3_get_bucket_metadata_configuration],
+#' and
+#' [`delete_bucket_metadata_configuration`][s3_delete_bucket_metadata_configuration])
+#' instead of the V1 API operations.
 #' 
 #' ### Permissions
 #' 
@@ -3684,6 +4088,10 @@ s3_delete_bucket_lifecycle <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' -   [`create_bucket_metadata_table_configuration`][s3_create_bucket_metadata_table_configuration]
 #' 
 #' -   [`get_bucket_metadata_table_configuration`][s3_get_bucket_metadata_table_configuration]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_delete_bucket_metadata_table_configuration(Bucket,
@@ -3762,6 +4170,10 @@ s3_delete_bucket_metadata_table_configuration <- function(Bucket, ExpectedBucket
 #' 
 #' -   [Monitoring Metrics with Amazon
 #'     CloudWatch](https://docs.aws.amazon.com/AmazonS3/latest/userguide/cloudwatch-monitoring.html)
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_delete_bucket_metrics_configuration(Bucket, Id, ExpectedBucketOwner)
@@ -3830,6 +4242,10 @@ s3_delete_bucket_metrics_configuration <- function(Bucket, Id, ExpectedBucketOwn
 #' -   [`get_bucket_ownership_controls`][s3_get_bucket_ownership_controls]
 #' 
 #' -   [`put_bucket_ownership_controls`][s3_put_bucket_ownership_controls]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_delete_bucket_ownership_controls(Bucket, ExpectedBucketOwner)
@@ -3946,6 +4362,10 @@ s3_delete_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NU
 #' -   [`create_bucket`][s3_create_bucket]
 #' 
 #' -   [`delete_object`][s3_delete_object]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_delete_bucket_policy(Bucket, ExpectedBucketOwner)
@@ -4042,6 +4462,10 @@ s3_delete_bucket_policy <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' -   [`put_bucket_replication`][s3_put_bucket_replication]
 #' 
 #' -   [`get_bucket_replication`][s3_get_bucket_replication]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_delete_bucket_replication(Bucket, ExpectedBucketOwner)
@@ -4099,7 +4523,20 @@ s3_delete_bucket_replication <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' This operation is not supported for directory buckets.
 #' 
-#' Deletes the tags from the bucket.
+#' Deletes tags from the general purpose bucket if attribute based access
+#' control (ABAC) is not enabled for the bucket. When you [enable ABAC for
+#' a general purpose
+#' bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/buckets-tagging-enable-abac.html),
+#' you can no longer use this operation for that bucket and must use
+#' [UntagResource](https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UntagResource.html)
+#' instead.
+#' 
+#' if ABAC is not enabled for the bucket. When you [enable ABAC for a
+#' general purpose
+#' bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/buckets-tagging-enable-abac.html),
+#' you can no longer use this operation for that bucket and must use
+#' [UntagResource](https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UntagResource.html)
+#' instead.
 #' 
 #' To use this operation, you must have permission to perform the
 #' `s3:PutBucketTagging` action. By default, the bucket owner has this
@@ -4111,6 +4548,10 @@ s3_delete_bucket_replication <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' -   [`get_bucket_tagging`][s3_get_bucket_tagging]
 #' 
 #' -   [`put_bucket_tagging`][s3_put_bucket_tagging]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_delete_bucket_tagging(Bucket, ExpectedBucketOwner)
@@ -4191,6 +4632,10 @@ s3_delete_bucket_tagging <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' -   [`get_bucket_website`][s3_get_bucket_website]
 #' 
 #' -   [`put_bucket_website`][s3_put_bucket_website]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_delete_bucket_website(Bucket, ExpectedBucketOwner)
@@ -4332,6 +4777,10 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'         an object from a versioning-enabled bucket, you must have the
 #'         `s3:DeleteObjectVersion` permission.
 #' 
+#'         If the `s3:DeleteObject` or `s3:DeleteObjectVersion` permissions
+#'         are explicitly denied in your bucket policy, attempts to delete
+#'         any unversioned objects result in a `403 Access Denied` error.
+#' 
 #' -   **Directory bucket permissions** - To grant access to this API
 #'     operation on a directory bucket, we recommend that you use the
 #'     [`create_session`](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html)
@@ -4358,6 +4807,14 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' The following action is related to [`delete_object`][s3_delete_object]:
 #' 
 #' -   [`put_object`][s3_put_object]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
+#' 
+#' The `If-Match` header is supported for both general purpose and
+#' directory buckets. `IfMatchLastModifiedTime` and `IfMatchSize` is only
+#' supported for directory buckets.
 #'
 #' @usage
 #' s3_delete_object(Bucket, Key, MFA, VersionId, RequestPayer,
@@ -4422,16 +4879,16 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
 #' provide does not match the actual owner of the bucket, the request fails
 #' with the HTTP status code `403 Forbidden` (access denied).
-#' @param IfMatch The `If-Match` header field makes the request method conditional on
-#' ETags. If the ETag value does not match, the operation returns a
-#' `412 Precondition Failed` error. If the ETag matches or if the object
-#' doesn't exist, the operation will return a
-#' `204 Success (No Content) response`.
+#' @param IfMatch Deletes the object if the ETag (entity tag) value provided during the
+#' delete operation matches the ETag of the object in S3. If the ETag
+#' values do not match, the operation returns a `412 Precondition Failed`
+#' error.
+#' 
+#' Expects the ETag value as a string. `If-Match` does accept a string
+#' value of an '*' (asterisk) character to denote a match of any ETag.
 #' 
 #' For more information about conditional requests, see [RFC
 #' 7232](https://datatracker.ietf.org/doc/html/rfc7232).
-#' 
-#' This functionality is only supported for directory buckets.
 #' @param IfMatchLastModifiedTime If present, the object is deleted only if its modification times matches
 #' the provided `Timestamp`. If the `Timestamp` values do not match, the
 #' operation returns a `412 Precondition Failed` error. If the `Timestamp`
@@ -4540,6 +4997,10 @@ s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestP
 #' -   [`put_object_tagging`][s3_put_object_tagging]
 #' 
 #' -   [`get_object_tagging`][s3_get_object_tagging]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_delete_object_tagging(Bucket, Key, VersionId, ExpectedBucketOwner)
@@ -4705,6 +5166,10 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #'         an object from a versioning-enabled bucket, you must specify the
 #'         `s3:DeleteObjectVersion` permission.
 #' 
+#'         If the `s3:DeleteObject` or `s3:DeleteObjectVersion` permissions
+#'         are explicitly denied in your bucket policy, attempts to delete
+#'         any unversioned objects result in a `403 Access Denied` error.
+#' 
 #' -   **Directory bucket permissions** - To grant access to this API
 #'     operation on a directory bucket, we recommend that you use the
 #'     [`create_session`](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html)
@@ -4753,6 +5218,10 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #' -   [`list_parts`][s3_list_parts]
 #' 
 #' -   [`abort_multipart_upload`][s3_abort_multipart_upload]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_delete_objects(Bucket, Delete, MFA, RequestPayer,
@@ -4977,7 +5446,10 @@ s3_delete_objects <- function(Bucket, Delete, MFA = NULL, RequestPayer = NULL, B
 #' This operation is not supported for directory buckets.
 #' 
 #' Removes the `PublicAccessBlock` configuration for an Amazon S3 bucket.
-#' To use this operation, you must have the `s3:PutBucketPublicAccessBlock`
+#' This operation removes the bucket-level configuration only. The
+#' effective public access behavior will still be governed by account-level
+#' settings (which may inherit from organization-level policies). To use
+#' this operation, you must have the `s3:PutBucketPublicAccessBlock`
 #' permission. For more information about permissions, see [Permissions
 #' Related to Bucket Subresource
 #' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
@@ -4995,6 +5467,10 @@ s3_delete_objects <- function(Bucket, Delete, MFA = NULL, RequestPayer = NULL, B
 #' -   [`put_public_access_block`][s3_put_public_access_block]
 #' 
 #' -   [`get_bucket_policy_status`][s3_get_bucket_policy_status]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_delete_public_access_block(Bucket, ExpectedBucketOwner)
@@ -5040,6 +5516,65 @@ s3_delete_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$delete_public_access_block <- s3_delete_public_access_block
 
+#' Returns the attribute-based access control (ABAC) property of the
+#' general purpose bucket
+#'
+#' @description
+#' Returns the attribute-based access control (ABAC) property of the
+#' general purpose bucket. If ABAC is enabled on your bucket, you can use
+#' tags on the bucket for access control. For more information, see
+#' [Enabling ABAC in general purpose
+#' buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/buckets-tagging-enable-abac.html).
+#'
+#' @usage
+#' s3_get_bucket_abac(Bucket, ExpectedBucketOwner)
+#'
+#' @param Bucket &#91;required&#93; The name of the general purpose bucket.
+#' @param ExpectedBucketOwner The Amazon Web Services account ID of the general purpose bucket's
+#' owner.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AbacStatus = list(
+#'     Status = "Enabled"|"Disabled"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_bucket_abac(
+#'   Bucket = "string",
+#'   ExpectedBucketOwner = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3_get_bucket_abac
+#'
+#' @aliases s3_get_bucket_abac
+s3_get_bucket_abac <- function(Bucket, ExpectedBucketOwner = NULL) {
+  op <- new_operation(
+    name = "GetBucketAbac",
+    http_method = "GET",
+    http_path = "/{Bucket}?abac",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3$get_bucket_abac_input(Bucket = Bucket, ExpectedBucketOwner = ExpectedBucketOwner)
+  output <- .s3$get_bucket_abac_output()
+  config <- get_config()
+  svc <- .s3$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3$operations$get_bucket_abac <- s3_get_bucket_abac
+
 #' This operation is not supported for directory buckets
 #'
 #' @description
@@ -5078,6 +5613,10 @@ s3_delete_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' [`get_bucket_accelerate_configuration`][s3_get_bucket_accelerate_configuration]:
 #' 
 #' -   [`put_bucket_accelerate_configuration`][s3_put_bucket_accelerate_configuration]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_bucket_accelerate_configuration(Bucket, ExpectedBucketOwner,
@@ -5161,6 +5700,10 @@ s3_get_bucket_accelerate_configuration <- function(Bucket, ExpectedBucketOwner =
 #' ownership and disabling
 #' ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html)
 #' in the *Amazon S3 User Guide*.
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #' 
 #' The following operations are related to
 #' [`get_bucket_acl`][s3_get_bucket_acl]:
@@ -5272,6 +5815,10 @@ s3_get_bucket_acl <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' -   [`list_bucket_analytics_configurations`][s3_list_bucket_analytics_configurations]
 #' 
 #' -   [`put_bucket_analytics_configuration`][s3_put_bucket_analytics_configuration]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_bucket_analytics_configuration(Bucket, Id, ExpectedBucketOwner)
@@ -5387,6 +5934,10 @@ s3_get_bucket_analytics_configuration <- function(Bucket, Id, ExpectedBucketOwne
 #' -   [`put_bucket_cors`][s3_put_bucket_cors]
 #' 
 #' -   [`delete_bucket_cors`][s3_delete_bucket_cors]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_bucket_cors(Bucket, ExpectedBucketOwner)
@@ -5478,7 +6029,12 @@ s3_get_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' Returns the default encryption configuration for an Amazon S3 bucket. By
 #' default, all buckets have a default encryption configuration that uses
-#' server-side encryption with Amazon S3 managed keys (SSE-S3).
+#' server-side encryption with Amazon S3 managed keys (SSE-S3). This
+#' operation also returns the
+#' [BucketKeyEnabled](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ServerSideEncryptionRule.html#AmazonS3-Type-ServerSideEncryptionRule-BucketKeyEnabled)
+#' and
+#' [BlockedEncryptionTypes](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ServerSideEncryptionRule.html#AmazonS3-Type-ServerSideEncryptionRule-BlockedEncryptionTypes)
+#' statuses.
 #' 
 #' -   **General purpose buckets** - For information about the bucket
 #'     default encryption feature, see [Amazon S3 Bucket Default
@@ -5525,6 +6081,10 @@ s3_get_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' -   [`put_bucket_encryption`][s3_put_bucket_encryption]
 #' 
 #' -   [`delete_bucket_encryption`][s3_delete_bucket_encryption]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_bucket_encryption(Bucket, ExpectedBucketOwner)
@@ -5559,10 +6119,15 @@ s3_get_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'     Rules = list(
 #'       list(
 #'         ApplyServerSideEncryptionByDefault = list(
-#'           SSEAlgorithm = "AES256"|"aws:kms"|"aws:kms:dsse",
+#'           SSEAlgorithm = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
 #'           KMSMasterKeyID = "string"
 #'         ),
-#'         BucketKeyEnabled = TRUE|FALSE
+#'         BucketKeyEnabled = TRUE|FALSE,
+#'         BlockedEncryptionTypes = list(
+#'           EncryptionType = list(
+#'             "NONE"|"SSE-C"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   )
@@ -5637,13 +6202,21 @@ s3_get_bucket_encryption <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' -   [`put_bucket_intelligent_tiering_configuration`][s3_put_bucket_intelligent_tiering_configuration]
 #' 
 #' -   [`list_bucket_intelligent_tiering_configurations`][s3_list_bucket_intelligent_tiering_configurations]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
-#' s3_get_bucket_intelligent_tiering_configuration(Bucket, Id)
+#' s3_get_bucket_intelligent_tiering_configuration(Bucket, Id,
+#'   ExpectedBucketOwner)
 #'
 #' @param Bucket &#91;required&#93; The name of the Amazon S3 bucket whose configuration you want to modify
 #' or retrieve.
 #' @param Id &#91;required&#93; The ID used to identify the S3 Intelligent-Tiering configuration.
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @return
 #' A list with the following syntax:
@@ -5682,7 +6255,8 @@ s3_get_bucket_encryption <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' ```
 #' svc$get_bucket_intelligent_tiering_configuration(
 #'   Bucket = "string",
-#'   Id = "string"
+#'   Id = "string",
+#'   ExpectedBucketOwner = "string"
 #' )
 #' ```
 #'
@@ -5691,7 +6265,7 @@ s3_get_bucket_encryption <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @rdname s3_get_bucket_intelligent_tiering_configuration
 #'
 #' @aliases s3_get_bucket_intelligent_tiering_configuration
-s3_get_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
+s3_get_bucket_intelligent_tiering_configuration <- function(Bucket, Id, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetBucketIntelligentTieringConfiguration",
     http_method = "GET",
@@ -5700,7 +6274,7 @@ s3_get_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$get_bucket_intelligent_tiering_configuration_input(Bucket = Bucket, Id = Id)
+  input <- .s3$get_bucket_intelligent_tiering_configuration_input(Bucket = Bucket, Id = Id, ExpectedBucketOwner = ExpectedBucketOwner)
   output <- .s3$get_bucket_intelligent_tiering_configuration_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -5715,7 +6289,7 @@ s3_get_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
 #' @description
 #' This operation is not supported for directory buckets.
 #' 
-#' Returns an inventory configuration (identified by the inventory
+#' Returns an S3 Inventory configuration (identified by the inventory
 #' configuration ID) from the bucket.
 #' 
 #' To use this operation, you must have permissions to perform the
@@ -5738,6 +6312,10 @@ s3_get_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
 #' -   [`list_bucket_inventory_configurations`][s3_list_bucket_inventory_configurations]
 #' 
 #' -   [`put_bucket_inventory_configuration`][s3_put_bucket_inventory_configuration]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_bucket_inventory_configuration(Bucket, Id, ExpectedBucketOwner)
@@ -5775,7 +6353,7 @@ s3_get_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
 #'     Id = "string",
 #'     IncludedObjectVersions = "All"|"Current",
 #'     OptionalFields = list(
-#'       "Size"|"LastModifiedDate"|"StorageClass"|"ETag"|"IsMultipartUploaded"|"ReplicationStatus"|"EncryptionStatus"|"ObjectLockRetainUntilDate"|"ObjectLockMode"|"ObjectLockLegalHoldStatus"|"IntelligentTieringAccessTier"|"BucketKeyStatus"|"ChecksumAlgorithm"|"ObjectAccessControlList"|"ObjectOwner"
+#'       "Size"|"LastModifiedDate"|"StorageClass"|"ETag"|"IsMultipartUploaded"|"ReplicationStatus"|"EncryptionStatus"|"ObjectLockRetainUntilDate"|"ObjectLockMode"|"ObjectLockLegalHoldStatus"|"IntelligentTieringAccessTier"|"BucketKeyStatus"|"ChecksumAlgorithm"|"ObjectAccessControlList"|"ObjectOwner"|"LifecycleExpirationDate"
 #'     ),
 #'     Schedule = list(
 #'       Frequency = "Daily"|"Weekly"
@@ -5860,6 +6438,10 @@ s3_get_bucket_inventory_configuration <- function(Bucket, Id, ExpectedBucketOwne
 #' -   [`put_bucket_lifecycle`][s3_put_bucket_lifecycle]
 #' 
 #' -   [`delete_bucket_lifecycle`][s3_delete_bucket_lifecycle]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_bucket_lifecycle(Bucket, ExpectedBucketOwner)
@@ -6035,6 +6617,10 @@ s3_get_bucket_lifecycle <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' -   [`put_bucket_lifecycle`][s3_put_bucket_lifecycle]
 #' 
 #' -   [`delete_bucket_lifecycle`][s3_delete_bucket_lifecycle]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_bucket_lifecycle_configuration(Bucket, ExpectedBucketOwner)
@@ -6153,15 +6739,30 @@ s3_get_bucket_lifecycle_configuration <- function(Bucket, ExpectedBucketOwner = 
 }
 .s3$operations$get_bucket_lifecycle_configuration <- s3_get_bucket_lifecycle_configuration
 
-#' This operation is not supported for directory buckets
+#' Using the GetBucketLocation operation is no longer a best practice
 #'
 #' @description
-#' This operation is not supported for directory buckets.
+#' Using the [`get_bucket_location`][s3_get_bucket_location] operation is
+#' no longer a best practice. To return the Region that a bucket resides
+#' in, we recommend that you use the [`head_bucket`][s3_head_bucket]
+#' operation instead. For backward compatibility, Amazon S3 continues to
+#' support the [`get_bucket_location`][s3_get_bucket_location] operation.
 #' 
 #' Returns the Region the bucket resides in. You set the bucket's Region
 #' using the `LocationConstraint` request parameter in a
 #' [`create_bucket`][s3_create_bucket] request. For more information, see
 #' [`create_bucket`][s3_create_bucket].
+#' 
+#' In a bucket's home Region, calls to the
+#' [`get_bucket_location`][s3_get_bucket_location] operation are governed
+#' by the bucket's policy. In other Regions, the bucket policy doesn't
+#' apply, which means that cross-account access won't be authorized.
+#' However, calls to the [`head_bucket`][s3_head_bucket] operation always
+#' return the bucket’s location through an HTTP response header, whether
+#' access to the bucket is authorized or not. Therefore, we recommend using
+#' the [`head_bucket`][s3_head_bucket] operation for bucket Region
+#' discovery and to avoid using the
+#' [`get_bucket_location`][s3_get_bucket_location] operation.
 #' 
 #' When you use this API operation with an access point, provide the alias
 #' of the access point in place of the bucket name.
@@ -6174,9 +6775,7 @@ s3_get_bucket_lifecycle_configuration <- function(Bucket, ExpectedBucketOwner = 
 #' Error
 #' Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList).
 #' 
-#' We recommend that you use [`head_bucket`][s3_head_bucket] to return the
-#' Region that a bucket resides in. For backward compatibility, Amazon S3
-#' continues to support GetBucketLocation.
+#' This operation is not supported for directory buckets.
 #' 
 #' The following operations are related to
 #' [`get_bucket_location`][s3_get_bucket_location]:
@@ -6184,6 +6783,10 @@ s3_get_bucket_lifecycle_configuration <- function(Bucket, ExpectedBucketOwner = 
 #' -   [`get_object`][s3_get_object]
 #' 
 #' -   [`create_bucket`][s3_create_bucket]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_bucket_location(Bucket, ExpectedBucketOwner)
@@ -6266,6 +6869,10 @@ s3_get_bucket_location <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' -   [`create_bucket`][s3_create_bucket]
 #' 
 #' -   [`put_bucket_logging`][s3_put_bucket_logging]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_bucket_logging(Bucket, ExpectedBucketOwner)
@@ -6336,13 +6943,163 @@ s3_get_bucket_logging <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_logging <- s3_get_bucket_logging
 
-#' Retrieves the metadata table configuration for a general purpose bucket
+#' Retrieves the S3 Metadata configuration for a general purpose bucket
 #'
 #' @description
-#' Retrieves the metadata table configuration for a general purpose bucket.
+#' Retrieves the S3 Metadata configuration for a general purpose bucket.
 #' For more information, see [Accelerating data discovery with S3
 #' Metadata](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-overview.html)
 #' in the *Amazon S3 User Guide*.
+#' 
+#' You can use the V2
+#' [`get_bucket_metadata_configuration`][s3_get_bucket_metadata_configuration]
+#' API operation with V1 or V2 metadata configurations. However, if you try
+#' to use the V1
+#' [`get_bucket_metadata_table_configuration`][s3_get_bucket_metadata_table_configuration]
+#' API operation with V2 configurations, you will receive an HTTP
+#' `405 Method Not Allowed` error.
+#' 
+#' ### Permissions
+#' 
+#' To use this operation, you must have the
+#' `s3:GetBucketMetadataTableConfiguration` permission. For more
+#' information, see [Setting up permissions for configuring metadata
+#' tables](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-permissions.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' The IAM policy action name is the same for the V1 and V2 API operations.
+#' 
+#' The following operations are related to
+#' [`get_bucket_metadata_configuration`][s3_get_bucket_metadata_configuration]:
+#' 
+#' -   [`create_bucket_metadata_configuration`][s3_create_bucket_metadata_configuration]
+#' 
+#' -   [`delete_bucket_metadata_configuration`][s3_delete_bucket_metadata_configuration]
+#' 
+#' -   [`update_bucket_metadata_inventory_table_configuration`][s3_update_bucket_metadata_inventory_table_configuration]
+#' 
+#' -   [`update_bucket_metadata_journal_table_configuration`][s3_update_bucket_metadata_journal_table_configuration]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
+#'
+#' @usage
+#' s3_get_bucket_metadata_configuration(Bucket, ExpectedBucketOwner)
+#'
+#' @param Bucket &#91;required&#93; The general purpose bucket that corresponds to the metadata
+#' configuration that you want to retrieve.
+#' @param ExpectedBucketOwner The expected owner of the general purpose bucket that you want to
+#' retrieve the metadata table configuration for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GetBucketMetadataConfigurationResult = list(
+#'     MetadataConfigurationResult = list(
+#'       DestinationResult = list(
+#'         TableBucketType = "aws"|"customer",
+#'         TableBucketArn = "string",
+#'         TableNamespace = "string"
+#'       ),
+#'       JournalTableConfigurationResult = list(
+#'         TableStatus = "string",
+#'         Error = list(
+#'           ErrorCode = "string",
+#'           ErrorMessage = "string"
+#'         ),
+#'         TableName = "string",
+#'         TableArn = "string",
+#'         RecordExpiration = list(
+#'           Expiration = "ENABLED"|"DISABLED",
+#'           Days = 123
+#'         )
+#'       ),
+#'       InventoryTableConfigurationResult = list(
+#'         ConfigurationState = "ENABLED"|"DISABLED",
+#'         TableStatus = "string",
+#'         Error = list(
+#'           ErrorCode = "string",
+#'           ErrorMessage = "string"
+#'         ),
+#'         TableName = "string",
+#'         TableArn = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_bucket_metadata_configuration(
+#'   Bucket = "string",
+#'   ExpectedBucketOwner = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3_get_bucket_metadata_configuration
+#'
+#' @aliases s3_get_bucket_metadata_configuration
+s3_get_bucket_metadata_configuration <- function(Bucket, ExpectedBucketOwner = NULL) {
+  op <- new_operation(
+    name = "GetBucketMetadataConfiguration",
+    http_method = "GET",
+    http_path = "/{Bucket}?metadataConfiguration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3$get_bucket_metadata_configuration_input(Bucket = Bucket, ExpectedBucketOwner = ExpectedBucketOwner)
+  output <- .s3$get_bucket_metadata_configuration_output()
+  config <- get_config()
+  svc <- .s3$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3$operations$get_bucket_metadata_configuration <- s3_get_bucket_metadata_configuration
+
+#' We recommend that you retrieve your S3 Metadata configurations by using
+#' the V2 GetBucketMetadataTableConfiguration API operation
+#'
+#' @description
+#' We recommend that you retrieve your S3 Metadata configurations by using
+#' the V2
+#' [`get_bucket_metadata_table_configuration`][s3_get_bucket_metadata_table_configuration]
+#' API operation. We no longer recommend using the V1
+#' [`get_bucket_metadata_table_configuration`][s3_get_bucket_metadata_table_configuration]
+#' API operation.
+#' 
+#' If you created your S3 Metadata configuration before July 15, 2025, we
+#' recommend that you delete and re-create your configuration by using
+#' [`create_bucket_metadata_configuration`][s3_create_bucket_metadata_configuration]
+#' so that you can expire journal table records and create a live inventory
+#' table.
+#' 
+#' Retrieves the V1 S3 Metadata configuration for a general purpose bucket.
+#' For more information, see [Accelerating data discovery with S3
+#' Metadata](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-overview.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' You can use the V2
+#' [`get_bucket_metadata_configuration`][s3_get_bucket_metadata_configuration]
+#' API operation with V1 or V2 metadata table configurations. However, if
+#' you try to use the V1
+#' [`get_bucket_metadata_table_configuration`][s3_get_bucket_metadata_table_configuration]
+#' API operation with V2 configurations, you will receive an HTTP
+#' `405 Method Not Allowed` error.
+#' 
+#' Make sure that you update your processes to use the new V2 API
+#' operations
+#' ([`create_bucket_metadata_configuration`][s3_create_bucket_metadata_configuration],
+#' [`get_bucket_metadata_configuration`][s3_get_bucket_metadata_configuration],
+#' and
+#' [`delete_bucket_metadata_configuration`][s3_delete_bucket_metadata_configuration])
+#' instead of the V1 API operations.
 #' 
 #' ### Permissions
 #' 
@@ -6358,14 +7115,18 @@ s3_get_bucket_logging <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' -   [`create_bucket_metadata_table_configuration`][s3_create_bucket_metadata_table_configuration]
 #' 
 #' -   [`delete_bucket_metadata_table_configuration`][s3_delete_bucket_metadata_table_configuration]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_bucket_metadata_table_configuration(Bucket, ExpectedBucketOwner)
 #'
-#' @param Bucket &#91;required&#93; The general purpose bucket that contains the metadata table
+#' @param Bucket &#91;required&#93; The general purpose bucket that corresponds to the metadata table
 #' configuration that you want to retrieve.
 #' @param ExpectedBucketOwner The expected owner of the general purpose bucket that you want to
-#' retrieve the metadata table configuration from.
+#' retrieve the metadata table configuration for.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6454,6 +7215,10 @@ s3_get_bucket_metadata_table_configuration <- function(Bucket, ExpectedBucketOwn
 #' 
 #' -   [Monitoring Metrics with Amazon
 #'     CloudWatch](https://docs.aws.amazon.com/AmazonS3/latest/userguide/cloudwatch-monitoring.html)
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_bucket_metrics_configuration(Bucket, Id, ExpectedBucketOwner)
@@ -6669,6 +7434,10 @@ s3_get_bucket_notification <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' [`get_bucket_notification`][s3_get_bucket_notification]:
 #' 
 #' -   [`put_bucket_notification`][s3_put_bucket_notification]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_bucket_notification_configuration(Bucket, ExpectedBucketOwner)
@@ -6797,6 +7566,20 @@ s3_get_bucket_notification_configuration <- function(Bucket, ExpectedBucketOwner
 #' permissions in a
 #' policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions).
 #' 
+#' A bucket doesn't have `OwnershipControls` settings in the following
+#' cases:
+#' 
+#' -   The bucket was created before the `BucketOwnerEnforced` ownership
+#'     setting was introduced and you've never explicitly applied this
+#'     value
+#' 
+#' -   You've manually deleted the bucket ownership control value using the
+#'     [`delete_bucket_ownership_controls`][s3_delete_bucket_ownership_controls]
+#'     API operation.
+#' 
+#' By default, Amazon S3 sets `OwnershipControls` for all newly created
+#' buckets.
+#' 
 #' For information about Amazon S3 Object Ownership, see [Using Object
 #' Ownership](https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html).
 #' 
@@ -6806,6 +7589,10 @@ s3_get_bucket_notification_configuration <- function(Bucket, ExpectedBucketOwner
 #' -   [`put_bucket_ownership_controls`][s3_put_bucket_ownership_controls]
 #' 
 #' -   [`delete_bucket_ownership_controls`][s3_delete_bucket_ownership_controls]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_bucket_ownership_controls(Bucket, ExpectedBucketOwner)
@@ -6943,6 +7730,10 @@ s3_get_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NULL)
 #' [`get_bucket_policy`][s3_get_bucket_policy]:
 #' 
 #' -   [`get_object`][s3_get_object]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_bucket_policy(Bucket, ExpectedBucketOwner)
@@ -7056,6 +7847,10 @@ s3_get_bucket_policy <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' -   [`put_public_access_block`][s3_put_public_access_block]
 #' 
 #' -   [`delete_public_access_block`][s3_delete_public_access_block]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_bucket_policy_status(Bucket, ExpectedBucketOwner)
@@ -7143,6 +7938,10 @@ s3_get_bucket_policy_status <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' -   [`put_bucket_replication`][s3_put_bucket_replication]
 #' 
 #' -   [`delete_bucket_replication`][s3_delete_bucket_replication]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_bucket_replication(Bucket, ExpectedBucketOwner)
@@ -7194,7 +7993,7 @@ s3_get_bucket_policy_status <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'         Destination = list(
 #'           Bucket = "string",
 #'           Account = "string",
-#'           StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE",
+#'           StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP",
 #'           AccessControlTranslation = list(
 #'             Owner = "Destination"
 #'           ),
@@ -7277,6 +8076,10 @@ s3_get_bucket_replication <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' [`get_bucket_request_payment`][s3_get_bucket_request_payment]:
 #' 
 #' -   [`list_objects`][s3_list_objects]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_bucket_request_payment(Bucket, ExpectedBucketOwner)
@@ -7340,7 +8143,14 @@ s3_get_bucket_request_payment <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' This operation is not supported for directory buckets.
 #' 
-#' Returns the tag set associated with the bucket.
+#' Returns the tag set associated with the general purpose bucket.
+#' 
+#' if ABAC is not enabled for the bucket. When you [enable ABAC for a
+#' general purpose
+#' bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/buckets-tagging-enable-abac.html),
+#' you can no longer use this operation for that bucket and must use
+#' [ListTagsForResource](https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListTagsForResource.html)
+#' instead.
 #' 
 #' To use this operation, you must have permission to perform the
 #' `s3:GetBucketTagging` action. By default, the bucket owner has this
@@ -7359,6 +8169,10 @@ s3_get_bucket_request_payment <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' -   [`put_bucket_tagging`][s3_put_bucket_tagging]
 #' 
 #' -   [`delete_bucket_tagging`][s3_delete_bucket_tagging]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_bucket_tagging(Bucket, ExpectedBucketOwner)
@@ -7443,6 +8257,10 @@ s3_get_bucket_tagging <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' -   [`put_object`][s3_put_object]
 #' 
 #' -   [`delete_object`][s3_delete_object]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_bucket_versioning(Bucket, ExpectedBucketOwner)
@@ -7524,6 +8342,10 @@ s3_get_bucket_versioning <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' -   [`delete_bucket_website`][s3_delete_bucket_website]
 #' 
 #' -   [`put_bucket_website`][s3_put_bucket_website]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_bucket_website(Bucket, ExpectedBucketOwner)
@@ -7782,6 +8604,10 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' -   [`list_buckets`][s3_list_buckets]
 #' 
 #' -   [`get_object_acl`][s3_get_object_acl]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_object(Bucket, IfMatch, IfModifiedSince, IfNoneMatch,
@@ -8016,11 +8842,9 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'   ContentLanguage = "string",
 #'   ContentRange = "string",
 #'   ContentType = "string",
-#'   Expires = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
+#'   Expires = "string",
 #'   WebsiteRedirectLocation = "string",
-#'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
 #'   Metadata = list(
 #'     "string"
 #'   ),
@@ -8028,7 +8852,7 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'   SSECustomerKeyMD5 = "string",
 #'   SSEKMSKeyId = "string",
 #'   BucketKeyEnabled = TRUE|FALSE,
-#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE",
+#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP",
 #'   RequestCharged = "requester",
 #'   ReplicationStatus = "COMPLETE"|"PENDING"|"FAILED"|"REPLICA"|"COMPLETED",
 #'   PartsCount = 123,
@@ -8151,6 +8975,10 @@ s3_get_object <- function(Bucket, IfMatch = NULL, IfModifiedSince = NULL, IfNone
 #' -   [`delete_object`][s3_delete_object]
 #' 
 #' -   [`put_object`][s3_put_object]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_object_acl(Bucket, Key, VersionId, RequestPayer,
@@ -8249,17 +9077,17 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 }
 .s3$operations$get_object_acl <- s3_get_object_acl
 
-#' Retrieves all the metadata from an object without returning the object
-#' itself
+#' Retrieves all of the metadata from an object without returning the
+#' object itself
 #'
 #' @description
-#' Retrieves all the metadata from an object without returning the object
-#' itself. This operation is useful if you're interested only in an
+#' Retrieves all of the metadata from an object without returning the
+#' object itself. This operation is useful if you're interested only in an
 #' object's metadata.
 #' 
 #' [`get_object_attributes`][s3_get_object_attributes] combines the
 #' functionality of [`head_object`][s3_head_object] and
-#' [`list_parts`][s3_list_parts]. All of the data returned with each of
+#' [`list_parts`][s3_list_parts]. All of the data returned with both of
 #' those individual calls can be returned with a single call to
 #' [`get_object_attributes`][s3_get_object_attributes].
 #' 
@@ -8280,17 +9108,26 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #' 
 #' -   **General purpose bucket permissions** - To use
 #'     [`get_object_attributes`][s3_get_object_attributes], you must have
-#'     READ access to the object. The permissions that you need to use this
-#'     operation depend on whether the bucket is versioned. If the bucket
-#'     is versioned, you need both the `s3:GetObjectVersion` and
-#'     `s3:GetObjectVersionAttributes` permissions for this operation. If
-#'     the bucket is not versioned, you need the `s3:GetObject` and
-#'     `s3:GetObjectAttributes` permissions. For more information, see
-#'     [Specifying Permissions in a
+#'     READ access to the object.
+#' 
+#'     The other permissions that you need to use this operation depend on
+#'     whether the bucket is versioned and if a version ID is passed in the
+#'     [`get_object_attributes`][s3_get_object_attributes] request.
+#' 
+#'     -   If you pass a version ID in your request, you need both the
+#'         `s3:GetObjectVersion` and `s3:GetObjectVersionAttributes`
+#'         permissions.
+#' 
+#'     -   If you do not pass a version ID in your request, you need the
+#'         `s3:GetObject` and `s3:GetObjectAttributes` permissions.
+#' 
+#'     For more information, see [Specifying Permissions in a
 #'     Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
-#'     in the *Amazon S3 User Guide*. If the object that you request does
-#'     not exist, the error Amazon S3 returns depends on whether you also
-#'     have the `s3:ListBucket` permission.
+#'     in the *Amazon S3 User Guide*.
+#' 
+#'     If the object that you request does not exist, the error Amazon S3
+#'     returns depends on whether you also have the `s3:ListBucket`
+#'     permission.
 #' 
 #'     -   If you have the `s3:ListBucket` permission on the bucket, Amazon
 #'         S3 returns an HTTP status code `404 Not Found` ("no such key")
@@ -8335,11 +9172,12 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #' keys, you’ll get an HTTP `400 Bad Request` error. It's because the
 #' encryption method can't be changed when you retrieve the object.
 #' 
-#' If you encrypt an object by using server-side encryption with
-#' customer-provided encryption keys (SSE-C) when you store the object in
-#' Amazon S3, then when you retrieve the metadata from the object, you must
-#' use the following headers to provide the encryption key for the server
-#' to be able to retrieve the object's metadata. The headers are:
+#' If you encrypted an object when you stored the object in Amazon S3 by
+#' using server-side encryption with customer-provided encryption keys
+#' (SSE-C), then when you retrieve the metadata from the object, you must
+#' use the following headers. These headers provide the server with the
+#' encryption key required to retrieve the object's metadata. The headers
+#' are:
 #' 
 #' -   `x-amz-server-side-encryption-customer-algorithm`
 #' 
@@ -8424,6 +9262,10 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #' -   [`head_object`][s3_head_object]
 #' 
 #' -   [`list_parts`][s3_list_parts]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_object_attributes(Bucket, Key, VersionId, MaxParts,
@@ -8475,9 +9317,15 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #' this API operation, only the `null` value of the version ID is supported
 #' by directory buckets. You can only specify `null` to the `versionId`
 #' query parameter in the request.
-#' @param MaxParts Sets the maximum number of parts to return.
+#' @param MaxParts Sets the maximum number of parts to return. For more information, see
+#' [Uploading and copying objects using multipart upload in Amazon
+#' S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html)
+#' in the *Amazon Simple Storage Service user guide*.
 #' @param PartNumberMarker Specifies the part after which listing should begin. Only parts with
-#' higher part numbers will be listed.
+#' higher part numbers will be listed. For more information, see [Uploading
+#' and copying objects using multipart upload in Amazon
+#' S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html)
+#' in the *Amazon Simple Storage Service user guide*.
 #' @param SSECustomerAlgorithm Specifies the algorithm to use when encrypting the object (for example,
 #' AES256).
 #' 
@@ -8538,7 +9386,7 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #'       )
 #'     )
 #'   ),
-#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE",
+#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP",
 #'   ObjectSize = 123
 #' )
 #' ```
@@ -8601,6 +9449,10 @@ s3_get_object_attributes <- function(Bucket, Key, VersionId = NULL, MaxParts = N
 #' [`get_object_legal_hold`][s3_get_object_legal_hold]:
 #' 
 #' -   [`get_object_attributes`][s3_get_object_attributes]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_object_legal_hold(Bucket, Key, VersionId, RequestPayer,
@@ -8691,6 +9543,10 @@ s3_get_object_legal_hold <- function(Bucket, Key, VersionId = NULL, RequestPayer
 #' [`get_object_lock_configuration`][s3_get_object_lock_configuration]:
 #' 
 #' -   [`get_object_attributes`][s3_get_object_attributes]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_object_lock_configuration(Bucket, ExpectedBucketOwner)
@@ -8778,6 +9634,10 @@ s3_get_object_lock_configuration <- function(Bucket, ExpectedBucketOwner = NULL)
 #' [`get_object_retention`][s3_get_object_retention]:
 #' 
 #' -   [`get_object_attributes`][s3_get_object_attributes]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_object_retention(Bucket, Key, VersionId, RequestPayer,
@@ -8885,6 +9745,10 @@ s3_get_object_retention <- function(Bucket, Key, VersionId = NULL, RequestPayer 
 #' -   [`get_object_attributes`][s3_get_object_attributes]
 #' 
 #' -   [`put_object_tagging`][s3_put_object_tagging]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_object_tagging(Bucket, Key, VersionId, ExpectedBucketOwner,
@@ -9009,6 +9873,10 @@ s3_get_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBucketO
 #' [`get_object_torrent`][s3_get_object_torrent]:
 #' 
 #' -   [`get_object`][s3_get_object]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_object_torrent(Bucket, Key, RequestPayer, ExpectedBucketOwner)
@@ -9079,17 +9947,22 @@ s3_get_object_torrent <- function(Bucket, Key, RequestPayer = NULL, ExpectedBuck
 #' This operation is not supported for directory buckets.
 #' 
 #' Retrieves the `PublicAccessBlock` configuration for an Amazon S3 bucket.
-#' To use this operation, you must have the `s3:GetBucketPublicAccessBlock`
-#' permission. For more information about Amazon S3 permissions, see
-#' [Specifying Permissions in a
+#' This operation returns the bucket-level configuration only. To
+#' understand the effective public access behavior, you must also consider
+#' account-level settings (which may inherit from organization-level
+#' policies). To use this operation, you must have the
+#' `s3:GetBucketPublicAccessBlock` permission. For more information about
+#' Amazon S3 permissions, see [Specifying Permissions in a
 #' Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions).
 #' 
 #' When Amazon S3 evaluates the `PublicAccessBlock` configuration for a
 #' bucket or an object, it checks the `PublicAccessBlock` configuration for
 #' both the bucket (or the bucket that contains the object) and the bucket
-#' owner's account. If the `PublicAccessBlock` settings are different
-#' between the bucket and the account, Amazon S3 uses the most restrictive
-#' combination of the bucket-level and account-level settings.
+#' owner's account. Account-level settings automatically inherit from
+#' organization-level policies when present. If the `PublicAccessBlock`
+#' settings are different between the bucket and the account, Amazon S3
+#' uses the most restrictive combination of the bucket-level and
+#' account-level settings.
 #' 
 #' For more information about when Amazon S3 considers a bucket or an
 #' object public, see [The Meaning of
@@ -9106,6 +9979,10 @@ s3_get_object_torrent <- function(Bucket, Key, RequestPayer = NULL, ExpectedBuck
 #' -   [`get_public_access_block`][s3_get_public_access_block]
 #' 
 #' -   [`delete_public_access_block`][s3_delete_public_access_block]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_get_public_access_block(Bucket, ExpectedBucketOwner)
@@ -9166,13 +10043,18 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'
 #' @description
 #' You can use this operation to determine if a bucket exists and if you
-#' have permission to access it. The action returns a `200 OK` if the
-#' bucket exists and you have permission to access it.
+#' have permission to access it. The action returns a `200 OK` HTTP status
+#' code if the bucket exists and you have permission to access it. You can
+#' make a [`head_bucket`][s3_head_bucket] call on any bucket name to any
+#' Region in the partition, and regardless of the permissions on the
+#' bucket, you will receive a response header with the correct bucket
+#' location so that you can then make a proper, signed request to the
+#' appropriate Regional endpoint.
 #' 
-#' If the bucket does not exist or you do not have permission to access it,
-#' the `HEAD` request returns a generic `400 Bad Request`, `403 Forbidden`
-#' or `404 Not Found` code. A message body is not included, so you cannot
-#' determine the exception beyond these HTTP response codes.
+#' If the bucket doesn't exist or you don't have permission to access it,
+#' the `HEAD` request returns a generic `400 Bad Request`, `403 Forbidden`,
+#' or `404 Not Found` HTTP status code. A message body isn't included, so
+#' you can't determine the exception beyond these HTTP response codes.
 #' 
 #' ### Authentication and authorization
 #' 
@@ -9232,6 +10114,10 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Local Zones, see [Concepts for directory buckets in Local
 #' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
 #' in the *Amazon S3 User Guide*.
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_head_bucket(Bucket, ExpectedBucketOwner)
@@ -9290,6 +10176,7 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   BucketArn = "string",
 #'   BucketLocationType = "AvailabilityZone"|"LocalZone",
 #'   BucketLocationName = "string",
 #'   BucketRegion = "string",
@@ -9482,6 +10369,10 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' -   [`get_object`][s3_get_object]
 #' 
 #' -   [`get_object_attributes`][s3_get_object_attributes]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_head_object(Bucket, IfMatch, IfModifiedSince, IfNoneMatch,
@@ -9666,11 +10557,9 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'   ContentLanguage = "string",
 #'   ContentType = "string",
 #'   ContentRange = "string",
-#'   Expires = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
+#'   Expires = "string",
 #'   WebsiteRedirectLocation = "string",
-#'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
 #'   Metadata = list(
 #'     "string"
 #'   ),
@@ -9678,10 +10567,11 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'   SSECustomerKeyMD5 = "string",
 #'   SSEKMSKeyId = "string",
 #'   BucketKeyEnabled = TRUE|FALSE,
-#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE",
+#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP",
 #'   RequestCharged = "requester",
 #'   ReplicationStatus = "COMPLETE"|"PENDING"|"FAILED"|"REPLICA"|"COMPLETED",
 #'   PartsCount = 123,
+#'   TagCount = 123,
 #'   ObjectLockMode = "GOVERNANCE"|"COMPLIANCE",
 #'   ObjectLockRetainUntilDate = as.POSIXct(
 #'     "2015-01-01"
@@ -9794,6 +10684,10 @@ s3_head_object <- function(Bucket, IfMatch = NULL, IfModifiedSince = NULL, IfNon
 #' -   [`delete_bucket_analytics_configuration`][s3_delete_bucket_analytics_configuration]
 #' 
 #' -   [`put_bucket_analytics_configuration`][s3_put_bucket_analytics_configuration]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_list_bucket_analytics_configurations(Bucket, ContinuationToken,
@@ -9921,15 +10815,22 @@ s3_list_bucket_analytics_configurations <- function(Bucket, ContinuationToken = 
 #' -   [`put_bucket_intelligent_tiering_configuration`][s3_put_bucket_intelligent_tiering_configuration]
 #' 
 #' -   [`get_bucket_intelligent_tiering_configuration`][s3_get_bucket_intelligent_tiering_configuration]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_list_bucket_intelligent_tiering_configurations(Bucket,
-#'   ContinuationToken)
+#'   ContinuationToken, ExpectedBucketOwner)
 #'
 #' @param Bucket &#91;required&#93; The name of the Amazon S3 bucket whose configuration you want to modify
 #' or retrieve.
 #' @param ContinuationToken The `ContinuationToken` that represents a placeholder from where this
 #' request should begin.
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @return
 #' A list with the following syntax:
@@ -9973,7 +10874,8 @@ s3_list_bucket_analytics_configurations <- function(Bucket, ContinuationToken = 
 #' ```
 #' svc$list_bucket_intelligent_tiering_configurations(
 #'   Bucket = "string",
-#'   ContinuationToken = "string"
+#'   ContinuationToken = "string",
+#'   ExpectedBucketOwner = "string"
 #' )
 #' ```
 #'
@@ -9982,7 +10884,7 @@ s3_list_bucket_analytics_configurations <- function(Bucket, ContinuationToken = 
 #' @rdname s3_list_bucket_intelligent_tiering_configurations
 #'
 #' @aliases s3_list_bucket_intelligent_tiering_configurations
-s3_list_bucket_intelligent_tiering_configurations <- function(Bucket, ContinuationToken = NULL) {
+s3_list_bucket_intelligent_tiering_configurations <- function(Bucket, ContinuationToken = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "ListBucketIntelligentTieringConfigurations",
     http_method = "GET",
@@ -9991,7 +10893,7 @@ s3_list_bucket_intelligent_tiering_configurations <- function(Bucket, Continuati
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$list_bucket_intelligent_tiering_configurations_input(Bucket = Bucket, ContinuationToken = ContinuationToken)
+  input <- .s3$list_bucket_intelligent_tiering_configurations_input(Bucket = Bucket, ContinuationToken = ContinuationToken, ExpectedBucketOwner = ExpectedBucketOwner)
   output <- .s3$list_bucket_intelligent_tiering_configurations_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -10006,8 +10908,8 @@ s3_list_bucket_intelligent_tiering_configurations <- function(Bucket, Continuati
 #' @description
 #' This operation is not supported for directory buckets.
 #' 
-#' Returns a list of inventory configurations for the bucket. You can have
-#' up to 1,000 analytics configurations per bucket.
+#' Returns a list of S3 Inventory configurations for the bucket. You can
+#' have up to 1,000 inventory configurations per bucket.
 #' 
 #' This action supports list pagination and does not return more than 100
 #' configurations at a time. Always check the `IsTruncated` element in the
@@ -10038,6 +10940,10 @@ s3_list_bucket_intelligent_tiering_configurations <- function(Bucket, Continuati
 #' -   [`delete_bucket_inventory_configuration`][s3_delete_bucket_inventory_configuration]
 #' 
 #' -   [`put_bucket_inventory_configuration`][s3_put_bucket_inventory_configuration]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_list_bucket_inventory_configurations(Bucket, ContinuationToken,
@@ -10081,7 +10987,7 @@ s3_list_bucket_intelligent_tiering_configurations <- function(Bucket, Continuati
 #'       Id = "string",
 #'       IncludedObjectVersions = "All"|"Current",
 #'       OptionalFields = list(
-#'         "Size"|"LastModifiedDate"|"StorageClass"|"ETag"|"IsMultipartUploaded"|"ReplicationStatus"|"EncryptionStatus"|"ObjectLockRetainUntilDate"|"ObjectLockMode"|"ObjectLockLegalHoldStatus"|"IntelligentTieringAccessTier"|"BucketKeyStatus"|"ChecksumAlgorithm"|"ObjectAccessControlList"|"ObjectOwner"
+#'         "Size"|"LastModifiedDate"|"StorageClass"|"ETag"|"IsMultipartUploaded"|"ReplicationStatus"|"EncryptionStatus"|"ObjectLockRetainUntilDate"|"ObjectLockMode"|"ObjectLockLegalHoldStatus"|"IntelligentTieringAccessTier"|"BucketKeyStatus"|"ChecksumAlgorithm"|"ObjectAccessControlList"|"ObjectOwner"|"LifecycleExpirationDate"
 #'       ),
 #'       Schedule = list(
 #'         Frequency = "Daily"|"Weekly"
@@ -10166,6 +11072,10 @@ s3_list_bucket_inventory_configurations <- function(Bucket, ContinuationToken = 
 #' -   [`get_bucket_metrics_configuration`][s3_get_bucket_metrics_configuration]
 #' 
 #' -   [`delete_bucket_metrics_configuration`][s3_delete_bucket_metrics_configuration]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_list_bucket_metrics_configurations(Bucket, ContinuationToken,
@@ -10270,6 +11180,10 @@ s3_list_bucket_metrics_configurations <- function(Bucket, ContinuationToken = NU
 #' [`list_buckets`][s3_list_buckets] requests will be rejected for Amazon
 #' Web Services accounts with a general purpose bucket quota greater than
 #' 10,000.
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_list_buckets(MaxBuckets, ContinuationToken, Prefix, BucketRegion)
@@ -10315,7 +11229,8 @@ s3_list_bucket_metrics_configurations <- function(Bucket, ContinuationToken = NU
 #'       CreationDate = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       BucketRegion = "string"
+#'       BucketRegion = "string",
+#'       BucketArn = "string"
 #'     )
 #'   ),
 #'   Owner = list(
@@ -10403,6 +11318,10 @@ s3_list_buckets <- function(MaxBuckets = NULL, ContinuationToken = NULL, Prefix 
 #' 
 #' The `BucketRegion` response element is not part of the
 #' [`list_directory_buckets`][s3_list_directory_buckets] Response Syntax.
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_list_directory_buckets(ContinuationToken, MaxDirectoryBuckets)
@@ -10425,7 +11344,8 @@ s3_list_buckets <- function(MaxBuckets = NULL, ContinuationToken = NULL, Prefix 
 #'       CreationDate = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       BucketRegion = "string"
+#'       BucketRegion = "string",
+#'       BucketArn = "string"
 #'     )
 #'   ),
 #'   ContinuationToken = "string"
@@ -10584,6 +11504,10 @@ s3_list_directory_buckets <- function(ContinuationToken = NULL, MaxDirectoryBuck
 #' -   [`list_parts`][s3_list_parts]
 #' 
 #' -   [`abort_multipart_upload`][s3_abort_multipart_upload]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_list_multipart_uploads(Bucket, Delimiter, EncodingType, KeyMarker,
@@ -10635,6 +11559,9 @@ s3_list_directory_buckets <- function(ContinuationToken = NULL, MaxDirectoryBuck
 #' the prefix parameter, then the substring starts at the beginning of the
 #' key. The keys that are grouped under `CommonPrefixes` result element are
 #' not returned elsewhere in the response.
+#' 
+#' `CommonPrefixes` is filtered out from results if it is not
+#' lexicographically greater than the key-marker.
 #' 
 #' **Directory buckets** - For directory buckets, `/` is the only supported
 #' delimiter.
@@ -10708,7 +11635,7 @@ s3_list_directory_buckets <- function(ContinuationToken = NULL, MaxDirectoryBuck
 #'       Initiated = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE",
+#'       StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP",
 #'       Owner = list(
 #'         DisplayName = "string",
 #'         ID = "string"
@@ -10816,6 +11743,10 @@ s3_list_multipart_uploads <- function(Bucket, Delimiter = NULL, EncodingType = N
 #' -   [`put_object`][s3_put_object]
 #' 
 #' -   [`delete_object`][s3_delete_object]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_list_object_versions(Bucket, Delimiter, EncodingType, KeyMarker,
@@ -10829,6 +11760,9 @@ s3_list_multipart_uploads <- function(Bucket, Delimiter = NULL, EncodingType = N
 #' `CommonPrefixes`. These groups are counted as one result against the
 #' `max-keys` limitation. These keys are not returned elsewhere in the
 #' response.
+#' 
+#' `CommonPrefixes` is filtered out from results if it is not
+#' lexicographically greater than the key-marker.
 #' @param EncodingType 
 #' @param KeyMarker Specifies the key to start with when listing objects in a bucket.
 #' @param MaxKeys Sets the maximum number of keys returned in the response. By default,
@@ -10998,6 +11932,10 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 #' -   [`create_bucket`][s3_create_bucket]
 #' 
 #' -   [`list_buckets`][s3_list_buckets]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_list_objects(Bucket, Delimiter, EncodingType, Marker, MaxKeys,
@@ -11042,6 +11980,9 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Delimiter A delimiter is a character that you use to group keys.
+#' 
+#' `CommonPrefixes` is filtered out from results if it is not
+#' lexicographically greater than the key-marker.
 #' @param EncodingType 
 #' @param Marker Marker is where you want Amazon S3 to start listing from. Amazon S3
 #' starts listing after this specified key. Marker can be any key in the
@@ -11078,7 +12019,7 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 #'       ),
 #'       ChecksumType = "COMPOSITE"|"FULL_OBJECT",
 #'       Size = 123,
-#'       StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE",
+#'       StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP",
 #'       Owner = list(
 #'         DisplayName = "string",
 #'         ID = "string"
@@ -11249,6 +12190,10 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' -   [`put_object`][s3_put_object]
 #' 
 #' -   [`create_bucket`][s3_create_bucket]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_list_objects_v2(Bucket, Delimiter, EncodingType, MaxKeys, Prefix,
@@ -11292,6 +12237,9 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Delimiter A delimiter is a character that you use to group keys.
+#' 
+#' `CommonPrefixes` is filtered out from results if it is not
+#' lexicographically greater than the `StartAfter` value.
 #' 
 #' -   **Directory buckets** - For directory buckets, `/` is the only
 #'     supported delimiter.
@@ -11372,7 +12320,7 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #'       ),
 #'       ChecksumType = "COMPOSITE"|"FULL_OBJECT",
 #'       Size = 123,
-#'       StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE",
+#'       StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP",
 #'       Owner = list(
 #'         DisplayName = "string",
 #'         ID = "string"
@@ -11544,6 +12492,10 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #' -   [`get_object_attributes`][s3_get_object_attributes]
 #' 
 #' -   [`list_multipart_uploads`][s3_list_multipart_uploads]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_list_parts(Bucket, Key, MaxParts, PartNumberMarker, UploadId,
@@ -11658,7 +12610,7 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #'     DisplayName = "string",
 #'     ID = "string"
 #'   ),
-#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE",
+#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP",
 #'   RequestCharged = "requester",
 #'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
 #'   ChecksumType = "COMPOSITE"|"FULL_OBJECT"
@@ -11716,6 +12668,88 @@ s3_list_parts <- function(Bucket, Key, MaxParts = NULL, PartNumberMarker = NULL,
 }
 .s3$operations$list_parts <- s3_list_parts
 
+#' Sets the attribute-based access control (ABAC) property of the general
+#' purpose bucket
+#'
+#' @description
+#' Sets the attribute-based access control (ABAC) property of the general
+#' purpose bucket. You must have `s3:PutBucketABAC` permission to perform
+#' this action. When you enable ABAC, you can use tags for access control
+#' on your buckets. Additionally, when ABAC is enabled, you must use the
+#' [TagResource](https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_TagResource.html)
+#' and
+#' [UntagResource](https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UntagResource.html)
+#' actions to manage tags on your buckets. You can nolonger use the
+#' [`put_bucket_tagging`][s3_put_bucket_tagging] and
+#' [`delete_bucket_tagging`][s3_delete_bucket_tagging] actions to tag your
+#' bucket. For more information, see [Enabling ABAC in general purpose
+#' buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/buckets-tagging-enable-abac.html).
+#'
+#' @usage
+#' s3_put_bucket_abac(Bucket, ContentMD5, ChecksumAlgorithm,
+#'   ExpectedBucketOwner, AbacStatus)
+#'
+#' @param Bucket &#91;required&#93; The name of the general purpose bucket.
+#' @param ContentMD5 The MD5 hash of the [`put_bucket_abac`][s3_put_bucket_abac] request
+#' body.
+#' 
+#' For requests made using the Amazon Web Services Command Line Interface
+#' (CLI) or Amazon Web Services SDKs, this field is calculated
+#' automatically.
+#' @param ChecksumAlgorithm Indicates the algorithm that you want Amazon S3 to use to create the
+#' checksum. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
+#' @param ExpectedBucketOwner The Amazon Web Services account ID of the general purpose bucket's
+#' owner.
+#' @param AbacStatus &#91;required&#93; The ABAC status of the general purpose bucket. When ABAC is enabled for
+#' the general purpose bucket, you can use tags to manage access to the
+#' general purpose buckets as well as for cost tracking purposes. When ABAC
+#' is disabled for the general purpose buckets, you can only use tags for
+#' cost tracking purposes. For more information, see [Using tags with S3
+#' general purpose
+#' buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/buckets-tagging.html).
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_bucket_abac(
+#'   Bucket = "string",
+#'   ContentMD5 = "string",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   ExpectedBucketOwner = "string",
+#'   AbacStatus = list(
+#'     Status = "Enabled"|"Disabled"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3_put_bucket_abac
+#'
+#' @aliases s3_put_bucket_abac
+s3_put_bucket_abac <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = NULL, ExpectedBucketOwner = NULL, AbacStatus) {
+  op <- new_operation(
+    name = "PutBucketAbac",
+    http_method = "PUT",
+    http_path = "/{Bucket}?abac",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3$put_bucket_abac_input(Bucket = Bucket, ContentMD5 = ContentMD5, ChecksumAlgorithm = ChecksumAlgorithm, ExpectedBucketOwner = ExpectedBucketOwner, AbacStatus = AbacStatus)
+  output <- .s3$put_bucket_abac_output()
+  config <- get_config()
+  svc <- .s3$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3$operations$put_bucket_abac <- s3_put_bucket_abac
+
 #' This operation is not supported for directory buckets
 #'
 #' @description
@@ -11761,6 +12795,10 @@ s3_list_parts <- function(Bucket, Key, MaxParts = NULL, PartNumberMarker = NULL,
 #' -   [`get_bucket_accelerate_configuration`][s3_get_bucket_accelerate_configuration]
 #' 
 #' -   [`create_bucket`][s3_create_bucket]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_put_bucket_accelerate_configuration(Bucket, AccelerateConfiguration,
@@ -11822,9 +12860,20 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 }
 .s3$operations$put_bucket_accelerate_configuration <- s3_put_bucket_accelerate_configuration
 
-#' This operation is not supported for directory buckets
+#' End of support notice: As of October 1, 2025, Amazon S3 has discontinued
+#' support for Email Grantee Access Control Lists (ACLs)
 #'
 #' @description
+#' End of support notice: As of October 1, 2025, Amazon S3 has discontinued
+#' support for Email Grantee Access Control Lists (ACLs). If you attempt to
+#' use an Email Grantee ACL in a request after October 1, 2025, the request
+#' will receive an `HTTP 405` (Method Not Allowed) error.
+#' 
+#' This change affects the following Amazon Web Services Regions: US East
+#' (N. Virginia), US West (N. California), US West (Oregon), Asia Pacific
+#' (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Europe
+#' (Ireland), and South America (São Paulo).
+#' 
 #' This operation is not supported for directory buckets.
 #' 
 #' Sets the permissions on an existing bucket using access control lists
@@ -11926,7 +12975,11 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #' ### Grantee Values
 #' 
 #' You can specify the person (grantee) to whom you're assigning access
-#' rights (using request elements) in the following ways:
+#' rights (using request elements) in the following ways. For examples of
+#' how to specify these grantee values in JSON format, see the Amazon Web
+#' Services CLI example in [Enabling Amazon S3 server access
+#' logging](https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-server-access-logging.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' -   By the person's ID:
 #' 
@@ -11977,6 +13030,10 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #' -   [`delete_bucket`][s3_delete_bucket]
 #' 
 #' -   [`get_object_acl`][s3_get_object_acl]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_put_bucket_acl(ACL, AccessControlPolicy, Bucket, ContentMD5,
@@ -12161,6 +13218,10 @@ s3_put_bucket_acl <- function(ACL = NULL, AccessControlPolicy = NULL, Bucket, Co
 #' -   [`delete_bucket_analytics_configuration`][s3_delete_bucket_analytics_configuration]
 #' 
 #' -   [`list_bucket_analytics_configurations`][s3_list_bucket_analytics_configurations]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_put_bucket_analytics_configuration(Bucket, Id,
@@ -12293,6 +13354,10 @@ s3_put_bucket_analytics_configuration <- function(Bucket, Id, AnalyticsConfigura
 #' -   [`delete_bucket_cors`][s3_delete_bucket_cors]
 #' 
 #' -   [RESTOPTIONSobject](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTOPTIONSobject.html)
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_put_bucket_cors(Bucket, CORSConfiguration, ContentMD5,
@@ -12431,7 +13496,9 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Che
 #'
 #' @description
 #' This operation configures default encryption and Amazon S3 Bucket Keys
-#' for an existing bucket.
+#' for an existing bucket. You can also [block encryption
+#' types](https://docs.aws.amazon.com/AmazonS3/latest/API/API_BlockedEncryptionTypes.html)
+#' using this operation.
 #' 
 #' **Directory buckets** - For directory buckets, you must make requests
 #' for this API operation to the Regional endpoint. These endpoints support
@@ -12565,6 +13632,10 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Che
 #' -   [`get_bucket_encryption`][s3_get_bucket_encryption]
 #' 
 #' -   [`delete_bucket_encryption`][s3_delete_bucket_encryption]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_put_bucket_encryption(Bucket, ContentMD5, ChecksumAlgorithm,
@@ -12628,10 +13699,15 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Che
 #'     Rules = list(
 #'       list(
 #'         ApplyServerSideEncryptionByDefault = list(
-#'           SSEAlgorithm = "AES256"|"aws:kms"|"aws:kms:dsse",
+#'           SSEAlgorithm = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
 #'           KMSMasterKeyID = "string"
 #'         ),
-#'         BucketKeyEnabled = TRUE|FALSE
+#'         BucketKeyEnabled = TRUE|FALSE,
+#'         BlockedEncryptionTypes = list(
+#'           EncryptionType = list(
+#'             "NONE"|"SSE-C"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -12726,14 +13802,21 @@ s3_put_bucket_encryption <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorith
 #' *Cause:* You are not the owner of the specified bucket, or you do not
 #' have the `s3:PutIntelligentTieringConfiguration` bucket permission to
 #' set the configuration on the bucket.
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_put_bucket_intelligent_tiering_configuration(Bucket, Id,
-#'   IntelligentTieringConfiguration)
+#'   ExpectedBucketOwner, IntelligentTieringConfiguration)
 #'
 #' @param Bucket &#91;required&#93; The name of the Amazon S3 bucket whose configuration you want to modify
 #' or retrieve.
 #' @param Id &#91;required&#93; The ID used to identify the S3 Intelligent-Tiering configuration.
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #' @param IntelligentTieringConfiguration &#91;required&#93; Container for S3 Intelligent-Tiering configuration.
 #'
 #' @return
@@ -12744,6 +13827,7 @@ s3_put_bucket_encryption <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorith
 #' svc$put_bucket_intelligent_tiering_configuration(
 #'   Bucket = "string",
 #'   Id = "string",
+#'   ExpectedBucketOwner = "string",
 #'   IntelligentTieringConfiguration = list(
 #'     Id = "string",
 #'     Filter = list(
@@ -12778,7 +13862,7 @@ s3_put_bucket_encryption <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorith
 #' @rdname s3_put_bucket_intelligent_tiering_configuration
 #'
 #' @aliases s3_put_bucket_intelligent_tiering_configuration
-s3_put_bucket_intelligent_tiering_configuration <- function(Bucket, Id, IntelligentTieringConfiguration) {
+s3_put_bucket_intelligent_tiering_configuration <- function(Bucket, Id, ExpectedBucketOwner = NULL, IntelligentTieringConfiguration) {
   op <- new_operation(
     name = "PutBucketIntelligentTieringConfiguration",
     http_method = "PUT",
@@ -12787,7 +13871,7 @@ s3_put_bucket_intelligent_tiering_configuration <- function(Bucket, Id, Intellig
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$put_bucket_intelligent_tiering_configuration_input(Bucket = Bucket, Id = Id, IntelligentTieringConfiguration = IntelligentTieringConfiguration)
+  input <- .s3$put_bucket_intelligent_tiering_configuration_input(Bucket = Bucket, Id = Id, ExpectedBucketOwner = ExpectedBucketOwner, IntelligentTieringConfiguration = IntelligentTieringConfiguration)
   output <- .s3$put_bucket_intelligent_tiering_configuration_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -12802,9 +13886,9 @@ s3_put_bucket_intelligent_tiering_configuration <- function(Bucket, Id, Intellig
 #' @description
 #' This operation is not supported for directory buckets.
 #' 
-#' This implementation of the `PUT` action adds an inventory configuration
-#' (identified by the inventory ID) to the bucket. You can have up to 1,000
-#' inventory configurations per bucket.
+#' This implementation of the `PUT` action adds an S3 Inventory
+#' configuration (identified by the inventory ID) to the bucket. You can
+#' have up to 1,000 inventory configurations per bucket.
 #' 
 #' Amazon S3 inventory generates inventories of the objects in the bucket
 #' on a daily or weekly basis, and the results are published to a flat
@@ -12885,6 +13969,10 @@ s3_put_bucket_intelligent_tiering_configuration <- function(Bucket, Id, Intellig
 #' -   [`delete_bucket_inventory_configuration`][s3_delete_bucket_inventory_configuration]
 #' 
 #' -   [`list_bucket_inventory_configurations`][s3_list_bucket_inventory_configurations]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_put_bucket_inventory_configuration(Bucket, Id,
@@ -12927,7 +14015,7 @@ s3_put_bucket_intelligent_tiering_configuration <- function(Bucket, Id, Intellig
 #'     Id = "string",
 #'     IncludedObjectVersions = "All"|"Current",
 #'     OptionalFields = list(
-#'       "Size"|"LastModifiedDate"|"StorageClass"|"ETag"|"IsMultipartUploaded"|"ReplicationStatus"|"EncryptionStatus"|"ObjectLockRetainUntilDate"|"ObjectLockMode"|"ObjectLockLegalHoldStatus"|"IntelligentTieringAccessTier"|"BucketKeyStatus"|"ChecksumAlgorithm"|"ObjectAccessControlList"|"ObjectOwner"
+#'       "Size"|"LastModifiedDate"|"StorageClass"|"ETag"|"IsMultipartUploaded"|"ReplicationStatus"|"EncryptionStatus"|"ObjectLockRetainUntilDate"|"ObjectLockMode"|"ObjectLockLegalHoldStatus"|"IntelligentTieringAccessTier"|"BucketKeyStatus"|"ChecksumAlgorithm"|"ObjectAccessControlList"|"ObjectOwner"|"LifecycleExpirationDate"
 #'     ),
 #'     Schedule = list(
 #'       Frequency = "Daily"|"Weekly"
@@ -13027,6 +14115,10 @@ s3_put_bucket_inventory_configuration <- function(Bucket, Id, InventoryConfigura
 #' 
 #'     -   [Managing Access Permissions to your Amazon S3
 #'         Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html)
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_put_bucket_lifecycle(Bucket, ContentMD5, ChecksumAlgorithm,
@@ -13248,6 +14340,10 @@ s3_put_bucket_lifecycle <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm
 #' -   [`get_bucket_lifecycle_configuration`][s3_get_bucket_lifecycle_configuration]
 #' 
 #' -   [`delete_bucket_lifecycle`][s3_delete_bucket_lifecycle]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_put_bucket_lifecycle_configuration(Bucket, ChecksumAlgorithm,
@@ -13422,9 +14518,20 @@ s3_put_bucket_lifecycle_configuration <- function(Bucket, ChecksumAlgorithm = NU
 }
 .s3$operations$put_bucket_lifecycle_configuration <- s3_put_bucket_lifecycle_configuration
 
-#' This operation is not supported for directory buckets
+#' End of support notice: As of October 1, 2025, Amazon S3 has discontinued
+#' support for Email Grantee Access Control Lists (ACLs)
 #'
 #' @description
+#' End of support notice: As of October 1, 2025, Amazon S3 has discontinued
+#' support for Email Grantee Access Control Lists (ACLs). If you attempt to
+#' use an Email Grantee ACL in a request after October 1, 2025, the request
+#' will receive an `HTTP 405` (Method Not Allowed) error.
+#' 
+#' This change affects the following Amazon Web Services Regions: US East
+#' (N. Virginia), US West (N. California), US West (Oregon), Asia Pacific
+#' (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Europe
+#' (Ireland), and South America (São Paulo).
+#' 
 #' This operation is not supported for directory buckets.
 #' 
 #' Set the logging parameters for a bucket and to specify permissions for
@@ -13447,7 +14554,11 @@ s3_put_bucket_lifecycle_configuration <- function(Bucket, ChecksumAlgorithm = NU
 #' ### Grantee Values
 #' 
 #' You can specify the person (grantee) to whom you're assigning access
-#' rights (by using request elements) in the following ways:
+#' rights (by using request elements) in the following ways. For examples
+#' of how to specify these grantee values in JSON format, see the Amazon
+#' Web Services CLI example in [Enabling Amazon S3 server access
+#' logging](https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-server-access-logging.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' -   By the person's ID:
 #' 
@@ -13491,6 +14602,10 @@ s3_put_bucket_lifecycle_configuration <- function(Bucket, ChecksumAlgorithm = NU
 #' -   [`create_bucket`][s3_create_bucket]
 #' 
 #' -   [`get_bucket_logging`][s3_get_bucket_logging]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_put_bucket_logging(Bucket, BucketLoggingStatus, ContentMD5,
@@ -13647,6 +14762,10 @@ s3_put_bucket_logging <- function(Bucket, BucketLoggingStatus, ContentMD5 = NULL
 #'         but have already reached the 1,000-configuration limit.
 #' 
 #'     -   HTTP Status Code: HTTP 400 Bad Request
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_put_bucket_metrics_configuration(Bucket, Id, MetricsConfiguration,
@@ -13884,6 +15003,10 @@ s3_put_bucket_notification <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' [`put_bucket_notification_configuration`][s3_put_bucket_notification_configuration]:
 #' 
 #' -   [`get_bucket_notification_configuration`][s3_get_bucket_notification_configuration]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_put_bucket_notification_configuration(Bucket,
@@ -14033,10 +15156,14 @@ s3_put_bucket_notification_configuration <- function(Bucket, NotificationConfigu
 #' -   [`get_bucket_ownership_controls`][s3_get_bucket_ownership_controls]
 #' 
 #' -   [`delete_bucket_ownership_controls`][s3_delete_bucket_ownership_controls]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_put_bucket_ownership_controls(Bucket, ContentMD5,
-#'   ExpectedBucketOwner, OwnershipControls)
+#'   ExpectedBucketOwner, OwnershipControls, ChecksumAlgorithm)
 #'
 #' @param Bucket &#91;required&#93; The name of the Amazon S3 bucket whose `OwnershipControls` you want to
 #' set.
@@ -14050,6 +15177,17 @@ s3_put_bucket_notification_configuration <- function(Bucket, NotificationConfigu
 #' with the HTTP status code `403 Forbidden` (access denied).
 #' @param OwnershipControls &#91;required&#93; The `OwnershipControls` (BucketOwnerEnforced, BucketOwnerPreferred, or
 #' ObjectWriter) that you want to apply to this Amazon S3 bucket.
+#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
+#' you use the SDK. This header will not provide any additional
+#' functionality if you don't use the SDK. When you send this header, there
+#' must be a corresponding `x-amz-checksum-algorithm ` header sent.
+#' Otherwise, Amazon S3 fails the request with the HTTP status code
+#' `400 Bad Request`. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' If you provide an individual checksum, Amazon S3 ignores any provided
+#' `ChecksumAlgorithm` parameter.
 #'
 #' @return
 #' An empty list.
@@ -14066,7 +15204,8 @@ s3_put_bucket_notification_configuration <- function(Bucket, NotificationConfigu
 #'         ObjectOwnership = "BucketOwnerPreferred"|"ObjectWriter"|"BucketOwnerEnforced"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"
 #' )
 #' ```
 #'
@@ -14075,7 +15214,7 @@ s3_put_bucket_notification_configuration <- function(Bucket, NotificationConfigu
 #' @rdname s3_put_bucket_ownership_controls
 #'
 #' @aliases s3_put_bucket_ownership_controls
-s3_put_bucket_ownership_controls <- function(Bucket, ContentMD5 = NULL, ExpectedBucketOwner = NULL, OwnershipControls) {
+s3_put_bucket_ownership_controls <- function(Bucket, ContentMD5 = NULL, ExpectedBucketOwner = NULL, OwnershipControls, ChecksumAlgorithm = NULL) {
   op <- new_operation(
     name = "PutBucketOwnershipControls",
     http_method = "PUT",
@@ -14084,7 +15223,7 @@ s3_put_bucket_ownership_controls <- function(Bucket, ContentMD5 = NULL, Expected
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$put_bucket_ownership_controls_input(Bucket = Bucket, ContentMD5 = ContentMD5, ExpectedBucketOwner = ExpectedBucketOwner, OwnershipControls = OwnershipControls)
+  input <- .s3$put_bucket_ownership_controls_input(Bucket = Bucket, ContentMD5 = ContentMD5, ExpectedBucketOwner = ExpectedBucketOwner, OwnershipControls = OwnershipControls, ChecksumAlgorithm = ChecksumAlgorithm)
   output <- .s3$put_bucket_ownership_controls_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -14177,6 +15316,10 @@ s3_put_bucket_ownership_controls <- function(Bucket, ContentMD5 = NULL, Expected
 #' -   [`create_bucket`][s3_create_bucket]
 #' 
 #' -   [`delete_bucket`][s3_delete_bucket]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_put_bucket_policy(Bucket, ContentMD5, ChecksumAlgorithm,
@@ -14377,6 +15520,10 @@ s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = 
 #' -   [`get_bucket_replication`][s3_get_bucket_replication]
 #' 
 #' -   [`delete_bucket_replication`][s3_delete_bucket_replication]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_put_bucket_replication(Bucket, ContentMD5, ChecksumAlgorithm,
@@ -14455,7 +15602,7 @@ s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = 
 #'         Destination = list(
 #'           Bucket = "string",
 #'           Account = "string",
-#'           StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE",
+#'           StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP",
 #'           AccessControlTranslation = list(
 #'             Owner = "Destination"
 #'           ),
@@ -14549,6 +15696,10 @@ s3_put_bucket_replication <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorit
 #' -   [`create_bucket`][s3_create_bucket]
 #' 
 #' -   [`get_bucket_request_payment`][s3_get_bucket_request_payment]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_put_bucket_request_payment(Bucket, ContentMD5, ChecksumAlgorithm,
@@ -14636,7 +15787,15 @@ s3_put_bucket_request_payment <- function(Bucket, ContentMD5 = NULL, ChecksumAlg
 #' @description
 #' This operation is not supported for directory buckets.
 #' 
-#' Sets the tags for a bucket.
+#' Sets the tags for a general purpose bucket if attribute based access
+#' control (ABAC) is not enabled for the bucket. When you [enable ABAC for
+#' a general purpose
+#' bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/buckets-tagging-enable-abac.html),
+#' you can no longer use this operation for that bucket and must use the
+#' [TagResource](https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_TagResource.html)
+#' or
+#' [UntagResource](https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UntagResource.html)
+#' operations instead.
 #' 
 #' Use tags to organize your Amazon Web Services bill to reflect your own
 #' cost structure. To do this, sign up to get your Amazon Web Services
@@ -14685,6 +15844,10 @@ s3_put_bucket_request_payment <- function(Bucket, ContentMD5 = NULL, ChecksumAlg
 #' -   [`get_bucket_tagging`][s3_get_bucket_tagging]
 #' 
 #' -   [`delete_bucket_tagging`][s3_delete_bucket_tagging]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_put_bucket_tagging(Bucket, ContentMD5, ChecksumAlgorithm, Tagging,
@@ -14832,6 +15995,10 @@ s3_put_bucket_tagging <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' -   [`delete_bucket`][s3_delete_bucket]
 #' 
 #' -   [`get_bucket_versioning`][s3_get_bucket_versioning]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_put_bucket_versioning(Bucket, ContentMD5, ChecksumAlgorithm, MFA,
@@ -14858,7 +16025,15 @@ s3_put_bucket_tagging <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' If you provide an individual checksum, Amazon S3 ignores any provided
 #' `ChecksumAlgorithm` parameter.
 #' @param MFA The concatenation of the authentication device's serial number, a space,
-#' and the value that is displayed on your authentication device.
+#' and the value that is displayed on your authentication device. The
+#' serial number is the number that uniquely identifies the MFA device. For
+#' physical MFA devices, this is the unique serial number that's provided
+#' with the device. For virtual MFA devices, the serial number is the
+#' device ARN. For more information, see [Enabling versioning on
+#' buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/manage-versioning-examples.html)
+#' and [Configuring MFA
+#' delete](https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiFactorAuthenticationDelete.html)
+#' in the *Amazon Simple Storage Service User Guide*.
 #' @param VersioningConfiguration &#91;required&#93; Container for setting the versioning state.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
 #' provide does not match the actual owner of the bucket, the request fails
@@ -14995,6 +16170,10 @@ s3_put_bucket_versioning <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorith
 #' in the *Amazon S3 User Guide*.
 #' 
 #' The maximum request length is limited to 128 KB.
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_put_bucket_website(Bucket, ContentMD5, ChecksumAlgorithm,
@@ -15106,9 +16285,20 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 }
 .s3$operations$put_bucket_website <- s3_put_bucket_website
 
-#' Adds an object to a bucket
+#' End of support notice: As of October 1, 2025, Amazon S3 has discontinued
+#' support for Email Grantee Access Control Lists (ACLs)
 #'
 #' @description
+#' End of support notice: As of October 1, 2025, Amazon S3 has discontinued
+#' support for Email Grantee Access Control Lists (ACLs). If you attempt to
+#' use an Email Grantee ACL in a request after October 1, 2025, the request
+#' will receive an `HTTP 405` (Method Not Allowed) error.
+#' 
+#' This change affects the following Amazon Web Services Regions: US East
+#' (N. Virginia), US West (N. California), US West (Oregon), Asia Pacific
+#' (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Europe
+#' (Ireland), and South America (São Paulo).
+#' 
 #' Adds an object to a bucket.
 #' 
 #' -   Amazon S3 never adds partial objects; if you receive a success
@@ -15242,6 +16432,10 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' -   [`copy_object`][s3_copy_object]
 #' 
 #' -   [`delete_object`][s3_delete_object]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_put_object(ACL, Body, Bucket, CacheControl, ContentDisposition,
@@ -15488,7 +16682,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' Express One Zone storage class in directory buckets.
 #' @param Metadata A map of metadata to store with the object in S3.
 #' @param ServerSideEncryption The server-side encryption algorithm that was used when you store this
-#' object in Amazon S3 (for example, `AES256`, `aws:kms`, `aws:kms:dsse`).
+#' object in Amazon S3 or Amazon FSx.
 #' 
 #' -   **General purpose buckets** - You have four mutually exclusive
 #'     options to protect data using server-side encryption in Amazon S3,
@@ -15547,6 +16741,14 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'     [`upload_part_copy`][s3_upload_part_copy]), the encryption request
 #'     headers must match the default encryption configuration of the
 #'     directory bucket.
+#' 
+#' -   **S3 access points for Amazon FSx** - When accessing data stored in
+#'     Amazon FSx file systems using S3 access points, the only valid
+#'     server side encryption option is `aws:fsx`. All Amazon FSx file
+#'     systems have encryption configured by default and are encrypted at
+#'     rest. Data is automatically encrypted before being written to the
+#'     file system, and automatically decrypted as it is read. These
+#'     processes are handled transparently by Amazon FSx.
 #' @param StorageClass By default, Amazon S3 uses the STANDARD Storage Class to store newly
 #' created objects. The STANDARD storage class provides high durability and
 #' high availability. Depending on performance needs, you can specify a
@@ -15700,7 +16902,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   ChecksumSHA1 = "string",
 #'   ChecksumSHA256 = "string",
 #'   ChecksumType = "COMPOSITE"|"FULL_OBJECT",
-#'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
 #'   VersionId = "string",
 #'   SSECustomerAlgorithm = "string",
 #'   SSECustomerKeyMD5 = "string",
@@ -15731,9 +16933,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   ChecksumCRC64NVME = "string",
 #'   ChecksumSHA1 = "string",
 #'   ChecksumSHA256 = "string",
-#'   Expires = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
+#'   Expires = "string",
 #'   IfMatch = "string",
 #'   IfNoneMatch = "string",
 #'   GrantFullControl = "string",
@@ -15745,8 +16945,8 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   Metadata = list(
 #'     "string"
 #'   ),
-#'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
-#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
+#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP",
 #'   WebsiteRedirectLocation = "string",
 #'   SSECustomerAlgorithm = "string",
 #'   SSECustomerKey = "string",
@@ -15866,9 +17066,20 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 }
 .s3$operations$put_object <- s3_put_object
 
-#' This operation is not supported for directory buckets
+#' End of support notice: As of October 1, 2025, Amazon S3 has discontinued
+#' support for Email Grantee Access Control Lists (ACLs)
 #'
 #' @description
+#' End of support notice: As of October 1, 2025, Amazon S3 has discontinued
+#' support for Email Grantee Access Control Lists (ACLs). If you attempt to
+#' use an Email Grantee ACL in a request after October 1, 2025, the request
+#' will receive an `HTTP 405` (Method Not Allowed) error.
+#' 
+#' This change affects the following Amazon Web Services Regions: US East
+#' (N. Virginia), US West (N. California), US West (Oregon), Asia Pacific
+#' (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Europe
+#' (Ireland), and South America (São Paulo).
+#' 
 #' This operation is not supported for directory buckets.
 #' 
 #' Uses the `acl` subresource to set the access control list (ACL)
@@ -15967,7 +17178,11 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' ### Grantee Values
 #' 
 #' You can specify the person (grantee) to whom you're assigning access
-#' rights (using request elements) in the following ways:
+#' rights (using request elements) in the following ways. For examples of
+#' how to specify these grantee values in JSON format, see the Amazon Web
+#' Services CLI example in [Enabling Amazon S3 server access
+#' logging](https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-server-access-logging.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' -   By the person's ID:
 #' 
@@ -16022,6 +17237,10 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' -   [`copy_object`][s3_copy_object]
 #' 
 #' -   [`get_object`][s3_get_object]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_put_object_acl(ACL, AccessControlPolicy, Bucket, ContentMD5,
@@ -16202,6 +17421,10 @@ s3_put_object_acl <- function(ACL = NULL, AccessControlPolicy = NULL, Bucket, Co
 #' Objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html).
 #' 
 #' This functionality is not supported for Amazon S3 on Outposts.
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_put_object_legal_hold(Bucket, Key, LegalHold, RequestPayer,
@@ -16316,6 +17539,10 @@ s3_put_object_legal_hold <- function(Bucket, Key, LegalHold = NULL, RequestPayer
 #' -   You can enable Object Lock for new or existing buckets. For more
 #'     information, see [Configuring Object
 #'     Lock](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock-configure.html).
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_put_object_lock_configuration(Bucket, ObjectLockConfiguration,
@@ -16415,6 +17642,10 @@ s3_put_object_lock_configuration <- function(Bucket, ObjectLockConfiguration = N
 #' `s3:BypassGovernanceRetention` permission.
 #' 
 #' This functionality is not supported for Amazon S3 on Outposts.
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_put_object_retention(Bucket, Key, Retention, RequestPayer, VersionId,
@@ -16567,6 +17798,10 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 #' -   [`get_object_tagging`][s3_get_object_tagging]
 #' 
 #' -   [`delete_object_tagging`][s3_delete_object_tagging]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_put_object_tagging(Bucket, Key, VersionId, ContentMD5,
@@ -16619,7 +17854,9 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
 #' provide does not match the actual owner of the bucket, the request fails
 #' with the HTTP status code `403 Forbidden` (access denied).
-#' @param RequestPayer 
+#' @param RequestPayer Confirms that the requester knows that she or he will be charged for the
+#' tagging object request. Bucket owners need not specify this parameter in
+#' their requests.
 #'
 #' @return
 #' A list with the following syntax:
@@ -16709,9 +17946,11 @@ s3_put_object_tagging <- function(Bucket, Key, VersionId = NULL, ContentMD5 = NU
 #' When Amazon S3 evaluates the `PublicAccessBlock` configuration for a
 #' bucket or an object, it checks the `PublicAccessBlock` configuration for
 #' both the bucket (or the bucket that contains the object) and the bucket
-#' owner's account. If the `PublicAccessBlock` configurations are different
-#' between the bucket and the account, Amazon S3 uses the most restrictive
-#' combination of the bucket-level and account-level settings.
+#' owner's account. Account-level settings automatically inherit from
+#' organization-level policies when present. If the `PublicAccessBlock`
+#' configurations are different between the bucket and the account, Amazon
+#' S3 uses the most restrictive combination of the bucket-level and
+#' account-level settings.
 #' 
 #' For more information about when Amazon S3 considers a bucket or an
 #' object public, see [The Meaning of
@@ -16728,6 +17967,10 @@ s3_put_object_tagging <- function(Bucket, Key, VersionId = NULL, ContentMD5 = NU
 #' 
 #' -   [Using Amazon S3 Block Public
 #'     Access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html)
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_put_public_access_block(Bucket, ContentMD5, ChecksumAlgorithm,
@@ -16804,6 +18047,182 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
   return(response)
 }
 .s3$operations$put_public_access_block <- s3_put_public_access_block
+
+#' Renames an existing object in a directory bucket that uses the S3
+#' Express One Zone storage class
+#'
+#' @description
+#' Renames an existing object in a directory bucket that uses the S3
+#' Express One Zone storage class. You can use
+#' [`rename_object`][s3_rename_object] by specifying an existing object’s
+#' name as the source and the new name of the object as the destination
+#' within the same directory bucket.
+#' 
+#' [`rename_object`][s3_rename_object] is only supported for objects stored
+#' in the S3 Express One Zone storage class.
+#' 
+#' To prevent overwriting an object, you can use the `If-None-Match`
+#' conditional header.
+#' 
+#' -   **If-None-Match** - Renames the object only if an object with the
+#'     specified name does not already exist in the directory bucket. If
+#'     you don't want to overwrite an existing object, you can add the
+#'     `If-None-Match` conditional header with the value `‘*’` in the
+#'     [`rename_object`][s3_rename_object] request. Amazon S3 then returns
+#'     a `412 Precondition Failed` error if the object with the specified
+#'     name already exists. For more information, see [RFC
+#'     7232](https://datatracker.ietf.org/doc/rfc7232/).
+#' 
+#' ### Permissions
+#' 
+#' To grant access to the [`rename_object`][s3_rename_object] operation on
+#' a directory bucket, we recommend that you use the
+#' [`create_session`][s3_create_session] operation for session-based
+#' authorization. Specifically, you grant the `s3express:CreateSession`
+#' permission to the directory bucket in a bucket policy or an IAM
+#' identity-based policy. Then, you make the
+#' [`create_session`][s3_create_session] API call on the directory bucket
+#' to obtain a session token. With the session token in your request
+#' header, you can make API requests to this operation. After the session
+#' token expires, you make another [`create_session`][s3_create_session]
+#' API call to generate a new session token for use. The Amazon Web
+#' Services CLI and SDKs will create and manage your session including
+#' refreshing the session token automatically to avoid service
+#' interruptions when a session expires. In your bucket policy, you can
+#' specify the `s3express:SessionMode` condition key to control who can
+#' create a `ReadWrite` or `ReadOnly` session. A `ReadWrite` session is
+#' required for executing all the Zonal endpoint API operations, including
+#' [`rename_object`][s3_rename_object]. For more information about
+#' authorization, see
+#' [`create_session`](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html)
+#' . To learn more about Zonal endpoint API operations, see [Authorizing
+#' Zonal endpoint API operations with
+#' CreateSession](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-create-session.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' ### HTTP Host header syntax
+#' 
+#' **Directory buckets** - The HTTP Host header syntax is
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`.
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
+#'
+#' @usage
+#' s3_rename_object(Bucket, Key, RenameSource, DestinationIfMatch,
+#'   DestinationIfNoneMatch, DestinationIfModifiedSince,
+#'   DestinationIfUnmodifiedSince, SourceIfMatch, SourceIfNoneMatch,
+#'   SourceIfModifiedSince, SourceIfUnmodifiedSince, ClientToken)
+#'
+#' @param Bucket &#91;required&#93; The bucket name of the directory bucket containing the object.
+#' 
+#' You must use virtual-hosted-style requests in the format
+#' `Bucket-name.s3express-zone-id.region-code.amazonaws.com`. Path-style
+#' requests are not supported. Directory bucket names must be unique in the
+#' chosen Availability Zone. Bucket names must follow the format
+#' `bucket-base-name--zone-id--x-s3 ` (for example,
+#' `amzn-s3-demo-bucket--usw2-az1--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*.
+#' @param Key &#91;required&#93; Key name of the object to rename.
+#' @param RenameSource &#91;required&#93; Specifies the source for the rename operation. The value must be URL
+#' encoded.
+#' @param DestinationIfMatch Renames the object only if the ETag (entity tag) value provided during
+#' the operation matches the ETag of the object in S3. The `If-Match`
+#' header field makes the request method conditional on ETags. If the ETag
+#' values do not match, the operation returns a `412 Precondition Failed`
+#' error.
+#' 
+#' Expects the ETag value as a string.
+#' @param DestinationIfNoneMatch Renames the object only if the destination does not already exist in the
+#' specified directory bucket. If the object does exist when you send a
+#' request with `If-None-Match:*`, the S3 API will return a
+#' `412 Precondition Failed` error, preventing an overwrite. The
+#' `If-None-Match` header prevents overwrites of existing data by
+#' validating that there's not an object with the same key name already in
+#' your directory bucket.
+#' 
+#' Expects the `*` character (asterisk).
+#' @param DestinationIfModifiedSince Renames the object if the destination exists and if it has been modified
+#' since the specified time.
+#' @param DestinationIfUnmodifiedSince Renames the object if it hasn't been modified since the specified time.
+#' @param SourceIfMatch Renames the object if the source exists and if its entity tag (ETag)
+#' matches the specified ETag.
+#' @param SourceIfNoneMatch Renames the object if the source exists and if its entity tag (ETag) is
+#' different than the specified ETag. If an asterisk (`*`) character is
+#' provided, the operation will fail and return a `412 Precondition Failed`
+#' error.
+#' @param SourceIfModifiedSince Renames the object if the source exists and if it has been modified
+#' since the specified time.
+#' @param SourceIfUnmodifiedSince Renames the object if the source exists and hasn't been modified since
+#' the specified time.
+#' @param ClientToken A unique string with a max of 64 ASCII characters in the ASCII range of
+#' 33 - 126.
+#' 
+#' [`rename_object`][s3_rename_object] supports idempotency using a client
+#' token. To make an idempotent API request using
+#' [`rename_object`][s3_rename_object], specify a client token in the
+#' request. You should not reuse the same client token for other API
+#' requests. If you retry a request that completed successfully using the
+#' same client token and the same parameters, the retry succeeds without
+#' performing any further actions. If you retry a successful request using
+#' the same client token, but one or more of the parameters are different,
+#' the retry fails and an `IdempotentParameterMismatch` error is returned.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$rename_object(
+#'   Bucket = "string",
+#'   Key = "string",
+#'   RenameSource = "string",
+#'   DestinationIfMatch = "string",
+#'   DestinationIfNoneMatch = "string",
+#'   DestinationIfModifiedSince = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DestinationIfUnmodifiedSince = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SourceIfMatch = "string",
+#'   SourceIfNoneMatch = "string",
+#'   SourceIfModifiedSince = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SourceIfUnmodifiedSince = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3_rename_object
+#'
+#' @aliases s3_rename_object
+s3_rename_object <- function(Bucket, Key, RenameSource, DestinationIfMatch = NULL, DestinationIfNoneMatch = NULL, DestinationIfModifiedSince = NULL, DestinationIfUnmodifiedSince = NULL, SourceIfMatch = NULL, SourceIfNoneMatch = NULL, SourceIfModifiedSince = NULL, SourceIfUnmodifiedSince = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "RenameObject",
+    http_method = "PUT",
+    http_path = "/{Bucket}/{Key+}?renameObject",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3$rename_object_input(Bucket = Bucket, Key = Key, RenameSource = RenameSource, DestinationIfMatch = DestinationIfMatch, DestinationIfNoneMatch = DestinationIfNoneMatch, DestinationIfModifiedSince = DestinationIfModifiedSince, DestinationIfUnmodifiedSince = DestinationIfUnmodifiedSince, SourceIfMatch = SourceIfMatch, SourceIfNoneMatch = SourceIfNoneMatch, SourceIfModifiedSince = SourceIfModifiedSince, SourceIfUnmodifiedSince = SourceIfUnmodifiedSince, ClientToken = ClientToken)
+  output <- .s3$rename_object_output()
+  config <- get_config()
+  svc <- .s3$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3$operations$rename_object <- s3_rename_object
 
 #' This operation is not supported for directory buckets
 #'
@@ -16973,6 +18392,10 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' -   [`put_bucket_lifecycle_configuration`][s3_put_bucket_lifecycle_configuration]
 #' 
 #' -   [`get_bucket_notification_configuration`][s3_get_bucket_notification_configuration]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_restore_object(Bucket, Key, VersionId, RestoreRequest, RequestPayer,
@@ -17082,7 +18505,7 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #'         BucketName = "string",
 #'         Prefix = "string",
 #'         Encryption = list(
-#'           EncryptionType = "AES256"|"aws:kms"|"aws:kms:dsse",
+#'           EncryptionType = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
 #'           KMSKeyId = "string",
 #'           KMSContext = "string"
 #'         ),
@@ -17113,7 +18536,7 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #'             Value = "string"
 #'           )
 #'         ),
-#'         StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"
+#'         StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP"
 #'       )
 #'     )
 #'   ),
@@ -17273,6 +18696,10 @@ s3_restore_object <- function(Bucket, Key, VersionId = NULL, RestoreRequest = NU
 #' -   [`get_bucket_lifecycle_configuration`][s3_get_bucket_lifecycle_configuration]
 #' 
 #' -   [`put_bucket_lifecycle_configuration`][s3_put_bucket_lifecycle_configuration]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_select_object_content(Bucket, Key, SSECustomerAlgorithm,
@@ -17426,6 +18853,210 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 }
 .s3$operations$select_object_content <- s3_select_object_content
 
+#' Enables or disables a live inventory table for an S3 Metadata
+#' configuration on a general purpose bucket
+#'
+#' @description
+#' Enables or disables a live inventory table for an S3 Metadata
+#' configuration on a general purpose bucket. For more information, see
+#' [Accelerating data discovery with S3
+#' Metadata](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-overview.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' ### Permissions
+#' 
+#' To use this operation, you must have the following permissions. For more
+#' information, see [Setting up permissions for configuring metadata
+#' tables](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-permissions.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' If you want to encrypt your inventory table with server-side encryption
+#' with Key Management Service (KMS) keys (SSE-KMS), you need additional
+#' permissions in your KMS key policy. For more information, see [Setting
+#' up permissions for configuring metadata
+#' tables](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-permissions.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' -   `s3:UpdateBucketMetadataInventoryTableConfiguration`
+#' 
+#' -   `s3tables:CreateTableBucket`
+#' 
+#' -   `s3tables:CreateNamespace`
+#' 
+#' -   `s3tables:GetTable`
+#' 
+#' -   `s3tables:CreateTable`
+#' 
+#' -   `s3tables:PutTablePolicy`
+#' 
+#' -   `s3tables:PutTableEncryption`
+#' 
+#' -   `kms:DescribeKey`
+#' 
+#' The following operations are related to
+#' [`update_bucket_metadata_inventory_table_configuration`][s3_update_bucket_metadata_inventory_table_configuration]:
+#' 
+#' -   [`create_bucket_metadata_configuration`][s3_create_bucket_metadata_configuration]
+#' 
+#' -   [`delete_bucket_metadata_configuration`][s3_delete_bucket_metadata_configuration]
+#' 
+#' -   [`get_bucket_metadata_configuration`][s3_get_bucket_metadata_configuration]
+#' 
+#' -   [`update_bucket_metadata_journal_table_configuration`][s3_update_bucket_metadata_journal_table_configuration]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
+#'
+#' @usage
+#' s3_update_bucket_metadata_inventory_table_configuration(Bucket,
+#'   ContentMD5, ChecksumAlgorithm, InventoryTableConfiguration,
+#'   ExpectedBucketOwner)
+#'
+#' @param Bucket &#91;required&#93; The general purpose bucket that corresponds to the metadata
+#' configuration that you want to enable or disable an inventory table for.
+#' @param ContentMD5 The `Content-MD5` header for the inventory table configuration.
+#' @param ChecksumAlgorithm The checksum algorithm to use with your inventory table configuration.
+#' @param InventoryTableConfiguration &#91;required&#93; The contents of your inventory table configuration.
+#' @param ExpectedBucketOwner The expected owner of the general purpose bucket that corresponds to the
+#' metadata table configuration that you want to enable or disable an
+#' inventory table for.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_bucket_metadata_inventory_table_configuration(
+#'   Bucket = "string",
+#'   ContentMD5 = "string",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   InventoryTableConfiguration = list(
+#'     ConfigurationState = "ENABLED"|"DISABLED",
+#'     EncryptionConfiguration = list(
+#'       SseAlgorithm = "aws:kms"|"AES256",
+#'       KmsKeyArn = "string"
+#'     )
+#'   ),
+#'   ExpectedBucketOwner = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3_update_bucket_metadata_inventory_table_configuration
+#'
+#' @aliases s3_update_bucket_metadata_inventory_table_configuration
+s3_update_bucket_metadata_inventory_table_configuration <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = NULL, InventoryTableConfiguration, ExpectedBucketOwner = NULL) {
+  op <- new_operation(
+    name = "UpdateBucketMetadataInventoryTableConfiguration",
+    http_method = "PUT",
+    http_path = "/{Bucket}?metadataInventoryTable",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3$update_bucket_metadata_inventory_table_configuration_input(Bucket = Bucket, ContentMD5 = ContentMD5, ChecksumAlgorithm = ChecksumAlgorithm, InventoryTableConfiguration = InventoryTableConfiguration, ExpectedBucketOwner = ExpectedBucketOwner)
+  output <- .s3$update_bucket_metadata_inventory_table_configuration_output()
+  config <- get_config()
+  svc <- .s3$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3$operations$update_bucket_metadata_inventory_table_configuration <- s3_update_bucket_metadata_inventory_table_configuration
+
+#' Enables or disables journal table record expiration for an S3 Metadata
+#' configuration on a general purpose bucket
+#'
+#' @description
+#' Enables or disables journal table record expiration for an S3 Metadata
+#' configuration on a general purpose bucket. For more information, see
+#' [Accelerating data discovery with S3
+#' Metadata](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-overview.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' ### Permissions
+#' 
+#' To use this operation, you must have the
+#' `s3:UpdateBucketMetadataJournalTableConfiguration` permission. For more
+#' information, see [Setting up permissions for configuring metadata
+#' tables](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-permissions.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' The following operations are related to
+#' [`update_bucket_metadata_journal_table_configuration`][s3_update_bucket_metadata_journal_table_configuration]:
+#' 
+#' -   [`create_bucket_metadata_configuration`][s3_create_bucket_metadata_configuration]
+#' 
+#' -   [`delete_bucket_metadata_configuration`][s3_delete_bucket_metadata_configuration]
+#' 
+#' -   [`get_bucket_metadata_configuration`][s3_get_bucket_metadata_configuration]
+#' 
+#' -   [`update_bucket_metadata_inventory_table_configuration`][s3_update_bucket_metadata_inventory_table_configuration]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
+#'
+#' @usage
+#' s3_update_bucket_metadata_journal_table_configuration(Bucket,
+#'   ContentMD5, ChecksumAlgorithm, JournalTableConfiguration,
+#'   ExpectedBucketOwner)
+#'
+#' @param Bucket &#91;required&#93; The general purpose bucket that corresponds to the metadata
+#' configuration that you want to enable or disable journal table record
+#' expiration for.
+#' @param ContentMD5 The `Content-MD5` header for the journal table configuration.
+#' @param ChecksumAlgorithm The checksum algorithm to use with your journal table configuration.
+#' @param JournalTableConfiguration &#91;required&#93; The contents of your journal table configuration.
+#' @param ExpectedBucketOwner The expected owner of the general purpose bucket that corresponds to the
+#' metadata table configuration that you want to enable or disable journal
+#' table record expiration for.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_bucket_metadata_journal_table_configuration(
+#'   Bucket = "string",
+#'   ContentMD5 = "string",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME",
+#'   JournalTableConfiguration = list(
+#'     RecordExpiration = list(
+#'       Expiration = "ENABLED"|"DISABLED",
+#'       Days = 123
+#'     )
+#'   ),
+#'   ExpectedBucketOwner = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3_update_bucket_metadata_journal_table_configuration
+#'
+#' @aliases s3_update_bucket_metadata_journal_table_configuration
+s3_update_bucket_metadata_journal_table_configuration <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = NULL, JournalTableConfiguration, ExpectedBucketOwner = NULL) {
+  op <- new_operation(
+    name = "UpdateBucketMetadataJournalTableConfiguration",
+    http_method = "PUT",
+    http_path = "/{Bucket}?metadataJournalTable",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3$update_bucket_metadata_journal_table_configuration_input(Bucket = Bucket, ContentMD5 = ContentMD5, ChecksumAlgorithm = ChecksumAlgorithm, JournalTableConfiguration = JournalTableConfiguration, ExpectedBucketOwner = ExpectedBucketOwner)
+  output <- .s3$update_bucket_metadata_journal_table_configuration_output()
+  config <- get_config()
+  svc <- .s3$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3$operations$update_bucket_metadata_journal_table_configuration <- s3_update_bucket_metadata_journal_table_configuration
+
 #' Uploads a part in a multipart upload
 #'
 #' @description
@@ -17562,6 +19193,13 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #'     request. For more information, see
 #'     [`create_multipart_upload`][s3_create_multipart_upload].
 #' 
+#'     If you have server-side encryption with customer-provided keys
+#'     (SSE-C) blocked for your general purpose bucket, you will get an
+#'     HTTP 403 Access Denied error when you specify the SSE-C request
+#'     headers while writing new data to your bucket. For more information,
+#'     see [Blocking or unblocking SSE-C for a general purpose
+#'     bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/blocking-unblocking-s3-c-encryption-gpb.html).
+#' 
 #'     If you request server-side encryption using a customer-provided
 #'     encryption key (SSE-C) in your initiate multipart upload request,
 #'     you must provide identical encryption information in each part
@@ -17610,6 +19248,10 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' -   [`list_parts`][s3_list_parts]
 #' 
 #' -   [`list_multipart_uploads`][s3_list_multipart_uploads]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_upload_part(Body, Bucket, ContentLength, ContentMD5,
@@ -17740,7 +19382,7 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
 #'   ETag = "string",
 #'   ChecksumCRC32 = "string",
 #'   ChecksumCRC32C = "string",
@@ -17954,6 +19596,13 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #'     the [`upload_part_copy`][s3_upload_part_copy] operation, see
 #'     [`copy_object`][s3_copy_object] and [`upload_part`][s3_upload_part].
 #' 
+#'     If you have server-side encryption with customer-provided keys
+#'     (SSE-C) blocked for your general purpose bucket, you will get an
+#'     HTTP 403 Access Denied error when you specify the SSE-C request
+#'     headers while writing new data to your bucket. For more information,
+#'     see [Blocking or unblocking SSE-C for a general purpose
+#'     bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/blocking-unblocking-s3-c-encryption-gpb.html).
+#' 
 #' -   **Directory buckets** - For directory buckets, there are only two
 #'     supported options for server-side encryption: server-side encryption
 #'     with Amazon S3 managed keys (SSE-S3) (`AES256`) and server-side
@@ -18013,6 +19662,10 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' -   [`list_parts`][s3_list_parts]
 #' 
 #' -   [`list_multipart_uploads`][s3_list_multipart_uploads]
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_upload_part_copy(Bucket, CopySource, CopySourceIfMatch,
@@ -18239,7 +19892,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #'     ChecksumSHA1 = "string",
 #'     ChecksumSHA256 = "string"
 #'   ),
-#'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
 #'   SSECustomerAlgorithm = "string",
 #'   SSECustomerKeyMD5 = "string",
 #'   SSEKMSKeyId = "string",
@@ -18384,6 +20037,10 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #' Amazon Web Services built Lambda
 #' functions](https://docs.aws.amazon.com/AmazonS3/latest/userguide/olap-examples.html)
 #' in the *Amazon S3 User Guide*.
+#' 
+#' You must URL encode any signed header values that contain spaces. For
+#' example, if your header value is `my file.txt`, containing two spaces
+#' after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
 #' @usage
 #' s3_write_get_object_response(RequestRoute, RequestToken, Body,
@@ -18544,7 +20201,10 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #' @param Restore Provides information about object restoration operation and expiration
 #' time of the restored object copy.
 #' @param ServerSideEncryption The server-side encryption algorithm used when storing requested object
-#' in Amazon S3 (for example, AES256, `aws:kms`).
+#' in Amazon S3 or Amazon FSx.
+#' 
+#' When accessing data stored in Amazon FSx file systems using S3 access
+#' points, the only valid server side encryption option is `aws:fsx`.
 #' @param SSECustomerAlgorithm Encryption algorithm used if server-side encryption with a
 #' customer-provided encryption key was specified for object stored in
 #' Amazon S3.
@@ -18593,9 +20253,7 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #'   ChecksumSHA256 = "string",
 #'   DeleteMarker = TRUE|FALSE,
 #'   ETag = "string",
-#'   Expires = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
+#'   Expires = "string",
 #'   Expiration = "string",
 #'   LastModified = as.POSIXct(
 #'     "2015-01-01"
@@ -18613,11 +20271,11 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #'   ReplicationStatus = "COMPLETE"|"PENDING"|"FAILED"|"REPLICA"|"COMPLETED",
 #'   RequestCharged = "requester",
 #'   Restore = "string",
-#'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
+#'   ServerSideEncryption = "AES256"|"aws:fsx"|"aws:kms"|"aws:kms:dsse",
 #'   SSECustomerAlgorithm = "string",
 #'   SSEKMSKeyId = "string",
 #'   SSECustomerKeyMD5 = "string",
-#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE",
+#'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE"|"FSX_OPENZFS"|"FSX_ONTAP",
 #'   TagCount = 123,
 #'   VersionId = "string",
 #'   BucketKeyEnabled = TRUE|FALSE

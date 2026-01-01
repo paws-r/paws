@@ -2,7 +2,8 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_create_multipart_upload}
 \alias{s3_create_multipart_upload}
-\title{This action initiates a multipart upload and returns an upload ID}
+\title{End of support notice: As of October 1, 2025, Amazon S3 has discontinued
+support for Email Grantee Access Control Lists (ACLs)}
 \usage{
 s3_create_multipart_upload(
   ACL = NULL,
@@ -304,7 +305,7 @@ object data and its metadata:
 \item{Metadata}{A map of metadata to store with the object in S3.}
 
 \item{ServerSideEncryption}{The server-side encryption algorithm used when you store this object in
-Amazon S3 (for example, \code{AES256}, \code{aws:kms}).
+Amazon S3 or Amazon FSx.
 \itemize{
 \item \strong{Directory buckets} - For directory buckets, there are only two
 supported options for server-side encryption: server-side encryption
@@ -348,6 +349,13 @@ endpoint API calls (except \code{\link[=s3_copy_object]{copy_object}} and
 \code{\link[=s3_upload_part_copy]{upload_part_copy}}), the encryption request
 headers must match the default encryption configuration of the
 directory bucket.
+\item \strong{S3 access points for Amazon FSx} - When accessing data stored in
+Amazon FSx file systems using S3 access points, the only valid
+server side encryption option is \code{aws:fsx}. All Amazon FSx file
+systems have encryption configured by default and are encrypted at
+rest. Data is automatically encrypted before being written to the
+file system, and automatically decrypted as it is read. These
+processes are handled transparently by Amazon FSx.
 }}
 
 \item{StorageClass}{By default, Amazon S3 uses the STANDARD Storage Class to store newly
@@ -475,7 +483,7 @@ in the \emph{Amazon S3 User Guide}.}
 the object’s checksum value. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity in the Amazon S3 User Guide}.}
 }
 \description{
-This action initiates a multipart upload and returns an upload ID. This upload ID is used to associate all of the parts in the specific multipart upload. You specify this upload ID in each of your subsequent upload part requests (see \code{\link[=s3_upload_part]{upload_part}}). You also include this upload ID in the final request to either complete or abort the multipart upload request. For more information about multipart uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Multipart Upload Overview} in the \emph{Amazon S3 User Guide}.
+End of support notice: As of October 1, 2025, Amazon S3 has discontinued support for Email Grantee Access Control Lists (ACLs). If you attempt to use an Email Grantee ACL in a request after October 1, 2025, the request will receive an \verb{HTTP 405} (Method Not Allowed) error.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_create_multipart_upload/} for full documentation.
 }

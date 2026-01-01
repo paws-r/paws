@@ -348,7 +348,7 @@ storagegateway_associate_file_system <- function(UserName, Password, ClientToken
 #' @param VolumeARN &#91;required&#93; The Amazon Resource Name (ARN) of the volume to attach to the specified
 #' gateway.
 #' @param NetworkInterfaceId &#91;required&#93; The network interface of the gateway on which to expose the iSCSI
-#' target. Only IPv4 addresses are accepted. Use
+#' target. Accepts IPv4 and IPv6 addresses. Use
 #' [`describe_gateway_information`][storagegateway_describe_gateway_information]
 #' to get a list of the network interfaces available on a gateway.
 #' 
@@ -506,7 +506,7 @@ storagegateway_cancel_retrieval <- function(GatewayARN, TapeARN) {
 #' point. The `VolumeSizeInBytes` value for this new volume must be equal
 #' to or larger than the size of the existing volume, in bytes.
 #' @param NetworkInterfaceId &#91;required&#93; The network interface of the gateway on which to expose the iSCSI
-#' target. Only IPv4 addresses are accepted. Use
+#' target. Accepts IPv4 and IPv6 addresses. Use
 #' [`describe_gateway_information`][storagegateway_describe_gateway_information]
 #' to get a list of the network interfaces available on a gateway.
 #' 
@@ -633,7 +633,7 @@ storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBy
 #' in the S3 bucket that a S3 File Gateway puts objects into. The default
 #' value is `private`.
 #' @param ClientList The list of clients that are allowed to access the S3 File Gateway. The
-#' list must contain either valid IP addresses or valid CIDR blocks.
+#' list must contain either valid IPv4/IPv6 addresses or valid CIDR blocks.
 #' @param Squash A value that maps a user to anonymous user.
 #' 
 #' Valid values are the following:
@@ -1068,7 +1068,7 @@ storagegateway_create_snapshot_from_volume_recovery_point <- function(VolumeARN,
 #' If you don't specify a value, Storage Gateway uses the value that was
 #' previously used for this volume as the new target name.
 #' @param NetworkInterfaceId &#91;required&#93; The network interface of the gateway on which to expose the iSCSI
-#' target. Only IPv4 addresses are accepted. Use
+#' target. Accepts IPv4 and IPv6 addresses. Use
 #' [`describe_gateway_information`][storagegateway_describe_gateway_information]
 #' to get a list of the network interfaces available on a gateway.
 #' 
@@ -2549,9 +2549,14 @@ storagegateway_evict_files_failing_upload <- function(FileShareARN, ForceRemove 
 #' @param OrganizationalUnit The organizational unit (OU) is a container in an Active Directory that
 #' can hold users, groups, computers, and other OUs and this parameter
 #' specifies the OU that the gateway will join within the AD domain.
-#' @param DomainControllers List of IPv4 addresses, NetBIOS names, or host names of your domain
+#' @param DomainControllers List of IP addresses, NetBIOS names, or host names of your domain
 #' server. If you need to specify the port number include it after the
 #' colon (“:”). For example, `mydc.mydomain.com:389`.
+#' 
+#' S3 File Gateway supports IPv6 addresses in addition to IPv4 and other
+#' existing formats.
+#' 
+#' FSx File Gateway does not support IPv6.
 #' @param TimeoutInSeconds Specifies the time in seconds, in which the
 #' [`join_domain`][storagegateway_join_domain] operation must complete. The
 #' default is 20 seconds.
@@ -3812,7 +3817,7 @@ storagegateway_update_maintenance_start_time <- function(GatewayARN, HourOfDay =
 #' in the S3 bucket that a S3 File Gateway puts objects into. The default
 #' value is `private`.
 #' @param ClientList The list of clients that are allowed to access the S3 File Gateway. The
-#' list must contain either valid IP addresses or valid CIDR blocks.
+#' list must contain either valid IPv4/IPv6 addresses or valid CIDR blocks.
 #' @param Squash The user mapped to anonymous user.
 #' 
 #' Valid values are the following:

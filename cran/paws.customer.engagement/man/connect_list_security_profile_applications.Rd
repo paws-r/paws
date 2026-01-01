@@ -2,8 +2,8 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_list_security_profile_applications}
 \alias{connect_list_security_profile_applications}
-\title{Returns a list of third-party applications in a specific security
-profile}
+\title{Returns a list of third-party applications or MCP Servers in a specific
+security profile}
 \usage{
 connect_list_security_profile_applications(
   SecurityProfileId,
@@ -25,7 +25,7 @@ results.}
 \item{MaxResults}{The maximum number of results to return per page.}
 }
 \description{
-Returns a list of third-party applications in a specific security profile.
+Returns a list of third-party applications or MCP Servers in a specific security profile.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_list_security_profile_applications/} for full documentation.
 }

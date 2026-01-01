@@ -36,6 +36,72 @@ inspector2_associate_member <- function(accountId) {
 }
 .inspector2$operations$associate_member <- inspector2_associate_member
 
+#' Associates multiple code repositories with an Amazon Inspector code
+#' security scan configuration
+#'
+#' @description
+#' Associates multiple code repositories with an Amazon Inspector code security scan configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_batch_associate_code_security_scan_configuration/](https://www.paws-r-sdk.com/docs/inspector2_batch_associate_code_security_scan_configuration/) for full documentation.
+#'
+#' @param associateConfigurationRequests &#91;required&#93; A list of code repositories to associate with the specified scan
+#' configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_batch_associate_code_security_scan_configuration
+inspector2_batch_associate_code_security_scan_configuration <- function(associateConfigurationRequests) {
+  op <- new_operation(
+    name = "BatchAssociateCodeSecurityScanConfiguration",
+    http_method = "POST",
+    http_path = "/codesecurity/scan-configuration/batch/associate",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$batch_associate_code_security_scan_configuration_input(associateConfigurationRequests = associateConfigurationRequests)
+  output <- .inspector2$batch_associate_code_security_scan_configuration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$batch_associate_code_security_scan_configuration <- inspector2_batch_associate_code_security_scan_configuration
+
+#' Disassociates multiple code repositories from an Amazon Inspector code
+#' security scan configuration
+#'
+#' @description
+#' Disassociates multiple code repositories from an Amazon Inspector code security scan configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_batch_disassociate_code_security_scan_configuration/](https://www.paws-r-sdk.com/docs/inspector2_batch_disassociate_code_security_scan_configuration/) for full documentation.
+#'
+#' @param disassociateConfigurationRequests &#91;required&#93; A list of code repositories to disassociate from the specified scan
+#' configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_batch_disass_code_securi_scan_config
+inspector2_batch_disassociate_code_security_scan_configuration <- function(disassociateConfigurationRequests) {
+  op <- new_operation(
+    name = "BatchDisassociateCodeSecurityScanConfiguration",
+    http_method = "POST",
+    http_path = "/codesecurity/scan-configuration/batch/disassociate",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$batch_disassociate_code_security_scan_configuration_input(disassociateConfigurationRequests = disassociateConfigurationRequests)
+  output <- .inspector2$batch_disassociate_code_security_scan_configuration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$batch_disassociate_code_security_scan_configuration <- inspector2_batch_disassociate_code_security_scan_configuration
+
 #' Retrieves the Amazon Inspector status of multiple Amazon Web Services
 #' accounts within your environment
 #'
@@ -174,8 +240,6 @@ inspector2_batch_get_free_trial_info <- function(accountIds) {
 #'
 #' @param accountIds The unique identifiers for the Amazon Web Services accounts to retrieve
 #' Amazon Inspector deep inspection activation status for.
-#' 
-#'      </p> 
 #'
 #' @keywords internal
 #'
@@ -302,16 +366,16 @@ inspector2_cancel_sbom_export <- function(reportId) {
 #' See [https://www.paws-r-sdk.com/docs/inspector2_create_cis_scan_configuration/](https://www.paws-r-sdk.com/docs/inspector2_create_cis_scan_configuration/) for full documentation.
 #'
 #' @param scanName &#91;required&#93; The scan name for the CIS scan configuration.
-#' @param schedule &#91;required&#93; The schedule for the CIS scan configuration.
 #' @param securityLevel &#91;required&#93; The security level for the CIS scan configuration. Security level refers
 #' to the Benchmark levels that CIS assigns to a profile.
-#' @param tags The tags for the CIS scan configuration.
+#' @param schedule &#91;required&#93; The schedule for the CIS scan configuration.
 #' @param targets &#91;required&#93; The targets for the CIS scan configuration.
+#' @param tags The tags for the CIS scan configuration.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_create_cis_scan_configuration
-inspector2_create_cis_scan_configuration <- function(scanName, schedule, securityLevel, tags = NULL, targets) {
+inspector2_create_cis_scan_configuration <- function(scanName, securityLevel, schedule, targets, tags = NULL) {
   op <- new_operation(
     name = "CreateCisScanConfiguration",
     http_method = "POST",
@@ -320,7 +384,7 @@ inspector2_create_cis_scan_configuration <- function(scanName, schedule, securit
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$create_cis_scan_configuration_input(scanName = scanName, schedule = schedule, securityLevel = securityLevel, tags = tags, targets = targets)
+  input <- .inspector2$create_cis_scan_configuration_input(scanName = scanName, securityLevel = securityLevel, schedule = schedule, targets = targets, tags = tags)
   output <- .inspector2$create_cis_scan_configuration_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -329,6 +393,83 @@ inspector2_create_cis_scan_configuration <- function(scanName, schedule, securit
   return(response)
 }
 .inspector2$operations$create_cis_scan_configuration <- inspector2_create_cis_scan_configuration
+
+#' Creates a code security integration with a source code repository
+#' provider
+#'
+#' @description
+#' Creates a code security integration with a source code repository provider.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_create_code_security_integration/](https://www.paws-r-sdk.com/docs/inspector2_create_code_security_integration/) for full documentation.
+#'
+#' @param name &#91;required&#93; The name of the code security integration.
+#' @param type &#91;required&#93; The type of repository provider for the integration.
+#' @param details The integration details specific to the repository provider type.
+#' @param tags The tags to apply to the code security integration.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_create_code_security_integration
+inspector2_create_code_security_integration <- function(name, type, details = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateCodeSecurityIntegration",
+    http_method = "POST",
+    http_path = "/codesecurity/integration/create",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$create_code_security_integration_input(name = name, type = type, details = details, tags = tags)
+  output <- .inspector2$create_code_security_integration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$create_code_security_integration <- inspector2_create_code_security_integration
+
+#' Creates a scan configuration for code security scanning
+#'
+#' @description
+#' Creates a scan configuration for code security scanning.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_create_code_security_scan_configuration/](https://www.paws-r-sdk.com/docs/inspector2_create_code_security_scan_configuration/) for full documentation.
+#'
+#' @param name &#91;required&#93; The name of the scan configuration.
+#' @param level &#91;required&#93; The security level for the scan configuration.
+#' @param configuration &#91;required&#93; The configuration settings for the code security scan.
+#' @param scopeSettings The scope settings that define which repositories will be scanned.
+#' Include this parameter to create a default scan configuration. Otherwise
+#' Amazon Inspector creates a general scan configuration.
+#' 
+#' A default scan configuration automatically applies to all existing and
+#' future projects imported into Amazon Inspector. Use the
+#' [`batch_associate_code_security_scan_configuration`][inspector2_batch_associate_code_security_scan_configuration]
+#' operation to associate a general scan configuration with projects.
+#' @param tags The tags to apply to the scan configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_create_code_security_scan_configuration
+inspector2_create_code_security_scan_configuration <- function(name, level, configuration, scopeSettings = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateCodeSecurityScanConfiguration",
+    http_method = "POST",
+    http_path = "/codesecurity/scan-configuration/create",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$create_code_security_scan_configuration_input(name = name, level = level, configuration = configuration, scopeSettings = scopeSettings, tags = tags)
+  output <- .inspector2$create_code_security_scan_configuration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$create_code_security_scan_configuration <- inspector2_create_code_security_scan_configuration
 
 #' Creates a filter resource using specified filter criteria
 #'
@@ -344,13 +485,13 @@ inspector2_create_cis_scan_configuration <- function(scanName, schedule, securit
 #' @param name &#91;required&#93; The name of the filter. Minimum length of 3. Maximum length of 64. Valid
 #' characters include alphanumeric characters, dot (.), underscore (_),
 #' and dash (-). Spaces are not allowed.
-#' @param reason The reason for creating the filter.
 #' @param tags A list of tags for the filter.
+#' @param reason The reason for creating the filter.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_create_filter
-inspector2_create_filter <- function(action, description = NULL, filterCriteria, name, reason = NULL, tags = NULL) {
+inspector2_create_filter <- function(action, description = NULL, filterCriteria, name, tags = NULL, reason = NULL) {
   op <- new_operation(
     name = "CreateFilter",
     http_method = "POST",
@@ -359,7 +500,7 @@ inspector2_create_filter <- function(action, description = NULL, filterCriteria,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$create_filter_input(action = action, description = description, filterCriteria = filterCriteria, name = name, reason = reason, tags = tags)
+  input <- .inspector2$create_filter_input(action = action, description = description, filterCriteria = filterCriteria, name = name, tags = tags, reason = reason)
   output <- .inspector2$create_filter_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -409,16 +550,16 @@ inspector2_create_findings_report <- function(filterCriteria = NULL, reportForma
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_create_sbom_export/](https://www.paws-r-sdk.com/docs/inspector2_create_sbom_export/) for full documentation.
 #'
-#' @param reportFormat &#91;required&#93; The output format for the software bill of materials (SBOM) report.
 #' @param resourceFilterCriteria The resource filter criteria for the software bill of materials (SBOM)
 #' report.
+#' @param reportFormat &#91;required&#93; The output format for the software bill of materials (SBOM) report.
 #' @param s3Destination &#91;required&#93; Contains details of the Amazon S3 bucket and KMS key used to export
 #' findings.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_create_sbom_export
-inspector2_create_sbom_export <- function(reportFormat, resourceFilterCriteria = NULL, s3Destination) {
+inspector2_create_sbom_export <- function(resourceFilterCriteria = NULL, reportFormat, s3Destination) {
   op <- new_operation(
     name = "CreateSbomExport",
     http_method = "POST",
@@ -427,7 +568,7 @@ inspector2_create_sbom_export <- function(reportFormat, resourceFilterCriteria =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$create_sbom_export_input(reportFormat = reportFormat, resourceFilterCriteria = resourceFilterCriteria, s3Destination = s3Destination)
+  input <- .inspector2$create_sbom_export_input(resourceFilterCriteria = resourceFilterCriteria, reportFormat = reportFormat, s3Destination = s3Destination)
   output <- .inspector2$create_sbom_export_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -467,6 +608,69 @@ inspector2_delete_cis_scan_configuration <- function(scanConfigurationArn) {
   return(response)
 }
 .inspector2$operations$delete_cis_scan_configuration <- inspector2_delete_cis_scan_configuration
+
+#' Deletes a code security integration
+#'
+#' @description
+#' Deletes a code security integration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_delete_code_security_integration/](https://www.paws-r-sdk.com/docs/inspector2_delete_code_security_integration/) for full documentation.
+#'
+#' @param integrationArn &#91;required&#93; The Amazon Resource Name (ARN) of the code security integration to
+#' delete.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_delete_code_security_integration
+inspector2_delete_code_security_integration <- function(integrationArn) {
+  op <- new_operation(
+    name = "DeleteCodeSecurityIntegration",
+    http_method = "POST",
+    http_path = "/codesecurity/integration/delete",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$delete_code_security_integration_input(integrationArn = integrationArn)
+  output <- .inspector2$delete_code_security_integration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$delete_code_security_integration <- inspector2_delete_code_security_integration
+
+#' Deletes a code security scan configuration
+#'
+#' @description
+#' Deletes a code security scan configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_delete_code_security_scan_configuration/](https://www.paws-r-sdk.com/docs/inspector2_delete_code_security_scan_configuration/) for full documentation.
+#'
+#' @param scanConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the scan configuration to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_delete_code_security_scan_configuration
+inspector2_delete_code_security_scan_configuration <- function(scanConfigurationArn) {
+  op <- new_operation(
+    name = "DeleteCodeSecurityScanConfiguration",
+    http_method = "POST",
+    http_path = "/codesecurity/scan-configuration/delete",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$delete_code_security_scan_configuration_input(scanConfigurationArn = scanConfigurationArn)
+  output <- .inspector2$delete_code_security_scan_configuration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$delete_code_security_scan_configuration <- inspector2_delete_code_security_scan_configuration
 
 #' Deletes a filter resource
 #'
@@ -639,13 +843,13 @@ inspector2_disassociate_member <- function(accountId) {
 #' See [https://www.paws-r-sdk.com/docs/inspector2_enable/](https://www.paws-r-sdk.com/docs/inspector2_enable/) for full documentation.
 #'
 #' @param accountIds A list of account IDs you want to enable Amazon Inspector scans for.
-#' @param clientToken The idempotency token for the request.
 #' @param resourceTypes &#91;required&#93; The resource scan types you want to enable.
+#' @param clientToken The idempotency token for the request.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_enable
-inspector2_enable <- function(accountIds = NULL, clientToken = NULL, resourceTypes) {
+inspector2_enable <- function(accountIds = NULL, resourceTypes, clientToken = NULL) {
   op <- new_operation(
     name = "Enable",
     http_method = "POST",
@@ -654,7 +858,7 @@ inspector2_enable <- function(accountIds = NULL, clientToken = NULL, resourceTyp
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$enable_input(accountIds = accountIds, clientToken = clientToken, resourceTypes = resourceTypes)
+  input <- .inspector2$enable_input(accountIds = accountIds, resourceTypes = resourceTypes, clientToken = clientToken)
   output <- .inspector2$enable_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -672,14 +876,14 @@ inspector2_enable <- function(accountIds = NULL, clientToken = NULL, resourceTyp
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_enable_delegated_admin_account/](https://www.paws-r-sdk.com/docs/inspector2_enable_delegated_admin_account/) for full documentation.
 #'
-#' @param clientToken The idempotency token for the request.
 #' @param delegatedAdminAccountId &#91;required&#93; The Amazon Web Services account ID of the Amazon Inspector delegated
 #' administrator.
+#' @param clientToken The idempotency token for the request.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_enable_delegated_admin_account
-inspector2_enable_delegated_admin_account <- function(clientToken = NULL, delegatedAdminAccountId) {
+inspector2_enable_delegated_admin_account <- function(delegatedAdminAccountId, clientToken = NULL) {
   op <- new_operation(
     name = "EnableDelegatedAdminAccount",
     http_method = "POST",
@@ -688,7 +892,7 @@ inspector2_enable_delegated_admin_account <- function(clientToken = NULL, delega
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$enable_delegated_admin_account_input(clientToken = clientToken, delegatedAdminAccountId = delegatedAdminAccountId)
+  input <- .inspector2$enable_delegated_admin_account_input(delegatedAdminAccountId = delegatedAdminAccountId, clientToken = clientToken)
   output <- .inspector2$enable_delegated_admin_account_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -705,15 +909,15 @@ inspector2_enable_delegated_admin_account <- function(clientToken = NULL, delega
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_get_cis_scan_report/](https://www.paws-r-sdk.com/docs/inspector2_get_cis_scan_report/) for full documentation.
 #'
-#' @param reportFormat The format of the report. Valid values are `PDF` and `CSV`. If no value
-#' is specified, the report format defaults to `PDF`.
 #' @param scanArn &#91;required&#93; The scan ARN.
 #' @param targetAccounts The target accounts.
+#' @param reportFormat The format of the report. Valid values are `PDF` and `CSV`. If no value
+#' is specified, the report format defaults to `PDF`.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_get_cis_scan_report
-inspector2_get_cis_scan_report <- function(reportFormat = NULL, scanArn, targetAccounts = NULL) {
+inspector2_get_cis_scan_report <- function(scanArn, targetAccounts = NULL, reportFormat = NULL) {
   op <- new_operation(
     name = "GetCisScanReport",
     http_method = "POST",
@@ -722,7 +926,7 @@ inspector2_get_cis_scan_report <- function(reportFormat = NULL, scanArn, targetA
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$get_cis_scan_report_input(reportFormat = reportFormat, scanArn = scanArn, targetAccounts = targetAccounts)
+  input <- .inspector2$get_cis_scan_report_input(scanArn = scanArn, targetAccounts = targetAccounts, reportFormat = reportFormat)
   output <- .inspector2$get_cis_scan_report_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -739,21 +943,21 @@ inspector2_get_cis_scan_report <- function(reportFormat = NULL, scanArn, targetA
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_get_cis_scan_result_details/](https://www.paws-r-sdk.com/docs/inspector2_get_cis_scan_result_details/) for full documentation.
 #'
+#' @param scanArn &#91;required&#93; The scan ARN.
+#' @param targetResourceId &#91;required&#93; The target resource ID.
 #' @param accountId &#91;required&#93; The account ID.
 #' @param filterCriteria The filter criteria.
-#' @param maxResults The maximum number of CIS scan result details to be returned in a single
-#' page of results.
-#' @param nextToken The pagination token from a previous request that's used to retrieve the
-#' next page of results.
-#' @param scanArn &#91;required&#93; The scan ARN.
 #' @param sortBy The sort by order.
 #' @param sortOrder The sort order.
-#' @param targetResourceId &#91;required&#93; The target resource ID.
+#' @param nextToken The pagination token from a previous request that's used to retrieve the
+#' next page of results.
+#' @param maxResults The maximum number of CIS scan result details to be returned in a single
+#' page of results.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_get_cis_scan_result_details
-inspector2_get_cis_scan_result_details <- function(accountId, filterCriteria = NULL, maxResults = NULL, nextToken = NULL, scanArn, sortBy = NULL, sortOrder = NULL, targetResourceId) {
+inspector2_get_cis_scan_result_details <- function(scanArn, targetResourceId, accountId, filterCriteria = NULL, sortBy = NULL, sortOrder = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetCisScanResultDetails",
     http_method = "POST",
@@ -762,7 +966,7 @@ inspector2_get_cis_scan_result_details <- function(accountId, filterCriteria = N
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scanResultDetails"),
     stream_api = FALSE
   )
-  input <- .inspector2$get_cis_scan_result_details_input(accountId = accountId, filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken, scanArn = scanArn, sortBy = sortBy, sortOrder = sortOrder, targetResourceId = targetResourceId)
+  input <- .inspector2$get_cis_scan_result_details_input(scanArn = scanArn, targetResourceId = targetResourceId, accountId = accountId, filterCriteria = filterCriteria, sortBy = sortBy, sortOrder = sortOrder, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector2$get_cis_scan_result_details_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -771,6 +975,137 @@ inspector2_get_cis_scan_result_details <- function(accountId, filterCriteria = N
   return(response)
 }
 .inspector2$operations$get_cis_scan_result_details <- inspector2_get_cis_scan_result_details
+
+#' Returns a list of clusters and metadata associated with an image
+#'
+#' @description
+#' Returns a list of clusters and metadata associated with an image.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_get_clusters_for_image/](https://www.paws-r-sdk.com/docs/inspector2_get_clusters_for_image/) for full documentation.
+#'
+#' @param filter &#91;required&#93; The resource Id for the Amazon ECR image.
+#' @param maxResults The maximum number of results to be returned in a single page of
+#' results.
+#' @param nextToken The pagination token from a previous request used to retrieve the next
+#' page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_get_clusters_for_image
+inspector2_get_clusters_for_image <- function(filter, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "GetClustersForImage",
+    http_method = "POST",
+    http_path = "/cluster/get",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "cluster"),
+    stream_api = FALSE
+  )
+  input <- .inspector2$get_clusters_for_image_input(filter = filter, maxResults = maxResults, nextToken = nextToken)
+  output <- .inspector2$get_clusters_for_image_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$get_clusters_for_image <- inspector2_get_clusters_for_image
+
+#' Retrieves information about a code security integration
+#'
+#' @description
+#' Retrieves information about a code security integration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_get_code_security_integration/](https://www.paws-r-sdk.com/docs/inspector2_get_code_security_integration/) for full documentation.
+#'
+#' @param integrationArn &#91;required&#93; The Amazon Resource Name (ARN) of the code security integration to
+#' retrieve.
+#' @param tags The tags associated with the code security integration.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_get_code_security_integration
+inspector2_get_code_security_integration <- function(integrationArn, tags = NULL) {
+  op <- new_operation(
+    name = "GetCodeSecurityIntegration",
+    http_method = "POST",
+    http_path = "/codesecurity/integration/get",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$get_code_security_integration_input(integrationArn = integrationArn, tags = tags)
+  output <- .inspector2$get_code_security_integration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$get_code_security_integration <- inspector2_get_code_security_integration
+
+#' Retrieves information about a specific code security scan
+#'
+#' @description
+#' Retrieves information about a specific code security scan.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_get_code_security_scan/](https://www.paws-r-sdk.com/docs/inspector2_get_code_security_scan/) for full documentation.
+#'
+#' @param resource &#91;required&#93; The resource identifier for the code repository that was scanned.
+#' @param scanId &#91;required&#93; The unique identifier of the scan to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_get_code_security_scan
+inspector2_get_code_security_scan <- function(resource, scanId) {
+  op <- new_operation(
+    name = "GetCodeSecurityScan",
+    http_method = "POST",
+    http_path = "/codesecurity/scan/get",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$get_code_security_scan_input(resource = resource, scanId = scanId)
+  output <- .inspector2$get_code_security_scan_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$get_code_security_scan <- inspector2_get_code_security_scan
+
+#' Retrieves information about a code security scan configuration
+#'
+#' @description
+#' Retrieves information about a code security scan configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_get_code_security_scan_configuration/](https://www.paws-r-sdk.com/docs/inspector2_get_code_security_scan_configuration/) for full documentation.
+#'
+#' @param scanConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the scan configuration to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_get_code_security_scan_configuration
+inspector2_get_code_security_scan_configuration <- function(scanConfigurationArn) {
+  op <- new_operation(
+    name = "GetCodeSecurityScanConfiguration",
+    http_method = "POST",
+    http_path = "/codesecurity/scan-configuration/get",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$get_code_security_scan_configuration_input(scanConfigurationArn = scanConfigurationArn)
+  output <- .inspector2$get_code_security_scan_configuration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$get_code_security_scan_configuration <- inspector2_get_code_security_scan_configuration
 
 #' Retrieves setting configurations for Inspector scans
 #'
@@ -874,13 +1209,13 @@ inspector2_get_ec_2_deep_inspection_configuration <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_get_encryption_key/](https://www.paws-r-sdk.com/docs/inspector2_get_encryption_key/) for full documentation.
 #'
-#' @param resourceType &#91;required&#93; The resource type the key encrypts.
 #' @param scanType &#91;required&#93; The scan type the key encrypts.
+#' @param resourceType &#91;required&#93; The resource type the key encrypts.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_get_encryption_key
-inspector2_get_encryption_key <- function(resourceType, scanType) {
+inspector2_get_encryption_key <- function(scanType, resourceType) {
   op <- new_operation(
     name = "GetEncryptionKey",
     http_method = "GET",
@@ -889,7 +1224,7 @@ inspector2_get_encryption_key <- function(resourceType, scanType) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$get_encryption_key_input(resourceType = resourceType, scanType = scanType)
+  input <- .inspector2$get_encryption_key_input(scanType = scanType, resourceType = resourceType)
   output <- .inspector2$get_encryption_key_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -996,10 +1331,11 @@ inspector2_get_sbom_export <- function(reportId) {
 #' Lists the permissions an account has to configure Amazon Inspector
 #'
 #' @description
-#' Lists the permissions an account has to configure Amazon Inspector.
+#' Lists the permissions an account has to configure Amazon Inspector. If the account is a member account or standalone account with resources managed by an Organizations policy, the operation returns fewer permissions.
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_list_account_permissions/](https://www.paws-r-sdk.com/docs/inspector2_list_account_permissions/) for full documentation.
 #'
+#' @param service The service scan type to check permissions for.
 #' @param maxResults The maximum number of results the response can return. If your request
 #' would return more than the maximum the response will return a
 #' `nextToken` value, use this value when you call the action again to get
@@ -1010,12 +1346,11 @@ inspector2_get_sbom_export <- function(reportId) {
 #' value it will also return a `nextToken` value. For subsequent calls, use
 #' the NextToken value returned from the previous request to continue
 #' listing results after the first page.
-#' @param service The service scan type to check permissions for.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_list_account_permissions
-inspector2_list_account_permissions <- function(maxResults = NULL, nextToken = NULL, service = NULL) {
+inspector2_list_account_permissions <- function(service = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListAccountPermissions",
     http_method = "POST",
@@ -1024,7 +1359,7 @@ inspector2_list_account_permissions <- function(maxResults = NULL, nextToken = N
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "permissions"),
     stream_api = FALSE
   )
-  input <- .inspector2$list_account_permissions_input(maxResults = maxResults, nextToken = nextToken, service = service)
+  input <- .inspector2$list_account_permissions_input(service = service, maxResults = maxResults, nextToken = nextToken)
   output <- .inspector2$list_account_permissions_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -1042,17 +1377,17 @@ inspector2_list_account_permissions <- function(maxResults = NULL, nextToken = N
 #' See [https://www.paws-r-sdk.com/docs/inspector2_list_cis_scan_configurations/](https://www.paws-r-sdk.com/docs/inspector2_list_cis_scan_configurations/) for full documentation.
 #'
 #' @param filterCriteria The CIS scan configuration filter criteria.
-#' @param maxResults The maximum number of CIS scan configurations to be returned in a single
-#' page of results.
-#' @param nextToken The pagination token from a previous request that's used to retrieve the
-#' next page of results.
 #' @param sortBy The CIS scan configuration sort by order.
 #' @param sortOrder The CIS scan configuration sort order order.
+#' @param nextToken The pagination token from a previous request that's used to retrieve the
+#' next page of results.
+#' @param maxResults The maximum number of CIS scan configurations to be returned in a single
+#' page of results.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_list_cis_scan_configurations
-inspector2_list_cis_scan_configurations <- function(filterCriteria = NULL, maxResults = NULL, nextToken = NULL, sortBy = NULL, sortOrder = NULL) {
+inspector2_list_cis_scan_configurations <- function(filterCriteria = NULL, sortBy = NULL, sortOrder = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListCisScanConfigurations",
     http_method = "POST",
@@ -1061,7 +1396,7 @@ inspector2_list_cis_scan_configurations <- function(filterCriteria = NULL, maxRe
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scanConfigurations"),
     stream_api = FALSE
   )
-  input <- .inspector2$list_cis_scan_configurations_input(filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
+  input <- .inspector2$list_cis_scan_configurations_input(filterCriteria = filterCriteria, sortBy = sortBy, sortOrder = sortOrder, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector2$list_cis_scan_configurations_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -1078,19 +1413,19 @@ inspector2_list_cis_scan_configurations <- function(filterCriteria = NULL, maxRe
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_list_cis_scan_results_aggregated_by_checks/](https://www.paws-r-sdk.com/docs/inspector2_list_cis_scan_results_aggregated_by_checks/) for full documentation.
 #'
-#' @param filterCriteria The filter criteria.
-#' @param maxResults The maximum number of scan results aggregated by checks to be returned
-#' in a single page of results.
-#' @param nextToken The pagination token from a previous request that's used to retrieve the
-#' next page of results.
 #' @param scanArn &#91;required&#93; The scan ARN.
+#' @param filterCriteria The filter criteria.
 #' @param sortBy The sort by order.
 #' @param sortOrder The sort order.
+#' @param nextToken The pagination token from a previous request that's used to retrieve the
+#' next page of results.
+#' @param maxResults The maximum number of scan results aggregated by checks to be returned
+#' in a single page of results.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_list_cis_scan_results_aggregated_by_checks
-inspector2_list_cis_scan_results_aggregated_by_checks <- function(filterCriteria = NULL, maxResults = NULL, nextToken = NULL, scanArn, sortBy = NULL, sortOrder = NULL) {
+inspector2_list_cis_scan_results_aggregated_by_checks <- function(scanArn, filterCriteria = NULL, sortBy = NULL, sortOrder = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListCisScanResultsAggregatedByChecks",
     http_method = "POST",
@@ -1099,7 +1434,7 @@ inspector2_list_cis_scan_results_aggregated_by_checks <- function(filterCriteria
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "checkAggregations"),
     stream_api = FALSE
   )
-  input <- .inspector2$list_cis_scan_results_aggregated_by_checks_input(filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken, scanArn = scanArn, sortBy = sortBy, sortOrder = sortOrder)
+  input <- .inspector2$list_cis_scan_results_aggregated_by_checks_input(scanArn = scanArn, filterCriteria = filterCriteria, sortBy = sortBy, sortOrder = sortOrder, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector2$list_cis_scan_results_aggregated_by_checks_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -1116,19 +1451,19 @@ inspector2_list_cis_scan_results_aggregated_by_checks <- function(filterCriteria
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_list_cis_scan_results_aggregated_by_target_resource/](https://www.paws-r-sdk.com/docs/inspector2_list_cis_scan_results_aggregated_by_target_resource/) for full documentation.
 #'
-#' @param filterCriteria The filter criteria.
-#' @param maxResults The maximum number of scan results aggregated by a target resource to be
-#' returned in a single page of results.
-#' @param nextToken The pagination token from a previous request that's used to retrieve the
-#' next page of results.
 #' @param scanArn &#91;required&#93; The scan ARN.
+#' @param filterCriteria The filter criteria.
 #' @param sortBy The sort by order.
 #' @param sortOrder The sort order.
+#' @param nextToken The pagination token from a previous request that's used to retrieve the
+#' next page of results.
+#' @param maxResults The maximum number of scan results aggregated by a target resource to be
+#' returned in a single page of results.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_list_cis_scan_resul_aggre_by_targe_resou
-inspector2_list_cis_scan_results_aggregated_by_target_resource <- function(filterCriteria = NULL, maxResults = NULL, nextToken = NULL, scanArn, sortBy = NULL, sortOrder = NULL) {
+inspector2_list_cis_scan_results_aggregated_by_target_resource <- function(scanArn, filterCriteria = NULL, sortBy = NULL, sortOrder = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListCisScanResultsAggregatedByTargetResource",
     http_method = "POST",
@@ -1137,7 +1472,7 @@ inspector2_list_cis_scan_results_aggregated_by_target_resource <- function(filte
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "targetResourceAggregations"),
     stream_api = FALSE
   )
-  input <- .inspector2$list_cis_scan_results_aggregated_by_target_resource_input(filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken, scanArn = scanArn, sortBy = sortBy, sortOrder = sortOrder)
+  input <- .inspector2$list_cis_scan_results_aggregated_by_target_resource_input(scanArn = scanArn, filterCriteria = filterCriteria, sortBy = sortBy, sortOrder = sortOrder, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector2$list_cis_scan_results_aggregated_by_target_resource_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -1154,18 +1489,18 @@ inspector2_list_cis_scan_results_aggregated_by_target_resource <- function(filte
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_list_cis_scans/](https://www.paws-r-sdk.com/docs/inspector2_list_cis_scans/) for full documentation.
 #'
-#' @param detailLevel The detail applied to the CIS scan.
 #' @param filterCriteria The CIS scan filter criteria.
-#' @param maxResults The maximum number of results to be returned.
-#' @param nextToken The pagination token from a previous request that's used to retrieve the
-#' next page of results.
+#' @param detailLevel The detail applied to the CIS scan.
 #' @param sortBy The CIS scans sort by order.
 #' @param sortOrder The CIS scans sort order.
+#' @param nextToken The pagination token from a previous request that's used to retrieve the
+#' next page of results.
+#' @param maxResults The maximum number of results to be returned.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_list_cis_scans
-inspector2_list_cis_scans <- function(detailLevel = NULL, filterCriteria = NULL, maxResults = NULL, nextToken = NULL, sortBy = NULL, sortOrder = NULL) {
+inspector2_list_cis_scans <- function(filterCriteria = NULL, detailLevel = NULL, sortBy = NULL, sortOrder = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListCisScans",
     http_method = "POST",
@@ -1174,7 +1509,7 @@ inspector2_list_cis_scans <- function(detailLevel = NULL, filterCriteria = NULL,
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scans"),
     stream_api = FALSE
   )
-  input <- .inspector2$list_cis_scans_input(detailLevel = detailLevel, filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
+  input <- .inspector2$list_cis_scans_input(filterCriteria = filterCriteria, detailLevel = detailLevel, sortBy = sortBy, sortOrder = sortOrder, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector2$list_cis_scans_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -1184,6 +1519,117 @@ inspector2_list_cis_scans <- function(detailLevel = NULL, filterCriteria = NULL,
 }
 .inspector2$operations$list_cis_scans <- inspector2_list_cis_scans
 
+#' Lists all code security integrations in your account
+#'
+#' @description
+#' Lists all code security integrations in your account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_list_code_security_integrations/](https://www.paws-r-sdk.com/docs/inspector2_list_code_security_integrations/) for full documentation.
+#'
+#' @param nextToken A token to use for paginating results that are returned in the response.
+#' Set the value of this parameter to null for the first request. For
+#' subsequent calls, use the NextToken value returned from the previous
+#' request to continue listing results after the first page.
+#' @param maxResults The maximum number of results to return in a single call.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_list_code_security_integrations
+inspector2_list_code_security_integrations <- function(nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListCodeSecurityIntegrations",
+    http_method = "POST",
+    http_path = "/codesecurity/integration/list",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$list_code_security_integrations_input(nextToken = nextToken, maxResults = maxResults)
+  output <- .inspector2$list_code_security_integrations_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$list_code_security_integrations <- inspector2_list_code_security_integrations
+
+#' Lists the associations between code repositories and Amazon Inspector
+#' code security scan configurations
+#'
+#' @description
+#' Lists the associations between code repositories and Amazon Inspector code security scan configurations.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_list_code_security_scan_configuration_associations/](https://www.paws-r-sdk.com/docs/inspector2_list_code_security_scan_configuration_associations/) for full documentation.
+#'
+#' @param scanConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the scan configuration to list
+#' associations for.
+#' @param nextToken A token to use for paginating results that are returned in the response.
+#' Set the value of this parameter to null for the first request to a list
+#' action. For subsequent calls, use the `NextToken` value returned from
+#' the previous request to continue listing results after the first page.
+#' @param maxResults The maximum number of results to return in the response. If your request
+#' would return more than the maximum the response will return a
+#' `nextToken` value, use this value when you call the action again to get
+#' the remaining results.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_list_code_securi_scan_config_associ
+inspector2_list_code_security_scan_configuration_associations <- function(scanConfigurationArn, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListCodeSecurityScanConfigurationAssociations",
+    http_method = "POST",
+    http_path = "/codesecurity/scan-configuration/associations/list",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$list_code_security_scan_configuration_associations_input(scanConfigurationArn = scanConfigurationArn, nextToken = nextToken, maxResults = maxResults)
+  output <- .inspector2$list_code_security_scan_configuration_associations_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$list_code_security_scan_configuration_associations <- inspector2_list_code_security_scan_configuration_associations
+
+#' Lists all code security scan configurations in your account
+#'
+#' @description
+#' Lists all code security scan configurations in your account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_list_code_security_scan_configurations/](https://www.paws-r-sdk.com/docs/inspector2_list_code_security_scan_configurations/) for full documentation.
+#'
+#' @param nextToken A token to use for paginating results that are returned in the response.
+#' Set the value of this parameter to null for the first request. For
+#' subsequent calls, use the NextToken value returned from the previous
+#' request to continue listing results after the first page.
+#' @param maxResults The maximum number of results to return in a single call.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_list_code_security_scan_configurations
+inspector2_list_code_security_scan_configurations <- function(nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListCodeSecurityScanConfigurations",
+    http_method = "POST",
+    http_path = "/codesecurity/scan-configuration/list",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$list_code_security_scan_configurations_input(nextToken = nextToken, maxResults = maxResults)
+  output <- .inspector2$list_code_security_scan_configurations_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$list_code_security_scan_configurations <- inspector2_list_code_security_scan_configurations
+
 #' Lists coverage details for your environment
 #'
 #' @description
@@ -1191,8 +1637,6 @@ inspector2_list_cis_scans <- function(detailLevel = NULL, filterCriteria = NULL,
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_list_coverage/](https://www.paws-r-sdk.com/docs/inspector2_list_coverage/) for full documentation.
 #'
-#' @param filterCriteria An object that contains details on the filters to apply to the coverage
-#' data for your environment.
 #' @param maxResults The maximum number of results the response can return. If your request
 #' would return more than the maximum the response will return a
 #' `nextToken` value, use this value when you call the action again to get
@@ -1203,11 +1647,13 @@ inspector2_list_cis_scans <- function(detailLevel = NULL, filterCriteria = NULL,
 #' value it will also return a `nextToken` value. For subsequent calls, use
 #' the `nextToken` value returned from the previous request to continue
 #' listing results after the first page.
+#' @param filterCriteria An object that contains details on the filters to apply to the coverage
+#' data for your environment.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_list_coverage
-inspector2_list_coverage <- function(filterCriteria = NULL, maxResults = NULL, nextToken = NULL) {
+inspector2_list_coverage <- function(maxResults = NULL, nextToken = NULL, filterCriteria = NULL) {
   op <- new_operation(
     name = "ListCoverage",
     http_method = "POST",
@@ -1216,7 +1662,7 @@ inspector2_list_coverage <- function(filterCriteria = NULL, maxResults = NULL, n
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "coveredResources"),
     stream_api = FALSE
   )
-  input <- .inspector2$list_coverage_input(filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken)
+  input <- .inspector2$list_coverage_input(maxResults = maxResults, nextToken = nextToken, filterCriteria = filterCriteria)
   output <- .inspector2$list_coverage_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -1311,23 +1757,23 @@ inspector2_list_delegated_admin_accounts <- function(maxResults = NULL, nextToke
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_list_filters/](https://www.paws-r-sdk.com/docs/inspector2_list_filters/) for full documentation.
 #'
-#' @param action The action the filter applies to matched findings.
 #' @param arns The Amazon resource number (ARN) of the filter.
-#' @param maxResults The maximum number of results the response can return. If your request
-#' would return more than the maximum the response will return a
-#' `nextToken` value, use this value when you call the action again to get
-#' the remaining results.
+#' @param action The action the filter applies to matched findings.
 #' @param nextToken A token to use for paginating results that are returned in the response.
 #' Set the value of this parameter to null for the first request to a list
 #' action. If your response returns more than the `maxResults` maximum
 #' value it will also return a `nextToken` value. For subsequent calls, use
 #' the `nextToken` value returned from the previous request to continue
 #' listing results after the first page.
+#' @param maxResults The maximum number of results the response can return. If your request
+#' would return more than the maximum the response will return a
+#' `nextToken` value, use this value when you call the action again to get
+#' the remaining results.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_list_filters
-inspector2_list_filters <- function(action = NULL, arns = NULL, maxResults = NULL, nextToken = NULL) {
+inspector2_list_filters <- function(arns = NULL, action = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListFilters",
     http_method = "POST",
@@ -1336,7 +1782,7 @@ inspector2_list_filters <- function(action = NULL, arns = NULL, maxResults = NUL
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "filters"),
     stream_api = FALSE
   )
-  input <- .inspector2$list_filters_input(action = action, arns = arns, maxResults = maxResults, nextToken = nextToken)
+  input <- .inspector2$list_filters_input(arns = arns, action = action, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector2$list_filters_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -1354,26 +1800,26 @@ inspector2_list_filters <- function(action = NULL, arns = NULL, maxResults = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_list_finding_aggregations/](https://www.paws-r-sdk.com/docs/inspector2_list_finding_aggregations/) for full documentation.
 #'
-#' @param accountIds The Amazon Web Services account IDs to retrieve finding aggregation data
-#' for.
-#' @param aggregationRequest Details of the aggregation request that is used to filter your
-#' aggregation results.
 #' @param aggregationType &#91;required&#93; The type of the aggregation request.
-#' @param maxResults The maximum number of results the response can return. If your request
-#' would return more than the maximum the response will return a
-#' `nextToken` value, use this value when you call the action again to get
-#' the remaining results.
 #' @param nextToken A token to use for paginating results that are returned in the response.
 #' Set the value of this parameter to null for the first request to a list
 #' action. If your response returns more than the `maxResults` maximum
 #' value it will also return a `nextToken` value. For subsequent calls, use
 #' the `nextToken` value returned from the previous request to continue
 #' listing results after the first page.
+#' @param maxResults The maximum number of results the response can return. If your request
+#' would return more than the maximum the response will return a
+#' `nextToken` value, use this value when you call the action again to get
+#' the remaining results.
+#' @param accountIds The Amazon Web Services account IDs to retrieve finding aggregation data
+#' for.
+#' @param aggregationRequest Details of the aggregation request that is used to filter your
+#' aggregation results.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_list_finding_aggregations
-inspector2_list_finding_aggregations <- function(accountIds = NULL, aggregationRequest = NULL, aggregationType, maxResults = NULL, nextToken = NULL) {
+inspector2_list_finding_aggregations <- function(aggregationType, nextToken = NULL, maxResults = NULL, accountIds = NULL, aggregationRequest = NULL) {
   op <- new_operation(
     name = "ListFindingAggregations",
     http_method = "POST",
@@ -1382,7 +1828,7 @@ inspector2_list_finding_aggregations <- function(accountIds = NULL, aggregationR
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "responses"),
     stream_api = FALSE
   )
-  input <- .inspector2$list_finding_aggregations_input(accountIds = accountIds, aggregationRequest = aggregationRequest, aggregationType = aggregationType, maxResults = maxResults, nextToken = nextToken)
+  input <- .inspector2$list_finding_aggregations_input(aggregationType = aggregationType, nextToken = nextToken, maxResults = maxResults, accountIds = accountIds, aggregationRequest = aggregationRequest)
   output <- .inspector2$list_finding_aggregations_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -1399,7 +1845,6 @@ inspector2_list_finding_aggregations <- function(accountIds = NULL, aggregationR
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_list_findings/](https://www.paws-r-sdk.com/docs/inspector2_list_findings/) for full documentation.
 #'
-#' @param filterCriteria Details on the filters to apply to your finding results.
 #' @param maxResults The maximum number of results the response can return. If your request
 #' would return more than the maximum the response will return a
 #' `nextToken` value, use this value when you call the action again to get
@@ -1410,12 +1855,13 @@ inspector2_list_finding_aggregations <- function(accountIds = NULL, aggregationR
 #' value it will also return a `nextToken` value. For subsequent calls, use
 #' the `nextToken` value returned from the previous request to continue
 #' listing results after the first page.
+#' @param filterCriteria Details on the filters to apply to your finding results.
 #' @param sortCriteria Details on the sort criteria to apply to your finding results.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_list_findings
-inspector2_list_findings <- function(filterCriteria = NULL, maxResults = NULL, nextToken = NULL, sortCriteria = NULL) {
+inspector2_list_findings <- function(maxResults = NULL, nextToken = NULL, filterCriteria = NULL, sortCriteria = NULL) {
   op <- new_operation(
     name = "ListFindings",
     http_method = "POST",
@@ -1424,7 +1870,7 @@ inspector2_list_findings <- function(filterCriteria = NULL, maxResults = NULL, n
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings"),
     stream_api = FALSE
   )
-  input <- .inspector2$list_findings_input(filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken, sortCriteria = sortCriteria)
+  input <- .inspector2$list_findings_input(maxResults = maxResults, nextToken = nextToken, filterCriteria = filterCriteria, sortCriteria = sortCriteria)
   output <- .inspector2$list_findings_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -1442,6 +1888,8 @@ inspector2_list_findings <- function(filterCriteria = NULL, maxResults = NULL, n
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_list_members/](https://www.paws-r-sdk.com/docs/inspector2_list_members/) for full documentation.
 #'
+#' @param onlyAssociated Specifies whether to list only currently associated members if `True` or
+#' to list all members within the organization if `False`.
 #' @param maxResults The maximum number of results the response can return. If your request
 #' would return more than the maximum the response will return a
 #' `nextToken` value, use this value when you call the action again to get
@@ -1452,13 +1900,11 @@ inspector2_list_findings <- function(filterCriteria = NULL, maxResults = NULL, n
 #' value it will also return a `nextToken` value. For subsequent calls, use
 #' the `nextToken` value returned from the previous request to continue
 #' listing results after the first page.
-#' @param onlyAssociated Specifies whether to list only currently associated members if `True` or
-#' to list all members within the organization if `False`.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_list_members
-inspector2_list_members <- function(maxResults = NULL, nextToken = NULL, onlyAssociated = NULL) {
+inspector2_list_members <- function(onlyAssociated = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListMembers",
     http_method = "POST",
@@ -1467,7 +1913,7 @@ inspector2_list_members <- function(maxResults = NULL, nextToken = NULL, onlyAss
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "members"),
     stream_api = FALSE
   )
-  input <- .inspector2$list_members_input(maxResults = maxResults, nextToken = nextToken, onlyAssociated = onlyAssociated)
+  input <- .inspector2$list_members_input(onlyAssociated = onlyAssociated, maxResults = maxResults, nextToken = nextToken)
   output <- .inspector2$list_members_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -1515,7 +1961,6 @@ inspector2_list_tags_for_resource <- function(resourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_list_usage_totals/](https://www.paws-r-sdk.com/docs/inspector2_list_usage_totals/) for full documentation.
 #'
-#' @param accountIds The Amazon Web Services account IDs to retrieve usage totals for.
 #' @param maxResults The maximum number of results the response can return. If your request
 #' would return more than the maximum the response will return a
 #' `nextToken` value, use this value when you call the action again to get
@@ -1526,11 +1971,12 @@ inspector2_list_tags_for_resource <- function(resourceArn) {
 #' value it will also return a `nextToken` value. For subsequent calls, use
 #' the `nextToken` value returned from the previous request to continue
 #' listing results after the first page.
+#' @param accountIds The Amazon Web Services account IDs to retrieve usage totals for.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_list_usage_totals
-inspector2_list_usage_totals <- function(accountIds = NULL, maxResults = NULL, nextToken = NULL) {
+inspector2_list_usage_totals <- function(maxResults = NULL, nextToken = NULL, accountIds = NULL) {
   op <- new_operation(
     name = "ListUsageTotals",
     http_method = "POST",
@@ -1539,7 +1985,7 @@ inspector2_list_usage_totals <- function(accountIds = NULL, maxResults = NULL, n
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "totals"),
     stream_api = FALSE
   )
-  input <- .inspector2$list_usage_totals_input(accountIds = accountIds, maxResults = maxResults, nextToken = nextToken)
+  input <- .inspector2$list_usage_totals_input(maxResults = maxResults, nextToken = nextToken, accountIds = accountIds)
   output <- .inspector2$list_usage_totals_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -1556,13 +2002,13 @@ inspector2_list_usage_totals <- function(accountIds = NULL, maxResults = NULL, n
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_reset_encryption_key/](https://www.paws-r-sdk.com/docs/inspector2_reset_encryption_key/) for full documentation.
 #'
-#' @param resourceType &#91;required&#93; The resource type the key encrypts.
 #' @param scanType &#91;required&#93; The scan type the key encrypts.
+#' @param resourceType &#91;required&#93; The resource type the key encrypts.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_reset_encryption_key
-inspector2_reset_encryption_key <- function(resourceType, scanType) {
+inspector2_reset_encryption_key <- function(scanType, resourceType) {
   op <- new_operation(
     name = "ResetEncryptionKey",
     http_method = "PUT",
@@ -1571,7 +2017,7 @@ inspector2_reset_encryption_key <- function(resourceType, scanType) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$reset_encryption_key_input(resourceType = resourceType, scanType = scanType)
+  input <- .inspector2$reset_encryption_key_input(scanType = scanType, resourceType = resourceType)
   output <- .inspector2$reset_encryption_key_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -1655,14 +2101,14 @@ inspector2_send_cis_session_health <- function(scanJobId, sessionToken) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_send_cis_session_telemetry/](https://www.paws-r-sdk.com/docs/inspector2_send_cis_session_telemetry/) for full documentation.
 #'
-#' @param messages &#91;required&#93; The CIS session telemetry messages.
 #' @param scanJobId &#91;required&#93; A unique identifier for the scan job.
 #' @param sessionToken &#91;required&#93; The unique token that identifies the CIS session.
+#' @param messages &#91;required&#93; The CIS session telemetry messages.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_send_cis_session_telemetry
-inspector2_send_cis_session_telemetry <- function(messages, scanJobId, sessionToken) {
+inspector2_send_cis_session_telemetry <- function(scanJobId, sessionToken, messages) {
   op <- new_operation(
     name = "SendCisSessionTelemetry",
     http_method = "PUT",
@@ -1671,7 +2117,7 @@ inspector2_send_cis_session_telemetry <- function(messages, scanJobId, sessionTo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$send_cis_session_telemetry_input(messages = messages, scanJobId = scanJobId, sessionToken = sessionToken)
+  input <- .inspector2$send_cis_session_telemetry_input(scanJobId = scanJobId, sessionToken = sessionToken, messages = messages)
   output <- .inspector2$send_cis_session_telemetry_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -1688,13 +2134,13 @@ inspector2_send_cis_session_telemetry <- function(messages, scanJobId, sessionTo
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_start_cis_session/](https://www.paws-r-sdk.com/docs/inspector2_start_cis_session/) for full documentation.
 #'
-#' @param message &#91;required&#93; The start CIS session message.
 #' @param scanJobId &#91;required&#93; A unique identifier for the scan job.
+#' @param message &#91;required&#93; The start CIS session message.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_start_cis_session
-inspector2_start_cis_session <- function(message, scanJobId) {
+inspector2_start_cis_session <- function(scanJobId, message) {
   op <- new_operation(
     name = "StartCisSession",
     http_method = "PUT",
@@ -1703,7 +2149,7 @@ inspector2_start_cis_session <- function(message, scanJobId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$start_cis_session_input(message = message, scanJobId = scanJobId)
+  input <- .inspector2$start_cis_session_input(scanJobId = scanJobId, message = message)
   output <- .inspector2$start_cis_session_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -1713,6 +2159,39 @@ inspector2_start_cis_session <- function(message, scanJobId) {
 }
 .inspector2$operations$start_cis_session <- inspector2_start_cis_session
 
+#' Initiates a code security scan on a specified repository
+#'
+#' @description
+#' Initiates a code security scan on a specified repository.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_start_code_security_scan/](https://www.paws-r-sdk.com/docs/inspector2_start_code_security_scan/) for full documentation.
+#'
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#' @param resource &#91;required&#93; The resource identifier for the code repository to scan.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_start_code_security_scan
+inspector2_start_code_security_scan <- function(clientToken = NULL, resource) {
+  op <- new_operation(
+    name = "StartCodeSecurityScan",
+    http_method = "POST",
+    http_path = "/codesecurity/scan/start",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$start_code_security_scan_input(clientToken = clientToken, resource = resource)
+  output <- .inspector2$start_code_security_scan_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$start_code_security_scan <- inspector2_start_code_security_scan
+
 #' Stops a CIS session
 #'
 #' @description
@@ -1720,14 +2199,14 @@ inspector2_start_cis_session <- function(message, scanJobId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_stop_cis_session/](https://www.paws-r-sdk.com/docs/inspector2_stop_cis_session/) for full documentation.
 #'
-#' @param message &#91;required&#93; The stop CIS session message.
 #' @param scanJobId &#91;required&#93; A unique identifier for the scan job.
 #' @param sessionToken &#91;required&#93; The unique token that identifies the CIS session.
+#' @param message &#91;required&#93; The stop CIS session message.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_stop_cis_session
-inspector2_stop_cis_session <- function(message, scanJobId, sessionToken) {
+inspector2_stop_cis_session <- function(scanJobId, sessionToken, message) {
   op <- new_operation(
     name = "StopCisSession",
     http_method = "PUT",
@@ -1736,7 +2215,7 @@ inspector2_stop_cis_session <- function(message, scanJobId, sessionToken) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$stop_cis_session_input(message = message, scanJobId = scanJobId, sessionToken = sessionToken)
+  input <- .inspector2$stop_cis_session_input(scanJobId = scanJobId, sessionToken = sessionToken, message = message)
   output <- .inspector2$stop_cis_session_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -1819,15 +2298,15 @@ inspector2_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @param scanConfigurationArn &#91;required&#93; The CIS scan configuration ARN.
 #' @param scanName The scan name for the CIS scan configuration.
-#' @param schedule The schedule for the CIS scan configuration.
 #' @param securityLevel The security level for the CIS scan configuration. Security level refers
 #' to the Benchmark levels that CIS assigns to a profile.
+#' @param schedule The schedule for the CIS scan configuration.
 #' @param targets The targets for the CIS scan configuration.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_update_cis_scan_configuration
-inspector2_update_cis_scan_configuration <- function(scanConfigurationArn, scanName = NULL, schedule = NULL, securityLevel = NULL, targets = NULL) {
+inspector2_update_cis_scan_configuration <- function(scanConfigurationArn, scanName = NULL, securityLevel = NULL, schedule = NULL, targets = NULL) {
   op <- new_operation(
     name = "UpdateCisScanConfiguration",
     http_method = "POST",
@@ -1836,7 +2315,7 @@ inspector2_update_cis_scan_configuration <- function(scanConfigurationArn, scanN
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$update_cis_scan_configuration_input(scanConfigurationArn = scanConfigurationArn, scanName = scanName, schedule = schedule, securityLevel = securityLevel, targets = targets)
+  input <- .inspector2$update_cis_scan_configuration_input(scanConfigurationArn = scanConfigurationArn, scanName = scanName, securityLevel = securityLevel, schedule = schedule, targets = targets)
   output <- .inspector2$update_cis_scan_configuration_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -1846,6 +2325,72 @@ inspector2_update_cis_scan_configuration <- function(scanConfigurationArn, scanN
 }
 .inspector2$operations$update_cis_scan_configuration <- inspector2_update_cis_scan_configuration
 
+#' Updates an existing code security integration
+#'
+#' @description
+#' Updates an existing code security integration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_update_code_security_integration/](https://www.paws-r-sdk.com/docs/inspector2_update_code_security_integration/) for full documentation.
+#'
+#' @param integrationArn &#91;required&#93; The Amazon Resource Name (ARN) of the code security integration to
+#' update.
+#' @param details &#91;required&#93; The updated integration details specific to the repository provider
+#' type.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_update_code_security_integration
+inspector2_update_code_security_integration <- function(integrationArn, details) {
+  op <- new_operation(
+    name = "UpdateCodeSecurityIntegration",
+    http_method = "POST",
+    http_path = "/codesecurity/integration/update",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$update_code_security_integration_input(integrationArn = integrationArn, details = details)
+  output <- .inspector2$update_code_security_integration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$update_code_security_integration <- inspector2_update_code_security_integration
+
+#' Updates an existing code security scan configuration
+#'
+#' @description
+#' Updates an existing code security scan configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_update_code_security_scan_configuration/](https://www.paws-r-sdk.com/docs/inspector2_update_code_security_scan_configuration/) for full documentation.
+#'
+#' @param scanConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the scan configuration to update.
+#' @param configuration &#91;required&#93; The updated configuration settings for the code security scan.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_update_code_security_scan_configuration
+inspector2_update_code_security_scan_configuration <- function(scanConfigurationArn, configuration) {
+  op <- new_operation(
+    name = "UpdateCodeSecurityScanConfiguration",
+    http_method = "POST",
+    http_path = "/codesecurity/scan-configuration/update",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$update_code_security_scan_configuration_input(scanConfigurationArn = scanConfigurationArn, configuration = configuration)
+  output <- .inspector2$update_code_security_scan_configuration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$update_code_security_scan_configuration <- inspector2_update_code_security_scan_configuration
+
 #' Updates setting configurations for your Amazon Inspector account
 #'
 #' @description
@@ -1853,15 +2398,15 @@ inspector2_update_cis_scan_configuration <- function(scanConfigurationArn, scanN
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_update_configuration/](https://www.paws-r-sdk.com/docs/inspector2_update_configuration/) for full documentation.
 #'
-#' @param ec2Configuration Specifies how the Amazon EC2 automated scan will be updated for your
-#' environment.
 #' @param ecrConfiguration Specifies how the ECR automated re-scan will be updated for your
+#' environment.
+#' @param ec2Configuration Specifies how the Amazon EC2 automated scan will be updated for your
 #' environment.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_update_configuration
-inspector2_update_configuration <- function(ec2Configuration = NULL, ecrConfiguration = NULL) {
+inspector2_update_configuration <- function(ecrConfiguration = NULL, ec2Configuration = NULL) {
   op <- new_operation(
     name = "UpdateConfiguration",
     http_method = "POST",
@@ -1870,7 +2415,7 @@ inspector2_update_configuration <- function(ec2Configuration = NULL, ecrConfigur
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$update_configuration_input(ec2Configuration = ec2Configuration, ecrConfiguration = ecrConfiguration)
+  input <- .inspector2$update_configuration_input(ecrConfiguration = ecrConfiguration, ec2Configuration = ec2Configuration)
   output <- .inspector2$update_configuration_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -1926,13 +2471,13 @@ inspector2_update_ec_2_deep_inspection_configuration <- function(activateDeepIns
 #' See [https://www.paws-r-sdk.com/docs/inspector2_update_encryption_key/](https://www.paws-r-sdk.com/docs/inspector2_update_encryption_key/) for full documentation.
 #'
 #' @param kmsKeyId &#91;required&#93; A KMS key ID for the encryption key.
-#' @param resourceType &#91;required&#93; The resource type for the encryption key.
 #' @param scanType &#91;required&#93; The scan type for the encryption key.
+#' @param resourceType &#91;required&#93; The resource type for the encryption key.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_update_encryption_key
-inspector2_update_encryption_key <- function(kmsKeyId, resourceType, scanType) {
+inspector2_update_encryption_key <- function(kmsKeyId, scanType, resourceType) {
   op <- new_operation(
     name = "UpdateEncryptionKey",
     http_method = "PUT",
@@ -1941,7 +2486,7 @@ inspector2_update_encryption_key <- function(kmsKeyId, resourceType, scanType) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$update_encryption_key_input(kmsKeyId = kmsKeyId, resourceType = resourceType, scanType = scanType)
+  input <- .inspector2$update_encryption_key_input(kmsKeyId = kmsKeyId, scanType = scanType, resourceType = resourceType)
   output <- .inspector2$update_encryption_key_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -1962,15 +2507,15 @@ inspector2_update_encryption_key <- function(kmsKeyId, resourceType, scanType) {
 #' @param action Specifies the action that is to be applied to the findings that match
 #' the filter.
 #' @param description A description of the filter.
-#' @param filterArn &#91;required&#93; The Amazon Resource Number (ARN) of the filter to update.
 #' @param filterCriteria Defines the criteria to be update in the filter.
 #' @param name The name of the filter.
+#' @param filterArn &#91;required&#93; The Amazon Resource Number (ARN) of the filter to update.
 #' @param reason The reason the filter was updated.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_update_filter
-inspector2_update_filter <- function(action = NULL, description = NULL, filterArn, filterCriteria = NULL, name = NULL, reason = NULL) {
+inspector2_update_filter <- function(action = NULL, description = NULL, filterCriteria = NULL, name = NULL, filterArn, reason = NULL) {
   op <- new_operation(
     name = "UpdateFilter",
     http_method = "POST",
@@ -1979,7 +2524,7 @@ inspector2_update_filter <- function(action = NULL, description = NULL, filterAr
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$update_filter_input(action = action, description = description, filterArn = filterArn, filterCriteria = filterCriteria, name = name, reason = reason)
+  input <- .inspector2$update_filter_input(action = action, description = description, filterCriteria = filterCriteria, name = name, filterArn = filterArn, reason = reason)
   output <- .inspector2$update_filter_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)

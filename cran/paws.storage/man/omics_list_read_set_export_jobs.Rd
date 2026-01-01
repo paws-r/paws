@@ -2,7 +2,7 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_list_read_set_export_jobs}
 \alias{omics_list_read_set_export_jobs}
-\title{Retrieves a list of read set export jobs}
+\title{Retrieves a list of read set export jobs in a JSON formatted response}
 \usage{
 omics_list_read_set_export_jobs(
   sequenceStoreId,
@@ -22,7 +22,7 @@ next page of results.}
 \item{filter}{A filter to apply to the list.}
 }
 \description{
-Retrieves a list of read set export jobs.
+Retrieves a list of read set export jobs in a JSON formatted response. This API operation is used to check the status of a read set export job initiated by the \code{\link[=omics_start_read_set_export_job]{start_read_set_export_job}} API operation.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_list_read_set_export_jobs/} for full documentation.
 }

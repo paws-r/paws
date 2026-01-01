@@ -2,8 +2,8 @@
 % Please edit documentation in R/pinpointsmsvoicev2_operations.R
 \name{pinpointsmsvoicev2_describe_account_limits}
 \alias{pinpointsmsvoicev2_describe_account_limits}
-\title{Describes the current AWS End User Messaging SMS and Voice SMS Voice V2
-resource quotas for your account}
+\title{Describes the current End User Messaging SMS SMS Voice V2 resource
+quotas for your account}
 \usage{
 pinpointsmsvoicev2_describe_account_limits(NextToken = NULL, MaxResults = NULL)
 }
@@ -14,7 +14,7 @@ need to supply a value for this field in the initial request.}
 \item{MaxResults}{The maximum number of results to return per each request.}
 }
 \description{
-Describes the current AWS End User Messaging SMS and Voice SMS Voice V2 resource quotas for your account. The description for a quota includes the quota name, current usage toward that quota, and the quota's maximum value.
+Describes the current End User Messaging SMS SMS Voice V2 resource quotas for your account. The description for a quota includes the quota name, current usage toward that quota, and the quota's maximum value.
 
 See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_account_limits/} for full documentation.
 }

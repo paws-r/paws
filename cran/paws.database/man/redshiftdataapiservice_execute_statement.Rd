@@ -6,61 +6,61 @@
 data definition language (DDL)}
 \usage{
 redshiftdataapiservice_execute_statement(
-  ClientToken = NULL,
-  ClusterIdentifier = NULL,
-  Database = NULL,
-  DbUser = NULL,
-  Parameters = NULL,
-  ResultFormat = NULL,
-  SecretArn = NULL,
-  SessionId = NULL,
-  SessionKeepAliveSeconds = NULL,
   Sql,
-  StatementName = NULL,
+  ClusterIdentifier = NULL,
+  SecretArn = NULL,
+  DbUser = NULL,
+  Database = NULL,
   WithEvent = NULL,
-  WorkgroupName = NULL
+  StatementName = NULL,
+  Parameters = NULL,
+  WorkgroupName = NULL,
+  ClientToken = NULL,
+  ResultFormat = NULL,
+  SessionKeepAliveSeconds = NULL,
+  SessionId = NULL
 )
 }
 \arguments{
-\item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request.}
+\item{Sql}{[required] The SQL statement text to run.}
 
 \item{ClusterIdentifier}{The cluster identifier. This parameter is required when connecting to a
 cluster and authenticating using either Secrets Manager or temporary
 credentials.}
 
-\item{Database}{The name of the database. This parameter is required when authenticating
-using either Secrets Manager or temporary credentials.}
+\item{SecretArn}{The name or ARN of the secret that enables access to the database. This
+parameter is required when authenticating using Secrets Manager.}
 
 \item{DbUser}{The database user name. This parameter is required when connecting to a
 cluster as a database user and authenticating using temporary
 credentials.}
 
+\item{Database}{The name of the database. This parameter is required when authenticating
+using either Secrets Manager or temporary credentials.}
+
+\item{WithEvent}{A value that indicates whether to send an event to the Amazon
+EventBridge event bus after the SQL statement runs.}
+
+\item{StatementName}{The name of the SQL statement. You can name the SQL statement when you
+create it to identify the query.}
+
 \item{Parameters}{The parameters for the SQL statement.}
+
+\item{WorkgroupName}{The serverless workgroup name or Amazon Resource Name (ARN). This
+parameter is required when connecting to a serverless workgroup and
+authenticating using either Secrets Manager or temporary credentials.}
+
+\item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request.}
 
 \item{ResultFormat}{The data format of the result of the SQL statement. If no format is
 specified, the default is JSON.}
-
-\item{SecretArn}{The name or ARN of the secret that enables access to the database. This
-parameter is required when authenticating using Secrets Manager.}
-
-\item{SessionId}{The session identifier of the query.}
 
 \item{SessionKeepAliveSeconds}{The number of seconds to keep the session alive after the query
 finishes. The maximum time a session can keep alive is 24 hours. After
 24 hours, the session is forced closed and the query is terminated.}
 
-\item{Sql}{[required] The SQL statement text to run.}
-
-\item{StatementName}{The name of the SQL statement. You can name the SQL statement when you
-create it to identify the query.}
-
-\item{WithEvent}{A value that indicates whether to send an event to the Amazon
-EventBridge event bus after the SQL statement runs.}
-
-\item{WorkgroupName}{The serverless workgroup name or Amazon Resource Name (ARN). This
-parameter is required when connecting to a serverless workgroup and
-authenticating using either Secrets Manager or temporary credentials.}
+\item{SessionId}{The session identifier of the query.}
 }
 \description{
 Runs an SQL statement, which can be data manipulation language (DML) or data definition language (DDL). This statement must be a single SQL statement. Depending on the authorization method, use one of the following combinations of request parameters:

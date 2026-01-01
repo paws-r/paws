@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_list_stack_set_auto_deployment_targets}
 \alias{cloudformation_list_stack_set_auto_deployment_targets}
-\title{Returns summary information about deployment targets for a stack set}
+\title{Returns summary information about deployment targets for a StackSet}
 \usage{
 cloudformation_list_stack_set_auto_deployment_targets(
   StackSetName,
@@ -12,11 +12,11 @@ cloudformation_list_stack_set_auto_deployment_targets(
 )
 }
 \arguments{
-\item{StackSetName}{[required] The name or unique ID of the stack set that you want to get automatic
+\item{StackSetName}{[required] The name or unique ID of the StackSet that you want to get automatic
 deployment targets for.}
 
-\item{NextToken}{A string that identifies the next page of stack set deployment targets
-that you want to retrieve.}
+\item{NextToken}{The token for the next set of items to return. (You received this token
+from a previous call.)}
 
 \item{MaxResults}{The maximum number of results to be returned with a single call. If the
 number of available results exceeds this maximum, the response includes
@@ -41,7 +41,7 @@ in the \emph{CloudFormation User Guide}.
 }}
 }
 \description{
-Returns summary information about deployment targets for a stack set.
+Returns summary information about deployment targets for a StackSet.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudformation_list_stack_set_auto_deployment_targets/} for full documentation.
 }

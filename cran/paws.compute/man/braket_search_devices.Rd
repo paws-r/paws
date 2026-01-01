@@ -4,16 +4,16 @@
 \alias{braket_search_devices}
 \title{Searches for devices using the specified filters}
 \usage{
-braket_search_devices(filters, maxResults = NULL, nextToken = NULL)
+braket_search_devices(nextToken = NULL, maxResults = NULL, filters)
 }
 \arguments{
-\item{filters}{[required] The filter values to use to search for a device.}
+\item{nextToken}{A token used for pagination of results returned in the response. Use the
+token returned from the previous request to continue search where the
+previous request ended.}
 
 \item{maxResults}{The maximum number of results to return in the response.}
 
-\item{nextToken}{A token used for pagination of results returned in the response. Use the
-token returned from the previous request continue results where the
-previous request ended.}
+\item{filters}{[required] Array of SearchDevicesFilter objects to use when searching for devices.}
 }
 \description{
 Searches for devices using the specified filters.

@@ -15,8 +15,8 @@ unique stack ID.
 \item Deleted stacks: You must specify the unique stack ID.
 }}
 
-\item{NextToken}{A string that identifies the next page of stack resources that you want
-to retrieve.}
+\item{NextToken}{The token for the next set of items to return. (You received this token
+from a previous call.)}
 }
 \description{
 Returns descriptions of all resources of the specified stack.

@@ -211,6 +211,18 @@ NULL
   return(populate(args, shape))
 }
 
+.codepipeline$list_deploy_action_execution_targets_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(pipelineName = structure(logical(0), tags = list(type = "string")), actionExecutionId = structure(logical(0), tags = list(type = "string")), filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codepipeline$list_deploy_action_execution_targets_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(targets = structure(list(structure(list(targetId = structure(logical(0), tags = list(type = "string")), targetType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp")), events = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp")), context = structure(list(ssmCommandId = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .codepipeline$list_pipeline_executions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(pipelineName = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer")), filter = structure(list(succeededInStage = structure(list(stageName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))

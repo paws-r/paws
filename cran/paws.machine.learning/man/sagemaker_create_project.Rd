@@ -10,7 +10,8 @@ sagemaker_create_project(
   ProjectName,
   ProjectDescription = NULL,
   ServiceCatalogProvisioningDetails = NULL,
-  Tags = NULL
+  Tags = NULL,
+  TemplateProviders = NULL
 )
 }
 \arguments{
@@ -27,6 +28,9 @@ provisioning artifact ID. For more information, see \href{https://docs.aws.amazo
 your Amazon Web Services resource costs. For more information, see
 \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}
 in the \emph{Amazon Web Services General Reference Guide}.}
+
+\item{TemplateProviders}{An array of template provider configurations for creating infrastructure
+resources for the project.}
 }
 \description{
 Creates a machine learning (ML) project that can contain one or more templates that set up an ML pipeline from training to deploying an approved model.

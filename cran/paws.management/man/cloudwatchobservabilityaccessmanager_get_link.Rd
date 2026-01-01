@@ -5,10 +5,18 @@
 \alias{cloudwatchobservabilityaccessmanager_get_link}
 \title{Returns complete information about one link}
 \usage{
-cloudwatchobservabilityaccessmanager_get_link(Identifier)
+cloudwatchobservabilityaccessmanager_get_link(Identifier, IncludeTags = NULL)
 }
 \arguments{
 \item{Identifier}{[required] The ARN of the link to retrieve information for.}
+
+\item{IncludeTags}{Specifies whether to include the tags associated with the link in the
+response. When \code{IncludeTags} is set to \code{true} and the caller has the
+required permission, \code{oam:ListTagsForResource}, the API will return the
+tags for the specified resource. If the caller doesn't have the required
+permission, \code{oam:ListTagsForResource}, the API will raise an exception.
+
+The default value is \code{false}.}
 }
 \description{
 Returns complete information about one link.

@@ -53,7 +53,8 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Amazon Lex Model Building V2
+Amazon Lex Model Building Service provides APIs for creating, managing,
+and deploying conversational bots and their components.
 }
 \section{Service syntax}{
 

@@ -5,10 +5,15 @@
 \title{Gets information about any operation that returns an operation ID in the
 response, such as a CreateHttpNamespace request}
 \usage{
-servicediscovery_get_operation(OperationId)
+servicediscovery_get_operation(OperationId, OwnerAccount = NULL)
 }
 \arguments{
 \item{OperationId}{[required] The ID of the operation that you want to get more information about.}
+
+\item{OwnerAccount}{The ID of the Amazon Web Services account that owns the namespace
+associated with the operation, as specified in the namespace
+\code{ResourceOwner} field. For operations associated with namespaces that
+are shared with your account, you must specify an \code{OwnerAccount}.}
 }
 \description{
 Gets information about any operation that returns an operation ID in the response, such as a \code{\link[=servicediscovery_create_http_namespace]{create_http_namespace}} request.

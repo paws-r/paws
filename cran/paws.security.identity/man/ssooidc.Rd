@@ -57,7 +57,7 @@ Identity Center.
 \strong{API namespaces}
 
 IAM Identity Center uses the \code{sso} and \code{identitystore} API namespaces.
-IAM Identity Center OpenID Connect uses the \code{sso-oidc} namespace.
+IAM Identity Center OpenID Connect uses the \code{sso-oauth} namespace.
 
 \strong{Considerations for using this guide}
 
@@ -132,7 +132,7 @@ in the \emph{IAM Identity Center User Guide}.
 
 \tabular{ll}{
 \link[=ssooidc_create_token]{create_token} \tab Creates and returns access and refresh tokens for clients that are authenticated using client secrets\cr
-\link[=ssooidc_create_token_with_iam]{create_token_with_iam} \tab Creates and returns access and refresh tokens for clients and applications that are authenticated using IAM entities\cr
+\link[=ssooidc_create_token_with_iam]{create_token_with_iam} \tab Creates and returns access and refresh tokens for authorized client applications that are authenticated using any IAM entity, such as a service role or user\cr
 \link[=ssooidc_register_client]{register_client} \tab Registers a public client with IAM Identity Center\cr
 \link[=ssooidc_start_device_authorization]{start_device_authorization} \tab Initiates device authorization by requesting a pair of verification codes from the authorization service
 }

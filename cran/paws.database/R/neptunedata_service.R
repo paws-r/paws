@@ -175,7 +175,7 @@ neptunedata <- function(config = list(), credentials = list(), endpoint = NULL, 
   service_id = "neptunedata",
   api_version = "2023-08-01",
   signing_name = "neptune-db",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 

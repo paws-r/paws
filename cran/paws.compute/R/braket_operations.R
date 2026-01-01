@@ -3,14 +3,14 @@
 #' @include braket_service.R
 NULL
 
-#' Cancels an Amazon Braket job
+#' Cancels an Amazon Braket hybrid job
 #'
 #' @description
-#' Cancels an Amazon Braket job.
+#' Cancels an Amazon Braket hybrid job.
 #'
 #' See [https://www.paws-r-sdk.com/docs/braket_cancel_job/](https://www.paws-r-sdk.com/docs/braket_cancel_job/) for full documentation.
 #'
-#' @param jobArn &#91;required&#93; The ARN of the Amazon Braket job to cancel.
+#' @param jobArn &#91;required&#93; The ARN of the Amazon Braket hybrid job to cancel.
 #'
 #' @keywords internal
 #'
@@ -41,13 +41,13 @@ braket_cancel_job <- function(jobArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/braket_cancel_quantum_task/](https://www.paws-r-sdk.com/docs/braket_cancel_quantum_task/) for full documentation.
 #'
-#' @param clientToken &#91;required&#93; The client token associated with the request.
-#' @param quantumTaskArn &#91;required&#93; The ARN of the task to cancel.
+#' @param quantumTaskArn &#91;required&#93; The ARN of the quantum task to cancel.
+#' @param clientToken &#91;required&#93; The client token associated with the cancellation request.
 #'
 #' @keywords internal
 #'
 #' @rdname braket_cancel_quantum_task
-braket_cancel_quantum_task <- function(clientToken, quantumTaskArn) {
+braket_cancel_quantum_task <- function(quantumTaskArn, clientToken) {
   op <- new_operation(
     name = "CancelQuantumTask",
     http_method = "PUT",
@@ -56,7 +56,7 @@ braket_cancel_quantum_task <- function(clientToken, quantumTaskArn) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .braket$cancel_quantum_task_input(clientToken = clientToken, quantumTaskArn = quantumTaskArn)
+  input <- .braket$cancel_quantum_task_input(quantumTaskArn = quantumTaskArn, clientToken = clientToken)
   output <- .braket$cancel_quantum_task_output()
   config <- get_config()
   svc <- .braket$service(config, op)
@@ -66,44 +66,52 @@ braket_cancel_quantum_task <- function(clientToken, quantumTaskArn) {
 }
 .braket$operations$cancel_quantum_task <- braket_cancel_quantum_task
 
-#' Creates an Amazon Braket job
+#' Creates an Amazon Braket hybrid job
 #'
 #' @description
-#' Creates an Amazon Braket job.
+#' Creates an Amazon Braket hybrid job.
 #'
 #' See [https://www.paws-r-sdk.com/docs/braket_create_job/](https://www.paws-r-sdk.com/docs/braket_create_job/) for full documentation.
 #'
+#' @param clientToken &#91;required&#93; The client token associated with this request that guarantees that the
+#' request is idempotent.
 #' @param algorithmSpecification &#91;required&#93; Definition of the Amazon Braket job to be created. Specifies the
 #' container image the job uses and information about the Python scripts
 #' used for entry and training.
-#' @param associations The list of Amazon Braket resources associated with the hybrid job.
-#' @param checkpointConfig Information about the output locations for job checkpoint data.
-#' @param clientToken &#91;required&#93; A unique token that guarantees that the call to this API is idempotent.
-#' @param deviceConfig &#91;required&#93; The quantum processing unit (QPU) or simulator used to create an Amazon
-#' Braket job.
-#' @param hyperParameters Algorithm-specific parameters used by an Amazon Braket job that
-#' influence the quality of the training job. The values are set with a
-#' string of JSON key:value pairs, where the key is the name of the
-#' hyperparameter and the value is the value of th hyperparameter.
 #' @param inputDataConfig A list of parameters that specify the name and type of input data and
 #' where it is located.
-#' @param instanceConfig &#91;required&#93; Configuration of the resource instances to use while running the hybrid
-#' job on Amazon Braket.
-#' @param jobName &#91;required&#93; The name of the Amazon Braket job.
-#' @param outputDataConfig &#91;required&#93; The path to the S3 location where you want to store job artifacts and
-#' the encryption key used to store them.
+#' @param outputDataConfig &#91;required&#93; The path to the S3 location where you want to store hybrid job artifacts
+#' and the encryption key used to store them.
+#' @param checkpointConfig Information about the output locations for hybrid job checkpoint data.
+#' @param jobName &#91;required&#93; The name of the Amazon Braket hybrid job.
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that Amazon Braket can
 #' assume to perform tasks on behalf of a user. It can access user
 #' resources, run an Amazon Braket job container on behalf of user, and
-#' output resources to the users' s3 buckets.
-#' @param stoppingCondition The user-defined criteria that specifies when a job stops running.
-#' @param tags A tag object that consists of a key and an optional value, used to
-#' manage metadata for Amazon Braket resources.
+#' output results and hybrid job details to the users' s3 buckets.
+#' @param stoppingCondition The user-defined criteria that specifies when a hybrid job stops
+#' running.
+#' @param instanceConfig &#91;required&#93; Configuration of the resource instances to use while running the hybrid
+#' job on Amazon Braket.
+#' @param hyperParameters Algorithm-specific parameters used by an Amazon Braket hybrid job that
+#' influence the quality of the training job. The values are set with a map
+#' of JSON key:value pairs, where the key is the name of the hyperparameter
+#' and the value is the value of the hyperparameter.
+#' 
+#' Do not include any security-sensitive information including account
+#' access IDs, secrets, or tokens in any hyperparameter fields. As part of
+#' the shared responsibility model, you are responsible for any potential
+#' exposure, unauthorized access, or compromise of your sensitive data if
+#' caused by security-sensitive information included in the request
+#' hyperparameter variable or plain text fields.
+#' @param deviceConfig &#91;required&#93; The quantum processing unit (QPU) or simulator used to create an Amazon
+#' Braket hybrid job.
+#' @param tags Tags to be added to the hybrid job you're creating.
+#' @param associations The list of Amazon Braket resources associated with the hybrid job.
 #'
 #' @keywords internal
 #'
 #' @rdname braket_create_job
-braket_create_job <- function(algorithmSpecification, associations = NULL, checkpointConfig = NULL, clientToken, deviceConfig, hyperParameters = NULL, inputDataConfig = NULL, instanceConfig, jobName, outputDataConfig, roleArn, stoppingCondition = NULL, tags = NULL) {
+braket_create_job <- function(clientToken, algorithmSpecification, inputDataConfig = NULL, outputDataConfig, checkpointConfig = NULL, jobName, roleArn, stoppingCondition = NULL, instanceConfig, hyperParameters = NULL, deviceConfig, tags = NULL, associations = NULL) {
   op <- new_operation(
     name = "CreateJob",
     http_method = "POST",
@@ -112,7 +120,7 @@ braket_create_job <- function(algorithmSpecification, associations = NULL, check
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .braket$create_job_input(algorithmSpecification = algorithmSpecification, associations = associations, checkpointConfig = checkpointConfig, clientToken = clientToken, deviceConfig = deviceConfig, hyperParameters = hyperParameters, inputDataConfig = inputDataConfig, instanceConfig = instanceConfig, jobName = jobName, outputDataConfig = outputDataConfig, roleArn = roleArn, stoppingCondition = stoppingCondition, tags = tags)
+  input <- .braket$create_job_input(clientToken = clientToken, algorithmSpecification = algorithmSpecification, inputDataConfig = inputDataConfig, outputDataConfig = outputDataConfig, checkpointConfig = checkpointConfig, jobName = jobName, roleArn = roleArn, stoppingCondition = stoppingCondition, instanceConfig = instanceConfig, hyperParameters = hyperParameters, deviceConfig = deviceConfig, tags = tags, associations = associations)
   output <- .braket$create_job_output()
   config <- get_config()
   svc <- .braket$service(config, op)
@@ -129,23 +137,24 @@ braket_create_job <- function(algorithmSpecification, associations = NULL, check
 #'
 #' See [https://www.paws-r-sdk.com/docs/braket_create_quantum_task/](https://www.paws-r-sdk.com/docs/braket_create_quantum_task/) for full documentation.
 #'
-#' @param action &#91;required&#93; The action associated with the task.
-#' @param associations The list of Amazon Braket resources associated with the quantum task.
 #' @param clientToken &#91;required&#93; The client token associated with the request.
-#' @param deviceArn &#91;required&#93; The ARN of the device to run the task on.
-#' @param deviceParameters The parameters for the device to run the task on.
-#' @param jobToken The token for an Amazon Braket job that associates it with the quantum
-#' task.
-#' @param outputS3Bucket &#91;required&#93; The S3 bucket to store task result files in.
-#' @param outputS3KeyPrefix &#91;required&#93; The key prefix for the location in the S3 bucket to store task results
-#' in.
-#' @param shots &#91;required&#93; The number of shots to use for the task.
+#' @param deviceArn &#91;required&#93; The ARN of the device to run the quantum task on.
+#' @param deviceParameters The parameters for the device to run the quantum task on.
+#' @param shots &#91;required&#93; The number of shots to use for the quantum task.
+#' @param outputS3Bucket &#91;required&#93; The S3 bucket to store quantum task result files in.
+#' @param outputS3KeyPrefix &#91;required&#93; The key prefix for the location in the S3 bucket to store quantum task
+#' results in.
+#' @param action &#91;required&#93; The action associated with the quantum task.
 #' @param tags Tags to be added to the quantum task you're creating.
+#' @param jobToken The token for an Amazon Braket hybrid job that associates it with the
+#' quantum task.
+#' @param associations The list of Amazon Braket resources associated with the quantum task.
+#' @param experimentalCapabilities Enable experimental capabilities for the quantum task.
 #'
 #' @keywords internal
 #'
 #' @rdname braket_create_quantum_task
-braket_create_quantum_task <- function(action, associations = NULL, clientToken, deviceArn, deviceParameters = NULL, jobToken = NULL, outputS3Bucket, outputS3KeyPrefix, shots, tags = NULL) {
+braket_create_quantum_task <- function(clientToken, deviceArn, deviceParameters = NULL, shots, outputS3Bucket, outputS3KeyPrefix, action, tags = NULL, jobToken = NULL, associations = NULL, experimentalCapabilities = NULL) {
   op <- new_operation(
     name = "CreateQuantumTask",
     http_method = "POST",
@@ -154,7 +163,7 @@ braket_create_quantum_task <- function(action, associations = NULL, clientToken,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .braket$create_quantum_task_input(action = action, associations = associations, clientToken = clientToken, deviceArn = deviceArn, deviceParameters = deviceParameters, jobToken = jobToken, outputS3Bucket = outputS3Bucket, outputS3KeyPrefix = outputS3KeyPrefix, shots = shots, tags = tags)
+  input <- .braket$create_quantum_task_input(clientToken = clientToken, deviceArn = deviceArn, deviceParameters = deviceParameters, shots = shots, outputS3Bucket = outputS3Bucket, outputS3KeyPrefix = outputS3KeyPrefix, action = action, tags = tags, jobToken = jobToken, associations = associations, experimentalCapabilities = experimentalCapabilities)
   output <- .braket$create_quantum_task_output()
   config <- get_config()
   svc <- .braket$service(config, op)
@@ -163,6 +172,78 @@ braket_create_quantum_task <- function(action, associations = NULL, clientToken,
   return(response)
 }
 .braket$operations$create_quantum_task <- braket_create_quantum_task
+
+#' Creates a spending limit for a specified quantum device
+#'
+#' @description
+#' Creates a spending limit for a specified quantum device. Spending limits help you control costs by setting maximum amounts that can be spent on quantum computing tasks within a specified time period. Simulators do not support spending limits.
+#'
+#' See [https://www.paws-r-sdk.com/docs/braket_create_spending_limit/](https://www.paws-r-sdk.com/docs/braket_create_spending_limit/) for full documentation.
+#'
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier to ensure that the operation
+#' completes no more than one time. If this token matches a previous
+#' request, Amazon Braket ignores the request, but does not return an
+#' error.
+#' @param deviceArn &#91;required&#93; The Amazon Resource Name (ARN) of the quantum device to apply the
+#' spending limit to.
+#' @param spendingLimit &#91;required&#93; The maximum amount that can be spent on the specified device, in USD.
+#' @param timePeriod The time period during which the spending limit is active, including
+#' start and end dates.
+#' @param tags The tags to apply to the spending limit. Each tag consists of a key and
+#' an optional value.
+#'
+#' @keywords internal
+#'
+#' @rdname braket_create_spending_limit
+braket_create_spending_limit <- function(clientToken, deviceArn, spendingLimit, timePeriod = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateSpendingLimit",
+    http_method = "POST",
+    http_path = "/spending-limit",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .braket$create_spending_limit_input(clientToken = clientToken, deviceArn = deviceArn, spendingLimit = spendingLimit, timePeriod = timePeriod, tags = tags)
+  output <- .braket$create_spending_limit_output()
+  config <- get_config()
+  svc <- .braket$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.braket$operations$create_spending_limit <- braket_create_spending_limit
+
+#' Deletes an existing spending limit
+#'
+#' @description
+#' Deletes an existing spending limit. This operation permanently removes the spending limit and cannot be undone. After deletion, the associated device becomes unrestricted for spending.
+#'
+#' See [https://www.paws-r-sdk.com/docs/braket_delete_spending_limit/](https://www.paws-r-sdk.com/docs/braket_delete_spending_limit/) for full documentation.
+#'
+#' @param spendingLimitArn &#91;required&#93; The Amazon Resource Name (ARN) of the spending limit to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname braket_delete_spending_limit
+braket_delete_spending_limit <- function(spendingLimitArn) {
+  op <- new_operation(
+    name = "DeleteSpendingLimit",
+    http_method = "DELETE",
+    http_path = "/spending-limit/{spendingLimitArn}/delete",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .braket$delete_spending_limit_input(spendingLimitArn = spendingLimitArn)
+  output <- .braket$delete_spending_limit_output()
+  config <- get_config()
+  svc <- .braket$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.braket$operations$delete_spending_limit <- braket_delete_spending_limit
 
 #' Retrieves the devices available in Amazon Braket
 #'
@@ -195,20 +276,21 @@ braket_get_device <- function(deviceArn) {
 }
 .braket$operations$get_device <- braket_get_device
 
-#' Retrieves the specified Amazon Braket job
+#' Retrieves the specified Amazon Braket hybrid job
 #'
 #' @description
-#' Retrieves the specified Amazon Braket job.
+#' Retrieves the specified Amazon Braket hybrid job.
 #'
 #' See [https://www.paws-r-sdk.com/docs/braket_get_job/](https://www.paws-r-sdk.com/docs/braket_get_job/) for full documentation.
 #'
-#' @param additionalAttributeNames A list of attributes to return information for.
-#' @param jobArn &#91;required&#93; The ARN of the job to retrieve.
+#' @param jobArn &#91;required&#93; The ARN of the hybrid job to retrieve.
+#' @param additionalAttributeNames A list of attributes to return additional information for. Only the
+#' QueueInfo additional attribute name is currently supported.
 #'
 #' @keywords internal
 #'
 #' @rdname braket_get_job
-braket_get_job <- function(additionalAttributeNames = NULL, jobArn) {
+braket_get_job <- function(jobArn, additionalAttributeNames = NULL) {
   op <- new_operation(
     name = "GetJob",
     http_method = "GET",
@@ -217,7 +299,7 @@ braket_get_job <- function(additionalAttributeNames = NULL, jobArn) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .braket$get_job_input(additionalAttributeNames = additionalAttributeNames, jobArn = jobArn)
+  input <- .braket$get_job_input(jobArn = jobArn, additionalAttributeNames = additionalAttributeNames)
   output <- .braket$get_job_output()
   config <- get_config()
   svc <- .braket$service(config, op)
@@ -234,13 +316,14 @@ braket_get_job <- function(additionalAttributeNames = NULL, jobArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/braket_get_quantum_task/](https://www.paws-r-sdk.com/docs/braket_get_quantum_task/) for full documentation.
 #'
-#' @param additionalAttributeNames A list of attributes to return information for.
-#' @param quantumTaskArn &#91;required&#93; The ARN of the task to retrieve.
+#' @param quantumTaskArn &#91;required&#93; The ARN of the quantum task to retrieve.
+#' @param additionalAttributeNames A list of attributes to return additional information for. Only the
+#' QueueInfo additional attribute name is currently supported.
 #'
 #' @keywords internal
 #'
 #' @rdname braket_get_quantum_task
-braket_get_quantum_task <- function(additionalAttributeNames = NULL, quantumTaskArn) {
+braket_get_quantum_task <- function(quantumTaskArn, additionalAttributeNames = NULL) {
   op <- new_operation(
     name = "GetQuantumTask",
     http_method = "GET",
@@ -249,7 +332,7 @@ braket_get_quantum_task <- function(additionalAttributeNames = NULL, quantumTask
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .braket$get_quantum_task_input(additionalAttributeNames = additionalAttributeNames, quantumTaskArn = quantumTaskArn)
+  input <- .braket$get_quantum_task_input(quantumTaskArn = quantumTaskArn, additionalAttributeNames = additionalAttributeNames)
   output <- .braket$get_quantum_task_output()
   config <- get_config()
   svc <- .braket$service(config, op)
@@ -297,16 +380,16 @@ braket_list_tags_for_resource <- function(resourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/braket_search_devices/](https://www.paws-r-sdk.com/docs/braket_search_devices/) for full documentation.
 #'
-#' @param filters &#91;required&#93; The filter values to use to search for a device.
-#' @param maxResults The maximum number of results to return in the response.
 #' @param nextToken A token used for pagination of results returned in the response. Use the
-#' token returned from the previous request continue results where the
+#' token returned from the previous request to continue search where the
 #' previous request ended.
+#' @param maxResults The maximum number of results to return in the response.
+#' @param filters &#91;required&#93; Array of SearchDevicesFilter objects to use when searching for devices.
 #'
 #' @keywords internal
 #'
 #' @rdname braket_search_devices
-braket_search_devices <- function(filters, maxResults = NULL, nextToken = NULL) {
+braket_search_devices <- function(nextToken = NULL, maxResults = NULL, filters) {
   op <- new_operation(
     name = "SearchDevices",
     http_method = "POST",
@@ -315,7 +398,7 @@ braket_search_devices <- function(filters, maxResults = NULL, nextToken = NULL) 
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "devices"),
     stream_api = FALSE
   )
-  input <- .braket$search_devices_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
+  input <- .braket$search_devices_input(nextToken = nextToken, maxResults = maxResults, filters = filters)
   output <- .braket$search_devices_output()
   config <- get_config()
   svc <- .braket$service(config, op)
@@ -325,23 +408,24 @@ braket_search_devices <- function(filters, maxResults = NULL, nextToken = NULL) 
 }
 .braket$operations$search_devices <- braket_search_devices
 
-#' Searches for Amazon Braket jobs that match the specified filter values
+#' Searches for Amazon Braket hybrid jobs that match the specified filter
+#' values
 #'
 #' @description
-#' Searches for Amazon Braket jobs that match the specified filter values.
+#' Searches for Amazon Braket hybrid jobs that match the specified filter values.
 #'
 #' See [https://www.paws-r-sdk.com/docs/braket_search_jobs/](https://www.paws-r-sdk.com/docs/braket_search_jobs/) for full documentation.
 #'
-#' @param filters &#91;required&#93; The filter values to use when searching for a job.
-#' @param maxResults The maximum number of results to return in the response.
 #' @param nextToken A token used for pagination of results returned in the response. Use the
-#' token returned from the previous request to continue results where the
+#' token returned from the previous request to continue search where the
 #' previous request ended.
+#' @param maxResults The maximum number of results to return in the response.
+#' @param filters &#91;required&#93; Array of SearchJobsFilter objects to use when searching for hybrid jobs.
 #'
 #' @keywords internal
 #'
 #' @rdname braket_search_jobs
-braket_search_jobs <- function(filters, maxResults = NULL, nextToken = NULL) {
+braket_search_jobs <- function(nextToken = NULL, maxResults = NULL, filters) {
   op <- new_operation(
     name = "SearchJobs",
     http_method = "POST",
@@ -350,7 +434,7 @@ braket_search_jobs <- function(filters, maxResults = NULL, nextToken = NULL) {
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobs"),
     stream_api = FALSE
   )
-  input <- .braket$search_jobs_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
+  input <- .braket$search_jobs_input(nextToken = nextToken, maxResults = maxResults, filters = filters)
   output <- .braket$search_jobs_output()
   config <- get_config()
   svc <- .braket$service(config, op)
@@ -367,16 +451,17 @@ braket_search_jobs <- function(filters, maxResults = NULL, nextToken = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/braket_search_quantum_tasks/](https://www.paws-r-sdk.com/docs/braket_search_quantum_tasks/) for full documentation.
 #'
-#' @param filters &#91;required&#93; Array of `SearchQuantumTasksFilter` objects.
-#' @param maxResults Maximum number of results to return in the response.
 #' @param nextToken A token used for pagination of results returned in the response. Use the
-#' token returned from the previous request continue results where the
+#' token returned from the previous request to continue search where the
 #' previous request ended.
+#' @param maxResults Maximum number of results to return in the response.
+#' @param filters &#91;required&#93; Array of `SearchQuantumTasksFilter` objects to use when searching for
+#' quantum tasks.
 #'
 #' @keywords internal
 #'
 #' @rdname braket_search_quantum_tasks
-braket_search_quantum_tasks <- function(filters, maxResults = NULL, nextToken = NULL) {
+braket_search_quantum_tasks <- function(nextToken = NULL, maxResults = NULL, filters) {
   op <- new_operation(
     name = "SearchQuantumTasks",
     http_method = "POST",
@@ -385,7 +470,7 @@ braket_search_quantum_tasks <- function(filters, maxResults = NULL, nextToken = 
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "quantumTasks"),
     stream_api = FALSE
   )
-  input <- .braket$search_quantum_tasks_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
+  input <- .braket$search_quantum_tasks_input(nextToken = nextToken, maxResults = maxResults, filters = filters)
   output <- .braket$search_quantum_tasks_output()
   config <- get_config()
   svc <- .braket$service(config, op)
@@ -395,6 +480,43 @@ braket_search_quantum_tasks <- function(filters, maxResults = NULL, nextToken = 
 }
 .braket$operations$search_quantum_tasks <- braket_search_quantum_tasks
 
+#' Searches and lists spending limits based on specified filters
+#'
+#' @description
+#' Searches and lists spending limits based on specified filters. This operation supports pagination and allows filtering by various criteria to find specific spending limits. We recommend using pagination to ensure that the operation returns quickly and successfully.
+#'
+#' See [https://www.paws-r-sdk.com/docs/braket_search_spending_limits/](https://www.paws-r-sdk.com/docs/braket_search_spending_limits/) for full documentation.
+#'
+#' @param nextToken The token to retrieve the next page of results. This value is returned
+#' from a previous call to SearchSpendingLimits when there are more results
+#' available.
+#' @param maxResults The maximum number of results to return in a single call. Minimum value
+#' of 1, maximum value of 100. Default is 20.
+#' @param filters The filters to apply when searching for spending limits. Use filters to
+#' narrow down the results based on specific criteria.
+#'
+#' @keywords internal
+#'
+#' @rdname braket_search_spending_limits
+braket_search_spending_limits <- function(nextToken = NULL, maxResults = NULL, filters = NULL) {
+  op <- new_operation(
+    name = "SearchSpendingLimits",
+    http_method = "POST",
+    http_path = "/spending-limits",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "spendingLimits"),
+    stream_api = FALSE
+  )
+  input <- .braket$search_spending_limits_input(nextToken = nextToken, maxResults = maxResults, filters = filters)
+  output <- .braket$search_spending_limits_output()
+  config <- get_config()
+  svc <- .braket$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.braket$operations$search_spending_limits <- braket_search_spending_limits
+
 #' Add a tag to the specified resource
 #'
 #' @description
@@ -403,7 +525,8 @@ braket_search_quantum_tasks <- function(filters, maxResults = NULL, nextToken = 
 #' See [https://www.paws-r-sdk.com/docs/braket_tag_resource/](https://www.paws-r-sdk.com/docs/braket_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; Specify the `resourceArn` of the resource to which a tag will be added.
-#' @param tags &#91;required&#93; Specify the tags to add to the resource.
+#' @param tags &#91;required&#93; Specify the tags to add to the resource. Tags can be specified as a
+#' key-value map.
 #'
 #' @keywords internal
 #'
@@ -459,3 +582,42 @@ braket_untag_resource <- function(resourceArn, tagKeys) {
   return(response)
 }
 .braket$operations$untag_resource <- braket_untag_resource
+
+#' Updates an existing spending limit
+#'
+#' @description
+#' Updates an existing spending limit. You can modify the spending amount or time period. Changes take effect immediately.
+#'
+#' See [https://www.paws-r-sdk.com/docs/braket_update_spending_limit/](https://www.paws-r-sdk.com/docs/braket_update_spending_limit/) for full documentation.
+#'
+#' @param spendingLimitArn &#91;required&#93; The Amazon Resource Name (ARN) of the spending limit to update.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier to ensure that the operation
+#' completes no more than one time. If this token matches a previous
+#' request, Amazon Braket ignores the request, but does not return an
+#' error.
+#' @param spendingLimit The new maximum amount that can be spent on the specified device, in
+#' USD.
+#' @param timePeriod The new time period during which the spending limit is active, including
+#' start and end dates.
+#'
+#' @keywords internal
+#'
+#' @rdname braket_update_spending_limit
+braket_update_spending_limit <- function(spendingLimitArn, clientToken, spendingLimit = NULL, timePeriod = NULL) {
+  op <- new_operation(
+    name = "UpdateSpendingLimit",
+    http_method = "PATCH",
+    http_path = "/spending-limit/{spendingLimitArn}/update",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .braket$update_spending_limit_input(spendingLimitArn = spendingLimitArn, clientToken = clientToken, spendingLimit = spendingLimit, timePeriod = timePeriod)
+  output <- .braket$update_spending_limit_output()
+  config <- get_config()
+  svc <- .braket$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.braket$operations$update_spending_limit <- braket_update_spending_limit

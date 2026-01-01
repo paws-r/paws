@@ -11,12 +11,13 @@ guardduty_create_threat_intel_set(
   Location,
   Activate,
   ClientToken = NULL,
-  Tags = NULL
+  Tags = NULL,
+  ExpectedBucketOwner = NULL
 )
 }
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account for which you
-want to create a \code{ThreatIntelSet}.
+want to create a \code{threatIntelSet}.
 
 To find the \code{detectorId} in the current Region, see the Settings page in
 the GuardDuty console, or run the
@@ -36,6 +37,9 @@ uploaded ThreatIntelSet.}
 \item{ClientToken}{The idempotency token for the create request.}
 
 \item{Tags}{The tags to be added to a new threat list resource.}
+
+\item{ExpectedBucketOwner}{The Amazon Web Services account ID that owns the Amazon S3 bucket
+specified in the \strong{location} parameter.}
 }
 \description{
 Creates a new ThreatIntelSet. ThreatIntelSets consist of known malicious IP addresses. GuardDuty generates findings based on ThreatIntelSets. Only users of the administrator account can use this operation.

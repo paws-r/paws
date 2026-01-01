@@ -98,6 +98,9 @@ NULL
 #'   batchInferenceJobConfig = list(
 #'     itemExplorationConfig = list(
 #'       "string"
+#'     ),
+#'     rankingInfluence = list(
+#'       123.0
 #'     )
 #'   ),
 #'   tags = list(
@@ -349,7 +352,10 @@ personalize_create_batch_segment_job <- function(jobName, solutionVersionArn, fi
 #'       "string"
 #'     ),
 #'     enableMetadataWithRecommendations = TRUE|FALSE,
-#'     syncWithLatestSolutionVersion = TRUE|FALSE
+#'     syncWithLatestSolutionVersion = TRUE|FALSE,
+#'     rankingInfluence = list(
+#'       123.0
+#'     )
 #'   ),
 #'   tags = list(
 #'     list(
@@ -892,7 +898,7 @@ personalize_create_dataset_group <- function(name, roleArn = NULL, kmsKeyArn = N
 #' @param jobName &#91;required&#93; The name for the dataset import job.
 #' @param datasetArn &#91;required&#93; The ARN of the dataset that receives the imported data.
 #' @param dataSource &#91;required&#93; The Amazon S3 bucket that contains the training data to import.
-#' @param roleArn &#91;required&#93; The ARN of the IAM role that has permissions to read from the Amazon S3
+#' @param roleArn The ARN of the IAM role that has permissions to read from the Amazon S3
 #' data source.
 #' @param tags A list of
 #' [tags](https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html)
@@ -943,7 +949,7 @@ personalize_create_dataset_group <- function(name, roleArn = NULL, kmsKeyArn = N
 #' @rdname personalize_create_dataset_import_job
 #'
 #' @aliases personalize_create_dataset_import_job
-personalize_create_dataset_import_job <- function(jobName, datasetArn, dataSource, roleArn, tags = NULL, importMode = NULL, publishAttributionMetricsToS3 = NULL) {
+personalize_create_dataset_import_job <- function(jobName, datasetArn, dataSource, roleArn = NULL, tags = NULL, importMode = NULL, publishAttributionMetricsToS3 = NULL) {
   op <- new_operation(
     name = "CreateDatasetImportJob",
     http_method = "POST",
@@ -1314,6 +1320,11 @@ personalize_create_metric_attribution <- function(name, datasetGroupArn, metrics
 #'         list(
 #'           "string"
 #'         )
+#'       ),
+#'       includedDatasetColumns = list(
+#'         list(
+#'           "string"
+#'         )
 #'       )
 #'     ),
 #'     enableMetadataWithRecommendations = TRUE|FALSE
@@ -1502,8 +1513,8 @@ personalize_create_schema <- function(name, schema, domain = NULL) {
 #'
 #' @usage
 #' personalize_create_solution(name, performHPO, performAutoML,
-#'   performAutoTraining, recipeArn, datasetGroupArn, eventType,
-#'   solutionConfig, tags)
+#'   performAutoTraining, performIncrementalUpdate, recipeArn,
+#'   datasetGroupArn, eventType, solutionConfig, tags)
 #'
 #' @param name &#91;required&#93; The name for the solution.
 #' @param performHPO Whether to perform hyperparameter optimization (HPO) on the specified or
@@ -1542,6 +1553,11 @@ personalize_create_schema <- function(name, schema, domain = NULL) {
 #' [`list_solution_versions`][personalize_list_solution_versions] API
 #' operation. To get its status, use the
 #' [`describe_solution_version`][personalize_describe_solution_version].
+#' @param performIncrementalUpdate Whether to perform incremental training updates on your model. When
+#' enabled, this allows the model to learn from new data more frequently
+#' without requiring full retraining, which enables near real-time
+#' personalization. This parameter is supported only for solutions that use
+#' the semantic-similarity recipe.
 #' @param recipeArn The Amazon Resource Name (ARN) of the recipe to use for model training.
 #' This is required when `performAutoML` is false. For information about
 #' different Amazon Personalize recipes and their ARNs, see [Choosing a
@@ -1579,6 +1595,7 @@ personalize_create_schema <- function(name, schema, domain = NULL) {
 #'   performHPO = TRUE|FALSE,
 #'   performAutoML = TRUE|FALSE,
 #'   performAutoTraining = TRUE|FALSE,
+#'   performIncrementalUpdate = TRUE|FALSE,
 #'   recipeArn = "string",
 #'   datasetGroupArn = "string",
 #'   eventType = "string",
@@ -1649,6 +1666,11 @@ personalize_create_schema <- function(name, schema, domain = NULL) {
 #'         list(
 #'           "string"
 #'         )
+#'       ),
+#'       includedDatasetColumns = list(
+#'         list(
+#'           "string"
+#'         )
 #'       )
 #'     ),
 #'     autoTrainingConfig = list(
@@ -1669,7 +1691,7 @@ personalize_create_schema <- function(name, schema, domain = NULL) {
 #' @rdname personalize_create_solution
 #'
 #' @aliases personalize_create_solution
-personalize_create_solution <- function(name, performHPO = NULL, performAutoML = NULL, performAutoTraining = NULL, recipeArn = NULL, datasetGroupArn, eventType = NULL, solutionConfig = NULL, tags = NULL) {
+personalize_create_solution <- function(name, performHPO = NULL, performAutoML = NULL, performAutoTraining = NULL, performIncrementalUpdate = NULL, recipeArn = NULL, datasetGroupArn, eventType = NULL, solutionConfig = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateSolution",
     http_method = "POST",
@@ -1678,7 +1700,7 @@ personalize_create_solution <- function(name, performHPO = NULL, performAutoML =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .personalize$create_solution_input(name = name, performHPO = performHPO, performAutoML = performAutoML, performAutoTraining = performAutoTraining, recipeArn = recipeArn, datasetGroupArn = datasetGroupArn, eventType = eventType, solutionConfig = solutionConfig, tags = tags)
+  input <- .personalize$create_solution_input(name = name, performHPO = performHPO, performAutoML = performAutoML, performAutoTraining = performAutoTraining, performIncrementalUpdate = performIncrementalUpdate, recipeArn = recipeArn, datasetGroupArn = datasetGroupArn, eventType = eventType, solutionConfig = solutionConfig, tags = tags)
   output <- .personalize$create_solution_output()
   config <- get_config()
   svc <- .personalize$service(config, op)
@@ -2380,6 +2402,9 @@ personalize_describe_algorithm <- function(algorithmArn) {
 #'     batchInferenceJobConfig = list(
 #'       itemExplorationConfig = list(
 #'         "string"
+#'       ),
+#'       rankingInfluence = list(
+#'         123.0
 #'       )
 #'     ),
 #'     roleArn = "string",
@@ -2547,7 +2572,10 @@ personalize_describe_batch_segment_job <- function(batchSegmentJobArn) {
 #'         "string"
 #'       ),
 #'       enableMetadataWithRecommendations = TRUE|FALSE,
-#'       syncWithLatestSolutionVersion = TRUE|FALSE
+#'       syncWithLatestSolutionVersion = TRUE|FALSE,
+#'       rankingInfluence = list(
+#'         123.0
+#'       )
 #'     ),
 #'     status = "string",
 #'     failureReason = "string",
@@ -2565,7 +2593,10 @@ personalize_describe_batch_segment_job <- function(batchSegmentJobArn) {
 #'           "string"
 #'         ),
 #'         enableMetadataWithRecommendations = TRUE|FALSE,
-#'         syncWithLatestSolutionVersion = TRUE|FALSE
+#'         syncWithLatestSolutionVersion = TRUE|FALSE,
+#'         rankingInfluence = list(
+#'           123.0
+#'         )
 #'       ),
 #'       status = "string",
 #'       failureReason = "string",
@@ -3347,6 +3378,11 @@ personalize_describe_recipe <- function(recipeArn) {
 #'           list(
 #'             "string"
 #'           )
+#'         ),
+#'         includedDatasetColumns = list(
+#'           list(
+#'             "string"
+#'           )
 #'         )
 #'       ),
 #'       enableMetadataWithRecommendations = TRUE|FALSE
@@ -3367,6 +3403,11 @@ personalize_describe_recipe <- function(recipeArn) {
 #'         minRecommendationRequestsPerSecond = 123,
 #'         trainingDataConfig = list(
 #'           excludedDatasetColumns = list(
+#'             list(
+#'               "string"
+#'             )
+#'           ),
+#'           includedDatasetColumns = list(
 #'             list(
 #'               "string"
 #'             )
@@ -3503,6 +3544,7 @@ personalize_describe_schema <- function(schemaArn) {
 #'     performHPO = TRUE|FALSE,
 #'     performAutoML = TRUE|FALSE,
 #'     performAutoTraining = TRUE|FALSE,
+#'     performIncrementalUpdate = TRUE|FALSE,
 #'     recipeArn = "string",
 #'     datasetGroupArn = "string",
 #'     eventType = "string",
@@ -3573,6 +3615,11 @@ personalize_describe_schema <- function(schemaArn) {
 #'           list(
 #'             "string"
 #'           )
+#'         ),
+#'         includedDatasetColumns = list(
+#'           list(
+#'             "string"
+#'           )
 #'         )
 #'       ),
 #'       autoTrainingConfig = list(
@@ -3619,6 +3666,7 @@ personalize_describe_schema <- function(schemaArn) {
 #'       ),
 #'       status = "string",
 #'       performAutoTraining = TRUE|FALSE,
+#'       performIncrementalUpdate = TRUE|FALSE,
 #'       creationDateTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -3683,6 +3731,7 @@ personalize_describe_solution <- function(solutionArn) {
 #'     solutionArn = "string",
 #'     performHPO = TRUE|FALSE,
 #'     performAutoML = TRUE|FALSE,
+#'     performIncrementalUpdate = TRUE|FALSE,
 #'     recipeArn = "string",
 #'     eventType = "string",
 #'     datasetGroupArn = "string",
@@ -3750,6 +3799,11 @@ personalize_describe_solution <- function(solutionArn) {
 #'       ),
 #'       trainingDataConfig = list(
 #'         excludedDatasetColumns = list(
+#'           list(
+#'             "string"
+#'           )
+#'         ),
+#'         includedDatasetColumns = list(
 #'           list(
 #'             "string"
 #'           )
@@ -4854,6 +4908,11 @@ personalize_list_recipes <- function(recipeProvider = NULL, nextToken = NULL, ma
 #'             list(
 #'               "string"
 #'             )
+#'           ),
+#'           includedDatasetColumns = list(
+#'             list(
+#'               "string"
+#'             )
 #'           )
 #'         ),
 #'         enableMetadataWithRecommendations = TRUE|FALSE
@@ -5517,7 +5576,10 @@ personalize_untag_resource <- function(resourceArn, tagKeys) {
 #'       "string"
 #'     ),
 #'     enableMetadataWithRecommendations = TRUE|FALSE,
-#'     syncWithLatestSolutionVersion = TRUE|FALSE
+#'     syncWithLatestSolutionVersion = TRUE|FALSE,
+#'     rankingInfluence = list(
+#'       123.0
+#'     )
 #'   )
 #' )
 #' ```
@@ -5709,6 +5771,11 @@ personalize_update_metric_attribution <- function(addMetrics = NULL, removeMetri
 #'         list(
 #'           "string"
 #'         )
+#'       ),
+#'       includedDatasetColumns = list(
+#'         list(
+#'           "string"
+#'         )
 #'       )
 #'     ),
 #'     enableMetadataWithRecommendations = TRUE|FALSE
@@ -5761,7 +5828,7 @@ personalize_update_recommender <- function(recommenderArn, recommenderConfig) {
 #'
 #' @usage
 #' personalize_update_solution(solutionArn, performAutoTraining,
-#'   solutionUpdateConfig)
+#'   performIncrementalUpdate, solutionUpdateConfig)
 #'
 #' @param solutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the solution to update.
 #' @param performAutoTraining Whether the solution uses automatic training to create new solution
@@ -5781,6 +5848,11 @@ personalize_update_recommender <- function(recommenderArn, recommenderConfig) {
 #' [`list_solution_versions`][personalize_list_solution_versions] API
 #' operation. To get its status, use the
 #' [`describe_solution_version`][personalize_describe_solution_version].
+#' @param performIncrementalUpdate Whether to perform incremental training updates on your model. When
+#' enabled, this allows the model to learn from new data more frequently
+#' without requiring full retraining, which enables near real-time
+#' personalization. This parameter is supported only for solutions that use
+#' the semantic-similarity recipe.
 #' @param solutionUpdateConfig The new configuration details of the solution.
 #'
 #' @return
@@ -5796,6 +5868,7 @@ personalize_update_recommender <- function(recommenderArn, recommenderConfig) {
 #' svc$update_solution(
 #'   solutionArn = "string",
 #'   performAutoTraining = TRUE|FALSE,
+#'   performIncrementalUpdate = TRUE|FALSE,
 #'   solutionUpdateConfig = list(
 #'     autoTrainingConfig = list(
 #'       schedulingExpression = "string"
@@ -5818,7 +5891,7 @@ personalize_update_recommender <- function(recommenderArn, recommenderConfig) {
 #' @rdname personalize_update_solution
 #'
 #' @aliases personalize_update_solution
-personalize_update_solution <- function(solutionArn, performAutoTraining = NULL, solutionUpdateConfig = NULL) {
+personalize_update_solution <- function(solutionArn, performAutoTraining = NULL, performIncrementalUpdate = NULL, solutionUpdateConfig = NULL) {
   op <- new_operation(
     name = "UpdateSolution",
     http_method = "POST",
@@ -5827,7 +5900,7 @@ personalize_update_solution <- function(solutionArn, performAutoTraining = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .personalize$update_solution_input(solutionArn = solutionArn, performAutoTraining = performAutoTraining, solutionUpdateConfig = solutionUpdateConfig)
+  input <- .personalize$update_solution_input(solutionArn = solutionArn, performAutoTraining = performAutoTraining, performIncrementalUpdate = performIncrementalUpdate, solutionUpdateConfig = solutionUpdateConfig)
   output <- .personalize$update_solution_output()
   config <- get_config()
   svc <- .personalize$service(config, op)

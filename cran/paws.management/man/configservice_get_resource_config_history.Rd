@@ -39,7 +39,7 @@ specify 0, Config uses the default.}
 the next page of results in a paginated response.}
 }
 \description{
-For accurate reporting on the compliance status, you must record the \verb{AWS::Config::ResourceCompliance} resource type. For more information, see \href{https://docs.aws.amazon.com/config/latest/developerguide/select-resources.html}{Selecting Which Resources Config Records}.
+For accurate reporting on the compliance status, you must record the \verb{AWS::Config::ResourceCompliance} resource type.
 
 See \url{https://www.paws-r-sdk.com/docs/configservice_get_resource_config_history/} for full documentation.
 }

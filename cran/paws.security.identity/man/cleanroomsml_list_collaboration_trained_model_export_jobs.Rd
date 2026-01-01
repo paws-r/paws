@@ -8,7 +8,8 @@ cleanroomsml_list_collaboration_trained_model_export_jobs(
   nextToken = NULL,
   maxResults = NULL,
   collaborationIdentifier,
-  trainedModelArn
+  trainedModelArn,
+  trainedModelVersionIdentifier = NULL
 )
 }
 \arguments{
@@ -22,6 +23,10 @@ model export jobs that you are interested in.}
 
 \item{trainedModelArn}{[required] The Amazon Resource Name (ARN) of the trained model that was used to
 create the export jobs that you are interested in.}
+
+\item{trainedModelVersionIdentifier}{The version identifier of the trained model to filter export jobs by.
+When specified, only export jobs for this specific version of the
+trained model are returned.}
 }
 \description{
 Returns a list of the export jobs for a trained model in a collaboration.

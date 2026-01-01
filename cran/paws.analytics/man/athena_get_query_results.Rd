@@ -5,7 +5,12 @@
 \title{Streams the results of a single query execution specified by
 QueryExecutionId from the Athena query results location in Amazon S3}
 \usage{
-athena_get_query_results(QueryExecutionId, NextToken = NULL, MaxResults = NULL)
+athena_get_query_results(
+  QueryExecutionId,
+  NextToken = NULL,
+  MaxResults = NULL,
+  QueryResultType = NULL
+)
 }
 \arguments{
 \item{QueryExecutionId}{[required] The unique ID of the query execution.}
@@ -16,6 +21,13 @@ of pages, pass in the \code{NextToken} from the response object of the
 previous page call.}
 
 \item{MaxResults}{The maximum number of results (rows) to return in this request.}
+
+\item{QueryResultType}{When you set this to \code{DATA_ROWS} or empty,
+\code{\link[=athena_get_query_results]{get_query_results}} returns the query
+results in rows. If set to \code{DATA_MANIFEST}, it returns the manifest file
+in rows. Only the query types \verb{CREATE TABLE AS SELECT}, \code{UNLOAD}, and
+\code{INSERT} can generate a manifest file. If you use \code{DATA_MANIFEST} for
+other query types, the query will fail.}
 }
 \description{
 Streams the results of a single query execution specified by \code{QueryExecutionId} from the Athena query results location in Amazon S3. For more information, see \href{https://docs.aws.amazon.com/athena/latest/ug/querying.html}{Working with query results, recent queries, and output files} in the \emph{Amazon Athena User Guide}. This request does not execute the query but returns results. Use \code{\link[=athena_start_query_execution]{start_query_execution}} to run a query.

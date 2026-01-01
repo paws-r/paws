@@ -11,7 +11,8 @@ workspaces_update_workspaces_pool(
   DirectoryId = NULL,
   Capacity = NULL,
   ApplicationSettings = NULL,
-  TimeoutSettings = NULL
+  TimeoutSettings = NULL,
+  RunningMode = NULL
 )
 }
 \arguments{
@@ -28,6 +29,9 @@ workspaces_update_workspaces_pool(
 \item{ApplicationSettings}{The persistent application settings for users in the pool.}
 
 \item{TimeoutSettings}{Indicates the timeout settings of the specified pool.}
+
+\item{RunningMode}{The desired running mode for the pool. The running mode can only be
+updated when the pool is in a stopped state.}
 }
 \description{
 Updates the specified pool.

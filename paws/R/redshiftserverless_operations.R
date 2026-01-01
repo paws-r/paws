@@ -305,6 +305,7 @@ redshiftserverless_create_endpoint_access <- function(endpointName, ownerAccount
 #'     adminPasswordSecretArn = "string",
 #'     adminPasswordSecretKmsKeyId = "string",
 #'     adminUsername = "string",
+#'     catalogArn = "string",
 #'     creationDate = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -314,6 +315,7 @@ redshiftserverless_create_endpoint_access <- function(endpointName, ownerAccount
 #'       "string"
 #'     ),
 #'     kmsKeyId = "string",
+#'     lakehouseRegistrationStatus = "string",
 #'     logExports = list(
 #'       "useractivitylog"|"userlog"|"connectionlog"
 #'     ),
@@ -1193,6 +1195,7 @@ redshiftserverless_delete_endpoint_access <- function(endpointName) {
 #'     adminPasswordSecretArn = "string",
 #'     adminPasswordSecretKmsKeyId = "string",
 #'     adminUsername = "string",
+#'     catalogArn = "string",
 #'     creationDate = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -1202,6 +1205,7 @@ redshiftserverless_delete_endpoint_access <- function(endpointName) {
 #'       "string"
 #'     ),
 #'     kmsKeyId = "string",
+#'     lakehouseRegistrationStatus = "string",
 #'     logExports = list(
 #'       "useractivitylog"|"userlog"|"connectionlog"
 #'     ),
@@ -1913,6 +1917,82 @@ redshiftserverless_get_endpoint_access <- function(endpointName) {
 }
 .redshiftserverless$operations$get_endpoint_access <- redshiftserverless_get_endpoint_access
 
+#' Returns an Identity Center authentication token for accessing Amazon
+#' Redshift Serverless workgroups
+#'
+#' @description
+#' Returns an Identity Center authentication token for accessing Amazon
+#' Redshift Serverless workgroups.
+#' 
+#' The token provides secure access to data within the specified workgroups
+#' using Identity Center identity propagation. The token expires after a
+#' specified duration and must be refreshed for continued access.
+#' 
+#' The Identity and Access Management (IAM) user or role that runs
+#' GetIdentityCenterAuthToken must have appropriate permissions to access
+#' the specified workgroups and Identity Center integration must be
+#' configured for the workgroups.
+#'
+#' @usage
+#' redshiftserverless_get_identity_center_auth_token(workgroupNames)
+#'
+#' @param workgroupNames &#91;required&#93; A list of workgroup names for which to generate the Identity Center
+#' authentication token.
+#' 
+#' Constraints:
+#' 
+#' -   Must contain between 1 and 20 workgroup names.
+#' 
+#' -   Each workgroup name must be a valid Amazon Redshift Serverless
+#'     workgroup identifier.
+#' 
+#' -   All specified workgroups must have Identity Center integration
+#'     enabled.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   expirationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   token = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_identity_center_auth_token(
+#'   workgroupNames = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_get_identity_center_auth_token
+#'
+#' @aliases redshiftserverless_get_identity_center_auth_token
+redshiftserverless_get_identity_center_auth_token <- function(workgroupNames) {
+  op <- new_operation(
+    name = "GetIdentityCenterAuthToken",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .redshiftserverless$get_identity_center_auth_token_input(workgroupNames = workgroupNames)
+  output <- .redshiftserverless$get_identity_center_auth_token_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$get_identity_center_auth_token <- redshiftserverless_get_identity_center_auth_token
+
 #' Returns information about a namespace in Amazon Redshift Serverless
 #'
 #' @description
@@ -1931,6 +2011,7 @@ redshiftserverless_get_endpoint_access <- function(endpointName) {
 #'     adminPasswordSecretArn = "string",
 #'     adminPasswordSecretKmsKeyId = "string",
 #'     adminUsername = "string",
+#'     catalogArn = "string",
 #'     creationDate = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -1940,6 +2021,7 @@ redshiftserverless_get_endpoint_access <- function(endpointName) {
 #'       "string"
 #'     ),
 #'     kmsKeyId = "string",
+#'     lakehouseRegistrationStatus = "string",
 #'     logExports = list(
 #'       "useractivitylog"|"userlog"|"connectionlog"
 #'     ),
@@ -2872,7 +2954,7 @@ redshiftserverless_list_endpoint_access <- function(maxResults = NULL, nextToken
 #' @param nextToken If your initial ListManagedWorkgroups operation returns a nextToken, you
 #' can include the returned nextToken in following ListManagedWorkgroups
 #' operations, which returns results in the next page.
-#' @param sourceArn The Amazon Resource Name (ARN) for the managed workgroup in the AWS Glue
+#' @param sourceArn The Amazon Resource Name (ARN) for the managed workgroup in the Glue
 #' Data Catalog.
 #'
 #' @return
@@ -2952,6 +3034,7 @@ redshiftserverless_list_managed_workgroups <- function(maxResults = NULL, nextTo
 #'       adminPasswordSecretArn = "string",
 #'       adminPasswordSecretKmsKeyId = "string",
 #'       adminUsername = "string",
+#'       catalogArn = "string",
 #'       creationDate = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -2961,6 +3044,7 @@ redshiftserverless_list_managed_workgroups <- function(maxResults = NULL, nextTo
 #'         "string"
 #'       ),
 #'       kmsKeyId = "string",
+#'       lakehouseRegistrationStatus = "string",
 #'       logExports = list(
 #'         "useractivitylog"|"userlog"|"connectionlog"
 #'       ),
@@ -3951,6 +4035,7 @@ redshiftserverless_put_resource_policy <- function(policy, resourceArn) {
 #'     adminPasswordSecretArn = "string",
 #'     adminPasswordSecretKmsKeyId = "string",
 #'     adminUsername = "string",
+#'     catalogArn = "string",
 #'     creationDate = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -3960,6 +4045,7 @@ redshiftserverless_put_resource_policy <- function(policy, resourceArn) {
 #'       "string"
 #'     ),
 #'     kmsKeyId = "string",
+#'     lakehouseRegistrationStatus = "string",
 #'     logExports = list(
 #'       "useractivitylog"|"userlog"|"connectionlog"
 #'     ),
@@ -4041,6 +4127,7 @@ redshiftserverless_restore_from_recovery_point <- function(namespaceName, recove
 #'     adminPasswordSecretArn = "string",
 #'     adminPasswordSecretKmsKeyId = "string",
 #'     adminUsername = "string",
+#'     catalogArn = "string",
 #'     creationDate = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -4050,6 +4137,7 @@ redshiftserverless_restore_from_recovery_point <- function(namespaceName, recove
 #'       "string"
 #'     ),
 #'     kmsKeyId = "string",
+#'     lakehouseRegistrationStatus = "string",
 #'     logExports = list(
 #'       "useractivitylog"|"userlog"|"connectionlog"
 #'     ),
@@ -4537,6 +4625,85 @@ redshiftserverless_update_endpoint_access <- function(endpointName, vpcSecurityG
 }
 .redshiftserverless$operations$update_endpoint_access <- redshiftserverless_update_endpoint_access
 
+#' Modifies the lakehouse configuration for a namespace
+#'
+#' @description
+#' Modifies the lakehouse configuration for a namespace. This operation
+#' allows you to manage Amazon Redshift federated permissions and Amazon
+#' Web Services IAM Identity Center trusted identity propagation.
+#'
+#' @usage
+#' redshiftserverless_update_lakehouse_configuration(catalogName, dryRun,
+#'   lakehouseIdcApplicationArn, lakehouseIdcRegistration,
+#'   lakehouseRegistration, namespaceName)
+#'
+#' @param catalogName The name of the Glue Data Catalog that will be associated with the
+#' namespace enabled with Amazon Redshift federated permissions.
+#' 
+#' Pattern: `^[a-z0-9_-]*[a-z]+[a-z0-9_-]*$`
+#' @param dryRun A boolean value that, if `true`, validates the request without actually
+#' updating the lakehouse configuration. Use this to check for errors
+#' before making changes.
+#' @param lakehouseIdcApplicationArn The Amazon Resource Name (ARN) of the IAM Identity Center application
+#' used for enabling Amazon Web Services IAM Identity Center trusted
+#' identity propagation on a namespace enabled with Amazon Redshift
+#' federated permissions.
+#' @param lakehouseIdcRegistration Modifies the Amazon Web Services IAM Identity Center trusted identity
+#' propagation on a namespace enabled with Amazon Redshift federated
+#' permissions. Valid values are `Associate` or `Disassociate`.
+#' @param lakehouseRegistration Specifies whether to register or deregister the namespace with Amazon
+#' Redshift federated permissions. Valid values are `Register` or
+#' `Deregister`.
+#' @param namespaceName &#91;required&#93; The name of the namespace whose lakehouse configuration you want to
+#' modify.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   catalogArn = "string",
+#'   lakehouseIdcApplicationArn = "string",
+#'   lakehouseRegistrationStatus = "string",
+#'   namespaceName = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_lakehouse_configuration(
+#'   catalogName = "string",
+#'   dryRun = TRUE|FALSE,
+#'   lakehouseIdcApplicationArn = "string",
+#'   lakehouseIdcRegistration = "Associate"|"Disassociate",
+#'   lakehouseRegistration = "Register"|"Deregister",
+#'   namespaceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_update_lakehouse_configuration
+#'
+#' @aliases redshiftserverless_update_lakehouse_configuration
+redshiftserverless_update_lakehouse_configuration <- function(catalogName = NULL, dryRun = NULL, lakehouseIdcApplicationArn = NULL, lakehouseIdcRegistration = NULL, lakehouseRegistration = NULL, namespaceName) {
+  op <- new_operation(
+    name = "UpdateLakehouseConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .redshiftserverless$update_lakehouse_configuration_input(catalogName = catalogName, dryRun = dryRun, lakehouseIdcApplicationArn = lakehouseIdcApplicationArn, lakehouseIdcRegistration = lakehouseIdcRegistration, lakehouseRegistration = lakehouseRegistration, namespaceName = namespaceName)
+  output <- .redshiftserverless$update_lakehouse_configuration_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$update_lakehouse_configuration <- redshiftserverless_update_lakehouse_configuration
+
 #' Updates a namespace with the specified settings
 #'
 #' @description
@@ -4585,6 +4752,7 @@ redshiftserverless_update_endpoint_access <- function(endpointName, vpcSecurityG
 #'     adminPasswordSecretArn = "string",
 #'     adminPasswordSecretKmsKeyId = "string",
 #'     adminUsername = "string",
+#'     catalogArn = "string",
 #'     creationDate = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -4594,6 +4762,7 @@ redshiftserverless_update_endpoint_access <- function(endpointName, vpcSecurityG
 #'       "string"
 #'     ),
 #'     kmsKeyId = "string",
+#'     lakehouseRegistrationStatus = "string",
 #'     logExports = list(
 #'       "useractivitylog"|"userlog"|"connectionlog"
 #'     ),

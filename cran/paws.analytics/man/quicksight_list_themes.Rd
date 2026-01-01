@@ -25,9 +25,9 @@ following:
 \itemize{
 \item \code{ALL (default)}- Display all existing themes.
 \item \code{CUSTOM} - Display only the themes created by people using Amazon
-QuickSight.
-\item \code{QUICKSIGHT} - Display only the starting themes defined by Amazon
-QuickSight.
+Quick Sight.
+\item \code{QUICKSIGHT} - Display only the starting themes defined by Quick
+Sight.
 }}
 }
 \description{

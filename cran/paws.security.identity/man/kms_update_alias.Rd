@@ -15,9 +15,9 @@ name.
 Do not include confidential or sensitive information in this field. This
 field may be displayed in plaintext in CloudTrail logs and other output.}
 
-\item{TargetKeyId}{[required] Identifies the \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed key}
+\item{TargetKeyId}{[required] Identifies the \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-mgn-key}{customer managed key}
 to associate with the alias. You don't have permission to associate an
-alias with an \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{Amazon Web Services managed key}.
+alias with an \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-key}{Amazon Web Services managed key}.
 
 The KMS key must be in the same Amazon Web Services account and Region
 as the alias. Also, the new target KMS key must be the same type as the

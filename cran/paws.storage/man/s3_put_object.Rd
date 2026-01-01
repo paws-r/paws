@@ -2,7 +2,8 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_put_object}
 \alias{s3_put_object}
-\title{Adds an object to a bucket}
+\title{End of support notice: As of October 1, 2025, Amazon S3 has discontinued
+support for Email Grantee Access Control Lists (ACLs)}
 \usage{
 s3_put_object(
   ACL = NULL,
@@ -281,7 +282,7 @@ Express One Zone storage class in directory buckets.}
 \item{Metadata}{A map of metadata to store with the object in S3.}
 
 \item{ServerSideEncryption}{The server-side encryption algorithm that was used when you store this
-object in Amazon S3 (for example, \code{AES256}, \code{aws:kms}, \code{aws:kms:dsse}).
+object in Amazon S3 or Amazon FSx.
 \itemize{
 \item \strong{General purpose buckets} - You have four mutually exclusive
 options to protect data using server-side encryption in Amazon S3,
@@ -336,6 +337,13 @@ endpoint API calls (except \code{\link[=s3_copy_object]{copy_object}} and
 \code{\link[=s3_upload_part_copy]{upload_part_copy}}), the encryption request
 headers must match the default encryption configuration of the
 directory bucket.
+\item \strong{S3 access points for Amazon FSx} - When accessing data stored in
+Amazon FSx file systems using S3 access points, the only valid
+server side encryption option is \code{aws:fsx}. All Amazon FSx file
+systems have encryption configured by default and are encrypted at
+rest. Data is automatically encrypted before being written to the
+file system, and automatically decrypted as it is read. These
+processes are handled transparently by Amazon FSx.
 }}
 
 \item{StorageClass}{By default, Amazon S3 uses the STANDARD Storage Class to store newly
@@ -482,7 +490,7 @@ provide does not match the actual owner of the bucket, the request fails
 with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-Adds an object to a bucket.
+End of support notice: As of October 1, 2025, Amazon S3 has discontinued support for Email Grantee Access Control Lists (ACLs). If you attempt to use an Email Grantee ACL in a request after October 1, 2025, the request will receive an \verb{HTTP 405} (Method Not Allowed) error.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_put_object/} for full documentation.
 }

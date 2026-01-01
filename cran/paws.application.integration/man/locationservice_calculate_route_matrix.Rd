@@ -2,8 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_calculate_route_matrix}
 \alias{locationservice_calculate_route_matrix}
-\title{Calculates a route matrix given the following required parameters:
-DeparturePositions and DestinationPositions}
+\title{This operation is no longer current and may be deprecated in the future}
 \usage{
 locationservice_calculate_route_matrix(
   CalculatorName,
@@ -28,12 +27,13 @@ of points, each of which is itself a 2-value array defined in \href{https://eart
 
 Depending on the data provider selected in the route calculator resource
 there may be additional restrictions on the inputs you can choose. See
-\href{https://docs.aws.amazon.com/location/latest/developerguide/calculate-route-matrix.html#matrix-routing-position-limits}{Position restrictions}
+\href{https://docs.aws.amazon.com/location/previous/developerguide/calculate-route-matrix.html#matrix-routing-position-limits}{Position restrictions}
 in the \emph{Amazon Location Service Developer Guide}.
 
 For route calculators that use Esri as the data provider, if you specify
-a departure that's not located on a road, Amazon Location \href{https://docs.aws.amazon.com/location/latest/developerguide/}{moves the position to the nearest road}. The
-snapped value is available in the result in \code{SnappedDeparturePositions}.
+a departure that's not located on a road, Amazon Location \href{https://docs.aws.amazon.com/location/previous/developerguide/snap-to-nearby-road.html}{moves the position to the nearest road}.
+The snapped value is available in the result in
+\code{SnappedDeparturePositions}.
 
 Valid Values: \verb{[-180 to 180,-90 to 90]}}
 
@@ -43,12 +43,12 @@ points, each of which is itself a 2-value array defined in \href{https://earth-i
 
 Depending on the data provider selected in the route calculator resource
 there may be additional restrictions on the inputs you can choose. See
-\href{https://docs.aws.amazon.com/location/latest/developerguide/calculate-route-matrix.html#matrix-routing-position-limits}{Position restrictions}
+\href{https://docs.aws.amazon.com/location/previous/developerguide/calculate-route-matrix.html#matrix-routing-position-limits}{Position restrictions}
 in the \emph{Amazon Location Service Developer Guide}.
 
 For route calculators that use Esri as the data provider, if you specify
-a destination that's not located on a road, Amazon Location \href{https://docs.aws.amazon.com/location/latest/developerguide/}{moves the position to the nearest road}. The
-snapped value is available in the result in
+a destination that's not located on a road, Amazon Location \href{https://docs.aws.amazon.com/location/previous/developerguide/snap-to-nearby-road.html}{moves the position to the nearest road}.
+The snapped value is available in the result in
 \code{SnappedDestinationPositions}.
 
 Valid Values: \verb{[-180 to 180,-90 to 90]}}
@@ -69,7 +69,7 @@ provider, and only within Southeast Asia.
 \code{Truck} is not available for Grab.
 
 For more information about using Grab as a data provider, see
-\href{https://docs.aws.amazon.com/location/latest/developerguide/}{GrabMaps}
+\href{https://docs.aws.amazon.com/location/previous/developerguide/grab.html}{GrabMaps}
 in the \emph{Amazon Location Service Developer Guide}.
 
 Default Value: \code{Car}}
@@ -111,11 +111,11 @@ when choosing an optimal road.
 
 Requirements: \code{TravelMode} must be specified as \code{Truck}.}
 
-\item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}
+\item{Key}{The optional \href{https://docs.aws.amazon.com/location/previous/developerguide/using-apikeys.html}{API key}
 to authorize the request.}
 }
 \description{
-\href{https://docs.aws.amazon.com/location/latest/developerguide/calculate-route-matrix.html}{Calculates a route matrix} given the following required parameters: \code{DeparturePositions} and \code{DestinationPositions}. \code{\link[=locationservice_calculate_route_matrix]{calculate_route_matrix}} calculates routes and returns the travel time and travel distance from each departure position to each destination position in the request. For example, given departure positions A and B, and destination positions X and Y, \code{\link[=locationservice_calculate_route_matrix]{calculate_route_matrix}} will return time and distance for routes from A to X, A to Y, B to X, and B to Y (in that order). The number of results returned (and routes calculated) will be the number of \code{DeparturePositions} times the number of \code{DestinationPositions}.
+This operation is no longer current and may be deprecated in the future. We recommend you upgrade to the V2 \code{calculate_route_matrix} unless you require Grab data.
 
 See \url{https://www.paws-r-sdk.com/docs/locationservice_calculate_route_matrix/} for full documentation.
 }

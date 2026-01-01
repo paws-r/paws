@@ -7,8 +7,8 @@
 bedrockagent_associate_agent_knowledge_base(
   agentId,
   agentVersion,
-  description,
   knowledgeBaseId,
+  description,
   knowledgeBaseState = NULL
 )
 }
@@ -19,9 +19,9 @@ knowledge base.}
 \item{agentVersion}{[required] The version of the agent with which you want to associate the knowledge
 base.}
 
-\item{description}{[required] A description of what the agent should use the knowledge base for.}
-
 \item{knowledgeBaseId}{[required] The unique identifier of the knowledge base to associate with the agent.}
+
+\item{description}{[required] A description of what the agent should use the knowledge base for.}
 
 \item{knowledgeBaseState}{Specifies whether to use the knowledge base or not when sending an
 \href{https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_InvokeAgent.html}{InvokeAgent}

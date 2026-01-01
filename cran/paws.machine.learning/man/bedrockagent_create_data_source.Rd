@@ -5,21 +5,30 @@
 \title{Connects a knowledge base to a data source}
 \usage{
 bedrockagent_create_data_source(
-  clientToken = NULL,
-  dataDeletionPolicy = NULL,
-  dataSourceConfiguration,
-  description = NULL,
   knowledgeBaseId,
+  clientToken = NULL,
   name,
+  description = NULL,
+  dataSourceConfiguration,
+  dataDeletionPolicy = NULL,
   serverSideEncryptionConfiguration = NULL,
   vectorIngestionConfiguration = NULL
 )
 }
 \arguments{
+\item{knowledgeBaseId}{[required] The unique identifier of the knowledge base to which to add the data
+source.}
+
 \item{clientToken}{A unique, case-sensitive identifier to ensure that the API request
 completes no more than one time. If this token matches a previous
 request, Amazon Bedrock ignores the request, but does not return an
 error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
+
+\item{name}{[required] The name of the data source.}
+
+\item{description}{A description of the data source.}
+
+\item{dataSourceConfiguration}{[required] The connection configuration for the data source.}
 
 \item{dataDeletionPolicy}{The data deletion policy for the data source.
 
@@ -35,15 +44,6 @@ vector embeddings upon deletion of a knowledge base or data source
 resource. Note that the \strong{vector store itself is not deleted} if
 you delete a knowledge base or data source resource.
 }}
-
-\item{dataSourceConfiguration}{[required] The connection configuration for the data source.}
-
-\item{description}{A description of the data source.}
-
-\item{knowledgeBaseId}{[required] The unique identifier of the knowledge base to which to add the data
-source.}
-
-\item{name}{[required] The name of the data source.}
 
 \item{serverSideEncryptionConfiguration}{Contains details about the server-side encryption for the data source.}
 

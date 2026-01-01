@@ -84,8 +84,8 @@ synthetics_associate_resource <- function(GroupIdentifier, ResourceArn) {
 #' synthetics_create_canary(Name, Code, ArtifactS3Location,
 #'   ExecutionRoleArn, Schedule, RunConfig, SuccessRetentionPeriodInDays,
 #'   FailureRetentionPeriodInDays, RuntimeVersion, VpcConfig,
-#'   ResourcesToReplicateTags, ProvisionedResourceCleanup, Tags,
-#'   ArtifactConfig)
+#'   ResourcesToReplicateTags, ProvisionedResourceCleanup, BrowserConfigs,
+#'   Tags, ArtifactConfig)
 #'
 #' @param Name &#91;required&#93; The name for this canary. Be sure to give it a descriptive name that
 #' distinguishes it from other canaries in your account.
@@ -96,11 +96,12 @@ synthetics_associate_resource <- function(GroupIdentifier, ResourceArn) {
 #' Considerations for Synthetics
 #' Canaries](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/servicelens_canaries_security.html).
 #' @param Code &#91;required&#93; A structure that includes the entry point from which the canary should
-#' start running your script. If the script is stored in an S3 bucket, the
-#' bucket name, key, and version are also included.
+#' start running your script. If the script is stored in an Amazon S3
+#' bucket, the bucket name, key, and version are also included.
 #' @param ArtifactS3Location &#91;required&#93; The location in Amazon S3 where Synthetics stores artifacts from the
 #' test runs of this canary. Artifacts include the log file, screenshots,
-#' and HAR files. The name of the S3 bucket can't include a period (.).
+#' and HAR files. The name of the Amazon S3 bucket can't include a period
+#' (.).
 #' @param ExecutionRoleArn &#91;required&#93; The ARN of the IAM role to be used to run the canary. This role must
 #' already exist, and must include `lambda.amazonaws.com` as a principal in
 #' the trust policy. The role must also have the following permissions:
@@ -164,6 +165,13 @@ synthetics_associate_resource <- function(GroupIdentifier, ResourceArn) {
 #' `DeleteLambda` parameter of the
 #' [`delete_canary`][synthetics_delete_canary] operation determines whether
 #' the Lambda functions and layers will be deleted.
+#' @param BrowserConfigs CloudWatch Synthetics now supports multibrowser canaries for
+#' `syn-nodejs-puppeteer-11.0` and `syn-nodejs-playwright-3.0` runtimes.
+#' This feature allows you to run your canaries on both Firefox and Chrome
+#' browsers. To create a multibrowser canary, you need to specify the
+#' BrowserConfigs with a list of browsers you want to use.
+#' 
+#' If not specified, `browserConfigs` defaults to Chrome.
 #' @param Tags A list of key-value pairs to associate with the canary. You can
 #' associate as many as 50 tags with a canary.
 #' 
@@ -187,7 +195,16 @@ synthetics_associate_resource <- function(GroupIdentifier, ResourceArn) {
 #'     Name = "string",
 #'     Code = list(
 #'       SourceLocationArn = "string",
-#'       Handler = "string"
+#'       Handler = "string",
+#'       BlueprintTypes = list(
+#'         "string"
+#'       ),
+#'       Dependencies = list(
+#'         list(
+#'           Type = "LambdaLayer",
+#'           Reference = "string"
+#'         )
+#'       )
 #'     ),
 #'     ExecutionRoleArn = "string",
 #'     Schedule = list(
@@ -200,7 +217,8 @@ synthetics_associate_resource <- function(GroupIdentifier, ResourceArn) {
 #'     RunConfig = list(
 #'       TimeoutInSeconds = 123,
 #'       MemoryInMB = 123,
-#'       ActiveTracing = TRUE|FALSE
+#'       ActiveTracing = TRUE|FALSE,
+#'       EphemeralStorage = 123
 #'     ),
 #'     SuccessRetentionPeriodInDays = 123,
 #'     FailureRetentionPeriodInDays = 123,
@@ -245,9 +263,35 @@ synthetics_associate_resource <- function(GroupIdentifier, ResourceArn) {
 #'           )
 #'         )
 #'       ),
-#'       BaseCanaryRunId = "string"
+#'       BaseCanaryRunId = "string",
+#'       BrowserType = "CHROME"|"FIREFOX"
 #'     ),
 #'     ProvisionedResourceCleanup = "AUTOMATIC"|"OFF",
+#'     BrowserConfigs = list(
+#'       list(
+#'         BrowserType = "CHROME"|"FIREFOX"
+#'       )
+#'     ),
+#'     EngineConfigs = list(
+#'       list(
+#'         EngineArn = "string",
+#'         BrowserType = "CHROME"|"FIREFOX"
+#'       )
+#'     ),
+#'     VisualReferences = list(
+#'       list(
+#'         BaseScreenshots = list(
+#'           list(
+#'             ScreenshotName = "string",
+#'             IgnoreCoordinates = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         BaseCanaryRunId = "string",
+#'         BrowserType = "CHROME"|"FIREFOX"
+#'       )
+#'     ),
 #'     Tags = list(
 #'       "string"
 #'     ),
@@ -274,7 +318,16 @@ synthetics_associate_resource <- function(GroupIdentifier, ResourceArn) {
 #'     S3Key = "string",
 #'     S3Version = "string",
 #'     ZipFile = raw,
-#'     Handler = "string"
+#'     Handler = "string",
+#'     BlueprintTypes = list(
+#'       "string"
+#'     ),
+#'     Dependencies = list(
+#'       list(
+#'         Type = "LambdaLayer",
+#'         Reference = "string"
+#'       )
+#'     )
 #'   ),
 #'   ArtifactS3Location = "string",
 #'   ExecutionRoleArn = "string",
@@ -291,7 +344,8 @@ synthetics_associate_resource <- function(GroupIdentifier, ResourceArn) {
 #'     ActiveTracing = TRUE|FALSE,
 #'     EnvironmentVariables = list(
 #'       "string"
-#'     )
+#'     ),
+#'     EphemeralStorage = 123
 #'   ),
 #'   SuccessRetentionPeriodInDays = 123,
 #'   FailureRetentionPeriodInDays = 123,
@@ -309,6 +363,11 @@ synthetics_associate_resource <- function(GroupIdentifier, ResourceArn) {
 #'     "lambda-function"
 #'   ),
 #'   ProvisionedResourceCleanup = "AUTOMATIC"|"OFF",
+#'   BrowserConfigs = list(
+#'     list(
+#'       BrowserType = "CHROME"|"FIREFOX"
+#'     )
+#'   ),
 #'   Tags = list(
 #'     "string"
 #'   ),
@@ -326,7 +385,7 @@ synthetics_associate_resource <- function(GroupIdentifier, ResourceArn) {
 #' @rdname synthetics_create_canary
 #'
 #' @aliases synthetics_create_canary
-synthetics_create_canary <- function(Name, Code, ArtifactS3Location, ExecutionRoleArn, Schedule, RunConfig = NULL, SuccessRetentionPeriodInDays = NULL, FailureRetentionPeriodInDays = NULL, RuntimeVersion, VpcConfig = NULL, ResourcesToReplicateTags = NULL, ProvisionedResourceCleanup = NULL, Tags = NULL, ArtifactConfig = NULL) {
+synthetics_create_canary <- function(Name, Code, ArtifactS3Location, ExecutionRoleArn, Schedule, RunConfig = NULL, SuccessRetentionPeriodInDays = NULL, FailureRetentionPeriodInDays = NULL, RuntimeVersion, VpcConfig = NULL, ResourcesToReplicateTags = NULL, ProvisionedResourceCleanup = NULL, BrowserConfigs = NULL, Tags = NULL, ArtifactConfig = NULL) {
   op <- new_operation(
     name = "CreateCanary",
     http_method = "POST",
@@ -335,7 +394,7 @@ synthetics_create_canary <- function(Name, Code, ArtifactS3Location, ExecutionRo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .synthetics$create_canary_input(Name = Name, Code = Code, ArtifactS3Location = ArtifactS3Location, ExecutionRoleArn = ExecutionRoleArn, Schedule = Schedule, RunConfig = RunConfig, SuccessRetentionPeriodInDays = SuccessRetentionPeriodInDays, FailureRetentionPeriodInDays = FailureRetentionPeriodInDays, RuntimeVersion = RuntimeVersion, VpcConfig = VpcConfig, ResourcesToReplicateTags = ResourcesToReplicateTags, ProvisionedResourceCleanup = ProvisionedResourceCleanup, Tags = Tags, ArtifactConfig = ArtifactConfig)
+  input <- .synthetics$create_canary_input(Name = Name, Code = Code, ArtifactS3Location = ArtifactS3Location, ExecutionRoleArn = ExecutionRoleArn, Schedule = Schedule, RunConfig = RunConfig, SuccessRetentionPeriodInDays = SuccessRetentionPeriodInDays, FailureRetentionPeriodInDays = FailureRetentionPeriodInDays, RuntimeVersion = RuntimeVersion, VpcConfig = VpcConfig, ResourcesToReplicateTags = ResourcesToReplicateTags, ProvisionedResourceCleanup = ProvisionedResourceCleanup, BrowserConfigs = BrowserConfigs, Tags = Tags, ArtifactConfig = ArtifactConfig)
   output <- .synthetics$create_canary_output()
   config <- get_config()
   svc <- .synthetics$service(config, op)
@@ -625,7 +684,16 @@ synthetics_delete_group <- function(GroupIdentifier) {
 #'       Name = "string",
 #'       Code = list(
 #'         SourceLocationArn = "string",
-#'         Handler = "string"
+#'         Handler = "string",
+#'         BlueprintTypes = list(
+#'           "string"
+#'         ),
+#'         Dependencies = list(
+#'           list(
+#'             Type = "LambdaLayer",
+#'             Reference = "string"
+#'           )
+#'         )
 #'       ),
 #'       ExecutionRoleArn = "string",
 #'       Schedule = list(
@@ -638,7 +706,8 @@ synthetics_delete_group <- function(GroupIdentifier) {
 #'       RunConfig = list(
 #'         TimeoutInSeconds = 123,
 #'         MemoryInMB = 123,
-#'         ActiveTracing = TRUE|FALSE
+#'         ActiveTracing = TRUE|FALSE,
+#'         EphemeralStorage = 123
 #'       ),
 #'       SuccessRetentionPeriodInDays = 123,
 #'       FailureRetentionPeriodInDays = 123,
@@ -683,9 +752,35 @@ synthetics_delete_group <- function(GroupIdentifier) {
 #'             )
 #'           )
 #'         ),
-#'         BaseCanaryRunId = "string"
+#'         BaseCanaryRunId = "string",
+#'         BrowserType = "CHROME"|"FIREFOX"
 #'       ),
 #'       ProvisionedResourceCleanup = "AUTOMATIC"|"OFF",
+#'       BrowserConfigs = list(
+#'         list(
+#'           BrowserType = "CHROME"|"FIREFOX"
+#'         )
+#'       ),
+#'       EngineConfigs = list(
+#'         list(
+#'           EngineArn = "string",
+#'           BrowserType = "CHROME"|"FIREFOX"
+#'         )
+#'       ),
+#'       VisualReferences = list(
+#'         list(
+#'           BaseScreenshots = list(
+#'             list(
+#'               ScreenshotName = "string",
+#'               IgnoreCoordinates = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           BaseCanaryRunId = "string",
+#'           BrowserType = "CHROME"|"FIREFOX"
+#'         )
+#'       ),
 #'       Tags = list(
 #'         "string"
 #'       ),
@@ -760,7 +855,8 @@ synthetics_describe_canaries <- function(NextToken = NULL, MaxResults = NULL, Na
 #' canaries](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Restricted.html).
 #'
 #' @usage
-#' synthetics_describe_canaries_last_run(NextToken, MaxResults, Names)
+#' synthetics_describe_canaries_last_run(NextToken, MaxResults, Names,
+#'   BrowserType)
 #'
 #' @param NextToken A token that indicates that there is more data available. You can use
 #' this token in a subsequent
@@ -782,6 +878,7 @@ synthetics_describe_canaries <- function(NextToken = NULL, MaxResults = NULL, Na
 #' you are allowed to view. For more information, see [Limiting a user to
 #' viewing specific
 #' canaries](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Restricted.html).
+#' @param BrowserType The type of browser to use for the canary run.
 #'
 #' @return
 #' A list with the following syntax:
@@ -798,7 +895,8 @@ synthetics_describe_canaries <- function(NextToken = NULL, MaxResults = NULL, Na
 #'         Status = list(
 #'           State = "RUNNING"|"PASSED"|"FAILED",
 #'           StateReason = "string",
-#'           StateReasonCode = "CANARY_FAILURE"|"EXECUTION_FAILURE"
+#'           StateReasonCode = "CANARY_FAILURE"|"EXECUTION_FAILURE",
+#'           TestResult = "PASSED"|"FAILED"|"UNKNOWN"
 #'         ),
 #'         Timeline = list(
 #'           Started = as.POSIXct(
@@ -814,7 +912,8 @@ synthetics_describe_canaries <- function(NextToken = NULL, MaxResults = NULL, Na
 #'         ArtifactS3Location = "string",
 #'         DryRunConfig = list(
 #'           DryRunId = "string"
-#'         )
+#'         ),
+#'         BrowserType = "CHROME"|"FIREFOX"
 #'       )
 #'     )
 #'   ),
@@ -829,7 +928,8 @@ synthetics_describe_canaries <- function(NextToken = NULL, MaxResults = NULL, Na
 #'   MaxResults = 123,
 #'   Names = list(
 #'     "string"
-#'   )
+#'   ),
+#'   BrowserType = "CHROME"|"FIREFOX"
 #' )
 #' ```
 #'
@@ -838,7 +938,7 @@ synthetics_describe_canaries <- function(NextToken = NULL, MaxResults = NULL, Na
 #' @rdname synthetics_describe_canaries_last_run
 #'
 #' @aliases synthetics_describe_canaries_last_run
-synthetics_describe_canaries_last_run <- function(NextToken = NULL, MaxResults = NULL, Names = NULL) {
+synthetics_describe_canaries_last_run <- function(NextToken = NULL, MaxResults = NULL, Names = NULL, BrowserType = NULL) {
   op <- new_operation(
     name = "DescribeCanariesLastRun",
     http_method = "POST",
@@ -847,7 +947,7 @@ synthetics_describe_canaries_last_run <- function(NextToken = NULL, MaxResults =
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
-  input <- .synthetics$describe_canaries_last_run_input(NextToken = NextToken, MaxResults = MaxResults, Names = Names)
+  input <- .synthetics$describe_canaries_last_run_input(NextToken = NextToken, MaxResults = MaxResults, Names = Names, BrowserType = BrowserType)
   output <- .synthetics$describe_canaries_last_run_output()
   config <- get_config()
   svc <- .synthetics$service(config, op)
@@ -999,7 +1099,16 @@ synthetics_disassociate_resource <- function(GroupIdentifier, ResourceArn) {
 #'     Name = "string",
 #'     Code = list(
 #'       SourceLocationArn = "string",
-#'       Handler = "string"
+#'       Handler = "string",
+#'       BlueprintTypes = list(
+#'         "string"
+#'       ),
+#'       Dependencies = list(
+#'         list(
+#'           Type = "LambdaLayer",
+#'           Reference = "string"
+#'         )
+#'       )
 #'     ),
 #'     ExecutionRoleArn = "string",
 #'     Schedule = list(
@@ -1012,7 +1121,8 @@ synthetics_disassociate_resource <- function(GroupIdentifier, ResourceArn) {
 #'     RunConfig = list(
 #'       TimeoutInSeconds = 123,
 #'       MemoryInMB = 123,
-#'       ActiveTracing = TRUE|FALSE
+#'       ActiveTracing = TRUE|FALSE,
+#'       EphemeralStorage = 123
 #'     ),
 #'     SuccessRetentionPeriodInDays = 123,
 #'     FailureRetentionPeriodInDays = 123,
@@ -1057,9 +1167,35 @@ synthetics_disassociate_resource <- function(GroupIdentifier, ResourceArn) {
 #'           )
 #'         )
 #'       ),
-#'       BaseCanaryRunId = "string"
+#'       BaseCanaryRunId = "string",
+#'       BrowserType = "CHROME"|"FIREFOX"
 #'     ),
 #'     ProvisionedResourceCleanup = "AUTOMATIC"|"OFF",
+#'     BrowserConfigs = list(
+#'       list(
+#'         BrowserType = "CHROME"|"FIREFOX"
+#'       )
+#'     ),
+#'     EngineConfigs = list(
+#'       list(
+#'         EngineArn = "string",
+#'         BrowserType = "CHROME"|"FIREFOX"
+#'       )
+#'     ),
+#'     VisualReferences = list(
+#'       list(
+#'         BaseScreenshots = list(
+#'           list(
+#'             ScreenshotName = "string",
+#'             IgnoreCoordinates = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         BaseCanaryRunId = "string",
+#'         BrowserType = "CHROME"|"FIREFOX"
+#'       )
+#'     ),
 #'     Tags = list(
 #'       "string"
 #'     ),
@@ -1157,7 +1293,8 @@ synthetics_get_canary <- function(Name, DryRunId = NULL) {
 #'       Status = list(
 #'         State = "RUNNING"|"PASSED"|"FAILED",
 #'         StateReason = "string",
-#'         StateReasonCode = "CANARY_FAILURE"|"EXECUTION_FAILURE"
+#'         StateReasonCode = "CANARY_FAILURE"|"EXECUTION_FAILURE",
+#'         TestResult = "PASSED"|"FAILED"|"UNKNOWN"
 #'       ),
 #'       Timeline = list(
 #'         Started = as.POSIXct(
@@ -1173,7 +1310,8 @@ synthetics_get_canary <- function(Name, DryRunId = NULL) {
 #'       ArtifactS3Location = "string",
 #'       DryRunConfig = list(
 #'         DryRunId = "string"
-#'       )
+#'       ),
+#'       BrowserType = "CHROME"|"FIREFOX"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1590,7 +1728,8 @@ synthetics_start_canary <- function(Name) {
 #' synthetics_start_canary_dry_run(Name, Code, RuntimeVersion, RunConfig,
 #'   VpcConfig, ExecutionRoleArn, SuccessRetentionPeriodInDays,
 #'   FailureRetentionPeriodInDays, VisualReference, ArtifactS3Location,
-#'   ArtifactConfig, ProvisionedResourceCleanup)
+#'   ArtifactConfig, ProvisionedResourceCleanup, BrowserConfigs,
+#'   VisualReferences)
 #'
 #' @param Name &#91;required&#93; The name of the canary that you want to dry run. To find canary names,
 #' use [`describe_canaries`][synthetics_describe_canaries].
@@ -1604,14 +1743,16 @@ synthetics_start_canary <- function(Name) {
 #' @param ExecutionRoleArn The ARN of the IAM role to be used to run the canary. This role must
 #' already exist, and must include `lambda.amazonaws.com` as a principal in
 #' the trust policy. The role must also have the following permissions:
-#' @param SuccessRetentionPeriodInDays The number of days to retain data on the failed runs for this canary.
-#' The valid range is 1 to 455 days.
+#' @param SuccessRetentionPeriodInDays The number of days to retain data about successful runs of this canary.
+#' If you omit this field, the default of 31 days is used. The valid range
+#' is 1 to 455 days.
 #' 
 #' This setting affects the range of information returned by
 #' [`get_canary_runs`][synthetics_get_canary_runs], as well as the range of
 #' information displayed in the Synthetics console.
-#' @param FailureRetentionPeriodInDays The number of days to retain data on the failed runs for this canary.
-#' The valid range is 1 to 455 days.
+#' @param FailureRetentionPeriodInDays The number of days to retain data about failed runs of this canary. If
+#' you omit this field, the default of 31 days is used. The valid range is
+#' 1 to 455 days.
 #' 
 #' This setting affects the range of information returned by
 #' [`get_canary_runs`][synthetics_get_canary_runs], as well as the range of
@@ -1623,14 +1764,31 @@ synthetics_start_canary <- function(Name) {
 #' (.).
 #' @param ArtifactConfig 
 #' @param ProvisionedResourceCleanup Specifies whether to also delete the Lambda functions and layers used by
-#' this canary when the canary is deleted. If the value of this parameter
-#' is `AUTOMATIC`, it means that the Lambda functions and layers will be
-#' deleted when the canary is deleted.
+#' this canary when the canary is deleted. If you omit this parameter, the
+#' default of `AUTOMATIC` is used, which means that the Lambda functions
+#' and layers will be deleted when the canary is deleted.
 #' 
 #' If the value of this parameter is `OFF`, then the value of the
 #' `DeleteLambda` parameter of the
 #' [`delete_canary`][synthetics_delete_canary] operation determines whether
 #' the Lambda functions and layers will be deleted.
+#' @param BrowserConfigs A structure that specifies the browser type to use for a canary run.
+#' CloudWatch Synthetics supports running canaries on both `CHROME` and
+#' `FIREFOX` browsers.
+#' 
+#' If not specified, `browserConfigs` defaults to Chrome.
+#' @param VisualReferences A list of visual reference configurations for the canary, one for each
+#' browser type that the canary is configured to run on. Visual references
+#' are used for visual monitoring comparisons.
+#' 
+#' `syn-nodejs-puppeteer-11.0` and above, and `syn-nodejs-playwright-3.0`
+#' and above, only supports `visualReferences`. `visualReference` field is
+#' not supported.
+#' 
+#' Versions older than `syn-nodejs-puppeteer-11.0` supports both
+#' `visualReference` and `visualReferences` for backward compatibility. It
+#' is recommended to use `visualReferences` for consistency and future
+#' compatibility.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1652,7 +1810,16 @@ synthetics_start_canary <- function(Name) {
 #'     S3Key = "string",
 #'     S3Version = "string",
 #'     ZipFile = raw,
-#'     Handler = "string"
+#'     Handler = "string",
+#'     BlueprintTypes = list(
+#'       "string"
+#'     ),
+#'     Dependencies = list(
+#'       list(
+#'         Type = "LambdaLayer",
+#'         Reference = "string"
+#'       )
+#'     )
 #'   ),
 #'   RuntimeVersion = "string",
 #'   RunConfig = list(
@@ -1661,7 +1828,8 @@ synthetics_start_canary <- function(Name) {
 #'     ActiveTracing = TRUE|FALSE,
 #'     EnvironmentVariables = list(
 #'       "string"
-#'     )
+#'     ),
+#'     EphemeralStorage = 123
 #'   ),
 #'   VpcConfig = list(
 #'     SubnetIds = list(
@@ -1684,7 +1852,8 @@ synthetics_start_canary <- function(Name) {
 #'         )
 #'       )
 #'     ),
-#'     BaseCanaryRunId = "string"
+#'     BaseCanaryRunId = "string",
+#'     BrowserType = "CHROME"|"FIREFOX"
 #'   ),
 #'   ArtifactS3Location = "string",
 #'   ArtifactConfig = list(
@@ -1693,7 +1862,26 @@ synthetics_start_canary <- function(Name) {
 #'       KmsKeyArn = "string"
 #'     )
 #'   ),
-#'   ProvisionedResourceCleanup = "AUTOMATIC"|"OFF"
+#'   ProvisionedResourceCleanup = "AUTOMATIC"|"OFF",
+#'   BrowserConfigs = list(
+#'     list(
+#'       BrowserType = "CHROME"|"FIREFOX"
+#'     )
+#'   ),
+#'   VisualReferences = list(
+#'     list(
+#'       BaseScreenshots = list(
+#'         list(
+#'           ScreenshotName = "string",
+#'           IgnoreCoordinates = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       BaseCanaryRunId = "string",
+#'       BrowserType = "CHROME"|"FIREFOX"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -1702,7 +1890,7 @@ synthetics_start_canary <- function(Name) {
 #' @rdname synthetics_start_canary_dry_run
 #'
 #' @aliases synthetics_start_canary_dry_run
-synthetics_start_canary_dry_run <- function(Name, Code = NULL, RuntimeVersion = NULL, RunConfig = NULL, VpcConfig = NULL, ExecutionRoleArn = NULL, SuccessRetentionPeriodInDays = NULL, FailureRetentionPeriodInDays = NULL, VisualReference = NULL, ArtifactS3Location = NULL, ArtifactConfig = NULL, ProvisionedResourceCleanup = NULL) {
+synthetics_start_canary_dry_run <- function(Name, Code = NULL, RuntimeVersion = NULL, RunConfig = NULL, VpcConfig = NULL, ExecutionRoleArn = NULL, SuccessRetentionPeriodInDays = NULL, FailureRetentionPeriodInDays = NULL, VisualReference = NULL, ArtifactS3Location = NULL, ArtifactConfig = NULL, ProvisionedResourceCleanup = NULL, BrowserConfigs = NULL, VisualReferences = NULL) {
   op <- new_operation(
     name = "StartCanaryDryRun",
     http_method = "POST",
@@ -1711,7 +1899,7 @@ synthetics_start_canary_dry_run <- function(Name, Code = NULL, RuntimeVersion = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .synthetics$start_canary_dry_run_input(Name = Name, Code = Code, RuntimeVersion = RuntimeVersion, RunConfig = RunConfig, VpcConfig = VpcConfig, ExecutionRoleArn = ExecutionRoleArn, SuccessRetentionPeriodInDays = SuccessRetentionPeriodInDays, FailureRetentionPeriodInDays = FailureRetentionPeriodInDays, VisualReference = VisualReference, ArtifactS3Location = ArtifactS3Location, ArtifactConfig = ArtifactConfig, ProvisionedResourceCleanup = ProvisionedResourceCleanup)
+  input <- .synthetics$start_canary_dry_run_input(Name = Name, Code = Code, RuntimeVersion = RuntimeVersion, RunConfig = RunConfig, VpcConfig = VpcConfig, ExecutionRoleArn = ExecutionRoleArn, SuccessRetentionPeriodInDays = SuccessRetentionPeriodInDays, FailureRetentionPeriodInDays = FailureRetentionPeriodInDays, VisualReference = VisualReference, ArtifactS3Location = ArtifactS3Location, ArtifactConfig = ArtifactConfig, ProvisionedResourceCleanup = ProvisionedResourceCleanup, BrowserConfigs = BrowserConfigs, VisualReferences = VisualReferences)
   output <- .synthetics$start_canary_dry_run_output()
   config <- get_config()
   svc <- .synthetics$service(config, op)
@@ -1905,6 +2093,15 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates the configuration of a canary that has already been created.
 #' 
+#' For multibrowser canaries, you can add or remove browsers by updating
+#' the browserConfig list in the update call. For example:
+#' 
+#' -   To add Firefox to a canary that currently uses Chrome, specify
+#'     browserConfigs as \[CHROME, FIREFOX\]
+#' 
+#' -   To remove Firefox and keep only Chrome, specify browserConfigs as
+#'     \[CHROME\]
+#' 
 #' You can't use this operation to update the tags of an existing canary.
 #' To change the tags of an existing canary, use
 #' [`tag_resource`][synthetics_tag_resource].
@@ -1918,15 +2115,15 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 #'   Schedule, RunConfig, SuccessRetentionPeriodInDays,
 #'   FailureRetentionPeriodInDays, VpcConfig, VisualReference,
 #'   ArtifactS3Location, ArtifactConfig, ProvisionedResourceCleanup,
-#'   DryRunId)
+#'   DryRunId, VisualReferences, BrowserConfigs)
 #'
 #' @param Name &#91;required&#93; The name of the canary that you want to update. To find the names of
 #' your canaries, use [`describe_canaries`][synthetics_describe_canaries].
 #' 
 #' You cannot change the name of a canary that has already been created.
 #' @param Code A structure that includes the entry point from which the canary should
-#' start running your script. If the script is stored in an S3 bucket, the
-#' bucket name, key, and version are also included.
+#' start running your script. If the script is stored in an Amazon S3
+#' bucket, the bucket name, key, and version are also included.
 #' @param ExecutionRoleArn The ARN of the IAM role to be used to run the canary. This role must
 #' already exist, and must include `lambda.amazonaws.com` as a principal in
 #' the trust policy. The role must also have the following permissions:
@@ -1984,7 +2181,8 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 #' blueprint](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/)
 #' @param ArtifactS3Location The location in Amazon S3 where Synthetics stores artifacts from the
 #' test runs of this canary. Artifacts include the log file, screenshots,
-#' and HAR files. The name of the S3 bucket can't include a period (.).
+#' and HAR files. The name of the Amazon S3 bucket can't include a period
+#' (.).
 #' @param ArtifactConfig A structure that contains the configuration for canary artifacts,
 #' including the encryption-at-rest settings for artifacts that the canary
 #' uploads to Amazon S3.
@@ -2001,6 +2199,34 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 #' When you use the `dryRunId` field when updating a canary, the only other
 #' field you can provide is the `Schedule`. Adding any other field will
 #' thrown an exception.
+#' @param VisualReferences A list of visual reference configurations for the canary, one for each
+#' browser type that the canary is configured to run on. Visual references
+#' are used for visual monitoring comparisons.
+#' 
+#' `syn-nodejs-puppeteer-11.0` and above, and `syn-nodejs-playwright-3.0`
+#' and above, only supports `visualReferences`. `visualReference` field is
+#' not supported.
+#' 
+#' Versions older than `syn-nodejs-puppeteer-11.0` supports both
+#' `visualReference` and `visualReferences` for backward compatibility. It
+#' is recommended to use `visualReferences` for consistency and future
+#' compatibility.
+#' 
+#' For multibrowser visual monitoring, you can update the baseline for all
+#' configured browsers in a single update call by specifying a list of
+#' VisualReference objects, one per browser. Each VisualReference object
+#' maps to a specific browser configuration, allowing you to manage visual
+#' baselines for multiple browsers simultaneously.
+#' 
+#' For single configuration canaries using Chrome browser (default
+#' browser), use visualReferences for `syn-nodejs-puppeteer-11.0` and
+#' above, and `syn-nodejs-playwright-3.0` and above canaries. The
+#' browserType in the visualReference object is not mandatory.
+#' @param BrowserConfigs A structure that specifies the browser type to use for a canary run.
+#' CloudWatch Synthetics supports running canaries on both `CHROME` and
+#' `FIREFOX` browsers.
+#' 
+#' If not specified, `browserConfigs` defaults to Chrome.
 #'
 #' @return
 #' An empty list.
@@ -2014,7 +2240,16 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 #'     S3Key = "string",
 #'     S3Version = "string",
 #'     ZipFile = raw,
-#'     Handler = "string"
+#'     Handler = "string",
+#'     BlueprintTypes = list(
+#'       "string"
+#'     ),
+#'     Dependencies = list(
+#'       list(
+#'         Type = "LambdaLayer",
+#'         Reference = "string"
+#'       )
+#'     )
 #'   ),
 #'   ExecutionRoleArn = "string",
 #'   RuntimeVersion = "string",
@@ -2031,7 +2266,8 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 #'     ActiveTracing = TRUE|FALSE,
 #'     EnvironmentVariables = list(
 #'       "string"
-#'     )
+#'     ),
+#'     EphemeralStorage = 123
 #'   ),
 #'   SuccessRetentionPeriodInDays = 123,
 #'   FailureRetentionPeriodInDays = 123,
@@ -2053,7 +2289,8 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 #'         )
 #'       )
 #'     ),
-#'     BaseCanaryRunId = "string"
+#'     BaseCanaryRunId = "string",
+#'     BrowserType = "CHROME"|"FIREFOX"
 #'   ),
 #'   ArtifactS3Location = "string",
 #'   ArtifactConfig = list(
@@ -2063,7 +2300,26 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 #'     )
 #'   ),
 #'   ProvisionedResourceCleanup = "AUTOMATIC"|"OFF",
-#'   DryRunId = "string"
+#'   DryRunId = "string",
+#'   VisualReferences = list(
+#'     list(
+#'       BaseScreenshots = list(
+#'         list(
+#'           ScreenshotName = "string",
+#'           IgnoreCoordinates = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       BaseCanaryRunId = "string",
+#'       BrowserType = "CHROME"|"FIREFOX"
+#'     )
+#'   ),
+#'   BrowserConfigs = list(
+#'     list(
+#'       BrowserType = "CHROME"|"FIREFOX"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -2072,7 +2328,7 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 #' @rdname synthetics_update_canary
 #'
 #' @aliases synthetics_update_canary
-synthetics_update_canary <- function(Name, Code = NULL, ExecutionRoleArn = NULL, RuntimeVersion = NULL, Schedule = NULL, RunConfig = NULL, SuccessRetentionPeriodInDays = NULL, FailureRetentionPeriodInDays = NULL, VpcConfig = NULL, VisualReference = NULL, ArtifactS3Location = NULL, ArtifactConfig = NULL, ProvisionedResourceCleanup = NULL, DryRunId = NULL) {
+synthetics_update_canary <- function(Name, Code = NULL, ExecutionRoleArn = NULL, RuntimeVersion = NULL, Schedule = NULL, RunConfig = NULL, SuccessRetentionPeriodInDays = NULL, FailureRetentionPeriodInDays = NULL, VpcConfig = NULL, VisualReference = NULL, ArtifactS3Location = NULL, ArtifactConfig = NULL, ProvisionedResourceCleanup = NULL, DryRunId = NULL, VisualReferences = NULL, BrowserConfigs = NULL) {
   op <- new_operation(
     name = "UpdateCanary",
     http_method = "PATCH",
@@ -2081,7 +2337,7 @@ synthetics_update_canary <- function(Name, Code = NULL, ExecutionRoleArn = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .synthetics$update_canary_input(Name = Name, Code = Code, ExecutionRoleArn = ExecutionRoleArn, RuntimeVersion = RuntimeVersion, Schedule = Schedule, RunConfig = RunConfig, SuccessRetentionPeriodInDays = SuccessRetentionPeriodInDays, FailureRetentionPeriodInDays = FailureRetentionPeriodInDays, VpcConfig = VpcConfig, VisualReference = VisualReference, ArtifactS3Location = ArtifactS3Location, ArtifactConfig = ArtifactConfig, ProvisionedResourceCleanup = ProvisionedResourceCleanup, DryRunId = DryRunId)
+  input <- .synthetics$update_canary_input(Name = Name, Code = Code, ExecutionRoleArn = ExecutionRoleArn, RuntimeVersion = RuntimeVersion, Schedule = Schedule, RunConfig = RunConfig, SuccessRetentionPeriodInDays = SuccessRetentionPeriodInDays, FailureRetentionPeriodInDays = FailureRetentionPeriodInDays, VpcConfig = VpcConfig, VisualReference = VisualReference, ArtifactS3Location = ArtifactS3Location, ArtifactConfig = ArtifactConfig, ProvisionedResourceCleanup = ProvisionedResourceCleanup, DryRunId = DryRunId, VisualReferences = VisualReferences, BrowserConfigs = BrowserConfigs)
   output <- .synthetics$update_canary_output()
   config <- get_config()
   svc <- .synthetics$service(config, op)

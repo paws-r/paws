@@ -2,7 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_get_sequence_store}
 \alias{omics_get_sequence_store}
-\title{Gets information about a sequence store}
+\title{Retrieves metadata for a sequence store using its ID and returns it in
+JSON format}
 \usage{
 omics_get_sequence_store(id)
 }
@@ -10,7 +11,7 @@ omics_get_sequence_store(id)
 \item{id}{[required] The store's ID.}
 }
 \description{
-Gets information about a sequence store.
+Retrieves metadata for a sequence store using its ID and returns it in JSON format.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_get_sequence_store/} for full documentation.
 }

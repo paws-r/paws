@@ -27,7 +27,7 @@ ensure a successful deployment, the template object must not be in an
 \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html}{archived storage class}
 if this parameter is passed.}
 
-\item{TemplateBody}{A string containing the full conformance pack template body. The
+\item{TemplateBody}{A string that contains the full conformance pack template body. The
 structure containing the template body has a minimum length of 1 byte
 and a maximum length of 51,200 bytes.
 

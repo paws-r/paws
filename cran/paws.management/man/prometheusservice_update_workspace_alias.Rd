@@ -5,12 +5,14 @@
 \title{Updates the alias of an existing workspace}
 \usage{
 prometheusservice_update_workspace_alias(
+  workspaceId,
   alias = NULL,
-  clientToken = NULL,
-  workspaceId
+  clientToken = NULL
 )
 }
 \arguments{
+\item{workspaceId}{[required] The ID of the workspace to update.}
+
 \item{alias}{The new alias for the workspace. It does not need to be unique.
 
 Amazon Managed Service for Prometheus will automatically strip any blank
@@ -18,8 +20,6 @@ spaces from the beginning and end of the alias that you specify.}
 
 \item{clientToken}{A unique identifier that you can provide to ensure the idempotency of
 the request. Case-sensitive.}
-
-\item{workspaceId}{[required] The ID of the workspace to update.}
 }
 \description{
 Updates the alias of an existing workspace.

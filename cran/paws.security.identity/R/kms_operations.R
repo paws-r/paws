@@ -49,7 +49,7 @@ kms_cancel_key_deletion <- function(KeyId) {
 #' Connects or reconnects a custom key store to its backing key store
 #'
 #' @description
-#' Connects or reconnects a [custom key store](https://docs.aws.amazon.com/kms/latest/developerguide/) to its backing key store. For an CloudHSM key store, [`connect_custom_key_store`][kms_connect_custom_key_store] connects the key store to its associated CloudHSM cluster. For an external key store, [`connect_custom_key_store`][kms_connect_custom_key_store] connects the key store to the external key store proxy that communicates with your external key manager.
+#' Connects or reconnects a [custom key store](https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html) to its backing key store. For an CloudHSM key store, [`connect_custom_key_store`][kms_connect_custom_key_store] connects the key store to its associated CloudHSM cluster. For an external key store, [`connect_custom_key_store`][kms_connect_custom_key_store] connects the key store to the external key store proxy that communicates with your external key manager.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_connect_custom_key_store/](https://www.paws-r-sdk.com/docs/kms_connect_custom_key_store/) for full documentation.
 #'
@@ -97,16 +97,16 @@ kms_connect_custom_key_store <- function(CustomKeyStoreId) {
 #' only alphanumeric characters, forward slashes (/), underscores (_), and
 #' dashes (-). The alias name cannot begin with `alias/aws/`. The
 #' `alias/aws/` prefix is reserved for [Amazon Web Services managed
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk).
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-key).
 #' @param TargetKeyId &#91;required&#93; Associates the alias with the specified [customer managed
-#' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk).
+#' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-mgn-key).
 #' The KMS key must be in the same Amazon Web Services Region.
 #' 
 #' A valid key ID is required. If you supply a null or empty string value,
 #' this operation returns an error.
 #' 
-#' For help finding the key ID and ARN, see [Finding the Key ID and
-#' ARN](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html#find-cmk-id-arn)
+#' For help finding the key ID and ARN, see [Find the key ID and key
+#' ARN](https://docs.aws.amazon.com/kms/latest/developerguide/find-cmk-id-arn.html)
 #' in the *Key Management Service Developer Guide* .
 #' 
 #' Specify the key ID or key ARN of the KMS key.
@@ -146,7 +146,7 @@ kms_create_alias <- function(AliasName, TargetKeyId) {
 #' Creates a custom key store backed by a key store that you own and manage
 #'
 #' @description
-#' Creates a [custom key store](https://docs.aws.amazon.com/kms/latest/developerguide/) backed by a key store that you own and manage. When you use a KMS key in a custom key store for a cryptographic operation, the cryptographic operation is actually performed in your key store using your keys. KMS supports [CloudHSM key stores](https://docs.aws.amazon.com/kms/latest/developerguide/keystore-cloudhsm.html) backed by an [CloudHSM cluster](https://docs.aws.amazon.com/cloudhsm/latest/userguide/clusters.html) and [external key stores](https://docs.aws.amazon.com/kms/latest/developerguide/keystore-external.html) backed by an external key store proxy and external key manager outside of Amazon Web Services.
+#' Creates a [custom key store](https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html) backed by a key store that you own and manage. When you use a KMS key in a custom key store for a cryptographic operation, the cryptographic operation is actually performed in your key store using your keys. KMS supports [CloudHSM key stores](https://docs.aws.amazon.com/kms/latest/developerguide/keystore-cloudhsm.html) backed by an [CloudHSM cluster](https://docs.aws.amazon.com/cloudhsm/latest/userguide/clusters.html) and [external key stores](https://docs.aws.amazon.com/kms/latest/developerguide/keystore-external.html) backed by an external key store proxy and external key manager outside of Amazon Web Services.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_create_custom_key_store/](https://www.paws-r-sdk.com/docs/kms_create_custom_key_store/) for full documentation.
 #'
@@ -177,7 +177,7 @@ kms_create_alias <- function(AliasName, TargetKeyId) {
 #' of `AWS_CLOUDHSM`.
 #' 
 #' Enter the password of the [`kmsuser` crypto user (CU)
-#' account](https://docs.aws.amazon.com/kms/latest/developerguide/#concept-kmsuser)
+#' account](https://docs.aws.amazon.com/kms/latest/developerguide/keystore-cloudhsm.html#concept-kmsuser)
 #' in the specified CloudHSM cluster. KMS logs into the cluster as this
 #' user to manage key material on your behalf.
 #' 
@@ -260,6 +260,11 @@ kms_create_alias <- function(AliasName, TargetKeyId) {
 #' -   External key stores with `VPC_ENDPOINT_SERVICE` connectivity can
 #'     share an Amazon VPC, but each external key store must have its own
 #'     VPC endpoint service and private DNS name.
+#' @param XksProxyVpcEndpointServiceOwner Specifies the Amazon Web Services account ID that owns the Amazon VPC
+#' service endpoint for the interface that is used to communicate with your
+#' external key store proxy (XKS proxy). This parameter is optional. If not
+#' provided, the Amazon Web Services account ID calling the action will be
+#' used.
 #' @param XksProxyAuthenticationCredential Specifies an authentication credential for the external key store proxy
 #' (XKS proxy). This parameter is required for all custom key stores with a
 #' `CustomKeyStoreType` of `EXTERNAL_KEY_STORE`.
@@ -267,7 +272,7 @@ kms_create_alias <- function(AliasName, TargetKeyId) {
 #' The `XksProxyAuthenticationCredential` has two required elements:
 #' `RawSecretAccessKey`, a secret key, and `AccessKeyId`, a unique
 #' identifier for the `RawSecretAccessKey`. For character requirements, see
-#' [XksProxyAuthenticationCredentialType](https://docs.aws.amazon.com/kms/latest/APIReference/API_XksProxyAuthenticationCredentialType.html).
+#' XksProxyAuthenticationCredentialType.
 #' 
 #' KMS uses this authentication credential to sign requests to the external
 #' key store proxy on your behalf. This credential is unrelated to Identity
@@ -288,7 +293,7 @@ kms_create_alias <- function(AliasName, TargetKeyId) {
 #' endpoint service for communication with KMS, specify
 #' `VPC_ENDPOINT_SERVICE`. For help making this choice, see [Choosing a
 #' connectivity
-#' option](https://docs.aws.amazon.com/kms/latest/developerguide/choose-xks-connectivity.html#choose-xks-connectivity)
+#' option](https://docs.aws.amazon.com/kms/latest/developerguide/choose-xks-connectivity.html)
 #' in the *Key Management Service Developer Guide*.
 #' 
 #' An Amazon VPC endpoint service keeps your communication with KMS in a
@@ -306,7 +311,7 @@ kms_create_alias <- function(AliasName, TargetKeyId) {
 #' @keywords internal
 #'
 #' @rdname kms_create_custom_key_store
-kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = NULL, TrustAnchorCertificate = NULL, KeyStorePassword = NULL, CustomKeyStoreType = NULL, XksProxyUriEndpoint = NULL, XksProxyUriPath = NULL, XksProxyVpcEndpointServiceName = NULL, XksProxyAuthenticationCredential = NULL, XksProxyConnectivity = NULL) {
+kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = NULL, TrustAnchorCertificate = NULL, KeyStorePassword = NULL, CustomKeyStoreType = NULL, XksProxyUriEndpoint = NULL, XksProxyUriPath = NULL, XksProxyVpcEndpointServiceName = NULL, XksProxyVpcEndpointServiceOwner = NULL, XksProxyAuthenticationCredential = NULL, XksProxyConnectivity = NULL) {
   op <- new_operation(
     name = "CreateCustomKeyStore",
     http_method = "POST",
@@ -315,7 +320,7 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kms$create_custom_key_store_input(CustomKeyStoreName = CustomKeyStoreName, CloudHsmClusterId = CloudHsmClusterId, TrustAnchorCertificate = TrustAnchorCertificate, KeyStorePassword = KeyStorePassword, CustomKeyStoreType = CustomKeyStoreType, XksProxyUriEndpoint = XksProxyUriEndpoint, XksProxyUriPath = XksProxyUriPath, XksProxyVpcEndpointServiceName = XksProxyVpcEndpointServiceName, XksProxyAuthenticationCredential = XksProxyAuthenticationCredential, XksProxyConnectivity = XksProxyConnectivity)
+  input <- .kms$create_custom_key_store_input(CustomKeyStoreName = CustomKeyStoreName, CloudHsmClusterId = CloudHsmClusterId, TrustAnchorCertificate = TrustAnchorCertificate, KeyStorePassword = KeyStorePassword, CustomKeyStoreType = CustomKeyStoreType, XksProxyUriEndpoint = XksProxyUriEndpoint, XksProxyUriPath = XksProxyUriPath, XksProxyVpcEndpointServiceName = XksProxyVpcEndpointServiceName, XksProxyVpcEndpointServiceOwner = XksProxyVpcEndpointServiceOwner, XksProxyAuthenticationCredential = XksProxyAuthenticationCredential, XksProxyConnectivity = XksProxyConnectivity)
   output <- .kms$create_custom_key_store_output()
   config <- get_config()
   svc <- .kms$service(config, op)
@@ -369,7 +374,7 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
 #' The grant determines the retiring principal. Other principals might have
 #' permission to retire the grant or revoke the grant. For details, see
 #' [`revoke_grant`][kms_revoke_grant] and [Retiring and revoking
-#' grants](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant-delete)
+#' grants](https://docs.aws.amazon.com/kms/latest/developerguide/grant-delete.html)
 #' in the *Key Management Service Developer Guide*.
 #' @param Operations &#91;required&#93; A list of operations that the grant permits.
 #' 
@@ -424,7 +429,7 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html)
 #' in the *Key Management Service Developer Guide*.
 #' @param Name A friendly name for the grant. Use this value to prevent the unintended
 #' creation of duplicate grants when retrying this request.
@@ -447,8 +452,8 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
 #' used interchangeably.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
+#' To learn more about how to use this parameter, see [Testing your
+#' permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
@@ -504,12 +509,25 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #'     in the *Amazon Web Services Identity and Access Management User
 #'     Guide*.
 #' 
-#' If you do not provide a key policy, KMS attaches a default key policy to
-#' the KMS key. For more information, see [Default key
-#' policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default)
+#' If either of the required `Resource` or `Action` elements are missing
+#' from a key policy statement, the policy statement has no effect. When a
+#' key policy statement is missing one of these elements, the KMS console
+#' correctly reports an error, but the [`create_key`][kms_create_key] and
+#' [`put_key_policy`][kms_put_key_policy] API requests succeed, even though
+#' the policy statement is ineffective.
+#' 
+#' For more information on required key policy elements, see [Elements in a
+#' key
+#' policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-overview.html#key-policy-elements)
 #' in the *Key Management Service Developer Guide*.
 #' 
-#' The key policy size quota is 32 kilobytes (32768 bytes).
+#' If you do not provide a key policy, KMS attaches a default key policy to
+#' the KMS key. For more information, see [Default key
+#' policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html)
+#' in the *Key Management Service Developer Guide*.
+#' 
+#' If the key policy exceeds the length constraint, KMS returns a
+#' `LimitExceededException`.
 #' 
 #' For help writing and formatting a JSON policy document, see the [IAM
 #' JSON Policy
@@ -525,11 +543,17 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' To set or change the description after the key is created, use
 #' [`update_key_description`][kms_update_key_description].
 #' @param KeyUsage Determines the [cryptographic
-#' operations](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations)
+#' operations](https://docs.aws.amazon.com/kms/latest/developerguide/kms-cryptography.html#cryptographic-operations)
 #' for which you can use the KMS key. The default value is
 #' `ENCRYPT_DECRYPT`. This parameter is optional when you are creating a
 #' symmetric encryption KMS key; otherwise, it is required. You can't
-#' change the `KeyUsage` value after the KMS key is created.
+#' change the
+#' [`KeyUsage`](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html#key-usage)
+#' value after the KMS key is created. Each KMS key can have only one key
+#' usage. This follows key usage best practices according to [NIST SP
+#' 800-57 Recommendations for Key
+#' Management](https://csrc.nist.gov/pubs/sp/800/57/pt1/r5/final), section
+#' 5.2, Key usage.
 #' 
 #' Select only one valid value.
 #' 
@@ -541,10 +565,13 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' -   For asymmetric KMS keys with RSA key pairs, specify
 #'     `ENCRYPT_DECRYPT` or `SIGN_VERIFY`.
 #' 
-#' -   For asymmetric KMS keys with NIST-recommended elliptic curve key
-#'     pairs, specify `SIGN_VERIFY` or `KEY_AGREEMENT`.
+#' -   For asymmetric KMS keys with NIST-standard elliptic curve key pairs,
+#'     specify `SIGN_VERIFY` or `KEY_AGREEMENT`.
 #' 
-#' -   For asymmetric KMS keys with `ECC_SECG_P256K1` key pairs specify
+#' -   For asymmetric KMS keys with `ECC_SECG_P256K1` key pairs, specify
+#'     `SIGN_VERIFY`.
+#' 
+#' -   For asymmetric KMS keys with ML-DSA key pairs, specify
 #'     `SIGN_VERIFY`.
 #' 
 #' -   For asymmetric KMS keys with SM2 key pairs (China Regions only),
@@ -558,9 +585,9 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' @param KeySpec Specifies the type of KMS key to create. The default value,
 #' `SYMMETRIC_DEFAULT`, creates a KMS key with a 256-bit AES-GCM key that
 #' is used for encryption and decryption, except in China Regions, where it
-#' creates a 128-bit symmetric key that uses SM4 encryption. For help
-#' choosing a key spec for your KMS key, see [Choosing a KMS key
-#' type](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#symm-asymm-choose)
+#' creates a 128-bit symmetric key that uses SM4 encryption. For a detailed
+#' description of all supported key specs, see [Key spec
+#' reference](https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose-key-spec.html)
 #' in the *Key Management Service Developer Guide* .
 #' 
 #' The `KeySpec` determines whether the KMS key contains a symmetric key or
@@ -569,10 +596,11 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' created. To further restrict the algorithms that can be used with the
 #' KMS key, use a condition key in its key policy or IAM policy. For more
 #' information, see
-#' [kms:EncryptionAlgorithm](https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-encryption-algorithm),
-#' [kms:MacAlgorithm](https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-mac-algorithm)
-#' or [kms:Signing
-#' Algorithm](https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-signing-algorithm)
+#' [kms:EncryptionAlgorithm](https://docs.aws.amazon.com/kms/latest/developerguide/conditions-kms.html#conditions-kms-encryption-algorithm),
+#' [kms:MacAlgorithm](https://docs.aws.amazon.com/kms/latest/developerguide/conditions-kms.html#conditions-kms-mac-algorithm),
+#' [kms:KeyAgreementAlgorithm](https://docs.aws.amazon.com/kms/latest/developerguide/conditions-kms.html#conditions-kms-key-agreement-algorithm),
+#' or
+#' [kms:SigningAlgorithm](https://docs.aws.amazon.com/kms/latest/developerguide/conditions-kms.html#conditions-kms-signing-algorithm)
 #' in the *Key Management Service Developer Guide* .
 #' 
 #' [Amazon Web Services services that are integrated with
@@ -605,7 +633,7 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' 
 #'     -   `RSA_4096`
 #' 
-#' -   Asymmetric NIST-recommended elliptic curve key pairs (signing and
+#' -   Asymmetric NIST-standard elliptic curve key pairs (signing and
 #'     verification -or- deriving shared secrets)
 #' 
 #'     -   `ECC_NIST_P256` (secp256r1)
@@ -614,10 +642,28 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' 
 #'     -   `ECC_NIST_P521` (secp521r1)
 #' 
+#'     -   `ECC_NIST_EDWARDS25519` (ed25519) - signing and verification
+#'         only
+#' 
+#'         -   **Note:** For ECC_NIST_EDWARDS25519 KMS keys, the
+#'             ED25519_SHA_512 signing algorithm requires
+#'             [`MessageType:RAW`](https://docs.aws.amazon.com/kms/latest/APIReference/API_Sign.html#KMS-Sign-request-MessageType)
+#'             , while ED25519_PH_SHA_512 requires
+#'             [`MessageType:DIGEST`](https://docs.aws.amazon.com/kms/latest/APIReference/API_Sign.html#KMS-Sign-request-MessageType)
+#'             . These message types cannot be used interchangeably.
+#' 
 #' -   Other asymmetric elliptic curve key pairs (signing and verification)
 #' 
 #'     -   `ECC_SECG_P256K1` (secp256k1), commonly used for
 #'         cryptocurrencies.
+#' 
+#' -   Asymmetric ML-DSA key pairs (signing and verification)
+#' 
+#'     -   `ML_DSA_44`
+#' 
+#'     -   `ML_DSA_65`
+#' 
+#'     -   `ML_DSA_87`
 #' 
 #' -   SM2 key pairs (encryption and decryption -or- signing and
 #'     verification -or- deriving shared secrets)
@@ -649,9 +695,9 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' `XksKeyId` parameter to identify the associated external key. The
 #' `KeySpec` value must be `SYMMETRIC_DEFAULT`.
 #' @param CustomKeyStoreId Creates the KMS key in the specified [custom key
-#' store](https://docs.aws.amazon.com/kms/latest/developerguide/). The
-#' `ConnectionState` of the custom key store must be `CONNECTED`. To find
-#' the CustomKeyStoreID and ConnectionState use the
+#' store](https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html).
+#' The `ConnectionState` of the custom key store must be `CONNECTED`. To
+#' find the CustomKeyStoreID and ConnectionState use the
 #' [`describe_custom_key_stores`][kms_describe_custom_key_stores]
 #' operation.
 #' 
@@ -702,8 +748,8 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' When you add tags to an Amazon Web Services resource, Amazon Web
 #' Services generates a cost allocation report with usage and costs
 #' aggregated by tags. Tags can also be used to control access to a KMS
-#' key. For details, see [Tagging
-#' Keys](https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html).
+#' key. For details, see [Tags in
+#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html).
 #' @param MultiRegion Creates a multi-Region primary key that you can replicate into other
 #' Amazon Web Services Regions. You cannot change this value after you
 #' create the KMS key.
@@ -747,9 +793,10 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' associated with the external key store specified by the
 #' `CustomKeyStoreId` parameter. This key must be enabled and configured to
 #' perform encryption and decryption. Each KMS key in an external key store
-#' must use a different external key. For details, see Requirements for a
-#' KMS key in an external key store in the *Key Management Service
-#' Developer Guide*.
+#' must use a different external key. For details, see [Requirements for a
+#' KMS key in an external key
+#' store](https://docs.aws.amazon.com/kms/latest/developerguide/create-xks-keys.html#xks-key-requirements)
+#' in the *Key Management Service Developer Guide*.
 #' 
 #' Each KMS key in an external key store is associated two backing keys.
 #' One is key material that KMS generates. The other is the external key
@@ -794,7 +841,7 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #' @param CiphertextBlob &#91;required&#93; Ciphertext to be decrypted. The blob includes metadata.
 #' @param EncryptionContext Specifies the encryption context to use when decrypting the data. An
 #' encryption context is valid only for [cryptographic
-#' operations](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations)
+#' operations](https://docs.aws.amazon.com/kms/latest/developerguide/kms-cryptography.html#cryptographic-operations)
 #' with a symmetric encryption KMS key. The standard asymmetric encryption
 #' algorithms and HMAC algorithms that KMS uses do not support an
 #' encryption context.
@@ -808,7 +855,7 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #' an encryption context is optional, but it is strongly recommended.
 #' 
 #' For more information, see [Encryption
-#' context](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
+#' context](https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html)
 #' in the *Key Management Service Developer Guide*.
 #' @param GrantTokens A list of grant tokens.
 #' 
@@ -817,7 +864,7 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html)
 #' in the *Key Management Service Developer Guide*.
 #' @param KeyId Specifies the KMS key that KMS uses to decrypt the ciphertext.
 #' 
@@ -862,32 +909,32 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #' encryption KMS keys.
 #' @param Recipient A signed [attestation
 #' document](https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave-concepts.html#term-attestdoc)
-#' from an Amazon Web Services Nitro enclave and the encryption algorithm
-#' to use with the enclave's public key. The only valid encryption
-#' algorithm is `RSAES_OAEP_SHA_256`.
+#' from an Amazon Web Services Nitro enclave or NitroTPM, and the
+#' encryption algorithm to use with the public key in the attestation
+#' document. The only valid encryption algorithm is `RSAES_OAEP_SHA_256`.
 #' 
-#' This parameter only supports attestation documents for Amazon Web
-#' Services Nitro Enclaves. To include this parameter, use the [Amazon Web
-#' Services Nitro Enclaves
+#' This parameter supports the [Amazon Web Services Nitro Enclaves
 #' SDK](https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk)
-#' or any Amazon Web Services SDK.
+#' or any Amazon Web Services SDK for Amazon Web Services Nitro Enclaves.
+#' It supports any Amazon Web Services SDK for Amazon Web Services
+#' NitroTPM.
 #' 
 #' When you use this parameter, instead of returning the plaintext data,
 #' KMS encrypts the plaintext data with the public key in the attestation
 #' document, and returns the resulting ciphertext in the
 #' `CiphertextForRecipient` field in the response. This ciphertext can be
-#' decrypted only with the private key in the enclave. The `Plaintext`
-#' field in the response is null or empty.
+#' decrypted only with the private key in the attested environment. The
+#' `Plaintext` field in the response is null or empty.
 #' 
 #' For information about the interaction between KMS and Amazon Web
-#' Services Nitro Enclaves, see [How Amazon Web Services Nitro Enclaves
-#' uses
-#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html)
+#' Services Nitro Enclaves or Amazon Web Services NitroTPM, see
+#' [Cryptographic attestation support in
+#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/cryptographic-attestation.html)
 #' in the *Key Management Service Developer Guide*.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
+#' To learn more about how to use this parameter, see [Testing your
+#' permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
@@ -947,7 +994,7 @@ kms_delete_alias <- function(AliasName) {
 #' Deletes a custom key store
 #'
 #' @description
-#' Deletes a [custom key store](https://docs.aws.amazon.com/kms/latest/developerguide/). This operation does not affect any backing elements of the custom key store. It does not delete the CloudHSM cluster that is associated with an CloudHSM key store, or affect any users or keys in the cluster. For an external key store, it does not affect the external key store proxy, external key manager, or any external keys.
+#' Deletes a [custom key store](https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html). This operation does not affect any backing elements of the custom key store. It does not delete the CloudHSM cluster that is associated with an CloudHSM key store, or affect any users or keys in the cluster. For an external key store, it does not affect the external key store proxy, external key manager, or any external keys.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_delete_custom_key_store/](https://www.paws-r-sdk.com/docs/kms_delete_custom_key_store/) for full documentation.
 #'
@@ -999,11 +1046,17 @@ kms_delete_custom_key_store <- function(CustomKeyStoreId) {
 #' 
 #' To get the key ID and key ARN for a KMS key, use
 #' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' @param KeyMaterialId Identifies the imported key material you are deleting.
+#' 
+#' If no KeyMaterialId is specified, KMS deletes the current key material.
+#' 
+#' To get the list of key material IDs associated with a KMS key, use
+#' [`list_key_rotations`][kms_list_key_rotations].
 #'
 #' @keywords internal
 #'
 #' @rdname kms_delete_imported_key_material
-kms_delete_imported_key_material <- function(KeyId) {
+kms_delete_imported_key_material <- function(KeyId, KeyMaterialId = NULL) {
   op <- new_operation(
     name = "DeleteImportedKeyMaterial",
     http_method = "POST",
@@ -1012,7 +1065,7 @@ kms_delete_imported_key_material <- function(KeyId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kms$delete_imported_key_material_input(KeyId = KeyId)
+  input <- .kms$delete_imported_key_material_input(KeyId = KeyId, KeyMaterialId = KeyMaterialId)
   output <- .kms$delete_imported_key_material_output()
   config <- get_config()
   svc <- .kms$service(config, op)
@@ -1029,10 +1082,10 @@ kms_delete_imported_key_material <- function(KeyId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_derive_shared_secret/](https://www.paws-r-sdk.com/docs/kms_derive_shared_secret/) for full documentation.
 #'
-#' @param KeyId &#91;required&#93; Identifies an asymmetric NIST-recommended ECC or SM2 (China Regions
-#' only) KMS key. KMS uses the private key in the specified key pair to
-#' derive the shared secret. The key usage of the KMS key must be
-#' `KEY_AGREEMENT`. To find the `KeyUsage` of a KMS key, use the
+#' @param KeyId &#91;required&#93; Identifies an asymmetric NIST-standard ECC or SM2 (China Regions only)
+#' KMS key. KMS uses the private key in the specified key pair to derive
+#' the shared secret. The key usage of the KMS key must be `KEY_AGREEMENT`.
+#' To find the `KeyUsage` of a KMS key, use the
 #' [`describe_key`][kms_describe_key] operation.
 #' 
 #' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
@@ -1057,7 +1110,7 @@ kms_delete_imported_key_material <- function(KeyId) {
 #' [`list_aliases`][kms_list_aliases].
 #' @param KeyAgreementAlgorithm &#91;required&#93; Specifies the key agreement algorithm used to derive the shared secret.
 #' The only valid value is `ECDH`.
-#' @param PublicKey &#91;required&#93; Specifies the public key in your peer's NIST-recommended elliptic curve
+#' @param PublicKey &#91;required&#93; Specifies the public key in your peer's NIST-standard elliptic curve
 #' (ECC) or SM2 (China Regions only) key pair.
 #' 
 #' The public key must be a DER-encoded X.509 public key, also known as
@@ -1082,41 +1135,45 @@ kms_delete_imported_key_material <- function(KeyId) {
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html)
 #' in the *Key Management Service Developer Guide*.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
+#' To learn more about how to use this parameter, see [Testing your
+#' permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #' @param Recipient A signed [attestation
 #' document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#term-attestdoc)
-#' from an Amazon Web Services Nitro enclave and the encryption algorithm
-#' to use with the enclave's public key. The only valid encryption
-#' algorithm is `RSAES_OAEP_SHA_256`.
+#' from an Amazon Web Services Nitro enclave or NitroTPM, and the
+#' encryption algorithm to use with the public key in the attestation
+#' document. The only valid encryption algorithm is `RSAES_OAEP_SHA_256`.
 #' 
 #' This parameter only supports attestation documents for Amazon Web
-#' Services Nitro Enclaves. To call DeriveSharedSecret for an Amazon Web
-#' Services Nitro Enclaves, use the [Amazon Web Services Nitro Enclaves
+#' Services Nitro Enclaves or Amazon Web Services NitroTPM. To call
+#' DeriveSharedSecret generate an attestation document use either [Amazon
+#' Web Services Nitro Enclaves
 #' SDK](https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk)
-#' to generate the attestation document and then use the Recipient
-#' parameter from any Amazon Web Services SDK to provide the attestation
-#' document for the enclave.
+#' for an Amazon Web Services Nitro Enclaves or [Amazon Web Services
+#' NitroTPM
+#' tools](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/attestation-get-doc.html)
+#' for Amazon Web Services NitroTPM. Then use the Recipient parameter from
+#' any Amazon Web Services SDK to provide the attestation document for the
+#' attested environment.
 #' 
 #' When you use this parameter, instead of returning a plaintext copy of
 #' the shared secret, KMS encrypts the plaintext shared secret under the
 #' public key in the attestation document, and returns the resulting
 #' ciphertext in the `CiphertextForRecipient` field in the response. This
-#' ciphertext can be decrypted only with the private key in the enclave.
-#' The `CiphertextBlob` field in the response contains the encrypted shared
-#' secret derived from the KMS key specified by the `KeyId` parameter and
-#' public key specified by the `PublicKey` parameter. The `SharedSecret`
-#' field in the response is null or empty.
+#' ciphertext can be decrypted only with the private key in the attested
+#' environment. The `CiphertextBlob` field in the response contains the
+#' encrypted shared secret derived from the KMS key specified by the
+#' `KeyId` parameter and public key specified by the `PublicKey` parameter.
+#' The `SharedSecret` field in the response is null or empty.
 #' 
 #' For information about the interaction between KMS and Amazon Web
-#' Services Nitro Enclaves, see [How Amazon Web Services Nitro Enclaves
-#' uses
-#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html)
+#' Services Nitro Enclaves or Amazon Web Services NitroTPM, see
+#' [Cryptographic attestation support in
+#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/cryptographic-attestation.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
@@ -1144,7 +1201,7 @@ kms_derive_shared_secret <- function(KeyId, KeyAgreementAlgorithm, PublicKey, Gr
 #' Gets information about custom key stores in the account and Region
 #'
 #' @description
-#' Gets information about [custom key stores](https://docs.aws.amazon.com/kms/latest/developerguide/) in the account and Region.
+#' Gets information about [custom key stores](https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html) in the account and Region.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_describe_custom_key_stores/](https://www.paws-r-sdk.com/docs/kms_describe_custom_key_stores/) for full documentation.
 #'
@@ -1194,7 +1251,7 @@ kms_describe_custom_key_stores <- function(CustomKeyStoreId = NULL, CustomKeySto
 #' Provides detailed information about a KMS key
 #'
 #' @description
-#' Provides detailed information about a KMS key. You can run [`describe_key`][kms_describe_key] on a [customer managed key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk) or an [Amazon Web Services managed key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk).
+#' Provides detailed information about a KMS key. You can run [`describe_key`][kms_describe_key] on a [customer managed key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-mgn-key) or an [Amazon Web Services managed key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-key).
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_describe_key/](https://www.paws-r-sdk.com/docs/kms_describe_key/) for full documentation.
 #'
@@ -1203,7 +1260,7 @@ kms_describe_custom_key_stores <- function(CustomKeyStoreId = NULL, CustomKeySto
 #' If you specify a predefined Amazon Web Services alias (an Amazon Web
 #' Services alias with no key ID), KMS associates the alias with an [Amazon
 #' Web Services managed
-#' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html##aws-managed-cmk)
+#' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-key)
 #' and returns its `KeyId` and `Arn` in the response.
 #' 
 #' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
@@ -1233,7 +1290,7 @@ kms_describe_custom_key_stores <- function(CustomKeyStoreId = NULL, CustomKeySto
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
@@ -1261,7 +1318,7 @@ kms_describe_key <- function(KeyId, GrantTokens = NULL) {
 #' Sets the state of a KMS key to disabled
 #'
 #' @description
-#' Sets the state of a KMS key to disabled. This change temporarily prevents use of the KMS key for [cryptographic operations](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations).
+#' Sets the state of a KMS key to disabled. This change temporarily prevents use of the KMS key for [cryptographic operations](https://docs.aws.amazon.com/kms/latest/developerguide/kms-cryptography.html#cryptographic-operations).
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_disable_key/](https://www.paws-r-sdk.com/docs/kms_disable_key/) for full documentation.
 #'
@@ -1305,7 +1362,7 @@ kms_disable_key <- function(KeyId) {
 #' symmetric encryption KMS key
 #'
 #' @description
-#' Disables [automatic rotation of the key material](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html) of the specified symmetric encryption KMS key.
+#' Disables [automatic rotation of the key material](https://docs.aws.amazon.com/kms/latest/developerguide/) of the specified symmetric encryption KMS key.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_disable_key_rotation/](https://www.paws-r-sdk.com/docs/kms_disable_key_rotation/) for full documentation.
 #'
@@ -1317,7 +1374,7 @@ kms_disable_key <- function(KeyId) {
 #' KMS keys with [imported key
 #' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html),
 #' or KMS keys in a [custom key
-#' store](https://docs.aws.amazon.com/kms/latest/developerguide/).
+#' store](https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html).
 #' 
 #' Specify the key ID or key ARN of the KMS key.
 #' 
@@ -1356,7 +1413,7 @@ kms_disable_key_rotation <- function(KeyId) {
 #' Disconnects the custom key store from its backing key store
 #'
 #' @description
-#' Disconnects the [custom key store](https://docs.aws.amazon.com/kms/latest/developerguide/) from its backing key store. This operation disconnects an CloudHSM key store from its associated CloudHSM cluster or disconnects an external key store from the external key store proxy that communicates with your external key manager.
+#' Disconnects the [custom key store](https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html) from its backing key store. This operation disconnects an CloudHSM key store from its associated CloudHSM cluster or disconnects an external key store from the external key store proxy that communicates with your external key manager.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_disconnect_custom_key_store/](https://www.paws-r-sdk.com/docs/kms_disconnect_custom_key_store/) for full documentation.
 #'
@@ -1390,7 +1447,7 @@ kms_disconnect_custom_key_store <- function(CustomKeyStoreId) {
 #' Sets the key state of a KMS key to enabled
 #'
 #' @description
-#' Sets the key state of a KMS key to enabled. This allows you to use the KMS key for [cryptographic operations](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations).
+#' Sets the key state of a KMS key to enabled. This allows you to use the KMS key for [cryptographic operations](https://docs.aws.amazon.com/kms/latest/developerguide/kms-cryptography.html#cryptographic-operations).
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_enable_key/](https://www.paws-r-sdk.com/docs/kms_enable_key/) for full documentation.
 #'
@@ -1434,7 +1491,7 @@ kms_enable_key <- function(KeyId) {
 #' symmetric encryption KMS key
 #'
 #' @description
-#' Enables [automatic rotation of the key material](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotating-keys-enable-disable) of the specified symmetric encryption KMS key.
+#' Enables [automatic rotation of the key material](https://docs.aws.amazon.com/kms/latest/developerguide/) of the specified symmetric encryption KMS key.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_enable_key_rotation/](https://www.paws-r-sdk.com/docs/kms_enable_key_rotation/) for full documentation.
 #'
@@ -1446,9 +1503,10 @@ kms_enable_key <- function(KeyId) {
 #' KMS keys with [imported key
 #' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html),
 #' or KMS keys in a [custom key
-#' store](https://docs.aws.amazon.com/kms/latest/developerguide/). To
-#' enable or disable automatic rotation of a set of related [multi-Region
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-update.html#multi-region-rotate),
+#' store](https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html).
+#' To enable or disable automatic rotation of a set of related
+#' [multi-Region
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#multi-region-rotate),
 #' set the property on the primary key.
 #' 
 #' Specify the key ID or key ARN of the KMS key.
@@ -1530,7 +1588,7 @@ kms_enable_key_rotation <- function(KeyId, RotationPeriodInDays = NULL) {
 #' @param Plaintext &#91;required&#93; Data to be encrypted.
 #' @param EncryptionContext Specifies the encryption context that will be used to encrypt the data.
 #' An encryption context is valid only for [cryptographic
-#' operations](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations)
+#' operations](https://docs.aws.amazon.com/kms/latest/developerguide/kms-cryptography.html#cryptographic-operations)
 #' with a symmetric encryption KMS key. The standard asymmetric encryption
 #' algorithms and HMAC algorithms that KMS uses do not support an
 #' encryption context.
@@ -1547,7 +1605,7 @@ kms_enable_key_rotation <- function(KeyId, RotationPeriodInDays = NULL) {
 #' an encryption context is optional, but it is strongly recommended.
 #' 
 #' For more information, see [Encryption
-#' context](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
+#' context](https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html)
 #' in the *Key Management Service Developer Guide*.
 #' @param GrantTokens A list of grant tokens.
 #' 
@@ -1556,7 +1614,7 @@ kms_enable_key_rotation <- function(KeyId, RotationPeriodInDays = NULL) {
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html)
 #' in the *Key Management Service Developer Guide*.
 #' @param EncryptionAlgorithm Specifies the encryption algorithm that KMS will use to encrypt the
 #' plaintext message. The algorithm must be compatible with the KMS key
@@ -1570,8 +1628,8 @@ kms_enable_key_rotation <- function(KeyId, RotationPeriodInDays = NULL) {
 #' The SM2PKE algorithm is only available in China Regions.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
+#' To learn more about how to use this parameter, see [Testing your
+#' permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
@@ -1643,7 +1701,7 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
 #' an encryption context is optional, but it is strongly recommended.
 #' 
 #' For more information, see [Encryption
-#' context](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
+#' context](https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html)
 #' in the *Key Management Service Developer Guide*.
 #' @param NumberOfBytes Specifies the length of the data key in bytes. For example, use the
 #' value 64 to generate a 512-bit data key (64 bytes is 512 bits). For
@@ -1666,19 +1724,19 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html)
 #' in the *Key Management Service Developer Guide*.
 #' @param Recipient A signed [attestation
 #' document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#term-attestdoc)
-#' from an Amazon Web Services Nitro enclave and the encryption algorithm
-#' to use with the enclave's public key. The only valid encryption
-#' algorithm is `RSAES_OAEP_SHA_256`.
+#' from an Amazon Web Services Nitro enclave or NitroTPM, and the
+#' encryption algorithm to use with the public key in the attestation
+#' document. The only valid encryption algorithm is `RSAES_OAEP_SHA_256`.
 #' 
-#' This parameter only supports attestation documents for Amazon Web
-#' Services Nitro Enclaves. To include this parameter, use the [Amazon Web
-#' Services Nitro Enclaves
+#' This parameter supports the [Amazon Web Services Nitro Enclaves
 #' SDK](https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk)
-#' or any Amazon Web Services SDK.
+#' or any Amazon Web Services SDK for Amazon Web Services Nitro Enclaves.
+#' It supports any Amazon Web Services SDK for Amazon Web Services
+#' NitroTPM.
 #' 
 #' When you use this parameter, instead of returning the plaintext data
 #' key, KMS encrypts the plaintext data key under the public key in the
@@ -1690,14 +1748,14 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
 #' the response is null or empty.
 #' 
 #' For information about the interaction between KMS and Amazon Web
-#' Services Nitro Enclaves, see [How Amazon Web Services Nitro Enclaves
-#' uses
-#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html)
+#' Services Nitro Enclaves or Amazon Web Services NitroTPM, see
+#' [Cryptographic attestation support in
+#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/cryptographic-attestation.html)
 #' in the *Key Management Service Developer Guide*.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
+#' To learn more about how to use this parameter, see [Testing your
+#' permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
@@ -1744,7 +1802,7 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #' an encryption context is optional, but it is strongly recommended.
 #' 
 #' For more information, see [Encryption
-#' context](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
+#' context](https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html)
 #' in the *Key Management Service Developer Guide*.
 #' @param KeyId &#91;required&#93; Specifies the symmetric encryption KMS key that encrypts the private key
 #' in the data key pair. You cannot specify an asymmetric KMS key or a KMS
@@ -1774,10 +1832,11 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #' @param KeyPairSpec &#91;required&#93; Determines the type of data key pair that is generated.
 #' 
 #' The KMS rule that restricts the use of asymmetric RSA and SM2 KMS keys
-#' to encrypt and decrypt or to sign and verify (but not both), and the
-#' rule that permits you to use ECC KMS keys only to sign and verify, are
-#' not effective on data key pairs, which are used outside of KMS. The SM2
-#' key spec is only available in China Regions.
+#' to encrypt and decrypt or to sign and verify (but not both), the rule
+#' that permits you to use ECC KMS keys only to sign and verify, and the
+#' rule that permits you to use ML-DSA key pairs to sign and verify only
+#' are not effective on data key pairs, which are used outside of KMS. The
+#' SM2 key spec is only available in China Regions.
 #' @param GrantTokens A list of grant tokens.
 #' 
 #' Use a grant token when your permission to call this operation comes from
@@ -1785,41 +1844,45 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html)
 #' in the *Key Management Service Developer Guide*.
 #' @param Recipient A signed [attestation
 #' document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#term-attestdoc)
-#' from an Amazon Web Services Nitro enclave and the encryption algorithm
-#' to use with the enclave's public key. The only valid encryption
-#' algorithm is `RSAES_OAEP_SHA_256`.
+#' from an Amazon Web Services Nitro enclave or NitroTPM, and the
+#' encryption algorithm to use with the public key in the attestation
+#' document. The only valid encryption algorithm is `RSAES_OAEP_SHA_256`.
 #' 
 #' This parameter only supports attestation documents for Amazon Web
-#' Services Nitro Enclaves. To call DeriveSharedSecret for an Amazon Web
-#' Services Nitro Enclaves, use the [Amazon Web Services Nitro Enclaves
+#' Services Nitro Enclaves or Amazon Web Services NitroTPM. To call
+#' GenerateDataKeyPair generate an attestation document use either [Amazon
+#' Web Services Nitro Enclaves
 #' SDK](https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk)
-#' to generate the attestation document and then use the Recipient
-#' parameter from any Amazon Web Services SDK to provide the attestation
-#' document for the enclave.
+#' for an Amazon Web Services Nitro Enclaves or [Amazon Web Services
+#' NitroTPM
+#' tools](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/attestation-get-doc.html)
+#' for Amazon Web Services NitroTPM. Then use the Recipient parameter from
+#' any Amazon Web Services SDK to provide the attestation document for the
+#' attested environment.
 #' 
 #' When you use this parameter, instead of returning a plaintext copy of
 #' the private data key, KMS encrypts the plaintext private data key under
 #' the public key in the attestation document, and returns the resulting
 #' ciphertext in the `CiphertextForRecipient` field in the response. This
-#' ciphertext can be decrypted only with the private key in the enclave.
-#' The `CiphertextBlob` field in the response contains a copy of the
-#' private data key encrypted under the KMS key specified by the `KeyId`
-#' parameter. The `PrivateKeyPlaintext` field in the response is null or
-#' empty.
+#' ciphertext can be decrypted only with the private key in the attested
+#' environment. The `CiphertextBlob` field in the response contains a copy
+#' of the private data key encrypted under the KMS key specified by the
+#' `KeyId` parameter. The `PrivateKeyPlaintext` field in the response is
+#' null or empty.
 #' 
 #' For information about the interaction between KMS and Amazon Web
-#' Services Nitro Enclaves, see [How Amazon Web Services Nitro Enclaves
-#' uses
-#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html)
+#' Services Nitro Enclaves or Amazon Web Services NitroTPM, see
+#' [Cryptographic attestation support in
+#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/cryptographic-attestation.html)
 #' in the *Key Management Service Developer Guide*.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
+#' To learn more about how to use this parameter, see [Testing your
+#' permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
@@ -1866,7 +1929,7 @@ kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairS
 #' an encryption context is optional, but it is strongly recommended.
 #' 
 #' For more information, see [Encryption
-#' context](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
+#' context](https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html)
 #' in the *Key Management Service Developer Guide*.
 #' @param KeyId &#91;required&#93; Specifies the symmetric encryption KMS key that encrypts the private key
 #' in the data key pair. You cannot specify an asymmetric KMS key or a KMS
@@ -1896,10 +1959,11 @@ kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairS
 #' @param KeyPairSpec &#91;required&#93; Determines the type of data key pair that is generated.
 #' 
 #' The KMS rule that restricts the use of asymmetric RSA and SM2 KMS keys
-#' to encrypt and decrypt or to sign and verify (but not both), and the
-#' rule that permits you to use ECC KMS keys only to sign and verify, are
-#' not effective on data key pairs, which are used outside of KMS. The SM2
-#' key spec is only available in China Regions.
+#' to encrypt and decrypt or to sign and verify (but not both), the rule
+#' that permits you to use ECC KMS keys only to sign and verify, and the
+#' rule that permits you to use ML-DSA key pairs to sign and verify only
+#' are not effective on data key pairs, which are used outside of KMS. The
+#' SM2 key spec is only available in China Regions.
 #' @param GrantTokens A list of grant tokens.
 #' 
 #' Use a grant token when your permission to call this operation comes from
@@ -1907,12 +1971,12 @@ kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairS
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html)
 #' in the *Key Management Service Developer Guide*.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
+#' To learn more about how to use this parameter, see [Testing your
+#' permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
@@ -1984,7 +2048,7 @@ kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NUL
 #' an encryption context is optional, but it is strongly recommended.
 #' 
 #' For more information, see [Encryption
-#' context](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
+#' context](https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html)
 #' in the *Key Management Service Developer Guide*.
 #' @param KeySpec The length of the data key. Use `AES_128` to generate a 128-bit
 #' symmetric key, or `AES_256` to generate a 256-bit symmetric key.
@@ -1999,12 +2063,12 @@ kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NUL
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html)
 #' in the *Key Management Service Developer Guide*.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
+#' To learn more about how to use this parameter, see [Testing your
+#' permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
@@ -2062,12 +2126,12 @@ kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = N
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html)
 #' in the *Key Management Service Developer Guide*.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
+#' To learn more about how to use this parameter, see [Testing your
+#' permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
@@ -2112,27 +2176,27 @@ kms_generate_mac <- function(Message, KeyId, MacAlgorithm, GrantTokens = NULL, D
 #' `UnsupportedOperationException`.
 #' @param Recipient A signed [attestation
 #' document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#term-attestdoc)
-#' from an Amazon Web Services Nitro enclave and the encryption algorithm
-#' to use with the enclave's public key. The only valid encryption
-#' algorithm is `RSAES_OAEP_SHA_256`.
+#' from an Amazon Web Services Nitro enclave or NitroTPM, and the
+#' encryption algorithm to use with the public key in the attestation
+#' document. The only valid encryption algorithm is `RSAES_OAEP_SHA_256`.
 #' 
-#' This parameter only supports attestation documents for Amazon Web
-#' Services Nitro Enclaves. To include this parameter, use the [Amazon Web
-#' Services Nitro Enclaves
+#' This parameter supports the [Amazon Web Services Nitro Enclaves
 #' SDK](https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk)
-#' or any Amazon Web Services SDK.
+#' or any Amazon Web Services SDK for Amazon Web Services Nitro Enclaves.
+#' It supports any Amazon Web Services SDK for Amazon Web Services
+#' NitroTPM.
 #' 
 #' When you use this parameter, instead of returning plaintext bytes, KMS
 #' encrypts the plaintext bytes under the public key in the attestation
 #' document, and returns the resulting ciphertext in the
 #' `CiphertextForRecipient` field in the response. This ciphertext can be
-#' decrypted only with the private key in the enclave. The `Plaintext`
-#' field in the response is null or empty.
+#' decrypted only with the private key in the attested environment. The
+#' `Plaintext` field in the response is null or empty.
 #' 
 #' For information about the interaction between KMS and Amazon Web
-#' Services Nitro Enclaves, see [How Amazon Web Services Nitro Enclaves
-#' uses
-#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html)
+#' Services Nitro Enclaves or Amazon Web Services NitroTPM, see
+#' [Cryptographic attestation support in
+#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/cryptographic-attestation.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
@@ -2210,7 +2274,7 @@ kms_get_key_policy <- function(KeyId, PolicyName = NULL) {
 #' rotation date
 #'
 #' @description
-#' Provides detailed information about the rotation status for a KMS key, including whether [automatic rotation of the key material](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html) is enabled for the specified KMS key, the [rotation period](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotation-period), and the next scheduled rotation date.
+#' Provides detailed information about the rotation status for a KMS key, including whether [automatic rotation of the key material](https://docs.aws.amazon.com/kms/latest/developerguide/) is enabled for the specified KMS key, the [rotation period](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotation-period), and the next scheduled rotation date.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_get_key_rotation_status/](https://www.paws-r-sdk.com/docs/kms_get_key_rotation_status/) for full documentation.
 #'
@@ -2379,7 +2443,7 @@ kms_get_parameters_for_import <- function(KeyId, WrappingAlgorithm, WrappingKeyS
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
@@ -2408,7 +2472,7 @@ kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
 #' created without key material
 #'
 #' @description
-#' Imports or reimports key material into an existing KMS key that was created without key material. [`import_key_material`][kms_import_key_material] also sets the expiration model and expiration date of the imported key material.
+#' Imports or reimports key material into an existing KMS key that was created without key material. You can also use this operation to set or update the expiration model and expiration date of the imported key material.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_import_key_material/](https://www.paws-r-sdk.com/docs/kms_import_key_material/) for full documentation.
 #'
@@ -2467,7 +2531,7 @@ kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
 #' @param ExpirationModel Specifies whether the key material expires. The default is
 #' `KEY_MATERIAL_EXPIRES`. For help with this choice, see [Setting an
 #' expiration
-#' time](https://docs.aws.amazon.com/en_us/kms/latest/developerguide/importing-keys.html#importing-keys-expiration)
+#' time](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-import-key-material.html#importing-keys-expiration)
 #' in the *Key Management Service Developer Guide*.
 #' 
 #' When the value of `ExpirationModel` is `KEY_MATERIAL_EXPIRES`, you must
@@ -2477,11 +2541,46 @@ kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
 #' You cannot change the `ExpirationModel` or `ValidTo` values for the
 #' current import after the request completes. To change either value, you
 #' must reimport the key material.
+#' @param ImportType Indicates whether the key material being imported is previously
+#' associated with this KMS key or not. This parameter is optional and only
+#' usable with symmetric encryption keys. If no key material has ever been
+#' imported into the KMS key, and this parameter is omitted, the parameter
+#' defaults to `NEW_KEY_MATERIAL`. After the first key material is
+#' imported, if this parameter is omitted then the parameter defaults to
+#' `EXISTING_KEY_MATERIAL`.
+#' 
+#' For multi-Region keys, you must first import new key material into the
+#' primary Region key. You should use the `NEW_KEY_MATERIAL` import type
+#' when importing key material into the primary Region key. Then, you can
+#' import the same key material into the replica Region key. The import
+#' type for the replica Region key should be `EXISTING_KEY_MATERIAL`.
+#' @param KeyMaterialDescription Description for the key material being imported. This parameter is
+#' optional and only usable with symmetric encryption keys. If you do not
+#' specify a key material description, KMS retains the value you specified
+#' when you last imported the same key material into this KMS key.
+#' @param KeyMaterialId Identifies the key material being imported. This parameter is optional
+#' and only usable with symmetric encryption keys. You cannot specify a key
+#' material ID with `ImportType` set to `NEW_KEY_MATERIAL`. Whenever you
+#' import key material into a symmetric encryption key, KMS assigns a
+#' unique identifier to the key material based on the KMS key ID and the
+#' imported key material. When you re-import key material with a specified
+#' key material ID, KMS:
+#' 
+#' -   Computes the identifier for the key material
+#' 
+#' -   Matches the computed identifier against the specified key material
+#'     ID
+#' 
+#' -   Verifies that the key material ID is already associated with the KMS
+#'     key
+#' 
+#' To get the list of key material IDs associated with a KMS key, use
+#' [`list_key_rotations`][kms_list_key_rotations].
 #'
 #' @keywords internal
 #'
 #' @rdname kms_import_key_material
-kms_import_key_material <- function(KeyId, ImportToken, EncryptedKeyMaterial, ValidTo = NULL, ExpirationModel = NULL) {
+kms_import_key_material <- function(KeyId, ImportToken, EncryptedKeyMaterial, ValidTo = NULL, ExpirationModel = NULL, ImportType = NULL, KeyMaterialDescription = NULL, KeyMaterialId = NULL) {
   op <- new_operation(
     name = "ImportKeyMaterial",
     http_method = "POST",
@@ -2490,7 +2589,7 @@ kms_import_key_material <- function(KeyId, ImportToken, EncryptedKeyMaterial, Va
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kms$import_key_material_input(KeyId = KeyId, ImportToken = ImportToken, EncryptedKeyMaterial = EncryptedKeyMaterial, ValidTo = ValidTo, ExpirationModel = ExpirationModel)
+  input <- .kms$import_key_material_input(KeyId = KeyId, ImportToken = ImportToken, EncryptedKeyMaterial = EncryptedKeyMaterial, ValidTo = ValidTo, ExpirationModel = ExpirationModel, ImportType = ImportType, KeyMaterialDescription = KeyMaterialDescription, KeyMaterialId = KeyMaterialId)
   output <- .kms$import_key_material_output()
   config <- get_config()
   svc <- .kms$service(config, op)
@@ -2670,11 +2769,11 @@ kms_list_key_policies <- function(KeyId, Limit = NULL, Marker = NULL) {
 }
 .kms$operations$list_key_policies <- kms_list_key_policies
 
-#' Returns information about all completed key material rotations for the
+#' Returns information about the key materials associated with the
 #' specified KMS key
 #'
 #' @description
-#' Returns information about all completed key material rotations for the specified KMS key.
+#' Returns information about the key materials associated with the specified KMS key. You can use the optional `IncludeKeyMaterial` parameter to control which key materials are included in the response.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_list_key_rotations/](https://www.paws-r-sdk.com/docs/kms_list_key_rotations/) for full documentation.
 #'
@@ -2691,6 +2790,14 @@ kms_list_key_policies <- function(KeyId, Limit = NULL, Marker = NULL) {
 #' 
 #' To get the key ID and key ARN for a KMS key, use
 #' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' @param IncludeKeyMaterial Use this optional parameter to control which key materials associated
+#' with this key are listed in the response. The default value of this
+#' parameter is `ROTATIONS_ONLY`. If you omit this parameter, KMS returns
+#' information on the key materials created by automatic or on-demand key
+#' rotation. When you specify a value of `ALL_KEY_MATERIAL`, KMS adds the
+#' first key material and any imported key material pending rotation to the
+#' response. This parameter can only be used with KMS keys that support
+#' automatic or on-demand key rotation.
 #' @param Limit Use this parameter to specify the maximum number of items to return.
 #' When this value is present, KMS does not return more than the specified
 #' number of items, but it might return fewer.
@@ -2704,7 +2811,7 @@ kms_list_key_policies <- function(KeyId, Limit = NULL, Marker = NULL) {
 #' @keywords internal
 #'
 #' @rdname kms_list_key_rotations
-kms_list_key_rotations <- function(KeyId, Limit = NULL, Marker = NULL) {
+kms_list_key_rotations <- function(KeyId, IncludeKeyMaterial = NULL, Limit = NULL, Marker = NULL) {
   op <- new_operation(
     name = "ListKeyRotations",
     http_method = "POST",
@@ -2713,7 +2820,7 @@ kms_list_key_rotations <- function(KeyId, Limit = NULL, Marker = NULL) {
     paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Rotations"),
     stream_api = FALSE
   )
-  input <- .kms$list_key_rotations_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
+  input <- .kms$list_key_rotations_input(KeyId = KeyId, IncludeKeyMaterial = IncludeKeyMaterial, Limit = Limit, Marker = Marker)
   output <- .kms$list_key_rotations_output()
   config <- get_config()
   svc <- .kms$service(config, op)
@@ -2913,6 +3020,18 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
 #'     in the *Amazon Web Services Identity and Access Management User
 #'     Guide*.
 #' 
+#' If either of the required `Resource` or `Action` elements are missing
+#' from a key policy statement, the policy statement has no effect. When a
+#' key policy statement is missing one of these elements, the KMS console
+#' correctly reports an error, but the
+#' [`put_key_policy`][kms_put_key_policy] API request succeeds, even though
+#' the policy statement is ineffective.
+#' 
+#' For more information on required key policy elements, see [Elements in a
+#' key
+#' policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-overview.html#key-policy-elements)
+#' in the *Key Management Service Developer Guide*.
+#' 
 #' A key policy document can include only the following characters:
 #' 
 #' -   Printable ASCII characters from the space character (``U+0020``)
@@ -2923,6 +3042,9 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
 #' 
 #' -   The tab (``U+0009``), line feed (``U+000A``), and carriage return
 #'     (``U+000D``) special characters
+#' 
+#' If the key policy exceeds the length constraint, KMS returns a
+#' `LimitExceededException`.
 #' 
 #' For information about key policies, see [Key policies in
 #' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html)
@@ -2969,7 +3091,7 @@ kms_put_key_policy <- function(KeyId, PolicyName = NULL, Policy, BypassPolicyLoc
 #' Decrypts ciphertext and then reencrypts it entirely within KMS
 #'
 #' @description
-#' Decrypts ciphertext and then reencrypts it entirely within KMS. You can use this operation to change the KMS key under which data is encrypted, such as when you [manually rotate](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotate-keys-manually) a KMS key or change the KMS key that protects a ciphertext. You can also use it to reencrypt ciphertext under the same KMS key, such as to change the [encryption context](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context) of a ciphertext.
+#' Decrypts ciphertext and then reencrypts it entirely within KMS. You can use this operation to change the KMS key under which data is encrypted, such as when you [manually rotate](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys-manually.html) a KMS key or change the KMS key that protects a ciphertext. You can also use it to reencrypt ciphertext under the same KMS key, such as to change the [encryption context](https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html) of a ciphertext.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_re_encrypt/](https://www.paws-r-sdk.com/docs/kms_re_encrypt/) for full documentation.
 #'
@@ -2986,7 +3108,7 @@ kms_put_key_policy <- function(KeyId, PolicyName = NULL, Policy, BypassPolicyLoc
 #' an encryption context is optional, but it is strongly recommended.
 #' 
 #' For more information, see [Encryption
-#' context](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
+#' context](https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html)
 #' in the *Key Management Service Developer Guide*.
 #' @param SourceKeyId Specifies the KMS key that KMS will use to decrypt the ciphertext before
 #' it is re-encrypted.
@@ -3064,7 +3186,7 @@ kms_put_key_policy <- function(KeyId, PolicyName = NULL, Policy, BypassPolicyLoc
 #' an encryption context is optional, but it is strongly recommended.
 #' 
 #' For more information, see [Encryption
-#' context](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
+#' context](https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html)
 #' in the *Key Management Service Developer Guide*.
 #' @param SourceEncryptionAlgorithm Specifies the encryption algorithm that KMS will use to decrypt the
 #' ciphertext before it is reencrypted. The default value,
@@ -3090,12 +3212,12 @@ kms_put_key_policy <- function(KeyId, PolicyName = NULL, Policy, BypassPolicyLoc
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html)
 #' in the *Key Management Service Developer Guide*.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
+#' To learn more about how to use this parameter, see [Testing your
+#' permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
@@ -3151,15 +3273,6 @@ kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, Sourc
 #' endpoints](https://docs.aws.amazon.com/general/latest/gr/kms.html#kms_region)
 #' in the *Amazon Web Services General Reference*.
 #' 
-#' HMAC KMS keys are not supported in all Amazon Web Services Regions. If
-#' you try to replicate an HMAC KMS key in an Amazon Web Services Region in
-#' which HMAC keys are not supported, the
-#' [`replicate_key`][kms_replicate_key] operation returns an
-#' `UnsupportedOperationException`. For a list of Regions in which HMAC KMS
-#' keys are supported, see [HMAC keys in
-#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/hmac.html) in
-#' the *Key Management Service Developer Guide*.
-#' 
 #' The replica must be in a different Amazon Web Services Region than its
 #' primary key and other replicas of that primary key, but in the same
 #' Amazon Web Services partition. KMS must be available in the replica
@@ -3175,7 +3288,7 @@ kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, Sourc
 #' in the *Amazon Web Services General Reference*.
 #' @param Policy The key policy to attach to the KMS key. This parameter is optional. If
 #' you do not provide a key policy, KMS attaches the [default key
-#' policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default)
+#' policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html)
 #' to the KMS key.
 #' 
 #' The key policy is not a shared property of multi-Region keys. You can
@@ -3273,8 +3386,8 @@ kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, Sourc
 #' When you add tags to an Amazon Web Services resource, Amazon Web
 #' Services generates a cost allocation report with usage and costs
 #' aggregated by tags. Tags can also be used to control access to a KMS
-#' key. For details, see [Tagging
-#' Keys](https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html).
+#' key. For details, see [Tags in
+#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html).
 #'
 #' @keywords internal
 #'
@@ -3327,8 +3440,8 @@ kms_replicate_key <- function(KeyId, ReplicaRegion, Policy = NULL, BypassPolicyL
 #'     0123456789012345678901234567890123456789012345678901234567890123
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
+#' To learn more about how to use this parameter, see [Testing your
+#' permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
@@ -3356,7 +3469,7 @@ kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL, Dr
 #' Deletes the specified grant
 #'
 #' @description
-#' Deletes the specified grant. You revoke a grant to terminate the permissions that the grant allows. For more information, see [Retiring and revoking grants](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant-delete) in the *Key Management Service Developer Guide* .
+#' Deletes the specified grant. You revoke a grant to terminate the permissions that the grant allows. For more information, see [Retiring and revoking grants](https://docs.aws.amazon.com/kms/latest/developerguide/grant-delete.html) in the *Key Management Service Developer Guide* .
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_revoke_grant/](https://www.paws-r-sdk.com/docs/kms_revoke_grant/) for full documentation.
 #'
@@ -3381,8 +3494,8 @@ kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL, Dr
 #' [`list_retirable_grants`][kms_list_retirable_grants].
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
+#' To learn more about how to use this parameter, see [Testing your
+#' permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
@@ -3420,12 +3533,12 @@ kms_revoke_grant <- function(KeyId, GrantId, DryRun = NULL) {
 #' keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html),
 #' [HMAC KMS
 #' keys](https://docs.aws.amazon.com/kms/latest/developerguide/hmac.html),
-#' KMS keys with [imported key
+#' multi-Region KMS keys with [imported key
 #' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html),
 #' or KMS keys in a [custom key
-#' store](https://docs.aws.amazon.com/kms/latest/developerguide/). To
-#' perform on-demand rotation of a set of related [multi-Region
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-update.html#multi-region-rotate),
+#' store](https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html).
+#' To perform on-demand rotation of a set of related [multi-Region
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#multi-region-rotate),
 #' invoke the on-demand rotation on the primary key.
 #' 
 #' Specify the key ID or key ARN of the KMS key.
@@ -3558,26 +3671,41 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #' to prevent the digest from being hashed again while signing.
 #' @param MessageType Tells KMS whether the value of the `Message` parameter should be hashed
 #' as part of the signing algorithm. Use `RAW` for unhashed messages; use
-#' `DIGEST` for message digests, which are already hashed.
+#' `DIGEST` for message digests, which are already hashed; use
+#' `EXTERNAL_MU` for 64-byte representative μ used in ML-DSA signing as
+#' defined in NIST FIPS 204 Section 6.2.
 #' 
 #' When the value of `MessageType` is `RAW`, KMS uses the standard signing
 #' algorithm, which begins with a hash function. When the value is
-#' `DIGEST`, KMS skips the hashing step in the signing algorithm.
+#' `DIGEST`, KMS skips the hashing step in the signing algorithm. When the
+#' value is `EXTERNAL_MU` KMS skips the concatenated hashing of the public
+#' key hash and the message done in the ML-DSA signing algorithm.
 #' 
-#' Use the `DIGEST` value only when the value of the `Message` parameter is
-#' a message digest. If you use the `DIGEST` value with an unhashed
-#' message, the security of the signing operation can be compromised.
+#' Use the `DIGEST` or `EXTERNAL_MU` value only when the value of the
+#' `Message` parameter is a message digest. If you use the `DIGEST` value
+#' with an unhashed message, the security of the signing operation can be
+#' compromised.
 #' 
-#' When the value of `MessageType`is `DIGEST`, the length of the `Message`
+#' When using ECC_NIST_EDWARDS25519 KMS keys:
+#' 
+#' -   ED25519_SHA_512 signing algorithm requires KMS `MessageType:RAW`
+#' 
+#' -   ED25519_PH_SHA_512 signing algorithm requires KMS
+#'     `MessageType:DIGEST`
+#' 
+#' When the value of `MessageType` is `DIGEST`, the length of the `Message`
 #' value must match the length of hashed messages for the specified signing
 #' algorithm.
+#' 
+#' When the value of `MessageType` is `EXTERNAL_MU` the length of the
+#' `Message` value must be 64 bytes.
 #' 
 #' You can submit a message digest and omit the `MessageType` or specify
 #' `RAW` so the digest is hashed again while signing. However, this can
 #' cause verification failures when verifying with a system that assumes a
 #' single hash.
 #' 
-#' The hashing algorithm in that [`sign`][kms_sign] uses is based on the
+#' The hashing algorithm that [`sign`][kms_sign] uses is based on the
 #' `SigningAlgorithm` value.
 #' 
 #' -   Signing algorithms that end in SHA_256 use the SHA_256 hashing
@@ -3589,9 +3717,12 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #' -   Signing algorithms that end in SHA_512 use the SHA_512 hashing
 #'     algorithm.
 #' 
+#' -   Signing algorithms that end in SHAKE_256 use the SHAKE_256 hashing
+#'     algorithm.
+#' 
 #' -   SM2DSA uses the SM3 hashing algorithm. For details, see [Offline
 #'     verification with SM2 key
-#'     pairs](https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose-key-spec.html#key-spec-sm-offline-verification).
+#'     pairs](https://docs.aws.amazon.com/kms/latest/developerguide/offline-operations.html#key-spec-sm-offline-verification).
 #' @param GrantTokens A list of grant tokens.
 #' 
 #' Use a grant token when your permission to call this operation comes from
@@ -3599,7 +3730,7 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html)
 #' in the *Key Management Service Developer Guide*.
 #' @param SigningAlgorithm &#91;required&#93; Specifies the signing algorithm to use when signing the message.
 #' 
@@ -3609,8 +3740,8 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #' algorithms for compatibility with existing applications.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
+#' To learn more about how to use this parameter, see [Testing your
+#' permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
@@ -3638,7 +3769,7 @@ kms_sign <- function(KeyId, Message, MessageType = NULL, GrantTokens = NULL, Sig
 #' Adds or edits tags on a customer managed key
 #'
 #' @description
-#' Adds or edits tags on a [customer managed key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk).
+#' Adds or edits tags on a [customer managed key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-mgn-key).
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_tag_resource/](https://www.paws-r-sdk.com/docs/kms_tag_resource/) for full documentation.
 #'
@@ -3690,7 +3821,7 @@ kms_tag_resource <- function(KeyId, Tags) {
 #' Deletes tags from a customer managed key
 #'
 #' @description
-#' Deletes tags from a [customer managed key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk). To delete a tag, specify the tag key and the KMS key.
+#' Deletes tags from a [customer managed key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-mgn-key). To delete a tag, specify the tag key and the KMS key.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_untag_resource/](https://www.paws-r-sdk.com/docs/kms_untag_resource/) for full documentation.
 #'
@@ -3746,10 +3877,10 @@ kms_untag_resource <- function(KeyId, TagKeys) {
 #' Do not include confidential or sensitive information in this field. This
 #' field may be displayed in plaintext in CloudTrail logs and other output.
 #' @param TargetKeyId &#91;required&#93; Identifies the [customer managed
-#' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk)
+#' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-mgn-key)
 #' to associate with the alias. You don't have permission to associate an
 #' alias with an [Amazon Web Services managed
-#' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk).
+#' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-key).
 #' 
 #' The KMS key must be in the same Amazon Web Services account and Region
 #' as the alias. Also, the new target KMS key must be the same type as the
@@ -3876,6 +4007,13 @@ kms_update_alias <- function(AliasName, TargetKeyId) {
 #' `XksProxyConnectivity` is `VPC_ENDPOINT_SERVICE`.
 #' 
 #' To change this value, the external key store must be disconnected.
+#' @param XksProxyVpcEndpointServiceOwner Changes the Amazon Web Services account ID that KMS uses to identify the
+#' Amazon VPC endpoint service for your external key store proxy (XKS
+#' proxy). This parameter is optional. If not specified, the current Amazon
+#' Web Services account ID for the VPC endpoint service will not be
+#' updated.
+#' 
+#' To change this value, the external key store must be disconnected.
 #' @param XksProxyAuthenticationCredential Changes the credentials that KMS uses to sign requests to the external
 #' key store proxy (XKS proxy). This parameter is valid only for custom key
 #' stores with a `CustomKeyStoreType` of `EXTERNAL_KEY_STORE`.
@@ -3909,7 +4047,7 @@ kms_update_alias <- function(AliasName, TargetKeyId) {
 #' @keywords internal
 #'
 #' @rdname kms_update_custom_key_store
-kms_update_custom_key_store <- function(CustomKeyStoreId, NewCustomKeyStoreName = NULL, KeyStorePassword = NULL, CloudHsmClusterId = NULL, XksProxyUriEndpoint = NULL, XksProxyUriPath = NULL, XksProxyVpcEndpointServiceName = NULL, XksProxyAuthenticationCredential = NULL, XksProxyConnectivity = NULL) {
+kms_update_custom_key_store <- function(CustomKeyStoreId, NewCustomKeyStoreName = NULL, KeyStorePassword = NULL, CloudHsmClusterId = NULL, XksProxyUriEndpoint = NULL, XksProxyUriPath = NULL, XksProxyVpcEndpointServiceName = NULL, XksProxyVpcEndpointServiceOwner = NULL, XksProxyAuthenticationCredential = NULL, XksProxyConnectivity = NULL) {
   op <- new_operation(
     name = "UpdateCustomKeyStore",
     http_method = "POST",
@@ -3918,7 +4056,7 @@ kms_update_custom_key_store <- function(CustomKeyStoreId, NewCustomKeyStoreName 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kms$update_custom_key_store_input(CustomKeyStoreId = CustomKeyStoreId, NewCustomKeyStoreName = NewCustomKeyStoreName, KeyStorePassword = KeyStorePassword, CloudHsmClusterId = CloudHsmClusterId, XksProxyUriEndpoint = XksProxyUriEndpoint, XksProxyUriPath = XksProxyUriPath, XksProxyVpcEndpointServiceName = XksProxyVpcEndpointServiceName, XksProxyAuthenticationCredential = XksProxyAuthenticationCredential, XksProxyConnectivity = XksProxyConnectivity)
+  input <- .kms$update_custom_key_store_input(CustomKeyStoreId = CustomKeyStoreId, NewCustomKeyStoreName = NewCustomKeyStoreName, KeyStorePassword = KeyStorePassword, CloudHsmClusterId = CloudHsmClusterId, XksProxyUriEndpoint = XksProxyUriEndpoint, XksProxyUriPath = XksProxyUriPath, XksProxyVpcEndpointServiceName = XksProxyVpcEndpointServiceName, XksProxyVpcEndpointServiceOwner = XksProxyVpcEndpointServiceOwner, XksProxyAuthenticationCredential = XksProxyAuthenticationCredential, XksProxyConnectivity = XksProxyConnectivity)
   output <- .kms$update_custom_key_store_output()
   config <- get_config()
   svc <- .kms$service(config, op)
@@ -4066,27 +4204,42 @@ kms_update_primary_region <- function(KeyId, PrimaryRegion) {
 #' are considered to be the same message.
 #' @param MessageType Tells KMS whether the value of the `Message` parameter should be hashed
 #' as part of the signing algorithm. Use `RAW` for unhashed messages; use
-#' `DIGEST` for message digests, which are already hashed.
+#' `DIGEST` for message digests, which are already hashed; use
+#' `EXTERNAL_MU` for 64-byte representative μ used in ML-DSA signing as
+#' defined in NIST FIPS 204 Section 6.2.
 #' 
 #' When the value of `MessageType` is `RAW`, KMS uses the standard signing
 #' algorithm, which begins with a hash function. When the value is
-#' `DIGEST`, KMS skips the hashing step in the signing algorithm.
+#' `DIGEST`, KMS skips the hashing step in the signing algorithm. When the
+#' value is `EXTERNAL_MU` KMS skips the concatenated hashing of the public
+#' key hash and the message done in the ML-DSA signing algorithm.
 #' 
-#' Use the `DIGEST` value only when the value of the `Message` parameter is
-#' a message digest. If you use the `DIGEST` value with an unhashed
-#' message, the security of the verification operation can be compromised.
+#' Use the `DIGEST` or `EXTERNAL_MU` value only when the value of the
+#' `Message` parameter is a message digest. If you use the `DIGEST` value
+#' with an unhashed message, the security of the signing operation can be
+#' compromised.
 #' 
-#' When the value of `MessageType`is `DIGEST`, the length of the `Message`
+#' When using ECC_NIST_EDWARDS25519 KMS keys:
+#' 
+#' -   ED25519_SHA_512 signing algorithm requires KMS `MessageType:RAW`
+#' 
+#' -   ED25519_PH_SHA_512 signing algorithm requires KMS
+#'     `MessageType:DIGEST`
+#' 
+#' When the value of `MessageType` is `DIGEST`, the length of the `Message`
 #' value must match the length of hashed messages for the specified signing
 #' algorithm.
+#' 
+#' When the value of `MessageType` is `EXTERNAL_MU` the length of the
+#' `Message` value must be 64 bytes.
 #' 
 #' You can submit a message digest and omit the `MessageType` or specify
 #' `RAW` so the digest is hashed again while signing. However, if the
 #' signed message is hashed once while signing, but twice while verifying,
 #' verification fails, even when the message hasn't changed.
 #' 
-#' The hashing algorithm in that [`verify`][kms_verify] uses is based on
-#' the `SigningAlgorithm` value.
+#' The hashing algorithm that [`verify`][kms_verify] uses is based on the
+#' `SigningAlgorithm` value.
 #' 
 #' -   Signing algorithms that end in SHA_256 use the SHA_256 hashing
 #'     algorithm.
@@ -4097,9 +4250,12 @@ kms_update_primary_region <- function(KeyId, PrimaryRegion) {
 #' -   Signing algorithms that end in SHA_512 use the SHA_512 hashing
 #'     algorithm.
 #' 
+#' -   Signing algorithms that end in SHAKE_256 use the SHAKE_256 hashing
+#'     algorithm.
+#' 
 #' -   SM2DSA uses the SM3 hashing algorithm. For details, see [Offline
 #'     verification with SM2 key
-#'     pairs](https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose-key-spec.html#key-spec-sm-offline-verification).
+#'     pairs](https://docs.aws.amazon.com/kms/latest/developerguide/offline-operations.html#key-spec-sm-offline-verification).
 #' @param Signature &#91;required&#93; The signature that the [`sign`][kms_sign] operation generated.
 #' @param SigningAlgorithm &#91;required&#93; The signing algorithm that was used to sign the message. If you submit a
 #' different algorithm, the signature verification fails.
@@ -4110,12 +4266,12 @@ kms_update_primary_region <- function(KeyId, PrimaryRegion) {
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html)
 #' in the *Key Management Service Developer Guide*.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
+#' To learn more about how to use this parameter, see [Testing your
+#' permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
@@ -4174,12 +4330,12 @@ kms_verify <- function(KeyId, Message, MessageType = NULL, Signature, SigningAlg
 #' information, see [Grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
 #' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
+#' token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html)
 #' in the *Key Management Service Developer Guide*.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
+#' To learn more about how to use this parameter, see [Testing your
+#' permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
 #' in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal

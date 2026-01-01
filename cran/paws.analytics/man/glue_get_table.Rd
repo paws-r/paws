@@ -10,6 +10,7 @@ glue_get_table(
   Name,
   TransactionId = NULL,
   QueryAsOfTime = NULL,
+  AuditContext = NULL,
   IncludeStatusDetails = NULL
 )
 }
@@ -28,6 +29,8 @@ compatibility, this name is entirely lowercase.}
 \item{QueryAsOfTime}{The time as of when to read the table contents. If not set, the most
 recent transaction commit time will be used. Cannot be specified along
 with \code{TransactionId}.}
+
+\item{AuditContext}{A structure containing the Lake Formation \href{https://docs.aws.amazon.com/glue/latest/webapi/API_AuditContext.html}{audit context}.}
 
 \item{IncludeStatusDetails}{Specifies whether to include status details related to a request to
 create or update an Glue Data Catalog view.}

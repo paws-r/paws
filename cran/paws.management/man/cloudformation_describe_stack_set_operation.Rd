@@ -11,16 +11,15 @@ cloudformation_describe_stack_set_operation(
 )
 }
 \arguments{
-\item{StackSetName}{[required] The name or the unique stack ID of the stack set for the stack
-operation.}
+\item{StackSetName}{[required] The name or the unique stack ID of the StackSet for the stack operation.}
 
-\item{OperationId}{[required] The unique ID of the stack set operation.}
+\item{OperationId}{[required] The unique ID of the StackSet operation.}
 
 \item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
 account administrator in the organization's management account or as a
 delegated administrator in a member account.
 
-By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+By default, \code{SELF} is specified. Use \code{SELF} for StackSets with
 self-managed permissions.
 \itemize{
 \item If you are signed in to the management account, specify \code{SELF}.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_update_application_with_token_exchange_grant}
 \alias{quicksight_update_application_with_token_exchange_grant}
-\title{Updates an Amazon QuickSight application with a token exchange grant}
+\title{Updates an Quick Suite application with a token exchange grant}
 \usage{
 quicksight_update_application_with_token_exchange_grant(
   AwsAccountId,
@@ -13,10 +13,10 @@ quicksight_update_application_with_token_exchange_grant(
 \item{AwsAccountId}{[required] The ID of the Amazon Web Services account to be updated with a token
 exchange grant.}
 
-\item{Namespace}{[required] The namespace of the Amazon QuickSight application.}
+\item{Namespace}{[required] The namespace of the Quick Suite application.}
 }
 \description{
-Updates an Amazon QuickSight application with a token exchange grant. This operation only supports Amazon QuickSight applications that are registered with IAM Identity Center.
+Updates an Quick Suite application with a token exchange grant. This operation only supports Quick Suite applications that are registered with IAM Identity Center.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_update_application_with_token_exchange_grant/} for full documentation.
 }

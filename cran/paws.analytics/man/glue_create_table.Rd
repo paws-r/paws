@@ -7,7 +7,8 @@
 glue_create_table(
   CatalogId = NULL,
   DatabaseName,
-  TableInput,
+  Name = NULL,
+  TableInput = NULL,
   PartitionIndexes = NULL,
   TransactionId = NULL,
   OpenTableFormatInput = NULL
@@ -20,7 +21,10 @@ supplied, the Amazon Web Services account ID is used by default.}
 \item{DatabaseName}{[required] The catalog database in which to create the new table. For Hive
 compatibility, this name is entirely lowercase.}
 
-\item{TableInput}{[required] The \code{TableInput} object that defines the metadata table to create in the
+\item{Name}{The unique identifier for the table within the specified database that
+will be created in the Glue Data Catalog.}
+
+\item{TableInput}{The \code{TableInput} object that defines the metadata table to create in the
 catalog.}
 
 \item{PartitionIndexes}{A list of partition indexes, \code{PartitionIndex} structures, to create in

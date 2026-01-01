@@ -1371,6 +1371,39 @@ ssoadmin_get_application_grant <- function(ApplicationArn, GrantType) {
 }
 .ssoadmin$operations$get_application_grant <- ssoadmin_get_application_grant
 
+#' Retrieves the session configuration for an application in IAM Identity
+#' Center
+#'
+#' @description
+#' Retrieves the session configuration for an application in IAM Identity Center.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_get_application_session_configuration/](https://www.paws-r-sdk.com/docs/ssoadmin_get_application_session_configuration/) for full documentation.
+#'
+#' @param ApplicationArn &#91;required&#93; The Amazon Resource Name (ARN) of the application for which to retrieve
+#' the session configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname ssoadmin_get_application_session_configuration
+ssoadmin_get_application_session_configuration <- function(ApplicationArn) {
+  op <- new_operation(
+    name = "GetApplicationSessionConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ssoadmin$get_application_session_configuration_input(ApplicationArn = ApplicationArn)
+  output <- .ssoadmin$get_application_session_configuration_output()
+  config <- get_config()
+  svc <- .ssoadmin$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssoadmin$operations$get_application_session_configuration <- ssoadmin_get_application_session_configuration
+
 #' Obtains the inline policy assigned to the permission set
 #'
 #' @description
@@ -2454,6 +2487,40 @@ ssoadmin_put_application_grant <- function(ApplicationArn, GrantType, Grant) {
 }
 .ssoadmin$operations$put_application_grant <- ssoadmin_put_application_grant
 
+#' Updates the session configuration for an application in IAM Identity
+#' Center
+#'
+#' @description
+#' Updates the session configuration for an application in IAM Identity Center.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_put_application_session_configuration/](https://www.paws-r-sdk.com/docs/ssoadmin_put_application_session_configuration/) for full documentation.
+#'
+#' @param ApplicationArn &#91;required&#93; The Amazon Resource Name (ARN) of the application for which to update
+#' the session configuration.
+#' @param UserBackgroundSessionApplicationStatus The status of user background sessions for the application.
+#'
+#' @keywords internal
+#'
+#' @rdname ssoadmin_put_application_session_configuration
+ssoadmin_put_application_session_configuration <- function(ApplicationArn, UserBackgroundSessionApplicationStatus = NULL) {
+  op <- new_operation(
+    name = "PutApplicationSessionConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ssoadmin$put_application_session_configuration_input(ApplicationArn = ApplicationArn, UserBackgroundSessionApplicationStatus = UserBackgroundSessionApplicationStatus)
+  output <- .ssoadmin$put_application_session_configuration_output()
+  config <- get_config()
+  svc <- .ssoadmin$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssoadmin$operations$put_application_session_configuration <- ssoadmin_put_application_session_configuration
+
 #' Attaches an inline policy to a permission set
 #'
 #' @description
@@ -2643,16 +2710,19 @@ ssoadmin_update_application <- function(ApplicationArn, Name = NULL, Description
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_update_instance/](https://www.paws-r-sdk.com/docs/ssoadmin_update_instance/) for full documentation.
 #'
-#' @param Name &#91;required&#93; Updates the instance name.
+#' @param Name Updates the instance name.
 #' @param InstanceArn &#91;required&#93; The ARN of the instance of IAM Identity Center under which the operation
 #' will run. For more information about ARNs, see Amazon Resource Names
 #' (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web
 #' Services General Reference*.
+#' @param EncryptionConfiguration Specifies the encryption configuration for your IAM Identity Center
+#' instance. You can use this to configure customer managed KMS keys (CMK)
+#' or Amazon Web Services owned KMS keys for encrypting your instance data.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_update_instance
-ssoadmin_update_instance <- function(Name, InstanceArn) {
+ssoadmin_update_instance <- function(Name = NULL, InstanceArn, EncryptionConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateInstance",
     http_method = "POST",
@@ -2661,7 +2731,7 @@ ssoadmin_update_instance <- function(Name, InstanceArn) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$update_instance_input(Name = Name, InstanceArn = InstanceArn)
+  input <- .ssoadmin$update_instance_input(Name = Name, InstanceArn = InstanceArn, EncryptionConfiguration = EncryptionConfiguration)
   output <- .ssoadmin$update_instance_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)

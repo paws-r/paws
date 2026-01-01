@@ -10,7 +10,8 @@ ec2_create_instance_connect_endpoint(
   SecurityGroupIds = NULL,
   PreserveClientIp = NULL,
   ClientToken = NULL,
-  TagSpecifications = NULL
+  TagSpecifications = NULL,
+  IpAddressType = NULL
 )
 }
 \arguments{
@@ -33,12 +34,30 @@ following are the possible values.
 \item \code{false} - Use the network interface IP address as the source.
 }
 
+\code{PreserveClientIp} is only supported on IPv4 EC2 Instance Connect
+Endpoints. To use \code{PreserveClientIp}, the value for \code{IpAddressType} must
+be \code{ipv4}.
+
 Default: \code{false}}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
 
 \item{TagSpecifications}{The tags to apply to the EC2 Instance Connect Endpoint during creation.}
+
+\item{IpAddressType}{The IP address type of the endpoint.
+
+If no value is specified, the default value is determined by the IP
+address type of the subnet:
+\itemize{
+\item \code{dualstack} - If the subnet has both IPv4 and IPv6 CIDRs
+\item \code{ipv4} - If the subnet has only IPv4 CIDRs
+\item \code{ipv6} - If the subnet has only IPv6 CIDRs
+}
+
+\code{PreserveClientIp} is only supported on IPv4 EC2 Instance Connect
+Endpoints. To use \code{PreserveClientIp}, the value for \code{IpAddressType} must
+be \code{ipv4}.}
 }
 \description{
 Creates an EC2 Instance Connect Endpoint.

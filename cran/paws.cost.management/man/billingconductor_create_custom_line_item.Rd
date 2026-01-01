@@ -14,12 +14,17 @@ billingconductor_create_custom_line_item(
   BillingPeriodRange = NULL,
   Tags = NULL,
   ChargeDetails,
-  AccountId = NULL
+  AccountId = NULL,
+  ComputationRule = NULL,
+  PresentationDetails = NULL
 )
 }
 \arguments{
-\item{ClientToken}{The token that is needed to support idempotency. Idempotency isn't
-currently supported, but will be implemented in a future update.}
+\item{ClientToken}{A unique, case-sensitive identifier that you specify to ensure
+idempotency of the request. Idempotency ensures that an API request
+completes no more than one time. With an idempotent request, if the
+original request completes successfully, any subsequent retries complete
+successfully without performing any further actions.}
 
 \item{Name}{[required] The name of the custom line item.}
 
@@ -39,6 +44,12 @@ custom line item.}
 
 \item{AccountId}{The Amazon Web Services account in which this custom line item will be
 applied to.}
+
+\item{ComputationRule}{Specifies how the custom line item charges are computed.}
+
+\item{PresentationDetails}{Details controlling how the custom line item charges are presented in
+the bill. Contains specifications for which service the charges will be
+shown under.}
 }
 \description{
 Creates a custom line item that can be used to create a one-time fixed charge that can be applied to a single billing group for the current or previous billing period. The one-time fixed charge is either a fee or discount.

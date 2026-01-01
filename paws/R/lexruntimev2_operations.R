@@ -924,7 +924,7 @@ lexruntimev2_recognize_utterance <- function(botId, botAliasId, localeId, sessio
 #' supported only in the following SDKs:
 #' 
 #' -   [AWS SDK for
-#'     C++](https://sdk.amazonaws.com/cpp/api/crosslink_redirect.html?uid=runtime.lex.v2-2020-08-07&type=StartConversation)
+#'     C++](https://docs.aws.amazon.com/sdk-for-cpp/latest/api/crosslink_redirect.html?uid=runtime.lex.v2-2020-08-07&type=StartConversation)
 #' 
 #' -   [AWS SDK for Java
 #'     V2](https://sdk.amazonaws.com/java/api/latest/crosslink_redirect.html?uid=runtime.lex.v2-2020-08-07&type=StartConversation)

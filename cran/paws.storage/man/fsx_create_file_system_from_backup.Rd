@@ -17,7 +17,8 @@ fsx_create_file_system_from_backup(
   KmsKeyId = NULL,
   FileSystemTypeVersion = NULL,
   OpenZFSConfiguration = NULL,
-  StorageCapacity = NULL
+  StorageCapacity = NULL,
+  NetworkType = NULL
 )
 }
 \arguments{
@@ -52,14 +53,19 @@ name.}
 
 \item{LustreConfiguration}{}
 
-\item{StorageType}{Sets the storage type for the Windows or OpenZFS file system that you're
-creating from a backup. Valid values are \code{SSD} and \code{HDD}.
+\item{StorageType}{Sets the storage type for the Windows, OpenZFS, or Lustre file system
+that you're creating from a backup. Valid values are \code{SSD}, \code{HDD}, and
+\code{INTELLIGENT_TIERING}.
 \itemize{
 \item Set to \code{SSD} to use solid state drive storage. SSD is supported on
 all Windows and OpenZFS deployment types.
 \item Set to \code{HDD} to use hard disk drive storage. HDD is supported on
 \code{SINGLE_AZ_2} and \code{MULTI_AZ_1} FSx for Windows File Server file
 system deployment types.
+\item Set to \code{INTELLIGENT_TIERING} to use fully elastic,
+intelligently-tiered storage. Intelligent-Tiering is only available
+for OpenZFS file systems with the Multi-AZ deployment type and for
+Lustre file systems with the Persistent_2 deployment type.
 }
 
 The default value is \code{SSD}.
@@ -92,6 +98,9 @@ If used to create a file system other than OpenZFS, you must provide a
 value that matches the backup's \code{StorageCapacity} value. If you provide
 any other value, Amazon FSx responds with an HTTP status code 400 Bad
 Request.}
+
+\item{NetworkType}{Sets the network type for the Amazon FSx for OpenZFS file system that
+you're creating from a backup.}
 }
 \description{
 Creates a new Amazon FSx for Lustre, Amazon FSx for Windows File Server, or Amazon FSx for OpenZFS file system from an existing Amazon FSx backup.

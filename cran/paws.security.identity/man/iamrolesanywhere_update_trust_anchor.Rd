@@ -4,14 +4,14 @@
 \alias{iamrolesanywhere_update_trust_anchor}
 \title{Updates a trust anchor}
 \usage{
-iamrolesanywhere_update_trust_anchor(name = NULL, source = NULL, trustAnchorId)
+iamrolesanywhere_update_trust_anchor(trustAnchorId, name = NULL, source = NULL)
 }
 \arguments{
+\item{trustAnchorId}{[required] The unique identifier of the trust anchor.}
+
 \item{name}{The name of the trust anchor.}
 
 \item{source}{The trust anchor type and its related certificate data.}
-
-\item{trustAnchorId}{[required] The unique identifier of the trust anchor.}
 }
 \description{
 Updates a trust anchor. You establish trust between IAM Roles Anywhere and your certificate authority (CA) by configuring a trust anchor. You can define a trust anchor as a reference to an Private Certificate Authority (Private CA) or by uploading a CA certificate. Your Amazon Web Services workloads can authenticate with the trust anchor using certificates issued by the CA in exchange for temporary Amazon Web Services credentials.

@@ -4,14 +4,14 @@
 \alias{vpclattice_get_rule}
 \title{Retrieves information about the specified listener rules}
 \usage{
-vpclattice_get_rule(listenerIdentifier, ruleIdentifier, serviceIdentifier)
+vpclattice_get_rule(serviceIdentifier, listenerIdentifier, ruleIdentifier)
 }
 \arguments{
+\item{serviceIdentifier}{[required] The ID or ARN of the service.}
+
 \item{listenerIdentifier}{[required] The ID or ARN of the listener.}
 
 \item{ruleIdentifier}{[required] The ID or ARN of the listener rule.}
-
-\item{serviceIdentifier}{[required] The ID or ARN of the service.}
 }
 \description{
 Retrieves information about the specified listener rules. You can also retrieve information about the default listener rule. For more information, see \href{https://docs.aws.amazon.com/vpc-lattice/latest/ug/listeners.html#listener-rules}{Listener rules} in the \emph{Amazon VPC Lattice User Guide}.

@@ -18,6 +18,7 @@ rds_restore_db_instance_from_db_snapshot(
   DBName = NULL,
   Engine = NULL,
   Iops = NULL,
+  StorageThroughput = NULL,
   OptionGroupName = NULL,
   Tags = NULL,
   StorageType = NULL,
@@ -38,17 +39,18 @@ rds_restore_db_instance_from_db_snapshot(
   DBParameterGroupName = NULL,
   DeletionProtection = NULL,
   EnableCustomerOwnedIp = NULL,
-  CustomIamInstanceProfile = NULL,
-  BackupTarget = NULL,
   NetworkType = NULL,
-  StorageThroughput = NULL,
-  DBClusterSnapshotIdentifier = NULL,
+  BackupTarget = NULL,
+  CustomIamInstanceProfile = NULL,
   AllocatedStorage = NULL,
+  DBClusterSnapshotIdentifier = NULL,
   DedicatedLogVolume = NULL,
   CACertificateIdentifier = NULL,
   EngineLifecycleSupport = NULL,
+  TagSpecifications = NULL,
   ManageMasterUserPassword = NULL,
-  MasterUserSecretKmsKeyId = NULL
+  MasterUserSecretKmsKeyId = NULL,
+  AdditionalStorageVolumes = NULL
 )
 }
 \arguments{
@@ -143,7 +145,7 @@ For more information about automatic minor version upgrades, see
 \item{LicenseModel}{License model information for the restored DB instance.
 
 License models for RDS for Db2 require additional configuration. The
-Bring Your Own License (BYOL) model requires a custom parameter group
+bring your own license (BYOL) model requires a custom parameter group
 and an Amazon Web Services License Manager self-managed license. The Db2
 license through Amazon Web Services Marketplace model requires an Amazon
 Web Services Marketplace subscription. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/db2-licensing.html}{Amazon RDS for Db2 licensing options}
@@ -208,6 +210,10 @@ database engine. For more information, see \href{https://docs.aws.amazon.com/Ama
 in the \emph{Amazon RDS User Guide.}
 
 Constraints: Must be an integer greater than 1000.}
+
+\item{StorageThroughput}{Specifies the storage throughput value for the DB instance.
+
+This setting doesn't apply to RDS Custom or Amazon Aurora.}
 
 \item{OptionGroupName}{The name of the option group to be used for the restored DB instance.
 
@@ -376,6 +382,31 @@ in the \emph{Amazon RDS User Guide}.
 For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/routing.html#ip-addressing}{Customer-owned IP addresses}
 in the \emph{Amazon Web Services Outposts User Guide}.}
 
+\item{NetworkType}{The network type of the DB instance.
+
+Valid Values:
+\itemize{
+\item \code{IPV4}
+\item \code{DUAL}
+}
+
+The network type is determined by the \code{DBSubnetGroup} specified for the
+DB instance. A \code{DBSubnetGroup} can support only the IPv4 protocol or the
+IPv4 and the IPv6 protocols (\code{DUAL}).
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html}{Working with a DB instance in a VPC}
+in the \emph{Amazon RDS User Guide.}}
+
+\item{BackupTarget}{Specifies where automated backups and manual snapshots are stored for
+the restored DB instance.
+
+Possible values are \code{local} (Dedicated Local Zone), \code{outposts} (Amazon
+Web Services Outposts), and \code{region} (Amazon Web Services Region). The
+default is \code{region}.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html}{Working with Amazon RDS on Amazon Web Services Outposts}
+in the \emph{Amazon RDS User Guide}.}
+
 \item{CustomIamInstanceProfile}{The instance profile associated with the underlying Amazon EC2 instance
 of an RDS Custom DB instance. The instance profile must meet the
 following requirements:
@@ -392,33 +423,14 @@ in the \emph{Amazon RDS User Guide}.
 
 This setting is required for RDS Custom.}
 
-\item{BackupTarget}{Specifies where automated backups and manual snapshots are stored for
-the restored DB instance.
+\item{AllocatedStorage}{The amount of storage (in gibibytes) to allocate initially for the DB
+instance. Follow the allocation rules specified in CreateDBInstance.
 
-Possible values are \code{outposts} (Amazon Web Services Outposts) and
-\code{region} (Amazon Web Services Region). The default is \code{region}.
+This setting isn't valid for RDS for SQL Server.
 
-For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html}{Working with Amazon RDS on Amazon Web Services Outposts}
-in the \emph{Amazon RDS User Guide}.}
-
-\item{NetworkType}{The network type of the DB instance.
-
-Valid Values:
-\itemize{
-\item \code{IPV4}
-\item \code{DUAL}
-}
-
-The network type is determined by the \code{DBSubnetGroup} specified for the
-DB instance. A \code{DBSubnetGroup} can support only the IPv4 protocol or the
-IPv4 and the IPv6 protocols (\code{DUAL}).
-
-For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html}{Working with a DB instance in a VPC}
-in the \emph{Amazon RDS User Guide.}}
-
-\item{StorageThroughput}{Specifies the storage throughput value for the DB instance.
-
-This setting doesn't apply to RDS Custom or Amazon Aurora.}
+Be sure to allocate enough storage for your new DB instance so that the
+restore operation can succeed. You can also allocate additional storage
+for future growth.}
 
 \item{DBClusterSnapshotIdentifier}{The identifier for the Multi-AZ DB cluster snapshot to restore from.
 
@@ -436,15 +448,6 @@ snapshot, the \code{DBClusterSnapshotIdentifier} must be the ARN of the
 shared snapshot.
 \item Can't be the identifier of an Aurora DB cluster snapshot.
 }}
-
-\item{AllocatedStorage}{The amount of storage (in gibibytes) to allocate initially for the DB
-instance. Follow the allocation rules specified in CreateDBInstance.
-
-This setting isn't valid for RDS for SQL Server.
-
-Be sure to allocate enough storage for your new DB instance so that the
-restore operation can succeed. You can also allocate additional storage
-for future growth.}
 
 \item{DedicatedLogVolume}{Specifies whether to enable a dedicated log volume (DLV) for the DB
 instance.}
@@ -471,7 +474,7 @@ standard support date.
 You can use this setting to enroll your DB instance into Amazon RDS
 Extended Support. With RDS Extended Support, you can run the selected
 major engine version on your DB instance past the end of standard
-support for that engine version. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html}{Using Amazon RDS Extended Support}
+support for that engine version. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html}{Amazon RDS Extended Support with Amazon RDS}
 in the \emph{Amazon RDS User Guide}.
 
 This setting applies only to RDS for MySQL and RDS for PostgreSQL. For
@@ -482,6 +485,13 @@ Valid Values:
 \code{open-source-rds-extended-support | open-source-rds-extended-support-disabled}
 
 Default: \code{open-source-rds-extended-support}}
+
+\item{TagSpecifications}{Tags to assign to resources associated with the DB instance.
+
+Valid Values:
+\itemize{
+\item \code{auto-backup} - The DB instance's automated backup.
+}}
 
 \item{ManageMasterUserPassword}{Specifies whether to manage the master user password with Amazon Web
 Services Secrets Manager in the restored DB instance.
@@ -514,6 +524,12 @@ a customer managed KMS key.
 There is a default KMS key for your Amazon Web Services account. Your
 Amazon Web Services account has a different default KMS key for each
 Amazon Web Services Region.}
+
+\item{AdditionalStorageVolumes}{A list of additional storage volumes to create for the DB instance. You
+can create up to three additional storage volumes using the names
+\code{rdsdbdata2}, \code{rdsdbdata3}, and \code{rdsdbdata4}. Additional storage volumes
+are supported for RDS for Oracle and RDS for SQL Server DB instances
+only.}
 }
 \description{
 Creates a new DB instance from a DB snapshot. The target database is created from the source database restore point with most of the source's original configuration, including the default security group and DB parameter group. By default, the new DB instance is created as a Single-AZ deployment, except when the instance is a SQL Server instance that has an option group associated with mirroring. In this case, the instance becomes a Multi-AZ deployment, not a Single-AZ deployment.

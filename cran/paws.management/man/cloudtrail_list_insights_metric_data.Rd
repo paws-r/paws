@@ -5,6 +5,7 @@
 \title{Returns Insights metrics data for trails that have enabled Insights}
 \usage{
 cloudtrail_list_insights_metric_data(
+  TrailName = NULL,
   EventSource,
   EventName,
   InsightType,
@@ -18,6 +19,12 @@ cloudtrail_list_insights_metric_data(
 )
 }
 \arguments{
+\item{TrailName}{The Amazon Resource Name(ARN) or name of the trail for which you want to
+retrieve Insights metrics data. This parameter should only be provided
+to fetch Insights metrics data generated on trails logging data events.
+This parameter is not required for Insights metric data generated on
+trails logging management events.}
+
 \item{EventSource}{[required] The Amazon Web Services service to which the request was made, such as
 \code{iam.amazonaws.com} or \code{s3.amazonaws.com}.}
 

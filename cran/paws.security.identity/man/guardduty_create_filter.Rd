@@ -107,6 +107,7 @@ milliseconds.
 \item service.action.awsApiCallAction.serviceName
 \item service.action.dnsRequestAction.domain
 \item service.action.dnsRequestAction.domainWithSuffix
+\item service.action.dnsRequestAction.vpcOwnerAccountId
 \item service.action.networkConnectionAction.blocked
 \item service.action.networkConnectionAction.connectionDirection
 \item service.action.networkConnectionAction.localPortDetails.port

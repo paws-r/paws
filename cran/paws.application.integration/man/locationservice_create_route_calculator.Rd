@@ -2,7 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_create_route_calculator}
 \alias{locationservice_create_route_calculator}
-\title{Creates a route calculator resource in your Amazon Web Services account}
+\title{This operation is no longer current and may be deprecated in the future}
 \usage{
 locationservice_create_route_calculator(
   CalculatorName,
@@ -31,20 +31,20 @@ example, entering \code{HERE} returns an error.
 Valid values include:
 \itemize{
 \item \code{Esri} – For additional information about
-\href{https://docs.aws.amazon.com/location/latest/developerguide/}{Esri}'s
+\href{https://docs.aws.amazon.com/location/previous/developerguide/esri.html}{Esri}'s
 coverage in your region of interest, see \href{https://doc.arcgis.com/en/arcgis-online/reference/network-coverage.htm}{Esri details on street networks and traffic coverage}.
 
 Route calculators that use Esri as a data source only calculate
 routes that are shorter than 400 km.
 \item \code{Grab} – Grab provides routing functionality for Southeast Asia. For
 additional information about
-\href{https://docs.aws.amazon.com/location/latest/developerguide/}{GrabMaps}'
-coverage, see \href{https://docs.aws.amazon.com/location/latest/developerguide/#grab-coverage-area}{GrabMaps countries and areas covered}.
-\item \code{Here} – For additional information about \href{https://docs.aws.amazon.com/location/latest/developerguide/}{HERE Technologies}'
+\href{https://docs.aws.amazon.com/location/previous/developerguide/grab.html}{GrabMaps}'
+coverage, see \href{https://docs.aws.amazon.com/location/previous/developerguide/grab.html#grab-coverage-area}{GrabMaps countries and areas covered}.
+\item \code{Here} – For additional information about \href{https://docs.aws.amazon.com/location/previous/developerguide/HERE.html}{HERE Technologies}'
 coverage in your region of interest, see \href{https://www.here.com/docs/}{HERE car routing coverage} and \href{https://www.here.com/docs/}{HERE truck routing coverage}.
 }
 
-For additional information , see \href{https://docs.aws.amazon.com/location/latest/developerguide/}{Data providers}
+For additional information , see \href{https://docs.aws.amazon.com/location/previous/developerguide/what-is-data-provider.html}{Data providers}
 on the \emph{Amazon Location Service Developer Guide}.}
 
 \item{PricingPlan}{No longer used. If included, the only allowed value is
@@ -73,7 +73,7 @@ characters: + - = . _ : / @.
 }}
 }
 \description{
-Creates a route calculator resource in your Amazon Web Services account.
+This operation is no longer current and may be deprecated in the future. We recommend you upgrade to the Routes API V2 unless you require Grab data.
 
 See \url{https://www.paws-r-sdk.com/docs/locationservice_create_route_calculator/} for full documentation.
 }

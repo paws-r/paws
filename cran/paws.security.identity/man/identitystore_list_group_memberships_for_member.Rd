@@ -35,7 +35,7 @@ of one page. This token is also returned when it is used in the API
 request to search for the next page.}
 }
 \description{
-For the specified member in the specified identity store, returns the list of all \code{GroupMembership} objects and returns results in paginated form.
+For the specified member in the specified identity store, returns the list of all \code{ GroupMembership} objects and returns results in paginated form.
 
 See \url{https://www.paws-r-sdk.com/docs/identitystore_list_group_memberships_for_member/} for full documentation.
 }

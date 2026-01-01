@@ -7,6 +7,8 @@
 sagemaker_update_notebook_instance(
   NotebookInstanceName,
   InstanceType = NULL,
+  IpAddressType = NULL,
+  PlatformIdentifier = NULL,
   RoleArn = NULL,
   LifecycleConfigName = NULL,
   DisassociateLifecycleConfig = NULL,
@@ -25,6 +27,14 @@ sagemaker_update_notebook_instance(
 \item{NotebookInstanceName}{[required] The name of the notebook instance to update.}
 
 \item{InstanceType}{The Amazon ML compute instance type.}
+
+\item{IpAddressType}{The IP address type for the notebook instance. Specify \code{ipv4} for
+IPv4-only connectivity or \code{dualstack} for both IPv4 and IPv6
+connectivity. The notebook instance must be stopped before updating this
+setting. When you specify \code{dualstack}, the subnet must support IPv6
+addressing.}
+
+\item{PlatformIdentifier}{The platform identifier of the notebook instance runtime environment.}
 
 \item{RoleArn}{The Amazon Resource Name (ARN) of the IAM role that SageMaker AI can
 assume to access the notebook instance. For more information, see

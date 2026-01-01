@@ -15,7 +15,7 @@ without the risk of creating two identical health checks:
 request with the same \code{CallerReference} and settings as a previous
 request, and if the health check doesn't exist, Amazon Route 53
 creates the health check. If the health check does exist, Route 53
-returns the settings for the existing health check.
+returns the health check configuration in the response.
 \item If you send a \code{\link[=route53_create_health_check]{create_health_check}}
 request with the same \code{CallerReference} as a deleted health check,
 regardless of the settings, Route 53 returns a

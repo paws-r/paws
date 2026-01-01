@@ -23,7 +23,7 @@ NULL
 #' programmatic access to Directory Service and other Amazon Web Services
 #' services. For more information about the Amazon Web Services SDKs,
 #' including how to download and install them, see [Tools for Amazon Web
-#' Services](https://aws.amazon.com/developer/tools/).
+#' Services](https://builder.aws.com/build/tools).
 #'
 #' @param
 #' config
@@ -118,10 +118,12 @@ NULL
 #'  \link[=directoryservice_create_computer]{create_computer} \tab Creates an Active Directory computer object in the specified directory\cr
 #'  \link[=directoryservice_create_conditional_forwarder]{create_conditional_forwarder} \tab Creates a conditional forwarder associated with your Amazon Web Services directory\cr
 #'  \link[=directoryservice_create_directory]{create_directory} \tab Creates a Simple AD directory\cr
+#'  \link[=directoryservice_create_hybrid_ad]{create_hybrid_ad} \tab Creates a hybrid directory that connects your self-managed Active Directory (AD) infrastructure and Amazon Web Services\cr
 #'  \link[=directoryservice_create_log_subscription]{create_log_subscription} \tab Creates a subscription to forward real-time Directory Service domain controller security logs to the specified Amazon CloudWatch log group in your Amazon Web Services account\cr
 #'  \link[=directoryservice_create_microsoft_ad]{create_microsoft_ad} \tab Creates a Microsoft AD directory in the Amazon Web Services Cloud\cr
 #'  \link[=directoryservice_create_snapshot]{create_snapshot} \tab Creates a snapshot of a Simple AD or Microsoft AD directory in the Amazon Web Services cloud\cr
 #'  \link[=directoryservice_create_trust]{create_trust} \tab Directory Service for Microsoft Active Directory allows you to configure trust relationships\cr
+#'  \link[=directoryservice_delete_ad_assessment]{delete_ad_assessment} \tab Deletes a directory assessment and all associated data\cr
 #'  \link[=directoryservice_delete_conditional_forwarder]{delete_conditional_forwarder} \tab Deletes a conditional forwarder that has been set up for your Amazon Web Services directory\cr
 #'  \link[=directoryservice_delete_directory]{delete_directory} \tab Deletes an Directory Service directory\cr
 #'  \link[=directoryservice_delete_log_subscription]{delete_log_subscription} \tab Deletes the specified log subscription\cr
@@ -129,6 +131,8 @@ NULL
 #'  \link[=directoryservice_delete_trust]{delete_trust} \tab Deletes an existing trust relationship between your Managed Microsoft AD directory and an external domain\cr
 #'  \link[=directoryservice_deregister_certificate]{deregister_certificate} \tab Deletes from the system the certificate that was registered for secure LDAP or client certificate authentication\cr
 #'  \link[=directoryservice_deregister_event_topic]{deregister_event_topic} \tab Removes the specified directory as a publisher to the specified Amazon SNS topic\cr
+#'  \link[=directoryservice_describe_ad_assessment]{describe_ad_assessment} \tab Retrieves detailed information about a directory assessment, including its current status, validation results, and configuration details\cr
+#'  \link[=directoryservice_describe_ca_enrollment_policy]{describe_ca_enrollment_policy} \tab Retrieves detailed information about the certificate authority (CA) enrollment policy for the specified directory\cr
 #'  \link[=directoryservice_describe_certificate]{describe_certificate} \tab Displays information about the certificate registered for secure LDAP or client certificate authentication\cr
 #'  \link[=directoryservice_describe_client_authentication_settings]{describe_client_authentication_settings} \tab Retrieves information about the type of client authentication for the specified directory, if the type is specified\cr
 #'  \link[=directoryservice_describe_conditional_forwarders]{describe_conditional_forwarders} \tab Obtains information about the conditional forwarders for this account\cr
@@ -136,6 +140,7 @@ NULL
 #'  \link[=directoryservice_describe_directory_data_access]{describe_directory_data_access} \tab Obtains status of directory data access enablement through the Directory Service Data API for the specified directory\cr
 #'  \link[=directoryservice_describe_domain_controllers]{describe_domain_controllers} \tab Provides information about any domain controllers in your directory\cr
 #'  \link[=directoryservice_describe_event_topics]{describe_event_topics} \tab Obtains information about which Amazon SNS topics receive status messages from the specified directory\cr
+#'  \link[=directoryservice_describe_hybrid_ad_update]{describe_hybrid_ad_update} \tab Retrieves information about update activities for a hybrid directory\cr
 #'  \link[=directoryservice_describe_ldaps_settings]{describe_ldaps_settings} \tab Describes the status of LDAP security for the specified directory\cr
 #'  \link[=directoryservice_describe_regions]{describe_regions} \tab Provides information about the Regions that are configured for multi-Region replication\cr
 #'  \link[=directoryservice_describe_settings]{describe_settings} \tab Retrieves information about the configurable settings for the specified directory\cr
@@ -143,11 +148,13 @@ NULL
 #'  \link[=directoryservice_describe_snapshots]{describe_snapshots} \tab Obtains information about the directory snapshots that belong to this account\cr
 #'  \link[=directoryservice_describe_trusts]{describe_trusts} \tab Obtains information about the trust relationships for this account\cr
 #'  \link[=directoryservice_describe_update_directory]{describe_update_directory} \tab Describes the updates of a directory for a particular update type\cr
+#'  \link[=directoryservice_disable_ca_enrollment_policy]{disable_ca_enrollment_policy} \tab Disables the certificate authority (CA) enrollment policy for the specified directory\cr
 #'  \link[=directoryservice_disable_client_authentication]{disable_client_authentication} \tab Disables alternative client authentication methods for the specified directory\cr
 #'  \link[=directoryservice_disable_directory_data_access]{disable_directory_data_access} \tab Deactivates access to directory data via the Directory Service Data API for the specified directory\cr
 #'  \link[=directoryservice_disable_ldaps]{disable_ldaps} \tab Deactivates LDAP secure calls for the specified directory\cr
 #'  \link[=directoryservice_disable_radius]{disable_radius} \tab Disables multi-factor authentication (MFA) with the Remote Authentication Dial In User Service (RADIUS) server for an AD Connector or Microsoft AD directory\cr
 #'  \link[=directoryservice_disable_sso]{disable_sso} \tab Disables single-sign on for a directory\cr
+#'  \link[=directoryservice_enable_ca_enrollment_policy]{enable_ca_enrollment_policy} \tab Enables certificate authority (CA) enrollment policy for the specified directory\cr
 #'  \link[=directoryservice_enable_client_authentication]{enable_client_authentication} \tab Enables alternative client authentication methods for the specified directory\cr
 #'  \link[=directoryservice_enable_directory_data_access]{enable_directory_data_access} \tab Enables access to directory data via the Directory Service Data API for the specified directory\cr
 #'  \link[=directoryservice_enable_ldaps]{enable_ldaps} \tab Activates the switch for the specific directory to always use LDAP secure calls\cr
@@ -155,6 +162,7 @@ NULL
 #'  \link[=directoryservice_enable_sso]{enable_sso} \tab Enables single sign-on for a directory\cr
 #'  \link[=directoryservice_get_directory_limits]{get_directory_limits} \tab Obtains directory limit information for the current Region\cr
 #'  \link[=directoryservice_get_snapshot_limits]{get_snapshot_limits} \tab Obtains the manual snapshot limits for a directory\cr
+#'  \link[=directoryservice_list_ad_assessments]{list_ad_assessments} \tab Retrieves a list of directory assessments for the specified directory or all assessments in your account\cr
 #'  \link[=directoryservice_list_certificates]{list_certificates} \tab For the specified directory, lists all the certificates registered for a secure LDAP or client certificate authentication\cr
 #'  \link[=directoryservice_list_ip_routes]{list_ip_routes} \tab Lists the address blocks that you have added to a directory\cr
 #'  \link[=directoryservice_list_log_subscriptions]{list_log_subscriptions} \tab Lists the active log subscriptions for the Amazon Web Services account\cr
@@ -169,10 +177,12 @@ NULL
 #'  \link[=directoryservice_reset_user_password]{reset_user_password} \tab Resets the password for any user in your Managed Microsoft AD or Simple AD directory\cr
 #'  \link[=directoryservice_restore_from_snapshot]{restore_from_snapshot} \tab Restores a directory using an existing directory snapshot\cr
 #'  \link[=directoryservice_share_directory]{share_directory} \tab Shares a specified directory (DirectoryId) in your Amazon Web Services account (directory owner) with another Amazon Web Services account (directory consumer)\cr
+#'  \link[=directoryservice_start_ad_assessment]{start_ad_assessment} \tab Initiates a directory assessment to validate your self-managed AD environment for hybrid domain join\cr
 #'  \link[=directoryservice_start_schema_extension]{start_schema_extension} \tab Applies a schema extension to a Microsoft AD directory\cr
 #'  \link[=directoryservice_unshare_directory]{unshare_directory} \tab Stops the directory sharing between the directory owner and consumer accounts\cr
 #'  \link[=directoryservice_update_conditional_forwarder]{update_conditional_forwarder} \tab Updates a conditional forwarder that has been set up for your Amazon Web Services directory\cr
-#'  \link[=directoryservice_update_directory_setup]{update_directory_setup} \tab Updates the directory for a particular update type\cr
+#'  \link[=directoryservice_update_directory_setup]{update_directory_setup} \tab Updates directory configuration for the specified update type\cr
+#'  \link[=directoryservice_update_hybrid_ad]{update_hybrid_ad} \tab Updates the configuration of an existing hybrid directory\cr
 #'  \link[=directoryservice_update_number_of_domain_controllers]{update_number_of_domain_controllers} \tab Adds or removes domain controllers to or from the directory\cr
 #'  \link[=directoryservice_update_radius]{update_radius} \tab Updates the Remote Authentication Dial In User Service (RADIUS) server information for an AD Connector or Microsoft AD directory\cr
 #'  \link[=directoryservice_update_settings]{update_settings} \tab Updates the configurable settings for the specified directory\cr

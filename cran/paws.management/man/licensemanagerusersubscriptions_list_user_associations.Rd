@@ -5,26 +5,26 @@
 \title{Lists user associations for an identity provider}
 \usage{
 licensemanagerusersubscriptions_list_user_associations(
-  Filters = NULL,
-  IdentityProvider,
   InstanceId,
+  IdentityProvider,
   MaxResults = NULL,
+  Filters = NULL,
   NextToken = NULL
 )
 }
 \arguments{
+\item{InstanceId}{[required] The ID of the EC2 instance, which provides user-based subscriptions.}
+
+\item{IdentityProvider}{[required] An object that specifies details for the identity provider.}
+
+\item{MaxResults}{The maximum number of results to return from a single request.}
+
 \item{Filters}{You can use the following filters to streamline results:
 \itemize{
 \item Status
 \item Username
 \item Domain
 }}
-
-\item{IdentityProvider}{[required] An object that specifies details for the identity provider.}
-
-\item{InstanceId}{[required] The ID of the EC2 instance, which provides user-based subscriptions.}
-
-\item{MaxResults}{The maximum number of results to return from a single request.}
 
 \item{NextToken}{A token to specify where to start paginating. This is the nextToken from
 a previously truncated response.}

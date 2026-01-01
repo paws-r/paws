@@ -99,6 +99,7 @@ NULL
 #'  \link[=kinesis_delete_resource_policy]{delete_resource_policy} \tab Delete a policy for the specified data stream or consumer\cr
 #'  \link[=kinesis_delete_stream]{delete_stream} \tab Deletes a Kinesis data stream and all its shards and data\cr
 #'  \link[=kinesis_deregister_stream_consumer]{deregister_stream_consumer} \tab To deregister a consumer, provide its ARN\cr
+#'  \link[=kinesis_describe_account_settings]{describe_account_settings} \tab Describes the account-level settings for Amazon Kinesis Data Streams\cr
 #'  \link[=kinesis_describe_limits]{describe_limits} \tab Describes the shard limits and usage for the account\cr
 #'  \link[=kinesis_describe_stream]{describe_stream} \tab Describes the specified Kinesis data stream\cr
 #'  \link[=kinesis_describe_stream_consumer]{describe_stream_consumer} \tab To get the description of a registered consumer, provide the ARN of the consumer\cr
@@ -126,8 +127,11 @@ NULL
 #'  \link[=kinesis_subscribe_to_shard]{subscribe_to_shard} \tab This operation establishes an HTTP/2 connection between the consumer you specify in the ConsumerARN parameter and the shard you specify in the ShardId parameter\cr
 #'  \link[=kinesis_tag_resource]{tag_resource} \tab Adds or updates tags for the specified Kinesis resource\cr
 #'  \link[=kinesis_untag_resource]{untag_resource} \tab Removes tags from the specified Kinesis resource\cr
+#'  \link[=kinesis_update_account_settings]{update_account_settings} \tab Updates the account-level settings for Amazon Kinesis Data Streams\cr
+#'  \link[=kinesis_update_max_record_size]{update_max_record_size} \tab This allows you to update the MaxRecordSize of a single record that you can write to, and read from a stream\cr
 #'  \link[=kinesis_update_shard_count]{update_shard_count} \tab Updates the shard count of the specified stream to the specified number of shards\cr
-#'  \link[=kinesis_update_stream_mode]{update_stream_mode} \tab Updates the capacity mode of the data stream
+#'  \link[=kinesis_update_stream_mode]{update_stream_mode} \tab Updates the capacity mode of the data stream\cr
+#'  \link[=kinesis_update_stream_warm_throughput]{update_stream_warm_throughput} \tab Updates the warm throughput configuration for the specified Amazon Kinesis Data Streams on-demand data stream
 #' }
 #'
 #' @return

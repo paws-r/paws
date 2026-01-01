@@ -177,7 +177,8 @@ following some related topics from the user guide.
 \link[paws.database:neptune_restore_db_cluster_from_snapshot]{restore_db_cluster_from_snapshot} \tab Creates a new DB cluster from a DB snapshot or DB cluster snapshot\cr
 \link[paws.database:neptune_restore_db_cluster_to_point_in_time]{restore_db_cluster_to_point_in_time} \tab Restores a DB cluster to an arbitrary point in time\cr
 \link[paws.database:neptune_start_db_cluster]{start_db_cluster} \tab Starts an Amazon Neptune DB cluster that was stopped using the Amazon console, the Amazon CLI stop-db-cluster command, or the StopDBCluster API\cr
-\link[paws.database:neptune_stop_db_cluster]{stop_db_cluster} \tab Stops an Amazon Neptune DB cluster
+\link[paws.database:neptune_stop_db_cluster]{stop_db_cluster} \tab Stops an Amazon Neptune DB cluster\cr
+\link[paws.database:neptune_switchover_global_cluster]{switchover_global_cluster} \tab Switches over the specified secondary DB cluster to be the new primary DB cluster in the global database cluster
 }
 }
 

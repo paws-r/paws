@@ -165,7 +165,8 @@ directconnect_accept_direct_connect_gateway_association_proposal <- function(dir
 #'       state = "string",
 #'       startOn = "string"
 #'     )
-#'   )
+#'   ),
+#'   partnerInterconnectMacSecCapable = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -274,7 +275,8 @@ directconnect_allocate_connection_on_interconnect <- function(bandwidth, connect
 #'       state = "string",
 #'       startOn = "string"
 #'     )
-#'   )
+#'   ),
+#'   partnerInterconnectMacSecCapable = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -354,12 +356,13 @@ directconnect_allocate_hosted_connection <- function(connectionId, ownerAccount,
 #'   virtualInterfaceName = "string",
 #'   vlan = 123,
 #'   asn = 123,
+#'   asnLong = 123,
 #'   amazonSideAsn = 123,
 #'   authKey = "string",
 #'   amazonAddress = "string",
 #'   customerAddress = "string",
 #'   addressFamily = "ipv4"|"ipv6",
-#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"testing"|"deleting"|"deleted"|"rejected"|"unknown",
 #'   customerRouterConfig = "string",
 #'   mtu = 123,
 #'   jumboFrameCapable = TRUE|FALSE,
@@ -374,6 +377,7 @@ directconnect_allocate_hosted_connection <- function(connectionId, ownerAccount,
 #'     list(
 #'       bgpPeerId = "string",
 #'       asn = 123,
+#'       asnLong = 123,
 #'       authKey = "string",
 #'       addressFamily = "ipv4"|"ipv6",
 #'       amazonAddress = "string",
@@ -406,6 +410,7 @@ directconnect_allocate_hosted_connection <- function(connectionId, ownerAccount,
 #'     virtualInterfaceName = "string",
 #'     vlan = 123,
 #'     asn = 123,
+#'     asnLong = 123,
 #'     mtu = 123,
 #'     authKey = "string",
 #'     amazonAddress = "string",
@@ -488,12 +493,13 @@ directconnect_allocate_private_virtual_interface <- function(connectionId, owner
 #'   virtualInterfaceName = "string",
 #'   vlan = 123,
 #'   asn = 123,
+#'   asnLong = 123,
 #'   amazonSideAsn = 123,
 #'   authKey = "string",
 #'   amazonAddress = "string",
 #'   customerAddress = "string",
 #'   addressFamily = "ipv4"|"ipv6",
-#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"testing"|"deleting"|"deleted"|"rejected"|"unknown",
 #'   customerRouterConfig = "string",
 #'   mtu = 123,
 #'   jumboFrameCapable = TRUE|FALSE,
@@ -508,6 +514,7 @@ directconnect_allocate_private_virtual_interface <- function(connectionId, owner
 #'     list(
 #'       bgpPeerId = "string",
 #'       asn = 123,
+#'       asnLong = 123,
 #'       authKey = "string",
 #'       addressFamily = "ipv4"|"ipv6",
 #'       amazonAddress = "string",
@@ -540,6 +547,7 @@ directconnect_allocate_private_virtual_interface <- function(connectionId, owner
 #'     virtualInterfaceName = "string",
 #'     vlan = 123,
 #'     asn = 123,
+#'     asnLong = 123,
 #'     authKey = "string",
 #'     amazonAddress = "string",
 #'     customerAddress = "string",
@@ -623,12 +631,13 @@ directconnect_allocate_public_virtual_interface <- function(connectionId, ownerA
 #'     virtualInterfaceName = "string",
 #'     vlan = 123,
 #'     asn = 123,
+#'     asnLong = 123,
 #'     amazonSideAsn = 123,
 #'     authKey = "string",
 #'     amazonAddress = "string",
 #'     customerAddress = "string",
 #'     addressFamily = "ipv4"|"ipv6",
-#'     virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'     virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"testing"|"deleting"|"deleted"|"rejected"|"unknown",
 #'     customerRouterConfig = "string",
 #'     mtu = 123,
 #'     jumboFrameCapable = TRUE|FALSE,
@@ -643,6 +652,7 @@ directconnect_allocate_public_virtual_interface <- function(connectionId, ownerA
 #'       list(
 #'         bgpPeerId = "string",
 #'         asn = 123,
+#'         asnLong = 123,
 #'         authKey = "string",
 #'         addressFamily = "ipv4"|"ipv6",
 #'         amazonAddress = "string",
@@ -676,6 +686,7 @@ directconnect_allocate_public_virtual_interface <- function(connectionId, ownerA
 #'     virtualInterfaceName = "string",
 #'     vlan = 123,
 #'     asn = 123,
+#'     asnLong = 123,
 #'     mtu = 123,
 #'     authKey = "string",
 #'     amazonAddress = "string",
@@ -783,7 +794,8 @@ directconnect_allocate_transit_virtual_interface <- function(connectionId, owner
 #'       state = "string",
 #'       startOn = "string"
 #'     )
-#'   )
+#'   ),
+#'   partnerInterconnectMacSecCapable = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -878,7 +890,8 @@ directconnect_associate_connection_with_lag <- function(connectionId, lagId) {
 #'       state = "string",
 #'       startOn = "string"
 #'     )
-#'   )
+#'   ),
+#'   partnerInterconnectMacSecCapable = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -915,12 +928,11 @@ directconnect_associate_hosted_connection <- function(connectionId, parentConnec
 .directconnect$operations$associate_hosted_connection <- directconnect_associate_hosted_connection
 
 #' Associates a MAC Security (MACsec) Connection Key Name (CKN)/
-#' Connectivity Association Key (CAK) pair with an Direct Connect dedicated
-#' connection
+#' Connectivity Association Key (CAK) pair with a Direct Connect connection
 #'
 #' @description
 #' Associates a MAC Security (MACsec) Connection Key Name (CKN)/
-#' Connectivity Association Key (CAK) pair with an Direct Connect dedicated
+#' Connectivity Association Key (CAK) pair with a Direct Connect
 #' connection.
 #' 
 #' You must supply either the `secretARN,` or the CKN/CAK (`ckn` and `cak`)
@@ -934,14 +946,16 @@ directconnect_associate_hosted_connection <- function(connectionId, parentConnec
 #' @usage
 #' directconnect_associate_mac_sec_key(connectionId, secretARN, ckn, cak)
 #'
-#' @param connectionId &#91;required&#93; The ID of the dedicated connection (dxcon-xxxx), or the ID of the LAG
-#' (dxlag-xxxx).
+#' @param connectionId &#91;required&#93; The ID of the dedicated connection (dxcon-xxxx), interconnect
+#' (dxcon-xxxx), or LAG (dxlag-xxxx).
 #' 
-#' You can use [`describe_connections`][directconnect_describe_connections]
-#' or [`describe_lags`][directconnect_describe_lags] to retrieve connection
+#' You can use
+#' [`describe_connections`][directconnect_describe_connections],
+#' [`describe_interconnects`][directconnect_describe_interconnects], or
+#' [`describe_lags`][directconnect_describe_lags] to retrieve connection
 #' ID.
 #' @param secretARN The Amazon Resource Name (ARN) of the MAC Security (MACsec) secret key
-#' to associate with the dedicated connection.
+#' to associate with the connection.
 #' 
 #' You can use [`describe_connections`][directconnect_describe_connections]
 #' or [`describe_lags`][directconnect_describe_lags] to retrieve the MAC
@@ -949,8 +963,7 @@ directconnect_associate_hosted_connection <- function(connectionId, parentConnec
 #' 
 #' If you use this request parameter, you do not use the `ckn` and `cak`
 #' request parameters.
-#' @param ckn The MAC Security (MACsec) CKN to associate with the dedicated
-#' connection.
+#' @param ckn The MAC Security (MACsec) CKN to associate with the connection.
 #' 
 #' You can create the CKN/CAK pair using an industry standard tool.
 #' 
@@ -958,8 +971,7 @@ directconnect_associate_hosted_connection <- function(connectionId, parentConnec
 #' 
 #' If you use this request parameter, you must use the `cak` request
 #' parameter and not use the `secretARN` request parameter.
-#' @param cak The MAC Security (MACsec) CAK to associate with the dedicated
-#' connection.
+#' @param cak The MAC Security (MACsec) CAK to associate with the connection.
 #' 
 #' You can create the CKN/CAK pair using an industry standard tool.
 #' 
@@ -1057,12 +1069,13 @@ directconnect_associate_mac_sec_key <- function(connectionId, secretARN = NULL, 
 #'   virtualInterfaceName = "string",
 #'   vlan = 123,
 #'   asn = 123,
+#'   asnLong = 123,
 #'   amazonSideAsn = 123,
 #'   authKey = "string",
 #'   amazonAddress = "string",
 #'   customerAddress = "string",
 #'   addressFamily = "ipv4"|"ipv6",
-#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"testing"|"deleting"|"deleted"|"rejected"|"unknown",
 #'   customerRouterConfig = "string",
 #'   mtu = 123,
 #'   jumboFrameCapable = TRUE|FALSE,
@@ -1077,6 +1090,7 @@ directconnect_associate_mac_sec_key <- function(connectionId, secretARN = NULL, 
 #'     list(
 #'       bgpPeerId = "string",
 #'       asn = 123,
+#'       asnLong = 123,
 #'       authKey = "string",
 #'       addressFamily = "ipv4"|"ipv6",
 #'       amazonAddress = "string",
@@ -1261,7 +1275,7 @@ directconnect_confirm_customer_agreement <- function(agreementName = NULL) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown"
+#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"testing"|"deleting"|"deleted"|"rejected"|"unknown"
 #' )
 #' ```
 #'
@@ -1317,7 +1331,7 @@ directconnect_confirm_private_virtual_interface <- function(virtualInterfaceId, 
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown"
+#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"testing"|"deleting"|"deleted"|"rejected"|"unknown"
 #' )
 #' ```
 #'
@@ -1374,7 +1388,7 @@ directconnect_confirm_public_virtual_interface <- function(virtualInterfaceId) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown"
+#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"testing"|"deleting"|"deleted"|"rejected"|"unknown"
 #' )
 #' ```
 #'
@@ -1457,12 +1471,13 @@ directconnect_confirm_transit_virtual_interface <- function(virtualInterfaceId, 
 #'     virtualInterfaceName = "string",
 #'     vlan = 123,
 #'     asn = 123,
+#'     asnLong = 123,
 #'     amazonSideAsn = 123,
 #'     authKey = "string",
 #'     amazonAddress = "string",
 #'     customerAddress = "string",
 #'     addressFamily = "ipv4"|"ipv6",
-#'     virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'     virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"testing"|"deleting"|"deleted"|"rejected"|"unknown",
 #'     customerRouterConfig = "string",
 #'     mtu = 123,
 #'     jumboFrameCapable = TRUE|FALSE,
@@ -1477,6 +1492,7 @@ directconnect_confirm_transit_virtual_interface <- function(virtualInterfaceId, 
 #'       list(
 #'         bgpPeerId = "string",
 #'         asn = 123,
+#'         asnLong = 123,
 #'         authKey = "string",
 #'         addressFamily = "ipv4"|"ipv6",
 #'         amazonAddress = "string",
@@ -1507,6 +1523,7 @@ directconnect_confirm_transit_virtual_interface <- function(virtualInterfaceId, 
 #'   virtualInterfaceId = "string",
 #'   newBGPPeer = list(
 #'     asn = 123,
+#'     asnLong = 123,
 #'     authKey = "string",
 #'     addressFamily = "ipv4"|"ipv6",
 #'     amazonAddress = "string",
@@ -1573,10 +1590,11 @@ directconnect_create_bgp_peer <- function(virtualInterfaceId = NULL, newBGPPeer 
 #' @param requestMACSec Indicates whether you want the connection to support MAC Security
 #' (MACsec).
 #' 
-#' MAC Security (MACsec) is only available on dedicated connections. For
-#' information about MAC Security (MACsec) prerequisties, see [MACsec
-#' prerequisties](https://docs.aws.amazon.com/directconnect/latest/UserGuide/#mac-sec-prerequisites)
-#' in the *Direct Connect User Guide*.
+#' MAC Security (MACsec) is unavailable on hosted connections. For
+#' information about MAC Security (MACsec) prerequisites, see [MAC Security
+#' in Direct
+#' Connect](https://docs.aws.amazon.com/directconnect/latest/UserGuide/) in
+#' the *Direct Connect User Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1617,7 +1635,8 @@ directconnect_create_bgp_peer <- function(virtualInterfaceId = NULL, newBGPPeer 
 #'       state = "string",
 #'       startOn = "string"
 #'     )
-#'   )
+#'   ),
+#'   partnerInterconnectMacSecCapable = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -1971,7 +1990,7 @@ directconnect_create_direct_connect_gateway_association_proposal <- function(dir
 #'
 #' @usage
 #' directconnect_create_interconnect(interconnectName, bandwidth, location,
-#'   lagId, tags, providerName)
+#'   lagId, tags, providerName, requestMACSec)
 #'
 #' @param interconnectName &#91;required&#93; The name of the interconnect.
 #' @param bandwidth &#91;required&#93; The port bandwidth, in Gbps. The possible values are 1, 10, and 100.
@@ -1979,6 +1998,8 @@ directconnect_create_direct_connect_gateway_association_proposal <- function(dir
 #' @param lagId The ID of the LAG.
 #' @param tags The tags to associate with the interconnect.
 #' @param providerName The name of the service provider associated with the interconnect.
+#' @param requestMACSec Indicates whether you want the interconnect to support MAC Security
+#' (MACsec).
 #'
 #' @return
 #' A list with the following syntax:
@@ -2005,7 +2026,18 @@ directconnect_create_direct_connect_gateway_association_proposal <- function(dir
 #'       value = "string"
 #'     )
 #'   ),
-#'   providerName = "string"
+#'   providerName = "string",
+#'   macSecCapable = TRUE|FALSE,
+#'   portEncryptionStatus = "string",
+#'   encryptionMode = "string",
+#'   macSecKeys = list(
+#'     list(
+#'       secretARN = "string",
+#'       ckn = "string",
+#'       state = "string",
+#'       startOn = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -2022,7 +2054,8 @@ directconnect_create_direct_connect_gateway_association_proposal <- function(dir
 #'       value = "string"
 #'     )
 #'   ),
-#'   providerName = "string"
+#'   providerName = "string",
+#'   requestMACSec = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -2031,7 +2064,7 @@ directconnect_create_direct_connect_gateway_association_proposal <- function(dir
 #' @rdname directconnect_create_interconnect
 #'
 #' @aliases directconnect_create_interconnect
-directconnect_create_interconnect <- function(interconnectName, bandwidth, location, lagId = NULL, tags = NULL, providerName = NULL) {
+directconnect_create_interconnect <- function(interconnectName, bandwidth, location, lagId = NULL, tags = NULL, providerName = NULL, requestMACSec = NULL) {
   op <- new_operation(
     name = "CreateInterconnect",
     http_method = "POST",
@@ -2040,7 +2073,7 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directconnect$create_interconnect_input(interconnectName = interconnectName, bandwidth = bandwidth, location = location, lagId = lagId, tags = tags, providerName = providerName)
+  input <- .directconnect$create_interconnect_input(interconnectName = interconnectName, bandwidth = bandwidth, location = location, lagId = lagId, tags = tags, providerName = providerName, requestMACSec = requestMACSec)
   output <- .directconnect$create_interconnect_output()
   config <- get_config()
   svc <- .directconnect$service(config, op)
@@ -2161,7 +2194,8 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #'           state = "string",
 #'           startOn = "string"
 #'         )
-#'       )
+#'       ),
+#'       partnerInterconnectMacSecCapable = TRUE|FALSE
 #'     )
 #'   ),
 #'   allowsHostedConnections = TRUE|FALSE,
@@ -2277,12 +2311,13 @@ directconnect_create_lag <- function(numberOfConnections, location, connectionsB
 #'   virtualInterfaceName = "string",
 #'   vlan = 123,
 #'   asn = 123,
+#'   asnLong = 123,
 #'   amazonSideAsn = 123,
 #'   authKey = "string",
 #'   amazonAddress = "string",
 #'   customerAddress = "string",
 #'   addressFamily = "ipv4"|"ipv6",
-#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"testing"|"deleting"|"deleted"|"rejected"|"unknown",
 #'   customerRouterConfig = "string",
 #'   mtu = 123,
 #'   jumboFrameCapable = TRUE|FALSE,
@@ -2297,6 +2332,7 @@ directconnect_create_lag <- function(numberOfConnections, location, connectionsB
 #'     list(
 #'       bgpPeerId = "string",
 #'       asn = 123,
+#'       asnLong = 123,
 #'       authKey = "string",
 #'       addressFamily = "ipv4"|"ipv6",
 #'       amazonAddress = "string",
@@ -2328,6 +2364,7 @@ directconnect_create_lag <- function(numberOfConnections, location, connectionsB
 #'     virtualInterfaceName = "string",
 #'     vlan = 123,
 #'     asn = 123,
+#'     asnLong = 123,
 #'     mtu = 123,
 #'     authKey = "string",
 #'     amazonAddress = "string",
@@ -2401,12 +2438,13 @@ directconnect_create_private_virtual_interface <- function(connectionId, newPriv
 #'   virtualInterfaceName = "string",
 #'   vlan = 123,
 #'   asn = 123,
+#'   asnLong = 123,
 #'   amazonSideAsn = 123,
 #'   authKey = "string",
 #'   amazonAddress = "string",
 #'   customerAddress = "string",
 #'   addressFamily = "ipv4"|"ipv6",
-#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"testing"|"deleting"|"deleted"|"rejected"|"unknown",
 #'   customerRouterConfig = "string",
 #'   mtu = 123,
 #'   jumboFrameCapable = TRUE|FALSE,
@@ -2421,6 +2459,7 @@ directconnect_create_private_virtual_interface <- function(connectionId, newPriv
 #'     list(
 #'       bgpPeerId = "string",
 #'       asn = 123,
+#'       asnLong = 123,
 #'       authKey = "string",
 #'       addressFamily = "ipv4"|"ipv6",
 #'       amazonAddress = "string",
@@ -2452,6 +2491,7 @@ directconnect_create_private_virtual_interface <- function(connectionId, newPriv
 #'     virtualInterfaceName = "string",
 #'     vlan = 123,
 #'     asn = 123,
+#'     asnLong = 123,
 #'     authKey = "string",
 #'     amazonAddress = "string",
 #'     customerAddress = "string",
@@ -2540,12 +2580,13 @@ directconnect_create_public_virtual_interface <- function(connectionId, newPubli
 #'     virtualInterfaceName = "string",
 #'     vlan = 123,
 #'     asn = 123,
+#'     asnLong = 123,
 #'     amazonSideAsn = 123,
 #'     authKey = "string",
 #'     amazonAddress = "string",
 #'     customerAddress = "string",
 #'     addressFamily = "ipv4"|"ipv6",
-#'     virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'     virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"testing"|"deleting"|"deleted"|"rejected"|"unknown",
 #'     customerRouterConfig = "string",
 #'     mtu = 123,
 #'     jumboFrameCapable = TRUE|FALSE,
@@ -2560,6 +2601,7 @@ directconnect_create_public_virtual_interface <- function(connectionId, newPubli
 #'       list(
 #'         bgpPeerId = "string",
 #'         asn = 123,
+#'         asnLong = 123,
 #'         authKey = "string",
 #'         addressFamily = "ipv4"|"ipv6",
 #'         amazonAddress = "string",
@@ -2592,6 +2634,7 @@ directconnect_create_public_virtual_interface <- function(connectionId, newPubli
 #'     virtualInterfaceName = "string",
 #'     vlan = 123,
 #'     asn = 123,
+#'     asnLong = 123,
 #'     mtu = 123,
 #'     authKey = "string",
 #'     amazonAddress = "string",
@@ -2643,12 +2686,33 @@ directconnect_create_transit_virtual_interface <- function(connectionId, newTran
 #' You cannot delete the last BGP peer from a virtual interface.
 #'
 #' @usage
-#' directconnect_delete_bgp_peer(virtualInterfaceId, asn, customerAddress,
-#'   bgpPeerId)
+#' directconnect_delete_bgp_peer(virtualInterfaceId, asn, asnLong,
+#'   customerAddress, bgpPeerId)
 #'
 #' @param virtualInterfaceId The ID of the virtual interface.
-#' @param asn The autonomous system (AS) number for Border Gateway Protocol (BGP)
+#' @param asn The autonomous system number (ASN). The valid range is from 1 to
+#' 2147483646 for Border Gateway Protocol (BGP) configuration. If you
+#' provide a number greater than the maximum, an error is returned. Use
+#' `asnLong` instead.
+#' 
+#' You can use `asnLong` or `asn`, but not both. We recommend using
+#' `asnLong` as it supports a greater pool of numbers.
+#' 
+#' -   The `asnLong` attribute accepts both ASN and long ASN ranges.
+#' 
+#' -   If you provide a value in the same API call for both `asn` and
+#'     `asnLong`, the API will only accept the value for `asnLong`.
+#' @param asnLong The long ASN for the BGP peer to be deleted from a Direct Connect
+#' virtual interface. The valid range is from 1 to 4294967294 for BGP
 #' configuration.
+#' 
+#' You can use `asnLong` or `asn`, but not both. We recommend using
+#' `asnLong` as it supports a greater pool of numbers.
+#' 
+#' -   The `asnLong` attribute accepts both ASN and long ASN ranges.
+#' 
+#' -   If you provide a value in the same API call for both `asn` and
+#'     `asnLong`, the API will only accept the value for `asnLong`.
 #' @param customerAddress The IP address assigned to the customer interface.
 #' @param bgpPeerId The ID of the BGP peer.
 #'
@@ -2665,12 +2729,13 @@ directconnect_create_transit_virtual_interface <- function(connectionId, newTran
 #'     virtualInterfaceName = "string",
 #'     vlan = 123,
 #'     asn = 123,
+#'     asnLong = 123,
 #'     amazonSideAsn = 123,
 #'     authKey = "string",
 #'     amazonAddress = "string",
 #'     customerAddress = "string",
 #'     addressFamily = "ipv4"|"ipv6",
-#'     virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'     virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"testing"|"deleting"|"deleted"|"rejected"|"unknown",
 #'     customerRouterConfig = "string",
 #'     mtu = 123,
 #'     jumboFrameCapable = TRUE|FALSE,
@@ -2685,6 +2750,7 @@ directconnect_create_transit_virtual_interface <- function(connectionId, newTran
 #'       list(
 #'         bgpPeerId = "string",
 #'         asn = 123,
+#'         asnLong = 123,
 #'         authKey = "string",
 #'         addressFamily = "ipv4"|"ipv6",
 #'         amazonAddress = "string",
@@ -2714,6 +2780,7 @@ directconnect_create_transit_virtual_interface <- function(connectionId, newTran
 #' svc$delete_bgp_peer(
 #'   virtualInterfaceId = "string",
 #'   asn = 123,
+#'   asnLong = 123,
 #'   customerAddress = "string",
 #'   bgpPeerId = "string"
 #' )
@@ -2724,7 +2791,7 @@ directconnect_create_transit_virtual_interface <- function(connectionId, newTran
 #' @rdname directconnect_delete_bgp_peer
 #'
 #' @aliases directconnect_delete_bgp_peer
-directconnect_delete_bgp_peer <- function(virtualInterfaceId = NULL, asn = NULL, customerAddress = NULL, bgpPeerId = NULL) {
+directconnect_delete_bgp_peer <- function(virtualInterfaceId = NULL, asn = NULL, asnLong = NULL, customerAddress = NULL, bgpPeerId = NULL) {
   op <- new_operation(
     name = "DeleteBGPPeer",
     http_method = "POST",
@@ -2733,7 +2800,7 @@ directconnect_delete_bgp_peer <- function(virtualInterfaceId = NULL, asn = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directconnect$delete_bgp_peer_input(virtualInterfaceId = virtualInterfaceId, asn = asn, customerAddress = customerAddress, bgpPeerId = bgpPeerId)
+  input <- .directconnect$delete_bgp_peer_input(virtualInterfaceId = virtualInterfaceId, asn = asn, asnLong = asnLong, customerAddress = customerAddress, bgpPeerId = bgpPeerId)
   output <- .directconnect$delete_bgp_peer_output()
   config <- get_config()
   svc <- .directconnect$service(config, op)
@@ -2797,7 +2864,8 @@ directconnect_delete_bgp_peer <- function(virtualInterfaceId = NULL, asn = NULL,
 #'       state = "string",
 #'       startOn = "string"
 #'     )
-#'   )
+#'   ),
+#'   partnerInterconnectMacSecCapable = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -3171,7 +3239,8 @@ directconnect_delete_interconnect <- function(interconnectId) {
 #'           state = "string",
 #'           startOn = "string"
 #'         )
-#'       )
+#'       ),
+#'       partnerInterconnectMacSecCapable = TRUE|FALSE
 #'     )
 #'   ),
 #'   allowsHostedConnections = TRUE|FALSE,
@@ -3242,7 +3311,7 @@ directconnect_delete_lag <- function(lagId) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown"
+#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"testing"|"deleting"|"deleted"|"rejected"|"unknown"
 #' )
 #' ```
 #'
@@ -3354,9 +3423,16 @@ directconnect_describe_connection_loa <- function(connectionId, providerName = N
 #' Displays the specified connection or all connections in this Region.
 #'
 #' @usage
-#' directconnect_describe_connections(connectionId)
+#' directconnect_describe_connections(connectionId, maxResults, nextToken)
 #'
 #' @param connectionId The ID of the connection.
+#' @param maxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#' 
+#' If `MaxResults` is given a value larger than 100, only 100 results are
+#' returned.
+#' @param nextToken The token for the next page of results.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3399,16 +3475,20 @@ directconnect_describe_connection_loa <- function(connectionId, providerName = N
 #'           state = "string",
 #'           startOn = "string"
 #'         )
-#'       )
+#'       ),
+#'       partnerInterconnectMacSecCapable = TRUE|FALSE
 #'     )
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$describe_connections(
-#'   connectionId = "string"
+#'   connectionId = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -3417,7 +3497,7 @@ directconnect_describe_connection_loa <- function(connectionId, providerName = N
 #' @rdname directconnect_describe_connections
 #'
 #' @aliases directconnect_describe_connections
-directconnect_describe_connections <- function(connectionId = NULL) {
+directconnect_describe_connections <- function(connectionId = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeConnections",
     http_method = "POST",
@@ -3426,7 +3506,7 @@ directconnect_describe_connections <- function(connectionId = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directconnect$describe_connections_input(connectionId = connectionId)
+  input <- .directconnect$describe_connections_input(connectionId = connectionId, maxResults = maxResults, nextToken = nextToken)
   output <- .directconnect$describe_connections_output()
   config <- get_config()
   svc <- .directconnect$service(config, op)
@@ -3494,9 +3574,11 @@ directconnect_describe_connections <- function(connectionId = NULL) {
 #'           state = "string",
 #'           startOn = "string"
 #'         )
-#'       )
+#'       ),
+#'       partnerInterconnectMacSecCapable = TRUE|FALSE
 #'     )
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -3972,9 +4054,17 @@ directconnect_describe_direct_connect_gateways <- function(directConnectGatewayI
 #' Intended for use by Direct Connect Partners only.
 #'
 #' @usage
-#' directconnect_describe_hosted_connections(connectionId)
+#' directconnect_describe_hosted_connections(connectionId, maxResults,
+#'   nextToken)
 #'
 #' @param connectionId &#91;required&#93; The ID of the interconnect or LAG.
+#' @param maxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#' 
+#' If `MaxResults` is given a value larger than 100, only 100 results are
+#' returned.
+#' @param nextToken The token for the next page of results.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4017,16 +4107,20 @@ directconnect_describe_direct_connect_gateways <- function(directConnectGatewayI
 #'           state = "string",
 #'           startOn = "string"
 #'         )
-#'       )
+#'       ),
+#'       partnerInterconnectMacSecCapable = TRUE|FALSE
 #'     )
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$describe_hosted_connections(
-#'   connectionId = "string"
+#'   connectionId = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -4035,7 +4129,7 @@ directconnect_describe_direct_connect_gateways <- function(directConnectGatewayI
 #' @rdname directconnect_describe_hosted_connections
 #'
 #' @aliases directconnect_describe_hosted_connections
-directconnect_describe_hosted_connections <- function(connectionId) {
+directconnect_describe_hosted_connections <- function(connectionId, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeHostedConnections",
     http_method = "POST",
@@ -4044,7 +4138,7 @@ directconnect_describe_hosted_connections <- function(connectionId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directconnect$describe_hosted_connections_input(connectionId = connectionId)
+  input <- .directconnect$describe_hosted_connections_input(connectionId = connectionId, maxResults = maxResults, nextToken = nextToken)
   output <- .directconnect$describe_hosted_connections_output()
   config <- get_config()
   svc <- .directconnect$service(config, op)
@@ -4131,9 +4225,17 @@ directconnect_describe_interconnect_loa <- function(interconnectId, providerName
 #' the specified interconnect.
 #'
 #' @usage
-#' directconnect_describe_interconnects(interconnectId)
+#' directconnect_describe_interconnects(interconnectId, maxResults,
+#'   nextToken)
 #'
 #' @param interconnectId The ID of the interconnect.
+#' @param maxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#' 
+#' If `MaxResults` is given a value larger than 100, only 100 results are
+#' returned.
+#' @param nextToken The token for the next page of results.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4162,16 +4264,30 @@ directconnect_describe_interconnect_loa <- function(interconnectId, providerName
 #'           value = "string"
 #'         )
 #'       ),
-#'       providerName = "string"
+#'       providerName = "string",
+#'       macSecCapable = TRUE|FALSE,
+#'       portEncryptionStatus = "string",
+#'       encryptionMode = "string",
+#'       macSecKeys = list(
+#'         list(
+#'           secretARN = "string",
+#'           ckn = "string",
+#'           state = "string",
+#'           startOn = "string"
+#'         )
+#'       )
 #'     )
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$describe_interconnects(
-#'   interconnectId = "string"
+#'   interconnectId = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -4180,7 +4296,7 @@ directconnect_describe_interconnect_loa <- function(interconnectId, providerName
 #' @rdname directconnect_describe_interconnects
 #'
 #' @aliases directconnect_describe_interconnects
-directconnect_describe_interconnects <- function(interconnectId = NULL) {
+directconnect_describe_interconnects <- function(interconnectId = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeInterconnects",
     http_method = "POST",
@@ -4189,7 +4305,7 @@ directconnect_describe_interconnects <- function(interconnectId = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directconnect$describe_interconnects_input(interconnectId = interconnectId)
+  input <- .directconnect$describe_interconnects_input(interconnectId = interconnectId, maxResults = maxResults, nextToken = nextToken)
   output <- .directconnect$describe_interconnects_output()
   config <- get_config()
   svc <- .directconnect$service(config, op)
@@ -4205,9 +4321,16 @@ directconnect_describe_interconnects <- function(interconnectId = NULL) {
 #' Describes all your link aggregation groups (LAG) or the specified LAG.
 #'
 #' @usage
-#' directconnect_describe_lags(lagId)
+#' directconnect_describe_lags(lagId, maxResults, nextToken)
 #'
 #' @param lagId The ID of the LAG.
+#' @param maxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#' 
+#' If `MaxResults` is given a value larger than 100, only 100 results are
+#' returned.
+#' @param nextToken The token for the next page of results.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4264,7 +4387,8 @@ directconnect_describe_interconnects <- function(interconnectId = NULL) {
 #'               state = "string",
 #'               startOn = "string"
 #'             )
-#'           )
+#'           ),
+#'           partnerInterconnectMacSecCapable = TRUE|FALSE
 #'         )
 #'       ),
 #'       allowsHostedConnections = TRUE|FALSE,
@@ -4288,14 +4412,17 @@ directconnect_describe_interconnects <- function(interconnectId = NULL) {
 #'         )
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$describe_lags(
-#'   lagId = "string"
+#'   lagId = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -4304,7 +4431,7 @@ directconnect_describe_interconnects <- function(interconnectId = NULL) {
 #' @rdname directconnect_describe_lags
 #'
 #' @aliases directconnect_describe_lags
-directconnect_describe_lags <- function(lagId = NULL) {
+directconnect_describe_lags <- function(lagId = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeLags",
     http_method = "POST",
@@ -4313,7 +4440,7 @@ directconnect_describe_lags <- function(lagId = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directconnect$describe_lags_input(lagId = lagId)
+  input <- .directconnect$describe_lags_input(lagId = lagId, maxResults = maxResults, nextToken = nextToken)
   output <- .directconnect$describe_lags_output()
   config <- get_config()
   svc <- .directconnect$service(config, op)
@@ -4647,13 +4774,27 @@ directconnect_describe_virtual_gateways <- function() {
 #' 
 #' A virtual interface (VLAN) transmits the traffic between the Direct
 #' Connect location and the customer network.
+#' 
+#' -   If you're using an `asn`, the response includes ASN value in both
+#'     the `asn` and `asnLong` fields.
+#' 
+#' -   If you're using `asnLong`, the response returns a value of `0`
+#'     (zero) for the `asn` attribute because it exceeds the highest ASN
+#'     value of 2,147,483,647 that it can support
 #'
 #' @usage
 #' directconnect_describe_virtual_interfaces(connectionId,
-#'   virtualInterfaceId)
+#'   virtualInterfaceId, maxResults, nextToken)
 #'
 #' @param connectionId The ID of the connection.
 #' @param virtualInterfaceId The ID of the virtual interface.
+#' @param maxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#' 
+#' If `MaxResults` is given a value larger than 100, only 100 results are
+#' returned.
+#' @param nextToken The token for the next page of results.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4669,12 +4810,13 @@ directconnect_describe_virtual_gateways <- function() {
 #'       virtualInterfaceName = "string",
 #'       vlan = 123,
 #'       asn = 123,
+#'       asnLong = 123,
 #'       amazonSideAsn = 123,
 #'       authKey = "string",
 #'       amazonAddress = "string",
 #'       customerAddress = "string",
 #'       addressFamily = "ipv4"|"ipv6",
-#'       virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'       virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"testing"|"deleting"|"deleted"|"rejected"|"unknown",
 #'       customerRouterConfig = "string",
 #'       mtu = 123,
 #'       jumboFrameCapable = TRUE|FALSE,
@@ -4689,6 +4831,7 @@ directconnect_describe_virtual_gateways <- function() {
 #'         list(
 #'           bgpPeerId = "string",
 #'           asn = 123,
+#'           asnLong = 123,
 #'           authKey = "string",
 #'           addressFamily = "ipv4"|"ipv6",
 #'           amazonAddress = "string",
@@ -4710,7 +4853,8 @@ directconnect_describe_virtual_gateways <- function() {
 #'       ),
 #'       siteLinkEnabled = TRUE|FALSE
 #'     )
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -4718,7 +4862,9 @@ directconnect_describe_virtual_gateways <- function() {
 #' ```
 #' svc$describe_virtual_interfaces(
 #'   connectionId = "string",
-#'   virtualInterfaceId = "string"
+#'   virtualInterfaceId = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -4727,7 +4873,7 @@ directconnect_describe_virtual_gateways <- function() {
 #' @rdname directconnect_describe_virtual_interfaces
 #'
 #' @aliases directconnect_describe_virtual_interfaces
-directconnect_describe_virtual_interfaces <- function(connectionId = NULL, virtualInterfaceId = NULL) {
+directconnect_describe_virtual_interfaces <- function(connectionId = NULL, virtualInterfaceId = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeVirtualInterfaces",
     http_method = "POST",
@@ -4736,7 +4882,7 @@ directconnect_describe_virtual_interfaces <- function(connectionId = NULL, virtu
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directconnect$describe_virtual_interfaces_input(connectionId = connectionId, virtualInterfaceId = virtualInterfaceId)
+  input <- .directconnect$describe_virtual_interfaces_input(connectionId = connectionId, virtualInterfaceId = virtualInterfaceId, maxResults = maxResults, nextToken = nextToken)
   output <- .directconnect$describe_virtual_interfaces_output()
   config <- get_config()
   svc <- .directconnect$service(config, op)
@@ -4808,7 +4954,8 @@ directconnect_describe_virtual_interfaces <- function(connectionId = NULL, virtu
 #'       state = "string",
 #'       startOn = "string"
 #'     )
-#'   )
+#'   ),
+#'   partnerInterconnectMacSecCapable = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -4845,20 +4992,22 @@ directconnect_disassociate_connection_from_lag <- function(connectionId, lagId) 
 .directconnect$operations$disassociate_connection_from_lag <- directconnect_disassociate_connection_from_lag
 
 #' Removes the association between a MAC Security (MACsec) security key and
-#' an Direct Connect dedicated connection
+#' a Direct Connect connection
 #'
 #' @description
 #' Removes the association between a MAC Security (MACsec) security key and
-#' an Direct Connect dedicated connection.
+#' a Direct Connect connection.
 #'
 #' @usage
 #' directconnect_disassociate_mac_sec_key(connectionId, secretARN)
 #'
-#' @param connectionId &#91;required&#93; The ID of the dedicated connection (dxcon-xxxx), or the ID of the LAG
-#' (dxlag-xxxx).
+#' @param connectionId &#91;required&#93; The ID of the dedicated connection (dxcon-xxxx), interconnect
+#' (dxcon-xxxx), or LAG (dxlag-xxxx).
 #' 
-#' You can use [`describe_connections`][directconnect_describe_connections]
-#' or [`describe_lags`][directconnect_describe_lags] to retrieve connection
+#' You can use
+#' [`describe_connections`][directconnect_describe_connections],
+#' [`describe_interconnects`][directconnect_describe_interconnects], or
+#' [`describe_lags`][directconnect_describe_lags] to retrieve connection
 #' ID.
 #' @param secretARN &#91;required&#93; The Amazon Resource Name (ARN) of the MAC Security (MACsec) secret key.
 #' 
@@ -5257,10 +5406,10 @@ directconnect_untag_resource <- function(resourceArn, tagKeys) {
 }
 .directconnect$operations$untag_resource <- directconnect_untag_resource
 
-#' Updates the Direct Connect dedicated connection configuration
+#' Updates the Direct Connect connection configuration
 #'
 #' @description
-#' Updates the Direct Connect dedicated connection configuration.
+#' Updates the Direct Connect connection configuration.
 #' 
 #' You can update the following parameters for a connection:
 #' 
@@ -5272,7 +5421,7 @@ directconnect_untag_resource <- function(resourceArn, tagKeys) {
 #' directconnect_update_connection(connectionId, connectionName,
 #'   encryptionMode)
 #'
-#' @param connectionId &#91;required&#93; The ID of the dedicated connection.
+#' @param connectionId &#91;required&#93; The ID of the connection.
 #' 
 #' You can use [`describe_connections`][directconnect_describe_connections]
 #' to retrieve the connection ID.
@@ -5320,7 +5469,8 @@ directconnect_untag_resource <- function(resourceArn, tagKeys) {
 #'       state = "string",
 #'       startOn = "string"
 #'     )
-#'   )
+#'   ),
+#'   partnerInterconnectMacSecCapable = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -5603,7 +5753,8 @@ directconnect_update_direct_connect_gateway_association <- function(associationI
 #'           state = "string",
 #'           startOn = "string"
 #'         )
-#'       )
+#'       ),
+#'       partnerInterconnectMacSecCapable = TRUE|FALSE
 #'     )
 #'   ),
 #'   allowsHostedConnections = TRUE|FALSE,
@@ -5702,12 +5853,13 @@ directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL,
 #'   virtualInterfaceName = "string",
 #'   vlan = 123,
 #'   asn = 123,
+#'   asnLong = 123,
 #'   amazonSideAsn = 123,
 #'   authKey = "string",
 #'   amazonAddress = "string",
 #'   customerAddress = "string",
 #'   addressFamily = "ipv4"|"ipv6",
-#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"testing"|"deleting"|"deleted"|"rejected"|"unknown",
 #'   customerRouterConfig = "string",
 #'   mtu = 123,
 #'   jumboFrameCapable = TRUE|FALSE,
@@ -5722,6 +5874,7 @@ directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL,
 #'     list(
 #'       bgpPeerId = "string",
 #'       asn = 123,
+#'       asnLong = 123,
 #'       authKey = "string",
 #'       addressFamily = "ipv4"|"ipv6",
 #'       amazonAddress = "string",

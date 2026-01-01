@@ -10,7 +10,7 @@ controltower_reset_enabled_control(enabledControlIdentifier)
 \item{enabledControlIdentifier}{[required] The ARN of the enabled control to be reset.}
 }
 \description{
-Resets an enabled control.
+Resets an enabled control. Does not work for controls implemented with SCPs.
 
 See \url{https://www.paws-r-sdk.com/docs/controltower_reset_enabled_control/} for full documentation.
 }

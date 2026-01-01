@@ -12,7 +12,7 @@ pinpointsmsvoicev2_untag_resource(ResourceArn, TagKeys)
 \item{TagKeys}{[required] An array of tag key values to unassociate with the resource.}
 }
 \description{
-Removes the association of the specified tags from a resource. For more information on tags see \href{https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-tags.html}{Tags} in the \emph{AWS End User Messaging SMS User Guide}.
+Removes the association of the specified tags from a resource. For more information on tags see \href{https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-tags.html}{Tags} in the \emph{End User Messaging SMS User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_untag_resource/} for full documentation.
 }

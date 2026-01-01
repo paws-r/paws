@@ -21,7 +21,9 @@ emrserverless_create_application(
   runtimeConfiguration = NULL,
   monitoringConfiguration = NULL,
   interactiveConfiguration = NULL,
-  schedulerConfiguration = NULL
+  schedulerConfiguration = NULL,
+  identityCenterConfiguration = NULL,
+  jobLevelCostAllocationConfiguration = NULL
 )
 }
 \arguments{
@@ -78,6 +80,13 @@ cases to use when running an application.}
 
 \item{schedulerConfiguration}{The scheduler configuration for batch and streaming jobs running on this
 application. Supported with release labels emr-7.0.0 and above.}
+
+\item{identityCenterConfiguration}{The IAM Identity Center Configuration accepts the Identity Center
+instance parameter required to enable trusted identity propagation. This
+configuration allows identity propagation between integrated services
+and the Identity Center instance.}
+
+\item{jobLevelCostAllocationConfiguration}{The configuration object that enables job level cost allocation.}
 }
 \description{
 Creates an application.

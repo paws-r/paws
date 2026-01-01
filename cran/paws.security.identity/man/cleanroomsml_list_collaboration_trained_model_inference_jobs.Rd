@@ -9,7 +9,8 @@ cleanroomsml_list_collaboration_trained_model_inference_jobs(
   nextToken = NULL,
   maxResults = NULL,
   collaborationIdentifier,
-  trainedModelArn = NULL
+  trainedModelArn = NULL,
+  trainedModelVersionIdentifier = NULL
 )
 }
 \arguments{
@@ -23,6 +24,10 @@ model inference jobs that you are interested in.}
 
 \item{trainedModelArn}{The Amazon Resource Name (ARN) of the trained model that was used to
 create the trained model inference jobs that you are interested in.}
+
+\item{trainedModelVersionIdentifier}{The version identifier of the trained model to filter inference jobs by.
+When specified, only inference jobs that used this specific version of
+the trained model are returned.}
 }
 \description{
 Returns a list of trained model inference jobs in a specified collaboration.

@@ -106,19 +106,21 @@ NULL
 #' \tabular{ll}{
 #'  \link[=costexplorer_create_anomaly_monitor]{create_anomaly_monitor} \tab Creates a new cost anomaly detection monitor with the requested type and monitor specification\cr
 #'  \link[=costexplorer_create_anomaly_subscription]{create_anomaly_subscription} \tab Adds an alert subscription to a cost anomaly detection monitor\cr
-#'  \link[=costexplorer_create_cost_category_definition]{create_cost_category_definition} \tab Creates a new Cost Category with the requested name and rules\cr
+#'  \link[=costexplorer_create_cost_category_definition]{create_cost_category_definition} \tab Creates a new cost category with the requested name and rules\cr
 #'  \link[=costexplorer_delete_anomaly_monitor]{delete_anomaly_monitor} \tab Deletes a cost anomaly monitor\cr
 #'  \link[=costexplorer_delete_anomaly_subscription]{delete_anomaly_subscription} \tab Deletes a cost anomaly subscription\cr
-#'  \link[=costexplorer_delete_cost_category_definition]{delete_cost_category_definition} \tab Deletes a Cost Category\cr
-#'  \link[=costexplorer_describe_cost_category_definition]{describe_cost_category_definition} \tab Returns the name, Amazon Resource Name (ARN), rules, definition, and effective dates of a Cost Category that's defined in the account\cr
+#'  \link[=costexplorer_delete_cost_category_definition]{delete_cost_category_definition} \tab Deletes a cost category\cr
+#'  \link[=costexplorer_describe_cost_category_definition]{describe_cost_category_definition} \tab Returns the name, Amazon Resource Name (ARN), rules, definition, and effective dates of a cost category that's defined in the account\cr
 #'  \link[=costexplorer_get_anomalies]{get_anomalies} \tab Retrieves all of the cost anomalies detected on your account during the time period that's specified by the DateInterval object\cr
 #'  \link[=costexplorer_get_anomaly_monitors]{get_anomaly_monitors} \tab Retrieves the cost anomaly monitor definitions for your account\cr
 #'  \link[=costexplorer_get_anomaly_subscriptions]{get_anomaly_subscriptions} \tab Retrieves the cost anomaly subscription objects for your account\cr
 #'  \link[=costexplorer_get_approximate_usage_records]{get_approximate_usage_records} \tab Retrieves estimated usage records for hourly granularity or resource-level data at daily granularity\cr
 #'  \link[=costexplorer_get_commitment_purchase_analysis]{get_commitment_purchase_analysis} \tab Retrieves a commitment purchase analysis result based on the AnalysisId\cr
 #'  \link[=costexplorer_get_cost_and_usage]{get_cost_and_usage} \tab Retrieves cost and usage metrics for your account\cr
+#'  \link[=costexplorer_get_cost_and_usage_comparisons]{get_cost_and_usage_comparisons} \tab Retrieves cost and usage comparisons for your account between two periods within the last 13 months\cr
 #'  \link[=costexplorer_get_cost_and_usage_with_resources]{get_cost_and_usage_with_resources} \tab Retrieves cost and usage metrics with resources for your account\cr
-#'  \link[=costexplorer_get_cost_categories]{get_cost_categories} \tab Retrieves an array of Cost Category names and values incurred cost\cr
+#'  \link[=costexplorer_get_cost_categories]{get_cost_categories} \tab Retrieves an array of cost category names and values incurred cost\cr
+#'  \link[=costexplorer_get_cost_comparison_drivers]{get_cost_comparison_drivers} \tab Retrieves key factors driving cost changes between two time periods within the last 13 months, such as usage changes, discount changes, and commitment-based savings\cr
 #'  \link[=costexplorer_get_cost_forecast]{get_cost_forecast} \tab Retrieves a forecast for how much Amazon Web Services predicts that you will spend over the forecast time period that you select, based on your past costs\cr
 #'  \link[=costexplorer_get_dimension_values]{get_dimension_values} \tab Retrieves all available filter values for a specified filter over a period of time\cr
 #'  \link[=costexplorer_get_reservation_coverage]{get_reservation_coverage} \tab Retrieves the reservation coverage for your account, which you can use to see how much of your Amazon Elastic Compute Cloud, Amazon ElastiCache, Amazon Relational Database Service, or Amazon Redshift usage is covered by a reservation\cr
@@ -135,7 +137,8 @@ NULL
 #'  \link[=costexplorer_list_commitment_purchase_analyses]{list_commitment_purchase_analyses} \tab Lists the commitment purchase analyses for your account\cr
 #'  \link[=costexplorer_list_cost_allocation_tag_backfill_history]{list_cost_allocation_tag_backfill_history} \tab Retrieves a list of your historical cost allocation tag backfill requests\cr
 #'  \link[=costexplorer_list_cost_allocation_tags]{list_cost_allocation_tags} \tab Get a list of cost allocation tags\cr
-#'  \link[=costexplorer_list_cost_category_definitions]{list_cost_category_definitions} \tab Returns the name, Amazon Resource Name (ARN), NumberOfRules and effective dates of all Cost Categories defined in the account\cr
+#'  \link[=costexplorer_list_cost_category_definitions]{list_cost_category_definitions} \tab Returns the name, Amazon Resource Name (ARN), NumberOfRules and effective dates of all cost categories defined in the account\cr
+#'  \link[=costexplorer_list_cost_category_resource_associations]{list_cost_category_resource_associations} \tab Returns resource associations of all cost categories defined in the account\cr
 #'  \link[=costexplorer_list_savings_plans_purchase_recommendation_generation]{list_savings_plans_purchase_recommendation_generation} \tab Retrieves a list of your historical recommendation generations within the past 30 days\cr
 #'  \link[=costexplorer_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of resource tags associated with the resource specified by the Amazon Resource Name (ARN)\cr
 #'  \link[=costexplorer_provide_anomaly_feedback]{provide_anomaly_feedback} \tab Modifies the feedback property of a given cost anomaly\cr
@@ -147,7 +150,7 @@ NULL
 #'  \link[=costexplorer_update_anomaly_monitor]{update_anomaly_monitor} \tab Updates an existing cost anomaly monitor\cr
 #'  \link[=costexplorer_update_anomaly_subscription]{update_anomaly_subscription} \tab Updates an existing cost anomaly subscription\cr
 #'  \link[=costexplorer_update_cost_allocation_tags_status]{update_cost_allocation_tags_status} \tab Updates status for cost allocation tags in bulk, with maximum batch size of 20\cr
-#'  \link[=costexplorer_update_cost_category_definition]{update_cost_category_definition} \tab Updates an existing Cost Category
+#'  \link[=costexplorer_update_cost_category_definition]{update_cost_category_definition} \tab Updates an existing cost category
 #' }
 #'
 #' @return

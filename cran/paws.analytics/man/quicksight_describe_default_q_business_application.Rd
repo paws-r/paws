@@ -2,8 +2,8 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_describe_default_q_business_application}
 \alias{quicksight_describe_default_q_business_application}
-\title{Describes a Amazon Q Business application that is linked to an Amazon
-QuickSight account}
+\title{Describes a Amazon Q Business application that is linked to an Quick
+Sight account}
 \usage{
 quicksight_describe_default_q_business_application(
   AwsAccountId,
@@ -11,16 +11,16 @@ quicksight_describe_default_q_business_application(
 )
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the Amazon QuickSight account that is linked to the Amazon Q
+\item{AwsAccountId}{[required] The ID of the Quick Sight account that is linked to the Amazon Q
 Business application that you want described.}
 
-\item{Namespace}{The Amazon QuickSight namespace that contains the linked Amazon Q
-Business application. If this field is left blank, the default namespace
-is used. Currently, the default namespace is the only valid value for
-this parameter.}
+\item{Namespace}{The Quick Sight namespace that contains the linked Amazon Q Business
+application. If this field is left blank, the default namespace is used.
+Currently, the default namespace is the only valid value for this
+parameter.}
 }
 \description{
-Describes a Amazon Q Business application that is linked to an Amazon QuickSight account.
+Describes a Amazon Q Business application that is linked to an Quick Sight account.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_default_q_business_application/} for full documentation.
 }

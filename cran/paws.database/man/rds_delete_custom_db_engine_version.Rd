@@ -7,14 +7,25 @@
 rds_delete_custom_db_engine_version(Engine, EngineVersion)
 }
 \arguments{
-\item{Engine}{[required] The database engine. RDS Custom for Oracle supports the following
-values:
+\item{Engine}{[required] The database engine.
+
+RDS Custom for Oracle supports the following values:
 \itemize{
 \item \code{custom-oracle-ee}
 \item \code{custom-oracle-ee-cdb}
 \item \code{custom-oracle-se2}
 \item \code{custom-oracle-se2-cdb}
-}}
+}
+
+RDS Custom for SQL Server supports the following values:
+\itemize{
+\item \code{custom-sqlserver-ee}
+\item \code{custom-sqlserver-se}
+\item \code{ccustom-sqlserver-web}
+\item \code{custom-sqlserver-dev}
+}
+
+RDS for SQL Server supports only \code{sqlserver-dev-ee}.}
 
 \item{EngineVersion}{[required] The custom engine version (CEV) for your DB instance. This option is
 required for RDS Custom, but optional for Amazon RDS. The combination of

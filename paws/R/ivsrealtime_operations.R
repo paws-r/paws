@@ -320,7 +320,8 @@ ivsrealtime_create_participant_token <- function(stageArn, duration = NULL, user
 #'       recordingReconnectWindowSeconds = 123,
 #'       hlsConfiguration = list(
 #'         targetSegmentDurationSeconds = 123
-#'       )
+#'       ),
+#'       recordParticipantReplicas = TRUE|FALSE
 #'     ),
 #'     endpoints = list(
 #'       events = "string",
@@ -383,7 +384,8 @@ ivsrealtime_create_participant_token <- function(stageArn, duration = NULL, user
 #'     recordingReconnectWindowSeconds = 123,
 #'     hlsConfiguration = list(
 #'       targetSegmentDurationSeconds = 123
-#'     )
+#'     ),
+#'     recordParticipantReplicas = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -810,7 +812,8 @@ ivsrealtime_disconnect_participant <- function(stageArn, participantId, reason =
 #'         omitStoppedVideo = TRUE|FALSE,
 #'         videoAspectRatio = "AUTO"|"VIDEO"|"SQUARE"|"PORTRAIT",
 #'         videoFillMode = "FILL"|"COVER"|"CONTAIN",
-#'         gridGap = 123
+#'         gridGap = 123,
+#'         participantOrderAttribute = "string"
 #'       ),
 #'       pip = list(
 #'         featuredParticipantAttribute = "string",
@@ -822,7 +825,8 @@ ivsrealtime_disconnect_participant <- function(stageArn, participantId, reason =
 #'         pipOffset = 123,
 #'         pipPosition = "TOP_LEFT"|"TOP_RIGHT"|"BOTTOM_LEFT"|"BOTTOM_RIGHT",
 #'         pipWidth = 123,
-#'         pipHeight = 123
+#'         pipHeight = 123,
+#'         participantOrderAttribute = "string"
 #'       )
 #'     ),
 #'     destinations = list(
@@ -1076,7 +1080,11 @@ ivsrealtime_get_ingest_configuration <- function(arn) {
 #'     recordingS3BucketName = "string",
 #'     recordingS3Prefix = "string",
 #'     recordingState = "STARTING"|"ACTIVE"|"STOPPING"|"STOPPED"|"FAILED"|"DISABLED",
-#'     protocol = "UNKNOWN"|"WHIP"|"RTMP"|"RTMPS"
+#'     protocol = "UNKNOWN"|"WHIP"|"RTMP"|"RTMPS",
+#'     replicationType = "SOURCE"|"REPLICA"|"NONE",
+#'     replicationState = "ACTIVE"|"STOPPED",
+#'     sourceStageArn = "string",
+#'     sourceSessionId = "string"
 #'   )
 #' )
 #' ```
@@ -1207,7 +1215,8 @@ ivsrealtime_get_public_key <- function(arn) {
 #'       recordingReconnectWindowSeconds = 123,
 #'       hlsConfiguration = list(
 #'         targetSegmentDurationSeconds = 123
-#'       )
+#'       ),
+#'       recordParticipantReplicas = TRUE|FALSE
 #'     ),
 #'     endpoints = list(
 #'       events = "string",
@@ -1685,13 +1694,40 @@ ivsrealtime_list_ingest_configurations <- function(filterByStageArn = NULL, filt
 #' list(
 #'   events = list(
 #'     list(
-#'       name = "JOINED"|"LEFT"|"PUBLISH_STARTED"|"PUBLISH_STOPPED"|"SUBSCRIBE_STARTED"|"SUBSCRIBE_STOPPED"|"PUBLISH_ERROR"|"SUBSCRIBE_ERROR"|"JOIN_ERROR",
+#'       name = "JOINED"|"LEFT"|"PUBLISH_STARTED"|"PUBLISH_STOPPED"|"SUBSCRIBE_STARTED"|"SUBSCRIBE_STOPPED"|"PUBLISH_ERROR"|"SUBSCRIBE_ERROR"|"JOIN_ERROR"|"REPLICATION_STARTED"|"REPLICATION_STOPPED"|"TOKEN_EXCHANGED",
 #'       participantId = "string",
 #'       eventTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       remoteParticipantId = "string",
-#'       errorCode = "INSUFFICIENT_CAPABILITIES"|"QUOTA_EXCEEDED"|"PUBLISHER_NOT_FOUND"|"BITRATE_EXCEEDED"|"RESOLUTION_EXCEEDED"|"STREAM_DURATION_EXCEEDED"|"INVALID_AUDIO_CODEC"|"INVALID_VIDEO_CODEC"|"INVALID_PROTOCOL"|"INVALID_STREAM_KEY"|"REUSE_OF_STREAM_KEY"|"B_FRAME_PRESENT"|"INVALID_INPUT"|"INTERNAL_SERVER_EXCEPTION"
+#'       errorCode = "INSUFFICIENT_CAPABILITIES"|"QUOTA_EXCEEDED"|"PUBLISHER_NOT_FOUND"|"BITRATE_EXCEEDED"|"RESOLUTION_EXCEEDED"|"STREAM_DURATION_EXCEEDED"|"INVALID_AUDIO_CODEC"|"INVALID_VIDEO_CODEC"|"INVALID_PROTOCOL"|"INVALID_STREAM_KEY"|"REUSE_OF_STREAM_KEY"|"B_FRAME_PRESENT"|"INVALID_INPUT"|"INTERNAL_SERVER_EXCEPTION",
+#'       destinationStageArn = "string",
+#'       destinationSessionId = "string",
+#'       replica = TRUE|FALSE,
+#'       previousToken = list(
+#'         capabilities = list(
+#'           "PUBLISH"|"SUBSCRIBE"
+#'         ),
+#'         attributes = list(
+#'           "string"
+#'         ),
+#'         userId = "string",
+#'         expirationTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       newToken = list(
+#'         capabilities = list(
+#'           "PUBLISH"|"SUBSCRIBE"
+#'         ),
+#'         attributes = list(
+#'           "string"
+#'         ),
+#'         userId = "string",
+#'         expirationTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1732,6 +1768,77 @@ ivsrealtime_list_participant_events <- function(stageArn, sessionId, participant
   return(response)
 }
 .ivsrealtime$operations$list_participant_events <- ivsrealtime_list_participant_events
+
+#' Lists all the replicas for a participant from a source stage
+#'
+#' @description
+#' Lists all the replicas for a participant from a source stage.
+#'
+#' @usage
+#' ivsrealtime_list_participant_replicas(sourceStageArn, participantId,
+#'   nextToken, maxResults)
+#'
+#' @param sourceStageArn &#91;required&#93; ARN of the stage where the participant is publishing.
+#' @param participantId &#91;required&#93; Participant ID of the publisher that has been replicated. This is
+#' assigned by IVS and returned by
+#' [`create_participant_token`][ivsrealtime_create_participant_token] or
+#' the `jti` (JWT ID) used to [create a self signed
+#' token](https://docs.aws.amazon.com/ivs/latest/RealTimeUserGuide/getting-started-distribute-tokens.html#getting-started-distribute-tokens-self-signed).
+#' @param nextToken The first participant to retrieve. This is used for pagination; see the
+#' `nextToken` response field.
+#' @param maxResults Maximum number of results to return. Default: 50.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   replicas = list(
+#'     list(
+#'       sourceStageArn = "string",
+#'       participantId = "string",
+#'       sourceSessionId = "string",
+#'       destinationStageArn = "string",
+#'       destinationSessionId = "string",
+#'       replicationState = "ACTIVE"|"STOPPED"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_participant_replicas(
+#'   sourceStageArn = "string",
+#'   participantId = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ivsrealtime_list_participant_replicas
+#'
+#' @aliases ivsrealtime_list_participant_replicas
+ivsrealtime_list_participant_replicas <- function(sourceStageArn, participantId, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListParticipantReplicas",
+    http_method = "POST",
+    http_path = "/ListParticipantReplicas",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "replicas"),
+    stream_api = FALSE
+  )
+  input <- .ivsrealtime$list_participant_replicas_input(sourceStageArn = sourceStageArn, participantId = participantId, nextToken = nextToken, maxResults = maxResults)
+  output <- .ivsrealtime$list_participant_replicas_output()
+  config <- get_config()
+  svc <- .ivsrealtime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivsrealtime$operations$list_participant_replicas <- ivsrealtime_list_participant_replicas
 
 #' Lists all participants in a specified stage session
 #'
@@ -1779,7 +1886,11 @@ ivsrealtime_list_participant_events <- function(stageArn, sessionId, participant
 #'         "2015-01-01"
 #'       ),
 #'       published = TRUE|FALSE,
-#'       recordingState = "STARTING"|"ACTIVE"|"STOPPING"|"STOPPED"|"FAILED"|"DISABLED"
+#'       recordingState = "STARTING"|"ACTIVE"|"STOPPING"|"STOPPED"|"FAILED"|"DISABLED",
+#'       replicationType = "SOURCE"|"REPLICA"|"NONE",
+#'       replicationState = "ACTIVE"|"STOPPED",
+#'       sourceStageArn = "string",
+#'       sourceSessionId = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -2188,7 +2299,8 @@ ivsrealtime_list_tags_for_resource <- function(resourceArn) {
 #'         omitStoppedVideo = TRUE|FALSE,
 #'         videoAspectRatio = "AUTO"|"VIDEO"|"SQUARE"|"PORTRAIT",
 #'         videoFillMode = "FILL"|"COVER"|"CONTAIN",
-#'         gridGap = 123
+#'         gridGap = 123,
+#'         participantOrderAttribute = "string"
 #'       ),
 #'       pip = list(
 #'         featuredParticipantAttribute = "string",
@@ -2200,7 +2312,8 @@ ivsrealtime_list_tags_for_resource <- function(resourceArn) {
 #'         pipOffset = 123,
 #'         pipPosition = "TOP_LEFT"|"TOP_RIGHT"|"BOTTOM_LEFT"|"BOTTOM_RIGHT",
 #'         pipWidth = 123,
-#'         pipHeight = 123
+#'         pipHeight = 123,
+#'         participantOrderAttribute = "string"
 #'       )
 #'     ),
 #'     destinations = list(
@@ -2271,7 +2384,8 @@ ivsrealtime_list_tags_for_resource <- function(resourceArn) {
 #'       omitStoppedVideo = TRUE|FALSE,
 #'       videoAspectRatio = "AUTO"|"VIDEO"|"SQUARE"|"PORTRAIT",
 #'       videoFillMode = "FILL"|"COVER"|"CONTAIN",
-#'       gridGap = 123
+#'       gridGap = 123,
+#'       participantOrderAttribute = "string"
 #'     ),
 #'     pip = list(
 #'       featuredParticipantAttribute = "string",
@@ -2283,7 +2397,8 @@ ivsrealtime_list_tags_for_resource <- function(resourceArn) {
 #'       pipOffset = 123,
 #'       pipPosition = "TOP_LEFT"|"TOP_RIGHT"|"BOTTOM_LEFT"|"BOTTOM_RIGHT",
 #'       pipWidth = 123,
-#'       pipHeight = 123
+#'       pipHeight = 123,
+#'       participantOrderAttribute = "string"
 #'     )
 #'   ),
 #'   destinations = list(
@@ -2345,6 +2460,87 @@ ivsrealtime_start_composition <- function(stageArn, idempotencyToken = NULL, lay
 }
 .ivsrealtime$operations$start_composition <- ivsrealtime_start_composition
 
+#' Starts replicating a publishing participant from a source stage to a
+#' destination stage
+#'
+#' @description
+#' Starts replicating a publishing participant from a source stage to a
+#' destination stage.
+#'
+#' @usage
+#' ivsrealtime_start_participant_replication(sourceStageArn,
+#'   destinationStageArn, participantId, reconnectWindowSeconds, attributes)
+#'
+#' @param sourceStageArn &#91;required&#93; ARN of the stage where the participant is publishing.
+#' @param destinationStageArn &#91;required&#93; ARN of the stage to which the participant will be replicated.
+#' @param participantId &#91;required&#93; Participant ID of the publisher that will be replicated. This is
+#' assigned by IVS and returned by
+#' [`create_participant_token`][ivsrealtime_create_participant_token] or
+#' the `jti` (JWT ID) used to [create a self signed
+#' token](https://docs.aws.amazon.com/ivs/latest/RealTimeUserGuide/getting-started-distribute-tokens.html#getting-started-distribute-tokens-self-signed).
+#' @param reconnectWindowSeconds If the participant disconnects and then reconnects within the specified
+#' interval, replication will continue to be `ACTIVE`. Default: 0.
+#' @param attributes Application-provided attributes to set on the replicated participant in
+#' the destination stage. Map keys and values can contain UTF-8 encoded
+#' text. The maximum length of this field is 1 KB total. *This field is
+#' exposed to all stage participants and should not be used for personally
+#' identifying, confidential, or sensitive information.*
+#' 
+#' These attributes are merged with any attributes set for this participant
+#' when creating the token. If there is overlap in keys, the values in
+#' these attributes are replaced.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   accessControlAllowOrigin = "string",
+#'   accessControlExposeHeaders = "string",
+#'   cacheControl = "string",
+#'   contentSecurityPolicy = "string",
+#'   strictTransportSecurity = "string",
+#'   xContentTypeOptions = "string",
+#'   xFrameOptions = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_participant_replication(
+#'   sourceStageArn = "string",
+#'   destinationStageArn = "string",
+#'   participantId = "string",
+#'   reconnectWindowSeconds = 123,
+#'   attributes = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ivsrealtime_start_participant_replication
+#'
+#' @aliases ivsrealtime_start_participant_replication
+ivsrealtime_start_participant_replication <- function(sourceStageArn, destinationStageArn, participantId, reconnectWindowSeconds = NULL, attributes = NULL) {
+  op <- new_operation(
+    name = "StartParticipantReplication",
+    http_method = "POST",
+    http_path = "/StartParticipantReplication",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ivsrealtime$start_participant_replication_input(sourceStageArn = sourceStageArn, destinationStageArn = destinationStageArn, participantId = participantId, reconnectWindowSeconds = reconnectWindowSeconds, attributes = attributes)
+  output <- .ivsrealtime$start_participant_replication_output()
+  config <- get_config()
+  svc <- .ivsrealtime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivsrealtime$operations$start_participant_replication <- ivsrealtime_start_participant_replication
+
 #' Stops and deletes a Composition resource
 #'
 #' @description
@@ -2389,6 +2585,70 @@ ivsrealtime_stop_composition <- function(arn) {
   return(response)
 }
 .ivsrealtime$operations$stop_composition <- ivsrealtime_stop_composition
+
+#' Stops a replicated participant session
+#'
+#' @description
+#' Stops a replicated participant session.
+#'
+#' @usage
+#' ivsrealtime_stop_participant_replication(sourceStageArn,
+#'   destinationStageArn, participantId)
+#'
+#' @param sourceStageArn &#91;required&#93; ARN of the stage where the participant is publishing.
+#' @param destinationStageArn &#91;required&#93; ARN of the stage where the participant has been replicated.
+#' @param participantId &#91;required&#93; Participant ID of the publisher that has been replicated. This is
+#' assigned by IVS and returned by
+#' [`create_participant_token`][ivsrealtime_create_participant_token] or
+#' the `jti` (JWT ID) used to [create a self signed
+#' token](https://docs.aws.amazon.com/ivs/latest/RealTimeUserGuide/getting-started-distribute-tokens.html#getting-started-distribute-tokens-self-signed).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   accessControlAllowOrigin = "string",
+#'   accessControlExposeHeaders = "string",
+#'   cacheControl = "string",
+#'   contentSecurityPolicy = "string",
+#'   strictTransportSecurity = "string",
+#'   xContentTypeOptions = "string",
+#'   xFrameOptions = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_participant_replication(
+#'   sourceStageArn = "string",
+#'   destinationStageArn = "string",
+#'   participantId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ivsrealtime_stop_participant_replication
+#'
+#' @aliases ivsrealtime_stop_participant_replication
+ivsrealtime_stop_participant_replication <- function(sourceStageArn, destinationStageArn, participantId) {
+  op <- new_operation(
+    name = "StopParticipantReplication",
+    http_method = "POST",
+    http_path = "/StopParticipantReplication",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ivsrealtime$stop_participant_replication_input(sourceStageArn = sourceStageArn, destinationStageArn = destinationStageArn, participantId = participantId)
+  output <- .ivsrealtime$stop_participant_replication_output()
+  config <- get_config()
+  svc <- .ivsrealtime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivsrealtime$operations$stop_participant_replication <- ivsrealtime_stop_participant_replication
 
 #' Adds or updates tags for the AWS resource with the specified ARN
 #'
@@ -2607,7 +2867,8 @@ ivsrealtime_update_ingest_configuration <- function(arn, stageArn = NULL) {
 #'       recordingReconnectWindowSeconds = 123,
 #'       hlsConfiguration = list(
 #'         targetSegmentDurationSeconds = 123
-#'       )
+#'       ),
+#'       recordParticipantReplicas = TRUE|FALSE
 #'     ),
 #'     endpoints = list(
 #'       events = "string",
@@ -2639,7 +2900,8 @@ ivsrealtime_update_ingest_configuration <- function(arn, stageArn = NULL) {
 #'     recordingReconnectWindowSeconds = 123,
 #'     hlsConfiguration = list(
 #'       targetSegmentDurationSeconds = 123
-#'     )
+#'     ),
+#'     recordParticipantReplicas = TRUE|FALSE
 #'   )
 #' )
 #' ```

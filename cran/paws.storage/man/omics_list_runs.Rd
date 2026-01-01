@@ -2,7 +2,7 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_list_runs}
 \alias{omics_list_runs}
-\title{Retrieves a list of runs}
+\title{Retrieves a list of runs and returns each run's metadata and status}
 \usage{
 omics_list_runs(
   name = NULL,
@@ -25,7 +25,7 @@ next page of results.}
 \item{status}{The status of a run.}
 }
 \description{
-Retrieves a list of runs.
+Retrieves a list of runs and returns each run's metadata and status.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_list_runs/} for full documentation.
 }

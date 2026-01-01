@@ -529,8 +529,9 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #' apigateway_create_domain_name(domainName, certificateName,
 #'   certificateBody, certificatePrivateKey, certificateChain,
 #'   certificateArn, regionalCertificateName, regionalCertificateArn,
-#'   endpointConfiguration, tags, securityPolicy, mutualTlsAuthentication,
-#'   ownershipVerificationCertificateArn, policy)
+#'   endpointConfiguration, tags, securityPolicy, endpointAccessMode,
+#'   mutualTlsAuthentication, ownershipVerificationCertificateArn, policy,
+#'   routingMode)
 #'
 #' @param domainName &#91;required&#93; The name of the DomainName resource.
 #' @param certificateName The user-friendly name of the certificate that will be used by
@@ -561,7 +562,10 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #' \[a-zA-Z+-=._:/\]. The tag key can be up to 128 characters and must not
 #' start with `aws:`. The tag value can be up to 256 characters.
 #' @param securityPolicy The Transport Layer Security (TLS) version + cipher suite for this
-#' DomainName. The valid values are `TLS_1_0` and `TLS_1_2`.
+#' DomainName.
+#' @param endpointAccessMode The endpoint access mode of the DomainName. Only available for
+#' DomainNames that use security policies that start with
+#' `SecurityPolicy_`.
 #' @param mutualTlsAuthentication 
 #' @param ownershipVerificationCertificateArn The ARN of the public certificate issued by ACM to validate ownership of
 #' your custom domain. Only required when configuring mutual TLS and using
@@ -570,6 +574,9 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #' @param policy A stringified JSON policy document that applies to the `execute-api`
 #' service for this DomainName regardless of the caller and Method
 #' configuration. Supported only for private custom domain names.
+#' @param routingMode The routing mode for this domain name. The routing mode determines how
+#' API Gateway sends traffic from your custom domain name to your private
+#' APIs.
 #'
 #' @return
 #' A list with the following syntax:
@@ -598,9 +605,10 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #'       "string"
 #'     )
 #'   ),
-#'   domainNameStatus = "AVAILABLE"|"UPDATING"|"PENDING"|"PENDING_CERTIFICATE_REIMPORT"|"PENDING_OWNERSHIP_VERIFICATION",
+#'   domainNameStatus = "AVAILABLE"|"UPDATING"|"PENDING"|"PENDING_CERTIFICATE_REIMPORT"|"PENDING_OWNERSHIP_VERIFICATION"|"FAILED",
 #'   domainNameStatusMessage = "string",
-#'   securityPolicy = "TLS_1_0"|"TLS_1_2",
+#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
+#'   endpointAccessMode = "BASIC"|"STRICT",
 #'   tags = list(
 #'     "string"
 #'   ),
@@ -613,7 +621,8 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #'   ),
 #'   ownershipVerificationCertificateArn = "string",
 #'   managementPolicy = "string",
-#'   policy = "string"
+#'   policy = "string",
+#'   routingMode = "BASE_PATH_MAPPING_ONLY"|"ROUTING_RULE_ONLY"|"ROUTING_RULE_THEN_BASE_PATH_MAPPING"
 #' )
 #' ```
 #'
@@ -640,13 +649,15 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #'   tags = list(
 #'     "string"
 #'   ),
-#'   securityPolicy = "TLS_1_0"|"TLS_1_2",
+#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
+#'   endpointAccessMode = "BASIC"|"STRICT",
 #'   mutualTlsAuthentication = list(
 #'     truststoreUri = "string",
 #'     truststoreVersion = "string"
 #'   ),
 #'   ownershipVerificationCertificateArn = "string",
-#'   policy = "string"
+#'   policy = "string",
+#'   routingMode = "BASE_PATH_MAPPING_ONLY"|"ROUTING_RULE_ONLY"|"ROUTING_RULE_THEN_BASE_PATH_MAPPING"
 #' )
 #' ```
 #'
@@ -655,7 +666,7 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #' @rdname apigateway_create_domain_name
 #'
 #' @aliases apigateway_create_domain_name
-apigateway_create_domain_name <- function(domainName, certificateName = NULL, certificateBody = NULL, certificatePrivateKey = NULL, certificateChain = NULL, certificateArn = NULL, regionalCertificateName = NULL, regionalCertificateArn = NULL, endpointConfiguration = NULL, tags = NULL, securityPolicy = NULL, mutualTlsAuthentication = NULL, ownershipVerificationCertificateArn = NULL, policy = NULL) {
+apigateway_create_domain_name <- function(domainName, certificateName = NULL, certificateBody = NULL, certificatePrivateKey = NULL, certificateChain = NULL, certificateArn = NULL, regionalCertificateName = NULL, regionalCertificateArn = NULL, endpointConfiguration = NULL, tags = NULL, securityPolicy = NULL, endpointAccessMode = NULL, mutualTlsAuthentication = NULL, ownershipVerificationCertificateArn = NULL, policy = NULL, routingMode = NULL) {
   op <- new_operation(
     name = "CreateDomainName",
     http_method = "POST",
@@ -664,7 +675,7 @@ apigateway_create_domain_name <- function(domainName, certificateName = NULL, ce
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .apigateway$create_domain_name_input(domainName = domainName, certificateName = certificateName, certificateBody = certificateBody, certificatePrivateKey = certificatePrivateKey, certificateChain = certificateChain, certificateArn = certificateArn, regionalCertificateName = regionalCertificateName, regionalCertificateArn = regionalCertificateArn, endpointConfiguration = endpointConfiguration, tags = tags, securityPolicy = securityPolicy, mutualTlsAuthentication = mutualTlsAuthentication, ownershipVerificationCertificateArn = ownershipVerificationCertificateArn, policy = policy)
+  input <- .apigateway$create_domain_name_input(domainName = domainName, certificateName = certificateName, certificateBody = certificateBody, certificatePrivateKey = certificatePrivateKey, certificateChain = certificateChain, certificateArn = certificateArn, regionalCertificateName = regionalCertificateName, regionalCertificateArn = regionalCertificateArn, endpointConfiguration = endpointConfiguration, tags = tags, securityPolicy = securityPolicy, endpointAccessMode = endpointAccessMode, mutualTlsAuthentication = mutualTlsAuthentication, ownershipVerificationCertificateArn = ownershipVerificationCertificateArn, policy = policy, routingMode = routingMode)
   output <- .apigateway$create_domain_name_output()
   config <- get_config()
   svc <- .apigateway$service(config, op)
@@ -947,7 +958,9 @@ apigateway_create_request_validator <- function(restApiId, name = NULL, validate
 #'         ),
 #'         tlsConfig = list(
 #'           insecureSkipVerification = TRUE|FALSE
-#'         )
+#'         ),
+#'         responseTransferMode = "BUFFERED"|"STREAM",
+#'         integrationTarget = "string"
 #'       ),
 #'       authorizationScopes = list(
 #'         "string"
@@ -998,7 +1011,8 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 #' @usage
 #' apigateway_create_rest_api(name, description, version, cloneFrom,
 #'   binaryMediaTypes, minimumCompressionSize, apiKeySource,
-#'   endpointConfiguration, policy, tags, disableExecuteApiEndpoint)
+#'   endpointConfiguration, policy, tags, disableExecuteApiEndpoint,
+#'   securityPolicy, endpointAccessMode)
 #'
 #' @param name &#91;required&#93; The name of the RestApi.
 #' @param description The description of the RestApi.
@@ -1028,6 +1042,10 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 #' default `https://{api_id}.execute-api.{region}.amazonaws.com` endpoint.
 #' To require that clients use a custom domain name to invoke your API,
 #' disable the default endpoint
+#' @param securityPolicy The Transport Layer Security (TLS) version + cipher suite for this
+#' RestApi.
+#' @param endpointAccessMode The endpoint access mode of the RestApi. Only available for RestApis
+#' that use security policies that start with `SecurityPolicy_`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1062,7 +1080,11 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 #'     "string"
 #'   ),
 #'   disableExecuteApiEndpoint = TRUE|FALSE,
-#'   rootResourceId = "string"
+#'   rootResourceId = "string",
+#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
+#'   endpointAccessMode = "BASIC"|"STRICT",
+#'   apiStatus = "UPDATING"|"AVAILABLE"|"PENDING"|"FAILED",
+#'   apiStatusMessage = "string"
 #' )
 #' ```
 #'
@@ -1091,7 +1113,9 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 #'   tags = list(
 #'     "string"
 #'   ),
-#'   disableExecuteApiEndpoint = TRUE|FALSE
+#'   disableExecuteApiEndpoint = TRUE|FALSE,
+#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
+#'   endpointAccessMode = "BASIC"|"STRICT"
 #' )
 #' ```
 #'
@@ -1100,7 +1124,7 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 #' @rdname apigateway_create_rest_api
 #'
 #' @aliases apigateway_create_rest_api
-apigateway_create_rest_api <- function(name, description = NULL, version = NULL, cloneFrom = NULL, binaryMediaTypes = NULL, minimumCompressionSize = NULL, apiKeySource = NULL, endpointConfiguration = NULL, policy = NULL, tags = NULL, disableExecuteApiEndpoint = NULL) {
+apigateway_create_rest_api <- function(name, description = NULL, version = NULL, cloneFrom = NULL, binaryMediaTypes = NULL, minimumCompressionSize = NULL, apiKeySource = NULL, endpointConfiguration = NULL, policy = NULL, tags = NULL, disableExecuteApiEndpoint = NULL, securityPolicy = NULL, endpointAccessMode = NULL) {
   op <- new_operation(
     name = "CreateRestApi",
     http_method = "POST",
@@ -1109,7 +1133,7 @@ apigateway_create_rest_api <- function(name, description = NULL, version = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .apigateway$create_rest_api_input(name = name, description = description, version = version, cloneFrom = cloneFrom, binaryMediaTypes = binaryMediaTypes, minimumCompressionSize = minimumCompressionSize, apiKeySource = apiKeySource, endpointConfiguration = endpointConfiguration, policy = policy, tags = tags, disableExecuteApiEndpoint = disableExecuteApiEndpoint)
+  input <- .apigateway$create_rest_api_input(name = name, description = description, version = version, cloneFrom = cloneFrom, binaryMediaTypes = binaryMediaTypes, minimumCompressionSize = minimumCompressionSize, apiKeySource = apiKeySource, endpointConfiguration = endpointConfiguration, policy = policy, tags = tags, disableExecuteApiEndpoint = disableExecuteApiEndpoint, securityPolicy = securityPolicy, endpointAccessMode = endpointAccessMode)
   output <- .apigateway$create_rest_api_output()
   config <- get_config()
   svc <- .apigateway$service(config, op)
@@ -3732,9 +3756,10 @@ apigateway_get_documentation_versions <- function(restApiId, position = NULL, li
 #'       "string"
 #'     )
 #'   ),
-#'   domainNameStatus = "AVAILABLE"|"UPDATING"|"PENDING"|"PENDING_CERTIFICATE_REIMPORT"|"PENDING_OWNERSHIP_VERIFICATION",
+#'   domainNameStatus = "AVAILABLE"|"UPDATING"|"PENDING"|"PENDING_CERTIFICATE_REIMPORT"|"PENDING_OWNERSHIP_VERIFICATION"|"FAILED",
 #'   domainNameStatusMessage = "string",
-#'   securityPolicy = "TLS_1_0"|"TLS_1_2",
+#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
+#'   endpointAccessMode = "BASIC"|"STRICT",
 #'   tags = list(
 #'     "string"
 #'   ),
@@ -3747,7 +3772,8 @@ apigateway_get_documentation_versions <- function(restApiId, position = NULL, li
 #'   ),
 #'   ownershipVerificationCertificateArn = "string",
 #'   managementPolicy = "string",
-#'   policy = "string"
+#'   policy = "string",
+#'   routingMode = "BASE_PATH_MAPPING_ONLY"|"ROUTING_RULE_ONLY"|"ROUTING_RULE_THEN_BASE_PATH_MAPPING"
 #' )
 #' ```
 #'
@@ -3895,9 +3921,10 @@ apigateway_get_domain_name_access_associations <- function(position = NULL, limi
 #'           "string"
 #'         )
 #'       ),
-#'       domainNameStatus = "AVAILABLE"|"UPDATING"|"PENDING"|"PENDING_CERTIFICATE_REIMPORT"|"PENDING_OWNERSHIP_VERIFICATION",
+#'       domainNameStatus = "AVAILABLE"|"UPDATING"|"PENDING"|"PENDING_CERTIFICATE_REIMPORT"|"PENDING_OWNERSHIP_VERIFICATION"|"FAILED",
 #'       domainNameStatusMessage = "string",
-#'       securityPolicy = "TLS_1_0"|"TLS_1_2",
+#'       securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
+#'       endpointAccessMode = "BASIC"|"STRICT",
 #'       tags = list(
 #'         "string"
 #'       ),
@@ -3910,7 +3937,8 @@ apigateway_get_domain_name_access_associations <- function(position = NULL, limi
 #'       ),
 #'       ownershipVerificationCertificateArn = "string",
 #'       managementPolicy = "string",
-#'       policy = "string"
+#'       policy = "string",
+#'       routingMode = "BASE_PATH_MAPPING_ONLY"|"ROUTING_RULE_ONLY"|"ROUTING_RULE_THEN_BASE_PATH_MAPPING"
 #'     )
 #'   )
 #' )
@@ -4205,7 +4233,9 @@ apigateway_get_gateway_responses <- function(restApiId, position = NULL, limit =
 #'   ),
 #'   tlsConfig = list(
 #'     insecureSkipVerification = TRUE|FALSE
-#'   )
+#'   ),
+#'   responseTransferMode = "BUFFERED"|"STREAM",
+#'   integrationTarget = "string"
 #' )
 #' ```
 #'
@@ -4380,7 +4410,9 @@ apigateway_get_integration_response <- function(restApiId, resourceId, httpMetho
 #'     ),
 #'     tlsConfig = list(
 #'       insecureSkipVerification = TRUE|FALSE
-#'     )
+#'     ),
+#'     responseTransferMode = "BUFFERED"|"STREAM",
+#'     integrationTarget = "string"
 #'   ),
 #'   authorizationScopes = list(
 #'     "string"
@@ -4860,7 +4892,9 @@ apigateway_get_request_validators <- function(restApiId, position = NULL, limit 
 #'         ),
 #'         tlsConfig = list(
 #'           insecureSkipVerification = TRUE|FALSE
-#'         )
+#'         ),
+#'         responseTransferMode = "BUFFERED"|"STREAM",
+#'         integrationTarget = "string"
 #'       ),
 #'       authorizationScopes = list(
 #'         "string"
@@ -4996,7 +5030,9 @@ apigateway_get_resource <- function(restApiId, resourceId, embed = NULL) {
 #'             ),
 #'             tlsConfig = list(
 #'               insecureSkipVerification = TRUE|FALSE
-#'             )
+#'             ),
+#'             responseTransferMode = "BUFFERED"|"STREAM",
+#'             integrationTarget = "string"
 #'           ),
 #'           authorizationScopes = list(
 #'             "string"
@@ -5087,7 +5123,11 @@ apigateway_get_resources <- function(restApiId, position = NULL, limit = NULL, e
 #'     "string"
 #'   ),
 #'   disableExecuteApiEndpoint = TRUE|FALSE,
-#'   rootResourceId = "string"
+#'   rootResourceId = "string",
+#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
+#'   endpointAccessMode = "BASIC"|"STRICT",
+#'   apiStatus = "UPDATING"|"AVAILABLE"|"PENDING"|"FAILED",
+#'   apiStatusMessage = "string"
 #' )
 #' ```
 #'
@@ -5170,7 +5210,11 @@ apigateway_get_rest_api <- function(restApiId) {
 #'         "string"
 #'       ),
 #'       disableExecuteApiEndpoint = TRUE|FALSE,
-#'       rootResourceId = "string"
+#'       rootResourceId = "string",
+#'       securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
+#'       endpointAccessMode = "BASIC"|"STRICT",
+#'       apiStatus = "UPDATING"|"AVAILABLE"|"PENDING"|"FAILED",
+#'       apiStatusMessage = "string"
 #'     )
 #'   )
 #' )
@@ -6337,7 +6381,11 @@ apigateway_import_documentation_parts <- function(restApiId, mode = NULL, failOn
 #'     "string"
 #'   ),
 #'   disableExecuteApiEndpoint = TRUE|FALSE,
-#'   rootResourceId = "string"
+#'   rootResourceId = "string",
+#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
+#'   endpointAccessMode = "BASIC"|"STRICT",
+#'   apiStatus = "UPDATING"|"AVAILABLE"|"PENDING"|"FAILED",
+#'   apiStatusMessage = "string"
 #' )
 #' ```
 #'
@@ -6460,7 +6508,7 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
 #'   integrationHttpMethod, uri, connectionType, connectionId, credentials,
 #'   requestParameters, requestTemplates, passthroughBehavior,
 #'   cacheNamespace, cacheKeyParameters, contentHandling, timeoutInMillis,
-#'   tlsConfig)
+#'   tlsConfig, responseTransferMode, integrationTarget)
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param resourceId &#91;required&#93; Specifies a put integration request's resource ID.
@@ -6530,8 +6578,11 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
 #' modification, provided that the `passthroughBehavior` is configured to
 #' support payload pass-through.
 #' @param timeoutInMillis Custom timeout between 50 and 29,000 milliseconds. The default value is
-#' 29,000 milliseconds or 29 seconds.
+#' 29,000 milliseconds or 29 seconds. You can increase the default value to
+#' longer than 29 seconds for Regional or private APIs only.
 #' @param tlsConfig 
+#' @param responseTransferMode The response transfer mode of the integration.
+#' @param integrationTarget The ALB or NLB listener to send the request to.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6571,7 +6622,9 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
 #'   ),
 #'   tlsConfig = list(
 #'     insecureSkipVerification = TRUE|FALSE
-#'   )
+#'   ),
+#'   responseTransferMode = "BUFFERED"|"STREAM",
+#'   integrationTarget = "string"
 #' )
 #' ```
 #'
@@ -6602,7 +6655,9 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
 #'   timeoutInMillis = 123,
 #'   tlsConfig = list(
 #'     insecureSkipVerification = TRUE|FALSE
-#'   )
+#'   ),
+#'   responseTransferMode = "BUFFERED"|"STREAM",
+#'   integrationTarget = "string"
 #' )
 #' ```
 #'
@@ -6611,7 +6666,7 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
 #' @rdname apigateway_put_integration
 #'
 #' @aliases apigateway_put_integration
-apigateway_put_integration <- function(restApiId, resourceId, httpMethod, type, integrationHttpMethod = NULL, uri = NULL, connectionType = NULL, connectionId = NULL, credentials = NULL, requestParameters = NULL, requestTemplates = NULL, passthroughBehavior = NULL, cacheNamespace = NULL, cacheKeyParameters = NULL, contentHandling = NULL, timeoutInMillis = NULL, tlsConfig = NULL) {
+apigateway_put_integration <- function(restApiId, resourceId, httpMethod, type, integrationHttpMethod = NULL, uri = NULL, connectionType = NULL, connectionId = NULL, credentials = NULL, requestParameters = NULL, requestTemplates = NULL, passthroughBehavior = NULL, cacheNamespace = NULL, cacheKeyParameters = NULL, contentHandling = NULL, timeoutInMillis = NULL, tlsConfig = NULL, responseTransferMode = NULL, integrationTarget = NULL) {
   op <- new_operation(
     name = "PutIntegration",
     http_method = "PUT",
@@ -6620,7 +6675,7 @@ apigateway_put_integration <- function(restApiId, resourceId, httpMethod, type, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .apigateway$put_integration_input(restApiId = restApiId, resourceId = resourceId, httpMethod = httpMethod, type = type, integrationHttpMethod = integrationHttpMethod, uri = uri, connectionType = connectionType, connectionId = connectionId, credentials = credentials, requestParameters = requestParameters, requestTemplates = requestTemplates, passthroughBehavior = passthroughBehavior, cacheNamespace = cacheNamespace, cacheKeyParameters = cacheKeyParameters, contentHandling = contentHandling, timeoutInMillis = timeoutInMillis, tlsConfig = tlsConfig)
+  input <- .apigateway$put_integration_input(restApiId = restApiId, resourceId = resourceId, httpMethod = httpMethod, type = type, integrationHttpMethod = integrationHttpMethod, uri = uri, connectionType = connectionType, connectionId = connectionId, credentials = credentials, requestParameters = requestParameters, requestTemplates = requestTemplates, passthroughBehavior = passthroughBehavior, cacheNamespace = cacheNamespace, cacheKeyParameters = cacheKeyParameters, contentHandling = contentHandling, timeoutInMillis = timeoutInMillis, tlsConfig = tlsConfig, responseTransferMode = responseTransferMode, integrationTarget = integrationTarget)
   output <- .apigateway$put_integration_output()
   config <- get_config()
   svc <- .apigateway$service(config, op)
@@ -6833,7 +6888,9 @@ apigateway_put_integration_response <- function(restApiId, resourceId, httpMetho
 #'     ),
 #'     tlsConfig = list(
 #'       insecureSkipVerification = TRUE|FALSE
-#'     )
+#'     ),
+#'     responseTransferMode = "BUFFERED"|"STREAM",
+#'     integrationTarget = "string"
 #'   ),
 #'   authorizationScopes = list(
 #'     "string"
@@ -7032,7 +7089,11 @@ apigateway_put_method_response <- function(restApiId, resourceId, httpMethod, st
 #'     "string"
 #'   ),
 #'   disableExecuteApiEndpoint = TRUE|FALSE,
-#'   rootResourceId = "string"
+#'   rootResourceId = "string",
+#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
+#'   endpointAccessMode = "BASIC"|"STRICT",
+#'   apiStatus = "UPDATING"|"AVAILABLE"|"PENDING"|"FAILED",
+#'   apiStatusMessage = "string"
 #' )
 #' ```
 #'
@@ -8019,9 +8080,10 @@ apigateway_update_documentation_version <- function(restApiId, documentationVers
 #'       "string"
 #'     )
 #'   ),
-#'   domainNameStatus = "AVAILABLE"|"UPDATING"|"PENDING"|"PENDING_CERTIFICATE_REIMPORT"|"PENDING_OWNERSHIP_VERIFICATION",
+#'   domainNameStatus = "AVAILABLE"|"UPDATING"|"PENDING"|"PENDING_CERTIFICATE_REIMPORT"|"PENDING_OWNERSHIP_VERIFICATION"|"FAILED",
 #'   domainNameStatusMessage = "string",
-#'   securityPolicy = "TLS_1_0"|"TLS_1_2",
+#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
+#'   endpointAccessMode = "BASIC"|"STRICT",
 #'   tags = list(
 #'     "string"
 #'   ),
@@ -8034,7 +8096,8 @@ apigateway_update_documentation_version <- function(restApiId, documentationVers
 #'   ),
 #'   ownershipVerificationCertificateArn = "string",
 #'   managementPolicy = "string",
-#'   policy = "string"
+#'   policy = "string",
+#'   routingMode = "BASE_PATH_MAPPING_ONLY"|"ROUTING_RULE_ONLY"|"ROUTING_RULE_THEN_BASE_PATH_MAPPING"
 #' )
 #' ```
 #'
@@ -8203,7 +8266,9 @@ apigateway_update_gateway_response <- function(restApiId, responseType, patchOpe
 #'   ),
 #'   tlsConfig = list(
 #'     insecureSkipVerification = TRUE|FALSE
-#'   )
+#'   ),
+#'   responseTransferMode = "BUFFERED"|"STREAM",
+#'   integrationTarget = "string"
 #' )
 #' ```
 #'
@@ -8399,7 +8464,9 @@ apigateway_update_integration_response <- function(restApiId, resourceId, httpMe
 #'     ),
 #'     tlsConfig = list(
 #'       insecureSkipVerification = TRUE|FALSE
-#'     )
+#'     ),
+#'     responseTransferMode = "BUFFERED"|"STREAM",
+#'     integrationTarget = "string"
 #'   ),
 #'   authorizationScopes = list(
 #'     "string"
@@ -8732,7 +8799,9 @@ apigateway_update_request_validator <- function(restApiId, requestValidatorId, p
 #'         ),
 #'         tlsConfig = list(
 #'           insecureSkipVerification = TRUE|FALSE
-#'         )
+#'         ),
+#'         responseTransferMode = "BUFFERED"|"STREAM",
+#'         integrationTarget = "string"
 #'       ),
 #'       authorizationScopes = list(
 #'         "string"
@@ -8827,7 +8896,11 @@ apigateway_update_resource <- function(restApiId, resourceId, patchOperations = 
 #'     "string"
 #'   ),
 #'   disableExecuteApiEndpoint = TRUE|FALSE,
-#'   rootResourceId = "string"
+#'   rootResourceId = "string",
+#'   securityPolicy = "TLS_1_0"|"TLS_1_2"|"SecurityPolicy_TLS13_1_3_2025_09"|"SecurityPolicy_TLS13_1_3_FIPS_2025_09"|"SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_FIPS_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_PQ_2025_09"|"SecurityPolicy_TLS13_1_2_2021_06"|"SecurityPolicy_TLS13_2025_EDGE"|"SecurityPolicy_TLS12_PFS_2025_EDGE"|"SecurityPolicy_TLS12_2018_EDGE",
+#'   endpointAccessMode = "BASIC"|"STRICT",
+#'   apiStatus = "UPDATING"|"AVAILABLE"|"PENDING"|"FAILED",
+#'   apiStatusMessage = "string"
 #' )
 #' ```
 #'

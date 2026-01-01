@@ -54,28 +54,30 @@ Key Management Service (KMS) is an encryption and key management web
 service. This guide describes the KMS operations that you can call
 programmatically. For general information about KMS, see the \href{https://docs.aws.amazon.com/kms/latest/developerguide/}{\emph{Key Management Service Developer Guide}} .
 
-KMS has replaced the term \emph{customer master key (CMK)} with \emph{KMS key} and
-\emph{KMS key}. The concept has not changed. To prevent breaking changes, KMS
-is keeping some variations of this term.
+KMS has replaced the term \emph{customer master key (CMK)} with \emph{Key
+Management Service key} and \emph{KMS key}. The concept has not changed. To
+prevent breaking changes, KMS is keeping some variations of this term.
 
 Amazon Web Services provides SDKs that consist of libraries and sample
-code for various programming languages and platforms (Java, Ruby, .Net,
-macOS, Android, etc.). The SDKs provide a convenient way to create
-programmatic access to KMS and other Amazon Web Services services. For
-example, the SDKs take care of tasks such as signing requests (see
-below), managing errors, and retrying requests automatically. For more
-information about the Amazon Web Services SDKs, including how to
-download and install them, see \href{https://aws.amazon.com/developer/tools/}{Tools for Amazon Web Services}.
+code for various programming languages and platforms (Java, Rust,
+Python, Ruby, .Net, macOS, Android, etc.). The SDKs provide a convenient
+way to create programmatic access to KMS and other Amazon Web Services
+services. For example, the SDKs take care of tasks such as signing
+requests (see below), managing errors, and retrying requests
+automatically. For more information about the Amazon Web Services SDKs,
+including how to download and install them, see \href{https://builder.aws.com/build/tools}{Tools for Amazon Web Services}.
 
 We recommend that you use the Amazon Web Services SDKs to make
 programmatic API calls to KMS.
 
 If you need to use FIPS 140-2 validated cryptographic modules when
-communicating with Amazon Web Services, use the FIPS endpoint in your
-preferred Amazon Web Services Region. For more information about the
-available FIPS endpoints, see \href{https://docs.aws.amazon.com/general/latest/gr/kms.html#kms_region}{Service endpoints}
+communicating with Amazon Web Services, use one of the FIPS endpoints in
+your preferred Amazon Web Services Region. If you need communicate over
+IPv6, use the dual-stack endpoint in your preferred Amazon Web Services
+Region. For more information see \href{https://docs.aws.amazon.com/general/latest/gr/kms.html#kms_region}{Service endpoints}
 in the Key Management Service topic of the \emph{Amazon Web Services General
-Reference}.
+Reference} and \href{https://docs.aws.amazon.com/kms/latest/developerguide/ipv6-kms.html}{Dual-stack endpoint support}
+in the KMS Developer Guide.
 
 All KMS API calls must be signed and be transmitted using Transport
 Layer Security (TLS). KMS recommends you always use the latest supported
@@ -206,7 +208,7 @@ policies, by using the console.
 \link[paws.security.identity:kms_list_aliases]{list_aliases} \tab Gets a list of aliases in the caller's Amazon Web Services account and region\cr
 \link[paws.security.identity:kms_list_grants]{list_grants} \tab Gets a list of all grants for the specified KMS key\cr
 \link[paws.security.identity:kms_list_key_policies]{list_key_policies} \tab Gets the names of the key policies that are attached to a KMS key\cr
-\link[paws.security.identity:kms_list_key_rotations]{list_key_rotations} \tab Returns information about all completed key material rotations for the specified KMS key\cr
+\link[paws.security.identity:kms_list_key_rotations]{list_key_rotations} \tab Returns information about the key materials associated with the specified KMS key\cr
 \link[paws.security.identity:kms_list_keys]{list_keys} \tab Gets a list of all KMS keys in the caller's Amazon Web Services account and Region\cr
 \link[paws.security.identity:kms_list_resource_tags]{list_resource_tags} \tab Returns all tags on the specified KMS key\cr
 \link[paws.security.identity:kms_list_retirable_grants]{list_retirable_grants} \tab Returns information about all grants in the Amazon Web Services account and Region that have the specified retiring principal\cr

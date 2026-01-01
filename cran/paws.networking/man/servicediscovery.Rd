@@ -119,7 +119,7 @@ service receive an answer that contains up to eight healthy records.
 \link[=servicediscovery_get_service]{get_service} \tab Gets the settings for a specified service\cr
 \link[=servicediscovery_get_service_attributes]{get_service_attributes} \tab Returns the attributes associated with a specified service\cr
 \link[=servicediscovery_list_instances]{list_instances} \tab Lists summary information about the instances that you registered by using a specified service\cr
-\link[=servicediscovery_list_namespaces]{list_namespaces} \tab Lists summary information about the namespaces that were created by the current Amazon Web Services account\cr
+\link[=servicediscovery_list_namespaces]{list_namespaces} \tab Lists summary information about the namespaces that were created by the current Amazon Web Services account and shared with the current Amazon Web Services account\cr
 \link[=servicediscovery_list_operations]{list_operations} \tab Lists operations that match the criteria that you specify\cr
 \link[=servicediscovery_list_services]{list_services} \tab Lists summary information for all the services that are associated with one or more namespaces\cr
 \link[=servicediscovery_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for the specified resource\cr

@@ -13,7 +13,7 @@ imagebuilder_list_infrastructure_configurations(
 \arguments{
 \item{filters}{You can filter on \code{name} to streamline results.}
 
-\item{maxResults}{The maximum items to return in a request.}
+\item{maxResults}{Specify the maximum number of items to return in a request.}
 
 \item{nextToken}{A token to specify where to start paginating. This is the nextToken from
 a previously truncated response.}

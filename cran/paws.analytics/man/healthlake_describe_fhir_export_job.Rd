@@ -2,19 +2,17 @@
 % Please edit documentation in R/healthlake_operations.R
 \name{healthlake_describe_fhir_export_job}
 \alias{healthlake_describe_fhir_export_job}
-\title{Displays the properties of a FHIR export job, including the ID, ARN,
-name, and the status of the job}
+\title{Get FHIR export job properties}
 \usage{
 healthlake_describe_fhir_export_job(DatastoreId, JobId)
 }
 \arguments{
-\item{DatastoreId}{[required] The AWS generated ID for the data store from which files are being
-exported from for an export job.}
+\item{DatastoreId}{[required] The data store identifier from which FHIR data is being exported from.}
 
-\item{JobId}{[required] The AWS generated ID for an export job.}
+\item{JobId}{[required] The export job identifier.}
 }
 \description{
-Displays the properties of a FHIR export job, including the ID, ARN, name, and the status of the job.
+Get FHIR export job properties.
 
 See \url{https://www.paws-r-sdk.com/docs/healthlake_describe_fhir_export_job/} for full documentation.
 }

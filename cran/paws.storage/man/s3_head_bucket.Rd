@@ -56,7 +56,7 @@ provide does not match the actual owner of the bucket, the request fails
 with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-You can use this operation to determine if a bucket exists and if you have permission to access it. The action returns a \verb{200 OK} if the bucket exists and you have permission to access it.
+You can use this operation to determine if a bucket exists and if you have permission to access it. The action returns a \verb{200 OK} HTTP status code if the bucket exists and you have permission to access it. You can make a \code{\link[=s3_head_bucket]{head_bucket}} call on any bucket name to any Region in the partition, and regardless of the permissions on the bucket, you will receive a response header with the correct bucket location so that you can then make a proper, signed request to the appropriate Regional endpoint.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_head_bucket/} for full documentation.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_list_workflows}
 \alias{omics_list_workflows}
-\title{Retrieves a list of workflows}
+\title{Retrieves a list of existing workflows}
 \usage{
 omics_list_workflows(
   type = NULL,
@@ -22,7 +22,7 @@ next page of results.}
 \item{maxResults}{The maximum number of workflows to return in one page of results.}
 }
 \description{
-Retrieves a list of workflows.
+Retrieves a list of existing workflows. You can filter for specific workflows by their name and type. Using the type parameter, specify \code{PRIVATE} to retrieve a list of private workflows or specify \code{READY2RUN} for a list of all Ready2Run workflows. If you do not specify the type of workflow, this operation returns a list of existing workflows.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_list_workflows/} for full documentation.
 }

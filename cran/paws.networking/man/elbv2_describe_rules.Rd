@@ -22,7 +22,7 @@ previous call.)}
 \item{PageSize}{The maximum number of results to return with this call.}
 }
 \description{
-Describes the specified rules or the rules for the specified listener. You must specify either a listener or one or more rules.
+Describes the specified rules or the rules for the specified listener. You must specify either a listener or rules.
 
 See \url{https://www.paws-r-sdk.com/docs/elbv2_describe_rules/} for full documentation.
 }

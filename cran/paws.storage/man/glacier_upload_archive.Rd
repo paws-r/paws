@@ -17,7 +17,7 @@ glacier_upload_archive(
 
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the
 vault. You can either specify an AWS account ID or optionally a single
-'\code{-}' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+'\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID
 associated with the credentials used to sign the request. If you use an
 account ID, do not include any hyphens ('-') in the ID.}
 
@@ -28,7 +28,7 @@ account ID, do not include any hyphens ('-') in the ID.}
 \item{body}{The data to upload.}
 }
 \description{
-This operation adds an archive to a vault. This is a synchronous operation, and for a successful upload, your data is durably persisted. Amazon S3 Glacier returns the archive ID in the \code{x-amz-archive-id} header of the response.
+This operation adds an archive to a vault. This is a synchronous operation, and for a successful upload, your data is durably persisted. Amazon Glacier returns the archive ID in the \code{x-amz-archive-id} header of the response.
 
 See \url{https://www.paws-r-sdk.com/docs/glacier_upload_archive/} for full documentation.
 }

@@ -20,7 +20,7 @@ sqs_send_message(
 Queue URLs and names are case-sensitive.}
 
 \item{MessageBody}{[required] The message to send. The minimum size is one character. The maximum size
-is 256 KiB.
+is 1 MiB or 1,048,576 bytes
 
 A message can include only XML, JSON, and unformatted text. The
 following Unicode characters are allowed. For more information, see the
@@ -29,10 +29,10 @@ following Unicode characters are allowed. For more information, see the
 \verb{#x9} | \verb{#xA} | \verb{#xD} | \verb{#x20} to \verb{#xD7FF} | \verb{#xE000} to \verb{#xFFFD} |
 \verb{#x10000} to \verb{#x10FFFF}
 
-Amazon SQS does not throw an exception or completely reject the message
-if it contains invalid characters. Instead, it replaces those invalid
-characters with \code{U+FFFD} before storing the message in the queue, as
-long as the message body contains at least one valid character.}
+If a message contains characters outside the allowed set, Amazon SQS
+rejects the message and returns an InvalidMessageContents error. Ensure
+that your message body includes only valid characters to avoid this
+exception.}
 
 \item{DelaySeconds}{The length of time, in seconds, for which to delay a specific message.
 Valid values: 0 to 900. Maximum: 15 minutes. Messages with a positive
@@ -113,33 +113,53 @@ in the \emph{Amazon SQS Developer Guide}.
 MessageDeduplicationId
 Property]: R:Using\%20the\%0AMessageDeduplicationId\%0AProperty}
 
-\item{MessageGroupId}{This parameter applies only to FIFO (first-in-first-out) queues.
-
-The tag that specifies that a message belongs to a specific message
-group. Messages that belong to the same message group are processed in a
-FIFO manner (however, messages in different message groups might be
-processed out of order). To interleave multiple ordered streams within a
-single queue, use \code{MessageGroupId} values (for example, session data for
-multiple users). In this scenario, multiple consumers can process the
-queue, but the session data of each user is processed in a FIFO fashion.
+\item{MessageGroupId}{\code{MessageGroupId} is an attribute used in Amazon SQS FIFO
+(First-In-First-Out) and standard queues. In FIFO queues,
+\code{MessageGroupId} organizes messages into distinct groups. Messages
+within the same message group are always processed one at a time, in
+strict order, ensuring that no two messages from the same group are
+processed simultaneously. In standard queues, using \code{MessageGroupId}
+enables fair queues. It is used to identify the tenant a message belongs
+to, helping maintain consistent message dwell time across all tenants
+during noisy neighbor events. Unlike FIFO queues, messages with the same
+\code{MessageGroupId} can be processed in parallel, maintaining the high
+throughput of standard queues.
 \itemize{
-\item You must associate a non-empty \code{MessageGroupId} with a message. If
-you don't provide a \code{MessageGroupId}, the action fails.
-\item \code{\link[=sqs_receive_message]{receive_message}} might return messages with
+\item \strong{FIFO queues:} \code{MessageGroupId} acts as the tag that specifies
+that a message belongs to a specific message group. Messages that
+belong to the same message group are processed in a FIFO manner
+(however, messages in different message groups might be processed
+out of order). To interleave multiple ordered streams within a
+single queue, use \code{MessageGroupId} values (for example, session data
+for multiple users). In this scenario, multiple consumers can
+process the queue, but the session data of each user is processed in
+a FIFO fashion.
+
+If you do not provide a \code{MessageGroupId} when sending a message to a
+FIFO queue, the action fails.
+
+\code{\link[=sqs_receive_message]{receive_message}} might return messages with
 multiple \code{MessageGroupId} values. For each \code{MessageGroupId}, the
-messages are sorted by time sent. The caller can't specify a
-\code{MessageGroupId}.
+messages are sorted by time sent.
+\item **Standard queues:**Use \code{MessageGroupId} in standard queues to
+enable fair queues. The \code{MessageGroupId} identifies the tenant a
+message belongs to. A tenant can be any entity that shares a queue
+with others, such as your customer, a client application, or a
+request type. When one tenant sends a disproportionately large
+volume of messages or has messages that require longer processing
+time, fair queues ensure other tenants' messages maintain low dwell
+time. This preserves quality of service for all tenants while
+maintaining the scalability and throughput of standard queues. We
+recommend that you include a \code{MessageGroupId} in all messages when
+using fair queues.
 }
 
-The maximum length of \code{MessageGroupId} is 128 characters. Valid values:
+The length of \code{MessageGroupId} is 128 characters. Valid values:
 alphanumeric characters and punctuation
 \verb{(!\\"#$\%&\\'()*+,-./:;<=>?@[\]^_\\`\{|\}~)}.
 
 For best practices of using \code{MessageGroupId}, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagegroupid-property.html}{Using the MessageGroupId Property}
 in the \emph{Amazon SQS Developer Guide}.
-
-\code{MessageGroupId} is required for FIFO queues. You can't use it for
-Standard queues.
 
 []: R:\%5C
 [Using the

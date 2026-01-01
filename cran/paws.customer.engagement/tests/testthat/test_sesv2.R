@@ -44,6 +44,14 @@ test_that("list_recommendations", {
   expect_error(svc$list_recommendations(), NA)
 })
 
+test_that("list_reputation_entities", {
+  expect_error(svc$list_reputation_entities(), NA)
+})
+
 test_that("list_suppressed_destinations", {
   expect_error(svc$list_suppressed_destinations(), NA)
+})
+
+test_that("list_tenants", {
+  expect_error(svc$list_tenants(), NA)
 })

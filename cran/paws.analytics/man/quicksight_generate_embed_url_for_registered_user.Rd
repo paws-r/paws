@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_generate_embed_url_for_registered_user}
 \alias{quicksight_generate_embed_url_for_registered_user}
-\title{Generates an embed URL that you can use to embed an Amazon QuickSight
+\title{Generates an embed URL that you can use to embed an Amazon Quick Suite
 experience in your website}
 \usage{
 quicksight_generate_embed_url_for_registered_user(
@@ -23,14 +23,14 @@ that you're embedding.}
 \item{UserArn}{[required] The Amazon Resource Name for the registered user.}
 
 \item{ExperienceConfiguration}{[required] The experience that you want to embed. For registered users, you can
-embed Amazon QuickSight dashboards, Amazon QuickSight visuals, the
-Amazon QuickSight Q search bar, the Amazon QuickSight Generative Q&A
-experience, or the entire Amazon QuickSight console.}
+embed Quick Suite dashboards, Amazon Quick Sight visuals, the Amazon
+Quick Sight Q search bar, the Amazon Quick Sight Generative Q&A
+experience, or the entire Amazon Quick Sight console.}
 
 \item{AllowedDomains}{The domains that you want to add to the allow list for access to the
 generated URL that is then embedded. This optional parameter overrides
-the static domains that are configured in the Manage QuickSight menu in
-the Amazon QuickSight console. Instead, it allows only the domains that
+the static domains that are configured in the Manage Quick Sight menu in
+the Amazon Quick Sight console. Instead, it allows only the domains that
 you include in this parameter. You can list up to three domains or
 subdomains in each API call.
 
@@ -39,7 +39,7 @@ To include all subdomains under a specific domain to the allow list, use
 under \verb{https://sapp.amazon.com}.}
 }
 \description{
-Generates an embed URL that you can use to embed an Amazon QuickSight experience in your website. This action can be used for any type of user registered in an Amazon QuickSight account. Before you use this action, make sure that you have configured the relevant Amazon QuickSight resource and permissions.
+Generates an embed URL that you can use to embed an Amazon Quick Suite experience in your website. This action can be used for any type of user registered in an Amazon Quick Suite account. Before you use this action, make sure that you have configured the relevant Amazon Quick Suite resource and permissions.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_generate_embed_url_for_registered_user/} for full documentation.
 }

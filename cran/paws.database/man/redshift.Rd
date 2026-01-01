@@ -212,6 +212,7 @@ make up your data warehouse.
 \link[=redshift_failover_primary_compute]{failover_primary_compute} \tab Fails over the primary compute unit of the specified Multi-AZ cluster to another Availability Zone\cr
 \link[=redshift_get_cluster_credentials]{get_cluster_credentials} \tab Returns a database user name and temporary password with temporary authorization to log on to an Amazon Redshift database\cr
 \link[=redshift_get_cluster_credentials_with_iam]{get_cluster_credentials_with_iam} \tab Returns a database user name and temporary password with temporary authorization to log in to an Amazon Redshift database\cr
+\link[=redshift_get_identity_center_auth_token]{get_identity_center_auth_token} \tab Generates an encrypted authentication token that propagates the caller's Amazon Web Services IAM Identity Center identity to Amazon Redshift clusters\cr
 \link[=redshift_get_reserved_node_exchange_configuration_options]{get_reserved_node_exchange_configuration_options} \tab Gets the configuration options for the reserved-node exchange\cr
 \link[=redshift_get_reserved_node_exchange_offerings]{get_reserved_node_exchange_offerings} \tab Returns an array of DC2 ReservedNodeOfferings that matches the payment type, term, and usage price of the given DC1 reserved node\cr
 \link[=redshift_get_resource_policy]{get_resource_policy} \tab Get the resource policy for a specified resource\cr
@@ -230,6 +231,7 @@ make up your data warehouse.
 \link[=redshift_modify_endpoint_access]{modify_endpoint_access} \tab Modifies a Redshift-managed VPC endpoint\cr
 \link[=redshift_modify_event_subscription]{modify_event_subscription} \tab Modifies an existing Amazon Redshift event notification subscription\cr
 \link[=redshift_modify_integration]{modify_integration} \tab Modifies a zero-ETL integration or S3 event integration with Amazon Redshift\cr
+\link[=redshift_modify_lakehouse_configuration]{modify_lakehouse_configuration} \tab Modifies the lakehouse configuration for a cluster\cr
 \link[=redshift_modify_redshift_idc_application]{modify_redshift_idc_application} \tab Changes an existing Amazon Redshift IAM Identity Center application\cr
 \link[=redshift_modify_scheduled_action]{modify_scheduled_action} \tab Modifies a scheduled action\cr
 \link[=redshift_modify_snapshot_copy_retention_period]{modify_snapshot_copy_retention_period} \tab Modifies the number of days to retain snapshots in the destination Amazon Web Services Region after they are copied from the source Amazon Web Services Region\cr

@@ -15,7 +15,8 @@ neptune_copy_db_cluster_snapshot(
 }
 \arguments{
 \item{SourceDBClusterSnapshotIdentifier}{[required] The identifier of the DB cluster snapshot to copy. This parameter is not
-case-sensitive.
+case-sensitive. If the source DB cluster snapshot is in a different
+region or owned by another account, specify the snapshot ARN.
 
 Constraints:
 \itemize{

@@ -4,12 +4,12 @@
 \alias{workspacesweb_associate_ip_access_settings}
 \title{Associates an IP access settings resource with a web portal}
 \usage{
-workspacesweb_associate_ip_access_settings(ipAccessSettingsArn, portalArn)
+workspacesweb_associate_ip_access_settings(portalArn, ipAccessSettingsArn)
 }
 \arguments{
-\item{ipAccessSettingsArn}{[required] The ARN of the IP access settings.}
-
 \item{portalArn}{[required] The ARN of the web portal.}
+
+\item{ipAccessSettingsArn}{[required] The ARN of the IP access settings.}
 }
 \description{
 Associates an IP access settings resource with a web portal.

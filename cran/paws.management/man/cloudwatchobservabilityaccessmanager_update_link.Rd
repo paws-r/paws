@@ -8,12 +8,22 @@ account to its linked monitoring account sink}
 \usage{
 cloudwatchobservabilityaccessmanager_update_link(
   Identifier,
+  IncludeTags = NULL,
   LinkConfiguration = NULL,
   ResourceTypes
 )
 }
 \arguments{
 \item{Identifier}{[required] The ARN of the link that you want to update.}
+
+\item{IncludeTags}{Specifies whether to include the tags associated with the link in the
+response after the update operation. When \code{IncludeTags} is set to \code{true}
+and the caller has the required permission, \code{oam:ListTagsForResource},
+the API will return the tags for the specified resource. If the caller
+doesn't have the required permission, \code{oam:ListTagsForResource}, the API
+will raise an exception.
+
+The default value is \code{false}.}
 
 \item{LinkConfiguration}{Use this structure to filter which metric namespaces and which log
 groups are to be shared from the source account to the monitoring

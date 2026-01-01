@@ -121,9 +121,11 @@ NULL
 #' not be able to create VPC endpoints in VPCs that are not owned by your
 #' Amazon Web Services account.
 #' @param Tags Create tags when creating the broker.
-#' @param Users &#91;required&#93; The list of broker users (persons or applications) who can access queues
-#' and topics. For Amazon MQ for RabbitMQ brokers, one and only one
-#' administrative user is accepted and created when a broker is first
+#' @param Users The list of broker users (persons or applications) who can access queues
+#' and topics. For Amazon MQ for RabbitMQ brokers, an administrative user
+#' is required if using simple authentication and authorization. For
+#' brokers using OAuth2, this user is optional. When provided, one and only
+#' one administrative user is accepted and created when a broker is first
 #' provisioned. All subsequent broker users are created by making RabbitMQ
 #' API calls directly to brokers or via the RabbitMQ web console.
 #' @param DataReplicationMode Defines whether this broker is a part of a data replication pair.
@@ -143,7 +145,7 @@ NULL
 #' @section Request syntax:
 #' ```
 #' svc$create_broker(
-#'   AuthenticationStrategy = "SIMPLE"|"LDAP",
+#'   AuthenticationStrategy = "SIMPLE"|"LDAP"|"CONFIG_MANAGED",
 #'   AutoMinorVersionUpgrade = TRUE|FALSE,
 #'   BrokerName = "string",
 #'   Configuration = list(
@@ -215,7 +217,7 @@ NULL
 #' @rdname mq_create_broker
 #'
 #' @aliases mq_create_broker
-mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgrade = NULL, BrokerName, Configuration = NULL, CreatorRequestId = NULL, DeploymentMode, EncryptionOptions = NULL, EngineType, EngineVersion = NULL, HostInstanceType, LdapServerMetadata = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, PubliclyAccessible, SecurityGroups = NULL, StorageType = NULL, SubnetIds = NULL, Tags = NULL, Users, DataReplicationMode = NULL, DataReplicationPrimaryBrokerArn = NULL) {
+mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgrade = NULL, BrokerName, Configuration = NULL, CreatorRequestId = NULL, DeploymentMode, EncryptionOptions = NULL, EngineType, EngineVersion = NULL, HostInstanceType, LdapServerMetadata = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, PubliclyAccessible, SecurityGroups = NULL, StorageType = NULL, SubnetIds = NULL, Tags = NULL, Users = NULL, DataReplicationMode = NULL, DataReplicationPrimaryBrokerArn = NULL) {
   op <- new_operation(
     name = "CreateBroker",
     http_method = "POST",
@@ -265,7 +267,7 @@ mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgr
 #' ```
 #' list(
 #'   Arn = "string",
-#'   AuthenticationStrategy = "SIMPLE"|"LDAP",
+#'   AuthenticationStrategy = "SIMPLE"|"LDAP"|"CONFIG_MANAGED",
 #'   Created = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -284,7 +286,7 @@ mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgr
 #' @section Request syntax:
 #' ```
 #' svc$create_configuration(
-#'   AuthenticationStrategy = "SIMPLE"|"LDAP",
+#'   AuthenticationStrategy = "SIMPLE"|"LDAP"|"CONFIG_MANAGED",
 #'   EngineType = "ACTIVEMQ"|"RABBITMQ",
 #'   EngineVersion = "string",
 #'   Name = "string",
@@ -650,7 +652,7 @@ mq_delete_user <- function(BrokerId, Username) {
 #'       ActionRequiredInfo = "string"
 #'     )
 #'   ),
-#'   AuthenticationStrategy = "SIMPLE"|"LDAP",
+#'   AuthenticationStrategy = "SIMPLE"|"LDAP"|"CONFIG_MANAGED",
 #'   AutoMinorVersionUpgrade = TRUE|FALSE,
 #'   BrokerArn = "string",
 #'   BrokerId = "string",
@@ -721,7 +723,7 @@ mq_delete_user <- function(BrokerId, Username) {
 #'     TimeOfDay = "string",
 #'     TimeZone = "string"
 #'   ),
-#'   PendingAuthenticationStrategy = "SIMPLE"|"LDAP",
+#'   PendingAuthenticationStrategy = "SIMPLE"|"LDAP"|"CONFIG_MANAGED",
 #'   PendingEngineVersion = "string",
 #'   PendingHostInstanceType = "string",
 #'   PendingLdapServerMetadata = list(
@@ -968,7 +970,7 @@ mq_describe_broker_instance_options <- function(EngineType = NULL, HostInstanceT
 #' ```
 #' list(
 #'   Arn = "string",
-#'   AuthenticationStrategy = "SIMPLE"|"LDAP",
+#'   AuthenticationStrategy = "SIMPLE"|"LDAP"|"CONFIG_MANAGED",
 #'   Created = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -1299,7 +1301,7 @@ mq_list_configuration_revisions <- function(ConfigurationId, MaxResults = NULL, 
 #'   Configurations = list(
 #'     list(
 #'       Arn = "string",
-#'       AuthenticationStrategy = "SIMPLE"|"LDAP",
+#'       AuthenticationStrategy = "SIMPLE"|"LDAP"|"CONFIG_MANAGED",
 #'       Created = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -1614,7 +1616,7 @@ mq_reboot_broker <- function(BrokerId) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   AuthenticationStrategy = "SIMPLE"|"LDAP",
+#'   AuthenticationStrategy = "SIMPLE"|"LDAP"|"CONFIG_MANAGED",
 #'   AutoMinorVersionUpgrade = TRUE|FALSE,
 #'   BrokerId = "string",
 #'   Configuration = list(
@@ -1671,7 +1673,7 @@ mq_reboot_broker <- function(BrokerId) {
 #' @section Request syntax:
 #' ```
 #' svc$update_broker(
-#'   AuthenticationStrategy = "SIMPLE"|"LDAP",
+#'   AuthenticationStrategy = "SIMPLE"|"LDAP"|"CONFIG_MANAGED",
 #'   AutoMinorVersionUpgrade = TRUE|FALSE,
 #'   BrokerId = "string",
 #'   Configuration = list(

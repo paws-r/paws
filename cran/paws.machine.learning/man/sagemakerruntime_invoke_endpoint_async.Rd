@@ -2,9 +2,10 @@
 % Please edit documentation in R/sagemakerruntime_operations.R
 \name{sagemakerruntime_invoke_endpoint_async}
 \alias{sagemakerruntime_invoke_endpoint_async}
-\title{After you deploy a model into production using Amazon SageMaker hosting
-services, your client applications use this API to get inferences from
-the model hosted at the specified endpoint in an asynchronous manner}
+\title{After you deploy a model into production using Amazon SageMaker AI
+hosting services, your client applications use this API to get
+inferences from the model hosted at the specified endpoint in an
+asynchronous manner}
 \usage{
 sagemakerruntime_invoke_endpoint_async(
   EndpointName,
@@ -29,7 +30,7 @@ API.}
 container.}
 
 \item{CustomAttributes}{Provides additional information about a request for an inference
-submitted to a model hosted at an Amazon SageMaker endpoint. The
+submitted to a model hosted at an Amazon SageMaker AI endpoint. The
 information is an opaque value that is forwarded verbatim. You could use
 this value, for example, to provide an ID that you can use to track a
 request or to provide other metadata that a service endpoint was
@@ -44,10 +45,10 @@ represents the trace ID, your model can prepend the custom attribute
 with \verb{Trace ID:} in your post-processing function.
 
 This feature is currently supported in the Amazon Web Services SDKs but
-not in the Amazon SageMaker Python SDK.}
+not in the Amazon SageMaker AI Python SDK.}
 
-\item{InferenceId}{The identifier for the inference request. Amazon SageMaker will generate
-an identifier for you if none is specified.}
+\item{InferenceId}{The identifier for the inference request. Amazon SageMaker AI will
+generate an identifier for you if none is specified.}
 
 \item{InputLocation}{[required] The Amazon S3 URI where the inference request payload is stored.}
 
@@ -58,7 +59,7 @@ as expired. The default is 6 hours, or 21,600 seconds.}
 is marked as expired. The default is 15 minutes, or 900 seconds.}
 }
 \description{
-After you deploy a model into production using Amazon SageMaker hosting services, your client applications use this API to get inferences from the model hosted at the specified endpoint in an asynchronous manner.
+After you deploy a model into production using Amazon SageMaker AI hosting services, your client applications use this API to get inferences from the model hosted at the specified endpoint in an asynchronous manner.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemakerruntime_invoke_endpoint_async/} for full documentation.
 }

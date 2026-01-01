@@ -10,9 +10,8 @@ cloudformation_list_change_sets(StackName, NextToken = NULL)
 \item{StackName}{[required] The name or the Amazon Resource Name (ARN) of the stack for which you
 want to list change sets.}
 
-\item{NextToken}{A string (provided by the
-\code{\link[=cloudformation_list_change_sets]{list_change_sets}} response output)
-that identifies the next page of change sets that you want to retrieve.}
+\item{NextToken}{The token for the next set of items to return. (You received this token
+from a previous call.)}
 }
 \description{
 Returns the ID and status of each active change set for a stack. For example, CloudFormation lists change sets that are in the \code{CREATE_IN_PROGRESS} or \code{CREATE_PENDING} state.

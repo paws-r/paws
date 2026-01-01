@@ -96,15 +96,18 @@ applications can access. For more information about IAM, see \href{https://aws.a
 \section{Operations}{
 
 \tabular{ll}{
+\link[=iam_accept_delegation_request]{accept_delegation_request} \tab Accepts a delegation request, granting the requested temporary access\cr
 \link[=iam_add_client_id_to_open_id_connect_provider]{add_client_id_to_open_id_connect_provider} \tab Adds a new client ID (also known as audience) to the list of client IDs already registered for the specified IAM OpenID Connect (OIDC) provider resource\cr
 \link[=iam_add_role_to_instance_profile]{add_role_to_instance_profile} \tab Adds the specified IAM role to the specified instance profile\cr
 \link[=iam_add_user_to_group]{add_user_to_group} \tab Adds the specified user to the specified group\cr
+\link[=iam_associate_delegation_request]{associate_delegation_request} \tab Associates a delegation request with the current identity\cr
 \link[=iam_attach_group_policy]{attach_group_policy} \tab Attaches the specified managed policy to the specified IAM group\cr
 \link[=iam_attach_role_policy]{attach_role_policy} \tab Attaches the specified managed policy to the specified IAM role\cr
 \link[=iam_attach_user_policy]{attach_user_policy} \tab Attaches the specified managed policy to the specified user\cr
 \link[=iam_change_password]{change_password} \tab Changes the password of the IAM user who is calling this operation\cr
 \link[=iam_create_access_key]{create_access_key} \tab Creates a new Amazon Web Services secret access key and corresponding Amazon Web Services access key ID for the specified user\cr
 \link[=iam_create_account_alias]{create_account_alias} \tab Creates an alias for your Amazon Web Services account\cr
+\link[=iam_create_delegation_request]{create_delegation_request} \tab Creates an IAM delegation request for temporary access delegation\cr
 \link[=iam_create_group]{create_group} \tab Creates a new group\cr
 \link[=iam_create_instance_profile]{create_instance_profile} \tab Creates a new instance profile\cr
 \link[=iam_create_login_profile]{create_login_profile} \tab Creates a password for the specified IAM user\cr
@@ -124,7 +127,7 @@ applications can access. For more information about IAM, see \href{https://aws.a
 \link[=iam_delete_group]{delete_group} \tab Deletes the specified IAM group\cr
 \link[=iam_delete_group_policy]{delete_group_policy} \tab Deletes the specified inline policy that is embedded in the specified IAM group\cr
 \link[=iam_delete_instance_profile]{delete_instance_profile} \tab Deletes the specified instance profile\cr
-\link[=iam_delete_login_profile]{delete_login_profile} \tab Deletes the password for the specified IAM user, For more information, see Managing passwords for IAM users\cr
+\link[=iam_delete_login_profile]{delete_login_profile} \tab Deletes the password for the specified IAM user or root user, For more information, see Managing passwords for IAM users\cr
 \link[=iam_delete_open_id_connect_provider]{delete_open_id_connect_provider} \tab Deletes an OpenID Connect identity provider (IdP) resource object in IAM\cr
 \link[=iam_delete_policy]{delete_policy} \tab Deletes the specified managed policy\cr
 \link[=iam_delete_policy_version]{delete_policy_version} \tab Deletes the specified version from the specified managed policy\cr
@@ -146,9 +149,11 @@ applications can access. For more information about IAM, see \href{https://aws.a
 \link[=iam_detach_user_policy]{detach_user_policy} \tab Removes the specified managed policy from the specified user\cr
 \link[=iam_disable_organizations_root_credentials_management]{disable_organizations_root_credentials_management} \tab Disables the management of privileged root user credentials across member accounts in your organization\cr
 \link[=iam_disable_organizations_root_sessions]{disable_organizations_root_sessions} \tab Disables root user sessions for privileged tasks across member accounts in your organization\cr
+\link[=iam_disable_outbound_web_identity_federation]{disable_outbound_web_identity_federation} \tab Disables the outbound identity federation feature for your Amazon Web Services account\cr
 \link[=iam_enable_mfa_device]{enable_mfa_device} \tab Enables the specified MFA device and associates it with the specified IAM user\cr
 \link[=iam_enable_organizations_root_credentials_management]{enable_organizations_root_credentials_management} \tab Enables the management of privileged root user credentials across member accounts in your organization\cr
 \link[=iam_enable_organizations_root_sessions]{enable_organizations_root_sessions} \tab Allows the management account or delegated administrator to perform privileged tasks on member accounts in your organization\cr
+\link[=iam_enable_outbound_web_identity_federation]{enable_outbound_web_identity_federation} \tab Enables the outbound identity federation feature for your Amazon Web Services account\cr
 \link[=iam_generate_credential_report]{generate_credential_report} \tab Generates a credential report for the Amazon Web Services account\cr
 \link[=iam_generate_organizations_access_report]{generate_organizations_access_report} \tab Generates a report for service last accessed data for Organizations\cr
 \link[=iam_generate_service_last_accessed_details]{generate_service_last_accessed_details} \tab Generates a report that includes details about when an IAM resource (user, group, role, or policy) was last used in an attempt to access Amazon Web Services services\cr
@@ -159,13 +164,16 @@ applications can access. For more information about IAM, see \href{https://aws.a
 \link[=iam_get_context_keys_for_custom_policy]{get_context_keys_for_custom_policy} \tab Gets a list of all of the context keys referenced in the input policies\cr
 \link[=iam_get_context_keys_for_principal_policy]{get_context_keys_for_principal_policy} \tab Gets a list of all of the context keys referenced in all the IAM policies that are attached to the specified IAM entity\cr
 \link[=iam_get_credential_report]{get_credential_report} \tab Retrieves a credential report for the Amazon Web Services account\cr
+\link[=iam_get_delegation_request]{get_delegation_request} \tab Retrieves information about a specific delegation request\cr
 \link[=iam_get_group]{get_group} \tab Returns a list of IAM users that are in the specified IAM group\cr
 \link[=iam_get_group_policy]{get_group_policy} \tab Retrieves the specified inline policy document that is embedded in the specified IAM group\cr
+\link[=iam_get_human_readable_summary]{get_human_readable_summary} \tab Retrieves a human readable summary for a given entity\cr
 \link[=iam_get_instance_profile]{get_instance_profile} \tab Retrieves information about the specified instance profile, including the instance profile's path, GUID, ARN, and role\cr
 \link[=iam_get_login_profile]{get_login_profile} \tab Retrieves the user name for the specified IAM user\cr
 \link[=iam_get_mfa_device]{get_mfa_device} \tab Retrieves information about an MFA device for a specified user\cr
 \link[=iam_get_open_id_connect_provider]{get_open_id_connect_provider} \tab Returns information about the specified OpenID Connect (OIDC) provider resource object in IAM\cr
 \link[=iam_get_organizations_access_report]{get_organizations_access_report} \tab Retrieves the service last accessed data report for Organizations that was previously generated using the GenerateOrganizationsAccessReport operation\cr
+\link[=iam_get_outbound_web_identity_federation_info]{get_outbound_web_identity_federation_info} \tab Retrieves the configuration information for the outbound identity federation feature in your Amazon Web Services account\cr
 \link[=iam_get_policy]{get_policy} \tab Retrieves information about the specified managed policy, including the policy's default version and the total number of IAM users, groups, and roles to which the policy is attached\cr
 \link[=iam_get_policy_version]{get_policy_version} \tab Retrieves information about the specified version of the specified managed policy, including the policy document\cr
 \link[=iam_get_role]{get_role} \tab Retrieves information about the specified role, including the role's path, GUID, ARN, and the role's trust policy that grants permission to assume the role\cr
@@ -183,6 +191,7 @@ applications can access. For more information about IAM, see \href{https://aws.a
 \link[=iam_list_attached_group_policies]{list_attached_group_policies} \tab Lists all managed policies that are attached to the specified IAM group\cr
 \link[=iam_list_attached_role_policies]{list_attached_role_policies} \tab Lists all managed policies that are attached to the specified IAM role\cr
 \link[=iam_list_attached_user_policies]{list_attached_user_policies} \tab Lists all managed policies that are attached to the specified IAM user\cr
+\link[=iam_list_delegation_requests]{list_delegation_requests} \tab Lists delegation requests based on the specified criteria\cr
 \link[=iam_list_entities_for_policy]{list_entities_for_policy} \tab Lists all IAM users, groups, and roles that the specified managed policy is attached to\cr
 \link[=iam_list_group_policies]{list_group_policies} \tab Lists the names of the inline policies that are embedded in the specified IAM group\cr
 \link[=iam_list_groups]{list_groups} \tab Lists the IAM groups that have the specified path prefix\cr
@@ -218,11 +227,13 @@ applications can access. For more information about IAM, see \href{https://aws.a
 \link[=iam_put_role_policy]{put_role_policy} \tab Adds or updates an inline policy document that is embedded in the specified IAM role\cr
 \link[=iam_put_user_permissions_boundary]{put_user_permissions_boundary} \tab Adds or updates the policy that is specified as the IAM user's permissions boundary\cr
 \link[=iam_put_user_policy]{put_user_policy} \tab Adds or updates an inline policy document that is embedded in the specified IAM user\cr
+\link[=iam_reject_delegation_request]{reject_delegation_request} \tab Rejects a delegation request, denying the requested temporary access\cr
 \link[=iam_remove_client_id_from_open_id_connect_provider]{remove_client_id_from_open_id_connect_provider} \tab Removes the specified client ID (also known as audience) from the list of client IDs registered for the specified IAM OpenID Connect (OIDC) provider resource object\cr
 \link[=iam_remove_role_from_instance_profile]{remove_role_from_instance_profile} \tab Removes the specified IAM role from the specified Amazon EC2 instance profile\cr
 \link[=iam_remove_user_from_group]{remove_user_from_group} \tab Removes the specified user from the specified group\cr
 \link[=iam_reset_service_specific_credential]{reset_service_specific_credential} \tab Resets the password for a service-specific credential\cr
 \link[=iam_resync_mfa_device]{resync_mfa_device} \tab Synchronizes the specified MFA device with its IAM resource object on the Amazon Web Services servers\cr
+\link[=iam_send_delegation_token]{send_delegation_token} \tab Sends the exchange token for an accepted delegation request\cr
 \link[=iam_set_default_policy_version]{set_default_policy_version} \tab Sets the specified version of the specified policy as the policy's default (operative) version\cr
 \link[=iam_set_security_token_service_preferences]{set_security_token_service_preferences} \tab Sets the specified version of the global endpoint token as the token version used for the Amazon Web Services account\cr
 \link[=iam_simulate_custom_policy]{simulate_custom_policy} \tab Simulate how a set of IAM policies and optionally a resource-based policy works with a list of API operations and Amazon Web Services resources to determine the policies' effective permissions\cr
@@ -246,6 +257,7 @@ applications can access. For more information about IAM, see \href{https://aws.a
 \link[=iam_update_access_key]{update_access_key} \tab Changes the status of the specified access key from Active to Inactive, or vice versa\cr
 \link[=iam_update_account_password_policy]{update_account_password_policy} \tab Updates the password policy settings for the Amazon Web Services account\cr
 \link[=iam_update_assume_role_policy]{update_assume_role_policy} \tab Updates the policy that grants an IAM entity permission to assume a role\cr
+\link[=iam_update_delegation_request]{update_delegation_request} \tab Updates an existing delegation request with additional information\cr
 \link[=iam_update_group]{update_group} \tab Updates the name and/or the path of the specified IAM group\cr
 \link[=iam_update_login_profile]{update_login_profile} \tab Changes the password for the specified IAM user\cr
 \link[=iam_update_open_id_connect_provider_thumbprint]{update_open_id_connect_provider_thumbprint} \tab Replaces the existing list of server certificate thumbprints associated with an OpenID Connect (OIDC) provider resource object with a new list of thumbprints\cr

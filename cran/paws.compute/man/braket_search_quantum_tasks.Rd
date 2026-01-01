@@ -4,16 +4,17 @@
 \alias{braket_search_quantum_tasks}
 \title{Searches for tasks that match the specified filter values}
 \usage{
-braket_search_quantum_tasks(filters, maxResults = NULL, nextToken = NULL)
+braket_search_quantum_tasks(nextToken = NULL, maxResults = NULL, filters)
 }
 \arguments{
-\item{filters}{[required] Array of \code{SearchQuantumTasksFilter} objects.}
+\item{nextToken}{A token used for pagination of results returned in the response. Use the
+token returned from the previous request to continue search where the
+previous request ended.}
 
 \item{maxResults}{Maximum number of results to return in the response.}
 
-\item{nextToken}{A token used for pagination of results returned in the response. Use the
-token returned from the previous request continue results where the
-previous request ended.}
+\item{filters}{[required] Array of \code{SearchQuantumTasksFilter} objects to use when searching for
+quantum tasks.}
 }
 \description{
 Searches for tasks that match the specified filter values.

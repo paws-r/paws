@@ -20,20 +20,32 @@ that you want to update.}
 
 \item{UseCognitoProvidedValues}{When \code{true}, applies the default branding style options. This option
 reverts to default style options that are managed by Amazon Cognito. You
-can modify them later in the branding designer.
+can modify them later in the branding editor.
 
 When you specify \code{true} for this option, you must also omit values for
 \code{Settings} and \code{Assets} in the request.}
 
 \item{Settings}{A JSON file, encoded as a \code{Document} type, with the the settings that
-you want to apply to your style.}
+you want to apply to your style.
+
+The following components are not currently implemented and reserved for
+future use:
+\itemize{
+\item \code{signUp}
+\item \code{instructions}
+\item \code{sessionTimerDisplay}
+\item \code{languageSelector} (for localization, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-managed-login.html#managed-login-localization}{Managed login localization)}
+}
+
+[Managed login
+localization)]: R:Managed\%20login\%0A\%20\%20\%20\%20localization)}
 
 \item{Assets}{An array of image files that you want to apply to roles like
 backgrounds, logos, and icons. Each object must also indicate whether it
 is for dark mode, light mode, or browser-adaptive mode.}
 }
 \description{
-Configures the branding settings for a user pool style. This operation is the programmatic option for the configuration of a style in the branding designer.
+Configures the branding settings for a user pool style. This operation is the programmatic option for the configuration of a style in the branding editor.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_managed_login_branding/} for full documentation.
 }

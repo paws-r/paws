@@ -2,7 +2,8 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_start_person_tracking}
 \alias{rekognition_start_person_tracking}
-\title{Starts the asynchronous tracking of a person's path in a stored video}
+\title{End of support notice: On October 31, 2025, AWS will discontinue support
+for Amazon Rekognition People Pathing}
 \usage{
 rekognition_start_person_tracking(
   Video,
@@ -32,7 +33,7 @@ example, you can use \code{JobTag} to group related jobs and identify them in
 the completion notification.}
 }
 \description{
-Starts the asynchronous tracking of a person's path in a stored video.
+\emph{End of support notice:} On October 31, 2025, AWS will discontinue support for Amazon Rekognition People Pathing. After October 31, 2025, you will no longer be able to use the Rekognition People Pathing capability. For more information, visit this \href{https://aws.amazon.com/blogs/machine-learning/transitioning-from-amazon-rekognition-people-pathing-exploring-other-alternatives/}{blog post}.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_start_person_tracking/} for full documentation.
 }

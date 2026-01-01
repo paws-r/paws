@@ -7,8 +7,7 @@
 organizations_update_organizational_unit(OrganizationalUnitId, Name = NULL)
 }
 \arguments{
-\item{OrganizationalUnitId}{[required] The unique identifier (ID) of the OU that you want to rename. You can
-get the ID from the
+\item{OrganizationalUnitId}{[required] ID for the OU that you want to rename. You can get the ID from the
 \code{\link[=organizations_list_organizational_units_for_parent]{list_organizational_units_for_parent}}
 operation.
 

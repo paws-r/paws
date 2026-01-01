@@ -78,7 +78,7 @@ run on. For example, to run a document on EC2 instances, specify the
 following value: \verb{/AWS::EC2::Instance}. If you specify a value of '/'
 the document can run on all types of resources. If you don't specify a
 value, the document can't run on any resources. For a list of valid
-resource types, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html}{Amazon Web Services resource and property types reference}
+resource types, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-template-resource-type-ref.html}{Amazon Web Services resource and property types reference}
 in the \emph{CloudFormation User Guide}.}
 
 \item{Tags}{Optional metadata that you assign to a resource. Tags enable you to

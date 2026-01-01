@@ -113,7 +113,7 @@ in the S3 bucket that a S3 File Gateway puts objects into. The default
 value is \code{private}.}
 
 \item{ClientList}{The list of clients that are allowed to access the S3 File Gateway. The
-list must contain either valid IP addresses or valid CIDR blocks.}
+list must contain either valid IPv4/IPv6 addresses or valid CIDR blocks.}
 
 \item{Squash}{A value that maps a user to anonymous user.
 

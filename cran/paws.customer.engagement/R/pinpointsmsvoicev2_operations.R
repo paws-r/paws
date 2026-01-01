@@ -14,8 +14,8 @@ NULL
 #' PoolId or PoolArn, and you can find these values using
 #' [`describe_pools`][pinpointsmsvoicev2_describe_pools].
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS; resource then you must
+#' use the full Amazon Resource Name(ARN).
 #' @param OriginationIdentity &#91;required&#93; The origination identity to use, such as PhoneNumberId, PhoneNumberArn,
 #' SenderId, or SenderIdArn. You can use
 #' [`describe_phone_numbers`][pinpointsmsvoicev2_describe_phone_numbers] to
@@ -23,8 +23,8 @@ NULL
 #' [`describe_sender_ids`][pinpointsmsvoicev2_describe_sender_ids] can be
 #' used to get the values for SenderId and SenderIdArn.
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS resource then you must
+#' use the full Amazon Resource Name(ARN).
 #' @param IsoCountryCode &#91;required&#93; The new two-character code, in ISO 3166-1 alpha-2 format, for the
 #' country or region of the origination identity.
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
@@ -85,6 +85,41 @@ pinpointsmsvoicev2_associate_protect_configuration <- function(ProtectConfigurat
 }
 .pinpointsmsvoicev2$operations$associate_protect_configuration <- pinpointsmsvoicev2_associate_protect_configuration
 
+#' Returns information about a destination phone number, including whether
+#' the number type and whether it is valid, the carrier, and more
+#'
+#' @description
+#' Returns information about a destination phone number, including whether the number type and whether it is valid, the carrier, and more.
+#'
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_carrier_lookup/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_carrier_lookup/) for full documentation.
+#'
+#' @param PhoneNumber &#91;required&#93; The phone number that you want to retrieve information about. You can
+#' provide the phone number in various formats including special characters
+#' such as parentheses, brackets, spaces, hyphens, periods, and commas. The
+#' service automatically converts the input to E164 format for processing.
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_carrier_lookup
+pinpointsmsvoicev2_carrier_lookup <- function(PhoneNumber) {
+  op <- new_operation(
+    name = "CarrierLookup",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .pinpointsmsvoicev2$carrier_lookup_input(PhoneNumber = PhoneNumber)
+  output <- .pinpointsmsvoicev2$carrier_lookup_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$carrier_lookup <- pinpointsmsvoicev2_carrier_lookup
+
 #' Creates a new configuration set
 #'
 #' @description
@@ -135,7 +170,7 @@ pinpointsmsvoicev2_create_configuration_set <- function(ConfigurationSetName, Ta
 #' action.
 #' @param EventDestinationName &#91;required&#93; The name that identifies the event destination.
 #' @param MatchingEventTypes &#91;required&#93; An array of event types that determine which events to log. If "ALL" is
-#' used, then AWS End User Messaging SMS and Voice logs every event type.
+#' used, then End User Messaging SMS logs every event type.
 #' 
 #' The `TEXT_SENT` event type is not supported.
 #' @param CloudWatchLogsDestination An object that contains information about an event destination for
@@ -217,7 +252,7 @@ pinpointsmsvoicev2_create_opt_out_list <- function(OptOutListName, Tags = NULL, 
 #' @param OriginationIdentity &#91;required&#93; The origination identity to use such as a PhoneNumberId, PhoneNumberArn,
 #' SenderId or SenderIdArn. You can use
 #' [`describe_phone_numbers`][pinpointsmsvoicev2_describe_phone_numbers] to
-#' find the values for PhoneNumberId and PhoneNumberArn while
+#' find the values for PhoneNumberId and PhoneNumberArn, and use
 #' [`describe_sender_ids`][pinpointsmsvoicev2_describe_sender_ids] can be
 #' used to get the values for SenderId and SenderIdArn.
 #' 
@@ -225,8 +260,8 @@ pinpointsmsvoicev2_create_opt_out_list <- function(OptOutListName, Tags = NULL, 
 #' pool by using
 #' [`associate_origination_identity`][pinpointsmsvoicev2_associate_origination_identity].
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS resource then you must
+#' use the full Amazon Resource Name(ARN).
 #' @param IsoCountryCode &#91;required&#93; The new two-character code, in ISO 3166-1 alpha-2 format, for the
 #' country or region of the new pool.
 #' @param MessageType &#91;required&#93; The type of message. Valid values are TRANSACTIONAL for messages that
@@ -667,8 +702,8 @@ pinpointsmsvoicev2_delete_event_destination <- function(ConfigurationSetName, Ev
 #' [`describe_pools`][pinpointsmsvoicev2_describe_pools] to find the values
 #' of PoolId and PoolArn.
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS resource then you must
+#' use the full Amazon Resource Name(ARN).
 #' @param Keyword &#91;required&#93; The keyword to delete.
 #'
 #' @keywords internal
@@ -737,8 +772,8 @@ pinpointsmsvoicev2_delete_media_message_spend_limit_override <- function() {
 #' [`describe_opt_out_lists`][pinpointsmsvoicev2_describe_opt_out_lists] to
 #' find the values for OptOutListName and OptOutListArn.
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS resource then you must
+#' use the full Amazon Resource Name(ARN).
 #'
 #' @keywords internal
 #'
@@ -772,8 +807,8 @@ pinpointsmsvoicev2_delete_opt_out_list <- function(OptOutListName) {
 #'
 #' @param OptOutListName &#91;required&#93; The OptOutListName or OptOutListArn to remove the phone number from.
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS resource then you must
+#' use the full Amazon Resource Name(ARN).
 #' @param OptedOutNumber &#91;required&#93; The phone number, in E.164 format, to remove from the OptOutList.
 #'
 #' @keywords internal
@@ -809,8 +844,8 @@ pinpointsmsvoicev2_delete_opted_out_number <- function(OptOutListName, OptedOutN
 #' [`describe_pools`][pinpointsmsvoicev2_describe_pools] to find the values
 #' for PoolId and PoolArn .
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS resource then you must
+#' use the full Amazon Resource Name(ARN).
 #'
 #' @keywords internal
 #'
@@ -993,16 +1028,16 @@ pinpointsmsvoicev2_delete_registration_field_value <- function(RegistrationId, F
 }
 .pinpointsmsvoicev2$operations$delete_registration_field_value <- pinpointsmsvoicev2_delete_registration_field_value
 
-#' Deletes the resource-based policy document attached to the AWS End User
-#' Messaging SMS and Voice resource
+#' Deletes the resource-based policy document attached to the End User
+#' Messaging SMS resource
 #'
 #' @description
-#' Deletes the resource-based policy document attached to the AWS End User Messaging SMS and Voice resource. A shared resource can be a Pool, Opt-out list, Sender Id, or Phone number.
+#' Deletes the resource-based policy document attached to the End User Messaging SMS resource. A shared resource can be a Pool, Opt-out list, Sender Id, or Phone number.
 #'
 #' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_resource_policy/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_resource_policy/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS End User Messaging SMS and
-#' Voice resource you're deleting the resource-based policy from.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the End User Messaging SMS resource
+#' you're deleting the resource-based policy from.
 #'
 #' @keywords internal
 #'
@@ -1030,7 +1065,7 @@ pinpointsmsvoicev2_delete_resource_policy <- function(ResourceArn) {
 #' text messages
 #'
 #' @description
-#' Deletes an account-level monthly spending limit override for sending text messages. Deleting a spend limit override will set the `EnforcedLimit` to equal the `MaxLimit`, which is controlled by Amazon Web Services. For more information on spend limits (quotas) see [Quotas](https://docs.aws.amazon.com/sms-voice/latest/userguide/quotas.html) in the *AWS End User Messaging SMS User Guide*.
+#' Deletes an account-level monthly spending limit override for sending text messages. Deleting a spend limit override will set the `EnforcedLimit` to equal the `MaxLimit`, which is controlled by Amazon Web Services. For more information on spend limits (quotas) see [Quotas](https://docs.aws.amazon.com/sms-voice/latest/userguide/quotas.html) in the *End User Messaging SMS User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_text_message_spend_limit_override/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_text_message_spend_limit_override/) for full documentation.
 #'
@@ -1093,7 +1128,7 @@ pinpointsmsvoicev2_delete_verified_destination_number <- function(VerifiedDestin
 #' messages
 #'
 #' @description
-#' Deletes an account level monthly spend limit override for sending voice messages. Deleting a spend limit override sets the `EnforcedLimit` equal to the `MaxLimit`, which is controlled by Amazon Web Services. For more information on spending limits (quotas) see [Quotas](https://docs.aws.amazon.com/sms-voice/latest/userguide/quotas.html) in the *AWS End User Messaging SMS User Guide*.
+#' Deletes an account level monthly spend limit override for sending voice messages. Deleting a spend limit override sets the `EnforcedLimit` equal to the `MaxLimit`, which is controlled by Amazon Web Services. For more information on spending limits (quotas) see [Quotas](https://docs.aws.amazon.com/sms-voice/latest/userguide/quotas.html) in the *End User Messaging SMS User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_voice_message_spend_limit_override/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_voice_message_spend_limit_override/) for full documentation.
 #'
@@ -1154,11 +1189,11 @@ pinpointsmsvoicev2_describe_account_attributes <- function(NextToken = NULL, Max
 }
 .pinpointsmsvoicev2$operations$describe_account_attributes <- pinpointsmsvoicev2_describe_account_attributes
 
-#' Describes the current AWS End User Messaging SMS and Voice SMS Voice V2
-#' resource quotas for your account
+#' Describes the current End User Messaging SMS SMS Voice V2 resource
+#' quotas for your account
 #'
 #' @description
-#' Describes the current AWS End User Messaging SMS and Voice SMS Voice V2 resource quotas for your account. The description for a quota includes the quota name, current usage toward that quota, and the quota's maximum value.
+#' Describes the current End User Messaging SMS SMS Voice V2 resource quotas for your account. The description for a quota includes the quota name, current usage toward that quota, and the quota's maximum value.
 #'
 #' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_account_limits/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_account_limits/) for full documentation.
 #'
@@ -1239,8 +1274,8 @@ pinpointsmsvoicev2_describe_configuration_sets <- function(ConfigurationSetNames
 #' [`describe_sender_ids`][pinpointsmsvoicev2_describe_sender_ids] can be
 #' used to get the values for SenderId and SenderIdArn.
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS resource then you must
+#' use the full Amazon Resource Name(ARN).
 #' @param Keywords An array of keywords to search for.
 #' @param Filters An array of keyword filters to filter the results.
 #' @param NextToken The token to be used for the next set of paginated results. You don't
@@ -1280,8 +1315,8 @@ pinpointsmsvoicev2_describe_keywords <- function(OriginationIdentity, Keywords =
 #' @param OptOutListNames The OptOutLists to show the details of. This is an array of strings that
 #' can be either the OptOutListName or OptOutListArn.
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS resource then you must
+#' use the full Amazon Resource Name(ARN).
 #' @param NextToken The token to be used for the next set of paginated results. You don't
 #' need to supply a value for this field in the initial request.
 #' @param MaxResults The maximum number of results to return per each request.
@@ -1323,8 +1358,8 @@ pinpointsmsvoicev2_describe_opt_out_lists <- function(OptOutListNames = NULL, Ne
 #' [`describe_opt_out_lists`][pinpointsmsvoicev2_describe_opt_out_lists] to
 #' find the values for OptOutListName and OptOutListArn.
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS resource then you must
+#' use the full Amazon Resource Name(ARN).
 #' @param OptedOutNumbers An array of phone numbers to search for in the OptOutList.
 #' 
 #' If you specify an opted out number that isn't valid, an exception is
@@ -1368,8 +1403,8 @@ pinpointsmsvoicev2_describe_opted_out_numbers <- function(OptOutListName, OptedO
 #' is an array of strings that can be either the PhoneNumberId or
 #' PhoneNumberArn.
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS resource then you must
+#' use the full Amazon Resource Name(ARN).
 #' @param Filters An array of PhoneNumberFilter objects to filter the results.
 #' @param NextToken The token to be used for the next set of paginated results. You don't
 #' need to supply a value for this field in the initial request.
@@ -1411,8 +1446,8 @@ pinpointsmsvoicev2_describe_phone_numbers <- function(PhoneNumberIds = NULL, Fil
 #' @param PoolIds The unique identifier of pools to find. This is an array of strings that
 #' can be either the PoolId or PoolArn.
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS resource then you must
+#' use the full Amazon Resource Name(ARN).
 #' @param Filters An array of PoolFilter objects to filter the results.
 #' @param NextToken The token to be used for the next set of paginated results. You don't
 #' need to supply a value for this field in the initial request.
@@ -1748,8 +1783,8 @@ pinpointsmsvoicev2_describe_registrations <- function(RegistrationIds = NULL, Fi
 #'
 #' @param SenderIds An array of SenderIdAndCountry objects to search for.
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS resource then you must
+#' use the full Amazon Resource Name(ARN).
 #' @param Filters An array of SenderIdFilter objects to filter the results.
 #' @param NextToken The token to be used for the next set of paginated results. You don't
 #' need to supply a value for this field in the initial request.
@@ -1861,8 +1896,8 @@ pinpointsmsvoicev2_describe_verified_destination_numbers <- function(VerifiedDes
 #' @param PoolId &#91;required&#93; The unique identifier for the pool to disassociate with the origination
 #' identity. This value can be either the PoolId or PoolArn.
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS resource then you must
+#' use the full Amazon Resource Name(ARN).
 #' @param OriginationIdentity &#91;required&#93; The origination identity to use such as a PhoneNumberId, PhoneNumberArn,
 #' SenderId or SenderIdArn. You can use
 #' [`describe_phone_numbers`][pinpointsmsvoicev2_describe_phone_numbers]
@@ -1870,8 +1905,8 @@ pinpointsmsvoicev2_describe_verified_destination_numbers <- function(VerifiedDes
 #' [`describe_sender_ids`][pinpointsmsvoicev2_describe_sender_ids] to get
 #' the values for SenderId and SenderIdArn.
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS resource then you must
+#' use the full Amazon Resource Name(ARN).
 #' @param IsoCountryCode &#91;required&#93; The two-character code, in ISO 3166-1 alpha-2 format, for the country or
 #' region.
 #' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency
@@ -1998,15 +2033,15 @@ pinpointsmsvoicev2_get_protect_configuration_country_rule_set <- function(Protec
 .pinpointsmsvoicev2$operations$get_protect_configuration_country_rule_set <- pinpointsmsvoicev2_get_protect_configuration_country_rule_set
 
 #' Retrieves the JSON text of the resource-based policy document attached
-#' to the AWS End User Messaging SMS and Voice resource
+#' to the End User Messaging SMS resource
 #'
 #' @description
-#' Retrieves the JSON text of the resource-based policy document attached to the AWS End User Messaging SMS and Voice resource. A shared resource can be a Pool, Opt-out list, Sender Id, or Phone number.
+#' Retrieves the JSON text of the resource-based policy document attached to the End User Messaging SMS resource. A shared resource can be a Pool, Opt-out list, Sender Id, or Phone number.
 #'
 #' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_get_resource_policy/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_get_resource_policy/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS End User Messaging SMS and
-#' Voice resource attached to the resource-based policy.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the End User Messaging SMS resource
+#' attached to the resource-based policy.
 #'
 #' @keywords internal
 #'
@@ -2040,8 +2075,8 @@ pinpointsmsvoicev2_get_resource_policy <- function(ResourceArn) {
 #' @param PoolId &#91;required&#93; The unique identifier for the pool. This value can be either the PoolId
 #' or PoolArn.
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS resource then you must
+#' use the full Amazon Resource Name(ARN).
 #' @param Filters An array of PoolOriginationIdentitiesFilter objects to filter the
 #' results..
 #' @param NextToken The token to be used for the next set of paginated results. You don't
@@ -2190,8 +2225,8 @@ pinpointsmsvoicev2_list_tags_for_resource <- function(ResourceArn) {
 #' [`describe_sender_ids`][pinpointsmsvoicev2_describe_sender_ids] can be
 #' used to get the values for SenderId and SenderIdArn.
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS resource then you must
+#' use the full Amazon Resource Name(ARN).
 #' @param Keyword &#91;required&#93; The new keyword to add.
 #' @param KeywordMessage &#91;required&#93; The message associated with the keyword.
 #' @param KeywordAction The action to perform for the new keyword when it is received.
@@ -2266,8 +2301,8 @@ pinpointsmsvoicev2_put_message_feedback <- function(MessageId, MessageFeedbackSt
 #'
 #' @param OptOutListName &#91;required&#93; The OptOutListName or OptOutListArn to add the phone number to.
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS resource then you must
+#' use the full Amazon Resource Name(ARN).
 #' @param OptedOutNumber &#91;required&#93; The phone number to add to the OptOutList in E.164 format.
 #'
 #' @keywords internal
@@ -2369,17 +2404,17 @@ pinpointsmsvoicev2_put_registration_field_value <- function(RegistrationId, Fiel
 }
 .pinpointsmsvoicev2$operations$put_registration_field_value <- pinpointsmsvoicev2_put_registration_field_value
 
-#' Attaches a resource-based policy to a AWS End User Messaging SMS and
-#' Voice resource(phone number, sender Id, phone poll, or opt-out list)
-#' that is used for sharing the resource
+#' Attaches a resource-based policy to a End User Messaging SMS
+#' resource(phone number, sender Id, phone poll, or opt-out list) that is
+#' used for sharing the resource
 #'
 #' @description
-#' Attaches a resource-based policy to a AWS End User Messaging SMS and Voice resource(phone number, sender Id, phone poll, or opt-out list) that is used for sharing the resource. A shared resource can be a Pool, Opt-out list, Sender Id, or Phone number. For more information about resource-based policies, see [Working with shared resources](https://docs.aws.amazon.com/sms-voice/latest/userguide/shared-resources.html) in the *AWS End User Messaging SMS User Guide*.
+#' Attaches a resource-based policy to a End User Messaging SMS resource(phone number, sender Id, phone poll, or opt-out list) that is used for sharing the resource. A shared resource can be a Pool, Opt-out list, Sender Id, or Phone number. For more information about resource-based policies, see [Working with shared resources](https://docs.aws.amazon.com/sms-voice/latest/userguide/shared-resources.html) in the *End User Messaging SMS User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_put_resource_policy/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_put_resource_policy/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS End User Messaging SMS and
-#' Voice resource to attach the resource-based policy to.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the End User Messaging SMS resource to
+#' attach the resource-based policy to.
 #' @param Policy &#91;required&#93; The JSON formatted resource-based policy to attach.
 #'
 #' @keywords internal
@@ -2416,8 +2451,8 @@ pinpointsmsvoicev2_put_resource_policy <- function(ResourceArn, Policy) {
 #' [`describe_phone_numbers`][pinpointsmsvoicev2_describe_phone_numbers] to
 #' get the values for PhoneNumberId and PhoneNumberArn.
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS resource then you must
+#' use the full Amazon Resource Name(ARN).
 #'
 #' @keywords internal
 #'
@@ -2477,7 +2512,7 @@ pinpointsmsvoicev2_release_sender_id <- function(SenderId, IsoCountryCode) {
 #' Request an origination phone number for use in your account
 #'
 #' @description
-#' Request an origination phone number for use in your account. For more information on phone number request see [Request a phone number](https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-request.html) in the *AWS End User Messaging SMS User Guide*.
+#' Request an origination phone number for use in your account. For more information on phone number request see [Request a phone number](https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-request.html) in the *End User Messaging SMS User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_request_phone_number/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_request_phone_number/) for full documentation.
 #'
@@ -2495,18 +2530,20 @@ pinpointsmsvoicev2_release_sender_id <- function(SenderId, IsoCountryCode) {
 #' @param OptOutListName The name of the OptOutList to associate with the phone number. You can
 #' use the OptOutListName or OptOutListArn.
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS resource then you must
+#' use the full Amazon Resource Name(ARN).
 #' @param PoolId The pool to associated with the phone number. You can use the PoolId or
 #' PoolArn.
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS resource then you must
+#' use the full Amazon Resource Name(ARN).
 #' @param RegistrationId Use this field to attach your phone number for an external registration
 #' process.
+#' @param InternationalSendingEnabled By default this is set to false. When set to true the international
+#' sending of phone number is Enabled.
 #' @param DeletionProtectionEnabled By default this is set to false. When set to true the phone number can't
 #' be deleted.
-#' @param Tags An array of tags (key and value pairs) associate with the requested
+#' @param Tags An array of tags (key and value pairs) to associate with the requested
 #' phone number.
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you don't specify a client token, a
@@ -2515,7 +2552,7 @@ pinpointsmsvoicev2_release_sender_id <- function(SenderId, IsoCountryCode) {
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_request_phone_number
-pinpointsmsvoicev2_request_phone_number <- function(IsoCountryCode, MessageType, NumberCapabilities, NumberType, OptOutListName = NULL, PoolId = NULL, RegistrationId = NULL, DeletionProtectionEnabled = NULL, Tags = NULL, ClientToken = NULL) {
+pinpointsmsvoicev2_request_phone_number <- function(IsoCountryCode, MessageType, NumberCapabilities, NumberType, OptOutListName = NULL, PoolId = NULL, RegistrationId = NULL, InternationalSendingEnabled = NULL, DeletionProtectionEnabled = NULL, Tags = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "RequestPhoneNumber",
     http_method = "POST",
@@ -2524,7 +2561,7 @@ pinpointsmsvoicev2_request_phone_number <- function(IsoCountryCode, MessageType,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .pinpointsmsvoicev2$request_phone_number_input(IsoCountryCode = IsoCountryCode, MessageType = MessageType, NumberCapabilities = NumberCapabilities, NumberType = NumberType, OptOutListName = OptOutListName, PoolId = PoolId, RegistrationId = RegistrationId, DeletionProtectionEnabled = DeletionProtectionEnabled, Tags = Tags, ClientToken = ClientToken)
+  input <- .pinpointsmsvoicev2$request_phone_number_input(IsoCountryCode = IsoCountryCode, MessageType = MessageType, NumberCapabilities = NumberCapabilities, NumberType = NumberType, OptOutListName = OptOutListName, PoolId = PoolId, RegistrationId = RegistrationId, InternationalSendingEnabled = InternationalSendingEnabled, DeletionProtectionEnabled = DeletionProtectionEnabled, Tags = Tags, ClientToken = ClientToken)
   output <- .pinpointsmsvoicev2$request_phone_number_output()
   config <- get_config()
   svc <- .pinpointsmsvoicev2$service(config, op)
@@ -2591,8 +2628,8 @@ pinpointsmsvoicev2_request_sender_id <- function(SenderId, IsoCountryCode, Messa
 #' PhoneNumber, PhoneNumberId, PhoneNumberArn, SenderId, SenderIdArn,
 #' PoolId, or PoolArn.
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS resource then you must
+#' use the full Amazon Resource Name(ARN).
 #' @param ConfigurationSetName The name of the configuration set to use. This can be either the
 #' ConfigurationSetName or ConfigurationSetArn.
 #' @param Context You can specify custom data in this field. If you do, that data is
@@ -2638,8 +2675,8 @@ pinpointsmsvoicev2_send_destination_number_verification_code <- function(Verifie
 #' PhoneNumber, PhoneNumberId, PhoneNumberArn, SenderId, SenderIdArn,
 #' PoolId, or PoolArn.
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS resource then you must
+#' use the full Amazon Resource Name(ARN).
 #' @param MessageBody The text body of the message.
 #' @param MediaUrls An array of URLs to each media file to send.
 #' 
@@ -2703,8 +2740,8 @@ pinpointsmsvoicev2_send_media_message <- function(DestinationPhoneNumber, Origin
 #' PhoneNumber, PhoneNumberId, PhoneNumberArn, SenderId, SenderIdArn,
 #' PoolId, or PoolArn.
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS resource then you must
+#' use the full Amazon Resource Name(ARN).
 #' @param MessageBody The body of the text message.
 #' @param MessageType The type of message. Valid values are for messages that are critical or
 #' time-sensitive and PROMOTIONAL for messages that aren't critical or
@@ -2745,7 +2782,7 @@ pinpointsmsvoicev2_send_media_message <- function(DestinationPhoneNumber, Origin
 #' is used. For more information about MPS limits, see [Message Parts per
 #' Second (MPS)
 #' limits](https://docs.aws.amazon.com/sms-voice/latest/userguide/sms-limitations-mps.html)
-#' in the *AWS End User Messaging SMS User Guide*..
+#' in the *End User Messaging SMS User Guide*..
 #' @param ProtectConfigurationId The unique identifier for the protect configuration.
 #' @param MessageFeedbackEnabled Set to true to enable message feedback for the message. When a user
 #' receives the message you need to update the message status using
@@ -2784,8 +2821,8 @@ pinpointsmsvoicev2_send_text_message <- function(DestinationPhoneNumber, Origina
 #' @param OriginationIdentity &#91;required&#93; The origination identity to use for the voice call. This can be the
 #' PhoneNumber, PhoneNumberId, PhoneNumberArn, PoolId, or PoolArn.
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS resource then you must
+#' use the full Amazon Resource Name(ARN).
 #' @param MessageBody The text to convert to a voice message.
 #' @param MessageBodyTextType Specifies if the MessageBody field contains text or [speech synthesis
 #' markup language
@@ -3076,11 +3113,14 @@ pinpointsmsvoicev2_set_voice_message_spend_limit_override <- function(MonthlyLim
 #' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_submit_registration_version/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_submit_registration_version/) for full documentation.
 #'
 #' @param RegistrationId &#91;required&#93; The unique identifier for the registration.
+#' @param AwsReview Set to true to request AWS review of the registration. When enabled, AWS
+#' will perform additional validation and review of the registration
+#' submission before processing.
 #'
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_submit_registration_version
-pinpointsmsvoicev2_submit_registration_version <- function(RegistrationId) {
+pinpointsmsvoicev2_submit_registration_version <- function(RegistrationId, AwsReview = NULL) {
   op <- new_operation(
     name = "SubmitRegistrationVersion",
     http_method = "POST",
@@ -3089,7 +3129,7 @@ pinpointsmsvoicev2_submit_registration_version <- function(RegistrationId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .pinpointsmsvoicev2$submit_registration_version_input(RegistrationId = RegistrationId)
+  input <- .pinpointsmsvoicev2$submit_registration_version_input(RegistrationId = RegistrationId, AwsReview = AwsReview)
   output <- .pinpointsmsvoicev2$submit_registration_version_output()
   config <- get_config()
   svc <- .pinpointsmsvoicev2$service(config, op)
@@ -3102,7 +3142,7 @@ pinpointsmsvoicev2_submit_registration_version <- function(RegistrationId) {
 #' Adds or overwrites only the specified tags for the specified resource
 #'
 #' @description
-#' Adds or overwrites only the specified tags for the specified resource. When you specify an existing tag key, the value is overwritten with the new value. Each tag consists of a key and an optional value. Tag keys must be unique per resource. For more information about tags, see [Tags](https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-tags.html) in the *AWS End User Messaging SMS User Guide*.
+#' Adds or overwrites only the specified tags for the specified resource. When you specify an existing tag key, the value is overwritten with the new value. Each tag consists of a key and an optional value. Tag keys must be unique per resource. For more information about tags, see [Tags](https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-tags.html) in the *End User Messaging SMS User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_tag_resource/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_tag_resource/) for full documentation.
 #'
@@ -3135,7 +3175,7 @@ pinpointsmsvoicev2_tag_resource <- function(ResourceArn, Tags) {
 #' Removes the association of the specified tags from a resource
 #'
 #' @description
-#' Removes the association of the specified tags from a resource. For more information on tags see [Tags](https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-tags.html) in the *AWS End User Messaging SMS User Guide*.
+#' Removes the association of the specified tags from a resource. For more information on tags see [Tags](https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-tags.html) in the *End User Messaging SMS User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_untag_resource/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_untag_resource/) for full documentation.
 #'
@@ -3217,28 +3257,30 @@ pinpointsmsvoicev2_update_event_destination <- function(ConfigurationSetName, Ev
 #' @param PhoneNumberId &#91;required&#93; The unique identifier of the phone number. Valid values for this field
 #' can be either the PhoneNumberId or PhoneNumberArn.
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS resource then you must
+#' use the full Amazon Resource Name(ARN).
 #' @param TwoWayEnabled By default this is set to false. When set to true you can receive
 #' incoming text messages from your end recipients.
 #' @param TwoWayChannelArn The Amazon Resource Name (ARN) of the two way channel.
 #' @param TwoWayChannelRole An optional IAM Role Arn for a service to assume, to be able to post
 #' inbound SMS messages.
-#' @param SelfManagedOptOutsEnabled By default this is set to false. When an end recipient sends a message
-#' that begins with HELP or STOP to one of your dedicated numbers, AWS End
-#' User Messaging SMS and Voice automatically replies with a customizable
-#' message and adds the end recipient to the OptOutList. When set to true
-#' you're responsible for responding to HELP and STOP requests. You're also
-#' responsible for tracking and honoring opt-out requests.
-#' @param OptOutListName The OptOutList to add the phone number to. Valid values for this field
-#' can be either the OutOutListName or OutOutListArn.
+#' @param SelfManagedOptOutsEnabled By default this is set to false. When set to false and an end recipient
+#' sends a message that begins with HELP or STOP to one of your dedicated
+#' numbers, End User Messaging SMS automatically replies with a
+#' customizable message and adds the end recipient to the OptOutList. When
+#' set to true you're responsible for responding to HELP and STOP requests.
+#' You're also responsible for tracking and honoring opt-out requests.
+#' @param OptOutListName The OptOutList to add the phone number to. You can use either the opt
+#' out list name or the opt out list ARN.
+#' @param InternationalSendingEnabled By default this is set to false. When set to true the international
+#' sending of phone number is Enabled.
 #' @param DeletionProtectionEnabled By default this is set to false. When set to true the phone number can't
 #' be deleted.
 #'
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_update_phone_number
-pinpointsmsvoicev2_update_phone_number <- function(PhoneNumberId, TwoWayEnabled = NULL, TwoWayChannelArn = NULL, TwoWayChannelRole = NULL, SelfManagedOptOutsEnabled = NULL, OptOutListName = NULL, DeletionProtectionEnabled = NULL) {
+pinpointsmsvoicev2_update_phone_number <- function(PhoneNumberId, TwoWayEnabled = NULL, TwoWayChannelArn = NULL, TwoWayChannelRole = NULL, SelfManagedOptOutsEnabled = NULL, OptOutListName = NULL, InternationalSendingEnabled = NULL, DeletionProtectionEnabled = NULL) {
   op <- new_operation(
     name = "UpdatePhoneNumber",
     http_method = "POST",
@@ -3247,7 +3289,7 @@ pinpointsmsvoicev2_update_phone_number <- function(PhoneNumberId, TwoWayEnabled 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .pinpointsmsvoicev2$update_phone_number_input(PhoneNumberId = PhoneNumberId, TwoWayEnabled = TwoWayEnabled, TwoWayChannelArn = TwoWayChannelArn, TwoWayChannelRole = TwoWayChannelRole, SelfManagedOptOutsEnabled = SelfManagedOptOutsEnabled, OptOutListName = OptOutListName, DeletionProtectionEnabled = DeletionProtectionEnabled)
+  input <- .pinpointsmsvoicev2$update_phone_number_input(PhoneNumberId = PhoneNumberId, TwoWayEnabled = TwoWayEnabled, TwoWayChannelArn = TwoWayChannelArn, TwoWayChannelRole = TwoWayChannelRole, SelfManagedOptOutsEnabled = SelfManagedOptOutsEnabled, OptOutListName = OptOutListName, InternationalSendingEnabled = InternationalSendingEnabled, DeletionProtectionEnabled = DeletionProtectionEnabled)
   output <- .pinpointsmsvoicev2$update_phone_number_output()
   config <- get_config()
   svc <- .pinpointsmsvoicev2$service(config, op)
@@ -3267,24 +3309,24 @@ pinpointsmsvoicev2_update_phone_number <- function(PhoneNumberId, TwoWayEnabled 
 #' @param PoolId &#91;required&#93; The unique identifier of the pool to update. Valid values are either the
 #' PoolId or PoolArn.
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS resource then you must
+#' use the full Amazon Resource Name(ARN).
 #' @param TwoWayEnabled By default this is set to false. When set to true you can receive
 #' incoming text messages from your end recipients.
 #' @param TwoWayChannelArn The Amazon Resource Name (ARN) of the two way channel.
 #' @param TwoWayChannelRole An optional IAM Role Arn for a service to assume, to be able to post
 #' inbound SMS messages.
-#' @param SelfManagedOptOutsEnabled By default this is set to false. When an end recipient sends a message
-#' that begins with HELP or STOP to one of your dedicated numbers, AWS End
-#' User Messaging SMS and Voice automatically replies with a customizable
-#' message and adds the end recipient to the OptOutList. When set to true
-#' you're responsible for responding to HELP and STOP requests. You're also
-#' responsible for tracking and honoring opt-out requests.
+#' @param SelfManagedOptOutsEnabled By default this is set to false. When set to false and an end recipient
+#' sends a message that begins with HELP or STOP to one of your dedicated
+#' numbers, End User Messaging SMS automatically replies with a
+#' customizable message and adds the end recipient to the OptOutList. When
+#' set to true you're responsible for responding to HELP and STOP requests.
+#' You're also responsible for tracking and honoring opt-out requests.
 #' @param OptOutListName The OptOutList to associate with the pool. Valid values are either
 #' OptOutListName or OptOutListArn.
 #' 
-#' If you are using a shared AWS End User Messaging SMS and Voice resource
-#' then you must use the full Amazon Resource Name(ARN).
+#' If you are using a shared End User Messaging SMS resource then you must
+#' use the full Amazon Resource Name(ARN).
 #' @param SharedRoutesEnabled Indicates whether shared routes are enabled for the pool.
 #' @param DeletionProtectionEnabled When set to true the pool can't be deleted.
 #'
@@ -3358,7 +3400,7 @@ pinpointsmsvoicev2_update_protect_configuration <- function(ProtectConfiguration
 #' two-letter ISO country code. For a list of supported ISO country codes,
 #' see [Supported countries and regions (SMS
 #' channel)](https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-sms-by-country.html)
-#' in the AWS End User Messaging SMS User Guide.
+#' in the End User Messaging SMS User Guide.
 #' 
 #' For example, to set the United States as allowed and Canada as blocked,
 #' the `CountryRuleSetUpdates` would be formatted as:

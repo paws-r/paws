@@ -15,3 +15,7 @@ test_that("describe_repositories", {
 test_that("describe_repository_creation_templates", {
   expect_error(svc$describe_repository_creation_templates(), NA)
 })
+
+test_that("list_pull_time_update_exclusions", {
+  expect_error(svc$list_pull_time_update_exclusions(), NA)
+})

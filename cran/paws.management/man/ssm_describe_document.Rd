@@ -8,7 +8,11 @@
 ssm_describe_document(Name, DocumentVersion = NULL, VersionName = NULL)
 }
 \arguments{
-\item{Name}{[required] The name of the SSM document.}
+\item{Name}{[required] The name of the SSM document.
+
+If you're calling a shared SSM document from a different Amazon Web
+Services account, \code{Name} is the full Amazon Resource Name (ARN) of the
+document.}
 
 \item{DocumentVersion}{The document version for which you want information. Can be a specific
 version or the default version.}

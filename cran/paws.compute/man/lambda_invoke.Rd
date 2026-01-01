@@ -9,8 +9,10 @@ lambda_invoke(
   InvocationType = NULL,
   LogType = NULL,
   ClientContext = NULL,
+  DurableExecutionName = NULL,
   Payload = NULL,
-  Qualifier = NULL
+  Qualifier = NULL,
+  TenantId = NULL
 )
 }
 \arguments{
@@ -50,7 +52,13 @@ pass to the function in the context object. Lambda passes the
 \code{ClientContext} object to your function for synchronous invocations
 only.}
 
-\item{Payload}{The JSON that you want to provide to your Lambda function as input.
+\item{DurableExecutionName}{Optional unique name for the durable execution. When you start your
+special function, you can give it a unique name to identify this
+specific execution. It's like giving a nickname to a task.}
+
+\item{Payload}{The JSON that you want to provide to your Lambda function as input. The
+maximum payload size is 6 MB for synchronous invocations and 1 MB for
+asynchronous invocations.
 
 You can enter the JSON directly. For example,
 \verb{--payload '\{ "key": "value" \}'}. You can also specify a file path. For
@@ -58,6 +66,8 @@ example, \verb{--payload file://payload.json}.}
 
 \item{Qualifier}{Specify a version or alias to invoke a published version of the
 function.}
+
+\item{TenantId}{The identifier of the tenant in a multi-tenant Lambda function.}
 }
 \description{
 Invokes a Lambda function. You can invoke a function synchronously (and wait for the response), or asynchronously. By default, Lambda invokes your function synchronously (i.e. the\code{InvocationType} is \code{RequestResponse}). To invoke a function asynchronously, set \code{InvocationType} to \code{Event}. Lambda passes the \code{ClientContext} object to your function for synchronous invocations only.

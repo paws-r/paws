@@ -17,17 +17,16 @@ rds_copy_db_cluster_snapshot(
 \item{SourceDBClusterSnapshotIdentifier}{[required] The identifier of the DB cluster snapshot to copy. This parameter isn't
 case-sensitive.
 
-You can't copy an encrypted, shared DB cluster snapshot from one Amazon
-Web Services Region to another.
-
 Constraints:
 \itemize{
-\item Must specify a valid system snapshot in the "available" state.
+\item Must specify a valid source snapshot in the "available" state.
 \item If the source snapshot is in the same Amazon Web Services Region as
 the copy, specify a valid DB snapshot identifier.
 \item If the source snapshot is in a different Amazon Web Services Region
-than the copy, specify a valid DB cluster snapshot ARN. For more
-information, go to \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-copy-snapshot.html#USER_CopySnapshot.AcrossRegions}{Copying Snapshots Across Amazon Web Services Regions}
+than the copy, specify a valid DB cluster snapshot ARN. You can also
+specify an ARN of a snapshot that is in a different account and a
+different Amazon Web Services Region. For more information, go to
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-copy-snapshot.html#USER_CopySnapshot.AcrossRegions}{Copying Snapshots Across Amazon Web Services Regions}
 in the \emph{Amazon Aurora User Guide}.
 }
 

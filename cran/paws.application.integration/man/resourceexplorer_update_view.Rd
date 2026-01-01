@@ -5,12 +5,22 @@
 \title{Modifies some of the details of a view}
 \usage{
 resourceexplorer_update_view(
-  Filters = NULL,
+  ViewArn,
   IncludedProperties = NULL,
-  ViewArn
+  Filters = NULL
 )
 }
 \arguments{
+\item{ViewArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon resource name (ARN)}
+of the view that you want to modify.}
+
+\item{IncludedProperties}{Specifies optional fields that you want included in search results from
+this view. It is a list of objects that each describe a field to
+include.
+
+The default is an empty list, with no optional fields included in the
+results.}
+
 \item{Filters}{An array of strings that specify which resources are included in the
 results of queries made using this view. When you use this view in a
 \code{\link[=resourceexplorer_search]{search}} operation, the filter string is
@@ -27,16 +37,6 @@ It doesn't support free-form text. For example, the string
 \code{region:us* service:ec2 -tag:stage=prod} includes all Amazon EC2
 resources in any Amazon Web Services Region that begins with the letters
 \code{us} and is \emph{not} tagged with a key \code{Stage} that has the value \code{prod}.}
-
-\item{IncludedProperties}{Specifies optional fields that you want included in search results from
-this view. It is a list of objects that each describe a field to
-include.
-
-The default is an empty list, with no optional fields included in the
-results.}
-
-\item{ViewArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon resource name (ARN)}
-of the view that you want to modify.}
 }
 \description{
 Modifies some of the details of a view. You can change the filter string and the list of included properties. You can't change the name of the view.

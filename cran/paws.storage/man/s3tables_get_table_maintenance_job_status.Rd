@@ -9,12 +9,10 @@ s3tables_get_table_maintenance_job_status(tableBucketARN, namespace, name)
 \arguments{
 \item{tableBucketARN}{[required] The Amazon Resource Name (ARN) of the table bucket.}
 
-\item{namespace}{[required] The name of the namespace the table is associated with.
+\item{namespace}{[required] The name of the namespace the table is associated with.}
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{</p>
-}\if{html}{\out{</div>}}}
-
-\item{name}{[required] The name of the maintenance job.}
+\item{name}{[required] The name of the table containing the maintenance job status you want to
+check.}
 }
 \description{
 Gets the status of a maintenance job for a table. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-maintenance.html}{S3 Tables maintenance} in the \emph{Amazon Simple Storage Service User Guide}.

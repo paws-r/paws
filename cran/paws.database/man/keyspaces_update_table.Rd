@@ -17,7 +17,8 @@ keyspaces_update_table(
   defaultTimeToLive = NULL,
   clientSideTimestamps = NULL,
   autoScalingSpecification = NULL,
-  replicaSpecifications = NULL
+  replicaSpecifications = NULL,
+  cdcSpecification = NULL
 )
 }
 \arguments{
@@ -115,6 +116,8 @@ For more information, see \href{https://docs.aws.amazon.com/keyspaces/latest/dev
 in the \emph{Amazon Keyspaces Developer Guide}.}
 
 \item{replicaSpecifications}{The Region specific settings of a multi-Regional table.}
+
+\item{cdcSpecification}{The CDC stream settings of the table.}
 }
 \description{
 Adds new columns to the table or updates one of the table's settings, for example capacity mode, auto scaling, encryption, point-in-time recovery, or ttl settings. Note that you can only update one specific table setting per update operation.

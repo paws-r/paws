@@ -277,7 +277,8 @@ apprunner_create_service <- function(ServiceName, SourceConfiguration, InstanceC
 #' single Amazon VPC. App Runner determines the Amazon VPC from the subnets
 #' you specify.
 #' 
-#' App Runner currently only provides support for IPv4.
+#' App Runner only supports subnets of IP address type *IPv4* and *dual
+#' stack* (IPv4 and IPv6).
 #' @param SecurityGroups A list of IDs of security groups that App Runner should use for access
 #' to Amazon Web Services resources under the specified subnets. If not
 #' specified, App Runner uses the default security group of the Amazon VPC.

@@ -5,27 +5,27 @@
 \title{Returns a CIS scan list}
 \usage{
 inspector2_list_cis_scans(
-  detailLevel = NULL,
   filterCriteria = NULL,
-  maxResults = NULL,
-  nextToken = NULL,
+  detailLevel = NULL,
   sortBy = NULL,
-  sortOrder = NULL
+  sortOrder = NULL,
+  nextToken = NULL,
+  maxResults = NULL
 )
 }
 \arguments{
-\item{detailLevel}{The detail applied to the CIS scan.}
-
 \item{filterCriteria}{The CIS scan filter criteria.}
 
-\item{maxResults}{The maximum number of results to be returned.}
-
-\item{nextToken}{The pagination token from a previous request that's used to retrieve the
-next page of results.}
+\item{detailLevel}{The detail applied to the CIS scan.}
 
 \item{sortBy}{The CIS scans sort by order.}
 
 \item{sortOrder}{The CIS scans sort order.}
+
+\item{nextToken}{The pagination token from a previous request that's used to retrieve the
+next page of results.}
+
+\item{maxResults}{The maximum number of results to be returned.}
 }
 \description{
 Returns a CIS scan list.

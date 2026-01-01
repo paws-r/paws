@@ -459,7 +459,7 @@ transcribeservice_create_language_model <- function(LanguageCode, BaseModelName,
 #' ```
 #' list(
 #'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'   VocabularyState = "PENDING"|"READY"|"FAILED",
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
@@ -472,7 +472,7 @@ transcribeservice_create_language_model <- function(LanguageCode, BaseModelName,
 #' ```
 #' svc$create_medical_vocabulary(
 #'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'   VocabularyFileUri = "string",
 #'   Tags = list(
 #'     list(
@@ -596,7 +596,7 @@ transcribeservice_create_medical_vocabulary <- function(VocabularyName, Language
 #' ```
 #' list(
 #'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'   VocabularyState = "PENDING"|"READY"|"FAILED",
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
@@ -609,7 +609,7 @@ transcribeservice_create_medical_vocabulary <- function(VocabularyName, Language
 #' ```
 #' svc$create_vocabulary(
 #'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'   Phrases = list(
 #'     "string"
 #'   ),
@@ -739,7 +739,7 @@ transcribeservice_create_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #' ```
 #' list(
 #'   VocabularyFilterName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
 #'   )
@@ -750,7 +750,7 @@ transcribeservice_create_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #' ```
 #' svc$create_vocabulary_filter(
 #'   VocabularyFilterName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'   Words = list(
 #'     "string"
 #'   ),
@@ -1477,7 +1477,7 @@ transcribeservice_get_call_analytics_category <- function(CategoryName) {
 #'         )
 #'       )
 #'     ),
-#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'     MediaSampleRateHertz = 123,
 #'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm"|"m4a",
 #'     Media = list(
@@ -1513,7 +1513,7 @@ transcribeservice_get_call_analytics_category <- function(CategoryName) {
 #'         )
 #'       ),
 #'       LanguageOptions = list(
-#'         "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA"
+#'         "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA"
 #'       ),
 #'       LanguageIdSettings = list(
 #'         list(
@@ -1626,7 +1626,7 @@ transcribeservice_get_call_analytics_job <- function(CallAnalyticsJobName) {
 #'       VocabularyFilterName = "string",
 #'       VocabularyFilterMethod = "remove"|"mask"|"tag",
 #'       ClinicalNoteGenerationSettings = list(
-#'         NoteTemplate = "HISTORY_AND_PHYSICAL"|"GIRPP"
+#'         NoteTemplate = "HISTORY_AND_PHYSICAL"|"GIRPP"|"BIRP"|"SIRP"|"DAP"|"BEHAVIORAL_SOAP"|"PHYSICAL_SOAP"
 #'       )
 #'     ),
 #'     DataAccessRoleArn = "string",
@@ -1636,6 +1636,7 @@ transcribeservice_get_call_analytics_job <- function(CallAnalyticsJobName) {
 #'         ParticipantRole = "PATIENT"|"CLINICIAN"
 #'       )
 #'     ),
+#'     MedicalScribeContextProvided = TRUE|FALSE,
 #'     Tags = list(
 #'       list(
 #'         Key = "string",
@@ -1704,7 +1705,7 @@ transcribeservice_get_medical_scribe_job <- function(MedicalScribeJobName) {
 #'   MedicalTranscriptionJob = list(
 #'     MedicalTranscriptionJobName = "string",
 #'     TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
-#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'     MediaSampleRateHertz = 123,
 #'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm"|"m4a",
 #'     Media = list(
@@ -1799,7 +1800,7 @@ transcribeservice_get_medical_transcription_job <- function(MedicalTranscription
 #' ```
 #' list(
 #'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'   VocabularyState = "PENDING"|"READY"|"FAILED",
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
@@ -1869,7 +1870,7 @@ transcribeservice_get_medical_vocabulary <- function(VocabularyName) {
 #'   TranscriptionJob = list(
 #'     TranscriptionJobName = "string",
 #'     TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
-#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'     MediaSampleRateHertz = 123,
 #'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm"|"m4a",
 #'     Media = list(
@@ -1917,12 +1918,12 @@ transcribeservice_get_medical_vocabulary <- function(VocabularyName) {
 #'     IdentifyLanguage = TRUE|FALSE,
 #'     IdentifyMultipleLanguages = TRUE|FALSE,
 #'     LanguageOptions = list(
-#'       "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA"
+#'       "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA"
 #'     ),
 #'     IdentifiedLanguageScore = 123.0,
 #'     LanguageCodes = list(
 #'       list(
-#'         LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'         LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'         DurationInSeconds = 123.0
 #'       )
 #'     ),
@@ -2013,7 +2014,7 @@ transcribeservice_get_transcription_job <- function(TranscriptionJobName) {
 #' ```
 #' list(
 #'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'   VocabularyState = "PENDING"|"READY"|"FAILED",
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
@@ -2072,7 +2073,7 @@ transcribeservice_get_vocabulary <- function(VocabularyName) {
 #' ```
 #' list(
 #'   VocabularyFilterName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -2319,7 +2320,7 @@ transcribeservice_list_call_analytics_categories <- function(NextToken = NULL, M
 #'       CompletionTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'       CallAnalyticsJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
 #'       CallAnalyticsJobDetails = list(
 #'         Skipped = list(
@@ -2605,7 +2606,7 @@ transcribeservice_list_medical_scribe_jobs <- function(Status = NULL, JobNameCon
 #'       CompletionTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'       TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
 #'       FailureReason = "string",
 #'       OutputLocationType = "CUSTOMER_BUCKET"|"SERVICE_BUCKET",
@@ -2693,7 +2694,7 @@ transcribeservice_list_medical_transcription_jobs <- function(Status = NULL, Job
 #'   Vocabularies = list(
 #'     list(
 #'       VocabularyName = "string",
-#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'       LastModifiedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -2854,7 +2855,7 @@ transcribeservice_list_tags_for_resource <- function(ResourceArn) {
 #'       CompletionTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'       TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
 #'       FailureReason = "string",
 #'       OutputLocationType = "CUSTOMER_BUCKET"|"SERVICE_BUCKET",
@@ -2873,7 +2874,7 @@ transcribeservice_list_tags_for_resource <- function(ResourceArn) {
 #'       IdentifiedLanguageScore = 123.0,
 #'       LanguageCodes = list(
 #'         list(
-#'           LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'           LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'           DurationInSeconds = 123.0
 #'         )
 #'       ),
@@ -2963,7 +2964,7 @@ transcribeservice_list_transcription_jobs <- function(Status = NULL, JobNameCont
 #'   Vocabularies = list(
 #'     list(
 #'       VocabularyName = "string",
-#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'       LastModifiedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -3044,7 +3045,7 @@ transcribeservice_list_vocabularies <- function(NextToken = NULL, MaxResults = N
 #'   VocabularyFilters = list(
 #'     list(
 #'       VocabularyFilterName = "string",
-#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'       LastModifiedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -3178,40 +3179,21 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #' If you do not specify `OutputLocation`, your transcript is placed in a
 #' service-managed Amazon S3 bucket and you are provided with a URI to
 #' access your transcript.
-#' @param OutputEncryptionKMSKeyId The KMS key you want to use to encrypt your Call Analytics output.
+#' @param OutputEncryptionKMSKeyId The Amazon Resource Name (ARN) of a KMS key that you want to use to
+#' encrypt your Call Analytics output.
 #' 
-#' If using a key located in the **current** Amazon Web Services account,
-#' you can specify your KMS key in one of four ways:
-#' 
-#' 1.  Use the KMS key ID itself. For example,
-#'     `1234abcd-12ab-34cd-56ef-1234567890ab`.
-#' 
-#' 2.  Use an alias for the KMS key ID. For example, `alias/ExampleAlias`.
-#' 
-#' 3.  Use the Amazon Resource Name (ARN) for the KMS key ID. For example,
-#'     `arn:aws:kms:region:account-ID:key/1234abcd-12ab-34cd-56ef-1234567890ab`.
-#' 
-#' 4.  Use the ARN for the KMS key alias. For example,
-#'     `arn:aws:kms:region:account-ID:alias/ExampleAlias`.
-#' 
-#' If using a key located in a **different** Amazon Web Services account
-#' than the current Amazon Web Services account, you can specify your KMS
-#' key in one of two ways:
-#' 
-#' 1.  Use the ARN for the KMS key ID. For example,
-#'     `arn:aws:kms:region:account-ID:key/1234abcd-12ab-34cd-56ef-1234567890ab`.
-#' 
-#' 2.  Use the ARN for the KMS key alias. For example,
-#'     `arn:aws:kms:region:account-ID:alias/ExampleAlias`.
+#' KMS key ARNs have the format
+#' `arn:partition:kms:region:account:key/key-id`. For example:
+#' `arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`.
+#' For more information, see [KMS key
+#' ARNs](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN).
 #' 
 #' If you do not specify an encryption key, your output is encrypted with
 #' the default Amazon S3 key (SSE-S3).
 #' 
-#' If you specify a KMS key to encrypt your output, you must also specify
-#' an output location using the `OutputLocation` parameter.
-#' 
-#' Note that the role making the request must have permission to use the
-#' specified KMS key.
+#' Note that the role making the request and the role specified in the
+#' `DataAccessRoleArn` request parameter (if present) must have permission
+#' to use the specified KMS key.
 #' @param DataAccessRoleArn The Amazon Resource Name (ARN) of an IAM role that has permissions to
 #' access the Amazon S3 bucket that contains your input files. If the role
 #' that you specify doesn’t have the appropriate permissions to access the
@@ -3252,7 +3234,7 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #'         )
 #'       )
 #'     ),
-#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'     MediaSampleRateHertz = 123,
 #'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm"|"m4a",
 #'     Media = list(
@@ -3288,7 +3270,7 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #'         )
 #'       ),
 #'       LanguageOptions = list(
-#'         "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA"
+#'         "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA"
 #'       ),
 #'       LanguageIdSettings = list(
 #'         list(
@@ -3341,7 +3323,7 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #'       )
 #'     ),
 #'     LanguageOptions = list(
-#'       "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA"
+#'       "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA"
 #'     ),
 #'     LanguageIdSettings = list(
 #'       list(
@@ -3431,7 +3413,7 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 #' -   `OutputBucketName`: The Amazon S3 bucket where you want your output
 #'     files stored.
 #' 
-#' -   `Settings`: A `MedicalScribeSettings` obect that must set exactly
+#' -   `Settings`: A `MedicalScribeSettings` object that must set exactly
 #'     one of `ShowSpeakerLabels` or `ChannelIdentification` to true. If
 #'     `ShowSpeakerLabels` is true, `MaxSpeakerLabels` must also be set.
 #' 
@@ -3442,7 +3424,8 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 #' @usage
 #' transcribeservice_start_medical_scribe_job(MedicalScribeJobName, Media,
 #'   OutputBucketName, OutputEncryptionKMSKeyId, KMSEncryptionContext,
-#'   DataAccessRoleArn, Settings, ChannelDefinitions, Tags)
+#'   DataAccessRoleArn, Settings, ChannelDefinitions, Tags,
+#'   MedicalScribeContext)
 #'
 #' @param MedicalScribeJobName &#91;required&#93; A unique name, chosen by you, for your Medical Scribe job.
 #' 
@@ -3460,37 +3443,21 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 #' change Amazon S3 permissions using the Amazon Web Services Management
 #' Console. See also [Permissions Required for IAM User
 #' Roles](https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user).
-#' @param OutputEncryptionKMSKeyId The KMS key you want to use to encrypt your Medical Scribe output.
+#' @param OutputEncryptionKMSKeyId The Amazon Resource Name (ARN) of a KMS key that you want to use to
+#' encrypt your Medical Scribe output.
 #' 
-#' If using a key located in the **current** Amazon Web Services account,
-#' you can specify your KMS key in one of four ways:
-#' 
-#' 1.  Use the KMS key ID itself. For example,
-#'     `1234abcd-12ab-34cd-56ef-1234567890ab`.
-#' 
-#' 2.  Use an alias for the KMS key ID. For example, `alias/ExampleAlias`.
-#' 
-#' 3.  Use the Amazon Resource Name (ARN) for the KMS key ID. For example,
-#'     `arn:aws:kms:region:account-ID:key/1234abcd-12ab-34cd-56ef-1234567890ab`.
-#' 
-#' 4.  Use the ARN for the KMS key alias. For example,
-#'     `arn:aws:kms:region:account-ID:alias/ExampleAlias`.
-#' 
-#' If using a key located in a **different** Amazon Web Services account
-#' than the current Amazon Web Services account, you can specify your KMS
-#' key in one of two ways:
-#' 
-#' 1.  Use the ARN for the KMS key ID. For example,
-#'     `arn:aws:kms:region:account-ID:key/1234abcd-12ab-34cd-56ef-1234567890ab`.
-#' 
-#' 2.  Use the ARN for the KMS key alias. For example,
-#'     `arn:aws:kms:region:account-ID:alias/ExampleAlias`.
+#' KMS key ARNs have the format
+#' `arn:partition:kms:region:account:key/key-id`. For example:
+#' `arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`.
+#' For more information, see [KMS key
+#' ARNs](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN).
 #' 
 #' If you do not specify an encryption key, your output is encrypted with
 #' the default Amazon S3 key (SSE-S3).
 #' 
-#' Note that the role specified in the `DataAccessRoleArn` request
-#' parameter must have permission to use the specified KMS key.
+#' Note that the role making the request and the role specified in the
+#' `DataAccessRoleArn` request parameter (if present) must have permission
+#' to use the specified KMS key.
 #' @param KMSEncryptionContext A map of plain text, non-secret key:value pairs, known as encryption
 #' context pairs, that provide an added layer of security for your data.
 #' For more information, see [KMS encryption
@@ -3526,10 +3493,13 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 #' indicate the second channel) and `ParticipantRole` to `PATIENT` (to
 #' indicate that it's the patient speaking).
 #' @param Tags Adds one or more custom tags, each in the form of a key:value pair, to
-#' the Medica Scribe job.
+#' the Medical Scribe job.
 #' 
 #' To learn more about using tags with Amazon Transcribe, refer to [Tagging
 #' resources](https://docs.aws.amazon.com/transcribe/latest/dg/tagging.html).
+#' @param MedicalScribeContext The `MedicalScribeContext` object that contains contextual information
+#' which is used during clinical note generation to add relevant context to
+#' the note.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3565,7 +3535,7 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 #'       VocabularyFilterName = "string",
 #'       VocabularyFilterMethod = "remove"|"mask"|"tag",
 #'       ClinicalNoteGenerationSettings = list(
-#'         NoteTemplate = "HISTORY_AND_PHYSICAL"|"GIRPP"
+#'         NoteTemplate = "HISTORY_AND_PHYSICAL"|"GIRPP"|"BIRP"|"SIRP"|"DAP"|"BEHAVIORAL_SOAP"|"PHYSICAL_SOAP"
 #'       )
 #'     ),
 #'     DataAccessRoleArn = "string",
@@ -3575,6 +3545,7 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 #'         ParticipantRole = "PATIENT"|"CLINICIAN"
 #'       )
 #'     ),
+#'     MedicalScribeContextProvided = TRUE|FALSE,
 #'     Tags = list(
 #'       list(
 #'         Key = "string",
@@ -3607,7 +3578,7 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 #'     VocabularyFilterName = "string",
 #'     VocabularyFilterMethod = "remove"|"mask"|"tag",
 #'     ClinicalNoteGenerationSettings = list(
-#'       NoteTemplate = "HISTORY_AND_PHYSICAL"|"GIRPP"
+#'       NoteTemplate = "HISTORY_AND_PHYSICAL"|"GIRPP"|"BIRP"|"SIRP"|"DAP"|"BEHAVIORAL_SOAP"|"PHYSICAL_SOAP"
 #'     )
 #'   ),
 #'   ChannelDefinitions = list(
@@ -3621,6 +3592,11 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 #'       Key = "string",
 #'       Value = "string"
 #'     )
+#'   ),
+#'   MedicalScribeContext = list(
+#'     PatientContext = list(
+#'       Pronouns = "HE_HIM"|"SHE_HER"|"THEY_THEM"
+#'     )
 #'   )
 #' )
 #' ```
@@ -3630,7 +3606,7 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 #' @rdname transcribeservice_start_medical_scribe_job
 #'
 #' @aliases transcribeservice_start_medical_scribe_job
-transcribeservice_start_medical_scribe_job <- function(MedicalScribeJobName, Media, OutputBucketName, OutputEncryptionKMSKeyId = NULL, KMSEncryptionContext = NULL, DataAccessRoleArn, Settings, ChannelDefinitions = NULL, Tags = NULL) {
+transcribeservice_start_medical_scribe_job <- function(MedicalScribeJobName, Media, OutputBucketName, OutputEncryptionKMSKeyId = NULL, KMSEncryptionContext = NULL, DataAccessRoleArn, Settings, ChannelDefinitions = NULL, Tags = NULL, MedicalScribeContext = NULL) {
   op <- new_operation(
     name = "StartMedicalScribeJob",
     http_method = "POST",
@@ -3639,7 +3615,7 @@ transcribeservice_start_medical_scribe_job <- function(MedicalScribeJobName, Med
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .transcribeservice$start_medical_scribe_job_input(MedicalScribeJobName = MedicalScribeJobName, Media = Media, OutputBucketName = OutputBucketName, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, KMSEncryptionContext = KMSEncryptionContext, DataAccessRoleArn = DataAccessRoleArn, Settings = Settings, ChannelDefinitions = ChannelDefinitions, Tags = Tags)
+  input <- .transcribeservice$start_medical_scribe_job_input(MedicalScribeJobName = MedicalScribeJobName, Media = Media, OutputBucketName = OutputBucketName, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, KMSEncryptionContext = KMSEncryptionContext, DataAccessRoleArn = DataAccessRoleArn, Settings = Settings, ChannelDefinitions = ChannelDefinitions, Tags = Tags, MedicalScribeContext = MedicalScribeContext)
   output <- .transcribeservice$start_medical_scribe_job_output()
   config <- get_config()
   svc <- .transcribeservice$service(config, op)
@@ -3776,41 +3752,21 @@ transcribeservice_start_medical_scribe_job <- function(MedicalScribeJobName, Med
 #' 
 #' If you specify the name of an Amazon S3 bucket sub-folder that doesn't
 #' exist, one is created for you.
-#' @param OutputEncryptionKMSKeyId The KMS key you want to use to encrypt your medical transcription
-#' output.
+#' @param OutputEncryptionKMSKeyId The Amazon Resource Name (ARN) of a KMS key that you want to use to
+#' encrypt your medical transcription output.
 #' 
-#' If using a key located in the **current** Amazon Web Services account,
-#' you can specify your KMS key in one of four ways:
-#' 
-#' 1.  Use the KMS key ID itself. For example,
-#'     `1234abcd-12ab-34cd-56ef-1234567890ab`.
-#' 
-#' 2.  Use an alias for the KMS key ID. For example, `alias/ExampleAlias`.
-#' 
-#' 3.  Use the Amazon Resource Name (ARN) for the KMS key ID. For example,
-#'     `arn:aws:kms:region:account-ID:key/1234abcd-12ab-34cd-56ef-1234567890ab`.
-#' 
-#' 4.  Use the ARN for the KMS key alias. For example,
-#'     `arn:aws:kms:region:account-ID:alias/ExampleAlias`.
-#' 
-#' If using a key located in a **different** Amazon Web Services account
-#' than the current Amazon Web Services account, you can specify your KMS
-#' key in one of two ways:
-#' 
-#' 1.  Use the ARN for the KMS key ID. For example,
-#'     `arn:aws:kms:region:account-ID:key/1234abcd-12ab-34cd-56ef-1234567890ab`.
-#' 
-#' 2.  Use the ARN for the KMS key alias. For example,
-#'     `arn:aws:kms:region:account-ID:alias/ExampleAlias`.
+#' KMS key ARNs have the format
+#' `arn:partition:kms:region:account:key/key-id`. For example:
+#' `arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`.
+#' For more information, see [KMS key
+#' ARNs](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN).
 #' 
 #' If you do not specify an encryption key, your output is encrypted with
 #' the default Amazon S3 key (SSE-S3).
 #' 
-#' If you specify a KMS key to encrypt your output, you must also specify
-#' an output location using the `OutputLocation` parameter.
-#' 
-#' Note that the role making the request must have permission to use the
-#' specified KMS key.
+#' Note that the role making the request and the role specified in the
+#' `DataAccessRoleArn` request parameter (if present) must have permission
+#' to use the specified KMS key.
 #' @param KMSEncryptionContext A map of plain text, non-secret key:value pairs, known as encryption
 #' context pairs, that provide an added layer of security for your data.
 #' For more information, see [KMS encryption
@@ -3847,7 +3803,7 @@ transcribeservice_start_medical_scribe_job <- function(MedicalScribeJobName, Med
 #'   MedicalTranscriptionJob = list(
 #'     MedicalTranscriptionJobName = "string",
 #'     TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
-#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'     MediaSampleRateHertz = 123,
 #'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm"|"m4a",
 #'     Media = list(
@@ -3892,7 +3848,7 @@ transcribeservice_start_medical_scribe_job <- function(MedicalScribeJobName, Med
 #' ```
 #' svc$start_medical_transcription_job(
 #'   MedicalTranscriptionJobName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'   MediaSampleRateHertz = 123,
 #'   MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm"|"m4a",
 #'   Media = list(
@@ -4088,40 +4044,21 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' 
 #' If you specify the name of an Amazon S3 bucket sub-folder that doesn't
 #' exist, one is created for you.
-#' @param OutputEncryptionKMSKeyId The KMS key you want to use to encrypt your transcription output.
+#' @param OutputEncryptionKMSKeyId The Amazon Resource Name (ARN) of a KMS key that you want to use to
+#' encrypt your transcription output.
 #' 
-#' If using a key located in the **current** Amazon Web Services account,
-#' you can specify your KMS key in one of four ways:
-#' 
-#' 1.  Use the KMS key ID itself. For example,
-#'     `1234abcd-12ab-34cd-56ef-1234567890ab`.
-#' 
-#' 2.  Use an alias for the KMS key ID. For example, `alias/ExampleAlias`.
-#' 
-#' 3.  Use the Amazon Resource Name (ARN) for the KMS key ID. For example,
-#'     `arn:aws:kms:region:account-ID:key/1234abcd-12ab-34cd-56ef-1234567890ab`.
-#' 
-#' 4.  Use the ARN for the KMS key alias. For example,
-#'     `arn:aws:kms:region:account-ID:alias/ExampleAlias`.
-#' 
-#' If using a key located in a **different** Amazon Web Services account
-#' than the current Amazon Web Services account, you can specify your KMS
-#' key in one of two ways:
-#' 
-#' 1.  Use the ARN for the KMS key ID. For example,
-#'     `arn:aws:kms:region:account-ID:key/1234abcd-12ab-34cd-56ef-1234567890ab`.
-#' 
-#' 2.  Use the ARN for the KMS key alias. For example,
-#'     `arn:aws:kms:region:account-ID:alias/ExampleAlias`.
+#' KMS key ARNs have the format
+#' `arn:partition:kms:region:account:key/key-id`. For example:
+#' `arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`.
+#' For more information, see [KMS key
+#' ARNs](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN).
 #' 
 #' If you do not specify an encryption key, your output is encrypted with
 #' the default Amazon S3 key (SSE-S3).
 #' 
-#' If you specify a KMS key to encrypt your output, you must also specify
-#' an output location using the `OutputLocation` parameter.
-#' 
-#' Note that the role making the request must have permission to use the
-#' specified KMS key.
+#' Note that the role making the request and the role specified in the
+#' `DataAccessRoleArn` request parameter (if present) must have permission
+#' to use the specified KMS key.
 #' @param KMSEncryptionContext A map of plain text, non-secret key:value pairs, known as encryption
 #' context pairs, that provide an added layer of security for your data.
 #' For more information, see [KMS encryption
@@ -4269,7 +4206,7 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #'   TranscriptionJob = list(
 #'     TranscriptionJobName = "string",
 #'     TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
-#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'     MediaSampleRateHertz = 123,
 #'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm"|"m4a",
 #'     Media = list(
@@ -4317,12 +4254,12 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #'     IdentifyLanguage = TRUE|FALSE,
 #'     IdentifyMultipleLanguages = TRUE|FALSE,
 #'     LanguageOptions = list(
-#'       "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA"
+#'       "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA"
 #'     ),
 #'     IdentifiedLanguageScore = 123.0,
 #'     LanguageCodes = list(
 #'       list(
-#'         LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'         LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'         DurationInSeconds = 123.0
 #'       )
 #'     ),
@@ -4363,7 +4300,7 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' ```
 #' svc$start_transcription_job(
 #'   TranscriptionJobName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'   MediaSampleRateHertz = 123,
 #'   MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm"|"m4a",
 #'   Media = list(
@@ -4403,7 +4340,7 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #'   IdentifyLanguage = TRUE|FALSE,
 #'   IdentifyMultipleLanguages = TRUE|FALSE,
 #'   LanguageOptions = list(
-#'     "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA"
+#'     "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA"
 #'   ),
 #'   Subtitles = list(
 #'     Formats = list(
@@ -4849,7 +4786,7 @@ transcribeservice_update_call_analytics_category <- function(CategoryName, Rules
 #' ```
 #' list(
 #'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -4861,7 +4798,7 @@ transcribeservice_update_call_analytics_category <- function(CategoryName, Rules
 #' ```
 #' svc$update_medical_vocabulary(
 #'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'   VocabularyFileUri = "string"
 #' )
 #' ```
@@ -4958,7 +4895,7 @@ transcribeservice_update_medical_vocabulary <- function(VocabularyName, Language
 #' ```
 #' list(
 #'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -4970,7 +4907,7 @@ transcribeservice_update_medical_vocabulary <- function(VocabularyName, Language
 #' ```
 #' svc$update_vocabulary(
 #'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'   Phrases = list(
 #'     "string"
 #'   ),
@@ -5059,7 +4996,7 @@ transcribeservice_update_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #' ```
 #' list(
 #'   VocabularyFilterName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-EE"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zh-HK"|"zu-ZA",
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
 #'   )

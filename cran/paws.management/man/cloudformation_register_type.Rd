@@ -36,7 +36,7 @@ your extension names:
 \item \code{Dev}
 }}
 
-\item{SchemaHandlerPackage}{[required] A URL to the S3 bucket containing the extension project package that
+\item{SchemaHandlerPackage}{[required] A URL to the S3 bucket that contains the extension project package that
 contains the necessary files for the extension you want to register.
 
 For information about generating a schema handler package for the

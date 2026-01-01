@@ -22,17 +22,17 @@ Region for each Amazon Web Services account.}
 
 \item{Name}{[required] A display name for the data source.}
 
-\item{DataSourceParameters}{The parameters that Amazon QuickSight uses to connect to your underlying
-source.}
+\item{DataSourceParameters}{The parameters that Amazon Quick Sight uses to connect to your
+underlying source.}
 
-\item{Credentials}{The credentials that Amazon QuickSight that uses to connect to your
+\item{Credentials}{The credentials that Amazon Quick Sight that uses to connect to your
 underlying source. Currently, only credentials based on user name and
 password are supported.}
 
-\item{VpcConnectionProperties}{Use this parameter only when you want Amazon QuickSight to use a VPC
+\item{VpcConnectionProperties}{Use this parameter only when you want Amazon Quick Sight to use a VPC
 connection when connecting to your underlying source.}
 
-\item{SslProperties}{Secure Socket Layer (SSL) properties that apply when Amazon QuickSight
+\item{SslProperties}{Secure Socket Layer (SSL) properties that apply when Amazon Quick Sight
 connects to your underlying source.}
 }
 \description{

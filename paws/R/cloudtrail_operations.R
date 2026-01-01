@@ -688,10 +688,10 @@ cloudtrail_create_event_data_store <- function(Name, AdvancedEventSelectors = NU
 #' Not required unless you specify `CloudWatchLogsRoleArn`.
 #' @param CloudWatchLogsRoleArn Specifies the role for the CloudWatch Logs endpoint to assume to write
 #' to a user's log group. You must use a role that exists in your account.
-#' @param KmsKeyId Specifies the KMS key ID to use to encrypt the logs delivered by
-#' CloudTrail. The value can be an alias name prefixed by `alias/`, a fully
-#' specified ARN to an alias, a fully specified ARN to a key, or a globally
-#' unique identifier.
+#' @param KmsKeyId Specifies the KMS key ID to use to encrypt the logs and digest files
+#' delivered by CloudTrail. The value can be an alias name prefixed by
+#' `alias/`, a fully specified ARN to an alias, a fully specified ARN to a
+#' key, or a globally unique identifier.
 #' 
 #' CloudTrail also supports KMS multi-Region keys. For more information
 #' about multi-Region keys, see [Using multi-Region
@@ -996,6 +996,20 @@ cloudtrail_delete_resource_policy <- function(ResourceArn) {
 #' the trail was created. [`delete_trail`][cloudtrail_delete_trail] cannot
 #' be called on the shadow trails (replicated trails in other Regions) of a
 #' trail that is enabled in all Regions.
+#' 
+#' While deleting a CloudTrail trail is an irreversible action, CloudTrail
+#' does not delete log files in the Amazon S3 bucket for that trail, the
+#' Amazon S3 bucket itself, or the CloudWatchlog group to which the trail
+#' delivers events. Deleting a multi-Region trail will stop logging of
+#' events in all Amazon Web Services Regions enabled in your Amazon Web
+#' Services account. Deleting a single-Region trail will stop logging of
+#' events in that Region only. It will not stop logging of events in other
+#' Regions even if the trails in those other Regions have identical names
+#' to the deleted trail.
+#' 
+#' For information about account closure and deletion of CloudTrail trails,
+#' see
+#' <https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-account-closure.html>.
 #'
 #' @usage
 #' cloudtrail_delete_trail(Name)
@@ -1659,6 +1673,81 @@ cloudtrail_get_dashboard <- function(DashboardId) {
 }
 .cloudtrail$operations$get_dashboard <- cloudtrail_get_dashboard
 
+#' Retrieves the current event configuration settings for the specified
+#' event data store or trail
+#'
+#' @description
+#' Retrieves the current event configuration settings for the specified
+#' event data store or trail. The response includes maximum event size
+#' configuration, the context key selectors configured for the event data
+#' store, and any aggregation settings configured for the trail.
+#'
+#' @usage
+#' cloudtrail_get_event_configuration(TrailName, EventDataStore)
+#'
+#' @param TrailName The name of the trail for which you want to retrieve event configuration
+#' settings.
+#' @param EventDataStore The Amazon Resource Name (ARN) or ID suffix of the ARN of the event data
+#' store for which you want to retrieve event configuration settings.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrailARN = "string",
+#'   EventDataStoreArn = "string",
+#'   MaxEventSize = "Standard"|"Large",
+#'   ContextKeySelectors = list(
+#'     list(
+#'       Type = "TagContext"|"RequestContext",
+#'       Equals = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   AggregationConfigurations = list(
+#'     list(
+#'       Templates = list(
+#'         "API_ACTIVITY"|"RESOURCE_ACCESS"|"USER_ACTIONS"
+#'       ),
+#'       EventCategory = "Data"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_event_configuration(
+#'   TrailName = "string",
+#'   EventDataStore = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudtrail_get_event_configuration
+#'
+#' @aliases cloudtrail_get_event_configuration
+cloudtrail_get_event_configuration <- function(TrailName = NULL, EventDataStore = NULL) {
+  op <- new_operation(
+    name = "GetEventConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudtrail$get_event_configuration_input(TrailName = TrailName, EventDataStore = EventDataStore)
+  output <- .cloudtrail$get_event_configuration_output()
+  config <- get_config()
+  svc <- .cloudtrail$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudtrail$operations$get_event_configuration <- cloudtrail_get_event_configuration
+
 #' Returns information about an event data store specified as either an ARN
 #' or the ID portion of the ARN
 #'
@@ -1986,8 +2075,8 @@ cloudtrail_get_import <- function(ImportId) {
 #' Describes the settings for the Insights event selectors that you
 #' configured for your trail or event data store.
 #' [`get_insight_selectors`][cloudtrail_get_insight_selectors] shows if
-#' CloudTrail Insights event logging is enabled on the trail or event data
-#' store, and if it is, which Insights types are enabled. If you run
+#' CloudTrail Insights logging is enabled and which Insights types are
+#' configured with corresponding event categories. If you run
 #' [`get_insight_selectors`][cloudtrail_get_insight_selectors] on a trail
 #' or event data store that does not have Insights events enabled, the
 #' operation throws the exception `InsightNotEnabledException`
@@ -2036,7 +2125,10 @@ cloudtrail_get_import <- function(ImportId) {
 #'   TrailARN = "string",
 #'   InsightSelectors = list(
 #'     list(
-#'       InsightType = "ApiCallRateInsight"|"ApiErrorRateInsight"
+#'       InsightType = "ApiCallRateInsight"|"ApiErrorRateInsight",
+#'       EventCategories = list(
+#'         "Management"|"Data"
+#'       )
 #'     )
 #'   ),
 #'   EventDataStoreArn = "string",
@@ -2729,6 +2821,124 @@ cloudtrail_list_imports <- function(MaxResults = NULL, Destination = NULL, Impor
 }
 .cloudtrail$operations$list_imports <- cloudtrail_list_imports
 
+#' Returns Insights events generated on a trail that logs data events
+#'
+#' @description
+#' Returns Insights events generated on a trail that logs data events. You
+#' can list Insights events that occurred in a Region within the last 90
+#' days.
+#' 
+#' ListInsightsData supports the following Dimensions for Insights events:
+#' 
+#' -   Event ID
+#' 
+#' -   Event name
+#' 
+#' -   Event source
+#' 
+#' All dimensions are optional. The default number of results returned is
+#' 50, with a maximum of 50 possible. The response includes a token that
+#' you can use to get the next page of results.
+#' 
+#' The rate of ListInsightsData requests is limited to two per second, per
+#' account, per Region. If this limit is exceeded, a throttling error
+#' occurs.
+#'
+#' @usage
+#' cloudtrail_list_insights_data(InsightSource, DataType, Dimensions,
+#'   StartTime, EndTime, MaxResults, NextToken)
+#'
+#' @param InsightSource &#91;required&#93; The Amazon Resource Name(ARN) of the trail for which you want to
+#' retrieve Insights events.
+#' @param DataType &#91;required&#93; Specifies the category of events returned. To fetch Insights events,
+#' specify `InsightsEvents` as the value of `DataType`
+#' @param Dimensions Contains a map of dimensions. Currently the map can contain only one
+#' item.
+#' @param StartTime Specifies that only events that occur after or at the specified time are
+#' returned. If the specified start time is after the specified end time,
+#' an error is returned.
+#' @param EndTime Specifies that only events that occur before or at the specified time
+#' are returned. If the specified end time is before the specified start
+#' time, an error is returned.
+#' @param MaxResults The number of events to return. Possible values are 1 through 50. The
+#' default is 50.
+#' @param NextToken The token to use to get the next page of results after a previous API
+#' call. This token must be passed in with the same parameters that were
+#' specified in the original call. For example, if the original call
+#' specified a EventName as a dimension with `PutObject` as a value, the
+#' call with NextToken should include those same parameters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Events = list(
+#'     list(
+#'       EventId = "string",
+#'       EventName = "string",
+#'       ReadOnly = "string",
+#'       AccessKeyId = "string",
+#'       EventTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EventSource = "string",
+#'       Username = "string",
+#'       Resources = list(
+#'         list(
+#'           ResourceType = "string",
+#'           ResourceName = "string"
+#'         )
+#'       ),
+#'       CloudTrailEvent = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_insights_data(
+#'   InsightSource = "string",
+#'   DataType = "InsightsEvents",
+#'   Dimensions = list(
+#'     "string"
+#'   ),
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudtrail_list_insights_data
+#'
+#' @aliases cloudtrail_list_insights_data
+cloudtrail_list_insights_data <- function(InsightSource, DataType, Dimensions = NULL, StartTime = NULL, EndTime = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListInsightsData",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Events"),
+    stream_api = FALSE
+  )
+  input <- .cloudtrail$list_insights_data_input(InsightSource = InsightSource, DataType = DataType, Dimensions = Dimensions, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .cloudtrail$list_insights_data_output()
+  config <- get_config()
+  svc <- .cloudtrail$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudtrail$operations$list_insights_data <- cloudtrail_list_insights_data
+
 #' Returns Insights metrics data for trails that have enabled Insights
 #'
 #' @description
@@ -2752,17 +2962,37 @@ cloudtrail_list_imports <- function(MaxResults = NULL, Destination = NULL, Impor
 #' -   Data points with a period of 3600 seconds (1 hour) are available for
 #'     90 days.
 #' 
-#' Access to the
-#' [`list_insights_metric_data`][cloudtrail_list_insights_metric_data] API
-#' operation is linked to the `cloudtrail:LookupEvents` action. To use this
-#' operation, you must have permissions to perform the
-#' `cloudtrail:LookupEvents` action.
+#' To use
+#' [`list_insights_metric_data`][cloudtrail_list_insights_metric_data]
+#' operation, you must have the following permissions:
+#' 
+#' -   If
+#'     [`list_insights_metric_data`][cloudtrail_list_insights_metric_data]
+#'     is invoked with `TrailName` parameter, access to the
+#'     [`list_insights_metric_data`][cloudtrail_list_insights_metric_data]
+#'     API operation is linked to the `cloudtrail:LookupEvents` action and
+#'     `cloudtrail:ListInsightsData`. To use this operation, you must have
+#'     permissions to perform the `cloudtrail:LookupEvents` and
+#'     `cloudtrail:ListInsightsData` action on the specific trail.
+#' 
+#' -   If
+#'     [`list_insights_metric_data`][cloudtrail_list_insights_metric_data]
+#'     is invoked without `TrailName` parameter, access to the
+#'     [`list_insights_metric_data`][cloudtrail_list_insights_metric_data]
+#'     API operation is linked to the `cloudtrail:LookupEvents` action
+#'     only. To use this operation, you must have permissions to perform
+#'     the `cloudtrail:LookupEvents` action.
 #'
 #' @usage
-#' cloudtrail_list_insights_metric_data(EventSource, EventName,
+#' cloudtrail_list_insights_metric_data(TrailName, EventSource, EventName,
 #'   InsightType, ErrorCode, StartTime, EndTime, Period, DataType,
 #'   MaxResults, NextToken)
 #'
+#' @param TrailName The Amazon Resource Name(ARN) or name of the trail for which you want to
+#' retrieve Insights metrics data. This parameter should only be provided
+#' to fetch Insights metrics data generated on trails logging data events.
+#' This parameter is not required for Insights metric data generated on
+#' trails logging management events.
 #' @param EventSource &#91;required&#93; The Amazon Web Services service to which the request was made, such as
 #' `iam.amazonaws.com` or `s3.amazonaws.com`.
 #' @param EventName &#91;required&#93; The name of the event, typically the Amazon Web Services API on which
@@ -2805,6 +3035,7 @@ cloudtrail_list_imports <- function(MaxResults = NULL, Destination = NULL, Impor
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   TrailARN = "string",
 #'   EventSource = "string",
 #'   EventName = "string",
 #'   InsightType = "ApiCallRateInsight"|"ApiErrorRateInsight",
@@ -2824,6 +3055,7 @@ cloudtrail_list_imports <- function(MaxResults = NULL, Destination = NULL, Impor
 #' @section Request syntax:
 #' ```
 #' svc$list_insights_metric_data(
+#'   TrailName = "string",
 #'   EventSource = "string",
 #'   EventName = "string",
 #'   InsightType = "ApiCallRateInsight"|"ApiErrorRateInsight",
@@ -2846,7 +3078,7 @@ cloudtrail_list_imports <- function(MaxResults = NULL, Destination = NULL, Impor
 #' @rdname cloudtrail_list_insights_metric_data
 #'
 #' @aliases cloudtrail_list_insights_metric_data
-cloudtrail_list_insights_metric_data <- function(EventSource, EventName, InsightType, ErrorCode = NULL, StartTime = NULL, EndTime = NULL, Period = NULL, DataType = NULL, MaxResults = NULL, NextToken = NULL) {
+cloudtrail_list_insights_metric_data <- function(TrailName = NULL, EventSource, EventName, InsightType, ErrorCode = NULL, StartTime = NULL, EndTime = NULL, Period = NULL, DataType = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListInsightsMetricData",
     http_method = "POST",
@@ -2855,7 +3087,7 @@ cloudtrail_list_insights_metric_data <- function(EventSource, EventName, Insight
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
-  input <- .cloudtrail$list_insights_metric_data_input(EventSource = EventSource, EventName = EventName, InsightType = InsightType, ErrorCode = ErrorCode, StartTime = StartTime, EndTime = EndTime, Period = Period, DataType = DataType, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .cloudtrail$list_insights_metric_data_input(TrailName = TrailName, EventSource = EventSource, EventName = EventName, InsightType = InsightType, ErrorCode = ErrorCode, StartTime = StartTime, EndTime = EndTime, Period = Period, DataType = DataType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudtrail$list_insights_metric_data_output()
   config <- get_config()
   svc <- .cloudtrail$service(config, op)
@@ -3317,6 +3549,106 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
 }
 .cloudtrail$operations$lookup_events <- cloudtrail_lookup_events
 
+#' Updates the event configuration settings for the specified event data
+#' store or trail
+#'
+#' @description
+#' Updates the event configuration settings for the specified event data
+#' store or trail. This operation supports updating the maximum event size,
+#' adding or modifying context key selectors for event data store, and
+#' configuring aggregation settings for the trail.
+#'
+#' @usage
+#' cloudtrail_put_event_configuration(TrailName, EventDataStore,
+#'   MaxEventSize, ContextKeySelectors, AggregationConfigurations)
+#'
+#' @param TrailName The name of the trail for which you want to update event configuration
+#' settings.
+#' @param EventDataStore The Amazon Resource Name (ARN) or ID suffix of the ARN of the event data
+#' store for which event configuration settings are updated.
+#' @param MaxEventSize The maximum allowed size for events to be stored in the specified event
+#' data store. If you are using context key selectors, MaxEventSize must be
+#' set to Large.
+#' @param ContextKeySelectors A list of context key selectors that will be included to provide
+#' enriched event data.
+#' @param AggregationConfigurations The list of aggregation configurations that you want to configure for
+#' the trail.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrailARN = "string",
+#'   EventDataStoreArn = "string",
+#'   MaxEventSize = "Standard"|"Large",
+#'   ContextKeySelectors = list(
+#'     list(
+#'       Type = "TagContext"|"RequestContext",
+#'       Equals = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   AggregationConfigurations = list(
+#'     list(
+#'       Templates = list(
+#'         "API_ACTIVITY"|"RESOURCE_ACCESS"|"USER_ACTIONS"
+#'       ),
+#'       EventCategory = "Data"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_event_configuration(
+#'   TrailName = "string",
+#'   EventDataStore = "string",
+#'   MaxEventSize = "Standard"|"Large",
+#'   ContextKeySelectors = list(
+#'     list(
+#'       Type = "TagContext"|"RequestContext",
+#'       Equals = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   AggregationConfigurations = list(
+#'     list(
+#'       Templates = list(
+#'         "API_ACTIVITY"|"RESOURCE_ACCESS"|"USER_ACTIONS"
+#'       ),
+#'       EventCategory = "Data"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudtrail_put_event_configuration
+#'
+#' @aliases cloudtrail_put_event_configuration
+cloudtrail_put_event_configuration <- function(TrailName = NULL, EventDataStore = NULL, MaxEventSize = NULL, ContextKeySelectors = NULL, AggregationConfigurations = NULL) {
+  op <- new_operation(
+    name = "PutEventConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudtrail$put_event_configuration_input(TrailName = TrailName, EventDataStore = EventDataStore, MaxEventSize = MaxEventSize, ContextKeySelectors = ContextKeySelectors, AggregationConfigurations = AggregationConfigurations)
+  output <- .cloudtrail$put_event_configuration_output()
+  config <- get_config()
+  svc <- .cloudtrail$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudtrail$operations$put_event_configuration <- cloudtrail_put_event_configuration
+
 #' Configures event selectors (also referred to as basic event selectors)
 #' or advanced event selectors for your trail
 #'
@@ -3573,18 +3905,22 @@ cloudtrail_put_event_selectors <- function(TrailName, EventSelectors = NULL, Adv
 }
 .cloudtrail$operations$put_event_selectors <- cloudtrail_put_event_selectors
 
-#' Lets you enable Insights event logging by specifying the Insights
-#' selectors that you want to enable on an existing trail or event data
-#' store
+#' Lets you enable Insights event logging on specific event categories by
+#' specifying the Insights selectors that you want to enable on an existing
+#' trail or event data store
 #'
 #' @description
-#' Lets you enable Insights event logging by specifying the Insights
-#' selectors that you want to enable on an existing trail or event data
-#' store. You also use
+#' Lets you enable Insights event logging on specific event categories by
+#' specifying the Insights selectors that you want to enable on an existing
+#' trail or event data store. You also use
 #' [`put_insight_selectors`][cloudtrail_put_insight_selectors] to turn off
 #' Insights event logging, by passing an empty list of Insights types. The
 #' valid Insights event types are `ApiErrorRateInsight` and
-#' `ApiCallRateInsight`.
+#' `ApiCallRateInsight`, and valid EventCategories are `Management` and
+#' `Data`.
+#' 
+#' Insights on data events are not supported on event data stores. For
+#' event data stores, you can only enable Insights on management events.
 #' 
 #' To enable Insights on an event data store, you must specify the ARNs (or
 #' ID suffix of the ARNs) for the source event data store
@@ -3598,6 +3934,16 @@ cloudtrail_put_event_selectors <- function(TrailName, EventSelectors = NULL, Adv
 #' To log Insights events for a trail, you must specify the name
 #' (`TrailName`) of the CloudTrail trail for which you want to change or
 #' add Insights selectors.
+#' 
+#' -   For Management events Insights: To log CloudTrail Insights on the
+#'     API call rate, the trail or event data store must log `write`
+#'     management events. To log CloudTrail Insights on the API error rate,
+#'     the trail or event data store must log `read` or `write` management
+#'     events.
+#' 
+#' -   For Data events Insights: To log CloudTrail Insights on the API call
+#'     rate or API error rate, the trail must log `read` or `write` data
+#'     events. Data events Insights are not supported on event data store.
 #' 
 #' To log CloudTrail Insights events on API call volume, the trail or event
 #' data store must log `write` management events. To log CloudTrail
@@ -3621,16 +3967,18 @@ cloudtrail_put_event_selectors <- function(TrailName, EventSelectors = NULL, Adv
 #' 
 #' You cannot use this parameter with the `EventDataStore` and
 #' `InsightsDestination` parameters.
-#' @param InsightSelectors &#91;required&#93; A JSON string that contains the Insights types you want to log on a
-#' trail or event data store. `ApiCallRateInsight` and
-#' `ApiErrorRateInsight` are valid Insight types.
+#' @param InsightSelectors &#91;required&#93; Contains the Insights types you want to log on a specific category of
+#' events on a trail or event data store. `ApiCallRateInsight` and
+#' `ApiErrorRateInsight` are valid Insight types.The EventCategory field
+#' can specify `Management` or `Data` events or both. For event data store,
+#' you can log Insights for management events only.
 #' 
 #' The `ApiCallRateInsight` Insights type analyzes write-only management
-#' API calls that are aggregated per minute against a baseline API call
-#' volume.
+#' API calls or read and write data API calls that are aggregated per
+#' minute against a baseline API call volume.
 #' 
-#' The `ApiErrorRateInsight` Insights type analyzes management API calls
-#' that result in error codes. The error is shown if the API call is
+#' The `ApiErrorRateInsight` Insights type analyzes management and data API
+#' calls that result in error codes. The error is shown if the API call is
 #' unsuccessful.
 #' @param EventDataStore The ARN (or ID suffix of the ARN) of the source event data store for
 #' which you want to change or add Insights selectors. To enable Insights
@@ -3652,7 +4000,10 @@ cloudtrail_put_event_selectors <- function(TrailName, EventSelectors = NULL, Adv
 #'   TrailARN = "string",
 #'   InsightSelectors = list(
 #'     list(
-#'       InsightType = "ApiCallRateInsight"|"ApiErrorRateInsight"
+#'       InsightType = "ApiCallRateInsight"|"ApiErrorRateInsight",
+#'       EventCategories = list(
+#'         "Management"|"Data"
+#'       )
 #'     )
 #'   ),
 #'   EventDataStoreArn = "string",
@@ -3666,7 +4017,10 @@ cloudtrail_put_event_selectors <- function(TrailName, EventSelectors = NULL, Adv
 #'   TrailName = "string",
 #'   InsightSelectors = list(
 #'     list(
-#'       InsightType = "ApiCallRateInsight"|"ApiErrorRateInsight"
+#'       InsightType = "ApiCallRateInsight"|"ApiErrorRateInsight",
+#'       EventCategories = list(
+#'         "Management"|"Data"
+#'       )
 #'     )
 #'   ),
 #'   EventDataStore = "string",
@@ -5114,10 +5468,10 @@ cloudtrail_update_event_data_store <- function(EventDataStore, Name = NULL, Adva
 #' Not required unless you specify `CloudWatchLogsRoleArn`.
 #' @param CloudWatchLogsRoleArn Specifies the role for the CloudWatch Logs endpoint to assume to write
 #' to a user's log group. You must use a role that exists in your account.
-#' @param KmsKeyId Specifies the KMS key ID to use to encrypt the logs delivered by
-#' CloudTrail. The value can be an alias name prefixed by "alias/", a fully
-#' specified ARN to an alias, a fully specified ARN to a key, or a globally
-#' unique identifier.
+#' @param KmsKeyId Specifies the KMS key ID to use to encrypt the logs and digest files
+#' delivered by CloudTrail. The value can be an alias name prefixed by
+#' "alias/", a fully specified ARN to an alias, a fully specified ARN to a
+#' key, or a globally unique identifier.
 #' 
 #' CloudTrail also supports KMS multi-Region keys. For more information
 #' about multi-Region keys, see [Using multi-Region

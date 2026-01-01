@@ -15,26 +15,22 @@ healthlake_list_fhir_export_jobs(
 )
 }
 \arguments{
-\item{DatastoreId}{[required] This parameter limits the response to the export job with the specified
-data store ID.}
+\item{DatastoreId}{[required] Limits the response to the export job with the specified data store ID.}
 
-\item{NextToken}{A pagination token used to identify the next page of results to return
-for a ListFHIRExportJobs query.}
+\item{NextToken}{A pagination token used to identify the next page of results to return.}
 
-\item{MaxResults}{This parameter limits the number of results returned for a
-ListFHIRExportJobs to a maximum quantity specified by the user.}
+\item{MaxResults}{Limits the number of results returned for a ListFHIRExportJobs to a
+maximum quantity specified by the user.}
 
-\item{JobName}{This parameter limits the response to the export job with the specified
-job name.}
+\item{JobName}{Limits the response to the export job with the specified job name.}
 
-\item{JobStatus}{This parameter limits the response to the export jobs with the specified
-job status.}
+\item{JobStatus}{Limits the response to export jobs with the specified job status.}
 
-\item{SubmittedBefore}{This parameter limits the response to FHIR export jobs submitted before
-a user specified date.}
+\item{SubmittedBefore}{Limits the response to FHIR export jobs submitted before a user-
+specified date.}
 
-\item{SubmittedAfter}{This parameter limits the response to FHIR export jobs submitted after a
-user specified date.}
+\item{SubmittedAfter}{Limits the response to FHIR export jobs submitted after a user-specified
+date.}
 }
 \description{
 Lists all FHIR export jobs associated with an account and their statuses.

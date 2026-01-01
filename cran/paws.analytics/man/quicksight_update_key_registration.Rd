@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_update_key_registration}
 \alias{quicksight_update_key_registration}
-\title{Updates a customer managed key in a Amazon QuickSight account}
+\title{Updates a customer managed key in a Quick Sight account}
 \usage{
 quicksight_update_key_registration(AwsAccountId, KeyRegistration)
 }
@@ -11,10 +11,10 @@ quicksight_update_key_registration(AwsAccountId, KeyRegistration)
 managed key registration that you want to update.}
 
 \item{KeyRegistration}{[required] A list of \code{RegisteredCustomerManagedKey} objects to be updated to the
-Amazon QuickSight account.}
+Quick Sight account.}
 }
 \description{
-Updates a customer managed key in a Amazon QuickSight account.
+Updates a customer managed key in a Quick Sight account.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_update_key_registration/} for full documentation.
 }

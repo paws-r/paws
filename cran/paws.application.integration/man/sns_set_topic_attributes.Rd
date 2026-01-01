@@ -15,9 +15,6 @@ The following lists the names, descriptions, and values of the special
 request parameters that the
 \code{\link[=sns_set_topic_attributes]{set_topic_attributes}} action uses:
 \itemize{
-\item \code{ApplicationSuccessFeedbackRoleArn} – Indicates failed message
-delivery status for an Amazon SNS topic that is subscribed to a
-platform application endpoint.
 \item \code{DeliveryPolicy} – The policy that defines how Amazon SNS retries
 failed deliveries to HTTP/S endpoints.
 \item \code{DisplayName} – The display name to use for a topic with SMS
@@ -42,17 +39,17 @@ subscribed to an HTTP endpoint.
 status for an Amazon SNS topic that is subscribed to an HTTP
 endpoint.
 }
-\item Amazon Kinesis Data Firehose
+\item Amazon Data Firehose
 \itemize{
 \item \code{FirehoseSuccessFeedbackRoleArn} – Indicates successful message
 delivery status for an Amazon SNS topic that is subscribed to an
-Amazon Kinesis Data Firehose endpoint.
+Amazon Data Firehose endpoint.
 \item \code{FirehoseSuccessFeedbackSampleRate} – Indicates percentage of
 successful messages to sample for an Amazon SNS topic that is
-subscribed to an Amazon Kinesis Data Firehose endpoint.
+subscribed to an Amazon Data Firehose endpoint.
 \item \code{FirehoseFailureFeedbackRoleArn} – Indicates failed message
 delivery status for an Amazon SNS topic that is subscribed to an
-Amazon Kinesis Data Firehose endpoint.
+Amazon Data Firehose endpoint.
 }
 \item Lambda
 \itemize{
@@ -70,13 +67,13 @@ Lambda endpoint.
 \itemize{
 \item \code{ApplicationSuccessFeedbackRoleArn} – Indicates successful
 message delivery status for an Amazon SNS topic that is
-subscribed to an Amazon Web Services application endpoint.
+subscribed to an platform application endpoint.
 \item \code{ApplicationSuccessFeedbackSampleRate} – Indicates percentage of
 successful messages to sample for an Amazon SNS topic that is
-subscribed to an Amazon Web Services application endpoint.
+subscribed to an platform application endpoint.
 \item \code{ApplicationFailureFeedbackRoleArn} – Indicates failed message
 delivery status for an Amazon SNS topic that is subscribed to an
-Amazon Web Services application endpoint.
+platform application endpoint.
 }
 
 In addition to being able to configure topic attributes for message

@@ -15,8 +15,9 @@ computeoptimizer_delete_recommendation_preferences(
 \item{resourceType}{[required] The target resource type of the recommendation preference to delete.
 
 The \code{Ec2Instance} option encompasses standalone instances and instances
-that are part of Auto Scaling groups. The \code{AutoScalingGroup} option
-encompasses only instances that are part of an Auto Scaling group.}
+that are part of Amazon EC2 Auto Scaling groups. The \code{AutoScalingGroup}
+option encompasses only instances that are part of an Amazon EC2 Auto
+Scaling group.}
 
 \item{scope}{An object that describes the scope of the recommendation preference to
 delete.

@@ -9,7 +9,8 @@ braket_tag_resource(resourceArn, tags)
 \arguments{
 \item{resourceArn}{[required] Specify the \code{resourceArn} of the resource to which a tag will be added.}
 
-\item{tags}{[required] Specify the tags to add to the resource.}
+\item{tags}{[required] Specify the tags to add to the resource. Tags can be specified as a
+key-value map.}
 }
 \description{
 Add a tag to the specified resource.

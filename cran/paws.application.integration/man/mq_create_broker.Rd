@@ -23,7 +23,7 @@ mq_create_broker(
   StorageType = NULL,
   SubnetIds = NULL,
   Tags = NULL,
-  Users,
+  Users = NULL,
   DataReplicationMode = NULL,
   DataReplicationPrimaryBrokerArn = NULL
 )
@@ -109,9 +109,11 @@ Amazon Web Services account.}
 
 \item{Tags}{Create tags when creating the broker.}
 
-\item{Users}{[required] The list of broker users (persons or applications) who can access queues
-and topics. For Amazon MQ for RabbitMQ brokers, one and only one
-administrative user is accepted and created when a broker is first
+\item{Users}{The list of broker users (persons or applications) who can access queues
+and topics. For Amazon MQ for RabbitMQ brokers, an administrative user
+is required if using simple authentication and authorization. For
+brokers using OAuth2, this user is optional. When provided, one and only
+one administrative user is accepted and created when a broker is first
 provisioned. All subsequent broker users are created by making RabbitMQ
 API calls directly to brokers or via the RabbitMQ web console.}
 

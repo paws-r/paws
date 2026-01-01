@@ -6,13 +6,24 @@
 \usage{
 directconnect_describe_virtual_interfaces(
   connectionId = NULL,
-  virtualInterfaceId = NULL
+  virtualInterfaceId = NULL,
+  maxResults = NULL,
+  nextToken = NULL
 )
 }
 \arguments{
 \item{connectionId}{The ID of the connection.}
 
 \item{virtualInterfaceId}{The ID of the virtual interface.}
+
+\item{maxResults}{The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned \code{nextToken}
+value.
+
+If \code{MaxResults} is given a value larger than 100, only 100 results are
+returned.}
+
+\item{nextToken}{The token for the next page of results.}
 }
 \description{
 Displays all virtual interfaces for an Amazon Web Services account. Virtual interfaces deleted fewer than 15 minutes before you make the request are also returned. If you specify a connection ID, only the virtual interfaces associated with the connection are returned. If you specify a virtual interface ID, then only a single virtual interface is returned.

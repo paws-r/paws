@@ -6,61 +6,62 @@
 (DML) or data definition language (DDL)}
 \usage{
 redshiftdataapiservice_batch_execute_statement(
-  ClientToken = NULL,
-  ClusterIdentifier = NULL,
-  Database = NULL,
-  DbUser = NULL,
-  ResultFormat = NULL,
-  SecretArn = NULL,
-  SessionId = NULL,
-  SessionKeepAliveSeconds = NULL,
   Sqls,
-  StatementName = NULL,
+  ClusterIdentifier = NULL,
+  SecretArn = NULL,
+  DbUser = NULL,
+  Database = NULL,
   WithEvent = NULL,
-  WorkgroupName = NULL
+  StatementName = NULL,
+  WorkgroupName = NULL,
+  ClientToken = NULL,
+  ResultFormat = NULL,
+  SessionKeepAliveSeconds = NULL,
+  SessionId = NULL
 )
 }
 \arguments{
-\item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request.}
+\item{Sqls}{[required] One or more SQL statements to run. The SQL statements are run as a
+single transaction. They run serially in the order of the array.
+Subsequent SQL statements don't start until the previous statement in
+the array completes. If any SQL statement fails, then because they are
+run as one transaction, all work is rolled back.}
 
 \item{ClusterIdentifier}{The cluster identifier. This parameter is required when connecting to a
 cluster and authenticating using either Secrets Manager or temporary
 credentials.}
 
-\item{Database}{The name of the database. This parameter is required when authenticating
-using either Secrets Manager or temporary credentials.}
+\item{SecretArn}{The name or ARN of the secret that enables access to the database. This
+parameter is required when authenticating using Secrets Manager.}
 
 \item{DbUser}{The database user name. This parameter is required when connecting to a
 cluster as a database user and authenticating using temporary
 credentials.}
 
+\item{Database}{The name of the database. This parameter is required when authenticating
+using either Secrets Manager or temporary credentials.}
+
+\item{WithEvent}{A value that indicates whether to send an event to the Amazon
+EventBridge event bus after the SQL statements run.}
+
+\item{StatementName}{The name of the SQL statements. You can name the SQL statements when you
+create them to identify the query.}
+
+\item{WorkgroupName}{The serverless workgroup name or Amazon Resource Name (ARN). This
+parameter is required when connecting to a serverless workgroup and
+authenticating using either Secrets Manager or temporary credentials.}
+
+\item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request.}
+
 \item{ResultFormat}{The data format of the result of the SQL statement. If no format is
 specified, the default is JSON.}
-
-\item{SecretArn}{The name or ARN of the secret that enables access to the database. This
-parameter is required when authenticating using Secrets Manager.}
-
-\item{SessionId}{The session identifier of the query.}
 
 \item{SessionKeepAliveSeconds}{The number of seconds to keep the session alive after the query
 finishes. The maximum time a session can keep alive is 24 hours. After
 24 hours, the session is forced closed and the query is terminated.}
 
-\item{Sqls}{[required] One or more SQL statements to run.
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{ The SQL statements are run as a single transaction. They run serially in the order of the array. Subsequent SQL statements don\\'t start until the previous statement in the array completes. If any SQL statement fails, then because they are run as one transaction, all work is rolled back.</p>
-}\if{html}{\out{</div>}}}
-
-\item{StatementName}{The name of the SQL statements. You can name the SQL statements when you
-create them to identify the query.}
-
-\item{WithEvent}{A value that indicates whether to send an event to the Amazon
-EventBridge event bus after the SQL statements run.}
-
-\item{WorkgroupName}{The serverless workgroup name or Amazon Resource Name (ARN). This
-parameter is required when connecting to a serverless workgroup and
-authenticating using either Secrets Manager or temporary credentials.}
+\item{SessionId}{The session identifier of the query.}
 }
 \description{
 Runs one or more SQL statements, which can be data manipulation language (DML) or data definition language (DDL). Depending on the authorization method, use one of the following combinations of request parameters:

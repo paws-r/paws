@@ -3,7 +3,8 @@
 \name{servicediscovery_list_namespaces}
 \alias{servicediscovery_list_namespaces}
 \title{Lists summary information about the namespaces that were created by the
-current Amazon Web Services account}
+current Amazon Web Services account and shared with the current Amazon
+Web Services account}
 \usage{
 servicediscovery_list_namespaces(
   NextToken = NULL,
@@ -38,7 +39,7 @@ If you specify more than one filter, a namespace must match all filters
 to be returned by \code{\link[=servicediscovery_list_namespaces]{list_namespaces}}.}
 }
 \description{
-Lists summary information about the namespaces that were created by the current Amazon Web Services account.
+Lists summary information about the namespaces that were created by the current Amazon Web Services account and shared with the current Amazon Web Services account.
 
 See \url{https://www.paws-r-sdk.com/docs/servicediscovery_list_namespaces/} for full documentation.
 }

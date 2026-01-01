@@ -662,7 +662,7 @@ opensearchservice_cancel_service_software_update <- function(DomainName) {
 #'
 #' @usage
 #' opensearchservice_create_application(clientToken, name, dataSources,
-#'   iamIdentityCenterOptions, appConfigs, tagList)
+#'   iamIdentityCenterOptions, appConfigs, tagList, kmsKeyArn)
 #'
 #' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #' @param name &#91;required&#93; The unique name of the OpenSearch application. Names must be unique
@@ -673,6 +673,11 @@ opensearchservice_cancel_service_software_update <- function(DomainName) {
 #' @param appConfigs Configuration settings for the OpenSearch application, including
 #' administrative options.
 #' @param tagList 
+#' @param kmsKeyArn The Amazon Resource Name (ARN) of the KMS key used to encrypt the
+#' application's data at rest. If provided, the application uses your
+#' customer-managed key for encryption. If omitted, the application uses an
+#' AWS-managed key. The KMS key must be in the same region as the
+#' application.
 #'
 #' @return
 #' A list with the following syntax:
@@ -707,7 +712,8 @@ opensearchservice_cancel_service_software_update <- function(DomainName) {
 #'   ),
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   kmsKeyArn = "string"
 #' )
 #' ```
 #'
@@ -738,7 +744,8 @@ opensearchservice_cancel_service_software_update <- function(DomainName) {
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   kmsKeyArn = "string"
 #' )
 #' ```
 #'
@@ -747,7 +754,7 @@ opensearchservice_cancel_service_software_update <- function(DomainName) {
 #' @rdname opensearchservice_create_application
 #'
 #' @aliases opensearchservice_create_application
-opensearchservice_create_application <- function(clientToken = NULL, name, dataSources = NULL, iamIdentityCenterOptions = NULL, appConfigs = NULL, tagList = NULL) {
+opensearchservice_create_application <- function(clientToken = NULL, name, dataSources = NULL, iamIdentityCenterOptions = NULL, appConfigs = NULL, tagList = NULL, kmsKeyArn = NULL) {
   op <- new_operation(
     name = "CreateApplication",
     http_method = "POST",
@@ -756,7 +763,7 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchservice$create_application_input(clientToken = clientToken, name = name, dataSources = dataSources, iamIdentityCenterOptions = iamIdentityCenterOptions, appConfigs = appConfigs, tagList = tagList)
+  input <- .opensearchservice$create_application_input(clientToken = clientToken, name = name, dataSources = dataSources, iamIdentityCenterOptions = iamIdentityCenterOptions, appConfigs = appConfigs, tagList = tagList, kmsKeyArn = kmsKeyArn)
   output <- .opensearchservice$create_application_output()
   config <- get_config()
   svc <- .opensearchservice$service(config, op)
@@ -987,6 +994,11 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
 #'         RolesKey = "string",
 #'         PublicKey = "string"
 #'       ),
+#'       IAMFederationOptions = list(
+#'         Enabled = TRUE|FALSE,
+#'         SubjectKey = "string",
+#'         RolesKey = "string"
+#'       ),
 #'       AnonymousAuthDisableDate = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -1042,6 +1054,12 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
 #'       NaturalLanguageQueryGenerationOptions = list(
 #'         DesiredState = "ENABLED"|"DISABLED",
 #'         CurrentState = "NOT_ENABLED"|"ENABLE_COMPLETE"|"ENABLE_IN_PROGRESS"|"ENABLE_FAILED"|"DISABLE_COMPLETE"|"DISABLE_IN_PROGRESS"|"DISABLE_FAILED"
+#'       ),
+#'       S3VectorsEngine = list(
+#'         Enabled = TRUE|FALSE
+#'       ),
+#'       ServerlessVectorAcceleration = list(
+#'         Enabled = TRUE|FALSE
 #'       )
 #'     )
 #'   )
@@ -1156,6 +1174,11 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
 #'       RolesKey = "string",
 #'       PublicKey = "string"
 #'     ),
+#'     IAMFederationOptions = list(
+#'       Enabled = TRUE|FALSE,
+#'       SubjectKey = "string",
+#'       RolesKey = "string"
+#'     ),
 #'     AnonymousAuthEnabled = TRUE|FALSE
 #'   ),
 #'   IdentityCenterOptions = list(
@@ -1201,6 +1224,12 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
 #'   AIMLOptions = list(
 #'     NaturalLanguageQueryGenerationOptions = list(
 #'       DesiredState = "ENABLED"|"DISABLED"
+#'     ),
+#'     S3VectorsEngine = list(
+#'       Enabled = TRUE|FALSE
+#'     ),
+#'     ServerlessVectorAcceleration = list(
+#'       Enabled = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -1229,6 +1258,72 @@ opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, Cl
   return(response)
 }
 .opensearchservice$operations$create_domain <- opensearchservice_create_domain
+
+#' Creates an OpenSearch index with optional automatic semantic enrichment
+#' for specified text fields
+#'
+#' @description
+#' Creates an OpenSearch index with optional automatic semantic enrichment
+#' for specified text fields. Automatic semantic enrichment enables
+#' semantic search capabilities without requiring machine learning
+#' expertise, improving search relevance by up to 20% by understanding
+#' search intent and contextual meaning beyond keyword matching. The
+#' semantic enrichment process has zero impact on search latency as sparse
+#' encodings are stored directly within the index during indexing. For more
+#' information, see [Automatic semantic
+#' enrichment](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/opensearch-semantic-enrichment.html).
+#'
+#' @usage
+#' opensearchservice_create_index(DomainName, IndexName, IndexSchema)
+#'
+#' @param DomainName &#91;required&#93; 
+#' @param IndexName &#91;required&#93; The name of the index to create. Must be between 1 and 255 characters
+#' and follow OpenSearch naming conventions.
+#' @param IndexSchema &#91;required&#93; The JSON schema defining index mappings, settings, and semantic
+#' enrichment configuration. The schema specifies which text fields should
+#' be automatically enriched for semantic search capabilities and includes
+#' OpenSearch index configuration parameters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "CREATED"|"UPDATED"|"DELETED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_index(
+#'   DomainName = "string",
+#'   IndexName = "string",
+#'   IndexSchema = list()
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_create_index
+#'
+#' @aliases opensearchservice_create_index
+opensearchservice_create_index <- function(DomainName, IndexName, IndexSchema) {
+  op <- new_operation(
+    name = "CreateIndex",
+    http_method = "POST",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/index",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$create_index_input(DomainName = DomainName, IndexName = IndexName, IndexSchema = IndexSchema)
+  output <- .opensearchservice$create_index_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$create_index <- opensearchservice_create_index
 
 #' Creates a new cross-cluster search connection from a source Amazon
 #' OpenSearch Service domain to a destination domain
@@ -1825,6 +1920,11 @@ opensearchservice_delete_direct_query_data_source <- function(DataSourceName) {
 #'         RolesKey = "string",
 #'         PublicKey = "string"
 #'       ),
+#'       IAMFederationOptions = list(
+#'         Enabled = TRUE|FALSE,
+#'         SubjectKey = "string",
+#'         RolesKey = "string"
+#'       ),
 #'       AnonymousAuthDisableDate = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -1880,6 +1980,12 @@ opensearchservice_delete_direct_query_data_source <- function(DataSourceName) {
 #'       NaturalLanguageQueryGenerationOptions = list(
 #'         DesiredState = "ENABLED"|"DISABLED",
 #'         CurrentState = "NOT_ENABLED"|"ENABLE_COMPLETE"|"ENABLE_IN_PROGRESS"|"ENABLE_FAILED"|"DISABLE_COMPLETE"|"DISABLE_IN_PROGRESS"|"DISABLE_FAILED"
+#'       ),
+#'       S3VectorsEngine = list(
+#'         Enabled = TRUE|FALSE
+#'       ),
+#'       ServerlessVectorAcceleration = list(
+#'         Enabled = TRUE|FALSE
 #'       )
 #'     )
 #'   )
@@ -1990,6 +2096,58 @@ opensearchservice_delete_inbound_connection <- function(ConnectionId) {
   return(response)
 }
 .opensearchservice$operations$delete_inbound_connection <- opensearchservice_delete_inbound_connection
+
+#' Deletes an OpenSearch index
+#'
+#' @description
+#' Deletes an OpenSearch index. This operation permanently removes the
+#' index and cannot be undone.
+#'
+#' @usage
+#' opensearchservice_delete_index(DomainName, IndexName)
+#'
+#' @param DomainName &#91;required&#93; 
+#' @param IndexName &#91;required&#93; The name of the index to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "CREATED"|"UPDATED"|"DELETED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_index(
+#'   DomainName = "string",
+#'   IndexName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_delete_index
+#'
+#' @aliases opensearchservice_delete_index
+opensearchservice_delete_index <- function(DomainName, IndexName) {
+  op <- new_operation(
+    name = "DeleteIndex",
+    http_method = "DELETE",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/index/{IndexName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$delete_index_input(DomainName = DomainName, IndexName = IndexName)
+  output <- .opensearchservice$delete_index_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$delete_index <- opensearchservice_delete_index
 
 #' Allows the source Amazon OpenSearch Service domain owner to delete an
 #' existing outbound cross-cluster search connection
@@ -2366,6 +2524,11 @@ opensearchservice_delete_vpc_endpoint <- function(VpcEndpointId) {
 #'         RolesKey = "string",
 #'         PublicKey = "string"
 #'       ),
+#'       IAMFederationOptions = list(
+#'         Enabled = TRUE|FALSE,
+#'         SubjectKey = "string",
+#'         RolesKey = "string"
+#'       ),
 #'       AnonymousAuthDisableDate = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -2421,6 +2584,12 @@ opensearchservice_delete_vpc_endpoint <- function(VpcEndpointId) {
 #'       NaturalLanguageQueryGenerationOptions = list(
 #'         DesiredState = "ENABLED"|"DISABLED",
 #'         CurrentState = "NOT_ENABLED"|"ENABLE_COMPLETE"|"ENABLE_IN_PROGRESS"|"ENABLE_FAILED"|"DISABLE_COMPLETE"|"DISABLE_IN_PROGRESS"|"DISABLE_FAILED"
+#'       ),
+#'       S3VectorsEngine = list(
+#'         Enabled = TRUE|FALSE
+#'       ),
+#'       ServerlessVectorAcceleration = list(
+#'         Enabled = TRUE|FALSE
 #'       )
 #'     )
 #'   )
@@ -2909,6 +3078,11 @@ opensearchservice_describe_domain_change_progress <- function(DomainName, Change
 #'           RolesKey = "string",
 #'           PublicKey = "string"
 #'         ),
+#'         IAMFederationOptions = list(
+#'           Enabled = TRUE|FALSE,
+#'           SubjectKey = "string",
+#'           RolesKey = "string"
+#'         ),
 #'         AnonymousAuthDisableDate = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
@@ -3041,6 +3215,12 @@ opensearchservice_describe_domain_change_progress <- function(DomainName, Change
 #'         NaturalLanguageQueryGenerationOptions = list(
 #'           DesiredState = "ENABLED"|"DISABLED",
 #'           CurrentState = "NOT_ENABLED"|"ENABLE_COMPLETE"|"ENABLE_IN_PROGRESS"|"ENABLE_FAILED"|"DISABLE_COMPLETE"|"DISABLE_IN_PROGRESS"|"DISABLE_FAILED"
+#'         ),
+#'         S3VectorsEngine = list(
+#'           Enabled = TRUE|FALSE
+#'         ),
+#'         ServerlessVectorAcceleration = list(
+#'           Enabled = TRUE|FALSE
 #'         )
 #'       ),
 #'       Status = list(
@@ -3189,7 +3369,7 @@ opensearchservice_describe_domain_health <- function(DomainName) {
 #'   DomainNodesStatusList = list(
 #'     list(
 #'       NodeId = "string",
-#'       NodeType = "Data"|"Ultrawarm"|"Master",
+#'       NodeType = "Data"|"Ultrawarm"|"Master"|"Warm",
 #'       AvailabilityZone = "string",
 #'       InstanceType = "m3.medium.search"|"m3.large.search"|"m3.xlarge.search"|"m3.2xlarge.search"|"m4.large.search"|"m4.xlarge.search"|"m4.2xlarge.search"|"m4.4xlarge.search"|"m4.10xlarge.search"|"m5.large.search"|"m5.xlarge.search"|"m5.2xlarge.search"|"m5.4xlarge.search"|"m5.12xlarge.search"|"m5.24xlarge.search"|"r5.large.search"|"r5.xlarge.search"|"r5.2xlarge.search"|"r5.4xlarge.search"|"r5.12xlarge.search"|"r5.24xlarge.search"|"c5.large.search"|"c5.xlarge.search"|"c5.2xlarge.search"|"c5.4xlarge.search"|"c5.9xlarge.search"|"c5.18xlarge.search"|"t3.nano.search"|"t3.micro.search"|"t3.small.search"|"t3.medium.search"|"t3.large.search"|"t3.xlarge.search"|"t3.2xlarge.search"|"or1.medium.search"|"or1.large.search"|"or1.xlarge.search"|"or1.2xlarge.search"|"or1.4xlarge.search"|"or1.8xlarge.search"|"or1.12xlarge.search"|"or1.16xlarge.search"|"ultrawarm1.medium.search"|"ultrawarm1.large.search"|"ultrawarm1.xlarge.search"|"t2.micro.search"|"t2.small.search"|"t2.medium.search"|"r3.large.search"|"r3.xlarge.search"|"r3.2xlarge.search"|"r3.4xlarge.search"|"r3.8xlarge.search"|"i2.xlarge.search"|"i2.2xlarge.search"|"d2.xlarge.search"|"d2.2xlarge.search"|"d2.4xlarge.search"|"d2.8xlarge.search"|"c4.large.search"|"c4.xlarge.search"|"c4.2xlarge.search"|"c4.4xlarge.search"|"c4.8xlarge.search"|"r4.large.search"|"r4.xlarge.search"|"r4.2xlarge.search"|"r4.4xlarge.search"|"r4.8xlarge.search"|"r4.16xlarge.search"|"i3.large.search"|"i3.xlarge.search"|"i3.2xlarge.search"|"i3.4xlarge.search"|"i3.8xlarge.search"|"i3.16xlarge.search"|"r6g.large.search"|"r6g.xlarge.search"|"r6g.2xlarge.search"|"r6g.4xlarge.search"|"r6g.8xlarge.search"|"r6g.12xlarge.search"|"m6g.large.search"|"m6g.xlarge.search"|"m6g.2xlarge.search"|"m6g.4xlarge.search"|"m6g.8xlarge.search"|"m6g.12xlarge.search"|"c6g.large.search"|"c6g.xlarge.search"|"c6g.2xlarge.search"|"c6g.4xlarge.search"|"c6g.8xlarge.search"|"c6g.12xlarge.search"|"r6gd.large.search"|"r6gd.xlarge.search"|"r6gd.2xlarge.search"|"r6gd.4xlarge.search"|"r6gd.8xlarge.search"|"r6gd.12xlarge.search"|"r6gd.16xlarge.search"|"t4g.small.search"|"t4g.medium.search",
 #'       NodeStatus = "Active"|"StandBy"|"NotAvailable",
@@ -3377,6 +3557,11 @@ opensearchservice_describe_domain_nodes <- function(DomainName) {
 #'           RolesKey = "string",
 #'           PublicKey = "string"
 #'         ),
+#'         IAMFederationOptions = list(
+#'           Enabled = TRUE|FALSE,
+#'           SubjectKey = "string",
+#'           RolesKey = "string"
+#'         ),
 #'         AnonymousAuthDisableDate = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
@@ -3432,6 +3617,12 @@ opensearchservice_describe_domain_nodes <- function(DomainName) {
 #'         NaturalLanguageQueryGenerationOptions = list(
 #'           DesiredState = "ENABLED"|"DISABLED",
 #'           CurrentState = "NOT_ENABLED"|"ENABLE_COMPLETE"|"ENABLE_IN_PROGRESS"|"ENABLE_FAILED"|"DISABLE_COMPLETE"|"DISABLE_IN_PROGRESS"|"DISABLE_FAILED"
+#'         ),
+#'         S3VectorsEngine = list(
+#'           Enabled = TRUE|FALSE
+#'         ),
+#'         ServerlessVectorAcceleration = list(
+#'           Enabled = TRUE|FALSE
 #'         )
 #'       )
 #'     )
@@ -3634,6 +3825,11 @@ opensearchservice_describe_domains <- function(DomainNames) {
 #'         RolesKey = "string",
 #'         PublicKey = "string"
 #'       ),
+#'       IAMFederationOptions = list(
+#'         Enabled = TRUE|FALSE,
+#'         SubjectKey = "string",
+#'         RolesKey = "string"
+#'       ),
 #'       AnonymousAuthDisableDate = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -3689,6 +3885,12 @@ opensearchservice_describe_domains <- function(DomainNames) {
 #'       NaturalLanguageQueryGenerationOptions = list(
 #'         DesiredState = "ENABLED"|"DISABLED",
 #'         CurrentState = "NOT_ENABLED"|"ENABLE_COMPLETE"|"ENABLE_IN_PROGRESS"|"ENABLE_FAILED"|"DISABLE_COMPLETE"|"DISABLE_IN_PROGRESS"|"DISABLE_FAILED"
+#'       ),
+#'       S3VectorsEngine = list(
+#'         Enabled = TRUE|FALSE
+#'       ),
+#'       ServerlessVectorAcceleration = list(
+#'         Enabled = TRUE|FALSE
 #'       )
 #'     )
 #'   ),
@@ -4466,10 +4668,10 @@ opensearchservice_dissociate_package <- function(PackageID, DomainName) {
 }
 .opensearchservice$operations$dissociate_package <- opensearchservice_dissociate_package
 
-#' Dissociates multiple packages from a domain simulatneously
+#' Dissociates multiple packages from a domain simultaneously
 #'
 #' @description
-#' Dissociates multiple packages from a domain simulatneously.
+#' Dissociates multiple packages from a domain simultaneously.
 #'
 #' @usage
 #' opensearchservice_dissociate_packages(PackageList, DomainName)
@@ -4589,7 +4791,8 @@ opensearchservice_dissociate_packages <- function(PackageList, DomainName) {
 #'   ),
 #'   lastUpdatedAt = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   kmsKeyArn = "string"
 #' )
 #' ```
 #'
@@ -4741,6 +4944,56 @@ opensearchservice_get_data_source <- function(DomainName, Name) {
 }
 .opensearchservice$operations$get_data_source <- opensearchservice_get_data_source
 
+#' Gets the ARN of the current default application
+#'
+#' @description
+#' Gets the ARN of the current default application.
+#' 
+#' If the default application isn't set, the operation returns a resource
+#' not found error.
+#'
+#' @usage
+#' opensearchservice_get_default_application_setting()
+#'
+
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   applicationArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_default_application_setting()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_get_default_application_setting
+#'
+#' @aliases opensearchservice_get_default_application_setting
+opensearchservice_get_default_application_setting <- function() {
+  op <- new_operation(
+    name = "GetDefaultApplicationSetting",
+    http_method = "GET",
+    http_path = "/2021-01-01/opensearch/defaultApplicationSetting",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$get_default_application_setting_input()
+  output <- .opensearchservice$get_default_application_setting_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$get_default_application_setting <- opensearchservice_get_default_application_setting
+
 #' Returns detailed configuration information for a specific direct query
 #' data source in Amazon OpenSearch Service
 #'
@@ -4866,6 +5119,60 @@ opensearchservice_get_domain_maintenance_status <- function(DomainName, Maintena
   return(response)
 }
 .opensearchservice$operations$get_domain_maintenance_status <- opensearchservice_get_domain_maintenance_status
+
+#' Retrieves information about an OpenSearch index including its schema and
+#' semantic enrichment configuration
+#'
+#' @description
+#' Retrieves information about an OpenSearch index including its schema and
+#' semantic enrichment configuration. Use this operation to view the
+#' current index structure and semantic search settings.
+#'
+#' @usage
+#' opensearchservice_get_index(DomainName, IndexName)
+#'
+#' @param DomainName &#91;required&#93; 
+#' @param IndexName &#91;required&#93; The name of the index to retrieve information about.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IndexSchema = list()
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_index(
+#'   DomainName = "string",
+#'   IndexName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_get_index
+#'
+#' @aliases opensearchservice_get_index
+opensearchservice_get_index <- function(DomainName, IndexName) {
+  op <- new_operation(
+    name = "GetIndex",
+    http_method = "GET",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/index/{IndexName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$get_index_input(DomainName = DomainName, IndexName = IndexName)
+  output <- .opensearchservice$get_index_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$get_index <- opensearchservice_get_index
 
 #' Returns a list of Amazon OpenSearch Service package versions, along with
 #' their creation time, commit message, and plugin properties (if the
@@ -6149,6 +6456,66 @@ opensearchservice_purchase_reserved_instance_offering <- function(ReservedInstan
 }
 .opensearchservice$operations$purchase_reserved_instance_offering <- opensearchservice_purchase_reserved_instance_offering
 
+#' Sets the default application to the application with the specified ARN
+#'
+#' @description
+#' Sets the default application to the application with the specified ARN.
+#' 
+#' To remove the default application, use the
+#' [`get_default_application_setting`][opensearchservice_get_default_application_setting]
+#' operation to get the current default and then call the
+#' [`put_default_application_setting`][opensearchservice_put_default_application_setting]
+#' with the current applications ARN and the `setAsDefault` parameter set
+#' to `false`.
+#'
+#' @usage
+#' opensearchservice_put_default_application_setting(applicationArn,
+#'   setAsDefault)
+#'
+#' @param applicationArn &#91;required&#93; 
+#' @param setAsDefault &#91;required&#93; Set to true to set the specified ARN as the default application. Set to
+#' false to clear the default application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   applicationArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_default_application_setting(
+#'   applicationArn = "string",
+#'   setAsDefault = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_put_default_application_setting
+#'
+#' @aliases opensearchservice_put_default_application_setting
+opensearchservice_put_default_application_setting <- function(applicationArn, setAsDefault) {
+  op <- new_operation(
+    name = "PutDefaultApplicationSetting",
+    http_method = "PUT",
+    http_path = "/2021-01-01/opensearch/defaultApplicationSetting",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$put_default_application_setting_input(applicationArn = applicationArn, setAsDefault = setAsDefault)
+  output <- .opensearchservice$put_default_application_setting_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$put_default_application_setting <- opensearchservice_put_default_application_setting
+
 #' Allows the remote Amazon OpenSearch Service domain owner to reject an
 #' inbound cross-cluster connection request
 #'
@@ -7051,6 +7418,11 @@ opensearchservice_update_direct_query_data_source <- function(DataSourceName, Da
 #'           RolesKey = "string",
 #'           PublicKey = "string"
 #'         ),
+#'         IAMFederationOptions = list(
+#'           Enabled = TRUE|FALSE,
+#'           SubjectKey = "string",
+#'           RolesKey = "string"
+#'         ),
 #'         AnonymousAuthDisableDate = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
@@ -7183,6 +7555,12 @@ opensearchservice_update_direct_query_data_source <- function(DataSourceName, Da
 #'         NaturalLanguageQueryGenerationOptions = list(
 #'           DesiredState = "ENABLED"|"DISABLED",
 #'           CurrentState = "NOT_ENABLED"|"ENABLE_COMPLETE"|"ENABLE_IN_PROGRESS"|"ENABLE_FAILED"|"DISABLE_COMPLETE"|"DISABLE_IN_PROGRESS"|"DISABLE_FAILED"
+#'         ),
+#'         S3VectorsEngine = list(
+#'           Enabled = TRUE|FALSE
+#'         ),
+#'         ServerlessVectorAcceleration = list(
+#'           Enabled = TRUE|FALSE
 #'         )
 #'       ),
 #'       Status = list(
@@ -7324,6 +7702,11 @@ opensearchservice_update_direct_query_data_source <- function(DataSourceName, Da
 #'       RolesKey = "string",
 #'       PublicKey = "string"
 #'     ),
+#'     IAMFederationOptions = list(
+#'       Enabled = TRUE|FALSE,
+#'       SubjectKey = "string",
+#'       RolesKey = "string"
+#'     ),
 #'     AnonymousAuthEnabled = TRUE|FALSE
 #'   ),
 #'   IdentityCenterOptions = list(
@@ -7366,6 +7749,12 @@ opensearchservice_update_direct_query_data_source <- function(DataSourceName, Da
 #'   AIMLOptions = list(
 #'     NaturalLanguageQueryGenerationOptions = list(
 #'       DesiredState = "ENABLED"|"DISABLED"
+#'     ),
+#'     S3VectorsEngine = list(
+#'       Enabled = TRUE|FALSE
+#'     ),
+#'     ServerlessVectorAcceleration = list(
+#'       Enabled = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -7394,6 +7783,64 @@ opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = N
   return(response)
 }
 .opensearchservice$operations$update_domain_config <- opensearchservice_update_domain_config
+
+#' Updates an existing OpenSearch index schema and semantic enrichment
+#' configuration
+#'
+#' @description
+#' Updates an existing OpenSearch index schema and semantic enrichment
+#' configuration. This operation allows modification of field mappings and
+#' semantic search settings for text fields. Changes to semantic enrichment
+#' configuration will apply to newly ingested documents.
+#'
+#' @usage
+#' opensearchservice_update_index(DomainName, IndexName, IndexSchema)
+#'
+#' @param DomainName &#91;required&#93; 
+#' @param IndexName &#91;required&#93; The name of the index to update.
+#' @param IndexSchema &#91;required&#93; The updated JSON schema for the index including any changes to mappings,
+#' settings, and semantic enrichment configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "CREATED"|"UPDATED"|"DELETED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_index(
+#'   DomainName = "string",
+#'   IndexName = "string",
+#'   IndexSchema = list()
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_update_index
+#'
+#' @aliases opensearchservice_update_index
+opensearchservice_update_index <- function(DomainName, IndexName, IndexSchema) {
+  op <- new_operation(
+    name = "UpdateIndex",
+    http_method = "PUT",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/index/{IndexName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$update_index_input(DomainName = DomainName, IndexName = IndexName, IndexSchema = IndexSchema)
+  output <- .opensearchservice$update_index_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$update_index <- opensearchservice_update_index
 
 #' Updates a package for use with Amazon OpenSearch Service domains
 #'

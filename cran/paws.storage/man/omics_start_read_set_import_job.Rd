@@ -2,7 +2,7 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_start_read_set_import_job}
 \alias{omics_start_read_set_import_job}
-\title{Starts a read set import job}
+\title{Imports a read set from the sequence store}
 \usage{
 omics_start_read_set_import_job(
   sequenceStoreId,
@@ -22,7 +22,7 @@ each job.}
 \item{sources}{[required] The job's source files.}
 }
 \description{
-Starts a read set import job.
+Imports a read set from the sequence store. Read set import jobs support a maximum of 100 read sets of different types. Monitor the progress of your read set import job by calling the \code{\link[=omics_get_read_set_import_job]{get_read_set_import_job}} API operation.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_start_read_set_import_job/} for full documentation.
 }

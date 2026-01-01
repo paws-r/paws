@@ -116,7 +116,8 @@ NULL
 #'     ap-southeast-2, ap-northeast-2, ap-south-1, ca-central-1, sa-east-1.
 #' 
 #'     For questions about adding Amazon Web Services Regions for metering,
-#'     contact Amazon Web Services Marketplace Seller Operations.
+#'     contact [Amazon Web Services Marketplace Seller
+#'     Operations](mailto://aws.amazon.com/marketplace/management/contact-us/).
 #'
 #' @param
 #' config
@@ -201,7 +202,7 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=marketplacemetering_batch_meter_usage]{batch_meter_usage} \tab The CustomerIdentifier parameter is scheduled for deprecation\cr
+#'  \link[=marketplacemetering_batch_meter_usage]{batch_meter_usage} \tab The CustomerIdentifier parameter is scheduled for deprecation on March 31, 2026\cr
 #'  \link[=marketplacemetering_meter_usage]{meter_usage} \tab API to emit metering records\cr
 #'  \link[=marketplacemetering_register_usage]{register_usage} \tab Paid container software products sold through Amazon Web Services Marketplace must integrate with the Amazon Web Services Marketplace Metering Service and call the RegisterUsage operation for software entitlement and metering\cr
 #'  \link[=marketplacemetering_resolve_customer]{resolve_customer} \tab ResolveCustomer is called by a SaaS application during the registration process

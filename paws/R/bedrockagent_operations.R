@@ -9,31 +9,30 @@ NULL
 #' Makes an agent a collaborator for another agent.
 #'
 #' @usage
-#' bedrockagent_associate_agent_collaborator(agentDescriptor, agentId,
-#'   agentVersion, clientToken, collaborationInstruction, collaboratorName,
-#'   relayConversationHistory)
+#' bedrockagent_associate_agent_collaborator(agentId, agentVersion,
+#'   agentDescriptor, collaboratorName, collaborationInstruction,
+#'   relayConversationHistory, clientToken)
 #'
-#' @param agentDescriptor &#91;required&#93; The alias of the collaborator agent.
 #' @param agentId &#91;required&#93; The agent's ID.
 #' @param agentVersion &#91;required&#93; An agent version.
-#' @param clientToken A client token.
-#' @param collaborationInstruction &#91;required&#93; Instruction for the collaborator.
+#' @param agentDescriptor &#91;required&#93; The alias of the collaborator agent.
 #' @param collaboratorName &#91;required&#93; A name for the collaborator.
+#' @param collaborationInstruction &#91;required&#93; Instruction for the collaborator.
 #' @param relayConversationHistory A relay conversation history for the collaborator.
+#' @param clientToken A client token.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   agentCollaborator = list(
+#'     agentId = "string",
+#'     agentVersion = "string",
 #'     agentDescriptor = list(
 #'       aliasArn = "string"
 #'     ),
-#'     agentId = "string",
-#'     agentVersion = "string",
-#'     clientToken = "string",
-#'     collaborationInstruction = "string",
 #'     collaboratorId = "string",
+#'     collaborationInstruction = "string",
 #'     collaboratorName = "string",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
@@ -41,7 +40,8 @@ NULL
 #'     lastUpdatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     relayConversationHistory = "TO_COLLABORATOR"|"DISABLED"
+#'     relayConversationHistory = "TO_COLLABORATOR"|"DISABLED",
+#'     clientToken = "string"
 #'   )
 #' )
 #' ```
@@ -49,15 +49,15 @@ NULL
 #' @section Request syntax:
 #' ```
 #' svc$associate_agent_collaborator(
+#'   agentId = "string",
+#'   agentVersion = "string",
 #'   agentDescriptor = list(
 #'     aliasArn = "string"
 #'   ),
-#'   agentId = "string",
-#'   agentVersion = "string",
-#'   clientToken = "string",
-#'   collaborationInstruction = "string",
 #'   collaboratorName = "string",
-#'   relayConversationHistory = "TO_COLLABORATOR"|"DISABLED"
+#'   collaborationInstruction = "string",
+#'   relayConversationHistory = "TO_COLLABORATOR"|"DISABLED",
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -66,7 +66,7 @@ NULL
 #' @rdname bedrockagent_associate_agent_collaborator
 #'
 #' @aliases bedrockagent_associate_agent_collaborator
-bedrockagent_associate_agent_collaborator <- function(agentDescriptor, agentId, agentVersion, clientToken = NULL, collaborationInstruction, collaboratorName, relayConversationHistory = NULL) {
+bedrockagent_associate_agent_collaborator <- function(agentId, agentVersion, agentDescriptor, collaboratorName, collaborationInstruction, relayConversationHistory = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "AssociateAgentCollaborator",
     http_method = "PUT",
@@ -75,7 +75,7 @@ bedrockagent_associate_agent_collaborator <- function(agentDescriptor, agentId, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$associate_agent_collaborator_input(agentDescriptor = agentDescriptor, agentId = agentId, agentVersion = agentVersion, clientToken = clientToken, collaborationInstruction = collaborationInstruction, collaboratorName = collaboratorName, relayConversationHistory = relayConversationHistory)
+  input <- .bedrockagent$associate_agent_collaborator_input(agentId = agentId, agentVersion = agentVersion, agentDescriptor = agentDescriptor, collaboratorName = collaboratorName, collaborationInstruction = collaborationInstruction, relayConversationHistory = relayConversationHistory, clientToken = clientToken)
   output <- .bedrockagent$associate_agent_collaborator_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -94,14 +94,14 @@ bedrockagent_associate_agent_collaborator <- function(agentDescriptor, agentId, 
 #'
 #' @usage
 #' bedrockagent_associate_agent_knowledge_base(agentId, agentVersion,
-#'   description, knowledgeBaseId, knowledgeBaseState)
+#'   knowledgeBaseId, description, knowledgeBaseState)
 #'
 #' @param agentId &#91;required&#93; The unique identifier of the agent with which you want to associate the
 #' knowledge base.
 #' @param agentVersion &#91;required&#93; The version of the agent with which you want to associate the knowledge
 #' base.
-#' @param description &#91;required&#93; A description of what the agent should use the knowledge base for.
 #' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base to associate with the agent.
+#' @param description &#91;required&#93; A description of what the agent should use the knowledge base for.
 #' @param knowledgeBaseState Specifies whether to use the knowledge base or not when sending an
 #' [InvokeAgent](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_InvokeAgent.html)
 #' request.
@@ -113,15 +113,15 @@ bedrockagent_associate_agent_collaborator <- function(agentDescriptor, agentId, 
 #'   agentKnowledgeBase = list(
 #'     agentId = "string",
 #'     agentVersion = "string",
+#'     knowledgeBaseId = "string",
+#'     description = "string",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     description = "string",
-#'     knowledgeBaseId = "string",
-#'     knowledgeBaseState = "ENABLED"|"DISABLED",
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     knowledgeBaseState = "ENABLED"|"DISABLED"
 #'   )
 #' )
 #' ```
@@ -131,8 +131,8 @@ bedrockagent_associate_agent_collaborator <- function(agentDescriptor, agentId, 
 #' svc$associate_agent_knowledge_base(
 #'   agentId = "string",
 #'   agentVersion = "string",
-#'   description = "string",
 #'   knowledgeBaseId = "string",
+#'   description = "string",
 #'   knowledgeBaseState = "ENABLED"|"DISABLED"
 #' )
 #' ```
@@ -142,7 +142,7 @@ bedrockagent_associate_agent_collaborator <- function(agentDescriptor, agentId, 
 #' @rdname bedrockagent_associate_agent_knowledge_base
 #'
 #' @aliases bedrockagent_associate_agent_knowledge_base
-bedrockagent_associate_agent_knowledge_base <- function(agentId, agentVersion, description, knowledgeBaseId, knowledgeBaseState = NULL) {
+bedrockagent_associate_agent_knowledge_base <- function(agentId, agentVersion, knowledgeBaseId, description, knowledgeBaseState = NULL) {
   op <- new_operation(
     name = "AssociateAgentKnowledgeBase",
     http_method = "PUT",
@@ -151,7 +151,7 @@ bedrockagent_associate_agent_knowledge_base <- function(agentId, agentVersion, d
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$associate_agent_knowledge_base_input(agentId = agentId, agentVersion = agentVersion, description = description, knowledgeBaseId = knowledgeBaseId, knowledgeBaseState = knowledgeBaseState)
+  input <- .bedrockagent$associate_agent_knowledge_base_input(agentId = agentId, agentVersion = agentVersion, knowledgeBaseId = knowledgeBaseId, description = description, knowledgeBaseState = knowledgeBaseState)
   output <- .bedrockagent$associate_agent_knowledge_base_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -202,26 +202,20 @@ bedrockagent_associate_agent_knowledge_base <- function(agentId, agentVersion, d
 #'     user input is disabled.
 #'
 #' @usage
-#' bedrockagent_create_agent(agentCollaboration, agentName,
-#'   agentResourceRoleArn, clientToken, customOrchestration,
-#'   customerEncryptionKeyArn, description, foundationModel,
-#'   guardrailConfiguration, idleSessionTTLInSeconds, instruction,
-#'   memoryConfiguration, orchestrationType, promptOverrideConfiguration,
-#'   tags)
+#' bedrockagent_create_agent(agentName, clientToken, instruction,
+#'   foundationModel, description, orchestrationType, customOrchestration,
+#'   idleSessionTTLInSeconds, agentResourceRoleArn, customerEncryptionKeyArn,
+#'   tags, promptOverrideConfiguration, guardrailConfiguration,
+#'   memoryConfiguration, agentCollaboration)
 #'
-#' @param agentCollaboration The agent's collaboration role.
 #' @param agentName &#91;required&#93; A name for the agent that you create.
-#' @param agentResourceRoleArn The Amazon Resource Name (ARN) of the IAM role with permissions to
-#' invoke API operations on the agent.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
-#' @param customOrchestration Contains details of the custom orchestration configured for the agent.
-#' @param customerEncryptionKeyArn The Amazon Resource Name (ARN) of the KMS key with which to encrypt the
-#' agent.
-#' @param description A description of the agent.
+#' @param instruction Instructions that tell the agent what it should do and how it should
+#' interact with users.
 #' @param foundationModel The identifier for the model that you want to be used for orchestration
 #' by the agent you create.
 #' 
@@ -258,99 +252,104 @@ bedrockagent_associate_agent_knowledge_base <- function(agentId, agentVersion, d
 #'     from a successful call to
 #'     [CreateModelImportJob](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_CreateModelImportJob.html)
 #'     or from the Imported models page in the Amazon Bedrock console.
-#' @param guardrailConfiguration The unique Guardrail configuration assigned to the agent when it is
-#' created.
+#' @param description A description of the agent.
+#' @param orchestrationType Specifies the type of orchestration strategy for the agent. This is set
+#' to `DEFAULT` orchestration type, by default.
+#' @param customOrchestration Contains details of the custom orchestration configured for the agent.
 #' @param idleSessionTTLInSeconds The number of seconds for which Amazon Bedrock keeps information about a
 #' user's conversation with the agent.
 #' 
 #' A user interaction remains active for the amount of time specified. If
 #' no conversation occurs during this time, the session expires and Amazon
 #' Bedrock deletes any data provided before the timeout.
-#' @param instruction Instructions that tell the agent what it should do and how it should
-#' interact with users.
-#' @param memoryConfiguration Contains the details of the memory configured for the agent.
-#' @param orchestrationType Specifies the type of orchestration strategy for the agent. This is set
-#' to `DEFAULT` orchestration type, by default.
+#' @param agentResourceRoleArn The Amazon Resource Name (ARN) of the IAM role with permissions to
+#' invoke API operations on the agent.
+#' @param customerEncryptionKeyArn The Amazon Resource Name (ARN) of the KMS key with which to encrypt the
+#' agent.
+#' @param tags Any tags that you want to attach to the agent.
 #' @param promptOverrideConfiguration Contains configurations to override prompts in different parts of an
 #' agent sequence. For more information, see [Advanced
 #' prompts](https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts.html).
-#' @param tags Any tags that you want to attach to the agent.
+#' @param guardrailConfiguration The unique Guardrail configuration assigned to the agent when it is
+#' created.
+#' @param memoryConfiguration Contains the details of the memory configured for the agent.
+#' @param agentCollaboration The agent's collaboration role.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   agent = list(
-#'     agentArn = "string",
-#'     agentCollaboration = "SUPERVISOR"|"SUPERVISOR_ROUTER"|"DISABLED",
 #'     agentId = "string",
 #'     agentName = "string",
-#'     agentResourceRoleArn = "string",
-#'     agentStatus = "CREATING"|"PREPARING"|"PREPARED"|"NOT_PREPARED"|"DELETING"|"FAILED"|"VERSIONING"|"UPDATING",
+#'     agentArn = "string",
 #'     agentVersion = "string",
 #'     clientToken = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
+#'     instruction = "string",
+#'     agentStatus = "CREATING"|"PREPARING"|"PREPARED"|"NOT_PREPARED"|"DELETING"|"FAILED"|"VERSIONING"|"UPDATING",
+#'     foundationModel = "string",
+#'     description = "string",
+#'     orchestrationType = "DEFAULT"|"CUSTOM_ORCHESTRATION",
 #'     customOrchestration = list(
 #'       executor = list(
 #'         lambda = "string"
 #'       )
 #'     ),
-#'     customerEncryptionKeyArn = "string",
-#'     description = "string",
-#'     failureReasons = list(
-#'       "string"
-#'     ),
-#'     foundationModel = "string",
-#'     guardrailConfiguration = list(
-#'       guardrailIdentifier = "string",
-#'       guardrailVersion = "string"
-#'     ),
 #'     idleSessionTTLInSeconds = 123,
-#'     instruction = "string",
-#'     memoryConfiguration = list(
-#'       enabledMemoryTypes = list(
-#'         "SESSION_SUMMARY"
-#'       ),
-#'       sessionSummaryConfiguration = list(
-#'         maxRecentSessions = 123
-#'       ),
-#'       storageDays = 123
+#'     agentResourceRoleArn = "string",
+#'     customerEncryptionKeyArn = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
 #'     ),
-#'     orchestrationType = "DEFAULT"|"CUSTOM_ORCHESTRATION",
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     preparedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     promptOverrideConfiguration = list(
-#'       overrideLambda = "string",
-#'       promptConfigurations = list(
-#'         list(
-#'           additionalModelRequestFields = list(),
-#'           basePromptTemplate = "string",
-#'           foundationModel = "string",
-#'           inferenceConfiguration = list(
-#'             maximumLength = 123,
-#'             stopSequences = list(
-#'               "string"
-#'             ),
-#'             temperature = 123.0,
-#'             topK = 123,
-#'             topP = 123.0
-#'           ),
-#'           parserMode = "DEFAULT"|"OVERRIDDEN",
-#'           promptCreationMode = "DEFAULT"|"OVERRIDDEN",
-#'           promptState = "ENABLED"|"DISABLED",
-#'           promptType = "PRE_PROCESSING"|"ORCHESTRATION"|"POST_PROCESSING"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"|"MEMORY_SUMMARIZATION"
-#'         )
-#'       )
+#'     failureReasons = list(
+#'       "string"
 #'     ),
 #'     recommendedActions = list(
 #'       "string"
 #'     ),
-#'     updatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     )
+#'     promptOverrideConfiguration = list(
+#'       promptConfigurations = list(
+#'         list(
+#'           promptType = "PRE_PROCESSING"|"ORCHESTRATION"|"POST_PROCESSING"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"|"MEMORY_SUMMARIZATION",
+#'           promptCreationMode = "DEFAULT"|"OVERRIDDEN",
+#'           promptState = "ENABLED"|"DISABLED",
+#'           basePromptTemplate = "string",
+#'           inferenceConfiguration = list(
+#'             temperature = 123.0,
+#'             topP = 123.0,
+#'             topK = 123,
+#'             maximumLength = 123,
+#'             stopSequences = list(
+#'               "string"
+#'             )
+#'           ),
+#'           parserMode = "DEFAULT"|"OVERRIDDEN",
+#'           foundationModel = "string",
+#'           additionalModelRequestFields = list()
+#'         )
+#'       ),
+#'       overrideLambda = "string"
+#'     ),
+#'     guardrailConfiguration = list(
+#'       guardrailIdentifier = "string",
+#'       guardrailVersion = "string"
+#'     ),
+#'     memoryConfiguration = list(
+#'       enabledMemoryTypes = list(
+#'         "SESSION_SUMMARY"
+#'       ),
+#'       storageDays = 123,
+#'       sessionSummaryConfiguration = list(
+#'         maxRecentSessions = 123
+#'       )
+#'     ),
+#'     agentCollaboration = "SUPERVISOR"|"SUPERVISOR_ROUTER"|"DISABLED"
 #'   )
 #' )
 #' ```
@@ -358,60 +357,60 @@ bedrockagent_associate_agent_knowledge_base <- function(agentId, agentVersion, d
 #' @section Request syntax:
 #' ```
 #' svc$create_agent(
-#'   agentCollaboration = "SUPERVISOR"|"SUPERVISOR_ROUTER"|"DISABLED",
 #'   agentName = "string",
-#'   agentResourceRoleArn = "string",
 #'   clientToken = "string",
+#'   instruction = "string",
+#'   foundationModel = "string",
+#'   description = "string",
+#'   orchestrationType = "DEFAULT"|"CUSTOM_ORCHESTRATION",
 #'   customOrchestration = list(
 #'     executor = list(
 #'       lambda = "string"
 #'     )
 #'   ),
+#'   idleSessionTTLInSeconds = 123,
+#'   agentResourceRoleArn = "string",
 #'   customerEncryptionKeyArn = "string",
-#'   description = "string",
-#'   foundationModel = "string",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   promptOverrideConfiguration = list(
+#'     promptConfigurations = list(
+#'       list(
+#'         promptType = "PRE_PROCESSING"|"ORCHESTRATION"|"POST_PROCESSING"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"|"MEMORY_SUMMARIZATION",
+#'         promptCreationMode = "DEFAULT"|"OVERRIDDEN",
+#'         promptState = "ENABLED"|"DISABLED",
+#'         basePromptTemplate = "string",
+#'         inferenceConfiguration = list(
+#'           temperature = 123.0,
+#'           topP = 123.0,
+#'           topK = 123,
+#'           maximumLength = 123,
+#'           stopSequences = list(
+#'             "string"
+#'           )
+#'         ),
+#'         parserMode = "DEFAULT"|"OVERRIDDEN",
+#'         foundationModel = "string",
+#'         additionalModelRequestFields = list()
+#'       )
+#'     ),
+#'     overrideLambda = "string"
+#'   ),
 #'   guardrailConfiguration = list(
 #'     guardrailIdentifier = "string",
 #'     guardrailVersion = "string"
 #'   ),
-#'   idleSessionTTLInSeconds = 123,
-#'   instruction = "string",
 #'   memoryConfiguration = list(
 #'     enabledMemoryTypes = list(
 #'       "SESSION_SUMMARY"
 #'     ),
+#'     storageDays = 123,
 #'     sessionSummaryConfiguration = list(
 #'       maxRecentSessions = 123
-#'     ),
-#'     storageDays = 123
-#'   ),
-#'   orchestrationType = "DEFAULT"|"CUSTOM_ORCHESTRATION",
-#'   promptOverrideConfiguration = list(
-#'     overrideLambda = "string",
-#'     promptConfigurations = list(
-#'       list(
-#'         additionalModelRequestFields = list(),
-#'         basePromptTemplate = "string",
-#'         foundationModel = "string",
-#'         inferenceConfiguration = list(
-#'           maximumLength = 123,
-#'           stopSequences = list(
-#'             "string"
-#'           ),
-#'           temperature = 123.0,
-#'           topK = 123,
-#'           topP = 123.0
-#'         ),
-#'         parserMode = "DEFAULT"|"OVERRIDDEN",
-#'         promptCreationMode = "DEFAULT"|"OVERRIDDEN",
-#'         promptState = "ENABLED"|"DISABLED",
-#'         promptType = "PRE_PROCESSING"|"ORCHESTRATION"|"POST_PROCESSING"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"|"MEMORY_SUMMARIZATION"
-#'       )
 #'     )
 #'   ),
-#'   tags = list(
-#'     "string"
-#'   )
+#'   agentCollaboration = "SUPERVISOR"|"SUPERVISOR_ROUTER"|"DISABLED"
 #' )
 #' ```
 #'
@@ -420,7 +419,7 @@ bedrockagent_associate_agent_knowledge_base <- function(agentId, agentVersion, d
 #' @rdname bedrockagent_create_agent
 #'
 #' @aliases bedrockagent_create_agent
-bedrockagent_create_agent <- function(agentCollaboration = NULL, agentName, agentResourceRoleArn = NULL, clientToken = NULL, customOrchestration = NULL, customerEncryptionKeyArn = NULL, description = NULL, foundationModel = NULL, guardrailConfiguration = NULL, idleSessionTTLInSeconds = NULL, instruction = NULL, memoryConfiguration = NULL, orchestrationType = NULL, promptOverrideConfiguration = NULL, tags = NULL) {
+bedrockagent_create_agent <- function(agentName, clientToken = NULL, instruction = NULL, foundationModel = NULL, description = NULL, orchestrationType = NULL, customOrchestration = NULL, idleSessionTTLInSeconds = NULL, agentResourceRoleArn = NULL, customerEncryptionKeyArn = NULL, tags = NULL, promptOverrideConfiguration = NULL, guardrailConfiguration = NULL, memoryConfiguration = NULL, agentCollaboration = NULL) {
   op <- new_operation(
     name = "CreateAgent",
     http_method = "PUT",
@@ -429,7 +428,7 @@ bedrockagent_create_agent <- function(agentCollaboration = NULL, agentName, agen
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$create_agent_input(agentCollaboration = agentCollaboration, agentName = agentName, agentResourceRoleArn = agentResourceRoleArn, clientToken = clientToken, customOrchestration = customOrchestration, customerEncryptionKeyArn = customerEncryptionKeyArn, description = description, foundationModel = foundationModel, guardrailConfiguration = guardrailConfiguration, idleSessionTTLInSeconds = idleSessionTTLInSeconds, instruction = instruction, memoryConfiguration = memoryConfiguration, orchestrationType = orchestrationType, promptOverrideConfiguration = promptOverrideConfiguration, tags = tags)
+  input <- .bedrockagent$create_agent_input(agentName = agentName, clientToken = clientToken, instruction = instruction, foundationModel = foundationModel, description = description, orchestrationType = orchestrationType, customOrchestration = customOrchestration, idleSessionTTLInSeconds = idleSessionTTLInSeconds, agentResourceRoleArn = agentResourceRoleArn, customerEncryptionKeyArn = customerEncryptionKeyArn, tags = tags, promptOverrideConfiguration = promptOverrideConfiguration, guardrailConfiguration = guardrailConfiguration, memoryConfiguration = memoryConfiguration, agentCollaboration = agentCollaboration)
   output <- .bedrockagent$create_agent_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -463,34 +462,20 @@ bedrockagent_create_agent <- function(agentCollaboration = NULL, agentName, agen
 #' reprompting the user for more information.
 #'
 #' @usage
-#' bedrockagent_create_agent_action_group(actionGroupExecutor,
-#'   actionGroupName, actionGroupState, agentId, agentVersion, apiSchema,
-#'   clientToken, description, functionSchema, parentActionGroupSignature,
-#'   parentActionGroupSignatureParams)
+#' bedrockagent_create_agent_action_group(agentId, agentVersion,
+#'   actionGroupName, clientToken, description, parentActionGroupSignature,
+#'   parentActionGroupSignatureParams, actionGroupExecutor, apiSchema,
+#'   actionGroupState, functionSchema)
 #'
-#' @param actionGroupExecutor The Amazon Resource Name (ARN) of the Lambda function containing the
-#' business logic that is carried out upon invoking the action or the
-#' custom control method for handling the information elicited from the
-#' user.
-#' @param actionGroupName &#91;required&#93; The name to give the action group.
-#' @param actionGroupState Specifies whether the action group is available for the agent to invoke
-#' or not when sending an
-#' [InvokeAgent](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_InvokeAgent.html)
-#' request.
 #' @param agentId &#91;required&#93; The unique identifier of the agent for which to create the action group.
 #' @param agentVersion &#91;required&#93; The version of the agent for which to create the action group.
-#' @param apiSchema Contains either details about the S3 object containing the OpenAPI
-#' schema for the action group or the JSON or YAML-formatted payload
-#' defining the schema. For more information, see [Action group OpenAPI
-#' schemas](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-api-schema.html).
+#' @param actionGroupName &#91;required&#93; The name to give the action group.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param description A description of the action group.
-#' @param functionSchema Contains details about the function schema for the action group or the
-#' JSON or YAML-formatted payload defining the schema.
 #' @param parentActionGroupSignature Specify a built-in or computer use action for this action group. If you
 #' specify a value, you must leave the `description`, `apiSchema`, and
 #' `actionGroupExecutor` fields empty for this action group.
@@ -530,56 +515,70 @@ bedrockagent_create_agent <- function(agentCollaboration = NULL, agentName, agen
 #' only. For more information, see [Configure an Amazon Bedrock Agent to
 #' complete tasks with computer use
 #' tools](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-computer-use.html).
+#' @param actionGroupExecutor The Amazon Resource Name (ARN) of the Lambda function containing the
+#' business logic that is carried out upon invoking the action or the
+#' custom control method for handling the information elicited from the
+#' user.
+#' @param apiSchema Contains either details about the S3 object containing the OpenAPI
+#' schema for the action group or the JSON or YAML-formatted payload
+#' defining the schema. For more information, see [Action group OpenAPI
+#' schemas](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-api-schema.html).
+#' @param actionGroupState Specifies whether the action group is available for the agent to invoke
+#' or not when sending an
+#' [InvokeAgent](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_InvokeAgent.html)
+#' request.
+#' @param functionSchema Contains details about the function schema for the action group or the
+#' JSON or YAML-formatted payload defining the schema.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   agentActionGroup = list(
-#'     actionGroupExecutor = list(
-#'       customControl = "RETURN_CONTROL",
-#'       lambda = "string"
-#'     ),
-#'     actionGroupId = "string",
-#'     actionGroupName = "string",
-#'     actionGroupState = "ENABLED"|"DISABLED",
 #'     agentId = "string",
 #'     agentVersion = "string",
-#'     apiSchema = list(
-#'       payload = "string",
-#'       s3 = list(
-#'         s3BucketName = "string",
-#'         s3ObjectKey = "string"
-#'       )
-#'     ),
+#'     actionGroupId = "string",
+#'     actionGroupName = "string",
 #'     clientToken = "string",
+#'     description = "string",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     description = "string",
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     parentActionSignature = "AMAZON.UserInput"|"AMAZON.CodeInterpreter"|"ANTHROPIC.Computer"|"ANTHROPIC.Bash"|"ANTHROPIC.TextEditor",
+#'     parentActionGroupSignatureParams = list(
+#'       "string"
+#'     ),
+#'     actionGroupExecutor = list(
+#'       lambda = "string",
+#'       customControl = "RETURN_CONTROL"
+#'     ),
+#'     apiSchema = list(
+#'       s3 = list(
+#'         s3BucketName = "string",
+#'         s3ObjectKey = "string"
+#'       ),
+#'       payload = "string"
+#'     ),
 #'     functionSchema = list(
 #'       functions = list(
 #'         list(
-#'           description = "string",
 #'           name = "string",
+#'           description = "string",
 #'           parameters = list(
 #'             list(
 #'               description = "string",
-#'               required = TRUE|FALSE,
-#'               type = "string"|"number"|"integer"|"boolean"|"array"
+#'               type = "string"|"number"|"integer"|"boolean"|"array",
+#'               required = TRUE|FALSE
 #'             )
 #'           ),
 #'           requireConfirmation = "ENABLED"|"DISABLED"
 #'         )
 #'       )
 #'     ),
-#'     parentActionGroupSignatureParams = list(
-#'       "string"
-#'     ),
-#'     parentActionSignature = "AMAZON.UserInput"|"AMAZON.CodeInterpreter"|"ANTHROPIC.Computer"|"ANTHROPIC.Bash"|"ANTHROPIC.TextEditor",
-#'     updatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     )
+#'     actionGroupState = "ENABLED"|"DISABLED"
 #'   )
 #' )
 #' ```
@@ -587,42 +586,42 @@ bedrockagent_create_agent <- function(agentCollaboration = NULL, agentName, agen
 #' @section Request syntax:
 #' ```
 #' svc$create_agent_action_group(
-#'   actionGroupExecutor = list(
-#'     customControl = "RETURN_CONTROL",
-#'     lambda = "string"
-#'   ),
-#'   actionGroupName = "string",
-#'   actionGroupState = "ENABLED"|"DISABLED",
 #'   agentId = "string",
 #'   agentVersion = "string",
+#'   actionGroupName = "string",
+#'   clientToken = "string",
+#'   description = "string",
+#'   parentActionGroupSignature = "AMAZON.UserInput"|"AMAZON.CodeInterpreter"|"ANTHROPIC.Computer"|"ANTHROPIC.Bash"|"ANTHROPIC.TextEditor",
+#'   parentActionGroupSignatureParams = list(
+#'     "string"
+#'   ),
+#'   actionGroupExecutor = list(
+#'     lambda = "string",
+#'     customControl = "RETURN_CONTROL"
+#'   ),
 #'   apiSchema = list(
-#'     payload = "string",
 #'     s3 = list(
 #'       s3BucketName = "string",
 #'       s3ObjectKey = "string"
-#'     )
+#'     ),
+#'     payload = "string"
 #'   ),
-#'   clientToken = "string",
-#'   description = "string",
+#'   actionGroupState = "ENABLED"|"DISABLED",
 #'   functionSchema = list(
 #'     functions = list(
 #'       list(
-#'         description = "string",
 #'         name = "string",
+#'         description = "string",
 #'         parameters = list(
 #'           list(
 #'             description = "string",
-#'             required = TRUE|FALSE,
-#'             type = "string"|"number"|"integer"|"boolean"|"array"
+#'             type = "string"|"number"|"integer"|"boolean"|"array",
+#'             required = TRUE|FALSE
 #'           )
 #'         ),
 #'         requireConfirmation = "ENABLED"|"DISABLED"
 #'       )
 #'     )
-#'   ),
-#'   parentActionGroupSignature = "AMAZON.UserInput"|"AMAZON.CodeInterpreter"|"ANTHROPIC.Computer"|"ANTHROPIC.Bash"|"ANTHROPIC.TextEditor",
-#'   parentActionGroupSignatureParams = list(
-#'     "string"
 #'   )
 #' )
 #' ```
@@ -632,7 +631,7 @@ bedrockagent_create_agent <- function(agentCollaboration = NULL, agentName, agen
 #' @rdname bedrockagent_create_agent_action_group
 #'
 #' @aliases bedrockagent_create_agent_action_group
-bedrockagent_create_agent_action_group <- function(actionGroupExecutor = NULL, actionGroupName, actionGroupState = NULL, agentId, agentVersion, apiSchema = NULL, clientToken = NULL, description = NULL, functionSchema = NULL, parentActionGroupSignature = NULL, parentActionGroupSignatureParams = NULL) {
+bedrockagent_create_agent_action_group <- function(agentId, agentVersion, actionGroupName, clientToken = NULL, description = NULL, parentActionGroupSignature = NULL, parentActionGroupSignatureParams = NULL, actionGroupExecutor = NULL, apiSchema = NULL, actionGroupState = NULL, functionSchema = NULL) {
   op <- new_operation(
     name = "CreateAgentActionGroup",
     http_method = "PUT",
@@ -641,7 +640,7 @@ bedrockagent_create_agent_action_group <- function(actionGroupExecutor = NULL, a
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$create_agent_action_group_input(actionGroupExecutor = actionGroupExecutor, actionGroupName = actionGroupName, actionGroupState = actionGroupState, agentId = agentId, agentVersion = agentVersion, apiSchema = apiSchema, clientToken = clientToken, description = description, functionSchema = functionSchema, parentActionGroupSignature = parentActionGroupSignature, parentActionGroupSignatureParams = parentActionGroupSignatureParams)
+  input <- .bedrockagent$create_agent_action_group_input(agentId = agentId, agentVersion = agentVersion, actionGroupName = actionGroupName, clientToken = clientToken, description = description, parentActionGroupSignature = parentActionGroupSignature, parentActionGroupSignatureParams = parentActionGroupSignatureParams, actionGroupExecutor = actionGroupExecutor, apiSchema = apiSchema, actionGroupState = actionGroupState, functionSchema = functionSchema)
   output <- .bedrockagent$create_agent_action_group_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -657,11 +656,11 @@ bedrockagent_create_agent_action_group <- function(actionGroupExecutor = NULL, a
 #' Creates an alias of an agent that can be used to deploy the agent.
 #'
 #' @usage
-#' bedrockagent_create_agent_alias(agentAliasName, agentId, clientToken,
+#' bedrockagent_create_agent_alias(agentId, agentAliasName, clientToken,
 #'   description, routingConfiguration, tags)
 #'
-#' @param agentAliasName &#91;required&#93; The name of the alias.
 #' @param agentId &#91;required&#93; The unique identifier of the agent.
+#' @param agentAliasName &#91;required&#93; The name of the alias.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
@@ -676,44 +675,45 @@ bedrockagent_create_agent_action_group <- function(actionGroupExecutor = NULL, a
 #' ```
 #' list(
 #'   agentAlias = list(
-#'     agentAliasArn = "string",
-#'     agentAliasHistoryEvents = list(
-#'       list(
-#'         endDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         routingConfiguration = list(
-#'           list(
-#'             agentVersion = "string",
-#'             provisionedThroughput = "string"
-#'           )
-#'         ),
-#'         startDate = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
+#'     agentId = "string",
 #'     agentAliasId = "string",
 #'     agentAliasName = "string",
-#'     agentAliasStatus = "CREATING"|"PREPARED"|"FAILED"|"UPDATING"|"DELETING"|"DISSOCIATED",
-#'     agentId = "string",
+#'     agentAliasArn = "string",
 #'     clientToken = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
 #'     description = "string",
-#'     failureReasons = list(
-#'       "string"
-#'     ),
 #'     routingConfiguration = list(
 #'       list(
 #'         agentVersion = "string",
 #'         provisionedThroughput = "string"
 #'       )
 #'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     agentAliasHistoryEvents = list(
+#'       list(
+#'         routingConfiguration = list(
+#'           list(
+#'             agentVersion = "string",
+#'             provisionedThroughput = "string"
+#'           )
+#'         ),
+#'         endDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         startDate = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     agentAliasStatus = "CREATING"|"PREPARED"|"FAILED"|"UPDATING"|"DELETING"|"DISSOCIATED",
+#'     failureReasons = list(
+#'       "string"
+#'     ),
+#'     aliasInvocationState = "ACCEPT_INVOCATIONS"|"REJECT_INVOCATIONS"
 #'   )
 #' )
 #' ```
@@ -721,8 +721,8 @@ bedrockagent_create_agent_action_group <- function(actionGroupExecutor = NULL, a
 #' @section Request syntax:
 #' ```
 #' svc$create_agent_alias(
-#'   agentAliasName = "string",
 #'   agentId = "string",
+#'   agentAliasName = "string",
 #'   clientToken = "string",
 #'   description = "string",
 #'   routingConfiguration = list(
@@ -742,7 +742,7 @@ bedrockagent_create_agent_action_group <- function(actionGroupExecutor = NULL, a
 #' @rdname bedrockagent_create_agent_alias
 #'
 #' @aliases bedrockagent_create_agent_alias
-bedrockagent_create_agent_alias <- function(agentAliasName, agentId, clientToken = NULL, description = NULL, routingConfiguration = NULL, tags = NULL) {
+bedrockagent_create_agent_alias <- function(agentId, agentAliasName, clientToken = NULL, description = NULL, routingConfiguration = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateAgentAlias",
     http_method = "PUT",
@@ -751,7 +751,7 @@ bedrockagent_create_agent_alias <- function(agentAliasName, agentId, clientToken
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$create_agent_alias_input(agentAliasName = agentAliasName, agentId = agentId, clientToken = clientToken, description = description, routingConfiguration = routingConfiguration, tags = tags)
+  input <- .bedrockagent$create_agent_alias_input(agentId = agentId, agentAliasName = agentAliasName, clientToken = clientToken, description = description, routingConfiguration = routingConfiguration, tags = tags)
   output <- .bedrockagent$create_agent_alias_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -772,15 +772,20 @@ bedrockagent_create_agent_alias <- function(agentAliasName, agentId, clientToken
 #' source connector.
 #'
 #' @usage
-#' bedrockagent_create_data_source(clientToken, dataDeletionPolicy,
-#'   dataSourceConfiguration, description, knowledgeBaseId, name,
+#' bedrockagent_create_data_source(knowledgeBaseId, clientToken, name,
+#'   description, dataSourceConfiguration, dataDeletionPolicy,
 #'   serverSideEncryptionConfiguration, vectorIngestionConfiguration)
 #'
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base to which to add the data
+#' source.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' @param name &#91;required&#93; The name of the data source.
+#' @param description A description of the data source.
+#' @param dataSourceConfiguration &#91;required&#93; The connection configuration for the data source.
 #' @param dataDeletionPolicy The data deletion policy for the data source.
 #' 
 #' You can set the data deletion policy to:
@@ -795,11 +800,6 @@ bedrockagent_create_agent_alias <- function(agentAliasName, agentId, clientToken
 #'     vector embeddings upon deletion of a knowledge base or data source
 #'     resource. Note that the **vector store itself is not deleted** if
 #'     you delete a knowledge base or data source resource.
-#' @param dataSourceConfiguration &#91;required&#93; The connection configuration for the data source.
-#' @param description A description of the data source.
-#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base to which to add the data
-#' source.
-#' @param name &#91;required&#93; The name of the data source.
 #' @param serverSideEncryptionConfiguration Contains details about the server-side encryption for the data source.
 #' @param vectorIngestionConfiguration Contains details about how to ingest the documents in the data source.
 #'
@@ -808,116 +808,21 @@ bedrockagent_create_agent_alias <- function(agentAliasName, agentId, clientToken
 #' ```
 #' list(
 #'   dataSource = list(
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     dataDeletionPolicy = "RETAIN"|"DELETE",
+#'     knowledgeBaseId = "string",
+#'     dataSourceId = "string",
+#'     name = "string",
+#'     status = "AVAILABLE"|"DELETING"|"DELETE_UNSUCCESSFUL",
+#'     description = "string",
 #'     dataSourceConfiguration = list(
-#'       confluenceConfiguration = list(
-#'         crawlerConfiguration = list(
-#'           filterConfiguration = list(
-#'             patternObjectFilter = list(
-#'               filters = list(
-#'                 list(
-#'                   exclusionFilters = list(
-#'                     "string"
-#'                   ),
-#'                   inclusionFilters = list(
-#'                     "string"
-#'                   ),
-#'                   objectType = "string"
-#'                 )
-#'               )
-#'             ),
-#'             type = "PATTERN"
-#'           )
-#'         ),
-#'         sourceConfiguration = list(
-#'           authType = "BASIC"|"OAUTH2_CLIENT_CREDENTIALS",
-#'           credentialsSecretArn = "string",
-#'           hostType = "SAAS",
-#'           hostUrl = "string"
-#'         )
-#'       ),
+#'       type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"REDSHIFT_METADATA",
 #'       s3Configuration = list(
 #'         bucketArn = "string",
-#'         bucketOwnerAccountId = "string",
 #'         inclusionPrefixes = list(
 #'           "string"
-#'         )
-#'       ),
-#'       salesforceConfiguration = list(
-#'         crawlerConfiguration = list(
-#'           filterConfiguration = list(
-#'             patternObjectFilter = list(
-#'               filters = list(
-#'                 list(
-#'                   exclusionFilters = list(
-#'                     "string"
-#'                   ),
-#'                   inclusionFilters = list(
-#'                     "string"
-#'                   ),
-#'                   objectType = "string"
-#'                 )
-#'               )
-#'             ),
-#'             type = "PATTERN"
-#'           )
 #'         ),
-#'         sourceConfiguration = list(
-#'           authType = "OAUTH2_CLIENT_CREDENTIALS",
-#'           credentialsSecretArn = "string",
-#'           hostUrl = "string"
-#'         )
+#'         bucketOwnerAccountId = "string"
 #'       ),
-#'       sharePointConfiguration = list(
-#'         crawlerConfiguration = list(
-#'           filterConfiguration = list(
-#'             patternObjectFilter = list(
-#'               filters = list(
-#'                 list(
-#'                   exclusionFilters = list(
-#'                     "string"
-#'                   ),
-#'                   inclusionFilters = list(
-#'                     "string"
-#'                   ),
-#'                   objectType = "string"
-#'                 )
-#'               )
-#'             ),
-#'             type = "PATTERN"
-#'           )
-#'         ),
-#'         sourceConfiguration = list(
-#'           authType = "OAUTH2_CLIENT_CREDENTIALS"|"OAUTH2_SHAREPOINT_APP_ONLY_CLIENT_CREDENTIALS",
-#'           credentialsSecretArn = "string",
-#'           domain = "string",
-#'           hostType = "ONLINE",
-#'           siteUrls = list(
-#'             "string"
-#'           ),
-#'           tenantId = "string"
-#'         )
-#'       ),
-#'       type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"REDSHIFT_METADATA",
 #'       webConfiguration = list(
-#'         crawlerConfiguration = list(
-#'           crawlerLimits = list(
-#'             maxPages = 123,
-#'             rateLimit = 123
-#'           ),
-#'           exclusionFilters = list(
-#'             "string"
-#'           ),
-#'           inclusionFilters = list(
-#'             "string"
-#'           ),
-#'           scope = "HOST_ONLY"|"SUBDOMAINS",
-#'           userAgent = "string",
-#'           userAgentHeader = "string"
-#'         ),
 #'         sourceConfiguration = list(
 #'           urlConfiguration = list(
 #'             seedUrls = list(
@@ -926,22 +831,107 @@ bedrockagent_create_agent_alias <- function(agentAliasName, agentId, clientToken
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         crawlerConfiguration = list(
+#'           crawlerLimits = list(
+#'             rateLimit = 123,
+#'             maxPages = 123
+#'           ),
+#'           inclusionFilters = list(
+#'             "string"
+#'           ),
+#'           exclusionFilters = list(
+#'             "string"
+#'           ),
+#'           scope = "HOST_ONLY"|"SUBDOMAINS",
+#'           userAgent = "string",
+#'           userAgentHeader = "string"
+#'         )
+#'       ),
+#'       confluenceConfiguration = list(
+#'         sourceConfiguration = list(
+#'           hostUrl = "string",
+#'           hostType = "SAAS",
+#'           authType = "BASIC"|"OAUTH2_CLIENT_CREDENTIALS",
+#'           credentialsSecretArn = "string"
+#'         ),
+#'         crawlerConfiguration = list(
+#'           filterConfiguration = list(
+#'             type = "PATTERN",
+#'             patternObjectFilter = list(
+#'               filters = list(
+#'                 list(
+#'                   objectType = "string",
+#'                   inclusionFilters = list(
+#'                     "string"
+#'                   ),
+#'                   exclusionFilters = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       salesforceConfiguration = list(
+#'         sourceConfiguration = list(
+#'           hostUrl = "string",
+#'           authType = "OAUTH2_CLIENT_CREDENTIALS",
+#'           credentialsSecretArn = "string"
+#'         ),
+#'         crawlerConfiguration = list(
+#'           filterConfiguration = list(
+#'             type = "PATTERN",
+#'             patternObjectFilter = list(
+#'               filters = list(
+#'                 list(
+#'                   objectType = "string",
+#'                   inclusionFilters = list(
+#'                     "string"
+#'                   ),
+#'                   exclusionFilters = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sharePointConfiguration = list(
+#'         sourceConfiguration = list(
+#'           tenantId = "string",
+#'           domain = "string",
+#'           siteUrls = list(
+#'             "string"
+#'           ),
+#'           hostType = "ONLINE",
+#'           authType = "OAUTH2_CLIENT_CREDENTIALS"|"OAUTH2_SHAREPOINT_APP_ONLY_CLIENT_CREDENTIALS",
+#'           credentialsSecretArn = "string"
+#'         ),
+#'         crawlerConfiguration = list(
+#'           filterConfiguration = list(
+#'             type = "PATTERN",
+#'             patternObjectFilter = list(
+#'               filters = list(
+#'                 list(
+#'                   objectType = "string",
+#'                   inclusionFilters = list(
+#'                     "string"
+#'                   ),
+#'                   exclusionFilters = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
-#'     dataSourceId = "string",
-#'     description = "string",
-#'     failureReasons = list(
-#'       "string"
-#'     ),
-#'     knowledgeBaseId = "string",
-#'     name = "string",
 #'     serverSideEncryptionConfiguration = list(
 #'       kmsKeyArn = "string"
-#'     ),
-#'     status = "AVAILABLE"|"DELETING"|"DELETE_UNSUCCESSFUL",
-#'     updatedAt = as.POSIXct(
-#'       "2015-01-01"
 #'     ),
 #'     vectorIngestionConfiguration = list(
 #'       chunkingConfiguration = list(
@@ -959,19 +949,10 @@ bedrockagent_create_agent_alias <- function(agentAliasName, agentId, clientToken
 #'           overlapTokens = 123
 #'         ),
 #'         semanticChunkingConfiguration = list(
-#'           breakpointPercentileThreshold = 123,
+#'           maxTokens = 123,
 #'           bufferSize = 123,
-#'           maxTokens = 123
+#'           breakpointPercentileThreshold = 123
 #'         )
-#'       ),
-#'       contextEnrichmentConfiguration = list(
-#'         bedrockFoundationModelConfiguration = list(
-#'           enrichmentStrategyConfiguration = list(
-#'             method = "CHUNK_ENTITY_EXTRACTION"
-#'           ),
-#'           modelArn = "string"
-#'         ),
-#'         type = "BEDROCK_FOUNDATION_MODEL"
 #'       ),
 #'       customTransformationConfiguration = list(
 #'         intermediateStorage = list(
@@ -981,28 +962,47 @@ bedrockagent_create_agent_alias <- function(agentAliasName, agentId, clientToken
 #'         ),
 #'         transformations = list(
 #'           list(
-#'             stepToApply = "POST_CHUNKING",
 #'             transformationFunction = list(
 #'               transformationLambdaConfiguration = list(
 #'                 lambdaArn = "string"
 #'               )
-#'             )
+#'             ),
+#'             stepToApply = "POST_CHUNKING"
 #'           )
 #'         )
 #'       ),
 #'       parsingConfiguration = list(
-#'         bedrockDataAutomationConfiguration = list(
-#'           parsingModality = "MULTIMODAL"
-#'         ),
+#'         parsingStrategy = "BEDROCK_FOUNDATION_MODEL"|"BEDROCK_DATA_AUTOMATION",
 #'         bedrockFoundationModelConfiguration = list(
 #'           modelArn = "string",
-#'           parsingModality = "MULTIMODAL",
 #'           parsingPrompt = list(
 #'             parsingPromptText = "string"
-#'           )
+#'           ),
+#'           parsingModality = "MULTIMODAL"
 #'         ),
-#'         parsingStrategy = "BEDROCK_FOUNDATION_MODEL"|"BEDROCK_DATA_AUTOMATION"
+#'         bedrockDataAutomationConfiguration = list(
+#'           parsingModality = "MULTIMODAL"
+#'         )
+#'       ),
+#'       contextEnrichmentConfiguration = list(
+#'         type = "BEDROCK_FOUNDATION_MODEL",
+#'         bedrockFoundationModelConfiguration = list(
+#'           enrichmentStrategyConfiguration = list(
+#'             method = "CHUNK_ENTITY_EXTRACTION"
+#'           ),
+#'           modelArn = "string"
+#'         )
 #'       )
+#'     ),
+#'     dataDeletionPolicy = "RETAIN"|"DELETE",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     failureReasons = list(
+#'       "string"
 #'     )
 #'   )
 #' )
@@ -1011,114 +1011,20 @@ bedrockagent_create_agent_alias <- function(agentAliasName, agentId, clientToken
 #' @section Request syntax:
 #' ```
 #' svc$create_data_source(
+#'   knowledgeBaseId = "string",
 #'   clientToken = "string",
-#'   dataDeletionPolicy = "RETAIN"|"DELETE",
+#'   name = "string",
+#'   description = "string",
 #'   dataSourceConfiguration = list(
-#'     confluenceConfiguration = list(
-#'       crawlerConfiguration = list(
-#'         filterConfiguration = list(
-#'           patternObjectFilter = list(
-#'             filters = list(
-#'               list(
-#'                 exclusionFilters = list(
-#'                   "string"
-#'                 ),
-#'                 inclusionFilters = list(
-#'                   "string"
-#'                 ),
-#'                 objectType = "string"
-#'               )
-#'             )
-#'           ),
-#'           type = "PATTERN"
-#'         )
-#'       ),
-#'       sourceConfiguration = list(
-#'         authType = "BASIC"|"OAUTH2_CLIENT_CREDENTIALS",
-#'         credentialsSecretArn = "string",
-#'         hostType = "SAAS",
-#'         hostUrl = "string"
-#'       )
-#'     ),
+#'     type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"REDSHIFT_METADATA",
 #'     s3Configuration = list(
 #'       bucketArn = "string",
-#'       bucketOwnerAccountId = "string",
 #'       inclusionPrefixes = list(
 #'         "string"
-#'       )
-#'     ),
-#'     salesforceConfiguration = list(
-#'       crawlerConfiguration = list(
-#'         filterConfiguration = list(
-#'           patternObjectFilter = list(
-#'             filters = list(
-#'               list(
-#'                 exclusionFilters = list(
-#'                   "string"
-#'                 ),
-#'                 inclusionFilters = list(
-#'                   "string"
-#'                 ),
-#'                 objectType = "string"
-#'               )
-#'             )
-#'           ),
-#'           type = "PATTERN"
-#'         )
 #'       ),
-#'       sourceConfiguration = list(
-#'         authType = "OAUTH2_CLIENT_CREDENTIALS",
-#'         credentialsSecretArn = "string",
-#'         hostUrl = "string"
-#'       )
+#'       bucketOwnerAccountId = "string"
 #'     ),
-#'     sharePointConfiguration = list(
-#'       crawlerConfiguration = list(
-#'         filterConfiguration = list(
-#'           patternObjectFilter = list(
-#'             filters = list(
-#'               list(
-#'                 exclusionFilters = list(
-#'                   "string"
-#'                 ),
-#'                 inclusionFilters = list(
-#'                   "string"
-#'                 ),
-#'                 objectType = "string"
-#'               )
-#'             )
-#'           ),
-#'           type = "PATTERN"
-#'         )
-#'       ),
-#'       sourceConfiguration = list(
-#'         authType = "OAUTH2_CLIENT_CREDENTIALS"|"OAUTH2_SHAREPOINT_APP_ONLY_CLIENT_CREDENTIALS",
-#'         credentialsSecretArn = "string",
-#'         domain = "string",
-#'         hostType = "ONLINE",
-#'         siteUrls = list(
-#'           "string"
-#'         ),
-#'         tenantId = "string"
-#'       )
-#'     ),
-#'     type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"REDSHIFT_METADATA",
 #'     webConfiguration = list(
-#'       crawlerConfiguration = list(
-#'         crawlerLimits = list(
-#'           maxPages = 123,
-#'           rateLimit = 123
-#'         ),
-#'         exclusionFilters = list(
-#'           "string"
-#'         ),
-#'         inclusionFilters = list(
-#'           "string"
-#'         ),
-#'         scope = "HOST_ONLY"|"SUBDOMAINS",
-#'         userAgent = "string",
-#'         userAgentHeader = "string"
-#'       ),
 #'       sourceConfiguration = list(
 #'         urlConfiguration = list(
 #'           seedUrls = list(
@@ -1127,12 +1033,106 @@ bedrockagent_create_agent_alias <- function(agentAliasName, agentId, clientToken
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       crawlerConfiguration = list(
+#'         crawlerLimits = list(
+#'           rateLimit = 123,
+#'           maxPages = 123
+#'         ),
+#'         inclusionFilters = list(
+#'           "string"
+#'         ),
+#'         exclusionFilters = list(
+#'           "string"
+#'         ),
+#'         scope = "HOST_ONLY"|"SUBDOMAINS",
+#'         userAgent = "string",
+#'         userAgentHeader = "string"
+#'       )
+#'     ),
+#'     confluenceConfiguration = list(
+#'       sourceConfiguration = list(
+#'         hostUrl = "string",
+#'         hostType = "SAAS",
+#'         authType = "BASIC"|"OAUTH2_CLIENT_CREDENTIALS",
+#'         credentialsSecretArn = "string"
+#'       ),
+#'       crawlerConfiguration = list(
+#'         filterConfiguration = list(
+#'           type = "PATTERN",
+#'           patternObjectFilter = list(
+#'             filters = list(
+#'               list(
+#'                 objectType = "string",
+#'                 inclusionFilters = list(
+#'                   "string"
+#'                 ),
+#'                 exclusionFilters = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     salesforceConfiguration = list(
+#'       sourceConfiguration = list(
+#'         hostUrl = "string",
+#'         authType = "OAUTH2_CLIENT_CREDENTIALS",
+#'         credentialsSecretArn = "string"
+#'       ),
+#'       crawlerConfiguration = list(
+#'         filterConfiguration = list(
+#'           type = "PATTERN",
+#'           patternObjectFilter = list(
+#'             filters = list(
+#'               list(
+#'                 objectType = "string",
+#'                 inclusionFilters = list(
+#'                   "string"
+#'                 ),
+#'                 exclusionFilters = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     sharePointConfiguration = list(
+#'       sourceConfiguration = list(
+#'         tenantId = "string",
+#'         domain = "string",
+#'         siteUrls = list(
+#'           "string"
+#'         ),
+#'         hostType = "ONLINE",
+#'         authType = "OAUTH2_CLIENT_CREDENTIALS"|"OAUTH2_SHAREPOINT_APP_ONLY_CLIENT_CREDENTIALS",
+#'         credentialsSecretArn = "string"
+#'       ),
+#'       crawlerConfiguration = list(
+#'         filterConfiguration = list(
+#'           type = "PATTERN",
+#'           patternObjectFilter = list(
+#'             filters = list(
+#'               list(
+#'                 objectType = "string",
+#'                 inclusionFilters = list(
+#'                   "string"
+#'                 ),
+#'                 exclusionFilters = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
-#'   description = "string",
-#'   knowledgeBaseId = "string",
-#'   name = "string",
+#'   dataDeletionPolicy = "RETAIN"|"DELETE",
 #'   serverSideEncryptionConfiguration = list(
 #'     kmsKeyArn = "string"
 #'   ),
@@ -1152,19 +1152,10 @@ bedrockagent_create_agent_alias <- function(agentAliasName, agentId, clientToken
 #'         overlapTokens = 123
 #'       ),
 #'       semanticChunkingConfiguration = list(
-#'         breakpointPercentileThreshold = 123,
+#'         maxTokens = 123,
 #'         bufferSize = 123,
-#'         maxTokens = 123
+#'         breakpointPercentileThreshold = 123
 #'       )
-#'     ),
-#'     contextEnrichmentConfiguration = list(
-#'       bedrockFoundationModelConfiguration = list(
-#'         enrichmentStrategyConfiguration = list(
-#'           method = "CHUNK_ENTITY_EXTRACTION"
-#'         ),
-#'         modelArn = "string"
-#'       ),
-#'       type = "BEDROCK_FOUNDATION_MODEL"
 #'     ),
 #'     customTransformationConfiguration = list(
 #'       intermediateStorage = list(
@@ -1174,27 +1165,36 @@ bedrockagent_create_agent_alias <- function(agentAliasName, agentId, clientToken
 #'       ),
 #'       transformations = list(
 #'         list(
-#'           stepToApply = "POST_CHUNKING",
 #'           transformationFunction = list(
 #'             transformationLambdaConfiguration = list(
 #'               lambdaArn = "string"
 #'             )
-#'           )
+#'           ),
+#'           stepToApply = "POST_CHUNKING"
 #'         )
 #'       )
 #'     ),
 #'     parsingConfiguration = list(
-#'       bedrockDataAutomationConfiguration = list(
-#'         parsingModality = "MULTIMODAL"
-#'       ),
+#'       parsingStrategy = "BEDROCK_FOUNDATION_MODEL"|"BEDROCK_DATA_AUTOMATION",
 #'       bedrockFoundationModelConfiguration = list(
 #'         modelArn = "string",
-#'         parsingModality = "MULTIMODAL",
 #'         parsingPrompt = list(
 #'           parsingPromptText = "string"
-#'         )
+#'         ),
+#'         parsingModality = "MULTIMODAL"
 #'       ),
-#'       parsingStrategy = "BEDROCK_FOUNDATION_MODEL"|"BEDROCK_DATA_AUTOMATION"
+#'       bedrockDataAutomationConfiguration = list(
+#'         parsingModality = "MULTIMODAL"
+#'       )
+#'     ),
+#'     contextEnrichmentConfiguration = list(
+#'       type = "BEDROCK_FOUNDATION_MODEL",
+#'       bedrockFoundationModelConfiguration = list(
+#'         enrichmentStrategyConfiguration = list(
+#'           method = "CHUNK_ENTITY_EXTRACTION"
+#'         ),
+#'         modelArn = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -1205,7 +1205,7 @@ bedrockagent_create_agent_alias <- function(agentAliasName, agentId, clientToken
 #' @rdname bedrockagent_create_data_source
 #'
 #' @aliases bedrockagent_create_data_source
-bedrockagent_create_data_source <- function(clientToken = NULL, dataDeletionPolicy = NULL, dataSourceConfiguration, description = NULL, knowledgeBaseId, name, serverSideEncryptionConfiguration = NULL, vectorIngestionConfiguration = NULL) {
+bedrockagent_create_data_source <- function(knowledgeBaseId, clientToken = NULL, name, description = NULL, dataSourceConfiguration, dataDeletionPolicy = NULL, serverSideEncryptionConfiguration = NULL, vectorIngestionConfiguration = NULL) {
   op <- new_operation(
     name = "CreateDataSource",
     http_method = "PUT",
@@ -1214,7 +1214,7 @@ bedrockagent_create_data_source <- function(clientToken = NULL, dataDeletionPoli
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$create_data_source_input(clientToken = clientToken, dataDeletionPolicy = dataDeletionPolicy, dataSourceConfiguration = dataSourceConfiguration, description = description, knowledgeBaseId = knowledgeBaseId, name = name, serverSideEncryptionConfiguration = serverSideEncryptionConfiguration, vectorIngestionConfiguration = vectorIngestionConfiguration)
+  input <- .bedrockagent$create_data_source_input(knowledgeBaseId = knowledgeBaseId, clientToken = clientToken, name = name, description = description, dataSourceConfiguration = dataSourceConfiguration, dataDeletionPolicy = dataDeletionPolicy, serverSideEncryptionConfiguration = serverSideEncryptionConfiguration, vectorIngestionConfiguration = vectorIngestionConfiguration)
   output <- .bedrockagent$create_data_source_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -1238,23 +1238,23 @@ bedrockagent_create_data_source <- function(clientToken = NULL, dataDeletionPoli
 #' in the Amazon Bedrock User Guide.
 #'
 #' @usage
-#' bedrockagent_create_flow(clientToken, customerEncryptionKeyArn,
-#'   definition, description, executionRoleArn, name, tags)
+#' bedrockagent_create_flow(name, description, executionRoleArn,
+#'   customerEncryptionKeyArn, definition, clientToken, tags)
 #'
-#' @param clientToken A unique, case-sensitive identifier to ensure that the API request
-#' completes no more than one time. If this token matches a previous
-#' request, Amazon Bedrock ignores the request, but does not return an
-#' error. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
-#' @param customerEncryptionKeyArn The Amazon Resource Name (ARN) of the KMS key to encrypt the flow.
-#' @param definition A definition of the nodes and connections between nodes in the flow.
+#' @param name &#91;required&#93; A name for the flow.
 #' @param description A description for the flow.
 #' @param executionRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the service role with permissions to
 #' create and manage a flow. For more information, see [Create a service
 #' role for flows in Amazon
 #' Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-permissions.html)
 #' in the Amazon Bedrock User Guide.
-#' @param name &#91;required&#93; A name for the flow.
+#' @param customerEncryptionKeyArn The Amazon Resource Name (ARN) of the KMS key to encrypt the flow.
+#' @param definition A definition of the nodes and connections between nodes in the flow.
+#' @param clientToken A unique, case-sensitive identifier to ensure that the API request
+#' completes no more than one time. If this token matches a previous
+#' request, Amazon Bedrock ignores the request, but does not return an
+#' error. For more information, see [Ensuring
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param tags Any tags that you want to attach to the flow. For more information, see
 #' [Tagging resources in Amazon
 #' Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html).
@@ -1263,138 +1263,120 @@ bedrockagent_create_data_source <- function(clientToken = NULL, dataDeletionPoli
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   name = "string",
+#'   description = "string",
+#'   executionRoleArn = "string",
+#'   customerEncryptionKeyArn = "string",
+#'   id = "string",
 #'   arn = "string",
+#'   status = "Failed"|"Prepared"|"Preparing"|"NotPrepared",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   customerEncryptionKeyArn = "string",
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   version = "string",
 #'   definition = list(
-#'     connections = list(
-#'       list(
-#'         configuration = list(
-#'           conditional = list(
-#'             condition = "string"
-#'           ),
-#'           data = list(
-#'             sourceOutput = "string",
-#'             targetInput = "string"
-#'           )
-#'         ),
-#'         name = "string",
-#'         source = "string",
-#'         target = "string",
-#'         type = "Data"|"Conditional"
-#'       )
-#'     ),
 #'     nodes = list(
 #'       list(
+#'         name = "string",
+#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"|"InlineCode"|"Loop"|"LoopInput"|"LoopController",
 #'         configuration = list(
-#'           agent = list(
-#'             agentAliasArn = "string"
-#'           ),
-#'           collector = list(),
-#'           condition = list(
-#'             conditions = list(
-#'               list(
-#'                 expression = "string",
-#'                 name = "string"
-#'               )
-#'             )
-#'           ),
-#'           inlineCode = list(
-#'             code = "string",
-#'             language = "Python_3"
-#'           ),
 #'           input = list(),
-#'           iterator = list(),
+#'           output = list(),
 #'           knowledgeBase = list(
+#'             knowledgeBaseId = "string",
+#'             modelId = "string",
 #'             guardrailConfiguration = list(
 #'               guardrailIdentifier = "string",
 #'               guardrailVersion = "string"
 #'             ),
-#'             knowledgeBaseId = "string",
-#'             modelId = "string"
+#'             numberOfResults = 123,
+#'             promptTemplate = list(
+#'               textPromptTemplate = "string"
+#'             ),
+#'             inferenceConfiguration = list(
+#'               text = list(
+#'                 temperature = 123.0,
+#'                 topP = 123.0,
+#'                 maxTokens = 123,
+#'                 stopSequences = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             rerankingConfiguration = list(
+#'               type = "BEDROCK_RERANKING_MODEL",
+#'               bedrockRerankingConfiguration = list(
+#'                 modelConfiguration = list(
+#'                   modelArn = "string",
+#'                   additionalModelRequestFields = list(
+#'                     list()
+#'                   )
+#'                 ),
+#'                 numberOfRerankedResults = 123,
+#'                 metadataConfiguration = list(
+#'                   selectionMode = "SELECTIVE"|"ALL",
+#'                   selectiveModeConfiguration = list(
+#'                     fieldsToInclude = list(
+#'                       list(
+#'                         fieldName = "string"
+#'                       )
+#'                     ),
+#'                     fieldsToExclude = list(
+#'                       list(
+#'                         fieldName = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             orchestrationConfiguration = list(
+#'               promptTemplate = list(
+#'                 textPromptTemplate = "string"
+#'               ),
+#'               inferenceConfig = list(
+#'                 text = list(
+#'                   temperature = 123.0,
+#'                   topP = 123.0,
+#'                   maxTokens = 123,
+#'                   stopSequences = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               additionalModelRequestFields = list(
+#'                 list()
+#'               ),
+#'               performanceConfig = list(
+#'                 latency = "standard"|"optimized"
+#'               )
+#'             )
 #'           ),
-#'           lambdaFunction = list(
-#'             lambdaArn = "string"
+#'           condition = list(
+#'             conditions = list(
+#'               list(
+#'                 name = "string",
+#'                 expression = "string"
+#'               )
+#'             )
 #'           ),
 #'           lex = list(
 #'             botAliasArn = "string",
 #'             localeId = "string"
 #'           ),
-#'           output = list(),
 #'           prompt = list(
-#'             guardrailConfiguration = list(
-#'               guardrailIdentifier = "string",
-#'               guardrailVersion = "string"
-#'             ),
 #'             sourceConfiguration = list(
+#'               resource = list(
+#'                 promptArn = "string"
+#'               ),
 #'               inline = list(
-#'                 additionalModelRequestFields = list(),
-#'                 inferenceConfiguration = list(
-#'                   text = list(
-#'                     maxTokens = 123,
-#'                     stopSequences = list(
-#'                       "string"
-#'                     ),
-#'                     temperature = 123.0,
-#'                     topP = 123.0
-#'                   )
-#'                 ),
-#'                 modelId = "string",
+#'                 templateType = "TEXT"|"CHAT",
 #'                 templateConfiguration = list(
-#'                   chat = list(
-#'                     inputVariables = list(
-#'                       list(
-#'                         name = "string"
-#'                       )
-#'                     ),
-#'                     messages = list(
-#'                       list(
-#'                         content = list(
-#'                           list(
-#'                             cachePoint = list(
-#'                               type = "default"
-#'                             ),
-#'                             text = "string"
-#'                           )
-#'                         ),
-#'                         role = "user"|"assistant"
-#'                       )
-#'                     ),
-#'                     system = list(
-#'                       list(
-#'                         cachePoint = list(
-#'                           type = "default"
-#'                         ),
-#'                         text = "string"
-#'                       )
-#'                     ),
-#'                     toolConfiguration = list(
-#'                       toolChoice = list(
-#'                         any = list(),
-#'                         auto = list(),
-#'                         tool = list(
-#'                           name = "string"
-#'                         )
-#'                       ),
-#'                       tools = list(
-#'                         list(
-#'                           cachePoint = list(
-#'                             type = "default"
-#'                           ),
-#'                           toolSpec = list(
-#'                             description = "string",
-#'                             inputSchema = list(
-#'                               json = list()
-#'                             ),
-#'                             name = "string"
-#'                           )
-#'                         )
-#'                       )
-#'                     )
-#'                   ),
 #'                   text = list(
+#'                     text = "string",
 #'                     cachePoint = list(
 #'                       type = "default"
 #'                     ),
@@ -1402,16 +1384,91 @@ bedrockagent_create_data_source <- function(clientToken = NULL, dataDeletionPoli
 #'                       list(
 #'                         name = "string"
 #'                       )
+#'                     )
+#'                   ),
+#'                   chat = list(
+#'                     messages = list(
+#'                       list(
+#'                         role = "user"|"assistant",
+#'                         content = list(
+#'                           list(
+#'                             text = "string",
+#'                             cachePoint = list(
+#'                               type = "default"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
 #'                     ),
-#'                     text = "string"
+#'                     system = list(
+#'                       list(
+#'                         text = "string",
+#'                         cachePoint = list(
+#'                           type = "default"
+#'                         )
+#'                       )
+#'                     ),
+#'                     inputVariables = list(
+#'                       list(
+#'                         name = "string"
+#'                       )
+#'                     ),
+#'                     toolConfiguration = list(
+#'                       tools = list(
+#'                         list(
+#'                           toolSpec = list(
+#'                             name = "string",
+#'                             description = "string",
+#'                             inputSchema = list(
+#'                               json = list()
+#'                             )
+#'                           ),
+#'                           cachePoint = list(
+#'                             type = "default"
+#'                           )
+#'                         )
+#'                       ),
+#'                       toolChoice = list(
+#'                         auto = list(),
+#'                         any = list(),
+#'                         tool = list(
+#'                           name = "string"
+#'                         )
+#'                       )
+#'                     )
 #'                   )
 #'                 ),
-#'                 templateType = "TEXT"|"CHAT"
-#'               ),
-#'               resource = list(
-#'                 promptArn = "string"
+#'                 modelId = "string",
+#'                 inferenceConfiguration = list(
+#'                   text = list(
+#'                     temperature = 123.0,
+#'                     topP = 123.0,
+#'                     maxTokens = 123,
+#'                     stopSequences = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 additionalModelRequestFields = list()
+#'               )
+#'             ),
+#'             guardrailConfiguration = list(
+#'               guardrailIdentifier = "string",
+#'               guardrailVersion = "string"
+#'             )
+#'           ),
+#'           lambdaFunction = list(
+#'             lambdaArn = "string"
+#'           ),
+#'           storage = list(
+#'             serviceConfiguration = list(
+#'               s3 = list(
+#'                 bucketName = "string"
 #'               )
 #'             )
+#'           ),
+#'           agent = list(
+#'             agentAliasArn = "string"
 #'           ),
 #'           retrieval = list(
 #'             serviceConfiguration = list(
@@ -1420,176 +1477,168 @@ bedrockagent_create_data_source <- function(clientToken = NULL, dataDeletionPoli
 #'               )
 #'             )
 #'           ),
-#'           storage = list(
-#'             serviceConfiguration = list(
-#'               s3 = list(
-#'                 bucketName = "string"
-#'               )
-#'             )
+#'           iterator = list(),
+#'           collector = list(),
+#'           inlineCode = list(
+#'             code = "string",
+#'             language = "Python_3"
+#'           ),
+#'           loop = list(
+#'             definition = list()
+#'           ),
+#'           loopInput = list(),
+#'           loopController = list(
+#'             continueCondition = list(
+#'               name = "string",
+#'               expression = "string"
+#'             ),
+#'             maxIterations = 123
 #'           )
 #'         ),
 #'         inputs = list(
 #'           list(
-#'             expression = "string",
 #'             name = "string",
-#'             type = "String"|"Number"|"Boolean"|"Object"|"Array"
+#'             type = "String"|"Number"|"Boolean"|"Object"|"Array",
+#'             expression = "string",
+#'             category = "LoopCondition"|"ReturnValueToLoopStart"|"ExitLoop"
 #'           )
 #'         ),
-#'         name = "string",
 #'         outputs = list(
 #'           list(
 #'             name = "string",
 #'             type = "String"|"Number"|"Boolean"|"Object"|"Array"
 #'           )
-#'         ),
-#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"|"InlineCode"
+#'         )
+#'       )
+#'     ),
+#'     connections = list(
+#'       list(
+#'         type = "Data"|"Conditional",
+#'         name = "string",
+#'         source = "string",
+#'         target = "string",
+#'         configuration = list(
+#'           data = list(
+#'             sourceOutput = "string",
+#'             targetInput = "string"
+#'           ),
+#'           conditional = list(
+#'             condition = "string"
+#'           )
+#'         )
 #'       )
 #'     )
-#'   ),
-#'   description = "string",
-#'   executionRoleArn = "string",
-#'   id = "string",
-#'   name = "string",
-#'   status = "Failed"|"Prepared"|"Preparing"|"NotPrepared",
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   version = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_flow(
-#'   clientToken = "string",
+#'   name = "string",
+#'   description = "string",
+#'   executionRoleArn = "string",
 #'   customerEncryptionKeyArn = "string",
 #'   definition = list(
-#'     connections = list(
-#'       list(
-#'         configuration = list(
-#'           conditional = list(
-#'             condition = "string"
-#'           ),
-#'           data = list(
-#'             sourceOutput = "string",
-#'             targetInput = "string"
-#'           )
-#'         ),
-#'         name = "string",
-#'         source = "string",
-#'         target = "string",
-#'         type = "Data"|"Conditional"
-#'       )
-#'     ),
 #'     nodes = list(
 #'       list(
+#'         name = "string",
+#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"|"InlineCode"|"Loop"|"LoopInput"|"LoopController",
 #'         configuration = list(
-#'           agent = list(
-#'             agentAliasArn = "string"
-#'           ),
-#'           collector = list(),
-#'           condition = list(
-#'             conditions = list(
-#'               list(
-#'                 expression = "string",
-#'                 name = "string"
-#'               )
-#'             )
-#'           ),
-#'           inlineCode = list(
-#'             code = "string",
-#'             language = "Python_3"
-#'           ),
 #'           input = list(),
-#'           iterator = list(),
+#'           output = list(),
 #'           knowledgeBase = list(
+#'             knowledgeBaseId = "string",
+#'             modelId = "string",
 #'             guardrailConfiguration = list(
 #'               guardrailIdentifier = "string",
 #'               guardrailVersion = "string"
 #'             ),
-#'             knowledgeBaseId = "string",
-#'             modelId = "string"
+#'             numberOfResults = 123,
+#'             promptTemplate = list(
+#'               textPromptTemplate = "string"
+#'             ),
+#'             inferenceConfiguration = list(
+#'               text = list(
+#'                 temperature = 123.0,
+#'                 topP = 123.0,
+#'                 maxTokens = 123,
+#'                 stopSequences = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             rerankingConfiguration = list(
+#'               type = "BEDROCK_RERANKING_MODEL",
+#'               bedrockRerankingConfiguration = list(
+#'                 modelConfiguration = list(
+#'                   modelArn = "string",
+#'                   additionalModelRequestFields = list(
+#'                     list()
+#'                   )
+#'                 ),
+#'                 numberOfRerankedResults = 123,
+#'                 metadataConfiguration = list(
+#'                   selectionMode = "SELECTIVE"|"ALL",
+#'                   selectiveModeConfiguration = list(
+#'                     fieldsToInclude = list(
+#'                       list(
+#'                         fieldName = "string"
+#'                       )
+#'                     ),
+#'                     fieldsToExclude = list(
+#'                       list(
+#'                         fieldName = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             orchestrationConfiguration = list(
+#'               promptTemplate = list(
+#'                 textPromptTemplate = "string"
+#'               ),
+#'               inferenceConfig = list(
+#'                 text = list(
+#'                   temperature = 123.0,
+#'                   topP = 123.0,
+#'                   maxTokens = 123,
+#'                   stopSequences = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               additionalModelRequestFields = list(
+#'                 list()
+#'               ),
+#'               performanceConfig = list(
+#'                 latency = "standard"|"optimized"
+#'               )
+#'             )
 #'           ),
-#'           lambdaFunction = list(
-#'             lambdaArn = "string"
+#'           condition = list(
+#'             conditions = list(
+#'               list(
+#'                 name = "string",
+#'                 expression = "string"
+#'               )
+#'             )
 #'           ),
 #'           lex = list(
 #'             botAliasArn = "string",
 #'             localeId = "string"
 #'           ),
-#'           output = list(),
 #'           prompt = list(
-#'             guardrailConfiguration = list(
-#'               guardrailIdentifier = "string",
-#'               guardrailVersion = "string"
-#'             ),
 #'             sourceConfiguration = list(
+#'               resource = list(
+#'                 promptArn = "string"
+#'               ),
 #'               inline = list(
-#'                 additionalModelRequestFields = list(),
-#'                 inferenceConfiguration = list(
-#'                   text = list(
-#'                     maxTokens = 123,
-#'                     stopSequences = list(
-#'                       "string"
-#'                     ),
-#'                     temperature = 123.0,
-#'                     topP = 123.0
-#'                   )
-#'                 ),
-#'                 modelId = "string",
+#'                 templateType = "TEXT"|"CHAT",
 #'                 templateConfiguration = list(
-#'                   chat = list(
-#'                     inputVariables = list(
-#'                       list(
-#'                         name = "string"
-#'                       )
-#'                     ),
-#'                     messages = list(
-#'                       list(
-#'                         content = list(
-#'                           list(
-#'                             cachePoint = list(
-#'                               type = "default"
-#'                             ),
-#'                             text = "string"
-#'                           )
-#'                         ),
-#'                         role = "user"|"assistant"
-#'                       )
-#'                     ),
-#'                     system = list(
-#'                       list(
-#'                         cachePoint = list(
-#'                           type = "default"
-#'                         ),
-#'                         text = "string"
-#'                       )
-#'                     ),
-#'                     toolConfiguration = list(
-#'                       toolChoice = list(
-#'                         any = list(),
-#'                         auto = list(),
-#'                         tool = list(
-#'                           name = "string"
-#'                         )
-#'                       ),
-#'                       tools = list(
-#'                         list(
-#'                           cachePoint = list(
-#'                             type = "default"
-#'                           ),
-#'                           toolSpec = list(
-#'                             description = "string",
-#'                             inputSchema = list(
-#'                               json = list()
-#'                             ),
-#'                             name = "string"
-#'                           )
-#'                         )
-#'                       )
-#'                     )
-#'                   ),
 #'                   text = list(
+#'                     text = "string",
 #'                     cachePoint = list(
 #'                       type = "default"
 #'                     ),
@@ -1597,16 +1646,91 @@ bedrockagent_create_data_source <- function(clientToken = NULL, dataDeletionPoli
 #'                       list(
 #'                         name = "string"
 #'                       )
+#'                     )
+#'                   ),
+#'                   chat = list(
+#'                     messages = list(
+#'                       list(
+#'                         role = "user"|"assistant",
+#'                         content = list(
+#'                           list(
+#'                             text = "string",
+#'                             cachePoint = list(
+#'                               type = "default"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
 #'                     ),
-#'                     text = "string"
+#'                     system = list(
+#'                       list(
+#'                         text = "string",
+#'                         cachePoint = list(
+#'                           type = "default"
+#'                         )
+#'                       )
+#'                     ),
+#'                     inputVariables = list(
+#'                       list(
+#'                         name = "string"
+#'                       )
+#'                     ),
+#'                     toolConfiguration = list(
+#'                       tools = list(
+#'                         list(
+#'                           toolSpec = list(
+#'                             name = "string",
+#'                             description = "string",
+#'                             inputSchema = list(
+#'                               json = list()
+#'                             )
+#'                           ),
+#'                           cachePoint = list(
+#'                             type = "default"
+#'                           )
+#'                         )
+#'                       ),
+#'                       toolChoice = list(
+#'                         auto = list(),
+#'                         any = list(),
+#'                         tool = list(
+#'                           name = "string"
+#'                         )
+#'                       )
+#'                     )
 #'                   )
 #'                 ),
-#'                 templateType = "TEXT"|"CHAT"
-#'               ),
-#'               resource = list(
-#'                 promptArn = "string"
+#'                 modelId = "string",
+#'                 inferenceConfiguration = list(
+#'                   text = list(
+#'                     temperature = 123.0,
+#'                     topP = 123.0,
+#'                     maxTokens = 123,
+#'                     stopSequences = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 additionalModelRequestFields = list()
+#'               )
+#'             ),
+#'             guardrailConfiguration = list(
+#'               guardrailIdentifier = "string",
+#'               guardrailVersion = "string"
+#'             )
+#'           ),
+#'           lambdaFunction = list(
+#'             lambdaArn = "string"
+#'           ),
+#'           storage = list(
+#'             serviceConfiguration = list(
+#'               s3 = list(
+#'                 bucketName = "string"
 #'               )
 #'             )
+#'           ),
+#'           agent = list(
+#'             agentAliasArn = "string"
 #'           ),
 #'           retrieval = list(
 #'             serviceConfiguration = list(
@@ -1615,35 +1739,59 @@ bedrockagent_create_data_source <- function(clientToken = NULL, dataDeletionPoli
 #'               )
 #'             )
 #'           ),
-#'           storage = list(
-#'             serviceConfiguration = list(
-#'               s3 = list(
-#'                 bucketName = "string"
-#'               )
-#'             )
+#'           iterator = list(),
+#'           collector = list(),
+#'           inlineCode = list(
+#'             code = "string",
+#'             language = "Python_3"
+#'           ),
+#'           loop = list(
+#'             definition = list()
+#'           ),
+#'           loopInput = list(),
+#'           loopController = list(
+#'             continueCondition = list(
+#'               name = "string",
+#'               expression = "string"
+#'             ),
+#'             maxIterations = 123
 #'           )
 #'         ),
 #'         inputs = list(
 #'           list(
-#'             expression = "string",
 #'             name = "string",
-#'             type = "String"|"Number"|"Boolean"|"Object"|"Array"
+#'             type = "String"|"Number"|"Boolean"|"Object"|"Array",
+#'             expression = "string",
+#'             category = "LoopCondition"|"ReturnValueToLoopStart"|"ExitLoop"
 #'           )
 #'         ),
-#'         name = "string",
 #'         outputs = list(
 #'           list(
 #'             name = "string",
 #'             type = "String"|"Number"|"Boolean"|"Object"|"Array"
 #'           )
-#'         ),
-#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"|"InlineCode"
+#'         )
+#'       )
+#'     ),
+#'     connections = list(
+#'       list(
+#'         type = "Data"|"Conditional",
+#'         name = "string",
+#'         source = "string",
+#'         target = "string",
+#'         configuration = list(
+#'           data = list(
+#'             sourceOutput = "string",
+#'             targetInput = "string"
+#'           ),
+#'           conditional = list(
+#'             condition = "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
-#'   description = "string",
-#'   executionRoleArn = "string",
-#'   name = "string",
+#'   clientToken = "string",
 #'   tags = list(
 #'     "string"
 #'   )
@@ -1655,7 +1803,7 @@ bedrockagent_create_data_source <- function(clientToken = NULL, dataDeletionPoli
 #' @rdname bedrockagent_create_flow
 #'
 #' @aliases bedrockagent_create_flow
-bedrockagent_create_flow <- function(clientToken = NULL, customerEncryptionKeyArn = NULL, definition = NULL, description = NULL, executionRoleArn, name, tags = NULL) {
+bedrockagent_create_flow <- function(name, description = NULL, executionRoleArn, customerEncryptionKeyArn = NULL, definition = NULL, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateFlow",
     http_method = "POST",
@@ -1664,7 +1812,7 @@ bedrockagent_create_flow <- function(clientToken = NULL, customerEncryptionKeyAr
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$create_flow_input(clientToken = clientToken, customerEncryptionKeyArn = customerEncryptionKeyArn, definition = definition, description = description, executionRoleArn = executionRoleArn, name = name, tags = tags)
+  input <- .bedrockagent$create_flow_input(name = name, description = description, executionRoleArn = executionRoleArn, customerEncryptionKeyArn = customerEncryptionKeyArn, definition = definition, clientToken = clientToken, tags = tags)
   output <- .bedrockagent$create_flow_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -1683,18 +1831,20 @@ bedrockagent_create_flow <- function(clientToken = NULL, customerEncryptionKeyAr
 #' in the Amazon Bedrock User Guide.
 #'
 #' @usage
-#' bedrockagent_create_flow_alias(clientToken, description, flowIdentifier,
-#'   name, routingConfiguration, tags)
+#' bedrockagent_create_flow_alias(name, description, routingConfiguration,
+#'   concurrencyConfiguration, flowIdentifier, clientToken, tags)
 #'
+#' @param name &#91;required&#93; A name for the alias.
+#' @param description A description for the alias.
+#' @param routingConfiguration &#91;required&#93; Contains information about the version to which to map the alias.
+#' @param concurrencyConfiguration The configuration that specifies how nodes in the flow are executed in
+#' parallel.
+#' @param flowIdentifier &#91;required&#93; The unique identifier of the flow for which to create an alias.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
-#' @param description A description for the alias.
-#' @param flowIdentifier &#91;required&#93; The unique identifier of the flow for which to create an alias.
-#' @param name &#91;required&#93; A name for the alias.
-#' @param routingConfiguration &#91;required&#93; Contains information about the version to which to map the alias.
 #' @param tags Any tags that you want to attach to the alias of the flow. For more
 #' information, see [Tagging resources in Amazon
 #' Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html).
@@ -1703,18 +1853,22 @@ bedrockagent_create_flow <- function(clientToken = NULL, customerEncryptionKeyAr
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   arn = "string",
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   description = "string",
-#'   flowId = "string",
-#'   id = "string",
 #'   name = "string",
+#'   description = "string",
 #'   routingConfiguration = list(
 #'     list(
 #'       flowVersion = "string"
 #'     )
+#'   ),
+#'   concurrencyConfiguration = list(
+#'     type = "Automatic"|"Manual",
+#'     maxConcurrency = 123
+#'   ),
+#'   flowId = "string",
+#'   id = "string",
+#'   arn = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
 #'   ),
 #'   updatedAt = as.POSIXct(
 #'     "2015-01-01"
@@ -1725,15 +1879,19 @@ bedrockagent_create_flow <- function(clientToken = NULL, customerEncryptionKeyAr
 #' @section Request syntax:
 #' ```
 #' svc$create_flow_alias(
-#'   clientToken = "string",
-#'   description = "string",
-#'   flowIdentifier = "string",
 #'   name = "string",
+#'   description = "string",
 #'   routingConfiguration = list(
 #'     list(
 #'       flowVersion = "string"
 #'     )
 #'   ),
+#'   concurrencyConfiguration = list(
+#'     type = "Automatic"|"Manual",
+#'     maxConcurrency = 123
+#'   ),
+#'   flowIdentifier = "string",
+#'   clientToken = "string",
 #'   tags = list(
 #'     "string"
 #'   )
@@ -1745,7 +1903,7 @@ bedrockagent_create_flow <- function(clientToken = NULL, customerEncryptionKeyAr
 #' @rdname bedrockagent_create_flow_alias
 #'
 #' @aliases bedrockagent_create_flow_alias
-bedrockagent_create_flow_alias <- function(clientToken = NULL, description = NULL, flowIdentifier, name, routingConfiguration, tags = NULL) {
+bedrockagent_create_flow_alias <- function(name, description = NULL, routingConfiguration, concurrencyConfiguration = NULL, flowIdentifier, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateFlowAlias",
     http_method = "POST",
@@ -1754,7 +1912,7 @@ bedrockagent_create_flow_alias <- function(clientToken = NULL, description = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$create_flow_alias_input(clientToken = clientToken, description = description, flowIdentifier = flowIdentifier, name = name, routingConfiguration = routingConfiguration, tags = tags)
+  input <- .bedrockagent$create_flow_alias_input(name = name, description = description, routingConfiguration = routingConfiguration, concurrencyConfiguration = concurrencyConfiguration, flowIdentifier = flowIdentifier, clientToken = clientToken, tags = tags)
   output <- .bedrockagent$create_flow_alias_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -1773,153 +1931,132 @@ bedrockagent_create_flow_alias <- function(clientToken = NULL, description = NUL
 #' in the Amazon Bedrock User Guide.
 #'
 #' @usage
-#' bedrockagent_create_flow_version(clientToken, description,
-#'   flowIdentifier)
+#' bedrockagent_create_flow_version(flowIdentifier, description,
+#'   clientToken)
 #'
+#' @param flowIdentifier &#91;required&#93; The unique identifier of the flow that you want to create a version of.
+#' @param description A description of the version of the flow.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
-#' @param description A description of the version of the flow.
-#' @param flowIdentifier &#91;required&#93; The unique identifier of the flow that you want to create a version of.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   name = "string",
+#'   description = "string",
+#'   executionRoleArn = "string",
+#'   customerEncryptionKeyArn = "string",
+#'   id = "string",
 #'   arn = "string",
+#'   status = "Failed"|"Prepared"|"Preparing"|"NotPrepared",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   customerEncryptionKeyArn = "string",
+#'   version = "string",
 #'   definition = list(
-#'     connections = list(
-#'       list(
-#'         configuration = list(
-#'           conditional = list(
-#'             condition = "string"
-#'           ),
-#'           data = list(
-#'             sourceOutput = "string",
-#'             targetInput = "string"
-#'           )
-#'         ),
-#'         name = "string",
-#'         source = "string",
-#'         target = "string",
-#'         type = "Data"|"Conditional"
-#'       )
-#'     ),
 #'     nodes = list(
 #'       list(
+#'         name = "string",
+#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"|"InlineCode"|"Loop"|"LoopInput"|"LoopController",
 #'         configuration = list(
-#'           agent = list(
-#'             agentAliasArn = "string"
-#'           ),
-#'           collector = list(),
-#'           condition = list(
-#'             conditions = list(
-#'               list(
-#'                 expression = "string",
-#'                 name = "string"
-#'               )
-#'             )
-#'           ),
-#'           inlineCode = list(
-#'             code = "string",
-#'             language = "Python_3"
-#'           ),
 #'           input = list(),
-#'           iterator = list(),
+#'           output = list(),
 #'           knowledgeBase = list(
+#'             knowledgeBaseId = "string",
+#'             modelId = "string",
 #'             guardrailConfiguration = list(
 #'               guardrailIdentifier = "string",
 #'               guardrailVersion = "string"
 #'             ),
-#'             knowledgeBaseId = "string",
-#'             modelId = "string"
+#'             numberOfResults = 123,
+#'             promptTemplate = list(
+#'               textPromptTemplate = "string"
+#'             ),
+#'             inferenceConfiguration = list(
+#'               text = list(
+#'                 temperature = 123.0,
+#'                 topP = 123.0,
+#'                 maxTokens = 123,
+#'                 stopSequences = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             rerankingConfiguration = list(
+#'               type = "BEDROCK_RERANKING_MODEL",
+#'               bedrockRerankingConfiguration = list(
+#'                 modelConfiguration = list(
+#'                   modelArn = "string",
+#'                   additionalModelRequestFields = list(
+#'                     list()
+#'                   )
+#'                 ),
+#'                 numberOfRerankedResults = 123,
+#'                 metadataConfiguration = list(
+#'                   selectionMode = "SELECTIVE"|"ALL",
+#'                   selectiveModeConfiguration = list(
+#'                     fieldsToInclude = list(
+#'                       list(
+#'                         fieldName = "string"
+#'                       )
+#'                     ),
+#'                     fieldsToExclude = list(
+#'                       list(
+#'                         fieldName = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             orchestrationConfiguration = list(
+#'               promptTemplate = list(
+#'                 textPromptTemplate = "string"
+#'               ),
+#'               inferenceConfig = list(
+#'                 text = list(
+#'                   temperature = 123.0,
+#'                   topP = 123.0,
+#'                   maxTokens = 123,
+#'                   stopSequences = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               additionalModelRequestFields = list(
+#'                 list()
+#'               ),
+#'               performanceConfig = list(
+#'                 latency = "standard"|"optimized"
+#'               )
+#'             )
 #'           ),
-#'           lambdaFunction = list(
-#'             lambdaArn = "string"
+#'           condition = list(
+#'             conditions = list(
+#'               list(
+#'                 name = "string",
+#'                 expression = "string"
+#'               )
+#'             )
 #'           ),
 #'           lex = list(
 #'             botAliasArn = "string",
 #'             localeId = "string"
 #'           ),
-#'           output = list(),
 #'           prompt = list(
-#'             guardrailConfiguration = list(
-#'               guardrailIdentifier = "string",
-#'               guardrailVersion = "string"
-#'             ),
 #'             sourceConfiguration = list(
+#'               resource = list(
+#'                 promptArn = "string"
+#'               ),
 #'               inline = list(
-#'                 additionalModelRequestFields = list(),
-#'                 inferenceConfiguration = list(
-#'                   text = list(
-#'                     maxTokens = 123,
-#'                     stopSequences = list(
-#'                       "string"
-#'                     ),
-#'                     temperature = 123.0,
-#'                     topP = 123.0
-#'                   )
-#'                 ),
-#'                 modelId = "string",
+#'                 templateType = "TEXT"|"CHAT",
 #'                 templateConfiguration = list(
-#'                   chat = list(
-#'                     inputVariables = list(
-#'                       list(
-#'                         name = "string"
-#'                       )
-#'                     ),
-#'                     messages = list(
-#'                       list(
-#'                         content = list(
-#'                           list(
-#'                             cachePoint = list(
-#'                               type = "default"
-#'                             ),
-#'                             text = "string"
-#'                           )
-#'                         ),
-#'                         role = "user"|"assistant"
-#'                       )
-#'                     ),
-#'                     system = list(
-#'                       list(
-#'                         cachePoint = list(
-#'                           type = "default"
-#'                         ),
-#'                         text = "string"
-#'                       )
-#'                     ),
-#'                     toolConfiguration = list(
-#'                       toolChoice = list(
-#'                         any = list(),
-#'                         auto = list(),
-#'                         tool = list(
-#'                           name = "string"
-#'                         )
-#'                       ),
-#'                       tools = list(
-#'                         list(
-#'                           cachePoint = list(
-#'                             type = "default"
-#'                           ),
-#'                           toolSpec = list(
-#'                             description = "string",
-#'                             inputSchema = list(
-#'                               json = list()
-#'                             ),
-#'                             name = "string"
-#'                           )
-#'                         )
-#'                       )
-#'                     )
-#'                   ),
 #'                   text = list(
+#'                     text = "string",
 #'                     cachePoint = list(
 #'                       type = "default"
 #'                     ),
@@ -1927,16 +2064,91 @@ bedrockagent_create_flow_alias <- function(clientToken = NULL, description = NUL
 #'                       list(
 #'                         name = "string"
 #'                       )
+#'                     )
+#'                   ),
+#'                   chat = list(
+#'                     messages = list(
+#'                       list(
+#'                         role = "user"|"assistant",
+#'                         content = list(
+#'                           list(
+#'                             text = "string",
+#'                             cachePoint = list(
+#'                               type = "default"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
 #'                     ),
-#'                     text = "string"
+#'                     system = list(
+#'                       list(
+#'                         text = "string",
+#'                         cachePoint = list(
+#'                           type = "default"
+#'                         )
+#'                       )
+#'                     ),
+#'                     inputVariables = list(
+#'                       list(
+#'                         name = "string"
+#'                       )
+#'                     ),
+#'                     toolConfiguration = list(
+#'                       tools = list(
+#'                         list(
+#'                           toolSpec = list(
+#'                             name = "string",
+#'                             description = "string",
+#'                             inputSchema = list(
+#'                               json = list()
+#'                             )
+#'                           ),
+#'                           cachePoint = list(
+#'                             type = "default"
+#'                           )
+#'                         )
+#'                       ),
+#'                       toolChoice = list(
+#'                         auto = list(),
+#'                         any = list(),
+#'                         tool = list(
+#'                           name = "string"
+#'                         )
+#'                       )
+#'                     )
 #'                   )
 #'                 ),
-#'                 templateType = "TEXT"|"CHAT"
-#'               ),
-#'               resource = list(
-#'                 promptArn = "string"
+#'                 modelId = "string",
+#'                 inferenceConfiguration = list(
+#'                   text = list(
+#'                     temperature = 123.0,
+#'                     topP = 123.0,
+#'                     maxTokens = 123,
+#'                     stopSequences = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 additionalModelRequestFields = list()
+#'               )
+#'             ),
+#'             guardrailConfiguration = list(
+#'               guardrailIdentifier = "string",
+#'               guardrailVersion = "string"
+#'             )
+#'           ),
+#'           lambdaFunction = list(
+#'             lambdaArn = "string"
+#'           ),
+#'           storage = list(
+#'             serviceConfiguration = list(
+#'               s3 = list(
+#'                 bucketName = "string"
 #'               )
 #'             )
+#'           ),
+#'           agent = list(
+#'             agentAliasArn = "string"
 #'           ),
 #'           retrieval = list(
 #'             serviceConfiguration = list(
@@ -1945,47 +2157,67 @@ bedrockagent_create_flow_alias <- function(clientToken = NULL, description = NUL
 #'               )
 #'             )
 #'           ),
-#'           storage = list(
-#'             serviceConfiguration = list(
-#'               s3 = list(
-#'                 bucketName = "string"
-#'               )
-#'             )
+#'           iterator = list(),
+#'           collector = list(),
+#'           inlineCode = list(
+#'             code = "string",
+#'             language = "Python_3"
+#'           ),
+#'           loop = list(
+#'             definition = list()
+#'           ),
+#'           loopInput = list(),
+#'           loopController = list(
+#'             continueCondition = list(
+#'               name = "string",
+#'               expression = "string"
+#'             ),
+#'             maxIterations = 123
 #'           )
 #'         ),
 #'         inputs = list(
 #'           list(
-#'             expression = "string",
 #'             name = "string",
-#'             type = "String"|"Number"|"Boolean"|"Object"|"Array"
+#'             type = "String"|"Number"|"Boolean"|"Object"|"Array",
+#'             expression = "string",
+#'             category = "LoopCondition"|"ReturnValueToLoopStart"|"ExitLoop"
 #'           )
 #'         ),
-#'         name = "string",
 #'         outputs = list(
 #'           list(
 #'             name = "string",
 #'             type = "String"|"Number"|"Boolean"|"Object"|"Array"
 #'           )
-#'         ),
-#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"|"InlineCode"
+#'         )
+#'       )
+#'     ),
+#'     connections = list(
+#'       list(
+#'         type = "Data"|"Conditional",
+#'         name = "string",
+#'         source = "string",
+#'         target = "string",
+#'         configuration = list(
+#'           data = list(
+#'             sourceOutput = "string",
+#'             targetInput = "string"
+#'           ),
+#'           conditional = list(
+#'             condition = "string"
+#'           )
+#'         )
 #'       )
 #'     )
-#'   ),
-#'   description = "string",
-#'   executionRoleArn = "string",
-#'   id = "string",
-#'   name = "string",
-#'   status = "Failed"|"Prepared"|"Preparing"|"NotPrepared",
-#'   version = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_flow_version(
-#'   clientToken = "string",
+#'   flowIdentifier = "string",
 #'   description = "string",
-#'   flowIdentifier = "string"
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -1994,7 +2226,7 @@ bedrockagent_create_flow_alias <- function(clientToken = NULL, description = NUL
 #' @rdname bedrockagent_create_flow_version
 #'
 #' @aliases bedrockagent_create_flow_version
-bedrockagent_create_flow_version <- function(clientToken = NULL, description = NULL, flowIdentifier) {
+bedrockagent_create_flow_version <- function(flowIdentifier, description = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateFlowVersion",
     http_method = "POST",
@@ -2003,7 +2235,7 @@ bedrockagent_create_flow_version <- function(clientToken = NULL, description = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$create_flow_version_input(clientToken = clientToken, description = description, flowIdentifier = flowIdentifier)
+  input <- .bedrockagent$create_flow_version_input(flowIdentifier = flowIdentifier, description = description, clientToken = clientToken)
   output <- .bedrockagent$create_flow_version_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -2058,19 +2290,19 @@ bedrockagent_create_flow_version <- function(clientToken = NULL, description = N
 #'         Cloud](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-setup.html).
 #'
 #' @usage
-#' bedrockagent_create_knowledge_base(clientToken, description,
-#'   knowledgeBaseConfiguration, name, roleArn, storageConfiguration, tags)
+#' bedrockagent_create_knowledge_base(clientToken, name, description,
+#'   roleArn, knowledgeBaseConfiguration, storageConfiguration, tags)
 #'
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
-#' @param description A description of the knowledge base.
-#' @param knowledgeBaseConfiguration &#91;required&#93; Contains details about the embeddings model used for the knowledge base.
 #' @param name &#91;required&#93; A name for the knowledge base.
+#' @param description A description of the knowledge base.
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role with permissions to
 #' invoke API operations on the knowledge base.
+#' @param knowledgeBaseConfiguration &#91;required&#93; Contains details about the embeddings model used for the knowledge base.
 #' @param storageConfiguration Contains details about the configuration of the vector database used for
 #' the knowledge base.
 #' @param tags Specify the key-value pairs for the tags that you want to attach to your
@@ -2081,65 +2313,55 @@ bedrockagent_create_flow_version <- function(clientToken = NULL, description = N
 #' ```
 #' list(
 #'   knowledgeBase = list(
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     description = "string",
-#'     failureReasons = list(
-#'       "string"
-#'     ),
+#'     knowledgeBaseId = "string",
+#'     name = "string",
 #'     knowledgeBaseArn = "string",
+#'     description = "string",
+#'     roleArn = "string",
 #'     knowledgeBaseConfiguration = list(
+#'       type = "VECTOR"|"KENDRA"|"SQL",
+#'       vectorKnowledgeBaseConfiguration = list(
+#'         embeddingModelArn = "string",
+#'         embeddingModelConfiguration = list(
+#'           bedrockEmbeddingModelConfiguration = list(
+#'             dimensions = 123,
+#'             embeddingDataType = "FLOAT32"|"BINARY",
+#'             audio = list(
+#'               list(
+#'                 segmentationConfiguration = list(
+#'                   fixedLengthDuration = 123
+#'                 )
+#'               )
+#'             ),
+#'             video = list(
+#'               list(
+#'                 segmentationConfiguration = list(
+#'                   fixedLengthDuration = 123
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         supplementalDataStorageConfiguration = list(
+#'           storageLocations = list(
+#'             list(
+#'               type = "S3",
+#'               s3Location = list(
+#'                 uri = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
 #'       kendraKnowledgeBaseConfiguration = list(
 #'         kendraIndexArn = "string"
 #'       ),
 #'       sqlKnowledgeBaseConfiguration = list(
+#'         type = "REDSHIFT",
 #'         redshiftConfiguration = list(
-#'           queryEngineConfiguration = list(
-#'             provisionedConfiguration = list(
-#'               authConfiguration = list(
-#'                 databaseUser = "string",
-#'                 type = "IAM"|"USERNAME_PASSWORD"|"USERNAME",
-#'                 usernamePasswordSecretArn = "string"
-#'               ),
-#'               clusterIdentifier = "string"
-#'             ),
-#'             serverlessConfiguration = list(
-#'               authConfiguration = list(
-#'                 type = "IAM"|"USERNAME_PASSWORD",
-#'                 usernamePasswordSecretArn = "string"
-#'               ),
-#'               workgroupArn = "string"
-#'             ),
-#'             type = "SERVERLESS"|"PROVISIONED"
-#'           ),
-#'           queryGenerationConfiguration = list(
-#'             executionTimeoutSeconds = 123,
-#'             generationContext = list(
-#'               curatedQueries = list(
-#'                 list(
-#'                   naturalLanguage = "string",
-#'                   sql = "string"
-#'                 )
-#'               ),
-#'               tables = list(
-#'                 list(
-#'                   columns = list(
-#'                     list(
-#'                       description = "string",
-#'                       inclusion = "INCLUDE"|"EXCLUDE",
-#'                       name = "string"
-#'                     )
-#'                   ),
-#'                   description = "string",
-#'                   inclusion = "INCLUDE"|"EXCLUDE",
-#'                   name = "string"
-#'                 )
-#'               )
-#'             )
-#'           ),
 #'           storageConfigurations = list(
 #'             list(
+#'               type = "REDSHIFT"|"AWS_DATA_CATALOG",
 #'               awsDataCatalogConfiguration = list(
 #'                 tableNames = list(
 #'                   "string"
@@ -2147,115 +2369,144 @@ bedrockagent_create_flow_version <- function(clientToken = NULL, description = N
 #'               ),
 #'               redshiftConfiguration = list(
 #'                 databaseName = "string"
-#'               ),
-#'               type = "REDSHIFT"|"AWS_DATA_CATALOG"
+#'               )
 #'             )
-#'           )
-#'         ),
-#'         type = "REDSHIFT"
-#'       ),
-#'       type = "VECTOR"|"KENDRA"|"SQL",
-#'       vectorKnowledgeBaseConfiguration = list(
-#'         embeddingModelArn = "string",
-#'         embeddingModelConfiguration = list(
-#'           bedrockEmbeddingModelConfiguration = list(
-#'             dimensions = 123,
-#'             embeddingDataType = "FLOAT32"|"BINARY"
-#'           )
-#'         ),
-#'         supplementalDataStorageConfiguration = list(
-#'           storageLocations = list(
-#'             list(
-#'               s3Location = list(
-#'                 uri = "string"
+#'           ),
+#'           queryEngineConfiguration = list(
+#'             type = "SERVERLESS"|"PROVISIONED",
+#'             serverlessConfiguration = list(
+#'               workgroupArn = "string",
+#'               authConfiguration = list(
+#'                 type = "IAM"|"USERNAME_PASSWORD",
+#'                 usernamePasswordSecretArn = "string"
+#'               )
+#'             ),
+#'             provisionedConfiguration = list(
+#'               clusterIdentifier = "string",
+#'               authConfiguration = list(
+#'                 type = "IAM"|"USERNAME_PASSWORD"|"USERNAME",
+#'                 databaseUser = "string",
+#'                 usernamePasswordSecretArn = "string"
+#'               )
+#'             )
+#'           ),
+#'           queryGenerationConfiguration = list(
+#'             executionTimeoutSeconds = 123,
+#'             generationContext = list(
+#'               tables = list(
+#'                 list(
+#'                   name = "string",
+#'                   description = "string",
+#'                   inclusion = "INCLUDE"|"EXCLUDE",
+#'                   columns = list(
+#'                     list(
+#'                       name = "string",
+#'                       description = "string",
+#'                       inclusion = "INCLUDE"|"EXCLUDE"
+#'                     )
+#'                   )
+#'                 )
 #'               ),
-#'               type = "S3"
+#'               curatedQueries = list(
+#'                 list(
+#'                   naturalLanguage = "string",
+#'                   sql = "string"
+#'                 )
+#'               )
 #'             )
 #'           )
 #'         )
 #'       )
 #'     ),
-#'     knowledgeBaseId = "string",
-#'     name = "string",
-#'     roleArn = "string",
-#'     status = "CREATING"|"ACTIVE"|"DELETING"|"UPDATING"|"FAILED"|"DELETE_UNSUCCESSFUL",
 #'     storageConfiguration = list(
-#'       mongoDbAtlasConfiguration = list(
-#'         collectionName = "string",
-#'         credentialsSecretArn = "string",
-#'         databaseName = "string",
-#'         endpoint = "string",
-#'         endpointServiceName = "string",
-#'         fieldMapping = list(
-#'           metadataField = "string",
-#'           textField = "string",
-#'           vectorField = "string"
-#'         ),
-#'         textIndexName = "string",
-#'         vectorIndexName = "string"
-#'       ),
-#'       neptuneAnalyticsConfiguration = list(
-#'         fieldMapping = list(
-#'           metadataField = "string",
-#'           textField = "string"
-#'         ),
-#'         graphArn = "string"
-#'       ),
-#'       opensearchManagedClusterConfiguration = list(
-#'         domainArn = "string",
-#'         domainEndpoint = "string",
-#'         fieldMapping = list(
-#'           metadataField = "string",
-#'           textField = "string",
-#'           vectorField = "string"
-#'         ),
-#'         vectorIndexName = "string"
-#'       ),
+#'       type = "OPENSEARCH_SERVERLESS"|"PINECONE"|"REDIS_ENTERPRISE_CLOUD"|"RDS"|"MONGO_DB_ATLAS"|"NEPTUNE_ANALYTICS"|"OPENSEARCH_MANAGED_CLUSTER"|"S3_VECTORS",
 #'       opensearchServerlessConfiguration = list(
 #'         collectionArn = "string",
+#'         vectorIndexName = "string",
 #'         fieldMapping = list(
-#'           metadataField = "string",
+#'           vectorField = "string",
 #'           textField = "string",
-#'           vectorField = "string"
-#'         ),
-#'         vectorIndexName = "string"
+#'           metadataField = "string"
+#'         )
+#'       ),
+#'       opensearchManagedClusterConfiguration = list(
+#'         domainEndpoint = "string",
+#'         domainArn = "string",
+#'         vectorIndexName = "string",
+#'         fieldMapping = list(
+#'           vectorField = "string",
+#'           textField = "string",
+#'           metadataField = "string"
+#'         )
 #'       ),
 #'       pineconeConfiguration = list(
 #'         connectionString = "string",
 #'         credentialsSecretArn = "string",
+#'         namespace = "string",
 #'         fieldMapping = list(
-#'           metadataField = "string",
-#'           textField = "string"
-#'         ),
-#'         namespace = "string"
-#'       ),
-#'       rdsConfiguration = list(
-#'         credentialsSecretArn = "string",
-#'         databaseName = "string",
-#'         fieldMapping = list(
-#'           customMetadataField = "string",
-#'           metadataField = "string",
-#'           primaryKeyField = "string",
 #'           textField = "string",
-#'           vectorField = "string"
-#'         ),
-#'         resourceArn = "string",
-#'         tableName = "string"
+#'           metadataField = "string"
+#'         )
 #'       ),
 #'       redisEnterpriseCloudConfiguration = list(
-#'         credentialsSecretArn = "string",
 #'         endpoint = "string",
+#'         vectorIndexName = "string",
+#'         credentialsSecretArn = "string",
 #'         fieldMapping = list(
-#'           metadataField = "string",
+#'           vectorField = "string",
 #'           textField = "string",
-#'           vectorField = "string"
-#'         ),
-#'         vectorIndexName = "string"
+#'           metadataField = "string"
+#'         )
 #'       ),
-#'       type = "OPENSEARCH_SERVERLESS"|"PINECONE"|"REDIS_ENTERPRISE_CLOUD"|"RDS"|"MONGO_DB_ATLAS"|"NEPTUNE_ANALYTICS"|"OPENSEARCH_MANAGED_CLUSTER"
+#'       rdsConfiguration = list(
+#'         resourceArn = "string",
+#'         credentialsSecretArn = "string",
+#'         databaseName = "string",
+#'         tableName = "string",
+#'         fieldMapping = list(
+#'           primaryKeyField = "string",
+#'           vectorField = "string",
+#'           textField = "string",
+#'           metadataField = "string",
+#'           customMetadataField = "string"
+#'         )
+#'       ),
+#'       mongoDbAtlasConfiguration = list(
+#'         endpoint = "string",
+#'         databaseName = "string",
+#'         collectionName = "string",
+#'         vectorIndexName = "string",
+#'         credentialsSecretArn = "string",
+#'         fieldMapping = list(
+#'           vectorField = "string",
+#'           textField = "string",
+#'           metadataField = "string"
+#'         ),
+#'         endpointServiceName = "string",
+#'         textIndexName = "string"
+#'       ),
+#'       neptuneAnalyticsConfiguration = list(
+#'         graphArn = "string",
+#'         fieldMapping = list(
+#'           textField = "string",
+#'           metadataField = "string"
+#'         )
+#'       ),
+#'       s3VectorsConfiguration = list(
+#'         vectorBucketArn = "string",
+#'         indexArn = "string",
+#'         indexName = "string"
+#'       )
+#'     ),
+#'     status = "CREATING"|"ACTIVE"|"DELETING"|"UPDATING"|"FAILED"|"DELETE_UNSUCCESSFUL",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
 #'     ),
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     failureReasons = list(
+#'       "string"
 #'     )
 #'   )
 #' )
@@ -2265,58 +2516,53 @@ bedrockagent_create_flow_version <- function(clientToken = NULL, description = N
 #' ```
 #' svc$create_knowledge_base(
 #'   clientToken = "string",
+#'   name = "string",
 #'   description = "string",
+#'   roleArn = "string",
 #'   knowledgeBaseConfiguration = list(
+#'     type = "VECTOR"|"KENDRA"|"SQL",
+#'     vectorKnowledgeBaseConfiguration = list(
+#'       embeddingModelArn = "string",
+#'       embeddingModelConfiguration = list(
+#'         bedrockEmbeddingModelConfiguration = list(
+#'           dimensions = 123,
+#'           embeddingDataType = "FLOAT32"|"BINARY",
+#'           audio = list(
+#'             list(
+#'               segmentationConfiguration = list(
+#'                 fixedLengthDuration = 123
+#'               )
+#'             )
+#'           ),
+#'           video = list(
+#'             list(
+#'               segmentationConfiguration = list(
+#'                 fixedLengthDuration = 123
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       supplementalDataStorageConfiguration = list(
+#'         storageLocations = list(
+#'           list(
+#'             type = "S3",
+#'             s3Location = list(
+#'               uri = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
 #'     kendraKnowledgeBaseConfiguration = list(
 #'       kendraIndexArn = "string"
 #'     ),
 #'     sqlKnowledgeBaseConfiguration = list(
+#'       type = "REDSHIFT",
 #'       redshiftConfiguration = list(
-#'         queryEngineConfiguration = list(
-#'           provisionedConfiguration = list(
-#'             authConfiguration = list(
-#'               databaseUser = "string",
-#'               type = "IAM"|"USERNAME_PASSWORD"|"USERNAME",
-#'               usernamePasswordSecretArn = "string"
-#'             ),
-#'             clusterIdentifier = "string"
-#'           ),
-#'           serverlessConfiguration = list(
-#'             authConfiguration = list(
-#'               type = "IAM"|"USERNAME_PASSWORD",
-#'               usernamePasswordSecretArn = "string"
-#'             ),
-#'             workgroupArn = "string"
-#'           ),
-#'           type = "SERVERLESS"|"PROVISIONED"
-#'         ),
-#'         queryGenerationConfiguration = list(
-#'           executionTimeoutSeconds = 123,
-#'           generationContext = list(
-#'             curatedQueries = list(
-#'               list(
-#'                 naturalLanguage = "string",
-#'                 sql = "string"
-#'               )
-#'             ),
-#'             tables = list(
-#'               list(
-#'                 columns = list(
-#'                   list(
-#'                     description = "string",
-#'                     inclusion = "INCLUDE"|"EXCLUDE",
-#'                     name = "string"
-#'                   )
-#'                 ),
-#'                 description = "string",
-#'                 inclusion = "INCLUDE"|"EXCLUDE",
-#'                 name = "string"
-#'               )
-#'             )
-#'           )
-#'         ),
 #'         storageConfigurations = list(
 #'           list(
+#'             type = "REDSHIFT"|"AWS_DATA_CATALOG",
 #'             awsDataCatalogConfiguration = list(
 #'               tableNames = list(
 #'                 "string"
@@ -2324,110 +2570,134 @@ bedrockagent_create_flow_version <- function(clientToken = NULL, description = N
 #'             ),
 #'             redshiftConfiguration = list(
 #'               databaseName = "string"
-#'             ),
-#'             type = "REDSHIFT"|"AWS_DATA_CATALOG"
+#'             )
 #'           )
-#'         )
-#'       ),
-#'       type = "REDSHIFT"
-#'     ),
-#'     type = "VECTOR"|"KENDRA"|"SQL",
-#'     vectorKnowledgeBaseConfiguration = list(
-#'       embeddingModelArn = "string",
-#'       embeddingModelConfiguration = list(
-#'         bedrockEmbeddingModelConfiguration = list(
-#'           dimensions = 123,
-#'           embeddingDataType = "FLOAT32"|"BINARY"
-#'         )
-#'       ),
-#'       supplementalDataStorageConfiguration = list(
-#'         storageLocations = list(
-#'           list(
-#'             s3Location = list(
-#'               uri = "string"
+#'         ),
+#'         queryEngineConfiguration = list(
+#'           type = "SERVERLESS"|"PROVISIONED",
+#'           serverlessConfiguration = list(
+#'             workgroupArn = "string",
+#'             authConfiguration = list(
+#'               type = "IAM"|"USERNAME_PASSWORD",
+#'               usernamePasswordSecretArn = "string"
+#'             )
+#'           ),
+#'           provisionedConfiguration = list(
+#'             clusterIdentifier = "string",
+#'             authConfiguration = list(
+#'               type = "IAM"|"USERNAME_PASSWORD"|"USERNAME",
+#'               databaseUser = "string",
+#'               usernamePasswordSecretArn = "string"
+#'             )
+#'           )
+#'         ),
+#'         queryGenerationConfiguration = list(
+#'           executionTimeoutSeconds = 123,
+#'           generationContext = list(
+#'             tables = list(
+#'               list(
+#'                 name = "string",
+#'                 description = "string",
+#'                 inclusion = "INCLUDE"|"EXCLUDE",
+#'                 columns = list(
+#'                   list(
+#'                     name = "string",
+#'                     description = "string",
+#'                     inclusion = "INCLUDE"|"EXCLUDE"
+#'                   )
+#'                 )
+#'               )
 #'             ),
-#'             type = "S3"
+#'             curatedQueries = list(
+#'               list(
+#'                 naturalLanguage = "string",
+#'                 sql = "string"
+#'               )
+#'             )
 #'           )
 #'         )
 #'       )
 #'     )
 #'   ),
-#'   name = "string",
-#'   roleArn = "string",
 #'   storageConfiguration = list(
-#'     mongoDbAtlasConfiguration = list(
-#'       collectionName = "string",
-#'       credentialsSecretArn = "string",
-#'       databaseName = "string",
-#'       endpoint = "string",
-#'       endpointServiceName = "string",
-#'       fieldMapping = list(
-#'         metadataField = "string",
-#'         textField = "string",
-#'         vectorField = "string"
-#'       ),
-#'       textIndexName = "string",
-#'       vectorIndexName = "string"
-#'     ),
-#'     neptuneAnalyticsConfiguration = list(
-#'       fieldMapping = list(
-#'         metadataField = "string",
-#'         textField = "string"
-#'       ),
-#'       graphArn = "string"
-#'     ),
-#'     opensearchManagedClusterConfiguration = list(
-#'       domainArn = "string",
-#'       domainEndpoint = "string",
-#'       fieldMapping = list(
-#'         metadataField = "string",
-#'         textField = "string",
-#'         vectorField = "string"
-#'       ),
-#'       vectorIndexName = "string"
-#'     ),
+#'     type = "OPENSEARCH_SERVERLESS"|"PINECONE"|"REDIS_ENTERPRISE_CLOUD"|"RDS"|"MONGO_DB_ATLAS"|"NEPTUNE_ANALYTICS"|"OPENSEARCH_MANAGED_CLUSTER"|"S3_VECTORS",
 #'     opensearchServerlessConfiguration = list(
 #'       collectionArn = "string",
+#'       vectorIndexName = "string",
 #'       fieldMapping = list(
-#'         metadataField = "string",
+#'         vectorField = "string",
 #'         textField = "string",
-#'         vectorField = "string"
-#'       ),
-#'       vectorIndexName = "string"
+#'         metadataField = "string"
+#'       )
+#'     ),
+#'     opensearchManagedClusterConfiguration = list(
+#'       domainEndpoint = "string",
+#'       domainArn = "string",
+#'       vectorIndexName = "string",
+#'       fieldMapping = list(
+#'         vectorField = "string",
+#'         textField = "string",
+#'         metadataField = "string"
+#'       )
 #'     ),
 #'     pineconeConfiguration = list(
 #'       connectionString = "string",
 #'       credentialsSecretArn = "string",
+#'       namespace = "string",
 #'       fieldMapping = list(
-#'         metadataField = "string",
-#'         textField = "string"
-#'       ),
-#'       namespace = "string"
-#'     ),
-#'     rdsConfiguration = list(
-#'       credentialsSecretArn = "string",
-#'       databaseName = "string",
-#'       fieldMapping = list(
-#'         customMetadataField = "string",
-#'         metadataField = "string",
-#'         primaryKeyField = "string",
 #'         textField = "string",
-#'         vectorField = "string"
-#'       ),
-#'       resourceArn = "string",
-#'       tableName = "string"
+#'         metadataField = "string"
+#'       )
 #'     ),
 #'     redisEnterpriseCloudConfiguration = list(
-#'       credentialsSecretArn = "string",
 #'       endpoint = "string",
+#'       vectorIndexName = "string",
+#'       credentialsSecretArn = "string",
 #'       fieldMapping = list(
-#'         metadataField = "string",
+#'         vectorField = "string",
 #'         textField = "string",
-#'         vectorField = "string"
-#'       ),
-#'       vectorIndexName = "string"
+#'         metadataField = "string"
+#'       )
 #'     ),
-#'     type = "OPENSEARCH_SERVERLESS"|"PINECONE"|"REDIS_ENTERPRISE_CLOUD"|"RDS"|"MONGO_DB_ATLAS"|"NEPTUNE_ANALYTICS"|"OPENSEARCH_MANAGED_CLUSTER"
+#'     rdsConfiguration = list(
+#'       resourceArn = "string",
+#'       credentialsSecretArn = "string",
+#'       databaseName = "string",
+#'       tableName = "string",
+#'       fieldMapping = list(
+#'         primaryKeyField = "string",
+#'         vectorField = "string",
+#'         textField = "string",
+#'         metadataField = "string",
+#'         customMetadataField = "string"
+#'       )
+#'     ),
+#'     mongoDbAtlasConfiguration = list(
+#'       endpoint = "string",
+#'       databaseName = "string",
+#'       collectionName = "string",
+#'       vectorIndexName = "string",
+#'       credentialsSecretArn = "string",
+#'       fieldMapping = list(
+#'         vectorField = "string",
+#'         textField = "string",
+#'         metadataField = "string"
+#'       ),
+#'       endpointServiceName = "string",
+#'       textIndexName = "string"
+#'     ),
+#'     neptuneAnalyticsConfiguration = list(
+#'       graphArn = "string",
+#'       fieldMapping = list(
+#'         textField = "string",
+#'         metadataField = "string"
+#'       )
+#'     ),
+#'     s3VectorsConfiguration = list(
+#'       vectorBucketArn = "string",
+#'       indexArn = "string",
+#'       indexName = "string"
+#'     )
 #'   ),
 #'   tags = list(
 #'     "string"
@@ -2440,7 +2710,7 @@ bedrockagent_create_flow_version <- function(clientToken = NULL, description = N
 #' @rdname bedrockagent_create_knowledge_base
 #'
 #' @aliases bedrockagent_create_knowledge_base
-bedrockagent_create_knowledge_base <- function(clientToken = NULL, description = NULL, knowledgeBaseConfiguration, name, roleArn, storageConfiguration = NULL, tags = NULL) {
+bedrockagent_create_knowledge_base <- function(clientToken = NULL, name, description = NULL, roleArn, knowledgeBaseConfiguration, storageConfiguration = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateKnowledgeBase",
     http_method = "PUT",
@@ -2449,7 +2719,7 @@ bedrockagent_create_knowledge_base <- function(clientToken = NULL, description =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$create_knowledge_base_input(clientToken = clientToken, description = description, knowledgeBaseConfiguration = knowledgeBaseConfiguration, name = name, roleArn = roleArn, storageConfiguration = storageConfiguration, tags = tags)
+  input <- .bedrockagent$create_knowledge_base_input(clientToken = clientToken, name = name, description = description, roleArn = roleArn, knowledgeBaseConfiguration = knowledgeBaseConfiguration, storageConfiguration = storageConfiguration, tags = tags)
   output <- .bedrockagent$create_knowledge_base_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -2472,59 +2742,112 @@ bedrockagent_create_knowledge_base <- function(clientToken = NULL, description =
 #' in the Amazon Bedrock User Guide.
 #'
 #' @usage
-#' bedrockagent_create_prompt(clientToken, customerEncryptionKeyArn,
-#'   defaultVariant, description, name, tags, variants)
+#' bedrockagent_create_prompt(name, description, customerEncryptionKeyArn,
+#'   defaultVariant, variants, clientToken, tags)
 #'
-#' @param clientToken A unique, case-sensitive identifier to ensure that the API request
-#' completes no more than one time. If this token matches a previous
-#' request, Amazon Bedrock ignores the request, but does not return an
-#' error. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' @param name &#91;required&#93; A name for the prompt.
+#' @param description A description for the prompt.
 #' @param customerEncryptionKeyArn The Amazon Resource Name (ARN) of the KMS key to encrypt the prompt.
 #' @param defaultVariant The name of the default variant for the prompt. This value must match
 #' the `name` field in the relevant
 #' [PromptVariant](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent_PromptVariant.html)
 #' object.
-#' @param description A description for the prompt.
-#' @param name &#91;required&#93; A name for the prompt.
+#' @param variants A list of objects, each containing details about a variant of the
+#' prompt.
+#' @param clientToken A unique, case-sensitive identifier to ensure that the API request
+#' completes no more than one time. If this token matches a previous
+#' request, Amazon Bedrock ignores the request, but does not return an
+#' error. For more information, see [Ensuring
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param tags Any tags that you want to attach to the prompt. For more information,
 #' see [Tagging resources in Amazon
 #' Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html).
-#' @param variants A list of objects, each containing details about a variant of the
-#' prompt.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   arn = "string",
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
+#'   name = "string",
+#'   description = "string",
 #'   customerEncryptionKeyArn = "string",
 #'   defaultVariant = "string",
-#'   description = "string",
-#'   id = "string",
-#'   name = "string",
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
 #'   variants = list(
 #'     list(
-#'       additionalModelRequestFields = list(),
-#'       genAiResource = list(
-#'         agent = list(
-#'           agentIdentifier = "string"
+#'       name = "string",
+#'       templateType = "TEXT"|"CHAT",
+#'       templateConfiguration = list(
+#'         text = list(
+#'           text = "string",
+#'           cachePoint = list(
+#'             type = "default"
+#'           ),
+#'           inputVariables = list(
+#'             list(
+#'               name = "string"
+#'             )
+#'           )
+#'         ),
+#'         chat = list(
+#'           messages = list(
+#'             list(
+#'               role = "user"|"assistant",
+#'               content = list(
+#'                 list(
+#'                   text = "string",
+#'                   cachePoint = list(
+#'                     type = "default"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           system = list(
+#'             list(
+#'               text = "string",
+#'               cachePoint = list(
+#'                 type = "default"
+#'               )
+#'             )
+#'           ),
+#'           inputVariables = list(
+#'             list(
+#'               name = "string"
+#'             )
+#'           ),
+#'           toolConfiguration = list(
+#'             tools = list(
+#'               list(
+#'                 toolSpec = list(
+#'                   name = "string",
+#'                   description = "string",
+#'                   inputSchema = list(
+#'                     json = list()
+#'                   )
+#'                 ),
+#'                 cachePoint = list(
+#'                   type = "default"
+#'                 )
+#'               )
+#'             ),
+#'             toolChoice = list(
+#'               auto = list(),
+#'               any = list(),
+#'               tool = list(
+#'                 name = "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       ),
+#'       modelId = "string",
 #'       inferenceConfiguration = list(
 #'         text = list(
+#'           temperature = 123.0,
+#'           topP = 123.0,
 #'           maxTokens = 123,
 #'           stopSequences = list(
 #'             "string"
-#'           ),
-#'           temperature = 123.0,
-#'           topP = 123.0
+#'           )
 #'         )
 #'       ),
 #'       metadata = list(
@@ -2533,106 +2856,110 @@ bedrockagent_create_knowledge_base <- function(clientToken = NULL, description =
 #'           value = "string"
 #'         )
 #'       ),
-#'       modelId = "string",
-#'       name = "string",
-#'       templateConfiguration = list(
-#'         chat = list(
-#'           inputVariables = list(
-#'             list(
-#'               name = "string"
-#'             )
-#'           ),
-#'           messages = list(
-#'             list(
-#'               content = list(
-#'                 list(
-#'                   cachePoint = list(
-#'                     type = "default"
-#'                   ),
-#'                   text = "string"
-#'                 )
-#'               ),
-#'               role = "user"|"assistant"
-#'             )
-#'           ),
-#'           system = list(
-#'             list(
-#'               cachePoint = list(
-#'                 type = "default"
-#'               ),
-#'               text = "string"
-#'             )
-#'           ),
-#'           toolConfiguration = list(
-#'             toolChoice = list(
-#'               any = list(),
-#'               auto = list(),
-#'               tool = list(
-#'                 name = "string"
-#'               )
-#'             ),
-#'             tools = list(
-#'               list(
-#'                 cachePoint = list(
-#'                   type = "default"
-#'                 ),
-#'                 toolSpec = list(
-#'                   description = "string",
-#'                   inputSchema = list(
-#'                     json = list()
-#'                   ),
-#'                   name = "string"
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         text = list(
-#'           cachePoint = list(
-#'             type = "default"
-#'           ),
-#'           inputVariables = list(
-#'             list(
-#'               name = "string"
-#'             )
-#'           ),
-#'           text = "string"
+#'       additionalModelRequestFields = list(),
+#'       genAiResource = list(
+#'         agent = list(
+#'           agentIdentifier = "string"
 #'         )
-#'       ),
-#'       templateType = "TEXT"|"CHAT"
+#'       )
 #'     )
 #'   ),
-#'   version = "string"
+#'   id = "string",
+#'   arn = "string",
+#'   version = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_prompt(
-#'   clientToken = "string",
+#'   name = "string",
+#'   description = "string",
 #'   customerEncryptionKeyArn = "string",
 #'   defaultVariant = "string",
-#'   description = "string",
-#'   name = "string",
-#'   tags = list(
-#'     "string"
-#'   ),
 #'   variants = list(
 #'     list(
-#'       additionalModelRequestFields = list(),
-#'       genAiResource = list(
-#'         agent = list(
-#'           agentIdentifier = "string"
+#'       name = "string",
+#'       templateType = "TEXT"|"CHAT",
+#'       templateConfiguration = list(
+#'         text = list(
+#'           text = "string",
+#'           cachePoint = list(
+#'             type = "default"
+#'           ),
+#'           inputVariables = list(
+#'             list(
+#'               name = "string"
+#'             )
+#'           )
+#'         ),
+#'         chat = list(
+#'           messages = list(
+#'             list(
+#'               role = "user"|"assistant",
+#'               content = list(
+#'                 list(
+#'                   text = "string",
+#'                   cachePoint = list(
+#'                     type = "default"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           system = list(
+#'             list(
+#'               text = "string",
+#'               cachePoint = list(
+#'                 type = "default"
+#'               )
+#'             )
+#'           ),
+#'           inputVariables = list(
+#'             list(
+#'               name = "string"
+#'             )
+#'           ),
+#'           toolConfiguration = list(
+#'             tools = list(
+#'               list(
+#'                 toolSpec = list(
+#'                   name = "string",
+#'                   description = "string",
+#'                   inputSchema = list(
+#'                     json = list()
+#'                   )
+#'                 ),
+#'                 cachePoint = list(
+#'                   type = "default"
+#'                 )
+#'               )
+#'             ),
+#'             toolChoice = list(
+#'               auto = list(),
+#'               any = list(),
+#'               tool = list(
+#'                 name = "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       ),
+#'       modelId = "string",
 #'       inferenceConfiguration = list(
 #'         text = list(
+#'           temperature = 123.0,
+#'           topP = 123.0,
 #'           maxTokens = 123,
 #'           stopSequences = list(
 #'             "string"
-#'           ),
-#'           temperature = 123.0,
-#'           topP = 123.0
+#'           )
 #'         )
 #'       ),
 #'       metadata = list(
@@ -2641,74 +2968,17 @@ bedrockagent_create_knowledge_base <- function(clientToken = NULL, description =
 #'           value = "string"
 #'         )
 #'       ),
-#'       modelId = "string",
-#'       name = "string",
-#'       templateConfiguration = list(
-#'         chat = list(
-#'           inputVariables = list(
-#'             list(
-#'               name = "string"
-#'             )
-#'           ),
-#'           messages = list(
-#'             list(
-#'               content = list(
-#'                 list(
-#'                   cachePoint = list(
-#'                     type = "default"
-#'                   ),
-#'                   text = "string"
-#'                 )
-#'               ),
-#'               role = "user"|"assistant"
-#'             )
-#'           ),
-#'           system = list(
-#'             list(
-#'               cachePoint = list(
-#'                 type = "default"
-#'               ),
-#'               text = "string"
-#'             )
-#'           ),
-#'           toolConfiguration = list(
-#'             toolChoice = list(
-#'               any = list(),
-#'               auto = list(),
-#'               tool = list(
-#'                 name = "string"
-#'               )
-#'             ),
-#'             tools = list(
-#'               list(
-#'                 cachePoint = list(
-#'                   type = "default"
-#'                 ),
-#'                 toolSpec = list(
-#'                   description = "string",
-#'                   inputSchema = list(
-#'                     json = list()
-#'                   ),
-#'                   name = "string"
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         text = list(
-#'           cachePoint = list(
-#'             type = "default"
-#'           ),
-#'           inputVariables = list(
-#'             list(
-#'               name = "string"
-#'             )
-#'           ),
-#'           text = "string"
+#'       additionalModelRequestFields = list(),
+#'       genAiResource = list(
+#'         agent = list(
+#'           agentIdentifier = "string"
 #'         )
-#'       ),
-#'       templateType = "TEXT"|"CHAT"
+#'       )
 #'     )
+#'   ),
+#'   clientToken = "string",
+#'   tags = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -2718,7 +2988,7 @@ bedrockagent_create_knowledge_base <- function(clientToken = NULL, description =
 #' @rdname bedrockagent_create_prompt
 #'
 #' @aliases bedrockagent_create_prompt
-bedrockagent_create_prompt <- function(clientToken = NULL, customerEncryptionKeyArn = NULL, defaultVariant = NULL, description = NULL, name, tags = NULL, variants = NULL) {
+bedrockagent_create_prompt <- function(name, description = NULL, customerEncryptionKeyArn = NULL, defaultVariant = NULL, variants = NULL, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreatePrompt",
     http_method = "POST",
@@ -2727,7 +2997,7 @@ bedrockagent_create_prompt <- function(clientToken = NULL, customerEncryptionKey
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$create_prompt_input(clientToken = clientToken, customerEncryptionKeyArn = customerEncryptionKeyArn, defaultVariant = defaultVariant, description = description, name = name, tags = tags, variants = variants)
+  input <- .bedrockagent$create_prompt_input(name = name, description = description, customerEncryptionKeyArn = customerEncryptionKeyArn, defaultVariant = defaultVariant, variants = variants, clientToken = clientToken, tags = tags)
   output <- .bedrockagent$create_prompt_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -2748,17 +3018,17 @@ bedrockagent_create_prompt <- function(clientToken = NULL, customerEncryptionKey
 #' in the Amazon Bedrock User Guide.
 #'
 #' @usage
-#' bedrockagent_create_prompt_version(clientToken, description,
-#'   promptIdentifier, tags)
+#' bedrockagent_create_prompt_version(promptIdentifier, description,
+#'   clientToken, tags)
 #'
+#' @param promptIdentifier &#91;required&#93; The unique identifier of the prompt that you want to create a version
+#' of.
+#' @param description A description for the version of the prompt.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
-#' @param description A description for the version of the prompt.
-#' @param promptIdentifier &#91;required&#93; The unique identifier of the prompt that you want to create a version
-#' of.
 #' @param tags Any tags that you want to attach to the version of the prompt. For more
 #' information, see [Tagging resources in Amazon
 #' Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html).
@@ -2767,34 +3037,87 @@ bedrockagent_create_prompt <- function(clientToken = NULL, customerEncryptionKey
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   arn = "string",
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
+#'   name = "string",
+#'   description = "string",
 #'   customerEncryptionKeyArn = "string",
 #'   defaultVariant = "string",
-#'   description = "string",
-#'   id = "string",
-#'   name = "string",
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
 #'   variants = list(
 #'     list(
-#'       additionalModelRequestFields = list(),
-#'       genAiResource = list(
-#'         agent = list(
-#'           agentIdentifier = "string"
+#'       name = "string",
+#'       templateType = "TEXT"|"CHAT",
+#'       templateConfiguration = list(
+#'         text = list(
+#'           text = "string",
+#'           cachePoint = list(
+#'             type = "default"
+#'           ),
+#'           inputVariables = list(
+#'             list(
+#'               name = "string"
+#'             )
+#'           )
+#'         ),
+#'         chat = list(
+#'           messages = list(
+#'             list(
+#'               role = "user"|"assistant",
+#'               content = list(
+#'                 list(
+#'                   text = "string",
+#'                   cachePoint = list(
+#'                     type = "default"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           system = list(
+#'             list(
+#'               text = "string",
+#'               cachePoint = list(
+#'                 type = "default"
+#'               )
+#'             )
+#'           ),
+#'           inputVariables = list(
+#'             list(
+#'               name = "string"
+#'             )
+#'           ),
+#'           toolConfiguration = list(
+#'             tools = list(
+#'               list(
+#'                 toolSpec = list(
+#'                   name = "string",
+#'                   description = "string",
+#'                   inputSchema = list(
+#'                     json = list()
+#'                   )
+#'                 ),
+#'                 cachePoint = list(
+#'                   type = "default"
+#'                 )
+#'               )
+#'             ),
+#'             toolChoice = list(
+#'               auto = list(),
+#'               any = list(),
+#'               tool = list(
+#'                 name = "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       ),
+#'       modelId = "string",
 #'       inferenceConfiguration = list(
 #'         text = list(
+#'           temperature = 123.0,
+#'           topP = 123.0,
 #'           maxTokens = 123,
 #'           stopSequences = list(
 #'             "string"
-#'           ),
-#'           temperature = 123.0,
-#'           topP = 123.0
+#'           )
 #'         )
 #'       ),
 #'       metadata = list(
@@ -2803,85 +3126,32 @@ bedrockagent_create_prompt <- function(clientToken = NULL, customerEncryptionKey
 #'           value = "string"
 #'         )
 #'       ),
-#'       modelId = "string",
-#'       name = "string",
-#'       templateConfiguration = list(
-#'         chat = list(
-#'           inputVariables = list(
-#'             list(
-#'               name = "string"
-#'             )
-#'           ),
-#'           messages = list(
-#'             list(
-#'               content = list(
-#'                 list(
-#'                   cachePoint = list(
-#'                     type = "default"
-#'                   ),
-#'                   text = "string"
-#'                 )
-#'               ),
-#'               role = "user"|"assistant"
-#'             )
-#'           ),
-#'           system = list(
-#'             list(
-#'               cachePoint = list(
-#'                 type = "default"
-#'               ),
-#'               text = "string"
-#'             )
-#'           ),
-#'           toolConfiguration = list(
-#'             toolChoice = list(
-#'               any = list(),
-#'               auto = list(),
-#'               tool = list(
-#'                 name = "string"
-#'               )
-#'             ),
-#'             tools = list(
-#'               list(
-#'                 cachePoint = list(
-#'                   type = "default"
-#'                 ),
-#'                 toolSpec = list(
-#'                   description = "string",
-#'                   inputSchema = list(
-#'                     json = list()
-#'                   ),
-#'                   name = "string"
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         text = list(
-#'           cachePoint = list(
-#'             type = "default"
-#'           ),
-#'           inputVariables = list(
-#'             list(
-#'               name = "string"
-#'             )
-#'           ),
-#'           text = "string"
+#'       additionalModelRequestFields = list(),
+#'       genAiResource = list(
+#'         agent = list(
+#'           agentIdentifier = "string"
 #'         )
-#'       ),
-#'       templateType = "TEXT"|"CHAT"
+#'       )
 #'     )
 #'   ),
-#'   version = "string"
+#'   id = "string",
+#'   arn = "string",
+#'   version = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_prompt_version(
-#'   clientToken = "string",
-#'   description = "string",
 #'   promptIdentifier = "string",
+#'   description = "string",
+#'   clientToken = "string",
 #'   tags = list(
 #'     "string"
 #'   )
@@ -2893,7 +3163,7 @@ bedrockagent_create_prompt <- function(clientToken = NULL, customerEncryptionKey
 #' @rdname bedrockagent_create_prompt_version
 #'
 #' @aliases bedrockagent_create_prompt_version
-bedrockagent_create_prompt_version <- function(clientToken = NULL, description = NULL, promptIdentifier, tags = NULL) {
+bedrockagent_create_prompt_version <- function(promptIdentifier, description = NULL, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreatePromptVersion",
     http_method = "POST",
@@ -2902,7 +3172,7 @@ bedrockagent_create_prompt_version <- function(clientToken = NULL, description =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$create_prompt_version_input(clientToken = clientToken, description = description, promptIdentifier = promptIdentifier, tags = tags)
+  input <- .bedrockagent$create_prompt_version_input(promptIdentifier = promptIdentifier, description = description, clientToken = clientToken, tags = tags)
   output <- .bedrockagent$create_prompt_version_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -2972,12 +3242,12 @@ bedrockagent_delete_agent <- function(agentId, skipResourceInUseCheck = NULL) {
 #' Deletes an action group in an agent.
 #'
 #' @usage
-#' bedrockagent_delete_agent_action_group(actionGroupId, agentId,
-#'   agentVersion, skipResourceInUseCheck)
+#' bedrockagent_delete_agent_action_group(agentId, agentVersion,
+#'   actionGroupId, skipResourceInUseCheck)
 #'
-#' @param actionGroupId &#91;required&#93; The unique identifier of the action group to delete.
 #' @param agentId &#91;required&#93; The unique identifier of the agent that the action group belongs to.
 #' @param agentVersion &#91;required&#93; The version of the agent that the action group belongs to.
+#' @param actionGroupId &#91;required&#93; The unique identifier of the action group to delete.
 #' @param skipResourceInUseCheck By default, this value is `false` and deletion is stopped if the
 #' resource is in use. If you set it to `true`, the resource will be
 #' deleted even if the resource is in use.
@@ -2988,9 +3258,9 @@ bedrockagent_delete_agent <- function(agentId, skipResourceInUseCheck = NULL) {
 #' @section Request syntax:
 #' ```
 #' svc$delete_agent_action_group(
-#'   actionGroupId = "string",
 #'   agentId = "string",
 #'   agentVersion = "string",
+#'   actionGroupId = "string",
 #'   skipResourceInUseCheck = TRUE|FALSE
 #' )
 #' ```
@@ -3000,7 +3270,7 @@ bedrockagent_delete_agent <- function(agentId, skipResourceInUseCheck = NULL) {
 #' @rdname bedrockagent_delete_agent_action_group
 #'
 #' @aliases bedrockagent_delete_agent_action_group
-bedrockagent_delete_agent_action_group <- function(actionGroupId, agentId, agentVersion, skipResourceInUseCheck = NULL) {
+bedrockagent_delete_agent_action_group <- function(agentId, agentVersion, actionGroupId, skipResourceInUseCheck = NULL) {
   op <- new_operation(
     name = "DeleteAgentActionGroup",
     http_method = "DELETE",
@@ -3009,7 +3279,7 @@ bedrockagent_delete_agent_action_group <- function(actionGroupId, agentId, agent
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$delete_agent_action_group_input(actionGroupId = actionGroupId, agentId = agentId, agentVersion = agentVersion, skipResourceInUseCheck = skipResourceInUseCheck)
+  input <- .bedrockagent$delete_agent_action_group_input(agentId = agentId, agentVersion = agentVersion, actionGroupId = actionGroupId, skipResourceInUseCheck = skipResourceInUseCheck)
   output <- .bedrockagent$delete_agent_action_group_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -3025,26 +3295,26 @@ bedrockagent_delete_agent_action_group <- function(actionGroupId, agentId, agent
 #' Deletes an alias of an agent.
 #'
 #' @usage
-#' bedrockagent_delete_agent_alias(agentAliasId, agentId)
+#' bedrockagent_delete_agent_alias(agentId, agentAliasId)
 #'
-#' @param agentAliasId &#91;required&#93; The unique identifier of the alias to delete.
 #' @param agentId &#91;required&#93; The unique identifier of the agent that the alias belongs to.
+#' @param agentAliasId &#91;required&#93; The unique identifier of the alias to delete.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   agentId = "string",
 #'   agentAliasId = "string",
-#'   agentAliasStatus = "CREATING"|"PREPARED"|"FAILED"|"UPDATING"|"DELETING"|"DISSOCIATED",
-#'   agentId = "string"
+#'   agentAliasStatus = "CREATING"|"PREPARED"|"FAILED"|"UPDATING"|"DELETING"|"DISSOCIATED"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$delete_agent_alias(
-#'   agentAliasId = "string",
-#'   agentId = "string"
+#'   agentId = "string",
+#'   agentAliasId = "string"
 #' )
 #' ```
 #'
@@ -3053,7 +3323,7 @@ bedrockagent_delete_agent_action_group <- function(actionGroupId, agentId, agent
 #' @rdname bedrockagent_delete_agent_alias
 #'
 #' @aliases bedrockagent_delete_agent_alias
-bedrockagent_delete_agent_alias <- function(agentAliasId, agentId) {
+bedrockagent_delete_agent_alias <- function(agentId, agentAliasId) {
   op <- new_operation(
     name = "DeleteAgentAlias",
     http_method = "DELETE",
@@ -3062,7 +3332,7 @@ bedrockagent_delete_agent_alias <- function(agentAliasId, agentId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$delete_agent_alias_input(agentAliasId = agentAliasId, agentId = agentId)
+  input <- .bedrockagent$delete_agent_alias_input(agentId = agentId, agentAliasId = agentAliasId)
   output <- .bedrockagent$delete_agent_alias_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -3092,8 +3362,8 @@ bedrockagent_delete_agent_alias <- function(agentAliasId, agentId) {
 #' ```
 #' list(
 #'   agentId = "string",
-#'   agentStatus = "CREATING"|"PREPARING"|"PREPARED"|"NOT_PREPARED"|"DELETING"|"FAILED"|"VERSIONING"|"UPDATING",
-#'   agentVersion = "string"
+#'   agentVersion = "string",
+#'   agentStatus = "CREATING"|"PREPARING"|"PREPARED"|"NOT_PREPARED"|"DELETING"|"FAILED"|"VERSIONING"|"UPDATING"
 #' )
 #' ```
 #'
@@ -3136,18 +3406,18 @@ bedrockagent_delete_agent_version <- function(agentId, agentVersion, skipResourc
 #' Deletes a data source from a knowledge base.
 #'
 #' @usage
-#' bedrockagent_delete_data_source(dataSourceId, knowledgeBaseId)
+#' bedrockagent_delete_data_source(knowledgeBaseId, dataSourceId)
 #'
-#' @param dataSourceId &#91;required&#93; The unique identifier of the data source to delete.
 #' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base from which to delete the
 #' data source.
+#' @param dataSourceId &#91;required&#93; The unique identifier of the data source to delete.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   dataSourceId = "string",
 #'   knowledgeBaseId = "string",
+#'   dataSourceId = "string",
 #'   status = "AVAILABLE"|"DELETING"|"DELETE_UNSUCCESSFUL"
 #' )
 #' ```
@@ -3155,8 +3425,8 @@ bedrockagent_delete_agent_version <- function(agentId, agentVersion, skipResourc
 #' @section Request syntax:
 #' ```
 #' svc$delete_data_source(
-#'   dataSourceId = "string",
-#'   knowledgeBaseId = "string"
+#'   knowledgeBaseId = "string",
+#'   dataSourceId = "string"
 #' )
 #' ```
 #'
@@ -3165,7 +3435,7 @@ bedrockagent_delete_agent_version <- function(agentId, agentVersion, skipResourc
 #' @rdname bedrockagent_delete_data_source
 #'
 #' @aliases bedrockagent_delete_data_source
-bedrockagent_delete_data_source <- function(dataSourceId, knowledgeBaseId) {
+bedrockagent_delete_data_source <- function(knowledgeBaseId, dataSourceId) {
   op <- new_operation(
     name = "DeleteDataSource",
     http_method = "DELETE",
@@ -3174,7 +3444,7 @@ bedrockagent_delete_data_source <- function(dataSourceId, knowledgeBaseId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$delete_data_source_input(dataSourceId = dataSourceId, knowledgeBaseId = knowledgeBaseId)
+  input <- .bedrockagent$delete_data_source_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId)
   output <- .bedrockagent$delete_data_source_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -3243,10 +3513,10 @@ bedrockagent_delete_flow <- function(flowIdentifier, skipResourceInUseCheck = NU
 #' Deletes an alias of a flow.
 #'
 #' @usage
-#' bedrockagent_delete_flow_alias(aliasIdentifier, flowIdentifier)
+#' bedrockagent_delete_flow_alias(flowIdentifier, aliasIdentifier)
 #'
-#' @param aliasIdentifier &#91;required&#93; The unique identifier of the alias to be deleted.
 #' @param flowIdentifier &#91;required&#93; The unique identifier of the flow that the alias belongs to.
+#' @param aliasIdentifier &#91;required&#93; The unique identifier of the alias to be deleted.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3260,8 +3530,8 @@ bedrockagent_delete_flow <- function(flowIdentifier, skipResourceInUseCheck = NU
 #' @section Request syntax:
 #' ```
 #' svc$delete_flow_alias(
-#'   aliasIdentifier = "string",
-#'   flowIdentifier = "string"
+#'   flowIdentifier = "string",
+#'   aliasIdentifier = "string"
 #' )
 #' ```
 #'
@@ -3270,7 +3540,7 @@ bedrockagent_delete_flow <- function(flowIdentifier, skipResourceInUseCheck = NU
 #' @rdname bedrockagent_delete_flow_alias
 #'
 #' @aliases bedrockagent_delete_flow_alias
-bedrockagent_delete_flow_alias <- function(aliasIdentifier, flowIdentifier) {
+bedrockagent_delete_flow_alias <- function(flowIdentifier, aliasIdentifier) {
   op <- new_operation(
     name = "DeleteFlowAlias",
     http_method = "DELETE",
@@ -3279,7 +3549,7 @@ bedrockagent_delete_flow_alias <- function(aliasIdentifier, flowIdentifier) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$delete_flow_alias_input(aliasIdentifier = aliasIdentifier, flowIdentifier = flowIdentifier)
+  input <- .bedrockagent$delete_flow_alias_input(flowIdentifier = flowIdentifier, aliasIdentifier = aliasIdentifier)
   output <- .bedrockagent$delete_flow_alias_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -3411,19 +3681,19 @@ bedrockagent_delete_knowledge_base <- function(knowledgeBaseId) {
 #' in the Amazon Bedrock User Guide.
 #'
 #' @usage
-#' bedrockagent_delete_knowledge_base_documents(clientToken, dataSourceId,
-#'   documentIdentifiers, knowledgeBaseId)
+#' bedrockagent_delete_knowledge_base_documents(knowledgeBaseId,
+#'   dataSourceId, clientToken, documentIdentifiers)
 #'
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base that is connected to the
+#' data source.
+#' @param dataSourceId &#91;required&#93; The unique identifier of the data source that contains the documents.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
-#' @param dataSourceId &#91;required&#93; The unique identifier of the data source that contains the documents.
 #' @param documentIdentifiers &#91;required&#93; A list of objects, each of which contains information to identify a
 #' document to delete.
-#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base that is connected to the
-#' data source.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3431,18 +3701,18 @@ bedrockagent_delete_knowledge_base <- function(knowledgeBaseId) {
 #' list(
 #'   documentDetails = list(
 #'     list(
+#'       knowledgeBaseId = "string",
 #'       dataSourceId = "string",
+#'       status = "INDEXED"|"PARTIALLY_INDEXED"|"PENDING"|"FAILED"|"METADATA_PARTIALLY_INDEXED"|"METADATA_UPDATE_FAILED"|"IGNORED"|"NOT_FOUND"|"STARTING"|"IN_PROGRESS"|"DELETING"|"DELETE_IN_PROGRESS",
 #'       identifier = list(
-#'         custom = list(
-#'           id = "string"
-#'         ),
 #'         dataSourceType = "CUSTOM"|"S3",
 #'         s3 = list(
 #'           uri = "string"
+#'         ),
+#'         custom = list(
+#'           id = "string"
 #'         )
 #'       ),
-#'       knowledgeBaseId = "string",
-#'       status = "INDEXED"|"PARTIALLY_INDEXED"|"PENDING"|"FAILED"|"METADATA_PARTIALLY_INDEXED"|"METADATA_UPDATE_FAILED"|"IGNORED"|"NOT_FOUND"|"STARTING"|"IN_PROGRESS"|"DELETING"|"DELETE_IN_PROGRESS",
 #'       statusReason = "string",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
@@ -3455,20 +3725,20 @@ bedrockagent_delete_knowledge_base <- function(knowledgeBaseId) {
 #' @section Request syntax:
 #' ```
 #' svc$delete_knowledge_base_documents(
-#'   clientToken = "string",
+#'   knowledgeBaseId = "string",
 #'   dataSourceId = "string",
+#'   clientToken = "string",
 #'   documentIdentifiers = list(
 #'     list(
-#'       custom = list(
-#'         id = "string"
-#'       ),
 #'       dataSourceType = "CUSTOM"|"S3",
 #'       s3 = list(
 #'         uri = "string"
+#'       ),
+#'       custom = list(
+#'         id = "string"
 #'       )
 #'     )
-#'   ),
-#'   knowledgeBaseId = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -3477,7 +3747,7 @@ bedrockagent_delete_knowledge_base <- function(knowledgeBaseId) {
 #' @rdname bedrockagent_delete_knowledge_base_documents
 #'
 #' @aliases bedrockagent_delete_knowledge_base_documents
-bedrockagent_delete_knowledge_base_documents <- function(clientToken = NULL, dataSourceId, documentIdentifiers, knowledgeBaseId) {
+bedrockagent_delete_knowledge_base_documents <- function(knowledgeBaseId, dataSourceId, clientToken = NULL, documentIdentifiers) {
   op <- new_operation(
     name = "DeleteKnowledgeBaseDocuments",
     http_method = "POST",
@@ -3486,7 +3756,7 @@ bedrockagent_delete_knowledge_base_documents <- function(clientToken = NULL, dat
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$delete_knowledge_base_documents_input(clientToken = clientToken, dataSourceId = dataSourceId, documentIdentifiers = documentIdentifiers, knowledgeBaseId = knowledgeBaseId)
+  input <- .bedrockagent$delete_knowledge_base_documents_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId, clientToken = clientToken, documentIdentifiers = documentIdentifiers)
   output <- .bedrockagent$delete_knowledge_base_documents_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -3670,76 +3940,76 @@ bedrockagent_disassociate_agent_knowledge_base <- function(agentId, agentVersion
 #' ```
 #' list(
 #'   agent = list(
-#'     agentArn = "string",
-#'     agentCollaboration = "SUPERVISOR"|"SUPERVISOR_ROUTER"|"DISABLED",
 #'     agentId = "string",
 #'     agentName = "string",
-#'     agentResourceRoleArn = "string",
-#'     agentStatus = "CREATING"|"PREPARING"|"PREPARED"|"NOT_PREPARED"|"DELETING"|"FAILED"|"VERSIONING"|"UPDATING",
+#'     agentArn = "string",
 #'     agentVersion = "string",
 #'     clientToken = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
+#'     instruction = "string",
+#'     agentStatus = "CREATING"|"PREPARING"|"PREPARED"|"NOT_PREPARED"|"DELETING"|"FAILED"|"VERSIONING"|"UPDATING",
+#'     foundationModel = "string",
+#'     description = "string",
+#'     orchestrationType = "DEFAULT"|"CUSTOM_ORCHESTRATION",
 #'     customOrchestration = list(
 #'       executor = list(
 #'         lambda = "string"
 #'       )
 #'     ),
-#'     customerEncryptionKeyArn = "string",
-#'     description = "string",
-#'     failureReasons = list(
-#'       "string"
-#'     ),
-#'     foundationModel = "string",
-#'     guardrailConfiguration = list(
-#'       guardrailIdentifier = "string",
-#'       guardrailVersion = "string"
-#'     ),
 #'     idleSessionTTLInSeconds = 123,
-#'     instruction = "string",
-#'     memoryConfiguration = list(
-#'       enabledMemoryTypes = list(
-#'         "SESSION_SUMMARY"
-#'       ),
-#'       sessionSummaryConfiguration = list(
-#'         maxRecentSessions = 123
-#'       ),
-#'       storageDays = 123
+#'     agentResourceRoleArn = "string",
+#'     customerEncryptionKeyArn = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
 #'     ),
-#'     orchestrationType = "DEFAULT"|"CUSTOM_ORCHESTRATION",
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     preparedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     promptOverrideConfiguration = list(
-#'       overrideLambda = "string",
-#'       promptConfigurations = list(
-#'         list(
-#'           additionalModelRequestFields = list(),
-#'           basePromptTemplate = "string",
-#'           foundationModel = "string",
-#'           inferenceConfiguration = list(
-#'             maximumLength = 123,
-#'             stopSequences = list(
-#'               "string"
-#'             ),
-#'             temperature = 123.0,
-#'             topK = 123,
-#'             topP = 123.0
-#'           ),
-#'           parserMode = "DEFAULT"|"OVERRIDDEN",
-#'           promptCreationMode = "DEFAULT"|"OVERRIDDEN",
-#'           promptState = "ENABLED"|"DISABLED",
-#'           promptType = "PRE_PROCESSING"|"ORCHESTRATION"|"POST_PROCESSING"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"|"MEMORY_SUMMARIZATION"
-#'         )
-#'       )
+#'     failureReasons = list(
+#'       "string"
 #'     ),
 #'     recommendedActions = list(
 #'       "string"
 #'     ),
-#'     updatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     )
+#'     promptOverrideConfiguration = list(
+#'       promptConfigurations = list(
+#'         list(
+#'           promptType = "PRE_PROCESSING"|"ORCHESTRATION"|"POST_PROCESSING"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"|"MEMORY_SUMMARIZATION",
+#'           promptCreationMode = "DEFAULT"|"OVERRIDDEN",
+#'           promptState = "ENABLED"|"DISABLED",
+#'           basePromptTemplate = "string",
+#'           inferenceConfiguration = list(
+#'             temperature = 123.0,
+#'             topP = 123.0,
+#'             topK = 123,
+#'             maximumLength = 123,
+#'             stopSequences = list(
+#'               "string"
+#'             )
+#'           ),
+#'           parserMode = "DEFAULT"|"OVERRIDDEN",
+#'           foundationModel = "string",
+#'           additionalModelRequestFields = list()
+#'         )
+#'       ),
+#'       overrideLambda = "string"
+#'     ),
+#'     guardrailConfiguration = list(
+#'       guardrailIdentifier = "string",
+#'       guardrailVersion = "string"
+#'     ),
+#'     memoryConfiguration = list(
+#'       enabledMemoryTypes = list(
+#'         "SESSION_SUMMARY"
+#'       ),
+#'       storageDays = 123,
+#'       sessionSummaryConfiguration = list(
+#'         maxRecentSessions = 123
+#'       )
+#'     ),
+#'     agentCollaboration = "SUPERVISOR"|"SUPERVISOR_ROUTER"|"DISABLED"
 #'   )
 #' )
 #' ```
@@ -3781,62 +4051,62 @@ bedrockagent_get_agent <- function(agentId) {
 #' Gets information about an action group for an agent.
 #'
 #' @usage
-#' bedrockagent_get_agent_action_group(actionGroupId, agentId,
-#'   agentVersion)
+#' bedrockagent_get_agent_action_group(agentId, agentVersion,
+#'   actionGroupId)
 #'
-#' @param actionGroupId &#91;required&#93; The unique identifier of the action group for which to get information.
 #' @param agentId &#91;required&#93; The unique identifier of the agent that the action group belongs to.
 #' @param agentVersion &#91;required&#93; The version of the agent that the action group belongs to.
+#' @param actionGroupId &#91;required&#93; The unique identifier of the action group for which to get information.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   agentActionGroup = list(
-#'     actionGroupExecutor = list(
-#'       customControl = "RETURN_CONTROL",
-#'       lambda = "string"
-#'     ),
-#'     actionGroupId = "string",
-#'     actionGroupName = "string",
-#'     actionGroupState = "ENABLED"|"DISABLED",
 #'     agentId = "string",
 #'     agentVersion = "string",
-#'     apiSchema = list(
-#'       payload = "string",
-#'       s3 = list(
-#'         s3BucketName = "string",
-#'         s3ObjectKey = "string"
-#'       )
-#'     ),
+#'     actionGroupId = "string",
+#'     actionGroupName = "string",
 #'     clientToken = "string",
+#'     description = "string",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     description = "string",
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     parentActionSignature = "AMAZON.UserInput"|"AMAZON.CodeInterpreter"|"ANTHROPIC.Computer"|"ANTHROPIC.Bash"|"ANTHROPIC.TextEditor",
+#'     parentActionGroupSignatureParams = list(
+#'       "string"
+#'     ),
+#'     actionGroupExecutor = list(
+#'       lambda = "string",
+#'       customControl = "RETURN_CONTROL"
+#'     ),
+#'     apiSchema = list(
+#'       s3 = list(
+#'         s3BucketName = "string",
+#'         s3ObjectKey = "string"
+#'       ),
+#'       payload = "string"
+#'     ),
 #'     functionSchema = list(
 #'       functions = list(
 #'         list(
-#'           description = "string",
 #'           name = "string",
+#'           description = "string",
 #'           parameters = list(
 #'             list(
 #'               description = "string",
-#'               required = TRUE|FALSE,
-#'               type = "string"|"number"|"integer"|"boolean"|"array"
+#'               type = "string"|"number"|"integer"|"boolean"|"array",
+#'               required = TRUE|FALSE
 #'             )
 #'           ),
 #'           requireConfirmation = "ENABLED"|"DISABLED"
 #'         )
 #'       )
 #'     ),
-#'     parentActionGroupSignatureParams = list(
-#'       "string"
-#'     ),
-#'     parentActionSignature = "AMAZON.UserInput"|"AMAZON.CodeInterpreter"|"ANTHROPIC.Computer"|"ANTHROPIC.Bash"|"ANTHROPIC.TextEditor",
-#'     updatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     )
+#'     actionGroupState = "ENABLED"|"DISABLED"
 #'   )
 #' )
 #' ```
@@ -3844,9 +4114,9 @@ bedrockagent_get_agent <- function(agentId) {
 #' @section Request syntax:
 #' ```
 #' svc$get_agent_action_group(
-#'   actionGroupId = "string",
 #'   agentId = "string",
-#'   agentVersion = "string"
+#'   agentVersion = "string",
+#'   actionGroupId = "string"
 #' )
 #' ```
 #'
@@ -3855,7 +4125,7 @@ bedrockagent_get_agent <- function(agentId) {
 #' @rdname bedrockagent_get_agent_action_group
 #'
 #' @aliases bedrockagent_get_agent_action_group
-bedrockagent_get_agent_action_group <- function(actionGroupId, agentId, agentVersion) {
+bedrockagent_get_agent_action_group <- function(agentId, agentVersion, actionGroupId) {
   op <- new_operation(
     name = "GetAgentActionGroup",
     http_method = "GET",
@@ -3864,7 +4134,7 @@ bedrockagent_get_agent_action_group <- function(actionGroupId, agentId, agentVer
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$get_agent_action_group_input(actionGroupId = actionGroupId, agentId = agentId, agentVersion = agentVersion)
+  input <- .bedrockagent$get_agent_action_group_input(agentId = agentId, agentVersion = agentVersion, actionGroupId = actionGroupId)
   output <- .bedrockagent$get_agent_action_group_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -3880,55 +4150,56 @@ bedrockagent_get_agent_action_group <- function(actionGroupId, agentId, agentVer
 #' Gets information about an alias of an agent.
 #'
 #' @usage
-#' bedrockagent_get_agent_alias(agentAliasId, agentId)
+#' bedrockagent_get_agent_alias(agentId, agentAliasId)
 #'
-#' @param agentAliasId &#91;required&#93; The unique identifier of the alias for which to get information.
 #' @param agentId &#91;required&#93; The unique identifier of the agent to which the alias to get information
 #' belongs.
+#' @param agentAliasId &#91;required&#93; The unique identifier of the alias for which to get information.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   agentAlias = list(
-#'     agentAliasArn = "string",
-#'     agentAliasHistoryEvents = list(
-#'       list(
-#'         endDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         routingConfiguration = list(
-#'           list(
-#'             agentVersion = "string",
-#'             provisionedThroughput = "string"
-#'           )
-#'         ),
-#'         startDate = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
+#'     agentId = "string",
 #'     agentAliasId = "string",
 #'     agentAliasName = "string",
-#'     agentAliasStatus = "CREATING"|"PREPARED"|"FAILED"|"UPDATING"|"DELETING"|"DISSOCIATED",
-#'     agentId = "string",
+#'     agentAliasArn = "string",
 #'     clientToken = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
 #'     description = "string",
-#'     failureReasons = list(
-#'       "string"
-#'     ),
 #'     routingConfiguration = list(
 #'       list(
 #'         agentVersion = "string",
 #'         provisionedThroughput = "string"
 #'       )
 #'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     agentAliasHistoryEvents = list(
+#'       list(
+#'         routingConfiguration = list(
+#'           list(
+#'             agentVersion = "string",
+#'             provisionedThroughput = "string"
+#'           )
+#'         ),
+#'         endDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         startDate = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     agentAliasStatus = "CREATING"|"PREPARED"|"FAILED"|"UPDATING"|"DELETING"|"DISSOCIATED",
+#'     failureReasons = list(
+#'       "string"
+#'     ),
+#'     aliasInvocationState = "ACCEPT_INVOCATIONS"|"REJECT_INVOCATIONS"
 #'   )
 #' )
 #' ```
@@ -3936,8 +4207,8 @@ bedrockagent_get_agent_action_group <- function(actionGroupId, agentId, agentVer
 #' @section Request syntax:
 #' ```
 #' svc$get_agent_alias(
-#'   agentAliasId = "string",
-#'   agentId = "string"
+#'   agentId = "string",
+#'   agentAliasId = "string"
 #' )
 #' ```
 #'
@@ -3946,7 +4217,7 @@ bedrockagent_get_agent_action_group <- function(actionGroupId, agentId, agentVer
 #' @rdname bedrockagent_get_agent_alias
 #'
 #' @aliases bedrockagent_get_agent_alias
-bedrockagent_get_agent_alias <- function(agentAliasId, agentId) {
+bedrockagent_get_agent_alias <- function(agentId, agentAliasId) {
   op <- new_operation(
     name = "GetAgentAlias",
     http_method = "GET",
@@ -3955,7 +4226,7 @@ bedrockagent_get_agent_alias <- function(agentAliasId, agentId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$get_agent_alias_input(agentAliasId = agentAliasId, agentId = agentId)
+  input <- .bedrockagent$get_agent_alias_input(agentId = agentId, agentAliasId = agentAliasId)
   output <- .bedrockagent$get_agent_alias_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -3983,14 +4254,13 @@ bedrockagent_get_agent_alias <- function(agentAliasId, agentId) {
 #' ```
 #' list(
 #'   agentCollaborator = list(
+#'     agentId = "string",
+#'     agentVersion = "string",
 #'     agentDescriptor = list(
 #'       aliasArn = "string"
 #'     ),
-#'     agentId = "string",
-#'     agentVersion = "string",
-#'     clientToken = "string",
-#'     collaborationInstruction = "string",
 #'     collaboratorId = "string",
+#'     collaborationInstruction = "string",
 #'     collaboratorName = "string",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
@@ -3998,7 +4268,8 @@ bedrockagent_get_agent_alias <- function(agentAliasId, agentId) {
 #'     lastUpdatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     relayConversationHistory = "TO_COLLABORATOR"|"DISABLED"
+#'     relayConversationHistory = "TO_COLLABORATOR"|"DISABLED",
+#'     clientToken = "string"
 #'   )
 #' )
 #' ```
@@ -4057,15 +4328,15 @@ bedrockagent_get_agent_collaborator <- function(agentId, agentVersion, collabora
 #'   agentKnowledgeBase = list(
 #'     agentId = "string",
 #'     agentVersion = "string",
+#'     knowledgeBaseId = "string",
+#'     description = "string",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     description = "string",
-#'     knowledgeBaseId = "string",
-#'     knowledgeBaseState = "ENABLED"|"DISABLED",
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     knowledgeBaseState = "ENABLED"|"DISABLED"
 #'   )
 #' )
 #' ```
@@ -4119,66 +4390,66 @@ bedrockagent_get_agent_knowledge_base <- function(agentId, agentVersion, knowled
 #' ```
 #' list(
 #'   agentVersion = list(
-#'     agentArn = "string",
-#'     agentCollaboration = "SUPERVISOR"|"SUPERVISOR_ROUTER"|"DISABLED",
 #'     agentId = "string",
 #'     agentName = "string",
-#'     agentResourceRoleArn = "string",
+#'     agentArn = "string",
+#'     version = "string",
+#'     instruction = "string",
 #'     agentStatus = "CREATING"|"PREPARING"|"PREPARED"|"NOT_PREPARED"|"DELETING"|"FAILED"|"VERSIONING"|"UPDATING",
+#'     foundationModel = "string",
+#'     description = "string",
+#'     idleSessionTTLInSeconds = 123,
+#'     agentResourceRoleArn = "string",
+#'     customerEncryptionKeyArn = "string",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
-#'     ),
-#'     customerEncryptionKeyArn = "string",
-#'     description = "string",
-#'     failureReasons = list(
-#'       "string"
-#'     ),
-#'     foundationModel = "string",
-#'     guardrailConfiguration = list(
-#'       guardrailIdentifier = "string",
-#'       guardrailVersion = "string"
-#'     ),
-#'     idleSessionTTLInSeconds = 123,
-#'     instruction = "string",
-#'     memoryConfiguration = list(
-#'       enabledMemoryTypes = list(
-#'         "SESSION_SUMMARY"
-#'       ),
-#'       sessionSummaryConfiguration = list(
-#'         maxRecentSessions = 123
-#'       ),
-#'       storageDays = 123
-#'     ),
-#'     promptOverrideConfiguration = list(
-#'       overrideLambda = "string",
-#'       promptConfigurations = list(
-#'         list(
-#'           additionalModelRequestFields = list(),
-#'           basePromptTemplate = "string",
-#'           foundationModel = "string",
-#'           inferenceConfiguration = list(
-#'             maximumLength = 123,
-#'             stopSequences = list(
-#'               "string"
-#'             ),
-#'             temperature = 123.0,
-#'             topK = 123,
-#'             topP = 123.0
-#'           ),
-#'           parserMode = "DEFAULT"|"OVERRIDDEN",
-#'           promptCreationMode = "DEFAULT"|"OVERRIDDEN",
-#'           promptState = "ENABLED"|"DISABLED",
-#'           promptType = "PRE_PROCESSING"|"ORCHESTRATION"|"POST_PROCESSING"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"|"MEMORY_SUMMARIZATION"
-#'         )
-#'       )
-#'     ),
-#'     recommendedActions = list(
-#'       "string"
 #'     ),
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     version = "string"
+#'     failureReasons = list(
+#'       "string"
+#'     ),
+#'     recommendedActions = list(
+#'       "string"
+#'     ),
+#'     promptOverrideConfiguration = list(
+#'       promptConfigurations = list(
+#'         list(
+#'           promptType = "PRE_PROCESSING"|"ORCHESTRATION"|"POST_PROCESSING"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"|"MEMORY_SUMMARIZATION",
+#'           promptCreationMode = "DEFAULT"|"OVERRIDDEN",
+#'           promptState = "ENABLED"|"DISABLED",
+#'           basePromptTemplate = "string",
+#'           inferenceConfiguration = list(
+#'             temperature = 123.0,
+#'             topP = 123.0,
+#'             topK = 123,
+#'             maximumLength = 123,
+#'             stopSequences = list(
+#'               "string"
+#'             )
+#'           ),
+#'           parserMode = "DEFAULT"|"OVERRIDDEN",
+#'           foundationModel = "string",
+#'           additionalModelRequestFields = list()
+#'         )
+#'       ),
+#'       overrideLambda = "string"
+#'     ),
+#'     guardrailConfiguration = list(
+#'       guardrailIdentifier = "string",
+#'       guardrailVersion = "string"
+#'     ),
+#'     memoryConfiguration = list(
+#'       enabledMemoryTypes = list(
+#'         "SESSION_SUMMARY"
+#'       ),
+#'       storageDays = 123,
+#'       sessionSummaryConfiguration = list(
+#'         maxRecentSessions = 123
+#'       )
+#'     ),
+#'     agentCollaboration = "SUPERVISOR"|"SUPERVISOR_ROUTER"|"DISABLED"
 #'   )
 #' )
 #' ```
@@ -4221,126 +4492,31 @@ bedrockagent_get_agent_version <- function(agentId, agentVersion) {
 #' Gets information about a data source.
 #'
 #' @usage
-#' bedrockagent_get_data_source(dataSourceId, knowledgeBaseId)
+#' bedrockagent_get_data_source(knowledgeBaseId, dataSourceId)
 #'
-#' @param dataSourceId &#91;required&#93; The unique identifier of the data source.
 #' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base for the data source.
+#' @param dataSourceId &#91;required&#93; The unique identifier of the data source.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   dataSource = list(
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     dataDeletionPolicy = "RETAIN"|"DELETE",
+#'     knowledgeBaseId = "string",
+#'     dataSourceId = "string",
+#'     name = "string",
+#'     status = "AVAILABLE"|"DELETING"|"DELETE_UNSUCCESSFUL",
+#'     description = "string",
 #'     dataSourceConfiguration = list(
-#'       confluenceConfiguration = list(
-#'         crawlerConfiguration = list(
-#'           filterConfiguration = list(
-#'             patternObjectFilter = list(
-#'               filters = list(
-#'                 list(
-#'                   exclusionFilters = list(
-#'                     "string"
-#'                   ),
-#'                   inclusionFilters = list(
-#'                     "string"
-#'                   ),
-#'                   objectType = "string"
-#'                 )
-#'               )
-#'             ),
-#'             type = "PATTERN"
-#'           )
-#'         ),
-#'         sourceConfiguration = list(
-#'           authType = "BASIC"|"OAUTH2_CLIENT_CREDENTIALS",
-#'           credentialsSecretArn = "string",
-#'           hostType = "SAAS",
-#'           hostUrl = "string"
-#'         )
-#'       ),
+#'       type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"REDSHIFT_METADATA",
 #'       s3Configuration = list(
 #'         bucketArn = "string",
-#'         bucketOwnerAccountId = "string",
 #'         inclusionPrefixes = list(
 #'           "string"
-#'         )
-#'       ),
-#'       salesforceConfiguration = list(
-#'         crawlerConfiguration = list(
-#'           filterConfiguration = list(
-#'             patternObjectFilter = list(
-#'               filters = list(
-#'                 list(
-#'                   exclusionFilters = list(
-#'                     "string"
-#'                   ),
-#'                   inclusionFilters = list(
-#'                     "string"
-#'                   ),
-#'                   objectType = "string"
-#'                 )
-#'               )
-#'             ),
-#'             type = "PATTERN"
-#'           )
 #'         ),
-#'         sourceConfiguration = list(
-#'           authType = "OAUTH2_CLIENT_CREDENTIALS",
-#'           credentialsSecretArn = "string",
-#'           hostUrl = "string"
-#'         )
+#'         bucketOwnerAccountId = "string"
 #'       ),
-#'       sharePointConfiguration = list(
-#'         crawlerConfiguration = list(
-#'           filterConfiguration = list(
-#'             patternObjectFilter = list(
-#'               filters = list(
-#'                 list(
-#'                   exclusionFilters = list(
-#'                     "string"
-#'                   ),
-#'                   inclusionFilters = list(
-#'                     "string"
-#'                   ),
-#'                   objectType = "string"
-#'                 )
-#'               )
-#'             ),
-#'             type = "PATTERN"
-#'           )
-#'         ),
-#'         sourceConfiguration = list(
-#'           authType = "OAUTH2_CLIENT_CREDENTIALS"|"OAUTH2_SHAREPOINT_APP_ONLY_CLIENT_CREDENTIALS",
-#'           credentialsSecretArn = "string",
-#'           domain = "string",
-#'           hostType = "ONLINE",
-#'           siteUrls = list(
-#'             "string"
-#'           ),
-#'           tenantId = "string"
-#'         )
-#'       ),
-#'       type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"REDSHIFT_METADATA",
 #'       webConfiguration = list(
-#'         crawlerConfiguration = list(
-#'           crawlerLimits = list(
-#'             maxPages = 123,
-#'             rateLimit = 123
-#'           ),
-#'           exclusionFilters = list(
-#'             "string"
-#'           ),
-#'           inclusionFilters = list(
-#'             "string"
-#'           ),
-#'           scope = "HOST_ONLY"|"SUBDOMAINS",
-#'           userAgent = "string",
-#'           userAgentHeader = "string"
-#'         ),
 #'         sourceConfiguration = list(
 #'           urlConfiguration = list(
 #'             seedUrls = list(
@@ -4349,22 +4525,107 @@ bedrockagent_get_agent_version <- function(agentId, agentVersion) {
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         crawlerConfiguration = list(
+#'           crawlerLimits = list(
+#'             rateLimit = 123,
+#'             maxPages = 123
+#'           ),
+#'           inclusionFilters = list(
+#'             "string"
+#'           ),
+#'           exclusionFilters = list(
+#'             "string"
+#'           ),
+#'           scope = "HOST_ONLY"|"SUBDOMAINS",
+#'           userAgent = "string",
+#'           userAgentHeader = "string"
+#'         )
+#'       ),
+#'       confluenceConfiguration = list(
+#'         sourceConfiguration = list(
+#'           hostUrl = "string",
+#'           hostType = "SAAS",
+#'           authType = "BASIC"|"OAUTH2_CLIENT_CREDENTIALS",
+#'           credentialsSecretArn = "string"
+#'         ),
+#'         crawlerConfiguration = list(
+#'           filterConfiguration = list(
+#'             type = "PATTERN",
+#'             patternObjectFilter = list(
+#'               filters = list(
+#'                 list(
+#'                   objectType = "string",
+#'                   inclusionFilters = list(
+#'                     "string"
+#'                   ),
+#'                   exclusionFilters = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       salesforceConfiguration = list(
+#'         sourceConfiguration = list(
+#'           hostUrl = "string",
+#'           authType = "OAUTH2_CLIENT_CREDENTIALS",
+#'           credentialsSecretArn = "string"
+#'         ),
+#'         crawlerConfiguration = list(
+#'           filterConfiguration = list(
+#'             type = "PATTERN",
+#'             patternObjectFilter = list(
+#'               filters = list(
+#'                 list(
+#'                   objectType = "string",
+#'                   inclusionFilters = list(
+#'                     "string"
+#'                   ),
+#'                   exclusionFilters = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sharePointConfiguration = list(
+#'         sourceConfiguration = list(
+#'           tenantId = "string",
+#'           domain = "string",
+#'           siteUrls = list(
+#'             "string"
+#'           ),
+#'           hostType = "ONLINE",
+#'           authType = "OAUTH2_CLIENT_CREDENTIALS"|"OAUTH2_SHAREPOINT_APP_ONLY_CLIENT_CREDENTIALS",
+#'           credentialsSecretArn = "string"
+#'         ),
+#'         crawlerConfiguration = list(
+#'           filterConfiguration = list(
+#'             type = "PATTERN",
+#'             patternObjectFilter = list(
+#'               filters = list(
+#'                 list(
+#'                   objectType = "string",
+#'                   inclusionFilters = list(
+#'                     "string"
+#'                   ),
+#'                   exclusionFilters = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
-#'     dataSourceId = "string",
-#'     description = "string",
-#'     failureReasons = list(
-#'       "string"
-#'     ),
-#'     knowledgeBaseId = "string",
-#'     name = "string",
 #'     serverSideEncryptionConfiguration = list(
 #'       kmsKeyArn = "string"
-#'     ),
-#'     status = "AVAILABLE"|"DELETING"|"DELETE_UNSUCCESSFUL",
-#'     updatedAt = as.POSIXct(
-#'       "2015-01-01"
 #'     ),
 #'     vectorIngestionConfiguration = list(
 #'       chunkingConfiguration = list(
@@ -4382,19 +4643,10 @@ bedrockagent_get_agent_version <- function(agentId, agentVersion) {
 #'           overlapTokens = 123
 #'         ),
 #'         semanticChunkingConfiguration = list(
-#'           breakpointPercentileThreshold = 123,
+#'           maxTokens = 123,
 #'           bufferSize = 123,
-#'           maxTokens = 123
+#'           breakpointPercentileThreshold = 123
 #'         )
-#'       ),
-#'       contextEnrichmentConfiguration = list(
-#'         bedrockFoundationModelConfiguration = list(
-#'           enrichmentStrategyConfiguration = list(
-#'             method = "CHUNK_ENTITY_EXTRACTION"
-#'           ),
-#'           modelArn = "string"
-#'         ),
-#'         type = "BEDROCK_FOUNDATION_MODEL"
 #'       ),
 #'       customTransformationConfiguration = list(
 #'         intermediateStorage = list(
@@ -4404,28 +4656,47 @@ bedrockagent_get_agent_version <- function(agentId, agentVersion) {
 #'         ),
 #'         transformations = list(
 #'           list(
-#'             stepToApply = "POST_CHUNKING",
 #'             transformationFunction = list(
 #'               transformationLambdaConfiguration = list(
 #'                 lambdaArn = "string"
 #'               )
-#'             )
+#'             ),
+#'             stepToApply = "POST_CHUNKING"
 #'           )
 #'         )
 #'       ),
 #'       parsingConfiguration = list(
-#'         bedrockDataAutomationConfiguration = list(
-#'           parsingModality = "MULTIMODAL"
-#'         ),
+#'         parsingStrategy = "BEDROCK_FOUNDATION_MODEL"|"BEDROCK_DATA_AUTOMATION",
 #'         bedrockFoundationModelConfiguration = list(
 #'           modelArn = "string",
-#'           parsingModality = "MULTIMODAL",
 #'           parsingPrompt = list(
 #'             parsingPromptText = "string"
-#'           )
+#'           ),
+#'           parsingModality = "MULTIMODAL"
 #'         ),
-#'         parsingStrategy = "BEDROCK_FOUNDATION_MODEL"|"BEDROCK_DATA_AUTOMATION"
+#'         bedrockDataAutomationConfiguration = list(
+#'           parsingModality = "MULTIMODAL"
+#'         )
+#'       ),
+#'       contextEnrichmentConfiguration = list(
+#'         type = "BEDROCK_FOUNDATION_MODEL",
+#'         bedrockFoundationModelConfiguration = list(
+#'           enrichmentStrategyConfiguration = list(
+#'             method = "CHUNK_ENTITY_EXTRACTION"
+#'           ),
+#'           modelArn = "string"
+#'         )
 #'       )
+#'     ),
+#'     dataDeletionPolicy = "RETAIN"|"DELETE",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     failureReasons = list(
+#'       "string"
 #'     )
 #'   )
 #' )
@@ -4434,8 +4705,8 @@ bedrockagent_get_agent_version <- function(agentId, agentVersion) {
 #' @section Request syntax:
 #' ```
 #' svc$get_data_source(
-#'   dataSourceId = "string",
-#'   knowledgeBaseId = "string"
+#'   knowledgeBaseId = "string",
+#'   dataSourceId = "string"
 #' )
 #' ```
 #'
@@ -4444,7 +4715,7 @@ bedrockagent_get_agent_version <- function(agentId, agentVersion) {
 #' @rdname bedrockagent_get_data_source
 #'
 #' @aliases bedrockagent_get_data_source
-bedrockagent_get_data_source <- function(dataSourceId, knowledgeBaseId) {
+bedrockagent_get_data_source <- function(knowledgeBaseId, dataSourceId) {
   op <- new_operation(
     name = "GetDataSource",
     http_method = "GET",
@@ -4453,7 +4724,7 @@ bedrockagent_get_data_source <- function(dataSourceId, knowledgeBaseId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$get_data_source_input(dataSourceId = dataSourceId, knowledgeBaseId = knowledgeBaseId)
+  input <- .bedrockagent$get_data_source_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId)
   output <- .bedrockagent$get_data_source_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -4480,138 +4751,120 @@ bedrockagent_get_data_source <- function(dataSourceId, knowledgeBaseId) {
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   name = "string",
+#'   description = "string",
+#'   executionRoleArn = "string",
+#'   customerEncryptionKeyArn = "string",
+#'   id = "string",
 #'   arn = "string",
+#'   status = "Failed"|"Prepared"|"Preparing"|"NotPrepared",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   customerEncryptionKeyArn = "string",
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   version = "string",
 #'   definition = list(
-#'     connections = list(
-#'       list(
-#'         configuration = list(
-#'           conditional = list(
-#'             condition = "string"
-#'           ),
-#'           data = list(
-#'             sourceOutput = "string",
-#'             targetInput = "string"
-#'           )
-#'         ),
-#'         name = "string",
-#'         source = "string",
-#'         target = "string",
-#'         type = "Data"|"Conditional"
-#'       )
-#'     ),
 #'     nodes = list(
 #'       list(
+#'         name = "string",
+#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"|"InlineCode"|"Loop"|"LoopInput"|"LoopController",
 #'         configuration = list(
-#'           agent = list(
-#'             agentAliasArn = "string"
-#'           ),
-#'           collector = list(),
-#'           condition = list(
-#'             conditions = list(
-#'               list(
-#'                 expression = "string",
-#'                 name = "string"
-#'               )
-#'             )
-#'           ),
-#'           inlineCode = list(
-#'             code = "string",
-#'             language = "Python_3"
-#'           ),
 #'           input = list(),
-#'           iterator = list(),
+#'           output = list(),
 #'           knowledgeBase = list(
+#'             knowledgeBaseId = "string",
+#'             modelId = "string",
 #'             guardrailConfiguration = list(
 #'               guardrailIdentifier = "string",
 #'               guardrailVersion = "string"
 #'             ),
-#'             knowledgeBaseId = "string",
-#'             modelId = "string"
+#'             numberOfResults = 123,
+#'             promptTemplate = list(
+#'               textPromptTemplate = "string"
+#'             ),
+#'             inferenceConfiguration = list(
+#'               text = list(
+#'                 temperature = 123.0,
+#'                 topP = 123.0,
+#'                 maxTokens = 123,
+#'                 stopSequences = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             rerankingConfiguration = list(
+#'               type = "BEDROCK_RERANKING_MODEL",
+#'               bedrockRerankingConfiguration = list(
+#'                 modelConfiguration = list(
+#'                   modelArn = "string",
+#'                   additionalModelRequestFields = list(
+#'                     list()
+#'                   )
+#'                 ),
+#'                 numberOfRerankedResults = 123,
+#'                 metadataConfiguration = list(
+#'                   selectionMode = "SELECTIVE"|"ALL",
+#'                   selectiveModeConfiguration = list(
+#'                     fieldsToInclude = list(
+#'                       list(
+#'                         fieldName = "string"
+#'                       )
+#'                     ),
+#'                     fieldsToExclude = list(
+#'                       list(
+#'                         fieldName = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             orchestrationConfiguration = list(
+#'               promptTemplate = list(
+#'                 textPromptTemplate = "string"
+#'               ),
+#'               inferenceConfig = list(
+#'                 text = list(
+#'                   temperature = 123.0,
+#'                   topP = 123.0,
+#'                   maxTokens = 123,
+#'                   stopSequences = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               additionalModelRequestFields = list(
+#'                 list()
+#'               ),
+#'               performanceConfig = list(
+#'                 latency = "standard"|"optimized"
+#'               )
+#'             )
 #'           ),
-#'           lambdaFunction = list(
-#'             lambdaArn = "string"
+#'           condition = list(
+#'             conditions = list(
+#'               list(
+#'                 name = "string",
+#'                 expression = "string"
+#'               )
+#'             )
 #'           ),
 #'           lex = list(
 #'             botAliasArn = "string",
 #'             localeId = "string"
 #'           ),
-#'           output = list(),
 #'           prompt = list(
-#'             guardrailConfiguration = list(
-#'               guardrailIdentifier = "string",
-#'               guardrailVersion = "string"
-#'             ),
 #'             sourceConfiguration = list(
+#'               resource = list(
+#'                 promptArn = "string"
+#'               ),
 #'               inline = list(
-#'                 additionalModelRequestFields = list(),
-#'                 inferenceConfiguration = list(
-#'                   text = list(
-#'                     maxTokens = 123,
-#'                     stopSequences = list(
-#'                       "string"
-#'                     ),
-#'                     temperature = 123.0,
-#'                     topP = 123.0
-#'                   )
-#'                 ),
-#'                 modelId = "string",
+#'                 templateType = "TEXT"|"CHAT",
 #'                 templateConfiguration = list(
-#'                   chat = list(
-#'                     inputVariables = list(
-#'                       list(
-#'                         name = "string"
-#'                       )
-#'                     ),
-#'                     messages = list(
-#'                       list(
-#'                         content = list(
-#'                           list(
-#'                             cachePoint = list(
-#'                               type = "default"
-#'                             ),
-#'                             text = "string"
-#'                           )
-#'                         ),
-#'                         role = "user"|"assistant"
-#'                       )
-#'                     ),
-#'                     system = list(
-#'                       list(
-#'                         cachePoint = list(
-#'                           type = "default"
-#'                         ),
-#'                         text = "string"
-#'                       )
-#'                     ),
-#'                     toolConfiguration = list(
-#'                       toolChoice = list(
-#'                         any = list(),
-#'                         auto = list(),
-#'                         tool = list(
-#'                           name = "string"
-#'                         )
-#'                       ),
-#'                       tools = list(
-#'                         list(
-#'                           cachePoint = list(
-#'                             type = "default"
-#'                           ),
-#'                           toolSpec = list(
-#'                             description = "string",
-#'                             inputSchema = list(
-#'                               json = list()
-#'                             ),
-#'                             name = "string"
-#'                           )
-#'                         )
-#'                       )
-#'                     )
-#'                   ),
 #'                   text = list(
+#'                     text = "string",
 #'                     cachePoint = list(
 #'                       type = "default"
 #'                     ),
@@ -4619,16 +4872,91 @@ bedrockagent_get_data_source <- function(dataSourceId, knowledgeBaseId) {
 #'                       list(
 #'                         name = "string"
 #'                       )
+#'                     )
+#'                   ),
+#'                   chat = list(
+#'                     messages = list(
+#'                       list(
+#'                         role = "user"|"assistant",
+#'                         content = list(
+#'                           list(
+#'                             text = "string",
+#'                             cachePoint = list(
+#'                               type = "default"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
 #'                     ),
-#'                     text = "string"
+#'                     system = list(
+#'                       list(
+#'                         text = "string",
+#'                         cachePoint = list(
+#'                           type = "default"
+#'                         )
+#'                       )
+#'                     ),
+#'                     inputVariables = list(
+#'                       list(
+#'                         name = "string"
+#'                       )
+#'                     ),
+#'                     toolConfiguration = list(
+#'                       tools = list(
+#'                         list(
+#'                           toolSpec = list(
+#'                             name = "string",
+#'                             description = "string",
+#'                             inputSchema = list(
+#'                               json = list()
+#'                             )
+#'                           ),
+#'                           cachePoint = list(
+#'                             type = "default"
+#'                           )
+#'                         )
+#'                       ),
+#'                       toolChoice = list(
+#'                         auto = list(),
+#'                         any = list(),
+#'                         tool = list(
+#'                           name = "string"
+#'                         )
+#'                       )
+#'                     )
 #'                   )
 #'                 ),
-#'                 templateType = "TEXT"|"CHAT"
-#'               ),
-#'               resource = list(
-#'                 promptArn = "string"
+#'                 modelId = "string",
+#'                 inferenceConfiguration = list(
+#'                   text = list(
+#'                     temperature = 123.0,
+#'                     topP = 123.0,
+#'                     maxTokens = 123,
+#'                     stopSequences = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 additionalModelRequestFields = list()
+#'               )
+#'             ),
+#'             guardrailConfiguration = list(
+#'               guardrailIdentifier = "string",
+#'               guardrailVersion = "string"
+#'             )
+#'           ),
+#'           lambdaFunction = list(
+#'             lambdaArn = "string"
+#'           ),
+#'           storage = list(
+#'             serviceConfiguration = list(
+#'               s3 = list(
+#'                 bucketName = "string"
 #'               )
 #'             )
+#'           ),
+#'           agent = list(
+#'             agentAliasArn = "string"
 #'           ),
 #'           retrieval = list(
 #'             serviceConfiguration = list(
@@ -4637,106 +4965,76 @@ bedrockagent_get_data_source <- function(dataSourceId, knowledgeBaseId) {
 #'               )
 #'             )
 #'           ),
-#'           storage = list(
-#'             serviceConfiguration = list(
-#'               s3 = list(
-#'                 bucketName = "string"
-#'               )
-#'             )
+#'           iterator = list(),
+#'           collector = list(),
+#'           inlineCode = list(
+#'             code = "string",
+#'             language = "Python_3"
+#'           ),
+#'           loop = list(
+#'             definition = list()
+#'           ),
+#'           loopInput = list(),
+#'           loopController = list(
+#'             continueCondition = list(
+#'               name = "string",
+#'               expression = "string"
+#'             ),
+#'             maxIterations = 123
 #'           )
 #'         ),
 #'         inputs = list(
 #'           list(
-#'             expression = "string",
 #'             name = "string",
-#'             type = "String"|"Number"|"Boolean"|"Object"|"Array"
+#'             type = "String"|"Number"|"Boolean"|"Object"|"Array",
+#'             expression = "string",
+#'             category = "LoopCondition"|"ReturnValueToLoopStart"|"ExitLoop"
 #'           )
 #'         ),
-#'         name = "string",
 #'         outputs = list(
 #'           list(
 #'             name = "string",
 #'             type = "String"|"Number"|"Boolean"|"Object"|"Array"
 #'           )
-#'         ),
-#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"|"InlineCode"
+#'         )
+#'       )
+#'     ),
+#'     connections = list(
+#'       list(
+#'         type = "Data"|"Conditional",
+#'         name = "string",
+#'         source = "string",
+#'         target = "string",
+#'         configuration = list(
+#'           data = list(
+#'             sourceOutput = "string",
+#'             targetInput = "string"
+#'           ),
+#'           conditional = list(
+#'             condition = "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
-#'   description = "string",
-#'   executionRoleArn = "string",
-#'   id = "string",
-#'   name = "string",
-#'   status = "Failed"|"Prepared"|"Preparing"|"NotPrepared",
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
 #'   validations = list(
 #'     list(
+#'       message = "string",
+#'       severity = "Warning"|"Error",
 #'       details = list(
 #'         cyclicConnection = list(
 #'           connection = "string"
-#'         ),
-#'         duplicateConditionExpression = list(
-#'           expression = "string",
-#'           node = "string"
 #'         ),
 #'         duplicateConnections = list(
 #'           source = "string",
 #'           target = "string"
 #'         ),
-#'         incompatibleConnectionDataType = list(
-#'           connection = "string"
-#'         ),
-#'         malformedConditionExpression = list(
-#'           cause = "string",
-#'           condition = "string",
-#'           node = "string"
-#'         ),
-#'         malformedNodeInputExpression = list(
-#'           cause = "string",
-#'           input = "string",
-#'           node = "string"
-#'         ),
-#'         mismatchedNodeInputType = list(
-#'           expectedType = "String"|"Number"|"Boolean"|"Object"|"Array",
-#'           input = "string",
-#'           node = "string"
-#'         ),
-#'         mismatchedNodeOutputType = list(
-#'           expectedType = "String"|"Number"|"Boolean"|"Object"|"Array",
+#'         duplicateConditionExpression = list(
 #'           node = "string",
-#'           output = "string"
+#'           expression = "string"
 #'         ),
-#'         missingConnectionConfiguration = list(
-#'           connection = "string"
-#'         ),
-#'         missingDefaultCondition = list(
+#'         unreachableNode = list(
 #'           node = "string"
-#'         ),
-#'         missingEndingNodes = list(),
-#'         missingNodeConfiguration = list(
-#'           node = "string"
-#'         ),
-#'         missingNodeInput = list(
-#'           input = "string",
-#'           node = "string"
-#'         ),
-#'         missingNodeOutput = list(
-#'           node = "string",
-#'           output = "string"
-#'         ),
-#'         missingStartingNodes = list(),
-#'         multipleNodeInputConnections = list(
-#'           input = "string",
-#'           node = "string"
-#'         ),
-#'         unfulfilledNodeInput = list(
-#'           input = "string",
-#'           node = "string"
-#'         ),
-#'         unknownConnectionCondition = list(
-#'           connection = "string"
 #'         ),
 #'         unknownConnectionSource = list(
 #'           connection = "string"
@@ -4750,28 +5048,97 @@ bedrockagent_get_data_source <- function(dataSourceId, knowledgeBaseId) {
 #'         unknownConnectionTargetInput = list(
 #'           connection = "string"
 #'         ),
-#'         unknownNodeInput = list(
+#'         unknownConnectionCondition = list(
+#'           connection = "string"
+#'         ),
+#'         malformedConditionExpression = list(
+#'           node = "string",
+#'           condition = "string",
+#'           cause = "string"
+#'         ),
+#'         malformedNodeInputExpression = list(
+#'           node = "string",
 #'           input = "string",
+#'           cause = "string"
+#'         ),
+#'         mismatchedNodeInputType = list(
+#'           node = "string",
+#'           input = "string",
+#'           expectedType = "String"|"Number"|"Boolean"|"Object"|"Array"
+#'         ),
+#'         mismatchedNodeOutputType = list(
+#'           node = "string",
+#'           output = "string",
+#'           expectedType = "String"|"Number"|"Boolean"|"Object"|"Array"
+#'         ),
+#'         incompatibleConnectionDataType = list(
+#'           connection = "string"
+#'         ),
+#'         missingConnectionConfiguration = list(
+#'           connection = "string"
+#'         ),
+#'         missingDefaultCondition = list(
 #'           node = "string"
+#'         ),
+#'         missingEndingNodes = list(),
+#'         missingNodeConfiguration = list(
+#'           node = "string"
+#'         ),
+#'         missingNodeInput = list(
+#'           node = "string",
+#'           input = "string"
+#'         ),
+#'         missingNodeOutput = list(
+#'           node = "string",
+#'           output = "string"
+#'         ),
+#'         missingStartingNodes = list(),
+#'         multipleNodeInputConnections = list(
+#'           node = "string",
+#'           input = "string"
+#'         ),
+#'         unfulfilledNodeInput = list(
+#'           node = "string",
+#'           input = "string"
+#'         ),
+#'         unsatisfiedConnectionConditions = list(
+#'           connection = "string"
+#'         ),
+#'         unspecified = list(),
+#'         unknownNodeInput = list(
+#'           node = "string",
+#'           input = "string"
 #'         ),
 #'         unknownNodeOutput = list(
 #'           node = "string",
 #'           output = "string"
 #'         ),
-#'         unreachableNode = list(
-#'           node = "string"
+#'         missingLoopInputNode = list(
+#'           loopNode = "string"
 #'         ),
-#'         unsatisfiedConnectionConditions = list(
-#'           connection = "string"
+#'         missingLoopControllerNode = list(
+#'           loopNode = "string"
 #'         ),
-#'         unspecified = list()
+#'         multipleLoopInputNodes = list(
+#'           loopNode = "string"
+#'         ),
+#'         multipleLoopControllerNodes = list(
+#'           loopNode = "string"
+#'         ),
+#'         loopIncompatibleNodeType = list(
+#'           node = "string",
+#'           incompatibleNodeType = "Input"|"Condition"|"Iterator"|"Collector",
+#'           incompatibleNodeName = "string"
+#'         ),
+#'         invalidLoopBoundary = list(
+#'           connection = "string",
+#'           source = "string",
+#'           target = "string"
+#'         )
 #'       ),
-#'       message = "string",
-#'       severity = "Warning"|"Error",
-#'       type = "CyclicConnection"|"DuplicateConnections"|"DuplicateConditionExpression"|"UnreachableNode"|"UnknownConnectionSource"|"UnknownConnectionSourceOutput"|"UnknownConnectionTarget"|"UnknownConnectionTargetInput"|"UnknownConnectionCondition"|"MalformedConditionExpression"|"MalformedNodeInputExpression"|"MismatchedNodeInputType"|"MismatchedNodeOutputType"|"IncompatibleConnectionDataType"|"MissingConnectionConfiguration"|"MissingDefaultCondition"|"MissingEndingNodes"|"MissingNodeConfiguration"|"MissingNodeInput"|"MissingNodeOutput"|"MissingStartingNodes"|"MultipleNodeInputConnections"|"UnfulfilledNodeInput"|"UnsatisfiedConnectionConditions"|"Unspecified"|"UnknownNodeInput"|"UnknownNodeOutput"
+#'       type = "CyclicConnection"|"DuplicateConnections"|"DuplicateConditionExpression"|"UnreachableNode"|"UnknownConnectionSource"|"UnknownConnectionSourceOutput"|"UnknownConnectionTarget"|"UnknownConnectionTargetInput"|"UnknownConnectionCondition"|"MalformedConditionExpression"|"MalformedNodeInputExpression"|"MismatchedNodeInputType"|"MismatchedNodeOutputType"|"IncompatibleConnectionDataType"|"MissingConnectionConfiguration"|"MissingDefaultCondition"|"MissingEndingNodes"|"MissingNodeConfiguration"|"MissingNodeInput"|"MissingNodeOutput"|"MissingStartingNodes"|"MultipleNodeInputConnections"|"UnfulfilledNodeInput"|"UnsatisfiedConnectionConditions"|"Unspecified"|"UnknownNodeInput"|"UnknownNodeOutput"|"MissingLoopInputNode"|"MissingLoopControllerNode"|"MultipleLoopInputNodes"|"MultipleLoopControllerNodes"|"LoopIncompatibleNodeType"|"InvalidLoopBoundary"
 #'     )
-#'   ),
-#'   version = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -4815,27 +5182,31 @@ bedrockagent_get_flow <- function(flowIdentifier) {
 #' in the Amazon Bedrock User Guide.
 #'
 #' @usage
-#' bedrockagent_get_flow_alias(aliasIdentifier, flowIdentifier)
+#' bedrockagent_get_flow_alias(flowIdentifier, aliasIdentifier)
 #'
-#' @param aliasIdentifier &#91;required&#93; The unique identifier of the alias for which to retrieve information.
 #' @param flowIdentifier &#91;required&#93; The unique identifier of the flow that the alias belongs to.
+#' @param aliasIdentifier &#91;required&#93; The unique identifier of the alias for which to retrieve information.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   arn = "string",
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   description = "string",
-#'   flowId = "string",
-#'   id = "string",
 #'   name = "string",
+#'   description = "string",
 #'   routingConfiguration = list(
 #'     list(
 #'       flowVersion = "string"
 #'     )
+#'   ),
+#'   concurrencyConfiguration = list(
+#'     type = "Automatic"|"Manual",
+#'     maxConcurrency = 123
+#'   ),
+#'   flowId = "string",
+#'   id = "string",
+#'   arn = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
 #'   ),
 #'   updatedAt = as.POSIXct(
 #'     "2015-01-01"
@@ -4846,8 +5217,8 @@ bedrockagent_get_flow <- function(flowIdentifier) {
 #' @section Request syntax:
 #' ```
 #' svc$get_flow_alias(
-#'   aliasIdentifier = "string",
-#'   flowIdentifier = "string"
+#'   flowIdentifier = "string",
+#'   aliasIdentifier = "string"
 #' )
 #' ```
 #'
@@ -4856,7 +5227,7 @@ bedrockagent_get_flow <- function(flowIdentifier) {
 #' @rdname bedrockagent_get_flow_alias
 #'
 #' @aliases bedrockagent_get_flow_alias
-bedrockagent_get_flow_alias <- function(aliasIdentifier, flowIdentifier) {
+bedrockagent_get_flow_alias <- function(flowIdentifier, aliasIdentifier) {
   op <- new_operation(
     name = "GetFlowAlias",
     http_method = "GET",
@@ -4865,7 +5236,7 @@ bedrockagent_get_flow_alias <- function(aliasIdentifier, flowIdentifier) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$get_flow_alias_input(aliasIdentifier = aliasIdentifier, flowIdentifier = flowIdentifier)
+  input <- .bedrockagent$get_flow_alias_input(flowIdentifier = flowIdentifier, aliasIdentifier = aliasIdentifier)
   output <- .bedrockagent$get_flow_alias_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -4893,138 +5264,117 @@ bedrockagent_get_flow_alias <- function(aliasIdentifier, flowIdentifier) {
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   name = "string",
+#'   description = "string",
+#'   executionRoleArn = "string",
+#'   customerEncryptionKeyArn = "string",
+#'   id = "string",
 #'   arn = "string",
+#'   status = "Failed"|"Prepared"|"Preparing"|"NotPrepared",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   customerEncryptionKeyArn = "string",
+#'   version = "string",
 #'   definition = list(
-#'     connections = list(
-#'       list(
-#'         configuration = list(
-#'           conditional = list(
-#'             condition = "string"
-#'           ),
-#'           data = list(
-#'             sourceOutput = "string",
-#'             targetInput = "string"
-#'           )
-#'         ),
-#'         name = "string",
-#'         source = "string",
-#'         target = "string",
-#'         type = "Data"|"Conditional"
-#'       )
-#'     ),
 #'     nodes = list(
 #'       list(
+#'         name = "string",
+#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"|"InlineCode"|"Loop"|"LoopInput"|"LoopController",
 #'         configuration = list(
-#'           agent = list(
-#'             agentAliasArn = "string"
-#'           ),
-#'           collector = list(),
-#'           condition = list(
-#'             conditions = list(
-#'               list(
-#'                 expression = "string",
-#'                 name = "string"
-#'               )
-#'             )
-#'           ),
-#'           inlineCode = list(
-#'             code = "string",
-#'             language = "Python_3"
-#'           ),
 #'           input = list(),
-#'           iterator = list(),
+#'           output = list(),
 #'           knowledgeBase = list(
+#'             knowledgeBaseId = "string",
+#'             modelId = "string",
 #'             guardrailConfiguration = list(
 #'               guardrailIdentifier = "string",
 #'               guardrailVersion = "string"
 #'             ),
-#'             knowledgeBaseId = "string",
-#'             modelId = "string"
+#'             numberOfResults = 123,
+#'             promptTemplate = list(
+#'               textPromptTemplate = "string"
+#'             ),
+#'             inferenceConfiguration = list(
+#'               text = list(
+#'                 temperature = 123.0,
+#'                 topP = 123.0,
+#'                 maxTokens = 123,
+#'                 stopSequences = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             rerankingConfiguration = list(
+#'               type = "BEDROCK_RERANKING_MODEL",
+#'               bedrockRerankingConfiguration = list(
+#'                 modelConfiguration = list(
+#'                   modelArn = "string",
+#'                   additionalModelRequestFields = list(
+#'                     list()
+#'                   )
+#'                 ),
+#'                 numberOfRerankedResults = 123,
+#'                 metadataConfiguration = list(
+#'                   selectionMode = "SELECTIVE"|"ALL",
+#'                   selectiveModeConfiguration = list(
+#'                     fieldsToInclude = list(
+#'                       list(
+#'                         fieldName = "string"
+#'                       )
+#'                     ),
+#'                     fieldsToExclude = list(
+#'                       list(
+#'                         fieldName = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             orchestrationConfiguration = list(
+#'               promptTemplate = list(
+#'                 textPromptTemplate = "string"
+#'               ),
+#'               inferenceConfig = list(
+#'                 text = list(
+#'                   temperature = 123.0,
+#'                   topP = 123.0,
+#'                   maxTokens = 123,
+#'                   stopSequences = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               additionalModelRequestFields = list(
+#'                 list()
+#'               ),
+#'               performanceConfig = list(
+#'                 latency = "standard"|"optimized"
+#'               )
+#'             )
 #'           ),
-#'           lambdaFunction = list(
-#'             lambdaArn = "string"
+#'           condition = list(
+#'             conditions = list(
+#'               list(
+#'                 name = "string",
+#'                 expression = "string"
+#'               )
+#'             )
 #'           ),
 #'           lex = list(
 #'             botAliasArn = "string",
 #'             localeId = "string"
 #'           ),
-#'           output = list(),
 #'           prompt = list(
-#'             guardrailConfiguration = list(
-#'               guardrailIdentifier = "string",
-#'               guardrailVersion = "string"
-#'             ),
 #'             sourceConfiguration = list(
+#'               resource = list(
+#'                 promptArn = "string"
+#'               ),
 #'               inline = list(
-#'                 additionalModelRequestFields = list(),
-#'                 inferenceConfiguration = list(
-#'                   text = list(
-#'                     maxTokens = 123,
-#'                     stopSequences = list(
-#'                       "string"
-#'                     ),
-#'                     temperature = 123.0,
-#'                     topP = 123.0
-#'                   )
-#'                 ),
-#'                 modelId = "string",
+#'                 templateType = "TEXT"|"CHAT",
 #'                 templateConfiguration = list(
-#'                   chat = list(
-#'                     inputVariables = list(
-#'                       list(
-#'                         name = "string"
-#'                       )
-#'                     ),
-#'                     messages = list(
-#'                       list(
-#'                         content = list(
-#'                           list(
-#'                             cachePoint = list(
-#'                               type = "default"
-#'                             ),
-#'                             text = "string"
-#'                           )
-#'                         ),
-#'                         role = "user"|"assistant"
-#'                       )
-#'                     ),
-#'                     system = list(
-#'                       list(
-#'                         cachePoint = list(
-#'                           type = "default"
-#'                         ),
-#'                         text = "string"
-#'                       )
-#'                     ),
-#'                     toolConfiguration = list(
-#'                       toolChoice = list(
-#'                         any = list(),
-#'                         auto = list(),
-#'                         tool = list(
-#'                           name = "string"
-#'                         )
-#'                       ),
-#'                       tools = list(
-#'                         list(
-#'                           cachePoint = list(
-#'                             type = "default"
-#'                           ),
-#'                           toolSpec = list(
-#'                             description = "string",
-#'                             inputSchema = list(
-#'                               json = list()
-#'                             ),
-#'                             name = "string"
-#'                           )
-#'                         )
-#'                       )
-#'                     )
-#'                   ),
 #'                   text = list(
+#'                     text = "string",
 #'                     cachePoint = list(
 #'                       type = "default"
 #'                     ),
@@ -5032,16 +5382,91 @@ bedrockagent_get_flow_alias <- function(aliasIdentifier, flowIdentifier) {
 #'                       list(
 #'                         name = "string"
 #'                       )
+#'                     )
+#'                   ),
+#'                   chat = list(
+#'                     messages = list(
+#'                       list(
+#'                         role = "user"|"assistant",
+#'                         content = list(
+#'                           list(
+#'                             text = "string",
+#'                             cachePoint = list(
+#'                               type = "default"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
 #'                     ),
-#'                     text = "string"
+#'                     system = list(
+#'                       list(
+#'                         text = "string",
+#'                         cachePoint = list(
+#'                           type = "default"
+#'                         )
+#'                       )
+#'                     ),
+#'                     inputVariables = list(
+#'                       list(
+#'                         name = "string"
+#'                       )
+#'                     ),
+#'                     toolConfiguration = list(
+#'                       tools = list(
+#'                         list(
+#'                           toolSpec = list(
+#'                             name = "string",
+#'                             description = "string",
+#'                             inputSchema = list(
+#'                               json = list()
+#'                             )
+#'                           ),
+#'                           cachePoint = list(
+#'                             type = "default"
+#'                           )
+#'                         )
+#'                       ),
+#'                       toolChoice = list(
+#'                         auto = list(),
+#'                         any = list(),
+#'                         tool = list(
+#'                           name = "string"
+#'                         )
+#'                       )
+#'                     )
 #'                   )
 #'                 ),
-#'                 templateType = "TEXT"|"CHAT"
-#'               ),
-#'               resource = list(
-#'                 promptArn = "string"
+#'                 modelId = "string",
+#'                 inferenceConfiguration = list(
+#'                   text = list(
+#'                     temperature = 123.0,
+#'                     topP = 123.0,
+#'                     maxTokens = 123,
+#'                     stopSequences = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 additionalModelRequestFields = list()
+#'               )
+#'             ),
+#'             guardrailConfiguration = list(
+#'               guardrailIdentifier = "string",
+#'               guardrailVersion = "string"
+#'             )
+#'           ),
+#'           lambdaFunction = list(
+#'             lambdaArn = "string"
+#'           ),
+#'           storage = list(
+#'             serviceConfiguration = list(
+#'               s3 = list(
+#'                 bucketName = "string"
 #'               )
 #'             )
+#'           ),
+#'           agent = list(
+#'             agentAliasArn = "string"
 #'           ),
 #'           retrieval = list(
 #'             serviceConfiguration = list(
@@ -5050,38 +5475,58 @@ bedrockagent_get_flow_alias <- function(aliasIdentifier, flowIdentifier) {
 #'               )
 #'             )
 #'           ),
-#'           storage = list(
-#'             serviceConfiguration = list(
-#'               s3 = list(
-#'                 bucketName = "string"
-#'               )
-#'             )
+#'           iterator = list(),
+#'           collector = list(),
+#'           inlineCode = list(
+#'             code = "string",
+#'             language = "Python_3"
+#'           ),
+#'           loop = list(
+#'             definition = list()
+#'           ),
+#'           loopInput = list(),
+#'           loopController = list(
+#'             continueCondition = list(
+#'               name = "string",
+#'               expression = "string"
+#'             ),
+#'             maxIterations = 123
 #'           )
 #'         ),
 #'         inputs = list(
 #'           list(
-#'             expression = "string",
 #'             name = "string",
-#'             type = "String"|"Number"|"Boolean"|"Object"|"Array"
+#'             type = "String"|"Number"|"Boolean"|"Object"|"Array",
+#'             expression = "string",
+#'             category = "LoopCondition"|"ReturnValueToLoopStart"|"ExitLoop"
 #'           )
 #'         ),
-#'         name = "string",
 #'         outputs = list(
 #'           list(
 #'             name = "string",
 #'             type = "String"|"Number"|"Boolean"|"Object"|"Array"
 #'           )
-#'         ),
-#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"|"InlineCode"
+#'         )
+#'       )
+#'     ),
+#'     connections = list(
+#'       list(
+#'         type = "Data"|"Conditional",
+#'         name = "string",
+#'         source = "string",
+#'         target = "string",
+#'         configuration = list(
+#'           data = list(
+#'             sourceOutput = "string",
+#'             targetInput = "string"
+#'           ),
+#'           conditional = list(
+#'             condition = "string"
+#'           )
+#'         )
 #'       )
 #'     )
-#'   ),
-#'   description = "string",
-#'   executionRoleArn = "string",
-#'   id = "string",
-#'   name = "string",
-#'   status = "Failed"|"Prepared"|"Preparing"|"NotPrepared",
-#'   version = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -5125,41 +5570,41 @@ bedrockagent_get_flow_version <- function(flowIdentifier, flowVersion) {
 #' your data.
 #'
 #' @usage
-#' bedrockagent_get_ingestion_job(dataSourceId, ingestionJobId,
-#'   knowledgeBaseId)
+#' bedrockagent_get_ingestion_job(knowledgeBaseId, dataSourceId,
+#'   ingestionJobId)
 #'
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base for the data ingestion job
+#' you want to get information on.
 #' @param dataSourceId &#91;required&#93; The unique identifier of the data source for the data ingestion job you
 #' want to get information on.
 #' @param ingestionJobId &#91;required&#93; The unique identifier of the data ingestion job you want to get
 #' information on.
-#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base for the data ingestion job
-#' you want to get information on.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   ingestionJob = list(
+#'     knowledgeBaseId = "string",
 #'     dataSourceId = "string",
+#'     ingestionJobId = "string",
 #'     description = "string",
+#'     status = "STARTING"|"IN_PROGRESS"|"COMPLETE"|"FAILED"|"STOPPING"|"STOPPED",
+#'     statistics = list(
+#'       numberOfDocumentsScanned = 123,
+#'       numberOfMetadataDocumentsScanned = 123,
+#'       numberOfNewDocumentsIndexed = 123,
+#'       numberOfModifiedDocumentsIndexed = 123,
+#'       numberOfMetadataDocumentsModified = 123,
+#'       numberOfDocumentsDeleted = 123,
+#'       numberOfDocumentsFailed = 123
+#'     ),
 #'     failureReasons = list(
 #'       "string"
 #'     ),
-#'     ingestionJobId = "string",
-#'     knowledgeBaseId = "string",
 #'     startedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     statistics = list(
-#'       numberOfDocumentsDeleted = 123,
-#'       numberOfDocumentsFailed = 123,
-#'       numberOfDocumentsScanned = 123,
-#'       numberOfMetadataDocumentsModified = 123,
-#'       numberOfMetadataDocumentsScanned = 123,
-#'       numberOfModifiedDocumentsIndexed = 123,
-#'       numberOfNewDocumentsIndexed = 123
-#'     ),
-#'     status = "STARTING"|"IN_PROGRESS"|"COMPLETE"|"FAILED"|"STOPPING"|"STOPPED",
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     )
@@ -5170,9 +5615,9 @@ bedrockagent_get_flow_version <- function(flowIdentifier, flowVersion) {
 #' @section Request syntax:
 #' ```
 #' svc$get_ingestion_job(
+#'   knowledgeBaseId = "string",
 #'   dataSourceId = "string",
-#'   ingestionJobId = "string",
-#'   knowledgeBaseId = "string"
+#'   ingestionJobId = "string"
 #' )
 #' ```
 #'
@@ -5181,7 +5626,7 @@ bedrockagent_get_flow_version <- function(flowIdentifier, flowVersion) {
 #' @rdname bedrockagent_get_ingestion_job
 #'
 #' @aliases bedrockagent_get_ingestion_job
-bedrockagent_get_ingestion_job <- function(dataSourceId, ingestionJobId, knowledgeBaseId) {
+bedrockagent_get_ingestion_job <- function(knowledgeBaseId, dataSourceId, ingestionJobId) {
   op <- new_operation(
     name = "GetIngestionJob",
     http_method = "GET",
@@ -5190,7 +5635,7 @@ bedrockagent_get_ingestion_job <- function(dataSourceId, ingestionJobId, knowled
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$get_ingestion_job_input(dataSourceId = dataSourceId, ingestionJobId = ingestionJobId, knowledgeBaseId = knowledgeBaseId)
+  input <- .bedrockagent$get_ingestion_job_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId, ingestionJobId = ingestionJobId)
   output <- .bedrockagent$get_ingestion_job_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -5200,10 +5645,10 @@ bedrockagent_get_ingestion_job <- function(dataSourceId, ingestionJobId, knowled
 }
 .bedrockagent$operations$get_ingestion_job <- bedrockagent_get_ingestion_job
 
-#' Gets information about a knoweldge base
+#' Gets information about a knowledge base
 #'
 #' @description
-#' Gets information about a knoweldge base.
+#' Gets information about a knowledge base.
 #'
 #' @usage
 #' bedrockagent_get_knowledge_base(knowledgeBaseId)
@@ -5216,65 +5661,55 @@ bedrockagent_get_ingestion_job <- function(dataSourceId, ingestionJobId, knowled
 #' ```
 #' list(
 #'   knowledgeBase = list(
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     description = "string",
-#'     failureReasons = list(
-#'       "string"
-#'     ),
+#'     knowledgeBaseId = "string",
+#'     name = "string",
 #'     knowledgeBaseArn = "string",
+#'     description = "string",
+#'     roleArn = "string",
 #'     knowledgeBaseConfiguration = list(
+#'       type = "VECTOR"|"KENDRA"|"SQL",
+#'       vectorKnowledgeBaseConfiguration = list(
+#'         embeddingModelArn = "string",
+#'         embeddingModelConfiguration = list(
+#'           bedrockEmbeddingModelConfiguration = list(
+#'             dimensions = 123,
+#'             embeddingDataType = "FLOAT32"|"BINARY",
+#'             audio = list(
+#'               list(
+#'                 segmentationConfiguration = list(
+#'                   fixedLengthDuration = 123
+#'                 )
+#'               )
+#'             ),
+#'             video = list(
+#'               list(
+#'                 segmentationConfiguration = list(
+#'                   fixedLengthDuration = 123
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         supplementalDataStorageConfiguration = list(
+#'           storageLocations = list(
+#'             list(
+#'               type = "S3",
+#'               s3Location = list(
+#'                 uri = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
 #'       kendraKnowledgeBaseConfiguration = list(
 #'         kendraIndexArn = "string"
 #'       ),
 #'       sqlKnowledgeBaseConfiguration = list(
+#'         type = "REDSHIFT",
 #'         redshiftConfiguration = list(
-#'           queryEngineConfiguration = list(
-#'             provisionedConfiguration = list(
-#'               authConfiguration = list(
-#'                 databaseUser = "string",
-#'                 type = "IAM"|"USERNAME_PASSWORD"|"USERNAME",
-#'                 usernamePasswordSecretArn = "string"
-#'               ),
-#'               clusterIdentifier = "string"
-#'             ),
-#'             serverlessConfiguration = list(
-#'               authConfiguration = list(
-#'                 type = "IAM"|"USERNAME_PASSWORD",
-#'                 usernamePasswordSecretArn = "string"
-#'               ),
-#'               workgroupArn = "string"
-#'             ),
-#'             type = "SERVERLESS"|"PROVISIONED"
-#'           ),
-#'           queryGenerationConfiguration = list(
-#'             executionTimeoutSeconds = 123,
-#'             generationContext = list(
-#'               curatedQueries = list(
-#'                 list(
-#'                   naturalLanguage = "string",
-#'                   sql = "string"
-#'                 )
-#'               ),
-#'               tables = list(
-#'                 list(
-#'                   columns = list(
-#'                     list(
-#'                       description = "string",
-#'                       inclusion = "INCLUDE"|"EXCLUDE",
-#'                       name = "string"
-#'                     )
-#'                   ),
-#'                   description = "string",
-#'                   inclusion = "INCLUDE"|"EXCLUDE",
-#'                   name = "string"
-#'                 )
-#'               )
-#'             )
-#'           ),
 #'           storageConfigurations = list(
 #'             list(
+#'               type = "REDSHIFT"|"AWS_DATA_CATALOG",
 #'               awsDataCatalogConfiguration = list(
 #'                 tableNames = list(
 #'                   "string"
@@ -5282,115 +5717,144 @@ bedrockagent_get_ingestion_job <- function(dataSourceId, ingestionJobId, knowled
 #'               ),
 #'               redshiftConfiguration = list(
 #'                 databaseName = "string"
-#'               ),
-#'               type = "REDSHIFT"|"AWS_DATA_CATALOG"
+#'               )
 #'             )
-#'           )
-#'         ),
-#'         type = "REDSHIFT"
-#'       ),
-#'       type = "VECTOR"|"KENDRA"|"SQL",
-#'       vectorKnowledgeBaseConfiguration = list(
-#'         embeddingModelArn = "string",
-#'         embeddingModelConfiguration = list(
-#'           bedrockEmbeddingModelConfiguration = list(
-#'             dimensions = 123,
-#'             embeddingDataType = "FLOAT32"|"BINARY"
-#'           )
-#'         ),
-#'         supplementalDataStorageConfiguration = list(
-#'           storageLocations = list(
-#'             list(
-#'               s3Location = list(
-#'                 uri = "string"
+#'           ),
+#'           queryEngineConfiguration = list(
+#'             type = "SERVERLESS"|"PROVISIONED",
+#'             serverlessConfiguration = list(
+#'               workgroupArn = "string",
+#'               authConfiguration = list(
+#'                 type = "IAM"|"USERNAME_PASSWORD",
+#'                 usernamePasswordSecretArn = "string"
+#'               )
+#'             ),
+#'             provisionedConfiguration = list(
+#'               clusterIdentifier = "string",
+#'               authConfiguration = list(
+#'                 type = "IAM"|"USERNAME_PASSWORD"|"USERNAME",
+#'                 databaseUser = "string",
+#'                 usernamePasswordSecretArn = "string"
+#'               )
+#'             )
+#'           ),
+#'           queryGenerationConfiguration = list(
+#'             executionTimeoutSeconds = 123,
+#'             generationContext = list(
+#'               tables = list(
+#'                 list(
+#'                   name = "string",
+#'                   description = "string",
+#'                   inclusion = "INCLUDE"|"EXCLUDE",
+#'                   columns = list(
+#'                     list(
+#'                       name = "string",
+#'                       description = "string",
+#'                       inclusion = "INCLUDE"|"EXCLUDE"
+#'                     )
+#'                   )
+#'                 )
 #'               ),
-#'               type = "S3"
+#'               curatedQueries = list(
+#'                 list(
+#'                   naturalLanguage = "string",
+#'                   sql = "string"
+#'                 )
+#'               )
 #'             )
 #'           )
 #'         )
 #'       )
 #'     ),
-#'     knowledgeBaseId = "string",
-#'     name = "string",
-#'     roleArn = "string",
-#'     status = "CREATING"|"ACTIVE"|"DELETING"|"UPDATING"|"FAILED"|"DELETE_UNSUCCESSFUL",
 #'     storageConfiguration = list(
-#'       mongoDbAtlasConfiguration = list(
-#'         collectionName = "string",
-#'         credentialsSecretArn = "string",
-#'         databaseName = "string",
-#'         endpoint = "string",
-#'         endpointServiceName = "string",
-#'         fieldMapping = list(
-#'           metadataField = "string",
-#'           textField = "string",
-#'           vectorField = "string"
-#'         ),
-#'         textIndexName = "string",
-#'         vectorIndexName = "string"
-#'       ),
-#'       neptuneAnalyticsConfiguration = list(
-#'         fieldMapping = list(
-#'           metadataField = "string",
-#'           textField = "string"
-#'         ),
-#'         graphArn = "string"
-#'       ),
-#'       opensearchManagedClusterConfiguration = list(
-#'         domainArn = "string",
-#'         domainEndpoint = "string",
-#'         fieldMapping = list(
-#'           metadataField = "string",
-#'           textField = "string",
-#'           vectorField = "string"
-#'         ),
-#'         vectorIndexName = "string"
-#'       ),
+#'       type = "OPENSEARCH_SERVERLESS"|"PINECONE"|"REDIS_ENTERPRISE_CLOUD"|"RDS"|"MONGO_DB_ATLAS"|"NEPTUNE_ANALYTICS"|"OPENSEARCH_MANAGED_CLUSTER"|"S3_VECTORS",
 #'       opensearchServerlessConfiguration = list(
 #'         collectionArn = "string",
+#'         vectorIndexName = "string",
 #'         fieldMapping = list(
-#'           metadataField = "string",
+#'           vectorField = "string",
 #'           textField = "string",
-#'           vectorField = "string"
-#'         ),
-#'         vectorIndexName = "string"
+#'           metadataField = "string"
+#'         )
+#'       ),
+#'       opensearchManagedClusterConfiguration = list(
+#'         domainEndpoint = "string",
+#'         domainArn = "string",
+#'         vectorIndexName = "string",
+#'         fieldMapping = list(
+#'           vectorField = "string",
+#'           textField = "string",
+#'           metadataField = "string"
+#'         )
 #'       ),
 #'       pineconeConfiguration = list(
 #'         connectionString = "string",
 #'         credentialsSecretArn = "string",
+#'         namespace = "string",
 #'         fieldMapping = list(
-#'           metadataField = "string",
-#'           textField = "string"
-#'         ),
-#'         namespace = "string"
-#'       ),
-#'       rdsConfiguration = list(
-#'         credentialsSecretArn = "string",
-#'         databaseName = "string",
-#'         fieldMapping = list(
-#'           customMetadataField = "string",
-#'           metadataField = "string",
-#'           primaryKeyField = "string",
 #'           textField = "string",
-#'           vectorField = "string"
-#'         ),
-#'         resourceArn = "string",
-#'         tableName = "string"
+#'           metadataField = "string"
+#'         )
 #'       ),
 #'       redisEnterpriseCloudConfiguration = list(
-#'         credentialsSecretArn = "string",
 #'         endpoint = "string",
+#'         vectorIndexName = "string",
+#'         credentialsSecretArn = "string",
 #'         fieldMapping = list(
-#'           metadataField = "string",
+#'           vectorField = "string",
 #'           textField = "string",
-#'           vectorField = "string"
-#'         ),
-#'         vectorIndexName = "string"
+#'           metadataField = "string"
+#'         )
 #'       ),
-#'       type = "OPENSEARCH_SERVERLESS"|"PINECONE"|"REDIS_ENTERPRISE_CLOUD"|"RDS"|"MONGO_DB_ATLAS"|"NEPTUNE_ANALYTICS"|"OPENSEARCH_MANAGED_CLUSTER"
+#'       rdsConfiguration = list(
+#'         resourceArn = "string",
+#'         credentialsSecretArn = "string",
+#'         databaseName = "string",
+#'         tableName = "string",
+#'         fieldMapping = list(
+#'           primaryKeyField = "string",
+#'           vectorField = "string",
+#'           textField = "string",
+#'           metadataField = "string",
+#'           customMetadataField = "string"
+#'         )
+#'       ),
+#'       mongoDbAtlasConfiguration = list(
+#'         endpoint = "string",
+#'         databaseName = "string",
+#'         collectionName = "string",
+#'         vectorIndexName = "string",
+#'         credentialsSecretArn = "string",
+#'         fieldMapping = list(
+#'           vectorField = "string",
+#'           textField = "string",
+#'           metadataField = "string"
+#'         ),
+#'         endpointServiceName = "string",
+#'         textIndexName = "string"
+#'       ),
+#'       neptuneAnalyticsConfiguration = list(
+#'         graphArn = "string",
+#'         fieldMapping = list(
+#'           textField = "string",
+#'           metadataField = "string"
+#'         )
+#'       ),
+#'       s3VectorsConfiguration = list(
+#'         vectorBucketArn = "string",
+#'         indexArn = "string",
+#'         indexName = "string"
+#'       )
+#'     ),
+#'     status = "CREATING"|"ACTIVE"|"DELETING"|"UPDATING"|"FAILED"|"DELETE_UNSUCCESSFUL",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
 #'     ),
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     failureReasons = list(
+#'       "string"
 #'     )
 #'   )
 #' )
@@ -5438,14 +5902,14 @@ bedrockagent_get_knowledge_base <- function(knowledgeBaseId) {
 #' in the Amazon Bedrock User Guide.
 #'
 #' @usage
-#' bedrockagent_get_knowledge_base_documents(dataSourceId,
-#'   documentIdentifiers, knowledgeBaseId)
+#' bedrockagent_get_knowledge_base_documents(knowledgeBaseId, dataSourceId,
+#'   documentIdentifiers)
 #'
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base that is connected to the
+#' data source.
 #' @param dataSourceId &#91;required&#93; The unique identifier of the data source that contains the documents.
 #' @param documentIdentifiers &#91;required&#93; A list of objects, each of which contains information to identify a
 #' document for which to retrieve information.
-#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base that is connected to the
-#' data source.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5453,18 +5917,18 @@ bedrockagent_get_knowledge_base <- function(knowledgeBaseId) {
 #' list(
 #'   documentDetails = list(
 #'     list(
+#'       knowledgeBaseId = "string",
 #'       dataSourceId = "string",
+#'       status = "INDEXED"|"PARTIALLY_INDEXED"|"PENDING"|"FAILED"|"METADATA_PARTIALLY_INDEXED"|"METADATA_UPDATE_FAILED"|"IGNORED"|"NOT_FOUND"|"STARTING"|"IN_PROGRESS"|"DELETING"|"DELETE_IN_PROGRESS",
 #'       identifier = list(
-#'         custom = list(
-#'           id = "string"
-#'         ),
 #'         dataSourceType = "CUSTOM"|"S3",
 #'         s3 = list(
 #'           uri = "string"
+#'         ),
+#'         custom = list(
+#'           id = "string"
 #'         )
 #'       ),
-#'       knowledgeBaseId = "string",
-#'       status = "INDEXED"|"PARTIALLY_INDEXED"|"PENDING"|"FAILED"|"METADATA_PARTIALLY_INDEXED"|"METADATA_UPDATE_FAILED"|"IGNORED"|"NOT_FOUND"|"STARTING"|"IN_PROGRESS"|"DELETING"|"DELETE_IN_PROGRESS",
 #'       statusReason = "string",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
@@ -5477,19 +5941,19 @@ bedrockagent_get_knowledge_base <- function(knowledgeBaseId) {
 #' @section Request syntax:
 #' ```
 #' svc$get_knowledge_base_documents(
+#'   knowledgeBaseId = "string",
 #'   dataSourceId = "string",
 #'   documentIdentifiers = list(
 #'     list(
-#'       custom = list(
-#'         id = "string"
-#'       ),
 #'       dataSourceType = "CUSTOM"|"S3",
 #'       s3 = list(
 #'         uri = "string"
+#'       ),
+#'       custom = list(
+#'         id = "string"
 #'       )
 #'     )
-#'   ),
-#'   knowledgeBaseId = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -5498,7 +5962,7 @@ bedrockagent_get_knowledge_base <- function(knowledgeBaseId) {
 #' @rdname bedrockagent_get_knowledge_base_documents
 #'
 #' @aliases bedrockagent_get_knowledge_base_documents
-bedrockagent_get_knowledge_base_documents <- function(dataSourceId, documentIdentifiers, knowledgeBaseId) {
+bedrockagent_get_knowledge_base_documents <- function(knowledgeBaseId, dataSourceId, documentIdentifiers) {
   op <- new_operation(
     name = "GetKnowledgeBaseDocuments",
     http_method = "POST",
@@ -5507,7 +5971,7 @@ bedrockagent_get_knowledge_base_documents <- function(dataSourceId, documentIden
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$get_knowledge_base_documents_input(dataSourceId = dataSourceId, documentIdentifiers = documentIdentifiers, knowledgeBaseId = knowledgeBaseId)
+  input <- .bedrockagent$get_knowledge_base_documents_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId, documentIdentifiers = documentIdentifiers)
   output <- .bedrockagent$get_knowledge_base_documents_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -5543,34 +6007,87 @@ bedrockagent_get_knowledge_base_documents <- function(dataSourceId, documentIden
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   arn = "string",
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
+#'   name = "string",
+#'   description = "string",
 #'   customerEncryptionKeyArn = "string",
 #'   defaultVariant = "string",
-#'   description = "string",
-#'   id = "string",
-#'   name = "string",
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
 #'   variants = list(
 #'     list(
-#'       additionalModelRequestFields = list(),
-#'       genAiResource = list(
-#'         agent = list(
-#'           agentIdentifier = "string"
+#'       name = "string",
+#'       templateType = "TEXT"|"CHAT",
+#'       templateConfiguration = list(
+#'         text = list(
+#'           text = "string",
+#'           cachePoint = list(
+#'             type = "default"
+#'           ),
+#'           inputVariables = list(
+#'             list(
+#'               name = "string"
+#'             )
+#'           )
+#'         ),
+#'         chat = list(
+#'           messages = list(
+#'             list(
+#'               role = "user"|"assistant",
+#'               content = list(
+#'                 list(
+#'                   text = "string",
+#'                   cachePoint = list(
+#'                     type = "default"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           system = list(
+#'             list(
+#'               text = "string",
+#'               cachePoint = list(
+#'                 type = "default"
+#'               )
+#'             )
+#'           ),
+#'           inputVariables = list(
+#'             list(
+#'               name = "string"
+#'             )
+#'           ),
+#'           toolConfiguration = list(
+#'             tools = list(
+#'               list(
+#'                 toolSpec = list(
+#'                   name = "string",
+#'                   description = "string",
+#'                   inputSchema = list(
+#'                     json = list()
+#'                   )
+#'                 ),
+#'                 cachePoint = list(
+#'                   type = "default"
+#'                 )
+#'               )
+#'             ),
+#'             toolChoice = list(
+#'               auto = list(),
+#'               any = list(),
+#'               tool = list(
+#'                 name = "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       ),
+#'       modelId = "string",
 #'       inferenceConfiguration = list(
 #'         text = list(
+#'           temperature = 123.0,
+#'           topP = 123.0,
 #'           maxTokens = 123,
 #'           stopSequences = list(
 #'             "string"
-#'           ),
-#'           temperature = 123.0,
-#'           topP = 123.0
+#'           )
 #'         )
 #'       ),
 #'       metadata = list(
@@ -5579,76 +6096,23 @@ bedrockagent_get_knowledge_base_documents <- function(dataSourceId, documentIden
 #'           value = "string"
 #'         )
 #'       ),
-#'       modelId = "string",
-#'       name = "string",
-#'       templateConfiguration = list(
-#'         chat = list(
-#'           inputVariables = list(
-#'             list(
-#'               name = "string"
-#'             )
-#'           ),
-#'           messages = list(
-#'             list(
-#'               content = list(
-#'                 list(
-#'                   cachePoint = list(
-#'                     type = "default"
-#'                   ),
-#'                   text = "string"
-#'                 )
-#'               ),
-#'               role = "user"|"assistant"
-#'             )
-#'           ),
-#'           system = list(
-#'             list(
-#'               cachePoint = list(
-#'                 type = "default"
-#'               ),
-#'               text = "string"
-#'             )
-#'           ),
-#'           toolConfiguration = list(
-#'             toolChoice = list(
-#'               any = list(),
-#'               auto = list(),
-#'               tool = list(
-#'                 name = "string"
-#'               )
-#'             ),
-#'             tools = list(
-#'               list(
-#'                 cachePoint = list(
-#'                   type = "default"
-#'                 ),
-#'                 toolSpec = list(
-#'                   description = "string",
-#'                   inputSchema = list(
-#'                     json = list()
-#'                   ),
-#'                   name = "string"
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         text = list(
-#'           cachePoint = list(
-#'             type = "default"
-#'           ),
-#'           inputVariables = list(
-#'             list(
-#'               name = "string"
-#'             )
-#'           ),
-#'           text = "string"
+#'       additionalModelRequestFields = list(),
+#'       genAiResource = list(
+#'         agent = list(
+#'           agentIdentifier = "string"
 #'         )
-#'       ),
-#'       templateType = "TEXT"|"CHAT"
+#'       )
 #'     )
 #'   ),
-#'   version = "string"
+#'   id = "string",
+#'   arn = "string",
+#'   version = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
 #' )
 #' ```
 #'
@@ -5697,20 +6161,20 @@ bedrockagent_get_prompt <- function(promptIdentifier, promptVersion = NULL) {
 #' in the Amazon Bedrock User Guide.
 #'
 #' @usage
-#' bedrockagent_ingest_knowledge_base_documents(clientToken, dataSourceId,
-#'   documents, knowledgeBaseId)
+#' bedrockagent_ingest_knowledge_base_documents(knowledgeBaseId,
+#'   dataSourceId, clientToken, documents)
 #'
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base to ingest the documents
+#' into.
+#' @param dataSourceId &#91;required&#93; The unique identifier of the data source connected to the knowledge base
+#' that you're adding documents to.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
-#' @param dataSourceId &#91;required&#93; The unique identifier of the data source connected to the knowledge base
-#' that you're adding documents to.
 #' @param documents &#91;required&#93; A list of objects, each of which contains information about the
 #' documents to add.
-#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base to ingest the documents
-#' into.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5718,18 +6182,18 @@ bedrockagent_get_prompt <- function(promptIdentifier, promptVersion = NULL) {
 #' list(
 #'   documentDetails = list(
 #'     list(
+#'       knowledgeBaseId = "string",
 #'       dataSourceId = "string",
+#'       status = "INDEXED"|"PARTIALLY_INDEXED"|"PENDING"|"FAILED"|"METADATA_PARTIALLY_INDEXED"|"METADATA_UPDATE_FAILED"|"IGNORED"|"NOT_FOUND"|"STARTING"|"IN_PROGRESS"|"DELETING"|"DELETE_IN_PROGRESS",
 #'       identifier = list(
-#'         custom = list(
-#'           id = "string"
-#'         ),
 #'         dataSourceType = "CUSTOM"|"S3",
 #'         s3 = list(
 #'           uri = "string"
+#'         ),
+#'         custom = list(
+#'           id = "string"
 #'         )
 #'       ),
-#'       knowledgeBaseId = "string",
-#'       status = "INDEXED"|"PARTIALLY_INDEXED"|"PENDING"|"FAILED"|"METADATA_PARTIALLY_INDEXED"|"METADATA_UPDATE_FAILED"|"IGNORED"|"NOT_FOUND"|"STARTING"|"IN_PROGRESS"|"DELETING"|"DELETE_IN_PROGRESS",
 #'       statusReason = "string",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
@@ -5742,62 +6206,62 @@ bedrockagent_get_prompt <- function(promptIdentifier, promptVersion = NULL) {
 #' @section Request syntax:
 #' ```
 #' svc$ingest_knowledge_base_documents(
-#'   clientToken = "string",
+#'   knowledgeBaseId = "string",
 #'   dataSourceId = "string",
+#'   clientToken = "string",
 #'   documents = list(
 #'     list(
+#'       metadata = list(
+#'         type = "IN_LINE_ATTRIBUTE"|"S3_LOCATION",
+#'         inlineAttributes = list(
+#'           list(
+#'             key = "string",
+#'             value = list(
+#'               type = "BOOLEAN"|"NUMBER"|"STRING"|"STRING_LIST",
+#'               numberValue = 123.0,
+#'               booleanValue = TRUE|FALSE,
+#'               stringValue = "string",
+#'               stringListValue = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         s3Location = list(
+#'           uri = "string",
+#'           bucketOwnerAccountId = "string"
+#'         )
+#'       ),
 #'       content = list(
+#'         dataSourceType = "CUSTOM"|"S3",
 #'         custom = list(
 #'           customDocumentIdentifier = list(
 #'             id = "string"
 #'           ),
+#'           sourceType = "IN_LINE"|"S3_LOCATION",
+#'           s3Location = list(
+#'             uri = "string",
+#'             bucketOwnerAccountId = "string"
+#'           ),
 #'           inlineContent = list(
+#'             type = "BYTE"|"TEXT",
 #'             byteContent = list(
-#'               data = raw,
-#'               mimeType = "string"
+#'               mimeType = "string",
+#'               data = raw
 #'             ),
 #'             textContent = list(
 #'               data = "string"
-#'             ),
-#'             type = "BYTE"|"TEXT"
-#'           ),
-#'           s3Location = list(
-#'             bucketOwnerAccountId = "string",
-#'             uri = "string"
-#'           ),
-#'           sourceType = "IN_LINE"|"S3_LOCATION"
+#'             )
+#'           )
 #'         ),
-#'         dataSourceType = "CUSTOM"|"S3",
 #'         s3 = list(
 #'           s3Location = list(
 #'             uri = "string"
 #'           )
 #'         )
-#'       ),
-#'       metadata = list(
-#'         inlineAttributes = list(
-#'           list(
-#'             key = "string",
-#'             value = list(
-#'               booleanValue = TRUE|FALSE,
-#'               numberValue = 123.0,
-#'               stringListValue = list(
-#'                 "string"
-#'               ),
-#'               stringValue = "string",
-#'               type = "BOOLEAN"|"NUMBER"|"STRING"|"STRING_LIST"
-#'             )
-#'           )
-#'         ),
-#'         s3Location = list(
-#'           bucketOwnerAccountId = "string",
-#'           uri = "string"
-#'         ),
-#'         type = "IN_LINE_ATTRIBUTE"|"S3_LOCATION"
 #'       )
 #'     )
-#'   ),
-#'   knowledgeBaseId = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -5806,7 +6270,7 @@ bedrockagent_get_prompt <- function(promptIdentifier, promptVersion = NULL) {
 #' @rdname bedrockagent_ingest_knowledge_base_documents
 #'
 #' @aliases bedrockagent_ingest_knowledge_base_documents
-bedrockagent_ingest_knowledge_base_documents <- function(clientToken = NULL, dataSourceId, documents, knowledgeBaseId) {
+bedrockagent_ingest_knowledge_base_documents <- function(knowledgeBaseId, dataSourceId, clientToken = NULL, documents) {
   op <- new_operation(
     name = "IngestKnowledgeBaseDocuments",
     http_method = "PUT",
@@ -5815,7 +6279,7 @@ bedrockagent_ingest_knowledge_base_documents <- function(clientToken = NULL, dat
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$ingest_knowledge_base_documents_input(clientToken = clientToken, dataSourceId = dataSourceId, documents = documents, knowledgeBaseId = knowledgeBaseId)
+  input <- .bedrockagent$ingest_knowledge_base_documents_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId, clientToken = clientToken, documents = documents)
   output <- .bedrockagent$ingest_knowledge_base_documents_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -5922,10 +6386,6 @@ bedrockagent_list_agent_action_groups <- function(agentId, agentVersion, maxResu
 #'     list(
 #'       agentAliasId = "string",
 #'       agentAliasName = "string",
-#'       agentAliasStatus = "CREATING"|"PREPARED"|"FAILED"|"UPDATING"|"DELETING"|"DISSOCIATED",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
 #'       description = "string",
 #'       routingConfiguration = list(
 #'         list(
@@ -5933,9 +6393,14 @@ bedrockagent_list_agent_action_groups <- function(agentId, agentVersion, maxResu
 #'           provisionedThroughput = "string"
 #'         )
 #'       ),
+#'       agentAliasStatus = "CREATING"|"PREPARED"|"FAILED"|"UPDATING"|"DELETING"|"DISSOCIATED",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       aliasInvocationState = "ACCEPT_INVOCATIONS"|"REJECT_INVOCATIONS"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -5997,21 +6462,21 @@ bedrockagent_list_agent_aliases <- function(agentId, maxResults = NULL, nextToke
 #' list(
 #'   agentCollaboratorSummaries = list(
 #'     list(
+#'       agentId = "string",
+#'       agentVersion = "string",
+#'       collaboratorId = "string",
 #'       agentDescriptor = list(
 #'         aliasArn = "string"
 #'       ),
-#'       agentId = "string",
-#'       agentVersion = "string",
 #'       collaborationInstruction = "string",
-#'       collaboratorId = "string",
+#'       relayConversationHistory = "TO_COLLABORATOR"|"DISABLED",
 #'       collaboratorName = "string",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       lastUpdatedAt = as.POSIXct(
 #'         "2015-01-01"
-#'       ),
-#'       relayConversationHistory = "TO_COLLABORATOR"|"DISABLED"
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -6081,8 +6546,8 @@ bedrockagent_list_agent_collaborators <- function(agentId, agentVersion, maxResu
 #' list(
 #'   agentKnowledgeBaseSummaries = list(
 #'     list(
-#'       description = "string",
 #'       knowledgeBaseId = "string",
+#'       description = "string",
 #'       knowledgeBaseState = "ENABLED"|"DISABLED",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
@@ -6156,13 +6621,13 @@ bedrockagent_list_agent_knowledge_bases <- function(agentId, agentVersion, maxRe
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
 #'       description = "string",
 #'       guardrailConfiguration = list(
 #'         guardrailIdentifier = "string",
 #'         guardrailVersion = "string"
-#'       ),
-#'       updatedAt = as.POSIXct(
-#'         "2015-01-01"
 #'       )
 #'     )
 #'   ),
@@ -6231,13 +6696,13 @@ bedrockagent_list_agent_versions <- function(agentId, maxResults = NULL, nextTok
 #'       agentName = "string",
 #'       agentStatus = "CREATING"|"PREPARING"|"PREPARED"|"NOT_PREPARED"|"DELETING"|"FAILED"|"VERSIONING"|"UPDATING",
 #'       description = "string",
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       latestAgentVersion = "string",
 #'       guardrailConfiguration = list(
 #'         guardrailIdentifier = "string",
 #'         guardrailVersion = "string"
-#'       ),
-#'       latestAgentVersion = "string",
-#'       updatedAt = as.POSIXct(
-#'         "2015-01-01"
 #'       )
 #'     )
 #'   ),
@@ -6303,11 +6768,11 @@ bedrockagent_list_agents <- function(maxResults = NULL, nextToken = NULL) {
 #' list(
 #'   dataSourceSummaries = list(
 #'     list(
-#'       dataSourceId = "string",
-#'       description = "string",
 #'       knowledgeBaseId = "string",
+#'       dataSourceId = "string",
 #'       name = "string",
 #'       status = "AVAILABLE"|"DELETING"|"DELETE_UNSUCCESSFUL",
+#'       description = "string",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -6373,18 +6838,22 @@ bedrockagent_list_data_sources <- function(knowledgeBaseId, maxResults = NULL, n
 #' list(
 #'   flowAliasSummaries = list(
 #'     list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       description = "string",
-#'       flowId = "string",
-#'       id = "string",
 #'       name = "string",
+#'       description = "string",
 #'       routingConfiguration = list(
 #'         list(
 #'           flowVersion = "string"
 #'         )
+#'       ),
+#'       concurrencyConfiguration = list(
+#'         type = "Automatic"|"Manual",
+#'         maxConcurrency = 123
+#'       ),
+#'       flowId = "string",
+#'       id = "string",
+#'       arn = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
 #'       ),
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
@@ -6454,12 +6923,12 @@ bedrockagent_list_flow_aliases <- function(flowIdentifier, maxResults = NULL, ne
 #' list(
 #'   flowVersionSummaries = list(
 #'     list(
+#'       id = "string",
 #'       arn = "string",
+#'       status = "Failed"|"Prepared"|"Preparing"|"NotPrepared",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       id = "string",
-#'       status = "Failed"|"Prepared"|"Preparing"|"NotPrepared",
 #'       version = "string"
 #'     )
 #'   ),
@@ -6525,14 +6994,14 @@ bedrockagent_list_flow_versions <- function(flowIdentifier, maxResults = NULL, n
 #' list(
 #'   flowSummaries = list(
 #'     list(
+#'       name = "string",
+#'       description = "string",
+#'       id = "string",
 #'       arn = "string",
+#'       status = "Failed"|"Prepared"|"Preparing"|"NotPrepared",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       description = "string",
-#'       id = "string",
-#'       name = "string",
-#'       status = "Failed"|"Prepared"|"Preparing"|"NotPrepared",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -6582,14 +7051,15 @@ bedrockagent_list_flows <- function(maxResults = NULL, nextToken = NULL) {
 #' information about each job.
 #'
 #' @usage
-#' bedrockagent_list_ingestion_jobs(dataSourceId, filters, knowledgeBaseId,
-#'   maxResults, nextToken, sortBy)
+#' bedrockagent_list_ingestion_jobs(knowledgeBaseId, dataSourceId, filters,
+#'   sortBy, maxResults, nextToken)
 #'
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base for the list of data
+#' ingestion jobs.
 #' @param dataSourceId &#91;required&#93; The unique identifier of the data source for the list of data ingestion
 #' jobs.
 #' @param filters Contains information about the filters for filtering the data.
-#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base for the list of data
-#' ingestion jobs.
+#' @param sortBy Contains details about how to sort the data.
 #' @param maxResults The maximum number of results to return in the response. If the total
 #' number of results is greater than this value, use the token returned in
 #' the response in the `nextToken` field when making another request to
@@ -6597,7 +7067,6 @@ bedrockagent_list_flows <- function(maxResults = NULL, nextToken = NULL) {
 #' @param nextToken If the total number of results is greater than the `maxResults` value
 #' provided in the request, enter the token returned in the `nextToken`
 #' field in the response in this field to return the next batch of results.
-#' @param sortBy Contains details about how to sort the data.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6605,25 +7074,25 @@ bedrockagent_list_flows <- function(maxResults = NULL, nextToken = NULL) {
 #' list(
 #'   ingestionJobSummaries = list(
 #'     list(
-#'       dataSourceId = "string",
-#'       description = "string",
-#'       ingestionJobId = "string",
 #'       knowledgeBaseId = "string",
+#'       dataSourceId = "string",
+#'       ingestionJobId = "string",
+#'       description = "string",
+#'       status = "STARTING"|"IN_PROGRESS"|"COMPLETE"|"FAILED"|"STOPPING"|"STOPPED",
 #'       startedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       statistics = list(
-#'         numberOfDocumentsDeleted = 123,
-#'         numberOfDocumentsFailed = 123,
-#'         numberOfDocumentsScanned = 123,
-#'         numberOfMetadataDocumentsModified = 123,
-#'         numberOfMetadataDocumentsScanned = 123,
-#'         numberOfModifiedDocumentsIndexed = 123,
-#'         numberOfNewDocumentsIndexed = 123
-#'       ),
-#'       status = "STARTING"|"IN_PROGRESS"|"COMPLETE"|"FAILED"|"STOPPING"|"STOPPED",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       statistics = list(
+#'         numberOfDocumentsScanned = 123,
+#'         numberOfMetadataDocumentsScanned = 123,
+#'         numberOfNewDocumentsIndexed = 123,
+#'         numberOfModifiedDocumentsIndexed = 123,
+#'         numberOfMetadataDocumentsModified = 123,
+#'         numberOfDocumentsDeleted = 123,
+#'         numberOfDocumentsFailed = 123
 #'       )
 #'     )
 #'   ),
@@ -6634,6 +7103,7 @@ bedrockagent_list_flows <- function(maxResults = NULL, nextToken = NULL) {
 #' @section Request syntax:
 #' ```
 #' svc$list_ingestion_jobs(
+#'   knowledgeBaseId = "string",
 #'   dataSourceId = "string",
 #'   filters = list(
 #'     list(
@@ -6644,13 +7114,12 @@ bedrockagent_list_flows <- function(maxResults = NULL, nextToken = NULL) {
 #'       )
 #'     )
 #'   ),
-#'   knowledgeBaseId = "string",
-#'   maxResults = 123,
-#'   nextToken = "string",
 #'   sortBy = list(
 #'     attribute = "STATUS"|"STARTED_AT",
 #'     order = "ASCENDING"|"DESCENDING"
-#'   )
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -6659,7 +7128,7 @@ bedrockagent_list_flows <- function(maxResults = NULL, nextToken = NULL) {
 #' @rdname bedrockagent_list_ingestion_jobs
 #'
 #' @aliases bedrockagent_list_ingestion_jobs
-bedrockagent_list_ingestion_jobs <- function(dataSourceId, filters = NULL, knowledgeBaseId, maxResults = NULL, nextToken = NULL, sortBy = NULL) {
+bedrockagent_list_ingestion_jobs <- function(knowledgeBaseId, dataSourceId, filters = NULL, sortBy = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListIngestionJobs",
     http_method = "POST",
@@ -6668,7 +7137,7 @@ bedrockagent_list_ingestion_jobs <- function(dataSourceId, filters = NULL, knowl
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "ingestionJobSummaries"),
     stream_api = FALSE
   )
-  input <- .bedrockagent$list_ingestion_jobs_input(dataSourceId = dataSourceId, filters = filters, knowledgeBaseId = knowledgeBaseId, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy)
+  input <- .bedrockagent$list_ingestion_jobs_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId, filters = filters, sortBy = sortBy, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagent$list_ingestion_jobs_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -6689,12 +7158,12 @@ bedrockagent_list_ingestion_jobs <- function(dataSourceId, filters = NULL, knowl
 #' in the Amazon Bedrock User Guide.
 #'
 #' @usage
-#' bedrockagent_list_knowledge_base_documents(dataSourceId,
-#'   knowledgeBaseId, maxResults, nextToken)
+#' bedrockagent_list_knowledge_base_documents(knowledgeBaseId,
+#'   dataSourceId, maxResults, nextToken)
 #'
-#' @param dataSourceId &#91;required&#93; The unique identifier of the data source that contains the documents.
 #' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base that is connected to the
 #' data source.
+#' @param dataSourceId &#91;required&#93; The unique identifier of the data source that contains the documents.
 #' @param maxResults The maximum number of results to return in the response. If the total
 #' number of results is greater than this value, use the token returned in
 #' the response in the `nextToken` field when making another request to
@@ -6709,18 +7178,18 @@ bedrockagent_list_ingestion_jobs <- function(dataSourceId, filters = NULL, knowl
 #' list(
 #'   documentDetails = list(
 #'     list(
+#'       knowledgeBaseId = "string",
 #'       dataSourceId = "string",
+#'       status = "INDEXED"|"PARTIALLY_INDEXED"|"PENDING"|"FAILED"|"METADATA_PARTIALLY_INDEXED"|"METADATA_UPDATE_FAILED"|"IGNORED"|"NOT_FOUND"|"STARTING"|"IN_PROGRESS"|"DELETING"|"DELETE_IN_PROGRESS",
 #'       identifier = list(
-#'         custom = list(
-#'           id = "string"
-#'         ),
 #'         dataSourceType = "CUSTOM"|"S3",
 #'         s3 = list(
 #'           uri = "string"
+#'         ),
+#'         custom = list(
+#'           id = "string"
 #'         )
 #'       ),
-#'       knowledgeBaseId = "string",
-#'       status = "INDEXED"|"PARTIALLY_INDEXED"|"PENDING"|"FAILED"|"METADATA_PARTIALLY_INDEXED"|"METADATA_UPDATE_FAILED"|"IGNORED"|"NOT_FOUND"|"STARTING"|"IN_PROGRESS"|"DELETING"|"DELETE_IN_PROGRESS",
 #'       statusReason = "string",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
@@ -6734,8 +7203,8 @@ bedrockagent_list_ingestion_jobs <- function(dataSourceId, filters = NULL, knowl
 #' @section Request syntax:
 #' ```
 #' svc$list_knowledge_base_documents(
-#'   dataSourceId = "string",
 #'   knowledgeBaseId = "string",
+#'   dataSourceId = "string",
 #'   maxResults = 123,
 #'   nextToken = "string"
 #' )
@@ -6746,7 +7215,7 @@ bedrockagent_list_ingestion_jobs <- function(dataSourceId, filters = NULL, knowl
 #' @rdname bedrockagent_list_knowledge_base_documents
 #'
 #' @aliases bedrockagent_list_knowledge_base_documents
-bedrockagent_list_knowledge_base_documents <- function(dataSourceId, knowledgeBaseId, maxResults = NULL, nextToken = NULL) {
+bedrockagent_list_knowledge_base_documents <- function(knowledgeBaseId, dataSourceId, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListKnowledgeBaseDocuments",
     http_method = "POST",
@@ -6755,7 +7224,7 @@ bedrockagent_list_knowledge_base_documents <- function(dataSourceId, knowledgeBa
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "documentDetails"),
     stream_api = FALSE
   )
-  input <- .bedrockagent$list_knowledge_base_documents_input(dataSourceId = dataSourceId, knowledgeBaseId = knowledgeBaseId, maxResults = maxResults, nextToken = nextToken)
+  input <- .bedrockagent$list_knowledge_base_documents_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagent$list_knowledge_base_documents_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -6788,9 +7257,9 @@ bedrockagent_list_knowledge_base_documents <- function(dataSourceId, knowledgeBa
 #' list(
 #'   knowledgeBaseSummaries = list(
 #'     list(
-#'       description = "string",
 #'       knowledgeBaseId = "string",
 #'       name = "string",
+#'       description = "string",
 #'       status = "CREATING"|"ACTIVE"|"DELETING"|"UPDATING"|"FAILED"|"DELETE_UNSUCCESSFUL",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
@@ -6848,8 +7317,11 @@ bedrockagent_list_knowledge_bases <- function(maxResults = NULL, nextToken = NUL
 #' in the Amazon Bedrock User Guide.
 #'
 #' @usage
-#' bedrockagent_list_prompts(maxResults, nextToken, promptIdentifier)
+#' bedrockagent_list_prompts(promptIdentifier, maxResults, nextToken)
 #'
+#' @param promptIdentifier The unique identifier of the prompt for whose versions you want to
+#' return information. Omit this field to list information about all
+#' prompts in an account.
 #' @param maxResults The maximum number of results to return in the response. If the total
 #' number of results is greater than this value, use the token returned in
 #' the response in the `nextToken` field when making another request to
@@ -6857,39 +7329,36 @@ bedrockagent_list_knowledge_bases <- function(maxResults = NULL, nextToken = NUL
 #' @param nextToken If the total number of results is greater than the `maxResults` value
 #' provided in the request, enter the token returned in the `nextToken`
 #' field in the response in this field to return the next batch of results.
-#' @param promptIdentifier The unique identifier of the prompt for whose versions you want to
-#' return information. Omit this field to list information about all
-#' prompts in an account.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   nextToken = "string",
 #'   promptSummaries = list(
 #'     list(
+#'       name = "string",
+#'       description = "string",
+#'       id = "string",
 #'       arn = "string",
+#'       version = "string",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       description = "string",
-#'       id = "string",
-#'       name = "string",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
-#'       ),
-#'       version = "string"
+#'       )
 #'     )
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_prompts(
+#'   promptIdentifier = "string",
 #'   maxResults = 123,
-#'   nextToken = "string",
-#'   promptIdentifier = "string"
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -6898,7 +7367,7 @@ bedrockagent_list_knowledge_bases <- function(maxResults = NULL, nextToken = NUL
 #' @rdname bedrockagent_list_prompts
 #'
 #' @aliases bedrockagent_list_prompts
-bedrockagent_list_prompts <- function(maxResults = NULL, nextToken = NULL, promptIdentifier = NULL) {
+bedrockagent_list_prompts <- function(promptIdentifier = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListPrompts",
     http_method = "GET",
@@ -6907,7 +7376,7 @@ bedrockagent_list_prompts <- function(maxResults = NULL, nextToken = NULL, promp
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "promptSummaries"),
     stream_api = FALSE
   )
-  input <- .bedrockagent$list_prompts_input(maxResults = maxResults, nextToken = nextToken, promptIdentifier = promptIdentifier)
+  input <- .bedrockagent$list_prompts_input(promptIdentifier = promptIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagent$list_prompts_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -7085,44 +7554,44 @@ bedrockagent_prepare_flow <- function(flowIdentifier) {
 #' knowledge base so that Large Language Models (LLMs) can use your data.
 #'
 #' @usage
-#' bedrockagent_start_ingestion_job(clientToken, dataSourceId, description,
-#'   knowledgeBaseId)
+#' bedrockagent_start_ingestion_job(knowledgeBaseId, dataSourceId,
+#'   clientToken, description)
 #'
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base for the data ingestion job.
+#' @param dataSourceId &#91;required&#93; The unique identifier of the data source you want to ingest into your
+#' knowledge base.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
-#' @param dataSourceId &#91;required&#93; The unique identifier of the data source you want to ingest into your
-#' knowledge base.
 #' @param description A description of the data ingestion job.
-#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base for the data ingestion job.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   ingestionJob = list(
+#'     knowledgeBaseId = "string",
 #'     dataSourceId = "string",
+#'     ingestionJobId = "string",
 #'     description = "string",
+#'     status = "STARTING"|"IN_PROGRESS"|"COMPLETE"|"FAILED"|"STOPPING"|"STOPPED",
+#'     statistics = list(
+#'       numberOfDocumentsScanned = 123,
+#'       numberOfMetadataDocumentsScanned = 123,
+#'       numberOfNewDocumentsIndexed = 123,
+#'       numberOfModifiedDocumentsIndexed = 123,
+#'       numberOfMetadataDocumentsModified = 123,
+#'       numberOfDocumentsDeleted = 123,
+#'       numberOfDocumentsFailed = 123
+#'     ),
 #'     failureReasons = list(
 #'       "string"
 #'     ),
-#'     ingestionJobId = "string",
-#'     knowledgeBaseId = "string",
 #'     startedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     statistics = list(
-#'       numberOfDocumentsDeleted = 123,
-#'       numberOfDocumentsFailed = 123,
-#'       numberOfDocumentsScanned = 123,
-#'       numberOfMetadataDocumentsModified = 123,
-#'       numberOfMetadataDocumentsScanned = 123,
-#'       numberOfModifiedDocumentsIndexed = 123,
-#'       numberOfNewDocumentsIndexed = 123
-#'     ),
-#'     status = "STARTING"|"IN_PROGRESS"|"COMPLETE"|"FAILED"|"STOPPING"|"STOPPED",
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     )
@@ -7133,10 +7602,10 @@ bedrockagent_prepare_flow <- function(flowIdentifier) {
 #' @section Request syntax:
 #' ```
 #' svc$start_ingestion_job(
-#'   clientToken = "string",
+#'   knowledgeBaseId = "string",
 #'   dataSourceId = "string",
-#'   description = "string",
-#'   knowledgeBaseId = "string"
+#'   clientToken = "string",
+#'   description = "string"
 #' )
 #' ```
 #'
@@ -7145,7 +7614,7 @@ bedrockagent_prepare_flow <- function(flowIdentifier) {
 #' @rdname bedrockagent_start_ingestion_job
 #'
 #' @aliases bedrockagent_start_ingestion_job
-bedrockagent_start_ingestion_job <- function(clientToken = NULL, dataSourceId, description = NULL, knowledgeBaseId) {
+bedrockagent_start_ingestion_job <- function(knowledgeBaseId, dataSourceId, clientToken = NULL, description = NULL) {
   op <- new_operation(
     name = "StartIngestionJob",
     http_method = "PUT",
@@ -7154,7 +7623,7 @@ bedrockagent_start_ingestion_job <- function(clientToken = NULL, dataSourceId, d
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$start_ingestion_job_input(clientToken = clientToken, dataSourceId = dataSourceId, description = description, knowledgeBaseId = knowledgeBaseId)
+  input <- .bedrockagent$start_ingestion_job_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId, clientToken = clientToken, description = description)
   output <- .bedrockagent$start_ingestion_job_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -7172,40 +7641,40 @@ bedrockagent_start_ingestion_job <- function(clientToken = NULL, dataSourceId, d
 #' to ingest the rest of your data when you are ready.
 #'
 #' @usage
-#' bedrockagent_stop_ingestion_job(dataSourceId, ingestionJobId,
-#'   knowledgeBaseId)
+#' bedrockagent_stop_ingestion_job(knowledgeBaseId, dataSourceId,
+#'   ingestionJobId)
 #'
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base for the data ingestion job
+#' you want to stop.
 #' @param dataSourceId &#91;required&#93; The unique identifier of the data source for the data ingestion job you
 #' want to stop.
 #' @param ingestionJobId &#91;required&#93; The unique identifier of the data ingestion job you want to stop.
-#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base for the data ingestion job
-#' you want to stop.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   ingestionJob = list(
+#'     knowledgeBaseId = "string",
 #'     dataSourceId = "string",
+#'     ingestionJobId = "string",
 #'     description = "string",
+#'     status = "STARTING"|"IN_PROGRESS"|"COMPLETE"|"FAILED"|"STOPPING"|"STOPPED",
+#'     statistics = list(
+#'       numberOfDocumentsScanned = 123,
+#'       numberOfMetadataDocumentsScanned = 123,
+#'       numberOfNewDocumentsIndexed = 123,
+#'       numberOfModifiedDocumentsIndexed = 123,
+#'       numberOfMetadataDocumentsModified = 123,
+#'       numberOfDocumentsDeleted = 123,
+#'       numberOfDocumentsFailed = 123
+#'     ),
 #'     failureReasons = list(
 #'       "string"
 #'     ),
-#'     ingestionJobId = "string",
-#'     knowledgeBaseId = "string",
 #'     startedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     statistics = list(
-#'       numberOfDocumentsDeleted = 123,
-#'       numberOfDocumentsFailed = 123,
-#'       numberOfDocumentsScanned = 123,
-#'       numberOfMetadataDocumentsModified = 123,
-#'       numberOfMetadataDocumentsScanned = 123,
-#'       numberOfModifiedDocumentsIndexed = 123,
-#'       numberOfNewDocumentsIndexed = 123
-#'     ),
-#'     status = "STARTING"|"IN_PROGRESS"|"COMPLETE"|"FAILED"|"STOPPING"|"STOPPED",
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     )
@@ -7216,9 +7685,9 @@ bedrockagent_start_ingestion_job <- function(clientToken = NULL, dataSourceId, d
 #' @section Request syntax:
 #' ```
 #' svc$stop_ingestion_job(
+#'   knowledgeBaseId = "string",
 #'   dataSourceId = "string",
-#'   ingestionJobId = "string",
-#'   knowledgeBaseId = "string"
+#'   ingestionJobId = "string"
 #' )
 #' ```
 #'
@@ -7227,7 +7696,7 @@ bedrockagent_start_ingestion_job <- function(clientToken = NULL, dataSourceId, d
 #' @rdname bedrockagent_stop_ingestion_job
 #'
 #' @aliases bedrockagent_stop_ingestion_job
-bedrockagent_stop_ingestion_job <- function(dataSourceId, ingestionJobId, knowledgeBaseId) {
+bedrockagent_stop_ingestion_job <- function(knowledgeBaseId, dataSourceId, ingestionJobId) {
   op <- new_operation(
     name = "StopIngestionJob",
     http_method = "POST",
@@ -7236,7 +7705,7 @@ bedrockagent_stop_ingestion_job <- function(dataSourceId, ingestionJobId, knowle
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$stop_ingestion_job_input(dataSourceId = dataSourceId, ingestionJobId = ingestionJobId, knowledgeBaseId = knowledgeBaseId)
+  input <- .bedrockagent$stop_ingestion_job_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId, ingestionJobId = ingestionJobId)
   output <- .bedrockagent$stop_ingestion_job_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -7352,21 +7821,16 @@ bedrockagent_untag_resource <- function(resourceArn, tagKeys) {
 #' Updates the configuration of an agent.
 #'
 #' @usage
-#' bedrockagent_update_agent(agentCollaboration, agentId, agentName,
-#'   agentResourceRoleArn, customOrchestration, customerEncryptionKeyArn,
-#'   description, foundationModel, guardrailConfiguration,
-#'   idleSessionTTLInSeconds, instruction, memoryConfiguration,
-#'   orchestrationType, promptOverrideConfiguration)
+#' bedrockagent_update_agent(agentId, agentName, instruction,
+#'   foundationModel, description, orchestrationType, customOrchestration,
+#'   idleSessionTTLInSeconds, agentResourceRoleArn, customerEncryptionKeyArn,
+#'   promptOverrideConfiguration, guardrailConfiguration,
+#'   memoryConfiguration, agentCollaboration)
 #'
-#' @param agentCollaboration The agent's collaboration role.
 #' @param agentId &#91;required&#93; The unique identifier of the agent.
 #' @param agentName &#91;required&#93; Specifies a new name for the agent.
-#' @param agentResourceRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role with permissions to
-#' invoke API operations on the agent.
-#' @param customOrchestration Contains details of the custom orchestration configured for the agent.
-#' @param customerEncryptionKeyArn The Amazon Resource Name (ARN) of the KMS key with which to encrypt the
-#' agent.
-#' @param description Specifies a new description of the agent.
+#' @param instruction Specifies new instructions that tell the agent what it should do and how
+#' it should interact with users.
 #' @param foundationModel &#91;required&#93; The identifier for the model that you want to be used for orchestration
 #' by the agent you create.
 #' 
@@ -7403,98 +7867,103 @@ bedrockagent_untag_resource <- function(resourceArn, tagKeys) {
 #'     from a successful call to
 #'     [CreateModelImportJob](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_CreateModelImportJob.html)
 #'     or from the Imported models page in the Amazon Bedrock console.
-#' @param guardrailConfiguration The unique Guardrail configuration assigned to the agent when it is
-#' updated.
+#' @param description Specifies a new description of the agent.
+#' @param orchestrationType Specifies the type of orchestration strategy for the agent. This is set
+#' to `DEFAULT` orchestration type, by default.
+#' @param customOrchestration Contains details of the custom orchestration configured for the agent.
 #' @param idleSessionTTLInSeconds The number of seconds for which Amazon Bedrock keeps information about a
 #' user's conversation with the agent.
 #' 
 #' A user interaction remains active for the amount of time specified. If
 #' no conversation occurs during this time, the session expires and Amazon
 #' Bedrock deletes any data provided before the timeout.
-#' @param instruction Specifies new instructions that tell the agent what it should do and how
-#' it should interact with users.
-#' @param memoryConfiguration Specifies the new memory configuration for the agent.
-#' @param orchestrationType Specifies the type of orchestration strategy for the agent. This is set
-#' to `DEFAULT` orchestration type, by default.
+#' @param agentResourceRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role with permissions to
+#' invoke API operations on the agent.
+#' @param customerEncryptionKeyArn The Amazon Resource Name (ARN) of the KMS key with which to encrypt the
+#' agent.
 #' @param promptOverrideConfiguration Contains configurations to override prompts in different parts of an
 #' agent sequence. For more information, see [Advanced
 #' prompts](https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts.html).
+#' @param guardrailConfiguration The unique Guardrail configuration assigned to the agent when it is
+#' updated.
+#' @param memoryConfiguration Specifies the new memory configuration for the agent.
+#' @param agentCollaboration The agent's collaboration role.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   agent = list(
-#'     agentArn = "string",
-#'     agentCollaboration = "SUPERVISOR"|"SUPERVISOR_ROUTER"|"DISABLED",
 #'     agentId = "string",
 #'     agentName = "string",
-#'     agentResourceRoleArn = "string",
-#'     agentStatus = "CREATING"|"PREPARING"|"PREPARED"|"NOT_PREPARED"|"DELETING"|"FAILED"|"VERSIONING"|"UPDATING",
+#'     agentArn = "string",
 #'     agentVersion = "string",
 #'     clientToken = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
+#'     instruction = "string",
+#'     agentStatus = "CREATING"|"PREPARING"|"PREPARED"|"NOT_PREPARED"|"DELETING"|"FAILED"|"VERSIONING"|"UPDATING",
+#'     foundationModel = "string",
+#'     description = "string",
+#'     orchestrationType = "DEFAULT"|"CUSTOM_ORCHESTRATION",
 #'     customOrchestration = list(
 #'       executor = list(
 #'         lambda = "string"
 #'       )
 #'     ),
-#'     customerEncryptionKeyArn = "string",
-#'     description = "string",
-#'     failureReasons = list(
-#'       "string"
-#'     ),
-#'     foundationModel = "string",
-#'     guardrailConfiguration = list(
-#'       guardrailIdentifier = "string",
-#'       guardrailVersion = "string"
-#'     ),
 #'     idleSessionTTLInSeconds = 123,
-#'     instruction = "string",
-#'     memoryConfiguration = list(
-#'       enabledMemoryTypes = list(
-#'         "SESSION_SUMMARY"
-#'       ),
-#'       sessionSummaryConfiguration = list(
-#'         maxRecentSessions = 123
-#'       ),
-#'       storageDays = 123
+#'     agentResourceRoleArn = "string",
+#'     customerEncryptionKeyArn = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
 #'     ),
-#'     orchestrationType = "DEFAULT"|"CUSTOM_ORCHESTRATION",
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     preparedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     promptOverrideConfiguration = list(
-#'       overrideLambda = "string",
-#'       promptConfigurations = list(
-#'         list(
-#'           additionalModelRequestFields = list(),
-#'           basePromptTemplate = "string",
-#'           foundationModel = "string",
-#'           inferenceConfiguration = list(
-#'             maximumLength = 123,
-#'             stopSequences = list(
-#'               "string"
-#'             ),
-#'             temperature = 123.0,
-#'             topK = 123,
-#'             topP = 123.0
-#'           ),
-#'           parserMode = "DEFAULT"|"OVERRIDDEN",
-#'           promptCreationMode = "DEFAULT"|"OVERRIDDEN",
-#'           promptState = "ENABLED"|"DISABLED",
-#'           promptType = "PRE_PROCESSING"|"ORCHESTRATION"|"POST_PROCESSING"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"|"MEMORY_SUMMARIZATION"
-#'         )
-#'       )
+#'     failureReasons = list(
+#'       "string"
 #'     ),
 #'     recommendedActions = list(
 #'       "string"
 #'     ),
-#'     updatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     )
+#'     promptOverrideConfiguration = list(
+#'       promptConfigurations = list(
+#'         list(
+#'           promptType = "PRE_PROCESSING"|"ORCHESTRATION"|"POST_PROCESSING"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"|"MEMORY_SUMMARIZATION",
+#'           promptCreationMode = "DEFAULT"|"OVERRIDDEN",
+#'           promptState = "ENABLED"|"DISABLED",
+#'           basePromptTemplate = "string",
+#'           inferenceConfiguration = list(
+#'             temperature = 123.0,
+#'             topP = 123.0,
+#'             topK = 123,
+#'             maximumLength = 123,
+#'             stopSequences = list(
+#'               "string"
+#'             )
+#'           ),
+#'           parserMode = "DEFAULT"|"OVERRIDDEN",
+#'           foundationModel = "string",
+#'           additionalModelRequestFields = list()
+#'         )
+#'       ),
+#'       overrideLambda = "string"
+#'     ),
+#'     guardrailConfiguration = list(
+#'       guardrailIdentifier = "string",
+#'       guardrailVersion = "string"
+#'     ),
+#'     memoryConfiguration = list(
+#'       enabledMemoryTypes = list(
+#'         "SESSION_SUMMARY"
+#'       ),
+#'       storageDays = 123,
+#'       sessionSummaryConfiguration = list(
+#'         maxRecentSessions = 123
+#'       )
+#'     ),
+#'     agentCollaboration = "SUPERVISOR"|"SUPERVISOR_ROUTER"|"DISABLED"
 #'   )
 #' )
 #' ```
@@ -7502,57 +7971,57 @@ bedrockagent_untag_resource <- function(resourceArn, tagKeys) {
 #' @section Request syntax:
 #' ```
 #' svc$update_agent(
-#'   agentCollaboration = "SUPERVISOR"|"SUPERVISOR_ROUTER"|"DISABLED",
 #'   agentId = "string",
 #'   agentName = "string",
-#'   agentResourceRoleArn = "string",
+#'   instruction = "string",
+#'   foundationModel = "string",
+#'   description = "string",
+#'   orchestrationType = "DEFAULT"|"CUSTOM_ORCHESTRATION",
 #'   customOrchestration = list(
 #'     executor = list(
 #'       lambda = "string"
 #'     )
 #'   ),
+#'   idleSessionTTLInSeconds = 123,
+#'   agentResourceRoleArn = "string",
 #'   customerEncryptionKeyArn = "string",
-#'   description = "string",
-#'   foundationModel = "string",
+#'   promptOverrideConfiguration = list(
+#'     promptConfigurations = list(
+#'       list(
+#'         promptType = "PRE_PROCESSING"|"ORCHESTRATION"|"POST_PROCESSING"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"|"MEMORY_SUMMARIZATION",
+#'         promptCreationMode = "DEFAULT"|"OVERRIDDEN",
+#'         promptState = "ENABLED"|"DISABLED",
+#'         basePromptTemplate = "string",
+#'         inferenceConfiguration = list(
+#'           temperature = 123.0,
+#'           topP = 123.0,
+#'           topK = 123,
+#'           maximumLength = 123,
+#'           stopSequences = list(
+#'             "string"
+#'           )
+#'         ),
+#'         parserMode = "DEFAULT"|"OVERRIDDEN",
+#'         foundationModel = "string",
+#'         additionalModelRequestFields = list()
+#'       )
+#'     ),
+#'     overrideLambda = "string"
+#'   ),
 #'   guardrailConfiguration = list(
 #'     guardrailIdentifier = "string",
 #'     guardrailVersion = "string"
 #'   ),
-#'   idleSessionTTLInSeconds = 123,
-#'   instruction = "string",
 #'   memoryConfiguration = list(
 #'     enabledMemoryTypes = list(
 #'       "SESSION_SUMMARY"
 #'     ),
+#'     storageDays = 123,
 #'     sessionSummaryConfiguration = list(
 #'       maxRecentSessions = 123
-#'     ),
-#'     storageDays = 123
-#'   ),
-#'   orchestrationType = "DEFAULT"|"CUSTOM_ORCHESTRATION",
-#'   promptOverrideConfiguration = list(
-#'     overrideLambda = "string",
-#'     promptConfigurations = list(
-#'       list(
-#'         additionalModelRequestFields = list(),
-#'         basePromptTemplate = "string",
-#'         foundationModel = "string",
-#'         inferenceConfiguration = list(
-#'           maximumLength = 123,
-#'           stopSequences = list(
-#'             "string"
-#'           ),
-#'           temperature = 123.0,
-#'           topK = 123,
-#'           topP = 123.0
-#'         ),
-#'         parserMode = "DEFAULT"|"OVERRIDDEN",
-#'         promptCreationMode = "DEFAULT"|"OVERRIDDEN",
-#'         promptState = "ENABLED"|"DISABLED",
-#'         promptType = "PRE_PROCESSING"|"ORCHESTRATION"|"POST_PROCESSING"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"|"MEMORY_SUMMARIZATION"
-#'       )
 #'     )
-#'   )
+#'   ),
+#'   agentCollaboration = "SUPERVISOR"|"SUPERVISOR_ROUTER"|"DISABLED"
 #' )
 #' ```
 #'
@@ -7561,7 +8030,7 @@ bedrockagent_untag_resource <- function(resourceArn, tagKeys) {
 #' @rdname bedrockagent_update_agent
 #'
 #' @aliases bedrockagent_update_agent
-bedrockagent_update_agent <- function(agentCollaboration = NULL, agentId, agentName, agentResourceRoleArn, customOrchestration = NULL, customerEncryptionKeyArn = NULL, description = NULL, foundationModel, guardrailConfiguration = NULL, idleSessionTTLInSeconds = NULL, instruction = NULL, memoryConfiguration = NULL, orchestrationType = NULL, promptOverrideConfiguration = NULL) {
+bedrockagent_update_agent <- function(agentId, agentName, instruction = NULL, foundationModel, description = NULL, orchestrationType = NULL, customOrchestration = NULL, idleSessionTTLInSeconds = NULL, agentResourceRoleArn, customerEncryptionKeyArn = NULL, promptOverrideConfiguration = NULL, guardrailConfiguration = NULL, memoryConfiguration = NULL, agentCollaboration = NULL) {
   op <- new_operation(
     name = "UpdateAgent",
     http_method = "PUT",
@@ -7570,7 +8039,7 @@ bedrockagent_update_agent <- function(agentCollaboration = NULL, agentId, agentN
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$update_agent_input(agentCollaboration = agentCollaboration, agentId = agentId, agentName = agentName, agentResourceRoleArn = agentResourceRoleArn, customOrchestration = customOrchestration, customerEncryptionKeyArn = customerEncryptionKeyArn, description = description, foundationModel = foundationModel, guardrailConfiguration = guardrailConfiguration, idleSessionTTLInSeconds = idleSessionTTLInSeconds, instruction = instruction, memoryConfiguration = memoryConfiguration, orchestrationType = orchestrationType, promptOverrideConfiguration = promptOverrideConfiguration)
+  input <- .bedrockagent$update_agent_input(agentId = agentId, agentName = agentName, instruction = instruction, foundationModel = foundationModel, description = description, orchestrationType = orchestrationType, customOrchestration = customOrchestration, idleSessionTTLInSeconds = idleSessionTTLInSeconds, agentResourceRoleArn = agentResourceRoleArn, customerEncryptionKeyArn = customerEncryptionKeyArn, promptOverrideConfiguration = promptOverrideConfiguration, guardrailConfiguration = guardrailConfiguration, memoryConfiguration = memoryConfiguration, agentCollaboration = agentCollaboration)
   output <- .bedrockagent$update_agent_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -7586,29 +8055,17 @@ bedrockagent_update_agent <- function(agentCollaboration = NULL, agentId, agentN
 #' Updates the configuration for an action group for an agent.
 #'
 #' @usage
-#' bedrockagent_update_agent_action_group(actionGroupExecutor,
-#'   actionGroupId, actionGroupName, actionGroupState, agentId, agentVersion,
-#'   apiSchema, description, functionSchema, parentActionGroupSignature,
-#'   parentActionGroupSignatureParams)
+#' bedrockagent_update_agent_action_group(agentId, agentVersion,
+#'   actionGroupId, actionGroupName, description, parentActionGroupSignature,
+#'   parentActionGroupSignatureParams, actionGroupExecutor, actionGroupState,
+#'   apiSchema, functionSchema)
 #'
-#' @param actionGroupExecutor The Amazon Resource Name (ARN) of the Lambda function containing the
-#' business logic that is carried out upon invoking the action.
-#' @param actionGroupId &#91;required&#93; The unique identifier of the action group.
-#' @param actionGroupName &#91;required&#93; Specifies a new name for the action group.
-#' @param actionGroupState Specifies whether the action group is available for the agent to invoke
-#' or not when sending an
-#' [InvokeAgent](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_InvokeAgent.html)
-#' request.
 #' @param agentId &#91;required&#93; The unique identifier of the agent for which to update the action group.
 #' @param agentVersion &#91;required&#93; The unique identifier of the agent version for which to update the
 #' action group.
-#' @param apiSchema Contains either details about the S3 object containing the OpenAPI
-#' schema for the action group or the JSON or YAML-formatted payload
-#' defining the schema. For more information, see [Action group OpenAPI
-#' schemas](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-api-schema.html).
+#' @param actionGroupId &#91;required&#93; The unique identifier of the action group.
+#' @param actionGroupName &#91;required&#93; Specifies a new name for the action group.
 #' @param description Specifies a new name for the action group.
-#' @param functionSchema Contains details about the function schema for the action group or the
-#' JSON or YAML-formatted payload defining the schema.
 #' @param parentActionGroupSignature Update the built-in or computer use action for this action group. If you
 #' specify a value, you must leave the `description`, `apiSchema`, and
 #' `actionGroupExecutor` fields empty for this action group.
@@ -7655,56 +8112,68 @@ bedrockagent_update_agent <- function(agentCollaboration = NULL, agentId, agentN
 #' information, see [Configure an Amazon Bedrock Agent to complete tasks
 #' with computer use
 #' tools](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-computer-use.html).
+#' @param actionGroupExecutor The Amazon Resource Name (ARN) of the Lambda function containing the
+#' business logic that is carried out upon invoking the action.
+#' @param actionGroupState Specifies whether the action group is available for the agent to invoke
+#' or not when sending an
+#' [InvokeAgent](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_InvokeAgent.html)
+#' request.
+#' @param apiSchema Contains either details about the S3 object containing the OpenAPI
+#' schema for the action group or the JSON or YAML-formatted payload
+#' defining the schema. For more information, see [Action group OpenAPI
+#' schemas](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-api-schema.html).
+#' @param functionSchema Contains details about the function schema for the action group or the
+#' JSON or YAML-formatted payload defining the schema.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   agentActionGroup = list(
-#'     actionGroupExecutor = list(
-#'       customControl = "RETURN_CONTROL",
-#'       lambda = "string"
-#'     ),
-#'     actionGroupId = "string",
-#'     actionGroupName = "string",
-#'     actionGroupState = "ENABLED"|"DISABLED",
 #'     agentId = "string",
 #'     agentVersion = "string",
-#'     apiSchema = list(
-#'       payload = "string",
-#'       s3 = list(
-#'         s3BucketName = "string",
-#'         s3ObjectKey = "string"
-#'       )
-#'     ),
+#'     actionGroupId = "string",
+#'     actionGroupName = "string",
 #'     clientToken = "string",
+#'     description = "string",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     description = "string",
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     parentActionSignature = "AMAZON.UserInput"|"AMAZON.CodeInterpreter"|"ANTHROPIC.Computer"|"ANTHROPIC.Bash"|"ANTHROPIC.TextEditor",
+#'     parentActionGroupSignatureParams = list(
+#'       "string"
+#'     ),
+#'     actionGroupExecutor = list(
+#'       lambda = "string",
+#'       customControl = "RETURN_CONTROL"
+#'     ),
+#'     apiSchema = list(
+#'       s3 = list(
+#'         s3BucketName = "string",
+#'         s3ObjectKey = "string"
+#'       ),
+#'       payload = "string"
+#'     ),
 #'     functionSchema = list(
 #'       functions = list(
 #'         list(
-#'           description = "string",
 #'           name = "string",
+#'           description = "string",
 #'           parameters = list(
 #'             list(
 #'               description = "string",
-#'               required = TRUE|FALSE,
-#'               type = "string"|"number"|"integer"|"boolean"|"array"
+#'               type = "string"|"number"|"integer"|"boolean"|"array",
+#'               required = TRUE|FALSE
 #'             )
 #'           ),
 #'           requireConfirmation = "ENABLED"|"DISABLED"
 #'         )
 #'       )
 #'     ),
-#'     parentActionGroupSignatureParams = list(
-#'       "string"
-#'     ),
-#'     parentActionSignature = "AMAZON.UserInput"|"AMAZON.CodeInterpreter"|"ANTHROPIC.Computer"|"ANTHROPIC.Bash"|"ANTHROPIC.TextEditor",
-#'     updatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     )
+#'     actionGroupState = "ENABLED"|"DISABLED"
 #'   )
 #' )
 #' ```
@@ -7712,42 +8181,42 @@ bedrockagent_update_agent <- function(agentCollaboration = NULL, agentId, agentN
 #' @section Request syntax:
 #' ```
 #' svc$update_agent_action_group(
-#'   actionGroupExecutor = list(
-#'     customControl = "RETURN_CONTROL",
-#'     lambda = "string"
-#'   ),
-#'   actionGroupId = "string",
-#'   actionGroupName = "string",
-#'   actionGroupState = "ENABLED"|"DISABLED",
 #'   agentId = "string",
 #'   agentVersion = "string",
+#'   actionGroupId = "string",
+#'   actionGroupName = "string",
+#'   description = "string",
+#'   parentActionGroupSignature = "AMAZON.UserInput"|"AMAZON.CodeInterpreter"|"ANTHROPIC.Computer"|"ANTHROPIC.Bash"|"ANTHROPIC.TextEditor",
+#'   parentActionGroupSignatureParams = list(
+#'     "string"
+#'   ),
+#'   actionGroupExecutor = list(
+#'     lambda = "string",
+#'     customControl = "RETURN_CONTROL"
+#'   ),
+#'   actionGroupState = "ENABLED"|"DISABLED",
 #'   apiSchema = list(
-#'     payload = "string",
 #'     s3 = list(
 #'       s3BucketName = "string",
 #'       s3ObjectKey = "string"
-#'     )
+#'     ),
+#'     payload = "string"
 #'   ),
-#'   description = "string",
 #'   functionSchema = list(
 #'     functions = list(
 #'       list(
-#'         description = "string",
 #'         name = "string",
+#'         description = "string",
 #'         parameters = list(
 #'           list(
 #'             description = "string",
-#'             required = TRUE|FALSE,
-#'             type = "string"|"number"|"integer"|"boolean"|"array"
+#'             type = "string"|"number"|"integer"|"boolean"|"array",
+#'             required = TRUE|FALSE
 #'           )
 #'         ),
 #'         requireConfirmation = "ENABLED"|"DISABLED"
 #'       )
 #'     )
-#'   ),
-#'   parentActionGroupSignature = "AMAZON.UserInput"|"AMAZON.CodeInterpreter"|"ANTHROPIC.Computer"|"ANTHROPIC.Bash"|"ANTHROPIC.TextEditor",
-#'   parentActionGroupSignatureParams = list(
-#'     "string"
 #'   )
 #' )
 #' ```
@@ -7757,7 +8226,7 @@ bedrockagent_update_agent <- function(agentCollaboration = NULL, agentId, agentN
 #' @rdname bedrockagent_update_agent_action_group
 #'
 #' @aliases bedrockagent_update_agent_action_group
-bedrockagent_update_agent_action_group <- function(actionGroupExecutor = NULL, actionGroupId, actionGroupName, actionGroupState = NULL, agentId, agentVersion, apiSchema = NULL, description = NULL, functionSchema = NULL, parentActionGroupSignature = NULL, parentActionGroupSignatureParams = NULL) {
+bedrockagent_update_agent_action_group <- function(agentId, agentVersion, actionGroupId, actionGroupName, description = NULL, parentActionGroupSignature = NULL, parentActionGroupSignatureParams = NULL, actionGroupExecutor = NULL, actionGroupState = NULL, apiSchema = NULL, functionSchema = NULL) {
   op <- new_operation(
     name = "UpdateAgentActionGroup",
     http_method = "PUT",
@@ -7766,7 +8235,7 @@ bedrockagent_update_agent_action_group <- function(actionGroupExecutor = NULL, a
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$update_agent_action_group_input(actionGroupExecutor = actionGroupExecutor, actionGroupId = actionGroupId, actionGroupName = actionGroupName, actionGroupState = actionGroupState, agentId = agentId, agentVersion = agentVersion, apiSchema = apiSchema, description = description, functionSchema = functionSchema, parentActionGroupSignature = parentActionGroupSignature, parentActionGroupSignatureParams = parentActionGroupSignatureParams)
+  input <- .bedrockagent$update_agent_action_group_input(agentId = agentId, agentVersion = agentVersion, actionGroupId = actionGroupId, actionGroupName = actionGroupName, description = description, parentActionGroupSignature = parentActionGroupSignature, parentActionGroupSignatureParams = parentActionGroupSignatureParams, actionGroupExecutor = actionGroupExecutor, actionGroupState = actionGroupState, apiSchema = apiSchema, functionSchema = functionSchema)
   output <- .bedrockagent$update_agent_action_group_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -7782,58 +8251,65 @@ bedrockagent_update_agent_action_group <- function(actionGroupExecutor = NULL, a
 #' Updates configurations for an alias of an agent.
 #'
 #' @usage
-#' bedrockagent_update_agent_alias(agentAliasId, agentAliasName, agentId,
-#'   description, routingConfiguration)
+#' bedrockagent_update_agent_alias(agentId, agentAliasId, agentAliasName,
+#'   description, routingConfiguration, aliasInvocationState)
 #'
+#' @param agentId &#91;required&#93; The unique identifier of the agent.
 #' @param agentAliasId &#91;required&#93; The unique identifier of the alias.
 #' @param agentAliasName &#91;required&#93; Specifies a new name for the alias.
-#' @param agentId &#91;required&#93; The unique identifier of the agent.
 #' @param description Specifies a new description for the alias.
 #' @param routingConfiguration Contains details about the routing configuration of the alias.
+#' @param aliasInvocationState The invocation state for the agent alias. To pause the agent alias, set
+#' the value to `REJECT_INVOCATIONS`. To start the agent alias running
+#' again, set the value to `ACCEPT_INVOCATIONS`. Use the
+#' [`get_agent_alias`][bedrockagent_get_agent_alias], or
+#' [`list_agent_aliases`][bedrockagent_list_agent_aliases], operation to
+#' get the invocation state of an agent alias.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   agentAlias = list(
-#'     agentAliasArn = "string",
-#'     agentAliasHistoryEvents = list(
-#'       list(
-#'         endDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         routingConfiguration = list(
-#'           list(
-#'             agentVersion = "string",
-#'             provisionedThroughput = "string"
-#'           )
-#'         ),
-#'         startDate = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
+#'     agentId = "string",
 #'     agentAliasId = "string",
 #'     agentAliasName = "string",
-#'     agentAliasStatus = "CREATING"|"PREPARED"|"FAILED"|"UPDATING"|"DELETING"|"DISSOCIATED",
-#'     agentId = "string",
+#'     agentAliasArn = "string",
 #'     clientToken = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
 #'     description = "string",
-#'     failureReasons = list(
-#'       "string"
-#'     ),
 #'     routingConfiguration = list(
 #'       list(
 #'         agentVersion = "string",
 #'         provisionedThroughput = "string"
 #'       )
 #'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     agentAliasHistoryEvents = list(
+#'       list(
+#'         routingConfiguration = list(
+#'           list(
+#'             agentVersion = "string",
+#'             provisionedThroughput = "string"
+#'           )
+#'         ),
+#'         endDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         startDate = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     agentAliasStatus = "CREATING"|"PREPARED"|"FAILED"|"UPDATING"|"DELETING"|"DISSOCIATED",
+#'     failureReasons = list(
+#'       "string"
+#'     ),
+#'     aliasInvocationState = "ACCEPT_INVOCATIONS"|"REJECT_INVOCATIONS"
 #'   )
 #' )
 #' ```
@@ -7841,16 +8317,17 @@ bedrockagent_update_agent_action_group <- function(actionGroupExecutor = NULL, a
 #' @section Request syntax:
 #' ```
 #' svc$update_agent_alias(
+#'   agentId = "string",
 #'   agentAliasId = "string",
 #'   agentAliasName = "string",
-#'   agentId = "string",
 #'   description = "string",
 #'   routingConfiguration = list(
 #'     list(
 #'       agentVersion = "string",
 #'       provisionedThroughput = "string"
 #'     )
-#'   )
+#'   ),
+#'   aliasInvocationState = "ACCEPT_INVOCATIONS"|"REJECT_INVOCATIONS"
 #' )
 #' ```
 #'
@@ -7859,7 +8336,7 @@ bedrockagent_update_agent_action_group <- function(actionGroupExecutor = NULL, a
 #' @rdname bedrockagent_update_agent_alias
 #'
 #' @aliases bedrockagent_update_agent_alias
-bedrockagent_update_agent_alias <- function(agentAliasId, agentAliasName, agentId, description = NULL, routingConfiguration = NULL) {
+bedrockagent_update_agent_alias <- function(agentId, agentAliasId, agentAliasName, description = NULL, routingConfiguration = NULL, aliasInvocationState = NULL) {
   op <- new_operation(
     name = "UpdateAgentAlias",
     http_method = "PUT",
@@ -7868,7 +8345,7 @@ bedrockagent_update_agent_alias <- function(agentAliasId, agentAliasName, agentI
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$update_agent_alias_input(agentAliasId = agentAliasId, agentAliasName = agentAliasName, agentId = agentId, description = description, routingConfiguration = routingConfiguration)
+  input <- .bedrockagent$update_agent_alias_input(agentId = agentId, agentAliasId = agentAliasId, agentAliasName = agentAliasName, description = description, routingConfiguration = routingConfiguration, aliasInvocationState = aliasInvocationState)
   output <- .bedrockagent$update_agent_alias_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -7884,16 +8361,16 @@ bedrockagent_update_agent_alias <- function(agentAliasId, agentAliasName, agentI
 #' Updates an agent's collaborator.
 #'
 #' @usage
-#' bedrockagent_update_agent_collaborator(agentDescriptor, agentId,
-#'   agentVersion, collaborationInstruction, collaboratorId,
-#'   collaboratorName, relayConversationHistory)
+#' bedrockagent_update_agent_collaborator(agentId, agentVersion,
+#'   collaboratorId, agentDescriptor, collaboratorName,
+#'   collaborationInstruction, relayConversationHistory)
 #'
-#' @param agentDescriptor &#91;required&#93; An agent descriptor for the agent collaborator.
 #' @param agentId &#91;required&#93; The agent's ID.
 #' @param agentVersion &#91;required&#93; The agent's version.
-#' @param collaborationInstruction &#91;required&#93; Instruction for the collaborator.
 #' @param collaboratorId &#91;required&#93; The collaborator's ID.
+#' @param agentDescriptor &#91;required&#93; An agent descriptor for the agent collaborator.
 #' @param collaboratorName &#91;required&#93; The collaborator's name.
+#' @param collaborationInstruction &#91;required&#93; Instruction for the collaborator.
 #' @param relayConversationHistory A relay conversation history for the collaborator.
 #'
 #' @return
@@ -7901,14 +8378,13 @@ bedrockagent_update_agent_alias <- function(agentAliasId, agentAliasName, agentI
 #' ```
 #' list(
 #'   agentCollaborator = list(
+#'     agentId = "string",
+#'     agentVersion = "string",
 #'     agentDescriptor = list(
 #'       aliasArn = "string"
 #'     ),
-#'     agentId = "string",
-#'     agentVersion = "string",
-#'     clientToken = "string",
-#'     collaborationInstruction = "string",
 #'     collaboratorId = "string",
+#'     collaborationInstruction = "string",
 #'     collaboratorName = "string",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
@@ -7916,7 +8392,8 @@ bedrockagent_update_agent_alias <- function(agentAliasId, agentAliasName, agentI
 #'     lastUpdatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     relayConversationHistory = "TO_COLLABORATOR"|"DISABLED"
+#'     relayConversationHistory = "TO_COLLABORATOR"|"DISABLED",
+#'     clientToken = "string"
 #'   )
 #' )
 #' ```
@@ -7924,14 +8401,14 @@ bedrockagent_update_agent_alias <- function(agentAliasId, agentAliasName, agentI
 #' @section Request syntax:
 #' ```
 #' svc$update_agent_collaborator(
+#'   agentId = "string",
+#'   agentVersion = "string",
+#'   collaboratorId = "string",
 #'   agentDescriptor = list(
 #'     aliasArn = "string"
 #'   ),
-#'   agentId = "string",
-#'   agentVersion = "string",
-#'   collaborationInstruction = "string",
-#'   collaboratorId = "string",
 #'   collaboratorName = "string",
+#'   collaborationInstruction = "string",
 #'   relayConversationHistory = "TO_COLLABORATOR"|"DISABLED"
 #' )
 #' ```
@@ -7941,7 +8418,7 @@ bedrockagent_update_agent_alias <- function(agentAliasId, agentAliasName, agentI
 #' @rdname bedrockagent_update_agent_collaborator
 #'
 #' @aliases bedrockagent_update_agent_collaborator
-bedrockagent_update_agent_collaborator <- function(agentDescriptor, agentId, agentVersion, collaborationInstruction, collaboratorId, collaboratorName, relayConversationHistory = NULL) {
+bedrockagent_update_agent_collaborator <- function(agentId, agentVersion, collaboratorId, agentDescriptor, collaboratorName, collaborationInstruction, relayConversationHistory = NULL) {
   op <- new_operation(
     name = "UpdateAgentCollaborator",
     http_method = "PUT",
@@ -7950,7 +8427,7 @@ bedrockagent_update_agent_collaborator <- function(agentDescriptor, agentId, age
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$update_agent_collaborator_input(agentDescriptor = agentDescriptor, agentId = agentId, agentVersion = agentVersion, collaborationInstruction = collaborationInstruction, collaboratorId = collaboratorId, collaboratorName = collaboratorName, relayConversationHistory = relayConversationHistory)
+  input <- .bedrockagent$update_agent_collaborator_input(agentId = agentId, agentVersion = agentVersion, collaboratorId = collaboratorId, agentDescriptor = agentDescriptor, collaboratorName = collaboratorName, collaborationInstruction = collaborationInstruction, relayConversationHistory = relayConversationHistory)
   output <- .bedrockagent$update_agent_collaborator_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -7969,16 +8446,16 @@ bedrockagent_update_agent_collaborator <- function(agentDescriptor, agentId, age
 #'
 #' @usage
 #' bedrockagent_update_agent_knowledge_base(agentId, agentVersion,
-#'   description, knowledgeBaseId, knowledgeBaseState)
+#'   knowledgeBaseId, description, knowledgeBaseState)
 #'
 #' @param agentId &#91;required&#93; The unique identifier of the agent associated with the knowledge base
 #' that you want to update.
 #' @param agentVersion &#91;required&#93; The version of the agent associated with the knowledge base that you
 #' want to update.
-#' @param description Specifies a new description for the knowledge base associated with an
-#' agent.
 #' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base that has been associated
 #' with an agent.
+#' @param description Specifies a new description for the knowledge base associated with an
+#' agent.
 #' @param knowledgeBaseState Specifies whether the agent uses the knowledge base or not when sending
 #' an
 #' [InvokeAgent](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_InvokeAgent.html)
@@ -7991,15 +8468,15 @@ bedrockagent_update_agent_collaborator <- function(agentDescriptor, agentId, age
 #'   agentKnowledgeBase = list(
 #'     agentId = "string",
 #'     agentVersion = "string",
+#'     knowledgeBaseId = "string",
+#'     description = "string",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     description = "string",
-#'     knowledgeBaseId = "string",
-#'     knowledgeBaseState = "ENABLED"|"DISABLED",
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     knowledgeBaseState = "ENABLED"|"DISABLED"
 #'   )
 #' )
 #' ```
@@ -8009,8 +8486,8 @@ bedrockagent_update_agent_collaborator <- function(agentDescriptor, agentId, age
 #' svc$update_agent_knowledge_base(
 #'   agentId = "string",
 #'   agentVersion = "string",
-#'   description = "string",
 #'   knowledgeBaseId = "string",
+#'   description = "string",
 #'   knowledgeBaseState = "ENABLED"|"DISABLED"
 #' )
 #' ```
@@ -8020,7 +8497,7 @@ bedrockagent_update_agent_collaborator <- function(agentDescriptor, agentId, age
 #' @rdname bedrockagent_update_agent_knowledge_base
 #'
 #' @aliases bedrockagent_update_agent_knowledge_base
-bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, description = NULL, knowledgeBaseId, knowledgeBaseState = NULL) {
+bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, knowledgeBaseId, description = NULL, knowledgeBaseState = NULL) {
   op <- new_operation(
     name = "UpdateAgentKnowledgeBase",
     http_method = "PUT",
@@ -8029,7 +8506,7 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, desc
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$update_agent_knowledge_base_input(agentId = agentId, agentVersion = agentVersion, description = description, knowledgeBaseId = knowledgeBaseId, knowledgeBaseState = knowledgeBaseState)
+  input <- .bedrockagent$update_agent_knowledge_base_input(agentId = agentId, agentVersion = agentVersion, knowledgeBaseId = knowledgeBaseId, description = description, knowledgeBaseState = knowledgeBaseState)
   output <- .bedrockagent$update_agent_knowledge_base_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -8048,17 +8525,17 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, desc
 #' source connector. Specify the existing `chunkingConfiguration`.
 #'
 #' @usage
-#' bedrockagent_update_data_source(dataDeletionPolicy,
-#'   dataSourceConfiguration, dataSourceId, description, knowledgeBaseId,
-#'   name, serverSideEncryptionConfiguration, vectorIngestionConfiguration)
+#' bedrockagent_update_data_source(knowledgeBaseId, dataSourceId, name,
+#'   description, dataSourceConfiguration, dataDeletionPolicy,
+#'   serverSideEncryptionConfiguration, vectorIngestionConfiguration)
 #'
-#' @param dataDeletionPolicy The data deletion policy for the data source that you want to update.
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base for the data source.
+#' @param dataSourceId &#91;required&#93; The unique identifier of the data source.
+#' @param name &#91;required&#93; Specifies a new name for the data source.
+#' @param description Specifies a new description for the data source.
 #' @param dataSourceConfiguration &#91;required&#93; The connection configuration for the data source that you want to
 #' update.
-#' @param dataSourceId &#91;required&#93; The unique identifier of the data source.
-#' @param description Specifies a new description for the data source.
-#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base for the data source.
-#' @param name &#91;required&#93; Specifies a new name for the data source.
+#' @param dataDeletionPolicy The data deletion policy for the data source that you want to update.
 #' @param serverSideEncryptionConfiguration Contains details about server-side encryption of the data source.
 #' @param vectorIngestionConfiguration Contains details about how to ingest the documents in the data source.
 #'
@@ -8067,116 +8544,21 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, desc
 #' ```
 #' list(
 #'   dataSource = list(
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     dataDeletionPolicy = "RETAIN"|"DELETE",
+#'     knowledgeBaseId = "string",
+#'     dataSourceId = "string",
+#'     name = "string",
+#'     status = "AVAILABLE"|"DELETING"|"DELETE_UNSUCCESSFUL",
+#'     description = "string",
 #'     dataSourceConfiguration = list(
-#'       confluenceConfiguration = list(
-#'         crawlerConfiguration = list(
-#'           filterConfiguration = list(
-#'             patternObjectFilter = list(
-#'               filters = list(
-#'                 list(
-#'                   exclusionFilters = list(
-#'                     "string"
-#'                   ),
-#'                   inclusionFilters = list(
-#'                     "string"
-#'                   ),
-#'                   objectType = "string"
-#'                 )
-#'               )
-#'             ),
-#'             type = "PATTERN"
-#'           )
-#'         ),
-#'         sourceConfiguration = list(
-#'           authType = "BASIC"|"OAUTH2_CLIENT_CREDENTIALS",
-#'           credentialsSecretArn = "string",
-#'           hostType = "SAAS",
-#'           hostUrl = "string"
-#'         )
-#'       ),
+#'       type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"REDSHIFT_METADATA",
 #'       s3Configuration = list(
 #'         bucketArn = "string",
-#'         bucketOwnerAccountId = "string",
 #'         inclusionPrefixes = list(
 #'           "string"
-#'         )
-#'       ),
-#'       salesforceConfiguration = list(
-#'         crawlerConfiguration = list(
-#'           filterConfiguration = list(
-#'             patternObjectFilter = list(
-#'               filters = list(
-#'                 list(
-#'                   exclusionFilters = list(
-#'                     "string"
-#'                   ),
-#'                   inclusionFilters = list(
-#'                     "string"
-#'                   ),
-#'                   objectType = "string"
-#'                 )
-#'               )
-#'             ),
-#'             type = "PATTERN"
-#'           )
 #'         ),
-#'         sourceConfiguration = list(
-#'           authType = "OAUTH2_CLIENT_CREDENTIALS",
-#'           credentialsSecretArn = "string",
-#'           hostUrl = "string"
-#'         )
+#'         bucketOwnerAccountId = "string"
 #'       ),
-#'       sharePointConfiguration = list(
-#'         crawlerConfiguration = list(
-#'           filterConfiguration = list(
-#'             patternObjectFilter = list(
-#'               filters = list(
-#'                 list(
-#'                   exclusionFilters = list(
-#'                     "string"
-#'                   ),
-#'                   inclusionFilters = list(
-#'                     "string"
-#'                   ),
-#'                   objectType = "string"
-#'                 )
-#'               )
-#'             ),
-#'             type = "PATTERN"
-#'           )
-#'         ),
-#'         sourceConfiguration = list(
-#'           authType = "OAUTH2_CLIENT_CREDENTIALS"|"OAUTH2_SHAREPOINT_APP_ONLY_CLIENT_CREDENTIALS",
-#'           credentialsSecretArn = "string",
-#'           domain = "string",
-#'           hostType = "ONLINE",
-#'           siteUrls = list(
-#'             "string"
-#'           ),
-#'           tenantId = "string"
-#'         )
-#'       ),
-#'       type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"REDSHIFT_METADATA",
 #'       webConfiguration = list(
-#'         crawlerConfiguration = list(
-#'           crawlerLimits = list(
-#'             maxPages = 123,
-#'             rateLimit = 123
-#'           ),
-#'           exclusionFilters = list(
-#'             "string"
-#'           ),
-#'           inclusionFilters = list(
-#'             "string"
-#'           ),
-#'           scope = "HOST_ONLY"|"SUBDOMAINS",
-#'           userAgent = "string",
-#'           userAgentHeader = "string"
-#'         ),
 #'         sourceConfiguration = list(
 #'           urlConfiguration = list(
 #'             seedUrls = list(
@@ -8185,22 +8567,107 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, desc
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         crawlerConfiguration = list(
+#'           crawlerLimits = list(
+#'             rateLimit = 123,
+#'             maxPages = 123
+#'           ),
+#'           inclusionFilters = list(
+#'             "string"
+#'           ),
+#'           exclusionFilters = list(
+#'             "string"
+#'           ),
+#'           scope = "HOST_ONLY"|"SUBDOMAINS",
+#'           userAgent = "string",
+#'           userAgentHeader = "string"
+#'         )
+#'       ),
+#'       confluenceConfiguration = list(
+#'         sourceConfiguration = list(
+#'           hostUrl = "string",
+#'           hostType = "SAAS",
+#'           authType = "BASIC"|"OAUTH2_CLIENT_CREDENTIALS",
+#'           credentialsSecretArn = "string"
+#'         ),
+#'         crawlerConfiguration = list(
+#'           filterConfiguration = list(
+#'             type = "PATTERN",
+#'             patternObjectFilter = list(
+#'               filters = list(
+#'                 list(
+#'                   objectType = "string",
+#'                   inclusionFilters = list(
+#'                     "string"
+#'                   ),
+#'                   exclusionFilters = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       salesforceConfiguration = list(
+#'         sourceConfiguration = list(
+#'           hostUrl = "string",
+#'           authType = "OAUTH2_CLIENT_CREDENTIALS",
+#'           credentialsSecretArn = "string"
+#'         ),
+#'         crawlerConfiguration = list(
+#'           filterConfiguration = list(
+#'             type = "PATTERN",
+#'             patternObjectFilter = list(
+#'               filters = list(
+#'                 list(
+#'                   objectType = "string",
+#'                   inclusionFilters = list(
+#'                     "string"
+#'                   ),
+#'                   exclusionFilters = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sharePointConfiguration = list(
+#'         sourceConfiguration = list(
+#'           tenantId = "string",
+#'           domain = "string",
+#'           siteUrls = list(
+#'             "string"
+#'           ),
+#'           hostType = "ONLINE",
+#'           authType = "OAUTH2_CLIENT_CREDENTIALS"|"OAUTH2_SHAREPOINT_APP_ONLY_CLIENT_CREDENTIALS",
+#'           credentialsSecretArn = "string"
+#'         ),
+#'         crawlerConfiguration = list(
+#'           filterConfiguration = list(
+#'             type = "PATTERN",
+#'             patternObjectFilter = list(
+#'               filters = list(
+#'                 list(
+#'                   objectType = "string",
+#'                   inclusionFilters = list(
+#'                     "string"
+#'                   ),
+#'                   exclusionFilters = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
-#'     dataSourceId = "string",
-#'     description = "string",
-#'     failureReasons = list(
-#'       "string"
-#'     ),
-#'     knowledgeBaseId = "string",
-#'     name = "string",
 #'     serverSideEncryptionConfiguration = list(
 #'       kmsKeyArn = "string"
-#'     ),
-#'     status = "AVAILABLE"|"DELETING"|"DELETE_UNSUCCESSFUL",
-#'     updatedAt = as.POSIXct(
-#'       "2015-01-01"
 #'     ),
 #'     vectorIngestionConfiguration = list(
 #'       chunkingConfiguration = list(
@@ -8218,19 +8685,10 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, desc
 #'           overlapTokens = 123
 #'         ),
 #'         semanticChunkingConfiguration = list(
-#'           breakpointPercentileThreshold = 123,
+#'           maxTokens = 123,
 #'           bufferSize = 123,
-#'           maxTokens = 123
+#'           breakpointPercentileThreshold = 123
 #'         )
-#'       ),
-#'       contextEnrichmentConfiguration = list(
-#'         bedrockFoundationModelConfiguration = list(
-#'           enrichmentStrategyConfiguration = list(
-#'             method = "CHUNK_ENTITY_EXTRACTION"
-#'           ),
-#'           modelArn = "string"
-#'         ),
-#'         type = "BEDROCK_FOUNDATION_MODEL"
 #'       ),
 #'       customTransformationConfiguration = list(
 #'         intermediateStorage = list(
@@ -8240,28 +8698,47 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, desc
 #'         ),
 #'         transformations = list(
 #'           list(
-#'             stepToApply = "POST_CHUNKING",
 #'             transformationFunction = list(
 #'               transformationLambdaConfiguration = list(
 #'                 lambdaArn = "string"
 #'               )
-#'             )
+#'             ),
+#'             stepToApply = "POST_CHUNKING"
 #'           )
 #'         )
 #'       ),
 #'       parsingConfiguration = list(
-#'         bedrockDataAutomationConfiguration = list(
-#'           parsingModality = "MULTIMODAL"
-#'         ),
+#'         parsingStrategy = "BEDROCK_FOUNDATION_MODEL"|"BEDROCK_DATA_AUTOMATION",
 #'         bedrockFoundationModelConfiguration = list(
 #'           modelArn = "string",
-#'           parsingModality = "MULTIMODAL",
 #'           parsingPrompt = list(
 #'             parsingPromptText = "string"
-#'           )
+#'           ),
+#'           parsingModality = "MULTIMODAL"
 #'         ),
-#'         parsingStrategy = "BEDROCK_FOUNDATION_MODEL"|"BEDROCK_DATA_AUTOMATION"
+#'         bedrockDataAutomationConfiguration = list(
+#'           parsingModality = "MULTIMODAL"
+#'         )
+#'       ),
+#'       contextEnrichmentConfiguration = list(
+#'         type = "BEDROCK_FOUNDATION_MODEL",
+#'         bedrockFoundationModelConfiguration = list(
+#'           enrichmentStrategyConfiguration = list(
+#'             method = "CHUNK_ENTITY_EXTRACTION"
+#'           ),
+#'           modelArn = "string"
+#'         )
 #'       )
+#'     ),
+#'     dataDeletionPolicy = "RETAIN"|"DELETE",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     failureReasons = list(
+#'       "string"
 #'     )
 #'   )
 #' )
@@ -8270,113 +8747,20 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, desc
 #' @section Request syntax:
 #' ```
 #' svc$update_data_source(
-#'   dataDeletionPolicy = "RETAIN"|"DELETE",
+#'   knowledgeBaseId = "string",
+#'   dataSourceId = "string",
+#'   name = "string",
+#'   description = "string",
 #'   dataSourceConfiguration = list(
-#'     confluenceConfiguration = list(
-#'       crawlerConfiguration = list(
-#'         filterConfiguration = list(
-#'           patternObjectFilter = list(
-#'             filters = list(
-#'               list(
-#'                 exclusionFilters = list(
-#'                   "string"
-#'                 ),
-#'                 inclusionFilters = list(
-#'                   "string"
-#'                 ),
-#'                 objectType = "string"
-#'               )
-#'             )
-#'           ),
-#'           type = "PATTERN"
-#'         )
-#'       ),
-#'       sourceConfiguration = list(
-#'         authType = "BASIC"|"OAUTH2_CLIENT_CREDENTIALS",
-#'         credentialsSecretArn = "string",
-#'         hostType = "SAAS",
-#'         hostUrl = "string"
-#'       )
-#'     ),
+#'     type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"REDSHIFT_METADATA",
 #'     s3Configuration = list(
 #'       bucketArn = "string",
-#'       bucketOwnerAccountId = "string",
 #'       inclusionPrefixes = list(
 #'         "string"
-#'       )
-#'     ),
-#'     salesforceConfiguration = list(
-#'       crawlerConfiguration = list(
-#'         filterConfiguration = list(
-#'           patternObjectFilter = list(
-#'             filters = list(
-#'               list(
-#'                 exclusionFilters = list(
-#'                   "string"
-#'                 ),
-#'                 inclusionFilters = list(
-#'                   "string"
-#'                 ),
-#'                 objectType = "string"
-#'               )
-#'             )
-#'           ),
-#'           type = "PATTERN"
-#'         )
 #'       ),
-#'       sourceConfiguration = list(
-#'         authType = "OAUTH2_CLIENT_CREDENTIALS",
-#'         credentialsSecretArn = "string",
-#'         hostUrl = "string"
-#'       )
+#'       bucketOwnerAccountId = "string"
 #'     ),
-#'     sharePointConfiguration = list(
-#'       crawlerConfiguration = list(
-#'         filterConfiguration = list(
-#'           patternObjectFilter = list(
-#'             filters = list(
-#'               list(
-#'                 exclusionFilters = list(
-#'                   "string"
-#'                 ),
-#'                 inclusionFilters = list(
-#'                   "string"
-#'                 ),
-#'                 objectType = "string"
-#'               )
-#'             )
-#'           ),
-#'           type = "PATTERN"
-#'         )
-#'       ),
-#'       sourceConfiguration = list(
-#'         authType = "OAUTH2_CLIENT_CREDENTIALS"|"OAUTH2_SHAREPOINT_APP_ONLY_CLIENT_CREDENTIALS",
-#'         credentialsSecretArn = "string",
-#'         domain = "string",
-#'         hostType = "ONLINE",
-#'         siteUrls = list(
-#'           "string"
-#'         ),
-#'         tenantId = "string"
-#'       )
-#'     ),
-#'     type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"REDSHIFT_METADATA",
 #'     webConfiguration = list(
-#'       crawlerConfiguration = list(
-#'         crawlerLimits = list(
-#'           maxPages = 123,
-#'           rateLimit = 123
-#'         ),
-#'         exclusionFilters = list(
-#'           "string"
-#'         ),
-#'         inclusionFilters = list(
-#'           "string"
-#'         ),
-#'         scope = "HOST_ONLY"|"SUBDOMAINS",
-#'         userAgent = "string",
-#'         userAgentHeader = "string"
-#'       ),
 #'       sourceConfiguration = list(
 #'         urlConfiguration = list(
 #'           seedUrls = list(
@@ -8385,13 +8769,106 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, desc
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       crawlerConfiguration = list(
+#'         crawlerLimits = list(
+#'           rateLimit = 123,
+#'           maxPages = 123
+#'         ),
+#'         inclusionFilters = list(
+#'           "string"
+#'         ),
+#'         exclusionFilters = list(
+#'           "string"
+#'         ),
+#'         scope = "HOST_ONLY"|"SUBDOMAINS",
+#'         userAgent = "string",
+#'         userAgentHeader = "string"
+#'       )
+#'     ),
+#'     confluenceConfiguration = list(
+#'       sourceConfiguration = list(
+#'         hostUrl = "string",
+#'         hostType = "SAAS",
+#'         authType = "BASIC"|"OAUTH2_CLIENT_CREDENTIALS",
+#'         credentialsSecretArn = "string"
+#'       ),
+#'       crawlerConfiguration = list(
+#'         filterConfiguration = list(
+#'           type = "PATTERN",
+#'           patternObjectFilter = list(
+#'             filters = list(
+#'               list(
+#'                 objectType = "string",
+#'                 inclusionFilters = list(
+#'                   "string"
+#'                 ),
+#'                 exclusionFilters = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     salesforceConfiguration = list(
+#'       sourceConfiguration = list(
+#'         hostUrl = "string",
+#'         authType = "OAUTH2_CLIENT_CREDENTIALS",
+#'         credentialsSecretArn = "string"
+#'       ),
+#'       crawlerConfiguration = list(
+#'         filterConfiguration = list(
+#'           type = "PATTERN",
+#'           patternObjectFilter = list(
+#'             filters = list(
+#'               list(
+#'                 objectType = "string",
+#'                 inclusionFilters = list(
+#'                   "string"
+#'                 ),
+#'                 exclusionFilters = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     sharePointConfiguration = list(
+#'       sourceConfiguration = list(
+#'         tenantId = "string",
+#'         domain = "string",
+#'         siteUrls = list(
+#'           "string"
+#'         ),
+#'         hostType = "ONLINE",
+#'         authType = "OAUTH2_CLIENT_CREDENTIALS"|"OAUTH2_SHAREPOINT_APP_ONLY_CLIENT_CREDENTIALS",
+#'         credentialsSecretArn = "string"
+#'       ),
+#'       crawlerConfiguration = list(
+#'         filterConfiguration = list(
+#'           type = "PATTERN",
+#'           patternObjectFilter = list(
+#'             filters = list(
+#'               list(
+#'                 objectType = "string",
+#'                 inclusionFilters = list(
+#'                   "string"
+#'                 ),
+#'                 exclusionFilters = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
-#'   dataSourceId = "string",
-#'   description = "string",
-#'   knowledgeBaseId = "string",
-#'   name = "string",
+#'   dataDeletionPolicy = "RETAIN"|"DELETE",
 #'   serverSideEncryptionConfiguration = list(
 #'     kmsKeyArn = "string"
 #'   ),
@@ -8411,19 +8888,10 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, desc
 #'         overlapTokens = 123
 #'       ),
 #'       semanticChunkingConfiguration = list(
-#'         breakpointPercentileThreshold = 123,
+#'         maxTokens = 123,
 #'         bufferSize = 123,
-#'         maxTokens = 123
+#'         breakpointPercentileThreshold = 123
 #'       )
-#'     ),
-#'     contextEnrichmentConfiguration = list(
-#'       bedrockFoundationModelConfiguration = list(
-#'         enrichmentStrategyConfiguration = list(
-#'           method = "CHUNK_ENTITY_EXTRACTION"
-#'         ),
-#'         modelArn = "string"
-#'       ),
-#'       type = "BEDROCK_FOUNDATION_MODEL"
 #'     ),
 #'     customTransformationConfiguration = list(
 #'       intermediateStorage = list(
@@ -8433,27 +8901,36 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, desc
 #'       ),
 #'       transformations = list(
 #'         list(
-#'           stepToApply = "POST_CHUNKING",
 #'           transformationFunction = list(
 #'             transformationLambdaConfiguration = list(
 #'               lambdaArn = "string"
 #'             )
-#'           )
+#'           ),
+#'           stepToApply = "POST_CHUNKING"
 #'         )
 #'       )
 #'     ),
 #'     parsingConfiguration = list(
-#'       bedrockDataAutomationConfiguration = list(
-#'         parsingModality = "MULTIMODAL"
-#'       ),
+#'       parsingStrategy = "BEDROCK_FOUNDATION_MODEL"|"BEDROCK_DATA_AUTOMATION",
 #'       bedrockFoundationModelConfiguration = list(
 #'         modelArn = "string",
-#'         parsingModality = "MULTIMODAL",
 #'         parsingPrompt = list(
 #'           parsingPromptText = "string"
-#'         )
+#'         ),
+#'         parsingModality = "MULTIMODAL"
 #'       ),
-#'       parsingStrategy = "BEDROCK_FOUNDATION_MODEL"|"BEDROCK_DATA_AUTOMATION"
+#'       bedrockDataAutomationConfiguration = list(
+#'         parsingModality = "MULTIMODAL"
+#'       )
+#'     ),
+#'     contextEnrichmentConfiguration = list(
+#'       type = "BEDROCK_FOUNDATION_MODEL",
+#'       bedrockFoundationModelConfiguration = list(
+#'         enrichmentStrategyConfiguration = list(
+#'           method = "CHUNK_ENTITY_EXTRACTION"
+#'         ),
+#'         modelArn = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -8464,7 +8941,7 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, desc
 #' @rdname bedrockagent_update_data_source
 #'
 #' @aliases bedrockagent_update_data_source
-bedrockagent_update_data_source <- function(dataDeletionPolicy = NULL, dataSourceConfiguration, dataSourceId, description = NULL, knowledgeBaseId, name, serverSideEncryptionConfiguration = NULL, vectorIngestionConfiguration = NULL) {
+bedrockagent_update_data_source <- function(knowledgeBaseId, dataSourceId, name, description = NULL, dataSourceConfiguration, dataDeletionPolicy = NULL, serverSideEncryptionConfiguration = NULL, vectorIngestionConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateDataSource",
     http_method = "PUT",
@@ -8473,7 +8950,7 @@ bedrockagent_update_data_source <- function(dataDeletionPolicy = NULL, dataSourc
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$update_data_source_input(dataDeletionPolicy = dataDeletionPolicy, dataSourceConfiguration = dataSourceConfiguration, dataSourceId = dataSourceId, description = description, knowledgeBaseId = knowledgeBaseId, name = name, serverSideEncryptionConfiguration = serverSideEncryptionConfiguration, vectorIngestionConfiguration = vectorIngestionConfiguration)
+  input <- .bedrockagent$update_data_source_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId, name = name, description = description, dataSourceConfiguration = dataSourceConfiguration, dataDeletionPolicy = dataDeletionPolicy, serverSideEncryptionConfiguration = serverSideEncryptionConfiguration, vectorIngestionConfiguration = vectorIngestionConfiguration)
   output <- .bedrockagent$update_data_source_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -8494,157 +8971,139 @@ bedrockagent_update_data_source <- function(dataDeletionPolicy = NULL, dataSourc
 #' in the Amazon Bedrock User Guide.
 #'
 #' @usage
-#' bedrockagent_update_flow(customerEncryptionKeyArn, definition,
-#'   description, executionRoleArn, flowIdentifier, name)
+#' bedrockagent_update_flow(name, description, executionRoleArn,
+#'   customerEncryptionKeyArn, definition, flowIdentifier)
 #'
-#' @param customerEncryptionKeyArn The Amazon Resource Name (ARN) of the KMS key to encrypt the flow.
-#' @param definition A definition of the nodes and the connections between the nodes in the
-#' flow.
+#' @param name &#91;required&#93; A name for the flow.
 #' @param description A description for the flow.
 #' @param executionRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the service role with permissions to
 #' create and manage a flow. For more information, see [Create a service
 #' role for flows in Amazon
 #' Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-permissions.html)
 #' in the Amazon Bedrock User Guide.
+#' @param customerEncryptionKeyArn The Amazon Resource Name (ARN) of the KMS key to encrypt the flow.
+#' @param definition A definition of the nodes and the connections between the nodes in the
+#' flow.
 #' @param flowIdentifier &#91;required&#93; The unique identifier of the flow.
-#' @param name &#91;required&#93; A name for the flow.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   name = "string",
+#'   description = "string",
+#'   executionRoleArn = "string",
+#'   customerEncryptionKeyArn = "string",
+#'   id = "string",
 #'   arn = "string",
+#'   status = "Failed"|"Prepared"|"Preparing"|"NotPrepared",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   customerEncryptionKeyArn = "string",
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   version = "string",
 #'   definition = list(
-#'     connections = list(
-#'       list(
-#'         configuration = list(
-#'           conditional = list(
-#'             condition = "string"
-#'           ),
-#'           data = list(
-#'             sourceOutput = "string",
-#'             targetInput = "string"
-#'           )
-#'         ),
-#'         name = "string",
-#'         source = "string",
-#'         target = "string",
-#'         type = "Data"|"Conditional"
-#'       )
-#'     ),
 #'     nodes = list(
 #'       list(
+#'         name = "string",
+#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"|"InlineCode"|"Loop"|"LoopInput"|"LoopController",
 #'         configuration = list(
-#'           agent = list(
-#'             agentAliasArn = "string"
-#'           ),
-#'           collector = list(),
-#'           condition = list(
-#'             conditions = list(
-#'               list(
-#'                 expression = "string",
-#'                 name = "string"
-#'               )
-#'             )
-#'           ),
-#'           inlineCode = list(
-#'             code = "string",
-#'             language = "Python_3"
-#'           ),
 #'           input = list(),
-#'           iterator = list(),
+#'           output = list(),
 #'           knowledgeBase = list(
+#'             knowledgeBaseId = "string",
+#'             modelId = "string",
 #'             guardrailConfiguration = list(
 #'               guardrailIdentifier = "string",
 #'               guardrailVersion = "string"
 #'             ),
-#'             knowledgeBaseId = "string",
-#'             modelId = "string"
+#'             numberOfResults = 123,
+#'             promptTemplate = list(
+#'               textPromptTemplate = "string"
+#'             ),
+#'             inferenceConfiguration = list(
+#'               text = list(
+#'                 temperature = 123.0,
+#'                 topP = 123.0,
+#'                 maxTokens = 123,
+#'                 stopSequences = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             rerankingConfiguration = list(
+#'               type = "BEDROCK_RERANKING_MODEL",
+#'               bedrockRerankingConfiguration = list(
+#'                 modelConfiguration = list(
+#'                   modelArn = "string",
+#'                   additionalModelRequestFields = list(
+#'                     list()
+#'                   )
+#'                 ),
+#'                 numberOfRerankedResults = 123,
+#'                 metadataConfiguration = list(
+#'                   selectionMode = "SELECTIVE"|"ALL",
+#'                   selectiveModeConfiguration = list(
+#'                     fieldsToInclude = list(
+#'                       list(
+#'                         fieldName = "string"
+#'                       )
+#'                     ),
+#'                     fieldsToExclude = list(
+#'                       list(
+#'                         fieldName = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             orchestrationConfiguration = list(
+#'               promptTemplate = list(
+#'                 textPromptTemplate = "string"
+#'               ),
+#'               inferenceConfig = list(
+#'                 text = list(
+#'                   temperature = 123.0,
+#'                   topP = 123.0,
+#'                   maxTokens = 123,
+#'                   stopSequences = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               additionalModelRequestFields = list(
+#'                 list()
+#'               ),
+#'               performanceConfig = list(
+#'                 latency = "standard"|"optimized"
+#'               )
+#'             )
 #'           ),
-#'           lambdaFunction = list(
-#'             lambdaArn = "string"
+#'           condition = list(
+#'             conditions = list(
+#'               list(
+#'                 name = "string",
+#'                 expression = "string"
+#'               )
+#'             )
 #'           ),
 #'           lex = list(
 #'             botAliasArn = "string",
 #'             localeId = "string"
 #'           ),
-#'           output = list(),
 #'           prompt = list(
-#'             guardrailConfiguration = list(
-#'               guardrailIdentifier = "string",
-#'               guardrailVersion = "string"
-#'             ),
 #'             sourceConfiguration = list(
+#'               resource = list(
+#'                 promptArn = "string"
+#'               ),
 #'               inline = list(
-#'                 additionalModelRequestFields = list(),
-#'                 inferenceConfiguration = list(
-#'                   text = list(
-#'                     maxTokens = 123,
-#'                     stopSequences = list(
-#'                       "string"
-#'                     ),
-#'                     temperature = 123.0,
-#'                     topP = 123.0
-#'                   )
-#'                 ),
-#'                 modelId = "string",
+#'                 templateType = "TEXT"|"CHAT",
 #'                 templateConfiguration = list(
-#'                   chat = list(
-#'                     inputVariables = list(
-#'                       list(
-#'                         name = "string"
-#'                       )
-#'                     ),
-#'                     messages = list(
-#'                       list(
-#'                         content = list(
-#'                           list(
-#'                             cachePoint = list(
-#'                               type = "default"
-#'                             ),
-#'                             text = "string"
-#'                           )
-#'                         ),
-#'                         role = "user"|"assistant"
-#'                       )
-#'                     ),
-#'                     system = list(
-#'                       list(
-#'                         cachePoint = list(
-#'                           type = "default"
-#'                         ),
-#'                         text = "string"
-#'                       )
-#'                     ),
-#'                     toolConfiguration = list(
-#'                       toolChoice = list(
-#'                         any = list(),
-#'                         auto = list(),
-#'                         tool = list(
-#'                           name = "string"
-#'                         )
-#'                       ),
-#'                       tools = list(
-#'                         list(
-#'                           cachePoint = list(
-#'                             type = "default"
-#'                           ),
-#'                           toolSpec = list(
-#'                             description = "string",
-#'                             inputSchema = list(
-#'                               json = list()
-#'                             ),
-#'                             name = "string"
-#'                           )
-#'                         )
-#'                       )
-#'                     )
-#'                   ),
 #'                   text = list(
+#'                     text = "string",
 #'                     cachePoint = list(
 #'                       type = "default"
 #'                     ),
@@ -8652,16 +9111,91 @@ bedrockagent_update_data_source <- function(dataDeletionPolicy = NULL, dataSourc
 #'                       list(
 #'                         name = "string"
 #'                       )
+#'                     )
+#'                   ),
+#'                   chat = list(
+#'                     messages = list(
+#'                       list(
+#'                         role = "user"|"assistant",
+#'                         content = list(
+#'                           list(
+#'                             text = "string",
+#'                             cachePoint = list(
+#'                               type = "default"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
 #'                     ),
-#'                     text = "string"
+#'                     system = list(
+#'                       list(
+#'                         text = "string",
+#'                         cachePoint = list(
+#'                           type = "default"
+#'                         )
+#'                       )
+#'                     ),
+#'                     inputVariables = list(
+#'                       list(
+#'                         name = "string"
+#'                       )
+#'                     ),
+#'                     toolConfiguration = list(
+#'                       tools = list(
+#'                         list(
+#'                           toolSpec = list(
+#'                             name = "string",
+#'                             description = "string",
+#'                             inputSchema = list(
+#'                               json = list()
+#'                             )
+#'                           ),
+#'                           cachePoint = list(
+#'                             type = "default"
+#'                           )
+#'                         )
+#'                       ),
+#'                       toolChoice = list(
+#'                         auto = list(),
+#'                         any = list(),
+#'                         tool = list(
+#'                           name = "string"
+#'                         )
+#'                       )
+#'                     )
 #'                   )
 #'                 ),
-#'                 templateType = "TEXT"|"CHAT"
-#'               ),
-#'               resource = list(
-#'                 promptArn = "string"
+#'                 modelId = "string",
+#'                 inferenceConfiguration = list(
+#'                   text = list(
+#'                     temperature = 123.0,
+#'                     topP = 123.0,
+#'                     maxTokens = 123,
+#'                     stopSequences = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 additionalModelRequestFields = list()
+#'               )
+#'             ),
+#'             guardrailConfiguration = list(
+#'               guardrailIdentifier = "string",
+#'               guardrailVersion = "string"
+#'             )
+#'           ),
+#'           lambdaFunction = list(
+#'             lambdaArn = "string"
+#'           ),
+#'           storage = list(
+#'             serviceConfiguration = list(
+#'               s3 = list(
+#'                 bucketName = "string"
 #'               )
 #'             )
+#'           ),
+#'           agent = list(
+#'             agentAliasArn = "string"
 #'           ),
 #'           retrieval = list(
 #'             serviceConfiguration = list(
@@ -8670,175 +9204,168 @@ bedrockagent_update_data_source <- function(dataDeletionPolicy = NULL, dataSourc
 #'               )
 #'             )
 #'           ),
-#'           storage = list(
-#'             serviceConfiguration = list(
-#'               s3 = list(
-#'                 bucketName = "string"
-#'               )
-#'             )
+#'           iterator = list(),
+#'           collector = list(),
+#'           inlineCode = list(
+#'             code = "string",
+#'             language = "Python_3"
+#'           ),
+#'           loop = list(
+#'             definition = list()
+#'           ),
+#'           loopInput = list(),
+#'           loopController = list(
+#'             continueCondition = list(
+#'               name = "string",
+#'               expression = "string"
+#'             ),
+#'             maxIterations = 123
 #'           )
 #'         ),
 #'         inputs = list(
 #'           list(
-#'             expression = "string",
 #'             name = "string",
-#'             type = "String"|"Number"|"Boolean"|"Object"|"Array"
+#'             type = "String"|"Number"|"Boolean"|"Object"|"Array",
+#'             expression = "string",
+#'             category = "LoopCondition"|"ReturnValueToLoopStart"|"ExitLoop"
 #'           )
 #'         ),
-#'         name = "string",
 #'         outputs = list(
 #'           list(
 #'             name = "string",
 #'             type = "String"|"Number"|"Boolean"|"Object"|"Array"
 #'           )
-#'         ),
-#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"|"InlineCode"
+#'         )
+#'       )
+#'     ),
+#'     connections = list(
+#'       list(
+#'         type = "Data"|"Conditional",
+#'         name = "string",
+#'         source = "string",
+#'         target = "string",
+#'         configuration = list(
+#'           data = list(
+#'             sourceOutput = "string",
+#'             targetInput = "string"
+#'           ),
+#'           conditional = list(
+#'             condition = "string"
+#'           )
+#'         )
 #'       )
 #'     )
-#'   ),
-#'   description = "string",
-#'   executionRoleArn = "string",
-#'   id = "string",
-#'   name = "string",
-#'   status = "Failed"|"Prepared"|"Preparing"|"NotPrepared",
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   version = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_flow(
+#'   name = "string",
+#'   description = "string",
+#'   executionRoleArn = "string",
 #'   customerEncryptionKeyArn = "string",
 #'   definition = list(
-#'     connections = list(
-#'       list(
-#'         configuration = list(
-#'           conditional = list(
-#'             condition = "string"
-#'           ),
-#'           data = list(
-#'             sourceOutput = "string",
-#'             targetInput = "string"
-#'           )
-#'         ),
-#'         name = "string",
-#'         source = "string",
-#'         target = "string",
-#'         type = "Data"|"Conditional"
-#'       )
-#'     ),
 #'     nodes = list(
 #'       list(
+#'         name = "string",
+#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"|"InlineCode"|"Loop"|"LoopInput"|"LoopController",
 #'         configuration = list(
-#'           agent = list(
-#'             agentAliasArn = "string"
-#'           ),
-#'           collector = list(),
-#'           condition = list(
-#'             conditions = list(
-#'               list(
-#'                 expression = "string",
-#'                 name = "string"
-#'               )
-#'             )
-#'           ),
-#'           inlineCode = list(
-#'             code = "string",
-#'             language = "Python_3"
-#'           ),
 #'           input = list(),
-#'           iterator = list(),
+#'           output = list(),
 #'           knowledgeBase = list(
+#'             knowledgeBaseId = "string",
+#'             modelId = "string",
 #'             guardrailConfiguration = list(
 #'               guardrailIdentifier = "string",
 #'               guardrailVersion = "string"
 #'             ),
-#'             knowledgeBaseId = "string",
-#'             modelId = "string"
+#'             numberOfResults = 123,
+#'             promptTemplate = list(
+#'               textPromptTemplate = "string"
+#'             ),
+#'             inferenceConfiguration = list(
+#'               text = list(
+#'                 temperature = 123.0,
+#'                 topP = 123.0,
+#'                 maxTokens = 123,
+#'                 stopSequences = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             rerankingConfiguration = list(
+#'               type = "BEDROCK_RERANKING_MODEL",
+#'               bedrockRerankingConfiguration = list(
+#'                 modelConfiguration = list(
+#'                   modelArn = "string",
+#'                   additionalModelRequestFields = list(
+#'                     list()
+#'                   )
+#'                 ),
+#'                 numberOfRerankedResults = 123,
+#'                 metadataConfiguration = list(
+#'                   selectionMode = "SELECTIVE"|"ALL",
+#'                   selectiveModeConfiguration = list(
+#'                     fieldsToInclude = list(
+#'                       list(
+#'                         fieldName = "string"
+#'                       )
+#'                     ),
+#'                     fieldsToExclude = list(
+#'                       list(
+#'                         fieldName = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             orchestrationConfiguration = list(
+#'               promptTemplate = list(
+#'                 textPromptTemplate = "string"
+#'               ),
+#'               inferenceConfig = list(
+#'                 text = list(
+#'                   temperature = 123.0,
+#'                   topP = 123.0,
+#'                   maxTokens = 123,
+#'                   stopSequences = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               additionalModelRequestFields = list(
+#'                 list()
+#'               ),
+#'               performanceConfig = list(
+#'                 latency = "standard"|"optimized"
+#'               )
+#'             )
 #'           ),
-#'           lambdaFunction = list(
-#'             lambdaArn = "string"
+#'           condition = list(
+#'             conditions = list(
+#'               list(
+#'                 name = "string",
+#'                 expression = "string"
+#'               )
+#'             )
 #'           ),
 #'           lex = list(
 #'             botAliasArn = "string",
 #'             localeId = "string"
 #'           ),
-#'           output = list(),
 #'           prompt = list(
-#'             guardrailConfiguration = list(
-#'               guardrailIdentifier = "string",
-#'               guardrailVersion = "string"
-#'             ),
 #'             sourceConfiguration = list(
+#'               resource = list(
+#'                 promptArn = "string"
+#'               ),
 #'               inline = list(
-#'                 additionalModelRequestFields = list(),
-#'                 inferenceConfiguration = list(
-#'                   text = list(
-#'                     maxTokens = 123,
-#'                     stopSequences = list(
-#'                       "string"
-#'                     ),
-#'                     temperature = 123.0,
-#'                     topP = 123.0
-#'                   )
-#'                 ),
-#'                 modelId = "string",
+#'                 templateType = "TEXT"|"CHAT",
 #'                 templateConfiguration = list(
-#'                   chat = list(
-#'                     inputVariables = list(
-#'                       list(
-#'                         name = "string"
-#'                       )
-#'                     ),
-#'                     messages = list(
-#'                       list(
-#'                         content = list(
-#'                           list(
-#'                             cachePoint = list(
-#'                               type = "default"
-#'                             ),
-#'                             text = "string"
-#'                           )
-#'                         ),
-#'                         role = "user"|"assistant"
-#'                       )
-#'                     ),
-#'                     system = list(
-#'                       list(
-#'                         cachePoint = list(
-#'                           type = "default"
-#'                         ),
-#'                         text = "string"
-#'                       )
-#'                     ),
-#'                     toolConfiguration = list(
-#'                       toolChoice = list(
-#'                         any = list(),
-#'                         auto = list(),
-#'                         tool = list(
-#'                           name = "string"
-#'                         )
-#'                       ),
-#'                       tools = list(
-#'                         list(
-#'                           cachePoint = list(
-#'                             type = "default"
-#'                           ),
-#'                           toolSpec = list(
-#'                             description = "string",
-#'                             inputSchema = list(
-#'                               json = list()
-#'                             ),
-#'                             name = "string"
-#'                           )
-#'                         )
-#'                       )
-#'                     )
-#'                   ),
 #'                   text = list(
+#'                     text = "string",
 #'                     cachePoint = list(
 #'                       type = "default"
 #'                     ),
@@ -8846,16 +9373,91 @@ bedrockagent_update_data_source <- function(dataDeletionPolicy = NULL, dataSourc
 #'                       list(
 #'                         name = "string"
 #'                       )
+#'                     )
+#'                   ),
+#'                   chat = list(
+#'                     messages = list(
+#'                       list(
+#'                         role = "user"|"assistant",
+#'                         content = list(
+#'                           list(
+#'                             text = "string",
+#'                             cachePoint = list(
+#'                               type = "default"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
 #'                     ),
-#'                     text = "string"
+#'                     system = list(
+#'                       list(
+#'                         text = "string",
+#'                         cachePoint = list(
+#'                           type = "default"
+#'                         )
+#'                       )
+#'                     ),
+#'                     inputVariables = list(
+#'                       list(
+#'                         name = "string"
+#'                       )
+#'                     ),
+#'                     toolConfiguration = list(
+#'                       tools = list(
+#'                         list(
+#'                           toolSpec = list(
+#'                             name = "string",
+#'                             description = "string",
+#'                             inputSchema = list(
+#'                               json = list()
+#'                             )
+#'                           ),
+#'                           cachePoint = list(
+#'                             type = "default"
+#'                           )
+#'                         )
+#'                       ),
+#'                       toolChoice = list(
+#'                         auto = list(),
+#'                         any = list(),
+#'                         tool = list(
+#'                           name = "string"
+#'                         )
+#'                       )
+#'                     )
 #'                   )
 #'                 ),
-#'                 templateType = "TEXT"|"CHAT"
-#'               ),
-#'               resource = list(
-#'                 promptArn = "string"
+#'                 modelId = "string",
+#'                 inferenceConfiguration = list(
+#'                   text = list(
+#'                     temperature = 123.0,
+#'                     topP = 123.0,
+#'                     maxTokens = 123,
+#'                     stopSequences = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 additionalModelRequestFields = list()
+#'               )
+#'             ),
+#'             guardrailConfiguration = list(
+#'               guardrailIdentifier = "string",
+#'               guardrailVersion = "string"
+#'             )
+#'           ),
+#'           lambdaFunction = list(
+#'             lambdaArn = "string"
+#'           ),
+#'           storage = list(
+#'             serviceConfiguration = list(
+#'               s3 = list(
+#'                 bucketName = "string"
 #'               )
 #'             )
+#'           ),
+#'           agent = list(
+#'             agentAliasArn = "string"
 #'           ),
 #'           retrieval = list(
 #'             serviceConfiguration = list(
@@ -8864,36 +9466,59 @@ bedrockagent_update_data_source <- function(dataDeletionPolicy = NULL, dataSourc
 #'               )
 #'             )
 #'           ),
-#'           storage = list(
-#'             serviceConfiguration = list(
-#'               s3 = list(
-#'                 bucketName = "string"
-#'               )
-#'             )
+#'           iterator = list(),
+#'           collector = list(),
+#'           inlineCode = list(
+#'             code = "string",
+#'             language = "Python_3"
+#'           ),
+#'           loop = list(
+#'             definition = list()
+#'           ),
+#'           loopInput = list(),
+#'           loopController = list(
+#'             continueCondition = list(
+#'               name = "string",
+#'               expression = "string"
+#'             ),
+#'             maxIterations = 123
 #'           )
 #'         ),
 #'         inputs = list(
 #'           list(
-#'             expression = "string",
 #'             name = "string",
-#'             type = "String"|"Number"|"Boolean"|"Object"|"Array"
+#'             type = "String"|"Number"|"Boolean"|"Object"|"Array",
+#'             expression = "string",
+#'             category = "LoopCondition"|"ReturnValueToLoopStart"|"ExitLoop"
 #'           )
 #'         ),
-#'         name = "string",
 #'         outputs = list(
 #'           list(
 #'             name = "string",
 #'             type = "String"|"Number"|"Boolean"|"Object"|"Array"
 #'           )
-#'         ),
-#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"|"InlineCode"
+#'         )
+#'       )
+#'     ),
+#'     connections = list(
+#'       list(
+#'         type = "Data"|"Conditional",
+#'         name = "string",
+#'         source = "string",
+#'         target = "string",
+#'         configuration = list(
+#'           data = list(
+#'             sourceOutput = "string",
+#'             targetInput = "string"
+#'           ),
+#'           conditional = list(
+#'             condition = "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
-#'   description = "string",
-#'   executionRoleArn = "string",
-#'   flowIdentifier = "string",
-#'   name = "string"
+#'   flowIdentifier = "string"
 #' )
 #' ```
 #'
@@ -8902,7 +9527,7 @@ bedrockagent_update_data_source <- function(dataDeletionPolicy = NULL, dataSourc
 #' @rdname bedrockagent_update_flow
 #'
 #' @aliases bedrockagent_update_flow
-bedrockagent_update_flow <- function(customerEncryptionKeyArn = NULL, definition = NULL, description = NULL, executionRoleArn, flowIdentifier, name) {
+bedrockagent_update_flow <- function(name, description = NULL, executionRoleArn, customerEncryptionKeyArn = NULL, definition = NULL, flowIdentifier) {
   op <- new_operation(
     name = "UpdateFlow",
     http_method = "PUT",
@@ -8911,7 +9536,7 @@ bedrockagent_update_flow <- function(customerEncryptionKeyArn = NULL, definition
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$update_flow_input(customerEncryptionKeyArn = customerEncryptionKeyArn, definition = definition, description = description, executionRoleArn = executionRoleArn, flowIdentifier = flowIdentifier, name = name)
+  input <- .bedrockagent$update_flow_input(name = name, description = description, executionRoleArn = executionRoleArn, customerEncryptionKeyArn = customerEncryptionKeyArn, definition = definition, flowIdentifier = flowIdentifier)
   output <- .bedrockagent$update_flow_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -8931,31 +9556,37 @@ bedrockagent_update_flow <- function(customerEncryptionKeyArn = NULL, definition
 #' in the Amazon Bedrock User Guide.
 #'
 #' @usage
-#' bedrockagent_update_flow_alias(aliasIdentifier, description,
-#'   flowIdentifier, name, routingConfiguration)
+#' bedrockagent_update_flow_alias(name, description, routingConfiguration,
+#'   concurrencyConfiguration, flowIdentifier, aliasIdentifier)
 #'
-#' @param aliasIdentifier &#91;required&#93; The unique identifier of the alias.
-#' @param description A description for the alias.
-#' @param flowIdentifier &#91;required&#93; The unique identifier of the flow.
 #' @param name &#91;required&#93; The name of the alias.
+#' @param description A description for the alias.
 #' @param routingConfiguration &#91;required&#93; Contains information about the version to which to map the alias.
+#' @param concurrencyConfiguration The configuration that specifies how nodes in the flow are executed in
+#' parallel.
+#' @param flowIdentifier &#91;required&#93; The unique identifier of the flow.
+#' @param aliasIdentifier &#91;required&#93; The unique identifier of the alias.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   arn = "string",
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   description = "string",
-#'   flowId = "string",
-#'   id = "string",
 #'   name = "string",
+#'   description = "string",
 #'   routingConfiguration = list(
 #'     list(
 #'       flowVersion = "string"
 #'     )
+#'   ),
+#'   concurrencyConfiguration = list(
+#'     type = "Automatic"|"Manual",
+#'     maxConcurrency = 123
+#'   ),
+#'   flowId = "string",
+#'   id = "string",
+#'   arn = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
 #'   ),
 #'   updatedAt = as.POSIXct(
 #'     "2015-01-01"
@@ -8966,15 +9597,19 @@ bedrockagent_update_flow <- function(customerEncryptionKeyArn = NULL, definition
 #' @section Request syntax:
 #' ```
 #' svc$update_flow_alias(
-#'   aliasIdentifier = "string",
-#'   description = "string",
-#'   flowIdentifier = "string",
 #'   name = "string",
+#'   description = "string",
 #'   routingConfiguration = list(
 #'     list(
 #'       flowVersion = "string"
 #'     )
-#'   )
+#'   ),
+#'   concurrencyConfiguration = list(
+#'     type = "Automatic"|"Manual",
+#'     maxConcurrency = 123
+#'   ),
+#'   flowIdentifier = "string",
+#'   aliasIdentifier = "string"
 #' )
 #' ```
 #'
@@ -8983,7 +9618,7 @@ bedrockagent_update_flow <- function(customerEncryptionKeyArn = NULL, definition
 #' @rdname bedrockagent_update_flow_alias
 #'
 #' @aliases bedrockagent_update_flow_alias
-bedrockagent_update_flow_alias <- function(aliasIdentifier, description = NULL, flowIdentifier, name, routingConfiguration) {
+bedrockagent_update_flow_alias <- function(name, description = NULL, routingConfiguration, concurrencyConfiguration = NULL, flowIdentifier, aliasIdentifier) {
   op <- new_operation(
     name = "UpdateFlowAlias",
     http_method = "PUT",
@@ -8992,7 +9627,7 @@ bedrockagent_update_flow_alias <- function(aliasIdentifier, description = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$update_flow_alias_input(aliasIdentifier = aliasIdentifier, description = description, flowIdentifier = flowIdentifier, name = name, routingConfiguration = routingConfiguration)
+  input <- .bedrockagent$update_flow_alias_input(name = name, description = description, routingConfiguration = routingConfiguration, concurrencyConfiguration = concurrencyConfiguration, flowIdentifier = flowIdentifier, aliasIdentifier = aliasIdentifier)
   output <- .bedrockagent$update_flow_alias_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -9025,18 +9660,17 @@ bedrockagent_update_flow_alias <- function(aliasIdentifier, description = NULL, 
 #' the same configurations.
 #'
 #' @usage
-#' bedrockagent_update_knowledge_base(description,
-#'   knowledgeBaseConfiguration, knowledgeBaseId, name, roleArn,
-#'   storageConfiguration)
+#' bedrockagent_update_knowledge_base(knowledgeBaseId, name, description,
+#'   roleArn, knowledgeBaseConfiguration, storageConfiguration)
 #'
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base to update.
+#' @param name &#91;required&#93; Specifies a new name for the knowledge base.
 #' @param description Specifies a new description for the knowledge base.
+#' @param roleArn &#91;required&#93; Specifies a different Amazon Resource Name (ARN) of the IAM role with
+#' permissions to invoke API operations on the knowledge base.
 #' @param knowledgeBaseConfiguration &#91;required&#93; Specifies the configuration for the embeddings model used for the
 #' knowledge base. You must use the same configuration as when the
 #' knowledge base was created.
-#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base to update.
-#' @param name &#91;required&#93; Specifies a new name for the knowledge base.
-#' @param roleArn &#91;required&#93; Specifies a different Amazon Resource Name (ARN) of the IAM role with
-#' permissions to invoke API operations on the knowledge base.
 #' @param storageConfiguration Specifies the configuration for the vector store used for the knowledge
 #' base. You must use the same configuration as when the knowledge base was
 #' created.
@@ -9046,65 +9680,55 @@ bedrockagent_update_flow_alias <- function(aliasIdentifier, description = NULL, 
 #' ```
 #' list(
 #'   knowledgeBase = list(
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     description = "string",
-#'     failureReasons = list(
-#'       "string"
-#'     ),
+#'     knowledgeBaseId = "string",
+#'     name = "string",
 #'     knowledgeBaseArn = "string",
+#'     description = "string",
+#'     roleArn = "string",
 #'     knowledgeBaseConfiguration = list(
+#'       type = "VECTOR"|"KENDRA"|"SQL",
+#'       vectorKnowledgeBaseConfiguration = list(
+#'         embeddingModelArn = "string",
+#'         embeddingModelConfiguration = list(
+#'           bedrockEmbeddingModelConfiguration = list(
+#'             dimensions = 123,
+#'             embeddingDataType = "FLOAT32"|"BINARY",
+#'             audio = list(
+#'               list(
+#'                 segmentationConfiguration = list(
+#'                   fixedLengthDuration = 123
+#'                 )
+#'               )
+#'             ),
+#'             video = list(
+#'               list(
+#'                 segmentationConfiguration = list(
+#'                   fixedLengthDuration = 123
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         supplementalDataStorageConfiguration = list(
+#'           storageLocations = list(
+#'             list(
+#'               type = "S3",
+#'               s3Location = list(
+#'                 uri = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
 #'       kendraKnowledgeBaseConfiguration = list(
 #'         kendraIndexArn = "string"
 #'       ),
 #'       sqlKnowledgeBaseConfiguration = list(
+#'         type = "REDSHIFT",
 #'         redshiftConfiguration = list(
-#'           queryEngineConfiguration = list(
-#'             provisionedConfiguration = list(
-#'               authConfiguration = list(
-#'                 databaseUser = "string",
-#'                 type = "IAM"|"USERNAME_PASSWORD"|"USERNAME",
-#'                 usernamePasswordSecretArn = "string"
-#'               ),
-#'               clusterIdentifier = "string"
-#'             ),
-#'             serverlessConfiguration = list(
-#'               authConfiguration = list(
-#'                 type = "IAM"|"USERNAME_PASSWORD",
-#'                 usernamePasswordSecretArn = "string"
-#'               ),
-#'               workgroupArn = "string"
-#'             ),
-#'             type = "SERVERLESS"|"PROVISIONED"
-#'           ),
-#'           queryGenerationConfiguration = list(
-#'             executionTimeoutSeconds = 123,
-#'             generationContext = list(
-#'               curatedQueries = list(
-#'                 list(
-#'                   naturalLanguage = "string",
-#'                   sql = "string"
-#'                 )
-#'               ),
-#'               tables = list(
-#'                 list(
-#'                   columns = list(
-#'                     list(
-#'                       description = "string",
-#'                       inclusion = "INCLUDE"|"EXCLUDE",
-#'                       name = "string"
-#'                     )
-#'                   ),
-#'                   description = "string",
-#'                   inclusion = "INCLUDE"|"EXCLUDE",
-#'                   name = "string"
-#'                 )
-#'               )
-#'             )
-#'           ),
 #'           storageConfigurations = list(
 #'             list(
+#'               type = "REDSHIFT"|"AWS_DATA_CATALOG",
 #'               awsDataCatalogConfiguration = list(
 #'                 tableNames = list(
 #'                   "string"
@@ -9112,115 +9736,144 @@ bedrockagent_update_flow_alias <- function(aliasIdentifier, description = NULL, 
 #'               ),
 #'               redshiftConfiguration = list(
 #'                 databaseName = "string"
-#'               ),
-#'               type = "REDSHIFT"|"AWS_DATA_CATALOG"
+#'               )
 #'             )
-#'           )
-#'         ),
-#'         type = "REDSHIFT"
-#'       ),
-#'       type = "VECTOR"|"KENDRA"|"SQL",
-#'       vectorKnowledgeBaseConfiguration = list(
-#'         embeddingModelArn = "string",
-#'         embeddingModelConfiguration = list(
-#'           bedrockEmbeddingModelConfiguration = list(
-#'             dimensions = 123,
-#'             embeddingDataType = "FLOAT32"|"BINARY"
-#'           )
-#'         ),
-#'         supplementalDataStorageConfiguration = list(
-#'           storageLocations = list(
-#'             list(
-#'               s3Location = list(
-#'                 uri = "string"
+#'           ),
+#'           queryEngineConfiguration = list(
+#'             type = "SERVERLESS"|"PROVISIONED",
+#'             serverlessConfiguration = list(
+#'               workgroupArn = "string",
+#'               authConfiguration = list(
+#'                 type = "IAM"|"USERNAME_PASSWORD",
+#'                 usernamePasswordSecretArn = "string"
+#'               )
+#'             ),
+#'             provisionedConfiguration = list(
+#'               clusterIdentifier = "string",
+#'               authConfiguration = list(
+#'                 type = "IAM"|"USERNAME_PASSWORD"|"USERNAME",
+#'                 databaseUser = "string",
+#'                 usernamePasswordSecretArn = "string"
+#'               )
+#'             )
+#'           ),
+#'           queryGenerationConfiguration = list(
+#'             executionTimeoutSeconds = 123,
+#'             generationContext = list(
+#'               tables = list(
+#'                 list(
+#'                   name = "string",
+#'                   description = "string",
+#'                   inclusion = "INCLUDE"|"EXCLUDE",
+#'                   columns = list(
+#'                     list(
+#'                       name = "string",
+#'                       description = "string",
+#'                       inclusion = "INCLUDE"|"EXCLUDE"
+#'                     )
+#'                   )
+#'                 )
 #'               ),
-#'               type = "S3"
+#'               curatedQueries = list(
+#'                 list(
+#'                   naturalLanguage = "string",
+#'                   sql = "string"
+#'                 )
+#'               )
 #'             )
 #'           )
 #'         )
 #'       )
 #'     ),
-#'     knowledgeBaseId = "string",
-#'     name = "string",
-#'     roleArn = "string",
-#'     status = "CREATING"|"ACTIVE"|"DELETING"|"UPDATING"|"FAILED"|"DELETE_UNSUCCESSFUL",
 #'     storageConfiguration = list(
-#'       mongoDbAtlasConfiguration = list(
-#'         collectionName = "string",
-#'         credentialsSecretArn = "string",
-#'         databaseName = "string",
-#'         endpoint = "string",
-#'         endpointServiceName = "string",
-#'         fieldMapping = list(
-#'           metadataField = "string",
-#'           textField = "string",
-#'           vectorField = "string"
-#'         ),
-#'         textIndexName = "string",
-#'         vectorIndexName = "string"
-#'       ),
-#'       neptuneAnalyticsConfiguration = list(
-#'         fieldMapping = list(
-#'           metadataField = "string",
-#'           textField = "string"
-#'         ),
-#'         graphArn = "string"
-#'       ),
-#'       opensearchManagedClusterConfiguration = list(
-#'         domainArn = "string",
-#'         domainEndpoint = "string",
-#'         fieldMapping = list(
-#'           metadataField = "string",
-#'           textField = "string",
-#'           vectorField = "string"
-#'         ),
-#'         vectorIndexName = "string"
-#'       ),
+#'       type = "OPENSEARCH_SERVERLESS"|"PINECONE"|"REDIS_ENTERPRISE_CLOUD"|"RDS"|"MONGO_DB_ATLAS"|"NEPTUNE_ANALYTICS"|"OPENSEARCH_MANAGED_CLUSTER"|"S3_VECTORS",
 #'       opensearchServerlessConfiguration = list(
 #'         collectionArn = "string",
+#'         vectorIndexName = "string",
 #'         fieldMapping = list(
-#'           metadataField = "string",
+#'           vectorField = "string",
 #'           textField = "string",
-#'           vectorField = "string"
-#'         ),
-#'         vectorIndexName = "string"
+#'           metadataField = "string"
+#'         )
+#'       ),
+#'       opensearchManagedClusterConfiguration = list(
+#'         domainEndpoint = "string",
+#'         domainArn = "string",
+#'         vectorIndexName = "string",
+#'         fieldMapping = list(
+#'           vectorField = "string",
+#'           textField = "string",
+#'           metadataField = "string"
+#'         )
 #'       ),
 #'       pineconeConfiguration = list(
 #'         connectionString = "string",
 #'         credentialsSecretArn = "string",
+#'         namespace = "string",
 #'         fieldMapping = list(
-#'           metadataField = "string",
-#'           textField = "string"
-#'         ),
-#'         namespace = "string"
-#'       ),
-#'       rdsConfiguration = list(
-#'         credentialsSecretArn = "string",
-#'         databaseName = "string",
-#'         fieldMapping = list(
-#'           customMetadataField = "string",
-#'           metadataField = "string",
-#'           primaryKeyField = "string",
 #'           textField = "string",
-#'           vectorField = "string"
-#'         ),
-#'         resourceArn = "string",
-#'         tableName = "string"
+#'           metadataField = "string"
+#'         )
 #'       ),
 #'       redisEnterpriseCloudConfiguration = list(
-#'         credentialsSecretArn = "string",
 #'         endpoint = "string",
+#'         vectorIndexName = "string",
+#'         credentialsSecretArn = "string",
 #'         fieldMapping = list(
-#'           metadataField = "string",
+#'           vectorField = "string",
 #'           textField = "string",
-#'           vectorField = "string"
-#'         ),
-#'         vectorIndexName = "string"
+#'           metadataField = "string"
+#'         )
 #'       ),
-#'       type = "OPENSEARCH_SERVERLESS"|"PINECONE"|"REDIS_ENTERPRISE_CLOUD"|"RDS"|"MONGO_DB_ATLAS"|"NEPTUNE_ANALYTICS"|"OPENSEARCH_MANAGED_CLUSTER"
+#'       rdsConfiguration = list(
+#'         resourceArn = "string",
+#'         credentialsSecretArn = "string",
+#'         databaseName = "string",
+#'         tableName = "string",
+#'         fieldMapping = list(
+#'           primaryKeyField = "string",
+#'           vectorField = "string",
+#'           textField = "string",
+#'           metadataField = "string",
+#'           customMetadataField = "string"
+#'         )
+#'       ),
+#'       mongoDbAtlasConfiguration = list(
+#'         endpoint = "string",
+#'         databaseName = "string",
+#'         collectionName = "string",
+#'         vectorIndexName = "string",
+#'         credentialsSecretArn = "string",
+#'         fieldMapping = list(
+#'           vectorField = "string",
+#'           textField = "string",
+#'           metadataField = "string"
+#'         ),
+#'         endpointServiceName = "string",
+#'         textIndexName = "string"
+#'       ),
+#'       neptuneAnalyticsConfiguration = list(
+#'         graphArn = "string",
+#'         fieldMapping = list(
+#'           textField = "string",
+#'           metadataField = "string"
+#'         )
+#'       ),
+#'       s3VectorsConfiguration = list(
+#'         vectorBucketArn = "string",
+#'         indexArn = "string",
+#'         indexName = "string"
+#'       )
+#'     ),
+#'     status = "CREATING"|"ACTIVE"|"DELETING"|"UPDATING"|"FAILED"|"DELETE_UNSUCCESSFUL",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
 #'     ),
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     failureReasons = list(
+#'       "string"
 #'     )
 #'   )
 #' )
@@ -9229,58 +9882,54 @@ bedrockagent_update_flow_alias <- function(aliasIdentifier, description = NULL, 
 #' @section Request syntax:
 #' ```
 #' svc$update_knowledge_base(
+#'   knowledgeBaseId = "string",
+#'   name = "string",
 #'   description = "string",
+#'   roleArn = "string",
 #'   knowledgeBaseConfiguration = list(
+#'     type = "VECTOR"|"KENDRA"|"SQL",
+#'     vectorKnowledgeBaseConfiguration = list(
+#'       embeddingModelArn = "string",
+#'       embeddingModelConfiguration = list(
+#'         bedrockEmbeddingModelConfiguration = list(
+#'           dimensions = 123,
+#'           embeddingDataType = "FLOAT32"|"BINARY",
+#'           audio = list(
+#'             list(
+#'               segmentationConfiguration = list(
+#'                 fixedLengthDuration = 123
+#'               )
+#'             )
+#'           ),
+#'           video = list(
+#'             list(
+#'               segmentationConfiguration = list(
+#'                 fixedLengthDuration = 123
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       supplementalDataStorageConfiguration = list(
+#'         storageLocations = list(
+#'           list(
+#'             type = "S3",
+#'             s3Location = list(
+#'               uri = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
 #'     kendraKnowledgeBaseConfiguration = list(
 #'       kendraIndexArn = "string"
 #'     ),
 #'     sqlKnowledgeBaseConfiguration = list(
+#'       type = "REDSHIFT",
 #'       redshiftConfiguration = list(
-#'         queryEngineConfiguration = list(
-#'           provisionedConfiguration = list(
-#'             authConfiguration = list(
-#'               databaseUser = "string",
-#'               type = "IAM"|"USERNAME_PASSWORD"|"USERNAME",
-#'               usernamePasswordSecretArn = "string"
-#'             ),
-#'             clusterIdentifier = "string"
-#'           ),
-#'           serverlessConfiguration = list(
-#'             authConfiguration = list(
-#'               type = "IAM"|"USERNAME_PASSWORD",
-#'               usernamePasswordSecretArn = "string"
-#'             ),
-#'             workgroupArn = "string"
-#'           ),
-#'           type = "SERVERLESS"|"PROVISIONED"
-#'         ),
-#'         queryGenerationConfiguration = list(
-#'           executionTimeoutSeconds = 123,
-#'           generationContext = list(
-#'             curatedQueries = list(
-#'               list(
-#'                 naturalLanguage = "string",
-#'                 sql = "string"
-#'               )
-#'             ),
-#'             tables = list(
-#'               list(
-#'                 columns = list(
-#'                   list(
-#'                     description = "string",
-#'                     inclusion = "INCLUDE"|"EXCLUDE",
-#'                     name = "string"
-#'                   )
-#'                 ),
-#'                 description = "string",
-#'                 inclusion = "INCLUDE"|"EXCLUDE",
-#'                 name = "string"
-#'               )
-#'             )
-#'           )
-#'         ),
 #'         storageConfigurations = list(
 #'           list(
+#'             type = "REDSHIFT"|"AWS_DATA_CATALOG",
 #'             awsDataCatalogConfiguration = list(
 #'               tableNames = list(
 #'                 "string"
@@ -9288,111 +9937,134 @@ bedrockagent_update_flow_alias <- function(aliasIdentifier, description = NULL, 
 #'             ),
 #'             redshiftConfiguration = list(
 #'               databaseName = "string"
-#'             ),
-#'             type = "REDSHIFT"|"AWS_DATA_CATALOG"
+#'             )
 #'           )
-#'         )
-#'       ),
-#'       type = "REDSHIFT"
-#'     ),
-#'     type = "VECTOR"|"KENDRA"|"SQL",
-#'     vectorKnowledgeBaseConfiguration = list(
-#'       embeddingModelArn = "string",
-#'       embeddingModelConfiguration = list(
-#'         bedrockEmbeddingModelConfiguration = list(
-#'           dimensions = 123,
-#'           embeddingDataType = "FLOAT32"|"BINARY"
-#'         )
-#'       ),
-#'       supplementalDataStorageConfiguration = list(
-#'         storageLocations = list(
-#'           list(
-#'             s3Location = list(
-#'               uri = "string"
+#'         ),
+#'         queryEngineConfiguration = list(
+#'           type = "SERVERLESS"|"PROVISIONED",
+#'           serverlessConfiguration = list(
+#'             workgroupArn = "string",
+#'             authConfiguration = list(
+#'               type = "IAM"|"USERNAME_PASSWORD",
+#'               usernamePasswordSecretArn = "string"
+#'             )
+#'           ),
+#'           provisionedConfiguration = list(
+#'             clusterIdentifier = "string",
+#'             authConfiguration = list(
+#'               type = "IAM"|"USERNAME_PASSWORD"|"USERNAME",
+#'               databaseUser = "string",
+#'               usernamePasswordSecretArn = "string"
+#'             )
+#'           )
+#'         ),
+#'         queryGenerationConfiguration = list(
+#'           executionTimeoutSeconds = 123,
+#'           generationContext = list(
+#'             tables = list(
+#'               list(
+#'                 name = "string",
+#'                 description = "string",
+#'                 inclusion = "INCLUDE"|"EXCLUDE",
+#'                 columns = list(
+#'                   list(
+#'                     name = "string",
+#'                     description = "string",
+#'                     inclusion = "INCLUDE"|"EXCLUDE"
+#'                   )
+#'                 )
+#'               )
 #'             ),
-#'             type = "S3"
+#'             curatedQueries = list(
+#'               list(
+#'                 naturalLanguage = "string",
+#'                 sql = "string"
+#'               )
+#'             )
 #'           )
 #'         )
 #'       )
 #'     )
 #'   ),
-#'   knowledgeBaseId = "string",
-#'   name = "string",
-#'   roleArn = "string",
 #'   storageConfiguration = list(
-#'     mongoDbAtlasConfiguration = list(
-#'       collectionName = "string",
-#'       credentialsSecretArn = "string",
-#'       databaseName = "string",
-#'       endpoint = "string",
-#'       endpointServiceName = "string",
-#'       fieldMapping = list(
-#'         metadataField = "string",
-#'         textField = "string",
-#'         vectorField = "string"
-#'       ),
-#'       textIndexName = "string",
-#'       vectorIndexName = "string"
-#'     ),
-#'     neptuneAnalyticsConfiguration = list(
-#'       fieldMapping = list(
-#'         metadataField = "string",
-#'         textField = "string"
-#'       ),
-#'       graphArn = "string"
-#'     ),
-#'     opensearchManagedClusterConfiguration = list(
-#'       domainArn = "string",
-#'       domainEndpoint = "string",
-#'       fieldMapping = list(
-#'         metadataField = "string",
-#'         textField = "string",
-#'         vectorField = "string"
-#'       ),
-#'       vectorIndexName = "string"
-#'     ),
+#'     type = "OPENSEARCH_SERVERLESS"|"PINECONE"|"REDIS_ENTERPRISE_CLOUD"|"RDS"|"MONGO_DB_ATLAS"|"NEPTUNE_ANALYTICS"|"OPENSEARCH_MANAGED_CLUSTER"|"S3_VECTORS",
 #'     opensearchServerlessConfiguration = list(
 #'       collectionArn = "string",
+#'       vectorIndexName = "string",
 #'       fieldMapping = list(
-#'         metadataField = "string",
+#'         vectorField = "string",
 #'         textField = "string",
-#'         vectorField = "string"
-#'       ),
-#'       vectorIndexName = "string"
+#'         metadataField = "string"
+#'       )
+#'     ),
+#'     opensearchManagedClusterConfiguration = list(
+#'       domainEndpoint = "string",
+#'       domainArn = "string",
+#'       vectorIndexName = "string",
+#'       fieldMapping = list(
+#'         vectorField = "string",
+#'         textField = "string",
+#'         metadataField = "string"
+#'       )
 #'     ),
 #'     pineconeConfiguration = list(
 #'       connectionString = "string",
 #'       credentialsSecretArn = "string",
+#'       namespace = "string",
 #'       fieldMapping = list(
-#'         metadataField = "string",
-#'         textField = "string"
-#'       ),
-#'       namespace = "string"
-#'     ),
-#'     rdsConfiguration = list(
-#'       credentialsSecretArn = "string",
-#'       databaseName = "string",
-#'       fieldMapping = list(
-#'         customMetadataField = "string",
-#'         metadataField = "string",
-#'         primaryKeyField = "string",
 #'         textField = "string",
-#'         vectorField = "string"
-#'       ),
-#'       resourceArn = "string",
-#'       tableName = "string"
+#'         metadataField = "string"
+#'       )
 #'     ),
 #'     redisEnterpriseCloudConfiguration = list(
-#'       credentialsSecretArn = "string",
 #'       endpoint = "string",
+#'       vectorIndexName = "string",
+#'       credentialsSecretArn = "string",
 #'       fieldMapping = list(
-#'         metadataField = "string",
+#'         vectorField = "string",
 #'         textField = "string",
-#'         vectorField = "string"
-#'       ),
-#'       vectorIndexName = "string"
+#'         metadataField = "string"
+#'       )
 #'     ),
-#'     type = "OPENSEARCH_SERVERLESS"|"PINECONE"|"REDIS_ENTERPRISE_CLOUD"|"RDS"|"MONGO_DB_ATLAS"|"NEPTUNE_ANALYTICS"|"OPENSEARCH_MANAGED_CLUSTER"
+#'     rdsConfiguration = list(
+#'       resourceArn = "string",
+#'       credentialsSecretArn = "string",
+#'       databaseName = "string",
+#'       tableName = "string",
+#'       fieldMapping = list(
+#'         primaryKeyField = "string",
+#'         vectorField = "string",
+#'         textField = "string",
+#'         metadataField = "string",
+#'         customMetadataField = "string"
+#'       )
+#'     ),
+#'     mongoDbAtlasConfiguration = list(
+#'       endpoint = "string",
+#'       databaseName = "string",
+#'       collectionName = "string",
+#'       vectorIndexName = "string",
+#'       credentialsSecretArn = "string",
+#'       fieldMapping = list(
+#'         vectorField = "string",
+#'         textField = "string",
+#'         metadataField = "string"
+#'       ),
+#'       endpointServiceName = "string",
+#'       textIndexName = "string"
+#'     ),
+#'     neptuneAnalyticsConfiguration = list(
+#'       graphArn = "string",
+#'       fieldMapping = list(
+#'         textField = "string",
+#'         metadataField = "string"
+#'       )
+#'     ),
+#'     s3VectorsConfiguration = list(
+#'       vectorBucketArn = "string",
+#'       indexArn = "string",
+#'       indexName = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -9402,7 +10074,7 @@ bedrockagent_update_flow_alias <- function(aliasIdentifier, description = NULL, 
 #' @rdname bedrockagent_update_knowledge_base
 #'
 #' @aliases bedrockagent_update_knowledge_base
-bedrockagent_update_knowledge_base <- function(description = NULL, knowledgeBaseConfiguration, knowledgeBaseId, name, roleArn, storageConfiguration = NULL) {
+bedrockagent_update_knowledge_base <- function(knowledgeBaseId, name, description = NULL, roleArn, knowledgeBaseConfiguration, storageConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateKnowledgeBase",
     http_method = "PUT",
@@ -9411,7 +10083,7 @@ bedrockagent_update_knowledge_base <- function(description = NULL, knowledgeBase
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$update_knowledge_base_input(description = description, knowledgeBaseConfiguration = knowledgeBaseConfiguration, knowledgeBaseId = knowledgeBaseId, name = name, roleArn = roleArn, storageConfiguration = storageConfiguration)
+  input <- .bedrockagent$update_knowledge_base_input(knowledgeBaseId = knowledgeBaseId, name = name, description = description, roleArn = roleArn, knowledgeBaseConfiguration = knowledgeBaseConfiguration, storageConfiguration = storageConfiguration)
   output <- .bedrockagent$update_knowledge_base_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -9433,52 +10105,105 @@ bedrockagent_update_knowledge_base <- function(description = NULL, knowledgeBase
 #' in the Amazon Bedrock User Guide.
 #'
 #' @usage
-#' bedrockagent_update_prompt(customerEncryptionKeyArn, defaultVariant,
-#'   description, name, promptIdentifier, variants)
+#' bedrockagent_update_prompt(name, description, customerEncryptionKeyArn,
+#'   defaultVariant, variants, promptIdentifier)
 #'
+#' @param name &#91;required&#93; A name for the prompt.
+#' @param description A description for the prompt.
 #' @param customerEncryptionKeyArn The Amazon Resource Name (ARN) of the KMS key to encrypt the prompt.
 #' @param defaultVariant The name of the default variant for the prompt. This value must match
 #' the `name` field in the relevant
 #' [PromptVariant](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent_PromptVariant.html)
 #' object.
-#' @param description A description for the prompt.
-#' @param name &#91;required&#93; A name for the prompt.
-#' @param promptIdentifier &#91;required&#93; The unique identifier of the prompt.
 #' @param variants A list of objects, each containing details about a variant of the
 #' prompt.
+#' @param promptIdentifier &#91;required&#93; The unique identifier of the prompt.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   arn = "string",
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
+#'   name = "string",
+#'   description = "string",
 #'   customerEncryptionKeyArn = "string",
 #'   defaultVariant = "string",
-#'   description = "string",
-#'   id = "string",
-#'   name = "string",
-#'   updatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
 #'   variants = list(
 #'     list(
-#'       additionalModelRequestFields = list(),
-#'       genAiResource = list(
-#'         agent = list(
-#'           agentIdentifier = "string"
+#'       name = "string",
+#'       templateType = "TEXT"|"CHAT",
+#'       templateConfiguration = list(
+#'         text = list(
+#'           text = "string",
+#'           cachePoint = list(
+#'             type = "default"
+#'           ),
+#'           inputVariables = list(
+#'             list(
+#'               name = "string"
+#'             )
+#'           )
+#'         ),
+#'         chat = list(
+#'           messages = list(
+#'             list(
+#'               role = "user"|"assistant",
+#'               content = list(
+#'                 list(
+#'                   text = "string",
+#'                   cachePoint = list(
+#'                     type = "default"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           system = list(
+#'             list(
+#'               text = "string",
+#'               cachePoint = list(
+#'                 type = "default"
+#'               )
+#'             )
+#'           ),
+#'           inputVariables = list(
+#'             list(
+#'               name = "string"
+#'             )
+#'           ),
+#'           toolConfiguration = list(
+#'             tools = list(
+#'               list(
+#'                 toolSpec = list(
+#'                   name = "string",
+#'                   description = "string",
+#'                   inputSchema = list(
+#'                     json = list()
+#'                   )
+#'                 ),
+#'                 cachePoint = list(
+#'                   type = "default"
+#'                 )
+#'               )
+#'             ),
+#'             toolChoice = list(
+#'               auto = list(),
+#'               any = list(),
+#'               tool = list(
+#'                 name = "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       ),
+#'       modelId = "string",
 #'       inferenceConfiguration = list(
 #'         text = list(
+#'           temperature = 123.0,
+#'           topP = 123.0,
 #'           maxTokens = 123,
 #'           stopSequences = list(
 #'             "string"
-#'           ),
-#'           temperature = 123.0,
-#'           topP = 123.0
+#'           )
 #'         )
 #'       ),
 #'       metadata = list(
@@ -9487,103 +10212,110 @@ bedrockagent_update_knowledge_base <- function(description = NULL, knowledgeBase
 #'           value = "string"
 #'         )
 #'       ),
-#'       modelId = "string",
-#'       name = "string",
-#'       templateConfiguration = list(
-#'         chat = list(
-#'           inputVariables = list(
-#'             list(
-#'               name = "string"
-#'             )
-#'           ),
-#'           messages = list(
-#'             list(
-#'               content = list(
-#'                 list(
-#'                   cachePoint = list(
-#'                     type = "default"
-#'                   ),
-#'                   text = "string"
-#'                 )
-#'               ),
-#'               role = "user"|"assistant"
-#'             )
-#'           ),
-#'           system = list(
-#'             list(
-#'               cachePoint = list(
-#'                 type = "default"
-#'               ),
-#'               text = "string"
-#'             )
-#'           ),
-#'           toolConfiguration = list(
-#'             toolChoice = list(
-#'               any = list(),
-#'               auto = list(),
-#'               tool = list(
-#'                 name = "string"
-#'               )
-#'             ),
-#'             tools = list(
-#'               list(
-#'                 cachePoint = list(
-#'                   type = "default"
-#'                 ),
-#'                 toolSpec = list(
-#'                   description = "string",
-#'                   inputSchema = list(
-#'                     json = list()
-#'                   ),
-#'                   name = "string"
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         text = list(
-#'           cachePoint = list(
-#'             type = "default"
-#'           ),
-#'           inputVariables = list(
-#'             list(
-#'               name = "string"
-#'             )
-#'           ),
-#'           text = "string"
+#'       additionalModelRequestFields = list(),
+#'       genAiResource = list(
+#'         agent = list(
+#'           agentIdentifier = "string"
 #'         )
-#'       ),
-#'       templateType = "TEXT"|"CHAT"
+#'       )
 #'     )
 #'   ),
-#'   version = "string"
+#'   id = "string",
+#'   arn = "string",
+#'   version = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_prompt(
+#'   name = "string",
+#'   description = "string",
 #'   customerEncryptionKeyArn = "string",
 #'   defaultVariant = "string",
-#'   description = "string",
-#'   name = "string",
-#'   promptIdentifier = "string",
 #'   variants = list(
 #'     list(
-#'       additionalModelRequestFields = list(),
-#'       genAiResource = list(
-#'         agent = list(
-#'           agentIdentifier = "string"
+#'       name = "string",
+#'       templateType = "TEXT"|"CHAT",
+#'       templateConfiguration = list(
+#'         text = list(
+#'           text = "string",
+#'           cachePoint = list(
+#'             type = "default"
+#'           ),
+#'           inputVariables = list(
+#'             list(
+#'               name = "string"
+#'             )
+#'           )
+#'         ),
+#'         chat = list(
+#'           messages = list(
+#'             list(
+#'               role = "user"|"assistant",
+#'               content = list(
+#'                 list(
+#'                   text = "string",
+#'                   cachePoint = list(
+#'                     type = "default"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           system = list(
+#'             list(
+#'               text = "string",
+#'               cachePoint = list(
+#'                 type = "default"
+#'               )
+#'             )
+#'           ),
+#'           inputVariables = list(
+#'             list(
+#'               name = "string"
+#'             )
+#'           ),
+#'           toolConfiguration = list(
+#'             tools = list(
+#'               list(
+#'                 toolSpec = list(
+#'                   name = "string",
+#'                   description = "string",
+#'                   inputSchema = list(
+#'                     json = list()
+#'                   )
+#'                 ),
+#'                 cachePoint = list(
+#'                   type = "default"
+#'                 )
+#'               )
+#'             ),
+#'             toolChoice = list(
+#'               auto = list(),
+#'               any = list(),
+#'               tool = list(
+#'                 name = "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       ),
+#'       modelId = "string",
 #'       inferenceConfiguration = list(
 #'         text = list(
+#'           temperature = 123.0,
+#'           topP = 123.0,
 #'           maxTokens = 123,
 #'           stopSequences = list(
 #'             "string"
-#'           ),
-#'           temperature = 123.0,
-#'           topP = 123.0
+#'           )
 #'         )
 #'       ),
 #'       metadata = list(
@@ -9592,75 +10324,15 @@ bedrockagent_update_knowledge_base <- function(description = NULL, knowledgeBase
 #'           value = "string"
 #'         )
 #'       ),
-#'       modelId = "string",
-#'       name = "string",
-#'       templateConfiguration = list(
-#'         chat = list(
-#'           inputVariables = list(
-#'             list(
-#'               name = "string"
-#'             )
-#'           ),
-#'           messages = list(
-#'             list(
-#'               content = list(
-#'                 list(
-#'                   cachePoint = list(
-#'                     type = "default"
-#'                   ),
-#'                   text = "string"
-#'                 )
-#'               ),
-#'               role = "user"|"assistant"
-#'             )
-#'           ),
-#'           system = list(
-#'             list(
-#'               cachePoint = list(
-#'                 type = "default"
-#'               ),
-#'               text = "string"
-#'             )
-#'           ),
-#'           toolConfiguration = list(
-#'             toolChoice = list(
-#'               any = list(),
-#'               auto = list(),
-#'               tool = list(
-#'                 name = "string"
-#'               )
-#'             ),
-#'             tools = list(
-#'               list(
-#'                 cachePoint = list(
-#'                   type = "default"
-#'                 ),
-#'                 toolSpec = list(
-#'                   description = "string",
-#'                   inputSchema = list(
-#'                     json = list()
-#'                   ),
-#'                   name = "string"
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         text = list(
-#'           cachePoint = list(
-#'             type = "default"
-#'           ),
-#'           inputVariables = list(
-#'             list(
-#'               name = "string"
-#'             )
-#'           ),
-#'           text = "string"
+#'       additionalModelRequestFields = list(),
+#'       genAiResource = list(
+#'         agent = list(
+#'           agentIdentifier = "string"
 #'         )
-#'       ),
-#'       templateType = "TEXT"|"CHAT"
+#'       )
 #'     )
-#'   )
+#'   ),
+#'   promptIdentifier = "string"
 #' )
 #' ```
 #'
@@ -9669,7 +10341,7 @@ bedrockagent_update_knowledge_base <- function(description = NULL, knowledgeBase
 #' @rdname bedrockagent_update_prompt
 #'
 #' @aliases bedrockagent_update_prompt
-bedrockagent_update_prompt <- function(customerEncryptionKeyArn = NULL, defaultVariant = NULL, description = NULL, name, promptIdentifier, variants = NULL) {
+bedrockagent_update_prompt <- function(name, description = NULL, customerEncryptionKeyArn = NULL, defaultVariant = NULL, variants = NULL, promptIdentifier) {
   op <- new_operation(
     name = "UpdatePrompt",
     http_method = "PUT",
@@ -9678,7 +10350,7 @@ bedrockagent_update_prompt <- function(customerEncryptionKeyArn = NULL, defaultV
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$update_prompt_input(customerEncryptionKeyArn = customerEncryptionKeyArn, defaultVariant = defaultVariant, description = description, name = name, promptIdentifier = promptIdentifier, variants = variants)
+  input <- .bedrockagent$update_prompt_input(name = name, description = description, customerEncryptionKeyArn = customerEncryptionKeyArn, defaultVariant = defaultVariant, variants = variants, promptIdentifier = promptIdentifier)
   output <- .bedrockagent$update_prompt_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -9704,70 +10376,22 @@ bedrockagent_update_prompt <- function(customerEncryptionKeyArn = NULL, defaultV
 #' list(
 #'   validations = list(
 #'     list(
+#'       message = "string",
+#'       severity = "Warning"|"Error",
 #'       details = list(
 #'         cyclicConnection = list(
 #'           connection = "string"
-#'         ),
-#'         duplicateConditionExpression = list(
-#'           expression = "string",
-#'           node = "string"
 #'         ),
 #'         duplicateConnections = list(
 #'           source = "string",
 #'           target = "string"
 #'         ),
-#'         incompatibleConnectionDataType = list(
-#'           connection = "string"
-#'         ),
-#'         malformedConditionExpression = list(
-#'           cause = "string",
-#'           condition = "string",
-#'           node = "string"
-#'         ),
-#'         malformedNodeInputExpression = list(
-#'           cause = "string",
-#'           input = "string",
-#'           node = "string"
-#'         ),
-#'         mismatchedNodeInputType = list(
-#'           expectedType = "String"|"Number"|"Boolean"|"Object"|"Array",
-#'           input = "string",
-#'           node = "string"
-#'         ),
-#'         mismatchedNodeOutputType = list(
-#'           expectedType = "String"|"Number"|"Boolean"|"Object"|"Array",
+#'         duplicateConditionExpression = list(
 #'           node = "string",
-#'           output = "string"
+#'           expression = "string"
 #'         ),
-#'         missingConnectionConfiguration = list(
-#'           connection = "string"
-#'         ),
-#'         missingDefaultCondition = list(
+#'         unreachableNode = list(
 #'           node = "string"
-#'         ),
-#'         missingEndingNodes = list(),
-#'         missingNodeConfiguration = list(
-#'           node = "string"
-#'         ),
-#'         missingNodeInput = list(
-#'           input = "string",
-#'           node = "string"
-#'         ),
-#'         missingNodeOutput = list(
-#'           node = "string",
-#'           output = "string"
-#'         ),
-#'         missingStartingNodes = list(),
-#'         multipleNodeInputConnections = list(
-#'           input = "string",
-#'           node = "string"
-#'         ),
-#'         unfulfilledNodeInput = list(
-#'           input = "string",
-#'           node = "string"
-#'         ),
-#'         unknownConnectionCondition = list(
-#'           connection = "string"
 #'         ),
 #'         unknownConnectionSource = list(
 #'           connection = "string"
@@ -9781,25 +10405,95 @@ bedrockagent_update_prompt <- function(customerEncryptionKeyArn = NULL, defaultV
 #'         unknownConnectionTargetInput = list(
 #'           connection = "string"
 #'         ),
-#'         unknownNodeInput = list(
+#'         unknownConnectionCondition = list(
+#'           connection = "string"
+#'         ),
+#'         malformedConditionExpression = list(
+#'           node = "string",
+#'           condition = "string",
+#'           cause = "string"
+#'         ),
+#'         malformedNodeInputExpression = list(
+#'           node = "string",
 #'           input = "string",
+#'           cause = "string"
+#'         ),
+#'         mismatchedNodeInputType = list(
+#'           node = "string",
+#'           input = "string",
+#'           expectedType = "String"|"Number"|"Boolean"|"Object"|"Array"
+#'         ),
+#'         mismatchedNodeOutputType = list(
+#'           node = "string",
+#'           output = "string",
+#'           expectedType = "String"|"Number"|"Boolean"|"Object"|"Array"
+#'         ),
+#'         incompatibleConnectionDataType = list(
+#'           connection = "string"
+#'         ),
+#'         missingConnectionConfiguration = list(
+#'           connection = "string"
+#'         ),
+#'         missingDefaultCondition = list(
 #'           node = "string"
+#'         ),
+#'         missingEndingNodes = list(),
+#'         missingNodeConfiguration = list(
+#'           node = "string"
+#'         ),
+#'         missingNodeInput = list(
+#'           node = "string",
+#'           input = "string"
+#'         ),
+#'         missingNodeOutput = list(
+#'           node = "string",
+#'           output = "string"
+#'         ),
+#'         missingStartingNodes = list(),
+#'         multipleNodeInputConnections = list(
+#'           node = "string",
+#'           input = "string"
+#'         ),
+#'         unfulfilledNodeInput = list(
+#'           node = "string",
+#'           input = "string"
+#'         ),
+#'         unsatisfiedConnectionConditions = list(
+#'           connection = "string"
+#'         ),
+#'         unspecified = list(),
+#'         unknownNodeInput = list(
+#'           node = "string",
+#'           input = "string"
 #'         ),
 #'         unknownNodeOutput = list(
 #'           node = "string",
 #'           output = "string"
 #'         ),
-#'         unreachableNode = list(
-#'           node = "string"
+#'         missingLoopInputNode = list(
+#'           loopNode = "string"
 #'         ),
-#'         unsatisfiedConnectionConditions = list(
-#'           connection = "string"
+#'         missingLoopControllerNode = list(
+#'           loopNode = "string"
 #'         ),
-#'         unspecified = list()
+#'         multipleLoopInputNodes = list(
+#'           loopNode = "string"
+#'         ),
+#'         multipleLoopControllerNodes = list(
+#'           loopNode = "string"
+#'         ),
+#'         loopIncompatibleNodeType = list(
+#'           node = "string",
+#'           incompatibleNodeType = "Input"|"Condition"|"Iterator"|"Collector",
+#'           incompatibleNodeName = "string"
+#'         ),
+#'         invalidLoopBoundary = list(
+#'           connection = "string",
+#'           source = "string",
+#'           target = "string"
+#'         )
 #'       ),
-#'       message = "string",
-#'       severity = "Warning"|"Error",
-#'       type = "CyclicConnection"|"DuplicateConnections"|"DuplicateConditionExpression"|"UnreachableNode"|"UnknownConnectionSource"|"UnknownConnectionSourceOutput"|"UnknownConnectionTarget"|"UnknownConnectionTargetInput"|"UnknownConnectionCondition"|"MalformedConditionExpression"|"MalformedNodeInputExpression"|"MismatchedNodeInputType"|"MismatchedNodeOutputType"|"IncompatibleConnectionDataType"|"MissingConnectionConfiguration"|"MissingDefaultCondition"|"MissingEndingNodes"|"MissingNodeConfiguration"|"MissingNodeInput"|"MissingNodeOutput"|"MissingStartingNodes"|"MultipleNodeInputConnections"|"UnfulfilledNodeInput"|"UnsatisfiedConnectionConditions"|"Unspecified"|"UnknownNodeInput"|"UnknownNodeOutput"
+#'       type = "CyclicConnection"|"DuplicateConnections"|"DuplicateConditionExpression"|"UnreachableNode"|"UnknownConnectionSource"|"UnknownConnectionSourceOutput"|"UnknownConnectionTarget"|"UnknownConnectionTargetInput"|"UnknownConnectionCondition"|"MalformedConditionExpression"|"MalformedNodeInputExpression"|"MismatchedNodeInputType"|"MismatchedNodeOutputType"|"IncompatibleConnectionDataType"|"MissingConnectionConfiguration"|"MissingDefaultCondition"|"MissingEndingNodes"|"MissingNodeConfiguration"|"MissingNodeInput"|"MissingNodeOutput"|"MissingStartingNodes"|"MultipleNodeInputConnections"|"UnfulfilledNodeInput"|"UnsatisfiedConnectionConditions"|"Unspecified"|"UnknownNodeInput"|"UnknownNodeOutput"|"MissingLoopInputNode"|"MissingLoopControllerNode"|"MultipleLoopInputNodes"|"MultipleLoopControllerNodes"|"LoopIncompatibleNodeType"|"InvalidLoopBoundary"
 #'     )
 #'   )
 #' )
@@ -9809,132 +10503,105 @@ bedrockagent_update_prompt <- function(customerEncryptionKeyArn = NULL, defaultV
 #' ```
 #' svc$validate_flow_definition(
 #'   definition = list(
-#'     connections = list(
-#'       list(
-#'         configuration = list(
-#'           conditional = list(
-#'             condition = "string"
-#'           ),
-#'           data = list(
-#'             sourceOutput = "string",
-#'             targetInput = "string"
-#'           )
-#'         ),
-#'         name = "string",
-#'         source = "string",
-#'         target = "string",
-#'         type = "Data"|"Conditional"
-#'       )
-#'     ),
 #'     nodes = list(
 #'       list(
+#'         name = "string",
+#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"|"InlineCode"|"Loop"|"LoopInput"|"LoopController",
 #'         configuration = list(
-#'           agent = list(
-#'             agentAliasArn = "string"
-#'           ),
-#'           collector = list(),
-#'           condition = list(
-#'             conditions = list(
-#'               list(
-#'                 expression = "string",
-#'                 name = "string"
-#'               )
-#'             )
-#'           ),
-#'           inlineCode = list(
-#'             code = "string",
-#'             language = "Python_3"
-#'           ),
 #'           input = list(),
-#'           iterator = list(),
+#'           output = list(),
 #'           knowledgeBase = list(
+#'             knowledgeBaseId = "string",
+#'             modelId = "string",
 #'             guardrailConfiguration = list(
 #'               guardrailIdentifier = "string",
 #'               guardrailVersion = "string"
 #'             ),
-#'             knowledgeBaseId = "string",
-#'             modelId = "string"
+#'             numberOfResults = 123,
+#'             promptTemplate = list(
+#'               textPromptTemplate = "string"
+#'             ),
+#'             inferenceConfiguration = list(
+#'               text = list(
+#'                 temperature = 123.0,
+#'                 topP = 123.0,
+#'                 maxTokens = 123,
+#'                 stopSequences = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             rerankingConfiguration = list(
+#'               type = "BEDROCK_RERANKING_MODEL",
+#'               bedrockRerankingConfiguration = list(
+#'                 modelConfiguration = list(
+#'                   modelArn = "string",
+#'                   additionalModelRequestFields = list(
+#'                     list()
+#'                   )
+#'                 ),
+#'                 numberOfRerankedResults = 123,
+#'                 metadataConfiguration = list(
+#'                   selectionMode = "SELECTIVE"|"ALL",
+#'                   selectiveModeConfiguration = list(
+#'                     fieldsToInclude = list(
+#'                       list(
+#'                         fieldName = "string"
+#'                       )
+#'                     ),
+#'                     fieldsToExclude = list(
+#'                       list(
+#'                         fieldName = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             orchestrationConfiguration = list(
+#'               promptTemplate = list(
+#'                 textPromptTemplate = "string"
+#'               ),
+#'               inferenceConfig = list(
+#'                 text = list(
+#'                   temperature = 123.0,
+#'                   topP = 123.0,
+#'                   maxTokens = 123,
+#'                   stopSequences = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               additionalModelRequestFields = list(
+#'                 list()
+#'               ),
+#'               performanceConfig = list(
+#'                 latency = "standard"|"optimized"
+#'               )
+#'             )
 #'           ),
-#'           lambdaFunction = list(
-#'             lambdaArn = "string"
+#'           condition = list(
+#'             conditions = list(
+#'               list(
+#'                 name = "string",
+#'                 expression = "string"
+#'               )
+#'             )
 #'           ),
 #'           lex = list(
 #'             botAliasArn = "string",
 #'             localeId = "string"
 #'           ),
-#'           output = list(),
 #'           prompt = list(
-#'             guardrailConfiguration = list(
-#'               guardrailIdentifier = "string",
-#'               guardrailVersion = "string"
-#'             ),
 #'             sourceConfiguration = list(
+#'               resource = list(
+#'                 promptArn = "string"
+#'               ),
 #'               inline = list(
-#'                 additionalModelRequestFields = list(),
-#'                 inferenceConfiguration = list(
-#'                   text = list(
-#'                     maxTokens = 123,
-#'                     stopSequences = list(
-#'                       "string"
-#'                     ),
-#'                     temperature = 123.0,
-#'                     topP = 123.0
-#'                   )
-#'                 ),
-#'                 modelId = "string",
+#'                 templateType = "TEXT"|"CHAT",
 #'                 templateConfiguration = list(
-#'                   chat = list(
-#'                     inputVariables = list(
-#'                       list(
-#'                         name = "string"
-#'                       )
-#'                     ),
-#'                     messages = list(
-#'                       list(
-#'                         content = list(
-#'                           list(
-#'                             cachePoint = list(
-#'                               type = "default"
-#'                             ),
-#'                             text = "string"
-#'                           )
-#'                         ),
-#'                         role = "user"|"assistant"
-#'                       )
-#'                     ),
-#'                     system = list(
-#'                       list(
-#'                         cachePoint = list(
-#'                           type = "default"
-#'                         ),
-#'                         text = "string"
-#'                       )
-#'                     ),
-#'                     toolConfiguration = list(
-#'                       toolChoice = list(
-#'                         any = list(),
-#'                         auto = list(),
-#'                         tool = list(
-#'                           name = "string"
-#'                         )
-#'                       ),
-#'                       tools = list(
-#'                         list(
-#'                           cachePoint = list(
-#'                             type = "default"
-#'                           ),
-#'                           toolSpec = list(
-#'                             description = "string",
-#'                             inputSchema = list(
-#'                               json = list()
-#'                             ),
-#'                             name = "string"
-#'                           )
-#'                         )
-#'                       )
-#'                     )
-#'                   ),
 #'                   text = list(
+#'                     text = "string",
 #'                     cachePoint = list(
 #'                       type = "default"
 #'                     ),
@@ -9942,16 +10609,91 @@ bedrockagent_update_prompt <- function(customerEncryptionKeyArn = NULL, defaultV
 #'                       list(
 #'                         name = "string"
 #'                       )
+#'                     )
+#'                   ),
+#'                   chat = list(
+#'                     messages = list(
+#'                       list(
+#'                         role = "user"|"assistant",
+#'                         content = list(
+#'                           list(
+#'                             text = "string",
+#'                             cachePoint = list(
+#'                               type = "default"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
 #'                     ),
-#'                     text = "string"
+#'                     system = list(
+#'                       list(
+#'                         text = "string",
+#'                         cachePoint = list(
+#'                           type = "default"
+#'                         )
+#'                       )
+#'                     ),
+#'                     inputVariables = list(
+#'                       list(
+#'                         name = "string"
+#'                       )
+#'                     ),
+#'                     toolConfiguration = list(
+#'                       tools = list(
+#'                         list(
+#'                           toolSpec = list(
+#'                             name = "string",
+#'                             description = "string",
+#'                             inputSchema = list(
+#'                               json = list()
+#'                             )
+#'                           ),
+#'                           cachePoint = list(
+#'                             type = "default"
+#'                           )
+#'                         )
+#'                       ),
+#'                       toolChoice = list(
+#'                         auto = list(),
+#'                         any = list(),
+#'                         tool = list(
+#'                           name = "string"
+#'                         )
+#'                       )
+#'                     )
 #'                   )
 #'                 ),
-#'                 templateType = "TEXT"|"CHAT"
-#'               ),
-#'               resource = list(
-#'                 promptArn = "string"
+#'                 modelId = "string",
+#'                 inferenceConfiguration = list(
+#'                   text = list(
+#'                     temperature = 123.0,
+#'                     topP = 123.0,
+#'                     maxTokens = 123,
+#'                     stopSequences = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 additionalModelRequestFields = list()
+#'               )
+#'             ),
+#'             guardrailConfiguration = list(
+#'               guardrailIdentifier = "string",
+#'               guardrailVersion = "string"
+#'             )
+#'           ),
+#'           lambdaFunction = list(
+#'             lambdaArn = "string"
+#'           ),
+#'           storage = list(
+#'             serviceConfiguration = list(
+#'               s3 = list(
+#'                 bucketName = "string"
 #'               )
 #'             )
+#'           ),
+#'           agent = list(
+#'             agentAliasArn = "string"
 #'           ),
 #'           retrieval = list(
 #'             serviceConfiguration = list(
@@ -9960,29 +10702,55 @@ bedrockagent_update_prompt <- function(customerEncryptionKeyArn = NULL, defaultV
 #'               )
 #'             )
 #'           ),
-#'           storage = list(
-#'             serviceConfiguration = list(
-#'               s3 = list(
-#'                 bucketName = "string"
-#'               )
-#'             )
+#'           iterator = list(),
+#'           collector = list(),
+#'           inlineCode = list(
+#'             code = "string",
+#'             language = "Python_3"
+#'           ),
+#'           loop = list(
+#'             definition = list()
+#'           ),
+#'           loopInput = list(),
+#'           loopController = list(
+#'             continueCondition = list(
+#'               name = "string",
+#'               expression = "string"
+#'             ),
+#'             maxIterations = 123
 #'           )
 #'         ),
 #'         inputs = list(
 #'           list(
-#'             expression = "string",
 #'             name = "string",
-#'             type = "String"|"Number"|"Boolean"|"Object"|"Array"
+#'             type = "String"|"Number"|"Boolean"|"Object"|"Array",
+#'             expression = "string",
+#'             category = "LoopCondition"|"ReturnValueToLoopStart"|"ExitLoop"
 #'           )
 #'         ),
-#'         name = "string",
 #'         outputs = list(
 #'           list(
 #'             name = "string",
 #'             type = "String"|"Number"|"Boolean"|"Object"|"Array"
 #'           )
-#'         ),
-#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"|"InlineCode"
+#'         )
+#'       )
+#'     ),
+#'     connections = list(
+#'       list(
+#'         type = "Data"|"Conditional",
+#'         name = "string",
+#'         source = "string",
+#'         target = "string",
+#'         configuration = list(
+#'           data = list(
+#'             sourceOutput = "string",
+#'             targetInput = "string"
+#'           ),
+#'           conditional = list(
+#'             condition = "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   )

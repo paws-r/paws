@@ -8,7 +8,8 @@ connect_submit_contact_evaluation(
   InstanceId,
   EvaluationId,
   Answers = NULL,
-  Notes = NULL
+  Notes = NULL,
+  SubmittedBy = NULL
 )
 }
 \arguments{
@@ -20,6 +21,8 @@ in the Amazon Resource Name (ARN) of the instance.}
 \item{Answers}{A map of question identifiers to answer value.}
 
 \item{Notes}{A map of question identifiers to note value.}
+
+\item{SubmittedBy}{The ID of the user who submitted the contact evaluation.}
 }
 \description{
 Submits a contact evaluation in the specified Amazon Connect instance. Answers included in the request are merged with existing answers for the given evaluation. If no answers or notes are passed, the evaluation is submitted with the existing answers and notes. You can delete an answer or note by passing an empty object (\code{{}}) to the question identifier.

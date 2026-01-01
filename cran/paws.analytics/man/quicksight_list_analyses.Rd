@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_list_analyses}
 \alias{quicksight_list_analyses}
-\title{Lists Amazon QuickSight analyses that exist in the specified Amazon Web
+\title{Lists Amazon Quick Sight analyses that exist in the specified Amazon Web
 Services account}
 \usage{
 quicksight_list_analyses(AwsAccountId, NextToken = NULL, MaxResults = NULL)
@@ -15,7 +15,7 @@ quicksight_list_analyses(AwsAccountId, NextToken = NULL, MaxResults = NULL)
 \item{MaxResults}{The maximum number of results to return.}
 }
 \description{
-Lists Amazon QuickSight analyses that exist in the specified Amazon Web Services account.
+Lists Amazon Quick Sight analyses that exist in the specified Amazon Web Services account.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_list_analyses/} for full documentation.
 }

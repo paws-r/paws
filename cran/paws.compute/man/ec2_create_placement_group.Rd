@@ -8,6 +8,7 @@ ec2_create_placement_group(
   PartitionCount = NULL,
   TagSpecifications = NULL,
   SpreadLevel = NULL,
+  LinkedGroupId = NULL,
   DryRun = NULL,
   GroupName = NULL,
   Strategy = NULL
@@ -24,6 +25,8 @@ ec2_create_placement_group(
 \item Host – You can use \code{host} only with Outpost placement groups.
 \item Rack – No usage restrictions.
 }}
+
+\item{LinkedGroupId}{Reserved for future use.}
 
 \item{DryRun}{Checks whether you have the required permissions for the operation,
 without actually making the request, and provides an error response. If

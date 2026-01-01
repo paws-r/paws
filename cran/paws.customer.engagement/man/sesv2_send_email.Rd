@@ -15,6 +15,7 @@ sesv2_send_email(
   EmailTags = NULL,
   ConfigurationSetName = NULL,
   EndpointId = NULL,
+  TenantName = NULL,
   ListManagementOptions = NULL
 )
 }
@@ -73,6 +74,12 @@ can publish email sending events.}
 \item{ConfigurationSetName}{The name of the configuration set to use when sending the email.}
 
 \item{EndpointId}{The ID of the multi-region endpoint (global-endpoint).}
+
+\item{TenantName}{The name of the tenant through which this email will be sent.
+
+The email sending operation will only succeed if all referenced
+resources (identities, configuration sets, and templates) are associated
+with this tenant.}
 
 \item{ListManagementOptions}{An object used to specify a list or topic to which an email belongs,
 which will be used when a contact chooses to unsubscribe.}

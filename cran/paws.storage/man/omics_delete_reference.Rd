@@ -2,7 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_delete_reference}
 \alias{omics_delete_reference}
-\title{Deletes a genome reference}
+\title{Deletes a reference genome and returns a response with no body if the
+operation is successful}
 \usage{
 omics_delete_reference(id, referenceStoreId)
 }
@@ -12,7 +13,7 @@ omics_delete_reference(id, referenceStoreId)
 \item{referenceStoreId}{[required] The reference's store ID.}
 }
 \description{
-Deletes a genome reference.
+Deletes a reference genome and returns a response with no body if the operation is successful. The read set associated with the reference genome must first be deleted before deleting the reference genome. After the reference genome is deleted, you can delete the reference store using the \code{\link[=omics_delete_reference_store]{delete_reference_store}} API operation.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_delete_reference/} for full documentation.
 }

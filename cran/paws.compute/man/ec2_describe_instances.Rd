@@ -29,6 +29,8 @@ Dedicated Host (\code{default} | \code{host}).
 \item \code{architecture} - The instance architecture (\code{i386} | \code{x86_64} |
 \code{arm64}).
 \item \code{availability-zone} - The Availability Zone of the instance.
+\item \code{availability-zone-id} - The ID of the Availability Zone of the
+instance.
 \item \code{block-device-mapping.attach-time} - The attach time for an EBS
 volume mapped to the instance, for example,
 \verb{2022-09-15T17:15:20.000Z}.
@@ -250,6 +252,7 @@ is located.
 \item \code{platform-details} - The platform (\code{Linux/UNIX} |
 \verb{Red Hat BYOL Linux} | \verb{ Red Hat Enterprise Linux} |
 \verb{Red Hat Enterprise Linux with HA} |
+\verb{Red Hat Enterprise Linux with High Availability} |
 \verb{Red Hat Enterprise Linux with SQL Server Standard and HA} |
 \verb{Red Hat Enterprise Linux with SQL Server Enterprise and HA} |
 \verb{Red Hat Enterprise Linux with SQL Server Standard} |

@@ -2,8 +2,8 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_update_public_sharing_settings}
 \alias{quicksight_update_public_sharing_settings}
-\title{Use the UpdatePublicSharingSettings operation to turn on or turn off the
-public sharing settings of an Amazon QuickSight dashboard}
+\title{This API controls public sharing settings for your entire Quick Sight
+account, affecting data security and access}
 \usage{
 quicksight_update_public_sharing_settings(
   AwsAccountId,
@@ -11,14 +11,14 @@ quicksight_update_public_sharing_settings(
 )
 }
 \arguments{
-\item{AwsAccountId}{[required] The Amazon Web Services account ID associated with your Amazon
-QuickSight subscription.}
+\item{AwsAccountId}{[required] The Amazon Web Services account ID associated with your Amazon Quick
+Sight subscription.}
 
 \item{PublicSharingEnabled}{A Boolean value that indicates whether public sharing is turned on for
-an Amazon QuickSight account.}
+an Quick Suite account.}
 }
 \description{
-Use the \code{\link[=quicksight_update_public_sharing_settings]{update_public_sharing_settings}} operation to turn on or turn off the public sharing settings of an Amazon QuickSight dashboard.
+This API controls public sharing settings for your entire Quick Sight account, affecting data security and access. When you enable public sharing:
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_update_public_sharing_settings/} for full documentation.
 }

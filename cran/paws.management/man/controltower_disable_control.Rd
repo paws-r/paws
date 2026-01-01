@@ -4,16 +4,23 @@
 \alias{controltower_disable_control}
 \title{This API call turns off a control}
 \usage{
-controltower_disable_control(controlIdentifier, targetIdentifier)
+controltower_disable_control(
+  controlIdentifier = NULL,
+  targetIdentifier = NULL,
+  enabledControlIdentifier = NULL
+)
 }
 \arguments{
-\item{controlIdentifier}{[required] The ARN of the control. Only \strong{Strongly recommended} and \strong{Elective}
+\item{controlIdentifier}{The ARN of the control. Only \strong{Strongly recommended} and \strong{Elective}
 controls are permitted, with the exception of the \strong{Region deny}
 control. For information on how to find the \code{controlIdentifier}, see
 \href{https://docs.aws.amazon.com/controltower/latest/APIReference/Welcome.html}{the overview page}.}
 
-\item{targetIdentifier}{[required] The ARN of the organizational unit. For information on how to find the
+\item{targetIdentifier}{The ARN of the organizational unit. For information on how to find the
 \code{targetIdentifier}, see \href{https://docs.aws.amazon.com/controltower/latest/APIReference/Welcome.html}{the overview page}.}
+
+\item{enabledControlIdentifier}{The ARN of the enabled control to be disabled, which uniquely identifies
+the control instance on the target organizational unit.}
 }
 \description{
 This API call turns off a control. It starts an asynchronous operation that deletes Amazon Web Services resources on the specified organizational unit and the accounts it contains. The resources will vary according to the control that you specify. For usage examples, see the \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html}{\emph{Controls Reference Guide}} .

@@ -12,7 +12,9 @@ connect_update_authentication_profile(
   Description = NULL,
   AllowedIps = NULL,
   BlockedIps = NULL,
-  PeriodicSessionDuration = NULL
+  PeriodicSessionDuration = NULL,
+  SessionInactivityDuration = NULL,
+  SessionInactivityHandlingEnabled = NULL
 )
 }
 \arguments{
@@ -40,9 +42,14 @@ Amazon Connect, in minutes. This value determines the maximum possible
 time before an agent is authenticated. For more information, For more
 information on how to configure IP addresses, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/authentication-profiles.html#configure-session-timeouts}{Configure session timeouts}
 in the \emph{Amazon Connect Administrator Guide}.}
+
+\item{SessionInactivityDuration}{The period, in minutes, before an agent is automatically signed out of
+the contact center when they go inactive.}
+
+\item{SessionInactivityHandlingEnabled}{Determines if automatic logout on user inactivity is enabled.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to change. To request access to this API, contact Amazon Web ServicesSupport.
+This API is in preview release for Amazon Connect and is subject to change. To request access to this API, contact Amazon Web Services Support.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_update_authentication_profile/} for full documentation.
 }

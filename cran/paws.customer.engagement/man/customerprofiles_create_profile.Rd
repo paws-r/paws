@@ -28,13 +28,15 @@ customerprofiles_create_profile(
   BillingAddress = NULL,
   Attributes = NULL,
   PartyTypeString = NULL,
-  GenderString = NULL
+  GenderString = NULL,
+  ProfileType = NULL,
+  EngagementPreferences = NULL
 )
 }
 \arguments{
 \item{DomainName}{[required] The unique name of the domain.}
 
-\item{AccountNumber}{An account number that you have given to the customer.}
+\item{AccountNumber}{An account number that you have assigned to the customer.}
 
 \item{AdditionalInformation}{Any additional information relevant to the customer’s profile.}
 
@@ -82,6 +84,10 @@ shipping, or billing.}
 \item{PartyTypeString}{An alternative to \code{PartyType} which accepts any string as input.}
 
 \item{GenderString}{An alternative to \code{Gender} which accepts any string as input.}
+
+\item{ProfileType}{The type of the profile.}
+
+\item{EngagementPreferences}{Object that defines the preferred methods of engagement, per channel.}
 }
 \description{
 Creates a standard profile.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_update_analysis}
 \alias{quicksight_update_analysis}
-\title{Updates an analysis in Amazon QuickSight}
+\title{Updates an analysis in Amazon Quick Sight}
 \usage{
 quicksight_update_analysis(
   AwsAccountId,
@@ -23,7 +23,7 @@ that you're updating.}
 URL of the analysis.}
 
 \item{Name}{[required] A descriptive name for the analysis that you're updating. This name
-displays for the analysis in the Amazon QuickSight console.}
+displays for the analysis in the Amazon Quick Sight console.}
 
 \item{Parameters}{The parameter names and override values that you want to use. An
 analysis can have any parameter type, and some parameters might accept
@@ -34,8 +34,8 @@ metadata structure contains details that describe a source template and
 one or more datasets.}
 
 \item{ThemeArn}{The Amazon Resource Name (ARN) for the theme to apply to the analysis
-that you're creating. To see the theme in the Amazon QuickSight console,
-make sure that you have access to it.}
+that you're creating. To see the theme in the Amazon Quick Sight
+console, make sure that you have access to it.}
 
 \item{Definition}{The definition of an analysis.
 
@@ -46,7 +46,7 @@ or Analysis.}
 definition objects. This skips the validation step for specific errors.}
 }
 \description{
-Updates an analysis in Amazon QuickSight
+Updates an analysis in Amazon Quick Sight
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_update_analysis/} for full documentation.
 }

@@ -7,7 +7,11 @@
 servicediscovery_get_service(Id)
 }
 \arguments{
-\item{Id}{[required] The ID of the service that you want to get settings for.}
+\item{Id}{[required] The ID or Amazon Resource Name (ARN) of the service that you want to get
+settings for. For services created by consumers in a shared namespace,
+specify the service ARN. For more information about shared namespaces,
+see \href{https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html}{Cross-account Cloud Map namespace sharing}
+in the \emph{Cloud Map Developer Guide}.}
 }
 \description{
 Gets the settings for a specified service.

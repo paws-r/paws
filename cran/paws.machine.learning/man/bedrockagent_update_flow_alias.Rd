@@ -5,23 +5,27 @@
 \title{Modifies the alias of a flow}
 \usage{
 bedrockagent_update_flow_alias(
-  aliasIdentifier,
-  description = NULL,
-  flowIdentifier,
   name,
-  routingConfiguration
+  description = NULL,
+  routingConfiguration,
+  concurrencyConfiguration = NULL,
+  flowIdentifier,
+  aliasIdentifier
 )
 }
 \arguments{
-\item{aliasIdentifier}{[required] The unique identifier of the alias.}
+\item{name}{[required] The name of the alias.}
 
 \item{description}{A description for the alias.}
 
+\item{routingConfiguration}{[required] Contains information about the version to which to map the alias.}
+
+\item{concurrencyConfiguration}{The configuration that specifies how nodes in the flow are executed in
+parallel.}
+
 \item{flowIdentifier}{[required] The unique identifier of the flow.}
 
-\item{name}{[required] The name of the alias.}
-
-\item{routingConfiguration}{[required] Contains information about the version to which to map the alias.}
+\item{aliasIdentifier}{[required] The unique identifier of the alias.}
 }
 \description{
 Modifies the alias of a flow. Include both fields that you want to keep and ones that you want to change. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/flows-deploy.html}{Deploy a flow in Amazon Bedrock} in the Amazon Bedrock User Guide.

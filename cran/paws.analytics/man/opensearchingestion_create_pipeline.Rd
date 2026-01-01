@@ -13,7 +13,8 @@ opensearchingestion_create_pipeline(
   VpcOptions = NULL,
   BufferOptions = NULL,
   EncryptionAtRestOptions = NULL,
-  Tags = NULL
+  Tags = NULL,
+  PipelineRoleArn = NULL
 )
 }
 \arguments{
@@ -42,6 +43,9 @@ creates the pipeline with a public endpoint.}
 persistent buffer.}
 
 \item{Tags}{List of tags to add to the pipeline upon creation.}
+
+\item{PipelineRoleArn}{The Amazon Resource Name (ARN) of the IAM role that grants the pipeline
+permission to access Amazon Web Services resources.}
 }
 \description{
 Creates an OpenSearch Ingestion pipeline. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/creating-pipeline.html}{Creating Amazon OpenSearch Ingestion pipelines}.

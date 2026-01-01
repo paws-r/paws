@@ -9,7 +9,9 @@ datazone_list_subscription_grants(
   environmentId = NULL,
   maxResults = NULL,
   nextToken = NULL,
+  owningGroupId = NULL,
   owningProjectId = NULL,
+  owningUserId = NULL,
   sortBy = NULL,
   sortOrder = NULL,
   subscribedListingId = NULL,
@@ -38,7 +40,11 @@ this \code{NextToken} value in a subsequent call to
 \code{\link[=datazone_list_subscription_grants]{list_subscription_grants}} to list
 the next set of subscription grants.}
 
+\item{owningGroupId}{The ID of the owning group.}
+
 \item{owningProjectId}{The ID of the owning project of the subscription grants.}
+
+\item{owningUserId}{The ID of the owning user.}
 
 \item{sortBy}{Specifies the way of sorting the results of this action.}
 

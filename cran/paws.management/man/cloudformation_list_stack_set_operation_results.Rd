@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_list_stack_set_operation_results}
 \alias{cloudformation_list_stack_set_operation_results}
-\title{Returns summary information about the results of a stack set operation}
+\title{Returns summary information about the results of a StackSet operation}
 \usage{
 cloudformation_list_stack_set_operation_results(
   StackSetName,
@@ -14,18 +14,13 @@ cloudformation_list_stack_set_operation_results(
 )
 }
 \arguments{
-\item{StackSetName}{[required] The name or unique ID of the stack set that you want to get operation
+\item{StackSetName}{[required] The name or unique ID of the StackSet that you want to get operation
 results for.}
 
-\item{OperationId}{[required] The ID of the stack set operation.}
+\item{OperationId}{[required] The ID of the StackSet operation.}
 
-\item{NextToken}{If the previous request didn't return all the remaining results, the
-response object's \code{NextToken} parameter value is set to a token. To
-retrieve the next set of results, call
-\code{\link[=cloudformation_list_stack_set_operation_results]{list_stack_set_operation_results}}
-again and assign that token to the request object's \code{NextToken}
-parameter. If there are no remaining results, the previous response
-object's \code{NextToken} parameter is set to \code{null}.}
+\item{NextToken}{The token for the next set of items to return. (You received this token
+from a previous call.)}
 
 \item{MaxResults}{The maximum number of results to be returned with a single call. If the
 number of available results exceeds this maximum, the response includes
@@ -36,7 +31,7 @@ parameter to get the next set of results.}
 account administrator in the organization's management account or as a
 delegated administrator in a member account.
 
-By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+By default, \code{SELF} is specified. Use \code{SELF} for StackSets with
 self-managed permissions.
 \itemize{
 \item If you are signed in to the management account, specify \code{SELF}.
@@ -52,7 +47,7 @@ in the \emph{CloudFormation User Guide}.
 \item{Filters}{The filter to apply to operation results.}
 }
 \description{
-Returns summary information about the results of a stack set operation.
+Returns summary information about the results of a StackSet operation.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudformation_list_stack_set_operation_results/} for full documentation.
 }

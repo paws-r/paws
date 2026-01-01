@@ -222,10 +222,11 @@ sns_confirm_subscription <- function(TopicArn, Token, AuthenticateOnUnsubscribe 
 #' 
 #' -   For GCM (Firebase Cloud Messaging) using token credentials, there is
 #'     no `PlatformPrincipal`. The `PlatformCredential` is a JSON formatted
-#'     private key file. When using the Amazon Web Services CLI, the file
-#'     must be in string format and special characters must be ignored. To
-#'     format the file correctly, Amazon SNS recommends using the following
-#'     command: `` SERVICE_JSON=`jq @@json <<< cat service.json` ``.
+#'     private key file. When using the Amazon Web Services CLI or Amazon
+#'     Web Services SDKs, the file must be in string format and special
+#'     characters must be ignored. To format the file correctly, Amazon SNS
+#'     recommends using the following command:
+#'     `SERVICE_JSON=$(jq @@json < service.json)`.
 #' 
 #' -   For MPNS, `PlatformPrincipal` is `TLS certificate` and
 #'     `PlatformCredential` is `private key`.
@@ -474,16 +475,8 @@ sns_create_sms_sandbox_phone_number <- function(PhoneNumber, LanguageCode = NULL
 #' -   `DisplayName` – The display name to use for a topic with SMS
 #'     subscriptions.
 #' 
-#' -   `FifoTopic` – Set to true to create a FIFO topic.
-#' 
 #' -   `Policy` – The policy that defines who can access your topic. By
 #'     default, only the topic owner can publish or subscribe to the topic.
-#' 
-#' -   `SignatureVersion` – The signature version corresponds to the
-#'     hashing algorithm used while creating the signature of the
-#'     notifications, subscription confirmations, or unsubscribe
-#'     confirmation messages sent by Amazon SNS. By default,
-#'     `SignatureVersion` is set to `1`.
 #' 
 #' -   `TracingConfig` – Tracing mode of an Amazon SNS topic. By default
 #'     `TracingConfig` is set to `PassThrough`, and the topic passes
@@ -491,6 +484,94 @@ sns_create_sms_sandbox_phone_number <- function(PhoneNumber, LanguageCode = NULL
 #'     to its subscriptions. If set to `Active`, Amazon SNS will vend X-Ray
 #'     segment data to topic owner account if the sampled flag in the
 #'     tracing header is true. This is only supported on standard topics.
+#' 
+#' -   HTTP
+#' 
+#'     -   `HTTPSuccessFeedbackRoleArn` – Indicates successful message
+#'         delivery status for an Amazon SNS topic that is subscribed to an
+#'         HTTP endpoint.
+#' 
+#'     -   `HTTPSuccessFeedbackSampleRate` – Indicates percentage of
+#'         successful messages to sample for an Amazon SNS topic that is
+#'         subscribed to an HTTP endpoint.
+#' 
+#'     -   `HTTPFailureFeedbackRoleArn` – Indicates failed message delivery
+#'         status for an Amazon SNS topic that is subscribed to an HTTP
+#'         endpoint.
+#' 
+#' -   Amazon Data Firehose
+#' 
+#'     -   `FirehoseSuccessFeedbackRoleArn` – Indicates successful message
+#'         delivery status for an Amazon SNS topic that is subscribed to an
+#'         Amazon Data Firehose endpoint.
+#' 
+#'     -   `FirehoseSuccessFeedbackSampleRate` – Indicates percentage of
+#'         successful messages to sample for an Amazon SNS topic that is
+#'         subscribed to an Amazon Data Firehose endpoint.
+#' 
+#'     -   `FirehoseFailureFeedbackRoleArn` – Indicates failed message
+#'         delivery status for an Amazon SNS topic that is subscribed to an
+#'         Amazon Data Firehose endpoint.
+#' 
+#' -   Lambda
+#' 
+#'     -   `LambdaSuccessFeedbackRoleArn` – Indicates successful message
+#'         delivery status for an Amazon SNS topic that is subscribed to an
+#'         Lambda endpoint.
+#' 
+#'     -   `LambdaSuccessFeedbackSampleRate` – Indicates percentage of
+#'         successful messages to sample for an Amazon SNS topic that is
+#'         subscribed to an Lambda endpoint.
+#' 
+#'     -   `LambdaFailureFeedbackRoleArn` – Indicates failed message
+#'         delivery status for an Amazon SNS topic that is subscribed to an
+#'         Lambda endpoint.
+#' 
+#' -   Platform application endpoint
+#' 
+#'     -   `ApplicationSuccessFeedbackRoleArn` – Indicates successful
+#'         message delivery status for an Amazon SNS topic that is
+#'         subscribed to a platform application endpoint.
+#' 
+#'     -   `ApplicationSuccessFeedbackSampleRate` – Indicates percentage of
+#'         successful messages to sample for an Amazon SNS topic that is
+#'         subscribed to an platform application endpoint.
+#' 
+#'     -   `ApplicationFailureFeedbackRoleArn` – Indicates failed message
+#'         delivery status for an Amazon SNS topic that is subscribed to an
+#'         platform application endpoint.
+#' 
+#'     In addition to being able to configure topic attributes for message
+#'     delivery status of notification messages sent to Amazon SNS
+#'     application endpoints, you can also configure application attributes
+#'     for the delivery status of push notification messages sent to push
+#'     notification services.
+#' 
+#'     For example, For more information, see [Using Amazon SNS Application
+#'     Attributes for Message Delivery
+#'     Status](https://docs.aws.amazon.com/sns/latest/dg/sns-msg-status.html).
+#' 
+#' -   Amazon SQS
+#' 
+#'     -   `SQSSuccessFeedbackRoleArn` – Indicates successful message
+#'         delivery status for an Amazon SNS topic that is subscribed to an
+#'         Amazon SQS endpoint.
+#' 
+#'     -   `SQSSuccessFeedbackSampleRate` – Indicates percentage of
+#'         successful messages to sample for an Amazon SNS topic that is
+#'         subscribed to an Amazon SQS endpoint.
+#' 
+#'     -   `SQSFailureFeedbackRoleArn` – Indicates failed message delivery
+#'         status for an Amazon SNS topic that is subscribed to an Amazon
+#'         SQS endpoint.
+#' 
+#' The \<ENDPOINT\>SuccessFeedbackRoleArn and
+#' \<ENDPOINT\>FailureFeedbackRoleArn attributes are used to give Amazon
+#' SNS write access to use CloudWatch Logs on your behalf. The
+#' \<ENDPOINT\>SuccessFeedbackSampleRate attribute is for specifying the
+#' sample rate percentage (0-100) of successfully delivered messages. After
+#' you configure the \<ENDPOINT\>FailureFeedbackRoleArn attribute, then all
+#' failed message deliveries generate CloudWatch Logs.
 #' 
 #' The following attribute applies only to [server-side
 #' encryption](https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html):
@@ -2027,16 +2108,22 @@ sns_opt_in_phone_number <- function(phoneNumber) {
 #'     same as the one generated for the first `MessageDeduplicationId`,
 #'     the two messages are treated as duplicates, within the deduplication
 #'     scope and interval, and only one copy of the message is delivered.
-#' @param MessageGroupId This parameter applies only to FIFO (first-in-first-out) topics. The
-#' `MessageGroupId` can contain up to 128 alphanumeric characters
+#' @param MessageGroupId The `MessageGroupId` can contain up to 128 alphanumeric characters
 #' `(a-z, A-Z, 0-9)` and punctuation
 #' `` (!\"#$%&\'()*+,-./:;<=>?@@[\]^_\`{|}~) ``.
 #' 
-#' The `MessageGroupId` is a tag that specifies that a message belongs to a
-#' specific message group. Messages that belong to the same message group
-#' are processed in a FIFO manner (however, messages in different message
-#' groups might be processed out of order). Every message must include a
-#' `MessageGroupId`.
+#' For FIFO topics: The `MessageGroupId` is a tag that specifies that a
+#' message belongs to a specific message group. Messages that belong to the
+#' same message group are processed in a FIFO manner (however, messages in
+#' different message groups might be processed out of order). Every message
+#' must include a `MessageGroupId`.
+#' 
+#' For standard topics: The `MessageGroupId` is optional and is forwarded
+#' only to Amazon SQS standard subscriptions to activate [fair
+#' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-fair-queues.html).
+#' The `MessageGroupId` is not used for, or sent to, any other endpoint
+#' types. When provided, the same validation rules apply as for FIFO
+#' topics.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2092,38 +2179,47 @@ sns_publish <- function(TopicArn = NULL, TargetArn = NULL, PhoneNumber = NULL, M
 }
 .sns$operations$publish <- sns_publish
 
-#' Publishes up to ten messages to the specified topic
+#' Publishes up to 10 messages to the specified topic in a single batch
 #'
 #' @description
-#' Publishes up to ten messages to the specified topic. This is a batch
-#' version of [`publish`][sns_publish]. For FIFO topics, multiple messages
-#' within a single batch are published in the order they are sent, and
-#' messages are deduplicated within the batch and across batches for 5
-#' minutes.
+#' Publishes up to 10 messages to the specified topic in a single batch.
+#' This is a batch version of the [`publish`][sns_publish] API. If you try
+#' to send more than 10 messages in a single batch request, you will
+#' receive a `TooManyEntriesInBatchRequest` exception.
+#' 
+#' For FIFO topics, multiple messages within a single batch are published
+#' in the order they are sent, and messages are deduplicated within the
+#' batch and across batches for five minutes.
 #' 
 #' The result of publishing each message is reported individually in the
 #' response. Because the batch request can result in a combination of
 #' successful and unsuccessful actions, you should check for batch errors
-#' even when the call returns an HTTP status code of `200`.
+#' even when the call returns an HTTP status code of 200.
 #' 
 #' The maximum allowed individual message size and the maximum total
 #' payload size (the sum of the individual lengths of all of the batched
 #' messages) are both 256 KB (262,144 bytes).
 #' 
+#' The [`publish_batch`][sns_publish_batch] API can send up to 10 messages
+#' at a time. If you attempt to send more than 10 messages in one request,
+#' you will encounter a `TooManyEntriesInBatchRequest` exception. In such
+#' cases, split your messages into multiple requests, each containing no
+#' more than 10 messages.
+#' 
 #' Some actions take lists of parameters. These lists are specified using
-#' the `param.n` notation. Values of `n` are integers starting from 1. For
-#' example, a parameter list with two elements looks like this:
+#' the `param.n` notation. Values of `n` are integers starting from **1**.
+#' For example, a parameter list with two elements looks like this:
 #' 
-#' &AttributeName.1=first
+#' `&AttributeName.1=first`
 #' 
-#' &AttributeName.2=second
+#' `&AttributeName.2=second`
 #' 
 #' If you send a batch message to a topic, Amazon SNS publishes the batch
 #' message to each endpoint that is subscribed to the topic. The format of
 #' the batch message depends on the notification protocol for each
 #' subscribed endpoint.
 #' 
-#' When a `messageId` is returned, the batch message is saved and Amazon
+#' When a `messageId` is returned, the batch message is saved, and Amazon
 #' SNS immediately delivers the message to subscribers.
 #'
 #' @usage
@@ -2764,10 +2860,6 @@ sns_set_subscription_attributes <- function(SubscriptionArn, AttributeName, Attr
 #' request parameters that the
 #' [`set_topic_attributes`][sns_set_topic_attributes] action uses:
 #' 
-#' -   `ApplicationSuccessFeedbackRoleArn` – Indicates failed message
-#'     delivery status for an Amazon SNS topic that is subscribed to a
-#'     platform application endpoint.
-#' 
 #' -   `DeliveryPolicy` – The policy that defines how Amazon SNS retries
 #'     failed deliveries to HTTP/S endpoints.
 #' 
@@ -2798,19 +2890,19 @@ sns_set_subscription_attributes <- function(SubscriptionArn, AttributeName, Attr
 #'         status for an Amazon SNS topic that is subscribed to an HTTP
 #'         endpoint.
 #' 
-#' -   Amazon Kinesis Data Firehose
+#' -   Amazon Data Firehose
 #' 
 #'     -   `FirehoseSuccessFeedbackRoleArn` – Indicates successful message
 #'         delivery status for an Amazon SNS topic that is subscribed to an
-#'         Amazon Kinesis Data Firehose endpoint.
+#'         Amazon Data Firehose endpoint.
 #' 
 #'     -   `FirehoseSuccessFeedbackSampleRate` – Indicates percentage of
 #'         successful messages to sample for an Amazon SNS topic that is
-#'         subscribed to an Amazon Kinesis Data Firehose endpoint.
+#'         subscribed to an Amazon Data Firehose endpoint.
 #' 
 #'     -   `FirehoseFailureFeedbackRoleArn` – Indicates failed message
 #'         delivery status for an Amazon SNS topic that is subscribed to an
-#'         Amazon Kinesis Data Firehose endpoint.
+#'         Amazon Data Firehose endpoint.
 #' 
 #' -   Lambda
 #' 
@@ -2830,15 +2922,15 @@ sns_set_subscription_attributes <- function(SubscriptionArn, AttributeName, Attr
 #' 
 #'     -   `ApplicationSuccessFeedbackRoleArn` – Indicates successful
 #'         message delivery status for an Amazon SNS topic that is
-#'         subscribed to an Amazon Web Services application endpoint.
+#'         subscribed to an platform application endpoint.
 #' 
 #'     -   `ApplicationSuccessFeedbackSampleRate` – Indicates percentage of
 #'         successful messages to sample for an Amazon SNS topic that is
-#'         subscribed to an Amazon Web Services application endpoint.
+#'         subscribed to an platform application endpoint.
 #' 
 #'     -   `ApplicationFailureFeedbackRoleArn` – Indicates failed message
 #'         delivery status for an Amazon SNS topic that is subscribed to an
-#'         Amazon Web Services application endpoint.
+#'         platform application endpoint.
 #' 
 #'     In addition to being able to configure topic attributes for message
 #'     delivery status of notification messages sent to Amazon SNS
@@ -3005,8 +3097,8 @@ sns_set_topic_attributes <- function(TopicArn, AttributeName, AttributeValue = N
 #' 
 #' -   `lambda` – delivery of JSON-encoded message to an Lambda function
 #' 
-#' -   `firehose` – delivery of JSON-encoded message to an Amazon Kinesis
-#'     Data Firehose delivery stream.
+#' -   `firehose` – delivery of JSON-encoded message to an Amazon Data
+#'     Firehose delivery stream.
 #' @param Endpoint The endpoint that you want to receive notifications. Endpoints vary by
 #' protocol:
 #' 
@@ -3033,7 +3125,7 @@ sns_set_topic_attributes <- function(TopicArn, AttributeName, AttributeValue = N
 #'     function.
 #' 
 #' -   For the `firehose` protocol, the endpoint is the ARN of an Amazon
-#'     Kinesis Data Firehose delivery stream.
+#'     Data Firehose delivery stream.
 #' @param Attributes A map of attributes with their corresponding values.
 #' 
 #' The following lists the names, descriptions, and values of the special
@@ -3243,10 +3335,6 @@ sns_tag_resource <- function(ResourceArn, Tags) {
 #' message is delivered to the endpoint, so that the endpoint owner can
 #' easily resubscribe to the topic if the [`unsubscribe`][sns_unsubscribe]
 #' request was unintended.
-#' 
-#' Amazon SQS queue subscriptions require authentication for deletion. Only
-#' the owner of the subscription, or the owner of the topic can unsubscribe
-#' using the required Amazon Web Services signature.
 #' 
 #' This action is throttled at 100 transactions per second (TPS).
 #'

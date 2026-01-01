@@ -9,7 +9,9 @@ datazone_list_subscription_requests(
   domainIdentifier,
   maxResults = NULL,
   nextToken = NULL,
+  owningGroupId = NULL,
   owningProjectId = NULL,
+  owningUserId = NULL,
   sortBy = NULL,
   sortOrder = NULL,
   status = NULL,
@@ -37,7 +39,11 @@ You can specify this \code{NextToken} value in a subsequent call to
 \code{\link[=datazone_list_subscription_requests]{list_subscription_requests}} to
 list the next set of subscription requests.}
 
+\item{owningGroupId}{The ID of the owning group.}
+
 \item{owningProjectId}{The identifier of the project for the subscription requests.}
+
+\item{owningUserId}{The ID of the owning user.}
 
 \item{sortBy}{Specifies the way to sort the results of this action.}
 

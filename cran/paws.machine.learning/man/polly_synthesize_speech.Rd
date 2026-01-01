@@ -23,13 +23,7 @@ speech synthesis. Provide an engine that is supported by the voice you
 select. If you don't provide an engine, the standard engine is selected
 by default. If a chosen voice isn't supported by the standard engine,
 this will result in an error. For information on Amazon Polly voices and
-which voices are available for each engine, see \href{https://docs.aws.amazon.com/polly/latest/dg/available-voices.html}{Available Voices}.
-
-Type: String
-
-Valid Values: \code{standard} | \code{neural} | \code{long-form} | \code{generative}
-
-Required: Yes}
+which voices are available for each engine, see \href{https://docs.aws.amazon.com/polly/latest/dg/available-voices.html}{Available Voices}.}
 
 \item{LanguageCode}{Optional language code for the Synthesize Speech request. This is only
 necessary if using a bilingual voice, such as Aditi, which can be used
@@ -57,10 +51,10 @@ When pcm is used, the content returned is audio/pcm in a signed 16-bit,
 \item{SampleRate}{The audio frequency specified in Hz.
 
 The valid values for mp3 and ogg_vorbis are "8000", "16000", "22050",
-and "24000". The default value for standard voices is "22050". The
-default value for neural voices is "24000". The default value for
-long-form voices is "24000". The default value for generative voices is
-"24000".
+"24000", "44100" and "48000". The default value for standard voices is
+"22050". The default value for neural voices is "24000". The default
+value for long-form voices is "24000". The default value for generative
+voices is "24000".
 
 Valid values for pcm are "8000" and "16000" The default value is
 "16000".}

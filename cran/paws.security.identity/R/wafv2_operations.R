@@ -445,11 +445,20 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' 
 #' For Application Load Balancer and AppSync, the limit is fixed at 8 KB
 #' (8,192 bytes).
+#' @param OnSourceDDoSProtectionConfig Specifies the type of DDoS protection to apply to web request data for a
+#' web ACL. For most scenarios, it is recommended to use the default
+#' protection level, `ACTIVE_UNDER_DDOS`. If a web ACL is associated with
+#' multiple Application Load Balancers, the changes you make to DDoS
+#' protection in that web ACL will apply to all associated Application Load
+#' Balancers.
+#' @param ApplicationConfig Configures the ability for the WAF console to store and retrieve
+#' application attributes during the web ACL creation process. Application
+#' attributes help WAF give recommendations for protection packs.
 #'
 #' @keywords internal
 #'
 #' @rdname wafv2_create_web_acl
-wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, DataProtectionConfig = NULL, Tags = NULL, CustomResponseBodies = NULL, CaptchaConfig = NULL, ChallengeConfig = NULL, TokenDomains = NULL, AssociationConfig = NULL) {
+wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, DataProtectionConfig = NULL, Tags = NULL, CustomResponseBodies = NULL, CaptchaConfig = NULL, ChallengeConfig = NULL, TokenDomains = NULL, AssociationConfig = NULL, OnSourceDDoSProtectionConfig = NULL, ApplicationConfig = NULL) {
   op <- new_operation(
     name = "CreateWebACL",
     http_method = "POST",
@@ -458,7 +467,7 @@ wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .wafv2$create_web_acl_input(Name = Name, Scope = Scope, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, DataProtectionConfig = DataProtectionConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig)
+  input <- .wafv2$create_web_acl_input(Name = Name, Scope = Scope, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, DataProtectionConfig = DataProtectionConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig, OnSourceDDoSProtectionConfig = OnSourceDDoSProtectionConfig, ApplicationConfig = ApplicationConfig)
   output <- .wafv2$create_web_acl_output()
   config <- get_config()
   svc <- .wafv2$service(config, op)
@@ -625,6 +634,13 @@ wafv2_delete_ip_set <- function(Name, Scope, Id, LockToken) {
 #' Services
 #' services](https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html)
 #' in the *Amazon Security Lake user guide*.
+#' 
+#' The log scope `CLOUDWATCH_TELEMETRY_RULE_MANAGED` indicates a
+#' configuration that is managed through Amazon CloudWatch Logs for
+#' telemetry data collection and analysis. For information, see [What is
+#' Amazon CloudWatch Logs
+#' ?](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html)
+#' in the *Amazon CloudWatch Logs user guide*.
 #' 
 #' Default: `CUSTOMER`
 #'
@@ -1174,6 +1190,13 @@ wafv2_get_ip_set <- function(Name, Scope, Id) {
 #' Services
 #' services](https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html)
 #' in the *Amazon Security Lake user guide*.
+#' 
+#' The log scope `CLOUDWATCH_TELEMETRY_RULE_MANAGED` indicates a
+#' configuration that is managed through Amazon CloudWatch Logs for
+#' telemetry data collection and analysis. For information, see [What is
+#' Amazon CloudWatch Logs
+#' ?](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html)
+#' in the *Amazon CloudWatch Logs user guide*.
 #' 
 #' Default: `CUSTOMER`
 #'
@@ -1851,6 +1874,13 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' Services
 #' services](https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html)
 #' in the *Amazon Security Lake user guide*.
+#' 
+#' The log scope `CLOUDWATCH_TELEMETRY_RULE_MANAGED` indicates a
+#' configuration that is managed through Amazon CloudWatch Logs for
+#' telemetry data collection and analysis. For information, see [What is
+#' Amazon CloudWatch Logs
+#' ?](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html)
+#' in the *Amazon CloudWatch Logs user guide*.
 #' 
 #' Default: `CUSTOMER`
 #'
@@ -2779,11 +2809,30 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' 
 #' For Application Load Balancer and AppSync, the limit is fixed at 8 KB
 #' (8,192 bytes).
+#' @param OnSourceDDoSProtectionConfig Specifies the type of DDoS protection to apply to web request data for a
+#' web ACL. For most scenarios, it is recommended to use the default
+#' protection level, `ACTIVE_UNDER_DDOS`. If a web ACL is associated with
+#' multiple Application Load Balancers, the changes you make to DDoS
+#' protection in that web ACL will apply to all associated Application Load
+#' Balancers.
+#' @param ApplicationConfig Configures the ability for the WAF console to store and retrieve
+#' application attributes. Application attributes help WAF give
+#' recommendations for protection packs.
+#' 
+#' When using [`update_web_acl`][wafv2_update_web_acl], `ApplicationConfig`
+#' follows these rules:
+#' 
+#' -   If you omit `ApplicationConfig` from the request, all existing
+#'     entries in the web ACL are retained.
+#' 
+#' -   If you include `ApplicationConfig`, entries must match the existing
+#'     values exactly. Any attempt to modify existing entries will result
+#'     in an error.
 #'
 #' @keywords internal
 #'
 #' @rdname wafv2_update_web_acl
-wafv2_update_web_acl <- function(Name, Scope, Id, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, DataProtectionConfig = NULL, LockToken, CustomResponseBodies = NULL, CaptchaConfig = NULL, ChallengeConfig = NULL, TokenDomains = NULL, AssociationConfig = NULL) {
+wafv2_update_web_acl <- function(Name, Scope, Id, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, DataProtectionConfig = NULL, LockToken, CustomResponseBodies = NULL, CaptchaConfig = NULL, ChallengeConfig = NULL, TokenDomains = NULL, AssociationConfig = NULL, OnSourceDDoSProtectionConfig = NULL, ApplicationConfig = NULL) {
   op <- new_operation(
     name = "UpdateWebACL",
     http_method = "POST",
@@ -2792,7 +2841,7 @@ wafv2_update_web_acl <- function(Name, Scope, Id, DefaultAction, Description = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .wafv2$update_web_acl_input(Name = Name, Scope = Scope, Id = Id, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, DataProtectionConfig = DataProtectionConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig)
+  input <- .wafv2$update_web_acl_input(Name = Name, Scope = Scope, Id = Id, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, DataProtectionConfig = DataProtectionConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig, OnSourceDDoSProtectionConfig = OnSourceDDoSProtectionConfig, ApplicationConfig = ApplicationConfig)
   output <- .wafv2$update_web_acl_output()
   config <- get_config()
   svc <- .wafv2$service(config, op)

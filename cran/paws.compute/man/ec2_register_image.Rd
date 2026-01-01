@@ -29,7 +29,7 @@ ec2_register_image(
 \item{ImageLocation}{The full path to your AMI manifest in Amazon S3 storage. The specified
 bucket must have the \code{aws-exec-read} canned access control list (ACL) to
 ensure that it can be accessed by Amazon EC2. For more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl}{Canned ACLs}
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl}{Canned ACL}
 in the \emph{Amazon S3 Service Developer Guide}.}
 
 \item{BillingProducts}{The billing product codes. Your account must be authorized to specify
@@ -38,8 +38,8 @@ billing product codes.
 If your account is not authorized to specify billing product codes, you
 can publish AMIs that include billable software and list them on the
 Amazon Web Services Marketplace. You must first register as a seller on
-the Amazon Web Services Marketplace. For more information, see \href{https://docs.aws.amazon.com/marketplace/latest/userguide/user-guide-for-sellers.html}{Getting started as a seller}
-and \href{https://docs.aws.amazon.com/marketplace/latest/userguide/ami-products.html}{AMI-based products}
+the Amazon Web Services Marketplace. For more information, see \href{https://docs.aws.amazon.com/marketplace/latest/userguide/user-guide-for-sellers.html}{Getting started as an Amazon Web Services Marketplace seller}
+and \href{https://docs.aws.amazon.com/marketplace/latest/userguide/ami-products.html}{AMI-based products in Amazon Web Services Marketplace}
 in the \emph{Amazon Web Services Marketplace Seller Guide}.}
 
 \item{BootMode}{The boot mode of the AMI. A value of \code{uefi-preferred} indicates that the
@@ -48,7 +48,7 @@ AMI supports both UEFI and Legacy BIOS.
 The operating system contained in the AMI must be configured to support
 the specified boot mode.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html}{Boot modes}
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html}{Instance launch behavior with Amazon EC2 boot modes}
 in the \emph{Amazon EC2 User Guide}.}
 
 \item{TpmSupport}{Set to \code{v2.0} to enable Trusted Platform Module (TPM) support. For more
@@ -60,7 +60,7 @@ in the \emph{Amazon EC2 User Guide}.}
 retrieve the UEFI data, use the
 \code{\link[=ec2_get_instance_uefi_data]{get_instance_uefi_data}} command. You can
 inspect and modify the UEFI data by using the \href{https://github.com/awslabs/python-uefivars}{python-uefivars tool} on GitHub. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/uefi-secure-boot.html}{UEFI Secure Boot}
+information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/uefi-secure-boot.html}{UEFI Secure Boot for Amazon EC2 instances}
 in the \emph{Amazon EC2 User Guide}.}
 
 \item{ImdsSupport}{Set to \code{v2.0} to indicate that IMDSv2 is specified in the AMI. Instances
@@ -114,7 +114,7 @@ snapshot, you can't specify the encryption state of the volume.
 If you create an AMI on an Outpost, then all backing snapshots must be
 on the same Outpost or in the Region of that Outpost. AMIs on an Outpost
 that include local snapshots can be used to launch instances on the same
-Outpost only. For more information, \href{https://docs.aws.amazon.com/ebs/latest/userguide/snapshots-outposts.html#ami}{Amazon EBS local snapshots on Outposts}
+Outpost only. For more information, \href{https://docs.aws.amazon.com/ebs/latest/userguide/snapshots-outposts.html#ami}{Create AMIs from local snapshots}
 in the \emph{Amazon EBS User Guide}.}
 
 \item{VirtualizationType}{The type of virtualization (\code{hvm} | \code{paravirtual}).

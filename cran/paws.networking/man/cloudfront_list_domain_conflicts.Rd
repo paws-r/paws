@@ -2,8 +2,9 @@
 % Please edit documentation in R/cloudfront_operations.R
 \name{cloudfront_list_domain_conflicts}
 \alias{cloudfront_list_domain_conflicts}
-\title{Lists existing domain associations that conflict with the domain that
-you specify}
+\title{We recommend that you use the ListDomainConflicts API operation to check
+for domain conflicts, as it supports both standard distributions and
+distribution tenants}
 \usage{
 cloudfront_list_domain_conflicts(
   Domain,
@@ -15,16 +16,16 @@ cloudfront_list_domain_conflicts(
 \arguments{
 \item{Domain}{[required] The domain to check for conflicts.}
 
-\item{DomainControlValidationResource}{[required] The distribution resource identifier. This can be the distribution or
-distribution tenant that has a valid certificate, which covers the
-domain that you specify.}
+\item{DomainControlValidationResource}{[required] The distribution resource identifier. This can be the standard
+distribution or distribution tenant that has a valid certificate, which
+covers the domain that you specify.}
 
 \item{MaxItems}{The maximum number of domain conflicts to return.}
 
 \item{Marker}{The marker for the next set of domain conflicts.}
 }
 \description{
-Lists existing domain associations that conflict with the domain that you specify.
+We recommend that you use the \code{\link[=cloudfront_list_domain_conflicts]{list_domain_conflicts}} API operation to check for domain conflicts, as it supports both standard distributions and distribution tenants. \code{\link[=cloudfront_list_conflicting_aliases]{list_conflicting_aliases}} performs similar checks but only supports standard distributions.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudfront_list_domain_conflicts/} for full documentation.
 }

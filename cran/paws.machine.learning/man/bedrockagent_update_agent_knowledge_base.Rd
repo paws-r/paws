@@ -8,8 +8,8 @@ with an agent}
 bedrockagent_update_agent_knowledge_base(
   agentId,
   agentVersion,
-  description = NULL,
   knowledgeBaseId,
+  description = NULL,
   knowledgeBaseState = NULL
 )
 }
@@ -20,11 +20,11 @@ that you want to update.}
 \item{agentVersion}{[required] The version of the agent associated with the knowledge base that you
 want to update.}
 
-\item{description}{Specifies a new description for the knowledge base associated with an
-agent.}
-
 \item{knowledgeBaseId}{[required] The unique identifier of the knowledge base that has been associated
 with an agent.}
+
+\item{description}{Specifies a new description for the knowledge base associated with an
+agent.}
 
 \item{knowledgeBaseState}{Specifies whether the agent uses the knowledge base or not when sending
 an

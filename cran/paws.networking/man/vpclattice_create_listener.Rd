@@ -5,36 +5,36 @@
 \title{Creates a listener for a service}
 \usage{
 vpclattice_create_listener(
-  clientToken = NULL,
-  defaultAction,
-  name,
-  port = NULL,
-  protocol,
   serviceIdentifier,
+  name,
+  protocol,
+  port = NULL,
+  defaultAction,
+  clientToken = NULL,
   tags = NULL
 )
 }
 \arguments{
-\item{clientToken}{A unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. If you retry a request that completed
-successfully using the same client token and parameters, the retry
-succeeds without performing any actions. If the parameters aren't
-identical, the retry fails.}
-
-\item{defaultAction}{[required] The action for the default rule. Each listener has a default rule. The
-default rule is used if no other rules match.}
+\item{serviceIdentifier}{[required] The ID or ARN of the service.}
 
 \item{name}{[required] The name of the listener. A listener name must be unique within a
 service. The valid characters are a-z, 0-9, and hyphens (-). You can't
 use a hyphen as the first or last character, or immediately after
 another hyphen.}
 
+\item{protocol}{[required] The listener protocol.}
+
 \item{port}{The listener port. You can specify a value from 1 to 65535. For HTTP,
 the default is 80. For HTTPS, the default is 443.}
 
-\item{protocol}{[required] The listener protocol.}
+\item{defaultAction}{[required] The action for the default rule. Each listener has a default rule. The
+default rule is used if no other rules match.}
 
-\item{serviceIdentifier}{[required] The ID or ARN of the service.}
+\item{clientToken}{A unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. If you retry a request that completed
+successfully using the same client token and parameters, the retry
+succeeds without performing any actions. If the parameters aren't
+identical, the retry fails.}
 
 \item{tags}{The tags for the listener.}
 }

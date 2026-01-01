@@ -14,11 +14,7 @@ you have the required permissions, the error response is
 
 \item{PoolId}{[required] The ID of the pool that you want to deprovision the CIDR from.}
 
-\item{Cidr}{[required] The CIDR you want to deprovision from the pool. Enter the CIDR you want
-to deprovision with a netmask of \verb{/32}. You must rerun this command for
-each IP address in the CIDR range. If your CIDR is a \verb{/24}, you will
-have to run this command to deprovision each of the 256 IP addresses in
-the \verb{/24} CIDR.}
+\item{Cidr}{[required] The CIDR you want to deprovision from the pool.}
 }
 \description{
 Deprovision a CIDR from a public IPv4 pool.

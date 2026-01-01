@@ -42,7 +42,9 @@ NULL
 #'     sensitiveInformationPolicyUnits = 123,
 #'     sensitiveInformationPolicyFreeUnits = 123,
 #'     contextualGroundingPolicyUnits = 123,
-#'     contentPolicyImageUnits = 123
+#'     contentPolicyImageUnits = 123,
+#'     automatedReasoningPolicyUnits = 123,
+#'     automatedReasoningPolicies = 123
 #'   ),
 #'   action = "NONE"|"GUARDRAIL_INTERVENED",
 #'   actionReason = "string",
@@ -121,6 +123,267 @@ NULL
 #'           )
 #'         )
 #'       ),
+#'       automatedReasoningPolicy = list(
+#'         findings = list(
+#'           list(
+#'             valid = list(
+#'               translation = list(
+#'                 premises = list(
+#'                   list(
+#'                     logic = "string",
+#'                     naturalLanguage = "string"
+#'                   )
+#'                 ),
+#'                 claims = list(
+#'                   list(
+#'                     logic = "string",
+#'                     naturalLanguage = "string"
+#'                   )
+#'                 ),
+#'                 untranslatedPremises = list(
+#'                   list(
+#'                     text = "string"
+#'                   )
+#'                 ),
+#'                 untranslatedClaims = list(
+#'                   list(
+#'                     text = "string"
+#'                   )
+#'                 ),
+#'                 confidence = 123.0
+#'               ),
+#'               claimsTrueScenario = list(
+#'                 statements = list(
+#'                   list(
+#'                     logic = "string",
+#'                     naturalLanguage = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               supportingRules = list(
+#'                 list(
+#'                   identifier = "string",
+#'                   policyVersionArn = "string"
+#'                 )
+#'               ),
+#'               logicWarning = list(
+#'                 type = "ALWAYS_FALSE"|"ALWAYS_TRUE",
+#'                 premises = list(
+#'                   list(
+#'                     logic = "string",
+#'                     naturalLanguage = "string"
+#'                   )
+#'                 ),
+#'                 claims = list(
+#'                   list(
+#'                     logic = "string",
+#'                     naturalLanguage = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             invalid = list(
+#'               translation = list(
+#'                 premises = list(
+#'                   list(
+#'                     logic = "string",
+#'                     naturalLanguage = "string"
+#'                   )
+#'                 ),
+#'                 claims = list(
+#'                   list(
+#'                     logic = "string",
+#'                     naturalLanguage = "string"
+#'                   )
+#'                 ),
+#'                 untranslatedPremises = list(
+#'                   list(
+#'                     text = "string"
+#'                   )
+#'                 ),
+#'                 untranslatedClaims = list(
+#'                   list(
+#'                     text = "string"
+#'                   )
+#'                 ),
+#'                 confidence = 123.0
+#'               ),
+#'               contradictingRules = list(
+#'                 list(
+#'                   identifier = "string",
+#'                   policyVersionArn = "string"
+#'                 )
+#'               ),
+#'               logicWarning = list(
+#'                 type = "ALWAYS_FALSE"|"ALWAYS_TRUE",
+#'                 premises = list(
+#'                   list(
+#'                     logic = "string",
+#'                     naturalLanguage = "string"
+#'                   )
+#'                 ),
+#'                 claims = list(
+#'                   list(
+#'                     logic = "string",
+#'                     naturalLanguage = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             satisfiable = list(
+#'               translation = list(
+#'                 premises = list(
+#'                   list(
+#'                     logic = "string",
+#'                     naturalLanguage = "string"
+#'                   )
+#'                 ),
+#'                 claims = list(
+#'                   list(
+#'                     logic = "string",
+#'                     naturalLanguage = "string"
+#'                   )
+#'                 ),
+#'                 untranslatedPremises = list(
+#'                   list(
+#'                     text = "string"
+#'                   )
+#'                 ),
+#'                 untranslatedClaims = list(
+#'                   list(
+#'                     text = "string"
+#'                   )
+#'                 ),
+#'                 confidence = 123.0
+#'               ),
+#'               claimsTrueScenario = list(
+#'                 statements = list(
+#'                   list(
+#'                     logic = "string",
+#'                     naturalLanguage = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               claimsFalseScenario = list(
+#'                 statements = list(
+#'                   list(
+#'                     logic = "string",
+#'                     naturalLanguage = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               logicWarning = list(
+#'                 type = "ALWAYS_FALSE"|"ALWAYS_TRUE",
+#'                 premises = list(
+#'                   list(
+#'                     logic = "string",
+#'                     naturalLanguage = "string"
+#'                   )
+#'                 ),
+#'                 claims = list(
+#'                   list(
+#'                     logic = "string",
+#'                     naturalLanguage = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             impossible = list(
+#'               translation = list(
+#'                 premises = list(
+#'                   list(
+#'                     logic = "string",
+#'                     naturalLanguage = "string"
+#'                   )
+#'                 ),
+#'                 claims = list(
+#'                   list(
+#'                     logic = "string",
+#'                     naturalLanguage = "string"
+#'                   )
+#'                 ),
+#'                 untranslatedPremises = list(
+#'                   list(
+#'                     text = "string"
+#'                   )
+#'                 ),
+#'                 untranslatedClaims = list(
+#'                   list(
+#'                     text = "string"
+#'                   )
+#'                 ),
+#'                 confidence = 123.0
+#'               ),
+#'               contradictingRules = list(
+#'                 list(
+#'                   identifier = "string",
+#'                   policyVersionArn = "string"
+#'                 )
+#'               ),
+#'               logicWarning = list(
+#'                 type = "ALWAYS_FALSE"|"ALWAYS_TRUE",
+#'                 premises = list(
+#'                   list(
+#'                     logic = "string",
+#'                     naturalLanguage = "string"
+#'                   )
+#'                 ),
+#'                 claims = list(
+#'                   list(
+#'                     logic = "string",
+#'                     naturalLanguage = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             translationAmbiguous = list(
+#'               options = list(
+#'                 list(
+#'                   translations = list(
+#'                     list(
+#'                       premises = list(
+#'                         list(
+#'                           logic = "string",
+#'                           naturalLanguage = "string"
+#'                         )
+#'                       ),
+#'                       claims = list(
+#'                         list(
+#'                           logic = "string",
+#'                           naturalLanguage = "string"
+#'                         )
+#'                       ),
+#'                       untranslatedPremises = list(
+#'                         list(
+#'                           text = "string"
+#'                         )
+#'                       ),
+#'                       untranslatedClaims = list(
+#'                         list(
+#'                           text = "string"
+#'                         )
+#'                       ),
+#'                       confidence = 123.0
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               differenceScenarios = list(
+#'                 list(
+#'                   statements = list(
+#'                     list(
+#'                       logic = "string",
+#'                       naturalLanguage = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             tooComplex = list(),
+#'             noTranslations = list()
+#'           )
+#'         )
+#'       ),
 #'       invocationMetrics = list(
 #'         guardrailProcessingLatency = 123,
 #'         usage = list(
@@ -130,7 +393,9 @@ NULL
 #'           sensitiveInformationPolicyUnits = 123,
 #'           sensitiveInformationPolicyFreeUnits = 123,
 #'           contextualGroundingPolicyUnits = 123,
-#'           contentPolicyImageUnits = 123
+#'           contentPolicyImageUnits = 123,
+#'           automatedReasoningPolicyUnits = 123,
+#'           automatedReasoningPolicies = 123
 #'         ),
 #'         guardrailCoverage = list(
 #'           textCharacters = list(
@@ -142,6 +407,15 @@ NULL
 #'             total = 123
 #'           )
 #'         )
+#'       ),
+#'       appliedGuardrailDetails = list(
+#'         guardrailId = "string",
+#'         guardrailVersion = "string",
+#'         guardrailArn = "string",
+#'         guardrailOrigin = list(
+#'           "REQUEST"|"ACCOUNT_ENFORCED"|"ORGANIZATION_ENFORCED"
+#'         ),
+#'         guardrailOwnership = "SELF"|"CROSS_ACCOUNT"
 #'       )
 #'     )
 #'   ),
@@ -266,7 +540,7 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #' bedrockruntime_converse(modelId, messages, system, inferenceConfig,
 #'   toolConfig, guardrailConfig, additionalModelRequestFields,
 #'   promptVariables, additionalModelResponseFieldPaths, requestMetadata,
-#'   performanceConfig)
+#'   performanceConfig, serviceTier)
 #'
 #' @param modelId &#91;required&#93; Specifies the model or throughput with which to run inference, or the
 #' prompt resource to use in inference. The value depends on the resource
@@ -352,6 +626,8 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #' model response, it is ignored by [`converse`][bedrockruntime_converse].
 #' @param requestMetadata Key-value pairs that you can use to filter invocation logs.
 #' @param performanceConfig Model performance settings for the request.
+#' @param serviceTier Specifies the processing tier configuration used for serving the
+#' request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -371,6 +647,9 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                 uri = "string",
 #'                 bucketOwner = "string"
 #'               )
+#'             ),
+#'             error = list(
+#'               message = "string"
 #'             )
 #'           ),
 #'           document = list(
@@ -381,7 +660,17 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'               s3Location = list(
 #'                 uri = "string",
 #'                 bucketOwner = "string"
+#'               ),
+#'               text = "string",
+#'               content = list(
+#'                 list(
+#'                   text = "string"
+#'                 )
 #'               )
+#'             ),
+#'             context = "string",
+#'             citations = list(
+#'               enabled = TRUE|FALSE
 #'             )
 #'           ),
 #'           video = list(
@@ -394,10 +683,24 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'               )
 #'             )
 #'           ),
+#'           audio = list(
+#'             format = "mp3"|"opus"|"wav"|"aac"|"flac"|"mp4"|"ogg"|"mkv"|"mka"|"x-aac"|"m4a"|"mpeg"|"mpga"|"pcm"|"webm",
+#'             source = list(
+#'               bytes = raw,
+#'               s3Location = list(
+#'                 uri = "string",
+#'                 bucketOwner = "string"
+#'               )
+#'             ),
+#'             error = list(
+#'               message = "string"
+#'             )
+#'           ),
 #'           toolUse = list(
 #'             toolUseId = "string",
 #'             name = "string",
-#'             input = list()
+#'             input = list(),
+#'             type = "server_tool_use"
 #'           ),
 #'           toolResult = list(
 #'             toolUseId = "string",
@@ -413,6 +716,9 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                       uri = "string",
 #'                       bucketOwner = "string"
 #'                     )
+#'                   ),
+#'                   error = list(
+#'                     message = "string"
 #'                   )
 #'                 ),
 #'                 document = list(
@@ -423,7 +729,17 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                     s3Location = list(
 #'                       uri = "string",
 #'                       bucketOwner = "string"
+#'                     ),
+#'                     text = "string",
+#'                     content = list(
+#'                       list(
+#'                         text = "string"
+#'                       )
 #'                     )
+#'                   ),
+#'                   context = "string",
+#'                   citations = list(
+#'                     enabled = TRUE|FALSE
 #'                   )
 #'                 ),
 #'                 video = list(
@@ -435,10 +751,23 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                       bucketOwner = "string"
 #'                     )
 #'                   )
+#'                 ),
+#'                 searchResult = list(
+#'                   source = "string",
+#'                   title = "string",
+#'                   content = list(
+#'                     list(
+#'                       text = "string"
+#'                     )
+#'                   ),
+#'                   citations = list(
+#'                     enabled = TRUE|FALSE
+#'                   )
 #'                 )
 #'               )
 #'             ),
-#'             status = "success"|"error"
+#'             status = "success"|"error",
+#'             type = "string"
 #'           ),
 #'           guardContent = list(
 #'             text = list(
@@ -463,12 +792,68 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'               signature = "string"
 #'             ),
 #'             redactedContent = raw
+#'           ),
+#'           citationsContent = list(
+#'             content = list(
+#'               list(
+#'                 text = "string"
+#'               )
+#'             ),
+#'             citations = list(
+#'               list(
+#'                 title = "string",
+#'                 source = "string",
+#'                 sourceContent = list(
+#'                   list(
+#'                     text = "string"
+#'                   )
+#'                 ),
+#'                 location = list(
+#'                   web = list(
+#'                     url = "string",
+#'                     domain = "string"
+#'                   ),
+#'                   documentChar = list(
+#'                     documentIndex = 123,
+#'                     start = 123,
+#'                     end = 123
+#'                   ),
+#'                   documentPage = list(
+#'                     documentIndex = 123,
+#'                     start = 123,
+#'                     end = 123
+#'                   ),
+#'                   documentChunk = list(
+#'                     documentIndex = 123,
+#'                     start = 123,
+#'                     end = 123
+#'                   ),
+#'                   searchResultLocation = list(
+#'                     searchResultIndex = 123,
+#'                     start = 123,
+#'                     end = 123
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           searchResult = list(
+#'             source = "string",
+#'             title = "string",
+#'             content = list(
+#'               list(
+#'                 text = "string"
+#'               )
+#'             ),
+#'             citations = list(
+#'               enabled = TRUE|FALSE
+#'             )
 #'           )
 #'         )
 #'       )
 #'     )
 #'   ),
-#'   stopReason = "end_turn"|"tool_use"|"max_tokens"|"stop_sequence"|"guardrail_intervened"|"content_filtered",
+#'   stopReason = "end_turn"|"tool_use"|"max_tokens"|"stop_sequence"|"guardrail_intervened"|"content_filtered"|"malformed_model_output"|"malformed_tool_use"|"model_context_window_exceeded",
 #'   usage = list(
 #'     inputTokens = 123,
 #'     outputTokens = 123,
@@ -555,6 +940,267 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'               )
 #'             )
 #'           ),
+#'           automatedReasoningPolicy = list(
+#'             findings = list(
+#'               list(
+#'                 valid = list(
+#'                   translation = list(
+#'                     premises = list(
+#'                       list(
+#'                         logic = "string",
+#'                         naturalLanguage = "string"
+#'                       )
+#'                     ),
+#'                     claims = list(
+#'                       list(
+#'                         logic = "string",
+#'                         naturalLanguage = "string"
+#'                       )
+#'                     ),
+#'                     untranslatedPremises = list(
+#'                       list(
+#'                         text = "string"
+#'                       )
+#'                     ),
+#'                     untranslatedClaims = list(
+#'                       list(
+#'                         text = "string"
+#'                       )
+#'                     ),
+#'                     confidence = 123.0
+#'                   ),
+#'                   claimsTrueScenario = list(
+#'                     statements = list(
+#'                       list(
+#'                         logic = "string",
+#'                         naturalLanguage = "string"
+#'                       )
+#'                     )
+#'                   ),
+#'                   supportingRules = list(
+#'                     list(
+#'                       identifier = "string",
+#'                       policyVersionArn = "string"
+#'                     )
+#'                   ),
+#'                   logicWarning = list(
+#'                     type = "ALWAYS_FALSE"|"ALWAYS_TRUE",
+#'                     premises = list(
+#'                       list(
+#'                         logic = "string",
+#'                         naturalLanguage = "string"
+#'                       )
+#'                     ),
+#'                     claims = list(
+#'                       list(
+#'                         logic = "string",
+#'                         naturalLanguage = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 invalid = list(
+#'                   translation = list(
+#'                     premises = list(
+#'                       list(
+#'                         logic = "string",
+#'                         naturalLanguage = "string"
+#'                       )
+#'                     ),
+#'                     claims = list(
+#'                       list(
+#'                         logic = "string",
+#'                         naturalLanguage = "string"
+#'                       )
+#'                     ),
+#'                     untranslatedPremises = list(
+#'                       list(
+#'                         text = "string"
+#'                       )
+#'                     ),
+#'                     untranslatedClaims = list(
+#'                       list(
+#'                         text = "string"
+#'                       )
+#'                     ),
+#'                     confidence = 123.0
+#'                   ),
+#'                   contradictingRules = list(
+#'                     list(
+#'                       identifier = "string",
+#'                       policyVersionArn = "string"
+#'                     )
+#'                   ),
+#'                   logicWarning = list(
+#'                     type = "ALWAYS_FALSE"|"ALWAYS_TRUE",
+#'                     premises = list(
+#'                       list(
+#'                         logic = "string",
+#'                         naturalLanguage = "string"
+#'                       )
+#'                     ),
+#'                     claims = list(
+#'                       list(
+#'                         logic = "string",
+#'                         naturalLanguage = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 satisfiable = list(
+#'                   translation = list(
+#'                     premises = list(
+#'                       list(
+#'                         logic = "string",
+#'                         naturalLanguage = "string"
+#'                       )
+#'                     ),
+#'                     claims = list(
+#'                       list(
+#'                         logic = "string",
+#'                         naturalLanguage = "string"
+#'                       )
+#'                     ),
+#'                     untranslatedPremises = list(
+#'                       list(
+#'                         text = "string"
+#'                       )
+#'                     ),
+#'                     untranslatedClaims = list(
+#'                       list(
+#'                         text = "string"
+#'                       )
+#'                     ),
+#'                     confidence = 123.0
+#'                   ),
+#'                   claimsTrueScenario = list(
+#'                     statements = list(
+#'                       list(
+#'                         logic = "string",
+#'                         naturalLanguage = "string"
+#'                       )
+#'                     )
+#'                   ),
+#'                   claimsFalseScenario = list(
+#'                     statements = list(
+#'                       list(
+#'                         logic = "string",
+#'                         naturalLanguage = "string"
+#'                       )
+#'                     )
+#'                   ),
+#'                   logicWarning = list(
+#'                     type = "ALWAYS_FALSE"|"ALWAYS_TRUE",
+#'                     premises = list(
+#'                       list(
+#'                         logic = "string",
+#'                         naturalLanguage = "string"
+#'                       )
+#'                     ),
+#'                     claims = list(
+#'                       list(
+#'                         logic = "string",
+#'                         naturalLanguage = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 impossible = list(
+#'                   translation = list(
+#'                     premises = list(
+#'                       list(
+#'                         logic = "string",
+#'                         naturalLanguage = "string"
+#'                       )
+#'                     ),
+#'                     claims = list(
+#'                       list(
+#'                         logic = "string",
+#'                         naturalLanguage = "string"
+#'                       )
+#'                     ),
+#'                     untranslatedPremises = list(
+#'                       list(
+#'                         text = "string"
+#'                       )
+#'                     ),
+#'                     untranslatedClaims = list(
+#'                       list(
+#'                         text = "string"
+#'                       )
+#'                     ),
+#'                     confidence = 123.0
+#'                   ),
+#'                   contradictingRules = list(
+#'                     list(
+#'                       identifier = "string",
+#'                       policyVersionArn = "string"
+#'                     )
+#'                   ),
+#'                   logicWarning = list(
+#'                     type = "ALWAYS_FALSE"|"ALWAYS_TRUE",
+#'                     premises = list(
+#'                       list(
+#'                         logic = "string",
+#'                         naturalLanguage = "string"
+#'                       )
+#'                     ),
+#'                     claims = list(
+#'                       list(
+#'                         logic = "string",
+#'                         naturalLanguage = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 translationAmbiguous = list(
+#'                   options = list(
+#'                     list(
+#'                       translations = list(
+#'                         list(
+#'                           premises = list(
+#'                             list(
+#'                               logic = "string",
+#'                               naturalLanguage = "string"
+#'                             )
+#'                           ),
+#'                           claims = list(
+#'                             list(
+#'                               logic = "string",
+#'                               naturalLanguage = "string"
+#'                             )
+#'                           ),
+#'                           untranslatedPremises = list(
+#'                             list(
+#'                               text = "string"
+#'                             )
+#'                           ),
+#'                           untranslatedClaims = list(
+#'                             list(
+#'                               text = "string"
+#'                             )
+#'                           ),
+#'                           confidence = 123.0
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   differenceScenarios = list(
+#'                     list(
+#'                       statements = list(
+#'                         list(
+#'                           logic = "string",
+#'                           naturalLanguage = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 tooComplex = list(),
+#'                 noTranslations = list()
+#'               )
+#'             )
+#'           ),
 #'           invocationMetrics = list(
 #'             guardrailProcessingLatency = 123,
 #'             usage = list(
@@ -564,7 +1210,9 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'               sensitiveInformationPolicyUnits = 123,
 #'               sensitiveInformationPolicyFreeUnits = 123,
 #'               contextualGroundingPolicyUnits = 123,
-#'               contentPolicyImageUnits = 123
+#'               contentPolicyImageUnits = 123,
+#'               automatedReasoningPolicyUnits = 123,
+#'               automatedReasoningPolicies = 123
 #'             ),
 #'             guardrailCoverage = list(
 #'               textCharacters = list(
@@ -576,6 +1224,15 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                 total = 123
 #'               )
 #'             )
+#'           ),
+#'           appliedGuardrailDetails = list(
+#'             guardrailId = "string",
+#'             guardrailVersion = "string",
+#'             guardrailArn = "string",
+#'             guardrailOrigin = list(
+#'               "REQUEST"|"ACCOUNT_ENFORCED"|"ORGANIZATION_ENFORCED"
+#'             ),
+#'             guardrailOwnership = "SELF"|"CROSS_ACCOUNT"
 #'           )
 #'         )
 #'       ),
@@ -650,6 +1307,267 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                 )
 #'               )
 #'             ),
+#'             automatedReasoningPolicy = list(
+#'               findings = list(
+#'                 list(
+#'                   valid = list(
+#'                     translation = list(
+#'                       premises = list(
+#'                         list(
+#'                           logic = "string",
+#'                           naturalLanguage = "string"
+#'                         )
+#'                       ),
+#'                       claims = list(
+#'                         list(
+#'                           logic = "string",
+#'                           naturalLanguage = "string"
+#'                         )
+#'                       ),
+#'                       untranslatedPremises = list(
+#'                         list(
+#'                           text = "string"
+#'                         )
+#'                       ),
+#'                       untranslatedClaims = list(
+#'                         list(
+#'                           text = "string"
+#'                         )
+#'                       ),
+#'                       confidence = 123.0
+#'                     ),
+#'                     claimsTrueScenario = list(
+#'                       statements = list(
+#'                         list(
+#'                           logic = "string",
+#'                           naturalLanguage = "string"
+#'                         )
+#'                       )
+#'                     ),
+#'                     supportingRules = list(
+#'                       list(
+#'                         identifier = "string",
+#'                         policyVersionArn = "string"
+#'                       )
+#'                     ),
+#'                     logicWarning = list(
+#'                       type = "ALWAYS_FALSE"|"ALWAYS_TRUE",
+#'                       premises = list(
+#'                         list(
+#'                           logic = "string",
+#'                           naturalLanguage = "string"
+#'                         )
+#'                       ),
+#'                       claims = list(
+#'                         list(
+#'                           logic = "string",
+#'                           naturalLanguage = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   invalid = list(
+#'                     translation = list(
+#'                       premises = list(
+#'                         list(
+#'                           logic = "string",
+#'                           naturalLanguage = "string"
+#'                         )
+#'                       ),
+#'                       claims = list(
+#'                         list(
+#'                           logic = "string",
+#'                           naturalLanguage = "string"
+#'                         )
+#'                       ),
+#'                       untranslatedPremises = list(
+#'                         list(
+#'                           text = "string"
+#'                         )
+#'                       ),
+#'                       untranslatedClaims = list(
+#'                         list(
+#'                           text = "string"
+#'                         )
+#'                       ),
+#'                       confidence = 123.0
+#'                     ),
+#'                     contradictingRules = list(
+#'                       list(
+#'                         identifier = "string",
+#'                         policyVersionArn = "string"
+#'                       )
+#'                     ),
+#'                     logicWarning = list(
+#'                       type = "ALWAYS_FALSE"|"ALWAYS_TRUE",
+#'                       premises = list(
+#'                         list(
+#'                           logic = "string",
+#'                           naturalLanguage = "string"
+#'                         )
+#'                       ),
+#'                       claims = list(
+#'                         list(
+#'                           logic = "string",
+#'                           naturalLanguage = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   satisfiable = list(
+#'                     translation = list(
+#'                       premises = list(
+#'                         list(
+#'                           logic = "string",
+#'                           naturalLanguage = "string"
+#'                         )
+#'                       ),
+#'                       claims = list(
+#'                         list(
+#'                           logic = "string",
+#'                           naturalLanguage = "string"
+#'                         )
+#'                       ),
+#'                       untranslatedPremises = list(
+#'                         list(
+#'                           text = "string"
+#'                         )
+#'                       ),
+#'                       untranslatedClaims = list(
+#'                         list(
+#'                           text = "string"
+#'                         )
+#'                       ),
+#'                       confidence = 123.0
+#'                     ),
+#'                     claimsTrueScenario = list(
+#'                       statements = list(
+#'                         list(
+#'                           logic = "string",
+#'                           naturalLanguage = "string"
+#'                         )
+#'                       )
+#'                     ),
+#'                     claimsFalseScenario = list(
+#'                       statements = list(
+#'                         list(
+#'                           logic = "string",
+#'                           naturalLanguage = "string"
+#'                         )
+#'                       )
+#'                     ),
+#'                     logicWarning = list(
+#'                       type = "ALWAYS_FALSE"|"ALWAYS_TRUE",
+#'                       premises = list(
+#'                         list(
+#'                           logic = "string",
+#'                           naturalLanguage = "string"
+#'                         )
+#'                       ),
+#'                       claims = list(
+#'                         list(
+#'                           logic = "string",
+#'                           naturalLanguage = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   impossible = list(
+#'                     translation = list(
+#'                       premises = list(
+#'                         list(
+#'                           logic = "string",
+#'                           naturalLanguage = "string"
+#'                         )
+#'                       ),
+#'                       claims = list(
+#'                         list(
+#'                           logic = "string",
+#'                           naturalLanguage = "string"
+#'                         )
+#'                       ),
+#'                       untranslatedPremises = list(
+#'                         list(
+#'                           text = "string"
+#'                         )
+#'                       ),
+#'                       untranslatedClaims = list(
+#'                         list(
+#'                           text = "string"
+#'                         )
+#'                       ),
+#'                       confidence = 123.0
+#'                     ),
+#'                     contradictingRules = list(
+#'                       list(
+#'                         identifier = "string",
+#'                         policyVersionArn = "string"
+#'                       )
+#'                     ),
+#'                     logicWarning = list(
+#'                       type = "ALWAYS_FALSE"|"ALWAYS_TRUE",
+#'                       premises = list(
+#'                         list(
+#'                           logic = "string",
+#'                           naturalLanguage = "string"
+#'                         )
+#'                       ),
+#'                       claims = list(
+#'                         list(
+#'                           logic = "string",
+#'                           naturalLanguage = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   translationAmbiguous = list(
+#'                     options = list(
+#'                       list(
+#'                         translations = list(
+#'                           list(
+#'                             premises = list(
+#'                               list(
+#'                                 logic = "string",
+#'                                 naturalLanguage = "string"
+#'                               )
+#'                             ),
+#'                             claims = list(
+#'                               list(
+#'                                 logic = "string",
+#'                                 naturalLanguage = "string"
+#'                               )
+#'                             ),
+#'                             untranslatedPremises = list(
+#'                               list(
+#'                                 text = "string"
+#'                               )
+#'                             ),
+#'                             untranslatedClaims = list(
+#'                               list(
+#'                                 text = "string"
+#'                               )
+#'                             ),
+#'                             confidence = 123.0
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     differenceScenarios = list(
+#'                       list(
+#'                         statements = list(
+#'                           list(
+#'                             logic = "string",
+#'                             naturalLanguage = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   tooComplex = list(),
+#'                   noTranslations = list()
+#'                 )
+#'               )
+#'             ),
 #'             invocationMetrics = list(
 #'               guardrailProcessingLatency = 123,
 #'               usage = list(
@@ -659,7 +1577,9 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                 sensitiveInformationPolicyUnits = 123,
 #'                 sensitiveInformationPolicyFreeUnits = 123,
 #'                 contextualGroundingPolicyUnits = 123,
-#'                 contentPolicyImageUnits = 123
+#'                 contentPolicyImageUnits = 123,
+#'                 automatedReasoningPolicyUnits = 123,
+#'                 automatedReasoningPolicies = 123
 #'               ),
 #'               guardrailCoverage = list(
 #'                 textCharacters = list(
@@ -671,6 +1591,15 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                   total = 123
 #'                 )
 #'               )
+#'             ),
+#'             appliedGuardrailDetails = list(
+#'               guardrailId = "string",
+#'               guardrailVersion = "string",
+#'               guardrailArn = "string",
+#'               guardrailOrigin = list(
+#'                 "REQUEST"|"ACCOUNT_ENFORCED"|"ORGANIZATION_ENFORCED"
+#'               ),
+#'               guardrailOwnership = "SELF"|"CROSS_ACCOUNT"
 #'             )
 #'           )
 #'         )
@@ -683,6 +1612,9 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'   ),
 #'   performanceConfig = list(
 #'     latency = "standard"|"optimized"
+#'   ),
+#'   serviceTier = list(
+#'     type = "priority"|"default"|"flex"|"reserved"
 #'   )
 #' )
 #' ```
@@ -705,6 +1637,9 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                 uri = "string",
 #'                 bucketOwner = "string"
 #'               )
+#'             ),
+#'             error = list(
+#'               message = "string"
 #'             )
 #'           ),
 #'           document = list(
@@ -715,7 +1650,17 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'               s3Location = list(
 #'                 uri = "string",
 #'                 bucketOwner = "string"
+#'               ),
+#'               text = "string",
+#'               content = list(
+#'                 list(
+#'                   text = "string"
+#'                 )
 #'               )
+#'             ),
+#'             context = "string",
+#'             citations = list(
+#'               enabled = TRUE|FALSE
 #'             )
 #'           ),
 #'           video = list(
@@ -728,10 +1673,24 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'               )
 #'             )
 #'           ),
+#'           audio = list(
+#'             format = "mp3"|"opus"|"wav"|"aac"|"flac"|"mp4"|"ogg"|"mkv"|"mka"|"x-aac"|"m4a"|"mpeg"|"mpga"|"pcm"|"webm",
+#'             source = list(
+#'               bytes = raw,
+#'               s3Location = list(
+#'                 uri = "string",
+#'                 bucketOwner = "string"
+#'               )
+#'             ),
+#'             error = list(
+#'               message = "string"
+#'             )
+#'           ),
 #'           toolUse = list(
 #'             toolUseId = "string",
 #'             name = "string",
-#'             input = list()
+#'             input = list(),
+#'             type = "server_tool_use"
 #'           ),
 #'           toolResult = list(
 #'             toolUseId = "string",
@@ -747,6 +1706,9 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                       uri = "string",
 #'                       bucketOwner = "string"
 #'                     )
+#'                   ),
+#'                   error = list(
+#'                     message = "string"
 #'                   )
 #'                 ),
 #'                 document = list(
@@ -757,7 +1719,17 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                     s3Location = list(
 #'                       uri = "string",
 #'                       bucketOwner = "string"
+#'                     ),
+#'                     text = "string",
+#'                     content = list(
+#'                       list(
+#'                         text = "string"
+#'                       )
 #'                     )
+#'                   ),
+#'                   context = "string",
+#'                   citations = list(
+#'                     enabled = TRUE|FALSE
 #'                   )
 #'                 ),
 #'                 video = list(
@@ -769,10 +1741,23 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                       bucketOwner = "string"
 #'                     )
 #'                   )
+#'                 ),
+#'                 searchResult = list(
+#'                   source = "string",
+#'                   title = "string",
+#'                   content = list(
+#'                     list(
+#'                       text = "string"
+#'                     )
+#'                   ),
+#'                   citations = list(
+#'                     enabled = TRUE|FALSE
+#'                   )
 #'                 )
 #'               )
 #'             ),
-#'             status = "success"|"error"
+#'             status = "success"|"error",
+#'             type = "string"
 #'           ),
 #'           guardContent = list(
 #'             text = list(
@@ -797,6 +1782,62 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'               signature = "string"
 #'             ),
 #'             redactedContent = raw
+#'           ),
+#'           citationsContent = list(
+#'             content = list(
+#'               list(
+#'                 text = "string"
+#'               )
+#'             ),
+#'             citations = list(
+#'               list(
+#'                 title = "string",
+#'                 source = "string",
+#'                 sourceContent = list(
+#'                   list(
+#'                     text = "string"
+#'                   )
+#'                 ),
+#'                 location = list(
+#'                   web = list(
+#'                     url = "string",
+#'                     domain = "string"
+#'                   ),
+#'                   documentChar = list(
+#'                     documentIndex = 123,
+#'                     start = 123,
+#'                     end = 123
+#'                   ),
+#'                   documentPage = list(
+#'                     documentIndex = 123,
+#'                     start = 123,
+#'                     end = 123
+#'                   ),
+#'                   documentChunk = list(
+#'                     documentIndex = 123,
+#'                     start = 123,
+#'                     end = 123
+#'                   ),
+#'                   searchResultLocation = list(
+#'                     searchResultIndex = 123,
+#'                     start = 123,
+#'                     end = 123
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           searchResult = list(
+#'             source = "string",
+#'             title = "string",
+#'             content = list(
+#'               list(
+#'                 text = "string"
+#'               )
+#'             ),
+#'             citations = list(
+#'               enabled = TRUE|FALSE
+#'             )
 #'           )
 #'         )
 #'       )
@@ -842,6 +1883,9 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'             json = list()
 #'           )
 #'         ),
+#'         systemTool = list(
+#'           name = "string"
+#'         ),
 #'         cachePoint = list(
 #'           type = "default"
 #'         )
@@ -874,6 +1918,9 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'   ),
 #'   performanceConfig = list(
 #'     latency = "standard"|"optimized"
+#'   ),
+#'   serviceTier = list(
+#'     type = "priority"|"default"|"flex"|"reserved"
 #'   )
 #' )
 #' ```
@@ -883,7 +1930,7 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #' @rdname bedrockruntime_converse
 #'
 #' @aliases bedrockruntime_converse
-bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inferenceConfig = NULL, toolConfig = NULL, guardrailConfig = NULL, additionalModelRequestFields = NULL, promptVariables = NULL, additionalModelResponseFieldPaths = NULL, requestMetadata = NULL, performanceConfig = NULL) {
+bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inferenceConfig = NULL, toolConfig = NULL, guardrailConfig = NULL, additionalModelRequestFields = NULL, promptVariables = NULL, additionalModelResponseFieldPaths = NULL, requestMetadata = NULL, performanceConfig = NULL, serviceTier = NULL) {
   op <- new_operation(
     name = "Converse",
     http_method = "POST",
@@ -892,7 +1939,7 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockruntime$converse_input(modelId = modelId, messages = messages, system = system, inferenceConfig = inferenceConfig, toolConfig = toolConfig, guardrailConfig = guardrailConfig, additionalModelRequestFields = additionalModelRequestFields, promptVariables = promptVariables, additionalModelResponseFieldPaths = additionalModelResponseFieldPaths, requestMetadata = requestMetadata, performanceConfig = performanceConfig)
+  input <- .bedrockruntime$converse_input(modelId = modelId, messages = messages, system = system, inferenceConfig = inferenceConfig, toolConfig = toolConfig, guardrailConfig = guardrailConfig, additionalModelRequestFields = additionalModelRequestFields, promptVariables = promptVariables, additionalModelResponseFieldPaths = additionalModelResponseFieldPaths, requestMetadata = requestMetadata, performanceConfig = performanceConfig, serviceTier = serviceTier)
   output <- .bedrockruntime$converse_output()
   config <- get_config()
   svc <- .bedrockruntime$service(config, op)
@@ -970,7 +2017,8 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #' bedrockruntime_converse_stream(modelId, messages, system,
 #'   inferenceConfig, toolConfig, guardrailConfig,
 #'   additionalModelRequestFields, promptVariables,
-#'   additionalModelResponseFieldPaths, requestMetadata, performanceConfig)
+#'   additionalModelResponseFieldPaths, requestMetadata, performanceConfig,
+#'   serviceTier)
 #'
 #' @param modelId &#91;required&#93; Specifies the model or throughput with which to run inference, or the
 #' prompt resource to use in inference. The value depends on the resource
@@ -1056,6 +2104,8 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #' model response, it is ignored by [`converse`][bedrockruntime_converse].
 #' @param requestMetadata Key-value pairs that you can use to filter invocation logs.
 #' @param performanceConfig Model performance settings for the request.
+#' @param serviceTier Specifies the processing tier configuration used for serving the
+#' request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1069,7 +2119,16 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'       start = list(
 #'         toolUse = list(
 #'           toolUseId = "string",
-#'           name = "string"
+#'           name = "string",
+#'           type = "server_tool_use"
+#'         ),
+#'         toolResult = list(
+#'           toolUseId = "string",
+#'           type = "string",
+#'           status = "success"|"error"
+#'         ),
+#'         image = list(
+#'           format = "png"|"jpeg"|"gif"|"webp"
 #'         )
 #'       ),
 #'       contentBlockIndex = 123
@@ -1080,10 +2139,63 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'         toolUse = list(
 #'           input = "string"
 #'         ),
+#'         toolResult = list(
+#'           list(
+#'             text = "string",
+#'             json = list()
+#'           )
+#'         ),
 #'         reasoningContent = list(
 #'           text = "string",
 #'           redactedContent = raw,
 #'           signature = "string"
+#'         ),
+#'         citation = list(
+#'           title = "string",
+#'           source = "string",
+#'           sourceContent = list(
+#'             list(
+#'               text = "string"
+#'             )
+#'           ),
+#'           location = list(
+#'             web = list(
+#'               url = "string",
+#'               domain = "string"
+#'             ),
+#'             documentChar = list(
+#'               documentIndex = 123,
+#'               start = 123,
+#'               end = 123
+#'             ),
+#'             documentPage = list(
+#'               documentIndex = 123,
+#'               start = 123,
+#'               end = 123
+#'             ),
+#'             documentChunk = list(
+#'               documentIndex = 123,
+#'               start = 123,
+#'               end = 123
+#'             ),
+#'             searchResultLocation = list(
+#'               searchResultIndex = 123,
+#'               start = 123,
+#'               end = 123
+#'             )
+#'           )
+#'         ),
+#'         image = list(
+#'           source = list(
+#'             bytes = raw,
+#'             s3Location = list(
+#'               uri = "string",
+#'               bucketOwner = "string"
+#'             )
+#'           ),
+#'           error = list(
+#'             message = "string"
+#'           )
 #'         )
 #'       ),
 #'       contentBlockIndex = 123
@@ -1092,7 +2204,7 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'       contentBlockIndex = 123
 #'     ),
 #'     messageStop = list(
-#'       stopReason = "end_turn"|"tool_use"|"max_tokens"|"stop_sequence"|"guardrail_intervened"|"content_filtered",
+#'       stopReason = "end_turn"|"tool_use"|"max_tokens"|"stop_sequence"|"guardrail_intervened"|"content_filtered"|"malformed_model_output"|"malformed_tool_use"|"model_context_window_exceeded",
 #'       additionalModelResponseFields = list()
 #'     ),
 #'     metadata = list(
@@ -1181,6 +2293,267 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'                   )
 #'                 )
 #'               ),
+#'               automatedReasoningPolicy = list(
+#'                 findings = list(
+#'                   list(
+#'                     valid = list(
+#'                       translation = list(
+#'                         premises = list(
+#'                           list(
+#'                             logic = "string",
+#'                             naturalLanguage = "string"
+#'                           )
+#'                         ),
+#'                         claims = list(
+#'                           list(
+#'                             logic = "string",
+#'                             naturalLanguage = "string"
+#'                           )
+#'                         ),
+#'                         untranslatedPremises = list(
+#'                           list(
+#'                             text = "string"
+#'                           )
+#'                         ),
+#'                         untranslatedClaims = list(
+#'                           list(
+#'                             text = "string"
+#'                           )
+#'                         ),
+#'                         confidence = 123.0
+#'                       ),
+#'                       claimsTrueScenario = list(
+#'                         statements = list(
+#'                           list(
+#'                             logic = "string",
+#'                             naturalLanguage = "string"
+#'                           )
+#'                         )
+#'                       ),
+#'                       supportingRules = list(
+#'                         list(
+#'                           identifier = "string",
+#'                           policyVersionArn = "string"
+#'                         )
+#'                       ),
+#'                       logicWarning = list(
+#'                         type = "ALWAYS_FALSE"|"ALWAYS_TRUE",
+#'                         premises = list(
+#'                           list(
+#'                             logic = "string",
+#'                             naturalLanguage = "string"
+#'                           )
+#'                         ),
+#'                         claims = list(
+#'                           list(
+#'                             logic = "string",
+#'                             naturalLanguage = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     invalid = list(
+#'                       translation = list(
+#'                         premises = list(
+#'                           list(
+#'                             logic = "string",
+#'                             naturalLanguage = "string"
+#'                           )
+#'                         ),
+#'                         claims = list(
+#'                           list(
+#'                             logic = "string",
+#'                             naturalLanguage = "string"
+#'                           )
+#'                         ),
+#'                         untranslatedPremises = list(
+#'                           list(
+#'                             text = "string"
+#'                           )
+#'                         ),
+#'                         untranslatedClaims = list(
+#'                           list(
+#'                             text = "string"
+#'                           )
+#'                         ),
+#'                         confidence = 123.0
+#'                       ),
+#'                       contradictingRules = list(
+#'                         list(
+#'                           identifier = "string",
+#'                           policyVersionArn = "string"
+#'                         )
+#'                       ),
+#'                       logicWarning = list(
+#'                         type = "ALWAYS_FALSE"|"ALWAYS_TRUE",
+#'                         premises = list(
+#'                           list(
+#'                             logic = "string",
+#'                             naturalLanguage = "string"
+#'                           )
+#'                         ),
+#'                         claims = list(
+#'                           list(
+#'                             logic = "string",
+#'                             naturalLanguage = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     satisfiable = list(
+#'                       translation = list(
+#'                         premises = list(
+#'                           list(
+#'                             logic = "string",
+#'                             naturalLanguage = "string"
+#'                           )
+#'                         ),
+#'                         claims = list(
+#'                           list(
+#'                             logic = "string",
+#'                             naturalLanguage = "string"
+#'                           )
+#'                         ),
+#'                         untranslatedPremises = list(
+#'                           list(
+#'                             text = "string"
+#'                           )
+#'                         ),
+#'                         untranslatedClaims = list(
+#'                           list(
+#'                             text = "string"
+#'                           )
+#'                         ),
+#'                         confidence = 123.0
+#'                       ),
+#'                       claimsTrueScenario = list(
+#'                         statements = list(
+#'                           list(
+#'                             logic = "string",
+#'                             naturalLanguage = "string"
+#'                           )
+#'                         )
+#'                       ),
+#'                       claimsFalseScenario = list(
+#'                         statements = list(
+#'                           list(
+#'                             logic = "string",
+#'                             naturalLanguage = "string"
+#'                           )
+#'                         )
+#'                       ),
+#'                       logicWarning = list(
+#'                         type = "ALWAYS_FALSE"|"ALWAYS_TRUE",
+#'                         premises = list(
+#'                           list(
+#'                             logic = "string",
+#'                             naturalLanguage = "string"
+#'                           )
+#'                         ),
+#'                         claims = list(
+#'                           list(
+#'                             logic = "string",
+#'                             naturalLanguage = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     impossible = list(
+#'                       translation = list(
+#'                         premises = list(
+#'                           list(
+#'                             logic = "string",
+#'                             naturalLanguage = "string"
+#'                           )
+#'                         ),
+#'                         claims = list(
+#'                           list(
+#'                             logic = "string",
+#'                             naturalLanguage = "string"
+#'                           )
+#'                         ),
+#'                         untranslatedPremises = list(
+#'                           list(
+#'                             text = "string"
+#'                           )
+#'                         ),
+#'                         untranslatedClaims = list(
+#'                           list(
+#'                             text = "string"
+#'                           )
+#'                         ),
+#'                         confidence = 123.0
+#'                       ),
+#'                       contradictingRules = list(
+#'                         list(
+#'                           identifier = "string",
+#'                           policyVersionArn = "string"
+#'                         )
+#'                       ),
+#'                       logicWarning = list(
+#'                         type = "ALWAYS_FALSE"|"ALWAYS_TRUE",
+#'                         premises = list(
+#'                           list(
+#'                             logic = "string",
+#'                             naturalLanguage = "string"
+#'                           )
+#'                         ),
+#'                         claims = list(
+#'                           list(
+#'                             logic = "string",
+#'                             naturalLanguage = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     translationAmbiguous = list(
+#'                       options = list(
+#'                         list(
+#'                           translations = list(
+#'                             list(
+#'                               premises = list(
+#'                                 list(
+#'                                   logic = "string",
+#'                                   naturalLanguage = "string"
+#'                                 )
+#'                               ),
+#'                               claims = list(
+#'                                 list(
+#'                                   logic = "string",
+#'                                   naturalLanguage = "string"
+#'                                 )
+#'                               ),
+#'                               untranslatedPremises = list(
+#'                                 list(
+#'                                   text = "string"
+#'                                 )
+#'                               ),
+#'                               untranslatedClaims = list(
+#'                                 list(
+#'                                   text = "string"
+#'                                 )
+#'                               ),
+#'                               confidence = 123.0
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       differenceScenarios = list(
+#'                         list(
+#'                           statements = list(
+#'                             list(
+#'                               logic = "string",
+#'                               naturalLanguage = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     tooComplex = list(),
+#'                     noTranslations = list()
+#'                   )
+#'                 )
+#'               ),
 #'               invocationMetrics = list(
 #'                 guardrailProcessingLatency = 123,
 #'                 usage = list(
@@ -1190,7 +2563,9 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'                   sensitiveInformationPolicyUnits = 123,
 #'                   sensitiveInformationPolicyFreeUnits = 123,
 #'                   contextualGroundingPolicyUnits = 123,
-#'                   contentPolicyImageUnits = 123
+#'                   contentPolicyImageUnits = 123,
+#'                   automatedReasoningPolicyUnits = 123,
+#'                   automatedReasoningPolicies = 123
 #'                 ),
 #'                 guardrailCoverage = list(
 #'                   textCharacters = list(
@@ -1202,6 +2577,15 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'                     total = 123
 #'                   )
 #'                 )
+#'               ),
+#'               appliedGuardrailDetails = list(
+#'                 guardrailId = "string",
+#'                 guardrailVersion = "string",
+#'                 guardrailArn = "string",
+#'                 guardrailOrigin = list(
+#'                   "REQUEST"|"ACCOUNT_ENFORCED"|"ORGANIZATION_ENFORCED"
+#'                 ),
+#'                 guardrailOwnership = "SELF"|"CROSS_ACCOUNT"
 #'               )
 #'             )
 #'           ),
@@ -1276,6 +2660,267 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'                     )
 #'                   )
 #'                 ),
+#'                 automatedReasoningPolicy = list(
+#'                   findings = list(
+#'                     list(
+#'                       valid = list(
+#'                         translation = list(
+#'                           premises = list(
+#'                             list(
+#'                               logic = "string",
+#'                               naturalLanguage = "string"
+#'                             )
+#'                           ),
+#'                           claims = list(
+#'                             list(
+#'                               logic = "string",
+#'                               naturalLanguage = "string"
+#'                             )
+#'                           ),
+#'                           untranslatedPremises = list(
+#'                             list(
+#'                               text = "string"
+#'                             )
+#'                           ),
+#'                           untranslatedClaims = list(
+#'                             list(
+#'                               text = "string"
+#'                             )
+#'                           ),
+#'                           confidence = 123.0
+#'                         ),
+#'                         claimsTrueScenario = list(
+#'                           statements = list(
+#'                             list(
+#'                               logic = "string",
+#'                               naturalLanguage = "string"
+#'                             )
+#'                           )
+#'                         ),
+#'                         supportingRules = list(
+#'                           list(
+#'                             identifier = "string",
+#'                             policyVersionArn = "string"
+#'                           )
+#'                         ),
+#'                         logicWarning = list(
+#'                           type = "ALWAYS_FALSE"|"ALWAYS_TRUE",
+#'                           premises = list(
+#'                             list(
+#'                               logic = "string",
+#'                               naturalLanguage = "string"
+#'                             )
+#'                           ),
+#'                           claims = list(
+#'                             list(
+#'                               logic = "string",
+#'                               naturalLanguage = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       invalid = list(
+#'                         translation = list(
+#'                           premises = list(
+#'                             list(
+#'                               logic = "string",
+#'                               naturalLanguage = "string"
+#'                             )
+#'                           ),
+#'                           claims = list(
+#'                             list(
+#'                               logic = "string",
+#'                               naturalLanguage = "string"
+#'                             )
+#'                           ),
+#'                           untranslatedPremises = list(
+#'                             list(
+#'                               text = "string"
+#'                             )
+#'                           ),
+#'                           untranslatedClaims = list(
+#'                             list(
+#'                               text = "string"
+#'                             )
+#'                           ),
+#'                           confidence = 123.0
+#'                         ),
+#'                         contradictingRules = list(
+#'                           list(
+#'                             identifier = "string",
+#'                             policyVersionArn = "string"
+#'                           )
+#'                         ),
+#'                         logicWarning = list(
+#'                           type = "ALWAYS_FALSE"|"ALWAYS_TRUE",
+#'                           premises = list(
+#'                             list(
+#'                               logic = "string",
+#'                               naturalLanguage = "string"
+#'                             )
+#'                           ),
+#'                           claims = list(
+#'                             list(
+#'                               logic = "string",
+#'                               naturalLanguage = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       satisfiable = list(
+#'                         translation = list(
+#'                           premises = list(
+#'                             list(
+#'                               logic = "string",
+#'                               naturalLanguage = "string"
+#'                             )
+#'                           ),
+#'                           claims = list(
+#'                             list(
+#'                               logic = "string",
+#'                               naturalLanguage = "string"
+#'                             )
+#'                           ),
+#'                           untranslatedPremises = list(
+#'                             list(
+#'                               text = "string"
+#'                             )
+#'                           ),
+#'                           untranslatedClaims = list(
+#'                             list(
+#'                               text = "string"
+#'                             )
+#'                           ),
+#'                           confidence = 123.0
+#'                         ),
+#'                         claimsTrueScenario = list(
+#'                           statements = list(
+#'                             list(
+#'                               logic = "string",
+#'                               naturalLanguage = "string"
+#'                             )
+#'                           )
+#'                         ),
+#'                         claimsFalseScenario = list(
+#'                           statements = list(
+#'                             list(
+#'                               logic = "string",
+#'                               naturalLanguage = "string"
+#'                             )
+#'                           )
+#'                         ),
+#'                         logicWarning = list(
+#'                           type = "ALWAYS_FALSE"|"ALWAYS_TRUE",
+#'                           premises = list(
+#'                             list(
+#'                               logic = "string",
+#'                               naturalLanguage = "string"
+#'                             )
+#'                           ),
+#'                           claims = list(
+#'                             list(
+#'                               logic = "string",
+#'                               naturalLanguage = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       impossible = list(
+#'                         translation = list(
+#'                           premises = list(
+#'                             list(
+#'                               logic = "string",
+#'                               naturalLanguage = "string"
+#'                             )
+#'                           ),
+#'                           claims = list(
+#'                             list(
+#'                               logic = "string",
+#'                               naturalLanguage = "string"
+#'                             )
+#'                           ),
+#'                           untranslatedPremises = list(
+#'                             list(
+#'                               text = "string"
+#'                             )
+#'                           ),
+#'                           untranslatedClaims = list(
+#'                             list(
+#'                               text = "string"
+#'                             )
+#'                           ),
+#'                           confidence = 123.0
+#'                         ),
+#'                         contradictingRules = list(
+#'                           list(
+#'                             identifier = "string",
+#'                             policyVersionArn = "string"
+#'                           )
+#'                         ),
+#'                         logicWarning = list(
+#'                           type = "ALWAYS_FALSE"|"ALWAYS_TRUE",
+#'                           premises = list(
+#'                             list(
+#'                               logic = "string",
+#'                               naturalLanguage = "string"
+#'                             )
+#'                           ),
+#'                           claims = list(
+#'                             list(
+#'                               logic = "string",
+#'                               naturalLanguage = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       translationAmbiguous = list(
+#'                         options = list(
+#'                           list(
+#'                             translations = list(
+#'                               list(
+#'                                 premises = list(
+#'                                   list(
+#'                                     logic = "string",
+#'                                     naturalLanguage = "string"
+#'                                   )
+#'                                 ),
+#'                                 claims = list(
+#'                                   list(
+#'                                     logic = "string",
+#'                                     naturalLanguage = "string"
+#'                                   )
+#'                                 ),
+#'                                 untranslatedPremises = list(
+#'                                   list(
+#'                                     text = "string"
+#'                                   )
+#'                                 ),
+#'                                 untranslatedClaims = list(
+#'                                   list(
+#'                                     text = "string"
+#'                                   )
+#'                                 ),
+#'                                 confidence = 123.0
+#'                               )
+#'                             )
+#'                           )
+#'                         ),
+#'                         differenceScenarios = list(
+#'                           list(
+#'                             statements = list(
+#'                               list(
+#'                                 logic = "string",
+#'                                 naturalLanguage = "string"
+#'                               )
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       tooComplex = list(),
+#'                       noTranslations = list()
+#'                     )
+#'                   )
+#'                 ),
 #'                 invocationMetrics = list(
 #'                   guardrailProcessingLatency = 123,
 #'                   usage = list(
@@ -1285,7 +2930,9 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'                     sensitiveInformationPolicyUnits = 123,
 #'                     sensitiveInformationPolicyFreeUnits = 123,
 #'                     contextualGroundingPolicyUnits = 123,
-#'                     contentPolicyImageUnits = 123
+#'                     contentPolicyImageUnits = 123,
+#'                     automatedReasoningPolicyUnits = 123,
+#'                     automatedReasoningPolicies = 123
 #'                   ),
 #'                   guardrailCoverage = list(
 #'                     textCharacters = list(
@@ -1297,6 +2944,15 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'                       total = 123
 #'                     )
 #'                   )
+#'                 ),
+#'                 appliedGuardrailDetails = list(
+#'                   guardrailId = "string",
+#'                   guardrailVersion = "string",
+#'                   guardrailArn = "string",
+#'                   guardrailOrigin = list(
+#'                     "REQUEST"|"ACCOUNT_ENFORCED"|"ORGANIZATION_ENFORCED"
+#'                   ),
+#'                   guardrailOwnership = "SELF"|"CROSS_ACCOUNT"
 #'                 )
 #'               )
 #'             )
@@ -1309,6 +2965,9 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'       ),
 #'       performanceConfig = list(
 #'         latency = "standard"|"optimized"
+#'       ),
+#'       serviceTier = list(
+#'         type = "priority"|"default"|"flex"|"reserved"
 #'       )
 #'     ),
 #'     internalServerException = list(
@@ -1350,6 +3009,9 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'                 uri = "string",
 #'                 bucketOwner = "string"
 #'               )
+#'             ),
+#'             error = list(
+#'               message = "string"
 #'             )
 #'           ),
 #'           document = list(
@@ -1360,7 +3022,17 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'               s3Location = list(
 #'                 uri = "string",
 #'                 bucketOwner = "string"
+#'               ),
+#'               text = "string",
+#'               content = list(
+#'                 list(
+#'                   text = "string"
+#'                 )
 #'               )
+#'             ),
+#'             context = "string",
+#'             citations = list(
+#'               enabled = TRUE|FALSE
 #'             )
 #'           ),
 #'           video = list(
@@ -1373,10 +3045,24 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'               )
 #'             )
 #'           ),
+#'           audio = list(
+#'             format = "mp3"|"opus"|"wav"|"aac"|"flac"|"mp4"|"ogg"|"mkv"|"mka"|"x-aac"|"m4a"|"mpeg"|"mpga"|"pcm"|"webm",
+#'             source = list(
+#'               bytes = raw,
+#'               s3Location = list(
+#'                 uri = "string",
+#'                 bucketOwner = "string"
+#'               )
+#'             ),
+#'             error = list(
+#'               message = "string"
+#'             )
+#'           ),
 #'           toolUse = list(
 #'             toolUseId = "string",
 #'             name = "string",
-#'             input = list()
+#'             input = list(),
+#'             type = "server_tool_use"
 #'           ),
 #'           toolResult = list(
 #'             toolUseId = "string",
@@ -1392,6 +3078,9 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'                       uri = "string",
 #'                       bucketOwner = "string"
 #'                     )
+#'                   ),
+#'                   error = list(
+#'                     message = "string"
 #'                   )
 #'                 ),
 #'                 document = list(
@@ -1402,7 +3091,17 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'                     s3Location = list(
 #'                       uri = "string",
 #'                       bucketOwner = "string"
+#'                     ),
+#'                     text = "string",
+#'                     content = list(
+#'                       list(
+#'                         text = "string"
+#'                       )
 #'                     )
+#'                   ),
+#'                   context = "string",
+#'                   citations = list(
+#'                     enabled = TRUE|FALSE
 #'                   )
 #'                 ),
 #'                 video = list(
@@ -1414,10 +3113,23 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'                       bucketOwner = "string"
 #'                     )
 #'                   )
+#'                 ),
+#'                 searchResult = list(
+#'                   source = "string",
+#'                   title = "string",
+#'                   content = list(
+#'                     list(
+#'                       text = "string"
+#'                     )
+#'                   ),
+#'                   citations = list(
+#'                     enabled = TRUE|FALSE
+#'                   )
 #'                 )
 #'               )
 #'             ),
-#'             status = "success"|"error"
+#'             status = "success"|"error",
+#'             type = "string"
 #'           ),
 #'           guardContent = list(
 #'             text = list(
@@ -1442,6 +3154,62 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'               signature = "string"
 #'             ),
 #'             redactedContent = raw
+#'           ),
+#'           citationsContent = list(
+#'             content = list(
+#'               list(
+#'                 text = "string"
+#'               )
+#'             ),
+#'             citations = list(
+#'               list(
+#'                 title = "string",
+#'                 source = "string",
+#'                 sourceContent = list(
+#'                   list(
+#'                     text = "string"
+#'                   )
+#'                 ),
+#'                 location = list(
+#'                   web = list(
+#'                     url = "string",
+#'                     domain = "string"
+#'                   ),
+#'                   documentChar = list(
+#'                     documentIndex = 123,
+#'                     start = 123,
+#'                     end = 123
+#'                   ),
+#'                   documentPage = list(
+#'                     documentIndex = 123,
+#'                     start = 123,
+#'                     end = 123
+#'                   ),
+#'                   documentChunk = list(
+#'                     documentIndex = 123,
+#'                     start = 123,
+#'                     end = 123
+#'                   ),
+#'                   searchResultLocation = list(
+#'                     searchResultIndex = 123,
+#'                     start = 123,
+#'                     end = 123
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           searchResult = list(
+#'             source = "string",
+#'             title = "string",
+#'             content = list(
+#'               list(
+#'                 text = "string"
+#'               )
+#'             ),
+#'             citations = list(
+#'               enabled = TRUE|FALSE
+#'             )
 #'           )
 #'         )
 #'       )
@@ -1487,6 +3255,9 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'             json = list()
 #'           )
 #'         ),
+#'         systemTool = list(
+#'           name = "string"
+#'         ),
 #'         cachePoint = list(
 #'           type = "default"
 #'         )
@@ -1520,6 +3291,9 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'   ),
 #'   performanceConfig = list(
 #'     latency = "standard"|"optimized"
+#'   ),
+#'   serviceTier = list(
+#'     type = "priority"|"default"|"flex"|"reserved"
 #'   )
 #' )
 #' ```
@@ -1529,7 +3303,7 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #' @rdname bedrockruntime_converse_stream
 #'
 #' @aliases bedrockruntime_converse_stream
-bedrockruntime_converse_stream <- function(modelId, messages = NULL, system = NULL, inferenceConfig = NULL, toolConfig = NULL, guardrailConfig = NULL, additionalModelRequestFields = NULL, promptVariables = NULL, additionalModelResponseFieldPaths = NULL, requestMetadata = NULL, performanceConfig = NULL) {
+bedrockruntime_converse_stream <- function(modelId, messages = NULL, system = NULL, inferenceConfig = NULL, toolConfig = NULL, guardrailConfig = NULL, additionalModelRequestFields = NULL, promptVariables = NULL, additionalModelResponseFieldPaths = NULL, requestMetadata = NULL, performanceConfig = NULL, serviceTier = NULL) {
   op <- new_operation(
     name = "ConverseStream",
     http_method = "POST",
@@ -1538,7 +3312,7 @@ bedrockruntime_converse_stream <- function(modelId, messages = NULL, system = NU
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .bedrockruntime$converse_stream_input(modelId = modelId, messages = messages, system = system, inferenceConfig = inferenceConfig, toolConfig = toolConfig, guardrailConfig = guardrailConfig, additionalModelRequestFields = additionalModelRequestFields, promptVariables = promptVariables, additionalModelResponseFieldPaths = additionalModelResponseFieldPaths, requestMetadata = requestMetadata, performanceConfig = performanceConfig)
+  input <- .bedrockruntime$converse_stream_input(modelId = modelId, messages = messages, system = system, inferenceConfig = inferenceConfig, toolConfig = toolConfig, guardrailConfig = guardrailConfig, additionalModelRequestFields = additionalModelRequestFields, promptVariables = promptVariables, additionalModelResponseFieldPaths = additionalModelResponseFieldPaths, requestMetadata = requestMetadata, performanceConfig = performanceConfig, serviceTier = serviceTier)
   output <- .bedrockruntime$converse_stream_output()
   config <- get_config()
   svc <- .bedrockruntime$service(config, op)
@@ -1547,6 +3321,377 @@ bedrockruntime_converse_stream <- function(modelId, messages = NULL, system = NU
   return(response)
 }
 .bedrockruntime$operations$converse_stream <- bedrockruntime_converse_stream
+
+#' Returns the token count for a given inference request
+#'
+#' @description
+#' Returns the token count for a given inference request. This operation
+#' helps you estimate token usage before sending requests to foundation
+#' models by returning the token count that would be used if the same input
+#' were sent to the model in an inference request.
+#' 
+#' Token counting is model-specific because different models use different
+#' tokenization strategies. The token count returned by this operation will
+#' match the token count that would be charged if the same input were sent
+#' to the model in an [`invoke_model`][bedrockruntime_invoke_model] or
+#' [`converse`][bedrockruntime_converse] request.
+#' 
+#' You can use this operation to:
+#' 
+#' -   Estimate costs before sending inference requests.
+#' 
+#' -   Optimize prompts to fit within token limits.
+#' 
+#' -   Plan for token usage in your applications.
+#' 
+#' This operation accepts the same input formats as
+#' [`invoke_model`][bedrockruntime_invoke_model] and
+#' [`converse`][bedrockruntime_converse], allowing you to count tokens for
+#' both raw text inputs and structured conversation formats.
+#' 
+#' The following operations are related to
+#' [`count_tokens`][bedrockruntime_count_tokens]:
+#' 
+#' -   [`invoke_model`][bedrockruntime_invoke_model] - Sends inference
+#'     requests to foundation models
+#' 
+#' -   [`converse`][bedrockruntime_converse] - Sends conversation-based
+#'     inference requests to foundation models
+#'
+#' @usage
+#' bedrockruntime_count_tokens(modelId, input)
+#'
+#' @param modelId &#91;required&#93; The unique identifier or ARN of the foundation model to use for token
+#' counting. Each model processes tokens differently, so the token count is
+#' specific to the model you specify.
+#' @param input &#91;required&#93; The input for which to count tokens. The structure of this parameter
+#' depends on whether you're counting tokens for an
+#' [`invoke_model`][bedrockruntime_invoke_model] or
+#' [`converse`][bedrockruntime_converse] request:
+#' 
+#' -   For [`invoke_model`][bedrockruntime_invoke_model] requests, provide
+#'     the request body in the `invokeModel` field
+#' 
+#' -   For [`converse`][bedrockruntime_converse] requests, provide the
+#'     messages and system content in the `converse` field
+#' 
+#' The input format must be compatible with the model specified in the
+#' `modelId` parameter.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   inputTokens = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$count_tokens(
+#'   modelId = "string",
+#'   input = list(
+#'     invokeModel = list(
+#'       body = raw
+#'     ),
+#'     converse = list(
+#'       messages = list(
+#'         list(
+#'           role = "user"|"assistant",
+#'           content = list(
+#'             list(
+#'               text = "string",
+#'               image = list(
+#'                 format = "png"|"jpeg"|"gif"|"webp",
+#'                 source = list(
+#'                   bytes = raw,
+#'                   s3Location = list(
+#'                     uri = "string",
+#'                     bucketOwner = "string"
+#'                   )
+#'                 ),
+#'                 error = list(
+#'                   message = "string"
+#'                 )
+#'               ),
+#'               document = list(
+#'                 format = "pdf"|"csv"|"doc"|"docx"|"xls"|"xlsx"|"html"|"txt"|"md",
+#'                 name = "string",
+#'                 source = list(
+#'                   bytes = raw,
+#'                   s3Location = list(
+#'                     uri = "string",
+#'                     bucketOwner = "string"
+#'                   ),
+#'                   text = "string",
+#'                   content = list(
+#'                     list(
+#'                       text = "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 context = "string",
+#'                 citations = list(
+#'                   enabled = TRUE|FALSE
+#'                 )
+#'               ),
+#'               video = list(
+#'                 format = "mkv"|"mov"|"mp4"|"webm"|"flv"|"mpeg"|"mpg"|"wmv"|"three_gp",
+#'                 source = list(
+#'                   bytes = raw,
+#'                   s3Location = list(
+#'                     uri = "string",
+#'                     bucketOwner = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               audio = list(
+#'                 format = "mp3"|"opus"|"wav"|"aac"|"flac"|"mp4"|"ogg"|"mkv"|"mka"|"x-aac"|"m4a"|"mpeg"|"mpga"|"pcm"|"webm",
+#'                 source = list(
+#'                   bytes = raw,
+#'                   s3Location = list(
+#'                     uri = "string",
+#'                     bucketOwner = "string"
+#'                   )
+#'                 ),
+#'                 error = list(
+#'                   message = "string"
+#'                 )
+#'               ),
+#'               toolUse = list(
+#'                 toolUseId = "string",
+#'                 name = "string",
+#'                 input = list(),
+#'                 type = "server_tool_use"
+#'               ),
+#'               toolResult = list(
+#'                 toolUseId = "string",
+#'                 content = list(
+#'                   list(
+#'                     json = list(),
+#'                     text = "string",
+#'                     image = list(
+#'                       format = "png"|"jpeg"|"gif"|"webp",
+#'                       source = list(
+#'                         bytes = raw,
+#'                         s3Location = list(
+#'                           uri = "string",
+#'                           bucketOwner = "string"
+#'                         )
+#'                       ),
+#'                       error = list(
+#'                         message = "string"
+#'                       )
+#'                     ),
+#'                     document = list(
+#'                       format = "pdf"|"csv"|"doc"|"docx"|"xls"|"xlsx"|"html"|"txt"|"md",
+#'                       name = "string",
+#'                       source = list(
+#'                         bytes = raw,
+#'                         s3Location = list(
+#'                           uri = "string",
+#'                           bucketOwner = "string"
+#'                         ),
+#'                         text = "string",
+#'                         content = list(
+#'                           list(
+#'                             text = "string"
+#'                           )
+#'                         )
+#'                       ),
+#'                       context = "string",
+#'                       citations = list(
+#'                         enabled = TRUE|FALSE
+#'                       )
+#'                     ),
+#'                     video = list(
+#'                       format = "mkv"|"mov"|"mp4"|"webm"|"flv"|"mpeg"|"mpg"|"wmv"|"three_gp",
+#'                       source = list(
+#'                         bytes = raw,
+#'                         s3Location = list(
+#'                           uri = "string",
+#'                           bucketOwner = "string"
+#'                         )
+#'                       )
+#'                     ),
+#'                     searchResult = list(
+#'                       source = "string",
+#'                       title = "string",
+#'                       content = list(
+#'                         list(
+#'                           text = "string"
+#'                         )
+#'                       ),
+#'                       citations = list(
+#'                         enabled = TRUE|FALSE
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 status = "success"|"error",
+#'                 type = "string"
+#'               ),
+#'               guardContent = list(
+#'                 text = list(
+#'                   text = "string",
+#'                   qualifiers = list(
+#'                     "grounding_source"|"query"|"guard_content"
+#'                   )
+#'                 ),
+#'                 image = list(
+#'                   format = "png"|"jpeg",
+#'                   source = list(
+#'                     bytes = raw
+#'                   )
+#'                 )
+#'               ),
+#'               cachePoint = list(
+#'                 type = "default"
+#'               ),
+#'               reasoningContent = list(
+#'                 reasoningText = list(
+#'                   text = "string",
+#'                   signature = "string"
+#'                 ),
+#'                 redactedContent = raw
+#'               ),
+#'               citationsContent = list(
+#'                 content = list(
+#'                   list(
+#'                     text = "string"
+#'                   )
+#'                 ),
+#'                 citations = list(
+#'                   list(
+#'                     title = "string",
+#'                     source = "string",
+#'                     sourceContent = list(
+#'                       list(
+#'                         text = "string"
+#'                       )
+#'                     ),
+#'                     location = list(
+#'                       web = list(
+#'                         url = "string",
+#'                         domain = "string"
+#'                       ),
+#'                       documentChar = list(
+#'                         documentIndex = 123,
+#'                         start = 123,
+#'                         end = 123
+#'                       ),
+#'                       documentPage = list(
+#'                         documentIndex = 123,
+#'                         start = 123,
+#'                         end = 123
+#'                       ),
+#'                       documentChunk = list(
+#'                         documentIndex = 123,
+#'                         start = 123,
+#'                         end = 123
+#'                       ),
+#'                       searchResultLocation = list(
+#'                         searchResultIndex = 123,
+#'                         start = 123,
+#'                         end = 123
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               searchResult = list(
+#'                 source = "string",
+#'                 title = "string",
+#'                 content = list(
+#'                   list(
+#'                     text = "string"
+#'                   )
+#'                 ),
+#'                 citations = list(
+#'                   enabled = TRUE|FALSE
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       system = list(
+#'         list(
+#'           text = "string",
+#'           guardContent = list(
+#'             text = list(
+#'               text = "string",
+#'               qualifiers = list(
+#'                 "grounding_source"|"query"|"guard_content"
+#'               )
+#'             ),
+#'             image = list(
+#'               format = "png"|"jpeg",
+#'               source = list(
+#'                 bytes = raw
+#'               )
+#'             )
+#'           ),
+#'           cachePoint = list(
+#'             type = "default"
+#'           )
+#'         )
+#'       ),
+#'       toolConfig = list(
+#'         tools = list(
+#'           list(
+#'             toolSpec = list(
+#'               name = "string",
+#'               description = "string",
+#'               inputSchema = list(
+#'                 json = list()
+#'               )
+#'             ),
+#'             systemTool = list(
+#'               name = "string"
+#'             ),
+#'             cachePoint = list(
+#'               type = "default"
+#'             )
+#'           )
+#'         ),
+#'         toolChoice = list(
+#'           auto = list(),
+#'           any = list(),
+#'           tool = list(
+#'             name = "string"
+#'           )
+#'         )
+#'       ),
+#'       additionalModelRequestFields = list()
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockruntime_count_tokens
+#'
+#' @aliases bedrockruntime_count_tokens
+bedrockruntime_count_tokens <- function(modelId, input) {
+  op <- new_operation(
+    name = "CountTokens",
+    http_method = "POST",
+    http_path = "/model/{modelId}/count-tokens",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockruntime$count_tokens_input(modelId = modelId, input = input)
+  output <- .bedrockruntime$count_tokens_output()
+  config <- get_config()
+  svc <- .bedrockruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockruntime$operations$count_tokens <- bedrockruntime_count_tokens
 
 #' Retrieve information about an asynchronous invocation
 #'
@@ -1647,7 +3792,8 @@ bedrockruntime_get_async_invoke <- function(invocationArn) {
 #'
 #' @usage
 #' bedrockruntime_invoke_model(body, contentType, accept, modelId, trace,
-#'   guardrailIdentifier, guardrailVersion, performanceConfigLatency)
+#'   guardrailIdentifier, guardrailVersion, performanceConfigLatency,
+#'   serviceTier)
 #'
 #' @param body The prompt and inference parameters in the format specified in the
 #' `contentType` in the header. You must provide the body in JSON format.
@@ -1684,9 +3830,10 @@ bedrockruntime_get_async_invoke <- function(invocationArn) {
 #'     Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-thru-use.html)
 #'     in the Amazon Bedrock User Guide.
 #' 
-#' -   If you use a custom model, first purchase Provisioned Throughput for
-#'     it. Then specify the ARN of the resulting provisioned model. For
-#'     more information, see [Use a custom model in Amazon
+#' -   If you use a custom model, specify the ARN of the custom model
+#'     deployment (for on-demand inference) or the ARN of your provisioned
+#'     model (for Provisioned Throughput). For more information, see [Use a
+#'     custom model in Amazon
 #'     Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-use.html)
 #'     in the Amazon Bedrock User Guide.
 #' 
@@ -1713,6 +3860,7 @@ bedrockruntime_get_async_invoke <- function(invocationArn) {
 #'     specified.
 #' @param guardrailVersion The version number for the guardrail. The value can also be `DRAFT`.
 #' @param performanceConfigLatency Model performance settings for the request.
+#' @param serviceTier Specifies the processing tier type used for serving the request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1720,7 +3868,8 @@ bedrockruntime_get_async_invoke <- function(invocationArn) {
 #' list(
 #'   body = raw,
 #'   contentType = "string",
-#'   performanceConfigLatency = "standard"|"optimized"
+#'   performanceConfigLatency = "standard"|"optimized",
+#'   serviceTier = "priority"|"default"|"flex"|"reserved"
 #' )
 #' ```
 #'
@@ -1734,7 +3883,8 @@ bedrockruntime_get_async_invoke <- function(invocationArn) {
 #'   trace = "ENABLED"|"DISABLED"|"ENABLED_FULL",
 #'   guardrailIdentifier = "string",
 #'   guardrailVersion = "string",
-#'   performanceConfigLatency = "standard"|"optimized"
+#'   performanceConfigLatency = "standard"|"optimized",
+#'   serviceTier = "priority"|"default"|"flex"|"reserved"
 #' )
 #' ```
 #'
@@ -1743,7 +3893,7 @@ bedrockruntime_get_async_invoke <- function(invocationArn) {
 #' @rdname bedrockruntime_invoke_model
 #'
 #' @aliases bedrockruntime_invoke_model
-bedrockruntime_invoke_model <- function(body = NULL, contentType = NULL, accept = NULL, modelId, trace = NULL, guardrailIdentifier = NULL, guardrailVersion = NULL, performanceConfigLatency = NULL) {
+bedrockruntime_invoke_model <- function(body = NULL, contentType = NULL, accept = NULL, modelId, trace = NULL, guardrailIdentifier = NULL, guardrailVersion = NULL, performanceConfigLatency = NULL, serviceTier = NULL) {
   op <- new_operation(
     name = "InvokeModel",
     http_method = "POST",
@@ -1752,7 +3902,7 @@ bedrockruntime_invoke_model <- function(body = NULL, contentType = NULL, accept 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockruntime$invoke_model_input(body = body, contentType = contentType, accept = accept, modelId = modelId, trace = trace, guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion, performanceConfigLatency = performanceConfigLatency)
+  input <- .bedrockruntime$invoke_model_input(body = body, contentType = contentType, accept = accept, modelId = modelId, trace = trace, guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion, performanceConfigLatency = performanceConfigLatency, serviceTier = serviceTier)
   output <- .bedrockruntime$invoke_model_output()
   config <- get_config()
   svc <- .bedrockruntime$service(config, op)
@@ -1901,7 +4051,7 @@ bedrockruntime_invoke_model_with_bidirectional_stream <- function(modelId, body)
 #' @usage
 #' bedrockruntime_invoke_model_with_response_stream(body, contentType,
 #'   accept, modelId, trace, guardrailIdentifier, guardrailVersion,
-#'   performanceConfigLatency)
+#'   performanceConfigLatency, serviceTier)
 #'
 #' @param body The prompt and inference parameters in the format specified in the
 #' `contentType` in the header. You must provide the body in JSON format.
@@ -1938,9 +4088,10 @@ bedrockruntime_invoke_model_with_bidirectional_stream <- function(modelId, body)
 #'     Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-thru-use.html)
 #'     in the Amazon Bedrock User Guide.
 #' 
-#' -   If you use a custom model, first purchase Provisioned Throughput for
-#'     it. Then specify the ARN of the resulting provisioned model. For
-#'     more information, see [Use a custom model in Amazon
+#' -   If you use a custom model, specify the ARN of the custom model
+#'     deployment (for on-demand inference) or the ARN of your provisioned
+#'     model (for Provisioned Throughput). For more information, see [Use a
+#'     custom model in Amazon
 #'     Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-use.html)
 #'     in the Amazon Bedrock User Guide.
 #' 
@@ -1967,6 +4118,7 @@ bedrockruntime_invoke_model_with_bidirectional_stream <- function(modelId, body)
 #'     specified.
 #' @param guardrailVersion The version number for the guardrail. The value can also be `DRAFT`.
 #' @param performanceConfigLatency Model performance settings for the request.
+#' @param serviceTier Specifies the processing tier type used for serving the request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1998,7 +4150,8 @@ bedrockruntime_invoke_model_with_bidirectional_stream <- function(modelId, body)
 #'     )
 #'   ),
 #'   contentType = "string",
-#'   performanceConfigLatency = "standard"|"optimized"
+#'   performanceConfigLatency = "standard"|"optimized",
+#'   serviceTier = "priority"|"default"|"flex"|"reserved"
 #' )
 #' ```
 #'
@@ -2012,7 +4165,8 @@ bedrockruntime_invoke_model_with_bidirectional_stream <- function(modelId, body)
 #'   trace = "ENABLED"|"DISABLED"|"ENABLED_FULL",
 #'   guardrailIdentifier = "string",
 #'   guardrailVersion = "string",
-#'   performanceConfigLatency = "standard"|"optimized"
+#'   performanceConfigLatency = "standard"|"optimized",
+#'   serviceTier = "priority"|"default"|"flex"|"reserved"
 #' )
 #' ```
 #'
@@ -2021,7 +4175,7 @@ bedrockruntime_invoke_model_with_bidirectional_stream <- function(modelId, body)
 #' @rdname bedrockruntime_invoke_model_with_response_stream
 #'
 #' @aliases bedrockruntime_invoke_model_with_response_stream
-bedrockruntime_invoke_model_with_response_stream <- function(body = NULL, contentType = NULL, accept = NULL, modelId, trace = NULL, guardrailIdentifier = NULL, guardrailVersion = NULL, performanceConfigLatency = NULL) {
+bedrockruntime_invoke_model_with_response_stream <- function(body = NULL, contentType = NULL, accept = NULL, modelId, trace = NULL, guardrailIdentifier = NULL, guardrailVersion = NULL, performanceConfigLatency = NULL, serviceTier = NULL) {
   op <- new_operation(
     name = "InvokeModelWithResponseStream",
     http_method = "POST",
@@ -2030,7 +4184,7 @@ bedrockruntime_invoke_model_with_response_stream <- function(body = NULL, conten
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .bedrockruntime$invoke_model_with_response_stream_input(body = body, contentType = contentType, accept = accept, modelId = modelId, trace = trace, guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion, performanceConfigLatency = performanceConfigLatency)
+  input <- .bedrockruntime$invoke_model_with_response_stream_input(body = body, contentType = contentType, accept = accept, modelId = modelId, trace = trace, guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion, performanceConfigLatency = performanceConfigLatency, serviceTier = serviceTier)
   output <- .bedrockruntime$invoke_model_with_response_stream_output()
   config <- get_config()
   svc <- .bedrockruntime$service(config, op)

@@ -6,24 +6,27 @@
 enable zonal autoshift}
 \usage{
 arczonalshift_create_practice_run_configuration(
-  blockedDates = NULL,
+  resourceIdentifier,
   blockedWindows = NULL,
+  blockedDates = NULL,
   blockingAlarms = NULL,
-  outcomeAlarms,
-  resourceIdentifier
+  allowedWindows = NULL,
+  outcomeAlarms
 )
 }
 \arguments{
-\item{blockedDates}{Optionally, you can block ARC from starting practice runs for a resource
-on specific calendar dates.
+\item{resourceIdentifier}{[required] The identifier of the resource that Amazon Web Services shifts traffic
+for with a practice run zonal shift. The identifier is the Amazon
+Resource Name (ARN) for the resource.
 
-The format for blocked dates is: YYYY-MM-DD. Keep in mind, when you
-specify dates, that dates and times for practice runs are in UTC.
-Separate multiple blocked dates with spaces.
-
-For example, if you have an application update scheduled to launch on
-May 1, 2024, and you don't want practice runs to shift traffic away at
-that time, you could set a blocked date for \code{2024-05-01}.}
+Amazon Application Recovery Controller currently supports enabling the
+following resources for zonal shift and zonal autoshift:
+\itemize{
+\item \href{https://docs.aws.amazon.com/r53recovery/latest/dg/arc-zonal-shift.resource-types.ec2-auto-scaling-groups.html}{Amazon EC2 Auto Scaling groups}
+\item \href{https://docs.aws.amazon.com/r53recovery/latest/dg/arc-zonal-shift.resource-types.eks.html}{Amazon Elastic Kubernetes Service}
+\item \href{https://docs.aws.amazon.com/r53recovery/latest/dg/arc-zonal-shift.resource-types.app-load-balancers.html}{Application Load Balancer}
+\item \href{https://docs.aws.amazon.com/r53recovery/latest/dg/arc-zonal-shift.resource-types.network-load-balancers.html}{Network Load Balancer}
+}}
 
 \item{blockedWindows}{Optionally, you can block ARC from starting practice runs for specific
 windows of days and times.
@@ -35,32 +38,53 @@ for daylight saving time differences. Separate multiple blocked windows
 with spaces.
 
 For example, say you run business report summaries three days a week.
-For this scenario, you might set the following recurring days and times
+For this scenario, you could set the following recurring days and times
 as blocked windows, for example:
-\verb{MON-20:30-21:30 WED-20:30-21:30 FRI-20:30-21:30}.}
+\verb{Mon:00:00-Mon:10:00 Wed-20:30-Wed:21:30 Fri-20:30-Fri:21:30}.
 
-\item{blockingAlarms}{An Amazon CloudWatch alarm that you can specify for zonal autoshift
-practice runs. This alarm blocks ARC from starting practice run zonal
-shifts, and ends a practice run that's in progress, when the alarm is in
-an \code{ALARM} state.}
+The \code{blockedWindows} have to start and end on the same day. Windows that
+span multiple days aren't supported.}
 
-\item{outcomeAlarms}{[required] The \emph{outcome alarm} for practice runs is a required Amazon CloudWatch
-alarm that you specify that ends a practice run when the alarm is in an
-\code{ALARM} state.
+\item{blockedDates}{Optionally, you can block ARC from starting practice runs for a resource
+on specific calendar dates.
 
-Configure the alarm to monitor the health of your application when
-traffic is shifted away from an Availability Zone during each practice
-run. You should configure the alarm to go into an \code{ALARM} state if your
-application is impacted by the zonal shift, and you want to stop the
-zonal shift, to let traffic for the resource return to the Availability
-Zone.}
+The format for blocked dates is: YYYY-MM-DD. Keep in mind, when you
+specify dates, that dates and times for practice runs are in UTC.
+Separate multiple blocked dates with spaces.
 
-\item{resourceIdentifier}{[required] The identifier of the resource that Amazon Web Services shifts traffic
-for with a practice run zonal shift. The identifier is the Amazon
-Resource Name (ARN) for the resource.
+For example, if you have an application update scheduled to launch on
+May 1, 2024, and you don't want practice runs to shift traffic away at
+that time, you could set a blocked date for \code{2024-05-01}.}
 
-At this time, supported resources are Network Load Balancers and
-Application Load Balancers with cross-zone load balancing turned off.}
+\item{blockingAlarms}{\emph{Blocking alarms} for practice runs are optional alarms that you can
+specify that block practice runs when one or more of the alarms is in an
+\code{ALARM} state.}
+
+\item{allowedWindows}{Optionally, you can allow ARC to start practice runs for specific
+windows of days and times.
+
+The format for allowed windows is: DAY:HH:SS-DAY:HH:SS. Keep in mind,
+when you specify dates, that dates and times for practice runs are in
+UTC. Also, be aware of potential time adjustments that might be required
+for daylight saving time differences. Separate multiple allowed windows
+with spaces.
+
+For example, say you want to allow practice runs only on Wednesdays and
+Fridays from noon to 5 p.m. For this scenario, you could set the
+following recurring days and times as allowed windows, for example:
+\verb{Wed-12:00-Wed:17:00 Fri-12:00-Fri:17:00}.
+
+The \code{allowedWindows} have to start and end on the same day. Windows that
+span multiple days aren't supported.}
+
+\item{outcomeAlarms}{[required] \emph{Outcome alarms} for practice runs are alarms that you specify that end
+a practice run when one or more of the alarms is in an \code{ALARM} state.
+
+Configure one or more of these alarms to monitor the health of your
+application when traffic is shifted away from an Availability Zone
+during each practice run. You should configure these alarms to go into
+an \code{ALARM} state if you want to stop a zonal shift, to let traffic for
+the resource return to the original Availability Zone.}
 }
 \description{
 A practice run configuration for zonal autoshift is required when you enable zonal autoshift. A practice run configuration includes specifications for blocked dates and blocked time windows, and for Amazon CloudWatch alarms that you create to use with practice runs. The alarms that you specify are an \emph{outcome alarm}, to monitor application health during practice runs and, optionally, a \emph{blocking alarm}, to block practice runs from starting.

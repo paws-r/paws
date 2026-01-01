@@ -10,6 +10,7 @@ connect_create_routing_profile(
   Description,
   DefaultOutboundQueueId,
   QueueConfigs = NULL,
+  ManualAssignmentQueueConfigs = NULL,
   MediaConcurrencies,
   Tags = NULL,
   AgentAvailabilityTimer = NULL
@@ -33,6 +34,14 @@ The limit of 10 array members applies to the maximum number of
 \code{RoutingProfileQueueConfig} objects that can be passed during a
 CreateRoutingProfile API request. It is different from the quota of 50
 queues per routing profile per instance that is listed in \href{https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html}{Amazon Connect service quotas}.}
+
+\item{ManualAssignmentQueueConfigs}{The manual assignment queues associated with the routing profile. If no
+queue is added, agents and supervisors can't pick or assign any contacts
+from this routing profile. The limit of 10 array members applies to the
+maximum number of RoutingProfileManualAssignmentQueueConfig objects that
+can be passed during a CreateRoutingProfile API request. It is different
+from the quota of 50 queues per routing profile per instance that is
+listed in Amazon Connect service quotas.}
 
 \item{MediaConcurrencies}{[required] The channels that agents can handle in the Contact Control Panel (CCP)
 for this routing profile.}

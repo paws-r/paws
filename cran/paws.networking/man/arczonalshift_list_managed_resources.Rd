@@ -4,21 +4,21 @@
 \alias{arczonalshift_list_managed_resources}
 \title{Lists all the resources in your Amazon Web Services account in this
 Amazon Web Services Region that are managed for zonal shifts in Amazon
-Route 53 Application Recovery Controller, and information about them}
+Application Recovery Controller, and information about them}
 \usage{
-arczonalshift_list_managed_resources(maxResults = NULL, nextToken = NULL)
+arczonalshift_list_managed_resources(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
-\item{maxResults}{The number of objects that you want to return with this call.}
-
 \item{nextToken}{Specifies that you want to receive the next page of results. Valid only
 if you received a \code{nextToken} response in the previous request. If you
 did, it indicates that more output is available. Set this parameter to
 the value provided by the previous call's \code{nextToken} response to
 request the next page of results.}
+
+\item{maxResults}{The number of objects that you want to return with this call.}
 }
 \description{
-Lists all the resources in your Amazon Web Services account in this Amazon Web Services Region that are managed for zonal shifts in Amazon Route 53 Application Recovery Controller, and information about them. The information includes the zonal autoshift status for the resource, as well as the Amazon Resource Name (ARN), the Availability Zones that each resource is deployed in, and the resource name.
+Lists all the resources in your Amazon Web Services account in this Amazon Web Services Region that are managed for zonal shifts in Amazon Application Recovery Controller, and information about them. The information includes the zonal autoshift status for the resource, as well as the Amazon Resource Name (ARN), the Availability Zones that each resource is deployed in, and the resource name.
 
 See \url{https://www.paws-r-sdk.com/docs/arczonalshift_list_managed_resources/} for full documentation.
 }

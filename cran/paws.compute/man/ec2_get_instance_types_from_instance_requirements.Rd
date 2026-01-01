@@ -10,7 +10,8 @@ ec2_get_instance_types_from_instance_requirements(
   VirtualizationTypes,
   InstanceRequirements,
   MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  Context = NULL
 )
 }
 \arguments{
@@ -32,6 +33,8 @@ output. For more information, see
 
 \item{NextToken}{The token returned from a previous paginated request. Pagination
 continues from the end of the items returned by the previous request.}
+
+\item{Context}{Reserved.}
 }
 \description{
 Returns a list of instance types with the specified instance attributes. You can use the response to preview the instance types without launching instances. Note that the response does not consider capacity.

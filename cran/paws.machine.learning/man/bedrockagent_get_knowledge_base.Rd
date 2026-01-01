@@ -2,7 +2,7 @@
 % Please edit documentation in R/bedrockagent_operations.R
 \name{bedrockagent_get_knowledge_base}
 \alias{bedrockagent_get_knowledge_base}
-\title{Gets information about a knoweldge base}
+\title{Gets information about a knowledge base}
 \usage{
 bedrockagent_get_knowledge_base(knowledgeBaseId)
 }
@@ -11,7 +11,7 @@ bedrockagent_get_knowledge_base(knowledgeBaseId)
 on.}
 }
 \description{
-Gets information about a knoweldge base.
+Gets information about a knowledge base.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagent_get_knowledge_base/} for full documentation.
 }

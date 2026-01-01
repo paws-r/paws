@@ -28,7 +28,14 @@ by specifying an alias ARN or a version ARN in the \code{stateMachineArn}
 parameter.}
 
 \item{statusFilter}{If specified, only list the executions whose current execution status
-matches the given filter.}
+matches the given filter.
+
+If you provide a \code{PENDING_REDRIVE} statusFilter, you must specify
+\code{mapRunArn}. For more information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/redrive-map-run.html#redrive-child-workflow-behavior}{Child workflow execution redrive behaviour}
+in the \emph{Step Functions Developer Guide}.
+
+If you provide a stateMachineArn and a \code{PENDING_REDRIVE} statusFilter,
+the API returns a validation exception.}
 
 \item{maxResults}{The maximum number of results that are returned per call. You can use
 \code{nextToken} to obtain further pages of results. The default is 100 and

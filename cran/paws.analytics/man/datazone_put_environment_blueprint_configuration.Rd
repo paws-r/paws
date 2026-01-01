@@ -10,6 +10,7 @@ datazone_put_environment_blueprint_configuration(
   enabledRegions,
   environmentBlueprintIdentifier,
   environmentRolePermissionBoundary = NULL,
+  globalParameters = NULL,
   manageAccessRoleArn = NULL,
   provisioningConfigurations = NULL,
   provisioningRoleArn = NULL,
@@ -24,6 +25,8 @@ datazone_put_environment_blueprint_configuration(
 \item{environmentBlueprintIdentifier}{[required] The identifier of the environment blueprint.}
 
 \item{environmentRolePermissionBoundary}{The environment role permissions boundary.}
+
+\item{globalParameters}{Region-agnostic environment blueprint parameters.}
 
 \item{manageAccessRoleArn}{The ARN of the manage access role.}
 

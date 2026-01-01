@@ -499,6 +499,27 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' -   This functionality is not supported for directory buckets.
 #' 
 #' -   This functionality is not supported for Amazon S3 on Outposts.
+#' @param IfMatch Copies the object if the entity tag (ETag) of the destination object
+#' matches the specified tag. If the ETag values do not match, the
+#' operation returns a `412 Precondition Failed` error. If a concurrent
+#' operation occurs during the upload S3 returns a
+#' `409 ConditionalRequestConflict` response. On a 409 failure you should
+#' fetch the object's ETag and retry the upload.
+#' 
+#' Expects the ETag value as a string.
+#' 
+#' For more information about conditional requests, see [RFC
+#' 7232](https://datatracker.ietf.org/doc/html/rfc7232).
+#' @param IfNoneMatch Copies the object only if the object key name at the destination does
+#' not already exist in the bucket specified. Otherwise, Amazon S3 returns
+#' a `412 Precondition Failed` error. If a concurrent operation occurs
+#' during the upload S3 returns a `409 ConditionalRequestConflict`
+#' response. On a 409 failure you should retry the upload.
+#' 
+#' Expects the '*' (asterisk) character.
+#' 
+#' For more information about conditional requests, see [RFC
+#' 7232](https://datatracker.ietf.org/doc/html/rfc7232).
 #' @param Key &#91;required&#93; The key of the destination object.
 #' @param Metadata A map of metadata to store with the object in S3.
 #' @param MetadataDirective Specifies whether the metadata is copied from the source object or
@@ -638,6 +659,14 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #'     must ensure the encryption key is the same customer managed key that
 #'     you specified for the directory bucket's default encryption
 #'     configuration.
+#' 
+#' -   **S3 access points for Amazon FSx** - When accessing data stored in
+#'     Amazon FSx file systems using S3 access points, the only valid
+#'     server side encryption option is `aws:fsx`. All Amazon FSx file
+#'     systems have encryption configured by default and are encrypted at
+#'     rest. Data is automatically encrypted before being written to the
+#'     file system, and automatically decrypted as it is read. These
+#'     processes are handled transparently by Amazon FSx.
 #' @param StorageClass If the `x-amz-storage-class` header is not used, the copied object will
 #' be stored in the `STANDARD` Storage Class by default. The `STANDARD`
 #' storage class provides high durability and high availability. Depending
@@ -868,7 +897,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' @keywords internal
 #'
 #' @rdname s3_copy_object
-s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgorithm = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentType = NULL, CopySource, CopySourceIfMatch = NULL, CopySourceIfModifiedSince = NULL, CopySourceIfNoneMatch = NULL, CopySourceIfUnmodifiedSince = NULL, Expires = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, Key, Metadata = NULL, MetadataDirective = NULL, TaggingDirective = NULL, ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, SSEKMSEncryptionContext = NULL, BucketKeyEnabled = NULL, CopySourceSSECustomerAlgorithm = NULL, CopySourceSSECustomerKey = NULL, CopySourceSSECustomerKeyMD5 = NULL, RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL, ExpectedBucketOwner = NULL, ExpectedSourceBucketOwner = NULL) {
+s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgorithm = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentType = NULL, CopySource, CopySourceIfMatch = NULL, CopySourceIfModifiedSince = NULL, CopySourceIfNoneMatch = NULL, CopySourceIfUnmodifiedSince = NULL, Expires = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, IfMatch = NULL, IfNoneMatch = NULL, Key, Metadata = NULL, MetadataDirective = NULL, TaggingDirective = NULL, ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, SSEKMSEncryptionContext = NULL, BucketKeyEnabled = NULL, CopySourceSSECustomerAlgorithm = NULL, CopySourceSSECustomerKey = NULL, CopySourceSSECustomerKeyMD5 = NULL, RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL, ExpectedBucketOwner = NULL, ExpectedSourceBucketOwner = NULL) {
   op <- new_operation(
     name = "CopyObject",
     http_method = "PUT",
@@ -877,7 +906,7 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$copy_object_input(ACL = ACL, Bucket = Bucket, CacheControl = CacheControl, ChecksumAlgorithm = ChecksumAlgorithm, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentType = ContentType, CopySource = CopySource, CopySourceIfMatch = CopySourceIfMatch, CopySourceIfModifiedSince = CopySourceIfModifiedSince, CopySourceIfNoneMatch = CopySourceIfNoneMatch, CopySourceIfUnmodifiedSince = CopySourceIfUnmodifiedSince, Expires = Expires, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWriteACP = GrantWriteACP, Key = Key, Metadata = Metadata, MetadataDirective = MetadataDirective, TaggingDirective = TaggingDirective, ServerSideEncryption = ServerSideEncryption, StorageClass = StorageClass, WebsiteRedirectLocation = WebsiteRedirectLocation, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, SSEKMSKeyId = SSEKMSKeyId, SSEKMSEncryptionContext = SSEKMSEncryptionContext, BucketKeyEnabled = BucketKeyEnabled, CopySourceSSECustomerAlgorithm = CopySourceSSECustomerAlgorithm, CopySourceSSECustomerKey = CopySourceSSECustomerKey, CopySourceSSECustomerKeyMD5 = CopySourceSSECustomerKeyMD5, RequestPayer = RequestPayer, Tagging = Tagging, ObjectLockMode = ObjectLockMode, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus, ExpectedBucketOwner = ExpectedBucketOwner, ExpectedSourceBucketOwner = ExpectedSourceBucketOwner)
+  input <- .s3$copy_object_input(ACL = ACL, Bucket = Bucket, CacheControl = CacheControl, ChecksumAlgorithm = ChecksumAlgorithm, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentType = ContentType, CopySource = CopySource, CopySourceIfMatch = CopySourceIfMatch, CopySourceIfModifiedSince = CopySourceIfModifiedSince, CopySourceIfNoneMatch = CopySourceIfNoneMatch, CopySourceIfUnmodifiedSince = CopySourceIfUnmodifiedSince, Expires = Expires, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWriteACP = GrantWriteACP, IfMatch = IfMatch, IfNoneMatch = IfNoneMatch, Key = Key, Metadata = Metadata, MetadataDirective = MetadataDirective, TaggingDirective = TaggingDirective, ServerSideEncryption = ServerSideEncryption, StorageClass = StorageClass, WebsiteRedirectLocation = WebsiteRedirectLocation, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, SSEKMSKeyId = SSEKMSKeyId, SSEKMSEncryptionContext = SSEKMSEncryptionContext, BucketKeyEnabled = BucketKeyEnabled, CopySourceSSECustomerAlgorithm = CopySourceSSECustomerAlgorithm, CopySourceSSECustomerKey = CopySourceSSECustomerKey, CopySourceSSECustomerKeyMD5 = CopySourceSSECustomerKeyMD5, RequestPayer = RequestPayer, Tagging = Tagging, ObjectLockMode = ObjectLockMode, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus, ExpectedBucketOwner = ExpectedBucketOwner, ExpectedSourceBucketOwner = ExpectedSourceBucketOwner)
   output <- .s3$copy_object_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -963,20 +992,59 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 }
 .s3$operations$create_bucket <- s3_create_bucket
 
-#' Creates a metadata table configuration for a general purpose bucket
+#' Creates an S3 Metadata V2 metadata configuration for a general purpose
+#' bucket
 #'
 #' @description
-#' Creates a metadata table configuration for a general purpose bucket. For more information, see [Accelerating data discovery with S3 Metadata](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-overview.html) in the *Amazon S3 User Guide*.
+#' Creates an S3 Metadata V2 metadata configuration for a general purpose bucket. For more information, see [Accelerating data discovery with S3 Metadata](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-overview.html) in the *Amazon S3 User Guide*.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3_create_bucket_metadata_configuration/](https://www.paws-r-sdk.com/docs/s3_create_bucket_metadata_configuration/) for full documentation.
+#'
+#' @param Bucket &#91;required&#93; The general purpose bucket that you want to create the metadata
+#' configuration for.
+#' @param ContentMD5 The `Content-MD5` header for the metadata configuration.
+#' @param ChecksumAlgorithm The checksum algorithm to use with your metadata configuration.
+#' @param MetadataConfiguration &#91;required&#93; The contents of your metadata configuration.
+#' @param ExpectedBucketOwner The expected owner of the general purpose bucket that corresponds to
+#' your metadata configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname s3_create_bucket_metadata_configuration
+s3_create_bucket_metadata_configuration <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = NULL, MetadataConfiguration, ExpectedBucketOwner = NULL) {
+  op <- new_operation(
+    name = "CreateBucketMetadataConfiguration",
+    http_method = "POST",
+    http_path = "/{Bucket}?metadataConfiguration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3$create_bucket_metadata_configuration_input(Bucket = Bucket, ContentMD5 = ContentMD5, ChecksumAlgorithm = ChecksumAlgorithm, MetadataConfiguration = MetadataConfiguration, ExpectedBucketOwner = ExpectedBucketOwner)
+  output <- .s3$create_bucket_metadata_configuration_output()
+  config <- get_config()
+  svc <- .s3$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3$operations$create_bucket_metadata_configuration <- s3_create_bucket_metadata_configuration
+
+#' We recommend that you create your S3 Metadata configurations by using
+#' the V2 CreateBucketMetadataConfiguration API operation
+#'
+#' @description
+#' We recommend that you create your S3 Metadata configurations by using the V2 [`create_bucket_metadata_configuration`][s3_create_bucket_metadata_configuration] API operation. We no longer recommend using the V1 [`create_bucket_metadata_table_configuration`][s3_create_bucket_metadata_table_configuration] API operation.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_create_bucket_metadata_table_configuration/](https://www.paws-r-sdk.com/docs/s3_create_bucket_metadata_table_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The general purpose bucket that you want to create the metadata table
-#' configuration in.
+#' configuration for.
 #' @param ContentMD5 The `Content-MD5` header for the metadata table configuration.
 #' @param ChecksumAlgorithm The checksum algorithm to use with your metadata table configuration.
 #' @param MetadataTableConfiguration &#91;required&#93; The contents of your metadata table configuration.
-#' @param ExpectedBucketOwner The expected owner of the general purpose bucket that contains your
-#' metadata table configuration.
+#' @param ExpectedBucketOwner The expected owner of the general purpose bucket that corresponds to
+#' your metadata table configuration.
 #'
 #' @keywords internal
 #'
@@ -1000,10 +1068,11 @@ s3_create_bucket_metadata_table_configuration <- function(Bucket, ContentMD5 = N
 }
 .s3$operations$create_bucket_metadata_table_configuration <- s3_create_bucket_metadata_table_configuration
 
-#' This action initiates a multipart upload and returns an upload ID
+#' End of support notice: As of October 1, 2025, Amazon S3 has discontinued
+#' support for Email Grantee Access Control Lists (ACLs)
 #'
 #' @description
-#' This action initiates a multipart upload and returns an upload ID. This upload ID is used to associate all of the parts in the specific multipart upload. You specify this upload ID in each of your subsequent upload part requests (see [`upload_part`][s3_upload_part]). You also include this upload ID in the final request to either complete or abort the multipart upload request. For more information about multipart uploads, see [Multipart Upload Overview](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html) in the *Amazon S3 User Guide*.
+#' End of support notice: As of October 1, 2025, Amazon S3 has discontinued support for Email Grantee Access Control Lists (ACLs). If you attempt to use an Email Grantee ACL in a request after October 1, 2025, the request will receive an `HTTP 405` (Method Not Allowed) error.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_create_multipart_upload/](https://www.paws-r-sdk.com/docs/s3_create_multipart_upload/) for full documentation.
 #'
@@ -1299,7 +1368,7 @@ s3_create_bucket_metadata_table_configuration <- function(Bucket, ContentMD5 = N
 #' @param Key &#91;required&#93; Object key for which the multipart upload is to be initiated.
 #' @param Metadata A map of metadata to store with the object in S3.
 #' @param ServerSideEncryption The server-side encryption algorithm used when you store this object in
-#' Amazon S3 (for example, `AES256`, `aws:kms`).
+#' Amazon S3 or Amazon FSx.
 #' 
 #' -   **Directory buckets** - For directory buckets, there are only two
 #'     supported options for server-side encryption: server-side encryption
@@ -1345,6 +1414,14 @@ s3_create_bucket_metadata_table_configuration <- function(Bucket, ContentMD5 = N
 #'     [`upload_part_copy`][s3_upload_part_copy]), the encryption request
 #'     headers must match the default encryption configuration of the
 #'     directory bucket.
+#' 
+#' -   **S3 access points for Amazon FSx** - When accessing data stored in
+#'     Amazon FSx file systems using S3 access points, the only valid
+#'     server side encryption option is `aws:fsx`. All Amazon FSx file
+#'     systems have encryption configured by default and are encrypted at
+#'     rest. Data is automatically encrypted before being written to the
+#'     file system, and automatically decrypted as it is read. These
+#'     processes are handled transparently by Amazon FSx.
 #' @param StorageClass By default, Amazon S3 uses the STANDARD Storage Class to store newly
 #' created objects. The STANDARD storage class provides high durability and
 #' high availability. Depending on performance needs, you can specify a
@@ -1514,6 +1591,14 @@ s3_create_multipart_upload <- function(ACL = NULL, Bucket, CacheControl = NULL, 
 #' For more information, see [Protecting data with server-side
 #' encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html)
 #' in the *Amazon S3 User Guide*.
+#' 
+#' **S3 access points for Amazon FSx** - When accessing data stored in
+#' Amazon FSx file systems using S3 access points, the only valid server
+#' side encryption option is `aws:fsx`. All Amazon FSx file systems have
+#' encryption configured by default and are encrypted at rest. Data is
+#' automatically encrypted before being written to the file system, and
+#' automatically decrypted as it is read. These processes are handled
+#' transparently by Amazon FSx.
 #' @param SSEKMSKeyId If you specify `x-amz-server-side-encryption` with `aws:kms`, you must
 #' specify the ` x-amz-server-side-encryption-aws-kms-key-id` header with
 #' the ID (Key ID or Key ARN) of the KMS symmetric encryption customer
@@ -1766,11 +1851,14 @@ s3_delete_bucket_encryption <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @param Bucket &#91;required&#93; The name of the Amazon S3 bucket whose configuration you want to modify
 #' or retrieve.
 #' @param Id &#91;required&#93; The ID used to identify the S3 Intelligent-Tiering configuration.
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
 #' @rdname s3_delete_bucket_intelligent_tiering_configuration
-s3_delete_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
+s3_delete_bucket_intelligent_tiering_configuration <- function(Bucket, Id, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "DeleteBucketIntelligentTieringConfiguration",
     http_method = "DELETE",
@@ -1779,7 +1867,7 @@ s3_delete_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$delete_bucket_intelligent_tiering_configuration_input(Bucket = Bucket, Id = Id)
+  input <- .s3$delete_bucket_intelligent_tiering_configuration_input(Bucket = Bucket, Id = Id, ExpectedBucketOwner = ExpectedBucketOwner)
   output <- .s3$delete_bucket_intelligent_tiering_configuration_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -1861,10 +1949,45 @@ s3_delete_bucket_lifecycle <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$delete_bucket_lifecycle <- s3_delete_bucket_lifecycle
 
-#' Deletes a metadata table configuration from a general purpose bucket
+#' Deletes an S3 Metadata configuration from a general purpose bucket
 #'
 #' @description
-#' Deletes a metadata table configuration from a general purpose bucket. For more information, see [Accelerating data discovery with S3 Metadata](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-overview.html) in the *Amazon S3 User Guide*.
+#' Deletes an S3 Metadata configuration from a general purpose bucket. For more information, see [Accelerating data discovery with S3 Metadata](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-overview.html) in the *Amazon S3 User Guide*.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket_metadata_configuration/](https://www.paws-r-sdk.com/docs/s3_delete_bucket_metadata_configuration/) for full documentation.
+#'
+#' @param Bucket &#91;required&#93; The general purpose bucket that you want to remove the metadata
+#' configuration from.
+#' @param ExpectedBucketOwner The expected bucket owner of the general purpose bucket that you want to
+#' remove the metadata table configuration from.
+#'
+#' @keywords internal
+#'
+#' @rdname s3_delete_bucket_metadata_configuration
+s3_delete_bucket_metadata_configuration <- function(Bucket, ExpectedBucketOwner = NULL) {
+  op <- new_operation(
+    name = "DeleteBucketMetadataConfiguration",
+    http_method = "DELETE",
+    http_path = "/{Bucket}?metadataConfiguration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3$delete_bucket_metadata_configuration_input(Bucket = Bucket, ExpectedBucketOwner = ExpectedBucketOwner)
+  output <- .s3$delete_bucket_metadata_configuration_output()
+  config <- get_config()
+  svc <- .s3$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3$operations$delete_bucket_metadata_configuration <- s3_delete_bucket_metadata_configuration
+
+#' We recommend that you delete your S3 Metadata configurations by using
+#' the V2 DeleteBucketMetadataTableConfiguration API operation
+#'
+#' @description
+#' We recommend that you delete your S3 Metadata configurations by using the V2 [`delete_bucket_metadata_table_configuration`][s3_delete_bucket_metadata_table_configuration] API operation. We no longer recommend using the V1 [`delete_bucket_metadata_table_configuration`][s3_delete_bucket_metadata_table_configuration] API operation.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket_metadata_table_configuration/](https://www.paws-r-sdk.com/docs/s3_delete_bucket_metadata_table_configuration/) for full documentation.
 #'
@@ -2183,16 +2306,16 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
 #' provide does not match the actual owner of the bucket, the request fails
 #' with the HTTP status code `403 Forbidden` (access denied).
-#' @param IfMatch The `If-Match` header field makes the request method conditional on
-#' ETags. If the ETag value does not match, the operation returns a
-#' `412 Precondition Failed` error. If the ETag matches or if the object
-#' doesn't exist, the operation will return a
-#' `204 Success (No Content) response`.
+#' @param IfMatch Deletes the object if the ETag (entity tag) value provided during the
+#' delete operation matches the ETag of the object in S3. If the ETag
+#' values do not match, the operation returns a `412 Precondition Failed`
+#' error.
+#' 
+#' Expects the ETag value as a string. `If-Match` does accept a string
+#' value of an '*' (asterisk) character to denote a match of any ETag.
 #' 
 #' For more information about conditional requests, see [RFC
 #' 7232](https://datatracker.ietf.org/doc/html/rfc7232).
-#' 
-#' This functionality is only supported for directory buckets.
 #' @param IfMatchLastModifiedTime If present, the object is deleted only if its modification times matches
 #' the provided `Timestamp`. If the `Timestamp` values do not match, the
 #' operation returns a `412 Precondition Failed` error. If the `Timestamp`
@@ -2457,6 +2580,40 @@ s3_delete_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$delete_public_access_block <- s3_delete_public_access_block
 
+#' Returns the attribute-based access control (ABAC) property of the
+#' general purpose bucket
+#'
+#' @description
+#' Returns the attribute-based access control (ABAC) property of the general purpose bucket. If ABAC is enabled on your bucket, you can use tags on the bucket for access control. For more information, see [Enabling ABAC in general purpose buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/buckets-tagging-enable-abac.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_abac/](https://www.paws-r-sdk.com/docs/s3_get_bucket_abac/) for full documentation.
+#'
+#' @param Bucket &#91;required&#93; The name of the general purpose bucket.
+#' @param ExpectedBucketOwner The Amazon Web Services account ID of the general purpose bucket's
+#' owner.
+#'
+#' @keywords internal
+#'
+#' @rdname s3_get_bucket_abac
+s3_get_bucket_abac <- function(Bucket, ExpectedBucketOwner = NULL) {
+  op <- new_operation(
+    name = "GetBucketAbac",
+    http_method = "GET",
+    http_path = "/{Bucket}?abac",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3$get_bucket_abac_input(Bucket = Bucket, ExpectedBucketOwner = ExpectedBucketOwner)
+  output <- .s3$get_bucket_abac_output()
+  config <- get_config()
+  svc <- .s3$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3$operations$get_bucket_abac <- s3_get_bucket_abac
+
 #' This operation is not supported for directory buckets
 #'
 #' @description
@@ -2622,7 +2779,7 @@ s3_get_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Returns the default encryption configuration for an Amazon S3 bucket
 #'
 #' @description
-#' Returns the default encryption configuration for an Amazon S3 bucket. By default, all buckets have a default encryption configuration that uses server-side encryption with Amazon S3 managed keys (SSE-S3).
+#' Returns the default encryption configuration for an Amazon S3 bucket. By default, all buckets have a default encryption configuration that uses server-side encryption with Amazon S3 managed keys (SSE-S3). This operation also returns the [BucketKeyEnabled](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ServerSideEncryptionRule.html#AmazonS3-Type-ServerSideEncryptionRule-BucketKeyEnabled) and [BlockedEncryptionTypes](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ServerSideEncryptionRule.html#AmazonS3-Type-ServerSideEncryptionRule-BlockedEncryptionTypes) statuses.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_encryption/](https://www.paws-r-sdk.com/docs/s3_get_bucket_encryption/) for full documentation.
 #'
@@ -2680,11 +2837,14 @@ s3_get_bucket_encryption <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @param Bucket &#91;required&#93; The name of the Amazon S3 bucket whose configuration you want to modify
 #' or retrieve.
 #' @param Id &#91;required&#93; The ID used to identify the S3 Intelligent-Tiering configuration.
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
 #' @rdname s3_get_bucket_intelligent_tiering_configuration
-s3_get_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
+s3_get_bucket_intelligent_tiering_configuration <- function(Bucket, Id, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetBucketIntelligentTieringConfiguration",
     http_method = "GET",
@@ -2693,7 +2853,7 @@ s3_get_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$get_bucket_intelligent_tiering_configuration_input(Bucket = Bucket, Id = Id)
+  input <- .s3$get_bucket_intelligent_tiering_configuration_input(Bucket = Bucket, Id = Id, ExpectedBucketOwner = ExpectedBucketOwner)
   output <- .s3$get_bucket_intelligent_tiering_configuration_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -2810,10 +2970,10 @@ s3_get_bucket_lifecycle_configuration <- function(Bucket, ExpectedBucketOwner = 
 }
 .s3$operations$get_bucket_lifecycle_configuration <- s3_get_bucket_lifecycle_configuration
 
-#' This operation is not supported for directory buckets
+#' Using the GetBucketLocation operation is no longer a best practice
 #'
 #' @description
-#' This operation is not supported for directory buckets.
+#' Using the [`get_bucket_location`][s3_get_bucket_location] operation is no longer a best practice. To return the Region that a bucket resides in, we recommend that you use the [`head_bucket`][s3_head_bucket] operation instead. For backward compatibility, Amazon S3 continues to support the [`get_bucket_location`][s3_get_bucket_location] operation.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_location/](https://www.paws-r-sdk.com/docs/s3_get_bucket_location/) for full documentation.
 #'
@@ -2889,17 +3049,52 @@ s3_get_bucket_logging <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_logging <- s3_get_bucket_logging
 
-#' Retrieves the metadata table configuration for a general purpose bucket
+#' Retrieves the S3 Metadata configuration for a general purpose bucket
 #'
 #' @description
-#' Retrieves the metadata table configuration for a general purpose bucket. For more information, see [Accelerating data discovery with S3 Metadata](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-overview.html) in the *Amazon S3 User Guide*.
+#' Retrieves the S3 Metadata configuration for a general purpose bucket. For more information, see [Accelerating data discovery with S3 Metadata](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-overview.html) in the *Amazon S3 User Guide*.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_metadata_configuration/](https://www.paws-r-sdk.com/docs/s3_get_bucket_metadata_configuration/) for full documentation.
+#'
+#' @param Bucket &#91;required&#93; The general purpose bucket that corresponds to the metadata
+#' configuration that you want to retrieve.
+#' @param ExpectedBucketOwner The expected owner of the general purpose bucket that you want to
+#' retrieve the metadata table configuration for.
+#'
+#' @keywords internal
+#'
+#' @rdname s3_get_bucket_metadata_configuration
+s3_get_bucket_metadata_configuration <- function(Bucket, ExpectedBucketOwner = NULL) {
+  op <- new_operation(
+    name = "GetBucketMetadataConfiguration",
+    http_method = "GET",
+    http_path = "/{Bucket}?metadataConfiguration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3$get_bucket_metadata_configuration_input(Bucket = Bucket, ExpectedBucketOwner = ExpectedBucketOwner)
+  output <- .s3$get_bucket_metadata_configuration_output()
+  config <- get_config()
+  svc <- .s3$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3$operations$get_bucket_metadata_configuration <- s3_get_bucket_metadata_configuration
+
+#' We recommend that you retrieve your S3 Metadata configurations by using
+#' the V2 GetBucketMetadataTableConfiguration API operation
+#'
+#' @description
+#' We recommend that you retrieve your S3 Metadata configurations by using the V2 [`get_bucket_metadata_table_configuration`][s3_get_bucket_metadata_table_configuration] API operation. We no longer recommend using the V1 [`get_bucket_metadata_table_configuration`][s3_get_bucket_metadata_table_configuration] API operation.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_metadata_table_configuration/](https://www.paws-r-sdk.com/docs/s3_get_bucket_metadata_table_configuration/) for full documentation.
 #'
-#' @param Bucket &#91;required&#93; The general purpose bucket that contains the metadata table
+#' @param Bucket &#91;required&#93; The general purpose bucket that corresponds to the metadata table
 #' configuration that you want to retrieve.
 #' @param ExpectedBucketOwner The expected owner of the general purpose bucket that you want to
-#' retrieve the metadata table configuration from.
+#' retrieve the metadata table configuration for.
 #'
 #' @keywords internal
 #'
@@ -3635,11 +3830,11 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 }
 .s3$operations$get_object_acl <- s3_get_object_acl
 
-#' Retrieves all the metadata from an object without returning the object
-#' itself
+#' Retrieves all of the metadata from an object without returning the
+#' object itself
 #'
 #' @description
-#' Retrieves all the metadata from an object without returning the object itself. This operation is useful if you're interested only in an object's metadata.
+#' Retrieves all of the metadata from an object without returning the object itself. This operation is useful if you're interested only in an object's metadata.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_object_attributes/](https://www.paws-r-sdk.com/docs/s3_get_object_attributes/) for full documentation.
 #'
@@ -3688,9 +3883,15 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #' this API operation, only the `null` value of the version ID is supported
 #' by directory buckets. You can only specify `null` to the `versionId`
 #' query parameter in the request.
-#' @param MaxParts Sets the maximum number of parts to return.
+#' @param MaxParts Sets the maximum number of parts to return. For more information, see
+#' [Uploading and copying objects using multipart upload in Amazon
+#' S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html)
+#' in the *Amazon Simple Storage Service user guide*.
 #' @param PartNumberMarker Specifies the part after which listing should begin. Only parts with
-#' higher part numbers will be listed.
+#' higher part numbers will be listed. For more information, see [Uploading
+#' and copying objects using multipart upload in Amazon
+#' S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html)
+#' in the *Amazon Simple Storage Service user guide*.
 #' @param SSECustomerAlgorithm Specifies the algorithm to use when encrypting the object (for example,
 #' AES256).
 #' 
@@ -4030,7 +4231,7 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' have permission to access it
 #'
 #' @description
-#' You can use this operation to determine if a bucket exists and if you have permission to access it. The action returns a `200 OK` if the bucket exists and you have permission to access it.
+#' You can use this operation to determine if a bucket exists and if you have permission to access it. The action returns a `200 OK` HTTP status code if the bucket exists and you have permission to access it. You can make a [`head_bucket`][s3_head_bucket] call on any bucket name to any Region in the partition, and regardless of the permissions on the bucket, you will receive a response header with the correct bucket location so that you can then make a proper, signed request to the appropriate Regional endpoint.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_head_bucket/](https://www.paws-r-sdk.com/docs/s3_head_bucket/) for full documentation.
 #'
@@ -4331,11 +4532,14 @@ s3_list_bucket_analytics_configurations <- function(Bucket, ContinuationToken = 
 #' or retrieve.
 #' @param ContinuationToken The `ContinuationToken` that represents a placeholder from where this
 #' request should begin.
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
 #' @rdname s3_list_bucket_intelligent_tiering_configurations
-s3_list_bucket_intelligent_tiering_configurations <- function(Bucket, ContinuationToken = NULL) {
+s3_list_bucket_intelligent_tiering_configurations <- function(Bucket, ContinuationToken = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "ListBucketIntelligentTieringConfigurations",
     http_method = "GET",
@@ -4344,7 +4548,7 @@ s3_list_bucket_intelligent_tiering_configurations <- function(Bucket, Continuati
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$list_bucket_intelligent_tiering_configurations_input(Bucket = Bucket, ContinuationToken = ContinuationToken)
+  input <- .s3$list_bucket_intelligent_tiering_configurations_input(Bucket = Bucket, ContinuationToken = ContinuationToken, ExpectedBucketOwner = ExpectedBucketOwner)
   output <- .s3$list_bucket_intelligent_tiering_configurations_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -4584,6 +4788,9 @@ s3_list_directory_buckets <- function(ContinuationToken = NULL, MaxDirectoryBuck
 #' key. The keys that are grouped under `CommonPrefixes` result element are
 #' not returned elsewhere in the response.
 #' 
+#' `CommonPrefixes` is filtered out from results if it is not
+#' lexicographically greater than the key-marker.
+#' 
 #' **Directory buckets** - For directory buckets, `/` is the only supported
 #' delimiter.
 #' @param EncodingType 
@@ -4672,6 +4879,9 @@ s3_list_multipart_uploads <- function(Bucket, Delimiter = NULL, EncodingType = N
 #' `CommonPrefixes`. These groups are counted as one result against the
 #' `max-keys` limitation. These keys are not returned elsewhere in the
 #' response.
+#' 
+#' `CommonPrefixes` is filtered out from results if it is not
+#' lexicographically greater than the key-marker.
 #' @param EncodingType 
 #' @param KeyMarker Specifies the key to start with when listing objects in a bucket.
 #' @param MaxKeys Sets the maximum number of keys returned in the response. By default,
@@ -4762,6 +4972,9 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Delimiter A delimiter is a character that you use to group keys.
+#' 
+#' `CommonPrefixes` is filtered out from results if it is not
+#' lexicographically greater than the key-marker.
 #' @param EncodingType 
 #' @param Marker Marker is where you want Amazon S3 to start listing from. Amazon S3
 #' starts listing after this specified key. Marker can be any key in the
@@ -4846,6 +5059,9 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Delimiter A delimiter is a character that you use to group keys.
+#' 
+#' `CommonPrefixes` is filtered out from results if it is not
+#' lexicographically greater than the `StartAfter` value.
 #' 
 #' -   **Directory buckets** - For directory buckets, `/` is the only
 #'     supported delimiter.
@@ -5030,6 +5246,57 @@ s3_list_parts <- function(Bucket, Key, MaxParts = NULL, PartNumberMarker = NULL,
 }
 .s3$operations$list_parts <- s3_list_parts
 
+#' Sets the attribute-based access control (ABAC) property of the general
+#' purpose bucket
+#'
+#' @description
+#' Sets the attribute-based access control (ABAC) property of the general purpose bucket. You must have `s3:PutBucketABAC` permission to perform this action. When you enable ABAC, you can use tags for access control on your buckets. Additionally, when ABAC is enabled, you must use the [TagResource](https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_TagResource.html) and [UntagResource](https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UntagResource.html) actions to manage tags on your buckets. You can nolonger use the [`put_bucket_tagging`][s3_put_bucket_tagging] and [`delete_bucket_tagging`][s3_delete_bucket_tagging] actions to tag your bucket. For more information, see [Enabling ABAC in general purpose buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/buckets-tagging-enable-abac.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_abac/](https://www.paws-r-sdk.com/docs/s3_put_bucket_abac/) for full documentation.
+#'
+#' @param Bucket &#91;required&#93; The name of the general purpose bucket.
+#' @param ContentMD5 The MD5 hash of the [`put_bucket_abac`][s3_put_bucket_abac] request
+#' body.
+#' 
+#' For requests made using the Amazon Web Services Command Line Interface
+#' (CLI) or Amazon Web Services SDKs, this field is calculated
+#' automatically.
+#' @param ChecksumAlgorithm Indicates the algorithm that you want Amazon S3 to use to create the
+#' checksum. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
+#' @param ExpectedBucketOwner The Amazon Web Services account ID of the general purpose bucket's
+#' owner.
+#' @param AbacStatus &#91;required&#93; The ABAC status of the general purpose bucket. When ABAC is enabled for
+#' the general purpose bucket, you can use tags to manage access to the
+#' general purpose buckets as well as for cost tracking purposes. When ABAC
+#' is disabled for the general purpose buckets, you can only use tags for
+#' cost tracking purposes. For more information, see [Using tags with S3
+#' general purpose
+#' buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/buckets-tagging.html).
+#'
+#' @keywords internal
+#'
+#' @rdname s3_put_bucket_abac
+s3_put_bucket_abac <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = NULL, ExpectedBucketOwner = NULL, AbacStatus) {
+  op <- new_operation(
+    name = "PutBucketAbac",
+    http_method = "PUT",
+    http_path = "/{Bucket}?abac",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3$put_bucket_abac_input(Bucket = Bucket, ContentMD5 = ContentMD5, ChecksumAlgorithm = ChecksumAlgorithm, ExpectedBucketOwner = ExpectedBucketOwner, AbacStatus = AbacStatus)
+  output <- .s3$put_bucket_abac_output()
+  config <- get_config()
+  svc <- .s3$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3$operations$put_bucket_abac <- s3_put_bucket_abac
+
 #' This operation is not supported for directory buckets
 #'
 #' @description
@@ -5076,10 +5343,11 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 }
 .s3$operations$put_bucket_accelerate_configuration <- s3_put_bucket_accelerate_configuration
 
-#' This operation is not supported for directory buckets
+#' End of support notice: As of October 1, 2025, Amazon S3 has discontinued
+#' support for Email Grantee Access Control Lists (ACLs)
 #'
 #' @description
-#' This operation is not supported for directory buckets.
+#' End of support notice: As of October 1, 2025, Amazon S3 has discontinued support for Email Grantee Access Control Lists (ACLs). If you attempt to use an Email Grantee ACL in a request after October 1, 2025, the request will receive an `HTTP 405` (Method Not Allowed) error.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_acl/](https://www.paws-r-sdk.com/docs/s3_put_bucket_acl/) for full documentation.
 #'
@@ -5238,7 +5506,7 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Che
 #' for an existing bucket
 #'
 #' @description
-#' This operation configures default encryption and Amazon S3 Bucket Keys for an existing bucket.
+#' This operation configures default encryption and Amazon S3 Bucket Keys for an existing bucket. You can also [block encryption types](https://docs.aws.amazon.com/AmazonS3/latest/API/API_BlockedEncryptionTypes.html) using this operation.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_encryption/](https://www.paws-r-sdk.com/docs/s3_put_bucket_encryption/) for full documentation.
 #'
@@ -5319,12 +5587,15 @@ s3_put_bucket_encryption <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorith
 #' @param Bucket &#91;required&#93; The name of the Amazon S3 bucket whose configuration you want to modify
 #' or retrieve.
 #' @param Id &#91;required&#93; The ID used to identify the S3 Intelligent-Tiering configuration.
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #' @param IntelligentTieringConfiguration &#91;required&#93; Container for S3 Intelligent-Tiering configuration.
 #'
 #' @keywords internal
 #'
 #' @rdname s3_put_bucket_intelligent_tiering_configuration
-s3_put_bucket_intelligent_tiering_configuration <- function(Bucket, Id, IntelligentTieringConfiguration) {
+s3_put_bucket_intelligent_tiering_configuration <- function(Bucket, Id, ExpectedBucketOwner = NULL, IntelligentTieringConfiguration) {
   op <- new_operation(
     name = "PutBucketIntelligentTieringConfiguration",
     http_method = "PUT",
@@ -5333,7 +5604,7 @@ s3_put_bucket_intelligent_tiering_configuration <- function(Bucket, Id, Intellig
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$put_bucket_intelligent_tiering_configuration_input(Bucket = Bucket, Id = Id, IntelligentTieringConfiguration = IntelligentTieringConfiguration)
+  input <- .s3$put_bucket_intelligent_tiering_configuration_input(Bucket = Bucket, Id = Id, ExpectedBucketOwner = ExpectedBucketOwner, IntelligentTieringConfiguration = IntelligentTieringConfiguration)
   output <- .s3$put_bucket_intelligent_tiering_configuration_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -5496,10 +5767,11 @@ s3_put_bucket_lifecycle_configuration <- function(Bucket, ChecksumAlgorithm = NU
 }
 .s3$operations$put_bucket_lifecycle_configuration <- s3_put_bucket_lifecycle_configuration
 
-#' This operation is not supported for directory buckets
+#' End of support notice: As of October 1, 2025, Amazon S3 has discontinued
+#' support for Email Grantee Access Control Lists (ACLs)
 #'
 #' @description
-#' This operation is not supported for directory buckets.
+#' End of support notice: As of October 1, 2025, Amazon S3 has discontinued support for Email Grantee Access Control Lists (ACLs). If you attempt to use an Email Grantee ACL in a request after October 1, 2025, the request will receive an `HTTP 405` (Method Not Allowed) error.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_logging/](https://www.paws-r-sdk.com/docs/s3_put_bucket_logging/) for full documentation.
 #'
@@ -5694,11 +5966,22 @@ s3_put_bucket_notification_configuration <- function(Bucket, NotificationConfigu
 #' with the HTTP status code `403 Forbidden` (access denied).
 #' @param OwnershipControls &#91;required&#93; The `OwnershipControls` (BucketOwnerEnforced, BucketOwnerPreferred, or
 #' ObjectWriter) that you want to apply to this Amazon S3 bucket.
+#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
+#' you use the SDK. This header will not provide any additional
+#' functionality if you don't use the SDK. When you send this header, there
+#' must be a corresponding `x-amz-checksum-algorithm ` header sent.
+#' Otherwise, Amazon S3 fails the request with the HTTP status code
+#' `400 Bad Request`. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' If you provide an individual checksum, Amazon S3 ignores any provided
+#' `ChecksumAlgorithm` parameter.
 #'
 #' @keywords internal
 #'
 #' @rdname s3_put_bucket_ownership_controls
-s3_put_bucket_ownership_controls <- function(Bucket, ContentMD5 = NULL, ExpectedBucketOwner = NULL, OwnershipControls) {
+s3_put_bucket_ownership_controls <- function(Bucket, ContentMD5 = NULL, ExpectedBucketOwner = NULL, OwnershipControls, ChecksumAlgorithm = NULL) {
   op <- new_operation(
     name = "PutBucketOwnershipControls",
     http_method = "PUT",
@@ -5707,7 +5990,7 @@ s3_put_bucket_ownership_controls <- function(Bucket, ContentMD5 = NULL, Expected
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$put_bucket_ownership_controls_input(Bucket = Bucket, ContentMD5 = ContentMD5, ExpectedBucketOwner = ExpectedBucketOwner, OwnershipControls = OwnershipControls)
+  input <- .s3$put_bucket_ownership_controls_input(Bucket = Bucket, ContentMD5 = ContentMD5, ExpectedBucketOwner = ExpectedBucketOwner, OwnershipControls = OwnershipControls, ChecksumAlgorithm = ChecksumAlgorithm)
   output <- .s3$put_bucket_ownership_controls_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -6004,7 +6287,15 @@ s3_put_bucket_tagging <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' If you provide an individual checksum, Amazon S3 ignores any provided
 #' `ChecksumAlgorithm` parameter.
 #' @param MFA The concatenation of the authentication device's serial number, a space,
-#' and the value that is displayed on your authentication device.
+#' and the value that is displayed on your authentication device. The
+#' serial number is the number that uniquely identifies the MFA device. For
+#' physical MFA devices, this is the unique serial number that's provided
+#' with the device. For virtual MFA devices, the serial number is the
+#' device ARN. For more information, see [Enabling versioning on
+#' buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/manage-versioning-examples.html)
+#' and [Configuring MFA
+#' delete](https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiFactorAuthenticationDelete.html)
+#' in the *Amazon Simple Storage Service User Guide*.
 #' @param VersioningConfiguration &#91;required&#93; Container for setting the versioning state.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
 #' provide does not match the actual owner of the bucket, the request fails
@@ -6086,10 +6377,11 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 }
 .s3$operations$put_bucket_website <- s3_put_bucket_website
 
-#' Adds an object to a bucket
+#' End of support notice: As of October 1, 2025, Amazon S3 has discontinued
+#' support for Email Grantee Access Control Lists (ACLs)
 #'
 #' @description
-#' Adds an object to a bucket.
+#' End of support notice: As of October 1, 2025, Amazon S3 has discontinued support for Email Grantee Access Control Lists (ACLs). If you attempt to use an Email Grantee ACL in a request after October 1, 2025, the request will receive an `HTTP 405` (Method Not Allowed) error.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_object/](https://www.paws-r-sdk.com/docs/s3_put_object/) for full documentation.
 #'
@@ -6325,7 +6617,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' Express One Zone storage class in directory buckets.
 #' @param Metadata A map of metadata to store with the object in S3.
 #' @param ServerSideEncryption The server-side encryption algorithm that was used when you store this
-#' object in Amazon S3 (for example, `AES256`, `aws:kms`, `aws:kms:dsse`).
+#' object in Amazon S3 or Amazon FSx.
 #' 
 #' -   **General purpose buckets** - You have four mutually exclusive
 #'     options to protect data using server-side encryption in Amazon S3,
@@ -6384,6 +6676,14 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'     [`upload_part_copy`][s3_upload_part_copy]), the encryption request
 #'     headers must match the default encryption configuration of the
 #'     directory bucket.
+#' 
+#' -   **S3 access points for Amazon FSx** - When accessing data stored in
+#'     Amazon FSx file systems using S3 access points, the only valid
+#'     server side encryption option is `aws:fsx`. All Amazon FSx file
+#'     systems have encryption configured by default and are encrypted at
+#'     rest. Data is automatically encrypted before being written to the
+#'     file system, and automatically decrypted as it is read. These
+#'     processes are handled transparently by Amazon FSx.
 #' @param StorageClass By default, Amazon S3 uses the STANDARD Storage Class to store newly
 #' created objects. The STANDARD storage class provides high durability and
 #' high availability. Depending on performance needs, you can specify a
@@ -6547,10 +6847,11 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 }
 .s3$operations$put_object <- s3_put_object
 
-#' This operation is not supported for directory buckets
+#' End of support notice: As of October 1, 2025, Amazon S3 has discontinued
+#' support for Email Grantee Access Control Lists (ACLs)
 #'
 #' @description
-#' This operation is not supported for directory buckets.
+#' End of support notice: As of October 1, 2025, Amazon S3 has discontinued support for Email Grantee Access Control Lists (ACLs). If you attempt to use an Email Grantee ACL in a request after October 1, 2025, the request will receive an `HTTP 405` (Method Not Allowed) error.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_object_acl/](https://www.paws-r-sdk.com/docs/s3_put_object_acl/) for full documentation.
 #'
@@ -6903,7 +7204,9 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
 #' provide does not match the actual owner of the bucket, the request fails
 #' with the HTTP status code `403 Forbidden` (access denied).
-#' @param RequestPayer 
+#' @param RequestPayer Confirms that the requester knows that she or he will be charged for the
+#' tagging object request. Bucket owners need not specify this parameter in
+#' their requests.
 #'
 #' @keywords internal
 #'
@@ -6984,6 +7287,92 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
   return(response)
 }
 .s3$operations$put_public_access_block <- s3_put_public_access_block
+
+#' Renames an existing object in a directory bucket that uses the S3
+#' Express One Zone storage class
+#'
+#' @description
+#' Renames an existing object in a directory bucket that uses the S3 Express One Zone storage class. You can use [`rename_object`][s3_rename_object] by specifying an existing object’s name as the source and the new name of the object as the destination within the same directory bucket.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3_rename_object/](https://www.paws-r-sdk.com/docs/s3_rename_object/) for full documentation.
+#'
+#' @param Bucket &#91;required&#93; The bucket name of the directory bucket containing the object.
+#' 
+#' You must use virtual-hosted-style requests in the format
+#' `Bucket-name.s3express-zone-id.region-code.amazonaws.com`. Path-style
+#' requests are not supported. Directory bucket names must be unique in the
+#' chosen Availability Zone. Bucket names must follow the format
+#' `bucket-base-name--zone-id--x-s3 ` (for example,
+#' `amzn-s3-demo-bucket--usw2-az1--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*.
+#' @param Key &#91;required&#93; Key name of the object to rename.
+#' @param RenameSource &#91;required&#93; Specifies the source for the rename operation. The value must be URL
+#' encoded.
+#' @param DestinationIfMatch Renames the object only if the ETag (entity tag) value provided during
+#' the operation matches the ETag of the object in S3. The `If-Match`
+#' header field makes the request method conditional on ETags. If the ETag
+#' values do not match, the operation returns a `412 Precondition Failed`
+#' error.
+#' 
+#' Expects the ETag value as a string.
+#' @param DestinationIfNoneMatch Renames the object only if the destination does not already exist in the
+#' specified directory bucket. If the object does exist when you send a
+#' request with `If-None-Match:*`, the S3 API will return a
+#' `412 Precondition Failed` error, preventing an overwrite. The
+#' `If-None-Match` header prevents overwrites of existing data by
+#' validating that there's not an object with the same key name already in
+#' your directory bucket.
+#' 
+#' Expects the `*` character (asterisk).
+#' @param DestinationIfModifiedSince Renames the object if the destination exists and if it has been modified
+#' since the specified time.
+#' @param DestinationIfUnmodifiedSince Renames the object if it hasn't been modified since the specified time.
+#' @param SourceIfMatch Renames the object if the source exists and if its entity tag (ETag)
+#' matches the specified ETag.
+#' @param SourceIfNoneMatch Renames the object if the source exists and if its entity tag (ETag) is
+#' different than the specified ETag. If an asterisk (`*`) character is
+#' provided, the operation will fail and return a `412 Precondition Failed`
+#' error.
+#' @param SourceIfModifiedSince Renames the object if the source exists and if it has been modified
+#' since the specified time.
+#' @param SourceIfUnmodifiedSince Renames the object if the source exists and hasn't been modified since
+#' the specified time.
+#' @param ClientToken A unique string with a max of 64 ASCII characters in the ASCII range of
+#' 33 - 126.
+#' 
+#' [`rename_object`][s3_rename_object] supports idempotency using a client
+#' token. To make an idempotent API request using
+#' [`rename_object`][s3_rename_object], specify a client token in the
+#' request. You should not reuse the same client token for other API
+#' requests. If you retry a request that completed successfully using the
+#' same client token and the same parameters, the retry succeeds without
+#' performing any further actions. If you retry a successful request using
+#' the same client token, but one or more of the parameters are different,
+#' the retry fails and an `IdempotentParameterMismatch` error is returned.
+#'
+#' @keywords internal
+#'
+#' @rdname s3_rename_object
+s3_rename_object <- function(Bucket, Key, RenameSource, DestinationIfMatch = NULL, DestinationIfNoneMatch = NULL, DestinationIfModifiedSince = NULL, DestinationIfUnmodifiedSince = NULL, SourceIfMatch = NULL, SourceIfNoneMatch = NULL, SourceIfModifiedSince = NULL, SourceIfUnmodifiedSince = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "RenameObject",
+    http_method = "PUT",
+    http_path = "/{Bucket}/{Key+}?renameObject",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3$rename_object_input(Bucket = Bucket, Key = Key, RenameSource = RenameSource, DestinationIfMatch = DestinationIfMatch, DestinationIfNoneMatch = DestinationIfNoneMatch, DestinationIfModifiedSince = DestinationIfModifiedSince, DestinationIfUnmodifiedSince = DestinationIfUnmodifiedSince, SourceIfMatch = SourceIfMatch, SourceIfNoneMatch = SourceIfNoneMatch, SourceIfModifiedSince = SourceIfModifiedSince, SourceIfUnmodifiedSince = SourceIfUnmodifiedSince, ClientToken = ClientToken)
+  output <- .s3$rename_object_output()
+  config <- get_config()
+  svc <- .s3$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3$operations$rename_object <- s3_rename_object
 
 #' This operation is not supported for directory buckets
 #'
@@ -7131,6 +7520,85 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
   return(response)
 }
 .s3$operations$select_object_content <- s3_select_object_content
+
+#' Enables or disables a live inventory table for an S3 Metadata
+#' configuration on a general purpose bucket
+#'
+#' @description
+#' Enables or disables a live inventory table for an S3 Metadata configuration on a general purpose bucket. For more information, see [Accelerating data discovery with S3 Metadata](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-overview.html) in the *Amazon S3 User Guide*.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3_update_bucket_metadata_inventory_table_configuration/](https://www.paws-r-sdk.com/docs/s3_update_bucket_metadata_inventory_table_configuration/) for full documentation.
+#'
+#' @param Bucket &#91;required&#93; The general purpose bucket that corresponds to the metadata
+#' configuration that you want to enable or disable an inventory table for.
+#' @param ContentMD5 The `Content-MD5` header for the inventory table configuration.
+#' @param ChecksumAlgorithm The checksum algorithm to use with your inventory table configuration.
+#' @param InventoryTableConfiguration &#91;required&#93; The contents of your inventory table configuration.
+#' @param ExpectedBucketOwner The expected owner of the general purpose bucket that corresponds to the
+#' metadata table configuration that you want to enable or disable an
+#' inventory table for.
+#'
+#' @keywords internal
+#'
+#' @rdname s3_update_bucket_metadata_inventory_table_configuration
+s3_update_bucket_metadata_inventory_table_configuration <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = NULL, InventoryTableConfiguration, ExpectedBucketOwner = NULL) {
+  op <- new_operation(
+    name = "UpdateBucketMetadataInventoryTableConfiguration",
+    http_method = "PUT",
+    http_path = "/{Bucket}?metadataInventoryTable",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3$update_bucket_metadata_inventory_table_configuration_input(Bucket = Bucket, ContentMD5 = ContentMD5, ChecksumAlgorithm = ChecksumAlgorithm, InventoryTableConfiguration = InventoryTableConfiguration, ExpectedBucketOwner = ExpectedBucketOwner)
+  output <- .s3$update_bucket_metadata_inventory_table_configuration_output()
+  config <- get_config()
+  svc <- .s3$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3$operations$update_bucket_metadata_inventory_table_configuration <- s3_update_bucket_metadata_inventory_table_configuration
+
+#' Enables or disables journal table record expiration for an S3 Metadata
+#' configuration on a general purpose bucket
+#'
+#' @description
+#' Enables or disables journal table record expiration for an S3 Metadata configuration on a general purpose bucket. For more information, see [Accelerating data discovery with S3 Metadata](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-overview.html) in the *Amazon S3 User Guide*.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3_update_bucket_metadata_journal_table_configuration/](https://www.paws-r-sdk.com/docs/s3_update_bucket_metadata_journal_table_configuration/) for full documentation.
+#'
+#' @param Bucket &#91;required&#93; The general purpose bucket that corresponds to the metadata
+#' configuration that you want to enable or disable journal table record
+#' expiration for.
+#' @param ContentMD5 The `Content-MD5` header for the journal table configuration.
+#' @param ChecksumAlgorithm The checksum algorithm to use with your journal table configuration.
+#' @param JournalTableConfiguration &#91;required&#93; The contents of your journal table configuration.
+#' @param ExpectedBucketOwner The expected owner of the general purpose bucket that corresponds to the
+#' metadata table configuration that you want to enable or disable journal
+#' table record expiration for.
+#'
+#' @keywords internal
+#'
+#' @rdname s3_update_bucket_metadata_journal_table_configuration
+s3_update_bucket_metadata_journal_table_configuration <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = NULL, JournalTableConfiguration, ExpectedBucketOwner = NULL) {
+  op <- new_operation(
+    name = "UpdateBucketMetadataJournalTableConfiguration",
+    http_method = "PUT",
+    http_path = "/{Bucket}?metadataJournalTable",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3$update_bucket_metadata_journal_table_configuration_input(Bucket = Bucket, ContentMD5 = ContentMD5, ChecksumAlgorithm = ChecksumAlgorithm, JournalTableConfiguration = JournalTableConfiguration, ExpectedBucketOwner = ExpectedBucketOwner)
+  output <- .s3$update_bucket_metadata_journal_table_configuration_output()
+  config <- get_config()
+  svc <- .s3$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3$operations$update_bucket_metadata_journal_table_configuration <- s3_update_bucket_metadata_journal_table_configuration
 
 #' Uploads a part in a multipart upload
 #'
@@ -7662,7 +8130,10 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #' @param Restore Provides information about object restoration operation and expiration
 #' time of the restored object copy.
 #' @param ServerSideEncryption The server-side encryption algorithm used when storing requested object
-#' in Amazon S3 (for example, AES256, `aws:kms`).
+#' in Amazon S3 or Amazon FSx.
+#' 
+#' When accessing data stored in Amazon FSx file systems using S3 access
+#' points, the only valid server side encryption option is `aws:fsx`.
 #' @param SSECustomerAlgorithm Encryption algorithm used if server-side encryption with a
 #' customer-provided encryption key was specified for object stored in
 #' Amazon S3.

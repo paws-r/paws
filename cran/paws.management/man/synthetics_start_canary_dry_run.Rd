@@ -17,7 +17,9 @@ synthetics_start_canary_dry_run(
   VisualReference = NULL,
   ArtifactS3Location = NULL,
   ArtifactConfig = NULL,
-  ProvisionedResourceCleanup = NULL
+  ProvisionedResourceCleanup = NULL,
+  BrowserConfigs = NULL,
+  VisualReferences = NULL
 )
 }
 \arguments{
@@ -38,15 +40,17 @@ runtime versions and for more information about runtime versions, see
 already exist, and must include \code{lambda.amazonaws.com} as a principal in
 the trust policy. The role must also have the following permissions:}
 
-\item{SuccessRetentionPeriodInDays}{The number of days to retain data on the failed runs for this canary.
-The valid range is 1 to 455 days.
+\item{SuccessRetentionPeriodInDays}{The number of days to retain data about successful runs of this canary.
+If you omit this field, the default of 31 days is used. The valid range
+is 1 to 455 days.
 
 This setting affects the range of information returned by
 \code{\link[=synthetics_get_canary_runs]{get_canary_runs}}, as well as the range of
 information displayed in the Synthetics console.}
 
-\item{FailureRetentionPeriodInDays}{The number of days to retain data on the failed runs for this canary.
-The valid range is 1 to 455 days.
+\item{FailureRetentionPeriodInDays}{The number of days to retain data about failed runs of this canary. If
+you omit this field, the default of 31 days is used. The valid range is
+1 to 455 days.
 
 This setting affects the range of information returned by
 \code{\link[=synthetics_get_canary_runs]{get_canary_runs}}, as well as the range of
@@ -62,14 +66,33 @@ and HAR files. The name of the Amazon S3 bucket can't include a period
 \item{ArtifactConfig}{}
 
 \item{ProvisionedResourceCleanup}{Specifies whether to also delete the Lambda functions and layers used by
-this canary when the canary is deleted. If the value of this parameter
-is \code{AUTOMATIC}, it means that the Lambda functions and layers will be
-deleted when the canary is deleted.
+this canary when the canary is deleted. If you omit this parameter, the
+default of \code{AUTOMATIC} is used, which means that the Lambda functions
+and layers will be deleted when the canary is deleted.
 
 If the value of this parameter is \code{OFF}, then the value of the
 \code{DeleteLambda} parameter of the
 \code{\link[=synthetics_delete_canary]{delete_canary}} operation determines whether
 the Lambda functions and layers will be deleted.}
+
+\item{BrowserConfigs}{A structure that specifies the browser type to use for a canary run.
+CloudWatch Synthetics supports running canaries on both \code{CHROME} and
+\code{FIREFOX} browsers.
+
+If not specified, \code{browserConfigs} defaults to Chrome.}
+
+\item{VisualReferences}{A list of visual reference configurations for the canary, one for each
+browser type that the canary is configured to run on. Visual references
+are used for visual monitoring comparisons.
+
+\code{syn-nodejs-puppeteer-11.0} and above, and \code{syn-nodejs-playwright-3.0}
+and above, only supports \code{visualReferences}. \code{visualReference} field is
+not supported.
+
+Versions older than \code{syn-nodejs-puppeteer-11.0} supports both
+\code{visualReference} and \code{visualReferences} for backward compatibility. It
+is recommended to use \code{visualReferences} for consistency and future
+compatibility.}
 }
 \description{
 Use this operation to start a dry run for a canary that has already been created

@@ -5,18 +5,18 @@
 \title{Deletes an action group in an agent}
 \usage{
 bedrockagent_delete_agent_action_group(
-  actionGroupId,
   agentId,
   agentVersion,
+  actionGroupId,
   skipResourceInUseCheck = NULL
 )
 }
 \arguments{
-\item{actionGroupId}{[required] The unique identifier of the action group to delete.}
-
 \item{agentId}{[required] The unique identifier of the agent that the action group belongs to.}
 
 \item{agentVersion}{[required] The version of the agent that the action group belongs to.}
+
+\item{actionGroupId}{[required] The unique identifier of the action group to delete.}
 
 \item{skipResourceInUseCheck}{By default, this value is \code{false} and deletion is stopped if the
 resource is in use. If you set it to \code{true}, the resource will be

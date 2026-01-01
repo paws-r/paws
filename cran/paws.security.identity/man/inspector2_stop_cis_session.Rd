@@ -4,14 +4,14 @@
 \alias{inspector2_stop_cis_session}
 \title{Stops a CIS session}
 \usage{
-inspector2_stop_cis_session(message, scanJobId, sessionToken)
+inspector2_stop_cis_session(scanJobId, sessionToken, message)
 }
 \arguments{
-\item{message}{[required] The stop CIS session message.}
-
 \item{scanJobId}{[required] A unique identifier for the scan job.}
 
 \item{sessionToken}{[required] The unique token that identifies the CIS session.}
+
+\item{message}{[required] The stop CIS session message.}
 }
 \description{
 Stops a CIS session. This API is used by the Amazon Inspector SSM plugin to communicate with the Amazon Inspector service. The Amazon Inspector SSM plugin calls this API to stop a CIS scan session for the scan ID supplied by the service.

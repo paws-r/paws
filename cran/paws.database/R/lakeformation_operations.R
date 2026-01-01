@@ -349,11 +349,13 @@ lakeformation_create_lf_tag_expression <- function(Name, Description = NULL, Cat
 #' 
 #' If the `ShareRecipients` value is null or the list is empty, no resource
 #' share is created.
+#' @param ServiceIntegrations A list of service integrations for enabling trusted identity propagation
+#' with external services such as Redshift.
 #'
 #' @keywords internal
 #'
 #' @rdname lakeformation_create_lake_format_identi_center_config
-lakeformation_create_lake_formation_identity_center_configuration <- function(CatalogId = NULL, InstanceArn = NULL, ExternalFiltering = NULL, ShareRecipients = NULL) {
+lakeformation_create_lake_formation_identity_center_configuration <- function(CatalogId = NULL, InstanceArn = NULL, ExternalFiltering = NULL, ShareRecipients = NULL, ServiceIntegrations = NULL) {
   op <- new_operation(
     name = "CreateLakeFormationIdentityCenterConfiguration",
     http_method = "POST",
@@ -362,7 +364,7 @@ lakeformation_create_lake_formation_identity_center_configuration <- function(Ca
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lakeformation$create_lake_formation_identity_center_configuration_input(CatalogId = CatalogId, InstanceArn = InstanceArn, ExternalFiltering = ExternalFiltering, ShareRecipients = ShareRecipients)
+  input <- .lakeformation$create_lake_formation_identity_center_configuration_input(CatalogId = CatalogId, InstanceArn = InstanceArn, ExternalFiltering = ExternalFiltering, ShareRecipients = ShareRecipients, ServiceIntegrations = ServiceIntegrations)
   output <- .lakeformation$create_lake_formation_identity_center_configuration_output()
   config <- get_config()
   svc <- .lakeformation$service(config, op)
@@ -440,10 +442,10 @@ lakeformation_delete_data_cells_filter <- function(TableCatalogId = NULL, Databa
 }
 .lakeformation$operations$delete_data_cells_filter <- lakeformation_delete_data_cells_filter
 
-#' Deletes the specified LF-tag given a key name
+#' Deletes an LF-tag by its key name
 #'
 #' @description
-#' Deletes the specified LF-tag given a key name. If the input parameter tag key was not found, then the operation will throw an exception. When you delete an LF-tag, the `LFTagPolicy` attached to the LF-tag becomes invalid. If the deleted LF-tag was still assigned to any resource, the tag policy attach to the deleted LF-tag will no longer be applied to the resource.
+#' Deletes an LF-tag by its key name. The operation fails if the specified tag key doesn't exist. When you delete an LF-Tag:
 #'
 #' See [https://www.paws-r-sdk.com/docs/lakeformation_delete_lf_tag/](https://www.paws-r-sdk.com/docs/lakeformation_delete_lf_tag/) for full documentation.
 #'
@@ -1518,7 +1520,12 @@ lakeformation_list_lake_formation_opt_ins <- function(Principal = NULL, Resource
 #' @param NextToken A continuation token, if this is not the first call to retrieve this
 #' list.
 #' @param MaxResults The maximum number of results to return.
-#' @param IncludeRelated Indicates that related permissions should be included in the results.
+#' @param IncludeRelated Indicates that related permissions should be included in the results
+#' when listing permissions on a table resource.
+#' 
+#' Set the field to `TRUE` to show the cell filters on a table resource.
+#' Default is `FALSE`. The Principal parameter must not be specified when
+#' requesting cell filter information.
 #'
 #' @keywords internal
 #'
@@ -2086,6 +2093,8 @@ lakeformation_update_lf_tag_expression <- function(Name, Description = NULL, Cat
 #' 
 #' If the `ShareRecipients` value is an empty list, then the existing share
 #' recipients list will be cleared, and the resource share will be deleted.
+#' @param ServiceIntegrations A list of service integrations for enabling trusted identity propagation
+#' with external services such as Redshift.
 #' @param ApplicationStatus Allows to enable or disable the IAM Identity Center connection.
 #' @param ExternalFiltering A list of the account IDs of Amazon Web Services accounts of third-party
 #' applications that are allowed to access data managed by Lake Formation.
@@ -2093,7 +2102,7 @@ lakeformation_update_lf_tag_expression <- function(Name, Description = NULL, Cat
 #' @keywords internal
 #'
 #' @rdname lakeformation_update_lake_format_identi_center_config
-lakeformation_update_lake_formation_identity_center_configuration <- function(CatalogId = NULL, ShareRecipients = NULL, ApplicationStatus = NULL, ExternalFiltering = NULL) {
+lakeformation_update_lake_formation_identity_center_configuration <- function(CatalogId = NULL, ShareRecipients = NULL, ServiceIntegrations = NULL, ApplicationStatus = NULL, ExternalFiltering = NULL) {
   op <- new_operation(
     name = "UpdateLakeFormationIdentityCenterConfiguration",
     http_method = "POST",
@@ -2102,7 +2111,7 @@ lakeformation_update_lake_formation_identity_center_configuration <- function(Ca
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lakeformation$update_lake_formation_identity_center_configuration_input(CatalogId = CatalogId, ShareRecipients = ShareRecipients, ApplicationStatus = ApplicationStatus, ExternalFiltering = ExternalFiltering)
+  input <- .lakeformation$update_lake_formation_identity_center_configuration_input(CatalogId = CatalogId, ShareRecipients = ShareRecipients, ServiceIntegrations = ServiceIntegrations, ApplicationStatus = ApplicationStatus, ExternalFiltering = ExternalFiltering)
   output <- .lakeformation$update_lake_formation_identity_center_configuration_output()
   config <- get_config()
   svc <- .lakeformation$service(config, op)

@@ -5,6 +5,7 @@
 \title{Describes the Spot price history}
 \usage{
 ec2_describe_spot_price_history(
+  AvailabilityZoneId = NULL,
   DryRun = NULL,
   StartTime = NULL,
   EndTime = NULL,
@@ -17,6 +18,11 @@ ec2_describe_spot_price_history(
 )
 }
 \arguments{
+\item{AvailabilityZoneId}{Filters the results by the specified ID of the Availability Zone.
+
+Either \code{AvailabilityZone} or \code{AvailabilityZoneId} can be specified, but
+not both}
+
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
@@ -38,6 +44,8 @@ the price history data, in UTC format (for example,
 \itemize{
 \item \code{availability-zone} - The Availability Zone for which prices should
 be returned.
+\item \code{availability-zone-id} - The ID of the Availability Zone for which
+prices should be returned.
 \item \code{instance-type} - The type of instance (for example, \code{m3.medium}).
 \item \code{product-description} - The product description for the Spot price
 (\code{Linux/UNIX} | \verb{Red Hat Enterprise Linux} | \verb{SUSE Linux} |
@@ -52,7 +60,10 @@ use wildcards (\code{*} and \verb{?}). Greater than or less than comparison is
 not supported.
 }}
 
-\item{AvailabilityZone}{Filters the results by the specified Availability Zone.}
+\item{AvailabilityZone}{Filters the results by the specified Availability Zone.
+
+Either \code{AvailabilityZone} or \code{AvailabilityZoneId} can be specified, but
+not both}
 
 \item{MaxResults}{The maximum number of items to return for this request. To get the next
 page of items, make another request with the token returned in the

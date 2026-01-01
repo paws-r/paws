@@ -2,8 +2,8 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_list_discovered_resources}
 \alias{configservice_list_discovered_resources}
-\title{Accepts a resource type and returns a list of resource identifiers for
-the resources of that type}
+\title{Returns a list of resource resource identifiers for the specified
+resource types for the resources of that type}
 \usage{
 configservice_list_discovered_resources(
   resourceType,
@@ -37,7 +37,7 @@ default, deleted resources are not included.}
 the next page of results in a paginated response.}
 }
 \description{
-Accepts a resource type and returns a list of resource identifiers for the resources of that type. A resource identifier includes the resource type, ID, and (if available) the custom resource name. The results consist of resources that Config has discovered, including those that Config is not currently recording. You can narrow the results to include only resources that have specific resource IDs or a resource name.
+Returns a list of resource resource identifiers for the specified resource types for the resources of that type. A \emph{resource identifier} includes the resource type, ID, and (if available) the custom resource name.
 
 See \url{https://www.paws-r-sdk.com/docs/configservice_list_discovered_resources/} for full documentation.
 }

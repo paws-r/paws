@@ -2,8 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_create_run_group}
 \alias{omics_create_run_group}
-\title{You can optionally create a run group to limit the compute resources for
-the runs that you add to the group}
+\title{Creates a run group to limit the compute resources for the runs that are
+added to the group}
 \usage{
 omics_create_run_group(
   name = NULL,
@@ -35,7 +35,7 @@ for each request.}
 runs in the run group.}
 }
 \description{
-You can optionally create a run group to limit the compute resources for the runs that you add to the group.
+Creates a run group to limit the compute resources for the runs that are added to the group. Returns an ARN, ID, and tags for the run group.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_create_run_group/} for full documentation.
 }

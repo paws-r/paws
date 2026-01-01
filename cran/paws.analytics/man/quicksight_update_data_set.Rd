@@ -18,7 +18,9 @@ quicksight_update_data_set(
   ColumnLevelPermissionRules = NULL,
   DataSetUsageConfiguration = NULL,
   DatasetParameters = NULL,
-  PerformanceConfiguration = NULL
+  PerformanceConfiguration = NULL,
+  DataPrepConfiguration = NULL,
+  SemanticModelConfiguration = NULL
 )
 }
 \arguments{
@@ -33,20 +35,23 @@ Amazon Web Services Region for each Amazon Web Services account.}
 sources.}
 
 \item{LogicalTableMap}{Configures the combination and transformation of the data from the
-physical tables.}
+physical tables. This parameter is used with the legacy data preparation
+experience.}
 
 \item{ImportMode}{[required] Indicates whether you want to import the data into SPICE.}
 
-\item{ColumnGroups}{Groupings of columns that work together in certain Amazon QuickSight
+\item{ColumnGroups}{Groupings of columns that work together in certain Amazon Quick Sight
 features. Currently, only geospatial hierarchy is supported.}
 
 \item{FieldFolders}{The folder that contains fields and nested subfolders for your dataset.}
 
-\item{RowLevelPermissionDataSet}{The row-level security configuration for the data you want to create.}
+\item{RowLevelPermissionDataSet}{The row-level security configuration for the data you want to create.
+This parameter is used with the legacy data preparation experience.}
 
 \item{RowLevelPermissionTagConfiguration}{The configuration of tags on a dataset to set row-level security.
 Row-level security tags are currently supported for anonymous embedding
-only.}
+only. This parameter is used with the legacy data preparation
+experience.}
 
 \item{ColumnLevelPermissionRules}{A set of one or more definitions of a \code{ColumnLevelPermissionRule}.}
 
@@ -56,6 +61,16 @@ only.}
 
 \item{PerformanceConfiguration}{The configuration for the performance optimization of the dataset that
 contains a \code{UniqueKey} configuration.}
+
+\item{DataPrepConfiguration}{The data preparation configuration for the dataset. This configuration
+defines the source tables, transformation steps, and destination tables
+used to prepare the data. Required when using the new data preparation
+experience.}
+
+\item{SemanticModelConfiguration}{The semantic model configuration for the dataset. This configuration
+defines how the prepared data is structured for an analysis, including
+table mappings and row-level security configurations. Required when
+using the new data preparation experience.}
 }
 \description{
 Updates a dataset. This operation doesn't support datasets that include uploaded files as a source. Partial updates are not supported by this operation.

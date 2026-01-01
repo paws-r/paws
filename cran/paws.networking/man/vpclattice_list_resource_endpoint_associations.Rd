@@ -5,19 +5,15 @@
 \title{Lists the associations for the specified VPC endpoint}
 \usage{
 vpclattice_list_resource_endpoint_associations(
-  maxResults = NULL,
-  nextToken = NULL,
   resourceConfigurationIdentifier,
   resourceEndpointAssociationIdentifier = NULL,
   vpcEndpointId = NULL,
-  vpcEndpointOwner = NULL
+  vpcEndpointOwner = NULL,
+  maxResults = NULL,
+  nextToken = NULL
 )
 }
 \arguments{
-\item{maxResults}{The maximum page size.}
-
-\item{nextToken}{A pagination token for the next page of results.}
-
 \item{resourceConfigurationIdentifier}{[required] The ID for the resource configuration associated with the VPC endpoint.}
 
 \item{resourceEndpointAssociationIdentifier}{The ID of the association.}
@@ -25,6 +21,10 @@ vpclattice_list_resource_endpoint_associations(
 \item{vpcEndpointId}{The ID of the VPC endpoint in the association.}
 
 \item{vpcEndpointOwner}{The owner of the VPC endpoint in the association.}
+
+\item{maxResults}{The maximum page size.}
+
+\item{nextToken}{A pagination token for the next page of results.}
 }
 \description{
 Lists the associations for the specified VPC endpoint.

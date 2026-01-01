@@ -48,7 +48,7 @@ Valid Values: ]
 
 \strong{Start a Amazon Q Developer operational investigation}
 
-\code{arn:aws:aiops:region:account-id:investigation-group:ingestigation-group-id }}
+\code{arn:aws:aiops:region:account-id:investigation-group:investigation-group-id }}
 
 \item{AlarmDescription}{The description for the composite alarm.}
 

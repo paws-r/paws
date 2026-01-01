@@ -87,6 +87,18 @@ NULL
   return(populate(args, shape))
 }
 
+.sts$get_delegated_access_token_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TradeInToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sts$get_delegated_access_token_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Credentials = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string")), SecretAccessKey = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), SessionToken = structure(logical(0), tags = list(type = "string")), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), PackedPolicySize = structure(logical(0), tags = list(type = "integer")), AssumedPrincipal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "GetDelegatedAccessTokenResult"))
+  return(populate(args, shape))
+}
+
 .sts$get_federation_token_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string")), PolicyArns = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DurationSeconds = structure(logical(0), tags = list(type = "integer")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -108,5 +120,17 @@ NULL
 .sts$get_session_token_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Credentials = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string")), SecretAccessKey = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), SessionToken = structure(logical(0), tags = list(type = "string")), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure", resultWrapper = "GetSessionTokenResult"))
+  return(populate(args, shape))
+}
+
+.sts$get_web_identity_token_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Audience = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DurationSeconds = structure(logical(0), tags = list(type = "integer")), SigningAlgorithm = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sts$get_web_identity_token_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WebIdentityToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure", resultWrapper = "GetWebIdentityTokenResult"))
   return(populate(args, shape))
 }

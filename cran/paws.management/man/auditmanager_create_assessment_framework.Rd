@@ -20,7 +20,11 @@ auditmanager_create_assessment_framework(
 \item{complianceType}{The compliance type that the new custom framework supports, such as CIS
 or HIPAA.}
 
-\item{controlSets}{[required] The control sets that are associated with the framework.}
+\item{controlSets}{[required] The control sets that are associated with the framework.
+
+The \code{Controls} object returns a partial response when called through
+Framework APIs. For a complete \code{Controls} object, use
+\code{\link[=auditmanager_get_control]{get_control}}.}
 
 \item{tags}{The tags that are associated with the framework.}
 }

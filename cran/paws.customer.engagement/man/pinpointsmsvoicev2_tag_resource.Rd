@@ -13,7 +13,7 @@ pinpointsmsvoicev2_tag_resource(ResourceArn, Tags)
 resource.}
 }
 \description{
-Adds or overwrites only the specified tags for the specified resource. When you specify an existing tag key, the value is overwritten with the new value. Each tag consists of a key and an optional value. Tag keys must be unique per resource. For more information about tags, see \href{https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-tags.html}{Tags} in the \emph{AWS End User Messaging SMS User Guide}.
+Adds or overwrites only the specified tags for the specified resource. When you specify an existing tag key, the value is overwritten with the new value. Each tag consists of a key and an optional value. Tag keys must be unique per resource. For more information about tags, see \href{https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-tags.html}{Tags} in the \emph{End User Messaging SMS User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_tag_resource/} for full documentation.
 }

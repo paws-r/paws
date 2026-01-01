@@ -4,12 +4,12 @@
 \alias{workspacesweb_associate_browser_settings}
 \title{Associates a browser settings resource with a web portal}
 \usage{
-workspacesweb_associate_browser_settings(browserSettingsArn, portalArn)
+workspacesweb_associate_browser_settings(portalArn, browserSettingsArn)
 }
 \arguments{
-\item{browserSettingsArn}{[required] The ARN of the browser settings.}
-
 \item{portalArn}{[required] The ARN of the web portal.}
+
+\item{browserSettingsArn}{[required] The ARN of the browser settings.}
 }
 \description{
 Associates a browser settings resource with a web portal.

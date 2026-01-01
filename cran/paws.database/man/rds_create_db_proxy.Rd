@@ -7,14 +7,17 @@
 rds_create_db_proxy(
   DBProxyName,
   EngineFamily,
-  Auth,
+  DefaultAuthScheme = NULL,
+  Auth = NULL,
   RoleArn,
   VpcSubnetIds,
   VpcSecurityGroupIds = NULL,
   RequireTLS = NULL,
   IdleClientTimeout = NULL,
   DebugLogging = NULL,
-  Tags = NULL
+  Tags = NULL,
+  EndpointNetworkType = NULL,
+  TargetConnectionNetworkType = NULL
 )
 }
 \arguments{
@@ -31,7 +34,14 @@ RDS for MariaDB, and RDS for MySQL databases, specify \code{MYSQL}. For
 Aurora PostgreSQL and RDS for PostgreSQL databases, specify
 \code{POSTGRESQL}. For RDS for Microsoft SQL Server, specify \code{SQLSERVER}.}
 
-\item{Auth}{[required] The authorization mechanism that the proxy uses.}
+\item{DefaultAuthScheme}{The default authentication scheme that the proxy uses for client
+connections to the proxy and connections from the proxy to the
+underlying database. Valid values are \code{NONE} and \code{IAM_AUTH}. When set to
+\code{IAM_AUTH}, the proxy uses end-to-end IAM authentication to connect to
+the database. If you don't specify \code{DefaultAuthScheme} or specify this
+parameter as \code{NONE}, you must specify the \code{Auth} option.}
+
+\item{Auth}{The authorization mechanism that the proxy uses.}
 
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that the proxy uses to
 access secrets in Amazon Web Services Secrets Manager.}
@@ -48,16 +58,55 @@ encrypted TLS connections to the proxy.}
 before the proxy disconnects it. You can set this value higher or lower
 than the connection timeout limit for the associated database.}
 
-\item{DebugLogging}{Specifies whether the proxy includes detailed information about SQL
-statements in its logs. This information helps you to debug issues
-involving SQL behavior or the performance and scalability of the proxy
-connections. The debug information includes the text of SQL statements
-that you submit through the proxy. Thus, only enable this setting when
-needed for debugging, and only when you have security measures in place
-to safeguard any sensitive information that appears in the logs.}
+\item{DebugLogging}{Specifies whether the proxy logs detailed connection and query
+information. When you enable \code{DebugLogging}, the proxy captures
+connection details and connection pool behavior from your queries. Debug
+logging increases CloudWatch costs and can impact proxy performance.
+Enable this option only when you need to troubleshoot connection or
+performance issues.}
 
 \item{Tags}{An optional set of key-value pairs to associate arbitrary data of your
 choosing with the proxy.}
+
+\item{EndpointNetworkType}{The network type of the DB proxy endpoint. The network type determines
+the IP version that the proxy endpoint supports.
+
+Valid values:
+\itemize{
+\item \code{IPV4} - The proxy endpoint supports IPv4 only.
+\item \code{IPV6} - The proxy endpoint supports IPv6 only.
+\item \code{DUAL} - The proxy endpoint supports both IPv4 and IPv6.
+}
+
+Default: \code{IPV4}
+
+Constraints:
+\itemize{
+\item If you specify \code{IPV6} or \code{DUAL}, the VPC and all subnets must have
+an IPv6 CIDR block.
+\item If you specify \code{IPV6} or \code{DUAL}, the VPC tenancy cannot be
+\code{dedicated}.
+}}
+
+\item{TargetConnectionNetworkType}{The network type that the proxy uses to connect to the target database.
+The network type determines the IP version that the proxy uses for
+connections to the database.
+
+Valid values:
+\itemize{
+\item \code{IPV4} - The proxy connects to the database using IPv4 only.
+\item \code{IPV6} - The proxy connects to the database using IPv6 only.
+}
+
+Default: \code{IPV4}
+
+Constraints:
+\itemize{
+\item If you specify \code{IPV6}, the database must support dual-stack mode.
+RDS doesn't support IPv6-only databases.
+\item All targets registered with the proxy must be compatible with the
+specified network type.
+}}
 }
 \description{
 Creates a new DB proxy.

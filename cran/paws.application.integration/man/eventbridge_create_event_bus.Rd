@@ -10,6 +10,7 @@ eventbridge_create_event_bus(
   Description = NULL,
   KmsKeyIdentifier = NULL,
   DeadLetterConfig = NULL,
+  LogConfig = NULL,
   Tags = NULL
 )
 }
@@ -62,6 +63,11 @@ For more information, see \href{https://docs.aws.amazon.com/eventbridge/latest/u
 in the \emph{Amazon EventBridge User Guide}.}
 
 \item{DeadLetterConfig}{}
+
+\item{LogConfig}{The logging configuration settings for the event bus.
+
+For more information, see Configuring logs for event buses in the
+\emph{EventBridge User Guide}.}
 
 \item{Tags}{Tags to associate with the event bus.}
 }

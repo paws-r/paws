@@ -14,7 +14,8 @@ imagebuilder_create_workflow(
   kmsKeyId = NULL,
   tags = NULL,
   clientToken,
-  type
+  type,
+  dryRun = NULL
 )
 }
 \arguments{
@@ -54,7 +55,10 @@ component content up to your service quota.
 Alternatively, you can specify the YAML document inline, using the
 component \code{data} property. You cannot specify both properties.}
 
-\item{kmsKeyId}{The ID of the KMS key that is used to encrypt this workflow resource.}
+\item{kmsKeyId}{The Amazon Resource Name (ARN) that uniquely identifies the KMS key used
+to encrypt this workflow resource. This can be either the Key ARN or the
+Alias ARN. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN}{Key identifiers (KeyId)}
+in the \emph{Key Management Service Developer Guide}.}
 
 \item{tags}{Tags that apply to the workflow resource.}
 
@@ -64,6 +68,11 @@ in the \emph{Amazon EC2 API Reference}.}
 
 \item{type}{[required] The phase in the image build process for which the workflow resource is
 responsible.}
+
+\item{dryRun}{Validates the required permissions for the operation and the request
+parameters, without actually making the request, and provides an error
+response. Upon a successful request, the error response is
+\code{DryRunOperationException}.}
 }
 \description{
 Create a new workflow or a new version of an existing workflow.

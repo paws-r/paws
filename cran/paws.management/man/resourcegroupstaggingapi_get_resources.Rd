@@ -27,12 +27,16 @@ included, the specified values. Each \code{TagFilter} must contain a key with
 values optional. A request can include up to 50 keys, and each key can
 include up to 20 values.
 
+You can't specify both this parameter and the \code{ResourceArnList}
+parameter in the same request. If you do, you get an \verb{Invalid Parameter}
+exception.
+
 Note the following when deciding how to use TagFilters:
 \itemize{
 \item If you \emph{don't} specify a \code{TagFilter}, the response includes all
 resources that are currently tagged or ever had a tag. Resources
-that currently don't have tags are shown with an empty tag set, like
-this: \verb{"Tags": []}.
+that were previously tagged, \emph{but do not currently} have tags, are
+shown with an empty tag set, like this: \verb{"Tags": []}.
 \item If you specify more than one filter in a single request, the
 response returns only those resources that satisfy all filters.
 \item If you specify a filter that contains more than one value for a key,
@@ -41,8 +45,8 @@ values for that key.
 \item If you don't specify a value for a key, the response returns all
 resources that are tagged with that key, with any or no value.
 
-For example, for the following filters: \verb{filter1= \{keyA,\{value1\}\}},
-\verb{filter2=\{keyB,\{value2,value3,value4\}\}}, \code{filter3= {keyC}}:
+For example, for the following filters: \verb{filter1= \{key1,\{value1\}\}},
+\verb{filter2=\{key2,\{value2,value3,value4\}\}}, \code{filter3= {key3}}:
 \itemize{
 \item \code{GetResources({filter1})} returns resources tagged with
 \code{key1=value1}
@@ -87,13 +91,24 @@ You can set \code{TagsPerPage} to a minimum of 100 items up to a maximum of
 
 \item{ResourceTypeFilters}{Specifies the resource types that you want included in the response. The
 format of each resource type is \verb{service[:resourceType]}. For example,
-specifying a resource type of \code{ec2} returns all Amazon EC2 resources
-(which includes EC2 instances). Specifying a resource type of
-\code{ec2:instance} returns only EC2 instances.
+specifying a service of \code{ec2} returns all Amazon EC2 resources (which
+includes EC2 instances). Specifying a resource type of \code{ec2:instance}
+returns only EC2 instances.
+
+You can't specify both this parameter and the \code{ResourceArnList}
+parameter in the same request. If you do, you get an \verb{Invalid Parameter}
+exception.
 
 The string for each service name and resource type is the same as that
-embedded in a resource's Amazon Resource Name (ARN). For the list of
-services whose resources you can use in this parameter, see \href{https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/supported-services.html}{Services that support the Resource Groups Tagging API}.
+embedded in a resource's Amazon Resource Name (ARN).
+
+For the list of services whose resources you can tag using the Resource
+Groups Tagging API, see \href{https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/supported-services.html}{Services that support the Resource Groups Tagging API}.
+If an Amazon Web Services service isn't listed on that page, you might
+still be able to tag that service's resources by using that service's
+native tagging operations instead of using Resource Groups Tagging API
+operations. All tagged resources, whether the tagging used the Resource
+Groups Tagging API or not, are returned by the \verb{Get*} operation.
 
 You can specify multiple resource types by using an array. The array can
 include up to 100 items. Note that the length constraint requirement
@@ -115,10 +130,18 @@ You can use this parameter only if the \code{IncludeComplianceDetails}
 parameter is also set to \code{true}.}
 
 \item{ResourceARNList}{Specifies a list of ARNs of resources for which you want to retrieve tag
-data. You can't specify both this parameter and any of the pagination
-parameters (\code{ResourcesPerPage}, \code{TagsPerPage}, \code{PaginationToken}) in the
-same request. If you specify both, you get an \verb{Invalid Parameter}
+data.
+
+You can't specify both this parameter and the \code{ResourceTypeFilters}
+parameter in the same request. If you do, you get an \verb{Invalid Parameter}
 exception.
+
+You can't specify both this parameter and the \code{TagFilters} parameter in
+the same request. If you do, you get an \verb{Invalid Parameter} exception.
+
+You can't specify both this parameter and any of the pagination
+parameters (\code{ResourcesPerPage}, \code{TagsPerPage}, \code{PaginationToken}) in the
+same request. If you do, you get an \verb{Invalid Parameter} exception.
 
 If a resource specified by this parameter doesn't exist, it doesn't
 generate an error; it simply isn't included in the response.

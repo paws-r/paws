@@ -8,9 +8,9 @@ the filter}
 inspector2_update_filter(
   action = NULL,
   description = NULL,
-  filterArn,
   filterCriteria = NULL,
   name = NULL,
+  filterArn,
   reason = NULL
 )
 }
@@ -20,11 +20,11 @@ the filter.}
 
 \item{description}{A description of the filter.}
 
-\item{filterArn}{[required] The Amazon Resource Number (ARN) of the filter to update.}
-
 \item{filterCriteria}{Defines the criteria to be update in the filter.}
 
 \item{name}{The name of the filter.}
+
+\item{filterArn}{[required] The Amazon Resource Number (ARN) of the filter to update.}
 
 \item{reason}{The reason the filter was updated.}
 }

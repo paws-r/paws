@@ -12,6 +12,7 @@ pinpointsmsvoicev2_request_phone_number(
   OptOutListName = NULL,
   PoolId = NULL,
   RegistrationId = NULL,
+  InternationalSendingEnabled = NULL,
   DeletionProtectionEnabled = NULL,
   Tags = NULL,
   ClientToken = NULL
@@ -36,22 +37,25 @@ When you request a \code{SIMULATOR} phone number, you must set
 \item{OptOutListName}{The name of the OptOutList to associate with the phone number. You can
 use the OptOutListName or OptOutListArn.
 
-If you are using a shared AWS End User Messaging SMS and Voice resource
-then you must use the full Amazon Resource Name(ARN).}
+If you are using a shared End User Messaging SMS resource then you must
+use the full Amazon Resource Name(ARN).}
 
 \item{PoolId}{The pool to associated with the phone number. You can use the PoolId or
 PoolArn.
 
-If you are using a shared AWS End User Messaging SMS and Voice resource
-then you must use the full Amazon Resource Name(ARN).}
+If you are using a shared End User Messaging SMS resource then you must
+use the full Amazon Resource Name(ARN).}
 
 \item{RegistrationId}{Use this field to attach your phone number for an external registration
 process.}
 
+\item{InternationalSendingEnabled}{By default this is set to false. When set to true the international
+sending of phone number is Enabled.}
+
 \item{DeletionProtectionEnabled}{By default this is set to false. When set to true the phone number can't
 be deleted.}
 
-\item{Tags}{An array of tags (key and value pairs) associate with the requested
+\item{Tags}{An array of tags (key and value pairs) to associate with the requested
 phone number.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
@@ -59,7 +63,7 @@ idempotency of the request. If you don't specify a client token, a
 randomly generated token is used for the request to ensure idempotency.}
 }
 \description{
-Request an origination phone number for use in your account. For more information on phone number request see \href{https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-request.html}{Request a phone number} in the \emph{AWS End User Messaging SMS User Guide}.
+Request an origination phone number for use in your account. For more information on phone number request see \href{https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-request.html}{Request a phone number} in the \emph{End User Messaging SMS User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_request_phone_number/} for full documentation.
 }

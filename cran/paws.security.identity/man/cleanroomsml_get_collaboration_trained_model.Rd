@@ -6,7 +6,8 @@
 \usage{
 cleanroomsml_get_collaboration_trained_model(
   trainedModelArn,
-  collaborationIdentifier
+  collaborationIdentifier,
+  versionIdentifier = NULL
 )
 }
 \arguments{
@@ -15,6 +16,10 @@ return information about.}
 
 \item{collaborationIdentifier}{[required] The collaboration ID that contains the trained model that you want to
 return information about.}
+
+\item{versionIdentifier}{The version identifier of the trained model to retrieve. If not
+specified, the operation returns information about the latest version of
+the trained model.}
 }
 \description{
 Returns information about a trained model in a collaboration.

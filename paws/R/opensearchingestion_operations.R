@@ -13,7 +13,7 @@ NULL
 #' @usage
 #' opensearchingestion_create_pipeline(PipelineName, MinUnits, MaxUnits,
 #'   PipelineConfigurationBody, LogPublishingOptions, VpcOptions,
-#'   BufferOptions, EncryptionAtRestOptions, Tags)
+#'   BufferOptions, EncryptionAtRestOptions, Tags, PipelineRoleArn)
 #'
 #' @param PipelineName &#91;required&#93; The name of the OpenSearch Ingestion pipeline to create. Pipeline names
 #' are unique across the pipelines owned by an account within an Amazon Web
@@ -32,6 +32,8 @@ NULL
 #' @param EncryptionAtRestOptions Key-value pairs to configure encryption for data that is written to a
 #' persistent buffer.
 #' @param Tags List of tags to add to the pipeline upon creation.
+#' @param PipelineRoleArn The Amazon Resource Name (ARN) of the IAM role that grants the pipeline
+#' permission to access Amazon Web Services resources.
 #'
 #' @return
 #' A list with the following syntax:
@@ -105,7 +107,8 @@ NULL
 #'         Key = "string",
 #'         Value = "string"
 #'       )
-#'     )
+#'     ),
+#'     PipelineRoleArn = "string"
 #'   )
 #' )
 #' ```
@@ -147,7 +150,8 @@ NULL
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   PipelineRoleArn = "string"
 #' )
 #' ```
 #'
@@ -156,7 +160,7 @@ NULL
 #' @rdname opensearchingestion_create_pipeline
 #'
 #' @aliases opensearchingestion_create_pipeline
-opensearchingestion_create_pipeline <- function(PipelineName, MinUnits, MaxUnits, PipelineConfigurationBody, LogPublishingOptions = NULL, VpcOptions = NULL, BufferOptions = NULL, EncryptionAtRestOptions = NULL, Tags = NULL) {
+opensearchingestion_create_pipeline <- function(PipelineName, MinUnits, MaxUnits, PipelineConfigurationBody, LogPublishingOptions = NULL, VpcOptions = NULL, BufferOptions = NULL, EncryptionAtRestOptions = NULL, Tags = NULL, PipelineRoleArn = NULL) {
   op <- new_operation(
     name = "CreatePipeline",
     http_method = "POST",
@@ -165,7 +169,7 @@ opensearchingestion_create_pipeline <- function(PipelineName, MinUnits, MaxUnits
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchingestion$create_pipeline_input(PipelineName = PipelineName, MinUnits = MinUnits, MaxUnits = MaxUnits, PipelineConfigurationBody = PipelineConfigurationBody, LogPublishingOptions = LogPublishingOptions, VpcOptions = VpcOptions, BufferOptions = BufferOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, Tags = Tags)
+  input <- .opensearchingestion$create_pipeline_input(PipelineName = PipelineName, MinUnits = MinUnits, MaxUnits = MaxUnits, PipelineConfigurationBody = PipelineConfigurationBody, LogPublishingOptions = LogPublishingOptions, VpcOptions = VpcOptions, BufferOptions = BufferOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, Tags = Tags, PipelineRoleArn = PipelineRoleArn)
   output <- .opensearchingestion$create_pipeline_output()
   config <- get_config()
   svc <- .opensearchingestion$service(config, op)
@@ -174,6 +178,71 @@ opensearchingestion_create_pipeline <- function(PipelineName, MinUnits, MaxUnits
   return(response)
 }
 .opensearchingestion$operations$create_pipeline <- opensearchingestion_create_pipeline
+
+#' Creates a VPC endpoint for an OpenSearch Ingestion pipeline
+#'
+#' @description
+#' Creates a VPC endpoint for an OpenSearch Ingestion pipeline. Pipeline
+#' endpoints allow you to ingest data from your VPC into pipelines that you
+#' have access to.
+#'
+#' @usage
+#' opensearchingestion_create_pipeline_endpoint(PipelineArn, VpcOptions)
+#'
+#' @param PipelineArn &#91;required&#93; The Amazon Resource Name (ARN) of the pipeline to create the endpoint
+#' for.
+#' @param VpcOptions &#91;required&#93; Container for the VPC configuration for the pipeline endpoint, including
+#' subnet IDs and security group IDs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PipelineArn = "string",
+#'   EndpointId = "string",
+#'   Status = "CREATING"|"ACTIVE"|"CREATE_FAILED"|"DELETING"|"REVOKING"|"REVOKED",
+#'   VpcId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_pipeline_endpoint(
+#'   PipelineArn = "string",
+#'   VpcOptions = list(
+#'     SubnetIds = list(
+#'       "string"
+#'     ),
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchingestion_create_pipeline_endpoint
+#'
+#' @aliases opensearchingestion_create_pipeline_endpoint
+opensearchingestion_create_pipeline_endpoint <- function(PipelineArn, VpcOptions) {
+  op <- new_operation(
+    name = "CreatePipelineEndpoint",
+    http_method = "POST",
+    http_path = "/2022-01-01/osis/createPipelineEndpoint",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchingestion$create_pipeline_endpoint_input(PipelineArn = PipelineArn, VpcOptions = VpcOptions)
+  output <- .opensearchingestion$create_pipeline_endpoint_output()
+  config <- get_config()
+  svc <- .opensearchingestion$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchingestion$operations$create_pipeline_endpoint <- opensearchingestion_create_pipeline_endpoint
 
 #' Deletes an OpenSearch Ingestion pipeline
 #'
@@ -220,6 +289,95 @@ opensearchingestion_delete_pipeline <- function(PipelineName) {
   return(response)
 }
 .opensearchingestion$operations$delete_pipeline <- opensearchingestion_delete_pipeline
+
+#' Deletes a VPC endpoint for an OpenSearch Ingestion pipeline
+#'
+#' @description
+#' Deletes a VPC endpoint for an OpenSearch Ingestion pipeline.
+#'
+#' @usage
+#' opensearchingestion_delete_pipeline_endpoint(EndpointId)
+#'
+#' @param EndpointId &#91;required&#93; The unique identifier of the pipeline endpoint to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_pipeline_endpoint(
+#'   EndpointId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchingestion_delete_pipeline_endpoint
+#'
+#' @aliases opensearchingestion_delete_pipeline_endpoint
+opensearchingestion_delete_pipeline_endpoint <- function(EndpointId) {
+  op <- new_operation(
+    name = "DeletePipelineEndpoint",
+    http_method = "DELETE",
+    http_path = "/2022-01-01/osis/deletePipelineEndpoint/{EndpointId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchingestion$delete_pipeline_endpoint_input(EndpointId = EndpointId)
+  output <- .opensearchingestion$delete_pipeline_endpoint_output()
+  config <- get_config()
+  svc <- .opensearchingestion$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchingestion$operations$delete_pipeline_endpoint <- opensearchingestion_delete_pipeline_endpoint
+
+#' Deletes a resource-based policy from an OpenSearch Ingestion resource
+#'
+#' @description
+#' Deletes a resource-based policy from an OpenSearch Ingestion resource.
+#'
+#' @usage
+#' opensearchingestion_delete_resource_policy(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource from which to delete the
+#' policy.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_resource_policy(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchingestion_delete_resource_policy
+#'
+#' @aliases opensearchingestion_delete_resource_policy
+opensearchingestion_delete_resource_policy <- function(ResourceArn) {
+  op <- new_operation(
+    name = "DeleteResourcePolicy",
+    http_method = "DELETE",
+    http_path = "/2022-01-01/osis/resourcePolicy/{ResourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchingestion$delete_resource_policy_input(ResourceArn = ResourceArn)
+  output <- .opensearchingestion$delete_resource_policy_output()
+  config <- get_config()
+  svc <- .opensearchingestion$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchingestion$operations$delete_resource_policy <- opensearchingestion_delete_resource_policy
 
 #' Retrieves information about an OpenSearch Ingestion pipeline
 #'
@@ -303,7 +461,8 @@ opensearchingestion_delete_pipeline <- function(PipelineName) {
 #'         Key = "string",
 #'         Value = "string"
 #'       )
-#'     )
+#'     ),
+#'     PipelineRoleArn = "string"
 #'   )
 #' )
 #' ```
@@ -476,6 +635,59 @@ opensearchingestion_get_pipeline_change_progress <- function(PipelineName) {
 }
 .opensearchingestion$operations$get_pipeline_change_progress <- opensearchingestion_get_pipeline_change_progress
 
+#' Retrieves the resource-based policy attached to an OpenSearch Ingestion
+#' resource
+#'
+#' @description
+#' Retrieves the resource-based policy attached to an OpenSearch Ingestion
+#' resource.
+#'
+#' @usage
+#' opensearchingestion_get_resource_policy(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which to retrieve the
+#' policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceArn = "string",
+#'   Policy = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resource_policy(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchingestion_get_resource_policy
+#'
+#' @aliases opensearchingestion_get_resource_policy
+opensearchingestion_get_resource_policy <- function(ResourceArn) {
+  op <- new_operation(
+    name = "GetResourcePolicy",
+    http_method = "GET",
+    http_path = "/2022-01-01/osis/resourcePolicy/{ResourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchingestion$get_resource_policy_input(ResourceArn = ResourceArn)
+  output <- .opensearchingestion$get_resource_policy_output()
+  config <- get_config()
+  svc <- .opensearchingestion$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchingestion$operations$get_resource_policy <- opensearchingestion_get_resource_policy
+
 #' Retrieves a list of all available blueprints for Data Prepper
 #'
 #' @description
@@ -532,6 +744,145 @@ opensearchingestion_list_pipeline_blueprints <- function() {
   return(response)
 }
 .opensearchingestion$operations$list_pipeline_blueprints <- opensearchingestion_list_pipeline_blueprints
+
+#' Lists the pipeline endpoints connected to pipelines in your account
+#'
+#' @description
+#' Lists the pipeline endpoints connected to pipelines in your account.
+#'
+#' @usage
+#' opensearchingestion_list_pipeline_endpoint_connections(MaxResults,
+#'   NextToken)
+#'
+#' @param MaxResults The maximum number of pipeline endpoint connections to return in the
+#' response.
+#' @param NextToken If your initial
+#' [`list_pipeline_endpoint_connections`][opensearchingestion_list_pipeline_endpoint_connections]
+#' operation returns a `nextToken`, you can include the returned
+#' `nextToken` in subsequent
+#' [`list_pipeline_endpoint_connections`][opensearchingestion_list_pipeline_endpoint_connections]
+#' operations, which returns results in the next page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   PipelineEndpointConnections = list(
+#'     list(
+#'       PipelineArn = "string",
+#'       EndpointId = "string",
+#'       Status = "CREATING"|"ACTIVE"|"CREATE_FAILED"|"DELETING"|"REVOKING"|"REVOKED",
+#'       VpcEndpointOwner = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_pipeline_endpoint_connections(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchingestion_list_pipeline_endpoint_connections
+#'
+#' @aliases opensearchingestion_list_pipeline_endpoint_connections
+opensearchingestion_list_pipeline_endpoint_connections <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListPipelineEndpointConnections",
+    http_method = "GET",
+    http_path = "/2022-01-01/osis/listPipelineEndpointConnections",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PipelineEndpointConnections"),
+    stream_api = FALSE
+  )
+  input <- .opensearchingestion$list_pipeline_endpoint_connections_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .opensearchingestion$list_pipeline_endpoint_connections_output()
+  config <- get_config()
+  svc <- .opensearchingestion$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchingestion$operations$list_pipeline_endpoint_connections <- opensearchingestion_list_pipeline_endpoint_connections
+
+#' Lists all pipeline endpoints in your account
+#'
+#' @description
+#' Lists all pipeline endpoints in your account.
+#'
+#' @usage
+#' opensearchingestion_list_pipeline_endpoints(MaxResults, NextToken)
+#'
+#' @param MaxResults The maximum number of pipeline endpoints to return in the response.
+#' @param NextToken If your initial
+#' [`list_pipeline_endpoints`][opensearchingestion_list_pipeline_endpoints]
+#' operation returns a `NextToken`, you can include the returned
+#' `NextToken` in subsequent
+#' [`list_pipeline_endpoints`][opensearchingestion_list_pipeline_endpoints]
+#' operations, which returns results in the next page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   PipelineEndpoints = list(
+#'     list(
+#'       PipelineArn = "string",
+#'       EndpointId = "string",
+#'       Status = "CREATING"|"ACTIVE"|"CREATE_FAILED"|"DELETING"|"REVOKING"|"REVOKED",
+#'       VpcId = "string",
+#'       VpcOptions = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       IngestEndpointUrl = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_pipeline_endpoints(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchingestion_list_pipeline_endpoints
+#'
+#' @aliases opensearchingestion_list_pipeline_endpoints
+opensearchingestion_list_pipeline_endpoints <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListPipelineEndpoints",
+    http_method = "GET",
+    http_path = "/2022-01-01/osis/listPipelineEndpoints",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PipelineEndpoints"),
+    stream_api = FALSE
+  )
+  input <- .opensearchingestion$list_pipeline_endpoints_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .opensearchingestion$list_pipeline_endpoints_output()
+  config <- get_config()
+  svc <- .opensearchingestion$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchingestion$operations$list_pipeline_endpoints <- opensearchingestion_list_pipeline_endpoints
 
 #' Lists all OpenSearch Ingestion pipelines in the current Amazon Web
 #' Services account and Region
@@ -679,6 +1030,115 @@ opensearchingestion_list_tags_for_resource <- function(Arn) {
 }
 .opensearchingestion$operations$list_tags_for_resource <- opensearchingestion_list_tags_for_resource
 
+#' Attaches a resource-based policy to an OpenSearch Ingestion resource
+#'
+#' @description
+#' Attaches a resource-based policy to an OpenSearch Ingestion resource.
+#' Resource-based policies grant permissions to principals to perform
+#' actions on the resource.
+#'
+#' @usage
+#' opensearchingestion_put_resource_policy(ResourceArn, Policy)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to attach the policy to.
+#' @param Policy &#91;required&#93; The resource-based policy document in JSON format.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceArn = "string",
+#'   Policy = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_resource_policy(
+#'   ResourceArn = "string",
+#'   Policy = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchingestion_put_resource_policy
+#'
+#' @aliases opensearchingestion_put_resource_policy
+opensearchingestion_put_resource_policy <- function(ResourceArn, Policy) {
+  op <- new_operation(
+    name = "PutResourcePolicy",
+    http_method = "PUT",
+    http_path = "/2022-01-01/osis/resourcePolicy/{ResourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchingestion$put_resource_policy_input(ResourceArn = ResourceArn, Policy = Policy)
+  output <- .opensearchingestion$put_resource_policy_output()
+  config <- get_config()
+  svc <- .opensearchingestion$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchingestion$operations$put_resource_policy <- opensearchingestion_put_resource_policy
+
+#' Revokes pipeline endpoints from specified endpoint IDs
+#'
+#' @description
+#' Revokes pipeline endpoints from specified endpoint IDs.
+#'
+#' @usage
+#' opensearchingestion_revoke_pipeline_endpoint_connections(PipelineArn,
+#'   EndpointIds)
+#'
+#' @param PipelineArn &#91;required&#93; The Amazon Resource Name (ARN) of the pipeline from which to revoke
+#' endpoint connections.
+#' @param EndpointIds &#91;required&#93; A list of endpoint IDs for which to revoke access to the pipeline.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PipelineArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$revoke_pipeline_endpoint_connections(
+#'   PipelineArn = "string",
+#'   EndpointIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchingestion_revoke_pipeline_endpoint_connections
+#'
+#' @aliases opensearchingestion_revoke_pipeline_endpoint_connections
+opensearchingestion_revoke_pipeline_endpoint_connections <- function(PipelineArn, EndpointIds) {
+  op <- new_operation(
+    name = "RevokePipelineEndpointConnections",
+    http_method = "POST",
+    http_path = "/2022-01-01/osis/revokePipelineEndpointConnections",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchingestion$revoke_pipeline_endpoint_connections_input(PipelineArn = PipelineArn, EndpointIds = EndpointIds)
+  output <- .opensearchingestion$revoke_pipeline_endpoint_connections_output()
+  config <- get_config()
+  svc <- .opensearchingestion$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchingestion$operations$revoke_pipeline_endpoint_connections <- opensearchingestion_revoke_pipeline_endpoint_connections
+
 #' Starts an OpenSearch Ingestion pipeline
 #'
 #' @description
@@ -763,7 +1223,8 @@ opensearchingestion_list_tags_for_resource <- function(Arn) {
 #'         Key = "string",
 #'         Value = "string"
 #'       )
-#'     )
+#'     ),
+#'     PipelineRoleArn = "string"
 #'   )
 #' )
 #' ```
@@ -883,7 +1344,8 @@ opensearchingestion_start_pipeline <- function(PipelineName) {
 #'         Key = "string",
 #'         Value = "string"
 #'       )
-#'     )
+#'     ),
+#'     PipelineRoleArn = "string"
 #'   )
 #' )
 #' ```
@@ -1032,7 +1494,7 @@ opensearchingestion_untag_resource <- function(Arn, TagKeys) {
 #' @usage
 #' opensearchingestion_update_pipeline(PipelineName, MinUnits, MaxUnits,
 #'   PipelineConfigurationBody, LogPublishingOptions, BufferOptions,
-#'   EncryptionAtRestOptions)
+#'   EncryptionAtRestOptions, PipelineRoleArn)
 #'
 #' @param PipelineName &#91;required&#93; The name of the pipeline to update.
 #' @param MinUnits The minimum pipeline capacity, in Ingestion Compute Units (ICUs).
@@ -1045,6 +1507,8 @@ opensearchingestion_untag_resource <- function(Arn, TagKeys) {
 #' @param BufferOptions Key-value pairs to configure persistent buffering for the pipeline.
 #' @param EncryptionAtRestOptions Key-value pairs to configure encryption for data that is written to a
 #' persistent buffer.
+#' @param PipelineRoleArn The Amazon Resource Name (ARN) of the IAM role that grants the pipeline
+#' permission to access Amazon Web Services resources.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1118,7 +1582,8 @@ opensearchingestion_untag_resource <- function(Arn, TagKeys) {
 #'         Key = "string",
 #'         Value = "string"
 #'       )
-#'     )
+#'     ),
+#'     PipelineRoleArn = "string"
 #'   )
 #' )
 #' ```
@@ -1141,7 +1606,8 @@ opensearchingestion_untag_resource <- function(Arn, TagKeys) {
 #'   ),
 #'   EncryptionAtRestOptions = list(
 #'     KmsKeyArn = "string"
-#'   )
+#'   ),
+#'   PipelineRoleArn = "string"
 #' )
 #' ```
 #'
@@ -1150,7 +1616,7 @@ opensearchingestion_untag_resource <- function(Arn, TagKeys) {
 #' @rdname opensearchingestion_update_pipeline
 #'
 #' @aliases opensearchingestion_update_pipeline
-opensearchingestion_update_pipeline <- function(PipelineName, MinUnits = NULL, MaxUnits = NULL, PipelineConfigurationBody = NULL, LogPublishingOptions = NULL, BufferOptions = NULL, EncryptionAtRestOptions = NULL) {
+opensearchingestion_update_pipeline <- function(PipelineName, MinUnits = NULL, MaxUnits = NULL, PipelineConfigurationBody = NULL, LogPublishingOptions = NULL, BufferOptions = NULL, EncryptionAtRestOptions = NULL, PipelineRoleArn = NULL) {
   op <- new_operation(
     name = "UpdatePipeline",
     http_method = "PUT",
@@ -1159,7 +1625,7 @@ opensearchingestion_update_pipeline <- function(PipelineName, MinUnits = NULL, M
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchingestion$update_pipeline_input(PipelineName = PipelineName, MinUnits = MinUnits, MaxUnits = MaxUnits, PipelineConfigurationBody = PipelineConfigurationBody, LogPublishingOptions = LogPublishingOptions, BufferOptions = BufferOptions, EncryptionAtRestOptions = EncryptionAtRestOptions)
+  input <- .opensearchingestion$update_pipeline_input(PipelineName = PipelineName, MinUnits = MinUnits, MaxUnits = MaxUnits, PipelineConfigurationBody = PipelineConfigurationBody, LogPublishingOptions = LogPublishingOptions, BufferOptions = BufferOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, PipelineRoleArn = PipelineRoleArn)
   output <- .opensearchingestion$update_pipeline_output()
   config <- get_config()
   svc <- .opensearchingestion$service(config, op)

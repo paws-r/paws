@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudwatchlogs_operations.R
 \name{cloudwatchlogs_describe_index_policies}
 \alias{cloudwatchlogs_describe_index_policies}
-\title{Returns the field index policies of one or more log groups}
+\title{Returns the field index policies of the specified log group}
 \usage{
 cloudwatchlogs_describe_index_policies(logGroupIdentifiers, nextToken = NULL)
 }
@@ -13,7 +13,7 @@ retrieve field index policies for.}
 \item{nextToken}{}
 }
 \description{
-Returns the field index policies of one or more log groups. For more information about field index policies, see \code{\link[=cloudwatchlogs_put_index_policy]{put_index_policy}}.
+Returns the field index policies of the specified log group. For more information about field index policies, see \code{\link[=cloudwatchlogs_put_index_policy]{put_index_policy}}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_index_policies/} for full documentation.
 }

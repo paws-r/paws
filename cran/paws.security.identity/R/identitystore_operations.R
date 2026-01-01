@@ -88,10 +88,11 @@ identitystore_create_group_membership <- function(IdentityStoreId, GroupId, Memb
 #' the user is created and stored as an attribute of the user object in the
 #' identity store. `Administrator` and `AWSAdministrators` are reserved
 #' names and can't be used for users or groups.
-#' @param Name An object containing the name of the user.
+#' @param Name An object containing the name of the user. When used in IAM Identity
+#' Center, this parameter is required.
 #' @param DisplayName A string containing the name of the user. This value is typically
 #' formatted for display when the user is referenced. For example, "John
-#' Doe."
+#' Doe." When used in IAM Identity Center, this parameter is required.
 #' @param NickName A string containing an alternate name for the user.
 #' @param ProfileUrl A string containing a URL that might be associated with the user.
 #' @param Emails A list of `Email` objects containing email addresses associated with the
@@ -108,11 +109,23 @@ identitystore_create_group_membership <- function(IdentityStoreId, GroupId, Memb
 #' "American English" or "en-us."
 #' @param Locale A string containing the geographical region or location of the user.
 #' @param Timezone A string containing the time zone of the user.
+#' @param Photos A list of photos associated with the user. You can add up to 3 photos
+#' per user. Each photo can include a value, type, display name, and
+#' primary designation.
+#' @param Website The user's personal website or blog URL. This field allows users to
+#' provide a link to their personal or professional website.
+#' @param Birthdate The user's birthdate in YYYY-MM-DD format. This field supports standard
+#' date format for storing personal information.
+#' @param Extensions A map with additional attribute extensions for the user. Each map key
+#' corresponds to an extension name, while map values represent extension
+#' data in `Document` type (not supported by Java V1, Go V1 and older
+#' versions of the CLI). `aws:identitystore:enterprise` is the only
+#' supported extension name.
 #'
 #' @keywords internal
 #'
 #' @rdname identitystore_create_user
-identitystore_create_user <- function(IdentityStoreId, UserName = NULL, Name = NULL, DisplayName = NULL, NickName = NULL, ProfileUrl = NULL, Emails = NULL, Addresses = NULL, PhoneNumbers = NULL, UserType = NULL, Title = NULL, PreferredLanguage = NULL, Locale = NULL, Timezone = NULL) {
+identitystore_create_user <- function(IdentityStoreId, UserName = NULL, Name = NULL, DisplayName = NULL, NickName = NULL, ProfileUrl = NULL, Emails = NULL, Addresses = NULL, PhoneNumbers = NULL, UserType = NULL, Title = NULL, PreferredLanguage = NULL, Locale = NULL, Timezone = NULL, Photos = NULL, Website = NULL, Birthdate = NULL, Extensions = NULL) {
   op <- new_operation(
     name = "CreateUser",
     http_method = "POST",
@@ -121,7 +134,7 @@ identitystore_create_user <- function(IdentityStoreId, UserName = NULL, Name = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .identitystore$create_user_input(IdentityStoreId = IdentityStoreId, UserName = UserName, Name = Name, DisplayName = DisplayName, NickName = NickName, ProfileUrl = ProfileUrl, Emails = Emails, Addresses = Addresses, PhoneNumbers = PhoneNumbers, UserType = UserType, Title = Title, PreferredLanguage = PreferredLanguage, Locale = Locale, Timezone = Timezone)
+  input <- .identitystore$create_user_input(IdentityStoreId = IdentityStoreId, UserName = UserName, Name = Name, DisplayName = DisplayName, NickName = NickName, ProfileUrl = ProfileUrl, Emails = Emails, Addresses = Addresses, PhoneNumbers = PhoneNumbers, UserType = UserType, Title = Title, PreferredLanguage = PreferredLanguage, Locale = Locale, Timezone = Timezone, Photos = Photos, Website = Website, Birthdate = Birthdate, Extensions = Extensions)
   output <- .identitystore$create_user_output()
   config <- get_config()
   svc <- .identitystore$service(config, op)
@@ -311,11 +324,14 @@ identitystore_describe_group_membership <- function(IdentityStoreId, MembershipI
 #' lower case letters. This value is generated at the time that a new
 #' identity store is created.
 #' @param UserId &#91;required&#93; The identifier for a user in the identity store.
+#' @param Extensions A collection of extension names indicating what extensions the service
+#' should retrieve alongside other user attributes.
+#' `aws:identitystore:enterprise` is the only supported extension name.
 #'
 #' @keywords internal
 #'
 #' @rdname identitystore_describe_user
-identitystore_describe_user <- function(IdentityStoreId, UserId) {
+identitystore_describe_user <- function(IdentityStoreId, UserId, Extensions = NULL) {
   op <- new_operation(
     name = "DescribeUser",
     http_method = "POST",
@@ -324,7 +340,7 @@ identitystore_describe_user <- function(IdentityStoreId, UserId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .identitystore$describe_user_input(IdentityStoreId = IdentityStoreId, UserId = UserId)
+  input <- .identitystore$describe_user_input(IdentityStoreId = IdentityStoreId, UserId = UserId, Extensions = Extensions)
   output <- .identitystore$describe_user_output()
   config <- get_config()
   svc <- .identitystore$service(config, op)
@@ -346,7 +362,7 @@ identitystore_describe_user <- function(IdentityStoreId, UserId) {
 #' identifier. This value can be an identifier from an external identity
 #' provider (IdP) that is associated with the user, the group, or a unique
 #' attribute. For the unique attribute, the only valid path is
-#' `displayName`.
+#' ` displayName`.
 #'
 #' @keywords internal
 #'
@@ -416,8 +432,8 @@ identitystore_get_group_membership_id <- function(IdentityStoreId, GroupId, Memb
 #' @param AlternateIdentifier &#91;required&#93; A unique identifier for a user or group that is not the primary
 #' identifier. This value can be an identifier from an external identity
 #' provider (IdP) that is associated with the user, the group, or a unique
-#' attribute. For the unique attribute, the only valid paths are `userName`
-#' and `emails.value`.
+#' attribute. For the unique attribute, the only valid paths are
+#' ` userName` and `emails.value`.
 #'
 #' @keywords internal
 #'
@@ -480,14 +496,14 @@ identitystore_is_member_in_groups <- function(IdentityStoreId, MemberId, GroupId
 #' form
 #'
 #' @description
-#' For the specified group in the specified identity store, returns the list of all `GroupMembership` objects and returns results in paginated form.
+#' For the specified group in the specified identity store, returns the list of all ` GroupMembership` objects and returns results in paginated form.
 #'
 #' See [https://www.paws-r-sdk.com/docs/identitystore_list_group_memberships/](https://www.paws-r-sdk.com/docs/identitystore_list_group_memberships/) for full documentation.
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
 #' @param GroupId &#91;required&#93; The identifier for a group in the identity store.
 #' @param MaxResults The maximum number of results to be returned per request. This parameter
-#' is used in all `List` requests to specify how many results to return in
+#' is used in all ` List` requests to specify how many results to return in
 #' one page.
 #' @param NextToken The pagination token used for the
 #' [`list_users`][identitystore_list_users],
@@ -525,7 +541,7 @@ identitystore_list_group_memberships <- function(IdentityStoreId, GroupId, MaxRe
 #' form
 #'
 #' @description
-#' For the specified member in the specified identity store, returns the list of all `GroupMembership` objects and returns results in paginated form.
+#' For the specified member in the specified identity store, returns the list of all ` GroupMembership` objects and returns results in paginated form.
 #'
 #' See [https://www.paws-r-sdk.com/docs/identitystore_list_group_memberships_for_member/](https://www.paws-r-sdk.com/docs/identitystore_list_group_memberships_for_member/) for full documentation.
 #'
@@ -629,6 +645,9 @@ identitystore_list_groups <- function(IdentityStoreId, MaxResults = NULL, NextTo
 #' `1234567890` is a randomly generated string that contains numbers and
 #' lower case letters. This value is generated at the time that a new
 #' identity store is created.
+#' @param Extensions A collection of extension names indicating what extensions the service
+#' should retrieve alongside other user attributes.
+#' `aws:identitystore:enterprise` is the only supported extension name.
 #' @param MaxResults The maximum number of results to be returned per request. This parameter
 #' is used in the [`list_users`][identitystore_list_users] and
 #' [`list_groups`][identitystore_list_groups] requests to specify how many
@@ -647,7 +666,7 @@ identitystore_list_groups <- function(IdentityStoreId, MaxResults = NULL, NextTo
 #' @keywords internal
 #'
 #' @rdname identitystore_list_users
-identitystore_list_users <- function(IdentityStoreId, MaxResults = NULL, NextToken = NULL, Filters = NULL) {
+identitystore_list_users <- function(IdentityStoreId, Extensions = NULL, MaxResults = NULL, NextToken = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListUsers",
     http_method = "POST",
@@ -656,7 +675,7 @@ identitystore_list_users <- function(IdentityStoreId, MaxResults = NULL, NextTok
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Users"),
     stream_api = FALSE
   )
-  input <- .identitystore$list_users_input(IdentityStoreId = IdentityStoreId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
+  input <- .identitystore$list_users_input(IdentityStoreId = IdentityStoreId, Extensions = Extensions, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .identitystore$list_users_output()
   config <- get_config()
   svc <- .identitystore$service(config, op)
@@ -666,18 +685,21 @@ identitystore_list_users <- function(IdentityStoreId, MaxResults = NULL, NextTok
 }
 .identitystore$operations$list_users <- identitystore_list_users
 
-#' For the specified group in the specified identity store, updates the
-#' group metadata and attributes
+#' Updates the specified group metadata and attributes in the specified
+#' identity store
 #'
 #' @description
-#' For the specified group in the specified identity store, updates the group metadata and attributes.
+#' Updates the specified group metadata and attributes in the specified identity store.
 #'
 #' See [https://www.paws-r-sdk.com/docs/identitystore_update_group/](https://www.paws-r-sdk.com/docs/identitystore_update_group/) for full documentation.
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
 #' @param GroupId &#91;required&#93; The identifier for a group in the identity store.
 #' @param Operations &#91;required&#93; A list of `AttributeOperation` objects to apply to the requested group.
-#' These operations might add, replace, or remove an attribute.
+#' These operations might add, replace, or remove an attribute. For more
+#' information on the attributes that can be added, replaced, or removed,
+#' see
+#' [Group](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html).
 #'
 #' @keywords internal
 #'
@@ -701,18 +723,21 @@ identitystore_update_group <- function(IdentityStoreId, GroupId, Operations) {
 }
 .identitystore$operations$update_group <- identitystore_update_group
 
-#' For the specified user in the specified identity store, updates the user
-#' metadata and attributes
+#' Updates the specified user metadata and attributes in the specified
+#' identity store
 #'
 #' @description
-#' For the specified user in the specified identity store, updates the user metadata and attributes.
+#' Updates the specified user metadata and attributes in the specified identity store.
 #'
 #' See [https://www.paws-r-sdk.com/docs/identitystore_update_user/](https://www.paws-r-sdk.com/docs/identitystore_update_user/) for full documentation.
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
 #' @param UserId &#91;required&#93; The identifier for a user in the identity store.
 #' @param Operations &#91;required&#93; A list of `AttributeOperation` objects to apply to the requested user.
-#' These operations might add, replace, or remove an attribute.
+#' These operations might add, replace, or remove an attribute. For more
+#' information on the attributes that can be added, replaced, or removed,
+#' see
+#' [User](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html).
 #'
 #' @keywords internal
 #'

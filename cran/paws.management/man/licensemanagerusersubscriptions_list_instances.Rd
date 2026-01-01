@@ -5,22 +5,22 @@
 \title{Lists the EC2 instances providing user-based subscriptions}
 \usage{
 licensemanagerusersubscriptions_list_instances(
-  Filters = NULL,
   MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  Filters = NULL
 )
 }
 \arguments{
+\item{MaxResults}{The maximum number of results to return from a single request.}
+
+\item{NextToken}{A token to specify where to start paginating. This is the nextToken from
+a previously truncated response.}
+
 \item{Filters}{You can use the following filters to streamline results:
 \itemize{
 \item Status
 \item InstanceId
 }}
-
-\item{MaxResults}{The maximum number of results to return from a single request.}
-
-\item{NextToken}{A token to specify where to start paginating. This is the nextToken from
-a previously truncated response.}
 }
 \description{
 Lists the EC2 instances providing user-based subscriptions.

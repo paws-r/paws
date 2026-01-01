@@ -7,7 +7,8 @@
 connect_disassociate_routing_profile_queues(
   InstanceId,
   RoutingProfileId,
-  QueueReferences
+  QueueReferences = NULL,
+  ManualAssignmentQueueReferences = NULL
 )
 }
 \arguments{
@@ -16,7 +17,9 @@ in the Amazon Resource Name (ARN) of the instance.}
 
 \item{RoutingProfileId}{[required] The identifier of the routing profile.}
 
-\item{QueueReferences}{[required] The queues to disassociate from this routing profile.}
+\item{QueueReferences}{The queues to disassociate from this routing profile.}
+
+\item{ManualAssignmentQueueReferences}{The manual assignment queues to disassociate with this routing profile.}
 }
 \description{
 Disassociates a set of queues from a routing profile.

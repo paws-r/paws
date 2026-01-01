@@ -11,7 +11,7 @@ servicediscovery_update_public_dns_namespace(
 )
 }
 \arguments{
-\item{Id}{[required] The ID of the namespace being updated.}
+\item{Id}{[required] The ID or Amazon Resource Name (ARN) of the namespace being updated.}
 
 \item{UpdaterRequestId}{A unique string that identifies the request and that allows failed
 \code{\link[=servicediscovery_update_public_dns_namespace]{update_public_dns_namespace}}

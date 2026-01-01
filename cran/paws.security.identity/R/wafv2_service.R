@@ -55,7 +55,7 @@ NULL
 #' Alternatively, you can use one of the Amazon Web Services SDKs to access
 #' an API that's tailored to the programming language or platform that
 #' you're using. For more information, see [Amazon Web Services
-#' SDKs](https://aws.amazon.com/developer/tools/#SDKs).
+#' SDKs](https://builder.aws.com/build/tools#SDKs).
 #'
 #' @param
 #' config

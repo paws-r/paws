@@ -11,8 +11,7 @@ ec2_describe_image_attribute(Attribute, ImageId, DryRun = NULL)
 
 \strong{Note}: The \code{blockDeviceMapping} attribute is deprecated. Using this
 attribute returns the \code{Client.AuthFailure} error. To get information
-about the block device mappings for an AMI, use the
-\code{\link[=ec2_describe_images]{describe_images}} action.}
+about the block device mappings for an AMI, describe the image instead.}
 
 \item{ImageId}{[required] The ID of the AMI.}
 

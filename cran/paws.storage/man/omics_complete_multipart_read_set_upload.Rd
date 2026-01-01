@@ -2,7 +2,9 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_complete_multipart_read_set_upload}
 \alias{omics_complete_multipart_read_set_upload}
-\title{Concludes a multipart upload once you have uploaded all the components}
+\title{Completes a multipart read set upload into a sequence store after you
+have initiated the upload process with CreateMultipartReadSetUpload and
+uploaded all read set parts using UploadReadSetPart}
 \usage{
 omics_complete_multipart_read_set_upload(sequenceStoreId, uploadId, parts)
 }
@@ -14,7 +16,7 @@ omics_complete_multipart_read_set_upload(sequenceStoreId, uploadId, parts)
 \item{parts}{[required] The individual uploads or parts of a multipart upload.}
 }
 \description{
-Concludes a multipart upload once you have uploaded all the components.
+Completes a multipart read set upload into a sequence store after you have initiated the upload process with \code{\link[=omics_create_multipart_read_set_upload]{create_multipart_read_set_upload}} and uploaded all read set parts using \code{\link[=omics_upload_read_set_part]{upload_read_set_part}}. You must specify the parts you uploaded using the parts parameter. If the operation is successful, it returns the read set ID(s) of the uploaded read set(s).
 
 See \url{https://www.paws-r-sdk.com/docs/omics_complete_multipart_read_set_upload/} for full documentation.
 }

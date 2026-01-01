@@ -2,8 +2,8 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_continue_update_rollback}
 \alias{cloudformation_continue_update_rollback}
-\title{For a specified stack that's in the UPDATE_ROLLBACK_FAILED state,
-continues rolling it back to the UPDATE_ROLLBACK_COMPLETE state}
+\title{Continues rolling back a stack from UPDATE_ROLLBACK_FAILED to
+UPDATE_ROLLBACK_COMPLETE state}
 \usage{
 cloudformation_continue_update_rollback(
   StackName,
@@ -80,7 +80,7 @@ to a stack with the same name. You might retry
 requests to ensure that CloudFormation successfully received them.}
 }
 \description{
-For a specified stack that's in the \code{UPDATE_ROLLBACK_FAILED} state, continues rolling it back to the \code{UPDATE_ROLLBACK_COMPLETE} state. Depending on the cause of the failure, you can manually \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed}{fix the error} and continue the rollback. By continuing the rollback, you can return your stack to a working state (the \code{UPDATE_ROLLBACK_COMPLETE} state), and then try to update the stack again.
+Continues rolling back a stack from \code{UPDATE_ROLLBACK_FAILED} to \code{UPDATE_ROLLBACK_COMPLETE} state. Depending on the cause of the failure, you can manually fix the error and continue the rollback. By continuing the rollback, you can return your stack to a working state (the \code{UPDATE_ROLLBACK_COMPLETE} state) and then try to update the stack again.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudformation_continue_update_rollback/} for full documentation.
 }

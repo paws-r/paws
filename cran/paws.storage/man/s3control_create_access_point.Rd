@@ -11,7 +11,8 @@ s3control_create_access_point(
   VpcConfiguration = NULL,
   PublicAccessBlockConfiguration = NULL,
   BucketAccountId = NULL,
-  Scope = NULL
+  Scope = NULL,
+  Tags = NULL
 )
 }
 \arguments{
@@ -24,7 +25,7 @@ For directory buckets, the access point name must consist of a base name
 that you provide and suffix that includes the \code{ZoneID} (Amazon Web
 Services Availability Zone or Local Zone) of your bucket location,
 followed by \code{--xa-s3}. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets.html}{Managing access to shared datasets in directory buckets with access points}
-in the Amazon S3 User Guide.}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{Bucket}{[required] The name of the bucket that you want to associate this access point
 with.
@@ -62,12 +63,17 @@ the same account, the \code{BucketAccountId} is required.}
 \item{Scope}{For directory buckets, you can filter access control to specific
 prefixes, API operations, or a combination of both. For more
 information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets.html}{Managing access to shared datasets in directory buckets with access points}
-in the Amazon S3 User Guide.
+in the \emph{Amazon S3 User Guide}.
 
-Scope is not supported for access points for general purpose buckets.}
+Scope is only supported for access points attached to directory buckets.}
+
+\item{Tags}{An array of tags that you can apply to an access point. Tags are
+key-value pairs of metadata used to control access to your access
+points. For more information about tags, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/tagging.html}{Using tags with Amazon S3}.
+For information about tagging access points, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/tagging.html#using-tags-for-abac}{Using tags for attribute-based access control (ABAC)}.}
 }
 \description{
-Creates an access point and associates it to a specified bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html}{Managing access to shared datasets in general purpose buckets with access points} or \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets.html}{Managing access to shared datasets in directory buckets with access points} in the \emph{Amazon S3 User Guide}.
+Creates an access point and associates it to a specified bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html}{Managing access to shared datasets with access points} or \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets.html}{Managing access to shared datasets in directory buckets with access points} in the \emph{Amazon S3 User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_create_access_point/} for full documentation.
 }

@@ -5,15 +5,19 @@
 \title{Modifies a prompt in your prompt library}
 \usage{
 bedrockagent_update_prompt(
+  name,
+  description = NULL,
   customerEncryptionKeyArn = NULL,
   defaultVariant = NULL,
-  description = NULL,
-  name,
-  promptIdentifier,
-  variants = NULL
+  variants = NULL,
+  promptIdentifier
 )
 }
 \arguments{
+\item{name}{[required] A name for the prompt.}
+
+\item{description}{A description for the prompt.}
+
 \item{customerEncryptionKeyArn}{The Amazon Resource Name (ARN) of the KMS key to encrypt the prompt.}
 
 \item{defaultVariant}{The name of the default variant for the prompt. This value must match
@@ -21,14 +25,10 @@ the \code{name} field in the relevant
 \href{https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent_PromptVariant.html}{PromptVariant}
 object.}
 
-\item{description}{A description for the prompt.}
-
-\item{name}{[required] A name for the prompt.}
-
-\item{promptIdentifier}{[required] The unique identifier of the prompt.}
-
 \item{variants}{A list of objects, each containing details about a variant of the
 prompt.}
+
+\item{promptIdentifier}{[required] The unique identifier of the prompt.}
 }
 \description{
 Modifies a prompt in your prompt library. Include both fields that you want to keep and fields that you want to replace. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management.html}{Prompt management in Amazon Bedrock} and \href{https://docs.aws.amazon.com/bedrock/latest/userguide/#prompt-management-edit}{Edit prompts in your prompt library} in the Amazon Bedrock User Guide.

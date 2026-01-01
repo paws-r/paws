@@ -5,28 +5,17 @@
 \title{List of SQL statements}
 \usage{
 redshiftdataapiservice_list_statements(
-  ClusterIdentifier = NULL,
-  Database = NULL,
-  MaxResults = NULL,
   NextToken = NULL,
-  RoleLevel = NULL,
+  MaxResults = NULL,
   StatementName = NULL,
   Status = NULL,
+  RoleLevel = NULL,
+  Database = NULL,
+  ClusterIdentifier = NULL,
   WorkgroupName = NULL
 )
 }
 \arguments{
-\item{ClusterIdentifier}{The cluster identifier. Only statements that ran on this cluster are
-returned. When providing \code{ClusterIdentifier}, then \code{WorkgroupName} can't
-be specified.}
-
-\item{Database}{The name of the database when listing statements run against a
-\code{ClusterIdentifier} or \code{WorkgroupName}.}
-
-\item{MaxResults}{The maximum number of SQL statements to return in the response. If more
-SQL statements exist than fit in one response, then \code{NextToken} is
-returned to page through the results.}
-
 \item{NextToken}{A value that indicates the starting point for the next set of response
 records in a subsequent request. If a value is returned in a response,
 you can retrieve the next set of records by providing this returned
@@ -34,10 +23,9 @@ NextToken value in the next NextToken parameter and retrying the
 command. If the NextToken field is empty, all response records have been
 retrieved for the request.}
 
-\item{RoleLevel}{A value that filters which statements to return in the response. If
-true, all statements run by the caller's IAM role are returned. If
-false, only statements run by the caller's IAM role in the current IAM
-session are returned. The default is true.}
+\item{MaxResults}{The maximum number of SQL statements to return in the response. If more
+SQL statements exist than fit in one response, then \code{NextToken} is
+returned to page through the results.}
 
 \item{StatementName}{The name of the SQL statement specified as input to
 \code{\link[=redshiftdataapiservice_batch_execute_statement]{batch_execute_statement}}
@@ -60,6 +48,18 @@ can be used to filter results.
 \item STARTED - The query run has started.
 \item SUBMITTED - The query was submitted, but not yet processed.
 }}
+
+\item{RoleLevel}{A value that filters which statements to return in the response. If
+true, all statements run by the caller's IAM role are returned. If
+false, only statements run by the caller's IAM role in the current IAM
+session are returned. The default is true.}
+
+\item{Database}{The name of the database when listing statements run against a
+\code{ClusterIdentifier} or \code{WorkgroupName}.}
+
+\item{ClusterIdentifier}{The cluster identifier. Only statements that ran on this cluster are
+returned. When providing \code{ClusterIdentifier}, then \code{WorkgroupName} can't
+be specified.}
 
 \item{WorkgroupName}{The serverless workgroup name or Amazon Resource Name (ARN). Only
 statements that ran on this workgroup are returned. When providing

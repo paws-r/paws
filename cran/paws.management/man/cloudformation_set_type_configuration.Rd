@@ -2,8 +2,8 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_set_type_configuration}
 \alias{cloudformation_set_type_configuration}
-\title{Specifies the configuration data for a registered CloudFormation
-extension, in the given account and Region}
+\title{Specifies the configuration data for a CloudFormation extension, such as
+a resource or Hook, in the given account and Region}
 \usage{
 cloudformation_set_type_configuration(
   TypeArn = NULL,
@@ -14,7 +14,7 @@ cloudformation_set_type_configuration(
 )
 }
 \arguments{
-\item{TypeArn}{The Amazon Resource Name (ARN) for the extension, in this account and
+\item{TypeArn}{The Amazon Resource Name (ARN) for the extension in this account and
 Region.
 
 For public extensions, this will be the ARN assigned when you call the
@@ -28,13 +28,11 @@ Do not include the extension versions suffix at the end of the ARN. You
 can set the configuration for an extension, but not for a specific
 extension version.}
 
-\item{Configuration}{[required] The configuration data for the extension, in this account and Region.
+\item{Configuration}{[required] The configuration data for the extension in this account and Region.
 
-The configuration data must be formatted as JSON, and validate against
-the schema returned in the \code{ConfigurationSchema} response element of
-\code{\link[=cloudformation_describe_type]{describe_type}}. For more information,
-see \href{https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-model.html#resource-type-howto-configuration}{Defining the account-level configuration of an extension}
-in the \emph{CloudFormation Command Line Interface (CLI) User Guide}.}
+The configuration data must be formatted as JSON and validate against
+the extension's schema returned in the \code{Schema} response element of
+\code{\link[=cloudformation_describe_type]{describe_type}}.}
 
 \item{ConfigurationAlias}{An alias by which to refer to this extension configuration data.
 
@@ -52,7 +50,7 @@ Conditional: You must specify \code{ConfigurationArn}, or \code{Type} and
 \code{TypeName}.}
 }
 \description{
-Specifies the configuration data for a registered CloudFormation extension, in the given account and Region.
+Specifies the configuration data for a CloudFormation extension, such as a resource or Hook, in the given account and Region.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudformation_set_type_configuration/} for full documentation.
 }

@@ -8,6 +8,7 @@ location of a core network}
 networkmanager_create_site_to_site_vpn_attachment(
   CoreNetworkId,
   VpnConnectionArn,
+  RoutingPolicyLabel = NULL,
   Tags = NULL,
   ClientToken = NULL
 )
@@ -17,6 +18,9 @@ networkmanager_create_site_to_site_vpn_attachment(
 attachment.}
 
 \item{VpnConnectionArn}{[required] The ARN identifying the VPN attachment.}
+
+\item{RoutingPolicyLabel}{The routing policy label to apply to the Site-to-Site VPN attachment for
+traffic routing decisions.}
 
 \item{Tags}{The tags associated with the request.}
 

@@ -21,7 +21,9 @@ apigateway_put_integration(
   cacheKeyParameters = NULL,
   contentHandling = NULL,
   timeoutInMillis = NULL,
-  tlsConfig = NULL
+  tlsConfig = NULL,
+  responseTransferMode = NULL,
+  integrationTarget = NULL
 )
 }
 \arguments{
@@ -108,9 +110,14 @@ modification, provided that the \code{passthroughBehavior} is configured to
 support payload pass-through.}
 
 \item{timeoutInMillis}{Custom timeout between 50 and 29,000 milliseconds. The default value is
-29,000 milliseconds or 29 seconds.}
+29,000 milliseconds or 29 seconds. You can increase the default value to
+longer than 29 seconds for Regional or private APIs only.}
 
 \item{tlsConfig}{}
+
+\item{responseTransferMode}{The response transfer mode of the integration.}
+
+\item{integrationTarget}{The ALB or NLB listener to send the request to.}
 }
 \description{
 Sets up a method's integration.

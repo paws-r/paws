@@ -21,8 +21,10 @@ exactly will be returned.}
 \item{MetricName}{The name of the metric to filter against. Only the metrics with names
 that match exactly will be returned.}
 
-\item{Dimensions}{The dimensions to filter against. Only the dimensions that match exactly
-will be returned.}
+\item{Dimensions}{The dimensions to filter against. Only the dimension with names that
+match exactly will be returned. If you specify one dimension name and a
+metric has that dimension and also other dimensions, it will be
+returned.}
 
 \item{NextToken}{The token returned by a previous call to indicate that there is more
 data available.}

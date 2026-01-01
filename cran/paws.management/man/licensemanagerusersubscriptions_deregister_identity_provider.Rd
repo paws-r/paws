@@ -7,21 +7,21 @@ user-based subscriptions}
 \usage{
 licensemanagerusersubscriptions_deregister_identity_provider(
   IdentityProvider = NULL,
-  IdentityProviderArn = NULL,
-  Product = NULL
+  Product = NULL,
+  IdentityProviderArn = NULL
 )
 }
 \arguments{
 \item{IdentityProvider}{An object that specifies details for the Active Directory identity
 provider.}
 
-\item{IdentityProviderArn}{The Amazon Resource Name (ARN) that identifies the identity provider to
-deregister.}
-
 \item{Product}{The name of the user-based subscription product.
 
 Valid values: \code{VISUAL_STUDIO_ENTERPRISE} | \code{VISUAL_STUDIO_PROFESSIONAL}
 | \code{OFFICE_PROFESSIONAL_PLUS} | \code{REMOTE_DESKTOP_SERVICES}}
+
+\item{IdentityProviderArn}{The Amazon Resource Name (ARN) that identifies the identity provider to
+deregister.}
 }
 \description{
 Deregisters the Active Directory identity provider from License Manager user-based subscriptions.

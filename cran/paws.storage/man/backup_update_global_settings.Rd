@@ -8,8 +8,19 @@ cross-account backup}
 backup_update_global_settings(GlobalSettings = NULL)
 }
 \arguments{
-\item{GlobalSettings}{A value for \code{isCrossAccountBackupEnabled} and a Region. Example:
-\verb{update-global-settings --global-settings isCrossAccountBackupEnabled=false --region us-west-2}.}
+\item{GlobalSettings}{Inputs can include:
+
+A value for \code{isCrossAccountBackupEnabled} and a Region. Example:
+\verb{update-global-settings --global-settings isCrossAccountBackupEnabled=false --region us-west-2}.
+
+A value for Multi-party approval, styled as "Mpa": \code{isMpaEnabled}.
+Values can be true or false. Example:
+\verb{update-global-settings --global-settings isMpaEnabled=false --region us-west-2}.
+
+A value for Backup Service-Linked Role creation, styled
+as\code{isDelegatedAdministratorEnabled}. Values can be true or false.
+Example:
+\verb{update-global-settings --global-settings isDelegatedAdministratorEnabled=false --region us-west-2}.}
 }
 \description{
 Updates whether the Amazon Web Services account is opted in to cross-account backup. Returns an error if the account is not an Organizations management account. Use the \code{\link[=backup_describe_global_settings]{describe_global_settings}} API to determine the current settings.

@@ -8,7 +8,8 @@ lambda_publish_version(
   FunctionName,
   CodeSha256 = NULL,
   Description = NULL,
-  RevisionId = NULL
+  RevisionId = NULL,
+  PublishTo = NULL
 )
 }
 \arguments{
@@ -37,6 +38,8 @@ function configuration.}
 \item{RevisionId}{Only update the function if the revision ID matches the ID that's
 specified. Use this option to avoid publishing a version if the function
 configuration has changed since you last updated it.}
+
+\item{PublishTo}{Specifies where to publish the function version or configuration.}
 }
 \description{
 Creates a \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{version} from the current code and configuration of a function. Use versions to create a snapshot of your function code and configuration that doesn't change.

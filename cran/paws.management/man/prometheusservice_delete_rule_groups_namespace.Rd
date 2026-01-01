@@ -6,19 +6,19 @@
 definition}
 \usage{
 prometheusservice_delete_rule_groups_namespace(
-  clientToken = NULL,
+  workspaceId,
   name,
-  workspaceId
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{A unique identifier that you can provide to ensure the idempotency of
-the request. Case-sensitive.}
+\item{workspaceId}{[required] The ID of the workspace containing the rule groups namespace and
+definition to delete.}
 
 \item{name}{[required] The name of the rule groups namespace to delete.}
 
-\item{workspaceId}{[required] The ID of the workspace containing the rule groups namespace and
-definition to delete.}
+\item{clientToken}{A unique identifier that you can provide to ensure the idempotency of
+the request. Case-sensitive.}
 }
 \description{
 Deletes one rule groups namespace and its associated rule groups definition.

@@ -77,6 +77,12 @@ new tasks launched to replace them. Use
 retire a Fargate task. For information about the Fargate tasks
 maintenance, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-maintenance.html}{Amazon Web Services Fargate task maintenance}
 in the \emph{Amazon ECS Developer Guide}.
+\item \code{fargateEventWindows} - When Amazon Web Services determines that a
+security or infrastructure update is needed for an Amazon ECS task
+hosted on Fargate, the tasks need to be stopped and new tasks
+launched to replace them. Use \code{fargateEventWindows} to use EC2 Event
+Windows associated with Fargate tasks to configure time windows for
+task retirement.
 \item \code{tagResourceAuthorization} - Amazon ECS is introducing tagging
 authorization for resource creation. Users must have permissions for
 actions that create the resource, such as \code{ecsCreateCluster}. If
@@ -97,6 +103,16 @@ container definition's \code{logConfiguration}, the mode you specify
 using this account setting will be used as the default. For more
 information about log delivery modes, see
 \href{https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html}{LogConfiguration}.
+
+On June 25, 2025, Amazon ECS changed the default log driver mode
+from \code{blocking} to \code{non-blocking} to prioritize task availability
+over logging. To continue using the \code{blocking} mode after this
+change, do one of the following:
+\itemize{
+\item Set the \code{mode} option in your container definition's
+\code{logConfiguration} as \code{blocking}.
+\item Set the \code{defaultLogDriverMode} account setting to \code{blocking}.
+}
 \item \code{guardDutyActivate} - The \code{guardDutyActivate} parameter is read-only
 in Amazon ECS and indicates whether Amazon ECS Runtime Monitoring is
 enabled or disabled by your security administrator in your Amazon

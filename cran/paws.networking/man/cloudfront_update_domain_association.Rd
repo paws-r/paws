@@ -2,22 +2,24 @@
 % Please edit documentation in R/cloudfront_operations.R
 \name{cloudfront_update_domain_association}
 \alias{cloudfront_update_domain_association}
-\title{Moves a domain from its current distribution or distribution tenant to
-another one}
+\title{We recommend that you use the UpdateDomainAssociation API operation to
+move a domain association, as it supports both standard distributions
+and distribution tenants}
 \usage{
 cloudfront_update_domain_association(Domain, TargetResource, IfMatch = NULL)
 }
 \arguments{
 \item{Domain}{[required] The domain to update.}
 
-\item{TargetResource}{[required] The target distribution resource for the domain. You can specify either
-\code{DistributionId} or \code{DistributionTenantId}, but not both.}
+\item{TargetResource}{[required] The target standard distribution or distribution tenant resource for the
+domain. You can specify either \code{DistributionId} or
+\code{DistributionTenantId}, but not both.}
 
-\item{IfMatch}{The value of the \code{ETag} identifier for the distribution or distribution
-tenant that will be associated with the domain.}
+\item{IfMatch}{The value of the \code{ETag} identifier for the standard distribution or
+distribution tenant that will be associated with the domain.}
 }
 \description{
-Moves a domain from its current distribution or distribution tenant to another one.
+We recommend that you use the \code{\link[=cloudfront_update_domain_association]{update_domain_association}} API operation to move a domain association, as it supports both standard distributions and distribution tenants. \code{\link[=cloudfront_associate_alias]{associate_alias}} performs similar checks but only supports standard distributions.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudfront_update_domain_association/} for full documentation.
 }

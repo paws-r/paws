@@ -10,6 +10,7 @@ opensearchserviceserverless_create_collection(
   description = NULL,
   tags = NULL,
   standbyReplicas = NULL,
+  vectorOptions = NULL,
   clientToken = NULL
 )
 }
@@ -24,6 +25,8 @@ opensearchserviceserverless_create_collection(
 OpenSearch Serverless collection.}
 
 \item{standbyReplicas}{Indicates whether standby replicas should be used for a collection.}
+
+\item{vectorOptions}{Configuration options for vector search capabilities in the collection.}
 
 \item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
 }

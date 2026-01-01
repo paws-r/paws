@@ -4,11 +4,15 @@
 \alias{billing_delete_billing_view}
 \title{Deletes the specified billing view}
 \usage{
-billing_delete_billing_view(arn)
+billing_delete_billing_view(arn, force = NULL)
 }
 \arguments{
 \item{arn}{[required] The Amazon Resource Name (ARN) that can be used to uniquely identify the
 billing view.}
+
+\item{force}{If set to true, forces deletion of the billing view even if it has
+derived resources (e.g. other billing views or budgets). Use with
+caution as this may break dependent resources.}
 }
 \description{
 Deletes the specified billing view.

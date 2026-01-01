@@ -65,8 +65,8 @@ You can modify the following attributes only: \code{disableApiTermination} |
 currently attached. The volume must be owned by the caller. If no value
 is specified for \code{DeleteOnTermination}, the default is \code{true} and the
 volume is deleted when the instance is terminated. You can't modify the
-\code{DeleteOnTermination} attribute for volumes that are attached to Fargate
-tasks.
+\code{DeleteOnTermination} attribute for volumes that are attached to Amazon
+Web Services-managed resources.
 
 To add instance store volumes to an Amazon EBS-backed instance, you must
 add them when you launch the instance. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html#Using_OverridingAMIBDM}{Update the block device mapping when launching an instance}
@@ -95,7 +95,7 @@ information, see
 \item{UserData}{Changes the instance's user data to the specified value. User data must
 be base64-encoded. Depending on the tool or SDK that you're using, the
 base64-encoding might be performed for you. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/}{Work with instance user data}.}
+Work with instance user data.}
 
 \item{InstanceInitiatedShutdownBehavior}{Specifies whether an instance stops or terminates when you initiate
 shutdown from the instance (using the operating system command for

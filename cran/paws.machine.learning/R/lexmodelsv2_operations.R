@@ -310,12 +310,18 @@ lexmodelsv2_create_bot_alias <- function(botAliasName, description = NULL, botVe
 #' -   IntentC
 #' @param voiceSettings The Amazon Polly voice ID that Amazon Lex uses for voice interaction
 #' with the user.
+#' @param unifiedSpeechSettings Unified speech settings to configure for the new bot locale.
+#' @param speechRecognitionSettings Speech-to-text settings to configure for the new bot locale.
 #' @param generativeAISettings 
+#' @param speechDetectionSensitivity The sensitivity level for voice activity detection (VAD) in the bot
+#' locale. This setting helps optimize speech recognition accuracy by
+#' adjusting how the system responds to background noise during voice
+#' interactions.
 #'
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_create_bot_locale
-lexmodelsv2_create_bot_locale <- function(botId, botVersion, localeId, description = NULL, nluIntentConfidenceThreshold, voiceSettings = NULL, generativeAISettings = NULL) {
+lexmodelsv2_create_bot_locale <- function(botId, botVersion, localeId, description = NULL, nluIntentConfidenceThreshold, voiceSettings = NULL, unifiedSpeechSettings = NULL, speechRecognitionSettings = NULL, generativeAISettings = NULL, speechDetectionSensitivity = NULL) {
   op <- new_operation(
     name = "CreateBotLocale",
     http_method = "PUT",
@@ -324,7 +330,7 @@ lexmodelsv2_create_bot_locale <- function(botId, botVersion, localeId, descripti
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lexmodelsv2$create_bot_locale_input(botId = botId, botVersion = botVersion, localeId = localeId, description = description, nluIntentConfidenceThreshold = nluIntentConfidenceThreshold, voiceSettings = voiceSettings, generativeAISettings = generativeAISettings)
+  input <- .lexmodelsv2$create_bot_locale_input(botId = botId, botVersion = botVersion, localeId = localeId, description = description, nluIntentConfidenceThreshold = nluIntentConfidenceThreshold, voiceSettings = voiceSettings, unifiedSpeechSettings = unifiedSpeechSettings, speechRecognitionSettings = speechRecognitionSettings, generativeAISettings = generativeAISettings, speechDetectionSensitivity = speechDetectionSensitivity)
   output <- .lexmodelsv2$create_bot_locale_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config, op)
@@ -450,6 +456,10 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #'
 #' @param intentName &#91;required&#93; The name of the intent. Intent names must be unique in the locale that
 #' contains the intent and cannot match the name of any built-in intent.
+#' @param intentDisplayName A display name for the intent. If configured, This name will be shown to
+#' users during Intent Disambiguation instead of the intent name. Display
+#' names should be user-friendly, descriptive and match the intent's
+#' purpose to improve user experience during disambiguation.
 #' @param description A description of the intent. Use the description to help identify the
 #' intent in lists.
 #' @param parentIntentSignature A unique identifier for the built-in intent to base this intent on.
@@ -530,7 +540,7 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_create_intent
-lexmodelsv2_create_intent <- function(intentName, description = NULL, parentIntentSignature = NULL, sampleUtterances = NULL, dialogCodeHook = NULL, fulfillmentCodeHook = NULL, intentConfirmationSetting = NULL, intentClosingSetting = NULL, inputContexts = NULL, outputContexts = NULL, kendraConfiguration = NULL, botId, botVersion, localeId, initialResponseSetting = NULL, qnAIntentConfiguration = NULL, qInConnectIntentConfiguration = NULL) {
+lexmodelsv2_create_intent <- function(intentName, intentDisplayName = NULL, description = NULL, parentIntentSignature = NULL, sampleUtterances = NULL, dialogCodeHook = NULL, fulfillmentCodeHook = NULL, intentConfirmationSetting = NULL, intentClosingSetting = NULL, inputContexts = NULL, outputContexts = NULL, kendraConfiguration = NULL, botId, botVersion, localeId, initialResponseSetting = NULL, qnAIntentConfiguration = NULL, qInConnectIntentConfiguration = NULL) {
   op <- new_operation(
     name = "CreateIntent",
     http_method = "PUT",
@@ -539,7 +549,7 @@ lexmodelsv2_create_intent <- function(intentName, description = NULL, parentInte
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lexmodelsv2$create_intent_input(intentName = intentName, description = description, parentIntentSignature = parentIntentSignature, sampleUtterances = sampleUtterances, dialogCodeHook = dialogCodeHook, fulfillmentCodeHook = fulfillmentCodeHook, intentConfirmationSetting = intentConfirmationSetting, intentClosingSetting = intentClosingSetting, inputContexts = inputContexts, outputContexts = outputContexts, kendraConfiguration = kendraConfiguration, botId = botId, botVersion = botVersion, localeId = localeId, initialResponseSetting = initialResponseSetting, qnAIntentConfiguration = qnAIntentConfiguration, qInConnectIntentConfiguration = qInConnectIntentConfiguration)
+  input <- .lexmodelsv2$create_intent_input(intentName = intentName, intentDisplayName = intentDisplayName, description = description, parentIntentSignature = parentIntentSignature, sampleUtterances = sampleUtterances, dialogCodeHook = dialogCodeHook, fulfillmentCodeHook = fulfillmentCodeHook, intentConfirmationSetting = intentConfirmationSetting, intentClosingSetting = intentClosingSetting, inputContexts = inputContexts, outputContexts = outputContexts, kendraConfiguration = kendraConfiguration, botId = botId, botVersion = botVersion, localeId = localeId, initialResponseSetting = initialResponseSetting, qnAIntentConfiguration = qnAIntentConfiguration, qInConnectIntentConfiguration = qInConnectIntentConfiguration)
   output <- .lexmodelsv2$create_intent_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config, op)
@@ -3953,15 +3963,21 @@ lexmodelsv2_update_bot_alias <- function(botAliasId, botAliasName, description =
 #' list of possible intents for an utterance.
 #' @param voiceSettings The new Amazon Polly voice Amazon Lex should use for voice interaction
 #' with the user.
+#' @param unifiedSpeechSettings Updated unified speech settings to apply to the bot locale.
+#' @param speechRecognitionSettings Updated speech-to-text settings to apply to the bot locale.
 #' @param generativeAISettings Contains settings for generative AI features powered by Amazon Bedrock
 #' for your bot locale. Use this object to turn generative AI features on
 #' and off. Pricing may differ if you turn a feature on. For more
 #' information, see LINK.
+#' @param speechDetectionSensitivity The new sensitivity level for voice activity detection (VAD) in the bot
+#' locale. This setting helps optimize speech recognition accuracy by
+#' adjusting how the system responds to background noise during voice
+#' interactions.
 #'
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_update_bot_locale
-lexmodelsv2_update_bot_locale <- function(botId, botVersion, localeId, description = NULL, nluIntentConfidenceThreshold, voiceSettings = NULL, generativeAISettings = NULL) {
+lexmodelsv2_update_bot_locale <- function(botId, botVersion, localeId, description = NULL, nluIntentConfidenceThreshold, voiceSettings = NULL, unifiedSpeechSettings = NULL, speechRecognitionSettings = NULL, generativeAISettings = NULL, speechDetectionSensitivity = NULL) {
   op <- new_operation(
     name = "UpdateBotLocale",
     http_method = "PUT",
@@ -3970,7 +3986,7 @@ lexmodelsv2_update_bot_locale <- function(botId, botVersion, localeId, descripti
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lexmodelsv2$update_bot_locale_input(botId = botId, botVersion = botVersion, localeId = localeId, description = description, nluIntentConfidenceThreshold = nluIntentConfidenceThreshold, voiceSettings = voiceSettings, generativeAISettings = generativeAISettings)
+  input <- .lexmodelsv2$update_bot_locale_input(botId = botId, botVersion = botVersion, localeId = localeId, description = description, nluIntentConfidenceThreshold = nluIntentConfidenceThreshold, voiceSettings = voiceSettings, unifiedSpeechSettings = unifiedSpeechSettings, speechRecognitionSettings = speechRecognitionSettings, generativeAISettings = generativeAISettings, speechDetectionSensitivity = speechDetectionSensitivity)
   output <- .lexmodelsv2$update_bot_locale_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config, op)
@@ -4062,6 +4078,7 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #'
 #' @param intentId &#91;required&#93; The unique identifier of the intent to update.
 #' @param intentName &#91;required&#93; The new name for the intent.
+#' @param intentDisplayName The new display name for the intent.
 #' @param description The new description of the intent.
 #' @param parentIntentSignature The signature of the new built-in intent to use as the parent of this
 #' intent.
@@ -4098,7 +4115,7 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_update_intent
-lexmodelsv2_update_intent <- function(intentId, intentName, description = NULL, parentIntentSignature = NULL, sampleUtterances = NULL, dialogCodeHook = NULL, fulfillmentCodeHook = NULL, slotPriorities = NULL, intentConfirmationSetting = NULL, intentClosingSetting = NULL, inputContexts = NULL, outputContexts = NULL, kendraConfiguration = NULL, botId, botVersion, localeId, initialResponseSetting = NULL, qnAIntentConfiguration = NULL, qInConnectIntentConfiguration = NULL) {
+lexmodelsv2_update_intent <- function(intentId, intentName, intentDisplayName = NULL, description = NULL, parentIntentSignature = NULL, sampleUtterances = NULL, dialogCodeHook = NULL, fulfillmentCodeHook = NULL, slotPriorities = NULL, intentConfirmationSetting = NULL, intentClosingSetting = NULL, inputContexts = NULL, outputContexts = NULL, kendraConfiguration = NULL, botId, botVersion, localeId, initialResponseSetting = NULL, qnAIntentConfiguration = NULL, qInConnectIntentConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateIntent",
     http_method = "PUT",
@@ -4107,7 +4124,7 @@ lexmodelsv2_update_intent <- function(intentId, intentName, description = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lexmodelsv2$update_intent_input(intentId = intentId, intentName = intentName, description = description, parentIntentSignature = parentIntentSignature, sampleUtterances = sampleUtterances, dialogCodeHook = dialogCodeHook, fulfillmentCodeHook = fulfillmentCodeHook, slotPriorities = slotPriorities, intentConfirmationSetting = intentConfirmationSetting, intentClosingSetting = intentClosingSetting, inputContexts = inputContexts, outputContexts = outputContexts, kendraConfiguration = kendraConfiguration, botId = botId, botVersion = botVersion, localeId = localeId, initialResponseSetting = initialResponseSetting, qnAIntentConfiguration = qnAIntentConfiguration, qInConnectIntentConfiguration = qInConnectIntentConfiguration)
+  input <- .lexmodelsv2$update_intent_input(intentId = intentId, intentName = intentName, intentDisplayName = intentDisplayName, description = description, parentIntentSignature = parentIntentSignature, sampleUtterances = sampleUtterances, dialogCodeHook = dialogCodeHook, fulfillmentCodeHook = fulfillmentCodeHook, slotPriorities = slotPriorities, intentConfirmationSetting = intentConfirmationSetting, intentClosingSetting = intentClosingSetting, inputContexts = inputContexts, outputContexts = outputContexts, kendraConfiguration = kendraConfiguration, botId = botId, botVersion = botVersion, localeId = localeId, initialResponseSetting = initialResponseSetting, qnAIntentConfiguration = qnAIntentConfiguration, qInConnectIntentConfiguration = qInConnectIntentConfiguration)
   output <- .lexmodelsv2$update_intent_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config, op)

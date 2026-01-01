@@ -13,6 +13,7 @@ customerprofiles_create_domain(
   DeadLetterQueueUrl = NULL,
   Matching = NULL,
   RuleBasedMatching = NULL,
+  DataStore = NULL,
   Tags = NULL
 )
 }
@@ -51,6 +52,8 @@ and \code{\link[=customerprofiles_get_similar_profiles]{get_similar_profiles}} A
 to return and review the results. Also, if you have configured
 \code{ExportingConfig} in the \code{RuleBasedMatchingRequest}, you can download
 the results from S3.}
+
+\item{DataStore}{Set to true to enabled data store for this domain.}
 
 \item{Tags}{The tags used to organize, track, or control access for this resource.}
 }

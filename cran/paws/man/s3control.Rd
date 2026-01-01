@@ -169,7 +169,7 @@ plane actions.
 \link[paws.storage:s3control_list_regional_buckets]{list_regional_buckets} \tab This operation is not supported by directory buckets\cr
 \link[paws.storage:s3control_list_storage_lens_configurations]{list_storage_lens_configurations} \tab This operation is not supported by directory buckets\cr
 \link[paws.storage:s3control_list_storage_lens_groups]{list_storage_lens_groups} \tab Lists all the Storage Lens groups in the specified home Region\cr
-\link[paws.storage:s3control_list_tags_for_resource]{list_tags_for_resource} \tab This operation allows you to list all the Amazon Web Services resource tags for a specified resource\cr
+\link[paws.storage:s3control_list_tags_for_resource]{list_tags_for_resource} \tab This operation allows you to list all of the tags for a specified resource\cr
 \link[paws.storage:s3control_put_access_grants_instance_resource_policy]{put_access_grants_instance_resource_policy} \tab Updates the resource policy of the S3 Access Grants instance\cr
 \link[paws.storage:s3control_put_access_point_configuration_for_object_lambda]{put_access_point_configuration_for_object_lambda} \tab This operation is not supported by directory buckets\cr
 \link[paws.storage:s3control_put_access_point_policy]{put_access_point_policy} \tab Associates an access policy with the specified access point\cr
@@ -186,8 +186,8 @@ plane actions.
 \link[paws.storage:s3control_put_storage_lens_configuration]{put_storage_lens_configuration} \tab This operation is not supported by directory buckets\cr
 \link[paws.storage:s3control_put_storage_lens_configuration_tagging]{put_storage_lens_configuration_tagging} \tab This operation is not supported by directory buckets\cr
 \link[paws.storage:s3control_submit_multi_region_access_point_routes]{submit_multi_region_access_point_routes} \tab This operation is not supported by directory buckets\cr
-\link[paws.storage:s3control_tag_resource]{tag_resource} \tab Creates a new Amazon Web Services resource tag or updates an existing resource tag\cr
-\link[paws.storage:s3control_untag_resource]{untag_resource} \tab This operation removes the specified Amazon Web Services resource tags from an S3 resource\cr
+\link[paws.storage:s3control_tag_resource]{tag_resource} \tab Creates a new user-defined tag or updates an existing tag\cr
+\link[paws.storage:s3control_untag_resource]{untag_resource} \tab This operation removes the specified user-defined tags from an S3 resource\cr
 \link[paws.storage:s3control_update_access_grants_location]{update_access_grants_location} \tab Updates the IAM role of a registered location in your S3 Access Grants instance\cr
 \link[paws.storage:s3control_update_job_priority]{update_job_priority} \tab Updates an existing S3 Batch Operations job's priority\cr
 \link[paws.storage:s3control_update_job_status]{update_job_status} \tab Updates the status for the specified job\cr

@@ -13,7 +13,8 @@ paymentcryptographydataplane_translate_pin_data(
   IncomingDukptAttributes = NULL,
   OutgoingDukptAttributes = NULL,
   IncomingWrappedKey = NULL,
-  OutgoingWrappedKey = NULL
+  OutgoingWrappedKey = NULL,
+  IncomingAs2805Attributes = NULL
 )
 }
 \arguments{
@@ -48,6 +49,9 @@ PIN block data is encrypted.}
 
 \item{OutgoingWrappedKey}{The WrappedKeyBlock containing the encryption key for encrypting
 outgoing PIN block data.}
+
+\item{IncomingAs2805Attributes}{The attributes and values to use for incoming AS2805 encryption key for
+PIN block translation.}
 }
 \description{
 Translates encrypted PIN block from and to ISO 9564 formats 0,1,3,4. For more information, see \href{https://docs.aws.amazon.com/payment-cryptography/latest/userguide/translate-pin-data.html}{Translate PIN data} in the \emph{Amazon Web Services Payment Cryptography User Guide}.

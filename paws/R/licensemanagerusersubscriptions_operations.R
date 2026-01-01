@@ -18,36 +18,39 @@ NULL
 #' in the *Amazon Web Services Billing User Guide*.
 #'
 #' @usage
-#' licensemanagerusersubscriptions_associate_user(Domain, IdentityProvider,
-#'   InstanceId, Tags, Username)
+#' licensemanagerusersubscriptions_associate_user(Username, InstanceId,
+#'   IdentityProvider, Domain, Tags)
 #'
+#' @param Username &#91;required&#93; The user name from the identity provider.
+#' @param InstanceId &#91;required&#93; The ID of the EC2 instance that provides the user-based subscription.
+#' @param IdentityProvider &#91;required&#93; The identity provider for the user.
 #' @param Domain The domain name of the Active Directory that contains information for
 #' the user to associate.
-#' @param IdentityProvider &#91;required&#93; The identity provider for the user.
-#' @param InstanceId &#91;required&#93; The ID of the EC2 instance that provides the user-based subscription.
 #' @param Tags The tags that apply for the user association.
-#' @param Username &#91;required&#93; The user name from the identity provider.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   InstanceUserSummary = list(
-#'     AssociationDate = "string",
-#'     DisassociationDate = "string",
-#'     Domain = "string",
+#'     Username = "string",
+#'     InstanceId = "string",
 #'     IdentityProvider = list(
 #'       ActiveDirectoryIdentityProvider = list(
+#'         DirectoryId = "string",
 #'         ActiveDirectorySettings = list(
+#'           DomainName = "string",
+#'           DomainIpv4List = list(
+#'             "string"
+#'           ),
+#'           DomainIpv6List = list(
+#'             "string"
+#'           ),
 #'           DomainCredentialsProvider = list(
 #'             SecretsManagerCredentialsProvider = list(
 #'               SecretId = "string"
 #'             )
 #'           ),
-#'           DomainIpv4List = list(
-#'             "string"
-#'           ),
-#'           DomainName = "string",
 #'           DomainNetworkSettings = list(
 #'             Subnets = list(
 #'               "string"
@@ -55,14 +58,15 @@ NULL
 #'           )
 #'         ),
 #'         ActiveDirectoryType = "SELF_MANAGED"|"AWS_MANAGED",
-#'         DirectoryId = "string"
+#'         IsSharedActiveDirectory = TRUE|FALSE
 #'       )
 #'     ),
-#'     InstanceId = "string",
-#'     InstanceUserArn = "string",
 #'     Status = "string",
+#'     InstanceUserArn = "string",
 #'     StatusMessage = "string",
-#'     Username = "string"
+#'     Domain = "string",
+#'     AssociationDate = "string",
+#'     DisassociationDate = "string"
 #'   )
 #' )
 #' ```
@@ -70,19 +74,24 @@ NULL
 #' @section Request syntax:
 #' ```
 #' svc$associate_user(
-#'   Domain = "string",
+#'   Username = "string",
+#'   InstanceId = "string",
 #'   IdentityProvider = list(
 #'     ActiveDirectoryIdentityProvider = list(
+#'       DirectoryId = "string",
 #'       ActiveDirectorySettings = list(
+#'         DomainName = "string",
+#'         DomainIpv4List = list(
+#'           "string"
+#'         ),
+#'         DomainIpv6List = list(
+#'           "string"
+#'         ),
 #'         DomainCredentialsProvider = list(
 #'           SecretsManagerCredentialsProvider = list(
 #'             SecretId = "string"
 #'           )
 #'         ),
-#'         DomainIpv4List = list(
-#'           "string"
-#'         ),
-#'         DomainName = "string",
 #'         DomainNetworkSettings = list(
 #'           Subnets = list(
 #'             "string"
@@ -90,14 +99,13 @@ NULL
 #'         )
 #'       ),
 #'       ActiveDirectoryType = "SELF_MANAGED"|"AWS_MANAGED",
-#'       DirectoryId = "string"
+#'       IsSharedActiveDirectory = TRUE|FALSE
 #'     )
 #'   ),
-#'   InstanceId = "string",
+#'   Domain = "string",
 #'   Tags = list(
 #'     "string"
-#'   ),
-#'   Username = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -106,7 +114,7 @@ NULL
 #' @rdname licensemanagerusersubscriptions_associate_user
 #'
 #' @aliases licensemanagerusersubscriptions_associate_user
-licensemanagerusersubscriptions_associate_user <- function(Domain = NULL, IdentityProvider, InstanceId, Tags = NULL, Username) {
+licensemanagerusersubscriptions_associate_user <- function(Username, InstanceId, IdentityProvider, Domain = NULL, Tags = NULL) {
   op <- new_operation(
     name = "AssociateUser",
     http_method = "POST",
@@ -115,7 +123,7 @@ licensemanagerusersubscriptions_associate_user <- function(Domain = NULL, Identi
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .licensemanagerusersubscriptions$associate_user_input(Domain = Domain, IdentityProvider = IdentityProvider, InstanceId = InstanceId, Tags = Tags, Username = Username)
+  input <- .licensemanagerusersubscriptions$associate_user_input(Username = Username, InstanceId = InstanceId, IdentityProvider = IdentityProvider, Domain = Domain, Tags = Tags)
   output <- .licensemanagerusersubscriptions$associate_user_output()
   config <- get_config()
   svc <- .licensemanagerusersubscriptions$service(config, op)
@@ -161,6 +169,7 @@ licensemanagerusersubscriptions_associate_user <- function(Domain = NULL, Identi
 #' svc$create_license_server_endpoint(
 #'   IdentityProviderArn = "string",
 #'   LicenseServerSettings = list(
+#'     ServerType = "RDS_SAL",
 #'     ServerSettings = list(
 #'       RdsSalSettings = list(
 #'         RdsSalCredentialsProvider = list(
@@ -169,8 +178,7 @@ licensemanagerusersubscriptions_associate_user <- function(Domain = NULL, Identi
 #'           )
 #'         )
 #'       )
-#'     ),
-#'     ServerType = "RDS_SAL"
+#'     )
 #'   ),
 #'   Tags = list(
 #'     "string"
@@ -220,25 +228,26 @@ licensemanagerusersubscriptions_create_license_server_endpoint <- function(Ident
 #' ```
 #' list(
 #'   LicenseServerEndpoint = list(
-#'     CreationTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
 #'     IdentityProviderArn = "string",
-#'     LicenseServerEndpointArn = "string",
-#'     LicenseServerEndpointId = "string",
-#'     LicenseServerEndpointProvisioningStatus = "PROVISIONING"|"PROVISIONING_FAILED"|"PROVISIONED"|"DELETING"|"DELETION_FAILED"|"DELETED",
-#'     LicenseServers = list(
-#'       list(
-#'         HealthStatus = "HEALTHY"|"UNHEALTHY"|"NOT_APPLICABLE",
-#'         Ipv4Address = "string",
-#'         ProvisioningStatus = "PROVISIONING"|"PROVISIONING_FAILED"|"PROVISIONED"|"DELETING"|"DELETION_FAILED"|"DELETED"
-#'       )
-#'     ),
+#'     ServerType = "RDS_SAL",
 #'     ServerEndpoint = list(
 #'       Endpoint = "string"
 #'     ),
-#'     ServerType = "RDS_SAL",
-#'     StatusMessage = "string"
+#'     StatusMessage = "string",
+#'     LicenseServerEndpointId = "string",
+#'     LicenseServerEndpointArn = "string",
+#'     LicenseServerEndpointProvisioningStatus = "PROVISIONING"|"PROVISIONING_FAILED"|"PROVISIONED"|"DELETING"|"DELETION_FAILED"|"DELETED",
+#'     LicenseServers = list(
+#'       list(
+#'         ProvisioningStatus = "PROVISIONING"|"PROVISIONING_FAILED"|"PROVISIONED"|"DELETING"|"DELETION_FAILED"|"DELETED",
+#'         HealthStatus = "HEALTHY"|"UNHEALTHY"|"NOT_APPLICABLE",
+#'         Ipv4Address = "string",
+#'         Ipv6Address = "string"
+#'       )
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
 #'   )
 #' )
 #' ```
@@ -284,35 +293,38 @@ licensemanagerusersubscriptions_delete_license_server_endpoint <- function(Licen
 #'
 #' @usage
 #' licensemanagerusersubscriptions_deregister_identity_provider(
-#'   IdentityProvider, IdentityProviderArn, Product)
+#'   IdentityProvider, Product, IdentityProviderArn)
 #'
 #' @param IdentityProvider An object that specifies details for the Active Directory identity
 #' provider.
-#' @param IdentityProviderArn The Amazon Resource Name (ARN) that identifies the identity provider to
-#' deregister.
 #' @param Product The name of the user-based subscription product.
 #' 
 #' Valid values: `VISUAL_STUDIO_ENTERPRISE` | `VISUAL_STUDIO_PROFESSIONAL`
 #' | `OFFICE_PROFESSIONAL_PLUS` | `REMOTE_DESKTOP_SERVICES`
+#' @param IdentityProviderArn The Amazon Resource Name (ARN) that identifies the identity provider to
+#' deregister.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   IdentityProviderSummary = list(
-#'     FailureMessage = "string",
 #'     IdentityProvider = list(
 #'       ActiveDirectoryIdentityProvider = list(
+#'         DirectoryId = "string",
 #'         ActiveDirectorySettings = list(
+#'           DomainName = "string",
+#'           DomainIpv4List = list(
+#'             "string"
+#'           ),
+#'           DomainIpv6List = list(
+#'             "string"
+#'           ),
 #'           DomainCredentialsProvider = list(
 #'             SecretsManagerCredentialsProvider = list(
 #'               SecretId = "string"
 #'             )
 #'           ),
-#'           DomainIpv4List = list(
-#'             "string"
-#'           ),
-#'           DomainName = "string",
 #'           DomainNetworkSettings = list(
 #'             Subnets = list(
 #'               "string"
@@ -320,18 +332,20 @@ licensemanagerusersubscriptions_delete_license_server_endpoint <- function(Licen
 #'           )
 #'         ),
 #'         ActiveDirectoryType = "SELF_MANAGED"|"AWS_MANAGED",
-#'         DirectoryId = "string"
+#'         IsSharedActiveDirectory = TRUE|FALSE
 #'       )
 #'     ),
-#'     IdentityProviderArn = "string",
-#'     Product = "string",
 #'     Settings = list(
-#'       SecurityGroupId = "string",
 #'       Subnets = list(
 #'         "string"
-#'       )
+#'       ),
+#'       SecurityGroupId = "string"
 #'     ),
-#'     Status = "string"
+#'     Product = "string",
+#'     Status = "string",
+#'     IdentityProviderArn = "string",
+#'     FailureMessage = "string",
+#'     OwnerAccountId = "string"
 #'   )
 #' )
 #' ```
@@ -341,16 +355,20 @@ licensemanagerusersubscriptions_delete_license_server_endpoint <- function(Licen
 #' svc$deregister_identity_provider(
 #'   IdentityProvider = list(
 #'     ActiveDirectoryIdentityProvider = list(
+#'       DirectoryId = "string",
 #'       ActiveDirectorySettings = list(
+#'         DomainName = "string",
+#'         DomainIpv4List = list(
+#'           "string"
+#'         ),
+#'         DomainIpv6List = list(
+#'           "string"
+#'         ),
 #'         DomainCredentialsProvider = list(
 #'           SecretsManagerCredentialsProvider = list(
 #'             SecretId = "string"
 #'           )
 #'         ),
-#'         DomainIpv4List = list(
-#'           "string"
-#'         ),
-#'         DomainName = "string",
 #'         DomainNetworkSettings = list(
 #'           Subnets = list(
 #'             "string"
@@ -358,11 +376,11 @@ licensemanagerusersubscriptions_delete_license_server_endpoint <- function(Licen
 #'         )
 #'       ),
 #'       ActiveDirectoryType = "SELF_MANAGED"|"AWS_MANAGED",
-#'       DirectoryId = "string"
+#'       IsSharedActiveDirectory = TRUE|FALSE
 #'     )
 #'   ),
-#'   IdentityProviderArn = "string",
-#'   Product = "string"
+#'   Product = "string",
+#'   IdentityProviderArn = "string"
 #' )
 #' ```
 #'
@@ -371,7 +389,7 @@ licensemanagerusersubscriptions_delete_license_server_endpoint <- function(Licen
 #' @rdname licensemanagerusersubscriptions_deregister_identity_provider
 #'
 #' @aliases licensemanagerusersubscriptions_deregister_identity_provider
-licensemanagerusersubscriptions_deregister_identity_provider <- function(IdentityProvider = NULL, IdentityProviderArn = NULL, Product = NULL) {
+licensemanagerusersubscriptions_deregister_identity_provider <- function(IdentityProvider = NULL, Product = NULL, IdentityProviderArn = NULL) {
   op <- new_operation(
     name = "DeregisterIdentityProvider",
     http_method = "POST",
@@ -380,7 +398,7 @@ licensemanagerusersubscriptions_deregister_identity_provider <- function(Identit
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .licensemanagerusersubscriptions$deregister_identity_provider_input(IdentityProvider = IdentityProvider, IdentityProviderArn = IdentityProviderArn, Product = Product)
+  input <- .licensemanagerusersubscriptions$deregister_identity_provider_input(IdentityProvider = IdentityProvider, Product = Product, IdentityProviderArn = IdentityProviderArn)
   output <- .licensemanagerusersubscriptions$deregister_identity_provider_output()
   config <- get_config()
   svc <- .licensemanagerusersubscriptions$service(config, op)
@@ -398,38 +416,41 @@ licensemanagerusersubscriptions_deregister_identity_provider <- function(Identit
 #' subscriptions.
 #'
 #' @usage
-#' licensemanagerusersubscriptions_disassociate_user(Domain,
-#'   IdentityProvider, InstanceId, InstanceUserArn, Username)
+#' licensemanagerusersubscriptions_disassociate_user(Username, InstanceId,
+#'   IdentityProvider, InstanceUserArn, Domain)
 #'
-#' @param Domain The domain name of the Active Directory that contains information for
-#' the user to disassociate.
+#' @param Username The user name from the Active Directory identity provider for the user.
+#' @param InstanceId The ID of the EC2 instance which provides user-based subscriptions.
 #' @param IdentityProvider An object that specifies details for the Active Directory identity
 #' provider.
-#' @param InstanceId The ID of the EC2 instance which provides user-based subscriptions.
 #' @param InstanceUserArn The Amazon Resource Name (ARN) of the user to disassociate from the EC2
 #' instance.
-#' @param Username The user name from the Active Directory identity provider for the user.
+#' @param Domain The domain name of the Active Directory that contains information for
+#' the user to disassociate.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   InstanceUserSummary = list(
-#'     AssociationDate = "string",
-#'     DisassociationDate = "string",
-#'     Domain = "string",
+#'     Username = "string",
+#'     InstanceId = "string",
 #'     IdentityProvider = list(
 #'       ActiveDirectoryIdentityProvider = list(
+#'         DirectoryId = "string",
 #'         ActiveDirectorySettings = list(
+#'           DomainName = "string",
+#'           DomainIpv4List = list(
+#'             "string"
+#'           ),
+#'           DomainIpv6List = list(
+#'             "string"
+#'           ),
 #'           DomainCredentialsProvider = list(
 #'             SecretsManagerCredentialsProvider = list(
 #'               SecretId = "string"
 #'             )
 #'           ),
-#'           DomainIpv4List = list(
-#'             "string"
-#'           ),
-#'           DomainName = "string",
 #'           DomainNetworkSettings = list(
 #'             Subnets = list(
 #'               "string"
@@ -437,14 +458,15 @@ licensemanagerusersubscriptions_deregister_identity_provider <- function(Identit
 #'           )
 #'         ),
 #'         ActiveDirectoryType = "SELF_MANAGED"|"AWS_MANAGED",
-#'         DirectoryId = "string"
+#'         IsSharedActiveDirectory = TRUE|FALSE
 #'       )
 #'     ),
-#'     InstanceId = "string",
-#'     InstanceUserArn = "string",
 #'     Status = "string",
+#'     InstanceUserArn = "string",
 #'     StatusMessage = "string",
-#'     Username = "string"
+#'     Domain = "string",
+#'     AssociationDate = "string",
+#'     DisassociationDate = "string"
 #'   )
 #' )
 #' ```
@@ -452,19 +474,24 @@ licensemanagerusersubscriptions_deregister_identity_provider <- function(Identit
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_user(
-#'   Domain = "string",
+#'   Username = "string",
+#'   InstanceId = "string",
 #'   IdentityProvider = list(
 #'     ActiveDirectoryIdentityProvider = list(
+#'       DirectoryId = "string",
 #'       ActiveDirectorySettings = list(
+#'         DomainName = "string",
+#'         DomainIpv4List = list(
+#'           "string"
+#'         ),
+#'         DomainIpv6List = list(
+#'           "string"
+#'         ),
 #'         DomainCredentialsProvider = list(
 #'           SecretsManagerCredentialsProvider = list(
 #'             SecretId = "string"
 #'           )
 #'         ),
-#'         DomainIpv4List = list(
-#'           "string"
-#'         ),
-#'         DomainName = "string",
 #'         DomainNetworkSettings = list(
 #'           Subnets = list(
 #'             "string"
@@ -472,12 +499,11 @@ licensemanagerusersubscriptions_deregister_identity_provider <- function(Identit
 #'         )
 #'       ),
 #'       ActiveDirectoryType = "SELF_MANAGED"|"AWS_MANAGED",
-#'       DirectoryId = "string"
+#'       IsSharedActiveDirectory = TRUE|FALSE
 #'     )
 #'   ),
-#'   InstanceId = "string",
 #'   InstanceUserArn = "string",
-#'   Username = "string"
+#'   Domain = "string"
 #' )
 #' ```
 #'
@@ -486,7 +512,7 @@ licensemanagerusersubscriptions_deregister_identity_provider <- function(Identit
 #' @rdname licensemanagerusersubscriptions_disassociate_user
 #'
 #' @aliases licensemanagerusersubscriptions_disassociate_user
-licensemanagerusersubscriptions_disassociate_user <- function(Domain = NULL, IdentityProvider = NULL, InstanceId = NULL, InstanceUserArn = NULL, Username = NULL) {
+licensemanagerusersubscriptions_disassociate_user <- function(Username = NULL, InstanceId = NULL, IdentityProvider = NULL, InstanceUserArn = NULL, Domain = NULL) {
   op <- new_operation(
     name = "DisassociateUser",
     http_method = "POST",
@@ -495,7 +521,7 @@ licensemanagerusersubscriptions_disassociate_user <- function(Domain = NULL, Ide
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .licensemanagerusersubscriptions$disassociate_user_input(Domain = Domain, IdentityProvider = IdentityProvider, InstanceId = InstanceId, InstanceUserArn = InstanceUserArn, Username = Username)
+  input <- .licensemanagerusersubscriptions$disassociate_user_input(Username = Username, InstanceId = InstanceId, IdentityProvider = IdentityProvider, InstanceUserArn = InstanceUserArn, Domain = Domain)
   output <- .licensemanagerusersubscriptions$disassociate_user_output()
   config <- get_config()
   svc <- .licensemanagerusersubscriptions$service(config, op)
@@ -513,15 +539,15 @@ licensemanagerusersubscriptions_disassociate_user <- function(Domain = NULL, Ide
 #' subscriptions.
 #'
 #' @usage
-#' licensemanagerusersubscriptions_list_identity_providers(Filters,
-#'   MaxResults, NextToken)
+#' licensemanagerusersubscriptions_list_identity_providers(MaxResults,
+#'   Filters, NextToken)
 #'
+#' @param MaxResults The maximum number of results to return from a single request.
 #' @param Filters You can use the following filters to streamline results:
 #' 
 #' -   Product
 #' 
 #' -   DirectoryId
-#' @param MaxResults The maximum number of results to return from a single request.
 #' @param NextToken A token to specify where to start paginating. This is the nextToken from
 #' a previously truncated response.
 #'
@@ -531,19 +557,22 @@ licensemanagerusersubscriptions_disassociate_user <- function(Domain = NULL, Ide
 #' list(
 #'   IdentityProviderSummaries = list(
 #'     list(
-#'       FailureMessage = "string",
 #'       IdentityProvider = list(
 #'         ActiveDirectoryIdentityProvider = list(
+#'           DirectoryId = "string",
 #'           ActiveDirectorySettings = list(
+#'             DomainName = "string",
+#'             DomainIpv4List = list(
+#'               "string"
+#'             ),
+#'             DomainIpv6List = list(
+#'               "string"
+#'             ),
 #'             DomainCredentialsProvider = list(
 #'               SecretsManagerCredentialsProvider = list(
 #'                 SecretId = "string"
 #'               )
 #'             ),
-#'             DomainIpv4List = list(
-#'               "string"
-#'             ),
-#'             DomainName = "string",
 #'             DomainNetworkSettings = list(
 #'               Subnets = list(
 #'                 "string"
@@ -551,18 +580,20 @@ licensemanagerusersubscriptions_disassociate_user <- function(Domain = NULL, Ide
 #'             )
 #'           ),
 #'           ActiveDirectoryType = "SELF_MANAGED"|"AWS_MANAGED",
-#'           DirectoryId = "string"
+#'           IsSharedActiveDirectory = TRUE|FALSE
 #'         )
 #'       ),
-#'       IdentityProviderArn = "string",
-#'       Product = "string",
 #'       Settings = list(
-#'         SecurityGroupId = "string",
 #'         Subnets = list(
 #'           "string"
-#'         )
+#'         ),
+#'         SecurityGroupId = "string"
 #'       ),
-#'       Status = "string"
+#'       Product = "string",
+#'       Status = "string",
+#'       IdentityProviderArn = "string",
+#'       FailureMessage = "string",
+#'       OwnerAccountId = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -572,6 +603,7 @@ licensemanagerusersubscriptions_disassociate_user <- function(Domain = NULL, Ide
 #' @section Request syntax:
 #' ```
 #' svc$list_identity_providers(
+#'   MaxResults = 123,
 #'   Filters = list(
 #'     list(
 #'       Attribute = "string",
@@ -579,7 +611,6 @@ licensemanagerusersubscriptions_disassociate_user <- function(Domain = NULL, Ide
 #'       Value = "string"
 #'     )
 #'   ),
-#'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
 #' ```
@@ -589,7 +620,7 @@ licensemanagerusersubscriptions_disassociate_user <- function(Domain = NULL, Ide
 #' @rdname licensemanagerusersubscriptions_list_identity_providers
 #'
 #' @aliases licensemanagerusersubscriptions_list_identity_providers
-licensemanagerusersubscriptions_list_identity_providers <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+licensemanagerusersubscriptions_list_identity_providers <- function(MaxResults = NULL, Filters = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListIdentityProviders",
     http_method = "POST",
@@ -598,7 +629,7 @@ licensemanagerusersubscriptions_list_identity_providers <- function(Filters = NU
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "IdentityProviderSummaries"),
     stream_api = FALSE
   )
-  input <- .licensemanagerusersubscriptions$list_identity_providers_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .licensemanagerusersubscriptions$list_identity_providers_input(MaxResults = MaxResults, Filters = Filters, NextToken = NextToken)
   output <- .licensemanagerusersubscriptions$list_identity_providers_output()
   config <- get_config()
   svc <- .licensemanagerusersubscriptions$service(config, op)
@@ -614,17 +645,17 @@ licensemanagerusersubscriptions_list_identity_providers <- function(Filters = NU
 #' Lists the EC2 instances providing user-based subscriptions.
 #'
 #' @usage
-#' licensemanagerusersubscriptions_list_instances(Filters, MaxResults,
-#'   NextToken)
+#' licensemanagerusersubscriptions_list_instances(MaxResults, NextToken,
+#'   Filters)
 #'
+#' @param MaxResults The maximum number of results to return from a single request.
+#' @param NextToken A token to specify where to start paginating. This is the nextToken from
+#' a previously truncated response.
 #' @param Filters You can use the following filters to streamline results:
 #' 
 #' -   Status
 #' 
 #' -   InstanceId
-#' @param MaxResults The maximum number of results to return from a single request.
-#' @param NextToken A token to specify where to start paginating. This is the nextToken from
-#' a previously truncated response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -633,12 +664,39 @@ licensemanagerusersubscriptions_list_identity_providers <- function(Filters = NU
 #'   InstanceSummaries = list(
 #'     list(
 #'       InstanceId = "string",
-#'       LastStatusCheckDate = "string",
+#'       Status = "string",
 #'       Products = list(
 #'         "string"
 #'       ),
-#'       Status = "string",
-#'       StatusMessage = "string"
+#'       LastStatusCheckDate = "string",
+#'       StatusMessage = "string",
+#'       OwnerAccountId = "string",
+#'       IdentityProvider = list(
+#'         ActiveDirectoryIdentityProvider = list(
+#'           DirectoryId = "string",
+#'           ActiveDirectorySettings = list(
+#'             DomainName = "string",
+#'             DomainIpv4List = list(
+#'               "string"
+#'             ),
+#'             DomainIpv6List = list(
+#'               "string"
+#'             ),
+#'             DomainCredentialsProvider = list(
+#'               SecretsManagerCredentialsProvider = list(
+#'                 SecretId = "string"
+#'               )
+#'             ),
+#'             DomainNetworkSettings = list(
+#'               Subnets = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           ActiveDirectoryType = "SELF_MANAGED"|"AWS_MANAGED",
+#'           IsSharedActiveDirectory = TRUE|FALSE
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -648,15 +706,15 @@ licensemanagerusersubscriptions_list_identity_providers <- function(Filters = NU
 #' @section Request syntax:
 #' ```
 #' svc$list_instances(
+#'   MaxResults = 123,
+#'   NextToken = "string",
 #'   Filters = list(
 #'     list(
 #'       Attribute = "string",
 #'       Operation = "string",
 #'       Value = "string"
 #'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -665,7 +723,7 @@ licensemanagerusersubscriptions_list_identity_providers <- function(Filters = NU
 #' @rdname licensemanagerusersubscriptions_list_instances
 #'
 #' @aliases licensemanagerusersubscriptions_list_instances
-licensemanagerusersubscriptions_list_instances <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+licensemanagerusersubscriptions_list_instances <- function(MaxResults = NULL, NextToken = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListInstances",
     http_method = "POST",
@@ -674,7 +732,7 @@ licensemanagerusersubscriptions_list_instances <- function(Filters = NULL, MaxRe
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "InstanceSummaries"),
     stream_api = FALSE
   )
-  input <- .licensemanagerusersubscriptions$list_instances_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .licensemanagerusersubscriptions$list_instances_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .licensemanagerusersubscriptions$list_instances_output()
   config <- get_config()
   svc <- .licensemanagerusersubscriptions$service(config, op)
@@ -690,13 +748,13 @@ licensemanagerusersubscriptions_list_instances <- function(Filters = NULL, MaxRe
 #' List the Remote Desktop Services (RDS) License Server endpoints
 #'
 #' @usage
-#' licensemanagerusersubscriptions_list_license_server_endpoints(Filters,
-#'   MaxResults, NextToken)
+#' licensemanagerusersubscriptions_list_license_server_endpoints(
+#'   MaxResults, Filters, NextToken)
 #'
+#' @param MaxResults The maximum number of results to return from a single request.
 #' @param Filters You can use the following filters to streamline results:
 #' 
 #' -   IdentityProviderArn
-#' @param MaxResults The maximum number of results to return from a single request.
 #' @param NextToken A token to specify where to start paginating. This is the nextToken from
 #' a previously truncated response.
 #'
@@ -706,25 +764,26 @@ licensemanagerusersubscriptions_list_instances <- function(Filters = NULL, MaxRe
 #' list(
 #'   LicenseServerEndpoints = list(
 #'     list(
-#'       CreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
 #'       IdentityProviderArn = "string",
-#'       LicenseServerEndpointArn = "string",
-#'       LicenseServerEndpointId = "string",
-#'       LicenseServerEndpointProvisioningStatus = "PROVISIONING"|"PROVISIONING_FAILED"|"PROVISIONED"|"DELETING"|"DELETION_FAILED"|"DELETED",
-#'       LicenseServers = list(
-#'         list(
-#'           HealthStatus = "HEALTHY"|"UNHEALTHY"|"NOT_APPLICABLE",
-#'           Ipv4Address = "string",
-#'           ProvisioningStatus = "PROVISIONING"|"PROVISIONING_FAILED"|"PROVISIONED"|"DELETING"|"DELETION_FAILED"|"DELETED"
-#'         )
-#'       ),
+#'       ServerType = "RDS_SAL",
 #'       ServerEndpoint = list(
 #'         Endpoint = "string"
 #'       ),
-#'       ServerType = "RDS_SAL",
-#'       StatusMessage = "string"
+#'       StatusMessage = "string",
+#'       LicenseServerEndpointId = "string",
+#'       LicenseServerEndpointArn = "string",
+#'       LicenseServerEndpointProvisioningStatus = "PROVISIONING"|"PROVISIONING_FAILED"|"PROVISIONED"|"DELETING"|"DELETION_FAILED"|"DELETED",
+#'       LicenseServers = list(
+#'         list(
+#'           ProvisioningStatus = "PROVISIONING"|"PROVISIONING_FAILED"|"PROVISIONED"|"DELETING"|"DELETION_FAILED"|"DELETED",
+#'           HealthStatus = "HEALTHY"|"UNHEALTHY"|"NOT_APPLICABLE",
+#'           Ipv4Address = "string",
+#'           Ipv6Address = "string"
+#'         )
+#'       ),
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -734,6 +793,7 @@ licensemanagerusersubscriptions_list_instances <- function(Filters = NULL, MaxRe
 #' @section Request syntax:
 #' ```
 #' svc$list_license_server_endpoints(
+#'   MaxResults = 123,
 #'   Filters = list(
 #'     list(
 #'       Attribute = "string",
@@ -741,7 +801,6 @@ licensemanagerusersubscriptions_list_instances <- function(Filters = NULL, MaxRe
 #'       Value = "string"
 #'     )
 #'   ),
-#'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
 #' ```
@@ -751,7 +810,7 @@ licensemanagerusersubscriptions_list_instances <- function(Filters = NULL, MaxRe
 #' @rdname licensemanagerusersubscriptions_lis_lic_ser_end
 #'
 #' @aliases licensemanagerusersubscriptions_list_license_server_endpoints
-licensemanagerusersubscriptions_list_license_server_endpoints <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+licensemanagerusersubscriptions_list_license_server_endpoints <- function(MaxResults = NULL, Filters = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListLicenseServerEndpoints",
     http_method = "POST",
@@ -760,7 +819,7 @@ licensemanagerusersubscriptions_list_license_server_endpoints <- function(Filter
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "LicenseServerEndpoints"),
     stream_api = FALSE
   )
-  input <- .licensemanagerusersubscriptions$list_license_server_endpoints_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .licensemanagerusersubscriptions$list_license_server_endpoints_input(MaxResults = MaxResults, Filters = Filters, NextToken = NextToken)
   output <- .licensemanagerusersubscriptions$list_license_server_endpoints_output()
   config <- get_config()
   svc <- .licensemanagerusersubscriptions$service(config, op)
@@ -778,9 +837,15 @@ licensemanagerusersubscriptions_list_license_server_endpoints <- function(Filter
 #' provider.
 #'
 #' @usage
-#' licensemanagerusersubscriptions_list_product_subscriptions(Filters,
-#'   IdentityProvider, MaxResults, NextToken, Product)
+#' licensemanagerusersubscriptions_list_product_subscriptions(Product,
+#'   IdentityProvider, MaxResults, Filters, NextToken)
 #'
+#' @param Product The name of the user-based subscription product.
+#' 
+#' Valid values: `VISUAL_STUDIO_ENTERPRISE` | `VISUAL_STUDIO_PROFESSIONAL`
+#' | `OFFICE_PROFESSIONAL_PLUS` | `REMOTE_DESKTOP_SERVICES`
+#' @param IdentityProvider &#91;required&#93; An object that specifies details for the identity provider.
+#' @param MaxResults The maximum number of results to return from a single request.
 #' @param Filters You can use the following filters to streamline results:
 #' 
 #' -   Status
@@ -788,35 +853,33 @@ licensemanagerusersubscriptions_list_license_server_endpoints <- function(Filter
 #' -   Username
 #' 
 #' -   Domain
-#' @param IdentityProvider &#91;required&#93; An object that specifies details for the identity provider.
-#' @param MaxResults The maximum number of results to return from a single request.
 #' @param NextToken A token to specify where to start paginating. This is the nextToken from
 #' a previously truncated response.
-#' @param Product The name of the user-based subscription product.
-#' 
-#' Valid values: `VISUAL_STUDIO_ENTERPRISE` | `VISUAL_STUDIO_PROFESSIONAL`
-#' | `OFFICE_PROFESSIONAL_PLUS` | `REMOTE_DESKTOP_SERVICES`
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   NextToken = "string",
 #'   ProductUserSummaries = list(
 #'     list(
-#'       Domain = "string",
+#'       Username = "string",
+#'       Product = "string",
 #'       IdentityProvider = list(
 #'         ActiveDirectoryIdentityProvider = list(
+#'           DirectoryId = "string",
 #'           ActiveDirectorySettings = list(
+#'             DomainName = "string",
+#'             DomainIpv4List = list(
+#'               "string"
+#'             ),
+#'             DomainIpv6List = list(
+#'               "string"
+#'             ),
 #'             DomainCredentialsProvider = list(
 #'               SecretsManagerCredentialsProvider = list(
 #'                 SecretId = "string"
 #'               )
 #'             ),
-#'             DomainIpv4List = list(
-#'               "string"
-#'             ),
-#'             DomainName = "string",
 #'             DomainNetworkSettings = list(
 #'               Subnets = list(
 #'                 "string"
@@ -824,43 +887,41 @@ licensemanagerusersubscriptions_list_license_server_endpoints <- function(Filter
 #'             )
 #'           ),
 #'           ActiveDirectoryType = "SELF_MANAGED"|"AWS_MANAGED",
-#'           DirectoryId = "string"
+#'           IsSharedActiveDirectory = TRUE|FALSE
 #'         )
 #'       ),
-#'       Product = "string",
-#'       ProductUserArn = "string",
 #'       Status = "string",
+#'       ProductUserArn = "string",
 #'       StatusMessage = "string",
-#'       SubscriptionEndDate = "string",
+#'       Domain = "string",
 #'       SubscriptionStartDate = "string",
-#'       Username = "string"
+#'       SubscriptionEndDate = "string"
 #'     )
-#'   )
+#'   ),
+#'   NextToken = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_product_subscriptions(
-#'   Filters = list(
-#'     list(
-#'       Attribute = "string",
-#'       Operation = "string",
-#'       Value = "string"
-#'     )
-#'   ),
+#'   Product = "string",
 #'   IdentityProvider = list(
 #'     ActiveDirectoryIdentityProvider = list(
+#'       DirectoryId = "string",
 #'       ActiveDirectorySettings = list(
+#'         DomainName = "string",
+#'         DomainIpv4List = list(
+#'           "string"
+#'         ),
+#'         DomainIpv6List = list(
+#'           "string"
+#'         ),
 #'         DomainCredentialsProvider = list(
 #'           SecretsManagerCredentialsProvider = list(
 #'             SecretId = "string"
 #'           )
 #'         ),
-#'         DomainIpv4List = list(
-#'           "string"
-#'         ),
-#'         DomainName = "string",
 #'         DomainNetworkSettings = list(
 #'           Subnets = list(
 #'             "string"
@@ -868,12 +929,18 @@ licensemanagerusersubscriptions_list_license_server_endpoints <- function(Filter
 #'         )
 #'       ),
 #'       ActiveDirectoryType = "SELF_MANAGED"|"AWS_MANAGED",
-#'       DirectoryId = "string"
+#'       IsSharedActiveDirectory = TRUE|FALSE
 #'     )
 #'   ),
 #'   MaxResults = 123,
-#'   NextToken = "string",
-#'   Product = "string"
+#'   Filters = list(
+#'     list(
+#'       Attribute = "string",
+#'       Operation = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
 #' )
 #' ```
 #'
@@ -882,7 +949,7 @@ licensemanagerusersubscriptions_list_license_server_endpoints <- function(Filter
 #' @rdname licensemanagerusersubscriptions_list_product_subscriptions
 #'
 #' @aliases licensemanagerusersubscriptions_list_product_subscriptions
-licensemanagerusersubscriptions_list_product_subscriptions <- function(Filters = NULL, IdentityProvider, MaxResults = NULL, NextToken = NULL, Product = NULL) {
+licensemanagerusersubscriptions_list_product_subscriptions <- function(Product = NULL, IdentityProvider, MaxResults = NULL, Filters = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListProductSubscriptions",
     http_method = "POST",
@@ -891,7 +958,7 @@ licensemanagerusersubscriptions_list_product_subscriptions <- function(Filters =
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProductUserSummaries"),
     stream_api = FALSE
   )
-  input <- .licensemanagerusersubscriptions$list_product_subscriptions_input(Filters = Filters, IdentityProvider = IdentityProvider, MaxResults = MaxResults, NextToken = NextToken, Product = Product)
+  input <- .licensemanagerusersubscriptions$list_product_subscriptions_input(Product = Product, IdentityProvider = IdentityProvider, MaxResults = MaxResults, Filters = Filters, NextToken = NextToken)
   output <- .licensemanagerusersubscriptions$list_product_subscriptions_output()
   config <- get_config()
   svc <- .licensemanagerusersubscriptions$service(config, op)
@@ -959,9 +1026,12 @@ licensemanagerusersubscriptions_list_tags_for_resource <- function(ResourceArn) 
 #' Lists user associations for an identity provider.
 #'
 #' @usage
-#' licensemanagerusersubscriptions_list_user_associations(Filters,
-#'   IdentityProvider, InstanceId, MaxResults, NextToken)
+#' licensemanagerusersubscriptions_list_user_associations(InstanceId,
+#'   IdentityProvider, MaxResults, Filters, NextToken)
 #'
+#' @param InstanceId &#91;required&#93; The ID of the EC2 instance, which provides user-based subscriptions.
+#' @param IdentityProvider &#91;required&#93; An object that specifies details for the identity provider.
+#' @param MaxResults The maximum number of results to return from a single request.
 #' @param Filters You can use the following filters to streamline results:
 #' 
 #' -   Status
@@ -969,9 +1039,6 @@ licensemanagerusersubscriptions_list_tags_for_resource <- function(ResourceArn) 
 #' -   Username
 #' 
 #' -   Domain
-#' @param IdentityProvider &#91;required&#93; An object that specifies details for the identity provider.
-#' @param InstanceId &#91;required&#93; The ID of the EC2 instance, which provides user-based subscriptions.
-#' @param MaxResults The maximum number of results to return from a single request.
 #' @param NextToken A token to specify where to start paginating. This is the nextToken from
 #' a previously truncated response.
 #'
@@ -981,21 +1048,24 @@ licensemanagerusersubscriptions_list_tags_for_resource <- function(ResourceArn) 
 #' list(
 #'   InstanceUserSummaries = list(
 #'     list(
-#'       AssociationDate = "string",
-#'       DisassociationDate = "string",
-#'       Domain = "string",
+#'       Username = "string",
+#'       InstanceId = "string",
 #'       IdentityProvider = list(
 #'         ActiveDirectoryIdentityProvider = list(
+#'           DirectoryId = "string",
 #'           ActiveDirectorySettings = list(
+#'             DomainName = "string",
+#'             DomainIpv4List = list(
+#'               "string"
+#'             ),
+#'             DomainIpv6List = list(
+#'               "string"
+#'             ),
 #'             DomainCredentialsProvider = list(
 #'               SecretsManagerCredentialsProvider = list(
 #'                 SecretId = "string"
 #'               )
 #'             ),
-#'             DomainIpv4List = list(
-#'               "string"
-#'             ),
-#'             DomainName = "string",
 #'             DomainNetworkSettings = list(
 #'               Subnets = list(
 #'                 "string"
@@ -1003,14 +1073,15 @@ licensemanagerusersubscriptions_list_tags_for_resource <- function(ResourceArn) 
 #'             )
 #'           ),
 #'           ActiveDirectoryType = "SELF_MANAGED"|"AWS_MANAGED",
-#'           DirectoryId = "string"
+#'           IsSharedActiveDirectory = TRUE|FALSE
 #'         )
 #'       ),
-#'       InstanceId = "string",
-#'       InstanceUserArn = "string",
 #'       Status = "string",
+#'       InstanceUserArn = "string",
 #'       StatusMessage = "string",
-#'       Username = "string"
+#'       Domain = "string",
+#'       AssociationDate = "string",
+#'       DisassociationDate = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1020,25 +1091,23 @@ licensemanagerusersubscriptions_list_tags_for_resource <- function(ResourceArn) 
 #' @section Request syntax:
 #' ```
 #' svc$list_user_associations(
-#'   Filters = list(
-#'     list(
-#'       Attribute = "string",
-#'       Operation = "string",
-#'       Value = "string"
-#'     )
-#'   ),
+#'   InstanceId = "string",
 #'   IdentityProvider = list(
 #'     ActiveDirectoryIdentityProvider = list(
+#'       DirectoryId = "string",
 #'       ActiveDirectorySettings = list(
+#'         DomainName = "string",
+#'         DomainIpv4List = list(
+#'           "string"
+#'         ),
+#'         DomainIpv6List = list(
+#'           "string"
+#'         ),
 #'         DomainCredentialsProvider = list(
 #'           SecretsManagerCredentialsProvider = list(
 #'             SecretId = "string"
 #'           )
 #'         ),
-#'         DomainIpv4List = list(
-#'           "string"
-#'         ),
-#'         DomainName = "string",
 #'         DomainNetworkSettings = list(
 #'           Subnets = list(
 #'             "string"
@@ -1046,11 +1115,17 @@ licensemanagerusersubscriptions_list_tags_for_resource <- function(ResourceArn) 
 #'         )
 #'       ),
 #'       ActiveDirectoryType = "SELF_MANAGED"|"AWS_MANAGED",
-#'       DirectoryId = "string"
+#'       IsSharedActiveDirectory = TRUE|FALSE
 #'     )
 #'   ),
-#'   InstanceId = "string",
 #'   MaxResults = 123,
+#'   Filters = list(
+#'     list(
+#'       Attribute = "string",
+#'       Operation = "string",
+#'       Value = "string"
+#'     )
+#'   ),
 #'   NextToken = "string"
 #' )
 #' ```
@@ -1060,7 +1135,7 @@ licensemanagerusersubscriptions_list_tags_for_resource <- function(ResourceArn) 
 #' @rdname licensemanagerusersubscriptions_list_user_associations
 #'
 #' @aliases licensemanagerusersubscriptions_list_user_associations
-licensemanagerusersubscriptions_list_user_associations <- function(Filters = NULL, IdentityProvider, InstanceId, MaxResults = NULL, NextToken = NULL) {
+licensemanagerusersubscriptions_list_user_associations <- function(InstanceId, IdentityProvider, MaxResults = NULL, Filters = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListUserAssociations",
     http_method = "POST",
@@ -1069,7 +1144,7 @@ licensemanagerusersubscriptions_list_user_associations <- function(Filters = NUL
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "InstanceUserSummaries"),
     stream_api = FALSE
   )
-  input <- .licensemanagerusersubscriptions$list_user_associations_input(Filters = Filters, IdentityProvider = IdentityProvider, InstanceId = InstanceId, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .licensemanagerusersubscriptions$list_user_associations_input(InstanceId = InstanceId, IdentityProvider = IdentityProvider, MaxResults = MaxResults, Filters = Filters, NextToken = NextToken)
   output <- .licensemanagerusersubscriptions$list_user_associations_output()
   config <- get_config()
   svc <- .licensemanagerusersubscriptions$service(config, op)
@@ -1102,19 +1177,22 @@ licensemanagerusersubscriptions_list_user_associations <- function(Filters = NUL
 #' ```
 #' list(
 #'   IdentityProviderSummary = list(
-#'     FailureMessage = "string",
 #'     IdentityProvider = list(
 #'       ActiveDirectoryIdentityProvider = list(
+#'         DirectoryId = "string",
 #'         ActiveDirectorySettings = list(
+#'           DomainName = "string",
+#'           DomainIpv4List = list(
+#'             "string"
+#'           ),
+#'           DomainIpv6List = list(
+#'             "string"
+#'           ),
 #'           DomainCredentialsProvider = list(
 #'             SecretsManagerCredentialsProvider = list(
 #'               SecretId = "string"
 #'             )
 #'           ),
-#'           DomainIpv4List = list(
-#'             "string"
-#'           ),
-#'           DomainName = "string",
 #'           DomainNetworkSettings = list(
 #'             Subnets = list(
 #'               "string"
@@ -1122,18 +1200,20 @@ licensemanagerusersubscriptions_list_user_associations <- function(Filters = NUL
 #'           )
 #'         ),
 #'         ActiveDirectoryType = "SELF_MANAGED"|"AWS_MANAGED",
-#'         DirectoryId = "string"
+#'         IsSharedActiveDirectory = TRUE|FALSE
 #'       )
 #'     ),
-#'     IdentityProviderArn = "string",
-#'     Product = "string",
 #'     Settings = list(
-#'       SecurityGroupId = "string",
 #'       Subnets = list(
 #'         "string"
-#'       )
+#'       ),
+#'       SecurityGroupId = "string"
 #'     ),
-#'     Status = "string"
+#'     Product = "string",
+#'     Status = "string",
+#'     IdentityProviderArn = "string",
+#'     FailureMessage = "string",
+#'     OwnerAccountId = "string"
 #'   )
 #' )
 #' ```
@@ -1143,16 +1223,20 @@ licensemanagerusersubscriptions_list_user_associations <- function(Filters = NUL
 #' svc$register_identity_provider(
 #'   IdentityProvider = list(
 #'     ActiveDirectoryIdentityProvider = list(
+#'       DirectoryId = "string",
 #'       ActiveDirectorySettings = list(
+#'         DomainName = "string",
+#'         DomainIpv4List = list(
+#'           "string"
+#'         ),
+#'         DomainIpv6List = list(
+#'           "string"
+#'         ),
 #'         DomainCredentialsProvider = list(
 #'           SecretsManagerCredentialsProvider = list(
 #'             SecretId = "string"
 #'           )
 #'         ),
-#'         DomainIpv4List = list(
-#'           "string"
-#'         ),
-#'         DomainName = "string",
 #'         DomainNetworkSettings = list(
 #'           Subnets = list(
 #'             "string"
@@ -1160,15 +1244,15 @@ licensemanagerusersubscriptions_list_user_associations <- function(Filters = NUL
 #'         )
 #'       ),
 #'       ActiveDirectoryType = "SELF_MANAGED"|"AWS_MANAGED",
-#'       DirectoryId = "string"
+#'       IsSharedActiveDirectory = TRUE|FALSE
 #'     )
 #'   ),
 #'   Product = "string",
 #'   Settings = list(
-#'     SecurityGroupId = "string",
 #'     Subnets = list(
 #'       "string"
-#'     )
+#'     ),
+#'     SecurityGroupId = "string"
 #'   ),
 #'   Tags = list(
 #'     "string"
@@ -1215,37 +1299,42 @@ licensemanagerusersubscriptions_register_identity_provider <- function(IdentityP
 #' in the *Amazon Web Services Billing User Guide*.
 #'
 #' @usage
-#' licensemanagerusersubscriptions_start_product_subscription(Domain,
-#'   IdentityProvider, Product, Tags, Username)
+#' licensemanagerusersubscriptions_start_product_subscription(Username,
+#'   IdentityProvider, Product, Domain, Tags)
 #'
-#' @param Domain The domain name of the Active Directory that contains the user for whom
-#' to start the product subscription.
+#' @param Username &#91;required&#93; The user name from the identity provider of the user.
 #' @param IdentityProvider &#91;required&#93; An object that specifies details for the identity provider.
 #' @param Product &#91;required&#93; The name of the user-based subscription product.
 #' 
 #' Valid values: `VISUAL_STUDIO_ENTERPRISE` | `VISUAL_STUDIO_PROFESSIONAL`
 #' | `OFFICE_PROFESSIONAL_PLUS` | `REMOTE_DESKTOP_SERVICES`
+#' @param Domain The domain name of the Active Directory that contains the user for whom
+#' to start the product subscription.
 #' @param Tags The tags that apply to the product subscription.
-#' @param Username &#91;required&#93; The user name from the identity provider of the user.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   ProductUserSummary = list(
-#'     Domain = "string",
+#'     Username = "string",
+#'     Product = "string",
 #'     IdentityProvider = list(
 #'       ActiveDirectoryIdentityProvider = list(
+#'         DirectoryId = "string",
 #'         ActiveDirectorySettings = list(
+#'           DomainName = "string",
+#'           DomainIpv4List = list(
+#'             "string"
+#'           ),
+#'           DomainIpv6List = list(
+#'             "string"
+#'           ),
 #'           DomainCredentialsProvider = list(
 #'             SecretsManagerCredentialsProvider = list(
 #'               SecretId = "string"
 #'             )
 #'           ),
-#'           DomainIpv4List = list(
-#'             "string"
-#'           ),
-#'           DomainName = "string",
 #'           DomainNetworkSettings = list(
 #'             Subnets = list(
 #'               "string"
@@ -1253,16 +1342,15 @@ licensemanagerusersubscriptions_register_identity_provider <- function(IdentityP
 #'           )
 #'         ),
 #'         ActiveDirectoryType = "SELF_MANAGED"|"AWS_MANAGED",
-#'         DirectoryId = "string"
+#'         IsSharedActiveDirectory = TRUE|FALSE
 #'       )
 #'     ),
-#'     Product = "string",
-#'     ProductUserArn = "string",
 #'     Status = "string",
+#'     ProductUserArn = "string",
 #'     StatusMessage = "string",
-#'     SubscriptionEndDate = "string",
+#'     Domain = "string",
 #'     SubscriptionStartDate = "string",
-#'     Username = "string"
+#'     SubscriptionEndDate = "string"
 #'   )
 #' )
 #' ```
@@ -1270,19 +1358,23 @@ licensemanagerusersubscriptions_register_identity_provider <- function(IdentityP
 #' @section Request syntax:
 #' ```
 #' svc$start_product_subscription(
-#'   Domain = "string",
+#'   Username = "string",
 #'   IdentityProvider = list(
 #'     ActiveDirectoryIdentityProvider = list(
+#'       DirectoryId = "string",
 #'       ActiveDirectorySettings = list(
+#'         DomainName = "string",
+#'         DomainIpv4List = list(
+#'           "string"
+#'         ),
+#'         DomainIpv6List = list(
+#'           "string"
+#'         ),
 #'         DomainCredentialsProvider = list(
 #'           SecretsManagerCredentialsProvider = list(
 #'             SecretId = "string"
 #'           )
 #'         ),
-#'         DomainIpv4List = list(
-#'           "string"
-#'         ),
-#'         DomainName = "string",
 #'         DomainNetworkSettings = list(
 #'           Subnets = list(
 #'             "string"
@@ -1290,14 +1382,14 @@ licensemanagerusersubscriptions_register_identity_provider <- function(IdentityP
 #'         )
 #'       ),
 #'       ActiveDirectoryType = "SELF_MANAGED"|"AWS_MANAGED",
-#'       DirectoryId = "string"
+#'       IsSharedActiveDirectory = TRUE|FALSE
 #'     )
 #'   ),
 #'   Product = "string",
+#'   Domain = "string",
 #'   Tags = list(
 #'     "string"
-#'   ),
-#'   Username = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -1306,7 +1398,7 @@ licensemanagerusersubscriptions_register_identity_provider <- function(IdentityP
 #' @rdname licensemanagerusersubscriptions_start_product_subscription
 #'
 #' @aliases licensemanagerusersubscriptions_start_product_subscription
-licensemanagerusersubscriptions_start_product_subscription <- function(Domain = NULL, IdentityProvider, Product, Tags = NULL, Username) {
+licensemanagerusersubscriptions_start_product_subscription <- function(Username, IdentityProvider, Product, Domain = NULL, Tags = NULL) {
   op <- new_operation(
     name = "StartProductSubscription",
     http_method = "POST",
@@ -1315,7 +1407,7 @@ licensemanagerusersubscriptions_start_product_subscription <- function(Domain = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .licensemanagerusersubscriptions$start_product_subscription_input(Domain = Domain, IdentityProvider = IdentityProvider, Product = Product, Tags = Tags, Username = Username)
+  input <- .licensemanagerusersubscriptions$start_product_subscription_input(Username = Username, IdentityProvider = IdentityProvider, Product = Product, Domain = Domain, Tags = Tags)
   output <- .licensemanagerusersubscriptions$start_product_subscription_output()
   config <- get_config()
   svc <- .licensemanagerusersubscriptions$service(config, op)
@@ -1333,37 +1425,42 @@ licensemanagerusersubscriptions_start_product_subscription <- function(Domain = 
 #' provider.
 #'
 #' @usage
-#' licensemanagerusersubscriptions_stop_product_subscription(Domain,
-#'   IdentityProvider, Product, ProductUserArn, Username)
+#' licensemanagerusersubscriptions_stop_product_subscription(Username,
+#'   IdentityProvider, Product, ProductUserArn, Domain)
 #'
-#' @param Domain The domain name of the Active Directory that contains the user for whom
-#' to stop the product subscription.
+#' @param Username The user name from the identity provider for the user.
 #' @param IdentityProvider An object that specifies details for the identity provider.
 #' @param Product The name of the user-based subscription product.
 #' 
 #' Valid values: `VISUAL_STUDIO_ENTERPRISE` | `VISUAL_STUDIO_PROFESSIONAL`
 #' | `OFFICE_PROFESSIONAL_PLUS` | `REMOTE_DESKTOP_SERVICES`
 #' @param ProductUserArn The Amazon Resource Name (ARN) of the product user.
-#' @param Username The user name from the identity provider for the user.
+#' @param Domain The domain name of the Active Directory that contains the user for whom
+#' to stop the product subscription.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   ProductUserSummary = list(
-#'     Domain = "string",
+#'     Username = "string",
+#'     Product = "string",
 #'     IdentityProvider = list(
 #'       ActiveDirectoryIdentityProvider = list(
+#'         DirectoryId = "string",
 #'         ActiveDirectorySettings = list(
+#'           DomainName = "string",
+#'           DomainIpv4List = list(
+#'             "string"
+#'           ),
+#'           DomainIpv6List = list(
+#'             "string"
+#'           ),
 #'           DomainCredentialsProvider = list(
 #'             SecretsManagerCredentialsProvider = list(
 #'               SecretId = "string"
 #'             )
 #'           ),
-#'           DomainIpv4List = list(
-#'             "string"
-#'           ),
-#'           DomainName = "string",
 #'           DomainNetworkSettings = list(
 #'             Subnets = list(
 #'               "string"
@@ -1371,16 +1468,15 @@ licensemanagerusersubscriptions_start_product_subscription <- function(Domain = 
 #'           )
 #'         ),
 #'         ActiveDirectoryType = "SELF_MANAGED"|"AWS_MANAGED",
-#'         DirectoryId = "string"
+#'         IsSharedActiveDirectory = TRUE|FALSE
 #'       )
 #'     ),
-#'     Product = "string",
-#'     ProductUserArn = "string",
 #'     Status = "string",
+#'     ProductUserArn = "string",
 #'     StatusMessage = "string",
-#'     SubscriptionEndDate = "string",
+#'     Domain = "string",
 #'     SubscriptionStartDate = "string",
-#'     Username = "string"
+#'     SubscriptionEndDate = "string"
 #'   )
 #' )
 #' ```
@@ -1388,19 +1484,23 @@ licensemanagerusersubscriptions_start_product_subscription <- function(Domain = 
 #' @section Request syntax:
 #' ```
 #' svc$stop_product_subscription(
-#'   Domain = "string",
+#'   Username = "string",
 #'   IdentityProvider = list(
 #'     ActiveDirectoryIdentityProvider = list(
+#'       DirectoryId = "string",
 #'       ActiveDirectorySettings = list(
+#'         DomainName = "string",
+#'         DomainIpv4List = list(
+#'           "string"
+#'         ),
+#'         DomainIpv6List = list(
+#'           "string"
+#'         ),
 #'         DomainCredentialsProvider = list(
 #'           SecretsManagerCredentialsProvider = list(
 #'             SecretId = "string"
 #'           )
 #'         ),
-#'         DomainIpv4List = list(
-#'           "string"
-#'         ),
-#'         DomainName = "string",
 #'         DomainNetworkSettings = list(
 #'           Subnets = list(
 #'             "string"
@@ -1408,12 +1508,12 @@ licensemanagerusersubscriptions_start_product_subscription <- function(Domain = 
 #'         )
 #'       ),
 #'       ActiveDirectoryType = "SELF_MANAGED"|"AWS_MANAGED",
-#'       DirectoryId = "string"
+#'       IsSharedActiveDirectory = TRUE|FALSE
 #'     )
 #'   ),
 #'   Product = "string",
 #'   ProductUserArn = "string",
-#'   Username = "string"
+#'   Domain = "string"
 #' )
 #' ```
 #'
@@ -1422,7 +1522,7 @@ licensemanagerusersubscriptions_start_product_subscription <- function(Domain = 
 #' @rdname licensemanagerusersubscriptions_stop_product_subscription
 #'
 #' @aliases licensemanagerusersubscriptions_stop_product_subscription
-licensemanagerusersubscriptions_stop_product_subscription <- function(Domain = NULL, IdentityProvider = NULL, Product = NULL, ProductUserArn = NULL, Username = NULL) {
+licensemanagerusersubscriptions_stop_product_subscription <- function(Username = NULL, IdentityProvider = NULL, Product = NULL, ProductUserArn = NULL, Domain = NULL) {
   op <- new_operation(
     name = "StopProductSubscription",
     http_method = "POST",
@@ -1431,7 +1531,7 @@ licensemanagerusersubscriptions_stop_product_subscription <- function(Domain = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .licensemanagerusersubscriptions$stop_product_subscription_input(Domain = Domain, IdentityProvider = IdentityProvider, Product = Product, ProductUserArn = ProductUserArn, Username = Username)
+  input <- .licensemanagerusersubscriptions$stop_product_subscription_input(Username = Username, IdentityProvider = IdentityProvider, Product = Product, ProductUserArn = ProductUserArn, Domain = Domain)
   output <- .licensemanagerusersubscriptions$stop_product_subscription_output()
   config <- get_config()
   svc <- .licensemanagerusersubscriptions$service(config, op)
@@ -1547,14 +1647,14 @@ licensemanagerusersubscriptions_untag_resource <- function(ResourceArn, TagKeys)
 #'
 #' @usage
 #' licensemanagerusersubscriptions_update_identity_provider_settings(
-#'   IdentityProvider, IdentityProviderArn, Product, UpdateSettings)
+#'   IdentityProvider, Product, IdentityProviderArn, UpdateSettings)
 #'
 #' @param IdentityProvider 
-#' @param IdentityProviderArn The Amazon Resource Name (ARN) of the identity provider to update.
 #' @param Product The name of the user-based subscription product.
 #' 
 #' Valid values: `VISUAL_STUDIO_ENTERPRISE` | `VISUAL_STUDIO_PROFESSIONAL`
 #' | `OFFICE_PROFESSIONAL_PLUS` | `REMOTE_DESKTOP_SERVICES`
+#' @param IdentityProviderArn The Amazon Resource Name (ARN) of the identity provider to update.
 #' @param UpdateSettings &#91;required&#93; Updates the registered identity provider’s product related configuration
 #' settings. You can update any combination of settings in a single
 #' operation such as the:
@@ -1570,19 +1670,22 @@ licensemanagerusersubscriptions_untag_resource <- function(ResourceArn, TagKeys)
 #' ```
 #' list(
 #'   IdentityProviderSummary = list(
-#'     FailureMessage = "string",
 #'     IdentityProvider = list(
 #'       ActiveDirectoryIdentityProvider = list(
+#'         DirectoryId = "string",
 #'         ActiveDirectorySettings = list(
+#'           DomainName = "string",
+#'           DomainIpv4List = list(
+#'             "string"
+#'           ),
+#'           DomainIpv6List = list(
+#'             "string"
+#'           ),
 #'           DomainCredentialsProvider = list(
 #'             SecretsManagerCredentialsProvider = list(
 #'               SecretId = "string"
 #'             )
 #'           ),
-#'           DomainIpv4List = list(
-#'             "string"
-#'           ),
-#'           DomainName = "string",
 #'           DomainNetworkSettings = list(
 #'             Subnets = list(
 #'               "string"
@@ -1590,18 +1693,20 @@ licensemanagerusersubscriptions_untag_resource <- function(ResourceArn, TagKeys)
 #'           )
 #'         ),
 #'         ActiveDirectoryType = "SELF_MANAGED"|"AWS_MANAGED",
-#'         DirectoryId = "string"
+#'         IsSharedActiveDirectory = TRUE|FALSE
 #'       )
 #'     ),
-#'     IdentityProviderArn = "string",
-#'     Product = "string",
 #'     Settings = list(
-#'       SecurityGroupId = "string",
 #'       Subnets = list(
 #'         "string"
-#'       )
+#'       ),
+#'       SecurityGroupId = "string"
 #'     ),
-#'     Status = "string"
+#'     Product = "string",
+#'     Status = "string",
+#'     IdentityProviderArn = "string",
+#'     FailureMessage = "string",
+#'     OwnerAccountId = "string"
 #'   )
 #' )
 #' ```
@@ -1611,16 +1716,20 @@ licensemanagerusersubscriptions_untag_resource <- function(ResourceArn, TagKeys)
 #' svc$update_identity_provider_settings(
 #'   IdentityProvider = list(
 #'     ActiveDirectoryIdentityProvider = list(
+#'       DirectoryId = "string",
 #'       ActiveDirectorySettings = list(
+#'         DomainName = "string",
+#'         DomainIpv4List = list(
+#'           "string"
+#'         ),
+#'         DomainIpv6List = list(
+#'           "string"
+#'         ),
 #'         DomainCredentialsProvider = list(
 #'           SecretsManagerCredentialsProvider = list(
 #'             SecretId = "string"
 #'           )
 #'         ),
-#'         DomainIpv4List = list(
-#'           "string"
-#'         ),
-#'         DomainName = "string",
 #'         DomainNetworkSettings = list(
 #'           Subnets = list(
 #'             "string"
@@ -1628,11 +1737,11 @@ licensemanagerusersubscriptions_untag_resource <- function(ResourceArn, TagKeys)
 #'         )
 #'       ),
 #'       ActiveDirectoryType = "SELF_MANAGED"|"AWS_MANAGED",
-#'       DirectoryId = "string"
+#'       IsSharedActiveDirectory = TRUE|FALSE
 #'     )
 #'   ),
-#'   IdentityProviderArn = "string",
 #'   Product = "string",
+#'   IdentityProviderArn = "string",
 #'   UpdateSettings = list(
 #'     AddSubnets = list(
 #'       "string"
@@ -1650,7 +1759,7 @@ licensemanagerusersubscriptions_untag_resource <- function(ResourceArn, TagKeys)
 #' @rdname licensemanagerusersubscriptions_upd_ide_pro_set
 #'
 #' @aliases licensemanagerusersubscriptions_update_identity_provider_settings
-licensemanagerusersubscriptions_update_identity_provider_settings <- function(IdentityProvider = NULL, IdentityProviderArn = NULL, Product = NULL, UpdateSettings) {
+licensemanagerusersubscriptions_update_identity_provider_settings <- function(IdentityProvider = NULL, Product = NULL, IdentityProviderArn = NULL, UpdateSettings) {
   op <- new_operation(
     name = "UpdateIdentityProviderSettings",
     http_method = "POST",
@@ -1659,7 +1768,7 @@ licensemanagerusersubscriptions_update_identity_provider_settings <- function(Id
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .licensemanagerusersubscriptions$update_identity_provider_settings_input(IdentityProvider = IdentityProvider, IdentityProviderArn = IdentityProviderArn, Product = Product, UpdateSettings = UpdateSettings)
+  input <- .licensemanagerusersubscriptions$update_identity_provider_settings_input(IdentityProvider = IdentityProvider, Product = Product, IdentityProviderArn = IdentityProviderArn, UpdateSettings = UpdateSettings)
   output <- .licensemanagerusersubscriptions$update_identity_provider_settings_output()
   config <- get_config()
   svc <- .licensemanagerusersubscriptions$service(config, op)

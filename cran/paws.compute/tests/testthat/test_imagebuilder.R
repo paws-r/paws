@@ -1,5 +1,9 @@
 svc <- paws::imagebuilder()
 
+test_that("list_component_build_versions", {
+  expect_error(svc$list_component_build_versions(), NA)
+})
+
 test_that("list_components", {
   expect_error(svc$list_components(), NA)
 })
@@ -10,6 +14,10 @@ test_that("list_container_recipes", {
 
 test_that("list_distribution_configurations", {
   expect_error(svc$list_distribution_configurations(), NA)
+})
+
+test_that("list_image_build_versions", {
+  expect_error(svc$list_image_build_versions(), NA)
 })
 
 test_that("list_image_pipelines", {
@@ -42,6 +50,10 @@ test_that("list_lifecycle_policies", {
 
 test_that("list_waiting_workflow_steps", {
   expect_error(svc$list_waiting_workflow_steps(), NA)
+})
+
+test_that("list_workflow_build_versions", {
+  expect_error(svc$list_workflow_build_versions(), NA)
 })
 
 test_that("list_workflows", {

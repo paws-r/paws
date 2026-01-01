@@ -28,7 +28,11 @@ lambda_create_function(
   Architectures = NULL,
   EphemeralStorage = NULL,
   SnapStart = NULL,
-  LoggingConfig = NULL
+  LoggingConfig = NULL,
+  CapacityProviderConfig = NULL,
+  PublishTo = NULL,
+  DurableConfig = NULL,
+  TenancyConfig = NULL
 )
 }
 \arguments{
@@ -149,6 +153,19 @@ information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-funct
 setting.}
 
 \item{LoggingConfig}{The function's Amazon CloudWatch Logs configuration settings.}
+
+\item{CapacityProviderConfig}{Configuration for the capacity provider that manages compute resources
+for Lambda functions.}
+
+\item{PublishTo}{Specifies where to publish the function version or configuration.}
+
+\item{DurableConfig}{Configuration settings for durable functions. Enables creating functions
+with durability that can remember their state and continue execution
+even after interruptions.}
+
+\item{TenancyConfig}{Configuration for multi-tenant applications that use Lambda functions.
+Defines tenant isolation settings and resource allocations. Required for
+functions supporting multiple tenants.}
 }
 \description{
 Creates a Lambda function. To create a function, you need a \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-zip.html}{deployment package} and an \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions.html#lambda-intro-execution-role}{execution role}. The deployment package is a .zip file archive or container image that contains your function code. The execution role grants the function permission to use Amazon Web Services services, such as Amazon CloudWatch Logs for log streaming and X-Ray for request tracing.

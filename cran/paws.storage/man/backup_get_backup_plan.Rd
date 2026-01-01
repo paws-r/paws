@@ -4,13 +4,21 @@
 \alias{backup_get_backup_plan}
 \title{Returns BackupPlan details for the specified BackupPlanId}
 \usage{
-backup_get_backup_plan(BackupPlanId, VersionId = NULL)
+backup_get_backup_plan(
+  BackupPlanId,
+  VersionId = NULL,
+  MaxScheduledRunsPreview = NULL
+)
 }
 \arguments{
 \item{BackupPlanId}{[required] Uniquely identifies a backup plan.}
 
 \item{VersionId}{Unique, randomly generated, Unicode, UTF-8 encoded strings that are at
 most 1,024 bytes long. Version IDs cannot be edited.}
+
+\item{MaxScheduledRunsPreview}{Number of future scheduled backup runs to preview. When set to 0
+(default), no scheduled runs preview is included in the response. Valid
+range is 0-10.}
 }
 \description{
 Returns \code{BackupPlan} details for the specified \code{BackupPlanId}. The details are the body of a backup plan in JSON format, in addition to plan metadata.

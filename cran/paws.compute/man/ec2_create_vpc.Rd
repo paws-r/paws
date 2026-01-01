@@ -13,6 +13,7 @@ ec2_create_vpc(
   Ipv6IpamPoolId = NULL,
   Ipv6NetmaskLength = NULL,
   Ipv6CidrBlockNetworkBorderGroup = NULL,
+  VpcEncryptionControl = NULL,
   TagSpecifications = NULL,
   DryRun = NULL,
   InstanceTenancy = NULL,
@@ -61,6 +62,14 @@ Use this parameter to limit the address to this location.
 You must set \code{AmazonProvidedIpv6CidrBlock} to \code{true} to use this
 parameter.}
 
+\item{VpcEncryptionControl}{Specifies the encryption control configuration to apply to the VPC
+during creation. VPC Encryption Control enables you to enforce
+encryption for all data in transit within and between VPCs to meet
+compliance requirements.
+
+For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-encryption-controls.html}{Enforce VPC encryption in transit}
+in the \emph{Amazon VPC User Guide}.}
+
 \item{TagSpecifications}{The tags to assign to the VPC.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -85,7 +94,7 @@ the VPC. You cannot specify the range of IP addresses, or the size of
 the CIDR block.}
 }
 \description{
-Creates a VPC with the specified CIDR blocks. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-ip-addressing.html}{IP addressing for your VPCs and subnets} in the \emph{Amazon VPC User Guide}.
+Creates a VPC with the specified CIDR blocks.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_create_vpc/} for full documentation.
 }

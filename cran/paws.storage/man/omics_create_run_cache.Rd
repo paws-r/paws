@@ -2,8 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_create_run_cache}
 \alias{omics_create_run_cache}
-\title{You can create a run cache to save the task outputs from completed tasks
-in a run for a private workflow}
+\title{Creates a run cache to store and reference task outputs from completed
+private runs}
 \usage{
 omics_create_run_cache(
   cacheBehavior = NULL,
@@ -34,7 +34,7 @@ When you start a run that uses this cache, you can override the default
 cache behavior.
 
 For more information, see \href{https://docs.aws.amazon.com/omics/latest/dev/how-run-cache.html#run-cache-behavior}{Run cache behavior}
-in the Amazon Web Services HealthOmics User Guide.}
+in the \emph{Amazon Web Services HealthOmics User Guide}.}
 
 \item{cacheS3Location}{[required] Specify the S3 location for storing the cached task outputs. This data
 must be immediately accessible (not in an archived state).}
@@ -54,7 +54,7 @@ bucket for the run cache. If not provided, your account ID is set as the
 owner of the bucket.}
 }
 \description{
-You can create a run cache to save the task outputs from completed tasks in a run for a private workflow. Subsequent runs use the task outputs from the cache, rather than computing the task outputs again. You specify an Amazon S3 location where Amazon Web Services HealthOmics saves the cached data. This data must be immediately accessible (not in an archived state).
+Creates a run cache to store and reference task outputs from completed private runs. Specify an Amazon S3 location where Amazon Web Services HealthOmics saves the cached data. This data must be immediately accessible and not in an archived state. You can save intermediate task files to a run cache if they are declared as task outputs in the workflow definition file.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_create_run_cache/} for full documentation.
 }

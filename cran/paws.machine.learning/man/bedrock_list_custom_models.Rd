@@ -15,7 +15,8 @@ bedrock_list_custom_models(
   nextToken = NULL,
   sortBy = NULL,
   sortOrder = NULL,
-  isOwned = NULL
+  isOwned = NULL,
+  modelStatus = NULL
 )
 }
 \arguments{
@@ -46,6 +47,17 @@ field in the response in this field to return the next batch of results.}
 
 \item{isOwned}{Return custom models depending on if the current account owns them
 (\code{true}) or if they were shared with the current account (\code{false}).}
+
+\item{modelStatus}{The status of them model to filter results by. Possible values include:
+\itemize{
+\item \code{Creating} - Include only models that are currently being created
+and validated.
+\item \code{Active} - Include only models that have been successfully created
+and are ready for use.
+\item \code{Failed} - Include only models where the creation process failed.
+}
+
+If you don't specify a status, the API returns models in all states.}
 }
 \description{
 Returns a list of the custom models that you have created with the \code{\link[=bedrock_create_model_customization_job]{create_model_customization_job}} operation.

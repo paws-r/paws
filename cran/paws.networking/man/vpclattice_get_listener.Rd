@@ -5,12 +5,12 @@
 \title{Retrieves information about the specified listener for the specified
 service}
 \usage{
-vpclattice_get_listener(listenerIdentifier, serviceIdentifier)
+vpclattice_get_listener(serviceIdentifier, listenerIdentifier)
 }
 \arguments{
-\item{listenerIdentifier}{[required] The ID or ARN of the listener.}
-
 \item{serviceIdentifier}{[required] The ID or ARN of the service.}
+
+\item{listenerIdentifier}{[required] The ID or ARN of the listener.}
 }
 \description{
 Retrieves information about the specified listener for the specified service.

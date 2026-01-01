@@ -2,8 +2,8 @@
 % Please edit documentation in R/computeoptimizer_operations.R
 \name{computeoptimizer_export_rds_database_recommendations}
 \alias{computeoptimizer_export_rds_database_recommendations}
-\title{Export optimization recommendations for your Amazon Relational Database
-Service (Amazon RDS)}
+\title{Export optimization recommendations for your Amazon Aurora and Amazon
+Relational Database Service (Amazon RDS) databases}
 \usage{
 computeoptimizer_export_rds_database_recommendations(
   accountIds = NULL,
@@ -16,8 +16,8 @@ computeoptimizer_export_rds_database_recommendations(
 )
 }
 \arguments{
-\item{accountIds}{The Amazon Web Services account IDs for the export Amazon RDS
-recommendations.
+\item{accountIds}{The Amazon Web Services account IDs for the export Amazon Aurora and RDS
+database recommendations.
 
 If your account is the management account or the delegated administrator
 of an organization, use this parameter to specify the member account you
@@ -32,7 +32,7 @@ the recommendations for member accounts aren't included in the export.
 You can specify multiple account IDs per request.}
 
 \item{filters}{An array of objects to specify a filter that exports a more specific set
-of Amazon RDS recommendations.}
+of Amazon Aurora and RDS recommendations.}
 
 \item{fieldsToExport}{The recommendations data to include in the export file. For more
 information about the fields that can be exported, see \href{https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html#exported-files}{Exported files}
@@ -63,7 +63,7 @@ recommendations for member accounts aren't included in the export.}
 \item{recommendationPreferences}{}
 }
 \description{
-Export optimization recommendations for your Amazon Relational Database Service (Amazon RDS).
+Export optimization recommendations for your Amazon Aurora and Amazon Relational Database Service (Amazon RDS) databases.
 
 See \url{https://www.paws-r-sdk.com/docs/computeoptimizer_export_rds_database_recommendations/} for full documentation.
 }

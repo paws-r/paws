@@ -8,6 +8,7 @@ emrserverless_start_job_run(
   applicationId,
   clientToken,
   executionRoleArn,
+  executionIamPolicy = NULL,
   jobDriver = NULL,
   configurationOverrides = NULL,
   tags = NULL,
@@ -24,6 +25,10 @@ emrserverless_start_job_run(
 unique for each request.}
 
 \item{executionRoleArn}{[required] The execution role ARN for the job run.}
+
+\item{executionIamPolicy}{You can pass an optional IAM policy. The resulting job IAM role
+permissions will be an intersection of this policy and the policy
+associated with your job execution role.}
 
 \item{jobDriver}{The job driver for the job run.}
 

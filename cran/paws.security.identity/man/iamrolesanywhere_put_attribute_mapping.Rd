@@ -6,17 +6,17 @@
 given profile}
 \usage{
 iamrolesanywhere_put_attribute_mapping(
+  profileId,
   certificateField,
-  mappingRules,
-  profileId
+  mappingRules
 )
 }
 \arguments{
+\item{profileId}{[required] The unique identifier of the profile.}
+
 \item{certificateField}{[required] Fields (x509Subject, x509Issuer and x509SAN) within X.509 certificates.}
 
 \item{mappingRules}{[required] A list of mapping entries for every supported specifier or sub-field.}
-
-\item{profileId}{[required] The unique identifier of the profile.}
 }
 \description{
 Put an entry in the attribute mapping rules that will be enforced by a given profile. A mapping specifies a certificate field and one or more specifiers that have contextual meanings.

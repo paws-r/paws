@@ -3,7 +3,8 @@
 \name{opensearchserviceserverless_batch_get_collection}
 \alias{opensearchserviceserverless_batch_get_collection}
 \title{Returns attributes for one or more collections, including the collection
-endpoint and the OpenSearch Dashboards endpoint}
+endpoint, the OpenSearch Dashboards endpoint, and FIPS-compliant
+endpoints}
 \usage{
 opensearchserviceserverless_batch_get_collection(ids = NULL, names = NULL)
 }
@@ -17,7 +18,7 @@ retrieve it using the
 request.}
 }
 \description{
-Returns attributes for one or more collections, including the collection endpoint and the OpenSearch Dashboards endpoint. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html}{Creating and managing Amazon OpenSearch Serverless collections}.
+Returns attributes for one or more collections, including the collection endpoint, the OpenSearch Dashboards endpoint, and FIPS-compliant endpoints. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html}{Creating and managing Amazon OpenSearch Serverless collections}.
 
 See \url{https://www.paws-r-sdk.com/docs/opensearchserviceserverless_batch_get_collection/} for full documentation.
 }

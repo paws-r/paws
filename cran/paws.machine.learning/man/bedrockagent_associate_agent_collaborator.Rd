@@ -5,29 +5,29 @@
 \title{Makes an agent a collaborator for another agent}
 \usage{
 bedrockagent_associate_agent_collaborator(
-  agentDescriptor,
   agentId,
   agentVersion,
-  clientToken = NULL,
-  collaborationInstruction,
+  agentDescriptor,
   collaboratorName,
-  relayConversationHistory = NULL
+  collaborationInstruction,
+  relayConversationHistory = NULL,
+  clientToken = NULL
 )
 }
 \arguments{
-\item{agentDescriptor}{[required] The alias of the collaborator agent.}
-
 \item{agentId}{[required] The agent's ID.}
 
 \item{agentVersion}{[required] An agent version.}
 
-\item{clientToken}{A client token.}
-
-\item{collaborationInstruction}{[required] Instruction for the collaborator.}
+\item{agentDescriptor}{[required] The alias of the collaborator agent.}
 
 \item{collaboratorName}{[required] A name for the collaborator.}
 
+\item{collaborationInstruction}{[required] Instruction for the collaborator.}
+
 \item{relayConversationHistory}{A relay conversation history for the collaborator.}
+
+\item{clientToken}{A client token.}
 }
 \description{
 Makes an agent a collaborator for another agent.

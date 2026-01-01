@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_list_iam_policy_assignments}
 \alias{quicksight_list_iam_policy_assignments}
-\title{Lists the IAM policy assignments in the current Amazon QuickSight
+\title{Lists the IAM policy assignments in the current Amazon Quick Sight
 account}
 \usage{
 quicksight_list_iam_policy_assignments(
@@ -27,7 +27,7 @@ results.}
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
 \description{
-Lists the IAM policy assignments in the current Amazon QuickSight account.
+Lists the IAM policy assignments in the current Amazon Quick Sight account.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_list_iam_policy_assignments/} for full documentation.
 }

@@ -560,7 +560,7 @@ eventbridge_create_endpoint <- function(Name, Description = NULL, RoutingConfig,
 #'
 #' @usage
 #' eventbridge_create_event_bus(Name, EventSourceName, Description,
-#'   KmsKeyIdentifier, DeadLetterConfig, Tags)
+#'   KmsKeyIdentifier, DeadLetterConfig, LogConfig, Tags)
 #'
 #' @param Name &#91;required&#93; The name of the new event bus.
 #' 
@@ -609,6 +609,10 @@ eventbridge_create_endpoint <- function(Name, Description = NULL, RoutingConfig,
 #' archives](https://docs.aws.amazon.com/eventbridge/latest/userguide/encryption-archives.html)
 #' in the *Amazon EventBridge User Guide*.
 #' @param DeadLetterConfig 
+#' @param LogConfig The logging configuration settings for the event bus.
+#' 
+#' For more information, see Configuring logs for event buses in the
+#' *EventBridge User Guide*.
 #' @param Tags Tags to associate with the event bus.
 #'
 #' @return
@@ -620,6 +624,10 @@ eventbridge_create_endpoint <- function(Name, Description = NULL, RoutingConfig,
 #'   KmsKeyIdentifier = "string",
 #'   DeadLetterConfig = list(
 #'     Arn = "string"
+#'   ),
+#'   LogConfig = list(
+#'     IncludeDetail = "NONE"|"FULL",
+#'     Level = "OFF"|"ERROR"|"INFO"|"TRACE"
 #'   )
 #' )
 #' ```
@@ -633,6 +641,10 @@ eventbridge_create_endpoint <- function(Name, Description = NULL, RoutingConfig,
 #'   KmsKeyIdentifier = "string",
 #'   DeadLetterConfig = list(
 #'     Arn = "string"
+#'   ),
+#'   LogConfig = list(
+#'     IncludeDetail = "NONE"|"FULL",
+#'     Level = "OFF"|"ERROR"|"INFO"|"TRACE"
 #'   ),
 #'   Tags = list(
 #'     list(
@@ -648,7 +660,7 @@ eventbridge_create_endpoint <- function(Name, Description = NULL, RoutingConfig,
 #' @rdname eventbridge_create_event_bus
 #'
 #' @aliases eventbridge_create_event_bus
-eventbridge_create_event_bus <- function(Name, EventSourceName = NULL, Description = NULL, KmsKeyIdentifier = NULL, DeadLetterConfig = NULL, Tags = NULL) {
+eventbridge_create_event_bus <- function(Name, EventSourceName = NULL, Description = NULL, KmsKeyIdentifier = NULL, DeadLetterConfig = NULL, LogConfig = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateEventBus",
     http_method = "POST",
@@ -657,7 +669,7 @@ eventbridge_create_event_bus <- function(Name, EventSourceName = NULL, Descripti
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eventbridge$create_event_bus_input(Name = Name, EventSourceName = EventSourceName, Description = Description, KmsKeyIdentifier = KmsKeyIdentifier, DeadLetterConfig = DeadLetterConfig, Tags = Tags)
+  input <- .eventbridge$create_event_bus_input(Name = Name, EventSourceName = EventSourceName, Description = Description, KmsKeyIdentifier = KmsKeyIdentifier, DeadLetterConfig = DeadLetterConfig, LogConfig = LogConfig, Tags = Tags)
   output <- .eventbridge$create_event_bus_output()
   config <- get_config()
   svc <- .eventbridge$service(config, op)
@@ -1620,6 +1632,10 @@ eventbridge_describe_endpoint <- function(Name, HomeRegion = NULL) {
 #'     Arn = "string"
 #'   ),
 #'   Policy = "string",
+#'   LogConfig = list(
+#'     IncludeDetail = "NONE"|"FULL",
+#'     Level = "OFF"|"ERROR"|"INFO"|"TRACE"
+#'   ),
 #'   CreationTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -4799,7 +4815,7 @@ eventbridge_update_endpoint <- function(Name, Description = NULL, RoutingConfig 
 #'
 #' @usage
 #' eventbridge_update_event_bus(Name, KmsKeyIdentifier, Description,
-#'   DeadLetterConfig)
+#'   DeadLetterConfig, LogConfig)
 #'
 #' @param Name The name of the event bus.
 #' @param KmsKeyIdentifier The identifier of the KMS customer managed key for EventBridge to use,
@@ -4838,6 +4854,10 @@ eventbridge_update_endpoint <- function(Name, Description = NULL, RoutingConfig 
 #' in the *Amazon EventBridge User Guide*.
 #' @param Description The event bus description.
 #' @param DeadLetterConfig 
+#' @param LogConfig The logging configuration settings for the event bus.
+#' 
+#' For more information, see Configuring logs for event buses in the
+#' *EventBridge User Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4849,6 +4869,10 @@ eventbridge_update_endpoint <- function(Name, Description = NULL, RoutingConfig 
 #'   Description = "string",
 #'   DeadLetterConfig = list(
 #'     Arn = "string"
+#'   ),
+#'   LogConfig = list(
+#'     IncludeDetail = "NONE"|"FULL",
+#'     Level = "OFF"|"ERROR"|"INFO"|"TRACE"
 #'   )
 #' )
 #' ```
@@ -4861,6 +4885,10 @@ eventbridge_update_endpoint <- function(Name, Description = NULL, RoutingConfig 
 #'   Description = "string",
 #'   DeadLetterConfig = list(
 #'     Arn = "string"
+#'   ),
+#'   LogConfig = list(
+#'     IncludeDetail = "NONE"|"FULL",
+#'     Level = "OFF"|"ERROR"|"INFO"|"TRACE"
 #'   )
 #' )
 #' ```
@@ -4870,7 +4898,7 @@ eventbridge_update_endpoint <- function(Name, Description = NULL, RoutingConfig 
 #' @rdname eventbridge_update_event_bus
 #'
 #' @aliases eventbridge_update_event_bus
-eventbridge_update_event_bus <- function(Name = NULL, KmsKeyIdentifier = NULL, Description = NULL, DeadLetterConfig = NULL) {
+eventbridge_update_event_bus <- function(Name = NULL, KmsKeyIdentifier = NULL, Description = NULL, DeadLetterConfig = NULL, LogConfig = NULL) {
   op <- new_operation(
     name = "UpdateEventBus",
     http_method = "POST",
@@ -4879,7 +4907,7 @@ eventbridge_update_event_bus <- function(Name = NULL, KmsKeyIdentifier = NULL, D
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eventbridge$update_event_bus_input(Name = Name, KmsKeyIdentifier = KmsKeyIdentifier, Description = Description, DeadLetterConfig = DeadLetterConfig)
+  input <- .eventbridge$update_event_bus_input(Name = Name, KmsKeyIdentifier = KmsKeyIdentifier, Description = Description, DeadLetterConfig = DeadLetterConfig, LogConfig = LogConfig)
   output <- .eventbridge$update_event_bus_output()
   config <- get_config()
   svc <- .eventbridge$service(config, op)

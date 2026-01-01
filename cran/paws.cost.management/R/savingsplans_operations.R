@@ -76,10 +76,10 @@ savingsplans_delete_queued_savings_plan <- function(savingsPlanId) {
 }
 .savingsplans$operations$delete_queued_savings_plan <- savingsplans_delete_queued_savings_plan
 
-#' Describes the rates for the specified Savings Plan
+#' Describes the rates for a specific, existing Savings Plan
 #'
 #' @description
-#' Describes the rates for the specified Savings Plan.
+#' Describes the rates for a specific, existing Savings Plan.
 #'
 #' See [https://www.paws-r-sdk.com/docs/savingsplans_describe_savings_plan_rates/](https://www.paws-r-sdk.com/docs/savingsplans_describe_savings_plan_rates/) for full documentation.
 #'
@@ -148,10 +148,11 @@ savingsplans_describe_savings_plans <- function(savingsPlanArns = NULL, savingsP
 }
 .savingsplans$operations$describe_savings_plans <- savingsplans_describe_savings_plans
 
-#' Describes the offering rates for the specified Savings Plans
+#' Describes the offering rates for Savings Plans you might want to
+#' purchase
 #'
 #' @description
-#' Describes the offering rates for the specified Savings Plans.
+#' Describes the offering rates for Savings Plans you might want to purchase.
 #'
 #' See [https://www.paws-r-sdk.com/docs/savingsplans_describe_savings_plans_offering_rates/](https://www.paws-r-sdk.com/docs/savingsplans_describe_savings_plans_offering_rates/) for full documentation.
 #'

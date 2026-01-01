@@ -7,7 +7,11 @@
 servicediscovery_update_service(Id, Service)
 }
 \arguments{
-\item{Id}{[required] The ID of the service that you want to update.}
+\item{Id}{[required] The ID or Amazon Resource Name (ARN) of the service that you want to
+update. If the namespace associated with the service is shared with your
+Amazon Web Services account, specify the service ARN. For more
+information about shared namespaces, see \href{https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html}{Cross-account Cloud Map namespace sharing}
+in the \emph{Cloud Map Developer Guide}}
 
 \item{Service}{[required] A complex type that contains the new settings for the service. You can
 specify a maximum of 30 attributes (key-value pairs).}

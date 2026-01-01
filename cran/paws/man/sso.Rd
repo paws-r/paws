@@ -67,7 +67,7 @@ programming languages and platforms, such as Java, Ruby, .Net, iOS, or
 Android. The SDKs provide a convenient way to create programmatic access
 to IAM Identity Center and other AWS services. For more information
 about the AWS SDKs, including how to download and install them, see
-\href{https://aws.amazon.com/developer/tools/}{Tools for Amazon Web Services}.
+\href{https://builder.aws.com/build/tools}{Tools for Amazon Web Services}.
 }
 \section{Service syntax}{
 

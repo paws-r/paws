@@ -35,8 +35,8 @@ the application catalog.}
 
 \item{LaunchParameters}{The launch parameters of the application.}
 
-\item{Platforms}{[required] The platforms the application supports. WINDOWS_SERVER_2019 and
-AMAZON_LINUX2 are supported for Elastic fleets.}
+\item{Platforms}{[required] The platforms the application supports. WINDOWS_SERVER_2019,
+AMAZON_LINUX2 and UBUNTU_PRO_2404 are supported for Elastic fleets.}
 
 \item{InstanceFamilies}{[required] The instance families the application supports. Valid values are
 GENERAL_PURPOSE and GRAPHICS_G4.}

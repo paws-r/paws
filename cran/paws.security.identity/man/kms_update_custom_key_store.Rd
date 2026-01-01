@@ -12,6 +12,7 @@ kms_update_custom_key_store(
   XksProxyUriEndpoint = NULL,
   XksProxyUriPath = NULL,
   XksProxyVpcEndpointServiceName = NULL,
+  XksProxyVpcEndpointServiceOwner = NULL,
   XksProxyAuthenticationCredential = NULL,
   XksProxyConnectivity = NULL
 )
@@ -96,6 +97,14 @@ disconnected.}
 service for your external key store proxy (XKS proxy). This parameter is
 valid when the \code{CustomKeyStoreType} is \code{EXTERNAL_KEY_STORE} and the
 \code{XksProxyConnectivity} is \code{VPC_ENDPOINT_SERVICE}.
+
+To change this value, the external key store must be disconnected.}
+
+\item{XksProxyVpcEndpointServiceOwner}{Changes the Amazon Web Services account ID that KMS uses to identify the
+Amazon VPC endpoint service for your external key store proxy (XKS
+proxy). This parameter is optional. If not specified, the current Amazon
+Web Services account ID for the VPC endpoint service will not be
+updated.
 
 To change this value, the external key store must be disconnected.}
 

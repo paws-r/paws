@@ -6,6 +6,7 @@
 \usage{
 backup_start_backup_job(
   BackupVaultName,
+  LogicallyAirGappedBackupVaultArn = NULL,
   ResourceArn,
   IamRoleArn,
   IdempotencyToken = NULL,
@@ -21,6 +22,13 @@ backup_start_backup_job(
 \item{BackupVaultName}{[required] The name of a logical container where backups are stored. Backup vaults
 are identified by names that are unique to the account used to create
 them and the Amazon Web Services Region where they are created.}
+
+\item{LogicallyAirGappedBackupVaultArn}{The ARN of a logically air-gapped vault. ARN must be in the same account
+and Region. If provided, supported fully managed resources back up
+directly to logically air-gapped vault, while other supported resources
+create a temporary (billable) snapshot in backup vault, then copy it to
+logically air-gapped vault. Unsupported resources only back up to the
+specified backup vault.}
 
 \item{ResourceArn}{[required] An Amazon Resource Name (ARN) that uniquely identifies a resource. The
 format of the ARN depends on the resource type.}

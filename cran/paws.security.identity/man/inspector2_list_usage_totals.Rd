@@ -5,14 +5,12 @@
 \title{Lists the Amazon Inspector usage totals over the last 30 days}
 \usage{
 inspector2_list_usage_totals(
-  accountIds = NULL,
   maxResults = NULL,
-  nextToken = NULL
+  nextToken = NULL,
+  accountIds = NULL
 )
 }
 \arguments{
-\item{accountIds}{The Amazon Web Services account IDs to retrieve usage totals for.}
-
 \item{maxResults}{The maximum number of results the response can return. If your request
 would return more than the maximum the response will return a
 \code{nextToken} value, use this value when you call the action again to get
@@ -24,6 +22,8 @@ action. If your response returns more than the \code{maxResults} maximum
 value it will also return a \code{nextToken} value. For subsequent calls, use
 the \code{nextToken} value returned from the previous request to continue
 listing results after the first page.}
+
+\item{accountIds}{The Amazon Web Services account IDs to retrieve usage totals for.}
 }
 \description{
 Lists the Amazon Inspector usage totals over the last 30 days.

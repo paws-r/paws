@@ -74,7 +74,7 @@ NULL
 #'       IncludeDiscount = TRUE|FALSE,
 #'       UseAmortized = TRUE|FALSE
 #'     ),
-#'     TimeUnit = "DAILY"|"MONTHLY"|"QUARTERLY"|"ANNUALLY",
+#'     TimeUnit = "DAILY"|"MONTHLY"|"QUARTERLY"|"ANNUALLY"|"CUSTOM",
 #'     TimePeriod = list(
 #'       Start = as.POSIXct(
 #'         "2015-01-01"
@@ -145,6 +145,14 @@ NULL
 #'     ),
 #'     Metrics = list(
 #'       "BlendedCost"|"UnblendedCost"|"AmortizedCost"|"NetUnblendedCost"|"NetAmortizedCost"|"UsageQuantity"|"NormalizedUsageAmount"|"Hours"
+#'     ),
+#'     BillingViewArn = "string",
+#'     HealthStatus = list(
+#'       Status = "HEALTHY"|"UNHEALTHY",
+#'       StatusReason = "BILLING_VIEW_NO_ACCESS"|"BILLING_VIEW_UNHEALTHY"|"FILTER_INVALID"|"MULTI_YEAR_HISTORICAL_DATA_DISABLED",
+#'       LastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   ),
 #'   NotificationsWithSubscribers = list(
@@ -769,7 +777,7 @@ budgets_delete_subscriber <- function(AccountId, BudgetName, Notification, Subsc
 #'       IncludeDiscount = TRUE|FALSE,
 #'       UseAmortized = TRUE|FALSE
 #'     ),
-#'     TimeUnit = "DAILY"|"MONTHLY"|"QUARTERLY"|"ANNUALLY",
+#'     TimeUnit = "DAILY"|"MONTHLY"|"QUARTERLY"|"ANNUALLY"|"CUSTOM",
 #'     TimePeriod = list(
 #'       Start = as.POSIXct(
 #'         "2015-01-01"
@@ -840,6 +848,14 @@ budgets_delete_subscriber <- function(AccountId, BudgetName, Notification, Subsc
 #'     ),
 #'     Metrics = list(
 #'       "BlendedCost"|"UnblendedCost"|"AmortizedCost"|"NetUnblendedCost"|"NetAmortizedCost"|"UsageQuantity"|"NormalizedUsageAmount"|"Hours"
+#'     ),
+#'     BillingViewArn = "string",
+#'     HealthStatus = list(
+#'       Status = "HEALTHY"|"UNHEALTHY",
+#'       StatusReason = "BILLING_VIEW_NO_ACCESS"|"BILLING_VIEW_UNHEALTHY"|"FILTER_INVALID"|"MULTI_YEAR_HISTORICAL_DATA_DISABLED",
+#'       LastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   )
 #' )
@@ -1422,7 +1438,8 @@ budgets_describe_budget_notifications_for_account <- function(AccountId, MaxResu
 #'       IncludeDiscount = TRUE|FALSE,
 #'       UseAmortized = TRUE|FALSE
 #'     ),
-#'     TimeUnit = "DAILY"|"MONTHLY"|"QUARTERLY"|"ANNUALLY",
+#'     TimeUnit = "DAILY"|"MONTHLY"|"QUARTERLY"|"ANNUALLY"|"CUSTOM",
+#'     BillingViewArn = "string",
 #'     BudgetedAndActualAmountsList = list(
 #'       list(
 #'         BudgetedAmount = list(
@@ -1550,7 +1567,7 @@ budgets_describe_budget_performance_history <- function(AccountId, BudgetName, T
 #'         IncludeDiscount = TRUE|FALSE,
 #'         UseAmortized = TRUE|FALSE
 #'       ),
-#'       TimeUnit = "DAILY"|"MONTHLY"|"QUARTERLY"|"ANNUALLY",
+#'       TimeUnit = "DAILY"|"MONTHLY"|"QUARTERLY"|"ANNUALLY"|"CUSTOM",
 #'       TimePeriod = list(
 #'         Start = as.POSIXct(
 #'           "2015-01-01"
@@ -1621,6 +1638,14 @@ budgets_describe_budget_performance_history <- function(AccountId, BudgetName, T
 #'       ),
 #'       Metrics = list(
 #'         "BlendedCost"|"UnblendedCost"|"AmortizedCost"|"NetUnblendedCost"|"NetAmortizedCost"|"UsageQuantity"|"NormalizedUsageAmount"|"Hours"
+#'       ),
+#'       BillingViewArn = "string",
+#'       HealthStatus = list(
+#'         Status = "HEALTHY"|"UNHEALTHY",
+#'         StatusReason = "BILLING_VIEW_NO_ACCESS"|"BILLING_VIEW_UNHEALTHY"|"FILTER_INVALID"|"MULTI_YEAR_HISTORICAL_DATA_DISABLED",
+#'         LastUpdatedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -2081,7 +2106,7 @@ budgets_untag_resource <- function(ResourceARN, ResourceTagKeys) {
 #'       IncludeDiscount = TRUE|FALSE,
 #'       UseAmortized = TRUE|FALSE
 #'     ),
-#'     TimeUnit = "DAILY"|"MONTHLY"|"QUARTERLY"|"ANNUALLY",
+#'     TimeUnit = "DAILY"|"MONTHLY"|"QUARTERLY"|"ANNUALLY"|"CUSTOM",
 #'     TimePeriod = list(
 #'       Start = as.POSIXct(
 #'         "2015-01-01"
@@ -2152,6 +2177,14 @@ budgets_untag_resource <- function(ResourceARN, ResourceTagKeys) {
 #'     ),
 #'     Metrics = list(
 #'       "BlendedCost"|"UnblendedCost"|"AmortizedCost"|"NetUnblendedCost"|"NetAmortizedCost"|"UsageQuantity"|"NormalizedUsageAmount"|"Hours"
+#'     ),
+#'     BillingViewArn = "string",
+#'     HealthStatus = list(
+#'       Status = "HEALTHY"|"UNHEALTHY",
+#'       StatusReason = "BILLING_VIEW_NO_ACCESS"|"BILLING_VIEW_UNHEALTHY"|"FILTER_INVALID"|"MULTI_YEAR_HISTORICAL_DATA_DISABLED",
+#'       LastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   )
 #' )

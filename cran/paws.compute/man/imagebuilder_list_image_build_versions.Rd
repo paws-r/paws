@@ -5,14 +5,14 @@
 \title{Returns a list of image build versions}
 \usage{
 imagebuilder_list_image_build_versions(
-  imageVersionArn,
+  imageVersionArn = NULL,
   filters = NULL,
   maxResults = NULL,
   nextToken = NULL
 )
 }
 \arguments{
-\item{imageVersionArn}{[required] The Amazon Resource Name (ARN) of the image whose build versions you
+\item{imageVersionArn}{The Amazon Resource Name (ARN) of the image whose build versions you
 want to retrieve.}
 
 \item{filters}{Use the following filters to streamline results:
@@ -24,7 +24,7 @@ want to retrieve.}
 \item \code{version}
 }}
 
-\item{maxResults}{The maximum items to return in a request.}
+\item{maxResults}{Specify the maximum number of items to return in a request.}
 
 \item{nextToken}{A token to specify where to start paginating. This is the nextToken from
 a previously truncated response.}

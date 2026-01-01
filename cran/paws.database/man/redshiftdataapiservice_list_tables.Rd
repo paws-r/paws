@@ -6,14 +6,14 @@
 \usage{
 redshiftdataapiservice_list_tables(
   ClusterIdentifier = NULL,
-  ConnectedDatabase = NULL,
-  Database,
-  DbUser = NULL,
-  MaxResults = NULL,
-  NextToken = NULL,
-  SchemaPattern = NULL,
   SecretArn = NULL,
+  DbUser = NULL,
+  Database,
+  ConnectedDatabase = NULL,
+  SchemaPattern = NULL,
   TablePattern = NULL,
+  NextToken = NULL,
+  MaxResults = NULL,
   WorkgroupName = NULL
 )
 }
@@ -22,27 +22,19 @@ redshiftdataapiservice_list_tables(
 cluster and authenticating using either Secrets Manager or temporary
 credentials.}
 
-\item{ConnectedDatabase}{A database name. The connected database is specified when you connect
-with your authentication credentials.}
-
-\item{Database}{[required] The name of the database that contains the tables to list. If
-\code{ConnectedDatabase} is not specified, this is also the database to
-connect to with your authentication credentials.}
+\item{SecretArn}{The name or ARN of the secret that enables access to the database. This
+parameter is required when authenticating using Secrets Manager.}
 
 \item{DbUser}{The database user name. This parameter is required when connecting to a
 cluster as a database user and authenticating using temporary
 credentials.}
 
-\item{MaxResults}{The maximum number of tables to return in the response. If more tables
-exist than fit in one response, then \code{NextToken} is returned to page
-through the results.}
+\item{Database}{[required] The name of the database that contains the tables to list. If
+\code{ConnectedDatabase} is not specified, this is also the database to
+connect to with your authentication credentials.}
 
-\item{NextToken}{A value that indicates the starting point for the next set of response
-records in a subsequent request. If a value is returned in a response,
-you can retrieve the next set of records by providing this returned
-NextToken value in the next NextToken parameter and retrying the
-command. If the NextToken field is empty, all response records have been
-retrieved for the request.}
+\item{ConnectedDatabase}{A database name. The connected database is specified when you connect
+with your authentication credentials.}
 
 \item{SchemaPattern}{A pattern to filter results by schema name. Within a schema pattern, "\%"
 means match any substring of 0 or more characters and "_" means match
@@ -51,15 +43,23 @@ are returned. If \code{SchemaPattern} is not specified, then all tables that
 match \code{TablePattern} are returned. If neither \code{SchemaPattern} or
 \code{TablePattern} are specified, then all tables are returned.}
 
-\item{SecretArn}{The name or ARN of the secret that enables access to the database. This
-parameter is required when authenticating using Secrets Manager.}
-
 \item{TablePattern}{A pattern to filter results by table name. Within a table pattern, "\%"
 means match any substring of 0 or more characters and "_" means match
 any one character. Only table name entries matching the search pattern
 are returned. If \code{TablePattern} is not specified, then all tables that
 match \code{SchemaPattern}are returned. If neither \code{SchemaPattern} or
 \code{TablePattern} are specified, then all tables are returned.}
+
+\item{NextToken}{A value that indicates the starting point for the next set of response
+records in a subsequent request. If a value is returned in a response,
+you can retrieve the next set of records by providing this returned
+NextToken value in the next NextToken parameter and retrying the
+command. If the NextToken field is empty, all response records have been
+retrieved for the request.}
+
+\item{MaxResults}{The maximum number of tables to return in the response. If more tables
+exist than fit in one response, then \code{NextToken} is returned to page
+through the results.}
 
 \item{WorkgroupName}{The serverless workgroup name or Amazon Resource Name (ARN). This
 parameter is required when connecting to a serverless workgroup and

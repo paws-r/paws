@@ -99,6 +99,7 @@ NULL
 #'  \link[=emr_add_job_flow_steps]{add_job_flow_steps} \tab AddJobFlowSteps adds new steps to a running cluster\cr
 #'  \link[=emr_add_tags]{add_tags} \tab Adds tags to an Amazon EMR resource, such as a cluster or an Amazon EMR Studio\cr
 #'  \link[=emr_cancel_steps]{cancel_steps} \tab Cancels a pending step or steps in a running cluster\cr
+#'  \link[=emr_create_persistent_app_ui]{create_persistent_app_ui} \tab Creates a persistent application user interface\cr
 #'  \link[=emr_create_security_configuration]{create_security_configuration} \tab Creates a security configuration, which is stored in the service and can be specified when a cluster is created\cr
 #'  \link[=emr_create_studio]{create_studio} \tab Creates a new Amazon EMR Studio\cr
 #'  \link[=emr_create_studio_session_mapping]{create_studio_session_mapping} \tab Maps a user or group to the Amazon EMR Studio specified by StudioId, and applies a session policy to refine Studio permissions for that user or group\cr
@@ -108,6 +109,7 @@ NULL
 #'  \link[=emr_describe_cluster]{describe_cluster} \tab Provides cluster-level details including status, hardware and software configuration, VPC settings, and so on\cr
 #'  \link[=emr_describe_job_flows]{describe_job_flows} \tab This API is no longer supported and will eventually be removed\cr
 #'  \link[=emr_describe_notebook_execution]{describe_notebook_execution} \tab Provides details of a notebook execution\cr
+#'  \link[=emr_describe_persistent_app_ui]{describe_persistent_app_ui} \tab Describes a persistent application user interface\cr
 #'  \link[=emr_describe_release_label]{describe_release_label} \tab Provides Amazon EMR release label details, such as the releases available the Region where the API request is run, and the available applications for a specific Amazon EMR release label\cr
 #'  \link[=emr_describe_security_configuration]{describe_security_configuration} \tab Provides the details of a security configuration by returning the configuration JSON\cr
 #'  \link[=emr_describe_step]{describe_step} \tab Provides more detail about the cluster step\cr
@@ -116,6 +118,8 @@ NULL
 #'  \link[=emr_get_block_public_access_configuration]{get_block_public_access_configuration} \tab Returns the Amazon EMR block public access configuration for your Amazon Web Services account in the current Region\cr
 #'  \link[=emr_get_cluster_session_credentials]{get_cluster_session_credentials} \tab Provides temporary, HTTP basic credentials that are associated with a given runtime IAM role and used by a cluster with fine-grained access control activated\cr
 #'  \link[=emr_get_managed_scaling_policy]{get_managed_scaling_policy} \tab Fetches the attached managed scaling policy for an Amazon EMR cluster\cr
+#'  \link[=emr_get_on_cluster_app_ui_presigned_url]{get_on_cluster_app_ui_presigned_url} \tab The presigned URL properties for the cluster's application user interface\cr
+#'  \link[=emr_get_persistent_app_ui_presigned_url]{get_persistent_app_ui_presigned_url} \tab The presigned URL properties for the cluster's application user interface\cr
 #'  \link[=emr_get_studio_session_mapping]{get_studio_session_mapping} \tab Fetches mapping details for the specified Amazon EMR Studio and identity (user or group)\cr
 #'  \link[=emr_list_bootstrap_actions]{list_bootstrap_actions} \tab Provides information about the bootstrap actions associated with a cluster\cr
 #'  \link[=emr_list_clusters]{list_clusters} \tab Provides the status of all clusters visible to this Amazon Web Services account\cr

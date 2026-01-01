@@ -2,7 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_update_place_index}
 \alias{locationservice_update_place_index}
-\title{Updates the specified properties of a given place index resource}
+\title{This operation is no longer current and may be deprecated in the future}
 \usage{
 locationservice_update_place_index(
   IndexName,
@@ -22,7 +22,7 @@ locationservice_update_place_index(
 \item{DataSourceConfiguration}{Updates the data storage option for the place index resource.}
 }
 \description{
-Updates the specified properties of a given place index resource.
+This operation is no longer current and may be deprecated in the future. We recommend you upgrade to the Places API V2 unless you require Grab data.
 
 See \url{https://www.paws-r-sdk.com/docs/locationservice_update_place_index/} for full documentation.
 }

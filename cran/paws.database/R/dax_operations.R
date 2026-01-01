@@ -29,7 +29,8 @@ NULL
 #' replicas). `If the AvailabilityZones` parameter is provided, its length
 #' must equal the `ReplicationFactor`.
 #' 
-#' AWS recommends that you have at least two read replicas per cluster.
+#' Amazon Web Services recommends that you have at least two read replicas
+#' per cluster.
 #' @param AvailabilityZones The Availability Zones (AZs) in which the cluster nodes will reside
 #' after the cluster has been created or updated. If provided, the length
 #' of this list must equal the `ReplicationFactor` parameter. If you omit
@@ -85,11 +86,23 @@ NULL
 #' -   `NONE` for no encryption
 #' 
 #' -   `TLS` for Transport Layer Security
+#' @param NetworkType Specifies the IP protocol(s) the cluster uses for network
+#' communications. Values are:
+#' 
+#' -   `ipv4` - The cluster is accessible only through IPv4 addresses
+#' 
+#' -   `ipv6` - The cluster is accessible only through IPv6 addresses
+#' 
+#' -   `dual_stack` - The cluster is accessible through both IPv4 and IPv6
+#'     addresses.
+#' 
+#' If no explicit `NetworkType` is provided, the network type is derived
+#' based on the subnet group's configuration.
 #'
 #' @keywords internal
 #'
 #' @rdname dax_create_cluster
-dax_create_cluster <- function(ClusterName, NodeType, Description = NULL, ReplicationFactor, AvailabilityZones = NULL, SubnetGroupName = NULL, SecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL, IamRoleArn, ParameterGroupName = NULL, Tags = NULL, SSESpecification = NULL, ClusterEndpointEncryptionType = NULL) {
+dax_create_cluster <- function(ClusterName, NodeType, Description = NULL, ReplicationFactor, AvailabilityZones = NULL, SubnetGroupName = NULL, SecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL, IamRoleArn, ParameterGroupName = NULL, Tags = NULL, SSESpecification = NULL, ClusterEndpointEncryptionType = NULL, NetworkType = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
@@ -98,7 +111,7 @@ dax_create_cluster <- function(ClusterName, NodeType, Description = NULL, Replic
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .dax$create_cluster_input(ClusterName = ClusterName, NodeType = NodeType, Description = Description, ReplicationFactor = ReplicationFactor, AvailabilityZones = AvailabilityZones, SubnetGroupName = SubnetGroupName, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, IamRoleArn = IamRoleArn, ParameterGroupName = ParameterGroupName, Tags = Tags, SSESpecification = SSESpecification, ClusterEndpointEncryptionType = ClusterEndpointEncryptionType)
+  input <- .dax$create_cluster_input(ClusterName = ClusterName, NodeType = NodeType, Description = Description, ReplicationFactor = ReplicationFactor, AvailabilityZones = AvailabilityZones, SubnetGroupName = SubnetGroupName, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, IamRoleArn = IamRoleArn, ParameterGroupName = ParameterGroupName, Tags = Tags, SSESpecification = SSESpecification, ClusterEndpointEncryptionType = ClusterEndpointEncryptionType, NetworkType = NetworkType)
   output <- .dax$create_cluster_output()
   config <- get_config()
   svc <- .dax$service(config, op)

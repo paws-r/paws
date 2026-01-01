@@ -93,6 +93,9 @@ for example, \verb{2021-09-29T*}, which matches an entire day.
 creation).
 \item \code{ena-support} - A Boolean that indicates whether enhanced networking
 with ENA is enabled.
+\item \code{free-tier-eligible} - A Boolean that indicates whether this image
+can be used under the Amazon Web Services Free Tier (\code{true} |
+\code{false}).
 \item \code{hypervisor} - The hypervisor type (\code{ovm} | \code{xen}).
 \item \code{image-allowed} - A Boolean that indicates whether the image meets
 the criteria specified for Allowed AMIs.

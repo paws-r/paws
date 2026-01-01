@@ -354,9 +354,12 @@ servicediscovery_create_public_dns_namespace <- function(Name, CreatorRequestId 
 #' be distinguished. However, if you use a namespace that's only accessible
 #' by API calls, then you can create services that with names that differ
 #' only by case.
-#' @param NamespaceId The ID of the namespace that you want to use to create the service. The
-#' namespace ID must be specified, but it can be specified either here or
-#' in the `DnsConfig` object.
+#' @param NamespaceId The ID or Amazon Resource Name (ARN) of the namespace that you want to
+#' use to create the service. For namespaces shared with your Amazon Web
+#' Services account, specify the namespace ARN. For more information about
+#' shared namespaces, see [Cross-account Cloud Map namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html)
+#' in the *Cloud Map Developer Guide*.
 #' @param CreatorRequestId A unique string that identifies the request and that allows failed
 #' [`create_service`][servicediscovery_create_service] requests to be
 #' retried without the risk of running the operation twice.
@@ -398,6 +401,7 @@ servicediscovery_create_public_dns_namespace <- function(Name, CreatorRequestId 
 #'   Service = list(
 #'     Id = "string",
 #'     Arn = "string",
+#'     ResourceOwner = "string",
 #'     Name = "string",
 #'     NamespaceId = "string",
 #'     Description = "string",
@@ -424,7 +428,8 @@ servicediscovery_create_public_dns_namespace <- function(Name, CreatorRequestId 
 #'     CreateDate = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     CreatorRequestId = "string"
+#'     CreatorRequestId = "string",
+#'     CreatedByAccount = "string"
 #'   )
 #' )
 #' ```
@@ -517,7 +522,8 @@ servicediscovery_create_service <- function(Name, NamespaceId = NULL, CreatorReq
 #' @usage
 #' servicediscovery_delete_namespace(Id)
 #'
-#' @param Id &#91;required&#93; The ID of the namespace that you want to delete.
+#' @param Id &#91;required&#93; The ID or Amazon Resource Name (ARN) of the namespace that you want to
+#' delete.
 #'
 #' @return
 #' A list with the following syntax:
@@ -576,7 +582,12 @@ servicediscovery_delete_namespace <- function(Id) {
 #' @usage
 #' servicediscovery_delete_service(Id)
 #'
-#' @param Id &#91;required&#93; The ID of the service that you want to delete.
+#' @param Id &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service that you want to
+#' delete. If the namespace associated with the service is shared with your
+#' Amazon Web Services account, specify the service ARN. For more
+#' information about shared namespaces, see [Cross-account Cloud Map
+#' namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html).
 #'
 #' @return
 #' An empty list.
@@ -628,7 +639,13 @@ servicediscovery_delete_service <- function(Id) {
 #' @usage
 #' servicediscovery_delete_service_attributes(ServiceId, Attributes)
 #'
-#' @param ServiceId &#91;required&#93; The ID of the service from which the attributes will be deleted.
+#' @param ServiceId &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service from which the
+#' attributes will be deleted. For services created in a namespace shared
+#' with your Amazon Web Services account, specify the service ARN. For more
+#' information about shared namespaces, see [Cross-account Cloud Map
+#' namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html)
+#' in the *Cloud Map Developer Guide*.
 #' @param Attributes &#91;required&#93; A list of keys corresponding to each attribute that you want to delete.
 #'
 #' @return
@@ -678,7 +695,12 @@ servicediscovery_delete_service_attributes <- function(ServiceId, Attributes) {
 #' @usage
 #' servicediscovery_deregister_instance(ServiceId, InstanceId)
 #'
-#' @param ServiceId &#91;required&#93; The ID of the service that the instance is associated with.
+#' @param ServiceId &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service that the instance is
+#' associated with. If the namespace associated with the service is shared
+#' with your account, specify the service ARN. For more information about
+#' shared namespaces, see [Cross-account Cloud Map namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html)
+#' in the *Cloud Map Developer Guide*.
 #' @param InstanceId &#91;required&#93; The value that you specified for `Id` in the
 #' [`register_instance`][servicediscovery_register_instance] request.
 #'
@@ -744,13 +766,14 @@ servicediscovery_deregister_instance <- function(ServiceId, InstanceId) {
 #'
 #' @usage
 #' servicediscovery_discover_instances(NamespaceName, ServiceName,
-#'   MaxResults, QueryParameters, OptionalParameters, HealthStatus)
+#'   MaxResults, QueryParameters, OptionalParameters, HealthStatus,
+#'   OwnerAccount)
 #'
-#' @param NamespaceName &#91;required&#93; The `HttpName` name of the namespace. It's found in the `HttpProperties`
-#' member of the `Properties` member of the namespace. In most cases,
-#' `Name` and `HttpName` match. However, if you reuse `Name` for namespace
-#' creation, a generated hash is added to `HttpName` to distinguish the
-#' two.
+#' @param NamespaceName &#91;required&#93; The `HttpName` name of the namespace. The `HttpName` is found in the
+#' `HttpProperties` member of the `Properties` member of the namespace. In
+#' most cases, `Name` and `HttpName` match. However, if you reuse `Name`
+#' for namespace creation, a generated hash is added to `HttpName` to
+#' distinguish the two.
 #' @param ServiceName &#91;required&#93; The name of the service that you specified when you registered the
 #' instance.
 #' @param MaxResults The maximum number of instances that you want Cloud Map to return in the
@@ -787,6 +810,10 @@ servicediscovery_deregister_instance <- function(ServiceId, InstanceId) {
 #' 
 #' Returns healthy instances, unless none are reporting a healthy state. In
 #' that case, return all instances. This is also called failing open.
+#' @param OwnerAccount The ID of the Amazon Web Services account that owns the namespace
+#' associated with the instance, as specified in the namespace
+#' `ResourceOwner` field. For instances associated with namespaces that are
+#' shared with your account, you must specify an `OwnerAccount`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -819,7 +846,8 @@ servicediscovery_deregister_instance <- function(ServiceId, InstanceId) {
 #'   OptionalParameters = list(
 #'     "string"
 #'   ),
-#'   HealthStatus = "HEALTHY"|"UNHEALTHY"|"ALL"|"HEALTHY_OR_ELSE_ALL"
+#'   HealthStatus = "HEALTHY"|"UNHEALTHY"|"ALL"|"HEALTHY_OR_ELSE_ALL",
+#'   OwnerAccount = "string"
 #' )
 #' ```
 #'
@@ -839,7 +867,7 @@ servicediscovery_deregister_instance <- function(ServiceId, InstanceId) {
 #' @rdname servicediscovery_discover_instances
 #'
 #' @aliases servicediscovery_discover_instances
-servicediscovery_discover_instances <- function(NamespaceName, ServiceName, MaxResults = NULL, QueryParameters = NULL, OptionalParameters = NULL, HealthStatus = NULL) {
+servicediscovery_discover_instances <- function(NamespaceName, ServiceName, MaxResults = NULL, QueryParameters = NULL, OptionalParameters = NULL, HealthStatus = NULL, OwnerAccount = NULL) {
   op <- new_operation(
     name = "DiscoverInstances",
     http_method = "POST",
@@ -848,7 +876,7 @@ servicediscovery_discover_instances <- function(NamespaceName, ServiceName, MaxR
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .servicediscovery$discover_instances_input(NamespaceName = NamespaceName, ServiceName = ServiceName, MaxResults = MaxResults, QueryParameters = QueryParameters, OptionalParameters = OptionalParameters, HealthStatus = HealthStatus)
+  input <- .servicediscovery$discover_instances_input(NamespaceName = NamespaceName, ServiceName = ServiceName, MaxResults = MaxResults, QueryParameters = QueryParameters, OptionalParameters = OptionalParameters, HealthStatus = HealthStatus, OwnerAccount = OwnerAccount)
   output <- .servicediscovery$discover_instances_output()
   config <- get_config()
   svc <- .servicediscovery$service(config, op)
@@ -864,12 +892,21 @@ servicediscovery_discover_instances <- function(NamespaceName, ServiceName, MaxR
 #' Discovers the increasing revision associated with an instance.
 #'
 #' @usage
-#' servicediscovery_discover_instances_revision(NamespaceName, ServiceName)
+#' servicediscovery_discover_instances_revision(NamespaceName, ServiceName,
+#'   OwnerAccount)
 #'
-#' @param NamespaceName &#91;required&#93; The `HttpName` name of the namespace. It's found in the `HttpProperties`
-#' member of the `Properties` member of the namespace.
+#' @param NamespaceName &#91;required&#93; The `HttpName` name of the namespace. The `HttpName` is found in the
+#' `HttpProperties` member of the `Properties` member of the namespace.
 #' @param ServiceName &#91;required&#93; The name of the service that you specified when you registered the
 #' instance.
+#' @param OwnerAccount The ID of the Amazon Web Services account that owns the namespace
+#' associated with the instance, as specified in the namespace
+#' `ResourceOwner` field. For instances associated with namespaces that are
+#' shared with your account, you must specify an `OwnerAccount`. For more
+#' information about shared namespaces, see [Cross-account Cloud Map
+#' namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html)
+#' in the *Cloud Map Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -883,7 +920,8 @@ servicediscovery_discover_instances <- function(NamespaceName, ServiceName, MaxR
 #' ```
 #' svc$discover_instances_revision(
 #'   NamespaceName = "string",
-#'   ServiceName = "string"
+#'   ServiceName = "string",
+#'   OwnerAccount = "string"
 #' )
 #' ```
 #'
@@ -892,7 +930,7 @@ servicediscovery_discover_instances <- function(NamespaceName, ServiceName, MaxR
 #' @rdname servicediscovery_discover_instances_revision
 #'
 #' @aliases servicediscovery_discover_instances_revision
-servicediscovery_discover_instances_revision <- function(NamespaceName, ServiceName) {
+servicediscovery_discover_instances_revision <- function(NamespaceName, ServiceName, OwnerAccount = NULL) {
   op <- new_operation(
     name = "DiscoverInstancesRevision",
     http_method = "POST",
@@ -901,7 +939,7 @@ servicediscovery_discover_instances_revision <- function(NamespaceName, ServiceN
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .servicediscovery$discover_instances_revision_input(NamespaceName = NamespaceName, ServiceName = ServiceName)
+  input <- .servicediscovery$discover_instances_revision_input(NamespaceName = NamespaceName, ServiceName = ServiceName, OwnerAccount = OwnerAccount)
   output <- .servicediscovery$discover_instances_revision_output()
   config <- get_config()
   svc <- .servicediscovery$service(config, op)
@@ -919,19 +957,26 @@ servicediscovery_discover_instances_revision <- function(NamespaceName, ServiceN
 #' @usage
 #' servicediscovery_get_instance(ServiceId, InstanceId)
 #'
-#' @param ServiceId &#91;required&#93; The ID of the service that the instance is associated with.
+#' @param ServiceId &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service that the instance is
+#' associated with. For services created in a shared namespace, specify the
+#' service ARN. For more information about shared namespaces, see
+#' [Cross-account Cloud Map namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html)
+#' in the *Cloud Map Developer Guide*.
 #' @param InstanceId &#91;required&#93; The ID of the instance that you want to get information about.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   ResourceOwner = "string",
 #'   Instance = list(
 #'     Id = "string",
 #'     CreatorRequestId = "string",
 #'     Attributes = list(
 #'       "string"
-#'     )
+#'     ),
+#'     CreatedByAccount = "string"
 #'   )
 #' )
 #' ```
@@ -991,7 +1036,12 @@ servicediscovery_get_instance <- function(ServiceId, InstanceId) {
 #' servicediscovery_get_instances_health_status(ServiceId, Instances,
 #'   MaxResults, NextToken)
 #'
-#' @param ServiceId &#91;required&#93; The ID of the service that the instance is associated with.
+#' @param ServiceId &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service that the instance is
+#' associated with. For services created in a shared namespace, specify the
+#' service ARN. For more information about shared namespaces, see
+#' [Cross-account Cloud Map namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html)
+#' in the *Cloud Map Developer Guide*.
 #' @param Instances An array that contains the IDs of all the instances that you want to get
 #' the health status for.
 #' 
@@ -1080,7 +1130,12 @@ servicediscovery_get_instances_health_status <- function(ServiceId, Instances = 
 #' @usage
 #' servicediscovery_get_namespace(Id)
 #'
-#' @param Id &#91;required&#93; The ID of the namespace that you want to get information about.
+#' @param Id &#91;required&#93; The ID or Amazon Resource Name (ARN) of the namespace that you want to
+#' get information about. For namespaces shared with your Amazon Web
+#' Services account, specify the namespace ARN. For more information about
+#' shared namespaces, see [Cross-account Cloud Map namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html)
+#' in the *Cloud Map Developer Guide*
 #'
 #' @return
 #' A list with the following syntax:
@@ -1089,6 +1144,7 @@ servicediscovery_get_instances_health_status <- function(ServiceId, Instances = 
 #'   Namespace = list(
 #'     Id = "string",
 #'     Arn = "string",
+#'     ResourceOwner = "string",
 #'     Name = "string",
 #'     Type = "DNS_PUBLIC"|"DNS_PRIVATE"|"HTTP",
 #'     Description = "string",
@@ -1164,9 +1220,13 @@ servicediscovery_get_namespace <- function(Id) {
 #' [`list_operations`][servicediscovery_list_operations].
 #'
 #' @usage
-#' servicediscovery_get_operation(OperationId)
+#' servicediscovery_get_operation(OperationId, OwnerAccount)
 #'
 #' @param OperationId &#91;required&#93; The ID of the operation that you want to get more information about.
+#' @param OwnerAccount The ID of the Amazon Web Services account that owns the namespace
+#' associated with the operation, as specified in the namespace
+#' `ResourceOwner` field. For operations associated with namespaces that
+#' are shared with your account, you must specify an `OwnerAccount`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1174,6 +1234,7 @@ servicediscovery_get_namespace <- function(Id) {
 #' list(
 #'   Operation = list(
 #'     Id = "string",
+#'     OwnerAccount = "string",
 #'     Type = "CREATE_NAMESPACE"|"DELETE_NAMESPACE"|"UPDATE_NAMESPACE"|"UPDATE_SERVICE"|"REGISTER_INSTANCE"|"DEREGISTER_INSTANCE",
 #'     Status = "SUBMITTED"|"PENDING"|"SUCCESS"|"FAIL",
 #'     ErrorMessage = "string",
@@ -1194,7 +1255,8 @@ servicediscovery_get_namespace <- function(Id) {
 #' @section Request syntax:
 #' ```
 #' svc$get_operation(
-#'   OperationId = "string"
+#'   OperationId = "string",
+#'   OwnerAccount = "string"
 #' )
 #' ```
 #'
@@ -1211,7 +1273,7 @@ servicediscovery_get_namespace <- function(Id) {
 #' @rdname servicediscovery_get_operation
 #'
 #' @aliases servicediscovery_get_operation
-servicediscovery_get_operation <- function(OperationId) {
+servicediscovery_get_operation <- function(OperationId, OwnerAccount = NULL) {
   op <- new_operation(
     name = "GetOperation",
     http_method = "POST",
@@ -1220,7 +1282,7 @@ servicediscovery_get_operation <- function(OperationId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .servicediscovery$get_operation_input(OperationId = OperationId)
+  input <- .servicediscovery$get_operation_input(OperationId = OperationId, OwnerAccount = OwnerAccount)
   output <- .servicediscovery$get_operation_output()
   config <- get_config()
   svc <- .servicediscovery$service(config, op)
@@ -1238,7 +1300,12 @@ servicediscovery_get_operation <- function(OperationId) {
 #' @usage
 #' servicediscovery_get_service(Id)
 #'
-#' @param Id &#91;required&#93; The ID of the service that you want to get settings for.
+#' @param Id &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service that you want to get
+#' settings for. For services created by consumers in a shared namespace,
+#' specify the service ARN. For more information about shared namespaces,
+#' see [Cross-account Cloud Map namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html)
+#' in the *Cloud Map Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1247,6 +1314,7 @@ servicediscovery_get_operation <- function(OperationId) {
 #'   Service = list(
 #'     Id = "string",
 #'     Arn = "string",
+#'     ResourceOwner = "string",
 #'     Name = "string",
 #'     NamespaceId = "string",
 #'     Description = "string",
@@ -1273,7 +1341,8 @@ servicediscovery_get_operation <- function(OperationId) {
 #'     CreateDate = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     CreatorRequestId = "string"
+#'     CreatorRequestId = "string",
+#'     CreatedByAccount = "string"
 #'   )
 #' )
 #' ```
@@ -1325,7 +1394,13 @@ servicediscovery_get_service <- function(Id) {
 #' @usage
 #' servicediscovery_get_service_attributes(ServiceId)
 #'
-#' @param ServiceId &#91;required&#93; The ID of the service that you want to get attributes for.
+#' @param ServiceId &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service that you want to get
+#' attributes for. For services created in a namespace shared with your
+#' Amazon Web Services account, specify the service ARN. For more
+#' information about shared namespaces, see [Cross-account Cloud Map
+#' namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html)
+#' in the *Cloud Map Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1333,6 +1408,7 @@ servicediscovery_get_service <- function(Id) {
 #' list(
 #'   ServiceAttributes = list(
 #'     ServiceArn = "string",
+#'     ResourceOwner = "string",
 #'     Attributes = list(
 #'       "string"
 #'     )
@@ -1381,7 +1457,12 @@ servicediscovery_get_service_attributes <- function(ServiceId) {
 #' @usage
 #' servicediscovery_list_instances(ServiceId, NextToken, MaxResults)
 #'
-#' @param ServiceId &#91;required&#93; The ID of the service that you want to list instances for.
+#' @param ServiceId &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service that you want to
+#' list instances for. For services created in a shared namespace, specify
+#' the service ARN. For more information about shared namespaces, see
+#' [Cross-account Cloud Map namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html)
+#' in the *Cloud Map Developer Guide*.
 #' @param NextToken For the first [`list_instances`][servicediscovery_list_instances]
 #' request, omit this value.
 #' 
@@ -1398,12 +1479,14 @@ servicediscovery_get_service_attributes <- function(ServiceId) {
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   ResourceOwner = "string",
 #'   Instances = list(
 #'     list(
 #'       Id = "string",
 #'       Attributes = list(
 #'         "string"
-#'       )
+#'       ),
+#'       CreatedByAccount = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1452,11 +1535,13 @@ servicediscovery_list_instances <- function(ServiceId, NextToken = NULL, MaxResu
 .servicediscovery$operations$list_instances <- servicediscovery_list_instances
 
 #' Lists summary information about the namespaces that were created by the
-#' current Amazon Web Services account
+#' current Amazon Web Services account and shared with the current Amazon
+#' Web Services account
 #'
 #' @description
 #' Lists summary information about the namespaces that were created by the
-#' current Amazon Web Services account.
+#' current Amazon Web Services account and shared with the current Amazon
+#' Web Services account.
 #'
 #' @usage
 #' servicediscovery_list_namespaces(NextToken, MaxResults, Filters)
@@ -1492,6 +1577,7 @@ servicediscovery_list_instances <- function(ServiceId, NextToken = NULL, MaxResu
 #'     list(
 #'       Id = "string",
 #'       Arn = "string",
+#'       ResourceOwner = "string",
 #'       Name = "string",
 #'       Type = "DNS_PUBLIC"|"DNS_PRIVATE"|"HTTP",
 #'       Description = "string",
@@ -1523,7 +1609,7 @@ servicediscovery_list_instances <- function(ServiceId, NextToken = NULL, MaxResu
 #'   MaxResults = 123,
 #'   Filters = list(
 #'     list(
-#'       Name = "TYPE"|"NAME"|"HTTP_NAME",
+#'       Name = "TYPE"|"NAME"|"HTTP_NAME"|"RESOURCE_OWNER",
 #'       Values = list(
 #'         "string"
 #'       ),
@@ -1709,6 +1795,7 @@ servicediscovery_list_operations <- function(NextToken = NULL, MaxResults = NULL
 #'     list(
 #'       Id = "string",
 #'       Arn = "string",
+#'       ResourceOwner = "string",
 #'       Name = "string",
 #'       Type = "HTTP"|"DNS_HTTP"|"DNS",
 #'       Description = "string",
@@ -1733,7 +1820,8 @@ servicediscovery_list_operations <- function(NextToken = NULL, MaxResults = NULL
 #'       ),
 #'       CreateDate = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       CreatedByAccount = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1747,7 +1835,7 @@ servicediscovery_list_operations <- function(NextToken = NULL, MaxResults = NULL
 #'   MaxResults = 123,
 #'   Filters = list(
 #'     list(
-#'       Name = "NAMESPACE_ID",
+#'       Name = "NAMESPACE_ID"|"RESOURCE_OWNER",
 #'       Values = list(
 #'         "string"
 #'       ),
@@ -1896,8 +1984,12 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' servicediscovery_register_instance(ServiceId, InstanceId,
 #'   CreatorRequestId, Attributes)
 #'
-#' @param ServiceId &#91;required&#93; The ID of the service that you want to use for settings for the
-#' instance.
+#' @param ServiceId &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service that you want to use
+#' for settings for the instance. For services created in a shared
+#' namespace, specify the service ARN. For more information about shared
+#' namespaces, see [Cross-account Cloud Map namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html)
+#' in the *Cloud Map Developer Guide*.
 #' @param InstanceId &#91;required&#93; An identifier that you want to associate with the instance. Note the
 #' following:
 #' 
@@ -2243,7 +2335,8 @@ servicediscovery_untag_resource <- function(ResourceARN, TagKeys) {
 #' @usage
 #' servicediscovery_update_http_namespace(Id, UpdaterRequestId, Namespace)
 #'
-#' @param Id &#91;required&#93; The ID of the namespace that you want to update.
+#' @param Id &#91;required&#93; The ID or Amazon Resource Name (ARN) of the namespace that you want to
+#' update.
 #' @param UpdaterRequestId A unique string that identifies the request and that allows failed
 #' [`update_http_namespace`][servicediscovery_update_http_namespace]
 #' requests to be retried without the risk of running the operation twice.
@@ -2315,8 +2408,13 @@ servicediscovery_update_http_namespace <- function(Id, UpdaterRequestId = NULL, 
 #' servicediscovery_update_instance_custom_health_status(ServiceId,
 #'   InstanceId, Status)
 #'
-#' @param ServiceId &#91;required&#93; The ID of the service that includes the configuration for the custom
-#' health check that you want to change the status for.
+#' @param ServiceId &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service that includes the
+#' configuration for the custom health check that you want to change the
+#' status for. For services created in a shared namespace, specify the
+#' service ARN. For more information about shared namespaces, see
+#' [Cross-account Cloud Map namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html)
+#' in the *Cloud Map Developer Guide*.
 #' @param InstanceId &#91;required&#93; The ID of the instance that you want to change the health status for.
 #' @param Status &#91;required&#93; The new status of the instance, `HEALTHY` or `UNHEALTHY`.
 #'
@@ -2377,7 +2475,8 @@ servicediscovery_update_instance_custom_health_status <- function(ServiceId, Ins
 #' servicediscovery_update_private_dns_namespace(Id, UpdaterRequestId,
 #'   Namespace)
 #'
-#' @param Id &#91;required&#93; The ID of the namespace that you want to update.
+#' @param Id &#91;required&#93; The ID or Amazon Resource Name (ARN) of the namespace that you want to
+#' update.
 #' @param UpdaterRequestId A unique string that identifies the request and that allows failed
 #' [`update_private_dns_namespace`][servicediscovery_update_private_dns_namespace]
 #' requests to be retried without the risk of running the operation twice.
@@ -2444,7 +2543,7 @@ servicediscovery_update_private_dns_namespace <- function(Id, UpdaterRequestId =
 #' servicediscovery_update_public_dns_namespace(Id, UpdaterRequestId,
 #'   Namespace)
 #'
-#' @param Id &#91;required&#93; The ID of the namespace being updated.
+#' @param Id &#91;required&#93; The ID or Amazon Resource Name (ARN) of the namespace being updated.
 #' @param UpdaterRequestId A unique string that identifies the request and that allows failed
 #' [`update_public_dns_namespace`][servicediscovery_update_public_dns_namespace]
 #' requests to be retried without the risk of running the operation twice.
@@ -2525,6 +2624,16 @@ servicediscovery_update_public_dns_namespace <- function(Id, UpdaterRequestId = 
 #'     an [`update_service`][servicediscovery_update_service] request, the
 #'     configuration isn't deleted from the service.
 #' 
+#' You can't call [`update_service`][servicediscovery_update_service] and
+#' update settings in the following scenarios:
+#' 
+#' -   When the service is associated with an HTTP namespace
+#' 
+#' -   When the service is associated with a shared namespace and contains
+#'     instances that were registered by Amazon Web Services accounts other
+#'     than the account making the
+#'     [`update_service`][servicediscovery_update_service] call
+#' 
 #' When you update settings for a service, Cloud Map also updates the
 #' corresponding settings in all the records and health checks that were
 #' created by using the specified service.
@@ -2532,7 +2641,13 @@ servicediscovery_update_public_dns_namespace <- function(Id, UpdaterRequestId = 
 #' @usage
 #' servicediscovery_update_service(Id, Service)
 #'
-#' @param Id &#91;required&#93; The ID of the service that you want to update.
+#' @param Id &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service that you want to
+#' update. If the namespace associated with the service is shared with your
+#' Amazon Web Services account, specify the service ARN. For more
+#' information about shared namespaces, see [Cross-account Cloud Map
+#' namespace
+#' sharing](https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html)
+#' in the *Cloud Map Developer Guide*
 #' @param Service &#91;required&#93; A complex type that contains the new settings for the service. You can
 #' specify a maximum of 30 attributes (key-value pairs).
 #'
@@ -2625,7 +2740,9 @@ servicediscovery_update_service <- function(Id, Service) {
 #' @usage
 #' servicediscovery_update_service_attributes(ServiceId, Attributes)
 #'
-#' @param ServiceId &#91;required&#93; The ID of the service that you want to update.
+#' @param ServiceId &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service that you want to
+#' update. For services created in a namespace shared with your Amazon Web
+#' Services account, specify the service ARN.
 #' @param Attributes &#91;required&#93; A string map that contains attribute key-value pairs.
 #'
 #' @return

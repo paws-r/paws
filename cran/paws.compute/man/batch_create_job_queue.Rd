@@ -9,7 +9,9 @@ batch_create_job_queue(
   state = NULL,
   schedulingPolicyArn = NULL,
   priority,
-  computeEnvironmentOrder,
+  computeEnvironmentOrder = NULL,
+  serviceEnvironmentOrder = NULL,
+  jobQueueType = NULL,
   tags = NULL,
   jobStateTimeLimitActions = NULL
 )
@@ -49,7 +51,7 @@ priority value of \code{1}. All of the compute environments must be either
 EC2 (\code{EC2} or \code{SPOT}) or Fargate (\code{FARGATE} or \code{FARGATE_SPOT}); EC2 and
 Fargate compute environments can't be mixed.}
 
-\item{computeEnvironmentOrder}{[required] The set of compute environments mapped to a job queue and their order
+\item{computeEnvironmentOrder}{The set of compute environments mapped to a job queue and their order
 relative to each other. The job scheduler uses this parameter to
 determine which compute environment runs a specific job. Compute
 environments must be in the \code{VALID} state before you can associate them
@@ -61,6 +63,15 @@ Fargate compute environments can't be mixed.
 All compute environments that are associated with a job queue must share
 the same architecture. Batch doesn't support mixing compute environment
 architecture types in a single job queue.}
+
+\item{serviceEnvironmentOrder}{A list of service environments that this job queue can use to allocate
+jobs. All serviceEnvironments must have the same type. A job queue can't
+have both a serviceEnvironmentOrder and a computeEnvironmentOrder field.}
+
+\item{jobQueueType}{The type of job queue. For service jobs that run on SageMaker Training,
+this value is \code{SAGEMAKER_TRAINING}. For regular container jobs, this
+value is \code{EKS}, \code{ECS}, or \code{ECS_FARGATE} depending on the compute
+environment.}
 
 \item{tags}{The tags that you apply to the job queue to help you categorize and
 organize your resources. Each tag consists of a key and an optional

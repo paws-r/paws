@@ -8,7 +8,8 @@ canary that you have created}
 synthetics_describe_canaries_last_run(
   NextToken = NULL,
   MaxResults = NULL,
-  Names = NULL
+  Names = NULL,
+  BrowserType = NULL
 )
 }
 \arguments{
@@ -32,6 +33,8 @@ request fails with a 403 response.
 You are required to use the \code{Names} parameter if you are logged on to a
 user or role that has an IAM policy that restricts which canaries that
 you are allowed to view. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Restricted.html}{Limiting a user to viewing specific canaries}.}
+
+\item{BrowserType}{The type of browser to use for the canary run.}
 }
 \description{
 Use this operation to see information from the most recent run of each canary that you have created.

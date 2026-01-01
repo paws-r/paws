@@ -28,7 +28,7 @@ in the Amazon Resource Name (ARN) of the instance.}
 
 \item{FromEmailAddress}{[required] The email address of the customer.}
 
-\item{DestinationEmailAddress}{[required] The email address associated with the instance.}
+\item{DestinationEmailAddress}{[required] The email address associated with the Amazon Connect instance.}
 
 \item{Description}{A description of the email contact.}
 
@@ -43,7 +43,7 @@ Panel (CCP).}
 
 \item{EmailMessage}{[required] The email message body to be sent to the newly created email.}
 
-\item{AdditionalRecipients}{The addtional recipients address of the email.}
+\item{AdditionalRecipients}{The additional recipients address of the email.}
 
 \item{Attachments}{List of S3 presigned URLs of email attachments and their file name.}
 

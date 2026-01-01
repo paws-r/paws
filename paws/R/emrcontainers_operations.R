@@ -285,11 +285,12 @@ emrcontainers_create_managed_endpoint <- function(name, virtualClusterId, type, 
 #'
 #' @usage
 #' emrcontainers_create_security_configuration(clientToken, name,
-#'   securityConfigurationData, tags)
+#'   containerProvider, securityConfigurationData, tags)
 #'
 #' @param clientToken &#91;required&#93; The client idempotency token to use when creating the security
 #' configuration.
 #' @param name &#91;required&#93; The name of the security configuration.
+#' @param containerProvider The container provider associated with the security configuration.
 #' @param securityConfigurationData &#91;required&#93; Security configuration input for the request.
 #' @param tags The tags to add to the security configuration.
 #'
@@ -308,6 +309,16 @@ emrcontainers_create_managed_endpoint <- function(name, virtualClusterId, type, 
 #' svc$create_security_configuration(
 #'   clientToken = "string",
 #'   name = "string",
+#'   containerProvider = list(
+#'     type = "EKS",
+#'     id = "string",
+#'     info = list(
+#'       eksInfo = list(
+#'         namespace = "string",
+#'         nodeLabel = "string"
+#'       )
+#'     )
+#'   ),
 #'   securityConfigurationData = list(
 #'     authorizationConfiguration = list(
 #'       lakeFormationConfiguration = list(
@@ -340,7 +351,7 @@ emrcontainers_create_managed_endpoint <- function(name, virtualClusterId, type, 
 #' @rdname emrcontainers_create_security_configuration
 #'
 #' @aliases emrcontainers_create_security_configuration
-emrcontainers_create_security_configuration <- function(clientToken, name, securityConfigurationData, tags = NULL) {
+emrcontainers_create_security_configuration <- function(clientToken, name, containerProvider = NULL, securityConfigurationData, tags = NULL) {
   op <- new_operation(
     name = "CreateSecurityConfiguration",
     http_method = "POST",
@@ -349,7 +360,7 @@ emrcontainers_create_security_configuration <- function(clientToken, name, secur
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .emrcontainers$create_security_configuration_input(clientToken = clientToken, name = name, securityConfigurationData = securityConfigurationData, tags = tags)
+  input <- .emrcontainers$create_security_configuration_input(clientToken = clientToken, name = name, containerProvider = containerProvider, securityConfigurationData = securityConfigurationData, tags = tags)
   output <- .emrcontainers$create_security_configuration_output()
   config <- get_config()
   svc <- .emrcontainers$service(config, op)
@@ -398,7 +409,8 @@ emrcontainers_create_security_configuration <- function(clientToken, name, secur
 #'     id = "string",
 #'     info = list(
 #'       eksInfo = list(
-#'         namespace = "string"
+#'         namespace = "string",
+#'         nodeLabel = "string"
 #'       )
 #'     )
 #'   ),
@@ -1054,7 +1066,8 @@ emrcontainers_describe_security_configuration <- function(id) {
 #'       id = "string",
 #'       info = list(
 #'         eksInfo = list(
-#'           namespace = "string"
+#'           namespace = "string",
+#'           nodeLabel = "string"
 #'         )
 #'       )
 #'     ),
@@ -1766,7 +1779,8 @@ emrcontainers_list_tags_for_resource <- function(resourceArn) {
 #'         id = "string",
 #'         info = list(
 #'           eksInfo = list(
-#'             namespace = "string"
+#'             namespace = "string",
+#'             nodeLabel = "string"
 #'           )
 #'         )
 #'       ),

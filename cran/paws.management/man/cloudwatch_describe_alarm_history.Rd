@@ -6,6 +6,7 @@
 \usage{
 cloudwatch_describe_alarm_history(
   AlarmName = NULL,
+  AlarmContributorId = NULL,
   AlarmTypes = NULL,
   HistoryItemType = NULL,
   StartDate = NULL,
@@ -17,6 +18,9 @@ cloudwatch_describe_alarm_history(
 }
 \arguments{
 \item{AlarmName}{The name of the alarm.}
+
+\item{AlarmContributorId}{The unique identifier of a specific alarm contributor to filter the
+alarm history results.}
 
 \item{AlarmTypes}{Use this parameter to specify whether you want the operation to return
 metric alarms or composite alarms. If you omit this parameter, only

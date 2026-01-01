@@ -5,15 +5,12 @@
 \title{Lists coverage details for your environment}
 \usage{
 inspector2_list_coverage(
-  filterCriteria = NULL,
   maxResults = NULL,
-  nextToken = NULL
+  nextToken = NULL,
+  filterCriteria = NULL
 )
 }
 \arguments{
-\item{filterCriteria}{An object that contains details on the filters to apply to the coverage
-data for your environment.}
-
 \item{maxResults}{The maximum number of results the response can return. If your request
 would return more than the maximum the response will return a
 \code{nextToken} value, use this value when you call the action again to get
@@ -25,6 +22,9 @@ action. If your response returns more than the \code{maxResults} maximum
 value it will also return a \code{nextToken} value. For subsequent calls, use
 the \code{nextToken} value returned from the previous request to continue
 listing results after the first page.}
+
+\item{filterCriteria}{An object that contains details on the filters to apply to the coverage
+data for your environment.}
 }
 \description{
 Lists coverage details for your environment.

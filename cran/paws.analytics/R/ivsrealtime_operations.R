@@ -864,6 +864,45 @@ ivsrealtime_list_participant_events <- function(stageArn, sessionId, participant
 }
 .ivsrealtime$operations$list_participant_events <- ivsrealtime_list_participant_events
 
+#' Lists all the replicas for a participant from a source stage
+#'
+#' @description
+#' Lists all the replicas for a participant from a source stage.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivsrealtime_list_participant_replicas/](https://www.paws-r-sdk.com/docs/ivsrealtime_list_participant_replicas/) for full documentation.
+#'
+#' @param sourceStageArn &#91;required&#93; ARN of the stage where the participant is publishing.
+#' @param participantId &#91;required&#93; Participant ID of the publisher that has been replicated. This is
+#' assigned by IVS and returned by
+#' [`create_participant_token`][ivsrealtime_create_participant_token] or
+#' the `jti` (JWT ID) used to [create a self signed
+#' token](https://docs.aws.amazon.com/ivs/latest/RealTimeUserGuide/getting-started-distribute-tokens.html#getting-started-distribute-tokens-self-signed).
+#' @param nextToken The first participant to retrieve. This is used for pagination; see the
+#' `nextToken` response field.
+#' @param maxResults Maximum number of results to return. Default: 50.
+#'
+#' @keywords internal
+#'
+#' @rdname ivsrealtime_list_participant_replicas
+ivsrealtime_list_participant_replicas <- function(sourceStageArn, participantId, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListParticipantReplicas",
+    http_method = "POST",
+    http_path = "/ListParticipantReplicas",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "replicas"),
+    stream_api = FALSE
+  )
+  input <- .ivsrealtime$list_participant_replicas_input(sourceStageArn = sourceStageArn, participantId = participantId, nextToken = nextToken, maxResults = maxResults)
+  output <- .ivsrealtime$list_participant_replicas_output()
+  config <- get_config()
+  svc <- .ivsrealtime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivsrealtime$operations$list_participant_replicas <- ivsrealtime_list_participant_replicas
+
 #' Lists all participants in a specified stage session
 #'
 #' @description
@@ -1126,6 +1165,55 @@ ivsrealtime_start_composition <- function(stageArn, idempotencyToken = NULL, lay
 }
 .ivsrealtime$operations$start_composition <- ivsrealtime_start_composition
 
+#' Starts replicating a publishing participant from a source stage to a
+#' destination stage
+#'
+#' @description
+#' Starts replicating a publishing participant from a source stage to a destination stage.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivsrealtime_start_participant_replication/](https://www.paws-r-sdk.com/docs/ivsrealtime_start_participant_replication/) for full documentation.
+#'
+#' @param sourceStageArn &#91;required&#93; ARN of the stage where the participant is publishing.
+#' @param destinationStageArn &#91;required&#93; ARN of the stage to which the participant will be replicated.
+#' @param participantId &#91;required&#93; Participant ID of the publisher that will be replicated. This is
+#' assigned by IVS and returned by
+#' [`create_participant_token`][ivsrealtime_create_participant_token] or
+#' the `jti` (JWT ID) used to [create a self signed
+#' token](https://docs.aws.amazon.com/ivs/latest/RealTimeUserGuide/getting-started-distribute-tokens.html#getting-started-distribute-tokens-self-signed).
+#' @param reconnectWindowSeconds If the participant disconnects and then reconnects within the specified
+#' interval, replication will continue to be `ACTIVE`. Default: 0.
+#' @param attributes Application-provided attributes to set on the replicated participant in
+#' the destination stage. Map keys and values can contain UTF-8 encoded
+#' text. The maximum length of this field is 1 KB total. *This field is
+#' exposed to all stage participants and should not be used for personally
+#' identifying, confidential, or sensitive information.*
+#' 
+#' These attributes are merged with any attributes set for this participant
+#' when creating the token. If there is overlap in keys, the values in
+#' these attributes are replaced.
+#'
+#' @keywords internal
+#'
+#' @rdname ivsrealtime_start_participant_replication
+ivsrealtime_start_participant_replication <- function(sourceStageArn, destinationStageArn, participantId, reconnectWindowSeconds = NULL, attributes = NULL) {
+  op <- new_operation(
+    name = "StartParticipantReplication",
+    http_method = "POST",
+    http_path = "/StartParticipantReplication",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ivsrealtime$start_participant_replication_input(sourceStageArn = sourceStageArn, destinationStageArn = destinationStageArn, participantId = participantId, reconnectWindowSeconds = reconnectWindowSeconds, attributes = attributes)
+  output <- .ivsrealtime$start_participant_replication_output()
+  config <- get_config()
+  svc <- .ivsrealtime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivsrealtime$operations$start_participant_replication <- ivsrealtime_start_participant_replication
+
 #' Stops and deletes a Composition resource
 #'
 #' @description
@@ -1156,6 +1244,43 @@ ivsrealtime_stop_composition <- function(arn) {
   return(response)
 }
 .ivsrealtime$operations$stop_composition <- ivsrealtime_stop_composition
+
+#' Stops a replicated participant session
+#'
+#' @description
+#' Stops a replicated participant session.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivsrealtime_stop_participant_replication/](https://www.paws-r-sdk.com/docs/ivsrealtime_stop_participant_replication/) for full documentation.
+#'
+#' @param sourceStageArn &#91;required&#93; ARN of the stage where the participant is publishing.
+#' @param destinationStageArn &#91;required&#93; ARN of the stage where the participant has been replicated.
+#' @param participantId &#91;required&#93; Participant ID of the publisher that has been replicated. This is
+#' assigned by IVS and returned by
+#' [`create_participant_token`][ivsrealtime_create_participant_token] or
+#' the `jti` (JWT ID) used to [create a self signed
+#' token](https://docs.aws.amazon.com/ivs/latest/RealTimeUserGuide/getting-started-distribute-tokens.html#getting-started-distribute-tokens-self-signed).
+#'
+#' @keywords internal
+#'
+#' @rdname ivsrealtime_stop_participant_replication
+ivsrealtime_stop_participant_replication <- function(sourceStageArn, destinationStageArn, participantId) {
+  op <- new_operation(
+    name = "StopParticipantReplication",
+    http_method = "POST",
+    http_path = "/StopParticipantReplication",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ivsrealtime$stop_participant_replication_input(sourceStageArn = sourceStageArn, destinationStageArn = destinationStageArn, participantId = participantId)
+  output <- .ivsrealtime$stop_participant_replication_output()
+  config <- get_config()
+  svc <- .ivsrealtime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivsrealtime$operations$stop_participant_replication <- ivsrealtime_stop_participant_replication
 
 #' Adds or updates tags for the AWS resource with the specified ARN
 #'

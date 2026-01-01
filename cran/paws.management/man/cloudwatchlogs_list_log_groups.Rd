@@ -10,7 +10,9 @@ cloudwatchlogs_list_log_groups(
   includeLinkedAccounts = NULL,
   accountIdentifiers = NULL,
   nextToken = NULL,
-  limit = NULL
+  limit = NULL,
+  dataSources = NULL,
+  fieldIndexNames = NULL
 )
 }
 \arguments{
@@ -55,6 +57,16 @@ account IDs in the array.}
 
 \item{limit}{The maximum number of log groups to return. If you omit this parameter,
 the default is up to 50 log groups.}
+
+\item{dataSources}{An array of data source filters to filter log groups by their associated
+data sources. You can filter by data source name, type, or both.
+Multiple filters within the same dimension are combined with OR logic,
+while filters across different dimensions are combined with AND logic.}
+
+\item{fieldIndexNames}{An array of field index names to filter log groups that have specific
+field indexes. Only log groups containing all specified field indexes
+are returned. You can specify 1 to 20 field index names, each with 1 to
+512 characters.}
 }
 \description{
 Returns a list of log groups in the Region in your account. If you are performing this action in a monitoring account, you can choose to also return log groups from source accounts that are linked to the monitoring account. For more information about using cross-account observability to set up monitoring accounts and source accounts, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html}{CloudWatch cross-account observability}.

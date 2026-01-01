@@ -157,7 +157,7 @@ If you're new to Audit Manager, we recommend that you review the \href{https://d
 \link[paws.management:auditmanager_get_insights]{get_insights} \tab Gets the latest analytics data for all your current active assessments\cr
 \link[paws.management:auditmanager_get_insights_by_assessment]{get_insights_by_assessment} \tab Gets the latest analytics data for a specific active assessment\cr
 \link[paws.management:auditmanager_get_organization_admin_account]{get_organization_admin_account} \tab Gets the name of the delegated Amazon Web Services administrator account for a specified organization\cr
-\link[paws.management:auditmanager_get_services_in_scope]{get_services_in_scope} \tab Gets a list of the Amazon Web Services from which Audit Manager can collect evidence\cr
+\link[paws.management:auditmanager_get_services_in_scope]{get_services_in_scope} \tab Gets a list of the Amazon Web Services services from which Audit Manager can collect evidence\cr
 \link[paws.management:auditmanager_get_settings]{get_settings} \tab Gets the settings for a specified Amazon Web Services account\cr
 \link[paws.management:auditmanager_list_assessment_control_insights_by_control_domain]{list_assessment_control_insights_by_control_domain} \tab Lists the latest analytics data for controls within a specific control domain and a specific active assessment\cr
 \link[paws.management:auditmanager_list_assessment_frameworks]{list_assessment_frameworks} \tab Returns a list of the frameworks that are available in the Audit Manager framework library\cr

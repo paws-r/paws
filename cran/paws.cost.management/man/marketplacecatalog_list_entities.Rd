@@ -21,8 +21,8 @@ marketplacecatalog_list_entities(
 
 \item{EntityType}{[required] The type of entities to retrieve. Valid values are: \code{AmiProduct},
 \code{ContainerProduct}, \code{DataProduct}, \code{SaaSProduct}, \code{ProcurementPolicy},
-\code{Experience}, \code{Audience}, \code{BrandingSettings}, \code{Offer}, \code{Seller},
-\code{ResaleAuthorization}.}
+\code{Experience}, \code{Audience}, \code{BrandingSettings}, \code{Offer}, \code{OfferSet},
+\code{Seller}, \code{ResaleAuthorization}, \code{Solution}.}
 
 \item{FilterList}{An array of filter objects. Each filter object contains two attributes,
 \code{filterName} and \code{filterValues}.}

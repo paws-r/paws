@@ -53,34 +53,32 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Welcome to the \emph{AWS End User Messaging SMS and Voice, version 2 API
-Reference}. This guide provides information about AWS End User Messaging
-SMS and Voice, version 2 API resources, including supported HTTP
-methods, parameters, and schemas.
+Welcome to the \emph{End User Messaging SMS, version 2 API Reference}. This
+guide provides information about End User Messaging SMS, version 2 API
+resources, including supported HTTP methods, parameters, and schemas.
 
 Amazon Pinpoint is an Amazon Web Services service that you can use to
-engage with your recipients across multiple messaging channels. The AWS
-End User Messaging SMS and Voice, version 2 API provides programmatic
-access to options that are unique to the SMS and voice channels. AWS End
-User Messaging SMS and Voice, version 2 resources such as phone numbers,
-sender IDs, and opt-out lists can be used by the Amazon Pinpoint API.
+engage with your recipients across multiple messaging channels. The End
+User Messaging SMS, version 2 API provides programmatic access to
+options that are unique to the SMS and voice channels. End User
+Messaging SMS, version 2 resources such as phone numbers, sender IDs,
+and opt-out lists can be used by the Amazon Pinpoint API.
 
-If you're new to AWS End User Messaging SMS and Voice, it's also helpful
-to review the \href{https://docs.aws.amazon.com/sms-voice/latest/userguide/what-is-sms-mms.html}{AWS End User Messaging SMS User Guide}.
-The \emph{AWS End User Messaging SMS User Guide} provides tutorials, code
-samples, and procedures that demonstrate how to use AWS End User
-Messaging SMS and Voice features programmatically and how to integrate
-functionality into mobile apps and other types of applications. The
-guide also provides key information, such as AWS End User Messaging SMS
-and Voice integration with other Amazon Web Services services, and the
-quotas that apply to use of the service.
+If you're new to End User Messaging SMS, it's also helpful to review the
+\href{https://docs.aws.amazon.com/sms-voice/latest/userguide/what-is-sms-mms.html}{End User Messaging SMS User Guide},
+where you'll find tutorials, code samples, and procedures that
+demonstrate how to use End User Messaging SMS features programmatically
+and how to integrate functionality into mobile apps and other types of
+applications. The guide also provides key information, such as End User
+Messaging SMS integration with other Amazon Web Services services, and
+the quotas that apply to use of the service.
 
 \strong{Regional availability}
 
-The \emph{AWS End User Messaging SMS and Voice version 2 API Reference} is
-available in several Amazon Web Services Regions and it provides an
-endpoint for each of these Regions. For a list of all the Regions and
-endpoints where the API is currently available, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#pinpoint_region}{Amazon Web Services Service Endpoints}
+The \emph{End User Messaging SMS version 2 API Reference} is available in
+several Amazon Web Services Regions and it provides an endpoint for each
+of these Regions. For a list of all the Regions and endpoints where the
+API is currently available, see Amazon Web Services Service Endpoints
 and \href{https://docs.aws.amazon.com/general/latest/gr/pinpoint.html}{Amazon Pinpoint endpoints and quotas} in
 the Amazon Web Services General Reference. To learn more about Amazon
 Web Services Regions, see \href{https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html}{Managing Amazon Web Services Regions}
@@ -135,6 +133,7 @@ that are available in each Region, see \href{https://aws.amazon.com/about-aws/gl
 \tabular{ll}{
 \link[paws.customer.engagement:pinpointsmsvoicev2_associate_origination_identity]{associate_origination_identity} \tab Associates the specified origination identity with a pool\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_associate_protect_configuration]{associate_protect_configuration} \tab Associate a protect configuration with a configuration set\cr
+\link[paws.customer.engagement:pinpointsmsvoicev2_carrier_lookup]{carrier_lookup} \tab Returns information about a destination phone number, including whether the number type and whether it is valid, the carrier, and more\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_create_configuration_set]{create_configuration_set} \tab Creates a new configuration set\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_create_event_destination]{create_event_destination} \tab Creates a new event destination in a configuration set\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_create_opt_out_list]{create_opt_out_list} \tab Creates a new opt-out list\cr
@@ -160,12 +159,12 @@ that are available in each Region, see \href{https://aws.amazon.com/about-aws/gl
 \link[paws.customer.engagement:pinpointsmsvoicev2_delete_registration]{delete_registration} \tab Permanently delete an existing registration from your account\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_delete_registration_attachment]{delete_registration_attachment} \tab Permanently delete the specified registration attachment\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_delete_registration_field_value]{delete_registration_field_value} \tab Delete the value in a registration form field\cr
-\link[paws.customer.engagement:pinpointsmsvoicev2_delete_resource_policy]{delete_resource_policy} \tab Deletes the resource-based policy document attached to the AWS End User Messaging SMS and Voice resource\cr
+\link[paws.customer.engagement:pinpointsmsvoicev2_delete_resource_policy]{delete_resource_policy} \tab Deletes the resource-based policy document attached to the End User Messaging SMS resource\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_delete_text_message_spend_limit_override]{delete_text_message_spend_limit_override} \tab Deletes an account-level monthly spending limit override for sending text messages\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_delete_verified_destination_number]{delete_verified_destination_number} \tab Delete a verified destination phone number\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_delete_voice_message_spend_limit_override]{delete_voice_message_spend_limit_override} \tab Deletes an account level monthly spend limit override for sending voice messages\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_describe_account_attributes]{describe_account_attributes} \tab Describes attributes of your Amazon Web Services account\cr
-\link[paws.customer.engagement:pinpointsmsvoicev2_describe_account_limits]{describe_account_limits} \tab Describes the current AWS End User Messaging SMS and Voice SMS Voice V2 resource quotas for your account\cr
+\link[paws.customer.engagement:pinpointsmsvoicev2_describe_account_limits]{describe_account_limits} \tab Describes the current End User Messaging SMS SMS Voice V2 resource quotas for your account\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_describe_configuration_sets]{describe_configuration_sets} \tab Describes the specified configuration sets or all in your account\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_describe_keywords]{describe_keywords} \tab Describes the specified keywords or all keywords on your origination phone number or pool\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_describe_opted_out_numbers]{describe_opted_out_numbers} \tab Describes the specified opted out destination numbers or all opted out destination numbers in an opt-out list\cr
@@ -187,7 +186,7 @@ that are available in each Region, see \href{https://aws.amazon.com/about-aws/gl
 \link[paws.customer.engagement:pinpointsmsvoicev2_disassociate_protect_configuration]{disassociate_protect_configuration} \tab Disassociate a protect configuration from a configuration set\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_discard_registration_version]{discard_registration_version} \tab Discard the current version of the registration\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_get_protect_configuration_country_rule_set]{get_protect_configuration_country_rule_set} \tab Retrieve the CountryRuleSet for the specified NumberCapability from a protect configuration\cr
-\link[paws.customer.engagement:pinpointsmsvoicev2_get_resource_policy]{get_resource_policy} \tab Retrieves the JSON text of the resource-based policy document attached to the AWS End User Messaging SMS and Voice resource\cr
+\link[paws.customer.engagement:pinpointsmsvoicev2_get_resource_policy]{get_resource_policy} \tab Retrieves the JSON text of the resource-based policy document attached to the End User Messaging SMS resource\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_list_pool_origination_identities]{list_pool_origination_identities} \tab Lists all associated origination identities in your pool\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_list_protect_configuration_rule_set_number_overrides]{list_protect_configuration_rule_set_number_overrides} \tab Retrieve all of the protect configuration rule set number overrides that match the filters\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_list_registration_associations]{list_registration_associations} \tab Retrieve all of the origination identities that are associated with a registration\cr
@@ -197,7 +196,7 @@ that are available in each Region, see \href{https://aws.amazon.com/about-aws/gl
 \link[paws.customer.engagement:pinpointsmsvoicev2_put_opted_out_number]{put_opted_out_number} \tab Creates an opted out destination phone number in the opt-out list\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_put_protect_configuration_rule_set_number_override]{put_protect_configuration_rule_set_number_override} \tab Create or update a phone number rule override and associate it with a protect configuration\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_put_registration_field_value]{put_registration_field_value} \tab Creates or updates a field value for a registration\cr
-\link[paws.customer.engagement:pinpointsmsvoicev2_put_resource_policy]{put_resource_policy} \tab Attaches a resource-based policy to a AWS End User Messaging SMS and Voice resource(phone number, sender Id, phone poll, or opt-out list) that is used for sharing the resource\cr
+\link[paws.customer.engagement:pinpointsmsvoicev2_put_resource_policy]{put_resource_policy} \tab Attaches a resource-based policy to a End User Messaging SMS resource(phone number, sender Id, phone poll, or opt-out list) that is used for sharing the resource\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_release_phone_number]{release_phone_number} \tab Releases an existing origination phone number in your account\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_release_sender_id]{release_sender_id} \tab Releases an existing sender ID in your account\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_request_phone_number]{request_phone_number} \tab Request an origination phone number for use in your account\cr

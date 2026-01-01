@@ -4,12 +4,12 @@
 \alias{workspacesweb_get_trust_store_certificate}
 \title{Gets the trust store certificate}
 \usage{
-workspacesweb_get_trust_store_certificate(thumbprint, trustStoreArn)
+workspacesweb_get_trust_store_certificate(trustStoreArn, thumbprint)
 }
 \arguments{
-\item{thumbprint}{[required] The thumbprint of the trust store certificate.}
-
 \item{trustStoreArn}{[required] The ARN of the trust store certificate.}
+
+\item{thumbprint}{[required] The thumbprint of the trust store certificate.}
 }
 \description{
 Gets the trust store certificate.

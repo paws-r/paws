@@ -2,8 +2,8 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_update_default_q_business_application}
 \alias{quicksight_update_default_q_business_application}
-\title{Updates a Amazon Q Business application that is linked to a Amazon
-QuickSight account}
+\title{Updates a Amazon Q Business application that is linked to a Quick Sight
+account}
 \usage{
 quicksight_update_default_q_business_application(
   AwsAccountId,
@@ -12,18 +12,18 @@ quicksight_update_default_q_business_application(
 )
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the Amazon QuickSight account that is connected to the Amazon
-Q Business application that you want to update.}
+\item{AwsAccountId}{[required] The ID of the Quick Sight account that is connected to the Amazon Q
+Business application that you want to update.}
 
-\item{Namespace}{The Amazon QuickSight namespace that contains the linked Amazon Q
-Business application. If this field is left blank, the default namespace
-is used. Currently, the default namespace is the only valid value for
-this parameter.}
+\item{Namespace}{The Quick Sight namespace that contains the linked Amazon Q Business
+application. If this field is left blank, the default namespace is used.
+Currently, the default namespace is the only valid value for this
+parameter.}
 
 \item{ApplicationId}{[required] The ID of the Amazon Q Business application that you want to update.}
 }
 \description{
-Updates a Amazon Q Business application that is linked to a Amazon QuickSight account.
+Updates a Amazon Q Business application that is linked to a Quick Sight account.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_update_default_q_business_application/} for full documentation.
 }

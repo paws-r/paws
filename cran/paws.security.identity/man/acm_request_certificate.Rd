@@ -73,12 +73,17 @@ requesting multiple certificates.}
 \item{DomainValidationOptions}{The domain name that you want ACM to use to send you emails so that you
 can validate domain ownership.}
 
-\item{Options}{Currently, you can use this parameter to specify whether to add the
-certificate to a certificate transparency log. Certificate transparency
-makes it possible to detect SSL/TLS certificates that have been
-mistakenly or maliciously issued. Certificates that have not been logged
-typically produce an error message in a browser. For more information,
-see \href{https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency}{Opting Out of Certificate Transparency Logging}.}
+\item{Options}{You can use this parameter to specify whether to add the certificate to
+a certificate transparency log and export your certificate.
+
+Certificate transparency makes it possible to detect SSL/TLS
+certificates that have been mistakenly or maliciously issued.
+Certificates that have not been logged typically produce an error
+message in a browser. For more information, see \href{https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency}{Opting Out of Certificate Transparency Logging}.
+
+You can export public ACM certificates to use with Amazon Web Services
+services as well as outside the Amazon Web Services Cloud. For more
+information, see \href{https://docs.aws.amazon.com/acm/latest/userguide/acm-exportable-certificates.html}{Certificate Manager exportable public certificate}.}
 
 \item{CertificateAuthorityArn}{The Amazon Resource Name (ARN) of the private certificate authority (CA)
 that will be used to issue the certificate. If you do not provide an ARN

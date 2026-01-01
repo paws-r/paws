@@ -5,7 +5,7 @@
 \title{Creates a Client VPN endpoint}
 \usage{
 ec2_create_client_vpn_endpoint(
-  ClientCidrBlock,
+  ClientCidrBlock = NULL,
   ServerCertificateArn,
   AuthenticationOptions,
   ConnectionLogOptions,
@@ -24,11 +24,13 @@ ec2_create_client_vpn_endpoint(
   SessionTimeoutHours = NULL,
   ClientLoginBannerOptions = NULL,
   ClientRouteEnforcementOptions = NULL,
-  DisconnectOnSessionTimeout = NULL
+  DisconnectOnSessionTimeout = NULL,
+  EndpointIpAddressType = NULL,
+  TrafficIpAddressType = NULL
 )
 }
 \arguments{
-\item{ClientCidrBlock}{[required] The IPv4 address range, in CIDR notation, from which to assign client IP
+\item{ClientCidrBlock}{The IPv4 address range, in CIDR notation, from which to assign client IP
 addresses. The address range cannot overlap with the local CIDR of the
 VPC in which the associated subnet is located, or the routes that you
 add manually. The address range cannot be changed after the Client VPN
@@ -130,6 +132,18 @@ the expected route configurations.}
 maximum timeout specified in \code{SessionTimeoutHours} is reached. If
 \code{true}, users are prompted to reconnect client VPN. If \code{false}, client
 VPN attempts to reconnect automatically. The default value is \code{true}.}
+
+\item{EndpointIpAddressType}{The IP address type for the Client VPN endpoint. Valid values are \code{ipv4}
+(default) for IPv4 addressing only, \code{ipv6} for IPv6 addressing only, or
+\code{dual-stack} for both IPv4 and IPv6 addressing. When set to
+\verb{dual-stack,} clients can connect to the endpoint using either IPv4 or
+IPv6 addresses..}
+
+\item{TrafficIpAddressType}{The IP address type for traffic within the Client VPN tunnel. Valid
+values are \code{ipv4} (default) for IPv4 traffic only, \code{ipv6} for IPv6
+addressing only, or \code{dual-stack} for both IPv4 and IPv6 traffic. When
+set to \code{dual-stack}, clients can access both IPv4 and IPv6 resources
+through the VPN .}
 }
 \description{
 Creates a Client VPN endpoint. A Client VPN endpoint is the resource you create and configure to enable and manage client VPN sessions. It is the destination endpoint at which all client VPN sessions are terminated.

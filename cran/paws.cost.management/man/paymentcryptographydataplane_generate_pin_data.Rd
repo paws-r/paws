@@ -10,7 +10,7 @@ paymentcryptographydataplane_generate_pin_data(
   EncryptionKeyIdentifier,
   GenerationAttributes,
   PinDataLength = NULL,
-  PrimaryAccountNumber,
+  PrimaryAccountNumber = NULL,
   PinBlockFormat,
   EncryptionWrappedKey = NULL
 )
@@ -27,20 +27,23 @@ asymmetric ECC key.}
 
 \item{PinDataLength}{The length of PIN under generation.}
 
-\item{PrimaryAccountNumber}{[required] The Primary Account Number (PAN), a unique identifier for a payment
+\item{PrimaryAccountNumber}{The Primary Account Number (PAN), a unique identifier for a payment
 credit or debit card that associates the card with a specific account
 holder.}
 
 \item{PinBlockFormat}{[required] The PIN encoding format for pin data generation as specified in ISO
-9564. Amazon Web Services Payment Cryptography supports \code{ISO_Format_0}
-and \code{ISO_Format_3}.
+9564. Amazon Web Services Payment Cryptography supports \code{ISO_Format_0},
+\code{ISO_Format_3} and \code{ISO_Format_4}.
 
 The \code{ISO_Format_0} PIN block format is equivalent to the ANSI X9.8,
 VISA-1, and ECI-1 PIN block formats. It is similar to a VISA-4 PIN block
 format. It supports a PIN from 4 to 12 digits in length.
 
 The \code{ISO_Format_3} PIN block format is the same as \code{ISO_Format_0} except
-that the fill digits are random values from 10 to 15.}
+that the fill digits are random values from 10 to 15.
+
+The \code{ISO_Format_4} PIN block format is the only one supporting AES
+encryption.}
 
 \item{EncryptionWrappedKey}{}
 }

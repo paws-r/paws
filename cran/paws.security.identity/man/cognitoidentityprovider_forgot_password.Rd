@@ -2,8 +2,8 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_forgot_password}
 \alias{cognitoidentityprovider_forgot_password}
-\title{Sends a password-reset confirmation code for the currently signed-in
-user}
+\title{Sends a password-reset confirmation code to the email address or phone
+number of the requested username}
 \usage{
 cognitoidentityprovider_forgot_password(
   ClientId,
@@ -70,7 +70,7 @@ in this parameter.
 }}
 }
 \description{
-Sends a password-reset confirmation code for the currently signed-in user.
+Sends a password-reset confirmation code to the email address or phone number of the requested username. The message delivery method is determined by the user's available attributes and the \code{AccountRecoverySetting} configuration of the user pool.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_forgot_password/} for full documentation.
 }

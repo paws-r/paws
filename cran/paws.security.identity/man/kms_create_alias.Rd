@@ -16,15 +16,15 @@ field may be displayed in plaintext in CloudTrail logs and other output.
 The \code{AliasName} value must be string of 1-256 characters. It can contain
 only alphanumeric characters, forward slashes (/), underscores (_), and
 dashes (-). The alias name cannot begin with \verb{alias/aws/}. The
-\verb{alias/aws/} prefix is reserved for \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{Amazon Web Services managed keys}.}
+\verb{alias/aws/} prefix is reserved for \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-key}{Amazon Web Services managed keys}.}
 
-\item{TargetKeyId}{[required] Associates the alias with the specified \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed key}.
+\item{TargetKeyId}{[required] Associates the alias with the specified \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-mgn-key}{customer managed key}.
 The KMS key must be in the same Amazon Web Services Region.
 
 A valid key ID is required. If you supply a null or empty string value,
 this operation returns an error.
 
-For help finding the key ID and ARN, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html#find-cmk-id-arn}{Finding the Key ID and ARN}
+For help finding the key ID and ARN, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/find-cmk-id-arn.html}{Find the key ID and key ARN}
 in the \emph{Key Management Service Developer Guide} .
 
 Specify the key ID or key ARN of the KMS key.

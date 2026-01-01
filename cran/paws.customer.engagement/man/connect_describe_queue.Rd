@@ -2,8 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_describe_queue}
 \alias{connect_describe_queue}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Describes the specified queue}
 \usage{
 connect_describe_queue(InstanceId, QueueId)
 }
@@ -14,7 +13,7 @@ in the Amazon Resource Name (ARN) of the instance.}
 \item{QueueId}{[required] The identifier for the queue.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to change.
+Describes the specified queue.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_describe_queue/} for full documentation.
 }

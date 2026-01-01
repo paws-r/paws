@@ -107,7 +107,8 @@ NULL
 #'             X = 123.0,
 #'             Y = 123.0
 #'           )
-#'         )
+#'         ),
+#'         RotationAngle = 123.0
 #'       ),
 #'       Id = "string",
 #'       Relationships = list(
@@ -266,7 +267,8 @@ textract_analyze_document <- function(Document, FeatureTypes, HumanLoopConfig = 
 #'                   X = 123.0,
 #'                   Y = 123.0
 #'                 )
-#'               )
+#'               ),
+#'               RotationAngle = 123.0
 #'             ),
 #'             Confidence = 123.0
 #'           ),
@@ -284,7 +286,8 @@ textract_analyze_document <- function(Document, FeatureTypes, HumanLoopConfig = 
 #'                   X = 123.0,
 #'                   Y = 123.0
 #'                 )
-#'               )
+#'               ),
+#'               RotationAngle = 123.0
 #'             ),
 #'             Confidence = 123.0
 #'           ),
@@ -328,7 +331,8 @@ textract_analyze_document <- function(Document, FeatureTypes, HumanLoopConfig = 
 #'                           X = 123.0,
 #'                           Y = 123.0
 #'                         )
-#'                       )
+#'                       ),
+#'                       RotationAngle = 123.0
 #'                     ),
 #'                     Confidence = 123.0
 #'                   ),
@@ -346,7 +350,8 @@ textract_analyze_document <- function(Document, FeatureTypes, HumanLoopConfig = 
 #'                           X = 123.0,
 #'                           Y = 123.0
 #'                         )
-#'                       )
+#'                       ),
+#'                       RotationAngle = 123.0
 #'                     ),
 #'                     Confidence = 123.0
 #'                   ),
@@ -391,7 +396,8 @@ textract_analyze_document <- function(Document, FeatureTypes, HumanLoopConfig = 
 #'                 X = 123.0,
 #'                 Y = 123.0
 #'               )
-#'             )
+#'             ),
+#'             RotationAngle = 123.0
 #'           ),
 #'           Id = "string",
 #'           Relationships = list(
@@ -522,7 +528,8 @@ textract_analyze_expense <- function(Document) {
 #'                 X = 123.0,
 #'                 Y = 123.0
 #'               )
-#'             )
+#'             ),
+#'             RotationAngle = 123.0
 #'           ),
 #'           Id = "string",
 #'           Relationships = list(
@@ -908,7 +915,8 @@ textract_delete_adapter_version <- function(AdapterId, AdapterVersion) {
 #'             X = 123.0,
 #'             Y = 123.0
 #'           )
-#'         )
+#'         ),
+#'         RotationAngle = 123.0
 #'       ),
 #'       Id = "string",
 #'       Relationships = list(
@@ -1253,7 +1261,8 @@ textract_get_adapter_version <- function(AdapterId, AdapterVersion) {
 #'             X = 123.0,
 #'             Y = 123.0
 #'           )
-#'         )
+#'         ),
+#'         RotationAngle = 123.0
 #'       ),
 #'       Id = "string",
 #'       Relationships = list(
@@ -1415,7 +1424,8 @@ textract_get_document_analysis <- function(JobId, MaxResults = NULL, NextToken =
 #'             X = 123.0,
 #'             Y = 123.0
 #'           )
-#'         )
+#'         ),
+#'         RotationAngle = 123.0
 #'       ),
 #'       Id = "string",
 #'       Relationships = list(
@@ -1566,7 +1576,8 @@ textract_get_document_text_detection <- function(JobId, MaxResults = NULL, NextT
 #'                   X = 123.0,
 #'                   Y = 123.0
 #'                 )
-#'               )
+#'               ),
+#'               RotationAngle = 123.0
 #'             ),
 #'             Confidence = 123.0
 #'           ),
@@ -1584,7 +1595,8 @@ textract_get_document_text_detection <- function(JobId, MaxResults = NULL, NextT
 #'                   X = 123.0,
 #'                   Y = 123.0
 #'                 )
-#'               )
+#'               ),
+#'               RotationAngle = 123.0
 #'             ),
 #'             Confidence = 123.0
 #'           ),
@@ -1628,7 +1640,8 @@ textract_get_document_text_detection <- function(JobId, MaxResults = NULL, NextT
 #'                           X = 123.0,
 #'                           Y = 123.0
 #'                         )
-#'                       )
+#'                       ),
+#'                       RotationAngle = 123.0
 #'                     ),
 #'                     Confidence = 123.0
 #'                   ),
@@ -1646,7 +1659,8 @@ textract_get_document_text_detection <- function(JobId, MaxResults = NULL, NextT
 #'                           X = 123.0,
 #'                           Y = 123.0
 #'                         )
-#'                       )
+#'                       ),
+#'                       RotationAngle = 123.0
 #'                     ),
 #'                     Confidence = 123.0
 #'                   ),
@@ -1691,7 +1705,8 @@ textract_get_document_text_detection <- function(JobId, MaxResults = NULL, NextT
 #'                 X = 123.0,
 #'                 Y = 123.0
 #'               )
-#'             )
+#'             ),
+#'             RotationAngle = 123.0
 #'           ),
 #'           Id = "string",
 #'           Relationships = list(
@@ -1846,7 +1861,8 @@ textract_get_expense_analysis <- function(JobId, MaxResults = NULL, NextToken = 
 #'                         X = 123.0,
 #'                         Y = 123.0
 #'                       )
-#'                     )
+#'                     ),
+#'                     RotationAngle = 123.0
 #'                   ),
 #'                   Confidence = 123.0
 #'                 ),
@@ -1866,7 +1882,8 @@ textract_get_expense_analysis <- function(JobId, MaxResults = NULL, NextToken = 
 #'                           X = 123.0,
 #'                           Y = 123.0
 #'                         )
-#'                       )
+#'                       ),
+#'                       RotationAngle = 123.0
 #'                     ),
 #'                     Confidence = 123.0
 #'                   )
@@ -1888,7 +1905,8 @@ textract_get_expense_analysis <- function(JobId, MaxResults = NULL, NextToken = 
 #'                       X = 123.0,
 #'                       Y = 123.0
 #'                     )
-#'                   )
+#'                   ),
+#'                   RotationAngle = 123.0
 #'                 )
 #'               )
 #'             )
@@ -1915,7 +1933,8 @@ textract_get_expense_analysis <- function(JobId, MaxResults = NULL, NextToken = 
 #'                         X = 123.0,
 #'                         Y = 123.0
 #'                       )
-#'                     )
+#'                     ),
+#'                     RotationAngle = 123.0
 #'                   ),
 #'                   Confidence = 123.0
 #'                 ),
@@ -1933,7 +1952,8 @@ textract_get_expense_analysis <- function(JobId, MaxResults = NULL, NextToken = 
 #'                         X = 123.0,
 #'                         Y = 123.0
 #'                       )
-#'                     )
+#'                     ),
+#'                     RotationAngle = 123.0
 #'                   ),
 #'                   Confidence = 123.0
 #'                 ),
@@ -1977,7 +1997,8 @@ textract_get_expense_analysis <- function(JobId, MaxResults = NULL, NextToken = 
 #'                                 X = 123.0,
 #'                                 Y = 123.0
 #'                               )
-#'                             )
+#'                             ),
+#'                             RotationAngle = 123.0
 #'                           ),
 #'                           Confidence = 123.0
 #'                         ),
@@ -1995,7 +2016,8 @@ textract_get_expense_analysis <- function(JobId, MaxResults = NULL, NextToken = 
 #'                                 X = 123.0,
 #'                                 Y = 123.0
 #'                               )
-#'                             )
+#'                             ),
+#'                             RotationAngle = 123.0
 #'                           ),
 #'                           Confidence = 123.0
 #'                         ),
@@ -2040,7 +2062,8 @@ textract_get_expense_analysis <- function(JobId, MaxResults = NULL, NextToken = 
 #'                       X = 123.0,
 #'                       Y = 123.0
 #'                     )
-#'                   )
+#'                   ),
+#'                   RotationAngle = 123.0
 #'                 ),
 #'                 Id = "string",
 #'                 Relationships = list(
@@ -2110,7 +2133,8 @@ textract_get_expense_analysis <- function(JobId, MaxResults = NULL, NextToken = 
 #'                       X = 123.0,
 #'                       Y = 123.0
 #'                     )
-#'                   )
+#'                   ),
+#'                   RotationAngle = 123.0
 #'                 ),
 #'                 Id = "string",
 #'                 Relationships = list(
@@ -2667,13 +2691,13 @@ textract_start_document_analysis <- function(DocumentLocation, FeatureTypes, Cli
 #' DocumentLocation to specify the bucket name and file name of the
 #' document.
 #' 
-#' `StartTextDetection` returns a job identifier (`JobId`) that you use to
-#' get the results of the operation. When text detection is finished,
-#' Amazon Textract publishes a completion status to the Amazon Simple
-#' Notification Service (Amazon SNS) topic that you specify in
-#' `NotificationChannel`. To get the results of the text detection
-#' operation, first check that the status value published to the Amazon SNS
-#' topic is `SUCCEEDED`. If so, call
+#' [`start_document_text_detection`][textract_start_document_text_detection]
+#' returns a job identifier (`JobId`) that you use to get the results of
+#' the operation. When text detection is finished, Amazon Textract
+#' publishes a completion status to the Amazon Simple Notification Service
+#' (Amazon SNS) topic that you specify in `NotificationChannel`. To get the
+#' results of the text detection operation, first check that the status
+#' value published to the Amazon SNS topic is `SUCCEEDED`. If so, call
 #' [`get_document_text_detection`][textract_get_document_text_detection],
 #' and pass the job identifier (`JobId`) from the initial call to
 #' [`start_document_text_detection`][textract_start_document_text_detection].

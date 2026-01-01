@@ -12,6 +12,7 @@ ec2_replace_route(
   LocalGatewayId = NULL,
   CarrierGatewayId = NULL,
   CoreNetworkArn = NULL,
+  OdbNetworkArn = NULL,
   DryRun = NULL,
   RouteTableId,
   DestinationCidrBlock = NULL,
@@ -40,6 +41,8 @@ only.}
 \item{CarrierGatewayId}{[IPv4 traffic only] The ID of a carrier gateway.}
 
 \item{CoreNetworkArn}{The Amazon Resource Name (ARN) of the core network.}
+
+\item{OdbNetworkArn}{The Amazon Resource Name (ARN) of the ODB network.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

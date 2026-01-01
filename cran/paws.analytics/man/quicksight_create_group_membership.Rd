@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_create_group_membership}
 \alias{quicksight_create_group_membership}
-\title{Adds an Amazon QuickSight user to an Amazon QuickSight group}
+\title{Adds an Amazon Quick Sight user to an Amazon Quick Sight group}
 \usage{
 quicksight_create_group_membership(
   MemberName,
@@ -18,12 +18,12 @@ quicksight_create_group_membership(
 
 \item{AwsAccountId}{[required] The ID for the Amazon Web Services account that the group is in.
 Currently, you use the ID for the Amazon Web Services account that
-contains your Amazon QuickSight account.}
+contains your Amazon Quick Sight account.}
 
 \item{Namespace}{[required] The namespace that you want the user to be a part of.}
 }
 \description{
-Adds an Amazon QuickSight user to an Amazon QuickSight group.
+Adds an Amazon Quick Sight user to an Amazon Quick Sight group.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_create_group_membership/} for full documentation.
 }

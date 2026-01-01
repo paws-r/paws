@@ -41,7 +41,7 @@ Available filters:
 \item{IpamExternalResourceVerificationTokenIds}{Verification token IDs.}
 }
 \description{
-Describe verification tokens. A verification token is an Amazon Web Services-generated random value that you can use to prove ownership of an external resource. For example, you can use a verification token to validate that you control a public IP address range when you bring an IP address range to Amazon Web Services (BYOIP).
+Describe verification tokens.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_ipam_external_resource_verification_tokens/} for full documentation.
 }

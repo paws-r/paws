@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_stop_stack_set_operation}
 \alias{cloudformation_stop_stack_set_operation}
-\title{Stops an in-progress operation on a stack set and its associated stack
+\title{Stops an in-progress operation on a StackSet and its associated stack
 instances}
 \usage{
 cloudformation_stop_stack_set_operation(
@@ -12,16 +12,17 @@ cloudformation_stop_stack_set_operation(
 )
 }
 \arguments{
-\item{StackSetName}{[required] The name or unique ID of the stack set that you want to stop the
+\item{StackSetName}{[required] The name or unique ID of the StackSet that you want to stop the
 operation for.}
 
 \item{OperationId}{[required] The ID of the stack operation.}
 
-\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
-account administrator in the organization's management account or as a
-delegated administrator in a member account.
+\item{CallAs}{Specifies whether you are acting as an account administrator in the
+organization's management account or as a delegated administrator in a
+member account. Valid only if the StackSet uses service-managed
+permissions.
 
-By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+By default, \code{SELF} is specified. Use \code{SELF} for StackSets with
 self-managed permissions.
 \itemize{
 \item If you are signed in to the management account, specify \code{SELF}.
@@ -35,7 +36,7 @@ in the \emph{CloudFormation User Guide}.
 }}
 }
 \description{
-Stops an in-progress operation on a stack set and its associated stack instances. StackSets will cancel all the unstarted stack instance deployments and wait for those are in-progress to complete.
+Stops an in-progress operation on a StackSet and its associated stack instances. StackSets will cancel all the unstarted stack instance deployments and wait for those are in-progress to complete.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudformation_stop_stack_set_operation/} for full documentation.
 }

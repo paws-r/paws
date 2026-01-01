@@ -96,19 +96,25 @@ responses.
 \link[paws.management:ssmsap_deregister_application]{deregister_application} \tab Deregister an SAP application with AWS Systems Manager for SAP\cr
 \link[paws.management:ssmsap_get_application]{get_application} \tab Gets an application registered with AWS Systems Manager for SAP\cr
 \link[paws.management:ssmsap_get_component]{get_component} \tab Gets the component of an application registered with AWS Systems Manager for SAP\cr
+\link[paws.management:ssmsap_get_configuration_check_operation]{get_configuration_check_operation} \tab Gets the details of a configuration check operation by specifying the operation ID\cr
 \link[paws.management:ssmsap_get_database]{get_database} \tab Gets the SAP HANA database of an application registered with AWS Systems Manager for SAP\cr
 \link[paws.management:ssmsap_get_operation]{get_operation} \tab Gets the details of an operation by specifying the operation ID\cr
 \link[paws.management:ssmsap_get_resource_permission]{get_resource_permission} \tab Gets permissions associated with the target database\cr
 \link[paws.management:ssmsap_list_applications]{list_applications} \tab Lists all the applications registered with AWS Systems Manager for SAP\cr
 \link[paws.management:ssmsap_list_components]{list_components} \tab Lists all the components registered with AWS Systems Manager for SAP\cr
+\link[paws.management:ssmsap_list_configuration_check_definitions]{list_configuration_check_definitions} \tab Lists all configuration check types supported by AWS Systems Manager for SAP\cr
+\link[paws.management:ssmsap_list_configuration_check_operations]{list_configuration_check_operations} \tab Lists the configuration check operations performed by AWS Systems Manager for SAP\cr
 \link[paws.management:ssmsap_list_databases]{list_databases} \tab Lists the SAP HANA databases of an application registered with AWS Systems Manager for SAP\cr
 \link[paws.management:ssmsap_list_operation_events]{list_operation_events} \tab Returns a list of operations events\cr
 \link[paws.management:ssmsap_list_operations]{list_operations} \tab Lists the operations performed by AWS Systems Manager for SAP\cr
+\link[paws.management:ssmsap_list_sub_check_results]{list_sub_check_results} \tab Lists the sub-check results of a specified configuration check operation\cr
+\link[paws.management:ssmsap_list_sub_check_rule_results]{list_sub_check_rule_results} \tab Lists the rules of a specified sub-check belonging to a configuration check operation\cr
 \link[paws.management:ssmsap_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags on an SAP HANA application and/or database registered with AWS Systems Manager for SAP\cr
 \link[paws.management:ssmsap_put_resource_permission]{put_resource_permission} \tab Adds permissions to the target database\cr
 \link[paws.management:ssmsap_register_application]{register_application} \tab Register an SAP application with AWS Systems Manager for SAP\cr
 \link[paws.management:ssmsap_start_application]{start_application} \tab Request is an operation which starts an application\cr
 \link[paws.management:ssmsap_start_application_refresh]{start_application_refresh} \tab Refreshes a registered application\cr
+\link[paws.management:ssmsap_start_configuration_checks]{start_configuration_checks} \tab Initiates configuration check operations against a specified application\cr
 \link[paws.management:ssmsap_stop_application]{stop_application} \tab Request is an operation to stop an application\cr
 \link[paws.management:ssmsap_tag_resource]{tag_resource} \tab Creates tag for a resource by specifying the ARN\cr
 \link[paws.management:ssmsap_untag_resource]{untag_resource} \tab Delete the tags for a resource\cr

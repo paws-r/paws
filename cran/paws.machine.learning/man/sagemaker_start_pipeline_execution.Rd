@@ -11,7 +11,9 @@ sagemaker_start_pipeline_execution(
   PipelineExecutionDescription = NULL,
   ClientRequestToken,
   ParallelismConfiguration = NULL,
-  SelectiveExecutionConfig = NULL
+  SelectiveExecutionConfig = NULL,
+  PipelineVersionId = NULL,
+  MlflowExperimentName = NULL
 )
 }
 \arguments{
@@ -31,6 +33,10 @@ than once.}
 configuration of the parent pipeline for this specific run.}
 
 \item{SelectiveExecutionConfig}{The selective execution configuration applied to the pipeline run.}
+
+\item{PipelineVersionId}{The ID of the pipeline version to start execution from.}
+
+\item{MlflowExperimentName}{The MLflow experiment name of the start execution.}
 }
 \description{
 Starts a pipeline execution.

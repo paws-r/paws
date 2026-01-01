@@ -6,6 +6,7 @@
 \usage{
 lexmodelsv2_create_intent(
   intentName,
+  intentDisplayName = NULL,
   description = NULL,
   parentIntentSignature = NULL,
   sampleUtterances = NULL,
@@ -27,6 +28,11 @@ lexmodelsv2_create_intent(
 \arguments{
 \item{intentName}{[required] The name of the intent. Intent names must be unique in the locale that
 contains the intent and cannot match the name of any built-in intent.}
+
+\item{intentDisplayName}{A display name for the intent. If configured, This name will be shown to
+users during Intent Disambiguation instead of the intent name. Display
+names should be user-friendly, descriptive and match the intent's
+purpose to improve user experience during disambiguation.}
 
 \item{description}{A description of the intent. Use the description to help identify the
 intent in lists.}

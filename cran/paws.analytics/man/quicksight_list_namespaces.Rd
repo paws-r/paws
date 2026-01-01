@@ -7,8 +7,8 @@
 quicksight_list_namespaces(AwsAccountId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID for the Amazon Web Services account that contains the Amazon
-QuickSight namespaces that you want to list.}
+\item{AwsAccountId}{[required] The ID for the Amazon Web Services account that contains the Quick Sight
+namespaces that you want to list.}
 
 \item{NextToken}{A unique pagination token that can be used in a subsequent request. You
 will receive a pagination token in the response body of a previous

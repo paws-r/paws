@@ -71,7 +71,7 @@ information, see the \href{https://docs.aws.amazon.com/apprunner/latest/relnotes
 
 To install the Software Development Kits (SDKs), Integrated Development
 Environment (IDE) Toolkits, and command line tools that you can use to
-access the API, see \href{https://aws.amazon.com/developer/tools/}{Tools for Amazon Web Services}.
+access the API, see \href{https://builder.aws.com/build/tools}{Tools for Amazon Web Services}.
 
 \strong{Endpoints}
 

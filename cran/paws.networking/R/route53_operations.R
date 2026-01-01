@@ -254,7 +254,7 @@ route53_create_cidr_collection <- function(Name, CallerReference) {
 #'     request with the same `CallerReference` and settings as a previous
 #'     request, and if the health check doesn't exist, Amazon Route 53
 #'     creates the health check. If the health check does exist, Route 53
-#'     returns the settings for the existing health check.
+#'     returns the health check configuration in the response.
 #' 
 #' -   If you send a [`create_health_check`][route53_create_health_check]
 #'     request with the same `CallerReference` as a deleted health check,
@@ -2980,8 +2980,8 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' Healthy](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html)
 #' in the *Amazon Route 53 Developer Guide*.
 #' 
-#' If you don't specify a value for `FailureThreshold`, the default value
-#' is three health checks.
+#' Otherwise, if you don't specify a value for `FailureThreshold`, the
+#' default value is three health checks.
 #' @param Inverted Specify whether you want Amazon Route 53 to invert the status of a
 #' health check, for example, to consider a health check unhealthy when it
 #' otherwise would be considered healthy.
@@ -2999,8 +2999,9 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' 
 #' After you disable a health check, Route 53 considers the status of the
 #' health check to always be healthy. If you configured DNS failover, Route
-#' 53 continues to route traffic to the corresponding resources. If you
-#' want to stop routing traffic to a resource, change the value of
+#' 53 continues to route traffic to the corresponding resources.
+#' Additionally, in disabled state, you can also invert the status of the
+#' health check to route traffic differently. For more information, see
 #' [Inverted](https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-Inverted).
 #' 
 #' Charges for a health check still apply when the health check is
@@ -3137,6 +3138,40 @@ route53_update_hosted_zone_comment <- function(Id, Comment = NULL) {
   return(response)
 }
 .route53$operations$update_hosted_zone_comment <- route53_update_hosted_zone_comment
+
+#' Updates the features configuration for a hosted zone
+#'
+#' @description
+#' Updates the features configuration for a hosted zone. This operation allows you to enable or disable specific features for your hosted zone, such as accelerated recovery.
+#'
+#' See [https://www.paws-r-sdk.com/docs/route53_update_hosted_zone_features/](https://www.paws-r-sdk.com/docs/route53_update_hosted_zone_features/) for full documentation.
+#'
+#' @param HostedZoneId &#91;required&#93; The ID of the hosted zone for which you want to update features. This is
+#' the unique identifier for your hosted zone.
+#' @param EnableAcceleratedRecovery Specifies whether to enable accelerated recovery for the hosted zone.
+#' Set to `true` to enable accelerated recovery, or `false` to disable it.
+#'
+#' @keywords internal
+#'
+#' @rdname route53_update_hosted_zone_features
+route53_update_hosted_zone_features <- function(HostedZoneId, EnableAcceleratedRecovery = NULL) {
+  op <- new_operation(
+    name = "UpdateHostedZoneFeatures",
+    http_method = "POST",
+    http_path = "/2013-04-01/hostedzone/{Id}/features",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .route53$update_hosted_zone_features_input(HostedZoneId = HostedZoneId, EnableAcceleratedRecovery = EnableAcceleratedRecovery)
+  output <- .route53$update_hosted_zone_features_output()
+  config <- get_config()
+  svc <- .route53$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53$operations$update_hosted_zone_features <- route53_update_hosted_zone_features
 
 #' Updates the comment for a specified traffic policy version
 #'

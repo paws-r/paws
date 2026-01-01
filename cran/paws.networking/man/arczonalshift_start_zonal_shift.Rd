@@ -9,21 +9,29 @@ code deployment or from an Amazon Web Services infrastructure failure in
 a single Availability Zone}
 \usage{
 arczonalshift_start_zonal_shift(
+  resourceIdentifier,
   awayFrom,
-  comment,
   expiresIn,
-  resourceIdentifier
+  comment
 )
 }
 \arguments{
+\item{resourceIdentifier}{[required] The identifier for the resource that Amazon Web Services shifts traffic
+for. The identifier is the Amazon Resource Name (ARN) for the resource.
+
+Amazon Application Recovery Controller currently supports enabling the
+following resources for zonal shift and zonal autoshift:
+\itemize{
+\item \href{https://docs.aws.amazon.com/r53recovery/latest/dg/arc-zonal-shift.resource-types.ec2-auto-scaling-groups.html}{Amazon EC2 Auto Scaling groups}
+\item \href{https://docs.aws.amazon.com/r53recovery/latest/dg/arc-zonal-shift.resource-types.eks.html}{Amazon Elastic Kubernetes Service}
+\item \href{https://docs.aws.amazon.com/r53recovery/latest/dg/arc-zonal-shift.resource-types.app-load-balancers.html}{Application Load Balancer}
+\item \href{https://docs.aws.amazon.com/r53recovery/latest/dg/arc-zonal-shift.resource-types.network-load-balancers.html}{Network Load Balancer}
+}}
+
 \item{awayFrom}{[required] The Availability Zone (for example, \code{use1-az1}) that traffic is moved
 away from for a resource when you start a zonal shift. Until the zonal
 shift expires or you cancel it, traffic for the resource is instead
 moved to other Availability Zones in the Amazon Web Services Region.}
-
-\item{comment}{[required] A comment that you enter about the zonal shift. Only the latest comment
-is retained; no comment history is maintained. A new comment overwrites
-any existing comment string.}
 
 \item{expiresIn}{[required] The length of time that you want a zonal shift to be active, which ARC
 converts to an expiry time (expiration time). Zonal shifts are
@@ -45,11 +53,9 @@ number, and then one of the following, with no space:
 For example: \verb{20h} means the zonal shift expires in 20 hours. \verb{120m}
 means the zonal shift expires in 120 minutes (2 hours).}
 
-\item{resourceIdentifier}{[required] The identifier for the resource that Amazon Web Services shifts traffic
-for. The identifier is the Amazon Resource Name (ARN) for the resource.
-
-At this time, supported resources are Network Load Balancers and
-Application Load Balancers with cross-zone load balancing turned off.}
+\item{comment}{[required] A comment that you enter about the zonal shift. Only the latest comment
+is retained; no comment history is maintained. A new comment overwrites
+any existing comment string.}
 }
 \description{
 You start a zonal shift to temporarily move load balancer traffic away from an Availability Zone in an Amazon Web Services Region, to help your application recover immediately, for example, from a developer's bad code deployment or from an Amazon Web Services infrastructure failure in a single Availability Zone. You can start a zonal shift in ARC only for managed resources in your Amazon Web Services account in an Amazon Web Services Region. Resources are automatically registered with ARC by Amazon Web Services services.

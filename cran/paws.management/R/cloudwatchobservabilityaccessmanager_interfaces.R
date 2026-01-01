@@ -53,7 +53,7 @@ NULL
 
 .cloudwatchobservabilityaccessmanager$get_link_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Identifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Identifier = structure(logical(0), tags = list(type = "string")), IncludeTags = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -65,7 +65,7 @@ NULL
 
 .cloudwatchobservabilityaccessmanager$get_sink_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Identifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Identifier = structure(logical(0), tags = list(type = "string")), IncludeTags = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -173,7 +173,7 @@ NULL
 
 .cloudwatchobservabilityaccessmanager$update_link_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Identifier = structure(logical(0), tags = list(type = "string")), LinkConfiguration = structure(list(LogGroupConfiguration = structure(list(Filter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MetricConfiguration = structure(list(Filter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Identifier = structure(logical(0), tags = list(type = "string")), IncludeTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), LinkConfiguration = structure(list(LogGroupConfiguration = structure(list(Filter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MetricConfiguration = structure(list(Filter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

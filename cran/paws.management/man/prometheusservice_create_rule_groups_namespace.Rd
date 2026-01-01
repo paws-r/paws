@@ -6,16 +6,17 @@
 within a workspace}
 \usage{
 prometheusservice_create_rule_groups_namespace(
-  clientToken = NULL,
-  data,
+  workspaceId,
   name,
-  tags = NULL,
-  workspaceId
+  data,
+  clientToken = NULL,
+  tags = NULL
 )
 }
 \arguments{
-\item{clientToken}{A unique identifier that you can provide to ensure the idempotency of
-the request. Case-sensitive.}
+\item{workspaceId}{[required] The ID of the workspace to add the rule groups namespace.}
+
+\item{name}{[required] The name for the new rule groups namespace.}
 
 \item{data}{[required] The rules file to use in the new namespace.
 
@@ -24,12 +25,11 @@ Contains the base64-encoded version of the YAML rules file.
 For details about the rule groups namespace structure, see
 \href{https://docs.aws.amazon.com/prometheus/latest/APIReference/yaml-RuleGroupsNamespaceData.html}{RuleGroupsNamespaceData}.}
 
-\item{name}{[required] The name for the new rule groups namespace.}
+\item{clientToken}{A unique identifier that you can provide to ensure the idempotency of
+the request. Case-sensitive.}
 
 \item{tags}{The list of tag keys and values to associate with the rule groups
 namespace.}
-
-\item{workspaceId}{[required] The ID of the workspace to add the rule groups namespace.}
 }
 \description{
 The \code{\link[=prometheusservice_create_rule_groups_namespace]{create_rule_groups_namespace}} operation creates a rule groups namespace within a workspace. A rule groups namespace is associated with exactly one rules file. A workspace can have multiple rule groups namespaces.

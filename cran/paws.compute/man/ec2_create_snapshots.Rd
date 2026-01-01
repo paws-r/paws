@@ -48,8 +48,8 @@ not in a Local Zone, omit this parameter.
 \itemize{
 \item To create local snapshots in the same Local Zone as the source
 instance, specify \code{local}.
-\item To create a regional snapshots in the parent Region of the Local
-Zone, specify \code{regional} or omit this parameter.
+\item To create regional snapshots in the parent Region of the Local Zone,
+specify \code{regional} or omit this parameter.
 }
 
 Default value: \code{regional}}

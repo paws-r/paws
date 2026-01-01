@@ -52,7 +52,7 @@ presigned URL.}
 
 \item{Tags}{An array of key-value pairs.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html}{Resource Tag}
+For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-properties-resource-tags.html}{Resource Tag}
 and \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
 in the \emph{Amazon Web Services Billing and Cost Management User Guide}.}
 }

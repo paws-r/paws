@@ -5,14 +5,14 @@
 \title{Updates the service network and VPC association}
 \usage{
 vpclattice_update_service_network_vpc_association(
-  securityGroupIds,
-  serviceNetworkVpcAssociationIdentifier
+  serviceNetworkVpcAssociationIdentifier,
+  securityGroupIds
 )
 }
 \arguments{
-\item{securityGroupIds}{[required] The IDs of the security groups.}
-
 \item{serviceNetworkVpcAssociationIdentifier}{[required] The ID or ARN of the association.}
+
+\item{securityGroupIds}{[required] The IDs of the security groups.}
 }
 \description{
 Updates the service network and VPC association. If you add a security group to the service network and VPC association, the association must continue to have at least one security group. You can add or edit security groups at any time. However, to remove all security groups, you must first delete the association and then recreate it without security groups.

@@ -23,13 +23,16 @@ NULL
 #' longer receive more data.
 #'
 #' @usage
-#' dynamodbstreams_describe_stream(StreamArn, Limit, ExclusiveStartShardId)
+#' dynamodbstreams_describe_stream(StreamArn, Limit, ExclusiveStartShardId,
+#'   ShardFilter)
 #'
 #' @param StreamArn &#91;required&#93; The Amazon Resource Name (ARN) for the stream.
 #' @param Limit The maximum number of shard objects to return. The upper limit is 100.
 #' @param ExclusiveStartShardId The shard ID of the first item that this operation will evaluate. Use
 #' the value that was returned for `LastEvaluatedShardId` in the previous
 #' operation.
+#' @param ShardFilter This optional field contains the filter definition for the
+#' [`describe_stream`][dynamodbstreams_describe_stream] API.
 #'
 #' @return
 #' A list with the following syntax:
@@ -70,7 +73,11 @@ NULL
 #' svc$describe_stream(
 #'   StreamArn = "string",
 #'   Limit = 123,
-#'   ExclusiveStartShardId = "string"
+#'   ExclusiveStartShardId = "string",
+#'   ShardFilter = list(
+#'     Type = "CHILD_SHARDS",
+#'     ShardId = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -87,7 +94,7 @@ NULL
 #' @rdname dynamodbstreams_describe_stream
 #'
 #' @aliases dynamodbstreams_describe_stream
-dynamodbstreams_describe_stream <- function(StreamArn, Limit = NULL, ExclusiveStartShardId = NULL) {
+dynamodbstreams_describe_stream <- function(StreamArn, Limit = NULL, ExclusiveStartShardId = NULL, ShardFilter = NULL) {
   op <- new_operation(
     name = "DescribeStream",
     http_method = "POST",
@@ -96,7 +103,7 @@ dynamodbstreams_describe_stream <- function(StreamArn, Limit = NULL, ExclusiveSt
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .dynamodbstreams$describe_stream_input(StreamArn = StreamArn, Limit = Limit, ExclusiveStartShardId = ExclusiveStartShardId)
+  input <- .dynamodbstreams$describe_stream_input(StreamArn = StreamArn, Limit = Limit, ExclusiveStartShardId = ExclusiveStartShardId, ShardFilter = ShardFilter)
   output <- .dynamodbstreams$describe_stream_output()
   config <- get_config()
   svc <- .dynamodbstreams$service(config, op)

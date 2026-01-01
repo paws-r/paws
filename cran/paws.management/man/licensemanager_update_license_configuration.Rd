@@ -13,7 +13,8 @@ licensemanager_update_license_configuration(
   Name = NULL,
   Description = NULL,
   ProductInformationList = NULL,
-  DisassociateWhenNotFound = NULL
+  DisassociateWhenNotFound = NULL,
+  LicenseExpiry = NULL
 )
 }
 \arguments{
@@ -35,6 +36,8 @@ license configuration is licenseAffinityToHost.}
 \item{ProductInformationList}{New product information.}
 
 \item{DisassociateWhenNotFound}{When true, disassociates a resource when software is uninstalled.}
+
+\item{LicenseExpiry}{License configuration expiry time.}
 }
 \description{
 Modifies the attributes of an existing license configuration.

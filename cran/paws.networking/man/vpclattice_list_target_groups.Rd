@@ -7,8 +7,8 @@
 vpclattice_list_target_groups(
   maxResults = NULL,
   nextToken = NULL,
-  targetGroupType = NULL,
-  vpcIdentifier = NULL
+  vpcIdentifier = NULL,
+  targetGroupType = NULL
 )
 }
 \arguments{
@@ -16,9 +16,9 @@ vpclattice_list_target_groups(
 
 \item{nextToken}{A pagination token for the next page of results.}
 
-\item{targetGroupType}{The target group type.}
-
 \item{vpcIdentifier}{The ID or ARN of the VPC.}
+
+\item{targetGroupType}{The target group type.}
 }
 \description{
 Lists your target groups. You can narrow your search by using the filters below in your request.

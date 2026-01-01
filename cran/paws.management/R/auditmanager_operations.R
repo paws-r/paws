@@ -254,6 +254,10 @@ auditmanager_create_assessment <- function(name, description = NULL, assessmentR
 #' @param complianceType The compliance type that the new custom framework supports, such as CIS
 #' or HIPAA.
 #' @param controlSets &#91;required&#93; The control sets that are associated with the framework.
+#' 
+#' The `Controls` object returns a partial response when called through
+#' Framework APIs. For a complete `Controls` object, use
+#' [`get_control`][auditmanager_get_control].
 #' @param tags The tags that are associated with the framework.
 #'
 #' @keywords internal
@@ -1149,11 +1153,11 @@ auditmanager_get_organization_admin_account <- function() {
 }
 .auditmanager$operations$get_organization_admin_account <- auditmanager_get_organization_admin_account
 
-#' Gets a list of the Amazon Web Services from which Audit Manager can
-#' collect evidence
+#' Gets a list of the Amazon Web Services services from which Audit Manager
+#' can collect evidence
 #'
 #' @description
-#' Gets a list of the Amazon Web Services from which Audit Manager can collect evidence.
+#' Gets a list of the Amazon Web Services services from which Audit Manager can collect evidence.
 #'
 #' See [https://www.paws-r-sdk.com/docs/auditmanager_get_services_in_scope/](https://www.paws-r-sdk.com/docs/auditmanager_get_services_in_scope/) for full documentation.
 #'
@@ -1940,6 +1944,10 @@ auditmanager_update_assessment_control_set_status <- function(assessmentId, cont
 #' @param complianceType The compliance type that the new custom framework supports, such as CIS
 #' or HIPAA.
 #' @param controlSets &#91;required&#93; The control sets that are associated with the framework.
+#' 
+#' The `Controls` object returns a partial response when called through
+#' Framework APIs. For a complete `Controls` object, use
+#' [`get_control`][auditmanager_get_control].
 #'
 #' @keywords internal
 #'

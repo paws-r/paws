@@ -5,19 +5,16 @@
 \title{Modifies a flow}
 \usage{
 bedrockagent_update_flow(
-  customerEncryptionKeyArn = NULL,
-  definition = NULL,
+  name,
   description = NULL,
   executionRoleArn,
-  flowIdentifier,
-  name
+  customerEncryptionKeyArn = NULL,
+  definition = NULL,
+  flowIdentifier
 )
 }
 \arguments{
-\item{customerEncryptionKeyArn}{The Amazon Resource Name (ARN) of the KMS key to encrypt the flow.}
-
-\item{definition}{A definition of the nodes and the connections between the nodes in the
-flow.}
+\item{name}{[required] A name for the flow.}
 
 \item{description}{A description for the flow.}
 
@@ -25,9 +22,12 @@ flow.}
 create and manage a flow. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/flows-permissions.html}{Create a service role for flows in Amazon Bedrock}
 in the Amazon Bedrock User Guide.}
 
-\item{flowIdentifier}{[required] The unique identifier of the flow.}
+\item{customerEncryptionKeyArn}{The Amazon Resource Name (ARN) of the KMS key to encrypt the flow.}
 
-\item{name}{[required] A name for the flow.}
+\item{definition}{A definition of the nodes and the connections between the nodes in the
+flow.}
+
+\item{flowIdentifier}{[required] The unique identifier of the flow.}
 }
 \description{
 Modifies a flow. Include both fields that you want to keep and fields that you want to change. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/flows-how-it-works.html}{How it works} and \href{https://docs.aws.amazon.com/bedrock/latest/userguide/flows-create.html}{Create a flow in Amazon Bedrock} in the Amazon Bedrock User Guide.

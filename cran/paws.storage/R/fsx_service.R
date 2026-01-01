@@ -97,6 +97,7 @@ NULL
 #'  \link[=fsx_cancel_data_repository_task]{cancel_data_repository_task} \tab Cancels an existing Amazon FSx for Lustre data repository task if that task is in either the PENDING or EXECUTING state\cr
 #'  \link[=fsx_copy_backup]{copy_backup} \tab Copies an existing backup within the same Amazon Web Services account to another Amazon Web Services Region (cross-Region copy) or within the same Amazon Web Services Region (in-Region copy)\cr
 #'  \link[=fsx_copy_snapshot_and_update_volume]{copy_snapshot_and_update_volume} \tab Updates an existing volume by using a snapshot from another Amazon FSx for OpenZFS file system\cr
+#'  \link[=fsx_create_and_attach_s3_access_point]{create_and_attach_s3_access_point} \tab Creates an S3 access point and attaches it to an Amazon FSx volume\cr
 #'  \link[=fsx_create_backup]{create_backup} \tab Creates a backup of an existing Amazon FSx for Windows File Server file system, Amazon FSx for Lustre file system, Amazon FSx for NetApp ONTAP volume, or Amazon FSx for OpenZFS file system\cr
 #'  \link[=fsx_create_data_repository_association]{create_data_repository_association} \tab Creates an Amazon FSx for Lustre data repository association (DRA)\cr
 #'  \link[=fsx_create_data_repository_task]{create_data_repository_task} \tab Creates an Amazon FSx for Lustre data repository task\cr
@@ -120,10 +121,12 @@ NULL
 #'  \link[=fsx_describe_file_caches]{describe_file_caches} \tab Returns the description of a specific Amazon File Cache resource, if a FileCacheIds value is provided for that cache\cr
 #'  \link[=fsx_describe_file_system_aliases]{describe_file_system_aliases} \tab Returns the DNS aliases that are associated with the specified Amazon FSx for Windows File Server file system\cr
 #'  \link[=fsx_describe_file_systems]{describe_file_systems} \tab Returns the description of specific Amazon FSx file systems, if a FileSystemIds value is provided for that file system\cr
+#'  \link[=fsx_describe_s3_access_point_attachments]{describe_s3_access_point_attachments} \tab Describes one or more S3 access points attached to Amazon FSx volumes\cr
 #'  \link[=fsx_describe_shared_vpc_configuration]{describe_shared_vpc_configuration} \tab Indicates whether participant accounts in your organization can create Amazon FSx for NetApp ONTAP Multi-AZ file systems in subnets that are shared by a virtual private cloud (VPC) owner\cr
 #'  \link[=fsx_describe_snapshots]{describe_snapshots} \tab Returns the description of specific Amazon FSx for OpenZFS snapshots, if a SnapshotIds value is provided\cr
 #'  \link[=fsx_describe_storage_virtual_machines]{describe_storage_virtual_machines} \tab Describes one or more Amazon FSx for NetApp ONTAP storage virtual machines (SVMs)\cr
 #'  \link[=fsx_describe_volumes]{describe_volumes} \tab Describes one or more Amazon FSx for NetApp ONTAP or Amazon FSx for OpenZFS volumes\cr
+#'  \link[=fsx_detach_and_delete_s3_access_point]{detach_and_delete_s3_access_point} \tab Detaches an S3 access point from an Amazon FSx volume and deletes the S3 access point\cr
 #'  \link[=fsx_disassociate_file_system_aliases]{disassociate_file_system_aliases} \tab Use this action to disassociate, or remove, one or more Domain Name Service (DNS) aliases from an Amazon FSx for Windows File Server file system\cr
 #'  \link[=fsx_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for Amazon FSx resources\cr
 #'  \link[=fsx_release_file_system_nfs_v3_locks]{release_file_system_nfs_v3_locks} \tab Releases the file system lock from an Amazon FSx for OpenZFS file system\cr

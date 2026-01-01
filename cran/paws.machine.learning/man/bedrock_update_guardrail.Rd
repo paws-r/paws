@@ -13,6 +13,7 @@ bedrock_update_guardrail(
   wordPolicyConfig = NULL,
   sensitiveInformationPolicyConfig = NULL,
   contextualGroundingPolicyConfig = NULL,
+  automatedReasoningPolicyConfig = NULL,
   crossRegionConfig = NULL,
   blockedInputMessaging,
   blockedOutputsMessaging,
@@ -36,6 +37,9 @@ bedrock_update_guardrail(
 
 \item{contextualGroundingPolicyConfig}{The contextual grounding policy configuration used to update a
 guardrail.}
+
+\item{automatedReasoningPolicyConfig}{Updated configuration for Automated Reasoning policies associated with
+the guardrail.}
 
 \item{crossRegionConfig}{The system-defined guardrail profile that you're using with your
 guardrail. Guardrail profiles define the destination Amazon Web Services

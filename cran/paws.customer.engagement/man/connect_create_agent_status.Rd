@@ -2,8 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_create_agent_status}
 \alias{connect_create_agent_status}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Creates an agent status for the specified Amazon Connect instance}
 \usage{
 connect_create_agent_status(
   InstanceId,
@@ -30,7 +29,7 @@ in the Amazon Resource Name (ARN) of the instance.}
 For example, \{ "Tags": \{"key1":"value1", "key2":"value2"\} \}.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to change.
+Creates an agent status for the specified Amazon Connect instance.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_create_agent_status/} for full documentation.
 }

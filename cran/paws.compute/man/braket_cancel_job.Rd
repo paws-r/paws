@@ -2,15 +2,15 @@
 % Please edit documentation in R/braket_operations.R
 \name{braket_cancel_job}
 \alias{braket_cancel_job}
-\title{Cancels an Amazon Braket job}
+\title{Cancels an Amazon Braket hybrid job}
 \usage{
 braket_cancel_job(jobArn)
 }
 \arguments{
-\item{jobArn}{[required] The ARN of the Amazon Braket job to cancel.}
+\item{jobArn}{[required] The ARN of the Amazon Braket hybrid job to cancel.}
 }
 \description{
-Cancels an Amazon Braket job.
+Cancels an Amazon Braket hybrid job.
 
 See \url{https://www.paws-r-sdk.com/docs/braket_cancel_job/} for full documentation.
 }

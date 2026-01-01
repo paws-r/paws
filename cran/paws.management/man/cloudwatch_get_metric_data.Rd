@@ -38,14 +38,14 @@ minute. For example, 12:32:34 is rounded down to 12:32:00.
 12:00:00.
 }
 
-If you set \code{Period} to 5, 10, or 30, the start time of your request is
-rounded down to the nearest time that corresponds to even 5-, 10-, or
-30-second divisions of a minute. For example, if you make a query at
-(HH:mm:ss) 01:05:23 for the previous 10-second period, the start time of
-your request is rounded down and you receive data from 01:05:10 to
-01:05:20. If you make a query at 15:07:17 for the previous 5 minutes of
-data, using a period of 5 seconds, you receive data timestamped between
-15:02:15 and 15:07:15.
+If you set \code{Period} to 5, 10, 20, or 30, the start time of your request
+is rounded down to the nearest time that corresponds to even 5-, 10-,
+20-, or 30-second divisions of a minute. For example, if you make a
+query at (HH:mm:ss) 01:05:23 for the previous 10-second period, the
+start time of your request is rounded down and you receive data from
+01:05:10 to 01:05:20. If you make a query at 15:07:17 for the previous 5
+minutes of data, using a period of 5 seconds, you receive data
+timestamped between 15:02:15 and 15:07:15.
 
 For better performance, specify \code{StartTime} and \code{EndTime} values that
 align with the value of the metric's \code{Period} and sync up with the

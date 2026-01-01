@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_list_user_groups}
 \alias{quicksight_list_user_groups}
-\title{Lists the Amazon QuickSight groups that an Amazon QuickSight user is a
+\title{Lists the Amazon Quick Sight groups that an Amazon Quick Sight user is a
 member of}
 \usage{
 quicksight_list_user_groups(
@@ -14,12 +14,12 @@ quicksight_list_user_groups(
 )
 }
 \arguments{
-\item{UserName}{[required] The Amazon QuickSight user name that you want to list group memberships
+\item{UserName}{[required] The Amazon Quick Sight user name that you want to list group memberships
 for.}
 
 \item{AwsAccountId}{[required] The Amazon Web Services account ID that the user is in. Currently, you
 use the ID for the Amazon Web Services account that contains your Amazon
-QuickSight account.}
+Quick Sight account.}
 
 \item{Namespace}{[required] The namespace. Currently, you should set this to \code{default}.}
 
@@ -28,7 +28,7 @@ QuickSight account.}
 \item{MaxResults}{The maximum number of results to return from this request.}
 }
 \description{
-Lists the Amazon QuickSight groups that an Amazon QuickSight user is a member of.
+Lists the Amazon Quick Sight groups that an Amazon Quick Sight user is a member of.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_list_user_groups/} for full documentation.
 }

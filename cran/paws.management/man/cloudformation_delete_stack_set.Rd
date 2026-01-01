@@ -2,12 +2,12 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_delete_stack_set}
 \alias{cloudformation_delete_stack_set}
-\title{Deletes a stack set}
+\title{Deletes a StackSet}
 \usage{
 cloudformation_delete_stack_set(StackSetName, CallAs = NULL)
 }
 \arguments{
-\item{StackSetName}{[required] The name or unique ID of the stack set that you're deleting. You can
+\item{StackSetName}{[required] The name or unique ID of the StackSet that you're deleting. You can
 obtain this value by running
 \code{\link[=cloudformation_list_stack_sets]{list_stack_sets}}.}
 
@@ -15,7 +15,7 @@ obtain this value by running
 account administrator in the organization's management account or as a
 delegated administrator in a member account.
 
-By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+By default, \code{SELF} is specified. Use \code{SELF} for StackSets with
 self-managed permissions.
 \itemize{
 \item If you are signed in to the management account, specify \code{SELF}.
@@ -29,7 +29,7 @@ in the \emph{CloudFormation User Guide}.
 }}
 }
 \description{
-Deletes a stack set. Before you can delete a stack set, all its member stack instances must be deleted. For more information about how to complete this, see \code{\link[=cloudformation_delete_stack_instances]{delete_stack_instances}}.
+Deletes a StackSet. Before you can delete a StackSet, all its member stack instances must be deleted. For more information about how to complete this, see \code{\link[=cloudformation_delete_stack_instances]{delete_stack_instances}}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudformation_delete_stack_set/} for full documentation.
 }

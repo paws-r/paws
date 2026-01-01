@@ -4,12 +4,32 @@
 \alias{entityresolution_start_id_mapping_job}
 \title{Starts the IdMappingJob of a workflow}
 \usage{
-entityresolution_start_id_mapping_job(workflowName, outputSourceConfig = NULL)
+entityresolution_start_id_mapping_job(
+  workflowName,
+  outputSourceConfig = NULL,
+  jobType = NULL
+)
 }
 \arguments{
 \item{workflowName}{[required] The name of the ID mapping job to be retrieved.}
 
 \item{outputSourceConfig}{A list of \code{OutputSource} objects.}
+
+\item{jobType}{The job type for the ID mapping job.
+
+If the \code{jobType} value is set to \code{INCREMENTAL}, only new or changed data
+is processed since the last job run. This is the default value if the
+\code{\link[=entityresolution_create_id_mapping_workflow]{create_id_mapping_workflow}}
+API is configured with an \code{incrementalRunConfig}.
+
+If the \code{jobType} value is set to \code{BATCH}, all data is processed from the
+input source, regardless of previous job runs. This is the default value
+if the
+\code{\link[=entityresolution_create_id_mapping_workflow]{create_id_mapping_workflow}}
+API isn't configured with an \code{incrementalRunConfig}.
+
+If the \code{jobType} value is set to \code{DELETE_ONLY}, only deletion requests
+from \code{BatchDeleteUniqueIds} are processed.}
 }
 \description{
 Starts the \code{IdMappingJob} of a workflow. The workflow must have previously been created using the \code{\link[=entityresolution_create_id_mapping_workflow]{create_id_mapping_workflow}} endpoint.

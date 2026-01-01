@@ -6,7 +6,8 @@
 \usage{
 sesv2_put_configuration_set_suppression_options(
   ConfigurationSetName,
-  SuppressedReasons = NULL
+  SuppressedReasons = NULL,
+  ValidationOptions = NULL
 )
 }
 \arguments{
@@ -24,6 +25,10 @@ a complaint.
 for your account when a message sent to that address results in a
 hard bounce.
 }}
+
+\item{ValidationOptions}{An object that contains information about the email address suppression
+preferences for the configuration set in the current Amazon Web Services
+Region.}
 }
 \description{
 Specify the account suppression list preferences for a configuration set.

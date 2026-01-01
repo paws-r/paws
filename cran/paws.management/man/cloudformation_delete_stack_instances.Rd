@@ -17,7 +17,7 @@ cloudformation_delete_stack_instances(
 )
 }
 \arguments{
-\item{StackSetName}{[required] The name or unique ID of the stack set that you want to delete stack
+\item{StackSetName}{[required] The name or unique ID of the StackSet that you want to delete stack
 instances for.}
 
 \item{Accounts}{[Self-managed permissions] The account IDs of the Amazon Web Services
@@ -30,35 +30,35 @@ delete stack instances.
 
 You can specify \code{Accounts} or \code{DeploymentTargets}, but not both.}
 
-\item{Regions}{[required] The Amazon Web Services Regions where you want to delete stack set
+\item{Regions}{[required] The Amazon Web Services Regions where you want to delete StackSet
 instances.}
 
-\item{OperationPreferences}{Preferences for how CloudFormation performs this stack set operation.}
+\item{OperationPreferences}{Preferences for how CloudFormation performs this StackSet operation.}
 
-\item{RetainStacks}{[required] Removes the stack instances from the specified stack set, but doesn't
+\item{RetainStacks}{[required] Removes the stack instances from the specified StackSet, but doesn't
 delete the stacks. You can't reassociate a retained stack or add an
 existing, saved stack to a new stack set.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html#stackset-ops-options}{Stack set operation options}.}
+For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options}{StackSet operation options}.}
 
-\item{OperationId}{The unique identifier for this stack set operation.
+\item{OperationId}{The unique identifier for this StackSet operation.
 
 If you don't specify an operation ID, the SDK generates one
 automatically.
 
 The operation ID also functions as an idempotency token, to ensure that
-CloudFormation performs the stack set operation only once, even if you
-retry the request multiple times. You can retry stack set operation
+CloudFormation performs the StackSet operation only once, even if you
+retry the request multiple times. You can retry StackSet operation
 requests to ensure that CloudFormation successfully received them.
 
-Repeating this stack set operation with a new operation ID retries all
+Repeating this StackSet operation with a new operation ID retries all
 stack instances whose status is \code{OUTDATED}.}
 
 \item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
 account administrator in the organization's management account or as a
 delegated administrator in a member account.
 
-By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+By default, \code{SELF} is specified. Use \code{SELF} for StackSets with
 self-managed permissions.
 \itemize{
 \item If you are signed in to the management account, specify \code{SELF}.

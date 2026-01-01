@@ -29,7 +29,7 @@ requests, the same response is returned. Use ClientRequestToken to
 prevent the same request from being processed more than once.}
 }
 \description{
-Associates one or more faces with an existing UserID. Takes an array of \code{FaceIds}. Each \code{FaceId} that are present in the \code{FaceIds} list is associated with the provided UserID. The maximum number of total \code{FaceIds} per UserID is 100.
+Associates one or more faces with an existing UserID. Takes an array of \code{FaceIds}. Each \code{FaceId} that are present in the \code{FaceIds} list is associated with the provided UserID. The number of FaceIds that can be used as input in a single request is limited to 100.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_associate_faces/} for full documentation.
 }

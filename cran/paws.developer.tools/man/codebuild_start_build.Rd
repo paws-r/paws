@@ -131,7 +131,9 @@ Since this property allows you to change the build commands that will
 run in the container, you should note that an IAM principal with the
 ability to call this API and set this parameter can override the default
 settings. Moreover, we encourage that you use a trustworthy buildspec
-location like a file in your source repository or a Amazon S3 bucket.}
+location like a file in your source repository or a Amazon S3 bucket.
+Alternatively, you can restrict overrides to the buildspec by using a
+condition key: \href{https://docs.aws.amazon.com/codebuild/latest/userguide/action-context-keys.html#action-context-keys-example-overridebuildspec.html}{Prevent unauthorized modifications to project buildspec}.}
 
 \item{insecureSslOverride}{Enable this flag to override the insecure SSL setting that is specified
 in the build project. The insecure SSL setting determines whether to

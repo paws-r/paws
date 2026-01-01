@@ -2,7 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_get_map_sprites}
 \alias{locationservice_get_map_sprites}
-\title{Retrieves the sprite sheet corresponding to a map resource}
+\title{This operation is no longer current and may be deprecated in the future}
 \usage{
 locationservice_get_map_sprites(MapName, FileName, Key = NULL)
 }
@@ -23,11 +23,11 @@ names:
 \item \verb{sprites@2x.json} for high pixel density displays
 }}
 
-\item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}
+\item{Key}{The optional \href{https://docs.aws.amazon.com/location/previous/developerguide/using-apikeys.html}{API key}
 to authorize the request.}
 }
 \description{
-Retrieves the sprite sheet corresponding to a map resource. The sprite sheet is a PNG image paired with a JSON document describing the offsets of individual icons that will be displayed on a rendered map.
+This operation is no longer current and may be deprecated in the future. We recommend upgrading to \href{https://docs.aws.amazon.com/location/latest/APIReference/API_geomaps_GetSprites.html}{\code{GetSprites}} unless you require \code{Grab} data.
 
 See \url{https://www.paws-r-sdk.com/docs/locationservice_get_map_sprites/} for full documentation.
 }

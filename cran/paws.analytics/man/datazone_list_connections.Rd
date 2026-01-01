@@ -10,7 +10,8 @@ datazone_list_connections(
   maxResults = NULL,
   name = NULL,
   nextToken = NULL,
-  projectIdentifier,
+  projectIdentifier = NULL,
+  scope = NULL,
   sortBy = NULL,
   sortOrder = NULL,
   type = NULL
@@ -36,7 +37,9 @@ includes a pagination token named NextToken. You can specify this
 NextToken value in a subsequent call to ListConnections to list the next
 set of connections.}
 
-\item{projectIdentifier}{[required] The ID of the project where you want to list connections.}
+\item{projectIdentifier}{The ID of the project where you want to list connections.}
+
+\item{scope}{The scope of the connection.}
 
 \item{sortBy}{Specifies how you want to sort the listed connections.}
 

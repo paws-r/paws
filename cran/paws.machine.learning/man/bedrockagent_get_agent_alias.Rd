@@ -4,13 +4,13 @@
 \alias{bedrockagent_get_agent_alias}
 \title{Gets information about an alias of an agent}
 \usage{
-bedrockagent_get_agent_alias(agentAliasId, agentId)
+bedrockagent_get_agent_alias(agentId, agentAliasId)
 }
 \arguments{
-\item{agentAliasId}{[required] The unique identifier of the alias for which to get information.}
-
 \item{agentId}{[required] The unique identifier of the agent to which the alias to get information
 belongs.}
+
+\item{agentAliasId}{[required] The unique identifier of the alias for which to get information.}
 }
 \description{
 Gets information about an alias of an agent.

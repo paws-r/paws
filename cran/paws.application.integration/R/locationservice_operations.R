@@ -247,11 +247,10 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 }
 .locationservice$operations$batch_update_device_position <- locationservice_batch_update_device_position
 
-#' Calculates a route given the following required parameters:
-#' DeparturePosition and DestinationPosition
+#' This operation is no longer current and may be deprecated in the future
 #'
 #' @description
-#' [Calculates a route](https://docs.aws.amazon.com/location/latest/developerguide/) given the following required parameters: `DeparturePosition` and `DestinationPosition`. Requires that you first [create a route calculator resource](https://docs.aws.amazon.com/location/latest/APIReference/).
+#' This operation is no longer current and may be deprecated in the future. We recommend you upgrade to `CalculateRoutes` or `CalculateIsolines` unless you require Grab data.
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_calculate_route/](https://www.paws-r-sdk.com/docs/locationservice_calculate_route/) for full documentation.
 #'
@@ -265,9 +264,10 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #' 
 #' If you specify a departure that's not located on a road, Amazon Location
 #' [moves the position to the nearest
-#' road](https://docs.aws.amazon.com/location/latest/developerguide/). If
-#' Esri is the provider for your route calculator, specifying a route that
-#' is longer than 400 km returns a `400 RoutesValidationException` error.
+#' road](https://docs.aws.amazon.com/location/previous/developerguide/snap-to-nearby-road.html).
+#' If Esri is the provider for your route calculator, specifying a route
+#' that is longer than 400 km returns a `400 RoutesValidationException`
+#' error.
 #' 
 #' Valid Values: `[-180 to 180,-90 to 90]`
 #' @param DestinationPosition &#91;required&#93; The finish position for the route. Defined in [World Geodetic System
@@ -278,7 +278,7 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #' 
 #' If you specify a destination that's not located on a road, Amazon
 #' Location [moves the position to the nearest
-#' road](https://docs.aws.amazon.com/location/latest/developerguide/).
+#' road](https://docs.aws.amazon.com/location/previous/developerguide/snap-to-nearby-road.html).
 #' 
 #' Valid Values: `[-180 to 180,-90 to 90]`
 #' @param WaypointPositions Specifies an ordered list of up to 23 intermediate positions to include
@@ -290,7 +290,7 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #' 
 #' If you specify a waypoint position that's not located on a road, Amazon
 #' Location [moves the position to the nearest
-#' road](https://docs.aws.amazon.com/location/latest/developerguide/).
+#' road](https://docs.aws.amazon.com/location/previous/developerguide/snap-to-nearby-road.html).
 #' 
 #' Specifying more than 23 waypoints returns a `400 ValidationException`
 #' error.
@@ -312,7 +312,7 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #' 
 #' For more details on the using Grab for routing, including areas of
 #' coverage, see
-#' [GrabMaps](https://docs.aws.amazon.com/location/latest/developerguide/)
+#' [GrabMaps](https://docs.aws.amazon.com/location/previous/developerguide/grab.html)
 #' in the *Amazon Location Service Developer Guide*.
 #' 
 #' The `TravelMode` you specify also determines how you specify route
@@ -363,7 +363,7 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #' ArrivalTime is not supported Esri.
 #' @param OptimizeFor Specifies the distance to optimize for when calculating a route.
 #' @param Key The optional [API
-#' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
+#' key](https://docs.aws.amazon.com/location/previous/developerguide/using-apikeys.html)
 #' to authorize the request.
 #'
 #' @keywords internal
@@ -388,11 +388,10 @@ locationservice_calculate_route <- function(CalculatorName, DeparturePosition, D
 }
 .locationservice$operations$calculate_route <- locationservice_calculate_route
 
-#' Calculates a route matrix given the following required parameters:
-#' DeparturePositions and DestinationPositions
+#' This operation is no longer current and may be deprecated in the future
 #'
 #' @description
-#' [Calculates a route matrix](https://docs.aws.amazon.com/location/latest/developerguide/calculate-route-matrix.html) given the following required parameters: `DeparturePositions` and `DestinationPositions`. [`calculate_route_matrix`][locationservice_calculate_route_matrix] calculates routes and returns the travel time and travel distance from each departure position to each destination position in the request. For example, given departure positions A and B, and destination positions X and Y, [`calculate_route_matrix`][locationservice_calculate_route_matrix] will return time and distance for routes from A to X, A to Y, B to X, and B to Y (in that order). The number of results returned (and routes calculated) will be the number of `DeparturePositions` times the number of `DestinationPositions`.
+#' This operation is no longer current and may be deprecated in the future. We recommend you upgrade to the V2 `calculate_route_matrix` unless you require Grab data.
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_calculate_route_matrix/](https://www.paws-r-sdk.com/docs/locationservice_calculate_route_matrix/) for full documentation.
 #'
@@ -406,14 +405,15 @@ locationservice_calculate_route <- function(CalculatorName, DeparturePosition, D
 #' Depending on the data provider selected in the route calculator resource
 #' there may be additional restrictions on the inputs you can choose. See
 #' [Position
-#' restrictions](https://docs.aws.amazon.com/location/latest/developerguide/calculate-route-matrix.html#matrix-routing-position-limits)
+#' restrictions](https://docs.aws.amazon.com/location/previous/developerguide/calculate-route-matrix.html#matrix-routing-position-limits)
 #' in the *Amazon Location Service Developer Guide*.
 #' 
 #' For route calculators that use Esri as the data provider, if you specify
 #' a departure that's not located on a road, Amazon Location [moves the
 #' position to the nearest
-#' road](https://docs.aws.amazon.com/location/latest/developerguide/). The
-#' snapped value is available in the result in `SnappedDeparturePositions`.
+#' road](https://docs.aws.amazon.com/location/previous/developerguide/snap-to-nearby-road.html).
+#' The snapped value is available in the result in
+#' `SnappedDeparturePositions`.
 #' 
 #' Valid Values: `[-180 to 180,-90 to 90]`
 #' @param DestinationPositions &#91;required&#93; The list of destination positions for the route matrix. An array of
@@ -424,14 +424,14 @@ locationservice_calculate_route <- function(CalculatorName, DeparturePosition, D
 #' Depending on the data provider selected in the route calculator resource
 #' there may be additional restrictions on the inputs you can choose. See
 #' [Position
-#' restrictions](https://docs.aws.amazon.com/location/latest/developerguide/calculate-route-matrix.html#matrix-routing-position-limits)
+#' restrictions](https://docs.aws.amazon.com/location/previous/developerguide/calculate-route-matrix.html#matrix-routing-position-limits)
 #' in the *Amazon Location Service Developer Guide*.
 #' 
 #' For route calculators that use Esri as the data provider, if you specify
 #' a destination that's not located on a road, Amazon Location [moves the
 #' position to the nearest
-#' road](https://docs.aws.amazon.com/location/latest/developerguide/). The
-#' snapped value is available in the result in
+#' road](https://docs.aws.amazon.com/location/previous/developerguide/snap-to-nearby-road.html).
+#' The snapped value is available in the result in
 #' `SnappedDestinationPositions`.
 #' 
 #' Valid Values: `[-180 to 180,-90 to 90]`
@@ -451,7 +451,7 @@ locationservice_calculate_route <- function(CalculatorName, DeparturePosition, D
 #' `Truck` is not available for Grab.
 #' 
 #' For more information about using Grab as a data provider, see
-#' [GrabMaps](https://docs.aws.amazon.com/location/latest/developerguide/)
+#' [GrabMaps](https://docs.aws.amazon.com/location/previous/developerguide/grab.html)
 #' in the *Amazon Location Service Developer Guide*.
 #' 
 #' Default Value: `Car`
@@ -488,7 +488,7 @@ locationservice_calculate_route <- function(CalculatorName, DeparturePosition, D
 #' 
 #' Requirements: `TravelMode` must be specified as `Truck`.
 #' @param Key The optional [API
-#' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
+#' key](https://docs.aws.amazon.com/location/previous/developerguide/using-apikeys.html)
 #' to authorize the request.
 #'
 #' @keywords internal
@@ -650,12 +650,10 @@ locationservice_create_key <- function(KeyName, Restrictions, Description = NULL
 }
 .locationservice$operations$create_key <- locationservice_create_key
 
-#' Creates a map resource in your Amazon Web Services account, which
-#' provides map tiles of different styles sourced from global location data
-#' providers
+#' This operation is no longer current and may be deprecated in the future
 #'
 #' @description
-#' Creates a map resource in your Amazon Web Services account, which provides map tiles of different styles sourced from global location data providers.
+#' This operation is no longer current and may be deprecated in the future. We recommend upgrading to the Maps API V2 unless you require `Grab` data.
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_create_map/](https://www.paws-r-sdk.com/docs/locationservice_create_map/) for full documentation.
 #'
@@ -718,10 +716,10 @@ locationservice_create_map <- function(MapName, Configuration, PricingPlan = NUL
 }
 .locationservice$operations$create_map <- locationservice_create_map
 
-#' Creates a place index resource in your Amazon Web Services account
+#' This operation is no longer current and may be deprecated in the future
 #'
 #' @description
-#' Creates a place index resource in your Amazon Web Services account. Use a place index resource to geocode addresses and other text queries by using the [`search_place_index_for_text`][locationservice_search_place_index_for_text] operation, and reverse geocode coordinates by using the [`search_place_index_for_position`][locationservice_search_place_index_for_position] operation, and enable autosuggestions by using the [`search_place_index_for_suggestions`][locationservice_search_place_index_for_suggestions] operation.
+#' This operation is no longer current and may be deprecated in the future. We recommend you upgrade to the Places API V2 unless you require Grab data.
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_create_place_index/](https://www.paws-r-sdk.com/docs/locationservice_create_place_index/) for full documentation.
 #'
@@ -743,18 +741,18 @@ locationservice_create_map <- function(MapName, Configuration, PricingPlan = NUL
 #' Valid values include:
 #' 
 #' -   `Esri` – For additional information about
-#'     [Esri](https://docs.aws.amazon.com/location/latest/developerguide/)'s
+#'     [Esri](https://docs.aws.amazon.com/location/previous/developerguide/esri.html)'s
 #'     coverage in your region of interest, see [Esri details on geocoding
 #'     coverage](https://developers.arcgis.com/rest/geocode/api-reference/geocode-coverage.htm).
 #' 
 #' -   `Grab` – Grab provides place index functionality for Southeast Asia.
 #'     For additional information about
-#'     [GrabMaps](https://docs.aws.amazon.com/location/latest/developerguide/)'
+#'     [GrabMaps](https://docs.aws.amazon.com/location/previous/developerguide/grab.html)'
 #'     coverage, see [GrabMaps countries and areas
-#'     covered](https://docs.aws.amazon.com/location/latest/developerguide/#grab-coverage-area).
+#'     covered](https://docs.aws.amazon.com/location/previous/developerguide/grab.html#grab-coverage-area).
 #' 
 #' -   `Here` – For additional information about [HERE
-#'     Technologies](https://docs.aws.amazon.com/location/latest/developerguide/)'
+#'     Technologies](https://docs.aws.amazon.com/location/previous/developerguide/HERE.html)'
 #'     coverage in your region of interest, see [HERE details on goecoding
 #'     coverage](https://www.here.com/docs/).
 #' 
@@ -762,12 +760,12 @@ locationservice_create_map <- function(MapName, Configuration, PricingPlan = NUL
 #'     may not [store
 #'     results](https://docs.aws.amazon.com/location/latest/APIReference/)
 #'     for locations in Japan. For more information, see the [Amazon Web
-#'     Services Service Terms](https://aws.amazon.com/service-terms/) for
+#'     Services service terms](https://aws.amazon.com/service-terms/) for
 #'     Amazon Location Service.
 #' 
 #' For additional information , see [Data
-#' providers](https://docs.aws.amazon.com/location/latest/developerguide/)
-#' on the *Amazon Location Service Developer Guide*.
+#' providers](https://docs.aws.amazon.com/location/previous/developerguide/what-is-data-provider.html)
+#' on the *Amazon Location Service developer guide*.
 #' @param PricingPlan No longer used. If included, the only allowed value is
 #' `RequestBasedUsage`.
 #' @param Description The optional description for the place index resource.
@@ -816,10 +814,10 @@ locationservice_create_place_index <- function(IndexName, DataSource, PricingPla
 }
 .locationservice$operations$create_place_index <- locationservice_create_place_index
 
-#' Creates a route calculator resource in your Amazon Web Services account
+#' This operation is no longer current and may be deprecated in the future
 #'
 #' @description
-#' Creates a route calculator resource in your Amazon Web Services account.
+#' This operation is no longer current and may be deprecated in the future. We recommend you upgrade to the Routes API V2 unless you require Grab data.
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_create_route_calculator/](https://www.paws-r-sdk.com/docs/locationservice_create_route_calculator/) for full documentation.
 #'
@@ -841,7 +839,7 @@ locationservice_create_place_index <- function(IndexName, DataSource, PricingPla
 #' Valid values include:
 #' 
 #' -   `Esri` – For additional information about
-#'     [Esri](https://docs.aws.amazon.com/location/latest/developerguide/)'s
+#'     [Esri](https://docs.aws.amazon.com/location/previous/developerguide/esri.html)'s
 #'     coverage in your region of interest, see [Esri details on street
 #'     networks and traffic
 #'     coverage](https://doc.arcgis.com/en/arcgis-online/reference/network-coverage.htm).
@@ -851,18 +849,18 @@ locationservice_create_place_index <- function(IndexName, DataSource, PricingPla
 #' 
 #' -   `Grab` – Grab provides routing functionality for Southeast Asia. For
 #'     additional information about
-#'     [GrabMaps](https://docs.aws.amazon.com/location/latest/developerguide/)'
+#'     [GrabMaps](https://docs.aws.amazon.com/location/previous/developerguide/grab.html)'
 #'     coverage, see [GrabMaps countries and areas
-#'     covered](https://docs.aws.amazon.com/location/latest/developerguide/#grab-coverage-area).
+#'     covered](https://docs.aws.amazon.com/location/previous/developerguide/grab.html#grab-coverage-area).
 #' 
 #' -   `Here` – For additional information about [HERE
-#'     Technologies](https://docs.aws.amazon.com/location/latest/developerguide/)'
+#'     Technologies](https://docs.aws.amazon.com/location/previous/developerguide/HERE.html)'
 #'     coverage in your region of interest, see [HERE car routing
 #'     coverage](https://www.here.com/docs/) and [HERE truck routing
 #'     coverage](https://www.here.com/docs/).
 #' 
 #' For additional information , see [Data
-#' providers](https://docs.aws.amazon.com/location/latest/developerguide/)
+#' providers](https://docs.aws.amazon.com/location/previous/developerguide/what-is-data-provider.html)
 #' on the *Amazon Location Service Developer Guide*.
 #' @param PricingPlan No longer used. If included, the only allowed value is
 #' `RequestBasedUsage`.
@@ -1103,10 +1101,10 @@ locationservice_delete_key <- function(KeyName, ForceDelete = NULL) {
 }
 .locationservice$operations$delete_key <- locationservice_delete_key
 
-#' Deletes a map resource from your Amazon Web Services account
+#' This operation is no longer current and may be deprecated in the future
 #'
 #' @description
-#' Deletes a map resource from your Amazon Web Services account.
+#' This operation is no longer current and may be deprecated in the future. We recommend upgrading to the Maps API V2 unless you require `Grab` data.
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_delete_map/](https://www.paws-r-sdk.com/docs/locationservice_delete_map/) for full documentation.
 #'
@@ -1134,10 +1132,10 @@ locationservice_delete_map <- function(MapName) {
 }
 .locationservice$operations$delete_map <- locationservice_delete_map
 
-#' Deletes a place index resource from your Amazon Web Services account
+#' This operation is no longer current and may be deprecated in the future
 #'
 #' @description
-#' Deletes a place index resource from your Amazon Web Services account.
+#' This operation is no longer current and may be deprecated in the future. We recommend you upgrade to the Places API V2 unless you require Grab data.
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_delete_place_index/](https://www.paws-r-sdk.com/docs/locationservice_delete_place_index/) for full documentation.
 #'
@@ -1165,11 +1163,10 @@ locationservice_delete_place_index <- function(IndexName) {
 }
 .locationservice$operations$delete_place_index <- locationservice_delete_place_index
 
-#' Deletes a route calculator resource from your Amazon Web Services
-#' account
+#' This operation is no longer current and may be deprecated in the future
 #'
 #' @description
-#' Deletes a route calculator resource from your Amazon Web Services account.
+#' This operation is no longer current and may be deprecated in the future. We recommend you upgrade to the Routes API V2 unless you require Grab data.
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_delete_route_calculator/](https://www.paws-r-sdk.com/docs/locationservice_delete_route_calculator/) for full documentation.
 #'
@@ -1290,10 +1287,10 @@ locationservice_describe_key <- function(KeyName) {
 }
 .locationservice$operations$describe_key <- locationservice_describe_key
 
-#' Retrieves the map resource details
+#' This operation is no longer current and may be deprecated in the future
 #'
 #' @description
-#' Retrieves the map resource details.
+#' This operation is no longer current and may be deprecated in the future. We recommend upgrading to the Maps API V2 unless you require `Grab` data.
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_describe_map/](https://www.paws-r-sdk.com/docs/locationservice_describe_map/) for full documentation.
 #'
@@ -1321,10 +1318,10 @@ locationservice_describe_map <- function(MapName) {
 }
 .locationservice$operations$describe_map <- locationservice_describe_map
 
-#' Retrieves the place index resource details
+#' This operation is no longer current and may be deprecated in the future
 #'
 #' @description
-#' Retrieves the place index resource details.
+#' This operation is no longer current and may be deprecated in the future. We recommend you upgrade to the Places API V2 unless you require Grab data.
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_describe_place_index/](https://www.paws-r-sdk.com/docs/locationservice_describe_place_index/) for full documentation.
 #'
@@ -1352,10 +1349,10 @@ locationservice_describe_place_index <- function(IndexName) {
 }
 .locationservice$operations$describe_place_index <- locationservice_describe_place_index
 
-#' Retrieves the route calculator resource details
+#' This operation is no longer current and may be deprecated in the future
 #'
 #' @description
-#' Retrieves the route calculator resource details.
+#' This operation is no longer current and may be deprecated in the future. We recommend you upgrade to the Routes API V2 unless you require Grab data.
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_describe_route_calculator/](https://www.paws-r-sdk.com/docs/locationservice_describe_route_calculator/) for full documentation.
 #'
@@ -1452,17 +1449,25 @@ locationservice_disassociate_tracker_consumer <- function(TrackerName, ConsumerA
 }
 .locationservice$operations$disassociate_tracker_consumer <- locationservice_disassociate_tracker_consumer
 
-#' Evaluates device positions against geofence geometries from a given
-#' geofence collection
+#' This action forecasts future geofence events that are likely to occur
+#' within a specified time horizon if a device continues moving at its
+#' current speed
 #'
 #' @description
-#' Evaluates device positions against geofence geometries from a given geofence collection. The event forecasts three states for which a device can be in relative to a geofence:
+#' This action forecasts future geofence events that are likely to occur within a specified time horizon if a device continues moving at its current speed. Each forecasted event is associated with a geofence from a provided geofence collection. A forecast event can have one of the following states:
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_forecast_geofence_events/](https://www.paws-r-sdk.com/docs/locationservice_forecast_geofence_events/) for full documentation.
 #'
 #' @param CollectionName &#91;required&#93; The name of the geofence collection.
-#' @param DeviceState &#91;required&#93; The device's state, including current position and speed.
-#' @param TimeHorizonMinutes Specifies the time horizon in minutes for the forecasted events.
+#' @param DeviceState &#91;required&#93; Represents the device's state, including its current position and speed.
+#' When speed is omitted, this API performs a *containment check*. The
+#' *containment check* operation returns `IDLE` events for geofences where
+#' the device is currently inside of, but no other events.
+#' @param TimeHorizonMinutes The forward-looking time window for forecasting, specified in minutes.
+#' The API only returns events that are predicted to occur within this time
+#' horizon. When no value is specified, this API performs a *containment
+#' check*. The *containment check* operation returns `IDLE` events for
+#' geofences where the device is currently inside of, but no other events.
 #' @param DistanceUnit The distance unit used for the `NearestDistance` property returned in a
 #' forecasted event. The measurement system must match for `DistanceUnit`
 #' and `SpeedUnit`; if `Kilometers` is specified for `DistanceUnit`, then
@@ -1629,10 +1634,10 @@ locationservice_get_geofence <- function(CollectionName, GeofenceId) {
 }
 .locationservice$operations$get_geofence <- locationservice_get_geofence
 
-#' Retrieves glyphs used to display labels on a map
+#' This operation is no longer current and may be deprecated in the future
 #'
 #' @description
-#' Retrieves glyphs used to display labels on a map.
+#' This operation is no longer current and may be deprecated in the future. We recommend upgrading to [`GetGlyphs`](https://docs.aws.amazon.com/location/latest/APIReference/API_geomaps_GetGlyphs.html) unless you require `Grab` data.
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_get_map_glyphs/](https://www.paws-r-sdk.com/docs/locationservice_get_map_glyphs/) for full documentation.
 #'
@@ -1641,7 +1646,7 @@ locationservice_get_geofence <- function(CollectionName, GeofenceId) {
 #' preference. For example, `Noto Sans Regular, Arial Unicode`.
 #' 
 #' Valid font stacks for
-#' [Esri](https://docs.aws.amazon.com/location/latest/developerguide/)
+#' [Esri](https://docs.aws.amazon.com/location/previous/developerguide/esri.html)
 #' styles:
 #' 
 #' -   VectorEsriDarkGrayCanvas – `Ubuntu Medium Italic` | `Ubuntu Medium`
@@ -1660,7 +1665,7 @@ locationservice_get_geofence <- function(CollectionName, GeofenceId) {
 #'     `Arial Bold`
 #' 
 #' Valid font stacks for [HERE
-#' Technologies](https://docs.aws.amazon.com/location/latest/developerguide/)
+#' Technologies](https://docs.aws.amazon.com/location/previous/developerguide/HERE.html)
 #' styles:
 #' 
 #' -   VectorHereContrast – `Fira GO Regular` | `Fira GO Bold`
@@ -1671,14 +1676,14 @@ locationservice_get_geofence <- function(CollectionName, GeofenceId) {
 #'     `Noto Sans CJK JP Light` | `Noto Sans CJK JP Regular`
 #' 
 #' Valid font stacks for
-#' [GrabMaps](https://docs.aws.amazon.com/location/latest/developerguide/)
+#' [GrabMaps](https://docs.aws.amazon.com/location/previous/developerguide/grab.html)
 #' styles:
 #' 
 #' -   VectorGrabStandardLight, VectorGrabStandardDark –
 #'     `Noto Sans Regular` | `Noto Sans Medium` | `Noto Sans Bold`
 #' 
 #' Valid font stacks for [Open
-#' Data](https://docs.aws.amazon.com/location/latest/developerguide/)
+#' Data](https://docs.aws.amazon.com/location/previous/developerguide/open-data.html)
 #' styles:
 #' 
 #' -   VectorOpenDataStandardLight, VectorOpenDataStandardDark,
@@ -1704,7 +1709,7 @@ locationservice_get_geofence <- function(CollectionName, GeofenceId) {
 #' contain 256 characters. For example, 0–255 includes all characters from
 #' range `U+0000` to `00FF`. Must be aligned to multiples of 256.
 #' @param Key The optional [API
-#' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
+#' key](https://docs.aws.amazon.com/location/previous/developerguide/using-apikeys.html)
 #' to authorize the request.
 #'
 #' @keywords internal
@@ -1729,10 +1734,10 @@ locationservice_get_map_glyphs <- function(MapName, FontStack, FontUnicodeRange,
 }
 .locationservice$operations$get_map_glyphs <- locationservice_get_map_glyphs
 
-#' Retrieves the sprite sheet corresponding to a map resource
+#' This operation is no longer current and may be deprecated in the future
 #'
 #' @description
-#' Retrieves the sprite sheet corresponding to a map resource. The sprite sheet is a PNG image paired with a JSON document describing the offsets of individual icons that will be displayed on a rendered map.
+#' This operation is no longer current and may be deprecated in the future. We recommend upgrading to [`GetSprites`](https://docs.aws.amazon.com/location/latest/APIReference/API_geomaps_GetSprites.html) unless you require `Grab` data.
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_get_map_sprites/](https://www.paws-r-sdk.com/docs/locationservice_get_map_sprites/) for full documentation.
 #'
@@ -1751,7 +1756,7 @@ locationservice_get_map_glyphs <- function(MapName, FontStack, FontUnicodeRange,
 #' 
 #' -   `sprites@@2x.json` for high pixel density displays
 #' @param Key The optional [API
-#' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
+#' key](https://docs.aws.amazon.com/location/previous/developerguide/using-apikeys.html)
 #' to authorize the request.
 #'
 #' @keywords internal
@@ -1776,16 +1781,16 @@ locationservice_get_map_sprites <- function(MapName, FileName, Key = NULL) {
 }
 .locationservice$operations$get_map_sprites <- locationservice_get_map_sprites
 
-#' Retrieves the map style descriptor from a map resource
+#' This operation is no longer current and may be deprecated in the future
 #'
 #' @description
-#' Retrieves the map style descriptor from a map resource.
+#' This operation is no longer current and may be deprecated in the future. We recommend upgrading to [`GetStyleDescriptor`](https://docs.aws.amazon.com/location/latest/APIReference/API_geomaps_GetStyleDescriptor.html) unless you require `Grab` data.
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_get_map_style_descriptor/](https://www.paws-r-sdk.com/docs/locationservice_get_map_style_descriptor/) for full documentation.
 #'
 #' @param MapName &#91;required&#93; The map resource to retrieve the style descriptor from.
 #' @param Key The optional [API
-#' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
+#' key](https://docs.aws.amazon.com/location/previous/developerguide/using-apikeys.html)
 #' to authorize the request.
 #'
 #' @keywords internal
@@ -1810,10 +1815,10 @@ locationservice_get_map_style_descriptor <- function(MapName, Key = NULL) {
 }
 .locationservice$operations$get_map_style_descriptor <- locationservice_get_map_style_descriptor
 
-#' Retrieves a vector data tile from the map resource
+#' This operation is no longer current and may be deprecated in the future
 #'
 #' @description
-#' Retrieves a vector data tile from the map resource. Map tiles are used by clients to render a map. they're addressed using a grid arrangement with an X coordinate, Y coordinate, and Z (zoom) level.
+#' This operation is no longer current and may be deprecated in the future. We recommend upgrading to [`GetTile`](https://docs.aws.amazon.com/location/latest/APIReference/API_geomaps_GetTile.html) unless you require `Grab` data.
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_get_map_tile/](https://www.paws-r-sdk.com/docs/locationservice_get_map_tile/) for full documentation.
 #'
@@ -1822,7 +1827,7 @@ locationservice_get_map_style_descriptor <- function(MapName, Key = NULL) {
 #' @param X &#91;required&#93; The X axis value for the map tile.
 #' @param Y &#91;required&#93; The Y axis value for the map tile.
 #' @param Key The optional [API
-#' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
+#' key](https://docs.aws.amazon.com/location/previous/developerguide/using-apikeys.html)
 #' to authorize the request.
 #'
 #' @keywords internal
@@ -1847,10 +1852,10 @@ locationservice_get_map_tile <- function(MapName, Z, X, Y, Key = NULL) {
 }
 .locationservice$operations$get_map_tile <- locationservice_get_map_tile
 
-#' Finds a place by its unique ID
+#' This operation is no longer current and may be deprecated in the future
 #'
 #' @description
-#' Finds a place by its unique ID. A `PlaceId` is returned by other search operations.
+#' This operation is no longer current and may be deprecated in the future. We recommend you upgrade to the V2 `get_place` operation unless you require Grab data.
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_get_place/](https://www.paws-r-sdk.com/docs/locationservice_get_place/) for full documentation.
 #'
@@ -1875,7 +1880,7 @@ locationservice_get_map_tile <- function(MapName, Z, X, Y, Key = NULL) {
 #' If the data provider does not have a value for Greek, the result will be
 #' in a language that the provider does support.
 #' @param Key The optional [API
-#' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
+#' key](https://docs.aws.amazon.com/location/previous/developerguide/using-apikeys.html)
 #' to authorize the request.
 #'
 #' @keywords internal
@@ -2052,10 +2057,10 @@ locationservice_list_keys <- function(MaxResults = NULL, NextToken = NULL, Filte
 }
 .locationservice$operations$list_keys <- locationservice_list_keys
 
-#' Lists map resources in your Amazon Web Services account
+#' This operation is no longer current and may be deprecated in the future
 #'
 #' @description
-#' Lists map resources in your Amazon Web Services account.
+#' This operation is no longer current and may be deprecated in the future. We recommend upgrading to the Maps API V2 unless you require `Grab` data.
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_list_maps/](https://www.paws-r-sdk.com/docs/locationservice_list_maps/) for full documentation.
 #'
@@ -2089,10 +2094,10 @@ locationservice_list_maps <- function(MaxResults = NULL, NextToken = NULL) {
 }
 .locationservice$operations$list_maps <- locationservice_list_maps
 
-#' Lists place index resources in your Amazon Web Services account
+#' This operation is no longer current and may be deprecated in the future
 #'
 #' @description
-#' Lists place index resources in your Amazon Web Services account.
+#' This operation is no longer current and may be deprecated in the future. We recommend you upgrade to the Places API V2 unless you require Grab data.
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_list_place_indexes/](https://www.paws-r-sdk.com/docs/locationservice_list_place_indexes/) for full documentation.
 #'
@@ -2127,10 +2132,10 @@ locationservice_list_place_indexes <- function(MaxResults = NULL, NextToken = NU
 }
 .locationservice$operations$list_place_indexes <- locationservice_list_place_indexes
 
-#' Lists route calculator resources in your Amazon Web Services account
+#' This operation is no longer current and may be deprecated in the future
 #'
 #' @description
-#' Lists route calculator resources in your Amazon Web Services account.
+#' This operation is no longer current and may be deprecated in the future. We recommend you upgrade to the Routes API V2 unless you require Grab data.
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_list_route_calculators/](https://www.paws-r-sdk.com/docs/locationservice_list_route_calculators/) for full documentation.
 #'
@@ -2289,14 +2294,14 @@ locationservice_list_trackers <- function(MaxResults = NULL, NextToken = NULL) {
 #' @param CollectionName &#91;required&#93; The geofence collection to store the geofence in.
 #' @param GeofenceId &#91;required&#93; An identifier for the geofence. For example, `ExampleGeofence-1`.
 #' @param Geometry &#91;required&#93; Contains the details to specify the position of the geofence. Can be a
-#' polygon, a circle or a polygon encoded in Geobuf format. Including
-#' multiple selections will return a validation error.
+#' circle, a polygon, or a multipolygon. `Polygon` and `MultiPolygon`
+#' geometries can be defined using their respective parameters, or encoded
+#' in Geobuf format using the `Geobuf` parameter. Including multiple
+#' geometry types in the same request will return a validation error.
 #' 
-#' The [geofence
-#' polygon](https://docs.aws.amazon.com/location/latest/APIReference/)
-#' format supports a maximum of 1,000 vertices. The [Geofence
-#' Geobuf](https://docs.aws.amazon.com/location/latest/APIReference/)
-#' format supports a maximum of 100,000 vertices.
+#' The geofence `Polygon` and `MultiPolygon` formats support a maximum of
+#' 1,000 total vertices. The `Geobuf` format supports a maximum of 100,000
+#' vertices.
 #' @param GeofenceProperties Associates one of more properties with the geofence. A property is a
 #' key-value pair stored with the geofence and added to any geofence event
 #' triggered with that geofence.
@@ -2325,10 +2330,10 @@ locationservice_put_geofence <- function(CollectionName, GeofenceId, Geometry, G
 }
 .locationservice$operations$put_geofence <- locationservice_put_geofence
 
-#' Reverse geocodes a given coordinate and returns a legible address
+#' This operation is no longer current and may be deprecated in the future
 #'
 #' @description
-#' Reverse geocodes a given coordinate and returns a legible address. Allows you to search for Places or points of interest near a given position.
+#' This operation is no longer current and may be deprecated in the future. We recommend you upgrade to `ReverseGeocode` or `SearchNearby` unless you require Grab data.
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_search_place_index_for_position/](https://www.paws-r-sdk.com/docs/locationservice_search_place_index_for_position/) for full documentation.
 #'
@@ -2363,7 +2368,7 @@ locationservice_put_geofence <- function(CollectionName, GeofenceId, Geometry, G
 #' If the data provider does not have a value for Greek, the result will be
 #' in a language that the provider does support.
 #' @param Key The optional [API
-#' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
+#' key](https://docs.aws.amazon.com/location/previous/developerguide/using-apikeys.html)
 #' to authorize the request.
 #'
 #' @keywords internal
@@ -2388,11 +2393,10 @@ locationservice_search_place_index_for_position <- function(IndexName, Position,
 }
 .locationservice$operations$search_place_index_for_position <- locationservice_search_place_index_for_position
 
-#' Generates suggestions for addresses and points of interest based on
-#' partial or misspelled free-form text
+#' This operation is no longer current and may be deprecated in the future
 #'
 #' @description
-#' Generates suggestions for addresses and points of interest based on partial or misspelled free-form text. This operation is also known as autocomplete, autosuggest, or fuzzy matching.
+#' This operation is no longer current and may be deprecated in the future. We recommend you upgrade to `Suggest` or `Autocomplete` unless you require Grab data.
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_search_place_index_for_suggestions/](https://www.paws-r-sdk.com/docs/locationservice_search_place_index_for_suggestions/) for full documentation.
 #'
@@ -2461,10 +2465,10 @@ locationservice_search_place_index_for_position <- function(IndexName, Position,
 #' 
 #' For more information about using categories, including a list of Amazon
 #' Location categories, see [Categories and
-#' filtering](https://docs.aws.amazon.com/location/latest/developerguide/),
-#' in the *Amazon Location Service Developer Guide*.
+#' filtering](https://docs.aws.amazon.com/location/previous/developerguide/category-filtering.html),
+#' in the *Amazon Location Service developer guide*.
 #' @param Key The optional [API
-#' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
+#' key](https://docs.aws.amazon.com/location/previous/developerguide/using-apikeys.html)
 #' to authorize the request.
 #'
 #' @keywords internal
@@ -2489,11 +2493,10 @@ locationservice_search_place_index_for_suggestions <- function(IndexName, Text, 
 }
 .locationservice$operations$search_place_index_for_suggestions <- locationservice_search_place_index_for_suggestions
 
-#' Geocodes free-form text, such as an address, name, city, or region to
-#' allow you to search for Places or points of interest
+#' This operation is no longer current and may be deprecated in the future
 #'
 #' @description
-#' Geocodes free-form text, such as an address, name, city, or region to allow you to search for Places or points of interest.
+#' This operation is no longer current and may be deprecated in the future. We recommend you upgrade to `Geocode` or `SearchText` unless you require Grab data.
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_search_place_index_for_text/](https://www.paws-r-sdk.com/docs/locationservice_search_place_index_for_text/) for full documentation.
 #'
@@ -2563,10 +2566,10 @@ locationservice_search_place_index_for_suggestions <- function(IndexName, Text, 
 #' 
 #' For more information about using categories, including a list of Amazon
 #' Location categories, see [Categories and
-#' filtering](https://docs.aws.amazon.com/location/latest/developerguide/),
-#' in the *Amazon Location Service Developer Guide*.
+#' filtering](https://docs.aws.amazon.com/location/previous/developerguide/category-filtering.html),
+#' in the *Amazon Location Service developer guide*.
 #' @param Key The optional [API
-#' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
+#' key](https://docs.aws.amazon.com/location/previous/developerguide/using-apikeys.html)
 #' to authorize the request.
 #'
 #' @keywords internal
@@ -2765,10 +2768,10 @@ locationservice_update_key <- function(KeyName, Description = NULL, ExpireTime =
 }
 .locationservice$operations$update_key <- locationservice_update_key
 
-#' Updates the specified properties of a given map resource
+#' This operation is no longer current and may be deprecated in the future
 #'
 #' @description
-#' Updates the specified properties of a given map resource.
+#' This operation is no longer current and may be deprecated in the future. We recommend upgrading to the Maps API V2 unless you require `Grab` data.
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_update_map/](https://www.paws-r-sdk.com/docs/locationservice_update_map/) for full documentation.
 #'
@@ -2801,10 +2804,10 @@ locationservice_update_map <- function(MapName, PricingPlan = NULL, Description 
 }
 .locationservice$operations$update_map <- locationservice_update_map
 
-#' Updates the specified properties of a given place index resource
+#' This operation is no longer current and may be deprecated in the future
 #'
 #' @description
-#' Updates the specified properties of a given place index resource.
+#' This operation is no longer current and may be deprecated in the future. We recommend you upgrade to the Places API V2 unless you require Grab data.
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_update_place_index/](https://www.paws-r-sdk.com/docs/locationservice_update_place_index/) for full documentation.
 #'
@@ -2836,10 +2839,10 @@ locationservice_update_place_index <- function(IndexName, PricingPlan = NULL, De
 }
 .locationservice$operations$update_place_index <- locationservice_update_place_index
 
-#' Updates the specified properties for a given route calculator resource
+#' This operation is no longer current and may be deprecated in the future
 #'
 #' @description
-#' Updates the specified properties for a given route calculator resource.
+#' This operation is no longer current and may be deprecated in the future. We recommend you upgrade to the Routes API V2 unless you require Grab data.
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_update_route_calculator/](https://www.paws-r-sdk.com/docs/locationservice_update_route_calculator/) for full documentation.
 #'

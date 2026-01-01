@@ -184,7 +184,7 @@ NULL
 #'  \link[=configservice_list_aggregate_discovered_resources]{list_aggregate_discovered_resources} \tab Accepts a resource type and returns a list of resource identifiers that are aggregated for a specific resource type across accounts and regions\cr
 #'  \link[=configservice_list_configuration_recorders]{list_configuration_recorders} \tab Returns a list of configuration recorders depending on the filters you specify\cr
 #'  \link[=configservice_list_conformance_pack_compliance_scores]{list_conformance_pack_compliance_scores} \tab Returns a list of conformance pack compliance scores\cr
-#'  \link[=configservice_list_discovered_resources]{list_discovered_resources} \tab Accepts a resource type and returns a list of resource identifiers for the resources of that type\cr
+#'  \link[=configservice_list_discovered_resources]{list_discovered_resources} \tab Returns a list of resource resource identifiers for the specified resource types for the resources of that type\cr
 #'  \link[=configservice_list_resource_evaluations]{list_resource_evaluations} \tab Returns a list of proactive resource evaluations\cr
 #'  \link[=configservice_list_stored_queries]{list_stored_queries} \tab Lists the stored queries for a single Amazon Web Services account and a single Amazon Web Services Region\cr
 #'  \link[=configservice_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for Config resource\cr

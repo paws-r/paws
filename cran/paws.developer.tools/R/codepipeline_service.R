@@ -263,6 +263,7 @@ NULL
 #'  \link[=codepipeline_get_third_party_job_details]{get_third_party_job_details} \tab Requests the details of a job for a third party action\cr
 #'  \link[=codepipeline_list_action_executions]{list_action_executions} \tab Lists the action executions that have occurred in a pipeline\cr
 #'  \link[=codepipeline_list_action_types]{list_action_types} \tab Gets a summary of all CodePipeline action types associated with your account\cr
+#'  \link[=codepipeline_list_deploy_action_execution_targets]{list_deploy_action_execution_targets} \tab Lists the targets for the deploy action\cr
 #'  \link[=codepipeline_list_pipeline_executions]{list_pipeline_executions} \tab Gets a summary of the most recent executions for a pipeline\cr
 #'  \link[=codepipeline_list_pipelines]{list_pipelines} \tab Gets a summary of all of the pipelines associated with your account\cr
 #'  \link[=codepipeline_list_rule_executions]{list_rule_executions} \tab Lists the rule executions that have occurred in a pipeline configured for conditions with rules\cr

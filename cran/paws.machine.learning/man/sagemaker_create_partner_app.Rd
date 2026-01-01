@@ -14,6 +14,7 @@ sagemaker_create_partner_app(
   ApplicationConfig = NULL,
   AuthType,
   EnableIamSessionBasedIdentity = NULL,
+  EnableAutoMinorVersionUpgrade = NULL,
   ClientToken = NULL,
   Tags = NULL
 )
@@ -44,6 +45,10 @@ App.}
 \item{EnableIamSessionBasedIdentity}{When set to \code{TRUE}, the SageMaker Partner AI App sets the Amazon Web
 Services IAM session name or the authenticated IAM user as the identity
 of the SageMaker Partner AI App user.}
+
+\item{EnableAutoMinorVersionUpgrade}{When set to \code{TRUE}, the SageMaker Partner AI App is automatically
+upgraded to the latest minor version during the next scheduled
+maintenance window, if one is available. Default is \code{FALSE}.}
 
 \item{ClientToken}{A unique token that guarantees that the call to this API is idempotent.}
 

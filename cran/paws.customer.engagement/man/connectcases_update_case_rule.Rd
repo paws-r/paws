@@ -5,21 +5,21 @@
 \title{Updates a case rule}
 \usage{
 connectcases_update_case_rule(
-  caseRuleId,
-  description = NULL,
   domainId,
+  caseRuleId,
   name = NULL,
+  description = NULL,
   rule = NULL
 )
 }
 \arguments{
-\item{caseRuleId}{[required] Unique identifier of a case rule.}
-
-\item{description}{Description of a case rule.}
-
 \item{domainId}{[required] Unique identifier of a Cases domain.}
 
+\item{caseRuleId}{[required] Unique identifier of a case rule.}
+
 \item{name}{Name of the case rule.}
+
+\item{description}{Description of a case rule.}
 
 \item{rule}{Represents what rule type should take place, under what conditions.}
 }

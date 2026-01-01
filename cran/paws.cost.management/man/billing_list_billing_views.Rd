@@ -8,7 +8,9 @@ billing_list_billing_views(
   activeTimeRange = NULL,
   arns = NULL,
   billingViewTypes = NULL,
+  names = NULL,
   ownerAccountId = NULL,
+  sourceAccountId = NULL,
   maxResults = NULL,
   nextToken = NULL
 )
@@ -24,7 +26,14 @@ billing view.}
 
 \item{billingViewTypes}{The type of billing view.}
 
+\item{names}{Filters the list of billing views by name. You can specify search
+criteria to match billing view names based on the search option
+provided.}
+
 \item{ownerAccountId}{The list of owners of the billing view.}
+
+\item{sourceAccountId}{Filters the results to include only billing views that use the specified
+account as a source.}
 
 \item{maxResults}{The maximum number of billing views to retrieve. Default is 100.}
 

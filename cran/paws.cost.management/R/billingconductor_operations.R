@@ -144,8 +144,11 @@ billingconductor_batch_disassociate_resources_from_custom_line_item <- function(
 #'
 #' See [https://www.paws-r-sdk.com/docs/billingconductor_create_billing_group/](https://www.paws-r-sdk.com/docs/billingconductor_create_billing_group/) for full documentation.
 #'
-#' @param ClientToken The token that is needed to support idempotency. Idempotency isn't
-#' currently supported, but will be implemented in a future update.
+#' @param ClientToken A unique, case-sensitive identifier that you specify to ensure
+#' idempotency of the request. Idempotency ensures that an API request
+#' completes no more than one time. With an idempotent request, if the
+#' original request completes successfully, any subsequent retries complete
+#' successfully without performing any further actions.
 #' @param Name &#91;required&#93; The billing group name. The names must be unique.
 #' @param AccountGrouping &#91;required&#93; The set of accounts that will be under the billing group. The set of
 #' accounts resemble the linked accounts in a consolidated billing family.
@@ -187,8 +190,11 @@ billingconductor_create_billing_group <- function(ClientToken = NULL, Name, Acco
 #'
 #' See [https://www.paws-r-sdk.com/docs/billingconductor_create_custom_line_item/](https://www.paws-r-sdk.com/docs/billingconductor_create_custom_line_item/) for full documentation.
 #'
-#' @param ClientToken The token that is needed to support idempotency. Idempotency isn't
-#' currently supported, but will be implemented in a future update.
+#' @param ClientToken A unique, case-sensitive identifier that you specify to ensure
+#' idempotency of the request. Idempotency ensures that an API request
+#' completes no more than one time. With an idempotent request, if the
+#' original request completes successfully, any subsequent retries complete
+#' successfully without performing any further actions.
 #' @param Name &#91;required&#93; The name of the custom line item.
 #' @param Description &#91;required&#93; The description of the custom line item. This is shown on the Bills page
 #' in association with the charge value.
@@ -201,11 +207,15 @@ billingconductor_create_billing_group <- function(ClientToken = NULL, Name, Acco
 #' custom line item.
 #' @param AccountId The Amazon Web Services account in which this custom line item will be
 #' applied to.
+#' @param ComputationRule Specifies how the custom line item charges are computed.
+#' @param PresentationDetails Details controlling how the custom line item charges are presented in
+#' the bill. Contains specifications for which service the charges will be
+#' shown under.
 #'
 #' @keywords internal
 #'
 #' @rdname billingconductor_create_custom_line_item
-billingconductor_create_custom_line_item <- function(ClientToken = NULL, Name, Description, BillingGroupArn, BillingPeriodRange = NULL, Tags = NULL, ChargeDetails, AccountId = NULL) {
+billingconductor_create_custom_line_item <- function(ClientToken = NULL, Name, Description, BillingGroupArn, BillingPeriodRange = NULL, Tags = NULL, ChargeDetails, AccountId = NULL, ComputationRule = NULL, PresentationDetails = NULL) {
   op <- new_operation(
     name = "CreateCustomLineItem",
     http_method = "POST",
@@ -214,7 +224,7 @@ billingconductor_create_custom_line_item <- function(ClientToken = NULL, Name, D
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .billingconductor$create_custom_line_item_input(ClientToken = ClientToken, Name = Name, Description = Description, BillingGroupArn = BillingGroupArn, BillingPeriodRange = BillingPeriodRange, Tags = Tags, ChargeDetails = ChargeDetails, AccountId = AccountId)
+  input <- .billingconductor$create_custom_line_item_input(ClientToken = ClientToken, Name = Name, Description = Description, BillingGroupArn = BillingGroupArn, BillingPeriodRange = BillingPeriodRange, Tags = Tags, ChargeDetails = ChargeDetails, AccountId = AccountId, ComputationRule = ComputationRule, PresentationDetails = PresentationDetails)
   output <- .billingconductor$create_custom_line_item_output()
   config <- get_config()
   svc <- .billingconductor$service(config, op)
@@ -232,8 +242,11 @@ billingconductor_create_custom_line_item <- function(ClientToken = NULL, Name, D
 #'
 #' See [https://www.paws-r-sdk.com/docs/billingconductor_create_pricing_plan/](https://www.paws-r-sdk.com/docs/billingconductor_create_pricing_plan/) for full documentation.
 #'
-#' @param ClientToken The token that is needed to support idempotency. Idempotency isn't
-#' currently supported, but will be implemented in a future update.
+#' @param ClientToken A unique, case-sensitive identifier that you specify to ensure
+#' idempotency of the request. Idempotency ensures that an API request
+#' completes no more than one time. With an idempotent request, if the
+#' original request completes successfully, any subsequent retries complete
+#' successfully without performing any further actions.
 #' @param Name &#91;required&#93; The name of the pricing plan. The names must be unique to each pricing
 #' plan.
 #' @param Description The description of the pricing plan.
@@ -272,14 +285,18 @@ billingconductor_create_pricing_plan <- function(ClientToken = NULL, Name, Descr
 #'
 #' See [https://www.paws-r-sdk.com/docs/billingconductor_create_pricing_rule/](https://www.paws-r-sdk.com/docs/billingconductor_create_pricing_rule/) for full documentation.
 #'
-#' @param ClientToken The token that's needed to support idempotency. Idempotency isn't
-#' currently supported, but will be implemented in a future update.
+#' @param ClientToken A unique, case-sensitive identifier that you specify to ensure
+#' idempotency of the request. Idempotency ensures that an API request
+#' completes no more than one time. With an idempotent request, if the
+#' original request completes successfully, any subsequent retries complete
+#' successfully without performing any further actions.
 #' @param Name &#91;required&#93; The pricing rule name. The names must be unique to each pricing rule.
 #' @param Description The pricing rule description.
 #' @param Scope &#91;required&#93; The scope of pricing rule that indicates if it's globally applicable, or
 #' it's service-specific.
 #' @param Type &#91;required&#93; The type of pricing rule.
-#' @param ModifierPercentage A percentage modifier that's applied on the public pricing rates.
+#' @param ModifierPercentage A percentage modifier that's applied on the public pricing rates. Your
+#' entry will be rounded to the nearest 2 decimal places.
 #' @param Service If the `Scope` attribute is set to `SERVICE` or `SKU`, the attribute
 #' indicates which service the `PricingRule` is applicable for.
 #' @param Tags A map that contains tag keys and tag values that are attached to a
@@ -296,8 +313,6 @@ billingconductor_create_pricing_plan <- function(ClientToken = NULL, Name, Descr
 #' `USW2-BoxUsage:m2.2xlarge` describes
 #' an` M2 High Memory Double Extra Large` instance in the US West (Oregon)
 #' Region.
-#' 
-#'     </p> 
 #' @param Operation Operation is the specific Amazon Web Services action covered by this
 #' line item. This describes the specific usage of the line item.
 #' 
@@ -525,11 +540,11 @@ billingconductor_disassociate_pricing_rules <- function(Arn, PricingRuleArns) {
 .billingconductor$operations$disassociate_pricing_rules <- billingconductor_disassociate_pricing_rules
 
 #' Retrieves the margin summary report, which includes the Amazon Web
-#' Services cost and charged amount (pro forma cost) by Amazon Web Service
-#' for a specific billing group
+#' Services cost and charged amount (pro forma cost) by Amazon Web Services
+#' service for a specific billing group
 #'
 #' @description
-#' Retrieves the margin summary report, which includes the Amazon Web Services cost and charged amount (pro forma cost) by Amazon Web Service for a specific billing group.
+#' Retrieves the margin summary report, which includes the Amazon Web Services cost and charged amount (pro forma cost) by Amazon Web Services service for a specific billing group.
 #'
 #' See [https://www.paws-r-sdk.com/docs/billingconductor_get_billing_group_cost_report/](https://www.paws-r-sdk.com/docs/billingconductor_get_billing_group_cost_report/) for full documentation.
 #'
@@ -539,8 +554,8 @@ billingconductor_disassociate_pricing_rules <- function(Arn, PricingRuleArns) {
 #' up to 12 months.
 #' @param GroupBy A list of strings that specify the attributes that are used to break
 #' down costs in the margin summary reports for the billing group. For
-#' example, you can view your costs by the Amazon Web Service name or the
-#' billing period.
+#' example, you can view your costs by the Amazon Web Services service name
+#' or the billing period.
 #' @param MaxResults The maximum number of margin summary reports to retrieve.
 #' @param NextToken The pagination token used on subsequent calls to get reports.
 #'
@@ -1158,7 +1173,8 @@ billingconductor_update_pricing_plan <- function(Arn, Name = NULL, Description =
 #' pricing rule.
 #' @param Description The new description for the pricing rule.
 #' @param Type The new pricing rule type.
-#' @param ModifierPercentage The new modifier to show pricing plan rates as a percentage.
+#' @param ModifierPercentage The new modifier to show pricing plan rates as a percentage. Your entry
+#' will be rounded to the nearest 2 decimal places.
 #' @param Tiering The set of tiering configurations for the pricing rule.
 #'
 #' @keywords internal

@@ -132,6 +132,90 @@ appstream_associate_fleet <- function(FleetName, StackName) {
 }
 .appstream$operations$associate_fleet <- appstream_associate_fleet
 
+#' Associates license included application(s) with an existing image
+#' builder instance
+#'
+#' @description
+#' Associates license included application(s) with an existing image builder instance.
+#'
+#' See [https://www.paws-r-sdk.com/docs/appstream_associate_software_to_image_builder/](https://www.paws-r-sdk.com/docs/appstream_associate_software_to_image_builder/) for full documentation.
+#'
+#' @param ImageBuilderName &#91;required&#93; The name of the target image builder instance.
+#' @param SoftwareNames &#91;required&#93; The list of license included applications to associate with the image
+#' builder.
+#' 
+#' Possible values include the following:
+#' 
+#' -   Microsoft_Office_2021_LTSC_Professional_Plus_32Bit
+#' 
+#' -   Microsoft_Office_2021_LTSC_Professional_Plus_64Bit
+#' 
+#' -   Microsoft_Office_2024_LTSC_Professional_Plus_32Bit
+#' 
+#' -   Microsoft_Office_2024_LTSC_Professional_Plus_64Bit
+#' 
+#' -   Microsoft_Visio_2021_LTSC_Professional_32Bit
+#' 
+#' -   Microsoft_Visio_2021_LTSC_Professional_64Bit
+#' 
+#' -   Microsoft_Visio_2024_LTSC_Professional_32Bit
+#' 
+#' -   Microsoft_Visio_2024_LTSC_Professional_64Bit
+#' 
+#' -   Microsoft_Project_2021_Professional_32Bit
+#' 
+#' -   Microsoft_Project_2021_Professional_64Bit
+#' 
+#' -   Microsoft_Project_2024_Professional_32Bit
+#' 
+#' -   Microsoft_Project_2024_Professional_64Bit
+#' 
+#' -   Microsoft_Office_2021_LTSC_Standard_32Bit
+#' 
+#' -   Microsoft_Office_2021_LTSC_Standard_64Bit
+#' 
+#' -   Microsoft_Office_2024_LTSC_Standard_32Bit
+#' 
+#' -   Microsoft_Office_2024_LTSC_Standard_64Bit
+#' 
+#' -   Microsoft_Visio_2021_LTSC_Standard_32Bit
+#' 
+#' -   Microsoft_Visio_2021_LTSC_Standard_64Bit
+#' 
+#' -   Microsoft_Visio_2024_LTSC_Standard_32Bit
+#' 
+#' -   Microsoft_Visio_2024_LTSC_Standard_64Bit
+#' 
+#' -   Microsoft_Project_2021_Standard_32Bit
+#' 
+#' -   Microsoft_Project_2021_Standard_64Bit
+#' 
+#' -   Microsoft_Project_2024_Standard_32Bit
+#' 
+#' -   Microsoft_Project_2024_Standard_64Bit
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_associate_software_to_image_builder
+appstream_associate_software_to_image_builder <- function(ImageBuilderName, SoftwareNames) {
+  op <- new_operation(
+    name = "AssociateSoftwareToImageBuilder",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .appstream$associate_software_to_image_builder_input(ImageBuilderName = ImageBuilderName, SoftwareNames = SoftwareNames)
+  output <- .appstream$associate_software_to_image_builder_output()
+  config <- get_config()
+  svc <- .appstream$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$associate_software_to_image_builder <- appstream_associate_software_to_image_builder
+
 #' Associates the specified users with the specified stacks
 #'
 #' @description
@@ -294,7 +378,7 @@ appstream_create_app_block <- function(Name, Description = NULL, DisplayName = N
 #' 
 #' For more information, see [Tagging Your
 #' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
-#' in the *Amazon AppStream 2.0 Administration Guide*.
+#' in the *Amazon WorkSpaces Applications Administration Guide*.
 #' @param Platform &#91;required&#93; The platform of the app block builder.
 #' 
 #' `WINDOWS_SERVER_2019` is the only valid value.
@@ -319,14 +403,14 @@ appstream_create_app_block <- function(Name, Description = NULL, DisplayName = N
 #' builder. To assume a role, the app block builder calls the AWS Security
 #' Token Service (STS) `AssumeRole` API operation and passes the ARN of the
 #' role to use. The operation creates a new session with temporary
-#' credentials. AppStream 2.0 retrieves the temporary credentials and
-#' creates the **appstream_machine_role** credential profile on the
+#' credentials. WorkSpaces Applications retrieves the temporary credentials
+#' and creates the **appstream_machine_role** credential profile on the
 #' instance.
 #' 
 #' For more information, see [Using an IAM Role to Grant Permissions to
-#' Applications and Scripts Running on AppStream 2.0 Streaming
+#' Applications and Scripts Running on WorkSpaces Applications Streaming
 #' Instances](https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html)
-#' in the *Amazon AppStream 2.0 Administration Guide*.
+#' in the *Amazon WorkSpaces Applications Administration Guide*.
 #' @param AccessEndpoints The list of interface VPC endpoint (interface endpoint) objects.
 #' Administrators can connect to the app block builder only through the
 #' specified endpoints.
@@ -402,8 +486,8 @@ appstream_create_app_block_builder_streaming_url <- function(AppBlockBuilderName
 #' @param LaunchPath &#91;required&#93; The launch path of the application.
 #' @param WorkingDirectory The working directory of the application.
 #' @param LaunchParameters The launch parameters of the application.
-#' @param Platforms &#91;required&#93; The platforms the application supports. WINDOWS_SERVER_2019 and
-#' AMAZON_LINUX2 are supported for Elastic fleets.
+#' @param Platforms &#91;required&#93; The platforms the application supports. WINDOWS_SERVER_2019,
+#' AMAZON_LINUX2 and UBUNTU_PRO_2404 are supported for Elastic fleets.
 #' @param InstanceFamilies &#91;required&#93; The instance families the application supports. Valid values are
 #' GENERAL_PURPOSE and GRAPHICS_G4.
 #' @param AppBlockArn &#91;required&#93; The app block ARN to which the application should be associated
@@ -431,10 +515,10 @@ appstream_create_application <- function(Name, DisplayName = NULL, Description =
 }
 .appstream$operations$create_application <- appstream_create_application
 
-#' Creates a Directory Config object in AppStream 2
+#' Creates a Directory Config object in WorkSpaces Applications
 #'
 #' @description
-#' Creates a Directory Config object in AppStream 2.0. This object includes the configuration information required to join fleets and image builders to Microsoft Active Directory domains.
+#' Creates a Directory Config object in WorkSpaces Applications. This object includes the configuration information required to join fleets and image builders to Microsoft Active Directory domains.
 #'
 #' See [https://www.paws-r-sdk.com/docs/appstream_create_directory_config/](https://www.paws-r-sdk.com/docs/appstream_create_directory_config/) for full documentation.
 #'
@@ -480,7 +564,7 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' Creates a new entitlement
 #'
 #' @description
-#' Creates a new entitlement. Entitlements control access to specific applications within a stack, based on user attributes. Entitlements apply to SAML 2.0 federated user identities. Amazon AppStream 2.0 user pool and streaming URL users are entitled to all applications in a stack. Entitlements don't apply to the desktop stream view application, or to applications managed by a dynamic app provider using the Dynamic Application Framework.
+#' Creates a new entitlement. Entitlements control access to specific applications within a stack, based on user attributes. Entitlements apply to SAML 2.0 federated user identities. WorkSpaces Applications user pool and streaming URL users are entitled to all applications in a stack. Entitlements don't apply to the desktop stream view application, or to applications managed by a dynamic app provider using the Dynamic Application Framework.
 #'
 #' See [https://www.paws-r-sdk.com/docs/appstream_create_entitlement/](https://www.paws-r-sdk.com/docs/appstream_create_entitlement/) for full documentation.
 #'
@@ -511,6 +595,48 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
   return(response)
 }
 .appstream$operations$create_entitlement <- appstream_create_entitlement
+
+#' Creates a task to export a WorkSpaces Applications image to an EC2 AMI
+#'
+#' @description
+#' Creates a task to export a WorkSpaces Applications image to an EC2 AMI. This allows you to use your customized WorkSpaces Applications images with other AWS services or for backup purposes.
+#'
+#' See [https://www.paws-r-sdk.com/docs/appstream_create_export_image_task/](https://www.paws-r-sdk.com/docs/appstream_create_export_image_task/) for full documentation.
+#'
+#' @param ImageName &#91;required&#93; The name of the WorkSpaces Applications image to export. The image must
+#' be in an available state and owned by your account.
+#' @param AmiName &#91;required&#93; The name for the exported EC2 AMI. This is a required field that must be
+#' unique within your account and region.
+#' @param IamRoleArn &#91;required&#93; The ARN of the IAM role that allows WorkSpaces Applications to create
+#' the AMI. The role must have permissions to copy images, describe images,
+#' and create tags, with a trust relationship allowing
+#' appstream.amazonaws.com to assume the role.
+#' @param TagSpecifications The tags to apply to the exported AMI. These tags help you organize and
+#' manage your EC2 AMIs.
+#' @param AmiDescription An optional description for the exported AMI. This description will be
+#' applied to the resulting EC2 AMI.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_create_export_image_task
+appstream_create_export_image_task <- function(ImageName, AmiName, IamRoleArn, TagSpecifications = NULL, AmiDescription = NULL) {
+  op <- new_operation(
+    name = "CreateExportImageTask",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .appstream$create_export_image_task_input(ImageName = ImageName, AmiName = AmiName, IamRoleArn = IamRoleArn, TagSpecifications = TagSpecifications, AmiDescription = AmiDescription)
+  output <- .appstream$create_export_image_task_output()
+  config <- get_config()
+  svc <- .appstream$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$create_export_image_task <- appstream_create_export_image_task
 
 #' Creates a fleet
 #'
@@ -567,16 +693,6 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' 
 #' -   stream.memory.z1d.12xlarge
 #' 
-#' -   stream.graphics-design.large
-#' 
-#' -   stream.graphics-design.xlarge
-#' 
-#' -   stream.graphics-design.2xlarge
-#' 
-#' -   stream.graphics-design.4xlarge
-#' 
-#' -   stream.graphics-desktop.2xlarge
-#' 
 #' -   stream.graphics.g4dn.xlarge
 #' 
 #' -   stream.graphics.g4dn.2xlarge
@@ -603,11 +719,33 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' 
 #' -   stream.graphics.g5.24xlarge
 #' 
-#' -   stream.graphics-pro.4xlarge
+#' -   stream.graphics.g6.xlarge
 #' 
-#' -   stream.graphics-pro.8xlarge
+#' -   stream.graphics.g6.2xlarge
 #' 
-#' -   stream.graphics-pro.16xlarge
+#' -   stream.graphics.g6.4xlarge
+#' 
+#' -   stream.graphics.g6.8xlarge
+#' 
+#' -   stream.graphics.g6.16xlarge
+#' 
+#' -   stream.graphics.g6.12xlarge
+#' 
+#' -   stream.graphics.g6.24xlarge
+#' 
+#' -   stream.graphics.gr6.4xlarge
+#' 
+#' -   stream.graphics.gr6.8xlarge
+#' 
+#' -   stream.graphics.g6f.large
+#' 
+#' -   stream.graphics.g6f.xlarge
+#' 
+#' -   stream.graphics.g6f.2xlarge
+#' 
+#' -   stream.graphics.g6f.4xlarge
+#' 
+#' -   stream.graphics.gr6f.4xlarge
 #' 
 #' The following instance types are available for Elastic fleets:
 #' 
@@ -672,7 +810,7 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' 
 #' For more information, see [Tagging Your
 #' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
-#' in the *Amazon AppStream 2.0 Administration Guide*.
+#' in the *Amazon WorkSpaces Applications Administration Guide*.
 #' @param IdleDisconnectTimeoutInSeconds The amount of time that users can be idle (inactive) before they are
 #' disconnected from their streaming session and the
 #' `DisconnectTimeoutInSeconds` time interval begins. Users are notified
@@ -701,21 +839,21 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' assume a role, a fleet instance calls the AWS Security Token Service
 #' (STS) `AssumeRole` API operation and passes the ARN of the role to use.
 #' The operation creates a new session with temporary credentials.
-#' AppStream 2.0 retrieves the temporary credentials and creates the
-#' **appstream_machine_role** credential profile on the instance.
+#' WorkSpaces Applications retrieves the temporary credentials and creates
+#' the **appstream_machine_role** credential profile on the instance.
 #' 
 #' For more information, see [Using an IAM Role to Grant Permissions to
-#' Applications and Scripts Running on AppStream 2.0 Streaming
+#' Applications and Scripts Running on WorkSpaces Applications Streaming
 #' Instances](https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html)
-#' in the *Amazon AppStream 2.0 Administration Guide*.
-#' @param StreamView The AppStream 2.0 view that is displayed to your users when they stream
-#' from the fleet. When `APP` is specified, only the windows of
+#' in the *Amazon WorkSpaces Applications Administration Guide*.
+#' @param StreamView The WorkSpaces Applications view that is displayed to your users when
+#' they stream from the fleet. When `APP` is specified, only the windows of
 #' applications opened by users display. When `DESKTOP` is specified, the
 #' standard desktop that is provided by the operating system displays.
 #' 
 #' The default value is `APP`.
-#' @param Platform The fleet platform. WINDOWS_SERVER_2019 and AMAZON_LINUX2 are supported
-#' for Elastic fleets.
+#' @param Platform The fleet platform. WINDOWS_SERVER_2019, AMAZON_LINUX2 and
+#' UBUNTU_PRO_2404 are supported for Elastic fleets.
 #' @param MaxConcurrentSessions The maximum concurrent sessions of the Elastic fleet. This is required
 #' for Elastic fleets, and not allowed for other fleet types.
 #' @param UsbDeviceFilterStrings The USB device filter strings that specify which USB devices a user can
@@ -725,11 +863,14 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' applies to Elastic fleets.
 #' @param MaxSessionsPerInstance The maximum number of user sessions on an instance. This only applies to
 #' multi-session fleets.
+#' @param RootVolumeConfig The configuration for the root volume of fleet instances. Use this to
+#' customize storage capacity from 200 GB up to 500 GB based on your
+#' application requirements.
 #'
 #' @keywords internal
 #'
 #' @rdname appstream_create_fleet
-appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, InstanceType, FleetType = NULL, ComputeCapacity = NULL, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, Tags = NULL, IdleDisconnectTimeoutInSeconds = NULL, IamRoleArn = NULL, StreamView = NULL, Platform = NULL, MaxConcurrentSessions = NULL, UsbDeviceFilterStrings = NULL, SessionScriptS3Location = NULL, MaxSessionsPerInstance = NULL) {
+appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, InstanceType, FleetType = NULL, ComputeCapacity = NULL, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, Tags = NULL, IdleDisconnectTimeoutInSeconds = NULL, IamRoleArn = NULL, StreamView = NULL, Platform = NULL, MaxConcurrentSessions = NULL, UsbDeviceFilterStrings = NULL, SessionScriptS3Location = NULL, MaxSessionsPerInstance = NULL, RootVolumeConfig = NULL) {
   op <- new_operation(
     name = "CreateFleet",
     http_method = "POST",
@@ -738,7 +879,7 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .appstream$create_fleet_input(Name = Name, ImageName = ImageName, ImageArn = ImageArn, InstanceType = InstanceType, FleetType = FleetType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, Tags = Tags, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, IamRoleArn = IamRoleArn, StreamView = StreamView, Platform = Platform, MaxConcurrentSessions = MaxConcurrentSessions, UsbDeviceFilterStrings = UsbDeviceFilterStrings, SessionScriptS3Location = SessionScriptS3Location, MaxSessionsPerInstance = MaxSessionsPerInstance)
+  input <- .appstream$create_fleet_input(Name = Name, ImageName = ImageName, ImageArn = ImageArn, InstanceType = InstanceType, FleetType = FleetType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, Tags = Tags, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, IamRoleArn = IamRoleArn, StreamView = StreamView, Platform = Platform, MaxConcurrentSessions = MaxConcurrentSessions, UsbDeviceFilterStrings = UsbDeviceFilterStrings, SessionScriptS3Location = SessionScriptS3Location, MaxSessionsPerInstance = MaxSessionsPerInstance, RootVolumeConfig = RootVolumeConfig)
   output <- .appstream$create_fleet_output()
   config <- get_config()
   svc <- .appstream$service(config, op)
@@ -799,16 +940,6 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #' 
 #' -   stream.memory.z1d.12xlarge
 #' 
-#' -   stream.graphics-design.large
-#' 
-#' -   stream.graphics-design.xlarge
-#' 
-#' -   stream.graphics-design.2xlarge
-#' 
-#' -   stream.graphics-design.4xlarge
-#' 
-#' -   stream.graphics-desktop.2xlarge
-#' 
 #' -   stream.graphics.g4dn.xlarge
 #' 
 #' -   stream.graphics.g4dn.2xlarge
@@ -821,11 +952,47 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #' 
 #' -   stream.graphics.g4dn.16xlarge
 #' 
-#' -   stream.graphics-pro.4xlarge
+#' -   stream.graphics.g5.xlarge
 #' 
-#' -   stream.graphics-pro.8xlarge
+#' -   stream.graphics.g5.2xlarge
 #' 
-#' -   stream.graphics-pro.16xlarge
+#' -   stream.graphics.g5.4xlarge
+#' 
+#' -   stream.graphics.g5.8xlarge
+#' 
+#' -   stream.graphics.g5.16xlarge
+#' 
+#' -   stream.graphics.g5.12xlarge
+#' 
+#' -   stream.graphics.g5.24xlarge
+#' 
+#' -   stream.graphics.g6.xlarge
+#' 
+#' -   stream.graphics.g6.2xlarge
+#' 
+#' -   stream.graphics.g6.4xlarge
+#' 
+#' -   stream.graphics.g6.8xlarge
+#' 
+#' -   stream.graphics.g6.16xlarge
+#' 
+#' -   stream.graphics.g6.12xlarge
+#' 
+#' -   stream.graphics.g6.24xlarge
+#' 
+#' -   stream.graphics.gr6.4xlarge
+#' 
+#' -   stream.graphics.gr6.8xlarge
+#' 
+#' -   stream.graphics.g6f.large
+#' 
+#' -   stream.graphics.g6f.xlarge
+#' 
+#' -   stream.graphics.g6f.2xlarge
+#' 
+#' -   stream.graphics.g6f.4xlarge
+#' 
+#' -   stream.graphics.gr6f.4xlarge
 #' @param Description The description to display.
 #' @param DisplayName The image builder name to display.
 #' @param VpcConfig The VPC configuration for the image builder. You can specify only one
@@ -834,19 +1001,20 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #' builder. To assume a role, the image builder calls the AWS Security
 #' Token Service (STS) `AssumeRole` API operation and passes the ARN of the
 #' role to use. The operation creates a new session with temporary
-#' credentials. AppStream 2.0 retrieves the temporary credentials and
-#' creates the **appstream_machine_role** credential profile on the
+#' credentials. WorkSpaces Applications retrieves the temporary credentials
+#' and creates the **appstream_machine_role** credential profile on the
 #' instance.
 #' 
 #' For more information, see [Using an IAM Role to Grant Permissions to
-#' Applications and Scripts Running on AppStream 2.0 Streaming
+#' Applications and Scripts Running on WorkSpaces Applications Streaming
 #' Instances](https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html)
-#' in the *Amazon AppStream 2.0 Administration Guide*.
+#' in the *Amazon WorkSpaces Applications Administration Guide*.
 #' @param EnableDefaultInternetAccess Enables or disables default internet access for the image builder.
 #' @param DomainJoinInfo The name of the directory and organizational unit (OU) to use to join
 #' the image builder to a Microsoft Active Directory domain.
-#' @param AppstreamAgentVersion The version of the AppStream 2.0 agent to use for this image builder. To
-#' use the latest version of the AppStream 2.0 agent, specify \[LATEST\].
+#' @param AppstreamAgentVersion The version of the WorkSpaces Applications agent to use for this image
+#' builder. To use the latest version of the WorkSpaces Applications agent,
+#' specify \[LATEST\].
 #' @param Tags The tags to associate with the image builder. A tag is a key-value pair,
 #' and the value is optional. For example, Environment=Test. If you do not
 #' specify a value, Environment=.
@@ -860,15 +1028,122 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #' 
 #' For more information about tags, see [Tagging Your
 #' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
-#' in the *Amazon AppStream 2.0 Administration Guide*.
+#' in the *Amazon WorkSpaces Applications Administration Guide*.
 #' @param AccessEndpoints The list of interface VPC endpoint (interface endpoint) objects.
 #' Administrators can connect to the image builder only through the
 #' specified endpoints.
+#' @param RootVolumeConfig The configuration for the root volume of the image builder. Use this to
+#' customize storage capacity from 200 GB up to 500 GB based on your
+#' application installation requirements.
+#' @param SoftwaresToInstall The list of license included applications to install on the image
+#' builder during creation.
+#' 
+#' Possible values include the following:
+#' 
+#' -   Microsoft_Office_2021_LTSC_Professional_Plus_32Bit
+#' 
+#' -   Microsoft_Office_2021_LTSC_Professional_Plus_64Bit
+#' 
+#' -   Microsoft_Office_2024_LTSC_Professional_Plus_32Bit
+#' 
+#' -   Microsoft_Office_2024_LTSC_Professional_Plus_64Bit
+#' 
+#' -   Microsoft_Visio_2021_LTSC_Professional_32Bit
+#' 
+#' -   Microsoft_Visio_2021_LTSC_Professional_64Bit
+#' 
+#' -   Microsoft_Visio_2024_LTSC_Professional_32Bit
+#' 
+#' -   Microsoft_Visio_2024_LTSC_Professional_64Bit
+#' 
+#' -   Microsoft_Project_2021_Professional_32Bit
+#' 
+#' -   Microsoft_Project_2021_Professional_64Bit
+#' 
+#' -   Microsoft_Project_2024_Professional_32Bit
+#' 
+#' -   Microsoft_Project_2024_Professional_64Bit
+#' 
+#' -   Microsoft_Office_2021_LTSC_Standard_32Bit
+#' 
+#' -   Microsoft_Office_2021_LTSC_Standard_64Bit
+#' 
+#' -   Microsoft_Office_2024_LTSC_Standard_32Bit
+#' 
+#' -   Microsoft_Office_2024_LTSC_Standard_64Bit
+#' 
+#' -   Microsoft_Visio_2021_LTSC_Standard_32Bit
+#' 
+#' -   Microsoft_Visio_2021_LTSC_Standard_64Bit
+#' 
+#' -   Microsoft_Visio_2024_LTSC_Standard_32Bit
+#' 
+#' -   Microsoft_Visio_2024_LTSC_Standard_64Bit
+#' 
+#' -   Microsoft_Project_2021_Standard_32Bit
+#' 
+#' -   Microsoft_Project_2021_Standard_64Bit
+#' 
+#' -   Microsoft_Project_2024_Standard_32Bit
+#' 
+#' -   Microsoft_Project_2024_Standard_64Bit
+#' @param SoftwaresToUninstall The list of license included applications to uninstall from the image
+#' builder during creation.
+#' 
+#' Possible values include the following:
+#' 
+#' -   Microsoft_Office_2021_LTSC_Professional_Plus_32Bit
+#' 
+#' -   Microsoft_Office_2021_LTSC_Professional_Plus_64Bit
+#' 
+#' -   Microsoft_Office_2024_LTSC_Professional_Plus_32Bit
+#' 
+#' -   Microsoft_Office_2024_LTSC_Professional_Plus_64Bit
+#' 
+#' -   Microsoft_Visio_2021_LTSC_Professional_32Bit
+#' 
+#' -   Microsoft_Visio_2021_LTSC_Professional_64Bit
+#' 
+#' -   Microsoft_Visio_2024_LTSC_Professional_32Bit
+#' 
+#' -   Microsoft_Visio_2024_LTSC_Professional_64Bit
+#' 
+#' -   Microsoft_Project_2021_Professional_32Bit
+#' 
+#' -   Microsoft_Project_2021_Professional_64Bit
+#' 
+#' -   Microsoft_Project_2024_Professional_32Bit
+#' 
+#' -   Microsoft_Project_2024_Professional_64Bit
+#' 
+#' -   Microsoft_Office_2021_LTSC_Standard_32Bit
+#' 
+#' -   Microsoft_Office_2021_LTSC_Standard_64Bit
+#' 
+#' -   Microsoft_Office_2024_LTSC_Standard_32Bit
+#' 
+#' -   Microsoft_Office_2024_LTSC_Standard_64Bit
+#' 
+#' -   Microsoft_Visio_2021_LTSC_Standard_32Bit
+#' 
+#' -   Microsoft_Visio_2021_LTSC_Standard_64Bit
+#' 
+#' -   Microsoft_Visio_2024_LTSC_Standard_32Bit
+#' 
+#' -   Microsoft_Visio_2024_LTSC_Standard_64Bit
+#' 
+#' -   Microsoft_Project_2021_Standard_32Bit
+#' 
+#' -   Microsoft_Project_2021_Standard_64Bit
+#' 
+#' -   Microsoft_Project_2024_Standard_32Bit
+#' 
+#' -   Microsoft_Project_2024_Standard_64Bit
 #'
 #' @keywords internal
 #'
 #' @rdname appstream_create_image_builder
-appstream_create_image_builder <- function(Name, ImageName = NULL, ImageArn = NULL, InstanceType, Description = NULL, DisplayName = NULL, VpcConfig = NULL, IamRoleArn = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, AppstreamAgentVersion = NULL, Tags = NULL, AccessEndpoints = NULL) {
+appstream_create_image_builder <- function(Name, ImageName = NULL, ImageArn = NULL, InstanceType, Description = NULL, DisplayName = NULL, VpcConfig = NULL, IamRoleArn = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, AppstreamAgentVersion = NULL, Tags = NULL, AccessEndpoints = NULL, RootVolumeConfig = NULL, SoftwaresToInstall = NULL, SoftwaresToUninstall = NULL) {
   op <- new_operation(
     name = "CreateImageBuilder",
     http_method = "POST",
@@ -877,7 +1152,7 @@ appstream_create_image_builder <- function(Name, ImageName = NULL, ImageArn = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .appstream$create_image_builder_input(Name = Name, ImageName = ImageName, ImageArn = ImageArn, InstanceType = InstanceType, Description = Description, DisplayName = DisplayName, VpcConfig = VpcConfig, IamRoleArn = IamRoleArn, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, AppstreamAgentVersion = AppstreamAgentVersion, Tags = Tags, AccessEndpoints = AccessEndpoints)
+  input <- .appstream$create_image_builder_input(Name = Name, ImageName = ImageName, ImageArn = ImageArn, InstanceType = InstanceType, Description = Description, DisplayName = DisplayName, VpcConfig = VpcConfig, IamRoleArn = IamRoleArn, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, AppstreamAgentVersion = AppstreamAgentVersion, Tags = Tags, AccessEndpoints = AccessEndpoints, RootVolumeConfig = RootVolumeConfig, SoftwaresToInstall = SoftwaresToInstall, SoftwaresToUninstall = SoftwaresToUninstall)
   output <- .appstream$create_image_builder_output()
   config <- get_config()
   svc <- .appstream$service(config, op)
@@ -920,6 +1195,67 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
 }
 .appstream$operations$create_image_builder_streaming_url <- appstream_create_image_builder_streaming_url
 
+#' Creates a custom WorkSpaces Applications image by importing an EC2 AMI
+#'
+#' @description
+#' Creates a custom WorkSpaces Applications image by importing an EC2 AMI. This allows you to use your own customized AMI to create WorkSpaces Applications images that support additional instance types beyond the standard stream.* instances.
+#'
+#' See [https://www.paws-r-sdk.com/docs/appstream_create_imported_image/](https://www.paws-r-sdk.com/docs/appstream_create_imported_image/) for full documentation.
+#'
+#' @param Name &#91;required&#93; A unique name for the imported image. The name must be between 1 and 100
+#' characters and can contain letters, numbers, underscores, periods, and
+#' hyphens.
+#' @param SourceAmiId &#91;required&#93; The ID of the EC2 AMI to import. The AMI must meet specific requirements
+#' including Windows Server 2022 Full Base, UEFI boot mode, TPM 2.0
+#' support, and proper drivers.
+#' @param IamRoleArn &#91;required&#93; The ARN of the IAM role that allows WorkSpaces Applications to access
+#' your AMI. The role must have permissions to modify image attributes and
+#' describe images, with a trust relationship allowing
+#' appstream.amazonaws.com to assume the role.
+#' @param Description An optional description for the imported image. The description must
+#' match approved regex patterns and can be up to 256 characters.
+#' @param DisplayName An optional display name for the imported image. The display name must
+#' match approved regex patterns and can be up to 100 characters.
+#' @param Tags The tags to apply to the imported image. Tags help you organize and
+#' manage your WorkSpaces Applications resources.
+#' @param RuntimeValidationConfig Configuration for runtime validation of the imported image. When
+#' specified, WorkSpaces Applications provisions an instance to test
+#' streaming functionality, which helps ensure the image is suitable for
+#' use.
+#' @param AgentSoftwareVersion The version of the WorkSpaces Applications agent to use for the imported
+#' image. Choose CURRENT_LATEST to use the agent version available at the
+#' time of import, or ALWAYS_LATEST to automatically update to the latest
+#' agent version when new versions are released.
+#' @param AppCatalogConfig Configuration for the application catalog of the imported image. This
+#' allows you to specify applications available for streaming, including
+#' their paths, icons, and launch parameters. This field contains sensitive
+#' data.
+#' @param DryRun When set to true, performs validation checks without actually creating
+#' the imported image. Use this to verify your configuration before
+#' executing the actual import operation.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_create_imported_image
+appstream_create_imported_image <- function(Name, SourceAmiId, IamRoleArn, Description = NULL, DisplayName = NULL, Tags = NULL, RuntimeValidationConfig = NULL, AgentSoftwareVersion = NULL, AppCatalogConfig = NULL, DryRun = NULL) {
+  op <- new_operation(
+    name = "CreateImportedImage",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .appstream$create_imported_image_input(Name = Name, SourceAmiId = SourceAmiId, IamRoleArn = IamRoleArn, Description = Description, DisplayName = DisplayName, Tags = Tags, RuntimeValidationConfig = RuntimeValidationConfig, AgentSoftwareVersion = AgentSoftwareVersion, AppCatalogConfig = AppCatalogConfig, DryRun = DryRun)
+  output <- .appstream$create_imported_image_output()
+  config <- get_config()
+  svc <- .appstream$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$create_imported_image <- appstream_create_imported_image
+
 #' Creates a stack to start streaming applications to users
 #'
 #' @description
@@ -953,13 +1289,13 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
 #' 
 #' For more information about tags, see [Tagging Your
 #' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
-#' in the *Amazon AppStream 2.0 Administration Guide*.
+#' in the *Amazon WorkSpaces Applications Administration Guide*.
 #' @param AccessEndpoints The list of interface VPC endpoint (interface endpoint) objects. Users
-#' of the stack can connect to AppStream 2.0 only through the specified
-#' endpoints.
-#' @param EmbedHostDomains The domains where AppStream 2.0 streaming sessions can be embedded in an
-#' iframe. You must approve the domains that you want to host embedded
-#' AppStream 2.0 streaming sessions.
+#' of the stack can connect to WorkSpaces Applications only through the
+#' specified endpoints.
+#' @param EmbedHostDomains The domains where WorkSpaces Applications streaming sessions can be
+#' embedded in an iframe. You must approve the domains that you want to
+#' host embedded WorkSpaces Applications streaming sessions.
 #' @param StreamingExperienceSettings The streaming protocol you want your stack to prefer. This can be UDP or
 #' TCP. Currently, UDP is only supported in the Windows native client.
 #'
@@ -985,10 +1321,11 @@ appstream_create_stack <- function(Name, Description = NULL, DisplayName = NULL,
 }
 .appstream$operations$create_stack <- appstream_create_stack
 
-#' Creates a temporary URL to start an AppStream 2
+#' Creates a temporary URL to start an WorkSpaces Applications streaming
+#' session for the specified user
 #'
 #' @description
-#' Creates a temporary URL to start an AppStream 2.0 streaming session for the specified user. A streaming URL enables application streaming to be tested without user setup.
+#' Creates a temporary URL to start an WorkSpaces Applications streaming session for the specified user. A streaming URL enables application streaming to be tested without user setup.
 #'
 #' See [https://www.paws-r-sdk.com/docs/appstream_create_streaming_url/](https://www.paws-r-sdk.com/docs/appstream_create_streaming_url/) for full documentation.
 #'
@@ -1004,7 +1341,7 @@ appstream_create_stack <- function(Name, Description = NULL, DisplayName = NULL,
 #' value between 1 and 604800 seconds. The default is 60 seconds.
 #' @param SessionContext The session context. For more information, see [Session
 #' Context](https://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters)
-#' in the *Amazon AppStream 2.0 Administration Guide*.
+#' in the *Amazon WorkSpaces Applications Administration Guide*.
 #'
 #' @keywords internal
 #'
@@ -1075,10 +1412,10 @@ appstream_create_theme_for_stack <- function(StackName, FooterLinks = NULL, Titl
 .appstream$operations$create_theme_for_stack <- appstream_create_theme_for_stack
 
 #' Creates a new image with the latest Windows operating system updates,
-#' driver updates, and AppStream 2
+#' driver updates, and WorkSpaces Applications agent software
 #'
 #' @description
-#' Creates a new image with the latest Windows operating system updates, driver updates, and AppStream 2.0 agent software.
+#' Creates a new image with the latest Windows operating system updates, driver updates, and WorkSpaces Applications agent software.
 #'
 #' See [https://www.paws-r-sdk.com/docs/appstream_create_updated_image/](https://www.paws-r-sdk.com/docs/appstream_create_updated_image/) for full documentation.
 #'
@@ -1100,13 +1437,13 @@ appstream_create_theme_for_stack <- function(StackName, FooterLinks = NULL, Titl
 #' 
 #' For more information about tags, see [Tagging Your
 #' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
-#' in the *Amazon AppStream 2.0 Administration Guide*.
+#' in the *Amazon WorkSpaces Applications Administration Guide*.
 #' @param dryRun Indicates whether to display the status of image update availability
-#' before AppStream 2.0 initiates the process of creating a new updated
-#' image. If this value is set to `true`, AppStream 2.0 displays whether
-#' image updates are available. If this value is set to `false`, AppStream
-#' 2.0 initiates the process of creating a new updated image without
-#' displaying whether image updates are available.
+#' before WorkSpaces Applications initiates the process of creating a new
+#' updated image. If this value is set to `true`, WorkSpaces Applications
+#' displays whether image updates are available. If this value is set to
+#' `false`, WorkSpaces Applications initiates the process of creating a new
+#' updated image without displaying whether image updates are available.
 #'
 #' @keywords internal
 #'
@@ -1301,10 +1638,11 @@ appstream_delete_application <- function(Name) {
 }
 .appstream$operations$delete_application <- appstream_delete_application
 
-#' Deletes the specified Directory Config object from AppStream 2
+#' Deletes the specified Directory Config object from WorkSpaces
+#' Applications
 #'
 #' @description
-#' Deletes the specified Directory Config object from AppStream 2.0. This object includes the information required to join streaming instances to an Active Directory domain.
+#' Deletes the specified Directory Config object from WorkSpaces Applications. This object includes the information required to join streaming instances to an Active Directory domain.
 #'
 #' See [https://www.paws-r-sdk.com/docs/appstream_delete_directory_config/](https://www.paws-r-sdk.com/docs/appstream_delete_directory_config/) for full documentation.
 #'
@@ -1722,6 +2060,42 @@ appstream_describe_app_blocks <- function(Arns = NULL, NextToken = NULL, MaxResu
 }
 .appstream$operations$describe_app_blocks <- appstream_describe_app_blocks
 
+#' Retrieves license included application usage information
+#'
+#' @description
+#' Retrieves license included application usage information.
+#'
+#' See [https://www.paws-r-sdk.com/docs/appstream_describe_app_license_usage/](https://www.paws-r-sdk.com/docs/appstream_describe_app_license_usage/) for full documentation.
+#'
+#' @param BillingPeriod &#91;required&#93; Billing period for the usage record.
+#' 
+#' Specify the value in *yyyy-mm* format. For example, for August 2025, use
+#' *2025-08*.
+#' @param MaxResults The maximum number of results to return.
+#' @param NextToken Token for pagination of results.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_describe_app_license_usage
+appstream_describe_app_license_usage <- function(BillingPeriod, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeAppLicenseUsage",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .appstream$describe_app_license_usage_input(BillingPeriod = BillingPeriod, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .appstream$describe_app_license_usage_output()
+  config <- get_config()
+  svc <- .appstream$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$describe_app_license_usage <- appstream_describe_app_license_usage
+
 #' Retrieves a list that describes one or more application fleet
 #' associations
 #'
@@ -1793,10 +2167,11 @@ appstream_describe_applications <- function(Arns = NULL, NextToken = NULL, MaxRe
 .appstream$operations$describe_applications <- appstream_describe_applications
 
 #' Retrieves a list that describes one or more specified Directory Config
-#' objects for AppStream 2
+#' objects for WorkSpaces Applications, if the names for these objects are
+#' provided
 #'
 #' @description
-#' Retrieves a list that describes one or more specified Directory Config objects for AppStream 2.0, if the names for these objects are provided. Otherwise, all Directory Config objects in the account are described. These objects include the configuration information required to join fleets and image builders to Microsoft Active Directory domains.
+#' Retrieves a list that describes one or more specified Directory Config objects for WorkSpaces Applications, if the names for these objects are provided. Otherwise, all Directory Config objects in the account are described. These objects include the configuration information required to join fleets and image builders to Microsoft Active Directory domains.
 #'
 #' See [https://www.paws-r-sdk.com/docs/appstream_describe_directory_configs/](https://www.paws-r-sdk.com/docs/appstream_describe_directory_configs/) for full documentation.
 #'
@@ -2049,6 +2424,42 @@ appstream_describe_sessions <- function(StackName, FleetName, UserId = NULL, Nex
 }
 .appstream$operations$describe_sessions <- appstream_describe_sessions
 
+#' Retrieves license included application associations for a specified
+#' resource
+#'
+#' @description
+#' Retrieves license included application associations for a specified resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/appstream_describe_software_associations/](https://www.paws-r-sdk.com/docs/appstream_describe_software_associations/) for full documentation.
+#'
+#' @param AssociatedResource &#91;required&#93; The ARN of the resource to describe software associations. Possible
+#' resources are Image and ImageBuilder.
+#' @param MaxResults The maximum number of results to return.
+#' @param NextToken The pagination token to use to retrieve the next page of results for
+#' this operation.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_describe_software_associations
+appstream_describe_software_associations <- function(AssociatedResource, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeSoftwareAssociations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .appstream$describe_software_associations_input(AssociatedResource = AssociatedResource, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .appstream$describe_software_associations_output()
+  config <- get_config()
+  svc <- .appstream$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$describe_software_associations <- appstream_describe_software_associations
+
 #' Retrieves a list that describes one or more specified stacks, if the
 #' stack names are provided
 #'
@@ -2225,7 +2636,7 @@ appstream_describe_users <- function(AuthenticationType, MaxResults = NULL, Next
 #' Disables the specified user in the user pool
 #'
 #' @description
-#' Disables the specified user in the user pool. Users can't sign in to AppStream 2.0 until they are re-enabled. This action does not delete the user.
+#' Disables the specified user in the user pool. Users can't sign in to WorkSpaces Applications until they are re-enabled. This action does not delete the user.
 #'
 #' See [https://www.paws-r-sdk.com/docs/appstream_disable_user/](https://www.paws-r-sdk.com/docs/appstream_disable_user/) for full documentation.
 #'
@@ -2385,10 +2796,94 @@ appstream_disassociate_fleet <- function(FleetName, StackName) {
 }
 .appstream$operations$disassociate_fleet <- appstream_disassociate_fleet
 
+#' Removes license included application(s) association(s) from an image
+#' builder instance
+#'
+#' @description
+#' Removes license included application(s) association(s) from an image builder instance.
+#'
+#' See [https://www.paws-r-sdk.com/docs/appstream_disassociate_software_from_image_builder/](https://www.paws-r-sdk.com/docs/appstream_disassociate_software_from_image_builder/) for full documentation.
+#'
+#' @param ImageBuilderName &#91;required&#93; The name of the target image builder instance.
+#' @param SoftwareNames &#91;required&#93; The list of license included applications to disassociate from the image
+#' builder.
+#' 
+#' Possible values include the following:
+#' 
+#' -   Microsoft_Office_2021_LTSC_Professional_Plus_32Bit
+#' 
+#' -   Microsoft_Office_2021_LTSC_Professional_Plus_64Bit
+#' 
+#' -   Microsoft_Office_2024_LTSC_Professional_Plus_32Bit
+#' 
+#' -   Microsoft_Office_2024_LTSC_Professional_Plus_64Bit
+#' 
+#' -   Microsoft_Visio_2021_LTSC_Professional_32Bit
+#' 
+#' -   Microsoft_Visio_2021_LTSC_Professional_64Bit
+#' 
+#' -   Microsoft_Visio_2024_LTSC_Professional_32Bit
+#' 
+#' -   Microsoft_Visio_2024_LTSC_Professional_64Bit
+#' 
+#' -   Microsoft_Project_2021_Professional_32Bit
+#' 
+#' -   Microsoft_Project_2021_Professional_64Bit
+#' 
+#' -   Microsoft_Project_2024_Professional_32Bit
+#' 
+#' -   Microsoft_Project_2024_Professional_64Bit
+#' 
+#' -   Microsoft_Office_2021_LTSC_Standard_32Bit
+#' 
+#' -   Microsoft_Office_2021_LTSC_Standard_64Bit
+#' 
+#' -   Microsoft_Office_2024_LTSC_Standard_32Bit
+#' 
+#' -   Microsoft_Office_2024_LTSC_Standard_64Bit
+#' 
+#' -   Microsoft_Visio_2021_LTSC_Standard_32Bit
+#' 
+#' -   Microsoft_Visio_2021_LTSC_Standard_64Bit
+#' 
+#' -   Microsoft_Visio_2024_LTSC_Standard_32Bit
+#' 
+#' -   Microsoft_Visio_2024_LTSC_Standard_64Bit
+#' 
+#' -   Microsoft_Project_2021_Standard_32Bit
+#' 
+#' -   Microsoft_Project_2021_Standard_64Bit
+#' 
+#' -   Microsoft_Project_2024_Standard_32Bit
+#' 
+#' -   Microsoft_Project_2024_Standard_64Bit
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_disassociate_software_from_image_builder
+appstream_disassociate_software_from_image_builder <- function(ImageBuilderName, SoftwareNames) {
+  op <- new_operation(
+    name = "DisassociateSoftwareFromImageBuilder",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .appstream$disassociate_software_from_image_builder_input(ImageBuilderName = ImageBuilderName, SoftwareNames = SoftwareNames)
+  output <- .appstream$disassociate_software_from_image_builder_output()
+  config <- get_config()
+  svc <- .appstream$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$disassociate_software_from_image_builder <- appstream_disassociate_software_from_image_builder
+
 #' Enables a user in the user pool
 #'
 #' @description
-#' Enables a user in the user pool. After being enabled, users can sign in to AppStream 2.0 and open applications from the stacks to which they are assigned.
+#' Enables a user in the user pool. After being enabled, users can sign in to WorkSpaces Applications and open applications from the stacks to which they are assigned.
 #'
 #' See [https://www.paws-r-sdk.com/docs/appstream_enable_user/](https://www.paws-r-sdk.com/docs/appstream_enable_user/) for full documentation.
 #'
@@ -2452,6 +2947,39 @@ appstream_expire_session <- function(SessionId) {
   return(response)
 }
 .appstream$operations$expire_session <- appstream_expire_session
+
+#' Retrieves information about an export image task, including its current
+#' state, progress, and any error details
+#'
+#' @description
+#' Retrieves information about an export image task, including its current state, progress, and any error details.
+#'
+#' See [https://www.paws-r-sdk.com/docs/appstream_get_export_image_task/](https://www.paws-r-sdk.com/docs/appstream_get_export_image_task/) for full documentation.
+#'
+#' @param TaskId The unique identifier of the export image task to retrieve information
+#' about.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_get_export_image_task
+appstream_get_export_image_task <- function(TaskId = NULL) {
+  op <- new_operation(
+    name = "GetExportImageTask",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .appstream$get_export_image_task_input(TaskId = TaskId)
+  output <- .appstream$get_export_image_task_output()
+  config <- get_config()
+  svc <- .appstream$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$get_export_image_task <- appstream_get_export_image_task
 
 #' Retrieves the name of the fleet that is associated with the specified
 #' stack
@@ -2556,10 +3084,48 @@ appstream_list_entitled_applications <- function(StackName, EntitlementName, Nex
 }
 .appstream$operations$list_entitled_applications <- appstream_list_entitled_applications
 
-#' Retrieves a list of all tags for the specified AppStream 2
+#' Lists export image tasks, with optional filtering and pagination
 #'
 #' @description
-#' Retrieves a list of all tags for the specified AppStream 2.0 resource. You can tag AppStream 2.0 image builders, images, fleets, and stacks.
+#' Lists export image tasks, with optional filtering and pagination. Use this operation to monitor the status of multiple export operations.
+#'
+#' See [https://www.paws-r-sdk.com/docs/appstream_list_export_image_tasks/](https://www.paws-r-sdk.com/docs/appstream_list_export_image_tasks/) for full documentation.
+#'
+#' @param Filters Optional filters to apply when listing export image tasks. Filters help
+#' you narrow down the results based on specific criteria.
+#' @param MaxResults The maximum number of export image tasks to return in a single request.
+#' The valid range is 1-500, with a default of 50.
+#' @param NextToken The pagination token from a previous request. Use this to retrieve the
+#' next page of results when there are more tasks than the MaxResults
+#' limit.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_list_export_image_tasks
+appstream_list_export_image_tasks <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListExportImageTasks",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .appstream$list_export_image_tasks_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .appstream$list_export_image_tasks_output()
+  config <- get_config()
+  svc <- .appstream$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$list_export_image_tasks <- appstream_list_export_image_tasks
+
+#' Retrieves a list of all tags for the specified WorkSpaces Applications
+#' resource
+#'
+#' @description
+#' Retrieves a list of all tags for the specified WorkSpaces Applications resource. You can tag WorkSpaces Applications image builders, images, fleets, and stacks.
 #'
 #' See [https://www.paws-r-sdk.com/docs/appstream_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/appstream_list_tags_for_resource/) for full documentation.
 #'
@@ -2657,8 +3223,9 @@ appstream_start_fleet <- function(Name) {
 #' See [https://www.paws-r-sdk.com/docs/appstream_start_image_builder/](https://www.paws-r-sdk.com/docs/appstream_start_image_builder/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the image builder.
-#' @param AppstreamAgentVersion The version of the AppStream 2.0 agent to use for this image builder. To
-#' use the latest version of the AppStream 2.0 agent, specify \[LATEST\].
+#' @param AppstreamAgentVersion The version of the WorkSpaces Applications agent to use for this image
+#' builder. To use the latest version of the WorkSpaces Applications agent,
+#' specify \[LATEST\].
 #'
 #' @keywords internal
 #'
@@ -2681,6 +3248,40 @@ appstream_start_image_builder <- function(Name, AppstreamAgentVersion = NULL) {
   return(response)
 }
 .appstream$operations$start_image_builder <- appstream_start_image_builder
+
+#' Initiates license included applications deployment to an image builder
+#' instance
+#'
+#' @description
+#' Initiates license included applications deployment to an image builder instance.
+#'
+#' See [https://www.paws-r-sdk.com/docs/appstream_start_software_deployment_to_image_builder/](https://www.paws-r-sdk.com/docs/appstream_start_software_deployment_to_image_builder/) for full documentation.
+#'
+#' @param ImageBuilderName &#91;required&#93; The name of the target image builder instance.
+#' @param RetryFailedDeployments Whether to retry previously failed license included application
+#' deployments.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_start_software_deployment_to_image_builder
+appstream_start_software_deployment_to_image_builder <- function(ImageBuilderName, RetryFailedDeployments = NULL) {
+  op <- new_operation(
+    name = "StartSoftwareDeploymentToImageBuilder",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .appstream$start_software_deployment_to_image_builder_input(ImageBuilderName = ImageBuilderName, RetryFailedDeployments = RetryFailedDeployments)
+  output <- .appstream$start_software_deployment_to_image_builder_output()
+  config <- get_config()
+  svc <- .appstream$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$start_software_deployment_to_image_builder <- appstream_start_software_deployment_to_image_builder
 
 #' Stops an app block builder
 #'
@@ -2775,10 +3376,11 @@ appstream_stop_image_builder <- function(Name) {
 }
 .appstream$operations$stop_image_builder <- appstream_stop_image_builder
 
-#' Adds or overwrites one or more tags for the specified AppStream 2
+#' Adds or overwrites one or more tags for the specified WorkSpaces
+#' Applications resource
 #'
 #' @description
-#' Adds or overwrites one or more tags for the specified AppStream 2.0 resource. You can tag AppStream 2.0 image builders, images, fleets, and stacks.
+#' Adds or overwrites one or more tags for the specified WorkSpaces Applications resource. You can tag WorkSpaces Applications image builders, images, fleets, and stacks.
 #'
 #' See [https://www.paws-r-sdk.com/docs/appstream_tag_resource/](https://www.paws-r-sdk.com/docs/appstream_tag_resource/) for full documentation.
 #'
@@ -2816,10 +3418,11 @@ appstream_tag_resource <- function(ResourceArn, Tags) {
 }
 .appstream$operations$tag_resource <- appstream_tag_resource
 
-#' Disassociates one or more specified tags from the specified AppStream 2
+#' Disassociates one or more specified tags from the specified WorkSpaces
+#' Applications resource
 #'
 #' @description
-#' Disassociates one or more specified tags from the specified AppStream 2.0 resource.
+#' Disassociates one or more specified tags from the specified WorkSpaces Applications resource.
 #'
 #' See [https://www.paws-r-sdk.com/docs/appstream_untag_resource/](https://www.paws-r-sdk.com/docs/appstream_untag_resource/) for full documentation.
 #'
@@ -2882,14 +3485,14 @@ appstream_untag_resource <- function(ResourceArn, TagKeys) {
 #' builder. To assume a role, the app block builder calls the AWS Security
 #' Token Service (STS) `AssumeRole` API operation and passes the ARN of the
 #' role to use. The operation creates a new session with temporary
-#' credentials. AppStream 2.0 retrieves the temporary credentials and
-#' creates the **appstream_machine_role** credential profile on the
+#' credentials. WorkSpaces Applications retrieves the temporary credentials
+#' and creates the **appstream_machine_role** credential profile on the
 #' instance.
 #' 
 #' For more information, see [Using an IAM Role to Grant Permissions to
-#' Applications and Scripts Running on AppStream 2.0 Streaming
+#' Applications and Scripts Running on WorkSpaces Applications Streaming
 #' Instances](https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html)
-#' in the *Amazon AppStream 2.0 Administration Guide*.
+#' in the *Amazon WorkSpaces Applications Administration Guide*.
 #' @param AccessEndpoints The list of interface VPC endpoint (interface endpoint) objects.
 #' Administrators can connect to the app block builder only through the
 #' specified endpoints.
@@ -2958,10 +3561,10 @@ appstream_update_application <- function(Name, DisplayName = NULL, Description =
 }
 .appstream$operations$update_application <- appstream_update_application
 
-#' Updates the specified Directory Config object in AppStream 2
+#' Updates the specified Directory Config object in WorkSpaces Applications
 #'
 #' @description
-#' Updates the specified Directory Config object in AppStream 2.0. This object includes the configuration information required to join fleets and image builders to Microsoft Active Directory domains.
+#' Updates the specified Directory Config object in WorkSpaces Applications. This object includes the configuration information required to join fleets and image builders to Microsoft Active Directory domains.
 #'
 #' See [https://www.paws-r-sdk.com/docs/appstream_update_directory_config/](https://www.paws-r-sdk.com/docs/appstream_update_directory_config/) for full documentation.
 #'
@@ -3093,16 +3696,6 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' 
 #' -   stream.memory.z1d.12xlarge
 #' 
-#' -   stream.graphics-design.large
-#' 
-#' -   stream.graphics-design.xlarge
-#' 
-#' -   stream.graphics-design.2xlarge
-#' 
-#' -   stream.graphics-design.4xlarge
-#' 
-#' -   stream.graphics-desktop.2xlarge
-#' 
 #' -   stream.graphics.g4dn.xlarge
 #' 
 #' -   stream.graphics.g4dn.2xlarge
@@ -3115,11 +3708,47 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' 
 #' -   stream.graphics.g4dn.16xlarge
 #' 
-#' -   stream.graphics-pro.4xlarge
+#' -   stream.graphics.g5.xlarge
 #' 
-#' -   stream.graphics-pro.8xlarge
+#' -   stream.graphics.g5.2xlarge
 #' 
-#' -   stream.graphics-pro.16xlarge
+#' -   stream.graphics.g5.4xlarge
+#' 
+#' -   stream.graphics.g5.8xlarge
+#' 
+#' -   stream.graphics.g5.16xlarge
+#' 
+#' -   stream.graphics.g5.12xlarge
+#' 
+#' -   stream.graphics.g5.24xlarge
+#' 
+#' -   stream.graphics.g6.xlarge
+#' 
+#' -   stream.graphics.g6.2xlarge
+#' 
+#' -   stream.graphics.g6.4xlarge
+#' 
+#' -   stream.graphics.g6.8xlarge
+#' 
+#' -   stream.graphics.g6.16xlarge
+#' 
+#' -   stream.graphics.g6.12xlarge
+#' 
+#' -   stream.graphics.g6.24xlarge
+#' 
+#' -   stream.graphics.gr6.4xlarge
+#' 
+#' -   stream.graphics.gr6.8xlarge
+#' 
+#' -   stream.graphics.g6f.large
+#' 
+#' -   stream.graphics.g6f.xlarge
+#' 
+#' -   stream.graphics.g6f.2xlarge
+#' 
+#' -   stream.graphics.g6f.4xlarge
+#' 
+#' -   stream.graphics.gr6f.4xlarge
 #' 
 #' The following instance types are available for Elastic fleets:
 #' 
@@ -3186,21 +3815,21 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' assume a role, a fleet instance calls the AWS Security Token Service
 #' (STS) `AssumeRole` API operation and passes the ARN of the role to use.
 #' The operation creates a new session with temporary credentials.
-#' AppStream 2.0 retrieves the temporary credentials and creates the
-#' **appstream_machine_role** credential profile on the instance.
+#' WorkSpaces Applications retrieves the temporary credentials and creates
+#' the **appstream_machine_role** credential profile on the instance.
 #' 
 #' For more information, see [Using an IAM Role to Grant Permissions to
-#' Applications and Scripts Running on AppStream 2.0 Streaming
+#' Applications and Scripts Running on WorkSpaces Applications Streaming
 #' Instances](https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html)
-#' in the *Amazon AppStream 2.0 Administration Guide*.
-#' @param StreamView The AppStream 2.0 view that is displayed to your users when they stream
-#' from the fleet. When `APP` is specified, only the windows of
+#' in the *Amazon WorkSpaces Applications Administration Guide*.
+#' @param StreamView The WorkSpaces Applications view that is displayed to your users when
+#' they stream from the fleet. When `APP` is specified, only the windows of
 #' applications opened by users display. When `DESKTOP` is specified, the
 #' standard desktop that is provided by the operating system displays.
 #' 
 #' The default value is `APP`.
-#' @param Platform The platform of the fleet. WINDOWS_SERVER_2019 and AMAZON_LINUX2 are
-#' supported for Elastic fleets.
+#' @param Platform The platform of the fleet. WINDOWS_SERVER_2019, AMAZON_LINUX2 and
+#' UBUNTU_PRO_2404 are supported for Elastic fleets.
 #' @param MaxConcurrentSessions The maximum number of concurrent sessions for a fleet.
 #' @param UsbDeviceFilterStrings The USB device filter strings that specify which USB devices a user can
 #' redirect to the fleet streaming session, when using the Windows native
@@ -3209,11 +3838,13 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' applies to Elastic fleets.
 #' @param MaxSessionsPerInstance The maximum number of user sessions on an instance. This only applies to
 #' multi-session fleets.
+#' @param RootVolumeConfig The updated configuration for the root volume of fleet instances. Note
+#' that volume size cannot be decreased below the image volume size.
 #'
 #' @keywords internal
 #'
 #' @rdname appstream_update_fleet
-appstream_update_fleet <- function(ImageName = NULL, ImageArn = NULL, Name = NULL, InstanceType = NULL, ComputeCapacity = NULL, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, DeleteVpcConfig = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, IdleDisconnectTimeoutInSeconds = NULL, AttributesToDelete = NULL, IamRoleArn = NULL, StreamView = NULL, Platform = NULL, MaxConcurrentSessions = NULL, UsbDeviceFilterStrings = NULL, SessionScriptS3Location = NULL, MaxSessionsPerInstance = NULL) {
+appstream_update_fleet <- function(ImageName = NULL, ImageArn = NULL, Name = NULL, InstanceType = NULL, ComputeCapacity = NULL, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, DeleteVpcConfig = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, IdleDisconnectTimeoutInSeconds = NULL, AttributesToDelete = NULL, IamRoleArn = NULL, StreamView = NULL, Platform = NULL, MaxConcurrentSessions = NULL, UsbDeviceFilterStrings = NULL, SessionScriptS3Location = NULL, MaxSessionsPerInstance = NULL, RootVolumeConfig = NULL) {
   op <- new_operation(
     name = "UpdateFleet",
     http_method = "POST",
@@ -3222,7 +3853,7 @@ appstream_update_fleet <- function(ImageName = NULL, ImageArn = NULL, Name = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .appstream$update_fleet_input(ImageName = ImageName, ImageArn = ImageArn, Name = Name, InstanceType = InstanceType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, DeleteVpcConfig = DeleteVpcConfig, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, AttributesToDelete = AttributesToDelete, IamRoleArn = IamRoleArn, StreamView = StreamView, Platform = Platform, MaxConcurrentSessions = MaxConcurrentSessions, UsbDeviceFilterStrings = UsbDeviceFilterStrings, SessionScriptS3Location = SessionScriptS3Location, MaxSessionsPerInstance = MaxSessionsPerInstance)
+  input <- .appstream$update_fleet_input(ImageName = ImageName, ImageArn = ImageArn, Name = Name, InstanceType = InstanceType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, DeleteVpcConfig = DeleteVpcConfig, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, AttributesToDelete = AttributesToDelete, IamRoleArn = IamRoleArn, StreamView = StreamView, Platform = Platform, MaxConcurrentSessions = MaxConcurrentSessions, UsbDeviceFilterStrings = UsbDeviceFilterStrings, SessionScriptS3Location = SessionScriptS3Location, MaxSessionsPerInstance = MaxSessionsPerInstance, RootVolumeConfig = RootVolumeConfig)
   output <- .appstream$update_fleet_output()
   config <- get_config()
   svc <- .appstream$service(config, op)
@@ -3289,11 +3920,11 @@ appstream_update_image_permissions <- function(Name, SharedAccountId, ImagePermi
 #' Windows settings are automatically saved after each session and applied
 #' to the next session.
 #' @param AccessEndpoints The list of interface VPC endpoint (interface endpoint) objects. Users
-#' of the stack can connect to AppStream 2.0 only through the specified
-#' endpoints.
-#' @param EmbedHostDomains The domains where AppStream 2.0 streaming sessions can be embedded in an
-#' iframe. You must approve the domains that you want to host embedded
-#' AppStream 2.0 streaming sessions.
+#' of the stack can connect to WorkSpaces Applications only through the
+#' specified endpoints.
+#' @param EmbedHostDomains The domains where WorkSpaces Applications streaming sessions can be
+#' embedded in an iframe. You must approve the domains that you want to
+#' host embedded WorkSpaces Applications streaming sessions.
 #' @param StreamingExperienceSettings The streaming protocol you want your stack to prefer. This can be UDP or
 #' TCP. Currently, UDP is only supported in the Windows native client.
 #'

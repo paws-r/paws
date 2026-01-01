@@ -9,6 +9,7 @@ ec2_modify_network_interface_attribute(
   EnablePrimaryIpv6 = NULL,
   ConnectionTrackingSpecification = NULL,
   AssociatePublicIpAddress = NULL,
+  AssociatedSubnetIds = NULL,
   DryRun = NULL,
   NetworkInterfaceId,
   Description = NULL,
@@ -42,6 +43,8 @@ address.}
 \item{AssociatePublicIpAddress}{Indicates whether to assign a public IPv4 address to a network
 interface. This option can be enabled for any network interface but will
 only apply to the primary network interface (eth0).}
+
+\item{AssociatedSubnetIds}{A list of subnet IDs to associate with the network interface.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

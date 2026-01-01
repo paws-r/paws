@@ -2,7 +2,8 @@
 % Please edit documentation in R/cloudwatchlogs_operations.R
 \name{cloudwatchlogs_describe_log_groups}
 \alias{cloudwatchlogs_describe_log_groups}
-\title{Returns information about log groups}
+\title{Returns information about log groups, including data sources that ingest
+into each log group}
 \usage{
 cloudwatchlogs_describe_log_groups(
   accountIdentifiers = NULL,
@@ -27,9 +28,9 @@ Only one of these parameters can be passed.}
 
 \item{logGroupNamePattern}{If you specify a string for this parameter, the operation returns only
 log groups that have names that match the string based on a
-case-sensitive substring search. For example, if you specify \code{Foo}, log
-groups named \code{FooBar}, \code{aws/Foo}, and \code{GroupFoo} would match, but \code{foo},
-\code{F/o/o} and \code{Froo} would not match.
+case-sensitive substring search. For example, if you specify \code{DataLogs},
+log groups named \code{DataLogs}, \code{aws/DataLogs}, and \code{GroupDataLogs} would
+match, but \code{datalogs}, \code{Data/log/s} and \code{Groupdata} would not match.
 
 If you specify \code{logGroupNamePattern} in your request, then only \code{arn},
 \code{creationTime}, and \code{logGroupName} are included in the response.
@@ -84,7 +85,7 @@ cross-account monitoring account, you can specify only log group names
 in the same account as the operation.}
 }
 \description{
-Returns information about log groups. You can return all your log groups or filter the results by prefix. The results are ASCII-sorted by log group name.
+Returns information about log groups, including data sources that ingest into each log group. You can return all your log groups or filter the results by prefix. The results are ASCII-sorted by log group name.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_log_groups/} for full documentation.
 }

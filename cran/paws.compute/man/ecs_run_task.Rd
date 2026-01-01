@@ -29,6 +29,10 @@ ecs_run_task(
 \arguments{
 \item{capacityProviderStrategy}{The capacity provider strategy to use for the task.
 
+If you want to use Amazon ECS Managed Instances, you must use the
+\code{capacityProviderStrategy} request parameter and omit the \code{launchType}
+request parameter.
+
 If a \code{capacityProviderStrategy} is specified, the \code{launchType} parameter
 must be omitted. If no \code{capacityProviderStrategy} or \code{launchType} is
 specified, the \code{defaultCapacityProviderStrategy} for the cluster is
@@ -66,8 +70,12 @@ is the family name of the task definition (for example,
 \code{family:my-family-name}).}
 
 \item{launchType}{The infrastructure to run your standalone task on. For more information,
-see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html}{Amazon ECS launch types}
+see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-configuration.html}{Amazon ECS launch types}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
+
+If you want to use Amazon ECS Managed Instances, you must use the
+\code{capacityProviderStrategy} request parameter and omit the \code{launchType}
+request parameter.
 
 The \code{FARGATE} launch type runs your tasks on Fargate On-Demand
 infrastructure.
@@ -193,7 +201,7 @@ inclusive. For more information, see \href{https://docs.aws.amazon.com/AmazonECS
 
 \item{volumeConfigurations}{The details of the volume that was \code{configuredAtLaunch}. You can
 configure the size, volumeType, IOPS, throughput, snapshot and
-encryption in in
+encryption in
 \href{https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_TaskManagedEBSVolumeConfiguration.html}{TaskManagedEBSVolumeConfiguration}.
 The \code{name} of the volume must match the \code{name} from the task definition.}
 }

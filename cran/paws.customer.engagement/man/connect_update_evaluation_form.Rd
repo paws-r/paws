@@ -14,7 +14,11 @@ connect_update_evaluation_form(
   Description = NULL,
   Items,
   ScoringStrategy = NULL,
-  ClientToken = NULL
+  AutoEvaluationConfiguration = NULL,
+  AsDraft = NULL,
+  ClientToken = NULL,
+  TargetConfiguration = NULL,
+  LanguageConfiguration = NULL
 )
 }
 \arguments{
@@ -37,10 +41,19 @@ section.}
 
 \item{ScoringStrategy}{A scoring strategy of the evaluation form.}
 
+\item{AutoEvaluationConfiguration}{Whether automated evaluations are enabled.}
+
+\item{AsDraft}{A boolean flag indicating whether to update evaluation form to draft
+state.}
+
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. If not provided, the Amazon Web Services SDK
 populates this field. For more information about idempotency, see
 \href{https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/}{Making retries safe with idempotent APIs}.}
+
+\item{TargetConfiguration}{Configuration that specifies the target for the evaluation form.}
+
+\item{LanguageConfiguration}{Configuration for language settings of the evaluation form.}
 }
 \description{
 Updates details about a specific evaluation form version in the specified Amazon Connect instance. Question and section identifiers cannot be duplicated within the same evaluation form.

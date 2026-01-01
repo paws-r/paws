@@ -2,7 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_list_place_indexes}
 \alias{locationservice_list_place_indexes}
-\title{Lists place index resources in your Amazon Web Services account}
+\title{This operation is no longer current and may be deprecated in the future}
 \usage{
 locationservice_list_place_indexes(MaxResults = NULL, NextToken = NULL)
 }
@@ -18,7 +18,7 @@ response. If no token is provided, the default page is the first page.
 Default value: \code{null}}
 }
 \description{
-Lists place index resources in your Amazon Web Services account.
+This operation is no longer current and may be deprecated in the future. We recommend you upgrade to the Places API V2 unless you require Grab data.
 
 See \url{https://www.paws-r-sdk.com/docs/locationservice_list_place_indexes/} for full documentation.
 }

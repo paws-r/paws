@@ -5,15 +5,15 @@
 \title{Retrieves a list of data protection settings}
 \usage{
 workspacesweb_list_data_protection_settings(
-  maxResults = NULL,
-  nextToken = NULL
+  nextToken = NULL,
+  maxResults = NULL
 )
 }
 \arguments{
-\item{maxResults}{The maximum number of results to be included in the next page.}
-
 \item{nextToken}{The pagination token used to retrieve the next page of results for this
 operation.}
+
+\item{maxResults}{The maximum number of results to be included in the next page.}
 }
 \description{
 Retrieves a list of data protection settings.

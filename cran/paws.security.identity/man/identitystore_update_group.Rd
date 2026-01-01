@@ -2,8 +2,8 @@
 % Please edit documentation in R/identitystore_operations.R
 \name{identitystore_update_group}
 \alias{identitystore_update_group}
-\title{For the specified group in the specified identity store, updates the
-group metadata and attributes}
+\title{Updates the specified group metadata and attributes in the specified
+identity store}
 \usage{
 identitystore_update_group(IdentityStoreId, GroupId, Operations)
 }
@@ -13,10 +13,13 @@ identitystore_update_group(IdentityStoreId, GroupId, Operations)
 \item{GroupId}{[required] The identifier for a group in the identity store.}
 
 \item{Operations}{[required] A list of \code{AttributeOperation} objects to apply to the requested group.
-These operations might add, replace, or remove an attribute.}
+These operations might add, replace, or remove an attribute. For more
+information on the attributes that can be added, replaced, or removed,
+see
+\href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html}{Group}.}
 }
 \description{
-For the specified group in the specified identity store, updates the group metadata and attributes.
+Updates the specified group metadata and attributes in the specified identity store.
 
 See \url{https://www.paws-r-sdk.com/docs/identitystore_update_group/} for full documentation.
 }

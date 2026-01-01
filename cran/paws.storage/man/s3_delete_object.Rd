@@ -80,15 +80,15 @@ This functionality is not supported for directory buckets.}
 provide does not match the actual owner of the bucket, the request fails
 with the HTTP status code \verb{403 Forbidden} (access denied).}
 
-\item{IfMatch}{The \code{If-Match} header field makes the request method conditional on
-ETags. If the ETag value does not match, the operation returns a
-\verb{412 Precondition Failed} error. If the ETag matches or if the object
-doesn't exist, the operation will return a
-\verb{204 Success (No Content) response}.
+\item{IfMatch}{Deletes the object if the ETag (entity tag) value provided during the
+delete operation matches the ETag of the object in S3. If the ETag
+values do not match, the operation returns a \verb{412 Precondition Failed}
+error.
 
-For more information about conditional requests, see \href{https://datatracker.ietf.org/doc/html/rfc7232}{RFC 7232}.
+Expects the ETag value as a string. \code{If-Match} does accept a string
+value of an '*' (asterisk) character to denote a match of any ETag.
 
-This functionality is only supported for directory buckets.}
+For more information about conditional requests, see \href{https://datatracker.ietf.org/doc/html/rfc7232}{RFC 7232}.}
 
 \item{IfMatchLastModifiedTime}{If present, the object is deleted only if its modification times matches
 the provided \code{Timestamp}. If the \code{Timestamp} values do not match, the

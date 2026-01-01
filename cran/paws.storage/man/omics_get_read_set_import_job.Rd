@@ -2,7 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_get_read_set_import_job}
 \alias{omics_get_read_set_import_job}
-\title{Gets information about a read set import job}
+\title{Gets detailed and status information about a read set import job and
+returns the data in JSON format}
 \usage{
 omics_get_read_set_import_job(id, sequenceStoreId)
 }
@@ -12,7 +13,7 @@ omics_get_read_set_import_job(id, sequenceStoreId)
 \item{sequenceStoreId}{[required] The job's sequence store ID.}
 }
 \description{
-Gets information about a read set import job.
+Gets detailed and status information about a read set import job and returns the data in JSON format.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_get_read_set_import_job/} for full documentation.
 }

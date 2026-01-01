@@ -8,7 +8,8 @@ cloudwatchlogs_create_log_group(
   logGroupName,
   kmsKeyId = NULL,
   tags = NULL,
-  logGroupClass = NULL
+  logGroupClass = NULL,
+  deletionProtectionEnabled = NULL
 )
 }
 \arguments{
@@ -46,6 +47,11 @@ The value of \code{logGroupClass} can't be changed after a log group is
 created.
 
 For details about the features supported by each class, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch_Logs_Log_Classes.html}{Log classes}}
+
+\item{deletionProtectionEnabled}{Use this parameter to enable deletion protection for the new log group.
+When enabled on a log group, deletion protection blocks all deletion
+operations until it is explicitly disabled. By default log groups are
+created without deletion protection enabled.}
 }
 \description{
 Creates a log group with the specified name. You can create up to 1,000,000 log groups per Region per account.

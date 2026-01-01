@@ -62,7 +62,7 @@ location of the latest AWS Elastic Beanstalk WSDL is
 \url{https://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl}.
 To install the Software Development Kits (SDKs), Integrated Development
 Environment (IDE) Toolkits, and command line tools that enable you to
-access the API, go to \href{https://aws.amazon.com/developer/tools/}{Tools for Amazon Web Services}.
+access the API, go to \href{https://builder.aws.com/build/tools}{Tools for Amazon Web Services}.
 
 \strong{Endpoints}
 

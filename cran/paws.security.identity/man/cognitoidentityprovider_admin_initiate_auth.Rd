@@ -59,26 +59,46 @@ directly in the request. For more information about client-side and
 server-side authentication, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html}{SDK authorization models}.}
 
 \item{AuthParameters}{The authentication parameters. These are inputs corresponding to the
-\code{AuthFlow} that you're invoking. The required values depend on the value
-of \code{AuthFlow} for example:
+\code{AuthFlow} that you're invoking.
+
+The following are some authentication flows and their parameters. Add a
+\code{SECRET_HASH} parameter if your app client has a client secret. Add
+\code{DEVICE_KEY} if you want to bypass multi-factor authentication with a
+remembered device.
+
+\strong{USER_AUTH}
 \itemize{
-\item For \code{USER_AUTH}: \code{USERNAME} (required), \code{PREFERRED_CHALLENGE}. If
-you don't provide a value for \code{PREFERRED_CHALLENGE}, Amazon Cognito
-responds with the \code{AvailableChallenges} parameter that specifies the
-available sign-in methods.
-\item For \code{USER_SRP_AUTH}: \code{USERNAME} (required), \code{SRP_A} (required),
-\code{SECRET_HASH} (required if the app client is configured with a
-client secret), \code{DEVICE_KEY}.
-\item For \code{ADMIN_USER_PASSWORD_AUTH}: \code{USERNAME} (required), \code{PASSWORD}
-(required), \code{SECRET_HASH} (required if the app client is configured
-with a client secret), \code{DEVICE_KEY}.
-\item For \code{REFRESH_TOKEN_AUTH/REFRESH_TOKEN}: \code{REFRESH_TOKEN} (required),
-\code{SECRET_HASH} (required if the app client is configured with a
-client secret), \code{DEVICE_KEY}.
-\item For \code{CUSTOM_AUTH}: \code{USERNAME} (required), \code{SECRET_HASH} (if app
-client is configured with client secret), \code{DEVICE_KEY}. To start the
-authentication flow with password verification, include
-\code{ChallengeName: SRP_A} and \verb{SRP_A: (The SRP_A Value)}.
+\item \code{USERNAME} (required)
+\item \code{PREFERRED_CHALLENGE}. If you don't provide a value for
+\code{PREFERRED_CHALLENGE}, Amazon Cognito responds with the
+\code{AvailableChallenges} parameter that specifies the available sign-in
+methods.
+}
+
+\strong{USER_SRP_AUTH}
+\itemize{
+\item \code{USERNAME} (required)
+\item \code{SRP_A} (required)
+}
+
+\strong{ADMIN_USER_PASSWORD_AUTH}
+\itemize{
+\item \code{USERNAME} (required)
+\item \code{PASSWORD} (required)
+}
+
+\strong{REFRESH_TOKEN_AUTH/REFRESH_TOKEN}
+\itemize{
+\item \code{REFRESH_TOKEN}(required)
+}
+
+\strong{CUSTOM_AUTH}
+\itemize{
+\item \code{USERNAME} (required)
+\item \code{ChallengeName: SRP_A} (when preceding custom authentication with
+SRP authentication)
+\item \verb{SRP_A: (An SRP_A value)} (when preceding custom authentication with
+SRP authentication)
 }
 
 For more information about \code{SECRET_HASH}, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/signing-up-users-in-your-app.html#cognito-user-pools-computing-secret-hash}{Computing secret hash values}.

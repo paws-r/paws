@@ -67,7 +67,7 @@ following load balancer types:
 \item Application Load Balancer - Operates at the application layer
 (layer 7) and supports HTTP and HTTPS.
 \item Network Load Balancer - Operates at the transport layer (layer 4)
-and supports TCP, TLS, and UDP.
+and supports TCP, TLS, UDP, and QUIC.
 \item Gateway Load Balancer - Operates at the network layer (layer 3).
 }
 

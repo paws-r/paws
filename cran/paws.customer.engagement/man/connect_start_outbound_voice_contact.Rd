@@ -18,7 +18,9 @@ connect_start_outbound_voice_contact(
   Attributes = NULL,
   AnswerMachineDetectionConfig = NULL,
   CampaignId = NULL,
-  TrafficType = NULL
+  TrafficType = NULL,
+  OutboundStrategy = NULL,
+  RingTimeoutInSeconds = NULL
 )
 }
 \arguments{
@@ -87,6 +89,11 @@ underscore characters.}
 handled differently by Amazon Connect. The default value is \code{GENERAL}.
 Use \code{CAMPAIGN} if \code{EnableAnswerMachineDetection} is set to \code{true}. For
 all other cases, use \code{GENERAL}.}
+
+\item{OutboundStrategy}{Information about the outbound strategy.}
+
+\item{RingTimeoutInSeconds}{The maximum time the outbound call will wait for the destination to
+answer the call, in seconds}
 }
 \description{
 Places an outbound call to a contact, and then initiates the flow. It performs the actions in the flow that's specified (in \code{ContactFlowId}).

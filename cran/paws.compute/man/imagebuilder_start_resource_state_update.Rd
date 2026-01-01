@@ -16,8 +16,8 @@ imagebuilder_start_resource_state_update(
 )
 }
 \arguments{
-\item{resourceArn}{[required] The ARN of the Image Builder resource that is updated. The state update
-might also impact associated resources.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the Image Builder resource that is
+updated. The state update might also impact associated resources.}
 
 \item{state}{[required] Indicates the lifecycle action to take for this request.}
 

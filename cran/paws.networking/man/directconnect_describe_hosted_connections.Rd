@@ -5,10 +5,23 @@
 \title{Lists the hosted connections that have been provisioned on the specified
 interconnect or link aggregation group (LAG)}
 \usage{
-directconnect_describe_hosted_connections(connectionId)
+directconnect_describe_hosted_connections(
+  connectionId,
+  maxResults = NULL,
+  nextToken = NULL
+)
 }
 \arguments{
 \item{connectionId}{[required] The ID of the interconnect or LAG.}
+
+\item{maxResults}{The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned \code{nextToken}
+value.
+
+If \code{MaxResults} is given a value larger than 100, only 100 results are
+returned.}
+
+\item{nextToken}{The token for the next page of results.}
 }
 \description{
 Lists the hosted connections that have been provisioned on the specified interconnect or link aggregation group (LAG).

@@ -3,6 +3,49 @@
 #' @include paymentcryptographycontrolplane_service.R
 NULL
 
+#' Adds replication Amazon Web Services Regions to an existing Amazon Web
+#' Services Payment Cryptography key, enabling the key to be used for
+#' cryptographic operations in additional Amazon Web Services Regions
+#'
+#' @description
+#' Adds replication Amazon Web Services Regions to an existing Amazon Web Services Payment Cryptography key, enabling the key to be used for cryptographic operations in additional Amazon Web Services Regions.
+#'
+#' See [https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_add_key_replication_regions/](https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_add_key_replication_regions/) for full documentation.
+#'
+#' @param KeyIdentifier &#91;required&#93; The key identifier (ARN or alias) of the key for which to add
+#' replication regions.
+#' 
+#' This key must exist and be in a valid state for replication operations.
+#' @param ReplicationRegions &#91;required&#93; The list of Amazon Web Services Regions to add to the key's replication
+#' configuration.
+#' 
+#' Each region must be a valid Amazon Web Services Region where Amazon Web
+#' Services Payment Cryptography is available. The key will be replicated
+#' to these regions, allowing cryptographic operations to be performed
+#' closer to your applications.
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographycontrolplane_add_key_replication_regions
+paymentcryptographycontrolplane_add_key_replication_regions <- function(KeyIdentifier, ReplicationRegions) {
+  op <- new_operation(
+    name = "AddKeyReplicationRegions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographycontrolplane$add_key_replication_regions_input(KeyIdentifier = KeyIdentifier, ReplicationRegions = ReplicationRegions)
+  output <- .paymentcryptographycontrolplane$add_key_replication_regions_output()
+  config <- get_config()
+  svc <- .paymentcryptographycontrolplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographycontrolplane$operations$add_key_replication_regions <- paymentcryptographycontrolplane_add_key_replication_regions
+
 #' Creates an alias, or a friendly name, for an Amazon Web Services Payment
 #' Cryptography key
 #'
@@ -85,13 +128,17 @@ paymentcryptographycontrolplane_create_alias <- function(AliasName, KeyArn = NUL
 #' 
 #' Tagging or untagging an Amazon Web Services Payment Cryptography key can
 #' allow or deny permission to the key.
-#' @param DeriveKeyUsage The cryptographic usage of an ECDH derived key as defined in section
-#' A.5.2 of the TR-31 spec.
+#' @param DeriveKeyUsage The intended cryptographic usage of keys derived from the ECC key pair
+#' to be created.
+#' 
+#' After creating an ECC key pair, you cannot change the intended
+#' cryptographic usage of keys derived from it using ECDH.
+#' @param ReplicationRegions 
 #'
 #' @keywords internal
 #'
 #' @rdname paymentcryptographycontrolplane_create_key
-paymentcryptographycontrolplane_create_key <- function(KeyAttributes, KeyCheckValueAlgorithm = NULL, Exportable, Enabled = NULL, Tags = NULL, DeriveKeyUsage = NULL) {
+paymentcryptographycontrolplane_create_key <- function(KeyAttributes, KeyCheckValueAlgorithm = NULL, Exportable, Enabled = NULL, Tags = NULL, DeriveKeyUsage = NULL, ReplicationRegions = NULL) {
   op <- new_operation(
     name = "CreateKey",
     http_method = "POST",
@@ -100,7 +147,7 @@ paymentcryptographycontrolplane_create_key <- function(KeyAttributes, KeyCheckVa
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .paymentcryptographycontrolplane$create_key_input(KeyAttributes = KeyAttributes, KeyCheckValueAlgorithm = KeyCheckValueAlgorithm, Exportable = Exportable, Enabled = Enabled, Tags = Tags, DeriveKeyUsage = DeriveKeyUsage)
+  input <- .paymentcryptographycontrolplane$create_key_input(KeyAttributes = KeyAttributes, KeyCheckValueAlgorithm = KeyCheckValueAlgorithm, Exportable = Exportable, Enabled = Enabled, Tags = Tags, DeriveKeyUsage = DeriveKeyUsage, ReplicationRegions = ReplicationRegions)
   output <- .paymentcryptographycontrolplane$create_key_output()
   config <- get_config()
   svc <- .paymentcryptographycontrolplane$service(config, op)
@@ -176,6 +223,82 @@ paymentcryptographycontrolplane_delete_key <- function(KeyIdentifier, DeleteKeyI
 }
 .paymentcryptographycontrolplane$operations$delete_key <- paymentcryptographycontrolplane_delete_key
 
+#' Disables Multi-Region key replication settings for the specified Amazon
+#' Web Services Regions in your Amazon Web Services account, preventing new
+#' keys from being automatically replicated to those regions
+#'
+#' @description
+#' Disables [Multi-Region key replication](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-multi-region-replication.html) settings for the specified Amazon Web Services Regions in your Amazon Web Services account, preventing new keys from being automatically replicated to those regions.
+#'
+#' See [https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_disable_default_key_replication_regions/](https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_disable_default_key_replication_regions/) for full documentation.
+#'
+#' @param ReplicationRegions &#91;required&#93; The list of Amazon Web Services Regions to remove from the account's
+#' default replication regions.
+#' 
+#' New keys created after this operation will not automatically be
+#' replicated to these regions, though existing keys with replication to
+#' these regions will be unaffected.
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographycontrolplane_dis_def_key_rep_reg
+paymentcryptographycontrolplane_disable_default_key_replication_regions <- function(ReplicationRegions) {
+  op <- new_operation(
+    name = "DisableDefaultKeyReplicationRegions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographycontrolplane$disable_default_key_replication_regions_input(ReplicationRegions = ReplicationRegions)
+  output <- .paymentcryptographycontrolplane$disable_default_key_replication_regions_output()
+  config <- get_config()
+  svc <- .paymentcryptographycontrolplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographycontrolplane$operations$disable_default_key_replication_regions <- paymentcryptographycontrolplane_disable_default_key_replication_regions
+
+#' Enables Multi-Region key replication settings for your Amazon Web
+#' Services account, causing new keys to be automatically replicated to the
+#' specified Amazon Web Services Regions when created
+#'
+#' @description
+#' Enables [Multi-Region key replication](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-multi-region-replication.html) settings for your Amazon Web Services account, causing new keys to be automatically replicated to the specified Amazon Web Services Regions when created.
+#'
+#' See [https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_enable_default_key_replication_regions/](https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_enable_default_key_replication_regions/) for full documentation.
+#'
+#' @param ReplicationRegions &#91;required&#93; The list of Amazon Web Services Regions to enable as default replication
+#' regions for the Amazon Web Services account for [Multi-Region key
+#' replication](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-multi-region-replication.html).
+#' 
+#' New keys created in this account will automatically be replicated to
+#' these regions unless explicitly overridden during key creation.
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographycontrolplane_ena_def_key_rep_reg
+paymentcryptographycontrolplane_enable_default_key_replication_regions <- function(ReplicationRegions) {
+  op <- new_operation(
+    name = "EnableDefaultKeyReplicationRegions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographycontrolplane$enable_default_key_replication_regions_input(ReplicationRegions = ReplicationRegions)
+  output <- .paymentcryptographycontrolplane$enable_default_key_replication_regions_output()
+  config <- get_config()
+  svc <- .paymentcryptographycontrolplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographycontrolplane$operations$enable_default_key_replication_regions <- paymentcryptographycontrolplane_enable_default_key_replication_regions
+
 #' Exports a key from Amazon Web Services Payment Cryptography
 #'
 #' @description
@@ -243,12 +366,77 @@ paymentcryptographycontrolplane_get_alias <- function(AliasName) {
 }
 .paymentcryptographycontrolplane$operations$get_alias <- paymentcryptographycontrolplane_get_alias
 
-#' Gets the key material for an Amazon Web Services Payment Cryptography
-#' key, including the immutable and mutable data specified when the key was
-#' created
+#' Creates a certificate signing request (CSR) from a key pair
 #'
 #' @description
-#' Gets the key material for an Amazon Web Services Payment Cryptography key, including the immutable and mutable data specified when the key was created.
+#' Creates a certificate signing request (CSR) from a key pair.
+#'
+#' See [https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_get_certificate_signing_request/](https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_get_certificate_signing_request/) for full documentation.
+#'
+#' @param KeyIdentifier &#91;required&#93; Asymmetric key used for generating the certificate signing request
+#' @param SigningAlgorithm &#91;required&#93; The cryptographic algorithm used to sign your CSR.
+#' @param CertificateSubject &#91;required&#93; The metadata used to create the CSR.
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographycontrolplane_get_cer_sig_req
+paymentcryptographycontrolplane_get_certificate_signing_request <- function(KeyIdentifier, SigningAlgorithm, CertificateSubject) {
+  op <- new_operation(
+    name = "GetCertificateSigningRequest",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographycontrolplane$get_certificate_signing_request_input(KeyIdentifier = KeyIdentifier, SigningAlgorithm = SigningAlgorithm, CertificateSubject = CertificateSubject)
+  output <- .paymentcryptographycontrolplane$get_certificate_signing_request_output()
+  config <- get_config()
+  svc <- .paymentcryptographycontrolplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographycontrolplane$operations$get_certificate_signing_request <- paymentcryptographycontrolplane_get_certificate_signing_request
+
+#' Retrieves the list of Amazon Web Services Regions where Multi-Region key
+#' replication is currently enabled for your Amazon Web Services account
+#'
+#' @description
+#' Retrieves the list of Amazon Web Services Regions where [Multi-Region key replication](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-multi-region-replication.html) is currently enabled for your Amazon Web Services account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_get_default_key_replication_regions/](https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_get_default_key_replication_regions/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographycontrolplane_get_def_key_rep_reg
+paymentcryptographycontrolplane_get_default_key_replication_regions <- function() {
+  op <- new_operation(
+    name = "GetDefaultKeyReplicationRegions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographycontrolplane$get_default_key_replication_regions_input()
+  output <- .paymentcryptographycontrolplane$get_default_key_replication_regions_output()
+  config <- get_config()
+  svc <- .paymentcryptographycontrolplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographycontrolplane$operations$get_default_key_replication_regions <- paymentcryptographycontrolplane_get_default_key_replication_regions
+
+#' Gets the key metadata for an Amazon Web Services Payment Cryptography
+#' key, including the immutable and mutable attributes specified when the
+#' key was created
+#'
+#' @description
+#' Gets the key metadata for an Amazon Web Services Payment Cryptography key, including the immutable and mutable attributes specified when the key was created. Returns key metadata including attributes, state, and timestamps, but does not return the actual cryptographic key material.
 #'
 #' See [https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_get_key/](https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_get_key/) for full documentation.
 #'
@@ -430,11 +618,12 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #' 
 #' Tagging or untagging an Amazon Web Services Payment Cryptography key can
 #' allow or deny permission to the key.
+#' @param ReplicationRegions 
 #'
 #' @keywords internal
 #'
 #' @rdname paymentcryptographycontrolplane_import_key
-paymentcryptographycontrolplane_import_key <- function(KeyMaterial, KeyCheckValueAlgorithm = NULL, Enabled = NULL, Tags = NULL) {
+paymentcryptographycontrolplane_import_key <- function(KeyMaterial, KeyCheckValueAlgorithm = NULL, Enabled = NULL, Tags = NULL, ReplicationRegions = NULL) {
   op <- new_operation(
     name = "ImportKey",
     http_method = "POST",
@@ -443,7 +632,7 @@ paymentcryptographycontrolplane_import_key <- function(KeyMaterial, KeyCheckValu
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .paymentcryptographycontrolplane$import_key_input(KeyMaterial = KeyMaterial, KeyCheckValueAlgorithm = KeyCheckValueAlgorithm, Enabled = Enabled, Tags = Tags)
+  input <- .paymentcryptographycontrolplane$import_key_input(KeyMaterial = KeyMaterial, KeyCheckValueAlgorithm = KeyCheckValueAlgorithm, Enabled = Enabled, Tags = Tags, ReplicationRegions = ReplicationRegions)
   output <- .paymentcryptographycontrolplane$import_key_output()
   config <- get_config()
   svc <- .paymentcryptographycontrolplane$service(config, op)
@@ -577,6 +766,49 @@ paymentcryptographycontrolplane_list_tags_for_resource <- function(ResourceArn, 
   return(response)
 }
 .paymentcryptographycontrolplane$operations$list_tags_for_resource <- paymentcryptographycontrolplane_list_tags_for_resource
+
+#' Removes Replication Regions from an existing Amazon Web Services Payment
+#' Cryptography key, disabling the key's availability for cryptographic
+#' operations in the specified Amazon Web Services Regions
+#'
+#' @description
+#' Removes Replication Regions from an existing Amazon Web Services Payment Cryptography key, disabling the key's availability for cryptographic operations in the specified Amazon Web Services Regions.
+#'
+#' See [https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_remove_key_replication_regions/](https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_remove_key_replication_regions/) for full documentation.
+#'
+#' @param KeyIdentifier &#91;required&#93; The key identifier (ARN or alias) of the key from which to remove
+#' replication regions.
+#' 
+#' This key must exist and have replication enabled in the specified
+#' regions.
+#' @param ReplicationRegions &#91;required&#93; The list of Amazon Web Services Regions to remove from the key's
+#' replication configuration.
+#' 
+#' The key will no longer be available for cryptographic operations in
+#' these regions after removal. Ensure no active operations depend on the
+#' key in these regions before removal.
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographycontrolplane_rem_key_rep_reg
+paymentcryptographycontrolplane_remove_key_replication_regions <- function(KeyIdentifier, ReplicationRegions) {
+  op <- new_operation(
+    name = "RemoveKeyReplicationRegions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographycontrolplane$remove_key_replication_regions_input(KeyIdentifier = KeyIdentifier, ReplicationRegions = ReplicationRegions)
+  output <- .paymentcryptographycontrolplane$remove_key_replication_regions_output()
+  config <- get_config()
+  svc <- .paymentcryptographycontrolplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographycontrolplane$operations$remove_key_replication_regions <- paymentcryptographycontrolplane_remove_key_replication_regions
 
 #' Cancels a scheduled key deletion during the waiting period
 #'

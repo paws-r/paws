@@ -4,11 +4,15 @@
 \alias{ecs_delete_capacity_provider}
 \title{Deletes the specified capacity provider}
 \usage{
-ecs_delete_capacity_provider(capacityProvider)
+ecs_delete_capacity_provider(capacityProvider, cluster = NULL)
 }
 \arguments{
 \item{capacityProvider}{[required] The short name or full Amazon Resource Name (ARN) of the capacity
 provider to delete.}
+
+\item{cluster}{The name of the cluster that contains the capacity provider to delete.
+Managed instances capacity providers are cluster-scoped and can only be
+deleted from their associated cluster.}
 }
 \description{
 Deletes the specified capacity provider.

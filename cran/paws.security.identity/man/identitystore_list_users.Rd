@@ -6,6 +6,7 @@
 \usage{
 identitystore_list_users(
   IdentityStoreId,
+  Extensions = NULL,
   MaxResults = NULL,
   NextToken = NULL,
   Filters = NULL
@@ -17,6 +18,10 @@ identitystore_list_users(
 \code{1234567890} is a randomly generated string that contains numbers and
 lower case letters. This value is generated at the time that a new
 identity store is created.}
+
+\item{Extensions}{A collection of extension names indicating what extensions the service
+should retrieve alongside other user attributes.
+\code{aws:identitystore:enterprise} is the only supported extension name.}
 
 \item{MaxResults}{The maximum number of results to be returned per request. This parameter
 is used in the \code{\link[=identitystore_list_users]{list_users}} and

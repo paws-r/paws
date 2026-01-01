@@ -3,7 +3,7 @@
 \name{acm_export_certificate}
 \alias{acm_export_certificate}
 \title{Exports a private certificate issued by a private certificate authority
-(CA) for use anywhere}
+(CA) or public certificate for use anywhere}
 \usage{
 acm_export_certificate(CertificateArn, Passphrase)
 }
@@ -26,7 +26,7 @@ passphrase.
 \verb{openssl rsa -in encrypted_key.pem -out decrypted_key.pem}}
 }
 \description{
-Exports a private certificate issued by a private certificate authority (CA) for use anywhere. The exported file contains the certificate, the certificate chain, and the encrypted private 2048-bit RSA key associated with the public key that is embedded in the certificate. For security, you must assign a passphrase for the private key when exporting it.
+Exports a private certificate issued by a private certificate authority (CA) or public certificate for use anywhere. The exported file contains the certificate, the certificate chain, and the encrypted private key associated with the public key that is embedded in the certificate. For security, you must assign a passphrase for the private key when exporting it.
 
 See \url{https://www.paws-r-sdk.com/docs/acm_export_certificate/} for full documentation.
 }

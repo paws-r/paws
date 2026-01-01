@@ -37,7 +37,15 @@ server-side encryption: server-side encryption with Amazon S3 managed
 keys (SSE-S3) (\code{AES256}) and server-side encryption with KMS keys
 (SSE-KMS) (\code{aws:kms}). By default, Amazon S3 encrypts data with SSE-S3.
 For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html}{Protecting data with server-side encryption}
-in the \emph{Amazon S3 User Guide}.}
+in the \emph{Amazon S3 User Guide}.
+
+\strong{S3 access points for Amazon FSx} - When accessing data stored in
+Amazon FSx file systems using S3 access points, the only valid server
+side encryption option is \code{aws:fsx}. All Amazon FSx file systems have
+encryption configured by default and are encrypted at rest. Data is
+automatically encrypted before being written to the file system, and
+automatically decrypted as it is read. These processes are handled
+transparently by Amazon FSx.}
 
 \item{SSEKMSKeyId}{If you specify \code{x-amz-server-side-encryption} with \code{aws:kms}, you must
 specify the \code{ x-amz-server-side-encryption-aws-kms-key-id} header with

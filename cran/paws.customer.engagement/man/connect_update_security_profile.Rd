@@ -13,7 +13,9 @@ connect_update_security_profile(
   TagRestrictedResources = NULL,
   Applications = NULL,
   HierarchyRestrictedResources = NULL,
-  AllowedAccessControlHierarchyGroupId = NULL
+  AllowedAccessControlHierarchyGroupId = NULL,
+  AllowedFlowModules = NULL,
+  GranularAccessControlConfiguration = NULL
 )
 }
 \arguments{
@@ -41,6 +43,11 @@ ResourceNames: \code{User}.}
 
 \item{AllowedAccessControlHierarchyGroupId}{The identifier of the hierarchy group that a security profile uses to
 restrict access to resources in Amazon Connect.}
+
+\item{AllowedFlowModules}{A list of Flow Modules an AI Agent can invoke as a tool}
+
+\item{GranularAccessControlConfiguration}{The granular access control configuration for the security profile,
+including data table permissions.}
 }
 \description{
 Updates a security profile.

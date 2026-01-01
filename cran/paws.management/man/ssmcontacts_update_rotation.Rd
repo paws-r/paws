@@ -18,6 +18,9 @@ ssmcontacts_update_rotation(
 \item{ContactIds}{The Amazon Resource Names (ARNs) of the contacts to include in the
 updated rotation.
 
+Only the \code{PERSONAL} contact type is supported. The contact types
+\code{ESCALATION} and \code{ONCALL_SCHEDULE} are not supported for this operation.
+
 The order in which you list the contacts is their shift order in the
 rotation schedule.}
 
@@ -30,8 +33,7 @@ the \href{https://www.iana.org/time-zones}{Time Zone Database} on the IANA
 website.
 
 Designators for time zones that don’t support Daylight Savings Time
-Rules, such as Pacific Standard Time (PST) and Pacific Daylight Time
-(PDT), aren't supported.}
+Rules, such as Pacific Standard Time (PST), aren't supported.}
 
 \item{Recurrence}{[required] Information about how long the updated rotation lasts before restarting
 at the beginning of the shift order.}

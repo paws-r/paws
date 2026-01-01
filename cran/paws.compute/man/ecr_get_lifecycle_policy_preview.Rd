@@ -37,9 +37,9 @@ parameter is used, \code{GetLifecyclePolicyPreviewRequest} only returns
 \code{maxResults} results in a single page along with a \code{nextToken} response
 element. The remaining results of the initial request can be seen by
 sending another \code{GetLifecyclePolicyPreviewRequest} request with the
-returned \code{nextToken} value. This value can be between 1 and 1000. If
+returned \code{nextToken} value. This value can be between 1 and 100. If
 this parameter is not used, then \code{GetLifecyclePolicyPreviewRequest}
-returns up to 100 results and a \code{nextToken} value, if applicable. This
+returns up to100 results and a \code{nextToken} value, if applicable. This
 option cannot be used when you specify images with \code{imageIds}.}
 
 \item{filter}{An optional parameter that filters results based on image tag status and

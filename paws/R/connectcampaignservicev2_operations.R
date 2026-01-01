@@ -11,12 +11,13 @@ NULL
 #'
 #' @usage
 #' connectcampaignservicev2_create_campaign(name, connectInstanceId,
-#'   channelSubtypeConfig, source, connectCampaignFlowArn, schedule,
+#'   channelSubtypeConfig, type, source, connectCampaignFlowArn, schedule,
 #'   communicationTimeConfig, communicationLimitsOverride, tags)
 #'
 #' @param name &#91;required&#93; 
 #' @param connectInstanceId &#91;required&#93; 
-#' @param channelSubtypeConfig &#91;required&#93; 
+#' @param channelSubtypeConfig 
+#' @param type 
 #' @param source 
 #' @param connectCampaignFlowArn 
 #' @param schedule 
@@ -52,7 +53,16 @@ NULL
 #'         predictive = list(
 #'           bandwidthAllocation = 123.0
 #'         ),
-#'         agentless = list()
+#'         agentless = list(),
+#'         preview = list(
+#'           bandwidthAllocation = 123.0,
+#'           timeoutConfig = list(
+#'             durationInSeconds = 123
+#'           ),
+#'           agentActions = list(
+#'             "DISCARD"
+#'           )
+#'         )
 #'       ),
 #'       defaultOutboundConfig = list(
 #'         connectContactFlowId = "string",
@@ -60,7 +70,8 @@ NULL
 #'         answerMachineDetectionConfig = list(
 #'           enableAnswerMachineDetection = TRUE|FALSE,
 #'           awaitAnswerMachinePrompt = TRUE|FALSE
-#'         )
+#'         ),
+#'         ringTimeout = 123
 #'       )
 #'     ),
 #'     sms = list(
@@ -83,8 +94,19 @@ NULL
 #'         sourceEmailAddressDisplayName = "string",
 #'         wisdomTemplateArn = "string"
 #'       )
+#'     ),
+#'     whatsApp = list(
+#'       capacity = 123.0,
+#'       outboundMode = list(
+#'         agentless = list()
+#'       ),
+#'       defaultOutboundConfig = list(
+#'         connectSourcePhoneNumberArn = "string",
+#'         wisdomTemplateArn = "string"
+#'       )
 #'     )
 #'   ),
+#'   type = "MANAGED"|"JOURNEY",
 #'   source = list(
 #'     customerProfilesSegmentArn = "string",
 #'     eventTrigger = list(
@@ -170,6 +192,27 @@ NULL
 #'           )
 #'         )
 #'       )
+#'     ),
+#'     whatsApp = list(
+#'       openHours = list(
+#'         dailyHours = list(
+#'           list(
+#'             list(
+#'               startTime = "string",
+#'               endTime = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       restrictedPeriods = list(
+#'         restrictedPeriodList = list(
+#'           list(
+#'             name = "string",
+#'             startDate = "string",
+#'             endDate = "string"
+#'           )
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   communicationLimitsOverride = list(
@@ -181,7 +224,8 @@ NULL
 #'           unit = "DAY"
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     instanceLimitsHandling = "OPT_IN"|"OPT_OUT"
 #'   ),
 #'   tags = list(
 #'     "string"
@@ -194,7 +238,7 @@ NULL
 #' @rdname connectcampaignservicev2_create_campaign
 #'
 #' @aliases connectcampaignservicev2_create_campaign
-connectcampaignservicev2_create_campaign <- function(name, connectInstanceId, channelSubtypeConfig, source = NULL, connectCampaignFlowArn = NULL, schedule = NULL, communicationTimeConfig = NULL, communicationLimitsOverride = NULL, tags = NULL) {
+connectcampaignservicev2_create_campaign <- function(name, connectInstanceId, channelSubtypeConfig = NULL, type = NULL, source = NULL, connectCampaignFlowArn = NULL, schedule = NULL, communicationTimeConfig = NULL, communicationLimitsOverride = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateCampaign",
     http_method = "PUT",
@@ -203,7 +247,7 @@ connectcampaignservicev2_create_campaign <- function(name, connectInstanceId, ch
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connectcampaignservicev2$create_campaign_input(name = name, connectInstanceId = connectInstanceId, channelSubtypeConfig = channelSubtypeConfig, source = source, connectCampaignFlowArn = connectCampaignFlowArn, schedule = schedule, communicationTimeConfig = communicationTimeConfig, communicationLimitsOverride = communicationLimitsOverride, tags = tags)
+  input <- .connectcampaignservicev2$create_campaign_input(name = name, connectInstanceId = connectInstanceId, channelSubtypeConfig = channelSubtypeConfig, type = type, source = source, connectCampaignFlowArn = connectCampaignFlowArn, schedule = schedule, communicationTimeConfig = communicationTimeConfig, communicationLimitsOverride = communicationLimitsOverride, tags = tags)
   output <- .connectcampaignservicev2$create_campaign_output()
   config <- get_config()
   svc <- .connectcampaignservicev2$service(config, op)
@@ -277,7 +321,7 @@ connectcampaignservicev2_delete_campaign <- function(id) {
 #' ```
 #' svc$delete_campaign_channel_subtype_config(
 #'   id = "string",
-#'   channelSubtype = "TELEPHONY"|"SMS"|"EMAIL"
+#'   channelSubtype = "TELEPHONY"|"SMS"|"EMAIL"|"WHATSAPP"
 #' )
 #' ```
 #'
@@ -372,7 +416,7 @@ connectcampaignservicev2_delete_campaign_communication_limits <- function(id, co
 #' ```
 #' svc$delete_campaign_communication_time(
 #'   id = "string",
-#'   config = "TELEPHONY"|"SMS"|"EMAIL"
+#'   config = "TELEPHONY"|"SMS"|"EMAIL"|"WHATSAPP"
 #' )
 #' ```
 #'
@@ -472,6 +516,9 @@ connectcampaignservicev2_delete_connect_instance_config <- function(connectInsta
 #'     ),
 #'     qConnect = list(
 #'       knowledgeBaseArn = "string"
+#'     ),
+#'     lambda = list(
+#'       functionArn = "string"
 #'     )
 #'   )
 #' )
@@ -578,7 +625,16 @@ connectcampaignservicev2_delete_instance_onboarding_job <- function(connectInsta
 #'           predictive = list(
 #'             bandwidthAllocation = 123.0
 #'           ),
-#'           agentless = list()
+#'           agentless = list(),
+#'           preview = list(
+#'             bandwidthAllocation = 123.0,
+#'             timeoutConfig = list(
+#'               durationInSeconds = 123
+#'             ),
+#'             agentActions = list(
+#'               "DISCARD"
+#'             )
+#'           )
 #'         ),
 #'         defaultOutboundConfig = list(
 #'           connectContactFlowId = "string",
@@ -586,7 +642,8 @@ connectcampaignservicev2_delete_instance_onboarding_job <- function(connectInsta
 #'           answerMachineDetectionConfig = list(
 #'             enableAnswerMachineDetection = TRUE|FALSE,
 #'             awaitAnswerMachinePrompt = TRUE|FALSE
-#'           )
+#'           ),
+#'           ringTimeout = 123
 #'         )
 #'       ),
 #'       sms = list(
@@ -609,8 +666,19 @@ connectcampaignservicev2_delete_instance_onboarding_job <- function(connectInsta
 #'           sourceEmailAddressDisplayName = "string",
 #'           wisdomTemplateArn = "string"
 #'         )
+#'       ),
+#'       whatsApp = list(
+#'         capacity = 123.0,
+#'         outboundMode = list(
+#'           agentless = list()
+#'         ),
+#'         defaultOutboundConfig = list(
+#'           connectSourcePhoneNumberArn = "string",
+#'           wisdomTemplateArn = "string"
+#'         )
 #'       )
 #'     ),
+#'     type = "MANAGED"|"JOURNEY",
 #'     source = list(
 #'       customerProfilesSegmentArn = "string",
 #'       eventTrigger = list(
@@ -696,6 +764,27 @@ connectcampaignservicev2_delete_instance_onboarding_job <- function(connectInsta
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       whatsApp = list(
+#'         openHours = list(
+#'           dailyHours = list(
+#'             list(
+#'               list(
+#'                 startTime = "string",
+#'                 endTime = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         restrictedPeriods = list(
+#'           restrictedPeriodList = list(
+#'             list(
+#'               name = "string",
+#'               startDate = "string",
+#'               endDate = "string"
+#'             )
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     communicationLimitsOverride = list(
@@ -707,7 +796,8 @@ connectcampaignservicev2_delete_instance_onboarding_job <- function(connectInsta
 #'             unit = "DAY"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       instanceLimitsHandling = "OPT_IN"|"OPT_OUT"
 #'     ),
 #'     tags = list(
 #'       "string"
@@ -915,6 +1005,66 @@ connectcampaignservicev2_get_connect_instance_config <- function(connectInstance
 }
 .connectcampaignservicev2$operations$get_connect_instance_config <- connectcampaignservicev2_get_connect_instance_config
 
+#' Get the instance communication limits
+#'
+#' @description
+#' Get the instance communication limits.
+#'
+#' @usage
+#' connectcampaignservicev2_get_instance_communication_limits(
+#'   connectInstanceId)
+#'
+#' @param connectInstanceId &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   communicationLimitsConfig = list(
+#'     allChannelSubtypes = list(
+#'       communicationLimitsList = list(
+#'         list(
+#'           maxCountPerRecipient = 123,
+#'           frequency = 123,
+#'           unit = "DAY"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_instance_communication_limits(
+#'   connectInstanceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connectcampaignservicev2_get_instance_communication_limits
+#'
+#' @aliases connectcampaignservicev2_get_instance_communication_limits
+connectcampaignservicev2_get_instance_communication_limits <- function(connectInstanceId) {
+  op <- new_operation(
+    name = "GetInstanceCommunicationLimits",
+    http_method = "GET",
+    http_path = "/v2/connect-instance/{connectInstanceId}/communication-limits",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .connectcampaignservicev2$get_instance_communication_limits_input(connectInstanceId = connectInstanceId)
+  output <- .connectcampaignservicev2$get_instance_communication_limits_output()
+  config <- get_config()
+  svc <- .connectcampaignservicev2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectcampaignservicev2$operations$get_instance_communication_limits <- connectcampaignservicev2_get_instance_communication_limits
+
 #' Get the specific instance onboarding job status
 #'
 #' @description
@@ -995,8 +1145,9 @@ connectcampaignservicev2_get_instance_onboarding_job_status <- function(connectI
 #'       name = "string",
 #'       connectInstanceId = "string",
 #'       channelSubtypes = list(
-#'         "TELEPHONY"|"SMS"|"EMAIL"
+#'         "TELEPHONY"|"SMS"|"EMAIL"|"WHATSAPP"
 #'       ),
+#'       type = "MANAGED"|"JOURNEY",
 #'       schedule = list(
 #'         startTime = as.POSIXct(
 #'           "2015-01-01"
@@ -1080,6 +1231,9 @@ connectcampaignservicev2_list_campaigns <- function(maxResults = NULL, nextToken
 #'       ),
 #'       qConnect = list(
 #'         knowledgeBaseArn = "string"
+#'       ),
+#'       lambda = list(
+#'         functionArn = "string"
 #'       )
 #'     )
 #'   )
@@ -1242,6 +1396,9 @@ connectcampaignservicev2_pause_campaign <- function(id) {
 #'     ),
 #'     qConnect = list(
 #'       knowledgeBaseArn = "string"
+#'     ),
+#'     lambda = list(
+#'       functionArn = "string"
 #'     )
 #'   )
 #' )
@@ -1270,6 +1427,63 @@ connectcampaignservicev2_put_connect_instance_integration <- function(connectIns
   return(response)
 }
 .connectcampaignservicev2$operations$put_connect_instance_integration <- connectcampaignservicev2_put_connect_instance_integration
+
+#' Put the instance communication limits
+#'
+#' @description
+#' Put the instance communication limits. This API is idempotent.
+#'
+#' @usage
+#' connectcampaignservicev2_put_instance_communication_limits(
+#'   connectInstanceId, communicationLimitsConfig)
+#'
+#' @param connectInstanceId &#91;required&#93; 
+#' @param communicationLimitsConfig &#91;required&#93; 
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_instance_communication_limits(
+#'   connectInstanceId = "string",
+#'   communicationLimitsConfig = list(
+#'     allChannelSubtypes = list(
+#'       communicationLimitsList = list(
+#'         list(
+#'           maxCountPerRecipient = 123,
+#'           frequency = 123,
+#'           unit = "DAY"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connectcampaignservicev2_put_instance_communication_limits
+#'
+#' @aliases connectcampaignservicev2_put_instance_communication_limits
+connectcampaignservicev2_put_instance_communication_limits <- function(connectInstanceId, communicationLimitsConfig) {
+  op <- new_operation(
+    name = "PutInstanceCommunicationLimits",
+    http_method = "PUT",
+    http_path = "/v2/connect-instance/{connectInstanceId}/communication-limits",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .connectcampaignservicev2$put_instance_communication_limits_input(connectInstanceId = connectInstanceId, communicationLimitsConfig = communicationLimitsConfig)
+  output <- .connectcampaignservicev2$put_instance_communication_limits_output()
+  config <- get_config()
+  svc <- .connectcampaignservicev2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectcampaignservicev2$operations$put_instance_communication_limits <- connectcampaignservicev2_put_instance_communication_limits
 
 #' Creates outbound requests for the specified campaign Amazon Connect
 #' account
@@ -1325,7 +1539,8 @@ connectcampaignservicev2_put_connect_instance_integration <- function(connectIns
 #'           answerMachineDetectionConfig = list(
 #'             enableAnswerMachineDetection = TRUE|FALSE,
 #'             awaitAnswerMachinePrompt = TRUE|FALSE
-#'           )
+#'           ),
+#'           ringTimeout = 123
 #'         ),
 #'         sms = list(
 #'           destinationPhoneNumber = "string",
@@ -1338,6 +1553,14 @@ connectcampaignservicev2_put_connect_instance_integration <- function(connectIns
 #'         email = list(
 #'           destinationEmailAddress = "string",
 #'           connectSourceEmailAddress = "string",
+#'           templateArn = "string",
+#'           templateParameters = list(
+#'             "string"
+#'           )
+#'         ),
+#'         whatsApp = list(
+#'           destinationPhoneNumber = "string",
+#'           connectSourcePhoneNumberArn = "string",
 #'           templateArn = "string",
 #'           templateParameters = list(
 #'             "string"
@@ -1766,7 +1989,16 @@ connectcampaignservicev2_untag_resource <- function(arn, tagKeys) {
 #'         predictive = list(
 #'           bandwidthAllocation = 123.0
 #'         ),
-#'         agentless = list()
+#'         agentless = list(),
+#'         preview = list(
+#'           bandwidthAllocation = 123.0,
+#'           timeoutConfig = list(
+#'             durationInSeconds = 123
+#'           ),
+#'           agentActions = list(
+#'             "DISCARD"
+#'           )
+#'         )
 #'       ),
 #'       defaultOutboundConfig = list(
 #'         connectContactFlowId = "string",
@@ -1774,7 +2006,8 @@ connectcampaignservicev2_untag_resource <- function(arn, tagKeys) {
 #'         answerMachineDetectionConfig = list(
 #'           enableAnswerMachineDetection = TRUE|FALSE,
 #'           awaitAnswerMachinePrompt = TRUE|FALSE
-#'         )
+#'         ),
+#'         ringTimeout = 123
 #'       )
 #'     ),
 #'     sms = list(
@@ -1795,6 +2028,16 @@ connectcampaignservicev2_untag_resource <- function(arn, tagKeys) {
 #'       defaultOutboundConfig = list(
 #'         connectSourceEmailAddress = "string",
 #'         sourceEmailAddressDisplayName = "string",
+#'         wisdomTemplateArn = "string"
+#'       )
+#'     ),
+#'     whatsApp = list(
+#'       capacity = 123.0,
+#'       outboundMode = list(
+#'         agentless = list()
+#'       ),
+#'       defaultOutboundConfig = list(
+#'         connectSourcePhoneNumberArn = "string",
 #'         wisdomTemplateArn = "string"
 #'       )
 #'     )
@@ -1855,7 +2098,8 @@ connectcampaignservicev2_update_campaign_channel_subtype_config <- function(id, 
 #'           unit = "DAY"
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     instanceLimitsHandling = "OPT_IN"|"OPT_OUT"
 #'   )
 #' )
 #' ```
@@ -1954,6 +2198,27 @@ connectcampaignservicev2_update_campaign_communication_limits <- function(id, co
 #'       )
 #'     ),
 #'     email = list(
+#'       openHours = list(
+#'         dailyHours = list(
+#'           list(
+#'             list(
+#'               startTime = "string",
+#'               endTime = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       restrictedPeriods = list(
+#'         restrictedPeriodList = list(
+#'           list(
+#'             name = "string",
+#'             startDate = "string",
+#'             endDate = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     whatsApp = list(
 #'       openHours = list(
 #'         dailyHours = list(
 #'           list(

@@ -2,7 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_get_read_set}
 \alias{omics_get_read_set}
-\title{Gets a file from a read set}
+\title{Retrieves detailed information from parts of a read set and returns the
+read set in the same format that it was uploaded}
 \usage{
 omics_get_read_set(id, sequenceStoreId, file = NULL, partNumber)
 }
@@ -16,7 +17,7 @@ omics_get_read_set(id, sequenceStoreId, file = NULL, partNumber)
 \item{partNumber}{[required] The part number to retrieve.}
 }
 \description{
-Gets a file from a read set.
+Retrieves detailed information from parts of a read set and returns the read set in the same format that it was uploaded. You must have read sets uploaded to your sequence store in order to run this operation.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_get_read_set/} for full documentation.
 }

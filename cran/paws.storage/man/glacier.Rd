@@ -48,7 +48,7 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Amazon S3 Glacier (Glacier) is a storage solution for "cold data."
+Amazon Glacier (Glacier) is a storage solution for "cold data."
 
 Glacier is an extremely low-cost storage service that provides secure,
 durable, and easy-to-use storage for data backup and archival. With
@@ -68,14 +68,13 @@ You can store any kind of data in any format. There is no maximum limit
 on the total amount of data you can store in Glacier.
 
 If you are a first-time user of Glacier, we recommend that you begin by
-reading the following sections in the \emph{Amazon S3 Glacier Developer
-Guide}:
+reading the following sections in the \emph{Amazon Glacier Developer Guide}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/introduction.html}{What is Amazon S3 Glacier} -
+\item \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/introduction.html}{What is Amazon Glacier} -
 This section of the Developer Guide describes the underlying data
 model, the operations it supports, and the AWS SDKs that you can use
 to interact with the service.
-\item \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/amazon-glacier-getting-started.html}{Getting Started with Amazon S3 Glacier} -
+\item \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/amazon-glacier-getting-started.html}{Getting Started with Amazon Glacier} -
 The Getting Started section walks you through the process of
 creating a vault, uploading archives, creating jobs to download
 archives, retrieving the job output, and deleting archives.
@@ -123,14 +122,14 @@ archives, retrieving the job output, and deleting archives.
 \link[=glacier_abort_multipart_upload]{abort_multipart_upload} \tab This operation aborts a multipart upload identified by the upload ID\cr
 \link[=glacier_abort_vault_lock]{abort_vault_lock} \tab This operation aborts the vault locking process if the vault lock is not in the Locked state\cr
 \link[=glacier_add_tags_to_vault]{add_tags_to_vault} \tab This operation adds the specified tags to a vault\cr
-\link[=glacier_complete_multipart_upload]{complete_multipart_upload} \tab You call this operation to inform Amazon S3 Glacier (Glacier) that all the archive parts have been uploaded and that Glacier can now assemble the archive from the uploaded parts\cr
+\link[=glacier_complete_multipart_upload]{complete_multipart_upload} \tab You call this operation to inform Amazon Glacier (Glacier) that all the archive parts have been uploaded and that Glacier can now assemble the archive from the uploaded parts\cr
 \link[=glacier_complete_vault_lock]{complete_vault_lock} \tab This operation completes the vault locking process by transitioning the vault lock from the InProgress state to the Locked state, which causes the vault lock policy to become unchangeable\cr
 \link[=glacier_create_vault]{create_vault} \tab This operation creates a new vault with the specified name\cr
 \link[=glacier_delete_archive]{delete_archive} \tab This operation deletes an archive from a vault\cr
 \link[=glacier_delete_vault]{delete_vault} \tab This operation deletes a vault\cr
 \link[=glacier_delete_vault_access_policy]{delete_vault_access_policy} \tab This operation deletes the access policy associated with the specified vault\cr
 \link[=glacier_delete_vault_notifications]{delete_vault_notifications} \tab This operation deletes the notification configuration set for a vault\cr
-\link[=glacier_describe_job]{describe_job} \tab This operation returns information about a job you previously initiated, including the job initiation date, the user who initiated the job, the job status code/message and the Amazon SNS topic to notify after Amazon S3 Glacier (Glacier) completes the job\cr
+\link[=glacier_describe_job]{describe_job} \tab This operation returns information about a job you previously initiated, including the job initiation date, the user who initiated the job, the job status code/message and the Amazon SNS topic to notify after Amazon Glacier (Glacier) completes the job\cr
 \link[=glacier_describe_vault]{describe_vault} \tab This operation returns information about a vault, including the vault's Amazon Resource Name (ARN), the date the vault was created, the number of archives it contains, and the total size of all the archives in the vault\cr
 \link[=glacier_get_data_retrieval_policy]{get_data_retrieval_policy} \tab This operation returns the current data retrieval policy for the account and region specified in the GET request\cr
 \link[=glacier_get_job_output]{get_job_output} \tab This operation downloads the output of the job you initiated using InitiateJob\cr

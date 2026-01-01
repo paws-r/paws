@@ -6,9 +6,9 @@
 \usage{
 controltower_enable_control(
   controlIdentifier,
-  parameters = NULL,
+  targetIdentifier,
   tags = NULL,
-  targetIdentifier
+  parameters = NULL
 )
 }
 \arguments{
@@ -17,13 +17,13 @@ controls are permitted, with the exception of the \strong{Region deny}
 control. For information on how to find the \code{controlIdentifier}, see
 \href{https://docs.aws.amazon.com/controltower/latest/APIReference/Welcome.html}{the overview page}.}
 
-\item{parameters}{A list of input parameter values, which are specified to configure the
-control when you enable it.}
+\item{targetIdentifier}{[required] The ARN of the organizational unit. For information on how to find the
+\code{targetIdentifier}, see \href{https://docs.aws.amazon.com/controltower/latest/APIReference/Welcome.html}{the overview page}.}
 
 \item{tags}{Tags to be applied to the \code{EnabledControl} resource.}
 
-\item{targetIdentifier}{[required] The ARN of the organizational unit. For information on how to find the
-\code{targetIdentifier}, see \href{https://docs.aws.amazon.com/controltower/latest/APIReference/Welcome.html}{the overview page}.}
+\item{parameters}{A list of input parameter values, which are specified to configure the
+control when you enable it.}
 }
 \description{
 This API call activates a control. It starts an asynchronous operation that creates Amazon Web Services resources on the specified organizational unit and the accounts it contains. The resources created will vary according to the control that you specify. For usage examples, see the \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html}{\emph{Controls Reference Guide}} .

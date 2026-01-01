@@ -2,8 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_delete_route_calculator}
 \alias{locationservice_delete_route_calculator}
-\title{Deletes a route calculator resource from your Amazon Web Services
-account}
+\title{This operation is no longer current and may be deprecated in the future}
 \usage{
 locationservice_delete_route_calculator(CalculatorName)
 }
@@ -11,7 +10,7 @@ locationservice_delete_route_calculator(CalculatorName)
 \item{CalculatorName}{[required] The name of the route calculator resource to be deleted.}
 }
 \description{
-Deletes a route calculator resource from your Amazon Web Services account.
+This operation is no longer current and may be deprecated in the future. We recommend you upgrade to the Routes API V2 unless you require Grab data.
 
 See \url{https://www.paws-r-sdk.com/docs/locationservice_delete_route_calculator/} for full documentation.
 }
