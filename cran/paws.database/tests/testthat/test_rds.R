@@ -44,6 +44,10 @@ test_that("describe_db_instances", {
   expect_error(svc$describe_db_instances(), NA)
 })
 
+test_that("describe_db_major_engine_versions", {
+  expect_error(svc$describe_db_major_engine_versions(), NA)
+})
+
 test_that("describe_db_parameter_groups", {
   expect_error(svc$describe_db_parameter_groups(), NA)
 })

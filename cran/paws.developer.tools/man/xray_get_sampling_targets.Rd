@@ -5,10 +5,16 @@
 \title{Requests a sampling quota for rules that the service is using to sample
 requests}
 \usage{
-xray_get_sampling_targets(SamplingStatisticsDocuments)
+xray_get_sampling_targets(
+  SamplingStatisticsDocuments,
+  SamplingBoostStatisticsDocuments = NULL
+)
 }
 \arguments{
 \item{SamplingStatisticsDocuments}{[required] Information about rules that the service is using to sample requests.}
+
+\item{SamplingBoostStatisticsDocuments}{Information about rules that the service is using to boost sampling
+rate.}
 }
 \description{
 Requests a sampling quota for rules that the service is using to sample requests.

@@ -2,17 +2,17 @@
 % Please edit documentation in R/pinpointsmsvoicev2_operations.R
 \name{pinpointsmsvoicev2_delete_resource_policy}
 \alias{pinpointsmsvoicev2_delete_resource_policy}
-\title{Deletes the resource-based policy document attached to the AWS End User
-Messaging SMS and Voice resource}
+\title{Deletes the resource-based policy document attached to the End User
+Messaging SMS resource}
 \usage{
 pinpointsmsvoicev2_delete_resource_policy(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the AWS End User Messaging SMS and
-Voice resource you're deleting the resource-based policy from.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the End User Messaging SMS resource
+you're deleting the resource-based policy from.}
 }
 \description{
-Deletes the resource-based policy document attached to the AWS End User Messaging SMS and Voice resource. A shared resource can be a Pool, Opt-out list, Sender Id, or Phone number.
+Deletes the resource-based policy document attached to the End User Messaging SMS resource. A shared resource can be a Pool, Opt-out list, Sender Id, or Phone number.
 
 See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_resource_policy/} for full documentation.
 }

@@ -2,21 +2,22 @@
 % Please edit documentation in R/braket_operations.R
 \name{braket_search_jobs}
 \alias{braket_search_jobs}
-\title{Searches for Amazon Braket jobs that match the specified filter values}
+\title{Searches for Amazon Braket hybrid jobs that match the specified filter
+values}
 \usage{
-braket_search_jobs(filters, maxResults = NULL, nextToken = NULL)
+braket_search_jobs(nextToken = NULL, maxResults = NULL, filters)
 }
 \arguments{
-\item{filters}{[required] The filter values to use when searching for a job.}
+\item{nextToken}{A token used for pagination of results returned in the response. Use the
+token returned from the previous request to continue search where the
+previous request ended.}
 
 \item{maxResults}{The maximum number of results to return in the response.}
 
-\item{nextToken}{A token used for pagination of results returned in the response. Use the
-token returned from the previous request to continue results where the
-previous request ended.}
+\item{filters}{[required] Array of SearchJobsFilter objects to use when searching for hybrid jobs.}
 }
 \description{
-Searches for Amazon Braket jobs that match the specified filter values.
+Searches for Amazon Braket hybrid jobs that match the specified filter values.
 
 See \url{https://www.paws-r-sdk.com/docs/braket_search_jobs/} for full documentation.
 }

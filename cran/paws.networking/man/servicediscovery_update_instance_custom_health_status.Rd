@@ -12,8 +12,12 @@ servicediscovery_update_instance_custom_health_status(
 )
 }
 \arguments{
-\item{ServiceId}{[required] The ID of the service that includes the configuration for the custom
-health check that you want to change the status for.}
+\item{ServiceId}{[required] The ID or Amazon Resource Name (ARN) of the service that includes the
+configuration for the custom health check that you want to change the
+status for. For services created in a shared namespace, specify the
+service ARN. For more information about shared namespaces, see
+\href{https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html}{Cross-account Cloud Map namespace sharing}
+in the \emph{Cloud Map Developer Guide}.}
 
 \item{InstanceId}{[required] The ID of the instance that you want to change the health status for.}
 

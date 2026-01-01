@@ -4,12 +4,12 @@
 \alias{controltower_list_baselines}
 \title{Returns a summary list of all available baselines}
 \usage{
-controltower_list_baselines(maxResults = NULL, nextToken = NULL)
+controltower_list_baselines(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
-\item{maxResults}{The maximum number of results to be shown.}
-
 \item{nextToken}{A pagination token.}
+
+\item{maxResults}{The maximum number of results to be shown.}
 }
 \description{
 Returns a summary list of all available baselines. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html}{\emph{the Amazon Web Services Control Tower User Guide}} .

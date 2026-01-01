@@ -4,12 +4,12 @@
 \alias{inspector2_get_encryption_key}
 \title{Gets an encryption key}
 \usage{
-inspector2_get_encryption_key(resourceType, scanType)
+inspector2_get_encryption_key(scanType, resourceType)
 }
 \arguments{
-\item{resourceType}{[required] The resource type the key encrypts.}
-
 \item{scanType}{[required] The scan type the key encrypts.}
+
+\item{resourceType}{[required] The resource type the key encrypts.}
 }
 \description{
 Gets an encryption key.

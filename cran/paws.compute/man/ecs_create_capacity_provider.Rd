@@ -2,9 +2,15 @@
 % Please edit documentation in R/ecs_operations.R
 \name{ecs_create_capacity_provider}
 \alias{ecs_create_capacity_provider}
-\title{Creates a new capacity provider}
+\title{Creates a capacity provider}
 \usage{
-ecs_create_capacity_provider(name, autoScalingGroupProvider, tags = NULL)
+ecs_create_capacity_provider(
+  name,
+  cluster = NULL,
+  autoScalingGroupProvider = NULL,
+  managedInstancesProvider = NULL,
+  tags = NULL
+)
 }
 \arguments{
 \item{name}{[required] The name of the capacity provider. Up to 255 characters are allowed.
@@ -12,7 +18,16 @@ They include letters (both upper and lowercase letters), numbers,
 underscores (_), and hyphens (-). The name can't be prefixed with
 "\code{aws}", "\code{ecs}", or "\code{fargate}".}
 
-\item{autoScalingGroupProvider}{[required] The details of the Auto Scaling group for the capacity provider.}
+\item{cluster}{The name of the cluster to associate with the capacity provider. When
+you create a capacity provider with Amazon ECS Managed Instances, it
+becomes available only within the specified cluster.}
+
+\item{autoScalingGroupProvider}{The details of the Auto Scaling group for the capacity provider.}
+
+\item{managedInstancesProvider}{The configuration for the Amazon ECS Managed Instances provider. This
+configuration specifies how Amazon ECS manages Amazon EC2 instances on
+your behalf, including the infrastructure role, instance launch
+template, and tag propagation settings.}
 
 \item{tags}{The metadata that you apply to the capacity provider to categorize and
 organize them more conveniently. Each tag consists of a key and an
@@ -39,7 +54,7 @@ your tags per resource limit.
 }}
 }
 \description{
-Creates a new capacity provider. Capacity providers are associated with an Amazon ECS cluster and are used in capacity provider strategies to facilitate cluster auto scaling.
+Creates a capacity provider. Capacity providers are associated with a cluster and are used in capacity provider strategies to facilitate cluster auto scaling. You can create capacity providers for Amazon ECS Managed Instances and EC2 instances. Fargate has the predefined \code{FARGATE} and \code{FARGATE_SPOT} capacity providers.
 
 See \url{https://www.paws-r-sdk.com/docs/ecs_create_capacity_provider/} for full documentation.
 }

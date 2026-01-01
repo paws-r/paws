@@ -2,7 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_get_annotation_store}
 \alias{omics_get_annotation_store}
-\title{Gets information about an annotation store}
+\title{Amazon Web Services HealthOmics variant stores and annotation stores
+will no longer be open to new customers starting November 7, 2025}
 \usage{
 omics_get_annotation_store(name)
 }
@@ -10,7 +11,7 @@ omics_get_annotation_store(name)
 \item{name}{[required] The store's name.}
 }
 \description{
-Gets information about an annotation store.
+Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025. If you would like to use variant stores or annotation stores, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/omics/latest/dev/variant-store-availability-change.html}{Amazon Web Services HealthOmics variant store and annotation store availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_get_annotation_store/} for full documentation.
 }

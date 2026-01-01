@@ -5,23 +5,31 @@
 \title{Updates configurations for an alias of an agent}
 \usage{
 bedrockagent_update_agent_alias(
+  agentId,
   agentAliasId,
   agentAliasName,
-  agentId,
   description = NULL,
-  routingConfiguration = NULL
+  routingConfiguration = NULL,
+  aliasInvocationState = NULL
 )
 }
 \arguments{
+\item{agentId}{[required] The unique identifier of the agent.}
+
 \item{agentAliasId}{[required] The unique identifier of the alias.}
 
 \item{agentAliasName}{[required] Specifies a new name for the alias.}
 
-\item{agentId}{[required] The unique identifier of the agent.}
-
 \item{description}{Specifies a new description for the alias.}
 
 \item{routingConfiguration}{Contains details about the routing configuration of the alias.}
+
+\item{aliasInvocationState}{The invocation state for the agent alias. To pause the agent alias, set
+the value to \code{REJECT_INVOCATIONS}. To start the agent alias running
+again, set the value to \code{ACCEPT_INVOCATIONS}. Use the
+\code{\link[=bedrockagent_get_agent_alias]{get_agent_alias}}, or
+\code{\link[=bedrockagent_list_agent_aliases]{list_agent_aliases}}, operation to
+get the invocation state of an agent alias.}
 }
 \description{
 Updates configurations for an alias of an agent.

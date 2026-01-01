@@ -7,7 +7,8 @@
 servicediscovery_update_http_namespace(Id, UpdaterRequestId = NULL, Namespace)
 }
 \arguments{
-\item{Id}{[required] The ID of the namespace that you want to update.}
+\item{Id}{[required] The ID or Amazon Resource Name (ARN) of the namespace that you want to
+update.}
 
 \item{UpdaterRequestId}{A unique string that identifies the request and that allows failed
 \code{\link[=servicediscovery_update_http_namespace]{update_http_namespace}}

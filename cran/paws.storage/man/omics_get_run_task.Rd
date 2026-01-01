@@ -2,7 +2,7 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_get_run_task}
 \alias{omics_get_run_task}
-\title{Gets information about a workflow run task}
+\title{Gets detailed information about a run task using its ID}
 \usage{
 omics_get_run_task(id, taskId)
 }
@@ -12,7 +12,7 @@ omics_get_run_task(id, taskId)
 \item{taskId}{[required] The task's ID.}
 }
 \description{
-Gets information about a workflow run task.
+Gets detailed information about a run task using its ID.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_get_run_task/} for full documentation.
 }

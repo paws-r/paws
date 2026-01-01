@@ -4,12 +4,12 @@
 \alias{prometheusservice_describe_rule_groups_namespace}
 \title{Returns complete information about one rule groups namespace}
 \usage{
-prometheusservice_describe_rule_groups_namespace(name, workspaceId)
+prometheusservice_describe_rule_groups_namespace(workspaceId, name)
 }
 \arguments{
-\item{name}{[required] The name of the rule groups namespace that you want information for.}
-
 \item{workspaceId}{[required] The ID of the workspace containing the rule groups namespace.}
+
+\item{name}{[required] The name of the rule groups namespace that you want information for.}
 }
 \description{
 Returns complete information about one rule groups namespace. To retrieve a list of rule groups namespaces, use \code{\link[=prometheusservice_list_rule_groups_namespaces]{list_rule_groups_namespaces}}.

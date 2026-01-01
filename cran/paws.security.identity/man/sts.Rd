@@ -101,8 +101,10 @@ service, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentia
 \link[=sts_decode_authorization_message]{decode_authorization_message} \tab Decodes additional information about the authorization status of a request from an encoded message returned in response to an Amazon Web Services request\cr
 \link[=sts_get_access_key_info]{get_access_key_info} \tab Returns the account identifier for the specified access key ID\cr
 \link[=sts_get_caller_identity]{get_caller_identity} \tab Returns details about the IAM user or role whose credentials are used to call the operation\cr
+\link[=sts_get_delegated_access_token]{get_delegated_access_token} \tab Exchanges a trade-in token for temporary Amazon Web Services credentials with the permissions associated with the assumed principal\cr
 \link[=sts_get_federation_token]{get_federation_token} \tab Returns a set of temporary security credentials (consisting of an access key ID, a secret access key, and a security token) for a user\cr
-\link[=sts_get_session_token]{get_session_token} \tab Returns a set of temporary credentials for an Amazon Web Services account or IAM user
+\link[=sts_get_session_token]{get_session_token} \tab Returns a set of temporary credentials for an Amazon Web Services account or IAM user\cr
+\link[=sts_get_web_identity_token]{get_web_identity_token} \tab Returns a signed JSON Web Token (JWT) that represents the calling Amazon Web Services identity
 }
 }
 

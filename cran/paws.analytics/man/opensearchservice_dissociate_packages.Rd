@@ -2,7 +2,7 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_dissociate_packages}
 \alias{opensearchservice_dissociate_packages}
-\title{Dissociates multiple packages from a domain simulatneously}
+\title{Dissociates multiple packages from a domain simultaneously}
 \usage{
 opensearchservice_dissociate_packages(PackageList, DomainName)
 }
@@ -12,7 +12,7 @@ opensearchservice_dissociate_packages(PackageList, DomainName)
 \item{DomainName}{[required]}
 }
 \description{
-Dissociates multiple packages from a domain simulatneously.
+Dissociates multiple packages from a domain simultaneously.
 
 See \url{https://www.paws-r-sdk.com/docs/opensearchservice_dissociate_packages/} for full documentation.
 }

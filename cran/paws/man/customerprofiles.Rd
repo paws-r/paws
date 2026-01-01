@@ -113,15 +113,20 @@ in the \emph{Amazon Connect Administrator's Guide}.
 \link[paws.customer.engagement:customerprofiles_batch_get_profile]{batch_get_profile} \tab Get a batch of profiles\cr
 \link[paws.customer.engagement:customerprofiles_create_calculated_attribute_definition]{create_calculated_attribute_definition} \tab Creates a new calculated attribute definition\cr
 \link[paws.customer.engagement:customerprofiles_create_domain]{create_domain} \tab Creates a domain, which is a container for all customer data, such as customer profile attributes, object types, profile keys, and encryption keys\cr
+\link[paws.customer.engagement:customerprofiles_create_domain_layout]{create_domain_layout} \tab Creates the layout to view data for a specific domain\cr
 \link[paws.customer.engagement:customerprofiles_create_event_stream]{create_event_stream} \tab Creates an event stream, which is a subscription to real-time events, such as when profiles are created and updated through Amazon Connect Customer Profiles\cr
 \link[paws.customer.engagement:customerprofiles_create_event_trigger]{create_event_trigger} \tab Creates an event trigger, which specifies the rules when to perform action based on customer's ingested data\cr
 \link[paws.customer.engagement:customerprofiles_create_integration_workflow]{create_integration_workflow} \tab Creates an integration workflow\cr
 \link[paws.customer.engagement:customerprofiles_create_profile]{create_profile} \tab Creates a standard profile\cr
+\link[paws.customer.engagement:customerprofiles_create_recommender]{create_recommender} \tab Creates a recommender\cr
 \link[paws.customer.engagement:customerprofiles_create_segment_definition]{create_segment_definition} \tab Creates a segment definition associated to the given domain\cr
 \link[paws.customer.engagement:customerprofiles_create_segment_estimate]{create_segment_estimate} \tab Creates a segment estimate query\cr
 \link[paws.customer.engagement:customerprofiles_create_segment_snapshot]{create_segment_snapshot} \tab Triggers a job to export a segment to a specified destination\cr
+\link[paws.customer.engagement:customerprofiles_create_upload_job]{create_upload_job} \tab Creates an Upload job to ingest data for segment imports\cr
 \link[paws.customer.engagement:customerprofiles_delete_calculated_attribute_definition]{delete_calculated_attribute_definition} \tab Deletes an existing calculated attribute definition\cr
 \link[paws.customer.engagement:customerprofiles_delete_domain]{delete_domain} \tab Deletes a specific domain and all of its customer data, such as customer profile attributes and their related objects\cr
+\link[paws.customer.engagement:customerprofiles_delete_domain_layout]{delete_domain_layout} \tab Deletes the layout used to view data for a specific domain\cr
+\link[paws.customer.engagement:customerprofiles_delete_domain_object_type]{delete_domain_object_type} \tab Delete a DomainObjectType for the given Domain and ObjectType name\cr
 \link[paws.customer.engagement:customerprofiles_delete_event_stream]{delete_event_stream} \tab Disables and deletes the specified event stream\cr
 \link[paws.customer.engagement:customerprofiles_delete_event_trigger]{delete_event_trigger} \tab Disable and deletes the Event Trigger\cr
 \link[paws.customer.engagement:customerprofiles_delete_integration]{delete_integration} \tab Removes an integration from a specific domain\cr
@@ -129,6 +134,7 @@ in the \emph{Amazon Connect Administrator's Guide}.
 \link[paws.customer.engagement:customerprofiles_delete_profile_key]{delete_profile_key} \tab Removes a searchable key from a customer profile\cr
 \link[paws.customer.engagement:customerprofiles_delete_profile_object]{delete_profile_object} \tab Removes an object associated with a profile of a given ProfileObjectType\cr
 \link[paws.customer.engagement:customerprofiles_delete_profile_object_type]{delete_profile_object_type} \tab Removes a ProfileObjectType from a specific domain as well as removes all the ProfileObjects of that type\cr
+\link[paws.customer.engagement:customerprofiles_delete_recommender]{delete_recommender} \tab Deletes a recommender\cr
 \link[paws.customer.engagement:customerprofiles_delete_segment_definition]{delete_segment_definition} \tab Deletes a segment definition from the domain\cr
 \link[paws.customer.engagement:customerprofiles_delete_workflow]{delete_workflow} \tab Deletes the specified workflow and all its corresponding resources\cr
 \link[paws.customer.engagement:customerprofiles_detect_profile_object_type]{detect_profile_object_type} \tab The process of detecting profile object type mapping by using given objects\cr
@@ -136,48 +142,70 @@ in the \emph{Amazon Connect Administrator's Guide}.
 \link[paws.customer.engagement:customerprofiles_get_calculated_attribute_definition]{get_calculated_attribute_definition} \tab Provides more information on a calculated attribute definition for Customer Profiles\cr
 \link[paws.customer.engagement:customerprofiles_get_calculated_attribute_for_profile]{get_calculated_attribute_for_profile} \tab Retrieve a calculated attribute for a customer profile\cr
 \link[paws.customer.engagement:customerprofiles_get_domain]{get_domain} \tab Returns information about a specific domain\cr
+\link[paws.customer.engagement:customerprofiles_get_domain_layout]{get_domain_layout} \tab Gets the layout to view data for a specific domain\cr
+\link[paws.customer.engagement:customerprofiles_get_domain_object_type]{get_domain_object_type} \tab Return a DomainObjectType for the input Domain and ObjectType names\cr
 \link[paws.customer.engagement:customerprofiles_get_event_stream]{get_event_stream} \tab Returns information about the specified event stream in a specific domain\cr
 \link[paws.customer.engagement:customerprofiles_get_event_trigger]{get_event_trigger} \tab Get a specific Event Trigger from the domain\cr
 \link[paws.customer.engagement:customerprofiles_get_identity_resolution_job]{get_identity_resolution_job} \tab Returns information about an Identity Resolution Job in a specific domain\cr
 \link[paws.customer.engagement:customerprofiles_get_integration]{get_integration} \tab Returns an integration for a domain\cr
 \link[paws.customer.engagement:customerprofiles_get_matches]{get_matches} \tab Before calling this API, use CreateDomain or UpdateDomain to enable identity resolution: set Matching to true\cr
+\link[paws.customer.engagement:customerprofiles_get_object_type_attribute_statistics]{get_object_type_attribute_statistics} \tab The GetObjectTypeAttributeValues API delivers statistical insights about attributes within a specific object type, but is exclusively available for domains with data store enabled\cr
+\link[paws.customer.engagement:customerprofiles_get_profile_history_record]{get_profile_history_record} \tab Returns a history record for a specific profile, for a specific domain\cr
 \link[paws.customer.engagement:customerprofiles_get_profile_object_type]{get_profile_object_type} \tab Returns the object types for a specific domain\cr
 \link[paws.customer.engagement:customerprofiles_get_profile_object_type_template]{get_profile_object_type_template} \tab Returns the template information for a specific object type\cr
+\link[paws.customer.engagement:customerprofiles_get_profile_recommendations]{get_profile_recommendations} \tab Fetches the recommendations for a profile in the input Customer Profiles domain\cr
+\link[paws.customer.engagement:customerprofiles_get_recommender]{get_recommender} \tab Retrieves a recommender\cr
 \link[paws.customer.engagement:customerprofiles_get_segment_definition]{get_segment_definition} \tab Gets a segment definition from the domain\cr
 \link[paws.customer.engagement:customerprofiles_get_segment_estimate]{get_segment_estimate} \tab Gets the result of a segment estimate query\cr
 \link[paws.customer.engagement:customerprofiles_get_segment_membership]{get_segment_membership} \tab Determines if the given profiles are within a segment\cr
 \link[paws.customer.engagement:customerprofiles_get_segment_snapshot]{get_segment_snapshot} \tab Retrieve the latest status of a segment snapshot\cr
 \link[paws.customer.engagement:customerprofiles_get_similar_profiles]{get_similar_profiles} \tab Returns a set of profiles that belong to the same matching group using the matchId or profileId\cr
+\link[paws.customer.engagement:customerprofiles_get_upload_job]{get_upload_job} \tab This API retrieves the details of a specific upload job\cr
+\link[paws.customer.engagement:customerprofiles_get_upload_job_path]{get_upload_job_path} \tab This API retrieves the pre-signed URL and client token for uploading the file associated with the upload job\cr
 \link[paws.customer.engagement:customerprofiles_get_workflow]{get_workflow} \tab Get details of specified workflow\cr
 \link[paws.customer.engagement:customerprofiles_get_workflow_steps]{get_workflow_steps} \tab Get granular list of steps in workflow\cr
 \link[paws.customer.engagement:customerprofiles_list_account_integrations]{list_account_integrations} \tab Lists all of the integrations associated to a specific URI in the AWS account\cr
 \link[paws.customer.engagement:customerprofiles_list_calculated_attribute_definitions]{list_calculated_attribute_definitions} \tab Lists calculated attribute definitions for Customer Profiles\cr
 \link[paws.customer.engagement:customerprofiles_list_calculated_attributes_for_profile]{list_calculated_attributes_for_profile} \tab Retrieve a list of calculated attributes for a customer profile\cr
+\link[paws.customer.engagement:customerprofiles_list_domain_layouts]{list_domain_layouts} \tab Lists the existing layouts that can be used to view data for a specific domain\cr
+\link[paws.customer.engagement:customerprofiles_list_domain_object_types]{list_domain_object_types} \tab List all DomainObjectType(s) in a Customer Profiles domain\cr
 \link[paws.customer.engagement:customerprofiles_list_domains]{list_domains} \tab Returns a list of all the domains for an AWS account that have been created\cr
 \link[paws.customer.engagement:customerprofiles_list_event_streams]{list_event_streams} \tab Returns a list of all the event streams in a specific domain\cr
 \link[paws.customer.engagement:customerprofiles_list_event_triggers]{list_event_triggers} \tab List all Event Triggers under a domain\cr
 \link[paws.customer.engagement:customerprofiles_list_identity_resolution_jobs]{list_identity_resolution_jobs} \tab Lists all of the Identity Resolution Jobs in your domain\cr
 \link[paws.customer.engagement:customerprofiles_list_integrations]{list_integrations} \tab Lists all of the integrations in your domain\cr
 \link[paws.customer.engagement:customerprofiles_list_object_type_attributes]{list_object_type_attributes} \tab Fetch the possible attribute values given the attribute name\cr
+\link[paws.customer.engagement:customerprofiles_list_object_type_attribute_values]{list_object_type_attribute_values} \tab The ListObjectTypeAttributeValues API provides access to the most recent distinct values for any specified attribute, making it valuable for real-time data validation and consistency checks within your object types\cr
 \link[paws.customer.engagement:customerprofiles_list_profile_attribute_values]{list_profile_attribute_values} \tab Fetch the possible attribute values given the attribute name\cr
+\link[paws.customer.engagement:customerprofiles_list_profile_history_records]{list_profile_history_records} \tab Returns a list of history records for a specific profile, for a specific domain\cr
 \link[paws.customer.engagement:customerprofiles_list_profile_objects]{list_profile_objects} \tab Returns a list of objects associated with a profile of a given ProfileObjectType\cr
 \link[paws.customer.engagement:customerprofiles_list_profile_object_types]{list_profile_object_types} \tab Lists all of the templates available within the service\cr
 \link[paws.customer.engagement:customerprofiles_list_profile_object_type_templates]{list_profile_object_type_templates} \tab Lists all of the template information for object types\cr
+\link[paws.customer.engagement:customerprofiles_list_recommender_recipes]{list_recommender_recipes} \tab Returns a list of available recommender recipes that can be used to create recommenders\cr
+\link[paws.customer.engagement:customerprofiles_list_recommenders]{list_recommenders} \tab Returns a list of recommenders in the specified domain\cr
 \link[paws.customer.engagement:customerprofiles_list_rule_based_matches]{list_rule_based_matches} \tab Returns a set of MatchIds that belong to the given domain\cr
 \link[paws.customer.engagement:customerprofiles_list_segment_definitions]{list_segment_definitions} \tab Lists all segment definitions under a domain\cr
 \link[paws.customer.engagement:customerprofiles_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with an Amazon Connect Customer Profiles resource\cr
+\link[paws.customer.engagement:customerprofiles_list_upload_jobs]{list_upload_jobs} \tab This API retrieves a list of upload jobs for the specified domain\cr
 \link[paws.customer.engagement:customerprofiles_list_workflows]{list_workflows} \tab Query to list all workflows\cr
 \link[paws.customer.engagement:customerprofiles_merge_profiles]{merge_profiles} \tab Runs an AWS Lambda job that does the following:\cr
+\link[paws.customer.engagement:customerprofiles_put_domain_object_type]{put_domain_object_type} \tab Create/Update a DomainObjectType in a Customer Profiles domain\cr
 \link[paws.customer.engagement:customerprofiles_put_integration]{put_integration} \tab Adds an integration between the service and a third-party service, which includes Amazon AppFlow and Amazon Connect\cr
 \link[paws.customer.engagement:customerprofiles_put_profile_object]{put_profile_object} \tab Adds additional objects to customer profiles of a given ObjectType\cr
 \link[paws.customer.engagement:customerprofiles_put_profile_object_type]{put_profile_object_type} \tab Defines a ProfileObjectType\cr
 \link[paws.customer.engagement:customerprofiles_search_profiles]{search_profiles} \tab Searches for profiles within a specific domain using one or more predefined search keys (e\cr
+\link[paws.customer.engagement:customerprofiles_start_recommender]{start_recommender} \tab Starts a recommender that was previously stopped\cr
+\link[paws.customer.engagement:customerprofiles_start_upload_job]{start_upload_job} \tab This API starts the processing of an upload job to ingest profile data\cr
+\link[paws.customer.engagement:customerprofiles_stop_recommender]{stop_recommender} \tab Stops a recommender, suspending its ability to generate recommendations\cr
+\link[paws.customer.engagement:customerprofiles_stop_upload_job]{stop_upload_job} \tab This API stops the processing of an upload job\cr
 \link[paws.customer.engagement:customerprofiles_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified Amazon Connect Customer Profiles resource\cr
 \link[paws.customer.engagement:customerprofiles_untag_resource]{untag_resource} \tab Removes one or more tags from the specified Amazon Connect Customer Profiles resource\cr
 \link[paws.customer.engagement:customerprofiles_update_calculated_attribute_definition]{update_calculated_attribute_definition} \tab Updates an existing calculated attribute definition\cr
 \link[paws.customer.engagement:customerprofiles_update_domain]{update_domain} \tab Updates the properties of a domain, including creating or selecting a dead letter queue or an encryption key\cr
+\link[paws.customer.engagement:customerprofiles_update_domain_layout]{update_domain_layout} \tab Updates the layout used to view data for a specific domain\cr
 \link[paws.customer.engagement:customerprofiles_update_event_trigger]{update_event_trigger} \tab Update the properties of an Event Trigger\cr
-\link[paws.customer.engagement:customerprofiles_update_profile]{update_profile} \tab Updates the properties of a profile
+\link[paws.customer.engagement:customerprofiles_update_profile]{update_profile} \tab Updates the properties of a profile\cr
+\link[paws.customer.engagement:customerprofiles_update_recommender]{update_recommender} \tab Updates the properties of an existing recommender, allowing you to modify its configuration and description
 }
 }
 

@@ -32,11 +32,11 @@ source.
 creating the data source.
 }}
 
-\item{PolicyArn}{The ARN for the IAM policy to apply to the Amazon QuickSight users and
+\item{PolicyArn}{The ARN for the IAM policy to apply to the Amazon Quick Sight users and
 groups specified in this assignment.}
 
-\item{Identities}{The Amazon QuickSight users, groups, or both that you want to assign the
-policy to.}
+\item{Identities}{The Amazon Quick Sight users, groups, or both that you want to assign
+the policy to.}
 }
 \description{
 Updates an existing IAM policy assignment. This operation updates only the optional parameter or parameters that are specified in the request. This overwrites all of the users included in \code{Identities}.

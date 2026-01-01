@@ -25,23 +25,25 @@ the ID of an external key store,
 \code{UnsupportedOperationException}.}
 
 \item{Recipient}{A signed \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#term-attestdoc}{attestation document}
-from an Amazon Web Services Nitro enclave and the encryption algorithm
-to use with the enclave's public key. The only valid encryption
-algorithm is \code{RSAES_OAEP_SHA_256}.
+from an Amazon Web Services Nitro enclave or NitroTPM, and the
+encryption algorithm to use with the public key in the attestation
+document. The only valid encryption algorithm is \code{RSAES_OAEP_SHA_256}.
 
-This parameter only supports attestation documents for Amazon Web
-Services Nitro Enclaves. To include this parameter, use the \href{https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk}{Amazon Web Services Nitro Enclaves SDK}
-or any Amazon Web Services SDK.
+This parameter supports the \href{https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk}{Amazon Web Services Nitro Enclaves SDK}
+or any Amazon Web Services SDK for Amazon Web Services Nitro Enclaves.
+It supports any Amazon Web Services SDK for Amazon Web Services
+NitroTPM.
 
 When you use this parameter, instead of returning plaintext bytes, KMS
 encrypts the plaintext bytes under the public key in the attestation
 document, and returns the resulting ciphertext in the
 \code{CiphertextForRecipient} field in the response. This ciphertext can be
-decrypted only with the private key in the enclave. The \code{Plaintext}
-field in the response is null or empty.
+decrypted only with the private key in the attested environment. The
+\code{Plaintext} field in the response is null or empty.
 
 For information about the interaction between KMS and Amazon Web
-Services Nitro Enclaves, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html}{How Amazon Web Services Nitro Enclaves uses KMS}
+Services Nitro Enclaves or Amazon Web Services NitroTPM, see
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/cryptographic-attestation.html}{Cryptographic attestation support in KMS}
 in the \emph{Key Management Service Developer Guide}.}
 }
 \description{

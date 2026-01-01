@@ -8,6 +8,8 @@ efs_create_mount_target(
   FileSystemId,
   SubnetId,
   IpAddress = NULL,
+  Ipv6Address = NULL,
+  IpAddressType = NULL,
   SecurityGroups = NULL
 )
 }
@@ -18,10 +20,29 @@ efs_create_mount_target(
 systems, use the subnet that is associated with the file system's
 Availability Zone.}
 
-\item{IpAddress}{Valid IPv4 address within the address range of the specified subnet.}
+\item{IpAddress}{If the IP address type for the mount target is IPv4, then specify the
+IPv4 address within the address range of the specified subnet.}
 
-\item{SecurityGroups}{Up to five VPC security group IDs, of the form \code{sg-xxxxxxxx}. These must
-be for the same VPC as subnet specified.}
+\item{Ipv6Address}{If the IP address type for the mount target is IPv6, then specify the
+IPv6 address within the address range of the specified subnet.}
+
+\item{IpAddressType}{Specify the type of IP address of the mount target you are creating.
+Options are IPv4, dual stack, or IPv6. If you don’t specify an
+IpAddressType, then IPv4 is used.
+\itemize{
+\item IPV4_ONLY – Create mount target with IPv4 only subnet or dual-stack
+subnet.
+\item DUAL_STACK – Create mount target with dual-stack subnet.
+\item IPV6_ONLY – Create mount target with IPv6 only subnet.
+}
+
+Creating IPv6 mount target only ENI in dual-stack subnet is not
+supported.}
+
+\item{SecurityGroups}{VPC security group IDs, of the form \code{sg-xxxxxxxx}. These must be for the
+same VPC as the subnet specified. The maximum number of security groups
+depends on account quota. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html}{Amazon VPC Quotas}
+in the \emph{Amazon VPC User Guide} (see the \strong{Security Groups} table).}
 }
 \description{
 Creates a mount target for a file system. You can then mount the file system on EC2 instances by using the mount target.

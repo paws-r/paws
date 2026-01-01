@@ -9,27 +9,35 @@ omics_update_workflow_version(
   versionName,
   description = NULL,
   storageType = NULL,
-  storageCapacity = NULL
+  storageCapacity = NULL,
+  readmeMarkdown = NULL
 )
 }
 \arguments{
-\item{workflowId}{[required] The workflow's ID.}
+\item{workflowId}{[required] The workflow's ID. The \code{workflowId} is not the UUID.}
 
 \item{versionName}{[required] The name of the workflow version.}
 
 \item{description}{Description of the workflow version.}
 
-\item{storageType}{The default storage type for runs that use this workflow. STATIC storage
-allocates a fixed amount of storage. DYNAMIC storage dynamically scales
-the storage up or down, based on file system utilization. For more
-information about static and dynamic storage, see \href{https://docs.aws.amazon.com/omics/latest/dev/}{Running workflows} in the \emph{Amazon
-Web Services HealthOmics User Guide}.}
+\item{storageType}{The default storage type for runs that use this workflow version. The
+\code{storageType} can be overridden at run time. \code{DYNAMIC} storage
+dynamically scales the storage up or down, based on file system
+utilization. STATIC storage allocates a fixed amount of storage. For
+more information about dynamic and static storage types, see \href{https://docs.aws.amazon.com/omics/latest/dev/workflows-run-types.html}{Run storage types}
+in the \emph{in the Amazon Web Services HealthOmics User Guide} .}
 
 \item{storageCapacity}{The default static storage capacity (in gibibytes) for runs that use
-this workflow or workflow version.}
+this workflow version. The \code{storageCapacity} can be overwritten at run
+time. The storage capacity is not required for runs with a \code{DYNAMIC}
+storage type.}
+
+\item{readmeMarkdown}{The markdown content for the workflow version's README file. This
+provides documentation and usage information for users of this specific
+workflow version.}
 }
 \description{
-Updates information about the workflow version. For more information, see \href{https://docs.aws.amazon.com/omics/latest/dev/workflow-versions.html}{Workflow versioning in Amazon Web Services HealthOmics} in the Amazon Web Services HealthOmics User Guide.
+Updates information about the workflow version. For more information, see \href{https://docs.aws.amazon.com/omics/latest/dev/workflow-versions.html}{Workflow versioning in Amazon Web Services HealthOmics} in the \emph{Amazon Web Services HealthOmics User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_update_workflow_version/} for full documentation.
 }

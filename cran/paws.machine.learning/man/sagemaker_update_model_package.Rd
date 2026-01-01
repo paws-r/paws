@@ -7,6 +7,7 @@
 sagemaker_update_model_package(
   ModelPackageArn,
   ModelApprovalStatus = NULL,
+  ModelPackageRegistrationType = NULL,
   ApprovalDescription = NULL,
   CustomerMetadataProperties = NULL,
   CustomerMetadataPropertiesToRemove = NULL,
@@ -22,6 +23,8 @@ sagemaker_update_model_package(
 \item{ModelPackageArn}{[required] The Amazon Resource Name (ARN) of the model package.}
 
 \item{ModelApprovalStatus}{The approval status of the model.}
+
+\item{ModelPackageRegistrationType}{The package registration type of the model package input.}
 
 \item{ApprovalDescription}{A description for the approval status of the model.}
 

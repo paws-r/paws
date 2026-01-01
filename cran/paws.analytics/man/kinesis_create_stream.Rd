@@ -8,7 +8,9 @@ kinesis_create_stream(
   StreamName,
   ShardCount = NULL,
   StreamModeDetails = NULL,
-  Tags = NULL
+  Tags = NULL,
+  WarmThroughputMiBps = NULL,
+  MaxRecordSizeInKiB = NULL
 )
 }
 \arguments{
@@ -29,6 +31,13 @@ a \strong{provisioned} capacity mode for your data streams.}
 
 \item{Tags}{A set of up to 50 key-value pairs to use to create the tags. A tag
 consists of a required key and an optional value.}
+
+\item{WarmThroughputMiBps}{The target warm throughput in MB/s that the stream should be scaled to
+handle. This represents the throughput capacity that will be immediately
+available for write operations.}
+
+\item{MaxRecordSizeInKiB}{The maximum record size of a single record in kibibyte (KiB) that you
+can write to, and read from a stream.}
 }
 \description{
 Creates a Kinesis data stream. A stream captures and transports data records that are continuously emitted from different data sources or \emph{producers}. Scale-out within a stream is explicitly supported by means of shards, which are uniquely identified groups of data records in a stream.

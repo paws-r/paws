@@ -2,7 +2,8 @@
 % Please edit documentation in R/marketplacemetering_operations.R
 \name{marketplacemetering_batch_meter_usage}
 \alias{marketplacemetering_batch_meter_usage}
-\title{The CustomerIdentifier parameter is scheduled for deprecation}
+\title{The CustomerIdentifier parameter is scheduled for deprecation on March
+31, 2026}
 \usage{
 marketplacemetering_batch_meter_usage(UsageRecords, ProductCode)
 }
@@ -16,7 +17,7 @@ Services Marketplace. The product code should be the same as the one
 used during the publishing of a new product.}
 }
 \description{
-The \code{CustomerIdentifier} parameter is scheduled for deprecation. Use \code{CustomerAWSAccountID} instead.
+The \code{CustomerIdentifier} parameter is scheduled for deprecation on March 31, 2026. Use \code{CustomerAWSAccountID} instead.
 
 See \url{https://www.paws-r-sdk.com/docs/marketplacemetering_batch_meter_usage/} for full documentation.
 }

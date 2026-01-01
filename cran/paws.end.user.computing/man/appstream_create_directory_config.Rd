@@ -2,7 +2,7 @@
 % Please edit documentation in R/appstream_operations.R
 \name{appstream_create_directory_config}
 \alias{appstream_create_directory_config}
-\title{Creates a Directory Config object in AppStream 2}
+\title{Creates a Directory Config object in WorkSpaces Applications}
 \usage{
 appstream_create_directory_config(
   DirectoryName,
@@ -33,7 +33,7 @@ password. Users will be disconnected to re-authenticate using
 certificates.}
 }
 \description{
-Creates a Directory Config object in AppStream 2.0. This object includes the configuration information required to join fleets and image builders to Microsoft Active Directory domains.
+Creates a Directory Config object in WorkSpaces Applications. This object includes the configuration information required to join fleets and image builders to Microsoft Active Directory domains.
 
 See \url{https://www.paws-r-sdk.com/docs/appstream_create_directory_config/} for full documentation.
 }

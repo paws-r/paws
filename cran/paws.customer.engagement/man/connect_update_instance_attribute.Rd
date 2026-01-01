@@ -19,7 +19,12 @@ in the Amazon Resource Name (ARN) of the instance.}
 \item{AttributeType}{[required] The type of attribute.
 
 Only allowlisted customers can consume USE_CUSTOM_TTS_VOICES. To access
-this feature, contact Amazon Web ServicesSupport for allowlisting.}
+this feature, contact Amazon Web Services Support for allowlisting.
+
+If you set the attribute type as \code{MESSAGE_STREAMING}, you need to update
+the Lex bot alias resource based policy to include the
+\code{lex:RecognizeMessageAsync} action for the connect instance ARN
+resource.}
 
 \item{Value}{[required] The value for the attribute. Maximum character limit is 100.}
 

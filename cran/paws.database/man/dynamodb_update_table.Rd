@@ -17,6 +17,7 @@ dynamodb_update_table(
   TableClass = NULL,
   DeletionProtectionEnabled = NULL,
   MultiRegionConsistency = NULL,
+  GlobalTableWitnessUpdates = NULL,
   OnDemandThroughput = NULL,
   WarmThroughput = NULL
 )
@@ -72,10 +73,7 @@ table that doesn't have a stream.}
 \item{SSESpecification}{The new server-side encryption settings for the specified table.}
 
 \item{ReplicaUpdates}{A list of replica update actions (create, delete, or update) for the
-table.
-
-For global tables, this property only applies to global tables using
-Version 2019.11.21 (Current version).}
+table.}
 
 \item{TableClass}{The table class of the table to be updated. Valid values are \code{STANDARD}
 and \code{STANDARD_INFREQUENT_ACCESS}.}
@@ -93,17 +91,31 @@ action list.
 You can specify one of the following consistency modes:
 \itemize{
 \item \code{EVENTUAL}: Configures a new global table for multi-Region eventual
-consistency. This is the default consistency mode for global tables.
+consistency (MREC). This is the default consistency mode for global
+tables.
 \item \code{STRONG}: Configures a new global table for multi-Region strong
-consistency (preview).
-
-Multi-Region strong consistency (MRSC) is a new DynamoDB global
-tables capability currently available in preview mode. For more
-information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/#multi-region-strong-consistency-gt}{Global tables multi-Region strong consistency}.
+consistency (MRSC).
 }
 
-If you don't specify this parameter, the global table consistency mode
-defaults to \code{EVENTUAL}.}
+If you don't specify this field, the global table consistency mode
+defaults to \code{EVENTUAL}. For more information about global tables
+consistency modes, see Consistency modes in DynamoDB developer guide.}
+
+\item{GlobalTableWitnessUpdates}{A list of witness updates for a MRSC global table. A witness provides a
+cost-effective alternative to a full replica in a MRSC global table by
+maintaining replicated change data written to global table replicas. You
+cannot perform read or write operations on a witness. For each witness,
+you can request one action:
+\itemize{
+\item \code{Create} - add a new witness to the global table.
+\item \code{Delete} - remove a witness from the global table.
+}
+
+You can create or delete only one witness per
+\code{\link[=dynamodb_update_table]{update_table}} operation.
+
+For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_HowItWorks.html#V2globaltables_HowItWorks.consistency-modes}{Multi-Region strong consistency (MRSC)}
+in the Amazon DynamoDB Developer Guide}
 
 \item{OnDemandThroughput}{Updates the maximum number of read and write units for the specified
 table in on-demand capacity mode. If you use this parameter, you must

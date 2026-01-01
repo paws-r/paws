@@ -646,7 +646,9 @@ lexmodelsv2_create_bot_alias <- function(botAliasName, description = NULL, botVe
 #'
 #' @usage
 #' lexmodelsv2_create_bot_locale(botId, botVersion, localeId, description,
-#'   nluIntentConfidenceThreshold, voiceSettings, generativeAISettings)
+#'   nluIntentConfidenceThreshold, voiceSettings, unifiedSpeechSettings,
+#'   speechRecognitionSettings, generativeAISettings,
+#'   speechDetectionSensitivity)
 #'
 #' @param botId &#91;required&#93; The identifier of the bot to create the locale for.
 #' @param botVersion &#91;required&#93; The version of the bot to create the locale for. This can only be the
@@ -679,7 +681,13 @@ lexmodelsv2_create_bot_alias <- function(botAliasName, description = NULL, botVe
 #' -   IntentC
 #' @param voiceSettings The Amazon Polly voice ID that Amazon Lex uses for voice interaction
 #' with the user.
+#' @param unifiedSpeechSettings Unified speech settings to configure for the new bot locale.
+#' @param speechRecognitionSettings Speech-to-text settings to configure for the new bot locale.
 #' @param generativeAISettings 
+#' @param speechDetectionSensitivity The sensitivity level for voice activity detection (VAD) in the bot
+#' locale. This setting helps optimize speech recognition accuracy by
+#' adjusting how the system responds to background noise during voice
+#' interactions.
 #'
 #' @return
 #' A list with the following syntax:
@@ -692,8 +700,23 @@ lexmodelsv2_create_bot_alias <- function(botAliasName, description = NULL, botVe
 #'   description = "string",
 #'   nluIntentConfidenceThreshold = 123.0,
 #'   voiceSettings = list(
-#'     voiceId = "string",
-#'     engine = "standard"|"neural"|"long-form"|"generative"
+#'     engine = "standard"|"neural"|"long-form"|"generative",
+#'     voiceId = "string"
+#'   ),
+#'   unifiedSpeechSettings = list(
+#'     speechFoundationModel = list(
+#'       modelArn = "string",
+#'       voiceId = "string"
+#'     )
+#'   ),
+#'   speechRecognitionSettings = list(
+#'     speechModelPreference = "Standard"|"Neural"|"Deepgram",
+#'     speechModelConfig = list(
+#'       deepgramConfig = list(
+#'         apiTokenSecretArn = "string",
+#'         modelId = "string"
+#'       )
+#'     )
 #'   ),
 #'   botLocaleStatus = "Creating"|"Building"|"Built"|"ReadyExpressTesting"|"Failed"|"Deleting"|"NotBuilt"|"Importing"|"Processing",
 #'   creationDateTime = as.POSIXct(
@@ -712,6 +735,15 @@ lexmodelsv2_create_bot_alias <- function(botAliasName, description = NULL, botVe
 #'           traceStatus = "ENABLED"|"DISABLED",
 #'           customPrompt = "string"
 #'         )
+#'       ),
+#'       nluImprovement = list(
+#'         enabled = TRUE|FALSE,
+#'         assistedNluMode = "Primary"|"Fallback",
+#'         intentDisambiguationSettings = list(
+#'           enabled = TRUE|FALSE,
+#'           maxDisambiguationIntents = 123,
+#'           customDisambiguationMessage = "string"
+#'         )
 #'       )
 #'     ),
 #'     buildtimeSettings = list(
@@ -740,7 +772,8 @@ lexmodelsv2_create_bot_alias <- function(botAliasName, description = NULL, botVe
 #'         )
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   speechDetectionSensitivity = "Default"|"HighNoiseTolerance"|"MaximumNoiseTolerance"
 #' )
 #' ```
 #'
@@ -753,8 +786,23 @@ lexmodelsv2_create_bot_alias <- function(botAliasName, description = NULL, botVe
 #'   description = "string",
 #'   nluIntentConfidenceThreshold = 123.0,
 #'   voiceSettings = list(
-#'     voiceId = "string",
-#'     engine = "standard"|"neural"|"long-form"|"generative"
+#'     engine = "standard"|"neural"|"long-form"|"generative",
+#'     voiceId = "string"
+#'   ),
+#'   unifiedSpeechSettings = list(
+#'     speechFoundationModel = list(
+#'       modelArn = "string",
+#'       voiceId = "string"
+#'     )
+#'   ),
+#'   speechRecognitionSettings = list(
+#'     speechModelPreference = "Standard"|"Neural"|"Deepgram",
+#'     speechModelConfig = list(
+#'       deepgramConfig = list(
+#'         apiTokenSecretArn = "string",
+#'         modelId = "string"
+#'       )
+#'     )
 #'   ),
 #'   generativeAISettings = list(
 #'     runtimeSettings = list(
@@ -769,6 +817,15 @@ lexmodelsv2_create_bot_alias <- function(botAliasName, description = NULL, botVe
 #'           traceStatus = "ENABLED"|"DISABLED",
 #'           customPrompt = "string"
 #'         )
+#'       ),
+#'       nluImprovement = list(
+#'         enabled = TRUE|FALSE,
+#'         assistedNluMode = "Primary"|"Fallback",
+#'         intentDisambiguationSettings = list(
+#'           enabled = TRUE|FALSE,
+#'           maxDisambiguationIntents = 123,
+#'           customDisambiguationMessage = "string"
+#'         )
 #'       )
 #'     ),
 #'     buildtimeSettings = list(
@@ -797,7 +854,8 @@ lexmodelsv2_create_bot_alias <- function(botAliasName, description = NULL, botVe
 #'         )
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   speechDetectionSensitivity = "Default"|"HighNoiseTolerance"|"MaximumNoiseTolerance"
 #' )
 #' ```
 #'
@@ -806,7 +864,7 @@ lexmodelsv2_create_bot_alias <- function(botAliasName, description = NULL, botVe
 #' @rdname lexmodelsv2_create_bot_locale
 #'
 #' @aliases lexmodelsv2_create_bot_locale
-lexmodelsv2_create_bot_locale <- function(botId, botVersion, localeId, description = NULL, nluIntentConfidenceThreshold, voiceSettings = NULL, generativeAISettings = NULL) {
+lexmodelsv2_create_bot_locale <- function(botId, botVersion, localeId, description = NULL, nluIntentConfidenceThreshold, voiceSettings = NULL, unifiedSpeechSettings = NULL, speechRecognitionSettings = NULL, generativeAISettings = NULL, speechDetectionSensitivity = NULL) {
   op <- new_operation(
     name = "CreateBotLocale",
     http_method = "PUT",
@@ -815,7 +873,7 @@ lexmodelsv2_create_bot_locale <- function(botId, botVersion, localeId, descripti
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lexmodelsv2$create_bot_locale_input(botId = botId, botVersion = botVersion, localeId = localeId, description = description, nluIntentConfidenceThreshold = nluIntentConfidenceThreshold, voiceSettings = voiceSettings, generativeAISettings = generativeAISettings)
+  input <- .lexmodelsv2$create_bot_locale_input(botId = botId, botVersion = botVersion, localeId = localeId, description = description, nluIntentConfidenceThreshold = nluIntentConfidenceThreshold, voiceSettings = voiceSettings, unifiedSpeechSettings = unifiedSpeechSettings, speechRecognitionSettings = speechRecognitionSettings, generativeAISettings = generativeAISettings, speechDetectionSensitivity = speechDetectionSensitivity)
   output <- .lexmodelsv2$create_bot_locale_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config, op)
@@ -1107,7 +1165,7 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #'     example, "Do you want a drink with your pizza?"
 #'
 #' @usage
-#' lexmodelsv2_create_intent(intentName, description,
+#' lexmodelsv2_create_intent(intentName, intentDisplayName, description,
 #'   parentIntentSignature, sampleUtterances, dialogCodeHook,
 #'   fulfillmentCodeHook, intentConfirmationSetting, intentClosingSetting,
 #'   inputContexts, outputContexts, kendraConfiguration, botId, botVersion,
@@ -1116,6 +1174,10 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #'
 #' @param intentName &#91;required&#93; The name of the intent. Intent names must be unique in the locale that
 #' contains the intent and cannot match the name of any built-in intent.
+#' @param intentDisplayName A display name for the intent. If configured, This name will be shown to
+#' users during Intent Disambiguation instead of the intent name. Display
+#' names should be user-friendly, descriptive and match the intent's
+#' purpose to improve user experience during disambiguation.
 #' @param description A description of the intent. Use the description to help identify the
 #' intent in lists.
 #' @param parentIntentSignature A unique identifier for the built-in intent to base this intent on.
@@ -1199,6 +1261,7 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #' list(
 #'   intentId = "string",
 #'   intentName = "string",
+#'   intentDisplayName = "string",
 #'   description = "string",
 #'   parentIntentSignature = "string",
 #'   sampleUtterances = list(
@@ -4922,6 +4985,7 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #' ```
 #' svc$create_intent(
 #'   intentName = "string",
+#'   intentDisplayName = "string",
 #'   description = "string",
 #'   parentIntentSignature = "string",
 #'   sampleUtterances = list(
@@ -8643,7 +8707,7 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #' @rdname lexmodelsv2_create_intent
 #'
 #' @aliases lexmodelsv2_create_intent
-lexmodelsv2_create_intent <- function(intentName, description = NULL, parentIntentSignature = NULL, sampleUtterances = NULL, dialogCodeHook = NULL, fulfillmentCodeHook = NULL, intentConfirmationSetting = NULL, intentClosingSetting = NULL, inputContexts = NULL, outputContexts = NULL, kendraConfiguration = NULL, botId, botVersion, localeId, initialResponseSetting = NULL, qnAIntentConfiguration = NULL, qInConnectIntentConfiguration = NULL) {
+lexmodelsv2_create_intent <- function(intentName, intentDisplayName = NULL, description = NULL, parentIntentSignature = NULL, sampleUtterances = NULL, dialogCodeHook = NULL, fulfillmentCodeHook = NULL, intentConfirmationSetting = NULL, intentClosingSetting = NULL, inputContexts = NULL, outputContexts = NULL, kendraConfiguration = NULL, botId, botVersion, localeId, initialResponseSetting = NULL, qnAIntentConfiguration = NULL, qInConnectIntentConfiguration = NULL) {
   op <- new_operation(
     name = "CreateIntent",
     http_method = "PUT",
@@ -8652,7 +8716,7 @@ lexmodelsv2_create_intent <- function(intentName, description = NULL, parentInte
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lexmodelsv2$create_intent_input(intentName = intentName, description = description, parentIntentSignature = parentIntentSignature, sampleUtterances = sampleUtterances, dialogCodeHook = dialogCodeHook, fulfillmentCodeHook = fulfillmentCodeHook, intentConfirmationSetting = intentConfirmationSetting, intentClosingSetting = intentClosingSetting, inputContexts = inputContexts, outputContexts = outputContexts, kendraConfiguration = kendraConfiguration, botId = botId, botVersion = botVersion, localeId = localeId, initialResponseSetting = initialResponseSetting, qnAIntentConfiguration = qnAIntentConfiguration, qInConnectIntentConfiguration = qInConnectIntentConfiguration)
+  input <- .lexmodelsv2$create_intent_input(intentName = intentName, intentDisplayName = intentDisplayName, description = description, parentIntentSignature = parentIntentSignature, sampleUtterances = sampleUtterances, dialogCodeHook = dialogCodeHook, fulfillmentCodeHook = fulfillmentCodeHook, intentConfirmationSetting = intentConfirmationSetting, intentClosingSetting = intentClosingSetting, inputContexts = inputContexts, outputContexts = outputContexts, kendraConfiguration = kendraConfiguration, botId = botId, botVersion = botVersion, localeId = localeId, initialResponseSetting = initialResponseSetting, qnAIntentConfiguration = qnAIntentConfiguration, qInConnectIntentConfiguration = qInConnectIntentConfiguration)
   output <- .lexmodelsv2$create_intent_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config, op)
@@ -13863,8 +13927,23 @@ lexmodelsv2_describe_bot_alias <- function(botAliasId, botId) {
 #'   description = "string",
 #'   nluIntentConfidenceThreshold = 123.0,
 #'   voiceSettings = list(
-#'     voiceId = "string",
-#'     engine = "standard"|"neural"|"long-form"|"generative"
+#'     engine = "standard"|"neural"|"long-form"|"generative",
+#'     voiceId = "string"
+#'   ),
+#'   unifiedSpeechSettings = list(
+#'     speechFoundationModel = list(
+#'       modelArn = "string",
+#'       voiceId = "string"
+#'     )
+#'   ),
+#'   speechRecognitionSettings = list(
+#'     speechModelPreference = "Standard"|"Neural"|"Deepgram",
+#'     speechModelConfig = list(
+#'       deepgramConfig = list(
+#'         apiTokenSecretArn = "string",
+#'         modelId = "string"
+#'       )
+#'     )
 #'   ),
 #'   intentsCount = 123,
 #'   slotTypesCount = 123,
@@ -13905,6 +13984,15 @@ lexmodelsv2_describe_bot_alias <- function(botAliasId, botId) {
 #'           traceStatus = "ENABLED"|"DISABLED",
 #'           customPrompt = "string"
 #'         )
+#'       ),
+#'       nluImprovement = list(
+#'         enabled = TRUE|FALSE,
+#'         assistedNluMode = "Primary"|"Fallback",
+#'         intentDisambiguationSettings = list(
+#'           enabled = TRUE|FALSE,
+#'           maxDisambiguationIntents = 123,
+#'           customDisambiguationMessage = "string"
+#'         )
 #'       )
 #'     ),
 #'     buildtimeSettings = list(
@@ -13933,7 +14021,8 @@ lexmodelsv2_describe_bot_alias <- function(botAliasId, botId) {
 #'         )
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   speechDetectionSensitivity = "Default"|"HighNoiseTolerance"|"MaximumNoiseTolerance"
 #' )
 #' ```
 #'
@@ -14490,8 +14579,24 @@ lexmodelsv2_describe_export <- function(exportId) {
 #'       localeId = "string",
 #'       nluIntentConfidenceThreshold = 123.0,
 #'       voiceSettings = list(
-#'         voiceId = "string",
-#'         engine = "standard"|"neural"|"long-form"|"generative"
+#'         engine = "standard"|"neural"|"long-form"|"generative",
+#'         voiceId = "string"
+#'       ),
+#'       speechRecognitionSettings = list(
+#'         speechModelPreference = "Standard"|"Neural"|"Deepgram",
+#'         speechModelConfig = list(
+#'           deepgramConfig = list(
+#'             apiTokenSecretArn = "string",
+#'             modelId = "string"
+#'           )
+#'         )
+#'       ),
+#'       speechDetectionSensitivity = "Default"|"HighNoiseTolerance"|"MaximumNoiseTolerance",
+#'       unifiedSpeechSettings = list(
+#'         speechFoundationModel = list(
+#'           modelArn = "string",
+#'           voiceId = "string"
+#'         )
 #'       )
 #'     ),
 #'     customVocabularyImportSpecification = list(
@@ -14587,6 +14692,7 @@ lexmodelsv2_describe_import <- function(importId) {
 #' list(
 #'   intentId = "string",
 #'   intentName = "string",
+#'   intentDisplayName = "string",
 #'   description = "string",
 #'   parentIntentSignature = "string",
 #'   sampleUtterances = list(
@@ -22603,6 +22709,7 @@ lexmodelsv2_list_intent_stage_metrics <- function(botId, startDateTime, endDateT
 #'     list(
 #'       intentId = "string",
 #'       intentName = "string",
+#'       intentDisplayName = "string",
 #'       description = "string",
 #'       parentIntentSignature = "string",
 #'       inputContexts = list(
@@ -24643,8 +24750,24 @@ lexmodelsv2_start_bot_resource_generation <- function(generationInputPrompt, bot
 #'       localeId = "string",
 #'       nluIntentConfidenceThreshold = 123.0,
 #'       voiceSettings = list(
-#'         voiceId = "string",
-#'         engine = "standard"|"neural"|"long-form"|"generative"
+#'         engine = "standard"|"neural"|"long-form"|"generative",
+#'         voiceId = "string"
+#'       ),
+#'       speechRecognitionSettings = list(
+#'         speechModelPreference = "Standard"|"Neural"|"Deepgram",
+#'         speechModelConfig = list(
+#'           deepgramConfig = list(
+#'             apiTokenSecretArn = "string",
+#'             modelId = "string"
+#'           )
+#'         )
+#'       ),
+#'       speechDetectionSensitivity = "Default"|"HighNoiseTolerance"|"MaximumNoiseTolerance",
+#'       unifiedSpeechSettings = list(
+#'         speechFoundationModel = list(
+#'           modelArn = "string",
+#'           voiceId = "string"
+#'         )
 #'       )
 #'     ),
 #'     customVocabularyImportSpecification = list(
@@ -24707,8 +24830,24 @@ lexmodelsv2_start_bot_resource_generation <- function(generationInputPrompt, bot
 #'       localeId = "string",
 #'       nluIntentConfidenceThreshold = 123.0,
 #'       voiceSettings = list(
-#'         voiceId = "string",
-#'         engine = "standard"|"neural"|"long-form"|"generative"
+#'         engine = "standard"|"neural"|"long-form"|"generative",
+#'         voiceId = "string"
+#'       ),
+#'       speechRecognitionSettings = list(
+#'         speechModelPreference = "Standard"|"Neural"|"Deepgram",
+#'         speechModelConfig = list(
+#'           deepgramConfig = list(
+#'             apiTokenSecretArn = "string",
+#'             modelId = "string"
+#'           )
+#'         )
+#'       ),
+#'       speechDetectionSensitivity = "Default"|"HighNoiseTolerance"|"MaximumNoiseTolerance",
+#'       unifiedSpeechSettings = list(
+#'         speechFoundationModel = list(
+#'           modelArn = "string",
+#'           voiceId = "string"
+#'         )
 #'       )
 #'     ),
 #'     customVocabularyImportSpecification = list(
@@ -25406,7 +25545,9 @@ lexmodelsv2_update_bot_alias <- function(botAliasId, botAliasName, description =
 #'
 #' @usage
 #' lexmodelsv2_update_bot_locale(botId, botVersion, localeId, description,
-#'   nluIntentConfidenceThreshold, voiceSettings, generativeAISettings)
+#'   nluIntentConfidenceThreshold, voiceSettings, unifiedSpeechSettings,
+#'   speechRecognitionSettings, generativeAISettings,
+#'   speechDetectionSensitivity)
 #'
 #' @param botId &#91;required&#93; The unique identifier of the bot that contains the locale.
 #' @param botVersion &#91;required&#93; The version of the bot that contains the locale to be updated. The
@@ -25420,10 +25561,16 @@ lexmodelsv2_update_bot_alias <- function(botAliasId, botAliasName, description =
 #' list of possible intents for an utterance.
 #' @param voiceSettings The new Amazon Polly voice Amazon Lex should use for voice interaction
 #' with the user.
+#' @param unifiedSpeechSettings Updated unified speech settings to apply to the bot locale.
+#' @param speechRecognitionSettings Updated speech-to-text settings to apply to the bot locale.
 #' @param generativeAISettings Contains settings for generative AI features powered by Amazon Bedrock
 #' for your bot locale. Use this object to turn generative AI features on
 #' and off. Pricing may differ if you turn a feature on. For more
 #' information, see LINK.
+#' @param speechDetectionSensitivity The new sensitivity level for voice activity detection (VAD) in the bot
+#' locale. This setting helps optimize speech recognition accuracy by
+#' adjusting how the system responds to background noise during voice
+#' interactions.
 #'
 #' @return
 #' A list with the following syntax:
@@ -25436,8 +25583,23 @@ lexmodelsv2_update_bot_alias <- function(botAliasId, botAliasName, description =
 #'   description = "string",
 #'   nluIntentConfidenceThreshold = 123.0,
 #'   voiceSettings = list(
-#'     voiceId = "string",
-#'     engine = "standard"|"neural"|"long-form"|"generative"
+#'     engine = "standard"|"neural"|"long-form"|"generative",
+#'     voiceId = "string"
+#'   ),
+#'   unifiedSpeechSettings = list(
+#'     speechFoundationModel = list(
+#'       modelArn = "string",
+#'       voiceId = "string"
+#'     )
+#'   ),
+#'   speechRecognitionSettings = list(
+#'     speechModelPreference = "Standard"|"Neural"|"Deepgram",
+#'     speechModelConfig = list(
+#'       deepgramConfig = list(
+#'         apiTokenSecretArn = "string",
+#'         modelId = "string"
+#'       )
+#'     )
 #'   ),
 #'   botLocaleStatus = "Creating"|"Building"|"Built"|"ReadyExpressTesting"|"Failed"|"Deleting"|"NotBuilt"|"Importing"|"Processing",
 #'   failureReasons = list(
@@ -25465,6 +25627,15 @@ lexmodelsv2_update_bot_alias <- function(botAliasId, botAliasName, description =
 #'           traceStatus = "ENABLED"|"DISABLED",
 #'           customPrompt = "string"
 #'         )
+#'       ),
+#'       nluImprovement = list(
+#'         enabled = TRUE|FALSE,
+#'         assistedNluMode = "Primary"|"Fallback",
+#'         intentDisambiguationSettings = list(
+#'           enabled = TRUE|FALSE,
+#'           maxDisambiguationIntents = 123,
+#'           customDisambiguationMessage = "string"
+#'         )
 #'       )
 #'     ),
 #'     buildtimeSettings = list(
@@ -25493,7 +25664,8 @@ lexmodelsv2_update_bot_alias <- function(botAliasId, botAliasName, description =
 #'         )
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   speechDetectionSensitivity = "Default"|"HighNoiseTolerance"|"MaximumNoiseTolerance"
 #' )
 #' ```
 #'
@@ -25506,8 +25678,23 @@ lexmodelsv2_update_bot_alias <- function(botAliasId, botAliasName, description =
 #'   description = "string",
 #'   nluIntentConfidenceThreshold = 123.0,
 #'   voiceSettings = list(
-#'     voiceId = "string",
-#'     engine = "standard"|"neural"|"long-form"|"generative"
+#'     engine = "standard"|"neural"|"long-form"|"generative",
+#'     voiceId = "string"
+#'   ),
+#'   unifiedSpeechSettings = list(
+#'     speechFoundationModel = list(
+#'       modelArn = "string",
+#'       voiceId = "string"
+#'     )
+#'   ),
+#'   speechRecognitionSettings = list(
+#'     speechModelPreference = "Standard"|"Neural"|"Deepgram",
+#'     speechModelConfig = list(
+#'       deepgramConfig = list(
+#'         apiTokenSecretArn = "string",
+#'         modelId = "string"
+#'       )
+#'     )
 #'   ),
 #'   generativeAISettings = list(
 #'     runtimeSettings = list(
@@ -25522,6 +25709,15 @@ lexmodelsv2_update_bot_alias <- function(botAliasId, botAliasName, description =
 #'           traceStatus = "ENABLED"|"DISABLED",
 #'           customPrompt = "string"
 #'         )
+#'       ),
+#'       nluImprovement = list(
+#'         enabled = TRUE|FALSE,
+#'         assistedNluMode = "Primary"|"Fallback",
+#'         intentDisambiguationSettings = list(
+#'           enabled = TRUE|FALSE,
+#'           maxDisambiguationIntents = 123,
+#'           customDisambiguationMessage = "string"
+#'         )
 #'       )
 #'     ),
 #'     buildtimeSettings = list(
@@ -25550,7 +25746,8 @@ lexmodelsv2_update_bot_alias <- function(botAliasId, botAliasName, description =
 #'         )
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   speechDetectionSensitivity = "Default"|"HighNoiseTolerance"|"MaximumNoiseTolerance"
 #' )
 #' ```
 #'
@@ -25559,7 +25756,7 @@ lexmodelsv2_update_bot_alias <- function(botAliasId, botAliasName, description =
 #' @rdname lexmodelsv2_update_bot_locale
 #'
 #' @aliases lexmodelsv2_update_bot_locale
-lexmodelsv2_update_bot_locale <- function(botId, botVersion, localeId, description = NULL, nluIntentConfidenceThreshold, voiceSettings = NULL, generativeAISettings = NULL) {
+lexmodelsv2_update_bot_locale <- function(botId, botVersion, localeId, description = NULL, nluIntentConfidenceThreshold, voiceSettings = NULL, unifiedSpeechSettings = NULL, speechRecognitionSettings = NULL, generativeAISettings = NULL, speechDetectionSensitivity = NULL) {
   op <- new_operation(
     name = "UpdateBotLocale",
     http_method = "PUT",
@@ -25568,7 +25765,7 @@ lexmodelsv2_update_bot_locale <- function(botId, botVersion, localeId, descripti
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lexmodelsv2$update_bot_locale_input(botId = botId, botVersion = botVersion, localeId = localeId, description = description, nluIntentConfidenceThreshold = nluIntentConfidenceThreshold, voiceSettings = voiceSettings, generativeAISettings = generativeAISettings)
+  input <- .lexmodelsv2$update_bot_locale_input(botId = botId, botVersion = botVersion, localeId = localeId, description = description, nluIntentConfidenceThreshold = nluIntentConfidenceThreshold, voiceSettings = voiceSettings, unifiedSpeechSettings = unifiedSpeechSettings, speechRecognitionSettings = speechRecognitionSettings, generativeAISettings = generativeAISettings, speechDetectionSensitivity = speechDetectionSensitivity)
   output <- .lexmodelsv2$update_bot_locale_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config, op)
@@ -25774,8 +25971,8 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #' Updates the settings for an intent.
 #'
 #' @usage
-#' lexmodelsv2_update_intent(intentId, intentName, description,
-#'   parentIntentSignature, sampleUtterances, dialogCodeHook,
+#' lexmodelsv2_update_intent(intentId, intentName, intentDisplayName,
+#'   description, parentIntentSignature, sampleUtterances, dialogCodeHook,
 #'   fulfillmentCodeHook, slotPriorities, intentConfirmationSetting,
 #'   intentClosingSetting, inputContexts, outputContexts,
 #'   kendraConfiguration, botId, botVersion, localeId,
@@ -25784,6 +25981,7 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #'
 #' @param intentId &#91;required&#93; The unique identifier of the intent to update.
 #' @param intentName &#91;required&#93; The new name for the intent.
+#' @param intentDisplayName The new display name for the intent.
 #' @param description The new description of the intent.
 #' @param parentIntentSignature The signature of the new built-in intent to use as the parent of this
 #' intent.
@@ -25823,6 +26021,7 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #' list(
 #'   intentId = "string",
 #'   intentName = "string",
+#'   intentDisplayName = "string",
 #'   description = "string",
 #'   parentIntentSignature = "string",
 #'   sampleUtterances = list(
@@ -29556,6 +29755,7 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #' svc$update_intent(
 #'   intentId = "string",
 #'   intentName = "string",
+#'   intentDisplayName = "string",
 #'   description = "string",
 #'   parentIntentSignature = "string",
 #'   sampleUtterances = list(
@@ -33283,7 +33483,7 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #' @rdname lexmodelsv2_update_intent
 #'
 #' @aliases lexmodelsv2_update_intent
-lexmodelsv2_update_intent <- function(intentId, intentName, description = NULL, parentIntentSignature = NULL, sampleUtterances = NULL, dialogCodeHook = NULL, fulfillmentCodeHook = NULL, slotPriorities = NULL, intentConfirmationSetting = NULL, intentClosingSetting = NULL, inputContexts = NULL, outputContexts = NULL, kendraConfiguration = NULL, botId, botVersion, localeId, initialResponseSetting = NULL, qnAIntentConfiguration = NULL, qInConnectIntentConfiguration = NULL) {
+lexmodelsv2_update_intent <- function(intentId, intentName, intentDisplayName = NULL, description = NULL, parentIntentSignature = NULL, sampleUtterances = NULL, dialogCodeHook = NULL, fulfillmentCodeHook = NULL, slotPriorities = NULL, intentConfirmationSetting = NULL, intentClosingSetting = NULL, inputContexts = NULL, outputContexts = NULL, kendraConfiguration = NULL, botId, botVersion, localeId, initialResponseSetting = NULL, qnAIntentConfiguration = NULL, qInConnectIntentConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateIntent",
     http_method = "PUT",
@@ -33292,7 +33492,7 @@ lexmodelsv2_update_intent <- function(intentId, intentName, description = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lexmodelsv2$update_intent_input(intentId = intentId, intentName = intentName, description = description, parentIntentSignature = parentIntentSignature, sampleUtterances = sampleUtterances, dialogCodeHook = dialogCodeHook, fulfillmentCodeHook = fulfillmentCodeHook, slotPriorities = slotPriorities, intentConfirmationSetting = intentConfirmationSetting, intentClosingSetting = intentClosingSetting, inputContexts = inputContexts, outputContexts = outputContexts, kendraConfiguration = kendraConfiguration, botId = botId, botVersion = botVersion, localeId = localeId, initialResponseSetting = initialResponseSetting, qnAIntentConfiguration = qnAIntentConfiguration, qInConnectIntentConfiguration = qInConnectIntentConfiguration)
+  input <- .lexmodelsv2$update_intent_input(intentId = intentId, intentName = intentName, intentDisplayName = intentDisplayName, description = description, parentIntentSignature = parentIntentSignature, sampleUtterances = sampleUtterances, dialogCodeHook = dialogCodeHook, fulfillmentCodeHook = fulfillmentCodeHook, slotPriorities = slotPriorities, intentConfirmationSetting = intentConfirmationSetting, intentClosingSetting = intentClosingSetting, inputContexts = inputContexts, outputContexts = outputContexts, kendraConfiguration = kendraConfiguration, botId = botId, botVersion = botVersion, localeId = localeId, initialResponseSetting = initialResponseSetting, qnAIntentConfiguration = qnAIntentConfiguration, qInConnectIntentConfiguration = qInConnectIntentConfiguration)
   output <- .lexmodelsv2$update_intent_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config, op)

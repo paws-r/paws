@@ -14,7 +14,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Describes the default KMS key for EBS encryption by default for your account in this Region. You can change the default KMS key for encryption by default using \code{\link[=ec2_modify_ebs_default_kms_key_id]{modify_ebs_default_kms_key_id}} or \code{\link[=ec2_reset_ebs_default_kms_key_id]{reset_ebs_default_kms_key_id}}.
+Describes the default KMS key for EBS encryption by default for your account in this Region.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_get_ebs_default_kms_key_id/} for full documentation.
 }

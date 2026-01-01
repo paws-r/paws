@@ -3,8 +3,7 @@
 \name{quicksight_delete_identity_propagation_config}
 \alias{quicksight_delete_identity_propagation_config}
 \title{Deletes all access scopes and authorized targets that are associated
-with a service from the Amazon QuickSight IAM Identity Center
-application}
+with a service from the Quick Sight IAM Identity Center application}
 \usage{
 quicksight_delete_identity_propagation_config(AwsAccountId, Service)
 }
@@ -16,7 +15,7 @@ identity propagation configuration from.}
 associated access scopes and authorized targets from.}
 }
 \description{
-Deletes all access scopes and authorized targets that are associated with a service from the Amazon QuickSight IAM Identity Center application.
+Deletes all access scopes and authorized targets that are associated with a service from the Quick Sight IAM Identity Center application.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_delete_identity_propagation_config/} for full documentation.
 }

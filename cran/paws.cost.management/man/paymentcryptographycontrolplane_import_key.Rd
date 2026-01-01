@@ -9,7 +9,8 @@ paymentcryptographycontrolplane_import_key(
   KeyMaterial,
   KeyCheckValueAlgorithm = NULL,
   Enabled = NULL,
-  Tags = NULL
+  Tags = NULL,
+  ReplicationRegions = NULL
 )
 }
 \arguments{
@@ -47,6 +48,8 @@ other output.
 
 Tagging or untagging an Amazon Web Services Payment Cryptography key can
 allow or deny permission to the key.}
+
+\item{ReplicationRegions}{}
 }
 \description{
 Imports symmetric keys and public key certificates in PEM format (base64 encoded) into Amazon Web Services Payment Cryptography.

@@ -127,7 +127,7 @@ NULL
 #'  \link[=bedrockagent_get_flow_alias]{get_flow_alias} \tab Retrieves information about a flow\cr
 #'  \link[=bedrockagent_get_flow_version]{get_flow_version} \tab Retrieves information about a version of a flow\cr
 #'  \link[=bedrockagent_get_ingestion_job]{get_ingestion_job} \tab Gets information about a data ingestion job\cr
-#'  \link[=bedrockagent_get_knowledge_base]{get_knowledge_base} \tab Gets information about a knoweldge base\cr
+#'  \link[=bedrockagent_get_knowledge_base]{get_knowledge_base} \tab Gets information about a knowledge base\cr
 #'  \link[=bedrockagent_get_knowledge_base_documents]{get_knowledge_base_documents} \tab Retrieves specific documents from a data source that is connected to a knowledge base\cr
 #'  \link[=bedrockagent_get_prompt]{get_prompt} \tab Retrieves information about the working draft (DRAFT version) of a prompt or a version of it, depending on whether you include the promptVersion field or not\cr
 #'  \link[=bedrockagent_ingest_knowledge_base_documents]{ingest_knowledge_base_documents} \tab Ingests documents directly into the knowledge base that is connected to the data source\cr
@@ -198,7 +198,7 @@ bedrockagent <- function(config = list(), credentials = list(), endpoint = NULL,
   service_id = "Bedrock Agent",
   api_version = "2023-06-05",
   signing_name = "bedrock",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 

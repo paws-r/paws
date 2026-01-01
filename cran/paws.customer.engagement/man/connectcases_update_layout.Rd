@@ -4,17 +4,17 @@
 \alias{connectcases_update_layout}
 \title{Updates the attributes of an existing layout}
 \usage{
-connectcases_update_layout(content = NULL, domainId, layoutId, name = NULL)
+connectcases_update_layout(domainId, layoutId, name = NULL, content = NULL)
 }
 \arguments{
-\item{content}{Information about which fields will be present in the layout, the order
-of the fields.}
-
 \item{domainId}{[required] The unique identifier of the Cases domain.}
 
 \item{layoutId}{[required] The unique identifier of the layout.}
 
 \item{name}{The name of the layout. It must be unique per domain.}
+
+\item{content}{Information about which fields will be present in the layout, the order
+of the fields.}
 }
 \description{
 Updates the attributes of an existing layout.

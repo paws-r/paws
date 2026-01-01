@@ -49,7 +49,7 @@ analysis, first convert the analysis to a template by using the
 \code{\link[=quicksight_create_template]{create_template}} API operation. For
 \code{SourceTemplate}, specify the Amazon Resource Name (ARN) of the source
 template. The \code{SourceTemplate}ARN can contain any Amazon Web Services
-account and any Amazon QuickSight-supported Amazon Web Services Region.
+account and any Amazon Quick Sight-supported Amazon Web Services Region.
 
 Use the \code{DataSetReferences} entity within \code{SourceTemplate} to list the
 replacement datasets for the placeholders listed in the original. The
@@ -67,7 +67,7 @@ assigned to the dashboard.}
 \itemize{
 \item \code{AvailabilityStatus} for \code{AdHocFilteringOption} - This status can be
 either \code{ENABLED} or \code{DISABLED}. When this is set to \code{DISABLED},
-Amazon QuickSight disables the left filter pane on the published
+Amazon Quick Sight disables the left filter pane on the published
 dashboard, which can be used for ad hoc (one-time) filtering. This
 option is \code{ENABLED} by default.
 \item \code{AvailabilityStatus} for \code{ExportToCSVOption} - This status can be
@@ -77,6 +77,18 @@ option is \code{ENABLED} by default.
 \item \code{VisibilityState} for \code{SheetControlsOption} - This visibility state
 can be either \code{COLLAPSED} or \code{EXPANDED}. This option is \code{COLLAPSED}
 by default.
+\item \code{AvailabilityStatus} for \code{QuickSuiteActionsOption} - This status can
+be either \code{ENABLED} or \code{DISABLED}. Features related to Actions in
+Amazon Quick Suite on dashboards are disabled when this is set to
+\code{DISABLED}. This option is \code{DISABLED} by default.
+\item \code{AvailabilityStatus} for \code{ExecutiveSummaryOption} - This status can
+be either \code{ENABLED} or \code{DISABLED}. The option to build an executive
+summary is disabled when this is set to \code{DISABLED}. This option is
+\code{ENABLED} by default.
+\item \code{AvailabilityStatus} for \code{DataStoriesSharingOption} - This status
+can be either \code{ENABLED} or \code{DISABLED}. The option to share a data
+story is disabled when this is set to \code{DISABLED}. This option is
+\code{ENABLED} by default.
 }}
 
 \item{ThemeArn}{The Amazon Resource Name (ARN) of the theme that is being used for this
@@ -96,7 +108,7 @@ the request to be valid.}
 definition objects. This option skips the validation step for specific
 errors.}
 
-\item{FolderArns}{When you create the dashboard, Amazon QuickSight adds the dashboard to
+\item{FolderArns}{When you create the dashboard, Amazon Quick Sight adds the dashboard to
 these folders.}
 
 \item{LinkSharingConfiguration}{A structure that contains the permissions of a shareable link to the

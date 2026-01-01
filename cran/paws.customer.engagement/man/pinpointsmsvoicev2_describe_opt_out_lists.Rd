@@ -16,8 +16,8 @@ pinpointsmsvoicev2_describe_opt_out_lists(
 \item{OptOutListNames}{The OptOutLists to show the details of. This is an array of strings that
 can be either the OptOutListName or OptOutListArn.
 
-If you are using a shared AWS End User Messaging SMS and Voice resource
-then you must use the full Amazon Resource Name(ARN).}
+If you are using a shared End User Messaging SMS resource then you must
+use the full Amazon Resource Name(ARN).}
 
 \item{NextToken}{The token to be used for the next set of paginated results. You don't
 need to supply a value for this field in the initial request.}

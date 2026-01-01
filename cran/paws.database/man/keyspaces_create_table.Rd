@@ -17,7 +17,8 @@ keyspaces_create_table(
   tags = NULL,
   clientSideTimestamps = NULL,
   autoScalingSpecification = NULL,
-  replicaSpecifications = NULL
+  replicaSpecifications = NULL,
+  cdcSpecification = NULL
 )
 }
 \arguments{
@@ -157,6 +158,8 @@ Region, you can do so by configuring the following parameters.
 \item \code{readCapacityAutoScaling}: The read capacity auto scaling settings
 for the table. (Optional)
 }}
+
+\item{cdcSpecification}{The CDC stream settings of the table.}
 }
 \description{
 The \code{\link[=keyspaces_create_table]{create_table}} operation adds a new table to the specified keyspace. Within a keyspace, table names must be unique.

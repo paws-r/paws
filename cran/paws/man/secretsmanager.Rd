@@ -71,7 +71,7 @@ For a list of endpoints, see \href{https://docs.aws.amazon.com/secretsmanager/la
 \strong{Support and Feedback for Amazon Web Services Secrets Manager}
 
 We welcome your feedback. Send your comments to
-\email{awssecretsmanager-feedback@amazon.com}, or post your feedback and
+\href{mailto:awssecretsmanager-feedback@amazon.com}{awssecretsmanager-feedback@amazon.com}, or post your feedback and
 questions in the Amazon Web Services Secrets Manager Discussion Forum.
 For more information about the Amazon Web Services Discussion Forums,
 see Forums Help.
@@ -141,7 +141,7 @@ about CloudTrail, including enabling it and find your log files, see the
 \link[paws.security.identity:secretsmanager_list_secrets]{list_secrets} \tab Lists the secrets that are stored by Secrets Manager in the Amazon Web Services account, not including secrets that are marked for deletion\cr
 \link[paws.security.identity:secretsmanager_list_secret_version_ids]{list_secret_version_ids} \tab Lists the versions of a secret\cr
 \link[paws.security.identity:secretsmanager_put_resource_policy]{put_resource_policy} \tab Attaches a resource-based permission policy to a secret\cr
-\link[paws.security.identity:secretsmanager_put_secret_value]{put_secret_value} \tab Creates a new version with a new encrypted secret value and attaches it to the secret\cr
+\link[paws.security.identity:secretsmanager_put_secret_value]{put_secret_value} \tab Creates a new version of your secret by creating a new encrypted value and attaching it to the secret\cr
 \link[paws.security.identity:secretsmanager_remove_regions_from_replication]{remove_regions_from_replication} \tab For a secret that is replicated to other Regions, deletes the secret replicas from the Regions you specify\cr
 \link[paws.security.identity:secretsmanager_replicate_secret_to_regions]{replicate_secret_to_regions} \tab Replicates the secret to a new Regions\cr
 \link[paws.security.identity:secretsmanager_restore_secret]{restore_secret} \tab Cancels the scheduled deletion of a secret by removing the DeletedDate time stamp\cr

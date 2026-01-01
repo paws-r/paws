@@ -15,7 +15,8 @@ lambda_add_permission(
   Qualifier = NULL,
   RevisionId = NULL,
   PrincipalOrgID = NULL,
-  FunctionUrlAuthType = NULL
+  FunctionUrlAuthType = NULL,
+  InvokedViaFunctionUrl = NULL
 )
 }
 \arguments{
@@ -74,7 +75,10 @@ organization.}
 \item{FunctionUrlAuthType}{The type of authentication that your function URL uses. Set to \code{AWS_IAM}
 if you want to restrict access to authenticated users only. Set to
 \code{NONE} if you want to bypass IAM authentication to create a public
-endpoint. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html}{Security and auth model for Lambda function URLs}.}
+endpoint. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html}{Control access to Lambda function URLs}.}
+
+\item{InvokedViaFunctionUrl}{Indicates whether the permission applies when the function is invoked
+through a function URL.}
 }
 \description{
 Grants a \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html#Principal_specifying}{principal} permission to use a function. You can apply the policy at the function level, or specify a qualifier to restrict access to a single version or alias. If you use a qualifier, the invoker must use the full Amazon Resource Name (ARN) of that version or alias to invoke the function. Note: Lambda does not support adding policies to version $LATEST.

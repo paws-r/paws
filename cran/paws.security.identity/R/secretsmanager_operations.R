@@ -210,11 +210,15 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' @param AddReplicaRegions A list of Regions and KMS keys to replicate secrets.
 #' @param ForceOverwriteReplicaSecret Specifies whether to overwrite a secret with the same name in the
 #' destination Region. By default, secrets aren't overwritten.
+#' @param Type The exact string that identifies the partner that holds the external
+#' secret. For more information, see [Using Secrets Manager managed
+#' external
+#' secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/managed-external-secrets.html).
 #'
 #' @keywords internal
 #'
 #' @rdname secretsmanager_create_secret
-secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Description = NULL, KmsKeyId = NULL, SecretBinary = NULL, SecretString = NULL, Tags = NULL, AddReplicaRegions = NULL, ForceOverwriteReplicaSecret = NULL) {
+secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Description = NULL, KmsKeyId = NULL, SecretBinary = NULL, SecretString = NULL, Tags = NULL, AddReplicaRegions = NULL, ForceOverwriteReplicaSecret = NULL, Type = NULL) {
   op <- new_operation(
     name = "CreateSecret",
     http_method = "POST",
@@ -223,7 +227,7 @@ secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Descri
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .secretsmanager$create_secret_input(Name = Name, ClientRequestToken = ClientRequestToken, Description = Description, KmsKeyId = KmsKeyId, SecretBinary = SecretBinary, SecretString = SecretString, Tags = Tags, AddReplicaRegions = AddReplicaRegions, ForceOverwriteReplicaSecret = ForceOverwriteReplicaSecret)
+  input <- .secretsmanager$create_secret_input(Name = Name, ClientRequestToken = ClientRequestToken, Description = Description, KmsKeyId = KmsKeyId, SecretBinary = SecretBinary, SecretString = SecretString, Tags = Tags, AddReplicaRegions = AddReplicaRegions, ForceOverwriteReplicaSecret = ForceOverwriteReplicaSecret, Type = Type)
   output <- .secretsmanager$create_secret_output()
   config <- get_config()
   svc <- .secretsmanager$service(config, op)
@@ -571,11 +575,12 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #' [`list_secrets`][secretsmanager_list_secrets] again with this value.
 #' @param Filters The filters to apply to the list of secrets.
 #' @param SortOrder Secrets are listed by `CreatedDate`.
+#' @param SortBy If not specified, secrets are listed by `CreatedDate`.
 #'
 #' @keywords internal
 #'
 #' @rdname secretsmanager_list_secrets
-secretsmanager_list_secrets <- function(IncludePlannedDeletion = NULL, MaxResults = NULL, NextToken = NULL, Filters = NULL, SortOrder = NULL) {
+secretsmanager_list_secrets <- function(IncludePlannedDeletion = NULL, MaxResults = NULL, NextToken = NULL, Filters = NULL, SortOrder = NULL, SortBy = NULL) {
   op <- new_operation(
     name = "ListSecrets",
     http_method = "POST",
@@ -584,7 +589,7 @@ secretsmanager_list_secrets <- function(IncludePlannedDeletion = NULL, MaxResult
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SecretList"),
     stream_api = FALSE
   )
-  input <- .secretsmanager$list_secrets_input(IncludePlannedDeletion = IncludePlannedDeletion, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortOrder = SortOrder)
+  input <- .secretsmanager$list_secrets_input(IncludePlannedDeletion = IncludePlannedDeletion, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortOrder = SortOrder, SortBy = SortBy)
   output <- .secretsmanager$list_secrets_output()
   config <- get_config()
   svc <- .secretsmanager$service(config, op)
@@ -651,11 +656,11 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 }
 .secretsmanager$operations$put_resource_policy <- secretsmanager_put_resource_policy
 
-#' Creates a new version with a new encrypted secret value and attaches it
-#' to the secret
+#' Creates a new version of your secret by creating a new encrypted value
+#' and attaching it to the secret
 #'
 #' @description
-#' Creates a new version with a new encrypted secret value and attaches it to the secret. The version can contain a new `SecretString` value or a new `SecretBinary` value.
+#' Creates a new version of your secret by creating a new encrypted value and attaching it to the secret. version can contain a new `SecretString` value or a new `SecretBinary` value.
 #'
 #' See [https://www.paws-r-sdk.com/docs/secretsmanager_put_secret_value/](https://www.paws-r-sdk.com/docs/secretsmanager_put_secret_value/) for full documentation.
 #'
@@ -733,13 +738,16 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #' 
 #' If you don't include `VersionStages`, then Secrets Manager automatically
 #' moves the staging label `AWSCURRENT` to this version.
-#' @param RotationToken A unique identifier that indicates the source of the request. For
-#' cross-account rotation (when you rotate a secret in one account by using
-#' a Lambda rotation function in another account) and the Lambda rotation
-#' function assumes an IAM role to call Secrets Manager, Secrets Manager
-#' validates the identity with the rotation token. For more information,
+#' @param RotationToken A unique identifier that indicates the source of the request. Required
+#' for secret rotations using an IAM assumed role or cross-account
+#' rotation, in which you rotate a secret in one account by using a Lambda
+#' rotation function in another account. In both cases, the rotation
+#' function assumes an IAM role to call Secrets Manager, and then Secrets
+#' Manager validates the identity using the token. For more information,
 #' see [How rotation
-#' works](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html).
+#' works](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html)
+#' and [Rotation by Lambda
+#' functions](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotate-secrets_lambda.html).
 #' 
 #' Sensitive: This field contains sensitive information, so the service
 #' does not include it in CloudTrail log entries. If you create your own
@@ -909,23 +917,54 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' rotation](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotate-secrets_managed.html)
 #' in the *Secrets Manager User Guide*.
 #' @param RotationRules A structure that defines the rotation configuration for this secret.
+#' 
+#' When changing an existing rotation schedule and setting
+#' `RotateImmediately` to `false`:
+#' 
+#' -   If using `AutomaticallyAfterDays` or a `ScheduleExpression` with
+#'     `rate()`, the previously scheduled rotation might still occur.
+#' 
+#' -   To prevent unintended rotations, use a `ScheduleExpression` with
+#'     `cron()` for granular control over rotation windows.
+#' @param ExternalSecretRotationMetadata The metadata needed to successfully rotate a managed external secret. A
+#' list of key value pairs in JSON format specified by the partner. For
+#' more information about the required information, see [Using Secrets
+#' Manager managed external
+#' secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/managed-external-secrets.html)
+#' @param ExternalSecretRotationRoleArn The Amazon Resource Name (ARN) of the role that allows Secrets Manager
+#' to rotate a secret held by a third-party partner. For more information,
+#' see [Security and
+#' permissions](https://docs.aws.amazon.com/secretsmanager/latest/userguide/mes-security.html).
 #' @param RotateImmediately Specifies whether to rotate the secret immediately or wait until the
 #' next scheduled rotation window. The rotation schedule is defined in
 #' RotateSecretRequest$RotationRules.
 #' 
-#' For secrets that use a Lambda rotation function to rotate, if you don't
-#' immediately rotate the secret, Secrets Manager tests the rotation
-#' configuration by running the [`testSecret`
-#' step](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotate-secrets_lambda-functions.html#rotate-secrets_lambda-functions-code)
-#' of the Lambda rotation function. The test creates an `AWSPENDING`
+#' The default for `RotateImmediately` is `true`. If you don't specify this
+#' value, Secrets Manager rotates the secret immediately.
+#' 
+#' If you set `RotateImmediately` to `false`, Secrets Manager tests the
+#' rotation configuration by running the [`testSecret`
+#' step](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html#rotate-secrets_how)
+#' of the Lambda rotation function. This test creates an `AWSPENDING`
 #' version of the secret and then removes it.
 #' 
-#' By default, Secrets Manager rotates the secret immediately.
+#' When changing an existing rotation schedule and setting
+#' `RotateImmediately` to `false`:
+#' 
+#' -   If using `AutomaticallyAfterDays` or a `ScheduleExpression` with
+#'     `rate()`, the previously scheduled rotation might still occur.
+#' 
+#' -   To prevent unintended rotations, use a `ScheduleExpression` with
+#'     `cron()` for granular control over rotation windows.
+#' 
+#' Rotation is an asynchronous process. For more information, see [How
+#' rotation
+#' works](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html#rotate-secrets_how).
 #'
 #' @keywords internal
 #'
 #' @rdname secretsmanager_rotate_secret
-secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, RotationLambdaARN = NULL, RotationRules = NULL, RotateImmediately = NULL) {
+secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, RotationLambdaARN = NULL, RotationRules = NULL, ExternalSecretRotationMetadata = NULL, ExternalSecretRotationRoleArn = NULL, RotateImmediately = NULL) {
   op <- new_operation(
     name = "RotateSecret",
     http_method = "POST",
@@ -934,7 +973,7 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .secretsmanager$rotate_secret_input(SecretId = SecretId, ClientRequestToken = ClientRequestToken, RotationLambdaARN = RotationLambdaARN, RotationRules = RotationRules, RotateImmediately = RotateImmediately)
+  input <- .secretsmanager$rotate_secret_input(SecretId = SecretId, ClientRequestToken = ClientRequestToken, RotationLambdaARN = RotationLambdaARN, RotationRules = RotationRules, ExternalSecretRotationMetadata = ExternalSecretRotationMetadata, ExternalSecretRotationRoleArn = ExternalSecretRotationRoleArn, RotateImmediately = RotateImmediately)
   output <- .secretsmanager$rotate_secret_output()
   config <- get_config()
   svc <- .secretsmanager$service(config, op)
@@ -952,7 +991,9 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
 #'
 #' See [https://www.paws-r-sdk.com/docs/secretsmanager_stop_replication_to_replica/](https://www.paws-r-sdk.com/docs/secretsmanager_stop_replication_to_replica/) for full documentation.
 #'
-#' @param SecretId &#91;required&#93; The ARN of the primary secret.
+#' @param SecretId &#91;required&#93; The name of the secret or the replica ARN. The replica ARN is the same
+#' as the original primary secret ARN expect the Region is changed to the
+#' replica Region.
 #'
 #' @keywords internal
 #'
@@ -1144,11 +1185,14 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' Sensitive: This field contains sensitive information, so the service
 #' does not include it in CloudTrail log entries. If you create your own
 #' log entries, you must also avoid logging the information in this field.
+#' @param Type The exact string that identifies the third-party partner that holds the
+#' external secret. For more information, see [Managed external secret
+#' partners](https://docs.aws.amazon.com/secretsmanager/latest/userguide/mes-partners.html).
 #'
 #' @keywords internal
 #'
 #' @rdname secretsmanager_update_secret
-secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, Description = NULL, KmsKeyId = NULL, SecretBinary = NULL, SecretString = NULL) {
+secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, Description = NULL, KmsKeyId = NULL, SecretBinary = NULL, SecretString = NULL, Type = NULL) {
   op <- new_operation(
     name = "UpdateSecret",
     http_method = "POST",
@@ -1157,7 +1201,7 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .secretsmanager$update_secret_input(SecretId = SecretId, ClientRequestToken = ClientRequestToken, Description = Description, KmsKeyId = KmsKeyId, SecretBinary = SecretBinary, SecretString = SecretString)
+  input <- .secretsmanager$update_secret_input(SecretId = SecretId, ClientRequestToken = ClientRequestToken, Description = Description, KmsKeyId = KmsKeyId, SecretBinary = SecretBinary, SecretString = SecretString, Type = Type)
   output <- .secretsmanager$update_secret_output()
   config <- get_config()
   svc <- .secretsmanager$service(config, op)

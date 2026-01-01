@@ -2,7 +2,8 @@
 % Please edit documentation in R/appstream_operations.R
 \name{appstream_untag_resource}
 \alias{appstream_untag_resource}
-\title{Disassociates one or more specified tags from the specified AppStream 2}
+\title{Disassociates one or more specified tags from the specified WorkSpaces
+Applications resource}
 \usage{
 appstream_untag_resource(ResourceArn, TagKeys)
 }
@@ -12,7 +13,7 @@ appstream_untag_resource(ResourceArn, TagKeys)
 \item{TagKeys}{[required] The tag keys for the tags to disassociate.}
 }
 \description{
-Disassociates one or more specified tags from the specified AppStream 2.0 resource.
+Disassociates one or more specified tags from the specified WorkSpaces Applications resource.
 
 See \url{https://www.paws-r-sdk.com/docs/appstream_untag_resource/} for full documentation.
 }

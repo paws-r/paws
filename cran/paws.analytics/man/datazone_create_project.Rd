@@ -11,6 +11,7 @@ datazone_create_project(
   glossaryTerms = NULL,
   name,
   projectProfileId = NULL,
+  resourceTags = NULL,
   userParameters = NULL
 )
 }
@@ -28,6 +29,8 @@ level.}
 \item{name}{[required] The name of the Amazon DataZone project.}
 
 \item{projectProfileId}{The ID of the project profile.}
+
+\item{resourceTags}{The resource tags of the project.}
 
 \item{userParameters}{The user parameters of the project.}
 }

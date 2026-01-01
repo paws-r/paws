@@ -49,12 +49,12 @@ different availability zones.}
 builder. To assume a role, the app block builder calls the AWS Security
 Token Service (STS) \code{AssumeRole} API operation and passes the ARN of the
 role to use. The operation creates a new session with temporary
-credentials. AppStream 2.0 retrieves the temporary credentials and
-creates the \strong{appstream_machine_role} credential profile on the
+credentials. WorkSpaces Applications retrieves the temporary credentials
+and creates the \strong{appstream_machine_role} credential profile on the
 instance.
 
-For more information, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html}{Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming Instances}
-in the \emph{Amazon AppStream 2.0 Administration Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html}{Using an IAM Role to Grant Permissions to Applications and Scripts Running on WorkSpaces Applications Streaming Instances}
+in the \emph{Amazon WorkSpaces Applications Administration Guide}.}
 
 \item{AccessEndpoints}{The list of interface VPC endpoint (interface endpoint) objects.
 Administrators can connect to the app block builder only through the

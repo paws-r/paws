@@ -2,8 +2,9 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_activate_type}
 \alias{cloudformation_activate_type}
-\title{Activates a public third-party extension, making it available for use in
-stack templates}
+\title{Activates a public third-party extension, such as a resource or module,
+to make it available for use in stack templates in your current account
+and Region}
 \usage{
 cloudformation_activate_type(
   Type = NULL,
@@ -39,7 +40,7 @@ and \code{PublisherId}.}
 Conditional: You must specify \code{PublicTypeArn}, or \code{TypeName}, \code{Type},
 and \code{PublisherId}.}
 
-\item{TypeNameAlias}{An alias to assign to the public extension, in this account and Region.
+\item{TypeNameAlias}{An alias to assign to the public extension in this account and Region.
 If you specify an alias for the extension, CloudFormation treats the
 alias as the extension type name within this account and Region. You
 must use the alias to refer to the extension in your templates, API
@@ -77,7 +78,7 @@ version selected.
 You can specify \code{MajorVersion} or \code{VersionBump}, but not both.}
 }
 \description{
-Activates a public third-party extension, making it available for use in stack templates. Once you have activated a public third-party extension in your account and Region, use \code{\link[=cloudformation_set_type_configuration]{set_type_configuration}} to specify configuration properties for the extension. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-public.html}{Using public extensions} in the \emph{CloudFormation User Guide}.
+Activates a public third-party extension, such as a resource or module, to make it available for use in stack templates in your current account and Region. It can also create CloudFormation Hooks, which allow you to evaluate resource configurations before CloudFormation provisions them. Hooks integrate with both CloudFormation and Cloud Control API operations.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudformation_activate_type/} for full documentation.
 }

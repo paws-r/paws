@@ -5,20 +5,23 @@
 \title{Lists the resource configurations owned by or shared with this account}
 \usage{
 vpclattice_list_resource_configurations(
-  maxResults = NULL,
-  nextToken = NULL,
+  resourceGatewayIdentifier = NULL,
   resourceConfigurationGroupIdentifier = NULL,
-  resourceGatewayIdentifier = NULL
+  domainVerificationIdentifier = NULL,
+  maxResults = NULL,
+  nextToken = NULL
 )
 }
 \arguments{
+\item{resourceGatewayIdentifier}{The ID of the resource gateway for the resource configuration.}
+
+\item{resourceConfigurationGroupIdentifier}{The ID of the resource configuration of type \code{Group}.}
+
+\item{domainVerificationIdentifier}{The domain verification ID.}
+
 \item{maxResults}{The maximum page size.}
 
 \item{nextToken}{A pagination token for the next page of results.}
-
-\item{resourceConfigurationGroupIdentifier}{The ID of the group resource configuration.}
-
-\item{resourceGatewayIdentifier}{The ID of the resource gateway for the resource configuration.}
 }
 \description{
 Lists the resource configurations owned by or shared with this account.

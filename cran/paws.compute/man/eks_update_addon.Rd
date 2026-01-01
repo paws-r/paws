@@ -60,12 +60,12 @@ idempotency of the request.}
 values that you provide are validated against the schema returned by
 \code{\link[=eks_describe_addon_configuration]{describe_addon_configuration}}.}
 
-\item{podIdentityAssociations}{An array of Pod Identity Assocations to be updated. Each EKS Pod
-Identity association maps a Kubernetes service account to an IAM Role.
-If this value is left blank, no change. If an empty array is provided,
-existing Pod Identity Assocations owned by the Addon are deleted.
+\item{podIdentityAssociations}{An array of EKS Pod Identity associations to be updated. Each
+association maps a Kubernetes service account to an IAM role. If this
+value is left blank, no change. If an empty array is provided, existing
+associations owned by the add-on are deleted.
 
-For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/add-ons-iam.html}{Attach an IAM Role to an Amazon EKS add-on using Pod Identity}
+For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/add-ons-iam.html}{Attach an IAM Role to an Amazon EKS add-on using EKS Pod Identity}
 in the \emph{Amazon EKS User Guide}.}
 }
 \description{

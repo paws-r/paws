@@ -2,7 +2,8 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_describe_type}
 \alias{cloudformation_describe_type}
-\title{Returns detailed information about an extension that has been registered}
+\title{Returns detailed information about an extension from the CloudFormation
+registry in your current account and Region}
 \usage{
 cloudformation_describe_type(
   Type = NULL,
@@ -43,7 +44,7 @@ ID.}
 \item{PublicVersionNumber}{The version number of a public third-party extension.}
 }
 \description{
-Returns detailed information about an extension that has been registered.
+Returns detailed information about an extension from the CloudFormation registry in your current account and Region.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudformation_describe_type/} for full documentation.
 }

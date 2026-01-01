@@ -10,7 +10,8 @@ sagemaker_create_workforce(
   SourceIpConfig = NULL,
   WorkforceName,
   Tags = NULL,
-  WorkforceVpcConfig = NULL
+  WorkforceVpcConfig = NULL,
+  IpAddressType = NULL
 )
 }
 \arguments{
@@ -34,6 +35,9 @@ and organize our workforce. Each tag consists of a key and a value, both
 of which you define.}
 
 \item{WorkforceVpcConfig}{Use this parameter to configure a workforce using VPC.}
+
+\item{IpAddressType}{Use this parameter to specify whether you want \code{IPv4} only or
+\code{dualstack} (\code{IPv4} and \code{IPv6}) to support your labeling workforce.}
 }
 \description{
 Use this operation to create a workforce. This operation will return an error if a workforce already exists in the Amazon Web Services Region that you specify. You can only create one workforce in each Amazon Web Services Region per Amazon Web Services account.

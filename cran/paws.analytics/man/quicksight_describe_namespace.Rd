@@ -7,8 +7,8 @@
 quicksight_describe_namespace(AwsAccountId, Namespace)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID for the Amazon Web Services account that contains the Amazon
-QuickSight namespace that you want to describe.}
+\item{AwsAccountId}{[required] The ID for the Amazon Web Services account that contains the Quick Sight
+namespace that you want to describe.}
 
 \item{Namespace}{[required] The namespace that you want to describe.}
 }

@@ -2,7 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_abort_multipart_read_set_upload}
 \alias{omics_abort_multipart_read_set_upload}
-\title{Stops a multipart upload}
+\title{Stops a multipart read set upload into a sequence store and returns a
+response with no body if the operation is successful}
 \usage{
 omics_abort_multipart_read_set_upload(sequenceStoreId, uploadId)
 }
@@ -12,7 +13,7 @@ omics_abort_multipart_read_set_upload(sequenceStoreId, uploadId)
 \item{uploadId}{[required] The ID for the multipart upload.}
 }
 \description{
-Stops a multipart upload.
+Stops a multipart read set upload into a sequence store and returns a response with no body if the operation is successful. To confirm that a multipart read set upload has been stopped, use the \code{\link[=omics_list_multipart_read_set_uploads]{list_multipart_read_set_uploads}} API operation to view all active multipart read set uploads.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_abort_multipart_read_set_upload/} for full documentation.
 }

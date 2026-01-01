@@ -33,7 +33,7 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 \item{InstanceType}{[required] The instance type for which to reserve capacity.
 
 You can request future-dated Capacity Reservations for instance types in
-the C, M, R, I, and T instance families only.
+the C, M, R, I, T, and G instance families only.
 
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance types}
 in the \emph{Amazon EC2 User Guide}.}
@@ -57,9 +57,9 @@ hardware that is dedicated to a single Amazon Web Services account.
 \item{InstanceCount}{[required] The number of instances for which to reserve capacity.
 
 You can request future-dated Capacity Reservations for an instance count
-with a minimum of 100 vCPUs. For example, if you request a future-dated
+with a minimum of 32 vCPUs. For example, if you request a future-dated
 Capacity Reservation for \code{m5.xlarge} instances, you must request at
-least 25 instances (\emph{25 * m5.xlarge = 100 vCPUs}).
+least 8 instances (\emph{8 * m5.xlarge = 32 vCPUs}).
 
 Valid range: 1 - 1000}
 

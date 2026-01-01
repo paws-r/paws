@@ -23,9 +23,12 @@ to retain resources.}
 \item{Tags}{Information about the tags to assign to the retention rule.}
 
 \item{ResourceType}{[required] The resource type to be retained by the retention rule. Currently, only
-Amazon EBS snapshots and EBS-backed AMIs are supported. To retain
-snapshots, specify \code{EBS_SNAPSHOT}. To retain EBS-backed AMIs, specify
-\code{EC2_IMAGE}.}
+EBS volumes, EBS snapshots, and EBS-backed AMIs are supported.
+\itemize{
+\item To retain EBS volumes, specify \code{EBS_VOLUME}.
+\item To retain EBS snapshots, specify \code{EBS_SNAPSHOT}
+\item To retain EBS-backed AMIs, specify \code{EC2_IMAGE}.
+}}
 
 \item{ResourceTags}{[Tag-level retention rules only] Specifies the resource tags to use to
 identify resources that are to be retained by a tag-level retention

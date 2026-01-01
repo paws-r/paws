@@ -2,16 +2,18 @@
 % Please edit documentation in R/vpclattice_operations.R
 \name{vpclattice_create_resource_gateway}
 \alias{vpclattice_create_resource_gateway}
-\title{Creates a resource gateway}
+\title{A resource gateway is a point of ingress into the VPC where a resource
+resides}
 \usage{
 vpclattice_create_resource_gateway(
   clientToken = NULL,
-  ipAddressType = NULL,
   name,
+  vpcIdentifier = NULL,
+  subnetIds = NULL,
   securityGroupIds = NULL,
-  subnetIds,
-  tags = NULL,
-  vpcIdentifier
+  ipAddressType = NULL,
+  ipv4AddressesPerEni = NULL,
+  tags = NULL
 )
 }
 \arguments{
@@ -21,21 +23,42 @@ successfully using the same client token and parameters, the retry
 succeeds without performing any actions. If the parameters aren't
 identical, the retry fails.}
 
-\item{ipAddressType}{The type of IP address used by the resource gateway.}
-
 \item{name}{[required] The name of the resource gateway.}
+
+\item{vpcIdentifier}{The ID of the VPC for the resource gateway.}
+
+\item{subnetIds}{The IDs of the VPC subnets in which to create the resource gateway.}
 
 \item{securityGroupIds}{The IDs of the security groups to apply to the resource gateway. The
 security groups must be in the same VPC.}
 
-\item{subnetIds}{[required] The IDs of the VPC subnets in which to create the resource gateway.}
+\item{ipAddressType}{A resource gateway can have IPv4, IPv6 or dualstack addresses. The IP
+address type of a resource gateway must be compatible with the subnets
+of the resource gateway and the IP address type of the resource, as
+described here:
+\itemize{
+\item \strong{IPv4}Assign IPv4 addresses to your resource gateway network
+interfaces. This option is supported only if all selected subnets
+have IPv4 address ranges, and the resource also has an IPv4 address.
+\item \strong{IPv6}Assign IPv6 addresses to your resource gateway network
+interfaces. This option is supported only if all selected subnets
+are IPv6 only subnets, and the resource also has an IPv6 address.
+\item \strong{Dualstack}Assign both IPv4 and IPv6 addresses to your resource
+gateway network interfaces. This option is supported only if all
+selected subnets have both IPv4 and IPv6 address ranges, and the
+resource either has an IPv4 or IPv6 address.
+}
+
+The IP address type of the resource gateway is independent of the IP
+address type of the client or the VPC endpoint through which the
+resource is accessed.}
+
+\item{ipv4AddressesPerEni}{The number of IPv4 addresses in each ENI for the resource gateway.}
 
 \item{tags}{The tags for the resource gateway.}
-
-\item{vpcIdentifier}{[required] The ID of the VPC for the resource gateway.}
 }
 \description{
-Creates a resource gateway.
+A resource gateway is a point of ingress into the VPC where a resource resides. It spans multiple Availability Zones. For your resource to be accessible from all Availability Zones, you should create your resource gateways to span as many Availability Zones as possible. A VPC can have multiple resource gateways.
 
 See \url{https://www.paws-r-sdk.com/docs/vpclattice_create_resource_gateway/} for full documentation.
 }

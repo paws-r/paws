@@ -2,8 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_disassociate_queue_quick_connects}
 \alias{connect_disassociate_queue_quick_connects}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Disassociates a set of quick connects from a queue}
 \usage{
 connect_disassociate_queue_quick_connects(InstanceId, QueueId, QuickConnectIds)
 }
@@ -16,7 +15,7 @@ in the Amazon Resource Name (ARN) of the instance.}
 \item{QuickConnectIds}{[required] The quick connects to disassociate from the queue.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to change.
+Disassociates a set of quick connects from a queue.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_disassociate_queue_quick_connects/} for full documentation.
 }

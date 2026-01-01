@@ -40,6 +40,14 @@ test_that("describe_multi_region_clusters", {
   expect_error(svc$describe_multi_region_clusters(MaxResults = 20), NA)
 })
 
+test_that("describe_multi_region_parameter_groups", {
+  expect_error(svc$describe_multi_region_parameter_groups(), NA)
+})
+
+test_that("describe_multi_region_parameter_groups", {
+  expect_error(svc$describe_multi_region_parameter_groups(MaxResults = 20), NA)
+})
+
 test_that("describe_parameter_groups", {
   expect_error(svc$describe_parameter_groups(), NA)
 })

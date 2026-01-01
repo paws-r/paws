@@ -13,7 +13,8 @@ sagemaker_list_cluster_nodes(
   MaxResults = NULL,
   NextToken = NULL,
   SortBy = NULL,
-  SortOrder = NULL
+  SortOrder = NULL,
+  IncludeNodeLogicalIds = NULL
 )
 }
 \arguments{
@@ -61,6 +62,11 @@ of cluster nodes, use the token in the next request.}
 \code{CREATION_TIME}.}
 
 \item{SortOrder}{The sort order for results. The default value is \code{Ascending}.}
+
+\item{IncludeNodeLogicalIds}{Specifies whether to include nodes that are still being provisioned in
+the response. When set to true, the response includes all nodes
+regardless of their provisioning status. When set to \code{False} (default),
+only nodes with assigned \code{InstanceIds} are returned.}
 }
 \description{
 Retrieves the list of instances (also called \emph{nodes} interchangeably) in a SageMaker HyperPod cluster.

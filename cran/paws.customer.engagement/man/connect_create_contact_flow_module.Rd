@@ -10,7 +10,9 @@ connect_create_contact_flow_module(
   Description = NULL,
   Content,
   Tags = NULL,
-  ClientToken = NULL
+  ClientToken = NULL,
+  Settings = NULL,
+  ExternalInvocationConfiguration = NULL
 )
 }
 \arguments{
@@ -31,6 +33,10 @@ For example, \{ "Tags": \{"key1":"value1", "key2":"value2"\} \}.}
 idempotency of the request. If not provided, the Amazon Web Services SDK
 populates this field. For more information about idempotency, see
 \href{https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/}{Making retries safe with idempotent APIs}.}
+
+\item{Settings}{The configuration settings for the flow module.}
+
+\item{ExternalInvocationConfiguration}{The external invocation configuration for the flow module.}
 }
 \description{
 Creates a flow module for the specified Amazon Connect instance.

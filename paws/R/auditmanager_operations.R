@@ -664,6 +664,10 @@ auditmanager_create_assessment <- function(name, description = NULL, assessmentR
 #' @param complianceType The compliance type that the new custom framework supports, such as CIS
 #' or HIPAA.
 #' @param controlSets &#91;required&#93; The control sets that are associated with the framework.
+#' 
+#' The `Controls` object returns a partial response when called through
+#' Framework APIs. For a complete `Controls` object, use
+#' [`get_control`][auditmanager_get_control].
 #' @param tags The tags that are associated with the framework.
 #'
 #' @return
@@ -2732,18 +2736,18 @@ auditmanager_get_organization_admin_account <- function() {
 }
 .auditmanager$operations$get_organization_admin_account <- auditmanager_get_organization_admin_account
 
-#' Gets a list of the Amazon Web Services from which Audit Manager can
-#' collect evidence
+#' Gets a list of the Amazon Web Services services from which Audit Manager
+#' can collect evidence
 #'
 #' @description
-#' Gets a list of the Amazon Web Services from which Audit Manager can
-#' collect evidence.
+#' Gets a list of the Amazon Web Services services from which Audit Manager
+#' can collect evidence.
 #' 
-#' Audit Manager defines which Amazon Web Services are in scope for an
-#' assessment. Audit Manager infers this scope by examining the
+#' Audit Manager defines which Amazon Web Services services are in scope
+#' for an assessment. Audit Manager infers this scope by examining the
 #' assessment’s controls and their data sources, and then mapping this
-#' information to one or more of the corresponding Amazon Web Services that
-#' are in this list.
+#' information to one or more of the corresponding Amazon Web Services
+#' services that are in this list.
 #' 
 #' For information about why it's no longer possible to specify services in
 #' scope manually, see [I can't edit the services in scope for my
@@ -4535,6 +4539,10 @@ auditmanager_update_assessment_control_set_status <- function(assessmentId, cont
 #' @param complianceType The compliance type that the new custom framework supports, such as CIS
 #' or HIPAA.
 #' @param controlSets &#91;required&#93; The control sets that are associated with the framework.
+#' 
+#' The `Controls` object returns a partial response when called through
+#' Framework APIs. For a complete `Controls` object, use
+#' [`get_control`][auditmanager_get_control].
 #'
 #' @return
 #' A list with the following syntax:

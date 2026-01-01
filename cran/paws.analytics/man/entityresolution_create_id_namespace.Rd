@@ -41,7 +41,7 @@ on your behalf as part of the workflow run.}
 \item{tags}{The tags used to organize, track, or control access for this resource.}
 }
 \description{
-Creates an ID namespace object which will help customers provide metadata explaining their dataset and how to use it. Each ID namespace must have a unique name. To modify an existing ID namespace, use the \code{\link[=entityresolution_update_id_namespace]{update_id_namespace}} API.
+Creates an ID namespace object which will help customers provide metadata explaining their dataset and how to use it. Each ID namespace must have a unique name. To modify an existing ID namespace, use the UpdateIdNamespace API.
 
 See \url{https://www.paws-r-sdk.com/docs/entityresolution_create_id_namespace/} for full documentation.
 }

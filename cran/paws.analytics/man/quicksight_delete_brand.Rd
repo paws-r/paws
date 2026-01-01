@@ -2,17 +2,17 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_delete_brand}
 \alias{quicksight_delete_brand}
-\title{Deletes an Amazon QuickSight brand}
+\title{This API permanently deletes the specified Quick Sight brand}
 \usage{
 quicksight_delete_brand(AwsAccountId, BrandId)
 }
 \arguments{
 \item{AwsAccountId}{[required] The ID of the Amazon Web Services account that owns the brand.}
 
-\item{BrandId}{[required] The ID of the Amazon QuickSight brand.}
+\item{BrandId}{[required] The ID of the Quick Suite brand.}
 }
 \description{
-Deletes an Amazon QuickSight brand.
+This API permanently deletes the specified Quick Sight brand. When you delete a brand:
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_delete_brand/} for full documentation.
 }

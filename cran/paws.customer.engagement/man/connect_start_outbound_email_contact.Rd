@@ -21,11 +21,11 @@ in the Amazon Resource Name (ARN) of the instance.}
 
 \item{ContactId}{[required] The identifier of the contact in this instance of Amazon Connect.}
 
-\item{FromEmailAddress}{The email address associated with the instance.}
+\item{FromEmailAddress}{The email address associated with the Amazon Connect instance.}
 
 \item{DestinationEmailAddress}{[required] The email address of the customer.}
 
-\item{AdditionalRecipients}{The addtional recipients address of email in CC.}
+\item{AdditionalRecipients}{The additional recipients address of email in CC.}
 
 \item{EmailMessage}{[required] The email message body to be sent to the newly created email.}
 

@@ -9,7 +9,7 @@ imagebuilder_create_container_recipe(
   name,
   description = NULL,
   semanticVersion,
-  components,
+  components = NULL,
   instanceConfiguration = NULL,
   dockerfileTemplateData = NULL,
   dockerfileTemplateUri = NULL,
@@ -47,9 +47,7 @@ assignment requirements for the nodes that you can assign. For example,
 you might choose a software version pattern, such as 1.0.0, or a date,
 such as 2021.01.01.}
 
-\item{components}{[required] Components for build and test that are included in the container recipe.
-Recipes require a minimum of one build component, and can have a maximum
-of 20 build and test components in any combination.}
+\item{components}{The components included in the container recipe.}
 
 \item{instanceConfiguration}{A group of options that can be used to configure an instance for
 building and testing container images.}
@@ -72,7 +70,10 @@ image.}
 
 \item{targetRepository}{[required] The destination repository for the container image.}
 
-\item{kmsKeyId}{Identifies which KMS key is used to encrypt the Dockerfile template.}
+\item{kmsKeyId}{The Amazon Resource Name (ARN) that uniquely identifies which KMS key is
+used to encrypt the Dockerfile template. This can be either the Key ARN
+or the Alias ARN. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN}{Key identifiers (KeyId)}
+in the \emph{Key Management Service Developer Guide}.}
 
 \item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of
 the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}

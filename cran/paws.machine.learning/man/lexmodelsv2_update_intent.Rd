@@ -7,6 +7,7 @@
 lexmodelsv2_update_intent(
   intentId,
   intentName,
+  intentDisplayName = NULL,
   description = NULL,
   parentIntentSignature = NULL,
   sampleUtterances = NULL,
@@ -30,6 +31,8 @@ lexmodelsv2_update_intent(
 \item{intentId}{[required] The unique identifier of the intent to update.}
 
 \item{intentName}{[required] The new name for the intent.}
+
+\item{intentDisplayName}{The new display name for the intent.}
 
 \item{description}{The new description of the intent.}
 

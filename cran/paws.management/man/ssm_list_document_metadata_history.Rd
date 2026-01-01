@@ -2,8 +2,8 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_list_document_metadata_history}
 \alias{ssm_list_document_metadata_history}
-\title{Information about approval reviews for a version of a change template in
-Change Manager}
+\title{Amazon Web Services Systems Manager Change Manager will no longer be
+open to new customers starting November 7, 2025}
 \usage{
 ssm_list_document_metadata_history(
   Name,
@@ -29,7 +29,7 @@ returns a token that you can specify in a subsequent call to get the
 next set of results.}
 }
 \description{
-Information about approval reviews for a version of a change template in Change Manager.
+Amazon Web Services Systems Manager Change Manager will no longer be open to new customers starting November 7, 2025. If you would like to use Change Manager, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/change-manager-availability-change.html}{Amazon Web Services Systems Manager Change Manager availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/ssm_list_document_metadata_history/} for full documentation.
 }

@@ -11,7 +11,10 @@ redshift_create_redshift_idc_application(
   IdcDisplayName,
   IamRoleArn,
   AuthorizedTokenIssuerList = NULL,
-  ServiceIntegrations = NULL
+  ServiceIntegrations = NULL,
+  ApplicationType = NULL,
+  Tags = NULL,
+  SsoTagKeys = NULL
 )
 }
 \arguments{
@@ -36,6 +39,16 @@ application instance.}
 
 \item{ServiceIntegrations}{A collection of service integrations for the Redshift IAM Identity
 Center application.}
+
+\item{ApplicationType}{The type of application being created. Valid values are \code{None} or
+\code{Lakehouse}. Use \code{Lakehouse} to enable Amazon Redshift federated
+permissions on cluster.}
+
+\item{Tags}{A list of tags.}
+
+\item{SsoTagKeys}{A list of tags keys that Redshift Identity Center applications copy to
+IAM Identity Center. For each input key, the tag corresponding to the
+key-value pair is propagated.}
 }
 \description{
 Creates an Amazon Redshift application for use with IAM Identity Center.

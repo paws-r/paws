@@ -37,12 +37,13 @@ rds_restore_db_cluster_from_s3(
   CopyTagsToSnapshot = NULL,
   Domain = NULL,
   DomainIAMRoleName = NULL,
-  ServerlessV2ScalingConfiguration = NULL,
+  StorageType = NULL,
   NetworkType = NULL,
+  ServerlessV2ScalingConfiguration = NULL,
   ManageMasterUserPassword = NULL,
   MasterUserSecretKmsKeyId = NULL,
-  StorageType = NULL,
-  EngineLifecycleSupport = NULL
+  EngineLifecycleSupport = NULL,
+  TagSpecifications = NULL
 )
 }
 \arguments{
@@ -269,7 +270,13 @@ in the \emph{Amazon Aurora User Guide}.}
 \item{DomainIAMRoleName}{Specify the name of the IAM role to be used when making API calls to the
 Directory Service.}
 
-\item{ServerlessV2ScalingConfiguration}{}
+\item{StorageType}{Specifies the storage type to be associated with the DB cluster.
+
+Valid Values: \code{aurora}, \code{aurora-iopt1}
+
+Default: \code{aurora}
+
+Valid for: Aurora DB clusters only}
 
 \item{NetworkType}{The network type of the DB cluster.
 
@@ -285,6 +292,8 @@ IPv4 and the IPv6 protocols (\code{DUAL}).
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html}{Working with a DB instance in a VPC}
 in the \emph{Amazon Aurora User Guide.}}
+
+\item{ServerlessV2ScalingConfiguration}{}
 
 \item{ManageMasterUserPassword}{Specifies whether to manage the master user password with Amazon Web
 Services Secrets Manager.
@@ -320,14 +329,6 @@ There is a default KMS key for your Amazon Web Services account. Your
 Amazon Web Services account has a different default KMS key for each
 Amazon Web Services Region.}
 
-\item{StorageType}{Specifies the storage type to be associated with the DB cluster.
-
-Valid Values: \code{aurora}, \code{aurora-iopt1}
-
-Default: \code{aurora}
-
-Valid for: Aurora DB clusters only}
-
 \item{EngineLifecycleSupport}{The life cycle type for this DB cluster.
 
 By default, this value is set to \code{open-source-rds-extended-support},
@@ -344,9 +345,9 @@ major engine version on your DB cluster past the end of standard support
 for that engine version. For more information, see the following
 sections:
 \itemize{
-\item Amazon Aurora - \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/extended-support.html}{Using Amazon RDS Extended Support}
+\item Amazon Aurora - \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/extended-support.html}{Amazon RDS Extended Support with Amazon Aurora}
 in the \emph{Amazon Aurora User Guide}
-\item Amazon RDS - \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html}{Using Amazon RDS Extended Support}
+\item Amazon RDS - \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html}{Amazon RDS Extended Support with Amazon RDS}
 in the \emph{Amazon RDS User Guide}
 }
 
@@ -356,6 +357,13 @@ Valid Values:
 \code{open-source-rds-extended-support | open-source-rds-extended-support-disabled}
 
 Default: \code{open-source-rds-extended-support}}
+
+\item{TagSpecifications}{Tags to assign to resources associated with the DB cluster.
+
+Valid Values:
+\itemize{
+\item \code{cluster-auto-backup} - The DB cluster's automated backup.
+}}
 }
 \description{
 Creates an Amazon Aurora DB cluster from MySQL data stored in an Amazon S3 bucket. Amazon RDS must be authorized to access the Amazon S3 bucket and the data must be created using the Percona XtraBackup utility as described in \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Migrating.ExtMySQL.html#AuroraMySQL.Migrating.ExtMySQL.S3}{Migrating Data from MySQL by Using an Amazon S3 Bucket} in the \emph{Amazon Aurora User Guide}.

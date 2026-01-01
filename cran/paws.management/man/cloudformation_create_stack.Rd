@@ -33,16 +33,16 @@ A stack name can contain only alphanumeric characters (case sensitive)
 and hyphens. It must start with an alphabetical character and can't be
 longer than 128 characters.}
 
-\item{TemplateBody}{Structure containing the template body with a minimum length of 1 byte
-and a maximum length of 51,200 bytes.
+\item{TemplateBody}{Structure that contains the template body with a minimum length of 1
+byte and a maximum length of 51,200 bytes.
 
-Conditional: You must specify either the \code{TemplateBody} or the
-\code{TemplateURL} parameter, but not both.}
+Conditional: You must specify either \code{TemplateBody} or \code{TemplateURL},
+but not both.}
 
-\item{TemplateURL}{The URL of a file containing the template body. The URL must point to a
-template (max size: 1 MB) that's located in an Amazon S3 bucket or a
+\item{TemplateURL}{The URL of a file that contains the template body. The URL must point to
+a template (max size: 1 MB) that's located in an Amazon S3 bucket or a
 Systems Manager document. The location for an Amazon S3 bucket must
-start with \verb{https://}.
+start with \verb{https://}. URLs from S3 static websites are not supported.
 
 Conditional: You must specify either the \code{TemplateBody} or the
 \code{TemplateURL} parameter, but not both.}
@@ -94,14 +94,14 @@ If your stack template contains these resources, we recommend that
 you review all permissions associated with them and edit their
 permissions if necessary.
 \itemize{
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html}{AWS::IAM::AccessKey}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html}{AWS::IAM::Group}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-managedpolicy.html}{AWS::IAM::ManagedPolicy}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html}{AWS::IAM::Policy}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html}{AWS::IAM::Role}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html}{AWS::IAM::User}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html}{AWS::IAM::UserToGroupAddition}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-accesskey.html}{AWS::IAM::AccessKey}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-group.html}{AWS::IAM::Group}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-managedpolicy.html}{AWS::IAM::ManagedPolicy}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-policy.html}{AWS::IAM::Policy}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-role.html}{AWS::IAM::Role}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-user.html}{AWS::IAM::User}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-usertogroupaddition.html}{AWS::IAM::UserToGroupAddition}
 }
 
 For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html#using-iam-capabilities}{Acknowledging IAM resources in CloudFormation templates}.
@@ -117,9 +117,9 @@ your stack template contains one or more macros, and you choose to
 create a stack directly from the processed template, without first
 reviewing the resulting changes in a change set, you must
 acknowledge this capability. This includes the
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-include.html}{AWS::Include}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/transform-aws-include.html}{AWS::Include}
 and
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html}{AWS::Serverless}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/transform-aws-serverless.html}{AWS::Serverless}
 transforms, which are macros hosted by CloudFormation.
 
 If you want to create a stack from a stack template that contains
@@ -140,21 +140,14 @@ For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/la
 Only one of the \code{Capabilities} and \code{ResourceType} parameters can be
 specified.}
 
-\item{ResourceTypes}{The template resource types that you have permissions to work with for
-this create stack action, such as \verb{AWS::EC2::Instance}, \verb{AWS::EC2::*},
-or \code{Custom::MyCustomInstance}. Use the following syntax to describe
-template resource types: \verb{AWS::*} (for all Amazon Web Services
-resources), \verb{Custom::*} (for all custom resources),
-\code{Custom::logical_ID } (for a specific custom resource),
-\verb{AWS::service_name::*} (for all resources of a particular Amazon Web
-Services service), and \verb{AWS::service_name::resource_logical_ID } (for a
-specific Amazon Web Services resource).
+\item{ResourceTypes}{Specifies which resource types you can work with, such as
+\verb{AWS::EC2::Instance} or \code{Custom::MyCustomInstance}.
 
 If the list of resource types doesn't include a resource that you're
 creating, the stack creation fails. By default, CloudFormation grants
 permissions to all resource types. IAM uses this parameter for
 CloudFormation-specific condition keys in IAM policies. For more
-information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html}{Control access with Identity and Access Management}.
+information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html}{Control CloudFormation access with Identity and Access Management}.
 
 Only one of the \code{Capabilities} and \code{ResourceType} parameters can be
 specified.}
@@ -176,18 +169,26 @@ credentials.}
 be one of: \code{DO_NOTHING}, \code{ROLLBACK}, or \code{DELETE}. You can specify either
 \code{OnFailure} or \code{DisableRollback}, but not both.
 
+Although the default setting is \code{ROLLBACK}, there is one exception. This
+exception occurs when a StackSet attempts to deploy a stack instance and
+the stack instance fails to create successfully. In this case, the
+\code{\link[=cloudformation_create_stack]{create_stack}} call overrides the default
+setting and sets the value of \code{OnFailure} to \code{DELETE}.
+
 Default: \code{ROLLBACK}}
 
-\item{StackPolicyBody}{Structure containing the stack policy body. For more information, see
+\item{StackPolicyBody}{Structure that contains the stack policy body. For more information, see
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html}{Prevent updates to stack resources}
 in the \emph{CloudFormation User Guide}. You can specify either the
 \code{StackPolicyBody} or the \code{StackPolicyURL} parameter, but not both.}
 
-\item{StackPolicyURL}{Location of a file containing the stack policy. The URL must point to a
-policy (maximum size: 16 KB) located in an S3 bucket in the same Region
-as the stack. The location for an Amazon S3 bucket must start with
-\verb{https://}. You can specify either the \code{StackPolicyBody} or the
-\code{StackPolicyURL} parameter, but not both.}
+\item{StackPolicyURL}{Location of a file that contains the stack policy. The URL must point to
+a policy (maximum size: 16 KB) located in an S3 bucket in the same
+Region as the stack. The location for an Amazon S3 bucket must start
+with \verb{https://}. URLs from S3 static websites are not supported.
+
+You can specify either the \code{StackPolicyBody} or the \code{StackPolicyURL}
+parameter, but not both.}
 
 \item{Tags}{Key-value pairs to associate with this stack. CloudFormation also
 propagates these tags to the resources created in the stack. A maximum

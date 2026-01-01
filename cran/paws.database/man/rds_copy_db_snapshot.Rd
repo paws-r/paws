@@ -13,7 +13,9 @@ rds_copy_db_snapshot(
   PreSignedUrl = NULL,
   OptionGroupName = NULL,
   TargetCustomAvailabilityZone = NULL,
-  CopyOptionGroup = NULL
+  SnapshotTarget = NULL,
+  CopyOptionGroup = NULL,
+  SnapshotAvailabilityZone = NULL
 )
 }
 \arguments{
@@ -23,20 +25,18 @@ If the source snapshot is in the same Amazon Web Services Region as the
 copy, specify a valid DB snapshot identifier. For example, you might
 specify \code{rds:mysql-instance1-snapshot-20130805}.
 
-If the source snapshot is in a different Amazon Web Services Region than
-the copy, specify a valid DB snapshot ARN. For example, you might
-specify
-\code{arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20130805}.
-
 If you are copying from a shared manual DB snapshot, this parameter must
 be the Amazon Resource Name (ARN) of the shared DB snapshot.
 
-If you are copying an encrypted snapshot this parameter must be in the
-ARN format for the source Amazon Web Services Region.
+If the source snapshot is in a different Amazon Web Services Region than
+the copy, specify a valid DB snapshot ARN. You can also specify an ARN
+of a snapshot that is in a different account and a different Amazon Web
+Services Region. For example, you might specify
+\code{arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20130805}.
 
 Constraints:
 \itemize{
-\item Must specify a valid system snapshot in the "available" state.
+\item Must specify a valid source snapshot in the "available" state.
 }
 
 Example: \code{rds:mydb-2012-04-02-00-01}
@@ -158,10 +158,23 @@ CAZ.
 
 Example: \code{rds-caz-aiqhTgQv}.}
 
+\item{SnapshotTarget}{Configures the location where RDS will store copied snapshots.
+
+Valid Values:
+\itemize{
+\item \code{local} (Dedicated Local Zone)
+\item \code{outposts} (Amazon Web Services Outposts)
+\item \code{region} (Amazon Web Services Region)
+}}
+
 \item{CopyOptionGroup}{Specifies whether to copy the DB option group associated with the source
 DB snapshot to the target Amazon Web Services account and associate with
 the target DB snapshot. The associated option group can be copied only
 with cross-account snapshot copy calls.}
+
+\item{SnapshotAvailabilityZone}{Specifies the name of the Availability Zone where RDS stores the DB
+snapshot. This value is valid only for snapshots that RDS stores on a
+Dedicated Local Zone.}
 }
 \description{
 Copies the specified DB snapshot. The source DB snapshot must be in the \code{available} state.

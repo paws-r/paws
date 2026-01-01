@@ -7,6 +7,7 @@
 rds_modify_db_proxy(
   DBProxyName,
   NewDBProxyName = NULL,
+  DefaultAuthScheme = NULL,
   Auth = NULL,
   RequireTLS = NULL,
   IdleClientTimeout = NULL,
@@ -22,6 +23,12 @@ rds_modify_db_proxy(
 letter and must contain only ASCII letters, digits, and hyphens; it
 can't end with a hyphen or contain two consecutive hyphens.}
 
+\item{DefaultAuthScheme}{The default authentication scheme that the proxy uses for client
+connections to the proxy and connections from the proxy to the
+underlying database. Valid values are \code{NONE} and \code{IAM_AUTH}. When set to
+\code{IAM_AUTH}, the proxy uses end-to-end IAM authentication to connect to
+the database.}
+
 \item{Auth}{The new authentication settings for the \code{DBProxy}.}
 
 \item{RequireTLS}{Whether Transport Layer Security (TLS) encryption is required for
@@ -33,13 +40,12 @@ doesn't use TLS.}
 before the proxy disconnects it. You can set this value higher or lower
 than the connection timeout limit for the associated database.}
 
-\item{DebugLogging}{Whether the proxy includes detailed information about SQL statements in
-its logs. This information helps you to debug issues involving SQL
-behavior or the performance and scalability of the proxy connections.
-The debug information includes the text of SQL statements that you
-submit through the proxy. Thus, only enable this setting when needed for
-debugging, and only when you have security measures in place to
-safeguard any sensitive information that appears in the logs.}
+\item{DebugLogging}{Specifies whether the proxy logs detailed connection and query
+information. When you enable \code{DebugLogging}, the proxy captures
+connection details and connection pool behavior from your queries. Debug
+logging increases CloudWatch costs and can impact proxy performance.
+Enable this option only when you need to troubleshoot connection or
+performance issues.}
 
 \item{RoleArn}{The Amazon Resource Name (ARN) of the IAM role that the proxy uses to
 access secrets in Amazon Web Services Secrets Manager.}

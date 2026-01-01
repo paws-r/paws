@@ -2,8 +2,8 @@
 % Please edit documentation in R/identitystore_operations.R
 \name{identitystore_update_user}
 \alias{identitystore_update_user}
-\title{For the specified user in the specified identity store, updates the user
-metadata and attributes}
+\title{Updates the specified user metadata and attributes in the specified
+identity store}
 \usage{
 identitystore_update_user(IdentityStoreId, UserId, Operations)
 }
@@ -13,10 +13,13 @@ identitystore_update_user(IdentityStoreId, UserId, Operations)
 \item{UserId}{[required] The identifier for a user in the identity store.}
 
 \item{Operations}{[required] A list of \code{AttributeOperation} objects to apply to the requested user.
-These operations might add, replace, or remove an attribute.}
+These operations might add, replace, or remove an attribute. For more
+information on the attributes that can be added, replaced, or removed,
+see
+\href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html}{User}.}
 }
 \description{
-For the specified user in the specified identity store, updates the user metadata and attributes.
+Updates the specified user metadata and attributes in the specified identity store.
 
 See \url{https://www.paws-r-sdk.com/docs/identitystore_update_user/} for full documentation.
 }

@@ -8,7 +8,8 @@ uses}
 ssm_get_deployable_patch_snapshot_for_instance(
   InstanceId,
   SnapshotId,
-  BaselineOverride = NULL
+  BaselineOverride = NULL,
+  UseS3DualStackEndpoint = NULL
 )
 }
 \arguments{
@@ -19,6 +20,12 @@ should be retrieved.}
 \code{AWS-RunPatchBaseline}.}
 
 \item{BaselineOverride}{Defines the basic information about a patch baseline override.}
+
+\item{UseS3DualStackEndpoint}{Specifies whether to use S3 dualstack endpoints for the patch snapshot
+download URL. Set to \code{true} to receive a presigned URL that supports
+both IPv4 and IPv6 connectivity. Set to \code{false} to use standard
+IPv4-only endpoints. Default is \code{false}. This parameter is required for
+managed nodes in IPv6-only environments.}
 }
 \description{
 Retrieves the current snapshot for the patch baseline the managed node uses. This API is primarily used by the \code{AWS-RunPatchBaseline} Systems Manager document (SSM document).

@@ -183,7 +183,9 @@ verifiedpermissions_batch_get_policy <- function(requests) {
 #'                 list()
 #'               ),
 #'               ipaddr = "string",
-#'               decimal = "string"
+#'               decimal = "string",
+#'               datetime = "string",
+#'               duration = "string"
 #'             )
 #'           ),
 #'           cedarJson = "string"
@@ -232,13 +234,36 @@ verifiedpermissions_batch_get_policy <- function(requests) {
 #'               list()
 #'             ),
 #'             ipaddr = "string",
-#'             decimal = "string"
+#'             decimal = "string",
+#'             datetime = "string",
+#'             duration = "string"
 #'           )
 #'         ),
 #'         parents = list(
 #'           list(
 #'             entityType = "string",
 #'             entityId = "string"
+#'           )
+#'         ),
+#'         tags = list(
+#'           list(
+#'             boolean = TRUE|FALSE,
+#'             entityIdentifier = list(
+#'               entityType = "string",
+#'               entityId = "string"
+#'             ),
+#'             long = 123,
+#'             string = "string",
+#'             set = list(
+#'               list()
+#'             ),
+#'             record = list(
+#'               list()
+#'             ),
+#'             ipaddr = "string",
+#'             decimal = "string",
+#'             datetime = "string",
+#'             duration = "string"
 #'           )
 #'         )
 #'       )
@@ -276,7 +301,9 @@ verifiedpermissions_batch_get_policy <- function(requests) {
 #'               list()
 #'             ),
 #'             ipaddr = "string",
-#'             decimal = "string"
+#'             decimal = "string",
+#'             datetime = "string",
+#'             duration = "string"
 #'           )
 #'         ),
 #'         cedarJson = "string"
@@ -417,7 +444,9 @@ verifiedpermissions_batch_is_authorized <- function(policyStoreId, entities = NU
 #'                 list()
 #'               ),
 #'               ipaddr = "string",
-#'               decimal = "string"
+#'               decimal = "string",
+#'               datetime = "string",
+#'               duration = "string"
 #'             )
 #'           ),
 #'           cedarJson = "string"
@@ -468,13 +497,36 @@ verifiedpermissions_batch_is_authorized <- function(policyStoreId, entities = NU
 #'               list()
 #'             ),
 #'             ipaddr = "string",
-#'             decimal = "string"
+#'             decimal = "string",
+#'             datetime = "string",
+#'             duration = "string"
 #'           )
 #'         ),
 #'         parents = list(
 #'           list(
 #'             entityType = "string",
 #'             entityId = "string"
+#'           )
+#'         ),
+#'         tags = list(
+#'           list(
+#'             boolean = TRUE|FALSE,
+#'             entityIdentifier = list(
+#'               entityType = "string",
+#'               entityId = "string"
+#'             ),
+#'             long = 123,
+#'             string = "string",
+#'             set = list(
+#'               list()
+#'             ),
+#'             record = list(
+#'               list()
+#'             ),
+#'             ipaddr = "string",
+#'             decimal = "string",
+#'             datetime = "string",
+#'             duration = "string"
 #'           )
 #'         )
 #'       )
@@ -508,7 +560,9 @@ verifiedpermissions_batch_is_authorized <- function(policyStoreId, entities = NU
 #'               list()
 #'             ),
 #'             ipaddr = "string",
-#'             decimal = "string"
+#'             decimal = "string",
+#'             datetime = "string",
+#'             duration = "string"
 #'           )
 #'         ),
 #'         cedarJson = "string"
@@ -1709,7 +1763,9 @@ verifiedpermissions_get_schema <- function(policyStoreId) {
 #'           list()
 #'         ),
 #'         ipaddr = "string",
-#'         decimal = "string"
+#'         decimal = "string",
+#'         datetime = "string",
+#'         duration = "string"
 #'       )
 #'     ),
 #'     cedarJson = "string"
@@ -1737,13 +1793,36 @@ verifiedpermissions_get_schema <- function(policyStoreId) {
 #'               list()
 #'             ),
 #'             ipaddr = "string",
-#'             decimal = "string"
+#'             decimal = "string",
+#'             datetime = "string",
+#'             duration = "string"
 #'           )
 #'         ),
 #'         parents = list(
 #'           list(
 #'             entityType = "string",
 #'             entityId = "string"
+#'           )
+#'         ),
+#'         tags = list(
+#'           list(
+#'             boolean = TRUE|FALSE,
+#'             entityIdentifier = list(
+#'               entityType = "string",
+#'               entityId = "string"
+#'             ),
+#'             long = 123,
+#'             string = "string",
+#'             set = list(
+#'               list()
+#'             ),
+#'             record = list(
+#'               list()
+#'             ),
+#'             ipaddr = "string",
+#'             decimal = "string",
+#'             datetime = "string",
+#'             duration = "string"
 #'           )
 #'         )
 #'       )
@@ -1896,7 +1975,9 @@ verifiedpermissions_is_authorized <- function(policyStoreId, principal = NULL, a
 #'           list()
 #'         ),
 #'         ipaddr = "string",
-#'         decimal = "string"
+#'         decimal = "string",
+#'         datetime = "string",
+#'         duration = "string"
 #'       )
 #'     ),
 #'     cedarJson = "string"
@@ -1924,13 +2005,36 @@ verifiedpermissions_is_authorized <- function(policyStoreId, principal = NULL, a
 #'               list()
 #'             ),
 #'             ipaddr = "string",
-#'             decimal = "string"
+#'             decimal = "string",
+#'             datetime = "string",
+#'             duration = "string"
 #'           )
 #'         ),
 #'         parents = list(
 #'           list(
 #'             entityType = "string",
 #'             entityId = "string"
+#'           )
+#'         ),
+#'         tags = list(
+#'           list(
+#'             boolean = TRUE|FALSE,
+#'             entityIdentifier = list(
+#'               entityType = "string",
+#'               entityId = "string"
+#'             ),
+#'             long = 123,
+#'             string = "string",
+#'             set = list(
+#'               list()
+#'             ),
+#'             record = list(
+#'               list()
+#'             ),
+#'             ipaddr = "string",
+#'             decimal = "string",
+#'             datetime = "string",
+#'             duration = "string"
 #'           )
 #'         )
 #'       )

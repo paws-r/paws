@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_update_account_settings}
 \alias{quicksight_update_account_settings}
-\title{Updates the Amazon QuickSight settings in your Amazon Web Services
+\title{Updates the Amazon Quick Sight settings in your Amazon Web Services
 account}
 \usage{
 quicksight_update_account_settings(
@@ -13,26 +13,25 @@ quicksight_update_account_settings(
 )
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID for the Amazon Web Services account that contains the Amazon
-QuickSight settings that you want to list.}
+\item{AwsAccountId}{[required] The ID for the Amazon Web Services account that contains the Quick Sight
+settings that you want to list.}
 
 \item{DefaultNamespace}{[required] The default namespace for this Amazon Web Services account. Currently,
 the default is \code{default}. IAM users that register for the first time
-with Amazon QuickSight provide an email address that becomes associated
+with Amazon Quick Sight provide an email address that becomes associated
 with the default namespace.}
 
-\item{NotificationEmail}{The email address that you want Amazon QuickSight to send notifications
-to regarding your Amazon Web Services account or Amazon QuickSight
-subscription.}
+\item{NotificationEmail}{The email address that you want Quick Sight to send notifications to
+regarding your Amazon Web Services account or Quick Sight subscription.}
 
-\item{TerminationProtectionEnabled}{A boolean value that determines whether or not an Amazon QuickSight
-account can be deleted. A \code{True} value doesn't allow the account to be
-deleted and results in an error message if a user tries to make a
+\item{TerminationProtectionEnabled}{A boolean value that determines whether or not an Quick Sight account
+can be deleted. A \code{True} value doesn't allow the account to be deleted
+and results in an error message if a user tries to make a
 \code{\link[=quicksight_delete_account_subscription]{delete_account_subscription}}
 request. A \code{False} value will allow the account to be deleted.}
 }
 \description{
-Updates the Amazon QuickSight settings in your Amazon Web Services account.
+Updates the Amazon Quick Sight settings in your Amazon Web Services account.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_update_account_settings/} for full documentation.
 }

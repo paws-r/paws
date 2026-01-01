@@ -5,16 +5,13 @@
 \title{Detaches an Aurora secondary cluster from an Aurora global database
 cluster}
 \usage{
-rds_remove_from_global_cluster(
-  GlobalClusterIdentifier = NULL,
-  DbClusterIdentifier = NULL
-)
+rds_remove_from_global_cluster(GlobalClusterIdentifier, DbClusterIdentifier)
 }
 \arguments{
-\item{GlobalClusterIdentifier}{The cluster identifier to detach from the Aurora global database
+\item{GlobalClusterIdentifier}{[required] The cluster identifier to detach from the Aurora global database
 cluster.}
 
-\item{DbClusterIdentifier}{The Amazon Resource Name (ARN) identifying the cluster that was detached
+\item{DbClusterIdentifier}{[required] The Amazon Resource Name (ARN) identifying the cluster that was detached
 from the Aurora global database cluster.}
 }
 \description{

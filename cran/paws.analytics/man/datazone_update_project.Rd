@@ -7,11 +7,13 @@
 datazone_update_project(
   description = NULL,
   domainIdentifier,
+  domainUnitId = NULL,
   environmentDeploymentDetails = NULL,
   glossaryTerms = NULL,
   identifier,
   name = NULL,
   projectProfileVersion = NULL,
+  resourceTags = NULL,
   userParameters = NULL
 )
 }
@@ -20,6 +22,8 @@ datazone_update_project(
 \code{\link[=datazone_update_project]{update_project}} action.}
 
 \item{domainIdentifier}{[required] The ID of the Amazon DataZone domain where a project is being updated.}
+
+\item{domainUnitId}{The ID of the domain unit.}
 
 \item{environmentDeploymentDetails}{The environment deployment details of the project.}
 
@@ -33,6 +37,8 @@ datazone_update_project(
 
 \item{projectProfileVersion}{The project profile version to which the project should be updated. You
 can only specify the following string for this parameter: \code{latest}.}
+
+\item{resourceTags}{The resource tags of the project.}
 
 \item{userParameters}{The user parameters of the project.}
 }

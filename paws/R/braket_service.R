@@ -6,12 +6,56 @@ NULL
 #'
 #' @description
 #' The Amazon Braket API Reference provides information about the
-#' operations and structures supported in Amazon Braket.
+#' operations and structures supported by Amazon Braket.
 #' 
-#' Additional Resources:
+#' To learn about the permissions required to call an Amazon Braket API
+#' action, see [Actions, resources, and condition keys for Amazon
+#' Braket](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonbraket.html).
+#' [Amazon Braket Python
+#' SDK](https://amazon-braket-sdk-python.readthedocs.io/en/latest/#) and
+#' the [AWS Command Line
+#' Interface](https://docs.aws.amazon.com/cli/latest/reference/braket/) can
+#' be used to make discovery and creation of API calls easier. For more
+#' information about Amazon Braket features, see [What is Amazon
+#' Braket?](https://docs.aws.amazon.com/braket/latest/developerguide/what-is-braket.html)
+#' and important [terms and
+#' concepts](https://docs.aws.amazon.com/braket/latest/developerguide/braket-terms.html)
+#' in the *Amazon Braket Developer Guide*.
 #' 
-#' -   [Amazon Braket Developer
-#'     Guide](https://docs.aws.amazon.com/braket/latest/developerguide/what-is-braket.html)
+#' **In this guide:**
+#' 
+#' -   
+#' 
+#' -   
+#' 
+#' -   CommonParameters
+#' 
+#' -   CommonErrors
+#' 
+#' **Available languages for AWS SDK:**
+#' 
+#' -   [.NET](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/Braket/NBraket.html)
+#' 
+#' -   [C++](https://docs.aws.amazon.com/sdk-for-cpp/latest/api/root/html/)
+#' 
+#' -   [Go API
+#'     reference](https://docs.aws.amazon.com/sdk-for-go/api/service/braket/)
+#' 
+#' -   [Java](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/braket/package-summary.html)
+#' 
+#' -   [JavaScript](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Braket.html)
+#' 
+#' -   [PHP](https://docs.aws.amazon.com/aws-sdk-php/v3/api/class-Aws.Braket.BraketClient.html)
+#' 
+#' -   [Python
+#'     (Boto)](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/braket.html)
+#' 
+#' -   [Ruby](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/Braket.html)
+#' 
+#' **Code examples from the Amazon Braket Tutorials GitHub repository:**
+#' 
+#' -   [Amazon Braket
+#'     Examples](https://github.com/amazon-braket/amazon-braket-examples)
 #'
 #' @param
 #' config
@@ -96,19 +140,23 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=braket_cancel_job]{cancel_job} \tab Cancels an Amazon Braket job\cr
+#'  \link[=braket_cancel_job]{cancel_job} \tab Cancels an Amazon Braket hybrid job\cr
 #'  \link[=braket_cancel_quantum_task]{cancel_quantum_task} \tab Cancels the specified task\cr
-#'  \link[=braket_create_job]{create_job} \tab Creates an Amazon Braket job\cr
+#'  \link[=braket_create_job]{create_job} \tab Creates an Amazon Braket hybrid job\cr
 #'  \link[=braket_create_quantum_task]{create_quantum_task} \tab Creates a quantum task\cr
+#'  \link[=braket_create_spending_limit]{create_spending_limit} \tab Creates a spending limit for a specified quantum device\cr
+#'  \link[=braket_delete_spending_limit]{delete_spending_limit} \tab Deletes an existing spending limit\cr
 #'  \link[=braket_get_device]{get_device} \tab Retrieves the devices available in Amazon Braket\cr
-#'  \link[=braket_get_job]{get_job} \tab Retrieves the specified Amazon Braket job\cr
+#'  \link[=braket_get_job]{get_job} \tab Retrieves the specified Amazon Braket hybrid job\cr
 #'  \link[=braket_get_quantum_task]{get_quantum_task} \tab Retrieves the specified quantum task\cr
 #'  \link[=braket_list_tags_for_resource]{list_tags_for_resource} \tab Shows the tags associated with this resource\cr
 #'  \link[=braket_search_devices]{search_devices} \tab Searches for devices using the specified filters\cr
-#'  \link[=braket_search_jobs]{search_jobs} \tab Searches for Amazon Braket jobs that match the specified filter values\cr
+#'  \link[=braket_search_jobs]{search_jobs} \tab Searches for Amazon Braket hybrid jobs that match the specified filter values\cr
 #'  \link[=braket_search_quantum_tasks]{search_quantum_tasks} \tab Searches for tasks that match the specified filter values\cr
+#'  \link[=braket_search_spending_limits]{search_spending_limits} \tab Searches and lists spending limits based on specified filters\cr
 #'  \link[=braket_tag_resource]{tag_resource} \tab Add a tag to the specified resource\cr
-#'  \link[=braket_untag_resource]{untag_resource} \tab Remove tags from a resource
+#'  \link[=braket_untag_resource]{untag_resource} \tab Remove tags from a resource\cr
+#'  \link[=braket_update_spending_limit]{update_spending_limit} \tab Updates an existing spending limit
 #' }
 #'
 #' @return
@@ -144,7 +192,7 @@ braket <- function(config = list(), credentials = list(), endpoint = NULL, regio
   service_id = "Braket",
   api_version = "2019-09-01",
   signing_name = "braket",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 

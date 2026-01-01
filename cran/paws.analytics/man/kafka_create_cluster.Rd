@@ -6,6 +6,7 @@
 \usage{
 kafka_create_cluster(
   BrokerNodeGroupInfo,
+  Rebalancing = NULL,
   ClientAuthentication = NULL,
   ClusterName,
   ConfigurationInfo = NULL,
@@ -21,6 +22,10 @@ kafka_create_cluster(
 }
 \arguments{
 \item{BrokerNodeGroupInfo}{[required] Information about the broker nodes in the cluster.}
+
+\item{Rebalancing}{Specifies if intelligent rebalancing should be turned on for the new MSK
+Provisioned cluster with Express brokers. By default, intelligent
+rebalancing status is ACTIVE for all new clusters.}
 
 \item{ClientAuthentication}{Includes all client authentication related information.}
 

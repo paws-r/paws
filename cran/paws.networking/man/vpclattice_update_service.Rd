@@ -5,12 +5,16 @@
 \title{Updates the specified service}
 \usage{
 vpclattice_update_service(
-  authType = NULL,
+  serviceIdentifier,
   certificateArn = NULL,
-  serviceIdentifier
+  authType = NULL
 )
 }
 \arguments{
+\item{serviceIdentifier}{[required] The ID or ARN of the service.}
+
+\item{certificateArn}{The Amazon Resource Name (ARN) of the certificate.}
+
 \item{authType}{The type of IAM policy.
 \itemize{
 \item \code{NONE}: The resource does not use an IAM policy. This is the
@@ -18,10 +22,6 @@ default.
 \item \code{AWS_IAM}: The resource uses an IAM policy. When this type is used,
 auth is enabled and an auth policy is required.
 }}
-
-\item{certificateArn}{The Amazon Resource Name (ARN) of the certificate.}
-
-\item{serviceIdentifier}{[required] The ID or ARN of the service.}
 }
 \description{
 Updates the specified service.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_get_run_group}
 \alias{omics_get_run_group}
-\title{Gets information about a workflow run group}
+\title{Gets information about a run group and returns its metadata}
 \usage{
 omics_get_run_group(id)
 }
@@ -10,7 +10,7 @@ omics_get_run_group(id)
 \item{id}{[required] The group's ID.}
 }
 \description{
-Gets information about a workflow run group.
+Gets information about a run group and returns its metadata.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_get_run_group/} for full documentation.
 }

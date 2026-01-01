@@ -2,8 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_update_queue_status}
 \alias{connect_update_queue_status}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Updates the status of the queue}
 \usage{
 connect_update_queue_status(InstanceId, QueueId, Status)
 }
@@ -16,7 +15,7 @@ in the Amazon Resource Name (ARN) of the instance.}
 \item{Status}{[required] The status of the queue.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to change.
+Updates the status of the queue.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_update_queue_status/} for full documentation.
 }

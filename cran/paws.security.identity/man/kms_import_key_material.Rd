@@ -10,7 +10,10 @@ kms_import_key_material(
   ImportToken,
   EncryptedKeyMaterial,
   ValidTo = NULL,
-  ExpirationModel = NULL
+  ExpirationModel = NULL,
+  ImportType = NULL,
+  KeyMaterialDescription = NULL,
+  KeyMaterialId = NULL
 )
 }
 \arguments{
@@ -70,7 +73,7 @@ must delete
 reimport the key material.}
 
 \item{ExpirationModel}{Specifies whether the key material expires. The default is
-\code{KEY_MATERIAL_EXPIRES}. For help with this choice, see \href{https://docs.aws.amazon.com/en_us/kms/latest/developerguide/importing-keys.html#importing-keys-expiration}{Setting an expiration time}
+\code{KEY_MATERIAL_EXPIRES}. For help with this choice, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-import-key-material.html#importing-keys-expiration}{Setting an expiration time}
 in the \emph{Key Management Service Developer Guide}.
 
 When the value of \code{ExpirationModel} is \code{KEY_MATERIAL_EXPIRES}, you must
@@ -80,9 +83,46 @@ specify a value for the \code{ValidTo} parameter. When value is
 You cannot change the \code{ExpirationModel} or \code{ValidTo} values for the
 current import after the request completes. To change either value, you
 must reimport the key material.}
+
+\item{ImportType}{Indicates whether the key material being imported is previously
+associated with this KMS key or not. This parameter is optional and only
+usable with symmetric encryption keys. If no key material has ever been
+imported into the KMS key, and this parameter is omitted, the parameter
+defaults to \code{NEW_KEY_MATERIAL}. After the first key material is
+imported, if this parameter is omitted then the parameter defaults to
+\code{EXISTING_KEY_MATERIAL}.
+
+For multi-Region keys, you must first import new key material into the
+primary Region key. You should use the \code{NEW_KEY_MATERIAL} import type
+when importing key material into the primary Region key. Then, you can
+import the same key material into the replica Region key. The import
+type for the replica Region key should be \code{EXISTING_KEY_MATERIAL}.}
+
+\item{KeyMaterialDescription}{Description for the key material being imported. This parameter is
+optional and only usable with symmetric encryption keys. If you do not
+specify a key material description, KMS retains the value you specified
+when you last imported the same key material into this KMS key.}
+
+\item{KeyMaterialId}{Identifies the key material being imported. This parameter is optional
+and only usable with symmetric encryption keys. You cannot specify a key
+material ID with \code{ImportType} set to \code{NEW_KEY_MATERIAL}. Whenever you
+import key material into a symmetric encryption key, KMS assigns a
+unique identifier to the key material based on the KMS key ID and the
+imported key material. When you re-import key material with a specified
+key material ID, KMS:
+\itemize{
+\item Computes the identifier for the key material
+\item Matches the computed identifier against the specified key material
+ID
+\item Verifies that the key material ID is already associated with the KMS
+key
+}
+
+To get the list of key material IDs associated with a KMS key, use
+\code{\link[=kms_list_key_rotations]{list_key_rotations}}.}
 }
 \description{
-Imports or reimports key material into an existing KMS key that was created without key material. \code{\link[=kms_import_key_material]{import_key_material}} also sets the expiration model and expiration date of the imported key material.
+Imports or reimports key material into an existing KMS key that was created without key material. You can also use this operation to set or update the expiration model and expiration date of the imported key material.
 
 See \url{https://www.paws-r-sdk.com/docs/kms_import_key_material/} for full documentation.
 }

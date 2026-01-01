@@ -28,7 +28,7 @@ and the formats of your reports.}
 \item{ReportSetting}{[required] Identifies the report template for the report. Reports are built using a
 report template. The report templates are:
 
-\code{RESOURCE_COMPLIANCE_REPORT | CONTROL_COMPLIANCE_REPORT | BACKUP_JOB_REPORT | COPY_JOB_REPORT | RESTORE_JOB_REPORT}
+\code{RESOURCE_COMPLIANCE_REPORT | CONTROL_COMPLIANCE_REPORT | BACKUP_JOB_REPORT | COPY_JOB_REPORT | RESTORE_JOB_REPORT | SCAN_JOB_REPORT }
 
 If the report template is \code{RESOURCE_COMPLIANCE_REPORT} or
 \code{CONTROL_COMPLIANCE_REPORT}, this API resource also describes the report

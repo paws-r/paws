@@ -2,7 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_create_place_index}
 \alias{locationservice_create_place_index}
-\title{Creates a place index resource in your Amazon Web Services account}
+\title{This operation is no longer current and may be deprecated in the future}
 \usage{
 locationservice_create_place_index(
   IndexName,
@@ -32,23 +32,23 @@ example, entering \code{HERE} returns an error.
 Valid values include:
 \itemize{
 \item \code{Esri} – For additional information about
-\href{https://docs.aws.amazon.com/location/latest/developerguide/}{Esri}'s
+\href{https://docs.aws.amazon.com/location/previous/developerguide/esri.html}{Esri}'s
 coverage in your region of interest, see \href{https://developers.arcgis.com/rest/geocode/api-reference/geocode-coverage.htm}{Esri details on geocoding coverage}.
 \item \code{Grab} – Grab provides place index functionality for Southeast Asia.
 For additional information about
-\href{https://docs.aws.amazon.com/location/latest/developerguide/}{GrabMaps}'
-coverage, see \href{https://docs.aws.amazon.com/location/latest/developerguide/#grab-coverage-area}{GrabMaps countries and areas covered}.
-\item \code{Here} – For additional information about \href{https://docs.aws.amazon.com/location/latest/developerguide/}{HERE Technologies}'
+\href{https://docs.aws.amazon.com/location/previous/developerguide/grab.html}{GrabMaps}'
+coverage, see \href{https://docs.aws.amazon.com/location/previous/developerguide/grab.html#grab-coverage-area}{GrabMaps countries and areas covered}.
+\item \code{Here} – For additional information about \href{https://docs.aws.amazon.com/location/previous/developerguide/HERE.html}{HERE Technologies}'
 coverage in your region of interest, see \href{https://www.here.com/docs/}{HERE details on goecoding coverage}.
 
 If you specify HERE Technologies (\code{Here}) as the data provider, you
 may not \href{https://docs.aws.amazon.com/location/latest/APIReference/}{store results}
-for locations in Japan. For more information, see the \href{https://aws.amazon.com/service-terms/}{Amazon Web Services Service Terms} for
+for locations in Japan. For more information, see the \href{https://aws.amazon.com/service-terms/}{Amazon Web Services service terms} for
 Amazon Location Service.
 }
 
-For additional information , see \href{https://docs.aws.amazon.com/location/latest/developerguide/}{Data providers}
-on the \emph{Amazon Location Service Developer Guide}.}
+For additional information , see \href{https://docs.aws.amazon.com/location/previous/developerguide/what-is-data-provider.html}{Data providers}
+on the \emph{Amazon Location Service developer guide}.}
 
 \item{PricingPlan}{No longer used. If included, the only allowed value is
 \code{RequestBasedUsage}.}
@@ -76,7 +76,7 @@ characters: + - = . _ : / @
 }}
 }
 \description{
-Creates a place index resource in your Amazon Web Services account. Use a place index resource to geocode addresses and other text queries by using the \code{\link[=locationservice_search_place_index_for_text]{search_place_index_for_text}} operation, and reverse geocode coordinates by using the \code{\link[=locationservice_search_place_index_for_position]{search_place_index_for_position}} operation, and enable autosuggestions by using the \code{\link[=locationservice_search_place_index_for_suggestions]{search_place_index_for_suggestions}} operation.
+This operation is no longer current and may be deprecated in the future. We recommend you upgrade to the Places API V2 unless you require Grab data.
 
 See \url{https://www.paws-r-sdk.com/docs/locationservice_create_place_index/} for full documentation.
 }

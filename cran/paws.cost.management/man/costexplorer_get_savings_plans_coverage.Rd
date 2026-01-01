@@ -75,7 +75,7 @@ The following values are supported for \code{Key}:
 The supported values for \code{SortOrder} are \code{ASCENDING} and \code{DESCENDING}.}
 }
 \description{
-Retrieves the Savings Plans covered for your account. This enables you to see how much of your cost is covered by a Savings Plan. An organization’s management account can see the coverage of the associated member accounts. This supports dimensions, Cost Categories, and nested expressions. For any time period, you can filter data for Savings Plans usage with the following dimensions:
+Retrieves the Savings Plans covered for your account. This enables you to see how much of your cost is covered by a Savings Plan. An organization’s management account can see the coverage of the associated member accounts. This supports dimensions, cost categories, and nested expressions. For any time period, you can filter data for Savings Plans usage with the following dimensions:
 
 See \url{https://www.paws-r-sdk.com/docs/costexplorer_get_savings_plans_coverage/} for full documentation.
 }

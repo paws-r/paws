@@ -59,7 +59,7 @@ For information on the permissions you need to use this API, see
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-authentication-and-access-control.html}{Identity and access management}
 in the \emph{Amazon SQS Developer Guide.}
 
-You can use \href{https://aws.amazon.com/developer/tools/#sdk}{Amazon Web Services SDKs} to access Amazon SQS
+You can use \href{https://builder.aws.com/build/tools#sdk}{Amazon Web Services SDKs} to access Amazon SQS
 using your favorite programming language. The SDKs perform tasks such as
 the following automatically:
 \itemize{
@@ -77,7 +77,7 @@ the following automatically:
 \item \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes}{Amazon SQS Message Attributes}
 \item \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html}{Amazon SQS Dead-Letter Queues}
 }
-\item \href{https://docs.aws.amazon.com/cli/latest/reference/sqs/}{Amazon SQS in the \emph{Command Line Interface}}
+\item \href{https://docs.aws.amazon.com/cli/latest/reference/sqs/}{Amazon SQS in the Command Line Interface}
 \item \emph{Amazon Web Services General Reference}
 \itemize{
 \item \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region}{Regions and Endpoints}

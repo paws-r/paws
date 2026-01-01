@@ -20,6 +20,7 @@ rds_restore_db_instance_to_point_in_time(
   DBName = NULL,
   Engine = NULL,
   Iops = NULL,
+  StorageThroughput = NULL,
   OptionGroupName = NULL,
   CopyTagsToSnapshot = NULL,
   Tags = NULL,
@@ -41,18 +42,19 @@ rds_restore_db_instance_to_point_in_time(
   DeletionProtection = NULL,
   SourceDbiResourceId = NULL,
   MaxAllocatedStorage = NULL,
-  SourceDBInstanceAutomatedBackupsArn = NULL,
   EnableCustomerOwnedIp = NULL,
-  CustomIamInstanceProfile = NULL,
-  BackupTarget = NULL,
   NetworkType = NULL,
-  StorageThroughput = NULL,
+  SourceDBInstanceAutomatedBackupsArn = NULL,
+  BackupTarget = NULL,
+  CustomIamInstanceProfile = NULL,
   AllocatedStorage = NULL,
   DedicatedLogVolume = NULL,
   CACertificateIdentifier = NULL,
   EngineLifecycleSupport = NULL,
+  TagSpecifications = NULL,
   ManageMasterUserPassword = NULL,
-  MasterUserSecretKmsKeyId = NULL
+  MasterUserSecretKmsKeyId = NULL,
+  AdditionalStorageVolumes = NULL
 )
 }
 \arguments{
@@ -168,7 +170,7 @@ For more information about automatic minor version upgrades, see
 \item{LicenseModel}{The license model information for the restored DB instance.
 
 License models for RDS for Db2 require additional configuration. The
-Bring Your Own License (BYOL) model requires a custom parameter group
+bring your own license (BYOL) model requires a custom parameter group
 and an Amazon Web Services License Manager self-managed license. The Db2
 license through Amazon Web Services Marketplace model requires an Amazon
 Web Services Marketplace subscription. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/db2-licensing.html}{Amazon RDS for Db2 licensing options}
@@ -235,6 +237,10 @@ Constraints:
 \itemize{
 \item Must be an integer greater than 1000.
 }}
+
+\item{StorageThroughput}{The storage throughput value for the DB instance.
+
+This setting doesn't apply to RDS Custom or Amazon Aurora.}
 
 \item{OptionGroupName}{The name of the option group to use for the restored DB instance.
 
@@ -391,12 +397,6 @@ in the \emph{Amazon RDS User Guide}.
 
 This setting doesn't apply to RDS Custom.}
 
-\item{SourceDBInstanceAutomatedBackupsArn}{The Amazon Resource Name (ARN) of the replicated automated backups from
-which to restore, for example,
-\code{arn:aws:rds:us-east-1:123456789012:auto-backup:ab-L2IJCEXJP7XQ7HOJ4SIEXAMPLE}.
-
-This setting doesn't apply to RDS Custom.}
-
 \item{EnableCustomerOwnedIp}{Specifies whether to enable a customer-owned IP address (CoIP) for an
 RDS on Outposts DB instance.
 
@@ -413,36 +413,6 @@ in the \emph{Amazon RDS User Guide}.
 For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/routing.html#ip-addressing}{Customer-owned IP addresses}
 in the \emph{Amazon Web Services Outposts User Guide}.}
 
-\item{CustomIamInstanceProfile}{The instance profile associated with the underlying Amazon EC2 instance
-of an RDS Custom DB instance. The instance profile must meet the
-following requirements:
-\itemize{
-\item The profile must exist in your account.
-\item The profile must have an IAM role that Amazon EC2 has permissions to
-assume.
-\item The instance profile name and the associated IAM role name must
-start with the prefix \code{AWSRDSCustom}.
-}
-
-For the list of permissions required for the IAM role, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-setup-orcl.html#custom-setup-orcl.iam-vpc}{Configure IAM and your VPC}
-in the \emph{Amazon RDS User Guide}.
-
-This setting is required for RDS Custom.}
-
-\item{BackupTarget}{The location for storing automated backups and manual snapshots for the
-restored DB instance.
-
-Valid Values:
-\itemize{
-\item \code{outposts} (Amazon Web Services Outposts)
-\item \code{region} (Amazon Web Services Region)
-}
-
-Default: \code{region}
-
-For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html}{Working with Amazon RDS on Amazon Web Services Outposts}
-in the \emph{Amazon RDS User Guide}.}
-
 \item{NetworkType}{The network type of the DB instance.
 
 The network type is determined by the \code{DBSubnetGroup} specified for the
@@ -458,9 +428,42 @@ Valid Values:
 \item \code{DUAL}
 }}
 
-\item{StorageThroughput}{The storage throughput value for the DB instance.
+\item{SourceDBInstanceAutomatedBackupsArn}{The Amazon Resource Name (ARN) of the replicated automated backups from
+which to restore, for example,
+\code{arn:aws:rds:us-east-1:123456789012:auto-backup:ab-L2IJCEXJP7XQ7HOJ4SIEXAMPLE}.
 
-This setting doesn't apply to RDS Custom or Amazon Aurora.}
+This setting doesn't apply to RDS Custom.}
+
+\item{BackupTarget}{The location for storing automated backups and manual snapshots for the
+restored DB instance.
+
+Valid Values:
+\itemize{
+\item \code{local} (Dedicated Local Zone)
+\item \code{outposts} (Amazon Web Services Outposts)
+\item \code{region} (Amazon Web Services Region)
+}
+
+Default: \code{region}
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html}{Working with Amazon RDS on Amazon Web Services Outposts}
+in the \emph{Amazon RDS User Guide}.}
+
+\item{CustomIamInstanceProfile}{The instance profile associated with the underlying Amazon EC2 instance
+of an RDS Custom DB instance. The instance profile must meet the
+following requirements:
+\itemize{
+\item The profile must exist in your account.
+\item The profile must have an IAM role that Amazon EC2 has permissions to
+assume.
+\item The instance profile name and the associated IAM role name must
+start with the prefix \code{AWSRDSCustom}.
+}
+
+For the list of permissions required for the IAM role, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-setup-orcl.html#custom-setup-orcl.iam-vpc}{Configure IAM and your VPC}
+in the \emph{Amazon RDS User Guide}.
+
+This setting is required for RDS Custom.}
 
 \item{AllocatedStorage}{The amount of storage (in gibibytes) to allocate initially for the DB
 instance. Follow the allocation rules specified in
@@ -497,7 +500,7 @@ standard support date.
 You can use this setting to enroll your DB instance into Amazon RDS
 Extended Support. With RDS Extended Support, you can run the selected
 major engine version on your DB instance past the end of standard
-support for that engine version. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html}{Using Amazon RDS Extended Support}
+support for that engine version. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html}{Amazon RDS Extended Support with Amazon RDS}
 in the \emph{Amazon RDS User Guide}.
 
 This setting applies only to RDS for MySQL and RDS for PostgreSQL. For
@@ -508,6 +511,13 @@ Valid Values:
 \code{open-source-rds-extended-support | open-source-rds-extended-support-disabled}
 
 Default: \code{open-source-rds-extended-support}}
+
+\item{TagSpecifications}{Tags to assign to resources associated with the DB instance.
+
+Valid Values:
+\itemize{
+\item \code{auto-backup} - The DB instance's automated backup.
+}}
 
 \item{ManageMasterUserPassword}{Specifies whether to manage the master user password with Amazon Web
 Services Secrets Manager in the restored DB instance.
@@ -540,6 +550,12 @@ a customer managed KMS key.
 There is a default KMS key for your Amazon Web Services account. Your
 Amazon Web Services account has a different default KMS key for each
 Amazon Web Services Region.}
+
+\item{AdditionalStorageVolumes}{A list of additional storage volumes to restore to the DB instance. You
+can restore up to three additional storage volumes using the names
+\code{rdsdbdata2}, \code{rdsdbdata3}, and \code{rdsdbdata4}. Additional storage volumes
+are supported for RDS for Oracle and RDS for SQL Server DB instances
+only.}
 }
 \description{
 Restores a DB instance to an arbitrary point in time. You can restore to any point in time before the time identified by the \code{LatestRestorableTime} property. You can restore to a point up to the number of days specified by the \code{BackupRetentionPeriod} property.

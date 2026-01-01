@@ -15,8 +15,8 @@ connectparticipant_send_event(
 \item{ContentType}{[required] The content type of the request. Supported types are:
 \itemize{
 \item application/vnd.amazonaws.connect.event.typing
-\item application/vnd.amazonaws.connect.event.connection.acknowledged
-(will be deprecated on December 31, 2024)
+\item application/vnd.amazonaws.connect.event.connection.acknowledged (is
+no longer maintained since December 31, 2024)
 \item application/vnd.amazonaws.connect.event.message.delivered
 \item application/vnd.amazonaws.connect.event.message.read
 }}
@@ -36,7 +36,7 @@ populates this field. For more information about idempotency, see
 \item{ConnectionToken}{[required] The authentication token associated with the participant's connection.}
 }
 \description{
-The \code{application/vnd.amazonaws.connect.event.connection.acknowledged} ContentType will no longer be supported starting December 31, 2024. This event has been migrated to the \code{\link[=connectparticipant_create_participant_connection]{create_participant_connection}} API using the \code{ConnectParticipant} field.
+The \code{application/vnd.amazonaws.connect.event.connection.acknowledged} ContentType is no longer maintained since December 31, 2024. This event has been migrated to the \code{\link[=connectparticipant_create_participant_connection]{create_participant_connection}} API using the \code{ConnectParticipant} field.
 
 See \url{https://www.paws-r-sdk.com/docs/connectparticipant_send_event/} for full documentation.
 }

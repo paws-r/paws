@@ -92,6 +92,44 @@ paymentcryptographydataplane_encrypt_data <- function(KeyIdentifier, PlainText, 
 }
 .paymentcryptographydataplane$operations$encrypt_data <- paymentcryptographydataplane_encrypt_data
 
+#' Establishes node-to-node initialization between payment processing nodes
+#' such as an acquirer, issuer or payment network using Australian Standard
+#' 2805 (AS2805)
+#'
+#' @description
+#' Establishes node-to-node initialization between payment processing nodes such as an acquirer, issuer or payment network using Australian Standard 2805 (AS2805).
+#'
+#' See [https://www.paws-r-sdk.com/docs/paymentcryptographydataplane_generate_as_2805_kek_validation/](https://www.paws-r-sdk.com/docs/paymentcryptographydataplane_generate_as_2805_kek_validation/) for full documentation.
+#'
+#' @param KeyIdentifier &#91;required&#93; The `keyARN` of sending KEK that Amazon Web Services Payment
+#' Cryptography uses for node-to-node initialization
+#' @param KekValidationType &#91;required&#93; Parameter information for generating a random key for KEK validation to
+#' perform node-to-node initialization.
+#' @param RandomKeySendVariantMask &#91;required&#93; The key variant to use for generating a random key for KEK validation
+#' during node-to-node initialization.
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographydataplane_generate_as_2805_kek_validation
+paymentcryptographydataplane_generate_as_2805_kek_validation <- function(KeyIdentifier, KekValidationType, RandomKeySendVariantMask) {
+  op <- new_operation(
+    name = "GenerateAs2805KekValidation",
+    http_method = "POST",
+    http_path = "/as2805kekvalidation/generate",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographydataplane$generate_as_2805_kek_validation_input(KeyIdentifier = KeyIdentifier, KekValidationType = KekValidationType, RandomKeySendVariantMask = RandomKeySendVariantMask)
+  output <- .paymentcryptographydataplane$generate_as_2805_kek_validation_output()
+  config <- get_config()
+  svc <- .paymentcryptographydataplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographydataplane$operations$generate_as_2805_kek_validation <- paymentcryptographydataplane_generate_as_2805_kek_validation
+
 #' Generates card-related validation data using algorithms such as Card
 #' Verification Values (CVV/CVV2), Dynamic Card Verification Values
 #' (dCVV/dCVV2), or Card Security Codes (CSC)
@@ -229,12 +267,12 @@ paymentcryptographydataplane_generate_mac_emv_pin_change <- function(NewPinPekId
 #' asymmetric ECC key.
 #' @param GenerationAttributes &#91;required&#93; The attributes and values to use for PIN, PVV, or PIN Offset generation.
 #' @param PinDataLength The length of PIN under generation.
-#' @param PrimaryAccountNumber &#91;required&#93; The Primary Account Number (PAN), a unique identifier for a payment
+#' @param PrimaryAccountNumber The Primary Account Number (PAN), a unique identifier for a payment
 #' credit or debit card that associates the card with a specific account
 #' holder.
 #' @param PinBlockFormat &#91;required&#93; The PIN encoding format for pin data generation as specified in ISO
-#' 9564. Amazon Web Services Payment Cryptography supports `ISO_Format_0`
-#' and `ISO_Format_3`.
+#' 9564. Amazon Web Services Payment Cryptography supports `ISO_Format_0`,
+#' `ISO_Format_3` and `ISO_Format_4`.
 #' 
 #' The `ISO_Format_0` PIN block format is equivalent to the ANSI X9.8,
 #' VISA-1, and ECI-1 PIN block formats. It is similar to a VISA-4 PIN block
@@ -242,12 +280,15 @@ paymentcryptographydataplane_generate_mac_emv_pin_change <- function(NewPinPekId
 #' 
 #' The `ISO_Format_3` PIN block format is the same as `ISO_Format_0` except
 #' that the fill digits are random values from 10 to 15.
+#' 
+#' The `ISO_Format_4` PIN block format is the only one supporting AES
+#' encryption.
 #' @param EncryptionWrappedKey 
 #'
 #' @keywords internal
 #'
 #' @rdname paymentcryptographydataplane_generate_pin_data
-paymentcryptographydataplane_generate_pin_data <- function(GenerationKeyIdentifier, EncryptionKeyIdentifier, GenerationAttributes, PinDataLength = NULL, PrimaryAccountNumber, PinBlockFormat, EncryptionWrappedKey = NULL) {
+paymentcryptographydataplane_generate_pin_data <- function(GenerationKeyIdentifier, EncryptionKeyIdentifier, GenerationAttributes, PinDataLength = NULL, PrimaryAccountNumber = NULL, PinBlockFormat, EncryptionWrappedKey = NULL) {
   op <- new_operation(
     name = "GeneratePinData",
     http_method = "POST",
@@ -312,6 +353,43 @@ paymentcryptographydataplane_re_encrypt_data <- function(IncomingKeyIdentifier, 
 }
 .paymentcryptographydataplane$operations$re_encrypt_data <- paymentcryptographydataplane_re_encrypt_data
 
+#' Translates an cryptographic key between different wrapping keys without
+#' importing the key into Amazon Web Services Payment Cryptography
+#'
+#' @description
+#' Translates an cryptographic key between different wrapping keys without importing the key into Amazon Web Services Payment Cryptography.
+#'
+#' See [https://www.paws-r-sdk.com/docs/paymentcryptographydataplane_translate_key_material/](https://www.paws-r-sdk.com/docs/paymentcryptographydataplane_translate_key_material/) for full documentation.
+#'
+#' @param IncomingKeyMaterial &#91;required&#93; Parameter information of the TR31WrappedKeyBlock containing the
+#' transaction key.
+#' @param OutgoingKeyMaterial &#91;required&#93; Parameter information of the wrapping key used to wrap the transaction
+#' key in the outgoing TR31WrappedKeyBlock.
+#' @param KeyCheckValueAlgorithm The key check value (KCV) algorithm used for calculating the KCV of the
+#' derived key.
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographydataplane_translate_key_material
+paymentcryptographydataplane_translate_key_material <- function(IncomingKeyMaterial, OutgoingKeyMaterial, KeyCheckValueAlgorithm = NULL) {
+  op <- new_operation(
+    name = "TranslateKeyMaterial",
+    http_method = "POST",
+    http_path = "/keymaterial/translate",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographydataplane$translate_key_material_input(IncomingKeyMaterial = IncomingKeyMaterial, OutgoingKeyMaterial = OutgoingKeyMaterial, KeyCheckValueAlgorithm = KeyCheckValueAlgorithm)
+  output <- .paymentcryptographydataplane$translate_key_material_output()
+  config <- get_config()
+  svc <- .paymentcryptographydataplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographydataplane$operations$translate_key_material <- paymentcryptographydataplane_translate_key_material
+
 #' Translates encrypted PIN block from and to ISO 9564 formats 0,1,3,4
 #'
 #' @description
@@ -342,11 +420,13 @@ paymentcryptographydataplane_re_encrypt_data <- function(IncomingKeyIdentifier, 
 #' PIN block data is encrypted.
 #' @param OutgoingWrappedKey The WrappedKeyBlock containing the encryption key for encrypting
 #' outgoing PIN block data.
+#' @param IncomingAs2805Attributes The attributes and values to use for incoming AS2805 encryption key for
+#' PIN block translation.
 #'
 #' @keywords internal
 #'
 #' @rdname paymentcryptographydataplane_translate_pin_data
-paymentcryptographydataplane_translate_pin_data <- function(IncomingKeyIdentifier, OutgoingKeyIdentifier, IncomingTranslationAttributes, OutgoingTranslationAttributes, EncryptedPinBlock, IncomingDukptAttributes = NULL, OutgoingDukptAttributes = NULL, IncomingWrappedKey = NULL, OutgoingWrappedKey = NULL) {
+paymentcryptographydataplane_translate_pin_data <- function(IncomingKeyIdentifier, OutgoingKeyIdentifier, IncomingTranslationAttributes, OutgoingTranslationAttributes, EncryptedPinBlock, IncomingDukptAttributes = NULL, OutgoingDukptAttributes = NULL, IncomingWrappedKey = NULL, OutgoingWrappedKey = NULL, IncomingAs2805Attributes = NULL) {
   op <- new_operation(
     name = "TranslatePinData",
     http_method = "POST",
@@ -355,7 +435,7 @@ paymentcryptographydataplane_translate_pin_data <- function(IncomingKeyIdentifie
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .paymentcryptographydataplane$translate_pin_data_input(IncomingKeyIdentifier = IncomingKeyIdentifier, OutgoingKeyIdentifier = OutgoingKeyIdentifier, IncomingTranslationAttributes = IncomingTranslationAttributes, OutgoingTranslationAttributes = OutgoingTranslationAttributes, EncryptedPinBlock = EncryptedPinBlock, IncomingDukptAttributes = IncomingDukptAttributes, OutgoingDukptAttributes = OutgoingDukptAttributes, IncomingWrappedKey = IncomingWrappedKey, OutgoingWrappedKey = OutgoingWrappedKey)
+  input <- .paymentcryptographydataplane$translate_pin_data_input(IncomingKeyIdentifier = IncomingKeyIdentifier, OutgoingKeyIdentifier = OutgoingKeyIdentifier, IncomingTranslationAttributes = IncomingTranslationAttributes, OutgoingTranslationAttributes = OutgoingTranslationAttributes, EncryptedPinBlock = EncryptedPinBlock, IncomingDukptAttributes = IncomingDukptAttributes, OutgoingDukptAttributes = OutgoingDukptAttributes, IncomingWrappedKey = IncomingWrappedKey, OutgoingWrappedKey = OutgoingWrappedKey, IncomingAs2805Attributes = IncomingAs2805Attributes)
   output <- .paymentcryptographydataplane$translate_pin_data_output()
   config <- get_config()
   svc <- .paymentcryptographydataplane$service(config, op)
@@ -508,7 +588,7 @@ paymentcryptographydataplane_verify_mac <- function(KeyIdentifier, MessageData, 
 #' @param VerificationAttributes &#91;required&#93; The attributes and values for PIN data verification.
 #' @param EncryptedPinBlock &#91;required&#93; The encrypted PIN block data that Amazon Web Services Payment
 #' Cryptography verifies.
-#' @param PrimaryAccountNumber &#91;required&#93; The Primary Account Number (PAN), a unique identifier for a payment
+#' @param PrimaryAccountNumber The Primary Account Number (PAN), a unique identifier for a payment
 #' credit or debit card that associates the card with a specific account
 #' holder.
 #' @param PinBlockFormat &#91;required&#93; The PIN encoding format for pin data generation as specified in ISO
@@ -528,7 +608,7 @@ paymentcryptographydataplane_verify_mac <- function(KeyIdentifier, MessageData, 
 #' @keywords internal
 #'
 #' @rdname paymentcryptographydataplane_verify_pin_data
-paymentcryptographydataplane_verify_pin_data <- function(VerificationKeyIdentifier, EncryptionKeyIdentifier, VerificationAttributes, EncryptedPinBlock, PrimaryAccountNumber, PinBlockFormat, PinDataLength = NULL, DukptAttributes = NULL, EncryptionWrappedKey = NULL) {
+paymentcryptographydataplane_verify_pin_data <- function(VerificationKeyIdentifier, EncryptionKeyIdentifier, VerificationAttributes, EncryptedPinBlock, PrimaryAccountNumber = NULL, PinBlockFormat, PinDataLength = NULL, DukptAttributes = NULL, EncryptionWrappedKey = NULL) {
   op <- new_operation(
     name = "VerifyPinData",
     http_method = "POST",

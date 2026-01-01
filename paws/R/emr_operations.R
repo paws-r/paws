@@ -329,6 +329,12 @@ emr_add_instance_groups <- function(InstanceGroups, JobFlowId) {
 #'         Args = list(
 #'           "string"
 #'         )
+#'       ),
+#'       StepMonitoringConfiguration = list(
+#'         S3MonitoringConfiguration = list(
+#'           LogUri = "string",
+#'           EncryptionKeyArn = "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -491,6 +497,72 @@ emr_cancel_steps <- function(ClusterId, StepIds, StepCancellationOption = NULL) 
   return(response)
 }
 .emr$operations$cancel_steps <- emr_cancel_steps
+
+#' Creates a persistent application user interface
+#'
+#' @description
+#' Creates a persistent application user interface.
+#'
+#' @usage
+#' emr_create_persistent_app_ui(TargetResourceArn, EMRContainersConfig,
+#'   Tags, XReferer, ProfilerType)
+#'
+#' @param TargetResourceArn &#91;required&#93; The unique Amazon Resource Name (ARN) of the target resource.
+#' @param EMRContainersConfig The EMR containers configuration.
+#' @param Tags Tags for the persistent application user interface.
+#' @param XReferer The cross reference for the persistent application user interface.
+#' @param ProfilerType The profiler type for the persistent application user interface.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PersistentAppUIId = "string",
+#'   RuntimeRoleEnabledCluster = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_persistent_app_ui(
+#'   TargetResourceArn = "string",
+#'   EMRContainersConfig = list(
+#'     JobRunId = "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   XReferer = "string",
+#'   ProfilerType = "SHS"|"TEZUI"|"YTS"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname emr_create_persistent_app_ui
+#'
+#' @aliases emr_create_persistent_app_ui
+emr_create_persistent_app_ui <- function(TargetResourceArn, EMRContainersConfig = NULL, Tags = NULL, XReferer = NULL, ProfilerType = NULL) {
+  op <- new_operation(
+    name = "CreatePersistentAppUI",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .emr$create_persistent_app_ui_input(TargetResourceArn = TargetResourceArn, EMRContainersConfig = EMRContainersConfig, Tags = Tags, XReferer = XReferer, ProfilerType = ProfilerType)
+  output <- .emr$create_persistent_app_ui_output()
+  config <- get_config()
+  svc <- .emr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$create_persistent_app_ui <- emr_create_persistent_app_ui
 
 #' Creates a security configuration, which is stored in the service and can
 #' be specified when a cluster is created
@@ -1040,7 +1112,21 @@ emr_delete_studio_session_mapping <- function(StudioId, IdentityId = NULL, Ident
 #'     ),
 #'     OSReleaseLabel = "string",
 #'     EbsRootVolumeIops = 123,
-#'     EbsRootVolumeThroughput = 123
+#'     EbsRootVolumeThroughput = 123,
+#'     ExtendedSupport = TRUE|FALSE,
+#'     MonitoringConfiguration = list(
+#'       CloudWatchLogConfiguration = list(
+#'         Enabled = TRUE|FALSE,
+#'         LogGroupName = "string",
+#'         LogStreamNamePrefix = "string",
+#'         EncryptionKeyArn = "string",
+#'         LogTypes = list(
+#'           list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -1202,6 +1288,12 @@ emr_describe_cluster <- function(ClusterId) {
 #'               MainClass = "string",
 #'               Args = list(
 #'                 "string"
+#'               )
+#'             ),
+#'             StepMonitoringConfiguration = list(
+#'               S3MonitoringConfiguration = list(
+#'                 LogUri = "string",
+#'                 EncryptionKeyArn = "string"
 #'               )
 #'             )
 #'           ),
@@ -1376,6 +1468,75 @@ emr_describe_notebook_execution <- function(NotebookExecutionId) {
   return(response)
 }
 .emr$operations$describe_notebook_execution <- emr_describe_notebook_execution
+
+#' Describes a persistent application user interface
+#'
+#' @description
+#' Describes a persistent application user interface.
+#'
+#' @usage
+#' emr_describe_persistent_app_ui(PersistentAppUIId)
+#'
+#' @param PersistentAppUIId &#91;required&#93; The identifier for the persistent application user interface.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PersistentAppUI = list(
+#'     PersistentAppUIId = "string",
+#'     PersistentAppUITypeList = list(
+#'       "SHS"|"TEZ"|"YTS"
+#'     ),
+#'     PersistentAppUIStatus = "string",
+#'     AuthorId = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastStateChangeReason = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_persistent_app_ui(
+#'   PersistentAppUIId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname emr_describe_persistent_app_ui
+#'
+#' @aliases emr_describe_persistent_app_ui
+emr_describe_persistent_app_ui <- function(PersistentAppUIId) {
+  op <- new_operation(
+    name = "DescribePersistentAppUI",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .emr$describe_persistent_app_ui_input(PersistentAppUIId = PersistentAppUIId)
+  output <- .emr$describe_persistent_app_ui_output()
+  config <- get_config()
+  svc <- .emr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$describe_persistent_app_ui <- emr_describe_persistent_app_ui
 
 #' Provides Amazon EMR release label details, such as the releases
 #' available the Region where the API request is run, and the available
@@ -1554,7 +1715,9 @@ emr_describe_security_configuration <- function(Name) {
 #'         )
 #'       )
 #'     ),
-#'     ExecutionRoleArn = "string"
+#'     ExecutionRoleArn = "string",
+#'     LogUri = "string",
+#'     EncryptionKeyArn = "string"
 #'   )
 #' )
 #' ```
@@ -1919,6 +2082,134 @@ emr_get_managed_scaling_policy <- function(ClusterId) {
 }
 .emr$operations$get_managed_scaling_policy <- emr_get_managed_scaling_policy
 
+#' The presigned URL properties for the cluster's application user
+#' interface
+#'
+#' @description
+#' The presigned URL properties for the cluster's application user
+#' interface.
+#'
+#' @usage
+#' emr_get_on_cluster_app_ui_presigned_url(ClusterId, OnClusterAppUIType,
+#'   ApplicationId, DryRun, ExecutionRoleArn)
+#'
+#' @param ClusterId &#91;required&#93; The cluster ID associated with the cluster's application user interface
+#' presigned URL.
+#' @param OnClusterAppUIType The application UI type associated with the cluster's application user
+#' interface presigned URL.
+#' @param ApplicationId The application ID associated with the cluster's application user
+#' interface presigned URL.
+#' @param DryRun Determines if the user interface presigned URL is for a dry run.
+#' @param ExecutionRoleArn The execution role ARN associated with the cluster's application user
+#' interface presigned URL.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PresignedURLReady = TRUE|FALSE,
+#'   PresignedURL = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_on_cluster_app_ui_presigned_url(
+#'   ClusterId = "string",
+#'   OnClusterAppUIType = "SparkHistoryServer"|"YarnTimelineService"|"TezUI"|"ApplicationMaster"|"JobHistoryServer"|"ResourceManager",
+#'   ApplicationId = "string",
+#'   DryRun = TRUE|FALSE,
+#'   ExecutionRoleArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname emr_get_on_cluster_app_ui_presigned_url
+#'
+#' @aliases emr_get_on_cluster_app_ui_presigned_url
+emr_get_on_cluster_app_ui_presigned_url <- function(ClusterId, OnClusterAppUIType = NULL, ApplicationId = NULL, DryRun = NULL, ExecutionRoleArn = NULL) {
+  op <- new_operation(
+    name = "GetOnClusterAppUIPresignedURL",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .emr$get_on_cluster_app_ui_presigned_url_input(ClusterId = ClusterId, OnClusterAppUIType = OnClusterAppUIType, ApplicationId = ApplicationId, DryRun = DryRun, ExecutionRoleArn = ExecutionRoleArn)
+  output <- .emr$get_on_cluster_app_ui_presigned_url_output()
+  config <- get_config()
+  svc <- .emr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$get_on_cluster_app_ui_presigned_url <- emr_get_on_cluster_app_ui_presigned_url
+
+#' The presigned URL properties for the cluster's application user
+#' interface
+#'
+#' @description
+#' The presigned URL properties for the cluster's application user
+#' interface.
+#'
+#' @usage
+#' emr_get_persistent_app_ui_presigned_url(PersistentAppUIId,
+#'   PersistentAppUIType, ApplicationId, AuthProxyCall, ExecutionRoleArn)
+#'
+#' @param PersistentAppUIId &#91;required&#93; The persistent application user interface ID associated with the
+#' presigned URL.
+#' @param PersistentAppUIType The persistent application user interface type associated with the
+#' presigned URL.
+#' @param ApplicationId The application ID associated with the presigned URL.
+#' @param AuthProxyCall A boolean that represents if the caller is an authentication proxy call.
+#' @param ExecutionRoleArn The execution role ARN associated with the presigned URL.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PresignedURLReady = TRUE|FALSE,
+#'   PresignedURL = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_persistent_app_ui_presigned_url(
+#'   PersistentAppUIId = "string",
+#'   PersistentAppUIType = "SHS"|"TEZ"|"YTS",
+#'   ApplicationId = "string",
+#'   AuthProxyCall = TRUE|FALSE,
+#'   ExecutionRoleArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname emr_get_persistent_app_ui_presigned_url
+#'
+#' @aliases emr_get_persistent_app_ui_presigned_url
+emr_get_persistent_app_ui_presigned_url <- function(PersistentAppUIId, PersistentAppUIType = NULL, ApplicationId = NULL, AuthProxyCall = NULL, ExecutionRoleArn = NULL) {
+  op <- new_operation(
+    name = "GetPersistentAppUIPresignedURL",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .emr$get_persistent_app_ui_presigned_url_input(PersistentAppUIId = PersistentAppUIId, PersistentAppUIType = PersistentAppUIType, ApplicationId = ApplicationId, AuthProxyCall = AuthProxyCall, ExecutionRoleArn = ExecutionRoleArn)
+  output <- .emr$get_persistent_app_ui_presigned_url_output()
+  config <- get_config()
+  svc <- .emr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$get_persistent_app_ui_presigned_url <- emr_get_persistent_app_ui_presigned_url
+
 #' Fetches mapping details for the specified Amazon EMR Studio and identity
 #' (user or group)
 #'
@@ -2192,7 +2483,7 @@ emr_list_clusters <- function(CreatedAfter = NULL, CreatedBefore = NULL, Cluster
 #'       Id = "string",
 #'       Name = "string",
 #'       Status = list(
-#'         State = "PROVISIONING"|"BOOTSTRAPPING"|"RUNNING"|"RESIZING"|"SUSPENDED"|"TERMINATING"|"TERMINATED",
+#'         State = "PROVISIONING"|"BOOTSTRAPPING"|"RUNNING"|"RESIZING"|"RECONFIGURING"|"SUSPENDED"|"TERMINATING"|"TERMINATED",
 #'         StateChangeReason = list(
 #'           Code = "INTERNAL_ERROR"|"VALIDATION_ERROR"|"INSTANCE_FAILURE"|"CLUSTER_TERMINATED",
 #'           Message = "string"
@@ -2915,7 +3206,9 @@ emr_list_security_configurations <- function(Marker = NULL) {
 #'             "2015-01-01"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       LogUri = "string",
+#'       EncryptionKeyArn = "string"
 #'     )
 #'   ),
 #'   Marker = "string"
@@ -3175,7 +3468,7 @@ emr_list_supported_instance_types <- function(ReleaseLabel, Marker = NULL) {
 #' cluster specified using ClusterID.
 #'
 #' @usage
-#' emr_modify_cluster(ClusterId, StepConcurrencyLevel)
+#' emr_modify_cluster(ClusterId, StepConcurrencyLevel, ExtendedSupport)
 #'
 #' @param ClusterId &#91;required&#93; The unique identifier of the cluster.
 #' @param StepConcurrencyLevel The number of steps that can be executed concurrently. You can specify a
@@ -3183,12 +3476,14 @@ emr_list_supported_instance_types <- function(ReleaseLabel, Marker = NULL) {
 #' not change this parameter while steps are running or the
 #' `ActionOnFailure` setting may not behave as expected. For more
 #' information see Step$ActionOnFailure.
+#' @param ExtendedSupport Reserved.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   StepConcurrencyLevel = 123
+#'   StepConcurrencyLevel = 123,
+#'   ExtendedSupport = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -3196,7 +3491,8 @@ emr_list_supported_instance_types <- function(ReleaseLabel, Marker = NULL) {
 #' ```
 #' svc$modify_cluster(
 #'   ClusterId = "string",
-#'   StepConcurrencyLevel = 123
+#'   StepConcurrencyLevel = 123,
+#'   ExtendedSupport = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -3205,7 +3501,7 @@ emr_list_supported_instance_types <- function(ReleaseLabel, Marker = NULL) {
 #' @rdname emr_modify_cluster
 #'
 #' @aliases emr_modify_cluster
-emr_modify_cluster <- function(ClusterId, StepConcurrencyLevel = NULL) {
+emr_modify_cluster <- function(ClusterId, StepConcurrencyLevel = NULL, ExtendedSupport = NULL) {
   op <- new_operation(
     name = "ModifyCluster",
     http_method = "POST",
@@ -3214,7 +3510,7 @@ emr_modify_cluster <- function(ClusterId, StepConcurrencyLevel = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .emr$modify_cluster_input(ClusterId = ClusterId, StepConcurrencyLevel = StepConcurrencyLevel)
+  input <- .emr$modify_cluster_input(ClusterId = ClusterId, StepConcurrencyLevel = StepConcurrencyLevel, ExtendedSupport = ExtendedSupport)
   output <- .emr$modify_cluster_output()
   config <- get_config()
   svc <- .emr$service(config, op)
@@ -3984,7 +4280,7 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #'   EbsRootVolumeSize, RepoUpgradeOnBoot, KerberosAttributes,
 #'   StepConcurrencyLevel, ManagedScalingPolicy, PlacementGroupConfigs,
 #'   AutoTerminationPolicy, OSReleaseLabel, EbsRootVolumeIops,
-#'   EbsRootVolumeThroughput)
+#'   EbsRootVolumeThroughput, ExtendedSupport, MonitoringConfiguration)
 #'
 #' @param Name &#91;required&#93; The name of the job flow.
 #' @param LogUri The location in Amazon S3 to write the log files of the job flow. If a
@@ -4146,6 +4442,8 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' @param EbsRootVolumeThroughput The throughput, in MiB/s, of the Amazon EBS root device volume of the
 #' Linux AMI that is used for each Amazon EC2 instance. Available in Amazon
 #' EMR releases 6.15.0 and later.
+#' @param ExtendedSupport Reserved.
+#' @param MonitoringConfiguration Contains CloudWatch log configuration metadata and settings.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4355,6 +4653,12 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #'         Args = list(
 #'           "string"
 #'         )
+#'       ),
+#'       StepMonitoringConfiguration = list(
+#'         S3MonitoringConfiguration = list(
+#'           LogUri = "string",
+#'           EncryptionKeyArn = "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -4446,7 +4750,21 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #'   ),
 #'   OSReleaseLabel = "string",
 #'   EbsRootVolumeIops = 123,
-#'   EbsRootVolumeThroughput = 123
+#'   EbsRootVolumeThroughput = 123,
+#'   ExtendedSupport = TRUE|FALSE,
+#'   MonitoringConfiguration = list(
+#'     CloudWatchLogConfiguration = list(
+#'       Enabled = TRUE|FALSE,
+#'       LogGroupName = "string",
+#'       LogStreamNamePrefix = "string",
+#'       EncryptionKeyArn = "string",
+#'       LogTypes = list(
+#'         list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -4455,7 +4773,7 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' @rdname emr_run_job_flow
 #'
 #' @aliases emr_run_job_flow
-emr_run_job_flow <- function(Name, LogUri = NULL, LogEncryptionKmsKeyId = NULL, AdditionalInfo = NULL, AmiVersion = NULL, ReleaseLabel = NULL, Instances, Steps = NULL, BootstrapActions = NULL, SupportedProducts = NULL, NewSupportedProducts = NULL, Applications = NULL, Configurations = NULL, VisibleToAllUsers = NULL, JobFlowRole = NULL, ServiceRole = NULL, Tags = NULL, SecurityConfiguration = NULL, AutoScalingRole = NULL, ScaleDownBehavior = NULL, CustomAmiId = NULL, EbsRootVolumeSize = NULL, RepoUpgradeOnBoot = NULL, KerberosAttributes = NULL, StepConcurrencyLevel = NULL, ManagedScalingPolicy = NULL, PlacementGroupConfigs = NULL, AutoTerminationPolicy = NULL, OSReleaseLabel = NULL, EbsRootVolumeIops = NULL, EbsRootVolumeThroughput = NULL) {
+emr_run_job_flow <- function(Name, LogUri = NULL, LogEncryptionKmsKeyId = NULL, AdditionalInfo = NULL, AmiVersion = NULL, ReleaseLabel = NULL, Instances, Steps = NULL, BootstrapActions = NULL, SupportedProducts = NULL, NewSupportedProducts = NULL, Applications = NULL, Configurations = NULL, VisibleToAllUsers = NULL, JobFlowRole = NULL, ServiceRole = NULL, Tags = NULL, SecurityConfiguration = NULL, AutoScalingRole = NULL, ScaleDownBehavior = NULL, CustomAmiId = NULL, EbsRootVolumeSize = NULL, RepoUpgradeOnBoot = NULL, KerberosAttributes = NULL, StepConcurrencyLevel = NULL, ManagedScalingPolicy = NULL, PlacementGroupConfigs = NULL, AutoTerminationPolicy = NULL, OSReleaseLabel = NULL, EbsRootVolumeIops = NULL, EbsRootVolumeThroughput = NULL, ExtendedSupport = NULL, MonitoringConfiguration = NULL) {
   op <- new_operation(
     name = "RunJobFlow",
     http_method = "POST",
@@ -4464,7 +4782,7 @@ emr_run_job_flow <- function(Name, LogUri = NULL, LogEncryptionKmsKeyId = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .emr$run_job_flow_input(Name = Name, LogUri = LogUri, LogEncryptionKmsKeyId = LogEncryptionKmsKeyId, AdditionalInfo = AdditionalInfo, AmiVersion = AmiVersion, ReleaseLabel = ReleaseLabel, Instances = Instances, Steps = Steps, BootstrapActions = BootstrapActions, SupportedProducts = SupportedProducts, NewSupportedProducts = NewSupportedProducts, Applications = Applications, Configurations = Configurations, VisibleToAllUsers = VisibleToAllUsers, JobFlowRole = JobFlowRole, ServiceRole = ServiceRole, Tags = Tags, SecurityConfiguration = SecurityConfiguration, AutoScalingRole = AutoScalingRole, ScaleDownBehavior = ScaleDownBehavior, CustomAmiId = CustomAmiId, EbsRootVolumeSize = EbsRootVolumeSize, RepoUpgradeOnBoot = RepoUpgradeOnBoot, KerberosAttributes = KerberosAttributes, StepConcurrencyLevel = StepConcurrencyLevel, ManagedScalingPolicy = ManagedScalingPolicy, PlacementGroupConfigs = PlacementGroupConfigs, AutoTerminationPolicy = AutoTerminationPolicy, OSReleaseLabel = OSReleaseLabel, EbsRootVolumeIops = EbsRootVolumeIops, EbsRootVolumeThroughput = EbsRootVolumeThroughput)
+  input <- .emr$run_job_flow_input(Name = Name, LogUri = LogUri, LogEncryptionKmsKeyId = LogEncryptionKmsKeyId, AdditionalInfo = AdditionalInfo, AmiVersion = AmiVersion, ReleaseLabel = ReleaseLabel, Instances = Instances, Steps = Steps, BootstrapActions = BootstrapActions, SupportedProducts = SupportedProducts, NewSupportedProducts = NewSupportedProducts, Applications = Applications, Configurations = Configurations, VisibleToAllUsers = VisibleToAllUsers, JobFlowRole = JobFlowRole, ServiceRole = ServiceRole, Tags = Tags, SecurityConfiguration = SecurityConfiguration, AutoScalingRole = AutoScalingRole, ScaleDownBehavior = ScaleDownBehavior, CustomAmiId = CustomAmiId, EbsRootVolumeSize = EbsRootVolumeSize, RepoUpgradeOnBoot = RepoUpgradeOnBoot, KerberosAttributes = KerberosAttributes, StepConcurrencyLevel = StepConcurrencyLevel, ManagedScalingPolicy = ManagedScalingPolicy, PlacementGroupConfigs = PlacementGroupConfigs, AutoTerminationPolicy = AutoTerminationPolicy, OSReleaseLabel = OSReleaseLabel, EbsRootVolumeIops = EbsRootVolumeIops, EbsRootVolumeThroughput = EbsRootVolumeThroughput, ExtendedSupport = ExtendedSupport, MonitoringConfiguration = MonitoringConfiguration)
   output <- .emr$run_job_flow_output()
   config <- get_config()
   svc <- .emr$service(config, op)

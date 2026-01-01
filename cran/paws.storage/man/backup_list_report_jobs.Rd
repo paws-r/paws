@@ -29,7 +29,11 @@ example, the value 1516925490 represents Friday, January 26, 2018
 \item{ByStatus}{Returns only report jobs that are in the specified status. The statuses
 are:
 
-\code{CREATED | RUNNING | COMPLETED | FAILED}}
+\code{CREATED | RUNNING | COMPLETED | FAILED | COMPLETED_WITH_ISSUES}
+
+Please note that only scanning jobs finish with state completed with
+issues. For backup jobs this is a console interpretation of a job that
+finishes in completed state and has a status message.}
 
 \item{MaxResults}{The number of desired results from 1 to 1000. Optional. If unspecified,
 the query will return 1 MB of data.}

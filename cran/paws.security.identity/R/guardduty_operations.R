@@ -295,6 +295,8 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   service.action.dnsRequestAction.domainWithSuffix
 #' 
+#' -   service.action.dnsRequestAction.vpcOwnerAccountId
+#' 
 #' -   service.action.networkConnectionAction.blocked
 #' 
 #' -   service.action.networkConnectionAction.connectionDirection
@@ -447,11 +449,13 @@ guardduty_create_filter <- function(DetectorId, Name, Description = NULL, Action
 #' uploaded IPSet.
 #' @param ClientToken The idempotency token for the create request.
 #' @param Tags The tags to be added to a new IP set resource.
+#' @param ExpectedBucketOwner The Amazon Web Services account ID that owns the Amazon S3 bucket
+#' specified in the **location** parameter.
 #'
 #' @keywords internal
 #'
 #' @rdname guardduty_create_ip_set
-guardduty_create_ip_set <- function(DetectorId, Name, Format, Location, Activate, ClientToken = NULL, Tags = NULL) {
+guardduty_create_ip_set <- function(DetectorId, Name, Format, Location, Activate, ClientToken = NULL, Tags = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "CreateIPSet",
     http_method = "POST",
@@ -460,7 +464,7 @@ guardduty_create_ip_set <- function(DetectorId, Name, Format, Location, Activate
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .guardduty$create_ip_set_input(DetectorId = DetectorId, Name = Name, Format = Format, Location = Location, Activate = Activate, ClientToken = ClientToken, Tags = Tags)
+  input <- .guardduty$create_ip_set_input(DetectorId = DetectorId, Name = Name, Format = Format, Location = Location, Activate = Activate, ClientToken = ClientToken, Tags = Tags, ExpectedBucketOwner = ExpectedBucketOwner)
   output <- .guardduty$create_ip_set_output()
   config <- get_config()
   svc <- .guardduty$service(config, op)
@@ -567,11 +571,12 @@ guardduty_create_members <- function(DetectorId, AccountDetails) {
 #' @param DestinationProperties &#91;required&#93; The properties of the publishing destination, including the ARNs for the
 #' destination and the KMS key used for encryption.
 #' @param ClientToken The idempotency token for the request.
+#' @param Tags The tags to be added to a new publishing destination resource.
 #'
 #' @keywords internal
 #'
 #' @rdname guardduty_create_publishing_destination
-guardduty_create_publishing_destination <- function(DetectorId, DestinationType, DestinationProperties, ClientToken = NULL) {
+guardduty_create_publishing_destination <- function(DetectorId, DestinationType, DestinationProperties, ClientToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreatePublishingDestination",
     http_method = "POST",
@@ -580,7 +585,7 @@ guardduty_create_publishing_destination <- function(DetectorId, DestinationType,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .guardduty$create_publishing_destination_input(DetectorId = DetectorId, DestinationType = DestinationType, DestinationProperties = DestinationProperties, ClientToken = ClientToken)
+  input <- .guardduty$create_publishing_destination_input(DetectorId = DetectorId, DestinationType = DestinationType, DestinationProperties = DestinationProperties, ClientToken = ClientToken, Tags = Tags)
   output <- .guardduty$create_publishing_destination_output()
   config <- get_config()
   svc <- .guardduty$service(config, op)
@@ -627,6 +632,61 @@ guardduty_create_sample_findings <- function(DetectorId, FindingTypes = NULL) {
 }
 .guardduty$operations$create_sample_findings <- guardduty_create_sample_findings
 
+#' Creates a new threat entity set
+#'
+#' @description
+#' Creates a new threat entity set. In a threat entity set, you can provide known malicious IP addresses and domains for your Amazon Web Services environment. GuardDuty generates findings based on the entries in the threat entity sets. Only users of the administrator account can manage entity sets, which automatically apply to member accounts.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_create_threat_entity_set/](https://www.paws-r-sdk.com/docs/guardduty_create_threat_entity_set/) for full documentation.
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty account for which you
+#' want to create a threat entity set.
+#' 
+#' To find the `detectorId` in the current Region, see the Settings page in
+#' the GuardDuty console, or run the
+#' [`list_detectors`][guardduty_list_detectors] API.
+#' @param Name &#91;required&#93; A user-friendly name to identify the threat entity set.
+#' 
+#' The name of your list can include lowercase letters, uppercase letters,
+#' numbers, dash (-), and underscore (_).
+#' @param Format &#91;required&#93; The format of the file that contains the threat entity set.
+#' @param Location &#91;required&#93; The URI of the file that contains the threat entity set. The format of
+#' the `Location` URL must be a valid Amazon S3 URL format. Invalid URL
+#' formats will result in an error, regardless of whether you activate the
+#' entity set or not. For more information about format of the location
+#' URLs, see [Format of location URL under Step 2: Adding trusted or threat
+#' intelligence
+#' data](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty-lists-create-activate.html)
+#' in the *Amazon GuardDuty User Guide*.
+#' @param ExpectedBucketOwner The Amazon Web Services account ID that owns the Amazon S3 bucket
+#' specified in the **location** parameter.
+#' @param Activate &#91;required&#93; A boolean value that indicates whether GuardDuty should start using the
+#' uploaded threat entity set to generate findings.
+#' @param ClientToken The idempotency token for the create request.
+#' @param Tags The tags to be added to a new threat entity set resource.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_create_threat_entity_set
+guardduty_create_threat_entity_set <- function(DetectorId, Name, Format, Location, ExpectedBucketOwner = NULL, Activate, ClientToken = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateThreatEntitySet",
+    http_method = "POST",
+    http_path = "/detector/{detectorId}/threatentityset",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$create_threat_entity_set_input(DetectorId = DetectorId, Name = Name, Format = Format, Location = Location, ExpectedBucketOwner = ExpectedBucketOwner, Activate = Activate, ClientToken = ClientToken, Tags = Tags)
+  output <- .guardduty$create_threat_entity_set_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$create_threat_entity_set <- guardduty_create_threat_entity_set
+
 #' Creates a new ThreatIntelSet
 #'
 #' @description
@@ -635,7 +695,7 @@ guardduty_create_sample_findings <- function(DetectorId, FindingTypes = NULL) {
 #' See [https://www.paws-r-sdk.com/docs/guardduty_create_threat_intel_set/](https://www.paws-r-sdk.com/docs/guardduty_create_threat_intel_set/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty account for which you
-#' want to create a `ThreatIntelSet`.
+#' want to create a `threatIntelSet`.
 #' 
 #' To find the `detectorId` in the current Region, see the Settings page in
 #' the GuardDuty console, or run the
@@ -649,11 +709,13 @@ guardduty_create_sample_findings <- function(DetectorId, FindingTypes = NULL) {
 #' uploaded ThreatIntelSet.
 #' @param ClientToken The idempotency token for the create request.
 #' @param Tags The tags to be added to a new threat list resource.
+#' @param ExpectedBucketOwner The Amazon Web Services account ID that owns the Amazon S3 bucket
+#' specified in the **location** parameter.
 #'
 #' @keywords internal
 #'
 #' @rdname guardduty_create_threat_intel_set
-guardduty_create_threat_intel_set <- function(DetectorId, Name, Format, Location, Activate, ClientToken = NULL, Tags = NULL) {
+guardduty_create_threat_intel_set <- function(DetectorId, Name, Format, Location, Activate, ClientToken = NULL, Tags = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "CreateThreatIntelSet",
     http_method = "POST",
@@ -662,7 +724,7 @@ guardduty_create_threat_intel_set <- function(DetectorId, Name, Format, Location
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .guardduty$create_threat_intel_set_input(DetectorId = DetectorId, Name = Name, Format = Format, Location = Location, Activate = Activate, ClientToken = ClientToken, Tags = Tags)
+  input <- .guardduty$create_threat_intel_set_input(DetectorId = DetectorId, Name = Name, Format = Format, Location = Location, Activate = Activate, ClientToken = ClientToken, Tags = Tags, ExpectedBucketOwner = ExpectedBucketOwner)
   output <- .guardduty$create_threat_intel_set_output()
   config <- get_config()
   svc <- .guardduty$service(config, op)
@@ -671,6 +733,61 @@ guardduty_create_threat_intel_set <- function(DetectorId, Name, Format, Location
   return(response)
 }
 .guardduty$operations$create_threat_intel_set <- guardduty_create_threat_intel_set
+
+#' Creates a new trusted entity set
+#'
+#' @description
+#' Creates a new trusted entity set. In the trusted entity set, you can provide IP addresses and domains that you believe are secure for communication in your Amazon Web Services environment. GuardDuty will not generate findings for the entries that are specified in a trusted entity set. At any given time, you can have only one trusted entity set.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_create_trusted_entity_set/](https://www.paws-r-sdk.com/docs/guardduty_create_trusted_entity_set/) for full documentation.
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty account for which you
+#' want to create a trusted entity set.
+#' 
+#' To find the `detectorId` in the current Region, see the Settings page in
+#' the GuardDuty console, or run the
+#' [`list_detectors`][guardduty_list_detectors] API.
+#' @param Name &#91;required&#93; A user-friendly name to identify the trusted entity set.
+#' 
+#' The name of your list can include lowercase letters, uppercase letters,
+#' numbers, dash (-), and underscore (_).
+#' @param Format &#91;required&#93; The format of the file that contains the trusted entity set.
+#' @param Location &#91;required&#93; The URI of the file that contains the threat entity set. The format of
+#' the `Location` URL must be a valid Amazon S3 URL format. Invalid URL
+#' formats will result in an error, regardless of whether you activate the
+#' entity set or not. For more information about format of the location
+#' URLs, see [Format of location URL under Step 2: Adding trusted or threat
+#' intelligence
+#' data](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty-lists-create-activate.html)
+#' in the *Amazon GuardDuty User Guide*.
+#' @param ExpectedBucketOwner The Amazon Web Services account ID that owns the Amazon S3 bucket
+#' specified in the **location** parameter.
+#' @param Activate &#91;required&#93; A boolean value that indicates whether GuardDuty is to start using the
+#' uploaded trusted entity set.
+#' @param ClientToken The idempotency token for the create request.
+#' @param Tags The tags to be added to a new trusted entity set resource.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_create_trusted_entity_set
+guardduty_create_trusted_entity_set <- function(DetectorId, Name, Format, Location, ExpectedBucketOwner = NULL, Activate, ClientToken = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateTrustedEntitySet",
+    http_method = "POST",
+    http_path = "/detector/{detectorId}/trustedentityset",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$create_trusted_entity_set_input(DetectorId = DetectorId, Name = Name, Format = Format, Location = Location, ExpectedBucketOwner = ExpectedBucketOwner, Activate = Activate, ClientToken = ClientToken, Tags = Tags)
+  output <- .guardduty$create_trusted_entity_set_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$create_trusted_entity_set <- guardduty_create_trusted_entity_set
 
 #' Declines invitations sent to the current member account by Amazon Web
 #' Services accounts specified by their account IDs
@@ -956,6 +1073,45 @@ guardduty_delete_publishing_destination <- function(DetectorId, DestinationId) {
 }
 .guardduty$operations$delete_publishing_destination <- guardduty_delete_publishing_destination
 
+#' Deletes the threat entity set that is associated with the specified
+#' threatEntitySetId
+#'
+#' @description
+#' Deletes the threat entity set that is associated with the specified `threatEntitySetId`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_delete_threat_entity_set/](https://www.paws-r-sdk.com/docs/guardduty_delete_threat_entity_set/) for full documentation.
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the detector associated with the threat entity set
+#' resource.
+#' 
+#' To find the `detectorId` in the current Region, see the Settings page in
+#' the GuardDuty console, or run the
+#' [`list_detectors`][guardduty_list_detectors] API.
+#' @param ThreatEntitySetId &#91;required&#93; The unique ID that helps GuardDuty identify which threat entity set
+#' needs to be deleted.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_delete_threat_entity_set
+guardduty_delete_threat_entity_set <- function(DetectorId, ThreatEntitySetId) {
+  op <- new_operation(
+    name = "DeleteThreatEntitySet",
+    http_method = "DELETE",
+    http_path = "/detector/{detectorId}/threatentityset/{threatEntitySetId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$delete_threat_entity_set_input(DetectorId = DetectorId, ThreatEntitySetId = ThreatEntitySetId)
+  output <- .guardduty$delete_threat_entity_set_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$delete_threat_entity_set <- guardduty_delete_threat_entity_set
+
 #' Deletes the ThreatIntelSet specified by the ThreatIntelSet ID
 #'
 #' @description
@@ -992,6 +1148,45 @@ guardduty_delete_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
   return(response)
 }
 .guardduty$operations$delete_threat_intel_set <- guardduty_delete_threat_intel_set
+
+#' Deletes the trusted entity set that is associated with the specified
+#' trustedEntitySetId
+#'
+#' @description
+#' Deletes the trusted entity set that is associated with the specified `trustedEntitySetId`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_delete_trusted_entity_set/](https://www.paws-r-sdk.com/docs/guardduty_delete_trusted_entity_set/) for full documentation.
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the detector associated with the trusted entity set
+#' resource.
+#' 
+#' To find the `detectorId` in the current Region, see the Settings page in
+#' the GuardDuty console, or run the
+#' [`list_detectors`][guardduty_list_detectors] API.
+#' @param TrustedEntitySetId &#91;required&#93; The unique ID that helps GuardDuty identify which trusted entity set
+#' needs to be deleted.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_delete_trusted_entity_set
+guardduty_delete_trusted_entity_set <- function(DetectorId, TrustedEntitySetId) {
+  op <- new_operation(
+    name = "DeleteTrustedEntitySet",
+    http_method = "DELETE",
+    http_path = "/detector/{detectorId}/trustedentityset/{trustedEntitySetId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$delete_trusted_entity_set_input(DetectorId = DetectorId, TrustedEntitySetId = TrustedEntitySetId)
+  output <- .guardduty$delete_trusted_entity_set_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$delete_trusted_entity_set <- guardduty_delete_trusted_entity_set
 
 #' Returns a list of malware scans
 #'
@@ -1612,6 +1807,39 @@ guardduty_get_malware_protection_plan <- function(MalwareProtectionPlanId) {
 }
 .guardduty$operations$get_malware_protection_plan <- guardduty_get_malware_protection_plan
 
+#' Retrieves the detailed information for a specific malware scan
+#'
+#' @description
+#' Retrieves the detailed information for a specific malware scan. Each member account can view the malware scan details for their own account. An administrator can view malware scan details for all accounts in the organization.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_malware_scan/](https://www.paws-r-sdk.com/docs/guardduty_get_malware_scan/) for full documentation.
+#'
+#' @param ScanId &#91;required&#93; A unique identifier that gets generated when you invoke the API without
+#' any error. Each malware scan has a corresponding scan ID. Using this
+#' scan ID, you can monitor the status of your malware scan.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_malware_scan
+guardduty_get_malware_scan <- function(ScanId) {
+  op <- new_operation(
+    name = "GetMalwareScan",
+    http_method = "GET",
+    http_path = "/malware-scan/{scanId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$get_malware_scan_input(ScanId = ScanId)
+  output <- .guardduty$get_malware_scan_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_malware_scan <- guardduty_get_malware_scan
+
 #' Returns the details of the malware scan settings
 #'
 #' @description
@@ -1804,12 +2032,12 @@ guardduty_get_organization_statistics <- function() {
 #' To find the `detectorId` in the current Region, see the Settings page in
 #' the GuardDuty console, or run the
 #' [`list_detectors`][guardduty_list_detectors] API.
-#' @param AccountIds A list of account identifiers of the GuardDuty member account.
+#' @param AccountIds &#91;required&#93; A list of account identifiers of the GuardDuty member account.
 #'
 #' @keywords internal
 #'
 #' @rdname guardduty_get_remaining_free_trial_days
-guardduty_get_remaining_free_trial_days <- function(DetectorId, AccountIds = NULL) {
+guardduty_get_remaining_free_trial_days <- function(DetectorId, AccountIds) {
   op <- new_operation(
     name = "GetRemainingFreeTrialDays",
     http_method = "POST",
@@ -1827,6 +2055,44 @@ guardduty_get_remaining_free_trial_days <- function(DetectorId, AccountIds = NUL
   return(response)
 }
 .guardduty$operations$get_remaining_free_trial_days <- guardduty_get_remaining_free_trial_days
+
+#' Retrieves the threat entity set associated with the specified
+#' threatEntitySetId
+#'
+#' @description
+#' Retrieves the threat entity set associated with the specified `threatEntitySetId`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_threat_entity_set/](https://www.paws-r-sdk.com/docs/guardduty_get_threat_entity_set/) for full documentation.
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the detector associated with the threat entity set
+#' resource.
+#' 
+#' To find the `detectorId` in the current Region, see the Settings page in
+#' the GuardDuty console, or run the
+#' [`list_detectors`][guardduty_list_detectors] API.
+#' @param ThreatEntitySetId &#91;required&#93; The unique ID that helps GuardDuty identify the threat entity set.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_threat_entity_set
+guardduty_get_threat_entity_set <- function(DetectorId, ThreatEntitySetId) {
+  op <- new_operation(
+    name = "GetThreatEntitySet",
+    http_method = "GET",
+    http_path = "/detector/{detectorId}/threatentityset/{threatEntitySetId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$get_threat_entity_set_input(DetectorId = DetectorId, ThreatEntitySetId = ThreatEntitySetId)
+  output <- .guardduty$get_threat_entity_set_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_threat_entity_set <- guardduty_get_threat_entity_set
 
 #' Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet ID
 #'
@@ -1864,6 +2130,40 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
   return(response)
 }
 .guardduty$operations$get_threat_intel_set <- guardduty_get_threat_intel_set
+
+#' Retrieves the trusted entity set associated with the specified
+#' trustedEntitySetId
+#'
+#' @description
+#' Retrieves the trusted entity set associated with the specified `trustedEntitySetId`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_trusted_entity_set/](https://www.paws-r-sdk.com/docs/guardduty_get_trusted_entity_set/) for full documentation.
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the GuardDuty detector associated with this trusted
+#' entity set.
+#' @param TrustedEntitySetId &#91;required&#93; The unique ID that helps GuardDuty identify the trusted entity set.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_trusted_entity_set
+guardduty_get_trusted_entity_set <- function(DetectorId, TrustedEntitySetId) {
+  op <- new_operation(
+    name = "GetTrustedEntitySet",
+    http_method = "GET",
+    http_path = "/detector/{detectorId}/trustedentityset/{trustedEntitySetId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$get_trusted_entity_set_input(DetectorId = DetectorId, TrustedEntitySetId = TrustedEntitySetId)
+  output <- .guardduty$get_trusted_entity_set_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_trusted_entity_set <- guardduty_get_trusted_entity_set
 
 #' Lists Amazon GuardDuty usage statistics over the last 30 days for the
 #' specified detector ID
@@ -2322,7 +2622,7 @@ guardduty_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
 #' this parameter to null on your first call to the list action. For
 #' subsequent calls to the action, fill nextToken in the request with the
 #' value of `NextToken` from the previous response to continue listing
-#' data.
+#' data. The default page size is 100 plans.
 #'
 #' @keywords internal
 #'
@@ -2345,6 +2645,46 @@ guardduty_list_malware_protection_plans <- function(NextToken = NULL) {
   return(response)
 }
 .guardduty$operations$list_malware_protection_plans <- guardduty_list_malware_protection_plans
+
+#' Returns a list of malware scans
+#'
+#' @description
+#' Returns a list of malware scans. Each member account can view the malware scans for their own accounts. An administrator can view the malware scans for all of its members' accounts.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_list_malware_scans/](https://www.paws-r-sdk.com/docs/guardduty_list_malware_scans/) for full documentation.
+#'
+#' @param MaxResults You can use this parameter to indicate the maximum number of items that
+#' you want in the response. The default value is 50. The maximum value is
+#' 50.
+#' @param NextToken You can use this parameter when paginating results. Set the value of
+#' this parameter to null on your first call to the list action. For
+#' subsequent calls to the action, fill nextToken in the request with the
+#' value of NextToken from the previous response to continue listing
+#' results.
+#' @param FilterCriteria Represents the criteria used to filter the malware scan entries.
+#' @param SortCriteria Represents the criteria used for sorting malware scan entries.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_list_malware_scans
+guardduty_list_malware_scans <- function(MaxResults = NULL, NextToken = NULL, FilterCriteria = NULL, SortCriteria = NULL) {
+  op <- new_operation(
+    name = "ListMalwareScans",
+    http_method = "POST",
+    http_path = "/malware-scan",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Scans"),
+    stream_api = FALSE
+  )
+  input <- .guardduty$list_malware_scans_input(MaxResults = MaxResults, NextToken = NextToken, FilterCriteria = FilterCriteria, SortCriteria = SortCriteria)
+  output <- .guardduty$list_malware_scans_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$list_malware_scans <- guardduty_list_malware_scans
 
 #' Lists details about all member accounts for the current GuardDuty
 #' administrator account
@@ -2502,6 +2842,49 @@ guardduty_list_tags_for_resource <- function(ResourceArn) {
 }
 .guardduty$operations$list_tags_for_resource <- guardduty_list_tags_for_resource
 
+#' Lists the threat entity sets associated with the specified GuardDuty
+#' detector ID
+#'
+#' @description
+#' Lists the threat entity sets associated with the specified GuardDuty detector ID. If you use this operation from a member account, the threat entity sets that are returned as a response, belong to the administrator account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_list_threat_entity_sets/](https://www.paws-r-sdk.com/docs/guardduty_list_threat_entity_sets/) for full documentation.
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the GuardDuty detector that is associated with this
+#' threat entity set.
+#' 
+#' To find the `detectorId` in the current Region, see the Settings page in
+#' the GuardDuty console, or run the
+#' [`list_detectors`][guardduty_list_detectors] API.
+#' @param MaxResults You can use this parameter to indicate the maximum number of items you
+#' want in the response. The default value is 50.
+#' @param NextToken You can use this parameter when paginating results. Set the value of
+#' this parameter to null on your first call to the list action. For
+#' subsequent calls to the action, fill nextToken in the request with the
+#' value of NextToken from the previous response to continue listing data.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_list_threat_entity_sets
+guardduty_list_threat_entity_sets <- function(DetectorId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListThreatEntitySets",
+    http_method = "GET",
+    http_path = "/detector/{detectorId}/threatentityset",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ThreatEntitySetIds"),
+    stream_api = FALSE
+  )
+  input <- .guardduty$list_threat_entity_sets_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .guardduty$list_threat_entity_sets_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$list_threat_entity_sets <- guardduty_list_threat_entity_sets
+
 #' Lists the ThreatIntelSets of the GuardDuty service specified by the
 #' detector ID
 #'
@@ -2547,20 +2930,98 @@ guardduty_list_threat_intel_sets <- function(DetectorId, MaxResults = NULL, Next
 }
 .guardduty$operations$list_threat_intel_sets <- guardduty_list_threat_intel_sets
 
+#' Lists the trusted entity sets associated with the specified GuardDuty
+#' detector ID
+#'
+#' @description
+#' Lists the trusted entity sets associated with the specified GuardDuty detector ID. If you use this operation from a member account, the trusted entity sets that are returned as a response, belong to the administrator account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_list_trusted_entity_sets/](https://www.paws-r-sdk.com/docs/guardduty_list_trusted_entity_sets/) for full documentation.
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the GuardDuty detector that is associated with this
+#' threat entity set.
+#' 
+#' To find the `detectorId` in the current Region, see the Settings page in
+#' the GuardDuty console, or run the
+#' [`list_detectors`][guardduty_list_detectors] API.
+#' @param MaxResults You can use this parameter to indicate the maximum number of items you
+#' want in the response. The default value is 50.
+#' @param NextToken You can use this parameter when paginating results. Set the value of
+#' this parameter to null on your first call to the list action. For
+#' subsequent calls to the action, fill nextToken in the request with the
+#' value of NextToken from the previous response to continue listing data.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_list_trusted_entity_sets
+guardduty_list_trusted_entity_sets <- function(DetectorId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListTrustedEntitySets",
+    http_method = "GET",
+    http_path = "/detector/{detectorId}/trustedentityset",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrustedEntitySetIds"),
+    stream_api = FALSE
+  )
+  input <- .guardduty$list_trusted_entity_sets_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .guardduty$list_trusted_entity_sets_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$list_trusted_entity_sets <- guardduty_list_trusted_entity_sets
+
+#' Initiates a malware scan for a specific S3 object
+#'
+#' @description
+#' Initiates a malware scan for a specific S3 object. This API allows you to perform on-demand malware scanning of individual objects in S3 buckets that have Malware Protection for S3 enabled.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_send_object_malware_scan/](https://www.paws-r-sdk.com/docs/guardduty_send_object_malware_scan/) for full documentation.
+#'
+#' @param S3Object The S3 object information for the object you want to scan. The bucket
+#' must have a Malware Protection plan configured to use this API.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_send_object_malware_scan
+guardduty_send_object_malware_scan <- function(S3Object = NULL) {
+  op <- new_operation(
+    name = "SendObjectMalwareScan",
+    http_method = "POST",
+    http_path = "/object-malware-scan/send",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$send_object_malware_scan_input(S3Object = S3Object)
+  output <- .guardduty$send_object_malware_scan_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$send_object_malware_scan <- guardduty_send_object_malware_scan
+
 #' Initiates the malware scan
 #'
 #' @description
-#' Initiates the malware scan. Invoking this API will automatically create the [Service-linked role](https://docs.aws.amazon.com/guardduty/latest/ug/slr-permissions-malware-protection.html) in the corresponding account.
+#' Initiates the malware scan. Invoking this API will automatically create the [Service-linked role](https://docs.aws.amazon.com/guardduty/latest/ug/slr-permissions-malware-protection.html) in the corresponding account if the resourceArn belongs to an EC2 instance.
 #'
 #' See [https://www.paws-r-sdk.com/docs/guardduty_start_malware_scan/](https://www.paws-r-sdk.com/docs/guardduty_start_malware_scan/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the resource for which you invoked the
 #' API.
+#' @param ClientToken The idempotency token for the create request.
+#' @param ScanConfiguration Contains information about the configuration to be used for the malware
+#' scan.
 #'
 #' @keywords internal
 #'
 #' @rdname guardduty_start_malware_scan
-guardduty_start_malware_scan <- function(ResourceArn) {
+guardduty_start_malware_scan <- function(ResourceArn, ClientToken = NULL, ScanConfiguration = NULL) {
   op <- new_operation(
     name = "StartMalwareScan",
     http_method = "POST",
@@ -2569,7 +3030,7 @@ guardduty_start_malware_scan <- function(ResourceArn) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .guardduty$start_malware_scan_input(ResourceArn = ResourceArn)
+  input <- .guardduty$start_malware_scan_input(ResourceArn = ResourceArn, ClientToken = ClientToken, ScanConfiguration = ScanConfiguration)
   output <- .guardduty$start_malware_scan_output()
   config <- get_config()
   svc <- .guardduty$service(config, op)
@@ -2905,11 +3366,13 @@ guardduty_update_findings_feedback <- function(DetectorId, FindingIds, Feedback,
 #' @param Location The updated URI of the file that contains the IPSet.
 #' @param Activate The updated Boolean value that specifies whether the IPSet is active or
 #' not.
+#' @param ExpectedBucketOwner The Amazon Web Services account ID that owns the Amazon S3 bucket
+#' specified in the **location** parameter.
 #'
 #' @keywords internal
 #'
 #' @rdname guardduty_update_ip_set
-guardduty_update_ip_set <- function(DetectorId, IpSetId, Name = NULL, Location = NULL, Activate = NULL) {
+guardduty_update_ip_set <- function(DetectorId, IpSetId, Name = NULL, Location = NULL, Activate = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "UpdateIPSet",
     http_method = "POST",
@@ -2918,7 +3381,7 @@ guardduty_update_ip_set <- function(DetectorId, IpSetId, Name = NULL, Location =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .guardduty$update_ip_set_input(DetectorId = DetectorId, IpSetId = IpSetId, Name = Name, Location = Location, Activate = Activate)
+  input <- .guardduty$update_ip_set_input(DetectorId = DetectorId, IpSetId = IpSetId, Name = Name, Location = Location, Activate = Activate, ExpectedBucketOwner = ExpectedBucketOwner)
   output <- .guardduty$update_ip_set_output()
   config <- get_config()
   svc <- .guardduty$service(config, op)
@@ -3158,6 +3621,56 @@ guardduty_update_publishing_destination <- function(DetectorId, DestinationId, D
 }
 .guardduty$operations$update_publishing_destination <- guardduty_update_publishing_destination
 
+#' Updates the threat entity set associated with the specified
+#' threatEntitySetId
+#'
+#' @description
+#' Updates the threat entity set associated with the specified `threatEntitySetId`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_update_threat_entity_set/](https://www.paws-r-sdk.com/docs/guardduty_update_threat_entity_set/) for full documentation.
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the GuardDuty detector associated with the threat
+#' entity set that you want to update.
+#' 
+#' To find the `detectorId` in the current Region, see the Settings page in
+#' the GuardDuty console, or run the
+#' [`list_detectors`][guardduty_list_detectors] API.
+#' @param ThreatEntitySetId &#91;required&#93; The ID returned by GuardDuty after updating the threat entity set
+#' resource.
+#' @param Name A user-friendly name to identify the trusted entity set.
+#' 
+#' The name of your list can include lowercase letters, uppercase letters,
+#' numbers, dash (-), and underscore (_).
+#' @param Location The URI of the file that contains the trusted entity set.
+#' @param ExpectedBucketOwner The Amazon Web Services account ID that owns the Amazon S3 bucket
+#' specified in the **location** parameter.
+#' @param Activate A boolean value that indicates whether GuardDuty is to start using this
+#' updated threat entity set. After you update an entity set, you will need
+#' to activate it again. It might take up to 15 minutes for the updated
+#' entity set to be effective.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_update_threat_entity_set
+guardduty_update_threat_entity_set <- function(DetectorId, ThreatEntitySetId, Name = NULL, Location = NULL, ExpectedBucketOwner = NULL, Activate = NULL) {
+  op <- new_operation(
+    name = "UpdateThreatEntitySet",
+    http_method = "POST",
+    http_path = "/detector/{detectorId}/threatentityset/{threatEntitySetId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$update_threat_entity_set_input(DetectorId = DetectorId, ThreatEntitySetId = ThreatEntitySetId, Name = Name, Location = Location, ExpectedBucketOwner = ExpectedBucketOwner, Activate = Activate)
+  output <- .guardduty$update_threat_entity_set_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$update_threat_entity_set <- guardduty_update_threat_entity_set
+
 #' Updates the ThreatIntelSet specified by the ThreatIntelSet ID
 #'
 #' @description
@@ -3176,11 +3689,13 @@ guardduty_update_publishing_destination <- function(DetectorId, DestinationId, D
 #' @param Location The updated URI of the file that contains the ThreateIntelSet.
 #' @param Activate The updated Boolean value that specifies whether the ThreateIntelSet is
 #' active or not.
+#' @param ExpectedBucketOwner The Amazon Web Services account ID that owns the Amazon S3 bucket
+#' specified in the **location** parameter.
 #'
 #' @keywords internal
 #'
 #' @rdname guardduty_update_threat_intel_set
-guardduty_update_threat_intel_set <- function(DetectorId, ThreatIntelSetId, Name = NULL, Location = NULL, Activate = NULL) {
+guardduty_update_threat_intel_set <- function(DetectorId, ThreatIntelSetId, Name = NULL, Location = NULL, Activate = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "UpdateThreatIntelSet",
     http_method = "POST",
@@ -3189,7 +3704,7 @@ guardduty_update_threat_intel_set <- function(DetectorId, ThreatIntelSetId, Name
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .guardduty$update_threat_intel_set_input(DetectorId = DetectorId, ThreatIntelSetId = ThreatIntelSetId, Name = Name, Location = Location, Activate = Activate)
+  input <- .guardduty$update_threat_intel_set_input(DetectorId = DetectorId, ThreatIntelSetId = ThreatIntelSetId, Name = Name, Location = Location, Activate = Activate, ExpectedBucketOwner = ExpectedBucketOwner)
   output <- .guardduty$update_threat_intel_set_output()
   config <- get_config()
   svc <- .guardduty$service(config, op)
@@ -3198,3 +3713,53 @@ guardduty_update_threat_intel_set <- function(DetectorId, ThreatIntelSetId, Name
   return(response)
 }
 .guardduty$operations$update_threat_intel_set <- guardduty_update_threat_intel_set
+
+#' Updates the trusted entity set associated with the specified
+#' trustedEntitySetId
+#'
+#' @description
+#' Updates the trusted entity set associated with the specified `trustedEntitySetId`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_update_trusted_entity_set/](https://www.paws-r-sdk.com/docs/guardduty_update_trusted_entity_set/) for full documentation.
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the GuardDuty detector associated with the threat
+#' entity set that you want to update.
+#' 
+#' To find the `detectorId` in the current Region, see the Settings page in
+#' the GuardDuty console, or run the
+#' [`list_detectors`][guardduty_list_detectors] API.
+#' @param TrustedEntitySetId &#91;required&#93; The ID returned by GuardDuty after updating the trusted entity set
+#' resource.
+#' @param Name A user-friendly name to identify the trusted entity set.
+#' 
+#' The name of your list can include lowercase letters, uppercase letters,
+#' numbers, dash (-), and underscore (_).
+#' @param Location The URI of the file that contains the trusted entity set.
+#' @param ExpectedBucketOwner The Amazon Web Services account ID that owns the Amazon S3 bucket
+#' specified in the **location** parameter.
+#' @param Activate A boolean value that indicates whether GuardDuty is to start using this
+#' updated trusted entity set. After you update an entity set, you will
+#' need to activate it again. It might take up to 15 minutes for the
+#' updated entity set to be effective.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_update_trusted_entity_set
+guardduty_update_trusted_entity_set <- function(DetectorId, TrustedEntitySetId, Name = NULL, Location = NULL, ExpectedBucketOwner = NULL, Activate = NULL) {
+  op <- new_operation(
+    name = "UpdateTrustedEntitySet",
+    http_method = "POST",
+    http_path = "/detector/{detectorId}/trustedentityset/{trustedEntitySetId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$update_trusted_entity_set_input(DetectorId = DetectorId, TrustedEntitySetId = TrustedEntitySetId, Name = Name, Location = Location, ExpectedBucketOwner = ExpectedBucketOwner, Activate = Activate)
+  output <- .guardduty$update_trusted_entity_set_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$update_trusted_entity_set <- guardduty_update_trusted_entity_set

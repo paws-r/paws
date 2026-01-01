@@ -13,7 +13,7 @@ omics_get_workflow_version(
 )
 }
 \arguments{
-\item{workflowId}{[required] The workflow's ID.}
+\item{workflowId}{[required] The workflow's ID. The \code{workflowId} is not the UUID.}
 
 \item{versionName}{[required] The workflow version name.}
 
@@ -21,10 +21,12 @@ omics_get_workflow_version(
 
 \item{export}{The export format for the workflow.}
 
-\item{workflowOwnerId}{Amazon Web Services Id of the owner of the workflow.}
+\item{workflowOwnerId}{The 12-digit account ID of the workflow owner. The workflow owner ID can
+be retrieved using the \code{\link[=omics_get_share]{get_share}} API operation. If
+you are the workflow owner, you do not need to include this ID.}
 }
 \description{
-Gets information about a workflow version. For more information, see \href{https://docs.aws.amazon.com/omics/latest/dev/workflow-versions.html}{Workflow versioning in Amazon Web Services HealthOmics} in the Amazon Web Services HealthOmics User Guide.
+Gets information about a workflow version. For more information, see \href{https://docs.aws.amazon.com/omics/latest/dev/workflow-versions.html}{Workflow versioning in Amazon Web Services HealthOmics} in the \emph{Amazon Web Services HealthOmics User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_get_workflow_version/} for full documentation.
 }

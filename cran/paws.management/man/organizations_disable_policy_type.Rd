@@ -7,9 +7,8 @@
 organizations_disable_policy_type(RootId, PolicyType)
 }
 \arguments{
-\item{RootId}{[required] The unique identifier (ID) of the root in which you want to disable a
-policy type. You can get the ID from the
-\code{\link[=organizations_list_roots]{list_roots}} operation.
+\item{RootId}{[required] ID for the root in which you want to disable a policy type. You can get
+the ID from the \code{\link[=organizations_list_roots]{list_roots}} operation.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a root ID
 string requires "r-" followed by from 4 to 32 lowercase letters or
@@ -25,6 +24,12 @@ one of the following values:
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG_POLICY}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_chatbot.html}{CHATBOT_POLICY}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES_OPT_OUT_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_security_hub.html}{SECURITYHUB_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_upgrade_rollout.html}{UPGRADE_ROLLOUT_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_inspector.html}{INSPECTOR_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_bedrock.html}{BEDROCK_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_s3.html}{S3_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_network_security_director.html}{NETWORK_SECURITY_DIRECTOR_POLICY}
 }}
 }
 \description{

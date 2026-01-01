@@ -4,9 +4,11 @@
 \alias{vpclattice_update_service_network}
 \title{Updates the specified service network}
 \usage{
-vpclattice_update_service_network(authType, serviceNetworkIdentifier)
+vpclattice_update_service_network(serviceNetworkIdentifier, authType)
 }
 \arguments{
+\item{serviceNetworkIdentifier}{[required] The ID or ARN of the service network.}
+
 \item{authType}{[required] The type of IAM policy.
 \itemize{
 \item \code{NONE}: The resource does not use an IAM policy. This is the
@@ -14,8 +16,6 @@ default.
 \item \code{AWS_IAM}: The resource uses an IAM policy. When this type is used,
 auth is enabled and an auth policy is required.
 }}
-
-\item{serviceNetworkIdentifier}{[required] The ID or ARN of the service network.}
 }
 \description{
 Updates the specified service network.

@@ -90,7 +90,7 @@ type for these actions:
 \item \verb{DELETE*, CANCEL}
 }
 
-For information about Amazon WorkDocs API pricing, see \href{https://aws.amazon.com/workdocs/pricing/}{Amazon WorkDocs Pricing}.
+For information about Amazon WorkDocs API pricing, see \href{https://aws.amazon.com/}{Amazon WorkDocs Pricing}.
 }
 \section{Service syntax}{
 

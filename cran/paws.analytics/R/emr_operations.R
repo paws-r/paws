@@ -182,6 +182,41 @@ emr_cancel_steps <- function(ClusterId, StepIds, StepCancellationOption = NULL) 
 }
 .emr$operations$cancel_steps <- emr_cancel_steps
 
+#' Creates a persistent application user interface
+#'
+#' @description
+#' Creates a persistent application user interface.
+#'
+#' See [https://www.paws-r-sdk.com/docs/emr_create_persistent_app_ui/](https://www.paws-r-sdk.com/docs/emr_create_persistent_app_ui/) for full documentation.
+#'
+#' @param TargetResourceArn &#91;required&#93; The unique Amazon Resource Name (ARN) of the target resource.
+#' @param EMRContainersConfig The EMR containers configuration.
+#' @param Tags Tags for the persistent application user interface.
+#' @param XReferer The cross reference for the persistent application user interface.
+#' @param ProfilerType The profiler type for the persistent application user interface.
+#'
+#' @keywords internal
+#'
+#' @rdname emr_create_persistent_app_ui
+emr_create_persistent_app_ui <- function(TargetResourceArn, EMRContainersConfig = NULL, Tags = NULL, XReferer = NULL, ProfilerType = NULL) {
+  op <- new_operation(
+    name = "CreatePersistentAppUI",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .emr$create_persistent_app_ui_input(TargetResourceArn = TargetResourceArn, EMRContainersConfig = EMRContainersConfig, Tags = Tags, XReferer = XReferer, ProfilerType = ProfilerType)
+  output <- .emr$create_persistent_app_ui_output()
+  config <- get_config()
+  svc <- .emr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$create_persistent_app_ui <- emr_create_persistent_app_ui
+
 #' Creates a security configuration, which is stored in the service and can
 #' be specified when a cluster is created
 #'
@@ -557,6 +592,37 @@ emr_describe_notebook_execution <- function(NotebookExecutionId) {
 }
 .emr$operations$describe_notebook_execution <- emr_describe_notebook_execution
 
+#' Describes a persistent application user interface
+#'
+#' @description
+#' Describes a persistent application user interface.
+#'
+#' See [https://www.paws-r-sdk.com/docs/emr_describe_persistent_app_ui/](https://www.paws-r-sdk.com/docs/emr_describe_persistent_app_ui/) for full documentation.
+#'
+#' @param PersistentAppUIId &#91;required&#93; The identifier for the persistent application user interface.
+#'
+#' @keywords internal
+#'
+#' @rdname emr_describe_persistent_app_ui
+emr_describe_persistent_app_ui <- function(PersistentAppUIId) {
+  op <- new_operation(
+    name = "DescribePersistentAppUI",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .emr$describe_persistent_app_ui_input(PersistentAppUIId = PersistentAppUIId)
+  output <- .emr$describe_persistent_app_ui_output()
+  config <- get_config()
+  svc <- .emr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$describe_persistent_app_ui <- emr_describe_persistent_app_ui
+
 #' Provides Amazon EMR release label details, such as the releases
 #' available the Region where the API request is run, and the available
 #' applications for a specific Amazon EMR release label
@@ -821,6 +887,84 @@ emr_get_managed_scaling_policy <- function(ClusterId) {
   return(response)
 }
 .emr$operations$get_managed_scaling_policy <- emr_get_managed_scaling_policy
+
+#' The presigned URL properties for the cluster's application user
+#' interface
+#'
+#' @description
+#' The presigned URL properties for the cluster's application user interface.
+#'
+#' See [https://www.paws-r-sdk.com/docs/emr_get_on_cluster_app_ui_presigned_url/](https://www.paws-r-sdk.com/docs/emr_get_on_cluster_app_ui_presigned_url/) for full documentation.
+#'
+#' @param ClusterId &#91;required&#93; The cluster ID associated with the cluster's application user interface
+#' presigned URL.
+#' @param OnClusterAppUIType The application UI type associated with the cluster's application user
+#' interface presigned URL.
+#' @param ApplicationId The application ID associated with the cluster's application user
+#' interface presigned URL.
+#' @param DryRun Determines if the user interface presigned URL is for a dry run.
+#' @param ExecutionRoleArn The execution role ARN associated with the cluster's application user
+#' interface presigned URL.
+#'
+#' @keywords internal
+#'
+#' @rdname emr_get_on_cluster_app_ui_presigned_url
+emr_get_on_cluster_app_ui_presigned_url <- function(ClusterId, OnClusterAppUIType = NULL, ApplicationId = NULL, DryRun = NULL, ExecutionRoleArn = NULL) {
+  op <- new_operation(
+    name = "GetOnClusterAppUIPresignedURL",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .emr$get_on_cluster_app_ui_presigned_url_input(ClusterId = ClusterId, OnClusterAppUIType = OnClusterAppUIType, ApplicationId = ApplicationId, DryRun = DryRun, ExecutionRoleArn = ExecutionRoleArn)
+  output <- .emr$get_on_cluster_app_ui_presigned_url_output()
+  config <- get_config()
+  svc <- .emr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$get_on_cluster_app_ui_presigned_url <- emr_get_on_cluster_app_ui_presigned_url
+
+#' The presigned URL properties for the cluster's application user
+#' interface
+#'
+#' @description
+#' The presigned URL properties for the cluster's application user interface.
+#'
+#' See [https://www.paws-r-sdk.com/docs/emr_get_persistent_app_ui_presigned_url/](https://www.paws-r-sdk.com/docs/emr_get_persistent_app_ui_presigned_url/) for full documentation.
+#'
+#' @param PersistentAppUIId &#91;required&#93; The persistent application user interface ID associated with the
+#' presigned URL.
+#' @param PersistentAppUIType The persistent application user interface type associated with the
+#' presigned URL.
+#' @param ApplicationId The application ID associated with the presigned URL.
+#' @param AuthProxyCall A boolean that represents if the caller is an authentication proxy call.
+#' @param ExecutionRoleArn The execution role ARN associated with the presigned URL.
+#'
+#' @keywords internal
+#'
+#' @rdname emr_get_persistent_app_ui_presigned_url
+emr_get_persistent_app_ui_presigned_url <- function(PersistentAppUIId, PersistentAppUIType = NULL, ApplicationId = NULL, AuthProxyCall = NULL, ExecutionRoleArn = NULL) {
+  op <- new_operation(
+    name = "GetPersistentAppUIPresignedURL",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .emr$get_persistent_app_ui_presigned_url_input(PersistentAppUIId = PersistentAppUIId, PersistentAppUIType = PersistentAppUIType, ApplicationId = ApplicationId, AuthProxyCall = AuthProxyCall, ExecutionRoleArn = ExecutionRoleArn)
+  output <- .emr$get_persistent_app_ui_presigned_url_output()
+  config <- get_config()
+  svc <- .emr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$get_persistent_app_ui_presigned_url <- emr_get_persistent_app_ui_presigned_url
 
 #' Fetches mapping details for the specified Amazon EMR Studio and identity
 #' (user or group)
@@ -1348,11 +1492,12 @@ emr_list_supported_instance_types <- function(ReleaseLabel, Marker = NULL) {
 #' not change this parameter while steps are running or the
 #' `ActionOnFailure` setting may not behave as expected. For more
 #' information see Step$ActionOnFailure.
+#' @param ExtendedSupport Reserved.
 #'
 #' @keywords internal
 #'
 #' @rdname emr_modify_cluster
-emr_modify_cluster <- function(ClusterId, StepConcurrencyLevel = NULL) {
+emr_modify_cluster <- function(ClusterId, StepConcurrencyLevel = NULL, ExtendedSupport = NULL) {
   op <- new_operation(
     name = "ModifyCluster",
     http_method = "POST",
@@ -1361,7 +1506,7 @@ emr_modify_cluster <- function(ClusterId, StepConcurrencyLevel = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .emr$modify_cluster_input(ClusterId = ClusterId, StepConcurrencyLevel = StepConcurrencyLevel)
+  input <- .emr$modify_cluster_input(ClusterId = ClusterId, StepConcurrencyLevel = StepConcurrencyLevel, ExtendedSupport = ExtendedSupport)
   output <- .emr$modify_cluster_output()
   config <- get_config()
   svc <- .emr$service(config, op)
@@ -1888,11 +2033,13 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' @param EbsRootVolumeThroughput The throughput, in MiB/s, of the Amazon EBS root device volume of the
 #' Linux AMI that is used for each Amazon EC2 instance. Available in Amazon
 #' EMR releases 6.15.0 and later.
+#' @param ExtendedSupport Reserved.
+#' @param MonitoringConfiguration Contains CloudWatch log configuration metadata and settings.
 #'
 #' @keywords internal
 #'
 #' @rdname emr_run_job_flow
-emr_run_job_flow <- function(Name, LogUri = NULL, LogEncryptionKmsKeyId = NULL, AdditionalInfo = NULL, AmiVersion = NULL, ReleaseLabel = NULL, Instances, Steps = NULL, BootstrapActions = NULL, SupportedProducts = NULL, NewSupportedProducts = NULL, Applications = NULL, Configurations = NULL, VisibleToAllUsers = NULL, JobFlowRole = NULL, ServiceRole = NULL, Tags = NULL, SecurityConfiguration = NULL, AutoScalingRole = NULL, ScaleDownBehavior = NULL, CustomAmiId = NULL, EbsRootVolumeSize = NULL, RepoUpgradeOnBoot = NULL, KerberosAttributes = NULL, StepConcurrencyLevel = NULL, ManagedScalingPolicy = NULL, PlacementGroupConfigs = NULL, AutoTerminationPolicy = NULL, OSReleaseLabel = NULL, EbsRootVolumeIops = NULL, EbsRootVolumeThroughput = NULL) {
+emr_run_job_flow <- function(Name, LogUri = NULL, LogEncryptionKmsKeyId = NULL, AdditionalInfo = NULL, AmiVersion = NULL, ReleaseLabel = NULL, Instances, Steps = NULL, BootstrapActions = NULL, SupportedProducts = NULL, NewSupportedProducts = NULL, Applications = NULL, Configurations = NULL, VisibleToAllUsers = NULL, JobFlowRole = NULL, ServiceRole = NULL, Tags = NULL, SecurityConfiguration = NULL, AutoScalingRole = NULL, ScaleDownBehavior = NULL, CustomAmiId = NULL, EbsRootVolumeSize = NULL, RepoUpgradeOnBoot = NULL, KerberosAttributes = NULL, StepConcurrencyLevel = NULL, ManagedScalingPolicy = NULL, PlacementGroupConfigs = NULL, AutoTerminationPolicy = NULL, OSReleaseLabel = NULL, EbsRootVolumeIops = NULL, EbsRootVolumeThroughput = NULL, ExtendedSupport = NULL, MonitoringConfiguration = NULL) {
   op <- new_operation(
     name = "RunJobFlow",
     http_method = "POST",
@@ -1901,7 +2048,7 @@ emr_run_job_flow <- function(Name, LogUri = NULL, LogEncryptionKmsKeyId = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .emr$run_job_flow_input(Name = Name, LogUri = LogUri, LogEncryptionKmsKeyId = LogEncryptionKmsKeyId, AdditionalInfo = AdditionalInfo, AmiVersion = AmiVersion, ReleaseLabel = ReleaseLabel, Instances = Instances, Steps = Steps, BootstrapActions = BootstrapActions, SupportedProducts = SupportedProducts, NewSupportedProducts = NewSupportedProducts, Applications = Applications, Configurations = Configurations, VisibleToAllUsers = VisibleToAllUsers, JobFlowRole = JobFlowRole, ServiceRole = ServiceRole, Tags = Tags, SecurityConfiguration = SecurityConfiguration, AutoScalingRole = AutoScalingRole, ScaleDownBehavior = ScaleDownBehavior, CustomAmiId = CustomAmiId, EbsRootVolumeSize = EbsRootVolumeSize, RepoUpgradeOnBoot = RepoUpgradeOnBoot, KerberosAttributes = KerberosAttributes, StepConcurrencyLevel = StepConcurrencyLevel, ManagedScalingPolicy = ManagedScalingPolicy, PlacementGroupConfigs = PlacementGroupConfigs, AutoTerminationPolicy = AutoTerminationPolicy, OSReleaseLabel = OSReleaseLabel, EbsRootVolumeIops = EbsRootVolumeIops, EbsRootVolumeThroughput = EbsRootVolumeThroughput)
+  input <- .emr$run_job_flow_input(Name = Name, LogUri = LogUri, LogEncryptionKmsKeyId = LogEncryptionKmsKeyId, AdditionalInfo = AdditionalInfo, AmiVersion = AmiVersion, ReleaseLabel = ReleaseLabel, Instances = Instances, Steps = Steps, BootstrapActions = BootstrapActions, SupportedProducts = SupportedProducts, NewSupportedProducts = NewSupportedProducts, Applications = Applications, Configurations = Configurations, VisibleToAllUsers = VisibleToAllUsers, JobFlowRole = JobFlowRole, ServiceRole = ServiceRole, Tags = Tags, SecurityConfiguration = SecurityConfiguration, AutoScalingRole = AutoScalingRole, ScaleDownBehavior = ScaleDownBehavior, CustomAmiId = CustomAmiId, EbsRootVolumeSize = EbsRootVolumeSize, RepoUpgradeOnBoot = RepoUpgradeOnBoot, KerberosAttributes = KerberosAttributes, StepConcurrencyLevel = StepConcurrencyLevel, ManagedScalingPolicy = ManagedScalingPolicy, PlacementGroupConfigs = PlacementGroupConfigs, AutoTerminationPolicy = AutoTerminationPolicy, OSReleaseLabel = OSReleaseLabel, EbsRootVolumeIops = EbsRootVolumeIops, EbsRootVolumeThroughput = EbsRootVolumeThroughput, ExtendedSupport = ExtendedSupport, MonitoringConfiguration = MonitoringConfiguration)
   output <- .emr$run_job_flow_output()
   config <- get_config()
   svc <- .emr$service(config, op)

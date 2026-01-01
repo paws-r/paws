@@ -3,26 +3,31 @@
 #' @include ecs_service.R
 NULL
 
-#' Creates a new capacity provider
+#' Creates a capacity provider
 #'
 #' @description
-#' Creates a new capacity provider. Capacity providers are associated with
-#' an Amazon ECS cluster and are used in capacity provider strategies to
-#' facilitate cluster auto scaling.
-#' 
-#' Only capacity providers that use an Auto Scaling group can be created.
-#' Amazon ECS tasks on Fargate use the `FARGATE` and `FARGATE_SPOT`
-#' capacity providers. These providers are available to all accounts in the
-#' Amazon Web Services Regions that Fargate supports.
+#' Creates a capacity provider. Capacity providers are associated with a
+#' cluster and are used in capacity provider strategies to facilitate
+#' cluster auto scaling. You can create capacity providers for Amazon ECS
+#' Managed Instances and EC2 instances. Fargate has the predefined
+#' `FARGATE` and `FARGATE_SPOT` capacity providers.
 #'
 #' @usage
-#' ecs_create_capacity_provider(name, autoScalingGroupProvider, tags)
+#' ecs_create_capacity_provider(name, cluster, autoScalingGroupProvider,
+#'   managedInstancesProvider, tags)
 #'
 #' @param name &#91;required&#93; The name of the capacity provider. Up to 255 characters are allowed.
 #' They include letters (both upper and lowercase letters), numbers,
 #' underscores (_), and hyphens (-). The name can't be prefixed with
 #' "`aws`", "`ecs`", or "`fargate`".
-#' @param autoScalingGroupProvider &#91;required&#93; The details of the Auto Scaling group for the capacity provider.
+#' @param cluster The name of the cluster to associate with the capacity provider. When
+#' you create a capacity provider with Amazon ECS Managed Instances, it
+#' becomes available only within the specified cluster.
+#' @param autoScalingGroupProvider The details of the Auto Scaling group for the capacity provider.
+#' @param managedInstancesProvider The configuration for the Amazon ECS Managed Instances provider. This
+#' configuration specifies how Amazon ECS manages Amazon EC2 instances on
+#' your behalf, including the infrastructure role, instance launch
+#' template, and tag propagation settings.
 #' @param tags The metadata that you apply to the capacity provider to categorize and
 #' organize them more conveniently. Each tag consists of a key and an
 #' optional value. You define both of them.
@@ -59,7 +64,8 @@ NULL
 #'   capacityProvider = list(
 #'     capacityProviderArn = "string",
 #'     name = "string",
-#'     status = "ACTIVE"|"INACTIVE",
+#'     cluster = "string",
+#'     status = "PROVISIONING"|"ACTIVE"|"DEPROVISIONING"|"INACTIVE",
 #'     autoScalingGroupProvider = list(
 #'       autoScalingGroupArn = "string",
 #'       managedScaling = list(
@@ -72,14 +78,107 @@ NULL
 #'       managedTerminationProtection = "ENABLED"|"DISABLED",
 #'       managedDraining = "ENABLED"|"DISABLED"
 #'     ),
-#'     updateStatus = "DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
+#'     managedInstancesProvider = list(
+#'       infrastructureRoleArn = "string",
+#'       instanceLaunchTemplate = list(
+#'         ec2InstanceProfileArn = "string",
+#'         networkConfiguration = list(
+#'           subnets = list(
+#'             "string"
+#'           ),
+#'           securityGroups = list(
+#'             "string"
+#'           )
+#'         ),
+#'         storageConfiguration = list(
+#'           storageSizeGiB = 123
+#'         ),
+#'         monitoring = "BASIC"|"DETAILED",
+#'         capacityOptionType = "ON_DEMAND"|"SPOT",
+#'         instanceRequirements = list(
+#'           vCpuCount = list(
+#'             min = 123,
+#'             max = 123
+#'           ),
+#'           memoryMiB = list(
+#'             min = 123,
+#'             max = 123
+#'           ),
+#'           cpuManufacturers = list(
+#'             "intel"|"amd"|"amazon-web-services"
+#'           ),
+#'           memoryGiBPerVCpu = list(
+#'             min = 123.0,
+#'             max = 123.0
+#'           ),
+#'           excludedInstanceTypes = list(
+#'             "string"
+#'           ),
+#'           instanceGenerations = list(
+#'             "current"|"previous"
+#'           ),
+#'           spotMaxPricePercentageOverLowestPrice = 123,
+#'           onDemandMaxPricePercentageOverLowestPrice = 123,
+#'           bareMetal = "included"|"required"|"excluded",
+#'           burstablePerformance = "included"|"required"|"excluded",
+#'           requireHibernateSupport = TRUE|FALSE,
+#'           networkInterfaceCount = list(
+#'             min = 123,
+#'             max = 123
+#'           ),
+#'           localStorage = "included"|"required"|"excluded",
+#'           localStorageTypes = list(
+#'             "hdd"|"ssd"
+#'           ),
+#'           totalLocalStorageGB = list(
+#'             min = 123.0,
+#'             max = 123.0
+#'           ),
+#'           baselineEbsBandwidthMbps = list(
+#'             min = 123,
+#'             max = 123
+#'           ),
+#'           acceleratorTypes = list(
+#'             "gpu"|"fpga"|"inference"
+#'           ),
+#'           acceleratorCount = list(
+#'             min = 123,
+#'             max = 123
+#'           ),
+#'           acceleratorManufacturers = list(
+#'             "amazon-web-services"|"amd"|"nvidia"|"xilinx"|"habana"
+#'           ),
+#'           acceleratorNames = list(
+#'             "a100"|"inferentia"|"k520"|"k80"|"m60"|"radeon-pro-v520"|"t4"|"vu9p"|"v100"|"a10g"|"h100"|"t4g"
+#'           ),
+#'           acceleratorTotalMemoryMiB = list(
+#'             min = 123,
+#'             max = 123
+#'           ),
+#'           networkBandwidthGbps = list(
+#'             min = 123.0,
+#'             max = 123.0
+#'           ),
+#'           allowedInstanceTypes = list(
+#'             "string"
+#'           ),
+#'           maxSpotPriceAsPercentageOfOptimalOnDemandPrice = 123
+#'         )
+#'       ),
+#'       propagateTags = "CAPACITY_PROVIDER"|"NONE",
+#'       infrastructureOptimization = list(
+#'         scaleInAfter = 123
+#'       )
+#'     ),
+#'     updateStatus = "CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED"|"DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
 #'     updateStatusReason = "string",
 #'     tags = list(
 #'       list(
 #'         key = "string",
 #'         value = "string"
 #'       )
-#'     )
+#'     ),
+#'     type = "EC2_AUTOSCALING"|"MANAGED_INSTANCES"|"FARGATE"|"FARGATE_SPOT"
 #'   )
 #' )
 #' ```
@@ -88,6 +187,7 @@ NULL
 #' ```
 #' svc$create_capacity_provider(
 #'   name = "string",
+#'   cluster = "string",
 #'   autoScalingGroupProvider = list(
 #'     autoScalingGroupArn = "string",
 #'     managedScaling = list(
@@ -99,6 +199,98 @@ NULL
 #'     ),
 #'     managedTerminationProtection = "ENABLED"|"DISABLED",
 #'     managedDraining = "ENABLED"|"DISABLED"
+#'   ),
+#'   managedInstancesProvider = list(
+#'     infrastructureRoleArn = "string",
+#'     instanceLaunchTemplate = list(
+#'       ec2InstanceProfileArn = "string",
+#'       networkConfiguration = list(
+#'         subnets = list(
+#'           "string"
+#'         ),
+#'         securityGroups = list(
+#'           "string"
+#'         )
+#'       ),
+#'       storageConfiguration = list(
+#'         storageSizeGiB = 123
+#'       ),
+#'       monitoring = "BASIC"|"DETAILED",
+#'       capacityOptionType = "ON_DEMAND"|"SPOT",
+#'       instanceRequirements = list(
+#'         vCpuCount = list(
+#'           min = 123,
+#'           max = 123
+#'         ),
+#'         memoryMiB = list(
+#'           min = 123,
+#'           max = 123
+#'         ),
+#'         cpuManufacturers = list(
+#'           "intel"|"amd"|"amazon-web-services"
+#'         ),
+#'         memoryGiBPerVCpu = list(
+#'           min = 123.0,
+#'           max = 123.0
+#'         ),
+#'         excludedInstanceTypes = list(
+#'           "string"
+#'         ),
+#'         instanceGenerations = list(
+#'           "current"|"previous"
+#'         ),
+#'         spotMaxPricePercentageOverLowestPrice = 123,
+#'         onDemandMaxPricePercentageOverLowestPrice = 123,
+#'         bareMetal = "included"|"required"|"excluded",
+#'         burstablePerformance = "included"|"required"|"excluded",
+#'         requireHibernateSupport = TRUE|FALSE,
+#'         networkInterfaceCount = list(
+#'           min = 123,
+#'           max = 123
+#'         ),
+#'         localStorage = "included"|"required"|"excluded",
+#'         localStorageTypes = list(
+#'           "hdd"|"ssd"
+#'         ),
+#'         totalLocalStorageGB = list(
+#'           min = 123.0,
+#'           max = 123.0
+#'         ),
+#'         baselineEbsBandwidthMbps = list(
+#'           min = 123,
+#'           max = 123
+#'         ),
+#'         acceleratorTypes = list(
+#'           "gpu"|"fpga"|"inference"
+#'         ),
+#'         acceleratorCount = list(
+#'           min = 123,
+#'           max = 123
+#'         ),
+#'         acceleratorManufacturers = list(
+#'           "amazon-web-services"|"amd"|"nvidia"|"xilinx"|"habana"
+#'         ),
+#'         acceleratorNames = list(
+#'           "a100"|"inferentia"|"k520"|"k80"|"m60"|"radeon-pro-v520"|"t4"|"vu9p"|"v100"|"a10g"|"h100"|"t4g"
+#'         ),
+#'         acceleratorTotalMemoryMiB = list(
+#'           min = 123,
+#'           max = 123
+#'         ),
+#'         networkBandwidthGbps = list(
+#'           min = 123.0,
+#'           max = 123.0
+#'         ),
+#'         allowedInstanceTypes = list(
+#'           "string"
+#'         ),
+#'         maxSpotPriceAsPercentageOfOptimalOnDemandPrice = 123
+#'       )
+#'     ),
+#'     propagateTags = "CAPACITY_PROVIDER"|"NONE",
+#'     infrastructureOptimization = list(
+#'       scaleInAfter = 123
+#'     )
 #'   ),
 #'   tags = list(
 #'     list(
@@ -114,7 +306,7 @@ NULL
 #' @rdname ecs_create_capacity_provider
 #'
 #' @aliases ecs_create_capacity_provider
-ecs_create_capacity_provider <- function(name, autoScalingGroupProvider, tags = NULL) {
+ecs_create_capacity_provider <- function(name, cluster = NULL, autoScalingGroupProvider = NULL, managedInstancesProvider = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateCapacityProvider",
     http_method = "POST",
@@ -123,7 +315,7 @@ ecs_create_capacity_provider <- function(name, autoScalingGroupProvider, tags = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ecs$create_capacity_provider_input(name = name, autoScalingGroupProvider = autoScalingGroupProvider, tags = tags)
+  input <- .ecs$create_capacity_provider_input(name = name, cluster = cluster, autoScalingGroupProvider = autoScalingGroupProvider, managedInstancesProvider = managedInstancesProvider, tags = tags)
   output <- .ecs$create_capacity_provider_output()
   config <- get_config()
   svc <- .ecs$service(config, op)
@@ -403,6 +595,289 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 }
 .ecs$operations$create_cluster <- ecs_create_cluster
 
+#' Creates an Express service that simplifies deploying containerized web
+#' applications on Amazon ECS with managed Amazon Web Services
+#' infrastructure
+#'
+#' @description
+#' Creates an Express service that simplifies deploying containerized web
+#' applications on Amazon ECS with managed Amazon Web Services
+#' infrastructure. This operation provisions and configures Application
+#' Load Balancers, target groups, security groups, and auto-scaling
+#' policies automatically.
+#' 
+#' Specify a primary container configuration with your application image
+#' and basic settings. Amazon ECS creates the necessary Amazon Web Services
+#' resources for traffic distribution, health monitoring, network access
+#' control, and capacity management.
+#' 
+#' Provide an execution role for task operations and an infrastructure role
+#' for managing Amazon Web Services resources on your behalf.
+#'
+#' @usage
+#' ecs_create_express_gateway_service(executionRoleArn,
+#'   infrastructureRoleArn, serviceName, cluster, healthCheckPath,
+#'   primaryContainer, taskRoleArn, networkConfiguration, cpu, memory,
+#'   scalingTarget, tags)
+#'
+#' @param executionRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the task execution role that grants
+#' the Amazon ECS container agent permission to make Amazon Web Services
+#' API calls on your behalf. This role is required for Amazon ECS to pull
+#' container images from Amazon ECR, send container logs to Amazon
+#' CloudWatch Logs, and retrieve sensitive data from Amazon Web Services
+#' Systems Manager Parameter Store or Amazon Web Services Secrets Manager.
+#' 
+#' The execution role must include the `AmazonECSTaskExecutionRolePolicy`
+#' managed policy or equivalent permissions. For Express services, this
+#' role is used during task startup and runtime for container management
+#' operations.
+#' @param infrastructureRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the infrastructure role that grants
+#' Amazon ECS permission to create and manage Amazon Web Services resources
+#' on your behalf for the Express service. This role is used to provision
+#' and manage Application Load Balancers, target groups, security groups,
+#' auto-scaling policies, and other Amazon Web Services infrastructure
+#' components.
+#' 
+#' The infrastructure role must include permissions for Elastic Load
+#' Balancing, Application Auto Scaling, Amazon EC2 (for security groups),
+#' and other services required for managed infrastructure. This role is
+#' only used during Express service creation, updates, and deletion
+#' operations.
+#' @param serviceName The name of the Express service. This name must be unique within the
+#' specified cluster and can contain up to 255 letters (uppercase and
+#' lowercase), numbers, underscores, and hyphens. The name is used to
+#' identify the service in the Amazon ECS console and API operations.
+#' 
+#' If you don't specify a service name, Amazon ECS generates a unique name
+#' for the service. The service name becomes part of the service ARN and
+#' cannot be changed after the service is created.
+#' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster on
+#' which to create the Express service. If you do not specify a cluster,
+#' the `default` cluster is assumed.
+#' @param healthCheckPath The path on the container that the Application Load Balancer uses for
+#' health checks. This should be a valid HTTP endpoint that returns a
+#' successful response (HTTP 200) when the application is healthy.
+#' 
+#' If not specified, the default health check path is `/ping`. The health
+#' check path must start with a forward slash and can include query
+#' parameters. Examples: `/health`, `/api/status`, `/ping?format=json`.
+#' @param primaryContainer &#91;required&#93; The primary container configuration for the Express service. This
+#' defines the main application container that will receive traffic from
+#' the Application Load Balancer.
+#' 
+#' The primary container must specify at minimum a container image. You can
+#' also configure the container port (defaults to 80), logging
+#' configuration, environment variables, secrets, and startup commands. The
+#' container image can be from Amazon ECR, Docker Hub, or any other
+#' container registry accessible to your execution role.
+#' @param taskRoleArn The Amazon Resource Name (ARN) of the IAM role that containers in this
+#' task can assume. This role allows your application code to access other
+#' Amazon Web Services services securely.
+#' 
+#' The task role is different from the execution role. While the execution
+#' role is used by the Amazon ECS agent to set up the task, the task role
+#' is used by your application code running inside the container to make
+#' Amazon Web Services API calls. If your application doesn't need to
+#' access Amazon Web Services services, you can omit this parameter.
+#' @param networkConfiguration The network configuration for the Express service tasks. This specifies
+#' the VPC subnets and security groups for the tasks.
+#' 
+#' For Express services, you can specify custom security groups and
+#' subnets. If not provided, Amazon ECS will use the default VPC
+#' configuration and create appropriate security groups automatically. The
+#' network configuration determines how your service integrates with your
+#' VPC and what network access it has.
+#' @param cpu The number of CPU units used by the task. This parameter determines the
+#' CPU allocation for each task in the Express service. The default value
+#' for an Express service is 256 (.25 vCPU).
+#' @param memory The amount of memory (in MiB) used by the task. This parameter
+#' determines the memory allocation for each task in the Express service.
+#' The default value for an express service is 512 MiB.
+#' @param scalingTarget The auto-scaling configuration for the Express service. This defines how
+#' the service automatically adjusts the number of running tasks based on
+#' demand.
+#' 
+#' You can specify the minimum and maximum number of tasks, the scaling
+#' metric (CPU utilization, memory utilization, or request count per
+#' target), and the target value for the metric. If not specified, the
+#' default target value for an Express service is 60.
+#' @param tags The metadata that you apply to the Express service to help categorize
+#' and organize it. Each tag consists of a key and an optional value. You
+#' can apply up to 50 tags to a service.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   service = list(
+#'     cluster = "string",
+#'     serviceName = "string",
+#'     serviceArn = "string",
+#'     infrastructureRoleArn = "string",
+#'     status = list(
+#'       statusCode = "ACTIVE"|"DRAINING"|"INACTIVE",
+#'       statusReason = "string"
+#'     ),
+#'     currentDeployment = "string",
+#'     activeConfigurations = list(
+#'       list(
+#'         serviceRevisionArn = "string",
+#'         executionRoleArn = "string",
+#'         taskRoleArn = "string",
+#'         cpu = "string",
+#'         memory = "string",
+#'         networkConfiguration = list(
+#'           securityGroups = list(
+#'             "string"
+#'           ),
+#'           subnets = list(
+#'             "string"
+#'           )
+#'         ),
+#'         healthCheckPath = "string",
+#'         primaryContainer = list(
+#'           image = "string",
+#'           containerPort = 123,
+#'           awsLogsConfiguration = list(
+#'             logGroup = "string",
+#'             logStreamPrefix = "string"
+#'           ),
+#'           repositoryCredentials = list(
+#'             credentialsParameter = "string"
+#'           ),
+#'           command = list(
+#'             "string"
+#'           ),
+#'           environment = list(
+#'             list(
+#'               name = "string",
+#'               value = "string"
+#'             )
+#'           ),
+#'           secrets = list(
+#'             list(
+#'               name = "string",
+#'               valueFrom = "string"
+#'             )
+#'           )
+#'         ),
+#'         scalingTarget = list(
+#'           minTaskCount = 123,
+#'           maxTaskCount = 123,
+#'           autoScalingMetric = "AVERAGE_CPU"|"AVERAGE_MEMORY"|"REQUEST_COUNT_PER_TARGET",
+#'           autoScalingTargetValue = 123
+#'         ),
+#'         ingressPaths = list(
+#'           list(
+#'             accessType = "PUBLIC"|"PRIVATE",
+#'             endpoint = "string"
+#'           )
+#'         ),
+#'         createdAt = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_express_gateway_service(
+#'   executionRoleArn = "string",
+#'   infrastructureRoleArn = "string",
+#'   serviceName = "string",
+#'   cluster = "string",
+#'   healthCheckPath = "string",
+#'   primaryContainer = list(
+#'     image = "string",
+#'     containerPort = 123,
+#'     awsLogsConfiguration = list(
+#'       logGroup = "string",
+#'       logStreamPrefix = "string"
+#'     ),
+#'     repositoryCredentials = list(
+#'       credentialsParameter = "string"
+#'     ),
+#'     command = list(
+#'       "string"
+#'     ),
+#'     environment = list(
+#'       list(
+#'         name = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     secrets = list(
+#'       list(
+#'         name = "string",
+#'         valueFrom = "string"
+#'       )
+#'     )
+#'   ),
+#'   taskRoleArn = "string",
+#'   networkConfiguration = list(
+#'     securityGroups = list(
+#'       "string"
+#'     ),
+#'     subnets = list(
+#'       "string"
+#'     )
+#'   ),
+#'   cpu = "string",
+#'   memory = "string",
+#'   scalingTarget = list(
+#'     minTaskCount = 123,
+#'     maxTaskCount = 123,
+#'     autoScalingMetric = "AVERAGE_CPU"|"AVERAGE_MEMORY"|"REQUEST_COUNT_PER_TARGET",
+#'     autoScalingTargetValue = 123
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_create_express_gateway_service
+#'
+#' @aliases ecs_create_express_gateway_service
+ecs_create_express_gateway_service <- function(executionRoleArn, infrastructureRoleArn, serviceName = NULL, cluster = NULL, healthCheckPath = NULL, primaryContainer, taskRoleArn = NULL, networkConfiguration = NULL, cpu = NULL, memory = NULL, scalingTarget = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateExpressGatewayService",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecs$create_express_gateway_service_input(executionRoleArn = executionRoleArn, infrastructureRoleArn = infrastructureRoleArn, serviceName = serviceName, cluster = cluster, healthCheckPath = healthCheckPath, primaryContainer = primaryContainer, taskRoleArn = taskRoleArn, networkConfiguration = networkConfiguration, cpu = cpu, memory = memory, scalingTarget = scalingTarget, tags = tags)
+  output <- .ecs$create_express_gateway_service_output()
+  config <- get_config()
+  svc <- .ecs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$create_express_gateway_service <- ecs_create_express_gateway_service
+
 #' Runs and maintains your desired number of tasks from a specified task
 #' definition
 #'
@@ -430,7 +905,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' You can attach Amazon EBS volumes to Amazon ECS tasks by configuring the
 #' volume when creating or updating a service. `volumeConfigurations` is
 #' only supported for REPLICA service and not DAEMON service. For more
-#' infomation, see [Amazon EBS
+#' information, see [Amazon EBS
 #' volumes](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ebs-volumes.html#ebs-volume-types)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
@@ -456,57 +931,148 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'     tasks. It also stops tasks that don't meet the placement
 #'     constraints. When using this strategy, you don't need to specify a
 #'     desired number of tasks, a task placement strategy, or use Service
-#'     Auto Scaling policies. For more information, see [Service scheduler
-#'     concepts](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html)
+#'     Auto Scaling policies. For more information, see [Amazon ECS
+#'     services](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html)
 #'     in the *Amazon Elastic Container Service Developer Guide*.
 #' 
-#' You can optionally specify a deployment configuration for your service.
-#' The deployment is initiated by changing properties. For example, the
-#' deployment might be initiated by the task definition or by your desired
-#' count of a service. You can use [`update_service`][ecs_update_service].
-#' The default value for a replica service for `minimumHealthyPercent` is
-#' 100%. The default value for a daemon service for `minimumHealthyPercent`
-#' is 0%.
+#' The deployment controller is the mechanism that determines how tasks are
+#' deployed for your service. The valid options are:
 #' 
-#' If a service uses the `ECS` deployment controller, the minimum healthy
-#' percent represents a lower limit on the number of tasks in a service
-#' that must remain in the `RUNNING` state during a deployment.
-#' Specifically, it represents it as a percentage of your desired number of
-#' tasks (rounded up to the nearest integer). This happens when any of your
-#' container instances are in the `DRAINING` state if the service contains
-#' tasks using the EC2 launch type. Using this parameter, you can deploy
-#' without using additional cluster capacity. For example, if you set your
-#' service to have desired number of four tasks and a minimum healthy
-#' percent of 50%, the scheduler might stop two existing tasks to free up
-#' cluster capacity before starting two new tasks. If they're in the
-#' `RUNNING` state, tasks for services that don't use a load balancer are
-#' considered healthy . If they're in the `RUNNING` state and reported as
-#' healthy by the load balancer, tasks for services that *do* use a load
-#' balancer are considered healthy . The default value for minimum healthy
-#' percent is 100%.
+#' -   ECS
 #' 
-#' If a service uses the `ECS` deployment controller, the **maximum
-#' percent** parameter represents an upper limit on the number of tasks in
-#' a service that are allowed in the `RUNNING` or `PENDING` state during a
-#' deployment. Specifically, it represents it as a percentage of the
-#' desired number of tasks (rounded down to the nearest integer). This
-#' happens when any of your container instances are in the `DRAINING` state
-#' if the service contains tasks using the EC2 launch type. Using this
-#' parameter, you can define the deployment batch size. For example, if
-#' your service has a desired number of four tasks and a maximum percent
-#' value of 200%, the scheduler may start four new tasks before stopping
-#' the four older tasks (provided that the cluster resources required to do
-#' this are available). The default value for maximum percent is 200%.
+#'     When you create a service which uses the `ECS` deployment
+#'     controller, you can choose between the following deployment
+#'     strategies (which you can set in the “`strategy`” field in
+#'     “`deploymentConfiguration`”): :
 #' 
-#' If a service uses either the `CODE_DEPLOY` or `EXTERNAL` deployment
-#' controller types and tasks that use the EC2 launch type, the **minimum
-#' healthy percent** and **maximum percent** values are used only to define
-#' the lower and upper limit on the number of the tasks in the service that
-#' remain in the `RUNNING` state. This is while the container instances are
-#' in the `DRAINING` state. If the tasks in the service use the Fargate
-#' launch type, the minimum healthy percent and maximum percent values
-#' aren't used. This is the case even if they're currently visible when
-#' describing your service.
+#'     -   `ROLLING`: When you create a service which uses the *rolling
+#'         update* (`ROLLING`) deployment strategy, the Amazon ECS service
+#'         scheduler replaces the currently running tasks with new tasks.
+#'         The number of tasks that Amazon ECS adds or removes from the
+#'         service during a rolling update is controlled by the service
+#'         deployment configuration. For more information, see [Deploy
+#'         Amazon ECS services by replacing
+#'         tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-type-ecs.html)
+#'         in the *Amazon Elastic Container Service Developer Guide*.
+#' 
+#'         Rolling update deployments are best suited for the following
+#'         scenarios:
+#' 
+#'         -   Gradual service updates: You need to update your service
+#'             incrementally without taking the entire service offline at
+#'             once.
+#' 
+#'         -   Limited resource requirements: You want to avoid the
+#'             additional resource costs of running two complete
+#'             environments simultaneously (as required by blue/green
+#'             deployments).
+#' 
+#'         -   Acceptable deployment time: Your application can tolerate a
+#'             longer deployment process, as rolling updates replace tasks
+#'             one by one.
+#' 
+#'         -   No need for instant roll back: Your service can tolerate a
+#'             rollback process that takes minutes rather than seconds.
+#' 
+#'         -   Simple deployment process: You prefer a straightforward
+#'             deployment approach without the complexity of managing
+#'             multiple environments, target groups, and listeners.
+#' 
+#'         -   No load balancer requirement: Your service doesn't use or
+#'             require a load balancer, Application Load Balancer, Network
+#'             Load Balancer, or Service Connect (which are required for
+#'             blue/green deployments).
+#' 
+#'         -   Stateful applications: Your application maintains state that
+#'             makes it difficult to run two parallel environments.
+#' 
+#'         -   Cost sensitivity: You want to minimize deployment costs by
+#'             not running duplicate environments during deployment.
+#' 
+#'         Rolling updates are the default deployment strategy for services
+#'         and provide a balance between deployment safety and resource
+#'         efficiency for many common application scenarios.
+#' 
+#'     -   `BLUE_GREEN`: A *blue/green* deployment strategy (`BLUE_GREEN`)
+#'         is a release methodology that reduces downtime and risk by
+#'         running two identical production environments called blue and
+#'         green. With Amazon ECS blue/green deployments, you can validate
+#'         new service revisions before directing production traffic to
+#'         them. This approach provides a safer way to deploy changes with
+#'         the ability to quickly roll back if needed. For more
+#'         information, see [Amazon ECS blue/green
+#'         deployments](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-type-blue-green.html)
+#'         in the *Amazon Elastic Container Service Developer Guide*.
+#' 
+#'         Amazon ECS blue/green deployments are best suited for the
+#'         following scenarios:
+#' 
+#'         -   Service validation: When you need to validate new service
+#'             revisions before directing production traffic to them
+#' 
+#'         -   Zero downtime: When your service requires zero-downtime
+#'             deployments
+#' 
+#'         -   Instant roll back: When you need the ability to quickly roll
+#'             back if issues are detected
+#' 
+#'         -   Load balancer requirement: When your service uses
+#'             Application Load Balancer, Network Load Balancer, or Service
+#'             Connect
+#' 
+#'     -   `LINEAR`: A *linear* deployment strategy (`LINEAR`) gradually
+#'         shifts traffic from the current production environment to a new
+#'         environment in equal percentage increments. With Amazon ECS
+#'         linear deployments, you can control the pace of traffic shifting
+#'         and validate new service revisions with increasing amounts of
+#'         production traffic.
+#' 
+#'         Linear deployments are best suited for the following scenarios:
+#' 
+#'         -   Gradual validation: When you want to gradually validate your
+#'             new service version with increasing traffic
+#' 
+#'         -   Performance monitoring: When you need time to monitor
+#'             metrics and performance during the deployment
+#' 
+#'         -   Risk minimization: When you want to minimize risk by
+#'             exposing the new version to production traffic incrementally
+#' 
+#'         -   Load balancer requirement: When your service uses
+#'             Application Load Balancer or Service Connect
+#' 
+#'     -   `CANARY`: A *canary* deployment strategy (`CANARY`) shifts a
+#'         small percentage of traffic to the new service revision first,
+#'         then shifts the remaining traffic all at once after a specified
+#'         time period. This allows you to test the new version with a
+#'         subset of users before full deployment.
+#' 
+#'         Canary deployments are best suited for the following scenarios:
+#' 
+#'         -   Feature testing: When you want to test new features with a
+#'             small subset of users before full rollout
+#' 
+#'         -   Production validation: When you need to validate performance
+#'             and functionality with real production traffic
+#' 
+#'         -   Blast radius control: When you want to minimize blast radius
+#'             if issues are discovered in the new version
+#' 
+#'         -   Load balancer requirement: When your service uses
+#'             Application Load Balancer or Service Connect
+#' 
+#' -   External
+#' 
+#'     Use a third-party deployment controller.
+#' 
+#' -   Blue/green deployment (powered by CodeDeploy)
+#' 
+#'     CodeDeploy installs an updated version of the application as a new
+#'     replacement task set and reroutes production traffic from the
+#'     original application task set to the replacement task set. The
+#'     original task set is terminated after a successful deployment. Use
+#'     this deployment controller to verify a new deployment of a service
+#'     before sending production traffic to it.
 #' 
 #' When creating a service that uses the `EXTERNAL` deployment controller,
 #' you can specify only parameters that aren't controlled at the task set
@@ -554,16 +1120,29 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' Availability
 #' Zones](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-rebalancing.html)
 #' in the *Amazon Elastic Container Service Developer Guide* .
+#' 
+#' The default behavior of `AvailabilityZoneRebalancing` differs between
+#' create and update requests:
+#' 
+#' -   For create service requests, when no value is specified for
+#'     `AvailabilityZoneRebalancing`, Amazon ECS defaults the value to
+#'     `ENABLED`.
+#' 
+#' -   For update service requests, when no value is specified for
+#'     `AvailabilityZoneRebalancing`, Amazon ECS defaults to the existing
+#'     service’s `AvailabilityZoneRebalancing` value. If the service never
+#'     had an `AvailabilityZoneRebalancing` value set, Amazon ECS treats
+#'     this as `DISABLED`.
 #' @param loadBalancers A load balancer object representing the load balancers to use with your
 #' service. For more information, see [Service load
 #' balancing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
-#' If the service uses the rolling update (`ECS`) deployment controller and
-#' using either an Application Load Balancer or Network Load Balancer, you
-#' must specify one or more target group ARNs to attach to the service. The
-#' service-linked role is required for services that use multiple target
-#' groups. For more information, see [Using service-linked roles for Amazon
+#' If the service uses the `ECS` deployment controller and using either an
+#' Application Load Balancer or Network Load Balancer, you must specify one
+#' or more target group ARNs to attach to the service. The service-linked
+#' role is required for services that use multiple target groups. For more
+#' information, see [Using service-linked roles for Amazon
 #' ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
@@ -620,8 +1199,12 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' the range of 33-126 (inclusive) are allowed.
 #' @param launchType The infrastructure that you run your service on. For more information,
 #' see [Amazon ECS launch
-#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
+#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-configuration.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
+#' 
+#' If you want to use Amazon ECS Managed Instances, you must use the
+#' `capacityProviderStrategy` request parameter and omit the `launchType`
+#' request parameter.
 #' 
 #' The `FARGATE` launch type runs your tasks on Fargate On-Demand
 #' infrastructure.
@@ -641,6 +1224,10 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' If a `launchType` is specified, the `capacityProviderStrategy` parameter
 #' must be omitted.
 #' @param capacityProviderStrategy The capacity provider strategy to use for the service.
+#' 
+#' If you want to use Amazon ECS Managed Instances, you must use the
+#' `capacityProviderStrategy` request parameter and omit the `launchType`
+#' request parameter.
 #' 
 #' If a `capacityProviderStrategy` is specified, the `launchType` parameter
 #' must be omitted. If no `capacityProviderStrategy` or `launchType` is
@@ -695,17 +1282,13 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param healthCheckGracePeriodSeconds The period of time, in seconds, that the Amazon ECS service scheduler
 #' ignores unhealthy Elastic Load Balancing, VPC Lattice, and container
-#' health checks after a task has first started. If you don't specify a
-#' health check grace period value, the default value of `0` is used. If
-#' you don't use any of the health checks, then
+#' health checks after a task has first started. If you do not specify a
+#' health check grace period value, the default value of 0 is used. If you
+#' do not use any of the health checks, then
 #' `healthCheckGracePeriodSeconds` is unused.
 #' 
-#' If your service's tasks take a while to start and respond to health
-#' checks, you can specify a health check grace period of up to
-#' 2,147,483,647 seconds (about 69 years). During that time, the Amazon ECS
-#' service scheduler ignores health check status. This grace period can
-#' prevent the service scheduler from marking tasks as unhealthy and
-#' stopping them before they have time to come up.
+#' If your service has more running tasks than desired, unhealthy tasks in
+#' the grace period might be stopped to reach the desired count.
 #' @param schedulingStrategy The scheduling strategy to use for the service. For more information,
 #' see
 #' [Services](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html).
@@ -767,8 +1350,8 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' resources](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
-#' When you use Amazon ECS managed tags, you need to set the
-#' `propagateTags` request parameter.
+#' When you use Amazon ECS managed tags, you must set the `propagateTags`
+#' request parameter.
 #' @param propagateTags Specifies whether to propagate the tags from the task definition to the
 #' task. If no value is specified, the tags aren't propagated. Tags can
 #' only be propagated to the task during task creation. To add tags to a
@@ -814,7 +1397,13 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'         targetGroupArn = "string",
 #'         loadBalancerName = "string",
 #'         containerName = "string",
-#'         containerPort = 123
+#'         containerPort = 123,
+#'         advancedConfiguration = list(
+#'           alternateTargetGroupArn = "string",
+#'           productionListenerRule = "string",
+#'           testListenerRule = "string",
+#'           roleArn = "string"
+#'         )
 #'       )
 #'     ),
 #'     serviceRegistries = list(
@@ -829,7 +1418,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'     desiredCount = 123,
 #'     runningCount = 123,
 #'     pendingCount = 123,
-#'     launchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'     launchType = "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES",
 #'     capacityProviderStrategy = list(
 #'       list(
 #'         capacityProvider = "string",
@@ -853,6 +1442,26 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'         ),
 #'         rollback = TRUE|FALSE,
 #'         enable = TRUE|FALSE
+#'       ),
+#'       strategy = "ROLLING"|"BLUE_GREEN"|"LINEAR"|"CANARY",
+#'       bakeTimeInMinutes = 123,
+#'       lifecycleHooks = list(
+#'         list(
+#'           hookTargetArn = "string",
+#'           roleArn = "string",
+#'           lifecycleStages = list(
+#'             "RECONCILE_SERVICE"|"PRE_SCALE_UP"|"POST_SCALE_UP"|"TEST_TRAFFIC_SHIFT"|"POST_TEST_TRAFFIC_SHIFT"|"PRODUCTION_TRAFFIC_SHIFT"|"POST_PRODUCTION_TRAFFIC_SHIFT"
+#'           ),
+#'           hookDetails = list()
+#'         )
+#'       ),
+#'       linearConfiguration = list(
+#'         stepPercent = 123.0,
+#'         stepBakeTimeInMinutes = 123
+#'       ),
+#'       canaryConfiguration = list(
+#'         canaryPercent = 123.0,
+#'         canaryBakeTimeInMinutes = 123
 #'       )
 #'     ),
 #'     taskSets = list(
@@ -874,7 +1483,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'         updatedAt = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
-#'         launchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'         launchType = "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES",
 #'         capacityProviderStrategy = list(
 #'           list(
 #'             capacityProvider = "string",
@@ -900,7 +1509,13 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'             targetGroupArn = "string",
 #'             loadBalancerName = "string",
 #'             containerName = "string",
-#'             containerPort = 123
+#'             containerPort = 123,
+#'             advancedConfiguration = list(
+#'               alternateTargetGroupArn = "string",
+#'               productionListenerRule = "string",
+#'               testListenerRule = "string",
+#'               roleArn = "string"
+#'             )
 #'           )
 #'         ),
 #'         serviceRegistries = list(
@@ -952,7 +1567,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'             base = 123
 #'           )
 #'         ),
-#'         launchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'         launchType = "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES",
 #'         platformVersion = "string",
 #'         platformFamily = "string",
 #'         networkConfiguration = list(
@@ -978,7 +1593,15 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'               clientAliases = list(
 #'                 list(
 #'                   port = 123,
-#'                   dnsName = "string"
+#'                   dnsName = "string",
+#'                   testTrafficRules = list(
+#'                     header = list(
+#'                       name = "string",
+#'                       value = list(
+#'                         exact = "string"
+#'                       )
+#'                     )
+#'                   )
 #'                 )
 #'               ),
 #'               ingressPortOverride = 123,
@@ -1006,6 +1629,10 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'                 valueFrom = "string"
 #'               )
 #'             )
+#'           ),
+#'           accessLogConfiguration = list(
+#'             format = "TEXT"|"JSON",
+#'             includeQueryParameters = "DISABLED"|"ENABLED"
 #'           )
 #'         ),
 #'         serviceConnectResources = list(
@@ -1068,6 +1695,15 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
+#'     currentServiceDeployment = "string",
+#'     currentServiceRevisions = list(
+#'       list(
+#'         arn = "string",
+#'         requestedTaskCount = 123,
+#'         runningTaskCount = 123,
+#'         pendingTaskCount = 123
+#'       )
+#'     ),
 #'     placementConstraints = list(
 #'       list(
 #'         type = "distinctInstance"|"memberOf",
@@ -1106,7 +1742,8 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'     enableECSManagedTags = TRUE|FALSE,
 #'     propagateTags = "TASK_DEFINITION"|"SERVICE"|"NONE",
 #'     enableExecuteCommand = TRUE|FALSE,
-#'     availabilityZoneRebalancing = "ENABLED"|"DISABLED"
+#'     availabilityZoneRebalancing = "ENABLED"|"DISABLED",
+#'     resourceManagementType = "CUSTOMER"|"ECS"
 #'   )
 #' )
 #' ```
@@ -1123,7 +1760,13 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'       targetGroupArn = "string",
 #'       loadBalancerName = "string",
 #'       containerName = "string",
-#'       containerPort = 123
+#'       containerPort = 123,
+#'       advancedConfiguration = list(
+#'         alternateTargetGroupArn = "string",
+#'         productionListenerRule = "string",
+#'         testListenerRule = "string",
+#'         roleArn = "string"
+#'       )
 #'     )
 #'   ),
 #'   serviceRegistries = list(
@@ -1136,7 +1779,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'   ),
 #'   desiredCount = 123,
 #'   clientToken = "string",
-#'   launchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'   launchType = "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES",
 #'   capacityProviderStrategy = list(
 #'     list(
 #'       capacityProvider = "string",
@@ -1159,6 +1802,26 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'       ),
 #'       rollback = TRUE|FALSE,
 #'       enable = TRUE|FALSE
+#'     ),
+#'     strategy = "ROLLING"|"BLUE_GREEN"|"LINEAR"|"CANARY",
+#'     bakeTimeInMinutes = 123,
+#'     lifecycleHooks = list(
+#'       list(
+#'         hookTargetArn = "string",
+#'         roleArn = "string",
+#'         lifecycleStages = list(
+#'           "RECONCILE_SERVICE"|"PRE_SCALE_UP"|"POST_SCALE_UP"|"TEST_TRAFFIC_SHIFT"|"POST_TEST_TRAFFIC_SHIFT"|"PRODUCTION_TRAFFIC_SHIFT"|"POST_PRODUCTION_TRAFFIC_SHIFT"
+#'         ),
+#'         hookDetails = list()
+#'       )
+#'     ),
+#'     linearConfiguration = list(
+#'       stepPercent = 123.0,
+#'       stepBakeTimeInMinutes = 123
+#'     ),
+#'     canaryConfiguration = list(
+#'       canaryPercent = 123.0,
+#'       canaryBakeTimeInMinutes = 123
 #'     )
 #'   ),
 #'   placementConstraints = list(
@@ -1208,7 +1871,15 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'         clientAliases = list(
 #'           list(
 #'             port = 123,
-#'             dnsName = "string"
+#'             dnsName = "string",
+#'             testTrafficRules = list(
+#'               header = list(
+#'                 name = "string",
+#'                 value = list(
+#'                   exact = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         ingressPortOverride = 123,
@@ -1236,6 +1907,10 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'           valueFrom = "string"
 #'         )
 #'       )
+#'     ),
+#'     accessLogConfiguration = list(
+#'       format = "TEXT"|"JSON",
+#'       includeQueryParameters = "DISABLED"|"ENABLED"
 #'     )
 #'   ),
 #'   volumeConfigurations = list(
@@ -1375,7 +2050,7 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #' discovery](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
 #' @param launchType The launch type that new tasks in the task set uses. For more
 #' information, see [Amazon ECS launch
-#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
+#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-configuration.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
 #' If a `launchType` is specified, the `capacityProviderStrategy` parameter
@@ -1469,7 +2144,7 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     launchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'     launchType = "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES",
 #'     capacityProviderStrategy = list(
 #'       list(
 #'         capacityProvider = "string",
@@ -1495,7 +2170,13 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #'         targetGroupArn = "string",
 #'         loadBalancerName = "string",
 #'         containerName = "string",
-#'         containerPort = 123
+#'         containerPort = 123,
+#'         advancedConfiguration = list(
+#'           alternateTargetGroupArn = "string",
+#'           productionListenerRule = "string",
+#'           testListenerRule = "string",
+#'           roleArn = "string"
+#'         )
 #'       )
 #'     ),
 #'     serviceRegistries = list(
@@ -1550,7 +2231,13 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #'       targetGroupArn = "string",
 #'       loadBalancerName = "string",
 #'       containerName = "string",
-#'       containerPort = 123
+#'       containerPort = 123,
+#'       advancedConfiguration = list(
+#'         alternateTargetGroupArn = "string",
+#'         productionListenerRule = "string",
+#'         testListenerRule = "string",
+#'         roleArn = "string"
+#'       )
 #'     )
 #'   ),
 #'   serviceRegistries = list(
@@ -1561,7 +2248,7 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #'       containerPort = 123
 #'     )
 #'   ),
-#'   launchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'   launchType = "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES",
 #'   capacityProviderStrategy = list(
 #'     list(
 #'       capacityProvider = "string",
@@ -1626,18 +2313,21 @@ ecs_create_task_set <- function(service, cluster, externalId = NULL, taskDefinit
 #' for your Amazon ECS container instances is affected. If `awsvpcTrunking`
 #' is specified, the ENI limit for your Amazon ECS container instances is
 #' affected.
-#' @param principalArn The Amazon Resource Name (ARN) of the principal. It can be an user,
-#' role, or the root user. If you specify the root user, it disables the
-#' account setting for all users, roles, and the root user of the account
-#' unless a user or role explicitly overrides these settings. If this field
-#' is omitted, the setting is changed only for the authenticated user.
+#' @param principalArn The Amazon Resource Name (ARN) of the principal. It can be a user, role,
+#' or the root user. If you specify the root user, it disables the account
+#' setting for all users, roles, and the root user of the account unless a
+#' user or role explicitly overrides these settings. If this field is
+#' omitted, the setting is changed only for the authenticated user.
+#' 
+#' In order to use this parameter, you must be the root user, or the
+#' principal.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   setting = list(
-#'     name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate"|"defaultLogDriverMode",
+#'     name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate"|"defaultLogDriverMode"|"fargateEventWindows",
 #'     value = "string",
 #'     principalArn = "string",
 #'     type = "user"|"aws_managed"
@@ -1648,7 +2338,7 @@ ecs_create_task_set <- function(service, cluster, externalId = NULL, taskDefinit
 #' @section Request syntax:
 #' ```
 #' svc$delete_account_setting(
-#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate"|"defaultLogDriverMode",
+#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate"|"defaultLogDriverMode"|"fargateEventWindows",
 #'   principalArn = "string"
 #' )
 #' ```
@@ -1789,10 +2479,13 @@ ecs_delete_attributes <- function(cluster = NULL, attributes) {
 #' or delete the cluster.
 #'
 #' @usage
-#' ecs_delete_capacity_provider(capacityProvider)
+#' ecs_delete_capacity_provider(capacityProvider, cluster)
 #'
 #' @param capacityProvider &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the capacity
 #' provider to delete.
+#' @param cluster The name of the cluster that contains the capacity provider to delete.
+#' Managed instances capacity providers are cluster-scoped and can only be
+#' deleted from their associated cluster.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1801,7 +2494,8 @@ ecs_delete_attributes <- function(cluster = NULL, attributes) {
 #'   capacityProvider = list(
 #'     capacityProviderArn = "string",
 #'     name = "string",
-#'     status = "ACTIVE"|"INACTIVE",
+#'     cluster = "string",
+#'     status = "PROVISIONING"|"ACTIVE"|"DEPROVISIONING"|"INACTIVE",
 #'     autoScalingGroupProvider = list(
 #'       autoScalingGroupArn = "string",
 #'       managedScaling = list(
@@ -1814,14 +2508,107 @@ ecs_delete_attributes <- function(cluster = NULL, attributes) {
 #'       managedTerminationProtection = "ENABLED"|"DISABLED",
 #'       managedDraining = "ENABLED"|"DISABLED"
 #'     ),
-#'     updateStatus = "DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
+#'     managedInstancesProvider = list(
+#'       infrastructureRoleArn = "string",
+#'       instanceLaunchTemplate = list(
+#'         ec2InstanceProfileArn = "string",
+#'         networkConfiguration = list(
+#'           subnets = list(
+#'             "string"
+#'           ),
+#'           securityGroups = list(
+#'             "string"
+#'           )
+#'         ),
+#'         storageConfiguration = list(
+#'           storageSizeGiB = 123
+#'         ),
+#'         monitoring = "BASIC"|"DETAILED",
+#'         capacityOptionType = "ON_DEMAND"|"SPOT",
+#'         instanceRequirements = list(
+#'           vCpuCount = list(
+#'             min = 123,
+#'             max = 123
+#'           ),
+#'           memoryMiB = list(
+#'             min = 123,
+#'             max = 123
+#'           ),
+#'           cpuManufacturers = list(
+#'             "intel"|"amd"|"amazon-web-services"
+#'           ),
+#'           memoryGiBPerVCpu = list(
+#'             min = 123.0,
+#'             max = 123.0
+#'           ),
+#'           excludedInstanceTypes = list(
+#'             "string"
+#'           ),
+#'           instanceGenerations = list(
+#'             "current"|"previous"
+#'           ),
+#'           spotMaxPricePercentageOverLowestPrice = 123,
+#'           onDemandMaxPricePercentageOverLowestPrice = 123,
+#'           bareMetal = "included"|"required"|"excluded",
+#'           burstablePerformance = "included"|"required"|"excluded",
+#'           requireHibernateSupport = TRUE|FALSE,
+#'           networkInterfaceCount = list(
+#'             min = 123,
+#'             max = 123
+#'           ),
+#'           localStorage = "included"|"required"|"excluded",
+#'           localStorageTypes = list(
+#'             "hdd"|"ssd"
+#'           ),
+#'           totalLocalStorageGB = list(
+#'             min = 123.0,
+#'             max = 123.0
+#'           ),
+#'           baselineEbsBandwidthMbps = list(
+#'             min = 123,
+#'             max = 123
+#'           ),
+#'           acceleratorTypes = list(
+#'             "gpu"|"fpga"|"inference"
+#'           ),
+#'           acceleratorCount = list(
+#'             min = 123,
+#'             max = 123
+#'           ),
+#'           acceleratorManufacturers = list(
+#'             "amazon-web-services"|"amd"|"nvidia"|"xilinx"|"habana"
+#'           ),
+#'           acceleratorNames = list(
+#'             "a100"|"inferentia"|"k520"|"k80"|"m60"|"radeon-pro-v520"|"t4"|"vu9p"|"v100"|"a10g"|"h100"|"t4g"
+#'           ),
+#'           acceleratorTotalMemoryMiB = list(
+#'             min = 123,
+#'             max = 123
+#'           ),
+#'           networkBandwidthGbps = list(
+#'             min = 123.0,
+#'             max = 123.0
+#'           ),
+#'           allowedInstanceTypes = list(
+#'             "string"
+#'           ),
+#'           maxSpotPriceAsPercentageOfOptimalOnDemandPrice = 123
+#'         )
+#'       ),
+#'       propagateTags = "CAPACITY_PROVIDER"|"NONE",
+#'       infrastructureOptimization = list(
+#'         scaleInAfter = 123
+#'       )
+#'     ),
+#'     updateStatus = "CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED"|"DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
 #'     updateStatusReason = "string",
 #'     tags = list(
 #'       list(
 #'         key = "string",
 #'         value = "string"
 #'       )
-#'     )
+#'     ),
+#'     type = "EC2_AUTOSCALING"|"MANAGED_INSTANCES"|"FARGATE"|"FARGATE_SPOT"
 #'   )
 #' )
 #' ```
@@ -1829,7 +2616,8 @@ ecs_delete_attributes <- function(cluster = NULL, attributes) {
 #' @section Request syntax:
 #' ```
 #' svc$delete_capacity_provider(
-#'   capacityProvider = "string"
+#'   capacityProvider = "string",
+#'   cluster = "string"
 #' )
 #' ```
 #'
@@ -1838,7 +2626,7 @@ ecs_delete_attributes <- function(cluster = NULL, attributes) {
 #' @rdname ecs_delete_capacity_provider
 #'
 #' @aliases ecs_delete_capacity_provider
-ecs_delete_capacity_provider <- function(capacityProvider) {
+ecs_delete_capacity_provider <- function(capacityProvider, cluster = NULL) {
   op <- new_operation(
     name = "DeleteCapacityProvider",
     http_method = "POST",
@@ -1847,7 +2635,7 @@ ecs_delete_capacity_provider <- function(capacityProvider) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ecs$delete_capacity_provider_input(capacityProvider = capacityProvider)
+  input <- .ecs$delete_capacity_provider_input(capacityProvider = capacityProvider, cluster = cluster)
   output <- .ecs$delete_capacity_provider_output()
   config <- get_config()
   svc <- .ecs$service(config, op)
@@ -1995,6 +2783,149 @@ ecs_delete_cluster <- function(cluster) {
 }
 .ecs$operations$delete_cluster <- ecs_delete_cluster
 
+#' Deletes an Express service and removes all associated Amazon Web
+#' Services resources
+#'
+#' @description
+#' Deletes an Express service and removes all associated Amazon Web
+#' Services resources. This operation stops service tasks, removes the
+#' Application Load Balancer, target groups, security groups, auto-scaling
+#' policies, and other managed infrastructure components.
+#' 
+#' The service enters a `DRAINING` state where existing tasks complete
+#' current requests without starting new tasks. After all tasks stop, the
+#' service and infrastructure are permanently removed.
+#' 
+#' This operation cannot be reversed. Back up important data and verify the
+#' service is no longer needed before deletion.
+#'
+#' @usage
+#' ecs_delete_express_gateway_service(serviceArn)
+#'
+#' @param serviceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Express service to delete. The ARN
+#' uniquely identifies the service within your Amazon Web Services account
+#' and region.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   service = list(
+#'     cluster = "string",
+#'     serviceName = "string",
+#'     serviceArn = "string",
+#'     infrastructureRoleArn = "string",
+#'     status = list(
+#'       statusCode = "ACTIVE"|"DRAINING"|"INACTIVE",
+#'       statusReason = "string"
+#'     ),
+#'     currentDeployment = "string",
+#'     activeConfigurations = list(
+#'       list(
+#'         serviceRevisionArn = "string",
+#'         executionRoleArn = "string",
+#'         taskRoleArn = "string",
+#'         cpu = "string",
+#'         memory = "string",
+#'         networkConfiguration = list(
+#'           securityGroups = list(
+#'             "string"
+#'           ),
+#'           subnets = list(
+#'             "string"
+#'           )
+#'         ),
+#'         healthCheckPath = "string",
+#'         primaryContainer = list(
+#'           image = "string",
+#'           containerPort = 123,
+#'           awsLogsConfiguration = list(
+#'             logGroup = "string",
+#'             logStreamPrefix = "string"
+#'           ),
+#'           repositoryCredentials = list(
+#'             credentialsParameter = "string"
+#'           ),
+#'           command = list(
+#'             "string"
+#'           ),
+#'           environment = list(
+#'             list(
+#'               name = "string",
+#'               value = "string"
+#'             )
+#'           ),
+#'           secrets = list(
+#'             list(
+#'               name = "string",
+#'               valueFrom = "string"
+#'             )
+#'           )
+#'         ),
+#'         scalingTarget = list(
+#'           minTaskCount = 123,
+#'           maxTaskCount = 123,
+#'           autoScalingMetric = "AVERAGE_CPU"|"AVERAGE_MEMORY"|"REQUEST_COUNT_PER_TARGET",
+#'           autoScalingTargetValue = 123
+#'         ),
+#'         ingressPaths = list(
+#'           list(
+#'             accessType = "PUBLIC"|"PRIVATE",
+#'             endpoint = "string"
+#'           )
+#'         ),
+#'         createdAt = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_express_gateway_service(
+#'   serviceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_delete_express_gateway_service
+#'
+#' @aliases ecs_delete_express_gateway_service
+ecs_delete_express_gateway_service <- function(serviceArn) {
+  op <- new_operation(
+    name = "DeleteExpressGatewayService",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecs$delete_express_gateway_service_input(serviceArn = serviceArn)
+  output <- .ecs$delete_express_gateway_service_output()
+  config <- get_config()
+  svc <- .ecs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$delete_express_gateway_service <- ecs_delete_express_gateway_service
+
 #' Deletes a specified service within a cluster
 #'
 #' @description
@@ -2043,7 +2974,13 @@ ecs_delete_cluster <- function(cluster) {
 #'         targetGroupArn = "string",
 #'         loadBalancerName = "string",
 #'         containerName = "string",
-#'         containerPort = 123
+#'         containerPort = 123,
+#'         advancedConfiguration = list(
+#'           alternateTargetGroupArn = "string",
+#'           productionListenerRule = "string",
+#'           testListenerRule = "string",
+#'           roleArn = "string"
+#'         )
 #'       )
 #'     ),
 #'     serviceRegistries = list(
@@ -2058,7 +2995,7 @@ ecs_delete_cluster <- function(cluster) {
 #'     desiredCount = 123,
 #'     runningCount = 123,
 #'     pendingCount = 123,
-#'     launchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'     launchType = "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES",
 #'     capacityProviderStrategy = list(
 #'       list(
 #'         capacityProvider = "string",
@@ -2082,6 +3019,26 @@ ecs_delete_cluster <- function(cluster) {
 #'         ),
 #'         rollback = TRUE|FALSE,
 #'         enable = TRUE|FALSE
+#'       ),
+#'       strategy = "ROLLING"|"BLUE_GREEN"|"LINEAR"|"CANARY",
+#'       bakeTimeInMinutes = 123,
+#'       lifecycleHooks = list(
+#'         list(
+#'           hookTargetArn = "string",
+#'           roleArn = "string",
+#'           lifecycleStages = list(
+#'             "RECONCILE_SERVICE"|"PRE_SCALE_UP"|"POST_SCALE_UP"|"TEST_TRAFFIC_SHIFT"|"POST_TEST_TRAFFIC_SHIFT"|"PRODUCTION_TRAFFIC_SHIFT"|"POST_PRODUCTION_TRAFFIC_SHIFT"
+#'           ),
+#'           hookDetails = list()
+#'         )
+#'       ),
+#'       linearConfiguration = list(
+#'         stepPercent = 123.0,
+#'         stepBakeTimeInMinutes = 123
+#'       ),
+#'       canaryConfiguration = list(
+#'         canaryPercent = 123.0,
+#'         canaryBakeTimeInMinutes = 123
 #'       )
 #'     ),
 #'     taskSets = list(
@@ -2103,7 +3060,7 @@ ecs_delete_cluster <- function(cluster) {
 #'         updatedAt = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
-#'         launchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'         launchType = "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES",
 #'         capacityProviderStrategy = list(
 #'           list(
 #'             capacityProvider = "string",
@@ -2129,7 +3086,13 @@ ecs_delete_cluster <- function(cluster) {
 #'             targetGroupArn = "string",
 #'             loadBalancerName = "string",
 #'             containerName = "string",
-#'             containerPort = 123
+#'             containerPort = 123,
+#'             advancedConfiguration = list(
+#'               alternateTargetGroupArn = "string",
+#'               productionListenerRule = "string",
+#'               testListenerRule = "string",
+#'               roleArn = "string"
+#'             )
 #'           )
 #'         ),
 #'         serviceRegistries = list(
@@ -2181,7 +3144,7 @@ ecs_delete_cluster <- function(cluster) {
 #'             base = 123
 #'           )
 #'         ),
-#'         launchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'         launchType = "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES",
 #'         platformVersion = "string",
 #'         platformFamily = "string",
 #'         networkConfiguration = list(
@@ -2207,7 +3170,15 @@ ecs_delete_cluster <- function(cluster) {
 #'               clientAliases = list(
 #'                 list(
 #'                   port = 123,
-#'                   dnsName = "string"
+#'                   dnsName = "string",
+#'                   testTrafficRules = list(
+#'                     header = list(
+#'                       name = "string",
+#'                       value = list(
+#'                         exact = "string"
+#'                       )
+#'                     )
+#'                   )
 #'                 )
 #'               ),
 #'               ingressPortOverride = 123,
@@ -2235,6 +3206,10 @@ ecs_delete_cluster <- function(cluster) {
 #'                 valueFrom = "string"
 #'               )
 #'             )
+#'           ),
+#'           accessLogConfiguration = list(
+#'             format = "TEXT"|"JSON",
+#'             includeQueryParameters = "DISABLED"|"ENABLED"
 #'           )
 #'         ),
 #'         serviceConnectResources = list(
@@ -2297,6 +3272,15 @@ ecs_delete_cluster <- function(cluster) {
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
+#'     currentServiceDeployment = "string",
+#'     currentServiceRevisions = list(
+#'       list(
+#'         arn = "string",
+#'         requestedTaskCount = 123,
+#'         runningTaskCount = 123,
+#'         pendingTaskCount = 123
+#'       )
+#'     ),
 #'     placementConstraints = list(
 #'       list(
 #'         type = "distinctInstance"|"memberOf",
@@ -2335,7 +3319,8 @@ ecs_delete_cluster <- function(cluster) {
 #'     enableECSManagedTags = TRUE|FALSE,
 #'     propagateTags = "TASK_DEFINITION"|"SERVICE"|"NONE",
 #'     enableExecuteCommand = TRUE|FALSE,
-#'     availabilityZoneRebalancing = "ENABLED"|"DISABLED"
+#'     availabilityZoneRebalancing = "ENABLED"|"DISABLED",
+#'     resourceManagementType = "CUSTOMER"|"ECS"
 #'   )
 #' )
 #' ```
@@ -2674,14 +3659,14 @@ ecs_delete_service <- function(cluster = NULL, service, force = NULL) {
 #'         )
 #'       ),
 #'       compatibilities = list(
-#'         "EC2"|"FARGATE"|"EXTERNAL"
+#'         "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES"
 #'       ),
 #'       runtimePlatform = list(
 #'         cpuArchitecture = "X86_64"|"ARM64",
-#'         operatingSystemFamily = "WINDOWS_SERVER_2019_FULL"|"WINDOWS_SERVER_2019_CORE"|"WINDOWS_SERVER_2016_FULL"|"WINDOWS_SERVER_2004_CORE"|"WINDOWS_SERVER_2022_CORE"|"WINDOWS_SERVER_2022_FULL"|"WINDOWS_SERVER_20H2_CORE"|"LINUX"
+#'         operatingSystemFamily = "WINDOWS_SERVER_2019_FULL"|"WINDOWS_SERVER_2019_CORE"|"WINDOWS_SERVER_2016_FULL"|"WINDOWS_SERVER_2004_CORE"|"WINDOWS_SERVER_2022_CORE"|"WINDOWS_SERVER_2022_FULL"|"WINDOWS_SERVER_2025_CORE"|"WINDOWS_SERVER_2025_FULL"|"WINDOWS_SERVER_20H2_CORE"|"LINUX"
 #'       ),
 #'       requiresCompatibilities = list(
-#'         "EC2"|"FARGATE"|"EXTERNAL"
+#'         "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES"
 #'       ),
 #'       cpu = "string",
 #'       memory = "string",
@@ -2802,7 +3787,7 @@ ecs_delete_task_definitions <- function(taskDefinitions) {
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     launchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'     launchType = "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES",
 #'     capacityProviderStrategy = list(
 #'       list(
 #'         capacityProvider = "string",
@@ -2828,7 +3813,13 @@ ecs_delete_task_definitions <- function(taskDefinitions) {
 #'         targetGroupArn = "string",
 #'         loadBalancerName = "string",
 #'         containerName = "string",
-#'         containerPort = 123
+#'         containerPort = 123,
+#'         advancedConfiguration = list(
+#'           alternateTargetGroupArn = "string",
+#'           productionListenerRule = "string",
+#'           testListenerRule = "string",
+#'           roleArn = "string"
+#'         )
 #'       )
 #'     ),
 #'     serviceRegistries = list(
@@ -3363,14 +4354,14 @@ ecs_deregister_container_instance <- function(cluster = NULL, containerInstance,
 #'       )
 #'     ),
 #'     compatibilities = list(
-#'       "EC2"|"FARGATE"|"EXTERNAL"
+#'       "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES"
 #'     ),
 #'     runtimePlatform = list(
 #'       cpuArchitecture = "X86_64"|"ARM64",
-#'       operatingSystemFamily = "WINDOWS_SERVER_2019_FULL"|"WINDOWS_SERVER_2019_CORE"|"WINDOWS_SERVER_2016_FULL"|"WINDOWS_SERVER_2004_CORE"|"WINDOWS_SERVER_2022_CORE"|"WINDOWS_SERVER_2022_FULL"|"WINDOWS_SERVER_20H2_CORE"|"LINUX"
+#'       operatingSystemFamily = "WINDOWS_SERVER_2019_FULL"|"WINDOWS_SERVER_2019_CORE"|"WINDOWS_SERVER_2016_FULL"|"WINDOWS_SERVER_2004_CORE"|"WINDOWS_SERVER_2022_CORE"|"WINDOWS_SERVER_2022_FULL"|"WINDOWS_SERVER_2025_CORE"|"WINDOWS_SERVER_2025_FULL"|"WINDOWS_SERVER_20H2_CORE"|"LINUX"
 #'     ),
 #'     requiresCompatibilities = list(
-#'       "EC2"|"FARGATE"|"EXTERNAL"
+#'       "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES"
 #'     ),
 #'     cpu = "string",
 #'     memory = "string",
@@ -3444,12 +4435,15 @@ ecs_deregister_task_definition <- function(taskDefinition) {
 #' Describes one or more of your capacity providers.
 #'
 #' @usage
-#' ecs_describe_capacity_providers(capacityProviders, include, maxResults,
-#'   nextToken)
+#' ecs_describe_capacity_providers(capacityProviders, cluster, include,
+#'   maxResults, nextToken)
 #'
 #' @param capacityProviders The short name or full Amazon Resource Name (ARN) of one or more
 #' capacity providers. Up to `100` capacity providers can be described in
 #' an action.
+#' @param cluster The name of the cluster to describe capacity providers for. When
+#' specified, only capacity providers associated with this cluster are
+#' returned, including Amazon ECS Managed Instances capacity providers.
 #' @param include Specifies whether or not you want to see the resource tags for the
 #' capacity provider. If `TAGS` is specified, the tags are included in the
 #' response. If this field is omitted, tags aren't included in the
@@ -3484,7 +4478,8 @@ ecs_deregister_task_definition <- function(taskDefinition) {
 #'     list(
 #'       capacityProviderArn = "string",
 #'       name = "string",
-#'       status = "ACTIVE"|"INACTIVE",
+#'       cluster = "string",
+#'       status = "PROVISIONING"|"ACTIVE"|"DEPROVISIONING"|"INACTIVE",
 #'       autoScalingGroupProvider = list(
 #'         autoScalingGroupArn = "string",
 #'         managedScaling = list(
@@ -3497,14 +4492,107 @@ ecs_deregister_task_definition <- function(taskDefinition) {
 #'         managedTerminationProtection = "ENABLED"|"DISABLED",
 #'         managedDraining = "ENABLED"|"DISABLED"
 #'       ),
-#'       updateStatus = "DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
+#'       managedInstancesProvider = list(
+#'         infrastructureRoleArn = "string",
+#'         instanceLaunchTemplate = list(
+#'           ec2InstanceProfileArn = "string",
+#'           networkConfiguration = list(
+#'             subnets = list(
+#'               "string"
+#'             ),
+#'             securityGroups = list(
+#'               "string"
+#'             )
+#'           ),
+#'           storageConfiguration = list(
+#'             storageSizeGiB = 123
+#'           ),
+#'           monitoring = "BASIC"|"DETAILED",
+#'           capacityOptionType = "ON_DEMAND"|"SPOT",
+#'           instanceRequirements = list(
+#'             vCpuCount = list(
+#'               min = 123,
+#'               max = 123
+#'             ),
+#'             memoryMiB = list(
+#'               min = 123,
+#'               max = 123
+#'             ),
+#'             cpuManufacturers = list(
+#'               "intel"|"amd"|"amazon-web-services"
+#'             ),
+#'             memoryGiBPerVCpu = list(
+#'               min = 123.0,
+#'               max = 123.0
+#'             ),
+#'             excludedInstanceTypes = list(
+#'               "string"
+#'             ),
+#'             instanceGenerations = list(
+#'               "current"|"previous"
+#'             ),
+#'             spotMaxPricePercentageOverLowestPrice = 123,
+#'             onDemandMaxPricePercentageOverLowestPrice = 123,
+#'             bareMetal = "included"|"required"|"excluded",
+#'             burstablePerformance = "included"|"required"|"excluded",
+#'             requireHibernateSupport = TRUE|FALSE,
+#'             networkInterfaceCount = list(
+#'               min = 123,
+#'               max = 123
+#'             ),
+#'             localStorage = "included"|"required"|"excluded",
+#'             localStorageTypes = list(
+#'               "hdd"|"ssd"
+#'             ),
+#'             totalLocalStorageGB = list(
+#'               min = 123.0,
+#'               max = 123.0
+#'             ),
+#'             baselineEbsBandwidthMbps = list(
+#'               min = 123,
+#'               max = 123
+#'             ),
+#'             acceleratorTypes = list(
+#'               "gpu"|"fpga"|"inference"
+#'             ),
+#'             acceleratorCount = list(
+#'               min = 123,
+#'               max = 123
+#'             ),
+#'             acceleratorManufacturers = list(
+#'               "amazon-web-services"|"amd"|"nvidia"|"xilinx"|"habana"
+#'             ),
+#'             acceleratorNames = list(
+#'               "a100"|"inferentia"|"k520"|"k80"|"m60"|"radeon-pro-v520"|"t4"|"vu9p"|"v100"|"a10g"|"h100"|"t4g"
+#'             ),
+#'             acceleratorTotalMemoryMiB = list(
+#'               min = 123,
+#'               max = 123
+#'             ),
+#'             networkBandwidthGbps = list(
+#'               min = 123.0,
+#'               max = 123.0
+#'             ),
+#'             allowedInstanceTypes = list(
+#'               "string"
+#'             ),
+#'             maxSpotPriceAsPercentageOfOptimalOnDemandPrice = 123
+#'           )
+#'         ),
+#'         propagateTags = "CAPACITY_PROVIDER"|"NONE",
+#'         infrastructureOptimization = list(
+#'           scaleInAfter = 123
+#'         )
+#'       ),
+#'       updateStatus = "CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED"|"DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
 #'       updateStatusReason = "string",
 #'       tags = list(
 #'         list(
 #'           key = "string",
 #'           value = "string"
 #'         )
-#'       )
+#'       ),
+#'       type = "EC2_AUTOSCALING"|"MANAGED_INSTANCES"|"FARGATE"|"FARGATE_SPOT"
 #'     )
 #'   ),
 #'   failures = list(
@@ -3524,6 +4612,7 @@ ecs_deregister_task_definition <- function(taskDefinition) {
 #'   capacityProviders = list(
 #'     "string"
 #'   ),
+#'   cluster = "string",
 #'   include = list(
 #'     "TAGS"
 #'   ),
@@ -3537,7 +4626,7 @@ ecs_deregister_task_definition <- function(taskDefinition) {
 #' @rdname ecs_describe_capacity_providers
 #'
 #' @aliases ecs_describe_capacity_providers
-ecs_describe_capacity_providers <- function(capacityProviders = NULL, include = NULL, maxResults = NULL, nextToken = NULL) {
+ecs_describe_capacity_providers <- function(capacityProviders = NULL, cluster = NULL, include = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeCapacityProviders",
     http_method = "POST",
@@ -3546,7 +4635,7 @@ ecs_describe_capacity_providers <- function(capacityProviders = NULL, include = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ecs$describe_capacity_providers_input(capacityProviders = capacityProviders, include = include, maxResults = maxResults, nextToken = nextToken)
+  input <- .ecs$describe_capacity_providers_input(capacityProviders = capacityProviders, cluster = cluster, include = include, maxResults = maxResults, nextToken = nextToken)
   output <- .ecs$describe_capacity_providers_output()
   config <- get_config()
   svc <- .ecs$service(config, op)
@@ -3898,6 +4987,155 @@ ecs_describe_container_instances <- function(cluster = NULL, containerInstances,
 }
 .ecs$operations$describe_container_instances <- ecs_describe_container_instances
 
+#' Retrieves detailed information about an Express service, including
+#' current status, configuration, managed infrastructure, and service
+#' revisions
+#'
+#' @description
+#' Retrieves detailed information about an Express service, including
+#' current status, configuration, managed infrastructure, and service
+#' revisions.
+#' 
+#' Returns comprehensive service details, active service revisions, ingress
+#' paths with endpoints, and managed Amazon Web Services resource status
+#' including load balancers and auto-scaling policies.
+#' 
+#' Use the `include` parameter to retrieve additional information such as
+#' resource tags.
+#'
+#' @usage
+#' ecs_describe_express_gateway_service(serviceArn, include)
+#'
+#' @param serviceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Express service to describe. The
+#' ARN uniquely identifies the service within your Amazon Web Services
+#' account and region.
+#' @param include Specifies additional information to include in the response. Valid
+#' values are `TAGS` to include resource tags associated with the Express
+#' service.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   service = list(
+#'     cluster = "string",
+#'     serviceName = "string",
+#'     serviceArn = "string",
+#'     infrastructureRoleArn = "string",
+#'     status = list(
+#'       statusCode = "ACTIVE"|"DRAINING"|"INACTIVE",
+#'       statusReason = "string"
+#'     ),
+#'     currentDeployment = "string",
+#'     activeConfigurations = list(
+#'       list(
+#'         serviceRevisionArn = "string",
+#'         executionRoleArn = "string",
+#'         taskRoleArn = "string",
+#'         cpu = "string",
+#'         memory = "string",
+#'         networkConfiguration = list(
+#'           securityGroups = list(
+#'             "string"
+#'           ),
+#'           subnets = list(
+#'             "string"
+#'           )
+#'         ),
+#'         healthCheckPath = "string",
+#'         primaryContainer = list(
+#'           image = "string",
+#'           containerPort = 123,
+#'           awsLogsConfiguration = list(
+#'             logGroup = "string",
+#'             logStreamPrefix = "string"
+#'           ),
+#'           repositoryCredentials = list(
+#'             credentialsParameter = "string"
+#'           ),
+#'           command = list(
+#'             "string"
+#'           ),
+#'           environment = list(
+#'             list(
+#'               name = "string",
+#'               value = "string"
+#'             )
+#'           ),
+#'           secrets = list(
+#'             list(
+#'               name = "string",
+#'               valueFrom = "string"
+#'             )
+#'           )
+#'         ),
+#'         scalingTarget = list(
+#'           minTaskCount = 123,
+#'           maxTaskCount = 123,
+#'           autoScalingMetric = "AVERAGE_CPU"|"AVERAGE_MEMORY"|"REQUEST_COUNT_PER_TARGET",
+#'           autoScalingTargetValue = 123
+#'         ),
+#'         ingressPaths = list(
+#'           list(
+#'             accessType = "PUBLIC"|"PRIVATE",
+#'             endpoint = "string"
+#'           )
+#'         ),
+#'         createdAt = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_express_gateway_service(
+#'   serviceArn = "string",
+#'   include = list(
+#'     "TAGS"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_describe_express_gateway_service
+#'
+#' @aliases ecs_describe_express_gateway_service
+ecs_describe_express_gateway_service <- function(serviceArn, include = NULL) {
+  op <- new_operation(
+    name = "DescribeExpressGatewayService",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecs$describe_express_gateway_service_input(serviceArn = serviceArn, include = include)
+  output <- .ecs$describe_express_gateway_service_output()
+  config <- get_config()
+  svc <- .ecs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$describe_express_gateway_service <- ecs_describe_express_gateway_service
+
 #' Describes one or more of your service deployments
 #'
 #' @description
@@ -3944,17 +5182,22 @@ ecs_describe_container_instances <- function(cluster = NULL, containerInstances,
 #'           arn = "string",
 #'           requestedTaskCount = 123,
 #'           runningTaskCount = 123,
-#'           pendingTaskCount = 123
+#'           pendingTaskCount = 123,
+#'           requestedTestTrafficWeight = 123.0,
+#'           requestedProductionTrafficWeight = 123.0
 #'         )
 #'       ),
 #'       targetServiceRevision = list(
 #'         arn = "string",
 #'         requestedTaskCount = 123,
 #'         runningTaskCount = 123,
-#'         pendingTaskCount = 123
+#'         pendingTaskCount = 123,
+#'         requestedTestTrafficWeight = 123.0,
+#'         requestedProductionTrafficWeight = 123.0
 #'       ),
 #'       status = "PENDING"|"SUCCESSFUL"|"STOPPED"|"STOP_REQUESTED"|"IN_PROGRESS"|"ROLLBACK_REQUESTED"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_SUCCESSFUL"|"ROLLBACK_FAILED",
 #'       statusReason = "string",
+#'       lifecycleStage = "RECONCILE_SERVICE"|"PRE_SCALE_UP"|"SCALE_UP"|"POST_SCALE_UP"|"TEST_TRAFFIC_SHIFT"|"POST_TEST_TRAFFIC_SHIFT"|"PRODUCTION_TRAFFIC_SHIFT"|"POST_PRODUCTION_TRAFFIC_SHIFT"|"BAKE_TIME"|"CLEAN_UP",
 #'       deploymentConfiguration = list(
 #'         deploymentCircuitBreaker = list(
 #'           enable = TRUE|FALSE,
@@ -3968,6 +5211,26 @@ ecs_describe_container_instances <- function(cluster = NULL, containerInstances,
 #'           ),
 #'           rollback = TRUE|FALSE,
 #'           enable = TRUE|FALSE
+#'         ),
+#'         strategy = "ROLLING"|"BLUE_GREEN"|"LINEAR"|"CANARY",
+#'         bakeTimeInMinutes = 123,
+#'         lifecycleHooks = list(
+#'           list(
+#'             hookTargetArn = "string",
+#'             roleArn = "string",
+#'             lifecycleStages = list(
+#'               "RECONCILE_SERVICE"|"PRE_SCALE_UP"|"POST_SCALE_UP"|"TEST_TRAFFIC_SHIFT"|"POST_TEST_TRAFFIC_SHIFT"|"PRODUCTION_TRAFFIC_SHIFT"|"POST_PRODUCTION_TRAFFIC_SHIFT"
+#'             ),
+#'             hookDetails = list()
+#'           )
+#'         ),
+#'         linearConfiguration = list(
+#'           stepPercent = 123.0,
+#'           stepBakeTimeInMinutes = 123
+#'         ),
+#'         canaryConfiguration = list(
+#'           canaryPercent = 123.0,
+#'           canaryBakeTimeInMinutes = 123
 #'         )
 #'       ),
 #'       rollback = list(
@@ -4077,7 +5340,7 @@ ecs_describe_service_deployments <- function(serviceDeploymentArns) {
 #'           base = 123
 #'         )
 #'       ),
-#'       launchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'       launchType = "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES",
 #'       platformVersion = "string",
 #'       platformFamily = "string",
 #'       loadBalancers = list(
@@ -4085,7 +5348,13 @@ ecs_describe_service_deployments <- function(serviceDeploymentArns) {
 #'           targetGroupArn = "string",
 #'           loadBalancerName = "string",
 #'           containerName = "string",
-#'           containerPort = 123
+#'           containerPort = 123,
+#'           advancedConfiguration = list(
+#'             alternateTargetGroupArn = "string",
+#'             productionListenerRule = "string",
+#'             testListenerRule = "string",
+#'             roleArn = "string"
+#'           )
 #'         )
 #'       ),
 #'       serviceRegistries = list(
@@ -4125,7 +5394,15 @@ ecs_describe_service_deployments <- function(serviceDeploymentArns) {
 #'             clientAliases = list(
 #'               list(
 #'                 port = 123,
-#'                 dnsName = "string"
+#'                 dnsName = "string",
+#'                 testTrafficRules = list(
+#'                   header = list(
+#'                     name = "string",
+#'                     value = list(
+#'                       exact = "string"
+#'                     )
+#'                   )
+#'                 )
 #'               )
 #'             ),
 #'             ingressPortOverride = 123,
@@ -4153,6 +5430,10 @@ ecs_describe_service_deployments <- function(serviceDeploymentArns) {
 #'               valueFrom = "string"
 #'             )
 #'           )
+#'         ),
+#'         accessLogConfiguration = list(
+#'           format = "TEXT"|"JSON",
+#'           includeQueryParameters = "DISABLED"|"ENABLED"
 #'         )
 #'       ),
 #'       volumeConfigurations = list(
@@ -4195,6 +5476,141 @@ ecs_describe_service_deployments <- function(serviceDeploymentArns) {
 #'           roleArn = "string",
 #'           targetGroupArn = "string",
 #'           portName = "string"
+#'         )
+#'       ),
+#'       resolvedConfiguration = list(
+#'         loadBalancers = list(
+#'           list(
+#'             targetGroupArn = "string",
+#'             productionListenerRule = "string"
+#'           )
+#'         )
+#'       ),
+#'       ecsManagedResources = list(
+#'         ingressPaths = list(
+#'           list(
+#'             accessType = "PUBLIC"|"PRIVATE",
+#'             endpoint = "string",
+#'             loadBalancer = list(
+#'               arn = "string",
+#'               status = "PROVISIONING"|"ACTIVE"|"DEPROVISIONING"|"DELETED"|"FAILED",
+#'               statusReason = "string",
+#'               updatedAt = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               scheme = "string",
+#'               subnetIds = list(
+#'                 "string"
+#'               ),
+#'               securityGroupIds = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             loadBalancerSecurityGroups = list(
+#'               list(
+#'                 arn = "string",
+#'                 status = "PROVISIONING"|"ACTIVE"|"DEPROVISIONING"|"DELETED"|"FAILED",
+#'                 statusReason = "string",
+#'                 updatedAt = as.POSIXct(
+#'                   "2015-01-01"
+#'                 )
+#'               )
+#'             ),
+#'             certificate = list(
+#'               arn = "string",
+#'               status = "PROVISIONING"|"ACTIVE"|"DEPROVISIONING"|"DELETED"|"FAILED",
+#'               statusReason = "string",
+#'               updatedAt = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               domainName = "string"
+#'             ),
+#'             listener = list(
+#'               arn = "string",
+#'               status = "PROVISIONING"|"ACTIVE"|"DEPROVISIONING"|"DELETED"|"FAILED",
+#'               statusReason = "string",
+#'               updatedAt = as.POSIXct(
+#'                 "2015-01-01"
+#'               )
+#'             ),
+#'             rule = list(
+#'               arn = "string",
+#'               status = "PROVISIONING"|"ACTIVE"|"DEPROVISIONING"|"DELETED"|"FAILED",
+#'               statusReason = "string",
+#'               updatedAt = as.POSIXct(
+#'                 "2015-01-01"
+#'               )
+#'             ),
+#'             targetGroups = list(
+#'               list(
+#'                 arn = "string",
+#'                 status = "PROVISIONING"|"ACTIVE"|"DEPROVISIONING"|"DELETED"|"FAILED",
+#'                 statusReason = "string",
+#'                 updatedAt = as.POSIXct(
+#'                   "2015-01-01"
+#'                 ),
+#'                 healthCheckPath = "string",
+#'                 healthCheckPort = 123,
+#'                 port = 123
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         autoScaling = list(
+#'           scalableTarget = list(
+#'             arn = "string",
+#'             status = "PROVISIONING"|"ACTIVE"|"DEPROVISIONING"|"DELETED"|"FAILED",
+#'             statusReason = "string",
+#'             updatedAt = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             minCapacity = 123,
+#'             maxCapacity = 123
+#'           ),
+#'           applicationAutoScalingPolicies = list(
+#'             list(
+#'               arn = "string",
+#'               status = "PROVISIONING"|"ACTIVE"|"DEPROVISIONING"|"DELETED"|"FAILED",
+#'               statusReason = "string",
+#'               updatedAt = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               policyType = "string",
+#'               targetValue = 123.0,
+#'               metric = "string"
+#'             )
+#'           )
+#'         ),
+#'         metricAlarms = list(
+#'           list(
+#'             arn = "string",
+#'             status = "PROVISIONING"|"ACTIVE"|"DEPROVISIONING"|"DELETED"|"FAILED",
+#'             statusReason = "string",
+#'             updatedAt = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         serviceSecurityGroups = list(
+#'           list(
+#'             arn = "string",
+#'             status = "PROVISIONING"|"ACTIVE"|"DEPROVISIONING"|"DELETED"|"FAILED",
+#'             statusReason = "string",
+#'             updatedAt = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         logGroups = list(
+#'           list(
+#'             arn = "string",
+#'             status = "PROVISIONING"|"ACTIVE"|"DEPROVISIONING"|"DELETED"|"FAILED",
+#'             statusReason = "string",
+#'             updatedAt = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             logGroupName = "string"
+#'           )
 #'         )
 #'       )
 #'     )
@@ -4275,7 +5691,13 @@ ecs_describe_service_revisions <- function(serviceRevisionArns) {
 #'           targetGroupArn = "string",
 #'           loadBalancerName = "string",
 #'           containerName = "string",
-#'           containerPort = 123
+#'           containerPort = 123,
+#'           advancedConfiguration = list(
+#'             alternateTargetGroupArn = "string",
+#'             productionListenerRule = "string",
+#'             testListenerRule = "string",
+#'             roleArn = "string"
+#'           )
 #'         )
 #'       ),
 #'       serviceRegistries = list(
@@ -4290,7 +5712,7 @@ ecs_describe_service_revisions <- function(serviceRevisionArns) {
 #'       desiredCount = 123,
 #'       runningCount = 123,
 #'       pendingCount = 123,
-#'       launchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'       launchType = "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES",
 #'       capacityProviderStrategy = list(
 #'         list(
 #'           capacityProvider = "string",
@@ -4314,6 +5736,26 @@ ecs_describe_service_revisions <- function(serviceRevisionArns) {
 #'           ),
 #'           rollback = TRUE|FALSE,
 #'           enable = TRUE|FALSE
+#'         ),
+#'         strategy = "ROLLING"|"BLUE_GREEN"|"LINEAR"|"CANARY",
+#'         bakeTimeInMinutes = 123,
+#'         lifecycleHooks = list(
+#'           list(
+#'             hookTargetArn = "string",
+#'             roleArn = "string",
+#'             lifecycleStages = list(
+#'               "RECONCILE_SERVICE"|"PRE_SCALE_UP"|"POST_SCALE_UP"|"TEST_TRAFFIC_SHIFT"|"POST_TEST_TRAFFIC_SHIFT"|"PRODUCTION_TRAFFIC_SHIFT"|"POST_PRODUCTION_TRAFFIC_SHIFT"
+#'             ),
+#'             hookDetails = list()
+#'           )
+#'         ),
+#'         linearConfiguration = list(
+#'           stepPercent = 123.0,
+#'           stepBakeTimeInMinutes = 123
+#'         ),
+#'         canaryConfiguration = list(
+#'           canaryPercent = 123.0,
+#'           canaryBakeTimeInMinutes = 123
 #'         )
 #'       ),
 #'       taskSets = list(
@@ -4335,7 +5777,7 @@ ecs_describe_service_revisions <- function(serviceRevisionArns) {
 #'           updatedAt = as.POSIXct(
 #'             "2015-01-01"
 #'           ),
-#'           launchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'           launchType = "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES",
 #'           capacityProviderStrategy = list(
 #'             list(
 #'               capacityProvider = "string",
@@ -4361,7 +5803,13 @@ ecs_describe_service_revisions <- function(serviceRevisionArns) {
 #'               targetGroupArn = "string",
 #'               loadBalancerName = "string",
 #'               containerName = "string",
-#'               containerPort = 123
+#'               containerPort = 123,
+#'               advancedConfiguration = list(
+#'                 alternateTargetGroupArn = "string",
+#'                 productionListenerRule = "string",
+#'                 testListenerRule = "string",
+#'                 roleArn = "string"
+#'               )
 #'             )
 #'           ),
 #'           serviceRegistries = list(
@@ -4413,7 +5861,7 @@ ecs_describe_service_revisions <- function(serviceRevisionArns) {
 #'               base = 123
 #'             )
 #'           ),
-#'           launchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'           launchType = "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES",
 #'           platformVersion = "string",
 #'           platformFamily = "string",
 #'           networkConfiguration = list(
@@ -4439,7 +5887,15 @@ ecs_describe_service_revisions <- function(serviceRevisionArns) {
 #'                 clientAliases = list(
 #'                   list(
 #'                     port = 123,
-#'                     dnsName = "string"
+#'                     dnsName = "string",
+#'                     testTrafficRules = list(
+#'                       header = list(
+#'                         name = "string",
+#'                         value = list(
+#'                           exact = "string"
+#'                         )
+#'                       )
+#'                     )
 #'                   )
 #'                 ),
 #'                 ingressPortOverride = 123,
@@ -4467,6 +5923,10 @@ ecs_describe_service_revisions <- function(serviceRevisionArns) {
 #'                   valueFrom = "string"
 #'                 )
 #'               )
+#'             ),
+#'             accessLogConfiguration = list(
+#'               format = "TEXT"|"JSON",
+#'               includeQueryParameters = "DISABLED"|"ENABLED"
 #'             )
 #'           ),
 #'           serviceConnectResources = list(
@@ -4529,6 +5989,15 @@ ecs_describe_service_revisions <- function(serviceRevisionArns) {
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
+#'       currentServiceDeployment = "string",
+#'       currentServiceRevisions = list(
+#'         list(
+#'           arn = "string",
+#'           requestedTaskCount = 123,
+#'           runningTaskCount = 123,
+#'           pendingTaskCount = 123
+#'         )
+#'       ),
 #'       placementConstraints = list(
 #'         list(
 #'           type = "distinctInstance"|"memberOf",
@@ -4567,7 +6036,8 @@ ecs_describe_service_revisions <- function(serviceRevisionArns) {
 #'       enableECSManagedTags = TRUE|FALSE,
 #'       propagateTags = "TASK_DEFINITION"|"SERVICE"|"NONE",
 #'       enableExecuteCommand = TRUE|FALSE,
-#'       availabilityZoneRebalancing = "ENABLED"|"DISABLED"
+#'       availabilityZoneRebalancing = "ENABLED"|"DISABLED",
+#'       resourceManagementType = "CUSTOMER"|"ECS"
 #'     )
 #'   ),
 #'   failures = list(
@@ -4899,14 +6369,14 @@ ecs_describe_services <- function(cluster = NULL, services, include = NULL) {
 #'       )
 #'     ),
 #'     compatibilities = list(
-#'       "EC2"|"FARGATE"|"EXTERNAL"
+#'       "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES"
 #'     ),
 #'     runtimePlatform = list(
 #'       cpuArchitecture = "X86_64"|"ARM64",
-#'       operatingSystemFamily = "WINDOWS_SERVER_2019_FULL"|"WINDOWS_SERVER_2019_CORE"|"WINDOWS_SERVER_2016_FULL"|"WINDOWS_SERVER_2004_CORE"|"WINDOWS_SERVER_2022_CORE"|"WINDOWS_SERVER_2022_FULL"|"WINDOWS_SERVER_20H2_CORE"|"LINUX"
+#'       operatingSystemFamily = "WINDOWS_SERVER_2019_FULL"|"WINDOWS_SERVER_2019_CORE"|"WINDOWS_SERVER_2016_FULL"|"WINDOWS_SERVER_2004_CORE"|"WINDOWS_SERVER_2022_CORE"|"WINDOWS_SERVER_2022_FULL"|"WINDOWS_SERVER_2025_CORE"|"WINDOWS_SERVER_2025_FULL"|"WINDOWS_SERVER_20H2_CORE"|"LINUX"
 #'     ),
 #'     requiresCompatibilities = list(
-#'       "EC2"|"FARGATE"|"EXTERNAL"
+#'       "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES"
 #'     ),
 #'     cpu = "string",
 #'     memory = "string",
@@ -5035,7 +6505,7 @@ ecs_describe_task_definition <- function(taskDefinition, include = NULL) {
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       launchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'       launchType = "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES",
 #'       capacityProviderStrategy = list(
 #'         list(
 #'           capacityProvider = "string",
@@ -5061,7 +6531,13 @@ ecs_describe_task_definition <- function(taskDefinition, include = NULL) {
 #'           targetGroupArn = "string",
 #'           loadBalancerName = "string",
 #'           containerName = "string",
-#'           containerPort = 123
+#'           containerPort = 123,
+#'           advancedConfiguration = list(
+#'             alternateTargetGroupArn = "string",
+#'             productionListenerRule = "string",
+#'             testListenerRule = "string",
+#'             roleArn = "string"
+#'           )
 #'         )
 #'       ),
 #'       serviceRegistries = list(
@@ -5157,8 +6633,7 @@ ecs_describe_task_sets <- function(cluster, service, taskSets = NULL, include = 
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the task or tasks to describe. If you do not specify a cluster,
-#' the default cluster is assumed. This parameter is required. If you do
-#' not specify a value, the `default` cluster is used.
+#' the default cluster is assumed.
 #' @param tasks &#91;required&#93; A list of up to 100 task IDs or full ARN entries.
 #' @param include Specifies whether you want to see the resource tags for the task. If
 #' `TAGS` is specified, the tags are included in the response. If this
@@ -5264,7 +6739,7 @@ ecs_describe_task_sets <- function(cluster, service, taskSets = NULL, include = 
 #'         )
 #'       ),
 #'       lastStatus = "string",
-#'       launchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'       launchType = "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES",
 #'       memory = "string",
 #'       overrides = list(
 #'         containerOverrides = list(
@@ -5632,6 +7107,9 @@ ecs_get_task_protection <- function(cluster, tasks = NULL) {
 #' If this field is omitted, the account settings are listed only for the
 #' authenticated user.
 #' 
+#' In order to use this parameter, you must be the root user, or the
+#' principal.
+#' 
 #' Federated users assume the account setting of the root user and can't
 #' have explicit account settings set for them.
 #' @param effectiveSettings Determines whether to return the effective settings. If `true`, the
@@ -5666,7 +7144,7 @@ ecs_get_task_protection <- function(cluster, tasks = NULL) {
 #' list(
 #'   settings = list(
 #'     list(
-#'       name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate"|"defaultLogDriverMode",
+#'       name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate"|"defaultLogDriverMode"|"fargateEventWindows",
 #'       value = "string",
 #'       principalArn = "string",
 #'       type = "user"|"aws_managed"
@@ -5679,7 +7157,7 @@ ecs_get_task_protection <- function(cluster, tasks = NULL) {
 #' @section Request syntax:
 #' ```
 #' svc$list_account_settings(
-#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate"|"defaultLogDriverMode",
+#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate"|"defaultLogDriverMode"|"fargateEventWindows",
 #'   value = "string",
 #'   principalArn = "string",
 #'   effectiveSettings = TRUE|FALSE,
@@ -5950,8 +7428,8 @@ ecs_list_clusters <- function(nextToken = NULL, maxResults = NULL) {
 #' the `DRAINING` status, the results include only container instances that
 #' have been set to `DRAINING` using
 #' [`update_container_instances_state`][ecs_update_container_instances_state].
-#' If you don't specify this parameter, the default is to include container
-#' instances set to all states other than `INACTIVE`.
+#' If you don't specify this parameter, the The default is to include
+#' container instances set to all states other than `INACTIVE`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6136,7 +7614,7 @@ ecs_list_service_deployments <- function(service, cluster = NULL, status = NULL,
 #'
 #' @usage
 #' ecs_list_services(cluster, nextToken, maxResults, launchType,
-#'   schedulingStrategy)
+#'   schedulingStrategy, resourceManagementType)
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster to use
 #' when filtering the [`list_services`][ecs_list_services] results. If you
@@ -6164,6 +7642,8 @@ ecs_list_service_deployments <- function(service, cluster = NULL, status = NULL,
 #' [`list_services`][ecs_list_services] results.
 #' @param schedulingStrategy The scheduling strategy to use when filtering the
 #' [`list_services`][ecs_list_services] results.
+#' @param resourceManagementType The resourceManagementType type to use when filtering the
+#' [`list_services`][ecs_list_services] results.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6182,8 +7662,9 @@ ecs_list_service_deployments <- function(service, cluster = NULL, status = NULL,
 #'   cluster = "string",
 #'   nextToken = "string",
 #'   maxResults = 123,
-#'   launchType = "EC2"|"FARGATE"|"EXTERNAL",
-#'   schedulingStrategy = "REPLICA"|"DAEMON"
+#'   launchType = "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES",
+#'   schedulingStrategy = "REPLICA"|"DAEMON",
+#'   resourceManagementType = "CUSTOMER"|"ECS"
 #' )
 #' ```
 #'
@@ -6199,7 +7680,7 @@ ecs_list_service_deployments <- function(service, cluster = NULL, status = NULL,
 #' @rdname ecs_list_services
 #'
 #' @aliases ecs_list_services
-ecs_list_services <- function(cluster = NULL, nextToken = NULL, maxResults = NULL, launchType = NULL, schedulingStrategy = NULL) {
+ecs_list_services <- function(cluster = NULL, nextToken = NULL, maxResults = NULL, launchType = NULL, schedulingStrategy = NULL, resourceManagementType = NULL) {
   op <- new_operation(
     name = "ListServices",
     http_method = "POST",
@@ -6208,7 +7689,7 @@ ecs_list_services <- function(cluster = NULL, nextToken = NULL, maxResults = NUL
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "serviceArns"),
     stream_api = FALSE
   )
-  input <- .ecs$list_services_input(cluster = cluster, nextToken = nextToken, maxResults = maxResults, launchType = launchType, schedulingStrategy = schedulingStrategy)
+  input <- .ecs$list_services_input(cluster = cluster, nextToken = nextToken, maxResults = maxResults, launchType = launchType, schedulingStrategy = schedulingStrategy, resourceManagementType = resourceManagementType)
   output <- .ecs$list_services_output()
   config <- get_config()
   svc <- .ecs$service(config, op)
@@ -6671,7 +8152,7 @@ ecs_list_task_definitions <- function(familyPrefix = NULL, status = NULL, sort =
 #'   startedBy = "string",
 #'   serviceName = "string",
 #'   desiredStatus = "RUNNING"|"PENDING"|"STOPPED",
-#'   launchType = "EC2"|"FARGATE"|"EXTERNAL"
+#'   launchType = "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES"
 #' )
 #' ```
 #'
@@ -6811,6 +8292,13 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #'     maintenance](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-maintenance.html)
 #'     in the *Amazon ECS Developer Guide*.
 #' 
+#' -   `fargateEventWindows` - When Amazon Web Services determines that a
+#'     security or infrastructure update is needed for an Amazon ECS task
+#'     hosted on Fargate, the tasks need to be stopped and new tasks
+#'     launched to replace them. Use `fargateEventWindows` to use EC2 Event
+#'     Windows associated with Fargate tasks to configure time windows for
+#'     task retirement.
+#' 
 #' -   `tagResourceAuthorization` - Amazon ECS is introducing tagging
 #'     authorization for resource creation. Users must have permissions for
 #'     actions that create the resource, such as `ecsCreateCluster`. If
@@ -6833,6 +8321,16 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #'     using this account setting will be used as the default. For more
 #'     information about log delivery modes, see
 #'     [LogConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html).
+#' 
+#'     On June 25, 2025, Amazon ECS changed the default log driver mode
+#'     from `blocking` to `non-blocking` to prioritize task availability
+#'     over logging. To continue using the `blocking` mode after this
+#'     change, do one of the following:
+#' 
+#'     -   Set the `mode` option in your container definition's
+#'         `logConfiguration` as `blocking`.
+#' 
+#'     -   Set the `defaultLogDriverMode` account setting to `blocking`.
 #' 
 #' -   `guardDutyActivate` - The `guardDutyActivate` parameter is read-only
 #'     in Amazon ECS and indicates whether Amazon ECS Runtime Monitoring is
@@ -6861,6 +8359,9 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #' explicitly overrides these settings. If this field is omitted, the
 #' setting is changed only for the authenticated user.
 #' 
+#' In order to use this parameter, you must be the root user, or the
+#' principal.
+#' 
 #' You must use the root user when you set the Fargate wait time
 #' (`fargateTaskRetirementWaitPeriod`).
 #' 
@@ -6872,7 +8373,7 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #' ```
 #' list(
 #'   setting = list(
-#'     name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate"|"defaultLogDriverMode",
+#'     name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate"|"defaultLogDriverMode"|"fargateEventWindows",
 #'     value = "string",
 #'     principalArn = "string",
 #'     type = "user"|"aws_managed"
@@ -6883,7 +8384,7 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #' @section Request syntax:
 #' ```
 #' svc$put_account_setting(
-#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate"|"defaultLogDriverMode",
+#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate"|"defaultLogDriverMode"|"fargateEventWindows",
 #'   value = "string",
 #'   principalArn = "string"
 #' )
@@ -7031,6 +8532,13 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 #'     maintenance](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-maintenance.html)
 #'     in the *Amazon ECS Developer Guide*.
 #' 
+#' -   `fargateEventWindows` - When Amazon Web Services determines that a
+#'     security or infrastructure update is needed for an Amazon ECS task
+#'     hosted on Fargate, the tasks need to be stopped and new tasks
+#'     launched to replace them. Use `fargateEventWindows` to use EC2 Event
+#'     Windows associated with Fargate tasks to configure time windows for
+#'     task retirement.
+#' 
 #' -   `tagResourceAuthorization` - Amazon ECS is introducing tagging
 #'     authorization for resource creation. Users must have permissions for
 #'     actions that create the resource, such as `ecsCreateCluster`. If
@@ -7053,6 +8561,16 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 #'     using this account setting will be used as the default. For more
 #'     information about log delivery modes, see
 #'     [LogConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html).
+#' 
+#'     On June 25, 2025, Amazon ECS changed the default log driver mode
+#'     from `blocking` to `non-blocking` to prioritize task availability
+#'     over logging. To continue using the `blocking` mode after this
+#'     change, do one of the following:
+#' 
+#'     -   Set the `mode` option in your container definition's
+#'         `logConfiguration` as `blocking`.
+#' 
+#'     -   Set the `defaultLogDriverMode` account setting to `blocking`.
 #' 
 #' -   `guardDutyActivate` - The `guardDutyActivate` parameter is read-only
 #'     in Amazon ECS and indicates whether Amazon ECS Runtime Monitoring is
@@ -7081,7 +8599,7 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 #' ```
 #' list(
 #'   setting = list(
-#'     name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate"|"defaultLogDriverMode",
+#'     name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate"|"defaultLogDriverMode"|"fargateEventWindows",
 #'     value = "string",
 #'     principalArn = "string",
 #'     type = "user"|"aws_managed"
@@ -7092,7 +8610,7 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 #' @section Request syntax:
 #' ```
 #' svc$put_account_setting_default(
-#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate"|"defaultLogDriverMode",
+#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod"|"guardDutyActivate"|"defaultLogDriverMode"|"fargateEventWindows",
 #'   value = "string"
 #' )
 #' ```
@@ -7230,6 +8748,10 @@ ecs_put_attributes <- function(cluster = NULL, attributes) {
 #' capacity provider strategy is used. We recommend that you define a
 #' default capacity provider strategy for your cluster. However, you must
 #' specify an empty array (`[]`) to bypass defining a default strategy.
+#' 
+#' Amazon ECS Managed Instances doesn't support this, because when you
+#' create a capacity provider with Amazon ECS Managed Instances, it becomes
+#' available only within the specified cluster.
 #'
 #' @usage
 #' ecs_put_cluster_capacity_providers(cluster, capacityProviders,
@@ -7734,37 +9256,10 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' vCPUs) and `196608` CPU units (`192` vCPUs). If you do not specify a
 #' value, the parameter is ignored.
 #' 
-#' If you're using the Fargate launch type, this field is required and you
-#' must use one of the following values, which determines your range of
-#' supported values for the `memory` parameter:
-#' 
-#' The CPU units cannot be less than 1 vCPU when you use Windows containers
-#' on Fargate.
-#' 
-#' -   256 (.25 vCPU) - Available `memory` values: 512 (0.5 GB), 1024 (1
-#'     GB), 2048 (2 GB)
-#' 
-#' -   512 (.5 vCPU) - Available `memory` values: 1024 (1 GB), 2048 (2 GB),
-#'     3072 (3 GB), 4096 (4 GB)
-#' 
-#' -   1024 (1 vCPU) - Available `memory` values: 2048 (2 GB), 3072 (3 GB),
-#'     4096 (4 GB), 5120 (5 GB), 6144 (6 GB), 7168 (7 GB), 8192 (8 GB)
-#' 
-#' -   2048 (2 vCPU) - Available `memory` values: 4096 (4 GB) and 16384 (16
-#'     GB) in increments of 1024 (1 GB)
-#' 
-#' -   4096 (4 vCPU) - Available `memory` values: 8192 (8 GB) and 30720 (30
-#'     GB) in increments of 1024 (1 GB)
-#' 
-#' -   8192 (8 vCPU) - Available `memory` values: 16 GB and 60 GB in 4 GB
-#'     increments
-#' 
-#'     This option requires Linux platform `1.4.0` or later.
-#' 
-#' -   16384 (16vCPU) - Available `memory` values: 32GB and 120 GB in 8 GB
-#'     increments
-#' 
-#'     This option requires Linux platform `1.4.0` or later.
+#' This field is required for Fargate. For information about the valid
+#' values, see [Task
+#' size](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#task_size)
+#' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param memory The amount of memory (in MiB) used by the task. It can be expressed as
 #' an integer using MiB (for example ,`1024`) or as a string using GB (for
 #' example, `1GB` or `1 GB`) in a task definition. String values are
@@ -7849,8 +9344,8 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' If `task` is specified, all containers within the specified task share
 #' the same process namespace.
 #' 
-#' If no value is specified, the default is a private namespace for each
-#' container.
+#' If no value is specified, the The default is a private namespace for
+#' each container.
 #' 
 #' If the `host` PID mode is used, there's a heightened risk of undesired
 #' process namespace exposure.
@@ -7914,8 +9409,7 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' -   Linux platform version `1.4.0` or later.
 #' 
 #' -   Windows platform version `1.0.0` or later.
-#' @param runtimePlatform The operating system that your tasks definitions run on. A platform
-#' family is specified only for tasks using the Fargate launch type.
+#' @param runtimePlatform The operating system that your tasks definitions run on.
 #' @param enableFaultInjection Enables fault injection when you register your task definition and
 #' allows for fault injection requests to be accepted from the task's
 #' containers. The default value is `false`.
@@ -8171,14 +9665,14 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #'       )
 #'     ),
 #'     compatibilities = list(
-#'       "EC2"|"FARGATE"|"EXTERNAL"
+#'       "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES"
 #'     ),
 #'     runtimePlatform = list(
 #'       cpuArchitecture = "X86_64"|"ARM64",
-#'       operatingSystemFamily = "WINDOWS_SERVER_2019_FULL"|"WINDOWS_SERVER_2019_CORE"|"WINDOWS_SERVER_2016_FULL"|"WINDOWS_SERVER_2004_CORE"|"WINDOWS_SERVER_2022_CORE"|"WINDOWS_SERVER_2022_FULL"|"WINDOWS_SERVER_20H2_CORE"|"LINUX"
+#'       operatingSystemFamily = "WINDOWS_SERVER_2019_FULL"|"WINDOWS_SERVER_2019_CORE"|"WINDOWS_SERVER_2016_FULL"|"WINDOWS_SERVER_2004_CORE"|"WINDOWS_SERVER_2022_CORE"|"WINDOWS_SERVER_2022_FULL"|"WINDOWS_SERVER_2025_CORE"|"WINDOWS_SERVER_2025_FULL"|"WINDOWS_SERVER_20H2_CORE"|"LINUX"
 #'     ),
 #'     requiresCompatibilities = list(
-#'       "EC2"|"FARGATE"|"EXTERNAL"
+#'       "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES"
 #'     ),
 #'     cpu = "string",
 #'     memory = "string",
@@ -8459,7 +9953,7 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #'     )
 #'   ),
 #'   requiresCompatibilities = list(
-#'     "EC2"|"FARGATE"|"EXTERNAL"
+#'     "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES"
 #'   ),
 #'   cpu = "string",
 #'   memory = "string",
@@ -8492,7 +9986,7 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #'   ),
 #'   runtimePlatform = list(
 #'     cpuArchitecture = "X86_64"|"ARM64",
-#'     operatingSystemFamily = "WINDOWS_SERVER_2019_FULL"|"WINDOWS_SERVER_2019_CORE"|"WINDOWS_SERVER_2016_FULL"|"WINDOWS_SERVER_2004_CORE"|"WINDOWS_SERVER_2022_CORE"|"WINDOWS_SERVER_2022_FULL"|"WINDOWS_SERVER_20H2_CORE"|"LINUX"
+#'     operatingSystemFamily = "WINDOWS_SERVER_2019_FULL"|"WINDOWS_SERVER_2019_CORE"|"WINDOWS_SERVER_2016_FULL"|"WINDOWS_SERVER_2004_CORE"|"WINDOWS_SERVER_2022_CORE"|"WINDOWS_SERVER_2022_FULL"|"WINDOWS_SERVER_2025_CORE"|"WINDOWS_SERVER_2025_FULL"|"WINDOWS_SERVER_20H2_CORE"|"LINUX"
 #'   ),
 #'   enableFaultInjection = TRUE|FALSE
 #' )
@@ -8567,7 +10061,7 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' own scheduler or place tasks manually on specific container instances.
 #' 
 #' You can attach Amazon EBS volumes to Amazon ECS tasks by configuring the
-#' volume when creating or updating a service. For more infomation, see
+#' volume when creating or updating a service. For more information, see
 #' [Amazon EBS
 #' volumes](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ebs-volumes.html#ebs-volume-types)
 #' in the *Amazon Elastic Container Service Developer Guide*.
@@ -8606,6 +10100,13 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' 
 #' -   Run [`run_task`][ecs_run_task] with the `clientToken` and the
 #'     original set of parameters
+#' 
+#' If you get a `ClientException`error, the [`run_task`][ecs_run_task]
+#' could not be processed because you use managed scaling and there is a
+#' capacity error because the quota of tasks in the `PROVISIONING` per
+#' cluster has been reached. For information about the service quotas, see
+#' [Amazon ECS service
+#' quotas](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-quotas.html).
 #'
 #' @usage
 #' ecs_run_task(capacityProviderStrategy, cluster, count,
@@ -8615,6 +10116,10 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #'   startedBy, tags, taskDefinition, clientToken, volumeConfigurations)
 #'
 #' @param capacityProviderStrategy The capacity provider strategy to use for the task.
+#' 
+#' If you want to use Amazon ECS Managed Instances, you must use the
+#' `capacityProviderStrategy` request parameter and omit the `launchType`
+#' request parameter.
 #' 
 #' If a `capacityProviderStrategy` is specified, the `launchType` parameter
 #' must be omitted. If no `capacityProviderStrategy` or `launchType` is
@@ -8649,8 +10154,12 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' `family:my-family-name`).
 #' @param launchType The infrastructure to run your standalone task on. For more information,
 #' see [Amazon ECS launch
-#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
+#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-configuration.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
+#' 
+#' If you want to use Amazon ECS Managed Instances, you must use the
+#' `capacityProviderStrategy` request parameter and omit the `launchType`
+#' request parameter.
 #' 
 #' The `FARGATE` launch type runs your tasks on Fargate On-Demand
 #' infrastructure.
@@ -8774,7 +10283,7 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' idempotency](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/ECS_Idempotency.html).
 #' @param volumeConfigurations The details of the volume that was `configuredAtLaunch`. You can
 #' configure the size, volumeType, IOPS, throughput, snapshot and
-#' encryption in in
+#' encryption in
 #' [TaskManagedEBSVolumeConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_TaskManagedEBSVolumeConfiguration.html).
 #' The `name` of the volume must match the `name` from the task definition.
 #'
@@ -8878,7 +10387,7 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #'         )
 #'       ),
 #'       lastStatus = "string",
-#'       launchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'       launchType = "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES",
 #'       memory = "string",
 #'       overrides = list(
 #'         containerOverrides = list(
@@ -8987,7 +10496,7 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #'   enableECSManagedTags = TRUE|FALSE,
 #'   enableExecuteCommand = TRUE|FALSE,
 #'   group = "string",
-#'   launchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'   launchType = "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES",
 #'   networkConfiguration = list(
 #'     awsvpcConfiguration = list(
 #'       subnets = list(
@@ -9155,7 +10664,7 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
 #' You can attach Amazon EBS volumes to Amazon ECS tasks by configuring the
-#' volume when creating or updating a service. For more infomation, see
+#' volume when creating or updating a service. For more information, see
 #' [Amazon EBS
 #' volumes](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ebs-volumes.html#ebs-volume-types)
 #' in the *Amazon Elastic Container Service Developer Guide*.
@@ -9347,7 +10856,7 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #'         )
 #'       ),
 #'       lastStatus = "string",
-#'       launchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'       launchType = "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES",
 #'       memory = "string",
 #'       overrides = list(
 #'         containerOverrides = list(
@@ -9580,7 +11089,17 @@ ecs_start_task <- function(cluster = NULL, containerInstances, enableECSManagedT
 #' @description
 #' Stops an ongoing service deployment.
 #' 
-#' StopServiceDeployment isn't currently supported.
+#' The following stop types are avaiable:
+#' 
+#' -   ROLLBACK - This option rolls back the service deployment to the
+#'     previous service revision.
+#' 
+#'     You can use this option even if you didn't configure the service
+#'     deployment for the rollback option.
+#' 
+#' For more information, see [Stopping Amazon ECS service
+#' deployments](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/stop-service-deployment.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' @usage
 #' ecs_stop_service_deployment(serviceDeploymentArn, stopType)
@@ -9588,7 +11107,7 @@ ecs_start_task <- function(cluster = NULL, containerInstances, enableECSManagedT
 #' @param serviceDeploymentArn &#91;required&#93; The ARN of the service deployment that you want to stop.
 #' @param stopType How you want Amazon ECS to stop the service.
 #' 
-#' The ROLLBACK and ABORT stopType aren't supported.
+#' The valid values are `ROLLBACK`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -9637,10 +11156,12 @@ ecs_stop_service_deployment <- function(serviceDeploymentArn, stopType = NULL) {
 #' 
 #' When you call [`stop_task`][ecs_stop_task] on a task, the equivalent of
 #' `docker stop` is issued to the containers running in the task. This
-#' results in a `SIGTERM` value and a default 30-second timeout, after
+#' results in a stop signal value and a default 30-second timeout, after
 #' which the `SIGKILL` value is sent and the containers are forcibly
-#' stopped. If the container handles the `SIGTERM` value gracefully and
-#' exits within 30 seconds from receiving it, no `SIGKILL` value is sent.
+#' stopped. This signal can be defined in your container image with the
+#' `STOPSIGNAL` instruction and will default to `SIGTERM`. If the container
+#' handles the `SIGTERM` value gracefully and exits within 30 seconds from
+#' receiving it, no `SIGKILL` value is sent.
 #' 
 #' For Windows containers, POSIX signals do not work and runtime stops the
 #' container by sending a `CTRL_SHUTDOWN_EVENT`. For more information, see
@@ -9765,7 +11286,7 @@ ecs_stop_service_deployment <- function(serviceDeploymentArn, stopType = NULL) {
 #'       )
 #'     ),
 #'     lastStatus = "string",
-#'     launchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'     launchType = "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES",
 #'     memory = "string",
 #'     overrides = list(
 #'       containerOverrides = list(
@@ -10311,13 +11832,24 @@ ecs_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @description
 #' Modifies the parameters for a capacity provider.
+#' 
+#' These changes only apply to new Amazon ECS Managed Instances, or EC2
+#' instances, not existing ones.
 #'
 #' @usage
-#' ecs_update_capacity_provider(name, autoScalingGroupProvider)
+#' ecs_update_capacity_provider(name, cluster, autoScalingGroupProvider,
+#'   managedInstancesProvider)
 #'
 #' @param name &#91;required&#93; The name of the capacity provider to update.
-#' @param autoScalingGroupProvider &#91;required&#93; An object that represent the parameters to update for the Auto Scaling
+#' @param cluster The name of the cluster that contains the capacity provider to update.
+#' Managed instances capacity providers are cluster-scoped and can only be
+#' updated within their associated cluster.
+#' @param autoScalingGroupProvider An object that represent the parameters to update for the Auto Scaling
 #' group capacity provider.
+#' @param managedInstancesProvider The updated configuration for the Amazon ECS Managed Instances provider.
+#' You can modify the infrastructure role, instance launch template, and
+#' tag propagation settings. Changes take effect for new instances launched
+#' after the update.
 #'
 #' @return
 #' A list with the following syntax:
@@ -10326,7 +11858,8 @@ ecs_untag_resource <- function(resourceArn, tagKeys) {
 #'   capacityProvider = list(
 #'     capacityProviderArn = "string",
 #'     name = "string",
-#'     status = "ACTIVE"|"INACTIVE",
+#'     cluster = "string",
+#'     status = "PROVISIONING"|"ACTIVE"|"DEPROVISIONING"|"INACTIVE",
 #'     autoScalingGroupProvider = list(
 #'       autoScalingGroupArn = "string",
 #'       managedScaling = list(
@@ -10339,14 +11872,107 @@ ecs_untag_resource <- function(resourceArn, tagKeys) {
 #'       managedTerminationProtection = "ENABLED"|"DISABLED",
 #'       managedDraining = "ENABLED"|"DISABLED"
 #'     ),
-#'     updateStatus = "DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
+#'     managedInstancesProvider = list(
+#'       infrastructureRoleArn = "string",
+#'       instanceLaunchTemplate = list(
+#'         ec2InstanceProfileArn = "string",
+#'         networkConfiguration = list(
+#'           subnets = list(
+#'             "string"
+#'           ),
+#'           securityGroups = list(
+#'             "string"
+#'           )
+#'         ),
+#'         storageConfiguration = list(
+#'           storageSizeGiB = 123
+#'         ),
+#'         monitoring = "BASIC"|"DETAILED",
+#'         capacityOptionType = "ON_DEMAND"|"SPOT",
+#'         instanceRequirements = list(
+#'           vCpuCount = list(
+#'             min = 123,
+#'             max = 123
+#'           ),
+#'           memoryMiB = list(
+#'             min = 123,
+#'             max = 123
+#'           ),
+#'           cpuManufacturers = list(
+#'             "intel"|"amd"|"amazon-web-services"
+#'           ),
+#'           memoryGiBPerVCpu = list(
+#'             min = 123.0,
+#'             max = 123.0
+#'           ),
+#'           excludedInstanceTypes = list(
+#'             "string"
+#'           ),
+#'           instanceGenerations = list(
+#'             "current"|"previous"
+#'           ),
+#'           spotMaxPricePercentageOverLowestPrice = 123,
+#'           onDemandMaxPricePercentageOverLowestPrice = 123,
+#'           bareMetal = "included"|"required"|"excluded",
+#'           burstablePerformance = "included"|"required"|"excluded",
+#'           requireHibernateSupport = TRUE|FALSE,
+#'           networkInterfaceCount = list(
+#'             min = 123,
+#'             max = 123
+#'           ),
+#'           localStorage = "included"|"required"|"excluded",
+#'           localStorageTypes = list(
+#'             "hdd"|"ssd"
+#'           ),
+#'           totalLocalStorageGB = list(
+#'             min = 123.0,
+#'             max = 123.0
+#'           ),
+#'           baselineEbsBandwidthMbps = list(
+#'             min = 123,
+#'             max = 123
+#'           ),
+#'           acceleratorTypes = list(
+#'             "gpu"|"fpga"|"inference"
+#'           ),
+#'           acceleratorCount = list(
+#'             min = 123,
+#'             max = 123
+#'           ),
+#'           acceleratorManufacturers = list(
+#'             "amazon-web-services"|"amd"|"nvidia"|"xilinx"|"habana"
+#'           ),
+#'           acceleratorNames = list(
+#'             "a100"|"inferentia"|"k520"|"k80"|"m60"|"radeon-pro-v520"|"t4"|"vu9p"|"v100"|"a10g"|"h100"|"t4g"
+#'           ),
+#'           acceleratorTotalMemoryMiB = list(
+#'             min = 123,
+#'             max = 123
+#'           ),
+#'           networkBandwidthGbps = list(
+#'             min = 123.0,
+#'             max = 123.0
+#'           ),
+#'           allowedInstanceTypes = list(
+#'             "string"
+#'           ),
+#'           maxSpotPriceAsPercentageOfOptimalOnDemandPrice = 123
+#'         )
+#'       ),
+#'       propagateTags = "CAPACITY_PROVIDER"|"NONE",
+#'       infrastructureOptimization = list(
+#'         scaleInAfter = 123
+#'       )
+#'     ),
+#'     updateStatus = "CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED"|"DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
 #'     updateStatusReason = "string",
 #'     tags = list(
 #'       list(
 #'         key = "string",
 #'         value = "string"
 #'       )
-#'     )
+#'     ),
+#'     type = "EC2_AUTOSCALING"|"MANAGED_INSTANCES"|"FARGATE"|"FARGATE_SPOT"
 #'   )
 #' )
 #' ```
@@ -10355,6 +11981,7 @@ ecs_untag_resource <- function(resourceArn, tagKeys) {
 #' ```
 #' svc$update_capacity_provider(
 #'   name = "string",
+#'   cluster = "string",
 #'   autoScalingGroupProvider = list(
 #'     managedScaling = list(
 #'       status = "ENABLED"|"DISABLED",
@@ -10365,6 +11992,97 @@ ecs_untag_resource <- function(resourceArn, tagKeys) {
 #'     ),
 #'     managedTerminationProtection = "ENABLED"|"DISABLED",
 #'     managedDraining = "ENABLED"|"DISABLED"
+#'   ),
+#'   managedInstancesProvider = list(
+#'     infrastructureRoleArn = "string",
+#'     instanceLaunchTemplate = list(
+#'       ec2InstanceProfileArn = "string",
+#'       networkConfiguration = list(
+#'         subnets = list(
+#'           "string"
+#'         ),
+#'         securityGroups = list(
+#'           "string"
+#'         )
+#'       ),
+#'       storageConfiguration = list(
+#'         storageSizeGiB = 123
+#'       ),
+#'       monitoring = "BASIC"|"DETAILED",
+#'       instanceRequirements = list(
+#'         vCpuCount = list(
+#'           min = 123,
+#'           max = 123
+#'         ),
+#'         memoryMiB = list(
+#'           min = 123,
+#'           max = 123
+#'         ),
+#'         cpuManufacturers = list(
+#'           "intel"|"amd"|"amazon-web-services"
+#'         ),
+#'         memoryGiBPerVCpu = list(
+#'           min = 123.0,
+#'           max = 123.0
+#'         ),
+#'         excludedInstanceTypes = list(
+#'           "string"
+#'         ),
+#'         instanceGenerations = list(
+#'           "current"|"previous"
+#'         ),
+#'         spotMaxPricePercentageOverLowestPrice = 123,
+#'         onDemandMaxPricePercentageOverLowestPrice = 123,
+#'         bareMetal = "included"|"required"|"excluded",
+#'         burstablePerformance = "included"|"required"|"excluded",
+#'         requireHibernateSupport = TRUE|FALSE,
+#'         networkInterfaceCount = list(
+#'           min = 123,
+#'           max = 123
+#'         ),
+#'         localStorage = "included"|"required"|"excluded",
+#'         localStorageTypes = list(
+#'           "hdd"|"ssd"
+#'         ),
+#'         totalLocalStorageGB = list(
+#'           min = 123.0,
+#'           max = 123.0
+#'         ),
+#'         baselineEbsBandwidthMbps = list(
+#'           min = 123,
+#'           max = 123
+#'         ),
+#'         acceleratorTypes = list(
+#'           "gpu"|"fpga"|"inference"
+#'         ),
+#'         acceleratorCount = list(
+#'           min = 123,
+#'           max = 123
+#'         ),
+#'         acceleratorManufacturers = list(
+#'           "amazon-web-services"|"amd"|"nvidia"|"xilinx"|"habana"
+#'         ),
+#'         acceleratorNames = list(
+#'           "a100"|"inferentia"|"k520"|"k80"|"m60"|"radeon-pro-v520"|"t4"|"vu9p"|"v100"|"a10g"|"h100"|"t4g"
+#'         ),
+#'         acceleratorTotalMemoryMiB = list(
+#'           min = 123,
+#'           max = 123
+#'         ),
+#'         networkBandwidthGbps = list(
+#'           min = 123.0,
+#'           max = 123.0
+#'         ),
+#'         allowedInstanceTypes = list(
+#'           "string"
+#'         ),
+#'         maxSpotPriceAsPercentageOfOptimalOnDemandPrice = 123
+#'       )
+#'     ),
+#'     propagateTags = "CAPACITY_PROVIDER"|"NONE",
+#'     infrastructureOptimization = list(
+#'       scaleInAfter = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -10374,7 +12092,7 @@ ecs_untag_resource <- function(resourceArn, tagKeys) {
 #' @rdname ecs_update_capacity_provider
 #'
 #' @aliases ecs_update_capacity_provider
-ecs_update_capacity_provider <- function(name, autoScalingGroupProvider) {
+ecs_update_capacity_provider <- function(name, cluster = NULL, autoScalingGroupProvider = NULL, managedInstancesProvider = NULL) {
   op <- new_operation(
     name = "UpdateCapacityProvider",
     http_method = "POST",
@@ -10383,7 +12101,7 @@ ecs_update_capacity_provider <- function(name, autoScalingGroupProvider) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ecs$update_capacity_provider_input(name = name, autoScalingGroupProvider = autoScalingGroupProvider)
+  input <- .ecs$update_capacity_provider_input(name = name, cluster = cluster, autoScalingGroupProvider = autoScalingGroupProvider, managedInstancesProvider = managedInstancesProvider)
   output <- .ecs$update_capacity_provider_output()
   config <- get_config()
   svc <- .ecs$service(config, op)
@@ -11070,6 +12788,193 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 }
 .ecs$operations$update_container_instances_state <- ecs_update_container_instances_state
 
+#' Updates an existing Express service configuration
+#'
+#' @description
+#' Updates an existing Express service configuration. Modifies container
+#' settings, resource allocation, auto-scaling configuration, and other
+#' service parameters without recreating the service.
+#' 
+#' Amazon ECS creates a new service revision with updated configuration and
+#' performs a rolling deployment to replace existing tasks. The service
+#' remains available during updates, ensuring zero-downtime deployments.
+#' 
+#' Some parameters like the infrastructure role cannot be modified after
+#' service creation and require creating a new service.
+#'
+#' @usage
+#' ecs_update_express_gateway_service(serviceArn, executionRoleArn,
+#'   healthCheckPath, primaryContainer, taskRoleArn, networkConfiguration,
+#'   cpu, memory, scalingTarget)
+#'
+#' @param serviceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Express service to update.
+#' @param executionRoleArn The Amazon Resource Name (ARN) of the task execution role for the
+#' Express service.
+#' @param healthCheckPath The path on the container for Application Load Balancer health checks.
+#' @param primaryContainer The primary container configuration for the Express service.
+#' @param taskRoleArn The Amazon Resource Name (ARN) of the IAM role for containers in this
+#' task.
+#' @param networkConfiguration The network configuration for the Express service tasks. By default, the
+#' network configuration for an Express service uses the default VPC.
+#' @param cpu The number of CPU units used by the task.
+#' @param memory The amount of memory (in MiB) used by the task.
+#' @param scalingTarget The auto-scaling configuration for the Express service.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   service = list(
+#'     serviceArn = "string",
+#'     cluster = "string",
+#'     serviceName = "string",
+#'     status = list(
+#'       statusCode = "ACTIVE"|"DRAINING"|"INACTIVE",
+#'       statusReason = "string"
+#'     ),
+#'     targetConfiguration = list(
+#'       serviceRevisionArn = "string",
+#'       executionRoleArn = "string",
+#'       taskRoleArn = "string",
+#'       cpu = "string",
+#'       memory = "string",
+#'       networkConfiguration = list(
+#'         securityGroups = list(
+#'           "string"
+#'         ),
+#'         subnets = list(
+#'           "string"
+#'         )
+#'       ),
+#'       healthCheckPath = "string",
+#'       primaryContainer = list(
+#'         image = "string",
+#'         containerPort = 123,
+#'         awsLogsConfiguration = list(
+#'           logGroup = "string",
+#'           logStreamPrefix = "string"
+#'         ),
+#'         repositoryCredentials = list(
+#'           credentialsParameter = "string"
+#'         ),
+#'         command = list(
+#'           "string"
+#'         ),
+#'         environment = list(
+#'           list(
+#'             name = "string",
+#'             value = "string"
+#'           )
+#'         ),
+#'         secrets = list(
+#'           list(
+#'             name = "string",
+#'             valueFrom = "string"
+#'           )
+#'         )
+#'       ),
+#'       scalingTarget = list(
+#'         minTaskCount = 123,
+#'         maxTaskCount = 123,
+#'         autoScalingMetric = "AVERAGE_CPU"|"AVERAGE_MEMORY"|"REQUEST_COUNT_PER_TARGET",
+#'         autoScalingTargetValue = 123
+#'       ),
+#'       ingressPaths = list(
+#'         list(
+#'           accessType = "PUBLIC"|"PRIVATE",
+#'           endpoint = "string"
+#'         )
+#'       ),
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_express_gateway_service(
+#'   serviceArn = "string",
+#'   executionRoleArn = "string",
+#'   healthCheckPath = "string",
+#'   primaryContainer = list(
+#'     image = "string",
+#'     containerPort = 123,
+#'     awsLogsConfiguration = list(
+#'       logGroup = "string",
+#'       logStreamPrefix = "string"
+#'     ),
+#'     repositoryCredentials = list(
+#'       credentialsParameter = "string"
+#'     ),
+#'     command = list(
+#'       "string"
+#'     ),
+#'     environment = list(
+#'       list(
+#'         name = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     secrets = list(
+#'       list(
+#'         name = "string",
+#'         valueFrom = "string"
+#'       )
+#'     )
+#'   ),
+#'   taskRoleArn = "string",
+#'   networkConfiguration = list(
+#'     securityGroups = list(
+#'       "string"
+#'     ),
+#'     subnets = list(
+#'       "string"
+#'     )
+#'   ),
+#'   cpu = "string",
+#'   memory = "string",
+#'   scalingTarget = list(
+#'     minTaskCount = 123,
+#'     maxTaskCount = 123,
+#'     autoScalingMetric = "AVERAGE_CPU"|"AVERAGE_MEMORY"|"REQUEST_COUNT_PER_TARGET",
+#'     autoScalingTargetValue = 123
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_update_express_gateway_service
+#'
+#' @aliases ecs_update_express_gateway_service
+ecs_update_express_gateway_service <- function(serviceArn, executionRoleArn = NULL, healthCheckPath = NULL, primaryContainer = NULL, taskRoleArn = NULL, networkConfiguration = NULL, cpu = NULL, memory = NULL, scalingTarget = NULL) {
+  op <- new_operation(
+    name = "UpdateExpressGatewayService",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecs$update_express_gateway_service_input(serviceArn = serviceArn, executionRoleArn = executionRoleArn, healthCheckPath = healthCheckPath, primaryContainer = primaryContainer, taskRoleArn = taskRoleArn, networkConfiguration = networkConfiguration, cpu = cpu, memory = memory, scalingTarget = scalingTarget)
+  output <- .ecs$update_express_gateway_service_output()
+  config <- get_config()
+  svc <- .ecs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$update_express_gateway_service <- ecs_update_express_gateway_service
+
 #' Modifies the parameters of a service
 #'
 #' @description
@@ -11089,13 +12994,13 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' 
 #' You can attach Amazon EBS volumes to Amazon ECS tasks by configuring the
 #' volume when starting or running a task, or when creating or updating a
-#' service. For more infomation, see [Amazon EBS
+#' service. For more information, see [Amazon EBS
 #' volumes](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ebs-volumes.html#ebs-volume-types)
 #' in the *Amazon Elastic Container Service Developer Guide*. You can
 #' update your volume configurations and trigger a new deployment.
 #' `volumeConfigurations` is only supported for REPLICA service and not
 #' DAEMON service. If you leave `volumeConfigurations` `null`, it doesn't
-#' trigger a new deployment. For more infomation on volumes, see [Amazon
+#' trigger a new deployment. For more information on volumes, see [Amazon
 #' EBS
 #' volumes](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ebs-volumes.html#ebs-volume-types)
 #' in the *Amazon Elastic Container Service Developer Guide*.
@@ -11124,7 +13029,7 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' 
 #' You can attach Amazon EBS volumes to Amazon ECS tasks by configuring the
 #' volume when starting or running a task, or when creating or updating a
-#' service. For more infomation, see [Amazon EBS
+#' service. For more information, see [Amazon EBS
 #' volumes](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ebs-volumes.html#ebs-volume-types)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
@@ -11205,82 +13110,100 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' -   Stop the task on a container instance in an optimal Availability
 #'     Zone (based on the previous steps), favoring container instances
 #'     with the largest number of running tasks for this service.
-#' 
-#' You must have a service-linked role when you update any of the following
-#' service properties:
-#' 
-#' -   `loadBalancers`,
-#' 
-#' -   `serviceRegistries`
-#' 
-#' For more information about the role see the
-#' [`create_service`][ecs_create_service] request parameter
-#' [`role`](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateService.html#ECS-CreateService-request-role)
-#' .
 #'
 #' @usage
 #' ecs_update_service(cluster, service, desiredCount, taskDefinition,
 #'   capacityProviderStrategy, deploymentConfiguration,
 #'   availabilityZoneRebalancing, networkConfiguration, placementConstraints,
 #'   placementStrategy, platformVersion, forceNewDeployment,
-#'   healthCheckGracePeriodSeconds, enableExecuteCommand,
-#'   enableECSManagedTags, loadBalancers, propagateTags, serviceRegistries,
-#'   serviceConnectConfiguration, volumeConfigurations,
-#'   vpcLatticeConfigurations)
+#'   healthCheckGracePeriodSeconds, deploymentController,
+#'   enableExecuteCommand, enableECSManagedTags, loadBalancers,
+#'   propagateTags, serviceRegistries, serviceConnectConfiguration,
+#'   volumeConfigurations, vpcLatticeConfigurations)
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' your service runs on. If you do not specify a cluster, the default
 #' cluster is assumed.
+#' 
+#' You can't change the cluster name.
 #' @param service &#91;required&#93; The name of the service to update.
 #' @param desiredCount The number of instantiations of the task to place and keep running in
 #' your service.
+#' 
+#' This parameter doesn't trigger a new service deployment.
 #' @param taskDefinition The `family` and `revision` (`family:revision`) or full ARN of the task
 #' definition to run in your service. If a `revision` is not specified, the
 #' latest `ACTIVE` revision is used. If you modify the task definition with
 #' [`update_service`][ecs_update_service], Amazon ECS spawns a task with
 #' the new version of the task definition and then stops an old task after
 #' the new version is running.
-#' @param capacityProviderStrategy The capacity provider strategy to update the service to use.
 #' 
-#' if the service uses the default capacity provider strategy for the
-#' cluster, the service can be updated to use one or more capacity
-#' providers as opposed to the default capacity provider strategy. However,
-#' when a service is using a capacity provider strategy that's not the
-#' default capacity provider strategy, the service can't be updated to use
-#' the cluster's default capacity provider strategy.
+#' This parameter triggers a new service deployment.
+#' @param capacityProviderStrategy The details of a capacity provider strategy. You can set a capacity
+#' provider when you create a cluster, run a task, or update a service.
 #' 
-#' A capacity provider strategy consists of one or more capacity providers
-#' along with the `base` and `weight` to assign to them. A capacity
-#' provider must be associated with the cluster to be used in a capacity
-#' provider strategy. The
-#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
-#' API is used to associate a capacity provider with a cluster. Only
-#' capacity providers with an `ACTIVE` or `UPDATING` status can be used.
+#' If you want to use Amazon ECS Managed Instances, you must use the
+#' `capacityProviderStrategy` request parameter.
 #' 
-#' If specifying a capacity provider that uses an Auto Scaling group, the
-#' capacity provider must already be created. New capacity providers can be
-#' created with the
-#' [CreateClusterCapacityProvider](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/)
-#' API operation.
+#' When you use Fargate, the capacity providers are `FARGATE` or
+#' `FARGATE_SPOT`.
 #' 
-#' To use a Fargate capacity provider, specify either the `FARGATE` or
-#' `FARGATE_SPOT` capacity providers. The Fargate capacity providers are
-#' available to all accounts and only need to be associated with a cluster
-#' to be used.
+#' When you use Amazon EC2, the capacity providers are Auto Scaling groups.
 #' 
-#' The
-#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]API
-#' operation is used to update the list of available capacity providers for
-#' a cluster after the cluster is created.
+#' You can change capacity providers for rolling deployments and blue/green
+#' deployments.
+#' 
+#' The following list provides the valid transitions:
+#' 
+#' -   Update the Fargate launch type to an Auto Scaling group capacity
+#'     provider.
+#' 
+#' -   Update the Amazon EC2 launch type to a Fargate capacity provider.
+#' 
+#' -   Update the Fargate capacity provider to an Auto Scaling group
+#'     capacity provider.
+#' 
+#' -   Update the Amazon EC2 capacity provider to a Fargate capacity
+#'     provider.
+#' 
+#' -   Update the Auto Scaling group or Fargate capacity provider back to
+#'     the launch type.
+#' 
+#'     Pass an empty list in the `capacityProviderStrategy` parameter.
+#' 
+#' For information about Amazon Web Services CDK considerations, see
+#' [Amazon Web Services CDK
+#' considerations](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/update-service-parameters.html).
+#' 
+#' This parameter doesn't trigger a new service deployment.
 #' @param deploymentConfiguration Optional deployment parameters that control how many tasks run during
 #' the deployment and the ordering of stopping and starting tasks.
+#' 
+#' This parameter doesn't trigger a new service deployment.
 #' @param availabilityZoneRebalancing Indicates whether to use Availability Zone rebalancing for the service.
 #' 
 #' For more information, see [Balancing an Amazon ECS service across
 #' Availability
 #' Zones](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-rebalancing.html)
 #' in the *Amazon Elastic Container Service Developer Guide* .
+#' 
+#' The default behavior of `AvailabilityZoneRebalancing` differs between
+#' create and update requests:
+#' 
+#' -   For create service requests, when no value is specified for
+#'     `AvailabilityZoneRebalancing`, Amazon ECS defaults the value to
+#'     `ENABLED`.
+#' 
+#' -   For update service requests, when no value is specified for
+#'     `AvailabilityZoneRebalancing`, Amazon ECS defaults to the existing
+#'     service’s `AvailabilityZoneRebalancing` value. If the service never
+#'     had an `AvailabilityZoneRebalancing` value set, Amazon ECS treats
+#'     this as `DISABLED`.
+#' 
+#' This parameter doesn't trigger a new service deployment.
 #' @param networkConfiguration An object representing the network configuration for the service.
+#' 
+#' This parameter triggers a new service deployment.
 #' @param placementConstraints An array of task placement constraint objects to update the service to
 #' use. If no value is specified, the existing placement constraints for
 #' the service will remain unchanged. If this value is specified, it will
@@ -11290,6 +13213,8 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' You can specify a maximum of 10 constraints for each task. This limit
 #' includes constraints in the task definition and those specified at
 #' runtime.
+#' 
+#' This parameter doesn't trigger a new service deployment.
 #' @param placementStrategy The task placement strategy objects to update the service to use. If no
 #' value is specified, the existing placement strategy for the service will
 #' remain unchanged. If this value is specified, it will override the
@@ -11297,12 +13222,16 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' existing placement strategy, specify an empty object.
 #' 
 #' You can specify a maximum of five strategy rules for each service.
+#' 
+#' This parameter doesn't trigger a new service deployment.
 #' @param platformVersion The platform version that your tasks in the service run on. A platform
 #' version is only specified for tasks using the Fargate launch type. If a
 #' platform version is not specified, the `LATEST` platform version is
 #' used. For more information, see [Fargate Platform
 #' Versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform-fargate.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
+#' 
+#' This parameter triggers a new service deployment.
 #' @param forceNewDeployment Determines whether to force a new deployment of the service. By default,
 #' deployments aren't forced. You can use this option to start a new
 #' deployment with no service definition changes. For example, you can
@@ -11322,11 +13251,19 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' service scheduler ignores health check status. This grace period can
 #' prevent the service scheduler from marking tasks as unhealthy and
 #' stopping them before they have time to come up.
+#' 
+#' If your service has more running tasks than desired, unhealthy tasks in
+#' the grace period might be stopped to reach the desired count.
+#' 
+#' This parameter doesn't trigger a new service deployment.
+#' @param deploymentController 
 #' @param enableExecuteCommand If `true`, this enables execute command functionality on all task
 #' containers.
 #' 
 #' If you do not want to override the value that was set when the service
 #' was created, you can set this to `null` when performing this action.
+#' 
+#' This parameter doesn't trigger a new service deployment.
 #' @param enableECSManagedTags Determines whether to turn on Amazon ECS managed tags for the tasks in
 #' the service. For more information, see [Tagging Your Amazon ECS
 #' Resources](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
@@ -11335,7 +13272,11 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' Only tasks launched after the update will reflect the update. To update
 #' the tags on all tasks, set `forceNewDeployment` to `true`, so that
 #' Amazon ECS starts new tasks with the updated tags.
-#' @param loadBalancers A list of Elastic Load Balancing load balancer objects. It contains the
+#' 
+#' This parameter doesn't trigger a new service deployment.
+#' @param loadBalancers You must have a service-linked role when you update this property
+#' 
+#' A list of Elastic Load Balancing load balancer objects. It contains the
 #' load balancer name, the container name, and the container port to access
 #' from the load balancer. The container name is as it appears in a
 #' container definition.
@@ -11367,6 +13308,8 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
 #' You can remove existing `loadBalancers` by passing an empty list.
+#' 
+#' This parameter triggers a new service deployment.
 #' @param propagateTags Determines whether to propagate the tags from the task definition or the
 #' service to the task. If no value is specified, the tags aren't
 #' propagated.
@@ -11374,7 +13317,16 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' Only tasks launched after the update will reflect the update. To update
 #' the tags on all tasks, set `forceNewDeployment` to `true`, so that
 #' Amazon ECS starts new tasks with the updated tags.
-#' @param serviceRegistries The details for the service discovery registries to assign to this
+#' 
+#' This parameter doesn't trigger a new service deployment.
+#' @param serviceRegistries You must have a service-linked role when you update this property.
+#' 
+#' For more information about the role see the
+#' [`create_service`][ecs_create_service] request parameter
+#' [`role`](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateService.html#ECS-CreateService-request-role)
+#' .
+#' 
+#' The details for the service discovery registries to assign to this
 #' service. For more information, see [Service
 #' Discovery](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
 #' 
@@ -11384,6 +13336,8 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' running.
 #' 
 #' You can remove existing `serviceRegistries` by passing an empty list.
+#' 
+#' This parameter triggers a new service deployment.
 #' @param serviceConnectConfiguration The configuration for this service to discover and connect to services,
 #' and be discovered by, and connected from, other services within a
 #' namespace.
@@ -11396,6 +13350,8 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' Connect. For more information, see [Service
 #' Connect](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
+#' 
+#' This parameter triggers a new service deployment.
 #' @param volumeConfigurations The details of the volume that was `configuredAtLaunch`. You can
 #' configure the size, volumeType, IOPS, throughput, snapshot and
 #' encryption in
@@ -11404,8 +13360,12 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' If set to null, no new deployment is triggered. Otherwise, if this
 #' configuration differs from the existing one, it triggers a new
 #' deployment.
+#' 
+#' This parameter triggers a new service deployment.
 #' @param vpcLatticeConfigurations An object representing the VPC Lattice configuration for the service
 #' being updated.
+#' 
+#' This parameter triggers a new service deployment.
 #'
 #' @return
 #' A list with the following syntax:
@@ -11420,7 +13380,13 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'         targetGroupArn = "string",
 #'         loadBalancerName = "string",
 #'         containerName = "string",
-#'         containerPort = 123
+#'         containerPort = 123,
+#'         advancedConfiguration = list(
+#'           alternateTargetGroupArn = "string",
+#'           productionListenerRule = "string",
+#'           testListenerRule = "string",
+#'           roleArn = "string"
+#'         )
 #'       )
 #'     ),
 #'     serviceRegistries = list(
@@ -11435,7 +13401,7 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'     desiredCount = 123,
 #'     runningCount = 123,
 #'     pendingCount = 123,
-#'     launchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'     launchType = "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES",
 #'     capacityProviderStrategy = list(
 #'       list(
 #'         capacityProvider = "string",
@@ -11459,6 +13425,26 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'         ),
 #'         rollback = TRUE|FALSE,
 #'         enable = TRUE|FALSE
+#'       ),
+#'       strategy = "ROLLING"|"BLUE_GREEN"|"LINEAR"|"CANARY",
+#'       bakeTimeInMinutes = 123,
+#'       lifecycleHooks = list(
+#'         list(
+#'           hookTargetArn = "string",
+#'           roleArn = "string",
+#'           lifecycleStages = list(
+#'             "RECONCILE_SERVICE"|"PRE_SCALE_UP"|"POST_SCALE_UP"|"TEST_TRAFFIC_SHIFT"|"POST_TEST_TRAFFIC_SHIFT"|"PRODUCTION_TRAFFIC_SHIFT"|"POST_PRODUCTION_TRAFFIC_SHIFT"
+#'           ),
+#'           hookDetails = list()
+#'         )
+#'       ),
+#'       linearConfiguration = list(
+#'         stepPercent = 123.0,
+#'         stepBakeTimeInMinutes = 123
+#'       ),
+#'       canaryConfiguration = list(
+#'         canaryPercent = 123.0,
+#'         canaryBakeTimeInMinutes = 123
 #'       )
 #'     ),
 #'     taskSets = list(
@@ -11480,7 +13466,7 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'         updatedAt = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
-#'         launchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'         launchType = "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES",
 #'         capacityProviderStrategy = list(
 #'           list(
 #'             capacityProvider = "string",
@@ -11506,7 +13492,13 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'             targetGroupArn = "string",
 #'             loadBalancerName = "string",
 #'             containerName = "string",
-#'             containerPort = 123
+#'             containerPort = 123,
+#'             advancedConfiguration = list(
+#'               alternateTargetGroupArn = "string",
+#'               productionListenerRule = "string",
+#'               testListenerRule = "string",
+#'               roleArn = "string"
+#'             )
 #'           )
 #'         ),
 #'         serviceRegistries = list(
@@ -11558,7 +13550,7 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'             base = 123
 #'           )
 #'         ),
-#'         launchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'         launchType = "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES",
 #'         platformVersion = "string",
 #'         platformFamily = "string",
 #'         networkConfiguration = list(
@@ -11584,7 +13576,15 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'               clientAliases = list(
 #'                 list(
 #'                   port = 123,
-#'                   dnsName = "string"
+#'                   dnsName = "string",
+#'                   testTrafficRules = list(
+#'                     header = list(
+#'                       name = "string",
+#'                       value = list(
+#'                         exact = "string"
+#'                       )
+#'                     )
+#'                   )
 #'                 )
 #'               ),
 #'               ingressPortOverride = 123,
@@ -11612,6 +13612,10 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'                 valueFrom = "string"
 #'               )
 #'             )
+#'           ),
+#'           accessLogConfiguration = list(
+#'             format = "TEXT"|"JSON",
+#'             includeQueryParameters = "DISABLED"|"ENABLED"
 #'           )
 #'         ),
 #'         serviceConnectResources = list(
@@ -11674,6 +13678,15 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
+#'     currentServiceDeployment = "string",
+#'     currentServiceRevisions = list(
+#'       list(
+#'         arn = "string",
+#'         requestedTaskCount = 123,
+#'         runningTaskCount = 123,
+#'         pendingTaskCount = 123
+#'       )
+#'     ),
 #'     placementConstraints = list(
 #'       list(
 #'         type = "distinctInstance"|"memberOf",
@@ -11712,7 +13725,8 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'     enableECSManagedTags = TRUE|FALSE,
 #'     propagateTags = "TASK_DEFINITION"|"SERVICE"|"NONE",
 #'     enableExecuteCommand = TRUE|FALSE,
-#'     availabilityZoneRebalancing = "ENABLED"|"DISABLED"
+#'     availabilityZoneRebalancing = "ENABLED"|"DISABLED",
+#'     resourceManagementType = "CUSTOMER"|"ECS"
 #'   )
 #' )
 #' ```
@@ -11744,6 +13758,26 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'       ),
 #'       rollback = TRUE|FALSE,
 #'       enable = TRUE|FALSE
+#'     ),
+#'     strategy = "ROLLING"|"BLUE_GREEN"|"LINEAR"|"CANARY",
+#'     bakeTimeInMinutes = 123,
+#'     lifecycleHooks = list(
+#'       list(
+#'         hookTargetArn = "string",
+#'         roleArn = "string",
+#'         lifecycleStages = list(
+#'           "RECONCILE_SERVICE"|"PRE_SCALE_UP"|"POST_SCALE_UP"|"TEST_TRAFFIC_SHIFT"|"POST_TEST_TRAFFIC_SHIFT"|"PRODUCTION_TRAFFIC_SHIFT"|"POST_PRODUCTION_TRAFFIC_SHIFT"
+#'         ),
+#'         hookDetails = list()
+#'       )
+#'     ),
+#'     linearConfiguration = list(
+#'       stepPercent = 123.0,
+#'       stepBakeTimeInMinutes = 123
+#'     ),
+#'     canaryConfiguration = list(
+#'       canaryPercent = 123.0,
+#'       canaryBakeTimeInMinutes = 123
 #'     )
 #'   ),
 #'   availabilityZoneRebalancing = "ENABLED"|"DISABLED",
@@ -11773,6 +13807,9 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'   platformVersion = "string",
 #'   forceNewDeployment = TRUE|FALSE,
 #'   healthCheckGracePeriodSeconds = 123,
+#'   deploymentController = list(
+#'     type = "ECS"|"CODE_DEPLOY"|"EXTERNAL"
+#'   ),
 #'   enableExecuteCommand = TRUE|FALSE,
 #'   enableECSManagedTags = TRUE|FALSE,
 #'   loadBalancers = list(
@@ -11780,7 +13817,13 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'       targetGroupArn = "string",
 #'       loadBalancerName = "string",
 #'       containerName = "string",
-#'       containerPort = 123
+#'       containerPort = 123,
+#'       advancedConfiguration = list(
+#'         alternateTargetGroupArn = "string",
+#'         productionListenerRule = "string",
+#'         testListenerRule = "string",
+#'         roleArn = "string"
+#'       )
 #'     )
 #'   ),
 #'   propagateTags = "TASK_DEFINITION"|"SERVICE"|"NONE",
@@ -11802,7 +13845,15 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'         clientAliases = list(
 #'           list(
 #'             port = 123,
-#'             dnsName = "string"
+#'             dnsName = "string",
+#'             testTrafficRules = list(
+#'               header = list(
+#'                 name = "string",
+#'                 value = list(
+#'                   exact = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         ingressPortOverride = 123,
@@ -11830,6 +13881,10 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'           valueFrom = "string"
 #'         )
 #'       )
+#'     ),
+#'     accessLogConfiguration = list(
+#'       format = "TEXT"|"JSON",
+#'       includeQueryParameters = "DISABLED"|"ENABLED"
 #'     )
 #'   ),
 #'   volumeConfigurations = list(
@@ -11893,7 +13948,7 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' @rdname ecs_update_service
 #'
 #' @aliases ecs_update_service
-ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, taskDefinition = NULL, capacityProviderStrategy = NULL, deploymentConfiguration = NULL, availabilityZoneRebalancing = NULL, networkConfiguration = NULL, placementConstraints = NULL, placementStrategy = NULL, platformVersion = NULL, forceNewDeployment = NULL, healthCheckGracePeriodSeconds = NULL, enableExecuteCommand = NULL, enableECSManagedTags = NULL, loadBalancers = NULL, propagateTags = NULL, serviceRegistries = NULL, serviceConnectConfiguration = NULL, volumeConfigurations = NULL, vpcLatticeConfigurations = NULL) {
+ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, taskDefinition = NULL, capacityProviderStrategy = NULL, deploymentConfiguration = NULL, availabilityZoneRebalancing = NULL, networkConfiguration = NULL, placementConstraints = NULL, placementStrategy = NULL, platformVersion = NULL, forceNewDeployment = NULL, healthCheckGracePeriodSeconds = NULL, deploymentController = NULL, enableExecuteCommand = NULL, enableECSManagedTags = NULL, loadBalancers = NULL, propagateTags = NULL, serviceRegistries = NULL, serviceConnectConfiguration = NULL, volumeConfigurations = NULL, vpcLatticeConfigurations = NULL) {
   op <- new_operation(
     name = "UpdateService",
     http_method = "POST",
@@ -11902,7 +13957,7 @@ ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, tas
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ecs$update_service_input(cluster = cluster, service = service, desiredCount = desiredCount, taskDefinition = taskDefinition, capacityProviderStrategy = capacityProviderStrategy, deploymentConfiguration = deploymentConfiguration, availabilityZoneRebalancing = availabilityZoneRebalancing, networkConfiguration = networkConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, platformVersion = platformVersion, forceNewDeployment = forceNewDeployment, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds, enableExecuteCommand = enableExecuteCommand, enableECSManagedTags = enableECSManagedTags, loadBalancers = loadBalancers, propagateTags = propagateTags, serviceRegistries = serviceRegistries, serviceConnectConfiguration = serviceConnectConfiguration, volumeConfigurations = volumeConfigurations, vpcLatticeConfigurations = vpcLatticeConfigurations)
+  input <- .ecs$update_service_input(cluster = cluster, service = service, desiredCount = desiredCount, taskDefinition = taskDefinition, capacityProviderStrategy = capacityProviderStrategy, deploymentConfiguration = deploymentConfiguration, availabilityZoneRebalancing = availabilityZoneRebalancing, networkConfiguration = networkConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, platformVersion = platformVersion, forceNewDeployment = forceNewDeployment, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds, deploymentController = deploymentController, enableExecuteCommand = enableExecuteCommand, enableECSManagedTags = enableECSManagedTags, loadBalancers = loadBalancers, propagateTags = propagateTags, serviceRegistries = serviceRegistries, serviceConnectConfiguration = serviceConnectConfiguration, volumeConfigurations = volumeConfigurations, vpcLatticeConfigurations = vpcLatticeConfigurations)
   output <- .ecs$update_service_output()
   config <- get_config()
   svc <- .ecs$service(config, op)
@@ -11955,7 +14010,7 @@ ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, tas
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     launchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'     launchType = "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES",
 #'     capacityProviderStrategy = list(
 #'       list(
 #'         capacityProvider = "string",
@@ -11981,7 +14036,13 @@ ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, tas
 #'         targetGroupArn = "string",
 #'         loadBalancerName = "string",
 #'         containerName = "string",
-#'         containerPort = 123
+#'         containerPort = 123,
+#'         advancedConfiguration = list(
+#'           alternateTargetGroupArn = "string",
+#'           productionListenerRule = "string",
+#'           testListenerRule = "string",
+#'           roleArn = "string"
+#'         )
 #'       )
 #'     ),
 #'     serviceRegistries = list(
@@ -12202,7 +14263,7 @@ ecs_update_task_protection <- function(cluster, tasks, protectionEnabled, expire
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     launchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'     launchType = "EC2"|"FARGATE"|"EXTERNAL"|"MANAGED_INSTANCES",
 #'     capacityProviderStrategy = list(
 #'       list(
 #'         capacityProvider = "string",
@@ -12228,7 +14289,13 @@ ecs_update_task_protection <- function(cluster, tasks, protectionEnabled, expire
 #'         targetGroupArn = "string",
 #'         loadBalancerName = "string",
 #'         containerName = "string",
-#'         containerPort = 123
+#'         containerPort = 123,
+#'         advancedConfiguration = list(
+#'           alternateTargetGroupArn = "string",
+#'           productionListenerRule = "string",
+#'           testListenerRule = "string",
+#'           roleArn = "string"
+#'         )
 #'       )
 #'     ),
 #'     serviceRegistries = list(

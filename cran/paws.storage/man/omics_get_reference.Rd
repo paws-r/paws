@@ -2,7 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_get_reference}
 \alias{omics_get_reference}
-\title{Gets a reference file}
+\title{Downloads parts of data from a reference genome and returns the
+reference file in the same format that it was uploaded}
 \usage{
 omics_get_reference(
   id,
@@ -24,7 +25,7 @@ omics_get_reference(
 \item{file}{The file to retrieve.}
 }
 \description{
-Gets a reference file.
+Downloads parts of data from a reference genome and returns the reference file in the same format that it was uploaded.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_get_reference/} for full documentation.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_get_workflow}
 \alias{omics_get_workflow}
-\title{Gets information about a workflow}
+\title{Gets all information about a workflow using its ID}
 \usage{
 omics_get_workflow(id, type = NULL, export = NULL, workflowOwnerId = NULL)
 }
@@ -16,7 +16,7 @@ omics_get_workflow(id, type = NULL, export = NULL, workflowOwnerId = NULL)
 \item{workflowOwnerId}{The ID of the workflow owner.}
 }
 \description{
-Gets information about a workflow.
+Gets all information about a workflow using its ID.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_get_workflow/} for full documentation.
 }

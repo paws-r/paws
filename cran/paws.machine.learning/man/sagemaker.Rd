@@ -103,8 +103,12 @@ Other Resources:
 \link[=sagemaker_add_association]{add_association} \tab Creates an association between the source and the destination\cr
 \link[=sagemaker_add_tags]{add_tags} \tab Adds or overwrites one or more tags for the specified SageMaker resource\cr
 \link[=sagemaker_associate_trial_component]{associate_trial_component} \tab Associates a trial component with a trial\cr
+\link[=sagemaker_attach_cluster_node_volume]{attach_cluster_node_volume} \tab Attaches your Amazon Elastic Block Store (Amazon EBS) volume to a node in your EKS orchestrated HyperPod cluster\cr
+\link[=sagemaker_batch_add_cluster_nodes]{batch_add_cluster_nodes} \tab Adds nodes to a HyperPod cluster by incrementing the target count for one or more instance groups\cr
 \link[=sagemaker_batch_delete_cluster_nodes]{batch_delete_cluster_nodes} \tab Deletes specific nodes within a SageMaker HyperPod cluster\cr
 \link[=sagemaker_batch_describe_model_package]{batch_describe_model_package} \tab This action batch describes a list of versioned model packages\cr
+\link[=sagemaker_batch_reboot_cluster_nodes]{batch_reboot_cluster_nodes} \tab Reboots specific nodes within a SageMaker HyperPod cluster using a soft recovery mechanism\cr
+\link[=sagemaker_batch_replace_cluster_nodes]{batch_replace_cluster_nodes} \tab Replaces specific nodes within a SageMaker HyperPod cluster with new hardware\cr
 \link[=sagemaker_create_action]{create_action} \tab Creates an action\cr
 \link[=sagemaker_create_algorithm]{create_algorithm} \tab Create a machine learning algorithm that you can use in SageMaker and list in the Amazon Web Services Marketplace\cr
 \link[=sagemaker_create_app]{create_app} \tab Creates a running app for the specified UserProfile\cr
@@ -112,7 +116,7 @@ Other Resources:
 \link[=sagemaker_create_artifact]{create_artifact} \tab Creates an artifact\cr
 \link[=sagemaker_create_auto_ml_job]{create_auto_ml_job} \tab Creates an Autopilot job also referred to as Autopilot experiment or AutoML job\cr
 \link[=sagemaker_create_auto_ml_job_v2]{create_auto_ml_job_v2} \tab Creates an Autopilot job also referred to as Autopilot experiment or AutoML job V2\cr
-\link[=sagemaker_create_cluster]{create_cluster} \tab Creates a SageMaker HyperPod cluster\cr
+\link[=sagemaker_create_cluster]{create_cluster} \tab Creates an Amazon SageMaker HyperPod cluster\cr
 \link[=sagemaker_create_cluster_scheduler_config]{create_cluster_scheduler_config} \tab Create cluster policy configuration\cr
 \link[=sagemaker_create_code_repository]{create_code_repository} \tab Creates a Git repository as a resource in your SageMaker AI account\cr
 \link[=sagemaker_create_compilation_job]{create_compilation_job} \tab Starts a model compilation job\cr
@@ -130,6 +134,7 @@ Other Resources:
 \link[=sagemaker_create_feature_group]{create_feature_group} \tab Create a new FeatureGroup\cr
 \link[=sagemaker_create_flow_definition]{create_flow_definition} \tab Creates a flow definition\cr
 \link[=sagemaker_create_hub]{create_hub} \tab Create a hub\cr
+\link[=sagemaker_create_hub_content_presigned_urls]{create_hub_content_presigned_urls} \tab Creates presigned URLs for accessing hub content artifacts\cr
 \link[=sagemaker_create_hub_content_reference]{create_hub_content_reference} \tab Create a hub content reference in order to add a model in the JumpStart public hub to a private hub\cr
 \link[=sagemaker_create_human_task_ui]{create_human_task_ui} \tab Defines the settings you will use for the human review workflow user interface\cr
 \link[=sagemaker_create_hyper_parameter_tuning_job]{create_hyper_parameter_tuning_job} \tab Starts a hyperparameter tuning job\cr
@@ -139,6 +144,7 @@ Other Resources:
 \link[=sagemaker_create_inference_experiment]{create_inference_experiment} \tab Creates an inference experiment using the configurations specified in the request\cr
 \link[=sagemaker_create_inference_recommendations_job]{create_inference_recommendations_job} \tab Starts a recommendation job\cr
 \link[=sagemaker_create_labeling_job]{create_labeling_job} \tab Creates a job that uses workers to label the data objects in your input dataset\cr
+\link[=sagemaker_create_mlflow_app]{create_mlflow_app} \tab Creates an MLflow Tracking Server using a general purpose Amazon S3 bucket as the artifact store\cr
 \link[=sagemaker_create_mlflow_tracking_server]{create_mlflow_tracking_server} \tab Creates an MLflow Tracking Server using a general purpose Amazon S3 bucket as the artifact store\cr
 \link[=sagemaker_create_model]{create_model} \tab Creates a model in SageMaker\cr
 \link[=sagemaker_create_model_bias_job_definition]{create_model_bias_job_definition} \tab Creates the definition for a model bias job\cr
@@ -156,6 +162,7 @@ Other Resources:
 \link[=sagemaker_create_partner_app_presigned_url]{create_partner_app_presigned_url} \tab Creates a presigned URL to access an Amazon SageMaker Partner AI App\cr
 \link[=sagemaker_create_pipeline]{create_pipeline} \tab Creates a pipeline using a JSON pipeline definition\cr
 \link[=sagemaker_create_presigned_domain_url]{create_presigned_domain_url} \tab Creates a URL for a specified UserProfile in a Domain\cr
+\link[=sagemaker_create_presigned_mlflow_app_url]{create_presigned_mlflow_app_url} \tab Returns a presigned URL that you can use to connect to the MLflow UI attached to your MLflow App\cr
 \link[=sagemaker_create_presigned_mlflow_tracking_server_url]{create_presigned_mlflow_tracking_server_url} \tab Returns a presigned URL that you can use to connect to the MLflow UI attached to your tracking server\cr
 \link[=sagemaker_create_presigned_notebook_instance_url]{create_presigned_notebook_instance_url} \tab Returns a URL that you can use to connect to the Jupyter server from a notebook instance\cr
 \link[=sagemaker_create_processing_job]{create_processing_job} \tab Creates a processing job\cr
@@ -201,6 +208,7 @@ Other Resources:
 \link[=sagemaker_delete_image_version]{delete_image_version} \tab Deletes a version of a SageMaker AI image\cr
 \link[=sagemaker_delete_inference_component]{delete_inference_component} \tab Deletes an inference component\cr
 \link[=sagemaker_delete_inference_experiment]{delete_inference_experiment} \tab Deletes an inference experiment\cr
+\link[=sagemaker_delete_mlflow_app]{delete_mlflow_app} \tab Deletes an MLflow App\cr
 \link[=sagemaker_delete_mlflow_tracking_server]{delete_mlflow_tracking_server} \tab Deletes an MLflow Tracking Server\cr
 \link[=sagemaker_delete_model]{delete_model} \tab Deletes a model\cr
 \link[=sagemaker_delete_model_bias_job_definition]{delete_model_bias_job_definition} \tab Deletes an Amazon SageMaker AI model bias job definition\cr
@@ -216,10 +224,12 @@ Other Resources:
 \link[=sagemaker_delete_optimization_job]{delete_optimization_job} \tab Deletes an optimization job\cr
 \link[=sagemaker_delete_partner_app]{delete_partner_app} \tab Deletes a SageMaker Partner AI App\cr
 \link[=sagemaker_delete_pipeline]{delete_pipeline} \tab Deletes a pipeline if there are no running instances of the pipeline\cr
+\link[=sagemaker_delete_processing_job]{delete_processing_job} \tab Deletes a processing job\cr
 \link[=sagemaker_delete_project]{delete_project} \tab Delete the specified project\cr
 \link[=sagemaker_delete_space]{delete_space} \tab Used to delete a space\cr
 \link[=sagemaker_delete_studio_lifecycle_config]{delete_studio_lifecycle_config} \tab Deletes the Amazon SageMaker AI Studio Lifecycle Configuration\cr
 \link[=sagemaker_delete_tags]{delete_tags} \tab Deletes the specified tags from an SageMaker resource\cr
+\link[=sagemaker_delete_training_job]{delete_training_job} \tab Deletes a training job\cr
 \link[=sagemaker_delete_trial]{delete_trial} \tab Deletes the specified trial\cr
 \link[=sagemaker_delete_trial_component]{delete_trial_component} \tab Deletes the specified trial component\cr
 \link[=sagemaker_delete_user_profile]{delete_user_profile} \tab Deletes a user profile\cr
@@ -234,6 +244,7 @@ Other Resources:
 \link[=sagemaker_describe_auto_ml_job]{describe_auto_ml_job} \tab Returns information about an AutoML job created by calling CreateAutoMLJob\cr
 \link[=sagemaker_describe_auto_ml_job_v2]{describe_auto_ml_job_v2} \tab Returns information about an AutoML job created by calling CreateAutoMLJobV2 or CreateAutoMLJob\cr
 \link[=sagemaker_describe_cluster]{describe_cluster} \tab Retrieves information of a SageMaker HyperPod cluster\cr
+\link[=sagemaker_describe_cluster_event]{describe_cluster_event} \tab Retrieves detailed information about a specific event for a given HyperPod cluster\cr
 \link[=sagemaker_describe_cluster_node]{describe_cluster_node} \tab Retrieves information of a node (also called a instance interchangeably) of a SageMaker HyperPod cluster\cr
 \link[=sagemaker_describe_cluster_scheduler_config]{describe_cluster_scheduler_config} \tab Description of the cluster policy\cr
 \link[=sagemaker_describe_code_repository]{describe_code_repository} \tab Gets details about the specified Git repository\cr
@@ -263,6 +274,7 @@ Other Resources:
 \link[=sagemaker_describe_inference_recommendations_job]{describe_inference_recommendations_job} \tab Provides the results of the Inference Recommender job\cr
 \link[=sagemaker_describe_labeling_job]{describe_labeling_job} \tab Gets information about a labeling job\cr
 \link[=sagemaker_describe_lineage_group]{describe_lineage_group} \tab Provides a list of properties for the requested lineage group\cr
+\link[=sagemaker_describe_mlflow_app]{describe_mlflow_app} \tab Returns information about an MLflow App\cr
 \link[=sagemaker_describe_mlflow_tracking_server]{describe_mlflow_tracking_server} \tab Returns information about an MLflow Tracking Server\cr
 \link[=sagemaker_describe_model]{describe_model} \tab Describes a model that you created using the CreateModel API\cr
 \link[=sagemaker_describe_model_bias_job_definition]{describe_model_bias_job_definition} \tab Returns a description of a model bias job definition\cr
@@ -282,6 +294,7 @@ Other Resources:
 \link[=sagemaker_describe_pipeline_execution]{describe_pipeline_execution} \tab Describes the details of a pipeline execution\cr
 \link[=sagemaker_describe_processing_job]{describe_processing_job} \tab Returns a description of a processing job\cr
 \link[=sagemaker_describe_project]{describe_project} \tab Describes the details of a project\cr
+\link[=sagemaker_describe_reserved_capacity]{describe_reserved_capacity} \tab Retrieves details about a reserved capacity\cr
 \link[=sagemaker_describe_space]{describe_space} \tab Describes the space\cr
 \link[=sagemaker_describe_studio_lifecycle_config]{describe_studio_lifecycle_config} \tab Describes the Amazon SageMaker AI Studio Lifecycle Configuration\cr
 \link[=sagemaker_describe_subscribed_workteam]{describe_subscribed_workteam} \tab Gets information about a work team provided by a vendor\cr
@@ -293,6 +306,7 @@ Other Resources:
 \link[=sagemaker_describe_user_profile]{describe_user_profile} \tab Describes a user profile\cr
 \link[=sagemaker_describe_workforce]{describe_workforce} \tab Lists private workforce information, including workforce name, Amazon Resource Name (ARN), and, if applicable, allowed IP address ranges (CIDRs)\cr
 \link[=sagemaker_describe_workteam]{describe_workteam} \tab Gets information about a specific work team\cr
+\link[=sagemaker_detach_cluster_node_volume]{detach_cluster_node_volume} \tab Detaches your Amazon Elastic Block Store (Amazon EBS) volume from a node in your EKS orchestrated SageMaker HyperPod cluster\cr
 \link[=sagemaker_disable_sagemaker_servicecatalog_portfolio]{disable_sagemaker_servicecatalog_portfolio} \tab Disables using Service Catalog in SageMaker\cr
 \link[=sagemaker_disassociate_trial_component]{disassociate_trial_component} \tab Disassociates a trial component from a trial\cr
 \link[=sagemaker_enable_sagemaker_servicecatalog_portfolio]{enable_sagemaker_servicecatalog_portfolio} \tab Enables using Service Catalog in SageMaker\cr
@@ -312,6 +326,7 @@ Other Resources:
 \link[=sagemaker_list_associations]{list_associations} \tab Lists the associations in your account and their properties\cr
 \link[=sagemaker_list_auto_ml_jobs]{list_auto_ml_jobs} \tab Request a list of jobs\cr
 \link[=sagemaker_list_candidates_for_auto_ml_job]{list_candidates_for_auto_ml_job} \tab List the candidates created for the job\cr
+\link[=sagemaker_list_cluster_events]{list_cluster_events} \tab Retrieves a list of event summaries for a specified HyperPod cluster\cr
 \link[=sagemaker_list_cluster_nodes]{list_cluster_nodes} \tab Retrieves the list of instances (also called nodes interchangeably) in a SageMaker HyperPod cluster\cr
 \link[=sagemaker_list_clusters]{list_clusters} \tab Retrieves the list of SageMaker HyperPod clusters\cr
 \link[=sagemaker_list_cluster_scheduler_configs]{list_cluster_scheduler_configs} \tab List the cluster policy configurations\cr
@@ -344,6 +359,7 @@ Other Resources:
 \link[=sagemaker_list_labeling_jobs]{list_labeling_jobs} \tab Gets a list of labeling jobs\cr
 \link[=sagemaker_list_labeling_jobs_for_workteam]{list_labeling_jobs_for_workteam} \tab Gets a list of labeling jobs assigned to a specified work team\cr
 \link[=sagemaker_list_lineage_groups]{list_lineage_groups} \tab A list of lineage groups shared with your Amazon Web Services account\cr
+\link[=sagemaker_list_mlflow_apps]{list_mlflow_apps} \tab Lists all MLflow Apps\cr
 \link[=sagemaker_list_mlflow_tracking_servers]{list_mlflow_tracking_servers} \tab Lists all MLflow Tracking Servers\cr
 \link[=sagemaker_list_model_bias_job_definitions]{list_model_bias_job_definitions} \tab Lists model bias jobs definitions that satisfy various filters\cr
 \link[=sagemaker_list_model_card_export_jobs]{list_model_card_export_jobs} \tab List the export jobs for the Amazon SageMaker Model Card\cr
@@ -367,6 +383,7 @@ Other Resources:
 \link[=sagemaker_list_pipeline_execution_steps]{list_pipeline_execution_steps} \tab Gets a list of PipeLineExecutionStep objects\cr
 \link[=sagemaker_list_pipeline_parameters_for_execution]{list_pipeline_parameters_for_execution} \tab Gets a list of parameters for a pipeline execution\cr
 \link[=sagemaker_list_pipelines]{list_pipelines} \tab Gets a list of pipelines\cr
+\link[=sagemaker_list_pipeline_versions]{list_pipeline_versions} \tab Gets a list of all versions of the pipeline\cr
 \link[=sagemaker_list_processing_jobs]{list_processing_jobs} \tab Lists processing jobs that satisfy various filters\cr
 \link[=sagemaker_list_projects]{list_projects} \tab Gets a list of the projects in an Amazon Web Services account\cr
 \link[=sagemaker_list_resource_catalogs]{list_resource_catalogs} \tab Lists Amazon SageMaker Catalogs based on given filters and orders\cr
@@ -381,6 +398,7 @@ Other Resources:
 \link[=sagemaker_list_transform_jobs]{list_transform_jobs} \tab Lists transform jobs\cr
 \link[=sagemaker_list_trial_components]{list_trial_components} \tab Lists the trial components in your account\cr
 \link[=sagemaker_list_trials]{list_trials} \tab Lists the trials in your account\cr
+\link[=sagemaker_list_ultra_servers_by_reserved_capacity]{list_ultra_servers_by_reserved_capacity} \tab Lists all UltraServers that are part of a specified reserved capacity\cr
 \link[=sagemaker_list_user_profiles]{list_user_profiles} \tab Lists user profiles\cr
 \link[=sagemaker_list_workforces]{list_workforces} \tab Use this operation to list all private and vendor workforces in an Amazon Web Services Region\cr
 \link[=sagemaker_list_workteams]{list_workteams} \tab Gets a list of private work teams that you have defined in a region\cr
@@ -399,6 +417,7 @@ Other Resources:
 \link[=sagemaker_start_monitoring_schedule]{start_monitoring_schedule} \tab Starts a previously stopped monitoring schedule\cr
 \link[=sagemaker_start_notebook_instance]{start_notebook_instance} \tab Launches an ML compute instance with the latest version of the libraries and attaches your ML storage volume\cr
 \link[=sagemaker_start_pipeline_execution]{start_pipeline_execution} \tab Starts a pipeline execution\cr
+\link[=sagemaker_start_session]{start_session} \tab Initiates a remote connection session between a local integrated development environments (IDEs) and a remote SageMaker space\cr
 \link[=sagemaker_stop_auto_ml_job]{stop_auto_ml_job} \tab A method for forcing a running job to shut down\cr
 \link[=sagemaker_stop_compilation_job]{stop_compilation_job} \tab Stops a model compilation job\cr
 \link[=sagemaker_stop_edge_deployment_stage]{stop_edge_deployment_stage} \tab Stops a stage in an edge deployment plan\cr
@@ -440,6 +459,7 @@ Other Resources:
 \link[=sagemaker_update_inference_component]{update_inference_component} \tab Updates an inference component\cr
 \link[=sagemaker_update_inference_component_runtime_config]{update_inference_component_runtime_config} \tab Runtime settings for a model that is deployed with an inference component\cr
 \link[=sagemaker_update_inference_experiment]{update_inference_experiment} \tab Updates an inference experiment that you created\cr
+\link[=sagemaker_update_mlflow_app]{update_mlflow_app} \tab Updates an MLflow App\cr
 \link[=sagemaker_update_mlflow_tracking_server]{update_mlflow_tracking_server} \tab Updates properties of an existing MLflow Tracking Server\cr
 \link[=sagemaker_update_model_card]{update_model_card} \tab Update an Amazon SageMaker Model Card\cr
 \link[=sagemaker_update_model_package]{update_model_package} \tab Updates a versioned model\cr
@@ -450,6 +470,7 @@ Other Resources:
 \link[=sagemaker_update_partner_app]{update_partner_app} \tab Updates all of the SageMaker Partner AI Apps in an account\cr
 \link[=sagemaker_update_pipeline]{update_pipeline} \tab Updates a pipeline\cr
 \link[=sagemaker_update_pipeline_execution]{update_pipeline_execution} \tab Updates a pipeline execution\cr
+\link[=sagemaker_update_pipeline_version]{update_pipeline_version} \tab Updates a pipeline version\cr
 \link[=sagemaker_update_project]{update_project} \tab Updates a machine learning (ML) project that is created from a template that sets up an ML pipeline from training to deploying an approved model\cr
 \link[=sagemaker_update_space]{update_space} \tab Updates the settings of a space\cr
 \link[=sagemaker_update_training_job]{update_training_job} \tab Update a model training job to request a new Debugger profiling configuration or to change warm pool retention length\cr

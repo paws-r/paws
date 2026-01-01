@@ -4,10 +4,13 @@
 \alias{sagemaker_describe_partner_app}
 \title{Gets information about a SageMaker Partner AI App}
 \usage{
-sagemaker_describe_partner_app(Arn)
+sagemaker_describe_partner_app(Arn, IncludeAvailableUpgrade = NULL)
 }
 \arguments{
 \item{Arn}{[required] The ARN of the SageMaker Partner AI App to describe.}
+
+\item{IncludeAvailableUpgrade}{When set to \code{TRUE}, the response includes available upgrade information
+for the SageMaker Partner AI App. Default is \code{FALSE}.}
 }
 \description{
 Gets information about a SageMaker Partner AI App.

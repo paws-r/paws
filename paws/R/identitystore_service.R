@@ -14,7 +14,11 @@ NULL
 #' can call programmatically and includes detailed information about data
 #' types and errors.
 #' 
-#' IAM Identity Center uses the `sso` and `identitystore` API namespaces.
+#' IAM Identity Center uses the `sso`, `sso-directory`, and `identitystore`
+#' API namespaces. The `sso-directory` and `identitystore` namespaces
+#' authorize access to data in the Identity Store. Make sure your policies
+#' with IAM actions from these two namespaces are consistent to avoid
+#' conflicting authorization to the same data.
 #'
 #' @param
 #' config
@@ -116,8 +120,8 @@ NULL
 #'  \link[=identitystore_list_group_memberships_for_member]{list_group_memberships_for_member} \tab For the specified member in the specified identity store, returns the list of all GroupMembership objects and returns results in paginated form\cr
 #'  \link[=identitystore_list_groups]{list_groups} \tab Lists all groups in the identity store\cr
 #'  \link[=identitystore_list_users]{list_users} \tab Lists all users in the identity store\cr
-#'  \link[=identitystore_update_group]{update_group} \tab For the specified group in the specified identity store, updates the group metadata and attributes\cr
-#'  \link[=identitystore_update_user]{update_user} \tab For the specified user in the specified identity store, updates the user metadata and attributes
+#'  \link[=identitystore_update_group]{update_group} \tab Updates the specified group metadata and attributes in the specified identity store\cr
+#'  \link[=identitystore_update_user]{update_user} \tab Updates the specified user metadata and attributes in the specified identity store
 #' }
 #'
 #' @return

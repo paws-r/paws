@@ -4,14 +4,25 @@
 \alias{servicediscovery_discover_instances_revision}
 \title{Discovers the increasing revision associated with an instance}
 \usage{
-servicediscovery_discover_instances_revision(NamespaceName, ServiceName)
+servicediscovery_discover_instances_revision(
+  NamespaceName,
+  ServiceName,
+  OwnerAccount = NULL
+)
 }
 \arguments{
-\item{NamespaceName}{[required] The \code{HttpName} name of the namespace. It's found in the \code{HttpProperties}
-member of the \code{Properties} member of the namespace.}
+\item{NamespaceName}{[required] The \code{HttpName} name of the namespace. The \code{HttpName} is found in the
+\code{HttpProperties} member of the \code{Properties} member of the namespace.}
 
 \item{ServiceName}{[required] The name of the service that you specified when you registered the
 instance.}
+
+\item{OwnerAccount}{The ID of the Amazon Web Services account that owns the namespace
+associated with the instance, as specified in the namespace
+\code{ResourceOwner} field. For instances associated with namespaces that are
+shared with your account, you must specify an \code{OwnerAccount}. For more
+information about shared namespaces, see \href{https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html}{Cross-account Cloud Map namespace sharing}
+in the \emph{Cloud Map Developer Guide}.}
 }
 \description{
 Discovers the increasing revision associated with an instance.

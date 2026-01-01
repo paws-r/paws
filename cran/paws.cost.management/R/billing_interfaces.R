@@ -3,9 +3,21 @@
 #' @include billing_service.R
 NULL
 
+.billing$associate_source_views_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), sourceViews = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.billing$associate_source_views_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .billing$create_billing_view_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), sourceViews = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), dataFilterExpression = structure(list(dimensions = structure(list(key = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), tags = structure(list(key = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), resourceTags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), sourceViews = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), dataFilterExpression = structure(list(dimensions = structure(list(key = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), tags = structure(list(key = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), timeRange = structure(list(beginDateInclusive = structure(logical(0), tags = list(type = "timestamp")), endDateInclusive = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), resourceTags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -17,11 +29,23 @@ NULL
 
 .billing$delete_billing_view_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), force = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .billing$delete_billing_view_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.billing$disassociate_source_views_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), sourceViews = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.billing$disassociate_source_views_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -35,7 +59,7 @@ NULL
 
 .billing$get_billing_view_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(billingView = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), billingViewType = structure(logical(0), tags = list(type = "string")), ownerAccountId = structure(logical(0), tags = list(type = "string")), dataFilterExpression = structure(list(dimensions = structure(list(key = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), tags = structure(list(key = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp")), updatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(billingView = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), billingViewType = structure(logical(0), tags = list(type = "string")), ownerAccountId = structure(logical(0), tags = list(type = "string")), sourceAccountId = structure(logical(0), tags = list(type = "string")), dataFilterExpression = structure(list(dimensions = structure(list(key = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), tags = structure(list(key = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), timeRange = structure(list(beginDateInclusive = structure(logical(0), tags = list(type = "timestamp")), endDateInclusive = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp")), updatedAt = structure(logical(0), tags = list(type = "timestamp")), derivedViewCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), sourceViewCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), viewDefinitionLastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), healthStatus = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -53,13 +77,13 @@ NULL
 
 .billing$list_billing_views_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(activeTimeRange = structure(list(activeAfterInclusive = structure(logical(0), tags = list(type = "timestamp")), activeBeforeInclusive = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), arns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), billingViewTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ownerAccountId = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(activeTimeRange = structure(list(activeAfterInclusive = structure(logical(0), tags = list(type = "timestamp")), activeBeforeInclusive = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), arns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), billingViewTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), names = structure(list(structure(list(searchOption = structure(logical(0), tags = list(type = "string")), searchValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ownerAccountId = structure(logical(0), tags = list(type = "string")), sourceAccountId = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .billing$list_billing_views_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(billingViews = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ownerAccountId = structure(logical(0), tags = list(type = "string")), billingViewType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(billingViews = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ownerAccountId = structure(logical(0), tags = list(type = "string")), sourceAccountId = structure(logical(0), tags = list(type = "string")), billingViewType = structure(logical(0), tags = list(type = "string")), healthStatus = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -113,7 +137,7 @@ NULL
 
 .billing$update_billing_view_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), dataFilterExpression = structure(list(dimensions = structure(list(key = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), tags = structure(list(key = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), dataFilterExpression = structure(list(dimensions = structure(list(key = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), tags = structure(list(key = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), timeRange = structure(list(beginDateInclusive = structure(logical(0), tags = list(type = "timestamp")), endDateInclusive = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

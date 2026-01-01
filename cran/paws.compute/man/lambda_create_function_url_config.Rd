@@ -32,7 +32,7 @@ the function name, it is limited to 64 characters in length.}
 \item{AuthType}{[required] The type of authentication that your function URL uses. Set to \code{AWS_IAM}
 if you want to restrict access to authenticated users only. Set to
 \code{NONE} if you want to bypass IAM authentication to create a public
-endpoint. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html}{Security and auth model for Lambda function URLs}.}
+endpoint. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html}{Control access to Lambda function URLs}.}
 
 \item{Cors}{The \href{https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS}{cross-origin resource sharing (CORS)}
 settings for your function URL.}
@@ -46,8 +46,7 @@ maximum payload size is 6 MB.
 \item \code{RESPONSE_STREAM} – Your function streams payload results as they
 become available. Lambda invokes your function using the
 \code{\link[=lambda_invoke_with_response_stream]{invoke_with_response_stream}}
-API operation. The maximum response payload size is 20 MB, however,
-you can \href{https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html}{request a quota increase}.
+API operation. The maximum response payload size is 200 MB.
 }}
 }
 \description{

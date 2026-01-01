@@ -24,7 +24,13 @@ You can use a custom label or use the following variables:
 \item \verb{$AccountEmail} is the globally unique email address of the account
 \item \verb{$AccountEmailNoDomain} is the email address of the account without
 the domain name
-}}
+}
+
+In the Amazon Web Services GovCloud (US-East) and Amazon Web Services
+GovCloud (US-West) Regions, the only supported option is to use custom
+labels, and the \verb{$AccountName}, \verb{$AccountEmail}, and
+\verb{$AccountEmailNoDomain} variables all resolve as \emph{account-id} instead of
+the specified variable.}
 
 \item{LinkConfiguration}{Use this structure to optionally create filters that specify that only
 some metric namespaces or log groups are to be shared from the source

@@ -127,7 +127,7 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 #' @usage
 #' lambda_add_permission(FunctionName, StatementId, Action, Principal,
 #'   SourceArn, SourceAccount, EventSourceToken, Qualifier, RevisionId,
-#'   PrincipalOrgID, FunctionUrlAuthType)
+#'   PrincipalOrgID, FunctionUrlAuthType, InvokedViaFunctionUrl)
 #'
 #' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function, version, or alias.
 #' 
@@ -175,9 +175,10 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 #' @param FunctionUrlAuthType The type of authentication that your function URL uses. Set to `AWS_IAM`
 #' if you want to restrict access to authenticated users only. Set to
 #' `NONE` if you want to bypass IAM authentication to create a public
-#' endpoint. For more information, see [Security and auth model for Lambda
-#' function
+#' endpoint. For more information, see [Control access to Lambda function
 #' URLs](https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html).
+#' @param InvokedViaFunctionUrl Indicates whether the permission applies when the function is invoked
+#' through a function URL.
 #'
 #' @return
 #' A list with the following syntax:
@@ -200,7 +201,8 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 #'   Qualifier = "string",
 #'   RevisionId = "string",
 #'   PrincipalOrgID = "string",
-#'   FunctionUrlAuthType = "NONE"|"AWS_IAM"
+#'   FunctionUrlAuthType = "NONE"|"AWS_IAM",
+#'   InvokedViaFunctionUrl = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -233,7 +235,7 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 #' @rdname lambda_add_permission
 #'
 #' @aliases lambda_add_permission
-lambda_add_permission <- function(FunctionName, StatementId, Action, Principal, SourceArn = NULL, SourceAccount = NULL, EventSourceToken = NULL, Qualifier = NULL, RevisionId = NULL, PrincipalOrgID = NULL, FunctionUrlAuthType = NULL) {
+lambda_add_permission <- function(FunctionName, StatementId, Action, Principal, SourceArn = NULL, SourceAccount = NULL, EventSourceToken = NULL, Qualifier = NULL, RevisionId = NULL, PrincipalOrgID = NULL, FunctionUrlAuthType = NULL, InvokedViaFunctionUrl = NULL) {
   op <- new_operation(
     name = "AddPermission",
     http_method = "POST",
@@ -242,7 +244,7 @@ lambda_add_permission <- function(FunctionName, StatementId, Action, Principal, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$add_permission_input(FunctionName = FunctionName, StatementId = StatementId, Action = Action, Principal = Principal, SourceArn = SourceArn, SourceAccount = SourceAccount, EventSourceToken = EventSourceToken, Qualifier = Qualifier, RevisionId = RevisionId, PrincipalOrgID = PrincipalOrgID, FunctionUrlAuthType = FunctionUrlAuthType)
+  input <- .lambda$add_permission_input(FunctionName = FunctionName, StatementId = StatementId, Action = Action, Principal = Principal, SourceArn = SourceArn, SourceAccount = SourceAccount, EventSourceToken = EventSourceToken, Qualifier = Qualifier, RevisionId = RevisionId, PrincipalOrgID = PrincipalOrgID, FunctionUrlAuthType = FunctionUrlAuthType, InvokedViaFunctionUrl = InvokedViaFunctionUrl)
   output <- .lambda$add_permission_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -251,6 +253,192 @@ lambda_add_permission <- function(FunctionName, StatementId, Action, Principal, 
   return(response)
 }
 .lambda$operations$add_permission <- lambda_add_permission
+
+#' Saves the progress of a durable function execution during runtime
+#'
+#' @description
+#' Saves the progress of a [durable
+#' function](https://docs.aws.amazon.com/lambda/latest/dg/durable-functions.html)
+#' execution during runtime. This API is used by the Lambda durable
+#' functions SDK to checkpoint completed steps and schedule asynchronous
+#' operations. You typically don't need to call this API directly as the
+#' SDK handles checkpointing automatically.
+#' 
+#' Each checkpoint operation consumes the current checkpoint token and
+#' returns a new one for the next checkpoint. This ensures that checkpoints
+#' are applied in the correct order and prevents duplicate or out-of-order
+#' state updates.
+#'
+#' @usage
+#' lambda_checkpoint_durable_execution(DurableExecutionArn,
+#'   CheckpointToken, Updates, ClientToken)
+#'
+#' @param DurableExecutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the durable execution.
+#' @param CheckpointToken &#91;required&#93; A unique token that identifies the current checkpoint state. This token
+#' is provided by the Lambda runtime and must be used to ensure checkpoints
+#' are applied in the correct order. Each checkpoint operation consumes
+#' this token and returns a new one.
+#' @param Updates An array of state updates to apply during this checkpoint. Each update
+#' represents a change to the execution state, such as completing a step,
+#' starting a callback, or scheduling a timer. Updates are applied
+#' atomically as part of the checkpoint operation.
+#' @param ClientToken An optional idempotency token to ensure that duplicate checkpoint
+#' requests are handled correctly. If provided, Lambda uses this token to
+#' detect and handle duplicate requests within a 15-minute window.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CheckpointToken = "string",
+#'   NewExecutionState = list(
+#'     Operations = list(
+#'       list(
+#'         Id = "string",
+#'         ParentId = "string",
+#'         Name = "string",
+#'         Type = "EXECUTION"|"CONTEXT"|"STEP"|"WAIT"|"CALLBACK"|"CHAINED_INVOKE",
+#'         SubType = "string",
+#'         StartTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EndTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Status = "STARTED"|"PENDING"|"READY"|"SUCCEEDED"|"FAILED"|"CANCELLED"|"TIMED_OUT"|"STOPPED",
+#'         ExecutionDetails = list(
+#'           InputPayload = "string"
+#'         ),
+#'         ContextDetails = list(
+#'           ReplayChildren = TRUE|FALSE,
+#'           Result = "string",
+#'           Error = list(
+#'             ErrorMessage = "string",
+#'             ErrorType = "string",
+#'             ErrorData = "string",
+#'             StackTrace = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         StepDetails = list(
+#'           Attempt = 123,
+#'           NextAttemptTimestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Result = "string",
+#'           Error = list(
+#'             ErrorMessage = "string",
+#'             ErrorType = "string",
+#'             ErrorData = "string",
+#'             StackTrace = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         WaitDetails = list(
+#'           ScheduledEndTimestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         ),
+#'         CallbackDetails = list(
+#'           CallbackId = "string",
+#'           Result = "string",
+#'           Error = list(
+#'             ErrorMessage = "string",
+#'             ErrorType = "string",
+#'             ErrorData = "string",
+#'             StackTrace = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         ChainedInvokeDetails = list(
+#'           Result = "string",
+#'           Error = list(
+#'             ErrorMessage = "string",
+#'             ErrorType = "string",
+#'             ErrorData = "string",
+#'             StackTrace = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     NextMarker = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$checkpoint_durable_execution(
+#'   DurableExecutionArn = "string",
+#'   CheckpointToken = "string",
+#'   Updates = list(
+#'     list(
+#'       Id = "string",
+#'       ParentId = "string",
+#'       Name = "string",
+#'       Type = "EXECUTION"|"CONTEXT"|"STEP"|"WAIT"|"CALLBACK"|"CHAINED_INVOKE",
+#'       SubType = "string",
+#'       Action = "START"|"SUCCEED"|"FAIL"|"RETRY"|"CANCEL",
+#'       Payload = "string",
+#'       Error = list(
+#'         ErrorMessage = "string",
+#'         ErrorType = "string",
+#'         ErrorData = "string",
+#'         StackTrace = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ContextOptions = list(
+#'         ReplayChildren = TRUE|FALSE
+#'       ),
+#'       StepOptions = list(
+#'         NextAttemptDelaySeconds = 123
+#'       ),
+#'       WaitOptions = list(
+#'         WaitSeconds = 123
+#'       ),
+#'       CallbackOptions = list(
+#'         TimeoutSeconds = 123,
+#'         HeartbeatTimeoutSeconds = 123
+#'       ),
+#'       ChainedInvokeOptions = list(
+#'         FunctionName = "string",
+#'         TenantId = "string"
+#'       )
+#'     )
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_checkpoint_durable_execution
+#'
+#' @aliases lambda_checkpoint_durable_execution
+lambda_checkpoint_durable_execution <- function(DurableExecutionArn, CheckpointToken, Updates = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CheckpointDurableExecution",
+    http_method = "POST",
+    http_path = "/2025-12-01/durable-executions/{DurableExecutionArn}/checkpoint",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .lambda$checkpoint_durable_execution_input(DurableExecutionArn = DurableExecutionArn, CheckpointToken = CheckpointToken, Updates = Updates, ClientToken = ClientToken)
+  output <- .lambda$checkpoint_durable_execution_output()
+  config <- get_config()
+  svc <- .lambda$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$checkpoint_durable_execution <- lambda_checkpoint_durable_execution
 
 #' Creates an alias for a Lambda function version
 #'
@@ -356,6 +544,144 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
 }
 .lambda$operations$create_alias <- lambda_create_alias
 
+#' Creates a capacity provider that manages compute resources for Lambda
+#' functions
+#'
+#' @description
+#' Creates a capacity provider that manages compute resources for Lambda
+#' functions
+#'
+#' @usage
+#' lambda_create_capacity_provider(CapacityProviderName, VpcConfig,
+#'   PermissionsConfig, InstanceRequirements, CapacityProviderScalingConfig,
+#'   KmsKeyArn, Tags)
+#'
+#' @param CapacityProviderName &#91;required&#93; The name of the capacity provider.
+#' @param VpcConfig &#91;required&#93; The VPC configuration for the capacity provider, including subnet IDs
+#' and security group IDs where compute instances will be launched.
+#' @param PermissionsConfig &#91;required&#93; The permissions configuration that specifies the IAM role ARN used by
+#' the capacity provider to manage compute resources.
+#' @param InstanceRequirements The instance requirements that specify the compute instance
+#' characteristics, including architectures and allowed or excluded
+#' instance types.
+#' @param CapacityProviderScalingConfig The scaling configuration that defines how the capacity provider scales
+#' compute instances, including maximum vCPU count and scaling policies.
+#' @param KmsKeyArn The ARN of the KMS key used to encrypt data associated with the capacity
+#' provider.
+#' @param Tags A list of tags to associate with the capacity provider.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CapacityProvider = list(
+#'     CapacityProviderArn = "string",
+#'     State = "Pending"|"Active"|"Failed"|"Deleting",
+#'     VpcConfig = list(
+#'       SubnetIds = list(
+#'         "string"
+#'       ),
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       )
+#'     ),
+#'     PermissionsConfig = list(
+#'       CapacityProviderOperatorRoleArn = "string"
+#'     ),
+#'     InstanceRequirements = list(
+#'       Architectures = list(
+#'         "x86_64"|"arm64"
+#'       ),
+#'       AllowedInstanceTypes = list(
+#'         "string"
+#'       ),
+#'       ExcludedInstanceTypes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     CapacityProviderScalingConfig = list(
+#'       MaxVCpuCount = 123,
+#'       ScalingMode = "Auto"|"Manual",
+#'       ScalingPolicies = list(
+#'         list(
+#'           PredefinedMetricType = "LambdaCapacityProviderAverageCPUUtilization",
+#'           TargetValue = 123.0
+#'         )
+#'       )
+#'     ),
+#'     KmsKeyArn = "string",
+#'     LastModified = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_capacity_provider(
+#'   CapacityProviderName = "string",
+#'   VpcConfig = list(
+#'     SubnetIds = list(
+#'       "string"
+#'     ),
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     )
+#'   ),
+#'   PermissionsConfig = list(
+#'     CapacityProviderOperatorRoleArn = "string"
+#'   ),
+#'   InstanceRequirements = list(
+#'     Architectures = list(
+#'       "x86_64"|"arm64"
+#'     ),
+#'     AllowedInstanceTypes = list(
+#'       "string"
+#'     ),
+#'     ExcludedInstanceTypes = list(
+#'       "string"
+#'     )
+#'   ),
+#'   CapacityProviderScalingConfig = list(
+#'     MaxVCpuCount = 123,
+#'     ScalingMode = "Auto"|"Manual",
+#'     ScalingPolicies = list(
+#'       list(
+#'         PredefinedMetricType = "LambdaCapacityProviderAverageCPUUtilization",
+#'         TargetValue = 123.0
+#'       )
+#'     )
+#'   ),
+#'   KmsKeyArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_create_capacity_provider
+#'
+#' @aliases lambda_create_capacity_provider
+lambda_create_capacity_provider <- function(CapacityProviderName, VpcConfig, PermissionsConfig, InstanceRequirements = NULL, CapacityProviderScalingConfig = NULL, KmsKeyArn = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateCapacityProvider",
+    http_method = "POST",
+    http_path = "/2025-11-30/capacity-providers",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .lambda$create_capacity_provider_input(CapacityProviderName = CapacityProviderName, VpcConfig = VpcConfig, PermissionsConfig = PermissionsConfig, InstanceRequirements = InstanceRequirements, CapacityProviderScalingConfig = CapacityProviderScalingConfig, KmsKeyArn = KmsKeyArn, Tags = Tags)
+  output <- .lambda$create_capacity_provider_output()
+  config <- get_config()
+  svc <- .lambda$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$create_capacity_provider <- lambda_create_capacity_provider
+
 #' Creates a code signing configuration
 #'
 #' @description
@@ -423,7 +749,7 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
   op <- new_operation(
     name = "CreateCodeSigningConfig",
     http_method = "POST",
-    http_path = "/2020-04-22/code-signing-configs/",
+    http_path = "/2020-04-22/code-signing-configs",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -468,8 +794,8 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' -   [Amazon
 #'     DocumentDB](https://docs.aws.amazon.com/lambda/latest/dg/with-documentdb.html)
 #' 
-#' The following error handling options are available only for DynamoDB and
-#' Kinesis event sources:
+#' The following error handling options are available for stream sources
+#' (DynamoDB, Kinesis, Amazon MSK, and self-managed Apache Kafka):
 #' 
 #' -   `BisectBatchOnFunctionError` – If the function returns an error,
 #'     split the batch in two and retry.
@@ -482,14 +808,16 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #'     of retries. The default value is infinite (-1). When set to infinite
 #'     (-1), failed records are retried until the record expires.
 #' 
+#' -   `OnFailure` – Send discarded records to an Amazon SQS queue, Amazon
+#'     SNS topic, Kafka topic, or Amazon S3 bucket. For more information,
+#'     see [Adding a
+#'     destination](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async-retain-records.html#invocation-async-destinations).
+#' 
+#' The following option is available only for DynamoDB and Kinesis event
+#' sources:
+#' 
 #' -   `ParallelizationFactor` – Process multiple batches from each shard
 #'     concurrently.
-#' 
-#' For stream sources (DynamoDB, Kinesis, Amazon MSK, and self-managed
-#' Apache Kafka), the following option is also available:
-#' 
-#' -   `DestinationConfig` – Send discarded records to an Amazon SQS queue,
-#'     Amazon SNS topic, or Amazon S3 bucket.
 #' 
 #' For information about which configuration parameters apply to each event
 #' source, see the following topics.
@@ -612,16 +940,18 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' MSK, and self-managed Apache Kafka.
 #' @param StartingPositionTimestamp With `StartingPosition` set to `AT_TIMESTAMP`, the time from which to
 #' start reading. `StartingPositionTimestamp` cannot be in the future.
-#' @param DestinationConfig (Kinesis, DynamoDB Streams, Amazon MSK, and self-managed Kafka only) A
+#' @param DestinationConfig (Kinesis, DynamoDB Streams, Amazon MSK, and self-managed Apache Kafka) A
 #' configuration object that specifies the destination of an event after
 #' Lambda processes it.
-#' @param MaximumRecordAgeInSeconds (Kinesis and DynamoDB Streams only) Discard records older than the
-#' specified age. The default value is infinite (-1).
-#' @param BisectBatchOnFunctionError (Kinesis and DynamoDB Streams only) If the function returns an error,
-#' split the batch in two and retry.
-#' @param MaximumRetryAttempts (Kinesis and DynamoDB Streams only) Discard records after the specified
-#' number of retries. The default value is infinite (-1). When set to
-#' infinite (-1), failed records are retried until the record expires.
+#' @param MaximumRecordAgeInSeconds (Kinesis, DynamoDB Streams, Amazon MSK, and self-managed Apache Kafka)
+#' Discard records older than the specified age. The default value is
+#' infinite (-1).
+#' @param BisectBatchOnFunctionError (Kinesis, DynamoDB Streams, Amazon MSK, and self-managed Apache Kafka)
+#' If the function returns an error, split the batch in two and retry.
+#' @param MaximumRetryAttempts (Kinesis, DynamoDB Streams, Amazon MSK, and self-managed Apache Kafka)
+#' Discard records after the specified number of retries. The default value
+#' is infinite (-1). When set to infinite (-1), failed records are retried
+#' until the record expires.
 #' @param Tags A list of tags to apply to the event source mapping.
 #' @param TumblingWindowInSeconds (Kinesis and DynamoDB Streams only) The duration in seconds of a
 #' processing window for DynamoDB and Kinesis Streams event sources. A
@@ -631,8 +961,9 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' @param SourceAccessConfigurations An array of authentication protocols or VPC components required to
 #' secure your event source.
 #' @param SelfManagedEventSource The self-managed Apache Kafka cluster to receive records from.
-#' @param FunctionResponseTypes (Kinesis, DynamoDB Streams, and Amazon SQS) A list of current response
-#' type enums applied to the event source mapping.
+#' @param FunctionResponseTypes (Kinesis, DynamoDB Streams, Amazon MSK, self-managed Apache Kafka, and
+#' Amazon SQS) A list of current response type enums applied to the event
+#' source mapping.
 #' @param AmazonManagedKafkaEventSourceConfig Specific configuration settings for an Amazon Managed Streaming for
 #' Apache Kafka (Amazon MSK) event source.
 #' @param SelfManagedKafkaEventSourceConfig Specific configuration settings for a self-managed Apache Kafka event
@@ -650,9 +981,9 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' @param MetricsConfig The metrics configuration for your event source. For more information,
 #' see [Event source mapping
 #' metrics](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics-types.html#event-source-mapping-metrics).
-#' @param ProvisionedPollerConfig (Amazon MSK and self-managed Apache Kafka only) The provisioned mode
-#' configuration for the event source. For more information, see
-#' [provisioned
+#' @param ProvisionedPollerConfig (Amazon SQS, Amazon MSK, and self-managed Apache Kafka only) The
+#' provisioned mode configuration for the event source. For more
+#' information, see [provisioned
 #' mode](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html#invocation-eventsourcemapping-provisioned-mode).
 #'
 #' @return
@@ -717,10 +1048,40 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #'     "ReportBatchItemFailures"
 #'   ),
 #'   AmazonManagedKafkaEventSourceConfig = list(
-#'     ConsumerGroupId = "string"
+#'     ConsumerGroupId = "string",
+#'     SchemaRegistryConfig = list(
+#'       SchemaRegistryURI = "string",
+#'       EventRecordFormat = "JSON"|"SOURCE",
+#'       AccessConfigs = list(
+#'         list(
+#'           Type = "BASIC_AUTH"|"CLIENT_CERTIFICATE_TLS_AUTH"|"SERVER_ROOT_CA_CERTIFICATE",
+#'           URI = "string"
+#'         )
+#'       ),
+#'       SchemaValidationConfigs = list(
+#'         list(
+#'           Attribute = "KEY"|"VALUE"
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   SelfManagedKafkaEventSourceConfig = list(
-#'     ConsumerGroupId = "string"
+#'     ConsumerGroupId = "string",
+#'     SchemaRegistryConfig = list(
+#'       SchemaRegistryURI = "string",
+#'       EventRecordFormat = "JSON"|"SOURCE",
+#'       AccessConfigs = list(
+#'         list(
+#'           Type = "BASIC_AUTH"|"CLIENT_CERTIFICATE_TLS_AUTH"|"SERVER_ROOT_CA_CERTIFICATE",
+#'           URI = "string"
+#'         )
+#'       ),
+#'       SchemaValidationConfigs = list(
+#'         list(
+#'           Attribute = "KEY"|"VALUE"
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   ScalingConfig = list(
 #'     MaximumConcurrency = 123
@@ -743,7 +1104,8 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #'   ),
 #'   ProvisionedPollerConfig = list(
 #'     MinimumPollers = 123,
-#'     MaximumPollers = 123
+#'     MaximumPollers = 123,
+#'     PollerGroupName = "string"
 #'   )
 #' )
 #' ```
@@ -806,10 +1168,40 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #'     "ReportBatchItemFailures"
 #'   ),
 #'   AmazonManagedKafkaEventSourceConfig = list(
-#'     ConsumerGroupId = "string"
+#'     ConsumerGroupId = "string",
+#'     SchemaRegistryConfig = list(
+#'       SchemaRegistryURI = "string",
+#'       EventRecordFormat = "JSON"|"SOURCE",
+#'       AccessConfigs = list(
+#'         list(
+#'           Type = "BASIC_AUTH"|"CLIENT_CERTIFICATE_TLS_AUTH"|"SERVER_ROOT_CA_CERTIFICATE",
+#'           URI = "string"
+#'         )
+#'       ),
+#'       SchemaValidationConfigs = list(
+#'         list(
+#'           Attribute = "KEY"|"VALUE"
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   SelfManagedKafkaEventSourceConfig = list(
-#'     ConsumerGroupId = "string"
+#'     ConsumerGroupId = "string",
+#'     SchemaRegistryConfig = list(
+#'       SchemaRegistryURI = "string",
+#'       EventRecordFormat = "JSON"|"SOURCE",
+#'       AccessConfigs = list(
+#'         list(
+#'           Type = "BASIC_AUTH"|"CLIENT_CERTIFICATE_TLS_AUTH"|"SERVER_ROOT_CA_CERTIFICATE",
+#'           URI = "string"
+#'         )
+#'       ),
+#'       SchemaValidationConfigs = list(
+#'         list(
+#'           Attribute = "KEY"|"VALUE"
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   ScalingConfig = list(
 #'     MaximumConcurrency = 123
@@ -827,7 +1219,8 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #'   ),
 #'   ProvisionedPollerConfig = list(
 #'     MinimumPollers = 123,
-#'     MaximumPollers = 123
+#'     MaximumPollers = 123,
+#'     PollerGroupName = "string"
 #'   )
 #' )
 #' ```
@@ -852,7 +1245,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
   op <- new_operation(
     name = "CreateEventSourceMapping",
     http_method = "POST",
-    http_path = "/2015-03-31/event-source-mappings/",
+    http_path = "/2015-03-31/event-source-mappings",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -949,7 +1342,8 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #'   Description, Timeout, MemorySize, Publish, VpcConfig, PackageType,
 #'   DeadLetterConfig, Environment, KMSKeyArn, TracingConfig, Tags, Layers,
 #'   FileSystemConfigs, ImageConfig, CodeSigningConfigArn, Architectures,
-#'   EphemeralStorage, SnapStart, LoggingConfig)
+#'   EphemeralStorage, SnapStart, LoggingConfig, CapacityProviderConfig,
+#'   PublishTo, DurableConfig, TenancyConfig)
 #'
 #' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
@@ -1066,6 +1460,15 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' [SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart.html)
 #' setting.
 #' @param LoggingConfig The function's Amazon CloudWatch Logs configuration settings.
+#' @param CapacityProviderConfig Configuration for the capacity provider that manages compute resources
+#' for Lambda functions.
+#' @param PublishTo Specifies where to publish the function version or configuration.
+#' @param DurableConfig Configuration settings for durable functions. Enables creating functions
+#' with durability that can remember their state and continue execution
+#' even after interruptions.
+#' @param TenancyConfig Configuration for multi-tenant applications that use Lambda functions.
+#' Defines tenant isolation settings and resource allocations. Required for
+#' functions supporting multiple tenants.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1073,7 +1476,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -1119,12 +1522,12 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #'       SigningJobArn = "string"
 #'     )
 #'   ),
-#'   State = "Pending"|"Active"|"Inactive"|"Failed",
+#'   State = "Pending"|"Active"|"Inactive"|"Failed"|"Deactivating"|"Deactivated"|"ActiveNonInvocable"|"Deleting",
 #'   StateReason = "string",
-#'   StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError",
+#'   StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"DrainingDurableExecutions"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
 #'   LastUpdateStatus = "Successful"|"Failed"|"InProgress",
 #'   LastUpdateStatusReason = "string",
-#'   LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError",
+#'   LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
 #'   FileSystemConfigs = list(
 #'     list(
 #'       Arn = "string",
@@ -1171,6 +1574,21 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #'     ApplicationLogLevel = "TRACE"|"DEBUG"|"INFO"|"WARN"|"ERROR"|"FATAL",
 #'     SystemLogLevel = "DEBUG"|"INFO"|"WARN",
 #'     LogGroup = "string"
+#'   ),
+#'   CapacityProviderConfig = list(
+#'     LambdaManagedInstancesCapacityProviderConfig = list(
+#'       CapacityProviderArn = "string",
+#'       PerExecutionEnvironmentMaxConcurrency = 123,
+#'       ExecutionEnvironmentMemoryGiBPerVCpu = 123.0
+#'     )
+#'   ),
+#'   ConfigSha256 = "string",
+#'   DurableConfig = list(
+#'     RetentionPeriodInDays = 123,
+#'     ExecutionTimeout = 123
+#'   ),
+#'   TenancyConfig = list(
+#'     TenantIsolationMode = "PER_TENANT"
 #'   )
 #' )
 #' ```
@@ -1179,7 +1597,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' ```
 #' svc$create_function(
 #'   FunctionName = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10",
 #'   Role = "string",
 #'   Handler = "string",
 #'   Code = list(
@@ -1252,6 +1670,21 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #'     ApplicationLogLevel = "TRACE"|"DEBUG"|"INFO"|"WARN"|"ERROR"|"FATAL",
 #'     SystemLogLevel = "DEBUG"|"INFO"|"WARN",
 #'     LogGroup = "string"
+#'   ),
+#'   CapacityProviderConfig = list(
+#'     LambdaManagedInstancesCapacityProviderConfig = list(
+#'       CapacityProviderArn = "string",
+#'       PerExecutionEnvironmentMaxConcurrency = 123,
+#'       ExecutionEnvironmentMemoryGiBPerVCpu = 123.0
+#'     )
+#'   ),
+#'   PublishTo = "LATEST_PUBLISHED",
+#'   DurableConfig = list(
+#'     RetentionPeriodInDays = 123,
+#'     ExecutionTimeout = 123
+#'   ),
+#'   TenancyConfig = list(
+#'     TenantIsolationMode = "PER_TENANT"
 #'   )
 #' )
 #' ```
@@ -1294,7 +1727,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' @rdname lambda_create_function
 #'
 #' @aliases lambda_create_function
-lambda_create_function <- function(FunctionName, Runtime = NULL, Role, Handler = NULL, Code, Description = NULL, Timeout = NULL, MemorySize = NULL, Publish = NULL, VpcConfig = NULL, PackageType = NULL, DeadLetterConfig = NULL, Environment = NULL, KMSKeyArn = NULL, TracingConfig = NULL, Tags = NULL, Layers = NULL, FileSystemConfigs = NULL, ImageConfig = NULL, CodeSigningConfigArn = NULL, Architectures = NULL, EphemeralStorage = NULL, SnapStart = NULL, LoggingConfig = NULL) {
+lambda_create_function <- function(FunctionName, Runtime = NULL, Role, Handler = NULL, Code, Description = NULL, Timeout = NULL, MemorySize = NULL, Publish = NULL, VpcConfig = NULL, PackageType = NULL, DeadLetterConfig = NULL, Environment = NULL, KMSKeyArn = NULL, TracingConfig = NULL, Tags = NULL, Layers = NULL, FileSystemConfigs = NULL, ImageConfig = NULL, CodeSigningConfigArn = NULL, Architectures = NULL, EphemeralStorage = NULL, SnapStart = NULL, LoggingConfig = NULL, CapacityProviderConfig = NULL, PublishTo = NULL, DurableConfig = NULL, TenancyConfig = NULL) {
   op <- new_operation(
     name = "CreateFunction",
     http_method = "POST",
@@ -1303,7 +1736,7 @@ lambda_create_function <- function(FunctionName, Runtime = NULL, Role, Handler =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$create_function_input(FunctionName = FunctionName, Runtime = Runtime, Role = Role, Handler = Handler, Code = Code, Description = Description, Timeout = Timeout, MemorySize = MemorySize, Publish = Publish, VpcConfig = VpcConfig, PackageType = PackageType, DeadLetterConfig = DeadLetterConfig, Environment = Environment, KMSKeyArn = KMSKeyArn, TracingConfig = TracingConfig, Tags = Tags, Layers = Layers, FileSystemConfigs = FileSystemConfigs, ImageConfig = ImageConfig, CodeSigningConfigArn = CodeSigningConfigArn, Architectures = Architectures, EphemeralStorage = EphemeralStorage, SnapStart = SnapStart, LoggingConfig = LoggingConfig)
+  input <- .lambda$create_function_input(FunctionName = FunctionName, Runtime = Runtime, Role = Role, Handler = Handler, Code = Code, Description = Description, Timeout = Timeout, MemorySize = MemorySize, Publish = Publish, VpcConfig = VpcConfig, PackageType = PackageType, DeadLetterConfig = DeadLetterConfig, Environment = Environment, KMSKeyArn = KMSKeyArn, TracingConfig = TracingConfig, Tags = Tags, Layers = Layers, FileSystemConfigs = FileSystemConfigs, ImageConfig = ImageConfig, CodeSigningConfigArn = CodeSigningConfigArn, Architectures = Architectures, EphemeralStorage = EphemeralStorage, SnapStart = SnapStart, LoggingConfig = LoggingConfig, CapacityProviderConfig = CapacityProviderConfig, PublishTo = PublishTo, DurableConfig = DurableConfig, TenancyConfig = TenancyConfig)
   output <- .lambda$create_function_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -1342,8 +1775,7 @@ lambda_create_function <- function(FunctionName, Runtime = NULL, Role, Handler =
 #' @param AuthType &#91;required&#93; The type of authentication that your function URL uses. Set to `AWS_IAM`
 #' if you want to restrict access to authenticated users only. Set to
 #' `NONE` if you want to bypass IAM authentication to create a public
-#' endpoint. For more information, see [Security and auth model for Lambda
-#' function
+#' endpoint. For more information, see [Control access to Lambda function
 #' URLs](https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html).
 #' @param Cors The [cross-origin resource sharing
 #' (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS)
@@ -1358,9 +1790,7 @@ lambda_create_function <- function(FunctionName, Runtime = NULL, Role, Handler =
 #' -   `RESPONSE_STREAM` – Your function streams payload results as they
 #'     become available. Lambda invokes your function using the
 #'     [`invoke_with_response_stream`][lambda_invoke_with_response_stream]
-#'     API operation. The maximum response payload size is 20 MB, however,
-#'     you can [request a quota
-#'     increase](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html).
+#'     API operation. The maximum response payload size is 200 MB.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1509,6 +1939,93 @@ lambda_delete_alias <- function(FunctionName, Name) {
 }
 .lambda$operations$delete_alias <- lambda_delete_alias
 
+#' Deletes a capacity provider
+#'
+#' @description
+#' Deletes a capacity provider. You cannot delete a capacity provider that
+#' is currently being used by Lambda functions.
+#'
+#' @usage
+#' lambda_delete_capacity_provider(CapacityProviderName)
+#'
+#' @param CapacityProviderName &#91;required&#93; The name of the capacity provider to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CapacityProvider = list(
+#'     CapacityProviderArn = "string",
+#'     State = "Pending"|"Active"|"Failed"|"Deleting",
+#'     VpcConfig = list(
+#'       SubnetIds = list(
+#'         "string"
+#'       ),
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       )
+#'     ),
+#'     PermissionsConfig = list(
+#'       CapacityProviderOperatorRoleArn = "string"
+#'     ),
+#'     InstanceRequirements = list(
+#'       Architectures = list(
+#'         "x86_64"|"arm64"
+#'       ),
+#'       AllowedInstanceTypes = list(
+#'         "string"
+#'       ),
+#'       ExcludedInstanceTypes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     CapacityProviderScalingConfig = list(
+#'       MaxVCpuCount = 123,
+#'       ScalingMode = "Auto"|"Manual",
+#'       ScalingPolicies = list(
+#'         list(
+#'           PredefinedMetricType = "LambdaCapacityProviderAverageCPUUtilization",
+#'           TargetValue = 123.0
+#'         )
+#'       )
+#'     ),
+#'     KmsKeyArn = "string",
+#'     LastModified = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_capacity_provider(
+#'   CapacityProviderName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_delete_capacity_provider
+#'
+#' @aliases lambda_delete_capacity_provider
+lambda_delete_capacity_provider <- function(CapacityProviderName) {
+  op <- new_operation(
+    name = "DeleteCapacityProvider",
+    http_method = "DELETE",
+    http_path = "/2025-11-30/capacity-providers/{CapacityProviderName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .lambda$delete_capacity_provider_input(CapacityProviderName = CapacityProviderName)
+  output <- .lambda$delete_capacity_provider_output()
+  config <- get_config()
+  svc <- .lambda$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$delete_capacity_provider <- lambda_delete_capacity_provider
+
 #' Deletes the code signing configuration
 #'
 #' @description
@@ -1632,10 +2149,40 @@ lambda_delete_code_signing_config <- function(CodeSigningConfigArn) {
 #'     "ReportBatchItemFailures"
 #'   ),
 #'   AmazonManagedKafkaEventSourceConfig = list(
-#'     ConsumerGroupId = "string"
+#'     ConsumerGroupId = "string",
+#'     SchemaRegistryConfig = list(
+#'       SchemaRegistryURI = "string",
+#'       EventRecordFormat = "JSON"|"SOURCE",
+#'       AccessConfigs = list(
+#'         list(
+#'           Type = "BASIC_AUTH"|"CLIENT_CERTIFICATE_TLS_AUTH"|"SERVER_ROOT_CA_CERTIFICATE",
+#'           URI = "string"
+#'         )
+#'       ),
+#'       SchemaValidationConfigs = list(
+#'         list(
+#'           Attribute = "KEY"|"VALUE"
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   SelfManagedKafkaEventSourceConfig = list(
-#'     ConsumerGroupId = "string"
+#'     ConsumerGroupId = "string",
+#'     SchemaRegistryConfig = list(
+#'       SchemaRegistryURI = "string",
+#'       EventRecordFormat = "JSON"|"SOURCE",
+#'       AccessConfigs = list(
+#'         list(
+#'           Type = "BASIC_AUTH"|"CLIENT_CERTIFICATE_TLS_AUTH"|"SERVER_ROOT_CA_CERTIFICATE",
+#'           URI = "string"
+#'         )
+#'       ),
+#'       SchemaValidationConfigs = list(
+#'         list(
+#'           Attribute = "KEY"|"VALUE"
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   ScalingConfig = list(
 #'     MaximumConcurrency = 123
@@ -1658,7 +2205,8 @@ lambda_delete_code_signing_config <- function(CodeSigningConfigArn) {
 #'   ),
 #'   ProvisionedPollerConfig = list(
 #'     MinimumPollers = 123,
-#'     MaximumPollers = 123
+#'     MaximumPollers = 123,
+#'     PollerGroupName = "string"
 #'   )
 #' )
 #' ```
@@ -1711,6 +2259,9 @@ lambda_delete_event_source_mapping <- function(UUID) {
 #' deleted. This doesn't require the user to have explicit permissions for
 #' [`delete_alias`][lambda_delete_alias].
 #' 
+#' A deleted Lambda function cannot be recovered. Ensure that you specify
+#' the correct function name and version before deleting.
+#' 
 #' To delete Lambda event source mappings that invoke a function, use
 #' [`delete_event_source_mapping`][lambda_delete_event_source_mapping]. For
 #' Amazon Web Services services and resources that invoke your function
@@ -1739,7 +2290,12 @@ lambda_delete_event_source_mapping <- function(UUID) {
 #' references.
 #'
 #' @return
-#' An empty list.
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StatusCode = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2218,7 +2774,7 @@ lambda_get_account_settings <- function() {
   op <- new_operation(
     name = "GetAccountSettings",
     http_method = "GET",
-    http_path = "/2016-08-19/account-settings/",
+    http_path = "/2016-08-19/account-settings",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -2316,6 +2872,94 @@ lambda_get_alias <- function(FunctionName, Name) {
 }
 .lambda$operations$get_alias <- lambda_get_alias
 
+#' Retrieves information about a specific capacity provider, including its
+#' configuration, state, and associated resources
+#'
+#' @description
+#' Retrieves information about a specific capacity provider, including its
+#' configuration, state, and associated resources.
+#'
+#' @usage
+#' lambda_get_capacity_provider(CapacityProviderName)
+#'
+#' @param CapacityProviderName &#91;required&#93; The name of the capacity provider to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CapacityProvider = list(
+#'     CapacityProviderArn = "string",
+#'     State = "Pending"|"Active"|"Failed"|"Deleting",
+#'     VpcConfig = list(
+#'       SubnetIds = list(
+#'         "string"
+#'       ),
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       )
+#'     ),
+#'     PermissionsConfig = list(
+#'       CapacityProviderOperatorRoleArn = "string"
+#'     ),
+#'     InstanceRequirements = list(
+#'       Architectures = list(
+#'         "x86_64"|"arm64"
+#'       ),
+#'       AllowedInstanceTypes = list(
+#'         "string"
+#'       ),
+#'       ExcludedInstanceTypes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     CapacityProviderScalingConfig = list(
+#'       MaxVCpuCount = 123,
+#'       ScalingMode = "Auto"|"Manual",
+#'       ScalingPolicies = list(
+#'         list(
+#'           PredefinedMetricType = "LambdaCapacityProviderAverageCPUUtilization",
+#'           TargetValue = 123.0
+#'         )
+#'       )
+#'     ),
+#'     KmsKeyArn = "string",
+#'     LastModified = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_capacity_provider(
+#'   CapacityProviderName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_get_capacity_provider
+#'
+#' @aliases lambda_get_capacity_provider
+lambda_get_capacity_provider <- function(CapacityProviderName) {
+  op <- new_operation(
+    name = "GetCapacityProvider",
+    http_method = "GET",
+    http_path = "/2025-11-30/capacity-providers/{CapacityProviderName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .lambda$get_capacity_provider_input(CapacityProviderName = CapacityProviderName)
+  output <- .lambda$get_capacity_provider_output()
+  config <- get_config()
+  svc <- .lambda$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$get_capacity_provider <- lambda_get_capacity_provider
+
 #' Returns information about the specified code signing configuration
 #'
 #' @description
@@ -2377,6 +3021,555 @@ lambda_get_code_signing_config <- function(CodeSigningConfigArn) {
   return(response)
 }
 .lambda$operations$get_code_signing_config <- lambda_get_code_signing_config
+
+#' Retrieves detailed information about a specific durable execution,
+#' including its current status, input payload, result or error
+#' information, and execution metadata such as start time and usage
+#' statistics
+#'
+#' @description
+#' Retrieves detailed information about a specific [durable
+#' execution](https://docs.aws.amazon.com/lambda/latest/dg/durable-functions.html),
+#' including its current status, input payload, result or error
+#' information, and execution metadata such as start time and usage
+#' statistics.
+#'
+#' @usage
+#' lambda_get_durable_execution(DurableExecutionArn)
+#'
+#' @param DurableExecutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the durable execution.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DurableExecutionArn = "string",
+#'   DurableExecutionName = "string",
+#'   FunctionArn = "string",
+#'   InputPayload = "string",
+#'   Result = "string",
+#'   Error = list(
+#'     ErrorMessage = "string",
+#'     ErrorType = "string",
+#'     ErrorData = "string",
+#'     StackTrace = list(
+#'       "string"
+#'     )
+#'   ),
+#'   StartTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Status = "RUNNING"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"STOPPED",
+#'   EndTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Version = "string",
+#'   TraceHeader = list(
+#'     XAmznTraceId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_durable_execution(
+#'   DurableExecutionArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_get_durable_execution
+#'
+#' @aliases lambda_get_durable_execution
+lambda_get_durable_execution <- function(DurableExecutionArn) {
+  op <- new_operation(
+    name = "GetDurableExecution",
+    http_method = "GET",
+    http_path = "/2025-12-01/durable-executions/{DurableExecutionArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .lambda$get_durable_execution_input(DurableExecutionArn = DurableExecutionArn)
+  output <- .lambda$get_durable_execution_output()
+  config <- get_config()
+  svc <- .lambda$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$get_durable_execution <- lambda_get_durable_execution
+
+#' Retrieves the execution history for a durable execution, showing all the
+#' steps, callbacks, and events that occurred during the execution
+#'
+#' @description
+#' Retrieves the execution history for a [durable
+#' execution](https://docs.aws.amazon.com/lambda/latest/dg/durable-functions.html),
+#' showing all the steps, callbacks, and events that occurred during the
+#' execution. This provides a detailed audit trail of the execution's
+#' progress over time.
+#' 
+#' The history is available while the execution is running and for a
+#' retention period after it completes (1-90 days, default 30 days). You
+#' can control whether to include execution data such as step results and
+#' callback payloads.
+#'
+#' @usage
+#' lambda_get_durable_execution_history(DurableExecutionArn,
+#'   IncludeExecutionData, MaxItems, Marker, ReverseOrder)
+#'
+#' @param DurableExecutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the durable execution.
+#' @param IncludeExecutionData Specifies whether to include execution data such as step results and
+#' callback payloads in the history events. Set to `true` to include data,
+#' or `false` to exclude it for a more compact response. The default is
+#' `true`.
+#' @param MaxItems The maximum number of history events to return per call. You can use
+#' `Marker` to retrieve additional pages of results. The default is 100 and
+#' the maximum allowed is 1000. A value of 0 uses the default.
+#' @param Marker If `NextMarker` was returned from a previous request, use this value to
+#' retrieve the next page of results. Each pagination token expires after
+#' 24 hours.
+#' @param ReverseOrder When set to `true`, returns the history events in reverse chronological
+#' order (newest first). By default, events are returned in chronological
+#' order (oldest first).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Events = list(
+#'     list(
+#'       EventType = "ExecutionStarted"|"ExecutionSucceeded"|"ExecutionFailed"|"ExecutionTimedOut"|"ExecutionStopped"|"ContextStarted"|"ContextSucceeded"|"ContextFailed"|"WaitStarted"|"WaitSucceeded"|"WaitCancelled"|"StepStarted"|"StepSucceeded"|"StepFailed"|"ChainedInvokeStarted"|"ChainedInvokeSucceeded"|"ChainedInvokeFailed"|"ChainedInvokeTimedOut"|"ChainedInvokeStopped"|"CallbackStarted"|"CallbackSucceeded"|"CallbackFailed"|"CallbackTimedOut"|"InvocationCompleted",
+#'       SubType = "string",
+#'       EventId = 123,
+#'       Id = "string",
+#'       Name = "string",
+#'       EventTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ParentId = "string",
+#'       ExecutionStartedDetails = list(
+#'         Input = list(
+#'           Payload = "string",
+#'           Truncated = TRUE|FALSE
+#'         ),
+#'         ExecutionTimeout = 123
+#'       ),
+#'       ExecutionSucceededDetails = list(
+#'         Result = list(
+#'           Payload = "string",
+#'           Truncated = TRUE|FALSE
+#'         )
+#'       ),
+#'       ExecutionFailedDetails = list(
+#'         Error = list(
+#'           Payload = list(
+#'             ErrorMessage = "string",
+#'             ErrorType = "string",
+#'             ErrorData = "string",
+#'             StackTrace = list(
+#'               "string"
+#'             )
+#'           ),
+#'           Truncated = TRUE|FALSE
+#'         )
+#'       ),
+#'       ExecutionTimedOutDetails = list(
+#'         Error = list(
+#'           Payload = list(
+#'             ErrorMessage = "string",
+#'             ErrorType = "string",
+#'             ErrorData = "string",
+#'             StackTrace = list(
+#'               "string"
+#'             )
+#'           ),
+#'           Truncated = TRUE|FALSE
+#'         )
+#'       ),
+#'       ExecutionStoppedDetails = list(
+#'         Error = list(
+#'           Payload = list(
+#'             ErrorMessage = "string",
+#'             ErrorType = "string",
+#'             ErrorData = "string",
+#'             StackTrace = list(
+#'               "string"
+#'             )
+#'           ),
+#'           Truncated = TRUE|FALSE
+#'         )
+#'       ),
+#'       ContextStartedDetails = list(),
+#'       ContextSucceededDetails = list(
+#'         Result = list(
+#'           Payload = "string",
+#'           Truncated = TRUE|FALSE
+#'         )
+#'       ),
+#'       ContextFailedDetails = list(
+#'         Error = list(
+#'           Payload = list(
+#'             ErrorMessage = "string",
+#'             ErrorType = "string",
+#'             ErrorData = "string",
+#'             StackTrace = list(
+#'               "string"
+#'             )
+#'           ),
+#'           Truncated = TRUE|FALSE
+#'         )
+#'       ),
+#'       WaitStartedDetails = list(
+#'         Duration = 123,
+#'         ScheduledEndTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       WaitSucceededDetails = list(
+#'         Duration = 123
+#'       ),
+#'       WaitCancelledDetails = list(
+#'         Error = list(
+#'           Payload = list(
+#'             ErrorMessage = "string",
+#'             ErrorType = "string",
+#'             ErrorData = "string",
+#'             StackTrace = list(
+#'               "string"
+#'             )
+#'           ),
+#'           Truncated = TRUE|FALSE
+#'         )
+#'       ),
+#'       StepStartedDetails = list(),
+#'       StepSucceededDetails = list(
+#'         Result = list(
+#'           Payload = "string",
+#'           Truncated = TRUE|FALSE
+#'         ),
+#'         RetryDetails = list(
+#'           CurrentAttempt = 123,
+#'           NextAttemptDelaySeconds = 123
+#'         )
+#'       ),
+#'       StepFailedDetails = list(
+#'         Error = list(
+#'           Payload = list(
+#'             ErrorMessage = "string",
+#'             ErrorType = "string",
+#'             ErrorData = "string",
+#'             StackTrace = list(
+#'               "string"
+#'             )
+#'           ),
+#'           Truncated = TRUE|FALSE
+#'         ),
+#'         RetryDetails = list(
+#'           CurrentAttempt = 123,
+#'           NextAttemptDelaySeconds = 123
+#'         )
+#'       ),
+#'       ChainedInvokeStartedDetails = list(
+#'         FunctionName = "string",
+#'         TenantId = "string",
+#'         Input = list(
+#'           Payload = "string",
+#'           Truncated = TRUE|FALSE
+#'         ),
+#'         ExecutedVersion = "string",
+#'         DurableExecutionArn = "string"
+#'       ),
+#'       ChainedInvokeSucceededDetails = list(
+#'         Result = list(
+#'           Payload = "string",
+#'           Truncated = TRUE|FALSE
+#'         )
+#'       ),
+#'       ChainedInvokeFailedDetails = list(
+#'         Error = list(
+#'           Payload = list(
+#'             ErrorMessage = "string",
+#'             ErrorType = "string",
+#'             ErrorData = "string",
+#'             StackTrace = list(
+#'               "string"
+#'             )
+#'           ),
+#'           Truncated = TRUE|FALSE
+#'         )
+#'       ),
+#'       ChainedInvokeTimedOutDetails = list(
+#'         Error = list(
+#'           Payload = list(
+#'             ErrorMessage = "string",
+#'             ErrorType = "string",
+#'             ErrorData = "string",
+#'             StackTrace = list(
+#'               "string"
+#'             )
+#'           ),
+#'           Truncated = TRUE|FALSE
+#'         )
+#'       ),
+#'       ChainedInvokeStoppedDetails = list(
+#'         Error = list(
+#'           Payload = list(
+#'             ErrorMessage = "string",
+#'             ErrorType = "string",
+#'             ErrorData = "string",
+#'             StackTrace = list(
+#'               "string"
+#'             )
+#'           ),
+#'           Truncated = TRUE|FALSE
+#'         )
+#'       ),
+#'       CallbackStartedDetails = list(
+#'         CallbackId = "string",
+#'         HeartbeatTimeout = 123,
+#'         Timeout = 123
+#'       ),
+#'       CallbackSucceededDetails = list(
+#'         Result = list(
+#'           Payload = "string",
+#'           Truncated = TRUE|FALSE
+#'         )
+#'       ),
+#'       CallbackFailedDetails = list(
+#'         Error = list(
+#'           Payload = list(
+#'             ErrorMessage = "string",
+#'             ErrorType = "string",
+#'             ErrorData = "string",
+#'             StackTrace = list(
+#'               "string"
+#'             )
+#'           ),
+#'           Truncated = TRUE|FALSE
+#'         )
+#'       ),
+#'       CallbackTimedOutDetails = list(
+#'         Error = list(
+#'           Payload = list(
+#'             ErrorMessage = "string",
+#'             ErrorType = "string",
+#'             ErrorData = "string",
+#'             StackTrace = list(
+#'               "string"
+#'             )
+#'           ),
+#'           Truncated = TRUE|FALSE
+#'         )
+#'       ),
+#'       InvocationCompletedDetails = list(
+#'         StartTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EndTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         RequestId = "string",
+#'         Error = list(
+#'           Payload = list(
+#'             ErrorMessage = "string",
+#'             ErrorType = "string",
+#'             ErrorData = "string",
+#'             StackTrace = list(
+#'               "string"
+#'             )
+#'           ),
+#'           Truncated = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextMarker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_durable_execution_history(
+#'   DurableExecutionArn = "string",
+#'   IncludeExecutionData = TRUE|FALSE,
+#'   MaxItems = 123,
+#'   Marker = "string",
+#'   ReverseOrder = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_get_durable_execution_history
+#'
+#' @aliases lambda_get_durable_execution_history
+lambda_get_durable_execution_history <- function(DurableExecutionArn, IncludeExecutionData = NULL, MaxItems = NULL, Marker = NULL, ReverseOrder = NULL) {
+  op <- new_operation(
+    name = "GetDurableExecutionHistory",
+    http_method = "GET",
+    http_path = "/2025-12-01/durable-executions/{DurableExecutionArn}/history",
+    host_prefix = "",
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "Events"),
+    stream_api = FALSE
+  )
+  input <- .lambda$get_durable_execution_history_input(DurableExecutionArn = DurableExecutionArn, IncludeExecutionData = IncludeExecutionData, MaxItems = MaxItems, Marker = Marker, ReverseOrder = ReverseOrder)
+  output <- .lambda$get_durable_execution_history_output()
+  config <- get_config()
+  svc <- .lambda$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$get_durable_execution_history <- lambda_get_durable_execution_history
+
+#' Retrieves the current execution state required for the replay process
+#' during durable function execution
+#'
+#' @description
+#' Retrieves the current execution state required for the replay process
+#' during [durable
+#' function](https://docs.aws.amazon.com/lambda/latest/dg/durable-functions.html)
+#' execution. This API is used by the Lambda durable functions SDK to get
+#' state information needed for replay. You typically don't need to call
+#' this API directly as the SDK handles state management automatically.
+#' 
+#' The response contains operations ordered by start sequence number in
+#' ascending order. Completed operations with children don't include child
+#' operation details since they don't need to be replayed.
+#'
+#' @usage
+#' lambda_get_durable_execution_state(DurableExecutionArn, CheckpointToken,
+#'   Marker, MaxItems)
+#'
+#' @param DurableExecutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the durable execution.
+#' @param CheckpointToken &#91;required&#93; A checkpoint token that identifies the current state of the execution.
+#' This token is provided by the Lambda runtime and ensures that state
+#' retrieval is consistent with the current execution context.
+#' @param Marker If `NextMarker` was returned from a previous request, use this value to
+#' retrieve the next page of operations. Each pagination token expires
+#' after 24 hours.
+#' @param MaxItems The maximum number of operations to return per call. You can use
+#' `Marker` to retrieve additional pages of results. The default is 100 and
+#' the maximum allowed is 1000. A value of 0 uses the default.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Operations = list(
+#'     list(
+#'       Id = "string",
+#'       ParentId = "string",
+#'       Name = "string",
+#'       Type = "EXECUTION"|"CONTEXT"|"STEP"|"WAIT"|"CALLBACK"|"CHAINED_INVOKE",
+#'       SubType = "string",
+#'       StartTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = "STARTED"|"PENDING"|"READY"|"SUCCEEDED"|"FAILED"|"CANCELLED"|"TIMED_OUT"|"STOPPED",
+#'       ExecutionDetails = list(
+#'         InputPayload = "string"
+#'       ),
+#'       ContextDetails = list(
+#'         ReplayChildren = TRUE|FALSE,
+#'         Result = "string",
+#'         Error = list(
+#'           ErrorMessage = "string",
+#'           ErrorType = "string",
+#'           ErrorData = "string",
+#'           StackTrace = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       StepDetails = list(
+#'         Attempt = 123,
+#'         NextAttemptTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Result = "string",
+#'         Error = list(
+#'           ErrorMessage = "string",
+#'           ErrorType = "string",
+#'           ErrorData = "string",
+#'           StackTrace = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       WaitDetails = list(
+#'         ScheduledEndTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       CallbackDetails = list(
+#'         CallbackId = "string",
+#'         Result = "string",
+#'         Error = list(
+#'           ErrorMessage = "string",
+#'           ErrorType = "string",
+#'           ErrorData = "string",
+#'           StackTrace = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       ChainedInvokeDetails = list(
+#'         Result = "string",
+#'         Error = list(
+#'           ErrorMessage = "string",
+#'           ErrorType = "string",
+#'           ErrorData = "string",
+#'           StackTrace = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextMarker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_durable_execution_state(
+#'   DurableExecutionArn = "string",
+#'   CheckpointToken = "string",
+#'   Marker = "string",
+#'   MaxItems = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_get_durable_execution_state
+#'
+#' @aliases lambda_get_durable_execution_state
+lambda_get_durable_execution_state <- function(DurableExecutionArn, CheckpointToken, Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "GetDurableExecutionState",
+    http_method = "GET",
+    http_path = "/2025-12-01/durable-executions/{DurableExecutionArn}/state",
+    host_prefix = "",
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "Operations"),
+    stream_api = FALSE
+  )
+  input <- .lambda$get_durable_execution_state_input(DurableExecutionArn = DurableExecutionArn, CheckpointToken = CheckpointToken, Marker = Marker, MaxItems = MaxItems)
+  output <- .lambda$get_durable_execution_state_output()
+  config <- get_config()
+  svc <- .lambda$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$get_durable_execution_state <- lambda_get_durable_execution_state
 
 #' Returns details about an event source mapping
 #'
@@ -2452,10 +3645,40 @@ lambda_get_code_signing_config <- function(CodeSigningConfigArn) {
 #'     "ReportBatchItemFailures"
 #'   ),
 #'   AmazonManagedKafkaEventSourceConfig = list(
-#'     ConsumerGroupId = "string"
+#'     ConsumerGroupId = "string",
+#'     SchemaRegistryConfig = list(
+#'       SchemaRegistryURI = "string",
+#'       EventRecordFormat = "JSON"|"SOURCE",
+#'       AccessConfigs = list(
+#'         list(
+#'           Type = "BASIC_AUTH"|"CLIENT_CERTIFICATE_TLS_AUTH"|"SERVER_ROOT_CA_CERTIFICATE",
+#'           URI = "string"
+#'         )
+#'       ),
+#'       SchemaValidationConfigs = list(
+#'         list(
+#'           Attribute = "KEY"|"VALUE"
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   SelfManagedKafkaEventSourceConfig = list(
-#'     ConsumerGroupId = "string"
+#'     ConsumerGroupId = "string",
+#'     SchemaRegistryConfig = list(
+#'       SchemaRegistryURI = "string",
+#'       EventRecordFormat = "JSON"|"SOURCE",
+#'       AccessConfigs = list(
+#'         list(
+#'           Type = "BASIC_AUTH"|"CLIENT_CERTIFICATE_TLS_AUTH"|"SERVER_ROOT_CA_CERTIFICATE",
+#'           URI = "string"
+#'         )
+#'       ),
+#'       SchemaValidationConfigs = list(
+#'         list(
+#'           Attribute = "KEY"|"VALUE"
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   ScalingConfig = list(
 #'     MaximumConcurrency = 123
@@ -2478,7 +3701,8 @@ lambda_get_code_signing_config <- function(CodeSigningConfigArn) {
 #'   ),
 #'   ProvisionedPollerConfig = list(
 #'     MinimumPollers = 123,
-#'     MaximumPollers = 123
+#'     MaximumPollers = 123,
+#'     PollerGroupName = "string"
 #'   )
 #' )
 #' ```
@@ -2560,7 +3784,7 @@ lambda_get_event_source_mapping <- function(UUID) {
 #'   Configuration = list(
 #'     FunctionName = "string",
 #'     FunctionArn = "string",
-#'     Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x",
+#'     Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10",
 #'     Role = "string",
 #'     Handler = "string",
 #'     CodeSize = 123,
@@ -2606,12 +3830,12 @@ lambda_get_event_source_mapping <- function(UUID) {
 #'         SigningJobArn = "string"
 #'       )
 #'     ),
-#'     State = "Pending"|"Active"|"Inactive"|"Failed",
+#'     State = "Pending"|"Active"|"Inactive"|"Failed"|"Deactivating"|"Deactivated"|"ActiveNonInvocable"|"Deleting",
 #'     StateReason = "string",
-#'     StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError",
+#'     StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"DrainingDurableExecutions"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
 #'     LastUpdateStatus = "Successful"|"Failed"|"InProgress",
 #'     LastUpdateStatusReason = "string",
-#'     LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError",
+#'     LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
 #'     FileSystemConfigs = list(
 #'       list(
 #'         Arn = "string",
@@ -2658,6 +3882,21 @@ lambda_get_event_source_mapping <- function(UUID) {
 #'       ApplicationLogLevel = "TRACE"|"DEBUG"|"INFO"|"WARN"|"ERROR"|"FATAL",
 #'       SystemLogLevel = "DEBUG"|"INFO"|"WARN",
 #'       LogGroup = "string"
+#'     ),
+#'     CapacityProviderConfig = list(
+#'       LambdaManagedInstancesCapacityProviderConfig = list(
+#'         CapacityProviderArn = "string",
+#'         PerExecutionEnvironmentMaxConcurrency = 123,
+#'         ExecutionEnvironmentMemoryGiBPerVCpu = 123.0
+#'       )
+#'     ),
+#'     ConfigSha256 = "string",
+#'     DurableConfig = list(
+#'       RetentionPeriodInDays = 123,
+#'       ExecutionTimeout = 123
+#'     ),
+#'     TenancyConfig = list(
+#'       TenantIsolationMode = "PER_TENANT"
 #'     )
 #'   ),
 #'   Code = list(
@@ -2895,7 +4134,7 @@ lambda_get_function_concurrency <- function(FunctionName) {
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -2941,12 +4180,12 @@ lambda_get_function_concurrency <- function(FunctionName) {
 #'       SigningJobArn = "string"
 #'     )
 #'   ),
-#'   State = "Pending"|"Active"|"Inactive"|"Failed",
+#'   State = "Pending"|"Active"|"Inactive"|"Failed"|"Deactivating"|"Deactivated"|"ActiveNonInvocable"|"Deleting",
 #'   StateReason = "string",
-#'   StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError",
+#'   StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"DrainingDurableExecutions"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
 #'   LastUpdateStatus = "Successful"|"Failed"|"InProgress",
 #'   LastUpdateStatusReason = "string",
-#'   LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError",
+#'   LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
 #'   FileSystemConfigs = list(
 #'     list(
 #'       Arn = "string",
@@ -2993,6 +4232,21 @@ lambda_get_function_concurrency <- function(FunctionName) {
 #'     ApplicationLogLevel = "TRACE"|"DEBUG"|"INFO"|"WARN"|"ERROR"|"FATAL",
 #'     SystemLogLevel = "DEBUG"|"INFO"|"WARN",
 #'     LogGroup = "string"
+#'   ),
+#'   CapacityProviderConfig = list(
+#'     LambdaManagedInstancesCapacityProviderConfig = list(
+#'       CapacityProviderArn = "string",
+#'       PerExecutionEnvironmentMaxConcurrency = 123,
+#'       ExecutionEnvironmentMemoryGiBPerVCpu = 123.0
+#'     )
+#'   ),
+#'   ConfigSha256 = "string",
+#'   DurableConfig = list(
+#'     RetentionPeriodInDays = 123,
+#'     ExecutionTimeout = 123
+#'   ),
+#'   TenancyConfig = list(
+#'     TenantIsolationMode = "PER_TENANT"
 #'   )
 #' )
 #' ```
@@ -3142,7 +4396,7 @@ lambda_get_function_event_invoke_config <- function(FunctionName, Qualifier = NU
 #' @usage
 #' lambda_get_function_recursion_config(FunctionName)
 #'
-#' @param FunctionName &#91;required&#93; 
+#' @param FunctionName &#91;required&#93; The name of the function.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3182,6 +4436,68 @@ lambda_get_function_recursion_config <- function(FunctionName) {
   return(response)
 }
 .lambda$operations$get_function_recursion_config <- lambda_get_function_recursion_config
+
+#' Retrieves the scaling configuration for a Lambda Managed Instances
+#' function
+#'
+#' @description
+#' Retrieves the scaling configuration for a Lambda Managed Instances
+#' function.
+#'
+#' @usage
+#' lambda_get_function_scaling_config(FunctionName, Qualifier)
+#'
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
+#' @param Qualifier &#91;required&#93; Specify a version or alias to get the scaling configuration for a
+#' published version of the function.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FunctionArn = "string",
+#'   AppliedFunctionScalingConfig = list(
+#'     MinExecutionEnvironments = 123,
+#'     MaxExecutionEnvironments = 123
+#'   ),
+#'   RequestedFunctionScalingConfig = list(
+#'     MinExecutionEnvironments = 123,
+#'     MaxExecutionEnvironments = 123
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_function_scaling_config(
+#'   FunctionName = "string",
+#'   Qualifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_get_function_scaling_config
+#'
+#' @aliases lambda_get_function_scaling_config
+lambda_get_function_scaling_config <- function(FunctionName, Qualifier) {
+  op <- new_operation(
+    name = "GetFunctionScalingConfig",
+    http_method = "GET",
+    http_path = "/2025-11-30/functions/{FunctionName}/function-scaling-config",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .lambda$get_function_scaling_config_input(FunctionName = FunctionName, Qualifier = Qualifier)
+  output <- .lambda$get_function_scaling_config_output()
+  config <- get_config()
+  svc <- .lambda$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$get_function_scaling_config <- lambda_get_function_scaling_config
 
 #' Returns details about a Lambda function URL
 #'
@@ -3298,7 +4614,7 @@ lambda_get_function_url_config <- function(FunctionName, Qualifier = NULL) {
 #'   CreatedDate = "string",
 #'   Version = 123,
 #'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"
+#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"
 #'   ),
 #'   LicenseInfo = "string",
 #'   CompatibleArchitectures = list(
@@ -3379,7 +4695,7 @@ lambda_get_layer_version <- function(LayerName, VersionNumber) {
 #'   CreatedDate = "string",
 #'   Version = 123,
 #'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"
+#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"
 #'   ),
 #'   LicenseInfo = "string",
 #'   CompatibleArchitectures = list(
@@ -3731,6 +5047,9 @@ lambda_get_runtime_management_config <- function(FunctionName, Qualifier = NULL)
 #' `InvocationType` to `Event`. Lambda passes the `ClientContext` object to
 #' your function for synchronous invocations only.
 #' 
+#' For synchronous invocations, the maximum payload size is 6 MB. For
+#' asynchronous invocations, the maximum payload size is 1 MB.
+#' 
 #' For [synchronous
 #' invocation](https://docs.aws.amazon.com/lambda/latest/dg/invocation-sync.html),
 #' details about the function response, including errors, are included in
@@ -3779,7 +5098,7 @@ lambda_get_runtime_management_config <- function(FunctionName, Qualifier = NULL)
 #'
 #' @usage
 #' lambda_invoke(FunctionName, InvocationType, LogType, ClientContext,
-#'   Payload, Qualifier)
+#'   DurableExecutionName, Payload, Qualifier, TenantId)
 #'
 #' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function, version, or alias.
 #' 
@@ -3815,13 +5134,19 @@ lambda_get_runtime_management_config <- function(FunctionName, Qualifier = NULL)
 #' pass to the function in the context object. Lambda passes the
 #' `ClientContext` object to your function for synchronous invocations
 #' only.
-#' @param Payload The JSON that you want to provide to your Lambda function as input.
+#' @param DurableExecutionName Optional unique name for the durable execution. When you start your
+#' special function, you can give it a unique name to identify this
+#' specific execution. It's like giving a nickname to a task.
+#' @param Payload The JSON that you want to provide to your Lambda function as input. The
+#' maximum payload size is 6 MB for synchronous invocations and 1 MB for
+#' asynchronous invocations.
 #' 
 #' You can enter the JSON directly. For example,
 #' `--payload '{ "key": "value" }'`. You can also specify a file path. For
 #' example, `--payload file://payload.json`.
 #' @param Qualifier Specify a version or alias to invoke a published version of the
 #' function.
+#' @param TenantId The identifier of the tenant in a multi-tenant Lambda function.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3831,7 +5156,8 @@ lambda_get_runtime_management_config <- function(FunctionName, Qualifier = NULL)
 #'   FunctionError = "string",
 #'   LogResult = "string",
 #'   Payload = raw,
-#'   ExecutedVersion = "string"
+#'   ExecutedVersion = "string",
+#'   DurableExecutionArn = "string"
 #' )
 #' ```
 #'
@@ -3842,8 +5168,10 @@ lambda_get_runtime_management_config <- function(FunctionName, Qualifier = NULL)
 #'   InvocationType = "Event"|"RequestResponse"|"DryRun",
 #'   LogType = "None"|"Tail",
 #'   ClientContext = "string",
+#'   DurableExecutionName = "string",
 #'   Payload = raw,
-#'   Qualifier = "string"
+#'   Qualifier = "string",
+#'   TenantId = "string"
 #' )
 #' ```
 #'
@@ -3872,7 +5200,7 @@ lambda_get_runtime_management_config <- function(FunctionName, Qualifier = NULL)
 #' @rdname lambda_invoke
 #'
 #' @aliases lambda_invoke
-lambda_invoke <- function(FunctionName, InvocationType = NULL, LogType = NULL, ClientContext = NULL, Payload = NULL, Qualifier = NULL) {
+lambda_invoke <- function(FunctionName, InvocationType = NULL, LogType = NULL, ClientContext = NULL, DurableExecutionName = NULL, Payload = NULL, Qualifier = NULL, TenantId = NULL) {
   op <- new_operation(
     name = "Invoke",
     http_method = "POST",
@@ -3881,7 +5209,7 @@ lambda_invoke <- function(FunctionName, InvocationType = NULL, LogType = NULL, C
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$invoke_input(FunctionName = FunctionName, InvocationType = InvocationType, LogType = LogType, ClientContext = ClientContext, Payload = Payload, Qualifier = Qualifier)
+  input <- .lambda$invoke_input(FunctionName = FunctionName, InvocationType = InvocationType, LogType = LogType, ClientContext = ClientContext, DurableExecutionName = DurableExecutionName, Payload = Payload, Qualifier = Qualifier, TenantId = TenantId)
   output <- .lambda$invoke_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -3897,6 +5225,9 @@ lambda_invoke <- function(FunctionName, InvocationType = NULL, LogType = NULL, C
 #' For asynchronous function invocation, use [`invoke`][lambda_invoke].
 #' 
 #' Invokes a function asynchronously.
+#' 
+#' The payload limit is 256KB. For larger payloads, for up to 1MB, use
+#' [`invoke`][lambda_invoke].
 #' 
 #' If you do use the InvokeAsync action, note that it doesn't support the
 #' use of X-Ray active tracing. Trace ID is not propagated to the function,
@@ -3954,7 +5285,7 @@ lambda_invoke_async <- function(FunctionName, InvokeArgs) {
   op <- new_operation(
     name = "InvokeAsync",
     http_method = "POST",
-    http_path = "/2014-11-13/functions/{FunctionName}/invoke-async/",
+    http_path = "/2014-11-13/functions/{FunctionName}/invoke-async",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -3986,7 +5317,7 @@ lambda_invoke_async <- function(FunctionName, InvokeArgs) {
 #'
 #' @usage
 #' lambda_invoke_with_response_stream(FunctionName, InvocationType,
-#'   LogType, ClientContext, Qualifier, Payload)
+#'   LogType, ClientContext, Qualifier, Payload, TenantId)
 #'
 #' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
@@ -4020,6 +5351,7 @@ lambda_invoke_async <- function(FunctionName, InvokeArgs) {
 #' You can enter the JSON directly. For example,
 #' `--payload '{ "key": "value" }'`. You can also specify a file path. For
 #' example, `--payload file://payload.json`.
+#' @param TenantId The identifier of the tenant in a multi-tenant Lambda function.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4049,7 +5381,8 @@ lambda_invoke_async <- function(FunctionName, InvokeArgs) {
 #'   LogType = "None"|"Tail",
 #'   ClientContext = "string",
 #'   Qualifier = "string",
-#'   Payload = raw
+#'   Payload = raw,
+#'   TenantId = "string"
 #' )
 #' ```
 #'
@@ -4058,7 +5391,7 @@ lambda_invoke_async <- function(FunctionName, InvokeArgs) {
 #' @rdname lambda_invoke_with_response_stream
 #'
 #' @aliases lambda_invoke_with_response_stream
-lambda_invoke_with_response_stream <- function(FunctionName, InvocationType = NULL, LogType = NULL, ClientContext = NULL, Qualifier = NULL, Payload = NULL) {
+lambda_invoke_with_response_stream <- function(FunctionName, InvocationType = NULL, LogType = NULL, ClientContext = NULL, Qualifier = NULL, Payload = NULL, TenantId = NULL) {
   op <- new_operation(
     name = "InvokeWithResponseStream",
     http_method = "POST",
@@ -4067,7 +5400,7 @@ lambda_invoke_with_response_stream <- function(FunctionName, InvocationType = NU
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .lambda$invoke_with_response_stream_input(FunctionName = FunctionName, InvocationType = InvocationType, LogType = LogType, ClientContext = ClientContext, Qualifier = Qualifier, Payload = Payload)
+  input <- .lambda$invoke_with_response_stream_input(FunctionName = FunctionName, InvocationType = InvocationType, LogType = LogType, ClientContext = ClientContext, Qualifier = Qualifier, Payload = Payload, TenantId = TenantId)
   output <- .lambda$invoke_with_response_stream_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -4171,6 +5504,100 @@ lambda_list_aliases <- function(FunctionName, FunctionVersion = NULL, Marker = N
 }
 .lambda$operations$list_aliases <- lambda_list_aliases
 
+#' Returns a list of capacity providers in your account
+#'
+#' @description
+#' Returns a list of capacity providers in your account.
+#'
+#' @usage
+#' lambda_list_capacity_providers(State, Marker, MaxItems)
+#'
+#' @param State Filter capacity providers by their current state.
+#' @param Marker Specify the pagination token that's returned by a previous request to
+#' retrieve the next page of results.
+#' @param MaxItems The maximum number of capacity providers to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CapacityProviders = list(
+#'     list(
+#'       CapacityProviderArn = "string",
+#'       State = "Pending"|"Active"|"Failed"|"Deleting",
+#'       VpcConfig = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       PermissionsConfig = list(
+#'         CapacityProviderOperatorRoleArn = "string"
+#'       ),
+#'       InstanceRequirements = list(
+#'         Architectures = list(
+#'           "x86_64"|"arm64"
+#'         ),
+#'         AllowedInstanceTypes = list(
+#'           "string"
+#'         ),
+#'         ExcludedInstanceTypes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       CapacityProviderScalingConfig = list(
+#'         MaxVCpuCount = 123,
+#'         ScalingMode = "Auto"|"Manual",
+#'         ScalingPolicies = list(
+#'           list(
+#'             PredefinedMetricType = "LambdaCapacityProviderAverageCPUUtilization",
+#'             TargetValue = 123.0
+#'           )
+#'         )
+#'       ),
+#'       KmsKeyArn = "string",
+#'       LastModified = "string"
+#'     )
+#'   ),
+#'   NextMarker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_capacity_providers(
+#'   State = "Pending"|"Active"|"Failed"|"Deleting",
+#'   Marker = "string",
+#'   MaxItems = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_list_capacity_providers
+#'
+#' @aliases lambda_list_capacity_providers
+lambda_list_capacity_providers <- function(State = NULL, Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListCapacityProviders",
+    http_method = "GET",
+    http_path = "/2025-11-30/capacity-providers",
+    host_prefix = "",
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "CapacityProviders"),
+    stream_api = FALSE
+  )
+  input <- .lambda$list_capacity_providers_input(State = State, Marker = Marker, MaxItems = MaxItems)
+  output <- .lambda$list_capacity_providers_output()
+  config <- get_config()
+  svc <- .lambda$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$list_capacity_providers <- lambda_list_capacity_providers
+
 #' Returns a list of code signing configurations
 #'
 #' @description
@@ -4227,7 +5654,7 @@ lambda_list_code_signing_configs <- function(Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListCodeSigningConfigs",
     http_method = "GET",
-    http_path = "/2020-04-22/code-signing-configs/",
+    http_path = "/2020-04-22/code-signing-configs",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "CodeSigningConfigs"),
     stream_api = FALSE
@@ -4241,6 +5668,102 @@ lambda_list_code_signing_configs <- function(Marker = NULL, MaxItems = NULL) {
   return(response)
 }
 .lambda$operations$list_code_signing_configs <- lambda_list_code_signing_configs
+
+#' Returns a list of durable executions for a specified Lambda function
+#'
+#' @description
+#' Returns a list of [durable
+#' executions](https://docs.aws.amazon.com/lambda/latest/dg/durable-functions.html)
+#' for a specified Lambda function. You can filter the results by execution
+#' name, status, and start time range. This API supports pagination for
+#' large result sets.
+#'
+#' @usage
+#' lambda_list_durable_executions_by_function(FunctionName, Qualifier,
+#'   DurableExecutionName, Statuses, StartedAfter, StartedBefore,
+#'   ReverseOrder, Marker, MaxItems)
+#'
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function. You can specify a function name,
+#' a partial ARN, or a full ARN.
+#' @param Qualifier The function version or alias. If not specified, lists executions for
+#' the $LATEST version.
+#' @param DurableExecutionName Filter executions by name. Only executions with names that contain this
+#' string are returned.
+#' @param Statuses Filter executions by status. Valid values: RUNNING, SUCCEEDED, FAILED,
+#' TIMED_OUT, STOPPED.
+#' @param StartedAfter Filter executions that started after this timestamp (ISO 8601 format).
+#' @param StartedBefore Filter executions that started before this timestamp (ISO 8601 format).
+#' @param ReverseOrder Set to true to return results in reverse chronological order (newest
+#' first). Default is false.
+#' @param Marker Pagination token from a previous request to continue retrieving results.
+#' @param MaxItems Maximum number of executions to return (1-1000). Default is 100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DurableExecutions = list(
+#'     list(
+#'       DurableExecutionArn = "string",
+#'       DurableExecutionName = "string",
+#'       FunctionArn = "string",
+#'       Status = "RUNNING"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"STOPPED",
+#'       StartTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextMarker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_durable_executions_by_function(
+#'   FunctionName = "string",
+#'   Qualifier = "string",
+#'   DurableExecutionName = "string",
+#'   Statuses = list(
+#'     "RUNNING"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"STOPPED"
+#'   ),
+#'   StartedAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   StartedBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ReverseOrder = TRUE|FALSE,
+#'   Marker = "string",
+#'   MaxItems = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_list_durable_executions_by_function
+#'
+#' @aliases lambda_list_durable_executions_by_function
+lambda_list_durable_executions_by_function <- function(FunctionName, Qualifier = NULL, DurableExecutionName = NULL, Statuses = NULL, StartedAfter = NULL, StartedBefore = NULL, ReverseOrder = NULL, Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListDurableExecutionsByFunction",
+    http_method = "GET",
+    http_path = "/2025-12-01/functions/{FunctionName}/durable-executions",
+    host_prefix = "",
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "DurableExecutions"),
+    stream_api = FALSE
+  )
+  input <- .lambda$list_durable_executions_by_function_input(FunctionName = FunctionName, Qualifier = Qualifier, DurableExecutionName = DurableExecutionName, Statuses = Statuses, StartedAfter = StartedAfter, StartedBefore = StartedBefore, ReverseOrder = ReverseOrder, Marker = Marker, MaxItems = MaxItems)
+  output <- .lambda$list_durable_executions_by_function_output()
+  config <- get_config()
+  svc <- .lambda$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$list_durable_executions_by_function <- lambda_list_durable_executions_by_function
 
 #' Lists event source mappings
 #'
@@ -4355,10 +5878,40 @@ lambda_list_code_signing_configs <- function(Marker = NULL, MaxItems = NULL) {
 #'         "ReportBatchItemFailures"
 #'       ),
 #'       AmazonManagedKafkaEventSourceConfig = list(
-#'         ConsumerGroupId = "string"
+#'         ConsumerGroupId = "string",
+#'         SchemaRegistryConfig = list(
+#'           SchemaRegistryURI = "string",
+#'           EventRecordFormat = "JSON"|"SOURCE",
+#'           AccessConfigs = list(
+#'             list(
+#'               Type = "BASIC_AUTH"|"CLIENT_CERTIFICATE_TLS_AUTH"|"SERVER_ROOT_CA_CERTIFICATE",
+#'               URI = "string"
+#'             )
+#'           ),
+#'           SchemaValidationConfigs = list(
+#'             list(
+#'               Attribute = "KEY"|"VALUE"
+#'             )
+#'           )
+#'         )
 #'       ),
 #'       SelfManagedKafkaEventSourceConfig = list(
-#'         ConsumerGroupId = "string"
+#'         ConsumerGroupId = "string",
+#'         SchemaRegistryConfig = list(
+#'           SchemaRegistryURI = "string",
+#'           EventRecordFormat = "JSON"|"SOURCE",
+#'           AccessConfigs = list(
+#'             list(
+#'               Type = "BASIC_AUTH"|"CLIENT_CERTIFICATE_TLS_AUTH"|"SERVER_ROOT_CA_CERTIFICATE",
+#'               URI = "string"
+#'             )
+#'           ),
+#'           SchemaValidationConfigs = list(
+#'             list(
+#'               Attribute = "KEY"|"VALUE"
+#'             )
+#'           )
+#'         )
 #'       ),
 #'       ScalingConfig = list(
 #'         MaximumConcurrency = 123
@@ -4381,7 +5934,8 @@ lambda_list_code_signing_configs <- function(Marker = NULL, MaxItems = NULL) {
 #'       ),
 #'       ProvisionedPollerConfig = list(
 #'         MinimumPollers = 123,
-#'         MaximumPollers = 123
+#'         MaximumPollers = 123,
+#'         PollerGroupName = "string"
 #'       )
 #'     )
 #'   )
@@ -4416,7 +5970,7 @@ lambda_list_event_source_mappings <- function(EventSourceArn = NULL, FunctionNam
   op <- new_operation(
     name = "ListEventSourceMappings",
     http_method = "GET",
-    http_path = "/2015-03-31/event-source-mappings/",
+    http_path = "/2015-03-31/event-source-mappings",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "EventSourceMappings"),
     stream_api = FALSE
@@ -4625,6 +6179,70 @@ lambda_list_function_url_configs <- function(FunctionName, Marker = NULL, MaxIte
 }
 .lambda$operations$list_function_url_configs <- lambda_list_function_url_configs
 
+#' Returns a list of function versions that are configured to use a
+#' specific capacity provider
+#'
+#' @description
+#' Returns a list of function versions that are configured to use a
+#' specific capacity provider.
+#'
+#' @usage
+#' lambda_list_function_versions_by_capacity_provider(CapacityProviderName,
+#'   Marker, MaxItems)
+#'
+#' @param CapacityProviderName &#91;required&#93; The name of the capacity provider to list function versions for.
+#' @param Marker Specify the pagination token that's returned by a previous request to
+#' retrieve the next page of results.
+#' @param MaxItems The maximum number of function versions to return in the response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CapacityProviderArn = "string",
+#'   FunctionVersions = list(
+#'     list(
+#'       FunctionArn = "string",
+#'       State = "Pending"|"Active"|"Inactive"|"Failed"|"Deactivating"|"Deactivated"|"ActiveNonInvocable"|"Deleting"
+#'     )
+#'   ),
+#'   NextMarker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_function_versions_by_capacity_provider(
+#'   CapacityProviderName = "string",
+#'   Marker = "string",
+#'   MaxItems = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_list_function_versions_by_capacity_provider
+#'
+#' @aliases lambda_list_function_versions_by_capacity_provider
+lambda_list_function_versions_by_capacity_provider <- function(CapacityProviderName, Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListFunctionVersionsByCapacityProvider",
+    http_method = "GET",
+    http_path = "/2025-11-30/capacity-providers/{CapacityProviderName}/function-versions",
+    host_prefix = "",
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "FunctionVersions"),
+    stream_api = FALSE
+  )
+  input <- .lambda$list_function_versions_by_capacity_provider_input(CapacityProviderName = CapacityProviderName, Marker = Marker, MaxItems = MaxItems)
+  output <- .lambda$list_function_versions_by_capacity_provider_output()
+  config <- get_config()
+  svc <- .lambda$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$list_function_versions_by_capacity_provider <- lambda_list_function_versions_by_capacity_provider
+
 #' Returns a list of Lambda functions, with the version-specific
 #' configuration of each
 #'
@@ -4667,7 +6285,7 @@ lambda_list_function_url_configs <- function(FunctionName, Marker = NULL, MaxIte
 #'     list(
 #'       FunctionName = "string",
 #'       FunctionArn = "string",
-#'       Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x",
+#'       Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10",
 #'       Role = "string",
 #'       Handler = "string",
 #'       CodeSize = 123,
@@ -4713,12 +6331,12 @@ lambda_list_function_url_configs <- function(FunctionName, Marker = NULL, MaxIte
 #'           SigningJobArn = "string"
 #'         )
 #'       ),
-#'       State = "Pending"|"Active"|"Inactive"|"Failed",
+#'       State = "Pending"|"Active"|"Inactive"|"Failed"|"Deactivating"|"Deactivated"|"ActiveNonInvocable"|"Deleting",
 #'       StateReason = "string",
-#'       StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError",
+#'       StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"DrainingDurableExecutions"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
 #'       LastUpdateStatus = "Successful"|"Failed"|"InProgress",
 #'       LastUpdateStatusReason = "string",
-#'       LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError",
+#'       LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
 #'       FileSystemConfigs = list(
 #'         list(
 #'           Arn = "string",
@@ -4765,6 +6383,21 @@ lambda_list_function_url_configs <- function(FunctionName, Marker = NULL, MaxIte
 #'         ApplicationLogLevel = "TRACE"|"DEBUG"|"INFO"|"WARN"|"ERROR"|"FATAL",
 #'         SystemLogLevel = "DEBUG"|"INFO"|"WARN",
 #'         LogGroup = "string"
+#'       ),
+#'       CapacityProviderConfig = list(
+#'         LambdaManagedInstancesCapacityProviderConfig = list(
+#'           CapacityProviderArn = "string",
+#'           PerExecutionEnvironmentMaxConcurrency = 123,
+#'           ExecutionEnvironmentMemoryGiBPerVCpu = 123.0
+#'         )
+#'       ),
+#'       ConfigSha256 = "string",
+#'       DurableConfig = list(
+#'         RetentionPeriodInDays = 123,
+#'         ExecutionTimeout = 123
+#'       ),
+#'       TenancyConfig = list(
+#'         TenantIsolationMode = "PER_TENANT"
 #'       )
 #'     )
 #'   )
@@ -4796,7 +6429,7 @@ lambda_list_functions <- function(MasterRegion = NULL, FunctionVersion = NULL, M
   op <- new_operation(
     name = "ListFunctions",
     http_method = "GET",
-    http_path = "/2015-03-31/functions/",
+    http_path = "/2015-03-31/functions",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "Functions"),
     stream_api = FALSE
@@ -4912,7 +6545,7 @@ lambda_list_functions_by_code_signing_config <- function(CodeSigningConfigArn, M
 #'       Description = "string",
 #'       CreatedDate = "string",
 #'       CompatibleRuntimes = list(
-#'         "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"
+#'         "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"
 #'       ),
 #'       LicenseInfo = "string",
 #'       CompatibleArchitectures = list(
@@ -4926,7 +6559,7 @@ lambda_list_functions_by_code_signing_config <- function(CodeSigningConfigArn, M
 #' @section Request syntax:
 #' ```
 #' svc$list_layer_versions(
-#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x",
+#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10",
 #'   LayerName = "string",
 #'   Marker = "string",
 #'   MaxItems = 123,
@@ -5013,7 +6646,7 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
 #'         Description = "string",
 #'         CreatedDate = "string",
 #'         CompatibleRuntimes = list(
-#'           "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"
+#'           "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"
 #'         ),
 #'         LicenseInfo = "string",
 #'         CompatibleArchitectures = list(
@@ -5028,7 +6661,7 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
 #' @section Request syntax:
 #' ```
 #' svc$list_layers(
-#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x",
+#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10",
 #'   Marker = "string",
 #'   MaxItems = 123,
 #'   CompatibleArchitecture = "x86_64"|"arm64"
@@ -5208,7 +6841,7 @@ lambda_list_tags <- function(Resource) {
   op <- new_operation(
     name = "ListTags",
     http_method = "GET",
-    http_path = "/2017-03-31/tags/{ARN}",
+    http_path = "/2017-03-31/tags/{Resource}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -5264,7 +6897,7 @@ lambda_list_tags <- function(Resource) {
 #'     list(
 #'       FunctionName = "string",
 #'       FunctionArn = "string",
-#'       Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x",
+#'       Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10",
 #'       Role = "string",
 #'       Handler = "string",
 #'       CodeSize = 123,
@@ -5310,12 +6943,12 @@ lambda_list_tags <- function(Resource) {
 #'           SigningJobArn = "string"
 #'         )
 #'       ),
-#'       State = "Pending"|"Active"|"Inactive"|"Failed",
+#'       State = "Pending"|"Active"|"Inactive"|"Failed"|"Deactivating"|"Deactivated"|"ActiveNonInvocable"|"Deleting",
 #'       StateReason = "string",
-#'       StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError",
+#'       StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"DrainingDurableExecutions"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
 #'       LastUpdateStatus = "Successful"|"Failed"|"InProgress",
 #'       LastUpdateStatusReason = "string",
-#'       LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError",
+#'       LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
 #'       FileSystemConfigs = list(
 #'         list(
 #'           Arn = "string",
@@ -5362,6 +6995,21 @@ lambda_list_tags <- function(Resource) {
 #'         ApplicationLogLevel = "TRACE"|"DEBUG"|"INFO"|"WARN"|"ERROR"|"FATAL",
 #'         SystemLogLevel = "DEBUG"|"INFO"|"WARN",
 #'         LogGroup = "string"
+#'       ),
+#'       CapacityProviderConfig = list(
+#'         LambdaManagedInstancesCapacityProviderConfig = list(
+#'           CapacityProviderArn = "string",
+#'           PerExecutionEnvironmentMaxConcurrency = 123,
+#'           ExecutionEnvironmentMemoryGiBPerVCpu = 123.0
+#'         )
+#'       ),
+#'       ConfigSha256 = "string",
+#'       DurableConfig = list(
+#'         RetentionPeriodInDays = 123,
+#'         ExecutionTimeout = 123
+#'       ),
+#'       TenancyConfig = list(
+#'         TenantIsolationMode = "PER_TENANT"
 #'       )
 #'     )
 #'   )
@@ -5467,7 +7115,7 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #'   CreatedDate = "string",
 #'   Version = 123,
 #'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"
+#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"
 #'   ),
 #'   LicenseInfo = "string",
 #'   CompatibleArchitectures = list(
@@ -5488,7 +7136,7 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #'     ZipFile = raw
 #'   ),
 #'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"
+#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10"
 #'   ),
 #'   LicenseInfo = "string",
 #'   CompatibleArchitectures = list(
@@ -5561,7 +7209,7 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #'
 #' @usage
 #' lambda_publish_version(FunctionName, CodeSha256, Description,
-#'   RevisionId)
+#'   RevisionId, PublishTo)
 #'
 #' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
@@ -5586,6 +7234,7 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #' @param RevisionId Only update the function if the revision ID matches the ID that's
 #' specified. Use this option to avoid publishing a version if the function
 #' configuration has changed since you last updated it.
+#' @param PublishTo Specifies where to publish the function version or configuration.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5593,7 +7242,7 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -5639,12 +7288,12 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #'       SigningJobArn = "string"
 #'     )
 #'   ),
-#'   State = "Pending"|"Active"|"Inactive"|"Failed",
+#'   State = "Pending"|"Active"|"Inactive"|"Failed"|"Deactivating"|"Deactivated"|"ActiveNonInvocable"|"Deleting",
 #'   StateReason = "string",
-#'   StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError",
+#'   StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"DrainingDurableExecutions"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
 #'   LastUpdateStatus = "Successful"|"Failed"|"InProgress",
 #'   LastUpdateStatusReason = "string",
-#'   LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError",
+#'   LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
 #'   FileSystemConfigs = list(
 #'     list(
 #'       Arn = "string",
@@ -5691,6 +7340,21 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #'     ApplicationLogLevel = "TRACE"|"DEBUG"|"INFO"|"WARN"|"ERROR"|"FATAL",
 #'     SystemLogLevel = "DEBUG"|"INFO"|"WARN",
 #'     LogGroup = "string"
+#'   ),
+#'   CapacityProviderConfig = list(
+#'     LambdaManagedInstancesCapacityProviderConfig = list(
+#'       CapacityProviderArn = "string",
+#'       PerExecutionEnvironmentMaxConcurrency = 123,
+#'       ExecutionEnvironmentMemoryGiBPerVCpu = 123.0
+#'     )
+#'   ),
+#'   ConfigSha256 = "string",
+#'   DurableConfig = list(
+#'     RetentionPeriodInDays = 123,
+#'     ExecutionTimeout = 123
+#'   ),
+#'   TenancyConfig = list(
+#'     TenantIsolationMode = "PER_TENANT"
 #'   )
 #' )
 #' ```
@@ -5701,7 +7365,8 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #'   FunctionName = "string",
 #'   CodeSha256 = "string",
 #'   Description = "string",
-#'   RevisionId = "string"
+#'   RevisionId = "string",
+#'   PublishTo = "LATEST_PUBLISHED"
 #' )
 #' ```
 #'
@@ -5720,7 +7385,7 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #' @rdname lambda_publish_version
 #'
 #' @aliases lambda_publish_version
-lambda_publish_version <- function(FunctionName, CodeSha256 = NULL, Description = NULL, RevisionId = NULL) {
+lambda_publish_version <- function(FunctionName, CodeSha256 = NULL, Description = NULL, RevisionId = NULL, PublishTo = NULL) {
   op <- new_operation(
     name = "PublishVersion",
     http_method = "POST",
@@ -5729,7 +7394,7 @@ lambda_publish_version <- function(FunctionName, CodeSha256 = NULL, Description 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$publish_version_input(FunctionName = FunctionName, CodeSha256 = CodeSha256, Description = Description, RevisionId = RevisionId)
+  input <- .lambda$publish_version_input(FunctionName = FunctionName, CodeSha256 = CodeSha256, Description = Description, RevisionId = RevisionId, PublishTo = PublishTo)
   output <- .lambda$publish_version_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -6138,6 +7803,68 @@ lambda_put_function_recursion_config <- function(FunctionName, RecursiveLoop) {
 }
 .lambda$operations$put_function_recursion_config <- lambda_put_function_recursion_config
 
+#' Sets the scaling configuration for a Lambda Managed Instances function
+#'
+#' @description
+#' Sets the scaling configuration for a Lambda Managed Instances function.
+#' The scaling configuration defines the minimum and maximum number of
+#' execution environments that can be provisioned for the function,
+#' allowing you to control scaling behavior and resource allocation.
+#'
+#' @usage
+#' lambda_put_function_scaling_config(FunctionName, Qualifier,
+#'   FunctionScalingConfig)
+#'
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
+#' @param Qualifier &#91;required&#93; Specify a version or alias to set the scaling configuration for a
+#' published version of the function.
+#' @param FunctionScalingConfig The scaling configuration to apply to the function, including minimum
+#' and maximum execution environment limits.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FunctionState = "Pending"|"Active"|"Inactive"|"Failed"|"Deactivating"|"Deactivated"|"ActiveNonInvocable"|"Deleting"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_function_scaling_config(
+#'   FunctionName = "string",
+#'   Qualifier = "string",
+#'   FunctionScalingConfig = list(
+#'     MinExecutionEnvironments = 123,
+#'     MaxExecutionEnvironments = 123
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_put_function_scaling_config
+#'
+#' @aliases lambda_put_function_scaling_config
+lambda_put_function_scaling_config <- function(FunctionName, Qualifier, FunctionScalingConfig = NULL) {
+  op <- new_operation(
+    name = "PutFunctionScalingConfig",
+    http_method = "PUT",
+    http_path = "/2025-11-30/functions/{FunctionName}/function-scaling-config",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .lambda$put_function_scaling_config_input(FunctionName = FunctionName, Qualifier = Qualifier, FunctionScalingConfig = FunctionScalingConfig)
+  output <- .lambda$put_function_scaling_config_output()
+  config <- get_config()
+  svc <- .lambda$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$put_function_scaling_config <- lambda_put_function_scaling_config
+
 #' Adds a provisioned concurrency configuration to a function's alias or
 #' version
 #'
@@ -6473,6 +8200,221 @@ lambda_remove_permission <- function(FunctionName, StatementId, Qualifier = NULL
 }
 .lambda$operations$remove_permission <- lambda_remove_permission
 
+#' Sends a failure response for a callback operation in a durable execution
+#'
+#' @description
+#' Sends a failure response for a callback operation in a durable
+#' execution. Use this API when an external system cannot complete a
+#' callback operation successfully.
+#'
+#' @usage
+#' lambda_send_durable_execution_callback_failure(CallbackId, Error)
+#'
+#' @param CallbackId &#91;required&#93; The unique identifier for the callback operation.
+#' @param Error Error details describing why the callback operation failed.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$send_durable_execution_callback_failure(
+#'   CallbackId = "string",
+#'   Error = list(
+#'     ErrorMessage = "string",
+#'     ErrorType = "string",
+#'     ErrorData = "string",
+#'     StackTrace = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_send_durable_execution_callback_failure
+#'
+#' @aliases lambda_send_durable_execution_callback_failure
+lambda_send_durable_execution_callback_failure <- function(CallbackId, Error = NULL) {
+  op <- new_operation(
+    name = "SendDurableExecutionCallbackFailure",
+    http_method = "POST",
+    http_path = "/2025-12-01/durable-execution-callbacks/{CallbackId}/fail",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .lambda$send_durable_execution_callback_failure_input(CallbackId = CallbackId, Error = Error)
+  output <- .lambda$send_durable_execution_callback_failure_output()
+  config <- get_config()
+  svc <- .lambda$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$send_durable_execution_callback_failure <- lambda_send_durable_execution_callback_failure
+
+#' Sends a heartbeat signal for a long-running callback operation to
+#' prevent timeout
+#'
+#' @description
+#' Sends a heartbeat signal for a long-running callback operation to
+#' prevent timeout. Use this API to extend the callback timeout period
+#' while the external operation is still in progress.
+#'
+#' @usage
+#' lambda_send_durable_execution_callback_heartbeat(CallbackId)
+#'
+#' @param CallbackId &#91;required&#93; The unique identifier for the callback operation.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$send_durable_execution_callback_heartbeat(
+#'   CallbackId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_send_durable_execution_callback_heartbeat
+#'
+#' @aliases lambda_send_durable_execution_callback_heartbeat
+lambda_send_durable_execution_callback_heartbeat <- function(CallbackId) {
+  op <- new_operation(
+    name = "SendDurableExecutionCallbackHeartbeat",
+    http_method = "POST",
+    http_path = "/2025-12-01/durable-execution-callbacks/{CallbackId}/heartbeat",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .lambda$send_durable_execution_callback_heartbeat_input(CallbackId = CallbackId)
+  output <- .lambda$send_durable_execution_callback_heartbeat_output()
+  config <- get_config()
+  svc <- .lambda$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$send_durable_execution_callback_heartbeat <- lambda_send_durable_execution_callback_heartbeat
+
+#' Sends a successful completion response for a callback operation in a
+#' durable execution
+#'
+#' @description
+#' Sends a successful completion response for a callback operation in a
+#' durable execution. Use this API when an external system has successfully
+#' completed a callback operation.
+#'
+#' @usage
+#' lambda_send_durable_execution_callback_success(CallbackId, Result)
+#'
+#' @param CallbackId &#91;required&#93; The unique identifier for the callback operation.
+#' @param Result The result data from the successful callback operation. Maximum size is
+#' 256 KB.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$send_durable_execution_callback_success(
+#'   CallbackId = "string",
+#'   Result = raw
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_send_durable_execution_callback_success
+#'
+#' @aliases lambda_send_durable_execution_callback_success
+lambda_send_durable_execution_callback_success <- function(CallbackId, Result = NULL) {
+  op <- new_operation(
+    name = "SendDurableExecutionCallbackSuccess",
+    http_method = "POST",
+    http_path = "/2025-12-01/durable-execution-callbacks/{CallbackId}/succeed",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .lambda$send_durable_execution_callback_success_input(CallbackId = CallbackId, Result = Result)
+  output <- .lambda$send_durable_execution_callback_success_output()
+  config <- get_config()
+  svc <- .lambda$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$send_durable_execution_callback_success <- lambda_send_durable_execution_callback_success
+
+#' Stops a running durable execution
+#'
+#' @description
+#' Stops a running [durable
+#' execution](https://docs.aws.amazon.com/lambda/latest/dg/durable-functions.html).
+#' The execution transitions to STOPPED status and cannot be resumed. Any
+#' in-progress operations are terminated.
+#'
+#' @usage
+#' lambda_stop_durable_execution(DurableExecutionArn, Error)
+#'
+#' @param DurableExecutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the durable execution.
+#' @param Error Optional error details explaining why the execution is being stopped.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StopTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_durable_execution(
+#'   DurableExecutionArn = "string",
+#'   Error = list(
+#'     ErrorMessage = "string",
+#'     ErrorType = "string",
+#'     ErrorData = "string",
+#'     StackTrace = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_stop_durable_execution
+#'
+#' @aliases lambda_stop_durable_execution
+lambda_stop_durable_execution <- function(DurableExecutionArn, Error = NULL) {
+  op <- new_operation(
+    name = "StopDurableExecution",
+    http_method = "POST",
+    http_path = "/2025-12-01/durable-executions/{DurableExecutionArn}/stop",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .lambda$stop_durable_execution_input(DurableExecutionArn = DurableExecutionArn, Error = Error)
+  output <- .lambda$stop_durable_execution_output()
+  config <- get_config()
+  svc <- .lambda$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$stop_durable_execution <- lambda_stop_durable_execution
+
 #' Adds tags to a function, event source mapping, or code signing
 #' configuration
 #'
@@ -6521,7 +8463,7 @@ lambda_tag_resource <- function(Resource, Tags) {
   op <- new_operation(
     name = "TagResource",
     http_method = "POST",
-    http_path = "/2017-03-31/tags/{ARN}",
+    http_path = "/2017-03-31/tags/{Resource}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -6584,7 +8526,7 @@ lambda_untag_resource <- function(Resource, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
     http_method = "DELETE",
-    http_path = "/2017-03-31/tags/{ARN}",
+    http_path = "/2017-03-31/tags/{Resource}",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -6705,6 +8647,104 @@ lambda_update_alias <- function(FunctionName, Name, FunctionVersion = NULL, Desc
 }
 .lambda$operations$update_alias <- lambda_update_alias
 
+#' Updates the configuration of an existing capacity provider
+#'
+#' @description
+#' Updates the configuration of an existing capacity provider.
+#'
+#' @usage
+#' lambda_update_capacity_provider(CapacityProviderName,
+#'   CapacityProviderScalingConfig)
+#'
+#' @param CapacityProviderName &#91;required&#93; The name of the capacity provider to update.
+#' @param CapacityProviderScalingConfig The updated scaling configuration for the capacity provider.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CapacityProvider = list(
+#'     CapacityProviderArn = "string",
+#'     State = "Pending"|"Active"|"Failed"|"Deleting",
+#'     VpcConfig = list(
+#'       SubnetIds = list(
+#'         "string"
+#'       ),
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       )
+#'     ),
+#'     PermissionsConfig = list(
+#'       CapacityProviderOperatorRoleArn = "string"
+#'     ),
+#'     InstanceRequirements = list(
+#'       Architectures = list(
+#'         "x86_64"|"arm64"
+#'       ),
+#'       AllowedInstanceTypes = list(
+#'         "string"
+#'       ),
+#'       ExcludedInstanceTypes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     CapacityProviderScalingConfig = list(
+#'       MaxVCpuCount = 123,
+#'       ScalingMode = "Auto"|"Manual",
+#'       ScalingPolicies = list(
+#'         list(
+#'           PredefinedMetricType = "LambdaCapacityProviderAverageCPUUtilization",
+#'           TargetValue = 123.0
+#'         )
+#'       )
+#'     ),
+#'     KmsKeyArn = "string",
+#'     LastModified = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_capacity_provider(
+#'   CapacityProviderName = "string",
+#'   CapacityProviderScalingConfig = list(
+#'     MaxVCpuCount = 123,
+#'     ScalingMode = "Auto"|"Manual",
+#'     ScalingPolicies = list(
+#'       list(
+#'         PredefinedMetricType = "LambdaCapacityProviderAverageCPUUtilization",
+#'         TargetValue = 123.0
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_update_capacity_provider
+#'
+#' @aliases lambda_update_capacity_provider
+lambda_update_capacity_provider <- function(CapacityProviderName, CapacityProviderScalingConfig = NULL) {
+  op <- new_operation(
+    name = "UpdateCapacityProvider",
+    http_method = "PUT",
+    http_path = "/2025-11-30/capacity-providers/{CapacityProviderName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .lambda$update_capacity_provider_input(CapacityProviderName = CapacityProviderName, CapacityProviderScalingConfig = CapacityProviderScalingConfig)
+  output <- .lambda$update_capacity_provider_output()
+  config <- get_config()
+  svc <- .lambda$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$update_capacity_provider <- lambda_update_capacity_provider
+
 #' Update the code signing configuration
 #'
 #' @description
@@ -6812,8 +8852,8 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #' -   [Amazon
 #'     DocumentDB](https://docs.aws.amazon.com/lambda/latest/dg/with-documentdb.html)
 #' 
-#' The following error handling options are available only for DynamoDB and
-#' Kinesis event sources:
+#' The following error handling options are available for stream sources
+#' (DynamoDB, Kinesis, Amazon MSK, and self-managed Apache Kafka):
 #' 
 #' -   `BisectBatchOnFunctionError` – If the function returns an error,
 #'     split the batch in two and retry.
@@ -6826,14 +8866,16 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #'     of retries. The default value is infinite (-1). When set to infinite
 #'     (-1), failed records are retried until the record expires.
 #' 
+#' -   `OnFailure` – Send discarded records to an Amazon SQS queue, Amazon
+#'     SNS topic, Kafka topic, or Amazon S3 bucket. For more information,
+#'     see [Adding a
+#'     destination](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async-retain-records.html#invocation-async-destinations).
+#' 
+#' The following option is available only for DynamoDB and Kinesis event
+#' sources:
+#' 
 #' -   `ParallelizationFactor` – Process multiple batches from each shard
 #'     concurrently.
-#' 
-#' For stream sources (DynamoDB, Kinesis, Amazon MSK, and self-managed
-#' Apache Kafka), the following option is also available:
-#' 
-#' -   `DestinationConfig` – Send discarded records to an Amazon SQS queue,
-#'     Amazon SNS topic, or Amazon S3 bucket.
 #' 
 #' For information about which configuration parameters apply to each event
 #' source, see the following topics.
@@ -6865,8 +8907,10 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #'   DestinationConfig, MaximumRecordAgeInSeconds,
 #'   BisectBatchOnFunctionError, MaximumRetryAttempts, ParallelizationFactor,
 #'   SourceAccessConfigurations, TumblingWindowInSeconds,
-#'   FunctionResponseTypes, ScalingConfig, DocumentDBEventSourceConfig,
-#'   KMSKeyArn, MetricsConfig, ProvisionedPollerConfig)
+#'   FunctionResponseTypes, ScalingConfig,
+#'   AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig,
+#'   DocumentDBEventSourceConfig, KMSKeyArn, MetricsConfig,
+#'   ProvisionedPollerConfig)
 #'
 #' @param UUID &#91;required&#93; The identifier of the event source mapping.
 #' @param FunctionName The name or ARN of the Lambda function.
@@ -6929,16 +8973,18 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #' Related setting: For Kinesis, DynamoDB, and Amazon SQS event sources,
 #' when you set `BatchSize` to a value greater than 10, you must set
 #' `MaximumBatchingWindowInSeconds` to at least 1.
-#' @param DestinationConfig (Kinesis, DynamoDB Streams, Amazon MSK, and self-managed Kafka only) A
+#' @param DestinationConfig (Kinesis, DynamoDB Streams, Amazon MSK, and self-managed Apache Kafka) A
 #' configuration object that specifies the destination of an event after
 #' Lambda processes it.
-#' @param MaximumRecordAgeInSeconds (Kinesis and DynamoDB Streams only) Discard records older than the
-#' specified age. The default value is infinite (-1).
-#' @param BisectBatchOnFunctionError (Kinesis and DynamoDB Streams only) If the function returns an error,
-#' split the batch in two and retry.
-#' @param MaximumRetryAttempts (Kinesis and DynamoDB Streams only) Discard records after the specified
-#' number of retries. The default value is infinite (-1). When set to
-#' infinite (-1), failed records are retried until the record expires.
+#' @param MaximumRecordAgeInSeconds (Kinesis, DynamoDB Streams, Amazon MSK, and self-managed Apache Kafka)
+#' Discard records older than the specified age. The default value is
+#' infinite (-1).
+#' @param BisectBatchOnFunctionError (Kinesis, DynamoDB Streams, Amazon MSK, and self-managed Apache Kafka)
+#' If the function returns an error, split the batch in two and retry.
+#' @param MaximumRetryAttempts (Kinesis, DynamoDB Streams, Amazon MSK, and self-managed Apache Kafka)
+#' Discard records after the specified number of retries. The default value
+#' is infinite (-1). When set to infinite (-1), failed records are retried
+#' until the record expires.
 #' @param ParallelizationFactor (Kinesis and DynamoDB Streams only) The number of batches to process
 #' from each shard concurrently.
 #' @param SourceAccessConfigurations An array of authentication protocols or VPC components required to
@@ -6946,12 +8992,15 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #' @param TumblingWindowInSeconds (Kinesis and DynamoDB Streams only) The duration in seconds of a
 #' processing window for DynamoDB and Kinesis Streams event sources. A
 #' value of 0 seconds indicates no tumbling window.
-#' @param FunctionResponseTypes (Kinesis, DynamoDB Streams, and Amazon SQS) A list of current response
-#' type enums applied to the event source mapping.
+#' @param FunctionResponseTypes (Kinesis, DynamoDB Streams, Amazon MSK, self-managed Apache Kafka, and
+#' Amazon SQS) A list of current response type enums applied to the event
+#' source mapping.
 #' @param ScalingConfig (Amazon SQS only) The scaling configuration for the event source. For
 #' more information, see [Configuring maximum concurrency for Amazon SQS
 #' event
 #' sources](https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html#events-sqs-max-concurrency).
+#' @param AmazonManagedKafkaEventSourceConfig 
+#' @param SelfManagedKafkaEventSourceConfig 
 #' @param DocumentDBEventSourceConfig Specific configuration settings for a DocumentDB event source.
 #' @param KMSKeyArn The ARN of the Key Management Service (KMS) customer managed key that
 #' Lambda uses to encrypt your function's [filter
@@ -6961,9 +9010,9 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #' @param MetricsConfig The metrics configuration for your event source. For more information,
 #' see [Event source mapping
 #' metrics](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics-types.html#event-source-mapping-metrics).
-#' @param ProvisionedPollerConfig (Amazon MSK and self-managed Apache Kafka only) The provisioned mode
-#' configuration for the event source. For more information, see
-#' [provisioned
+#' @param ProvisionedPollerConfig (Amazon SQS, Amazon MSK, and self-managed Apache Kafka only) The
+#' provisioned mode configuration for the event source. For more
+#' information, see [provisioned
 #' mode](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html#invocation-eventsourcemapping-provisioned-mode).
 #'
 #' @return
@@ -7028,10 +9077,40 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #'     "ReportBatchItemFailures"
 #'   ),
 #'   AmazonManagedKafkaEventSourceConfig = list(
-#'     ConsumerGroupId = "string"
+#'     ConsumerGroupId = "string",
+#'     SchemaRegistryConfig = list(
+#'       SchemaRegistryURI = "string",
+#'       EventRecordFormat = "JSON"|"SOURCE",
+#'       AccessConfigs = list(
+#'         list(
+#'           Type = "BASIC_AUTH"|"CLIENT_CERTIFICATE_TLS_AUTH"|"SERVER_ROOT_CA_CERTIFICATE",
+#'           URI = "string"
+#'         )
+#'       ),
+#'       SchemaValidationConfigs = list(
+#'         list(
+#'           Attribute = "KEY"|"VALUE"
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   SelfManagedKafkaEventSourceConfig = list(
-#'     ConsumerGroupId = "string"
+#'     ConsumerGroupId = "string",
+#'     SchemaRegistryConfig = list(
+#'       SchemaRegistryURI = "string",
+#'       EventRecordFormat = "JSON"|"SOURCE",
+#'       AccessConfigs = list(
+#'         list(
+#'           Type = "BASIC_AUTH"|"CLIENT_CERTIFICATE_TLS_AUTH"|"SERVER_ROOT_CA_CERTIFICATE",
+#'           URI = "string"
+#'         )
+#'       ),
+#'       SchemaValidationConfigs = list(
+#'         list(
+#'           Attribute = "KEY"|"VALUE"
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   ScalingConfig = list(
 #'     MaximumConcurrency = 123
@@ -7054,7 +9133,8 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #'   ),
 #'   ProvisionedPollerConfig = list(
 #'     MinimumPollers = 123,
-#'     MaximumPollers = 123
+#'     MaximumPollers = 123,
+#'     PollerGroupName = "string"
 #'   )
 #' )
 #' ```
@@ -7099,6 +9179,42 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #'   ScalingConfig = list(
 #'     MaximumConcurrency = 123
 #'   ),
+#'   AmazonManagedKafkaEventSourceConfig = list(
+#'     ConsumerGroupId = "string",
+#'     SchemaRegistryConfig = list(
+#'       SchemaRegistryURI = "string",
+#'       EventRecordFormat = "JSON"|"SOURCE",
+#'       AccessConfigs = list(
+#'         list(
+#'           Type = "BASIC_AUTH"|"CLIENT_CERTIFICATE_TLS_AUTH"|"SERVER_ROOT_CA_CERTIFICATE",
+#'           URI = "string"
+#'         )
+#'       ),
+#'       SchemaValidationConfigs = list(
+#'         list(
+#'           Attribute = "KEY"|"VALUE"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   SelfManagedKafkaEventSourceConfig = list(
+#'     ConsumerGroupId = "string",
+#'     SchemaRegistryConfig = list(
+#'       SchemaRegistryURI = "string",
+#'       EventRecordFormat = "JSON"|"SOURCE",
+#'       AccessConfigs = list(
+#'         list(
+#'           Type = "BASIC_AUTH"|"CLIENT_CERTIFICATE_TLS_AUTH"|"SERVER_ROOT_CA_CERTIFICATE",
+#'           URI = "string"
+#'         )
+#'       ),
+#'       SchemaValidationConfigs = list(
+#'         list(
+#'           Attribute = "KEY"|"VALUE"
+#'         )
+#'       )
+#'     )
+#'   ),
 #'   DocumentDBEventSourceConfig = list(
 #'     DatabaseName = "string",
 #'     CollectionName = "string",
@@ -7112,7 +9228,8 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #'   ),
 #'   ProvisionedPollerConfig = list(
 #'     MinimumPollers = 123,
-#'     MaximumPollers = 123
+#'     MaximumPollers = 123,
+#'     PollerGroupName = "string"
 #'   )
 #' )
 #' ```
@@ -7133,7 +9250,7 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #' @rdname lambda_update_event_source_mapping
 #'
 #' @aliases lambda_update_event_source_mapping
-lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, ParallelizationFactor = NULL, SourceAccessConfigurations = NULL, TumblingWindowInSeconds = NULL, FunctionResponseTypes = NULL, ScalingConfig = NULL, DocumentDBEventSourceConfig = NULL, KMSKeyArn = NULL, MetricsConfig = NULL, ProvisionedPollerConfig = NULL) {
+lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, ParallelizationFactor = NULL, SourceAccessConfigurations = NULL, TumblingWindowInSeconds = NULL, FunctionResponseTypes = NULL, ScalingConfig = NULL, AmazonManagedKafkaEventSourceConfig = NULL, SelfManagedKafkaEventSourceConfig = NULL, DocumentDBEventSourceConfig = NULL, KMSKeyArn = NULL, MetricsConfig = NULL, ProvisionedPollerConfig = NULL) {
   op <- new_operation(
     name = "UpdateEventSourceMapping",
     http_method = "PUT",
@@ -7142,7 +9259,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$update_event_source_mapping_input(UUID = UUID, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, ParallelizationFactor = ParallelizationFactor, SourceAccessConfigurations = SourceAccessConfigurations, TumblingWindowInSeconds = TumblingWindowInSeconds, FunctionResponseTypes = FunctionResponseTypes, ScalingConfig = ScalingConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig, KMSKeyArn = KMSKeyArn, MetricsConfig = MetricsConfig, ProvisionedPollerConfig = ProvisionedPollerConfig)
+  input <- .lambda$update_event_source_mapping_input(UUID = UUID, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, ParallelizationFactor = ParallelizationFactor, SourceAccessConfigurations = SourceAccessConfigurations, TumblingWindowInSeconds = TumblingWindowInSeconds, FunctionResponseTypes = FunctionResponseTypes, ScalingConfig = ScalingConfig, AmazonManagedKafkaEventSourceConfig = AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig = SelfManagedKafkaEventSourceConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig, KMSKeyArn = KMSKeyArn, MetricsConfig = MetricsConfig, ProvisionedPollerConfig = ProvisionedPollerConfig)
   output <- .lambda$update_event_source_mapping_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -7184,7 +9301,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #' @usage
 #' lambda_update_function_code(FunctionName, ZipFile, S3Bucket, S3Key,
 #'   S3ObjectVersion, ImageUri, Publish, DryRun, RevisionId, Architectures,
-#'   SourceKMSKeyArn)
+#'   SourceKMSKeyArn, PublishTo)
 #'
 #' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
@@ -7227,6 +9344,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #' used to encrypt your function's .zip deployment package. If you don't
 #' provide a customer managed key, Lambda uses an Amazon Web Services
 #' managed key.
+#' @param PublishTo Specifies where to publish the function version or configuration.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7234,7 +9352,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -7280,12 +9398,12 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #'       SigningJobArn = "string"
 #'     )
 #'   ),
-#'   State = "Pending"|"Active"|"Inactive"|"Failed",
+#'   State = "Pending"|"Active"|"Inactive"|"Failed"|"Deactivating"|"Deactivated"|"ActiveNonInvocable"|"Deleting",
 #'   StateReason = "string",
-#'   StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError",
+#'   StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"DrainingDurableExecutions"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
 #'   LastUpdateStatus = "Successful"|"Failed"|"InProgress",
 #'   LastUpdateStatusReason = "string",
-#'   LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError",
+#'   LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
 #'   FileSystemConfigs = list(
 #'     list(
 #'       Arn = "string",
@@ -7332,6 +9450,21 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #'     ApplicationLogLevel = "TRACE"|"DEBUG"|"INFO"|"WARN"|"ERROR"|"FATAL",
 #'     SystemLogLevel = "DEBUG"|"INFO"|"WARN",
 #'     LogGroup = "string"
+#'   ),
+#'   CapacityProviderConfig = list(
+#'     LambdaManagedInstancesCapacityProviderConfig = list(
+#'       CapacityProviderArn = "string",
+#'       PerExecutionEnvironmentMaxConcurrency = 123,
+#'       ExecutionEnvironmentMemoryGiBPerVCpu = 123.0
+#'     )
+#'   ),
+#'   ConfigSha256 = "string",
+#'   DurableConfig = list(
+#'     RetentionPeriodInDays = 123,
+#'     ExecutionTimeout = 123
+#'   ),
+#'   TenancyConfig = list(
+#'     TenantIsolationMode = "PER_TENANT"
 #'   )
 #' )
 #' ```
@@ -7351,7 +9484,8 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #'   Architectures = list(
 #'     "x86_64"|"arm64"
 #'   ),
-#'   SourceKMSKeyArn = "string"
+#'   SourceKMSKeyArn = "string",
+#'   PublishTo = "LATEST_PUBLISHED"
 #' )
 #' ```
 #'
@@ -7372,7 +9506,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #' @rdname lambda_update_function_code
 #'
 #' @aliases lambda_update_function_code
-lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket = NULL, S3Key = NULL, S3ObjectVersion = NULL, ImageUri = NULL, Publish = NULL, DryRun = NULL, RevisionId = NULL, Architectures = NULL, SourceKMSKeyArn = NULL) {
+lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket = NULL, S3Key = NULL, S3ObjectVersion = NULL, ImageUri = NULL, Publish = NULL, DryRun = NULL, RevisionId = NULL, Architectures = NULL, SourceKMSKeyArn = NULL, PublishTo = NULL) {
   op <- new_operation(
     name = "UpdateFunctionCode",
     http_method = "PUT",
@@ -7381,7 +9515,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$update_function_code_input(FunctionName = FunctionName, ZipFile = ZipFile, S3Bucket = S3Bucket, S3Key = S3Key, S3ObjectVersion = S3ObjectVersion, ImageUri = ImageUri, Publish = Publish, DryRun = DryRun, RevisionId = RevisionId, Architectures = Architectures, SourceKMSKeyArn = SourceKMSKeyArn)
+  input <- .lambda$update_function_code_input(FunctionName = FunctionName, ZipFile = ZipFile, S3Bucket = S3Bucket, S3Key = S3Key, S3ObjectVersion = S3ObjectVersion, ImageUri = ImageUri, Publish = Publish, DryRun = DryRun, RevisionId = RevisionId, Architectures = Architectures, SourceKMSKeyArn = SourceKMSKeyArn, PublishTo = PublishTo)
   output <- .lambda$update_function_code_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -7422,7 +9556,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'   Description, Timeout, MemorySize, VpcConfig, Environment, Runtime,
 #'   DeadLetterConfig, KMSKeyArn, TracingConfig, RevisionId, Layers,
 #'   FileSystemConfigs, ImageConfig, EphemeralStorage, SnapStart,
-#'   LoggingConfig)
+#'   LoggingConfig, CapacityProviderConfig, DurableConfig)
 #'
 #' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
@@ -7527,6 +9661,10 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' [SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart.html)
 #' setting.
 #' @param LoggingConfig The function's Amazon CloudWatch Logs configuration settings.
+#' @param CapacityProviderConfig Configuration for the capacity provider that manages compute resources
+#' for Lambda functions.
+#' @param DurableConfig Configuration settings for durable functions. Allows updating execution
+#' timeout and retention period for functions with durability enabled.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7534,7 +9672,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -7580,12 +9718,12 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'       SigningJobArn = "string"
 #'     )
 #'   ),
-#'   State = "Pending"|"Active"|"Inactive"|"Failed",
+#'   State = "Pending"|"Active"|"Inactive"|"Failed"|"Deactivating"|"Deactivated"|"ActiveNonInvocable"|"Deleting",
 #'   StateReason = "string",
-#'   StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError",
+#'   StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"DrainingDurableExecutions"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
 #'   LastUpdateStatus = "Successful"|"Failed"|"InProgress",
 #'   LastUpdateStatusReason = "string",
-#'   LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError",
+#'   LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage"|"KMSKeyAccessDenied"|"KMSKeyNotFound"|"InvalidStateKMSKey"|"DisabledKMSKey"|"EFSIOError"|"EFSMountConnectivityError"|"EFSMountFailure"|"EFSMountTimeout"|"InvalidRuntime"|"InvalidZipFileException"|"FunctionError"|"VcpuLimitExceeded"|"CapacityProviderScalingLimitExceeded"|"InsufficientCapacity"|"EC2RequestLimitExceeded"|"FunctionError.InitTimeout"|"FunctionError.RuntimeInitError"|"FunctionError.ExtensionInitError"|"FunctionError.InvalidEntryPoint"|"FunctionError.InvalidWorkingDirectory"|"FunctionError.PermissionDenied"|"FunctionError.TooManyExtensions"|"FunctionError.InitResourceExhausted"|"DisallowedByVpcEncryptionControl",
 #'   FileSystemConfigs = list(
 #'     list(
 #'       Arn = "string",
@@ -7632,6 +9770,21 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'     ApplicationLogLevel = "TRACE"|"DEBUG"|"INFO"|"WARN"|"ERROR"|"FATAL",
 #'     SystemLogLevel = "DEBUG"|"INFO"|"WARN",
 #'     LogGroup = "string"
+#'   ),
+#'   CapacityProviderConfig = list(
+#'     LambdaManagedInstancesCapacityProviderConfig = list(
+#'       CapacityProviderArn = "string",
+#'       PerExecutionEnvironmentMaxConcurrency = 123,
+#'       ExecutionEnvironmentMemoryGiBPerVCpu = 123.0
+#'     )
+#'   ),
+#'   ConfigSha256 = "string",
+#'   DurableConfig = list(
+#'     RetentionPeriodInDays = 123,
+#'     ExecutionTimeout = 123
+#'   ),
+#'   TenancyConfig = list(
+#'     TenantIsolationMode = "PER_TENANT"
 #'   )
 #' )
 #' ```
@@ -7659,7 +9812,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'       "string"
 #'     )
 #'   ),
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"ruby3.4"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"|"nodejs24.x"|"python3.14"|"java25"|"dotnet10",
 #'   DeadLetterConfig = list(
 #'     TargetArn = "string"
 #'   ),
@@ -7697,6 +9850,17 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'     ApplicationLogLevel = "TRACE"|"DEBUG"|"INFO"|"WARN"|"ERROR"|"FATAL",
 #'     SystemLogLevel = "DEBUG"|"INFO"|"WARN",
 #'     LogGroup = "string"
+#'   ),
+#'   CapacityProviderConfig = list(
+#'     LambdaManagedInstancesCapacityProviderConfig = list(
+#'       CapacityProviderArn = "string",
+#'       PerExecutionEnvironmentMaxConcurrency = 123,
+#'       ExecutionEnvironmentMemoryGiBPerVCpu = 123.0
+#'     )
+#'   ),
+#'   DurableConfig = list(
+#'     RetentionPeriodInDays = 123,
+#'     ExecutionTimeout = 123
 #'   )
 #' )
 #' ```
@@ -7716,7 +9880,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' @rdname lambda_update_function_configuration
 #'
 #' @aliases lambda_update_function_configuration
-lambda_update_function_configuration <- function(FunctionName, Role = NULL, Handler = NULL, Description = NULL, Timeout = NULL, MemorySize = NULL, VpcConfig = NULL, Environment = NULL, Runtime = NULL, DeadLetterConfig = NULL, KMSKeyArn = NULL, TracingConfig = NULL, RevisionId = NULL, Layers = NULL, FileSystemConfigs = NULL, ImageConfig = NULL, EphemeralStorage = NULL, SnapStart = NULL, LoggingConfig = NULL) {
+lambda_update_function_configuration <- function(FunctionName, Role = NULL, Handler = NULL, Description = NULL, Timeout = NULL, MemorySize = NULL, VpcConfig = NULL, Environment = NULL, Runtime = NULL, DeadLetterConfig = NULL, KMSKeyArn = NULL, TracingConfig = NULL, RevisionId = NULL, Layers = NULL, FileSystemConfigs = NULL, ImageConfig = NULL, EphemeralStorage = NULL, SnapStart = NULL, LoggingConfig = NULL, CapacityProviderConfig = NULL, DurableConfig = NULL) {
   op <- new_operation(
     name = "UpdateFunctionConfiguration",
     http_method = "PUT",
@@ -7725,7 +9889,7 @@ lambda_update_function_configuration <- function(FunctionName, Role = NULL, Hand
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$update_function_configuration_input(FunctionName = FunctionName, Role = Role, Handler = Handler, Description = Description, Timeout = Timeout, MemorySize = MemorySize, VpcConfig = VpcConfig, Environment = Environment, Runtime = Runtime, DeadLetterConfig = DeadLetterConfig, KMSKeyArn = KMSKeyArn, TracingConfig = TracingConfig, RevisionId = RevisionId, Layers = Layers, FileSystemConfigs = FileSystemConfigs, ImageConfig = ImageConfig, EphemeralStorage = EphemeralStorage, SnapStart = SnapStart, LoggingConfig = LoggingConfig)
+  input <- .lambda$update_function_configuration_input(FunctionName = FunctionName, Role = Role, Handler = Handler, Description = Description, Timeout = Timeout, MemorySize = MemorySize, VpcConfig = VpcConfig, Environment = Environment, Runtime = Runtime, DeadLetterConfig = DeadLetterConfig, KMSKeyArn = KMSKeyArn, TracingConfig = TracingConfig, RevisionId = RevisionId, Layers = Layers, FileSystemConfigs = FileSystemConfigs, ImageConfig = ImageConfig, EphemeralStorage = EphemeralStorage, SnapStart = SnapStart, LoggingConfig = LoggingConfig, CapacityProviderConfig = CapacityProviderConfig, DurableConfig = DurableConfig)
   output <- .lambda$update_function_configuration_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -7889,8 +10053,7 @@ lambda_update_function_event_invoke_config <- function(FunctionName, Qualifier =
 #' @param AuthType The type of authentication that your function URL uses. Set to `AWS_IAM`
 #' if you want to restrict access to authenticated users only. Set to
 #' `NONE` if you want to bypass IAM authentication to create a public
-#' endpoint. For more information, see [Security and auth model for Lambda
-#' function
+#' endpoint. For more information, see [Control access to Lambda function
 #' URLs](https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html).
 #' @param Cors The [cross-origin resource sharing
 #' (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS)
@@ -7905,9 +10068,7 @@ lambda_update_function_event_invoke_config <- function(FunctionName, Qualifier =
 #' -   `RESPONSE_STREAM` – Your function streams payload results as they
 #'     become available. Lambda invokes your function using the
 #'     [`invoke_with_response_stream`][lambda_invoke_with_response_stream]
-#'     API operation. The maximum response payload size is 20 MB, however,
-#'     you can [request a quota
-#'     increase](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html).
+#'     API operation. The maximum response payload size is 200 MB.
 #'
 #' @return
 #' A list with the following syntax:

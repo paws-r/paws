@@ -255,6 +255,30 @@ NULL
   return(populate(args, shape))
 }
 
+.memorydb$describe_multi_region_parameter_groups_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MultiRegionParameterGroupName = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.memorydb$describe_multi_region_parameter_groups_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MultiRegionParameterGroups = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Family = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.memorydb$describe_multi_region_parameters_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MultiRegionParameterGroupName = structure(logical(0), tags = list(type = "string")), Source = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.memorydb$describe_multi_region_parameters_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MultiRegionParameters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Source = structure(logical(0), tags = list(type = "string")), DataType = structure(logical(0), tags = list(type = "string")), AllowedValues = structure(logical(0), tags = list(type = "string")), MinimumEngineVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .memorydb$describe_parameter_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ParameterGroupName = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))

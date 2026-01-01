@@ -10,14 +10,14 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_batch_update_rule/](https://www.paws-r-sdk.com/docs/vpclattice_batch_update_rule/) for full documentation.
 #'
+#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #' @param listenerIdentifier &#91;required&#93; The ID or ARN of the listener.
 #' @param rules &#91;required&#93; The rules for the specified listener.
-#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_batch_update_rule
-vpclattice_batch_update_rule <- function(listenerIdentifier, rules, serviceIdentifier) {
+vpclattice_batch_update_rule <- function(serviceIdentifier, listenerIdentifier, rules) {
   op <- new_operation(
     name = "BatchUpdateRule",
     http_method = "PATCH",
@@ -26,7 +26,7 @@ vpclattice_batch_update_rule <- function(listenerIdentifier, rules, serviceIdent
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$batch_update_rule_input(listenerIdentifier = listenerIdentifier, rules = rules, serviceIdentifier = serviceIdentifier)
+  input <- .vpclattice$batch_update_rule_input(serviceIdentifier = serviceIdentifier, listenerIdentifier = listenerIdentifier, rules = rules)
   output <- .vpclattice$batch_update_rule_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -49,17 +49,17 @@ vpclattice_batch_update_rule <- function(listenerIdentifier, rules, serviceIdent
 #' successfully using the same client token and parameters, the retry
 #' succeeds without performing any actions. If the parameters aren't
 #' identical, the retry fails.
+#' @param resourceIdentifier &#91;required&#93; The ID or ARN of the service network or service.
 #' @param destinationArn &#91;required&#93; The Amazon Resource Name (ARN) of the destination. The supported
 #' destination types are CloudWatch Log groups, Kinesis Data Firehose
 #' delivery streams, and Amazon S3 buckets.
-#' @param resourceIdentifier &#91;required&#93; The ID or ARN of the service network or service.
 #' @param serviceNetworkLogType The type of log that monitors your Amazon VPC Lattice service networks.
 #' @param tags The tags for the access log subscription.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_create_access_log_subscription
-vpclattice_create_access_log_subscription <- function(clientToken = NULL, destinationArn, resourceIdentifier, serviceNetworkLogType = NULL, tags = NULL) {
+vpclattice_create_access_log_subscription <- function(clientToken = NULL, resourceIdentifier, destinationArn, serviceNetworkLogType = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateAccessLogSubscription",
     http_method = "POST",
@@ -68,7 +68,7 @@ vpclattice_create_access_log_subscription <- function(clientToken = NULL, destin
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$create_access_log_subscription_input(clientToken = clientToken, destinationArn = destinationArn, resourceIdentifier = resourceIdentifier, serviceNetworkLogType = serviceNetworkLogType, tags = tags)
+  input <- .vpclattice$create_access_log_subscription_input(clientToken = clientToken, resourceIdentifier = resourceIdentifier, destinationArn = destinationArn, serviceNetworkLogType = serviceNetworkLogType, tags = tags)
   output <- .vpclattice$create_access_log_subscription_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -85,27 +85,27 @@ vpclattice_create_access_log_subscription <- function(clientToken = NULL, destin
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_create_listener/](https://www.paws-r-sdk.com/docs/vpclattice_create_listener/) for full documentation.
 #'
+#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
+#' @param name &#91;required&#93; The name of the listener. A listener name must be unique within a
+#' service. The valid characters are a-z, 0-9, and hyphens (-). You can't
+#' use a hyphen as the first or last character, or immediately after
+#' another hyphen.
+#' @param protocol &#91;required&#93; The listener protocol.
+#' @param port The listener port. You can specify a value from 1 to 65535. For HTTP,
+#' the default is 80. For HTTPS, the default is 443.
+#' @param defaultAction &#91;required&#93; The action for the default rule. Each listener has a default rule. The
+#' default rule is used if no other rules match.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you retry a request that completed
 #' successfully using the same client token and parameters, the retry
 #' succeeds without performing any actions. If the parameters aren't
 #' identical, the retry fails.
-#' @param defaultAction &#91;required&#93; The action for the default rule. Each listener has a default rule. The
-#' default rule is used if no other rules match.
-#' @param name &#91;required&#93; The name of the listener. A listener name must be unique within a
-#' service. The valid characters are a-z, 0-9, and hyphens (-). You can't
-#' use a hyphen as the first or last character, or immediately after
-#' another hyphen.
-#' @param port The listener port. You can specify a value from 1 to 65535. For HTTP,
-#' the default is 80. For HTTPS, the default is 443.
-#' @param protocol &#91;required&#93; The listener protocol.
-#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #' @param tags The tags for the listener.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_create_listener
-vpclattice_create_listener <- function(clientToken = NULL, defaultAction, name, port = NULL, protocol, serviceIdentifier, tags = NULL) {
+vpclattice_create_listener <- function(serviceIdentifier, name, protocol, port = NULL, defaultAction, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateListener",
     http_method = "POST",
@@ -114,7 +114,7 @@ vpclattice_create_listener <- function(clientToken = NULL, defaultAction, name, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$create_listener_input(clientToken = clientToken, defaultAction = defaultAction, name = name, port = port, protocol = protocol, serviceIdentifier = serviceIdentifier, tags = tags)
+  input <- .vpclattice$create_listener_input(serviceIdentifier = serviceIdentifier, name = name, protocol = protocol, port = port, defaultAction = defaultAction, clientToken = clientToken, tags = tags)
   output <- .vpclattice$create_listener_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -131,46 +131,63 @@ vpclattice_create_listener <- function(clientToken = NULL, defaultAction, name, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_create_resource_configuration/](https://www.paws-r-sdk.com/docs/vpclattice_create_resource_configuration/) for full documentation.
 #'
+#' @param name &#91;required&#93; The name of the resource configuration. The name must be unique within
+#' the account. The valid characters are a-z, 0-9, and hyphens (-). You
+#' can't use a hyphen as the first or last character, or immediately after
+#' another hyphen.
+#' @param type &#91;required&#93; The type of resource configuration. A resource configuration can be one
+#' of the following types:
+#' 
+#' -   **SINGLE** - A single resource.
+#' 
+#' -   **GROUP** - A group of resources. You must create a group resource
+#'     configuration before you create a child resource configuration.
+#' 
+#' -   **CHILD** - A single resource that is part of a group resource
+#'     configuration.
+#' 
+#' -   **ARN** - An Amazon Web Services resource.
+#' @param portRanges (SINGLE, GROUP, CHILD) The TCP port ranges that a consumer can use to
+#' access a resource configuration (for example: 1-65535). You can separate
+#' port ranges using commas (for example: 1,2,22-30).
+#' @param protocol (SINGLE, GROUP) The protocol accepted by the resource configuration.
+#' @param resourceGatewayIdentifier (SINGLE, GROUP, ARN) The ID or ARN of the resource gateway used to
+#' connect to the resource configuration. For a child resource
+#' configuration, this value is inherited from the parent resource
+#' configuration.
+#' @param resourceConfigurationGroupIdentifier (CHILD) The ID or ARN of the parent resource configuration of type
+#' `GROUP`. This is used to associate a child resource configuration with a
+#' group resource configuration.
+#' @param resourceConfigurationDefinition Identifies the resource configuration in one of the following ways:
+#' 
+#' -   **Amazon Resource Name (ARN)** - Supported resource-types that are
+#'     provisioned by Amazon Web Services services, such as RDS databases,
+#'     can be identified by their ARN.
+#' 
+#' -   **Domain name** - Any domain name that is publicly resolvable.
+#' 
+#' -   **IP address** - For IPv4 and IPv6, only IP addresses in the VPC are
+#'     supported.
 #' @param allowAssociationToShareableServiceNetwork (SINGLE, GROUP, ARN) Specifies whether the resource configuration can be
 #' associated with a sharable service network. The default is false.
+#' @param customDomainName A custom domain name for your resource configuration. Additionally,
+#' provide a DomainVerificationID to prove your ownership of a domain.
+#' @param groupDomain (GROUP) The group domain for a group resource configuration. Any domains
+#' that you create for the child resource are subdomains of the group
+#' domain. Child resources inherit the verification status of the domain.
+#' @param domainVerificationIdentifier The domain verification ID of your verified custom domain name. If you
+#' don't provide an ID, you must configure the DNS settings yourself.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you retry a request that completed
 #' successfully using the same client token and parameters, the retry
 #' succeeds without performing any actions. If the parameters aren't
 #' identical, the retry fails.
-#' @param name &#91;required&#93; The name of the resource configuration. The name must be unique within
-#' the account. The valid characters are a-z, 0-9, and hyphens (-). You
-#' can't use a hyphen as the first or last character, or immediately after
-#' another hyphen.
-#' @param portRanges (SINGLE, GROUP, CHILD) The TCP port ranges that a consumer can use to
-#' access a resource configuration (for example: 1-65535). You can separate
-#' port ranges using commas (for example: 1,2,22-30).
-#' @param protocol (SINGLE, GROUP) The protocol accepted by the resource configuration.
-#' @param resourceConfigurationDefinition (SINGLE, CHILD, ARN) The resource configuration.
-#' @param resourceConfigurationGroupIdentifier (CHILD) The ID or ARN of the parent resource configuration (type is
-#' `GROUP`). This is used to associate a child resource configuration with
-#' a group resource configuration.
-#' @param resourceGatewayIdentifier (SINGLE, GROUP, ARN) The ID or ARN of the resource gateway used to
-#' connect to the resource configuration. For a child resource
-#' configuration, this value is inherited from the parent resource
-#' configuration.
 #' @param tags The tags for the resource configuration.
-#' @param type &#91;required&#93; The type of resource configuration.
-#' 
-#' -   `SINGLE` - A single resource.
-#' 
-#' -   `GROUP` - A group of resources. You must create a group resource
-#'     configuration before you create a child resource configuration.
-#' 
-#' -   `CHILD` - A single resource that is part of a group resource
-#'     configuration.
-#' 
-#' -   `ARN` - An Amazon Web Services resource.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_create_resource_configuration
-vpclattice_create_resource_configuration <- function(allowAssociationToShareableServiceNetwork = NULL, clientToken = NULL, name, portRanges = NULL, protocol = NULL, resourceConfigurationDefinition = NULL, resourceConfigurationGroupIdentifier = NULL, resourceGatewayIdentifier = NULL, tags = NULL, type) {
+vpclattice_create_resource_configuration <- function(name, type, portRanges = NULL, protocol = NULL, resourceGatewayIdentifier = NULL, resourceConfigurationGroupIdentifier = NULL, resourceConfigurationDefinition = NULL, allowAssociationToShareableServiceNetwork = NULL, customDomainName = NULL, groupDomain = NULL, domainVerificationIdentifier = NULL, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateResourceConfiguration",
     http_method = "POST",
@@ -179,7 +196,7 @@ vpclattice_create_resource_configuration <- function(allowAssociationToShareable
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$create_resource_configuration_input(allowAssociationToShareableServiceNetwork = allowAssociationToShareableServiceNetwork, clientToken = clientToken, name = name, portRanges = portRanges, protocol = protocol, resourceConfigurationDefinition = resourceConfigurationDefinition, resourceConfigurationGroupIdentifier = resourceConfigurationGroupIdentifier, resourceGatewayIdentifier = resourceGatewayIdentifier, tags = tags, type = type)
+  input <- .vpclattice$create_resource_configuration_input(name = name, type = type, portRanges = portRanges, protocol = protocol, resourceGatewayIdentifier = resourceGatewayIdentifier, resourceConfigurationGroupIdentifier = resourceConfigurationGroupIdentifier, resourceConfigurationDefinition = resourceConfigurationDefinition, allowAssociationToShareableServiceNetwork = allowAssociationToShareableServiceNetwork, customDomainName = customDomainName, groupDomain = groupDomain, domainVerificationIdentifier = domainVerificationIdentifier, clientToken = clientToken, tags = tags)
   output <- .vpclattice$create_resource_configuration_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -189,10 +206,11 @@ vpclattice_create_resource_configuration <- function(allowAssociationToShareable
 }
 .vpclattice$operations$create_resource_configuration <- vpclattice_create_resource_configuration
 
-#' Creates a resource gateway
+#' A resource gateway is a point of ingress into the VPC where a resource
+#' resides
 #'
 #' @description
-#' Creates a resource gateway.
+#' A resource gateway is a point of ingress into the VPC where a resource resides. It spans multiple Availability Zones. For your resource to be accessible from all Availability Zones, you should create your resource gateways to span as many Availability Zones as possible. A VPC can have multiple resource gateways.
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_create_resource_gateway/](https://www.paws-r-sdk.com/docs/vpclattice_create_resource_gateway/) for full documentation.
 #'
@@ -201,18 +219,39 @@ vpclattice_create_resource_configuration <- function(allowAssociationToShareable
 #' successfully using the same client token and parameters, the retry
 #' succeeds without performing any actions. If the parameters aren't
 #' identical, the retry fails.
-#' @param ipAddressType The type of IP address used by the resource gateway.
 #' @param name &#91;required&#93; The name of the resource gateway.
+#' @param vpcIdentifier The ID of the VPC for the resource gateway.
+#' @param subnetIds The IDs of the VPC subnets in which to create the resource gateway.
 #' @param securityGroupIds The IDs of the security groups to apply to the resource gateway. The
 #' security groups must be in the same VPC.
-#' @param subnetIds &#91;required&#93; The IDs of the VPC subnets in which to create the resource gateway.
+#' @param ipAddressType A resource gateway can have IPv4, IPv6 or dualstack addresses. The IP
+#' address type of a resource gateway must be compatible with the subnets
+#' of the resource gateway and the IP address type of the resource, as
+#' described here:
+#' 
+#' -   **IPv4**Assign IPv4 addresses to your resource gateway network
+#'     interfaces. This option is supported only if all selected subnets
+#'     have IPv4 address ranges, and the resource also has an IPv4 address.
+#' 
+#' -   **IPv6**Assign IPv6 addresses to your resource gateway network
+#'     interfaces. This option is supported only if all selected subnets
+#'     are IPv6 only subnets, and the resource also has an IPv6 address.
+#' 
+#' -   **Dualstack**Assign both IPv4 and IPv6 addresses to your resource
+#'     gateway network interfaces. This option is supported only if all
+#'     selected subnets have both IPv4 and IPv6 address ranges, and the
+#'     resource either has an IPv4 or IPv6 address.
+#' 
+#' The IP address type of the resource gateway is independent of the IP
+#' address type of the client or the VPC endpoint through which the
+#' resource is accessed.
+#' @param ipv4AddressesPerEni The number of IPv4 addresses in each ENI for the resource gateway.
 #' @param tags The tags for the resource gateway.
-#' @param vpcIdentifier &#91;required&#93; The ID of the VPC for the resource gateway.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_create_resource_gateway
-vpclattice_create_resource_gateway <- function(clientToken = NULL, ipAddressType = NULL, name, securityGroupIds = NULL, subnetIds, tags = NULL, vpcIdentifier) {
+vpclattice_create_resource_gateway <- function(clientToken = NULL, name, vpcIdentifier = NULL, subnetIds = NULL, securityGroupIds = NULL, ipAddressType = NULL, ipv4AddressesPerEni = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateResourceGateway",
     http_method = "POST",
@@ -221,7 +260,7 @@ vpclattice_create_resource_gateway <- function(clientToken = NULL, ipAddressType
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$create_resource_gateway_input(clientToken = clientToken, ipAddressType = ipAddressType, name = name, securityGroupIds = securityGroupIds, subnetIds = subnetIds, tags = tags, vpcIdentifier = vpcIdentifier)
+  input <- .vpclattice$create_resource_gateway_input(clientToken = clientToken, name = name, vpcIdentifier = vpcIdentifier, subnetIds = subnetIds, securityGroupIds = securityGroupIds, ipAddressType = ipAddressType, ipv4AddressesPerEni = ipv4AddressesPerEni, tags = tags)
   output <- .vpclattice$create_resource_gateway_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -238,27 +277,27 @@ vpclattice_create_resource_gateway <- function(clientToken = NULL, ipAddressType
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_create_rule/](https://www.paws-r-sdk.com/docs/vpclattice_create_rule/) for full documentation.
 #'
+#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
+#' @param listenerIdentifier &#91;required&#93; The ID or ARN of the listener.
+#' @param name &#91;required&#93; The name of the rule. The name must be unique within the listener. The
+#' valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen
+#' as the first or last character, or immediately after another hyphen.
+#' @param match &#91;required&#93; The rule match.
+#' @param priority &#91;required&#93; The priority assigned to the rule. Each rule for a specific listener
+#' must have a unique priority. The lower the priority number the higher
+#' the priority.
 #' @param action &#91;required&#93; The action for the default rule.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you retry a request that completed
 #' successfully using the same client token and parameters, the retry
 #' succeeds without performing any actions. If the parameters aren't
 #' identical, the retry fails.
-#' @param listenerIdentifier &#91;required&#93; The ID or ARN of the listener.
-#' @param match &#91;required&#93; The rule match.
-#' @param name &#91;required&#93; The name of the rule. The name must be unique within the listener. The
-#' valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen
-#' as the first or last character, or immediately after another hyphen.
-#' @param priority &#91;required&#93; The priority assigned to the rule. Each rule for a specific listener
-#' must have a unique priority. The lower the priority number the higher
-#' the priority.
-#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #' @param tags The tags for the rule.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_create_rule
-vpclattice_create_rule <- function(action, clientToken = NULL, listenerIdentifier, match, name, priority, serviceIdentifier, tags = NULL) {
+vpclattice_create_rule <- function(serviceIdentifier, listenerIdentifier, name, match, priority, action, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateRule",
     http_method = "POST",
@@ -267,7 +306,7 @@ vpclattice_create_rule <- function(action, clientToken = NULL, listenerIdentifie
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$create_rule_input(action = action, clientToken = clientToken, listenerIdentifier = listenerIdentifier, match = match, name = name, priority = priority, serviceIdentifier = serviceIdentifier, tags = tags)
+  input <- .vpclattice$create_rule_input(serviceIdentifier = serviceIdentifier, listenerIdentifier = listenerIdentifier, name = name, match = match, priority = priority, action = action, clientToken = clientToken, tags = tags)
   output <- .vpclattice$create_rule_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -284,6 +323,17 @@ vpclattice_create_rule <- function(action, clientToken = NULL, listenerIdentifie
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_create_service/](https://www.paws-r-sdk.com/docs/vpclattice_create_service/) for full documentation.
 #'
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If you retry a request that completed
+#' successfully using the same client token and parameters, the retry
+#' succeeds without performing any actions. If the parameters aren't
+#' identical, the retry fails.
+#' @param name &#91;required&#93; The name of the service. The name must be unique within the account. The
+#' valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen
+#' as the first or last character, or immediately after another hyphen.
+#' @param tags The tags for the service.
+#' @param customDomainName The custom domain name of the service.
+#' @param certificateArn The Amazon Resource Name (ARN) of the certificate.
 #' @param authType The type of IAM policy.
 #' 
 #' -   `NONE`: The resource does not use an IAM policy. This is the
@@ -291,22 +341,11 @@ vpclattice_create_rule <- function(action, clientToken = NULL, listenerIdentifie
 #' 
 #' -   `AWS_IAM`: The resource uses an IAM policy. When this type is used,
 #'     auth is enabled and an auth policy is required.
-#' @param certificateArn The Amazon Resource Name (ARN) of the certificate.
-#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. If you retry a request that completed
-#' successfully using the same client token and parameters, the retry
-#' succeeds without performing any actions. If the parameters aren't
-#' identical, the retry fails.
-#' @param customDomainName The custom domain name of the service.
-#' @param name &#91;required&#93; The name of the service. The name must be unique within the account. The
-#' valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen
-#' as the first or last character, or immediately after another hyphen.
-#' @param tags The tags for the service.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_create_service
-vpclattice_create_service <- function(authType = NULL, certificateArn = NULL, clientToken = NULL, customDomainName = NULL, name, tags = NULL) {
+vpclattice_create_service <- function(clientToken = NULL, name, tags = NULL, customDomainName = NULL, certificateArn = NULL, authType = NULL) {
   op <- new_operation(
     name = "CreateService",
     http_method = "POST",
@@ -315,7 +354,7 @@ vpclattice_create_service <- function(authType = NULL, certificateArn = NULL, cl
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$create_service_input(authType = authType, certificateArn = certificateArn, clientToken = clientToken, customDomainName = customDomainName, name = name, tags = tags)
+  input <- .vpclattice$create_service_input(clientToken = clientToken, name = name, tags = tags, customDomainName = customDomainName, certificateArn = certificateArn, authType = authType)
   output <- .vpclattice$create_service_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -332,13 +371,6 @@ vpclattice_create_service <- function(authType = NULL, certificateArn = NULL, cl
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_create_service_network/](https://www.paws-r-sdk.com/docs/vpclattice_create_service_network/) for full documentation.
 #'
-#' @param authType The type of IAM policy.
-#' 
-#' -   `NONE`: The resource does not use an IAM policy. This is the
-#'     default.
-#' 
-#' -   `AWS_IAM`: The resource uses an IAM policy. When this type is used,
-#'     auth is enabled and an auth policy is required.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you retry a request that completed
 #' successfully using the same client token and parameters, the retry
@@ -348,13 +380,20 @@ vpclattice_create_service <- function(authType = NULL, certificateArn = NULL, cl
 #' The valid characters are a-z, 0-9, and hyphens (-). You can't use a
 #' hyphen as the first or last character, or immediately after another
 #' hyphen.
-#' @param sharingConfig Specify if the service network should be enabled for sharing.
+#' @param authType The type of IAM policy.
+#' 
+#' -   `NONE`: The resource does not use an IAM policy. This is the
+#'     default.
+#' 
+#' -   `AWS_IAM`: The resource uses an IAM policy. When this type is used,
+#'     auth is enabled and an auth policy is required.
 #' @param tags The tags for the service network.
+#' @param sharingConfig Specify if the service network should be enabled for sharing.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_create_service_network
-vpclattice_create_service_network <- function(authType = NULL, clientToken = NULL, name, sharingConfig = NULL, tags = NULL) {
+vpclattice_create_service_network <- function(clientToken = NULL, name, authType = NULL, tags = NULL, sharingConfig = NULL) {
   op <- new_operation(
     name = "CreateServiceNetwork",
     http_method = "POST",
@@ -363,7 +402,7 @@ vpclattice_create_service_network <- function(authType = NULL, clientToken = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$create_service_network_input(authType = authType, clientToken = clientToken, name = name, sharingConfig = sharingConfig, tags = tags)
+  input <- .vpclattice$create_service_network_input(clientToken = clientToken, name = name, authType = authType, tags = tags, sharingConfig = sharingConfig)
   output <- .vpclattice$create_service_network_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -390,12 +429,14 @@ vpclattice_create_service_network <- function(authType = NULL, clientToken = NUL
 #' network.
 #' @param serviceNetworkIdentifier &#91;required&#93; The ID of the service network to associate with the resource
 #' configuration.
-#' @param tags The tags for the association.
+#' @param privateDnsEnabled Indicates if private DNS is enabled for the service network resource
+#' association.
+#' @param tags A key-value pair to associate with a resource.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_create_service_network_resource_association
-vpclattice_create_service_network_resource_association <- function(clientToken = NULL, resourceConfigurationIdentifier, serviceNetworkIdentifier, tags = NULL) {
+vpclattice_create_service_network_resource_association <- function(clientToken = NULL, resourceConfigurationIdentifier, serviceNetworkIdentifier, privateDnsEnabled = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateServiceNetworkResourceAssociation",
     http_method = "POST",
@@ -404,7 +445,7 @@ vpclattice_create_service_network_resource_association <- function(clientToken =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$create_service_network_resource_association_input(clientToken = clientToken, resourceConfigurationIdentifier = resourceConfigurationIdentifier, serviceNetworkIdentifier = serviceNetworkIdentifier, tags = tags)
+  input <- .vpclattice$create_service_network_resource_association_input(clientToken = clientToken, resourceConfigurationIdentifier = resourceConfigurationIdentifier, serviceNetworkIdentifier = serviceNetworkIdentifier, privateDnsEnabled = privateDnsEnabled, tags = tags)
   output <- .vpclattice$create_service_network_resource_association_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -465,6 +506,10 @@ vpclattice_create_service_network_service_association <- function(clientToken = 
 #' successfully using the same client token and parameters, the retry
 #' succeeds without performing any actions. If the parameters aren't
 #' identical, the retry fails.
+#' @param serviceNetworkIdentifier &#91;required&#93; The ID or ARN of the service network. You must use an ARN if the
+#' resources are in different accounts.
+#' @param vpcIdentifier &#91;required&#93; The ID of the VPC.
+#' @param privateDnsEnabled Indicates if private DNS is enabled for the VPC association.
 #' @param securityGroupIds The IDs of the security groups. Security groups aren't added by default.
 #' You can add a security group to apply network level controls to control
 #' which resources in a VPC are allowed to access the service network and
@@ -472,15 +517,13 @@ vpclattice_create_service_network_service_association <- function(clientToken = 
 #' using security
 #' groups](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html)
 #' in the *Amazon VPC User Guide*.
-#' @param serviceNetworkIdentifier &#91;required&#93; The ID or ARN of the service network. You must use an ARN if the
-#' resources are in different accounts.
 #' @param tags The tags for the association.
-#' @param vpcIdentifier &#91;required&#93; The ID of the VPC.
+#' @param dnsOptions DNS options for the service network VPC association.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_create_service_network_vpc_association
-vpclattice_create_service_network_vpc_association <- function(clientToken = NULL, securityGroupIds = NULL, serviceNetworkIdentifier, tags = NULL, vpcIdentifier) {
+vpclattice_create_service_network_vpc_association <- function(clientToken = NULL, serviceNetworkIdentifier, vpcIdentifier, privateDnsEnabled = NULL, securityGroupIds = NULL, tags = NULL, dnsOptions = NULL) {
   op <- new_operation(
     name = "CreateServiceNetworkVpcAssociation",
     http_method = "POST",
@@ -489,7 +532,7 @@ vpclattice_create_service_network_vpc_association <- function(clientToken = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$create_service_network_vpc_association_input(clientToken = clientToken, securityGroupIds = securityGroupIds, serviceNetworkIdentifier = serviceNetworkIdentifier, tags = tags, vpcIdentifier = vpcIdentifier)
+  input <- .vpclattice$create_service_network_vpc_association_input(clientToken = clientToken, serviceNetworkIdentifier = serviceNetworkIdentifier, vpcIdentifier = vpcIdentifier, privateDnsEnabled = privateDnsEnabled, securityGroupIds = securityGroupIds, tags = tags, dnsOptions = dnsOptions)
   output <- .vpclattice$create_service_network_vpc_association_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -506,23 +549,23 @@ vpclattice_create_service_network_vpc_association <- function(clientToken = NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_create_target_group/](https://www.paws-r-sdk.com/docs/vpclattice_create_target_group/) for full documentation.
 #'
+#' @param name &#91;required&#93; The name of the target group. The name must be unique within the
+#' account. The valid characters are a-z, 0-9, and hyphens (-). You can't
+#' use a hyphen as the first or last character, or immediately after
+#' another hyphen.
+#' @param type &#91;required&#93; The type of target group.
+#' @param config The target group configuration.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you retry a request that completed
 #' successfully using the same client token and parameters, the retry
 #' succeeds without performing any actions. If the parameters aren't
 #' identical, the retry fails.
-#' @param config The target group configuration.
-#' @param name &#91;required&#93; The name of the target group. The name must be unique within the
-#' account. The valid characters are a-z, 0-9, and hyphens (-). You can't
-#' use a hyphen as the first or last character, or immediately after
-#' another hyphen.
 #' @param tags The tags for the target group.
-#' @param type &#91;required&#93; The type of target group.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_create_target_group
-vpclattice_create_target_group <- function(clientToken = NULL, config = NULL, name, tags = NULL, type) {
+vpclattice_create_target_group <- function(name, type, config = NULL, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateTargetGroup",
     http_method = "POST",
@@ -531,7 +574,7 @@ vpclattice_create_target_group <- function(clientToken = NULL, config = NULL, na
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$create_target_group_input(clientToken = clientToken, config = config, name = name, tags = tags, type = type)
+  input <- .vpclattice$create_target_group_input(name = name, type = type, config = config, clientToken = clientToken, tags = tags)
   output <- .vpclattice$create_target_group_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -603,6 +646,37 @@ vpclattice_delete_auth_policy <- function(resourceIdentifier) {
 }
 .vpclattice$operations$delete_auth_policy <- vpclattice_delete_auth_policy
 
+#' Deletes the specified domain verification
+#'
+#' @description
+#' Deletes the specified domain verification.
+#'
+#' See [https://www.paws-r-sdk.com/docs/vpclattice_delete_domain_verification/](https://www.paws-r-sdk.com/docs/vpclattice_delete_domain_verification/) for full documentation.
+#'
+#' @param domainVerificationIdentifier &#91;required&#93; The ID of the domain verification to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname vpclattice_delete_domain_verification
+vpclattice_delete_domain_verification <- function(domainVerificationIdentifier) {
+  op <- new_operation(
+    name = "DeleteDomainVerification",
+    http_method = "DELETE",
+    http_path = "/domainverifications/{domainVerificationIdentifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .vpclattice$delete_domain_verification_input(domainVerificationIdentifier = domainVerificationIdentifier)
+  output <- .vpclattice$delete_domain_verification_output()
+  config <- get_config()
+  svc <- .vpclattice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.vpclattice$operations$delete_domain_verification <- vpclattice_delete_domain_verification
+
 #' Deletes the specified listener
 #'
 #' @description
@@ -610,13 +684,13 @@ vpclattice_delete_auth_policy <- function(resourceIdentifier) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_delete_listener/](https://www.paws-r-sdk.com/docs/vpclattice_delete_listener/) for full documentation.
 #'
-#' @param listenerIdentifier &#91;required&#93; The ID or ARN of the listener.
 #' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
+#' @param listenerIdentifier &#91;required&#93; The ID or ARN of the listener.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_delete_listener
-vpclattice_delete_listener <- function(listenerIdentifier, serviceIdentifier) {
+vpclattice_delete_listener <- function(serviceIdentifier, listenerIdentifier) {
   op <- new_operation(
     name = "DeleteListener",
     http_method = "DELETE",
@@ -625,7 +699,7 @@ vpclattice_delete_listener <- function(listenerIdentifier, serviceIdentifier) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$delete_listener_input(listenerIdentifier = listenerIdentifier, serviceIdentifier = serviceIdentifier)
+  input <- .vpclattice$delete_listener_input(serviceIdentifier = serviceIdentifier, listenerIdentifier = listenerIdentifier)
   output <- .vpclattice$delete_listener_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -766,14 +840,14 @@ vpclattice_delete_resource_policy <- function(resourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_delete_rule/](https://www.paws-r-sdk.com/docs/vpclattice_delete_rule/) for full documentation.
 #'
+#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #' @param listenerIdentifier &#91;required&#93; The ID or ARN of the listener.
 #' @param ruleIdentifier &#91;required&#93; The ID or ARN of the rule.
-#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_delete_rule
-vpclattice_delete_rule <- function(listenerIdentifier, ruleIdentifier, serviceIdentifier) {
+vpclattice_delete_rule <- function(serviceIdentifier, listenerIdentifier, ruleIdentifier) {
   op <- new_operation(
     name = "DeleteRule",
     http_method = "DELETE",
@@ -782,7 +856,7 @@ vpclattice_delete_rule <- function(listenerIdentifier, ruleIdentifier, serviceId
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$delete_rule_input(listenerIdentifier = listenerIdentifier, ruleIdentifier = ruleIdentifier, serviceIdentifier = serviceIdentifier)
+  input <- .vpclattice$delete_rule_input(serviceIdentifier = serviceIdentifier, listenerIdentifier = listenerIdentifier, ruleIdentifier = ruleIdentifier)
   output <- .vpclattice$delete_rule_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -1074,6 +1148,37 @@ vpclattice_get_auth_policy <- function(resourceIdentifier) {
 }
 .vpclattice$operations$get_auth_policy <- vpclattice_get_auth_policy
 
+#' Retrieves information about a domain verification
+#'
+#' @description
+#' Retrieves information about a domain verification.ß
+#'
+#' See [https://www.paws-r-sdk.com/docs/vpclattice_get_domain_verification/](https://www.paws-r-sdk.com/docs/vpclattice_get_domain_verification/) for full documentation.
+#'
+#' @param domainVerificationIdentifier &#91;required&#93; The ID or ARN of the domain verification to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname vpclattice_get_domain_verification
+vpclattice_get_domain_verification <- function(domainVerificationIdentifier) {
+  op <- new_operation(
+    name = "GetDomainVerification",
+    http_method = "GET",
+    http_path = "/domainverifications/{domainVerificationIdentifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .vpclattice$get_domain_verification_input(domainVerificationIdentifier = domainVerificationIdentifier)
+  output <- .vpclattice$get_domain_verification_output()
+  config <- get_config()
+  svc <- .vpclattice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.vpclattice$operations$get_domain_verification <- vpclattice_get_domain_verification
+
 #' Retrieves information about the specified listener for the specified
 #' service
 #'
@@ -1082,13 +1187,13 @@ vpclattice_get_auth_policy <- function(resourceIdentifier) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_get_listener/](https://www.paws-r-sdk.com/docs/vpclattice_get_listener/) for full documentation.
 #'
-#' @param listenerIdentifier &#91;required&#93; The ID or ARN of the listener.
 #' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
+#' @param listenerIdentifier &#91;required&#93; The ID or ARN of the listener.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_get_listener
-vpclattice_get_listener <- function(listenerIdentifier, serviceIdentifier) {
+vpclattice_get_listener <- function(serviceIdentifier, listenerIdentifier) {
   op <- new_operation(
     name = "GetListener",
     http_method = "GET",
@@ -1097,7 +1202,7 @@ vpclattice_get_listener <- function(listenerIdentifier, serviceIdentifier) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$get_listener_input(listenerIdentifier = listenerIdentifier, serviceIdentifier = serviceIdentifier)
+  input <- .vpclattice$get_listener_input(serviceIdentifier = serviceIdentifier, listenerIdentifier = listenerIdentifier)
   output <- .vpclattice$get_listener_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -1207,14 +1312,14 @@ vpclattice_get_resource_policy <- function(resourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_get_rule/](https://www.paws-r-sdk.com/docs/vpclattice_get_rule/) for full documentation.
 #'
+#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #' @param listenerIdentifier &#91;required&#93; The ID or ARN of the listener.
 #' @param ruleIdentifier &#91;required&#93; The ID or ARN of the listener rule.
-#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_get_rule
-vpclattice_get_rule <- function(listenerIdentifier, ruleIdentifier, serviceIdentifier) {
+vpclattice_get_rule <- function(serviceIdentifier, listenerIdentifier, ruleIdentifier) {
   op <- new_operation(
     name = "GetRule",
     http_method = "GET",
@@ -1223,7 +1328,7 @@ vpclattice_get_rule <- function(listenerIdentifier, ruleIdentifier, serviceIdent
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$get_rule_input(listenerIdentifier = listenerIdentifier, ruleIdentifier = ruleIdentifier, serviceIdentifier = serviceIdentifier)
+  input <- .vpclattice$get_rule_input(serviceIdentifier = serviceIdentifier, listenerIdentifier = listenerIdentifier, ruleIdentifier = ruleIdentifier)
   output <- .vpclattice$get_rule_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -1430,14 +1535,14 @@ vpclattice_get_target_group <- function(targetGroupIdentifier) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_list_access_log_subscriptions/](https://www.paws-r-sdk.com/docs/vpclattice_list_access_log_subscriptions/) for full documentation.
 #'
+#' @param resourceIdentifier &#91;required&#93; The ID or ARN of the service network or service.
 #' @param maxResults The maximum number of results to return.
 #' @param nextToken A pagination token for the next page of results.
-#' @param resourceIdentifier &#91;required&#93; The ID or ARN of the service network or service.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_list_access_log_subscriptions
-vpclattice_list_access_log_subscriptions <- function(maxResults = NULL, nextToken = NULL, resourceIdentifier) {
+vpclattice_list_access_log_subscriptions <- function(resourceIdentifier, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListAccessLogSubscriptions",
     http_method = "GET",
@@ -1446,7 +1551,7 @@ vpclattice_list_access_log_subscriptions <- function(maxResults = NULL, nextToke
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .vpclattice$list_access_log_subscriptions_input(maxResults = maxResults, nextToken = nextToken, resourceIdentifier = resourceIdentifier)
+  input <- .vpclattice$list_access_log_subscriptions_input(resourceIdentifier = resourceIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .vpclattice$list_access_log_subscriptions_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -1456,6 +1561,38 @@ vpclattice_list_access_log_subscriptions <- function(maxResults = NULL, nextToke
 }
 .vpclattice$operations$list_access_log_subscriptions <- vpclattice_list_access_log_subscriptions
 
+#' Lists the domain verifications
+#'
+#' @description
+#' Lists the domain verifications.
+#'
+#' See [https://www.paws-r-sdk.com/docs/vpclattice_list_domain_verifications/](https://www.paws-r-sdk.com/docs/vpclattice_list_domain_verifications/) for full documentation.
+#'
+#' @param maxResults The maximum number of results to return.
+#' @param nextToken A pagination token for the next page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname vpclattice_list_domain_verifications
+vpclattice_list_domain_verifications <- function(maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListDomainVerifications",
+    http_method = "GET",
+    http_path = "/domainverifications",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
+  )
+  input <- .vpclattice$list_domain_verifications_input(maxResults = maxResults, nextToken = nextToken)
+  output <- .vpclattice$list_domain_verifications_output()
+  config <- get_config()
+  svc <- .vpclattice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.vpclattice$operations$list_domain_verifications <- vpclattice_list_domain_verifications
+
 #' Lists the listeners for the specified service
 #'
 #' @description
@@ -1463,14 +1600,14 @@ vpclattice_list_access_log_subscriptions <- function(maxResults = NULL, nextToke
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_list_listeners/](https://www.paws-r-sdk.com/docs/vpclattice_list_listeners/) for full documentation.
 #'
+#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #' @param maxResults The maximum number of results to return.
 #' @param nextToken A pagination token for the next page of results.
-#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_list_listeners
-vpclattice_list_listeners <- function(maxResults = NULL, nextToken = NULL, serviceIdentifier) {
+vpclattice_list_listeners <- function(serviceIdentifier, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListListeners",
     http_method = "GET",
@@ -1479,7 +1616,7 @@ vpclattice_list_listeners <- function(maxResults = NULL, nextToken = NULL, servi
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .vpclattice$list_listeners_input(maxResults = maxResults, nextToken = nextToken, serviceIdentifier = serviceIdentifier)
+  input <- .vpclattice$list_listeners_input(serviceIdentifier = serviceIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .vpclattice$list_listeners_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -1496,15 +1633,16 @@ vpclattice_list_listeners <- function(maxResults = NULL, nextToken = NULL, servi
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_list_resource_configurations/](https://www.paws-r-sdk.com/docs/vpclattice_list_resource_configurations/) for full documentation.
 #'
+#' @param resourceGatewayIdentifier The ID of the resource gateway for the resource configuration.
+#' @param resourceConfigurationGroupIdentifier The ID of the resource configuration of type `Group`.
+#' @param domainVerificationIdentifier The domain verification ID.
 #' @param maxResults The maximum page size.
 #' @param nextToken A pagination token for the next page of results.
-#' @param resourceConfigurationGroupIdentifier The ID of the group resource configuration.
-#' @param resourceGatewayIdentifier The ID of the resource gateway for the resource configuration.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_list_resource_configurations
-vpclattice_list_resource_configurations <- function(maxResults = NULL, nextToken = NULL, resourceConfigurationGroupIdentifier = NULL, resourceGatewayIdentifier = NULL) {
+vpclattice_list_resource_configurations <- function(resourceGatewayIdentifier = NULL, resourceConfigurationGroupIdentifier = NULL, domainVerificationIdentifier = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListResourceConfigurations",
     http_method = "GET",
@@ -1513,7 +1651,7 @@ vpclattice_list_resource_configurations <- function(maxResults = NULL, nextToken
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .vpclattice$list_resource_configurations_input(maxResults = maxResults, nextToken = nextToken, resourceConfigurationGroupIdentifier = resourceConfigurationGroupIdentifier, resourceGatewayIdentifier = resourceGatewayIdentifier)
+  input <- .vpclattice$list_resource_configurations_input(resourceGatewayIdentifier = resourceGatewayIdentifier, resourceConfigurationGroupIdentifier = resourceConfigurationGroupIdentifier, domainVerificationIdentifier = domainVerificationIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .vpclattice$list_resource_configurations_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -1530,17 +1668,17 @@ vpclattice_list_resource_configurations <- function(maxResults = NULL, nextToken
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_list_resource_endpoint_associations/](https://www.paws-r-sdk.com/docs/vpclattice_list_resource_endpoint_associations/) for full documentation.
 #'
-#' @param maxResults The maximum page size.
-#' @param nextToken A pagination token for the next page of results.
 #' @param resourceConfigurationIdentifier &#91;required&#93; The ID for the resource configuration associated with the VPC endpoint.
 #' @param resourceEndpointAssociationIdentifier The ID of the association.
 #' @param vpcEndpointId The ID of the VPC endpoint in the association.
 #' @param vpcEndpointOwner The owner of the VPC endpoint in the association.
+#' @param maxResults The maximum page size.
+#' @param nextToken A pagination token for the next page of results.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_list_resource_endpoint_associations
-vpclattice_list_resource_endpoint_associations <- function(maxResults = NULL, nextToken = NULL, resourceConfigurationIdentifier, resourceEndpointAssociationIdentifier = NULL, vpcEndpointId = NULL, vpcEndpointOwner = NULL) {
+vpclattice_list_resource_endpoint_associations <- function(resourceConfigurationIdentifier, resourceEndpointAssociationIdentifier = NULL, vpcEndpointId = NULL, vpcEndpointOwner = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListResourceEndpointAssociations",
     http_method = "GET",
@@ -1549,7 +1687,7 @@ vpclattice_list_resource_endpoint_associations <- function(maxResults = NULL, ne
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .vpclattice$list_resource_endpoint_associations_input(maxResults = maxResults, nextToken = nextToken, resourceConfigurationIdentifier = resourceConfigurationIdentifier, resourceEndpointAssociationIdentifier = resourceEndpointAssociationIdentifier, vpcEndpointId = vpcEndpointId, vpcEndpointOwner = vpcEndpointOwner)
+  input <- .vpclattice$list_resource_endpoint_associations_input(resourceConfigurationIdentifier = resourceConfigurationIdentifier, resourceEndpointAssociationIdentifier = resourceEndpointAssociationIdentifier, vpcEndpointId = vpcEndpointId, vpcEndpointOwner = vpcEndpointOwner, maxResults = maxResults, nextToken = nextToken)
   output <- .vpclattice$list_resource_endpoint_associations_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -1599,15 +1737,15 @@ vpclattice_list_resource_gateways <- function(maxResults = NULL, nextToken = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_list_rules/](https://www.paws-r-sdk.com/docs/vpclattice_list_rules/) for full documentation.
 #'
+#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #' @param listenerIdentifier &#91;required&#93; The ID or ARN of the listener.
 #' @param maxResults The maximum number of results to return.
 #' @param nextToken A pagination token for the next page of results.
-#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_list_rules
-vpclattice_list_rules <- function(listenerIdentifier, maxResults = NULL, nextToken = NULL, serviceIdentifier) {
+vpclattice_list_rules <- function(serviceIdentifier, listenerIdentifier, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListRules",
     http_method = "GET",
@@ -1616,7 +1754,7 @@ vpclattice_list_rules <- function(listenerIdentifier, maxResults = NULL, nextTok
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .vpclattice$list_rules_input(listenerIdentifier = listenerIdentifier, maxResults = maxResults, nextToken = nextToken, serviceIdentifier = serviceIdentifier)
+  input <- .vpclattice$list_rules_input(serviceIdentifier = serviceIdentifier, listenerIdentifier = listenerIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .vpclattice$list_rules_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -1634,16 +1772,20 @@ vpclattice_list_rules <- function(listenerIdentifier, maxResults = NULL, nextTok
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_list_service_network_resource_associations/](https://www.paws-r-sdk.com/docs/vpclattice_list_service_network_resource_associations/) for full documentation.
 #'
+#' @param serviceNetworkIdentifier The ID of the service network.
+#' @param resourceConfigurationIdentifier The ID of the resource configuration.
 #' @param maxResults The maximum page size.
 #' @param nextToken If there are additional results, a pagination token for the next page of
 #' results.
-#' @param resourceConfigurationIdentifier The ID of the resource configurationk.
-#' @param serviceNetworkIdentifier The ID of the service network.
+#' @param includeChildren Include service network resource associations of the child resource
+#' configuration with the grouped resource configuration.
+#' 
+#' The type is boolean and the default value is false.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_list_service_network_resource_associations
-vpclattice_list_service_network_resource_associations <- function(maxResults = NULL, nextToken = NULL, resourceConfigurationIdentifier = NULL, serviceNetworkIdentifier = NULL) {
+vpclattice_list_service_network_resource_associations <- function(serviceNetworkIdentifier = NULL, resourceConfigurationIdentifier = NULL, maxResults = NULL, nextToken = NULL, includeChildren = NULL) {
   op <- new_operation(
     name = "ListServiceNetworkResourceAssociations",
     http_method = "GET",
@@ -1652,7 +1794,7 @@ vpclattice_list_service_network_resource_associations <- function(maxResults = N
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .vpclattice$list_service_network_resource_associations_input(maxResults = maxResults, nextToken = nextToken, resourceConfigurationIdentifier = resourceConfigurationIdentifier, serviceNetworkIdentifier = serviceNetworkIdentifier)
+  input <- .vpclattice$list_service_network_resource_associations_input(serviceNetworkIdentifier = serviceNetworkIdentifier, resourceConfigurationIdentifier = resourceConfigurationIdentifier, maxResults = maxResults, nextToken = nextToken, includeChildren = includeChildren)
   output <- .vpclattice$list_service_network_resource_associations_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -1669,15 +1811,15 @@ vpclattice_list_service_network_resource_associations <- function(maxResults = N
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_list_service_network_service_associations/](https://www.paws-r-sdk.com/docs/vpclattice_list_service_network_service_associations/) for full documentation.
 #'
+#' @param serviceNetworkIdentifier The ID or ARN of the service network.
+#' @param serviceIdentifier The ID or ARN of the service.
 #' @param maxResults The maximum number of results to return.
 #' @param nextToken A pagination token for the next page of results.
-#' @param serviceIdentifier The ID or ARN of the service.
-#' @param serviceNetworkIdentifier The ID or ARN of the service network.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_list_service_network_service_associations
-vpclattice_list_service_network_service_associations <- function(maxResults = NULL, nextToken = NULL, serviceIdentifier = NULL, serviceNetworkIdentifier = NULL) {
+vpclattice_list_service_network_service_associations <- function(serviceNetworkIdentifier = NULL, serviceIdentifier = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListServiceNetworkServiceAssociations",
     http_method = "GET",
@@ -1686,7 +1828,7 @@ vpclattice_list_service_network_service_associations <- function(maxResults = NU
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .vpclattice$list_service_network_service_associations_input(maxResults = maxResults, nextToken = nextToken, serviceIdentifier = serviceIdentifier, serviceNetworkIdentifier = serviceNetworkIdentifier)
+  input <- .vpclattice$list_service_network_service_associations_input(serviceNetworkIdentifier = serviceNetworkIdentifier, serviceIdentifier = serviceIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .vpclattice$list_service_network_service_associations_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -1703,15 +1845,15 @@ vpclattice_list_service_network_service_associations <- function(maxResults = NU
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_list_service_network_vpc_associations/](https://www.paws-r-sdk.com/docs/vpclattice_list_service_network_vpc_associations/) for full documentation.
 #'
-#' @param maxResults The maximum number of results to return.
-#' @param nextToken A pagination token for the next page of results.
 #' @param serviceNetworkIdentifier The ID or ARN of the service network.
 #' @param vpcIdentifier The ID or ARN of the VPC.
+#' @param maxResults The maximum number of results to return.
+#' @param nextToken A pagination token for the next page of results.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_list_service_network_vpc_associations
-vpclattice_list_service_network_vpc_associations <- function(maxResults = NULL, nextToken = NULL, serviceNetworkIdentifier = NULL, vpcIdentifier = NULL) {
+vpclattice_list_service_network_vpc_associations <- function(serviceNetworkIdentifier = NULL, vpcIdentifier = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListServiceNetworkVpcAssociations",
     http_method = "GET",
@@ -1720,7 +1862,7 @@ vpclattice_list_service_network_vpc_associations <- function(maxResults = NULL, 
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .vpclattice$list_service_network_vpc_associations_input(maxResults = maxResults, nextToken = nextToken, serviceNetworkIdentifier = serviceNetworkIdentifier, vpcIdentifier = vpcIdentifier)
+  input <- .vpclattice$list_service_network_vpc_associations_input(serviceNetworkIdentifier = serviceNetworkIdentifier, vpcIdentifier = vpcIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .vpclattice$list_service_network_vpc_associations_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -1737,15 +1879,15 @@ vpclattice_list_service_network_vpc_associations <- function(maxResults = NULL, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_list_service_network_vpc_endpoint_associations/](https://www.paws-r-sdk.com/docs/vpclattice_list_service_network_vpc_endpoint_associations/) for full documentation.
 #'
+#' @param serviceNetworkIdentifier &#91;required&#93; The ID of the service network associated with the VPC endpoint.
 #' @param maxResults The maximum page size.
 #' @param nextToken If there are additional results, a pagination token for the next page of
 #' results.
-#' @param serviceNetworkIdentifier &#91;required&#93; The ID of the service network associated with the VPC endpoint.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_list_service_network_vpc_endpoint_associations
-vpclattice_list_service_network_vpc_endpoint_associations <- function(maxResults = NULL, nextToken = NULL, serviceNetworkIdentifier) {
+vpclattice_list_service_network_vpc_endpoint_associations <- function(serviceNetworkIdentifier, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListServiceNetworkVpcEndpointAssociations",
     http_method = "GET",
@@ -1754,7 +1896,7 @@ vpclattice_list_service_network_vpc_endpoint_associations <- function(maxResults
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .vpclattice$list_service_network_vpc_endpoint_associations_input(maxResults = maxResults, nextToken = nextToken, serviceNetworkIdentifier = serviceNetworkIdentifier)
+  input <- .vpclattice$list_service_network_vpc_endpoint_associations_input(serviceNetworkIdentifier = serviceNetworkIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .vpclattice$list_service_network_vpc_endpoint_associations_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -1869,13 +2011,13 @@ vpclattice_list_tags_for_resource <- function(resourceArn) {
 #'
 #' @param maxResults The maximum number of results to return.
 #' @param nextToken A pagination token for the next page of results.
-#' @param targetGroupType The target group type.
 #' @param vpcIdentifier The ID or ARN of the VPC.
+#' @param targetGroupType The target group type.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_list_target_groups
-vpclattice_list_target_groups <- function(maxResults = NULL, nextToken = NULL, targetGroupType = NULL, vpcIdentifier = NULL) {
+vpclattice_list_target_groups <- function(maxResults = NULL, nextToken = NULL, vpcIdentifier = NULL, targetGroupType = NULL) {
   op <- new_operation(
     name = "ListTargetGroups",
     http_method = "GET",
@@ -1884,7 +2026,7 @@ vpclattice_list_target_groups <- function(maxResults = NULL, nextToken = NULL, t
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .vpclattice$list_target_groups_input(maxResults = maxResults, nextToken = nextToken, targetGroupType = targetGroupType, vpcIdentifier = vpcIdentifier)
+  input <- .vpclattice$list_target_groups_input(maxResults = maxResults, nextToken = nextToken, vpcIdentifier = vpcIdentifier, targetGroupType = targetGroupType)
   output <- .vpclattice$list_target_groups_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -1901,15 +2043,15 @@ vpclattice_list_target_groups <- function(maxResults = NULL, nextToken = NULL, t
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_list_targets/](https://www.paws-r-sdk.com/docs/vpclattice_list_targets/) for full documentation.
 #'
+#' @param targetGroupIdentifier &#91;required&#93; The ID or ARN of the target group.
 #' @param maxResults The maximum number of results to return.
 #' @param nextToken A pagination token for the next page of results.
-#' @param targetGroupIdentifier &#91;required&#93; The ID or ARN of the target group.
 #' @param targets The targets.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_list_targets
-vpclattice_list_targets <- function(maxResults = NULL, nextToken = NULL, targetGroupIdentifier, targets = NULL) {
+vpclattice_list_targets <- function(targetGroupIdentifier, maxResults = NULL, nextToken = NULL, targets = NULL) {
   op <- new_operation(
     name = "ListTargets",
     http_method = "POST",
@@ -1918,7 +2060,7 @@ vpclattice_list_targets <- function(maxResults = NULL, nextToken = NULL, targetG
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .vpclattice$list_targets_input(maxResults = maxResults, nextToken = nextToken, targetGroupIdentifier = targetGroupIdentifier, targets = targets)
+  input <- .vpclattice$list_targets_input(targetGroupIdentifier = targetGroupIdentifier, maxResults = maxResults, nextToken = nextToken, targets = targets)
   output <- .vpclattice$list_targets_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -1935,15 +2077,15 @@ vpclattice_list_targets <- function(maxResults = NULL, nextToken = NULL, targetG
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_put_auth_policy/](https://www.paws-r-sdk.com/docs/vpclattice_put_auth_policy/) for full documentation.
 #'
-#' @param policy &#91;required&#93; The auth policy. The policy string in JSON must not contain newlines or
-#' blank lines.
 #' @param resourceIdentifier &#91;required&#93; The ID or ARN of the service network or service for which the policy is
 #' created.
+#' @param policy &#91;required&#93; The auth policy. The policy string in JSON must not contain newlines or
+#' blank lines.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_put_auth_policy
-vpclattice_put_auth_policy <- function(policy, resourceIdentifier) {
+vpclattice_put_auth_policy <- function(resourceIdentifier, policy) {
   op <- new_operation(
     name = "PutAuthPolicy",
     http_method = "PUT",
@@ -1952,7 +2094,7 @@ vpclattice_put_auth_policy <- function(policy, resourceIdentifier) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$put_auth_policy_input(policy = policy, resourceIdentifier = resourceIdentifier)
+  input <- .vpclattice$put_auth_policy_input(resourceIdentifier = resourceIdentifier, policy = policy)
   output <- .vpclattice$put_auth_policy_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -1970,15 +2112,15 @@ vpclattice_put_auth_policy <- function(policy, resourceIdentifier) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_put_resource_policy/](https://www.paws-r-sdk.com/docs/vpclattice_put_resource_policy/) for full documentation.
 #'
-#' @param policy &#91;required&#93; An IAM policy. The policy string in JSON must not contain newlines or
-#' blank lines.
 #' @param resourceArn &#91;required&#93; The ID or ARN of the service network or service for which the policy is
 #' created.
+#' @param policy &#91;required&#93; An IAM policy. The policy string in JSON must not contain newlines or
+#' blank lines.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_put_resource_policy
-vpclattice_put_resource_policy <- function(policy, resourceArn) {
+vpclattice_put_resource_policy <- function(resourceArn, policy) {
   op <- new_operation(
     name = "PutResourcePolicy",
     http_method = "PUT",
@@ -1987,7 +2129,7 @@ vpclattice_put_resource_policy <- function(policy, resourceArn) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$put_resource_policy_input(policy = policy, resourceArn = resourceArn)
+  input <- .vpclattice$put_resource_policy_input(resourceArn = resourceArn, policy = policy)
   output <- .vpclattice$put_resource_policy_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -2028,6 +2170,43 @@ vpclattice_register_targets <- function(targetGroupIdentifier, targets) {
   return(response)
 }
 .vpclattice$operations$register_targets <- vpclattice_register_targets
+
+#' Starts the domain verification process for a custom domain name
+#'
+#' @description
+#' Starts the domain verification process for a custom domain name.
+#'
+#' See [https://www.paws-r-sdk.com/docs/vpclattice_start_domain_verification/](https://www.paws-r-sdk.com/docs/vpclattice_start_domain_verification/) for full documentation.
+#'
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If you retry a request that completed
+#' successfully using the same client token and parameters, the retry
+#' succeeds without performing any actions. If the parameters aren't
+#' identical, the retry fails.
+#' @param domainName &#91;required&#93; The domain name to verify ownership for.
+#' @param tags The tags for the domain verification.
+#'
+#' @keywords internal
+#'
+#' @rdname vpclattice_start_domain_verification
+vpclattice_start_domain_verification <- function(clientToken = NULL, domainName, tags = NULL) {
+  op <- new_operation(
+    name = "StartDomainVerification",
+    http_method = "POST",
+    http_path = "/domainverifications",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .vpclattice$start_domain_verification_input(clientToken = clientToken, domainName = domainName, tags = tags)
+  output <- .vpclattice$start_domain_verification_output()
+  config <- get_config()
+  svc <- .vpclattice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.vpclattice$operations$start_domain_verification <- vpclattice_start_domain_verification
 
 #' Adds the specified tags to the specified resource
 #'
@@ -2132,14 +2311,14 @@ vpclattice_update_access_log_subscription <- function(accessLogSubscriptionIdent
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_update_listener/](https://www.paws-r-sdk.com/docs/vpclattice_update_listener/) for full documentation.
 #'
-#' @param defaultAction &#91;required&#93; The action for the default rule.
-#' @param listenerIdentifier &#91;required&#93; The ID or ARN of the listener.
 #' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
+#' @param listenerIdentifier &#91;required&#93; The ID or ARN of the listener.
+#' @param defaultAction &#91;required&#93; The action for the default rule.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_update_listener
-vpclattice_update_listener <- function(defaultAction, listenerIdentifier, serviceIdentifier) {
+vpclattice_update_listener <- function(serviceIdentifier, listenerIdentifier, defaultAction) {
   op <- new_operation(
     name = "UpdateListener",
     http_method = "PATCH",
@@ -2148,7 +2327,7 @@ vpclattice_update_listener <- function(defaultAction, listenerIdentifier, servic
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$update_listener_input(defaultAction = defaultAction, listenerIdentifier = listenerIdentifier, serviceIdentifier = serviceIdentifier)
+  input <- .vpclattice$update_listener_input(serviceIdentifier = serviceIdentifier, listenerIdentifier = listenerIdentifier, defaultAction = defaultAction)
   output <- .vpclattice$update_listener_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -2165,18 +2344,27 @@ vpclattice_update_listener <- function(defaultAction, listenerIdentifier, servic
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_update_resource_configuration/](https://www.paws-r-sdk.com/docs/vpclattice_update_resource_configuration/) for full documentation.
 #'
+#' @param resourceConfigurationIdentifier &#91;required&#93; The ID of the resource configuration.
+#' @param resourceConfigurationDefinition Identifies the resource configuration in one of the following ways:
+#' 
+#' -   **Amazon Resource Name (ARN)** - Supported resource-types that are
+#'     provisioned by Amazon Web Services services, such as RDS databases,
+#'     can be identified by their ARN.
+#' 
+#' -   **Domain name** - Any domain name that is publicly resolvable.
+#' 
+#' -   **IP address** - For IPv4 and IPv6, only IP addresses in the VPC are
+#'     supported.
 #' @param allowAssociationToShareableServiceNetwork Indicates whether to add the resource configuration to service networks
 #' that are shared with other accounts.
 #' @param portRanges The TCP port ranges that a consumer can use to access a resource
 #' configuration. You can separate port ranges with a comma. Example:
 #' 1-65535 or 1,2,22-30
-#' @param resourceConfigurationDefinition The resource configuration.
-#' @param resourceConfigurationIdentifier &#91;required&#93; The ID of the resource configuration.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_update_resource_configuration
-vpclattice_update_resource_configuration <- function(allowAssociationToShareableServiceNetwork = NULL, portRanges = NULL, resourceConfigurationDefinition = NULL, resourceConfigurationIdentifier) {
+vpclattice_update_resource_configuration <- function(resourceConfigurationIdentifier, resourceConfigurationDefinition = NULL, allowAssociationToShareableServiceNetwork = NULL, portRanges = NULL) {
   op <- new_operation(
     name = "UpdateResourceConfiguration",
     http_method = "PATCH",
@@ -2185,7 +2373,7 @@ vpclattice_update_resource_configuration <- function(allowAssociationToShareable
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$update_resource_configuration_input(allowAssociationToShareableServiceNetwork = allowAssociationToShareableServiceNetwork, portRanges = portRanges, resourceConfigurationDefinition = resourceConfigurationDefinition, resourceConfigurationIdentifier = resourceConfigurationIdentifier)
+  input <- .vpclattice$update_resource_configuration_input(resourceConfigurationIdentifier = resourceConfigurationIdentifier, resourceConfigurationDefinition = resourceConfigurationDefinition, allowAssociationToShareableServiceNetwork = allowAssociationToShareableServiceNetwork, portRanges = portRanges)
   output <- .vpclattice$update_resource_configuration_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -2234,18 +2422,18 @@ vpclattice_update_resource_gateway <- function(resourceGatewayIdentifier, securi
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_update_rule/](https://www.paws-r-sdk.com/docs/vpclattice_update_rule/) for full documentation.
 #'
-#' @param action Information about the action for the specified listener rule.
+#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #' @param listenerIdentifier &#91;required&#93; The ID or ARN of the listener.
+#' @param ruleIdentifier &#91;required&#93; The ID or ARN of the rule.
 #' @param match The rule match.
 #' @param priority The rule priority. A listener can't have multiple rules with the same
 #' priority.
-#' @param ruleIdentifier &#91;required&#93; The ID or ARN of the rule.
-#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
+#' @param action Information about the action for the specified listener rule.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_update_rule
-vpclattice_update_rule <- function(action = NULL, listenerIdentifier, match = NULL, priority = NULL, ruleIdentifier, serviceIdentifier) {
+vpclattice_update_rule <- function(serviceIdentifier, listenerIdentifier, ruleIdentifier, match = NULL, priority = NULL, action = NULL) {
   op <- new_operation(
     name = "UpdateRule",
     http_method = "PATCH",
@@ -2254,7 +2442,7 @@ vpclattice_update_rule <- function(action = NULL, listenerIdentifier, match = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$update_rule_input(action = action, listenerIdentifier = listenerIdentifier, match = match, priority = priority, ruleIdentifier = ruleIdentifier, serviceIdentifier = serviceIdentifier)
+  input <- .vpclattice$update_rule_input(serviceIdentifier = serviceIdentifier, listenerIdentifier = listenerIdentifier, ruleIdentifier = ruleIdentifier, match = match, priority = priority, action = action)
   output <- .vpclattice$update_rule_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -2271,6 +2459,8 @@ vpclattice_update_rule <- function(action = NULL, listenerIdentifier, match = NU
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_update_service/](https://www.paws-r-sdk.com/docs/vpclattice_update_service/) for full documentation.
 #'
+#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
+#' @param certificateArn The Amazon Resource Name (ARN) of the certificate.
 #' @param authType The type of IAM policy.
 #' 
 #' -   `NONE`: The resource does not use an IAM policy. This is the
@@ -2278,13 +2468,11 @@ vpclattice_update_rule <- function(action = NULL, listenerIdentifier, match = NU
 #' 
 #' -   `AWS_IAM`: The resource uses an IAM policy. When this type is used,
 #'     auth is enabled and an auth policy is required.
-#' @param certificateArn The Amazon Resource Name (ARN) of the certificate.
-#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_update_service
-vpclattice_update_service <- function(authType = NULL, certificateArn = NULL, serviceIdentifier) {
+vpclattice_update_service <- function(serviceIdentifier, certificateArn = NULL, authType = NULL) {
   op <- new_operation(
     name = "UpdateService",
     http_method = "PATCH",
@@ -2293,7 +2481,7 @@ vpclattice_update_service <- function(authType = NULL, certificateArn = NULL, se
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$update_service_input(authType = authType, certificateArn = certificateArn, serviceIdentifier = serviceIdentifier)
+  input <- .vpclattice$update_service_input(serviceIdentifier = serviceIdentifier, certificateArn = certificateArn, authType = authType)
   output <- .vpclattice$update_service_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -2310,6 +2498,7 @@ vpclattice_update_service <- function(authType = NULL, certificateArn = NULL, se
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_update_service_network/](https://www.paws-r-sdk.com/docs/vpclattice_update_service_network/) for full documentation.
 #'
+#' @param serviceNetworkIdentifier &#91;required&#93; The ID or ARN of the service network.
 #' @param authType &#91;required&#93; The type of IAM policy.
 #' 
 #' -   `NONE`: The resource does not use an IAM policy. This is the
@@ -2317,12 +2506,11 @@ vpclattice_update_service <- function(authType = NULL, certificateArn = NULL, se
 #' 
 #' -   `AWS_IAM`: The resource uses an IAM policy. When this type is used,
 #'     auth is enabled and an auth policy is required.
-#' @param serviceNetworkIdentifier &#91;required&#93; The ID or ARN of the service network.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_update_service_network
-vpclattice_update_service_network <- function(authType, serviceNetworkIdentifier) {
+vpclattice_update_service_network <- function(serviceNetworkIdentifier, authType) {
   op <- new_operation(
     name = "UpdateServiceNetwork",
     http_method = "PATCH",
@@ -2331,7 +2519,7 @@ vpclattice_update_service_network <- function(authType, serviceNetworkIdentifier
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$update_service_network_input(authType = authType, serviceNetworkIdentifier = serviceNetworkIdentifier)
+  input <- .vpclattice$update_service_network_input(serviceNetworkIdentifier = serviceNetworkIdentifier, authType = authType)
   output <- .vpclattice$update_service_network_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -2348,13 +2536,13 @@ vpclattice_update_service_network <- function(authType, serviceNetworkIdentifier
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_update_service_network_vpc_association/](https://www.paws-r-sdk.com/docs/vpclattice_update_service_network_vpc_association/) for full documentation.
 #'
-#' @param securityGroupIds &#91;required&#93; The IDs of the security groups.
 #' @param serviceNetworkVpcAssociationIdentifier &#91;required&#93; The ID or ARN of the association.
+#' @param securityGroupIds &#91;required&#93; The IDs of the security groups.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_update_service_network_vpc_association
-vpclattice_update_service_network_vpc_association <- function(securityGroupIds, serviceNetworkVpcAssociationIdentifier) {
+vpclattice_update_service_network_vpc_association <- function(serviceNetworkVpcAssociationIdentifier, securityGroupIds) {
   op <- new_operation(
     name = "UpdateServiceNetworkVpcAssociation",
     http_method = "PATCH",
@@ -2363,7 +2551,7 @@ vpclattice_update_service_network_vpc_association <- function(securityGroupIds, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$update_service_network_vpc_association_input(securityGroupIds = securityGroupIds, serviceNetworkVpcAssociationIdentifier = serviceNetworkVpcAssociationIdentifier)
+  input <- .vpclattice$update_service_network_vpc_association_input(serviceNetworkVpcAssociationIdentifier = serviceNetworkVpcAssociationIdentifier, securityGroupIds = securityGroupIds)
   output <- .vpclattice$update_service_network_vpc_association_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -2380,13 +2568,13 @@ vpclattice_update_service_network_vpc_association <- function(securityGroupIds, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_update_target_group/](https://www.paws-r-sdk.com/docs/vpclattice_update_target_group/) for full documentation.
 #'
-#' @param healthCheck &#91;required&#93; The health check configuration.
 #' @param targetGroupIdentifier &#91;required&#93; The ID or ARN of the target group.
+#' @param healthCheck &#91;required&#93; The health check configuration.
 #'
 #' @keywords internal
 #'
 #' @rdname vpclattice_update_target_group
-vpclattice_update_target_group <- function(healthCheck, targetGroupIdentifier) {
+vpclattice_update_target_group <- function(targetGroupIdentifier, healthCheck) {
   op <- new_operation(
     name = "UpdateTargetGroup",
     http_method = "PATCH",
@@ -2395,7 +2583,7 @@ vpclattice_update_target_group <- function(healthCheck, targetGroupIdentifier) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$update_target_group_input(healthCheck = healthCheck, targetGroupIdentifier = targetGroupIdentifier)
+  input <- .vpclattice$update_target_group_input(targetGroupIdentifier = targetGroupIdentifier, healthCheck = healthCheck)
   output <- .vpclattice$update_target_group_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)

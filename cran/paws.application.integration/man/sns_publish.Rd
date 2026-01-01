@@ -148,18 +148,25 @@ scope and interval, and only one copy of the message is delivered.
 
 []: R:\%5C}
 
-\item{MessageGroupId}{This parameter applies only to FIFO (first-in-first-out) topics. The
-\code{MessageGroupId} can contain up to 128 alphanumeric characters
+\item{MessageGroupId}{The \code{MessageGroupId} can contain up to 128 alphanumeric characters
 \verb{(a-z, A-Z, 0-9)} and punctuation
 \verb{(!\\"#$\%&\\'()*+,-./:;<=>?@[\]^_\\`\{|\}~)}.
 
-The \code{MessageGroupId} is a tag that specifies that a message belongs to a
-specific message group. Messages that belong to the same message group
-are processed in a FIFO manner (however, messages in different message
-groups might be processed out of order). Every message must include a
-\code{MessageGroupId}.
+For FIFO topics: The \code{MessageGroupId} is a tag that specifies that a
+message belongs to a specific message group. Messages that belong to the
+same message group are processed in a FIFO manner (however, messages in
+different message groups might be processed out of order). Every message
+must include a \code{MessageGroupId}.
 
-[]: R:\%5C}
+For standard topics: The \code{MessageGroupId} is optional and is forwarded
+only to Amazon SQS standard subscriptions to activate \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-fair-queues.html}{fair queues}.
+The \code{MessageGroupId} is not used for, or sent to, any other endpoint
+types. When provided, the same validation rules apply as for FIFO
+topics.
+
+[]: R:\%5C
+[fair
+queues]: R:fair\%0Aqueues}
 }
 \description{
 Sends a message to an Amazon SNS topic, a text message (SMS message) directly to a phone number, or a message to a mobile platform endpoint (when you specify the \code{TargetArn}).

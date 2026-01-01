@@ -200,6 +200,40 @@ cloudwatch_delete_metric_stream <- function(Name) {
 }
 .cloudwatch$operations$delete_metric_stream <- cloudwatch_delete_metric_stream
 
+#' Returns the information of the current alarm contributors that are in
+#' ALARM state
+#'
+#' @description
+#' Returns the information of the current alarm contributors that are in `ALARM` state. This operation returns details about the individual time series that contribute to the alarm's state.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_describe_alarm_contributors/](https://www.paws-r-sdk.com/docs/cloudwatch_describe_alarm_contributors/) for full documentation.
+#'
+#' @param AlarmName &#91;required&#93; The name of the alarm for which to retrieve contributor information.
+#' @param NextToken The token returned by a previous call to indicate that there is more
+#' data available.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_describe_alarm_contributors
+cloudwatch_describe_alarm_contributors <- function(AlarmName, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeAlarmContributors",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatch$describe_alarm_contributors_input(AlarmName = AlarmName, NextToken = NextToken)
+  output <- .cloudwatch$describe_alarm_contributors_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$describe_alarm_contributors <- cloudwatch_describe_alarm_contributors
+
 #' Retrieves the history for the specified alarm
 #'
 #' @description
@@ -208,6 +242,8 @@ cloudwatch_delete_metric_stream <- function(Name) {
 #' See [https://www.paws-r-sdk.com/docs/cloudwatch_describe_alarm_history/](https://www.paws-r-sdk.com/docs/cloudwatch_describe_alarm_history/) for full documentation.
 #'
 #' @param AlarmName The name of the alarm.
+#' @param AlarmContributorId The unique identifier of a specific alarm contributor to filter the
+#' alarm history results.
 #' @param AlarmTypes Use this parameter to specify whether you want the operation to return
 #' metric alarms or composite alarms. If you omit this parameter, only
 #' metric alarms are returned.
@@ -225,7 +261,7 @@ cloudwatch_delete_metric_stream <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname cloudwatch_describe_alarm_history
-cloudwatch_describe_alarm_history <- function(AlarmName = NULL, AlarmTypes = NULL, HistoryItemType = NULL, StartDate = NULL, EndDate = NULL, MaxRecords = NULL, NextToken = NULL, ScanBy = NULL) {
+cloudwatch_describe_alarm_history <- function(AlarmName = NULL, AlarmContributorId = NULL, AlarmTypes = NULL, HistoryItemType = NULL, StartDate = NULL, EndDate = NULL, MaxRecords = NULL, NextToken = NULL, ScanBy = NULL) {
   op <- new_operation(
     name = "DescribeAlarmHistory",
     http_method = "POST",
@@ -234,7 +270,7 @@ cloudwatch_describe_alarm_history <- function(AlarmName = NULL, AlarmTypes = NUL
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxRecords", result_key = "AlarmHistoryItems"),
     stream_api = FALSE
   )
-  input <- .cloudwatch$describe_alarm_history_input(AlarmName = AlarmName, AlarmTypes = AlarmTypes, HistoryItemType = HistoryItemType, StartDate = StartDate, EndDate = EndDate, MaxRecords = MaxRecords, NextToken = NextToken, ScanBy = ScanBy)
+  input <- .cloudwatch$describe_alarm_history_input(AlarmName = AlarmName, AlarmContributorId = AlarmContributorId, AlarmTypes = AlarmTypes, HistoryItemType = HistoryItemType, StartDate = StartDate, EndDate = EndDate, MaxRecords = MaxRecords, NextToken = NextToken, ScanBy = ScanBy)
   output <- .cloudwatch$describe_alarm_history_output()
   config <- get_config()
   svc <- .cloudwatch$service(config, op)
@@ -718,14 +754,14 @@ cloudwatch_get_insight_rule_report <- function(RuleName, StartTime, EndTime, Per
 #'     1-hour clock interval. For example, 12:32:34 is rounded down to
 #'     12:00:00.
 #' 
-#' If you set `Period` to 5, 10, or 30, the start time of your request is
-#' rounded down to the nearest time that corresponds to even 5-, 10-, or
-#' 30-second divisions of a minute. For example, if you make a query at
-#' (HH:mm:ss) 01:05:23 for the previous 10-second period, the start time of
-#' your request is rounded down and you receive data from 01:05:10 to
-#' 01:05:20. If you make a query at 15:07:17 for the previous 5 minutes of
-#' data, using a period of 5 seconds, you receive data timestamped between
-#' 15:02:15 and 15:07:15.
+#' If you set `Period` to 5, 10, 20, or 30, the start time of your request
+#' is rounded down to the nearest time that corresponds to even 5-, 10-,
+#' 20-, or 30-second divisions of a minute. For example, if you make a
+#' query at (HH:mm:ss) 01:05:23 for the previous 10-second period, the
+#' start time of your request is rounded down and you receive data from
+#' 01:05:10 to 01:05:20. If you make a query at 15:07:17 for the previous 5
+#' minutes of data, using a period of 5 seconds, you receive data
+#' timestamped between 15:02:15 and 15:07:15.
 #' 
 #' For better performance, specify `StartTime` and `EndTime` values that
 #' align with the value of the metric's `Period` and sync up with the
@@ -821,14 +857,14 @@ cloudwatch_get_metric_data <- function(MetricDataQueries, StartTime, EndTime, Ne
 #'     1-hour clock interval. For example, 12:32:34 is rounded down to
 #'     12:00:00.
 #' 
-#' If you set `Period` to 5, 10, or 30, the start time of your request is
-#' rounded down to the nearest time that corresponds to even 5-, 10-, or
-#' 30-second divisions of a minute. For example, if you make a query at
-#' (HH:mm:ss) 01:05:23 for the previous 10-second period, the start time of
-#' your request is rounded down and you receive data from 01:05:10 to
-#' 01:05:20. If you make a query at 15:07:17 for the previous 5 minutes of
-#' data, using a period of 5 seconds, you receive data timestamped between
-#' 15:02:15 and 15:07:15.
+#' If you set `Period` to 5, 10, 20, or 30, the start time of your request
+#' is rounded down to the nearest time that corresponds to even 5-, 10-,
+#' 20-, or 30-second divisions of a minute. For example, if you make a
+#' query at (HH:mm:ss) 01:05:23 for the previous 10-second period, the
+#' start time of your request is rounded down and you receive data from
+#' 01:05:10 to 01:05:20. If you make a query at 15:07:17 for the previous 5
+#' minutes of data, using a period of 5 seconds, you receive data
+#' timestamped between 15:02:15 and 15:07:15.
 #' @param EndTime &#91;required&#93; The time stamp that determines the last data point to return.
 #' 
 #' The value specified is exclusive; results include data points up to the
@@ -838,9 +874,10 @@ cloudwatch_get_metric_data <- function(MetricDataQueries, StartTime, EndTime, Ne
 #' with regular resolution, a period can be as short as one minute (60
 #' seconds) and must be a multiple of 60. For high-resolution metrics that
 #' are collected at intervals of less than one minute, the period can be 1,
-#' 5, 10, 30, 60, or any multiple of 60. High-resolution metrics are those
-#' metrics stored by a [`put_metric_data`][cloudwatch_put_metric_data] call
-#' that includes a `StorageResolution` of 1 second.
+#' 5, 10, 20, 30, 60, or any multiple of 60. High-resolution metrics are
+#' those metrics stored by a
+#' [`put_metric_data`][cloudwatch_put_metric_data] call that includes a
+#' `StorageResolution` of 1 second.
 #' 
 #' If the `StartTime` parameter specifies a time stamp that is greater than
 #' 3 hours ago, you must specify the period as follows or no data points in
@@ -1115,8 +1152,10 @@ cloudwatch_list_metric_streams <- function(NextToken = NULL, MaxResults = NULL) 
 #' exactly will be returned.
 #' @param MetricName The name of the metric to filter against. Only the metrics with names
 #' that match exactly will be returned.
-#' @param Dimensions The dimensions to filter against. Only the dimensions that match exactly
-#' will be returned.
+#' @param Dimensions The dimensions to filter against. Only the dimension with names that
+#' match exactly will be returned. If you specify one dimension name and a
+#' metric has that dimension and also other dimensions, it will be
+#' returned.
 #' @param NextToken The token returned by a previous call to indicate that there is more
 #' data available.
 #' @param RecentlyActive To filter the results to show only metrics that have had data points
@@ -1314,7 +1353,7 @@ cloudwatch_put_anomaly_detector <- function(Namespace = NULL, MetricName = NULL,
 #' 
 #' **Start a Amazon Q Developer operational investigation**
 #' 
-#' `arn:aws:aiops:region:account-id:investigation-group:ingestigation-group-id `
+#' `arn:aws:aiops:region:account-id:investigation-group:investigation-group-id `
 #' @param AlarmDescription The description for the composite alarm.
 #' @param AlarmName &#91;required&#93; The name for the composite alarm. This name must be unique within the
 #' Region.
@@ -1533,11 +1572,26 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #' Insights rule, any tags you specify in this parameter are ignored. To
 #' change the tags of an existing rule, use
 #' [`tag_resource`][cloudwatch_tag_resource].
+#' @param ApplyOnTransformedLogs Specify `true` to have this rule evaluate log events after they have
+#' been transformed by [Log
+#' transformation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch-Logs-Transformation.html).
+#' If you specify `true`, then the log events in log groups that have
+#' transformers will be evaluated by Contributor Insights after being
+#' transformed. Log groups that don't have transformers will still have
+#' their original log events evaluated by Contributor Insights.
+#' 
+#' The default is `false`
+#' 
+#' If a log group has a transformer, and transformation fails for some log
+#' events, those log events won't be evaluated by Contributor Insights. For
+#' information about investigating log transformation failures, see
+#' [Transformation metrics and
+#' errors](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Transformation-Errors-Metrics.html).
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatch_put_insight_rule
-cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefinition, Tags = NULL) {
+cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefinition, Tags = NULL, ApplyOnTransformedLogs = NULL) {
   op <- new_operation(
     name = "PutInsightRule",
     http_method = "POST",
@@ -1546,7 +1600,7 @@ cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefiniti
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatch$put_insight_rule_input(RuleName = RuleName, RuleState = RuleState, RuleDefinition = RuleDefinition, Tags = Tags)
+  input <- .cloudwatch$put_insight_rule_input(RuleName = RuleName, RuleState = RuleState, RuleDefinition = RuleDefinition, Tags = Tags, ApplyOnTransformedLogs = ApplyOnTransformedLogs)
   output <- .cloudwatch$put_insight_rule_output()
   config <- get_config()
   svc <- .cloudwatch$service(config, op)
@@ -1699,7 +1753,7 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #' 
 #' **Start a Amazon Q Developer operational investigation**
 #' 
-#' `arn:aws:aiops:region:account-id:investigation-group:ingestigation-group-id `
+#' `arn:aws:aiops:region:account-id:investigation-group:investigation-group-id `
 #' @param InsufficientDataActions The actions to execute when this alarm transitions to the
 #' `INSUFFICIENT_DATA` state from any other state. Each action is specified
 #' as an Amazon Resource Name (ARN). Valid values:
@@ -1794,28 +1848,30 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #' definitions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Statistics-definitions.html).
 #' @param Dimensions The dimensions for the metric specified in `MetricName`.
 #' @param Period The length, in seconds, used each time the metric specified in
-#' `MetricName` is evaluated. Valid values are 10, 30, and any multiple of
-#' 60.
+#' `MetricName` is evaluated. Valid values are 10, 20, 30, and any multiple
+#' of 60.
 #' 
 #' `Period` is required for alarms based on static thresholds. If you are
 #' creating an alarm based on a metric math expression, you specify the
 #' period for each metric within the objects in the `Metrics` array.
 #' 
-#' Be sure to specify 10 or 30 only for metrics that are stored by a
+#' Be sure to specify 10, 20, or 30 only for metrics that are stored by a
 #' [`put_metric_data`][cloudwatch_put_metric_data] call with a
-#' `StorageResolution` of 1. If you specify a period of 10 or 30 for a
+#' `StorageResolution` of 1. If you specify a period of 10, 20, or 30 for a
 #' metric that does not have sub-minute resolution, the alarm still
 #' attempts to gather data at the period rate that you specify. In this
 #' case, it does not receive data for the attempts that do not correspond
 #' to a one-minute data resolution, and the alarm might often lapse into
-#' INSUFFICENT_DATA status. Specifying 10 or 30 also sets this alarm as a
-#' high-resolution alarm, which has a higher charge than other alarms. For
-#' more information about pricing, see [Amazon CloudWatch
+#' INSUFFICENT_DATA status. Specifying 10, 20, or 30 also sets this alarm
+#' as a high-resolution alarm, which has a higher charge than other alarms.
+#' For more information about pricing, see [Amazon CloudWatch
 #' Pricing](https://aws.amazon.com/cloudwatch/pricing/).
 #' 
-#' An alarm's total current evaluation period can be no longer than one
-#' day, so `Period` multiplied by `EvaluationPeriods` cannot be more than
-#' 86,400 seconds.
+#' An alarm's total current evaluation period can be no longer than seven
+#' days, so `Period` multiplied by `EvaluationPeriods` can't be more than
+#' 604,800 seconds. For alarms with a period of less than one hour (3,600
+#' seconds), the total evaluation period can't be longer than one day
+#' (86,400 seconds).
 #' @param Unit The unit of measure for the statistic. For example, the units for the
 #' Amazon EC2 NetworkIn metric are Bytes because NetworkIn tracks the
 #' number of bytes that an instance receives on all network interfaces. You
@@ -1843,10 +1899,6 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #' consecutive data points be breaching to trigger the alarm, this value
 #' specifies that number. If you are setting an "M out of N" alarm, this
 #' value is the N.
-#' 
-#' An alarm's total current evaluation period can be no longer than one
-#' day, so this number multiplied by `Period` cannot be more than 86,400
-#' seconds.
 #' @param DatapointsToAlarm The number of data points that must be breaching to trigger the alarm.
 #' This is used only if you are setting an "M out of N" alarm. In that
 #' case, this value is the M. For more information, see [Evaluating an
@@ -2007,8 +2059,10 @@ cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, Acti
 #'     -   `MissingRequiredFields` - There are missing required fields in
 #'         the `KeyAttributes` for the provided `Type`.
 #' 
-#'     For details of the requirements for specifying an entity, see How to
-#'     add related information to telemetry in the *CloudWatch User Guide*.
+#'     For details of the requirements for specifying an entity, see [How
+#'     to add related information to
+#'     telemetry](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/adding-your-own-related-telemetry.html)
+#'     in the *CloudWatch User Guide*.
 #' 
 #' This parameter is *required* when `EntityMetricData` is included.
 #'

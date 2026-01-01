@@ -84,12 +84,12 @@ in the \emph{Amazon Cognito Developer Guide}.
 
 With your Amazon Web Services SDK, you can build the logic to support
 operational flows in every use case for this API. You can also make
-direct REST API requests to \href{https://docs.aws.amazon.com/general/latest/gr/cognito_identity.html#cognito_identity_your_user_pools_region}{Amazon Cognito user pools service endpoints}.
+direct REST API requests to \href{https://docs.aws.amazon.com/general/latest/gr/cognito.html#cognito_identity_your_user_pools_region}{Amazon Cognito user pools service endpoints}.
 The following links can get you started with the
 \code{CognitoIdentityProvider} client in supported Amazon Web Services SDKs.
 
-To get started with an Amazon Web Services SDK, see \href{https://aws.amazon.com/developer/tools/}{Tools to Build on Amazon Web Services}. For
-example actions and scenarios, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/service_code_examples_cognito-identity-provider.html}{Code examples for Amazon Cognito Identity Provider using Amazon Web Services SDKs}.
+To get started with an Amazon Web Services SDK, see \href{https://builder.aws.com/build/tools}{Tools to Build on Amazon Web Services}. For example
+actions and scenarios, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/service_code_examples_cognito-identity-provider.html}{Code examples for Amazon Cognito Identity Provider using Amazon Web Services SDKs}.
 }
 \section{Service syntax}{
 
@@ -148,7 +148,7 @@ example actions and scenarios, see \href{https://docs.aws.amazon.com/cognito/lat
 \link[=cognitoidentityprovider_admin_list_groups_for_user]{admin_list_groups_for_user} \tab Lists the groups that a user belongs to\cr
 \link[=cognitoidentityprovider_admin_list_user_auth_events]{admin_list_user_auth_events} \tab Requests a history of user activity and any risks detected as part of Amazon Cognito threat protection\cr
 \link[=cognitoidentityprovider_admin_remove_user_from_group]{admin_remove_user_from_group} \tab Given a username and a group name, removes them from the group\cr
-\link[=cognitoidentityprovider_admin_reset_user_password]{admin_reset_user_password} \tab Resets the specified user's password in a user pool\cr
+\link[=cognitoidentityprovider_admin_reset_user_password]{admin_reset_user_password} \tab Begins the password reset process\cr
 \link[=cognitoidentityprovider_admin_respond_to_auth_challenge]{admin_respond_to_auth_challenge} \tab Some API operations in a user pool generate a challenge, like a prompt for an MFA code, for device authentication that bypasses MFA, or for a custom authentication challenge\cr
 \link[=cognitoidentityprovider_admin_set_user_mfa_preference]{admin_set_user_mfa_preference} \tab Sets the user's multi-factor authentication (MFA) preference, including which MFA options are activated, and if any are preferred\cr
 \link[=cognitoidentityprovider_admin_set_user_password]{admin_set_user_password} \tab Sets the specified user's password in a user pool\cr
@@ -167,6 +167,7 @@ example actions and scenarios, see \href{https://docs.aws.amazon.com/cognito/lat
 \link[=cognitoidentityprovider_create_identity_provider]{create_identity_provider} \tab Adds a configuration and trust relationship between a third-party identity provider (IdP) and a user pool\cr
 \link[=cognitoidentityprovider_create_managed_login_branding]{create_managed_login_branding} \tab Creates a new set of branding settings for a user pool style and associates it with an app client\cr
 \link[=cognitoidentityprovider_create_resource_server]{create_resource_server} \tab Creates a new OAuth2\cr
+\link[=cognitoidentityprovider_create_terms]{create_terms} \tab Creates terms documents for the requested app client\cr
 \link[=cognitoidentityprovider_create_user_import_job]{create_user_import_job} \tab Creates a user import job\cr
 \link[=cognitoidentityprovider_create_user_pool]{create_user_pool} \tab Creates a new Amazon Cognito user pool\cr
 \link[=cognitoidentityprovider_create_user_pool_client]{create_user_pool_client} \tab Creates an app client in a user pool\cr
@@ -175,6 +176,7 @@ example actions and scenarios, see \href{https://docs.aws.amazon.com/cognito/lat
 \link[=cognitoidentityprovider_delete_identity_provider]{delete_identity_provider} \tab Deletes a user pool identity provider (IdP)\cr
 \link[=cognitoidentityprovider_delete_managed_login_branding]{delete_managed_login_branding} \tab Deletes a managed login branding style\cr
 \link[=cognitoidentityprovider_delete_resource_server]{delete_resource_server} \tab Deletes a resource server\cr
+\link[=cognitoidentityprovider_delete_terms]{delete_terms} \tab Deletes the terms documents with the requested ID from your app client\cr
 \link[=cognitoidentityprovider_delete_user]{delete_user} \tab Deletes the profile of the currently signed-in user\cr
 \link[=cognitoidentityprovider_delete_user_attributes]{delete_user_attributes} \tab Deletes attributes from the currently signed-in user\cr
 \link[=cognitoidentityprovider_delete_user_pool]{delete_user_pool} \tab Deletes a user pool\cr
@@ -186,12 +188,13 @@ example actions and scenarios, see \href{https://docs.aws.amazon.com/cognito/lat
 \link[=cognitoidentityprovider_describe_managed_login_branding_by_client]{describe_managed_login_branding_by_client} \tab Given the ID of a user pool app client, returns detailed information about the style assigned to the app client\cr
 \link[=cognitoidentityprovider_describe_resource_server]{describe_resource_server} \tab Describes a resource server\cr
 \link[=cognitoidentityprovider_describe_risk_configuration]{describe_risk_configuration} \tab Given an app client or user pool ID where threat protection is configured, describes the risk configuration\cr
+\link[=cognitoidentityprovider_describe_terms]{describe_terms} \tab Returns details for the requested terms documents ID\cr
 \link[=cognitoidentityprovider_describe_user_import_job]{describe_user_import_job} \tab Describes a user import job\cr
 \link[=cognitoidentityprovider_describe_user_pool]{describe_user_pool} \tab Given a user pool ID, returns configuration information\cr
 \link[=cognitoidentityprovider_describe_user_pool_client]{describe_user_pool_client} \tab Given an app client ID, returns configuration information\cr
 \link[=cognitoidentityprovider_describe_user_pool_domain]{describe_user_pool_domain} \tab Given a user pool domain name, returns information about the domain configuration\cr
 \link[=cognitoidentityprovider_forget_device]{forget_device} \tab Given a device key, deletes a remembered device as the currently signed-in user\cr
-\link[=cognitoidentityprovider_forgot_password]{forgot_password} \tab Sends a password-reset confirmation code for the currently signed-in user\cr
+\link[=cognitoidentityprovider_forgot_password]{forgot_password} \tab Sends a password-reset confirmation code to the email address or phone number of the requested username\cr
 \link[=cognitoidentityprovider_get_csv_header]{get_csv_header} \tab Given a user pool ID, generates a comma-separated value (CSV) list populated with available user attributes in the user pool\cr
 \link[=cognitoidentityprovider_get_device]{get_device} \tab Given a device key, returns information about a remembered device for the current user\cr
 \link[=cognitoidentityprovider_get_group]{get_group} \tab Given a user pool ID and a group name, returns information about the user group\cr
@@ -211,6 +214,7 @@ example actions and scenarios, see \href{https://docs.aws.amazon.com/cognito/lat
 \link[=cognitoidentityprovider_list_identity_providers]{list_identity_providers} \tab Given a user pool ID, returns information about configured identity providers (IdPs)\cr
 \link[=cognitoidentityprovider_list_resource_servers]{list_resource_servers} \tab Given a user pool ID, returns all resource servers and their details\cr
 \link[=cognitoidentityprovider_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags that are assigned to an Amazon Cognito user pool\cr
+\link[=cognitoidentityprovider_list_terms]{list_terms} \tab Returns details about all terms documents for the requested user pool\cr
 \link[=cognitoidentityprovider_list_user_import_jobs]{list_user_import_jobs} \tab Given a user pool ID, returns user import jobs and their details\cr
 \link[=cognitoidentityprovider_list_user_pool_clients]{list_user_pool_clients} \tab Given a user pool ID, lists app clients\cr
 \link[=cognitoidentityprovider_list_user_pools]{list_user_pools} \tab Lists user pools and their details in the current Amazon Web Services account\cr
@@ -238,6 +242,7 @@ example actions and scenarios, see \href{https://docs.aws.amazon.com/cognito/lat
 \link[=cognitoidentityprovider_update_identity_provider]{update_identity_provider} \tab Modifies the configuration and trust relationship between a third-party identity provider (IdP) and a user pool\cr
 \link[=cognitoidentityprovider_update_managed_login_branding]{update_managed_login_branding} \tab Configures the branding settings for a user pool style\cr
 \link[=cognitoidentityprovider_update_resource_server]{update_resource_server} \tab Updates the name and scopes of a resource server\cr
+\link[=cognitoidentityprovider_update_terms]{update_terms} \tab Modifies existing terms documents for the requested app client\cr
 \link[=cognitoidentityprovider_update_user_attributes]{update_user_attributes} \tab Updates the currently signed-in user's attributes\cr
 \link[=cognitoidentityprovider_update_user_pool]{update_user_pool} \tab Updates the configuration of a user pool\cr
 \link[=cognitoidentityprovider_update_user_pool_client]{update_user_pool_client} \tab Given a user pool app client ID, updates the configuration\cr

@@ -2,7 +2,7 @@
 % Please edit documentation in R/computeoptimizer_operations.R
 \name{computeoptimizer_get_rds_database_recommendation_projected_metrics}
 \alias{computeoptimizer_get_rds_database_recommendation_projected_metrics}
-\title{Returns the projected metrics of Amazon RDS recommendations}
+\title{Returns the projected metrics of Aurora and RDS database recommendations}
 \usage{
 computeoptimizer_get_rds_database_recommendation_projected_metrics(
   resourceArn,
@@ -14,7 +14,7 @@ computeoptimizer_get_rds_database_recommendation_projected_metrics(
 )
 }
 \arguments{
-\item{resourceArn}{[required] The ARN that identifies the Amazon RDS.
+\item{resourceArn}{[required] The ARN that identifies the Amazon Aurora or RDS database.
 
 The following is the format of the ARN:
 
@@ -31,7 +31,7 @@ The following is the format of the ARN:
 \item{recommendationPreferences}{}
 }
 \description{
-Returns the projected metrics of Amazon RDS recommendations.
+Returns the projected metrics of Aurora and RDS database recommendations.
 
 See \url{https://www.paws-r-sdk.com/docs/computeoptimizer_get_rds_database_recommendation_projected_metrics/} for full documentation.
 }

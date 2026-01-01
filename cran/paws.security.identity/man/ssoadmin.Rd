@@ -75,7 +75,7 @@ code for various programming languages and platforms (Java, Ruby, .Net,
 iOS, Android, and more). The SDKs provide a convenient way to create
 programmatic access to IAM Identity Center and other Amazon Web Services
 services. For more information about the Amazon Web Services SDKs,
-including how to download and install them, see \href{https://aws.amazon.com/developer/tools/}{Tools for Amazon Web Services}.
+including how to download and install them, see \href{https://builder.aws.com/build/tools}{Tools for Amazon Web Services}.
 }
 \section{Service syntax}{
 
@@ -153,6 +153,7 @@ including how to download and install them, see \href{https://aws.amazon.com/dev
 \link[=ssoadmin_get_application_assignment_configuration]{get_application_assignment_configuration} \tab Retrieves the configuration of PutApplicationAssignmentConfiguration\cr
 \link[=ssoadmin_get_application_authentication_method]{get_application_authentication_method} \tab Retrieves details about an authentication method used by an application\cr
 \link[=ssoadmin_get_application_grant]{get_application_grant} \tab Retrieves details about an application grant\cr
+\link[=ssoadmin_get_application_session_configuration]{get_application_session_configuration} \tab Retrieves the session configuration for an application in IAM Identity Center\cr
 \link[=ssoadmin_get_inline_policy_for_permission_set]{get_inline_policy_for_permission_set} \tab Obtains the inline policy assigned to the permission set\cr
 \link[=ssoadmin_get_permissions_boundary_for_permission_set]{get_permissions_boundary_for_permission_set} \tab Obtains the permissions boundary for a specified PermissionSet\cr
 \link[=ssoadmin_list_account_assignment_creation_status]{list_account_assignment_creation_status} \tab Lists the status of the Amazon Web Services account assignment creation requests for a specified IAM Identity Center instance\cr
@@ -180,6 +181,7 @@ including how to download and install them, see \href{https://aws.amazon.com/dev
 \link[=ssoadmin_put_application_assignment_configuration]{put_application_assignment_configuration} \tab Configure how users gain access to an application\cr
 \link[=ssoadmin_put_application_authentication_method]{put_application_authentication_method} \tab Adds or updates an authentication method for an application\cr
 \link[=ssoadmin_put_application_grant]{put_application_grant} \tab Creates a configuration for an application to use grants\cr
+\link[=ssoadmin_put_application_session_configuration]{put_application_session_configuration} \tab Updates the session configuration for an application in IAM Identity Center\cr
 \link[=ssoadmin_put_inline_policy_to_permission_set]{put_inline_policy_to_permission_set} \tab Attaches an inline policy to a permission set\cr
 \link[=ssoadmin_put_permissions_boundary_to_permission_set]{put_permissions_boundary_to_permission_set} \tab Attaches an Amazon Web Services managed or customer managed policy to the specified PermissionSet as a permissions boundary\cr
 \link[=ssoadmin_tag_resource]{tag_resource} \tab Associates a set of tags with a specified resource\cr

@@ -14,7 +14,9 @@ route53resolver_create_resolver_endpoint(
   PreferredInstanceType = NULL,
   Tags = NULL,
   ResolverEndpointType = NULL,
-  Protocols = NULL
+  Protocols = NULL,
+  RniEnhancedMetricsEnabled = NULL,
+  TargetNameServerMetricsEnabled = NULL
 )
 }
 \arguments{
@@ -43,9 +45,11 @@ tracking caused by security group, see \href{https://docs.aws.amazon.com/AWSEC2/
 \item{Direction}{[required] Specify the applicable value:
 \itemize{
 \item \code{INBOUND}: Resolver forwards DNS queries to the DNS service for a
-VPC from your network
+VPC from your network.
 \item \code{OUTBOUND}: Resolver forwards DNS queries from the DNS service for a
-VPC to your network
+VPC to your network.
+\item \code{INBOUND_DELEGATION}: Resolver delegates queries to Route 53 private
+hosted zones from your network.
 }}
 
 \item{IpAddresses}{[required] The subnets and IP addresses in your VPC that DNS queries originate from
@@ -69,9 +73,9 @@ dual-stack endpoint means that it will resolve via both IPv4 and IPv6.
 This endpoint type is applied to all IP addresses.}
 
 \item{Protocols}{The protocols you want to use for the endpoint. DoH-FIPS is applicable
-for inbound endpoints only.
+for default inbound endpoints only.
 
-For an inbound endpoint you can apply the protocols as follows:
+For a default inbound endpoint you can apply the protocols as follows:
 \itemize{
 \item Do53 and DoH in combination.
 \item Do53 and DoH-FIPS in combination.
@@ -81,6 +85,8 @@ For an inbound endpoint you can apply the protocols as follows:
 \item None, which is treated as Do53.
 }
 
+For a delegation inbound endpoint you can use Do53 only.
+
 For an outbound endpoint you can apply the protocols as follows:
 \itemize{
 \item Do53 and DoH in combination.
@@ -88,6 +94,26 @@ For an outbound endpoint you can apply the protocols as follows:
 \item DoH alone.
 \item None, which is treated as Do53.
 }}
+
+\item{RniEnhancedMetricsEnabled}{Specifies whether RNI enhanced metrics are enabled for the Resolver
+endpoints. When set to true, one-minute granular metrics are published
+in CloudWatch for each RNI associated with this endpoint. When set to
+false, metrics are not published. Default is false.
+
+Standard CloudWatch pricing and charges are applied for using the Route
+53 Resolver endpoint RNI enhanced metrics. For more information, see
+\href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/monitoring-resolver-with-cloudwatch.html}{Detailed metrics}.}
+
+\item{TargetNameServerMetricsEnabled}{Specifies whether target name server metrics are enabled for the
+outbound Resolver endpoints. When set to true, one-minute granular
+metrics are published in CloudWatch for each target name server
+associated with this endpoint. When set to false, metrics are not
+published. Default is false. This is not supported for inbound Resolver
+endpoints.
+
+Standard CloudWatch pricing and charges are applied for using the Route
+53 Resolver endpoint target name server metrics. For more information,
+see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/monitoring-resolver-with-cloudwatch.html}{Detailed metrics}.}
 }
 \description{
 Creates a Resolver endpoint. There are two types of Resolver endpoints, inbound and outbound:

@@ -24,6 +24,7 @@ bedrockagentruntime_invoke_inline_agent(
   instruction,
   knowledgeBases = NULL,
   orchestrationType = NULL,
+  promptCreationConfigurations = NULL,
   promptOverrideConfiguration = NULL,
   sessionId,
   streamingConfigurations = NULL
@@ -93,6 +94,14 @@ should interact with users.}
 
 \item{orchestrationType}{Specifies the type of orchestration strategy for the agent. This is set
 to DEFAULT orchestration type, by default.}
+
+\item{promptCreationConfigurations}{Specifies parameters that control how the service populates the agent
+prompt for an
+\code{\link[=bedrockagentruntime_invoke_inline_agent]{invoke_inline_agent}}
+request. You can control which aspects of previous invocations in the
+same agent session the service uses to populate the agent prompt. This
+gives you more granular control over the contextual history that is used
+to process the current request.}
 
 \item{promptOverrideConfiguration}{Configurations for advanced prompts used to override the default prompts
 to enhance the accuracy of the inline agent.}

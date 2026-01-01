@@ -2,8 +2,8 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_object_attributes}
 \alias{s3_get_object_attributes}
-\title{Retrieves all the metadata from an object without returning the object
-itself}
+\title{Retrieves all of the metadata from an object without returning the
+object itself}
 \usage{
 s3_get_object_attributes(
   Bucket,
@@ -65,10 +65,13 @@ this API operation, only the \code{null} value of the version ID is supported
 by directory buckets. You can only specify \code{null} to the \code{versionId}
 query parameter in the request.}
 
-\item{MaxParts}{Sets the maximum number of parts to return.}
+\item{MaxParts}{Sets the maximum number of parts to return. For more information, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Uploading and copying objects using multipart upload in Amazon S3}
+in the \emph{Amazon Simple Storage Service user guide}.}
 
 \item{PartNumberMarker}{Specifies the part after which listing should begin. Only parts with
-higher part numbers will be listed.}
+higher part numbers will be listed. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Uploading and copying objects using multipart upload in Amazon S3}
+in the \emph{Amazon Simple Storage Service user guide}.}
 
 \item{SSECustomerAlgorithm}{Specifies the algorithm to use when encrypting the object (for example,
 AES256).
@@ -99,7 +102,7 @@ with the HTTP status code \verb{403 Forbidden} (access denied).}
 response. Fields that you do not specify are not returned.}
 }
 \description{
-Retrieves all the metadata from an object without returning the object itself. This operation is useful if you're interested only in an object's metadata.
+Retrieves all of the metadata from an object without returning the object itself. This operation is useful if you're interested only in an object's metadata.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_get_object_attributes/} for full documentation.
 }

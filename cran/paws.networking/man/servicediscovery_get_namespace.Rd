@@ -7,7 +7,11 @@
 servicediscovery_get_namespace(Id)
 }
 \arguments{
-\item{Id}{[required] The ID of the namespace that you want to get information about.}
+\item{Id}{[required] The ID or Amazon Resource Name (ARN) of the namespace that you want to
+get information about. For namespaces shared with your Amazon Web
+Services account, specify the namespace ARN. For more information about
+shared namespaces, see \href{https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html}{Cross-account Cloud Map namespace sharing}
+in the \emph{Cloud Map Developer Guide}}
 }
 \description{
 Gets information about a namespace.

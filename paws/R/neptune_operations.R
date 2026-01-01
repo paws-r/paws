@@ -398,7 +398,8 @@ neptune_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGrou
 #'   Tags)
 #'
 #' @param SourceDBClusterSnapshotIdentifier &#91;required&#93; The identifier of the DB cluster snapshot to copy. This parameter is not
-#' case-sensitive.
+#' case-sensitive. If the source DB cluster snapshot is in a different
+#' region or owned by another account, specify the snapshot ARN.
 #' 
 #' Constraints:
 #' 
@@ -683,7 +684,7 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #' Valid Values: `neptune`
 #' @param EngineVersion The version number of the database engine to use for the new DB cluster.
 #' 
-#' Example: `1.0.2.1`
+#' Example: `1.2.1.0`
 #' @param Port The port number on which the instances in the DB cluster accept
 #' connections.
 #' 
@@ -776,19 +777,23 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #' in the *Amazon Neptune User Guide*.
 #' @param GlobalClusterIdentifier The ID of the Neptune global database to which this new DB cluster
 #' should be added.
-#' @param StorageType The storage type to associate with the DB cluster.
+#' @param StorageType The storage type for the new DB cluster.
 #' 
 #' Valid Values:
 #' 
-#' -   `standard | iopt1`
+#' -   **`standard`**   –   ( *the default* ) Configures cost-effective
+#'     database storage for applications with moderate to small I/O usage.
+#'     When set to `standard`, the storage type is not returned in the
+#'     response.
 #' 
-#' Default:
+#' -   **`iopt1`**   –   Enables [I/O-Optimized
+#'     storage](https://docs.aws.amazon.com/neptune/latest/userguide/storage-types.html#provisioned-iops-storage)
+#'     that's designed to meet the needs of I/O-intensive graph workloads
+#'     that require predictable pricing with low I/O latency and consistent
+#'     I/O throughput.
 #' 
-#' -   `standard`
-#' 
-#' When you create a Neptune cluster with the storage type set to `iopt1`,
-#' the storage type is returned in the response. The storage type isn't
-#' returned when you set it to `standard`.
+#'     Neptune I/O-Optimized storage is only available starting with engine
+#'     release 1.3.0.0.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1406,7 +1411,18 @@ neptune_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCl
 #' be initially allocated for the DB instance.
 #' @param OptionGroupName *(Not supported by Neptune)*
 #' @param CharacterSetName *(Not supported by Neptune)*
-#' @param PubliclyAccessible This flag should no longer be used.
+#' @param PubliclyAccessible Indicates whether the DB instance is publicly accessible.
+#' 
+#' When the DB instance is publicly accessible and you connect from outside
+#' of the DB instance's virtual private cloud (VPC), its Domain Name System
+#' (DNS) endpoint resolves to the public IP address. When you connect from
+#' within the same VPC as the DB instance, the endpoint resolves to the
+#' private IP address. Access to the DB instance is ultimately controlled
+#' by the security group it uses. That public access isn't permitted if the
+#' security group assigned to the DB cluster doesn't permit it.
+#' 
+#' When the DB instance isn't publicly accessible, it is an internal DB
+#' instance with a DNS name that resolves to a private IP address.
 #' @param Tags The tags to assign to the new instance.
 #' @param DBClusterIdentifier &#91;required&#93; The identifier of the DB cluster that the instance will belong to.
 #' 
@@ -1414,9 +1430,8 @@ neptune_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCl
 #' [`create_db_cluster`][neptune_create_db_cluster].
 #' 
 #' Type: String
-#' @param StorageType Specifies the storage type to be associated with the DB instance.
-#' 
-#' Not applicable. Storage is managed by the DB Cluster.
+#' @param StorageType Not applicable. In Neptune the storage type is managed at the DB Cluster
+#' level.
 #' @param TdeCredentialArn The ARN from the key store with which to associate the instance for TDE
 #' encryption.
 #' @param TdeCredentialPassword The password for the given ARN from the key store in order to access the
@@ -2091,6 +2106,12 @@ neptune_create_event_subscription <- function(SubscriptionName, SnsTopicArn, Sou
 #'         ),
 #'         IsWriter = TRUE|FALSE
 #'       )
+#'     ),
+#'     FailoverState = list(
+#'       Status = "pending"|"failing-over"|"cancelling",
+#'       FromDbClusterArn = "string",
+#'       ToDbClusterArn = "string",
+#'       IsDataLossAllowed = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -2970,6 +2991,12 @@ neptune_delete_event_subscription <- function(SubscriptionName) {
 #'         ),
 #'         IsWriter = TRUE|FALSE
 #'       )
+#'     ),
+#'     FailoverState = list(
+#'       Status = "pending"|"failing-over"|"cancelling",
+#'       FromDbClusterArn = "string",
+#'       ToDbClusterArn = "string",
+#'       IsDataLossAllowed = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -4947,6 +4974,12 @@ neptune_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, 
 #'           ),
 #'           IsWriter = TRUE|FALSE
 #'         )
+#'       ),
+#'       FailoverState = list(
+#'         Status = "pending"|"failing-over"|"cancelling",
+#'         FromDbClusterArn = "string",
+#'         ToDbClusterArn = "string",
+#'         IsDataLossAllowed = TRUE|FALSE
 #'       )
 #'     )
 #'   )
@@ -5485,7 +5518,7 @@ neptune_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInst
 #'
 #' @usage
 #' neptune_failover_global_cluster(GlobalClusterIdentifier,
-#'   TargetDbClusterIdentifier)
+#'   TargetDbClusterIdentifier, AllowDataLoss, Switchover)
 #'
 #' @param GlobalClusterIdentifier &#91;required&#93; Identifier of the Neptune global database that should be failed over.
 #' The identifier is the unique key assigned by the user when the Neptune
@@ -5496,6 +5529,17 @@ neptune_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInst
 #' database.
 #' @param TargetDbClusterIdentifier &#91;required&#93; The Amazon Resource Name (ARN) of the secondary Neptune DB cluster that
 #' you want to promote to primary for the global database.
+#' @param AllowDataLoss Specifies whether to allow data loss for this global database cluster
+#' operation. Allowing data loss triggers a global failover operation.
+#' 
+#' If you don't specify `AllowDataLoss`, the global database cluster
+#' operation defaults to a switchover.
+#' 
+#' Constraints:Can't be specified together with the `Switchover` parameter.
+#' @param Switchover Specifies whether to switch over this global database cluster.
+#' 
+#' Constraints:Can't be specified together with the `AllowDataLoss`
+#' parameter.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5518,6 +5562,12 @@ neptune_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInst
 #'         ),
 #'         IsWriter = TRUE|FALSE
 #'       )
+#'     ),
+#'     FailoverState = list(
+#'       Status = "pending"|"failing-over"|"cancelling",
+#'       FromDbClusterArn = "string",
+#'       ToDbClusterArn = "string",
+#'       IsDataLossAllowed = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -5527,7 +5577,9 @@ neptune_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInst
 #' ```
 #' svc$failover_global_cluster(
 #'   GlobalClusterIdentifier = "string",
-#'   TargetDbClusterIdentifier = "string"
+#'   TargetDbClusterIdentifier = "string",
+#'   AllowDataLoss = TRUE|FALSE,
+#'   Switchover = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -5536,7 +5588,7 @@ neptune_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInst
 #' @rdname neptune_failover_global_cluster
 #'
 #' @aliases neptune_failover_global_cluster
-neptune_failover_global_cluster <- function(GlobalClusterIdentifier, TargetDbClusterIdentifier) {
+neptune_failover_global_cluster <- function(GlobalClusterIdentifier, TargetDbClusterIdentifier, AllowDataLoss = NULL, Switchover = NULL) {
   op <- new_operation(
     name = "FailoverGlobalCluster",
     http_method = "POST",
@@ -5545,7 +5597,7 @@ neptune_failover_global_cluster <- function(GlobalClusterIdentifier, TargetDbClu
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .neptune$failover_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, TargetDbClusterIdentifier = TargetDbClusterIdentifier)
+  input <- .neptune$failover_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, TargetDbClusterIdentifier = TargetDbClusterIdentifier, AllowDataLoss = AllowDataLoss, Switchover = Switchover)
   output <- .neptune$failover_global_cluster_output()
   config <- get_config()
   svc <- .neptune$service(config, op)
@@ -5767,11 +5819,17 @@ neptune_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' 
 #' Valid Values:
 #' 
-#' -   `standard | iopt1`
+#' -   **`standard`**   –   ( *the default* ) Configures cost-effective
+#'     database storage for applications with moderate to small I/O usage.
 #' 
-#' Default:
+#' -   **`iopt1`**   –   Enables [I/O-Optimized
+#'     storage](https://docs.aws.amazon.com/neptune/latest/userguide/storage-types.html#provisioned-iops-storage)
+#'     that's designed to meet the needs of I/O-intensive graph workloads
+#'     that require predictable pricing with low I/O latency and consistent
+#'     I/O throughput.
 #' 
-#' -   `standard`
+#'     Neptune I/O-Optimized storage is only available starting with engine
+#'     release 1.3.0.0.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6393,7 +6451,8 @@ neptune_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdenti
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `mydbinstance`
-#' @param StorageType Not supported.
+#' @param StorageType Not applicable. In Neptune the storage type is managed at the DB Cluster
+#' level.
 #' @param TdeCredentialArn The ARN from the key store with which to associate the instance for TDE
 #' encryption.
 #' @param TdeCredentialPassword The password for the given ARN from the key store in order to access the
@@ -6419,7 +6478,18 @@ neptune_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdenti
 #' regardless of the value of the `ApplyImmediately` parameter.
 #' 
 #' Default: `8182`
-#' @param PubliclyAccessible This flag should no longer be used.
+#' @param PubliclyAccessible Indicates whether the DB instance is publicly accessible.
+#' 
+#' When the DB instance is publicly accessible and you connect from outside
+#' of the DB instance's virtual private cloud (VPC), its Domain Name System
+#' (DNS) endpoint resolves to the public IP address. When you connect from
+#' within the same VPC as the DB instance, the endpoint resolves to the
+#' private IP address. Access to the DB instance is ultimately controlled
+#' by the security group it uses. That public access isn't permitted if the
+#' security group assigned to the DB cluster doesn't permit it.
+#' 
+#' When the DB instance isn't publicly accessible, it is an internal DB
+#' instance with a DNS name that resolves to a private IP address.
 #' @param MonitoringRoleArn The ARN for the IAM role that permits Neptune to send enhanced
 #' monitoring metrics to Amazon CloudWatch Logs. For example,
 #' `arn:aws:iam:123456789012:role/emaccess`.
@@ -7016,6 +7086,12 @@ neptune_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NU
 #'         ),
 #'         IsWriter = TRUE|FALSE
 #'       )
+#'     ),
+#'     FailoverState = list(
+#'       Status = "pending"|"failing-over"|"cancelling",
+#'       FromDbClusterArn = "string",
+#'       ToDbClusterArn = "string",
+#'       IsDataLossAllowed = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -7453,6 +7529,12 @@ neptune_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NUL
 #'         ),
 #'         IsWriter = TRUE|FALSE
 #'       )
+#'     ),
+#'     FailoverState = list(
+#'       Status = "pending"|"failing-over"|"cancelling",
+#'       FromDbClusterArn = "string",
+#'       ToDbClusterArn = "string",
+#'       IsDataLossAllowed = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -8762,3 +8844,100 @@ neptune_stop_db_cluster <- function(DBClusterIdentifier) {
   return(response)
 }
 .neptune$operations$stop_db_cluster <- neptune_stop_db_cluster
+
+#' Switches over the specified secondary DB cluster to be the new primary
+#' DB cluster in the global database cluster
+#'
+#' @description
+#' Switches over the specified secondary DB cluster to be the new primary
+#' DB cluster in the global database cluster. Switchover operations were
+#' previously called "managed planned failovers."
+#' 
+#' Promotes the specified secondary cluster to assume full read/write
+#' capabilities and demotes the current primary cluster to a secondary
+#' (read-only) cluster, maintaining the original replication topology. All
+#' secondary clusters are synchronized with the primary at the beginning of
+#' the process so the new primary continues operations for the global
+#' database without losing any data. Your database is unavailable for a
+#' short time while the primary and selected secondary clusters are
+#' assuming their new roles.
+#' 
+#' This operation is intended for controlled environments, for operations
+#' such as "regional rotation" or to fall back to the original primary
+#' after a global database failover.
+#'
+#' @usage
+#' neptune_switchover_global_cluster(GlobalClusterIdentifier,
+#'   TargetDbClusterIdentifier)
+#'
+#' @param GlobalClusterIdentifier &#91;required&#93; The identifier of the global database cluster to switch over. This
+#' parameter isn't case-sensitive.
+#' 
+#' Constraints: Must match the identifier of an existing global database
+#' cluster.
+#' @param TargetDbClusterIdentifier &#91;required&#93; The Amazon Resource Name (ARN) of the secondary Neptune DB cluster that
+#' you want to promote to primary for the global database.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GlobalCluster = list(
+#'     GlobalClusterIdentifier = "string",
+#'     GlobalClusterResourceId = "string",
+#'     GlobalClusterArn = "string",
+#'     Status = "string",
+#'     Engine = "string",
+#'     EngineVersion = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     DeletionProtection = TRUE|FALSE,
+#'     GlobalClusterMembers = list(
+#'       list(
+#'         DBClusterArn = "string",
+#'         Readers = list(
+#'           "string"
+#'         ),
+#'         IsWriter = TRUE|FALSE
+#'       )
+#'     ),
+#'     FailoverState = list(
+#'       Status = "pending"|"failing-over"|"cancelling",
+#'       FromDbClusterArn = "string",
+#'       ToDbClusterArn = "string",
+#'       IsDataLossAllowed = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$switchover_global_cluster(
+#'   GlobalClusterIdentifier = "string",
+#'   TargetDbClusterIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname neptune_switchover_global_cluster
+#'
+#' @aliases neptune_switchover_global_cluster
+neptune_switchover_global_cluster <- function(GlobalClusterIdentifier, TargetDbClusterIdentifier) {
+  op <- new_operation(
+    name = "SwitchoverGlobalCluster",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .neptune$switchover_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, TargetDbClusterIdentifier = TargetDbClusterIdentifier)
+  output <- .neptune$switchover_global_cluster_output()
+  config <- get_config()
+  svc <- .neptune$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.neptune$operations$switchover_global_cluster <- neptune_switchover_global_cluster

@@ -372,31 +372,31 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'         ProductArn = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         AwsAccountId = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         Id = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         GeneratorId = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         Type = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         FirstObservedAt = list(
@@ -460,61 +460,61 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'         Title = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         Description = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         SourceUrl = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ProductName = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         CompanyName = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         SeverityLabel = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceType = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceId = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourcePartition = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceRegion = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceTags = list(
@@ -534,55 +534,55 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'         ComplianceStatus = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ComplianceSecurityControlId = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ComplianceAssociatedStandardsId = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         VerificationState = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         WorkflowStatus = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         RecordState = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         RelatedFindingsProductArn = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         RelatedFindingsId = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         NoteText = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         NoteUpdatedAt = list(
@@ -598,7 +598,7 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'         NoteUpdatedBy = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         UserDefinedFields = list(
@@ -611,19 +611,19 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'         ResourceApplicationArn = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceApplicationName = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         AwsAccountName = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         )
 #'       ),
@@ -857,7 +857,7 @@ securityhub_batch_get_configuration_policy_associations <- function(Configuratio
 #'   UnprocessedIds = list(
 #'     list(
 #'       SecurityControlId = "string",
-#'       ErrorCode = "INVALID_INPUT"|"ACCESS_DENIED"|"NOT_FOUND"|"LIMIT_EXCEEDED",
+#'       ErrorCode = "INVALID_INPUT"|"ACCESS_DENIED"|"NOT_FOUND"|"RESOURCE_NOT_FOUND"|"LIMIT_EXCEEDED",
 #'       ErrorReason = "string"
 #'     )
 #'   )
@@ -948,7 +948,7 @@ securityhub_batch_get_security_controls <- function(SecurityControlIds) {
 #'         SecurityControlId = "string",
 #'         StandardsArn = "string"
 #'       ),
-#'       ErrorCode = "INVALID_INPUT"|"ACCESS_DENIED"|"NOT_FOUND"|"LIMIT_EXCEEDED",
+#'       ErrorCode = "INVALID_INPUT"|"ACCESS_DENIED"|"NOT_FOUND"|"RESOURCE_NOT_FOUND"|"LIMIT_EXCEEDED",
 #'       ErrorReason = "string"
 #'     )
 #'   )
@@ -5298,6 +5298,11 @@ securityhub_batch_get_standards_control_associations <- function(StandardsContro
 #'                 Enabled = TRUE|FALSE,
 #'                 BannerText = "string"
 #'               )
+#'             ),
+#'             CodeRepository = list(
+#'               ProviderType = "string",
+#'               ProjectName = "string",
+#'               CodeSecurityIntegrationArn = "string"
 #'             )
 #'           ),
 #'           ApplicationName = "string",
@@ -5726,31 +5731,31 @@ securityhub_batch_import_findings <- function(Findings) {
 #'         ProductArn = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         AwsAccountId = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         Id = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         GeneratorId = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         Type = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         FirstObservedAt = list(
@@ -5814,61 +5819,61 @@ securityhub_batch_import_findings <- function(Findings) {
 #'         Title = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         Description = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         SourceUrl = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ProductName = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         CompanyName = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         SeverityLabel = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceType = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceId = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourcePartition = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceRegion = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceTags = list(
@@ -5888,55 +5893,55 @@ securityhub_batch_import_findings <- function(Findings) {
 #'         ComplianceStatus = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ComplianceSecurityControlId = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ComplianceAssociatedStandardsId = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         VerificationState = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         WorkflowStatus = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         RecordState = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         RelatedFindingsProductArn = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         RelatedFindingsId = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         NoteText = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         NoteUpdatedAt = list(
@@ -5952,7 +5957,7 @@ securityhub_batch_import_findings <- function(Findings) {
 #'         NoteUpdatedBy = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         UserDefinedFields = list(
@@ -5965,19 +5970,19 @@ securityhub_batch_import_findings <- function(Findings) {
 #'         ResourceApplicationArn = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceApplicationName = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         AwsAccountName = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         )
 #'       ),
@@ -6045,22 +6050,16 @@ securityhub_batch_update_automation_rules <- function(UpdateAutomationRulesReque
 .securityhub$operations$batch_update_automation_rules <- securityhub_batch_update_automation_rules
 
 #' Used by Security Hub customers to update information about their
-#' investigation into a finding
+#' investigation into one or more findings
 #'
 #' @description
 #' Used by Security Hub customers to update information about their
-#' investigation into a finding. Requested by administrator accounts or
-#' member accounts. Administrator accounts can update findings for their
-#' account and their member accounts. Member accounts can update findings
-#' for their account.
-#' 
-#' Updates from
-#' [`batch_update_findings`][securityhub_batch_update_findings] don't
-#' affect the value of `UpdatedAt` for a finding.
-#' 
-#' Administrator and member accounts can use
-#' [`batch_update_findings`][securityhub_batch_update_findings] to update
-#' the following finding fields and objects.
+#' investigation into one or more findings. Requested by administrator
+#' accounts or member accounts. Administrator accounts can update findings
+#' for their account and their member accounts. A member account can update
+#' findings only for their own account. Administrator and member accounts
+#' can use this operation to update the following fields and objects for
+#' one or more findings:
 #' 
 #' -   `Confidence`
 #' 
@@ -6080,10 +6079,15 @@ securityhub_batch_update_automation_rules <- function(UpdateAutomationRulesReque
 #' 
 #' -   `Workflow`
 #' 
+#' If you use this operation to update a finding, your updates don’t affect
+#' the value for the `UpdatedAt` field of the finding. Also note that it
+#' can take several minutes for Security Hub to process your request and
+#' update each finding specified in the request.
+#' 
 #' You can configure IAM policies to restrict access to fields and field
 #' values. For example, you might not want member accounts to be able to
-#' suppress findings or change the finding severity. See [Configuring
-#' access to
+#' suppress findings or change the finding severity. For more information
+#' see [Configuring access to
 #' BatchUpdateFindings](https://docs.aws.amazon.com/securityhub/latest/userguide/finding-update-batchupdatefindings.html#batchupdatefindings-configure-access)
 #' in the *Security Hub User Guide*.
 #'
@@ -6232,6 +6236,115 @@ securityhub_batch_update_findings <- function(FindingIdentifiers, Note = NULL, S
 }
 .securityhub$operations$batch_update_findings <- securityhub_batch_update_findings
 
+#' Used by customers to update information about their investigation into a
+#' finding
+#'
+#' @description
+#' Used by customers to update information about their investigation into a
+#' finding. Requested by delegated administrator accounts or member
+#' accounts. Delegated administrator accounts can update findings for their
+#' account and their member accounts. Member accounts can update findings
+#' for their account.
+#' [`batch_update_findings`][securityhub_batch_update_findings] and
+#' `BatchUpdateFindingV2` both use `securityhub:BatchUpdateFindings` in the
+#' `Action` element of an IAM policy statement. You must have permission to
+#' perform the `securityhub:BatchUpdateFindings` action. Updates from
+#' [`batch_update_findings_v2`][securityhub_batch_update_findings_v2] don't
+#' affect the value of f`inding_info.modified_time`,
+#' `finding_info.modified_time_dt`, `time`, `time_dt for a finding`.
+#'
+#' @usage
+#' securityhub_batch_update_findings_v2(MetadataUids, FindingIdentifiers,
+#'   Comment, SeverityId, StatusId)
+#'
+#' @param MetadataUids The list of finding `metadata.uid` to indicate findings to update.
+#' Finding `metadata.uid` is a globally unique identifier associated with
+#' the finding. Customers cannot use `MetadataUids` together with
+#' `FindingIdentifiers`.
+#' @param FindingIdentifiers Provides information to identify a specific V2 finding.
+#' @param Comment The updated value for a user provided comment about the finding. Minimum
+#' character length 1. Maximum character length 512.
+#' @param SeverityId The updated value for the normalized severity identifier. The severity
+#' ID is an integer with the allowed enum values \[0, 1, 2, 3, 4, 5, 99\].
+#' When customer provides the updated severity ID, the string sibling
+#' severity will automatically be updated in the finding.
+#' @param StatusId The updated value for the normalized status identifier. The status ID is
+#' an integer with the allowed enum values \[0, 1, 2, 3, 4, 5, 6, 99\].
+#' When customer provides the updated status ID, the string sibling status
+#' will automatically be updated in the finding.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProcessedFindings = list(
+#'     list(
+#'       FindingIdentifier = list(
+#'         CloudAccountUid = "string",
+#'         FindingInfoUid = "string",
+#'         MetadataProductUid = "string"
+#'       ),
+#'       MetadataUid = "string"
+#'     )
+#'   ),
+#'   UnprocessedFindings = list(
+#'     list(
+#'       FindingIdentifier = list(
+#'         CloudAccountUid = "string",
+#'         FindingInfoUid = "string",
+#'         MetadataProductUid = "string"
+#'       ),
+#'       MetadataUid = "string",
+#'       ErrorCode = "ResourceNotFoundException"|"ValidationException"|"InternalServerException"|"ConflictException",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_update_findings_v2(
+#'   MetadataUids = list(
+#'     "string"
+#'   ),
+#'   FindingIdentifiers = list(
+#'     list(
+#'       CloudAccountUid = "string",
+#'       FindingInfoUid = "string",
+#'       MetadataProductUid = "string"
+#'     )
+#'   ),
+#'   Comment = "string",
+#'   SeverityId = 123,
+#'   StatusId = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_batch_update_findings_v2
+#'
+#' @aliases securityhub_batch_update_findings_v2
+securityhub_batch_update_findings_v2 <- function(MetadataUids = NULL, FindingIdentifiers = NULL, Comment = NULL, SeverityId = NULL, StatusId = NULL) {
+  op <- new_operation(
+    name = "BatchUpdateFindingsV2",
+    http_method = "PATCH",
+    http_path = "/findingsv2/batchupdatev2",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$batch_update_findings_v2_input(MetadataUids = MetadataUids, FindingIdentifiers = FindingIdentifiers, Comment = Comment, SeverityId = SeverityId, StatusId = StatusId)
+  output <- .securityhub$batch_update_findings_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$batch_update_findings_v2 <- securityhub_batch_update_findings_v2
+
 #' For a batch of security controls and standards, this operation updates
 #' the enablement status of a control in a standard
 #'
@@ -6262,7 +6375,7 @@ securityhub_batch_update_findings <- function(FindingIdentifiers, Note = NULL, S
 #'         AssociationStatus = "ENABLED"|"DISABLED",
 #'         UpdatedReason = "string"
 #'       ),
-#'       ErrorCode = "INVALID_INPUT"|"ACCESS_DENIED"|"NOT_FOUND"|"LIMIT_EXCEEDED",
+#'       ErrorCode = "INVALID_INPUT"|"ACCESS_DENIED"|"NOT_FOUND"|"RESOURCE_NOT_FOUND"|"LIMIT_EXCEEDED",
 #'       ErrorReason = "string"
 #'     )
 #'   )
@@ -6364,6 +6477,71 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 }
 .securityhub$operations$create_action_target <- securityhub_create_action_target
 
+#' Enables aggregation across Amazon Web Services Regions
+#'
+#' @description
+#' Enables aggregation across Amazon Web Services Regions.
+#'
+#' @usage
+#' securityhub_create_aggregator_v2(RegionLinkingMode, LinkedRegions, Tags,
+#'   ClientToken)
+#'
+#' @param RegionLinkingMode &#91;required&#93; Determines how Regions are linked to an Aggregator V2.
+#' @param LinkedRegions The list of Regions that are linked to the aggregation Region.
+#' @param Tags A list of key-value pairs to be applied to the AggregatorV2.
+#' @param ClientToken A unique identifier used to ensure idempotency.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AggregatorV2Arn = "string",
+#'   AggregationRegion = "string",
+#'   RegionLinkingMode = "string",
+#'   LinkedRegions = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_aggregator_v2(
+#'   RegionLinkingMode = "string",
+#'   LinkedRegions = list(
+#'     "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_create_aggregator_v2
+#'
+#' @aliases securityhub_create_aggregator_v2
+securityhub_create_aggregator_v2 <- function(RegionLinkingMode, LinkedRegions = NULL, Tags = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateAggregatorV2",
+    http_method = "POST",
+    http_path = "/aggregatorv2/create",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$create_aggregator_v2_input(RegionLinkingMode = RegionLinkingMode, LinkedRegions = LinkedRegions, Tags = Tags, ClientToken = ClientToken)
+  output <- .securityhub$create_aggregator_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$create_aggregator_v2 <- securityhub_create_aggregator_v2
+
 #' Creates an automation rule based on input parameters
 #'
 #' @description
@@ -6421,31 +6599,31 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'     ProductArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     AwsAccountId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Id = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     GeneratorId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Type = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     FirstObservedAt = list(
@@ -6509,61 +6687,61 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'     Title = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Description = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     SourceUrl = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ProductName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     CompanyName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     SeverityLabel = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourcePartition = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceRegion = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceTags = list(
@@ -6583,55 +6761,55 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'     ComplianceStatus = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ComplianceSecurityControlId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ComplianceAssociatedStandardsId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     VerificationState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     WorkflowStatus = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     RecordState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     RelatedFindingsProductArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     RelatedFindingsId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NoteText = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NoteUpdatedAt = list(
@@ -6647,7 +6825,7 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'     NoteUpdatedBy = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     UserDefinedFields = list(
@@ -6660,19 +6838,19 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'     ResourceApplicationArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceApplicationName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     AwsAccountName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     )
 #'   ),
@@ -6736,6 +6914,155 @@ securityhub_create_automation_rule <- function(Tags = NULL, RuleStatus = NULL, R
   return(response)
 }
 .securityhub$operations$create_automation_rule <- securityhub_create_automation_rule
+
+#' Creates a V2 automation rule
+#'
+#' @description
+#' Creates a V2 automation rule.
+#'
+#' @usage
+#' securityhub_create_automation_rule_v2(RuleName, RuleStatus, Description,
+#'   RuleOrder, Criteria, Actions, Tags, ClientToken)
+#'
+#' @param RuleName &#91;required&#93; The name of the V2 automation rule.
+#' @param RuleStatus The status of the V2 automation rule.
+#' @param Description &#91;required&#93; A description of the V2 automation rule.
+#' @param RuleOrder &#91;required&#93; The value for the rule priority.
+#' @param Criteria &#91;required&#93; The filtering type and configuration of the automation rule.
+#' @param Actions &#91;required&#93; A list of actions to be performed when the rule criteria is met.
+#' @param Tags A list of key-value pairs associated with the V2 automation rule.
+#' @param ClientToken A unique identifier used to ensure idempotency.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RuleArn = "string",
+#'   RuleId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_automation_rule_v2(
+#'   RuleName = "string",
+#'   RuleStatus = "ENABLED"|"DISABLED",
+#'   Description = "string",
+#'   RuleOrder = 123.0,
+#'   Criteria = list(
+#'     OcsfFindingCriteria = list(
+#'       CompositeFilters = list(
+#'         list(
+#'           StringFilters = list(
+#'             list(
+#'               FieldName = "metadata.uid"|"activity_name"|"cloud.account.uid"|"cloud.provider"|"cloud.region"|"compliance.assessments.category"|"compliance.assessments.name"|"compliance.control"|"compliance.status"|"compliance.standards"|"finding_info.desc"|"finding_info.src_url"|"finding_info.title"|"finding_info.types"|"finding_info.uid"|"finding_info.related_events.traits.category"|"finding_info.related_events.uid"|"finding_info.related_events.product.uid"|"finding_info.related_events.title"|"metadata.product.name"|"metadata.product.uid"|"metadata.product.vendor_name"|"remediation.desc"|"remediation.references"|"resources.cloud_partition"|"resources.region"|"resources.type"|"resources.uid"|"severity"|"status"|"comment"|"vulnerabilities.fix_coverage"|"class_name"|"databucket.encryption_details.algorithm"|"databucket.encryption_details.key_uid"|"databucket.file.data_classifications.classifier_details.type"|"evidences.actor.user.account.uid"|"evidences.api.operation"|"evidences.api.response.error_message"|"evidences.api.service.name"|"evidences.connection_info.direction"|"evidences.connection_info.protocol_name"|"evidences.dst_endpoint.autonomous_system.name"|"evidences.dst_endpoint.location.city"|"evidences.dst_endpoint.location.country"|"evidences.src_endpoint.autonomous_system.name"|"evidences.src_endpoint.hostname"|"evidences.src_endpoint.location.city"|"evidences.src_endpoint.location.country"|"finding_info.analytic.name"|"malware.name"|"malware_scan_info.uid"|"malware.severity"|"resources.cloud_function.layers.uid_alt"|"resources.cloud_function.runtime"|"resources.cloud_function.user.uid"|"resources.device.encryption_details.key_uid"|"resources.device.image.uid"|"resources.image.architecture"|"resources.image.registry_uid"|"resources.image.repository_name"|"resources.image.uid"|"resources.subnet_info.uid"|"resources.vpc_uid"|"vulnerabilities.affected_code.file.path"|"vulnerabilities.affected_packages.name"|"vulnerabilities.cve.epss.score"|"vulnerabilities.cve.uid"|"vulnerabilities.related_vulnerabilities"|"cloud.account.name"|"vendor_attributes.severity",
+#'               Filter = list(
+#'                 Value = "string",
+#'                 Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'               )
+#'             )
+#'           ),
+#'           DateFilters = list(
+#'             list(
+#'               FieldName = "finding_info.created_time_dt"|"finding_info.first_seen_time_dt"|"finding_info.last_seen_time_dt"|"finding_info.modified_time_dt"|"resources.image.created_time_dt"|"resources.image.last_used_time_dt"|"resources.modified_time_dt",
+#'               Filter = list(
+#'                 Start = "string",
+#'                 End = "string",
+#'                 DateRange = list(
+#'                   Value = 123,
+#'                   Unit = "DAYS"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           BooleanFilters = list(
+#'             list(
+#'               FieldName = "compliance.assessments.meets_criteria"|"vulnerabilities.is_exploit_available"|"vulnerabilities.is_fix_available",
+#'               Filter = list(
+#'                 Value = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           NumberFilters = list(
+#'             list(
+#'               FieldName = "activity_id"|"compliance.status_id"|"confidence_score"|"severity_id"|"status_id"|"finding_info.related_events_count"|"evidences.api.response.code"|"evidences.dst_endpoint.autonomous_system.number"|"evidences.dst_endpoint.port"|"evidences.src_endpoint.autonomous_system.number"|"evidences.src_endpoint.port"|"resources.image.in_use_count"|"vulnerabilities.cve.cvss.base_score"|"vendor_attributes.severity_id",
+#'               Filter = list(
+#'                 Gte = 123.0,
+#'                 Lte = 123.0,
+#'                 Eq = 123.0,
+#'                 Gt = 123.0,
+#'                 Lt = 123.0
+#'               )
+#'             )
+#'           ),
+#'           MapFilters = list(
+#'             list(
+#'               FieldName = "resources.tags"|"compliance.control_parameters"|"databucket.tags"|"finding_info.tags",
+#'               Filter = list(
+#'                 Key = "string",
+#'                 Value = "string",
+#'                 Comparison = "EQUALS"|"NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'               )
+#'             )
+#'           ),
+#'           IpFilters = list(
+#'             list(
+#'               FieldName = "evidences.dst_endpoint.ip"|"evidences.src_endpoint.ip",
+#'               Filter = list(
+#'                 Cidr = "string"
+#'               )
+#'             )
+#'           ),
+#'           NestedCompositeFilters = list(),
+#'           Operator = "AND"|"OR"
+#'         )
+#'       ),
+#'       CompositeOperator = "AND"|"OR"
+#'     )
+#'   ),
+#'   Actions = list(
+#'     list(
+#'       Type = "FINDING_FIELDS_UPDATE"|"EXTERNAL_INTEGRATION",
+#'       FindingFieldsUpdate = list(
+#'         SeverityId = 123,
+#'         Comment = "string",
+#'         StatusId = 123
+#'       ),
+#'       ExternalIntegrationConfiguration = list(
+#'         ConnectorArn = "string"
+#'       )
+#'     )
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_create_automation_rule_v2
+#'
+#' @aliases securityhub_create_automation_rule_v2
+securityhub_create_automation_rule_v2 <- function(RuleName, RuleStatus = NULL, Description, RuleOrder, Criteria, Actions, Tags = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateAutomationRuleV2",
+    http_method = "POST",
+    http_path = "/automationrulesv2/create",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$create_automation_rule_v2_input(RuleName = RuleName, RuleStatus = RuleStatus, Description = Description, RuleOrder = RuleOrder, Criteria = Criteria, Actions = Actions, Tags = Tags, ClientToken = ClientToken)
+  output <- .securityhub$create_automation_rule_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$create_automation_rule_v2 <- securityhub_create_automation_rule_v2
 
 #' Creates a configuration policy with the defined configuration
 #'
@@ -6901,6 +7228,80 @@ securityhub_create_configuration_policy <- function(Name, Description = NULL, Co
 }
 .securityhub$operations$create_configuration_policy <- securityhub_create_configuration_policy
 
+#' Grants permission to create a connectorV2 based on input parameters
+#'
+#' @description
+#' Grants permission to create a connectorV2 based on input parameters.
+#'
+#' @usage
+#' securityhub_create_connector_v2(Name, Description, Provider, KmsKeyArn,
+#'   Tags, ClientToken)
+#'
+#' @param Name &#91;required&#93; The unique name of the connectorV2.
+#' @param Description The description of the connectorV2.
+#' @param Provider &#91;required&#93; The third-party provider’s service configuration.
+#' @param KmsKeyArn The Amazon Resource Name (ARN) of KMS key used to encrypt secrets for
+#' the connectorV2.
+#' @param Tags The tags to add to the connectorV2 when you create.
+#' @param ClientToken A unique identifier used to ensure idempotency.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectorArn = "string",
+#'   ConnectorId = "string",
+#'   AuthUrl = "string",
+#'   ConnectorStatus = "CONNECTED"|"FAILED_TO_CONNECT"|"PENDING_CONFIGURATION"|"PENDING_AUTHORIZATION"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_connector_v2(
+#'   Name = "string",
+#'   Description = "string",
+#'   Provider = list(
+#'     JiraCloud = list(
+#'       ProjectKey = "string"
+#'     ),
+#'     ServiceNow = list(
+#'       InstanceName = "string",
+#'       SecretArn = "string"
+#'     )
+#'   ),
+#'   KmsKeyArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_create_connector_v2
+#'
+#' @aliases securityhub_create_connector_v2
+securityhub_create_connector_v2 <- function(Name, Description = NULL, Provider, KmsKeyArn = NULL, Tags = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateConnectorV2",
+    http_method = "POST",
+    http_path = "/connectorsv2",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$create_connector_v2_input(Name = Name, Description = Description, Provider = Provider, KmsKeyArn = KmsKeyArn, Tags = Tags, ClientToken = ClientToken)
+  output <- .securityhub$create_connector_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$create_connector_v2 <- securityhub_create_connector_v2
+
 #' The aggregation Region is now called the home Region
 #'
 #' @description
@@ -7040,37 +7441,37 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'     ProductArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     AwsAccountId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Id = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     GeneratorId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Region = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Type = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     FirstObservedAt = list(
@@ -7134,7 +7535,7 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'     SeverityLabel = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Confidence = list(
@@ -7158,25 +7559,25 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'     Title = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Description = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     RecommendationText = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     SourceUrl = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ProductFields = list(
@@ -7189,13 +7590,13 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'     ProductName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     CompanyName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     UserDefinedFields = list(
@@ -7208,37 +7609,37 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'     MalwareName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     MalwareType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     MalwarePath = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     MalwareState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NetworkDirection = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NetworkProtocol = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NetworkSourceIpV4 = list(
@@ -7263,13 +7664,13 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'     NetworkSourceDomain = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NetworkSourceMac = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NetworkDestinationIpV4 = list(
@@ -7294,19 +7695,19 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'     NetworkDestinationDomain = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ProcessName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ProcessPath = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ProcessPid = list(
@@ -7350,19 +7751,19 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'     ThreatIntelIndicatorType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorValue = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorCategory = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorLastObservedAt = list(
@@ -7378,37 +7779,37 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'     ThreatIntelIndicatorSource = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorSourceUrl = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourcePartition = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceRegion = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceTags = list(
@@ -7421,13 +7822,13 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'     ResourceAwsEc2InstanceType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceImageId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceIpV4Addresses = list(
@@ -7443,25 +7844,25 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'     ResourceAwsEc2InstanceKeyName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceIamInstanceProfileArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceVpcId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceSubnetId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceLaunchedAt = list(
@@ -7477,31 +7878,31 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'     ResourceAwsS3BucketOwnerId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsS3BucketOwnerName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyUserName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyPrincipalName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyStatus = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyCreatedAt = list(
@@ -7517,25 +7918,25 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'     ResourceAwsIamUserUserName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceContainerName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceContainerImageId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceContainerImageName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceContainerLaunchedAt = list(
@@ -7558,49 +7959,49 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'     ComplianceStatus = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     VerificationState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     WorkflowState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     WorkflowStatus = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     RecordState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     RelatedFindingsProductArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     RelatedFindingsId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NoteText = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NoteUpdatedAt = list(
@@ -7616,7 +8017,7 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'     NoteUpdatedBy = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Keyword = list(
@@ -7645,31 +8046,31 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'     FindingProviderFieldsRelatedFindingsId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     FindingProviderFieldsRelatedFindingsProductArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     FindingProviderFieldsSeverityLabel = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     FindingProviderFieldsSeverityOriginal = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     FindingProviderFieldsTypes = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Sample = list(
@@ -7680,55 +8081,55 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'     ComplianceSecurityControlId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ComplianceAssociatedStandardsId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     VulnerabilitiesExploitAvailable = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     VulnerabilitiesFixAvailable = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ComplianceSecurityControlParametersName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ComplianceSecurityControlParametersValue = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     AwsAccountName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceApplicationName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceApplicationArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     )
 #'   ),
@@ -7872,6 +8273,67 @@ securityhub_create_members <- function(AccountDetails) {
 }
 .securityhub$operations$create_members <- securityhub_create_members
 
+#' Grants permission to create a ticket in the chosen ITSM based on finding
+#' information for the provided finding metadata UID
+#'
+#' @description
+#' Grants permission to create a ticket in the chosen ITSM based on finding
+#' information for the provided finding metadata UID.
+#'
+#' @usage
+#' securityhub_create_ticket_v2(ConnectorId, FindingMetadataUid,
+#'   ClientToken, Mode)
+#'
+#' @param ConnectorId &#91;required&#93; The UUID of the connectorV2 to identify connectorV2 resource.
+#' @param FindingMetadataUid &#91;required&#93; The the unique ID for the finding.
+#' @param ClientToken The client idempotency token.
+#' @param Mode The mode for ticket creation. When set to DRYRUN, the ticket is created
+#' using a Security Hub owned template test finding to verify the
+#' integration is working correctly.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TicketId = "string",
+#'   TicketSrcUrl = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_ticket_v2(
+#'   ConnectorId = "string",
+#'   FindingMetadataUid = "string",
+#'   ClientToken = "string",
+#'   Mode = "DRYRUN"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_create_ticket_v2
+#'
+#' @aliases securityhub_create_ticket_v2
+securityhub_create_ticket_v2 <- function(ConnectorId, FindingMetadataUid, ClientToken = NULL, Mode = NULL) {
+  op <- new_operation(
+    name = "CreateTicketV2",
+    http_method = "POST",
+    http_path = "/ticketsv2",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$create_ticket_v2_input(ConnectorId = ConnectorId, FindingMetadataUid = FindingMetadataUid, ClientToken = ClientToken, Mode = Mode)
+  output <- .securityhub$create_ticket_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$create_ticket_v2 <- securityhub_create_ticket_v2
+
 #' We recommend using Organizations instead of Security Hub invitations to
 #' manage your member accounts
 #'
@@ -7996,6 +8458,94 @@ securityhub_delete_action_target <- function(ActionTargetArn) {
 }
 .securityhub$operations$delete_action_target <- securityhub_delete_action_target
 
+#' Deletes the Aggregator V2
+#'
+#' @description
+#' Deletes the Aggregator V2.
+#'
+#' @usage
+#' securityhub_delete_aggregator_v2(AggregatorV2Arn)
+#'
+#' @param AggregatorV2Arn &#91;required&#93; The ARN of the Aggregator V2.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_aggregator_v2(
+#'   AggregatorV2Arn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_delete_aggregator_v2
+#'
+#' @aliases securityhub_delete_aggregator_v2
+securityhub_delete_aggregator_v2 <- function(AggregatorV2Arn) {
+  op <- new_operation(
+    name = "DeleteAggregatorV2",
+    http_method = "DELETE",
+    http_path = "/aggregatorv2/delete/{AggregatorV2Arn+}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$delete_aggregator_v2_input(AggregatorV2Arn = AggregatorV2Arn)
+  output <- .securityhub$delete_aggregator_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$delete_aggregator_v2 <- securityhub_delete_aggregator_v2
+
+#' Deletes a V2 automation rule
+#'
+#' @description
+#' Deletes a V2 automation rule.
+#'
+#' @usage
+#' securityhub_delete_automation_rule_v2(Identifier)
+#'
+#' @param Identifier &#91;required&#93; The ARN of the V2 automation rule.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_automation_rule_v2(
+#'   Identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_delete_automation_rule_v2
+#'
+#' @aliases securityhub_delete_automation_rule_v2
+securityhub_delete_automation_rule_v2 <- function(Identifier) {
+  op <- new_operation(
+    name = "DeleteAutomationRuleV2",
+    http_method = "DELETE",
+    http_path = "/automationrulesv2/{Identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$delete_automation_rule_v2_input(Identifier = Identifier)
+  output <- .securityhub$delete_automation_rule_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$delete_automation_rule_v2 <- securityhub_delete_automation_rule_v2
+
 #' Deletes a configuration policy
 #'
 #' @description
@@ -8045,6 +8595,50 @@ securityhub_delete_configuration_policy <- function(Identifier) {
   return(response)
 }
 .securityhub$operations$delete_configuration_policy <- securityhub_delete_configuration_policy
+
+#' Grants permission to delete a connectorV2
+#'
+#' @description
+#' Grants permission to delete a connectorV2.
+#'
+#' @usage
+#' securityhub_delete_connector_v2(ConnectorId)
+#'
+#' @param ConnectorId &#91;required&#93; The UUID of the connectorV2 to identify connectorV2 resource.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_connector_v2(
+#'   ConnectorId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_delete_connector_v2
+#'
+#' @aliases securityhub_delete_connector_v2
+securityhub_delete_connector_v2 <- function(ConnectorId) {
+  op <- new_operation(
+    name = "DeleteConnectorV2",
+    http_method = "DELETE",
+    http_path = "/connectorsv2/{ConnectorId+}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$delete_connector_v2_input(ConnectorId = ConnectorId)
+  output <- .securityhub$delete_connector_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$delete_connector_v2 <- securityhub_delete_connector_v2
 
 #' The aggregation Region is now called the home Region
 #'
@@ -8545,6 +9139,123 @@ securityhub_describe_products <- function(NextToken = NULL, MaxResults = NULL, P
 }
 .securityhub$operations$describe_products <- securityhub_describe_products
 
+#' Gets information about the product integration
+#'
+#' @description
+#' Gets information about the product integration.
+#'
+#' @usage
+#' securityhub_describe_products_v2(NextToken, MaxResults)
+#'
+#' @param NextToken The token required for pagination. On your first call, set the value of
+#' this parameter to `NULL`. For subsequent calls, to continue listing
+#' data, set the value of this parameter to the value returned in the
+#' previous response.
+#' @param MaxResults The maximum number of results to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProductsV2 = list(
+#'     list(
+#'       ProductV2Name = "string",
+#'       CompanyName = "string",
+#'       Description = "string",
+#'       Categories = list(
+#'         "string"
+#'       ),
+#'       IntegrationV2Types = list(
+#'         "SEND_FINDINGS_TO_SECURITY_HUB"|"RECEIVE_FINDINGS_FROM_SECURITY_HUB"|"UPDATE_FINDINGS_IN_SECURITY_HUB"
+#'       ),
+#'       MarketplaceUrl = "string",
+#'       ActivationUrl = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_products_v2(
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_describe_products_v2
+#'
+#' @aliases securityhub_describe_products_v2
+securityhub_describe_products_v2 <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeProductsV2",
+    http_method = "GET",
+    http_path = "/productsV2",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProductsV2"),
+    stream_api = FALSE
+  )
+  input <- .securityhub$describe_products_v2_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .securityhub$describe_products_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$describe_products_v2 <- securityhub_describe_products_v2
+
+#' Returns details about the service resource in your account
+#'
+#' @description
+#' Returns details about the service resource in your account.
+#'
+#' @usage
+#' securityhub_describe_security_hub_v2()
+#'
+
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HubV2Arn = "string",
+#'   SubscribedAt = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_security_hub_v2()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_describe_security_hub_v2
+#'
+#' @aliases securityhub_describe_security_hub_v2
+securityhub_describe_security_hub_v2 <- function() {
+  op <- new_operation(
+    name = "DescribeSecurityHubV2",
+    http_method = "GET",
+    http_path = "/hubv2",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$describe_security_hub_v2_input()
+  output <- .securityhub$describe_security_hub_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$describe_security_hub_v2 <- securityhub_describe_security_hub_v2
+
 #' Returns a list of the available standards in Security Hub
 #'
 #' @description
@@ -8757,10 +9468,12 @@ securityhub_disable_import_findings_for_product <- function(ProductSubscriptionA
 #' organization management account.
 #'
 #' @usage
-#' securityhub_disable_organization_admin_account(AdminAccountId)
+#' securityhub_disable_organization_admin_account(AdminAccountId, Feature)
 #'
 #' @param AdminAccountId &#91;required&#93; The Amazon Web Services account identifier of the Security Hub
 #' administrator account.
+#' @param Feature The feature for which the delegated admin account is disabled. Defaults
+#' to Security Hub if not specified.
 #'
 #' @return
 #' An empty list.
@@ -8768,7 +9481,8 @@ securityhub_disable_import_findings_for_product <- function(ProductSubscriptionA
 #' @section Request syntax:
 #' ```
 #' svc$disable_organization_admin_account(
-#'   AdminAccountId = "string"
+#'   AdminAccountId = "string",
+#'   Feature = "SecurityHub"|"SecurityHubV2"
 #' )
 #' ```
 #'
@@ -8777,7 +9491,7 @@ securityhub_disable_import_findings_for_product <- function(ProductSubscriptionA
 #' @rdname securityhub_disable_organization_admin_account
 #'
 #' @aliases securityhub_disable_organization_admin_account
-securityhub_disable_organization_admin_account <- function(AdminAccountId) {
+securityhub_disable_organization_admin_account <- function(AdminAccountId, Feature = NULL) {
   op <- new_operation(
     name = "DisableOrganizationAdminAccount",
     http_method = "POST",
@@ -8786,7 +9500,7 @@ securityhub_disable_organization_admin_account <- function(AdminAccountId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .securityhub$disable_organization_admin_account_input(AdminAccountId = AdminAccountId)
+  input <- .securityhub$disable_organization_admin_account_input(AdminAccountId = AdminAccountId, Feature = Feature)
   output <- .securityhub$disable_organization_admin_account_output()
   config <- get_config()
   svc <- .securityhub$service(config, op)
@@ -8851,6 +9565,50 @@ securityhub_disable_security_hub <- function() {
   return(response)
 }
 .securityhub$operations$disable_security_hub <- securityhub_disable_security_hub
+
+#' Disable the service for the current Amazon Web Services Region or
+#' specified Amazon Web Services Region
+#'
+#' @description
+#' Disable the service for the current Amazon Web Services Region or
+#' specified Amazon Web Services Region.
+#'
+#' @usage
+#' securityhub_disable_security_hub_v2()
+#'
+
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disable_security_hub_v2()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_disable_security_hub_v2
+#'
+#' @aliases securityhub_disable_security_hub_v2
+securityhub_disable_security_hub_v2 <- function() {
+  op <- new_operation(
+    name = "DisableSecurityHubV2",
+    http_method = "DELETE",
+    http_path = "/hubv2",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$disable_security_hub_v2_input()
+  output <- .securityhub$disable_security_hub_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$disable_security_hub_v2 <- securityhub_disable_security_hub_v2
 
 #' Disassociates the current Security Hub member account from the
 #' associated administrator account
@@ -9075,18 +9833,27 @@ securityhub_enable_import_findings_for_product <- function(ProductArn) {
 #' Can only be called by the organization management account.
 #'
 #' @usage
-#' securityhub_enable_organization_admin_account(AdminAccountId)
+#' securityhub_enable_organization_admin_account(AdminAccountId, Feature)
 #'
 #' @param AdminAccountId &#91;required&#93; The Amazon Web Services account identifier of the account to designate
 #' as the Security Hub administrator account.
+#' @param Feature The feature for which the delegated admin account is enabled. Defaults
+#' to Security Hub if not specified.
 #'
 #' @return
-#' An empty list.
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AdminAccountId = "string",
+#'   Feature = "SecurityHub"|"SecurityHubV2"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$enable_organization_admin_account(
-#'   AdminAccountId = "string"
+#'   AdminAccountId = "string",
+#'   Feature = "SecurityHub"|"SecurityHubV2"
 #' )
 #' ```
 #'
@@ -9095,7 +9862,7 @@ securityhub_enable_import_findings_for_product <- function(ProductArn) {
 #' @rdname securityhub_enable_organization_admin_account
 #'
 #' @aliases securityhub_enable_organization_admin_account
-securityhub_enable_organization_admin_account <- function(AdminAccountId) {
+securityhub_enable_organization_admin_account <- function(AdminAccountId, Feature = NULL) {
   op <- new_operation(
     name = "EnableOrganizationAdminAccount",
     http_method = "POST",
@@ -9104,7 +9871,7 @@ securityhub_enable_organization_admin_account <- function(AdminAccountId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .securityhub$enable_organization_admin_account_input(AdminAccountId = AdminAccountId)
+  input <- .securityhub$enable_organization_admin_account_input(AdminAccountId = AdminAccountId, Feature = Feature)
   output <- .securityhub$enable_organization_admin_account_output()
   config <- get_config()
   svc <- .securityhub$service(config, op)
@@ -9213,6 +9980,59 @@ securityhub_enable_security_hub <- function(Tags = NULL, EnableDefaultStandards 
 }
 .securityhub$operations$enable_security_hub <- securityhub_enable_security_hub
 
+#' Enables the service in account for the current Amazon Web Services
+#' Region or specified Amazon Web Services Region
+#'
+#' @description
+#' Enables the service in account for the current Amazon Web Services
+#' Region or specified Amazon Web Services Region.
+#'
+#' @usage
+#' securityhub_enable_security_hub_v2(Tags)
+#'
+#' @param Tags The tags to add to the hub V2 resource when you enable Security Hub.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HubV2Arn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$enable_security_hub_v2(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_enable_security_hub_v2
+#'
+#' @aliases securityhub_enable_security_hub_v2
+securityhub_enable_security_hub_v2 <- function(Tags = NULL) {
+  op <- new_operation(
+    name = "EnableSecurityHubV2",
+    http_method = "POST",
+    http_path = "/hubv2",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$enable_security_hub_v2_input(Tags = Tags)
+  output <- .securityhub$enable_security_hub_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$enable_security_hub_v2 <- securityhub_enable_security_hub_v2
+
 #' Provides the details for the Security Hub administrator account for the
 #' current member account
 #'
@@ -9271,6 +10091,204 @@ securityhub_get_administrator_account <- function() {
   return(response)
 }
 .securityhub$operations$get_administrator_account <- securityhub_get_administrator_account
+
+#' Returns the configuration of the specified Aggregator V2
+#'
+#' @description
+#' Returns the configuration of the specified Aggregator V2.
+#'
+#' @usage
+#' securityhub_get_aggregator_v2(AggregatorV2Arn)
+#'
+#' @param AggregatorV2Arn &#91;required&#93; The ARN of the Aggregator V2.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AggregatorV2Arn = "string",
+#'   AggregationRegion = "string",
+#'   RegionLinkingMode = "string",
+#'   LinkedRegions = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_aggregator_v2(
+#'   AggregatorV2Arn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_get_aggregator_v2
+#'
+#' @aliases securityhub_get_aggregator_v2
+securityhub_get_aggregator_v2 <- function(AggregatorV2Arn) {
+  op <- new_operation(
+    name = "GetAggregatorV2",
+    http_method = "GET",
+    http_path = "/aggregatorv2/get/{AggregatorV2Arn+}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$get_aggregator_v2_input(AggregatorV2Arn = AggregatorV2Arn)
+  output <- .securityhub$get_aggregator_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$get_aggregator_v2 <- securityhub_get_aggregator_v2
+
+#' Returns an automation rule for the V2 service
+#'
+#' @description
+#' Returns an automation rule for the V2 service.
+#'
+#' @usage
+#' securityhub_get_automation_rule_v2(Identifier)
+#'
+#' @param Identifier &#91;required&#93; The ARN of the V2 automation rule.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RuleArn = "string",
+#'   RuleId = "string",
+#'   RuleOrder = 123.0,
+#'   RuleName = "string",
+#'   RuleStatus = "ENABLED"|"DISABLED",
+#'   Description = "string",
+#'   Criteria = list(
+#'     OcsfFindingCriteria = list(
+#'       CompositeFilters = list(
+#'         list(
+#'           StringFilters = list(
+#'             list(
+#'               FieldName = "metadata.uid"|"activity_name"|"cloud.account.uid"|"cloud.provider"|"cloud.region"|"compliance.assessments.category"|"compliance.assessments.name"|"compliance.control"|"compliance.status"|"compliance.standards"|"finding_info.desc"|"finding_info.src_url"|"finding_info.title"|"finding_info.types"|"finding_info.uid"|"finding_info.related_events.traits.category"|"finding_info.related_events.uid"|"finding_info.related_events.product.uid"|"finding_info.related_events.title"|"metadata.product.name"|"metadata.product.uid"|"metadata.product.vendor_name"|"remediation.desc"|"remediation.references"|"resources.cloud_partition"|"resources.region"|"resources.type"|"resources.uid"|"severity"|"status"|"comment"|"vulnerabilities.fix_coverage"|"class_name"|"databucket.encryption_details.algorithm"|"databucket.encryption_details.key_uid"|"databucket.file.data_classifications.classifier_details.type"|"evidences.actor.user.account.uid"|"evidences.api.operation"|"evidences.api.response.error_message"|"evidences.api.service.name"|"evidences.connection_info.direction"|"evidences.connection_info.protocol_name"|"evidences.dst_endpoint.autonomous_system.name"|"evidences.dst_endpoint.location.city"|"evidences.dst_endpoint.location.country"|"evidences.src_endpoint.autonomous_system.name"|"evidences.src_endpoint.hostname"|"evidences.src_endpoint.location.city"|"evidences.src_endpoint.location.country"|"finding_info.analytic.name"|"malware.name"|"malware_scan_info.uid"|"malware.severity"|"resources.cloud_function.layers.uid_alt"|"resources.cloud_function.runtime"|"resources.cloud_function.user.uid"|"resources.device.encryption_details.key_uid"|"resources.device.image.uid"|"resources.image.architecture"|"resources.image.registry_uid"|"resources.image.repository_name"|"resources.image.uid"|"resources.subnet_info.uid"|"resources.vpc_uid"|"vulnerabilities.affected_code.file.path"|"vulnerabilities.affected_packages.name"|"vulnerabilities.cve.epss.score"|"vulnerabilities.cve.uid"|"vulnerabilities.related_vulnerabilities"|"cloud.account.name"|"vendor_attributes.severity",
+#'               Filter = list(
+#'                 Value = "string",
+#'                 Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'               )
+#'             )
+#'           ),
+#'           DateFilters = list(
+#'             list(
+#'               FieldName = "finding_info.created_time_dt"|"finding_info.first_seen_time_dt"|"finding_info.last_seen_time_dt"|"finding_info.modified_time_dt"|"resources.image.created_time_dt"|"resources.image.last_used_time_dt"|"resources.modified_time_dt",
+#'               Filter = list(
+#'                 Start = "string",
+#'                 End = "string",
+#'                 DateRange = list(
+#'                   Value = 123,
+#'                   Unit = "DAYS"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           BooleanFilters = list(
+#'             list(
+#'               FieldName = "compliance.assessments.meets_criteria"|"vulnerabilities.is_exploit_available"|"vulnerabilities.is_fix_available",
+#'               Filter = list(
+#'                 Value = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           NumberFilters = list(
+#'             list(
+#'               FieldName = "activity_id"|"compliance.status_id"|"confidence_score"|"severity_id"|"status_id"|"finding_info.related_events_count"|"evidences.api.response.code"|"evidences.dst_endpoint.autonomous_system.number"|"evidences.dst_endpoint.port"|"evidences.src_endpoint.autonomous_system.number"|"evidences.src_endpoint.port"|"resources.image.in_use_count"|"vulnerabilities.cve.cvss.base_score"|"vendor_attributes.severity_id",
+#'               Filter = list(
+#'                 Gte = 123.0,
+#'                 Lte = 123.0,
+#'                 Eq = 123.0,
+#'                 Gt = 123.0,
+#'                 Lt = 123.0
+#'               )
+#'             )
+#'           ),
+#'           MapFilters = list(
+#'             list(
+#'               FieldName = "resources.tags"|"compliance.control_parameters"|"databucket.tags"|"finding_info.tags",
+#'               Filter = list(
+#'                 Key = "string",
+#'                 Value = "string",
+#'                 Comparison = "EQUALS"|"NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'               )
+#'             )
+#'           ),
+#'           IpFilters = list(
+#'             list(
+#'               FieldName = "evidences.dst_endpoint.ip"|"evidences.src_endpoint.ip",
+#'               Filter = list(
+#'                 Cidr = "string"
+#'               )
+#'             )
+#'           ),
+#'           NestedCompositeFilters = list(),
+#'           Operator = "AND"|"OR"
+#'         )
+#'       ),
+#'       CompositeOperator = "AND"|"OR"
+#'     )
+#'   ),
+#'   Actions = list(
+#'     list(
+#'       Type = "FINDING_FIELDS_UPDATE"|"EXTERNAL_INTEGRATION",
+#'       FindingFieldsUpdate = list(
+#'         SeverityId = 123,
+#'         Comment = "string",
+#'         StatusId = 123
+#'       ),
+#'       ExternalIntegrationConfiguration = list(
+#'         ConnectorArn = "string"
+#'       )
+#'     )
+#'   ),
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_automation_rule_v2(
+#'   Identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_get_automation_rule_v2
+#'
+#' @aliases securityhub_get_automation_rule_v2
+securityhub_get_automation_rule_v2 <- function(Identifier) {
+  op <- new_operation(
+    name = "GetAutomationRuleV2",
+    http_method = "GET",
+    http_path = "/automationrulesv2/{Identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$get_automation_rule_v2_input(Identifier = Identifier)
+  output <- .securityhub$get_automation_rule_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$get_automation_rule_v2 <- securityhub_get_automation_rule_v2
 
 #' Provides information about a configuration policy
 #'
@@ -9440,6 +10458,88 @@ securityhub_get_configuration_policy_association <- function(Target) {
 }
 .securityhub$operations$get_configuration_policy_association <- securityhub_get_configuration_policy_association
 
+#' Grants permission to retrieve details for a connectorV2 based on
+#' connector id
+#'
+#' @description
+#' Grants permission to retrieve details for a connectorV2 based on
+#' connector id.
+#'
+#' @usage
+#' securityhub_get_connector_v2(ConnectorId)
+#'
+#' @param ConnectorId &#91;required&#93; The UUID of the connectorV2 to identify connectorV2 resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectorArn = "string",
+#'   ConnectorId = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   KmsKeyArn = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Health = list(
+#'     ConnectorStatus = "CONNECTED"|"FAILED_TO_CONNECT"|"PENDING_CONFIGURATION"|"PENDING_AUTHORIZATION",
+#'     Message = "string",
+#'     LastCheckedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   ProviderDetail = list(
+#'     JiraCloud = list(
+#'       CloudId = "string",
+#'       ProjectKey = "string",
+#'       Domain = "string",
+#'       AuthUrl = "string",
+#'       AuthStatus = "ACTIVE"|"FAILED"
+#'     ),
+#'     ServiceNow = list(
+#'       InstanceName = "string",
+#'       SecretArn = "string",
+#'       AuthStatus = "ACTIVE"|"FAILED"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_connector_v2(
+#'   ConnectorId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_get_connector_v2
+#'
+#' @aliases securityhub_get_connector_v2
+securityhub_get_connector_v2 <- function(ConnectorId) {
+  op <- new_operation(
+    name = "GetConnectorV2",
+    http_method = "GET",
+    http_path = "/connectorsv2/{ConnectorId+}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$get_connector_v2_input(ConnectorId = ConnectorId)
+  output <- .securityhub$get_connector_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$get_connector_v2 <- securityhub_get_connector_v2
+
 #' Returns a list of the standards that are currently enabled
 #'
 #' @description
@@ -9577,12 +10677,22 @@ securityhub_get_finding_aggregator <- function(FindingAggregatorArn) {
 }
 .securityhub$operations$get_finding_aggregator <- securityhub_get_finding_aggregator
 
-#' Returns history for a Security Hub finding in the last 90 days
+#' Returns the history of a Security Hub finding
 #'
 #' @description
-#' Returns history for a Security Hub finding in the last 90 days. The
-#' history includes changes made to any fields in the Amazon Web Services
-#' Security Finding Format (ASFF).
+#' Returns the history of a Security Hub finding. The history includes
+#' changes made to any fields in the Amazon Web Services Security Finding
+#' Format (ASFF) except top-level timestamp fields, such as the `CreatedAt`
+#' and `UpdatedAt` fields.
+#' 
+#' This operation might return fewer results than the maximum number of
+#' results (`MaxResults`) specified in a request, even when more results
+#' are available. If this occurs, the response includes a `NextToken`
+#' value, which you should use to retrieve the next set of results in the
+#' response. The presence of a `NextToken` value in a response doesn't
+#' necessarily indicate that the results are incomplete. However, you
+#' should continue to specify a `NextToken` value until you receive a
+#' response that doesn't include this value.
 #'
 #' @usage
 #' securityhub_get_finding_history(FindingIdentifier, StartTime, EndTime,
@@ -9601,9 +10711,9 @@ securityhub_get_finding_aggregator <- function(FindingAggregatorArn) {
 #' [CreatedAt](https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_AwsSecurityFindingFilters.html#securityhub-Type-AwsSecurityFindingFilters-CreatedAt)
 #' timestamp of the finding to the `EndTime`. If you provide neither
 #' `StartTime` nor `EndTime`, Security Hub returns finding history from the
-#' CreatedAt timestamp of the finding to the time at which the API is
+#' `CreatedAt` timestamp of the finding to the time at which the API is
 #' called. In all of these scenarios, the response is limited to 100
-#' results, and the maximum time period is limited to 90 days.
+#' results.
 #' 
 #' For more information about the validation and formatting of timestamp
 #' fields in Security Hub, see
@@ -9620,9 +10730,9 @@ securityhub_get_finding_aggregator <- function(FindingAggregatorArn) {
 #' [CreatedAt](https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_AwsSecurityFindingFilters.html#securityhub-Type-AwsSecurityFindingFilters-CreatedAt)
 #' timestamp of the finding to the `EndTime`. If you provide neither
 #' `StartTime` nor `EndTime`, Security Hub returns finding history from the
-#' CreatedAt timestamp of the finding to the time at which the API is
+#' `CreatedAt` timestamp of the finding to the time at which the API is
 #' called. In all of these scenarios, the response is limited to 100
-#' results, and the maximum time period is limited to 90 days.
+#' results.
 #' 
 #' For more information about the validation and formatting of timestamp
 #' fields in Security Hub, see
@@ -9708,6 +10818,149 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
   return(response)
 }
 .securityhub$operations$get_finding_history <- securityhub_get_finding_history
+
+#' Returns aggregated statistical data about findings
+#'
+#' @description
+#' Returns aggregated statistical data about findings.
+#' [`get_finding_statistics_v2`][securityhub_get_finding_statistics_v2] use
+#' `securityhub:GetAdhocInsightResults` in the `Action` element of an IAM
+#' policy statement. You must have permission to perform the `s` action.
+#'
+#' @usage
+#' securityhub_get_finding_statistics_v2(GroupByRules, SortOrder,
+#'   MaxStatisticResults)
+#'
+#' @param GroupByRules &#91;required&#93; Specifies how security findings should be aggregated and organized in
+#' the statistical analysis. It can accept up to 5 `groupBy` fields in a
+#' single call.
+#' @param SortOrder Orders the aggregation count in descending or ascending order.
+#' Descending order is the default.
+#' @param MaxStatisticResults The maximum number of results to be returned.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GroupByResults = list(
+#'     list(
+#'       GroupByField = "string",
+#'       GroupByValues = list(
+#'         list(
+#'           FieldValue = "string",
+#'           Count = 123
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_finding_statistics_v2(
+#'   GroupByRules = list(
+#'     list(
+#'       Filters = list(
+#'         CompositeFilters = list(
+#'           list(
+#'             StringFilters = list(
+#'               list(
+#'                 FieldName = "metadata.uid"|"activity_name"|"cloud.account.uid"|"cloud.provider"|"cloud.region"|"compliance.assessments.category"|"compliance.assessments.name"|"compliance.control"|"compliance.status"|"compliance.standards"|"finding_info.desc"|"finding_info.src_url"|"finding_info.title"|"finding_info.types"|"finding_info.uid"|"finding_info.related_events.traits.category"|"finding_info.related_events.uid"|"finding_info.related_events.product.uid"|"finding_info.related_events.title"|"metadata.product.name"|"metadata.product.uid"|"metadata.product.vendor_name"|"remediation.desc"|"remediation.references"|"resources.cloud_partition"|"resources.region"|"resources.type"|"resources.uid"|"severity"|"status"|"comment"|"vulnerabilities.fix_coverage"|"class_name"|"databucket.encryption_details.algorithm"|"databucket.encryption_details.key_uid"|"databucket.file.data_classifications.classifier_details.type"|"evidences.actor.user.account.uid"|"evidences.api.operation"|"evidences.api.response.error_message"|"evidences.api.service.name"|"evidences.connection_info.direction"|"evidences.connection_info.protocol_name"|"evidences.dst_endpoint.autonomous_system.name"|"evidences.dst_endpoint.location.city"|"evidences.dst_endpoint.location.country"|"evidences.src_endpoint.autonomous_system.name"|"evidences.src_endpoint.hostname"|"evidences.src_endpoint.location.city"|"evidences.src_endpoint.location.country"|"finding_info.analytic.name"|"malware.name"|"malware_scan_info.uid"|"malware.severity"|"resources.cloud_function.layers.uid_alt"|"resources.cloud_function.runtime"|"resources.cloud_function.user.uid"|"resources.device.encryption_details.key_uid"|"resources.device.image.uid"|"resources.image.architecture"|"resources.image.registry_uid"|"resources.image.repository_name"|"resources.image.uid"|"resources.subnet_info.uid"|"resources.vpc_uid"|"vulnerabilities.affected_code.file.path"|"vulnerabilities.affected_packages.name"|"vulnerabilities.cve.epss.score"|"vulnerabilities.cve.uid"|"vulnerabilities.related_vulnerabilities"|"cloud.account.name"|"vendor_attributes.severity",
+#'                 Filter = list(
+#'                   Value = "string",
+#'                   Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'                 )
+#'               )
+#'             ),
+#'             DateFilters = list(
+#'               list(
+#'                 FieldName = "finding_info.created_time_dt"|"finding_info.first_seen_time_dt"|"finding_info.last_seen_time_dt"|"finding_info.modified_time_dt"|"resources.image.created_time_dt"|"resources.image.last_used_time_dt"|"resources.modified_time_dt",
+#'                 Filter = list(
+#'                   Start = "string",
+#'                   End = "string",
+#'                   DateRange = list(
+#'                     Value = 123,
+#'                     Unit = "DAYS"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             BooleanFilters = list(
+#'               list(
+#'                 FieldName = "compliance.assessments.meets_criteria"|"vulnerabilities.is_exploit_available"|"vulnerabilities.is_fix_available",
+#'                 Filter = list(
+#'                   Value = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             NumberFilters = list(
+#'               list(
+#'                 FieldName = "activity_id"|"compliance.status_id"|"confidence_score"|"severity_id"|"status_id"|"finding_info.related_events_count"|"evidences.api.response.code"|"evidences.dst_endpoint.autonomous_system.number"|"evidences.dst_endpoint.port"|"evidences.src_endpoint.autonomous_system.number"|"evidences.src_endpoint.port"|"resources.image.in_use_count"|"vulnerabilities.cve.cvss.base_score"|"vendor_attributes.severity_id",
+#'                 Filter = list(
+#'                   Gte = 123.0,
+#'                   Lte = 123.0,
+#'                   Eq = 123.0,
+#'                   Gt = 123.0,
+#'                   Lt = 123.0
+#'                 )
+#'               )
+#'             ),
+#'             MapFilters = list(
+#'               list(
+#'                 FieldName = "resources.tags"|"compliance.control_parameters"|"databucket.tags"|"finding_info.tags",
+#'                 Filter = list(
+#'                   Key = "string",
+#'                   Value = "string",
+#'                   Comparison = "EQUALS"|"NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'                 )
+#'               )
+#'             ),
+#'             IpFilters = list(
+#'               list(
+#'                 FieldName = "evidences.dst_endpoint.ip"|"evidences.src_endpoint.ip",
+#'                 Filter = list(
+#'                   Cidr = "string"
+#'                 )
+#'               )
+#'             ),
+#'             NestedCompositeFilters = list(),
+#'             Operator = "AND"|"OR"
+#'           )
+#'         ),
+#'         CompositeOperator = "AND"|"OR"
+#'       ),
+#'       GroupByField = "activity_name"|"cloud.account.uid"|"cloud.provider"|"cloud.region"|"compliance.assessments.name"|"compliance.status"|"compliance.control"|"finding_info.title"|"finding_info.related_events.traits.category"|"finding_info.types"|"metadata.product.name"|"metadata.product.uid"|"resources.type"|"resources.uid"|"severity"|"status"|"vulnerabilities.fix_coverage"|"class_name"|"vulnerabilities.affected_packages.name"|"finding_info.analytic.name"|"compliance.standards"|"cloud.account.name"|"vendor_attributes.severity"
+#'     )
+#'   ),
+#'   SortOrder = "asc"|"desc",
+#'   MaxStatisticResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_get_finding_statistics_v2
+#'
+#' @aliases securityhub_get_finding_statistics_v2
+securityhub_get_finding_statistics_v2 <- function(GroupByRules, SortOrder = NULL, MaxStatisticResults = NULL) {
+  op <- new_operation(
+    name = "GetFindingStatisticsV2",
+    http_method = "POST",
+    http_path = "/findingsv2/statistics",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$get_finding_statistics_v2_input(GroupByRules = GroupByRules, SortOrder = SortOrder, MaxStatisticResults = MaxStatisticResults)
+  output <- .securityhub$get_finding_statistics_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$get_finding_statistics_v2 <- securityhub_get_finding_statistics_v2
 
 #' Returns a list of findings that match the specified criteria
 #'
@@ -13965,6 +15218,11 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'                 Enabled = TRUE|FALSE,
 #'                 BannerText = "string"
 #'               )
+#'             ),
+#'             CodeRepository = list(
+#'               ProviderType = "string",
+#'               ProjectName = "string",
+#'               CodeSecurityIntegrationArn = "string"
 #'             )
 #'           ),
 #'           ApplicationName = "string",
@@ -14331,37 +15589,37 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'     ProductArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     AwsAccountId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Id = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     GeneratorId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Region = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Type = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     FirstObservedAt = list(
@@ -14425,7 +15683,7 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'     SeverityLabel = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Confidence = list(
@@ -14449,25 +15707,25 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'     Title = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Description = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     RecommendationText = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     SourceUrl = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ProductFields = list(
@@ -14480,13 +15738,13 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'     ProductName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     CompanyName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     UserDefinedFields = list(
@@ -14499,37 +15757,37 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'     MalwareName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     MalwareType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     MalwarePath = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     MalwareState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NetworkDirection = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NetworkProtocol = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NetworkSourceIpV4 = list(
@@ -14554,13 +15812,13 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'     NetworkSourceDomain = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NetworkSourceMac = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NetworkDestinationIpV4 = list(
@@ -14585,19 +15843,19 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'     NetworkDestinationDomain = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ProcessName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ProcessPath = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ProcessPid = list(
@@ -14641,19 +15899,19 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'     ThreatIntelIndicatorType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorValue = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorCategory = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorLastObservedAt = list(
@@ -14669,37 +15927,37 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'     ThreatIntelIndicatorSource = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorSourceUrl = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourcePartition = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceRegion = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceTags = list(
@@ -14712,13 +15970,13 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'     ResourceAwsEc2InstanceType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceImageId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceIpV4Addresses = list(
@@ -14734,25 +15992,25 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'     ResourceAwsEc2InstanceKeyName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceIamInstanceProfileArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceVpcId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceSubnetId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceLaunchedAt = list(
@@ -14768,31 +16026,31 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'     ResourceAwsS3BucketOwnerId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsS3BucketOwnerName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyUserName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyPrincipalName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyStatus = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyCreatedAt = list(
@@ -14808,25 +16066,25 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'     ResourceAwsIamUserUserName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceContainerName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceContainerImageId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceContainerImageName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceContainerLaunchedAt = list(
@@ -14849,49 +16107,49 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'     ComplianceStatus = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     VerificationState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     WorkflowState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     WorkflowStatus = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     RecordState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     RelatedFindingsProductArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     RelatedFindingsId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NoteText = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NoteUpdatedAt = list(
@@ -14907,7 +16165,7 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'     NoteUpdatedBy = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Keyword = list(
@@ -14936,31 +16194,31 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'     FindingProviderFieldsRelatedFindingsId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     FindingProviderFieldsRelatedFindingsProductArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     FindingProviderFieldsSeverityLabel = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     FindingProviderFieldsSeverityOriginal = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     FindingProviderFieldsTypes = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Sample = list(
@@ -14971,55 +16229,55 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'     ComplianceSecurityControlId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ComplianceAssociatedStandardsId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     VulnerabilitiesExploitAvailable = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     VulnerabilitiesFixAvailable = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ComplianceSecurityControlParametersName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ComplianceSecurityControlParametersValue = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     AwsAccountName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceApplicationName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceApplicationArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     )
 #'   ),
@@ -15057,6 +16315,252 @@ securityhub_get_findings <- function(Filters = NULL, SortCriteria = NULL, NextTo
   return(response)
 }
 .securityhub$operations$get_findings <- securityhub_get_findings
+
+#' Returns findings trend data based on the specified criteria
+#'
+#' @description
+#' Returns findings trend data based on the specified criteria. This
+#' operation helps you analyze patterns and changes in findings over time.
+#'
+#' @usage
+#' securityhub_get_findings_trends_v2(Filters, StartTime, EndTime,
+#'   NextToken, MaxResults)
+#'
+#' @param Filters The filters to apply to the findings trend data.
+#' @param StartTime &#91;required&#93; The starting timestamp for the time period to analyze findings trends,
+#' in ISO 8601 format.
+#' @param EndTime &#91;required&#93; The ending timestamp for the time period to analyze findings trends, in
+#' ISO 8601 format.
+#' @param NextToken The token to use for paginating results. This value is returned in the
+#' response if more results are available.
+#' @param MaxResults The maximum number of trend data points to return in a single response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Granularity = "Daily"|"Weekly"|"Monthly",
+#'   TrendsMetrics = list(
+#'     list(
+#'       Timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TrendsValues = list(
+#'         SeverityTrends = list(
+#'           Unknown = 123,
+#'           Informational = 123,
+#'           Low = 123,
+#'           Medium = 123,
+#'           High = 123,
+#'           Critical = 123,
+#'           Fatal = 123,
+#'           Other = 123
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_findings_trends_v2(
+#'   Filters = list(
+#'     CompositeFilters = list(
+#'       list(
+#'         StringFilters = list(
+#'           list(
+#'             FieldName = "account_id"|"region"|"finding_types"|"finding_status"|"finding_cve_ids"|"finding_compliance_status"|"finding_control_id"|"finding_class_name"|"finding_provider"|"finding_activity_name",
+#'             Filter = list(
+#'               Value = "string",
+#'               Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'             )
+#'           )
+#'         ),
+#'         NestedCompositeFilters = list(),
+#'         Operator = "AND"|"OR"
+#'       )
+#'     ),
+#'     CompositeOperator = "AND"|"OR"
+#'   ),
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_get_findings_trends_v2
+#'
+#' @aliases securityhub_get_findings_trends_v2
+securityhub_get_findings_trends_v2 <- function(Filters = NULL, StartTime, EndTime, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "GetFindingsTrendsV2",
+    http_method = "POST",
+    http_path = "/findingsTrendsv2",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrendsMetrics"),
+    stream_api = FALSE
+  )
+  input <- .securityhub$get_findings_trends_v2_input(Filters = Filters, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .securityhub$get_findings_trends_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$get_findings_trends_v2 <- securityhub_get_findings_trends_v2
+
+#' Return a list of findings that match the specified criteria
+#'
+#' @description
+#' Return a list of findings that match the specified criteria.
+#' [`get_findings`][securityhub_get_findings] and
+#' [`get_findings_v2`][securityhub_get_findings_v2] both use
+#' `securityhub:GetFindings` in the `Action` element of an IAM policy
+#' statement. You must have permission to perform the
+#' `securityhub:GetFindings` action.
+#'
+#' @usage
+#' securityhub_get_findings_v2(Filters, SortCriteria, NextToken,
+#'   MaxResults)
+#'
+#' @param Filters The finding attributes used to define a condition to filter the returned
+#' OCSF findings. You can filter up to 10 composite filters. For each
+#' filter type inside of a composite filter, you can provide up to 20
+#' filters.
+#' @param SortCriteria The finding attributes used to sort the list of returned findings.
+#' @param NextToken The token required for pagination. On your first call, set the value of
+#' this parameter to `NULL`. For subsequent calls, to continue listing
+#' data, set the value of this parameter to the value returned in the
+#' previous response.
+#' @param MaxResults The maximum number of results to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Findings = list(
+#'     list()
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_findings_v2(
+#'   Filters = list(
+#'     CompositeFilters = list(
+#'       list(
+#'         StringFilters = list(
+#'           list(
+#'             FieldName = "metadata.uid"|"activity_name"|"cloud.account.uid"|"cloud.provider"|"cloud.region"|"compliance.assessments.category"|"compliance.assessments.name"|"compliance.control"|"compliance.status"|"compliance.standards"|"finding_info.desc"|"finding_info.src_url"|"finding_info.title"|"finding_info.types"|"finding_info.uid"|"finding_info.related_events.traits.category"|"finding_info.related_events.uid"|"finding_info.related_events.product.uid"|"finding_info.related_events.title"|"metadata.product.name"|"metadata.product.uid"|"metadata.product.vendor_name"|"remediation.desc"|"remediation.references"|"resources.cloud_partition"|"resources.region"|"resources.type"|"resources.uid"|"severity"|"status"|"comment"|"vulnerabilities.fix_coverage"|"class_name"|"databucket.encryption_details.algorithm"|"databucket.encryption_details.key_uid"|"databucket.file.data_classifications.classifier_details.type"|"evidences.actor.user.account.uid"|"evidences.api.operation"|"evidences.api.response.error_message"|"evidences.api.service.name"|"evidences.connection_info.direction"|"evidences.connection_info.protocol_name"|"evidences.dst_endpoint.autonomous_system.name"|"evidences.dst_endpoint.location.city"|"evidences.dst_endpoint.location.country"|"evidences.src_endpoint.autonomous_system.name"|"evidences.src_endpoint.hostname"|"evidences.src_endpoint.location.city"|"evidences.src_endpoint.location.country"|"finding_info.analytic.name"|"malware.name"|"malware_scan_info.uid"|"malware.severity"|"resources.cloud_function.layers.uid_alt"|"resources.cloud_function.runtime"|"resources.cloud_function.user.uid"|"resources.device.encryption_details.key_uid"|"resources.device.image.uid"|"resources.image.architecture"|"resources.image.registry_uid"|"resources.image.repository_name"|"resources.image.uid"|"resources.subnet_info.uid"|"resources.vpc_uid"|"vulnerabilities.affected_code.file.path"|"vulnerabilities.affected_packages.name"|"vulnerabilities.cve.epss.score"|"vulnerabilities.cve.uid"|"vulnerabilities.related_vulnerabilities"|"cloud.account.name"|"vendor_attributes.severity",
+#'             Filter = list(
+#'               Value = "string",
+#'               Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'             )
+#'           )
+#'         ),
+#'         DateFilters = list(
+#'           list(
+#'             FieldName = "finding_info.created_time_dt"|"finding_info.first_seen_time_dt"|"finding_info.last_seen_time_dt"|"finding_info.modified_time_dt"|"resources.image.created_time_dt"|"resources.image.last_used_time_dt"|"resources.modified_time_dt",
+#'             Filter = list(
+#'               Start = "string",
+#'               End = "string",
+#'               DateRange = list(
+#'                 Value = 123,
+#'                 Unit = "DAYS"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         BooleanFilters = list(
+#'           list(
+#'             FieldName = "compliance.assessments.meets_criteria"|"vulnerabilities.is_exploit_available"|"vulnerabilities.is_fix_available",
+#'             Filter = list(
+#'               Value = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         NumberFilters = list(
+#'           list(
+#'             FieldName = "activity_id"|"compliance.status_id"|"confidence_score"|"severity_id"|"status_id"|"finding_info.related_events_count"|"evidences.api.response.code"|"evidences.dst_endpoint.autonomous_system.number"|"evidences.dst_endpoint.port"|"evidences.src_endpoint.autonomous_system.number"|"evidences.src_endpoint.port"|"resources.image.in_use_count"|"vulnerabilities.cve.cvss.base_score"|"vendor_attributes.severity_id",
+#'             Filter = list(
+#'               Gte = 123.0,
+#'               Lte = 123.0,
+#'               Eq = 123.0,
+#'               Gt = 123.0,
+#'               Lt = 123.0
+#'             )
+#'           )
+#'         ),
+#'         MapFilters = list(
+#'           list(
+#'             FieldName = "resources.tags"|"compliance.control_parameters"|"databucket.tags"|"finding_info.tags",
+#'             Filter = list(
+#'               Key = "string",
+#'               Value = "string",
+#'               Comparison = "EQUALS"|"NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             )
+#'           )
+#'         ),
+#'         IpFilters = list(
+#'           list(
+#'             FieldName = "evidences.dst_endpoint.ip"|"evidences.src_endpoint.ip",
+#'             Filter = list(
+#'               Cidr = "string"
+#'             )
+#'           )
+#'         ),
+#'         NestedCompositeFilters = list(),
+#'         Operator = "AND"|"OR"
+#'       )
+#'     ),
+#'     CompositeOperator = "AND"|"OR"
+#'   ),
+#'   SortCriteria = list(
+#'     list(
+#'       Field = "string",
+#'       SortOrder = "asc"|"desc"
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_get_findings_v2
+#'
+#' @aliases securityhub_get_findings_v2
+securityhub_get_findings_v2 <- function(Filters = NULL, SortCriteria = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "GetFindingsV2",
+    http_method = "POST",
+    http_path = "/findingsv2",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Findings"),
+    stream_api = FALSE
+  )
+  input <- .securityhub$get_findings_v2_input(Filters = Filters, SortCriteria = SortCriteria, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .securityhub$get_findings_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$get_findings_v2 <- securityhub_get_findings_v2
 
 #' Lists the results of the Security Hub insight specified by the insight
 #' ARN
@@ -15150,37 +16654,37 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'         ProductArn = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         AwsAccountId = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         Id = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         GeneratorId = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         Region = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         Type = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         FirstObservedAt = list(
@@ -15244,7 +16748,7 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'         SeverityLabel = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         Confidence = list(
@@ -15268,25 +16772,25 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'         Title = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         Description = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         RecommendationText = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         SourceUrl = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ProductFields = list(
@@ -15299,13 +16803,13 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'         ProductName = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         CompanyName = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         UserDefinedFields = list(
@@ -15318,37 +16822,37 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'         MalwareName = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         MalwareType = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         MalwarePath = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         MalwareState = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         NetworkDirection = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         NetworkProtocol = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         NetworkSourceIpV4 = list(
@@ -15373,13 +16877,13 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'         NetworkSourceDomain = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         NetworkSourceMac = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         NetworkDestinationIpV4 = list(
@@ -15404,19 +16908,19 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'         NetworkDestinationDomain = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ProcessName = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ProcessPath = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ProcessPid = list(
@@ -15460,19 +16964,19 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'         ThreatIntelIndicatorType = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ThreatIntelIndicatorValue = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ThreatIntelIndicatorCategory = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ThreatIntelIndicatorLastObservedAt = list(
@@ -15488,37 +16992,37 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'         ThreatIntelIndicatorSource = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ThreatIntelIndicatorSourceUrl = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceType = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceId = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourcePartition = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceRegion = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceTags = list(
@@ -15531,13 +17035,13 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'         ResourceAwsEc2InstanceType = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceAwsEc2InstanceImageId = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceAwsEc2InstanceIpV4Addresses = list(
@@ -15553,25 +17057,25 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'         ResourceAwsEc2InstanceKeyName = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceAwsEc2InstanceIamInstanceProfileArn = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceAwsEc2InstanceVpcId = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceAwsEc2InstanceSubnetId = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceAwsEc2InstanceLaunchedAt = list(
@@ -15587,31 +17091,31 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'         ResourceAwsS3BucketOwnerId = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceAwsS3BucketOwnerName = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceAwsIamAccessKeyUserName = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceAwsIamAccessKeyPrincipalName = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceAwsIamAccessKeyStatus = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceAwsIamAccessKeyCreatedAt = list(
@@ -15627,25 +17131,25 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'         ResourceAwsIamUserUserName = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceContainerName = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceContainerImageId = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceContainerImageName = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceContainerLaunchedAt = list(
@@ -15668,49 +17172,49 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'         ComplianceStatus = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         VerificationState = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         WorkflowState = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         WorkflowStatus = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         RecordState = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         RelatedFindingsProductArn = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         RelatedFindingsId = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         NoteText = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         NoteUpdatedAt = list(
@@ -15726,7 +17230,7 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'         NoteUpdatedBy = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         Keyword = list(
@@ -15755,31 +17259,31 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'         FindingProviderFieldsRelatedFindingsId = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         FindingProviderFieldsRelatedFindingsProductArn = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         FindingProviderFieldsSeverityLabel = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         FindingProviderFieldsSeverityOriginal = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         FindingProviderFieldsTypes = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         Sample = list(
@@ -15790,55 +17294,55 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'         ComplianceSecurityControlId = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ComplianceAssociatedStandardsId = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         VulnerabilitiesExploitAvailable = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         VulnerabilitiesFixAvailable = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ComplianceSecurityControlParametersName = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ComplianceSecurityControlParametersValue = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         AwsAccountName = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceApplicationName = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         ),
 #'         ResourceApplicationArn = list(
 #'           list(
 #'             Value = "string",
-#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'           )
 #'         )
 #'       ),
@@ -16094,6 +17598,380 @@ securityhub_get_members <- function(AccountIds) {
 }
 .securityhub$operations$get_members <- securityhub_get_members
 
+#' Retrieves statistical information about Amazon Web Services resources
+#' and their associated security findings
+#'
+#' @description
+#' Retrieves statistical information about Amazon Web Services resources
+#' and their associated security findings.
+#'
+#' @usage
+#' securityhub_get_resources_statistics_v2(GroupByRules, SortOrder,
+#'   MaxStatisticResults)
+#'
+#' @param GroupByRules &#91;required&#93; How resource statistics should be aggregated and organized in the
+#' response.
+#' @param SortOrder Sorts aggregated statistics.
+#' @param MaxStatisticResults The maximum number of results to be returned.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GroupByResults = list(
+#'     list(
+#'       GroupByField = "string",
+#'       GroupByValues = list(
+#'         list(
+#'           FieldValue = "string",
+#'           Count = 123
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resources_statistics_v2(
+#'   GroupByRules = list(
+#'     list(
+#'       GroupByField = "AccountId"|"Region"|"ResourceCategory"|"ResourceType"|"ResourceName"|"FindingsSummary.FindingType",
+#'       Filters = list(
+#'         CompositeFilters = list(
+#'           list(
+#'             StringFilters = list(
+#'               list(
+#'                 FieldName = "ResourceGuid"|"ResourceId"|"AccountId"|"Region"|"ResourceCategory"|"ResourceType"|"ResourceName"|"FindingsSummary.FindingType"|"FindingsSummary.ProductName",
+#'                 Filter = list(
+#'                   Value = "string",
+#'                   Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'                 )
+#'               )
+#'             ),
+#'             DateFilters = list(
+#'               list(
+#'                 FieldName = "ResourceDetailCaptureTime"|"ResourceCreationTime",
+#'                 Filter = list(
+#'                   Start = "string",
+#'                   End = "string",
+#'                   DateRange = list(
+#'                     Value = 123,
+#'                     Unit = "DAYS"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             NumberFilters = list(
+#'               list(
+#'                 FieldName = "FindingsSummary.TotalFindings"|"FindingsSummary.Severities.Other"|"FindingsSummary.Severities.Fatal"|"FindingsSummary.Severities.Critical"|"FindingsSummary.Severities.High"|"FindingsSummary.Severities.Medium"|"FindingsSummary.Severities.Low"|"FindingsSummary.Severities.Informational"|"FindingsSummary.Severities.Unknown",
+#'                 Filter = list(
+#'                   Gte = 123.0,
+#'                   Lte = 123.0,
+#'                   Eq = 123.0,
+#'                   Gt = 123.0,
+#'                   Lt = 123.0
+#'                 )
+#'               )
+#'             ),
+#'             MapFilters = list(
+#'               list(
+#'                 FieldName = "ResourceTags",
+#'                 Filter = list(
+#'                   Key = "string",
+#'                   Value = "string",
+#'                   Comparison = "EQUALS"|"NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'                 )
+#'               )
+#'             ),
+#'             NestedCompositeFilters = list(),
+#'             Operator = "AND"|"OR"
+#'           )
+#'         ),
+#'         CompositeOperator = "AND"|"OR"
+#'       )
+#'     )
+#'   ),
+#'   SortOrder = "asc"|"desc",
+#'   MaxStatisticResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_get_resources_statistics_v2
+#'
+#' @aliases securityhub_get_resources_statistics_v2
+securityhub_get_resources_statistics_v2 <- function(GroupByRules, SortOrder = NULL, MaxStatisticResults = NULL) {
+  op <- new_operation(
+    name = "GetResourcesStatisticsV2",
+    http_method = "POST",
+    http_path = "/resourcesv2/statistics",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$get_resources_statistics_v2_input(GroupByRules = GroupByRules, SortOrder = SortOrder, MaxStatisticResults = MaxStatisticResults)
+  output <- .securityhub$get_resources_statistics_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$get_resources_statistics_v2 <- securityhub_get_resources_statistics_v2
+
+#' Returns resource trend data based on the specified criteria
+#'
+#' @description
+#' Returns resource trend data based on the specified criteria. This
+#' operation helps you analyze patterns and changes in resource compliance
+#' over time.
+#'
+#' @usage
+#' securityhub_get_resources_trends_v2(Filters, StartTime, EndTime,
+#'   NextToken, MaxResults)
+#'
+#' @param Filters The filters to apply to the resources trend data.
+#' @param StartTime &#91;required&#93; The starting timestamp for the time period to analyze resources trends,
+#' in ISO 8601 format.
+#' @param EndTime &#91;required&#93; The ending timestamp for the time period to analyze resources trends, in
+#' ISO 8601 format.
+#' @param NextToken The token to use for paginating results. This value is returned in the
+#' response if more results are available.
+#' @param MaxResults The maximum number of trend data points to return in a single response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Granularity = "Daily"|"Weekly"|"Monthly",
+#'   TrendsMetrics = list(
+#'     list(
+#'       Timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TrendsValues = list(
+#'         ResourcesCount = list(
+#'           AllResources = 123
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resources_trends_v2(
+#'   Filters = list(
+#'     CompositeFilters = list(
+#'       list(
+#'         StringFilters = list(
+#'           list(
+#'             FieldName = "account_id"|"region"|"resource_type"|"resource_category",
+#'             Filter = list(
+#'               Value = "string",
+#'               Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'             )
+#'           )
+#'         ),
+#'         NestedCompositeFilters = list(),
+#'         Operator = "AND"|"OR"
+#'       )
+#'     ),
+#'     CompositeOperator = "AND"|"OR"
+#'   ),
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_get_resources_trends_v2
+#'
+#' @aliases securityhub_get_resources_trends_v2
+securityhub_get_resources_trends_v2 <- function(Filters = NULL, StartTime, EndTime, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "GetResourcesTrendsV2",
+    http_method = "POST",
+    http_path = "/resourcesTrendsv2",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrendsMetrics"),
+    stream_api = FALSE
+  )
+  input <- .securityhub$get_resources_trends_v2_input(Filters = Filters, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .securityhub$get_resources_trends_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$get_resources_trends_v2 <- securityhub_get_resources_trends_v2
+
+#' Returns a list of resources
+#'
+#' @description
+#' Returns a list of resources.
+#'
+#' @usage
+#' securityhub_get_resources_v2(Filters, SortCriteria, NextToken,
+#'   MaxResults)
+#'
+#' @param Filters Filters resources based on a set of criteria.
+#' @param SortCriteria The finding attributes used to sort the list of returned findings.
+#' @param NextToken The token required for pagination. On your first call, set the value of
+#' this parameter to `NULL`. For subsequent calls, to continue listing
+#' data, set the value of this parameter to the value returned in the
+#' previous response.
+#' @param MaxResults The maximum number of results to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Resources = list(
+#'     list(
+#'       ResourceGuid = "string",
+#'       ResourceId = "string",
+#'       AccountId = "string",
+#'       Region = "string",
+#'       ResourceCategory = "Compute"|"Database"|"Storage"|"Code"|"AI/ML"|"Identity"|"Network"|"Other",
+#'       ResourceType = "string",
+#'       ResourceName = "string",
+#'       ResourceCreationTimeDt = "string",
+#'       ResourceDetailCaptureTimeDt = "string",
+#'       FindingsSummary = list(
+#'         list(
+#'           FindingType = "string",
+#'           ProductName = "string",
+#'           TotalFindings = 123,
+#'           Severities = list(
+#'             Other = 123,
+#'             Fatal = 123,
+#'             Critical = 123,
+#'             High = 123,
+#'             Medium = 123,
+#'             Low = 123,
+#'             Informational = 123,
+#'             Unknown = 123
+#'           )
+#'         )
+#'       ),
+#'       ResourceTags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       ResourceConfig = list()
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resources_v2(
+#'   Filters = list(
+#'     CompositeFilters = list(
+#'       list(
+#'         StringFilters = list(
+#'           list(
+#'             FieldName = "ResourceGuid"|"ResourceId"|"AccountId"|"Region"|"ResourceCategory"|"ResourceType"|"ResourceName"|"FindingsSummary.FindingType"|"FindingsSummary.ProductName",
+#'             Filter = list(
+#'               Value = "string",
+#'               Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'             )
+#'           )
+#'         ),
+#'         DateFilters = list(
+#'           list(
+#'             FieldName = "ResourceDetailCaptureTime"|"ResourceCreationTime",
+#'             Filter = list(
+#'               Start = "string",
+#'               End = "string",
+#'               DateRange = list(
+#'                 Value = 123,
+#'                 Unit = "DAYS"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         NumberFilters = list(
+#'           list(
+#'             FieldName = "FindingsSummary.TotalFindings"|"FindingsSummary.Severities.Other"|"FindingsSummary.Severities.Fatal"|"FindingsSummary.Severities.Critical"|"FindingsSummary.Severities.High"|"FindingsSummary.Severities.Medium"|"FindingsSummary.Severities.Low"|"FindingsSummary.Severities.Informational"|"FindingsSummary.Severities.Unknown",
+#'             Filter = list(
+#'               Gte = 123.0,
+#'               Lte = 123.0,
+#'               Eq = 123.0,
+#'               Gt = 123.0,
+#'               Lt = 123.0
+#'             )
+#'           )
+#'         ),
+#'         MapFilters = list(
+#'           list(
+#'             FieldName = "ResourceTags",
+#'             Filter = list(
+#'               Key = "string",
+#'               Value = "string",
+#'               Comparison = "EQUALS"|"NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'             )
+#'           )
+#'         ),
+#'         NestedCompositeFilters = list(),
+#'         Operator = "AND"|"OR"
+#'       )
+#'     ),
+#'     CompositeOperator = "AND"|"OR"
+#'   ),
+#'   SortCriteria = list(
+#'     list(
+#'       Field = "string",
+#'       SortOrder = "asc"|"desc"
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_get_resources_v2
+#'
+#' @aliases securityhub_get_resources_v2
+securityhub_get_resources_v2 <- function(Filters = NULL, SortCriteria = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "GetResourcesV2",
+    http_method = "POST",
+    http_path = "/resourcesv2",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Resources"),
+    stream_api = FALSE
+  )
+  input <- .securityhub$get_resources_v2_input(Filters = Filters, SortCriteria = SortCriteria, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .securityhub$get_resources_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$get_resources_v2 <- securityhub_get_resources_v2
+
 #' Retrieves the definition of a security control
 #'
 #' @description
@@ -16289,6 +18167,65 @@ securityhub_invite_members <- function(AccountIds) {
 }
 .securityhub$operations$invite_members <- securityhub_invite_members
 
+#' Retrieves a list of V2 aggregators
+#'
+#' @description
+#' Retrieves a list of V2 aggregators.
+#'
+#' @usage
+#' securityhub_list_aggregators_v2(NextToken, MaxResults)
+#'
+#' @param NextToken The token required for pagination. On your first call, set the value of
+#' this parameter to `NULL`. For subsequent calls, to continue listing
+#' data, set the value of this parameter to the value returned in the
+#' previous response.
+#' @param MaxResults The maximum number of results to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AggregatorsV2 = list(
+#'     list(
+#'       AggregatorV2Arn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_aggregators_v2(
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_list_aggregators_v2
+#'
+#' @aliases securityhub_list_aggregators_v2
+securityhub_list_aggregators_v2 <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListAggregatorsV2",
+    http_method = "GET",
+    http_path = "/aggregatorv2/list",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AggregatorsV2"),
+    stream_api = FALSE
+  )
+  input <- .securityhub$list_aggregators_v2_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .securityhub$list_aggregators_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$list_aggregators_v2 <- securityhub_list_aggregators_v2
+
 #' A list of automation rules and their metadata for the calling account
 #'
 #' @description
@@ -16360,6 +18297,81 @@ securityhub_list_automation_rules <- function(NextToken = NULL, MaxResults = NUL
   return(response)
 }
 .securityhub$operations$list_automation_rules <- securityhub_list_automation_rules
+
+#' Returns a list of automation rules and metadata for the calling account
+#'
+#' @description
+#' Returns a list of automation rules and metadata for the calling account.
+#'
+#' @usage
+#' securityhub_list_automation_rules_v2(NextToken, MaxResults)
+#'
+#' @param NextToken The token required for pagination. On your first call, set the value of
+#' this parameter to `NULL`. For subsequent calls, to continue listing
+#' data, set the value of this parameter to the value returned in the
+#' previous response.
+#' @param MaxResults The maximum number of results to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Rules = list(
+#'     list(
+#'       RuleArn = "string",
+#'       RuleId = "string",
+#'       RuleOrder = 123.0,
+#'       RuleName = "string",
+#'       RuleStatus = "ENABLED"|"DISABLED",
+#'       Description = "string",
+#'       Actions = list(
+#'         list(
+#'           Type = "FINDING_FIELDS_UPDATE"|"EXTERNAL_INTEGRATION"
+#'         )
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_automation_rules_v2(
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_list_automation_rules_v2
+#'
+#' @aliases securityhub_list_automation_rules_v2
+securityhub_list_automation_rules_v2 <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListAutomationRulesV2",
+    http_method = "GET",
+    http_path = "/automationrulesv2/list",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$list_automation_rules_v2_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .securityhub$list_automation_rules_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$list_automation_rules_v2 <- securityhub_list_automation_rules_v2
 
 #' Lists the configuration policies that the Security Hub delegated
 #' administrator has created for your organization
@@ -16534,6 +18546,79 @@ securityhub_list_configuration_policy_associations <- function(NextToken = NULL,
   return(response)
 }
 .securityhub$operations$list_configuration_policy_associations <- securityhub_list_configuration_policy_associations
+
+#' Grants permission to retrieve a list of connectorsV2 and their metadata
+#' for the calling account
+#'
+#' @description
+#' Grants permission to retrieve a list of connectorsV2 and their metadata
+#' for the calling account.
+#'
+#' @usage
+#' securityhub_list_connectors_v2(NextToken, MaxResults, ProviderName,
+#'   ConnectorStatus)
+#'
+#' @param NextToken The pagination token per the Amazon Web Services Pagination standard
+#' @param MaxResults The maximum number of results to be returned.
+#' @param ProviderName The name of the third-party provider.
+#' @param ConnectorStatus The status for the connectorV2.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Connectors = list(
+#'     list(
+#'       ConnectorArn = "string",
+#'       ConnectorId = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       ProviderSummary = list(
+#'         ProviderName = "JIRA_CLOUD"|"SERVICENOW",
+#'         ConnectorStatus = "CONNECTED"|"FAILED_TO_CONNECT"|"PENDING_CONFIGURATION"|"PENDING_AUTHORIZATION"
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_connectors_v2(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   ProviderName = "JIRA_CLOUD"|"SERVICENOW",
+#'   ConnectorStatus = "CONNECTED"|"FAILED_TO_CONNECT"|"PENDING_CONFIGURATION"|"PENDING_AUTHORIZATION"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_list_connectors_v2
+#'
+#' @aliases securityhub_list_connectors_v2
+securityhub_list_connectors_v2 <- function(NextToken = NULL, MaxResults = NULL, ProviderName = NULL, ConnectorStatus = NULL) {
+  op <- new_operation(
+    name = "ListConnectorsV2",
+    http_method = "GET",
+    http_path = "/connectorsv2",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$list_connectors_v2_input(NextToken = NextToken, MaxResults = MaxResults, ProviderName = ProviderName, ConnectorStatus = ConnectorStatus)
+  output <- .securityhub$list_connectors_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$list_connectors_v2 <- securityhub_list_connectors_v2
 
 #' Lists all findings-generating solutions (products) that you are
 #' subscribed to receive findings from in Security Hub
@@ -16833,7 +18918,8 @@ securityhub_list_members <- function(OnlyAssociated = NULL, MaxResults = NULL, N
 #' organization management account.
 #'
 #' @usage
-#' securityhub_list_organization_admin_accounts(MaxResults, NextToken)
+#' securityhub_list_organization_admin_accounts(MaxResults, NextToken,
+#'   Feature)
 #'
 #' @param MaxResults The maximum number of items to return in the response.
 #' @param NextToken The token that is required for pagination. On your first call to the
@@ -16841,6 +18927,8 @@ securityhub_list_members <- function(OnlyAssociated = NULL, MaxResults = NULL, N
 #' operation, set the value of this parameter to `NULL`. For subsequent
 #' calls to the operation, to continue listing data, set the value of this
 #' parameter to the value returned from the previous response.
+#' @param Feature The feature where the delegated administrator account is listed.
+#' Defaults to Security Hub if not specified.
 #'
 #' @return
 #' A list with the following syntax:
@@ -16852,7 +18940,8 @@ securityhub_list_members <- function(OnlyAssociated = NULL, MaxResults = NULL, N
 #'       Status = "ENABLED"|"DISABLE_IN_PROGRESS"
 #'     )
 #'   ),
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   Feature = "SecurityHub"|"SecurityHubV2"
 #' )
 #' ```
 #'
@@ -16860,7 +18949,8 @@ securityhub_list_members <- function(OnlyAssociated = NULL, MaxResults = NULL, N
 #' ```
 #' svc$list_organization_admin_accounts(
 #'   MaxResults = 123,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   Feature = "SecurityHub"|"SecurityHubV2"
 #' )
 #' ```
 #'
@@ -16869,7 +18959,7 @@ securityhub_list_members <- function(OnlyAssociated = NULL, MaxResults = NULL, N
 #' @rdname securityhub_list_organization_admin_accounts
 #'
 #' @aliases securityhub_list_organization_admin_accounts
-securityhub_list_organization_admin_accounts <- function(MaxResults = NULL, NextToken = NULL) {
+securityhub_list_organization_admin_accounts <- function(MaxResults = NULL, NextToken = NULL, Feature = NULL) {
   op <- new_operation(
     name = "ListOrganizationAdminAccounts",
     http_method = "GET",
@@ -16878,7 +18968,7 @@ securityhub_list_organization_admin_accounts <- function(MaxResults = NULL, Next
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AdminAccounts"),
     stream_api = FALSE
   )
-  input <- .securityhub$list_organization_admin_accounts_input(MaxResults = MaxResults, NextToken = NextToken)
+  input <- .securityhub$list_organization_admin_accounts_input(MaxResults = MaxResults, NextToken = NextToken, Feature = Feature)
   output <- .securityhub$list_organization_admin_accounts_output()
   config <- get_config()
   svc <- .securityhub$service(config, op)
@@ -17153,6 +19243,62 @@ securityhub_list_tags_for_resource <- function(ResourceArn) {
   return(response)
 }
 .securityhub$operations$list_tags_for_resource <- securityhub_list_tags_for_resource
+
+#' Grants permission to complete the authorization based on input
+#' parameters
+#'
+#' @description
+#' Grants permission to complete the authorization based on input
+#' parameters.
+#'
+#' @usage
+#' securityhub_register_connector_v2(AuthCode, AuthState)
+#'
+#' @param AuthCode &#91;required&#93; The authCode retrieved from authUrl to complete the OAuth 2.0
+#' authorization code flow.
+#' @param AuthState &#91;required&#93; The authState retrieved from authUrl to complete the OAuth 2.0
+#' authorization code flow.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectorArn = "string",
+#'   ConnectorId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$register_connector_v2(
+#'   AuthCode = "string",
+#'   AuthState = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_register_connector_v2
+#'
+#' @aliases securityhub_register_connector_v2
+securityhub_register_connector_v2 <- function(AuthCode, AuthState) {
+  op <- new_operation(
+    name = "RegisterConnectorV2",
+    http_method = "POST",
+    http_path = "/connectorsv2/register",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$register_connector_v2_input(AuthCode = AuthCode, AuthState = AuthState)
+  output <- .securityhub$register_connector_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$register_connector_v2 <- securityhub_register_connector_v2
 
 #' Associates a target account, organizational unit, or the root with a
 #' specified configuration
@@ -17435,6 +19581,207 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 }
 .securityhub$operations$update_action_target <- securityhub_update_action_target
 
+#' Udpates the configuration for the Aggregator V2
+#'
+#' @description
+#' Udpates the configuration for the Aggregator V2.
+#'
+#' @usage
+#' securityhub_update_aggregator_v2(AggregatorV2Arn, RegionLinkingMode,
+#'   LinkedRegions)
+#'
+#' @param AggregatorV2Arn &#91;required&#93; The ARN of the Aggregator V2.
+#' @param RegionLinkingMode &#91;required&#93; Determines how Amazon Web Services Regions should be linked to the
+#' Aggregator V2.
+#' @param LinkedRegions A list of Amazon Web Services Regions linked to the aggegation Region.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AggregatorV2Arn = "string",
+#'   AggregationRegion = "string",
+#'   RegionLinkingMode = "string",
+#'   LinkedRegions = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_aggregator_v2(
+#'   AggregatorV2Arn = "string",
+#'   RegionLinkingMode = "string",
+#'   LinkedRegions = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_update_aggregator_v2
+#'
+#' @aliases securityhub_update_aggregator_v2
+securityhub_update_aggregator_v2 <- function(AggregatorV2Arn, RegionLinkingMode, LinkedRegions = NULL) {
+  op <- new_operation(
+    name = "UpdateAggregatorV2",
+    http_method = "PATCH",
+    http_path = "/aggregatorv2/update/{AggregatorV2Arn+}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$update_aggregator_v2_input(AggregatorV2Arn = AggregatorV2Arn, RegionLinkingMode = RegionLinkingMode, LinkedRegions = LinkedRegions)
+  output <- .securityhub$update_aggregator_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$update_aggregator_v2 <- securityhub_update_aggregator_v2
+
+#' Updates a V2 automation rule
+#'
+#' @description
+#' Updates a V2 automation rule.
+#'
+#' @usage
+#' securityhub_update_automation_rule_v2(Identifier, RuleStatus, RuleOrder,
+#'   Description, RuleName, Criteria, Actions)
+#'
+#' @param Identifier &#91;required&#93; The ARN of the automation rule.
+#' @param RuleStatus The status of the automation rule.
+#' @param RuleOrder Represents a value for the rule priority.
+#' @param Description A description of the automation rule.
+#' @param RuleName The name of the automation rule.
+#' @param Criteria The filtering type and configuration of the automation rule.
+#' @param Actions A list of actions to be performed when the rule criteria is met.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_automation_rule_v2(
+#'   Identifier = "string",
+#'   RuleStatus = "ENABLED"|"DISABLED",
+#'   RuleOrder = 123.0,
+#'   Description = "string",
+#'   RuleName = "string",
+#'   Criteria = list(
+#'     OcsfFindingCriteria = list(
+#'       CompositeFilters = list(
+#'         list(
+#'           StringFilters = list(
+#'             list(
+#'               FieldName = "metadata.uid"|"activity_name"|"cloud.account.uid"|"cloud.provider"|"cloud.region"|"compliance.assessments.category"|"compliance.assessments.name"|"compliance.control"|"compliance.status"|"compliance.standards"|"finding_info.desc"|"finding_info.src_url"|"finding_info.title"|"finding_info.types"|"finding_info.uid"|"finding_info.related_events.traits.category"|"finding_info.related_events.uid"|"finding_info.related_events.product.uid"|"finding_info.related_events.title"|"metadata.product.name"|"metadata.product.uid"|"metadata.product.vendor_name"|"remediation.desc"|"remediation.references"|"resources.cloud_partition"|"resources.region"|"resources.type"|"resources.uid"|"severity"|"status"|"comment"|"vulnerabilities.fix_coverage"|"class_name"|"databucket.encryption_details.algorithm"|"databucket.encryption_details.key_uid"|"databucket.file.data_classifications.classifier_details.type"|"evidences.actor.user.account.uid"|"evidences.api.operation"|"evidences.api.response.error_message"|"evidences.api.service.name"|"evidences.connection_info.direction"|"evidences.connection_info.protocol_name"|"evidences.dst_endpoint.autonomous_system.name"|"evidences.dst_endpoint.location.city"|"evidences.dst_endpoint.location.country"|"evidences.src_endpoint.autonomous_system.name"|"evidences.src_endpoint.hostname"|"evidences.src_endpoint.location.city"|"evidences.src_endpoint.location.country"|"finding_info.analytic.name"|"malware.name"|"malware_scan_info.uid"|"malware.severity"|"resources.cloud_function.layers.uid_alt"|"resources.cloud_function.runtime"|"resources.cloud_function.user.uid"|"resources.device.encryption_details.key_uid"|"resources.device.image.uid"|"resources.image.architecture"|"resources.image.registry_uid"|"resources.image.repository_name"|"resources.image.uid"|"resources.subnet_info.uid"|"resources.vpc_uid"|"vulnerabilities.affected_code.file.path"|"vulnerabilities.affected_packages.name"|"vulnerabilities.cve.epss.score"|"vulnerabilities.cve.uid"|"vulnerabilities.related_vulnerabilities"|"cloud.account.name"|"vendor_attributes.severity",
+#'               Filter = list(
+#'                 Value = "string",
+#'                 Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
+#'               )
+#'             )
+#'           ),
+#'           DateFilters = list(
+#'             list(
+#'               FieldName = "finding_info.created_time_dt"|"finding_info.first_seen_time_dt"|"finding_info.last_seen_time_dt"|"finding_info.modified_time_dt"|"resources.image.created_time_dt"|"resources.image.last_used_time_dt"|"resources.modified_time_dt",
+#'               Filter = list(
+#'                 Start = "string",
+#'                 End = "string",
+#'                 DateRange = list(
+#'                   Value = 123,
+#'                   Unit = "DAYS"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           BooleanFilters = list(
+#'             list(
+#'               FieldName = "compliance.assessments.meets_criteria"|"vulnerabilities.is_exploit_available"|"vulnerabilities.is_fix_available",
+#'               Filter = list(
+#'                 Value = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           NumberFilters = list(
+#'             list(
+#'               FieldName = "activity_id"|"compliance.status_id"|"confidence_score"|"severity_id"|"status_id"|"finding_info.related_events_count"|"evidences.api.response.code"|"evidences.dst_endpoint.autonomous_system.number"|"evidences.dst_endpoint.port"|"evidences.src_endpoint.autonomous_system.number"|"evidences.src_endpoint.port"|"resources.image.in_use_count"|"vulnerabilities.cve.cvss.base_score"|"vendor_attributes.severity_id",
+#'               Filter = list(
+#'                 Gte = 123.0,
+#'                 Lte = 123.0,
+#'                 Eq = 123.0,
+#'                 Gt = 123.0,
+#'                 Lt = 123.0
+#'               )
+#'             )
+#'           ),
+#'           MapFilters = list(
+#'             list(
+#'               FieldName = "resources.tags"|"compliance.control_parameters"|"databucket.tags"|"finding_info.tags",
+#'               Filter = list(
+#'                 Key = "string",
+#'                 Value = "string",
+#'                 Comparison = "EQUALS"|"NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'               )
+#'             )
+#'           ),
+#'           IpFilters = list(
+#'             list(
+#'               FieldName = "evidences.dst_endpoint.ip"|"evidences.src_endpoint.ip",
+#'               Filter = list(
+#'                 Cidr = "string"
+#'               )
+#'             )
+#'           ),
+#'           NestedCompositeFilters = list(),
+#'           Operator = "AND"|"OR"
+#'         )
+#'       ),
+#'       CompositeOperator = "AND"|"OR"
+#'     )
+#'   ),
+#'   Actions = list(
+#'     list(
+#'       Type = "FINDING_FIELDS_UPDATE"|"EXTERNAL_INTEGRATION",
+#'       FindingFieldsUpdate = list(
+#'         SeverityId = 123,
+#'         Comment = "string",
+#'         StatusId = 123
+#'       ),
+#'       ExternalIntegrationConfiguration = list(
+#'         ConnectorArn = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_update_automation_rule_v2
+#'
+#' @aliases securityhub_update_automation_rule_v2
+securityhub_update_automation_rule_v2 <- function(Identifier, RuleStatus = NULL, RuleOrder = NULL, Description = NULL, RuleName = NULL, Criteria = NULL, Actions = NULL) {
+  op <- new_operation(
+    name = "UpdateAutomationRuleV2",
+    http_method = "PATCH",
+    http_path = "/automationrulesv2/{Identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$update_automation_rule_v2_input(Identifier = Identifier, RuleStatus = RuleStatus, RuleOrder = RuleOrder, Description = Description, RuleName = RuleName, Criteria = Criteria, Actions = Actions)
+  output <- .securityhub$update_automation_rule_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$update_automation_rule_v2 <- securityhub_update_automation_rule_v2
+
 #' Updates a configuration policy
 #'
 #' @description
@@ -17601,6 +19948,63 @@ securityhub_update_configuration_policy <- function(Identifier, Name = NULL, Des
 }
 .securityhub$operations$update_configuration_policy <- securityhub_update_configuration_policy
 
+#' Grants permission to update a connectorV2 based on its id and input
+#' parameters
+#'
+#' @description
+#' Grants permission to update a connectorV2 based on its id and input
+#' parameters.
+#'
+#' @usage
+#' securityhub_update_connector_v2(ConnectorId, Description, Provider)
+#'
+#' @param ConnectorId &#91;required&#93; The UUID of the connectorV2 to identify connectorV2 resource.
+#' @param Description The description of the connectorV2.
+#' @param Provider The third-party provider’s service configuration.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_connector_v2(
+#'   ConnectorId = "string",
+#'   Description = "string",
+#'   Provider = list(
+#'     JiraCloud = list(
+#'       ProjectKey = "string"
+#'     ),
+#'     ServiceNow = list(
+#'       SecretArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_update_connector_v2
+#'
+#' @aliases securityhub_update_connector_v2
+securityhub_update_connector_v2 <- function(ConnectorId, Description = NULL, Provider = NULL) {
+  op <- new_operation(
+    name = "UpdateConnectorV2",
+    http_method = "PATCH",
+    http_path = "/connectorsv2/{ConnectorId+}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$update_connector_v2_input(ConnectorId = ConnectorId, Description = Description, Provider = Provider)
+  output <- .securityhub$update_connector_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$update_connector_v2 <- securityhub_update_connector_v2
+
 #' The aggregation Region is now called the home Region
 #'
 #' @description
@@ -17743,37 +20147,37 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'     ProductArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     AwsAccountId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Id = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     GeneratorId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Region = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Type = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     FirstObservedAt = list(
@@ -17837,7 +20241,7 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'     SeverityLabel = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Confidence = list(
@@ -17861,25 +20265,25 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'     Title = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Description = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     RecommendationText = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     SourceUrl = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ProductFields = list(
@@ -17892,13 +20296,13 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'     ProductName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     CompanyName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     UserDefinedFields = list(
@@ -17911,37 +20315,37 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'     MalwareName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     MalwareType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     MalwarePath = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     MalwareState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NetworkDirection = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NetworkProtocol = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NetworkSourceIpV4 = list(
@@ -17966,13 +20370,13 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'     NetworkSourceDomain = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NetworkSourceMac = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NetworkDestinationIpV4 = list(
@@ -17997,19 +20401,19 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'     NetworkDestinationDomain = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ProcessName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ProcessPath = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ProcessPid = list(
@@ -18053,19 +20457,19 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'     ThreatIntelIndicatorType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorValue = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorCategory = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorLastObservedAt = list(
@@ -18081,37 +20485,37 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'     ThreatIntelIndicatorSource = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorSourceUrl = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourcePartition = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceRegion = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceTags = list(
@@ -18124,13 +20528,13 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'     ResourceAwsEc2InstanceType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceImageId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceIpV4Addresses = list(
@@ -18146,25 +20550,25 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'     ResourceAwsEc2InstanceKeyName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceIamInstanceProfileArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceVpcId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceSubnetId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceLaunchedAt = list(
@@ -18180,31 +20584,31 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'     ResourceAwsS3BucketOwnerId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsS3BucketOwnerName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyUserName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyPrincipalName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyStatus = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyCreatedAt = list(
@@ -18220,25 +20624,25 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'     ResourceAwsIamUserUserName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceContainerName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceContainerImageId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceContainerImageName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceContainerLaunchedAt = list(
@@ -18261,49 +20665,49 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'     ComplianceStatus = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     VerificationState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     WorkflowState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     WorkflowStatus = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     RecordState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     RelatedFindingsProductArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     RelatedFindingsId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NoteText = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NoteUpdatedAt = list(
@@ -18319,7 +20723,7 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'     NoteUpdatedBy = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Keyword = list(
@@ -18348,31 +20752,31 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'     FindingProviderFieldsRelatedFindingsId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     FindingProviderFieldsRelatedFindingsProductArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     FindingProviderFieldsSeverityLabel = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     FindingProviderFieldsSeverityOriginal = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     FindingProviderFieldsTypes = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Sample = list(
@@ -18383,55 +20787,55 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'     ComplianceSecurityControlId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ComplianceAssociatedStandardsId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     VulnerabilitiesExploitAvailable = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     VulnerabilitiesFixAvailable = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ComplianceSecurityControlParametersName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ComplianceSecurityControlParametersValue = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     AwsAccountName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceApplicationName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceApplicationArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     )
 #'   ),
@@ -18493,37 +20897,37 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     ProductArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     AwsAccountId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Id = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     GeneratorId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Region = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Type = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     FirstObservedAt = list(
@@ -18587,7 +20991,7 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     SeverityLabel = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Confidence = list(
@@ -18611,25 +21015,25 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     Title = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Description = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     RecommendationText = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     SourceUrl = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ProductFields = list(
@@ -18642,13 +21046,13 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     ProductName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     CompanyName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     UserDefinedFields = list(
@@ -18661,37 +21065,37 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     MalwareName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     MalwareType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     MalwarePath = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     MalwareState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NetworkDirection = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NetworkProtocol = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NetworkSourceIpV4 = list(
@@ -18716,13 +21120,13 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     NetworkSourceDomain = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NetworkSourceMac = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NetworkDestinationIpV4 = list(
@@ -18747,19 +21151,19 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     NetworkDestinationDomain = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ProcessName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ProcessPath = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ProcessPid = list(
@@ -18803,19 +21207,19 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     ThreatIntelIndicatorType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorValue = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorCategory = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorLastObservedAt = list(
@@ -18831,37 +21235,37 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     ThreatIntelIndicatorSource = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorSourceUrl = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourcePartition = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceRegion = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceTags = list(
@@ -18874,13 +21278,13 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     ResourceAwsEc2InstanceType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceImageId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceIpV4Addresses = list(
@@ -18896,25 +21300,25 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     ResourceAwsEc2InstanceKeyName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceIamInstanceProfileArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceVpcId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceSubnetId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceLaunchedAt = list(
@@ -18930,31 +21334,31 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     ResourceAwsS3BucketOwnerId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsS3BucketOwnerName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyUserName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyPrincipalName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyStatus = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyCreatedAt = list(
@@ -18970,25 +21374,25 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     ResourceAwsIamUserUserName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceContainerName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceContainerImageId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceContainerImageName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceContainerLaunchedAt = list(
@@ -19011,49 +21415,49 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     ComplianceStatus = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     VerificationState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     WorkflowState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     WorkflowStatus = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     RecordState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     RelatedFindingsProductArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     RelatedFindingsId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NoteText = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     NoteUpdatedAt = list(
@@ -19069,7 +21473,7 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     NoteUpdatedBy = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Keyword = list(
@@ -19098,31 +21502,31 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     FindingProviderFieldsRelatedFindingsId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     FindingProviderFieldsRelatedFindingsProductArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     FindingProviderFieldsSeverityLabel = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     FindingProviderFieldsSeverityOriginal = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     FindingProviderFieldsTypes = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     Sample = list(
@@ -19133,55 +21537,55 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     ComplianceSecurityControlId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ComplianceAssociatedStandardsId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     VulnerabilitiesExploitAvailable = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     VulnerabilitiesFixAvailable = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ComplianceSecurityControlParametersName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ComplianceSecurityControlParametersValue = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     AwsAccountName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceApplicationName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     ),
 #'     ResourceApplicationArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"|"CONTAINS_WORD"
 #'       )
 #'     )
 #'   ),

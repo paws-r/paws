@@ -2,7 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_update_route_calculator}
 \alias{locationservice_update_route_calculator}
-\title{Updates the specified properties for a given route calculator resource}
+\title{This operation is no longer current and may be deprecated in the future}
 \usage{
 locationservice_update_route_calculator(
   CalculatorName,
@@ -19,7 +19,7 @@ locationservice_update_route_calculator(
 \item{Description}{Updates the description for the route calculator resource.}
 }
 \description{
-Updates the specified properties for a given route calculator resource.
+This operation is no longer current and may be deprecated in the future. We recommend you upgrade to the Routes API V2 unless you require Grab data.
 
 See \url{https://www.paws-r-sdk.com/docs/locationservice_update_route_calculator/} for full documentation.
 }

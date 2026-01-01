@@ -12,6 +12,7 @@ directoryservice_create_trust(
   TrustDirection,
   TrustType = NULL,
   ConditionalForwarderIpAddrs = NULL,
+  ConditionalForwarderIpv6Addrs = NULL,
   SelectiveAuth = NULL
 )
 }
@@ -30,6 +31,9 @@ was used when creating the trust relationship on the external domain.}
 \item{TrustType}{The trust relationship type. \code{Forest} is the default.}
 
 \item{ConditionalForwarderIpAddrs}{The IP addresses of the remote DNS server associated with
+RemoteDomainName.}
+
+\item{ConditionalForwarderIpv6Addrs}{The IPv6 addresses of the remote DNS server associated with
 RemoteDomainName.}
 
 \item{SelectiveAuth}{Optional parameter to enable selective authentication for the trust.}

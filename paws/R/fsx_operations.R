@@ -285,7 +285,8 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'           UserName = "string",
 #'           DnsIps = list(
 #'             "string"
-#'           )
+#'           ),
+#'           DomainJoinServiceAccountSecret = "string"
 #'         ),
 #'         DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'         RemoteAdministrationEndpoint = "string",
@@ -313,6 +314,11 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'         DiskIopsConfiguration = list(
 #'           Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'           Iops = 123
+#'         ),
+#'         PreferredFileServerIpv6 = "string",
+#'         FsrmConfiguration = list(
+#'           FsrmServiceEnabled = TRUE|FALSE,
+#'           EventLogDestination = "string"
 #'         )
 #'       ),
 #'       LustreConfiguration = list(
@@ -349,7 +355,12 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'           Iops = 123,
 #'           Mode = "AUTOMATIC"|"USER_PROVISIONED"
 #'         ),
-#'         EfaEnabled = TRUE|FALSE
+#'         EfaEnabled = TRUE|FALSE,
+#'         ThroughputCapacity = 123,
+#'         DataReadCacheConfiguration = list(
+#'           SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'           SizeGiB = 123
+#'         )
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
@@ -358,7 +369,7 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
 #'           ),
-#'           Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING",
+#'           Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING"|"PAUSED"|"CANCELLED",
 #'           TargetFileSystemValues = list(),
 #'           FailureDetails = list(
 #'             Message = "string"
@@ -494,7 +505,8 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'             AdministrativeActions = list()
 #'           ),
 #'           TotalTransferBytes = 123,
-#'           RemainingTransferBytes = 123
+#'           RemainingTransferBytes = 123,
+#'           Message = "string"
 #'         )
 #'       ),
 #'       OntapConfiguration = list(
@@ -507,11 +519,17 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'             DNSName = "string",
 #'             IpAddresses = list(
 #'               "string"
+#'             ),
+#'             Ipv6Addresses = list(
+#'               "string"
 #'             )
 #'           ),
 #'           Management = list(
 #'             DNSName = "string",
 #'             IpAddresses = list(
+#'               "string"
+#'             ),
+#'             Ipv6Addresses = list(
 #'               "string"
 #'             )
 #'           )
@@ -528,7 +546,8 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'         WeeklyMaintenanceStartTime = "string",
 #'         FsxAdminPassword = "string",
 #'         HAPairs = 123,
-#'         ThroughputCapacityPerHAPair = 123
+#'         ThroughputCapacityPerHAPair = 123,
+#'         EndpointIpv6AddressRange = "string"
 #'       ),
 #'       FileSystemTypeVersion = "string",
 #'       OpenZFSConfiguration = list(
@@ -546,15 +565,18 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'         RootVolumeId = "string",
 #'         PreferredSubnetId = "string",
 #'         EndpointIpAddressRange = "string",
+#'         EndpointIpv6AddressRange = "string",
 #'         RouteTableIds = list(
 #'           "string"
 #'         ),
 #'         EndpointIpAddress = "string",
+#'         EndpointIpv6Address = "string",
 #'         ReadCacheConfiguration = list(
 #'           SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
 #'           SizeGiB = 123
 #'         )
-#'       )
+#'       ),
+#'       NetworkType = "IPV4"|"DUAL"
 #'     ),
 #'     DirectoryInformation = list(
 #'       DomainName = "string",
@@ -640,7 +662,7 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
 #'           ),
-#'           Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING",
+#'           Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING"|"PAUSED"|"CANCELLED",
 #'           TargetFileSystemValues = list(
 #'             OwnerId = "string",
 #'             CreationTime = as.POSIXct(
@@ -679,7 +701,8 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'                 UserName = "string",
 #'                 DnsIps = list(
 #'                   "string"
-#'                 )
+#'                 ),
+#'                 DomainJoinServiceAccountSecret = "string"
 #'               ),
 #'               DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'               RemoteAdministrationEndpoint = "string",
@@ -707,6 +730,11 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'               DiskIopsConfiguration = list(
 #'                 Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'                 Iops = 123
+#'               ),
+#'               PreferredFileServerIpv6 = "string",
+#'               FsrmConfiguration = list(
+#'                 FsrmServiceEnabled = TRUE|FALSE,
+#'                 EventLogDestination = "string"
 #'               )
 #'             ),
 #'             LustreConfiguration = list(
@@ -743,7 +771,12 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'                 Iops = 123,
 #'                 Mode = "AUTOMATIC"|"USER_PROVISIONED"
 #'               ),
-#'               EfaEnabled = TRUE|FALSE
+#'               EfaEnabled = TRUE|FALSE,
+#'               ThroughputCapacity = 123,
+#'               DataReadCacheConfiguration = list(
+#'                 SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'                 SizeGiB = 123
+#'               )
 #'             ),
 #'             AdministrativeActions = list(),
 #'             OntapConfiguration = list(
@@ -756,11 +789,17 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'                   DNSName = "string",
 #'                   IpAddresses = list(
 #'                     "string"
+#'                   ),
+#'                   Ipv6Addresses = list(
+#'                     "string"
 #'                   )
 #'                 ),
 #'                 Management = list(
 #'                   DNSName = "string",
 #'                   IpAddresses = list(
+#'                     "string"
+#'                   ),
+#'                   Ipv6Addresses = list(
 #'                     "string"
 #'                   )
 #'                 )
@@ -777,7 +816,8 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'               WeeklyMaintenanceStartTime = "string",
 #'               FsxAdminPassword = "string",
 #'               HAPairs = 123,
-#'               ThroughputCapacityPerHAPair = 123
+#'               ThroughputCapacityPerHAPair = 123,
+#'               EndpointIpv6AddressRange = "string"
 #'             ),
 #'             FileSystemTypeVersion = "string",
 #'             OpenZFSConfiguration = list(
@@ -795,15 +835,18 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'               RootVolumeId = "string",
 #'               PreferredSubnetId = "string",
 #'               EndpointIpAddressRange = "string",
+#'               EndpointIpv6AddressRange = "string",
 #'               RouteTableIds = list(
 #'                 "string"
 #'               ),
 #'               EndpointIpAddress = "string",
+#'               EndpointIpv6Address = "string",
 #'               ReadCacheConfiguration = list(
 #'                 SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
 #'                 SizeGiB = 123
 #'               )
-#'             )
+#'             ),
+#'             NetworkType = "IPV4"|"DUAL"
 #'           ),
 #'           FailureDetails = list(
 #'             Message = "string"
@@ -830,7 +873,8 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'             AdministrativeActions = list()
 #'           ),
 #'           TotalTransferBytes = 123,
-#'           RemainingTransferBytes = 123
+#'           RemainingTransferBytes = 123,
+#'           Message = "string"
 #'         )
 #'       ),
 #'       OpenZFSConfiguration = list(
@@ -986,7 +1030,7 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'       RequestTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING",
+#'       Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING"|"PAUSED"|"CANCELLED",
 #'       TargetFileSystemValues = list(
 #'         OwnerId = "string",
 #'         CreationTime = as.POSIXct(
@@ -1025,7 +1069,8 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'             UserName = "string",
 #'             DnsIps = list(
 #'               "string"
-#'             )
+#'             ),
+#'             DomainJoinServiceAccountSecret = "string"
 #'           ),
 #'           DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'           RemoteAdministrationEndpoint = "string",
@@ -1053,6 +1098,11 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'           DiskIopsConfiguration = list(
 #'             Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'             Iops = 123
+#'           ),
+#'           PreferredFileServerIpv6 = "string",
+#'           FsrmConfiguration = list(
+#'             FsrmServiceEnabled = TRUE|FALSE,
+#'             EventLogDestination = "string"
 #'           )
 #'         ),
 #'         LustreConfiguration = list(
@@ -1089,7 +1139,12 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'             Iops = 123,
 #'             Mode = "AUTOMATIC"|"USER_PROVISIONED"
 #'           ),
-#'           EfaEnabled = TRUE|FALSE
+#'           EfaEnabled = TRUE|FALSE,
+#'           ThroughputCapacity = 123,
+#'           DataReadCacheConfiguration = list(
+#'             SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'             SizeGiB = 123
+#'           )
 #'         ),
 #'         AdministrativeActions = list(),
 #'         OntapConfiguration = list(
@@ -1102,11 +1157,17 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'               DNSName = "string",
 #'               IpAddresses = list(
 #'                 "string"
+#'               ),
+#'               Ipv6Addresses = list(
+#'                 "string"
 #'               )
 #'             ),
 #'             Management = list(
 #'               DNSName = "string",
 #'               IpAddresses = list(
+#'                 "string"
+#'               ),
+#'               Ipv6Addresses = list(
 #'                 "string"
 #'               )
 #'             )
@@ -1123,7 +1184,8 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'           WeeklyMaintenanceStartTime = "string",
 #'           FsxAdminPassword = "string",
 #'           HAPairs = 123,
-#'           ThroughputCapacityPerHAPair = 123
+#'           ThroughputCapacityPerHAPair = 123,
+#'           EndpointIpv6AddressRange = "string"
 #'         ),
 #'         FileSystemTypeVersion = "string",
 #'         OpenZFSConfiguration = list(
@@ -1141,15 +1203,18 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'           RootVolumeId = "string",
 #'           PreferredSubnetId = "string",
 #'           EndpointIpAddressRange = "string",
+#'           EndpointIpv6AddressRange = "string",
 #'           RouteTableIds = list(
 #'             "string"
 #'           ),
 #'           EndpointIpAddress = "string",
+#'           EndpointIpv6Address = "string",
 #'           ReadCacheConfiguration = list(
 #'             SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
 #'             SizeGiB = 123
 #'           )
-#'         )
+#'         ),
+#'         NetworkType = "IPV4"|"DUAL"
 #'       ),
 #'       FailureDetails = list(
 #'         Message = "string"
@@ -1285,7 +1350,8 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'         AdministrativeActions = list()
 #'       ),
 #'       TotalTransferBytes = 123,
-#'       RemainingTransferBytes = 123
+#'       RemainingTransferBytes = 123,
+#'       Message = "string"
 #'     )
 #'   )
 #' )
@@ -1327,6 +1393,166 @@ fsx_copy_snapshot_and_update_volume <- function(ClientRequestToken = NULL, Volum
   return(response)
 }
 .fsx$operations$copy_snapshot_and_update_volume <- fsx_copy_snapshot_and_update_volume
+
+#' Creates an S3 access point and attaches it to an Amazon FSx volume
+#'
+#' @description
+#' Creates an S3 access point and attaches it to an Amazon FSx volume. For
+#' FSx for OpenZFS file systems, the volume must be hosted on a
+#' high-availability file system, either Single-AZ or Multi-AZ. For more
+#' information, see [Accessing your data using Amazon S3 access
+#' points](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/s3accesspoints-for-FSx.html).
+#' in the Amazon FSx for OpenZFS User Guide.
+#' 
+#' The requester requires the following permissions to perform these
+#' actions:
+#' 
+#' -   `fsx:CreateAndAttachS3AccessPoint`
+#' 
+#' -   `s3:CreateAccessPoint`
+#' 
+#' -   `s3:GetAccessPoint`
+#' 
+#' -   `s3:PutAccessPointPolicy`
+#' 
+#' -   `s3:DeleteAccessPoint`
+#' 
+#' The following actions are related to
+#' [`create_and_attach_s3_access_point`][fsx_create_and_attach_s3_access_point]:
+#' 
+#' -   [`describe_s3_access_point_attachments`][fsx_describe_s3_access_point_attachments]
+#' 
+#' -   [`detach_and_delete_s3_access_point`][fsx_detach_and_delete_s3_access_point]
+#'
+#' @usage
+#' fsx_create_and_attach_s3_access_point(ClientRequestToken, Name, Type,
+#'   OpenZFSConfiguration, OntapConfiguration, S3AccessPoint)
+#'
+#' @param ClientRequestToken 
+#' @param Name &#91;required&#93; The name you want to assign to this S3 access point.
+#' @param Type &#91;required&#93; The type of S3 access point you want to create. Only `OpenZFS` is
+#' supported.
+#' @param OpenZFSConfiguration Specifies the configuration to use when creating and attaching an S3
+#' access point to an FSx for OpenZFS volume.
+#' @param OntapConfiguration 
+#' @param S3AccessPoint Specifies the virtual private cloud (VPC) configuration if you're
+#' creating an access point that is restricted to a VPC. For more
+#' information, see [Creating access points restricted to a virtual private
+#' cloud](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/access-points-vpc.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   S3AccessPointAttachment = list(
+#'     Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"UPDATING"|"FAILED"|"MISCONFIGURED",
+#'     LifecycleTransitionReason = list(
+#'       Message = "string"
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Name = "string",
+#'     Type = "OPENZFS"|"ONTAP",
+#'     OpenZFSConfiguration = list(
+#'       VolumeId = "string",
+#'       FileSystemIdentity = list(
+#'         Type = "POSIX",
+#'         PosixUser = list(
+#'           Uid = 123,
+#'           Gid = 123,
+#'           SecondaryGids = list(
+#'             123
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     OntapConfiguration = list(
+#'       VolumeId = "string",
+#'       FileSystemIdentity = list(
+#'         Type = "UNIX"|"WINDOWS",
+#'         UnixUser = list(
+#'           Name = "string"
+#'         ),
+#'         WindowsUser = list(
+#'           Name = "string"
+#'         )
+#'       )
+#'     ),
+#'     S3AccessPoint = list(
+#'       ResourceARN = "string",
+#'       Alias = "string",
+#'       VpcConfiguration = list(
+#'         VpcId = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_and_attach_s3_access_point(
+#'   ClientRequestToken = "string",
+#'   Name = "string",
+#'   Type = "OPENZFS"|"ONTAP",
+#'   OpenZFSConfiguration = list(
+#'     VolumeId = "string",
+#'     FileSystemIdentity = list(
+#'       Type = "POSIX",
+#'       PosixUser = list(
+#'         Uid = 123,
+#'         Gid = 123,
+#'         SecondaryGids = list(
+#'           123
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   OntapConfiguration = list(
+#'     VolumeId = "string",
+#'     FileSystemIdentity = list(
+#'       Type = "UNIX"|"WINDOWS",
+#'       UnixUser = list(
+#'         Name = "string"
+#'       ),
+#'       WindowsUser = list(
+#'         Name = "string"
+#'       )
+#'     )
+#'   ),
+#'   S3AccessPoint = list(
+#'     VpcConfiguration = list(
+#'       VpcId = "string"
+#'     ),
+#'     Policy = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_create_and_attach_s3_access_point
+#'
+#' @aliases fsx_create_and_attach_s3_access_point
+fsx_create_and_attach_s3_access_point <- function(ClientRequestToken = NULL, Name, Type, OpenZFSConfiguration = NULL, OntapConfiguration = NULL, S3AccessPoint = NULL) {
+  op <- new_operation(
+    name = "CreateAndAttachS3AccessPoint",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .fsx$create_and_attach_s3_access_point_input(ClientRequestToken = ClientRequestToken, Name = Name, Type = Type, OpenZFSConfiguration = OpenZFSConfiguration, OntapConfiguration = OntapConfiguration, S3AccessPoint = S3AccessPoint)
+  output <- .fsx$create_and_attach_s3_access_point_output()
+  config <- get_config()
+  svc <- .fsx$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$create_and_attach_s3_access_point <- fsx_create_and_attach_s3_access_point
 
 #' Creates a backup of an existing Amazon FSx for Windows File Server file
 #' system, Amazon FSx for Lustre file system, Amazon FSx for NetApp ONTAP
@@ -1464,7 +1690,8 @@ fsx_copy_snapshot_and_update_volume <- function(ClientRequestToken = NULL, Volum
 #'           UserName = "string",
 #'           DnsIps = list(
 #'             "string"
-#'           )
+#'           ),
+#'           DomainJoinServiceAccountSecret = "string"
 #'         ),
 #'         DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'         RemoteAdministrationEndpoint = "string",
@@ -1492,6 +1719,11 @@ fsx_copy_snapshot_and_update_volume <- function(ClientRequestToken = NULL, Volum
 #'         DiskIopsConfiguration = list(
 #'           Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'           Iops = 123
+#'         ),
+#'         PreferredFileServerIpv6 = "string",
+#'         FsrmConfiguration = list(
+#'           FsrmServiceEnabled = TRUE|FALSE,
+#'           EventLogDestination = "string"
 #'         )
 #'       ),
 #'       LustreConfiguration = list(
@@ -1528,7 +1760,12 @@ fsx_copy_snapshot_and_update_volume <- function(ClientRequestToken = NULL, Volum
 #'           Iops = 123,
 #'           Mode = "AUTOMATIC"|"USER_PROVISIONED"
 #'         ),
-#'         EfaEnabled = TRUE|FALSE
+#'         EfaEnabled = TRUE|FALSE,
+#'         ThroughputCapacity = 123,
+#'         DataReadCacheConfiguration = list(
+#'           SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'           SizeGiB = 123
+#'         )
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
@@ -1537,7 +1774,7 @@ fsx_copy_snapshot_and_update_volume <- function(ClientRequestToken = NULL, Volum
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
 #'           ),
-#'           Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING",
+#'           Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING"|"PAUSED"|"CANCELLED",
 #'           TargetFileSystemValues = list(),
 #'           FailureDetails = list(
 #'             Message = "string"
@@ -1673,7 +1910,8 @@ fsx_copy_snapshot_and_update_volume <- function(ClientRequestToken = NULL, Volum
 #'             AdministrativeActions = list()
 #'           ),
 #'           TotalTransferBytes = 123,
-#'           RemainingTransferBytes = 123
+#'           RemainingTransferBytes = 123,
+#'           Message = "string"
 #'         )
 #'       ),
 #'       OntapConfiguration = list(
@@ -1686,11 +1924,17 @@ fsx_copy_snapshot_and_update_volume <- function(ClientRequestToken = NULL, Volum
 #'             DNSName = "string",
 #'             IpAddresses = list(
 #'               "string"
+#'             ),
+#'             Ipv6Addresses = list(
+#'               "string"
 #'             )
 #'           ),
 #'           Management = list(
 #'             DNSName = "string",
 #'             IpAddresses = list(
+#'               "string"
+#'             ),
+#'             Ipv6Addresses = list(
 #'               "string"
 #'             )
 #'           )
@@ -1707,7 +1951,8 @@ fsx_copy_snapshot_and_update_volume <- function(ClientRequestToken = NULL, Volum
 #'         WeeklyMaintenanceStartTime = "string",
 #'         FsxAdminPassword = "string",
 #'         HAPairs = 123,
-#'         ThroughputCapacityPerHAPair = 123
+#'         ThroughputCapacityPerHAPair = 123,
+#'         EndpointIpv6AddressRange = "string"
 #'       ),
 #'       FileSystemTypeVersion = "string",
 #'       OpenZFSConfiguration = list(
@@ -1725,15 +1970,18 @@ fsx_copy_snapshot_and_update_volume <- function(ClientRequestToken = NULL, Volum
 #'         RootVolumeId = "string",
 #'         PreferredSubnetId = "string",
 #'         EndpointIpAddressRange = "string",
+#'         EndpointIpv6AddressRange = "string",
 #'         RouteTableIds = list(
 #'           "string"
 #'         ),
 #'         EndpointIpAddress = "string",
+#'         EndpointIpv6Address = "string",
 #'         ReadCacheConfiguration = list(
 #'           SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
 #'           SizeGiB = 123
 #'         )
-#'       )
+#'       ),
+#'       NetworkType = "IPV4"|"DUAL"
 #'     ),
 #'     DirectoryInformation = list(
 #'       DomainName = "string",
@@ -1819,7 +2067,7 @@ fsx_copy_snapshot_and_update_volume <- function(ClientRequestToken = NULL, Volum
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
 #'           ),
-#'           Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING",
+#'           Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING"|"PAUSED"|"CANCELLED",
 #'           TargetFileSystemValues = list(
 #'             OwnerId = "string",
 #'             CreationTime = as.POSIXct(
@@ -1858,7 +2106,8 @@ fsx_copy_snapshot_and_update_volume <- function(ClientRequestToken = NULL, Volum
 #'                 UserName = "string",
 #'                 DnsIps = list(
 #'                   "string"
-#'                 )
+#'                 ),
+#'                 DomainJoinServiceAccountSecret = "string"
 #'               ),
 #'               DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'               RemoteAdministrationEndpoint = "string",
@@ -1886,6 +2135,11 @@ fsx_copy_snapshot_and_update_volume <- function(ClientRequestToken = NULL, Volum
 #'               DiskIopsConfiguration = list(
 #'                 Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'                 Iops = 123
+#'               ),
+#'               PreferredFileServerIpv6 = "string",
+#'               FsrmConfiguration = list(
+#'                 FsrmServiceEnabled = TRUE|FALSE,
+#'                 EventLogDestination = "string"
 #'               )
 #'             ),
 #'             LustreConfiguration = list(
@@ -1922,7 +2176,12 @@ fsx_copy_snapshot_and_update_volume <- function(ClientRequestToken = NULL, Volum
 #'                 Iops = 123,
 #'                 Mode = "AUTOMATIC"|"USER_PROVISIONED"
 #'               ),
-#'               EfaEnabled = TRUE|FALSE
+#'               EfaEnabled = TRUE|FALSE,
+#'               ThroughputCapacity = 123,
+#'               DataReadCacheConfiguration = list(
+#'                 SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'                 SizeGiB = 123
+#'               )
 #'             ),
 #'             AdministrativeActions = list(),
 #'             OntapConfiguration = list(
@@ -1935,11 +2194,17 @@ fsx_copy_snapshot_and_update_volume <- function(ClientRequestToken = NULL, Volum
 #'                   DNSName = "string",
 #'                   IpAddresses = list(
 #'                     "string"
+#'                   ),
+#'                   Ipv6Addresses = list(
+#'                     "string"
 #'                   )
 #'                 ),
 #'                 Management = list(
 #'                   DNSName = "string",
 #'                   IpAddresses = list(
+#'                     "string"
+#'                   ),
+#'                   Ipv6Addresses = list(
 #'                     "string"
 #'                   )
 #'                 )
@@ -1956,7 +2221,8 @@ fsx_copy_snapshot_and_update_volume <- function(ClientRequestToken = NULL, Volum
 #'               WeeklyMaintenanceStartTime = "string",
 #'               FsxAdminPassword = "string",
 #'               HAPairs = 123,
-#'               ThroughputCapacityPerHAPair = 123
+#'               ThroughputCapacityPerHAPair = 123,
+#'               EndpointIpv6AddressRange = "string"
 #'             ),
 #'             FileSystemTypeVersion = "string",
 #'             OpenZFSConfiguration = list(
@@ -1974,15 +2240,18 @@ fsx_copy_snapshot_and_update_volume <- function(ClientRequestToken = NULL, Volum
 #'               RootVolumeId = "string",
 #'               PreferredSubnetId = "string",
 #'               EndpointIpAddressRange = "string",
+#'               EndpointIpv6AddressRange = "string",
 #'               RouteTableIds = list(
 #'                 "string"
 #'               ),
 #'               EndpointIpAddress = "string",
+#'               EndpointIpv6Address = "string",
 #'               ReadCacheConfiguration = list(
 #'                 SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
 #'                 SizeGiB = 123
 #'               )
-#'             )
+#'             ),
+#'             NetworkType = "IPV4"|"DUAL"
 #'           ),
 #'           FailureDetails = list(
 #'             Message = "string"
@@ -2009,7 +2278,8 @@ fsx_copy_snapshot_and_update_volume <- function(ClientRequestToken = NULL, Volum
 #'             AdministrativeActions = list()
 #'           ),
 #'           TotalTransferBytes = 123,
-#'           RemainingTransferBytes = 123
+#'           RemainingTransferBytes = 123,
+#'           Message = "string"
 #'         )
 #'       ),
 #'       OpenZFSConfiguration = list(
@@ -2749,7 +3019,7 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #' fsx_create_file_system(ClientRequestToken, FileSystemType,
 #'   StorageCapacity, StorageType, SubnetIds, SecurityGroupIds, Tags,
 #'   KmsKeyId, WindowsConfiguration, LustreConfiguration, OntapConfiguration,
-#'   FileSystemTypeVersion, OpenZFSConfiguration)
+#'   FileSystemTypeVersion, OpenZFSConfiguration, NetworkType)
 #'
 #' @param ClientRequestToken A string of up to 63 ASCII characters that Amazon FSx uses to ensure
 #' idempotent creation. This string is automatically filled on your behalf
@@ -2796,18 +3066,19 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #' -   Set to `SSD` to use solid state drive storage. SSD is supported on
 #'     all Windows, Lustre, ONTAP, and OpenZFS deployment types.
 #' 
-#' -   Set to `HDD` to use hard disk drive storage. HDD is supported on
+#' -   Set to `HDD` to use hard disk drive storage, which is supported on
 #'     `SINGLE_AZ_2` and `MULTI_AZ_1` Windows file system deployment types,
 #'     and on `PERSISTENT_1` Lustre file system deployment types.
 #' 
 #' -   Set to `INTELLIGENT_TIERING` to use fully elastic,
 #'     intelligently-tiered storage. Intelligent-Tiering is only available
-#'     for OpenZFS file systems with the Multi-AZ deployment type.
+#'     for OpenZFS file systems with the Multi-AZ deployment type and for
+#'     Lustre file systems with the Persistent_2 deployment type.
 #' 
 #' Default value is `SSD`. For more information, see [Storage type
 #' options](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-configuration.html#optimize-storage-costs)
-#' in the *FSx for Windows File Server User Guide*, [Multiple storage
-#' options](https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html#storage-options)
+#' in the *FSx for Windows File Server User Guide*, [FSx for Lustre storage
+#' classes](https://docs.aws.amazon.com/fsx/latest/LustreGuide/using-fsx-lustre.html#lustre-storage-classes)
 #' in the *FSx for Lustre User Guide*, and [Working with
 #' Intelligent-Tiering](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/performance-intelligent-tiering.html)
 #' in the *Amazon FSx for OpenZFS User Guide*.
@@ -2861,6 +3132,11 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #' -   Default value is `2.15` when `DeploymentType` is set to
 #'     `PERSISTENT_2` with a metadata configuration mode.
 #' @param OpenZFSConfiguration The OpenZFS configuration for the file system that's being created.
+#' @param NetworkType The network type of the Amazon FSx file system that you are creating.
+#' Valid values are `IPV4` (which supports IPv4 only) and `DUAL` (for
+#' dual-stack mode, which supports both IPv4 and IPv6). The default is
+#' `IPV4`. Supported for FSx for OpenZFS, FSx for ONTAP, and FSx for
+#' Windows File Server file systems.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2904,7 +3180,8 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'         UserName = "string",
 #'         DnsIps = list(
 #'           "string"
-#'         )
+#'         ),
+#'         DomainJoinServiceAccountSecret = "string"
 #'       ),
 #'       DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'       RemoteAdministrationEndpoint = "string",
@@ -2932,6 +3209,11 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'       DiskIopsConfiguration = list(
 #'         Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'         Iops = 123
+#'       ),
+#'       PreferredFileServerIpv6 = "string",
+#'       FsrmConfiguration = list(
+#'         FsrmServiceEnabled = TRUE|FALSE,
+#'         EventLogDestination = "string"
 #'       )
 #'     ),
 #'     LustreConfiguration = list(
@@ -2968,7 +3250,12 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'         Iops = 123,
 #'         Mode = "AUTOMATIC"|"USER_PROVISIONED"
 #'       ),
-#'       EfaEnabled = TRUE|FALSE
+#'       EfaEnabled = TRUE|FALSE,
+#'       ThroughputCapacity = 123,
+#'       DataReadCacheConfiguration = list(
+#'         SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'         SizeGiB = 123
+#'       )
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
@@ -2977,7 +3264,7 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
-#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING",
+#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING"|"PAUSED"|"CANCELLED",
 #'         TargetFileSystemValues = list(),
 #'         FailureDetails = list(
 #'           Message = "string"
@@ -3113,7 +3400,8 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'           AdministrativeActions = list()
 #'         ),
 #'         TotalTransferBytes = 123,
-#'         RemainingTransferBytes = 123
+#'         RemainingTransferBytes = 123,
+#'         Message = "string"
 #'       )
 #'     ),
 #'     OntapConfiguration = list(
@@ -3126,11 +3414,17 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'           DNSName = "string",
 #'           IpAddresses = list(
 #'             "string"
+#'           ),
+#'           Ipv6Addresses = list(
+#'             "string"
 #'           )
 #'         ),
 #'         Management = list(
 #'           DNSName = "string",
 #'           IpAddresses = list(
+#'             "string"
+#'           ),
+#'           Ipv6Addresses = list(
 #'             "string"
 #'           )
 #'         )
@@ -3147,7 +3441,8 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'       WeeklyMaintenanceStartTime = "string",
 #'       FsxAdminPassword = "string",
 #'       HAPairs = 123,
-#'       ThroughputCapacityPerHAPair = 123
+#'       ThroughputCapacityPerHAPair = 123,
+#'       EndpointIpv6AddressRange = "string"
 #'     ),
 #'     FileSystemTypeVersion = "string",
 #'     OpenZFSConfiguration = list(
@@ -3165,15 +3460,18 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'       RootVolumeId = "string",
 #'       PreferredSubnetId = "string",
 #'       EndpointIpAddressRange = "string",
+#'       EndpointIpv6AddressRange = "string",
 #'       RouteTableIds = list(
 #'         "string"
 #'       ),
 #'       EndpointIpAddress = "string",
+#'       EndpointIpv6Address = "string",
 #'       ReadCacheConfiguration = list(
 #'         SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
 #'         SizeGiB = 123
 #'       )
-#'     )
+#'     ),
+#'     NetworkType = "IPV4"|"DUAL"
 #'   )
 #' )
 #' ```
@@ -3208,7 +3506,8 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'       Password = "string",
 #'       DnsIps = list(
 #'         "string"
-#'       )
+#'       ),
+#'       DomainJoinServiceAccountSecret = "string"
 #'     ),
 #'     DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'     PreferredSubnetId = "string",
@@ -3228,6 +3527,10 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'     DiskIopsConfiguration = list(
 #'       Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'       Iops = 123
+#'     ),
+#'     FsrmConfiguration = list(
+#'       FsrmServiceEnabled = TRUE|FALSE,
+#'       EventLogDestination = "string"
 #'     )
 #'   ),
 #'   LustreConfiguration = list(
@@ -3257,6 +3560,11 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'     MetadataConfiguration = list(
 #'       Iops = 123,
 #'       Mode = "AUTOMATIC"|"USER_PROVISIONED"
+#'     ),
+#'     ThroughputCapacity = 123,
+#'     DataReadCacheConfiguration = list(
+#'       SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'       SizeGiB = 123
 #'     )
 #'   ),
 #'   OntapConfiguration = list(
@@ -3276,7 +3584,8 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'     ThroughputCapacity = 123,
 #'     WeeklyMaintenanceStartTime = "string",
 #'     HAPairs = 123,
-#'     ThroughputCapacityPerHAPair = 123
+#'     ThroughputCapacityPerHAPair = 123,
+#'     EndpointIpv6AddressRange = "string"
 #'   ),
 #'   FileSystemTypeVersion = "string",
 #'   OpenZFSConfiguration = list(
@@ -3318,6 +3627,7 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'     ),
 #'     PreferredSubnetId = "string",
 #'     EndpointIpAddressRange = "string",
+#'     EndpointIpv6AddressRange = "string",
 #'     RouteTableIds = list(
 #'       "string"
 #'     ),
@@ -3325,7 +3635,8 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'       SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
 #'       SizeGiB = 123
 #'     )
-#'   )
+#'   ),
+#'   NetworkType = "IPV4"|"DUAL"
 #' )
 #' ```
 #'
@@ -3369,7 +3680,7 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #' @rdname fsx_create_file_system
 #'
 #' @aliases fsx_create_file_system
-fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, StorageCapacity = NULL, StorageType = NULL, SubnetIds, SecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, OntapConfiguration = NULL, FileSystemTypeVersion = NULL, OpenZFSConfiguration = NULL) {
+fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, StorageCapacity = NULL, StorageType = NULL, SubnetIds, SecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, OntapConfiguration = NULL, FileSystemTypeVersion = NULL, OpenZFSConfiguration = NULL, NetworkType = NULL) {
   op <- new_operation(
     name = "CreateFileSystem",
     http_method = "POST",
@@ -3378,7 +3689,7 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .fsx$create_file_system_input(ClientRequestToken = ClientRequestToken, FileSystemType = FileSystemType, StorageCapacity = StorageCapacity, StorageType = StorageType, SubnetIds = SubnetIds, SecurityGroupIds = SecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, OntapConfiguration = OntapConfiguration, FileSystemTypeVersion = FileSystemTypeVersion, OpenZFSConfiguration = OpenZFSConfiguration)
+  input <- .fsx$create_file_system_input(ClientRequestToken = ClientRequestToken, FileSystemType = FileSystemType, StorageCapacity = StorageCapacity, StorageType = StorageType, SubnetIds = SubnetIds, SecurityGroupIds = SecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, OntapConfiguration = OntapConfiguration, FileSystemTypeVersion = FileSystemTypeVersion, OpenZFSConfiguration = OpenZFSConfiguration, NetworkType = NetworkType)
   output <- .fsx$create_file_system_output()
   config <- get_config()
   svc <- .fsx$service(config, op)
@@ -3435,7 +3746,7 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' fsx_create_file_system_from_backup(BackupId, ClientRequestToken,
 #'   SubnetIds, SecurityGroupIds, Tags, WindowsConfiguration,
 #'   LustreConfiguration, StorageType, KmsKeyId, FileSystemTypeVersion,
-#'   OpenZFSConfiguration, StorageCapacity)
+#'   OpenZFSConfiguration, StorageCapacity, NetworkType)
 #'
 #' @param BackupId &#91;required&#93; 
 #' @param ClientRequestToken A string of up to 63 ASCII characters that Amazon FSx uses to ensure
@@ -3461,8 +3772,9 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' name.
 #' @param WindowsConfiguration The configuration for this Microsoft Windows file system.
 #' @param LustreConfiguration 
-#' @param StorageType Sets the storage type for the Windows or OpenZFS file system that you're
-#' creating from a backup. Valid values are `SSD` and `HDD`.
+#' @param StorageType Sets the storage type for the Windows, OpenZFS, or Lustre file system
+#' that you're creating from a backup. Valid values are `SSD`, `HDD`, and
+#' `INTELLIGENT_TIERING`.
 #' 
 #' -   Set to `SSD` to use solid state drive storage. SSD is supported on
 #'     all Windows and OpenZFS deployment types.
@@ -3470,6 +3782,11 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' -   Set to `HDD` to use hard disk drive storage. HDD is supported on
 #'     `SINGLE_AZ_2` and `MULTI_AZ_1` FSx for Windows File Server file
 #'     system deployment types.
+#' 
+#' -   Set to `INTELLIGENT_TIERING` to use fully elastic,
+#'     intelligently-tiered storage. Intelligent-Tiering is only available
+#'     for OpenZFS file systems with the Multi-AZ deployment type and for
+#'     Lustre file systems with the Persistent_2 deployment type.
 #' 
 #' The default value is `SSD`.
 #' 
@@ -3497,6 +3814,8 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' value that matches the backup's `StorageCapacity` value. If you provide
 #' any other value, Amazon FSx responds with an HTTP status code 400 Bad
 #' Request.
+#' @param NetworkType Sets the network type for the Amazon FSx for OpenZFS file system that
+#' you're creating from a backup.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3540,7 +3859,8 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'         UserName = "string",
 #'         DnsIps = list(
 #'           "string"
-#'         )
+#'         ),
+#'         DomainJoinServiceAccountSecret = "string"
 #'       ),
 #'       DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'       RemoteAdministrationEndpoint = "string",
@@ -3568,6 +3888,11 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'       DiskIopsConfiguration = list(
 #'         Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'         Iops = 123
+#'       ),
+#'       PreferredFileServerIpv6 = "string",
+#'       FsrmConfiguration = list(
+#'         FsrmServiceEnabled = TRUE|FALSE,
+#'         EventLogDestination = "string"
 #'       )
 #'     ),
 #'     LustreConfiguration = list(
@@ -3604,7 +3929,12 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'         Iops = 123,
 #'         Mode = "AUTOMATIC"|"USER_PROVISIONED"
 #'       ),
-#'       EfaEnabled = TRUE|FALSE
+#'       EfaEnabled = TRUE|FALSE,
+#'       ThroughputCapacity = 123,
+#'       DataReadCacheConfiguration = list(
+#'         SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'         SizeGiB = 123
+#'       )
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
@@ -3613,7 +3943,7 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
-#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING",
+#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING"|"PAUSED"|"CANCELLED",
 #'         TargetFileSystemValues = list(),
 #'         FailureDetails = list(
 #'           Message = "string"
@@ -3749,7 +4079,8 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'           AdministrativeActions = list()
 #'         ),
 #'         TotalTransferBytes = 123,
-#'         RemainingTransferBytes = 123
+#'         RemainingTransferBytes = 123,
+#'         Message = "string"
 #'       )
 #'     ),
 #'     OntapConfiguration = list(
@@ -3762,11 +4093,17 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'           DNSName = "string",
 #'           IpAddresses = list(
 #'             "string"
+#'           ),
+#'           Ipv6Addresses = list(
+#'             "string"
 #'           )
 #'         ),
 #'         Management = list(
 #'           DNSName = "string",
 #'           IpAddresses = list(
+#'             "string"
+#'           ),
+#'           Ipv6Addresses = list(
 #'             "string"
 #'           )
 #'         )
@@ -3783,7 +4120,8 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'       WeeklyMaintenanceStartTime = "string",
 #'       FsxAdminPassword = "string",
 #'       HAPairs = 123,
-#'       ThroughputCapacityPerHAPair = 123
+#'       ThroughputCapacityPerHAPair = 123,
+#'       EndpointIpv6AddressRange = "string"
 #'     ),
 #'     FileSystemTypeVersion = "string",
 #'     OpenZFSConfiguration = list(
@@ -3801,15 +4139,18 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'       RootVolumeId = "string",
 #'       PreferredSubnetId = "string",
 #'       EndpointIpAddressRange = "string",
+#'       EndpointIpv6AddressRange = "string",
 #'       RouteTableIds = list(
 #'         "string"
 #'       ),
 #'       EndpointIpAddress = "string",
+#'       EndpointIpv6Address = "string",
 #'       ReadCacheConfiguration = list(
 #'         SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
 #'         SizeGiB = 123
 #'       )
-#'     )
+#'     ),
+#'     NetworkType = "IPV4"|"DUAL"
 #'   )
 #' )
 #' ```
@@ -3841,7 +4182,8 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'       Password = "string",
 #'       DnsIps = list(
 #'         "string"
-#'       )
+#'       ),
+#'       DomainJoinServiceAccountSecret = "string"
 #'     ),
 #'     DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'     PreferredSubnetId = "string",
@@ -3861,6 +4203,10 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'     DiskIopsConfiguration = list(
 #'       Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'       Iops = 123
+#'     ),
+#'     FsrmConfiguration = list(
+#'       FsrmServiceEnabled = TRUE|FALSE,
+#'       EventLogDestination = "string"
 #'     )
 #'   ),
 #'   LustreConfiguration = list(
@@ -3890,6 +4236,11 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'     MetadataConfiguration = list(
 #'       Iops = 123,
 #'       Mode = "AUTOMATIC"|"USER_PROVISIONED"
+#'     ),
+#'     ThroughputCapacity = 123,
+#'     DataReadCacheConfiguration = list(
+#'       SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'       SizeGiB = 123
 #'     )
 #'   ),
 #'   StorageType = "SSD"|"HDD"|"INTELLIGENT_TIERING",
@@ -3934,6 +4285,7 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'     ),
 #'     PreferredSubnetId = "string",
 #'     EndpointIpAddressRange = "string",
+#'     EndpointIpv6AddressRange = "string",
 #'     RouteTableIds = list(
 #'       "string"
 #'     ),
@@ -3942,7 +4294,8 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'       SizeGiB = 123
 #'     )
 #'   ),
-#'   StorageCapacity = 123
+#'   StorageCapacity = 123,
+#'   NetworkType = "IPV4"|"DUAL"
 #' )
 #' ```
 #'
@@ -3975,7 +4328,7 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' @rdname fsx_create_file_system_from_backup
 #'
 #' @aliases fsx_create_file_system_from_backup
-fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NULL, SubnetIds, SecurityGroupIds = NULL, Tags = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, StorageType = NULL, KmsKeyId = NULL, FileSystemTypeVersion = NULL, OpenZFSConfiguration = NULL, StorageCapacity = NULL) {
+fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NULL, SubnetIds, SecurityGroupIds = NULL, Tags = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, StorageType = NULL, KmsKeyId = NULL, FileSystemTypeVersion = NULL, OpenZFSConfiguration = NULL, StorageCapacity = NULL, NetworkType = NULL) {
   op <- new_operation(
     name = "CreateFileSystemFromBackup",
     http_method = "POST",
@@ -3984,7 +4337,7 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .fsx$create_file_system_from_backup_input(BackupId = BackupId, ClientRequestToken = ClientRequestToken, SubnetIds = SubnetIds, SecurityGroupIds = SecurityGroupIds, Tags = Tags, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, StorageType = StorageType, KmsKeyId = KmsKeyId, FileSystemTypeVersion = FileSystemTypeVersion, OpenZFSConfiguration = OpenZFSConfiguration, StorageCapacity = StorageCapacity)
+  input <- .fsx$create_file_system_from_backup_input(BackupId = BackupId, ClientRequestToken = ClientRequestToken, SubnetIds = SubnetIds, SecurityGroupIds = SecurityGroupIds, Tags = Tags, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, StorageType = StorageType, KmsKeyId = KmsKeyId, FileSystemTypeVersion = FileSystemTypeVersion, OpenZFSConfiguration = OpenZFSConfiguration, StorageCapacity = StorageCapacity, NetworkType = NetworkType)
   output <- .fsx$create_file_system_from_backup_output()
   config <- get_config()
   svc <- .fsx$service(config, op)
@@ -4065,7 +4418,7 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
-#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING",
+#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING"|"PAUSED"|"CANCELLED",
 #'         TargetFileSystemValues = list(
 #'           OwnerId = "string",
 #'           CreationTime = as.POSIXct(
@@ -4104,7 +4457,8 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #'               UserName = "string",
 #'               DnsIps = list(
 #'                 "string"
-#'               )
+#'               ),
+#'               DomainJoinServiceAccountSecret = "string"
 #'             ),
 #'             DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'             RemoteAdministrationEndpoint = "string",
@@ -4132,6 +4486,11 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #'             DiskIopsConfiguration = list(
 #'               Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'               Iops = 123
+#'             ),
+#'             PreferredFileServerIpv6 = "string",
+#'             FsrmConfiguration = list(
+#'               FsrmServiceEnabled = TRUE|FALSE,
+#'               EventLogDestination = "string"
 #'             )
 #'           ),
 #'           LustreConfiguration = list(
@@ -4168,7 +4527,12 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #'               Iops = 123,
 #'               Mode = "AUTOMATIC"|"USER_PROVISIONED"
 #'             ),
-#'             EfaEnabled = TRUE|FALSE
+#'             EfaEnabled = TRUE|FALSE,
+#'             ThroughputCapacity = 123,
+#'             DataReadCacheConfiguration = list(
+#'               SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'               SizeGiB = 123
+#'             )
 #'           ),
 #'           AdministrativeActions = list(),
 #'           OntapConfiguration = list(
@@ -4181,11 +4545,17 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #'                 DNSName = "string",
 #'                 IpAddresses = list(
 #'                   "string"
+#'                 ),
+#'                 Ipv6Addresses = list(
+#'                   "string"
 #'                 )
 #'               ),
 #'               Management = list(
 #'                 DNSName = "string",
 #'                 IpAddresses = list(
+#'                   "string"
+#'                 ),
+#'                 Ipv6Addresses = list(
 #'                   "string"
 #'                 )
 #'               )
@@ -4202,7 +4572,8 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #'             WeeklyMaintenanceStartTime = "string",
 #'             FsxAdminPassword = "string",
 #'             HAPairs = 123,
-#'             ThroughputCapacityPerHAPair = 123
+#'             ThroughputCapacityPerHAPair = 123,
+#'             EndpointIpv6AddressRange = "string"
 #'           ),
 #'           FileSystemTypeVersion = "string",
 #'           OpenZFSConfiguration = list(
@@ -4220,15 +4591,18 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #'             RootVolumeId = "string",
 #'             PreferredSubnetId = "string",
 #'             EndpointIpAddressRange = "string",
+#'             EndpointIpv6AddressRange = "string",
 #'             RouteTableIds = list(
 #'               "string"
 #'             ),
 #'             EndpointIpAddress = "string",
+#'             EndpointIpv6Address = "string",
 #'             ReadCacheConfiguration = list(
 #'               SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
 #'               SizeGiB = 123
 #'             )
-#'           )
+#'           ),
+#'           NetworkType = "IPV4"|"DUAL"
 #'         ),
 #'         FailureDetails = list(
 #'           Message = "string"
@@ -4345,7 +4719,8 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #'         ),
 #'         TargetSnapshotValues = list(),
 #'         TotalTransferBytes = 123,
-#'         RemainingTransferBytes = 123
+#'         RemainingTransferBytes = 123,
+#'         Message = "string"
 #'       )
 #'     )
 #'   )
@@ -4445,7 +4820,8 @@ fsx_create_snapshot <- function(ClientRequestToken = NULL, Name, VolumeId, Tags 
 #'         UserName = "string",
 #'         DnsIps = list(
 #'           "string"
-#'         )
+#'         ),
+#'         DomainJoinServiceAccountSecret = "string"
 #'       )
 #'     ),
 #'     CreationTime = as.POSIXct(
@@ -4456,11 +4832,17 @@ fsx_create_snapshot <- function(ClientRequestToken = NULL, Name, VolumeId, Tags 
 #'         DNSName = "string",
 #'         IpAddresses = list(
 #'           "string"
+#'         ),
+#'         Ipv6Addresses = list(
+#'           "string"
 #'         )
 #'       ),
 #'       Management = list(
 #'         DNSName = "string",
 #'         IpAddresses = list(
+#'           "string"
+#'         ),
+#'         Ipv6Addresses = list(
 #'           "string"
 #'         )
 #'       ),
@@ -4468,11 +4850,17 @@ fsx_create_snapshot <- function(ClientRequestToken = NULL, Name, VolumeId, Tags 
 #'         DNSName = "string",
 #'         IpAddresses = list(
 #'           "string"
+#'         ),
+#'         Ipv6Addresses = list(
+#'           "string"
 #'         )
 #'       ),
 #'       Smb = list(
 #'         DNSName = "string",
 #'         IpAddresses = list(
+#'           "string"
+#'         ),
+#'         Ipv6Addresses = list(
 #'           "string"
 #'         )
 #'       )
@@ -4511,7 +4899,8 @@ fsx_create_snapshot <- function(ClientRequestToken = NULL, Name, VolumeId, Tags 
 #'       Password = "string",
 #'       DnsIps = list(
 #'         "string"
-#'       )
+#'       ),
+#'       DomainJoinServiceAccountSecret = "string"
 #'     )
 #'   ),
 #'   ClientRequestToken = "string",
@@ -4648,7 +5037,7 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
-#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING",
+#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING"|"PAUSED"|"CANCELLED",
 #'         TargetFileSystemValues = list(
 #'           OwnerId = "string",
 #'           CreationTime = as.POSIXct(
@@ -4687,7 +5076,8 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'               UserName = "string",
 #'               DnsIps = list(
 #'                 "string"
-#'               )
+#'               ),
+#'               DomainJoinServiceAccountSecret = "string"
 #'             ),
 #'             DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'             RemoteAdministrationEndpoint = "string",
@@ -4715,6 +5105,11 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'             DiskIopsConfiguration = list(
 #'               Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'               Iops = 123
+#'             ),
+#'             PreferredFileServerIpv6 = "string",
+#'             FsrmConfiguration = list(
+#'               FsrmServiceEnabled = TRUE|FALSE,
+#'               EventLogDestination = "string"
 #'             )
 #'           ),
 #'           LustreConfiguration = list(
@@ -4751,7 +5146,12 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'               Iops = 123,
 #'               Mode = "AUTOMATIC"|"USER_PROVISIONED"
 #'             ),
-#'             EfaEnabled = TRUE|FALSE
+#'             EfaEnabled = TRUE|FALSE,
+#'             ThroughputCapacity = 123,
+#'             DataReadCacheConfiguration = list(
+#'               SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'               SizeGiB = 123
+#'             )
 #'           ),
 #'           AdministrativeActions = list(),
 #'           OntapConfiguration = list(
@@ -4764,11 +5164,17 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'                 DNSName = "string",
 #'                 IpAddresses = list(
 #'                   "string"
+#'                 ),
+#'                 Ipv6Addresses = list(
+#'                   "string"
 #'                 )
 #'               ),
 #'               Management = list(
 #'                 DNSName = "string",
 #'                 IpAddresses = list(
+#'                   "string"
+#'                 ),
+#'                 Ipv6Addresses = list(
 #'                   "string"
 #'                 )
 #'               )
@@ -4785,7 +5191,8 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'             WeeklyMaintenanceStartTime = "string",
 #'             FsxAdminPassword = "string",
 #'             HAPairs = 123,
-#'             ThroughputCapacityPerHAPair = 123
+#'             ThroughputCapacityPerHAPair = 123,
+#'             EndpointIpv6AddressRange = "string"
 #'           ),
 #'           FileSystemTypeVersion = "string",
 #'           OpenZFSConfiguration = list(
@@ -4803,15 +5210,18 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'             RootVolumeId = "string",
 #'             PreferredSubnetId = "string",
 #'             EndpointIpAddressRange = "string",
+#'             EndpointIpv6AddressRange = "string",
 #'             RouteTableIds = list(
 #'               "string"
 #'             ),
 #'             EndpointIpAddress = "string",
+#'             EndpointIpv6Address = "string",
 #'             ReadCacheConfiguration = list(
 #'               SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
 #'               SizeGiB = 123
 #'             )
-#'           )
+#'           ),
+#'           NetworkType = "IPV4"|"DUAL"
 #'         ),
 #'         FailureDetails = list(
 #'           Message = "string"
@@ -4838,7 +5248,8 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'           AdministrativeActions = list()
 #'         ),
 #'         TotalTransferBytes = 123,
-#'         RemainingTransferBytes = 123
+#'         RemainingTransferBytes = 123,
+#'         Message = "string"
 #'       )
 #'     ),
 #'     OpenZFSConfiguration = list(
@@ -5098,7 +5509,7 @@ fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, Ontap
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
-#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING",
+#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING"|"PAUSED"|"CANCELLED",
 #'         TargetFileSystemValues = list(
 #'           OwnerId = "string",
 #'           CreationTime = as.POSIXct(
@@ -5137,7 +5548,8 @@ fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, Ontap
 #'               UserName = "string",
 #'               DnsIps = list(
 #'                 "string"
-#'               )
+#'               ),
+#'               DomainJoinServiceAccountSecret = "string"
 #'             ),
 #'             DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'             RemoteAdministrationEndpoint = "string",
@@ -5165,6 +5577,11 @@ fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, Ontap
 #'             DiskIopsConfiguration = list(
 #'               Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'               Iops = 123
+#'             ),
+#'             PreferredFileServerIpv6 = "string",
+#'             FsrmConfiguration = list(
+#'               FsrmServiceEnabled = TRUE|FALSE,
+#'               EventLogDestination = "string"
 #'             )
 #'           ),
 #'           LustreConfiguration = list(
@@ -5201,7 +5618,12 @@ fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, Ontap
 #'               Iops = 123,
 #'               Mode = "AUTOMATIC"|"USER_PROVISIONED"
 #'             ),
-#'             EfaEnabled = TRUE|FALSE
+#'             EfaEnabled = TRUE|FALSE,
+#'             ThroughputCapacity = 123,
+#'             DataReadCacheConfiguration = list(
+#'               SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'               SizeGiB = 123
+#'             )
 #'           ),
 #'           AdministrativeActions = list(),
 #'           OntapConfiguration = list(
@@ -5214,11 +5636,17 @@ fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, Ontap
 #'                 DNSName = "string",
 #'                 IpAddresses = list(
 #'                   "string"
+#'                 ),
+#'                 Ipv6Addresses = list(
+#'                   "string"
 #'                 )
 #'               ),
 #'               Management = list(
 #'                 DNSName = "string",
 #'                 IpAddresses = list(
+#'                   "string"
+#'                 ),
+#'                 Ipv6Addresses = list(
 #'                   "string"
 #'                 )
 #'               )
@@ -5235,7 +5663,8 @@ fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, Ontap
 #'             WeeklyMaintenanceStartTime = "string",
 #'             FsxAdminPassword = "string",
 #'             HAPairs = 123,
-#'             ThroughputCapacityPerHAPair = 123
+#'             ThroughputCapacityPerHAPair = 123,
+#'             EndpointIpv6AddressRange = "string"
 #'           ),
 #'           FileSystemTypeVersion = "string",
 #'           OpenZFSConfiguration = list(
@@ -5253,15 +5682,18 @@ fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, Ontap
 #'             RootVolumeId = "string",
 #'             PreferredSubnetId = "string",
 #'             EndpointIpAddressRange = "string",
+#'             EndpointIpv6AddressRange = "string",
 #'             RouteTableIds = list(
 #'               "string"
 #'             ),
 #'             EndpointIpAddress = "string",
+#'             EndpointIpv6Address = "string",
 #'             ReadCacheConfiguration = list(
 #'               SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
 #'               SizeGiB = 123
 #'             )
-#'           )
+#'           ),
+#'           NetworkType = "IPV4"|"DUAL"
 #'         ),
 #'         FailureDetails = list(
 #'           Message = "string"
@@ -5288,7 +5720,8 @@ fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, Ontap
 #'           AdministrativeActions = list()
 #'         ),
 #'         TotalTransferBytes = 123,
-#'         RemainingTransferBytes = 123
+#'         RemainingTransferBytes = 123,
+#'         Message = "string"
 #'       )
 #'     ),
 #'     OpenZFSConfiguration = list(
@@ -5629,6 +6062,15 @@ fsx_delete_file_cache <- function(FileCacheId, ClientRequestToken = NULL) {
 #' the volumes and storage virtual machines (SVMs) on the file system. Then
 #' provide a `FileSystemId` value to the
 #' [`delete_file_system`][fsx_delete_file_system] operation.
+#' 
+#' Before deleting an Amazon FSx for OpenZFS file system, make sure that
+#' there aren't any Amazon S3 access points attached to any volume. For
+#' more information on how to list S3 access points that are attached to
+#' volumes, see [Listing S3 access point
+#' attachments](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/access-points-list.html).
+#' For more information on how to delete S3 access points, see [Deleting an
+#' S3 access point
+#' attachment](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/delete-access-point.html).
 #' 
 #' By default, when you delete an Amazon FSx for Windows File Server file
 #' system, a final backup is created upon deletion. This final backup isn't
@@ -6096,7 +6538,8 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'             UserName = "string",
 #'             DnsIps = list(
 #'               "string"
-#'             )
+#'             ),
+#'             DomainJoinServiceAccountSecret = "string"
 #'           ),
 #'           DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'           RemoteAdministrationEndpoint = "string",
@@ -6124,6 +6567,11 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'           DiskIopsConfiguration = list(
 #'             Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'             Iops = 123
+#'           ),
+#'           PreferredFileServerIpv6 = "string",
+#'           FsrmConfiguration = list(
+#'             FsrmServiceEnabled = TRUE|FALSE,
+#'             EventLogDestination = "string"
 #'           )
 #'         ),
 #'         LustreConfiguration = list(
@@ -6160,7 +6608,12 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'             Iops = 123,
 #'             Mode = "AUTOMATIC"|"USER_PROVISIONED"
 #'           ),
-#'           EfaEnabled = TRUE|FALSE
+#'           EfaEnabled = TRUE|FALSE,
+#'           ThroughputCapacity = 123,
+#'           DataReadCacheConfiguration = list(
+#'             SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'             SizeGiB = 123
+#'           )
 #'         ),
 #'         AdministrativeActions = list(
 #'           list(
@@ -6169,7 +6622,7 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'             RequestTime = as.POSIXct(
 #'               "2015-01-01"
 #'             ),
-#'             Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING",
+#'             Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING"|"PAUSED"|"CANCELLED",
 #'             TargetFileSystemValues = list(),
 #'             FailureDetails = list(
 #'               Message = "string"
@@ -6305,7 +6758,8 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'               AdministrativeActions = list()
 #'             ),
 #'             TotalTransferBytes = 123,
-#'             RemainingTransferBytes = 123
+#'             RemainingTransferBytes = 123,
+#'             Message = "string"
 #'           )
 #'         ),
 #'         OntapConfiguration = list(
@@ -6318,11 +6772,17 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'               DNSName = "string",
 #'               IpAddresses = list(
 #'                 "string"
+#'               ),
+#'               Ipv6Addresses = list(
+#'                 "string"
 #'               )
 #'             ),
 #'             Management = list(
 #'               DNSName = "string",
 #'               IpAddresses = list(
+#'                 "string"
+#'               ),
+#'               Ipv6Addresses = list(
 #'                 "string"
 #'               )
 #'             )
@@ -6339,7 +6799,8 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'           WeeklyMaintenanceStartTime = "string",
 #'           FsxAdminPassword = "string",
 #'           HAPairs = 123,
-#'           ThroughputCapacityPerHAPair = 123
+#'           ThroughputCapacityPerHAPair = 123,
+#'           EndpointIpv6AddressRange = "string"
 #'         ),
 #'         FileSystemTypeVersion = "string",
 #'         OpenZFSConfiguration = list(
@@ -6357,15 +6818,18 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'           RootVolumeId = "string",
 #'           PreferredSubnetId = "string",
 #'           EndpointIpAddressRange = "string",
+#'           EndpointIpv6AddressRange = "string",
 #'           RouteTableIds = list(
 #'             "string"
 #'           ),
 #'           EndpointIpAddress = "string",
+#'           EndpointIpv6Address = "string",
 #'           ReadCacheConfiguration = list(
 #'             SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
 #'             SizeGiB = 123
 #'           )
-#'         )
+#'         ),
+#'         NetworkType = "IPV4"|"DUAL"
 #'       ),
 #'       DirectoryInformation = list(
 #'         DomainName = "string",
@@ -6451,7 +6915,7 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'             RequestTime = as.POSIXct(
 #'               "2015-01-01"
 #'             ),
-#'             Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING",
+#'             Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING"|"PAUSED"|"CANCELLED",
 #'             TargetFileSystemValues = list(
 #'               OwnerId = "string",
 #'               CreationTime = as.POSIXct(
@@ -6490,7 +6954,8 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'                   UserName = "string",
 #'                   DnsIps = list(
 #'                     "string"
-#'                   )
+#'                   ),
+#'                   DomainJoinServiceAccountSecret = "string"
 #'                 ),
 #'                 DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'                 RemoteAdministrationEndpoint = "string",
@@ -6518,6 +6983,11 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'                 DiskIopsConfiguration = list(
 #'                   Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'                   Iops = 123
+#'                 ),
+#'                 PreferredFileServerIpv6 = "string",
+#'                 FsrmConfiguration = list(
+#'                   FsrmServiceEnabled = TRUE|FALSE,
+#'                   EventLogDestination = "string"
 #'                 )
 #'               ),
 #'               LustreConfiguration = list(
@@ -6554,7 +7024,12 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'                   Iops = 123,
 #'                   Mode = "AUTOMATIC"|"USER_PROVISIONED"
 #'                 ),
-#'                 EfaEnabled = TRUE|FALSE
+#'                 EfaEnabled = TRUE|FALSE,
+#'                 ThroughputCapacity = 123,
+#'                 DataReadCacheConfiguration = list(
+#'                   SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'                   SizeGiB = 123
+#'                 )
 #'               ),
 #'               AdministrativeActions = list(),
 #'               OntapConfiguration = list(
@@ -6567,11 +7042,17 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'                     DNSName = "string",
 #'                     IpAddresses = list(
 #'                       "string"
+#'                     ),
+#'                     Ipv6Addresses = list(
+#'                       "string"
 #'                     )
 #'                   ),
 #'                   Management = list(
 #'                     DNSName = "string",
 #'                     IpAddresses = list(
+#'                       "string"
+#'                     ),
+#'                     Ipv6Addresses = list(
 #'                       "string"
 #'                     )
 #'                   )
@@ -6588,7 +7069,8 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'                 WeeklyMaintenanceStartTime = "string",
 #'                 FsxAdminPassword = "string",
 #'                 HAPairs = 123,
-#'                 ThroughputCapacityPerHAPair = 123
+#'                 ThroughputCapacityPerHAPair = 123,
+#'                 EndpointIpv6AddressRange = "string"
 #'               ),
 #'               FileSystemTypeVersion = "string",
 #'               OpenZFSConfiguration = list(
@@ -6606,15 +7088,18 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'                 RootVolumeId = "string",
 #'                 PreferredSubnetId = "string",
 #'                 EndpointIpAddressRange = "string",
+#'                 EndpointIpv6AddressRange = "string",
 #'                 RouteTableIds = list(
 #'                   "string"
 #'                 ),
 #'                 EndpointIpAddress = "string",
+#'                 EndpointIpv6Address = "string",
 #'                 ReadCacheConfiguration = list(
 #'                   SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
 #'                   SizeGiB = 123
 #'                 )
-#'               )
+#'               ),
+#'               NetworkType = "IPV4"|"DUAL"
 #'             ),
 #'             FailureDetails = list(
 #'               Message = "string"
@@ -6641,7 +7126,8 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'               AdministrativeActions = list()
 #'             ),
 #'             TotalTransferBytes = 123,
-#'             RemainingTransferBytes = 123
+#'             RemainingTransferBytes = 123,
+#'             Message = "string"
 #'           )
 #'         ),
 #'         OpenZFSConfiguration = list(
@@ -7313,7 +7799,8 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #'           UserName = "string",
 #'           DnsIps = list(
 #'             "string"
-#'           )
+#'           ),
+#'           DomainJoinServiceAccountSecret = "string"
 #'         ),
 #'         DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'         RemoteAdministrationEndpoint = "string",
@@ -7341,6 +7828,11 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #'         DiskIopsConfiguration = list(
 #'           Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'           Iops = 123
+#'         ),
+#'         PreferredFileServerIpv6 = "string",
+#'         FsrmConfiguration = list(
+#'           FsrmServiceEnabled = TRUE|FALSE,
+#'           EventLogDestination = "string"
 #'         )
 #'       ),
 #'       LustreConfiguration = list(
@@ -7377,7 +7869,12 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #'           Iops = 123,
 #'           Mode = "AUTOMATIC"|"USER_PROVISIONED"
 #'         ),
-#'         EfaEnabled = TRUE|FALSE
+#'         EfaEnabled = TRUE|FALSE,
+#'         ThroughputCapacity = 123,
+#'         DataReadCacheConfiguration = list(
+#'           SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'           SizeGiB = 123
+#'         )
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
@@ -7386,7 +7883,7 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
 #'           ),
-#'           Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING",
+#'           Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING"|"PAUSED"|"CANCELLED",
 #'           TargetFileSystemValues = list(),
 #'           FailureDetails = list(
 #'             Message = "string"
@@ -7522,7 +8019,8 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #'             AdministrativeActions = list()
 #'           ),
 #'           TotalTransferBytes = 123,
-#'           RemainingTransferBytes = 123
+#'           RemainingTransferBytes = 123,
+#'           Message = "string"
 #'         )
 #'       ),
 #'       OntapConfiguration = list(
@@ -7535,11 +8033,17 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #'             DNSName = "string",
 #'             IpAddresses = list(
 #'               "string"
+#'             ),
+#'             Ipv6Addresses = list(
+#'               "string"
 #'             )
 #'           ),
 #'           Management = list(
 #'             DNSName = "string",
 #'             IpAddresses = list(
+#'               "string"
+#'             ),
+#'             Ipv6Addresses = list(
 #'               "string"
 #'             )
 #'           )
@@ -7556,7 +8060,8 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #'         WeeklyMaintenanceStartTime = "string",
 #'         FsxAdminPassword = "string",
 #'         HAPairs = 123,
-#'         ThroughputCapacityPerHAPair = 123
+#'         ThroughputCapacityPerHAPair = 123,
+#'         EndpointIpv6AddressRange = "string"
 #'       ),
 #'       FileSystemTypeVersion = "string",
 #'       OpenZFSConfiguration = list(
@@ -7574,15 +8079,18 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #'         RootVolumeId = "string",
 #'         PreferredSubnetId = "string",
 #'         EndpointIpAddressRange = "string",
+#'         EndpointIpv6AddressRange = "string",
 #'         RouteTableIds = list(
 #'           "string"
 #'         ),
 #'         EndpointIpAddress = "string",
+#'         EndpointIpv6Address = "string",
 #'         ReadCacheConfiguration = list(
 #'           SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
 #'           SizeGiB = 123
 #'         )
-#'       )
+#'       ),
+#'       NetworkType = "IPV4"|"DUAL"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -7630,6 +8138,122 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
   return(response)
 }
 .fsx$operations$describe_file_systems <- fsx_describe_file_systems
+
+#' Describes one or more S3 access points attached to Amazon FSx volumes
+#'
+#' @description
+#' Describes one or more S3 access points attached to Amazon FSx volumes.
+#' 
+#' The requester requires the following permission to perform this action:
+#' 
+#' -   `fsx:DescribeS3AccessPointAttachments`
+#'
+#' @usage
+#' fsx_describe_s3_access_point_attachments(Names, Filters, MaxResults,
+#'   NextToken)
+#'
+#' @param Names The names of the S3 access point attachments whose descriptions you want
+#' to retrieve.
+#' @param Filters Enter a filter Name and Values pair to view a select set of S3 access
+#' point attachments.
+#' @param MaxResults 
+#' @param NextToken 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   S3AccessPointAttachments = list(
+#'     list(
+#'       Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"UPDATING"|"FAILED"|"MISCONFIGURED",
+#'       LifecycleTransitionReason = list(
+#'         Message = "string"
+#'       ),
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Name = "string",
+#'       Type = "OPENZFS"|"ONTAP",
+#'       OpenZFSConfiguration = list(
+#'         VolumeId = "string",
+#'         FileSystemIdentity = list(
+#'           Type = "POSIX",
+#'           PosixUser = list(
+#'             Uid = 123,
+#'             Gid = 123,
+#'             SecondaryGids = list(
+#'               123
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       OntapConfiguration = list(
+#'         VolumeId = "string",
+#'         FileSystemIdentity = list(
+#'           Type = "UNIX"|"WINDOWS",
+#'           UnixUser = list(
+#'             Name = "string"
+#'           ),
+#'           WindowsUser = list(
+#'             Name = "string"
+#'           )
+#'         )
+#'       ),
+#'       S3AccessPoint = list(
+#'         ResourceARN = "string",
+#'         Alias = "string",
+#'         VpcConfiguration = list(
+#'           VpcId = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_s3_access_point_attachments(
+#'   Names = list(
+#'     "string"
+#'   ),
+#'   Filters = list(
+#'     list(
+#'       Name = "file-system-id"|"volume-id"|"type",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_describe_s3_access_point_attachments
+#'
+#' @aliases fsx_describe_s3_access_point_attachments
+fsx_describe_s3_access_point_attachments <- function(Names = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeS3AccessPointAttachments",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "S3AccessPointAttachments"),
+    stream_api = FALSE
+  )
+  input <- .fsx$describe_s3_access_point_attachments_input(Names = Names, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .fsx$describe_s3_access_point_attachments_output()
+  config <- get_config()
+  svc <- .fsx$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$describe_s3_access_point_attachments <- fsx_describe_s3_access_point_attachments
 
 #' Indicates whether participant accounts in your organization can create
 #' Amazon FSx for NetApp ONTAP Multi-AZ file systems in subnets that are
@@ -7762,7 +8386,7 @@ fsx_describe_shared_vpc_configuration <- function() {
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
 #'           ),
-#'           Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING",
+#'           Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING"|"PAUSED"|"CANCELLED",
 #'           TargetFileSystemValues = list(
 #'             OwnerId = "string",
 #'             CreationTime = as.POSIXct(
@@ -7801,7 +8425,8 @@ fsx_describe_shared_vpc_configuration <- function() {
 #'                 UserName = "string",
 #'                 DnsIps = list(
 #'                   "string"
-#'                 )
+#'                 ),
+#'                 DomainJoinServiceAccountSecret = "string"
 #'               ),
 #'               DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'               RemoteAdministrationEndpoint = "string",
@@ -7829,6 +8454,11 @@ fsx_describe_shared_vpc_configuration <- function() {
 #'               DiskIopsConfiguration = list(
 #'                 Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'                 Iops = 123
+#'               ),
+#'               PreferredFileServerIpv6 = "string",
+#'               FsrmConfiguration = list(
+#'                 FsrmServiceEnabled = TRUE|FALSE,
+#'                 EventLogDestination = "string"
 #'               )
 #'             ),
 #'             LustreConfiguration = list(
@@ -7865,7 +8495,12 @@ fsx_describe_shared_vpc_configuration <- function() {
 #'                 Iops = 123,
 #'                 Mode = "AUTOMATIC"|"USER_PROVISIONED"
 #'               ),
-#'               EfaEnabled = TRUE|FALSE
+#'               EfaEnabled = TRUE|FALSE,
+#'               ThroughputCapacity = 123,
+#'               DataReadCacheConfiguration = list(
+#'                 SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'                 SizeGiB = 123
+#'               )
 #'             ),
 #'             AdministrativeActions = list(),
 #'             OntapConfiguration = list(
@@ -7878,11 +8513,17 @@ fsx_describe_shared_vpc_configuration <- function() {
 #'                   DNSName = "string",
 #'                   IpAddresses = list(
 #'                     "string"
+#'                   ),
+#'                   Ipv6Addresses = list(
+#'                     "string"
 #'                   )
 #'                 ),
 #'                 Management = list(
 #'                   DNSName = "string",
 #'                   IpAddresses = list(
+#'                     "string"
+#'                   ),
+#'                   Ipv6Addresses = list(
 #'                     "string"
 #'                   )
 #'                 )
@@ -7899,7 +8540,8 @@ fsx_describe_shared_vpc_configuration <- function() {
 #'               WeeklyMaintenanceStartTime = "string",
 #'               FsxAdminPassword = "string",
 #'               HAPairs = 123,
-#'               ThroughputCapacityPerHAPair = 123
+#'               ThroughputCapacityPerHAPair = 123,
+#'               EndpointIpv6AddressRange = "string"
 #'             ),
 #'             FileSystemTypeVersion = "string",
 #'             OpenZFSConfiguration = list(
@@ -7917,15 +8559,18 @@ fsx_describe_shared_vpc_configuration <- function() {
 #'               RootVolumeId = "string",
 #'               PreferredSubnetId = "string",
 #'               EndpointIpAddressRange = "string",
+#'               EndpointIpv6AddressRange = "string",
 #'               RouteTableIds = list(
 #'                 "string"
 #'               ),
 #'               EndpointIpAddress = "string",
+#'               EndpointIpv6Address = "string",
 #'               ReadCacheConfiguration = list(
 #'                 SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
 #'                 SizeGiB = 123
 #'               )
-#'             )
+#'             ),
+#'             NetworkType = "IPV4"|"DUAL"
 #'           ),
 #'           FailureDetails = list(
 #'             Message = "string"
@@ -8042,7 +8687,8 @@ fsx_describe_shared_vpc_configuration <- function() {
 #'           ),
 #'           TargetSnapshotValues = list(),
 #'           TotalTransferBytes = 123,
-#'           RemainingTransferBytes = 123
+#'           RemainingTransferBytes = 123,
+#'           Message = "string"
 #'         )
 #'       )
 #'     )
@@ -8126,7 +8772,8 @@ fsx_describe_snapshots <- function(SnapshotIds = NULL, Filters = NULL, MaxResult
 #'           UserName = "string",
 #'           DnsIps = list(
 #'             "string"
-#'           )
+#'           ),
+#'           DomainJoinServiceAccountSecret = "string"
 #'         )
 #'       ),
 #'       CreationTime = as.POSIXct(
@@ -8137,11 +8784,17 @@ fsx_describe_snapshots <- function(SnapshotIds = NULL, Filters = NULL, MaxResult
 #'           DNSName = "string",
 #'           IpAddresses = list(
 #'             "string"
+#'           ),
+#'           Ipv6Addresses = list(
+#'             "string"
 #'           )
 #'         ),
 #'         Management = list(
 #'           DNSName = "string",
 #'           IpAddresses = list(
+#'             "string"
+#'           ),
+#'           Ipv6Addresses = list(
 #'             "string"
 #'           )
 #'         ),
@@ -8149,11 +8802,17 @@ fsx_describe_snapshots <- function(SnapshotIds = NULL, Filters = NULL, MaxResult
 #'           DNSName = "string",
 #'           IpAddresses = list(
 #'             "string"
+#'           ),
+#'           Ipv6Addresses = list(
+#'             "string"
 #'           )
 #'         ),
 #'         Smb = list(
 #'           DNSName = "string",
 #'           IpAddresses = list(
+#'             "string"
+#'           ),
+#'           Ipv6Addresses = list(
 #'             "string"
 #'           )
 #'         )
@@ -8319,7 +8978,7 @@ fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NUL
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
 #'           ),
-#'           Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING",
+#'           Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING"|"PAUSED"|"CANCELLED",
 #'           TargetFileSystemValues = list(
 #'             OwnerId = "string",
 #'             CreationTime = as.POSIXct(
@@ -8358,7 +9017,8 @@ fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NUL
 #'                 UserName = "string",
 #'                 DnsIps = list(
 #'                   "string"
-#'                 )
+#'                 ),
+#'                 DomainJoinServiceAccountSecret = "string"
 #'               ),
 #'               DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'               RemoteAdministrationEndpoint = "string",
@@ -8386,6 +9046,11 @@ fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NUL
 #'               DiskIopsConfiguration = list(
 #'                 Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'                 Iops = 123
+#'               ),
+#'               PreferredFileServerIpv6 = "string",
+#'               FsrmConfiguration = list(
+#'                 FsrmServiceEnabled = TRUE|FALSE,
+#'                 EventLogDestination = "string"
 #'               )
 #'             ),
 #'             LustreConfiguration = list(
@@ -8422,7 +9087,12 @@ fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NUL
 #'                 Iops = 123,
 #'                 Mode = "AUTOMATIC"|"USER_PROVISIONED"
 #'               ),
-#'               EfaEnabled = TRUE|FALSE
+#'               EfaEnabled = TRUE|FALSE,
+#'               ThroughputCapacity = 123,
+#'               DataReadCacheConfiguration = list(
+#'                 SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'                 SizeGiB = 123
+#'               )
 #'             ),
 #'             AdministrativeActions = list(),
 #'             OntapConfiguration = list(
@@ -8435,11 +9105,17 @@ fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NUL
 #'                   DNSName = "string",
 #'                   IpAddresses = list(
 #'                     "string"
+#'                   ),
+#'                   Ipv6Addresses = list(
+#'                     "string"
 #'                   )
 #'                 ),
 #'                 Management = list(
 #'                   DNSName = "string",
 #'                   IpAddresses = list(
+#'                     "string"
+#'                   ),
+#'                   Ipv6Addresses = list(
 #'                     "string"
 #'                   )
 #'                 )
@@ -8456,7 +9132,8 @@ fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NUL
 #'               WeeklyMaintenanceStartTime = "string",
 #'               FsxAdminPassword = "string",
 #'               HAPairs = 123,
-#'               ThroughputCapacityPerHAPair = 123
+#'               ThroughputCapacityPerHAPair = 123,
+#'               EndpointIpv6AddressRange = "string"
 #'             ),
 #'             FileSystemTypeVersion = "string",
 #'             OpenZFSConfiguration = list(
@@ -8474,15 +9151,18 @@ fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NUL
 #'               RootVolumeId = "string",
 #'               PreferredSubnetId = "string",
 #'               EndpointIpAddressRange = "string",
+#'               EndpointIpv6AddressRange = "string",
 #'               RouteTableIds = list(
 #'                 "string"
 #'               ),
 #'               EndpointIpAddress = "string",
+#'               EndpointIpv6Address = "string",
 #'               ReadCacheConfiguration = list(
 #'                 SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
 #'                 SizeGiB = 123
 #'               )
-#'             )
+#'             ),
+#'             NetworkType = "IPV4"|"DUAL"
 #'           ),
 #'           FailureDetails = list(
 #'             Message = "string"
@@ -8509,7 +9189,8 @@ fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NUL
 #'             AdministrativeActions = list()
 #'           ),
 #'           TotalTransferBytes = 123,
-#'           RemainingTransferBytes = 123
+#'           RemainingTransferBytes = 123,
+#'           Message = "string"
 #'         )
 #'       ),
 #'       OpenZFSConfiguration = list(
@@ -8600,6 +9281,66 @@ fsx_describe_volumes <- function(VolumeIds = NULL, Filters = NULL, MaxResults = 
   return(response)
 }
 .fsx$operations$describe_volumes <- fsx_describe_volumes
+
+#' Detaches an S3 access point from an Amazon FSx volume and deletes the S3
+#' access point
+#'
+#' @description
+#' Detaches an S3 access point from an Amazon FSx volume and deletes the S3
+#' access point.
+#' 
+#' The requester requires the following permission to perform this action:
+#' 
+#' -   `fsx:DetachAndDeleteS3AccessPoint`
+#' 
+#' -   `s3:DeleteAccessPoint`
+#'
+#' @usage
+#' fsx_detach_and_delete_s3_access_point(ClientRequestToken, Name)
+#'
+#' @param ClientRequestToken 
+#' @param Name &#91;required&#93; The name of the S3 access point attachment that you want to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"UPDATING"|"FAILED"|"MISCONFIGURED",
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$detach_and_delete_s3_access_point(
+#'   ClientRequestToken = "string",
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_detach_and_delete_s3_access_point
+#'
+#' @aliases fsx_detach_and_delete_s3_access_point
+fsx_detach_and_delete_s3_access_point <- function(ClientRequestToken = NULL, Name) {
+  op <- new_operation(
+    name = "DetachAndDeleteS3AccessPoint",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .fsx$detach_and_delete_s3_access_point_input(ClientRequestToken = ClientRequestToken, Name = Name)
+  output <- .fsx$detach_and_delete_s3_access_point_output()
+  config <- get_config()
+  svc <- .fsx$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$detach_and_delete_s3_access_point <- fsx_detach_and_delete_s3_access_point
 
 #' Use this action to disassociate, or remove, one or more Domain Name
 #' Service (DNS) aliases from an Amazon FSx for Windows File Server file
@@ -8824,7 +9565,8 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
 #'         UserName = "string",
 #'         DnsIps = list(
 #'           "string"
-#'         )
+#'         ),
+#'         DomainJoinServiceAccountSecret = "string"
 #'       ),
 #'       DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'       RemoteAdministrationEndpoint = "string",
@@ -8852,6 +9594,11 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
 #'       DiskIopsConfiguration = list(
 #'         Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'         Iops = 123
+#'       ),
+#'       PreferredFileServerIpv6 = "string",
+#'       FsrmConfiguration = list(
+#'         FsrmServiceEnabled = TRUE|FALSE,
+#'         EventLogDestination = "string"
 #'       )
 #'     ),
 #'     LustreConfiguration = list(
@@ -8888,7 +9635,12 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
 #'         Iops = 123,
 #'         Mode = "AUTOMATIC"|"USER_PROVISIONED"
 #'       ),
-#'       EfaEnabled = TRUE|FALSE
+#'       EfaEnabled = TRUE|FALSE,
+#'       ThroughputCapacity = 123,
+#'       DataReadCacheConfiguration = list(
+#'         SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'         SizeGiB = 123
+#'       )
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
@@ -8897,7 +9649,7 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
-#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING",
+#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING"|"PAUSED"|"CANCELLED",
 #'         TargetFileSystemValues = list(),
 #'         FailureDetails = list(
 #'           Message = "string"
@@ -9033,7 +9785,8 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
 #'           AdministrativeActions = list()
 #'         ),
 #'         TotalTransferBytes = 123,
-#'         RemainingTransferBytes = 123
+#'         RemainingTransferBytes = 123,
+#'         Message = "string"
 #'       )
 #'     ),
 #'     OntapConfiguration = list(
@@ -9046,11 +9799,17 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
 #'           DNSName = "string",
 #'           IpAddresses = list(
 #'             "string"
+#'           ),
+#'           Ipv6Addresses = list(
+#'             "string"
 #'           )
 #'         ),
 #'         Management = list(
 #'           DNSName = "string",
 #'           IpAddresses = list(
+#'             "string"
+#'           ),
+#'           Ipv6Addresses = list(
 #'             "string"
 #'           )
 #'         )
@@ -9067,7 +9826,8 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
 #'       WeeklyMaintenanceStartTime = "string",
 #'       FsxAdminPassword = "string",
 #'       HAPairs = 123,
-#'       ThroughputCapacityPerHAPair = 123
+#'       ThroughputCapacityPerHAPair = 123,
+#'       EndpointIpv6AddressRange = "string"
 #'     ),
 #'     FileSystemTypeVersion = "string",
 #'     OpenZFSConfiguration = list(
@@ -9085,15 +9845,18 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
 #'       RootVolumeId = "string",
 #'       PreferredSubnetId = "string",
 #'       EndpointIpAddressRange = "string",
+#'       EndpointIpv6AddressRange = "string",
 #'       RouteTableIds = list(
 #'         "string"
 #'       ),
 #'       EndpointIpAddress = "string",
+#'       EndpointIpv6Address = "string",
 #'       ReadCacheConfiguration = list(
 #'         SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
 #'         SizeGiB = 123
 #'       )
-#'     )
+#'     ),
+#'     NetworkType = "IPV4"|"DUAL"
 #'   )
 #' )
 #' ```
@@ -9172,7 +9935,7 @@ fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToke
 #'       RequestTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING",
+#'       Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING"|"PAUSED"|"CANCELLED",
 #'       TargetFileSystemValues = list(
 #'         OwnerId = "string",
 #'         CreationTime = as.POSIXct(
@@ -9211,7 +9974,8 @@ fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToke
 #'             UserName = "string",
 #'             DnsIps = list(
 #'               "string"
-#'             )
+#'             ),
+#'             DomainJoinServiceAccountSecret = "string"
 #'           ),
 #'           DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'           RemoteAdministrationEndpoint = "string",
@@ -9239,6 +10003,11 @@ fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToke
 #'           DiskIopsConfiguration = list(
 #'             Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'             Iops = 123
+#'           ),
+#'           PreferredFileServerIpv6 = "string",
+#'           FsrmConfiguration = list(
+#'             FsrmServiceEnabled = TRUE|FALSE,
+#'             EventLogDestination = "string"
 #'           )
 #'         ),
 #'         LustreConfiguration = list(
@@ -9275,7 +10044,12 @@ fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToke
 #'             Iops = 123,
 #'             Mode = "AUTOMATIC"|"USER_PROVISIONED"
 #'           ),
-#'           EfaEnabled = TRUE|FALSE
+#'           EfaEnabled = TRUE|FALSE,
+#'           ThroughputCapacity = 123,
+#'           DataReadCacheConfiguration = list(
+#'             SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'             SizeGiB = 123
+#'           )
 #'         ),
 #'         AdministrativeActions = list(),
 #'         OntapConfiguration = list(
@@ -9288,11 +10062,17 @@ fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToke
 #'               DNSName = "string",
 #'               IpAddresses = list(
 #'                 "string"
+#'               ),
+#'               Ipv6Addresses = list(
+#'                 "string"
 #'               )
 #'             ),
 #'             Management = list(
 #'               DNSName = "string",
 #'               IpAddresses = list(
+#'                 "string"
+#'               ),
+#'               Ipv6Addresses = list(
 #'                 "string"
 #'               )
 #'             )
@@ -9309,7 +10089,8 @@ fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToke
 #'           WeeklyMaintenanceStartTime = "string",
 #'           FsxAdminPassword = "string",
 #'           HAPairs = 123,
-#'           ThroughputCapacityPerHAPair = 123
+#'           ThroughputCapacityPerHAPair = 123,
+#'           EndpointIpv6AddressRange = "string"
 #'         ),
 #'         FileSystemTypeVersion = "string",
 #'         OpenZFSConfiguration = list(
@@ -9327,15 +10108,18 @@ fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToke
 #'           RootVolumeId = "string",
 #'           PreferredSubnetId = "string",
 #'           EndpointIpAddressRange = "string",
+#'           EndpointIpv6AddressRange = "string",
 #'           RouteTableIds = list(
 #'             "string"
 #'           ),
 #'           EndpointIpAddress = "string",
+#'           EndpointIpv6Address = "string",
 #'           ReadCacheConfiguration = list(
 #'             SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
 #'             SizeGiB = 123
 #'           )
-#'         )
+#'         ),
+#'         NetworkType = "IPV4"|"DUAL"
 #'       ),
 #'       FailureDetails = list(
 #'         Message = "string"
@@ -9471,7 +10255,8 @@ fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToke
 #'         AdministrativeActions = list()
 #'       ),
 #'       TotalTransferBytes = 123,
-#'       RemainingTransferBytes = 123
+#'       RemainingTransferBytes = 123,
+#'       Message = "string"
 #'     )
 #'   )
 #' )
@@ -9570,7 +10355,8 @@ fsx_restore_volume_from_snapshot <- function(ClientRequestToken = NULL, VolumeId
 #'         UserName = "string",
 #'         DnsIps = list(
 #'           "string"
-#'         )
+#'         ),
+#'         DomainJoinServiceAccountSecret = "string"
 #'       ),
 #'       DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'       RemoteAdministrationEndpoint = "string",
@@ -9598,6 +10384,11 @@ fsx_restore_volume_from_snapshot <- function(ClientRequestToken = NULL, VolumeId
 #'       DiskIopsConfiguration = list(
 #'         Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'         Iops = 123
+#'       ),
+#'       PreferredFileServerIpv6 = "string",
+#'       FsrmConfiguration = list(
+#'         FsrmServiceEnabled = TRUE|FALSE,
+#'         EventLogDestination = "string"
 #'       )
 #'     ),
 #'     LustreConfiguration = list(
@@ -9634,7 +10425,12 @@ fsx_restore_volume_from_snapshot <- function(ClientRequestToken = NULL, VolumeId
 #'         Iops = 123,
 #'         Mode = "AUTOMATIC"|"USER_PROVISIONED"
 #'       ),
-#'       EfaEnabled = TRUE|FALSE
+#'       EfaEnabled = TRUE|FALSE,
+#'       ThroughputCapacity = 123,
+#'       DataReadCacheConfiguration = list(
+#'         SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'         SizeGiB = 123
+#'       )
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
@@ -9643,7 +10439,7 @@ fsx_restore_volume_from_snapshot <- function(ClientRequestToken = NULL, VolumeId
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
-#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING",
+#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING"|"PAUSED"|"CANCELLED",
 #'         TargetFileSystemValues = list(),
 #'         FailureDetails = list(
 #'           Message = "string"
@@ -9779,7 +10575,8 @@ fsx_restore_volume_from_snapshot <- function(ClientRequestToken = NULL, VolumeId
 #'           AdministrativeActions = list()
 #'         ),
 #'         TotalTransferBytes = 123,
-#'         RemainingTransferBytes = 123
+#'         RemainingTransferBytes = 123,
+#'         Message = "string"
 #'       )
 #'     ),
 #'     OntapConfiguration = list(
@@ -9792,11 +10589,17 @@ fsx_restore_volume_from_snapshot <- function(ClientRequestToken = NULL, VolumeId
 #'           DNSName = "string",
 #'           IpAddresses = list(
 #'             "string"
+#'           ),
+#'           Ipv6Addresses = list(
+#'             "string"
 #'           )
 #'         ),
 #'         Management = list(
 #'           DNSName = "string",
 #'           IpAddresses = list(
+#'             "string"
+#'           ),
+#'           Ipv6Addresses = list(
 #'             "string"
 #'           )
 #'         )
@@ -9813,7 +10616,8 @@ fsx_restore_volume_from_snapshot <- function(ClientRequestToken = NULL, VolumeId
 #'       WeeklyMaintenanceStartTime = "string",
 #'       FsxAdminPassword = "string",
 #'       HAPairs = 123,
-#'       ThroughputCapacityPerHAPair = 123
+#'       ThroughputCapacityPerHAPair = 123,
+#'       EndpointIpv6AddressRange = "string"
 #'     ),
 #'     FileSystemTypeVersion = "string",
 #'     OpenZFSConfiguration = list(
@@ -9831,15 +10635,18 @@ fsx_restore_volume_from_snapshot <- function(ClientRequestToken = NULL, VolumeId
 #'       RootVolumeId = "string",
 #'       PreferredSubnetId = "string",
 #'       EndpointIpAddressRange = "string",
+#'       EndpointIpv6AddressRange = "string",
 #'       RouteTableIds = list(
 #'         "string"
 #'       ),
 #'       EndpointIpAddress = "string",
+#'       EndpointIpv6Address = "string",
 #'       ReadCacheConfiguration = list(
 #'         SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
 #'         SizeGiB = 123
 #'       )
-#'     )
+#'     ),
+#'     NetworkType = "IPV4"|"DUAL"
 #'   )
 #' )
 #' ```
@@ -10247,6 +11054,8 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' 
 #' -   `DailyAutomaticBackupStartTime`
 #' 
+#' -   `DiskIopsConfiguration`
+#' 
 #' -   `SelfManagedActiveDirectoryConfiguration`
 #' 
 #' -   `StorageCapacity`
@@ -10254,8 +11063,6 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' -   `StorageType`
 #' 
 #' -   `ThroughputCapacity`
-#' 
-#' -   `DiskIopsConfiguration`
 #' 
 #' -   `WeeklyMaintenanceStartTime`
 #' 
@@ -10274,6 +11081,8 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' 
 #' -   `LogConfiguration`
 #' 
+#' -   `LustreReadCacheConfiguration`
+#' 
 #' -   `LustreRootSquashConfiguration`
 #' 
 #' -   `MetadataConfiguration`
@@ -10281,6 +11090,8 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' -   `PerUnitStorageThroughput`
 #' 
 #' -   `StorageCapacity`
+#' 
+#' -   `ThroughputCapacity`
 #' 
 #' -   `WeeklyMaintenanceStartTime`
 #' 
@@ -10293,6 +11104,8 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' -   `DailyAutomaticBackupStartTime`
 #' 
 #' -   `DiskIopsConfiguration`
+#' 
+#' -   `EndpointIpv6AddressRange`
 #' 
 #' -   `FsxAdminPassword`
 #' 
@@ -10323,6 +11136,8 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' 
 #' -   `DiskIopsConfiguration`
 #' 
+#' -   `EndpointIpv6AddressRange`
+#' 
 #' -   `ReadCacheConfiguration`
 #' 
 #' -   `RemoveRouteTableIds`
@@ -10337,7 +11152,7 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' fsx_update_file_system(FileSystemId, ClientRequestToken,
 #'   StorageCapacity, WindowsConfiguration, LustreConfiguration,
 #'   OntapConfiguration, OpenZFSConfiguration, StorageType,
-#'   FileSystemTypeVersion)
+#'   FileSystemTypeVersion, NetworkType)
 #'
 #' @param FileSystemId &#91;required&#93; The ID of the file system that you are updating.
 #' @param ClientRequestToken A string of up to 63 ASCII characters that Amazon FSx uses to ensure
@@ -10346,8 +11161,9 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' SDK.
 #' @param StorageCapacity Use this parameter to increase the storage capacity of an FSx for
 #' Windows File Server, FSx for Lustre, FSx for OpenZFS, or FSx for ONTAP
-#' file system. Specifies the storage capacity target value, in GiB, to
-#' increase the storage capacity for the file system that you're updating.
+#' file system. For second-generation FSx for ONTAP file systems, you can
+#' also decrease the storage capacity. Specifies the storage capacity
+#' target value, in GiB, for the file system that you're updating.
 #' 
 #' You can't make a storage capacity increase request if there is an
 #' existing storage capacity increase request in progress.
@@ -10384,11 +11200,14 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' capacity](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-configuration.html#managing-storage-capacity)
 #' in the *Amazon FSxfor Windows File Server User Guide*.
 #' 
-#' For ONTAP file systems, the storage capacity target value must be at
-#' least 10 percent greater than the current storage capacity value. For
-#' more information, see [Managing storage capacity and provisioned
-#' IOPS](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/managing-storage-capacity.html)
-#' in the *Amazon FSx for NetApp ONTAP User Guide*.
+#' For ONTAP file systems, when increasing storage capacity, the storage
+#' capacity target value must be at least 10 percent greater than the
+#' current storage capacity value. When decreasing storage capacity on
+#' second-generation file systems, the target value must be at least 9
+#' percent smaller than the current SSD storage capacity. For more
+#' information, see [File system storage capacity and
+#' IOPS](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/storage-capacity-and-IOPS.html)
+#' in the Amazon FSx for NetApp ONTAP User Guide.
 #' @param WindowsConfiguration The configuration updates for an Amazon FSx for Windows File Server file
 #' system.
 #' @param LustreConfiguration 
@@ -10398,6 +11217,7 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' @param FileSystemTypeVersion The Lustre version you are updating an FSx for Lustre file system to.
 #' Valid values are `2.12` and `2.15`. The value you choose must be newer
 #' than the file system's current Lustre version.
+#' @param NetworkType Changes the network type of an FSx for OpenZFS file system.
 #'
 #' @return
 #' A list with the following syntax:
@@ -10441,7 +11261,8 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'         UserName = "string",
 #'         DnsIps = list(
 #'           "string"
-#'         )
+#'         ),
+#'         DomainJoinServiceAccountSecret = "string"
 #'       ),
 #'       DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'       RemoteAdministrationEndpoint = "string",
@@ -10469,6 +11290,11 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'       DiskIopsConfiguration = list(
 #'         Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'         Iops = 123
+#'       ),
+#'       PreferredFileServerIpv6 = "string",
+#'       FsrmConfiguration = list(
+#'         FsrmServiceEnabled = TRUE|FALSE,
+#'         EventLogDestination = "string"
 #'       )
 #'     ),
 #'     LustreConfiguration = list(
@@ -10505,7 +11331,12 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'         Iops = 123,
 #'         Mode = "AUTOMATIC"|"USER_PROVISIONED"
 #'       ),
-#'       EfaEnabled = TRUE|FALSE
+#'       EfaEnabled = TRUE|FALSE,
+#'       ThroughputCapacity = 123,
+#'       DataReadCacheConfiguration = list(
+#'         SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'         SizeGiB = 123
+#'       )
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
@@ -10514,7 +11345,7 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
-#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING",
+#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING"|"PAUSED"|"CANCELLED",
 #'         TargetFileSystemValues = list(),
 #'         FailureDetails = list(
 #'           Message = "string"
@@ -10650,7 +11481,8 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'           AdministrativeActions = list()
 #'         ),
 #'         TotalTransferBytes = 123,
-#'         RemainingTransferBytes = 123
+#'         RemainingTransferBytes = 123,
+#'         Message = "string"
 #'       )
 #'     ),
 #'     OntapConfiguration = list(
@@ -10663,11 +11495,17 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'           DNSName = "string",
 #'           IpAddresses = list(
 #'             "string"
+#'           ),
+#'           Ipv6Addresses = list(
+#'             "string"
 #'           )
 #'         ),
 #'         Management = list(
 #'           DNSName = "string",
 #'           IpAddresses = list(
+#'             "string"
+#'           ),
+#'           Ipv6Addresses = list(
 #'             "string"
 #'           )
 #'         )
@@ -10684,7 +11522,8 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'       WeeklyMaintenanceStartTime = "string",
 #'       FsxAdminPassword = "string",
 #'       HAPairs = 123,
-#'       ThroughputCapacityPerHAPair = 123
+#'       ThroughputCapacityPerHAPair = 123,
+#'       EndpointIpv6AddressRange = "string"
 #'     ),
 #'     FileSystemTypeVersion = "string",
 #'     OpenZFSConfiguration = list(
@@ -10702,15 +11541,18 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'       RootVolumeId = "string",
 #'       PreferredSubnetId = "string",
 #'       EndpointIpAddressRange = "string",
+#'       EndpointIpv6AddressRange = "string",
 #'       RouteTableIds = list(
 #'         "string"
 #'       ),
 #'       EndpointIpAddress = "string",
+#'       EndpointIpv6Address = "string",
 #'       ReadCacheConfiguration = list(
 #'         SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
 #'         SizeGiB = 123
 #'       )
-#'     )
+#'     ),
+#'     NetworkType = "IPV4"|"DUAL"
 #'   )
 #' )
 #' ```
@@ -10734,7 +11576,8 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'       ),
 #'       DomainName = "string",
 #'       OrganizationalUnitDistinguishedName = "string",
-#'       FileSystemAdministratorsGroup = "string"
+#'       FileSystemAdministratorsGroup = "string",
+#'       DomainJoinServiceAccountSecret = "string"
 #'     ),
 #'     AuditLogConfiguration = list(
 #'       FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
@@ -10744,6 +11587,10 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'     DiskIopsConfiguration = list(
 #'       Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'       Iops = 123
+#'     ),
+#'     FsrmConfiguration = list(
+#'       FsrmServiceEnabled = TRUE|FALSE,
+#'       EventLogDestination = "string"
 #'     )
 #'   ),
 #'   LustreConfiguration = list(
@@ -10766,6 +11613,11 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'     MetadataConfiguration = list(
 #'       Iops = 123,
 #'       Mode = "AUTOMATIC"|"USER_PROVISIONED"
+#'     ),
+#'     ThroughputCapacity = 123,
+#'     DataReadCacheConfiguration = list(
+#'       SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'       SizeGiB = 123
 #'     )
 #'   ),
 #'   OntapConfiguration = list(
@@ -10785,7 +11637,8 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'       "string"
 #'     ),
 #'     ThroughputCapacityPerHAPair = 123,
-#'     HAPairs = 123
+#'     HAPairs = 123,
+#'     EndpointIpv6AddressRange = "string"
 #'   ),
 #'   OpenZFSConfiguration = list(
 #'     AutomaticBackupRetentionDays = 123,
@@ -10807,10 +11660,12 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'     ReadCacheConfiguration = list(
 #'       SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
 #'       SizeGiB = 123
-#'     )
+#'     ),
+#'     EndpointIpv6AddressRange = "string"
 #'   ),
 #'   StorageType = "SSD"|"HDD"|"INTELLIGENT_TIERING",
-#'   FileSystemTypeVersion = "string"
+#'   FileSystemTypeVersion = "string",
+#'   NetworkType = "IPV4"|"DUAL"
 #' )
 #' ```
 #'
@@ -10832,7 +11687,7 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' @rdname fsx_update_file_system
 #'
 #' @aliases fsx_update_file_system
-fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, StorageCapacity = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, OntapConfiguration = NULL, OpenZFSConfiguration = NULL, StorageType = NULL, FileSystemTypeVersion = NULL) {
+fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, StorageCapacity = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, OntapConfiguration = NULL, OpenZFSConfiguration = NULL, StorageType = NULL, FileSystemTypeVersion = NULL, NetworkType = NULL) {
   op <- new_operation(
     name = "UpdateFileSystem",
     http_method = "POST",
@@ -10841,7 +11696,7 @@ fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, Stor
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .fsx$update_file_system_input(FileSystemId = FileSystemId, ClientRequestToken = ClientRequestToken, StorageCapacity = StorageCapacity, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, OntapConfiguration = OntapConfiguration, OpenZFSConfiguration = OpenZFSConfiguration, StorageType = StorageType, FileSystemTypeVersion = FileSystemTypeVersion)
+  input <- .fsx$update_file_system_input(FileSystemId = FileSystemId, ClientRequestToken = ClientRequestToken, StorageCapacity = StorageCapacity, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, OntapConfiguration = OntapConfiguration, OpenZFSConfiguration = OpenZFSConfiguration, StorageType = StorageType, FileSystemTypeVersion = FileSystemTypeVersion, NetworkType = NetworkType)
   output <- .fsx$update_file_system_output()
   config <- get_config()
   svc <- .fsx$service(config, op)
@@ -10961,7 +11816,7 @@ fsx_update_shared_vpc_configuration <- function(EnableFsxRouteTableUpdatesFromPa
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
-#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING",
+#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING"|"PAUSED"|"CANCELLED",
 #'         TargetFileSystemValues = list(
 #'           OwnerId = "string",
 #'           CreationTime = as.POSIXct(
@@ -11000,7 +11855,8 @@ fsx_update_shared_vpc_configuration <- function(EnableFsxRouteTableUpdatesFromPa
 #'               UserName = "string",
 #'               DnsIps = list(
 #'                 "string"
-#'               )
+#'               ),
+#'               DomainJoinServiceAccountSecret = "string"
 #'             ),
 #'             DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'             RemoteAdministrationEndpoint = "string",
@@ -11028,6 +11884,11 @@ fsx_update_shared_vpc_configuration <- function(EnableFsxRouteTableUpdatesFromPa
 #'             DiskIopsConfiguration = list(
 #'               Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'               Iops = 123
+#'             ),
+#'             PreferredFileServerIpv6 = "string",
+#'             FsrmConfiguration = list(
+#'               FsrmServiceEnabled = TRUE|FALSE,
+#'               EventLogDestination = "string"
 #'             )
 #'           ),
 #'           LustreConfiguration = list(
@@ -11064,7 +11925,12 @@ fsx_update_shared_vpc_configuration <- function(EnableFsxRouteTableUpdatesFromPa
 #'               Iops = 123,
 #'               Mode = "AUTOMATIC"|"USER_PROVISIONED"
 #'             ),
-#'             EfaEnabled = TRUE|FALSE
+#'             EfaEnabled = TRUE|FALSE,
+#'             ThroughputCapacity = 123,
+#'             DataReadCacheConfiguration = list(
+#'               SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'               SizeGiB = 123
+#'             )
 #'           ),
 #'           AdministrativeActions = list(),
 #'           OntapConfiguration = list(
@@ -11077,11 +11943,17 @@ fsx_update_shared_vpc_configuration <- function(EnableFsxRouteTableUpdatesFromPa
 #'                 DNSName = "string",
 #'                 IpAddresses = list(
 #'                   "string"
+#'                 ),
+#'                 Ipv6Addresses = list(
+#'                   "string"
 #'                 )
 #'               ),
 #'               Management = list(
 #'                 DNSName = "string",
 #'                 IpAddresses = list(
+#'                   "string"
+#'                 ),
+#'                 Ipv6Addresses = list(
 #'                   "string"
 #'                 )
 #'               )
@@ -11098,7 +11970,8 @@ fsx_update_shared_vpc_configuration <- function(EnableFsxRouteTableUpdatesFromPa
 #'             WeeklyMaintenanceStartTime = "string",
 #'             FsxAdminPassword = "string",
 #'             HAPairs = 123,
-#'             ThroughputCapacityPerHAPair = 123
+#'             ThroughputCapacityPerHAPair = 123,
+#'             EndpointIpv6AddressRange = "string"
 #'           ),
 #'           FileSystemTypeVersion = "string",
 #'           OpenZFSConfiguration = list(
@@ -11116,15 +11989,18 @@ fsx_update_shared_vpc_configuration <- function(EnableFsxRouteTableUpdatesFromPa
 #'             RootVolumeId = "string",
 #'             PreferredSubnetId = "string",
 #'             EndpointIpAddressRange = "string",
+#'             EndpointIpv6AddressRange = "string",
 #'             RouteTableIds = list(
 #'               "string"
 #'             ),
 #'             EndpointIpAddress = "string",
+#'             EndpointIpv6Address = "string",
 #'             ReadCacheConfiguration = list(
 #'               SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
 #'               SizeGiB = 123
 #'             )
-#'           )
+#'           ),
+#'           NetworkType = "IPV4"|"DUAL"
 #'         ),
 #'         FailureDetails = list(
 #'           Message = "string"
@@ -11241,7 +12117,8 @@ fsx_update_shared_vpc_configuration <- function(EnableFsxRouteTableUpdatesFromPa
 #'         ),
 #'         TargetSnapshotValues = list(),
 #'         TotalTransferBytes = 123,
-#'         RemainingTransferBytes = 123
+#'         RemainingTransferBytes = 123,
+#'         Message = "string"
 #'       )
 #'     )
 #'   )
@@ -11311,7 +12188,8 @@ fsx_update_snapshot <- function(ClientRequestToken = NULL, Name, SnapshotId) {
 #'         UserName = "string",
 #'         DnsIps = list(
 #'           "string"
-#'         )
+#'         ),
+#'         DomainJoinServiceAccountSecret = "string"
 #'       )
 #'     ),
 #'     CreationTime = as.POSIXct(
@@ -11322,11 +12200,17 @@ fsx_update_snapshot <- function(ClientRequestToken = NULL, Name, SnapshotId) {
 #'         DNSName = "string",
 #'         IpAddresses = list(
 #'           "string"
+#'         ),
+#'         Ipv6Addresses = list(
+#'           "string"
 #'         )
 #'       ),
 #'       Management = list(
 #'         DNSName = "string",
 #'         IpAddresses = list(
+#'           "string"
+#'         ),
+#'         Ipv6Addresses = list(
 #'           "string"
 #'         )
 #'       ),
@@ -11334,11 +12218,17 @@ fsx_update_snapshot <- function(ClientRequestToken = NULL, Name, SnapshotId) {
 #'         DNSName = "string",
 #'         IpAddresses = list(
 #'           "string"
+#'         ),
+#'         Ipv6Addresses = list(
+#'           "string"
 #'         )
 #'       ),
 #'       Smb = list(
 #'         DNSName = "string",
 #'         IpAddresses = list(
+#'           "string"
+#'         ),
+#'         Ipv6Addresses = list(
 #'           "string"
 #'         )
 #'       )
@@ -11376,7 +12266,8 @@ fsx_update_snapshot <- function(ClientRequestToken = NULL, Name, SnapshotId) {
 #'       ),
 #'       DomainName = "string",
 #'       OrganizationalUnitDistinguishedName = "string",
-#'       FileSystemAdministratorsGroup = "string"
+#'       FileSystemAdministratorsGroup = "string",
+#'       DomainJoinServiceAccountSecret = "string"
 #'     ),
 #'     NetBiosName = "string"
 #'   ),
@@ -11510,7 +12401,7 @@ fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
-#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING",
+#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING"|"OPTIMIZING"|"PAUSED"|"CANCELLED",
 #'         TargetFileSystemValues = list(
 #'           OwnerId = "string",
 #'           CreationTime = as.POSIXct(
@@ -11549,7 +12440,8 @@ fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'               UserName = "string",
 #'               DnsIps = list(
 #'                 "string"
-#'               )
+#'               ),
+#'               DomainJoinServiceAccountSecret = "string"
 #'             ),
 #'             DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'             RemoteAdministrationEndpoint = "string",
@@ -11577,6 +12469,11 @@ fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'             DiskIopsConfiguration = list(
 #'               Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'               Iops = 123
+#'             ),
+#'             PreferredFileServerIpv6 = "string",
+#'             FsrmConfiguration = list(
+#'               FsrmServiceEnabled = TRUE|FALSE,
+#'               EventLogDestination = "string"
 #'             )
 #'           ),
 #'           LustreConfiguration = list(
@@ -11613,7 +12510,12 @@ fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'               Iops = 123,
 #'               Mode = "AUTOMATIC"|"USER_PROVISIONED"
 #'             ),
-#'             EfaEnabled = TRUE|FALSE
+#'             EfaEnabled = TRUE|FALSE,
+#'             ThroughputCapacity = 123,
+#'             DataReadCacheConfiguration = list(
+#'               SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'               SizeGiB = 123
+#'             )
 #'           ),
 #'           AdministrativeActions = list(),
 #'           OntapConfiguration = list(
@@ -11626,11 +12528,17 @@ fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'                 DNSName = "string",
 #'                 IpAddresses = list(
 #'                   "string"
+#'                 ),
+#'                 Ipv6Addresses = list(
+#'                   "string"
 #'                 )
 #'               ),
 #'               Management = list(
 #'                 DNSName = "string",
 #'                 IpAddresses = list(
+#'                   "string"
+#'                 ),
+#'                 Ipv6Addresses = list(
 #'                   "string"
 #'                 )
 #'               )
@@ -11647,7 +12555,8 @@ fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'             WeeklyMaintenanceStartTime = "string",
 #'             FsxAdminPassword = "string",
 #'             HAPairs = 123,
-#'             ThroughputCapacityPerHAPair = 123
+#'             ThroughputCapacityPerHAPair = 123,
+#'             EndpointIpv6AddressRange = "string"
 #'           ),
 #'           FileSystemTypeVersion = "string",
 #'           OpenZFSConfiguration = list(
@@ -11665,15 +12574,18 @@ fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'             RootVolumeId = "string",
 #'             PreferredSubnetId = "string",
 #'             EndpointIpAddressRange = "string",
+#'             EndpointIpv6AddressRange = "string",
 #'             RouteTableIds = list(
 #'               "string"
 #'             ),
 #'             EndpointIpAddress = "string",
+#'             EndpointIpv6Address = "string",
 #'             ReadCacheConfiguration = list(
 #'               SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
 #'               SizeGiB = 123
 #'             )
-#'           )
+#'           ),
+#'           NetworkType = "IPV4"|"DUAL"
 #'         ),
 #'         FailureDetails = list(
 #'           Message = "string"
@@ -11700,7 +12612,8 @@ fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'           AdministrativeActions = list()
 #'         ),
 #'         TotalTransferBytes = 123,
-#'         RemainingTransferBytes = 123
+#'         RemainingTransferBytes = 123,
+#'         Message = "string"
 #'       )
 #'     ),
 #'     OpenZFSConfiguration = list(

@@ -4,7 +4,14 @@
 \alias{elbv2_create_rule}
 \title{Creates a rule for the specified listener}
 \usage{
-elbv2_create_rule(ListenerArn, Conditions, Priority, Actions, Tags = NULL)
+elbv2_create_rule(
+  ListenerArn,
+  Conditions,
+  Priority,
+  Actions,
+  Tags = NULL,
+  Transforms = NULL
+)
 }
 \arguments{
 \item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener.}
@@ -17,6 +24,9 @@ priority.}
 \item{Actions}{[required] The actions.}
 
 \item{Tags}{The tags to assign to the rule.}
+
+\item{Transforms}{The transforms to apply to requests that match this rule. You can add
+one host header rewrite transform and one URL rewrite transform.}
 }
 \description{
 Creates a rule for the specified listener. The listener must be associated with an Application Load Balancer.

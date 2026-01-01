@@ -5,13 +5,13 @@
 \title{The DeleteScraper operation deletes one scraper, and stops any metrics
 collection that the scraper performs}
 \usage{
-prometheusservice_delete_scraper(clientToken = NULL, scraperId)
+prometheusservice_delete_scraper(scraperId, clientToken = NULL)
 }
 \arguments{
+\item{scraperId}{[required] The ID of the scraper to delete.}
+
 \item{clientToken}{(Optional) A unique, case-sensitive identifier that you can provide to
 ensure the idempotency of the request.}
-
-\item{scraperId}{[required] The ID of the scraper to delete.}
 }
 \description{
 The \code{\link[=prometheusservice_delete_scraper]{delete_scraper}} operation deletes one scraper, and stops any metrics collection that the scraper performs.

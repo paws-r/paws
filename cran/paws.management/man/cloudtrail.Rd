@@ -72,7 +72,7 @@ languages and platforms (Java, Ruby, .NET, iOS, Android, etc.). The SDKs
 provide programmatic access to CloudTrail. For example, the SDKs handle
 cryptographically signing requests, managing errors, and retrying
 requests automatically. For more information about the Amazon Web
-Services SDKs, including how to download and install them, see \href{https://aws.amazon.com/developer/tools/}{Tools to Build on Amazon Web Services}.
+Services SDKs, including how to download and install them, see \href{https://builder.aws.com/build/tools}{Tools to Build on Amazon Web Services}.
 
 See the \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html}{CloudTrail User Guide}
 for information about the data that is included with each Amazon Web
@@ -136,6 +136,7 @@ Services API call listed in the log files.
 \link[=cloudtrail_generate_query]{generate_query} \tab Generates a query from a natural language prompt\cr
 \link[=cloudtrail_get_channel]{get_channel} \tab Returns information about a specific channel\cr
 \link[=cloudtrail_get_dashboard]{get_dashboard} \tab Returns the specified dashboard\cr
+\link[=cloudtrail_get_event_configuration]{get_event_configuration} \tab Retrieves the current event configuration settings for the specified event data store or trail\cr
 \link[=cloudtrail_get_event_data_store]{get_event_data_store} \tab Returns information about an event data store specified as either an ARN or the ID portion of the ARN\cr
 \link[=cloudtrail_get_event_selectors]{get_event_selectors} \tab Describes the settings for the event selectors that you configured for your trail\cr
 \link[=cloudtrail_get_import]{get_import} \tab Returns information about a specific import\cr
@@ -149,14 +150,16 @@ Services API call listed in the log files.
 \link[=cloudtrail_list_event_data_stores]{list_event_data_stores} \tab Returns information about all event data stores in the account, in the current Region\cr
 \link[=cloudtrail_list_import_failures]{list_import_failures} \tab Returns a list of failures for the specified import\cr
 \link[=cloudtrail_list_imports]{list_imports} \tab Returns information on all imports, or a select set of imports by ImportStatus or Destination\cr
+\link[=cloudtrail_list_insights_data]{list_insights_data} \tab Returns Insights events generated on a trail that logs data events\cr
 \link[=cloudtrail_list_insights_metric_data]{list_insights_metric_data} \tab Returns Insights metrics data for trails that have enabled Insights\cr
 \link[=cloudtrail_list_public_keys]{list_public_keys} \tab Returns all public keys whose private keys were used to sign the digest files within the specified time range\cr
 \link[=cloudtrail_list_queries]{list_queries} \tab Returns a list of queries and query statuses for the past seven days\cr
 \link[=cloudtrail_list_tags]{list_tags} \tab Lists the tags for the specified trails, event data stores, dashboards, or channels in the current Region\cr
 \link[=cloudtrail_list_trails]{list_trails} \tab Lists trails that are in the current account\cr
 \link[=cloudtrail_lookup_events]{lookup_events} \tab Looks up management events or CloudTrail Insights events that are captured by CloudTrail\cr
+\link[=cloudtrail_put_event_configuration]{put_event_configuration} \tab Updates the event configuration settings for the specified event data store or trail\cr
 \link[=cloudtrail_put_event_selectors]{put_event_selectors} \tab Configures event selectors (also referred to as basic event selectors) or advanced event selectors for your trail\cr
-\link[=cloudtrail_put_insight_selectors]{put_insight_selectors} \tab Lets you enable Insights event logging by specifying the Insights selectors that you want to enable on an existing trail or event data store\cr
+\link[=cloudtrail_put_insight_selectors]{put_insight_selectors} \tab Lets you enable Insights event logging on specific event categories by specifying the Insights selectors that you want to enable on an existing trail or event data store\cr
 \link[=cloudtrail_put_resource_policy]{put_resource_policy} \tab Attaches a resource-based permission policy to a CloudTrail event data store, dashboard, or channel\cr
 \link[=cloudtrail_register_organization_delegated_admin]{register_organization_delegated_admin} \tab Registers an organization’s member account as the CloudTrail delegated administrator\cr
 \link[=cloudtrail_remove_tags]{remove_tags} \tab Removes the specified tags from a trail, event data store, dashboard, or channel\cr

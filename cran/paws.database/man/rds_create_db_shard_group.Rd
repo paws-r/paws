@@ -19,15 +19,15 @@ rds_create_db_shard_group(
 
 \item{DBClusterIdentifier}{[required] The name of the primary DB cluster for the DB shard group.}
 
-\item{ComputeRedundancy}{Specifies whether to create standby DB shard groups for the DB shard
-group. Valid values are the following:
+\item{ComputeRedundancy}{Specifies whether to create standby standby DB data access shard for the
+DB shard group. Valid values are the following:
 \itemize{
-\item 0 - Creates a DB shard group without a standby DB shard group. This
-is the default value.
-\item 1 - Creates a DB shard group with a standby DB shard group in a
-different Availability Zone (AZ).
-\item 2 - Creates a DB shard group with two standby DB shard groups in two
-different AZs.
+\item 0 - Creates a DB shard group without a standby DB data access shard.
+This is the default value.
+\item 1 - Creates a DB shard group with a standby DB data access shard in
+a different Availability Zone (AZ).
+\item 2 - Creates a DB shard group with two standby DB data access shard
+in two different AZs.
 }}
 
 \item{MaxACU}{[required] The maximum capacity of the DB shard group in Aurora capacity units

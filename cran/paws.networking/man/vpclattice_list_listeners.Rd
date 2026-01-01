@@ -5,17 +5,17 @@
 \title{Lists the listeners for the specified service}
 \usage{
 vpclattice_list_listeners(
+  serviceIdentifier,
   maxResults = NULL,
-  nextToken = NULL,
-  serviceIdentifier
+  nextToken = NULL
 )
 }
 \arguments{
+\item{serviceIdentifier}{[required] The ID or ARN of the service.}
+
 \item{maxResults}{The maximum number of results to return.}
 
 \item{nextToken}{A pagination token for the next page of results.}
-
-\item{serviceIdentifier}{[required] The ID or ARN of the service.}
 }
 \description{
 Lists the listeners for the specified service.

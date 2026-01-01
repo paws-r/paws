@@ -55,6 +55,14 @@ Operations section.
 \description{
 Amazon EC2 Auto Scaling
 
+The
+\code{\link[=autoscaling_describe_auto_scaling_groups]{describe_auto_scaling_groups}}
+API operation might be throttled when retrieving details for an Auto
+Scaling group that contains many instances. By default, this operation
+returns details for all instances in the group. To help prevent
+throttling, you can set the \code{IncludeInstances} parameter to \code{false} to
+exclude instance details from the response.
+
 Amazon EC2 Auto Scaling is designed to automatically launch and
 terminate EC2 instances based on user-defined scaling policies,
 scheduled actions, and health checks.
@@ -151,6 +159,7 @@ and the \href{https://docs.aws.amazon.com/autoscaling/ec2/APIReference/Welcome.h
 \link[=autoscaling_execute_policy]{execute_policy} \tab Executes the specified policy\cr
 \link[=autoscaling_exit_standby]{exit_standby} \tab Moves the specified instances out of the standby state\cr
 \link[=autoscaling_get_predictive_scaling_forecast]{get_predictive_scaling_forecast} \tab Retrieves the forecast data for a predictive scaling policy\cr
+\link[=autoscaling_launch_instances]{launch_instances} \tab Launches a specified number of instances in an Auto Scaling group\cr
 \link[=autoscaling_put_lifecycle_hook]{put_lifecycle_hook} \tab Creates or updates a lifecycle hook for the specified Auto Scaling group\cr
 \link[=autoscaling_put_notification_configuration]{put_notification_configuration} \tab Configures an Auto Scaling group to send notifications when specified events take place\cr
 \link[=autoscaling_put_scaling_policy]{put_scaling_policy} \tab Creates or updates a scaling policy for an Auto Scaling group\cr

@@ -26,8 +26,8 @@ sns_subscribe(
 \item \code{application} – delivery of JSON-encoded message to an EndpointArn
 for a mobile app and device
 \item \code{lambda} – delivery of JSON-encoded message to an Lambda function
-\item \code{firehose} – delivery of JSON-encoded message to an Amazon Kinesis
-Data Firehose delivery stream.
+\item \code{firehose} – delivery of JSON-encoded message to an Amazon Data
+Firehose delivery stream.
 }}
 
 \item{Endpoint}{The endpoint that you want to receive notifications. Endpoints vary by
@@ -48,7 +48,7 @@ mobile app and device.
 \item For the \code{lambda} protocol, the endpoint is the ARN of an Lambda
 function.
 \item For the \code{firehose} protocol, the endpoint is the ARN of an Amazon
-Kinesis Data Firehose delivery stream.
+Data Firehose delivery stream.
 }}
 
 \item{Attributes}{A map of attributes with their corresponding values.

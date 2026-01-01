@@ -9,7 +9,8 @@ ecs_list_services(
   nextToken = NULL,
   maxResults = NULL,
   launchType = NULL,
-  schedulingStrategy = NULL
+  schedulingStrategy = NULL,
+  resourceManagementType = NULL
 )
 }
 \arguments{
@@ -42,6 +43,9 @@ with the returned \code{nextToken} value. This value can be between 1 and
 \code{\link[=ecs_list_services]{list_services}} results.}
 
 \item{schedulingStrategy}{The scheduling strategy to use when filtering the
+\code{\link[=ecs_list_services]{list_services}} results.}
+
+\item{resourceManagementType}{The resourceManagementType type to use when filtering the
 \code{\link[=ecs_list_services]{list_services}} results.}
 }
 \description{

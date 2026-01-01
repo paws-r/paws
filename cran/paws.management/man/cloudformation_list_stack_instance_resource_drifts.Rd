@@ -16,15 +16,11 @@ cloudformation_list_stack_instance_resource_drifts(
 )
 }
 \arguments{
-\item{StackSetName}{[required] The name or unique ID of the stack set that you want to list drifted
+\item{StackSetName}{[required] The name or unique ID of the StackSet that you want to list drifted
 resources for.}
 
-\item{NextToken}{If the previous paginated request didn't return all of the remaining
-results, the response object's \code{NextToken} parameter value is set to a
-token. To retrieve the next set of results, call this action again and
-assign that token to the request object's \code{NextToken} parameter. If
-there are no remaining results, the previous response object's
-\code{NextToken} parameter is set to \code{null}.}
+\item{NextToken}{The token for the next set of items to return. (You received this token
+from a previous call.)}
 
 \item{MaxResults}{The maximum number of results to be returned with a single call. If the
 number of available results exceeds this maximum, the response includes
@@ -53,7 +49,7 @@ resource drifts for.}
 account administrator in the organization's management account or as a
 delegated administrator in a member account.
 
-By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+By default, \code{SELF} is specified. Use \code{SELF} for StackSets with
 self-managed permissions.
 \itemize{
 \item If you are signed in to the management account, specify \code{SELF}.

@@ -3,7 +3,7 @@
 \name{appstream_create_updated_image}
 \alias{appstream_create_updated_image}
 \title{Creates a new image with the latest Windows operating system updates,
-driver updates, and AppStream 2}
+driver updates, and WorkSpaces Applications agent software}
 \usage{
 appstream_create_updated_image(
   existingImageName,
@@ -36,17 +36,17 @@ _ . : / = + \\ - @
 If you do not specify a value, the value is set to an empty string.
 
 For more information about tags, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html}{Tagging Your Resources}
-in the \emph{Amazon AppStream 2.0 Administration Guide}.}
+in the \emph{Amazon WorkSpaces Applications Administration Guide}.}
 
 \item{dryRun}{Indicates whether to display the status of image update availability
-before AppStream 2.0 initiates the process of creating a new updated
-image. If this value is set to \code{true}, AppStream 2.0 displays whether
-image updates are available. If this value is set to \code{false}, AppStream
-2.0 initiates the process of creating a new updated image without
-displaying whether image updates are available.}
+before WorkSpaces Applications initiates the process of creating a new
+updated image. If this value is set to \code{true}, WorkSpaces Applications
+displays whether image updates are available. If this value is set to
+\code{false}, WorkSpaces Applications initiates the process of creating a new
+updated image without displaying whether image updates are available.}
 }
 \description{
-Creates a new image with the latest Windows operating system updates, driver updates, and AppStream 2.0 agent software.
+Creates a new image with the latest Windows operating system updates, driver updates, and WorkSpaces Applications agent software.
 
 See \url{https://www.paws-r-sdk.com/docs/appstream_create_updated_image/} for full documentation.
 }

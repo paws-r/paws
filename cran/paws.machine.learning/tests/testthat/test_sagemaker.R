@@ -264,6 +264,14 @@ test_that("list_lineage_groups", {
   expect_error(svc$list_lineage_groups(MaxResults = 20), NA)
 })
 
+test_that("list_mlflow_apps", {
+  expect_error(svc$list_mlflow_apps(), NA)
+})
+
+test_that("list_mlflow_apps", {
+  expect_error(svc$list_mlflow_apps(MaxResults = 20), NA)
+})
+
 test_that("list_mlflow_tracking_servers", {
   expect_error(svc$list_mlflow_tracking_servers(), NA)
 })

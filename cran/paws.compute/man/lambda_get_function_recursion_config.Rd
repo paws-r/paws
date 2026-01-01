@@ -7,7 +7,7 @@
 lambda_get_function_recursion_config(FunctionName)
 }
 \arguments{
-\item{FunctionName}{[required]}
+\item{FunctionName}{[required] The name of the function.}
 }
 \description{
 Returns your function's \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-recursion.html}{recursive loop detection} configuration.

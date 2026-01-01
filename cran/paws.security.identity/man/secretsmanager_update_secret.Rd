@@ -11,7 +11,8 @@ secretsmanager_update_secret(
   Description = NULL,
   KmsKeyId = NULL,
   SecretBinary = NULL,
-  SecretString = NULL
+  SecretString = NULL,
+  Type = NULL
 )
 }
 \arguments{
@@ -88,6 +89,9 @@ Either \code{SecretBinary} or \code{SecretString} must have a value, but not bot
 Sensitive: This field contains sensitive information, so the service
 does not include it in CloudTrail log entries. If you create your own
 log entries, you must also avoid logging the information in this field.}
+
+\item{Type}{The exact string that identifies the third-party partner that holds the
+external secret. For more information, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/mes-partners.html}{Managed external secret partners}.}
 }
 \description{
 Modifies the details of a secret, including metadata and the secret value. To change the secret value, you can also use \code{\link[=secretsmanager_put_secret_value]{put_secret_value}}.

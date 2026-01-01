@@ -22,7 +22,7 @@ To get the key ID and key ARN for a KMS key, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 }
 \description{
-Sets the state of a KMS key to disabled. This change temporarily prevents use of the KMS key for \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations}.
+Sets the state of a KMS key to disabled. This change temporarily prevents use of the KMS key for \href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-cryptography.html#cryptographic-operations}{cryptographic operations}.
 
 See \url{https://www.paws-r-sdk.com/docs/kms_disable_key/} for full documentation.
 }

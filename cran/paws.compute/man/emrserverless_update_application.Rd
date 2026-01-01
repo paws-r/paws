@@ -19,7 +19,9 @@ emrserverless_update_application(
   releaseLabel = NULL,
   runtimeConfiguration = NULL,
   monitoringConfiguration = NULL,
-  schedulerConfiguration = NULL
+  schedulerConfiguration = NULL,
+  identityCenterConfiguration = NULL,
+  jobLevelCostAllocationConfiguration = NULL
 )
 }
 \arguments{
@@ -73,6 +75,13 @@ applied across all the job runs submitted under the application.}
 
 \item{schedulerConfiguration}{The scheduler configuration for batch and streaming jobs running on this
 application. Supported with release labels emr-7.0.0 and above.}
+
+\item{identityCenterConfiguration}{Specifies the IAM Identity Center configuration used to enable or
+disable trusted identity propagation. When provided, this configuration
+determines how the application interacts with IAM Identity Center for
+user authentication and access control.}
+
+\item{jobLevelCostAllocationConfiguration}{The configuration object that enables job level cost allocation.}
 }
 \description{
 Updates a specified application. An application has to be in a stopped or created state in order to be updated.

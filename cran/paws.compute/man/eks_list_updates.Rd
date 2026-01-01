@@ -9,6 +9,7 @@ eks_list_updates(
   name,
   nodegroupName = NULL,
   addonName = NULL,
+  capabilityName = NULL,
   nextToken = NULL,
   maxResults = NULL
 )
@@ -19,6 +20,8 @@ eks_list_updates(
 \item{nodegroupName}{The name of the Amazon EKS managed node group to list updates for.}
 
 \item{addonName}{The names of the installed add-ons that have available updates.}
+
+\item{capabilityName}{The name of the capability for which you want to list updates.}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated request, where
 \code{maxResults} was used and the results exceeded the value of that

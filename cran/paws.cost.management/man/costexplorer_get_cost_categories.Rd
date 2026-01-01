@@ -2,7 +2,7 @@
 % Please edit documentation in R/costexplorer_operations.R
 \name{costexplorer_get_cost_categories}
 \alias{costexplorer_get_cost_categories}
-\title{Retrieves an array of Cost Category names and values incurred cost}
+\title{Retrieves an array of cost category names and values incurred cost}
 \usage{
 costexplorer_get_cost_categories(
   SearchString = NULL,
@@ -19,9 +19,9 @@ costexplorer_get_cost_categories(
 \item{SearchString}{The value that you want to search the filter values for.
 
 If you don't specify a \code{CostCategoryName}, \code{SearchString} is used to
-filter Cost Category names that match the \code{SearchString} pattern. If you
-specify a \code{CostCategoryName}, \code{SearchString} is used to filter Cost
-Category values that match the \code{SearchString} pattern.}
+filter cost category names that match the \code{SearchString} pattern. If you
+specify a \code{CostCategoryName}, \code{SearchString} is used to filter cost
+category values that match the \code{SearchString} pattern.}
 
 \item{TimePeriod}{[required]}
 
@@ -72,7 +72,7 @@ response. To retrieve the next batch of objects, provide the
 NextPageToken from the previous call in your next request.}
 }
 \description{
-Retrieves an array of Cost Category names and values incurred cost.
+Retrieves an array of cost category names and values incurred cost.
 
 See \url{https://www.paws-r-sdk.com/docs/costexplorer_get_cost_categories/} for full documentation.
 }

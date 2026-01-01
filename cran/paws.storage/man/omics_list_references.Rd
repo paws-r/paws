@@ -2,7 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_list_references}
 \alias{omics_list_references}
-\title{Retrieves a list of references}
+\title{Retrieves the metadata of one or more reference genomes in a reference
+store}
 \usage{
 omics_list_references(
   referenceStoreId,
@@ -22,7 +23,7 @@ next page of results.}
 \item{filter}{A filter to apply to the list.}
 }
 \description{
-Retrieves a list of references.
+Retrieves the metadata of one or more reference genomes in a reference store.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_list_references/} for full documentation.
 }

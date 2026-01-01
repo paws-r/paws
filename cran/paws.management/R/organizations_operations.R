@@ -3,15 +3,14 @@
 #' @include organizations_service.R
 NULL
 
-#' Sends a response to the originator of a handshake agreeing to the action
-#' proposed by the handshake request
+#' Accepts a handshake by sending an ACCEPTED response to the sender
 #'
 #' @description
-#' Sends a response to the originator of a handshake agreeing to the action proposed by the handshake request.
+#' Accepts a handshake by sending an `ACCEPTED` response to the sender. You can view accepted handshakes in API responses for 30 days before they are deleted.
 #'
 #' See [https://www.paws-r-sdk.com/docs/organizations_accept_handshake/](https://www.paws-r-sdk.com/docs/organizations_accept_handshake/) for full documentation.
 #'
-#' @param HandshakeId &#91;required&#93; The unique identifier (ID) of the handshake that you want to accept.
+#' @param HandshakeId &#91;required&#93; ID for the handshake that you want to accept.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for handshake
 #' ID string requires "h-" followed by from 8 to 32 lowercase letters or
@@ -47,15 +46,15 @@ organizations_accept_handshake <- function(HandshakeId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/organizations_attach_policy/](https://www.paws-r-sdk.com/docs/organizations_attach_policy/) for full documentation.
 #'
-#' @param PolicyId &#91;required&#93; The unique identifier (ID) of the policy that you want to attach to the
-#' target. You can get the ID for the policy by calling the
+#' @param PolicyId &#91;required&#93; ID for the policy that you want to attach to the target. You can get the
+#' ID for the policy by calling the
 #' [`list_policies`][organizations_list_policies] operation.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for a policy ID
 #' string requires "p-" followed by from 8 to 128 lowercase or uppercase
 #' letters, digits, or the underscore character (_).
-#' @param TargetId &#91;required&#93; The unique identifier (ID) of the root, OU, or account that you want to
-#' attach the policy to. You can get the ID by calling the
+#' @param TargetId &#91;required&#93; ID for the root, OU, or account that you want to attach the policy to.
+#' You can get the ID by calling the
 #' [`list_roots`][organizations_list_roots],
 #' [`list_organizational_units_for_parent`][organizations_list_organizational_units_for_parent],
 #' or [`list_accounts`][organizations_list_accounts] operations.
@@ -95,15 +94,15 @@ organizations_attach_policy <- function(PolicyId, TargetId) {
 }
 .organizations$operations$attach_policy <- organizations_attach_policy
 
-#' Cancels a handshake
+#' Cancels a Handshake
 #'
 #' @description
-#' Cancels a handshake. Canceling a handshake sets the handshake state to `CANCELED`.
+#' Cancels a Handshake.
 #'
 #' See [https://www.paws-r-sdk.com/docs/organizations_cancel_handshake/](https://www.paws-r-sdk.com/docs/organizations_cancel_handshake/) for full documentation.
 #'
-#' @param HandshakeId &#91;required&#93; The unique identifier (ID) of the handshake that you want to cancel. You
-#' can get the ID from the
+#' @param HandshakeId &#91;required&#93; ID for the handshake that you want to cancel. You can get the ID from
+#' the
 #' [`list_handshakes_for_organization`][organizations_list_handshakes_for_organization]
 #' operation.
 #' 
@@ -453,8 +452,7 @@ organizations_create_organization <- function(FeatureSet = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/organizations_create_organizational_unit/](https://www.paws-r-sdk.com/docs/organizations_create_organizational_unit/) for full documentation.
 #'
-#' @param ParentId &#91;required&#93; The unique identifier (ID) of the parent root or OU that you want to
-#' create the new OU in.
+#' @param ParentId &#91;required&#93; ID for the parent root or OU that you want to create the new OU in.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for a parent ID
 #' string requires one of the following:
@@ -538,6 +536,18 @@ organizations_create_organizational_unit <- function(ParentId, Name, Tags = NULL
 #' -   [CHATBOT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_chatbot.html)
 #' 
 #' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
+#' 
+#' -   [SECURITYHUB_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_security_hub.html)
+#' 
+#' -   [UPGRADE_ROLLOUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_upgrade_rollout.html)
+#' 
+#' -   [INSPECTOR_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_inspector.html)
+#' 
+#' -   [BEDROCK_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_bedrock.html)
+#' 
+#' -   [S3_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_s3.html)
+#' 
+#' -   [NETWORK_SECURITY_DIRECTOR_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_network_security_director.html)
 #' @param Tags A list of tags that you want to attach to the newly created policy. For
 #' each tag in the list, you must specify both a tag key and a value. You
 #' can set the value to an empty string, but you can't set it to `null`.
@@ -571,15 +581,15 @@ organizations_create_policy <- function(Content, Description, Name, Type, Tags =
 }
 .organizations$operations$create_policy <- organizations_create_policy
 
-#' Declines a handshake request
+#' Declines a Handshake
 #'
 #' @description
-#' Declines a handshake request. This sets the handshake state to `DECLINED` and effectively deactivates the request.
+#' Declines a Handshake.
 #'
 #' See [https://www.paws-r-sdk.com/docs/organizations_decline_handshake/](https://www.paws-r-sdk.com/docs/organizations_decline_handshake/) for full documentation.
 #'
-#' @param HandshakeId &#91;required&#93; The unique identifier (ID) of the handshake that you want to decline.
-#' You can get the ID from the
+#' @param HandshakeId &#91;required&#93; ID for the handshake that you want to decline. You can get the ID from
+#' the
 #' [`list_handshakes_for_account`][organizations_list_handshakes_for_account]
 #' operation.
 #' 
@@ -647,8 +657,8 @@ organizations_delete_organization <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/organizations_delete_organizational_unit/](https://www.paws-r-sdk.com/docs/organizations_delete_organizational_unit/) for full documentation.
 #'
-#' @param OrganizationalUnitId &#91;required&#93; The unique identifier (ID) of the organizational unit that you want to
-#' delete. You can get the ID from the
+#' @param OrganizationalUnitId &#91;required&#93; ID for the organizational unit that you want to delete. You can get the
+#' ID from the
 #' [`list_organizational_units_for_parent`][organizations_list_organizational_units_for_parent]
 #' operation.
 #' 
@@ -687,9 +697,9 @@ organizations_delete_organizational_unit <- function(OrganizationalUnitId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/organizations_delete_policy/](https://www.paws-r-sdk.com/docs/organizations_delete_policy/) for full documentation.
 #'
-#' @param PolicyId &#91;required&#93; The unique identifier (ID) of the policy that you want to delete. You
-#' can get the ID from the [`list_policies`][organizations_list_policies]
-#' or [`list_policies_for_target`][organizations_list_policies_for_target]
+#' @param PolicyId &#91;required&#93; ID for the policy that you want to delete. You can get the ID from the
+#' [`list_policies`][organizations_list_policies] or
+#' [`list_policies_for_target`][organizations_list_policies_for_target]
 #' operations.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for a policy ID
@@ -889,6 +899,18 @@ organizations_describe_create_account_status <- function(CreateAccountRequestId)
 #' -   [CHATBOT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_chatbot.html)
 #' 
 #' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
+#' 
+#' -   [SECURITYHUB_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_security_hub.html)
+#' 
+#' -   [UPGRADE_ROLLOUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_upgrade_rollout.html)
+#' 
+#' -   [INSPECTOR_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_inspector.html)
+#' 
+#' -   [BEDROCK_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_bedrock.html)
+#' 
+#' -   [S3_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_s3.html)
+#' 
+#' -   [NETWORK_SECURITY_DIRECTOR_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_network_security_director.html)
 #' @param TargetId When you're signed in as the management account, specify the ID of the
 #' account that you want details about. Specifying an organization root or
 #' organizational unit (OU) as the target is not supported.
@@ -915,20 +937,14 @@ organizations_describe_effective_policy <- function(PolicyType, TargetId = NULL)
 }
 .organizations$operations$describe_effective_policy <- organizations_describe_effective_policy
 
-#' Retrieves information about a previously requested handshake
+#' Returns details for a handshake
 #'
 #' @description
-#' Retrieves information about a previously requested handshake. The handshake ID comes from the response to the original [`invite_account_to_organization`][organizations_invite_account_to_organization] operation that generated the handshake.
+#' Returns details for a handshake. A handshake is the secure exchange of information between two Amazon Web Services accounts: a sender and a recipient.
 #'
 #' See [https://www.paws-r-sdk.com/docs/organizations_describe_handshake/](https://www.paws-r-sdk.com/docs/organizations_describe_handshake/) for full documentation.
 #'
-#' @param HandshakeId &#91;required&#93; The unique identifier (ID) of the handshake that you want information
-#' about. You can get the ID from the original call to
-#' [`invite_account_to_organization`][organizations_invite_account_to_organization],
-#' or from a call to
-#' [`list_handshakes_for_account`][organizations_list_handshakes_for_account]
-#' or
-#' [`list_handshakes_for_organization`][organizations_list_handshakes_for_organization].
+#' @param HandshakeId &#91;required&#93; ID for the handshake that you want information about.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for handshake
 #' ID string requires "h-" followed by from 8 to 32 lowercase letters or
@@ -995,8 +1011,8 @@ organizations_describe_organization <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/organizations_describe_organizational_unit/](https://www.paws-r-sdk.com/docs/organizations_describe_organizational_unit/) for full documentation.
 #'
-#' @param OrganizationalUnitId &#91;required&#93; The unique identifier (ID) of the organizational unit that you want
-#' details about. You can get the ID from the
+#' @param OrganizationalUnitId &#91;required&#93; ID for the organizational unit that you want details about. You can get
+#' the ID from the
 #' [`list_organizational_units_for_parent`][organizations_list_organizational_units_for_parent]
 #' operation.
 #' 
@@ -1035,9 +1051,8 @@ organizations_describe_organizational_unit <- function(OrganizationalUnitId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/organizations_describe_policy/](https://www.paws-r-sdk.com/docs/organizations_describe_policy/) for full documentation.
 #'
-#' @param PolicyId &#91;required&#93; The unique identifier (ID) of the policy that you want details about.
-#' You can get the ID from the
-#' [`list_policies`][organizations_list_policies] or
+#' @param PolicyId &#91;required&#93; ID for the policy that you want details about. You can get the ID from
+#' the [`list_policies`][organizations_list_policies] or
 #' [`list_policies_for_target`][organizations_list_policies_for_target]
 #' operations.
 #' 
@@ -1098,6 +1113,37 @@ organizations_describe_resource_policy <- function() {
 }
 .organizations$operations$describe_resource_policy <- organizations_describe_resource_policy
 
+#' Returns details for a transfer
+#'
+#' @description
+#' Returns details for a transfer. A *transfer* is an arrangement between two management accounts where one account designates the other with specified responsibilities for their organization.
+#'
+#' See [https://www.paws-r-sdk.com/docs/organizations_describe_responsibility_transfer/](https://www.paws-r-sdk.com/docs/organizations_describe_responsibility_transfer/) for full documentation.
+#'
+#' @param Id &#91;required&#93; ID for the transfer.
+#'
+#' @keywords internal
+#'
+#' @rdname organizations_describe_responsibility_transfer
+organizations_describe_responsibility_transfer <- function(Id) {
+  op <- new_operation(
+    name = "DescribeResponsibilityTransfer",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .organizations$describe_responsibility_transfer_input(Id = Id)
+  output <- .organizations$describe_responsibility_transfer_output()
+  config <- get_config()
+  svc <- .organizations$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.organizations$operations$describe_responsibility_transfer <- organizations_describe_responsibility_transfer
+
 #' Detaches a policy from a target root, organizational unit (OU), or
 #' account
 #'
@@ -1106,17 +1152,16 @@ organizations_describe_resource_policy <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/organizations_detach_policy/](https://www.paws-r-sdk.com/docs/organizations_detach_policy/) for full documentation.
 #'
-#' @param PolicyId &#91;required&#93; The unique identifier (ID) of the policy you want to detach. You can get
-#' the ID from the [`list_policies`][organizations_list_policies] or
+#' @param PolicyId &#91;required&#93; ID for the policy you want to detach. You can get the ID from the
+#' [`list_policies`][organizations_list_policies] or
 #' [`list_policies_for_target`][organizations_list_policies_for_target]
 #' operations.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for a policy ID
 #' string requires "p-" followed by from 8 to 128 lowercase or uppercase
 #' letters, digits, or the underscore character (_).
-#' @param TargetId &#91;required&#93; The unique identifier (ID) of the root, OU, or account that you want to
-#' detach the policy from. You can get the ID from the
-#' [`list_roots`][organizations_list_roots],
+#' @param TargetId &#91;required&#93; ID for the root, OU, or account that you want to detach the policy from.
+#' You can get the ID from the [`list_roots`][organizations_list_roots],
 #' [`list_organizational_units_for_parent`][organizations_list_organizational_units_for_parent],
 #' or [`list_accounts`][organizations_list_accounts] operations.
 #' 
@@ -1197,9 +1242,8 @@ organizations_disable_aws_service_access <- function(ServicePrincipal) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/organizations_disable_policy_type/](https://www.paws-r-sdk.com/docs/organizations_disable_policy_type/) for full documentation.
 #'
-#' @param RootId &#91;required&#93; The unique identifier (ID) of the root in which you want to disable a
-#' policy type. You can get the ID from the
-#' [`list_roots`][organizations_list_roots] operation.
+#' @param RootId &#91;required&#93; ID for the root in which you want to disable a policy type. You can get
+#' the ID from the [`list_roots`][organizations_list_roots] operation.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for a root ID
 #' string requires "r-" followed by from 4 to 32 lowercase letters or
@@ -1220,6 +1264,18 @@ organizations_disable_aws_service_access <- function(ServicePrincipal) {
 #' -   [CHATBOT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_chatbot.html)
 #' 
 #' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
+#' 
+#' -   [SECURITYHUB_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_security_hub.html)
+#' 
+#' -   [UPGRADE_ROLLOUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_upgrade_rollout.html)
+#' 
+#' -   [INSPECTOR_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_inspector.html)
+#' 
+#' -   [BEDROCK_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_bedrock.html)
+#' 
+#' -   [S3_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_s3.html)
+#' 
+#' -   [NETWORK_SECURITY_DIRECTOR_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_network_security_director.html)
 #'
 #' @keywords internal
 #'
@@ -1318,9 +1374,8 @@ organizations_enable_all_features <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/organizations_enable_policy_type/](https://www.paws-r-sdk.com/docs/organizations_enable_policy_type/) for full documentation.
 #'
-#' @param RootId &#91;required&#93; The unique identifier (ID) of the root in which you want to enable a
-#' policy type. You can get the ID from the
-#' [`list_roots`][organizations_list_roots] operation.
+#' @param RootId &#91;required&#93; ID for the root in which you want to enable a policy type. You can get
+#' the ID from the [`list_roots`][organizations_list_roots] operation.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for a root ID
 #' string requires "r-" followed by from 4 to 32 lowercase letters or
@@ -1341,6 +1396,18 @@ organizations_enable_all_features <- function() {
 #' -   [CHATBOT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_chatbot.html)
 #' 
 #' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
+#' 
+#' -   [SECURITYHUB_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_security_hub.html)
+#' 
+#' -   [UPGRADE_ROLLOUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_upgrade_rollout.html)
+#' 
+#' -   [INSPECTOR_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_inspector.html)
+#' 
+#' -   [BEDROCK_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_bedrock.html)
+#' 
+#' -   [S3_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_s3.html)
+#' 
+#' -   [NETWORK_SECURITY_DIRECTOR_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_network_security_director.html)
 #'
 #' @keywords internal
 #'
@@ -1433,6 +1500,64 @@ organizations_invite_account_to_organization <- function(Target, Notes = NULL, T
 }
 .organizations$operations$invite_account_to_organization <- organizations_invite_account_to_organization
 
+#' Sends an invitation to another organization's management account to
+#' designate your account with the specified responsibilities for their
+#' organization
+#'
+#' @description
+#' Sends an invitation to another organization's management account to designate your account with the specified responsibilities for their organization. The invitation is implemented as a Handshake whose details are in the response.
+#'
+#' See [https://www.paws-r-sdk.com/docs/organizations_invite_organization_to_transfer_responsibility/](https://www.paws-r-sdk.com/docs/organizations_invite_organization_to_transfer_responsibility/) for full documentation.
+#'
+#' @param Type &#91;required&#93; The type of responsibility you want to designate to your organization.
+#' Currently, only `BILLING` is supported.
+#' @param Target &#91;required&#93; A `HandshakeParty` object. Contains details for the account you want to
+#' invite. Currently, only `ACCOUNT` and `EMAIL` are supported.
+#' @param Notes Additional information that you want to include in the invitation.
+#' @param StartTimestamp &#91;required&#93; Timestamp when the recipient will begin managing the specified
+#' responsibilities.
+#' @param SourceName &#91;required&#93; Name you want to assign to the transfer.
+#' @param Tags A list of tags that you want to attach to the transfer. For each tag in
+#' the list, you must specify both a tag key and a value. You can set the
+#' value to an empty string, but you can't set it to `null`. For more
+#' information about tagging, see [Tagging Organizations
+#' resources](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html)
+#' in the Organizations User Guide.
+#' 
+#' Any tags in the request are checked for compliance with any applicable
+#' tag policies when the request is made. The request is rejected if the
+#' tags in the request don't match the requirements of the policy at that
+#' time. Tag policy compliance is *not* checked again when the invitation
+#' is accepted and the tags are actually attached to the transfer. That
+#' means that if the tag policy changes between the invitation and the
+#' acceptance, then that tags could potentially be non-compliant.
+#' 
+#' If any one of the tags is not valid or if you exceed the allowed number
+#' of tags for a transfer, then the entire request fails and invitations
+#' are not sent.
+#'
+#' @keywords internal
+#'
+#' @rdname organizations_invite_organization_to_transfer_responsibility
+organizations_invite_organization_to_transfer_responsibility <- function(Type, Target, Notes = NULL, StartTimestamp, SourceName, Tags = NULL) {
+  op <- new_operation(
+    name = "InviteOrganizationToTransferResponsibility",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .organizations$invite_organization_to_transfer_responsibility_input(Type = Type, Target = Target, Notes = Notes, StartTimestamp = StartTimestamp, SourceName = SourceName, Tags = Tags)
+  output <- .organizations$invite_organization_to_transfer_responsibility_output()
+  config <- get_config()
+  svc <- .organizations$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.organizations$operations$invite_organization_to_transfer_responsibility <- organizations_invite_organization_to_transfer_responsibility
+
 #' Removes a member account from its parent organization
 #'
 #' @description
@@ -1477,16 +1602,9 @@ organizations_leave_organization <- function() {
 #' indicates that more output is available. Set this parameter to the value
 #' of the previous call's `NextToken` response to indicate where the output
 #' should continue from.
-#' @param MaxResults The total number of results that you want included on each page of the
-#' response. If you do not include this parameter, it defaults to a value
-#' that is specific to the operation. If additional items exist beyond the
-#' maximum you specify, the `NextToken` response element is present and has
-#' a value (is not null). Include that value as the `NextToken` request
-#' parameter in the next call to the operation to get the next part of the
-#' results. Note that Organizations might return fewer results than the
-#' maximum even when there are more results available. You should check
-#' `NextToken` after every operation to ensure that you receive all of the
-#' results.
+#' @param MaxResults The maximum number of items to return in the response. If more results
+#' exist than the specified `MaxResults` value, a token is included in the
+#' response so that you can retrieve the remaining results.
 #'
 #' @keywords internal
 #'
@@ -1522,16 +1640,9 @@ organizations_list_aws_service_access_for_organization <- function(NextToken = N
 #' indicates that more output is available. Set this parameter to the value
 #' of the previous call's `NextToken` response to indicate where the output
 #' should continue from.
-#' @param MaxResults The total number of results that you want included on each page of the
-#' response. If you do not include this parameter, it defaults to a value
-#' that is specific to the operation. If additional items exist beyond the
-#' maximum you specify, the `NextToken` response element is present and has
-#' a value (is not null). Include that value as the `NextToken` request
-#' parameter in the next call to the operation to get the next part of the
-#' results. Note that Organizations might return fewer results than the
-#' maximum even when there are more results available. You should check
-#' `NextToken` after every operation to ensure that you receive all of the
-#' results.
+#' @param MaxResults The maximum number of items to return in the response. If more results
+#' exist than the specified `MaxResults` value, a token is included in the
+#' response so that you can retrieve the remaining results.
 #'
 #' @keywords internal
 #'
@@ -1570,16 +1681,9 @@ organizations_list_accounts <- function(NextToken = NULL, MaxResults = NULL) {
 #' indicates that more output is available. Set this parameter to the value
 #' of the previous call's `NextToken` response to indicate where the output
 #' should continue from.
-#' @param MaxResults The total number of results that you want included on each page of the
-#' response. If you do not include this parameter, it defaults to a value
-#' that is specific to the operation. If additional items exist beyond the
-#' maximum you specify, the `NextToken` response element is present and has
-#' a value (is not null). Include that value as the `NextToken` request
-#' parameter in the next call to the operation to get the next part of the
-#' results. Note that Organizations might return fewer results than the
-#' maximum even when there are more results available. You should check
-#' `NextToken` after every operation to ensure that you receive all of the
-#' results.
+#' @param MaxResults The maximum number of items to return in the response. If more results
+#' exist than the specified `MaxResults` value, a token is included in the
+#' response so that you can retrieve the remaining results.
 #'
 #' @keywords internal
 #'
@@ -1602,6 +1706,69 @@ organizations_list_accounts_for_parent <- function(ParentId, NextToken = NULL, M
   return(response)
 }
 .organizations$operations$list_accounts_for_parent <- organizations_list_accounts_for_parent
+
+#' Lists all the accounts in an organization that have invalid effective
+#' policies
+#'
+#' @description
+#' Lists all the accounts in an organization that have invalid effective policies. An *invalid effective policy* is an [effective policy](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_effective.html) that fails validation checks, resulting in the effective policy not being fully enforced on all the intended accounts within an organization.
+#'
+#' See [https://www.paws-r-sdk.com/docs/organizations_list_accounts_with_invalid_effective_policy/](https://www.paws-r-sdk.com/docs/organizations_list_accounts_with_invalid_effective_policy/) for full documentation.
+#'
+#' @param PolicyType &#91;required&#93; The type of policy that you want information about. You can specify one
+#' of the following values:
+#' 
+#' -   [DECLARATIVE_POLICY_EC2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative.html)
+#' 
+#' -   [BACKUP_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
+#' 
+#' -   [TAG_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+#' 
+#' -   [CHATBOT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_chatbot.html)
+#' 
+#' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
+#' 
+#' -   [SECURITYHUB_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_security_hub.html)
+#' 
+#' -   [UPGRADE_ROLLOUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_upgrade_rollout.html)
+#' 
+#' -   [INSPECTOR_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_inspector.html)
+#' 
+#' -   [BEDROCK_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_bedrock.html)
+#' 
+#' -   [S3_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_s3.html)
+#' 
+#' -   [NETWORK_SECURITY_DIRECTOR_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_network_security_director.html)
+#' @param NextToken The parameter for receiving additional results if you receive a
+#' `NextToken` response in a previous request. A `NextToken` response
+#' indicates that more output is available. Set this parameter to the value
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from.
+#' @param MaxResults The maximum number of items to return in the response. If more results
+#' exist than the specified `MaxResults` value, a token is included in the
+#' response so that you can retrieve the remaining results.
+#'
+#' @keywords internal
+#'
+#' @rdname organizations_list_accounts_with_invalid_effective_policy
+organizations_list_accounts_with_invalid_effective_policy <- function(PolicyType, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListAccountsWithInvalidEffectivePolicy",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Accounts"),
+    stream_api = FALSE
+  )
+  input <- .organizations$list_accounts_with_invalid_effective_policy_input(PolicyType = PolicyType, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .organizations$list_accounts_with_invalid_effective_policy_output()
+  config <- get_config()
+  svc <- .organizations$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.organizations$operations$list_accounts_with_invalid_effective_policy <- organizations_list_accounts_with_invalid_effective_policy
 
 #' Lists all of the organizational units (OUs) or accounts that are
 #' contained in the specified parent OU or root
@@ -1630,16 +1797,9 @@ organizations_list_accounts_for_parent <- function(ParentId, NextToken = NULL, M
 #' indicates that more output is available. Set this parameter to the value
 #' of the previous call's `NextToken` response to indicate where the output
 #' should continue from.
-#' @param MaxResults The total number of results that you want included on each page of the
-#' response. If you do not include this parameter, it defaults to a value
-#' that is specific to the operation. If additional items exist beyond the
-#' maximum you specify, the `NextToken` response element is present and has
-#' a value (is not null). Include that value as the `NextToken` request
-#' parameter in the next call to the operation to get the next part of the
-#' results. Note that Organizations might return fewer results than the
-#' maximum even when there are more results available. You should check
-#' `NextToken` after every operation to ensure that you receive all of the
-#' results.
+#' @param MaxResults The maximum number of items to return in the response. If more results
+#' exist than the specified `MaxResults` value, a token is included in the
+#' response so that you can retrieve the remaining results.
 #'
 #' @keywords internal
 #'
@@ -1678,16 +1838,9 @@ organizations_list_children <- function(ParentId, ChildType, NextToken = NULL, M
 #' indicates that more output is available. Set this parameter to the value
 #' of the previous call's `NextToken` response to indicate where the output
 #' should continue from.
-#' @param MaxResults The total number of results that you want included on each page of the
-#' response. If you do not include this parameter, it defaults to a value
-#' that is specific to the operation. If additional items exist beyond the
-#' maximum you specify, the `NextToken` response element is present and has
-#' a value (is not null). Include that value as the `NextToken` request
-#' parameter in the next call to the operation to get the next part of the
-#' results. Note that Organizations might return fewer results than the
-#' maximum even when there are more results available. You should check
-#' `NextToken` after every operation to ensure that you receive all of the
-#' results.
+#' @param MaxResults The maximum number of items to return in the response. If more results
+#' exist than the specified `MaxResults` value, a token is included in the
+#' response so that you can retrieve the remaining results.
 #'
 #' @keywords internal
 #'
@@ -1729,16 +1882,9 @@ organizations_list_create_account_status <- function(States = NULL, NextToken = 
 #' indicates that more output is available. Set this parameter to the value
 #' of the previous call's `NextToken` response to indicate where the output
 #' should continue from.
-#' @param MaxResults The total number of results that you want included on each page of the
-#' response. If you do not include this parameter, it defaults to a value
-#' that is specific to the operation. If additional items exist beyond the
-#' maximum you specify, the `NextToken` response element is present and has
-#' a value (is not null). Include that value as the `NextToken` request
-#' parameter in the next call to the operation to get the next part of the
-#' results. Note that Organizations might return fewer results than the
-#' maximum even when there are more results available. You should check
-#' `NextToken` after every operation to ensure that you receive all of the
-#' results.
+#' @param MaxResults The maximum number of items to return in the response. If more results
+#' exist than the specified `MaxResults` value, a token is included in the
+#' response so that you can retrieve the remaining results.
 #'
 #' @keywords internal
 #'
@@ -1777,16 +1923,9 @@ organizations_list_delegated_administrators <- function(ServicePrincipal = NULL,
 #' indicates that more output is available. Set this parameter to the value
 #' of the previous call's `NextToken` response to indicate where the output
 #' should continue from.
-#' @param MaxResults The total number of results that you want included on each page of the
-#' response. If you do not include this parameter, it defaults to a value
-#' that is specific to the operation. If additional items exist beyond the
-#' maximum you specify, the `NextToken` response element is present and has
-#' a value (is not null). Include that value as the `NextToken` request
-#' parameter in the next call to the operation to get the next part of the
-#' results. Note that Organizations might return fewer results than the
-#' maximum even when there are more results available. You should check
-#' `NextToken` after every operation to ensure that you receive all of the
-#' results.
+#' @param MaxResults The maximum number of items to return in the response. If more results
+#' exist than the specified `MaxResults` value, a token is included in the
+#' response so that you can retrieve the remaining results.
 #'
 #' @keywords internal
 #'
@@ -1810,36 +1949,89 @@ organizations_list_delegated_services_for_account <- function(AccountId, NextTok
 }
 .organizations$operations$list_delegated_services_for_account <- organizations_list_delegated_services_for_account
 
-#' Lists the current handshakes that are associated with the account of the
-#' requesting user
+#' Lists all the validation errors on an effective policy for a specified
+#' account and policy type
 #'
 #' @description
-#' Lists the current handshakes that are associated with the account of the requesting user.
+#' Lists all the validation errors on an [effective policy](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_effective.html) for a specified account and policy type.
 #'
-#' See [https://www.paws-r-sdk.com/docs/organizations_list_handshakes_for_account/](https://www.paws-r-sdk.com/docs/organizations_list_handshakes_for_account/) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_list_effective_policy_validation_errors/](https://www.paws-r-sdk.com/docs/organizations_list_effective_policy_validation_errors/) for full documentation.
 #'
-#' @param Filter Filters the handshakes that you want included in the response. The
-#' default is all types. Use the `ActionType` element to limit the output
-#' to only a specified type, such as `INVITE`, `ENABLE_ALL_FEATURES`, or
-#' `APPROVE_ALL_FEATURES`. Alternatively, for the `ENABLE_ALL_FEATURES`
-#' handshake that generates a separate child handshake for each member
-#' account, you can specify `ParentHandshakeId` to see only the handshakes
-#' that were generated by that parent request.
+#' @param AccountId &#91;required&#93; The ID of the account that you want details about. Specifying an
+#' organization root or organizational unit (OU) as the target is not
+#' supported.
+#' @param PolicyType &#91;required&#93; The type of policy that you want information about. You can specify one
+#' of the following values:
+#' 
+#' -   [DECLARATIVE_POLICY_EC2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative.html)
+#' 
+#' -   [BACKUP_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
+#' 
+#' -   [TAG_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+#' 
+#' -   [CHATBOT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_chatbot.html)
+#' 
+#' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
+#' 
+#' -   [SECURITYHUB_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_security_hub.html)
+#' 
+#' -   [UPGRADE_ROLLOUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_upgrade_rollout.html)
+#' 
+#' -   [INSPECTOR_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_inspector.html)
+#' 
+#' -   [BEDROCK_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_bedrock.html)
+#' 
+#' -   [S3_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_s3.html)
+#' 
+#' -   [NETWORK_SECURITY_DIRECTOR_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_network_security_director.html)
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
 #' of the previous call's `NextToken` response to indicate where the output
 #' should continue from.
-#' @param MaxResults The total number of results that you want included on each page of the
-#' response. If you do not include this parameter, it defaults to a value
-#' that is specific to the operation. If additional items exist beyond the
-#' maximum you specify, the `NextToken` response element is present and has
-#' a value (is not null). Include that value as the `NextToken` request
-#' parameter in the next call to the operation to get the next part of the
-#' results. Note that Organizations might return fewer results than the
-#' maximum even when there are more results available. You should check
-#' `NextToken` after every operation to ensure that you receive all of the
-#' results.
+#' @param MaxResults The maximum number of items to return in the response. If more results
+#' exist than the specified `MaxResults` value, a token is included in the
+#' response so that you can retrieve the remaining results.
+#'
+#' @keywords internal
+#'
+#' @rdname organizations_list_effective_policy_validation_errors
+organizations_list_effective_policy_validation_errors <- function(AccountId, PolicyType, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListEffectivePolicyValidationErrors",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EffectivePolicyValidationErrors"),
+    stream_api = FALSE
+  )
+  input <- .organizations$list_effective_policy_validation_errors_input(AccountId = AccountId, PolicyType = PolicyType, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .organizations$list_effective_policy_validation_errors_output()
+  config <- get_config()
+  svc <- .organizations$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.organizations$operations$list_effective_policy_validation_errors <- organizations_list_effective_policy_validation_errors
+
+#' Lists the recent handshakes that you have received
+#'
+#' @description
+#' Lists the recent handshakes that you have received.
+#'
+#' See [https://www.paws-r-sdk.com/docs/organizations_list_handshakes_for_account/](https://www.paws-r-sdk.com/docs/organizations_list_handshakes_for_account/) for full documentation.
+#'
+#' @param Filter A `HandshakeFilter` object. Contains the filer used to select the
+#' handshakes for an operation.
+#' @param NextToken The parameter for receiving additional results if you receive a
+#' `NextToken` response in a previous request. A `NextToken` response
+#' indicates that more output is available. Set this parameter to the value
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from.
+#' @param MaxResults The maximum number of items to return in the response. If more results
+#' exist than the specified `MaxResults` value, a token is included in the
+#' response so that you can retrieve the remaining results.
 #'
 #' @keywords internal
 #'
@@ -1863,36 +2055,23 @@ organizations_list_handshakes_for_account <- function(Filter = NULL, NextToken =
 }
 .organizations$operations$list_handshakes_for_account <- organizations_list_handshakes_for_account
 
-#' Lists the handshakes that are associated with the organization that the
-#' requesting user is part of
+#' Lists the recent handshakes that you have sent
 #'
 #' @description
-#' Lists the handshakes that are associated with the organization that the requesting user is part of. The [`list_handshakes_for_organization`][organizations_list_handshakes_for_organization] operation returns a list of handshake structures. Each structure contains details and status about a handshake.
+#' Lists the recent handshakes that you have sent.
 #'
 #' See [https://www.paws-r-sdk.com/docs/organizations_list_handshakes_for_organization/](https://www.paws-r-sdk.com/docs/organizations_list_handshakes_for_organization/) for full documentation.
 #'
-#' @param Filter A filter of the handshakes that you want included in the response. The
-#' default is all types. Use the `ActionType` element to limit the output
-#' to only a specified type, such as `INVITE`, `ENABLE-ALL-FEATURES`, or
-#' `APPROVE-ALL-FEATURES`. Alternatively, for the `ENABLE-ALL-FEATURES`
-#' handshake that generates a separate child handshake for each member
-#' account, you can specify the `ParentHandshakeId` to see only the
-#' handshakes that were generated by that parent request.
+#' @param Filter A `HandshakeFilter` object. Contains the filer used to select the
+#' handshakes for an operation.
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
 #' of the previous call's `NextToken` response to indicate where the output
 #' should continue from.
-#' @param MaxResults The total number of results that you want included on each page of the
-#' response. If you do not include this parameter, it defaults to a value
-#' that is specific to the operation. If additional items exist beyond the
-#' maximum you specify, the `NextToken` response element is present and has
-#' a value (is not null). Include that value as the `NextToken` request
-#' parameter in the next call to the operation to get the next part of the
-#' results. Note that Organizations might return fewer results than the
-#' maximum even when there are more results available. You should check
-#' `NextToken` after every operation to ensure that you receive all of the
-#' results.
+#' @param MaxResults The maximum number of items to return in the response. If more results
+#' exist than the specified `MaxResults` value, a token is included in the
+#' response so that you can retrieve the remaining results.
 #'
 #' @keywords internal
 #'
@@ -1916,6 +2095,47 @@ organizations_list_handshakes_for_organization <- function(Filter = NULL, NextTo
 }
 .organizations$operations$list_handshakes_for_organization <- organizations_list_handshakes_for_organization
 
+#' Lists transfers that allow you to manage the specified responsibilities
+#' for another organization
+#'
+#' @description
+#' Lists transfers that allow you to manage the specified responsibilities for another organization. This operation returns both transfer invitations and transfers.
+#'
+#' See [https://www.paws-r-sdk.com/docs/organizations_list_inbound_responsibility_transfers/](https://www.paws-r-sdk.com/docs/organizations_list_inbound_responsibility_transfers/) for full documentation.
+#'
+#' @param Type &#91;required&#93; The type of responsibility. Currently, only `BILLING` is supported.
+#' @param Id ID for the transfer.
+#' @param NextToken The parameter for receiving additional results if you receive a
+#' `NextToken` response in a previous request. A `NextToken` response
+#' indicates that more output is available. Set this parameter to the value
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from.
+#' @param MaxResults The maximum number of items to return in the response. If more results
+#' exist than the specified `MaxResults` value, a token is included in the
+#' response so that you can retrieve the remaining results.
+#'
+#' @keywords internal
+#'
+#' @rdname organizations_list_inbound_responsibility_transfers
+organizations_list_inbound_responsibility_transfers <- function(Type, Id = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListInboundResponsibilityTransfers",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .organizations$list_inbound_responsibility_transfers_input(Type = Type, Id = Id, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .organizations$list_inbound_responsibility_transfers_output()
+  config <- get_config()
+  svc <- .organizations$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.organizations$operations$list_inbound_responsibility_transfers <- organizations_list_inbound_responsibility_transfers
+
 #' Lists the organizational units (OUs) in a parent organizational unit or
 #' root
 #'
@@ -1924,8 +2144,7 @@ organizations_list_handshakes_for_organization <- function(Filter = NULL, NextTo
 #'
 #' See [https://www.paws-r-sdk.com/docs/organizations_list_organizational_units_for_parent/](https://www.paws-r-sdk.com/docs/organizations_list_organizational_units_for_parent/) for full documentation.
 #'
-#' @param ParentId &#91;required&#93; The unique identifier (ID) of the root or OU whose child OUs you want to
-#' list.
+#' @param ParentId &#91;required&#93; ID for the root or OU whose child OUs you want to list.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for a parent ID
 #' string requires one of the following:
@@ -1942,16 +2161,9 @@ organizations_list_handshakes_for_organization <- function(Filter = NULL, NextTo
 #' indicates that more output is available. Set this parameter to the value
 #' of the previous call's `NextToken` response to indicate where the output
 #' should continue from.
-#' @param MaxResults The total number of results that you want included on each page of the
-#' response. If you do not include this parameter, it defaults to a value
-#' that is specific to the operation. If additional items exist beyond the
-#' maximum you specify, the `NextToken` response element is present and has
-#' a value (is not null). Include that value as the `NextToken` request
-#' parameter in the next call to the operation to get the next part of the
-#' results. Note that Organizations might return fewer results than the
-#' maximum even when there are more results available. You should check
-#' `NextToken` after every operation to ensure that you receive all of the
-#' results.
+#' @param MaxResults The maximum number of items to return in the response. If more results
+#' exist than the specified `MaxResults` value, a token is included in the
+#' response so that you can retrieve the remaining results.
 #'
 #' @keywords internal
 #'
@@ -1975,6 +2187,46 @@ organizations_list_organizational_units_for_parent <- function(ParentId, NextTok
 }
 .organizations$operations$list_organizational_units_for_parent <- organizations_list_organizational_units_for_parent
 
+#' Lists transfers that allow an account outside your organization to
+#' manage the specified responsibilities for your organization
+#'
+#' @description
+#' Lists transfers that allow an account outside your organization to manage the specified responsibilities for your organization. This operation returns both transfer invitations and transfers.
+#'
+#' See [https://www.paws-r-sdk.com/docs/organizations_list_outbound_responsibility_transfers/](https://www.paws-r-sdk.com/docs/organizations_list_outbound_responsibility_transfers/) for full documentation.
+#'
+#' @param Type &#91;required&#93; The type of responsibility. Currently, only `BILLING` is supported.
+#' @param NextToken The parameter for receiving additional results if you receive a
+#' `NextToken` response in a previous request. A `NextToken` response
+#' indicates that more output is available. Set this parameter to the value
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from.
+#' @param MaxResults The maximum number of items to return in the response. If more results
+#' exist than the specified `MaxResults` value, a token is included in the
+#' response so that you can retrieve the remaining results.
+#'
+#' @keywords internal
+#'
+#' @rdname organizations_list_outbound_responsibility_transfers
+organizations_list_outbound_responsibility_transfers <- function(Type, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListOutboundResponsibilityTransfers",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .organizations$list_outbound_responsibility_transfers_input(Type = Type, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .organizations$list_outbound_responsibility_transfers_output()
+  config <- get_config()
+  svc <- .organizations$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.organizations$operations$list_outbound_responsibility_transfers <- organizations_list_outbound_responsibility_transfers
+
 #' Lists the root or organizational units (OUs) that serve as the immediate
 #' parent of the specified child OU or account
 #'
@@ -1983,8 +2235,8 @@ organizations_list_organizational_units_for_parent <- function(ParentId, NextTok
 #'
 #' See [https://www.paws-r-sdk.com/docs/organizations_list_parents/](https://www.paws-r-sdk.com/docs/organizations_list_parents/) for full documentation.
 #'
-#' @param ChildId &#91;required&#93; The unique identifier (ID) of the OU or account whose parent containers
-#' you want to list. Don't specify a root.
+#' @param ChildId &#91;required&#93; ID for the OU or account whose parent containers you want to list. Don't
+#' specify a root.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for a child ID
 #' string requires one of the following:
@@ -2000,16 +2252,9 @@ organizations_list_organizational_units_for_parent <- function(ParentId, NextTok
 #' indicates that more output is available. Set this parameter to the value
 #' of the previous call's `NextToken` response to indicate where the output
 #' should continue from.
-#' @param MaxResults The total number of results that you want included on each page of the
-#' response. If you do not include this parameter, it defaults to a value
-#' that is specific to the operation. If additional items exist beyond the
-#' maximum you specify, the `NextToken` response element is present and has
-#' a value (is not null). Include that value as the `NextToken` request
-#' parameter in the next call to the operation to get the next part of the
-#' results. Note that Organizations might return fewer results than the
-#' maximum even when there are more results available. You should check
-#' `NextToken` after every operation to ensure that you receive all of the
-#' results.
+#' @param MaxResults The maximum number of items to return in the response. If more results
+#' exist than the specified `MaxResults` value, a token is included in the
+#' response so that you can retrieve the remaining results.
 #'
 #' @keywords internal
 #'
@@ -2057,21 +2302,26 @@ organizations_list_parents <- function(ChildId, NextToken = NULL, MaxResults = N
 #' -   [CHATBOT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_chatbot.html)
 #' 
 #' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
+#' 
+#' -   [SECURITYHUB_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_security_hub.html)
+#' 
+#' -   [UPGRADE_ROLLOUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_upgrade_rollout.html)
+#' 
+#' -   [INSPECTOR_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_inspector.html)
+#' 
+#' -   [BEDROCK_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_bedrock.html)
+#' 
+#' -   [S3_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_s3.html)
+#' 
+#' -   [NETWORK_SECURITY_DIRECTOR_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_network_security_director.html)
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
 #' of the previous call's `NextToken` response to indicate where the output
 #' should continue from.
-#' @param MaxResults The total number of results that you want included on each page of the
-#' response. If you do not include this parameter, it defaults to a value
-#' that is specific to the operation. If additional items exist beyond the
-#' maximum you specify, the `NextToken` response element is present and has
-#' a value (is not null). Include that value as the `NextToken` request
-#' parameter in the next call to the operation to get the next part of the
-#' results. Note that Organizations might return fewer results than the
-#' maximum even when there are more results available. You should check
-#' `NextToken` after every operation to ensure that you receive all of the
-#' results.
+#' @param MaxResults The maximum number of items to return in the response. If more results
+#' exist than the specified `MaxResults` value, a token is included in the
+#' response so that you can retrieve the remaining results.
 #'
 #' @keywords internal
 #'
@@ -2103,8 +2353,8 @@ organizations_list_policies <- function(Filter, NextToken = NULL, MaxResults = N
 #'
 #' See [https://www.paws-r-sdk.com/docs/organizations_list_policies_for_target/](https://www.paws-r-sdk.com/docs/organizations_list_policies_for_target/) for full documentation.
 #'
-#' @param TargetId &#91;required&#93; The unique identifier (ID) of the root, organizational unit, or account
-#' whose policies you want to list.
+#' @param TargetId &#91;required&#93; ID for the root, organizational unit, or account whose policies you want
+#' to list.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for a target ID
 #' string requires one of the following:
@@ -2134,21 +2384,26 @@ organizations_list_policies <- function(Filter, NextToken = NULL, MaxResults = N
 #' -   [CHATBOT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_chatbot.html)
 #' 
 #' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
+#' 
+#' -   [SECURITYHUB_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_security_hub.html)
+#' 
+#' -   [UPGRADE_ROLLOUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_upgrade_rollout.html)
+#' 
+#' -   [INSPECTOR_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_inspector.html)
+#' 
+#' -   [BEDROCK_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_bedrock.html)
+#' 
+#' -   [S3_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_s3.html)
+#' 
+#' -   [NETWORK_SECURITY_DIRECTOR_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_network_security_director.html)
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
 #' of the previous call's `NextToken` response to indicate where the output
 #' should continue from.
-#' @param MaxResults The total number of results that you want included on each page of the
-#' response. If you do not include this parameter, it defaults to a value
-#' that is specific to the operation. If additional items exist beyond the
-#' maximum you specify, the `NextToken` response element is present and has
-#' a value (is not null). Include that value as the `NextToken` request
-#' parameter in the next call to the operation to get the next part of the
-#' results. Note that Organizations might return fewer results than the
-#' maximum even when there are more results available. You should check
-#' `NextToken` after every operation to ensure that you receive all of the
-#' results.
+#' @param MaxResults The maximum number of items to return in the response. If more results
+#' exist than the specified `MaxResults` value, a token is included in the
+#' response so that you can retrieve the remaining results.
 #'
 #' @keywords internal
 #'
@@ -2184,16 +2439,9 @@ organizations_list_policies_for_target <- function(TargetId, Filter, NextToken =
 #' indicates that more output is available. Set this parameter to the value
 #' of the previous call's `NextToken` response to indicate where the output
 #' should continue from.
-#' @param MaxResults The total number of results that you want included on each page of the
-#' response. If you do not include this parameter, it defaults to a value
-#' that is specific to the operation. If additional items exist beyond the
-#' maximum you specify, the `NextToken` response element is present and has
-#' a value (is not null). Include that value as the `NextToken` request
-#' parameter in the next call to the operation to get the next part of the
-#' results. Note that Organizations might return fewer results than the
-#' maximum even when there are more results available. You should check
-#' `NextToken` after every operation to ensure that you receive all of the
-#' results.
+#' @param MaxResults The maximum number of items to return in the response. If more results
+#' exist than the specified `MaxResults` value, a token is included in the
+#' response so that you can retrieve the remaining results.
 #'
 #' @keywords internal
 #'
@@ -2274,8 +2522,7 @@ organizations_list_tags_for_resource <- function(ResourceId, NextToken = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/organizations_list_targets_for_policy/](https://www.paws-r-sdk.com/docs/organizations_list_targets_for_policy/) for full documentation.
 #'
-#' @param PolicyId &#91;required&#93; The unique identifier (ID) of the policy whose attachments you want to
-#' know.
+#' @param PolicyId &#91;required&#93; ID for the policy whose attachments you want to know.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for a policy ID
 #' string requires "p-" followed by from 8 to 128 lowercase or uppercase
@@ -2285,16 +2532,9 @@ organizations_list_tags_for_resource <- function(ResourceId, NextToken = NULL) {
 #' indicates that more output is available. Set this parameter to the value
 #' of the previous call's `NextToken` response to indicate where the output
 #' should continue from.
-#' @param MaxResults The total number of results that you want included on each page of the
-#' response. If you do not include this parameter, it defaults to a value
-#' that is specific to the operation. If additional items exist beyond the
-#' maximum you specify, the `NextToken` response element is present and has
-#' a value (is not null). Include that value as the `NextToken` request
-#' parameter in the next call to the operation to get the next part of the
-#' results. Note that Organizations might return fewer results than the
-#' maximum even when there are more results available. You should check
-#' `NextToken` after every operation to ensure that you receive all of the
-#' results.
+#' @param MaxResults The maximum number of items to return in the response. If more results
+#' exist than the specified `MaxResults` value, a token is included in the
+#' response so that you can retrieve the remaining results.
 #'
 #' @keywords internal
 #'
@@ -2326,12 +2566,12 @@ organizations_list_targets_for_policy <- function(PolicyId, NextToken = NULL, Ma
 #'
 #' See [https://www.paws-r-sdk.com/docs/organizations_move_account/](https://www.paws-r-sdk.com/docs/organizations_move_account/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The unique identifier (ID) of the account that you want to move.
+#' @param AccountId &#91;required&#93; ID for the account that you want to move.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for an account
 #' ID string requires exactly 12 digits.
-#' @param SourceParentId &#91;required&#93; The unique identifier (ID) of the root or organizational unit that you
-#' want to move the account from.
+#' @param SourceParentId &#91;required&#93; ID for the root or organizational unit that you want to move the account
+#' from.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for a parent ID
 #' string requires one of the following:
@@ -2343,8 +2583,8 @@ organizations_list_targets_for_policy <- function(PolicyId, NextToken = NULL, Ma
 #'     followed by from 4 to 32 lowercase letters or digits (the ID of the
 #'     root that the OU is in). This string is followed by a second "-"
 #'     dash and from 8 to 32 additional lowercase letters or digits.
-#' @param DestinationParentId &#91;required&#93; The unique identifier (ID) of the root or organizational unit that you
-#' want to move the account to.
+#' @param DestinationParentId &#91;required&#93; ID for the root or organizational unit that you want to move the account
+#' to.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for a parent ID
 #' string requires one of the following:
@@ -2467,8 +2707,7 @@ organizations_register_delegated_administrator <- function(AccountId, ServicePri
 #'
 #' See [https://www.paws-r-sdk.com/docs/organizations_remove_account_from_organization/](https://www.paws-r-sdk.com/docs/organizations_remove_account_from_organization/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The unique identifier (ID) of the member account that you want to remove
-#' from the organization.
+#' @param AccountId &#91;required&#93; ID for the member account that you want to remove from the organization.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for an account
 #' ID string requires exactly 12 digits.
@@ -2546,6 +2785,38 @@ organizations_tag_resource <- function(ResourceId, Tags) {
 }
 .organizations$operations$tag_resource <- organizations_tag_resource
 
+#' Ends a transfer
+#'
+#' @description
+#' Ends a transfer. A *transfer* is an arrangement between two management accounts where one account designates the other with specified responsibilities for their organization.
+#'
+#' See [https://www.paws-r-sdk.com/docs/organizations_terminate_responsibility_transfer/](https://www.paws-r-sdk.com/docs/organizations_terminate_responsibility_transfer/) for full documentation.
+#'
+#' @param Id &#91;required&#93; ID for the transfer.
+#' @param EndTimestamp Timestamp when the responsibility transfer is to end.
+#'
+#' @keywords internal
+#'
+#' @rdname organizations_terminate_responsibility_transfer
+organizations_terminate_responsibility_transfer <- function(Id, EndTimestamp = NULL) {
+  op <- new_operation(
+    name = "TerminateResponsibilityTransfer",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .organizations$terminate_responsibility_transfer_input(Id = Id, EndTimestamp = EndTimestamp)
+  output <- .organizations$terminate_responsibility_transfer_output()
+  config <- get_config()
+  svc <- .organizations$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.organizations$operations$terminate_responsibility_transfer <- organizations_terminate_responsibility_transfer
+
 #' Removes any tags with the specified keys from the specified resource
 #'
 #' @description
@@ -2598,8 +2869,7 @@ organizations_untag_resource <- function(ResourceId, TagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/organizations_update_organizational_unit/](https://www.paws-r-sdk.com/docs/organizations_update_organizational_unit/) for full documentation.
 #'
-#' @param OrganizationalUnitId &#91;required&#93; The unique identifier (ID) of the OU that you want to rename. You can
-#' get the ID from the
+#' @param OrganizationalUnitId &#91;required&#93; ID for the OU that you want to rename. You can get the ID from the
 #' [`list_organizational_units_for_parent`][organizations_list_organizational_units_for_parent]
 #' operation.
 #' 
@@ -2643,7 +2913,7 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
 #'
 #' See [https://www.paws-r-sdk.com/docs/organizations_update_policy/](https://www.paws-r-sdk.com/docs/organizations_update_policy/) for full documentation.
 #'
-#' @param PolicyId &#91;required&#93; The unique identifier (ID) of the policy that you want to update.
+#' @param PolicyId &#91;required&#93; ID for the policy that you want to update.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for a policy ID
 #' string requires "p-" followed by from 8 to 128 lowercase or uppercase
@@ -2686,3 +2956,35 @@ organizations_update_policy <- function(PolicyId, Name = NULL, Description = NUL
   return(response)
 }
 .organizations$operations$update_policy <- organizations_update_policy
+
+#' Updates a transfer
+#'
+#' @description
+#' Updates a transfer. A *transfer* is the arrangement between two management accounts where one account designates the other with specified responsibilities for their organization.
+#'
+#' See [https://www.paws-r-sdk.com/docs/organizations_update_responsibility_transfer/](https://www.paws-r-sdk.com/docs/organizations_update_responsibility_transfer/) for full documentation.
+#'
+#' @param Id &#91;required&#93; ID for the transfer.
+#' @param Name &#91;required&#93; New name you want to assign to the transfer.
+#'
+#' @keywords internal
+#'
+#' @rdname organizations_update_responsibility_transfer
+organizations_update_responsibility_transfer <- function(Id, Name) {
+  op <- new_operation(
+    name = "UpdateResponsibilityTransfer",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .organizations$update_responsibility_transfer_input(Id = Id, Name = Name)
+  output <- .organizations$update_responsibility_transfer_output()
+  config <- get_config()
+  svc <- .organizations$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.organizations$operations$update_responsibility_transfer <- organizations_update_responsibility_transfer

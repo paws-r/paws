@@ -850,6 +850,49 @@ redshiftserverless_get_endpoint_access <- function(endpointName) {
 }
 .redshiftserverless$operations$get_endpoint_access <- redshiftserverless_get_endpoint_access
 
+#' Returns an Identity Center authentication token for accessing Amazon
+#' Redshift Serverless workgroups
+#'
+#' @description
+#' Returns an Identity Center authentication token for accessing Amazon Redshift Serverless workgroups.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_get_identity_center_auth_token/](https://www.paws-r-sdk.com/docs/redshiftserverless_get_identity_center_auth_token/) for full documentation.
+#'
+#' @param workgroupNames &#91;required&#93; A list of workgroup names for which to generate the Identity Center
+#' authentication token.
+#' 
+#' Constraints:
+#' 
+#' -   Must contain between 1 and 20 workgroup names.
+#' 
+#' -   Each workgroup name must be a valid Amazon Redshift Serverless
+#'     workgroup identifier.
+#' 
+#' -   All specified workgroups must have Identity Center integration
+#'     enabled.
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_get_identity_center_auth_token
+redshiftserverless_get_identity_center_auth_token <- function(workgroupNames) {
+  op <- new_operation(
+    name = "GetIdentityCenterAuthToken",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .redshiftserverless$get_identity_center_auth_token_input(workgroupNames = workgroupNames)
+  output <- .redshiftserverless$get_identity_center_auth_token_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$get_identity_center_auth_token <- redshiftserverless_get_identity_center_auth_token
+
 #' Returns information about a namespace in Amazon Redshift Serverless
 #'
 #' @description
@@ -1289,7 +1332,7 @@ redshiftserverless_list_endpoint_access <- function(maxResults = NULL, nextToken
 #' @param nextToken If your initial ListManagedWorkgroups operation returns a nextToken, you
 #' can include the returned nextToken in following ListManagedWorkgroups
 #' operations, which returns results in the next page.
-#' @param sourceArn The Amazon Resource Name (ARN) for the managed workgroup in the AWS Glue
+#' @param sourceArn The Amazon Resource Name (ARN) for the managed workgroup in the Glue
 #' Data Catalog.
 #'
 #' @keywords internal
@@ -2101,6 +2144,55 @@ redshiftserverless_update_endpoint_access <- function(endpointName, vpcSecurityG
   return(response)
 }
 .redshiftserverless$operations$update_endpoint_access <- redshiftserverless_update_endpoint_access
+
+#' Modifies the lakehouse configuration for a namespace
+#'
+#' @description
+#' Modifies the lakehouse configuration for a namespace. This operation allows you to manage Amazon Redshift federated permissions and Amazon Web Services IAM Identity Center trusted identity propagation.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_update_lakehouse_configuration/](https://www.paws-r-sdk.com/docs/redshiftserverless_update_lakehouse_configuration/) for full documentation.
+#'
+#' @param catalogName The name of the Glue Data Catalog that will be associated with the
+#' namespace enabled with Amazon Redshift federated permissions.
+#' 
+#' Pattern: `^[a-z0-9_-]*[a-z]+[a-z0-9_-]*$`
+#' @param dryRun A boolean value that, if `true`, validates the request without actually
+#' updating the lakehouse configuration. Use this to check for errors
+#' before making changes.
+#' @param lakehouseIdcApplicationArn The Amazon Resource Name (ARN) of the IAM Identity Center application
+#' used for enabling Amazon Web Services IAM Identity Center trusted
+#' identity propagation on a namespace enabled with Amazon Redshift
+#' federated permissions.
+#' @param lakehouseIdcRegistration Modifies the Amazon Web Services IAM Identity Center trusted identity
+#' propagation on a namespace enabled with Amazon Redshift federated
+#' permissions. Valid values are `Associate` or `Disassociate`.
+#' @param lakehouseRegistration Specifies whether to register or deregister the namespace with Amazon
+#' Redshift federated permissions. Valid values are `Register` or
+#' `Deregister`.
+#' @param namespaceName &#91;required&#93; The name of the namespace whose lakehouse configuration you want to
+#' modify.
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_update_lakehouse_configuration
+redshiftserverless_update_lakehouse_configuration <- function(catalogName = NULL, dryRun = NULL, lakehouseIdcApplicationArn = NULL, lakehouseIdcRegistration = NULL, lakehouseRegistration = NULL, namespaceName) {
+  op <- new_operation(
+    name = "UpdateLakehouseConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .redshiftserverless$update_lakehouse_configuration_input(catalogName = catalogName, dryRun = dryRun, lakehouseIdcApplicationArn = lakehouseIdcApplicationArn, lakehouseIdcRegistration = lakehouseIdcRegistration, lakehouseRegistration = lakehouseRegistration, namespaceName = namespaceName)
+  output <- .redshiftserverless$update_lakehouse_configuration_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$update_lakehouse_configuration <- redshiftserverless_update_lakehouse_configuration
 
 #' Updates a namespace with the specified settings
 #'

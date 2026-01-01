@@ -529,10 +529,9 @@ accessanalyzer_create_access_preview <- function(analyzerArn, configurations, cl
 #'   clientToken, configuration)
 #'
 #' @param analyzerName &#91;required&#93; The name of the analyzer to create.
-#' @param type &#91;required&#93; The type of analyzer to create. Only `ACCOUNT`, `ORGANIZATION`,
-#' `ACCOUNT_UNUSED_ACCESS`, and `ORGANIZATION_UNUSED_ACCESS` analyzers are
-#' supported. You can create only one analyzer per account per Region. You
-#' can create up to 5 analyzers per organization per Region.
+#' @param type &#91;required&#93; The type of analyzer to create. You can create only one analyzer per
+#' account per Region. You can create up to 5 analyzers per organization
+#' per Region.
 #' @param archiveRules Specifies the archive rules to add for the analyzer. Archive rules
 #' automatically archive findings that meet the criteria you define for the
 #' rule.
@@ -548,7 +547,8 @@ accessanalyzer_create_access_preview <- function(analyzerArn, configurations, cl
 #' @param clientToken A client token.
 #' @param configuration Specifies the configuration of the analyzer. If the analyzer is an
 #' unused access analyzer, the specified scope of unused access is used for
-#' the configuration.
+#' the configuration. If the analyzer is an internal access analyzer, the
+#' specified internal access analysis rules are used for the configuration.
 #'
 #' @return
 #' A list with the following syntax:
@@ -562,7 +562,7 @@ accessanalyzer_create_access_preview <- function(analyzerArn, configurations, cl
 #' ```
 #' svc$create_analyzer(
 #'   analyzerName = "string",
-#'   type = "ACCOUNT"|"ORGANIZATION"|"ACCOUNT_UNUSED_ACCESS"|"ORGANIZATION_UNUSED_ACCESS",
+#'   type = "ACCOUNT"|"ORGANIZATION"|"ACCOUNT_UNUSED_ACCESS"|"ORGANIZATION_UNUSED_ACCESS"|"ACCOUNT_INTERNAL_ACCESS"|"ORGANIZATION_INTERNAL_ACCESS",
 #'   archiveRules = list(
 #'     list(
 #'       ruleName = "string",
@@ -599,6 +599,23 @@ accessanalyzer_create_access_preview <- function(analyzerArn, configurations, cl
 #'               list(
 #'                 "string"
 #'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     internalAccess = list(
+#'       analysisRule = list(
+#'         inclusions = list(
+#'           list(
+#'             accountIds = list(
+#'               "string"
+#'             ),
+#'             resourceTypes = list(
+#'               "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream"|"AWS::IAM::User"
+#'             ),
+#'             resourceArns = list(
+#'               "string"
 #'             )
 #'           )
 #'         )
@@ -1043,6 +1060,8 @@ accessanalyzer_get_access_preview <- function(accessPreviewId, analyzerArn) {
 #'
 #' @description
 #' Retrieves information about a resource that was analyzed.
+#' 
+#' This action is supported only for external access analyzers.
 #'
 #' @usage
 #' accessanalyzer_get_analyzed_resource(analyzerArn, resourceArn)
@@ -1131,7 +1150,7 @@ accessanalyzer_get_analyzed_resource <- function(analyzerArn, resourceArn) {
 #'   analyzer = list(
 #'     arn = "string",
 #'     name = "string",
-#'     type = "ACCOUNT"|"ORGANIZATION"|"ACCOUNT_UNUSED_ACCESS"|"ORGANIZATION_UNUSED_ACCESS",
+#'     type = "ACCOUNT"|"ORGANIZATION"|"ACCOUNT_UNUSED_ACCESS"|"ORGANIZATION_UNUSED_ACCESS"|"ACCOUNT_INTERNAL_ACCESS"|"ORGANIZATION_INTERNAL_ACCESS",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -1159,6 +1178,23 @@ accessanalyzer_get_analyzed_resource <- function(analyzerArn, resourceArn) {
 #'                 list(
 #'                   "string"
 #'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       internalAccess = list(
+#'         analysisRule = list(
+#'           inclusions = list(
+#'             list(
+#'               accountIds = list(
+#'                 "string"
+#'               ),
+#'               resourceTypes = list(
+#'                 "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream"|"AWS::IAM::User"
+#'               ),
+#'               resourceArns = list(
+#'                 "string"
 #'               )
 #'             )
 #'           )
@@ -1285,6 +1321,9 @@ accessanalyzer_get_archive_rule <- function(analyzerName, ruleName) {
 #' GetFindingV2 both use `access-analyzer:GetFinding` in the `Action`
 #' element of an IAM policy statement. You must have permission to perform
 #' the `access-analyzer:GetFinding` action.
+#' 
+#' GetFinding is supported only for external access analyzers. You must use
+#' GetFindingV2 for internal and unused access analyzers.
 #'
 #' @usage
 #' accessanalyzer_get_finding(analyzerArn, id)
@@ -1333,7 +1372,7 @@ accessanalyzer_get_archive_rule <- function(analyzerName, ruleName) {
 #'         )
 #'       )
 #'     ),
-#'     resourceControlPolicyRestriction = "APPLICABLE"|"FAILED_TO_EVALUATE_RCP"|"NOT_APPLICABLE"
+#'     resourceControlPolicyRestriction = "APPLICABLE"|"FAILED_TO_EVALUATE_RCP"|"NOT_APPLICABLE"|"APPLIED"
 #'   )
 #' )
 #' ```
@@ -1495,6 +1534,31 @@ accessanalyzer_get_finding_recommendation <- function(analyzerArn, id, maxResult
 #'   ),
 #'   findingDetails = list(
 #'     list(
+#'       internalAccessDetails = list(
+#'         action = list(
+#'           "string"
+#'         ),
+#'         condition = list(
+#'           "string"
+#'         ),
+#'         principal = list(
+#'           "string"
+#'         ),
+#'         principalOwnerAccount = "string",
+#'         accessType = "INTRA_ACCOUNT"|"INTRA_ORG",
+#'         principalType = "IAM_ROLE"|"IAM_USER",
+#'         sources = list(
+#'           list(
+#'             type = "POLICY"|"BUCKET_ACL"|"S3_ACCESS_POINT"|"S3_ACCESS_POINT_ACCOUNT",
+#'             detail = list(
+#'               accessPointArn = "string",
+#'               accessPointAccount = "string"
+#'             )
+#'           )
+#'         ),
+#'         resourceControlPolicyRestriction = "APPLICABLE"|"FAILED_TO_EVALUATE_RCP"|"NOT_APPLICABLE"|"APPLIED",
+#'         serviceControlPolicyRestriction = "APPLICABLE"|"FAILED_TO_EVALUATE_SCP"|"NOT_APPLICABLE"|"APPLIED"
+#'       ),
 #'       externalAccessDetails = list(
 #'         action = list(
 #'           "string"
@@ -1515,7 +1579,7 @@ accessanalyzer_get_finding_recommendation <- function(analyzerArn, id, maxResult
 #'             )
 #'           )
 #'         ),
-#'         resourceControlPolicyRestriction = "APPLICABLE"|"FAILED_TO_EVALUATE_RCP"|"NOT_APPLICABLE"
+#'         resourceControlPolicyRestriction = "APPLICABLE"|"FAILED_TO_EVALUATE_RCP"|"NOT_APPLICABLE"|"APPLIED"
 #'       ),
 #'       unusedPermissionDetails = list(
 #'         actions = list(
@@ -1549,7 +1613,7 @@ accessanalyzer_get_finding_recommendation <- function(analyzerArn, id, maxResult
 #'       )
 #'     )
 #'   ),
-#'   findingType = "ExternalAccess"|"UnusedIAMRole"|"UnusedIAMUserAccessKey"|"UnusedIAMUserPassword"|"UnusedPermission"
+#'   findingType = "ExternalAccess"|"UnusedIAMRole"|"UnusedIAMUserAccessKey"|"UnusedIAMUserPassword"|"UnusedPermission"|"InternalAccess"
 #' )
 #' ```
 #'
@@ -1611,7 +1675,20 @@ accessanalyzer_get_finding_v2 <- function(analyzerArn, id, maxResults = NULL, ne
 #'         resourceTypeStatistics = list(
 #'           list(
 #'             totalActivePublic = 123,
-#'             totalActiveCrossAccount = 123
+#'             totalActiveCrossAccount = 123,
+#'             totalActiveErrors = 123
+#'           )
+#'         ),
+#'         totalActiveFindings = 123,
+#'         totalArchivedFindings = 123,
+#'         totalResolvedFindings = 123
+#'       ),
+#'       internalAccessFindingsStatistics = list(
+#'         resourceTypeStatistics = list(
+#'           list(
+#'             totalActiveFindings = 123,
+#'             totalResolvedFindings = 123,
+#'             totalArchivedFindings = 123
 #'           )
 #'         ),
 #'         totalActiveFindings = 123,
@@ -1845,7 +1922,7 @@ accessanalyzer_get_generated_policy <- function(jobId, includeResourcePlaceholde
 #'           )
 #'         )
 #'       ),
-#'       resourceControlPolicyRestriction = "APPLICABLE"|"FAILED_TO_EVALUATE_RCP"|"NOT_APPLICABLE"
+#'       resourceControlPolicyRestriction = "APPLICABLE"|"FAILED_TO_EVALUATE_RCP"|"NOT_APPLICABLE"|"APPLIED"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -2055,7 +2132,7 @@ accessanalyzer_list_analyzed_resources <- function(analyzerArn, resourceType = N
 #'     list(
 #'       arn = "string",
 #'       name = "string",
-#'       type = "ACCOUNT"|"ORGANIZATION"|"ACCOUNT_UNUSED_ACCESS"|"ORGANIZATION_UNUSED_ACCESS",
+#'       type = "ACCOUNT"|"ORGANIZATION"|"ACCOUNT_UNUSED_ACCESS"|"ORGANIZATION_UNUSED_ACCESS"|"ACCOUNT_INTERNAL_ACCESS"|"ORGANIZATION_INTERNAL_ACCESS",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -2087,6 +2164,23 @@ accessanalyzer_list_analyzed_resources <- function(analyzerArn, resourceType = N
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         internalAccess = list(
+#'           analysisRule = list(
+#'             inclusions = list(
+#'               list(
+#'                 accountIds = list(
+#'                   "string"
+#'                 ),
+#'                 resourceTypes = list(
+#'                   "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream"|"AWS::IAM::User"
+#'                 ),
+#'                 resourceArns = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           )
 #'         )
 #'       )
 #'     )
@@ -2100,7 +2194,7 @@ accessanalyzer_list_analyzed_resources <- function(analyzerArn, resourceType = N
 #' svc$list_analyzers(
 #'   nextToken = "string",
 #'   maxResults = 123,
-#'   type = "ACCOUNT"|"ORGANIZATION"|"ACCOUNT_UNUSED_ACCESS"|"ORGANIZATION_UNUSED_ACCESS"
+#'   type = "ACCOUNT"|"ORGANIZATION"|"ACCOUNT_UNUSED_ACCESS"|"ORGANIZATION_UNUSED_ACCESS"|"ACCOUNT_INTERNAL_ACCESS"|"ORGANIZATION_INTERNAL_ACCESS"
 #' )
 #' ```
 #'
@@ -2218,6 +2312,9 @@ accessanalyzer_list_archive_rules <- function(analyzerName, nextToken = NULL, ma
 #' findings, see [IAM Access Analyzer filter
 #' keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-filter-keys.html)
 #' in the **IAM User Guide**.
+#' 
+#' ListFindings is supported only for external access analyzers. You must
+#' use ListFindingsV2 for internal and unused access analyzers.
 #'
 #' @usage
 #' accessanalyzer_list_findings(analyzerArn, filter, sort, nextToken,
@@ -2271,7 +2368,7 @@ accessanalyzer_list_archive_rules <- function(analyzerName, nextToken = NULL, ma
 #'           )
 #'         )
 #'       ),
-#'       resourceControlPolicyRestriction = "APPLICABLE"|"FAILED_TO_EVALUATE_RCP"|"NOT_APPLICABLE"
+#'       resourceControlPolicyRestriction = "APPLICABLE"|"FAILED_TO_EVALUATE_RCP"|"NOT_APPLICABLE"|"APPLIED"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -2375,7 +2472,7 @@ accessanalyzer_list_findings <- function(analyzerArn, filter = NULL, sort = NULL
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       findingType = "ExternalAccess"|"UnusedIAMRole"|"UnusedIAMUserAccessKey"|"UnusedIAMUserPassword"|"UnusedPermission"
+#'       findingType = "ExternalAccess"|"UnusedIAMRole"|"UnusedIAMUserAccessKey"|"UnusedIAMUserPassword"|"UnusedPermission"|"InternalAccess"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -2642,6 +2739,8 @@ accessanalyzer_start_policy_generation <- function(policyGenerationDetails, clou
 #' @description
 #' Immediately starts a scan of the policies applied to the specified
 #' resource.
+#' 
+#' This action is supported only for external access analyzers.
 #'
 #' @usage
 #' accessanalyzer_start_resource_scan(analyzerArn, resourceArn,
@@ -2791,6 +2890,8 @@ accessanalyzer_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @description
 #' Modifies the configuration of an existing analyzer.
+#' 
+#' This action is not supported for external access analyzers.
 #'
 #' @usage
 #' accessanalyzer_update_analyzer(analyzerName, configuration)
@@ -2819,6 +2920,23 @@ accessanalyzer_untag_resource <- function(resourceArn, tagKeys) {
 #'           )
 #'         )
 #'       )
+#'     ),
+#'     internalAccess = list(
+#'       analysisRule = list(
+#'         inclusions = list(
+#'           list(
+#'             accountIds = list(
+#'               "string"
+#'             ),
+#'             resourceTypes = list(
+#'               "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream"|"AWS::IAM::User"
+#'             ),
+#'             resourceArns = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -2841,6 +2959,23 @@ accessanalyzer_untag_resource <- function(resourceArn, tagKeys) {
 #'               list(
 #'                 "string"
 #'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     internalAccess = list(
+#'       analysisRule = list(
+#'         inclusions = list(
+#'           list(
+#'             accountIds = list(
+#'               "string"
+#'             ),
+#'             resourceTypes = list(
+#'               "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream"|"AWS::IAM::User"
+#'             ),
+#'             resourceArns = list(
+#'               "string"
 #'             )
 #'           )
 #'         )

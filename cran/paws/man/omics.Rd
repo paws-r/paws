@@ -48,9 +48,14 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-This is the \emph{AWS HealthOmics API Reference}. For an introduction to the
-service, see \href{https://docs.aws.amazon.com/omics/latest/dev/}{What is AWS HealthOmics?} in the \emph{AWS
-HealthOmics User Guide}.
+Amazon Web Services HealthOmics is a service that helps users such as
+bioinformaticians, researchers, and scientists to store, query, analyze,
+and generate insights from genomics and other biological data. It
+simplifies and accelerates the process of storing and analyzing genomic
+information for Amazon Web Services.
+
+For an introduction to the service, see \href{https://docs.aws.amazon.com/omics/latest/dev/what-is-healthomics.html}{What is Amazon Web Services HealthOmics?}
+in the \emph{Amazon Web Services HealthOmics User Guide}.
 }
 \section{Service syntax}{
 
@@ -91,102 +96,102 @@ HealthOmics User Guide}.
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.storage:omics_abort_multipart_read_set_upload]{abort_multipart_read_set_upload} \tab Stops a multipart upload\cr
+\link[paws.storage:omics_abort_multipart_read_set_upload]{abort_multipart_read_set_upload} \tab Stops a multipart read set upload into a sequence store and returns a response with no body if the operation is successful\cr
 \link[paws.storage:omics_accept_share]{accept_share} \tab Accept a resource share request\cr
 \link[paws.storage:omics_batch_delete_read_set]{batch_delete_read_set} \tab Deletes one or more read sets\cr
-\link[paws.storage:omics_cancel_annotation_import_job]{cancel_annotation_import_job} \tab Cancels an annotation import job\cr
-\link[paws.storage:omics_cancel_run]{cancel_run} \tab Cancels a run\cr
-\link[paws.storage:omics_cancel_variant_import_job]{cancel_variant_import_job} \tab Cancels a variant import job\cr
-\link[paws.storage:omics_complete_multipart_read_set_upload]{complete_multipart_read_set_upload} \tab Concludes a multipart upload once you have uploaded all the components\cr
-\link[paws.storage:omics_create_annotation_store]{create_annotation_store} \tab Creates an annotation store\cr
+\link[paws.storage:omics_cancel_annotation_import_job]{cancel_annotation_import_job} \tab Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025\cr
+\link[paws.storage:omics_cancel_run]{cancel_run} \tab Cancels a run using its ID and returns a response with no body if the operation is successful\cr
+\link[paws.storage:omics_cancel_variant_import_job]{cancel_variant_import_job} \tab Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025\cr
+\link[paws.storage:omics_complete_multipart_read_set_upload]{complete_multipart_read_set_upload} \tab Completes a multipart read set upload into a sequence store after you have initiated the upload process with CreateMultipartReadSetUpload and uploaded all read set parts using UploadReadSetPart\cr
+\link[paws.storage:omics_create_annotation_store]{create_annotation_store} \tab Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025\cr
 \link[paws.storage:omics_create_annotation_store_version]{create_annotation_store_version} \tab Creates a new version of an annotation store\cr
-\link[paws.storage:omics_create_multipart_read_set_upload]{create_multipart_read_set_upload} \tab Begins a multipart read set upload\cr
-\link[paws.storage:omics_create_reference_store]{create_reference_store} \tab Creates a reference store\cr
-\link[paws.storage:omics_create_run_cache]{create_run_cache} \tab You can create a run cache to save the task outputs from completed tasks in a run for a private workflow\cr
-\link[paws.storage:omics_create_run_group]{create_run_group} \tab You can optionally create a run group to limit the compute resources for the runs that you add to the group\cr
-\link[paws.storage:omics_create_sequence_store]{create_sequence_store} \tab Creates a sequence store\cr
+\link[paws.storage:omics_create_multipart_read_set_upload]{create_multipart_read_set_upload} \tab Initiates a multipart read set upload for uploading partitioned source files into a sequence store\cr
+\link[paws.storage:omics_create_reference_store]{create_reference_store} \tab Creates a reference store and returns metadata in JSON format\cr
+\link[paws.storage:omics_create_run_cache]{create_run_cache} \tab Creates a run cache to store and reference task outputs from completed private runs\cr
+\link[paws.storage:omics_create_run_group]{create_run_group} \tab Creates a run group to limit the compute resources for the runs that are added to the group\cr
+\link[paws.storage:omics_create_sequence_store]{create_sequence_store} \tab Creates a sequence store and returns its metadata\cr
 \link[paws.storage:omics_create_share]{create_share} \tab Creates a cross-account shared resource\cr
-\link[paws.storage:omics_create_variant_store]{create_variant_store} \tab Creates a variant store\cr
+\link[paws.storage:omics_create_variant_store]{create_variant_store} \tab Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025\cr
 \link[paws.storage:omics_create_workflow]{create_workflow} \tab Creates a private workflow\cr
 \link[paws.storage:omics_create_workflow_version]{create_workflow_version} \tab Creates a new workflow version for the workflow that you specify with the workflowId parameter\cr
-\link[paws.storage:omics_delete_annotation_store]{delete_annotation_store} \tab Deletes an annotation store\cr
+\link[paws.storage:omics_delete_annotation_store]{delete_annotation_store} \tab Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025\cr
 \link[paws.storage:omics_delete_annotation_store_versions]{delete_annotation_store_versions} \tab Deletes one or multiple versions of an annotation store\cr
-\link[paws.storage:omics_delete_reference]{delete_reference} \tab Deletes a genome reference\cr
-\link[paws.storage:omics_delete_reference_store]{delete_reference_store} \tab Deletes a genome reference store\cr
-\link[paws.storage:omics_delete_run]{delete_run} \tab Deletes a workflow run\cr
-\link[paws.storage:omics_delete_run_cache]{delete_run_cache} \tab Delete a run cache\cr
-\link[paws.storage:omics_delete_run_group]{delete_run_group} \tab Deletes a workflow run group\cr
+\link[paws.storage:omics_delete_reference]{delete_reference} \tab Deletes a reference genome and returns a response with no body if the operation is successful\cr
+\link[paws.storage:omics_delete_reference_store]{delete_reference_store} \tab Deletes a reference store and returns a response with no body if the operation is successful\cr
+\link[paws.storage:omics_delete_run]{delete_run} \tab Deletes a run and returns a response with no body if the operation is successful\cr
+\link[paws.storage:omics_delete_run_cache]{delete_run_cache} \tab Deletes a run cache and returns a response with no body if the operation is successful\cr
+\link[paws.storage:omics_delete_run_group]{delete_run_group} \tab Deletes a run group and returns a response with no body if the operation is successful\cr
 \link[paws.storage:omics_delete_s3_access_policy]{delete_s3_access_policy} \tab Deletes an access policy for the specified store\cr
-\link[paws.storage:omics_delete_sequence_store]{delete_sequence_store} \tab Deletes a sequence store\cr
+\link[paws.storage:omics_delete_sequence_store]{delete_sequence_store} \tab Deletes a sequence store and returns a response with no body if the operation is successful\cr
 \link[paws.storage:omics_delete_share]{delete_share} \tab Deletes a resource share\cr
-\link[paws.storage:omics_delete_variant_store]{delete_variant_store} \tab Deletes a variant store\cr
-\link[paws.storage:omics_delete_workflow]{delete_workflow} \tab Deletes a workflow\cr
+\link[paws.storage:omics_delete_variant_store]{delete_variant_store} \tab Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025\cr
+\link[paws.storage:omics_delete_workflow]{delete_workflow} \tab Deletes a workflow by specifying its ID\cr
 \link[paws.storage:omics_delete_workflow_version]{delete_workflow_version} \tab Deletes a workflow version\cr
-\link[paws.storage:omics_get_annotation_import_job]{get_annotation_import_job} \tab Gets information about an annotation import job\cr
-\link[paws.storage:omics_get_annotation_store]{get_annotation_store} \tab Gets information about an annotation store\cr
+\link[paws.storage:omics_get_annotation_import_job]{get_annotation_import_job} \tab Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025\cr
+\link[paws.storage:omics_get_annotation_store]{get_annotation_store} \tab Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025\cr
 \link[paws.storage:omics_get_annotation_store_version]{get_annotation_store_version} \tab Retrieves the metadata for an annotation store version\cr
-\link[paws.storage:omics_get_read_set]{get_read_set} \tab Gets a file from a read set\cr
-\link[paws.storage:omics_get_read_set_activation_job]{get_read_set_activation_job} \tab Gets information about a read set activation job\cr
-\link[paws.storage:omics_get_read_set_export_job]{get_read_set_export_job} \tab Gets information about a read set export job\cr
-\link[paws.storage:omics_get_read_set_import_job]{get_read_set_import_job} \tab Gets information about a read set import job\cr
-\link[paws.storage:omics_get_read_set_metadata]{get_read_set_metadata} \tab Gets details about a read set\cr
-\link[paws.storage:omics_get_reference]{get_reference} \tab Gets a reference file\cr
-\link[paws.storage:omics_get_reference_import_job]{get_reference_import_job} \tab Gets information about a reference import job\cr
-\link[paws.storage:omics_get_reference_metadata]{get_reference_metadata} \tab Gets information about a genome reference's metadata\cr
+\link[paws.storage:omics_get_read_set]{get_read_set} \tab Retrieves detailed information from parts of a read set and returns the read set in the same format that it was uploaded\cr
+\link[paws.storage:omics_get_read_set_activation_job]{get_read_set_activation_job} \tab Returns detailed information about the status of a read set activation job in JSON format\cr
+\link[paws.storage:omics_get_read_set_export_job]{get_read_set_export_job} \tab Retrieves status information about a read set export job and returns the data in JSON format\cr
+\link[paws.storage:omics_get_read_set_import_job]{get_read_set_import_job} \tab Gets detailed and status information about a read set import job and returns the data in JSON format\cr
+\link[paws.storage:omics_get_read_set_metadata]{get_read_set_metadata} \tab Retrieves the metadata for a read set from a sequence store in JSON format\cr
+\link[paws.storage:omics_get_reference]{get_reference} \tab Downloads parts of data from a reference genome and returns the reference file in the same format that it was uploaded\cr
+\link[paws.storage:omics_get_reference_import_job]{get_reference_import_job} \tab Monitors the status of a reference import job\cr
+\link[paws.storage:omics_get_reference_metadata]{get_reference_metadata} \tab Retrieves metadata for a reference genome\cr
 \link[paws.storage:omics_get_reference_store]{get_reference_store} \tab Gets information about a reference store\cr
-\link[paws.storage:omics_get_run]{get_run} \tab Gets information about a workflow run\cr
-\link[paws.storage:omics_get_run_cache]{get_run_cache} \tab Retrieve the details for the specified run cache\cr
-\link[paws.storage:omics_get_run_group]{get_run_group} \tab Gets information about a workflow run group\cr
-\link[paws.storage:omics_get_run_task]{get_run_task} \tab Gets information about a workflow run task\cr
+\link[paws.storage:omics_get_run]{get_run} \tab Gets detailed information about a specific run using its ID\cr
+\link[paws.storage:omics_get_run_cache]{get_run_cache} \tab Retrieves detailed information about the specified run cache using its ID\cr
+\link[paws.storage:omics_get_run_group]{get_run_group} \tab Gets information about a run group and returns its metadata\cr
+\link[paws.storage:omics_get_run_task]{get_run_task} \tab Gets detailed information about a run task using its ID\cr
 \link[paws.storage:omics_get_s3_access_policy]{get_s3_access_policy} \tab Retrieves details about an access policy on a given store\cr
-\link[paws.storage:omics_get_sequence_store]{get_sequence_store} \tab Gets information about a sequence store\cr
+\link[paws.storage:omics_get_sequence_store]{get_sequence_store} \tab Retrieves metadata for a sequence store using its ID and returns it in JSON format\cr
 \link[paws.storage:omics_get_share]{get_share} \tab Retrieves the metadata for the specified resource share\cr
-\link[paws.storage:omics_get_variant_import_job]{get_variant_import_job} \tab Gets information about a variant import job\cr
-\link[paws.storage:omics_get_variant_store]{get_variant_store} \tab Gets information about a variant store\cr
-\link[paws.storage:omics_get_workflow]{get_workflow} \tab Gets information about a workflow\cr
+\link[paws.storage:omics_get_variant_import_job]{get_variant_import_job} \tab Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025\cr
+\link[paws.storage:omics_get_variant_store]{get_variant_store} \tab Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025\cr
+\link[paws.storage:omics_get_workflow]{get_workflow} \tab Gets all information about a workflow using its ID\cr
 \link[paws.storage:omics_get_workflow_version]{get_workflow_version} \tab Gets information about a workflow version\cr
-\link[paws.storage:omics_list_annotation_import_jobs]{list_annotation_import_jobs} \tab Retrieves a list of annotation import jobs\cr
-\link[paws.storage:omics_list_annotation_stores]{list_annotation_stores} \tab Retrieves a list of annotation stores\cr
+\link[paws.storage:omics_list_annotation_import_jobs]{list_annotation_import_jobs} \tab Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025\cr
+\link[paws.storage:omics_list_annotation_stores]{list_annotation_stores} \tab Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025\cr
 \link[paws.storage:omics_list_annotation_store_versions]{list_annotation_store_versions} \tab Lists the versions of an annotation store\cr
-\link[paws.storage:omics_list_multipart_read_set_uploads]{list_multipart_read_set_uploads} \tab Lists multipart read set uploads and for in progress uploads\cr
-\link[paws.storage:omics_list_read_set_activation_jobs]{list_read_set_activation_jobs} \tab Retrieves a list of read set activation jobs\cr
-\link[paws.storage:omics_list_read_set_export_jobs]{list_read_set_export_jobs} \tab Retrieves a list of read set export jobs\cr
-\link[paws.storage:omics_list_read_set_import_jobs]{list_read_set_import_jobs} \tab Retrieves a list of read set import jobs\cr
-\link[paws.storage:omics_list_read_sets]{list_read_sets} \tab Retrieves a list of read sets\cr
-\link[paws.storage:omics_list_read_set_upload_parts]{list_read_set_upload_parts} \tab This operation will list all parts in a requested multipart upload for a sequence store\cr
-\link[paws.storage:omics_list_reference_import_jobs]{list_reference_import_jobs} \tab Retrieves a list of reference import jobs\cr
-\link[paws.storage:omics_list_references]{list_references} \tab Retrieves a list of references\cr
-\link[paws.storage:omics_list_reference_stores]{list_reference_stores} \tab Retrieves a list of reference stores\cr
-\link[paws.storage:omics_list_run_caches]{list_run_caches} \tab Retrieves a list of your run caches\cr
-\link[paws.storage:omics_list_run_groups]{list_run_groups} \tab Retrieves a list of run groups\cr
-\link[paws.storage:omics_list_runs]{list_runs} \tab Retrieves a list of runs\cr
-\link[paws.storage:omics_list_run_tasks]{list_run_tasks} \tab Retrieves a list of tasks for a run\cr
-\link[paws.storage:omics_list_sequence_stores]{list_sequence_stores} \tab Retrieves a list of sequence stores\cr
+\link[paws.storage:omics_list_multipart_read_set_uploads]{list_multipart_read_set_uploads} \tab Lists in-progress multipart read set uploads for a sequence store and returns it in a JSON formatted output\cr
+\link[paws.storage:omics_list_read_set_activation_jobs]{list_read_set_activation_jobs} \tab Retrieves a list of read set activation jobs and returns the metadata in a JSON formatted output\cr
+\link[paws.storage:omics_list_read_set_export_jobs]{list_read_set_export_jobs} \tab Retrieves a list of read set export jobs in a JSON formatted response\cr
+\link[paws.storage:omics_list_read_set_import_jobs]{list_read_set_import_jobs} \tab Retrieves a list of read set import jobs and returns the data in JSON format\cr
+\link[paws.storage:omics_list_read_sets]{list_read_sets} \tab Retrieves a list of read sets from a sequence store ID and returns the metadata in JSON format\cr
+\link[paws.storage:omics_list_read_set_upload_parts]{list_read_set_upload_parts} \tab Lists all parts in a multipart read set upload for a sequence store and returns the metadata in a JSON formatted output\cr
+\link[paws.storage:omics_list_reference_import_jobs]{list_reference_import_jobs} \tab Retrieves the metadata of one or more reference import jobs for a reference store\cr
+\link[paws.storage:omics_list_references]{list_references} \tab Retrieves the metadata of one or more reference genomes in a reference store\cr
+\link[paws.storage:omics_list_reference_stores]{list_reference_stores} \tab Retrieves a list of reference stores linked to your account and returns their metadata in JSON format\cr
+\link[paws.storage:omics_list_run_caches]{list_run_caches} \tab Retrieves a list of your run caches and the metadata for each cache\cr
+\link[paws.storage:omics_list_run_groups]{list_run_groups} \tab Retrieves a list of all run groups and returns the metadata for each run group\cr
+\link[paws.storage:omics_list_runs]{list_runs} \tab Retrieves a list of runs and returns each run's metadata and status\cr
+\link[paws.storage:omics_list_run_tasks]{list_run_tasks} \tab Returns a list of tasks and status information within their specified run\cr
+\link[paws.storage:omics_list_sequence_stores]{list_sequence_stores} \tab Retrieves a list of sequence stores and returns each sequence store's metadata\cr
 \link[paws.storage:omics_list_shares]{list_shares} \tab Retrieves the resource shares associated with an account\cr
 \link[paws.storage:omics_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves a list of tags for a resource\cr
-\link[paws.storage:omics_list_variant_import_jobs]{list_variant_import_jobs} \tab Retrieves a list of variant import jobs\cr
-\link[paws.storage:omics_list_variant_stores]{list_variant_stores} \tab Retrieves a list of variant stores\cr
-\link[paws.storage:omics_list_workflows]{list_workflows} \tab Retrieves a list of workflows\cr
+\link[paws.storage:omics_list_variant_import_jobs]{list_variant_import_jobs} \tab Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025\cr
+\link[paws.storage:omics_list_variant_stores]{list_variant_stores} \tab Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025\cr
+\link[paws.storage:omics_list_workflows]{list_workflows} \tab Retrieves a list of existing workflows\cr
 \link[paws.storage:omics_list_workflow_versions]{list_workflow_versions} \tab Lists the workflow versions for the specified workflow\cr
 \link[paws.storage:omics_put_s3_access_policy]{put_s3_access_policy} \tab Adds an access policy to the specified store\cr
-\link[paws.storage:omics_start_annotation_import_job]{start_annotation_import_job} \tab Starts an annotation import job\cr
-\link[paws.storage:omics_start_read_set_activation_job]{start_read_set_activation_job} \tab Activates an archived read set\cr
-\link[paws.storage:omics_start_read_set_export_job]{start_read_set_export_job} \tab Exports a read set to Amazon S3\cr
-\link[paws.storage:omics_start_read_set_import_job]{start_read_set_import_job} \tab Starts a read set import job\cr
-\link[paws.storage:omics_start_reference_import_job]{start_reference_import_job} \tab Starts a reference import job\cr
-\link[paws.storage:omics_start_run]{start_run} \tab Starts a new run or duplicates an existing run\cr
-\link[paws.storage:omics_start_variant_import_job]{start_variant_import_job} \tab Starts a variant import job\cr
+\link[paws.storage:omics_start_annotation_import_job]{start_annotation_import_job} \tab Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025\cr
+\link[paws.storage:omics_start_read_set_activation_job]{start_read_set_activation_job} \tab Activates an archived read set and returns its metadata in a JSON formatted output\cr
+\link[paws.storage:omics_start_read_set_export_job]{start_read_set_export_job} \tab Starts a read set export job\cr
+\link[paws.storage:omics_start_read_set_import_job]{start_read_set_import_job} \tab Imports a read set from the sequence store\cr
+\link[paws.storage:omics_start_reference_import_job]{start_reference_import_job} \tab Imports a reference genome from Amazon S3 into a specified reference store\cr
+\link[paws.storage:omics_start_run]{start_run} \tab Starts a new run and returns details about the run, or duplicates an existing run\cr
+\link[paws.storage:omics_start_variant_import_job]{start_variant_import_job} \tab Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025\cr
 \link[paws.storage:omics_tag_resource]{tag_resource} \tab Tags a resource\cr
 \link[paws.storage:omics_untag_resource]{untag_resource} \tab Removes tags from a resource\cr
-\link[paws.storage:omics_update_annotation_store]{update_annotation_store} \tab Updates an annotation store\cr
+\link[paws.storage:omics_update_annotation_store]{update_annotation_store} \tab Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025\cr
 \link[paws.storage:omics_update_annotation_store_version]{update_annotation_store_version} \tab Updates the description of an annotation store version\cr
-\link[paws.storage:omics_update_run_cache]{update_run_cache} \tab Update a run cache\cr
-\link[paws.storage:omics_update_run_group]{update_run_group} \tab Updates a run group\cr
+\link[paws.storage:omics_update_run_cache]{update_run_cache} \tab Updates a run cache using its ID and returns a response with no body if the operation is successful\cr
+\link[paws.storage:omics_update_run_group]{update_run_group} \tab Updates the settings of a run group and returns a response with no body if the operation is successful\cr
 \link[paws.storage:omics_update_sequence_store]{update_sequence_store} \tab Update one or more parameters for the sequence store\cr
-\link[paws.storage:omics_update_variant_store]{update_variant_store} \tab Updates a variant store\cr
+\link[paws.storage:omics_update_variant_store]{update_variant_store} \tab Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025\cr
 \link[paws.storage:omics_update_workflow]{update_workflow} \tab Updates information about a workflow\cr
 \link[paws.storage:omics_update_workflow_version]{update_workflow_version} \tab Updates information about the workflow version\cr
-\link[paws.storage:omics_upload_read_set_part]{upload_read_set_part} \tab This operation uploads a specific part of a read set
+\link[paws.storage:omics_upload_read_set_part]{upload_read_set_part} \tab Uploads a specific part of a read set into a sequence store
 }
 }
 

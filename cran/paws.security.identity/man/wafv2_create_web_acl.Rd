@@ -17,7 +17,9 @@ wafv2_create_web_acl(
   CaptchaConfig = NULL,
   ChallengeConfig = NULL,
   TokenDomains = NULL,
-  AssociationConfig = NULL
+  AssociationConfig = NULL,
+  OnSourceDDoSProtectionConfig = NULL,
+  ApplicationConfig = NULL
 )
 }
 \arguments{
@@ -109,6 +111,17 @@ body sizes that are larger than the default. For more information, see
 
 For Application Load Balancer and AppSync, the limit is fixed at 8 KB
 (8,192 bytes).}
+
+\item{OnSourceDDoSProtectionConfig}{Specifies the type of DDoS protection to apply to web request data for a
+web ACL. For most scenarios, it is recommended to use the default
+protection level, \code{ACTIVE_UNDER_DDOS}. If a web ACL is associated with
+multiple Application Load Balancers, the changes you make to DDoS
+protection in that web ACL will apply to all associated Application Load
+Balancers.}
+
+\item{ApplicationConfig}{Configures the ability for the WAF console to store and retrieve
+application attributes during the web ACL creation process. Application
+attributes help WAF give recommendations for protection packs.}
 }
 \description{
 Creates a WebACL per the specifications provided.

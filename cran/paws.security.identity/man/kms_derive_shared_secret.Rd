@@ -14,10 +14,10 @@ kms_derive_shared_secret(
 )
 }
 \arguments{
-\item{KeyId}{[required] Identifies an asymmetric NIST-recommended ECC or SM2 (China Regions
-only) KMS key. KMS uses the private key in the specified key pair to
-derive the shared secret. The key usage of the KMS key must be
-\code{KEY_AGREEMENT}. To find the \code{KeyUsage} of a KMS key, use the
+\item{KeyId}{[required] Identifies an asymmetric NIST-standard ECC or SM2 (China Regions only)
+KMS key. KMS uses the private key in the specified key pair to derive
+the shared secret. The key usage of the KMS key must be \code{KEY_AGREEMENT}.
+To find the \code{KeyUsage} of a KMS key, use the
 \code{\link[=kms_describe_key]{describe_key}} operation.
 
 To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
@@ -42,7 +42,7 @@ get the alias name and alias ARN, use
 \item{KeyAgreementAlgorithm}{[required] Specifies the key agreement algorithm used to derive the shared secret.
 The only valid value is \code{ECDH}.}
 
-\item{PublicKey}{[required] Specifies the public key in your peer's NIST-recommended elliptic curve
+\item{PublicKey}{[required] Specifies the public key in your peer's NIST-standard elliptic curve
 (ECC) or SM2 (China Regions only) key pair.
 
 The public key must be a DER-encoded X.509 public key, also known as
@@ -64,38 +64,40 @@ You can specify the public key as binary data in a file using fileb
 Use a grant token when your permission to call this operation comes from
 a new grant that has not yet achieved \emph{eventual consistency}. For more
 information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token}
-and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token}{Using a grant token}
+and \href{https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html}{Using a grant token}
 in the \emph{Key Management Service Developer Guide}.}
 
 \item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.
 
-To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your KMS API calls}
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your permissions}
 in the \emph{Key Management Service Developer Guide}.}
 
 \item{Recipient}{A signed \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#term-attestdoc}{attestation document}
-from an Amazon Web Services Nitro enclave and the encryption algorithm
-to use with the enclave's public key. The only valid encryption
-algorithm is \code{RSAES_OAEP_SHA_256}.
+from an Amazon Web Services Nitro enclave or NitroTPM, and the
+encryption algorithm to use with the public key in the attestation
+document. The only valid encryption algorithm is \code{RSAES_OAEP_SHA_256}.
 
 This parameter only supports attestation documents for Amazon Web
-Services Nitro Enclaves. To call DeriveSharedSecret for an Amazon Web
-Services Nitro Enclaves, use the \href{https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk}{Amazon Web Services Nitro Enclaves SDK}
-to generate the attestation document and then use the Recipient
-parameter from any Amazon Web Services SDK to provide the attestation
-document for the enclave.
+Services Nitro Enclaves or Amazon Web Services NitroTPM. To call
+DeriveSharedSecret generate an attestation document use either \href{https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk}{Amazon Web Services Nitro Enclaves SDK}
+for an Amazon Web Services Nitro Enclaves or \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/attestation-get-doc.html}{Amazon Web Services NitroTPM tools}
+for Amazon Web Services NitroTPM. Then use the Recipient parameter from
+any Amazon Web Services SDK to provide the attestation document for the
+attested environment.
 
 When you use this parameter, instead of returning a plaintext copy of
 the shared secret, KMS encrypts the plaintext shared secret under the
 public key in the attestation document, and returns the resulting
 ciphertext in the \code{CiphertextForRecipient} field in the response. This
-ciphertext can be decrypted only with the private key in the enclave.
-The \code{CiphertextBlob} field in the response contains the encrypted shared
-secret derived from the KMS key specified by the \code{KeyId} parameter and
-public key specified by the \code{PublicKey} parameter. The \code{SharedSecret}
-field in the response is null or empty.
+ciphertext can be decrypted only with the private key in the attested
+environment. The \code{CiphertextBlob} field in the response contains the
+encrypted shared secret derived from the KMS key specified by the
+\code{KeyId} parameter and public key specified by the \code{PublicKey} parameter.
+The \code{SharedSecret} field in the response is null or empty.
 
 For information about the interaction between KMS and Amazon Web
-Services Nitro Enclaves, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html}{How Amazon Web Services Nitro Enclaves uses KMS}
+Services Nitro Enclaves or Amazon Web Services NitroTPM, see
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/cryptographic-attestation.html}{Cryptographic attestation support in KMS}
 in the \emph{Key Management Service Developer Guide}.}
 }
 \description{

@@ -108,14 +108,16 @@ also don't need to worry about scaling your management infrastructure.
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.compute:ecs_create_capacity_provider]{create_capacity_provider} \tab Creates a new capacity provider\cr
+\link[paws.compute:ecs_create_capacity_provider]{create_capacity_provider} \tab Creates a capacity provider\cr
 \link[paws.compute:ecs_create_cluster]{create_cluster} \tab Creates a new Amazon ECS cluster\cr
+\link[paws.compute:ecs_create_express_gateway_service]{create_express_gateway_service} \tab Creates an Express service that simplifies deploying containerized web applications on Amazon ECS with managed Amazon Web Services infrastructure\cr
 \link[paws.compute:ecs_create_service]{create_service} \tab Runs and maintains your desired number of tasks from a specified task definition\cr
 \link[paws.compute:ecs_create_task_set]{create_task_set} \tab Create a task set in the specified cluster and service\cr
 \link[paws.compute:ecs_delete_account_setting]{delete_account_setting} \tab Disables an account setting for a specified user, role, or the root user for an account\cr
 \link[paws.compute:ecs_delete_attributes]{delete_attributes} \tab Deletes one or more custom attributes from an Amazon ECS resource\cr
 \link[paws.compute:ecs_delete_capacity_provider]{delete_capacity_provider} \tab Deletes the specified capacity provider\cr
 \link[paws.compute:ecs_delete_cluster]{delete_cluster} \tab Deletes the specified cluster\cr
+\link[paws.compute:ecs_delete_express_gateway_service]{delete_express_gateway_service} \tab Deletes an Express service and removes all associated Amazon Web Services resources\cr
 \link[paws.compute:ecs_delete_service]{delete_service} \tab Deletes a specified service within a cluster\cr
 \link[paws.compute:ecs_delete_task_definitions]{delete_task_definitions} \tab Deletes one or more task definitions\cr
 \link[paws.compute:ecs_delete_task_set]{delete_task_set} \tab Deletes a specified task set within a service\cr
@@ -124,6 +126,7 @@ also don't need to worry about scaling your management infrastructure.
 \link[paws.compute:ecs_describe_capacity_providers]{describe_capacity_providers} \tab Describes one or more of your capacity providers\cr
 \link[paws.compute:ecs_describe_clusters]{describe_clusters} \tab Describes one or more of your clusters\cr
 \link[paws.compute:ecs_describe_container_instances]{describe_container_instances} \tab Describes one or more container instances\cr
+\link[paws.compute:ecs_describe_express_gateway_service]{describe_express_gateway_service} \tab Retrieves detailed information about an Express service, including current status, configuration, managed infrastructure, and service revisions\cr
 \link[paws.compute:ecs_describe_service_deployments]{describe_service_deployments} \tab Describes one or more of your service deployments\cr
 \link[paws.compute:ecs_describe_service_revisions]{describe_service_revisions} \tab Describes one or more service revisions\cr
 \link[paws.compute:ecs_describe_services]{describe_services} \tab Describes the specified services running in your cluster\cr
@@ -164,6 +167,7 @@ also don't need to worry about scaling your management infrastructure.
 \link[paws.compute:ecs_update_cluster_settings]{update_cluster_settings} \tab Modifies the settings to use for a cluster\cr
 \link[paws.compute:ecs_update_container_agent]{update_container_agent} \tab Updates the Amazon ECS container agent on a specified container instance\cr
 \link[paws.compute:ecs_update_container_instances_state]{update_container_instances_state} \tab Modifies the status of an Amazon ECS container instance\cr
+\link[paws.compute:ecs_update_express_gateway_service]{update_express_gateway_service} \tab Updates an existing Express service configuration\cr
 \link[paws.compute:ecs_update_service]{update_service} \tab Modifies the parameters of a service\cr
 \link[paws.compute:ecs_update_service_primary_task_set]{update_service_primary_task_set} \tab Modifies which task set in a service is the primary task set\cr
 \link[paws.compute:ecs_update_task_protection]{update_task_protection} \tab Updates the protection status of a task\cr

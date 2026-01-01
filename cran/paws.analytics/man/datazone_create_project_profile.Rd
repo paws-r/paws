@@ -5,15 +5,20 @@
 \title{Creates a project profile}
 \usage{
 datazone_create_project_profile(
+  allowCustomProjectResourceTags = NULL,
   description = NULL,
   domainIdentifier,
   domainUnitIdentifier = NULL,
   environmentConfigurations = NULL,
   name,
+  projectResourceTags = NULL,
+  projectResourceTagsDescription = NULL,
   status = NULL
 )
 }
 \arguments{
+\item{allowCustomProjectResourceTags}{Specifies whether custom project resource tags are supported.}
+
 \item{description}{A description of a project profile.}
 
 \item{domainIdentifier}{[required] A domain ID of the project profile.}
@@ -23,6 +28,11 @@ datazone_create_project_profile(
 \item{environmentConfigurations}{Environment configurations of the project profile.}
 
 \item{name}{[required] Project profile name.}
+
+\item{projectResourceTags}{The resource tags of the project profile.}
+
+\item{projectResourceTagsDescription}{Field viewable through the UI that provides a project user with the
+allowed resource tag specifications.}
 
 \item{status}{Project profile status.}
 }

@@ -2,7 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_start_run}
 \alias{omics_start_run}
-\title{Starts a new run or duplicates an existing run}
+\title{Starts a new run and returns details about the run, or duplicates an
+existing run}
 \usage{
 omics_start_run(
   workflowId = NULL,
@@ -16,7 +17,7 @@ omics_start_run(
   priority = NULL,
   parameters = NULL,
   storageCapacity = NULL,
-  outputUri = NULL,
+  outputUri,
   logLevel = NULL,
   tags = NULL,
   requestId,
@@ -27,15 +28,23 @@ omics_start_run(
 )
 }
 \arguments{
-\item{workflowId}{The run's workflow ID.}
+\item{workflowId}{The run's workflow ID. The \code{workflowId} is not the UUID.}
 
-\item{workflowType}{The run's workflow type.}
+\item{workflowType}{The run's workflow type. The \code{workflowType} must be specified if you are
+running a \code{READY2RUN} workflow. If you are running a \code{PRIVATE} workflow
+(default), you do not need to include the workflow type.}
 
 \item{runId}{The ID of a run to duplicate.}
 
-\item{roleArn}{[required] A service role for the run.}
+\item{roleArn}{[required] A service role for the run. The \code{roleArn} requires access to Amazon Web
+Services HealthOmics, S3, Cloudwatch logs, and EC2. An example \code{roleArn}
+is
+\verb{arn:aws:iam::123456789012:role/omics-service-role-serviceRole-W8O1XMPL7QZ}.
+In this example, the AWS account ID is \code{123456789012} and the role name
+is \code{omics-service-role-serviceRole-W8O1XMPL7QZ}.}
 
-\item{name}{A name for the run.}
+\item{name}{A name for the run. This is recommended to view and organize runs in the
+Amazon Web Services HealthOmics console and CloudWatch logs.}
 
 \item{cacheId}{Identifier of the cache associated with this run. If you don't specify a
 cache ID, no task outputs are cached for this run.}
@@ -43,54 +52,79 @@ cache ID, no task outputs are cached for this run.}
 \item{cacheBehavior}{The cache behavior for the run. You specify this value if you want to
 override the default behavior for the cache. You had set the default
 value when you created the cache. For more information, see \href{https://docs.aws.amazon.com/omics/latest/dev/how-run-cache.html#run-cache-behavior}{Run cache behavior}
-in the Amazon Web Services HealthOmics User Guide.}
+in the \emph{Amazon Web Services HealthOmics User Guide}.}
 
-\item{runGroupId}{The run's group ID.}
+\item{runGroupId}{The run's group ID. Use a run group to cap the compute resources (and
+number of concurrent runs) for the runs that you add to the run group.}
 
-\item{priority}{A priority for the run.}
+\item{priority}{Use the run priority (highest: 1) to establish the order of runs in a
+run group when you start a run. If multiple runs share the same
+priority, the run that was initiated first will have the higher
+priority. Runs that do not belong to a run group can be assigned a
+priority. The priorities of these runs are ranked among other runs that
+are not in a run group. For more information, see \href{https://docs.aws.amazon.com/omics/latest/dev/creating-run-groups.html#run-priority}{Run priority}
+in the \emph{Amazon Web Services HealthOmics User Guide}.}
 
-\item{parameters}{Parameters for the run.}
+\item{parameters}{Parameters for the run. The run needs all required parameters and can
+include optional parameters. The run cannot include any parameters that
+are not defined in the parameter template. To retrieve parameters from
+the run, use the GetRun API operation.}
 
-\item{storageCapacity}{The static storage capacity (in gibibytes) for this run. This field is
-not required if the storage type is dynamic (the system ignores any
-value that you enter).}
+\item{storageCapacity}{The \code{STATIC} storage capacity (in gibibytes, GiB) for this run. The
+default run storage capacity is 1200 GiB. If your requested storage
+capacity is unavailable, the system rounds up the value to the nearest
+1200 GiB multiple. If the requested storage capacity is still
+unavailable, the system rounds up the value to the nearest 2400 GiB
+multiple. This field is not required if the storage type is \code{DYNAMIC}
+(the system ignores any value that you enter).}
 
-\item{outputUri}{An output URI for the run.}
+\item{outputUri}{[required] An output S3 URI for the run. The S3 bucket must be in the same region
+as the workflow. The role ARN must have permission to write to this S3
+bucket.}
 
 \item{logLevel}{A log level for the run.}
 
-\item{tags}{Tags for the run.}
+\item{tags}{Tags for the run. You can add up to 50 tags per run. For more
+information, see \href{https://docs.aws.amazon.com/omics/latest/dev/add-a-tag.html}{Adding a tag} in the
+\emph{Amazon Web Services HealthOmics User Guide}.}
 
-\item{requestId}{[required] To ensure that requests don't run multiple times, specify a unique ID
-for each request.}
+\item{requestId}{[required] An idempotency token used to dedupe retry requests so that duplicate
+runs are not created.}
 
-\item{retentionMode}{The retention mode for the run. The default value is RETAIN.
+\item{retentionMode}{The retention mode for the run. The default value is \code{RETAIN}.
 
 Amazon Web Services HealthOmics stores a fixed number of runs that are
-available to the console and API. In the default mode (RETAIN), you need
-to remove runs manually when the number of run exceeds the maximum. If
-you set the retention mode to \code{REMOVE}, Amazon Web Services HealthOmics
-automatically removes runs (that have mode set to REMOVE) when the
-number of run exceeds the maximum. All run logs are available in
-CloudWatch logs, if you need information about a run that is no longer
-available to the API.
+available to the console and API. In the default mode (\code{RETAIN}), you
+need to remove runs manually when the number of run exceeds the maximum.
+If you set the retention mode to \code{REMOVE}, Amazon Web Services
+HealthOmics automatically removes runs (that have mode set to \code{REMOVE})
+when the number of run exceeds the maximum. All run logs are available
+in CloudWatch logs, if you need information about a run that is no
+longer available to the API.
 
 For more information about retention mode, see \href{https://docs.aws.amazon.com/omics/latest/dev/starting-a-run.html}{Specifying run retention mode}
 in the \emph{Amazon Web Services HealthOmics User Guide}.}
 
-\item{storageType}{The storage type for the run. By default, the run uses STATIC storage
-type, which allocates a fixed amount of storage. If you set the storage
-type to DYNAMIC, Amazon Web Services HealthOmics dynamically scales the
-storage up or down, based on file system utilization. For more
-information about static and dynamic storage, see \href{https://docs.aws.amazon.com/omics/latest/dev/}{Running workflows} in the \emph{Amazon
-Web Services HealthOmics User Guide}.}
+\item{storageType}{The storage type for the run. If you set the storage type to \code{DYNAMIC},
+Amazon Web Services HealthOmics dynamically scales the storage up or
+down, based on file system utilization. By default, the run uses
+\code{STATIC} storage type, which allocates a fixed amount of storage. For
+more information about \code{DYNAMIC} and \code{STATIC} storage, see \href{https://docs.aws.amazon.com/omics/latest/dev/workflows-run-types.html}{Run storage types}
+in the \emph{Amazon Web Services HealthOmics User Guide}.}
 
-\item{workflowOwnerId}{The ID of the workflow owner.}
+\item{workflowOwnerId}{The 12-digit account ID of the workflow owner that is used for running a
+shared workflow. The workflow owner ID can be retrieved using the
+\code{\link[=omics_get_share]{get_share}} API operation. If you are the workflow
+owner, you do not need to include this ID.}
 
-\item{workflowVersionName}{The name of the workflow version.}
+\item{workflowVersionName}{The name of the workflow version. Use workflow versions to track and
+organize changes to the workflow. If your workflow has multiple
+versions, the run uses the default version unless you specify a version
+name. To learn more, see \href{https://docs.aws.amazon.com/omics/latest/dev/workflow-versions.html}{Workflow versioning}
+in the \emph{Amazon Web Services HealthOmics User Guide}.}
 }
 \description{
-Starts a new run or duplicates an existing run.
+Starts a new run and returns details about the run, or duplicates an existing run. A run is a single invocation of a workflow. If you provide request IDs, Amazon Web Services HealthOmics identifies duplicate requests and starts the run only once. Monitor the progress of the run by calling the \code{\link[=omics_get_run]{get_run}} API operation.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_start_run/} for full documentation.
 }

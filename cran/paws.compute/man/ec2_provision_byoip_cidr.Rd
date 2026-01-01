@@ -62,7 +62,7 @@ You cannot provision or advertise BYOIPv6 address ranges in Local Zones
 at this time.}
 }
 \description{
-Provisions an IPv4 or IPv6 address range for use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and creates a corresponding address pool. After the address range is provisioned, it is ready to be advertised using \code{\link[=ec2_advertise_byoip_cidr]{advertise_byoip_cidr}}.
+Provisions an IPv4 or IPv6 address range for use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and creates a corresponding address pool. After the address range is provisioned, it is ready to be advertised.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_provision_byoip_cidr/} for full documentation.
 }

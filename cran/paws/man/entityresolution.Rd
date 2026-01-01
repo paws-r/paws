@@ -113,18 +113,19 @@ practices, see the \href{https://docs.aws.amazon.com/entityresolution/latest/use
 \link[paws.analytics:entityresolution_batch_delete_unique_id]{batch_delete_unique_id} \tab Deletes multiple unique IDs in a matching workflow\cr
 \link[paws.analytics:entityresolution_create_id_mapping_workflow]{create_id_mapping_workflow} \tab Creates an IdMappingWorkflow object which stores the configuration of the data processing job to be run\cr
 \link[paws.analytics:entityresolution_create_id_namespace]{create_id_namespace} \tab Creates an ID namespace object which will help customers provide metadata explaining their dataset and how to use it\cr
-\link[paws.analytics:entityresolution_create_matching_workflow]{create_matching_workflow} \tab Creates a MatchingWorkflow object which stores the configuration of the data processing job to be run\cr
+\link[paws.analytics:entityresolution_create_matching_workflow]{create_matching_workflow} \tab Creates a matching workflow that defines the configuration for a data processing job\cr
 \link[paws.analytics:entityresolution_create_schema_mapping]{create_schema_mapping} \tab Creates a schema mapping, which defines the schema of the input customer records table\cr
 \link[paws.analytics:entityresolution_delete_id_mapping_workflow]{delete_id_mapping_workflow} \tab Deletes the IdMappingWorkflow with a given name\cr
 \link[paws.analytics:entityresolution_delete_id_namespace]{delete_id_namespace} \tab Deletes the IdNamespace with a given name\cr
 \link[paws.analytics:entityresolution_delete_matching_workflow]{delete_matching_workflow} \tab Deletes the MatchingWorkflow with a given name\cr
 \link[paws.analytics:entityresolution_delete_policy_statement]{delete_policy_statement} \tab Deletes the policy statement\cr
 \link[paws.analytics:entityresolution_delete_schema_mapping]{delete_schema_mapping} \tab Deletes the SchemaMapping with a given name\cr
-\link[paws.analytics:entityresolution_get_id_mapping_job]{get_id_mapping_job} \tab Gets the status, metrics, and errors (if there are any) that are associated with a job\cr
+\link[paws.analytics:entityresolution_generate_match_id]{generate_match_id} \tab Generates or retrieves Match IDs for records using a rule-based matching workflow\cr
+\link[paws.analytics:entityresolution_get_id_mapping_job]{get_id_mapping_job} \tab Returns the status, metrics, and errors (if there are any) that are associated with a job\cr
 \link[paws.analytics:entityresolution_get_id_mapping_workflow]{get_id_mapping_workflow} \tab Returns the IdMappingWorkflow with a given name, if it exists\cr
 \link[paws.analytics:entityresolution_get_id_namespace]{get_id_namespace} \tab Returns the IdNamespace with a given name, if it exists\cr
-\link[paws.analytics:entityresolution_get_match_id]{get_match_id} \tab Returns the corresponding Match ID of a customer record if the record has been processed in a rule-based matching workflow or ML matching workflow\cr
-\link[paws.analytics:entityresolution_get_matching_job]{get_matching_job} \tab Gets the status, metrics, and errors (if there are any) that are associated with a job\cr
+\link[paws.analytics:entityresolution_get_match_id]{get_match_id} \tab Returns the corresponding Match ID of a customer record if the record has been processed in a rule-based matching workflow\cr
+\link[paws.analytics:entityresolution_get_matching_job]{get_matching_job} \tab Returns the status, metrics, and errors (if there are any) that are associated with a job\cr
 \link[paws.analytics:entityresolution_get_matching_workflow]{get_matching_workflow} \tab Returns the MatchingWorkflow with a given name, if it exists\cr
 \link[paws.analytics:entityresolution_get_policy]{get_policy} \tab Returns the resource-based policy\cr
 \link[paws.analytics:entityresolution_get_provider_service]{get_provider_service} \tab Returns the ProviderService of a given name\cr
@@ -144,7 +145,7 @@ practices, see the \href{https://docs.aws.amazon.com/entityresolution/latest/use
 \link[paws.analytics:entityresolution_untag_resource]{untag_resource} \tab Removes one or more tags from the specified Entity Resolution resource\cr
 \link[paws.analytics:entityresolution_update_id_mapping_workflow]{update_id_mapping_workflow} \tab Updates an existing IdMappingWorkflow\cr
 \link[paws.analytics:entityresolution_update_id_namespace]{update_id_namespace} \tab Updates an existing ID namespace\cr
-\link[paws.analytics:entityresolution_update_matching_workflow]{update_matching_workflow} \tab Updates an existing MatchingWorkflow\cr
+\link[paws.analytics:entityresolution_update_matching_workflow]{update_matching_workflow} \tab Updates an existing matching workflow\cr
 \link[paws.analytics:entityresolution_update_schema_mapping]{update_schema_mapping} \tab Updates a schema mapping
 }
 }

@@ -16,9 +16,11 @@ apigateway_create_domain_name(
   endpointConfiguration = NULL,
   tags = NULL,
   securityPolicy = NULL,
+  endpointAccessMode = NULL,
   mutualTlsAuthentication = NULL,
   ownershipVerificationCertificateArn = NULL,
-  policy = NULL
+  policy = NULL,
+  routingMode = NULL
 )
 }
 \arguments{
@@ -61,7 +63,11 @@ and IP address types of the domain name.}
 start with \verb{aws:}. The tag value can be up to 256 characters.}
 
 \item{securityPolicy}{The Transport Layer Security (TLS) version + cipher suite for this
-DomainName. The valid values are \code{TLS_1_0} and \code{TLS_1_2}.}
+DomainName.}
+
+\item{endpointAccessMode}{The endpoint access mode of the DomainName. Only available for
+DomainNames that use security policies that start with
+\code{SecurityPolicy_}.}
 
 \item{mutualTlsAuthentication}{}
 
@@ -73,6 +79,10 @@ regionalCertificateArn.}
 \item{policy}{A stringified JSON policy document that applies to the \code{execute-api}
 service for this DomainName regardless of the caller and Method
 configuration. Supported only for private custom domain names.}
+
+\item{routingMode}{The routing mode for this domain name. The routing mode determines how
+API Gateway sends traffic from your custom domain name to your private
+APIs.}
 }
 \description{
 Creates a new domain name.

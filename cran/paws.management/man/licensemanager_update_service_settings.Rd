@@ -8,7 +8,8 @@ licensemanager_update_service_settings(
   S3BucketArn = NULL,
   SnsTopicArn = NULL,
   OrganizationConfiguration = NULL,
-  EnableCrossAccountsDiscovery = NULL
+  EnableCrossAccountsDiscovery = NULL,
+  EnabledDiscoverySourceRegions = NULL
 )
 }
 \arguments{
@@ -21,6 +22,8 @@ Manager alerts.}
 \item{OrganizationConfiguration}{Enables integration with Organizations for cross-account discovery.}
 
 \item{EnableCrossAccountsDiscovery}{Activates cross-account discovery.}
+
+\item{EnabledDiscoverySourceRegions}{Cross region discovery enabled source regions.}
 }
 \description{
 Updates License Manager settings for the current Region.

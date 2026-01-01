@@ -2,13 +2,13 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_deactivate_type}
 \alias{cloudformation_deactivate_type}
-\title{Deactivates a public extension that was previously activated in this
-account and Region}
+\title{Deactivates a public third-party extension, such as a resource or
+module, or a CloudFormation Hook when you no longer use it}
 \usage{
 cloudformation_deactivate_type(TypeName = NULL, Type = NULL, Arn = NULL)
 }
 \arguments{
-\item{TypeName}{The type name of the extension, in this account and Region. If you
+\item{TypeName}{The type name of the extension in this account and Region. If you
 specified a type name alias when enabling the extension, use the type
 name alias.
 
@@ -18,13 +18,13 @@ Conditional: You must specify either \code{Arn}, or \code{TypeName} and \code{Ty
 
 Conditional: You must specify either \code{Arn}, or \code{TypeName} and \code{Type}.}
 
-\item{Arn}{The Amazon Resource Name (ARN) for the extension, in this account and
+\item{Arn}{The Amazon Resource Name (ARN) for the extension in this account and
 Region.
 
 Conditional: You must specify either \code{Arn}, or \code{TypeName} and \code{Type}.}
 }
 \description{
-Deactivates a public extension that was previously activated in this account and Region.
+Deactivates a public third-party extension, such as a resource or module, or a CloudFormation Hook when you no longer use it.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudformation_deactivate_type/} for full documentation.
 }

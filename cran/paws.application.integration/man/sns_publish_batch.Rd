@@ -2,7 +2,7 @@
 % Please edit documentation in R/sns_operations.R
 \name{sns_publish_batch}
 \alias{sns_publish_batch}
-\title{Publishes up to ten messages to the specified topic}
+\title{Publishes up to 10 messages to the specified topic in a single batch}
 \usage{
 sns_publish_batch(TopicArn, PublishBatchRequestEntries)
 }
@@ -14,7 +14,7 @@ to.}
 sent to the SNS topic.}
 }
 \description{
-Publishes up to ten messages to the specified topic. This is a batch version of \code{\link[=sns_publish]{publish}}. For FIFO topics, multiple messages within a single batch are published in the order they are sent, and messages are deduplicated within the batch and across batches for 5 minutes.
+Publishes up to 10 messages to the specified topic in a single batch. This is a batch version of the \code{\link[=sns_publish]{publish}} API. If you try to send more than 10 messages in a single batch request, you will receive a \code{TooManyEntriesInBatchRequest} exception.
 
 See \url{https://www.paws-r-sdk.com/docs/sns_publish_batch/} for full documentation.
 }

@@ -43,10 +43,6 @@ codegurusecurity_batch_get_findings <- function(findingIdentifiers) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/codegurusecurity_create_scan/](https://www.paws-r-sdk.com/docs/codegurusecurity_create_scan/) for full documentation.
 #'
-#' @param analysisType The type of analysis you want CodeGuru Security to perform in the scan,
-#' either `Security` or `All`. The `Security` type only generates findings
-#' related to security. The `All` type generates both security findings and
-#' quality findings. Defaults to `Security` type if missing.
 #' @param clientToken The idempotency token for the request. Amazon CodeGuru Security uses
 #' this value to prevent the accidental creation of duplicate scans if
 #' there are failures and retries.
@@ -61,6 +57,10 @@ codegurusecurity_batch_get_findings <- function(findingIdentifiers) {
 #' detectors to analyze your code in near-real time. `Standard` scans have
 #' standard resource limits and use the full set of detectors to analyze
 #' your code.
+#' @param analysisType The type of analysis you want CodeGuru Security to perform in the scan,
+#' either `Security` or `All`. The `Security` type only generates findings
+#' related to security. The `All` type generates both security findings and
+#' quality findings. Defaults to `Security` type if missing.
 #' @param tags An array of key-value pairs used to tag a scan. A tag is a custom
 #' attribute label with two parts:
 #' 
@@ -74,7 +74,7 @@ codegurusecurity_batch_get_findings <- function(findingIdentifiers) {
 #' @keywords internal
 #'
 #' @rdname codegurusecurity_create_scan
-codegurusecurity_create_scan <- function(analysisType = NULL, clientToken = NULL, resourceId, scanName, scanType = NULL, tags = NULL) {
+codegurusecurity_create_scan <- function(clientToken = NULL, resourceId, scanName, scanType = NULL, analysisType = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateScan",
     http_method = "POST",
@@ -83,7 +83,7 @@ codegurusecurity_create_scan <- function(analysisType = NULL, clientToken = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .codegurusecurity$create_scan_input(analysisType = analysisType, clientToken = clientToken, resourceId = resourceId, scanName = scanName, scanType = scanType, tags = tags)
+  input <- .codegurusecurity$create_scan_input(clientToken = clientToken, resourceId = resourceId, scanName = scanName, scanType = scanType, analysisType = analysisType, tags = tags)
   output <- .codegurusecurity$create_scan_output()
   config <- get_config()
   svc <- .codegurusecurity$service(config, op)
@@ -167,23 +167,23 @@ codegurusecurity_get_account_configuration <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/codegurusecurity_get_findings/](https://www.paws-r-sdk.com/docs/codegurusecurity_get_findings/) for full documentation.
 #'
+#' @param scanName &#91;required&#93; The name of the scan you want to retrieve findings from.
+#' @param nextToken A token to use for paginating results that are returned in the response.
+#' Set the value of this parameter to null for the first request. For
+#' subsequent calls, use the `nextToken` value returned from the previous
+#' request to continue listing results after the first page.
 #' @param maxResults The maximum number of results to return in the response. Use this
 #' parameter when paginating results. If additional results exist beyond
 #' the number you specify, the `nextToken` element is returned in the
 #' response. Use `nextToken` in a subsequent request to retrieve additional
 #' results. If not specified, returns 1000 results.
-#' @param nextToken A token to use for paginating results that are returned in the response.
-#' Set the value of this parameter to null for the first request. For
-#' subsequent calls, use the `nextToken` value returned from the previous
-#' request to continue listing results after the first page.
-#' @param scanName &#91;required&#93; The name of the scan you want to retrieve findings from.
 #' @param status The status of the findings you want to get. Pass either `Open`,
 #' `Closed`, or `All`.
 #'
 #' @keywords internal
 #'
 #' @rdname codegurusecurity_get_findings
-codegurusecurity_get_findings <- function(maxResults = NULL, nextToken = NULL, scanName, status = NULL) {
+codegurusecurity_get_findings <- function(scanName, nextToken = NULL, maxResults = NULL, status = NULL) {
   op <- new_operation(
     name = "GetFindings",
     http_method = "GET",
@@ -192,7 +192,7 @@ codegurusecurity_get_findings <- function(maxResults = NULL, nextToken = NULL, s
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings"),
     stream_api = FALSE
   )
-  input <- .codegurusecurity$get_findings_input(maxResults = maxResults, nextToken = nextToken, scanName = scanName, status = status)
+  input <- .codegurusecurity$get_findings_input(scanName = scanName, nextToken = nextToken, maxResults = maxResults, status = status)
   output <- .codegurusecurity$get_findings_output()
   config <- get_config()
   svc <- .codegurusecurity$service(config, op)
@@ -245,16 +245,16 @@ codegurusecurity_get_metrics_summary <- function(date) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/codegurusecurity_get_scan/](https://www.paws-r-sdk.com/docs/codegurusecurity_get_scan/) for full documentation.
 #'
+#' @param scanName &#91;required&#93; The name of the scan you want to view details about.
 #' @param runId UUID that identifies the individual scan run you want to view details
 #' about. You retrieve this when you call the
 #' [`create_scan`][codegurusecurity_create_scan] operation. Defaults to the
 #' latest scan run if missing.
-#' @param scanName &#91;required&#93; The name of the scan you want to view details about.
 #'
 #' @keywords internal
 #'
 #' @rdname codegurusecurity_get_scan
-codegurusecurity_get_scan <- function(runId = NULL, scanName) {
+codegurusecurity_get_scan <- function(scanName, runId = NULL) {
   op <- new_operation(
     name = "GetScan",
     http_method = "GET",
@@ -263,7 +263,7 @@ codegurusecurity_get_scan <- function(runId = NULL, scanName) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .codegurusecurity$get_scan_input(runId = runId, scanName = scanName)
+  input <- .codegurusecurity$get_scan_input(scanName = scanName, runId = runId)
   output <- .codegurusecurity$get_scan_output()
   config <- get_config()
   svc <- .codegurusecurity$service(config, op)
@@ -281,24 +281,24 @@ codegurusecurity_get_scan <- function(runId = NULL, scanName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/codegurusecurity_list_findings_metrics/](https://www.paws-r-sdk.com/docs/codegurusecurity_list_findings_metrics/) for full documentation.
 #'
-#' @param endDate &#91;required&#93; The end date of the interval which you want to retrieve metrics from.
-#' Round to the nearest day.
+#' @param nextToken A token to use for paginating results that are returned in the response.
+#' Set the value of this parameter to null for the first request. For
+#' subsequent calls, use the `nextToken` value returned from the previous
+#' request to continue listing results after the first page.
 #' @param maxResults The maximum number of results to return in the response. Use this
 #' parameter when paginating results. If additional results exist beyond
 #' the number you specify, the `nextToken` element is returned in the
 #' response. Use `nextToken` in a subsequent request to retrieve additional
 #' results. If not specified, returns 1000 results.
-#' @param nextToken A token to use for paginating results that are returned in the response.
-#' Set the value of this parameter to null for the first request. For
-#' subsequent calls, use the `nextToken` value returned from the previous
-#' request to continue listing results after the first page.
 #' @param startDate &#91;required&#93; The start date of the interval which you want to retrieve metrics from.
 #' Rounds to the nearest day.
+#' @param endDate &#91;required&#93; The end date of the interval which you want to retrieve metrics from.
+#' Round to the nearest day.
 #'
 #' @keywords internal
 #'
 #' @rdname codegurusecurity_list_findings_metrics
-codegurusecurity_list_findings_metrics <- function(endDate, maxResults = NULL, nextToken = NULL, startDate) {
+codegurusecurity_list_findings_metrics <- function(nextToken = NULL, maxResults = NULL, startDate, endDate) {
   op <- new_operation(
     name = "ListFindingsMetrics",
     http_method = "GET",
@@ -307,7 +307,7 @@ codegurusecurity_list_findings_metrics <- function(endDate, maxResults = NULL, n
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findingsMetrics"),
     stream_api = FALSE
   )
-  input <- .codegurusecurity$list_findings_metrics_input(endDate = endDate, maxResults = maxResults, nextToken = nextToken, startDate = startDate)
+  input <- .codegurusecurity$list_findings_metrics_input(nextToken = nextToken, maxResults = maxResults, startDate = startDate, endDate = endDate)
   output <- .codegurusecurity$list_findings_metrics_output()
   config <- get_config()
   svc <- .codegurusecurity$service(config, op)
@@ -324,20 +324,20 @@ codegurusecurity_list_findings_metrics <- function(endDate, maxResults = NULL, n
 #'
 #' See [https://www.paws-r-sdk.com/docs/codegurusecurity_list_scans/](https://www.paws-r-sdk.com/docs/codegurusecurity_list_scans/) for full documentation.
 #'
+#' @param nextToken A token to use for paginating results that are returned in the response.
+#' Set the value of this parameter to null for the first request. For
+#' subsequent calls, use the `nextToken` value returned from the previous
+#' request to continue listing results after the first page.
 #' @param maxResults The maximum number of results to return in the response. Use this
 #' parameter when paginating results. If additional results exist beyond
 #' the number you specify, the `nextToken` element is returned in the
 #' response. Use `nextToken` in a subsequent request to retrieve additional
 #' results. If not specified, returns 100 results.
-#' @param nextToken A token to use for paginating results that are returned in the response.
-#' Set the value of this parameter to null for the first request. For
-#' subsequent calls, use the `nextToken` value returned from the previous
-#' request to continue listing results after the first page.
 #'
 #' @keywords internal
 #'
 #' @rdname codegurusecurity_list_scans
-codegurusecurity_list_scans <- function(maxResults = NULL, nextToken = NULL) {
+codegurusecurity_list_scans <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListScans",
     http_method = "GET",
@@ -346,7 +346,7 @@ codegurusecurity_list_scans <- function(maxResults = NULL, nextToken = NULL) {
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "summaries"),
     stream_api = FALSE
   )
-  input <- .codegurusecurity$list_scans_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .codegurusecurity$list_scans_input(nextToken = nextToken, maxResults = maxResults)
   output <- .codegurusecurity$list_scans_output()
   config <- get_config()
   svc <- .codegurusecurity$service(config, op)

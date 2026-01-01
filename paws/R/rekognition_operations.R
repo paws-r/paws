@@ -8,8 +8,14 @@ NULL
 #' @description
 #' Associates one or more faces with an existing UserID. Takes an array of
 #' `FaceIds`. Each `FaceId` that are present in the `FaceIds` list is
-#' associated with the provided UserID. The maximum number of total
-#' `FaceIds` per UserID is 100.
+#' associated with the provided UserID. The number of FaceIds that can be
+#' used as input in a single request is limited to 100.
+#' 
+#' Note that the total number of faces that can be associated with a single
+#' `UserID` is also limited to 100. Once a `UserID` has 100 faces
+#' associated with it, no additional faces can be added. If more API calls
+#' are made after the limit is reached, a `ServiceQuotaExceededException`
+#' will result.
 #' 
 #' The `UserMatchThreshold` parameter specifies the minimum user match
 #' confidence required for the face to be associated with a UserID that has
@@ -738,7 +744,16 @@ rekognition_create_dataset <- function(DatasetSource = NULL, DatasetType, Projec
 #'       S3Bucket = "string",
 #'       S3KeyPrefix = "string"
 #'     ),
-#'     AuditImagesLimit = 123
+#'     AuditImagesLimit = 123,
+#'     ChallengePreferences = list(
+#'       list(
+#'         Type = "FaceMovementAndLightChallenge"|"FaceMovementChallenge",
+#'         Versions = list(
+#'           Minimum = "string",
+#'           Maximum = "string"
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   ClientRequestToken = "string"
 #' )
@@ -2309,8 +2324,7 @@ rekognition_describe_stream_processor <- function(Name) {
 #' `CustomLabel` object provides the label name (`Name`), the level of
 #' confidence that the image contains the object (`Confidence`), and object
 #' location information, if it exists, for the label on the image
-#' (`Geometry`). Note that for the `DetectCustomLabelsLabels` operation,
-#' `Polygons` are not returned in the `Geometry` section of the response.
+#' (`Geometry`).
 #' 
 #' To filter labels that are returned, specify a value for `MinConfidence`.
 #' `DetectCustomLabelsLabels` only returns labels with a confidence that's
@@ -4263,6 +4277,10 @@ rekognition_get_face_detection <- function(JobId, MaxResults = NULL, NextToken =
 #'         Top = 123.0
 #'       )
 #'     )
+#'   ),
+#'   Challenge = list(
+#'     Type = "FaceMovementAndLightChallenge"|"FaceMovementChallenge",
+#'     Version = "string"
 #'   )
 #' )
 #' ```
@@ -4852,10 +4870,16 @@ rekognition_get_media_analysis_job <- function(JobId) {
 }
 .rekognition$operations$get_media_analysis_job <- rekognition_get_media_analysis_job
 
-#' Gets the path tracking results of a Amazon Rekognition Video analysis
-#' started by StartPersonTracking
+#' End of support notice: On October 31, 2025, AWS will discontinue support
+#' for Amazon Rekognition People Pathing
 #'
 #' @description
+#' *End of support notice:* On October 31, 2025, AWS will discontinue
+#' support for Amazon Rekognition People Pathing. After October 31, 2025,
+#' you will no longer be able to use the Rekognition People Pathing
+#' capability. For more information, visit this [blog
+#' post](https://aws.amazon.com/blogs/machine-learning/transitioning-from-amazon-rekognition-people-pathing-exploring-other-alternatives/).
+#' 
 #' Gets the path tracking results of a Amazon Rekognition Video analysis
 #' started by [`start_person_tracking`][rekognition_start_person_tracking].
 #' 
@@ -8029,9 +8053,16 @@ rekognition_start_media_analysis_job <- function(ClientRequestToken = NULL, JobN
 }
 .rekognition$operations$start_media_analysis_job <- rekognition_start_media_analysis_job
 
-#' Starts the asynchronous tracking of a person's path in a stored video
+#' End of support notice: On October 31, 2025, AWS will discontinue support
+#' for Amazon Rekognition People Pathing
 #'
 #' @description
+#' *End of support notice:* On October 31, 2025, AWS will discontinue
+#' support for Amazon Rekognition People Pathing. After October 31, 2025,
+#' you will no longer be able to use the Rekognition People Pathing
+#' capability. For more information, visit this [blog
+#' post](https://aws.amazon.com/blogs/machine-learning/transitioning-from-amazon-rekognition-people-pathing-exploring-other-alternatives/).
+#' 
 #' Starts the asynchronous tracking of a person's path in a stored video.
 #' 
 #' Amazon Rekognition Video can track the path of people in a video stored

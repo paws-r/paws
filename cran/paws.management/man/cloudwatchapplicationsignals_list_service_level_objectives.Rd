@@ -10,9 +10,9 @@ cloudwatchapplicationsignals_list_service_level_objectives(
   DependencyConfig = NULL,
   MaxResults = NULL,
   NextToken = NULL,
-  MetricSourceTypes = NULL,
   IncludeLinkedAccounts = NULL,
-  SloOwnerAwsAccountId = NULL
+  SloOwnerAwsAccountId = NULL,
+  MetricSourceTypes = NULL
 )
 }
 \arguments{
@@ -46,6 +46,17 @@ this parameter, the default of 50 is used.}
 \item{NextToken}{Include this value, if it was returned by the previous operation, to get
 the next set of service level objectives.}
 
+\item{IncludeLinkedAccounts}{If you are using this operation in a monitoring account, specify \code{true}
+to include SLO from source accounts in the returned data.
+
+When you are monitoring an account, you can use Amazon Web Services
+account ID in \code{KeyAttribute} filter for service source account and
+\code{SloOwnerawsaccountID} for SLO source account with
+\code{IncludeLinkedAccounts} to filter the returned data to only a single
+source account.}
+
+\item{SloOwnerAwsAccountId}{SLO's Amazon Web Services account ID.}
+
 \item{MetricSourceTypes}{Use this optional field to only include SLOs with the specified metric
 source types in the output. Supported types are:
 \itemize{
@@ -53,14 +64,6 @@ source types in the output. Supported types are:
 \item Service dependency
 \item CloudWatch metric
 }}
-
-\item{IncludeLinkedAccounts}{If you are using this operation in a monitoring account, specify \code{true}
-to include SLO from source accounts in the returned data.
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{ </p> <p>When you are monitoring an account, you can use Amazon Web Services account ID in <code>KeyAttribute</code> filter for service source account and <code>SloOwnerawsaccountID</code> for SLO source account with <code>IncludeLinkedAccounts</code> to filter the returned data to only a single source account. </p>
-}\if{html}{\out{</div>}}}
-
-\item{SloOwnerAwsAccountId}{SLO's Amazon Web Services account ID.}
 }
 \description{
 Returns a list of SLOs created in this account.

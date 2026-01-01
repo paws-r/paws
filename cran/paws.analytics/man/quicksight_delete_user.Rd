@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_delete_user}
 \alias{quicksight_delete_user}
-\title{Deletes the Amazon QuickSight user that is associated with the identity
+\title{Deletes the Amazon Quick Sight user that is associated with the identity
 of the IAM user or role that's making the call}
 \usage{
 quicksight_delete_user(UserName, AwsAccountId, Namespace)
@@ -12,12 +12,12 @@ quicksight_delete_user(UserName, AwsAccountId, Namespace)
 
 \item{AwsAccountId}{[required] The ID for the Amazon Web Services account that the user is in.
 Currently, you use the ID for the Amazon Web Services account that
-contains your Amazon QuickSight account.}
+contains your Amazon Quick Sight account.}
 
 \item{Namespace}{[required] The namespace. Currently, you should set this to \code{default}.}
 }
 \description{
-Deletes the Amazon QuickSight user that is associated with the identity of the IAM user or role that's making the call. The IAM user isn't deleted as a result of this call.
+Deletes the Amazon Quick Sight user that is associated with the identity of the IAM user or role that's making the call. The IAM user isn't deleted as a result of this call.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_delete_user/} for full documentation.
 }

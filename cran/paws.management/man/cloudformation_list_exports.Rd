@@ -8,12 +8,11 @@ call this action}
 cloudformation_list_exports(NextToken = NULL)
 }
 \arguments{
-\item{NextToken}{A string (provided by the \code{\link[=cloudformation_list_exports]{list_exports}}
-response output) that identifies the next page of exported output values
-that you asked to retrieve.}
+\item{NextToken}{The token for the next set of items to return. (You received this token
+from a previous call.)}
 }
 \description{
-Lists all exported output values in the account and Region in which you call this action. Use this action to see the exported output values that you can import into other stacks. To import values, use the \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html}{Fn::ImportValue} function.
+Lists all exported output values in the account and Region in which you call this action. Use this action to see the exported output values that you can import into other stacks. To import values, use the \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/intrinsic-function-reference-importvalue.html}{Fn::ImportValue} function.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudformation_list_exports/} for full documentation.
 }

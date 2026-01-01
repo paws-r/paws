@@ -15,11 +15,8 @@ cloudformation_list_stack_refactors(
 status codes to list only stack refactors with the specified execution
 status codes.}
 
-\item{NextToken}{If the request doesn't return all the remaining results, \code{NextToken} is
-set to a token. To retrieve the next set of results, call this action
-again and assign that token to the request object's \code{NextToken}
-parameter. If the request returns all results, \code{NextToken} is set to
-\code{null}.}
+\item{NextToken}{The token for the next set of items to return. (You received this token
+from a previous call.)}
 
 \item{MaxResults}{The maximum number of results to be returned with a single call. If the
 number of available results exceeds this maximum, the response includes

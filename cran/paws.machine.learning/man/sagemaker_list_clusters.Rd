@@ -44,7 +44,12 @@ For more information about the timestamp format, see
 \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-types.html#parameter-type-timestamp}{Timestamp}
 in the \emph{Amazon Web Services Command Line Interface User Guide}.}
 
-\item{MaxResults}{Set the maximum number of SageMaker HyperPod clusters to list.}
+\item{MaxResults}{Specifies the maximum number of clusters to evaluate for the operation
+(not necessarily the number of matching items). After SageMaker
+processes the number of clusters up to \code{MaxResults}, it stops the
+operation and returns the matching clusters up to that point. If all the
+matching clusters are desired, SageMaker will go through all the
+clusters until \code{NextToken} is empty.}
 
 \item{NameContains}{Set the maximum number of instances to print in the list.}
 

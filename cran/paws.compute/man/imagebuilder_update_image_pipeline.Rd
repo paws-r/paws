@@ -18,6 +18,7 @@ imagebuilder_update_image_pipeline(
   clientToken,
   imageScanningConfiguration = NULL,
   workflows = NULL,
+  loggingConfiguration = NULL,
   executionRole = NULL
 )
 }
@@ -57,6 +58,9 @@ in the \emph{Amazon EC2 API Reference}.}
 \item{imageScanningConfiguration}{Contains settings for vulnerability scans.}
 
 \item{workflows}{Contains the workflows to run for the pipeline.}
+
+\item{loggingConfiguration}{Update logging configuration for the output image that's created when
+the pipeline runs.}
 
 \item{executionRole}{The name or Amazon Resource Name (ARN) for the IAM role you create that
 grants Image Builder access to perform workflow actions.}

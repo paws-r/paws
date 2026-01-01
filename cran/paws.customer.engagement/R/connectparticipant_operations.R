@@ -298,7 +298,7 @@ connectparticipant_get_transcript <- function(ContactId = NULL, MaxResults = NUL
 #' The application/vnd
 #'
 #' @description
-#' The `application/vnd.amazonaws.connect.event.connection.acknowledged` ContentType will no longer be supported starting December 31, 2024. This event has been migrated to the [`create_participant_connection`][connectparticipant_create_participant_connection] API using the `ConnectParticipant` field.
+#' The `application/vnd.amazonaws.connect.event.connection.acknowledged` ContentType is no longer maintained since December 31, 2024. This event has been migrated to the [`create_participant_connection`][connectparticipant_create_participant_connection] API using the `ConnectParticipant` field.
 #'
 #' See [https://www.paws-r-sdk.com/docs/connectparticipant_send_event/](https://www.paws-r-sdk.com/docs/connectparticipant_send_event/) for full documentation.
 #'
@@ -306,8 +306,8 @@ connectparticipant_get_transcript <- function(ContactId = NULL, MaxResults = NUL
 #' 
 #' -   application/vnd.amazonaws.connect.event.typing
 #' 
-#' -   application/vnd.amazonaws.connect.event.connection.acknowledged
-#'     (will be deprecated on December 31, 2024)
+#' -   application/vnd.amazonaws.connect.event.connection.acknowledged (is
+#'     no longer maintained since December 31, 2024)
 #' 
 #' -   application/vnd.amazonaws.connect.event.message.delivered
 #' 
@@ -354,9 +354,18 @@ connectparticipant_send_event <- function(ContentType, Content = NULL, ClientTok
 #'
 #' See [https://www.paws-r-sdk.com/docs/connectparticipant_send_message/](https://www.paws-r-sdk.com/docs/connectparticipant_send_message/) for full documentation.
 #'
-#' @param ContentType &#91;required&#93; The type of the content. Supported types are `text/plain`,
+#' @param ContentType &#91;required&#93; The type of the content. Possible types are `text/plain`,
 #' `text/markdown`, `application/json`, and
 #' `application/vnd.amazonaws.connect.message.interactive.response`.
+#' 
+#' Supported types on the contact are configured through
+#' `SupportedMessagingContentTypes` on
+#' [StartChatContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartChatContact.html)
+#' and
+#' [StartOutboundChatContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartOutboundChatContact.html).
+#' 
+#' For Apple Messages for Business, SMS, and WhatsApp Business Messaging
+#' contacts, only `text/plain` is supported.
 #' @param Content &#91;required&#93; The content of the message.
 #' 
 #' -   For `text/plain` and `text/markdown`, the Length Constraints are

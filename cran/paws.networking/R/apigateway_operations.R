@@ -330,7 +330,10 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #' \[a-zA-Z+-=._:/\]. The tag key can be up to 128 characters and must not
 #' start with `aws:`. The tag value can be up to 256 characters.
 #' @param securityPolicy The Transport Layer Security (TLS) version + cipher suite for this
-#' DomainName. The valid values are `TLS_1_0` and `TLS_1_2`.
+#' DomainName.
+#' @param endpointAccessMode The endpoint access mode of the DomainName. Only available for
+#' DomainNames that use security policies that start with
+#' `SecurityPolicy_`.
 #' @param mutualTlsAuthentication 
 #' @param ownershipVerificationCertificateArn The ARN of the public certificate issued by ACM to validate ownership of
 #' your custom domain. Only required when configuring mutual TLS and using
@@ -339,11 +342,14 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #' @param policy A stringified JSON policy document that applies to the `execute-api`
 #' service for this DomainName regardless of the caller and Method
 #' configuration. Supported only for private custom domain names.
+#' @param routingMode The routing mode for this domain name. The routing mode determines how
+#' API Gateway sends traffic from your custom domain name to your private
+#' APIs.
 #'
 #' @keywords internal
 #'
 #' @rdname apigateway_create_domain_name
-apigateway_create_domain_name <- function(domainName, certificateName = NULL, certificateBody = NULL, certificatePrivateKey = NULL, certificateChain = NULL, certificateArn = NULL, regionalCertificateName = NULL, regionalCertificateArn = NULL, endpointConfiguration = NULL, tags = NULL, securityPolicy = NULL, mutualTlsAuthentication = NULL, ownershipVerificationCertificateArn = NULL, policy = NULL) {
+apigateway_create_domain_name <- function(domainName, certificateName = NULL, certificateBody = NULL, certificatePrivateKey = NULL, certificateChain = NULL, certificateArn = NULL, regionalCertificateName = NULL, regionalCertificateArn = NULL, endpointConfiguration = NULL, tags = NULL, securityPolicy = NULL, endpointAccessMode = NULL, mutualTlsAuthentication = NULL, ownershipVerificationCertificateArn = NULL, policy = NULL, routingMode = NULL) {
   op <- new_operation(
     name = "CreateDomainName",
     http_method = "POST",
@@ -352,7 +358,7 @@ apigateway_create_domain_name <- function(domainName, certificateName = NULL, ce
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .apigateway$create_domain_name_input(domainName = domainName, certificateName = certificateName, certificateBody = certificateBody, certificatePrivateKey = certificatePrivateKey, certificateChain = certificateChain, certificateArn = certificateArn, regionalCertificateName = regionalCertificateName, regionalCertificateArn = regionalCertificateArn, endpointConfiguration = endpointConfiguration, tags = tags, securityPolicy = securityPolicy, mutualTlsAuthentication = mutualTlsAuthentication, ownershipVerificationCertificateArn = ownershipVerificationCertificateArn, policy = policy)
+  input <- .apigateway$create_domain_name_input(domainName = domainName, certificateName = certificateName, certificateBody = certificateBody, certificatePrivateKey = certificatePrivateKey, certificateChain = certificateChain, certificateArn = certificateArn, regionalCertificateName = regionalCertificateName, regionalCertificateArn = regionalCertificateArn, endpointConfiguration = endpointConfiguration, tags = tags, securityPolicy = securityPolicy, endpointAccessMode = endpointAccessMode, mutualTlsAuthentication = mutualTlsAuthentication, ownershipVerificationCertificateArn = ownershipVerificationCertificateArn, policy = policy, routingMode = routingMode)
   output <- .apigateway$create_domain_name_output()
   config <- get_config()
   svc <- .apigateway$service(config, op)
@@ -540,11 +546,15 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 #' default `https://{api_id}.execute-api.{region}.amazonaws.com` endpoint.
 #' To require that clients use a custom domain name to invoke your API,
 #' disable the default endpoint
+#' @param securityPolicy The Transport Layer Security (TLS) version + cipher suite for this
+#' RestApi.
+#' @param endpointAccessMode The endpoint access mode of the RestApi. Only available for RestApis
+#' that use security policies that start with `SecurityPolicy_`.
 #'
 #' @keywords internal
 #'
 #' @rdname apigateway_create_rest_api
-apigateway_create_rest_api <- function(name, description = NULL, version = NULL, cloneFrom = NULL, binaryMediaTypes = NULL, minimumCompressionSize = NULL, apiKeySource = NULL, endpointConfiguration = NULL, policy = NULL, tags = NULL, disableExecuteApiEndpoint = NULL) {
+apigateway_create_rest_api <- function(name, description = NULL, version = NULL, cloneFrom = NULL, binaryMediaTypes = NULL, minimumCompressionSize = NULL, apiKeySource = NULL, endpointConfiguration = NULL, policy = NULL, tags = NULL, disableExecuteApiEndpoint = NULL, securityPolicy = NULL, endpointAccessMode = NULL) {
   op <- new_operation(
     name = "CreateRestApi",
     http_method = "POST",
@@ -553,7 +563,7 @@ apigateway_create_rest_api <- function(name, description = NULL, version = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .apigateway$create_rest_api_input(name = name, description = description, version = version, cloneFrom = cloneFrom, binaryMediaTypes = binaryMediaTypes, minimumCompressionSize = minimumCompressionSize, apiKeySource = apiKeySource, endpointConfiguration = endpointConfiguration, policy = policy, tags = tags, disableExecuteApiEndpoint = disableExecuteApiEndpoint)
+  input <- .apigateway$create_rest_api_input(name = name, description = description, version = version, cloneFrom = cloneFrom, binaryMediaTypes = binaryMediaTypes, minimumCompressionSize = minimumCompressionSize, apiKeySource = apiKeySource, endpointConfiguration = endpointConfiguration, policy = policy, tags = tags, disableExecuteApiEndpoint = disableExecuteApiEndpoint, securityPolicy = securityPolicy, endpointAccessMode = endpointAccessMode)
   output <- .apigateway$create_rest_api_output()
   config <- get_config()
   svc <- .apigateway$service(config, op)
@@ -3406,13 +3416,16 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
 #' modification, provided that the `passthroughBehavior` is configured to
 #' support payload pass-through.
 #' @param timeoutInMillis Custom timeout between 50 and 29,000 milliseconds. The default value is
-#' 29,000 milliseconds or 29 seconds.
+#' 29,000 milliseconds or 29 seconds. You can increase the default value to
+#' longer than 29 seconds for Regional or private APIs only.
 #' @param tlsConfig 
+#' @param responseTransferMode The response transfer mode of the integration.
+#' @param integrationTarget The ALB or NLB listener to send the request to.
 #'
 #' @keywords internal
 #'
 #' @rdname apigateway_put_integration
-apigateway_put_integration <- function(restApiId, resourceId, httpMethod, type, integrationHttpMethod = NULL, uri = NULL, connectionType = NULL, connectionId = NULL, credentials = NULL, requestParameters = NULL, requestTemplates = NULL, passthroughBehavior = NULL, cacheNamespace = NULL, cacheKeyParameters = NULL, contentHandling = NULL, timeoutInMillis = NULL, tlsConfig = NULL) {
+apigateway_put_integration <- function(restApiId, resourceId, httpMethod, type, integrationHttpMethod = NULL, uri = NULL, connectionType = NULL, connectionId = NULL, credentials = NULL, requestParameters = NULL, requestTemplates = NULL, passthroughBehavior = NULL, cacheNamespace = NULL, cacheKeyParameters = NULL, contentHandling = NULL, timeoutInMillis = NULL, tlsConfig = NULL, responseTransferMode = NULL, integrationTarget = NULL) {
   op <- new_operation(
     name = "PutIntegration",
     http_method = "PUT",
@@ -3421,7 +3434,7 @@ apigateway_put_integration <- function(restApiId, resourceId, httpMethod, type, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .apigateway$put_integration_input(restApiId = restApiId, resourceId = resourceId, httpMethod = httpMethod, type = type, integrationHttpMethod = integrationHttpMethod, uri = uri, connectionType = connectionType, connectionId = connectionId, credentials = credentials, requestParameters = requestParameters, requestTemplates = requestTemplates, passthroughBehavior = passthroughBehavior, cacheNamespace = cacheNamespace, cacheKeyParameters = cacheKeyParameters, contentHandling = contentHandling, timeoutInMillis = timeoutInMillis, tlsConfig = tlsConfig)
+  input <- .apigateway$put_integration_input(restApiId = restApiId, resourceId = resourceId, httpMethod = httpMethod, type = type, integrationHttpMethod = integrationHttpMethod, uri = uri, connectionType = connectionType, connectionId = connectionId, credentials = credentials, requestParameters = requestParameters, requestTemplates = requestTemplates, passthroughBehavior = passthroughBehavior, cacheNamespace = cacheNamespace, cacheKeyParameters = cacheKeyParameters, contentHandling = contentHandling, timeoutInMillis = timeoutInMillis, tlsConfig = tlsConfig, responseTransferMode = responseTransferMode, integrationTarget = integrationTarget)
   output <- .apigateway$put_integration_output()
   config <- get_config()
   svc <- .apigateway$service(config, op)

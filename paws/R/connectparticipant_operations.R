@@ -11,6 +11,13 @@ NULL
 #' 
 #' The current supported channel is chat. This API is not supported for
 #' Apple Messages for Business, WhatsApp, or SMS chats.
+#' 
+#' `ConnectionToken` is used for invoking this API instead of
+#' `ParticipantToken`.
+#' 
+#' The Amazon Connect Participant Service APIs do not use [Signature
+#' Version 4
+#' authentication](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #'
 #' @usage
 #' connectparticipant_cancel_participant_authentication(SessionId,
@@ -131,15 +138,25 @@ connectparticipant_complete_attachment_upload <- function(AttachmentIds, ClientT
 #' For security recommendations, see [Amazon Connect Chat security best
 #' practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
 #' 
+#' For WebRTC security recommendations, see [Amazon Connect WebRTC security
+#' best
+#' practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-webrtc-security).
+#' 
 #' `ParticipantToken` is used for invoking this API instead of
 #' `ConnectionToken`.
 #' 
 #' The participant token is valid for the lifetime of the participant –
-#' until they are part of a contact.
+#' until they are part of a contact. For WebRTC participants, if they leave
+#' or are disconnected for 60 seconds, a new participant needs to be
+#' created using the
+#' [CreateParticipant](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateParticipant.html)
+#' API.
 #' 
-#' The response URL for `WEBSOCKET` Type has a connect expiry timeout of
-#' 100s. Clients must manually connect to the returned websocket URL and
-#' subscribe to the desired topic.
+#' **For `WEBSOCKET` Type**:
+#' 
+#' The response URL for has a connect expiry timeout of 100s. Clients must
+#' manually connect to the returned websocket URL and subscribe to the
+#' desired topic.
 #' 
 #' For chat, you need to publish the following on the established websocket
 #' connection:
@@ -150,6 +167,22 @@ connectparticipant_complete_attachment_upload <- function(AttachmentIds, ClientT
 #' parameter, clients need to call this API again to obtain a new websocket
 #' URL and perform the same steps as before.
 #' 
+#' The expiry time for the connection token is different than the
+#' `ChatDurationInMinutes`. Expiry time for the connection token is 1 day.
+#' 
+#' **For `WEBRTC_CONNECTION` Type**:
+#' 
+#' The response includes connection data required for the client
+#' application to join the call using the Amazon Chime SDK client
+#' libraries. The WebRTCConnection response contains Meeting and Attendee
+#' information needed to establish the media connection.
+#' 
+#' The attendee join token in WebRTCConnection response is valid for the
+#' lifetime of the participant in the call. If a participant leaves or is
+#' disconnected for 60 seconds, their participant credentials will no
+#' longer be valid, and a new participant will need to be created to rejoin
+#' the call.
+#' 
 #' **Message streaming support**: This API can also be used together with
 #' the
 #' [StartContactStreaming](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartContactStreaming.html)
@@ -159,9 +192,20 @@ connectparticipant_complete_attachment_upload <- function(AttachmentIds, ClientT
 #' streaming](https://docs.aws.amazon.com/connect/latest/adminguide/chat-message-streaming.html)
 #' in the *Amazon Connect Administrator Guide*.
 #' 
+#' **Multi-user web, in-app, video calling support**:
+#' 
+#' For WebRTC calls, this API is used in conjunction with the
+#' CreateParticipant API to enable multi-party calling. The
+#' StartWebRTCContact API creates the initial contact and routes it to an
+#' agent, while CreateParticipant adds additional participants to the
+#' ongoing call. For more information about multi-party WebRTC calls, see
+#' [Enable multi-user web, in-app, and video
+#' calling](https://docs.aws.amazon.com/connect/latest/adminguide/enable-multiuser-inapp.html)
+#' in the *Amazon Connect Administrator Guide*.
+#' 
 #' **Feature specifications**: For information about feature
 #' specifications, such as the allowed number of open websocket connections
-#' per participant, see [Feature
+#' per participant or maximum number of WebRTC participants, see [Feature
 #' specifications](https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#feature-limits)
 #' in the *Amazon Connect Administrator Guide*.
 #' 
@@ -196,6 +240,26 @@ connectparticipant_complete_attachment_upload <- function(AttachmentIds, ClientT
 #'   ConnectionCredentials = list(
 #'     ConnectionToken = "string",
 #'     Expiry = "string"
+#'   ),
+#'   WebRTCConnection = list(
+#'     Attendee = list(
+#'       AttendeeId = "string",
+#'       JoinToken = "string"
+#'     ),
+#'     Meeting = list(
+#'       MediaPlacement = list(
+#'         AudioHostUrl = "string",
+#'         AudioFallbackUrl = "string",
+#'         SignalingUrl = "string",
+#'         EventIngestionUrl = "string"
+#'       ),
+#'       MeetingFeatures = list(
+#'         Audio = list(
+#'           EchoReduction = "AVAILABLE"|"UNAVAILABLE"
+#'         )
+#'       ),
+#'       MeetingId = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -204,7 +268,7 @@ connectparticipant_complete_attachment_upload <- function(AttachmentIds, ClientT
 #' ```
 #' svc$create_participant_connection(
 #'   Type = list(
-#'     "WEBSOCKET"|"CONNECTION_CREDENTIALS"
+#'     "WEBSOCKET"|"CONNECTION_CREDENTIALS"|"WEBRTC_CONNECTION"
 #'   ),
 #'   ParticipantToken = "string",
 #'   ConnectParticipant = TRUE|FALSE
@@ -371,8 +435,13 @@ connectparticipant_disconnect_participant <- function(ClientToken = NULL, Connec
 #' For security recommendations, see [Amazon Connect Chat security best
 #' practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
 #' 
-#' `ConnectionToken` is used for invoking this API instead of
-#' `ParticipantToken`.
+#' -   The participant role `CUSTOM_BOT` is not permitted to access
+#'     attachments customers may upload. An `AccessDeniedException` can
+#'     indicate that the participant may be a CUSTOM_BOT, and it doesn't
+#'     have access to attachments.
+#' 
+#' -   `ConnectionToken` is used for invoking this API instead of
+#'     `ParticipantToken`.
 #' 
 #' The Amazon Connect Participant Service APIs do not use [Signature
 #' Version 4
@@ -446,6 +515,13 @@ connectparticipant_get_attachment <- function(AttachmentId, ConnectionToken, Url
 #' 
 #' -   The current supported channel is chat. This API is not supported for
 #'     Apple Messages for Business, WhatsApp, or SMS chats.
+#' 
+#' `ConnectionToken` is used for invoking this API instead of
+#' `ParticipantToken`.
+#' 
+#' The Amazon Connect Participant Service APIs do not use [Signature
+#' Version 4
+#' authentication](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #'
 #' @usage
 #' connectparticipant_get_authentication_url(SessionId, RedirectUri,
@@ -513,9 +589,11 @@ connectparticipant_get_authentication_url <- function(SessionId, RedirectUri, Co
 #' that has ended, note that chat transcripts contain the following event
 #' content types if the event has occurred during the chat session:
 #' 
-#' -   `application/vnd.amazonaws.connect.event.participant.left`
+#' -   `application/vnd.amazonaws.connect.event.participant.invited`
 #' 
 #' -   `application/vnd.amazonaws.connect.event.participant.joined`
+#' 
+#' -   `application/vnd.amazonaws.connect.event.participant.left`
 #' 
 #' -   `application/vnd.amazonaws.connect.event.chat.ended`
 #' 
@@ -577,7 +655,8 @@ connectparticipant_get_authentication_url <- function(SessionId, RedirectUri, Co
 #'             ReadTimestamp = "string",
 #'             RecipientParticipantId = "string"
 #'           )
-#'         )
+#'         ),
+#'         MessageProcessingStatus = "PROCESSING"|"FAILED"|"REJECTED"
 #'       ),
 #'       RelatedContactId = "string",
 #'       ContactId = "string"
@@ -632,8 +711,8 @@ connectparticipant_get_transcript <- function(ContactId = NULL, MaxResults = NUL
 #'
 #' @description
 #' The `application/vnd.amazonaws.connect.event.connection.acknowledged`
-#' ContentType will no longer be supported starting December 31, 2024. This
-#' event has been migrated to the
+#' ContentType is no longer maintained since December 31, 2024. This event
+#' has been migrated to the
 #' [`create_participant_connection`][connectparticipant_create_participant_connection]
 #' API using the `ConnectParticipant` field.
 #' 
@@ -660,8 +739,8 @@ connectparticipant_get_transcript <- function(ContactId = NULL, MaxResults = NUL
 #' 
 #' -   application/vnd.amazonaws.connect.event.typing
 #' 
-#' -   application/vnd.amazonaws.connect.event.connection.acknowledged
-#'     (will be deprecated on December 31, 2024)
+#' -   application/vnd.amazonaws.connect.event.connection.acknowledged (is
+#'     no longer maintained since December 31, 2024)
 #' 
 #' -   application/vnd.amazonaws.connect.event.message.delivered
 #' 
@@ -741,9 +820,18 @@ connectparticipant_send_event <- function(ContentType, Content = NULL, ClientTok
 #' connectparticipant_send_message(ContentType, Content, ClientToken,
 #'   ConnectionToken)
 #'
-#' @param ContentType &#91;required&#93; The type of the content. Supported types are `text/plain`,
+#' @param ContentType &#91;required&#93; The type of the content. Possible types are `text/plain`,
 #' `text/markdown`, `application/json`, and
 #' `application/vnd.amazonaws.connect.message.interactive.response`.
+#' 
+#' Supported types on the contact are configured through
+#' `SupportedMessagingContentTypes` on
+#' [StartChatContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartChatContact.html)
+#' and
+#' [StartOutboundChatContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartOutboundChatContact.html).
+#' 
+#' For Apple Messages for Business, SMS, and WhatsApp Business Messaging
+#' contacts, only `text/plain` is supported.
 #' @param Content &#91;required&#93; The content of the message.
 #' 
 #' -   For `text/plain` and `text/markdown`, the Length Constraints are
@@ -767,7 +855,10 @@ connectparticipant_send_event <- function(ContentType, Content = NULL, ClientTok
 #' ```
 #' list(
 #'   Id = "string",
-#'   AbsoluteTime = "string"
+#'   AbsoluteTime = "string",
+#'   MessageMetadata = list(
+#'     MessageProcessingStatus = "PROCESSING"|"FAILED"|"REJECTED"
+#'   )
 #' )
 #' ```
 #'

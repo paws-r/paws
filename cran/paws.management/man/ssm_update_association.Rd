@@ -166,7 +166,10 @@ in the \emph{Amazon Web Services Systems Manager User Guide}.}
 \item{TargetLocations}{A location is a combination of Amazon Web Services Regions and Amazon
 Web Services accounts where you want to run the association. Use this
 action to update an association in multiple Regions and multiple
-accounts.}
+accounts.
+
+The \code{IncludeChildOrganizationUnits} parameter is not supported by State
+Manager.}
 
 \item{ScheduleOffset}{Number of days to wait after the scheduled day to run an association.
 For example, if you specified a cron schedule of

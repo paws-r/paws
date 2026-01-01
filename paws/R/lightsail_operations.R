@@ -27,7 +27,7 @@ NULL
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -128,7 +128,7 @@ lightsail_allocate_static_ip <- function(staticIpName) {
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     isTerminal = TRUE|FALSE,
 #'     operationDetails = "string",
@@ -213,7 +213,7 @@ lightsail_attach_certificate_to_distribution <- function(distributionName, certi
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -305,7 +305,7 @@ lightsail_attach_disk <- function(diskName, instanceName, diskPath, autoMounting
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -399,7 +399,7 @@ lightsail_attach_instances_to_load_balancer <- function(loadBalancerName, instan
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -472,7 +472,7 @@ lightsail_attach_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -551,7 +551,7 @@ lightsail_attach_static_ip <- function(staticIpName, instanceName) {
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     isTerminal = TRUE|FALSE,
 #'     operationDetails = "string",
@@ -698,7 +698,7 @@ lightsail_close_instance_public_ports <- function(portInfo, instanceName) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -722,7 +722,7 @@ lightsail_close_instance_public_ports <- function(portInfo, instanceName) {
 #'   restoreDate = "string",
 #'   useLatestRestorableAutoSnapshot = TRUE|FALSE,
 #'   targetSnapshotName = "string",
-#'   sourceRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'   sourceRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #' )
 #' ```
 #'
@@ -812,7 +812,7 @@ lightsail_copy_snapshot <- function(sourceSnapshotName = NULL, sourceResourceNam
 #'     url = "string",
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     name = "string",
 #'     supportCode = "string",
@@ -841,6 +841,26 @@ lightsail_copy_snapshot <- function(sourceSnapshotName = NULL, sourceResourceNam
 #'       enabled = TRUE|FALSE,
 #'       destination = "string",
 #'       prefix = "string"
+#'     ),
+#'     cors = list(
+#'       rules = list(
+#'         list(
+#'           id = "string",
+#'           allowedMethods = list(
+#'             "string"
+#'           ),
+#'           allowedOrigins = list(
+#'             "string"
+#'           ),
+#'           allowedHeaders = list(
+#'             "string"
+#'           ),
+#'           exposeHeaders = list(
+#'             "string"
+#'           ),
+#'           maxAgeSeconds = 123
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   operations = list(
@@ -853,7 +873,7 @@ lightsail_copy_snapshot <- function(sourceSnapshotName = NULL, sourceResourceNam
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -965,7 +985,7 @@ lightsail_create_bucket <- function(bucketName, bundleId, tags = NULL, enableObj
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -1151,7 +1171,7 @@ lightsail_create_bucket_access_key <- function(bucketName) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -1245,7 +1265,7 @@ lightsail_create_certificate <- function(certificateName, domainName, subjectAlt
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -1368,7 +1388,7 @@ lightsail_create_cloud_formation_stack <- function(instances) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -1530,7 +1550,7 @@ lightsail_create_contact_method <- function(protocol, contactEndpoint) {
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'     tags = list(
@@ -1750,7 +1770,7 @@ lightsail_create_container_service <- function(serviceName, power, scale, tags =
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'     tags = list(
@@ -2031,7 +2051,7 @@ lightsail_create_container_service_registry_login <- function() {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -2197,7 +2217,7 @@ lightsail_create_disk <- function(diskName, availabilityZone, sizeInGb, tags = N
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -2338,7 +2358,7 @@ lightsail_create_disk_from_snapshot <- function(diskName, diskSnapshotName = NUL
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -2458,7 +2478,7 @@ lightsail_create_disk_snapshot <- function(diskName = NULL, diskSnapshotName, in
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'     alternativeDomainNames = list(
@@ -2472,7 +2492,7 @@ lightsail_create_disk_snapshot <- function(diskName = NULL, diskSnapshotName, in
 #'     origin = list(
 #'       name = "string",
 #'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1",
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3",
 #'       protocolPolicy = "http-only"|"https-only",
 #'       responseTimeout = 123
 #'     ),
@@ -2530,7 +2550,7 @@ lightsail_create_disk_snapshot <- function(diskName = NULL, diskSnapshotName, in
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     isTerminal = TRUE|FALSE,
 #'     operationDetails = "string",
@@ -2551,7 +2571,7 @@ lightsail_create_disk_snapshot <- function(diskName = NULL, diskSnapshotName, in
 #'   distributionName = "string",
 #'   origin = list(
 #'     name = "string",
-#'     regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1",
+#'     regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3",
 #'     protocolPolicy = "http-only"|"https-only",
 #'     responseTimeout = 123
 #'   ),
@@ -2657,7 +2677,7 @@ lightsail_create_distribution <- function(distributionName, origin, defaultCache
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     isTerminal = TRUE|FALSE,
 #'     operationDetails = "string",
@@ -2746,7 +2766,7 @@ lightsail_create_domain <- function(domainName, tags = NULL) {
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     isTerminal = TRUE|FALSE,
 #'     operationDetails = "string",
@@ -2906,7 +2926,7 @@ lightsail_create_gui_session_access_details <- function(resourceName) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -3034,7 +3054,7 @@ lightsail_create_instance_snapshot <- function(instanceSnapshotName, instanceNam
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -3225,7 +3245,7 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -3347,7 +3367,7 @@ lightsail_create_instances_from_snapshot <- function(instanceNames, attachedDisk
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'     tags = list(
@@ -3369,7 +3389,7 @@ lightsail_create_instances_from_snapshot <- function(instanceNames, attachedDisk
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     isTerminal = TRUE|FALSE,
 #'     operationDetails = "string",
@@ -3428,7 +3448,7 @@ lightsail_create_key_pair <- function(keyPairName, tags = NULL) {
 #' to load balance your application, see [Configure your Lightsail
 #' instances for load
 #' balancing](https://docs.aws.amazon.com/lightsail/latest/userguide/configure-lightsail-instances-for-load-balancing.html).
-#' You can create up to 5 load balancers per AWS Region in your account.
+#' You can create up to 10 load balancers per AWS Region in your account.
 #' 
 #' When you create a load balancer, you can specify a unique name and port
 #' settings. To change additional load balancer settings, use the
@@ -3501,7 +3521,7 @@ lightsail_create_key_pair <- function(keyPairName, tags = NULL) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -3616,7 +3636,7 @@ lightsail_create_load_balancer <- function(loadBalancerName, instancePort, healt
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -3877,7 +3897,7 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -4034,7 +4054,7 @@ lightsail_create_relational_database <- function(relationalDatabaseName, availab
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -4139,7 +4159,7 @@ lightsail_create_relational_database_from_snapshot <- function(relationalDatabas
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -4223,7 +4243,7 @@ lightsail_create_relational_database_snapshot <- function(relationalDatabaseName
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -4300,7 +4320,7 @@ lightsail_delete_alarm <- function(alarmName) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -4397,7 +4417,7 @@ lightsail_delete_auto_snapshot <- function(resourceName, date) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -4481,7 +4501,7 @@ lightsail_delete_bucket <- function(bucketName, forceDelete = NULL) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -4563,7 +4583,7 @@ lightsail_delete_bucket_access_key <- function(bucketName, accessKeyId) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -4648,7 +4668,7 @@ lightsail_delete_certificate <- function(certificateName) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -4831,7 +4851,7 @@ lightsail_delete_container_service <- function(serviceName) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -4917,7 +4937,7 @@ lightsail_delete_disk <- function(diskName, forceDeleteAddOns = NULL) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -4992,7 +5012,7 @@ lightsail_delete_disk_snapshot <- function(diskSnapshotName) {
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     isTerminal = TRUE|FALSE,
 #'     operationDetails = "string",
@@ -5066,7 +5086,7 @@ lightsail_delete_distribution <- function(distributionName = NULL) {
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     isTerminal = TRUE|FALSE,
 #'     operationDetails = "string",
@@ -5142,7 +5162,7 @@ lightsail_delete_domain <- function(domainName) {
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     isTerminal = TRUE|FALSE,
 #'     operationDetails = "string",
@@ -5229,7 +5249,7 @@ lightsail_delete_domain_entry <- function(domainName, domainEntry) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -5307,7 +5327,7 @@ lightsail_delete_instance <- function(instanceName, forceDeleteAddOns = NULL) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -5396,7 +5416,7 @@ lightsail_delete_instance_snapshot <- function(instanceSnapshotName) {
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     isTerminal = TRUE|FALSE,
 #'     operationDetails = "string",
@@ -5479,7 +5499,7 @@ lightsail_delete_key_pair <- function(keyPairName, expectedFingerprint = NULL) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -5560,7 +5580,7 @@ lightsail_delete_known_host_keys <- function(instanceName) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -5647,7 +5667,7 @@ lightsail_delete_load_balancer <- function(loadBalancerName) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -5747,7 +5767,7 @@ lightsail_delete_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -5827,7 +5847,7 @@ lightsail_delete_relational_database <- function(relationalDatabaseName, skipFin
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -5905,7 +5925,7 @@ lightsail_delete_relational_database_snapshot <- function(relationalDatabaseSnap
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     isTerminal = TRUE|FALSE,
 #'     operationDetails = "string",
@@ -5983,7 +6003,7 @@ lightsail_detach_certificate_from_distribution <- function(distributionName) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -6066,7 +6086,7 @@ lightsail_detach_disk <- function(diskName) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -6142,7 +6162,7 @@ lightsail_detach_instances_from_load_balancer <- function(loadBalancerName, inst
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -6216,7 +6236,7 @@ lightsail_detach_static_ip <- function(staticIpName) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -6346,7 +6366,7 @@ lightsail_download_default_key_pair <- function() {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -6448,7 +6468,7 @@ lightsail_enable_add_on <- function(resourceName, addOnRequest) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -6596,7 +6616,7 @@ lightsail_get_active_names <- function(pageToken = NULL) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'       supportCode = "string",
@@ -7109,7 +7129,8 @@ lightsail_get_bucket_metric_data <- function(bucketName, metricName, startTime, 
 #' in the *Amazon Lightsail Developer Guide*.
 #'
 #' @usage
-#' lightsail_get_buckets(bucketName, pageToken, includeConnectedResources)
+#' lightsail_get_buckets(bucketName, pageToken, includeConnectedResources,
+#'   includeCors)
 #'
 #' @param bucketName The name of the bucket for which to return information.
 #' 
@@ -7125,6 +7146,13 @@ lightsail_get_bucket_metric_data <- function(bucketName, metricName, startTime, 
 #' that were given access to the bucket using the
 #' [`set_resource_access_for_bucket`][lightsail_set_resource_access_for_bucket]
 #' action.
+#' @param includeCors A Boolean value that indicates whether to include Lightsail bucket CORS
+#' configuration in the response. For more information, see [Configuring
+#' cross-origin resource sharing
+#' (CORS)](https://docs.aws.amazon.com/lightsail/latest/userguide/configure-cors.html).
+#' 
+#' This parameter is only supported when getting a single bucket with
+#' `bucketName` specified. The default value for this parameter is `False`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7145,7 +7173,7 @@ lightsail_get_bucket_metric_data <- function(bucketName, metricName, startTime, 
 #'       url = "string",
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       name = "string",
 #'       supportCode = "string",
@@ -7174,6 +7202,26 @@ lightsail_get_bucket_metric_data <- function(bucketName, metricName, startTime, 
 #'         enabled = TRUE|FALSE,
 #'         destination = "string",
 #'         prefix = "string"
+#'       ),
+#'       cors = list(
+#'         rules = list(
+#'           list(
+#'             id = "string",
+#'             allowedMethods = list(
+#'               "string"
+#'             ),
+#'             allowedOrigins = list(
+#'               "string"
+#'             ),
+#'             allowedHeaders = list(
+#'               "string"
+#'             ),
+#'             exposeHeaders = list(
+#'               "string"
+#'             ),
+#'             maxAgeSeconds = 123
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -7194,7 +7242,8 @@ lightsail_get_bucket_metric_data <- function(bucketName, metricName, startTime, 
 #' svc$get_buckets(
 #'   bucketName = "string",
 #'   pageToken = "string",
-#'   includeConnectedResources = TRUE|FALSE
+#'   includeConnectedResources = TRUE|FALSE,
+#'   includeCors = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -7203,7 +7252,7 @@ lightsail_get_bucket_metric_data <- function(bucketName, metricName, startTime, 
 #' @rdname lightsail_get_buckets
 #'
 #' @aliases lightsail_get_buckets
-lightsail_get_buckets <- function(bucketName = NULL, pageToken = NULL, includeConnectedResources = NULL) {
+lightsail_get_buckets <- function(bucketName = NULL, pageToken = NULL, includeConnectedResources = NULL, includeCors = NULL) {
   op <- new_operation(
     name = "GetBuckets",
     http_method = "POST",
@@ -7212,7 +7261,7 @@ lightsail_get_buckets <- function(bucketName = NULL, pageToken = NULL, includeCo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lightsail$get_buckets_input(bucketName = bucketName, pageToken = pageToken, includeConnectedResources = includeConnectedResources)
+  input <- .lightsail$get_buckets_input(bucketName = bucketName, pageToken = pageToken, includeConnectedResources = includeConnectedResources, includeCors = includeCors)
   output <- .lightsail$get_buckets_output()
   config <- get_config()
   svc <- .lightsail$service(config, op)
@@ -7516,7 +7565,7 @@ lightsail_get_certificates <- function(certificateStatuses = NULL, includeCertif
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'       state = "Started"|"Succeeded"|"Failed",
@@ -7608,7 +7657,7 @@ lightsail_get_cloud_formation_stack_records <- function(pageToken = NULL) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'       supportCode = "string"
@@ -8216,7 +8265,7 @@ lightsail_get_container_service_powers <- function() {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'       tags = list(
@@ -8487,7 +8536,7 @@ lightsail_get_cost_estimate <- function(resourceName, startTime, endTime) {
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'     tags = list(
@@ -8574,7 +8623,7 @@ lightsail_get_disk <- function(diskName) {
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'     tags = list(
@@ -8657,7 +8706,7 @@ lightsail_get_disk_snapshot <- function(diskSnapshotName) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'       tags = list(
@@ -8742,7 +8791,7 @@ lightsail_get_disk_snapshots <- function(pageToken = NULL) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'       tags = list(
@@ -9159,7 +9208,7 @@ lightsail_get_distribution_metric_data <- function(distributionName, metricName,
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'       alternativeDomainNames = list(
@@ -9173,7 +9222,7 @@ lightsail_get_distribution_metric_data <- function(distributionName, metricName,
 #'       origin = list(
 #'         name = "string",
 #'         resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1",
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3",
 #'         protocolPolicy = "http-only"|"https-only",
 #'         responseTimeout = 123
 #'       ),
@@ -9282,7 +9331,7 @@ lightsail_get_distributions <- function(distributionName = NULL, pageToken = NUL
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'     tags = list(
@@ -9377,7 +9426,7 @@ lightsail_get_domain <- function(domainName) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'       tags = list(
@@ -9481,7 +9530,7 @@ lightsail_get_domains <- function(pageToken = NULL) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'       state = "Started"|"Succeeded"|"Failed",
@@ -9576,7 +9625,7 @@ lightsail_get_export_snapshot_records <- function(pageToken = NULL) {
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'     tags = list(
@@ -9617,7 +9666,7 @@ lightsail_get_export_snapshot_records <- function(pageToken = NULL) {
 #'           ),
 #'           location = list(
 #'             availabilityZone = "string",
-#'             regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'             regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'           ),
 #'           resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'           tags = list(
@@ -10134,7 +10183,7 @@ lightsail_get_instance_port_states <- function(instanceName) {
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'     tags = list(
@@ -10155,7 +10204,7 @@ lightsail_get_instance_port_states <- function(instanceName) {
 #'         ),
 #'         location = list(
 #'           availabilityZone = "string",
-#'           regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'           regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'         ),
 #'         resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'         tags = list(
@@ -10256,7 +10305,7 @@ lightsail_get_instance_snapshot <- function(instanceSnapshotName) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'       tags = list(
@@ -10277,7 +10326,7 @@ lightsail_get_instance_snapshot <- function(instanceSnapshotName) {
 #'           ),
 #'           location = list(
 #'             availabilityZone = "string",
-#'             regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'             regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'           ),
 #'           resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'           tags = list(
@@ -10435,7 +10484,7 @@ lightsail_get_instance_state <- function(instanceName) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'       tags = list(
@@ -10476,7 +10525,7 @@ lightsail_get_instance_state <- function(instanceName) {
 #'             ),
 #'             location = list(
 #'               availabilityZone = "string",
-#'               regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'               regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'             ),
 #'             resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'             tags = list(
@@ -10607,7 +10656,7 @@ lightsail_get_instances <- function(pageToken = NULL) {
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'     tags = list(
@@ -10683,7 +10732,7 @@ lightsail_get_key_pair <- function(keyPairName) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'       tags = list(
@@ -10754,7 +10803,7 @@ lightsail_get_key_pairs <- function(pageToken = NULL, includeDefaultKeyPair = NU
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'     tags = list(
@@ -11084,7 +11133,7 @@ lightsail_get_load_balancer_metric_data <- function(loadBalancerName, metricName
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'       tags = list(
@@ -11281,7 +11330,7 @@ lightsail_get_load_balancer_tls_policies <- function(pageToken = NULL) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'       tags = list(
@@ -11379,7 +11428,7 @@ lightsail_get_load_balancers <- function(pageToken = NULL) {
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     isTerminal = TRUE|FALSE,
 #'     operationDetails = "string",
@@ -11459,7 +11508,7 @@ lightsail_get_operation <- function(operationId) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -11538,7 +11587,7 @@ lightsail_get_operations <- function(pageToken = NULL) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -11615,7 +11664,7 @@ lightsail_get_operations_for_resource <- function(resourceName, pageToken = NULL
 #'       continentCode = "string",
 #'       description = "string",
 #'       displayName = "string",
-#'       name = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1",
+#'       name = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3",
 #'       availabilityZones = list(
 #'         list(
 #'           zoneName = "string",
@@ -11688,7 +11737,7 @@ lightsail_get_regions <- function(includeAvailabilityZones = NULL, includeRelati
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'     tags = list(
@@ -12508,7 +12557,7 @@ lightsail_get_relational_database_parameters <- function(relationalDatabaseName,
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'     tags = list(
@@ -12592,7 +12641,7 @@ lightsail_get_relational_database_snapshot <- function(relationalDatabaseSnapsho
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'       tags = list(
@@ -12676,7 +12725,7 @@ lightsail_get_relational_database_snapshots <- function(pageToken = NULL) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'       tags = list(
@@ -12803,7 +12852,7 @@ lightsail_get_relational_databases <- function(pageToken = NULL) {
 #'         ),
 #'         location = list(
 #'           availabilityZone = "string",
-#'           regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'           regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'         ),
 #'         resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket"
 #'       ),
@@ -12882,7 +12931,7 @@ lightsail_get_setup_history <- function(resourceName, pageToken = NULL) {
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'     ipAddress = "string",
@@ -12952,7 +13001,7 @@ lightsail_get_static_ip <- function(staticIpName) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'       ipAddress = "string",
@@ -13019,7 +13068,7 @@ lightsail_get_static_ips <- function(pageToken = NULL) {
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     isTerminal = TRUE|FALSE,
 #'     operationDetails = "string",
@@ -13147,7 +13196,7 @@ lightsail_is_vpc_peered <- function() {
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     isTerminal = TRUE|FALSE,
 #'     operationDetails = "string",
@@ -13230,7 +13279,7 @@ lightsail_open_instance_public_ports <- function(portInfo, instanceName) {
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     isTerminal = TRUE|FALSE,
 #'     operationDetails = "string",
@@ -13430,7 +13479,7 @@ lightsail_peer_vpc <- function() {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -13532,7 +13581,7 @@ lightsail_put_alarm <- function(alarmName, metricName, monitoredResourceName, co
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     isTerminal = TRUE|FALSE,
 #'     operationDetails = "string",
@@ -13623,7 +13672,7 @@ lightsail_put_instance_public_ports <- function(portInfos, instanceName) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -13700,7 +13749,7 @@ lightsail_reboot_instance <- function(instanceName) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -13861,7 +13910,7 @@ lightsail_register_container_image <- function(serviceName, label, digest) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -13943,7 +13992,7 @@ lightsail_release_static_ip <- function(staticIpName) {
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     isTerminal = TRUE|FALSE,
 #'     operationDetails = "string",
@@ -14030,7 +14079,7 @@ lightsail_reset_distribution_cache <- function(distributionName = NULL) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -14129,7 +14178,7 @@ lightsail_send_contact_method_verification <- function(protocol) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -14220,7 +14269,7 @@ lightsail_set_ip_address_type <- function(resourceType, resourceName, ipAddressT
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -14304,7 +14353,7 @@ lightsail_set_resource_access_for_bucket <- function(resourceName, bucketName, a
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -14384,7 +14433,7 @@ lightsail_setup_instance_https <- function(instanceName, emailAddress, domainNam
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -14467,7 +14516,7 @@ lightsail_start_gui_session <- function(resourceName) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -14545,7 +14594,7 @@ lightsail_start_instance <- function(instanceName) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -14619,7 +14668,7 @@ lightsail_start_relational_database <- function(relationalDatabaseName) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -14707,7 +14756,7 @@ lightsail_stop_gui_session <- function(resourceName) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -14793,7 +14842,7 @@ lightsail_stop_instance <- function(instanceName, force = NULL) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -14878,7 +14927,7 @@ lightsail_stop_relational_database <- function(relationalDatabaseName, relationa
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -14976,7 +15025,7 @@ lightsail_tag_resource <- function(resourceName, resourceArn = NULL, tags) {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -15047,7 +15096,7 @@ lightsail_test_alarm <- function(alarmName, state) {
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     isTerminal = TRUE|FALSE,
 #'     operationDetails = "string",
@@ -15126,7 +15175,7 @@ lightsail_unpeer_vpc <- function() {
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -15188,7 +15237,7 @@ lightsail_untag_resource <- function(resourceName, resourceArn = NULL, tagKeys) 
 #'
 #' @usage
 #' lightsail_update_bucket(bucketName, accessRules, versioning,
-#'   readonlyAccessAccounts, accessLogConfig)
+#'   readonlyAccessAccounts, accessLogConfig, cors)
 #'
 #' @param bucketName &#91;required&#93; The name of the bucket to update.
 #' @param accessRules An object that sets the public accessibility of objects in the specified
@@ -15208,6 +15257,15 @@ lightsail_untag_resource <- function(resourceName, resourceArn = NULL, tagKeys) 
 #' You can give a maximum of 10 Amazon Web Services accounts access to a
 #' bucket.
 #' @param accessLogConfig An object that describes the access log configuration for the bucket.
+#' @param cors Sets the cross-origin resource sharing (CORS) configuration for your
+#' bucket. If a CORS configuration exists, it is replaced with the
+#' specified configuration. For AWS CLI operations, this parameter can also
+#' be passed as a file. For more information, see [Configuring cross-origin
+#' resource sharing
+#' (CORS)](https://docs.aws.amazon.com/lightsail/latest/userguide/configure-cors.html).
+#' 
+#' CORS information is only returned in a response when you update the CORS
+#' policy.
 #'
 #' @return
 #' A list with the following syntax:
@@ -15227,7 +15285,7 @@ lightsail_untag_resource <- function(resourceName, resourceArn = NULL, tagKeys) 
 #'     url = "string",
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     name = "string",
 #'     supportCode = "string",
@@ -15256,6 +15314,26 @@ lightsail_untag_resource <- function(resourceName, resourceArn = NULL, tagKeys) 
 #'       enabled = TRUE|FALSE,
 #'       destination = "string",
 #'       prefix = "string"
+#'     ),
+#'     cors = list(
+#'       rules = list(
+#'         list(
+#'           id = "string",
+#'           allowedMethods = list(
+#'             "string"
+#'           ),
+#'           allowedOrigins = list(
+#'             "string"
+#'           ),
+#'           allowedHeaders = list(
+#'             "string"
+#'           ),
+#'           exposeHeaders = list(
+#'             "string"
+#'           ),
+#'           maxAgeSeconds = 123
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   operations = list(
@@ -15268,7 +15346,7 @@ lightsail_untag_resource <- function(resourceName, resourceArn = NULL, tagKeys) 
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -15300,6 +15378,26 @@ lightsail_untag_resource <- function(resourceName, resourceArn = NULL, tagKeys) 
 #'     enabled = TRUE|FALSE,
 #'     destination = "string",
 #'     prefix = "string"
+#'   ),
+#'   cors = list(
+#'     rules = list(
+#'       list(
+#'         id = "string",
+#'         allowedMethods = list(
+#'           "string"
+#'         ),
+#'         allowedOrigins = list(
+#'           "string"
+#'         ),
+#'         allowedHeaders = list(
+#'           "string"
+#'         ),
+#'         exposeHeaders = list(
+#'           "string"
+#'         ),
+#'         maxAgeSeconds = 123
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -15309,7 +15407,7 @@ lightsail_untag_resource <- function(resourceName, resourceArn = NULL, tagKeys) 
 #' @rdname lightsail_update_bucket
 #'
 #' @aliases lightsail_update_bucket
-lightsail_update_bucket <- function(bucketName, accessRules = NULL, versioning = NULL, readonlyAccessAccounts = NULL, accessLogConfig = NULL) {
+lightsail_update_bucket <- function(bucketName, accessRules = NULL, versioning = NULL, readonlyAccessAccounts = NULL, accessLogConfig = NULL, cors = NULL) {
   op <- new_operation(
     name = "UpdateBucket",
     http_method = "POST",
@@ -15318,7 +15416,7 @@ lightsail_update_bucket <- function(bucketName, accessRules = NULL, versioning =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lightsail$update_bucket_input(bucketName = bucketName, accessRules = accessRules, versioning = versioning, readonlyAccessAccounts = readonlyAccessAccounts, accessLogConfig = accessLogConfig)
+  input <- .lightsail$update_bucket_input(bucketName = bucketName, accessRules = accessRules, versioning = versioning, readonlyAccessAccounts = readonlyAccessAccounts, accessLogConfig = accessLogConfig, cors = cors)
   output <- .lightsail$update_bucket_output()
   config <- get_config()
   svc <- .lightsail$service(config, op)
@@ -15375,7 +15473,7 @@ lightsail_update_bucket <- function(bucketName, accessRules = NULL, versioning =
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -15494,7 +15592,7 @@ lightsail_update_bucket_bundle <- function(bucketName, bundleId) {
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"|"Bucket",
 #'     tags = list(
@@ -15704,7 +15802,7 @@ lightsail_update_container_service <- function(serviceName, power = NULL, scale 
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     isTerminal = TRUE|FALSE,
 #'     operationDetails = "string",
@@ -15725,7 +15823,7 @@ lightsail_update_container_service <- function(serviceName, power = NULL, scale 
 #'   distributionName = "string",
 #'   origin = list(
 #'     name = "string",
-#'     regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1",
+#'     regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3",
 #'     protocolPolicy = "http-only"|"https-only",
 #'     responseTimeout = 123
 #'   ),
@@ -15839,7 +15937,7 @@ lightsail_update_distribution <- function(distributionName, origin = NULL, defau
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     isTerminal = TRUE|FALSE,
 #'     operationDetails = "string",
@@ -15917,7 +16015,7 @@ lightsail_update_distribution_bundle <- function(distributionName = NULL, bundle
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -16036,7 +16134,7 @@ lightsail_update_domain_entry <- function(domainName, domainEntry) {
 #'     ),
 #'     location = list(
 #'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'     ),
 #'     isTerminal = TRUE|FALSE,
 #'     operationDetails = "string",
@@ -16151,7 +16249,7 @@ lightsail_update_instance_metadata_options <- function(instanceName, httpTokens 
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -16317,7 +16415,7 @@ lightsail_update_load_balancer_attribute <- function(loadBalancerName, attribute
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",
@@ -16416,7 +16514,7 @@ lightsail_update_relational_database <- function(relationalDatabaseName, masterU
 #'       ),
 #'       location = list(
 #'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"
+#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"eu-north-1"|"ap-southeast-3"
 #'       ),
 #'       isTerminal = TRUE|FALSE,
 #'       operationDetails = "string",

@@ -5,16 +5,16 @@
 \title{Retrieves a list of identity providers for a specific web portal}
 \usage{
 workspacesweb_list_identity_providers(
-  maxResults = NULL,
   nextToken = NULL,
+  maxResults = NULL,
   portalArn
 )
 }
 \arguments{
-\item{maxResults}{The maximum number of results to be included in the next page.}
-
 \item{nextToken}{The pagination token used to retrieve the next page of results for this
 operation.}
+
+\item{maxResults}{The maximum number of results to be included in the next page.}
 
 \item{portalArn}{[required] The ARN of the web portal.}
 }

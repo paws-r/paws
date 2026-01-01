@@ -3,7 +3,7 @@
 \name{quicksight_update_identity_propagation_config}
 \alias{quicksight_update_identity_propagation_config}
 \title{Adds or updates services and authorized targets to configure what the
-Amazon QuickSight IAM Identity Center application can access}
+Quick Sight IAM Identity Center application can access}
 \usage{
 quicksight_update_identity_propagation_config(
   AwsAccountId,
@@ -22,7 +22,7 @@ targets that you want to add or update.}
 targets for a service.}
 }
 \description{
-Adds or updates services and authorized targets to configure what the Amazon QuickSight IAM Identity Center application can access.
+Adds or updates services and authorized targets to configure what the Quick Sight IAM Identity Center application can access.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_update_identity_propagation_config/} for full documentation.
 }

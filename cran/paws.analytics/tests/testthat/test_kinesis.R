@@ -1,5 +1,9 @@
 svc <- paws::kinesis()
 
+test_that("describe_account_settings", {
+  expect_error(svc$describe_account_settings(), NA)
+})
+
 test_that("describe_limits", {
   expect_error(svc$describe_limits(), NA)
 })

@@ -14,6 +14,7 @@ imagebuilder_import_disk_image(
   executionRole = NULL,
   infrastructureConfigurationArn,
   uri,
+  loggingConfiguration = NULL,
   tags = NULL,
   clientToken
 )
@@ -41,6 +42,8 @@ resource that's used for launching the EC2 instance on which the ISO
 image is built.}
 
 \item{uri}{[required] The \code{uri} of the ISO disk file that's stored in Amazon S3.}
+
+\item{loggingConfiguration}{Define logging configuration for the image build process.}
 
 \item{tags}{Tags that are attached to image resources created from the import.}
 

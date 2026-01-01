@@ -2,8 +2,8 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_create_account_subscription}
 \alias{quicksight_create_account_subscription}
-\title{Creates an Amazon QuickSight account, or subscribes to Amazon QuickSight
-Q}
+\title{Creates an Amazon Quick Sight account, or subscribes to Amazon Quick
+Sight Q}
 \usage{
 quicksight_create_account_subscription(
   Edition = NULL,
@@ -28,7 +28,7 @@ quicksight_create_account_subscription(
 )
 }
 \arguments{
-\item{Edition}{The edition of Amazon QuickSight that you want your account to have.
+\item{Edition}{The edition of Amazon Quick Sight that you want your account to have.
 Currently, you can choose from \code{ENTERPRISE} or \code{ENTERPRISE_AND_Q}.
 
 If you choose \code{ENTERPRISE_AND_Q}, the following parameters are required:
@@ -39,7 +39,7 @@ If you choose \code{ENTERPRISE_AND_Q}, the following parameters are required:
 \item \code{ContactNumber}
 }}
 
-\item{AuthenticationMethod}{[required] The method that you want to use to authenticate your Amazon QuickSight
+\item{AuthenticationMethod}{[required] The method that you want to use to authenticate your Quick Sight
 account.
 
 If you choose \code{ACTIVE_DIRECTORY}, provide an \code{ActiveDirectoryName} and
@@ -49,107 +49,106 @@ If you choose \code{IAM_IDENTITY_CENTER}, provide an \code{AdminGroup} associate
 with your IAM Identity Center account.}
 
 \item{AwsAccountId}{[required] The Amazon Web Services account ID of the account that you're using to
-create your Amazon QuickSight account.}
+create your Quick Sight account.}
 
-\item{AccountName}{[required] The name of your Amazon QuickSight account. This name is unique over all
-of Amazon Web Services, and it appears only when users sign in. You
-can't change \code{AccountName} value after the Amazon QuickSight account is
+\item{AccountName}{[required] The name of your Amazon Quick Sight account. This name is unique over
+all of Amazon Web Services, and it appears only when users sign in. You
+can't change \code{AccountName} value after the Amazon Quick Sight account is
 created.}
 
-\item{NotificationEmail}{[required] The email address that you want Amazon QuickSight to send notifications
-to regarding your Amazon QuickSight account or Amazon QuickSight
-subscription.}
+\item{NotificationEmail}{[required] The email address that you want Quick Sight to send notifications to
+regarding your Quick Sight account or Quick Sight subscription.}
 
 \item{ActiveDirectoryName}{The name of your Active Directory. This field is required if
 \code{ACTIVE_DIRECTORY} is the selected authentication method of the new
-Amazon QuickSight account.}
+Quick Sight account.}
 
-\item{Realm}{The realm of the Active Directory that is associated with your Amazon
-QuickSight account. This field is required if \code{ACTIVE_DIRECTORY} is the
-selected authentication method of the new Amazon QuickSight account.}
+\item{Realm}{The realm of the Active Directory that is associated with your Quick
+Sight account. This field is required if \code{ACTIVE_DIRECTORY} is the
+selected authentication method of the new Quick Sight account.}
 
-\item{DirectoryId}{The ID of the Active Directory that is associated with your Amazon
-QuickSight account.}
+\item{DirectoryId}{The ID of the Active Directory that is associated with your Quick Sight
+account.}
 
 \item{AdminGroup}{The admin group associated with your Active Directory or IAM Identity
 Center account. Either this field or the \code{AdminProGroup} field is
 required if \code{ACTIVE_DIRECTORY} or \code{IAM_IDENTITY_CENTER} is the selected
-authentication method of the new Amazon QuickSight account.
+authentication method of the new Quick Sight account.
 
-For more information about using IAM Identity Center in Amazon
-QuickSight, see \href{https://docs.aws.amazon.com/quicksight/latest/user/sec-identity-management-identity-center.html}{Using IAM Identity Center with Amazon QuickSight Enterprise Edition}
-in the Amazon QuickSight User Guide. For more information about using
-Active Directory in Amazon QuickSight, see \href{https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html}{Using Active Directory with Amazon QuickSight Enterprise Edition}
-in the Amazon QuickSight User Guide.}
+For more information about using IAM Identity Center in Amazon Quick
+Sight, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/setting-up-sso.html}{Using IAM Identity Center with Amazon Quick Sight Enterprise Edition}
+in the Amazon Quick Sight User Guide. For more information about using
+Active Directory in Amazon Quick Sight, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/aws-directory-service.html}{Using Active Directory with Amazon Quick Sight Enterprise Edition}
+in the Amazon Quick Sight User Guide.}
 
 \item{AuthorGroup}{The author group associated with your Active Directory or IAM Identity
 Center account.
 
-For more information about using IAM Identity Center in Amazon
-QuickSight, see \href{https://docs.aws.amazon.com/quicksight/latest/user/sec-identity-management-identity-center.html}{Using IAM Identity Center with Amazon QuickSight Enterprise Edition}
-in the Amazon QuickSight User Guide. For more information about using
-Active Directory in Amazon QuickSight, see \href{https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html}{Using Active Directory with Amazon QuickSight Enterprise Edition}
-in the Amazon QuickSight User Guide.}
+For more information about using IAM Identity Center in Amazon Quick
+Sight, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/setting-up-sso.html}{Using IAM Identity Center with Amazon Quick Sight Enterprise Edition}
+in the Amazon Quick Sight User Guide. For more information about using
+Active Directory in Amazon Quick Sight, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/aws-directory-service.html}{Using Active Directory with Amazon Quick Sight Enterprise Edition}
+in the Amazon Quick Sight User Guide.}
 
 \item{ReaderGroup}{The reader group associated with your Active Directory or IAM Identity
 Center account.
 
-For more information about using IAM Identity Center in Amazon
-QuickSight, see \href{https://docs.aws.amazon.com/quicksight/latest/user/sec-identity-management-identity-center.html}{Using IAM Identity Center with Amazon QuickSight Enterprise Edition}
-in the Amazon QuickSight User Guide. For more information about using
-Active Directory in Amazon QuickSight, see \href{https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html}{Using Active Directory with Amazon QuickSight Enterprise Edition}
-in the Amazon QuickSight User Guide.}
+For more information about using IAM Identity Center in Amazon Quick
+Sight, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/setting-up-sso.html}{Using IAM Identity Center with Amazon Quick Sight Enterprise Edition}
+in the Amazon Quick Sight User Guide. For more information about using
+Active Directory in Amazon Quick Sight, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/aws-directory-service.html}{Using Active Directory with Amazon Quick Sight Enterprise Edition}
+in the Amazon Quick Sight User Guide.}
 
 \item{AdminProGroup}{The admin pro group associated with your Active Directory or IAM
 Identity Center account. Either this field or the \code{AdminGroup} field is
 required if \code{ACTIVE_DIRECTORY} or \code{IAM_IDENTITY_CENTER} is the selected
-authentication method of the new Amazon QuickSight account.
+authentication method of the new Quick Sight account.
 
-For more information about using IAM Identity Center in Amazon
-QuickSight, see \href{https://docs.aws.amazon.com/quicksight/latest/user/sec-identity-management-identity-center.html}{Using IAM Identity Center with Amazon QuickSight Enterprise Edition}
-in the Amazon QuickSight User Guide. For more information about using
-Active Directory in Amazon QuickSight, see \href{https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html}{Using Active Directory with Amazon QuickSight Enterprise Edition}
-in the Amazon QuickSight User Guide.}
+For more information about using IAM Identity Center in Amazon Quick
+Sight, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/setting-up-sso.html}{Using IAM Identity Center with Amazon Quick Sight Enterprise Edition}
+in the Amazon Quick Sight User Guide. For more information about using
+Active Directory in Amazon Quick Sight, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/aws-directory-service.html}{Using Active Directory with Amazon Quick Sight Enterprise Edition}
+in the Amazon Quick Sight User Guide.}
 
 \item{AuthorProGroup}{The author pro group associated with your Active Directory or IAM
 Identity Center account.
 
-For more information about using IAM Identity Center in Amazon
-QuickSight, see \href{https://docs.aws.amazon.com/quicksight/latest/user/sec-identity-management-identity-center.html}{Using IAM Identity Center with Amazon QuickSight Enterprise Edition}
-in the Amazon QuickSight User Guide. For more information about using
-Active Directory in Amazon QuickSight, see \href{https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html}{Using Active Directory with Amazon QuickSight Enterprise Edition}
-in the Amazon QuickSight User Guide.}
+For more information about using IAM Identity Center in Amazon Quick
+Sight, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/setting-up-sso.html}{Using IAM Identity Center with Amazon Quick Sight Enterprise Edition}
+in the Amazon Quick Sight User Guide. For more information about using
+Active Directory in Amazon Quick Sight, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/aws-directory-service.html}{Using Active Directory with Amazon Quick Sight Enterprise Edition}
+in the Amazon Quick Sight User Guide.}
 
 \item{ReaderProGroup}{The reader pro group associated with your Active Directory or IAM
 Identity Center account.
 
-For more information about using IAM Identity Center in Amazon
-QuickSight, see \href{https://docs.aws.amazon.com/quicksight/latest/user/sec-identity-management-identity-center.html}{Using IAM Identity Center with Amazon QuickSight Enterprise Edition}
-in the Amazon QuickSight User Guide. For more information about using
-Active Directory in Amazon QuickSight, see \href{https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html}{Using Active Directory with Amazon QuickSight Enterprise Edition}
-in the Amazon QuickSight User Guide.}
+For more information about using IAM Identity Center in Amazon Quick
+Sight, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/setting-up-sso.html}{Using IAM Identity Center with Amazon Quick Sight Enterprise Edition}
+in the Amazon Quick Sight User Guide. For more information about using
+Active Directory in Amazon Quick Sight, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/aws-directory-service.html}{Using Active Directory with Amazon Quick Sight Enterprise Edition}
+in the Amazon Quick Sight User Guide.}
 
-\item{FirstName}{The first name of the author of the Amazon QuickSight account to use for
-future communications. This field is required if \code{ENTERPPRISE_AND_Q} is
-the selected edition of the new Amazon QuickSight account.}
-
-\item{LastName}{The last name of the author of the Amazon QuickSight account to use for
-future communications. This field is required if \code{ENTERPPRISE_AND_Q} is
-the selected edition of the new Amazon QuickSight account.}
-
-\item{EmailAddress}{The email address of the author of the Amazon QuickSight account to use
+\item{FirstName}{The first name of the author of the Amazon Quick Sight account to use
 for future communications. This field is required if \code{ENTERPPRISE_AND_Q}
-is the selected edition of the new Amazon QuickSight account.}
+is the selected edition of the new Amazon Quick Sight account.}
 
-\item{ContactNumber}{A 10-digit phone number for the author of the Amazon QuickSight account
+\item{LastName}{The last name of the author of the Amazon Quick Sight account to use for
+future communications. This field is required if \code{ENTERPPRISE_AND_Q} is
+the selected edition of the new Amazon Quick Sight account.}
+
+\item{EmailAddress}{The email address of the author of the Amazon Quick Sight account to use
+for future communications. This field is required if \code{ENTERPPRISE_AND_Q}
+is the selected edition of the new Amazon Quick Sight account.}
+
+\item{ContactNumber}{A 10-digit phone number for the author of the Amazon Quick Sight account
 to use for future communications. This field is required if
-\code{ENTERPPRISE_AND_Q} is the selected edition of the new Amazon QuickSight
-account.}
+\code{ENTERPPRISE_AND_Q} is the selected edition of the new Amazon Quick
+Sight account.}
 
 \item{IAMIdentityCenterInstanceArn}{The Amazon Resource Name (ARN) for the IAM Identity Center instance.}
 }
 \description{
-Creates an Amazon QuickSight account, or subscribes to Amazon QuickSight Q.
+Creates an Amazon Quick Sight account, or subscribes to Amazon Quick Sight Q.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_create_account_subscription/} for full documentation.
 }

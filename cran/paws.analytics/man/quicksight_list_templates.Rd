@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_list_templates}
 \alias{quicksight_list_templates}
-\title{Lists all the templates in the current Amazon QuickSight account}
+\title{Lists all the templates in the current Amazon Quick Sight account}
 \usage{
 quicksight_list_templates(AwsAccountId, NextToken = NULL, MaxResults = NULL)
 }
@@ -16,7 +16,7 @@ results.}
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
 \description{
-Lists all the templates in the current Amazon QuickSight account.
+Lists all the templates in the current Amazon Quick Sight account.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_list_templates/} for full documentation.
 }

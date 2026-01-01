@@ -104,24 +104,27 @@ To learn more about OpenSearch Serverless, see \href{https://docs.aws.amazon.com
 \section{Operations}{
 
 \tabular{ll}{
-\link[=opensearchserviceserverless_batch_get_collection]{batch_get_collection} \tab Returns attributes for one or more collections, including the collection endpoint and the OpenSearch Dashboards endpoint\cr
+\link[=opensearchserviceserverless_batch_get_collection]{batch_get_collection} \tab Returns attributes for one or more collections, including the collection endpoint, the OpenSearch Dashboards endpoint, and FIPS-compliant endpoints\cr
 \link[=opensearchserviceserverless_batch_get_effective_lifecycle_policy]{batch_get_effective_lifecycle_policy} \tab Returns a list of successful and failed retrievals for the OpenSearch Serverless indexes\cr
 \link[=opensearchserviceserverless_batch_get_lifecycle_policy]{batch_get_lifecycle_policy} \tab Returns one or more configured OpenSearch Serverless lifecycle policies\cr
 \link[=opensearchserviceserverless_batch_get_vpc_endpoint]{batch_get_vpc_endpoint} \tab Returns attributes for one or more VPC endpoints associated with the current account\cr
 \link[=opensearchserviceserverless_create_access_policy]{create_access_policy} \tab Creates a data access policy for OpenSearch Serverless\cr
 \link[=opensearchserviceserverless_create_collection]{create_collection} \tab Creates a new OpenSearch Serverless collection\cr
+\link[=opensearchserviceserverless_create_index]{create_index} \tab Creates an index within an OpenSearch Serverless collection\cr
 \link[=opensearchserviceserverless_create_lifecycle_policy]{create_lifecycle_policy} \tab Creates a lifecyle policy to be applied to OpenSearch Serverless indexes\cr
 \link[=opensearchserviceserverless_create_security_config]{create_security_config} \tab Specifies a security configuration for OpenSearch Serverless\cr
 \link[=opensearchserviceserverless_create_security_policy]{create_security_policy} \tab Creates a security policy to be used by one or more OpenSearch Serverless collections\cr
 \link[=opensearchserviceserverless_create_vpc_endpoint]{create_vpc_endpoint} \tab Creates an OpenSearch Serverless-managed interface VPC endpoint\cr
 \link[=opensearchserviceserverless_delete_access_policy]{delete_access_policy} \tab Deletes an OpenSearch Serverless access policy\cr
 \link[=opensearchserviceserverless_delete_collection]{delete_collection} \tab Deletes an OpenSearch Serverless collection\cr
+\link[=opensearchserviceserverless_delete_index]{delete_index} \tab Deletes an index from an OpenSearch Serverless collection\cr
 \link[=opensearchserviceserverless_delete_lifecycle_policy]{delete_lifecycle_policy} \tab Deletes an OpenSearch Serverless lifecycle policy\cr
 \link[=opensearchserviceserverless_delete_security_config]{delete_security_config} \tab Deletes a security configuration for OpenSearch Serverless\cr
 \link[=opensearchserviceserverless_delete_security_policy]{delete_security_policy} \tab Deletes an OpenSearch Serverless security policy\cr
 \link[=opensearchserviceserverless_delete_vpc_endpoint]{delete_vpc_endpoint} \tab Deletes an OpenSearch Serverless-managed interface endpoint\cr
 \link[=opensearchserviceserverless_get_access_policy]{get_access_policy} \tab Returns an OpenSearch Serverless access policy\cr
 \link[=opensearchserviceserverless_get_account_settings]{get_account_settings} \tab Returns account-level settings related to OpenSearch Serverless\cr
+\link[=opensearchserviceserverless_get_index]{get_index} \tab Retrieves information about an index in an OpenSearch Serverless collection, including its schema definition\cr
 \link[=opensearchserviceserverless_get_policies_stats]{get_policies_stats} \tab Returns statistical information about your OpenSearch Serverless access policies, security configurations, and security policies\cr
 \link[=opensearchserviceserverless_get_security_config]{get_security_config} \tab Returns information about an OpenSearch Serverless security configuration\cr
 \link[=opensearchserviceserverless_get_security_policy]{get_security_policy} \tab Returns information about a configured OpenSearch Serverless security policy\cr
@@ -137,6 +140,7 @@ To learn more about OpenSearch Serverless, see \href{https://docs.aws.amazon.com
 \link[=opensearchserviceserverless_update_access_policy]{update_access_policy} \tab Updates an OpenSearch Serverless access policy\cr
 \link[=opensearchserviceserverless_update_account_settings]{update_account_settings} \tab Update the OpenSearch Serverless settings for the current Amazon Web Services account\cr
 \link[=opensearchserviceserverless_update_collection]{update_collection} \tab Updates an OpenSearch Serverless collection\cr
+\link[=opensearchserviceserverless_update_index]{update_index} \tab Updates an existing index in an OpenSearch Serverless collection\cr
 \link[=opensearchserviceserverless_update_lifecycle_policy]{update_lifecycle_policy} \tab Updates an OpenSearch Serverless access policy\cr
 \link[=opensearchserviceserverless_update_security_config]{update_security_config} \tab Updates a security configuration for OpenSearch Serverless\cr
 \link[=opensearchserviceserverless_update_security_policy]{update_security_policy} \tab Updates an OpenSearch Serverless security policy\cr

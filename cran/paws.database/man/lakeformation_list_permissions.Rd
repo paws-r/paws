@@ -36,7 +36,12 @@ list.}
 
 \item{MaxResults}{The maximum number of results to return.}
 
-\item{IncludeRelated}{Indicates that related permissions should be included in the results.}
+\item{IncludeRelated}{Indicates that related permissions should be included in the results
+when listing permissions on a table resource.
+
+Set the field to \code{TRUE} to show the cell filters on a table resource.
+Default is \code{FALSE}. The Principal parameter must not be specified when
+requesting cell filter information.}
 }
 \description{
 Returns a list of the principal permissions on the resource, filtered by the permissions of the caller. For example, if you are granted an ALTER permission, you are able to see only the principal permissions for ALTER.

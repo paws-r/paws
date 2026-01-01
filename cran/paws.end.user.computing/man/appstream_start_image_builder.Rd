@@ -9,8 +9,9 @@ appstream_start_image_builder(Name, AppstreamAgentVersion = NULL)
 \arguments{
 \item{Name}{[required] The name of the image builder.}
 
-\item{AppstreamAgentVersion}{The version of the AppStream 2.0 agent to use for this image builder. To
-use the latest version of the AppStream 2.0 agent, specify [LATEST].}
+\item{AppstreamAgentVersion}{The version of the WorkSpaces Applications agent to use for this image
+builder. To use the latest version of the WorkSpaces Applications agent,
+specify [LATEST].}
 }
 \description{
 Starts the specified image builder.

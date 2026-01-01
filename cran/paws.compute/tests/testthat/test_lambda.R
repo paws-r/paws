@@ -1,5 +1,9 @@
 svc <- paws::lambda()
 
+test_that("list_capacity_providers", {
+  expect_error(svc$list_capacity_providers(), NA)
+})
+
 test_that("list_code_signing_configs", {
   expect_error(svc$list_code_signing_configs(), NA)
 })

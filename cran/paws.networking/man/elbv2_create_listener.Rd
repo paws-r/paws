@@ -23,9 +23,9 @@ elbv2_create_listener(
 \item{Protocol}{The protocol for connections from clients to the load balancer. For
 Application Load Balancers, the supported protocols are HTTP and HTTPS.
 For Network Load Balancers, the supported protocols are TCP, TLS, UDP,
-and TCP_UDP. You can’t specify the UDP or TCP_UDP protocol if dual-stack
-mode is enabled. You can't specify a protocol for a Gateway Load
-Balancer.}
+TCP_UDP, QUIC, and TCP_QUIC. You can’t specify the UDP, TCP_UDP, QUIC,
+or TCP_QUIC protocol if dual-stack mode is enabled. You can't specify a
+protocol for a Gateway Load Balancer.}
 
 \item{Port}{The port on which the load balancer is listening. You can't specify a
 port for a Gateway Load Balancer.}
@@ -33,8 +33,8 @@ port for a Gateway Load Balancer.}
 \item{SslPolicy}{[HTTPS and TLS listeners] The security policy that defines which
 protocols and ciphers are supported.
 
-For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies}{Security policies}
-in the \emph{Application Load Balancers Guide} and \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/#describe-ssl-policies}{Security policies}
+For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/describe-ssl-policies.html}{Security policies}
+in the \emph{Application Load Balancers Guide} and \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/describe-ssl-policies.html}{Security policies}
 in the \emph{Network Load Balancers Guide}.}
 
 \item{Certificates}{[HTTPS and TLS listeners] The default certificate for the listener.
@@ -54,12 +54,12 @@ possible values:
 \item \code{None}
 }
 
-For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/#alpn-policies}{ALPN policies}
+For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html#alpn-policies}{ALPN policies}
 in the \emph{Network Load Balancers Guide}.}
 
 \item{Tags}{The tags to assign to the listener.}
 
-\item{MutualAuthentication}{The mutual authentication configuration information.}
+\item{MutualAuthentication}{[HTTPS listeners] The mutual authentication configuration information.}
 }
 \description{
 Creates a listener for the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer.

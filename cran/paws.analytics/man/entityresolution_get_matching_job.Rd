@@ -2,7 +2,7 @@
 % Please edit documentation in R/entityresolution_operations.R
 \name{entityresolution_get_matching_job}
 \alias{entityresolution_get_matching_job}
-\title{Gets the status, metrics, and errors (if there are any) that are
+\title{Returns the status, metrics, and errors (if there are any) that are
 associated with a job}
 \usage{
 entityresolution_get_matching_job(workflowName, jobId)
@@ -13,7 +13,7 @@ entityresolution_get_matching_job(workflowName, jobId)
 \item{jobId}{[required] The ID of the job.}
 }
 \description{
-Gets the status, metrics, and errors (if there are any) that are associated with a job.
+Returns the status, metrics, and errors (if there are any) that are associated with a job.
 
 See \url{https://www.paws-r-sdk.com/docs/entityresolution_get_matching_job/} for full documentation.
 }

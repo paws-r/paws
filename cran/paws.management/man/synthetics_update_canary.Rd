@@ -18,7 +18,9 @@ synthetics_update_canary(
   ArtifactS3Location = NULL,
   ArtifactConfig = NULL,
   ProvisionedResourceCleanup = NULL,
-  DryRunId = NULL
+  DryRunId = NULL,
+  VisualReferences = NULL,
+  BrowserConfigs = NULL
 )
 }
 \arguments{
@@ -28,8 +30,8 @@ your canaries, use \code{\link[=synthetics_describe_canaries]{describe_canaries}
 You cannot change the name of a canary that has already been created.}
 
 \item{Code}{A structure that includes the entry point from which the canary should
-start running your script. If the script is stored in an S3 bucket, the
-bucket name, key, and version are also included.}
+start running your script. If the script is stored in an Amazon S3
+bucket, the bucket name, key, and version are also included.}
 
 \item{ExecutionRoleArn}{The ARN of the IAM role to be used to run the canary. This role must
 already exist, and must include \code{lambda.amazonaws.com} as a principal in
@@ -87,7 +89,8 @@ and \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/}{Visua
 
 \item{ArtifactS3Location}{The location in Amazon S3 where Synthetics stores artifacts from the
 test runs of this canary. Artifacts include the log file, screenshots,
-and HAR files. The name of the S3 bucket can't include a period (.).}
+and HAR files. The name of the Amazon S3 bucket can't include a period
+(.).}
 
 \item{ArtifactConfig}{A structure that contains the configuration for canary artifacts,
 including the encryption-at-rest settings for artifacts that the canary
@@ -107,6 +110,36 @@ DryRun associated with the DryRunId.
 When you use the \code{dryRunId} field when updating a canary, the only other
 field you can provide is the \code{Schedule}. Adding any other field will
 thrown an exception.}
+
+\item{VisualReferences}{A list of visual reference configurations for the canary, one for each
+browser type that the canary is configured to run on. Visual references
+are used for visual monitoring comparisons.
+
+\code{syn-nodejs-puppeteer-11.0} and above, and \code{syn-nodejs-playwright-3.0}
+and above, only supports \code{visualReferences}. \code{visualReference} field is
+not supported.
+
+Versions older than \code{syn-nodejs-puppeteer-11.0} supports both
+\code{visualReference} and \code{visualReferences} for backward compatibility. It
+is recommended to use \code{visualReferences} for consistency and future
+compatibility.
+
+For multibrowser visual monitoring, you can update the baseline for all
+configured browsers in a single update call by specifying a list of
+VisualReference objects, one per browser. Each VisualReference object
+maps to a specific browser configuration, allowing you to manage visual
+baselines for multiple browsers simultaneously.
+
+For single configuration canaries using Chrome browser (default
+browser), use visualReferences for \code{syn-nodejs-puppeteer-11.0} and
+above, and \code{syn-nodejs-playwright-3.0} and above canaries. The
+browserType in the visualReference object is not mandatory.}
+
+\item{BrowserConfigs}{A structure that specifies the browser type to use for a canary run.
+CloudWatch Synthetics supports running canaries on both \code{CHROME} and
+\code{FIREFOX} browsers.
+
+If not specified, \code{browserConfigs} defaults to Chrome.}
 }
 \description{
 Updates the configuration of a canary that has already been created.

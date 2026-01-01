@@ -17,6 +17,7 @@ synthetics_create_canary(
   VpcConfig = NULL,
   ResourcesToReplicateTags = NULL,
   ProvisionedResourceCleanup = NULL,
+  BrowserConfigs = NULL,
   Tags = NULL,
   ArtifactConfig = NULL
 )
@@ -30,12 +31,13 @@ The canary name makes up part of the canary ARN, and the ARN is included
 in outbound calls over the internet. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/servicelens_canaries_security.html}{Security Considerations for Synthetics Canaries}.}
 
 \item{Code}{[required] A structure that includes the entry point from which the canary should
-start running your script. If the script is stored in an S3 bucket, the
-bucket name, key, and version are also included.}
+start running your script. If the script is stored in an Amazon S3
+bucket, the bucket name, key, and version are also included.}
 
 \item{ArtifactS3Location}{[required] The location in Amazon S3 where Synthetics stores artifacts from the
 test runs of this canary. Artifacts include the log file, screenshots,
-and HAR files. The name of the S3 bucket can't include a period (.).}
+and HAR files. The name of the Amazon S3 bucket can't include a period
+(.).}
 
 \item{ExecutionRoleArn}{[required] The ARN of the IAM role to be used to run the canary. This role must
 already exist, and must include \code{lambda.amazonaws.com} as a principal in
@@ -101,6 +103,14 @@ If the value of this parameter is \code{OFF}, then the value of the
 \code{DeleteLambda} parameter of the
 \code{\link[=synthetics_delete_canary]{delete_canary}} operation determines whether
 the Lambda functions and layers will be deleted.}
+
+\item{BrowserConfigs}{CloudWatch Synthetics now supports multibrowser canaries for
+\code{syn-nodejs-puppeteer-11.0} and \code{syn-nodejs-playwright-3.0} runtimes.
+This feature allows you to run your canaries on both Firefox and Chrome
+browsers. To create a multibrowser canary, you need to specify the
+BrowserConfigs with a list of browsers you want to use.
+
+If not specified, \code{browserConfigs} defaults to Chrome.}
 
 \item{Tags}{A list of key-value pairs to associate with the canary. You can
 associate as many as 50 tags with a canary.

@@ -21,8 +21,11 @@ billingconductor_create_pricing_rule(
 )
 }
 \arguments{
-\item{ClientToken}{The token that's needed to support idempotency. Idempotency isn't
-currently supported, but will be implemented in a future update.}
+\item{ClientToken}{A unique, case-sensitive identifier that you specify to ensure
+idempotency of the request. Idempotency ensures that an API request
+completes no more than one time. With an idempotent request, if the
+original request completes successfully, any subsequent retries complete
+successfully without performing any further actions.}
 
 \item{Name}{[required] The pricing rule name. The names must be unique to each pricing rule.}
 
@@ -33,7 +36,8 @@ it's service-specific.}
 
 \item{Type}{[required] The type of pricing rule.}
 
-\item{ModifierPercentage}{A percentage modifier that's applied on the public pricing rates.}
+\item{ModifierPercentage}{A percentage modifier that's applied on the public pricing rates. Your
+entry will be rounded to the nearest 2 decimal places.}
 
 \item{Service}{If the \code{Scope} attribute is set to \code{SERVICE} or \code{SKU}, the attribute
 indicates which service the \code{PricingRule} is applicable for.}
@@ -54,10 +58,7 @@ If the \code{Scope} attribute is set to \code{SKU}, this attribute indicates whi
 usage type the \code{PricingRule} is modifying. For example,
 \code{USW2-BoxUsage:m2.2xlarge} describes
 an\verb{ M2 High Memory Double Extra Large} instance in the US West (Oregon)
-Region.
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{</p>
-}\if{html}{\out{</div>}}}
+Region.}
 
 \item{Operation}{Operation is the specific Amazon Web Services action covered by this
 line item. This describes the specific usage of the line item.

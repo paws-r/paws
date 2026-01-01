@@ -69,7 +69,7 @@ instead of submitting a request over HTTP or HTTPS. These libraries
 provide basic functions that automatically take care of tasks such as
 cryptographically signing your requests, retrying requests, and handling
 error responses, so that it is easier for you to get started. For more
-information about the AWS SDKs, go to \href{https://aws.amazon.com/developer/tools/}{Tools to build on AWS} page, scroll down to the
+information about the AWS SDKs, go to \href{https://builder.aws.com/build/tools}{Tools to build on AWS} page, scroll down to the
 \strong{SDK} section, and choose plus (+) sign to expand the section.
 }
 \section{Service syntax}{

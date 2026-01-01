@@ -106,15 +106,15 @@ NULL
 #' \tabular{ll}{
 #'  \link[=computeoptimizer_delete_recommendation_preferences]{delete_recommendation_preferences} \tab Deletes a recommendation preference, such as enhanced infrastructure metrics\cr
 #'  \link[=computeoptimizer_describe_recommendation_export_jobs]{describe_recommendation_export_jobs} \tab Describes recommendation export jobs created in the last seven days\cr
-#'  \link[=computeoptimizer_export_auto_scaling_group_recommendations]{export_auto_scaling_group_recommendations} \tab Exports optimization recommendations for Auto Scaling groups\cr
+#'  \link[=computeoptimizer_export_auto_scaling_group_recommendations]{export_auto_scaling_group_recommendations} \tab Exports optimization recommendations for Amazon EC2 Auto Scaling groups\cr
 #'  \link[=computeoptimizer_export_ebs_volume_recommendations]{export_ebs_volume_recommendations} \tab Exports optimization recommendations for Amazon EBS volumes\cr
 #'  \link[=computeoptimizer_export_ec2_instance_recommendations]{export_ec2_instance_recommendations} \tab Exports optimization recommendations for Amazon EC2 instances\cr
 #'  \link[=computeoptimizer_export_ecs_service_recommendations]{export_ecs_service_recommendations} \tab Exports optimization recommendations for Amazon ECS services on Fargate\cr
 #'  \link[=computeoptimizer_export_idle_recommendations]{export_idle_recommendations} \tab Export optimization recommendations for your idle resources\cr
 #'  \link[=computeoptimizer_export_lambda_function_recommendations]{export_lambda_function_recommendations} \tab Exports optimization recommendations for Lambda functions\cr
 #'  \link[=computeoptimizer_export_license_recommendations]{export_license_recommendations} \tab Export optimization recommendations for your licenses\cr
-#'  \link[=computeoptimizer_export_rds_database_recommendations]{export_rds_database_recommendations} \tab Export optimization recommendations for your Amazon Relational Database Service (Amazon RDS)\cr
-#'  \link[=computeoptimizer_get_auto_scaling_group_recommendations]{get_auto_scaling_group_recommendations} \tab Returns Auto Scaling group recommendations\cr
+#'  \link[=computeoptimizer_export_rds_database_recommendations]{export_rds_database_recommendations} \tab Export optimization recommendations for your Amazon Aurora and Amazon Relational Database Service (Amazon RDS) databases\cr
+#'  \link[=computeoptimizer_get_auto_scaling_group_recommendations]{get_auto_scaling_group_recommendations} \tab Returns Amazon EC2 Auto Scaling group recommendations\cr
 #'  \link[=computeoptimizer_get_ebs_volume_recommendations]{get_ebs_volume_recommendations} \tab Returns Amazon Elastic Block Store (Amazon EBS) volume recommendations\cr
 #'  \link[=computeoptimizer_get_ec2_instance_recommendations]{get_ec2_instance_recommendations} \tab Returns Amazon EC2 instance recommendations\cr
 #'  \link[=computeoptimizer_get_ec2_recommendation_projected_metrics]{get_ec2_recommendation_projected_metrics} \tab Returns the projected utilization metrics of Amazon EC2 instance recommendations\cr
@@ -126,8 +126,8 @@ NULL
 #'  \link[=computeoptimizer_get_idle_recommendations]{get_idle_recommendations} \tab Returns idle resource recommendations\cr
 #'  \link[=computeoptimizer_get_lambda_function_recommendations]{get_lambda_function_recommendations} \tab Returns Lambda function recommendations\cr
 #'  \link[=computeoptimizer_get_license_recommendations]{get_license_recommendations} \tab Returns license recommendations for Amazon EC2 instances that run on a specific license\cr
-#'  \link[=computeoptimizer_get_rds_database_recommendation_projected_metrics]{get_rds_database_recommendation_projected_metrics} \tab Returns the projected metrics of Amazon RDS recommendations\cr
-#'  \link[=computeoptimizer_get_rds_database_recommendations]{get_rds_database_recommendations} \tab Returns Amazon RDS recommendations\cr
+#'  \link[=computeoptimizer_get_rds_database_recommendation_projected_metrics]{get_rds_database_recommendation_projected_metrics} \tab Returns the projected metrics of Aurora and RDS database recommendations\cr
+#'  \link[=computeoptimizer_get_rds_database_recommendations]{get_rds_database_recommendations} \tab Returns Amazon Aurora and RDS database recommendations\cr
 #'  \link[=computeoptimizer_get_recommendation_preferences]{get_recommendation_preferences} \tab Returns existing recommendation preferences, such as enhanced infrastructure metrics\cr
 #'  \link[=computeoptimizer_get_recommendation_summaries]{get_recommendation_summaries} \tab Returns the optimization findings for an account\cr
 #'  \link[=computeoptimizer_put_recommendation_preferences]{put_recommendation_preferences} \tab Creates a new recommendation preference or updates an existing recommendation preference, such as enhanced infrastructure metrics\cr

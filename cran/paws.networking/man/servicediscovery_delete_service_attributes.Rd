@@ -7,7 +7,11 @@
 servicediscovery_delete_service_attributes(ServiceId, Attributes)
 }
 \arguments{
-\item{ServiceId}{[required] The ID of the service from which the attributes will be deleted.}
+\item{ServiceId}{[required] The ID or Amazon Resource Name (ARN) of the service from which the
+attributes will be deleted. For services created in a namespace shared
+with your Amazon Web Services account, specify the service ARN. For more
+information about shared namespaces, see \href{https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html}{Cross-account Cloud Map namespace sharing}
+in the \emph{Cloud Map Developer Guide}.}
 
 \item{Attributes}{[required] A list of keys corresponding to each attribute that you want to delete.}
 }

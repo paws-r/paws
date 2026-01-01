@@ -89,31 +89,31 @@ NULL
 #' list(
 #'   Errors = list(
 #'     list(
-#'       ErrorCode = "string",
-#'       ErrorMessage = "string",
 #'       MetricDefinition = list(
+#'         Name = "string",
+#'         ValueKey = "string",
+#'         UnitLabel = "string",
 #'         DimensionKeys = list(
 #'           "string"
 #'         ),
 #'         EventPattern = "string",
-#'         Name = "string",
-#'         Namespace = "string",
-#'         UnitLabel = "string",
-#'         ValueKey = "string"
-#'       )
+#'         Namespace = "string"
+#'       ),
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
 #'     )
 #'   ),
 #'   MetricDefinitions = list(
 #'     list(
+#'       MetricDefinitionId = "string",
+#'       Name = "string",
+#'       ValueKey = "string",
+#'       UnitLabel = "string",
 #'       DimensionKeys = list(
 #'         "string"
 #'       ),
 #'       EventPattern = "string",
-#'       MetricDefinitionId = "string",
-#'       Name = "string",
-#'       Namespace = "string",
-#'       UnitLabel = "string",
-#'       ValueKey = "string"
+#'       Namespace = "string"
 #'     )
 #'   )
 #' )
@@ -127,14 +127,14 @@ NULL
 #'   DestinationArn = "string",
 #'   MetricDefinitions = list(
 #'     list(
+#'       Name = "string",
+#'       ValueKey = "string",
+#'       UnitLabel = "string",
 #'       DimensionKeys = list(
 #'         "string"
 #'       ),
 #'       EventPattern = "string",
-#'       Name = "string",
-#'       Namespace = "string",
-#'       UnitLabel = "string",
-#'       ValueKey = "string"
+#'       Namespace = "string"
 #'     )
 #'   )
 #' )
@@ -206,9 +206,9 @@ cloudwatchrum_batch_create_rum_metric_definitions <- function(AppMonitorName, De
 #' list(
 #'   Errors = list(
 #'     list(
+#'       MetricDefinitionId = "string",
 #'       ErrorCode = "string",
-#'       ErrorMessage = "string",
-#'       MetricDefinitionId = "string"
+#'       ErrorMessage = "string"
 #'     )
 #'   ),
 #'   MetricDefinitionIds = list(
@@ -286,15 +286,15 @@ cloudwatchrum_batch_delete_rum_metric_definitions <- function(AppMonitorName, De
 #' list(
 #'   MetricDefinitions = list(
 #'     list(
+#'       MetricDefinitionId = "string",
+#'       Name = "string",
+#'       ValueKey = "string",
+#'       UnitLabel = "string",
 #'       DimensionKeys = list(
 #'         "string"
 #'       ),
 #'       EventPattern = "string",
-#'       MetricDefinitionId = "string",
-#'       Name = "string",
-#'       Namespace = "string",
-#'       UnitLabel = "string",
-#'       ValueKey = "string"
+#'       Namespace = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -355,42 +355,16 @@ cloudwatchrum_batch_get_rum_metric_definitions <- function(AppMonitorName, Desti
 #' generated?](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-find-code-snippet.html)
 #'
 #' @usage
-#' cloudwatchrum_create_app_monitor(AppMonitorConfiguration, CustomEvents,
-#'   CwLogEnabled, DeobfuscationConfiguration, Domain, DomainList, Name,
-#'   Tags)
+#' cloudwatchrum_create_app_monitor(Name, Domain, DomainList, Tags,
+#'   AppMonitorConfiguration, CwLogEnabled, CustomEvents,
+#'   DeobfuscationConfiguration, Platform)
 #'
-#' @param AppMonitorConfiguration A structure that contains much of the configuration data for the app
-#' monitor. If you are using Amazon Cognito for authorization, you must
-#' include this structure in your request, and it must include the ID of
-#' the Amazon Cognito identity pool to use for authorization. If you don't
-#' include `AppMonitorConfiguration`, you must set up your own
-#' authorization method. For more information, see [Authorize your
-#' application to send data to Amazon Web
-#' Services](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-get-started-authorization.html).
-#' 
-#' If you omit this argument, the sample rate used for RUM is set to 10% of
-#' the user sessions.
-#' @param CustomEvents Specifies whether this app monitor allows the web client to define and
-#' send custom events. If you omit this parameter, custom events are
-#' `DISABLED`.
-#' 
-#' For more information about custom events, see [Send custom
-#' events](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-custom-events.html).
-#' @param CwLogEnabled Data collected by RUM is kept by RUM for 30 days and then deleted. This
-#' parameter specifies whether RUM sends a copy of this telemetry data to
-#' Amazon CloudWatch Logs in your account. This enables you to keep the
-#' telemetry data for more than 30 days, but it does incur Amazon
-#' CloudWatch Logs charges.
-#' 
-#' If you omit this parameter, the default is `false`.
-#' @param DeobfuscationConfiguration A structure that contains the configuration for how an app monitor can
-#' deobfuscate stack traces.
+#' @param Name &#91;required&#93; A name for the app monitor.
 #' @param Domain The top-level internet domain name for which your application has
 #' administrative authority.
 #' @param DomainList List the domain names for which your application has administrative
 #' authority. The [`create_app_monitor`][cloudwatchrum_create_app_monitor]
 #' requires either the domain or the domain list.
-#' @param Name &#91;required&#93; A name for the app monitor.
 #' @param Tags Assigns one or more tags (key-value pairs) to the app monitor.
 #' 
 #' Tags can help you organize and categorize your resources. You can also
@@ -404,6 +378,35 @@ cloudwatchrum_batch_get_rum_metric_definitions <- function(AppMonitorName, Desti
 #' 
 #' For more information, see [Tagging Amazon Web Services
 #' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
+#' @param AppMonitorConfiguration A structure that contains much of the configuration data for the app
+#' monitor. If you are using Amazon Cognito for authorization, you must
+#' include this structure in your request, and it must include the ID of
+#' the Amazon Cognito identity pool to use for authorization. If you don't
+#' include `AppMonitorConfiguration`, you must set up your own
+#' authorization method. For more information, see [Authorize your
+#' application to send data to Amazon Web
+#' Services](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-get-started-authorization.html).
+#' 
+#' If you omit this argument, the sample rate used for RUM is set to 10% of
+#' the user sessions.
+#' @param CwLogEnabled Data collected by RUM is kept by RUM for 30 days and then deleted. This
+#' parameter specifies whether RUM sends a copy of this telemetry data to
+#' Amazon CloudWatch Logs in your account. This enables you to keep the
+#' telemetry data for more than 30 days, but it does incur Amazon
+#' CloudWatch Logs charges.
+#' 
+#' If you omit this parameter, the default is `false`.
+#' @param CustomEvents Specifies whether this app monitor allows the web client to define and
+#' send custom events. If you omit this parameter, custom events are
+#' `DISABLED`.
+#' 
+#' For more information about custom events, see [Send custom
+#' events](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-custom-events.html).
+#' @param DeobfuscationConfiguration A structure that contains the configuration for how an app monitor can
+#' deobfuscate stack traces.
+#' @param Platform The platform type for the app monitor. Valid values are `Web` for web
+#' applications, `Android` for Android applications, and `iOS` for IOS
+#' applications. If you omit this parameter, the default is `Web`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -416,43 +419,44 @@ cloudwatchrum_batch_get_rum_metric_definitions <- function(AppMonitorName, Desti
 #' @section Request syntax:
 #' ```
 #' svc$create_app_monitor(
+#'   Name = "string",
+#'   Domain = "string",
+#'   DomainList = list(
+#'     "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   ),
 #'   AppMonitorConfiguration = list(
-#'     AllowCookies = TRUE|FALSE,
-#'     EnableXRay = TRUE|FALSE,
+#'     IdentityPoolId = "string",
 #'     ExcludedPages = list(
+#'       "string"
+#'     ),
+#'     IncludedPages = list(
 #'       "string"
 #'     ),
 #'     FavoritePages = list(
 #'       "string"
 #'     ),
-#'     GuestRoleArn = "string",
-#'     IdentityPoolId = "string",
-#'     IncludedPages = list(
-#'       "string"
-#'     ),
 #'     SessionSampleRate = 123.0,
+#'     GuestRoleArn = "string",
+#'     AllowCookies = TRUE|FALSE,
 #'     Telemetries = list(
 #'       "errors"|"performance"|"http"
-#'     )
+#'     ),
+#'     EnableXRay = TRUE|FALSE
 #'   ),
+#'   CwLogEnabled = TRUE|FALSE,
 #'   CustomEvents = list(
 #'     Status = "ENABLED"|"DISABLED"
 #'   ),
-#'   CwLogEnabled = TRUE|FALSE,
 #'   DeobfuscationConfiguration = list(
 #'     JavaScriptSourceMaps = list(
-#'       S3Uri = "string",
-#'       Status = "ENABLED"|"DISABLED"
+#'       Status = "ENABLED"|"DISABLED",
+#'       S3Uri = "string"
 #'     )
 #'   ),
-#'   Domain = "string",
-#'   DomainList = list(
-#'     "string"
-#'   ),
-#'   Name = "string",
-#'   Tags = list(
-#'     "string"
-#'   )
+#'   Platform = "Web"|"Android"|"iOS"
 #' )
 #' ```
 #'
@@ -461,7 +465,7 @@ cloudwatchrum_batch_get_rum_metric_definitions <- function(AppMonitorName, Desti
 #' @rdname cloudwatchrum_create_app_monitor
 #'
 #' @aliases cloudwatchrum_create_app_monitor
-cloudwatchrum_create_app_monitor <- function(AppMonitorConfiguration = NULL, CustomEvents = NULL, CwLogEnabled = NULL, DeobfuscationConfiguration = NULL, Domain = NULL, DomainList = NULL, Name, Tags = NULL) {
+cloudwatchrum_create_app_monitor <- function(Name, Domain = NULL, DomainList = NULL, Tags = NULL, AppMonitorConfiguration = NULL, CwLogEnabled = NULL, CustomEvents = NULL, DeobfuscationConfiguration = NULL, Platform = NULL) {
   op <- new_operation(
     name = "CreateAppMonitor",
     http_method = "POST",
@@ -470,7 +474,7 @@ cloudwatchrum_create_app_monitor <- function(AppMonitorConfiguration = NULL, Cus
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatchrum$create_app_monitor_input(AppMonitorConfiguration = AppMonitorConfiguration, CustomEvents = CustomEvents, CwLogEnabled = CwLogEnabled, DeobfuscationConfiguration = DeobfuscationConfiguration, Domain = Domain, DomainList = DomainList, Name = Name, Tags = Tags)
+  input <- .cloudwatchrum$create_app_monitor_input(Name = Name, Domain = Domain, DomainList = DomainList, Tags = Tags, AppMonitorConfiguration = AppMonitorConfiguration, CwLogEnabled = CwLogEnabled, CustomEvents = CustomEvents, DeobfuscationConfiguration = DeobfuscationConfiguration, Platform = Platform)
   output <- .cloudwatchrum$create_app_monitor_output()
   config <- get_config()
   svc <- .cloudwatchrum$service(config, op)
@@ -652,28 +656,36 @@ cloudwatchrum_delete_rum_metrics_destination <- function(AppMonitorName, Destina
 #' ```
 #' list(
 #'   AppMonitor = list(
+#'     Name = "string",
+#'     Domain = "string",
+#'     DomainList = list(
+#'       "string"
+#'     ),
+#'     Id = "string",
+#'     Created = "string",
+#'     LastModified = "string",
+#'     Tags = list(
+#'       "string"
+#'     ),
+#'     State = "CREATED"|"DELETING"|"ACTIVE",
 #'     AppMonitorConfiguration = list(
-#'       AllowCookies = TRUE|FALSE,
-#'       EnableXRay = TRUE|FALSE,
+#'       IdentityPoolId = "string",
 #'       ExcludedPages = list(
+#'         "string"
+#'       ),
+#'       IncludedPages = list(
 #'         "string"
 #'       ),
 #'       FavoritePages = list(
 #'         "string"
 #'       ),
-#'       GuestRoleArn = "string",
-#'       IdentityPoolId = "string",
-#'       IncludedPages = list(
-#'         "string"
-#'       ),
 #'       SessionSampleRate = 123.0,
+#'       GuestRoleArn = "string",
+#'       AllowCookies = TRUE|FALSE,
 #'       Telemetries = list(
 #'         "errors"|"performance"|"http"
-#'       )
-#'     ),
-#'     Created = "string",
-#'     CustomEvents = list(
-#'       Status = "ENABLED"|"DISABLED"
+#'       ),
+#'       EnableXRay = TRUE|FALSE
 #'     ),
 #'     DataStorage = list(
 #'       CwLog = list(
@@ -681,23 +693,16 @@ cloudwatchrum_delete_rum_metrics_destination <- function(AppMonitorName, Destina
 #'         CwLogGroup = "string"
 #'       )
 #'     ),
+#'     CustomEvents = list(
+#'       Status = "ENABLED"|"DISABLED"
+#'     ),
 #'     DeobfuscationConfiguration = list(
 #'       JavaScriptSourceMaps = list(
-#'         S3Uri = "string",
-#'         Status = "ENABLED"|"DISABLED"
+#'         Status = "ENABLED"|"DISABLED",
+#'         S3Uri = "string"
 #'       )
 #'     ),
-#'     Domain = "string",
-#'     DomainList = list(
-#'       "string"
-#'     ),
-#'     Id = "string",
-#'     LastModified = "string",
-#'     Name = "string",
-#'     State = "CREATED"|"DELETING"|"ACTIVE",
-#'     Tags = list(
-#'       "string"
-#'     )
+#'     Platform = "Web"|"Android"|"iOS"
 #'   )
 #' )
 #' ```
@@ -743,18 +748,18 @@ cloudwatchrum_get_app_monitor <- function(Name) {
 #' this data.
 #'
 #' @usage
-#' cloudwatchrum_get_app_monitor_data(Filters, MaxResults, Name, NextToken,
-#'   TimeRange)
+#' cloudwatchrum_get_app_monitor_data(Name, TimeRange, Filters, MaxResults,
+#'   NextToken)
 #'
+#' @param Name &#91;required&#93; The name of the app monitor that collected the data that you want to
+#' retrieve.
+#' @param TimeRange &#91;required&#93; A structure that defines the time range that you want to retrieve
+#' results from.
 #' @param Filters An array of structures that you can use to filter the results to those
 #' that match one or more sets of key-value pairs that you specify.
 #' @param MaxResults The maximum number of results to return in one operation.
-#' @param Name &#91;required&#93; The name of the app monitor that collected the data that you want to
-#' retrieve.
 #' @param NextToken Use the token returned by the previous operation to request the next
 #' page of results.
-#' @param TimeRange &#91;required&#93; A structure that defines the time range that you want to retrieve
-#' results from.
 #'
 #' @return
 #' A list with the following syntax:
@@ -770,6 +775,11 @@ cloudwatchrum_get_app_monitor <- function(Name) {
 #' @section Request syntax:
 #' ```
 #' svc$get_app_monitor_data(
+#'   Name = "string",
+#'   TimeRange = list(
+#'     After = 123,
+#'     Before = 123
+#'   ),
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -779,12 +789,7 @@ cloudwatchrum_get_app_monitor <- function(Name) {
 #'     )
 #'   ),
 #'   MaxResults = 123,
-#'   Name = "string",
-#'   NextToken = "string",
-#'   TimeRange = list(
-#'     After = 123,
-#'     Before = 123
-#'   )
+#'   NextToken = "string"
 #' )
 #' ```
 #'
@@ -793,7 +798,7 @@ cloudwatchrum_get_app_monitor <- function(Name) {
 #' @rdname cloudwatchrum_get_app_monitor_data
 #'
 #' @aliases cloudwatchrum_get_app_monitor_data
-cloudwatchrum_get_app_monitor_data <- function(Filters = NULL, MaxResults = NULL, Name, NextToken = NULL, TimeRange) {
+cloudwatchrum_get_app_monitor_data <- function(Name, TimeRange, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetAppMonitorData",
     http_method = "POST",
@@ -802,7 +807,7 @@ cloudwatchrum_get_app_monitor_data <- function(Filters = NULL, MaxResults = NULL
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Events"),
     stream_api = FALSE
   )
-  input <- .cloudwatchrum$get_app_monitor_data_input(Filters = Filters, MaxResults = MaxResults, Name = Name, NextToken = NextToken, TimeRange = TimeRange)
+  input <- .cloudwatchrum$get_app_monitor_data_input(Name = Name, TimeRange = TimeRange, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudwatchrum$get_app_monitor_data_output()
   config <- get_config()
   svc <- .cloudwatchrum$service(config, op)
@@ -882,16 +887,17 @@ cloudwatchrum_get_resource_policy <- function(Name) {
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   NextToken = "string",
 #'   AppMonitorSummaries = list(
 #'     list(
-#'       Created = "string",
-#'       Id = "string",
-#'       LastModified = "string",
 #'       Name = "string",
-#'       State = "CREATED"|"DELETING"|"ACTIVE"
+#'       Id = "string",
+#'       Created = "string",
+#'       LastModified = "string",
+#'       State = "CREATED"|"DELETING"|"ACTIVE",
+#'       Platform = "Web"|"Android"|"iOS"
 #'     )
-#'   ),
-#'   NextToken = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -1137,22 +1143,22 @@ cloudwatchrum_put_resource_policy <- function(Name, PolicyDocument, PolicyRevisi
 #' a batch of events from one user session.
 #'
 #' @usage
-#' cloudwatchrum_put_rum_events(Alias, AppMonitorDetails, BatchId, Id,
-#'   RumEvents, UserDetails)
+#' cloudwatchrum_put_rum_events(Id, BatchId, AppMonitorDetails,
+#'   UserDetails, RumEvents, Alias)
 #'
+#' @param Id &#91;required&#93; The ID of the app monitor that is sending this data.
+#' @param BatchId &#91;required&#93; A unique identifier for this batch of RUM event data.
+#' @param AppMonitorDetails &#91;required&#93; A structure that contains information about the app monitor that
+#' collected this telemetry information.
+#' @param UserDetails &#91;required&#93; A structure that contains information about the user session that this
+#' batch of events was collected from.
+#' @param RumEvents &#91;required&#93; An array of structures that contain the telemetry event data.
 #' @param Alias If the app monitor uses a resource-based policy that requires
 #' [`put_rum_events`][cloudwatchrum_put_rum_events] requests to specify a
 #' certain alias, specify that alias here. This alias will be compared to
 #' the `rum:alias` context key in the resource-based policy. For more
 #' information, see [Using resource-based policies with CloudWatch
 #' RUM](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-resource-policies.html).
-#' @param AppMonitorDetails &#91;required&#93; A structure that contains information about the app monitor that
-#' collected this telemetry information.
-#' @param BatchId &#91;required&#93; A unique identifier for this batch of RUM event data.
-#' @param Id &#91;required&#93; The ID of the app monitor that is sending this data.
-#' @param RumEvents &#91;required&#93; An array of structures that contain the telemetry event data.
-#' @param UserDetails &#91;required&#93; A structure that contains information about the user session that this
-#' batch of events was collected from.
 #'
 #' @return
 #' An empty list.
@@ -1160,29 +1166,29 @@ cloudwatchrum_put_resource_policy <- function(Name, PolicyDocument, PolicyRevisi
 #' @section Request syntax:
 #' ```
 #' svc$put_rum_events(
-#'   Alias = "string",
+#'   Id = "string",
+#'   BatchId = "string",
 #'   AppMonitorDetails = list(
-#'     id = "string",
 #'     name = "string",
+#'     id = "string",
 #'     version = "string"
 #'   ),
-#'   BatchId = "string",
-#'   Id = "string",
+#'   UserDetails = list(
+#'     userId = "string",
+#'     sessionId = "string"
+#'   ),
 #'   RumEvents = list(
 #'     list(
-#'       details = "string",
 #'       id = "string",
-#'       metadata = "string",
 #'       timestamp = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       type = "string"
+#'       type = "string",
+#'       metadata = "string",
+#'       details = "string"
 #'     )
 #'   ),
-#'   UserDetails = list(
-#'     sessionId = "string",
-#'     userId = "string"
-#'   )
+#'   Alias = "string"
 #' )
 #' ```
 #'
@@ -1191,7 +1197,7 @@ cloudwatchrum_put_resource_policy <- function(Name, PolicyDocument, PolicyRevisi
 #' @rdname cloudwatchrum_put_rum_events
 #'
 #' @aliases cloudwatchrum_put_rum_events
-cloudwatchrum_put_rum_events <- function(Alias = NULL, AppMonitorDetails, BatchId, Id, RumEvents, UserDetails) {
+cloudwatchrum_put_rum_events <- function(Id, BatchId, AppMonitorDetails, UserDetails, RumEvents, Alias = NULL) {
   op <- new_operation(
     name = "PutRumEvents",
     http_method = "POST",
@@ -1200,7 +1206,7 @@ cloudwatchrum_put_rum_events <- function(Alias = NULL, AppMonitorDetails, BatchI
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatchrum$put_rum_events_input(Alias = Alias, AppMonitorDetails = AppMonitorDetails, BatchId = BatchId, Id = Id, RumEvents = RumEvents, UserDetails = UserDetails)
+  input <- .cloudwatchrum$put_rum_events_input(Id = Id, BatchId = BatchId, AppMonitorDetails = AppMonitorDetails, UserDetails = UserDetails, RumEvents = RumEvents, Alias = Alias)
   output <- .cloudwatchrum$put_rum_events_output()
   config <- get_config()
   svc <- .cloudwatchrum$service(config, op)
@@ -1424,9 +1430,16 @@ cloudwatchrum_untag_resource <- function(ResourceArn, TagKeys) {
 #' generated?](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-find-code-snippet.html)
 #'
 #' @usage
-#' cloudwatchrum_update_app_monitor(AppMonitorConfiguration, CustomEvents,
-#'   CwLogEnabled, DeobfuscationConfiguration, Domain, DomainList, Name)
+#' cloudwatchrum_update_app_monitor(Name, Domain, DomainList,
+#'   AppMonitorConfiguration, CwLogEnabled, CustomEvents,
+#'   DeobfuscationConfiguration)
 #'
+#' @param Name &#91;required&#93; The name of the app monitor to update.
+#' @param Domain The top-level internet domain name for which your application has
+#' administrative authority.
+#' @param DomainList List the domain names for which your application has administrative
+#' authority. The [`update_app_monitor`][cloudwatchrum_update_app_monitor]
+#' allows either the domain or the domain list.
 #' @param AppMonitorConfiguration A structure that contains much of the configuration data for the app
 #' monitor. If you are using Amazon Cognito for authorization, you must
 #' include this structure in your request, and it must include the ID of
@@ -1435,24 +1448,18 @@ cloudwatchrum_untag_resource <- function(ResourceArn, TagKeys) {
 #' authorization method. For more information, see [Authorize your
 #' application to send data to Amazon Web
 #' Services](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-get-started-authorization.html).
-#' @param CustomEvents Specifies whether this app monitor allows the web client to define and
-#' send custom events. The default is for custom events to be `DISABLED`.
-#' 
-#' For more information about custom events, see [Send custom
-#' events](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-custom-events.html).
 #' @param CwLogEnabled Data collected by RUM is kept by RUM for 30 days and then deleted. This
 #' parameter specifies whether RUM sends a copy of this telemetry data to
 #' Amazon CloudWatch Logs in your account. This enables you to keep the
 #' telemetry data for more than 30 days, but it does incur Amazon
 #' CloudWatch Logs charges.
+#' @param CustomEvents Specifies whether this app monitor allows the web client to define and
+#' send custom events. The default is for custom events to be `DISABLED`.
+#' 
+#' For more information about custom events, see [Send custom
+#' events](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-custom-events.html).
 #' @param DeobfuscationConfiguration A structure that contains the configuration for how an app monitor can
 #' deobfuscate stack traces.
-#' @param Domain The top-level internet domain name for which your application has
-#' administrative authority.
-#' @param DomainList List the domain names for which your application has administrative
-#' authority. The [`update_app_monitor`][cloudwatchrum_update_app_monitor]
-#' allows either the domain or the domain list.
-#' @param Name &#91;required&#93; The name of the app monitor to update.
 #'
 #' @return
 #' An empty list.
@@ -1460,40 +1467,40 @@ cloudwatchrum_untag_resource <- function(ResourceArn, TagKeys) {
 #' @section Request syntax:
 #' ```
 #' svc$update_app_monitor(
+#'   Name = "string",
+#'   Domain = "string",
+#'   DomainList = list(
+#'     "string"
+#'   ),
 #'   AppMonitorConfiguration = list(
-#'     AllowCookies = TRUE|FALSE,
-#'     EnableXRay = TRUE|FALSE,
+#'     IdentityPoolId = "string",
 #'     ExcludedPages = list(
+#'       "string"
+#'     ),
+#'     IncludedPages = list(
 #'       "string"
 #'     ),
 #'     FavoritePages = list(
 #'       "string"
 #'     ),
-#'     GuestRoleArn = "string",
-#'     IdentityPoolId = "string",
-#'     IncludedPages = list(
-#'       "string"
-#'     ),
 #'     SessionSampleRate = 123.0,
+#'     GuestRoleArn = "string",
+#'     AllowCookies = TRUE|FALSE,
 #'     Telemetries = list(
 #'       "errors"|"performance"|"http"
-#'     )
+#'     ),
+#'     EnableXRay = TRUE|FALSE
 #'   ),
+#'   CwLogEnabled = TRUE|FALSE,
 #'   CustomEvents = list(
 #'     Status = "ENABLED"|"DISABLED"
 #'   ),
-#'   CwLogEnabled = TRUE|FALSE,
 #'   DeobfuscationConfiguration = list(
 #'     JavaScriptSourceMaps = list(
-#'       S3Uri = "string",
-#'       Status = "ENABLED"|"DISABLED"
+#'       Status = "ENABLED"|"DISABLED",
+#'       S3Uri = "string"
 #'     )
-#'   ),
-#'   Domain = "string",
-#'   DomainList = list(
-#'     "string"
-#'   ),
-#'   Name = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -1502,7 +1509,7 @@ cloudwatchrum_untag_resource <- function(ResourceArn, TagKeys) {
 #' @rdname cloudwatchrum_update_app_monitor
 #'
 #' @aliases cloudwatchrum_update_app_monitor
-cloudwatchrum_update_app_monitor <- function(AppMonitorConfiguration = NULL, CustomEvents = NULL, CwLogEnabled = NULL, DeobfuscationConfiguration = NULL, Domain = NULL, DomainList = NULL, Name) {
+cloudwatchrum_update_app_monitor <- function(Name, Domain = NULL, DomainList = NULL, AppMonitorConfiguration = NULL, CwLogEnabled = NULL, CustomEvents = NULL, DeobfuscationConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateAppMonitor",
     http_method = "PATCH",
@@ -1511,7 +1518,7 @@ cloudwatchrum_update_app_monitor <- function(AppMonitorConfiguration = NULL, Cus
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatchrum$update_app_monitor_input(AppMonitorConfiguration = AppMonitorConfiguration, CustomEvents = CustomEvents, CwLogEnabled = CwLogEnabled, DeobfuscationConfiguration = DeobfuscationConfiguration, Domain = Domain, DomainList = DomainList, Name = Name)
+  input <- .cloudwatchrum$update_app_monitor_input(Name = Name, Domain = Domain, DomainList = DomainList, AppMonitorConfiguration = AppMonitorConfiguration, CwLogEnabled = CwLogEnabled, CustomEvents = CustomEvents, DeobfuscationConfiguration = DeobfuscationConfiguration)
   output <- .cloudwatchrum$update_app_monitor_output()
   config <- get_config()
   svc <- .cloudwatchrum$service(config, op)
@@ -1559,14 +1566,14 @@ cloudwatchrum_update_app_monitor <- function(AppMonitorConfiguration = NULL, Cus
 #'   Destination = "CloudWatch"|"Evidently",
 #'   DestinationArn = "string",
 #'   MetricDefinition = list(
+#'     Name = "string",
+#'     ValueKey = "string",
+#'     UnitLabel = "string",
 #'     DimensionKeys = list(
 #'       "string"
 #'     ),
 #'     EventPattern = "string",
-#'     Name = "string",
-#'     Namespace = "string",
-#'     UnitLabel = "string",
-#'     ValueKey = "string"
+#'     Namespace = "string"
 #'   ),
 #'   MetricDefinitionId = "string"
 #' )

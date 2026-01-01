@@ -71,10 +71,19 @@ skipped. This is the default action if no option is specified.
 
 \strong{All OSs}: Packages in the rejected patches list, and packages that
 include them as dependencies, aren't installed by Patch Manager under
-any circumstances. If a package was installed before it was added to the
-rejected patches list, or is installed outside of Patch Manager
-afterward, it's considered noncompliant with the patch baseline and its
-status is reported as \code{INSTALLED_REJECTED}.}
+any circumstances.
+
+State value assignment for patch compliance:
+\itemize{
+\item If a package was installed before it was added to the rejected
+patches list, or is installed outside of Patch Manager afterward,
+it's considered noncompliant with the patch baseline and its status
+is reported as \code{INSTALLED_REJECTED}.
+\item If an update attempts to install a dependency package that is now
+rejected by the baseline, when previous versions of the package were
+not rejected, the package being updated is reported as \code{MISSING} for
+\code{SCAN} operations and as \code{FAILED} for \code{INSTALL} operations.
+}}
 
 \item{Description}{A description of the patch baseline.}
 

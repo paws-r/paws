@@ -485,6 +485,145 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
 }
 .bedrockagentruntime$operations$get_agent_memory <- bedrockagentruntime_get_agent_memory
 
+#' Retrieves the flow definition snapshot used for a flow execution
+#'
+#' @description
+#' Retrieves the flow definition snapshot used for a flow execution. The
+#' snapshot represents the flow metadata and definition as it existed at
+#' the time the execution was started. Note that even if the flow is edited
+#' after an execution starts, the snapshot connected to the execution
+#' remains unchanged.
+#' 
+#' Flow executions is in preview release for Amazon Bedrock and is subject
+#' to change.
+#'
+#' @usage
+#' bedrockagentruntime_get_execution_flow_snapshot(executionIdentifier,
+#'   flowAliasIdentifier, flowIdentifier)
+#'
+#' @param executionIdentifier &#91;required&#93; The unique identifier of the flow execution.
+#' @param flowAliasIdentifier &#91;required&#93; The unique identifier of the flow alias used for the flow execution.
+#' @param flowIdentifier &#91;required&#93; The unique identifier of the flow.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   customerEncryptionKeyArn = "string",
+#'   definition = "string",
+#'   executionRoleArn = "string",
+#'   flowAliasIdentifier = "string",
+#'   flowIdentifier = "string",
+#'   flowVersion = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_execution_flow_snapshot(
+#'   executionIdentifier = "string",
+#'   flowAliasIdentifier = "string",
+#'   flowIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_get_execution_flow_snapshot
+#'
+#' @aliases bedrockagentruntime_get_execution_flow_snapshot
+bedrockagentruntime_get_execution_flow_snapshot <- function(executionIdentifier, flowAliasIdentifier, flowIdentifier) {
+  op <- new_operation(
+    name = "GetExecutionFlowSnapshot",
+    http_method = "GET",
+    http_path = "/flows/{flowIdentifier}/aliases/{flowAliasIdentifier}/executions/{executionIdentifier}/flowsnapshot",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$get_execution_flow_snapshot_input(executionIdentifier = executionIdentifier, flowAliasIdentifier = flowAliasIdentifier, flowIdentifier = flowIdentifier)
+  output <- .bedrockagentruntime$get_execution_flow_snapshot_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$get_execution_flow_snapshot <- bedrockagentruntime_get_execution_flow_snapshot
+
+#' Retrieves details about a specific flow execution, including its status,
+#' start and end times, and any errors that occurred during execution
+#'
+#' @description
+#' Retrieves details about a specific flow execution, including its status,
+#' start and end times, and any errors that occurred during execution.
+#'
+#' @usage
+#' bedrockagentruntime_get_flow_execution(executionIdentifier,
+#'   flowAliasIdentifier, flowIdentifier)
+#'
+#' @param executionIdentifier &#91;required&#93; The unique identifier of the flow execution to retrieve.
+#' @param flowAliasIdentifier &#91;required&#93; The unique identifier of the flow alias used for the execution.
+#' @param flowIdentifier &#91;required&#93; The unique identifier of the flow.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   endedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   errors = list(
+#'     list(
+#'       error = "ExecutionTimedOut",
+#'       message = "string",
+#'       nodeName = "string"
+#'     )
+#'   ),
+#'   executionArn = "string",
+#'   flowAliasIdentifier = "string",
+#'   flowIdentifier = "string",
+#'   flowVersion = "string",
+#'   startedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   status = "Running"|"Succeeded"|"Failed"|"TimedOut"|"Aborted"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_flow_execution(
+#'   executionIdentifier = "string",
+#'   flowAliasIdentifier = "string",
+#'   flowIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_get_flow_execution
+#'
+#' @aliases bedrockagentruntime_get_flow_execution
+bedrockagentruntime_get_flow_execution <- function(executionIdentifier, flowAliasIdentifier, flowIdentifier) {
+  op <- new_operation(
+    name = "GetFlowExecution",
+    http_method = "GET",
+    http_path = "/flows/{flowIdentifier}/aliases/{flowAliasIdentifier}/executions/{executionIdentifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$get_flow_execution_input(executionIdentifier = executionIdentifier, flowAliasIdentifier = flowAliasIdentifier, flowIdentifier = flowIdentifier)
+  output <- .bedrockagentruntime$get_flow_execution_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$get_flow_execution <- bedrockagentruntime_get_flow_execution
+
 #' Retrieves the details of a specific invocation step within an invocation
 #' in a session
 #'
@@ -676,7 +815,8 @@ bedrockagentruntime_get_session <- function(sessionIdentifier) {
 #' @usage
 #' bedrockagentruntime_invoke_agent(agentAliasId, agentId,
 #'   bedrockModelConfigurations, enableTrace, endSession, inputText,
-#'   memoryId, sessionId, sessionState, sourceArn, streamingConfigurations)
+#'   memoryId, promptCreationConfigurations, sessionId, sessionState,
+#'   sourceArn, streamingConfigurations)
 #'
 #' @param agentAliasId &#91;required&#93; The alias of the agent to use.
 #' @param agentId &#91;required&#93; The unique identifier of the agent to use.
@@ -690,6 +830,12 @@ bedrockagentruntime_get_session <- function(sessionIdentifier) {
 #' If you include `returnControlInvocationResults` in the `sessionState`
 #' field, the `inputText` field will be ignored.
 #' @param memoryId The unique identifier of the agent memory.
+#' @param promptCreationConfigurations Specifies parameters that control how the service populates the agent
+#' prompt for an [`invoke_agent`][bedrockagentruntime_invoke_agent]
+#' request. You can control which aspects of previous invocations in the
+#' same agent session the service uses to populate the agent prompt. This
+#' gives you more granular control over the contextual history that is used
+#' to process the current request.
 #' @param sessionId &#91;required&#93; The unique identifier of the session. Use the same value across requests
 #' to continue the same conversation.
 #' @param sessionState Contains parameters that specify various attributes of the session. For
@@ -732,6 +878,10 @@ bedrockagentruntime_get_session <- function(sessionIdentifier) {
 #'             retrievedReferences = list(
 #'               list(
 #'                 content = list(
+#'                   audio = list(
+#'                     s3Uri = "string",
+#'                     transcription = "string"
+#'                   ),
 #'                   byteContent = "string",
 #'                   row = list(
 #'                     list(
@@ -741,7 +891,11 @@ bedrockagentruntime_get_session <- function(sessionIdentifier) {
 #'                     )
 #'                   ),
 #'                   text = "string",
-#'                   type = "TEXT"|"IMAGE"|"ROW"
+#'                   type = "TEXT"|"IMAGE"|"ROW"|"AUDIO"|"VIDEO",
+#'                   video = list(
+#'                     s3Uri = "string",
+#'                     summary = "string"
+#'                   )
 #'                 ),
 #'                 location = list(
 #'                   confluenceLocation = list(
@@ -1324,6 +1478,10 @@ bedrockagentruntime_get_session <- function(sessionIdentifier) {
 #'               retrievedReferences = list(
 #'                 list(
 #'                   content = list(
+#'                     audio = list(
+#'                       s3Uri = "string",
+#'                       transcription = "string"
+#'                     ),
 #'                     byteContent = "string",
 #'                     row = list(
 #'                       list(
@@ -1333,7 +1491,11 @@ bedrockagentruntime_get_session <- function(sessionIdentifier) {
 #'                       )
 #'                     ),
 #'                     text = "string",
-#'                     type = "TEXT"|"IMAGE"|"ROW"
+#'                     type = "TEXT"|"IMAGE"|"ROW"|"AUDIO"|"VIDEO",
+#'                     video = list(
+#'                       s3Uri = "string",
+#'                       summary = "string"
+#'                     )
 #'                   ),
 #'                   location = list(
 #'                     confluenceLocation = list(
@@ -1771,6 +1933,10 @@ bedrockagentruntime_get_session <- function(sessionIdentifier) {
 #'               retrievedReferences = list(
 #'                 list(
 #'                   content = list(
+#'                     audio = list(
+#'                       s3Uri = "string",
+#'                       transcription = "string"
+#'                     ),
 #'                     byteContent = "string",
 #'                     row = list(
 #'                       list(
@@ -1780,7 +1946,11 @@ bedrockagentruntime_get_session <- function(sessionIdentifier) {
 #'                       )
 #'                     ),
 #'                     text = "string",
-#'                     type = "TEXT"|"IMAGE"|"ROW"
+#'                     type = "TEXT"|"IMAGE"|"ROW"|"AUDIO"|"VIDEO",
+#'                     video = list(
+#'                       s3Uri = "string",
+#'                       summary = "string"
+#'                     )
 #'                   ),
 #'                   location = list(
 #'                     confluenceLocation = list(
@@ -1849,6 +2019,10 @@ bedrockagentruntime_get_session <- function(sessionIdentifier) {
 #'   endSession = TRUE|FALSE,
 #'   inputText = "string",
 #'   memoryId = "string",
+#'   promptCreationConfigurations = list(
+#'     excludePreviousThinkingSteps = TRUE|FALSE,
+#'     previousConversationTurnsToInclude = 123
+#'   ),
 #'   sessionId = "string",
 #'   sessionState = list(
 #'     conversationHistory = list(
@@ -2046,7 +2220,7 @@ bedrockagentruntime_get_session <- function(sessionIdentifier) {
 #' @rdname bedrockagentruntime_invoke_agent
 #'
 #' @aliases bedrockagentruntime_invoke_agent
-bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, bedrockModelConfigurations = NULL, enableTrace = NULL, endSession = NULL, inputText = NULL, memoryId = NULL, sessionId, sessionState = NULL, sourceArn = NULL, streamingConfigurations = NULL) {
+bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, bedrockModelConfigurations = NULL, enableTrace = NULL, endSession = NULL, inputText = NULL, memoryId = NULL, promptCreationConfigurations = NULL, sessionId, sessionState = NULL, sourceArn = NULL, streamingConfigurations = NULL) {
   op <- new_operation(
     name = "InvokeAgent",
     http_method = "POST",
@@ -2055,7 +2229,7 @@ bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, bedrockModel
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .bedrockagentruntime$invoke_agent_input(agentAliasId = agentAliasId, agentId = agentId, bedrockModelConfigurations = bedrockModelConfigurations, enableTrace = enableTrace, endSession = endSession, inputText = inputText, memoryId = memoryId, sessionId = sessionId, sessionState = sessionState, sourceArn = sourceArn, streamingConfigurations = streamingConfigurations)
+  input <- .bedrockagentruntime$invoke_agent_input(agentAliasId = agentAliasId, agentId = agentId, bedrockModelConfigurations = bedrockModelConfigurations, enableTrace = enableTrace, endSession = endSession, inputText = inputText, memoryId = memoryId, promptCreationConfigurations = promptCreationConfigurations, sessionId = sessionId, sessionState = sessionState, sourceArn = sourceArn, streamingConfigurations = streamingConfigurations)
   output <- .bedrockagentruntime$invoke_agent_output()
   config <- get_config()
   svc <- .bedrockagentruntime$service(config, op)
@@ -2149,19 +2323,1025 @@ bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, bedrockModel
 #'         nodeActionTrace = list(
 #'           nodeName = "string",
 #'           operationName = "string",
+#'           operationRequest = list(),
+#'           operationResponse = list(),
 #'           requestId = "string",
 #'           serviceName = "string",
 #'           timestamp = as.POSIXct(
 #'             "2015-01-01"
 #'           )
 #'         ),
+#'         nodeDependencyTrace = list(
+#'           nodeName = "string",
+#'           timestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           traceElements = list(
+#'             agentTraces = list(
+#'               list(
+#'                 agentAliasId = "string",
+#'                 agentId = "string",
+#'                 agentVersion = "string",
+#'                 callerChain = list(
+#'                   list(
+#'                     agentAliasArn = "string"
+#'                   )
+#'                 ),
+#'                 collaboratorName = "string",
+#'                 eventTime = as.POSIXct(
+#'                   "2015-01-01"
+#'                 ),
+#'                 sessionId = "string",
+#'                 trace = list(
+#'                   customOrchestrationTrace = list(
+#'                     event = list(
+#'                       text = "string"
+#'                     ),
+#'                     traceId = "string"
+#'                   ),
+#'                   failureTrace = list(
+#'                     failureCode = 123,
+#'                     failureReason = "string",
+#'                     metadata = list(
+#'                       clientRequestId = "string",
+#'                       endTime = as.POSIXct(
+#'                         "2015-01-01"
+#'                       ),
+#'                       operationTotalTimeMs = 123,
+#'                       startTime = as.POSIXct(
+#'                         "2015-01-01"
+#'                       ),
+#'                       totalTimeMs = 123,
+#'                       usage = list(
+#'                         inputTokens = 123,
+#'                         outputTokens = 123
+#'                       )
+#'                     ),
+#'                     traceId = "string"
+#'                   ),
+#'                   guardrailTrace = list(
+#'                     action = "INTERVENED"|"NONE",
+#'                     inputAssessments = list(
+#'                       list(
+#'                         contentPolicy = list(
+#'                           filters = list(
+#'                             list(
+#'                               action = "BLOCKED",
+#'                               confidence = "NONE"|"LOW"|"MEDIUM"|"HIGH",
+#'                               type = "INSULTS"|"HATE"|"SEXUAL"|"VIOLENCE"|"MISCONDUCT"|"PROMPT_ATTACK"
+#'                             )
+#'                           )
+#'                         ),
+#'                         sensitiveInformationPolicy = list(
+#'                           piiEntities = list(
+#'                             list(
+#'                               action = "BLOCKED"|"ANONYMIZED",
+#'                               match = "string",
+#'                               type = "ADDRESS"|"AGE"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"DRIVER_ID"|"EMAIL"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"IP_ADDRESS"|"LICENSE_PLATE"|"MAC_ADDRESS"|"NAME"|"PASSWORD"|"PHONE"|"PIN"|"SWIFT_CODE"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"|"URL"|"USERNAME"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"VEHICLE_IDENTIFICATION_NUMBER"
+#'                             )
+#'                           ),
+#'                           regexes = list(
+#'                             list(
+#'                               action = "BLOCKED"|"ANONYMIZED",
+#'                               match = "string",
+#'                               name = "string",
+#'                               regex = "string"
+#'                             )
+#'                           )
+#'                         ),
+#'                         topicPolicy = list(
+#'                           topics = list(
+#'                             list(
+#'                               action = "BLOCKED",
+#'                               name = "string",
+#'                               type = "DENY"
+#'                             )
+#'                           )
+#'                         ),
+#'                         wordPolicy = list(
+#'                           customWords = list(
+#'                             list(
+#'                               action = "BLOCKED",
+#'                               match = "string"
+#'                             )
+#'                           ),
+#'                           managedWordLists = list(
+#'                             list(
+#'                               action = "BLOCKED",
+#'                               match = "string",
+#'                               type = "PROFANITY"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     metadata = list(
+#'                       clientRequestId = "string",
+#'                       endTime = as.POSIXct(
+#'                         "2015-01-01"
+#'                       ),
+#'                       operationTotalTimeMs = 123,
+#'                       startTime = as.POSIXct(
+#'                         "2015-01-01"
+#'                       ),
+#'                       totalTimeMs = 123,
+#'                       usage = list(
+#'                         inputTokens = 123,
+#'                         outputTokens = 123
+#'                       )
+#'                     ),
+#'                     outputAssessments = list(
+#'                       list(
+#'                         contentPolicy = list(
+#'                           filters = list(
+#'                             list(
+#'                               action = "BLOCKED",
+#'                               confidence = "NONE"|"LOW"|"MEDIUM"|"HIGH",
+#'                               type = "INSULTS"|"HATE"|"SEXUAL"|"VIOLENCE"|"MISCONDUCT"|"PROMPT_ATTACK"
+#'                             )
+#'                           )
+#'                         ),
+#'                         sensitiveInformationPolicy = list(
+#'                           piiEntities = list(
+#'                             list(
+#'                               action = "BLOCKED"|"ANONYMIZED",
+#'                               match = "string",
+#'                               type = "ADDRESS"|"AGE"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"DRIVER_ID"|"EMAIL"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"IP_ADDRESS"|"LICENSE_PLATE"|"MAC_ADDRESS"|"NAME"|"PASSWORD"|"PHONE"|"PIN"|"SWIFT_CODE"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"|"URL"|"USERNAME"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"VEHICLE_IDENTIFICATION_NUMBER"
+#'                             )
+#'                           ),
+#'                           regexes = list(
+#'                             list(
+#'                               action = "BLOCKED"|"ANONYMIZED",
+#'                               match = "string",
+#'                               name = "string",
+#'                               regex = "string"
+#'                             )
+#'                           )
+#'                         ),
+#'                         topicPolicy = list(
+#'                           topics = list(
+#'                             list(
+#'                               action = "BLOCKED",
+#'                               name = "string",
+#'                               type = "DENY"
+#'                             )
+#'                           )
+#'                         ),
+#'                         wordPolicy = list(
+#'                           customWords = list(
+#'                             list(
+#'                               action = "BLOCKED",
+#'                               match = "string"
+#'                             )
+#'                           ),
+#'                           managedWordLists = list(
+#'                             list(
+#'                               action = "BLOCKED",
+#'                               match = "string",
+#'                               type = "PROFANITY"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     traceId = "string"
+#'                   ),
+#'                   orchestrationTrace = list(
+#'                     invocationInput = list(
+#'                       actionGroupInvocationInput = list(
+#'                         actionGroupName = "string",
+#'                         apiPath = "string",
+#'                         executionType = "LAMBDA"|"RETURN_CONTROL",
+#'                         function = "string",
+#'                         invocationId = "string",
+#'                         parameters = list(
+#'                           list(
+#'                             name = "string",
+#'                             type = "string",
+#'                             value = "string"
+#'                           )
+#'                         ),
+#'                         requestBody = list(
+#'                           content = list(
+#'                             list(
+#'                               list(
+#'                                 name = "string",
+#'                                 type = "string",
+#'                                 value = "string"
+#'                               )
+#'                             )
+#'                           )
+#'                         ),
+#'                         verb = "string"
+#'                       ),
+#'                       agentCollaboratorInvocationInput = list(
+#'                         agentCollaboratorAliasArn = "string",
+#'                         agentCollaboratorName = "string",
+#'                         input = list(
+#'                           returnControlResults = list(
+#'                             invocationId = "string",
+#'                             returnControlInvocationResults = list(
+#'                               list(
+#'                                 apiResult = list(
+#'                                   actionGroup = "string",
+#'                                   agentId = "string",
+#'                                   apiPath = "string",
+#'                                   confirmationState = "CONFIRM"|"DENY",
+#'                                   httpMethod = "string",
+#'                                   httpStatusCode = 123,
+#'                                   responseBody = list(
+#'                                     list(
+#'                                       body = "string",
+#'                                       images = list(
+#'                                         list(
+#'                                           format = "png"|"jpeg"|"gif"|"webp",
+#'                                           source = list(
+#'                                             bytes = raw
+#'                                           )
+#'                                         )
+#'                                       )
+#'                                     )
+#'                                   ),
+#'                                   responseState = "FAILURE"|"REPROMPT"
+#'                                 ),
+#'                                 functionResult = list(
+#'                                   actionGroup = "string",
+#'                                   agentId = "string",
+#'                                   confirmationState = "CONFIRM"|"DENY",
+#'                                   function = "string",
+#'                                   responseBody = list(
+#'                                     list(
+#'                                       body = "string",
+#'                                       images = list(
+#'                                         list(
+#'                                           format = "png"|"jpeg"|"gif"|"webp",
+#'                                           source = list(
+#'                                             bytes = raw
+#'                                           )
+#'                                         )
+#'                                       )
+#'                                     )
+#'                                   ),
+#'                                   responseState = "FAILURE"|"REPROMPT"
+#'                                 )
+#'                               )
+#'                             )
+#'                           ),
+#'                           text = "string",
+#'                           type = "TEXT"|"RETURN_CONTROL"
+#'                         )
+#'                       ),
+#'                       codeInterpreterInvocationInput = list(
+#'                         code = "string",
+#'                         files = list(
+#'                           "string"
+#'                         )
+#'                       ),
+#'                       invocationType = "ACTION_GROUP"|"KNOWLEDGE_BASE"|"FINISH"|"ACTION_GROUP_CODE_INTERPRETER"|"AGENT_COLLABORATOR",
+#'                       knowledgeBaseLookupInput = list(
+#'                         knowledgeBaseId = "string",
+#'                         text = "string"
+#'                       ),
+#'                       traceId = "string"
+#'                     ),
+#'                     modelInvocationInput = list(
+#'                       foundationModel = "string",
+#'                       inferenceConfiguration = list(
+#'                         maximumLength = 123,
+#'                         stopSequences = list(
+#'                           "string"
+#'                         ),
+#'                         temperature = 123.0,
+#'                         topK = 123,
+#'                         topP = 123.0
+#'                       ),
+#'                       overrideLambda = "string",
+#'                       parserMode = "DEFAULT"|"OVERRIDDEN",
+#'                       promptCreationMode = "DEFAULT"|"OVERRIDDEN",
+#'                       text = "string",
+#'                       traceId = "string",
+#'                       type = "PRE_PROCESSING"|"ORCHESTRATION"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"|"POST_PROCESSING"|"ROUTING_CLASSIFIER"
+#'                     ),
+#'                     modelInvocationOutput = list(
+#'                       metadata = list(
+#'                         clientRequestId = "string",
+#'                         endTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         operationTotalTimeMs = 123,
+#'                         startTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         totalTimeMs = 123,
+#'                         usage = list(
+#'                           inputTokens = 123,
+#'                           outputTokens = 123
+#'                         )
+#'                       ),
+#'                       rawResponse = list(
+#'                         content = "string"
+#'                       ),
+#'                       reasoningContent = list(
+#'                         reasoningText = list(
+#'                           signature = "string",
+#'                           text = "string"
+#'                         ),
+#'                         redactedContent = raw
+#'                       ),
+#'                       traceId = "string"
+#'                     ),
+#'                     observation = list(
+#'                       actionGroupInvocationOutput = list(
+#'                         metadata = list(
+#'                           clientRequestId = "string",
+#'                           endTime = as.POSIXct(
+#'                             "2015-01-01"
+#'                           ),
+#'                           operationTotalTimeMs = 123,
+#'                           startTime = as.POSIXct(
+#'                             "2015-01-01"
+#'                           ),
+#'                           totalTimeMs = 123,
+#'                           usage = list(
+#'                             inputTokens = 123,
+#'                             outputTokens = 123
+#'                           )
+#'                         ),
+#'                         text = "string"
+#'                       ),
+#'                       agentCollaboratorInvocationOutput = list(
+#'                         agentCollaboratorAliasArn = "string",
+#'                         agentCollaboratorName = "string",
+#'                         metadata = list(
+#'                           clientRequestId = "string",
+#'                           endTime = as.POSIXct(
+#'                             "2015-01-01"
+#'                           ),
+#'                           operationTotalTimeMs = 123,
+#'                           startTime = as.POSIXct(
+#'                             "2015-01-01"
+#'                           ),
+#'                           totalTimeMs = 123,
+#'                           usage = list(
+#'                             inputTokens = 123,
+#'                             outputTokens = 123
+#'                           )
+#'                         ),
+#'                         output = list(
+#'                           returnControlPayload = list(
+#'                             invocationId = "string",
+#'                             invocationInputs = list(
+#'                               list(
+#'                                 apiInvocationInput = list(
+#'                                   actionGroup = "string",
+#'                                   actionInvocationType = "RESULT"|"USER_CONFIRMATION"|"USER_CONFIRMATION_AND_RESULT",
+#'                                   agentId = "string",
+#'                                   apiPath = "string",
+#'                                   collaboratorName = "string",
+#'                                   httpMethod = "string",
+#'                                   parameters = list(
+#'                                     list(
+#'                                       name = "string",
+#'                                       type = "string",
+#'                                       value = "string"
+#'                                     )
+#'                                   ),
+#'                                   requestBody = list(
+#'                                     content = list(
+#'                                       list(
+#'                                         properties = list(
+#'                                           list(
+#'                                             name = "string",
+#'                                             type = "string",
+#'                                             value = "string"
+#'                                           )
+#'                                         )
+#'                                       )
+#'                                     )
+#'                                   )
+#'                                 ),
+#'                                 functionInvocationInput = list(
+#'                                   actionGroup = "string",
+#'                                   actionInvocationType = "RESULT"|"USER_CONFIRMATION"|"USER_CONFIRMATION_AND_RESULT",
+#'                                   agentId = "string",
+#'                                   collaboratorName = "string",
+#'                                   function = "string",
+#'                                   parameters = list(
+#'                                     list(
+#'                                       name = "string",
+#'                                       type = "string",
+#'                                       value = "string"
+#'                                     )
+#'                                   )
+#'                                 )
+#'                               )
+#'                             )
+#'                           ),
+#'                           text = "string",
+#'                           type = "TEXT"|"RETURN_CONTROL"
+#'                         )
+#'                       ),
+#'                       codeInterpreterInvocationOutput = list(
+#'                         executionError = "string",
+#'                         executionOutput = "string",
+#'                         executionTimeout = TRUE|FALSE,
+#'                         files = list(
+#'                           "string"
+#'                         ),
+#'                         metadata = list(
+#'                           clientRequestId = "string",
+#'                           endTime = as.POSIXct(
+#'                             "2015-01-01"
+#'                           ),
+#'                           operationTotalTimeMs = 123,
+#'                           startTime = as.POSIXct(
+#'                             "2015-01-01"
+#'                           ),
+#'                           totalTimeMs = 123,
+#'                           usage = list(
+#'                             inputTokens = 123,
+#'                             outputTokens = 123
+#'                           )
+#'                         )
+#'                       ),
+#'                       finalResponse = list(
+#'                         metadata = list(
+#'                           clientRequestId = "string",
+#'                           endTime = as.POSIXct(
+#'                             "2015-01-01"
+#'                           ),
+#'                           operationTotalTimeMs = 123,
+#'                           startTime = as.POSIXct(
+#'                             "2015-01-01"
+#'                           ),
+#'                           totalTimeMs = 123,
+#'                           usage = list(
+#'                             inputTokens = 123,
+#'                             outputTokens = 123
+#'                           )
+#'                         ),
+#'                         text = "string"
+#'                       ),
+#'                       knowledgeBaseLookupOutput = list(
+#'                         metadata = list(
+#'                           clientRequestId = "string",
+#'                           endTime = as.POSIXct(
+#'                             "2015-01-01"
+#'                           ),
+#'                           operationTotalTimeMs = 123,
+#'                           startTime = as.POSIXct(
+#'                             "2015-01-01"
+#'                           ),
+#'                           totalTimeMs = 123,
+#'                           usage = list(
+#'                             inputTokens = 123,
+#'                             outputTokens = 123
+#'                           )
+#'                         ),
+#'                         retrievedReferences = list(
+#'                           list(
+#'                             content = list(
+#'                               audio = list(
+#'                                 s3Uri = "string",
+#'                                 transcription = "string"
+#'                               ),
+#'                               byteContent = "string",
+#'                               row = list(
+#'                                 list(
+#'                                   columnName = "string",
+#'                                   columnValue = "string",
+#'                                   type = "BLOB"|"BOOLEAN"|"DOUBLE"|"NULL"|"LONG"|"STRING"
+#'                                 )
+#'                               ),
+#'                               text = "string",
+#'                               type = "TEXT"|"IMAGE"|"ROW"|"AUDIO"|"VIDEO",
+#'                               video = list(
+#'                                 s3Uri = "string",
+#'                                 summary = "string"
+#'                               )
+#'                             ),
+#'                             location = list(
+#'                               confluenceLocation = list(
+#'                                 url = "string"
+#'                               ),
+#'                               customDocumentLocation = list(
+#'                                 id = "string"
+#'                               ),
+#'                               kendraDocumentLocation = list(
+#'                                 uri = "string"
+#'                               ),
+#'                               s3Location = list(
+#'                                 uri = "string"
+#'                               ),
+#'                               salesforceLocation = list(
+#'                                 url = "string"
+#'                               ),
+#'                               sharePointLocation = list(
+#'                                 url = "string"
+#'                               ),
+#'                               sqlLocation = list(
+#'                                 query = "string"
+#'                               ),
+#'                               type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL",
+#'                               webLocation = list(
+#'                                 url = "string"
+#'                               )
+#'                             ),
+#'                             metadata = list(
+#'                               list()
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       repromptResponse = list(
+#'                         source = "ACTION_GROUP"|"KNOWLEDGE_BASE"|"PARSER",
+#'                         text = "string"
+#'                       ),
+#'                       traceId = "string",
+#'                       type = "ACTION_GROUP"|"AGENT_COLLABORATOR"|"KNOWLEDGE_BASE"|"FINISH"|"ASK_USER"|"REPROMPT"
+#'                     ),
+#'                     rationale = list(
+#'                       text = "string",
+#'                       traceId = "string"
+#'                     )
+#'                   ),
+#'                   postProcessingTrace = list(
+#'                     modelInvocationInput = list(
+#'                       foundationModel = "string",
+#'                       inferenceConfiguration = list(
+#'                         maximumLength = 123,
+#'                         stopSequences = list(
+#'                           "string"
+#'                         ),
+#'                         temperature = 123.0,
+#'                         topK = 123,
+#'                         topP = 123.0
+#'                       ),
+#'                       overrideLambda = "string",
+#'                       parserMode = "DEFAULT"|"OVERRIDDEN",
+#'                       promptCreationMode = "DEFAULT"|"OVERRIDDEN",
+#'                       text = "string",
+#'                       traceId = "string",
+#'                       type = "PRE_PROCESSING"|"ORCHESTRATION"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"|"POST_PROCESSING"|"ROUTING_CLASSIFIER"
+#'                     ),
+#'                     modelInvocationOutput = list(
+#'                       metadata = list(
+#'                         clientRequestId = "string",
+#'                         endTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         operationTotalTimeMs = 123,
+#'                         startTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         totalTimeMs = 123,
+#'                         usage = list(
+#'                           inputTokens = 123,
+#'                           outputTokens = 123
+#'                         )
+#'                       ),
+#'                       parsedResponse = list(
+#'                         text = "string"
+#'                       ),
+#'                       rawResponse = list(
+#'                         content = "string"
+#'                       ),
+#'                       reasoningContent = list(
+#'                         reasoningText = list(
+#'                           signature = "string",
+#'                           text = "string"
+#'                         ),
+#'                         redactedContent = raw
+#'                       ),
+#'                       traceId = "string"
+#'                     )
+#'                   ),
+#'                   preProcessingTrace = list(
+#'                     modelInvocationInput = list(
+#'                       foundationModel = "string",
+#'                       inferenceConfiguration = list(
+#'                         maximumLength = 123,
+#'                         stopSequences = list(
+#'                           "string"
+#'                         ),
+#'                         temperature = 123.0,
+#'                         topK = 123,
+#'                         topP = 123.0
+#'                       ),
+#'                       overrideLambda = "string",
+#'                       parserMode = "DEFAULT"|"OVERRIDDEN",
+#'                       promptCreationMode = "DEFAULT"|"OVERRIDDEN",
+#'                       text = "string",
+#'                       traceId = "string",
+#'                       type = "PRE_PROCESSING"|"ORCHESTRATION"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"|"POST_PROCESSING"|"ROUTING_CLASSIFIER"
+#'                     ),
+#'                     modelInvocationOutput = list(
+#'                       metadata = list(
+#'                         clientRequestId = "string",
+#'                         endTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         operationTotalTimeMs = 123,
+#'                         startTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         totalTimeMs = 123,
+#'                         usage = list(
+#'                           inputTokens = 123,
+#'                           outputTokens = 123
+#'                         )
+#'                       ),
+#'                       parsedResponse = list(
+#'                         isValid = TRUE|FALSE,
+#'                         rationale = "string"
+#'                       ),
+#'                       rawResponse = list(
+#'                         content = "string"
+#'                       ),
+#'                       reasoningContent = list(
+#'                         reasoningText = list(
+#'                           signature = "string",
+#'                           text = "string"
+#'                         ),
+#'                         redactedContent = raw
+#'                       ),
+#'                       traceId = "string"
+#'                     )
+#'                   ),
+#'                   routingClassifierTrace = list(
+#'                     invocationInput = list(
+#'                       actionGroupInvocationInput = list(
+#'                         actionGroupName = "string",
+#'                         apiPath = "string",
+#'                         executionType = "LAMBDA"|"RETURN_CONTROL",
+#'                         function = "string",
+#'                         invocationId = "string",
+#'                         parameters = list(
+#'                           list(
+#'                             name = "string",
+#'                             type = "string",
+#'                             value = "string"
+#'                           )
+#'                         ),
+#'                         requestBody = list(
+#'                           content = list(
+#'                             list(
+#'                               list(
+#'                                 name = "string",
+#'                                 type = "string",
+#'                                 value = "string"
+#'                               )
+#'                             )
+#'                           )
+#'                         ),
+#'                         verb = "string"
+#'                       ),
+#'                       agentCollaboratorInvocationInput = list(
+#'                         agentCollaboratorAliasArn = "string",
+#'                         agentCollaboratorName = "string",
+#'                         input = list(
+#'                           returnControlResults = list(
+#'                             invocationId = "string",
+#'                             returnControlInvocationResults = list(
+#'                               list(
+#'                                 apiResult = list(
+#'                                   actionGroup = "string",
+#'                                   agentId = "string",
+#'                                   apiPath = "string",
+#'                                   confirmationState = "CONFIRM"|"DENY",
+#'                                   httpMethod = "string",
+#'                                   httpStatusCode = 123,
+#'                                   responseBody = list(
+#'                                     list(
+#'                                       body = "string",
+#'                                       images = list(
+#'                                         list(
+#'                                           format = "png"|"jpeg"|"gif"|"webp",
+#'                                           source = list(
+#'                                             bytes = raw
+#'                                           )
+#'                                         )
+#'                                       )
+#'                                     )
+#'                                   ),
+#'                                   responseState = "FAILURE"|"REPROMPT"
+#'                                 ),
+#'                                 functionResult = list(
+#'                                   actionGroup = "string",
+#'                                   agentId = "string",
+#'                                   confirmationState = "CONFIRM"|"DENY",
+#'                                   function = "string",
+#'                                   responseBody = list(
+#'                                     list(
+#'                                       body = "string",
+#'                                       images = list(
+#'                                         list(
+#'                                           format = "png"|"jpeg"|"gif"|"webp",
+#'                                           source = list(
+#'                                             bytes = raw
+#'                                           )
+#'                                         )
+#'                                       )
+#'                                     )
+#'                                   ),
+#'                                   responseState = "FAILURE"|"REPROMPT"
+#'                                 )
+#'                               )
+#'                             )
+#'                           ),
+#'                           text = "string",
+#'                           type = "TEXT"|"RETURN_CONTROL"
+#'                         )
+#'                       ),
+#'                       codeInterpreterInvocationInput = list(
+#'                         code = "string",
+#'                         files = list(
+#'                           "string"
+#'                         )
+#'                       ),
+#'                       invocationType = "ACTION_GROUP"|"KNOWLEDGE_BASE"|"FINISH"|"ACTION_GROUP_CODE_INTERPRETER"|"AGENT_COLLABORATOR",
+#'                       knowledgeBaseLookupInput = list(
+#'                         knowledgeBaseId = "string",
+#'                         text = "string"
+#'                       ),
+#'                       traceId = "string"
+#'                     ),
+#'                     modelInvocationInput = list(
+#'                       foundationModel = "string",
+#'                       inferenceConfiguration = list(
+#'                         maximumLength = 123,
+#'                         stopSequences = list(
+#'                           "string"
+#'                         ),
+#'                         temperature = 123.0,
+#'                         topK = 123,
+#'                         topP = 123.0
+#'                       ),
+#'                       overrideLambda = "string",
+#'                       parserMode = "DEFAULT"|"OVERRIDDEN",
+#'                       promptCreationMode = "DEFAULT"|"OVERRIDDEN",
+#'                       text = "string",
+#'                       traceId = "string",
+#'                       type = "PRE_PROCESSING"|"ORCHESTRATION"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"|"POST_PROCESSING"|"ROUTING_CLASSIFIER"
+#'                     ),
+#'                     modelInvocationOutput = list(
+#'                       metadata = list(
+#'                         clientRequestId = "string",
+#'                         endTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         operationTotalTimeMs = 123,
+#'                         startTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         totalTimeMs = 123,
+#'                         usage = list(
+#'                           inputTokens = 123,
+#'                           outputTokens = 123
+#'                         )
+#'                       ),
+#'                       rawResponse = list(
+#'                         content = "string"
+#'                       ),
+#'                       traceId = "string"
+#'                     ),
+#'                     observation = list(
+#'                       actionGroupInvocationOutput = list(
+#'                         metadata = list(
+#'                           clientRequestId = "string",
+#'                           endTime = as.POSIXct(
+#'                             "2015-01-01"
+#'                           ),
+#'                           operationTotalTimeMs = 123,
+#'                           startTime = as.POSIXct(
+#'                             "2015-01-01"
+#'                           ),
+#'                           totalTimeMs = 123,
+#'                           usage = list(
+#'                             inputTokens = 123,
+#'                             outputTokens = 123
+#'                           )
+#'                         ),
+#'                         text = "string"
+#'                       ),
+#'                       agentCollaboratorInvocationOutput = list(
+#'                         agentCollaboratorAliasArn = "string",
+#'                         agentCollaboratorName = "string",
+#'                         metadata = list(
+#'                           clientRequestId = "string",
+#'                           endTime = as.POSIXct(
+#'                             "2015-01-01"
+#'                           ),
+#'                           operationTotalTimeMs = 123,
+#'                           startTime = as.POSIXct(
+#'                             "2015-01-01"
+#'                           ),
+#'                           totalTimeMs = 123,
+#'                           usage = list(
+#'                             inputTokens = 123,
+#'                             outputTokens = 123
+#'                           )
+#'                         ),
+#'                         output = list(
+#'                           returnControlPayload = list(
+#'                             invocationId = "string",
+#'                             invocationInputs = list(
+#'                               list(
+#'                                 apiInvocationInput = list(
+#'                                   actionGroup = "string",
+#'                                   actionInvocationType = "RESULT"|"USER_CONFIRMATION"|"USER_CONFIRMATION_AND_RESULT",
+#'                                   agentId = "string",
+#'                                   apiPath = "string",
+#'                                   collaboratorName = "string",
+#'                                   httpMethod = "string",
+#'                                   parameters = list(
+#'                                     list(
+#'                                       name = "string",
+#'                                       type = "string",
+#'                                       value = "string"
+#'                                     )
+#'                                   ),
+#'                                   requestBody = list(
+#'                                     content = list(
+#'                                       list(
+#'                                         properties = list(
+#'                                           list(
+#'                                             name = "string",
+#'                                             type = "string",
+#'                                             value = "string"
+#'                                           )
+#'                                         )
+#'                                       )
+#'                                     )
+#'                                   )
+#'                                 ),
+#'                                 functionInvocationInput = list(
+#'                                   actionGroup = "string",
+#'                                   actionInvocationType = "RESULT"|"USER_CONFIRMATION"|"USER_CONFIRMATION_AND_RESULT",
+#'                                   agentId = "string",
+#'                                   collaboratorName = "string",
+#'                                   function = "string",
+#'                                   parameters = list(
+#'                                     list(
+#'                                       name = "string",
+#'                                       type = "string",
+#'                                       value = "string"
+#'                                     )
+#'                                   )
+#'                                 )
+#'                               )
+#'                             )
+#'                           ),
+#'                           text = "string",
+#'                           type = "TEXT"|"RETURN_CONTROL"
+#'                         )
+#'                       ),
+#'                       codeInterpreterInvocationOutput = list(
+#'                         executionError = "string",
+#'                         executionOutput = "string",
+#'                         executionTimeout = TRUE|FALSE,
+#'                         files = list(
+#'                           "string"
+#'                         ),
+#'                         metadata = list(
+#'                           clientRequestId = "string",
+#'                           endTime = as.POSIXct(
+#'                             "2015-01-01"
+#'                           ),
+#'                           operationTotalTimeMs = 123,
+#'                           startTime = as.POSIXct(
+#'                             "2015-01-01"
+#'                           ),
+#'                           totalTimeMs = 123,
+#'                           usage = list(
+#'                             inputTokens = 123,
+#'                             outputTokens = 123
+#'                           )
+#'                         )
+#'                       ),
+#'                       finalResponse = list(
+#'                         metadata = list(
+#'                           clientRequestId = "string",
+#'                           endTime = as.POSIXct(
+#'                             "2015-01-01"
+#'                           ),
+#'                           operationTotalTimeMs = 123,
+#'                           startTime = as.POSIXct(
+#'                             "2015-01-01"
+#'                           ),
+#'                           totalTimeMs = 123,
+#'                           usage = list(
+#'                             inputTokens = 123,
+#'                             outputTokens = 123
+#'                           )
+#'                         ),
+#'                         text = "string"
+#'                       ),
+#'                       knowledgeBaseLookupOutput = list(
+#'                         metadata = list(
+#'                           clientRequestId = "string",
+#'                           endTime = as.POSIXct(
+#'                             "2015-01-01"
+#'                           ),
+#'                           operationTotalTimeMs = 123,
+#'                           startTime = as.POSIXct(
+#'                             "2015-01-01"
+#'                           ),
+#'                           totalTimeMs = 123,
+#'                           usage = list(
+#'                             inputTokens = 123,
+#'                             outputTokens = 123
+#'                           )
+#'                         ),
+#'                         retrievedReferences = list(
+#'                           list(
+#'                             content = list(
+#'                               audio = list(
+#'                                 s3Uri = "string",
+#'                                 transcription = "string"
+#'                               ),
+#'                               byteContent = "string",
+#'                               row = list(
+#'                                 list(
+#'                                   columnName = "string",
+#'                                   columnValue = "string",
+#'                                   type = "BLOB"|"BOOLEAN"|"DOUBLE"|"NULL"|"LONG"|"STRING"
+#'                                 )
+#'                               ),
+#'                               text = "string",
+#'                               type = "TEXT"|"IMAGE"|"ROW"|"AUDIO"|"VIDEO",
+#'                               video = list(
+#'                                 s3Uri = "string",
+#'                                 summary = "string"
+#'                               )
+#'                             ),
+#'                             location = list(
+#'                               confluenceLocation = list(
+#'                                 url = "string"
+#'                               ),
+#'                               customDocumentLocation = list(
+#'                                 id = "string"
+#'                               ),
+#'                               kendraDocumentLocation = list(
+#'                                 uri = "string"
+#'                               ),
+#'                               s3Location = list(
+#'                                 uri = "string"
+#'                               ),
+#'                               salesforceLocation = list(
+#'                                 url = "string"
+#'                               ),
+#'                               sharePointLocation = list(
+#'                                 url = "string"
+#'                               ),
+#'                               sqlLocation = list(
+#'                                 query = "string"
+#'                               ),
+#'                               type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL",
+#'                               webLocation = list(
+#'                                 url = "string"
+#'                               )
+#'                             ),
+#'                             metadata = list(
+#'                               list()
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       repromptResponse = list(
+#'                         source = "ACTION_GROUP"|"KNOWLEDGE_BASE"|"PARSER",
+#'                         text = "string"
+#'                       ),
+#'                       traceId = "string",
+#'                       type = "ACTION_GROUP"|"AGENT_COLLABORATOR"|"KNOWLEDGE_BASE"|"FINISH"|"ASK_USER"|"REPROMPT"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
 #'         nodeInputTrace = list(
 #'           fields = list(
 #'             list(
+#'               category = "LoopCondition"|"ReturnValueToLoopStart"|"ExitLoop",
 #'               content = list(
 #'                 document = list()
 #'               ),
-#'               nodeInputName = "string"
+#'               executionChain = list(
+#'                 list(
+#'                   index = 123,
+#'                   nodeName = "string",
+#'                   type = "Iterator"|"Loop"
+#'                 )
+#'               ),
+#'               nodeInputName = "string",
+#'               source = list(
+#'                 expression = "string",
+#'                 nodeName = "string",
+#'                 outputFieldName = "string"
+#'               ),
+#'               type = "String"|"Number"|"Boolean"|"Object"|"Array"
 #'             )
 #'           ),
 #'           nodeName = "string",
@@ -2175,7 +3355,14 @@ bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, bedrockModel
 #'               content = list(
 #'                 document = list()
 #'               ),
-#'               nodeOutputName = "string"
+#'               next = list(
+#'                 list(
+#'                   inputFieldName = "string",
+#'                   nodeName = "string"
+#'                 )
+#'               ),
+#'               nodeOutputName = "string",
+#'               type = "String"|"Number"|"Boolean"|"Object"|"Array"
 #'             )
 #'           ),
 #'           nodeName = "string",
@@ -2288,7 +3475,8 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'   customerEncryptionKeyArn, enableTrace, endSession, foundationModel,
 #'   guardrailConfiguration, idleSessionTTLInSeconds, inlineSessionState,
 #'   inputText, instruction, knowledgeBases, orchestrationType,
-#'   promptOverrideConfiguration, sessionId, streamingConfigurations)
+#'   promptCreationConfigurations, promptOverrideConfiguration, sessionId,
+#'   streamingConfigurations)
 #'
 #' @param actionGroups A list of action groups with each action group defining the action the
 #' inline agent needs to carry out.
@@ -2339,6 +3527,13 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #' @param knowledgeBases Contains information of the knowledge bases to associate with.
 #' @param orchestrationType Specifies the type of orchestration strategy for the agent. This is set
 #' to DEFAULT orchestration type, by default.
+#' @param promptCreationConfigurations Specifies parameters that control how the service populates the agent
+#' prompt for an
+#' [`invoke_inline_agent`][bedrockagentruntime_invoke_inline_agent]
+#' request. You can control which aspects of previous invocations in the
+#' same agent session the service uses to populate the agent prompt. This
+#' gives you more granular control over the contextual history that is used
+#' to process the current request.
 #' @param promptOverrideConfiguration Configurations for advanced prompts used to override the default prompts
 #' to enhance the accuracy of the inline agent.
 #' @param sessionId &#91;required&#93; The unique identifier of the session. Use the same value across requests
@@ -2376,6 +3571,10 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'             retrievedReferences = list(
 #'               list(
 #'                 content = list(
+#'                   audio = list(
+#'                     s3Uri = "string",
+#'                     transcription = "string"
+#'                   ),
 #'                   byteContent = "string",
 #'                   row = list(
 #'                     list(
@@ -2385,7 +3584,11 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'                     )
 #'                   ),
 #'                   text = "string",
-#'                   type = "TEXT"|"IMAGE"|"ROW"
+#'                   type = "TEXT"|"IMAGE"|"ROW"|"AUDIO"|"VIDEO",
+#'                   video = list(
+#'                     s3Uri = "string",
+#'                     summary = "string"
+#'                   )
 #'                 ),
 #'                 location = list(
 #'                   confluenceLocation = list(
@@ -2962,6 +4165,10 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'               retrievedReferences = list(
 #'                 list(
 #'                   content = list(
+#'                     audio = list(
+#'                       s3Uri = "string",
+#'                       transcription = "string"
+#'                     ),
 #'                     byteContent = "string",
 #'                     row = list(
 #'                       list(
@@ -2971,7 +4178,11 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'                       )
 #'                     ),
 #'                     text = "string",
-#'                     type = "TEXT"|"IMAGE"|"ROW"
+#'                     type = "TEXT"|"IMAGE"|"ROW"|"AUDIO"|"VIDEO",
+#'                     video = list(
+#'                       s3Uri = "string",
+#'                       summary = "string"
+#'                     )
 #'                   ),
 #'                   location = list(
 #'                     confluenceLocation = list(
@@ -3409,6 +4620,10 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'               retrievedReferences = list(
 #'                 list(
 #'                   content = list(
+#'                     audio = list(
+#'                       s3Uri = "string",
+#'                       transcription = "string"
+#'                     ),
 #'                     byteContent = "string",
 #'                     row = list(
 #'                       list(
@@ -3418,7 +4633,11 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'                       )
 #'                     ),
 #'                     text = "string",
-#'                     type = "TEXT"|"IMAGE"|"ROW"
+#'                     type = "TEXT"|"IMAGE"|"ROW"|"AUDIO"|"VIDEO",
+#'                     video = list(
+#'                       s3Uri = "string",
+#'                       summary = "string"
+#'                     )
 #'                   ),
 #'                   location = list(
 #'                     confluenceLocation = list(
@@ -3911,6 +5130,10 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'     )
 #'   ),
 #'   orchestrationType = "DEFAULT"|"CUSTOM_ORCHESTRATION",
+#'   promptCreationConfigurations = list(
+#'     excludePreviousThinkingSteps = TRUE|FALSE,
+#'     previousConversationTurnsToInclude = 123
+#'   ),
 #'   promptOverrideConfiguration = list(
 #'     overrideLambda = "string",
 #'     promptConfigurations = list(
@@ -3947,7 +5170,7 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #' @rdname bedrockagentruntime_invoke_inline_agent
 #'
 #' @aliases bedrockagentruntime_invoke_inline_agent
-bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, agentCollaboration = NULL, agentName = NULL, bedrockModelConfigurations = NULL, collaboratorConfigurations = NULL, collaborators = NULL, customOrchestration = NULL, customerEncryptionKeyArn = NULL, enableTrace = NULL, endSession = NULL, foundationModel, guardrailConfiguration = NULL, idleSessionTTLInSeconds = NULL, inlineSessionState = NULL, inputText = NULL, instruction, knowledgeBases = NULL, orchestrationType = NULL, promptOverrideConfiguration = NULL, sessionId, streamingConfigurations = NULL) {
+bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, agentCollaboration = NULL, agentName = NULL, bedrockModelConfigurations = NULL, collaboratorConfigurations = NULL, collaborators = NULL, customOrchestration = NULL, customerEncryptionKeyArn = NULL, enableTrace = NULL, endSession = NULL, foundationModel, guardrailConfiguration = NULL, idleSessionTTLInSeconds = NULL, inlineSessionState = NULL, inputText = NULL, instruction, knowledgeBases = NULL, orchestrationType = NULL, promptCreationConfigurations = NULL, promptOverrideConfiguration = NULL, sessionId, streamingConfigurations = NULL) {
   op <- new_operation(
     name = "InvokeInlineAgent",
     http_method = "POST",
@@ -3956,7 +5179,7 @@ bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, agentCo
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .bedrockagentruntime$invoke_inline_agent_input(actionGroups = actionGroups, agentCollaboration = agentCollaboration, agentName = agentName, bedrockModelConfigurations = bedrockModelConfigurations, collaboratorConfigurations = collaboratorConfigurations, collaborators = collaborators, customOrchestration = customOrchestration, customerEncryptionKeyArn = customerEncryptionKeyArn, enableTrace = enableTrace, endSession = endSession, foundationModel = foundationModel, guardrailConfiguration = guardrailConfiguration, idleSessionTTLInSeconds = idleSessionTTLInSeconds, inlineSessionState = inlineSessionState, inputText = inputText, instruction = instruction, knowledgeBases = knowledgeBases, orchestrationType = orchestrationType, promptOverrideConfiguration = promptOverrideConfiguration, sessionId = sessionId, streamingConfigurations = streamingConfigurations)
+  input <- .bedrockagentruntime$invoke_inline_agent_input(actionGroups = actionGroups, agentCollaboration = agentCollaboration, agentName = agentName, bedrockModelConfigurations = bedrockModelConfigurations, collaboratorConfigurations = collaboratorConfigurations, collaborators = collaborators, customOrchestration = customOrchestration, customerEncryptionKeyArn = customerEncryptionKeyArn, enableTrace = enableTrace, endSession = endSession, foundationModel = foundationModel, guardrailConfiguration = guardrailConfiguration, idleSessionTTLInSeconds = idleSessionTTLInSeconds, inlineSessionState = inlineSessionState, inputText = inputText, instruction = instruction, knowledgeBases = knowledgeBases, orchestrationType = orchestrationType, promptCreationConfigurations = promptCreationConfigurations, promptOverrideConfiguration = promptOverrideConfiguration, sessionId = sessionId, streamingConfigurations = streamingConfigurations)
   output <- .bedrockagentruntime$invoke_inline_agent_output()
   config <- get_config()
   svc <- .bedrockagentruntime$service(config, op)
@@ -3965,6 +5188,1264 @@ bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, agentCo
   return(response)
 }
 .bedrockagentruntime$operations$invoke_inline_agent <- bedrockagentruntime_invoke_inline_agent
+
+#' Lists events that occurred during a flow execution
+#'
+#' @description
+#' Lists events that occurred during a flow execution. Events provide
+#' detailed information about the execution progress, including node inputs
+#' and outputs, flow inputs and outputs, condition results, and failure
+#' events.
+#' 
+#' Flow executions is in preview release for Amazon Bedrock and is subject
+#' to change.
+#'
+#' @usage
+#' bedrockagentruntime_list_flow_execution_events(eventType,
+#'   executionIdentifier, flowAliasIdentifier, flowIdentifier, maxResults,
+#'   nextToken)
+#'
+#' @param eventType &#91;required&#93; The type of events to retrieve. Specify `Node` for node-level events or
+#' `Flow` for flow-level events.
+#' @param executionIdentifier &#91;required&#93; The unique identifier of the flow execution.
+#' @param flowAliasIdentifier &#91;required&#93; The unique identifier of the flow alias used for the execution.
+#' @param flowIdentifier &#91;required&#93; The unique identifier of the flow.
+#' @param maxResults The maximum number of events to return in a single response. If more
+#' events exist than the specified maxResults value, a token is included in
+#' the response so that the remaining results can be retrieved.
+#' @param nextToken A token to retrieve the next set of results. This value is returned in
+#' the response if more results are available.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   flowExecutionEvents = list(
+#'     list(
+#'       conditionResultEvent = list(
+#'         nodeName = "string",
+#'         satisfiedConditions = list(
+#'           list(
+#'             conditionName = "string"
+#'           )
+#'         ),
+#'         timestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       flowFailureEvent = list(
+#'         errorCode = "VALIDATION"|"INTERNAL_SERVER"|"NODE_EXECUTION_FAILED",
+#'         errorMessage = "string",
+#'         timestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       flowInputEvent = list(
+#'         fields = list(
+#'           list(
+#'             content = list(
+#'               document = list()
+#'             ),
+#'             name = "string"
+#'           )
+#'         ),
+#'         nodeName = "string",
+#'         timestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       flowOutputEvent = list(
+#'         fields = list(
+#'           list(
+#'             content = list(
+#'               document = list()
+#'             ),
+#'             name = "string"
+#'           )
+#'         ),
+#'         nodeName = "string",
+#'         timestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       nodeActionEvent = list(
+#'         nodeName = "string",
+#'         operationName = "string",
+#'         operationRequest = list(),
+#'         operationResponse = list(),
+#'         requestId = "string",
+#'         serviceName = "string",
+#'         timestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       nodeDependencyEvent = list(
+#'         nodeName = "string",
+#'         timestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         traceElements = list(
+#'           agentTraces = list(
+#'             list(
+#'               agentAliasId = "string",
+#'               agentId = "string",
+#'               agentVersion = "string",
+#'               callerChain = list(
+#'                 list(
+#'                   agentAliasArn = "string"
+#'                 )
+#'               ),
+#'               collaboratorName = "string",
+#'               eventTime = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               sessionId = "string",
+#'               trace = list(
+#'                 customOrchestrationTrace = list(
+#'                   event = list(
+#'                     text = "string"
+#'                   ),
+#'                   traceId = "string"
+#'                 ),
+#'                 failureTrace = list(
+#'                   failureCode = 123,
+#'                   failureReason = "string",
+#'                   metadata = list(
+#'                     clientRequestId = "string",
+#'                     endTime = as.POSIXct(
+#'                       "2015-01-01"
+#'                     ),
+#'                     operationTotalTimeMs = 123,
+#'                     startTime = as.POSIXct(
+#'                       "2015-01-01"
+#'                     ),
+#'                     totalTimeMs = 123,
+#'                     usage = list(
+#'                       inputTokens = 123,
+#'                       outputTokens = 123
+#'                     )
+#'                   ),
+#'                   traceId = "string"
+#'                 ),
+#'                 guardrailTrace = list(
+#'                   action = "INTERVENED"|"NONE",
+#'                   inputAssessments = list(
+#'                     list(
+#'                       contentPolicy = list(
+#'                         filters = list(
+#'                           list(
+#'                             action = "BLOCKED",
+#'                             confidence = "NONE"|"LOW"|"MEDIUM"|"HIGH",
+#'                             type = "INSULTS"|"HATE"|"SEXUAL"|"VIOLENCE"|"MISCONDUCT"|"PROMPT_ATTACK"
+#'                           )
+#'                         )
+#'                       ),
+#'                       sensitiveInformationPolicy = list(
+#'                         piiEntities = list(
+#'                           list(
+#'                             action = "BLOCKED"|"ANONYMIZED",
+#'                             match = "string",
+#'                             type = "ADDRESS"|"AGE"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"DRIVER_ID"|"EMAIL"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"IP_ADDRESS"|"LICENSE_PLATE"|"MAC_ADDRESS"|"NAME"|"PASSWORD"|"PHONE"|"PIN"|"SWIFT_CODE"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"|"URL"|"USERNAME"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"VEHICLE_IDENTIFICATION_NUMBER"
+#'                           )
+#'                         ),
+#'                         regexes = list(
+#'                           list(
+#'                             action = "BLOCKED"|"ANONYMIZED",
+#'                             match = "string",
+#'                             name = "string",
+#'                             regex = "string"
+#'                           )
+#'                         )
+#'                       ),
+#'                       topicPolicy = list(
+#'                         topics = list(
+#'                           list(
+#'                             action = "BLOCKED",
+#'                             name = "string",
+#'                             type = "DENY"
+#'                           )
+#'                         )
+#'                       ),
+#'                       wordPolicy = list(
+#'                         customWords = list(
+#'                           list(
+#'                             action = "BLOCKED",
+#'                             match = "string"
+#'                           )
+#'                         ),
+#'                         managedWordLists = list(
+#'                           list(
+#'                             action = "BLOCKED",
+#'                             match = "string",
+#'                             type = "PROFANITY"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   metadata = list(
+#'                     clientRequestId = "string",
+#'                     endTime = as.POSIXct(
+#'                       "2015-01-01"
+#'                     ),
+#'                     operationTotalTimeMs = 123,
+#'                     startTime = as.POSIXct(
+#'                       "2015-01-01"
+#'                     ),
+#'                     totalTimeMs = 123,
+#'                     usage = list(
+#'                       inputTokens = 123,
+#'                       outputTokens = 123
+#'                     )
+#'                   ),
+#'                   outputAssessments = list(
+#'                     list(
+#'                       contentPolicy = list(
+#'                         filters = list(
+#'                           list(
+#'                             action = "BLOCKED",
+#'                             confidence = "NONE"|"LOW"|"MEDIUM"|"HIGH",
+#'                             type = "INSULTS"|"HATE"|"SEXUAL"|"VIOLENCE"|"MISCONDUCT"|"PROMPT_ATTACK"
+#'                           )
+#'                         )
+#'                       ),
+#'                       sensitiveInformationPolicy = list(
+#'                         piiEntities = list(
+#'                           list(
+#'                             action = "BLOCKED"|"ANONYMIZED",
+#'                             match = "string",
+#'                             type = "ADDRESS"|"AGE"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"DRIVER_ID"|"EMAIL"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"IP_ADDRESS"|"LICENSE_PLATE"|"MAC_ADDRESS"|"NAME"|"PASSWORD"|"PHONE"|"PIN"|"SWIFT_CODE"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"|"URL"|"USERNAME"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"VEHICLE_IDENTIFICATION_NUMBER"
+#'                           )
+#'                         ),
+#'                         regexes = list(
+#'                           list(
+#'                             action = "BLOCKED"|"ANONYMIZED",
+#'                             match = "string",
+#'                             name = "string",
+#'                             regex = "string"
+#'                           )
+#'                         )
+#'                       ),
+#'                       topicPolicy = list(
+#'                         topics = list(
+#'                           list(
+#'                             action = "BLOCKED",
+#'                             name = "string",
+#'                             type = "DENY"
+#'                           )
+#'                         )
+#'                       ),
+#'                       wordPolicy = list(
+#'                         customWords = list(
+#'                           list(
+#'                             action = "BLOCKED",
+#'                             match = "string"
+#'                           )
+#'                         ),
+#'                         managedWordLists = list(
+#'                           list(
+#'                             action = "BLOCKED",
+#'                             match = "string",
+#'                             type = "PROFANITY"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   traceId = "string"
+#'                 ),
+#'                 orchestrationTrace = list(
+#'                   invocationInput = list(
+#'                     actionGroupInvocationInput = list(
+#'                       actionGroupName = "string",
+#'                       apiPath = "string",
+#'                       executionType = "LAMBDA"|"RETURN_CONTROL",
+#'                       function = "string",
+#'                       invocationId = "string",
+#'                       parameters = list(
+#'                         list(
+#'                           name = "string",
+#'                           type = "string",
+#'                           value = "string"
+#'                         )
+#'                       ),
+#'                       requestBody = list(
+#'                         content = list(
+#'                           list(
+#'                             list(
+#'                               name = "string",
+#'                               type = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       verb = "string"
+#'                     ),
+#'                     agentCollaboratorInvocationInput = list(
+#'                       agentCollaboratorAliasArn = "string",
+#'                       agentCollaboratorName = "string",
+#'                       input = list(
+#'                         returnControlResults = list(
+#'                           invocationId = "string",
+#'                           returnControlInvocationResults = list(
+#'                             list(
+#'                               apiResult = list(
+#'                                 actionGroup = "string",
+#'                                 agentId = "string",
+#'                                 apiPath = "string",
+#'                                 confirmationState = "CONFIRM"|"DENY",
+#'                                 httpMethod = "string",
+#'                                 httpStatusCode = 123,
+#'                                 responseBody = list(
+#'                                   list(
+#'                                     body = "string",
+#'                                     images = list(
+#'                                       list(
+#'                                         format = "png"|"jpeg"|"gif"|"webp",
+#'                                         source = list(
+#'                                           bytes = raw
+#'                                         )
+#'                                       )
+#'                                     )
+#'                                   )
+#'                                 ),
+#'                                 responseState = "FAILURE"|"REPROMPT"
+#'                               ),
+#'                               functionResult = list(
+#'                                 actionGroup = "string",
+#'                                 agentId = "string",
+#'                                 confirmationState = "CONFIRM"|"DENY",
+#'                                 function = "string",
+#'                                 responseBody = list(
+#'                                   list(
+#'                                     body = "string",
+#'                                     images = list(
+#'                                       list(
+#'                                         format = "png"|"jpeg"|"gif"|"webp",
+#'                                         source = list(
+#'                                           bytes = raw
+#'                                         )
+#'                                       )
+#'                                     )
+#'                                   )
+#'                                 ),
+#'                                 responseState = "FAILURE"|"REPROMPT"
+#'                               )
+#'                             )
+#'                           )
+#'                         ),
+#'                         text = "string",
+#'                         type = "TEXT"|"RETURN_CONTROL"
+#'                       )
+#'                     ),
+#'                     codeInterpreterInvocationInput = list(
+#'                       code = "string",
+#'                       files = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     invocationType = "ACTION_GROUP"|"KNOWLEDGE_BASE"|"FINISH"|"ACTION_GROUP_CODE_INTERPRETER"|"AGENT_COLLABORATOR",
+#'                     knowledgeBaseLookupInput = list(
+#'                       knowledgeBaseId = "string",
+#'                       text = "string"
+#'                     ),
+#'                     traceId = "string"
+#'                   ),
+#'                   modelInvocationInput = list(
+#'                     foundationModel = "string",
+#'                     inferenceConfiguration = list(
+#'                       maximumLength = 123,
+#'                       stopSequences = list(
+#'                         "string"
+#'                       ),
+#'                       temperature = 123.0,
+#'                       topK = 123,
+#'                       topP = 123.0
+#'                     ),
+#'                     overrideLambda = "string",
+#'                     parserMode = "DEFAULT"|"OVERRIDDEN",
+#'                     promptCreationMode = "DEFAULT"|"OVERRIDDEN",
+#'                     text = "string",
+#'                     traceId = "string",
+#'                     type = "PRE_PROCESSING"|"ORCHESTRATION"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"|"POST_PROCESSING"|"ROUTING_CLASSIFIER"
+#'                   ),
+#'                   modelInvocationOutput = list(
+#'                     metadata = list(
+#'                       clientRequestId = "string",
+#'                       endTime = as.POSIXct(
+#'                         "2015-01-01"
+#'                       ),
+#'                       operationTotalTimeMs = 123,
+#'                       startTime = as.POSIXct(
+#'                         "2015-01-01"
+#'                       ),
+#'                       totalTimeMs = 123,
+#'                       usage = list(
+#'                         inputTokens = 123,
+#'                         outputTokens = 123
+#'                       )
+#'                     ),
+#'                     rawResponse = list(
+#'                       content = "string"
+#'                     ),
+#'                     reasoningContent = list(
+#'                       reasoningText = list(
+#'                         signature = "string",
+#'                         text = "string"
+#'                       ),
+#'                       redactedContent = raw
+#'                     ),
+#'                     traceId = "string"
+#'                   ),
+#'                   observation = list(
+#'                     actionGroupInvocationOutput = list(
+#'                       metadata = list(
+#'                         clientRequestId = "string",
+#'                         endTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         operationTotalTimeMs = 123,
+#'                         startTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         totalTimeMs = 123,
+#'                         usage = list(
+#'                           inputTokens = 123,
+#'                           outputTokens = 123
+#'                         )
+#'                       ),
+#'                       text = "string"
+#'                     ),
+#'                     agentCollaboratorInvocationOutput = list(
+#'                       agentCollaboratorAliasArn = "string",
+#'                       agentCollaboratorName = "string",
+#'                       metadata = list(
+#'                         clientRequestId = "string",
+#'                         endTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         operationTotalTimeMs = 123,
+#'                         startTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         totalTimeMs = 123,
+#'                         usage = list(
+#'                           inputTokens = 123,
+#'                           outputTokens = 123
+#'                         )
+#'                       ),
+#'                       output = list(
+#'                         returnControlPayload = list(
+#'                           invocationId = "string",
+#'                           invocationInputs = list(
+#'                             list(
+#'                               apiInvocationInput = list(
+#'                                 actionGroup = "string",
+#'                                 actionInvocationType = "RESULT"|"USER_CONFIRMATION"|"USER_CONFIRMATION_AND_RESULT",
+#'                                 agentId = "string",
+#'                                 apiPath = "string",
+#'                                 collaboratorName = "string",
+#'                                 httpMethod = "string",
+#'                                 parameters = list(
+#'                                   list(
+#'                                     name = "string",
+#'                                     type = "string",
+#'                                     value = "string"
+#'                                   )
+#'                                 ),
+#'                                 requestBody = list(
+#'                                   content = list(
+#'                                     list(
+#'                                       properties = list(
+#'                                         list(
+#'                                           name = "string",
+#'                                           type = "string",
+#'                                           value = "string"
+#'                                         )
+#'                                       )
+#'                                     )
+#'                                   )
+#'                                 )
+#'                               ),
+#'                               functionInvocationInput = list(
+#'                                 actionGroup = "string",
+#'                                 actionInvocationType = "RESULT"|"USER_CONFIRMATION"|"USER_CONFIRMATION_AND_RESULT",
+#'                                 agentId = "string",
+#'                                 collaboratorName = "string",
+#'                                 function = "string",
+#'                                 parameters = list(
+#'                                   list(
+#'                                     name = "string",
+#'                                     type = "string",
+#'                                     value = "string"
+#'                                   )
+#'                                 )
+#'                               )
+#'                             )
+#'                           )
+#'                         ),
+#'                         text = "string",
+#'                         type = "TEXT"|"RETURN_CONTROL"
+#'                       )
+#'                     ),
+#'                     codeInterpreterInvocationOutput = list(
+#'                       executionError = "string",
+#'                       executionOutput = "string",
+#'                       executionTimeout = TRUE|FALSE,
+#'                       files = list(
+#'                         "string"
+#'                       ),
+#'                       metadata = list(
+#'                         clientRequestId = "string",
+#'                         endTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         operationTotalTimeMs = 123,
+#'                         startTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         totalTimeMs = 123,
+#'                         usage = list(
+#'                           inputTokens = 123,
+#'                           outputTokens = 123
+#'                         )
+#'                       )
+#'                     ),
+#'                     finalResponse = list(
+#'                       metadata = list(
+#'                         clientRequestId = "string",
+#'                         endTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         operationTotalTimeMs = 123,
+#'                         startTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         totalTimeMs = 123,
+#'                         usage = list(
+#'                           inputTokens = 123,
+#'                           outputTokens = 123
+#'                         )
+#'                       ),
+#'                       text = "string"
+#'                     ),
+#'                     knowledgeBaseLookupOutput = list(
+#'                       metadata = list(
+#'                         clientRequestId = "string",
+#'                         endTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         operationTotalTimeMs = 123,
+#'                         startTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         totalTimeMs = 123,
+#'                         usage = list(
+#'                           inputTokens = 123,
+#'                           outputTokens = 123
+#'                         )
+#'                       ),
+#'                       retrievedReferences = list(
+#'                         list(
+#'                           content = list(
+#'                             audio = list(
+#'                               s3Uri = "string",
+#'                               transcription = "string"
+#'                             ),
+#'                             byteContent = "string",
+#'                             row = list(
+#'                               list(
+#'                                 columnName = "string",
+#'                                 columnValue = "string",
+#'                                 type = "BLOB"|"BOOLEAN"|"DOUBLE"|"NULL"|"LONG"|"STRING"
+#'                               )
+#'                             ),
+#'                             text = "string",
+#'                             type = "TEXT"|"IMAGE"|"ROW"|"AUDIO"|"VIDEO",
+#'                             video = list(
+#'                               s3Uri = "string",
+#'                               summary = "string"
+#'                             )
+#'                           ),
+#'                           location = list(
+#'                             confluenceLocation = list(
+#'                               url = "string"
+#'                             ),
+#'                             customDocumentLocation = list(
+#'                               id = "string"
+#'                             ),
+#'                             kendraDocumentLocation = list(
+#'                               uri = "string"
+#'                             ),
+#'                             s3Location = list(
+#'                               uri = "string"
+#'                             ),
+#'                             salesforceLocation = list(
+#'                               url = "string"
+#'                             ),
+#'                             sharePointLocation = list(
+#'                               url = "string"
+#'                             ),
+#'                             sqlLocation = list(
+#'                               query = "string"
+#'                             ),
+#'                             type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL",
+#'                             webLocation = list(
+#'                               url = "string"
+#'                             )
+#'                           ),
+#'                           metadata = list(
+#'                             list()
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     repromptResponse = list(
+#'                       source = "ACTION_GROUP"|"KNOWLEDGE_BASE"|"PARSER",
+#'                       text = "string"
+#'                     ),
+#'                     traceId = "string",
+#'                     type = "ACTION_GROUP"|"AGENT_COLLABORATOR"|"KNOWLEDGE_BASE"|"FINISH"|"ASK_USER"|"REPROMPT"
+#'                   ),
+#'                   rationale = list(
+#'                     text = "string",
+#'                     traceId = "string"
+#'                   )
+#'                 ),
+#'                 postProcessingTrace = list(
+#'                   modelInvocationInput = list(
+#'                     foundationModel = "string",
+#'                     inferenceConfiguration = list(
+#'                       maximumLength = 123,
+#'                       stopSequences = list(
+#'                         "string"
+#'                       ),
+#'                       temperature = 123.0,
+#'                       topK = 123,
+#'                       topP = 123.0
+#'                     ),
+#'                     overrideLambda = "string",
+#'                     parserMode = "DEFAULT"|"OVERRIDDEN",
+#'                     promptCreationMode = "DEFAULT"|"OVERRIDDEN",
+#'                     text = "string",
+#'                     traceId = "string",
+#'                     type = "PRE_PROCESSING"|"ORCHESTRATION"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"|"POST_PROCESSING"|"ROUTING_CLASSIFIER"
+#'                   ),
+#'                   modelInvocationOutput = list(
+#'                     metadata = list(
+#'                       clientRequestId = "string",
+#'                       endTime = as.POSIXct(
+#'                         "2015-01-01"
+#'                       ),
+#'                       operationTotalTimeMs = 123,
+#'                       startTime = as.POSIXct(
+#'                         "2015-01-01"
+#'                       ),
+#'                       totalTimeMs = 123,
+#'                       usage = list(
+#'                         inputTokens = 123,
+#'                         outputTokens = 123
+#'                       )
+#'                     ),
+#'                     parsedResponse = list(
+#'                       text = "string"
+#'                     ),
+#'                     rawResponse = list(
+#'                       content = "string"
+#'                     ),
+#'                     reasoningContent = list(
+#'                       reasoningText = list(
+#'                         signature = "string",
+#'                         text = "string"
+#'                       ),
+#'                       redactedContent = raw
+#'                     ),
+#'                     traceId = "string"
+#'                   )
+#'                 ),
+#'                 preProcessingTrace = list(
+#'                   modelInvocationInput = list(
+#'                     foundationModel = "string",
+#'                     inferenceConfiguration = list(
+#'                       maximumLength = 123,
+#'                       stopSequences = list(
+#'                         "string"
+#'                       ),
+#'                       temperature = 123.0,
+#'                       topK = 123,
+#'                       topP = 123.0
+#'                     ),
+#'                     overrideLambda = "string",
+#'                     parserMode = "DEFAULT"|"OVERRIDDEN",
+#'                     promptCreationMode = "DEFAULT"|"OVERRIDDEN",
+#'                     text = "string",
+#'                     traceId = "string",
+#'                     type = "PRE_PROCESSING"|"ORCHESTRATION"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"|"POST_PROCESSING"|"ROUTING_CLASSIFIER"
+#'                   ),
+#'                   modelInvocationOutput = list(
+#'                     metadata = list(
+#'                       clientRequestId = "string",
+#'                       endTime = as.POSIXct(
+#'                         "2015-01-01"
+#'                       ),
+#'                       operationTotalTimeMs = 123,
+#'                       startTime = as.POSIXct(
+#'                         "2015-01-01"
+#'                       ),
+#'                       totalTimeMs = 123,
+#'                       usage = list(
+#'                         inputTokens = 123,
+#'                         outputTokens = 123
+#'                       )
+#'                     ),
+#'                     parsedResponse = list(
+#'                       isValid = TRUE|FALSE,
+#'                       rationale = "string"
+#'                     ),
+#'                     rawResponse = list(
+#'                       content = "string"
+#'                     ),
+#'                     reasoningContent = list(
+#'                       reasoningText = list(
+#'                         signature = "string",
+#'                         text = "string"
+#'                       ),
+#'                       redactedContent = raw
+#'                     ),
+#'                     traceId = "string"
+#'                   )
+#'                 ),
+#'                 routingClassifierTrace = list(
+#'                   invocationInput = list(
+#'                     actionGroupInvocationInput = list(
+#'                       actionGroupName = "string",
+#'                       apiPath = "string",
+#'                       executionType = "LAMBDA"|"RETURN_CONTROL",
+#'                       function = "string",
+#'                       invocationId = "string",
+#'                       parameters = list(
+#'                         list(
+#'                           name = "string",
+#'                           type = "string",
+#'                           value = "string"
+#'                         )
+#'                       ),
+#'                       requestBody = list(
+#'                         content = list(
+#'                           list(
+#'                             list(
+#'                               name = "string",
+#'                               type = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       verb = "string"
+#'                     ),
+#'                     agentCollaboratorInvocationInput = list(
+#'                       agentCollaboratorAliasArn = "string",
+#'                       agentCollaboratorName = "string",
+#'                       input = list(
+#'                         returnControlResults = list(
+#'                           invocationId = "string",
+#'                           returnControlInvocationResults = list(
+#'                             list(
+#'                               apiResult = list(
+#'                                 actionGroup = "string",
+#'                                 agentId = "string",
+#'                                 apiPath = "string",
+#'                                 confirmationState = "CONFIRM"|"DENY",
+#'                                 httpMethod = "string",
+#'                                 httpStatusCode = 123,
+#'                                 responseBody = list(
+#'                                   list(
+#'                                     body = "string",
+#'                                     images = list(
+#'                                       list(
+#'                                         format = "png"|"jpeg"|"gif"|"webp",
+#'                                         source = list(
+#'                                           bytes = raw
+#'                                         )
+#'                                       )
+#'                                     )
+#'                                   )
+#'                                 ),
+#'                                 responseState = "FAILURE"|"REPROMPT"
+#'                               ),
+#'                               functionResult = list(
+#'                                 actionGroup = "string",
+#'                                 agentId = "string",
+#'                                 confirmationState = "CONFIRM"|"DENY",
+#'                                 function = "string",
+#'                                 responseBody = list(
+#'                                   list(
+#'                                     body = "string",
+#'                                     images = list(
+#'                                       list(
+#'                                         format = "png"|"jpeg"|"gif"|"webp",
+#'                                         source = list(
+#'                                           bytes = raw
+#'                                         )
+#'                                       )
+#'                                     )
+#'                                   )
+#'                                 ),
+#'                                 responseState = "FAILURE"|"REPROMPT"
+#'                               )
+#'                             )
+#'                           )
+#'                         ),
+#'                         text = "string",
+#'                         type = "TEXT"|"RETURN_CONTROL"
+#'                       )
+#'                     ),
+#'                     codeInterpreterInvocationInput = list(
+#'                       code = "string",
+#'                       files = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     invocationType = "ACTION_GROUP"|"KNOWLEDGE_BASE"|"FINISH"|"ACTION_GROUP_CODE_INTERPRETER"|"AGENT_COLLABORATOR",
+#'                     knowledgeBaseLookupInput = list(
+#'                       knowledgeBaseId = "string",
+#'                       text = "string"
+#'                     ),
+#'                     traceId = "string"
+#'                   ),
+#'                   modelInvocationInput = list(
+#'                     foundationModel = "string",
+#'                     inferenceConfiguration = list(
+#'                       maximumLength = 123,
+#'                       stopSequences = list(
+#'                         "string"
+#'                       ),
+#'                       temperature = 123.0,
+#'                       topK = 123,
+#'                       topP = 123.0
+#'                     ),
+#'                     overrideLambda = "string",
+#'                     parserMode = "DEFAULT"|"OVERRIDDEN",
+#'                     promptCreationMode = "DEFAULT"|"OVERRIDDEN",
+#'                     text = "string",
+#'                     traceId = "string",
+#'                     type = "PRE_PROCESSING"|"ORCHESTRATION"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"|"POST_PROCESSING"|"ROUTING_CLASSIFIER"
+#'                   ),
+#'                   modelInvocationOutput = list(
+#'                     metadata = list(
+#'                       clientRequestId = "string",
+#'                       endTime = as.POSIXct(
+#'                         "2015-01-01"
+#'                       ),
+#'                       operationTotalTimeMs = 123,
+#'                       startTime = as.POSIXct(
+#'                         "2015-01-01"
+#'                       ),
+#'                       totalTimeMs = 123,
+#'                       usage = list(
+#'                         inputTokens = 123,
+#'                         outputTokens = 123
+#'                       )
+#'                     ),
+#'                     rawResponse = list(
+#'                       content = "string"
+#'                     ),
+#'                     traceId = "string"
+#'                   ),
+#'                   observation = list(
+#'                     actionGroupInvocationOutput = list(
+#'                       metadata = list(
+#'                         clientRequestId = "string",
+#'                         endTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         operationTotalTimeMs = 123,
+#'                         startTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         totalTimeMs = 123,
+#'                         usage = list(
+#'                           inputTokens = 123,
+#'                           outputTokens = 123
+#'                         )
+#'                       ),
+#'                       text = "string"
+#'                     ),
+#'                     agentCollaboratorInvocationOutput = list(
+#'                       agentCollaboratorAliasArn = "string",
+#'                       agentCollaboratorName = "string",
+#'                       metadata = list(
+#'                         clientRequestId = "string",
+#'                         endTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         operationTotalTimeMs = 123,
+#'                         startTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         totalTimeMs = 123,
+#'                         usage = list(
+#'                           inputTokens = 123,
+#'                           outputTokens = 123
+#'                         )
+#'                       ),
+#'                       output = list(
+#'                         returnControlPayload = list(
+#'                           invocationId = "string",
+#'                           invocationInputs = list(
+#'                             list(
+#'                               apiInvocationInput = list(
+#'                                 actionGroup = "string",
+#'                                 actionInvocationType = "RESULT"|"USER_CONFIRMATION"|"USER_CONFIRMATION_AND_RESULT",
+#'                                 agentId = "string",
+#'                                 apiPath = "string",
+#'                                 collaboratorName = "string",
+#'                                 httpMethod = "string",
+#'                                 parameters = list(
+#'                                   list(
+#'                                     name = "string",
+#'                                     type = "string",
+#'                                     value = "string"
+#'                                   )
+#'                                 ),
+#'                                 requestBody = list(
+#'                                   content = list(
+#'                                     list(
+#'                                       properties = list(
+#'                                         list(
+#'                                           name = "string",
+#'                                           type = "string",
+#'                                           value = "string"
+#'                                         )
+#'                                       )
+#'                                     )
+#'                                   )
+#'                                 )
+#'                               ),
+#'                               functionInvocationInput = list(
+#'                                 actionGroup = "string",
+#'                                 actionInvocationType = "RESULT"|"USER_CONFIRMATION"|"USER_CONFIRMATION_AND_RESULT",
+#'                                 agentId = "string",
+#'                                 collaboratorName = "string",
+#'                                 function = "string",
+#'                                 parameters = list(
+#'                                   list(
+#'                                     name = "string",
+#'                                     type = "string",
+#'                                     value = "string"
+#'                                   )
+#'                                 )
+#'                               )
+#'                             )
+#'                           )
+#'                         ),
+#'                         text = "string",
+#'                         type = "TEXT"|"RETURN_CONTROL"
+#'                       )
+#'                     ),
+#'                     codeInterpreterInvocationOutput = list(
+#'                       executionError = "string",
+#'                       executionOutput = "string",
+#'                       executionTimeout = TRUE|FALSE,
+#'                       files = list(
+#'                         "string"
+#'                       ),
+#'                       metadata = list(
+#'                         clientRequestId = "string",
+#'                         endTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         operationTotalTimeMs = 123,
+#'                         startTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         totalTimeMs = 123,
+#'                         usage = list(
+#'                           inputTokens = 123,
+#'                           outputTokens = 123
+#'                         )
+#'                       )
+#'                     ),
+#'                     finalResponse = list(
+#'                       metadata = list(
+#'                         clientRequestId = "string",
+#'                         endTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         operationTotalTimeMs = 123,
+#'                         startTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         totalTimeMs = 123,
+#'                         usage = list(
+#'                           inputTokens = 123,
+#'                           outputTokens = 123
+#'                         )
+#'                       ),
+#'                       text = "string"
+#'                     ),
+#'                     knowledgeBaseLookupOutput = list(
+#'                       metadata = list(
+#'                         clientRequestId = "string",
+#'                         endTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         operationTotalTimeMs = 123,
+#'                         startTime = as.POSIXct(
+#'                           "2015-01-01"
+#'                         ),
+#'                         totalTimeMs = 123,
+#'                         usage = list(
+#'                           inputTokens = 123,
+#'                           outputTokens = 123
+#'                         )
+#'                       ),
+#'                       retrievedReferences = list(
+#'                         list(
+#'                           content = list(
+#'                             audio = list(
+#'                               s3Uri = "string",
+#'                               transcription = "string"
+#'                             ),
+#'                             byteContent = "string",
+#'                             row = list(
+#'                               list(
+#'                                 columnName = "string",
+#'                                 columnValue = "string",
+#'                                 type = "BLOB"|"BOOLEAN"|"DOUBLE"|"NULL"|"LONG"|"STRING"
+#'                               )
+#'                             ),
+#'                             text = "string",
+#'                             type = "TEXT"|"IMAGE"|"ROW"|"AUDIO"|"VIDEO",
+#'                             video = list(
+#'                               s3Uri = "string",
+#'                               summary = "string"
+#'                             )
+#'                           ),
+#'                           location = list(
+#'                             confluenceLocation = list(
+#'                               url = "string"
+#'                             ),
+#'                             customDocumentLocation = list(
+#'                               id = "string"
+#'                             ),
+#'                             kendraDocumentLocation = list(
+#'                               uri = "string"
+#'                             ),
+#'                             s3Location = list(
+#'                               uri = "string"
+#'                             ),
+#'                             salesforceLocation = list(
+#'                               url = "string"
+#'                             ),
+#'                             sharePointLocation = list(
+#'                               url = "string"
+#'                             ),
+#'                             sqlLocation = list(
+#'                               query = "string"
+#'                             ),
+#'                             type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL",
+#'                             webLocation = list(
+#'                               url = "string"
+#'                             )
+#'                           ),
+#'                           metadata = list(
+#'                             list()
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     repromptResponse = list(
+#'                       source = "ACTION_GROUP"|"KNOWLEDGE_BASE"|"PARSER",
+#'                       text = "string"
+#'                     ),
+#'                     traceId = "string",
+#'                     type = "ACTION_GROUP"|"AGENT_COLLABORATOR"|"KNOWLEDGE_BASE"|"FINISH"|"ASK_USER"|"REPROMPT"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       nodeFailureEvent = list(
+#'         errorCode = "VALIDATION"|"DEPENDENCY_FAILED"|"BAD_GATEWAY"|"INTERNAL_SERVER",
+#'         errorMessage = "string",
+#'         nodeName = "string",
+#'         timestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       nodeInputEvent = list(
+#'         fields = list(
+#'           list(
+#'             category = "LoopCondition"|"ReturnValueToLoopStart"|"ExitLoop",
+#'             content = list(
+#'               document = list()
+#'             ),
+#'             executionChain = list(
+#'               list(
+#'                 index = 123,
+#'                 nodeName = "string",
+#'                 type = "Iterator"|"Loop"
+#'               )
+#'             ),
+#'             name = "string",
+#'             source = list(
+#'               expression = "string",
+#'               nodeName = "string",
+#'               outputFieldName = "string"
+#'             ),
+#'             type = "String"|"Number"|"Boolean"|"Object"|"Array"
+#'           )
+#'         ),
+#'         nodeName = "string",
+#'         timestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       nodeOutputEvent = list(
+#'         fields = list(
+#'           list(
+#'             content = list(
+#'               document = list()
+#'             ),
+#'             name = "string",
+#'             next = list(
+#'               list(
+#'                 inputFieldName = "string",
+#'                 nodeName = "string"
+#'               )
+#'             ),
+#'             type = "String"|"Number"|"Boolean"|"Object"|"Array"
+#'           )
+#'         ),
+#'         nodeName = "string",
+#'         timestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_flow_execution_events(
+#'   eventType = "Node"|"Flow",
+#'   executionIdentifier = "string",
+#'   flowAliasIdentifier = "string",
+#'   flowIdentifier = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_list_flow_execution_events
+#'
+#' @aliases bedrockagentruntime_list_flow_execution_events
+bedrockagentruntime_list_flow_execution_events <- function(eventType, executionIdentifier, flowAliasIdentifier, flowIdentifier, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListFlowExecutionEvents",
+    http_method = "GET",
+    http_path = "/flows/{flowIdentifier}/aliases/{flowAliasIdentifier}/executions/{executionIdentifier}/events",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "flowExecutionEvents"),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$list_flow_execution_events_input(eventType = eventType, executionIdentifier = executionIdentifier, flowAliasIdentifier = flowAliasIdentifier, flowIdentifier = flowIdentifier, maxResults = maxResults, nextToken = nextToken)
+  output <- .bedrockagentruntime$list_flow_execution_events_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$list_flow_execution_events <- bedrockagentruntime_list_flow_execution_events
+
+#' Lists all executions of a flow
+#'
+#' @description
+#' Lists all executions of a flow. Results can be paginated and include
+#' summary information about each execution, such as status, start and end
+#' times, and the execution's Amazon Resource Name (ARN).
+#' 
+#' Flow executions is in preview release for Amazon Bedrock and is subject
+#' to change.
+#'
+#' @usage
+#' bedrockagentruntime_list_flow_executions(flowAliasIdentifier,
+#'   flowIdentifier, maxResults, nextToken)
+#'
+#' @param flowAliasIdentifier The unique identifier of the flow alias to list executions for.
+#' @param flowIdentifier &#91;required&#93; The unique identifier of the flow to list executions for.
+#' @param maxResults The maximum number of flow executions to return in a single response. If
+#' more executions exist than the specified `maxResults` value, a token is
+#' included in the response so that the remaining results can be retrieved.
+#' @param nextToken A token to retrieve the next set of results. This value is returned in
+#' the response if more results are available.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   flowExecutionSummaries = list(
+#'     list(
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       endedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       executionArn = "string",
+#'       flowAliasIdentifier = "string",
+#'       flowIdentifier = "string",
+#'       flowVersion = "string",
+#'       status = "Running"|"Succeeded"|"Failed"|"TimedOut"|"Aborted"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_flow_executions(
+#'   flowAliasIdentifier = "string",
+#'   flowIdentifier = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_list_flow_executions
+#'
+#' @aliases bedrockagentruntime_list_flow_executions
+bedrockagentruntime_list_flow_executions <- function(flowAliasIdentifier = NULL, flowIdentifier, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListFlowExecutions",
+    http_method = "GET",
+    http_path = "/flows/{flowIdentifier}/executions",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "flowExecutionSummaries"),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$list_flow_executions_input(flowAliasIdentifier = flowAliasIdentifier, flowIdentifier = flowIdentifier, maxResults = maxResults, nextToken = nextToken)
+  output <- .bedrockagentruntime$list_flow_executions_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$list_flow_executions <- bedrockagentruntime_list_flow_executions
 
 #' Lists all invocation steps associated with a session and optionally, an
 #' invocation within the session
@@ -4557,6 +7038,10 @@ bedrockagentruntime_rerank <- function(nextToken = NULL, queries, rerankingConfi
 #'   retrievalResults = list(
 #'     list(
 #'       content = list(
+#'         audio = list(
+#'           s3Uri = "string",
+#'           transcription = "string"
+#'         ),
 #'         byteContent = "string",
 #'         row = list(
 #'           list(
@@ -4566,7 +7051,11 @@ bedrockagentruntime_rerank <- function(nextToken = NULL, queries, rerankingConfi
 #'           )
 #'         ),
 #'         text = "string",
-#'         type = "TEXT"|"IMAGE"|"ROW"
+#'         type = "TEXT"|"IMAGE"|"ROW"|"AUDIO"|"VIDEO",
+#'         video = list(
+#'           s3Uri = "string",
+#'           summary = "string"
+#'         )
 #'       ),
 #'       location = list(
 #'         confluenceLocation = list(
@@ -4709,7 +7198,12 @@ bedrockagentruntime_rerank <- function(nextToken = NULL, queries, rerankingConfi
 #'     )
 #'   ),
 #'   retrievalQuery = list(
-#'     text = "string"
+#'     image = list(
+#'       format = "png"|"jpeg"|"gif"|"webp",
+#'       inlineContent = raw
+#'     ),
+#'     text = "string",
+#'     type = "TEXT"|"IMAGE"
 #'   )
 #' )
 #' ```
@@ -4782,6 +7276,10 @@ bedrockagentruntime_retrieve <- function(guardrailConfiguration = NULL, knowledg
 #'       retrievedReferences = list(
 #'         list(
 #'           content = list(
+#'             audio = list(
+#'               s3Uri = "string",
+#'               transcription = "string"
+#'             ),
 #'             byteContent = "string",
 #'             row = list(
 #'               list(
@@ -4791,7 +7289,11 @@ bedrockagentruntime_retrieve <- function(guardrailConfiguration = NULL, knowledg
 #'               )
 #'             ),
 #'             text = "string",
-#'             type = "TEXT"|"IMAGE"|"ROW"
+#'             type = "TEXT"|"IMAGE"|"ROW"|"AUDIO"|"VIDEO",
+#'             video = list(
+#'               s3Uri = "string",
+#'               summary = "string"
+#'             )
 #'           ),
 #'           location = list(
 #'             confluenceLocation = list(
@@ -5121,6 +7623,10 @@ bedrockagentruntime_retrieve_and_generate <- function(input, retrieveAndGenerate
 #'         retrievedReferences = list(
 #'           list(
 #'             content = list(
+#'               audio = list(
+#'                 s3Uri = "string",
+#'                 transcription = "string"
+#'               ),
 #'               byteContent = "string",
 #'               row = list(
 #'                 list(
@@ -5130,7 +7636,11 @@ bedrockagentruntime_retrieve_and_generate <- function(input, retrieveAndGenerate
 #'                 )
 #'               ),
 #'               text = "string",
-#'               type = "TEXT"|"IMAGE"|"ROW"
+#'               type = "TEXT"|"IMAGE"|"ROW"|"AUDIO"|"VIDEO",
+#'               video = list(
+#'                 s3Uri = "string",
+#'                 summary = "string"
+#'               )
 #'             ),
 #'             location = list(
 #'               confluenceLocation = list(
@@ -5177,6 +7687,10 @@ bedrockagentruntime_retrieve_and_generate <- function(input, retrieveAndGenerate
 #'       retrievedReferences = list(
 #'         list(
 #'           content = list(
+#'             audio = list(
+#'               s3Uri = "string",
+#'               transcription = "string"
+#'             ),
 #'             byteContent = "string",
 #'             row = list(
 #'               list(
@@ -5186,7 +7700,11 @@ bedrockagentruntime_retrieve_and_generate <- function(input, retrieveAndGenerate
 #'               )
 #'             ),
 #'             text = "string",
-#'             type = "TEXT"|"IMAGE"|"ROW"
+#'             type = "TEXT"|"IMAGE"|"ROW"|"AUDIO"|"VIDEO",
+#'             video = list(
+#'               s3Uri = "string",
+#'               summary = "string"
+#'             )
 #'           ),
 #'           location = list(
 #'             confluenceLocation = list(
@@ -5482,6 +8000,147 @@ bedrockagentruntime_retrieve_and_generate_stream <- function(input, retrieveAndG
   return(response)
 }
 .bedrockagentruntime$operations$retrieve_and_generate_stream <- bedrockagentruntime_retrieve_and_generate_stream
+
+#' Starts an execution of an Amazon Bedrock flow
+#'
+#' @description
+#' Starts an execution of an Amazon Bedrock flow. Unlike flows that run
+#' until completion or time out after five minutes, flow executions let you
+#' run flows asynchronously for longer durations. Flow executions also
+#' yield control so that your application can perform other tasks.
+#' 
+#' This operation returns an Amazon Resource Name (ARN) that you can use to
+#' track and manage your flow execution.
+#' 
+#' Flow executions is in preview release for Amazon Bedrock and is subject
+#' to change.
+#'
+#' @usage
+#' bedrockagentruntime_start_flow_execution(flowAliasIdentifier,
+#'   flowExecutionName, flowIdentifier, inputs,
+#'   modelPerformanceConfiguration)
+#'
+#' @param flowAliasIdentifier &#91;required&#93; The unique identifier of the flow alias to use for the flow execution.
+#' @param flowExecutionName The unique name for the flow execution. If you don't provide one, a
+#' system-generated name is used.
+#' @param flowIdentifier &#91;required&#93; The unique identifier of the flow to execute.
+#' @param inputs &#91;required&#93; The input data required for the flow execution. This must match the
+#' input schema defined in the flow.
+#' @param modelPerformanceConfiguration The performance settings for the foundation model used in the flow
+#' execution.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   executionArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_flow_execution(
+#'   flowAliasIdentifier = "string",
+#'   flowExecutionName = "string",
+#'   flowIdentifier = "string",
+#'   inputs = list(
+#'     list(
+#'       content = list(
+#'         document = list()
+#'       ),
+#'       nodeInputName = "string",
+#'       nodeName = "string",
+#'       nodeOutputName = "string"
+#'     )
+#'   ),
+#'   modelPerformanceConfiguration = list(
+#'     performanceConfig = list(
+#'       latency = "standard"|"optimized"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_start_flow_execution
+#'
+#' @aliases bedrockagentruntime_start_flow_execution
+bedrockagentruntime_start_flow_execution <- function(flowAliasIdentifier, flowExecutionName = NULL, flowIdentifier, inputs, modelPerformanceConfiguration = NULL) {
+  op <- new_operation(
+    name = "StartFlowExecution",
+    http_method = "POST",
+    http_path = "/flows/{flowIdentifier}/aliases/{flowAliasIdentifier}/executions",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$start_flow_execution_input(flowAliasIdentifier = flowAliasIdentifier, flowExecutionName = flowExecutionName, flowIdentifier = flowIdentifier, inputs = inputs, modelPerformanceConfiguration = modelPerformanceConfiguration)
+  output <- .bedrockagentruntime$start_flow_execution_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$start_flow_execution <- bedrockagentruntime_start_flow_execution
+
+#' Stops an Amazon Bedrock flow's execution
+#'
+#' @description
+#' Stops an Amazon Bedrock flow's execution. This operation prevents
+#' further processing of the flow and changes the execution status to
+#' `Aborted`.
+#'
+#' @usage
+#' bedrockagentruntime_stop_flow_execution(executionIdentifier,
+#'   flowAliasIdentifier, flowIdentifier)
+#'
+#' @param executionIdentifier &#91;required&#93; The unique identifier of the flow execution to stop.
+#' @param flowAliasIdentifier &#91;required&#93; The unique identifier of the flow alias used for the execution.
+#' @param flowIdentifier &#91;required&#93; The unique identifier of the flow.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   executionArn = "string",
+#'   status = "Running"|"Succeeded"|"Failed"|"TimedOut"|"Aborted"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_flow_execution(
+#'   executionIdentifier = "string",
+#'   flowAliasIdentifier = "string",
+#'   flowIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_stop_flow_execution
+#'
+#' @aliases bedrockagentruntime_stop_flow_execution
+bedrockagentruntime_stop_flow_execution <- function(executionIdentifier, flowAliasIdentifier, flowIdentifier) {
+  op <- new_operation(
+    name = "StopFlowExecution",
+    http_method = "POST",
+    http_path = "/flows/{flowIdentifier}/aliases/{flowAliasIdentifier}/executions/{executionIdentifier}/stop",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$stop_flow_execution_input(executionIdentifier = executionIdentifier, flowAliasIdentifier = flowAliasIdentifier, flowIdentifier = flowIdentifier)
+  output <- .bedrockagentruntime$stop_flow_execution_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$stop_flow_execution <- bedrockagentruntime_stop_flow_execution
 
 #' Associate tags with a resource
 #'

@@ -34,7 +34,7 @@ NULL
 #'   layers = list(
 #'     list(
 #'       layerDigest = "string",
-#'       layerAvailability = "AVAILABLE"|"UNAVAILABLE",
+#'       layerAvailability = "AVAILABLE"|"UNAVAILABLE"|"ARCHIVED",
 #'       layerSize = 123,
 #'       mediaType = "string"
 #'     )
@@ -124,7 +124,7 @@ ecr_batch_check_layer_availability <- function(registryId = NULL, repositoryName
 #'         imageDigest = "string",
 #'         imageTag = "string"
 #'       ),
-#'       failureCode = "InvalidImageDigest"|"InvalidImageTag"|"ImageTagDoesNotMatchDigest"|"ImageNotFound"|"MissingDigestAndTag"|"ImageReferencedByManifestList"|"KmsError"|"UpstreamAccessDenied"|"UpstreamTooManyRequests"|"UpstreamUnavailable",
+#'       failureCode = "InvalidImageDigest"|"InvalidImageTag"|"ImageTagDoesNotMatchDigest"|"ImageNotFound"|"MissingDigestAndTag"|"ImageReferencedByManifestList"|"KmsError"|"UpstreamAccessDenied"|"UpstreamTooManyRequests"|"UpstreamUnavailable"|"ImageInaccessible",
 #'       failureReason = "string"
 #'     )
 #'   )
@@ -231,7 +231,7 @@ ecr_batch_delete_image <- function(registryId = NULL, repositoryName, imageIds) 
 #'         imageDigest = "string",
 #'         imageTag = "string"
 #'       ),
-#'       failureCode = "InvalidImageDigest"|"InvalidImageTag"|"ImageTagDoesNotMatchDigest"|"ImageNotFound"|"MissingDigestAndTag"|"ImageReferencedByManifestList"|"KmsError"|"UpstreamAccessDenied"|"UpstreamTooManyRequests"|"UpstreamUnavailable",
+#'       failureCode = "InvalidImageDigest"|"InvalidImageTag"|"ImageTagDoesNotMatchDigest"|"ImageNotFound"|"MissingDigestAndTag"|"ImageReferencedByManifestList"|"KmsError"|"UpstreamAccessDenied"|"UpstreamTooManyRequests"|"UpstreamUnavailable"|"ImageInaccessible",
 #'       failureReason = "string"
 #'     )
 #'   )
@@ -464,7 +464,7 @@ ecr_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadI
 #' for the pull through cache rule. The following is the syntax to use for
 #' each supported upstream registry.
 #' 
-#' -   Amazon ECR (`ecr`) – `dkr.ecr.<region>.amazonaws.com`
+#' -   Amazon ECR (`ecr`) – `<accountId>.dkr.ecr.<region>.amazonaws.com`
 #' 
 #' -   Amazon ECR Public (`ecr-public`) – `public.ecr.aws`
 #' 
@@ -558,7 +558,8 @@ ecr_create_pull_through_cache_rule <- function(ecrRepositoryPrefix, upstreamRegi
 #'
 #' @usage
 #' ecr_create_repository(registryId, repositoryName, tags,
-#'   imageTagMutability, imageScanningConfiguration, encryptionConfiguration)
+#'   imageTagMutability, imageTagMutabilityExclusionFilters,
+#'   imageScanningConfiguration, encryptionConfiguration)
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry to
 #' create the repository. If you do not specify a registry, the default
@@ -579,7 +580,14 @@ ecr_create_pull_through_cache_rule <- function(ecrRepositoryPrefix, upstreamRegi
 #' image tags to be overwritten. If `IMMUTABLE` is specified, all image
 #' tags within the repository will be immutable which will prevent them
 #' from being overwritten.
-#' @param imageScanningConfiguration The image scanning configuration for the repository. This determines
+#' @param imageTagMutabilityExclusionFilters A list of filters that specify which image tags should be excluded from
+#' the repository's image tag mutability setting.
+#' @param imageScanningConfiguration The `imageScanningConfiguration` parameter is being deprecated, in favor
+#' of specifying the image scanning configuration at the registry level.
+#' For more information, see
+#' [`put_registry_scanning_configuration`][ecr_put_registry_scanning_configuration].
+#' 
+#' The image scanning configuration for the repository. This determines
 #' whether images are scanned for known vulnerabilities after being pushed
 #' to the repository.
 #' @param encryptionConfiguration The encryption configuration for the repository. This determines how the
@@ -597,7 +605,13 @@ ecr_create_pull_through_cache_rule <- function(ecrRepositoryPrefix, upstreamRegi
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     imageTagMutability = "MUTABLE"|"IMMUTABLE",
+#'     imageTagMutability = "MUTABLE"|"IMMUTABLE"|"IMMUTABLE_WITH_EXCLUSION"|"MUTABLE_WITH_EXCLUSION",
+#'     imageTagMutabilityExclusionFilters = list(
+#'       list(
+#'         filterType = "WILDCARD",
+#'         filter = "string"
+#'       )
+#'     ),
 #'     imageScanningConfiguration = list(
 #'       scanOnPush = TRUE|FALSE
 #'     ),
@@ -620,7 +634,13 @@ ecr_create_pull_through_cache_rule <- function(ecrRepositoryPrefix, upstreamRegi
 #'       Value = "string"
 #'     )
 #'   ),
-#'   imageTagMutability = "MUTABLE"|"IMMUTABLE",
+#'   imageTagMutability = "MUTABLE"|"IMMUTABLE"|"IMMUTABLE_WITH_EXCLUSION"|"MUTABLE_WITH_EXCLUSION",
+#'   imageTagMutabilityExclusionFilters = list(
+#'     list(
+#'       filterType = "WILDCARD",
+#'       filter = "string"
+#'     )
+#'   ),
 #'   imageScanningConfiguration = list(
 #'     scanOnPush = TRUE|FALSE
 #'   ),
@@ -645,7 +665,7 @@ ecr_create_pull_through_cache_rule <- function(ecrRepositoryPrefix, upstreamRegi
 #' @rdname ecr_create_repository
 #'
 #' @aliases ecr_create_repository
-ecr_create_repository <- function(registryId = NULL, repositoryName, tags = NULL, imageTagMutability = NULL, imageScanningConfiguration = NULL, encryptionConfiguration = NULL) {
+ecr_create_repository <- function(registryId = NULL, repositoryName, tags = NULL, imageTagMutability = NULL, imageTagMutabilityExclusionFilters = NULL, imageScanningConfiguration = NULL, encryptionConfiguration = NULL) {
   op <- new_operation(
     name = "CreateRepository",
     http_method = "POST",
@@ -654,7 +674,7 @@ ecr_create_repository <- function(registryId = NULL, repositoryName, tags = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ecr$create_repository_input(registryId = registryId, repositoryName = repositoryName, tags = tags, imageTagMutability = imageTagMutability, imageScanningConfiguration = imageScanningConfiguration, encryptionConfiguration = encryptionConfiguration)
+  input <- .ecr$create_repository_input(registryId = registryId, repositoryName = repositoryName, tags = tags, imageTagMutability = imageTagMutability, imageTagMutabilityExclusionFilters = imageTagMutabilityExclusionFilters, imageScanningConfiguration = imageScanningConfiguration, encryptionConfiguration = encryptionConfiguration)
   output <- .ecr$create_repository_output()
   config <- get_config()
   svc <- .ecr$service(config, op)
@@ -677,7 +697,8 @@ ecr_create_repository <- function(registryId = NULL, repositoryName, tags = NULL
 #' @usage
 #' ecr_create_repository_creation_template(prefix, description,
 #'   encryptionConfiguration, resourceTags, imageTagMutability,
-#'   repositoryPolicy, lifecyclePolicy, appliedFor, customRoleArn)
+#'   imageTagMutabilityExclusionFilters, repositoryPolicy, lifecyclePolicy,
+#'   appliedFor, customRoleArn)
 #'
 #' @param prefix &#91;required&#93; The repository namespace prefix to associate with the template. All
 #' repositories created using this namespace prefix will have the settings
@@ -705,13 +726,15 @@ ecr_create_repository <- function(registryId = NULL, repositoryName, tags = NULL
 #' image tags to be overwritten. If `IMMUTABLE` is specified, all image
 #' tags within the repository will be immutable which will prevent them
 #' from being overwritten.
+#' @param imageTagMutabilityExclusionFilters A list of filters that specify which image tags should be excluded from
+#' the repository creation template's image tag mutability setting.
 #' @param repositoryPolicy The repository policy to apply to repositories created using the
 #' template. A repository policy is a permissions policy associated with a
 #' repository to control access permissions.
 #' @param lifecyclePolicy The lifecycle policy to use for repositories created using the template.
 #' @param appliedFor &#91;required&#93; A list of enumerable strings representing the Amazon ECR repository
-#' creation scenarios that this template will apply towards. The two
-#' supported scenarios are `PULL_THROUGH_CACHE` and `REPLICATION`
+#' creation scenarios that this template will apply towards. The supported
+#' scenarios are `PULL_THROUGH_CACHE`, `REPLICATION`, and `CREATE_ON_PUSH`
 #' @param customRoleArn The ARN of the role to be assumed by Amazon ECR. This role must be in
 #' the same account as the registry that you are configuring. Amazon ECR
 #' will assume your supplied role when the customRoleArn is specified. When
@@ -736,11 +759,17 @@ ecr_create_repository <- function(registryId = NULL, repositoryName, tags = NULL
 #'         Value = "string"
 #'       )
 #'     ),
-#'     imageTagMutability = "MUTABLE"|"IMMUTABLE",
+#'     imageTagMutability = "MUTABLE"|"IMMUTABLE"|"IMMUTABLE_WITH_EXCLUSION"|"MUTABLE_WITH_EXCLUSION",
+#'     imageTagMutabilityExclusionFilters = list(
+#'       list(
+#'         filterType = "WILDCARD",
+#'         filter = "string"
+#'       )
+#'     ),
 #'     repositoryPolicy = "string",
 #'     lifecyclePolicy = "string",
 #'     appliedFor = list(
-#'       "REPLICATION"|"PULL_THROUGH_CACHE"
+#'       "REPLICATION"|"PULL_THROUGH_CACHE"|"CREATE_ON_PUSH"
 #'     ),
 #'     customRoleArn = "string",
 #'     createdAt = as.POSIXct(
@@ -768,11 +797,17 @@ ecr_create_repository <- function(registryId = NULL, repositoryName, tags = NULL
 #'       Value = "string"
 #'     )
 #'   ),
-#'   imageTagMutability = "MUTABLE"|"IMMUTABLE",
+#'   imageTagMutability = "MUTABLE"|"IMMUTABLE"|"IMMUTABLE_WITH_EXCLUSION"|"MUTABLE_WITH_EXCLUSION",
+#'   imageTagMutabilityExclusionFilters = list(
+#'     list(
+#'       filterType = "WILDCARD",
+#'       filter = "string"
+#'     )
+#'   ),
 #'   repositoryPolicy = "string",
 #'   lifecyclePolicy = "string",
 #'   appliedFor = list(
-#'     "REPLICATION"|"PULL_THROUGH_CACHE"
+#'     "REPLICATION"|"PULL_THROUGH_CACHE"|"CREATE_ON_PUSH"
 #'   ),
 #'   customRoleArn = "string"
 #' )
@@ -783,7 +818,7 @@ ecr_create_repository <- function(registryId = NULL, repositoryName, tags = NULL
 #' @rdname ecr_create_repository_creation_template
 #'
 #' @aliases ecr_create_repository_creation_template
-ecr_create_repository_creation_template <- function(prefix, description = NULL, encryptionConfiguration = NULL, resourceTags = NULL, imageTagMutability = NULL, repositoryPolicy = NULL, lifecyclePolicy = NULL, appliedFor, customRoleArn = NULL) {
+ecr_create_repository_creation_template <- function(prefix, description = NULL, encryptionConfiguration = NULL, resourceTags = NULL, imageTagMutability = NULL, imageTagMutabilityExclusionFilters = NULL, repositoryPolicy = NULL, lifecyclePolicy = NULL, appliedFor, customRoleArn = NULL) {
   op <- new_operation(
     name = "CreateRepositoryCreationTemplate",
     http_method = "POST",
@@ -792,7 +827,7 @@ ecr_create_repository_creation_template <- function(prefix, description = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ecr$create_repository_creation_template_input(prefix = prefix, description = description, encryptionConfiguration = encryptionConfiguration, resourceTags = resourceTags, imageTagMutability = imageTagMutability, repositoryPolicy = repositoryPolicy, lifecyclePolicy = lifecyclePolicy, appliedFor = appliedFor, customRoleArn = customRoleArn)
+  input <- .ecr$create_repository_creation_template_input(prefix = prefix, description = description, encryptionConfiguration = encryptionConfiguration, resourceTags = resourceTags, imageTagMutability = imageTagMutability, imageTagMutabilityExclusionFilters = imageTagMutabilityExclusionFilters, repositoryPolicy = repositoryPolicy, lifecyclePolicy = lifecyclePolicy, appliedFor = appliedFor, customRoleArn = customRoleArn)
   output <- .ecr$create_repository_creation_template_output()
   config <- get_config()
   svc <- .ecr$service(config, op)
@@ -1001,7 +1036,13 @@ ecr_delete_registry_policy <- function() {
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     imageTagMutability = "MUTABLE"|"IMMUTABLE",
+#'     imageTagMutability = "MUTABLE"|"IMMUTABLE"|"IMMUTABLE_WITH_EXCLUSION"|"MUTABLE_WITH_EXCLUSION",
+#'     imageTagMutabilityExclusionFilters = list(
+#'       list(
+#'         filterType = "WILDCARD",
+#'         filter = "string"
+#'       )
+#'     ),
 #'     imageScanningConfiguration = list(
 #'       scanOnPush = TRUE|FALSE
 #'     ),
@@ -1086,11 +1127,17 @@ ecr_delete_repository <- function(registryId = NULL, repositoryName, force = NUL
 #'         Value = "string"
 #'       )
 #'     ),
-#'     imageTagMutability = "MUTABLE"|"IMMUTABLE",
+#'     imageTagMutability = "MUTABLE"|"IMMUTABLE"|"IMMUTABLE_WITH_EXCLUSION"|"MUTABLE_WITH_EXCLUSION",
+#'     imageTagMutabilityExclusionFilters = list(
+#'       list(
+#'         filterType = "WILDCARD",
+#'         filter = "string"
+#'       )
+#'     ),
 #'     repositoryPolicy = "string",
 #'     lifecyclePolicy = "string",
 #'     appliedFor = list(
-#'       "REPLICATION"|"PULL_THROUGH_CACHE"
+#'       "REPLICATION"|"PULL_THROUGH_CACHE"|"CREATE_ON_PUSH"
 #'     ),
 #'     customRoleArn = "string",
 #'     createdAt = as.POSIXct(
@@ -1198,6 +1245,128 @@ ecr_delete_repository_policy <- function(registryId = NULL, repositoryName) {
   return(response)
 }
 .ecr$operations$delete_repository_policy <- ecr_delete_repository_policy
+
+#' Deletes the registry's signing configuration
+#'
+#' @description
+#' Deletes the registry's signing configuration. Images pushed after
+#' deletion of the signing configuration will no longer be automatically
+#' signed.
+#' 
+#' For more information, see [Managed
+#' signing](https://docs.aws.amazon.com/AmazonECR/latest/userguide/managed-signing.html)
+#' in the *Amazon Elastic Container Registry User Guide*.
+#' 
+#' Deleting the signing configuration does not affect existing image
+#' signatures.
+#'
+#' @usage
+#' ecr_delete_signing_configuration()
+#'
+
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   registryId = "string",
+#'   signingConfiguration = list(
+#'     rules = list(
+#'       list(
+#'         signingProfileArn = "string",
+#'         repositoryFilters = list(
+#'           list(
+#'             filter = "string",
+#'             filterType = "WILDCARD_MATCH"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_signing_configuration()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_delete_signing_configuration
+#'
+#' @aliases ecr_delete_signing_configuration
+ecr_delete_signing_configuration <- function() {
+  op <- new_operation(
+    name = "DeleteSigningConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecr$delete_signing_configuration_input()
+  output <- .ecr$delete_signing_configuration_output()
+  config <- get_config()
+  svc <- .ecr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$delete_signing_configuration <- ecr_delete_signing_configuration
+
+#' Removes a principal from the pull time update exclusion list for a
+#' registry
+#'
+#' @description
+#' Removes a principal from the pull time update exclusion list for a
+#' registry. Once removed, Amazon ECR will resume updating the pull time if
+#' the specified principal pulls an image.
+#'
+#' @usage
+#' ecr_deregister_pull_time_update_exclusion(principalArn)
+#'
+#' @param principalArn &#91;required&#93; The ARN of the IAM principal to remove from the pull time update
+#' exclusion list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   principalArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$deregister_pull_time_update_exclusion(
+#'   principalArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_deregister_pull_time_update_exclusion
+#'
+#' @aliases ecr_deregister_pull_time_update_exclusion
+ecr_deregister_pull_time_update_exclusion <- function(principalArn) {
+  op <- new_operation(
+    name = "DeregisterPullTimeUpdateExclusion",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecr$deregister_pull_time_update_exclusion_input(principalArn = principalArn)
+  output <- .ecr$deregister_pull_time_update_exclusion_output()
+  config <- get_config()
+  svc <- .ecr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$deregister_pull_time_update_exclusion <- ecr_deregister_pull_time_update_exclusion
 
 #' Returns the replication status for a specified image
 #'
@@ -1313,7 +1482,7 @@ ecr_describe_image_replication_status <- function(repositoryName, imageId, regis
 #'     imageTag = "string"
 #'   ),
 #'   imageScanStatus = list(
-#'     status = "IN_PROGRESS"|"COMPLETE"|"FAILED"|"UNSUPPORTED_IMAGE"|"ACTIVE"|"PENDING"|"SCAN_ELIGIBILITY_EXPIRED"|"FINDINGS_UNAVAILABLE"|"LIMIT_EXCEEDED",
+#'     status = "IN_PROGRESS"|"COMPLETE"|"FAILED"|"UNSUPPORTED_IMAGE"|"ACTIVE"|"PENDING"|"SCAN_ELIGIBILITY_EXPIRED"|"FINDINGS_UNAVAILABLE"|"LIMIT_EXCEEDED"|"IMAGE_ARCHIVED",
 #'     description = "string"
 #'   ),
 #'   imageScanFindings = list(
@@ -1410,6 +1579,10 @@ ecr_describe_image_replication_status <- function(repositoryName, imageId, regis
 #'                 pushedAt = as.POSIXct(
 #'                   "2015-01-01"
 #'                 ),
+#'                 lastInUseAt = as.POSIXct(
+#'                   "2015-01-01"
+#'                 ),
+#'                 inUseCount = 123,
 #'                 registry = "string",
 #'                 repositoryName = "string"
 #'               )
@@ -1490,16 +1663,101 @@ ecr_describe_image_scan_findings <- function(registryId = NULL, repositoryName, 
 }
 .ecr$operations$describe_image_scan_findings <- ecr_describe_image_scan_findings
 
+#' Returns the signing status for a specified image
+#'
+#' @description
+#' Returns the signing status for a specified image. If the image matched
+#' signing rules that reference different signing profiles, a status is
+#' returned for each profile.
+#' 
+#' For more information, see [Managed
+#' signing](https://docs.aws.amazon.com/AmazonECR/latest/userguide/managed-signing.html)
+#' in the *Amazon Elastic Container Registry User Guide*.
+#'
+#' @usage
+#' ecr_describe_image_signing_status(repositoryName, imageId, registryId)
+#'
+#' @param repositoryName &#91;required&#93; The name of the repository that contains the image.
+#' @param imageId &#91;required&#93; An object containing identifying information for an image.
+#' @param registryId The Amazon Web Services account ID associated with the registry that
+#' contains the repository. If you do not specify a registry, the default
+#' registry is assumed.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   repositoryName = "string",
+#'   imageId = list(
+#'     imageDigest = "string",
+#'     imageTag = "string"
+#'   ),
+#'   registryId = "string",
+#'   signingStatuses = list(
+#'     list(
+#'       signingProfileArn = "string",
+#'       failureCode = "string",
+#'       failureReason = "string",
+#'       status = "IN_PROGRESS"|"COMPLETE"|"FAILED"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_image_signing_status(
+#'   repositoryName = "string",
+#'   imageId = list(
+#'     imageDigest = "string",
+#'     imageTag = "string"
+#'   ),
+#'   registryId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_describe_image_signing_status
+#'
+#' @aliases ecr_describe_image_signing_status
+ecr_describe_image_signing_status <- function(repositoryName, imageId, registryId = NULL) {
+  op <- new_operation(
+    name = "DescribeImageSigningStatus",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecr$describe_image_signing_status_input(repositoryName = repositoryName, imageId = imageId, registryId = registryId)
+  output <- .ecr$describe_image_signing_status_output()
+  config <- get_config()
+  svc <- .ecr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$describe_image_signing_status <- ecr_describe_image_signing_status
+
 #' Returns metadata about the images in a repository
 #'
 #' @description
 #' Returns metadata about the images in a repository.
 #' 
-#' Beginning with Docker version 1.9, the Docker client compresses image
+#' Starting with Docker version 1.9, the Docker client compresses image
 #' layers before pushing them to a V2 Docker registry. The output of the
-#' `docker images` command shows the uncompressed image size, so it may
-#' return a larger image size than the image sizes returned by
-#' [`describe_images`][ecr_describe_images].
+#' `docker images` command shows the uncompressed image size. Therefore,
+#' Docker might return a larger image than the image shown in the Amazon
+#' Web Services Management Console.
+#' 
+#' The new version of Amazon ECR *Basic Scanning* doesn't use the
+#' ImageDetail$imageScanFindingsSummary and ImageDetail$imageScanStatus
+#' attributes from the API response to return scan results. Use the
+#' [`describe_image_scan_findings`][ecr_describe_image_scan_findings] API
+#' instead. For more information about Amazon Web Services native basic
+#' scanning, see [Scan images for software vulnerabilities in Amazon
+#' ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html).
 #'
 #' @usage
 #' ecr_describe_images(registryId, repositoryName, imageIds, nextToken,
@@ -1548,7 +1806,7 @@ ecr_describe_image_scan_findings <- function(registryId = NULL, repositoryName, 
 #'         "2015-01-01"
 #'       ),
 #'       imageScanStatus = list(
-#'         status = "IN_PROGRESS"|"COMPLETE"|"FAILED"|"UNSUPPORTED_IMAGE"|"ACTIVE"|"PENDING"|"SCAN_ELIGIBILITY_EXPIRED"|"FINDINGS_UNAVAILABLE"|"LIMIT_EXCEEDED",
+#'         status = "IN_PROGRESS"|"COMPLETE"|"FAILED"|"UNSUPPORTED_IMAGE"|"ACTIVE"|"PENDING"|"SCAN_ELIGIBILITY_EXPIRED"|"FINDINGS_UNAVAILABLE"|"LIMIT_EXCEEDED"|"IMAGE_ARCHIVED",
 #'         description = "string"
 #'       ),
 #'       imageScanFindingsSummary = list(
@@ -1565,6 +1823,14 @@ ecr_describe_image_scan_findings <- function(registryId = NULL, repositoryName, 
 #'       imageManifestMediaType = "string",
 #'       artifactMediaType = "string",
 #'       lastRecordedPullTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       subjectManifestDigest = "string",
+#'       imageStatus = "ACTIVE"|"ARCHIVED"|"ACTIVATING",
+#'       lastArchivedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastActivatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       )
 #'     )
@@ -1587,7 +1853,8 @@ ecr_describe_image_scan_findings <- function(registryId = NULL, repositoryName, 
 #'   nextToken = "string",
 #'   maxResults = 123,
 #'   filter = list(
-#'     tagStatus = "TAGGED"|"UNTAGGED"|"ANY"
+#'     tagStatus = "TAGGED"|"UNTAGGED"|"ANY",
+#'     imageStatus = "ACTIVE"|"ARCHIVED"|"ACTIVATING"|"ANY"
 #'   )
 #' )
 #' ```
@@ -1827,7 +2094,13 @@ ecr_describe_registry <- function() {
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       imageTagMutability = "MUTABLE"|"IMMUTABLE",
+#'       imageTagMutability = "MUTABLE"|"IMMUTABLE"|"IMMUTABLE_WITH_EXCLUSION"|"MUTABLE_WITH_EXCLUSION",
+#'       imageTagMutabilityExclusionFilters = list(
+#'         list(
+#'           filterType = "WILDCARD",
+#'           filter = "string"
+#'         )
+#'       ),
 #'       imageScanningConfiguration = list(
 #'         scanOnPush = TRUE|FALSE
 #'       ),
@@ -1938,11 +2211,17 @@ ecr_describe_repositories <- function(registryId = NULL, repositoryNames = NULL,
 #'           Value = "string"
 #'         )
 #'       ),
-#'       imageTagMutability = "MUTABLE"|"IMMUTABLE",
+#'       imageTagMutability = "MUTABLE"|"IMMUTABLE"|"IMMUTABLE_WITH_EXCLUSION"|"MUTABLE_WITH_EXCLUSION",
+#'       imageTagMutabilityExclusionFilters = list(
+#'         list(
+#'           filterType = "WILDCARD",
+#'           filter = "string"
+#'         )
+#'       ),
 #'       repositoryPolicy = "string",
 #'       lifecyclePolicy = "string",
 #'       appliedFor = list(
-#'         "REPLICATION"|"PULL_THROUGH_CACHE"
+#'         "REPLICATION"|"PULL_THROUGH_CACHE"|"CREATE_ON_PUSH"
 #'       ),
 #'       customRoleArn = "string",
 #'       createdAt = as.POSIXct(
@@ -2268,9 +2547,9 @@ ecr_get_lifecycle_policy <- function(registryId = NULL, repositoryName) {
 #' `maxResults` results in a single page along with a `nextToken` response
 #' element. The remaining results of the initial request can be seen by
 #' sending another `GetLifecyclePolicyPreviewRequest` request with the
-#' returned `nextToken` value. This value can be between 1 and 1000. If
+#' returned `nextToken` value. This value can be between 1 and 100. If
 #' this parameter is not used, then `GetLifecyclePolicyPreviewRequest`
-#' returns up to 100 results and a `nextToken` value, if applicable. This
+#' returns up to100 results and a `nextToken` value, if applicable. This
 #' option cannot be used when you specify images with `imageIds`.
 #' @param filter An optional parameter that filters results based on image tag status and
 #' all tags, if tagged.
@@ -2294,13 +2573,21 @@ ecr_get_lifecycle_policy <- function(registryId = NULL, repositoryName) {
 #'         "2015-01-01"
 #'       ),
 #'       action = list(
-#'         type = "EXPIRE"
+#'         type = "EXPIRE"|"TRANSITION",
+#'         targetStorageClass = "ARCHIVE"
 #'       ),
-#'       appliedRulePriority = 123
+#'       appliedRulePriority = 123,
+#'       storageClass = "ARCHIVE"|"STANDARD"
 #'     )
 #'   ),
 #'   summary = list(
-#'     expiringImageTotalCount = 123
+#'     expiringImageTotalCount = 123,
+#'     transitioningImageTotalCounts = list(
+#'       list(
+#'         targetStorageClass = "ARCHIVE",
+#'         imageTotalCount = 123
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -2521,6 +2808,72 @@ ecr_get_repository_policy <- function(registryId = NULL, repositoryName) {
 }
 .ecr$operations$get_repository_policy <- ecr_get_repository_policy
 
+#' Retrieves the registry's signing configuration, which defines rules for
+#' automatically signing images using Amazon Web Services Signer
+#'
+#' @description
+#' Retrieves the registry's signing configuration, which defines rules for
+#' automatically signing images using Amazon Web Services Signer.
+#' 
+#' For more information, see [Managed
+#' signing](https://docs.aws.amazon.com/AmazonECR/latest/userguide/managed-signing.html)
+#' in the *Amazon Elastic Container Registry User Guide*.
+#'
+#' @usage
+#' ecr_get_signing_configuration()
+#'
+
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   registryId = "string",
+#'   signingConfiguration = list(
+#'     rules = list(
+#'       list(
+#'         signingProfileArn = "string",
+#'         repositoryFilters = list(
+#'           list(
+#'             filter = "string",
+#'             filterType = "WILDCARD_MATCH"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_signing_configuration()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_get_signing_configuration
+#'
+#' @aliases ecr_get_signing_configuration
+ecr_get_signing_configuration <- function() {
+  op <- new_operation(
+    name = "GetSigningConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecr$get_signing_configuration_input()
+  output <- .ecr$get_signing_configuration_output()
+  config <- get_config()
+  svc <- .ecr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$get_signing_configuration <- ecr_get_signing_configuration
+
 #' Notifies Amazon ECR that you intend to upload an image layer
 #'
 #' @description
@@ -2583,6 +2936,109 @@ ecr_initiate_layer_upload <- function(registryId = NULL, repositoryName) {
   return(response)
 }
 .ecr$operations$initiate_layer_upload <- ecr_initiate_layer_upload
+
+#' Lists the artifacts associated with a specified subject image
+#'
+#' @description
+#' Lists the artifacts associated with a specified subject image.
+#'
+#' @usage
+#' ecr_list_image_referrers(registryId, repositoryName, subjectId, filter,
+#'   nextToken, maxResults)
+#'
+#' @param registryId The Amazon Web Services account ID associated with the registry that
+#' contains the repository in which to list image referrers. If you do not
+#' specify a registry, the default registry is assumed.
+#' @param repositoryName &#91;required&#93; The name of the repository that contains the subject image.
+#' @param subjectId &#91;required&#93; An object containing the image digest of the subject image for which to
+#' retrieve associated artifacts.
+#' @param filter The filter key and value with which to filter your
+#' [`list_image_referrers`][ecr_list_image_referrers] results. If no filter
+#' is specified, only artifacts with `ACTIVE` status are returned.
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' [`list_image_referrers`][ecr_list_image_referrers] request where
+#' `maxResults` was used and the results exceeded the value of that
+#' parameter. Pagination continues from the end of the previous results
+#' that returned the `nextToken` value. This value is `null` when there are
+#' no more results to return.
+#' 
+#' This token should be treated as an opaque identifier that is only used
+#' to retrieve the next items in a list and not for other programmatic
+#' purposes.
+#' @param maxResults The maximum number of image referrer results returned by
+#' [`list_image_referrers`][ecr_list_image_referrers] in paginated output.
+#' When this parameter is used,
+#' [`list_image_referrers`][ecr_list_image_referrers] only returns
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another [`list_image_referrers`][ecr_list_image_referrers]
+#' request with the returned `nextToken` value. This value can be between 1
+#' and 50. If this parameter is not used, then
+#' [`list_image_referrers`][ecr_list_image_referrers] returns up to 50
+#' results and a `nextToken` value, if applicable.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   referrers = list(
+#'     list(
+#'       digest = "string",
+#'       mediaType = "string",
+#'       artifactType = "string",
+#'       size = 123,
+#'       annotations = list(
+#'         "string"
+#'       ),
+#'       artifactStatus = "ACTIVE"|"ARCHIVED"|"ACTIVATING"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_image_referrers(
+#'   registryId = "string",
+#'   repositoryName = "string",
+#'   subjectId = list(
+#'     imageDigest = "string"
+#'   ),
+#'   filter = list(
+#'     artifactTypes = list(
+#'       "string"
+#'     ),
+#'     artifactStatus = "ACTIVE"|"ARCHIVED"|"ACTIVATING"|"ANY"
+#'   ),
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_list_image_referrers
+#'
+#' @aliases ecr_list_image_referrers
+ecr_list_image_referrers <- function(registryId = NULL, repositoryName, subjectId, filter = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListImageReferrers",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecr$list_image_referrers_input(registryId = registryId, repositoryName = repositoryName, subjectId = subjectId, filter = filter, nextToken = nextToken, maxResults = maxResults)
+  output <- .ecr$list_image_referrers_output()
+  config <- get_config()
+  svc <- .ecr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$list_image_referrers <- ecr_list_image_referrers
 
 #' Lists all the image IDs for the specified repository
 #'
@@ -2648,7 +3104,8 @@ ecr_initiate_layer_upload <- function(registryId = NULL, repositoryName) {
 #'   nextToken = "string",
 #'   maxResults = 123,
 #'   filter = list(
-#'     tagStatus = "TAGGED"|"UNTAGGED"|"ANY"
+#'     tagStatus = "TAGGED"|"UNTAGGED"|"ANY",
+#'     imageStatus = "ACTIVE"|"ARCHIVED"|"ACTIVATING"|"ANY"
 #'   )
 #' )
 #' ```
@@ -2685,6 +3142,82 @@ ecr_list_images <- function(registryId = NULL, repositoryName, nextToken = NULL,
   return(response)
 }
 .ecr$operations$list_images <- ecr_list_images
+
+#' Lists the IAM principals that are excluded from having their image pull
+#' times recorded
+#'
+#' @description
+#' Lists the IAM principals that are excluded from having their image pull
+#' times recorded.
+#'
+#' @usage
+#' ecr_list_pull_time_update_exclusions(maxResults, nextToken)
+#'
+#' @param maxResults The maximum number of pull time update exclusion results returned by
+#' [`list_pull_time_update_exclusions`][ecr_list_pull_time_update_exclusions]
+#' in paginated output. When this parameter is used,
+#' [`list_pull_time_update_exclusions`][ecr_list_pull_time_update_exclusions]
+#' only returns `maxResults` results in a single page along with a
+#' `nextToken` response element. The remaining results of the initial
+#' request can be seen by sending another
+#' [`list_pull_time_update_exclusions`][ecr_list_pull_time_update_exclusions]
+#' request with the returned `nextToken` value. This value can be between 1
+#' and 1000. If this parameter is not used, then
+#' [`list_pull_time_update_exclusions`][ecr_list_pull_time_update_exclusions]
+#' returns up to 100 results and a `nextToken` value, if applicable.
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' [`list_pull_time_update_exclusions`][ecr_list_pull_time_update_exclusions]
+#' request where `maxResults` was used and the results exceeded the value
+#' of that parameter. Pagination continues from the end of the previous
+#' results that returned the `nextToken` value. This value is `null` when
+#' there are no more results to return.
+#' 
+#' This token should be treated as an opaque identifier that is only used
+#' to retrieve the next items in a list and not for other programmatic
+#' purposes.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pullTimeUpdateExclusions = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_pull_time_update_exclusions(
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_list_pull_time_update_exclusions
+#'
+#' @aliases ecr_list_pull_time_update_exclusions
+ecr_list_pull_time_update_exclusions <- function(maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListPullTimeUpdateExclusions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecr$list_pull_time_update_exclusions_input(maxResults = maxResults, nextToken = nextToken)
+  output <- .ecr$list_pull_time_update_exclusions_output()
+  config <- get_config()
+  svc <- .ecr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$list_pull_time_update_exclusions <- ecr_list_pull_time_update_exclusions
 
 #' List the tags for an Amazon ECR resource
 #'
@@ -2824,9 +3357,7 @@ ecr_put_account_setting <- function(name, value) {
 #' @param imageManifestMediaType The media type of the image manifest. If you push an image manifest that
 #' does not contain the `mediaType` field, you must specify the
 #' `imageManifestMediaType` in the request.
-#' @param imageTag The tag to associate with the image. This parameter is required for
-#' images that use the Docker Image Manifest V2 Schema 2 or Open Container
-#' Initiative (OCI) formats.
+#' @param imageTag The tag to associate with the image. This parameter is optional.
 #' @param imageDigest The image digest of the image manifest corresponding to the image.
 #'
 #' @return
@@ -2965,7 +3496,7 @@ ecr_put_image_scanning_configuration <- function(registryId = NULL, repositoryNa
 #'
 #' @usage
 #' ecr_put_image_tag_mutability(registryId, repositoryName,
-#'   imageTagMutability)
+#'   imageTagMutability, imageTagMutabilityExclusionFilters)
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry that
 #' contains the repository in which to update the image tag mutability
@@ -2977,6 +3508,8 @@ ecr_put_image_scanning_configuration <- function(registryId = NULL, repositoryNa
 #' specified, image tags can be overwritten. If `IMMUTABLE` is specified,
 #' all image tags within the repository will be immutable which will
 #' prevent them from being overwritten.
+#' @param imageTagMutabilityExclusionFilters A list of filters that specify which image tags should be excluded from
+#' the image tag mutability setting being applied.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2984,7 +3517,13 @@ ecr_put_image_scanning_configuration <- function(registryId = NULL, repositoryNa
 #' list(
 #'   registryId = "string",
 #'   repositoryName = "string",
-#'   imageTagMutability = "MUTABLE"|"IMMUTABLE"
+#'   imageTagMutability = "MUTABLE"|"IMMUTABLE"|"IMMUTABLE_WITH_EXCLUSION"|"MUTABLE_WITH_EXCLUSION",
+#'   imageTagMutabilityExclusionFilters = list(
+#'     list(
+#'       filterType = "WILDCARD",
+#'       filter = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -2993,7 +3532,13 @@ ecr_put_image_scanning_configuration <- function(registryId = NULL, repositoryNa
 #' svc$put_image_tag_mutability(
 #'   registryId = "string",
 #'   repositoryName = "string",
-#'   imageTagMutability = "MUTABLE"|"IMMUTABLE"
+#'   imageTagMutability = "MUTABLE"|"IMMUTABLE"|"IMMUTABLE_WITH_EXCLUSION"|"MUTABLE_WITH_EXCLUSION",
+#'   imageTagMutabilityExclusionFilters = list(
+#'     list(
+#'       filterType = "WILDCARD",
+#'       filter = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -3002,7 +3547,7 @@ ecr_put_image_scanning_configuration <- function(registryId = NULL, repositoryNa
 #' @rdname ecr_put_image_tag_mutability
 #'
 #' @aliases ecr_put_image_tag_mutability
-ecr_put_image_tag_mutability <- function(registryId = NULL, repositoryName, imageTagMutability) {
+ecr_put_image_tag_mutability <- function(registryId = NULL, repositoryName, imageTagMutability, imageTagMutabilityExclusionFilters = NULL) {
   op <- new_operation(
     name = "PutImageTagMutability",
     http_method = "POST",
@@ -3011,7 +3556,7 @@ ecr_put_image_tag_mutability <- function(registryId = NULL, repositoryName, imag
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ecr$put_image_tag_mutability_input(registryId = registryId, repositoryName = repositoryName, imageTagMutability = imageTagMutability)
+  input <- .ecr$put_image_tag_mutability_input(registryId = registryId, repositoryName = repositoryName, imageTagMutability = imageTagMutability, imageTagMutabilityExclusionFilters = imageTagMutabilityExclusionFilters)
   output <- .ecr$put_image_tag_mutability_output()
   config <- get_config()
   svc <- .ecr$service(config, op)
@@ -3326,6 +3871,145 @@ ecr_put_replication_configuration <- function(replicationConfiguration) {
 }
 .ecr$operations$put_replication_configuration <- ecr_put_replication_configuration
 
+#' Creates or updates the registry's signing configuration, which defines
+#' rules for automatically signing images with Amazon Web Services Signer
+#'
+#' @description
+#' Creates or updates the registry's signing configuration, which defines
+#' rules for automatically signing images with Amazon Web Services Signer.
+#' 
+#' For more information, see [Managed
+#' signing](https://docs.aws.amazon.com/AmazonECR/latest/userguide/managed-signing.html)
+#' in the *Amazon Elastic Container Registry User Guide*.
+#' 
+#' To successfully generate a signature, the IAM principal pushing images
+#' must have permission to sign payloads with the Amazon Web Services
+#' Signer signing profile referenced in the signing configuration.
+#'
+#' @usage
+#' ecr_put_signing_configuration(signingConfiguration)
+#'
+#' @param signingConfiguration &#91;required&#93; The signing configuration to assign to the registry.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   signingConfiguration = list(
+#'     rules = list(
+#'       list(
+#'         signingProfileArn = "string",
+#'         repositoryFilters = list(
+#'           list(
+#'             filter = "string",
+#'             filterType = "WILDCARD_MATCH"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_signing_configuration(
+#'   signingConfiguration = list(
+#'     rules = list(
+#'       list(
+#'         signingProfileArn = "string",
+#'         repositoryFilters = list(
+#'           list(
+#'             filter = "string",
+#'             filterType = "WILDCARD_MATCH"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_put_signing_configuration
+#'
+#' @aliases ecr_put_signing_configuration
+ecr_put_signing_configuration <- function(signingConfiguration) {
+  op <- new_operation(
+    name = "PutSigningConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecr$put_signing_configuration_input(signingConfiguration = signingConfiguration)
+  output <- .ecr$put_signing_configuration_output()
+  config <- get_config()
+  svc <- .ecr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$put_signing_configuration <- ecr_put_signing_configuration
+
+#' Adds an IAM principal to the pull time update exclusion list for a
+#' registry
+#'
+#' @description
+#' Adds an IAM principal to the pull time update exclusion list for a
+#' registry. Amazon ECR will not record the pull time if an excluded
+#' principal pulls an image.
+#'
+#' @usage
+#' ecr_register_pull_time_update_exclusion(principalArn)
+#'
+#' @param principalArn &#91;required&#93; The ARN of the IAM principal to exclude from having image pull times
+#' recorded.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   principalArn = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$register_pull_time_update_exclusion(
+#'   principalArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_register_pull_time_update_exclusion
+#'
+#' @aliases ecr_register_pull_time_update_exclusion
+ecr_register_pull_time_update_exclusion <- function(principalArn) {
+  op <- new_operation(
+    name = "RegisterPullTimeUpdateExclusion",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecr$register_pull_time_update_exclusion_input(principalArn = principalArn)
+  output <- .ecr$register_pull_time_update_exclusion_output()
+  config <- get_config()
+  svc <- .ecr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$register_pull_time_update_exclusion <- ecr_register_pull_time_update_exclusion
+
 #' Applies a repository policy to the specified repository to control
 #' access permissions
 #'
@@ -3428,7 +4112,7 @@ ecr_set_repository_policy <- function(registryId = NULL, repositoryName, policyT
 #'     imageTag = "string"
 #'   ),
 #'   imageScanStatus = list(
-#'     status = "IN_PROGRESS"|"COMPLETE"|"FAILED"|"UNSUPPORTED_IMAGE"|"ACTIVE"|"PENDING"|"SCAN_ELIGIBILITY_EXPIRED"|"FINDINGS_UNAVAILABLE"|"LIMIT_EXCEEDED",
+#'     status = "IN_PROGRESS"|"COMPLETE"|"FAILED"|"UNSUPPORTED_IMAGE"|"ACTIVE"|"PENDING"|"SCAN_ELIGIBILITY_EXPIRED"|"FINDINGS_UNAVAILABLE"|"LIMIT_EXCEEDED"|"IMAGE_ARCHIVED",
 #'     description = "string"
 #'   )
 #' )
@@ -3638,6 +4322,76 @@ ecr_untag_resource <- function(resourceArn, tagKeys) {
 }
 .ecr$operations$untag_resource <- ecr_untag_resource
 
+#' Transitions an image between storage classes
+#'
+#' @description
+#' Transitions an image between storage classes. You can transition images
+#' from Amazon ECR standard storage class to Amazon ECR archival storage
+#' class for long-term storage, or restore archived images back to Amazon
+#' ECR standard.
+#'
+#' @usage
+#' ecr_update_image_storage_class(registryId, repositoryName, imageId,
+#'   targetStorageClass)
+#'
+#' @param registryId The Amazon Web Services account ID associated with the registry that
+#' contains the image to transition. If you do not specify a registry, the
+#' default registry is assumed.
+#' @param repositoryName &#91;required&#93; The name of the repository that contains the image to transition.
+#' @param imageId &#91;required&#93; 
+#' @param targetStorageClass &#91;required&#93; The target storage class for the image.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   registryId = "string",
+#'   repositoryName = "string",
+#'   imageId = list(
+#'     imageDigest = "string",
+#'     imageTag = "string"
+#'   ),
+#'   imageStatus = "ACTIVE"|"ARCHIVED"|"ACTIVATING"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_image_storage_class(
+#'   registryId = "string",
+#'   repositoryName = "string",
+#'   imageId = list(
+#'     imageDigest = "string",
+#'     imageTag = "string"
+#'   ),
+#'   targetStorageClass = "STANDARD"|"ARCHIVE"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_update_image_storage_class
+#'
+#' @aliases ecr_update_image_storage_class
+ecr_update_image_storage_class <- function(registryId = NULL, repositoryName, imageId, targetStorageClass) {
+  op <- new_operation(
+    name = "UpdateImageStorageClass",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecr$update_image_storage_class_input(registryId = registryId, repositoryName = repositoryName, imageId = imageId, targetStorageClass = targetStorageClass)
+  output <- .ecr$update_image_storage_class_output()
+  config <- get_config()
+  svc <- .ecr$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$update_image_storage_class <- ecr_update_image_storage_class
+
 #' Updates an existing pull through cache rule
 #'
 #' @description
@@ -3716,7 +4470,8 @@ ecr_update_pull_through_cache_rule <- function(registryId = NULL, ecrRepositoryP
 #' @usage
 #' ecr_update_repository_creation_template(prefix, description,
 #'   encryptionConfiguration, resourceTags, imageTagMutability,
-#'   repositoryPolicy, lifecyclePolicy, appliedFor, customRoleArn)
+#'   imageTagMutabilityExclusionFilters, repositoryPolicy, lifecyclePolicy,
+#'   appliedFor, customRoleArn)
 #'
 #' @param prefix &#91;required&#93; The repository namespace prefix that matches an existing repository
 #' creation template in the registry. All repositories created using this
@@ -3738,6 +4493,8 @@ ecr_update_pull_through_cache_rule <- function(registryId = NULL, ecrRepositoryP
 #' allow image tags to be overwritten. If `IMMUTABLE` is specified, all
 #' image tags within the repository will be immutable which will prevent
 #' them from being overwritten.
+#' @param imageTagMutabilityExclusionFilters A list of filters that specify which image tags should be excluded from
+#' the repository creation template's image tag mutability setting.
 #' @param repositoryPolicy Updates the repository policy created using the template. A repository
 #' policy is a permissions policy associated with a repository to control
 #' access permissions.
@@ -3745,7 +4502,8 @@ ecr_update_pull_through_cache_rule <- function(registryId = NULL, ecrRepositoryP
 #' creation template.
 #' @param appliedFor Updates the list of enumerable strings representing the Amazon ECR
 #' repository creation scenarios that this template will apply towards. The
-#' two supported scenarios are `PULL_THROUGH_CACHE` and `REPLICATION`
+#' supported scenarios are `PULL_THROUGH_CACHE`, `REPLICATION`, and
+#' `CREATE_ON_PUSH`
 #' @param customRoleArn The ARN of the role to be assumed by Amazon ECR. This role must be in
 #' the same account as the registry that you are configuring. Amazon ECR
 #' will assume your supplied role when the customRoleArn is specified. When
@@ -3770,11 +4528,17 @@ ecr_update_pull_through_cache_rule <- function(registryId = NULL, ecrRepositoryP
 #'         Value = "string"
 #'       )
 #'     ),
-#'     imageTagMutability = "MUTABLE"|"IMMUTABLE",
+#'     imageTagMutability = "MUTABLE"|"IMMUTABLE"|"IMMUTABLE_WITH_EXCLUSION"|"MUTABLE_WITH_EXCLUSION",
+#'     imageTagMutabilityExclusionFilters = list(
+#'       list(
+#'         filterType = "WILDCARD",
+#'         filter = "string"
+#'       )
+#'     ),
 #'     repositoryPolicy = "string",
 #'     lifecyclePolicy = "string",
 #'     appliedFor = list(
-#'       "REPLICATION"|"PULL_THROUGH_CACHE"
+#'       "REPLICATION"|"PULL_THROUGH_CACHE"|"CREATE_ON_PUSH"
 #'     ),
 #'     customRoleArn = "string",
 #'     createdAt = as.POSIXct(
@@ -3802,11 +4566,17 @@ ecr_update_pull_through_cache_rule <- function(registryId = NULL, ecrRepositoryP
 #'       Value = "string"
 #'     )
 #'   ),
-#'   imageTagMutability = "MUTABLE"|"IMMUTABLE",
+#'   imageTagMutability = "MUTABLE"|"IMMUTABLE"|"IMMUTABLE_WITH_EXCLUSION"|"MUTABLE_WITH_EXCLUSION",
+#'   imageTagMutabilityExclusionFilters = list(
+#'     list(
+#'       filterType = "WILDCARD",
+#'       filter = "string"
+#'     )
+#'   ),
 #'   repositoryPolicy = "string",
 #'   lifecyclePolicy = "string",
 #'   appliedFor = list(
-#'     "REPLICATION"|"PULL_THROUGH_CACHE"
+#'     "REPLICATION"|"PULL_THROUGH_CACHE"|"CREATE_ON_PUSH"
 #'   ),
 #'   customRoleArn = "string"
 #' )
@@ -3817,7 +4587,7 @@ ecr_update_pull_through_cache_rule <- function(registryId = NULL, ecrRepositoryP
 #' @rdname ecr_update_repository_creation_template
 #'
 #' @aliases ecr_update_repository_creation_template
-ecr_update_repository_creation_template <- function(prefix, description = NULL, encryptionConfiguration = NULL, resourceTags = NULL, imageTagMutability = NULL, repositoryPolicy = NULL, lifecyclePolicy = NULL, appliedFor = NULL, customRoleArn = NULL) {
+ecr_update_repository_creation_template <- function(prefix, description = NULL, encryptionConfiguration = NULL, resourceTags = NULL, imageTagMutability = NULL, imageTagMutabilityExclusionFilters = NULL, repositoryPolicy = NULL, lifecyclePolicy = NULL, appliedFor = NULL, customRoleArn = NULL) {
   op <- new_operation(
     name = "UpdateRepositoryCreationTemplate",
     http_method = "POST",
@@ -3826,7 +4596,7 @@ ecr_update_repository_creation_template <- function(prefix, description = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ecr$update_repository_creation_template_input(prefix = prefix, description = description, encryptionConfiguration = encryptionConfiguration, resourceTags = resourceTags, imageTagMutability = imageTagMutability, repositoryPolicy = repositoryPolicy, lifecyclePolicy = lifecyclePolicy, appliedFor = appliedFor, customRoleArn = customRoleArn)
+  input <- .ecr$update_repository_creation_template_input(prefix = prefix, description = description, encryptionConfiguration = encryptionConfiguration, resourceTags = resourceTags, imageTagMutability = imageTagMutability, imageTagMutabilityExclusionFilters = imageTagMutabilityExclusionFilters, repositoryPolicy = repositoryPolicy, lifecyclePolicy = lifecyclePolicy, appliedFor = appliedFor, customRoleArn = customRoleArn)
   output <- .ecr$update_repository_creation_template_output()
   config <- get_config()
   svc <- .ecr$service(config, op)

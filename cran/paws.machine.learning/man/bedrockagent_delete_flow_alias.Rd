@@ -4,12 +4,12 @@
 \alias{bedrockagent_delete_flow_alias}
 \title{Deletes an alias of a flow}
 \usage{
-bedrockagent_delete_flow_alias(aliasIdentifier, flowIdentifier)
+bedrockagent_delete_flow_alias(flowIdentifier, aliasIdentifier)
 }
 \arguments{
-\item{aliasIdentifier}{[required] The unique identifier of the alias to be deleted.}
-
 \item{flowIdentifier}{[required] The unique identifier of the flow that the alias belongs to.}
+
+\item{aliasIdentifier}{[required] The unique identifier of the alias to be deleted.}
 }
 \description{
 Deletes an alias of a flow.

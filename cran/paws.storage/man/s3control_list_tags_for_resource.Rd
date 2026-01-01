@@ -2,8 +2,8 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_list_tags_for_resource}
 \alias{s3control_list_tags_for_resource}
-\title{This operation allows you to list all the Amazon Web Services resource
-tags for a specified resource}
+\title{This operation allows you to list all of the tags for a specified
+resource}
 \usage{
 s3control_list_tags_for_resource(AccountId, ResourceArn)
 }
@@ -11,11 +11,11 @@ s3control_list_tags_for_resource(AccountId, ResourceArn)
 \item{AccountId}{[required] The Amazon Web Services account ID of the resource owner.}
 
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the S3 resource that you want to list
-the tags for. The tagged resource can be an S3 Storage Lens group or S3
-Access Grants instance, registered location, or grant.}
+tags for. The tagged resource can be a directory bucket, S3 Storage Lens
+group or S3 Access Grants instance, registered location, or grant.}
 }
 \description{
-This operation allows you to list all the Amazon Web Services resource tags for a specified resource. Each tag is a label consisting of a user-defined key and value. Tags can help you manage, identify, organize, search for, and filter resources.
+This operation allows you to list all of the tags for a specified resource. Each tag is a label consisting of a key and value. Tags can help you organize, track costs for, and control access to resources.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_list_tags_for_resource/} for full documentation.
 }

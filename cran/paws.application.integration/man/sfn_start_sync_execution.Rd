@@ -20,16 +20,25 @@ sfn_start_sync_execution(
 \item{input}{The string that contains the JSON input data for the execution, for
 example:
 
-\verb{"input": "\{\\"first_name\\" : \\"test\\"\}"}
+\verb{"\{\\"first_name\\" : \\"Alejandro\\"\}"}
 
 If you don't include any JSON input data, you still must include the two
-braces, for example: \code{"input": "{}"}
+braces, for example: \code{"{}"}
 
 Length constraints apply to the payload size, and are expressed as bytes
 in UTF-8 encoding.}
 
 \item{traceHeader}{Passes the X-Ray trace header. The trace header can also be passed in
-the request payload.}
+the request payload.
+
+For X-Ray traces, all Amazon Web Services services use the
+\code{X-Amzn-Trace-Id} header from the HTTP request. Using the header is the
+preferred mechanism to identify a trace.
+\code{\link[=sfn_start_execution]{start_execution}} and
+\code{\link[=sfn_start_sync_execution]{start_sync_execution}} API operations can
+also use \code{traceHeader} from the body of the request payload. If \strong{both}
+sources are provided, Step Functions will use the \strong{header value}
+(preferred) over the value in the request body.}
 
 \item{includedData}{If your state machine definition is encrypted with a KMS key, callers
 must have \code{kms:Decrypt} permission to decrypt the definition.

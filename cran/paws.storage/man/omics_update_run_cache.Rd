@@ -2,7 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_update_run_cache}
 \alias{omics_update_run_cache}
-\title{Update a run cache}
+\title{Updates a run cache using its ID and returns a response with no body if
+the operation is successful}
 \usage{
 omics_update_run_cache(
   cacheBehavior = NULL,
@@ -21,7 +22,7 @@ omics_update_run_cache(
 \item{name}{Update the name of the run cache.}
 }
 \description{
-Update a run cache.
+Updates a run cache using its ID and returns a response with no body if the operation is successful. You can update the run cache description, name, or the default run cache behavior with \code{CACHE_ON_FAILURE} or \code{CACHE_ALWAYS}. To confirm that your run cache settings have been properly updated, use the \code{\link[=omics_get_run_cache]{get_run_cache}} API operation.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_update_run_cache/} for full documentation.
 }

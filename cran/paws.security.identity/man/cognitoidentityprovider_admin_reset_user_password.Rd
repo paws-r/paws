@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_admin_reset_user_password}
 \alias{cognitoidentityprovider_admin_reset_user_password}
-\title{Resets the specified user's password in a user pool}
+\title{Begins the password reset process}
 \usage{
 cognitoidentityprovider_admin_reset_user_password(
   UserPoolId,
@@ -49,7 +49,7 @@ in this parameter.
 }}
 }
 \description{
-Resets the specified user's password in a user pool. This operation doesn't change the user's password, but sends a password-reset code.
+Begins the password reset process. Sets the requested user’s account into a \code{RESET_REQUIRED} status, and sends them a password-reset code. Your user pool also sends the user a notification with a reset code and the information that their password has been reset. At sign-in, your application or the managed login session receives a challenge to complete the reset by confirming the code and setting a new password.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_reset_user_password/} for full documentation.
 }

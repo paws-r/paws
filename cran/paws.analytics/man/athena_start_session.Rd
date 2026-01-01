@@ -8,9 +8,13 @@ athena_start_session(
   Description = NULL,
   WorkGroup,
   EngineConfiguration,
+  ExecutionRole = NULL,
+  MonitoringConfiguration = NULL,
   NotebookVersion = NULL,
   SessionIdleTimeoutInMinutes = NULL,
-  ClientRequestToken = NULL
+  ClientRequestToken = NULL,
+  Tags = NULL,
+  CopyWorkGroupTags = NULL
 )
 }
 \arguments{
@@ -20,6 +24,13 @@ athena_start_session(
 
 \item{EngineConfiguration}{[required] Contains engine data processing unit (DPU) configuration settings and
 parameter mappings.}
+
+\item{ExecutionRole}{The ARN of the execution role used to access user resources for Spark
+sessions and Identity Center enabled workgroups. This property applies
+only to Spark enabled workgroups and Identity Center enabled workgroups.}
+
+\item{MonitoringConfiguration}{Contains the configuration settings for managed log persistence,
+delivering logs to Amazon S3 buckets, Amazon CloudWatch log groups etc.}
 
 \item{NotebookVersion}{The notebook version. This value is supplied automatically for notebook
 sessions in the Athena console and is not required for programmatic
@@ -41,6 +52,10 @@ This token is listed as not required because Amazon Web Services SDKs
 token for users. If you are not using the Amazon Web Services SDK or the
 Amazon Web Services CLI, you must provide this token or the action will
 fail.}
+
+\item{Tags}{A list of comma separated tags to add to the session that is created.}
+
+\item{CopyWorkGroupTags}{Copies the tags from the Workgroup to the Session when.}
 }
 \description{
 Creates a session for running calculations within a workgroup. The session is ready when it reaches an \code{IDLE} state.

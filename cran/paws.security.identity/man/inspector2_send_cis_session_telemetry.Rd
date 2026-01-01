@@ -4,14 +4,14 @@
 \alias{inspector2_send_cis_session_telemetry}
 \title{Sends a CIS session telemetry}
 \usage{
-inspector2_send_cis_session_telemetry(messages, scanJobId, sessionToken)
+inspector2_send_cis_session_telemetry(scanJobId, sessionToken, messages)
 }
 \arguments{
-\item{messages}{[required] The CIS session telemetry messages.}
-
 \item{scanJobId}{[required] A unique identifier for the scan job.}
 
 \item{sessionToken}{[required] The unique token that identifies the CIS session.}
+
+\item{messages}{[required] The CIS session telemetry messages.}
 }
 \description{
 Sends a CIS session telemetry. This API is used by the Amazon Inspector SSM plugin to communicate with the Amazon Inspector service. The Amazon Inspector SSM plugin calls this API to start a CIS scan session for the scan ID supplied by the service.

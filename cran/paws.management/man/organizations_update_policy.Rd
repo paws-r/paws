@@ -12,7 +12,7 @@ organizations_update_policy(
 )
 }
 \arguments{
-\item{PolicyId}{[required] The unique identifier (ID) of the policy that you want to update.
+\item{PolicyId}{[required] ID for the policy that you want to update.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a policy ID
 string requires "p-" followed by from 8 to 128 lowercase or uppercase

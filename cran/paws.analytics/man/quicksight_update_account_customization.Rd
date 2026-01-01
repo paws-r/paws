@@ -2,8 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_update_account_customization}
 \alias{quicksight_update_account_customization}
-\title{Updates Amazon QuickSight customizations for the current Amazon Web
-Services Region}
+\title{Updates Amazon Quick Sight customizations}
 \usage{
 quicksight_update_account_customization(
   AwsAccountId,
@@ -12,17 +11,15 @@ quicksight_update_account_customization(
 )
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID for the Amazon Web Services account that you want to update
-Amazon QuickSight customizations for.}
+\item{AwsAccountId}{[required] The ID for the Amazon Web Services account that you want to update Quick
+Sight customizations for.}
 
-\item{Namespace}{The namespace that you want to update Amazon QuickSight customizations
-for.}
+\item{Namespace}{The namespace that you want to update Quick Sight customizations for.}
 
-\item{AccountCustomization}{[required] The Amazon QuickSight customizations you're updating in the current
-Amazon Web Services Region.}
+\item{AccountCustomization}{[required] The Quick Sight customizations you're updating.}
 }
 \description{
-Updates Amazon QuickSight customizations for the current Amazon Web Services Region. Currently, the only customization that you can use is a theme.
+Updates Amazon Quick Sight customizations. Currently, the only customization that you can use is a theme.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_update_account_customization/} for full documentation.
 }

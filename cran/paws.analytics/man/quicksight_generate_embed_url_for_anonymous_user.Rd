@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_generate_embed_url_for_anonymous_user}
 \alias{quicksight_generate_embed_url_for_anonymous_user}
-\title{Generates an embed URL that you can use to embed an Amazon QuickSight
+\title{Generates an embed URL that you can use to embed an Amazon Quick Suite
 dashboard or visual in your website, without having to register any
 reader users}
 \usage{
@@ -23,8 +23,8 @@ that you're embedding.}
 \item{SessionLifetimeInMinutes}{How many minutes the session is valid. The session lifetime must be in
 [15-600] minutes range.}
 
-\item{Namespace}{[required] The Amazon QuickSight namespace that the anonymous user virtually
-belongs to. If you are not using an Amazon QuickSight custom namespace,
+\item{Namespace}{[required] The Amazon Quick Sight namespace that the anonymous user virtually
+belongs to. If you are not using an Amazon Quick Suite custom namespace,
 set this to \code{default}.}
 
 \item{SessionTags}{The session tags used for row-level security. Before you use this
@@ -33,12 +33,11 @@ using the \code{DataSet$RowLevelPermissionTagConfiguration} parameter so that
 session tags can be used to provide row-level security.
 
 These are not the tags used for the Amazon Web Services resource tagging
-feature. For more information, see \href{https://docs.aws.amazon.com/quicksight/latest/user/quicksight-dev-rls-tags.html}{Using Row-Level Security (RLS) with Tags}in
-the \emph{Amazon QuickSight User Guide}.}
+feature. For more information, see \href{https://docs.aws.amazon.com/quicksuite/latest/userguide/quicksight-dev-rls-tags.html}{Using Row-Level Security (RLS) with Tags}in
+the \emph{Amazon Quick Sight User Guide}.}
 
-\item{AuthorizedResourceArns}{[required] The Amazon Resource Names (ARNs) for the Amazon QuickSight resources
-that the user is authorized to access during the lifetime of the
-session.
+\item{AuthorizedResourceArns}{[required] The Amazon Resource Names (ARNs) for the Quick Sight resources that the
+user is authorized to access during the lifetime of the session.
 
 If you choose \code{Dashboard} embedding experience, pass the list of
 dashboard ARNs in the account that you want the user to be able to view.
@@ -52,8 +51,8 @@ Currently, you can pass up to 25 theme ARNs in each API call.}
 
 \item{AllowedDomains}{The domains that you want to add to the allow list for access to the
 generated URL that is then embedded. This optional parameter overrides
-the static domains that are configured in the Manage QuickSight menu in
-the Amazon QuickSight console. Instead, it allows only the domains that
+the static domains that are configured in the Manage Quick Sight menu in
+the Amazon Quick Sight console. Instead, it allows only the domains that
 you include in this parameter. You can list up to three domains or
 subdomains in each API call.
 
@@ -62,7 +61,7 @@ To include all subdomains under a specific domain to the allow list, use
 under \verb{https://sapp.amazon.com}.}
 }
 \description{
-Generates an embed URL that you can use to embed an Amazon QuickSight dashboard or visual in your website, without having to register any reader users. Before you use this action, make sure that you have configured the dashboards and permissions.
+Generates an embed URL that you can use to embed an Amazon Quick Suite dashboard or visual in your website, without having to register any reader users. Before you use this action, make sure that you have configured the dashboards and permissions.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_generate_embed_url_for_anonymous_user/} for full documentation.
 }

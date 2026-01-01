@@ -5,10 +5,10 @@
 \title{Returns all stack related events for a specified stack in reverse
 chronological order}
 \usage{
-cloudformation_describe_stack_events(StackName = NULL, NextToken = NULL)
+cloudformation_describe_stack_events(StackName, NextToken = NULL)
 }
 \arguments{
-\item{StackName}{The name or the unique stack ID that's associated with the stack, which
+\item{StackName}{[required] The name or the unique stack ID that's associated with the stack, which
 aren't always interchangeable:
 \itemize{
 \item Running stacks: You can specify either the stack's name or its
@@ -16,8 +16,8 @@ unique stack ID.
 \item Deleted stacks: You must specify the unique stack ID.
 }}
 
-\item{NextToken}{A string that identifies the next page of events that you want to
-retrieve.}
+\item{NextToken}{The token for the next set of items to return. (You received this token
+from a previous call.)}
 }
 \description{
 Returns all stack related events for a specified stack in reverse chronological order. For more information about a stack's event history, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stack-resource-configuration-complete.html}{Understand CloudFormation stack creation events} in the \emph{CloudFormation User Guide}.

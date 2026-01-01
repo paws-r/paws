@@ -58,7 +58,7 @@ NULL
 #'     LastUpdatedDate = "string",
 #'     LastEvaluatedDate = "string",
 #'     MonitorType = "DIMENSIONAL"|"CUSTOM",
-#'     MonitorDimension = "SERVICE",
+#'     MonitorDimension = "SERVICE"|"LINKED_ACCOUNT"|"TAG"|"COST_CATEGORY",
 #'     MonitorSpecification = list(
 #'       Or = list(
 #'         list()
@@ -68,7 +68,7 @@ NULL
 #'       ),
 #'       Not = list(),
 #'       Dimensions = list(
-#'         Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'         Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'         Values = list(
 #'           "string"
 #'         ),
@@ -205,7 +205,7 @@ costexplorer_create_anomaly_monitor <- function(AnomalyMonitor, ResourceTags = N
 #'       ),
 #'       Not = list(),
 #'       Dimensions = list(
-#'         Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'         Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'         Values = list(
 #'           "string"
 #'         ),
@@ -266,27 +266,27 @@ costexplorer_create_anomaly_subscription <- function(AnomalySubscription, Resour
 }
 .costexplorer$operations$create_anomaly_subscription <- costexplorer_create_anomaly_subscription
 
-#' Creates a new Cost Category with the requested name and rules
+#' Creates a new cost category with the requested name and rules
 #'
 #' @description
-#' Creates a new Cost Category with the requested name and rules.
+#' Creates a new cost category with the requested name and rules.
 #'
 #' @usage
 #' costexplorer_create_cost_category_definition(Name, EffectiveStart,
 #'   RuleVersion, Rules, DefaultValue, SplitChargeRules, ResourceTags)
 #'
 #' @param Name &#91;required&#93; 
-#' @param EffectiveStart The Cost Category's effective start date. It can only be a billing start
+#' @param EffectiveStart The cost category's effective start date. It can only be a billing start
 #' date (first day of the month). If the date isn't provided, it's the
 #' first day of the current month. Dates can't be before the previous
 #' twelve months, or in the future.
 #' @param RuleVersion &#91;required&#93; 
-#' @param Rules &#91;required&#93; The Cost Category rules used to categorize costs. For more information,
+#' @param Rules &#91;required&#93; The cost category rules used to categorize costs. For more information,
 #' see
 #' [CostCategoryRule](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategoryRule.html).
 #' @param DefaultValue 
-#' @param SplitChargeRules The split charge rules used to allocate your charges between your Cost
-#' Category values.
+#' @param SplitChargeRules The split charge rules used to allocate your charges between your cost
+#' category values.
 #' @param ResourceTags An optional list of tags to associate with the specified
 #' [`CostCategory`](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategory.html)
 #' . You can use resource tags to control access to your `cost category`
@@ -340,7 +340,7 @@ costexplorer_create_anomaly_subscription <- function(AnomalySubscription, Resour
 #'         ),
 #'         Not = list(),
 #'         Dimensions = list(
-#'           Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'           Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'           Values = list(
 #'             "string"
 #'           ),
@@ -515,16 +515,16 @@ costexplorer_delete_anomaly_subscription <- function(SubscriptionArn) {
 }
 .costexplorer$operations$delete_anomaly_subscription <- costexplorer_delete_anomaly_subscription
 
-#' Deletes a Cost Category
+#' Deletes a cost category
 #'
 #' @description
-#' Deletes a Cost Category. Expenses from this month going forward will no
-#' longer be categorized with this Cost Category.
+#' Deletes a cost category. Expenses from this month going forward will no
+#' longer be categorized with this cost category.
 #'
 #' @usage
 #' costexplorer_delete_cost_category_definition(CostCategoryArn)
 #'
-#' @param CostCategoryArn &#91;required&#93; The unique identifier for your Cost Category.
+#' @param CostCategoryArn &#91;required&#93; The unique identifier for your cost category.
 #'
 #' @return
 #' A list with the following syntax:
@@ -567,23 +567,23 @@ costexplorer_delete_cost_category_definition <- function(CostCategoryArn) {
 .costexplorer$operations$delete_cost_category_definition <- costexplorer_delete_cost_category_definition
 
 #' Returns the name, Amazon Resource Name (ARN), rules, definition, and
-#' effective dates of a Cost Category that's defined in the account
+#' effective dates of a cost category that's defined in the account
 #'
 #' @description
 #' Returns the name, Amazon Resource Name (ARN), rules, definition, and
-#' effective dates of a Cost Category that's defined in the account.
+#' effective dates of a cost category that's defined in the account.
 #' 
-#' You have the option to use `EffectiveOn` to return a Cost Category
+#' You have the option to use `EffectiveOn` to return a cost category
 #' that's active on a specific date. If there's no `EffectiveOn` specified,
-#' you see a Cost Category that's effective on the current date. If Cost
-#' Category is still effective, `EffectiveEnd` is omitted in the response.
+#' you see a Cost Category that's effective on the current date. If cost
+#' category is still effective, `EffectiveEnd` is omitted in the response.
 #'
 #' @usage
 #' costexplorer_describe_cost_category_definition(CostCategoryArn,
 #'   EffectiveOn)
 #'
-#' @param CostCategoryArn &#91;required&#93; The unique identifier for your Cost Category.
-#' @param EffectiveOn The date when the Cost Category was effective.
+#' @param CostCategoryArn &#91;required&#93; The unique identifier for your cost category.
+#' @param EffectiveOn The date when the cost category was effective.
 #'
 #' @return
 #' A list with the following syntax:
@@ -607,7 +607,7 @@ costexplorer_delete_cost_category_definition <- function(CostCategoryArn) {
 #'           ),
 #'           Not = list(),
 #'           Dimensions = list(
-#'             Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'             Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'             Values = list(
 #'               "string"
 #'             ),
@@ -840,7 +840,7 @@ costexplorer_get_anomalies <- function(MonitorArn = NULL, DateInterval, Feedback
 #'       LastUpdatedDate = "string",
 #'       LastEvaluatedDate = "string",
 #'       MonitorType = "DIMENSIONAL"|"CUSTOM",
-#'       MonitorDimension = "SERVICE",
+#'       MonitorDimension = "SERVICE"|"LINKED_ACCOUNT"|"TAG"|"COST_CATEGORY",
 #'       MonitorSpecification = list(
 #'         Or = list(
 #'           list()
@@ -850,7 +850,7 @@ costexplorer_get_anomalies <- function(MonitorArn = NULL, DateInterval, Feedback
 #'         ),
 #'         Not = list(),
 #'         Dimensions = list(
-#'           Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'           Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'           Values = list(
 #'             "string"
 #'           ),
@@ -967,7 +967,7 @@ costexplorer_get_anomaly_monitors <- function(MonitorArnList = NULL, NextPageTok
 #'         ),
 #'         Not = list(),
 #'         Dimensions = list(
-#'           Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'           Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'           Values = list(
 #'             "string"
 #'           ),
@@ -1168,7 +1168,7 @@ costexplorer_get_approximate_usage_records <- function(Granularity, Services = N
 #'       SavingsPlansToAdd = list(
 #'         list(
 #'           PaymentOption = "NO_UPFRONT"|"PARTIAL_UPFRONT"|"ALL_UPFRONT"|"LIGHT_UTILIZATION"|"MEDIUM_UTILIZATION"|"HEAVY_UTILIZATION",
-#'           SavingsPlansType = "COMPUTE_SP"|"EC2_INSTANCE_SP"|"SAGEMAKER_SP",
+#'           SavingsPlansType = "COMPUTE_SP"|"EC2_INSTANCE_SP"|"SAGEMAKER_SP"|"DATABASE_SP",
 #'           Region = "string",
 #'           InstanceFamily = "string",
 #'           TermInYears = "ONE_YEAR"|"THREE_YEARS",
@@ -1366,7 +1366,7 @@ costexplorer_get_commitment_purchase_analysis <- function(AnalysisId) {
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
@@ -1431,6 +1431,190 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity, Filter = NU
 }
 .costexplorer$operations$get_cost_and_usage <- costexplorer_get_cost_and_usage
 
+#' Retrieves cost and usage comparisons for your account between two
+#' periods within the last 13 months
+#'
+#' @description
+#' Retrieves cost and usage comparisons for your account between two
+#' periods within the last 13 months. If you have enabled multi-year data
+#' at monthly granularity, you can go back up to 38 months.
+#'
+#' @usage
+#' costexplorer_get_cost_and_usage_comparisons(BillingViewArn,
+#'   BaselineTimePeriod, ComparisonTimePeriod, MetricForComparison, Filter,
+#'   GroupBy, MaxResults, NextPageToken)
+#'
+#' @param BillingViewArn The Amazon Resource Name (ARN) that uniquely identifies a specific
+#' billing view. The ARN is used to specify which particular billing view
+#' you want to interact with or retrieve information from when making API
+#' calls related to Amazon Web Services Billing and Cost Management
+#' features. The BillingViewArn can be retrieved by calling the
+#' ListBillingViews API.
+#' @param BaselineTimePeriod &#91;required&#93; The reference time period for comparison. This time period serves as the
+#' baseline against which other cost and usage data will be compared. The
+#' interval must start and end on the first day of a month, with a duration
+#' of exactly one month.
+#' @param ComparisonTimePeriod &#91;required&#93; The comparison time period for analysis. This time period's cost and
+#' usage data will be compared against the baseline time period. The
+#' interval must start and end on the first day of a month, with a duration
+#' of exactly one month.
+#' @param MetricForComparison &#91;required&#93; The cost and usage metric to compare. Valid values are `AmortizedCost`,
+#' `BlendedCost`, `NetAmortizedCost`, `NetUnblendedCost`,
+#' `NormalizedUsageAmount`, `UnblendedCost`, and `UsageQuantity`.
+#' @param Filter 
+#' @param GroupBy You can group results using the attributes `DIMENSION`, `TAG`, and
+#' `COST_CATEGORY`.
+#' @param MaxResults The maximum number of results that are returned for the request.
+#' @param NextPageToken The token to retrieve the next set of paginated results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CostAndUsageComparisons = list(
+#'     list(
+#'       CostAndUsageSelector = list(
+#'         Or = list(
+#'           list()
+#'         ),
+#'         And = list(
+#'           list()
+#'         ),
+#'         Not = list(),
+#'         Dimensions = list(
+#'           Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'           Values = list(
+#'             "string"
+#'           ),
+#'           MatchOptions = list(
+#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
+#'           )
+#'         ),
+#'         Tags = list(
+#'           Key = "string",
+#'           Values = list(
+#'             "string"
+#'           ),
+#'           MatchOptions = list(
+#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
+#'           )
+#'         ),
+#'         CostCategories = list(
+#'           Key = "string",
+#'           Values = list(
+#'             "string"
+#'           ),
+#'           MatchOptions = list(
+#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
+#'           )
+#'         )
+#'       ),
+#'       Metrics = list(
+#'         list(
+#'           BaselineTimePeriodAmount = "string",
+#'           ComparisonTimePeriodAmount = "string",
+#'           Difference = "string",
+#'           Unit = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   TotalCostAndUsage = list(
+#'     list(
+#'       BaselineTimePeriodAmount = "string",
+#'       ComparisonTimePeriodAmount = "string",
+#'       Difference = "string",
+#'       Unit = "string"
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_cost_and_usage_comparisons(
+#'   BillingViewArn = "string",
+#'   BaselineTimePeriod = list(
+#'     Start = "string",
+#'     End = "string"
+#'   ),
+#'   ComparisonTimePeriod = list(
+#'     Start = "string",
+#'     End = "string"
+#'   ),
+#'   MetricForComparison = "string",
+#'   Filter = list(
+#'     Or = list(
+#'       list()
+#'     ),
+#'     And = list(
+#'       list()
+#'     ),
+#'     Not = list(),
+#'     Dimensions = list(
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'       Values = list(
+#'         "string"
+#'       ),
+#'       MatchOptions = list(
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
+#'       )
+#'     ),
+#'     Tags = list(
+#'       Key = "string",
+#'       Values = list(
+#'         "string"
+#'       ),
+#'       MatchOptions = list(
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
+#'       )
+#'     ),
+#'     CostCategories = list(
+#'       Key = "string",
+#'       Values = list(
+#'         "string"
+#'       ),
+#'       MatchOptions = list(
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
+#'       )
+#'     )
+#'   ),
+#'   GroupBy = list(
+#'     list(
+#'       Type = "DIMENSION"|"TAG"|"COST_CATEGORY",
+#'       Key = "string"
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextPageToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname costexplorer_get_cost_and_usage_comparisons
+#'
+#' @aliases costexplorer_get_cost_and_usage_comparisons
+costexplorer_get_cost_and_usage_comparisons <- function(BillingViewArn = NULL, BaselineTimePeriod, ComparisonTimePeriod, MetricForComparison, Filter = NULL, GroupBy = NULL, MaxResults = NULL, NextPageToken = NULL) {
+  op <- new_operation(
+    name = "GetCostAndUsageComparisons",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextPageToken", output_token = "NextPageToken", limit_key = "MaxResults", result_key = "CostAndUsageComparisons"),
+    stream_api = FALSE
+  )
+  input <- .costexplorer$get_cost_and_usage_comparisons_input(BillingViewArn = BillingViewArn, BaselineTimePeriod = BaselineTimePeriod, ComparisonTimePeriod = ComparisonTimePeriod, MetricForComparison = MetricForComparison, Filter = Filter, GroupBy = GroupBy, MaxResults = MaxResults, NextPageToken = NextPageToken)
+  output <- .costexplorer$get_cost_and_usage_comparisons_output()
+  config <- get_config()
+  svc <- .costexplorer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.costexplorer$operations$get_cost_and_usage_comparisons <- costexplorer_get_cost_and_usage_comparisons
+
 #' Retrieves cost and usage metrics with resources for your account
 #'
 #' @description
@@ -1473,6 +1657,13 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity, Filter = NU
 #' `Expression` objects to define any combination of dimension filters. For
 #' more information, see
 #' [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html).
+#' 
+#' The
+#' [`get_cost_and_usage_with_resources`][costexplorer_get_cost_and_usage_with_resources]
+#' operation requires that you either group by or filter by a `ResourceId`.
+#' It requires the
+#' [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html)
+#' `"SERVICE = Amazon Elastic Compute Cloud - Compute"` in the filter.
 #' 
 #' Valid values for `MatchOptions` for `Dimensions` are `EQUALS` and
 #' `CASE_SENSITIVE`.
@@ -1578,7 +1769,7 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity, Filter = NU
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
@@ -1643,12 +1834,12 @@ costexplorer_get_cost_and_usage_with_resources <- function(TimePeriod, Granulari
 }
 .costexplorer$operations$get_cost_and_usage_with_resources <- costexplorer_get_cost_and_usage_with_resources
 
-#' Retrieves an array of Cost Category names and values incurred cost
+#' Retrieves an array of cost category names and values incurred cost
 #'
 #' @description
-#' Retrieves an array of Cost Category names and values incurred cost.
+#' Retrieves an array of cost category names and values incurred cost.
 #' 
-#' If some Cost Category names and values are not associated with any cost,
+#' If some cost category names and values are not associated with any cost,
 #' they will not be returned by this API.
 #'
 #' @usage
@@ -1659,9 +1850,9 @@ costexplorer_get_cost_and_usage_with_resources <- function(TimePeriod, Granulari
 #' @param SearchString The value that you want to search the filter values for.
 #' 
 #' If you don't specify a `CostCategoryName`, `SearchString` is used to
-#' filter Cost Category names that match the `SearchString` pattern. If you
-#' specify a `CostCategoryName`, `SearchString` is used to filter Cost
-#' Category values that match the `SearchString` pattern.
+#' filter cost category names that match the `SearchString` pattern. If you
+#' specify a `CostCategoryName`, `SearchString` is used to filter cost
+#' category values that match the `SearchString` pattern.
 #' @param TimePeriod &#91;required&#93; 
 #' @param CostCategoryName 
 #' @param Filter 
@@ -1743,7 +1934,7 @@ costexplorer_get_cost_and_usage_with_resources <- function(TimePeriod, Granulari
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
@@ -1806,6 +1997,199 @@ costexplorer_get_cost_categories <- function(SearchString = NULL, TimePeriod, Co
 }
 .costexplorer$operations$get_cost_categories <- costexplorer_get_cost_categories
 
+#' Retrieves key factors driving cost changes between two time periods
+#' within the last 13 months, such as usage changes, discount changes, and
+#' commitment-based savings
+#'
+#' @description
+#' Retrieves key factors driving cost changes between two time periods
+#' within the last 13 months, such as usage changes, discount changes, and
+#' commitment-based savings. If you have enabled multi-year data at monthly
+#' granularity, you can go back up to 38 months.
+#'
+#' @usage
+#' costexplorer_get_cost_comparison_drivers(BillingViewArn,
+#'   BaselineTimePeriod, ComparisonTimePeriod, MetricForComparison, Filter,
+#'   GroupBy, MaxResults, NextPageToken)
+#'
+#' @param BillingViewArn The Amazon Resource Name (ARN) that uniquely identifies a specific
+#' billing view. The ARN is used to specify which particular billing view
+#' you want to interact with or retrieve information from when making API
+#' calls related to Amazon Web Services Billing and Cost Management
+#' features. The BillingViewArn can be retrieved by calling the
+#' ListBillingViews API.
+#' @param BaselineTimePeriod &#91;required&#93; The reference time period for comparison. This time period serves as the
+#' baseline against which other cost and usage data will be compared. The
+#' interval must start and end on the first day of a month, with a duration
+#' of exactly one month.
+#' @param ComparisonTimePeriod &#91;required&#93; The comparison time period for analysis. This time period's cost and
+#' usage data will be compared against the baseline time period. The
+#' interval must start and end on the first day of a month, with a duration
+#' of exactly one month.
+#' @param MetricForComparison &#91;required&#93; The cost and usage metric to compare. Valid values are `AmortizedCost`,
+#' `BlendedCost`, `NetAmortizedCost`, `NetUnblendedCost`,
+#' `NormalizedUsageAmount`, `UnblendedCost`, and `UsageQuantity`.
+#' @param Filter 
+#' @param GroupBy You can group results using the attributes `DIMENSION`, `TAG`, and
+#' `COST_CATEGORY`. Note that `SERVICE` and `USAGE_TYPE` dimensions are
+#' automatically included in the cost comparison drivers analysis.
+#' @param MaxResults The maximum number of results that are returned for the request.
+#' @param NextPageToken The token to retrieve the next set of paginated results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CostComparisonDrivers = list(
+#'     list(
+#'       CostSelector = list(
+#'         Or = list(
+#'           list()
+#'         ),
+#'         And = list(
+#'           list()
+#'         ),
+#'         Not = list(),
+#'         Dimensions = list(
+#'           Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'           Values = list(
+#'             "string"
+#'           ),
+#'           MatchOptions = list(
+#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
+#'           )
+#'         ),
+#'         Tags = list(
+#'           Key = "string",
+#'           Values = list(
+#'             "string"
+#'           ),
+#'           MatchOptions = list(
+#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
+#'           )
+#'         ),
+#'         CostCategories = list(
+#'           Key = "string",
+#'           Values = list(
+#'             "string"
+#'           ),
+#'           MatchOptions = list(
+#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
+#'           )
+#'         )
+#'       ),
+#'       Metrics = list(
+#'         list(
+#'           BaselineTimePeriodAmount = "string",
+#'           ComparisonTimePeriodAmount = "string",
+#'           Difference = "string",
+#'           Unit = "string"
+#'         )
+#'       ),
+#'       CostDrivers = list(
+#'         list(
+#'           Type = "string",
+#'           Name = "string",
+#'           Metrics = list(
+#'             list(
+#'               BaselineTimePeriodAmount = "string",
+#'               ComparisonTimePeriodAmount = "string",
+#'               Difference = "string",
+#'               Unit = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_cost_comparison_drivers(
+#'   BillingViewArn = "string",
+#'   BaselineTimePeriod = list(
+#'     Start = "string",
+#'     End = "string"
+#'   ),
+#'   ComparisonTimePeriod = list(
+#'     Start = "string",
+#'     End = "string"
+#'   ),
+#'   MetricForComparison = "string",
+#'   Filter = list(
+#'     Or = list(
+#'       list()
+#'     ),
+#'     And = list(
+#'       list()
+#'     ),
+#'     Not = list(),
+#'     Dimensions = list(
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'       Values = list(
+#'         "string"
+#'       ),
+#'       MatchOptions = list(
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
+#'       )
+#'     ),
+#'     Tags = list(
+#'       Key = "string",
+#'       Values = list(
+#'         "string"
+#'       ),
+#'       MatchOptions = list(
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
+#'       )
+#'     ),
+#'     CostCategories = list(
+#'       Key = "string",
+#'       Values = list(
+#'         "string"
+#'       ),
+#'       MatchOptions = list(
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
+#'       )
+#'     )
+#'   ),
+#'   GroupBy = list(
+#'     list(
+#'       Type = "DIMENSION"|"TAG"|"COST_CATEGORY",
+#'       Key = "string"
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextPageToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname costexplorer_get_cost_comparison_drivers
+#'
+#' @aliases costexplorer_get_cost_comparison_drivers
+costexplorer_get_cost_comparison_drivers <- function(BillingViewArn = NULL, BaselineTimePeriod, ComparisonTimePeriod, MetricForComparison, Filter = NULL, GroupBy = NULL, MaxResults = NULL, NextPageToken = NULL) {
+  op <- new_operation(
+    name = "GetCostComparisonDrivers",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextPageToken", output_token = "NextPageToken", limit_key = "MaxResults", result_key = "CostComparisonDrivers"),
+    stream_api = FALSE
+  )
+  input <- .costexplorer$get_cost_comparison_drivers_input(BillingViewArn = BillingViewArn, BaselineTimePeriod = BaselineTimePeriod, ComparisonTimePeriod = ComparisonTimePeriod, MetricForComparison = MetricForComparison, Filter = Filter, GroupBy = GroupBy, MaxResults = MaxResults, NextPageToken = NextPageToken)
+  output <- .costexplorer$get_cost_comparison_drivers_output()
+  config <- get_config()
+  svc <- .costexplorer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.costexplorer$operations$get_cost_comparison_drivers <- costexplorer_get_cost_comparison_drivers
+
 #' Retrieves a forecast for how much Amazon Web Services predicts that you
 #' will spend over the forecast time period that you select, based on your
 #' past costs
@@ -1839,7 +2223,7 @@ costexplorer_get_cost_categories <- function(SearchString = NULL, TimePeriod, Co
 #' 
 #' -   UNBLENDED_COST
 #' @param Granularity &#91;required&#93; How granular you want the forecast to be. You can get 3 months of
-#' `DAILY` forecasts or 12 months of `MONTHLY` forecasts.
+#' `DAILY` forecasts or 18 months of `MONTHLY` forecasts.
 #' 
 #' The [`get_cost_forecast`][costexplorer_get_cost_forecast] operation
 #' supports only `DAILY` and `MONTHLY` granularities.
@@ -1942,7 +2326,7 @@ costexplorer_get_cost_categories <- function(SearchString = NULL, TimePeriod, Co
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
@@ -2238,7 +2622,7 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
 #'     Start = "string",
 #'     End = "string"
 #'   ),
-#'   Dimension = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'   Dimension = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'   Context = "COST_AND_USAGE"|"RESERVATIONS"|"SAVINGS_PLANS",
 #'   Filter = list(
 #'     Or = list(
@@ -2249,7 +2633,7 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
@@ -2323,7 +2707,7 @@ costexplorer_get_dimension_values <- function(SearchString = NULL, TimePeriod, D
 #' ElastiCache, Amazon Relational Database Service, or Amazon Redshift
 #' usage is covered by a reservation. An organization's management account
 #' can see the coverage of the associated member accounts. This supports
-#' dimensions, Cost Categories, and nested expressions. For any time
+#' dimensions, cost categories, and nested expressions. For any time
 #' period, you can filter data about reservation usage by the following
 #' dimensions:
 #' 
@@ -2568,7 +2952,7 @@ costexplorer_get_dimension_values <- function(SearchString = NULL, TimePeriod, D
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
@@ -2811,7 +3195,7 @@ costexplorer_get_reservation_coverage <- function(TimePeriod, GroupBy = NULL, Gr
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
@@ -3094,7 +3478,7 @@ costexplorer_get_reservation_purchase_recommendation <- function(AccountId = NUL
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
@@ -3347,7 +3731,7 @@ costexplorer_get_reservation_utilization <- function(TimePeriod, GroupBy = NULL,
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
@@ -3429,7 +3813,7 @@ costexplorer_get_rightsizing_recommendation <- function(Filter = NULL, Configura
 #'   RecommendationDetailData = list(
 #'     AccountScope = "PAYER"|"LINKED",
 #'     LookbackPeriodInDays = "SEVEN_DAYS"|"THIRTY_DAYS"|"SIXTY_DAYS",
-#'     SavingsPlansType = "COMPUTE_SP"|"EC2_INSTANCE_SP"|"SAGEMAKER_SP",
+#'     SavingsPlansType = "COMPUTE_SP"|"EC2_INSTANCE_SP"|"SAGEMAKER_SP"|"DATABASE_SP",
 #'     TermInYears = "ONE_YEAR"|"THREE_YEARS",
 #'     PaymentOption = "NO_UPFRONT"|"PARTIAL_UPFRONT"|"ALL_UPFRONT"|"LIGHT_UTILIZATION"|"MEDIUM_UTILIZATION"|"HEAVY_UTILIZATION",
 #'     AccountId = "string",
@@ -3505,7 +3889,7 @@ costexplorer_get_savings_plan_purchase_recommendation_details <- function(Recomm
 #' Retrieves the Savings Plans covered for your account. This enables you
 #' to see how much of your cost is covered by a Savings Plan. An
 #' organization’s management account can see the coverage of the associated
-#' member accounts. This supports dimensions, Cost Categories, and nested
+#' member accounts. This supports dimensions, cost categories, and nested
 #' expressions. For any time period, you can filter data for Savings Plans
 #' usage with the following dimensions:
 #' 
@@ -3630,7 +4014,7 @@ costexplorer_get_savings_plan_purchase_recommendation_details <- function(Recomm
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
@@ -3746,7 +4130,7 @@ costexplorer_get_savings_plans_coverage <- function(TimePeriod, GroupBy = NULL, 
 #'   ),
 #'   SavingsPlansPurchaseRecommendation = list(
 #'     AccountScope = "PAYER"|"LINKED",
-#'     SavingsPlansType = "COMPUTE_SP"|"EC2_INSTANCE_SP"|"SAGEMAKER_SP",
+#'     SavingsPlansType = "COMPUTE_SP"|"EC2_INSTANCE_SP"|"SAGEMAKER_SP"|"DATABASE_SP",
 #'     TermInYears = "ONE_YEAR"|"THREE_YEARS",
 #'     PaymentOption = "NO_UPFRONT"|"PARTIAL_UPFRONT"|"ALL_UPFRONT"|"LIGHT_UTILIZATION"|"MEDIUM_UTILIZATION"|"HEAVY_UTILIZATION",
 #'     LookbackPeriodInDays = "SEVEN_DAYS"|"THIRTY_DAYS"|"SIXTY_DAYS",
@@ -3796,7 +4180,7 @@ costexplorer_get_savings_plans_coverage <- function(TimePeriod, GroupBy = NULL, 
 #' @section Request syntax:
 #' ```
 #' svc$get_savings_plans_purchase_recommendation(
-#'   SavingsPlansType = "COMPUTE_SP"|"EC2_INSTANCE_SP"|"SAGEMAKER_SP",
+#'   SavingsPlansType = "COMPUTE_SP"|"EC2_INSTANCE_SP"|"SAGEMAKER_SP"|"DATABASE_SP",
 #'   TermInYears = "ONE_YEAR"|"THREE_YEARS",
 #'   PaymentOption = "NO_UPFRONT"|"PARTIAL_UPFRONT"|"ALL_UPFRONT"|"LIGHT_UTILIZATION"|"MEDIUM_UTILIZATION"|"HEAVY_UTILIZATION",
 #'   AccountScope = "PAYER"|"LINKED",
@@ -3812,7 +4196,7 @@ costexplorer_get_savings_plans_coverage <- function(TimePeriod, GroupBy = NULL, 
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
@@ -3993,7 +4377,7 @@ costexplorer_get_savings_plans_purchase_recommendation <- function(SavingsPlansT
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
@@ -4187,7 +4571,7 @@ costexplorer_get_savings_plans_utilization <- function(TimePeriod, Granularity =
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
@@ -4339,7 +4723,7 @@ costexplorer_get_savings_plans_utilization_details <- function(TimePeriod, Filte
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
@@ -4432,7 +4816,7 @@ costexplorer_get_tags <- function(SearchString = NULL, TimePeriod, TagKey = NULL
 #' 
 #' -   NORMALIZED_USAGE_AMOUNT
 #' @param Granularity &#91;required&#93; How granular you want the forecast to be. You can get 3 months of
-#' `DAILY` forecasts or 12 months of `MONTHLY` forecasts.
+#' `DAILY` forecasts or 18 months of `MONTHLY` forecasts.
 #' 
 #' The [`get_usage_forecast`][costexplorer_get_usage_forecast] operation
 #' supports only `DAILY` and `MONTHLY` granularities.
@@ -4538,7 +4922,7 @@ costexplorer_get_tags <- function(SearchString = NULL, TimePeriod, TagKey = NULL
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
@@ -4629,7 +5013,7 @@ costexplorer_get_usage_forecast <- function(TimePeriod, Metric, Granularity, Fil
 #'           SavingsPlansToAdd = list(
 #'             list(
 #'               PaymentOption = "NO_UPFRONT"|"PARTIAL_UPFRONT"|"ALL_UPFRONT"|"LIGHT_UTILIZATION"|"MEDIUM_UTILIZATION"|"HEAVY_UTILIZATION",
-#'               SavingsPlansType = "COMPUTE_SP"|"EC2_INSTANCE_SP"|"SAGEMAKER_SP",
+#'               SavingsPlansType = "COMPUTE_SP"|"EC2_INSTANCE_SP"|"SAGEMAKER_SP"|"DATABASE_SP",
 #'               Region = "string",
 #'               InstanceFamily = "string",
 #'               TermInYears = "ONE_YEAR"|"THREE_YEARS",
@@ -4832,29 +5216,34 @@ costexplorer_list_cost_allocation_tags <- function(Status = NULL, TagKeys = NULL
 .costexplorer$operations$list_cost_allocation_tags <- costexplorer_list_cost_allocation_tags
 
 #' Returns the name, Amazon Resource Name (ARN), NumberOfRules and
-#' effective dates of all Cost Categories defined in the account
+#' effective dates of all cost categories defined in the account
 #'
 #' @description
 #' Returns the name, Amazon Resource Name (ARN), `NumberOfRules` and
-#' effective dates of all Cost Categories defined in the account. You have
-#' the option to use `EffectiveOn` to return a list of Cost Categories that
-#' were active on a specific date. If there is no `EffectiveOn` specified,
-#' you’ll see Cost Categories that are effective on the current date. If
-#' Cost Category is still effective, `EffectiveEnd` is omitted in the
-#' response.
+#' effective dates of all cost categories defined in the account. You have
+#' the option to use `EffectiveOn` and `SupportedResourceTypes` to return a
+#' list of cost categories that were active on a specific date. If there is
+#' no `EffectiveOn` specified, you’ll see cost categories that are
+#' effective on the current date. If cost category is still effective,
+#' `EffectiveEnd` is omitted in the response.
 #' [`list_cost_category_definitions`][costexplorer_list_cost_category_definitions]
 #' supports pagination. The request can have a `MaxResults` range up to
 #' 100.
 #'
 #' @usage
 #' costexplorer_list_cost_category_definitions(EffectiveOn, NextToken,
-#'   MaxResults)
+#'   MaxResults, SupportedResourceTypes)
 #'
-#' @param EffectiveOn The date when the Cost Category was effective.
+#' @param EffectiveOn The date when the cost category was effective.
 #' @param NextToken The token to retrieve the next set of results. Amazon Web Services
 #' provides the token when the response from a previous call has more
 #' results than the maximum page size.
 #' @param MaxResults The number of entries a paginated response contains.
+#' @param SupportedResourceTypes Filter cost category definitions that are supported by given resource
+#' types based on the latest version. If the filter is present, the result
+#' only includes Cost Categories that supports input resource type. If the
+#' filter isn't provided, no filtering is applied. The valid values are
+#' `billing:rispgroupsharing`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4876,7 +5265,10 @@ costexplorer_list_cost_allocation_tags <- function(Status = NULL, TagKeys = NULL
 #'       Values = list(
 #'         "string"
 #'       ),
-#'       DefaultValue = "string"
+#'       DefaultValue = "string",
+#'       SupportedResourceTypes = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -4888,7 +5280,10 @@ costexplorer_list_cost_allocation_tags <- function(Status = NULL, TagKeys = NULL
 #' svc$list_cost_category_definitions(
 #'   EffectiveOn = "string",
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   SupportedResourceTypes = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -4897,7 +5292,7 @@ costexplorer_list_cost_allocation_tags <- function(Status = NULL, TagKeys = NULL
 #' @rdname costexplorer_list_cost_category_definitions
 #'
 #' @aliases costexplorer_list_cost_category_definitions
-costexplorer_list_cost_category_definitions <- function(EffectiveOn = NULL, NextToken = NULL, MaxResults = NULL) {
+costexplorer_list_cost_category_definitions <- function(EffectiveOn = NULL, NextToken = NULL, MaxResults = NULL, SupportedResourceTypes = NULL) {
   op <- new_operation(
     name = "ListCostCategoryDefinitions",
     http_method = "POST",
@@ -4906,7 +5301,7 @@ costexplorer_list_cost_category_definitions <- function(EffectiveOn = NULL, Next
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
-  input <- .costexplorer$list_cost_category_definitions_input(EffectiveOn = EffectiveOn, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .costexplorer$list_cost_category_definitions_input(EffectiveOn = EffectiveOn, NextToken = NextToken, MaxResults = MaxResults, SupportedResourceTypes = SupportedResourceTypes)
   output <- .costexplorer$list_cost_category_definitions_output()
   config <- get_config()
   svc <- .costexplorer$service(config, op)
@@ -4915,6 +5310,75 @@ costexplorer_list_cost_category_definitions <- function(EffectiveOn = NULL, Next
   return(response)
 }
 .costexplorer$operations$list_cost_category_definitions <- costexplorer_list_cost_category_definitions
+
+#' Returns resource associations of all cost categories defined in the
+#' account
+#'
+#' @description
+#' Returns resource associations of all cost categories defined in the
+#' account. You have the option to use `CostCategoryArn` to get the
+#' association for a specific cost category.
+#' [`list_cost_category_resource_associations`][costexplorer_list_cost_category_resource_associations]
+#' supports pagination. The request can have a `MaxResults` range up to
+#' 100.
+#'
+#' @usage
+#' costexplorer_list_cost_category_resource_associations(CostCategoryArn,
+#'   NextToken, MaxResults)
+#'
+#' @param CostCategoryArn The unique identifier for your cost category.
+#' @param NextToken The token to retrieve the next set of results. Amazon Web Services
+#' provides the token when the response from a previous call has more
+#' results than the maximum page size.
+#' @param MaxResults The number of entries a paginated response contains.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CostCategoryResourceAssociations = list(
+#'     list(
+#'       ResourceArn = "string",
+#'       CostCategoryName = "string",
+#'       CostCategoryArn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_cost_category_resource_associations(
+#'   CostCategoryArn = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname costexplorer_list_cost_category_resource_associations
+#'
+#' @aliases costexplorer_list_cost_category_resource_associations
+costexplorer_list_cost_category_resource_associations <- function(CostCategoryArn = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListCostCategoryResourceAssociations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CostCategoryResourceAssociations"),
+    stream_api = FALSE
+  )
+  input <- .costexplorer$list_cost_category_resource_associations_input(CostCategoryArn = CostCategoryArn, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .costexplorer$list_cost_category_resource_associations_output()
+  config <- get_config()
+  svc <- .costexplorer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.costexplorer$operations$list_cost_category_resource_associations <- costexplorer_list_cost_category_resource_associations
 
 #' Retrieves a list of your historical recommendation generations within
 #' the past 30 days
@@ -5131,7 +5595,7 @@ costexplorer_provide_anomaly_feedback <- function(AnomalyId, Feedback) {
 #'       SavingsPlansToAdd = list(
 #'         list(
 #'           PaymentOption = "NO_UPFRONT"|"PARTIAL_UPFRONT"|"ALL_UPFRONT"|"LIGHT_UTILIZATION"|"MEDIUM_UTILIZATION"|"HEAVY_UTILIZATION",
-#'           SavingsPlansType = "COMPUTE_SP"|"EC2_INSTANCE_SP"|"SAGEMAKER_SP",
+#'           SavingsPlansType = "COMPUTE_SP"|"EC2_INSTANCE_SP"|"SAGEMAKER_SP"|"DATABASE_SP",
 #'           Region = "string",
 #'           InstanceFamily = "string",
 #'           TermInYears = "ONE_YEAR"|"THREE_YEARS",
@@ -5578,7 +6042,7 @@ costexplorer_update_anomaly_monitor <- function(MonitorArn, MonitorName = NULL) 
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
@@ -5698,10 +6162,10 @@ costexplorer_update_cost_allocation_tags_status <- function(CostAllocationTagsSt
 }
 .costexplorer$operations$update_cost_allocation_tags_status <- costexplorer_update_cost_allocation_tags_status
 
-#' Updates an existing Cost Category
+#' Updates an existing cost category
 #'
 #' @description
-#' Updates an existing Cost Category. Changes made to the Cost Category
+#' Updates an existing cost category. Changes made to the cost category
 #' rules will be used to categorize the current month’s expenses and future
 #' expenses. This won’t change categorization for the previous months.
 #'
@@ -5709,8 +6173,8 @@ costexplorer_update_cost_allocation_tags_status <- function(CostAllocationTagsSt
 #' costexplorer_update_cost_category_definition(CostCategoryArn,
 #'   EffectiveStart, RuleVersion, Rules, DefaultValue, SplitChargeRules)
 #'
-#' @param CostCategoryArn &#91;required&#93; The unique identifier for your Cost Category.
-#' @param EffectiveStart The Cost Category's effective start date. It can only be a billing start
+#' @param CostCategoryArn &#91;required&#93; The unique identifier for your cost category.
+#' @param EffectiveStart The cost category's effective start date. It can only be a billing start
 #' date (first day of the month). If the date isn't provided, it's the
 #' first day of the current month. Dates can't be before the previous
 #' twelve months, or in the future.
@@ -5720,8 +6184,8 @@ costexplorer_update_cost_allocation_tags_status <- function(CostAllocationTagsSt
 #' [CostCategoryRule](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategoryRule.html)
 #' .
 #' @param DefaultValue 
-#' @param SplitChargeRules The split charge rules used to allocate your charges between your Cost
-#' Category values.
+#' @param SplitChargeRules The split charge rules used to allocate your charges between your cost
+#' category values.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5750,7 +6214,7 @@ costexplorer_update_cost_allocation_tags_status <- function(CostAllocationTagsSt
 #'         ),
 #'         Not = list(),
 #'         Dimensions = list(
-#'           Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'           Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"PAYER_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'           Values = list(
 #'             "string"
 #'           ),

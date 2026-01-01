@@ -10,7 +10,8 @@ ec2_modify_vpn_tunnel_options(
   VpnTunnelOutsideIpAddress,
   TunnelOptions,
   DryRun = NULL,
-  SkipTunnelReplacement = NULL
+  SkipTunnelReplacement = NULL,
+  PreSharedKeyStorage = NULL
 )
 }
 \arguments{
@@ -29,6 +30,10 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 only applicable when turning on or off \code{EnableTunnelLifecycleControl}.
 
 Valid values: \code{True} | \code{False}}
+
+\item{PreSharedKeyStorage}{Specifies the storage mode for the pre-shared key (PSK). Valid values
+are \code{Standard} (stored in Site-to-Site VPN service) or \code{SecretsManager}
+(stored in Amazon Web Services Secrets Manager).}
 }
 \description{
 Modifies the options for a VPN tunnel in an Amazon Web Services Site-to-Site VPN connection. You can modify multiple options for a tunnel in a single request, but you can only modify one tunnel at a time. For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VPNTunnels.html}{Site-to-Site VPN tunnel options for your Site-to-Site VPN connection} in the \emph{Amazon Web Services Site-to-Site VPN User Guide}.

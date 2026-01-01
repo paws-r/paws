@@ -35,23 +35,24 @@ rds_modify_db_cluster(
   StorageType = NULL,
   Iops = NULL,
   AutoMinorVersionUpgrade = NULL,
+  NetworkType = NULL,
+  ServerlessV2ScalingConfiguration = NULL,
   MonitoringInterval = NULL,
   MonitoringRoleArn = NULL,
   DatabaseInsightsMode = NULL,
   EnablePerformanceInsights = NULL,
   PerformanceInsightsKMSKeyId = NULL,
   PerformanceInsightsRetentionPeriod = NULL,
-  ServerlessV2ScalingConfiguration = NULL,
-  NetworkType = NULL,
   ManageMasterUserPassword = NULL,
   RotateMasterUserPassword = NULL,
+  EnableLocalWriteForwarding = NULL,
   MasterUserSecretKmsKeyId = NULL,
   EngineMode = NULL,
   AllowEngineModeChange = NULL,
-  EnableLocalWriteForwarding = NULL,
   AwsBackupRecoveryPointArn = NULL,
   EnableLimitlessDatabase = NULL,
-  CACertificateIdentifier = NULL
+  CACertificateIdentifier = NULL,
+  MasterUserAuthenticationType = NULL
 )
 }
 \arguments{
@@ -407,6 +408,21 @@ Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters.
 For more information about automatic minor version upgrades, see
 \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Upgrading.html#USER_UpgradeDBInstance.Upgrading.AutoMinorVersionUpgrades}{Automatically upgrading the minor engine version}.}
 
+\item{NetworkType}{The network type of the DB cluster.
+
+The network type is determined by the \code{DBSubnetGroup} specified for the
+DB cluster. A \code{DBSubnetGroup} can support only the IPv4 protocol or the
+IPv4 and the IPv6 protocols (\code{DUAL}).
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html}{Working with a DB instance in a VPC}
+in the \emph{Amazon Aurora User Guide.}
+
+Valid for Cluster Type: Aurora DB clusters only
+
+Valid Values: \code{IPV4 | DUAL}}
+
+\item{ServerlessV2ScalingConfiguration}{}
+
 \item{MonitoringInterval}{The interval, in seconds, between points when Enhanced Monitoring
 metrics are collected for the DB cluster. To turn off collecting
 Enhanced Monitoring metrics, specify \code{0}.
@@ -437,8 +453,9 @@ If you change the value from \code{standard} to \code{advanced}, you must set th
 \code{PerformanceInsightsEnabled} parameter to \code{true} and the
 \code{PerformanceInsightsRetentionPeriod} parameter to 465.
 
-If you change the value from \code{advanced} to \code{standard}, you must set the
-\code{PerformanceInsightsEnabled} parameter to \code{false}.
+If you change the value from \code{advanced} to \code{standard}, you can set the
+\code{PerformanceInsightsEnabled} parameter to \code{true} to collect detailed
+database counter and per-query metrics.
 
 Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters}
 
@@ -480,21 +497,6 @@ Default: \code{7} days
 If you specify a retention period that isn't valid, such as \code{94}, Amazon
 RDS issues an error.}
 
-\item{ServerlessV2ScalingConfiguration}{}
-
-\item{NetworkType}{The network type of the DB cluster.
-
-The network type is determined by the \code{DBSubnetGroup} specified for the
-DB cluster. A \code{DBSubnetGroup} can support only the IPv4 protocol or the
-IPv4 and the IPv6 protocols (\code{DUAL}).
-
-For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html}{Working with a DB instance in a VPC}
-in the \emph{Amazon Aurora User Guide.}
-
-Valid for Cluster Type: Aurora DB clusters only
-
-Valid Values: \code{IPV4 | DUAL}}
-
 \item{ManageMasterUserPassword}{Specifies whether to manage the master user password with Amazon Web
 Services Secrets Manager.
 
@@ -533,6 +535,12 @@ Constraints:
 \item You must apply the change immediately when rotating the master user
 password.
 }}
+
+\item{EnableLocalWriteForwarding}{Specifies whether read replicas can forward write operations to the
+writer DB instance in the DB cluster. By default, write operations
+aren't allowed on reader DB instances.
+
+Valid for: Aurora DB clusters only}
 
 \item{MasterUserSecretKmsKeyId}{The Amazon Web Services KMS key identifier to encrypt a secret that is
 automatically generated and managed in Amazon Web Services Secrets
@@ -590,12 +598,6 @@ for the \code{EngineMode} parameter from the DB cluster's current engine
 mode.
 }}
 
-\item{EnableLocalWriteForwarding}{Specifies whether read replicas can forward write operations to the
-writer DB instance in the DB cluster. By default, write operations
-aren't allowed on reader DB instances.
-
-Valid for: Aurora DB clusters only}
-
 \item{AwsBackupRecoveryPointArn}{The Amazon Resource Name (ARN) of the recovery point in Amazon Web
 Services Backup.}
 
@@ -614,6 +616,21 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/Use
 in the \emph{Amazon RDS User Guide}.
 
 Valid for Cluster Type: Multi-AZ DB clusters}
+
+\item{MasterUserAuthenticationType}{Specifies the authentication type for the master user. With IAM master
+user authentication, you can change the master DB user to use IAM
+database authentication.
+
+You can specify one of the following values:
+\itemize{
+\item \code{password} - Use standard database authentication with a password.
+\item \code{iam-db-auth} - Use IAM database authentication for the master user.
+}
+
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
+
+This option is only valid for RDS for PostgreSQL and Aurora PostgreSQL
+engines.}
 }
 \description{
 Modifies the settings of an Amazon Aurora DB cluster or a Multi-AZ DB cluster. You can change one or more settings by specifying these parameters and the new values in the request.

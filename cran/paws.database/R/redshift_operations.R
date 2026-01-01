@@ -759,11 +759,24 @@ redshift_create_authentication_profile <- function(AuthenticationProfileName, Au
 #' Zones (AZ).
 #' @param RedshiftIdcApplicationArn The Amazon resource name (ARN) of the Amazon Redshift IAM Identity
 #' Center application.
+#' @param CatalogName The name of the Glue data catalog that will be associated with the
+#' cluster enabled with Amazon Redshift federated permissions.
+#' 
+#' Constraints:
+#' 
+#' -   Must contain at least one lowercase letter.
+#' 
+#' -   Can only contain lowercase letters (a-z), numbers (0-9), underscores
+#'     (_), and hyphens (-).
+#' 
+#' Pattern: `^[a-z0-9_-]*[a-z]+[a-z0-9_-]*$`
+#' 
+#' Example: `my-catalog_01`
 #'
 #' @keywords internal
 #'
 #' @rdname redshift_create_cluster
-redshift_create_cluster <- function(DBName = NULL, ClusterIdentifier, ClusterType = NULL, NodeType, MasterUsername, MasterUserPassword = NULL, ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, ClusterSubnetGroupName = NULL, AvailabilityZone = NULL, PreferredMaintenanceWindow = NULL, ClusterParameterGroupName = NULL, AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, Port = NULL, ClusterVersion = NULL, AllowVersionUpgrade = NULL, NumberOfNodes = NULL, PubliclyAccessible = NULL, Encrypted = NULL, HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, ElasticIp = NULL, Tags = NULL, KmsKeyId = NULL, EnhancedVpcRouting = NULL, AdditionalInfo = NULL, IamRoles = NULL, MaintenanceTrackName = NULL, SnapshotScheduleIdentifier = NULL, AvailabilityZoneRelocation = NULL, AquaConfigurationStatus = NULL, DefaultIamRoleArn = NULL, LoadSampleData = NULL, ManageMasterPassword = NULL, MasterPasswordSecretKmsKeyId = NULL, IpAddressType = NULL, MultiAZ = NULL, RedshiftIdcApplicationArn = NULL) {
+redshift_create_cluster <- function(DBName = NULL, ClusterIdentifier, ClusterType = NULL, NodeType, MasterUsername, MasterUserPassword = NULL, ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, ClusterSubnetGroupName = NULL, AvailabilityZone = NULL, PreferredMaintenanceWindow = NULL, ClusterParameterGroupName = NULL, AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, Port = NULL, ClusterVersion = NULL, AllowVersionUpgrade = NULL, NumberOfNodes = NULL, PubliclyAccessible = NULL, Encrypted = NULL, HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, ElasticIp = NULL, Tags = NULL, KmsKeyId = NULL, EnhancedVpcRouting = NULL, AdditionalInfo = NULL, IamRoles = NULL, MaintenanceTrackName = NULL, SnapshotScheduleIdentifier = NULL, AvailabilityZoneRelocation = NULL, AquaConfigurationStatus = NULL, DefaultIamRoleArn = NULL, LoadSampleData = NULL, ManageMasterPassword = NULL, MasterPasswordSecretKmsKeyId = NULL, IpAddressType = NULL, MultiAZ = NULL, RedshiftIdcApplicationArn = NULL, CatalogName = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
@@ -772,7 +785,7 @@ redshift_create_cluster <- function(DBName = NULL, ClusterIdentifier, ClusterTyp
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .redshift$create_cluster_input(DBName = DBName, ClusterIdentifier = ClusterIdentifier, ClusterType = ClusterType, NodeType = NodeType, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, ClusterSubnetGroupName = ClusterSubnetGroupName, AvailabilityZone = AvailabilityZone, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ClusterParameterGroupName = ClusterParameterGroupName, AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, Port = Port, ClusterVersion = ClusterVersion, AllowVersionUpgrade = AllowVersionUpgrade, NumberOfNodes = NumberOfNodes, PubliclyAccessible = PubliclyAccessible, Encrypted = Encrypted, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, HsmConfigurationIdentifier = HsmConfigurationIdentifier, ElasticIp = ElasticIp, Tags = Tags, KmsKeyId = KmsKeyId, EnhancedVpcRouting = EnhancedVpcRouting, AdditionalInfo = AdditionalInfo, IamRoles = IamRoles, MaintenanceTrackName = MaintenanceTrackName, SnapshotScheduleIdentifier = SnapshotScheduleIdentifier, AvailabilityZoneRelocation = AvailabilityZoneRelocation, AquaConfigurationStatus = AquaConfigurationStatus, DefaultIamRoleArn = DefaultIamRoleArn, LoadSampleData = LoadSampleData, ManageMasterPassword = ManageMasterPassword, MasterPasswordSecretKmsKeyId = MasterPasswordSecretKmsKeyId, IpAddressType = IpAddressType, MultiAZ = MultiAZ, RedshiftIdcApplicationArn = RedshiftIdcApplicationArn)
+  input <- .redshift$create_cluster_input(DBName = DBName, ClusterIdentifier = ClusterIdentifier, ClusterType = ClusterType, NodeType = NodeType, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, ClusterSubnetGroupName = ClusterSubnetGroupName, AvailabilityZone = AvailabilityZone, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ClusterParameterGroupName = ClusterParameterGroupName, AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, Port = Port, ClusterVersion = ClusterVersion, AllowVersionUpgrade = AllowVersionUpgrade, NumberOfNodes = NumberOfNodes, PubliclyAccessible = PubliclyAccessible, Encrypted = Encrypted, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, HsmConfigurationIdentifier = HsmConfigurationIdentifier, ElasticIp = ElasticIp, Tags = Tags, KmsKeyId = KmsKeyId, EnhancedVpcRouting = EnhancedVpcRouting, AdditionalInfo = AdditionalInfo, IamRoles = IamRoles, MaintenanceTrackName = MaintenanceTrackName, SnapshotScheduleIdentifier = SnapshotScheduleIdentifier, AvailabilityZoneRelocation = AvailabilityZoneRelocation, AquaConfigurationStatus = AquaConfigurationStatus, DefaultIamRoleArn = DefaultIamRoleArn, LoadSampleData = LoadSampleData, ManageMasterPassword = ManageMasterPassword, MasterPasswordSecretKmsKeyId = MasterPasswordSecretKmsKeyId, IpAddressType = IpAddressType, MultiAZ = MultiAZ, RedshiftIdcApplicationArn = RedshiftIdcApplicationArn, CatalogName = CatalogName)
   output <- .redshift$create_cluster_output()
   config <- get_config()
   svc <- .redshift$service(config, op)
@@ -1281,11 +1294,18 @@ redshift_create_integration <- function(SourceArn, TargetArn, IntegrationName, K
 #' application instance.
 #' @param ServiceIntegrations A collection of service integrations for the Redshift IAM Identity
 #' Center application.
+#' @param ApplicationType The type of application being created. Valid values are `None` or
+#' `Lakehouse`. Use `Lakehouse` to enable Amazon Redshift federated
+#' permissions on cluster.
+#' @param Tags A list of tags.
+#' @param SsoTagKeys A list of tags keys that Redshift Identity Center applications copy to
+#' IAM Identity Center. For each input key, the tag corresponding to the
+#' key-value pair is propagated.
 #'
 #' @keywords internal
 #'
 #' @rdname redshift_create_redshift_idc_application
-redshift_create_redshift_idc_application <- function(IdcInstanceArn, RedshiftIdcApplicationName, IdentityNamespace = NULL, IdcDisplayName, IamRoleArn, AuthorizedTokenIssuerList = NULL, ServiceIntegrations = NULL) {
+redshift_create_redshift_idc_application <- function(IdcInstanceArn, RedshiftIdcApplicationName, IdentityNamespace = NULL, IdcDisplayName, IamRoleArn, AuthorizedTokenIssuerList = NULL, ServiceIntegrations = NULL, ApplicationType = NULL, Tags = NULL, SsoTagKeys = NULL) {
   op <- new_operation(
     name = "CreateRedshiftIdcApplication",
     http_method = "POST",
@@ -1294,7 +1314,7 @@ redshift_create_redshift_idc_application <- function(IdcInstanceArn, RedshiftIdc
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .redshift$create_redshift_idc_application_input(IdcInstanceArn = IdcInstanceArn, RedshiftIdcApplicationName = RedshiftIdcApplicationName, IdentityNamespace = IdentityNamespace, IdcDisplayName = IdcDisplayName, IamRoleArn = IamRoleArn, AuthorizedTokenIssuerList = AuthorizedTokenIssuerList, ServiceIntegrations = ServiceIntegrations)
+  input <- .redshift$create_redshift_idc_application_input(IdcInstanceArn = IdcInstanceArn, RedshiftIdcApplicationName = RedshiftIdcApplicationName, IdentityNamespace = IdentityNamespace, IdcDisplayName = IdcDisplayName, IamRoleArn = IamRoleArn, AuthorizedTokenIssuerList = AuthorizedTokenIssuerList, ServiceIntegrations = ServiceIntegrations, ApplicationType = ApplicationType, Tags = Tags, SsoTagKeys = SsoTagKeys)
   output <- .redshift$create_redshift_idc_application_output()
   config <- get_config()
   svc <- .redshift$service(config, op)
@@ -4844,6 +4864,60 @@ redshift_get_cluster_credentials_with_iam <- function(DbName = NULL, ClusterIden
 }
 .redshift$operations$get_cluster_credentials_with_iam <- redshift_get_cluster_credentials_with_iam
 
+#' Generates an encrypted authentication token that propagates the caller's
+#' Amazon Web Services IAM Identity Center identity to Amazon Redshift
+#' clusters
+#'
+#' @description
+#' Generates an encrypted authentication token that propagates the caller's Amazon Web Services IAM Identity Center identity to Amazon Redshift clusters. This API extracts the Amazon Web Services IAM Identity Center identity from enhanced credentials and creates a secure token that Amazon Redshift drivers can use for authentication.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshift_get_identity_center_auth_token/](https://www.paws-r-sdk.com/docs/redshift_get_identity_center_auth_token/) for full documentation.
+#'
+#' @param ClusterIds &#91;required&#93; A list of cluster identifiers that the generated token can be used with.
+#' The token will be scoped to only allow authentication to the specified
+#' clusters.
+#' 
+#' Constraints:
+#' 
+#' -   `ClusterIds` must contain at least 1 cluster identifier.
+#' 
+#' -   `ClusterIds` can hold a maximum of 20 cluster identifiers.
+#' 
+#' -   Cluster identifiers must be 1 to 63 characters in length.
+#' 
+#' -   The characters accepted for cluster identifiers are the following:
+#' 
+#'     -   Alphanumeric characters
+#' 
+#'     -   Hyphens
+#' 
+#' -   Cluster identifiers must start with a letter.
+#' 
+#' -   Cluster identifiers can't end with a hyphen or contain two
+#'     consecutive hyphens.
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_get_identity_center_auth_token
+redshift_get_identity_center_auth_token <- function(ClusterIds) {
+  op <- new_operation(
+    name = "GetIdentityCenterAuthToken",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .redshift$get_identity_center_auth_token_input(ClusterIds = ClusterIds)
+  output <- .redshift$get_identity_center_auth_token_output()
+  config <- get_config()
+  svc <- .redshift$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$get_identity_center_auth_token <- redshift_get_identity_center_auth_token
+
 #' Gets the configuration options for the reserved-node exchange
 #'
 #' @description
@@ -5757,6 +5831,64 @@ redshift_modify_integration <- function(IntegrationArn, Description = NULL, Inte
 }
 .redshift$operations$modify_integration <- redshift_modify_integration
 
+#' Modifies the lakehouse configuration for a cluster
+#'
+#' @description
+#' Modifies the lakehouse configuration for a cluster. This operation allows you to manage Amazon Redshift federated permissions and Amazon Web Services IAM Identity Center trusted identity propagation.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshift_modify_lakehouse_configuration/](https://www.paws-r-sdk.com/docs/redshift_modify_lakehouse_configuration/) for full documentation.
+#'
+#' @param ClusterIdentifier &#91;required&#93; The unique identifier of the cluster whose lakehouse configuration you
+#' want to modify.
+#' @param LakehouseRegistration Specifies whether to register or deregister the cluster with Amazon
+#' Redshift federated permissions. Valid values are `Register` or
+#' `Deregister`.
+#' @param CatalogName The name of the Glue data catalog that will be associated with the
+#' cluster enabled with Amazon Redshift federated permissions.
+#' 
+#' Constraints:
+#' 
+#' -   Must contain at least one lowercase letter.
+#' 
+#' -   Can only contain lowercase letters (a-z), numbers (0-9), underscores
+#'     (_), and hyphens (-).
+#' 
+#' Pattern: `^[a-z0-9_-]*[a-z]+[a-z0-9_-]*$`
+#' 
+#' Example: `my-catalog_01`
+#' @param LakehouseIdcRegistration Modifies the Amazon Web Services IAM Identity Center trusted identity
+#' propagation on a cluster enabled with Amazon Redshift federated
+#' permissions. Valid values are `Associate` or `Disassociate`.
+#' @param LakehouseIdcApplicationArn The Amazon Resource Name (ARN) of the IAM Identity Center application
+#' used for enabling Amazon Web Services IAM Identity Center trusted
+#' identity propagation on a cluster enabled with Amazon Redshift federated
+#' permissions.
+#' @param DryRun A boolean value that, if `true`, validates the request without actually
+#' modifying the lakehouse configuration. Use this to check for errors
+#' before making changes.
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_modify_lakehouse_configuration
+redshift_modify_lakehouse_configuration <- function(ClusterIdentifier, LakehouseRegistration = NULL, CatalogName = NULL, LakehouseIdcRegistration = NULL, LakehouseIdcApplicationArn = NULL, DryRun = NULL) {
+  op <- new_operation(
+    name = "ModifyLakehouseConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .redshift$modify_lakehouse_configuration_input(ClusterIdentifier = ClusterIdentifier, LakehouseRegistration = LakehouseRegistration, CatalogName = CatalogName, LakehouseIdcRegistration = LakehouseIdcRegistration, LakehouseIdcApplicationArn = LakehouseIdcApplicationArn, DryRun = DryRun)
+  output <- .redshift$modify_lakehouse_configuration_output()
+  config <- get_config()
+  svc <- .redshift$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$modify_lakehouse_configuration <- redshift_modify_lakehouse_configuration
+
 #' Changes an existing Amazon Redshift IAM Identity Center application
 #'
 #' @description
@@ -6445,11 +6577,28 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' `dualstack`.
 #' @param MultiAZ If true, the snapshot will be restored to a cluster deployed in two
 #' Availability Zones.
+#' @param CatalogName The name of the Glue Data Catalog that will be associated with the
+#' cluster enabled with Amazon Redshift federated permissions.
+#' 
+#' Constraints:
+#' 
+#' -   Must contain at least one lowercase letter.
+#' 
+#' -   Can only contain lowercase letters (a-z), numbers (0-9), underscores
+#'     (_), and hyphens (-).
+#' 
+#' Pattern: `^[a-z0-9_-]*[a-z]+[a-z0-9_-]*$`
+#' 
+#' Example: `my-catalog_01`
+#' @param RedshiftIdcApplicationArn The Amazon Resource Name (ARN) of the IAM Identity Center application
+#' used for enabling Amazon Web Services IAM Identity Center trusted
+#' identity propagation on a cluster enabled with Amazon Redshift federated
+#' permissions.
 #'
 #' @keywords internal
 #'
 #' @rdname redshift_restore_from_cluster_snapshot
-redshift_restore_from_cluster_snapshot <- function(ClusterIdentifier, SnapshotIdentifier = NULL, SnapshotArn = NULL, SnapshotClusterIdentifier = NULL, Port = NULL, AvailabilityZone = NULL, AllowVersionUpgrade = NULL, ClusterSubnetGroupName = NULL, PubliclyAccessible = NULL, OwnerAccount = NULL, HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, ElasticIp = NULL, ClusterParameterGroupName = NULL, ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, KmsKeyId = NULL, NodeType = NULL, EnhancedVpcRouting = NULL, AdditionalInfo = NULL, IamRoles = NULL, MaintenanceTrackName = NULL, SnapshotScheduleIdentifier = NULL, NumberOfNodes = NULL, AvailabilityZoneRelocation = NULL, AquaConfigurationStatus = NULL, DefaultIamRoleArn = NULL, ReservedNodeId = NULL, TargetReservedNodeOfferingId = NULL, Encrypted = NULL, ManageMasterPassword = NULL, MasterPasswordSecretKmsKeyId = NULL, IpAddressType = NULL, MultiAZ = NULL) {
+redshift_restore_from_cluster_snapshot <- function(ClusterIdentifier, SnapshotIdentifier = NULL, SnapshotArn = NULL, SnapshotClusterIdentifier = NULL, Port = NULL, AvailabilityZone = NULL, AllowVersionUpgrade = NULL, ClusterSubnetGroupName = NULL, PubliclyAccessible = NULL, OwnerAccount = NULL, HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, ElasticIp = NULL, ClusterParameterGroupName = NULL, ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, KmsKeyId = NULL, NodeType = NULL, EnhancedVpcRouting = NULL, AdditionalInfo = NULL, IamRoles = NULL, MaintenanceTrackName = NULL, SnapshotScheduleIdentifier = NULL, NumberOfNodes = NULL, AvailabilityZoneRelocation = NULL, AquaConfigurationStatus = NULL, DefaultIamRoleArn = NULL, ReservedNodeId = NULL, TargetReservedNodeOfferingId = NULL, Encrypted = NULL, ManageMasterPassword = NULL, MasterPasswordSecretKmsKeyId = NULL, IpAddressType = NULL, MultiAZ = NULL, CatalogName = NULL, RedshiftIdcApplicationArn = NULL) {
   op <- new_operation(
     name = "RestoreFromClusterSnapshot",
     http_method = "POST",
@@ -6458,7 +6607,7 @@ redshift_restore_from_cluster_snapshot <- function(ClusterIdentifier, SnapshotId
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .redshift$restore_from_cluster_snapshot_input(ClusterIdentifier = ClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, SnapshotArn = SnapshotArn, SnapshotClusterIdentifier = SnapshotClusterIdentifier, Port = Port, AvailabilityZone = AvailabilityZone, AllowVersionUpgrade = AllowVersionUpgrade, ClusterSubnetGroupName = ClusterSubnetGroupName, PubliclyAccessible = PubliclyAccessible, OwnerAccount = OwnerAccount, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, HsmConfigurationIdentifier = HsmConfigurationIdentifier, ElasticIp = ElasticIp, ClusterParameterGroupName = ClusterParameterGroupName, ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, KmsKeyId = KmsKeyId, NodeType = NodeType, EnhancedVpcRouting = EnhancedVpcRouting, AdditionalInfo = AdditionalInfo, IamRoles = IamRoles, MaintenanceTrackName = MaintenanceTrackName, SnapshotScheduleIdentifier = SnapshotScheduleIdentifier, NumberOfNodes = NumberOfNodes, AvailabilityZoneRelocation = AvailabilityZoneRelocation, AquaConfigurationStatus = AquaConfigurationStatus, DefaultIamRoleArn = DefaultIamRoleArn, ReservedNodeId = ReservedNodeId, TargetReservedNodeOfferingId = TargetReservedNodeOfferingId, Encrypted = Encrypted, ManageMasterPassword = ManageMasterPassword, MasterPasswordSecretKmsKeyId = MasterPasswordSecretKmsKeyId, IpAddressType = IpAddressType, MultiAZ = MultiAZ)
+  input <- .redshift$restore_from_cluster_snapshot_input(ClusterIdentifier = ClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, SnapshotArn = SnapshotArn, SnapshotClusterIdentifier = SnapshotClusterIdentifier, Port = Port, AvailabilityZone = AvailabilityZone, AllowVersionUpgrade = AllowVersionUpgrade, ClusterSubnetGroupName = ClusterSubnetGroupName, PubliclyAccessible = PubliclyAccessible, OwnerAccount = OwnerAccount, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, HsmConfigurationIdentifier = HsmConfigurationIdentifier, ElasticIp = ElasticIp, ClusterParameterGroupName = ClusterParameterGroupName, ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, KmsKeyId = KmsKeyId, NodeType = NodeType, EnhancedVpcRouting = EnhancedVpcRouting, AdditionalInfo = AdditionalInfo, IamRoles = IamRoles, MaintenanceTrackName = MaintenanceTrackName, SnapshotScheduleIdentifier = SnapshotScheduleIdentifier, NumberOfNodes = NumberOfNodes, AvailabilityZoneRelocation = AvailabilityZoneRelocation, AquaConfigurationStatus = AquaConfigurationStatus, DefaultIamRoleArn = DefaultIamRoleArn, ReservedNodeId = ReservedNodeId, TargetReservedNodeOfferingId = TargetReservedNodeOfferingId, Encrypted = Encrypted, ManageMasterPassword = ManageMasterPassword, MasterPasswordSecretKmsKeyId = MasterPasswordSecretKmsKeyId, IpAddressType = IpAddressType, MultiAZ = MultiAZ, CatalogName = CatalogName, RedshiftIdcApplicationArn = RedshiftIdcApplicationArn)
   output <- .redshift$restore_from_cluster_snapshot_output()
   config <- get_config()
   svc <- .redshift$service(config, op)

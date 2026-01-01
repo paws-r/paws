@@ -89,7 +89,7 @@ entityresolution_batch_delete_unique_id <- function(workflowName, inputSource = 
 #' the data processing job to be run
 #'
 #' @description
-#' Creates an `IdMappingWorkflow` object which stores the configuration of the data processing job to be run. Each `IdMappingWorkflow` must have a unique workflow name. To modify an existing workflow, use the [`update_id_mapping_workflow`][entityresolution_update_id_mapping_workflow] API.
+#' Creates an `IdMappingWorkflow` object which stores the configuration of the data processing job to be run. Each `IdMappingWorkflow` must have a unique workflow name. To modify an existing workflow, use the UpdateIdMappingWorkflow API.
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_create_id_mapping_workflow/](https://www.paws-r-sdk.com/docs/entityresolution_create_id_mapping_workflow/) for full documentation.
 #'
@@ -99,9 +99,10 @@ entityresolution_batch_delete_unique_id <- function(workflowName, inputSource = 
 #' @param inputSourceConfig &#91;required&#93; A list of `InputSource` objects, which have the fields `InputSourceARN`
 #' and `SchemaName`.
 #' @param outputSourceConfig A list of `IdMappingWorkflowOutputSource` objects, each of which
-#' contains fields `OutputS3Path` and `Output`.
+#' contains fields `outputS3Path` and `KMSArn`.
 #' @param idMappingTechniques &#91;required&#93; An object which defines the ID mapping technique and any additional
 #' configurations.
+#' @param incrementalRunConfig The incremental run configuration for the ID mapping workflow.
 #' @param roleArn The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
 #' assumes this role to create resources on your behalf as part of workflow
 #' execution.
@@ -110,7 +111,7 @@ entityresolution_batch_delete_unique_id <- function(workflowName, inputSource = 
 #' @keywords internal
 #'
 #' @rdname entityresolution_create_id_mapping_workflow
-entityresolution_create_id_mapping_workflow <- function(workflowName, description = NULL, inputSourceConfig, outputSourceConfig = NULL, idMappingTechniques, roleArn = NULL, tags = NULL) {
+entityresolution_create_id_mapping_workflow <- function(workflowName, description = NULL, inputSourceConfig, outputSourceConfig = NULL, idMappingTechniques, incrementalRunConfig = NULL, roleArn = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateIdMappingWorkflow",
     http_method = "POST",
@@ -119,7 +120,7 @@ entityresolution_create_id_mapping_workflow <- function(workflowName, descriptio
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .entityresolution$create_id_mapping_workflow_input(workflowName = workflowName, description = description, inputSourceConfig = inputSourceConfig, outputSourceConfig = outputSourceConfig, idMappingTechniques = idMappingTechniques, roleArn = roleArn, tags = tags)
+  input <- .entityresolution$create_id_mapping_workflow_input(workflowName = workflowName, description = description, inputSourceConfig = inputSourceConfig, outputSourceConfig = outputSourceConfig, idMappingTechniques = idMappingTechniques, incrementalRunConfig = incrementalRunConfig, roleArn = roleArn, tags = tags)
   output <- .entityresolution$create_id_mapping_workflow_output()
   config <- get_config()
   svc <- .entityresolution$service(config, op)
@@ -133,7 +134,7 @@ entityresolution_create_id_mapping_workflow <- function(workflowName, descriptio
 #' metadata explaining their dataset and how to use it
 #'
 #' @description
-#' Creates an ID namespace object which will help customers provide metadata explaining their dataset and how to use it. Each ID namespace must have a unique name. To modify an existing ID namespace, use the [`update_id_namespace`][entityresolution_update_id_namespace] API.
+#' Creates an ID namespace object which will help customers provide metadata explaining their dataset and how to use it. Each ID namespace must have a unique name. To modify an existing ID namespace, use the UpdateIdNamespace API.
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_create_id_namespace/](https://www.paws-r-sdk.com/docs/entityresolution_create_id_namespace/) for full documentation.
 #'
@@ -177,11 +178,11 @@ entityresolution_create_id_namespace <- function(idNamespaceName, description = 
 }
 .entityresolution$operations$create_id_namespace <- entityresolution_create_id_namespace
 
-#' Creates a MatchingWorkflow object which stores the configuration of the
-#' data processing job to be run
+#' Creates a matching workflow that defines the configuration for a data
+#' processing job
 #'
 #' @description
-#' Creates a `MatchingWorkflow` object which stores the configuration of the data processing job to be run. It is important to note that there should not be a pre-existing `MatchingWorkflow` with the same name. To modify an existing workflow, utilize the [`update_matching_workflow`][entityresolution_update_matching_workflow] API.
+#' Creates a matching workflow that defines the configuration for a data processing job. The workflow name must be unique. To modify an existing workflow, use [`update_matching_workflow`][entityresolution_update_matching_workflow].
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_create_matching_workflow/](https://www.paws-r-sdk.com/docs/entityresolution_create_matching_workflow/) for full documentation.
 #'
@@ -191,11 +192,15 @@ entityresolution_create_id_namespace <- function(idNamespaceName, description = 
 #' @param inputSourceConfig &#91;required&#93; A list of `InputSource` objects, which have the fields `InputSourceARN`
 #' and `SchemaName`.
 #' @param outputSourceConfig &#91;required&#93; A list of `OutputSource` objects, each of which contains fields
-#' `OutputS3Path`, `ApplyNormalization`, and `Output`.
+#' `outputS3Path`, `applyNormalization`, `KMSArn`, and `output`.
 #' @param resolutionTechniques &#91;required&#93; An object which defines the `resolutionType` and the
 #' `ruleBasedProperties`.
-#' @param incrementalRunConfig An object which defines an incremental run type and has only
-#' `incrementalRunType` as a field.
+#' @param incrementalRunConfig Optional. An object that defines the incremental run type. This object
+#' contains only the `incrementalRunType` field, which appears as
+#' "Automatic" in the console.
+#' 
+#' For workflows where `resolutionType` is `ML_MATCHING` or `PROVIDER`,
+#' incremental processing is not supported.
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
 #' assumes this role to create resources on your behalf as part of workflow
 #' execution.
@@ -418,11 +423,63 @@ entityresolution_delete_schema_mapping <- function(schemaName) {
 }
 .entityresolution$operations$delete_schema_mapping <- entityresolution_delete_schema_mapping
 
-#' Gets the status, metrics, and errors (if there are any) that are
+#' Generates or retrieves Match IDs for records using a rule-based matching
+#' workflow
+#'
+#' @description
+#' Generates or retrieves Match IDs for records using a rule-based matching workflow. When you call this operation, it processes your records against the workflow's matching rules to identify potential matches. For existing records, it retrieves their Match IDs and associated rules. For records without matches, it generates new Match IDs. The operation saves results to Amazon S3.
+#'
+#' See [https://www.paws-r-sdk.com/docs/entityresolution_generate_match_id/](https://www.paws-r-sdk.com/docs/entityresolution_generate_match_id/) for full documentation.
+#'
+#' @param workflowName &#91;required&#93; The name of the rule-based matching workflow.
+#' @param records &#91;required&#93; The records to match.
+#' @param processingType The processing mode that determines how Match IDs are generated and
+#' results are saved. Each mode provides different levels of accuracy,
+#' response time, and completeness of results.
+#' 
+#' If not specified, defaults to `CONSISTENT`.
+#' 
+#' `CONSISTENT`: Performs immediate lookup and matching against all
+#' existing records, with results saved synchronously. Provides highest
+#' accuracy but slower response time.
+#' 
+#' `EVENTUAL` (shown as *Background* in the console): Performs initial
+#' match ID lookup or generation immediately, with record updates processed
+#' asynchronously in the background. Offers faster initial response time,
+#' with complete matching results available later in S3.
+#' 
+#' `EVENTUAL_NO_LOOKUP` (shown as *Quick ID generation* in the console):
+#' Generates new match IDs without checking existing matches, with updates
+#' processed asynchronously. Provides fastest response time but should only
+#' be used for records known to be unique.
+#'
+#' @keywords internal
+#'
+#' @rdname entityresolution_generate_match_id
+entityresolution_generate_match_id <- function(workflowName, records, processingType = NULL) {
+  op <- new_operation(
+    name = "GenerateMatchId",
+    http_method = "POST",
+    http_path = "/matchingworkflows/{workflowName}/generateMatches",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .entityresolution$generate_match_id_input(workflowName = workflowName, records = records, processingType = processingType)
+  output <- .entityresolution$generate_match_id_output()
+  config <- get_config()
+  svc <- .entityresolution$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.entityresolution$operations$generate_match_id <- entityresolution_generate_match_id
+
+#' Returns the status, metrics, and errors (if there are any) that are
 #' associated with a job
 #'
 #' @description
-#' Gets the status, metrics, and errors (if there are any) that are associated with a job.
+#' Returns the status, metrics, and errors (if there are any) that are associated with a job.
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_get_id_mapping_job/](https://www.paws-r-sdk.com/docs/entityresolution_get_id_mapping_job/) for full documentation.
 #'
@@ -514,11 +571,10 @@ entityresolution_get_id_namespace <- function(idNamespaceName) {
 .entityresolution$operations$get_id_namespace <- entityresolution_get_id_namespace
 
 #' Returns the corresponding Match ID of a customer record if the record
-#' has been processed in a rule-based matching workflow or ML matching
-#' workflow
+#' has been processed in a rule-based matching workflow
 #'
 #' @description
-#' Returns the corresponding Match ID of a customer record if the record has been processed in a rule-based matching workflow or ML matching workflow.
+#' Returns the corresponding Match ID of a customer record if the record has been processed in a rule-based matching workflow.
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_get_match_id/](https://www.paws-r-sdk.com/docs/entityresolution_get_match_id/) for full documentation.
 #'
@@ -551,11 +607,11 @@ entityresolution_get_match_id <- function(workflowName, record, applyNormalizati
 }
 .entityresolution$operations$get_match_id <- entityresolution_get_match_id
 
-#' Gets the status, metrics, and errors (if there are any) that are
+#' Returns the status, metrics, and errors (if there are any) that are
 #' associated with a job
 #'
 #' @description
-#' Gets the status, metrics, and errors (if there are any) that are associated with a job.
+#' Returns the status, metrics, and errors (if there are any) that are associated with a job.
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_get_matching_job/](https://www.paws-r-sdk.com/docs/entityresolution_get_matching_job/) for full documentation.
 #'
@@ -1022,11 +1078,26 @@ entityresolution_put_policy <- function(arn, token = NULL, policy) {
 #'
 #' @param workflowName &#91;required&#93; The name of the ID mapping job to be retrieved.
 #' @param outputSourceConfig A list of `OutputSource` objects.
+#' @param jobType The job type for the ID mapping job.
+#' 
+#' If the `jobType` value is set to `INCREMENTAL`, only new or changed data
+#' is processed since the last job run. This is the default value if the
+#' [`create_id_mapping_workflow`][entityresolution_create_id_mapping_workflow]
+#' API is configured with an `incrementalRunConfig`.
+#' 
+#' If the `jobType` value is set to `BATCH`, all data is processed from the
+#' input source, regardless of previous job runs. This is the default value
+#' if the
+#' [`create_id_mapping_workflow`][entityresolution_create_id_mapping_workflow]
+#' API isn't configured with an `incrementalRunConfig`.
+#' 
+#' If the `jobType` value is set to `DELETE_ONLY`, only deletion requests
+#' from `BatchDeleteUniqueIds` are processed.
 #'
 #' @keywords internal
 #'
 #' @rdname entityresolution_start_id_mapping_job
-entityresolution_start_id_mapping_job <- function(workflowName, outputSourceConfig = NULL) {
+entityresolution_start_id_mapping_job <- function(workflowName, outputSourceConfig = NULL, jobType = NULL) {
   op <- new_operation(
     name = "StartIdMappingJob",
     http_method = "POST",
@@ -1035,7 +1106,7 @@ entityresolution_start_id_mapping_job <- function(workflowName, outputSourceConf
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .entityresolution$start_id_mapping_job_input(workflowName = workflowName, outputSourceConfig = outputSourceConfig)
+  input <- .entityresolution$start_id_mapping_job_input(workflowName = workflowName, outputSourceConfig = outputSourceConfig, jobType = jobType)
   output <- .entityresolution$start_id_mapping_job_output()
   config <- get_config()
   svc <- .entityresolution$service(config, op)
@@ -1144,7 +1215,7 @@ entityresolution_untag_resource <- function(resourceArn, tagKeys) {
 #' Updates an existing IdMappingWorkflow
 #'
 #' @description
-#' Updates an existing `IdMappingWorkflow`. This method is identical to [`create_id_mapping_workflow`][entityresolution_create_id_mapping_workflow], except it uses an HTTP `PUT` request instead of a `POST` request, and the `IdMappingWorkflow` must already exist for the method to succeed.
+#' Updates an existing `IdMappingWorkflow`. This method is identical to CreateIdMappingWorkflow, except it uses an HTTP `PUT` request instead of a `POST` request, and the `IdMappingWorkflow` must already exist for the method to succeed.
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_update_id_mapping_workflow/](https://www.paws-r-sdk.com/docs/entityresolution_update_id_mapping_workflow/) for full documentation.
 #'
@@ -1153,9 +1224,10 @@ entityresolution_untag_resource <- function(resourceArn, tagKeys) {
 #' @param inputSourceConfig &#91;required&#93; A list of `InputSource` objects, which have the fields `InputSourceARN`
 #' and `SchemaName`.
 #' @param outputSourceConfig A list of `OutputSource` objects, each of which contains fields
-#' `OutputS3Path` and `KMSArn`.
+#' `outputS3Path` and `KMSArn`.
 #' @param idMappingTechniques &#91;required&#93; An object which defines the ID mapping technique and any additional
 #' configurations.
+#' @param incrementalRunConfig The incremental run configuration for the update ID mapping workflow.
 #' @param roleArn The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
 #' assumes this role to access Amazon Web Services resources on your
 #' behalf.
@@ -1163,7 +1235,7 @@ entityresolution_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname entityresolution_update_id_mapping_workflow
-entityresolution_update_id_mapping_workflow <- function(workflowName, description = NULL, inputSourceConfig, outputSourceConfig = NULL, idMappingTechniques, roleArn = NULL) {
+entityresolution_update_id_mapping_workflow <- function(workflowName, description = NULL, inputSourceConfig, outputSourceConfig = NULL, idMappingTechniques, incrementalRunConfig = NULL, roleArn = NULL) {
   op <- new_operation(
     name = "UpdateIdMappingWorkflow",
     http_method = "PUT",
@@ -1172,7 +1244,7 @@ entityresolution_update_id_mapping_workflow <- function(workflowName, descriptio
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .entityresolution$update_id_mapping_workflow_input(workflowName = workflowName, description = description, inputSourceConfig = inputSourceConfig, outputSourceConfig = outputSourceConfig, idMappingTechniques = idMappingTechniques, roleArn = roleArn)
+  input <- .entityresolution$update_id_mapping_workflow_input(workflowName = workflowName, description = description, inputSourceConfig = inputSourceConfig, outputSourceConfig = outputSourceConfig, idMappingTechniques = idMappingTechniques, incrementalRunConfig = incrementalRunConfig, roleArn = roleArn)
   output <- .entityresolution$update_id_mapping_workflow_output()
   config <- get_config()
   svc <- .entityresolution$service(config, op)
@@ -1221,10 +1293,10 @@ entityresolution_update_id_namespace <- function(idNamespaceName, description = 
 }
 .entityresolution$operations$update_id_namespace <- entityresolution_update_id_namespace
 
-#' Updates an existing MatchingWorkflow
+#' Updates an existing matching workflow
 #'
 #' @description
-#' Updates an existing `MatchingWorkflow`. This method is identical to [`create_matching_workflow`][entityresolution_create_matching_workflow], except it uses an HTTP `PUT` request instead of a `POST` request, and the `MatchingWorkflow` must already exist for the method to succeed.
+#' Updates an existing matching workflow. The workflow must already exist for this operation to succeed.
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_update_matching_workflow/](https://www.paws-r-sdk.com/docs/entityresolution_update_matching_workflow/) for full documentation.
 #'
@@ -1233,11 +1305,15 @@ entityresolution_update_id_namespace <- function(idNamespaceName, description = 
 #' @param inputSourceConfig &#91;required&#93; A list of `InputSource` objects, which have the fields `InputSourceARN`
 #' and `SchemaName`.
 #' @param outputSourceConfig &#91;required&#93; A list of `OutputSource` objects, each of which contains fields
-#' `OutputS3Path`, `ApplyNormalization`, and `Output`.
+#' `outputS3Path`, `applyNormalization`, `KMSArn`, and `output`.
 #' @param resolutionTechniques &#91;required&#93; An object which defines the `resolutionType` and the
 #' `ruleBasedProperties`.
-#' @param incrementalRunConfig An object which defines an incremental run type and has only
-#' `incrementalRunType` as a field.
+#' @param incrementalRunConfig Optional. An object that defines the incremental run type. This object
+#' contains only the `incrementalRunType` field, which appears as
+#' "Automatic" in the console.
+#' 
+#' For workflows where `resolutionType` is `ML_MATCHING` or `PROVIDER`,
+#' incremental processing is not supported.
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
 #' assumes this role to create resources on your behalf as part of workflow
 #' execution.

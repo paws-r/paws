@@ -15,7 +15,9 @@ eks_update_cluster_config(
   computeConfig = NULL,
   kubernetesNetworkConfig = NULL,
   storageConfig = NULL,
-  remoteNetworkConfig = NULL
+  remoteNetworkConfig = NULL,
+  deletionProtection = NULL,
+  controlPlaneScalingConfig = NULL
 )
 }
 \arguments{
@@ -70,6 +72,14 @@ cluster. For example, enable the capability.}
 Auto Mode cluster. For example, enable the capability.}
 
 \item{remoteNetworkConfig}{}
+
+\item{deletionProtection}{Specifies whether to enable or disable deletion protection for the
+cluster. When enabled (\code{true}), the cluster cannot be deleted until
+deletion protection is explicitly disabled. When disabled (\code{false}), the
+cluster can be deleted normally.}
+
+\item{controlPlaneScalingConfig}{The control plane scaling tier configuration. For more information, see
+EKS Provisioned Control Plane in the Amazon EKS User Guide.}
 }
 \description{
 Updates an Amazon EKS cluster configuration. Your cluster continues to function during the update. The response output includes an update ID that you can use to track the status of your cluster update with \code{\link[=eks_describe_update]{describe_update}}.

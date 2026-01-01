@@ -26,7 +26,7 @@ specify \code{ecr-public} as the prefix, Amazon ECR treats that as
 for the pull through cache rule. The following is the syntax to use for
 each supported upstream registry.
 \itemize{
-\item Amazon ECR (\code{ecr}) – \verb{dkr.ecr.<region>.amazonaws.com}
+\item Amazon ECR (\code{ecr}) – \verb{<accountId>.dkr.ecr.<region>.amazonaws.com}
 \item Amazon ECR Public (\code{ecr-public}) – \code{public.ecr.aws}
 \item Docker Hub (\code{docker-hub}) – \verb{registry-1.docker.io}
 \item GitHub Container Registry (\code{github-container-registry}) – \code{ghcr.io}

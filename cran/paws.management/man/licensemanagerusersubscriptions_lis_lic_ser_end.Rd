@@ -5,18 +5,18 @@
 \title{List the Remote Desktop Services (RDS) License Server endpoints}
 \usage{
 licensemanagerusersubscriptions_list_license_server_endpoints(
-  Filters = NULL,
   MaxResults = NULL,
+  Filters = NULL,
   NextToken = NULL
 )
 }
 \arguments{
+\item{MaxResults}{The maximum number of results to return from a single request.}
+
 \item{Filters}{You can use the following filters to streamline results:
 \itemize{
 \item IdentityProviderArn
 }}
-
-\item{MaxResults}{The maximum number of results to return from a single request.}
 
 \item{NextToken}{A token to specify where to start paginating. This is the nextToken from
 a previously truncated response.}

@@ -2,8 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_create_hours_of_operation}
 \alias{connect_create_hours_of_operation}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Creates hours of operation}
 \usage{
 connect_create_hours_of_operation(
   InstanceId,
@@ -31,7 +30,7 @@ and end time.}
 For example, \{ "Tags": \{"key1":"value1", "key2":"value2"\} \}.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to change.
+Creates hours of operation.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_create_hours_of_operation/} for full documentation.
 }

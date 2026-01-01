@@ -4,13 +4,13 @@
 \alias{workspacesweb_list_portals}
 \title{Retrieves a list or web portals}
 \usage{
-workspacesweb_list_portals(maxResults = NULL, nextToken = NULL)
+workspacesweb_list_portals(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
-\item{maxResults}{The maximum number of results to be included in the next page.}
-
 \item{nextToken}{The pagination token used to retrieve the next page of results for this
 operation.}
+
+\item{maxResults}{The maximum number of results to be included in the next page.}
 }
 \description{
 Retrieves a list or web portals.

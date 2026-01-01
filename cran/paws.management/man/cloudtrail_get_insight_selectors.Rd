@@ -32,7 +32,7 @@ which you want to get Insights selectors.
 You cannot use this parameter with the \code{TrailName} parameter.}
 }
 \description{
-Describes the settings for the Insights event selectors that you configured for your trail or event data store. \code{\link[=cloudtrail_get_insight_selectors]{get_insight_selectors}} shows if CloudTrail Insights event logging is enabled on the trail or event data store, and if it is, which Insights types are enabled. If you run \code{\link[=cloudtrail_get_insight_selectors]{get_insight_selectors}} on a trail or event data store that does not have Insights events enabled, the operation throws the exception \code{InsightNotEnabledException}
+Describes the settings for the Insights event selectors that you configured for your trail or event data store. \code{\link[=cloudtrail_get_insight_selectors]{get_insight_selectors}} shows if CloudTrail Insights logging is enabled and which Insights types are configured with corresponding event categories. If you run \code{\link[=cloudtrail_get_insight_selectors]{get_insight_selectors}} on a trail or event data store that does not have Insights events enabled, the operation throws the exception \code{InsightNotEnabledException}
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_get_insight_selectors/} for full documentation.
 }

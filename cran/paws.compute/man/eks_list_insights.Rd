@@ -35,7 +35,7 @@ can use this value to retrieve the next page of results. This value is
 \code{null} when there are no more results to return.}
 }
 \description{
-Returns a list of all insights checked for against the specified cluster. You can filter which insights are returned by category, associated Kubernetes version, and status.
+Returns a list of all insights checked for against the specified cluster. You can filter which insights are returned by category, associated Kubernetes version, and status. The default filter lists all categories and every status.
 
 See \url{https://www.paws-r-sdk.com/docs/eks_list_insights/} for full documentation.
 }

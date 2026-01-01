@@ -55,6 +55,9 @@ more information about S3 on Outposts, see \href{https://docs.aws.amazon.com/Ama
 in the \emph{Amazon S3 User Guide}.}
 
 \item{Delimiter}{A delimiter is a character that you use to group keys.
+
+\code{CommonPrefixes} is filtered out from results if it is not
+lexicographically greater than the \code{StartAfter} value.
 \itemize{
 \item \strong{Directory buckets} - For directory buckets, \code{/} is the only
 supported delimiter.

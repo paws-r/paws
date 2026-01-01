@@ -28,32 +28,35 @@ challenge.}
 Possible challenges include the following:
 
 All of the following challenges require \code{USERNAME} and, when the app
-client has a client secret, \code{SECRET_HASH} in the parameters.
+client has a client secret, \code{SECRET_HASH} in the parameters. Include a
+\code{DEVICE_KEY} for device authentication.
 \itemize{
 \item \code{WEB_AUTHN}: Respond to the challenge with the results of a
-successful authentication with a WebAuthn authenticator, or passkey.
-Examples of WebAuthn authenticators include biometric devices and
-security keys.
-\item \code{PASSWORD}: Respond with \code{USER_PASSWORD_AUTH} parameters: \code{USERNAME}
-(required), \code{PASSWORD} (required), \code{SECRET_HASH} (required if the
-app client is configured with a client secret), \code{DEVICE_KEY}.
-\item \code{PASSWORD_SRP}: Respond with \code{USER_SRP_AUTH} parameters: \code{USERNAME}
-(required), \code{SRP_A} (required), \code{SECRET_HASH} (required if the app
-client is configured with a client secret), \code{DEVICE_KEY}.
-\item \code{SELECT_CHALLENGE}: Respond to the challenge with \code{USERNAME} and an
-\code{ANSWER} that matches one of the challenge types in the
-\code{AvailableChallenges} response parameter.
-\item \code{SMS_MFA}: Respond with an \code{SMS_MFA_CODE} that your user pool
-delivered in an SMS message.
-\item \code{EMAIL_OTP}: Respond with an \code{EMAIL_OTP_CODE} that your user pool
-delivered in an email message.
-\item \code{PASSWORD_VERIFIER}: Respond with \code{PASSWORD_CLAIM_SIGNATURE},
-\code{PASSWORD_CLAIM_SECRET_BLOCK}, and \code{TIMESTAMP} after client-side SRP
-calculations.
+successful authentication with a WebAuthn authenticator, or passkey,
+as \code{CREDENTIAL}. Examples of WebAuthn authenticators include
+biometric devices and security keys.
+\item \code{PASSWORD}: Respond with the user's password as \code{PASSWORD}.
+\item \code{PASSWORD_SRP}: Respond with the initial SRP secret as \code{SRP_A}.
+\item \code{SELECT_CHALLENGE}: Respond with a challenge selection as \code{ANSWER}.
+It must be one of the challenge types in the \code{AvailableChallenges}
+response parameter. Add the parameters of the selected challenge,
+for example \code{USERNAME} and \code{SMS_OTP}.
+\item \code{SMS_MFA}: Respond with the code that your user pool delivered in an
+SMS message, as \code{SMS_MFA_CODE}
+\item \code{EMAIL_MFA}: Respond with the code that your user pool delivered in
+an email message, as \code{EMAIL_MFA_CODE}
+\item \code{EMAIL_OTP}: Respond with the code that your user pool delivered in
+an email message, as \code{EMAIL_OTP_CODE} .
+\item \code{SMS_OTP}: Respond with the code that your user pool delivered in an
+SMS message, as \code{SMS_OTP_CODE}.
+\item \code{PASSWORD_VERIFIER}: Respond with the second stage of SRP secrets as
+\code{PASSWORD_CLAIM_SIGNATURE}, \code{PASSWORD_CLAIM_SECRET_BLOCK}, and
+\code{TIMESTAMP}.
 \item \code{CUSTOM_CHALLENGE}: This is returned if your custom authentication
 flow determines that the user should pass another challenge before
 tokens are issued. The parameters of the challenge are determined by
-your Lambda function.
+your Lambda function and issued in the \code{ChallengeParameters} of a
+challenge response.
 \item \code{DEVICE_SRP_AUTH}: Respond with the initial parameters of device SRP
 authentication. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html#user-pools-remembered-devices-signing-in-with-a-device}{Signing in with a device}.
 \item \code{DEVICE_PASSWORD_VERIFIER}: Respond with \code{PASSWORD_CLAIM_SIGNATURE},
@@ -141,6 +144,21 @@ challenge response.
 \item \verb{"ChallengeName": "SELECT_CHALLENGE", "ChallengeResponses": \{ "ANSWER": "EMAIL_OTP", "USERNAME": "[username]"\}}
 }
 
+\strong{WEB_AUTHN}
+
+\verb{"ChallengeName": "WEB_AUTHN", "ChallengeResponses": \{ "USERNAME": "[username]", "CREDENTIAL": "[AuthenticationResponseJSON]"\}}
+
+See
+\href{https://www.w3.org/TR/webauthn-3/#dictdef-authenticationresponsejson}{AuthenticationResponseJSON}.
+
+\strong{PASSWORD}
+
+\verb{"ChallengeName": "PASSWORD", "ChallengeResponses": \{ "USERNAME": "[username]", "PASSWORD": "[password]"\}}
+
+\strong{PASSWORD_SRP}
+
+\verb{"ChallengeName": "PASSWORD_SRP", "ChallengeResponses": \{ "USERNAME": "[username]", "SRP_A": "[SRP_A]"\}}
+
 \strong{SMS_OTP}
 
 \verb{"ChallengeName": "SMS_OTP", "ChallengeResponses": \{"SMS_OTP_CODE": "[code]", "USERNAME": "[username]"\}}
@@ -162,13 +180,9 @@ When the response time exceeds this period, your user pool returns a
 
 \verb{"ChallengeName": "PASSWORD_VERIFIER", "ChallengeResponses": \{"PASSWORD_CLAIM_SIGNATURE": "[claim_signature]", "PASSWORD_CLAIM_SECRET_BLOCK": "[secret_block]", "TIMESTAMP": [timestamp], "USERNAME": "[username]"\}}
 
-Add \code{"DEVICE_KEY"} when you sign in with a remembered device.
-
 \strong{CUSTOM_CHALLENGE}
 
 \verb{"ChallengeName": "CUSTOM_CHALLENGE", "ChallengeResponses": \{"USERNAME": "[username]", "ANSWER": "[challenge_answer]"\}}
-
-Add \code{"DEVICE_KEY"} when you sign in with a remembered device.
 
 \strong{NEW_PASSWORD_REQUIRED}
 
@@ -211,7 +225,7 @@ API operation to modify the value of any additional attributes.
 
 \strong{SELECT_MFA_TYPE}
 
-\verb{"ChallengeName": "SELECT_MFA_TYPE", "ChallengeResponses": \{"USERNAME": "[username]", "ANSWER": "[SMS_MFA or SOFTWARE_TOKEN_MFA]"\}}
+\verb{"ChallengeName": "SELECT_MFA_TYPE", "ChallengeResponses": \{"USERNAME": "[username]", "ANSWER": "[SMS_MFA|EMAIL_MFA|SOFTWARE_TOKEN_MFA]"\}}
 
 For more information about \code{SECRET_HASH}, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/signing-up-users-in-your-app.html#cognito-user-pools-computing-secret-hash}{Computing secret hash values}.
 For information about \code{DEVICE_KEY}, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html}{Working with user devices in your user pool}.}

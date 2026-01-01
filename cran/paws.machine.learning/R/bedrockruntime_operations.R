@@ -136,11 +136,13 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #' model response, it is ignored by [`converse`][bedrockruntime_converse].
 #' @param requestMetadata Key-value pairs that you can use to filter invocation logs.
 #' @param performanceConfig Model performance settings for the request.
+#' @param serviceTier Specifies the processing tier configuration used for serving the
+#' request.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockruntime_converse
-bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inferenceConfig = NULL, toolConfig = NULL, guardrailConfig = NULL, additionalModelRequestFields = NULL, promptVariables = NULL, additionalModelResponseFieldPaths = NULL, requestMetadata = NULL, performanceConfig = NULL) {
+bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inferenceConfig = NULL, toolConfig = NULL, guardrailConfig = NULL, additionalModelRequestFields = NULL, promptVariables = NULL, additionalModelResponseFieldPaths = NULL, requestMetadata = NULL, performanceConfig = NULL, serviceTier = NULL) {
   op <- new_operation(
     name = "Converse",
     http_method = "POST",
@@ -149,7 +151,7 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockruntime$converse_input(modelId = modelId, messages = messages, system = system, inferenceConfig = inferenceConfig, toolConfig = toolConfig, guardrailConfig = guardrailConfig, additionalModelRequestFields = additionalModelRequestFields, promptVariables = promptVariables, additionalModelResponseFieldPaths = additionalModelResponseFieldPaths, requestMetadata = requestMetadata, performanceConfig = performanceConfig)
+  input <- .bedrockruntime$converse_input(modelId = modelId, messages = messages, system = system, inferenceConfig = inferenceConfig, toolConfig = toolConfig, guardrailConfig = guardrailConfig, additionalModelRequestFields = additionalModelRequestFields, promptVariables = promptVariables, additionalModelResponseFieldPaths = additionalModelResponseFieldPaths, requestMetadata = requestMetadata, performanceConfig = performanceConfig, serviceTier = serviceTier)
   output <- .bedrockruntime$converse_output()
   config <- get_config()
   svc <- .bedrockruntime$service(config, op)
@@ -251,11 +253,13 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #' model response, it is ignored by [`converse`][bedrockruntime_converse].
 #' @param requestMetadata Key-value pairs that you can use to filter invocation logs.
 #' @param performanceConfig Model performance settings for the request.
+#' @param serviceTier Specifies the processing tier configuration used for serving the
+#' request.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockruntime_converse_stream
-bedrockruntime_converse_stream <- function(modelId, messages = NULL, system = NULL, inferenceConfig = NULL, toolConfig = NULL, guardrailConfig = NULL, additionalModelRequestFields = NULL, promptVariables = NULL, additionalModelResponseFieldPaths = NULL, requestMetadata = NULL, performanceConfig = NULL) {
+bedrockruntime_converse_stream <- function(modelId, messages = NULL, system = NULL, inferenceConfig = NULL, toolConfig = NULL, guardrailConfig = NULL, additionalModelRequestFields = NULL, promptVariables = NULL, additionalModelResponseFieldPaths = NULL, requestMetadata = NULL, performanceConfig = NULL, serviceTier = NULL) {
   op <- new_operation(
     name = "ConverseStream",
     http_method = "POST",
@@ -264,7 +268,7 @@ bedrockruntime_converse_stream <- function(modelId, messages = NULL, system = NU
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .bedrockruntime$converse_stream_input(modelId = modelId, messages = messages, system = system, inferenceConfig = inferenceConfig, toolConfig = toolConfig, guardrailConfig = guardrailConfig, additionalModelRequestFields = additionalModelRequestFields, promptVariables = promptVariables, additionalModelResponseFieldPaths = additionalModelResponseFieldPaths, requestMetadata = requestMetadata, performanceConfig = performanceConfig)
+  input <- .bedrockruntime$converse_stream_input(modelId = modelId, messages = messages, system = system, inferenceConfig = inferenceConfig, toolConfig = toolConfig, guardrailConfig = guardrailConfig, additionalModelRequestFields = additionalModelRequestFields, promptVariables = promptVariables, additionalModelResponseFieldPaths = additionalModelResponseFieldPaths, requestMetadata = requestMetadata, performanceConfig = performanceConfig, serviceTier = serviceTier)
   output <- .bedrockruntime$converse_stream_output()
   config <- get_config()
   svc <- .bedrockruntime$service(config, op)
@@ -273,6 +277,52 @@ bedrockruntime_converse_stream <- function(modelId, messages = NULL, system = NU
   return(response)
 }
 .bedrockruntime$operations$converse_stream <- bedrockruntime_converse_stream
+
+#' Returns the token count for a given inference request
+#'
+#' @description
+#' Returns the token count for a given inference request. This operation helps you estimate token usage before sending requests to foundation models by returning the token count that would be used if the same input were sent to the model in an inference request.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockruntime_count_tokens/](https://www.paws-r-sdk.com/docs/bedrockruntime_count_tokens/) for full documentation.
+#'
+#' @param modelId &#91;required&#93; The unique identifier or ARN of the foundation model to use for token
+#' counting. Each model processes tokens differently, so the token count is
+#' specific to the model you specify.
+#' @param input &#91;required&#93; The input for which to count tokens. The structure of this parameter
+#' depends on whether you're counting tokens for an
+#' [`invoke_model`][bedrockruntime_invoke_model] or
+#' [`converse`][bedrockruntime_converse] request:
+#' 
+#' -   For [`invoke_model`][bedrockruntime_invoke_model] requests, provide
+#'     the request body in the `invokeModel` field
+#' 
+#' -   For [`converse`][bedrockruntime_converse] requests, provide the
+#'     messages and system content in the `converse` field
+#' 
+#' The input format must be compatible with the model specified in the
+#' `modelId` parameter.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockruntime_count_tokens
+bedrockruntime_count_tokens <- function(modelId, input) {
+  op <- new_operation(
+    name = "CountTokens",
+    http_method = "POST",
+    http_path = "/model/{modelId}/count-tokens",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockruntime$count_tokens_input(modelId = modelId, input = input)
+  output <- .bedrockruntime$count_tokens_output()
+  config <- get_config()
+  svc <- .bedrockruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockruntime$operations$count_tokens <- bedrockruntime_count_tokens
 
 #' Retrieve information about an asynchronous invocation
 #'
@@ -348,9 +398,10 @@ bedrockruntime_get_async_invoke <- function(invocationArn) {
 #'     Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-thru-use.html)
 #'     in the Amazon Bedrock User Guide.
 #' 
-#' -   If you use a custom model, first purchase Provisioned Throughput for
-#'     it. Then specify the ARN of the resulting provisioned model. For
-#'     more information, see [Use a custom model in Amazon
+#' -   If you use a custom model, specify the ARN of the custom model
+#'     deployment (for on-demand inference) or the ARN of your provisioned
+#'     model (for Provisioned Throughput). For more information, see [Use a
+#'     custom model in Amazon
 #'     Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-use.html)
 #'     in the Amazon Bedrock User Guide.
 #' 
@@ -377,11 +428,12 @@ bedrockruntime_get_async_invoke <- function(invocationArn) {
 #'     specified.
 #' @param guardrailVersion The version number for the guardrail. The value can also be `DRAFT`.
 #' @param performanceConfigLatency Model performance settings for the request.
+#' @param serviceTier Specifies the processing tier type used for serving the request.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockruntime_invoke_model
-bedrockruntime_invoke_model <- function(body = NULL, contentType = NULL, accept = NULL, modelId, trace = NULL, guardrailIdentifier = NULL, guardrailVersion = NULL, performanceConfigLatency = NULL) {
+bedrockruntime_invoke_model <- function(body = NULL, contentType = NULL, accept = NULL, modelId, trace = NULL, guardrailIdentifier = NULL, guardrailVersion = NULL, performanceConfigLatency = NULL, serviceTier = NULL) {
   op <- new_operation(
     name = "InvokeModel",
     http_method = "POST",
@@ -390,7 +442,7 @@ bedrockruntime_invoke_model <- function(body = NULL, contentType = NULL, accept 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockruntime$invoke_model_input(body = body, contentType = contentType, accept = accept, modelId = modelId, trace = trace, guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion, performanceConfigLatency = performanceConfigLatency)
+  input <- .bedrockruntime$invoke_model_input(body = body, contentType = contentType, accept = accept, modelId = modelId, trace = trace, guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion, performanceConfigLatency = performanceConfigLatency, serviceTier = serviceTier)
   output <- .bedrockruntime$invoke_model_output()
   config <- get_config()
   svc <- .bedrockruntime$service(config, op)
@@ -484,9 +536,10 @@ bedrockruntime_invoke_model_with_bidirectional_stream <- function(modelId, body)
 #'     Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-thru-use.html)
 #'     in the Amazon Bedrock User Guide.
 #' 
-#' -   If you use a custom model, first purchase Provisioned Throughput for
-#'     it. Then specify the ARN of the resulting provisioned model. For
-#'     more information, see [Use a custom model in Amazon
+#' -   If you use a custom model, specify the ARN of the custom model
+#'     deployment (for on-demand inference) or the ARN of your provisioned
+#'     model (for Provisioned Throughput). For more information, see [Use a
+#'     custom model in Amazon
 #'     Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-use.html)
 #'     in the Amazon Bedrock User Guide.
 #' 
@@ -513,11 +566,12 @@ bedrockruntime_invoke_model_with_bidirectional_stream <- function(modelId, body)
 #'     specified.
 #' @param guardrailVersion The version number for the guardrail. The value can also be `DRAFT`.
 #' @param performanceConfigLatency Model performance settings for the request.
+#' @param serviceTier Specifies the processing tier type used for serving the request.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockruntime_invoke_model_with_response_stream
-bedrockruntime_invoke_model_with_response_stream <- function(body = NULL, contentType = NULL, accept = NULL, modelId, trace = NULL, guardrailIdentifier = NULL, guardrailVersion = NULL, performanceConfigLatency = NULL) {
+bedrockruntime_invoke_model_with_response_stream <- function(body = NULL, contentType = NULL, accept = NULL, modelId, trace = NULL, guardrailIdentifier = NULL, guardrailVersion = NULL, performanceConfigLatency = NULL, serviceTier = NULL) {
   op <- new_operation(
     name = "InvokeModelWithResponseStream",
     http_method = "POST",
@@ -526,7 +580,7 @@ bedrockruntime_invoke_model_with_response_stream <- function(body = NULL, conten
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .bedrockruntime$invoke_model_with_response_stream_input(body = body, contentType = contentType, accept = accept, modelId = modelId, trace = trace, guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion, performanceConfigLatency = performanceConfigLatency)
+  input <- .bedrockruntime$invoke_model_with_response_stream_input(body = body, contentType = contentType, accept = accept, modelId = modelId, trace = trace, guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion, performanceConfigLatency = performanceConfigLatency, serviceTier = serviceTier)
   output <- .bedrockruntime$invoke_model_with_response_stream_output()
   config <- get_config()
   svc <- .bedrockruntime$service(config, op)

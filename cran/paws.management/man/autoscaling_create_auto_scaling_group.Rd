@@ -38,7 +38,8 @@ autoscaling_create_auto_scaling_group(
   AvailabilityZoneDistribution = NULL,
   AvailabilityZoneImpairmentPolicy = NULL,
   SkipZonalShiftValidation = NULL,
-  CapacityReservationSpecification = NULL
+  CapacityReservationSpecification = NULL,
+  InstanceLifecyclePolicy = NULL
 )
 }
 \arguments{
@@ -143,7 +144,7 @@ Default: \code{0} seconds}
 
 \item{PlacementGroup}{The name of the placement group into which to launch your instances. For
 more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement groups}
-in the \emph{Amazon EC2 User Guide for Linux Instances}.
+in the \emph{Amazon EC2 User Guide}.
 
 A \emph{cluster} placement group is a logical grouping of instances within a
 single Availability Zone. You cannot specify multiple Availability Zones
@@ -257,6 +258,15 @@ validation, specify \code{true}. For more information, see \href{https://docs.aw
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{CapacityReservationSpecification}{The capacity reservation specification for the Auto Scaling group.}
+
+\item{InstanceLifecyclePolicy}{The instance lifecycle policy for the Auto Scaling group. This policy
+controls instance behavior when an instance transitions through its
+lifecycle states. Configure retention triggers to specify when instances
+should move to a \code{Retained} state for manual intervention instead of
+automatic termination.
+
+Instances in a Retained state will continue to incur standard EC2
+charges until terminated.}
 }
 \description{
 \strong{We strongly recommend using a launch template when calling this operation to ensure full functionality for Amazon EC2 Auto Scaling and Amazon EC2.}

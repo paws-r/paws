@@ -245,7 +245,7 @@ cloudwatchevidently_create_launch <- function(description = NULL, groups, metric
 #' [`evaluate_feature`][cloudwatchevidently_evaluate_feature] operation.
 #' This mitigates the latency and availability risks that come with an API
 #' call. For more information, see [Client-side evaluation - powered by
-#' AppConfig.](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-client-side-evaluation.html)
+#' AppConfig.](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/)
 #' 
 #' This parameter is a structure that contains information about the
 #' AppConfig application and environment that will be used as for
@@ -306,7 +306,7 @@ cloudwatchevidently_create_project <- function(appConfigResource = NULL, dataDel
 #' @param name &#91;required&#93; A name for the segment.
 #' @param pattern &#91;required&#93; The pattern to use for the segment. For more information about pattern
 #' syntax, see [Segment rule pattern
-#' syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html#CloudWatch-Evidently-segments-syntax.html).
+#' syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/#CloudWatch-Evidently-segments-syntax.html).
 #' @param tags Assigns one or more tags (key-value pairs) to the segment.
 #' 
 #' Tags can help you organize and categorize your resources. You can also
@@ -515,7 +515,7 @@ cloudwatchevidently_delete_segment <- function(segment) {
 #' the evaluation event sent to Evidently from the user session. Evidently
 #' can use this value to match user sessions with defined audience
 #' segments. For more information, see [Use segments to focus your
-#' audience](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html).
+#' audience](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/).
 #' 
 #' If you include this parameter, the value must be a JSON object. A JSON
 #' array is not supported.

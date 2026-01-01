@@ -2,8 +2,8 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_delete_account_subscription}
 \alias{quicksight_delete_account_subscription}
-\title{Use the DeleteAccountSubscription operation to delete an Amazon
-QuickSight account}
+\title{Deleting your Quick Sight account subscription has permanent,
+irreversible consequences across all Amazon Web Services regions:}
 \usage{
 quicksight_delete_account_subscription(AwsAccountId)
 }
@@ -12,7 +12,7 @@ quicksight_delete_account_subscription(AwsAccountId)
 delete.}
 }
 \description{
-Use the \code{\link[=quicksight_delete_account_subscription]{delete_account_subscription}} operation to delete an Amazon QuickSight account. This operation will result in an error message if you have configured your account termination protection settings to \code{True}. To change this setting and delete your account, call the \code{\link[=quicksight_update_account_settings]{update_account_settings}} API and set the value of the \code{TerminationProtectionEnabled} parameter to \code{False}, then make another call to the \code{\link[=quicksight_delete_account_subscription]{delete_account_subscription}} API.
+Deleting your Quick Sight account subscription has permanent, irreversible consequences across all Amazon Web Services regions:
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_delete_account_subscription/} for full documentation.
 }

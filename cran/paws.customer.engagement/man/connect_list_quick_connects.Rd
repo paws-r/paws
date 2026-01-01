@@ -14,7 +14,8 @@ connect_list_quick_connects(
 }
 \arguments{
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
-in the Amazon Resource Name (ARN) of the instance.}
+in the Amazon Resource Name (ARN) of the instance. Both Instance ID and
+Instance ARN are supported input formats.}
 
 \item{NextToken}{The token for the next set of results. Use the value returned in the
 previous response in the next request to retrieve the next set of

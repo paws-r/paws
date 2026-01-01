@@ -53,9 +53,9 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-AWS HealthLake is a HIPAA eligibile service that allows customers to
-store, transform, query, and analyze their FHIR-formatted data in a
-consistent fashion in the cloud.
+This is the \emph{AWS HealthLake API Reference}. For an introduction to the
+service, see \href{https://docs.aws.amazon.com/healthlake/latest/devguide/what-is.html}{What is AWS HealthLake?}
+in the \emph{AWS HealthLake Developer Guide}.
 }
 \section{Service syntax}{
 
@@ -96,19 +96,19 @@ consistent fashion in the cloud.
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.analytics:healthlake_create_fhir_datastore]{create_fhir_datastore} \tab Creates a data store that can ingest and export FHIR formatted data\cr
-\link[paws.analytics:healthlake_delete_fhir_datastore]{delete_fhir_datastore} \tab Deletes a data store\cr
-\link[paws.analytics:healthlake_describe_fhir_datastore]{describe_fhir_datastore} \tab Gets the properties associated with the FHIR data store, including the data store ID, data store ARN, data store name, data store status, when the data store was created, data store type version, and the data store's endpoint\cr
-\link[paws.analytics:healthlake_describe_fhir_export_job]{describe_fhir_export_job} \tab Displays the properties of a FHIR export job, including the ID, ARN, name, and the status of the job\cr
-\link[paws.analytics:healthlake_describe_fhir_import_job]{describe_fhir_import_job} \tab Displays the properties of a FHIR import job, including the ID, ARN, name, and the status of the job\cr
-\link[paws.analytics:healthlake_list_fhir_datastores]{list_fhir_datastores} \tab Lists all FHIR data stores that are in the user’s account, regardless of data store status\cr
+\link[paws.analytics:healthlake_create_fhir_datastore]{create_fhir_datastore} \tab Create a FHIR-enabled data store\cr
+\link[paws.analytics:healthlake_delete_fhir_datastore]{delete_fhir_datastore} \tab Delete a FHIR-enabled data store\cr
+\link[paws.analytics:healthlake_describe_fhir_datastore]{describe_fhir_datastore} \tab Get properties for a FHIR-enabled data store\cr
+\link[paws.analytics:healthlake_describe_fhir_export_job]{describe_fhir_export_job} \tab Get FHIR export job properties\cr
+\link[paws.analytics:healthlake_describe_fhir_import_job]{describe_fhir_import_job} \tab Get the import job properties to learn more about the job or job progress\cr
+\link[paws.analytics:healthlake_list_fhir_datastores]{list_fhir_datastores} \tab List all FHIR-enabled data stores in a user’s account, regardless of data store status\cr
 \link[paws.analytics:healthlake_list_fhir_export_jobs]{list_fhir_export_jobs} \tab Lists all FHIR export jobs associated with an account and their statuses\cr
-\link[paws.analytics:healthlake_list_fhir_import_jobs]{list_fhir_import_jobs} \tab Lists all FHIR import jobs associated with an account and their statuses\cr
+\link[paws.analytics:healthlake_list_fhir_import_jobs]{list_fhir_import_jobs} \tab List all FHIR import jobs associated with an account and their statuses\cr
 \link[paws.analytics:healthlake_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of all existing tags associated with a data store\cr
-\link[paws.analytics:healthlake_start_fhir_export_job]{start_fhir_export_job} \tab Begins a FHIR export job\cr
-\link[paws.analytics:healthlake_start_fhir_import_job]{start_fhir_import_job} \tab Begins a FHIR Import job\cr
-\link[paws.analytics:healthlake_tag_resource]{tag_resource} \tab Adds a user specified key and value tag to a data store\cr
-\link[paws.analytics:healthlake_untag_resource]{untag_resource} \tab Removes tags from a data store
+\link[paws.analytics:healthlake_start_fhir_export_job]{start_fhir_export_job} \tab Start a FHIR export job\cr
+\link[paws.analytics:healthlake_start_fhir_import_job]{start_fhir_import_job} \tab Start importing bulk FHIR data into an ACTIVE data store\cr
+\link[paws.analytics:healthlake_tag_resource]{tag_resource} \tab Add a user-specifed key and value tag to a data store\cr
+\link[paws.analytics:healthlake_untag_resource]{untag_resource} \tab Remove a user-specifed key and value tag from a data store
 }
 }
 

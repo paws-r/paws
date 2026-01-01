@@ -16,9 +16,9 @@ connect_get_effective_hours_of_operations(
 
 \item{HoursOfOperationId}{[required] The identifier for the hours of operation.}
 
-\item{FromDate}{[required] The Date from when the hours of operation are listed.}
+\item{FromDate}{[required] The date from when the hours of operation are listed.}
 
-\item{ToDate}{[required] The Date until when the hours of operation are listed.}
+\item{ToDate}{[required] The date until when the hours of operation are listed.}
 }
 \description{
 Get the hours of operations with the effective override applied.

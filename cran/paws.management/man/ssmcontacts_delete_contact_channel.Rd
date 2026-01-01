@@ -2,8 +2,8 @@
 % Please edit documentation in R/ssmcontacts_operations.R
 \name{ssmcontacts_delete_contact_channel}
 \alias{ssmcontacts_delete_contact_channel}
-\title{To no longer receive engagements on a contact channel, you can delete
-the channel from a contact}
+\title{To stop receiving engagements on a contact channel, you can delete the
+channel from a contact}
 \usage{
 ssmcontacts_delete_contact_channel(ContactChannelId)
 }
@@ -11,7 +11,7 @@ ssmcontacts_delete_contact_channel(ContactChannelId)
 \item{ContactChannelId}{[required] The Amazon Resource Name (ARN) of the contact channel.}
 }
 \description{
-To no longer receive engagements on a contact channel, you can delete the channel from a contact. Deleting the contact channel removes it from the contact's engagement plan. If you delete the only contact channel for a contact, you won't be able to engage that contact during an incident.
+To stop receiving engagements on a contact channel, you can delete the channel from a contact. Deleting the contact channel does not remove it from the contact's engagement plan, but the stage that includes the channel will be ignored. If you delete the only contact channel for a contact, you'll no longer be able to engage that contact during an incident.
 
 See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_delete_contact_channel/} for full documentation.
 }

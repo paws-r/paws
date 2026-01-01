@@ -32,8 +32,8 @@ unique stack ID.
 \item Deleted stacks: You must specify the unique stack ID.
 }}
 
-\item{NextToken}{A string that identifies the next page of stacks that you want to
-retrieve.}
+\item{NextToken}{The token for the next set of items to return. (You received this token
+from a previous call.)}
 }
 \description{
 Returns the description for the specified stack; if no stack name was specified, then it returns the description for all the stacks created. For more information about a stack's event history, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stack-resource-configuration-complete.html}{Understand CloudFormation stack creation events} in the \emph{CloudFormation User Guide}.

@@ -2,9 +2,14 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_terminate_instances}
 \alias{ec2_terminate_instances}
-\title{Shuts down the specified instances}
+\title{Terminates (deletes) the specified instances}
 \usage{
-ec2_terminate_instances(InstanceIds, DryRun = NULL)
+ec2_terminate_instances(
+  InstanceIds,
+  Force = NULL,
+  SkipOsShutdown = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{InstanceIds}{[required] The IDs of the instances.
@@ -12,13 +17,24 @@ ec2_terminate_instances(InstanceIds, DryRun = NULL)
 Constraints: Up to 1000 instance IDs. We recommend breaking up this
 request into smaller batches.}
 
+\item{Force}{Forces the instances to terminate. The instance will first attempt a
+graceful shutdown, which includes flushing file system caches and
+metadata. If the graceful shutdown fails to complete within the timeout
+period, the instance shuts down forcibly without flushing the file
+system caches and metadata.}
+
+\item{SkipOsShutdown}{Specifies whether to bypass the graceful OS shutdown process when the
+instance is terminated.
+
+Default: \code{false}}
+
 \item{DryRun}{Checks whether you have the required permissions for the operation,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Shuts down the specified instances. This operation is \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{idempotent}; if you terminate an instance more than once, each call succeeds.
+Terminates (deletes) the specified instances. This operation is \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{idempotent}; if you terminate an instance more than once, each call succeeds.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_terminate_instances/} for full documentation.
 }

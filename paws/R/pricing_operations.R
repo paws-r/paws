@@ -270,7 +270,7 @@ pricing_get_price_list_file_url <- function(PriceListArn, FileFormat) {
 #'   ServiceCode = "string",
 #'   Filters = list(
 #'     list(
-#'       Type = "TERM_MATCH",
+#'       Type = "TERM_MATCH"|"EQUALS"|"CONTAINS"|"ANY_OF"|"NONE_OF",
 #'       Field = "string",
 #'       Value = "string"
 #'     )

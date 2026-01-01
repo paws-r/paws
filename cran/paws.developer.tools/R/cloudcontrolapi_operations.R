@@ -92,7 +92,7 @@ cloudcontrolapi_cancel_resource_request <- function(RequestToken) {
 #' For more information about the properties of a specific resource, refer
 #' to the related topic for the resource in the [Resource and property
 #' types
-#' reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
+#' reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-template-resource-type-ref.html)
 #' in the *CloudFormation Users Guide*.
 #'
 #' @keywords internal

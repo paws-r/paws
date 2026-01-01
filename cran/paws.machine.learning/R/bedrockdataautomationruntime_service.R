@@ -91,6 +91,7 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=bedrockdataautomationruntime_get_data_automation_status]{get_data_automation_status} \tab API used to get data automation status\cr
+#'  \link[=bedrockdataautomationruntime_invoke_data_automation]{invoke_data_automation} \tab Sync API: Invoke data automation\cr
 #'  \link[=bedrockdataautomationruntime_invoke_data_automation_async]{invoke_data_automation_async} \tab Async API: Invoke data automation\cr
 #'  \link[=bedrockdataautomationruntime_list_tags_for_resource]{list_tags_for_resource} \tab List tags for an Amazon Bedrock Data Automation resource\cr
 #'  \link[=bedrockdataautomationruntime_tag_resource]{tag_resource} \tab Tag an Amazon Bedrock Data Automation resource\cr

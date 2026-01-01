@@ -61,15 +61,27 @@ NULL
   return(populate(args, shape))
 }
 
+.cloudwatch$describe_alarm_contributors_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AlarmName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatch$describe_alarm_contributors_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AlarmContributors = structure(list(structure(list(ContributorId = structure(logical(0), tags = list(type = "string")), ContributorAttributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), StateReason = structure(logical(0), tags = list(type = "string")), StateTransitionedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeAlarmContributorsResult"))
+  return(populate(args, shape))
+}
+
 .cloudwatch$describe_alarm_history_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AlarmName = structure(logical(0), tags = list(type = "string")), AlarmTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), HistoryItemType = structure(logical(0), tags = list(type = "string")), StartDate = structure(logical(0), tags = list(type = "timestamp")), EndDate = structure(logical(0), tags = list(type = "timestamp")), MaxRecords = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), ScanBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(AlarmName = structure(logical(0), tags = list(type = "string")), AlarmContributorId = structure(logical(0), tags = list(type = "string")), AlarmTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), HistoryItemType = structure(logical(0), tags = list(type = "string")), StartDate = structure(logical(0), tags = list(type = "timestamp")), EndDate = structure(logical(0), tags = list(type = "timestamp")), MaxRecords = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), ScanBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .cloudwatch$describe_alarm_history_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AlarmHistoryItems = structure(list(structure(list(AlarmName = structure(logical(0), tags = list(type = "string")), AlarmType = structure(logical(0), tags = list(type = "string")), Timestamp = structure(logical(0), tags = list(type = "timestamp")), HistoryItemType = structure(logical(0), tags = list(type = "string")), HistorySummary = structure(logical(0), tags = list(type = "string")), HistoryData = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeAlarmHistoryResult"))
+  shape <- structure(list(AlarmHistoryItems = structure(list(structure(list(AlarmName = structure(logical(0), tags = list(type = "string")), AlarmContributorId = structure(logical(0), tags = list(type = "string")), AlarmType = structure(logical(0), tags = list(type = "string")), Timestamp = structure(logical(0), tags = list(type = "timestamp")), HistoryItemType = structure(logical(0), tags = list(type = "string")), HistorySummary = structure(logical(0), tags = list(type = "string")), HistoryData = structure(logical(0), tags = list(type = "string")), AlarmContributorAttributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeAlarmHistoryResult"))
   return(populate(args, shape))
 }
 
@@ -117,7 +129,7 @@ NULL
 
 .cloudwatch$describe_insight_rules_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), InsightRules = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Schema = structure(logical(0), tags = list(type = "string")), Definition = structure(logical(0), tags = list(type = "string")), ManagedRule = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DescribeInsightRulesResult"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), InsightRules = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Schema = structure(logical(0), tags = list(type = "string")), Definition = structure(logical(0), tags = list(type = "string")), ManagedRule = structure(logical(0), tags = list(type = "boolean")), ApplyOnTransformedLogs = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DescribeInsightRulesResult"))
   return(populate(args, shape))
 }
 
@@ -333,7 +345,7 @@ NULL
 
 .cloudwatch$put_insight_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RuleName = structure(logical(0), tags = list(type = "string")), RuleState = structure(logical(0), tags = list(type = "string")), RuleDefinition = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(RuleName = structure(logical(0), tags = list(type = "string")), RuleState = structure(logical(0), tags = list(type = "string")), RuleDefinition = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ApplyOnTransformedLogs = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -2,8 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_copy_snapshot}
 \alias{ec2_copy_snapshot}
-\title{Copies a point-in-time snapshot of an EBS volume and stores it in Amazon
-S3}
+\title{Creates an exact copy of an Amazon EBS snapshot}
 \usage{
 ec2_copy_snapshot(
   Description = NULL,
@@ -16,6 +15,7 @@ ec2_copy_snapshot(
   SourceSnapshotId,
   TagSpecifications = NULL,
   CompletionDurationMinutes = NULL,
+  DestinationAvailabilityZone = NULL,
   DryRun = NULL
 )
 }
@@ -23,11 +23,9 @@ ec2_copy_snapshot(
 \item{Description}{A description for the EBS snapshot.}
 
 \item{DestinationOutpostArn}{The Amazon Resource Name (ARN) of the Outpost to which to copy the
-snapshot. Only specify this parameter when copying a snapshot from an
-Amazon Web Services Region to an Outpost. The snapshot must be in the
-Region for the destination Outpost. You cannot copy a snapshot from an
-Outpost to a Region, from one Outpost to another, or within the same
-Outpost.
+snapshot.
+
+Only supported when copying a snapshot to an Outpost.
 
 For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/snapshots-outposts.html#copy-snapshots}{Copy snapshots from an Amazon Web Services Region to an Outpost}
 in the \emph{Amazon EBS User Guide}.}
@@ -43,9 +41,9 @@ Region in your Amazon Web Services configuration file.}
 
 \item{Encrypted}{To encrypt a copy of an unencrypted snapshot if encryption by default is
 not enabled, enable encryption using this parameter. Otherwise, omit
-this parameter. Encrypted snapshots are encrypted, even if you omit this
-parameter and encryption by default is not enabled. You cannot set this
-parameter to false. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html}{Amazon EBS encryption}
+this parameter. Copies of encrypted snapshots are encrypted, even if you
+omit this parameter and encryption by default is not enabled. You cannot
+set this parameter to false. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html}{Amazon EBS encryption}
 in the \emph{Amazon EBS User Guide}.}
 
 \item{KmsKeyId}{The identifier of the KMS key to use for Amazon EBS encryption. If this
@@ -87,12 +85,19 @@ the snapshot will move to an \code{error} state.}
 
 \item{TagSpecifications}{The tags to apply to the new snapshot.}
 
-\item{CompletionDurationMinutes}{Specify a completion duration, in 15 minute increments, to initiate a
+\item{CompletionDurationMinutes}{Not supported when copying snapshots to or from Local Zones or Outposts.
+
+Specify a completion duration, in 15 minute increments, to initiate a
 time-based snapshot copy. Time-based snapshot copy operations complete
 within the specified duration. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/time-based-copies.html}{Time-based copies}.
 
 If you do not specify a value, the snapshot copy operation is completed
 on a best-effort basis.}
+
+\item{DestinationAvailabilityZone}{The Local Zone, for example, \verb{cn-north-1-pkx-1a} to which to copy the
+snapshot.
+
+Only supported when copying a snapshot to a Local Zone.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -100,7 +105,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Copies a point-in-time snapshot of an EBS volume and stores it in Amazon S3. You can copy a snapshot within the same Region, from one Region to another, or from a Region to an Outpost. You can't copy a snapshot from an Outpost to a Region, from one Outpost to another, or within the same Outpost.
+Creates an exact copy of an Amazon EBS snapshot.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_copy_snapshot/} for full documentation.
 }

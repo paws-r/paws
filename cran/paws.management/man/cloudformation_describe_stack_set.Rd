@@ -7,13 +7,13 @@
 cloudformation_describe_stack_set(StackSetName, CallAs = NULL)
 }
 \arguments{
-\item{StackSetName}{[required] The name or unique ID of the stack set whose description you want.}
+\item{StackSetName}{[required] The name or unique ID of the StackSet whose description you want.}
 
 \item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
 account administrator in the organization's management account or as a
 delegated administrator in a member account.
 
-By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+By default, \code{SELF} is specified. Use \code{SELF} for StackSets with
 self-managed permissions.
 \itemize{
 \item If you are signed in to the management account, specify \code{SELF}.

@@ -9,7 +9,9 @@ datazone_list_subscriptions(
   domainIdentifier,
   maxResults = NULL,
   nextToken = NULL,
+  owningGroupId = NULL,
   owningProjectId = NULL,
+  owningUserId = NULL,
   sortBy = NULL,
   sortOrder = NULL,
   status = NULL,
@@ -37,7 +39,11 @@ includes a pagination token named \code{NextToken}. You can specify this
 \code{\link[=datazone_list_subscriptions]{list_subscriptions}} to list the next set
 of subscriptions.}
 
+\item{owningGroupId}{The ID of the owning group.}
+
 \item{owningProjectId}{The identifier of the owning project.}
+
+\item{owningUserId}{The ID of the owning user.}
 
 \item{sortBy}{Specifies the way in which the results of this action are to be sorted.}
 

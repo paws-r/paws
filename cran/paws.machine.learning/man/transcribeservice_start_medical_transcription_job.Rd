@@ -101,39 +101,20 @@ transcription output path is
 If you specify the name of an Amazon S3 bucket sub-folder that doesn't
 exist, one is created for you.}
 
-\item{OutputEncryptionKMSKeyId}{The KMS key you want to use to encrypt your medical transcription
-output.
+\item{OutputEncryptionKMSKeyId}{The Amazon Resource Name (ARN) of a KMS key that you want to use to
+encrypt your medical transcription output.
 
-If using a key located in the \strong{current} Amazon Web Services account,
-you can specify your KMS key in one of four ways:
-\enumerate{
-\item Use the KMS key ID itself. For example,
-\verb{1234abcd-12ab-34cd-56ef-1234567890ab}.
-\item Use an alias for the KMS key ID. For example, \code{alias/ExampleAlias}.
-\item Use the Amazon Resource Name (ARN) for the KMS key ID. For example,
-\verb{arn:aws:kms:region:account-ID:key/1234abcd-12ab-34cd-56ef-1234567890ab}.
-\item Use the ARN for the KMS key alias. For example,
-\code{arn:aws:kms:region:account-ID:alias/ExampleAlias}.
-}
-
-If using a key located in a \strong{different} Amazon Web Services account
-than the current Amazon Web Services account, you can specify your KMS
-key in one of two ways:
-\enumerate{
-\item Use the ARN for the KMS key ID. For example,
-\verb{arn:aws:kms:region:account-ID:key/1234abcd-12ab-34cd-56ef-1234567890ab}.
-\item Use the ARN for the KMS key alias. For example,
-\code{arn:aws:kms:region:account-ID:alias/ExampleAlias}.
-}
+KMS key ARNs have the format
+\code{arn:partition:kms:region:account:key/key-id}. For example:
+\verb{arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}.
+For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN}{KMS key ARNs}.
 
 If you do not specify an encryption key, your output is encrypted with
 the default Amazon S3 key (SSE-S3).
 
-If you specify a KMS key to encrypt your output, you must also specify
-an output location using the \code{OutputLocation} parameter.
-
-Note that the role making the request must have permission to use the
-specified KMS key.}
+Note that the role making the request and the role specified in the
+\code{DataAccessRoleArn} request parameter (if present) must have permission
+to use the specified KMS key.}
 
 \item{KMSEncryptionContext}{A map of plain text, non-secret key:value pairs, known as encryption
 context pairs, that provide an added layer of security for your data.

@@ -4,14 +4,14 @@
 \alias{iamrolesanywhere_update_crl}
 \title{Updates the certificate revocation list (CRL)}
 \usage{
-iamrolesanywhere_update_crl(crlData = NULL, crlId, name = NULL)
+iamrolesanywhere_update_crl(crlId, name = NULL, crlData = NULL)
 }
 \arguments{
-\item{crlData}{The x509 v3 specified certificate revocation list (CRL).}
-
 \item{crlId}{[required] The unique identifier of the certificate revocation list (CRL).}
 
 \item{name}{The name of the Crl.}
+
+\item{crlData}{The x509 v3 specified certificate revocation list (CRL).}
 }
 \description{
 Updates the certificate revocation list (CRL). A CRL is a list of certificates that have been revoked by the issuing certificate authority (CA). IAM Roles Anywhere validates against the CRL before issuing credentials.

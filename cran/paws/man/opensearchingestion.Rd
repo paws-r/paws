@@ -98,13 +98,21 @@ more information, see \href{https://docs.aws.amazon.com/opensearch-service/lates
 
 \tabular{ll}{
 \link[paws.analytics:opensearchingestion_create_pipeline]{create_pipeline} \tab Creates an OpenSearch Ingestion pipeline\cr
+\link[paws.analytics:opensearchingestion_create_pipeline_endpoint]{create_pipeline_endpoint} \tab Creates a VPC endpoint for an OpenSearch Ingestion pipeline\cr
 \link[paws.analytics:opensearchingestion_delete_pipeline]{delete_pipeline} \tab Deletes an OpenSearch Ingestion pipeline\cr
+\link[paws.analytics:opensearchingestion_delete_pipeline_endpoint]{delete_pipeline_endpoint} \tab Deletes a VPC endpoint for an OpenSearch Ingestion pipeline\cr
+\link[paws.analytics:opensearchingestion_delete_resource_policy]{delete_resource_policy} \tab Deletes a resource-based policy from an OpenSearch Ingestion resource\cr
 \link[paws.analytics:opensearchingestion_get_pipeline]{get_pipeline} \tab Retrieves information about an OpenSearch Ingestion pipeline\cr
 \link[paws.analytics:opensearchingestion_get_pipeline_blueprint]{get_pipeline_blueprint} \tab Retrieves information about a specific blueprint for OpenSearch Ingestion\cr
 \link[paws.analytics:opensearchingestion_get_pipeline_change_progress]{get_pipeline_change_progress} \tab Returns progress information for the current change happening on an OpenSearch Ingestion pipeline\cr
+\link[paws.analytics:opensearchingestion_get_resource_policy]{get_resource_policy} \tab Retrieves the resource-based policy attached to an OpenSearch Ingestion resource\cr
 \link[paws.analytics:opensearchingestion_list_pipeline_blueprints]{list_pipeline_blueprints} \tab Retrieves a list of all available blueprints for Data Prepper\cr
+\link[paws.analytics:opensearchingestion_list_pipeline_endpoint_connections]{list_pipeline_endpoint_connections} \tab Lists the pipeline endpoints connected to pipelines in your account\cr
+\link[paws.analytics:opensearchingestion_list_pipeline_endpoints]{list_pipeline_endpoints} \tab Lists all pipeline endpoints in your account\cr
 \link[paws.analytics:opensearchingestion_list_pipelines]{list_pipelines} \tab Lists all OpenSearch Ingestion pipelines in the current Amazon Web Services account and Region\cr
 \link[paws.analytics:opensearchingestion_list_tags_for_resource]{list_tags_for_resource} \tab Lists all resource tags associated with an OpenSearch Ingestion pipeline\cr
+\link[paws.analytics:opensearchingestion_put_resource_policy]{put_resource_policy} \tab Attaches a resource-based policy to an OpenSearch Ingestion resource\cr
+\link[paws.analytics:opensearchingestion_revoke_pipeline_endpoint_connections]{revoke_pipeline_endpoint_connections} \tab Revokes pipeline endpoints from specified endpoint IDs\cr
 \link[paws.analytics:opensearchingestion_start_pipeline]{start_pipeline} \tab Starts an OpenSearch Ingestion pipeline\cr
 \link[paws.analytics:opensearchingestion_stop_pipeline]{stop_pipeline} \tab Stops an OpenSearch Ingestion pipeline\cr
 \link[paws.analytics:opensearchingestion_tag_resource]{tag_resource} \tab Tags an OpenSearch Ingestion pipeline\cr

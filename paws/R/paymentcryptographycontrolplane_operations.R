@@ -3,6 +3,145 @@
 #' @include paymentcryptographycontrolplane_service.R
 NULL
 
+#' Adds replication Amazon Web Services Regions to an existing Amazon Web
+#' Services Payment Cryptography key, enabling the key to be used for
+#' cryptographic operations in additional Amazon Web Services Regions
+#'
+#' @description
+#' Adds replication Amazon Web Services Regions to an existing Amazon Web
+#' Services Payment Cryptography key, enabling the key to be used for
+#' cryptographic operations in additional Amazon Web Services Regions.
+#' 
+#' [Multi-Region key
+#' replication](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-multi-region-replication.html)
+#' allow you to use the same key material across multiple Amazon Web
+#' Services Regions, providing lower latency for applications distributed
+#' across regions. When you add Replication Regions, Amazon Web Services
+#' Payment Cryptography securely replicates the key material to the
+#' specified Amazon Web Services Regions.
+#' 
+#' The key must be in an active state to add Replication Regions. You can
+#' add multiple regions in a single operation, and the key will be
+#' available for use in those regions once replication is complete.
+#' 
+#' **Cross-account use:** This operation can't be used across different
+#' Amazon Web Services accounts.
+#' 
+#' **Related operations:**
+#' 
+#' -   [`remove_key_replication_regions`][paymentcryptographycontrolplane_remove_key_replication_regions]
+#' 
+#' -   [`enable_default_key_replication_regions`][paymentcryptographycontrolplane_enable_default_key_replication_regions]
+#' 
+#' -   [`get_default_key_replication_regions`][paymentcryptographycontrolplane_get_default_key_replication_regions]
+#'
+#' @usage
+#' paymentcryptographycontrolplane_add_key_replication_regions(
+#'   KeyIdentifier, ReplicationRegions)
+#'
+#' @param KeyIdentifier &#91;required&#93; The key identifier (ARN or alias) of the key for which to add
+#' replication regions.
+#' 
+#' This key must exist and be in a valid state for replication operations.
+#' @param ReplicationRegions &#91;required&#93; The list of Amazon Web Services Regions to add to the key's replication
+#' configuration.
+#' 
+#' Each region must be a valid Amazon Web Services Region where Amazon Web
+#' Services Payment Cryptography is available. The key will be replicated
+#' to these regions, allowing cryptographic operations to be performed
+#' closer to your applications.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Key = list(
+#'     KeyArn = "string",
+#'     KeyAttributes = list(
+#'       KeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_D1_ASYMMETRIC_KEY_FOR_DATA_ENCRYPTION"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_K3_ASYMMETRIC_KEY_FOR_KEY_AGREEMENT"|"TR31_M0_ISO_16609_MAC_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"|"TR31_K2_TR34_ASYMMETRIC_KEY",
+#'       KeyClass = "SYMMETRIC_KEY"|"ASYMMETRIC_KEY_PAIR"|"PRIVATE_KEY"|"PUBLIC_KEY",
+#'       KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
+#'       KeyModesOfUse = list(
+#'         Encrypt = TRUE|FALSE,
+#'         Decrypt = TRUE|FALSE,
+#'         Wrap = TRUE|FALSE,
+#'         Unwrap = TRUE|FALSE,
+#'         Generate = TRUE|FALSE,
+#'         Sign = TRUE|FALSE,
+#'         Verify = TRUE|FALSE,
+#'         DeriveKey = TRUE|FALSE,
+#'         NoRestrictions = TRUE|FALSE
+#'       )
+#'     ),
+#'     KeyCheckValue = "string",
+#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"|"HMAC"|"SHA_1",
+#'     Enabled = TRUE|FALSE,
+#'     Exportable = TRUE|FALSE,
+#'     KeyState = "CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"DELETE_PENDING"|"DELETE_COMPLETE",
+#'     KeyOrigin = "EXTERNAL"|"AWS_PAYMENT_CRYPTOGRAPHY",
+#'     CreateTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UsageStartTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UsageStopTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DeletePendingTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DeleteTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DeriveKeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY",
+#'     MultiRegionKeyType = "PRIMARY"|"REPLICA",
+#'     PrimaryRegion = "string",
+#'     ReplicationStatus = list(
+#'       list(
+#'         Status = "IN_PROGRESS"|"DELETE_IN_PROGRESS"|"FAILED"|"SYNCHRONIZED",
+#'         StatusMessage = "string"
+#'       )
+#'     ),
+#'     UsingDefaultReplicationRegions = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$add_key_replication_regions(
+#'   KeyIdentifier = "string",
+#'   ReplicationRegions = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographycontrolplane_add_key_replication_regions
+#'
+#' @aliases paymentcryptographycontrolplane_add_key_replication_regions
+paymentcryptographycontrolplane_add_key_replication_regions <- function(KeyIdentifier, ReplicationRegions) {
+  op <- new_operation(
+    name = "AddKeyReplicationRegions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographycontrolplane$add_key_replication_regions_input(KeyIdentifier = KeyIdentifier, ReplicationRegions = ReplicationRegions)
+  output <- .paymentcryptographycontrolplane$add_key_replication_regions_output()
+  config <- get_config()
+  svc <- .paymentcryptographycontrolplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographycontrolplane$operations$add_key_replication_regions <- paymentcryptographycontrolplane_add_key_replication_regions
+
 #' Creates an alias, or a friendly name, for an Amazon Web Services Payment
 #' Cryptography key
 #'
@@ -119,6 +258,11 @@ paymentcryptographycontrolplane_create_alias <- function(AliasName, KeyArn = NUL
 #' for example key class (example: `SYMMETRIC_KEY`), key algorithm
 #' (example: `TDES_2KEY`), key usage (example:
 #' `TR31_P0_PIN_ENCRYPTION_KEY`) and key modes of use (example: `Encrypt`).
+#' Amazon Web Services Payment Cryptography binds key attributes to keys
+#' using key blocks when you store or export them. Amazon Web Services
+#' Payment Cryptography stores the key contents wrapped and never stores or
+#' transmits them in the clear.
+#' 
 #' For information about valid combinations of key attributes, see
 #' [Understanding key
 #' attributes](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-validattributes.html)
@@ -126,10 +270,24 @@ paymentcryptographycontrolplane_create_alias <- function(AliasName, KeyArn = NUL
 #' mutable data contained within a key includes usage timestamp and key
 #' deletion timestamp and can be modified after creation.
 #' 
-#' Amazon Web Services Payment Cryptography binds key attributes to keys
-#' using key blocks when you store or export them. Amazon Web Services
-#' Payment Cryptography stores the key contents wrapped and never stores or
-#' transmits them in the clear.
+#' You can use the
+#' [`create_key`][paymentcryptographycontrolplane_create_key] operation to
+#' generate an ECC (Elliptic Curve Cryptography) key pair used for
+#' establishing an ECDH (Elliptic Curve Diffie-Hellman) key agreement
+#' between two parties. In the ECDH key agreement process, both parties
+#' generate their own ECC key pair with key usage K3 and exchange the
+#' public keys. Each party then use their private key, the received public
+#' key from the other party, and the key derivation parameters including
+#' key derivation function, hash algorithm, derivation data, and key
+#' algorithm to derive a shared key.
+#' 
+#' To maintain the single-use principle of cryptographic keys in payments,
+#' ECDH derived keys should not be used for multiple purposes, such as a
+#' `TR31_P0_PIN_ENCRYPTION_KEY` and `TR31_K1_KEY_BLOCK_PROTECTION_KEY`.
+#' When creating ECC key pairs in Amazon Web Services Payment Cryptography
+#' you can optionally set the `DeriveKeyUsage` parameter, which defines the
+#' key usage bound to the symmetric key that will be derived using the ECC
+#' key pair.
 #' 
 #' **Cross-account use**: This operation can't be used across different
 #' Amazon Web Services accounts.
@@ -144,7 +302,8 @@ paymentcryptographycontrolplane_create_alias <- function(AliasName, KeyArn = NUL
 #'
 #' @usage
 #' paymentcryptographycontrolplane_create_key(KeyAttributes,
-#'   KeyCheckValueAlgorithm, Exportable, Enabled, Tags, DeriveKeyUsage)
+#'   KeyCheckValueAlgorithm, Exportable, Enabled, Tags, DeriveKeyUsage,
+#'   ReplicationRegions)
 #'
 #' @param KeyAttributes &#91;required&#93; The role of the key, the algorithm it supports, and the cryptographic
 #' operations allowed with the key. This data is immutable after the key is
@@ -179,8 +338,12 @@ paymentcryptographycontrolplane_create_alias <- function(AliasName, KeyArn = NUL
 #' 
 #' Tagging or untagging an Amazon Web Services Payment Cryptography key can
 #' allow or deny permission to the key.
-#' @param DeriveKeyUsage The cryptographic usage of an ECDH derived key as defined in section
-#' A.5.2 of the TR-31 spec.
+#' @param DeriveKeyUsage The intended cryptographic usage of keys derived from the ECC key pair
+#' to be created.
+#' 
+#' After creating an ECC key pair, you cannot change the intended
+#' cryptographic usage of keys derived from it using ECDH.
+#' @param ReplicationRegions 
 #'
 #' @return
 #' A list with the following syntax:
@@ -189,9 +352,9 @@ paymentcryptographycontrolplane_create_alias <- function(AliasName, KeyArn = NUL
 #'   Key = list(
 #'     KeyArn = "string",
 #'     KeyAttributes = list(
-#'       KeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_D1_ASYMMETRIC_KEY_FOR_DATA_ENCRYPTION"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_K3_ASYMMETRIC_KEY_FOR_KEY_AGREEMENT"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"|"TR31_K2_TR34_ASYMMETRIC_KEY",
+#'       KeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_D1_ASYMMETRIC_KEY_FOR_DATA_ENCRYPTION"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_K3_ASYMMETRIC_KEY_FOR_KEY_AGREEMENT"|"TR31_M0_ISO_16609_MAC_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"|"TR31_K2_TR34_ASYMMETRIC_KEY",
 #'       KeyClass = "SYMMETRIC_KEY"|"ASYMMETRIC_KEY_PAIR"|"PRIVATE_KEY"|"PUBLIC_KEY",
-#'       KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
+#'       KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
 #'       KeyModesOfUse = list(
 #'         Encrypt = TRUE|FALSE,
 #'         Decrypt = TRUE|FALSE,
@@ -205,7 +368,7 @@ paymentcryptographycontrolplane_create_alias <- function(AliasName, KeyArn = NUL
 #'       )
 #'     ),
 #'     KeyCheckValue = "string",
-#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24",
+#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"|"HMAC"|"SHA_1",
 #'     Enabled = TRUE|FALSE,
 #'     Exportable = TRUE|FALSE,
 #'     KeyState = "CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"DELETE_PENDING"|"DELETE_COMPLETE",
@@ -225,7 +388,16 @@ paymentcryptographycontrolplane_create_alias <- function(AliasName, KeyArn = NUL
 #'     DeleteTimestamp = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     DeriveKeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"
+#'     DeriveKeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY",
+#'     MultiRegionKeyType = "PRIMARY"|"REPLICA",
+#'     PrimaryRegion = "string",
+#'     ReplicationStatus = list(
+#'       list(
+#'         Status = "IN_PROGRESS"|"DELETE_IN_PROGRESS"|"FAILED"|"SYNCHRONIZED",
+#'         StatusMessage = "string"
+#'       )
+#'     ),
+#'     UsingDefaultReplicationRegions = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -234,9 +406,9 @@ paymentcryptographycontrolplane_create_alias <- function(AliasName, KeyArn = NUL
 #' ```
 #' svc$create_key(
 #'   KeyAttributes = list(
-#'     KeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_D1_ASYMMETRIC_KEY_FOR_DATA_ENCRYPTION"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_K3_ASYMMETRIC_KEY_FOR_KEY_AGREEMENT"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"|"TR31_K2_TR34_ASYMMETRIC_KEY",
+#'     KeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_D1_ASYMMETRIC_KEY_FOR_DATA_ENCRYPTION"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_K3_ASYMMETRIC_KEY_FOR_KEY_AGREEMENT"|"TR31_M0_ISO_16609_MAC_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"|"TR31_K2_TR34_ASYMMETRIC_KEY",
 #'     KeyClass = "SYMMETRIC_KEY"|"ASYMMETRIC_KEY_PAIR"|"PRIVATE_KEY"|"PUBLIC_KEY",
-#'     KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
+#'     KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
 #'     KeyModesOfUse = list(
 #'       Encrypt = TRUE|FALSE,
 #'       Decrypt = TRUE|FALSE,
@@ -249,7 +421,7 @@ paymentcryptographycontrolplane_create_alias <- function(AliasName, KeyArn = NUL
 #'       NoRestrictions = TRUE|FALSE
 #'     )
 #'   ),
-#'   KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24",
+#'   KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"|"HMAC"|"SHA_1",
 #'   Exportable = TRUE|FALSE,
 #'   Enabled = TRUE|FALSE,
 #'   Tags = list(
@@ -258,7 +430,10 @@ paymentcryptographycontrolplane_create_alias <- function(AliasName, KeyArn = NUL
 #'       Value = "string"
 #'     )
 #'   ),
-#'   DeriveKeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"
+#'   DeriveKeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY",
+#'   ReplicationRegions = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -267,7 +442,7 @@ paymentcryptographycontrolplane_create_alias <- function(AliasName, KeyArn = NUL
 #' @rdname paymentcryptographycontrolplane_create_key
 #'
 #' @aliases paymentcryptographycontrolplane_create_key
-paymentcryptographycontrolplane_create_key <- function(KeyAttributes, KeyCheckValueAlgorithm = NULL, Exportable, Enabled = NULL, Tags = NULL, DeriveKeyUsage = NULL) {
+paymentcryptographycontrolplane_create_key <- function(KeyAttributes, KeyCheckValueAlgorithm = NULL, Exportable, Enabled = NULL, Tags = NULL, DeriveKeyUsage = NULL, ReplicationRegions = NULL) {
   op <- new_operation(
     name = "CreateKey",
     http_method = "POST",
@@ -276,7 +451,7 @@ paymentcryptographycontrolplane_create_key <- function(KeyAttributes, KeyCheckVa
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .paymentcryptographycontrolplane$create_key_input(KeyAttributes = KeyAttributes, KeyCheckValueAlgorithm = KeyCheckValueAlgorithm, Exportable = Exportable, Enabled = Enabled, Tags = Tags, DeriveKeyUsage = DeriveKeyUsage)
+  input <- .paymentcryptographycontrolplane$create_key_input(KeyAttributes = KeyAttributes, KeyCheckValueAlgorithm = KeyCheckValueAlgorithm, Exportable = Exportable, Enabled = Enabled, Tags = Tags, DeriveKeyUsage = DeriveKeyUsage, ReplicationRegions = ReplicationRegions)
   output <- .paymentcryptographycontrolplane$create_key_output()
   config <- get_config()
   svc <- .paymentcryptographycontrolplane$service(config, op)
@@ -403,9 +578,9 @@ paymentcryptographycontrolplane_delete_alias <- function(AliasName) {
 #'   Key = list(
 #'     KeyArn = "string",
 #'     KeyAttributes = list(
-#'       KeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_D1_ASYMMETRIC_KEY_FOR_DATA_ENCRYPTION"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_K3_ASYMMETRIC_KEY_FOR_KEY_AGREEMENT"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"|"TR31_K2_TR34_ASYMMETRIC_KEY",
+#'       KeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_D1_ASYMMETRIC_KEY_FOR_DATA_ENCRYPTION"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_K3_ASYMMETRIC_KEY_FOR_KEY_AGREEMENT"|"TR31_M0_ISO_16609_MAC_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"|"TR31_K2_TR34_ASYMMETRIC_KEY",
 #'       KeyClass = "SYMMETRIC_KEY"|"ASYMMETRIC_KEY_PAIR"|"PRIVATE_KEY"|"PUBLIC_KEY",
-#'       KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
+#'       KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
 #'       KeyModesOfUse = list(
 #'         Encrypt = TRUE|FALSE,
 #'         Decrypt = TRUE|FALSE,
@@ -419,7 +594,7 @@ paymentcryptographycontrolplane_delete_alias <- function(AliasName) {
 #'       )
 #'     ),
 #'     KeyCheckValue = "string",
-#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24",
+#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"|"HMAC"|"SHA_1",
 #'     Enabled = TRUE|FALSE,
 #'     Exportable = TRUE|FALSE,
 #'     KeyState = "CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"DELETE_PENDING"|"DELETE_COMPLETE",
@@ -439,7 +614,16 @@ paymentcryptographycontrolplane_delete_alias <- function(AliasName) {
 #'     DeleteTimestamp = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     DeriveKeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"
+#'     DeriveKeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY",
+#'     MultiRegionKeyType = "PRIMARY"|"REPLICA",
+#'     PrimaryRegion = "string",
+#'     ReplicationStatus = list(
+#'       list(
+#'         Status = "IN_PROGRESS"|"DELETE_IN_PROGRESS"|"FAILED"|"SYNCHRONIZED",
+#'         StatusMessage = "string"
+#'       )
+#'     ),
+#'     UsingDefaultReplicationRegions = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -476,6 +660,173 @@ paymentcryptographycontrolplane_delete_key <- function(KeyIdentifier, DeleteKeyI
 }
 .paymentcryptographycontrolplane$operations$delete_key <- paymentcryptographycontrolplane_delete_key
 
+#' Disables Multi-Region key replication settings for the specified Amazon
+#' Web Services Regions in your Amazon Web Services account, preventing new
+#' keys from being automatically replicated to those regions
+#'
+#' @description
+#' Disables [Multi-Region key
+#' replication](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-multi-region-replication.html)
+#' settings for the specified Amazon Web Services Regions in your Amazon
+#' Web Services account, preventing new keys from being automatically
+#' replicated to those regions.
+#' 
+#' After disabling Multi-Region key replication for specific regions, new
+#' keys created in your account will not be automatically replicated to
+#' those regions. You can still manually add replication to those regions
+#' for individual keys using the
+#' [`add_key_replication_regions`][paymentcryptographycontrolplane_add_key_replication_regions]
+#' operation.
+#' 
+#' This operation does not affect existing keys or their current
+#' replication configuration.
+#' 
+#' **Cross-account use:** This operation can't be used across different
+#' Amazon Web Services accounts.
+#' 
+#' **Related operations:**
+#' 
+#' -   [`enable_default_key_replication_regions`][paymentcryptographycontrolplane_enable_default_key_replication_regions]
+#' 
+#' -   [`get_default_key_replication_regions`][paymentcryptographycontrolplane_get_default_key_replication_regions]
+#'
+#' @usage
+#' paymentcryptographycontrolplane_disable_default_key_replication_regions(
+#'   ReplicationRegions)
+#'
+#' @param ReplicationRegions &#91;required&#93; The list of Amazon Web Services Regions to remove from the account's
+#' default replication regions.
+#' 
+#' New keys created after this operation will not automatically be
+#' replicated to these regions, though existing keys with replication to
+#' these regions will be unaffected.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EnabledReplicationRegions = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disable_default_key_replication_regions(
+#'   ReplicationRegions = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographycontrolplane_dis_def_key_rep_reg
+#'
+#' @aliases paymentcryptographycontrolplane_disable_default_key_replication_regions
+paymentcryptographycontrolplane_disable_default_key_replication_regions <- function(ReplicationRegions) {
+  op <- new_operation(
+    name = "DisableDefaultKeyReplicationRegions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographycontrolplane$disable_default_key_replication_regions_input(ReplicationRegions = ReplicationRegions)
+  output <- .paymentcryptographycontrolplane$disable_default_key_replication_regions_output()
+  config <- get_config()
+  svc <- .paymentcryptographycontrolplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographycontrolplane$operations$disable_default_key_replication_regions <- paymentcryptographycontrolplane_disable_default_key_replication_regions
+
+#' Enables Multi-Region key replication settings for your Amazon Web
+#' Services account, causing new keys to be automatically replicated to the
+#' specified Amazon Web Services Regions when created
+#'
+#' @description
+#' Enables [Multi-Region key
+#' replication](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-multi-region-replication.html)
+#' settings for your Amazon Web Services account, causing new keys to be
+#' automatically replicated to the specified Amazon Web Services Regions
+#' when created.
+#' 
+#' When Multi-Region key replication are enabled, any new keys created in
+#' your account will automatically be replicated to these regions unless
+#' you explicitly override this behavior during key creation. This
+#' simplifies key management for applications that operate across multiple
+#' regions.
+#' 
+#' Existing keys are not affected by this operation - only keys created
+#' after enabling default replication will be automatically replicated.
+#' 
+#' **Cross-account use:** This operation can't be used across different
+#' Amazon Web Services accounts.
+#' 
+#' **Related operations:**
+#' 
+#' -   [`disable_default_key_replication_regions`][paymentcryptographycontrolplane_disable_default_key_replication_regions]
+#' 
+#' -   [`get_default_key_replication_regions`][paymentcryptographycontrolplane_get_default_key_replication_regions]
+#'
+#' @usage
+#' paymentcryptographycontrolplane_enable_default_key_replication_regions(
+#'   ReplicationRegions)
+#'
+#' @param ReplicationRegions &#91;required&#93; The list of Amazon Web Services Regions to enable as default replication
+#' regions for the Amazon Web Services account for [Multi-Region key
+#' replication](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-multi-region-replication.html).
+#' 
+#' New keys created in this account will automatically be replicated to
+#' these regions unless explicitly overridden during key creation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EnabledReplicationRegions = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$enable_default_key_replication_regions(
+#'   ReplicationRegions = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographycontrolplane_ena_def_key_rep_reg
+#'
+#' @aliases paymentcryptographycontrolplane_enable_default_key_replication_regions
+paymentcryptographycontrolplane_enable_default_key_replication_regions <- function(ReplicationRegions) {
+  op <- new_operation(
+    name = "EnableDefaultKeyReplicationRegions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographycontrolplane$enable_default_key_replication_regions_input(ReplicationRegions = ReplicationRegions)
+  output <- .paymentcryptographycontrolplane$enable_default_key_replication_regions_output()
+  config <- get_config()
+  svc <- .paymentcryptographycontrolplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographycontrolplane$operations$enable_default_key_replication_regions <- paymentcryptographycontrolplane_enable_default_key_replication_regions
+
 #' Exports a key from Amazon Web Services Payment Cryptography
 #'
 #' @description
@@ -494,20 +845,22 @@ paymentcryptographycontrolplane_delete_key <- function(KeyIdentifier, DeleteKeyI
 #' For symmetric key exchange, Amazon Web Services Payment Cryptography
 #' uses the ANSI X9 TR-31 norm in accordance with PCI PIN guidelines. And
 #' for asymmetric key exchange, Amazon Web Services Payment Cryptography
-#' supports ANSI X9 TR-34 norm and RSA wrap and unwrap key exchange
-#' mechanism. Asymmetric key exchange methods are typically used to
-#' establish bi-directional trust between the two parties exhanging keys
-#' and are used for initial key exchange such as Key Encryption Key (KEK).
-#' After which you can export working keys using symmetric method to
-#' perform various cryptographic operations within Amazon Web Services
-#' Payment Cryptography.
+#' supports ANSI X9 TR-34 norm, RSA unwrap, and ECDH (Elliptic Curve
+#' Diffie-Hellman) key exchange mechanisms. Asymmetric key exchange methods
+#' are typically used to establish bi-directional trust between the two
+#' parties exhanging keys and are used for initial key exchange such as Key
+#' Encryption Key (KEK). After which you can export working keys using
+#' symmetric method to perform various cryptographic operations within
+#' Amazon Web Services Payment Cryptography.
 #' 
-#' The TR-34 norm is intended for exchanging 3DES keys only and keys are
-#' imported in a WrappedKeyBlock format. Key attributes (such as KeyUsage,
-#' KeyAlgorithm, KeyModesOfUse, Exportability) are contained within the key
-#' block. With RSA wrap and unwrap, you can exchange both 3DES and AES-128
-#' keys. The keys are imported in a WrappedKeyCryptogram format and you
-#' will need to specify the key attributes during import.
+#' PCI requires specific minimum key strength of wrapping keys used to
+#' protect the keys being exchanged electronically. These requirements can
+#' change when PCI standards are revised. The rules specify that wrapping
+#' keys used for transport must be at least as strong as the key being
+#' protected. For more information on recommended key strength of wrapping
+#' keys and key exchange mechanism, see [Importing and exporting
+#' keys](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-importexport.html)
+#' in the *Amazon Web Services Payment Cryptography User Guide*.
 #' 
 #' You can also use
 #' [`export_key`][paymentcryptographycontrolplane_export_key] functionality
@@ -555,7 +908,7 @@ paymentcryptographycontrolplane_delete_key <- function(KeyIdentifier, DeleteKeyI
 #' public key certificate is provided to KRD to verify the signature. The
 #' KRD can import the root certificate into its Hardware Security Module
 #' (HSM), as required. The export token and the associated KDH signing
-#' certificate expires after 7 days.
+#' certificate expires after 30 days.
 #' 
 #' Next the KRD generates a key pair for the the purpose of encrypting the
 #' KDH key and provides the public key cerificate (also known as KRD
@@ -642,8 +995,41 @@ paymentcryptographycontrolplane_delete_key <- function(KeyIdentifier, DeleteKeyI
 #' 
 #' -   `KeyMaterial`: Use `Tr31KeyBlock` parameters.
 #' 
+#' **To export working keys using ECDH**
+#' 
+#' You can also use ECDH key agreement to export working keys in a TR-31
+#' keyblock, where the wrapping key is an ECDH derived key.
+#' 
+#' To initiate a TR-31 key export using ECDH, both sides must create an ECC
+#' key pair with key usage K3 and exchange public key certificates. In
+#' Amazon Web Services Payment Cryptography, you can do this by calling
+#' [`create_key`][paymentcryptographycontrolplane_create_key]. If you have
+#' not already done so, you must import the CA chain that issued the
+#' receiving public key certificate by calling
+#' [`import_key`][paymentcryptographycontrolplane_import_key] with input
+#' `RootCertificatePublicKey` for root CA or `TrustedPublicKey` for
+#' intermediate CA. You can then complete a TR-31 key export by deriving a
+#' shared wrapping key using the service ECC key pair, public certificate
+#' of your ECC key pair outside of Amazon Web Services Payment
+#' Cryptography, and the key derivation parameters including key derivation
+#' function, hash algorithm, derivation data, key algorithm.
+#' 
+#' -   `KeyMaterial`: Use `DiffieHellmanTr31KeyBlock` parameters.
+#' 
+#' -   `PrivateKeyIdentifier`: The `KeyArn` of the ECC key pair created
+#'     within Amazon Web Services Payment Cryptography to derive a shared
+#'     KEK.
+#' 
+#' -   `PublicKeyCertificate`: The public key certificate of the receiving
+#'     ECC key pair in PEM format (base64 encoded) to derive a shared KEK.
+#' 
+#' -   `CertificateAuthorityPublicKeyIdentifier`: The `keyARN` of the CA
+#'     that signed the public key certificate of the receiving ECC key
+#'     pair.
+#' 
 #' When this operation is successful, Amazon Web Services Payment
-#' Cryptography returns the working key or IPEK as a TR-31 WrappedKeyBlock.
+#' Cryptography returns the working key as a TR-31 WrappedKeyBlock, where
+#' the wrapping key is the ECDH derived key.
 #' 
 #' **Cross-account use:** This operation can't be used across different
 #' Amazon Web Services accounts.
@@ -673,7 +1059,7 @@ paymentcryptographycontrolplane_delete_key <- function(KeyIdentifier, DeleteKeyI
 #'     WrappedKeyMaterialFormat = "KEY_CRYPTOGRAM"|"TR31_KEY_BLOCK"|"TR34_KEY_BLOCK",
 #'     KeyMaterial = "string",
 #'     KeyCheckValue = "string",
-#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"
+#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"|"HMAC"|"SHA_1"
 #'   )
 #' )
 #' ```
@@ -707,6 +1093,8 @@ paymentcryptographycontrolplane_delete_key <- function(KeyIdentifier, DeleteKeyI
 #'       CertificateAuthorityPublicKeyIdentifier = "string",
 #'       WrappingKeyCertificate = "string",
 #'       ExportToken = "string",
+#'       SigningKeyIdentifier = "string",
+#'       SigningKeyCertificate = "string",
 #'       KeyBlockFormat = "X9_TR34_2012",
 #'       RandomNonce = "string",
 #'       KeyBlockHeaders = list(
@@ -737,7 +1125,7 @@ paymentcryptographycontrolplane_delete_key <- function(KeyIdentifier, DeleteKeyI
 #'       PrivateKeyIdentifier = "string",
 #'       CertificateAuthorityPublicKeyIdentifier = "string",
 #'       PublicKeyCertificate = "string",
-#'       DeriveKeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
+#'       DeriveKeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224",
 #'       KeyDerivationFunction = "NIST_SP800"|"ANSI_X963",
 #'       KeyDerivationHashAlgorithm = "SHA_256"|"SHA_384"|"SHA_512",
 #'       DerivationData = list(
@@ -761,6 +1149,10 @@ paymentcryptographycontrolplane_delete_key <- function(KeyIdentifier, DeleteKeyI
 #'           "string"
 #'         )
 #'       )
+#'     ),
+#'     As2805KeyCryptogram = list(
+#'       WrappingKeyIdentifier = "string",
+#'       As2805KeyVariant = "TERMINAL_MAJOR_KEY_VARIANT_00"|"PIN_ENCRYPTION_KEY_VARIANT_28"|"MESSAGE_AUTHENTICATION_KEY_VARIANT_24"|"DATA_ENCRYPTION_KEY_VARIANT_22"
 #'     )
 #'   ),
 #'   ExportKeyIdentifier = "string",
@@ -768,7 +1160,7 @@ paymentcryptographycontrolplane_delete_key <- function(KeyIdentifier, DeleteKeyI
 #'     ExportDukptInitialKey = list(
 #'       KeySerialNumber = "string"
 #'     ),
-#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"
+#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"|"HMAC"|"SHA_1"
 #'   )
 #' )
 #' ```
@@ -864,14 +1256,144 @@ paymentcryptographycontrolplane_get_alias <- function(AliasName) {
 }
 .paymentcryptographycontrolplane$operations$get_alias <- paymentcryptographycontrolplane_get_alias
 
-#' Gets the key material for an Amazon Web Services Payment Cryptography
-#' key, including the immutable and mutable data specified when the key was
-#' created
+#' Creates a certificate signing request (CSR) from a key pair
 #'
 #' @description
-#' Gets the key material for an Amazon Web Services Payment Cryptography
-#' key, including the immutable and mutable data specified when the key was
-#' created.
+#' Creates a certificate signing request (CSR) from a key pair.
+#'
+#' @usage
+#' paymentcryptographycontrolplane_get_certificate_signing_request(
+#'   KeyIdentifier, SigningAlgorithm, CertificateSubject)
+#'
+#' @param KeyIdentifier &#91;required&#93; Asymmetric key used for generating the certificate signing request
+#' @param SigningAlgorithm &#91;required&#93; The cryptographic algorithm used to sign your CSR.
+#' @param CertificateSubject &#91;required&#93; The metadata used to create the CSR.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CertificateSigningRequest = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_certificate_signing_request(
+#'   KeyIdentifier = "string",
+#'   SigningAlgorithm = "SHA224"|"SHA256"|"SHA384"|"SHA512",
+#'   CertificateSubject = list(
+#'     CommonName = "string",
+#'     OrganizationUnit = "string",
+#'     Organization = "string",
+#'     City = "string",
+#'     Country = "string",
+#'     StateOrProvince = "string",
+#'     EmailAddress = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographycontrolplane_get_cer_sig_req
+#'
+#' @aliases paymentcryptographycontrolplane_get_certificate_signing_request
+paymentcryptographycontrolplane_get_certificate_signing_request <- function(KeyIdentifier, SigningAlgorithm, CertificateSubject) {
+  op <- new_operation(
+    name = "GetCertificateSigningRequest",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographycontrolplane$get_certificate_signing_request_input(KeyIdentifier = KeyIdentifier, SigningAlgorithm = SigningAlgorithm, CertificateSubject = CertificateSubject)
+  output <- .paymentcryptographycontrolplane$get_certificate_signing_request_output()
+  config <- get_config()
+  svc <- .paymentcryptographycontrolplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographycontrolplane$operations$get_certificate_signing_request <- paymentcryptographycontrolplane_get_certificate_signing_request
+
+#' Retrieves the list of Amazon Web Services Regions where Multi-Region key
+#' replication is currently enabled for your Amazon Web Services account
+#'
+#' @description
+#' Retrieves the list of Amazon Web Services Regions where [Multi-Region
+#' key
+#' replication](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-multi-region-replication.html)
+#' is currently enabled for your Amazon Web Services account.
+#' 
+#' This operation returns the current Multi-Region key replication
+#' configuration. New keys created in your account will be automatically
+#' replicated to these regions unless explicitly overridden during key
+#' creation.
+#' 
+#' **Cross-account use:** This operation can't be used across different
+#' Amazon Web Services accounts.
+#' 
+#' **Related operations:**
+#' 
+#' -   [`enable_default_key_replication_regions`][paymentcryptographycontrolplane_enable_default_key_replication_regions]
+#' 
+#' -   [`disable_default_key_replication_regions`][paymentcryptographycontrolplane_disable_default_key_replication_regions]
+#'
+#' @usage
+#' paymentcryptographycontrolplane_get_default_key_replication_regions()
+#'
+
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EnabledReplicationRegions = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_default_key_replication_regions()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographycontrolplane_get_def_key_rep_reg
+#'
+#' @aliases paymentcryptographycontrolplane_get_default_key_replication_regions
+paymentcryptographycontrolplane_get_default_key_replication_regions <- function() {
+  op <- new_operation(
+    name = "GetDefaultKeyReplicationRegions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographycontrolplane$get_default_key_replication_regions_input()
+  output <- .paymentcryptographycontrolplane$get_default_key_replication_regions_output()
+  config <- get_config()
+  svc <- .paymentcryptographycontrolplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographycontrolplane$operations$get_default_key_replication_regions <- paymentcryptographycontrolplane_get_default_key_replication_regions
+
+#' Gets the key metadata for an Amazon Web Services Payment Cryptography
+#' key, including the immutable and mutable attributes specified when the
+#' key was created
+#'
+#' @description
+#' Gets the key metadata for an Amazon Web Services Payment Cryptography
+#' key, including the immutable and mutable attributes specified when the
+#' key was created. Returns key metadata including attributes, state, and
+#' timestamps, but does not return the actual cryptographic key material.
 #' 
 #' **Cross-account use:** This operation can't be used across different
 #' Amazon Web Services accounts.
@@ -896,9 +1418,9 @@ paymentcryptographycontrolplane_get_alias <- function(AliasName) {
 #'   Key = list(
 #'     KeyArn = "string",
 #'     KeyAttributes = list(
-#'       KeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_D1_ASYMMETRIC_KEY_FOR_DATA_ENCRYPTION"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_K3_ASYMMETRIC_KEY_FOR_KEY_AGREEMENT"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"|"TR31_K2_TR34_ASYMMETRIC_KEY",
+#'       KeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_D1_ASYMMETRIC_KEY_FOR_DATA_ENCRYPTION"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_K3_ASYMMETRIC_KEY_FOR_KEY_AGREEMENT"|"TR31_M0_ISO_16609_MAC_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"|"TR31_K2_TR34_ASYMMETRIC_KEY",
 #'       KeyClass = "SYMMETRIC_KEY"|"ASYMMETRIC_KEY_PAIR"|"PRIVATE_KEY"|"PUBLIC_KEY",
-#'       KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
+#'       KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
 #'       KeyModesOfUse = list(
 #'         Encrypt = TRUE|FALSE,
 #'         Decrypt = TRUE|FALSE,
@@ -912,7 +1434,7 @@ paymentcryptographycontrolplane_get_alias <- function(AliasName) {
 #'       )
 #'     ),
 #'     KeyCheckValue = "string",
-#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24",
+#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"|"HMAC"|"SHA_1",
 #'     Enabled = TRUE|FALSE,
 #'     Exportable = TRUE|FALSE,
 #'     KeyState = "CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"DELETE_PENDING"|"DELETE_COMPLETE",
@@ -932,7 +1454,16 @@ paymentcryptographycontrolplane_get_alias <- function(AliasName) {
 #'     DeleteTimestamp = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     DeriveKeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"
+#'     DeriveKeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY",
+#'     MultiRegionKeyType = "PRIMARY"|"REPLICA",
+#'     PrimaryRegion = "string",
+#'     ReplicationStatus = list(
+#'       list(
+#'         Status = "IN_PROGRESS"|"DELETE_IN_PROGRESS"|"FAILED"|"SYNCHRONIZED",
+#'         StatusMessage = "string"
+#'       )
+#'     ),
+#'     UsingDefaultReplicationRegions = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -979,7 +1510,7 @@ paymentcryptographycontrolplane_get_key <- function(KeyIdentifier) {
 #' the TR-34 key payload. The export token and signing key certificate must
 #' be in place and operational before calling
 #' [`export_key`][paymentcryptographycontrolplane_export_key]. The export
-#' token expires in 7 days. You can use the same export token to export
+#' token expires in 30 days. You can use the same export token to export
 #' multiple keys from your service account.
 #' 
 #' **Cross-account use:** This operation can't be used across different
@@ -1009,7 +1540,7 @@ paymentcryptographycontrolplane_get_key <- function(KeyIdentifier) {
 #' list(
 #'   SigningKeyCertificate = "string",
 #'   SigningKeyCertificateChain = "string",
-#'   SigningKeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
+#'   SigningKeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
 #'   ExportToken = "string",
 #'   ParametersValidUntilTimestamp = as.POSIXct(
 #'     "2015-01-01"
@@ -1021,7 +1552,7 @@ paymentcryptographycontrolplane_get_key <- function(KeyIdentifier) {
 #' ```
 #' svc$get_parameters_for_export(
 #'   KeyMaterialType = "TR34_KEY_BLOCK"|"TR31_KEY_BLOCK"|"ROOT_PUBLIC_KEY_CERTIFICATE"|"TRUSTED_PUBLIC_KEY_CERTIFICATE"|"KEY_CRYPTOGRAM",
-#'   SigningKeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521"
+#'   SigningKeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521"
 #' )
 #' ```
 #'
@@ -1064,7 +1595,7 @@ paymentcryptographycontrolplane_get_parameters_for_export <- function(KeyMateria
 #' token and wrapping key certificate must be in place and operational
 #' before calling
 #' [`import_key`][paymentcryptographycontrolplane_import_key]. The import
-#' token expires in 7 days. You can use the same import token to import
+#' token expires in 30 days. You can use the same import token to import
 #' multiple keys into your service account.
 #' 
 #' **Cross-account use:** This operation can't be used across different
@@ -1099,7 +1630,7 @@ paymentcryptographycontrolplane_get_parameters_for_export <- function(KeyMateria
 #' list(
 #'   WrappingKeyCertificate = "string",
 #'   WrappingKeyCertificateChain = "string",
-#'   WrappingKeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
+#'   WrappingKeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
 #'   ImportToken = "string",
 #'   ParametersValidUntilTimestamp = as.POSIXct(
 #'     "2015-01-01"
@@ -1111,7 +1642,7 @@ paymentcryptographycontrolplane_get_parameters_for_export <- function(KeyMateria
 #' ```
 #' svc$get_parameters_for_import(
 #'   KeyMaterialType = "TR34_KEY_BLOCK"|"TR31_KEY_BLOCK"|"ROOT_PUBLIC_KEY_CERTIFICATE"|"TRUSTED_PUBLIC_KEY_CERTIFICATE"|"KEY_CRYPTOGRAM",
-#'   WrappingKeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521"
+#'   WrappingKeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521"
 #' )
 #' ```
 #'
@@ -1220,20 +1751,23 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #' For symmetric key exchange, Amazon Web Services Payment Cryptography
 #' uses the ANSI X9 TR-31 norm in accordance with PCI PIN guidelines. And
 #' for asymmetric key exchange, Amazon Web Services Payment Cryptography
-#' supports ANSI X9 TR-34 norm and RSA wrap and unwrap key exchange
-#' mechanisms. Asymmetric key exchange methods are typically used to
-#' establish bi-directional trust between the two parties exhanging keys
-#' and are used for initial key exchange such as Key Encryption Key (KEK)
-#' or Zone Master Key (ZMK). After which you can import working keys using
-#' symmetric method to perform various cryptographic operations within
-#' Amazon Web Services Payment Cryptography.
+#' supports ANSI X9 TR-34 norm, RSA unwrap, and ECDH (Elliptic Curve
+#' Diffie-Hellman) key exchange mechanisms. Asymmetric key exchange methods
+#' are typically used to establish bi-directional trust between the two
+#' parties exhanging keys and are used for initial key exchange such as Key
+#' Encryption Key (KEK) or Zone Master Key (ZMK). After which you can
+#' import working keys using symmetric method to perform various
+#' cryptographic operations within Amazon Web Services Payment
+#' Cryptography.
 #' 
-#' The TR-34 norm is intended for exchanging 3DES keys only and keys are
-#' imported in a WrappedKeyBlock format. Key attributes (such as KeyUsage,
-#' KeyAlgorithm, KeyModesOfUse, Exportability) are contained within the key
-#' block. With RSA wrap and unwrap, you can exchange both 3DES and AES-128
-#' keys. The keys are imported in a WrappedKeyCryptogram format and you
-#' will need to specify the key attributes during import.
+#' PCI requires specific minimum key strength of wrapping keys used to
+#' protect the keys being exchanged electronically. These requirements can
+#' change when PCI standards are revised. The rules specify that wrapping
+#' keys used for transport must be at least as strong as the key being
+#' protected. For more information on recommended key strength of wrapping
+#' keys and key exchange mechanism, see [Importing and exporting
+#' keys](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-importexport.html)
+#' in the *Amazon Web Services Payment Cryptography User Guide*.
 #' 
 #' You can also import a *root public key certificate*, used to sign other
 #' public key certificates, or a *trusted public key certificate* under an
@@ -1296,7 +1830,7 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #' The KDH must trust and install the KRD wrapping certificate on its HSM
 #' and use it to encrypt (wrap) the KDH key during TR-34 WrappedKeyBlock
 #' generation. The import token and associated KRD wrapping certificate
-#' expires after 7 days.
+#' expires after 30 days.
 #' 
 #' Next the KDH generates a key pair for the purpose of signing the
 #' encrypted KDH key and provides the public certificate of the signing key
@@ -1339,7 +1873,7 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #' This operation also generates an encryption keypair for the purpose of
 #' key import, signs the key and returns back the wrapping key certificate
 #' in PEM format (base64 encoded) and its root certificate chain. The
-#' import token and associated KRD wrapping certificate expires after 7
+#' import token and associated KRD wrapping certificate expires after 30
 #' days.
 #' 
 #' You must trust and install the wrapping certificate and its certificate
@@ -1368,6 +1902,43 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #'     Services Payment Cryptography uses to decrypt or unwrap the key
 #'     under import.
 #' 
+#' **To import working keys using ECDH**
+#' 
+#' You can also use ECDH key agreement to import working keys as a TR-31
+#' keyblock, where the wrapping key is an ECDH derived key.
+#' 
+#' To initiate a TR-31 key import using ECDH, both sides must create an ECC
+#' key pair with key usage K3 and exchange public key certificates. In
+#' Amazon Web Services Payment Cryptography, you can do this by calling
+#' [`create_key`][paymentcryptographycontrolplane_create_key] and then
+#' [`get_public_key_certificate`][paymentcryptographycontrolplane_get_public_key_certificate]
+#' to retrieve its public key certificate. Next, you can then generate a
+#' TR-31 WrappedKeyBlock using your own ECC key pair, the public
+#' certificate of the service's ECC key pair, and the key derivation
+#' parameters including key derivation function, hash algorithm, derivation
+#' data, and key algorithm. If you have not already done so, you must
+#' import the CA chain that issued the receiving public key certificate by
+#' calling [`import_key`][paymentcryptographycontrolplane_import_key] with
+#' input `RootCertificatePublicKey` for root CA or `TrustedPublicKey` for
+#' intermediate CA. To complete the TR-31 key import, you can use the
+#' following parameters. It is important that the ECDH key derivation
+#' parameters you use should match those used during import to derive the
+#' same shared wrapping key within Amazon Web Services Payment
+#' Cryptography.
+#' 
+#' -   `KeyMaterial`: Use `DiffieHellmanTr31KeyBlock` parameters.
+#' 
+#' -   `PrivateKeyIdentifier`: The `KeyArn` of the ECC key pair created
+#'     within Amazon Web Services Payment Cryptography to derive a shared
+#'     KEK.
+#' 
+#' -   `PublicKeyCertificate`: The public key certificate of the receiving
+#'     ECC key pair in PEM format (base64 encoded) to derive a shared KEK.
+#' 
+#' -   `CertificateAuthorityPublicKeyIdentifier`: The `keyARN` of the CA
+#'     that signed the public key certificate of the receiving ECC key
+#'     pair.
+#' 
 #' **Cross-account use:** This operation can't be used across different
 #' Amazon Web Services accounts.
 #' 
@@ -1379,7 +1950,7 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #'
 #' @usage
 #' paymentcryptographycontrolplane_import_key(KeyMaterial,
-#'   KeyCheckValueAlgorithm, Enabled, Tags)
+#'   KeyCheckValueAlgorithm, Enabled, Tags, ReplicationRegions)
 #'
 #' @param KeyMaterial &#91;required&#93; The key or public key certificate type to use during key material
 #' import, for example TR-34 or RootCertificatePublicKey.
@@ -1412,6 +1983,7 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #' 
 #' Tagging or untagging an Amazon Web Services Payment Cryptography key can
 #' allow or deny permission to the key.
+#' @param ReplicationRegions 
 #'
 #' @return
 #' A list with the following syntax:
@@ -1420,9 +1992,9 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #'   Key = list(
 #'     KeyArn = "string",
 #'     KeyAttributes = list(
-#'       KeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_D1_ASYMMETRIC_KEY_FOR_DATA_ENCRYPTION"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_K3_ASYMMETRIC_KEY_FOR_KEY_AGREEMENT"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"|"TR31_K2_TR34_ASYMMETRIC_KEY",
+#'       KeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_D1_ASYMMETRIC_KEY_FOR_DATA_ENCRYPTION"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_K3_ASYMMETRIC_KEY_FOR_KEY_AGREEMENT"|"TR31_M0_ISO_16609_MAC_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"|"TR31_K2_TR34_ASYMMETRIC_KEY",
 #'       KeyClass = "SYMMETRIC_KEY"|"ASYMMETRIC_KEY_PAIR"|"PRIVATE_KEY"|"PUBLIC_KEY",
-#'       KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
+#'       KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
 #'       KeyModesOfUse = list(
 #'         Encrypt = TRUE|FALSE,
 #'         Decrypt = TRUE|FALSE,
@@ -1436,7 +2008,7 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #'       )
 #'     ),
 #'     KeyCheckValue = "string",
-#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24",
+#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"|"HMAC"|"SHA_1",
 #'     Enabled = TRUE|FALSE,
 #'     Exportable = TRUE|FALSE,
 #'     KeyState = "CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"DELETE_PENDING"|"DELETE_COMPLETE",
@@ -1456,7 +2028,16 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #'     DeleteTimestamp = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     DeriveKeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"
+#'     DeriveKeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY",
+#'     MultiRegionKeyType = "PRIMARY"|"REPLICA",
+#'     PrimaryRegion = "string",
+#'     ReplicationStatus = list(
+#'       list(
+#'         Status = "IN_PROGRESS"|"DELETE_IN_PROGRESS"|"FAILED"|"SYNCHRONIZED",
+#'         StatusMessage = "string"
+#'       )
+#'     ),
+#'     UsingDefaultReplicationRegions = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -1467,9 +2048,9 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #'   KeyMaterial = list(
 #'     RootCertificatePublicKey = list(
 #'       KeyAttributes = list(
-#'         KeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_D1_ASYMMETRIC_KEY_FOR_DATA_ENCRYPTION"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_K3_ASYMMETRIC_KEY_FOR_KEY_AGREEMENT"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"|"TR31_K2_TR34_ASYMMETRIC_KEY",
+#'         KeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_D1_ASYMMETRIC_KEY_FOR_DATA_ENCRYPTION"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_K3_ASYMMETRIC_KEY_FOR_KEY_AGREEMENT"|"TR31_M0_ISO_16609_MAC_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"|"TR31_K2_TR34_ASYMMETRIC_KEY",
 #'         KeyClass = "SYMMETRIC_KEY"|"ASYMMETRIC_KEY_PAIR"|"PRIVATE_KEY"|"PUBLIC_KEY",
-#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
+#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
 #'         KeyModesOfUse = list(
 #'           Encrypt = TRUE|FALSE,
 #'           Decrypt = TRUE|FALSE,
@@ -1486,9 +2067,9 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #'     ),
 #'     TrustedCertificatePublicKey = list(
 #'       KeyAttributes = list(
-#'         KeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_D1_ASYMMETRIC_KEY_FOR_DATA_ENCRYPTION"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_K3_ASYMMETRIC_KEY_FOR_KEY_AGREEMENT"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"|"TR31_K2_TR34_ASYMMETRIC_KEY",
+#'         KeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_D1_ASYMMETRIC_KEY_FOR_DATA_ENCRYPTION"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_K3_ASYMMETRIC_KEY_FOR_KEY_AGREEMENT"|"TR31_M0_ISO_16609_MAC_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"|"TR31_K2_TR34_ASYMMETRIC_KEY",
 #'         KeyClass = "SYMMETRIC_KEY"|"ASYMMETRIC_KEY_PAIR"|"PRIVATE_KEY"|"PUBLIC_KEY",
-#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
+#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
 #'         KeyModesOfUse = list(
 #'           Encrypt = TRUE|FALSE,
 #'           Decrypt = TRUE|FALSE,
@@ -1512,15 +2093,17 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #'       CertificateAuthorityPublicKeyIdentifier = "string",
 #'       SigningKeyCertificate = "string",
 #'       ImportToken = "string",
+#'       WrappingKeyIdentifier = "string",
+#'       WrappingKeyCertificate = "string",
 #'       WrappedKeyBlock = "string",
 #'       KeyBlockFormat = "X9_TR34_2012",
 #'       RandomNonce = "string"
 #'     ),
 #'     KeyCryptogram = list(
 #'       KeyAttributes = list(
-#'         KeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_D1_ASYMMETRIC_KEY_FOR_DATA_ENCRYPTION"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_K3_ASYMMETRIC_KEY_FOR_KEY_AGREEMENT"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"|"TR31_K2_TR34_ASYMMETRIC_KEY",
+#'         KeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_D1_ASYMMETRIC_KEY_FOR_DATA_ENCRYPTION"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_K3_ASYMMETRIC_KEY_FOR_KEY_AGREEMENT"|"TR31_M0_ISO_16609_MAC_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"|"TR31_K2_TR34_ASYMMETRIC_KEY",
 #'         KeyClass = "SYMMETRIC_KEY"|"ASYMMETRIC_KEY_PAIR"|"PRIVATE_KEY"|"PUBLIC_KEY",
-#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
+#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
 #'         KeyModesOfUse = list(
 #'           Encrypt = TRUE|FALSE,
 #'           Decrypt = TRUE|FALSE,
@@ -1542,22 +2125,43 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #'       PrivateKeyIdentifier = "string",
 #'       CertificateAuthorityPublicKeyIdentifier = "string",
 #'       PublicKeyCertificate = "string",
-#'       DeriveKeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
+#'       DeriveKeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224",
 #'       KeyDerivationFunction = "NIST_SP800"|"ANSI_X963",
 #'       KeyDerivationHashAlgorithm = "SHA_256"|"SHA_384"|"SHA_512",
 #'       DerivationData = list(
 #'         SharedInformation = "string"
 #'       ),
 #'       WrappedKeyBlock = "string"
+#'     ),
+#'     As2805KeyCryptogram = list(
+#'       As2805KeyVariant = "TERMINAL_MAJOR_KEY_VARIANT_00"|"PIN_ENCRYPTION_KEY_VARIANT_28"|"MESSAGE_AUTHENTICATION_KEY_VARIANT_24"|"DATA_ENCRYPTION_KEY_VARIANT_22",
+#'       KeyModesOfUse = list(
+#'         Encrypt = TRUE|FALSE,
+#'         Decrypt = TRUE|FALSE,
+#'         Wrap = TRUE|FALSE,
+#'         Unwrap = TRUE|FALSE,
+#'         Generate = TRUE|FALSE,
+#'         Sign = TRUE|FALSE,
+#'         Verify = TRUE|FALSE,
+#'         DeriveKey = TRUE|FALSE,
+#'         NoRestrictions = TRUE|FALSE
+#'       ),
+#'       KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
+#'       Exportable = TRUE|FALSE,
+#'       WrappingKeyIdentifier = "string",
+#'       WrappedKeyCryptogram = "string"
 #'     )
 #'   ),
-#'   KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24",
+#'   KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"|"HMAC"|"SHA_1",
 #'   Enabled = TRUE|FALSE,
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
 #'       Value = "string"
 #'     )
+#'   ),
+#'   ReplicationRegions = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -1567,7 +2171,7 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #' @rdname paymentcryptographycontrolplane_import_key
 #'
 #' @aliases paymentcryptographycontrolplane_import_key
-paymentcryptographycontrolplane_import_key <- function(KeyMaterial, KeyCheckValueAlgorithm = NULL, Enabled = NULL, Tags = NULL) {
+paymentcryptographycontrolplane_import_key <- function(KeyMaterial, KeyCheckValueAlgorithm = NULL, Enabled = NULL, Tags = NULL, ReplicationRegions = NULL) {
   op <- new_operation(
     name = "ImportKey",
     http_method = "POST",
@@ -1576,7 +2180,7 @@ paymentcryptographycontrolplane_import_key <- function(KeyMaterial, KeyCheckValu
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .paymentcryptographycontrolplane$import_key_input(KeyMaterial = KeyMaterial, KeyCheckValueAlgorithm = KeyCheckValueAlgorithm, Enabled = Enabled, Tags = Tags)
+  input <- .paymentcryptographycontrolplane$import_key_input(KeyMaterial = KeyMaterial, KeyCheckValueAlgorithm = KeyCheckValueAlgorithm, Enabled = Enabled, Tags = Tags, ReplicationRegions = ReplicationRegions)
   output <- .paymentcryptographycontrolplane$import_key_output()
   config <- get_config()
   svc <- .paymentcryptographycontrolplane$service(config, op)
@@ -1730,9 +2334,9 @@ paymentcryptographycontrolplane_list_aliases <- function(KeyArn = NULL, NextToke
 #'       KeyArn = "string",
 #'       KeyState = "CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"DELETE_PENDING"|"DELETE_COMPLETE",
 #'       KeyAttributes = list(
-#'         KeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_D1_ASYMMETRIC_KEY_FOR_DATA_ENCRYPTION"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_K3_ASYMMETRIC_KEY_FOR_KEY_AGREEMENT"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"|"TR31_K2_TR34_ASYMMETRIC_KEY",
+#'         KeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_D1_ASYMMETRIC_KEY_FOR_DATA_ENCRYPTION"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_K3_ASYMMETRIC_KEY_FOR_KEY_AGREEMENT"|"TR31_M0_ISO_16609_MAC_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"|"TR31_K2_TR34_ASYMMETRIC_KEY",
 #'         KeyClass = "SYMMETRIC_KEY"|"ASYMMETRIC_KEY_PAIR"|"PRIVATE_KEY"|"PUBLIC_KEY",
-#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
+#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
 #'         KeyModesOfUse = list(
 #'           Encrypt = TRUE|FALSE,
 #'           Decrypt = TRUE|FALSE,
@@ -1747,7 +2351,9 @@ paymentcryptographycontrolplane_list_aliases <- function(KeyArn = NULL, NextToke
 #'       ),
 #'       KeyCheckValue = "string",
 #'       Exportable = TRUE|FALSE,
-#'       Enabled = TRUE|FALSE
+#'       Enabled = TRUE|FALSE,
+#'       MultiRegionKeyType = "PRIMARY"|"REPLICA",
+#'       PrimaryRegion = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1872,6 +2478,140 @@ paymentcryptographycontrolplane_list_tags_for_resource <- function(ResourceArn, 
 }
 .paymentcryptographycontrolplane$operations$list_tags_for_resource <- paymentcryptographycontrolplane_list_tags_for_resource
 
+#' Removes Replication Regions from an existing Amazon Web Services Payment
+#' Cryptography key, disabling the key's availability for cryptographic
+#' operations in the specified Amazon Web Services Regions
+#'
+#' @description
+#' Removes Replication Regions from an existing Amazon Web Services Payment
+#' Cryptography key, disabling the key's availability for cryptographic
+#' operations in the specified Amazon Web Services Regions.
+#' 
+#' When you remove Replication Regions, the key material is securely
+#' deleted from those regions and can no longer be used for cryptographic
+#' operations there. This operation is irreversible for the specified
+#' Amazon Web Services Regions. For more information, see [Multi-Region key
+#' replication](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-multi-region-replication.html).
+#' 
+#' Ensure that no active cryptographic operations or applications depend on
+#' the key in the regions you're removing before performing this operation.
+#' 
+#' **Cross-account use:** This operation can't be used across different
+#' Amazon Web Services accounts.
+#' 
+#' **Related operations:**
+#' 
+#' -   [`add_key_replication_regions`][paymentcryptographycontrolplane_add_key_replication_regions]
+#' 
+#' -   [`disable_default_key_replication_regions`][paymentcryptographycontrolplane_disable_default_key_replication_regions]
+#'
+#' @usage
+#' paymentcryptographycontrolplane_remove_key_replication_regions(
+#'   KeyIdentifier, ReplicationRegions)
+#'
+#' @param KeyIdentifier &#91;required&#93; The key identifier (ARN or alias) of the key from which to remove
+#' replication regions.
+#' 
+#' This key must exist and have replication enabled in the specified
+#' regions.
+#' @param ReplicationRegions &#91;required&#93; The list of Amazon Web Services Regions to remove from the key's
+#' replication configuration.
+#' 
+#' The key will no longer be available for cryptographic operations in
+#' these regions after removal. Ensure no active operations depend on the
+#' key in these regions before removal.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Key = list(
+#'     KeyArn = "string",
+#'     KeyAttributes = list(
+#'       KeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_D1_ASYMMETRIC_KEY_FOR_DATA_ENCRYPTION"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_K3_ASYMMETRIC_KEY_FOR_KEY_AGREEMENT"|"TR31_M0_ISO_16609_MAC_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"|"TR31_K2_TR34_ASYMMETRIC_KEY",
+#'       KeyClass = "SYMMETRIC_KEY"|"ASYMMETRIC_KEY_PAIR"|"PRIVATE_KEY"|"PUBLIC_KEY",
+#'       KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
+#'       KeyModesOfUse = list(
+#'         Encrypt = TRUE|FALSE,
+#'         Decrypt = TRUE|FALSE,
+#'         Wrap = TRUE|FALSE,
+#'         Unwrap = TRUE|FALSE,
+#'         Generate = TRUE|FALSE,
+#'         Sign = TRUE|FALSE,
+#'         Verify = TRUE|FALSE,
+#'         DeriveKey = TRUE|FALSE,
+#'         NoRestrictions = TRUE|FALSE
+#'       )
+#'     ),
+#'     KeyCheckValue = "string",
+#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"|"HMAC"|"SHA_1",
+#'     Enabled = TRUE|FALSE,
+#'     Exportable = TRUE|FALSE,
+#'     KeyState = "CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"DELETE_PENDING"|"DELETE_COMPLETE",
+#'     KeyOrigin = "EXTERNAL"|"AWS_PAYMENT_CRYPTOGRAPHY",
+#'     CreateTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UsageStartTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UsageStopTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DeletePendingTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DeleteTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DeriveKeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY",
+#'     MultiRegionKeyType = "PRIMARY"|"REPLICA",
+#'     PrimaryRegion = "string",
+#'     ReplicationStatus = list(
+#'       list(
+#'         Status = "IN_PROGRESS"|"DELETE_IN_PROGRESS"|"FAILED"|"SYNCHRONIZED",
+#'         StatusMessage = "string"
+#'       )
+#'     ),
+#'     UsingDefaultReplicationRegions = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$remove_key_replication_regions(
+#'   KeyIdentifier = "string",
+#'   ReplicationRegions = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographycontrolplane_rem_key_rep_reg
+#'
+#' @aliases paymentcryptographycontrolplane_remove_key_replication_regions
+paymentcryptographycontrolplane_remove_key_replication_regions <- function(KeyIdentifier, ReplicationRegions) {
+  op <- new_operation(
+    name = "RemoveKeyReplicationRegions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographycontrolplane$remove_key_replication_regions_input(KeyIdentifier = KeyIdentifier, ReplicationRegions = ReplicationRegions)
+  output <- .paymentcryptographycontrolplane$remove_key_replication_regions_output()
+  config <- get_config()
+  svc <- .paymentcryptographycontrolplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographycontrolplane$operations$remove_key_replication_regions <- paymentcryptographycontrolplane_remove_key_replication_regions
+
 #' Cancels a scheduled key deletion during the waiting period
 #'
 #' @description
@@ -1908,9 +2648,9 @@ paymentcryptographycontrolplane_list_tags_for_resource <- function(ResourceArn, 
 #'   Key = list(
 #'     KeyArn = "string",
 #'     KeyAttributes = list(
-#'       KeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_D1_ASYMMETRIC_KEY_FOR_DATA_ENCRYPTION"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_K3_ASYMMETRIC_KEY_FOR_KEY_AGREEMENT"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"|"TR31_K2_TR34_ASYMMETRIC_KEY",
+#'       KeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_D1_ASYMMETRIC_KEY_FOR_DATA_ENCRYPTION"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_K3_ASYMMETRIC_KEY_FOR_KEY_AGREEMENT"|"TR31_M0_ISO_16609_MAC_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"|"TR31_K2_TR34_ASYMMETRIC_KEY",
 #'       KeyClass = "SYMMETRIC_KEY"|"ASYMMETRIC_KEY_PAIR"|"PRIVATE_KEY"|"PUBLIC_KEY",
-#'       KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
+#'       KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
 #'       KeyModesOfUse = list(
 #'         Encrypt = TRUE|FALSE,
 #'         Decrypt = TRUE|FALSE,
@@ -1924,7 +2664,7 @@ paymentcryptographycontrolplane_list_tags_for_resource <- function(ResourceArn, 
 #'       )
 #'     ),
 #'     KeyCheckValue = "string",
-#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24",
+#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"|"HMAC"|"SHA_1",
 #'     Enabled = TRUE|FALSE,
 #'     Exportable = TRUE|FALSE,
 #'     KeyState = "CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"DELETE_PENDING"|"DELETE_COMPLETE",
@@ -1944,7 +2684,16 @@ paymentcryptographycontrolplane_list_tags_for_resource <- function(ResourceArn, 
 #'     DeleteTimestamp = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     DeriveKeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"
+#'     DeriveKeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY",
+#'     MultiRegionKeyType = "PRIMARY"|"REPLICA",
+#'     PrimaryRegion = "string",
+#'     ReplicationStatus = list(
+#'       list(
+#'         Status = "IN_PROGRESS"|"DELETE_IN_PROGRESS"|"FAILED"|"SYNCHRONIZED",
+#'         StatusMessage = "string"
+#'       )
+#'     ),
+#'     UsingDefaultReplicationRegions = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -2008,9 +2757,9 @@ paymentcryptographycontrolplane_restore_key <- function(KeyIdentifier) {
 #'   Key = list(
 #'     KeyArn = "string",
 #'     KeyAttributes = list(
-#'       KeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_D1_ASYMMETRIC_KEY_FOR_DATA_ENCRYPTION"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_K3_ASYMMETRIC_KEY_FOR_KEY_AGREEMENT"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"|"TR31_K2_TR34_ASYMMETRIC_KEY",
+#'       KeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_D1_ASYMMETRIC_KEY_FOR_DATA_ENCRYPTION"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_K3_ASYMMETRIC_KEY_FOR_KEY_AGREEMENT"|"TR31_M0_ISO_16609_MAC_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"|"TR31_K2_TR34_ASYMMETRIC_KEY",
 #'       KeyClass = "SYMMETRIC_KEY"|"ASYMMETRIC_KEY_PAIR"|"PRIVATE_KEY"|"PUBLIC_KEY",
-#'       KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
+#'       KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
 #'       KeyModesOfUse = list(
 #'         Encrypt = TRUE|FALSE,
 #'         Decrypt = TRUE|FALSE,
@@ -2024,7 +2773,7 @@ paymentcryptographycontrolplane_restore_key <- function(KeyIdentifier) {
 #'       )
 #'     ),
 #'     KeyCheckValue = "string",
-#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24",
+#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"|"HMAC"|"SHA_1",
 #'     Enabled = TRUE|FALSE,
 #'     Exportable = TRUE|FALSE,
 #'     KeyState = "CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"DELETE_PENDING"|"DELETE_COMPLETE",
@@ -2044,7 +2793,16 @@ paymentcryptographycontrolplane_restore_key <- function(KeyIdentifier) {
 #'     DeleteTimestamp = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     DeriveKeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"
+#'     DeriveKeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY",
+#'     MultiRegionKeyType = "PRIMARY"|"REPLICA",
+#'     PrimaryRegion = "string",
+#'     ReplicationStatus = list(
+#'       list(
+#'         Status = "IN_PROGRESS"|"DELETE_IN_PROGRESS"|"FAILED"|"SYNCHRONIZED",
+#'         StatusMessage = "string"
+#'       )
+#'     ),
+#'     UsingDefaultReplicationRegions = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -2113,9 +2871,9 @@ paymentcryptographycontrolplane_start_key_usage <- function(KeyIdentifier) {
 #'   Key = list(
 #'     KeyArn = "string",
 #'     KeyAttributes = list(
-#'       KeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_D1_ASYMMETRIC_KEY_FOR_DATA_ENCRYPTION"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_K3_ASYMMETRIC_KEY_FOR_KEY_AGREEMENT"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"|"TR31_K2_TR34_ASYMMETRIC_KEY",
+#'       KeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_D1_ASYMMETRIC_KEY_FOR_DATA_ENCRYPTION"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_K3_ASYMMETRIC_KEY_FOR_KEY_AGREEMENT"|"TR31_M0_ISO_16609_MAC_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"|"TR31_K2_TR34_ASYMMETRIC_KEY",
 #'       KeyClass = "SYMMETRIC_KEY"|"ASYMMETRIC_KEY_PAIR"|"PRIVATE_KEY"|"PUBLIC_KEY",
-#'       KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
+#'       KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521",
 #'       KeyModesOfUse = list(
 #'         Encrypt = TRUE|FALSE,
 #'         Decrypt = TRUE|FALSE,
@@ -2129,7 +2887,7 @@ paymentcryptographycontrolplane_start_key_usage <- function(KeyIdentifier) {
 #'       )
 #'     ),
 #'     KeyCheckValue = "string",
-#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24",
+#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"|"HMAC"|"SHA_1",
 #'     Enabled = TRUE|FALSE,
 #'     Exportable = TRUE|FALSE,
 #'     KeyState = "CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"DELETE_PENDING"|"DELETE_COMPLETE",
@@ -2149,7 +2907,16 @@ paymentcryptographycontrolplane_start_key_usage <- function(KeyIdentifier) {
 #'     DeleteTimestamp = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     DeriveKeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY"
+#'     DeriveKeyUsage = "TR31_B0_BASE_DERIVATION_KEY"|"TR31_C0_CARD_VERIFICATION_KEY"|"TR31_D0_SYMMETRIC_DATA_ENCRYPTION_KEY"|"TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS"|"TR31_E1_EMV_MKEY_CONFIDENTIALITY"|"TR31_E2_EMV_MKEY_INTEGRITY"|"TR31_E4_EMV_MKEY_DYNAMIC_NUMBERS"|"TR31_E5_EMV_MKEY_CARD_PERSONALIZATION"|"TR31_E6_EMV_MKEY_OTHER"|"TR31_K0_KEY_ENCRYPTION_KEY"|"TR31_K1_KEY_BLOCK_PROTECTION_KEY"|"TR31_M3_ISO_9797_3_MAC_KEY"|"TR31_M1_ISO_9797_1_MAC_KEY"|"TR31_M6_ISO_9797_5_CMAC_KEY"|"TR31_M7_HMAC_KEY"|"TR31_P0_PIN_ENCRYPTION_KEY"|"TR31_P1_PIN_GENERATION_KEY"|"TR31_V1_IBM3624_PIN_VERIFICATION_KEY"|"TR31_V2_VISA_PIN_VERIFICATION_KEY",
+#'     MultiRegionKeyType = "PRIMARY"|"REPLICA",
+#'     PrimaryRegion = "string",
+#'     ReplicationStatus = list(
+#'       list(
+#'         Status = "IN_PROGRESS"|"DELETE_IN_PROGRESS"|"FAILED"|"SYNCHRONIZED",
+#'         StatusMessage = "string"
+#'       )
+#'     ),
+#'     UsingDefaultReplicationRegions = TRUE|FALSE
 #'   )
 #' )
 #' ```

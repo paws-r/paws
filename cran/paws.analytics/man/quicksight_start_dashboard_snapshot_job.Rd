@@ -9,7 +9,7 @@ quicksight_start_dashboard_snapshot_job(
   AwsAccountId,
   DashboardId,
   SnapshotJobId,
-  UserConfiguration,
+  UserConfiguration = NULL,
   SnapshotConfiguration
 )
 }
@@ -26,9 +26,14 @@ job with a
 while the job runs. You can reuse this ID for another job 24 hours after
 the current job is completed.}
 
-\item{UserConfiguration}{[required] A structure that contains information about the anonymous users that the
-generated snapshot is for. This API will not return information about
-registered Amazon QuickSight.}
+\item{UserConfiguration}{A structure that contains information about the users that the dashboard
+snapshot is generated for. The users can be either anonymous users or
+registered users. Anonymous users cannot be used together with
+registered users.
+
+When using identity-enhanced session credentials, set the
+UserConfiguration request attribute to null. Otherwise, the request will
+be invalid.}
 
 \item{SnapshotConfiguration}{[required] A structure that describes the configuration of the dashboard snapshot.}
 }

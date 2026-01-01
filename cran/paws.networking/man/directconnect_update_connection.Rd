@@ -2,7 +2,7 @@
 % Please edit documentation in R/directconnect_operations.R
 \name{directconnect_update_connection}
 \alias{directconnect_update_connection}
-\title{Updates the Direct Connect dedicated connection configuration}
+\title{Updates the Direct Connect connection configuration}
 \usage{
 directconnect_update_connection(
   connectionId,
@@ -11,7 +11,7 @@ directconnect_update_connection(
 )
 }
 \arguments{
-\item{connectionId}{[required] The ID of the dedicated connection.
+\item{connectionId}{[required] The ID of the connection.
 
 You can use \code{\link[=directconnect_describe_connections]{describe_connections}}
 to retrieve the connection ID.}
@@ -23,7 +23,7 @@ to retrieve the connection ID.}
 The valid values are \code{no_encrypt}, \code{should_encrypt}, and \code{must_encrypt}.}
 }
 \description{
-Updates the Direct Connect dedicated connection configuration.
+Updates the Direct Connect connection configuration.
 
 See \url{https://www.paws-r-sdk.com/docs/directconnect_update_connection/} for full documentation.
 }

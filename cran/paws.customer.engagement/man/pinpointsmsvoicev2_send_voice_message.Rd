@@ -25,8 +25,8 @@ pinpointsmsvoicev2_send_voice_message(
 \item{OriginationIdentity}{[required] The origination identity to use for the voice call. This can be the
 PhoneNumber, PhoneNumberId, PhoneNumberArn, PoolId, or PoolArn.
 
-If you are using a shared AWS End User Messaging SMS and Voice resource
-then you must use the full Amazon Resource Name(ARN).}
+If you are using a shared End User Messaging SMS resource then you must
+use the full Amazon Resource Name(ARN).}
 
 \item{MessageBody}{The text to convert to a voice message.}
 

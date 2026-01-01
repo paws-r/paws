@@ -110,6 +110,16 @@ resourcegroupstaggingapi_describe_report_creation <- function() {
 #'     and Amazon Web Services Service
 #'     Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #' 
+#' For the list of services whose resources you can tag using the Resource
+#' Groups Tagging API, see [Services that support the Resource Groups
+#' Tagging
+#' API](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/supported-services.html).
+#' If an Amazon Web Services service isn't listed on that page, you might
+#' still be able to tag that service's resources by using that service's
+#' native tagging operations instead of using Resource Groups Tagging API
+#' operations. All tagged resources, whether the tagging used the Resource
+#' Groups Tagging API or not, are returned by the `Get*` operation.
+#' 
 #' You can specify multiple resource types by using a comma separated
 #' array. The array can include up to 100 items. Note that the length
 #' constraint requirement applies to each resource type filter.
@@ -219,6 +229,14 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
 #' parameter value as an input to the next request until you recieve a
 #' `null` value. A null value for `PaginationToken` indicates that there
 #' are no more results waiting to be returned.
+#' 
+#' [`get_resources`][resourcegroupstaggingapi_get_resources] does not
+#' return untagged resources.
+#' 
+#' To find untagged resources in your account, use Amazon Web Services
+#' Resource Explorer with a query that uses `tag:none`. For more
+#' information, see [Search query syntax reference for Resource
+#' Explorer](https://docs.aws.amazon.com/resource-explorer/latest/userguide/using-search-query-syntax.html).
 #'
 #' @usage
 #' resourcegroupstaggingapi_get_resources(PaginationToken, TagFilters,
@@ -234,12 +252,16 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
 #' values optional. A request can include up to 50 keys, and each key can
 #' include up to 20 values.
 #' 
+#' You can't specify both this parameter and the `ResourceArnList`
+#' parameter in the same request. If you do, you get an `Invalid Parameter`
+#' exception.
+#' 
 #' Note the following when deciding how to use TagFilters:
 #' 
 #' -   If you *don't* specify a `TagFilter`, the response includes all
 #'     resources that are currently tagged or ever had a tag. Resources
-#'     that currently don't have tags are shown with an empty tag set, like
-#'     this: `"Tags": []`.
+#'     that were previously tagged, *but do not currently* have tags, are
+#'     shown with an empty tag set, like this: `"Tags": []`.
 #' 
 #' -   If you specify more than one filter in a single request, the
 #'     response returns only those resources that satisfy all filters.
@@ -251,8 +273,8 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
 #' -   If you don't specify a value for a key, the response returns all
 #'     resources that are tagged with that key, with any or no value.
 #' 
-#'     For example, for the following filters: `filter1= {keyA,{value1}}`,
-#'     `filter2={keyB,{value2,value3,value4}}`, `filter3= {keyC}`:
+#'     For example, for the following filters: `filter1= {key1,{value1}}`,
+#'     `filter2={key2,{value2,value3,value4}}`, `filter3= {key3}`:
 #' 
 #'     -   `GetResources({filter1})` returns resources tagged with
 #'         `key1=value1`
@@ -295,15 +317,26 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
 #' 500 items.
 #' @param ResourceTypeFilters Specifies the resource types that you want included in the response. The
 #' format of each resource type is `service[:resourceType]`. For example,
-#' specifying a resource type of `ec2` returns all Amazon EC2 resources
-#' (which includes EC2 instances). Specifying a resource type of
-#' `ec2:instance` returns only EC2 instances.
+#' specifying a service of `ec2` returns all Amazon EC2 resources (which
+#' includes EC2 instances). Specifying a resource type of `ec2:instance`
+#' returns only EC2 instances.
+#' 
+#' You can't specify both this parameter and the `ResourceArnList`
+#' parameter in the same request. If you do, you get an `Invalid Parameter`
+#' exception.
 #' 
 #' The string for each service name and resource type is the same as that
-#' embedded in a resource's Amazon Resource Name (ARN). For the list of
-#' services whose resources you can use in this parameter, see [Services
-#' that support the Resource Groups Tagging
+#' embedded in a resource's Amazon Resource Name (ARN).
+#' 
+#' For the list of services whose resources you can tag using the Resource
+#' Groups Tagging API, see [Services that support the Resource Groups
+#' Tagging
 #' API](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/supported-services.html).
+#' If an Amazon Web Services service isn't listed on that page, you might
+#' still be able to tag that service's resources by using that service's
+#' native tagging operations instead of using Resource Groups Tagging API
+#' operations. All tagged resources, whether the tagging used the Resource
+#' Groups Tagging API or not, are returned by the `Get*` operation.
 #' 
 #' You can specify multiple resource types by using an array. The array can
 #' include up to 100 items. Note that the length constraint requirement
@@ -322,10 +355,18 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
 #' You can use this parameter only if the `IncludeComplianceDetails`
 #' parameter is also set to `true`.
 #' @param ResourceARNList Specifies a list of ARNs of resources for which you want to retrieve tag
-#' data. You can't specify both this parameter and any of the pagination
-#' parameters (`ResourcesPerPage`, `TagsPerPage`, `PaginationToken`) in the
-#' same request. If you specify both, you get an `Invalid Parameter`
+#' data.
+#' 
+#' You can't specify both this parameter and the `ResourceTypeFilters`
+#' parameter in the same request. If you do, you get an `Invalid Parameter`
 #' exception.
+#' 
+#' You can't specify both this parameter and the `TagFilters` parameter in
+#' the same request. If you do, you get an `Invalid Parameter` exception.
+#' 
+#' You can't specify both this parameter and any of the pagination
+#' parameters (`ResourcesPerPage`, `TagsPerPage`, `PaginationToken`) in the
+#' same request. If you do, you get an `Invalid Parameter` exception.
 #' 
 #' If a resource specified by this parameter doesn't exist, it doesn't
 #' generate an error; it simply isn't included in the response.
@@ -545,6 +586,73 @@ resourcegroupstaggingapi_get_tag_values <- function(PaginationToken = NULL, Key)
 }
 .resourcegroupstaggingapi$operations$get_tag_values <- resourcegroupstaggingapi_get_tag_values
 
+#' Lists the required tags for supported resource types in an Amazon Web
+#' Services account
+#'
+#' @description
+#' Lists the required tags for supported resource types in an Amazon Web
+#' Services account.
+#'
+#' @usage
+#' resourcegroupstaggingapi_list_required_tags(NextToken, MaxResults)
+#'
+#' @param NextToken A token for requesting another page of required tags if the `NextToken`
+#' response element indicates that more required tags are available. Use
+#' the value of the returned `NextToken` element in your request until the
+#' token comes back as null. Pass null if this is the first call.
+#' @param MaxResults The maximum number of required tags.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RequiredTags = list(
+#'     list(
+#'       ResourceType = "string",
+#'       CloudFormationResourceTypes = list(
+#'         "string"
+#'       ),
+#'       ReportingTagKeys = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_required_tags(
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname resourcegroupstaggingapi_list_required_tags
+#'
+#' @aliases resourcegroupstaggingapi_list_required_tags
+resourcegroupstaggingapi_list_required_tags <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListRequiredTags",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RequiredTags"),
+    stream_api = FALSE
+  )
+  input <- .resourcegroupstaggingapi$list_required_tags_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .resourcegroupstaggingapi$list_required_tags_output()
+  config <- get_config()
+  svc <- .resourcegroupstaggingapi$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourcegroupstaggingapi$operations$list_required_tags <- resourcegroupstaggingapi_list_required_tags
+
 #' Generates a report that lists all tagged resources in the accounts
 #' across your organization and tells whether each resource is compliant
 #' with the effective tag policy
@@ -557,10 +665,26 @@ resourcegroupstaggingapi_get_tag_values <- function(PaginationToken = NULL, Key)
 #' 
 #' The generated report is saved to the following location:
 #' 
-#' `s3://example-bucket/AwsTagPolicies/o-exampleorgid/YYYY-MM-ddTHH:mm:ssZ/report.csv`
+#' `s3://amzn-s3-demo-bucket/AwsTagPolicies/o-exampleorgid/YYYY-MM-ddTHH:mm:ssZ/report.csv`
+#' 
+#' For more information about evaluating resource compliance with tag
+#' policies, including the required permissions, review [Permissions for
+#' evaluating organization-wide
+#' compliance](https://docs.aws.amazon.com/tag-editor/latest/userguide/tag-policies-orgs.html#tag-policies-permissions-org)
+#' in the *Tagging Amazon Web Services Resources and Tag Editor* user
+#' guide.
 #' 
 #' You can call this operation only from the organization's management
 #' account and from the us-east-1 Region.
+#' 
+#' If the account associated with the identity used to call
+#' [`start_report_creation`][resourcegroupstaggingapi_start_report_creation]
+#' is different from the account that owns the Amazon S3 bucket, there must
+#' be a bucket policy attached to the bucket to provide access. For more
+#' information, review [Amazon S3 bucket policy for report
+#' storage](https://docs.aws.amazon.com/tag-editor/latest/userguide/tag-policies-orgs.html#bucket-policy)
+#' in the *Tagging Amazon Web Services Resources and Tag Editor* user
+#' guide.
 #'
 #' @usage
 #' resourcegroupstaggingapi_start_report_creation(S3Bucket)
@@ -568,10 +692,10 @@ resourcegroupstaggingapi_get_tag_values <- function(PaginationToken = NULL, Key)
 #' @param S3Bucket &#91;required&#93; The name of the Amazon S3 bucket where the report will be stored; for
 #' example:
 #' 
-#' `awsexamplebucket`
+#' `amzn-s3-demo-bucket`
 #' 
 #' For more information on S3 bucket requirements, including an example
-#' bucket policy, see the example S3 bucket policy on this page.
+#' bucket policy, see the example Amazon S3 bucket policy on this page.
 #'
 #' @return
 #' An empty list.
@@ -633,6 +757,17 @@ resourcegroupstaggingapi_start_report_creation <- function(S3Bucket) {
 #'     adding tags. For more information, see the documentation for each
 #'     service.
 #' 
+#' -   When you use the [Amazon Web Services Resource Groups Tagging
+#'     API](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/overview.html)
+#'     to update tags for Amazon Web Services CloudFormation stack sets,
+#'     Amazon Web Services calls the [Amazon Web Services CloudFormation
+#'     `UpdateStack`](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStack.html)
+#'     operation. This operation may initiate additional resource property
+#'     updates in addition to the desired tag updates. To avoid unexpected
+#'     resource updates, Amazon Web Services recommends that you only apply
+#'     or update tags to your CloudFormation stack sets using Amazon Web
+#'     Services CloudFormation.
+#' 
 #' Do not store personally identifiable information (PII) or other
 #' confidential or sensitive information in tags. We use tags to provide
 #' you with billing and administration services. Tags are not intended to
@@ -647,9 +782,15 @@ resourcegroupstaggingapi_start_report_creation <- function(S3Bucket) {
 #' [`tag_resources`][resourcegroupstaggingapi_tag_resources] operation, you
 #' must have both of the following permissions:
 #' 
-#' -   `tag:TagResource`
+#' -   `tag:TagResources`
 #' 
 #' -   `ec2:CreateTags`
+#' 
+#' In addition, some services might have specific requirements for tagging
+#' some types of resources. For example, to tag an Amazon S3 bucket, you
+#' must also have the `s3:GetBucketTagging` permission. If the expected
+#' minimum permissions don't work, check the documentation for that
+#' service's tagging APIs for more information.
 #'
 #' @usage
 #' resourcegroupstaggingapi_tag_resources(ResourceARNList, Tags)
@@ -740,9 +881,15 @@ resourcegroupstaggingapi_tag_resources <- function(ResourceARNList, Tags) {
 #' [`untag_resources`][resourcegroupstaggingapi_untag_resources] operation,
 #' you must have both of the following permissions:
 #' 
-#' -   `tag:UntagResource`
+#' -   `tag:UntagResources`
 #' 
 #' -   `ec2:DeleteTags`
+#' 
+#' In addition, some services might have specific requirements for
+#' untagging some types of resources. For example, to untag Amazon Web
+#' Services Glue Connection, you must also have the `glue:GetConnection`
+#' permission. If the expected minimum permissions don't work, check the
+#' documentation for that service's tagging APIs for more information.
 #'
 #' @usage
 #' resourcegroupstaggingapi_untag_resources(ResourceARNList, TagKeys)

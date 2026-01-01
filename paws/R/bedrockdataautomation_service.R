@@ -83,20 +83,23 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- bedrockdataautomation()
-#' svc$create_blueprint(
+#' svc$copy_blueprint_stage(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=bedrockdataautomation_copy_blueprint_stage]{copy_blueprint_stage} \tab Copies a Blueprint from one stage to another\cr
 #'  \link[=bedrockdataautomation_create_blueprint]{create_blueprint} \tab Creates an Amazon Bedrock Data Automation Blueprint\cr
 #'  \link[=bedrockdataautomation_create_blueprint_version]{create_blueprint_version} \tab Creates a new version of an existing Amazon Bedrock Data Automation Blueprint\cr
 #'  \link[=bedrockdataautomation_create_data_automation_project]{create_data_automation_project} \tab Creates an Amazon Bedrock Data Automation Project\cr
 #'  \link[=bedrockdataautomation_delete_blueprint]{delete_blueprint} \tab Deletes an existing Amazon Bedrock Data Automation Blueprint\cr
 #'  \link[=bedrockdataautomation_delete_data_automation_project]{delete_data_automation_project} \tab Deletes an existing Amazon Bedrock Data Automation Project\cr
 #'  \link[=bedrockdataautomation_get_blueprint]{get_blueprint} \tab Gets an existing Amazon Bedrock Data Automation Blueprint\cr
+#'  \link[=bedrockdataautomation_get_blueprint_optimization_status]{get_blueprint_optimization_status} \tab API used to get blueprint optimization status\cr
 #'  \link[=bedrockdataautomation_get_data_automation_project]{get_data_automation_project} \tab Gets an existing Amazon Bedrock Data Automation Project\cr
+#'  \link[=bedrockdataautomation_invoke_blueprint_optimization_async]{invoke_blueprint_optimization_async} \tab Invoke an async job to perform Blueprint Optimization\cr
 #'  \link[=bedrockdataautomation_list_blueprints]{list_blueprints} \tab Lists all existing Amazon Bedrock Data Automation Blueprints\cr
 #'  \link[=bedrockdataautomation_list_data_automation_projects]{list_data_automation_projects} \tab Lists all existing Amazon Bedrock Data Automation Projects\cr
 #'  \link[=bedrockdataautomation_list_tags_for_resource]{list_tags_for_resource} \tab List tags for an Amazon Bedrock Data Automation resource\cr

@@ -5,8 +5,8 @@
 \title{Creates an alias of an agent that can be used to deploy the agent}
 \usage{
 bedrockagent_create_agent_alias(
-  agentAliasName,
   agentId,
+  agentAliasName,
   clientToken = NULL,
   description = NULL,
   routingConfiguration = NULL,
@@ -14,9 +14,9 @@ bedrockagent_create_agent_alias(
 )
 }
 \arguments{
-\item{agentAliasName}{[required] The name of the alias.}
-
 \item{agentId}{[required] The unique identifier of the agent.}
+
+\item{agentAliasName}{[required] The name of the alias.}
 
 \item{clientToken}{A unique, case-sensitive identifier to ensure that the API request
 completes no more than one time. If this token matches a previous

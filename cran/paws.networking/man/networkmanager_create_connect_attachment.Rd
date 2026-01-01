@@ -9,6 +9,7 @@ networkmanager_create_connect_attachment(
   CoreNetworkId,
   EdgeLocation,
   TransportAttachmentId,
+  RoutingPolicyLabel = NULL,
   Options,
   Tags = NULL,
   ClientToken = NULL
@@ -20,6 +21,9 @@ networkmanager_create_connect_attachment(
 \item{EdgeLocation}{[required] The Region where the edge is located.}
 
 \item{TransportAttachmentId}{[required] The ID of the attachment between the two connections.}
+
+\item{RoutingPolicyLabel}{The routing policy label to apply to the Connect attachment for traffic
+routing decisions.}
 
 \item{Options}{[required] Options for creating an attachment.}
 

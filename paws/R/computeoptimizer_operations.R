@@ -21,8 +21,9 @@ NULL
 #' @param resourceType &#91;required&#93; The target resource type of the recommendation preference to delete.
 #' 
 #' The `Ec2Instance` option encompasses standalone instances and instances
-#' that are part of Auto Scaling groups. The `AutoScalingGroup` option
-#' encompasses only instances that are part of an Auto Scaling group.
+#' that are part of Amazon EC2 Auto Scaling groups. The `AutoScalingGroup`
+#' option encompasses only instances that are part of an Amazon EC2 Auto
+#' Scaling group.
 #' @param scope An object that describes the scope of the recommendation preference to
 #' delete.
 #' 
@@ -40,7 +41,7 @@ NULL
 #' @section Request syntax:
 #' ```
 #' svc$delete_recommendation_preferences(
-#'   resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService"|"License"|"RdsDBInstance"|"Idle",
+#'   resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService"|"License"|"RdsDBInstance"|"AuroraDBClusterStorage"|"Idle",
 #'   scope = list(
 #'     name = "Organization"|"AccountId"|"ResourceArn",
 #'     value = "string"
@@ -124,7 +125,7 @@ computeoptimizer_delete_recommendation_preferences <- function(resourceType, sco
 #'           metadataKey = "string"
 #'         )
 #'       ),
-#'       resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService"|"License"|"RdsDBInstance"|"Idle",
+#'       resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService"|"License"|"RdsDBInstance"|"AuroraDBClusterStorage"|"Idle",
 #'       status = "Queued"|"InProgress"|"Complete"|"Failed",
 #'       creationTimestamp = as.POSIXct(
 #'         "2015-01-01"
@@ -182,10 +183,10 @@ computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, 
 }
 .computeoptimizer$operations$describe_recommendation_export_jobs <- computeoptimizer_describe_recommendation_export_jobs
 
-#' Exports optimization recommendations for Auto Scaling groups
+#' Exports optimization recommendations for Amazon EC2 Auto Scaling groups
 #'
 #' @description
-#' Exports optimization recommendations for Auto Scaling groups.
+#' Exports optimization recommendations for Amazon EC2 Auto Scaling groups.
 #' 
 #' Recommendations are exported in a comma-separated values (.csv) file,
 #' and its metadata in a JavaScript Object Notation (JSON) (.json) file, to
@@ -194,16 +195,16 @@ computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, 
 #' Recommendations](https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html)
 #' in the *Compute Optimizer User Guide*.
 #' 
-#' You can have only one Auto Scaling group export job in progress per
-#' Amazon Web Services Region.
+#' You can have only one Amazon EC2 Auto Scaling group export job in
+#' progress per Amazon Web Services Region.
 #'
 #' @usage
 #' computeoptimizer_export_auto_scaling_group_recommendations(accountIds,
 #'   filters, fieldsToExport, s3DestinationConfig, fileFormat,
 #'   includeMemberAccounts, recommendationPreferences)
 #'
-#' @param accountIds The IDs of the Amazon Web Services accounts for which to export Auto
-#' Scaling group recommendations.
+#' @param accountIds The IDs of the Amazon Web Services accounts for which to export Amazon
+#' EC2 Auto Scaling group recommendations.
 #' 
 #' If your account is the management account of an organization, use this
 #' parameter to specify the member account for which you want to export
@@ -217,7 +218,7 @@ computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, 
 #' 
 #' You can specify multiple account IDs per request.
 #' @param filters An array of objects to specify a filter that exports a more specific set
-#' of Auto Scaling group recommendations.
+#' of Amazon EC2 Auto Scaling group recommendations.
 #' @param fieldsToExport The recommendations data to include in the export file. For more
 #' information about the fields that can be exported, see [Exported
 #' files](https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html#exported-files)
@@ -257,8 +258,8 @@ computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, 
 #' 
 #' Recommendations for member accounts are not included in the export if
 #' this parameter, or the account IDs parameter, is omitted.
-#' @param recommendationPreferences An object to specify the preferences for the Auto Scaling group
-#' recommendations to export.
+#' @param recommendationPreferences An object to specify the preferences for the Amazon EC2 Auto Scaling
+#' group recommendations to export.
 #'
 #' @return
 #' A list with the following syntax:
@@ -808,7 +809,7 @@ computeoptimizer_export_ecs_service_recommendations <- function(accountIds = NUL
 #'     )
 #'   ),
 #'   fieldsToExport = list(
-#'     "AccountId"|"ResourceArn"|"ResourceId"|"ResourceType"|"LastRefreshTimestamp"|"LookbackPeriodInDays"|"SavingsOpportunity"|"SavingsOpportunityAfterDiscount"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"UtilizationMetricsNetworkOutBytesPerSecondMaximum"|"UtilizationMetricsNetworkInBytesPerSecondMaximum"|"UtilizationMetricsDatabaseConnectionsMaximum"|"UtilizationMetricsEBSVolumeReadIOPSMaximum"|"UtilizationMetricsEBSVolumeWriteIOPSMaximum"|"UtilizationMetricsVolumeReadOpsPerSecondMaximum"|"UtilizationMetricsVolumeWriteOpsPerSecondMaximum"|"Finding"|"FindingDescription"|"Tags"
+#'     "AccountId"|"ResourceArn"|"ResourceId"|"ResourceType"|"LastRefreshTimestamp"|"LookbackPeriodInDays"|"SavingsOpportunity"|"SavingsOpportunityAfterDiscount"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"UtilizationMetricsNetworkOutBytesPerSecondMaximum"|"UtilizationMetricsNetworkInBytesPerSecondMaximum"|"UtilizationMetricsDatabaseConnectionsMaximum"|"UtilizationMetricsEBSVolumeReadIOPSMaximum"|"UtilizationMetricsEBSVolumeWriteIOPSMaximum"|"UtilizationMetricsVolumeReadOpsPerSecondMaximum"|"UtilizationMetricsVolumeWriteOpsPerSecondMaximum"|"UtilizationMetricsActiveConnectionCountMaximum"|"UtilizationMetricsPacketsInFromSourceMaximum"|"UtilizationMetricsPacketsInFromDestinationMaximum"|"Finding"|"FindingDescription"|"Tags"
 #'   ),
 #'   s3DestinationConfig = list(
 #'     bucket = "string",
@@ -1093,12 +1094,12 @@ computeoptimizer_export_license_recommendations <- function(accountIds = NULL, f
 }
 .computeoptimizer$operations$export_license_recommendations <- computeoptimizer_export_license_recommendations
 
-#' Export optimization recommendations for your Amazon Relational Database
-#' Service (Amazon RDS)
+#' Export optimization recommendations for your Amazon Aurora and Amazon
+#' Relational Database Service (Amazon RDS) databases
 #'
 #' @description
-#' Export optimization recommendations for your Amazon Relational Database
-#' Service (Amazon RDS).
+#' Export optimization recommendations for your Amazon Aurora and Amazon
+#' Relational Database Service (Amazon RDS) databases.
 #' 
 #' Recommendations are exported in a comma-separated values (CSV) file, and
 #' its metadata in a JavaScript Object Notation (JSON) file, to an existing
@@ -1107,16 +1108,16 @@ computeoptimizer_export_license_recommendations <- function(accountIds = NULL, f
 #' Recommendations](https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html)
 #' in the *Compute Optimizer User Guide*.
 #' 
-#' You can have only one Amazon RDS export job in progress per Amazon Web
-#' Services Region.
+#' You can have only one Amazon Aurora or RDS export job in progress per
+#' Amazon Web Services Region.
 #'
 #' @usage
 #' computeoptimizer_export_rds_database_recommendations(accountIds,
 #'   filters, fieldsToExport, s3DestinationConfig, fileFormat,
 #'   includeMemberAccounts, recommendationPreferences)
 #'
-#' @param accountIds The Amazon Web Services account IDs for the export Amazon RDS
-#' recommendations.
+#' @param accountIds The Amazon Web Services account IDs for the export Amazon Aurora and RDS
+#' database recommendations.
 #' 
 #' If your account is the management account or the delegated administrator
 #' of an organization, use this parameter to specify the member account you
@@ -1130,7 +1131,7 @@ computeoptimizer_export_license_recommendations <- function(accountIds = NULL, f
 #' 
 #' You can specify multiple account IDs per request.
 #' @param filters An array of objects to specify a filter that exports a more specific set
-#' of Amazon RDS recommendations.
+#' of Amazon Aurora and RDS recommendations.
 #' @param fieldsToExport The recommendations data to include in the export file. For more
 #' information about the fields that can be exported, see [Exported
 #' files](https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html#exported-files)
@@ -1186,7 +1187,7 @@ computeoptimizer_export_license_recommendations <- function(accountIds = NULL, f
 #'     )
 #'   ),
 #'   fieldsToExport = list(
-#'     "ResourceArn"|"AccountId"|"Engine"|"EngineVersion"|"Idle"|"MultiAZDBInstance"|"CurrentDBInstanceClass"|"CurrentStorageConfigurationStorageType"|"CurrentStorageConfigurationAllocatedStorage"|"CurrentStorageConfigurationMaxAllocatedStorage"|"CurrentStorageConfigurationIOPS"|"CurrentStorageConfigurationStorageThroughput"|"CurrentInstanceOnDemandHourlyPrice"|"CurrentStorageOnDemandMonthlyPrice"|"LookbackPeriodInDays"|"CurrentInstancePerformanceRisk"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"UtilizationMetricsEBSVolumeStorageSpaceUtilizationMaximum"|"UtilizationMetricsNetworkReceiveThroughputMaximum"|"UtilizationMetricsNetworkTransmitThroughputMaximum"|"UtilizationMetricsEBSVolumeReadIOPSMaximum"|"UtilizationMetricsEBSVolumeWriteIOPSMaximum"|"UtilizationMetricsEBSVolumeReadThroughputMaximum"|"UtilizationMetricsEBSVolumeWriteThroughputMaximum"|"UtilizationMetricsDatabaseConnectionsMaximum"|"UtilizationMetricsStorageNetworkReceiveThroughputMaximum"|"UtilizationMetricsStorageNetworkTransmitThroughputMaximum"|"UtilizationMetricsAuroraMemoryHealthStateMaximum"|"UtilizationMetricsAuroraMemoryNumDeclinedSqlTotalMaximum"|"UtilizationMetricsAuroraMemoryNumKillConnTotalMaximum"|"UtilizationMetricsAuroraMemoryNumKillQueryTotalMaximum"|"UtilizationMetricsReadIOPSEphemeralStorageMaximum"|"UtilizationMetricsWriteIOPSEphemeralStorageMaximum"|"InstanceFinding"|"InstanceFindingReasonCodes"|"StorageFinding"|"StorageFindingReasonCodes"|"InstanceRecommendationOptionsDBInstanceClass"|"InstanceRecommendationOptionsRank"|"InstanceRecommendationOptionsPerformanceRisk"|"InstanceRecommendationOptionsProjectedUtilizationMetricsCpuMaximum"|"StorageRecommendationOptionsStorageType"|"StorageRecommendationOptionsAllocatedStorage"|"StorageRecommendationOptionsMaxAllocatedStorage"|"StorageRecommendationOptionsIOPS"|"StorageRecommendationOptionsStorageThroughput"|"StorageRecommendationOptionsRank"|"InstanceRecommendationOptionsInstanceOnDemandHourlyPrice"|"InstanceRecommendationOptionsSavingsOpportunityPercentage"|"InstanceRecommendationOptionsEstimatedMonthlySavingsCurrency"|"InstanceRecommendationOptionsEstimatedMonthlySavingsValue"|"InstanceRecommendationOptionsSavingsOpportunityAfterDiscountsPercentage"|"InstanceRecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts"|"InstanceRecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"|"StorageRecommendationOptionsOnDemandMonthlyPrice"|"StorageRecommendationOptionsSavingsOpportunityPercentage"|"StorageRecommendationOptionsEstimatedMonthlySavingsCurrency"|"StorageRecommendationOptionsEstimatedMonthlySavingsValue"|"StorageRecommendationOptionsSavingsOpportunityAfterDiscountsPercentage"|"StorageRecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts"|"StorageRecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"|"EffectiveRecommendationPreferencesCpuVendorArchitectures"|"EffectiveRecommendationPreferencesEnhancedInfrastructureMetrics"|"EffectiveRecommendationPreferencesLookBackPeriod"|"EffectiveRecommendationPreferencesSavingsEstimationMode"|"LastRefreshTimestamp"|"Tags"|"DBClusterIdentifier"|"PromotionTier"
+#'     "ResourceArn"|"AccountId"|"Engine"|"EngineVersion"|"Idle"|"MultiAZDBInstance"|"ClusterWriter"|"CurrentDBInstanceClass"|"CurrentStorageConfigurationStorageType"|"CurrentStorageConfigurationAllocatedStorage"|"CurrentStorageConfigurationMaxAllocatedStorage"|"CurrentStorageConfigurationIOPS"|"CurrentStorageConfigurationStorageThroughput"|"CurrentStorageEstimatedMonthlyVolumeIOPsCostVariation"|"CurrentInstanceOnDemandHourlyPrice"|"CurrentStorageOnDemandMonthlyPrice"|"LookbackPeriodInDays"|"CurrentStorageEstimatedClusterInstanceOnDemandMonthlyCost"|"CurrentStorageEstimatedClusterStorageOnDemandMonthlyCost"|"CurrentStorageEstimatedClusterStorageIOOnDemandMonthlyCost"|"CurrentInstancePerformanceRisk"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"UtilizationMetricsEBSVolumeStorageSpaceUtilizationMaximum"|"UtilizationMetricsNetworkReceiveThroughputMaximum"|"UtilizationMetricsNetworkTransmitThroughputMaximum"|"UtilizationMetricsEBSVolumeReadIOPSMaximum"|"UtilizationMetricsEBSVolumeWriteIOPSMaximum"|"UtilizationMetricsEBSVolumeReadThroughputMaximum"|"UtilizationMetricsEBSVolumeWriteThroughputMaximum"|"UtilizationMetricsDatabaseConnectionsMaximum"|"UtilizationMetricsStorageNetworkReceiveThroughputMaximum"|"UtilizationMetricsStorageNetworkTransmitThroughputMaximum"|"UtilizationMetricsAuroraMemoryHealthStateMaximum"|"UtilizationMetricsAuroraMemoryNumDeclinedSqlTotalMaximum"|"UtilizationMetricsAuroraMemoryNumKillConnTotalMaximum"|"UtilizationMetricsAuroraMemoryNumKillQueryTotalMaximum"|"UtilizationMetricsReadIOPSEphemeralStorageMaximum"|"UtilizationMetricsWriteIOPSEphemeralStorageMaximum"|"UtilizationMetricsVolumeBytesUsedAverage"|"UtilizationMetricsVolumeReadIOPsAverage"|"UtilizationMetricsVolumeWriteIOPsAverage"|"InstanceFinding"|"InstanceFindingReasonCodes"|"StorageFinding"|"StorageFindingReasonCodes"|"InstanceRecommendationOptionsDBInstanceClass"|"InstanceRecommendationOptionsRank"|"InstanceRecommendationOptionsPerformanceRisk"|"InstanceRecommendationOptionsProjectedUtilizationMetricsCpuMaximum"|"StorageRecommendationOptionsStorageType"|"StorageRecommendationOptionsAllocatedStorage"|"StorageRecommendationOptionsMaxAllocatedStorage"|"StorageRecommendationOptionsIOPS"|"StorageRecommendationOptionsStorageThroughput"|"StorageRecommendationOptionsRank"|"StorageRecommendationOptionsEstimatedMonthlyVolumeIOPsCostVariation"|"InstanceRecommendationOptionsInstanceOnDemandHourlyPrice"|"InstanceRecommendationOptionsSavingsOpportunityPercentage"|"InstanceRecommendationOptionsEstimatedMonthlySavingsCurrency"|"InstanceRecommendationOptionsEstimatedMonthlySavingsValue"|"InstanceRecommendationOptionsSavingsOpportunityAfterDiscountsPercentage"|"InstanceRecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts"|"InstanceRecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"|"StorageRecommendationOptionsOnDemandMonthlyPrice"|"StorageRecommendationOptionsEstimatedClusterInstanceOnDemandMonthlyCost"|"StorageRecommendationOptionsEstimatedClusterStorageOnDemandMonthlyCost"|"StorageRecommendationOptionsEstimatedClusterStorageIOOnDemandMonthlyCost"|"StorageRecommendationOptionsSavingsOpportunityPercentage"|"StorageRecommendationOptionsEstimatedMonthlySavingsCurrency"|"StorageRecommendationOptionsEstimatedMonthlySavingsValue"|"StorageRecommendationOptionsSavingsOpportunityAfterDiscountsPercentage"|"StorageRecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts"|"StorageRecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"|"EffectiveRecommendationPreferencesCpuVendorArchitectures"|"EffectiveRecommendationPreferencesEnhancedInfrastructureMetrics"|"EffectiveRecommendationPreferencesLookBackPeriod"|"EffectiveRecommendationPreferencesSavingsEstimationMode"|"LastRefreshTimestamp"|"Tags"|"DBClusterIdentifier"|"PromotionTier"
 #'   ),
 #'   s3DestinationConfig = list(
 #'     bucket = "string",
@@ -1226,10 +1227,10 @@ computeoptimizer_export_rds_database_recommendations <- function(accountIds = NU
 }
 .computeoptimizer$operations$export_rds_database_recommendations <- computeoptimizer_export_rds_database_recommendations
 
-#' Returns Auto Scaling group recommendations
+#' Returns Amazon EC2 Auto Scaling group recommendations
 #'
 #' @description
-#' Returns Auto Scaling group recommendations.
+#' Returns Amazon EC2 Auto Scaling group recommendations.
 #' 
 #' Compute Optimizer generates recommendations for Amazon EC2 Auto Scaling
 #' groups that meet a specific set of requirements. For more information,
@@ -1242,27 +1243,27 @@ computeoptimizer_export_rds_database_recommendations <- function(accountIds = NU
 #'   autoScalingGroupArns, nextToken, maxResults, filters,
 #'   recommendationPreferences)
 #'
-#' @param accountIds The ID of the Amazon Web Services account for which to return Auto
-#' Scaling group recommendations.
+#' @param accountIds The ID of the Amazon Web Services account for which to return Amazon EC2
+#' Auto Scaling group recommendations.
 #' 
 #' If your account is the management account of an organization, use this
 #' parameter to specify the member account for which you want to return
-#' Auto Scaling group recommendations.
+#' Amazon EC2 Auto Scaling group recommendations.
 #' 
 #' Only one account ID can be specified per request.
-#' @param autoScalingGroupArns The Amazon Resource Name (ARN) of the Auto Scaling groups for which to
-#' return recommendations.
-#' @param nextToken The token to advance to the next page of Auto Scaling group
+#' @param autoScalingGroupArns The Amazon Resource Name (ARN) of the Amazon EC2 Auto Scaling groups for
+#' which to return recommendations.
+#' @param nextToken The token to advance to the next page of Amazon EC2 Auto Scaling group
 #' recommendations.
-#' @param maxResults The maximum number of Auto Scaling group recommendations to return with
-#' a single request.
+#' @param maxResults The maximum number of Amazon EC2 Auto Scaling group recommendations to
+#' return with a single request.
 #' 
 #' To retrieve the remaining results, make another request with the
 #' returned `nextToken` value.
 #' @param filters An array of objects to specify a filter that returns a more specific
-#' list of Auto Scaling group recommendations.
-#' @param recommendationPreferences An object to specify the preferences for the Auto Scaling group
-#' recommendations to return in the response.
+#' list of Amazon EC2 Auto Scaling group recommendations.
+#' @param recommendationPreferences An object to specify the preferences for the Amazon EC2 Auto Scaling
+#' group recommendations to return in the response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1723,7 +1724,7 @@ computeoptimizer_get_ebs_volume_recommendations <- function(volumeArns = NULL, n
 #'       recommendationSources = list(
 #'         list(
 #'           recommendationSourceArn = "string",
-#'           recommendationSourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"EcsService"|"License"|"RdsDBInstance"|"RdsDBInstanceStorage"
+#'           recommendationSourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"EcsService"|"License"|"RdsDBInstance"|"RdsDBInstanceStorage"|"AuroraDBClusterStorage"|"NatGateway"
 #'         )
 #'       ),
 #'       lastRefreshTimestamp = as.POSIXct(
@@ -2241,8 +2242,8 @@ computeoptimizer_get_ecs_service_recommendations <- function(serviceArns = NULL,
 #' computeoptimizer_get_effective_recommendation_preferences(resourceArn)
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which to confirm
-#' effective recommendation preferences. Only EC2 instance and Auto Scaling
-#' group ARNs are currently supported.
+#' effective recommendation preferences. Only EC2 instance and Amazon EC2
+#' Auto Scaling group ARNs are currently supported.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2496,9 +2497,9 @@ computeoptimizer_get_enrollment_statuses_for_organization <- function(filters = 
 #'     list(
 #'       resourceArn = "string",
 #'       resourceId = "string",
-#'       resourceType = "EC2Instance"|"AutoScalingGroup"|"EBSVolume"|"ECSService"|"RDSDBInstance",
+#'       resourceType = "EC2Instance"|"AutoScalingGroup"|"EBSVolume"|"ECSService"|"RDSDBInstance"|"NatGateway",
 #'       accountId = "string",
-#'       finding = "Idle"|"Unattached",
+#'       finding = "Idle"|"Unattached"|"Unused",
 #'       findingDescription = "string",
 #'       savingsOpportunity = list(
 #'         savingsOpportunityPercentage = 123.0,
@@ -2516,7 +2517,7 @@ computeoptimizer_get_enrollment_statuses_for_organization <- function(filters = 
 #'       ),
 #'       utilizationMetrics = list(
 #'         list(
-#'           name = "CPU"|"Memory"|"NetworkOutBytesPerSecond"|"NetworkInBytesPerSecond"|"DatabaseConnections"|"EBSVolumeReadIOPS"|"EBSVolumeWriteIOPS"|"VolumeReadOpsPerSecond"|"VolumeWriteOpsPerSecond",
+#'           name = "CPU"|"Memory"|"NetworkOutBytesPerSecond"|"NetworkInBytesPerSecond"|"DatabaseConnections"|"EBSVolumeReadIOPS"|"EBSVolumeWriteIOPS"|"VolumeReadOpsPerSecond"|"VolumeWriteOpsPerSecond"|"ActiveConnectionCount"|"PacketsInFromSource"|"PacketsInFromDestination",
 #'           statistic = "Maximum"|"Average",
 #'           value = 123.0
 #'         )
@@ -2538,7 +2539,7 @@ computeoptimizer_get_enrollment_statuses_for_organization <- function(filters = 
 #'       identifier = "string",
 #'       code = "string",
 #'       message = "string",
-#'       resourceType = "EC2Instance"|"AutoScalingGroup"|"EBSVolume"|"ECSService"|"RDSDBInstance"
+#'       resourceType = "EC2Instance"|"AutoScalingGroup"|"EBSVolume"|"ECSService"|"RDSDBInstance"|"NatGateway"
 #'     )
 #'   )
 #' )
@@ -2904,17 +2905,18 @@ computeoptimizer_get_license_recommendations <- function(resourceArns = NULL, ne
 }
 .computeoptimizer$operations$get_license_recommendations <- computeoptimizer_get_license_recommendations
 
-#' Returns the projected metrics of Amazon RDS recommendations
+#' Returns the projected metrics of Aurora and RDS database recommendations
 #'
 #' @description
-#' Returns the projected metrics of Amazon RDS recommendations.
+#' Returns the projected metrics of Aurora and RDS database
+#' recommendations.
 #'
 #' @usage
 #' computeoptimizer_get_rds_database_recommendation_projected_metrics(
 #'   resourceArn, stat, period, startTime, endTime,
 #'   recommendationPreferences)
 #'
-#' @param resourceArn &#91;required&#93; The ARN that identifies the Amazon RDS.
+#' @param resourceArn &#91;required&#93; The ARN that identifies the Amazon Aurora or RDS database.
 #' 
 #' The following is the format of the ARN:
 #' 
@@ -2935,7 +2937,7 @@ computeoptimizer_get_license_recommendations <- function(resourceArns = NULL, ne
 #'       rank = 123,
 #'       projectedMetrics = list(
 #'         list(
-#'           name = "CPU"|"Memory"|"EBSVolumeStorageSpaceUtilization"|"NetworkReceiveThroughput"|"NetworkTransmitThroughput"|"EBSVolumeReadIOPS"|"EBSVolumeWriteIOPS"|"EBSVolumeReadThroughput"|"EBSVolumeWriteThroughput"|"DatabaseConnections"|"StorageNetworkReceiveThroughput"|"StorageNetworkTransmitThroughput"|"AuroraMemoryHealthState"|"AuroraMemoryNumDeclinedSql"|"AuroraMemoryNumKillConnTotal"|"AuroraMemoryNumKillQueryTotal"|"ReadIOPSEphemeralStorage"|"WriteIOPSEphemeralStorage",
+#'           name = "CPU"|"Memory"|"EBSVolumeStorageSpaceUtilization"|"NetworkReceiveThroughput"|"NetworkTransmitThroughput"|"EBSVolumeReadIOPS"|"EBSVolumeWriteIOPS"|"EBSVolumeReadThroughput"|"EBSVolumeWriteThroughput"|"DatabaseConnections"|"StorageNetworkReceiveThroughput"|"StorageNetworkTransmitThroughput"|"AuroraMemoryHealthState"|"AuroraMemoryNumDeclinedSql"|"AuroraMemoryNumKillConnTotal"|"AuroraMemoryNumKillQueryTotal"|"ReadIOPSEphemeralStorage"|"WriteIOPSEphemeralStorage"|"VolumeReadIOPs"|"VolumeBytesUsed"|"VolumeWriteIOPs",
 #'           timestamps = list(
 #'             as.POSIXct(
 #'               "2015-01-01"
@@ -2995,14 +2997,14 @@ computeoptimizer_get_rds_database_recommendation_projected_metrics <- function(r
 }
 .computeoptimizer$operations$get_rds_database_recommendation_projected_metrics <- computeoptimizer_get_rds_database_recommendation_projected_metrics
 
-#' Returns Amazon RDS recommendations
+#' Returns Amazon Aurora and RDS database recommendations
 #'
 #' @description
-#' Returns Amazon RDS recommendations.
+#' Returns Amazon Aurora and RDS database recommendations.
 #' 
-#' Compute Optimizer generates recommendations for Amazon RDS that meet a
-#' specific set of requirements. For more information, see the [Supported
-#' resources and
+#' Compute Optimizer generates recommendations for Amazon Aurora and RDS
+#' databases that meet a specific set of requirements. For more
+#' information, see the [Supported resources and
 #' requirements](https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html)
 #' in the *Compute Optimizer User Guide*.
 #'
@@ -3010,7 +3012,7 @@ computeoptimizer_get_rds_database_recommendation_projected_metrics <- function(r
 #' computeoptimizer_get_rds_database_recommendations(resourceArns,
 #'   nextToken, maxResults, filters, accountIds, recommendationPreferences)
 #'
-#' @param resourceArns The ARN that identifies the Amazon RDS.
+#' @param resourceArns The ARN that identifies the Amazon Aurora or RDS database.
 #' 
 #' The following is the format of the ARN:
 #' 
@@ -3019,20 +3021,21 @@ computeoptimizer_get_rds_database_recommendation_projected_metrics <- function(r
 #' The following is the format of a DB Cluster ARN:
 #' 
 #' `arn:aws:rds:{region}:{accountId}:cluster:{resourceName}`
-#' @param nextToken The token to advance to the next page of Amazon RDS recommendations.
-#' @param maxResults The maximum number of Amazon RDS recommendations to return with a single
-#' request.
+#' @param nextToken The token to advance to the next page of Amazon Aurora and RDS database
+#' recommendations.
+#' @param maxResults The maximum number of Amazon Aurora and RDS database recommendations to
+#' return with a single request.
 #' 
 #' To retrieve the remaining results, make another request with the
 #' returned `nextToken` value.
 #' @param filters An array of objects to specify a filter that returns a more specific
-#' list of Amazon RDS recommendations.
-#' @param accountIds Return the Amazon RDS recommendations to the specified Amazon Web
-#' Services account IDs.
+#' list of Amazon Aurora and RDS database recommendations.
+#' @param accountIds Return the Amazon Aurora and RDS database recommendations to the
+#' specified Amazon Web Services account IDs.
 #' 
 #' If your account is the management account or the delegated administrator
-#' of an organization, use this parameter to return the Amazon RDS
-#' recommendations to specific member accounts.
+#' of an organization, use this parameter to return the Amazon Aurora and
+#' RDS database recommendations to specific member accounts.
 #' 
 #' You can only specify one account ID per request.
 #' @param recommendationPreferences 
@@ -3060,20 +3063,21 @@ computeoptimizer_get_rds_database_recommendation_projected_metrics <- function(r
 #'       dbClusterIdentifier = "string",
 #'       idle = "True"|"False",
 #'       instanceFinding = "Optimized"|"Underprovisioned"|"Overprovisioned",
-#'       storageFinding = "Optimized"|"Underprovisioned"|"Overprovisioned",
+#'       storageFinding = "Optimized"|"Underprovisioned"|"Overprovisioned"|"NotOptimized",
 #'       instanceFindingReasonCodes = list(
 #'         "CPUOverprovisioned"|"NetworkBandwidthOverprovisioned"|"EBSIOPSOverprovisioned"|"EBSIOPSUnderprovisioned"|"EBSThroughputOverprovisioned"|"CPUUnderprovisioned"|"NetworkBandwidthUnderprovisioned"|"EBSThroughputUnderprovisioned"|"NewGenerationDBInstanceClassAvailable"|"NewEngineVersionAvailable"|"DBClusterWriterUnderprovisioned"|"MemoryUnderprovisioned"|"InstanceStorageReadIOPSUnderprovisioned"|"InstanceStorageWriteIOPSUnderprovisioned"
 #'       ),
 #'       currentInstancePerformanceRisk = "VeryLow"|"Low"|"Medium"|"High",
+#'       currentStorageEstimatedMonthlyVolumeIOPsCostVariation = "None"|"Low"|"Medium"|"High",
 #'       storageFindingReasonCodes = list(
-#'         "EBSVolumeAllocatedStorageUnderprovisioned"|"EBSVolumeThroughputUnderprovisioned"|"EBSVolumeIOPSOverprovisioned"|"EBSVolumeThroughputOverprovisioned"|"NewGenerationStorageTypeAvailable"
+#'         "EBSVolumeAllocatedStorageUnderprovisioned"|"EBSVolumeThroughputUnderprovisioned"|"EBSVolumeIOPSOverprovisioned"|"EBSVolumeThroughputOverprovisioned"|"NewGenerationStorageTypeAvailable"|"DBClusterStorageOptionAvailable"|"DBClusterStorageSavingsAvailable"
 #'       ),
 #'       instanceRecommendationOptions = list(
 #'         list(
 #'           dbInstanceClass = "string",
 #'           projectedUtilizationMetrics = list(
 #'             list(
-#'               name = "CPU"|"Memory"|"EBSVolumeStorageSpaceUtilization"|"NetworkReceiveThroughput"|"NetworkTransmitThroughput"|"EBSVolumeReadIOPS"|"EBSVolumeWriteIOPS"|"EBSVolumeReadThroughput"|"EBSVolumeWriteThroughput"|"DatabaseConnections"|"StorageNetworkReceiveThroughput"|"StorageNetworkTransmitThroughput"|"AuroraMemoryHealthState"|"AuroraMemoryNumDeclinedSql"|"AuroraMemoryNumKillConnTotal"|"AuroraMemoryNumKillQueryTotal"|"ReadIOPSEphemeralStorage"|"WriteIOPSEphemeralStorage",
+#'               name = "CPU"|"Memory"|"EBSVolumeStorageSpaceUtilization"|"NetworkReceiveThroughput"|"NetworkTransmitThroughput"|"EBSVolumeReadIOPS"|"EBSVolumeWriteIOPS"|"EBSVolumeReadThroughput"|"EBSVolumeWriteThroughput"|"DatabaseConnections"|"StorageNetworkReceiveThroughput"|"StorageNetworkTransmitThroughput"|"AuroraMemoryHealthState"|"AuroraMemoryNumDeclinedSql"|"AuroraMemoryNumKillConnTotal"|"AuroraMemoryNumKillQueryTotal"|"ReadIOPSEphemeralStorage"|"WriteIOPSEphemeralStorage"|"VolumeReadIOPs"|"VolumeBytesUsed"|"VolumeWriteIOPs",
 #'               statistic = "Maximum"|"Minimum"|"Average",
 #'               value = 123.0
 #'             )
@@ -3119,12 +3123,13 @@ computeoptimizer_get_rds_database_recommendation_projected_metrics <- function(r
 #'               currency = "USD"|"CNY",
 #'               value = 123.0
 #'             )
-#'           )
+#'           ),
+#'           estimatedMonthlyVolumeIOPsCostVariation = "None"|"Low"|"Medium"|"High"
 #'         )
 #'       ),
 #'       utilizationMetrics = list(
 #'         list(
-#'           name = "CPU"|"Memory"|"EBSVolumeStorageSpaceUtilization"|"NetworkReceiveThroughput"|"NetworkTransmitThroughput"|"EBSVolumeReadIOPS"|"EBSVolumeWriteIOPS"|"EBSVolumeReadThroughput"|"EBSVolumeWriteThroughput"|"DatabaseConnections"|"StorageNetworkReceiveThroughput"|"StorageNetworkTransmitThroughput"|"AuroraMemoryHealthState"|"AuroraMemoryNumDeclinedSql"|"AuroraMemoryNumKillConnTotal"|"AuroraMemoryNumKillQueryTotal"|"ReadIOPSEphemeralStorage"|"WriteIOPSEphemeralStorage",
+#'           name = "CPU"|"Memory"|"EBSVolumeStorageSpaceUtilization"|"NetworkReceiveThroughput"|"NetworkTransmitThroughput"|"EBSVolumeReadIOPS"|"EBSVolumeWriteIOPS"|"EBSVolumeReadThroughput"|"EBSVolumeWriteThroughput"|"DatabaseConnections"|"StorageNetworkReceiveThroughput"|"StorageNetworkTransmitThroughput"|"AuroraMemoryHealthState"|"AuroraMemoryNumDeclinedSql"|"AuroraMemoryNumKillConnTotal"|"AuroraMemoryNumKillQueryTotal"|"ReadIOPSEphemeralStorage"|"WriteIOPSEphemeralStorage"|"VolumeReadIOPs"|"VolumeBytesUsed"|"VolumeWriteIOPs",
 #'           statistic = "Maximum"|"Minimum"|"Average",
 #'           value = 123.0
 #'         )
@@ -3221,8 +3226,8 @@ computeoptimizer_get_rds_database_recommendations <- function(resourceArns = NUL
 #' 
 #' Use the `scope` parameter to specify which preferences to return. You
 #' can specify to return preferences for an organization, a specific
-#' account ID, or a specific EC2 instance or Auto Scaling group Amazon
-#' Resource Name (ARN).
+#' account ID, or a specific EC2 instance or Amazon EC2 Auto Scaling group
+#' Amazon Resource Name (ARN).
 #' 
 #' For more information, see [Activating enhanced infrastructure
 #' metrics](https://docs.aws.amazon.com/compute-optimizer/latest/ug/enhanced-infrastructure-metrics.html)
@@ -3236,8 +3241,9 @@ computeoptimizer_get_rds_database_recommendations <- function(resourceArns = NUL
 #' return preferences.
 #' 
 #' The `Ec2Instance` option encompasses standalone instances and instances
-#' that are part of Auto Scaling groups. The `AutoScalingGroup` option
-#' encompasses only instances that are part of an Auto Scaling group.
+#' that are part of Amazon EC2 Auto Scaling groups. The `AutoScalingGroup`
+#' option encompasses only instances that are part of an Amazon EC2 Auto
+#' Scaling group.
 #' @param scope An object that describes the scope of the recommendation preference to
 #' return.
 #' 
@@ -3265,7 +3271,7 @@ computeoptimizer_get_rds_database_recommendations <- function(resourceArns = NUL
 #'         name = "Organization"|"AccountId"|"ResourceArn",
 #'         value = "string"
 #'       ),
-#'       resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService"|"License"|"RdsDBInstance"|"Idle",
+#'       resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService"|"License"|"RdsDBInstance"|"AuroraDBClusterStorage"|"Idle",
 #'       enhancedInfrastructureMetrics = "Active"|"Inactive",
 #'       inferredWorkloadTypes = "Active"|"Inactive",
 #'       externalMetricsPreference = list(
@@ -3304,7 +3310,7 @@ computeoptimizer_get_rds_database_recommendations <- function(resourceArns = NUL
 #' @section Request syntax:
 #' ```
 #' svc$get_recommendation_preferences(
-#'   resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService"|"License"|"RdsDBInstance"|"Idle",
+#'   resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService"|"License"|"RdsDBInstance"|"AuroraDBClusterStorage"|"Idle",
 #'   scope = list(
 #'     name = "Organization"|"AccountId"|"ResourceArn",
 #'     value = "string"
@@ -3348,8 +3354,8 @@ computeoptimizer_get_recommendation_preferences <- function(resourceType, scope 
 #' -   Amazon EC2 instances in an account that are `Underprovisioned`,
 #'     `Overprovisioned`, or `Optimized`.
 #' 
-#' -   Auto Scaling groups in an account that are `NotOptimized`, or
-#'     `Optimized`.
+#' -   EC2Amazon EC2 Auto Scaling groups in an account that are
+#'     `NotOptimized`, or `Optimized`.
 #' 
 #' -   Amazon EBS volumes in an account that are `NotOptimized`, or
 #'     `Optimized`.
@@ -3359,6 +3365,13 @@ computeoptimizer_get_recommendation_preferences <- function(resourceType, scope 
 #' 
 #' -   Amazon ECS services in an account that are `Underprovisioned`,
 #'     `Overprovisioned`, or `Optimized`.
+#' 
+#' -   Commercial software licenses in an account that are
+#'     `InsufficientMetrics`, `NotOptimized` or `Optimized`.
+#' 
+#' -   Amazon Aurora and Amazon RDS databases in an account that are
+#'     `Underprovisioned`, `Overprovisioned`, `Optimized`, or
+#'     `NotOptimized`.
 #'
 #' @usage
 #' computeoptimizer_get_recommendation_summaries(accountIds, nextToken,
@@ -3400,11 +3413,11 @@ computeoptimizer_get_recommendation_preferences <- function(resourceType, scope 
 #'       ),
 #'       idleSummaries = list(
 #'         list(
-#'           name = "Idle"|"Unattached",
+#'           name = "Idle"|"Unattached"|"Unused",
 #'           value = 123.0
 #'         )
 #'       ),
-#'       recommendationResourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"EcsService"|"License"|"RdsDBInstance"|"RdsDBInstanceStorage",
+#'       recommendationResourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"EcsService"|"License"|"RdsDBInstance"|"RdsDBInstanceStorage"|"AuroraDBClusterStorage"|"NatGateway",
 #'       accountId = "string",
 #'       savingsOpportunity = list(
 #'         savingsOpportunityPercentage = 123.0,
@@ -3504,8 +3517,9 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' @param resourceType &#91;required&#93; The target resource type of the recommendation preference to create.
 #' 
 #' The `Ec2Instance` option encompasses standalone instances and instances
-#' that are part of Auto Scaling groups. The `AutoScalingGroup` option
-#' encompasses only instances that are part of an Auto Scaling group.
+#' that are part of Amazon EC2 Auto Scaling groups. The `AutoScalingGroup`
+#' option encompasses only instances that are part of an Amazon EC2 Auto
+#' Scaling group.
 #' @param scope An object that describes the scope of the recommendation preference to
 #' create.
 #' 
@@ -3516,16 +3530,17 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' metrics](https://docs.aws.amazon.com/compute-optimizer/latest/ug/enhanced-infrastructure-metrics.html)
 #' in the *Compute Optimizer User Guide*.
 #' 
-#' You cannot create recommendation preferences for Auto Scaling groups at
-#' the organization and account levels. You can create recommendation
-#' preferences for Auto Scaling groups only at the resource level by
-#' specifying a scope name of `ResourceArn` and a scope value of the Auto
-#' Scaling group Amazon Resource Name (ARN). This will configure the
-#' preference for all instances that are part of the specified Auto Scaling
-#' group. You also cannot create recommendation preferences at the resource
-#' level for instances that are part of an Auto Scaling group. You can
-#' create recommendation preferences at the resource level only for
-#' standalone instances.
+#' You cannot create recommendation preferences for Amazon EC2 Auto Scaling
+#' groups at the organization and account levels. You can create
+#' recommendation preferences for Amazon EC2 Auto Scaling groups only at
+#' the resource level by specifying a scope name of `ResourceArn` and a
+#' scope value of the Amazon EC2 Auto Scaling group Amazon Resource Name
+#' (ARN). This will configure the preference for all instances that are
+#' part of the specified Amazon EC2 Auto Scaling group. You also cannot
+#' create recommendation preferences at the resource level for instances
+#' that are part of an Amazon EC2 Auto Scaling group. You can create
+#' recommendation preferences at the resource level only for standalone
+#' instances.
 #' @param enhancedInfrastructureMetrics The status of the enhanced infrastructure metrics recommendation
 #' preference to create or update.
 #' 
@@ -3564,14 +3579,14 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' the Amazon Web Services resource are analyzed. When this preference
 #' isn't specified, we use the default value `DAYS_14`.
 #' 
-#' You can only set this preference for the Amazon EC2 instance and Auto
-#' Scaling group resource types.
+#' You can only set this preference for the Amazon EC2 instance and Amazon
+#' EC2 Auto Scaling group resource types.
 #' 
 #' -   Amazon EC2 instance lookback preferences can be set at the
 #'     organization, account, and resource levels.
 #' 
-#' -   Auto Scaling group lookback preferences can only be set at the
-#'     resource level.
+#' -   Amazon EC2 Auto Scaling group lookback preferences can only be set
+#'     at the resource level.
 #' @param utilizationPreferences The preference to control the resource’s CPU utilization threshold, CPU
 #' utilization headroom, and memory utilization headroom. When this
 #' preference isn't specified, we use the following default values.
@@ -3597,8 +3612,8 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' an `includeList` or `excludeList`. If the preference is an empty set of
 #' resource type values, an error occurs.
 #' 
-#' You can only set this preference for the Amazon EC2 instance and Auto
-#' Scaling group resource types.
+#' You can only set this preference for the Amazon EC2 instance and Amazon
+#' EC2 Auto Scaling group resource types.
 #' @param savingsEstimationMode The status of the savings estimation mode preference to create or
 #' update.
 #' 
@@ -3618,7 +3633,7 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' @section Request syntax:
 #' ```
 #' svc$put_recommendation_preferences(
-#'   resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService"|"License"|"RdsDBInstance"|"Idle",
+#'   resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService"|"License"|"RdsDBInstance"|"AuroraDBClusterStorage"|"Idle",
 #'   scope = list(
 #'     name = "Organization"|"AccountId"|"ResourceArn",
 #'     value = "string"

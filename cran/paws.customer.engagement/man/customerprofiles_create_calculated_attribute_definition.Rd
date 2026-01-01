@@ -13,6 +13,7 @@ customerprofiles_create_calculated_attribute_definition(
   Conditions = NULL,
   Filter = NULL,
   Statistic,
+  UseHistoricalData = NULL,
   Tags = NULL
 )
 }
@@ -35,6 +36,9 @@ calculated attribute.}
 Attribute.}
 
 \item{Statistic}{[required] The aggregation operation to perform for the calculated attribute.}
+
+\item{UseHistoricalData}{Whether historical data ingested before the Calculated Attribute was
+created should be included in calculations.}
 
 \item{Tags}{The tags used to organize, track, or control access for this resource.}
 }

@@ -25,9 +25,14 @@ list of gateways for your account and Amazon Web Services Region.}
 can hold users, groups, computers, and other OUs and this parameter
 specifies the OU that the gateway will join within the AD domain.}
 
-\item{DomainControllers}{List of IPv4 addresses, NetBIOS names, or host names of your domain
+\item{DomainControllers}{List of IP addresses, NetBIOS names, or host names of your domain
 server. If you need to specify the port number include it after the
-colon (“:”). For example, \code{mydc.mydomain.com:389}.}
+colon (“:”). For example, \code{mydc.mydomain.com:389}.
+
+S3 File Gateway supports IPv6 addresses in addition to IPv4 and other
+existing formats.
+
+FSx File Gateway does not support IPv6.}
 
 \item{TimeoutInSeconds}{Specifies the time in seconds, in which the
 \code{\link[=storagegateway_join_domain]{join_domain}} operation must complete. The

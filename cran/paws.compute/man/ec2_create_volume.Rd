@@ -6,7 +6,8 @@
 Availability Zone}
 \usage{
 ec2_create_volume(
-  AvailabilityZone,
+  AvailabilityZone = NULL,
+  AvailabilityZoneId = NULL,
   Encrypted = NULL,
   Iops = NULL,
   KmsKeyId = NULL,
@@ -24,8 +25,17 @@ ec2_create_volume(
 )
 }
 \arguments{
-\item{AvailabilityZone}{[required] The ID of the Availability Zone in which to create the volume. For
-example, \verb{us-east-1a}.}
+\item{AvailabilityZone}{The ID of the Availability Zone in which to create the volume. For
+example, \verb{us-east-1a}.
+
+Either \code{AvailabilityZone} or \code{AvailabilityZoneId} must be specified, but
+not both.}
+
+\item{AvailabilityZoneId}{The ID of the Availability Zone in which to create the volume. For
+example, \code{use1-az1}.
+
+Either \code{AvailabilityZone} or \code{AvailabilityZoneId} must be specified, but
+not both.}
 
 \item{Encrypted}{Indicates whether the volume should be encrypted. The effect of setting
 the encryption state to \code{true} depends on the volume origin (new or from
@@ -36,25 +46,20 @@ in the \emph{Amazon EBS User Guide}.
 Encrypted Amazon EBS volumes must be attached to instances that support
 Amazon EBS encryption. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption-requirements.html#ebs-encryption_supported_instances}{Supported instance types}.}
 
-\item{Iops}{The number of I/O operations per second (IOPS). For \code{gp3}, \code{io1}, and
-\code{io2} volumes, this represents the number of IOPS that are provisioned
-for the volume. For \code{gp2} volumes, this represents the baseline
-performance of the volume and the rate at which the volume accumulates
-I/O credits for bursting.
+\item{Iops}{The number of I/O operations per second (IOPS) to provision for the
+volume. Required for \code{io1} and \code{io2} volumes. Optional for \code{gp3}
+volumes. Omit for all other volume types.
 
-The following are the supported values for each volume type:
+Valid ranges:
 \itemize{
-\item \code{gp3}: 3,000 - 16,000 IOPS
-\item \code{io1}: 100 - 64,000 IOPS
-\item \code{io2}: 100 - 256,000 IOPS
+\item gp3: \verb{3,000 }(\emph{default})\verb{ - 80,000} IOPS
+\item io1: \verb{100 - 64,000} IOPS
+\item io2: \verb{100 - 256,000} IOPS
 }
 
-For \code{io2} volumes, you can achieve up to 256,000 IOPS on \href{https://docs.aws.amazon.com/ec2/latest/instancetypes/ec2-nitro-instances.html}{instances built on the Nitro System}.
-On other instances, you can achieve performance up to 32,000 IOPS.
-
-This parameter is required for \code{io1} and \code{io2} volumes. The default for
-\code{gp3} volumes is 3,000 IOPS. This parameter is not supported for \code{gp2},
-\code{st1}, \code{sc1}, or \code{standard} volumes.}
+\href{https://docs.aws.amazon.com/ec2/latest/instancetypes/ec2-nitro-instances.html}{Instances built on the Nitro System}
+can support up to 256,000 IOPS. Other instances can support up to 32,000
+IOPS.}
 
 \item{KmsKeyId}{The identifier of the KMS key to use for Amazon EBS encryption. If this
 parameter is not specified, your KMS key for Amazon EBS is used. If
@@ -84,16 +89,17 @@ instance on an Amazon Web Services outpost, or the other way around.}
 
 \item{Size}{The size of the volume, in GiBs. You must specify either a snapshot ID
 or a volume size. If you specify a snapshot, the default is the snapshot
-size. You can specify a volume size that is equal to or larger than the
-snapshot size.
+size, and you can specify a volume size that is equal to or larger than
+the snapshot size.
 
-The following are the supported volumes sizes for each volume type:
+Valid sizes:
 \itemize{
-\item \code{gp2} and \code{gp3}: 1 - 16,384 GiB
-\item \code{io1}: 4 - 16,384 GiB
-\item \code{io2}: 4 - 65,536 GiB
-\item \code{st1} and \code{sc1}: 125 - 16,384 GiB
-\item \code{standard}: 1 - 1024 GiB
+\item gp2: \verb{1 - 16,384} GiB
+\item gp3: \verb{1 - 65,536} GiB
+\item io1: \verb{4 - 16,384} GiB
+\item io2: \verb{4 - 65,536} GiB
+\item st1 and sc1: \verb{125 - 16,384} GiB
+\item standard: \code{1 - 1024} GiB
 }}
 
 \item{SnapshotId}{The snapshot from which to create the volume. You must specify either a
@@ -124,11 +130,10 @@ in the same Availability Zone. This parameter is supported with \code{io1}
 and \code{io2} volumes only. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volumes-multi.html}{Amazon EBS Multi-Attach}
 in the \emph{Amazon EBS User Guide}.}
 
-\item{Throughput}{The throughput to provision for a volume, with a maximum of 1,000 MiB/s.
+\item{Throughput}{The throughput to provision for the volume, in MiB/s. Supported for
+\code{gp3} volumes only. Omit for all other volume types.
 
-This parameter is valid only for \code{gp3} volumes.
-
-Valid Range: Minimum value of 125. Maximum value of 1000.}
+Valid Range: \code{125 - 2000} MiB/s}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensure Idempotency}.}

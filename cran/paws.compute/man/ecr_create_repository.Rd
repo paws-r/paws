@@ -9,6 +9,7 @@ ecr_create_repository(
   repositoryName,
   tags = NULL,
   imageTagMutability = NULL,
+  imageTagMutabilityExclusionFilters = NULL,
   imageScanningConfiguration = NULL,
   encryptionConfiguration = NULL
 )
@@ -37,7 +38,15 @@ image tags to be overwritten. If \code{IMMUTABLE} is specified, all image
 tags within the repository will be immutable which will prevent them
 from being overwritten.}
 
-\item{imageScanningConfiguration}{The image scanning configuration for the repository. This determines
+\item{imageTagMutabilityExclusionFilters}{A list of filters that specify which image tags should be excluded from
+the repository's image tag mutability setting.}
+
+\item{imageScanningConfiguration}{The \code{imageScanningConfiguration} parameter is being deprecated, in favor
+of specifying the image scanning configuration at the registry level.
+For more information, see
+\code{\link[=ecr_put_registry_scanning_configuration]{put_registry_scanning_configuration}}.
+
+The image scanning configuration for the repository. This determines
 whether images are scanned for known vulnerabilities after being pushed
 to the repository.}
 

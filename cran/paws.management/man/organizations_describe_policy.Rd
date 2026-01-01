@@ -7,9 +7,8 @@
 organizations_describe_policy(PolicyId)
 }
 \arguments{
-\item{PolicyId}{[required] The unique identifier (ID) of the policy that you want details about.
-You can get the ID from the
-\code{\link[=organizations_list_policies]{list_policies}} or
+\item{PolicyId}{[required] ID for the policy that you want details about. You can get the ID from
+the \code{\link[=organizations_list_policies]{list_policies}} or
 \code{\link[=organizations_list_policies_for_target]{list_policies_for_target}}
 operations.
 

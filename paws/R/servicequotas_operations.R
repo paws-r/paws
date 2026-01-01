@@ -49,6 +49,52 @@ servicequotas_associate_service_quota_template <- function() {
 }
 .servicequotas$operations$associate_service_quota_template <- servicequotas_associate_service_quota_template
 
+#' Creates a Support case for an existing quota increase request
+#'
+#' @description
+#' Creates a Support case for an existing quota increase request. This call
+#' only creates a Support case if the request has a `Pending` status.
+#'
+#' @usage
+#' servicequotas_create_support_case(RequestId)
+#'
+#' @param RequestId &#91;required&#93; The ID of the pending quota increase request for which you want to open
+#' a Support case.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_support_case(
+#'   RequestId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname servicequotas_create_support_case
+#'
+#' @aliases servicequotas_create_support_case
+servicequotas_create_support_case <- function(RequestId) {
+  op <- new_operation(
+    name = "CreateSupportCase",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .servicequotas$create_support_case_input(RequestId = RequestId)
+  output <- .servicequotas$create_support_case_output()
+  config <- get_config()
+  svc <- .servicequotas$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicequotas$operations$create_support_case <- servicequotas_create_support_case
+
 #' Deletes the quota increase request for the specified quota from your
 #' quota request template
 #'
@@ -289,6 +335,164 @@ servicequotas_get_association_for_service_quota_template <- function() {
 }
 .servicequotas$operations$get_association_for_service_quota_template <- servicequotas_get_association_for_service_quota_template
 
+#' Retrieves information about your Service Quotas Automatic Management
+#' configuration
+#'
+#' @description
+#' Retrieves information about your [Service Quotas Automatic
+#' Management](https://docs.aws.amazon.com/servicequotas/latest/userguide/automatic-management.html)
+#' configuration. Automatic Management monitors your Service Quotas
+#' utilization and notifies you before you run out of your allocated
+#' quotas.
+#'
+#' @usage
+#' servicequotas_get_auto_management_configuration()
+#'
+
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OptInLevel = "ACCOUNT",
+#'   OptInType = "NotifyOnly"|"NotifyAndAdjust",
+#'   NotificationArn = "string",
+#'   OptInStatus = "ENABLED"|"DISABLED",
+#'   ExclusionList = list(
+#'     list(
+#'       list(
+#'         QuotaCode = "string",
+#'         QuotaName = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_auto_management_configuration()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname servicequotas_get_auto_management_configuration
+#'
+#' @aliases servicequotas_get_auto_management_configuration
+servicequotas_get_auto_management_configuration <- function() {
+  op <- new_operation(
+    name = "GetAutoManagementConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .servicequotas$get_auto_management_configuration_input()
+  output <- .servicequotas$get_auto_management_configuration_output()
+  config <- get_config()
+  svc <- .servicequotas$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicequotas$operations$get_auto_management_configuration <- servicequotas_get_auto_management_configuration
+
+#' Retrieves the quota utilization report for your Amazon Web Services
+#' account
+#'
+#' @description
+#' Retrieves the quota utilization report for your Amazon Web Services
+#' account. This operation returns paginated results showing your quota
+#' usage across all Amazon Web Services services, sorted by utilization
+#' percentage in descending order (highest utilization first).
+#' 
+#' You must first initiate a report using the
+#' [`start_quota_utilization_report`][servicequotas_start_quota_utilization_report]
+#' operation. The report generation process is asynchronous and may take
+#' several seconds to complete. Poll this operation periodically to check
+#' the status and retrieve results when the report is ready.
+#' 
+#' Each report contains up to 1,000 quota records per page. Use the
+#' `NextToken` parameter to retrieve additional pages of results. Reports
+#' are automatically deleted after 15 minutes.
+#'
+#' @usage
+#' servicequotas_get_quota_utilization_report(ReportId, NextToken,
+#'   MaxResults)
+#'
+#' @param ReportId &#91;required&#93; The unique identifier for the quota utilization report. This identifier
+#' is returned by the
+#' [`start_quota_utilization_report`][servicequotas_start_quota_utilization_report]
+#' operation.
+#' @param NextToken A token that indicates the next page of results to retrieve. This token
+#' is returned in the response when there are more results available. Omit
+#' this parameter for the first request.
+#' @param MaxResults The maximum number of results to return per page. The default value is
+#' 1,000 and the maximum allowed value is 1,000.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReportId = "string",
+#'   Status = "PENDING"|"IN_PROGRESS"|"COMPLETED"|"FAILED",
+#'   GeneratedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   TotalCount = 123,
+#'   Quotas = list(
+#'     list(
+#'       QuotaCode = "string",
+#'       ServiceCode = "string",
+#'       QuotaName = "string",
+#'       Namespace = "string",
+#'       Utilization = 123.0,
+#'       DefaultValue = 123.0,
+#'       AppliedValue = 123.0,
+#'       ServiceName = "string",
+#'       Adjustable = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   ErrorCode = "string",
+#'   ErrorMessage = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_quota_utilization_report(
+#'   ReportId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname servicequotas_get_quota_utilization_report
+#'
+#' @aliases servicequotas_get_quota_utilization_report
+servicequotas_get_quota_utilization_report <- function(ReportId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "GetQuotaUtilizationReport",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .servicequotas$get_quota_utilization_report_input(ReportId = ReportId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .servicequotas$get_quota_utilization_report_output()
+  config <- get_config()
+  svc <- .servicequotas$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicequotas$operations$get_quota_utilization_report <- servicequotas_get_quota_utilization_report
+
 #' Retrieves information about the specified quota increase request
 #'
 #' @description
@@ -305,6 +509,7 @@ servicequotas_get_association_for_service_quota_template <- function() {
 #' list(
 #'   RequestedQuota = list(
 #'     Id = "string",
+#'     RequestType = "AutomaticManagement",
 #'     CaseId = "string",
 #'     ServiceCode = "string",
 #'     ServiceName = "string",
@@ -683,6 +888,7 @@ servicequotas_list_aws_default_service_quotas <- function(ServiceCode, NextToken
 #'   RequestedQuotas = list(
 #'     list(
 #'       Id = "string",
+#'       RequestType = "AutomaticManagement",
 #'       CaseId = "string",
 #'       ServiceCode = "string",
 #'       ServiceName = "string",
@@ -795,6 +1001,7 @@ servicequotas_list_requested_service_quota_change_history <- function(ServiceCod
 #'   RequestedQuotas = list(
 #'     list(
 #'       Id = "string",
+#'       RequestType = "AutomaticManagement",
 #'       CaseId = "string",
 #'       ServiceCode = "string",
 #'       ServiceName = "string",
@@ -1306,6 +1513,7 @@ servicequotas_put_service_quota_increase_request_into_template <- function(Quota
 #' list(
 #'   RequestedQuota = list(
 #'     Id = "string",
+#'     RequestType = "AutomaticManagement",
 #'     CaseId = "string",
 #'     ServiceCode = "string",
 #'     ServiceName = "string",
@@ -1367,6 +1575,182 @@ servicequotas_request_service_quota_increase <- function(ServiceCode, QuotaCode,
   return(response)
 }
 .servicequotas$operations$request_service_quota_increase <- servicequotas_request_service_quota_increase
+
+#' Starts Service Quotas Automatic Management for an Amazon Web Services
+#' account, including notification preferences and excluded quotas
+#' configurations
+#'
+#' @description
+#' Starts [Service Quotas Automatic
+#' Management](https://docs.aws.amazon.com/servicequotas/latest/userguide/automatic-management.html)
+#' for an Amazon Web Services account, including notification preferences
+#' and excluded quotas configurations. Automatic Management monitors your
+#' Service Quotas utilization and notifies you before you run out of your
+#' allocated quotas.
+#'
+#' @usage
+#' servicequotas_start_auto_management(OptInLevel, OptInType,
+#'   NotificationArn, ExclusionList)
+#'
+#' @param OptInLevel &#91;required&#93; Sets the opt-in level for Automatic Management. Only Amazon Web Services
+#' account level is supported.
+#' @param OptInType &#91;required&#93; Sets the opt-in type for Automatic Management. There are two modes:
+#' Notify only and Notify and Auto-Adjust. Currently, only NotifyOnly is
+#' available.
+#' @param NotificationArn The [User
+#' Notifications](https://docs.aws.amazon.com/notifications/latest/userguide/resource-level-permissions.html#rlp-table)
+#' Amazon Resource Name (ARN) for Automatic Management notifications.
+#' @param ExclusionList List of Amazon Web Services services excluded from Automatic Management.
+#' You won't be notified of Service Quotas utilization for Amazon Web
+#' Services services added to the Automatic Management exclusion list.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_auto_management(
+#'   OptInLevel = "ACCOUNT",
+#'   OptInType = "NotifyOnly"|"NotifyAndAdjust",
+#'   NotificationArn = "string",
+#'   ExclusionList = list(
+#'     list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname servicequotas_start_auto_management
+#'
+#' @aliases servicequotas_start_auto_management
+servicequotas_start_auto_management <- function(OptInLevel, OptInType, NotificationArn = NULL, ExclusionList = NULL) {
+  op <- new_operation(
+    name = "StartAutoManagement",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .servicequotas$start_auto_management_input(OptInLevel = OptInLevel, OptInType = OptInType, NotificationArn = NotificationArn, ExclusionList = ExclusionList)
+  output <- .servicequotas$start_auto_management_output()
+  config <- get_config()
+  svc <- .servicequotas$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicequotas$operations$start_auto_management <- servicequotas_start_auto_management
+
+#' Initiates the generation of a quota utilization report for your Amazon
+#' Web Services account
+#'
+#' @description
+#' Initiates the generation of a quota utilization report for your Amazon
+#' Web Services account. This asynchronous operation analyzes your quota
+#' usage across all Amazon Web Services services and returns a unique
+#' report identifier that you can use to retrieve the results.
+#' 
+#' The report generation process may take several seconds to complete,
+#' depending on the number of quotas in your account. Use the
+#' [`get_quota_utilization_report`][servicequotas_get_quota_utilization_report]
+#' operation to check the status and retrieve the results when the report
+#' is ready.
+#'
+#' @usage
+#' servicequotas_start_quota_utilization_report()
+#'
+
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReportId = "string",
+#'   Status = "PENDING"|"IN_PROGRESS"|"COMPLETED"|"FAILED",
+#'   Message = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_quota_utilization_report()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname servicequotas_start_quota_utilization_report
+#'
+#' @aliases servicequotas_start_quota_utilization_report
+servicequotas_start_quota_utilization_report <- function() {
+  op <- new_operation(
+    name = "StartQuotaUtilizationReport",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .servicequotas$start_quota_utilization_report_input()
+  output <- .servicequotas$start_quota_utilization_report_output()
+  config <- get_config()
+  svc <- .servicequotas$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicequotas$operations$start_quota_utilization_report <- servicequotas_start_quota_utilization_report
+
+#' Stops Service Quotas Automatic Management for an Amazon Web Services
+#' account and removes all associated configurations
+#'
+#' @description
+#' Stops [Service Quotas Automatic
+#' Management](https://docs.aws.amazon.com/servicequotas/latest/userguide/automatic-management.html)
+#' for an Amazon Web Services account and removes all associated
+#' configurations. Automatic Management monitors your Service Quotas
+#' utilization and notifies you before you run out of your allocated
+#' quotas.
+#'
+#' @usage
+#' servicequotas_stop_auto_management()
+#'
+
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_auto_management()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname servicequotas_stop_auto_management
+#'
+#' @aliases servicequotas_stop_auto_management
+servicequotas_stop_auto_management <- function() {
+  op <- new_operation(
+    name = "StopAutoManagement",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .servicequotas$stop_auto_management_input()
+  output <- .servicequotas$stop_auto_management_output()
+  config <- get_config()
+  svc <- .servicequotas$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicequotas$operations$stop_auto_management <- servicequotas_stop_auto_management
 
 #' Adds tags to the specified applied quota
 #'
@@ -1480,3 +1864,69 @@ servicequotas_untag_resource <- function(ResourceARN, TagKeys) {
   return(response)
 }
 .servicequotas$operations$untag_resource <- servicequotas_untag_resource
+
+#' Updates your Service Quotas Automatic Management configuration,
+#' including notification preferences and excluded quotas
+#'
+#' @description
+#' Updates your [Service Quotas Automatic
+#' Management](https://docs.aws.amazon.com/servicequotas/latest/userguide/automatic-management.html)
+#' configuration, including notification preferences and excluded quotas.
+#' Automatic Management monitors your Service Quotas utilization and
+#' notifies you before you run out of your allocated quotas.
+#'
+#' @usage
+#' servicequotas_update_auto_management(OptInType, NotificationArn,
+#'   ExclusionList)
+#'
+#' @param OptInType Information on the opt-in type for your Automatic Management
+#' configuration. There are two modes: Notify only and Notify and
+#' Auto-Adjust. Currently, only NotifyOnly is available.
+#' @param NotificationArn The [User
+#' Notifications](https://docs.aws.amazon.com/notifications/latest/userguide/resource-level-permissions.html#rlp-table)
+#' Amazon Resource Name (ARN) for Automatic Management notifications you
+#' want to update.
+#' @param ExclusionList List of Amazon Web Services services you want to exclude from Automatic
+#' Management. You won't be notified of Service Quotas utilization for
+#' Amazon Web Services services added to the Automatic Management exclusion
+#' list.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_auto_management(
+#'   OptInType = "NotifyOnly"|"NotifyAndAdjust",
+#'   NotificationArn = "string",
+#'   ExclusionList = list(
+#'     list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname servicequotas_update_auto_management
+#'
+#' @aliases servicequotas_update_auto_management
+servicequotas_update_auto_management <- function(OptInType = NULL, NotificationArn = NULL, ExclusionList = NULL) {
+  op <- new_operation(
+    name = "UpdateAutoManagement",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .servicequotas$update_auto_management_input(OptInType = OptInType, NotificationArn = NotificationArn, ExclusionList = ExclusionList)
+  output <- .servicequotas$update_auto_management_output()
+  config <- get_config()
+  svc <- .servicequotas$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicequotas$operations$update_auto_management <- servicequotas_update_auto_management

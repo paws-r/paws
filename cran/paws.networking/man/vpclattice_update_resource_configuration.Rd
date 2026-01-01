@@ -5,23 +5,31 @@
 \title{Updates the specified resource configuration}
 \usage{
 vpclattice_update_resource_configuration(
-  allowAssociationToShareableServiceNetwork = NULL,
-  portRanges = NULL,
+  resourceConfigurationIdentifier,
   resourceConfigurationDefinition = NULL,
-  resourceConfigurationIdentifier
+  allowAssociationToShareableServiceNetwork = NULL,
+  portRanges = NULL
 )
 }
 \arguments{
+\item{resourceConfigurationIdentifier}{[required] The ID of the resource configuration.}
+
+\item{resourceConfigurationDefinition}{Identifies the resource configuration in one of the following ways:
+\itemize{
+\item \strong{Amazon Resource Name (ARN)} - Supported resource-types that are
+provisioned by Amazon Web Services services, such as RDS databases,
+can be identified by their ARN.
+\item \strong{Domain name} - Any domain name that is publicly resolvable.
+\item \strong{IP address} - For IPv4 and IPv6, only IP addresses in the VPC are
+supported.
+}}
+
 \item{allowAssociationToShareableServiceNetwork}{Indicates whether to add the resource configuration to service networks
 that are shared with other accounts.}
 
 \item{portRanges}{The TCP port ranges that a consumer can use to access a resource
 configuration. You can separate port ranges with a comma. Example:
 1-65535 or 1,2,22-30}
-
-\item{resourceConfigurationDefinition}{The resource configuration.}
-
-\item{resourceConfigurationIdentifier}{[required] The ID of the resource configuration.}
 }
 \description{
 Updates the specified resource configuration.

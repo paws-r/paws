@@ -138,7 +138,7 @@ route53resolver_associate_firewall_rule_group <- function(CreatorRequestId, Fire
 #'     SecurityGroupIds = list(
 #'       "string"
 #'     ),
-#'     Direction = "INBOUND"|"OUTBOUND",
+#'     Direction = "INBOUND"|"OUTBOUND"|"INBOUND_DELEGATION",
 #'     IpAddressCount = 123,
 #'     HostVPCId = "string",
 #'     Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
@@ -150,7 +150,9 @@ route53resolver_associate_firewall_rule_group <- function(CreatorRequestId, Fire
 #'     ResolverEndpointType = "IPV6"|"IPV4"|"DUALSTACK",
 #'     Protocols = list(
 #'       "DoH"|"Do53"|"DoH-FIPS"
-#'     )
+#'     ),
+#'     RniEnhancedMetricsEnabled = TRUE|FALSE,
+#'     TargetNameServerMetricsEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -285,6 +287,10 @@ route53resolver_associate_resolver_query_log_config <- function(ResolverQueryLog
 #' [`list_resolver_rules`][route53resolver_list_resolver_rules].
 #' @param Name A name for the association that you're creating between a Resolver rule
 #' and a VPC.
+#' 
+#' The name can be up to 64 characters long and can contain letters (a-z,
+#' A-Z), numbers (0-9), hyphens (-), underscores (_), and spaces. The name
+#' cannot consist of only numbers.
 #' @param VPCId &#91;required&#93; The ID of the VPC that you want to associate the Resolver rule with.
 #'
 #' @return
@@ -563,7 +569,7 @@ route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, 
 #'     ModificationTime = "string",
 #'     FirewallDomainRedirectionAction = "INSPECT_REDIRECTION_DOMAIN"|"TRUST_REDIRECTION_DOMAIN",
 #'     Qtype = "string",
-#'     DnsThreatProtection = "DGA"|"DNS_TUNNELING",
+#'     DnsThreatProtection = "DGA"|"DNS_TUNNELING"|"DICTIONARY_DGA",
 #'     ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH"
 #'   )
 #' )
@@ -584,7 +590,7 @@ route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, 
 #'   Name = "string",
 #'   FirewallDomainRedirectionAction = "INSPECT_REDIRECTION_DOMAIN"|"TRUST_REDIRECTION_DOMAIN",
 #'   Qtype = "string",
-#'   DnsThreatProtection = "DGA"|"DNS_TUNNELING",
+#'   DnsThreatProtection = "DGA"|"DNS_TUNNELING"|"DICTIONARY_DGA",
 #'   ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH"
 #' )
 #' ```
@@ -789,7 +795,8 @@ route53resolver_create_outpost_resolver <- function(CreatorRequestId, Name, Inst
 #' @usage
 #' route53resolver_create_resolver_endpoint(CreatorRequestId, Name,
 #'   SecurityGroupIds, Direction, IpAddresses, OutpostArn,
-#'   PreferredInstanceType, Tags, ResolverEndpointType, Protocols)
+#'   PreferredInstanceType, Tags, ResolverEndpointType, Protocols,
+#'   RniEnhancedMetricsEnabled, TargetNameServerMetricsEnabled)
 #'
 #' @param CreatorRequestId &#91;required&#93; A unique string that identifies the request and that allows failed
 #' requests to be retried without the risk of running the operation twice.
@@ -814,10 +821,13 @@ route53resolver_create_outpost_resolver <- function(CreatorRequestId, Name, Inst
 #' @param Direction &#91;required&#93; Specify the applicable value:
 #' 
 #' -   `INBOUND`: Resolver forwards DNS queries to the DNS service for a
-#'     VPC from your network
+#'     VPC from your network.
 #' 
 #' -   `OUTBOUND`: Resolver forwards DNS queries from the DNS service for a
-#'     VPC to your network
+#'     VPC to your network.
+#' 
+#' -   `INBOUND_DELEGATION`: Resolver delegates queries to Route 53 private
+#'     hosted zones from your network.
 #' @param IpAddresses &#91;required&#93; The subnets and IP addresses in your VPC that DNS queries originate from
 #' (for outbound endpoints) or that you forward DNS queries to (for inbound
 #' endpoints). The subnet ID uniquely identifies a VPC.
@@ -834,9 +844,9 @@ route53resolver_create_outpost_resolver <- function(CreatorRequestId, Name, Inst
 #' dual-stack endpoint means that it will resolve via both IPv4 and IPv6.
 #' This endpoint type is applied to all IP addresses.
 #' @param Protocols The protocols you want to use for the endpoint. DoH-FIPS is applicable
-#' for inbound endpoints only.
+#' for default inbound endpoints only.
 #' 
-#' For an inbound endpoint you can apply the protocols as follows:
+#' For a default inbound endpoint you can apply the protocols as follows:
 #' 
 #' -   Do53 and DoH in combination.
 #' 
@@ -850,6 +860,8 @@ route53resolver_create_outpost_resolver <- function(CreatorRequestId, Name, Inst
 #' 
 #' -   None, which is treated as Do53.
 #' 
+#' For a delegation inbound endpoint you can use Do53 only.
+#' 
 #' For an outbound endpoint you can apply the protocols as follows:
 #' 
 #' -   Do53 and DoH in combination.
@@ -859,6 +871,26 @@ route53resolver_create_outpost_resolver <- function(CreatorRequestId, Name, Inst
 #' -   DoH alone.
 #' 
 #' -   None, which is treated as Do53.
+#' @param RniEnhancedMetricsEnabled Specifies whether RNI enhanced metrics are enabled for the Resolver
+#' endpoints. When set to true, one-minute granular metrics are published
+#' in CloudWatch for each RNI associated with this endpoint. When set to
+#' false, metrics are not published. Default is false.
+#' 
+#' Standard CloudWatch pricing and charges are applied for using the Route
+#' 53 Resolver endpoint RNI enhanced metrics. For more information, see
+#' [Detailed
+#' metrics](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/monitoring-resolver-with-cloudwatch.html).
+#' @param TargetNameServerMetricsEnabled Specifies whether target name server metrics are enabled for the
+#' outbound Resolver endpoints. When set to true, one-minute granular
+#' metrics are published in CloudWatch for each target name server
+#' associated with this endpoint. When set to false, metrics are not
+#' published. Default is false. This is not supported for inbound Resolver
+#' endpoints.
+#' 
+#' Standard CloudWatch pricing and charges are applied for using the Route
+#' 53 Resolver endpoint target name server metrics. For more information,
+#' see [Detailed
+#' metrics](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/monitoring-resolver-with-cloudwatch.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -872,7 +904,7 @@ route53resolver_create_outpost_resolver <- function(CreatorRequestId, Name, Inst
 #'     SecurityGroupIds = list(
 #'       "string"
 #'     ),
-#'     Direction = "INBOUND"|"OUTBOUND",
+#'     Direction = "INBOUND"|"OUTBOUND"|"INBOUND_DELEGATION",
 #'     IpAddressCount = 123,
 #'     HostVPCId = "string",
 #'     Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
@@ -884,7 +916,9 @@ route53resolver_create_outpost_resolver <- function(CreatorRequestId, Name, Inst
 #'     ResolverEndpointType = "IPV6"|"IPV4"|"DUALSTACK",
 #'     Protocols = list(
 #'       "DoH"|"Do53"|"DoH-FIPS"
-#'     )
+#'     ),
+#'     RniEnhancedMetricsEnabled = TRUE|FALSE,
+#'     TargetNameServerMetricsEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -897,7 +931,7 @@ route53resolver_create_outpost_resolver <- function(CreatorRequestId, Name, Inst
 #'   SecurityGroupIds = list(
 #'     "string"
 #'   ),
-#'   Direction = "INBOUND"|"OUTBOUND",
+#'   Direction = "INBOUND"|"OUTBOUND"|"INBOUND_DELEGATION",
 #'   IpAddresses = list(
 #'     list(
 #'       SubnetId = "string",
@@ -916,7 +950,9 @@ route53resolver_create_outpost_resolver <- function(CreatorRequestId, Name, Inst
 #'   ResolverEndpointType = "IPV6"|"IPV4"|"DUALSTACK",
 #'   Protocols = list(
 #'     "DoH"|"Do53"|"DoH-FIPS"
-#'   )
+#'   ),
+#'   RniEnhancedMetricsEnabled = TRUE|FALSE,
+#'   TargetNameServerMetricsEnabled = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -925,7 +961,7 @@ route53resolver_create_outpost_resolver <- function(CreatorRequestId, Name, Inst
 #' @rdname route53resolver_create_resolver_endpoint
 #'
 #' @aliases route53resolver_create_resolver_endpoint
-route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NULL, SecurityGroupIds, Direction, IpAddresses, OutpostArn = NULL, PreferredInstanceType = NULL, Tags = NULL, ResolverEndpointType = NULL, Protocols = NULL) {
+route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NULL, SecurityGroupIds, Direction, IpAddresses, OutpostArn = NULL, PreferredInstanceType = NULL, Tags = NULL, ResolverEndpointType = NULL, Protocols = NULL, RniEnhancedMetricsEnabled = NULL, TargetNameServerMetricsEnabled = NULL) {
   op <- new_operation(
     name = "CreateResolverEndpoint",
     http_method = "POST",
@@ -934,7 +970,7 @@ route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .route53resolver$create_resolver_endpoint_input(CreatorRequestId = CreatorRequestId, Name = Name, SecurityGroupIds = SecurityGroupIds, Direction = Direction, IpAddresses = IpAddresses, OutpostArn = OutpostArn, PreferredInstanceType = PreferredInstanceType, Tags = Tags, ResolverEndpointType = ResolverEndpointType, Protocols = Protocols)
+  input <- .route53resolver$create_resolver_endpoint_input(CreatorRequestId = CreatorRequestId, Name = Name, SecurityGroupIds = SecurityGroupIds, Direction = Direction, IpAddresses = IpAddresses, OutpostArn = OutpostArn, PreferredInstanceType = PreferredInstanceType, Tags = Tags, ResolverEndpointType = ResolverEndpointType, Protocols = Protocols, RniEnhancedMetricsEnabled = RniEnhancedMetricsEnabled, TargetNameServerMetricsEnabled = TargetNameServerMetricsEnabled)
   output <- .route53resolver$create_resolver_endpoint_output()
   config <- get_config()
   svc <- .route53resolver$service(config, op)
@@ -1067,7 +1103,7 @@ route53resolver_create_resolver_query_log_config <- function(Name, DestinationAr
 #'
 #' @usage
 #' route53resolver_create_resolver_rule(CreatorRequestId, Name, RuleType,
-#'   DomainName, TargetIps, ResolverEndpointId, Tags)
+#'   DomainName, TargetIps, ResolverEndpointId, Tags, DelegationRecord)
 #'
 #' @param CreatorRequestId &#91;required&#93; A unique string that identifies the request and that allows failed
 #' requests to be retried without the risk of running the operation twice.
@@ -1075,8 +1111,12 @@ route53resolver_create_resolver_query_log_config <- function(Name, DestinationAr
 #' stamp.
 #' @param Name A friendly name that lets you easily find a rule in the Resolver
 #' dashboard in the Route 53 console.
+#' 
+#' The name can be up to 64 characters long and can contain letters (a-z,
+#' A-Z), numbers (0-9), hyphens (-), underscores (_), and spaces. The name
+#' cannot consist of only numbers.
 #' @param RuleType &#91;required&#93; When you want to forward DNS queries for specified domain name to
-#' resolvers on your network, specify `FORWARD`.
+#' resolvers on your network, specify `FORWARD` or `DELEGATE`.
 #' 
 #' When you have a forwarding rule to forward DNS queries for a domain to
 #' your network and you want Resolver to process queries for a subdomain of
@@ -1099,11 +1139,19 @@ route53resolver_create_resolver_query_log_config <- function(Name, DestinationAr
 #' Separate IP addresses with a space.
 #' 
 #' `TargetIps` is available only when the value of `Rule type` is
-#' `FORWARD`.
+#' `FORWARD`. You should not provide TargetIps when the Rule type is
+#' `DELEGATE`.
+#' 
+#' when creating a DELEGATE rule, you must not provide the `TargetIps`
+#' parameter. If you provide the `TargetIps`, you may receive an ERROR
+#' message similar to "Delegate resolver rules need to specify a nameserver
+#' name". This error means you should not provide `TargetIps`.
 #' @param ResolverEndpointId The ID of the outbound Resolver endpoint that you want to use to route
 #' DNS queries to the IP addresses that you specify in `TargetIps`.
 #' @param Tags A list of the tag keys and values that you want to associate with the
 #' endpoint.
+#' @param DelegationRecord DNS queries with the delegation records that match this domain name are
+#' forwarded to the resolvers on your network.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1116,7 +1164,7 @@ route53resolver_create_resolver_query_log_config <- function(Name, DestinationAr
 #'     DomainName = "string",
 #'     Status = "COMPLETE"|"DELETING"|"UPDATING"|"FAILED",
 #'     StatusMessage = "string",
-#'     RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
+#'     RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE"|"DELEGATE",
 #'     Name = "string",
 #'     TargetIps = list(
 #'       list(
@@ -1131,7 +1179,8 @@ route53resolver_create_resolver_query_log_config <- function(Name, DestinationAr
 #'     OwnerId = "string",
 #'     ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
 #'     CreationTime = "string",
-#'     ModificationTime = "string"
+#'     ModificationTime = "string",
+#'     DelegationRecord = "string"
 #'   )
 #' )
 #' ```
@@ -1141,7 +1190,7 @@ route53resolver_create_resolver_query_log_config <- function(Name, DestinationAr
 #' svc$create_resolver_rule(
 #'   CreatorRequestId = "string",
 #'   Name = "string",
-#'   RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
+#'   RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE"|"DELEGATE",
 #'   DomainName = "string",
 #'   TargetIps = list(
 #'     list(
@@ -1158,7 +1207,8 @@ route53resolver_create_resolver_query_log_config <- function(Name, DestinationAr
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   DelegationRecord = "string"
 #' )
 #' ```
 #'
@@ -1167,7 +1217,7 @@ route53resolver_create_resolver_query_log_config <- function(Name, DestinationAr
 #' @rdname route53resolver_create_resolver_rule
 #'
 #' @aliases route53resolver_create_resolver_rule
-route53resolver_create_resolver_rule <- function(CreatorRequestId, Name = NULL, RuleType, DomainName = NULL, TargetIps = NULL, ResolverEndpointId = NULL, Tags = NULL) {
+route53resolver_create_resolver_rule <- function(CreatorRequestId, Name = NULL, RuleType, DomainName = NULL, TargetIps = NULL, ResolverEndpointId = NULL, Tags = NULL, DelegationRecord = NULL) {
   op <- new_operation(
     name = "CreateResolverRule",
     http_method = "POST",
@@ -1176,7 +1226,7 @@ route53resolver_create_resolver_rule <- function(CreatorRequestId, Name = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .route53resolver$create_resolver_rule_input(CreatorRequestId = CreatorRequestId, Name = Name, RuleType = RuleType, DomainName = DomainName, TargetIps = TargetIps, ResolverEndpointId = ResolverEndpointId, Tags = Tags)
+  input <- .route53resolver$create_resolver_rule_input(CreatorRequestId = CreatorRequestId, Name = Name, RuleType = RuleType, DomainName = DomainName, TargetIps = TargetIps, ResolverEndpointId = ResolverEndpointId, Tags = Tags, DelegationRecord = DelegationRecord)
   output <- .route53resolver$create_resolver_rule_output()
   config <- get_config()
   svc <- .route53resolver$service(config, op)
@@ -1316,7 +1366,7 @@ route53resolver_delete_firewall_domain_list <- function(FirewallDomainListId) {
 #'     ModificationTime = "string",
 #'     FirewallDomainRedirectionAction = "INSPECT_REDIRECTION_DOMAIN"|"TRUST_REDIRECTION_DOMAIN",
 #'     Qtype = "string",
-#'     DnsThreatProtection = "DGA"|"DNS_TUNNELING",
+#'     DnsThreatProtection = "DGA"|"DNS_TUNNELING"|"DICTIONARY_DGA",
 #'     ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH"
 #'   )
 #' )
@@ -1508,7 +1558,7 @@ route53resolver_delete_outpost_resolver <- function(Id) {
 #'     SecurityGroupIds = list(
 #'       "string"
 #'     ),
-#'     Direction = "INBOUND"|"OUTBOUND",
+#'     Direction = "INBOUND"|"OUTBOUND"|"INBOUND_DELEGATION",
 #'     IpAddressCount = 123,
 #'     HostVPCId = "string",
 #'     Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
@@ -1520,7 +1570,9 @@ route53resolver_delete_outpost_resolver <- function(Id) {
 #'     ResolverEndpointType = "IPV6"|"IPV4"|"DUALSTACK",
 #'     Protocols = list(
 #'       "DoH"|"Do53"|"DoH-FIPS"
-#'     )
+#'     ),
+#'     RniEnhancedMetricsEnabled = TRUE|FALSE,
+#'     TargetNameServerMetricsEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -1658,7 +1710,7 @@ route53resolver_delete_resolver_query_log_config <- function(ResolverQueryLogCon
 #'     DomainName = "string",
 #'     Status = "COMPLETE"|"DELETING"|"UPDATING"|"FAILED",
 #'     StatusMessage = "string",
-#'     RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
+#'     RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE"|"DELEGATE",
 #'     Name = "string",
 #'     TargetIps = list(
 #'       list(
@@ -1673,7 +1725,8 @@ route53resolver_delete_resolver_query_log_config <- function(ResolverQueryLogCon
 #'     OwnerId = "string",
 #'     ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
 #'     CreationTime = "string",
-#'     ModificationTime = "string"
+#'     ModificationTime = "string",
+#'     DelegationRecord = "string"
 #'   )
 #' )
 #' ```
@@ -1806,7 +1859,7 @@ route53resolver_disassociate_firewall_rule_group <- function(FirewallRuleGroupAs
 #'     SecurityGroupIds = list(
 #'       "string"
 #'     ),
-#'     Direction = "INBOUND"|"OUTBOUND",
+#'     Direction = "INBOUND"|"OUTBOUND"|"INBOUND_DELEGATION",
 #'     IpAddressCount = 123,
 #'     HostVPCId = "string",
 #'     Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
@@ -1818,7 +1871,9 @@ route53resolver_disassociate_firewall_rule_group <- function(FirewallRuleGroupAs
 #'     ResolverEndpointType = "IPV6"|"IPV4"|"DUALSTACK",
 #'     Protocols = list(
 #'       "DoH"|"Do53"|"DoH-FIPS"
-#'     )
+#'     ),
+#'     RniEnhancedMetricsEnabled = TRUE|FALSE,
+#'     TargetNameServerMetricsEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -2496,7 +2551,7 @@ route53resolver_get_resolver_dnssec_config <- function(ResourceId) {
 #'     SecurityGroupIds = list(
 #'       "string"
 #'     ),
-#'     Direction = "INBOUND"|"OUTBOUND",
+#'     Direction = "INBOUND"|"OUTBOUND"|"INBOUND_DELEGATION",
 #'     IpAddressCount = 123,
 #'     HostVPCId = "string",
 #'     Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
@@ -2508,7 +2563,9 @@ route53resolver_get_resolver_dnssec_config <- function(ResourceId) {
 #'     ResolverEndpointType = "IPV6"|"IPV4"|"DUALSTACK",
 #'     Protocols = list(
 #'       "DoH"|"Do53"|"DoH-FIPS"
-#'     )
+#'     ),
+#'     RniEnhancedMetricsEnabled = TRUE|FALSE,
+#'     TargetNameServerMetricsEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -2749,7 +2806,7 @@ route53resolver_get_resolver_query_log_config_policy <- function(Arn) {
 #'     DomainName = "string",
 #'     Status = "COMPLETE"|"DELETING"|"UPDATING"|"FAILED",
 #'     StatusMessage = "string",
-#'     RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
+#'     RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE"|"DELEGATE",
 #'     Name = "string",
 #'     TargetIps = list(
 #'       list(
@@ -2764,7 +2821,8 @@ route53resolver_get_resolver_query_log_config_policy <- function(Arn) {
 #'     OwnerId = "string",
 #'     ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
 #'     CreationTime = "string",
-#'     ModificationTime = "string"
+#'     ModificationTime = "string",
+#'     DelegationRecord = "string"
 #'   )
 #' )
 #' ```
@@ -3470,7 +3528,7 @@ route53resolver_list_firewall_rule_groups <- function(MaxResults = NULL, NextTok
 #'       ModificationTime = "string",
 #'       FirewallDomainRedirectionAction = "INSPECT_REDIRECTION_DOMAIN"|"TRUST_REDIRECTION_DOMAIN",
 #'       Qtype = "string",
-#'       DnsThreatProtection = "DGA"|"DNS_TUNNELING",
+#'       DnsThreatProtection = "DGA"|"DNS_TUNNELING"|"DICTIONARY_DGA",
 #'       ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH"
 #'     )
 #'   )
@@ -3781,7 +3839,7 @@ route53resolver_list_resolver_dnssec_configs <- function(MaxResults = NULL, Next
 #'       SubnetId = "string",
 #'       Ip = "string",
 #'       Ipv6 = "string",
-#'       Status = "CREATING"|"FAILED_CREATION"|"ATTACHING"|"ATTACHED"|"REMAP_DETACHING"|"REMAP_ATTACHING"|"DETACHING"|"FAILED_RESOURCE_GONE"|"DELETING"|"DELETE_FAILED_FAS_EXPIRED"|"UPDATING"|"UPDATE_FAILED",
+#'       Status = "CREATING"|"FAILED_CREATION"|"ATTACHING"|"ATTACHED"|"REMAP_DETACHING"|"REMAP_ATTACHING"|"DETACHING"|"FAILED_RESOURCE_GONE"|"DELETING"|"DELETE_FAILED_FAS_EXPIRED"|"UPDATING"|"UPDATE_FAILED"|"ISOLATED",
 #'       StatusMessage = "string",
 #'       CreationTime = "string",
 #'       ModificationTime = "string"
@@ -3870,7 +3928,7 @@ route53resolver_list_resolver_endpoint_ip_addresses <- function(ResolverEndpoint
 #'       SecurityGroupIds = list(
 #'         "string"
 #'       ),
-#'       Direction = "INBOUND"|"OUTBOUND",
+#'       Direction = "INBOUND"|"OUTBOUND"|"INBOUND_DELEGATION",
 #'       IpAddressCount = 123,
 #'       HostVPCId = "string",
 #'       Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
@@ -3882,7 +3940,9 @@ route53resolver_list_resolver_endpoint_ip_addresses <- function(ResolverEndpoint
 #'       ResolverEndpointType = "IPV6"|"IPV4"|"DUALSTACK",
 #'       Protocols = list(
 #'         "DoH"|"Do53"|"DoH-FIPS"
-#'       )
+#'       ),
+#'       RniEnhancedMetricsEnabled = TRUE|FALSE,
+#'       TargetNameServerMetricsEnabled = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -4376,7 +4436,7 @@ route53resolver_list_resolver_rule_associations <- function(MaxResults = NULL, N
 #'       DomainName = "string",
 #'       Status = "COMPLETE"|"DELETING"|"UPDATING"|"FAILED",
 #'       StatusMessage = "string",
-#'       RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
+#'       RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE"|"DELEGATE",
 #'       Name = "string",
 #'       TargetIps = list(
 #'         list(
@@ -4391,7 +4451,8 @@ route53resolver_list_resolver_rule_associations <- function(MaxResults = NULL, N
 #'       OwnerId = "string",
 #'       ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
 #'       CreationTime = "string",
-#'       ModificationTime = "string"
+#'       ModificationTime = "string",
+#'       DelegationRecord = "string"
 #'     )
 #'   )
 #' )
@@ -5141,7 +5202,7 @@ route53resolver_update_firewall_domains <- function(FirewallDomainListId, Operat
 #'     ModificationTime = "string",
 #'     FirewallDomainRedirectionAction = "INSPECT_REDIRECTION_DOMAIN"|"TRUST_REDIRECTION_DOMAIN",
 #'     Qtype = "string",
-#'     DnsThreatProtection = "DGA"|"DNS_TUNNELING",
+#'     DnsThreatProtection = "DGA"|"DNS_TUNNELING"|"DICTIONARY_DGA",
 #'     ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH"
 #'   )
 #' )
@@ -5162,7 +5223,7 @@ route53resolver_update_firewall_domains <- function(FirewallDomainListId, Operat
 #'   Name = "string",
 #'   FirewallDomainRedirectionAction = "INSPECT_REDIRECTION_DOMAIN"|"TRUST_REDIRECTION_DOMAIN",
 #'   Qtype = "string",
-#'   DnsThreatProtection = "DGA"|"DNS_TUNNELING",
+#'   DnsThreatProtection = "DGA"|"DNS_TUNNELING"|"DICTIONARY_DGA",
 #'   ConfidenceThreshold = "LOW"|"MEDIUM"|"HIGH"
 #' )
 #' ```
@@ -5355,8 +5416,8 @@ route53resolver_update_outpost_resolver <- function(Id, Name = NULL, InstanceCou
 #' route53resolver_update_resolver_config(ResourceId,
 #'   AutodefinedReverseFlag)
 #'
-#' @param ResourceId &#91;required&#93; Resource ID of the Amazon VPC that you want to update the Resolver
-#' configuration for.
+#' @param ResourceId &#91;required&#93; The ID of the Amazon Virtual Private Cloud VPC or a Route 53 Profile
+#' that you're configuring Resolver for.
 #' @param AutodefinedReverseFlag &#91;required&#93; Indicates whether or not the Resolver will create autodefined rules for
 #' reverse DNS lookups. This is enabled by default. Disabling this option
 #' will also affect EC2-Classic instances using ClassicLink. For more
@@ -5489,7 +5550,8 @@ route53resolver_update_resolver_dnssec_config <- function(ResourceId, Validation
 #'
 #' @usage
 #' route53resolver_update_resolver_endpoint(ResolverEndpointId, Name,
-#'   ResolverEndpointType, UpdateIpAddresses, Protocols)
+#'   ResolverEndpointType, UpdateIpAddresses, Protocols,
+#'   RniEnhancedMetricsEnabled, TargetNameServerMetricsEnabled)
 #'
 #' @param ResolverEndpointId &#91;required&#93; The ID of the Resolver endpoint that you want to update.
 #' @param Name The name of the Resolver endpoint that you want to update.
@@ -5501,9 +5563,9 @@ route53resolver_update_resolver_dnssec_config <- function(ResourceId, Validation
 #' IPv4 to dual-stack. If you don't specify an IPv6 address, one will be
 #' automatically chosen from your subnet.
 #' @param Protocols The protocols you want to use for the endpoint. DoH-FIPS is applicable
-#' for inbound endpoints only.
+#' for default inbound endpoints only.
 #' 
-#' For an inbound endpoint you can apply the protocols as follows:
+#' For a default inbound endpoint you can apply the protocols as follows:
 #' 
 #' -   Do53 and DoH in combination.
 #' 
@@ -5516,6 +5578,8 @@ route53resolver_update_resolver_dnssec_config <- function(ResourceId, Validation
 #' -   DoH-FIPS alone.
 #' 
 #' -   None, which is treated as Do53.
+#' 
+#' For a delegation inbound endpoint you can use Do53 only.
 #' 
 #' For an outbound endpoint you can apply the protocols as follows:
 #' 
@@ -5533,6 +5597,25 @@ route53resolver_update_resolver_dnssec_config <- function(ResourceId, Validation
 #' to DoH, or DoH-FIPS, you must first enable both Do53 and DoH, or Do53
 #' and DoH-FIPS, to make sure that all incoming traffic has transferred to
 #' using the DoH protocol, or DoH-FIPS, and then remove the Do53.
+#' @param RniEnhancedMetricsEnabled Updates whether RNI enhanced metrics are enabled for the Resolver
+#' endpoints. When set to true, one-minute granular metrics are published
+#' in CloudWatch for each RNI associated with this endpoint. When set to
+#' false, metrics are not published.
+#' 
+#' Standard CloudWatch pricing and charges are applied for using the Route
+#' 53 Resolver endpoint RNI enhanced metrics. For more information, see
+#' [Detailed
+#' metrics](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/monitoring-resolver-with-cloudwatch.html).
+#' @param TargetNameServerMetricsEnabled Updates whether target name server metrics are enabled for the outbound
+#' Resolver endpoints. When set to true, one-minute granular metrics are
+#' published in CloudWatch for each target name server associated with this
+#' endpoint. When set to false, metrics are not published. This setting is
+#' not supported for inbound Resolver endpoints.
+#' 
+#' Standard CloudWatch pricing and charges are applied for using the Route
+#' 53 Resolver endpoint target name server metrics. For more information,
+#' see [Detailed
+#' metrics](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/monitoring-resolver-with-cloudwatch.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -5546,7 +5629,7 @@ route53resolver_update_resolver_dnssec_config <- function(ResourceId, Validation
 #'     SecurityGroupIds = list(
 #'       "string"
 #'     ),
-#'     Direction = "INBOUND"|"OUTBOUND",
+#'     Direction = "INBOUND"|"OUTBOUND"|"INBOUND_DELEGATION",
 #'     IpAddressCount = 123,
 #'     HostVPCId = "string",
 #'     Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
@@ -5558,7 +5641,9 @@ route53resolver_update_resolver_dnssec_config <- function(ResourceId, Validation
 #'     ResolverEndpointType = "IPV6"|"IPV4"|"DUALSTACK",
 #'     Protocols = list(
 #'       "DoH"|"Do53"|"DoH-FIPS"
-#'     )
+#'     ),
+#'     RniEnhancedMetricsEnabled = TRUE|FALSE,
+#'     TargetNameServerMetricsEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -5577,7 +5662,9 @@ route53resolver_update_resolver_dnssec_config <- function(ResourceId, Validation
 #'   ),
 #'   Protocols = list(
 #'     "DoH"|"Do53"|"DoH-FIPS"
-#'   )
+#'   ),
+#'   RniEnhancedMetricsEnabled = TRUE|FALSE,
+#'   TargetNameServerMetricsEnabled = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -5586,7 +5673,7 @@ route53resolver_update_resolver_dnssec_config <- function(ResourceId, Validation
 #' @rdname route53resolver_update_resolver_endpoint
 #'
 #' @aliases route53resolver_update_resolver_endpoint
-route53resolver_update_resolver_endpoint <- function(ResolverEndpointId, Name = NULL, ResolverEndpointType = NULL, UpdateIpAddresses = NULL, Protocols = NULL) {
+route53resolver_update_resolver_endpoint <- function(ResolverEndpointId, Name = NULL, ResolverEndpointType = NULL, UpdateIpAddresses = NULL, Protocols = NULL, RniEnhancedMetricsEnabled = NULL, TargetNameServerMetricsEnabled = NULL) {
   op <- new_operation(
     name = "UpdateResolverEndpoint",
     http_method = "POST",
@@ -5595,7 +5682,7 @@ route53resolver_update_resolver_endpoint <- function(ResolverEndpointId, Name = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .route53resolver$update_resolver_endpoint_input(ResolverEndpointId = ResolverEndpointId, Name = Name, ResolverEndpointType = ResolverEndpointType, UpdateIpAddresses = UpdateIpAddresses, Protocols = Protocols)
+  input <- .route53resolver$update_resolver_endpoint_input(ResolverEndpointId = ResolverEndpointId, Name = Name, ResolverEndpointType = ResolverEndpointType, UpdateIpAddresses = UpdateIpAddresses, Protocols = Protocols, RniEnhancedMetricsEnabled = RniEnhancedMetricsEnabled, TargetNameServerMetricsEnabled = TargetNameServerMetricsEnabled)
   output <- .route53resolver$update_resolver_endpoint_output()
   config <- get_config()
   svc <- .route53resolver$service(config, op)
@@ -5629,7 +5716,7 @@ route53resolver_update_resolver_endpoint <- function(ResolverEndpointId, Name = 
 #'     DomainName = "string",
 #'     Status = "COMPLETE"|"DELETING"|"UPDATING"|"FAILED",
 #'     StatusMessage = "string",
-#'     RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
+#'     RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE"|"DELEGATE",
 #'     Name = "string",
 #'     TargetIps = list(
 #'       list(
@@ -5644,7 +5731,8 @@ route53resolver_update_resolver_endpoint <- function(ResolverEndpointId, Name = 
 #'     OwnerId = "string",
 #'     ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
 #'     CreationTime = "string",
-#'     ModificationTime = "string"
+#'     ModificationTime = "string",
+#'     DelegationRecord = "string"
 #'   )
 #' )
 #' ```

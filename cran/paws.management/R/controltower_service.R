@@ -166,7 +166,7 @@ NULL
 #' 
 #' For an overview of landing zone API operations, see [Amazon Web Services
 #' Control Tower supports landing zone
-#' APIs](https://docs.aws.amazon.com/controltower/latest/userguide/#landing-zone-apis).
+#' APIs](https://docs.aws.amazon.com/controltower/latest/userguide/2023-all.html#landing-zone-apis).
 #' The individual API operations for landing zones are detailed in this
 #' document, the [API reference
 #' manual](https://docs.aws.amazon.com/controltower/latest/APIReference/API_Operations.html),
@@ -410,7 +410,7 @@ controltower <- function(config = list(), credentials = list(), endpoint = NULL,
   service_id = "ControlTower",
   api_version = "2018-05-10",
   signing_name = "controltower",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 

@@ -5,27 +5,27 @@
 \title{Updates a specified rule for the listener}
 \usage{
 vpclattice_update_rule(
-  action = NULL,
+  serviceIdentifier,
   listenerIdentifier,
+  ruleIdentifier,
   match = NULL,
   priority = NULL,
-  ruleIdentifier,
-  serviceIdentifier
+  action = NULL
 )
 }
 \arguments{
-\item{action}{Information about the action for the specified listener rule.}
+\item{serviceIdentifier}{[required] The ID or ARN of the service.}
 
 \item{listenerIdentifier}{[required] The ID or ARN of the listener.}
+
+\item{ruleIdentifier}{[required] The ID or ARN of the rule.}
 
 \item{match}{The rule match.}
 
 \item{priority}{The rule priority. A listener can't have multiple rules with the same
 priority.}
 
-\item{ruleIdentifier}{[required] The ID or ARN of the rule.}
-
-\item{serviceIdentifier}{[required] The ID or ARN of the service.}
+\item{action}{Information about the action for the specified listener rule.}
 }
 \description{
 Updates a specified rule for the listener. You can't modify a default listener rule. To modify a default listener rule, use \code{\link[=vpclattice_update_listener]{update_listener}}.

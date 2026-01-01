@@ -19,7 +19,7 @@ feature.}
 \item{evaluationContext}{A JSON object of attributes that you can optionally pass in as part of
 the evaluation event sent to Evidently from the user session. Evidently
 can use this value to match user sessions with defined audience
-segments. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html}{Use segments to focus your audience}.
+segments. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/}{Use segments to focus your audience}.
 
 If you include this parameter, the value must be a JSON object. A JSON
 array is not supported.}

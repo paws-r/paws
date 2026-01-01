@@ -25,8 +25,8 @@ endpoint using the
 API.}
 
 \item{Body}{[required] Provides input data, in the format specified in the \code{ContentType}
-request header. Amazon SageMaker passes all of the data in the body to
-the model.
+request header. Amazon SageMaker AI passes all of the data in the body
+to the model.
 
 For information about the format of the request body, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html}{Common Data Formats-Inference}.}
 
@@ -36,7 +36,7 @@ For information about the format of the request body, see \href{https://docs.aws
 container.}
 
 \item{CustomAttributes}{Provides additional information about a request for an inference
-submitted to a model hosted at an Amazon SageMaker endpoint. The
+submitted to a model hosted at an Amazon SageMaker AI endpoint. The
 information is an opaque value that is forwarded verbatim. You could use
 this value, for example, to provide an ID that you can use to track a
 request or to provide other metadata that a service endpoint was
@@ -51,7 +51,7 @@ represents the trace ID, your model can prepend the custom attribute
 with \verb{Trace ID:} in your post-processing function.
 
 This feature is currently supported in the Amazon Web Services SDKs but
-not in the Amazon SageMaker Python SDK.}
+not in the Amazon SageMaker AI Python SDK.}
 
 \item{TargetVariant}{Specify the production variant to send the inference request to when
 invoking an endpoint that is running two or more variants. Note that
@@ -82,7 +82,7 @@ parameter. The response to that request provides the session ID for the
 \code{NewSessionId} response parameter.}
 }
 \description{
-Invokes a model at the specified endpoint to return the inference response as a stream. The inference stream provides the response payload incrementally as a series of parts. Before you can get an inference stream, you must have access to a model that's deployed using Amazon SageMaker hosting services, and the container for that model must support inference streaming.
+Invokes a model at the specified endpoint to return the inference response as a stream. The inference stream provides the response payload incrementally as a series of parts. Before you can get an inference stream, you must have access to a model that's deployed using Amazon SageMaker AI hosting services, and the container for that model must support inference streaming.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemakerruntime_invoke_endpoint_with_response_stream/} for full documentation.
 }

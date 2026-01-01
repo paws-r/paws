@@ -25,7 +25,7 @@ Amazon Web Services Region in each Amazon Web Services account.}
 \item{Name}{[required] A display name for the theme.}
 
 \item{BaseThemeId}{[required] The ID of the theme that a custom theme will inherit from. All themes
-inherit from one of the starting themes defined by Amazon QuickSight.
+inherit from one of the starting themes defined by Amazon Quick Sight.
 For a list of the starting themes, use
 \code{\link[=quicksight_list_themes]{list_themes}} or choose \strong{Themes} from within
 an analysis.}

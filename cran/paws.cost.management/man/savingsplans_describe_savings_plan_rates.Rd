@@ -2,7 +2,7 @@
 % Please edit documentation in R/savingsplans_operations.R
 \name{savingsplans_describe_savings_plan_rates}
 \alias{savingsplans_describe_savings_plan_rates}
-\title{Describes the rates for the specified Savings Plan}
+\title{Describes the rates for a specific, existing Savings Plan}
 \usage{
 savingsplans_describe_savings_plan_rates(
   savingsPlanId,
@@ -22,7 +22,7 @@ savingsplans_describe_savings_plan_rates(
 additional results, make another call with the returned token value.}
 }
 \description{
-Describes the rates for the specified Savings Plan.
+Describes the rates for a specific, existing Savings Plan.
 
 See \url{https://www.paws-r-sdk.com/docs/savingsplans_describe_savings_plan_rates/} for full documentation.
 }

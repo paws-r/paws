@@ -47,8 +47,8 @@ Billing occurs hourly and is discounted for longer commitment terms. To
 request a no-commit Provisioned Throughput, omit this field.
 
 Custom models support all levels of commitment. To see which base models
-support no commitment, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/pt-supported.html}{Supported regions and models for Provisioned Throughput}
-in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}}
+support no commitment, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/}{Supported regions and models for Provisioned Throughput} in
+the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}}
 
 \item{tags}{Tags to associate with this Provisioned Throughput.}
 }

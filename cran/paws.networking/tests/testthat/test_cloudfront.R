@@ -12,6 +12,10 @@ test_that("list_cloud_front_origin_access_identities", {
   expect_error(svc$list_cloud_front_origin_access_identities(), NA)
 })
 
+test_that("list_connection_functions", {
+  expect_error(svc$list_connection_functions(), NA)
+})
+
 test_that("list_connection_groups", {
   expect_error(svc$list_connection_groups(), NA)
 })
@@ -78,6 +82,10 @@ test_that("list_response_headers_policies", {
 
 test_that("list_streaming_distributions", {
   expect_error(svc$list_streaming_distributions(), NA)
+})
+
+test_that("list_trust_stores", {
+  expect_error(svc$list_trust_stores(), NA)
 })
 
 test_that("list_vpc_origins", {

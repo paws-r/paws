@@ -2,7 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_delete_place_index}
 \alias{locationservice_delete_place_index}
-\title{Deletes a place index resource from your Amazon Web Services account}
+\title{This operation is no longer current and may be deprecated in the future}
 \usage{
 locationservice_delete_place_index(IndexName)
 }
@@ -10,7 +10,7 @@ locationservice_delete_place_index(IndexName)
 \item{IndexName}{[required] The name of the place index resource to be deleted.}
 }
 \description{
-Deletes a place index resource from your Amazon Web Services account.
+This operation is no longer current and may be deprecated in the future. We recommend you upgrade to the Places API V2 unless you require Grab data.
 
 See \url{https://www.paws-r-sdk.com/docs/locationservice_delete_place_index/} for full documentation.
 }

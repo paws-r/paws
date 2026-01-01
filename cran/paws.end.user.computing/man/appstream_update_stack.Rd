@@ -47,12 +47,12 @@ Windows settings are automatically saved after each session and applied
 to the next session.}
 
 \item{AccessEndpoints}{The list of interface VPC endpoint (interface endpoint) objects. Users
-of the stack can connect to AppStream 2.0 only through the specified
-endpoints.}
+of the stack can connect to WorkSpaces Applications only through the
+specified endpoints.}
 
-\item{EmbedHostDomains}{The domains where AppStream 2.0 streaming sessions can be embedded in an
-iframe. You must approve the domains that you want to host embedded
-AppStream 2.0 streaming sessions.}
+\item{EmbedHostDomains}{The domains where WorkSpaces Applications streaming sessions can be
+embedded in an iframe. You must approve the domains that you want to
+host embedded WorkSpaces Applications streaming sessions.}
 
 \item{StreamingExperienceSettings}{The streaming protocol you want your stack to prefer. This can be UDP or
 TCP. Currently, UDP is only supported in the Windows native client.}

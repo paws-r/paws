@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_import_stacks_to_stack_set}
 \alias{cloudformation_import_stacks_to_stack_set}
-\title{Import existing stacks into a new stack sets}
+\title{Import existing stacks into a new StackSets}
 \usage{
 cloudformation_import_stacks_to_stack_set(
   StackSetName,
@@ -15,11 +15,11 @@ cloudformation_import_stacks_to_stack_set(
 )
 }
 \arguments{
-\item{StackSetName}{[required] The name of the stack set. The name must be unique in the Region where
-you create your stack set.}
+\item{StackSetName}{[required] The name of the StackSet. The name must be unique in the Region where
+you create your StackSet.}
 
-\item{StackIds}{The IDs of the stacks you are importing into a stack set. You import up
-to 10 stacks per stack set at a time.
+\item{StackIds}{The IDs of the stacks you are importing into a StackSet. You import up
+to 10 stacks per StackSet at a time.
 
 Specify either \code{StackIds} or \code{StackIdsUrl}.}
 
@@ -27,26 +27,26 @@ Specify either \code{StackIds} or \code{StackIdsUrl}.}
 
 Specify either \code{StackIds} or \code{StackIdsUrl}.}
 
-\item{OrganizationalUnitIds}{The list of OU ID's to which the stacks being imported has to be mapped
-as deployment target.}
+\item{OrganizationalUnitIds}{The list of OU ID's to which the imported stacks must be mapped as
+deployment targets.}
 
-\item{OperationPreferences}{The user-specified preferences for how CloudFormation performs a stack
-set operation.
+\item{OperationPreferences}{The user-specified preferences for how CloudFormation performs a
+StackSet operation.
 
 For more information about maximum concurrent accounts and failure
-tolerance, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html#stackset-ops-options}{Stack set operation options}.}
+tolerance, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options}{StackSet operation options}.}
 
-\item{OperationId}{A unique, user defined, identifier for the stack set operation.}
+\item{OperationId}{A unique, user defined, identifier for the StackSet operation.}
 
-\item{CallAs}{By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+\item{CallAs}{By default, \code{SELF} is specified. Use \code{SELF} for StackSets with
 self-managed permissions.
 \itemize{
 \item If you are signed in to the management account, specify \code{SELF}.
-\item For service managed stack sets, specify \code{DELEGATED_ADMIN}.
+\item For service managed StackSets, specify \code{DELEGATED_ADMIN}.
 }}
 }
 \description{
-Import existing stacks into a new stack sets. Use the stack import operation to import up to 10 stacks into a new stack set in the same account as the source stack or in a different administrator account and Region, by specifying the stack ID of the stack you intend to import.
+Import existing stacks into a new StackSets. Use the stack import operation to import up to 10 stacks into a new StackSet in the same account as the source stack or in a different administrator account and Region, by specifying the stack ID of the stack you intend to import.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudformation_import_stacks_to_stack_set/} for full documentation.
 }

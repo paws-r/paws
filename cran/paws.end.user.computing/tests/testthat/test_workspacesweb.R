@@ -20,6 +20,10 @@ test_that("list_portals", {
   expect_error(svc$list_portals(), NA)
 })
 
+test_that("list_session_loggers", {
+  expect_error(svc$list_session_loggers(), NA)
+})
+
 test_that("list_trust_stores", {
   expect_error(svc$list_trust_stores(), NA)
 })

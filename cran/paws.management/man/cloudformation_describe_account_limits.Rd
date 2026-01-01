@@ -8,8 +8,8 @@ number of stacks that you can create in your account}
 cloudformation_describe_account_limits(NextToken = NULL)
 }
 \arguments{
-\item{NextToken}{A string that identifies the next page of limits that you want to
-retrieve.}
+\item{NextToken}{The token for the next set of items to return. (You received this token
+from a previous call.)}
 }
 \description{
 Retrieves your account's CloudFormation limits, such as the maximum number of stacks that you can create in your account. For more information about account limits, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html}{Understand CloudFormation quotas} in the \emph{CloudFormation User Guide}.

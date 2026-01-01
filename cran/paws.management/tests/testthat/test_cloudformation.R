@@ -4,6 +4,10 @@ test_that("describe_account_limits", {
   expect_error(svc$describe_account_limits(), NA)
 })
 
+test_that("describe_events", {
+  expect_error(svc$describe_events(), NA)
+})
+
 test_that("describe_organizations_access", {
   expect_error(svc$describe_organizations_access(), NA)
 })
@@ -30,6 +34,10 @@ test_that("list_generated_templates", {
 
 test_that("list_generated_templates", {
   expect_error(svc$list_generated_templates(MaxResults = 20), NA)
+})
+
+test_that("list_hook_results", {
+  expect_error(svc$list_hook_results(), NA)
 })
 
 test_that("list_resource_scans", {

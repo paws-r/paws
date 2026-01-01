@@ -7,6 +7,7 @@
 cleanroomsml_start_trained_model_export_job(
   name,
   trainedModelArn,
+  trainedModelVersionIdentifier = NULL,
   membershipIdentifier,
   outputConfiguration,
   description = NULL
@@ -17,6 +18,10 @@ cleanroomsml_start_trained_model_export_job(
 
 \item{trainedModelArn}{[required] The Amazon Resource Name (ARN) of the trained model that you want to
 export.}
+
+\item{trainedModelVersionIdentifier}{The version identifier of the trained model to export. This specifies
+which version of the trained model should be exported to the specified
+destination.}
 
 \item{membershipIdentifier}{[required] The membership ID of the member that is receiving the exported trained
 model artifacts.}

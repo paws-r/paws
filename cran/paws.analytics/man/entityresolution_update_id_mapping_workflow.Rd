@@ -10,6 +10,7 @@ entityresolution_update_id_mapping_workflow(
   inputSourceConfig,
   outputSourceConfig = NULL,
   idMappingTechniques,
+  incrementalRunConfig = NULL,
   roleArn = NULL
 )
 }
@@ -22,17 +23,19 @@ entityresolution_update_id_mapping_workflow(
 and \code{SchemaName}.}
 
 \item{outputSourceConfig}{A list of \code{OutputSource} objects, each of which contains fields
-\code{OutputS3Path} and \code{KMSArn}.}
+\code{outputS3Path} and \code{KMSArn}.}
 
 \item{idMappingTechniques}{[required] An object which defines the ID mapping technique and any additional
 configurations.}
+
+\item{incrementalRunConfig}{The incremental run configuration for the update ID mapping workflow.}
 
 \item{roleArn}{The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
 assumes this role to access Amazon Web Services resources on your
 behalf.}
 }
 \description{
-Updates an existing \code{IdMappingWorkflow}. This method is identical to \code{\link[=entityresolution_create_id_mapping_workflow]{create_id_mapping_workflow}}, except it uses an HTTP \code{PUT} request instead of a \code{POST} request, and the \code{IdMappingWorkflow} must already exist for the method to succeed.
+Updates an existing \code{IdMappingWorkflow}. This method is identical to CreateIdMappingWorkflow, except it uses an HTTP \code{PUT} request instead of a \code{POST} request, and the \code{IdMappingWorkflow} must already exist for the method to succeed.
 
 See \url{https://www.paws-r-sdk.com/docs/entityresolution_update_id_mapping_workflow/} for full documentation.
 }

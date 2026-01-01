@@ -4,12 +4,12 @@
 \alias{workspacesweb_associate_network_settings}
 \title{Associates a network settings resource with a web portal}
 \usage{
-workspacesweb_associate_network_settings(networkSettingsArn, portalArn)
+workspacesweb_associate_network_settings(portalArn, networkSettingsArn)
 }
 \arguments{
-\item{networkSettingsArn}{[required] The ARN of the network settings.}
-
 \item{portalArn}{[required] The ARN of the web portal.}
+
+\item{networkSettingsArn}{[required] The ARN of the network settings.}
 }
 \description{
 Associates a network settings resource with a web portal.

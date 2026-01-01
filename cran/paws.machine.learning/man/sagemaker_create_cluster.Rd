@@ -2,21 +2,29 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_create_cluster}
 \alias{sagemaker_create_cluster}
-\title{Creates a SageMaker HyperPod cluster}
+\title{Creates an Amazon SageMaker HyperPod cluster}
 \usage{
 sagemaker_create_cluster(
   ClusterName,
-  InstanceGroups,
+  InstanceGroups = NULL,
+  RestrictedInstanceGroups = NULL,
   VpcConfig = NULL,
   Tags = NULL,
   Orchestrator = NULL,
-  NodeRecovery = NULL
+  NodeRecovery = NULL,
+  TieredStorageConfig = NULL,
+  NodeProvisioningMode = NULL,
+  ClusterRole = NULL,
+  AutoScaling = NULL
 )
 }
 \arguments{
 \item{ClusterName}{[required] The name for the new SageMaker HyperPod cluster.}
 
-\item{InstanceGroups}{[required] The instance groups to be created in the SageMaker HyperPod cluster.}
+\item{InstanceGroups}{The instance groups to be created in the SageMaker HyperPod cluster.}
+
+\item{RestrictedInstanceGroups}{The specialized instance groups for training models like Amazon Nova to
+be created in the SageMaker HyperPod cluster.}
 
 \item{VpcConfig}{Specifies the Amazon Virtual Private Cloud (VPC) that is associated with
 the Amazon SageMaker HyperPod cluster. You can control access to and
@@ -52,16 +60,44 @@ learn more about tagging Amazon Web Services resources in general, see
 
 \item{Orchestrator}{The type of orchestrator to use for the SageMaker HyperPod cluster.
 Currently, the only supported value is \code{"eks"}, which is to use an
-Amazon Elastic Kubernetes Service (EKS) cluster as the orchestrator.}
+Amazon Elastic Kubernetes Service cluster as the orchestrator.}
 
 \item{NodeRecovery}{The node recovery mode for the SageMaker HyperPod cluster. When set to
 \code{Automatic}, SageMaker HyperPod will automatically reboot or replace
 faulty nodes when issues are detected. When set to \code{None}, cluster
 administrators will need to manually manage any faulty cluster
 instances.}
+
+\item{TieredStorageConfig}{The configuration for managed tier checkpointing on the HyperPod
+cluster. When enabled, this feature uses a multi-tier storage approach
+for storing model checkpoints, providing faster checkpoint operations
+and improved fault tolerance across cluster nodes.}
+
+\item{NodeProvisioningMode}{The mode for provisioning nodes in the cluster. You can specify the
+following modes:
+\itemize{
+\item \strong{Continuous}: Scaling behavior that enables 1) concurrent
+operation execution within instance groups, 2) continuous retry
+mechanisms for failed operations, 3) enhanced customer visibility
+into cluster events through detailed event streams, 4) partial
+provisioning capabilities. Your clusters and instance groups remain
+\code{InService} while scaling. This mode is only supported for EKS
+orchestrated clusters.
+}}
+
+\item{ClusterRole}{The Amazon Resource Name (ARN) of the IAM role that HyperPod assumes to
+perform cluster autoscaling operations. This role must have permissions
+for \code{sagemaker:BatchAddClusterNodes} and
+\code{sagemaker:BatchDeleteClusterNodes}. This is only required when
+autoscaling is enabled and when HyperPod is performing autoscaling
+operations.}
+
+\item{AutoScaling}{The autoscaling configuration for the cluster. Enables automatic scaling
+of cluster nodes based on workload demand using a Karpenter-based
+system.}
 }
 \description{
-Creates a SageMaker HyperPod cluster. SageMaker HyperPod is a capability of SageMaker for creating and managing persistent clusters for developing large machine learning models, such as large language models (LLMs) and diffusion models. To learn more, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod.html}{Amazon SageMaker HyperPod} in the \emph{Amazon SageMaker Developer Guide}.
+Creates an Amazon SageMaker HyperPod cluster. SageMaker HyperPod is a capability of SageMaker for creating and managing persistent clusters for developing large machine learning models, such as large language models (LLMs) and diffusion models. To learn more, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod.html}{Amazon SageMaker HyperPod} in the \emph{Amazon SageMaker Developer Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_cluster/} for full documentation.
 }

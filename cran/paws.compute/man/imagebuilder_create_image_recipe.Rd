@@ -8,12 +8,13 @@ imagebuilder_create_image_recipe(
   name,
   description = NULL,
   semanticVersion,
-  components,
+  components = NULL,
   parentImage,
   blockDeviceMappings = NULL,
   tags = NULL,
   workingDirectory = NULL,
   additionalInstanceConfiguration = NULL,
+  amiTags = NULL,
   clientToken
 )
 }
@@ -39,7 +40,7 @@ assignment requirements for the nodes that you can assign. For example,
 you might choose a software version pattern, such as 1.0.0, or a date,
 such as 2021.01.01.}
 
-\item{components}{[required] The components included in the image recipe.}
+\item{components}{The components included in the image recipe.}
 
 \item{parentImage}{[required] The base image for customizations specified in the image recipe. You can
 specify the parent image using one of the following options:
@@ -61,6 +62,9 @@ must have access to the AMI, and the AMI must be in the source Region.}
 \item{workingDirectory}{The working directory used during build and test workflows.}
 
 \item{additionalInstanceConfiguration}{Specify additional settings and launch scripts for your build instances.}
+
+\item{amiTags}{Tags that are applied to the AMI that Image Builder creates during the
+Build phase prior to image distribution.}
 
 \item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of
 the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}

@@ -4,15 +4,24 @@
 \alias{controltower_create_landing_zone}
 \title{Creates a new landing zone}
 \usage{
-controltower_create_landing_zone(manifest, tags = NULL, version)
+controltower_create_landing_zone(
+  version,
+  remediationTypes = NULL,
+  tags = NULL,
+  manifest = NULL
+)
 }
 \arguments{
-\item{manifest}{[required] The manifest JSON file is a text file that describes your Amazon Web
-Services resources. For examples, review \href{https://docs.aws.amazon.com/controltower/latest/userguide/lz-api-launch.html}{Launch your landing zone}.}
+\item{version}{[required] The landing zone version, for example, 3.0.}
+
+\item{remediationTypes}{Specifies the types of remediation actions to apply when creating the
+landing zone, such as automatic drift correction or compliance
+enforcement.}
 
 \item{tags}{Tags to be applied to the landing zone.}
 
-\item{version}{[required] The landing zone version, for example, 3.0.}
+\item{manifest}{The manifest JSON file is a text file that describes your Amazon Web
+Services resources. For examples, review \href{https://docs.aws.amazon.com/controltower/latest/userguide/lz-api-launch.html}{Launch your landing zone}.}
 }
 \description{
 Creates a new landing zone. This API call starts an asynchronous operation that creates and configures a landing zone, based on the parameters specified in the manifest JSON file.

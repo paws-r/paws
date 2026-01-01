@@ -4,14 +4,14 @@
 \alias{bedrockagent_get_agent_action_group}
 \title{Gets information about an action group for an agent}
 \usage{
-bedrockagent_get_agent_action_group(actionGroupId, agentId, agentVersion)
+bedrockagent_get_agent_action_group(agentId, agentVersion, actionGroupId)
 }
 \arguments{
-\item{actionGroupId}{[required] The unique identifier of the action group for which to get information.}
-
 \item{agentId}{[required] The unique identifier of the agent that the action group belongs to.}
 
 \item{agentVersion}{[required] The version of the agent that the action group belongs to.}
+
+\item{actionGroupId}{[required] The unique identifier of the action group for which to get information.}
 }
 \description{
 Gets information about an action group for an agent.

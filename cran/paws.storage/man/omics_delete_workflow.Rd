@@ -2,7 +2,7 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_delete_workflow}
 \alias{omics_delete_workflow}
-\title{Deletes a workflow}
+\title{Deletes a workflow by specifying its ID}
 \usage{
 omics_delete_workflow(id)
 }
@@ -10,7 +10,7 @@ omics_delete_workflow(id)
 \item{id}{[required] The workflow's ID.}
 }
 \description{
-Deletes a workflow.
+Deletes a workflow by specifying its ID. This operation returns a response with no body if the deletion is successful.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_delete_workflow/} for full documentation.
 }

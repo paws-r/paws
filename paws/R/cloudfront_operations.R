@@ -3,32 +3,42 @@
 #' @include cloudfront_service.R
 NULL
 
-#' Associates an alias (also known as a CNAME or an alternate domain name)
-#' with a CloudFront distribution
+#' The AssociateAlias API operation only supports standard distributions
 #'
 #' @description
-#' Associates an alias (also known as a CNAME or an alternate domain name)
-#' with a CloudFront distribution.
+#' The [`associate_alias`][cloudfront_associate_alias] API operation only
+#' supports standard distributions. To move domains between distribution
+#' tenants and/or standard distributions, we recommend that you use the
+#' [`update_domain_association`][cloudfront_update_domain_association] API
+#' operation instead.
 #' 
-#' With this operation you can move an alias that's already in use on a
-#' CloudFront distribution to a different distribution in one step. This
+#' Associates an alias with a CloudFront standard distribution. An alias is
+#' commonly known as a custom domain or vanity domain. It can also be
+#' called a CNAME or alternate domain name.
+#' 
+#' With this operation, you can move an alias that's already used for a
+#' standard distribution to a different standard distribution. This
 #' prevents the downtime that could occur if you first remove the alias
-#' from one distribution and then separately add the alias to another
-#' distribution.
+#' from one standard distribution and then separately add the alias to
+#' another standard distribution.
 #' 
-#' To use this operation to associate an alias with a distribution, you
-#' provide the alias and the ID of the target distribution for the alias.
-#' For more information, including how to set up the target distribution,
-#' prerequisites that you must complete, and other restrictions, see
-#' [Moving an alternate domain name to a different
-#' distribution](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CNAMEs.html#alternate-domain-names-move)
+#' To use this operation, specify the alias and the ID of the target
+#' standard distribution.
+#' 
+#' For more information, including how to set up the target standard
+#' distribution, prerequisites that you must complete, and other
+#' restrictions, see [Moving an alternate domain name to a different
+#' standard distribution or distribution
+#' tenant](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CNAMEs.html#alternate-domain-names-move)
 #' in the *Amazon CloudFront Developer Guide*.
 #'
 #' @usage
 #' cloudfront_associate_alias(TargetDistributionId, Alias)
 #'
-#' @param TargetDistributionId &#91;required&#93; The ID of the distribution that you're associating the alias with.
-#' @param Alias &#91;required&#93; The alias (also known as a CNAME) to add to the target distribution.
+#' @param TargetDistributionId &#91;required&#93; The ID of the standard distribution that you're associating the alias
+#' with.
+#' @param Alias &#91;required&#93; The alias (also known as a CNAME) to add to the target standard
+#' distribution.
 #'
 #' @return
 #' An empty list.
@@ -295,7 +305,8 @@ cloudfront_associate_distribution_web_acl <- function(Id, WebACLArn, IfMatch = N
 #'               )
 #'             ),
 #'             S3OriginConfig = list(
-#'               OriginAccessIdentity = "string"
+#'               OriginAccessIdentity = "string",
+#'               OriginReadTimeout = 123
 #'             ),
 #'             CustomOriginConfig = list(
 #'               HTTPPort = 123,
@@ -308,15 +319,18 @@ cloudfront_associate_distribution_web_acl <- function(Id, WebACLArn, IfMatch = N
 #'                 )
 #'               ),
 #'               OriginReadTimeout = 123,
-#'               OriginKeepaliveTimeout = 123
+#'               OriginKeepaliveTimeout = 123,
+#'               IpAddressType = "ipv4"|"ipv6"|"dualstack"
 #'             ),
 #'             VpcOriginConfig = list(
 #'               VpcOriginId = "string",
+#'               OwnerAccountId = "string",
 #'               OriginReadTimeout = 123,
 #'               OriginKeepaliveTimeout = 123
 #'             ),
 #'             ConnectionAttempts = 123,
 #'             ConnectionTimeout = 123,
+#'             ResponseCompletionTimeout = 123,
 #'             OriginShield = list(
 #'               Enabled = TRUE|FALSE,
 #'               OriginShieldRegion = "string"
@@ -553,7 +567,7 @@ cloudfront_associate_distribution_web_acl <- function(Id, WebACLArn, IfMatch = N
 #'         IAMCertificateId = "string",
 #'         ACMCertificateArn = "string",
 #'         SSLSupportMethod = "sni-only"|"vip"|"static-ip",
-#'         MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021",
+#'         MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021"|"TLSv1.3_2025"|"TLSv1.2_2025",
 #'         Certificate = "string",
 #'         CertificateSource = "cloudfront"|"iam"|"acm"
 #'       ),
@@ -586,7 +600,18 @@ cloudfront_associate_distribution_web_acl <- function(Id, WebACLArn, IfMatch = N
 #'           )
 #'         )
 #'       ),
-#'       ConnectionMode = "direct"|"tenant-only"
+#'       ConnectionMode = "direct"|"tenant-only",
+#'       ViewerMtlsConfig = list(
+#'         Mode = "required"|"optional",
+#'         TrustStoreConfig = list(
+#'           TrustStoreId = "string",
+#'           AdvertiseTrustStoreCaNames = TRUE|FALSE,
+#'           IgnoreCertificateExpiry = TRUE|FALSE
+#'         )
+#'       ),
+#'       ConnectionFunctionAssociation = list(
+#'         Id = "string"
+#'       )
 #'     ),
 #'     AliasICPRecordals = list(
 #'       list(
@@ -641,12 +666,23 @@ cloudfront_copy_distribution <- function(PrimaryDistributionId, Staging = NULL, 
 #' Creates an Anycast static IP list.
 #'
 #' @usage
-#' cloudfront_create_anycast_ip_list(Name, IpCount, Tags)
+#' cloudfront_create_anycast_ip_list(Name, IpCount, Tags, IpAddressType,
+#'   IpamCidrConfigs)
 #'
 #' @param Name &#91;required&#93; Name of the Anycast static IP list.
 #' @param IpCount &#91;required&#93; The number of static IP addresses that are allocated to the Anycast
 #' static IP list. Valid values: 21 or 3.
 #' @param Tags 
+#' @param IpAddressType The IP address type for the Anycast static IP list. You can specify one
+#' of the following options:
+#' 
+#' -   `ipv4` only
+#' 
+#' -   `ipv6` only
+#' 
+#' -   `dualstack` - Allocate a list of both IPv4 and IPv6 addresses
+#' @param IpamCidrConfigs A list of IPAM CIDR configurations that specify the IP address ranges
+#' and IPAM pool settings for creating the Anycast static IP list.
 #'
 #' @return
 #' A list with the following syntax:
@@ -657,6 +693,18 @@ cloudfront_copy_distribution <- function(PrimaryDistributionId, Staging = NULL, 
 #'     Name = "string",
 #'     Status = "string",
 #'     Arn = "string",
+#'     IpAddressType = "ipv4"|"ipv6"|"dualstack",
+#'     IpamConfig = list(
+#'       Quantity = 123,
+#'       IpamCidrConfigs = list(
+#'         list(
+#'           Cidr = "string",
+#'           IpamPoolArn = "string",
+#'           AnycastIp = "string",
+#'           Status = "provisioned"|"failed-provision"|"provisioning"|"deprovisioned"|"failed-deprovision"|"deprovisioning"|"advertised"|"failed-advertise"|"advertising"|"withdrawn"|"failed-withdraw"|"withdrawing"
+#'         )
+#'       )
+#'     ),
 #'     AnycastIps = list(
 #'       "string"
 #'     ),
@@ -681,6 +729,15 @@ cloudfront_copy_distribution <- function(PrimaryDistributionId, Staging = NULL, 
 #'         Value = "string"
 #'       )
 #'     )
+#'   ),
+#'   IpAddressType = "ipv4"|"ipv6"|"dualstack",
+#'   IpamCidrConfigs = list(
+#'     list(
+#'       Cidr = "string",
+#'       IpamPoolArn = "string",
+#'       AnycastIp = "string",
+#'       Status = "provisioned"|"failed-provision"|"provisioning"|"deprovisioned"|"failed-deprovision"|"deprovisioning"|"advertised"|"failed-advertise"|"advertising"|"withdrawn"|"failed-withdraw"|"withdrawing"
+#'     )
 #'   )
 #' )
 #' ```
@@ -690,7 +747,7 @@ cloudfront_copy_distribution <- function(PrimaryDistributionId, Staging = NULL, 
 #' @rdname cloudfront_create_anycast_ip_list
 #'
 #' @aliases cloudfront_create_anycast_ip_list
-cloudfront_create_anycast_ip_list <- function(Name, IpCount, Tags = NULL) {
+cloudfront_create_anycast_ip_list <- function(Name, IpCount, Tags = NULL, IpAddressType = NULL, IpamCidrConfigs = NULL) {
   op <- new_operation(
     name = "CreateAnycastIpList",
     http_method = "POST",
@@ -699,7 +756,7 @@ cloudfront_create_anycast_ip_list <- function(Name, IpCount, Tags = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudfront$create_anycast_ip_list_input(Name = Name, IpCount = IpCount, Tags = Tags)
+  input <- .cloudfront$create_anycast_ip_list_input(Name = Name, IpCount = IpCount, Tags = Tags, IpAddressType = IpAddressType, IpamCidrConfigs = IpamCidrConfigs)
   output <- .cloudfront$create_anycast_ip_list_output()
   config <- get_config()
   svc <- .cloudfront$service(config, op)
@@ -725,6 +782,11 @@ cloudfront_create_anycast_ip_list <- function(Name, IpCount, Tags = NULL) {
 #' 
 #' -   The default, minimum, and maximum time to live (TTL) values that you
 #'     want objects to stay in the CloudFront cache.
+#' 
+#'     If your minimum TTL is greater than 0, CloudFront will cache content
+#'     for at least the duration specified in the cache policy's minimum
+#'     TTL, even if the `Cache-Control: no-cache`, `no-store`, or `private`
+#'     directives are present in the origin headers.
 #' 
 #' The headers, cookies, and query strings that are included in the cache
 #' key are also included in requests that CloudFront sends to the origin.
@@ -930,6 +992,106 @@ cloudfront_create_cloud_front_origin_access_identity <- function(CloudFrontOrigi
   return(response)
 }
 .cloudfront$operations$create_cloud_front_origin_access_identity <- cloudfront_create_cloud_front_origin_access_identity
+
+#' Creates a connection function
+#'
+#' @description
+#' Creates a connection function.
+#'
+#' @usage
+#' cloudfront_create_connection_function(Name, ConnectionFunctionConfig,
+#'   ConnectionFunctionCode, Tags)
+#'
+#' @param Name &#91;required&#93; A name for the connection function.
+#' @param ConnectionFunctionConfig &#91;required&#93; 
+#' @param ConnectionFunctionCode &#91;required&#93; The code for the connection function.
+#' @param Tags 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionFunctionSummary = list(
+#'     Name = "string",
+#'     Id = "string",
+#'     ConnectionFunctionConfig = list(
+#'       Comment = "string",
+#'       Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0",
+#'       KeyValueStoreAssociations = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             KeyValueStoreARN = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ConnectionFunctionArn = "string",
+#'     Status = "string",
+#'     Stage = "DEVELOPMENT"|"LIVE",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   Location = "string",
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_connection_function(
+#'   Name = "string",
+#'   ConnectionFunctionConfig = list(
+#'     Comment = "string",
+#'     Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0",
+#'     KeyValueStoreAssociations = list(
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           KeyValueStoreARN = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ConnectionFunctionCode = raw,
+#'   Tags = list(
+#'     Items = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_create_connection_function
+#'
+#' @aliases cloudfront_create_connection_function
+cloudfront_create_connection_function <- function(Name, ConnectionFunctionConfig, ConnectionFunctionCode, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateConnectionFunction",
+    http_method = "POST",
+    http_path = "/2020-05-31/connection-function",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$create_connection_function_input(Name = Name, ConnectionFunctionConfig = ConnectionFunctionConfig, ConnectionFunctionCode = ConnectionFunctionCode, Tags = Tags)
+  output <- .cloudfront$create_connection_function_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$create_connection_function <- cloudfront_create_connection_function
 
 #' Creates a connection group
 #'
@@ -1221,7 +1383,8 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'               )
 #'             ),
 #'             S3OriginConfig = list(
-#'               OriginAccessIdentity = "string"
+#'               OriginAccessIdentity = "string",
+#'               OriginReadTimeout = 123
 #'             ),
 #'             CustomOriginConfig = list(
 #'               HTTPPort = 123,
@@ -1234,15 +1397,18 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'                 )
 #'               ),
 #'               OriginReadTimeout = 123,
-#'               OriginKeepaliveTimeout = 123
+#'               OriginKeepaliveTimeout = 123,
+#'               IpAddressType = "ipv4"|"ipv6"|"dualstack"
 #'             ),
 #'             VpcOriginConfig = list(
 #'               VpcOriginId = "string",
+#'               OwnerAccountId = "string",
 #'               OriginReadTimeout = 123,
 #'               OriginKeepaliveTimeout = 123
 #'             ),
 #'             ConnectionAttempts = 123,
 #'             ConnectionTimeout = 123,
+#'             ResponseCompletionTimeout = 123,
 #'             OriginShield = list(
 #'               Enabled = TRUE|FALSE,
 #'               OriginShieldRegion = "string"
@@ -1479,7 +1645,7 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'         IAMCertificateId = "string",
 #'         ACMCertificateArn = "string",
 #'         SSLSupportMethod = "sni-only"|"vip"|"static-ip",
-#'         MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021",
+#'         MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021"|"TLSv1.3_2025"|"TLSv1.2_2025",
 #'         Certificate = "string",
 #'         CertificateSource = "cloudfront"|"iam"|"acm"
 #'       ),
@@ -1512,7 +1678,18 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'           )
 #'         )
 #'       ),
-#'       ConnectionMode = "direct"|"tenant-only"
+#'       ConnectionMode = "direct"|"tenant-only",
+#'       ViewerMtlsConfig = list(
+#'         Mode = "required"|"optional",
+#'         TrustStoreConfig = list(
+#'           TrustStoreId = "string",
+#'           AdvertiseTrustStoreCaNames = TRUE|FALSE,
+#'           IgnoreCertificateExpiry = TRUE|FALSE
+#'         )
+#'       ),
+#'       ConnectionFunctionAssociation = list(
+#'         Id = "string"
+#'       )
 #'     ),
 #'     AliasICPRecordals = list(
 #'       list(
@@ -1555,7 +1732,8 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'             )
 #'           ),
 #'           S3OriginConfig = list(
-#'             OriginAccessIdentity = "string"
+#'             OriginAccessIdentity = "string",
+#'             OriginReadTimeout = 123
 #'           ),
 #'           CustomOriginConfig = list(
 #'             HTTPPort = 123,
@@ -1568,15 +1746,18 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'               )
 #'             ),
 #'             OriginReadTimeout = 123,
-#'             OriginKeepaliveTimeout = 123
+#'             OriginKeepaliveTimeout = 123,
+#'             IpAddressType = "ipv4"|"ipv6"|"dualstack"
 #'           ),
 #'           VpcOriginConfig = list(
 #'             VpcOriginId = "string",
+#'             OwnerAccountId = "string",
 #'             OriginReadTimeout = 123,
 #'             OriginKeepaliveTimeout = 123
 #'           ),
 #'           ConnectionAttempts = 123,
 #'           ConnectionTimeout = 123,
+#'           ResponseCompletionTimeout = 123,
 #'           OriginShield = list(
 #'             Enabled = TRUE|FALSE,
 #'             OriginShieldRegion = "string"
@@ -1813,7 +1994,7 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'       IAMCertificateId = "string",
 #'       ACMCertificateArn = "string",
 #'       SSLSupportMethod = "sni-only"|"vip"|"static-ip",
-#'       MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021",
+#'       MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021"|"TLSv1.3_2025"|"TLSv1.2_2025",
 #'       Certificate = "string",
 #'       CertificateSource = "cloudfront"|"iam"|"acm"
 #'     ),
@@ -1846,7 +2027,18 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'         )
 #'       )
 #'     ),
-#'     ConnectionMode = "direct"|"tenant-only"
+#'     ConnectionMode = "direct"|"tenant-only",
+#'     ViewerMtlsConfig = list(
+#'       Mode = "required"|"optional",
+#'       TrustStoreConfig = list(
+#'         TrustStoreId = "string",
+#'         AdvertiseTrustStoreCaNames = TRUE|FALSE,
+#'         IgnoreCertificateExpiry = TRUE|FALSE
+#'       )
+#'     ),
+#'     ConnectionFunctionAssociation = list(
+#'       Id = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -2124,7 +2316,8 @@ cloudfront_create_distribution_tenant <- function(DistributionId, Name, Domains,
 #'               )
 #'             ),
 #'             S3OriginConfig = list(
-#'               OriginAccessIdentity = "string"
+#'               OriginAccessIdentity = "string",
+#'               OriginReadTimeout = 123
 #'             ),
 #'             CustomOriginConfig = list(
 #'               HTTPPort = 123,
@@ -2137,15 +2330,18 @@ cloudfront_create_distribution_tenant <- function(DistributionId, Name, Domains,
 #'                 )
 #'               ),
 #'               OriginReadTimeout = 123,
-#'               OriginKeepaliveTimeout = 123
+#'               OriginKeepaliveTimeout = 123,
+#'               IpAddressType = "ipv4"|"ipv6"|"dualstack"
 #'             ),
 #'             VpcOriginConfig = list(
 #'               VpcOriginId = "string",
+#'               OwnerAccountId = "string",
 #'               OriginReadTimeout = 123,
 #'               OriginKeepaliveTimeout = 123
 #'             ),
 #'             ConnectionAttempts = 123,
 #'             ConnectionTimeout = 123,
+#'             ResponseCompletionTimeout = 123,
 #'             OriginShield = list(
 #'               Enabled = TRUE|FALSE,
 #'               OriginShieldRegion = "string"
@@ -2382,7 +2578,7 @@ cloudfront_create_distribution_tenant <- function(DistributionId, Name, Domains,
 #'         IAMCertificateId = "string",
 #'         ACMCertificateArn = "string",
 #'         SSLSupportMethod = "sni-only"|"vip"|"static-ip",
-#'         MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021",
+#'         MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021"|"TLSv1.3_2025"|"TLSv1.2_2025",
 #'         Certificate = "string",
 #'         CertificateSource = "cloudfront"|"iam"|"acm"
 #'       ),
@@ -2415,7 +2611,18 @@ cloudfront_create_distribution_tenant <- function(DistributionId, Name, Domains,
 #'           )
 #'         )
 #'       ),
-#'       ConnectionMode = "direct"|"tenant-only"
+#'       ConnectionMode = "direct"|"tenant-only",
+#'       ViewerMtlsConfig = list(
+#'         Mode = "required"|"optional",
+#'         TrustStoreConfig = list(
+#'           TrustStoreId = "string",
+#'           AdvertiseTrustStoreCaNames = TRUE|FALSE,
+#'           IgnoreCertificateExpiry = TRUE|FALSE
+#'         )
+#'       ),
+#'       ConnectionFunctionAssociation = list(
+#'         Id = "string"
+#'       )
 #'     ),
 #'     AliasICPRecordals = list(
 #'       list(
@@ -2459,7 +2666,8 @@ cloudfront_create_distribution_tenant <- function(DistributionId, Name, Domains,
 #'               )
 #'             ),
 #'             S3OriginConfig = list(
-#'               OriginAccessIdentity = "string"
+#'               OriginAccessIdentity = "string",
+#'               OriginReadTimeout = 123
 #'             ),
 #'             CustomOriginConfig = list(
 #'               HTTPPort = 123,
@@ -2472,15 +2680,18 @@ cloudfront_create_distribution_tenant <- function(DistributionId, Name, Domains,
 #'                 )
 #'               ),
 #'               OriginReadTimeout = 123,
-#'               OriginKeepaliveTimeout = 123
+#'               OriginKeepaliveTimeout = 123,
+#'               IpAddressType = "ipv4"|"ipv6"|"dualstack"
 #'             ),
 #'             VpcOriginConfig = list(
 #'               VpcOriginId = "string",
+#'               OwnerAccountId = "string",
 #'               OriginReadTimeout = 123,
 #'               OriginKeepaliveTimeout = 123
 #'             ),
 #'             ConnectionAttempts = 123,
 #'             ConnectionTimeout = 123,
+#'             ResponseCompletionTimeout = 123,
 #'             OriginShield = list(
 #'               Enabled = TRUE|FALSE,
 #'               OriginShieldRegion = "string"
@@ -2717,7 +2928,7 @@ cloudfront_create_distribution_tenant <- function(DistributionId, Name, Domains,
 #'         IAMCertificateId = "string",
 #'         ACMCertificateArn = "string",
 #'         SSLSupportMethod = "sni-only"|"vip"|"static-ip",
-#'         MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021",
+#'         MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021"|"TLSv1.3_2025"|"TLSv1.2_2025",
 #'         Certificate = "string",
 #'         CertificateSource = "cloudfront"|"iam"|"acm"
 #'       ),
@@ -2750,7 +2961,18 @@ cloudfront_create_distribution_tenant <- function(DistributionId, Name, Domains,
 #'           )
 #'         )
 #'       ),
-#'       ConnectionMode = "direct"|"tenant-only"
+#'       ConnectionMode = "direct"|"tenant-only",
+#'       ViewerMtlsConfig = list(
+#'         Mode = "required"|"optional",
+#'         TrustStoreConfig = list(
+#'           TrustStoreId = "string",
+#'           AdvertiseTrustStoreCaNames = TRUE|FALSE,
+#'           IgnoreCertificateExpiry = TRUE|FALSE
+#'         )
+#'       ),
+#'       ConnectionFunctionAssociation = list(
+#'         Id = "string"
+#'       )
 #'     ),
 #'     Tags = list(
 #'       Items = list(
@@ -4392,6 +4614,84 @@ cloudfront_create_streaming_distribution_with_tags <- function(StreamingDistribu
 }
 .cloudfront$operations$create_streaming_distribution_with_tags <- cloudfront_create_streaming_distribution_with_tags
 
+#' Creates a trust store
+#'
+#' @description
+#' Creates a trust store.
+#'
+#' @usage
+#' cloudfront_create_trust_store(Name, CaCertificatesBundleSource, Tags)
+#'
+#' @param Name &#91;required&#93; A name for the trust store.
+#' @param CaCertificatesBundleSource &#91;required&#93; The CA certificates bundle source for the trust store.
+#' @param Tags 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrustStore = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Name = "string",
+#'     Status = "pending"|"active"|"failed",
+#'     NumberOfCaCertificates = 123,
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Reason = "string"
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_trust_store(
+#'   Name = "string",
+#'   CaCertificatesBundleSource = list(
+#'     CaCertificatesBundleS3Location = list(
+#'       Bucket = "string",
+#'       Key = "string",
+#'       Region = "string",
+#'       Version = "string"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     Items = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_create_trust_store
+#'
+#' @aliases cloudfront_create_trust_store
+cloudfront_create_trust_store <- function(Name, CaCertificatesBundleSource, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateTrustStore",
+    http_method = "POST",
+    http_path = "/2020-05-31/trust-store",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$create_trust_store_input(Name = Name, CaCertificatesBundleSource = CaCertificatesBundleSource, Tags = Tags)
+  output <- .cloudfront$create_trust_store_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$create_trust_store <- cloudfront_create_trust_store
+
 #' Create an Amazon CloudFront VPC origin
 #'
 #' @description
@@ -4410,6 +4710,7 @@ cloudfront_create_streaming_distribution_with_tags <- function(StreamingDistribu
 #'   VpcOrigin = list(
 #'     Id = "string",
 #'     Arn = "string",
+#'     AccountId = "string",
 #'     Status = "string",
 #'     CreatedTime = as.POSIXct(
 #'       "2015-01-01"
@@ -4642,6 +4943,53 @@ cloudfront_delete_cloud_front_origin_access_identity <- function(Id, IfMatch = N
 }
 .cloudfront$operations$delete_cloud_front_origin_access_identity <- cloudfront_delete_cloud_front_origin_access_identity
 
+#' Deletes a connection function
+#'
+#' @description
+#' Deletes a connection function.
+#'
+#' @usage
+#' cloudfront_delete_connection_function(Id, IfMatch)
+#'
+#' @param Id &#91;required&#93; The connection function's ID.
+#' @param IfMatch &#91;required&#93; The current version (`ETag` value) of the connection function you are
+#' deleting.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_connection_function(
+#'   Id = "string",
+#'   IfMatch = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_delete_connection_function
+#'
+#' @aliases cloudfront_delete_connection_function
+cloudfront_delete_connection_function <- function(Id, IfMatch) {
+  op <- new_operation(
+    name = "DeleteConnectionFunction",
+    http_method = "DELETE",
+    http_path = "/2020-05-31/connection-function/{Id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$delete_connection_function_input(Id = Id, IfMatch = IfMatch)
+  output <- .cloudfront$delete_connection_function_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$delete_connection_function <- cloudfront_delete_connection_function
+
 #' Deletes a connection group
 #'
 #' @description
@@ -4745,6 +5093,10 @@ cloudfront_delete_continuous_deployment_policy <- function(Id, IfMatch = NULL) {
 #'
 #' @description
 #' Delete a distribution.
+#' 
+#' Before you can delete a distribution, you must disable it, which
+#' requires permission to update the distribution. Once deleted, a
+#' distribution cannot be recovered.
 #'
 #' @usage
 #' cloudfront_delete_distribution(Id, IfMatch)
@@ -5364,6 +5716,51 @@ cloudfront_delete_realtime_log_config <- function(Name = NULL, ARN = NULL) {
 }
 .cloudfront$operations$delete_realtime_log_config <- cloudfront_delete_realtime_log_config
 
+#' Deletes the resource policy attached to the CloudFront resource
+#'
+#' @description
+#' Deletes the resource policy attached to the CloudFront resource.
+#'
+#' @usage
+#' cloudfront_delete_resource_policy(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the CloudFront resource for which the
+#' resource policy should be deleted.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_resource_policy(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_delete_resource_policy
+#'
+#' @aliases cloudfront_delete_resource_policy
+cloudfront_delete_resource_policy <- function(ResourceArn) {
+  op <- new_operation(
+    name = "DeleteResourcePolicy",
+    http_method = "POST",
+    http_path = "/2020-05-31/delete-resource-policy",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$delete_resource_policy_input(ResourceArn = ResourceArn)
+  output <- .cloudfront$delete_resource_policy_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$delete_resource_policy <- cloudfront_delete_resource_policy
+
 #' Deletes a response headers policy
 #'
 #' @description
@@ -5517,6 +5914,52 @@ cloudfront_delete_streaming_distribution <- function(Id, IfMatch = NULL) {
 }
 .cloudfront$operations$delete_streaming_distribution <- cloudfront_delete_streaming_distribution
 
+#' Deletes a trust store
+#'
+#' @description
+#' Deletes a trust store.
+#'
+#' @usage
+#' cloudfront_delete_trust_store(Id, IfMatch)
+#'
+#' @param Id &#91;required&#93; The trust store's ID.
+#' @param IfMatch &#91;required&#93; The current version (`ETag` value) of the trust store you are deleting.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_trust_store(
+#'   Id = "string",
+#'   IfMatch = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_delete_trust_store
+#'
+#' @aliases cloudfront_delete_trust_store
+cloudfront_delete_trust_store <- function(Id, IfMatch) {
+  op <- new_operation(
+    name = "DeleteTrustStore",
+    http_method = "DELETE",
+    http_path = "/2020-05-31/trust-store/{Id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$delete_trust_store_input(Id = Id, IfMatch = IfMatch)
+  output <- .cloudfront$delete_trust_store_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$delete_trust_store <- cloudfront_delete_trust_store
+
 #' Delete an Amazon CloudFront VPC origin
 #'
 #' @description
@@ -5537,6 +5980,7 @@ cloudfront_delete_streaming_distribution <- function(Id, IfMatch = NULL) {
 #'   VpcOrigin = list(
 #'     Id = "string",
 #'     Arn = "string",
+#'     AccountId = "string",
 #'     Status = "string",
 #'     CreatedTime = as.POSIXct(
 #'       "2015-01-01"
@@ -5593,6 +6037,82 @@ cloudfront_delete_vpc_origin <- function(Id, IfMatch) {
   return(response)
 }
 .cloudfront$operations$delete_vpc_origin <- cloudfront_delete_vpc_origin
+
+#' Describes a connection function
+#'
+#' @description
+#' Describes a connection function.
+#'
+#' @usage
+#' cloudfront_describe_connection_function(Identifier, Stage)
+#'
+#' @param Identifier &#91;required&#93; The connection function's identifier.
+#' @param Stage The connection function's stage.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionFunctionSummary = list(
+#'     Name = "string",
+#'     Id = "string",
+#'     ConnectionFunctionConfig = list(
+#'       Comment = "string",
+#'       Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0",
+#'       KeyValueStoreAssociations = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             KeyValueStoreARN = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ConnectionFunctionArn = "string",
+#'     Status = "string",
+#'     Stage = "DEVELOPMENT"|"LIVE",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_connection_function(
+#'   Identifier = "string",
+#'   Stage = "DEVELOPMENT"|"LIVE"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_describe_connection_function
+#'
+#' @aliases cloudfront_describe_connection_function
+cloudfront_describe_connection_function <- function(Identifier, Stage = NULL) {
+  op <- new_operation(
+    name = "DescribeConnectionFunction",
+    http_method = "GET",
+    http_path = "/2020-05-31/connection-function/{Identifier}/describe",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$describe_connection_function_input(Identifier = Identifier, Stage = Stage)
+  output <- .cloudfront$describe_connection_function_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$describe_connection_function <- cloudfront_describe_connection_function
 
 #' Gets configuration information and metadata about a CloudFront function,
 #' but not the function's code
@@ -5865,6 +6385,18 @@ cloudfront_disassociate_distribution_web_acl <- function(Id, IfMatch = NULL) {
 #'     Name = "string",
 #'     Status = "string",
 #'     Arn = "string",
+#'     IpAddressType = "ipv4"|"ipv6"|"dualstack",
+#'     IpamConfig = list(
+#'       Quantity = 123,
+#'       IpamCidrConfigs = list(
+#'         list(
+#'           Cidr = "string",
+#'           IpamPoolArn = "string",
+#'           AnycastIp = "string",
+#'           Status = "provisioned"|"failed-provision"|"provisioning"|"deprovisioned"|"failed-deprovision"|"deprovisioning"|"advertised"|"failed-advertise"|"advertising"|"withdrawn"|"failed-withdraw"|"withdrawing"
+#'         )
+#'       )
+#'     ),
 #'     AnycastIps = list(
 #'       "string"
 #'     ),
@@ -6227,6 +6759,59 @@ cloudfront_get_cloud_front_origin_access_identity_config <- function(Id) {
   return(response)
 }
 .cloudfront$operations$get_cloud_front_origin_access_identity_config <- cloudfront_get_cloud_front_origin_access_identity_config
+
+#' Gets a connection function
+#'
+#' @description
+#' Gets a connection function.
+#'
+#' @usage
+#' cloudfront_get_connection_function(Identifier, Stage)
+#'
+#' @param Identifier &#91;required&#93; The connection function's identifier.
+#' @param Stage The connection function's stage.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionFunctionCode = raw,
+#'   ETag = "string",
+#'   ContentType = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_connection_function(
+#'   Identifier = "string",
+#'   Stage = "DEVELOPMENT"|"LIVE"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_get_connection_function
+#'
+#' @aliases cloudfront_get_connection_function
+cloudfront_get_connection_function <- function(Identifier, Stage = NULL) {
+  op <- new_operation(
+    name = "GetConnectionFunction",
+    http_method = "GET",
+    http_path = "/2020-05-31/connection-function/{Identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$get_connection_function_input(Identifier = Identifier, Stage = Stage)
+  output <- .cloudfront$get_connection_function_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$get_connection_function <- cloudfront_get_connection_function
 
 #' Gets information about a connection group
 #'
@@ -6612,7 +7197,8 @@ cloudfront_get_continuous_deployment_policy_config <- function(Id) {
 #'               )
 #'             ),
 #'             S3OriginConfig = list(
-#'               OriginAccessIdentity = "string"
+#'               OriginAccessIdentity = "string",
+#'               OriginReadTimeout = 123
 #'             ),
 #'             CustomOriginConfig = list(
 #'               HTTPPort = 123,
@@ -6625,15 +7211,18 @@ cloudfront_get_continuous_deployment_policy_config <- function(Id) {
 #'                 )
 #'               ),
 #'               OriginReadTimeout = 123,
-#'               OriginKeepaliveTimeout = 123
+#'               OriginKeepaliveTimeout = 123,
+#'               IpAddressType = "ipv4"|"ipv6"|"dualstack"
 #'             ),
 #'             VpcOriginConfig = list(
 #'               VpcOriginId = "string",
+#'               OwnerAccountId = "string",
 #'               OriginReadTimeout = 123,
 #'               OriginKeepaliveTimeout = 123
 #'             ),
 #'             ConnectionAttempts = 123,
 #'             ConnectionTimeout = 123,
+#'             ResponseCompletionTimeout = 123,
 #'             OriginShield = list(
 #'               Enabled = TRUE|FALSE,
 #'               OriginShieldRegion = "string"
@@ -6870,7 +7459,7 @@ cloudfront_get_continuous_deployment_policy_config <- function(Id) {
 #'         IAMCertificateId = "string",
 #'         ACMCertificateArn = "string",
 #'         SSLSupportMethod = "sni-only"|"vip"|"static-ip",
-#'         MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021",
+#'         MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021"|"TLSv1.3_2025"|"TLSv1.2_2025",
 #'         Certificate = "string",
 #'         CertificateSource = "cloudfront"|"iam"|"acm"
 #'       ),
@@ -6903,7 +7492,18 @@ cloudfront_get_continuous_deployment_policy_config <- function(Id) {
 #'           )
 #'         )
 #'       ),
-#'       ConnectionMode = "direct"|"tenant-only"
+#'       ConnectionMode = "direct"|"tenant-only",
+#'       ViewerMtlsConfig = list(
+#'         Mode = "required"|"optional",
+#'         TrustStoreConfig = list(
+#'           TrustStoreId = "string",
+#'           AdvertiseTrustStoreCaNames = TRUE|FALSE,
+#'           IgnoreCertificateExpiry = TRUE|FALSE
+#'         )
+#'       ),
+#'       ConnectionFunctionAssociation = list(
+#'         Id = "string"
+#'       )
 #'     ),
 #'     AliasICPRecordals = list(
 #'       list(
@@ -6988,7 +7588,8 @@ cloudfront_get_distribution <- function(Id) {
 #'             )
 #'           ),
 #'           S3OriginConfig = list(
-#'             OriginAccessIdentity = "string"
+#'             OriginAccessIdentity = "string",
+#'             OriginReadTimeout = 123
 #'           ),
 #'           CustomOriginConfig = list(
 #'             HTTPPort = 123,
@@ -7001,15 +7602,18 @@ cloudfront_get_distribution <- function(Id) {
 #'               )
 #'             ),
 #'             OriginReadTimeout = 123,
-#'             OriginKeepaliveTimeout = 123
+#'             OriginKeepaliveTimeout = 123,
+#'             IpAddressType = "ipv4"|"ipv6"|"dualstack"
 #'           ),
 #'           VpcOriginConfig = list(
 #'             VpcOriginId = "string",
+#'             OwnerAccountId = "string",
 #'             OriginReadTimeout = 123,
 #'             OriginKeepaliveTimeout = 123
 #'           ),
 #'           ConnectionAttempts = 123,
 #'           ConnectionTimeout = 123,
+#'           ResponseCompletionTimeout = 123,
 #'           OriginShield = list(
 #'             Enabled = TRUE|FALSE,
 #'             OriginShieldRegion = "string"
@@ -7246,7 +7850,7 @@ cloudfront_get_distribution <- function(Id) {
 #'       IAMCertificateId = "string",
 #'       ACMCertificateArn = "string",
 #'       SSLSupportMethod = "sni-only"|"vip"|"static-ip",
-#'       MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021",
+#'       MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021"|"TLSv1.3_2025"|"TLSv1.2_2025",
 #'       Certificate = "string",
 #'       CertificateSource = "cloudfront"|"iam"|"acm"
 #'     ),
@@ -7279,7 +7883,18 @@ cloudfront_get_distribution <- function(Id) {
 #'         )
 #'       )
 #'     ),
-#'     ConnectionMode = "direct"|"tenant-only"
+#'     ConnectionMode = "direct"|"tenant-only",
+#'     ViewerMtlsConfig = list(
+#'       Mode = "required"|"optional",
+#'       TrustStoreConfig = list(
+#'         TrustStoreId = "string",
+#'         AdvertiseTrustStoreCaNames = TRUE|FALSE,
+#'         IgnoreCertificateExpiry = TRUE|FALSE
+#'       )
+#'     ),
+#'     ConnectionFunctionAssociation = list(
+#'       Id = "string"
+#'     )
 #'   ),
 #'   ETag = "string"
 #' )
@@ -8777,6 +9392,59 @@ cloudfront_get_realtime_log_config <- function(Name = NULL, ARN = NULL) {
 }
 .cloudfront$operations$get_realtime_log_config <- cloudfront_get_realtime_log_config
 
+#' Retrieves the resource policy for the specified CloudFront resource that
+#' you own and have shared
+#'
+#' @description
+#' Retrieves the resource policy for the specified CloudFront resource that
+#' you own and have shared.
+#'
+#' @usage
+#' cloudfront_get_resource_policy(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the CloudFront resource that is
+#' associated with the resource policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceArn = "string",
+#'   PolicyDocument = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resource_policy(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_get_resource_policy
+#'
+#' @aliases cloudfront_get_resource_policy
+cloudfront_get_resource_policy <- function(ResourceArn) {
+  op <- new_operation(
+    name = "GetResourcePolicy",
+    http_method = "POST",
+    http_path = "/2020-05-31/get-resource-policy",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$get_resource_policy_input(ResourceArn = ResourceArn)
+  output <- .cloudfront$get_resource_policy_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$get_resource_policy <- cloudfront_get_resource_policy
+
 #' Gets a response headers policy, including metadata (the policy's
 #' identifier and the date and time when the policy was last modified)
 #'
@@ -9265,6 +9933,66 @@ cloudfront_get_streaming_distribution_config <- function(Id) {
 }
 .cloudfront$operations$get_streaming_distribution_config <- cloudfront_get_streaming_distribution_config
 
+#' Gets a trust store
+#'
+#' @description
+#' Gets a trust store.
+#'
+#' @usage
+#' cloudfront_get_trust_store(Identifier)
+#'
+#' @param Identifier &#91;required&#93; The trust store's identifier.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrustStore = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Name = "string",
+#'     Status = "pending"|"active"|"failed",
+#'     NumberOfCaCertificates = 123,
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Reason = "string"
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_trust_store(
+#'   Identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_get_trust_store
+#'
+#' @aliases cloudfront_get_trust_store
+cloudfront_get_trust_store <- function(Identifier) {
+  op <- new_operation(
+    name = "GetTrustStore",
+    http_method = "GET",
+    http_path = "/2020-05-31/trust-store/{Identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$get_trust_store_input(Identifier = Identifier)
+  output <- .cloudfront$get_trust_store_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$get_trust_store <- cloudfront_get_trust_store
+
 #' Get the details of an Amazon CloudFront VPC origin
 #'
 #' @description
@@ -9282,6 +10010,7 @@ cloudfront_get_streaming_distribution_config <- function(Id) {
 #'   VpcOrigin = list(
 #'     Id = "string",
 #'     Arn = "string",
+#'     AccountId = "string",
 #'     Status = "string",
 #'     CreatedTime = as.POSIXct(
 #'       "2015-01-01"
@@ -9367,6 +10096,19 @@ cloudfront_get_vpc_origin <- function(Id) {
 #'         IpCount = 123,
 #'         LastModifiedTime = as.POSIXct(
 #'           "2015-01-01"
+#'         ),
+#'         IpAddressType = "ipv4"|"ipv6"|"dualstack",
+#'         ETag = "string",
+#'         IpamConfig = list(
+#'           Quantity = 123,
+#'           IpamCidrConfigs = list(
+#'             list(
+#'               Cidr = "string",
+#'               IpamPoolArn = "string",
+#'               AnycastIp = "string",
+#'               Status = "provisioned"|"failed-provision"|"provisioning"|"deprovisioned"|"failed-deprovision"|"deprovisioning"|"advertised"|"failed-advertise"|"advertising"|"withdrawn"|"failed-withdraw"|"withdrawing"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -9608,35 +10350,44 @@ cloudfront_list_cloud_front_origin_access_identities <- function(Marker = NULL, 
 }
 .cloudfront$operations$list_cloud_front_origin_access_identities <- cloudfront_list_cloud_front_origin_access_identities
 
-#' Gets a list of aliases (also called CNAMEs or alternate domain names)
-#' that conflict or overlap with the provided alias, and the associated
-#' CloudFront distributions and Amazon Web Services accounts for each
-#' conflicting alias
+#' The ListConflictingAliases API operation only supports standard
+#' distributions
 #'
 #' @description
-#' Gets a list of aliases (also called CNAMEs or alternate domain names)
-#' that conflict or overlap with the provided alias, and the associated
-#' CloudFront distributions and Amazon Web Services accounts for each
-#' conflicting alias. In the returned list, the distribution and account
-#' IDs are partially hidden, which allows you to identify the distributions
-#' and accounts that you own, but helps to protect the information of ones
+#' The [`list_conflicting_aliases`][cloudfront_list_conflicting_aliases]
+#' API operation only supports standard distributions. To list domain
+#' conflicts for both standard distributions and distribution tenants, we
+#' recommend that you use the
+#' [`list_domain_conflicts`][cloudfront_list_domain_conflicts] API
+#' operation instead.
+#' 
+#' Gets a list of aliases that conflict or overlap with the provided alias,
+#' and the associated CloudFront standard distribution and Amazon Web
+#' Services accounts for each conflicting alias. An alias is commonly known
+#' as a custom domain or vanity domain. It can also be called a CNAME or
+#' alternate domain name.
+#' 
+#' In the returned list, the standard distribution and account IDs are
+#' partially hidden, which allows you to identify the standard distribution
+#' and accounts that you own, and helps to protect the information of ones
 #' that you don't own.
 #' 
 #' Use this operation to find aliases that are in use in CloudFront that
 #' conflict or overlap with the provided alias. For example, if you provide
 #' `www.example.com` as input, the returned list can include
 #' `www.example.com` and the overlapping wildcard alternate domain name
-#' (`*.example.com`), if they exist. If you provide `*.example.com` as
-#' input, the returned list can include `*.example.com` and any alternate
-#' domain names covered by that wildcard (for example, `www.example.com`,
+#' (`.example.com`), if they exist. If you provide `.example.com` as input,
+#' the returned list can include `*.example.com` and any alternate domain
+#' names covered by that wildcard (for example, `www.example.com`,
 #' `test.example.com`, `dev.example.com`, and so on), if they exist.
 #' 
-#' To list conflicting aliases, you provide the alias to search and the ID
-#' of a distribution in your account that has an attached SSL/TLS
+#' To list conflicting aliases, specify the alias to search and the ID of a
+#' standard distribution in your account that has an attached TLS
 #' certificate that includes the provided alias. For more information,
-#' including how to set up the distribution and certificate, see [Moving an
-#' alternate domain name to a different
-#' distribution](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CNAMEs.html#alternate-domain-names-move)
+#' including how to set up the standard distribution and certificate, see
+#' [Moving an alternate domain name to a different standard distribution or
+#' distribution
+#' tenant](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CNAMEs.html#alternate-domain-names-move)
 #' in the *Amazon CloudFront Developer Guide*.
 #' 
 #' You can optionally specify the maximum number of items to receive in the
@@ -9650,8 +10401,8 @@ cloudfront_list_cloud_front_origin_access_identities <- function(Marker = NULL, 
 #' cloudfront_list_conflicting_aliases(DistributionId, Alias, Marker,
 #'   MaxItems)
 #'
-#' @param DistributionId &#91;required&#93; The ID of a distribution in your account that has an attached SSL/TLS
-#' certificate that includes the provided alias.
+#' @param DistributionId &#91;required&#93; The ID of a standard distribution in your account that has an attached
+#' TLS certificate that includes the provided alias.
 #' @param Alias &#91;required&#93; The alias (also called a CNAME) to search for conflicting aliases.
 #' @param Marker Use this field when paginating results to indicate where to begin in the
 #' list of conflicting aliases. The response includes conflicting aliases
@@ -9712,6 +10463,90 @@ cloudfront_list_conflicting_aliases <- function(DistributionId, Alias, Marker = 
   return(response)
 }
 .cloudfront$operations$list_conflicting_aliases <- cloudfront_list_conflicting_aliases
+
+#' Lists connection functions
+#'
+#' @description
+#' Lists connection functions.
+#'
+#' @usage
+#' cloudfront_list_connection_functions(Marker, MaxItems, Stage)
+#'
+#' @param Marker Use this field when paginating results to indicate where to begin in
+#' your list. The response includes items in the list that occur after the
+#' marker. To get the next page of the list, set this field's value to the
+#' value of `NextMarker` from the current page's response.
+#' @param MaxItems The maximum number of connection functions that you want returned in the
+#' response.
+#' @param Stage The connection function's stage.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   ConnectionFunctions = list(
+#'     list(
+#'       Name = "string",
+#'       Id = "string",
+#'       ConnectionFunctionConfig = list(
+#'         Comment = "string",
+#'         Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0",
+#'         KeyValueStoreAssociations = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               KeyValueStoreARN = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ConnectionFunctionArn = "string",
+#'       Status = "string",
+#'       Stage = "DEVELOPMENT"|"LIVE",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_connection_functions(
+#'   Marker = "string",
+#'   MaxItems = 123,
+#'   Stage = "DEVELOPMENT"|"LIVE"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_connection_functions
+#'
+#' @aliases cloudfront_list_connection_functions
+cloudfront_list_connection_functions <- function(Marker = NULL, MaxItems = NULL, Stage = NULL) {
+  op <- new_operation(
+    name = "ListConnectionFunctions",
+    http_method = "POST",
+    http_path = "/2020-05-31/connection-functions",
+    host_prefix = "",
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "ConnectionFunctions"),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$list_connection_functions_input(Marker = Marker, MaxItems = MaxItems, Stage = Stage)
+  output <- .cloudfront$list_connection_functions_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_connection_functions <- cloudfront_list_connection_functions
 
 #' Lists the connection groups in your Amazon Web Services account
 #'
@@ -10142,7 +10977,8 @@ cloudfront_list_distribution_tenants_by_customization <- function(WebACLArn = NU
 #'                 )
 #'               ),
 #'               S3OriginConfig = list(
-#'                 OriginAccessIdentity = "string"
+#'                 OriginAccessIdentity = "string",
+#'                 OriginReadTimeout = 123
 #'               ),
 #'               CustomOriginConfig = list(
 #'                 HTTPPort = 123,
@@ -10155,15 +10991,18 @@ cloudfront_list_distribution_tenants_by_customization <- function(WebACLArn = NU
 #'                   )
 #'                 ),
 #'                 OriginReadTimeout = 123,
-#'                 OriginKeepaliveTimeout = 123
+#'                 OriginKeepaliveTimeout = 123,
+#'                 IpAddressType = "ipv4"|"ipv6"|"dualstack"
 #'               ),
 #'               VpcOriginConfig = list(
 #'                 VpcOriginId = "string",
+#'                 OwnerAccountId = "string",
 #'                 OriginReadTimeout = 123,
 #'                 OriginKeepaliveTimeout = 123
 #'               ),
 #'               ConnectionAttempts = 123,
 #'               ConnectionTimeout = 123,
+#'               ResponseCompletionTimeout = 123,
 #'               OriginShield = list(
 #'                 Enabled = TRUE|FALSE,
 #'                 OriginShieldRegion = "string"
@@ -10394,7 +11233,7 @@ cloudfront_list_distribution_tenants_by_customization <- function(WebACLArn = NU
 #'           IAMCertificateId = "string",
 #'           ACMCertificateArn = "string",
 #'           SSLSupportMethod = "sni-only"|"vip"|"static-ip",
-#'           MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021",
+#'           MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021"|"TLSv1.3_2025"|"TLSv1.2_2025",
 #'           Certificate = "string",
 #'           CertificateSource = "cloudfront"|"iam"|"acm"
 #'         ),
@@ -10418,7 +11257,18 @@ cloudfront_list_distribution_tenants_by_customization <- function(WebACLArn = NU
 #'         ),
 #'         Staging = TRUE|FALSE,
 #'         ConnectionMode = "direct"|"tenant-only",
-#'         AnycastIpListId = "string"
+#'         AnycastIpListId = "string",
+#'         ViewerMtlsConfig = list(
+#'           Mode = "required"|"optional",
+#'           TrustStoreConfig = list(
+#'             TrustStoreId = "string",
+#'             AdvertiseTrustStoreCaNames = TRUE|FALSE,
+#'             IgnoreCertificateExpiry = TRUE|FALSE
+#'           )
+#'         ),
+#'         ConnectionFunctionAssociation = list(
+#'           Id = "string"
+#'         )
 #'       )
 #'     )
 #'   )
@@ -10519,7 +11369,8 @@ cloudfront_list_distributions <- function(Marker = NULL, MaxItems = NULL) {
 #'                 )
 #'               ),
 #'               S3OriginConfig = list(
-#'                 OriginAccessIdentity = "string"
+#'                 OriginAccessIdentity = "string",
+#'                 OriginReadTimeout = 123
 #'               ),
 #'               CustomOriginConfig = list(
 #'                 HTTPPort = 123,
@@ -10532,15 +11383,18 @@ cloudfront_list_distributions <- function(Marker = NULL, MaxItems = NULL) {
 #'                   )
 #'                 ),
 #'                 OriginReadTimeout = 123,
-#'                 OriginKeepaliveTimeout = 123
+#'                 OriginKeepaliveTimeout = 123,
+#'                 IpAddressType = "ipv4"|"ipv6"|"dualstack"
 #'               ),
 #'               VpcOriginConfig = list(
 #'                 VpcOriginId = "string",
+#'                 OwnerAccountId = "string",
 #'                 OriginReadTimeout = 123,
 #'                 OriginKeepaliveTimeout = 123
 #'               ),
 #'               ConnectionAttempts = 123,
 #'               ConnectionTimeout = 123,
+#'               ResponseCompletionTimeout = 123,
 #'               OriginShield = list(
 #'                 Enabled = TRUE|FALSE,
 #'                 OriginShieldRegion = "string"
@@ -10771,7 +11625,7 @@ cloudfront_list_distributions <- function(Marker = NULL, MaxItems = NULL) {
 #'           IAMCertificateId = "string",
 #'           ACMCertificateArn = "string",
 #'           SSLSupportMethod = "sni-only"|"vip"|"static-ip",
-#'           MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021",
+#'           MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021"|"TLSv1.3_2025"|"TLSv1.2_2025",
 #'           Certificate = "string",
 #'           CertificateSource = "cloudfront"|"iam"|"acm"
 #'         ),
@@ -10795,7 +11649,18 @@ cloudfront_list_distributions <- function(Marker = NULL, MaxItems = NULL) {
 #'         ),
 #'         Staging = TRUE|FALSE,
 #'         ConnectionMode = "direct"|"tenant-only",
-#'         AnycastIpListId = "string"
+#'         AnycastIpListId = "string",
+#'         ViewerMtlsConfig = list(
+#'           Mode = "required"|"optional",
+#'           TrustStoreConfig = list(
+#'             TrustStoreId = "string",
+#'             AdvertiseTrustStoreCaNames = TRUE|FALSE,
+#'             IgnoreCertificateExpiry = TRUE|FALSE
+#'           )
+#'         ),
+#'         ConnectionFunctionAssociation = list(
+#'           Id = "string"
+#'         )
 #'       )
 #'     )
 #'   )
@@ -10912,18 +11777,22 @@ cloudfront_list_distributions_by_cache_policy_id <- function(Marker = NULL, MaxI
 }
 .cloudfront$operations$list_distributions_by_cache_policy_id <- cloudfront_list_distributions_by_cache_policy_id
 
-#' Lists the distributions by the connection mode that you specify
+#' Lists distributions by connection function
 #'
 #' @description
-#' Lists the distributions by the connection mode that you specify.
+#' Lists distributions by connection function.
 #'
 #' @usage
-#' cloudfront_list_distributions_by_connection_mode(Marker, MaxItems,
-#'   ConnectionMode)
+#' cloudfront_list_distributions_by_connection_function(Marker, MaxItems,
+#'   ConnectionFunctionIdentifier)
 #'
-#' @param Marker The marker for the next set of distributions to retrieve.
-#' @param MaxItems The maximum number of distributions to return.
-#' @param ConnectionMode &#91;required&#93; The connection mode to filter distributions by.
+#' @param Marker Use this field when paginating results to indicate where to begin in
+#' your list. The response includes items in the list that occur after the
+#' marker. To get the next page of the list, set this field's value to the
+#' value of `NextMarker` from the current page's response.
+#' @param MaxItems The maximum number of distributions that you want returned in the
+#' response.
+#' @param ConnectionFunctionIdentifier &#91;required&#93; The distributions by connection function identifier.
 #'
 #' @return
 #' A list with the following syntax:
@@ -10968,7 +11837,8 @@ cloudfront_list_distributions_by_cache_policy_id <- function(Marker = NULL, MaxI
 #'                 )
 #'               ),
 #'               S3OriginConfig = list(
-#'                 OriginAccessIdentity = "string"
+#'                 OriginAccessIdentity = "string",
+#'                 OriginReadTimeout = 123
 #'               ),
 #'               CustomOriginConfig = list(
 #'                 HTTPPort = 123,
@@ -10981,15 +11851,18 @@ cloudfront_list_distributions_by_cache_policy_id <- function(Marker = NULL, MaxI
 #'                   )
 #'                 ),
 #'                 OriginReadTimeout = 123,
-#'                 OriginKeepaliveTimeout = 123
+#'                 OriginKeepaliveTimeout = 123,
+#'                 IpAddressType = "ipv4"|"ipv6"|"dualstack"
 #'               ),
 #'               VpcOriginConfig = list(
 #'                 VpcOriginId = "string",
+#'                 OwnerAccountId = "string",
 #'                 OriginReadTimeout = 123,
 #'                 OriginKeepaliveTimeout = 123
 #'               ),
 #'               ConnectionAttempts = 123,
 #'               ConnectionTimeout = 123,
+#'               ResponseCompletionTimeout = 123,
 #'               OriginShield = list(
 #'                 Enabled = TRUE|FALSE,
 #'                 OriginShieldRegion = "string"
@@ -11220,7 +12093,7 @@ cloudfront_list_distributions_by_cache_policy_id <- function(Marker = NULL, MaxI
 #'           IAMCertificateId = "string",
 #'           ACMCertificateArn = "string",
 #'           SSLSupportMethod = "sni-only"|"vip"|"static-ip",
-#'           MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021",
+#'           MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021"|"TLSv1.3_2025"|"TLSv1.2_2025",
 #'           Certificate = "string",
 #'           CertificateSource = "cloudfront"|"iam"|"acm"
 #'         ),
@@ -11244,7 +12117,407 @@ cloudfront_list_distributions_by_cache_policy_id <- function(Marker = NULL, MaxI
 #'         ),
 #'         Staging = TRUE|FALSE,
 #'         ConnectionMode = "direct"|"tenant-only",
-#'         AnycastIpListId = "string"
+#'         AnycastIpListId = "string",
+#'         ViewerMtlsConfig = list(
+#'           Mode = "required"|"optional",
+#'           TrustStoreConfig = list(
+#'             TrustStoreId = "string",
+#'             AdvertiseTrustStoreCaNames = TRUE|FALSE,
+#'             IgnoreCertificateExpiry = TRUE|FALSE
+#'           )
+#'         ),
+#'         ConnectionFunctionAssociation = list(
+#'           Id = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_distributions_by_connection_function(
+#'   Marker = "string",
+#'   MaxItems = 123,
+#'   ConnectionFunctionIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_distributions_by_connection_function
+#'
+#' @aliases cloudfront_list_distributions_by_connection_function
+cloudfront_list_distributions_by_connection_function <- function(Marker = NULL, MaxItems = NULL, ConnectionFunctionIdentifier) {
+  op <- new_operation(
+    name = "ListDistributionsByConnectionFunction",
+    http_method = "GET",
+    http_path = "/2020-05-31/distributionsByConnectionFunction",
+    host_prefix = "",
+    paginator = list(input_token = "Marker", output_token = "DistributionList.NextMarker", limit_key = "MaxItems", result_key = "DistributionList.Items"),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$list_distributions_by_connection_function_input(Marker = Marker, MaxItems = MaxItems, ConnectionFunctionIdentifier = ConnectionFunctionIdentifier)
+  output <- .cloudfront$list_distributions_by_connection_function_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_distributions_by_connection_function <- cloudfront_list_distributions_by_connection_function
+
+#' Lists the distributions by the connection mode that you specify
+#'
+#' @description
+#' Lists the distributions by the connection mode that you specify.
+#'
+#' @usage
+#' cloudfront_list_distributions_by_connection_mode(Marker, MaxItems,
+#'   ConnectionMode)
+#'
+#' @param Marker The marker for the next set of distributions to retrieve.
+#' @param MaxItems The maximum number of distributions to return.
+#' @param ConnectionMode &#91;required&#93; This field specifies whether the connection mode is through a standard
+#' distribution (direct) or a multi-tenant distribution with distribution
+#' tenants (tenant-only).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DistributionList = list(
+#'     Marker = "string",
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     IsTruncated = TRUE|FALSE,
+#'     Quantity = 123,
+#'     Items = list(
+#'       list(
+#'         Id = "string",
+#'         ARN = "string",
+#'         ETag = "string",
+#'         Status = "string",
+#'         LastModifiedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         DomainName = "string",
+#'         Aliases = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         ),
+#'         Origins = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               Id = "string",
+#'               DomainName = "string",
+#'               OriginPath = "string",
+#'               CustomHeaders = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     HeaderName = "string",
+#'                     HeaderValue = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               S3OriginConfig = list(
+#'                 OriginAccessIdentity = "string",
+#'                 OriginReadTimeout = 123
+#'               ),
+#'               CustomOriginConfig = list(
+#'                 HTTPPort = 123,
+#'                 HTTPSPort = 123,
+#'                 OriginProtocolPolicy = "http-only"|"match-viewer"|"https-only",
+#'                 OriginSslProtocols = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "SSLv3"|"TLSv1"|"TLSv1.1"|"TLSv1.2"
+#'                   )
+#'                 ),
+#'                 OriginReadTimeout = 123,
+#'                 OriginKeepaliveTimeout = 123,
+#'                 IpAddressType = "ipv4"|"ipv6"|"dualstack"
+#'               ),
+#'               VpcOriginConfig = list(
+#'                 VpcOriginId = "string",
+#'                 OwnerAccountId = "string",
+#'                 OriginReadTimeout = 123,
+#'                 OriginKeepaliveTimeout = 123
+#'               ),
+#'               ConnectionAttempts = 123,
+#'               ConnectionTimeout = 123,
+#'               ResponseCompletionTimeout = 123,
+#'               OriginShield = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 OriginShieldRegion = "string"
+#'               ),
+#'               OriginAccessControlId = "string"
+#'             )
+#'           )
+#'         ),
+#'         OriginGroups = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               Id = "string",
+#'               FailoverCriteria = list(
+#'                 StatusCodes = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     123
+#'                   )
+#'                 )
+#'               ),
+#'               Members = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     OriginId = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               SelectionCriteria = "default"|"media-quality-based"
+#'             )
+#'           )
+#'         ),
+#'         DefaultCacheBehavior = list(
+#'           TargetOriginId = "string",
+#'           TrustedSigners = list(
+#'             Enabled = TRUE|FALSE,
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           ),
+#'           TrustedKeyGroups = list(
+#'             Enabled = TRUE|FALSE,
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           ),
+#'           ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'           AllowedMethods = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'             ),
+#'             CachedMethods = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'               )
+#'             )
+#'           ),
+#'           SmoothStreaming = TRUE|FALSE,
+#'           Compress = TRUE|FALSE,
+#'           LambdaFunctionAssociations = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               list(
+#'                 LambdaFunctionARN = "string",
+#'                 EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'                 IncludeBody = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           FunctionAssociations = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               list(
+#'                 FunctionARN = "string",
+#'                 EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
+#'               )
+#'             )
+#'           ),
+#'           FieldLevelEncryptionId = "string",
+#'           RealtimeLogConfigArn = "string",
+#'           CachePolicyId = "string",
+#'           OriginRequestPolicyId = "string",
+#'           ResponseHeadersPolicyId = "string",
+#'           GrpcConfig = list(
+#'             Enabled = TRUE|FALSE
+#'           ),
+#'           ForwardedValues = list(
+#'             QueryString = TRUE|FALSE,
+#'             Cookies = list(
+#'               Forward = "none"|"whitelist"|"all",
+#'               WhitelistedNames = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             Headers = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             QueryStringCacheKeys = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           MinTTL = 123,
+#'           DefaultTTL = 123,
+#'           MaxTTL = 123
+#'         ),
+#'         CacheBehaviors = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               PathPattern = "string",
+#'               TargetOriginId = "string",
+#'               TrustedSigners = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               TrustedKeyGroups = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'               AllowedMethods = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'                 ),
+#'                 CachedMethods = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'                   )
+#'                 )
+#'               ),
+#'               SmoothStreaming = TRUE|FALSE,
+#'               Compress = TRUE|FALSE,
+#'               LambdaFunctionAssociations = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     LambdaFunctionARN = "string",
+#'                     EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'                     IncludeBody = TRUE|FALSE
+#'                   )
+#'                 )
+#'               ),
+#'               FunctionAssociations = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     FunctionARN = "string",
+#'                     EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
+#'                   )
+#'                 )
+#'               ),
+#'               FieldLevelEncryptionId = "string",
+#'               RealtimeLogConfigArn = "string",
+#'               CachePolicyId = "string",
+#'               OriginRequestPolicyId = "string",
+#'               ResponseHeadersPolicyId = "string",
+#'               GrpcConfig = list(
+#'                 Enabled = TRUE|FALSE
+#'               ),
+#'               ForwardedValues = list(
+#'                 QueryString = TRUE|FALSE,
+#'                 Cookies = list(
+#'                   Forward = "none"|"whitelist"|"all",
+#'                   WhitelistedNames = list(
+#'                     Quantity = 123,
+#'                     Items = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 Headers = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 QueryStringCacheKeys = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               MinTTL = 123,
+#'               DefaultTTL = 123,
+#'               MaxTTL = 123
+#'             )
+#'           )
+#'         ),
+#'         CustomErrorResponses = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               ErrorCode = 123,
+#'               ResponsePagePath = "string",
+#'               ResponseCode = "string",
+#'               ErrorCachingMinTTL = 123
+#'             )
+#'           )
+#'         ),
+#'         Comment = "string",
+#'         PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All"|"None",
+#'         Enabled = TRUE|FALSE,
+#'         ViewerCertificate = list(
+#'           CloudFrontDefaultCertificate = TRUE|FALSE,
+#'           IAMCertificateId = "string",
+#'           ACMCertificateArn = "string",
+#'           SSLSupportMethod = "sni-only"|"vip"|"static-ip",
+#'           MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021"|"TLSv1.3_2025"|"TLSv1.2_2025",
+#'           Certificate = "string",
+#'           CertificateSource = "cloudfront"|"iam"|"acm"
+#'         ),
+#'         Restrictions = list(
+#'           GeoRestriction = list(
+#'             RestrictionType = "blacklist"|"whitelist"|"none",
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         WebACLId = "string",
+#'         HttpVersion = "http1.1"|"http2"|"http3"|"http2and3",
+#'         IsIPV6Enabled = TRUE|FALSE,
+#'         AliasICPRecordals = list(
+#'           list(
+#'             CNAME = "string",
+#'             ICPRecordalStatus = "APPROVED"|"SUSPENDED"|"PENDING"
+#'           )
+#'         ),
+#'         Staging = TRUE|FALSE,
+#'         ConnectionMode = "direct"|"tenant-only",
+#'         AnycastIpListId = "string",
+#'         ViewerMtlsConfig = list(
+#'           Mode = "required"|"optional",
+#'           TrustStoreConfig = list(
+#'             TrustStoreId = "string",
+#'             AdvertiseTrustStoreCaNames = TRUE|FALSE,
+#'             IgnoreCertificateExpiry = TRUE|FALSE
+#'           )
+#'         ),
+#'         ConnectionFunctionAssociation = list(
+#'           Id = "string"
+#'         )
 #'       )
 #'     )
 #'   )
@@ -11437,6 +12710,79 @@ cloudfront_list_distributions_by_origin_request_policy_id <- function(Marker = N
 }
 .cloudfront$operations$list_distributions_by_origin_request_policy_id <- cloudfront_list_distributions_by_origin_request_policy_id
 
+#' Lists the CloudFront distributions that are associated with the
+#' specified resource that you own
+#'
+#' @description
+#' Lists the CloudFront distributions that are associated with the
+#' specified resource that you own.
+#'
+#' @usage
+#' cloudfront_list_distributions_by_owned_resource(ResourceArn, Marker,
+#'   MaxItems)
+#'
+#' @param ResourceArn &#91;required&#93; The ARN of the CloudFront resource that you've shared with other Amazon
+#' Web Services accounts.
+#' @param Marker Use this field when paginating results to indicate where to begin in
+#' your list of distributions. The response includes distributions in the
+#' list that occur after the marker. To get the next page of the list, set
+#' this field's value to the value of `NextMarker` from the current page's
+#' response.
+#' @param MaxItems The maximum number of distributions to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DistributionList = list(
+#'     Marker = "string",
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     IsTruncated = TRUE|FALSE,
+#'     Quantity = 123,
+#'     Items = list(
+#'       list(
+#'         DistributionId = "string",
+#'         OwnerAccountId = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_distributions_by_owned_resource(
+#'   ResourceArn = "string",
+#'   Marker = "string",
+#'   MaxItems = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_distributions_by_owned_resource
+#'
+#' @aliases cloudfront_list_distributions_by_owned_resource
+cloudfront_list_distributions_by_owned_resource <- function(ResourceArn, Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListDistributionsByOwnedResource",
+    http_method = "GET",
+    http_path = "/2020-05-31/distributionsByOwnedResource/{ResourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$list_distributions_by_owned_resource_input(ResourceArn = ResourceArn, Marker = Marker, MaxItems = MaxItems)
+  output <- .cloudfront$list_distributions_by_owned_resource_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_distributions_by_owned_resource <- cloudfront_list_distributions_by_owned_resource
+
 #' Gets a list of distributions that have a cache behavior that's
 #' associated with the specified real-time log configuration
 #'
@@ -11514,7 +12860,8 @@ cloudfront_list_distributions_by_origin_request_policy_id <- function(Marker = N
 #'                 )
 #'               ),
 #'               S3OriginConfig = list(
-#'                 OriginAccessIdentity = "string"
+#'                 OriginAccessIdentity = "string",
+#'                 OriginReadTimeout = 123
 #'               ),
 #'               CustomOriginConfig = list(
 #'                 HTTPPort = 123,
@@ -11527,15 +12874,18 @@ cloudfront_list_distributions_by_origin_request_policy_id <- function(Marker = N
 #'                   )
 #'                 ),
 #'                 OriginReadTimeout = 123,
-#'                 OriginKeepaliveTimeout = 123
+#'                 OriginKeepaliveTimeout = 123,
+#'                 IpAddressType = "ipv4"|"ipv6"|"dualstack"
 #'               ),
 #'               VpcOriginConfig = list(
 #'                 VpcOriginId = "string",
+#'                 OwnerAccountId = "string",
 #'                 OriginReadTimeout = 123,
 #'                 OriginKeepaliveTimeout = 123
 #'               ),
 #'               ConnectionAttempts = 123,
 #'               ConnectionTimeout = 123,
+#'               ResponseCompletionTimeout = 123,
 #'               OriginShield = list(
 #'                 Enabled = TRUE|FALSE,
 #'                 OriginShieldRegion = "string"
@@ -11766,7 +13116,7 @@ cloudfront_list_distributions_by_origin_request_policy_id <- function(Marker = N
 #'           IAMCertificateId = "string",
 #'           ACMCertificateArn = "string",
 #'           SSLSupportMethod = "sni-only"|"vip"|"static-ip",
-#'           MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021",
+#'           MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021"|"TLSv1.3_2025"|"TLSv1.2_2025",
 #'           Certificate = "string",
 #'           CertificateSource = "cloudfront"|"iam"|"acm"
 #'         ),
@@ -11790,7 +13140,18 @@ cloudfront_list_distributions_by_origin_request_policy_id <- function(Marker = N
 #'         ),
 #'         Staging = TRUE|FALSE,
 #'         ConnectionMode = "direct"|"tenant-only",
-#'         AnycastIpListId = "string"
+#'         AnycastIpListId = "string",
+#'         ViewerMtlsConfig = list(
+#'           Mode = "required"|"optional",
+#'           TrustStoreConfig = list(
+#'             TrustStoreId = "string",
+#'             AdvertiseTrustStoreCaNames = TRUE|FALSE,
+#'             IgnoreCertificateExpiry = TRUE|FALSE
+#'           )
+#'         ),
+#'         ConnectionFunctionAssociation = list(
+#'           Id = "string"
+#'         )
 #'       )
 #'     )
 #'   )
@@ -11908,6 +13269,397 @@ cloudfront_list_distributions_by_response_headers_policy_id <- function(Marker =
   return(response)
 }
 .cloudfront$operations$list_distributions_by_response_headers_policy_id <- cloudfront_list_distributions_by_response_headers_policy_id
+
+#' Lists distributions by trust store
+#'
+#' @description
+#' Lists distributions by trust store.
+#'
+#' @usage
+#' cloudfront_list_distributions_by_trust_store(TrustStoreIdentifier,
+#'   Marker, MaxItems)
+#'
+#' @param TrustStoreIdentifier &#91;required&#93; The distributions by trust store identifier.
+#' @param Marker Use this field when paginating results to indicate where to begin in
+#' your list. The response includes items in the list that occur after the
+#' marker. To get the next page of the list, set this field's value to the
+#' value of `NextMarker` from the current page's response.
+#' @param MaxItems The maximum number of distributions that you want returned in the
+#' response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DistributionList = list(
+#'     Marker = "string",
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     IsTruncated = TRUE|FALSE,
+#'     Quantity = 123,
+#'     Items = list(
+#'       list(
+#'         Id = "string",
+#'         ARN = "string",
+#'         ETag = "string",
+#'         Status = "string",
+#'         LastModifiedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         DomainName = "string",
+#'         Aliases = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         ),
+#'         Origins = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               Id = "string",
+#'               DomainName = "string",
+#'               OriginPath = "string",
+#'               CustomHeaders = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     HeaderName = "string",
+#'                     HeaderValue = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               S3OriginConfig = list(
+#'                 OriginAccessIdentity = "string",
+#'                 OriginReadTimeout = 123
+#'               ),
+#'               CustomOriginConfig = list(
+#'                 HTTPPort = 123,
+#'                 HTTPSPort = 123,
+#'                 OriginProtocolPolicy = "http-only"|"match-viewer"|"https-only",
+#'                 OriginSslProtocols = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "SSLv3"|"TLSv1"|"TLSv1.1"|"TLSv1.2"
+#'                   )
+#'                 ),
+#'                 OriginReadTimeout = 123,
+#'                 OriginKeepaliveTimeout = 123,
+#'                 IpAddressType = "ipv4"|"ipv6"|"dualstack"
+#'               ),
+#'               VpcOriginConfig = list(
+#'                 VpcOriginId = "string",
+#'                 OwnerAccountId = "string",
+#'                 OriginReadTimeout = 123,
+#'                 OriginKeepaliveTimeout = 123
+#'               ),
+#'               ConnectionAttempts = 123,
+#'               ConnectionTimeout = 123,
+#'               ResponseCompletionTimeout = 123,
+#'               OriginShield = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 OriginShieldRegion = "string"
+#'               ),
+#'               OriginAccessControlId = "string"
+#'             )
+#'           )
+#'         ),
+#'         OriginGroups = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               Id = "string",
+#'               FailoverCriteria = list(
+#'                 StatusCodes = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     123
+#'                   )
+#'                 )
+#'               ),
+#'               Members = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     OriginId = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               SelectionCriteria = "default"|"media-quality-based"
+#'             )
+#'           )
+#'         ),
+#'         DefaultCacheBehavior = list(
+#'           TargetOriginId = "string",
+#'           TrustedSigners = list(
+#'             Enabled = TRUE|FALSE,
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           ),
+#'           TrustedKeyGroups = list(
+#'             Enabled = TRUE|FALSE,
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           ),
+#'           ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'           AllowedMethods = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'             ),
+#'             CachedMethods = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'               )
+#'             )
+#'           ),
+#'           SmoothStreaming = TRUE|FALSE,
+#'           Compress = TRUE|FALSE,
+#'           LambdaFunctionAssociations = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               list(
+#'                 LambdaFunctionARN = "string",
+#'                 EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'                 IncludeBody = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           FunctionAssociations = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               list(
+#'                 FunctionARN = "string",
+#'                 EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
+#'               )
+#'             )
+#'           ),
+#'           FieldLevelEncryptionId = "string",
+#'           RealtimeLogConfigArn = "string",
+#'           CachePolicyId = "string",
+#'           OriginRequestPolicyId = "string",
+#'           ResponseHeadersPolicyId = "string",
+#'           GrpcConfig = list(
+#'             Enabled = TRUE|FALSE
+#'           ),
+#'           ForwardedValues = list(
+#'             QueryString = TRUE|FALSE,
+#'             Cookies = list(
+#'               Forward = "none"|"whitelist"|"all",
+#'               WhitelistedNames = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             Headers = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             QueryStringCacheKeys = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           MinTTL = 123,
+#'           DefaultTTL = 123,
+#'           MaxTTL = 123
+#'         ),
+#'         CacheBehaviors = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               PathPattern = "string",
+#'               TargetOriginId = "string",
+#'               TrustedSigners = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               TrustedKeyGroups = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'               AllowedMethods = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'                 ),
+#'                 CachedMethods = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'                   )
+#'                 )
+#'               ),
+#'               SmoothStreaming = TRUE|FALSE,
+#'               Compress = TRUE|FALSE,
+#'               LambdaFunctionAssociations = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     LambdaFunctionARN = "string",
+#'                     EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'                     IncludeBody = TRUE|FALSE
+#'                   )
+#'                 )
+#'               ),
+#'               FunctionAssociations = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     FunctionARN = "string",
+#'                     EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
+#'                   )
+#'                 )
+#'               ),
+#'               FieldLevelEncryptionId = "string",
+#'               RealtimeLogConfigArn = "string",
+#'               CachePolicyId = "string",
+#'               OriginRequestPolicyId = "string",
+#'               ResponseHeadersPolicyId = "string",
+#'               GrpcConfig = list(
+#'                 Enabled = TRUE|FALSE
+#'               ),
+#'               ForwardedValues = list(
+#'                 QueryString = TRUE|FALSE,
+#'                 Cookies = list(
+#'                   Forward = "none"|"whitelist"|"all",
+#'                   WhitelistedNames = list(
+#'                     Quantity = 123,
+#'                     Items = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 Headers = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 QueryStringCacheKeys = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               MinTTL = 123,
+#'               DefaultTTL = 123,
+#'               MaxTTL = 123
+#'             )
+#'           )
+#'         ),
+#'         CustomErrorResponses = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               ErrorCode = 123,
+#'               ResponsePagePath = "string",
+#'               ResponseCode = "string",
+#'               ErrorCachingMinTTL = 123
+#'             )
+#'           )
+#'         ),
+#'         Comment = "string",
+#'         PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All"|"None",
+#'         Enabled = TRUE|FALSE,
+#'         ViewerCertificate = list(
+#'           CloudFrontDefaultCertificate = TRUE|FALSE,
+#'           IAMCertificateId = "string",
+#'           ACMCertificateArn = "string",
+#'           SSLSupportMethod = "sni-only"|"vip"|"static-ip",
+#'           MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021"|"TLSv1.3_2025"|"TLSv1.2_2025",
+#'           Certificate = "string",
+#'           CertificateSource = "cloudfront"|"iam"|"acm"
+#'         ),
+#'         Restrictions = list(
+#'           GeoRestriction = list(
+#'             RestrictionType = "blacklist"|"whitelist"|"none",
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         WebACLId = "string",
+#'         HttpVersion = "http1.1"|"http2"|"http3"|"http2and3",
+#'         IsIPV6Enabled = TRUE|FALSE,
+#'         AliasICPRecordals = list(
+#'           list(
+#'             CNAME = "string",
+#'             ICPRecordalStatus = "APPROVED"|"SUSPENDED"|"PENDING"
+#'           )
+#'         ),
+#'         Staging = TRUE|FALSE,
+#'         ConnectionMode = "direct"|"tenant-only",
+#'         AnycastIpListId = "string",
+#'         ViewerMtlsConfig = list(
+#'           Mode = "required"|"optional",
+#'           TrustStoreConfig = list(
+#'             TrustStoreId = "string",
+#'             AdvertiseTrustStoreCaNames = TRUE|FALSE,
+#'             IgnoreCertificateExpiry = TRUE|FALSE
+#'           )
+#'         ),
+#'         ConnectionFunctionAssociation = list(
+#'           Id = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_distributions_by_trust_store(
+#'   TrustStoreIdentifier = "string",
+#'   Marker = "string",
+#'   MaxItems = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_distributions_by_trust_store
+#'
+#' @aliases cloudfront_list_distributions_by_trust_store
+cloudfront_list_distributions_by_trust_store <- function(TrustStoreIdentifier, Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListDistributionsByTrustStore",
+    http_method = "GET",
+    http_path = "/2020-05-31/distributionsByTrustStore",
+    host_prefix = "",
+    paginator = list(input_token = "Marker", output_token = "DistributionList.NextMarker", limit_key = "MaxItems", result_key = "DistributionList.Items"),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$list_distributions_by_trust_store_input(TrustStoreIdentifier = TrustStoreIdentifier, Marker = Marker, MaxItems = MaxItems)
+  output <- .cloudfront$list_distributions_by_trust_store_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_distributions_by_trust_store <- cloudfront_list_distributions_by_trust_store
 
 #' List CloudFront distributions by their VPC origin ID
 #'
@@ -12041,7 +13793,8 @@ cloudfront_list_distributions_by_vpc_origin_id <- function(Marker = NULL, MaxIte
 #'                 )
 #'               ),
 #'               S3OriginConfig = list(
-#'                 OriginAccessIdentity = "string"
+#'                 OriginAccessIdentity = "string",
+#'                 OriginReadTimeout = 123
 #'               ),
 #'               CustomOriginConfig = list(
 #'                 HTTPPort = 123,
@@ -12054,15 +13807,18 @@ cloudfront_list_distributions_by_vpc_origin_id <- function(Marker = NULL, MaxIte
 #'                   )
 #'                 ),
 #'                 OriginReadTimeout = 123,
-#'                 OriginKeepaliveTimeout = 123
+#'                 OriginKeepaliveTimeout = 123,
+#'                 IpAddressType = "ipv4"|"ipv6"|"dualstack"
 #'               ),
 #'               VpcOriginConfig = list(
 #'                 VpcOriginId = "string",
+#'                 OwnerAccountId = "string",
 #'                 OriginReadTimeout = 123,
 #'                 OriginKeepaliveTimeout = 123
 #'               ),
 #'               ConnectionAttempts = 123,
 #'               ConnectionTimeout = 123,
+#'               ResponseCompletionTimeout = 123,
 #'               OriginShield = list(
 #'                 Enabled = TRUE|FALSE,
 #'                 OriginShieldRegion = "string"
@@ -12293,7 +14049,7 @@ cloudfront_list_distributions_by_vpc_origin_id <- function(Marker = NULL, MaxIte
 #'           IAMCertificateId = "string",
 #'           ACMCertificateArn = "string",
 #'           SSLSupportMethod = "sni-only"|"vip"|"static-ip",
-#'           MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021",
+#'           MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021"|"TLSv1.3_2025"|"TLSv1.2_2025",
 #'           Certificate = "string",
 #'           CertificateSource = "cloudfront"|"iam"|"acm"
 #'         ),
@@ -12317,7 +14073,18 @@ cloudfront_list_distributions_by_vpc_origin_id <- function(Marker = NULL, MaxIte
 #'         ),
 #'         Staging = TRUE|FALSE,
 #'         ConnectionMode = "direct"|"tenant-only",
-#'         AnycastIpListId = "string"
+#'         AnycastIpListId = "string",
+#'         ViewerMtlsConfig = list(
+#'           Mode = "required"|"optional",
+#'           TrustStoreConfig = list(
+#'             TrustStoreId = "string",
+#'             AdvertiseTrustStoreCaNames = TRUE|FALSE,
+#'             IgnoreCertificateExpiry = TRUE|FALSE
+#'           )
+#'         ),
+#'         ConnectionFunctionAssociation = list(
+#'           Id = "string"
+#'         )
 #'       )
 #'     )
 #'   )
@@ -12357,25 +14124,63 @@ cloudfront_list_distributions_by_web_acl_id <- function(Marker = NULL, MaxItems 
 }
 .cloudfront$operations$list_distributions_by_web_acl_id <- cloudfront_list_distributions_by_web_acl_id
 
-#' Lists existing domain associations that conflict with the domain that
-#' you specify
+#' We recommend that you use the ListDomainConflicts API operation to check
+#' for domain conflicts, as it supports both standard distributions and
+#' distribution tenants
 #'
 #' @description
+#' We recommend that you use the
+#' [`list_domain_conflicts`][cloudfront_list_domain_conflicts] API
+#' operation to check for domain conflicts, as it supports both standard
+#' distributions and distribution tenants.
+#' [`list_conflicting_aliases`][cloudfront_list_conflicting_aliases]
+#' performs similar checks but only supports standard distributions.
+#' 
 #' Lists existing domain associations that conflict with the domain that
 #' you specify.
 #' 
-#' You can use this API operation when transferring domains to identify
-#' potential domain conflicts. Domain conflicts must be resolved first
-#' before they can be moved.
+#' You can use this API operation to identify potential domain conflicts
+#' when moving domains between standard distributions and/or distribution
+#' tenants. Domain conflicts must be resolved first before they can be
+#' moved.
+#' 
+#' For example, if you provide `www.example.com` as input, the returned
+#' list can include `www.example.com` and the overlapping wildcard
+#' alternate domain name (`.example.com`), if they exist. If you provide
+#' `.example.com` as input, the returned list can include `*.example.com`
+#' and any alternate domain names covered by that wildcard (for example,
+#' `www.example.com`, `test.example.com`, `dev.example.com`, and so on), if
+#' they exist.
+#' 
+#' To list conflicting domains, specify the following:
+#' 
+#' -   The domain to search for
+#' 
+#' -   The ID of a standard distribution or distribution tenant in your
+#'     account that has an attached TLS certificate, which covers the
+#'     specified domain
+#' 
+#' For more information, including how to set up the standard distribution
+#' or distribution tenant, and the certificate, see [Moving an alternate
+#' domain name to a different standard distribution or distribution
+#' tenant](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CNAMEs.html#alternate-domain-names-move)
+#' in the *Amazon CloudFront Developer Guide*.
+#' 
+#' You can optionally specify the maximum number of items to receive in the
+#' response. If the total number of items in the list exceeds the maximum
+#' that you specify, or the default maximum, the response is paginated. To
+#' get the next page of items, send a subsequent request that specifies the
+#' `NextMarker` value from the current response as the `Marker` value in
+#' the subsequent request.
 #'
 #' @usage
 #' cloudfront_list_domain_conflicts(Domain,
 #'   DomainControlValidationResource, MaxItems, Marker)
 #'
 #' @param Domain &#91;required&#93; The domain to check for conflicts.
-#' @param DomainControlValidationResource &#91;required&#93; The distribution resource identifier. This can be the distribution or
-#' distribution tenant that has a valid certificate, which covers the
-#' domain that you specify.
+#' @param DomainControlValidationResource &#91;required&#93; The distribution resource identifier. This can be the standard
+#' distribution or distribution tenant that has a valid certificate, which
+#' covers the domain that you specify.
 #' @param MaxItems The maximum number of domain conflicts to return.
 #' @param Marker The marker for the next set of domain conflicts.
 #'
@@ -13093,7 +14898,7 @@ cloudfront_list_origin_access_controls <- function(Marker = NULL, MaxItems = NUL
     http_method = "GET",
     http_path = "/2020-05-31/origin-access-control",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "Marker", output_token = "OriginAccessControlList.NextMarker", limit_key = "MaxItems", result_key = "OriginAccessControlList.Items"),
     stream_api = FALSE
   )
   input <- .cloudfront$list_origin_access_controls_input(Marker = Marker, MaxItems = MaxItems)
@@ -13708,6 +15513,75 @@ cloudfront_list_tags_for_resource <- function(Resource) {
 }
 .cloudfront$operations$list_tags_for_resource <- cloudfront_list_tags_for_resource
 
+#' Lists trust stores
+#'
+#' @description
+#' Lists trust stores.
+#'
+#' @usage
+#' cloudfront_list_trust_stores(Marker, MaxItems)
+#'
+#' @param Marker Use this field when paginating results to indicate where to begin in
+#' your list. The response includes items in the list that occur after the
+#' marker. To get the next page of the list, set this field's value to the
+#' value of `NextMarker` from the current page's response.
+#' @param MaxItems The maximum number of trust stores that you want returned in the
+#' response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   TrustStoreList = list(
+#'     list(
+#'       Id = "string",
+#'       Arn = "string",
+#'       Name = "string",
+#'       Status = "pending"|"active"|"failed",
+#'       NumberOfCaCertificates = 123,
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Reason = "string",
+#'       ETag = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_trust_stores(
+#'   Marker = "string",
+#'   MaxItems = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_trust_stores
+#'
+#' @aliases cloudfront_list_trust_stores
+cloudfront_list_trust_stores <- function(Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListTrustStores",
+    http_method = "POST",
+    http_path = "/2020-05-31/trust-stores",
+    host_prefix = "",
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "TrustStoreList"),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$list_trust_stores_input(Marker = Marker, MaxItems = MaxItems)
+  output <- .cloudfront$list_trust_stores_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_trust_stores <- cloudfront_list_trust_stores
+
 #' List the CloudFront VPC origins in your account
 #'
 #' @description
@@ -13741,6 +15615,7 @@ cloudfront_list_tags_for_resource <- function(Resource) {
 #'           "2015-01-01"
 #'         ),
 #'         Arn = "string",
+#'         AccountId = "string",
 #'         OriginEndpointArn = "string"
 #'       )
 #'     )
@@ -13779,6 +15654,81 @@ cloudfront_list_vpc_origins <- function(Marker = NULL, MaxItems = NULL) {
   return(response)
 }
 .cloudfront$operations$list_vpc_origins <- cloudfront_list_vpc_origins
+
+#' Publishes a connection function
+#'
+#' @description
+#' Publishes a connection function.
+#'
+#' @usage
+#' cloudfront_publish_connection_function(Id, IfMatch)
+#'
+#' @param Id &#91;required&#93; The connection function ID.
+#' @param IfMatch &#91;required&#93; The current version (`ETag` value) of the connection function.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionFunctionSummary = list(
+#'     Name = "string",
+#'     Id = "string",
+#'     ConnectionFunctionConfig = list(
+#'       Comment = "string",
+#'       Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0",
+#'       KeyValueStoreAssociations = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             KeyValueStoreARN = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ConnectionFunctionArn = "string",
+#'     Status = "string",
+#'     Stage = "DEVELOPMENT"|"LIVE",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$publish_connection_function(
+#'   Id = "string",
+#'   IfMatch = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_publish_connection_function
+#'
+#' @aliases cloudfront_publish_connection_function
+cloudfront_publish_connection_function <- function(Id, IfMatch) {
+  op <- new_operation(
+    name = "PublishConnectionFunction",
+    http_method = "POST",
+    http_path = "/2020-05-31/connection-function/{Id}/publish",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$publish_connection_function_input(Id = Id, IfMatch = IfMatch)
+  output <- .cloudfront$publish_connection_function_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$publish_connection_function <- cloudfront_publish_connection_function
 
 #' Publishes a CloudFront function by copying the function code from the
 #' DEVELOPMENT stage to LIVE
@@ -13871,6 +15821,58 @@ cloudfront_publish_function <- function(Name, IfMatch) {
 }
 .cloudfront$operations$publish_function <- cloudfront_publish_function
 
+#' Creates a resource control policy for a given CloudFront resource
+#'
+#' @description
+#' Creates a resource control policy for a given CloudFront resource.
+#'
+#' @usage
+#' cloudfront_put_resource_policy(ResourceArn, PolicyDocument)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the CloudFront resource for which the
+#' policy is being created.
+#' @param PolicyDocument &#91;required&#93; The JSON-formatted resource policy to create.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_resource_policy(
+#'   ResourceArn = "string",
+#'   PolicyDocument = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_put_resource_policy
+#'
+#' @aliases cloudfront_put_resource_policy
+cloudfront_put_resource_policy <- function(ResourceArn, PolicyDocument) {
+  op <- new_operation(
+    name = "PutResourcePolicy",
+    http_method = "POST",
+    http_path = "/2020-05-31/put-resource-policy",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$put_resource_policy_input(ResourceArn = ResourceArn, PolicyDocument = PolicyDocument)
+  output <- .cloudfront$put_resource_policy_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$put_resource_policy <- cloudfront_put_resource_policy
+
 #' Add tags to a CloudFront resource
 #'
 #' @description
@@ -13925,6 +15927,94 @@ cloudfront_tag_resource <- function(Resource, Tags) {
   return(response)
 }
 .cloudfront$operations$tag_resource <- cloudfront_tag_resource
+
+#' Tests a connection function
+#'
+#' @description
+#' Tests a connection function.
+#'
+#' @usage
+#' cloudfront_test_connection_function(Id, IfMatch, Stage,
+#'   ConnectionObject)
+#'
+#' @param Id &#91;required&#93; The connection function ID.
+#' @param IfMatch &#91;required&#93; The current version (`ETag` value) of the connection function.
+#' @param Stage The connection function stage.
+#' @param ConnectionObject &#91;required&#93; The connection object.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionFunctionTestResult = list(
+#'     ConnectionFunctionSummary = list(
+#'       Name = "string",
+#'       Id = "string",
+#'       ConnectionFunctionConfig = list(
+#'         Comment = "string",
+#'         Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0",
+#'         KeyValueStoreAssociations = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               KeyValueStoreARN = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ConnectionFunctionArn = "string",
+#'       Status = "string",
+#'       Stage = "DEVELOPMENT"|"LIVE",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     ComputeUtilization = "string",
+#'     ConnectionFunctionExecutionLogs = list(
+#'       "string"
+#'     ),
+#'     ConnectionFunctionErrorMessage = "string",
+#'     ConnectionFunctionOutput = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$test_connection_function(
+#'   Id = "string",
+#'   IfMatch = "string",
+#'   Stage = "DEVELOPMENT"|"LIVE",
+#'   ConnectionObject = raw
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_test_connection_function
+#'
+#' @aliases cloudfront_test_connection_function
+cloudfront_test_connection_function <- function(Id, IfMatch, Stage = NULL, ConnectionObject) {
+  op <- new_operation(
+    name = "TestConnectionFunction",
+    http_method = "POST",
+    http_path = "/2020-05-31/connection-function/{Id}/test",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$test_connection_function_input(Id = Id, IfMatch = IfMatch, Stage = Stage, ConnectionObject = ConnectionObject)
+  output <- .cloudfront$test_connection_function_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$test_connection_function <- cloudfront_test_connection_function
 
 #' Tests a CloudFront function
 #'
@@ -14088,6 +16178,92 @@ cloudfront_untag_resource <- function(Resource, TagKeys) {
 }
 .cloudfront$operations$untag_resource <- cloudfront_untag_resource
 
+#' Updates an Anycast static IP list
+#'
+#' @description
+#' Updates an Anycast static IP list.
+#'
+#' @usage
+#' cloudfront_update_anycast_ip_list(Id, IpAddressType, IfMatch)
+#'
+#' @param Id &#91;required&#93; The ID of the Anycast static IP list.
+#' @param IpAddressType The IP address type for the Anycast static IP list. You can specify one
+#' of the following options:
+#' 
+#' -   `ipv4` only
+#' 
+#' -   `ipv6` only
+#' 
+#' -   `dualstack` - Allocate a list of both IPv4 and IPv6 addresses
+#' @param IfMatch &#91;required&#93; The current version (ETag value) of the Anycast static IP list that you
+#' are updating.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AnycastIpList = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     Status = "string",
+#'     Arn = "string",
+#'     IpAddressType = "ipv4"|"ipv6"|"dualstack",
+#'     IpamConfig = list(
+#'       Quantity = 123,
+#'       IpamCidrConfigs = list(
+#'         list(
+#'           Cidr = "string",
+#'           IpamPoolArn = "string",
+#'           AnycastIp = "string",
+#'           Status = "provisioned"|"failed-provision"|"provisioning"|"deprovisioned"|"failed-deprovision"|"deprovisioning"|"advertised"|"failed-advertise"|"advertising"|"withdrawn"|"failed-withdraw"|"withdrawing"
+#'         )
+#'       )
+#'     ),
+#'     AnycastIps = list(
+#'       "string"
+#'     ),
+#'     IpCount = 123,
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_anycast_ip_list(
+#'   Id = "string",
+#'   IpAddressType = "ipv4"|"ipv6"|"dualstack",
+#'   IfMatch = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_update_anycast_ip_list
+#'
+#' @aliases cloudfront_update_anycast_ip_list
+cloudfront_update_anycast_ip_list <- function(Id, IpAddressType = NULL, IfMatch) {
+  op <- new_operation(
+    name = "UpdateAnycastIpList",
+    http_method = "PUT",
+    http_path = "/2020-05-31/anycast-ip-list/{Id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$update_anycast_ip_list_input(Id = Id, IpAddressType = IpAddressType, IfMatch = IfMatch)
+  output <- .cloudfront$update_anycast_ip_list_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$update_anycast_ip_list <- cloudfront_update_anycast_ip_list
+
 #' Updates a cache policy configuration
 #'
 #' @description
@@ -14106,6 +16282,11 @@ cloudfront_untag_resource <- function(Resource, TagKeys) {
 #' 3.  Call [`update_cache_policy`][cloudfront_update_cache_policy] by
 #'     providing the entire cache policy configuration, including the
 #'     fields that you modified and those that you didn't.
+#' 
+#' If your minimum TTL is greater than 0, CloudFront will cache content for
+#' at least the duration specified in the cache policy's minimum TTL, even
+#' if the `Cache-Control: no-cache`, `no-store`, or `private` directives
+#' are present in the origin headers.
 #'
 #' @usage
 #' cloudfront_update_cache_policy(CachePolicyConfig, Id, IfMatch)
@@ -14306,6 +16487,99 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
   return(response)
 }
 .cloudfront$operations$update_cloud_front_origin_access_identity <- cloudfront_update_cloud_front_origin_access_identity
+
+#' Updates a connection function
+#'
+#' @description
+#' Updates a connection function.
+#'
+#' @usage
+#' cloudfront_update_connection_function(Id, IfMatch,
+#'   ConnectionFunctionConfig, ConnectionFunctionCode)
+#'
+#' @param Id &#91;required&#93; The connection function ID.
+#' @param IfMatch &#91;required&#93; The current version (`ETag` value) of the connection function you are
+#' updating.
+#' @param ConnectionFunctionConfig &#91;required&#93; 
+#' @param ConnectionFunctionCode &#91;required&#93; The connection function code.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionFunctionSummary = list(
+#'     Name = "string",
+#'     Id = "string",
+#'     ConnectionFunctionConfig = list(
+#'       Comment = "string",
+#'       Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0",
+#'       KeyValueStoreAssociations = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             KeyValueStoreARN = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ConnectionFunctionArn = "string",
+#'     Status = "string",
+#'     Stage = "DEVELOPMENT"|"LIVE",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_connection_function(
+#'   Id = "string",
+#'   IfMatch = "string",
+#'   ConnectionFunctionConfig = list(
+#'     Comment = "string",
+#'     Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0",
+#'     KeyValueStoreAssociations = list(
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           KeyValueStoreARN = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ConnectionFunctionCode = raw
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_update_connection_function
+#'
+#' @aliases cloudfront_update_connection_function
+cloudfront_update_connection_function <- function(Id, IfMatch, ConnectionFunctionConfig, ConnectionFunctionCode) {
+  op <- new_operation(
+    name = "UpdateConnectionFunction",
+    http_method = "PUT",
+    http_path = "/2020-05-31/connection-function/{Id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$update_connection_function_input(Id = Id, IfMatch = IfMatch, ConnectionFunctionConfig = ConnectionFunctionConfig, ConnectionFunctionCode = ConnectionFunctionCode)
+  output <- .cloudfront$update_connection_function_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$update_connection_function <- cloudfront_update_connection_function
 
 #' Updates a connection group
 #'
@@ -14632,7 +16906,8 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'               )
 #'             ),
 #'             S3OriginConfig = list(
-#'               OriginAccessIdentity = "string"
+#'               OriginAccessIdentity = "string",
+#'               OriginReadTimeout = 123
 #'             ),
 #'             CustomOriginConfig = list(
 #'               HTTPPort = 123,
@@ -14645,15 +16920,18 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'                 )
 #'               ),
 #'               OriginReadTimeout = 123,
-#'               OriginKeepaliveTimeout = 123
+#'               OriginKeepaliveTimeout = 123,
+#'               IpAddressType = "ipv4"|"ipv6"|"dualstack"
 #'             ),
 #'             VpcOriginConfig = list(
 #'               VpcOriginId = "string",
+#'               OwnerAccountId = "string",
 #'               OriginReadTimeout = 123,
 #'               OriginKeepaliveTimeout = 123
 #'             ),
 #'             ConnectionAttempts = 123,
 #'             ConnectionTimeout = 123,
+#'             ResponseCompletionTimeout = 123,
 #'             OriginShield = list(
 #'               Enabled = TRUE|FALSE,
 #'               OriginShieldRegion = "string"
@@ -14890,7 +17168,7 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'         IAMCertificateId = "string",
 #'         ACMCertificateArn = "string",
 #'         SSLSupportMethod = "sni-only"|"vip"|"static-ip",
-#'         MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021",
+#'         MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021"|"TLSv1.3_2025"|"TLSv1.2_2025",
 #'         Certificate = "string",
 #'         CertificateSource = "cloudfront"|"iam"|"acm"
 #'       ),
@@ -14923,7 +17201,18 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'           )
 #'         )
 #'       ),
-#'       ConnectionMode = "direct"|"tenant-only"
+#'       ConnectionMode = "direct"|"tenant-only",
+#'       ViewerMtlsConfig = list(
+#'         Mode = "required"|"optional",
+#'         TrustStoreConfig = list(
+#'           TrustStoreId = "string",
+#'           AdvertiseTrustStoreCaNames = TRUE|FALSE,
+#'           IgnoreCertificateExpiry = TRUE|FALSE
+#'         )
+#'       ),
+#'       ConnectionFunctionAssociation = list(
+#'         Id = "string"
+#'       )
 #'     ),
 #'     AliasICPRecordals = list(
 #'       list(
@@ -14965,7 +17254,8 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'             )
 #'           ),
 #'           S3OriginConfig = list(
-#'             OriginAccessIdentity = "string"
+#'             OriginAccessIdentity = "string",
+#'             OriginReadTimeout = 123
 #'           ),
 #'           CustomOriginConfig = list(
 #'             HTTPPort = 123,
@@ -14978,15 +17268,18 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'               )
 #'             ),
 #'             OriginReadTimeout = 123,
-#'             OriginKeepaliveTimeout = 123
+#'             OriginKeepaliveTimeout = 123,
+#'             IpAddressType = "ipv4"|"ipv6"|"dualstack"
 #'           ),
 #'           VpcOriginConfig = list(
 #'             VpcOriginId = "string",
+#'             OwnerAccountId = "string",
 #'             OriginReadTimeout = 123,
 #'             OriginKeepaliveTimeout = 123
 #'           ),
 #'           ConnectionAttempts = 123,
 #'           ConnectionTimeout = 123,
+#'           ResponseCompletionTimeout = 123,
 #'           OriginShield = list(
 #'             Enabled = TRUE|FALSE,
 #'             OriginShieldRegion = "string"
@@ -15223,7 +17516,7 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'       IAMCertificateId = "string",
 #'       ACMCertificateArn = "string",
 #'       SSLSupportMethod = "sni-only"|"vip"|"static-ip",
-#'       MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021",
+#'       MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021"|"TLSv1.3_2025"|"TLSv1.2_2025",
 #'       Certificate = "string",
 #'       CertificateSource = "cloudfront"|"iam"|"acm"
 #'     ),
@@ -15256,7 +17549,18 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'         )
 #'       )
 #'     ),
-#'     ConnectionMode = "direct"|"tenant-only"
+#'     ConnectionMode = "direct"|"tenant-only",
+#'     ViewerMtlsConfig = list(
+#'       Mode = "required"|"optional",
+#'       TrustStoreConfig = list(
+#'         TrustStoreId = "string",
+#'         AdvertiseTrustStoreCaNames = TRUE|FALSE,
+#'         IgnoreCertificateExpiry = TRUE|FALSE
+#'       )
+#'     ),
+#'     ConnectionFunctionAssociation = list(
+#'       Id = "string"
+#'     )
 #'   ),
 #'   Id = "string",
 #'   IfMatch = "string"
@@ -15552,7 +17856,8 @@ cloudfront_update_distribution_tenant <- function(Id, DistributionId = NULL, Dom
 #'               )
 #'             ),
 #'             S3OriginConfig = list(
-#'               OriginAccessIdentity = "string"
+#'               OriginAccessIdentity = "string",
+#'               OriginReadTimeout = 123
 #'             ),
 #'             CustomOriginConfig = list(
 #'               HTTPPort = 123,
@@ -15565,15 +17870,18 @@ cloudfront_update_distribution_tenant <- function(Id, DistributionId = NULL, Dom
 #'                 )
 #'               ),
 #'               OriginReadTimeout = 123,
-#'               OriginKeepaliveTimeout = 123
+#'               OriginKeepaliveTimeout = 123,
+#'               IpAddressType = "ipv4"|"ipv6"|"dualstack"
 #'             ),
 #'             VpcOriginConfig = list(
 #'               VpcOriginId = "string",
+#'               OwnerAccountId = "string",
 #'               OriginReadTimeout = 123,
 #'               OriginKeepaliveTimeout = 123
 #'             ),
 #'             ConnectionAttempts = 123,
 #'             ConnectionTimeout = 123,
+#'             ResponseCompletionTimeout = 123,
 #'             OriginShield = list(
 #'               Enabled = TRUE|FALSE,
 #'               OriginShieldRegion = "string"
@@ -15810,7 +18118,7 @@ cloudfront_update_distribution_tenant <- function(Id, DistributionId = NULL, Dom
 #'         IAMCertificateId = "string",
 #'         ACMCertificateArn = "string",
 #'         SSLSupportMethod = "sni-only"|"vip"|"static-ip",
-#'         MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021",
+#'         MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021"|"TLSv1.3_2025"|"TLSv1.2_2025",
 #'         Certificate = "string",
 #'         CertificateSource = "cloudfront"|"iam"|"acm"
 #'       ),
@@ -15843,7 +18151,18 @@ cloudfront_update_distribution_tenant <- function(Id, DistributionId = NULL, Dom
 #'           )
 #'         )
 #'       ),
-#'       ConnectionMode = "direct"|"tenant-only"
+#'       ConnectionMode = "direct"|"tenant-only",
+#'       ViewerMtlsConfig = list(
+#'         Mode = "required"|"optional",
+#'         TrustStoreConfig = list(
+#'           TrustStoreId = "string",
+#'           AdvertiseTrustStoreCaNames = TRUE|FALSE,
+#'           IgnoreCertificateExpiry = TRUE|FALSE
+#'         )
+#'       ),
+#'       ConnectionFunctionAssociation = list(
+#'         Id = "string"
+#'       )
 #'     ),
 #'     AliasICPRecordals = list(
 #'       list(
@@ -15889,21 +18208,43 @@ cloudfront_update_distribution_with_staging_config <- function(Id, StagingDistri
 }
 .cloudfront$operations$update_distribution_with_staging_config <- cloudfront_update_distribution_with_staging_config
 
-#' Moves a domain from its current distribution or distribution tenant to
-#' another one
+#' We recommend that you use the UpdateDomainAssociation API operation to
+#' move a domain association, as it supports both standard distributions
+#' and distribution tenants
 #'
 #' @description
-#' Moves a domain from its current distribution or distribution tenant to
-#' another one.
+#' We recommend that you use the
+#' [`update_domain_association`][cloudfront_update_domain_association] API
+#' operation to move a domain association, as it supports both standard
+#' distributions and distribution tenants.
+#' [`associate_alias`][cloudfront_associate_alias] performs similar checks
+#' but only supports standard distributions.
+#' 
+#' Moves a domain from its current standard distribution or distribution
+#' tenant to another one.
+#' 
+#' You must first disable the source distribution (standard distribution or
+#' distribution tenant) and then separately call this operation to move the
+#' domain to another target distribution (standard distribution or
+#' distribution tenant).
+#' 
+#' To use this operation, specify the domain and the ID of the target
+#' resource (standard distribution or distribution tenant). For more
+#' information, including how to set up the target resource, prerequisites
+#' that you must complete, and other restrictions, see [Moving an alternate
+#' domain name to a different standard distribution or distribution
+#' tenant](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CNAMEs.html#alternate-domain-names-move)
+#' in the *Amazon CloudFront Developer Guide*.
 #'
 #' @usage
 #' cloudfront_update_domain_association(Domain, TargetResource, IfMatch)
 #'
 #' @param Domain &#91;required&#93; The domain to update.
-#' @param TargetResource &#91;required&#93; The target distribution resource for the domain. You can specify either
-#' `DistributionId` or `DistributionTenantId`, but not both.
-#' @param IfMatch The value of the `ETag` identifier for the distribution or distribution
-#' tenant that will be associated with the domain.
+#' @param TargetResource &#91;required&#93; The target standard distribution or distribution tenant resource for the
+#' domain. You can specify either `DistributionId` or
+#' `DistributionTenantId`, but not both.
+#' @param IfMatch The value of the `ETag` identifier for the standard distribution or
+#' distribution tenant that will be associated with the domain.
 #'
 #' @return
 #' A list with the following syntax:
@@ -17204,6 +19545,77 @@ cloudfront_update_streaming_distribution <- function(StreamingDistributionConfig
 }
 .cloudfront$operations$update_streaming_distribution <- cloudfront_update_streaming_distribution
 
+#' Updates a trust store
+#'
+#' @description
+#' Updates a trust store.
+#'
+#' @usage
+#' cloudfront_update_trust_store(Id, CaCertificatesBundleSource, IfMatch)
+#'
+#' @param Id &#91;required&#93; The trust store ID.
+#' @param CaCertificatesBundleSource &#91;required&#93; The CA certificates bundle source.
+#' @param IfMatch &#91;required&#93; The current version (`ETag` value) of the trust store you are updating.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrustStore = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Name = "string",
+#'     Status = "pending"|"active"|"failed",
+#'     NumberOfCaCertificates = 123,
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Reason = "string"
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_trust_store(
+#'   Id = "string",
+#'   CaCertificatesBundleSource = list(
+#'     CaCertificatesBundleS3Location = list(
+#'       Bucket = "string",
+#'       Key = "string",
+#'       Region = "string",
+#'       Version = "string"
+#'     )
+#'   ),
+#'   IfMatch = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_update_trust_store
+#'
+#' @aliases cloudfront_update_trust_store
+cloudfront_update_trust_store <- function(Id, CaCertificatesBundleSource, IfMatch) {
+  op <- new_operation(
+    name = "UpdateTrustStore",
+    http_method = "PUT",
+    http_path = "/2020-05-31/trust-store/{Id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$update_trust_store_input(Id = Id, CaCertificatesBundleSource = CaCertificatesBundleSource, IfMatch = IfMatch)
+  output <- .cloudfront$update_trust_store_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$update_trust_store <- cloudfront_update_trust_store
+
 #' Update an Amazon CloudFront VPC origin in your account
 #'
 #' @description
@@ -17223,6 +19635,7 @@ cloudfront_update_streaming_distribution <- function(StreamingDistributionConfig
 #'   VpcOrigin = list(
 #'     Id = "string",
 #'     Arn = "string",
+#'     AccountId = "string",
 #'     Status = "string",
 #'     CreatedTime = as.POSIXct(
 #'       "2015-01-01"

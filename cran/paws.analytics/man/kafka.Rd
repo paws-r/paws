@@ -108,6 +108,8 @@ The operations for managing an Amazon MSK cluster.
 \link[=kafka_describe_configuration]{describe_configuration} \tab Returns a description of this MSK configuration\cr
 \link[=kafka_describe_configuration_revision]{describe_configuration_revision} \tab Returns a description of this revision of the configuration\cr
 \link[=kafka_describe_replicator]{describe_replicator} \tab Describes a replicator\cr
+\link[=kafka_describe_topic]{describe_topic} \tab Returns topic details of this topic on a MSK cluster\cr
+\link[=kafka_describe_topic_partitions]{describe_topic_partitions} \tab Returns partition details of this topic on a MSK cluster\cr
 \link[=kafka_describe_vpc_connection]{describe_vpc_connection} \tab Returns a description of this MSK VPC connection\cr
 \link[=kafka_get_bootstrap_brokers]{get_bootstrap_brokers} \tab A list of brokers that a client application can use to bootstrap\cr
 \link[=kafka_get_cluster_policy]{get_cluster_policy} \tab Get the MSK cluster policy specified by the Amazon Resource Name (ARN) in the request\cr
@@ -124,6 +126,7 @@ The operations for managing an Amazon MSK cluster.
 \link[=kafka_list_replicators]{list_replicators} \tab Lists the replicators\cr
 \link[=kafka_list_scram_secrets]{list_scram_secrets} \tab Returns a list of the Scram Secrets associated with an Amazon MSK cluster\cr
 \link[=kafka_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of the tags associated with the specified resource\cr
+\link[=kafka_list_topics]{list_topics} \tab List topics in a MSK cluster\cr
 \link[=kafka_list_vpc_connections]{list_vpc_connections} \tab Returns a list of all the VPC connections in this Region\cr
 \link[=kafka_put_cluster_policy]{put_cluster_policy} \tab Creates or updates the MSK cluster policy specified by the cluster Amazon Resource Name (ARN) in the request\cr
 \link[=kafka_reboot_broker]{reboot_broker} \tab Reboots brokers\cr
@@ -138,6 +141,7 @@ The operations for managing an Amazon MSK cluster.
 \link[=kafka_update_configuration]{update_configuration} \tab Updates an MSK configuration\cr
 \link[=kafka_update_connectivity]{update_connectivity} \tab Updates the cluster's connectivity configuration\cr
 \link[=kafka_update_monitoring]{update_monitoring} \tab Updates the monitoring settings for the cluster\cr
+\link[=kafka_update_rebalancing]{update_rebalancing} \tab Use this resource to update the intelligent rebalancing status of an Amazon MSK Provisioned cluster with Express brokers\cr
 \link[=kafka_update_replication_info]{update_replication_info} \tab Updates replication info of a replicator\cr
 \link[=kafka_update_security]{update_security} \tab Updates the security settings for the cluster\cr
 \link[=kafka_update_storage]{update_storage} \tab Updates cluster broker volume size (or) sets cluster storage mode to TIERED

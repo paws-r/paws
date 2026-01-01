@@ -16,7 +16,8 @@ bedrockruntime_converse_stream(
   promptVariables = NULL,
   additionalModelResponseFieldPaths = NULL,
   requestMetadata = NULL,
-  performanceConfig = NULL
+  performanceConfig = NULL,
+  serviceTier = NULL
 )
 }
 \arguments{
@@ -98,6 +99,9 @@ model response, it is ignored by \code{\link[=bedrockruntime_converse]{converse}
 \item{requestMetadata}{Key-value pairs that you can use to filter invocation logs.}
 
 \item{performanceConfig}{Model performance settings for the request.}
+
+\item{serviceTier}{Specifies the processing tier configuration used for serving the
+request.}
 }
 \description{
 Sends messages to the specified Amazon Bedrock model and returns the response in a stream. \code{\link[=bedrockruntime_converse_stream]{converse_stream}} provides a consistent API that works with all Amazon Bedrock models that support messages. This allows you to write code once and use it with different models. Should a model have unique inference parameters, you can also pass those unique parameters to the model.

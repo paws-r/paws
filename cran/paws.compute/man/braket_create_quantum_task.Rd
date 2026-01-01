@@ -5,40 +5,43 @@
 \title{Creates a quantum task}
 \usage{
 braket_create_quantum_task(
-  action,
-  associations = NULL,
   clientToken,
   deviceArn,
   deviceParameters = NULL,
-  jobToken = NULL,
+  shots,
   outputS3Bucket,
   outputS3KeyPrefix,
-  shots,
-  tags = NULL
+  action,
+  tags = NULL,
+  jobToken = NULL,
+  associations = NULL,
+  experimentalCapabilities = NULL
 )
 }
 \arguments{
-\item{action}{[required] The action associated with the task.}
+\item{clientToken}{[required] The client token associated with the request.}
+
+\item{deviceArn}{[required] The ARN of the device to run the quantum task on.}
+
+\item{deviceParameters}{The parameters for the device to run the quantum task on.}
+
+\item{shots}{[required] The number of shots to use for the quantum task.}
+
+\item{outputS3Bucket}{[required] The S3 bucket to store quantum task result files in.}
+
+\item{outputS3KeyPrefix}{[required] The key prefix for the location in the S3 bucket to store quantum task
+results in.}
+
+\item{action}{[required] The action associated with the quantum task.}
+
+\item{tags}{Tags to be added to the quantum task you're creating.}
+
+\item{jobToken}{The token for an Amazon Braket hybrid job that associates it with the
+quantum task.}
 
 \item{associations}{The list of Amazon Braket resources associated with the quantum task.}
 
-\item{clientToken}{[required] The client token associated with the request.}
-
-\item{deviceArn}{[required] The ARN of the device to run the task on.}
-
-\item{deviceParameters}{The parameters for the device to run the task on.}
-
-\item{jobToken}{The token for an Amazon Braket job that associates it with the quantum
-task.}
-
-\item{outputS3Bucket}{[required] The S3 bucket to store task result files in.}
-
-\item{outputS3KeyPrefix}{[required] The key prefix for the location in the S3 bucket to store task results
-in.}
-
-\item{shots}{[required] The number of shots to use for the task.}
-
-\item{tags}{Tags to be added to the quantum task you're creating.}
+\item{experimentalCapabilities}{Enable experimental capabilities for the quantum task.}
 }
 \description{
 Creates a quantum task.

@@ -5,27 +5,27 @@
 \title{Updates an agent's collaborator}
 \usage{
 bedrockagent_update_agent_collaborator(
-  agentDescriptor,
   agentId,
   agentVersion,
-  collaborationInstruction,
   collaboratorId,
+  agentDescriptor,
   collaboratorName,
+  collaborationInstruction,
   relayConversationHistory = NULL
 )
 }
 \arguments{
-\item{agentDescriptor}{[required] An agent descriptor for the agent collaborator.}
-
 \item{agentId}{[required] The agent's ID.}
 
 \item{agentVersion}{[required] The agent's version.}
 
-\item{collaborationInstruction}{[required] Instruction for the collaborator.}
-
 \item{collaboratorId}{[required] The collaborator's ID.}
 
+\item{agentDescriptor}{[required] An agent descriptor for the agent collaborator.}
+
 \item{collaboratorName}{[required] The collaborator's name.}
+
+\item{collaborationInstruction}{[required] Instruction for the collaborator.}
 
 \item{relayConversationHistory}{A relay conversation history for the collaborator.}
 }

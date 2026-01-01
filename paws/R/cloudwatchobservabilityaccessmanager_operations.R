@@ -45,6 +45,12 @@ NULL
 #' 
 #' -   `$AccountEmailNoDomain` is the email address of the account without
 #'     the domain name
+#' 
+#' In the Amazon Web Services GovCloud (US-East) and Amazon Web Services
+#' GovCloud (US-West) Regions, the only supported option is to use custom
+#' labels, and the `$AccountName`, `$AccountEmail`, and
+#' `$AccountEmailNoDomain` variables all resolve as *account-id* instead of
+#' the specified variable.
 #' @param LinkConfiguration Use this structure to optionally create filters that specify that only
 #' some metric namespaces or log groups are to be shared from the source
 #' account to the monitoring account.
@@ -316,9 +322,16 @@ cloudwatchobservabilityaccessmanager_delete_sink <- function(Identifier) {
 #' [`list_links`][cloudwatchobservabilityaccessmanager_list_links].
 #'
 #' @usage
-#' cloudwatchobservabilityaccessmanager_get_link(Identifier)
+#' cloudwatchobservabilityaccessmanager_get_link(Identifier, IncludeTags)
 #'
 #' @param Identifier &#91;required&#93; The ARN of the link to retrieve information for.
+#' @param IncludeTags Specifies whether to include the tags associated with the link in the
+#' response. When `IncludeTags` is set to `true` and the caller has the
+#' required permission, `oam:ListTagsForResource`, the API will return the
+#' tags for the specified resource. If the caller doesn't have the required
+#' permission, `oam:ListTagsForResource`, the API will raise an exception.
+#' 
+#' The default value is `false`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -349,7 +362,8 @@ cloudwatchobservabilityaccessmanager_delete_sink <- function(Identifier) {
 #' @section Request syntax:
 #' ```
 #' svc$get_link(
-#'   Identifier = "string"
+#'   Identifier = "string",
+#'   IncludeTags = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -358,7 +372,7 @@ cloudwatchobservabilityaccessmanager_delete_sink <- function(Identifier) {
 #' @rdname cloudwatchobservabilityaccessmanager_get_link
 #'
 #' @aliases cloudwatchobservabilityaccessmanager_get_link
-cloudwatchobservabilityaccessmanager_get_link <- function(Identifier) {
+cloudwatchobservabilityaccessmanager_get_link <- function(Identifier, IncludeTags = NULL) {
   op <- new_operation(
     name = "GetLink",
     http_method = "POST",
@@ -367,7 +381,7 @@ cloudwatchobservabilityaccessmanager_get_link <- function(Identifier) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatchobservabilityaccessmanager$get_link_input(Identifier = Identifier)
+  input <- .cloudwatchobservabilityaccessmanager$get_link_input(Identifier = Identifier, IncludeTags = IncludeTags)
   output <- .cloudwatchobservabilityaccessmanager$get_link_output()
   config <- get_config()
   svc <- .cloudwatchobservabilityaccessmanager$service(config, op)
@@ -387,9 +401,16 @@ cloudwatchobservabilityaccessmanager_get_link <- function(Identifier) {
 #' [`list_sinks`][cloudwatchobservabilityaccessmanager_list_sinks].
 #'
 #' @usage
-#' cloudwatchobservabilityaccessmanager_get_sink(Identifier)
+#' cloudwatchobservabilityaccessmanager_get_sink(Identifier, IncludeTags)
 #'
 #' @param Identifier &#91;required&#93; The ARN of the sink to retrieve information for.
+#' @param IncludeTags Specifies whether to include the tags associated with the sink in the
+#' response. When `IncludeTags` is set to `true` and the caller has the
+#' required permission, `oam:ListTagsForResource`, the API will return the
+#' tags for the specified resource. If the caller doesn't have the required
+#' permission, `oam:ListTagsForResource`, the API will raise an exception.
+#' 
+#' The default value is `false`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -407,7 +428,8 @@ cloudwatchobservabilityaccessmanager_get_link <- function(Identifier) {
 #' @section Request syntax:
 #' ```
 #' svc$get_sink(
-#'   Identifier = "string"
+#'   Identifier = "string",
+#'   IncludeTags = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -416,7 +438,7 @@ cloudwatchobservabilityaccessmanager_get_link <- function(Identifier) {
 #' @rdname cloudwatchobservabilityaccessmanager_get_sink
 #'
 #' @aliases cloudwatchobservabilityaccessmanager_get_sink
-cloudwatchobservabilityaccessmanager_get_sink <- function(Identifier) {
+cloudwatchobservabilityaccessmanager_get_sink <- function(Identifier, IncludeTags = NULL) {
   op <- new_operation(
     name = "GetSink",
     http_method = "POST",
@@ -425,7 +447,7 @@ cloudwatchobservabilityaccessmanager_get_sink <- function(Identifier) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatchobservabilityaccessmanager$get_sink_input(Identifier = Identifier)
+  input <- .cloudwatchobservabilityaccessmanager$get_sink_input(Identifier = Identifier, IncludeTags = IncludeTags)
   output <- .cloudwatchobservabilityaccessmanager$get_sink_output()
   config <- get_config()
   svc <- .cloudwatchobservabilityaccessmanager$service(config, op)
@@ -768,7 +790,8 @@ cloudwatchobservabilityaccessmanager_list_tags_for_resource <- function(Resource
 #' to individual accounts.
 #' 
 #' You can also use a sink policy to limit the types of data that is
-#' shared. The three types that you can allow or deny are:
+#' shared. The six types of services with their respective resource types
+#' that you can allow or deny are:
 #' 
 #' -   **Metrics** - Specify with `AWS::CloudWatch::Metric`
 #' 
@@ -778,6 +801,12 @@ cloudwatchobservabilityaccessmanager_list_tags_for_resource <- function(Resource
 #' 
 #' -   **Application Insights - Applications** - Specify with
 #'     `AWS::ApplicationInsights::Application`
+#' 
+#' -   **Internet Monitor** - Specify with `AWS::InternetMonitor::Monitor`
+#' 
+#' -   **Application Signals** - Specify with
+#'     `AWS::ApplicationSignals::Service` and
+#'     `AWS::ApplicationSignals::ServiceLevelObjective`
 #' 
 #' See the examples in this section to see how to specify permitted source
 #' accounts and data types.
@@ -1000,9 +1029,17 @@ cloudwatchobservabilityaccessmanager_untag_resource <- function(ResourceArn, Tag
 #'
 #' @usage
 #' cloudwatchobservabilityaccessmanager_update_link(Identifier,
-#'   LinkConfiguration, ResourceTypes)
+#'   IncludeTags, LinkConfiguration, ResourceTypes)
 #'
 #' @param Identifier &#91;required&#93; The ARN of the link that you want to update.
+#' @param IncludeTags Specifies whether to include the tags associated with the link in the
+#' response after the update operation. When `IncludeTags` is set to `true`
+#' and the caller has the required permission, `oam:ListTagsForResource`,
+#' the API will return the tags for the specified resource. If the caller
+#' doesn't have the required permission, `oam:ListTagsForResource`, the API
+#' will raise an exception.
+#' 
+#' The default value is `false`.
 #' @param LinkConfiguration Use this structure to filter which metric namespaces and which log
 #' groups are to be shared from the source account to the monitoring
 #' account.
@@ -1041,6 +1078,7 @@ cloudwatchobservabilityaccessmanager_untag_resource <- function(ResourceArn, Tag
 #' ```
 #' svc$update_link(
 #'   Identifier = "string",
+#'   IncludeTags = TRUE|FALSE,
 #'   LinkConfiguration = list(
 #'     LogGroupConfiguration = list(
 #'       Filter = "string"
@@ -1060,7 +1098,7 @@ cloudwatchobservabilityaccessmanager_untag_resource <- function(ResourceArn, Tag
 #' @rdname cloudwatchobservabilityaccessmanager_update_link
 #'
 #' @aliases cloudwatchobservabilityaccessmanager_update_link
-cloudwatchobservabilityaccessmanager_update_link <- function(Identifier, LinkConfiguration = NULL, ResourceTypes) {
+cloudwatchobservabilityaccessmanager_update_link <- function(Identifier, IncludeTags = NULL, LinkConfiguration = NULL, ResourceTypes) {
   op <- new_operation(
     name = "UpdateLink",
     http_method = "POST",
@@ -1069,7 +1107,7 @@ cloudwatchobservabilityaccessmanager_update_link <- function(Identifier, LinkCon
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatchobservabilityaccessmanager$update_link_input(Identifier = Identifier, LinkConfiguration = LinkConfiguration, ResourceTypes = ResourceTypes)
+  input <- .cloudwatchobservabilityaccessmanager$update_link_input(Identifier = Identifier, IncludeTags = IncludeTags, LinkConfiguration = LinkConfiguration, ResourceTypes = ResourceTypes)
   output <- .cloudwatchobservabilityaccessmanager$update_link_output()
   config <- get_config()
   svc <- .cloudwatchobservabilityaccessmanager$service(config, op)

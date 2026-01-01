@@ -8,7 +8,9 @@ attributes}
 servicediscovery_update_service_attributes(ServiceId, Attributes)
 }
 \arguments{
-\item{ServiceId}{[required] The ID of the service that you want to update.}
+\item{ServiceId}{[required] The ID or Amazon Resource Name (ARN) of the service that you want to
+update. For services created in a namespace shared with your Amazon Web
+Services account, specify the service ARN.}
 
 \item{Attributes}{[required] A string map that contains attribute key-value pairs.}
 }

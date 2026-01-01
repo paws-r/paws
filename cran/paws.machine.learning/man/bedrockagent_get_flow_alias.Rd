@@ -4,12 +4,12 @@
 \alias{bedrockagent_get_flow_alias}
 \title{Retrieves information about a flow}
 \usage{
-bedrockagent_get_flow_alias(aliasIdentifier, flowIdentifier)
+bedrockagent_get_flow_alias(flowIdentifier, aliasIdentifier)
 }
 \arguments{
-\item{aliasIdentifier}{[required] The unique identifier of the alias for which to retrieve information.}
-
 \item{flowIdentifier}{[required] The unique identifier of the flow that the alias belongs to.}
+
+\item{aliasIdentifier}{[required] The unique identifier of the alias for which to retrieve information.}
 }
 \description{
 Retrieves information about a flow. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/flows-deploy.html}{Deploy a flow in Amazon Bedrock} in the Amazon Bedrock User Guide.

@@ -11,7 +11,7 @@ quicksight_delete_role_custom_permission(Role, AwsAccountId, Namespace)
 
 \item{AwsAccountId}{[required] The ID for the Amazon Web Services account that the group is in.
 Currently, you use the ID for the Amazon Web Services account that
-contains your Amazon QuickSight account.}
+contains your Amazon Quick Sight account.}
 
 \item{Namespace}{[required] The namespace that includes the role.}
 }

@@ -26,7 +26,9 @@ A name must \emph{not} contain:
 \item brackets \verb{< > \{ \} [ ]}
 \item wildcard characters \verb{? *}
 \item special characters \verb{\\" # \% \\ ^ | ~ \\` $ & , ; : /}
-\item control characters (\verb{U+0000-001F}, \verb{U+007F-009F})
+\item control characters (\verb{U+0000-001F}, \verb{U+007F-009F}, \code{U+FFFE-FFFF})
+\item surrogates (\code{U+D800-DFFF})
+\item invalid characters (\verb{ U+10FFFF})
 }
 
 To enable logging with CloudWatch Logs, the name should only contain

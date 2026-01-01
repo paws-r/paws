@@ -5,15 +5,31 @@
 \title{Creates a service}
 \usage{
 vpclattice_create_service(
-  authType = NULL,
-  certificateArn = NULL,
   clientToken = NULL,
-  customDomainName = NULL,
   name,
-  tags = NULL
+  tags = NULL,
+  customDomainName = NULL,
+  certificateArn = NULL,
+  authType = NULL
 )
 }
 \arguments{
+\item{clientToken}{A unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. If you retry a request that completed
+successfully using the same client token and parameters, the retry
+succeeds without performing any actions. If the parameters aren't
+identical, the retry fails.}
+
+\item{name}{[required] The name of the service. The name must be unique within the account. The
+valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen
+as the first or last character, or immediately after another hyphen.}
+
+\item{tags}{The tags for the service.}
+
+\item{customDomainName}{The custom domain name of the service.}
+
+\item{certificateArn}{The Amazon Resource Name (ARN) of the certificate.}
+
 \item{authType}{The type of IAM policy.
 \itemize{
 \item \code{NONE}: The resource does not use an IAM policy. This is the
@@ -21,22 +37,6 @@ default.
 \item \code{AWS_IAM}: The resource uses an IAM policy. When this type is used,
 auth is enabled and an auth policy is required.
 }}
-
-\item{certificateArn}{The Amazon Resource Name (ARN) of the certificate.}
-
-\item{clientToken}{A unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. If you retry a request that completed
-successfully using the same client token and parameters, the retry
-succeeds without performing any actions. If the parameters aren't
-identical, the retry fails.}
-
-\item{customDomainName}{The custom domain name of the service.}
-
-\item{name}{[required] The name of the service. The name must be unique within the account. The
-valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen
-as the first or last character, or immediately after another hyphen.}
-
-\item{tags}{The tags for the service.}
 }
 \description{
 Creates a service. A service is any software application that can run on instances containers, or serverless functions within an account or virtual private cloud (VPC).

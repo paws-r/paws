@@ -56,17 +56,30 @@ For more information about deployment types, see \href{https://docs.aws.amazon.c
 \item{availabilityZoneRebalancing}{Indicates whether to use Availability Zone rebalancing for the service.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-rebalancing.html}{Balancing an Amazon ECS service across Availability Zones}
-in the \emph{Amazon Elastic Container Service Developer Guide} .}
+in the \emph{Amazon Elastic Container Service Developer Guide} .
+
+The default behavior of \code{AvailabilityZoneRebalancing} differs between
+create and update requests:
+\itemize{
+\item For create service requests, when no value is specified for
+\code{AvailabilityZoneRebalancing}, Amazon ECS defaults the value to
+\code{ENABLED}.
+\item For update service requests, when no value is specified for
+\code{AvailabilityZoneRebalancing}, Amazon ECS defaults to the existing
+service’s \code{AvailabilityZoneRebalancing} value. If the service never
+had an \code{AvailabilityZoneRebalancing} value set, Amazon ECS treats
+this as \code{DISABLED}.
+}}
 
 \item{loadBalancers}{A load balancer object representing the load balancers to use with your
 service. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html}{Service load balancing}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 
-If the service uses the rolling update (\code{ECS}) deployment controller and
-using either an Application Load Balancer or Network Load Balancer, you
-must specify one or more target group ARNs to attach to the service. The
-service-linked role is required for services that use multiple target
-groups. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html}{Using service-linked roles for Amazon ECS}
+If the service uses the \code{ECS} deployment controller and using either an
+Application Load Balancer or Network Load Balancer, you must specify one
+or more target group ARNs to attach to the service. The service-linked
+role is required for services that use multiple target groups. For more
+information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html}{Using service-linked roles for Amazon ECS}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 
 If the service uses the \code{CODE_DEPLOY} deployment controller, the service
@@ -124,8 +137,12 @@ It must be unique and is case sensitive. Up to 36 ASCII characters in
 the range of 33-126 (inclusive) are allowed.}
 
 \item{launchType}{The infrastructure that you run your service on. For more information,
-see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html}{Amazon ECS launch types}
+see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-configuration.html}{Amazon ECS launch types}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
+
+If you want to use Amazon ECS Managed Instances, you must use the
+\code{capacityProviderStrategy} request parameter and omit the \code{launchType}
+request parameter.
 
 The \code{FARGATE} launch type runs your tasks on Fargate On-Demand
 infrastructure.
@@ -145,6 +162,10 @@ If a \code{launchType} is specified, the \code{capacityProviderStrategy} paramet
 must be omitted.}
 
 \item{capacityProviderStrategy}{The capacity provider strategy to use for the service.
+
+If you want to use Amazon ECS Managed Instances, you must use the
+\code{capacityProviderStrategy} request parameter and omit the \code{launchType}
+request parameter.
 
 If a \code{capacityProviderStrategy} is specified, the \code{launchType} parameter
 must be omitted. If no \code{capacityProviderStrategy} or \code{launchType} is
@@ -202,17 +223,13 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{healthCheckGracePeriodSeconds}{The period of time, in seconds, that the Amazon ECS service scheduler
 ignores unhealthy Elastic Load Balancing, VPC Lattice, and container
-health checks after a task has first started. If you don't specify a
-health check grace period value, the default value of \code{0} is used. If
-you don't use any of the health checks, then
+health checks after a task has first started. If you do not specify a
+health check grace period value, the default value of 0 is used. If you
+do not use any of the health checks, then
 \code{healthCheckGracePeriodSeconds} is unused.
 
-If your service's tasks take a while to start and respond to health
-checks, you can specify a health check grace period of up to
-2,147,483,647 seconds (about 69 years). During that time, the Amazon ECS
-service scheduler ignores health check status. This grace period can
-prevent the service scheduler from marking tasks as unhealthy and
-stopping them before they have time to come up.}
+If your service has more running tasks than desired, unhealthy tasks in
+the grace period might be stopped to reach the desired count.}
 
 \item{schedulingStrategy}{The scheduling strategy to use for the service. For more information,
 see
@@ -272,8 +289,8 @@ your tags per resource limit.
 within the service. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html}{Tagging your Amazon ECS resources}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 
-When you use Amazon ECS managed tags, you need to set the
-\code{propagateTags} request parameter.}
+When you use Amazon ECS managed tags, you must set the \code{propagateTags}
+request parameter.}
 
 \item{propagateTags}{Specifies whether to propagate the tags from the task definition to the
 task. If no value is specified, the tags aren't propagated. Tags can

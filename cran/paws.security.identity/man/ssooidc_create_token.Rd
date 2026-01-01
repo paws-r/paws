@@ -51,11 +51,9 @@ For more information about the features and limitations of the current
 IAM Identity Center OIDC implementation, see \emph{Considerations for Using
 this Guide} in the \href{https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html}{IAM Identity Center OIDC API Reference}.}
 
-\item{scope}{The list of scopes for which authorization is requested. The access
-token that is issued is limited to the scopes that are granted. If this
-value is not specified, IAM Identity Center authorizes all scopes that
-are configured for the client during the call to
-\code{\link[=ssooidc_register_client]{register_client}}.}
+\item{scope}{The list of scopes for which authorization is requested. This parameter
+has no effect; the access token will always include all scopes
+configured during client registration.}
 
 \item{redirectUri}{Used only when calling this API for the Authorization Code grant type.
 This value specifies the location of the client or application that has

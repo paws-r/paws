@@ -19,7 +19,8 @@ imagebuilder_create_image_pipeline(
   clientToken,
   imageScanningConfiguration = NULL,
   workflows = NULL,
-  executionRole = NULL
+  executionRole = NULL,
+  loggingConfiguration = NULL
 )
 }
 \arguments{
@@ -63,6 +64,8 @@ in the \emph{Amazon EC2 API Reference}.}
 
 \item{executionRole}{The name or Amazon Resource Name (ARN) for the IAM role you create that
 grants Image Builder access to perform workflow actions.}
+
+\item{loggingConfiguration}{Define logging configuration for the image build process.}
 }
 \description{
 Creates a new image pipeline. Image pipelines enable you to automate the creation and distribution of images.

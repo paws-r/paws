@@ -6,24 +6,24 @@
 \usage{
 inspector2_list_cis_scan_configurations(
   filterCriteria = NULL,
-  maxResults = NULL,
-  nextToken = NULL,
   sortBy = NULL,
-  sortOrder = NULL
+  sortOrder = NULL,
+  nextToken = NULL,
+  maxResults = NULL
 )
 }
 \arguments{
 \item{filterCriteria}{The CIS scan configuration filter criteria.}
 
-\item{maxResults}{The maximum number of CIS scan configurations to be returned in a single
-page of results.}
+\item{sortBy}{The CIS scan configuration sort by order.}
+
+\item{sortOrder}{The CIS scan configuration sort order order.}
 
 \item{nextToken}{The pagination token from a previous request that's used to retrieve the
 next page of results.}
 
-\item{sortBy}{The CIS scan configuration sort by order.}
-
-\item{sortOrder}{The CIS scan configuration sort order order.}
+\item{maxResults}{The maximum number of CIS scan configurations to be returned in a single
+page of results.}
 }
 \description{
 Lists CIS scan configurations.

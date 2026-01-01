@@ -7,7 +7,8 @@
 connectcampaignservicev2_create_campaign(
   name,
   connectInstanceId,
-  channelSubtypeConfig,
+  channelSubtypeConfig = NULL,
+  type = NULL,
   source = NULL,
   connectCampaignFlowArn = NULL,
   schedule = NULL,
@@ -21,7 +22,9 @@ connectcampaignservicev2_create_campaign(
 
 \item{connectInstanceId}{[required]}
 
-\item{channelSubtypeConfig}{[required]}
+\item{channelSubtypeConfig}{}
+
+\item{type}{}
 
 \item{source}{}
 

@@ -5,15 +5,17 @@
 \title{Updates an existing rule groups namespace within a workspace}
 \usage{
 prometheusservice_put_rule_groups_namespace(
-  clientToken = NULL,
-  data,
+  workspaceId,
   name,
-  workspaceId
+  data,
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{A unique identifier that you can provide to ensure the idempotency of
-the request. Case-sensitive.}
+\item{workspaceId}{[required] The ID of the workspace where you are updating the rule groups
+namespace.}
+
+\item{name}{[required] The name of the rule groups namespace that you are updating.}
 
 \item{data}{[required] The new rules file to use in the namespace. A base64-encoded version of
 the YAML rule groups file.
@@ -21,10 +23,8 @@ the YAML rule groups file.
 For details about the rule groups namespace structure, see
 \href{https://docs.aws.amazon.com/prometheus/latest/APIReference/yaml-RuleGroupsNamespaceData.html}{RuleGroupsNamespaceData}.}
 
-\item{name}{[required] The name of the rule groups namespace that you are updating.}
-
-\item{workspaceId}{[required] The ID of the workspace where you are updating the rule groups
-namespace.}
+\item{clientToken}{A unique identifier that you can provide to ensure the idempotency of
+the request. Case-sensitive.}
 }
 \description{
 Updates an existing rule groups namespace within a workspace. A rule groups namespace is associated with exactly one rules file. A workspace can have multiple rule groups namespaces.

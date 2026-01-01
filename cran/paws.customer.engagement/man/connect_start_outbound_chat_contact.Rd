@@ -2,7 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_start_outbound_chat_contact}
 \alias{connect_start_outbound_chat_contact}
-\title{Initiates a new outbound SMS contact to a customer}
+\title{Initiates a new outbound SMS or WhatsApp contact to a customer}
 \usage{
 connect_start_outbound_chat_contact(
   SourceEndpoint,
@@ -14,6 +14,7 @@ connect_start_outbound_chat_contact(
   ChatDurationInMinutes = NULL,
   ParticipantDetails = NULL,
   InitialSystemMessage = NULL,
+  InitialTemplatedSystemMessage = NULL,
   RelatedContactId = NULL,
   SupportedMessagingContentTypes = NULL,
   ClientToken = NULL
@@ -33,7 +34,7 @@ Connect attributes. They can be accessed in flows.
 \itemize{
 \item Attribute keys can include only alphanumeric, \code{-}, and \verb{_}.
 \item This field can be used to show channel subtype, such as
-\code{connect:Guide} and \code{connect:SMS}.
+\code{connect:SMS} and \code{connect:WhatsApp}.
 }}
 
 \item{Attributes}{A custom key-value pair using an attribute map. The attributes are
@@ -58,6 +59,8 @@ days).}
 
 \item{InitialSystemMessage}{}
 
+\item{InitialTemplatedSystemMessage}{}
+
 \item{RelatedContactId}{The unique identifier for an Amazon Connect contact. This identifier is
 related to the contact starting.}
 
@@ -79,13 +82,14 @@ are valid because they contain \code{text/plain}:
 }}
 
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. If not provided, the AWS SDK populates this
-field. For more information about idempotency, see \href{https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/}{Making retries safe with idempotent APIs}.
+idempotency of the request. If not provided, the Amazon Web Services SDK
+populates this field. For more information about idempotency, see
+\href{https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/}{Making retries safe with idempotent APIs}.
 The token is valid for 7 days after creation. If a contact is already
 started, the contact ID is returned.}
 }
 \description{
-Initiates a new outbound SMS contact to a customer. Response of this API provides the \code{ContactId} of the outbound SMS contact created.
+Initiates a new outbound SMS or WhatsApp contact to a customer. Response of this API provides the \code{ContactId} of the outbound SMS or WhatsApp contact created.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_start_outbound_chat_contact/} for full documentation.
 }

@@ -3,7 +3,7 @@
 \name{quicksight_create_namespace}
 \alias{quicksight_create_namespace}
 \title{(Enterprise edition only) Creates a new namespace for you to use with
-Amazon QuickSight}
+Amazon Quick Sight}
 \usage{
 quicksight_create_namespace(
   AwsAccountId,
@@ -14,7 +14,7 @@ quicksight_create_namespace(
 }
 \arguments{
 \item{AwsAccountId}{[required] The ID for the Amazon Web Services account that you want to create the
-Amazon QuickSight namespace in.}
+Quick Sight namespace in.}
 
 \item{Namespace}{[required] The name that you want to use to describe the new namespace.}
 
@@ -25,7 +25,7 @@ supports users with an identity type of \code{QUICKSIGHT}.}
 creating.}
 }
 \description{
-(Enterprise edition only) Creates a new namespace for you to use with Amazon QuickSight.
+(Enterprise edition only) Creates a new namespace for you to use with Amazon Quick Sight.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_create_namespace/} for full documentation.
 }

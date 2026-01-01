@@ -76,21 +76,21 @@ NULL
 #' issue only one. If you change the idempotency token for each call,
 #' Amazon Web Services Private CA recognizes that you are requesting
 #' multiple certificate authorities.
-#' @param KeyStorageSecurityStandard Specifies a cryptographic key management compliance standard used for
-#' handling CA keys.
+#' @param KeyStorageSecurityStandard Specifies a cryptographic key management compliance standard for
+#' handling and protecting CA keys.
 #' 
 #' Default: FIPS_140_2_LEVEL_3_OR_HIGHER
 #' 
-#' Some Amazon Web Services Regions do not support the default. When
-#' creating a CA in these Regions, you must provide
-#' `FIPS_140_2_LEVEL_2_OR_HIGHER` as the argument for
-#' `KeyStorageSecurityStandard`. Failure to do this results in an
-#' `InvalidArgsException` with the message, "A certificate authority cannot
-#' be created in this region with the specified security standard."
+#' Some Amazon Web Services Regions don't support the default value. When
+#' you create a CA in these Regions, you must use `CCPC_LEVEL_1_OR_HIGHER`
+#' for the `KeyStorageSecurityStandard` parameter. If you don't, the
+#' operation returns an `InvalidArgsException` with this message: "A
+#' certificate authority cannot be created in this region with the
+#' specified security standard."
 #' 
-#' For information about security standard support in various Regions, see
-#' [Storage and security compliance of Amazon Web Services Private CA
-#' private
+#' For information about security standard support in different Amazon Web
+#' Services Regions, see [Storage and security compliance of Amazon Web
+#' Services Private CA private
 #' keys](https://docs.aws.amazon.com/privateca/latest/userguide/data-protection.html#private-keys).
 #' @param Tags Key-value pairs that will be attached to the new private CA. You can
 #' associate up to 50 tags with a private CA. For information using tags
@@ -115,8 +115,8 @@ NULL
 #' ```
 #' svc$create_certificate_authority(
 #'   CertificateAuthorityConfiguration = list(
-#'     KeyAlgorithm = "RSA_2048"|"RSA_3072"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"EC_secp521r1"|"SM2",
-#'     SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA"|"SM3WITHSM2",
+#'     KeyAlgorithm = "RSA_2048"|"RSA_3072"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"EC_secp521r1"|"ML_DSA_44"|"ML_DSA_65"|"ML_DSA_87"|"SM2",
+#'     SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA"|"SM3WITHSM2"|"ML_DSA_44"|"ML_DSA_65"|"ML_DSA_87",
 #'     Subject = list(
 #'       Country = "string",
 #'       Organization = "string",
@@ -456,6 +456,16 @@ acmpca_create_permission <- function(CertificateAuthorityArn, Principal, SourceA
 #' CA in the `DELETED` state. To restore an eligible CA, call the
 #' [`restore_certificate_authority`][acmpca_restore_certificate_authority]
 #' action.
+#' 
+#' A private CA can be deleted if it is in the `PENDING_CERTIFICATE`,
+#' `CREATING`, `EXPIRED`, `DISABLED`, or `FAILED` state. To delete a CA in
+#' the `ACTIVE` state, you must first disable it, or else the delete
+#' request results in an exception. If you are deleting a private CA in the
+#' `PENDING_CERTIFICATE` or `DISABLED` state, you can set the length of its
+#' restoration period to 7-30 days. The default is 30. During this time,
+#' the status is set to `DELETED` and the CA can be restored. A private CA
+#' deleted in the `CREATING` or `FAILED` state has no assigned restoration
+#' period and cannot be restored.
 #'
 #' @usage
 #' acmpca_delete_certificate_authority(CertificateAuthorityArn,
@@ -739,8 +749,8 @@ acmpca_delete_policy <- function(ResourceArn) {
 #'     ),
 #'     FailureReason = "REQUEST_TIMED_OUT"|"UNSUPPORTED_ALGORITHM"|"OTHER",
 #'     CertificateAuthorityConfiguration = list(
-#'       KeyAlgorithm = "RSA_2048"|"RSA_3072"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"EC_secp521r1"|"SM2",
-#'       SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA"|"SM3WITHSM2",
+#'       KeyAlgorithm = "RSA_2048"|"RSA_3072"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"EC_secp521r1"|"ML_DSA_44"|"ML_DSA_65"|"ML_DSA_87"|"SM2",
+#'       SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA"|"SM3WITHSM2"|"ML_DSA_44"|"ML_DSA_65"|"ML_DSA_87",
 #'       Subject = list(
 #'         Country = "string",
 #'         Organization = "string",
@@ -957,7 +967,8 @@ acmpca_describe_certificate_authority_audit_report <- function(CertificateAuthor
 #' [`issue_certificate`][acmpca_issue_certificate] action. You must specify
 #' both the ARN of your private CA and the ARN of the issued certificate
 #' when calling the **GetCertificate** action. You can retrieve the
-#' certificate if it is in the **ISSUED** state. You can call the
+#' certificate if it is in the **ISSUED**, **EXPIRED**, or **REVOKED**
+#' state. You can call the
 #' [`create_certificate_authority_audit_report`][acmpca_create_certificate_authority_audit_report]
 #' action to create a report that contains information about all of the
 #' certificates issued and revoked by your private CA.
@@ -1175,8 +1186,6 @@ acmpca_get_certificate_authority_csr <- function(CertificateAuthorityArn) {
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Number (ARN) of the private CA that will have its
 #' policy retrieved. You can find the CA's ARN by calling the
 #' ListCertificateAuthorities action.
-#' 
-#'      </p> 
 #'
 #' @return
 #' A list with the following syntax:
@@ -1611,7 +1620,7 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #'   ),
 #'   CertificateAuthorityArn = "string",
 #'   Csr = raw,
-#'   SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA"|"SM3WITHSM2",
+#'   SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA"|"SM3WITHSM2"|"ML_DSA_44"|"ML_DSA_65"|"ML_DSA_87",
 #'   TemplateArn = "string",
 #'   Validity = list(
 #'     Value = 123,
@@ -1701,8 +1710,8 @@ acmpca_issue_certificate <- function(ApiPassthrough = NULL, CertificateAuthority
 #'       ),
 #'       FailureReason = "REQUEST_TIMED_OUT"|"UNSUPPORTED_ALGORITHM"|"OTHER",
 #'       CertificateAuthorityConfiguration = list(
-#'         KeyAlgorithm = "RSA_2048"|"RSA_3072"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"EC_secp521r1"|"SM2",
-#'         SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA"|"SM3WITHSM2",
+#'         KeyAlgorithm = "RSA_2048"|"RSA_3072"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"EC_secp521r1"|"ML_DSA_44"|"ML_DSA_65"|"ML_DSA_87"|"SM2",
+#'         SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA"|"SM3WITHSM2"|"ML_DSA_44"|"ML_DSA_65"|"ML_DSA_87",
 #'         Subject = list(
 #'           Country = "string",
 #'           Organization = "string",

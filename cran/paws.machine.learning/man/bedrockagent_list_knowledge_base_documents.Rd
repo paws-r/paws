@@ -6,17 +6,17 @@
 to a knowledge base}
 \usage{
 bedrockagent_list_knowledge_base_documents(
-  dataSourceId,
   knowledgeBaseId,
+  dataSourceId,
   maxResults = NULL,
   nextToken = NULL
 )
 }
 \arguments{
-\item{dataSourceId}{[required] The unique identifier of the data source that contains the documents.}
-
 \item{knowledgeBaseId}{[required] The unique identifier of the knowledge base that is connected to the
 data source.}
+
+\item{dataSourceId}{[required] The unique identifier of the data source that contains the documents.}
 
 \item{maxResults}{The maximum number of results to return in the response. If the total
 number of results is greater than this value, use the token returned in

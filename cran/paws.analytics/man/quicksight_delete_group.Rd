@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_delete_group}
 \alias{quicksight_delete_group}
-\title{Removes a user group from Amazon QuickSight}
+\title{Removes a user group from Amazon Quick Sight}
 \usage{
 quicksight_delete_group(GroupName, AwsAccountId, Namespace)
 }
@@ -11,12 +11,12 @@ quicksight_delete_group(GroupName, AwsAccountId, Namespace)
 
 \item{AwsAccountId}{[required] The ID for the Amazon Web Services account that the group is in.
 Currently, you use the ID for the Amazon Web Services account that
-contains your Amazon QuickSight account.}
+contains your Amazon Quick Sight account.}
 
 \item{Namespace}{[required] The namespace of the group that you want to delete.}
 }
 \description{
-Removes a user group from Amazon QuickSight.
+Removes a user group from Amazon Quick Sight.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_delete_group/} for full documentation.
 }

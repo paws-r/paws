@@ -4,14 +4,14 @@
 \alias{vpclattice_batch_update_rule}
 \title{Updates the listener rules in a batch}
 \usage{
-vpclattice_batch_update_rule(listenerIdentifier, rules, serviceIdentifier)
+vpclattice_batch_update_rule(serviceIdentifier, listenerIdentifier, rules)
 }
 \arguments{
+\item{serviceIdentifier}{[required] The ID or ARN of the service.}
+
 \item{listenerIdentifier}{[required] The ID or ARN of the listener.}
 
 \item{rules}{[required] The rules for the specified listener.}
-
-\item{serviceIdentifier}{[required] The ID or ARN of the service.}
 }
 \description{
 Updates the listener rules in a batch. You can use this operation to change the priority of listener rules. This can be useful when bulk updating or swapping rule priority.

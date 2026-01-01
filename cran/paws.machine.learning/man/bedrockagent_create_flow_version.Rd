@@ -5,20 +5,20 @@
 \title{Creates a version of the flow that you can deploy}
 \usage{
 bedrockagent_create_flow_version(
-  clientToken = NULL,
+  flowIdentifier,
   description = NULL,
-  flowIdentifier
+  clientToken = NULL
 )
 }
 \arguments{
+\item{flowIdentifier}{[required] The unique identifier of the flow that you want to create a version of.}
+
+\item{description}{A description of the version of the flow.}
+
 \item{clientToken}{A unique, case-sensitive identifier to ensure that the API request
 completes no more than one time. If this token matches a previous
 request, Amazon Bedrock ignores the request, but does not return an
 error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
-
-\item{description}{A description of the version of the flow.}
-
-\item{flowIdentifier}{[required] The unique identifier of the flow that you want to create a version of.}
 }
 \description{
 Creates a version of the flow that you can deploy. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/flows-deploy.html}{Deploy a flow in Amazon Bedrock} in the Amazon Bedrock User Guide.

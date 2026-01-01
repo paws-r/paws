@@ -2,7 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_create_contact}
 \alias{connect_create_contact}
-\title{Only the EMAIL and VOICE channels are supported}
+\title{Only the VOICE, EMAIL, and TASK channels are supported}
 \usage{
 connect_create_contact(
   InstanceId,
@@ -42,30 +42,35 @@ underscore characters.}
 
 \item{References}{A formatted URL that is shown to an agent in the Contact Control Panel
 (CCP). Tasks can have the following reference types at the time of
-creation: URL | NUMBER | STRING | DATE | EMAIL | ATTACHMENT.}
+creation: \code{URL} | \code{NUMBER} | \code{STRING} | \code{DATE} | \code{EMAIL} | \code{ATTACHMENT}.}
 
-\item{Channel}{[required] The channel for the contact
+\item{Channel}{[required] The channel for the contact.
 
-CreateContact only supports the EMAIL and VOICE channels. The following
-information that states other channels are supported is incorrect. We
-are working to update this topic.}
+The CHAT channel is not supported. The following information is
+incorrect. We're working to correct it.}
 
 \item{InitiationMethod}{[required] Indicates how the contact was initiated.
 
-CreateContact only supports the following initiation methods:
+CreateContact only supports the following initiation methods. Valid
+values by channel are:
 \itemize{
-\item For EMAIL: OUTBOUND, AGENT_REPLY, and FLOW.
-\item For VOICE: TRANSFER and the subtype connect:ExternalAudio.
+\item For VOICE: \code{TRANSFER} and the subtype \code{connect:ExternalAudio}
+\item For EMAIL: \code{OUTBOUND} | \code{AGENT_REPLY} | \code{FLOW}
+\item For TASK: \code{API}
 }
 
-The following information that states other initiation methods are
-supported is incorrect. We are working to update this topic.}
+The other channels listed below are incorrect. We're working to correct
+this information.}
 
 \item{ExpiryDurationInMinutes}{Number of minutes the contact will be active for before expiring}
 
-\item{UserInfo}{User details for the contact}
+\item{UserInfo}{User details for the contact
 
-\item{InitiateAs}{Initial state of the contact when it's created}
+UserInfo is required when creating an EMAIL contact with \code{OUTBOUND} and
+\code{AGENT_REPLY} contact initiation methods.}
+
+\item{InitiateAs}{Initial state of the contact when it's created. Only TASK channel
+contacts can be initiated with \code{COMPLETED} state.}
 
 \item{Name}{The name of a the contact.}
 
@@ -91,7 +96,7 @@ information, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/con
 in the \emph{Amazon Connect Administrator Guide}.}
 }
 \description{
-Only the EMAIL and VOICE channels are supported. The supported initiation methods for EMAIL are: OUTBOUND, AGENT_REPLY, and FLOW. For VOICE the supported initiation methods are TRANSFER and the subtype connect:ExternalAudio.
+Only the VOICE, EMAIL, and TASK channels are supported.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_create_contact/} for full documentation.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_update_quick_sight_q_search_configuration}
 \alias{quicksight_update_quick_sight_q_search_configuration}
-\title{Updates the state of a Amazon QuickSight Q Search configuration}
+\title{Updates the state of a Quick Sight Q Search configuration}
 \usage{
 quicksight_update_quick_sight_q_search_configuration(
   AwsAccountId,
@@ -10,14 +10,14 @@ quicksight_update_quick_sight_q_search_configuration(
 )
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the Amazon
-QuickSight Q Search configuration that you want to update.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the Quick Sight
+Q Search configuration that you want to update.}
 
-\item{QSearchStatus}{[required] The status of the Amazon QuickSight Q Search configuration that the user
-wants to update.}
+\item{QSearchStatus}{[required] The status of the Quick Sight Q Search configuration that the user wants
+to update.}
 }
 \description{
-Updates the state of a Amazon QuickSight Q Search configuration.
+Updates the state of a Quick Sight Q Search configuration.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_update_quick_sight_q_search_configuration/} for full documentation.
 }

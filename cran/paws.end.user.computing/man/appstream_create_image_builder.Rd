@@ -17,7 +17,10 @@ appstream_create_image_builder(
   DomainJoinInfo = NULL,
   AppstreamAgentVersion = NULL,
   Tags = NULL,
-  AccessEndpoints = NULL
+  AccessEndpoints = NULL,
+  RootVolumeConfig = NULL,
+  SoftwaresToInstall = NULL,
+  SoftwaresToUninstall = NULL
 )
 }
 \arguments{
@@ -49,20 +52,33 @@ instance types are available:
 \item stream.memory.z1d.3xlarge
 \item stream.memory.z1d.6xlarge
 \item stream.memory.z1d.12xlarge
-\item stream.graphics-design.large
-\item stream.graphics-design.xlarge
-\item stream.graphics-design.2xlarge
-\item stream.graphics-design.4xlarge
-\item stream.graphics-desktop.2xlarge
 \item stream.graphics.g4dn.xlarge
 \item stream.graphics.g4dn.2xlarge
 \item stream.graphics.g4dn.4xlarge
 \item stream.graphics.g4dn.8xlarge
 \item stream.graphics.g4dn.12xlarge
 \item stream.graphics.g4dn.16xlarge
-\item stream.graphics-pro.4xlarge
-\item stream.graphics-pro.8xlarge
-\item stream.graphics-pro.16xlarge
+\item stream.graphics.g5.xlarge
+\item stream.graphics.g5.2xlarge
+\item stream.graphics.g5.4xlarge
+\item stream.graphics.g5.8xlarge
+\item stream.graphics.g5.16xlarge
+\item stream.graphics.g5.12xlarge
+\item stream.graphics.g5.24xlarge
+\item stream.graphics.g6.xlarge
+\item stream.graphics.g6.2xlarge
+\item stream.graphics.g6.4xlarge
+\item stream.graphics.g6.8xlarge
+\item stream.graphics.g6.16xlarge
+\item stream.graphics.g6.12xlarge
+\item stream.graphics.g6.24xlarge
+\item stream.graphics.gr6.4xlarge
+\item stream.graphics.gr6.8xlarge
+\item stream.graphics.g6f.large
+\item stream.graphics.g6f.xlarge
+\item stream.graphics.g6f.2xlarge
+\item stream.graphics.g6f.4xlarge
+\item stream.graphics.gr6f.4xlarge
 }}
 
 \item{Description}{The description to display.}
@@ -76,20 +92,21 @@ subnet.}
 builder. To assume a role, the image builder calls the AWS Security
 Token Service (STS) \code{AssumeRole} API operation and passes the ARN of the
 role to use. The operation creates a new session with temporary
-credentials. AppStream 2.0 retrieves the temporary credentials and
-creates the \strong{appstream_machine_role} credential profile on the
+credentials. WorkSpaces Applications retrieves the temporary credentials
+and creates the \strong{appstream_machine_role} credential profile on the
 instance.
 
-For more information, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html}{Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming Instances}
-in the \emph{Amazon AppStream 2.0 Administration Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html}{Using an IAM Role to Grant Permissions to Applications and Scripts Running on WorkSpaces Applications Streaming Instances}
+in the \emph{Amazon WorkSpaces Applications Administration Guide}.}
 
 \item{EnableDefaultInternetAccess}{Enables or disables default internet access for the image builder.}
 
 \item{DomainJoinInfo}{The name of the directory and organizational unit (OU) to use to join
 the image builder to a Microsoft Active Directory domain.}
 
-\item{AppstreamAgentVersion}{The version of the AppStream 2.0 agent to use for this image builder. To
-use the latest version of the AppStream 2.0 agent, specify [LATEST].}
+\item{AppstreamAgentVersion}{The version of the WorkSpaces Applications agent to use for this image
+builder. To use the latest version of the WorkSpaces Applications agent,
+specify [LATEST].}
 
 \item{Tags}{The tags to associate with the image builder. A tag is a key-value pair,
 and the value is optional. For example, Environment=Test. If you do not
@@ -103,11 +120,77 @@ _ . : / = + \\ - @
 If you do not specify a value, the value is set to an empty string.
 
 For more information about tags, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html}{Tagging Your Resources}
-in the \emph{Amazon AppStream 2.0 Administration Guide}.}
+in the \emph{Amazon WorkSpaces Applications Administration Guide}.}
 
 \item{AccessEndpoints}{The list of interface VPC endpoint (interface endpoint) objects.
 Administrators can connect to the image builder only through the
 specified endpoints.}
+
+\item{RootVolumeConfig}{The configuration for the root volume of the image builder. Use this to
+customize storage capacity from 200 GB up to 500 GB based on your
+application installation requirements.}
+
+\item{SoftwaresToInstall}{The list of license included applications to install on the image
+builder during creation.
+
+Possible values include the following:
+\itemize{
+\item Microsoft_Office_2021_LTSC_Professional_Plus_32Bit
+\item Microsoft_Office_2021_LTSC_Professional_Plus_64Bit
+\item Microsoft_Office_2024_LTSC_Professional_Plus_32Bit
+\item Microsoft_Office_2024_LTSC_Professional_Plus_64Bit
+\item Microsoft_Visio_2021_LTSC_Professional_32Bit
+\item Microsoft_Visio_2021_LTSC_Professional_64Bit
+\item Microsoft_Visio_2024_LTSC_Professional_32Bit
+\item Microsoft_Visio_2024_LTSC_Professional_64Bit
+\item Microsoft_Project_2021_Professional_32Bit
+\item Microsoft_Project_2021_Professional_64Bit
+\item Microsoft_Project_2024_Professional_32Bit
+\item Microsoft_Project_2024_Professional_64Bit
+\item Microsoft_Office_2021_LTSC_Standard_32Bit
+\item Microsoft_Office_2021_LTSC_Standard_64Bit
+\item Microsoft_Office_2024_LTSC_Standard_32Bit
+\item Microsoft_Office_2024_LTSC_Standard_64Bit
+\item Microsoft_Visio_2021_LTSC_Standard_32Bit
+\item Microsoft_Visio_2021_LTSC_Standard_64Bit
+\item Microsoft_Visio_2024_LTSC_Standard_32Bit
+\item Microsoft_Visio_2024_LTSC_Standard_64Bit
+\item Microsoft_Project_2021_Standard_32Bit
+\item Microsoft_Project_2021_Standard_64Bit
+\item Microsoft_Project_2024_Standard_32Bit
+\item Microsoft_Project_2024_Standard_64Bit
+}}
+
+\item{SoftwaresToUninstall}{The list of license included applications to uninstall from the image
+builder during creation.
+
+Possible values include the following:
+\itemize{
+\item Microsoft_Office_2021_LTSC_Professional_Plus_32Bit
+\item Microsoft_Office_2021_LTSC_Professional_Plus_64Bit
+\item Microsoft_Office_2024_LTSC_Professional_Plus_32Bit
+\item Microsoft_Office_2024_LTSC_Professional_Plus_64Bit
+\item Microsoft_Visio_2021_LTSC_Professional_32Bit
+\item Microsoft_Visio_2021_LTSC_Professional_64Bit
+\item Microsoft_Visio_2024_LTSC_Professional_32Bit
+\item Microsoft_Visio_2024_LTSC_Professional_64Bit
+\item Microsoft_Project_2021_Professional_32Bit
+\item Microsoft_Project_2021_Professional_64Bit
+\item Microsoft_Project_2024_Professional_32Bit
+\item Microsoft_Project_2024_Professional_64Bit
+\item Microsoft_Office_2021_LTSC_Standard_32Bit
+\item Microsoft_Office_2021_LTSC_Standard_64Bit
+\item Microsoft_Office_2024_LTSC_Standard_32Bit
+\item Microsoft_Office_2024_LTSC_Standard_64Bit
+\item Microsoft_Visio_2021_LTSC_Standard_32Bit
+\item Microsoft_Visio_2021_LTSC_Standard_64Bit
+\item Microsoft_Visio_2024_LTSC_Standard_32Bit
+\item Microsoft_Visio_2024_LTSC_Standard_64Bit
+\item Microsoft_Project_2021_Standard_32Bit
+\item Microsoft_Project_2021_Standard_64Bit
+\item Microsoft_Project_2024_Standard_32Bit
+\item Microsoft_Project_2024_Standard_64Bit
+}}
 }
 \description{
 Creates an image builder. An image builder is a virtual machine that is used to create an image.

@@ -32,9 +32,9 @@ connection.}
 \item{requestMACSec}{Indicates whether you want the connection to support MAC Security
 (MACsec).
 
-MAC Security (MACsec) is only available on dedicated connections. For
-information about MAC Security (MACsec) prerequisties, see \href{https://docs.aws.amazon.com/directconnect/latest/UserGuide/#mac-sec-prerequisites}{MACsec prerequisties}
-in the \emph{Direct Connect User Guide}.}
+MAC Security (MACsec) is unavailable on hosted connections. For
+information about MAC Security (MACsec) prerequisites, see \href{https://docs.aws.amazon.com/directconnect/latest/UserGuide/}{MAC Security in Direct Connect} in
+the \emph{Direct Connect User Guide}.}
 }
 \description{
 Creates a connection between a customer network and a specific Direct Connect location.

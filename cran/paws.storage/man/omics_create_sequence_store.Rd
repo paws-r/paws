@@ -2,7 +2,7 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_create_sequence_store}
 \alias{omics_create_sequence_store}
-\title{Creates a sequence store}
+\title{Creates a sequence store and returns its metadata}
 \usage{
 omics_create_sequence_store(
   name,
@@ -23,23 +23,30 @@ omics_create_sequence_store(
 
 \item{sseConfig}{Server-side encryption (SSE) settings for the store.}
 
-\item{tags}{Tags for the store.}
+\item{tags}{Tags for the store. You can configure up to 50 tags.}
 
-\item{clientToken}{To ensure that requests don't run multiple times, specify a unique token
-for each request.}
+\item{clientToken}{An idempotency token used to dedupe retry requests so that duplicate
+runs are not created.}
 
 \item{fallbackLocation}{An S3 location that is used to store files that have failed a direct
-upload.}
+upload. You can add or change the \code{fallbackLocation} after creating a
+sequence store. This is not required if you are uploading files from a
+different S3 bucket.}
 
-\item{eTagAlgorithmFamily}{The ETag algorithm family to use for ingested read sets.}
+\item{eTagAlgorithmFamily}{The ETag algorithm family to use for ingested read sets. The default
+value is MD5up. For more information on ETags, see \href{https://docs.aws.amazon.com/omics/latest/dev/etags-and-provenance.html}{ETags and data provenance}
+in the \emph{Amazon Web Services HealthOmics User Guide}.}
 
 \item{propagatedSetLevelTags}{The tags keys to propagate to the S3 objects associated with read sets
-in the sequence store.}
+in the sequence store. These tags can be used as input to add metadata
+to your read sets.}
 
-\item{s3AccessConfig}{S3 access configuration parameters}
+\item{s3AccessConfig}{S3 access configuration parameters. This specifies the parameters needed
+to access logs stored in S3 buckets. The S3 bucket must be in the same
+region and account as the sequence store.}
 }
 \description{
-Creates a sequence store.
+Creates a sequence store and returns its metadata. Sequence stores are used to store sequence data files called read sets that are saved in FASTQ, BAM, uBAM, or CRAM formats. For aligned formats (BAM and CRAM), a sequence store can only use one reference genome. For unaligned formats (FASTQ and uBAM), a reference genome is not required. You can create multiple sequence stores per region per account.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_create_sequence_store/} for full documentation.
 }

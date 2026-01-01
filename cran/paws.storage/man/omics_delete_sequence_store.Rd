@@ -2,7 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_delete_sequence_store}
 \alias{omics_delete_sequence_store}
-\title{Deletes a sequence store}
+\title{Deletes a sequence store and returns a response with no body if the
+operation is successful}
 \usage{
 omics_delete_sequence_store(id)
 }
@@ -10,7 +11,7 @@ omics_delete_sequence_store(id)
 \item{id}{[required] The sequence store's ID.}
 }
 \description{
-Deletes a sequence store.
+Deletes a sequence store and returns a response with no body if the operation is successful. You can only delete a sequence store when it does not contain any read sets.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_delete_sequence_store/} for full documentation.
 }

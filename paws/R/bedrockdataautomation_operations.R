@@ -3,6 +3,57 @@
 #' @include bedrockdataautomation_service.R
 NULL
 
+#' Copies a Blueprint from one stage to another
+#'
+#' @description
+#' Copies a Blueprint from one stage to another
+#'
+#' @usage
+#' bedrockdataautomation_copy_blueprint_stage(blueprintArn, sourceStage,
+#'   targetStage, clientToken)
+#'
+#' @param blueprintArn &#91;required&#93; Blueprint to be copied
+#' @param sourceStage &#91;required&#93; Source stage to copy from
+#' @param targetStage &#91;required&#93; Target stage to copy to
+#' @param clientToken Client token for idempotency
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$copy_blueprint_stage(
+#'   blueprintArn = "string",
+#'   sourceStage = "DEVELOPMENT"|"LIVE",
+#'   targetStage = "DEVELOPMENT"|"LIVE",
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockdataautomation_copy_blueprint_stage
+#'
+#' @aliases bedrockdataautomation_copy_blueprint_stage
+bedrockdataautomation_copy_blueprint_stage <- function(blueprintArn, sourceStage, targetStage, clientToken = NULL) {
+  op <- new_operation(
+    name = "CopyBlueprintStage",
+    http_method = "PUT",
+    http_path = "/blueprints/{blueprintArn}/copy-stage",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockdataautomation$copy_blueprint_stage_input(blueprintArn = blueprintArn, sourceStage = sourceStage, targetStage = targetStage, clientToken = clientToken)
+  output <- .bedrockdataautomation$copy_blueprint_stage_output()
+  config <- get_config()
+  svc <- .bedrockdataautomation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockdataautomation$operations$copy_blueprint_stage <- bedrockdataautomation_copy_blueprint_stage
+
 #' Creates an Amazon Bedrock Data Automation Blueprint
 #'
 #' @description
@@ -27,7 +78,7 @@ NULL
 #'   blueprint = list(
 #'     blueprintArn = "string",
 #'     schema = "string",
-#'     type = "DOCUMENT"|"IMAGE"|"AUDIO",
+#'     type = "DOCUMENT"|"IMAGE"|"AUDIO"|"VIDEO",
 #'     creationTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -40,6 +91,21 @@ NULL
 #'     kmsKeyId = "string",
 #'     kmsEncryptionContext = list(
 #'       "string"
+#'     ),
+#'     optimizationSamples = list(
+#'       list(
+#'         assetS3Object = list(
+#'           s3Uri = "string",
+#'           version = "string"
+#'         ),
+#'         groundTruthS3Object = list(
+#'           s3Uri = "string",
+#'           version = "string"
+#'         )
+#'       )
+#'     ),
+#'     optimizationTime = as.POSIXct(
+#'       "2015-01-01"
 #'     )
 #'   )
 #' )
@@ -49,7 +115,7 @@ NULL
 #' ```
 #' svc$create_blueprint(
 #'   blueprintName = "string",
-#'   type = "DOCUMENT"|"IMAGE"|"AUDIO",
+#'   type = "DOCUMENT"|"IMAGE"|"AUDIO"|"VIDEO",
 #'   blueprintStage = "DEVELOPMENT"|"LIVE",
 #'   schema = "string",
 #'   clientToken = "string",
@@ -113,7 +179,7 @@ bedrockdataautomation_create_blueprint <- function(blueprintName, type, blueprin
 #'   blueprint = list(
 #'     blueprintArn = "string",
 #'     schema = "string",
-#'     type = "DOCUMENT"|"IMAGE"|"AUDIO",
+#'     type = "DOCUMENT"|"IMAGE"|"AUDIO"|"VIDEO",
 #'     creationTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -126,6 +192,21 @@ bedrockdataautomation_create_blueprint <- function(blueprintName, type, blueprin
 #'     kmsKeyId = "string",
 #'     kmsEncryptionContext = list(
 #'       "string"
+#'     ),
+#'     optimizationSamples = list(
+#'       list(
+#'         assetS3Object = list(
+#'           s3Uri = "string",
+#'           version = "string"
+#'         ),
+#'         groundTruthS3Object = list(
+#'           s3Uri = "string",
+#'           version = "string"
+#'         )
+#'       )
+#'     ),
+#'     optimizationTime = as.POSIXct(
+#'       "2015-01-01"
 #'     )
 #'   )
 #' )
@@ -170,13 +251,14 @@ bedrockdataautomation_create_blueprint_version <- function(blueprintArn, clientT
 #'
 #' @usage
 #' bedrockdataautomation_create_data_automation_project(projectName,
-#'   projectDescription, projectStage, standardOutputConfiguration,
-#'   customOutputConfiguration, overrideConfiguration, clientToken,
-#'   encryptionConfiguration, tags)
+#'   projectDescription, projectStage, projectType,
+#'   standardOutputConfiguration, customOutputConfiguration,
+#'   overrideConfiguration, clientToken, encryptionConfiguration, tags)
 #'
 #' @param projectName &#91;required&#93; 
 #' @param projectDescription 
 #' @param projectStage 
+#' @param projectType 
 #' @param standardOutputConfiguration &#91;required&#93; 
 #' @param customOutputConfiguration 
 #' @param overrideConfiguration 
@@ -200,6 +282,7 @@ bedrockdataautomation_create_blueprint_version <- function(blueprintArn, clientT
 #'   projectName = "string",
 #'   projectDescription = "string",
 #'   projectStage = "DEVELOPMENT"|"LIVE",
+#'   projectType = "ASYNC"|"SYNC",
 #'   standardOutputConfiguration = list(
 #'     document = list(
 #'       extraction = list(
@@ -270,6 +353,16 @@ bedrockdataautomation_create_blueprint_version <- function(blueprintArn, clientT
 #'           state = "ENABLED"|"DISABLED",
 #'           types = list(
 #'             "AUDIO_CONTENT_MODERATION"|"TRANSCRIPT"|"TOPIC_CONTENT_MODERATION"
+#'           ),
+#'           typeConfiguration = list(
+#'             transcript = list(
+#'               speakerLabeling = list(
+#'                 state = "ENABLED"|"DISABLED"
+#'               ),
+#'               channelLabeling = list(
+#'                 state = "ENABLED"|"DISABLED"
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -297,21 +390,76 @@ bedrockdataautomation_create_blueprint_version <- function(blueprintArn, clientT
 #'       ),
 #'       modalityProcessing = list(
 #'         state = "ENABLED"|"DISABLED"
+#'       ),
+#'       sensitiveDataConfiguration = list(
+#'         detectionMode = "DETECTION"|"DETECTION_AND_REDACTION",
+#'         detectionScope = list(
+#'           "STANDARD"|"CUSTOM"
+#'         ),
+#'         piiEntitiesConfiguration = list(
+#'           piiEntityTypes = list(
+#'             "ALL"|"ADDRESS"|"AGE"|"NAME"|"EMAIL"|"PHONE"|"USERNAME"|"PASSWORD"|"DRIVER_ID"|"LICENSE_PLATE"|"VEHICLE_IDENTIFICATION_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"PIN"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"SWIFT_CODE"|"IP_ADDRESS"|"MAC_ADDRESS"|"URL"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"
+#'           ),
+#'           redactionMaskMode = "PII"|"ENTITY_TYPE"
+#'         )
 #'       )
 #'     ),
 #'     image = list(
 #'       modalityProcessing = list(
 #'         state = "ENABLED"|"DISABLED"
+#'       ),
+#'       sensitiveDataConfiguration = list(
+#'         detectionMode = "DETECTION"|"DETECTION_AND_REDACTION",
+#'         detectionScope = list(
+#'           "STANDARD"|"CUSTOM"
+#'         ),
+#'         piiEntitiesConfiguration = list(
+#'           piiEntityTypes = list(
+#'             "ALL"|"ADDRESS"|"AGE"|"NAME"|"EMAIL"|"PHONE"|"USERNAME"|"PASSWORD"|"DRIVER_ID"|"LICENSE_PLATE"|"VEHICLE_IDENTIFICATION_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"PIN"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"SWIFT_CODE"|"IP_ADDRESS"|"MAC_ADDRESS"|"URL"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"
+#'           ),
+#'           redactionMaskMode = "PII"|"ENTITY_TYPE"
+#'         )
 #'       )
 #'     ),
 #'     video = list(
 #'       modalityProcessing = list(
 #'         state = "ENABLED"|"DISABLED"
+#'       ),
+#'       sensitiveDataConfiguration = list(
+#'         detectionMode = "DETECTION"|"DETECTION_AND_REDACTION",
+#'         detectionScope = list(
+#'           "STANDARD"|"CUSTOM"
+#'         ),
+#'         piiEntitiesConfiguration = list(
+#'           piiEntityTypes = list(
+#'             "ALL"|"ADDRESS"|"AGE"|"NAME"|"EMAIL"|"PHONE"|"USERNAME"|"PASSWORD"|"DRIVER_ID"|"LICENSE_PLATE"|"VEHICLE_IDENTIFICATION_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"PIN"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"SWIFT_CODE"|"IP_ADDRESS"|"MAC_ADDRESS"|"URL"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"
+#'           ),
+#'           redactionMaskMode = "PII"|"ENTITY_TYPE"
+#'         )
 #'       )
 #'     ),
 #'     audio = list(
 #'       modalityProcessing = list(
 #'         state = "ENABLED"|"DISABLED"
+#'       ),
+#'       languageConfiguration = list(
+#'         inputLanguages = list(
+#'           "EN"|"DE"|"ES"|"FR"|"IT"|"PT"|"JA"|"KO"|"CN"|"TW"|"HK"
+#'         ),
+#'         generativeOutputLanguage = "DEFAULT"|"EN",
+#'         identifyMultipleLanguages = TRUE|FALSE
+#'       ),
+#'       sensitiveDataConfiguration = list(
+#'         detectionMode = "DETECTION"|"DETECTION_AND_REDACTION",
+#'         detectionScope = list(
+#'           "STANDARD"|"CUSTOM"
+#'         ),
+#'         piiEntitiesConfiguration = list(
+#'           piiEntityTypes = list(
+#'             "ALL"|"ADDRESS"|"AGE"|"NAME"|"EMAIL"|"PHONE"|"USERNAME"|"PASSWORD"|"DRIVER_ID"|"LICENSE_PLATE"|"VEHICLE_IDENTIFICATION_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"PIN"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"SWIFT_CODE"|"IP_ADDRESS"|"MAC_ADDRESS"|"URL"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"
+#'           ),
+#'           redactionMaskMode = "PII"|"ENTITY_TYPE"
+#'         )
 #'       )
 #'     ),
 #'     modalityRouting = list(
@@ -342,7 +490,7 @@ bedrockdataautomation_create_blueprint_version <- function(blueprintArn, clientT
 #' @rdname bedrockdataautomation_create_data_automation_project
 #'
 #' @aliases bedrockdataautomation_create_data_automation_project
-bedrockdataautomation_create_data_automation_project <- function(projectName, projectDescription = NULL, projectStage = NULL, standardOutputConfiguration, customOutputConfiguration = NULL, overrideConfiguration = NULL, clientToken = NULL, encryptionConfiguration = NULL, tags = NULL) {
+bedrockdataautomation_create_data_automation_project <- function(projectName, projectDescription = NULL, projectStage = NULL, projectType = NULL, standardOutputConfiguration, customOutputConfiguration = NULL, overrideConfiguration = NULL, clientToken = NULL, encryptionConfiguration = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateDataAutomationProject",
     http_method = "PUT",
@@ -351,7 +499,7 @@ bedrockdataautomation_create_data_automation_project <- function(projectName, pr
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockdataautomation$create_data_automation_project_input(projectName = projectName, projectDescription = projectDescription, projectStage = projectStage, standardOutputConfiguration = standardOutputConfiguration, customOutputConfiguration = customOutputConfiguration, overrideConfiguration = overrideConfiguration, clientToken = clientToken, encryptionConfiguration = encryptionConfiguration, tags = tags)
+  input <- .bedrockdataautomation$create_data_automation_project_input(projectName = projectName, projectDescription = projectDescription, projectStage = projectStage, projectType = projectType, standardOutputConfiguration = standardOutputConfiguration, customOutputConfiguration = customOutputConfiguration, overrideConfiguration = overrideConfiguration, clientToken = clientToken, encryptionConfiguration = encryptionConfiguration, tags = tags)
   output <- .bedrockdataautomation$create_data_automation_project_output()
   config <- get_config()
   svc <- .bedrockdataautomation$service(config, op)
@@ -477,7 +625,7 @@ bedrockdataautomation_delete_data_automation_project <- function(projectArn) {
 #'   blueprint = list(
 #'     blueprintArn = "string",
 #'     schema = "string",
-#'     type = "DOCUMENT"|"IMAGE"|"AUDIO",
+#'     type = "DOCUMENT"|"IMAGE"|"AUDIO"|"VIDEO",
 #'     creationTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -490,6 +638,21 @@ bedrockdataautomation_delete_data_automation_project <- function(projectArn) {
 #'     kmsKeyId = "string",
 #'     kmsEncryptionContext = list(
 #'       "string"
+#'     ),
+#'     optimizationSamples = list(
+#'       list(
+#'         assetS3Object = list(
+#'           s3Uri = "string",
+#'           version = "string"
+#'         ),
+#'         groundTruthS3Object = list(
+#'           s3Uri = "string",
+#'           version = "string"
+#'         )
+#'       )
+#'     ),
+#'     optimizationTime = as.POSIXct(
+#'       "2015-01-01"
 #'     )
 #'   )
 #' )
@@ -528,6 +691,63 @@ bedrockdataautomation_get_blueprint <- function(blueprintArn, blueprintVersion =
 }
 .bedrockdataautomation$operations$get_blueprint <- bedrockdataautomation_get_blueprint
 
+#' API used to get blueprint optimization status
+#'
+#' @description
+#' API used to get blueprint optimization status.
+#'
+#' @usage
+#' bedrockdataautomation_get_blueprint_optimization_status(invocationArn)
+#'
+#' @param invocationArn &#91;required&#93; Invocation arn.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   status = "Created"|"InProgress"|"Success"|"ServiceError"|"ClientError",
+#'   errorType = "string",
+#'   errorMessage = "string",
+#'   outputConfiguration = list(
+#'     s3Object = list(
+#'       s3Uri = "string",
+#'       version = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_blueprint_optimization_status(
+#'   invocationArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockdataautomation_get_blueprint_optimization_status
+#'
+#' @aliases bedrockdataautomation_get_blueprint_optimization_status
+bedrockdataautomation_get_blueprint_optimization_status <- function(invocationArn) {
+  op <- new_operation(
+    name = "GetBlueprintOptimizationStatus",
+    http_method = "POST",
+    http_path = "/getBlueprintOptimizationStatus/{invocationArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockdataautomation$get_blueprint_optimization_status_input(invocationArn = invocationArn)
+  output <- .bedrockdataautomation$get_blueprint_optimization_status_output()
+  config <- get_config()
+  svc <- .bedrockdataautomation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockdataautomation$operations$get_blueprint_optimization_status <- bedrockdataautomation_get_blueprint_optimization_status
+
 #' Gets an existing Amazon Bedrock Data Automation Project
 #'
 #' @description
@@ -554,6 +774,7 @@ bedrockdataautomation_get_blueprint <- function(blueprintArn, blueprintVersion =
 #'     ),
 #'     projectName = "string",
 #'     projectStage = "DEVELOPMENT"|"LIVE",
+#'     projectType = "ASYNC"|"SYNC",
 #'     projectDescription = "string",
 #'     standardOutputConfiguration = list(
 #'       document = list(
@@ -625,6 +846,16 @@ bedrockdataautomation_get_blueprint <- function(blueprintArn, blueprintVersion =
 #'             state = "ENABLED"|"DISABLED",
 #'             types = list(
 #'               "AUDIO_CONTENT_MODERATION"|"TRANSCRIPT"|"TOPIC_CONTENT_MODERATION"
+#'             ),
+#'             typeConfiguration = list(
+#'               transcript = list(
+#'                 speakerLabeling = list(
+#'                   state = "ENABLED"|"DISABLED"
+#'                 ),
+#'                 channelLabeling = list(
+#'                   state = "ENABLED"|"DISABLED"
+#'                 )
+#'               )
 #'             )
 #'           )
 #'         ),
@@ -652,21 +883,76 @@ bedrockdataautomation_get_blueprint <- function(blueprintArn, blueprintVersion =
 #'         ),
 #'         modalityProcessing = list(
 #'           state = "ENABLED"|"DISABLED"
+#'         ),
+#'         sensitiveDataConfiguration = list(
+#'           detectionMode = "DETECTION"|"DETECTION_AND_REDACTION",
+#'           detectionScope = list(
+#'             "STANDARD"|"CUSTOM"
+#'           ),
+#'           piiEntitiesConfiguration = list(
+#'             piiEntityTypes = list(
+#'               "ALL"|"ADDRESS"|"AGE"|"NAME"|"EMAIL"|"PHONE"|"USERNAME"|"PASSWORD"|"DRIVER_ID"|"LICENSE_PLATE"|"VEHICLE_IDENTIFICATION_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"PIN"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"SWIFT_CODE"|"IP_ADDRESS"|"MAC_ADDRESS"|"URL"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"
+#'             ),
+#'             redactionMaskMode = "PII"|"ENTITY_TYPE"
+#'           )
 #'         )
 #'       ),
 #'       image = list(
 #'         modalityProcessing = list(
 #'           state = "ENABLED"|"DISABLED"
+#'         ),
+#'         sensitiveDataConfiguration = list(
+#'           detectionMode = "DETECTION"|"DETECTION_AND_REDACTION",
+#'           detectionScope = list(
+#'             "STANDARD"|"CUSTOM"
+#'           ),
+#'           piiEntitiesConfiguration = list(
+#'             piiEntityTypes = list(
+#'               "ALL"|"ADDRESS"|"AGE"|"NAME"|"EMAIL"|"PHONE"|"USERNAME"|"PASSWORD"|"DRIVER_ID"|"LICENSE_PLATE"|"VEHICLE_IDENTIFICATION_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"PIN"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"SWIFT_CODE"|"IP_ADDRESS"|"MAC_ADDRESS"|"URL"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"
+#'             ),
+#'             redactionMaskMode = "PII"|"ENTITY_TYPE"
+#'           )
 #'         )
 #'       ),
 #'       video = list(
 #'         modalityProcessing = list(
 #'           state = "ENABLED"|"DISABLED"
+#'         ),
+#'         sensitiveDataConfiguration = list(
+#'           detectionMode = "DETECTION"|"DETECTION_AND_REDACTION",
+#'           detectionScope = list(
+#'             "STANDARD"|"CUSTOM"
+#'           ),
+#'           piiEntitiesConfiguration = list(
+#'             piiEntityTypes = list(
+#'               "ALL"|"ADDRESS"|"AGE"|"NAME"|"EMAIL"|"PHONE"|"USERNAME"|"PASSWORD"|"DRIVER_ID"|"LICENSE_PLATE"|"VEHICLE_IDENTIFICATION_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"PIN"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"SWIFT_CODE"|"IP_ADDRESS"|"MAC_ADDRESS"|"URL"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"
+#'             ),
+#'             redactionMaskMode = "PII"|"ENTITY_TYPE"
+#'           )
 #'         )
 #'       ),
 #'       audio = list(
 #'         modalityProcessing = list(
 #'           state = "ENABLED"|"DISABLED"
+#'         ),
+#'         languageConfiguration = list(
+#'           inputLanguages = list(
+#'             "EN"|"DE"|"ES"|"FR"|"IT"|"PT"|"JA"|"KO"|"CN"|"TW"|"HK"
+#'           ),
+#'           generativeOutputLanguage = "DEFAULT"|"EN",
+#'           identifyMultipleLanguages = TRUE|FALSE
+#'         ),
+#'         sensitiveDataConfiguration = list(
+#'           detectionMode = "DETECTION"|"DETECTION_AND_REDACTION",
+#'           detectionScope = list(
+#'             "STANDARD"|"CUSTOM"
+#'           ),
+#'           piiEntitiesConfiguration = list(
+#'             piiEntityTypes = list(
+#'               "ALL"|"ADDRESS"|"AGE"|"NAME"|"EMAIL"|"PHONE"|"USERNAME"|"PASSWORD"|"DRIVER_ID"|"LICENSE_PLATE"|"VEHICLE_IDENTIFICATION_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"PIN"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"SWIFT_CODE"|"IP_ADDRESS"|"MAC_ADDRESS"|"URL"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"
+#'             ),
+#'             redactionMaskMode = "PII"|"ENTITY_TYPE"
+#'           )
 #'         )
 #'       ),
 #'       modalityRouting = list(
@@ -716,6 +1002,96 @@ bedrockdataautomation_get_data_automation_project <- function(projectArn, projec
   return(response)
 }
 .bedrockdataautomation$operations$get_data_automation_project <- bedrockdataautomation_get_data_automation_project
+
+#' Invoke an async job to perform Blueprint Optimization
+#'
+#' @description
+#' Invoke an async job to perform Blueprint Optimization
+#'
+#' @usage
+#' bedrockdataautomation_invoke_blueprint_optimization_async(blueprint,
+#'   samples, outputConfiguration, dataAutomationProfileArn,
+#'   encryptionConfiguration, tags)
+#'
+#' @param blueprint &#91;required&#93; Blueprint to be optimized
+#' @param samples &#91;required&#93; List of Blueprint Optimization Samples
+#' @param outputConfiguration &#91;required&#93; Output configuration where the results should be placed
+#' @param dataAutomationProfileArn &#91;required&#93; Data automation profile ARN
+#' @param encryptionConfiguration Encryption configuration.
+#' @param tags List of tags.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   invocationArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$invoke_blueprint_optimization_async(
+#'   blueprint = list(
+#'     blueprintArn = "string",
+#'     stage = "DEVELOPMENT"|"LIVE"
+#'   ),
+#'   samples = list(
+#'     list(
+#'       assetS3Object = list(
+#'         s3Uri = "string",
+#'         version = "string"
+#'       ),
+#'       groundTruthS3Object = list(
+#'         s3Uri = "string",
+#'         version = "string"
+#'       )
+#'     )
+#'   ),
+#'   outputConfiguration = list(
+#'     s3Object = list(
+#'       s3Uri = "string",
+#'       version = "string"
+#'     )
+#'   ),
+#'   dataAutomationProfileArn = "string",
+#'   encryptionConfiguration = list(
+#'     kmsKeyId = "string",
+#'     kmsEncryptionContext = list(
+#'       "string"
+#'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockdataautomation_invoke_blueprint_optimization_async
+#'
+#' @aliases bedrockdataautomation_invoke_blueprint_optimization_async
+bedrockdataautomation_invoke_blueprint_optimization_async <- function(blueprint, samples, outputConfiguration, dataAutomationProfileArn, encryptionConfiguration = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "InvokeBlueprintOptimizationAsync",
+    http_method = "POST",
+    http_path = "/invokeBlueprintOptimizationAsync",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockdataautomation$invoke_blueprint_optimization_async_input(blueprint = blueprint, samples = samples, outputConfiguration = outputConfiguration, dataAutomationProfileArn = dataAutomationProfileArn, encryptionConfiguration = encryptionConfiguration, tags = tags)
+  output <- .bedrockdataautomation$invoke_blueprint_optimization_async_output()
+  config <- get_config()
+  svc <- .bedrockdataautomation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockdataautomation$operations$invoke_blueprint_optimization_async <- bedrockdataautomation_invoke_blueprint_optimization_async
 
 #' Lists all existing Amazon Bedrock Data Automation Blueprints
 #'
@@ -817,6 +1193,7 @@ bedrockdataautomation_list_blueprints <- function(blueprintArn = NULL, resourceO
 #'     list(
 #'       projectArn = "string",
 #'       projectStage = "DEVELOPMENT"|"LIVE",
+#'       projectType = "ASYNC"|"SYNC",
 #'       projectName = "string",
 #'       creationTime = as.POSIXct(
 #'         "2015-01-01"
@@ -1040,7 +1417,7 @@ bedrockdataautomation_untag_resource <- function(resourceARN, tagKeys) {
 #'   blueprint = list(
 #'     blueprintArn = "string",
 #'     schema = "string",
-#'     type = "DOCUMENT"|"IMAGE"|"AUDIO",
+#'     type = "DOCUMENT"|"IMAGE"|"AUDIO"|"VIDEO",
 #'     creationTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -1053,6 +1430,21 @@ bedrockdataautomation_untag_resource <- function(resourceARN, tagKeys) {
 #'     kmsKeyId = "string",
 #'     kmsEncryptionContext = list(
 #'       "string"
+#'     ),
+#'     optimizationSamples = list(
+#'       list(
+#'         assetS3Object = list(
+#'           s3Uri = "string",
+#'           version = "string"
+#'         ),
+#'         groundTruthS3Object = list(
+#'           s3Uri = "string",
+#'           version = "string"
+#'         )
+#'       )
+#'     ),
+#'     optimizationTime = as.POSIXct(
+#'       "2015-01-01"
 #'     )
 #'   )
 #' )
@@ -1202,6 +1594,16 @@ bedrockdataautomation_update_blueprint <- function(blueprintArn, schema, bluepri
 #'           state = "ENABLED"|"DISABLED",
 #'           types = list(
 #'             "AUDIO_CONTENT_MODERATION"|"TRANSCRIPT"|"TOPIC_CONTENT_MODERATION"
+#'           ),
+#'           typeConfiguration = list(
+#'             transcript = list(
+#'               speakerLabeling = list(
+#'                 state = "ENABLED"|"DISABLED"
+#'               ),
+#'               channelLabeling = list(
+#'                 state = "ENABLED"|"DISABLED"
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -1229,21 +1631,76 @@ bedrockdataautomation_update_blueprint <- function(blueprintArn, schema, bluepri
 #'       ),
 #'       modalityProcessing = list(
 #'         state = "ENABLED"|"DISABLED"
+#'       ),
+#'       sensitiveDataConfiguration = list(
+#'         detectionMode = "DETECTION"|"DETECTION_AND_REDACTION",
+#'         detectionScope = list(
+#'           "STANDARD"|"CUSTOM"
+#'         ),
+#'         piiEntitiesConfiguration = list(
+#'           piiEntityTypes = list(
+#'             "ALL"|"ADDRESS"|"AGE"|"NAME"|"EMAIL"|"PHONE"|"USERNAME"|"PASSWORD"|"DRIVER_ID"|"LICENSE_PLATE"|"VEHICLE_IDENTIFICATION_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"PIN"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"SWIFT_CODE"|"IP_ADDRESS"|"MAC_ADDRESS"|"URL"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"
+#'           ),
+#'           redactionMaskMode = "PII"|"ENTITY_TYPE"
+#'         )
 #'       )
 #'     ),
 #'     image = list(
 #'       modalityProcessing = list(
 #'         state = "ENABLED"|"DISABLED"
+#'       ),
+#'       sensitiveDataConfiguration = list(
+#'         detectionMode = "DETECTION"|"DETECTION_AND_REDACTION",
+#'         detectionScope = list(
+#'           "STANDARD"|"CUSTOM"
+#'         ),
+#'         piiEntitiesConfiguration = list(
+#'           piiEntityTypes = list(
+#'             "ALL"|"ADDRESS"|"AGE"|"NAME"|"EMAIL"|"PHONE"|"USERNAME"|"PASSWORD"|"DRIVER_ID"|"LICENSE_PLATE"|"VEHICLE_IDENTIFICATION_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"PIN"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"SWIFT_CODE"|"IP_ADDRESS"|"MAC_ADDRESS"|"URL"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"
+#'           ),
+#'           redactionMaskMode = "PII"|"ENTITY_TYPE"
+#'         )
 #'       )
 #'     ),
 #'     video = list(
 #'       modalityProcessing = list(
 #'         state = "ENABLED"|"DISABLED"
+#'       ),
+#'       sensitiveDataConfiguration = list(
+#'         detectionMode = "DETECTION"|"DETECTION_AND_REDACTION",
+#'         detectionScope = list(
+#'           "STANDARD"|"CUSTOM"
+#'         ),
+#'         piiEntitiesConfiguration = list(
+#'           piiEntityTypes = list(
+#'             "ALL"|"ADDRESS"|"AGE"|"NAME"|"EMAIL"|"PHONE"|"USERNAME"|"PASSWORD"|"DRIVER_ID"|"LICENSE_PLATE"|"VEHICLE_IDENTIFICATION_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"PIN"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"SWIFT_CODE"|"IP_ADDRESS"|"MAC_ADDRESS"|"URL"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"
+#'           ),
+#'           redactionMaskMode = "PII"|"ENTITY_TYPE"
+#'         )
 #'       )
 #'     ),
 #'     audio = list(
 #'       modalityProcessing = list(
 #'         state = "ENABLED"|"DISABLED"
+#'       ),
+#'       languageConfiguration = list(
+#'         inputLanguages = list(
+#'           "EN"|"DE"|"ES"|"FR"|"IT"|"PT"|"JA"|"KO"|"CN"|"TW"|"HK"
+#'         ),
+#'         generativeOutputLanguage = "DEFAULT"|"EN",
+#'         identifyMultipleLanguages = TRUE|FALSE
+#'       ),
+#'       sensitiveDataConfiguration = list(
+#'         detectionMode = "DETECTION"|"DETECTION_AND_REDACTION",
+#'         detectionScope = list(
+#'           "STANDARD"|"CUSTOM"
+#'         ),
+#'         piiEntitiesConfiguration = list(
+#'           piiEntityTypes = list(
+#'             "ALL"|"ADDRESS"|"AGE"|"NAME"|"EMAIL"|"PHONE"|"USERNAME"|"PASSWORD"|"DRIVER_ID"|"LICENSE_PLATE"|"VEHICLE_IDENTIFICATION_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"PIN"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"SWIFT_CODE"|"IP_ADDRESS"|"MAC_ADDRESS"|"URL"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"
+#'           ),
+#'           redactionMaskMode = "PII"|"ENTITY_TYPE"
+#'         )
 #'       )
 #'     ),
 #'     modalityRouting = list(

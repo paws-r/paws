@@ -9,10 +9,7 @@ inspector2_batch_get_member_ec_2_deep_inspection_status(accountIds = NULL)
 }
 \arguments{
 \item{accountIds}{The unique identifiers for the Amazon Web Services accounts to retrieve
-Amazon Inspector deep inspection activation status for.
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{ </p>
-}\if{html}{\out{</div>}}}
+Amazon Inspector deep inspection activation status for.}
 }
 \description{
 Retrieves Amazon Inspector deep inspection activation status of multiple member accounts within your organization. You must be the delegated administrator of an organization in Amazon Inspector to use this API.

@@ -6,11 +6,11 @@
 \usage{
 resourceexplorer_create_view(
   ClientToken = NULL,
-  Filters = NULL,
+  ViewName,
   IncludedProperties = NULL,
   Scope = NULL,
-  Tags = NULL,
-  ViewName
+  Filters = NULL,
+  Tags = NULL
 )
 }
 \arguments{
@@ -18,6 +18,23 @@ resourceexplorer_create_view(
 to prevent the accidental creation of duplicate versions. We recommend
 that you generate a \href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID-type value} to
 ensure the uniqueness of your views.}
+
+\item{ViewName}{[required] The name of the new view. This name appears in the list of views in
+Resource Explorer.
+
+The name must be no more than 64 characters long, and can include
+letters, digits, and the dash (-) character. The name must be unique
+within its Amazon Web Services Region.}
+
+\item{IncludedProperties}{Specifies optional fields that you want included in search results from
+this view. It is a list of objects that each describe a field to
+include.
+
+The default is an empty list, with no optional fields included in the
+results.}
+
+\item{Scope}{The root ARN of the account, an organizational unit (OU), or an
+organization ARN. If left empty, the default is account.}
 
 \item{Filters}{An array of strings that specify which resources are included in the
 results of queries made using this view. When you use this view in a
@@ -36,24 +53,7 @@ It doesn't support free-form text. For example, the string
 resources in any Amazon Web Services Region that begins with the letters
 \code{us} and is \emph{not} tagged with a key \code{Stage} that has the value \code{prod}.}
 
-\item{IncludedProperties}{Specifies optional fields that you want included in search results from
-this view. It is a list of objects that each describe a field to
-include.
-
-The default is an empty list, with no optional fields included in the
-results.}
-
-\item{Scope}{The root ARN of the account, an organizational unit (OU), or an
-organization ARN. If left empty, the default is account.}
-
 \item{Tags}{Tag key and value pairs that are attached to the view.}
-
-\item{ViewName}{[required] The name of the new view. This name appears in the list of views in
-Resource Explorer.
-
-The name must be no more than 64 characters long, and can include
-letters, digits, and the dash (-) character. The name must be unique
-within its Amazon Web Services Region.}
 }
 \description{
 Creates a view that users can query by using the \code{\link[=resourceexplorer_search]{search}} operation. Results from queries that you make using this view include only resources that match the view's \code{Filters}. For more information about Amazon Web Services Resource Explorer views, see \href{https://docs.aws.amazon.com/resource-explorer/latest/userguide/}{Managing views} in the \emph{Amazon Web Services Resource Explorer User Guide}.

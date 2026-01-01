@@ -2,18 +2,18 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_get_map_style_descriptor}
 \alias{locationservice_get_map_style_descriptor}
-\title{Retrieves the map style descriptor from a map resource}
+\title{This operation is no longer current and may be deprecated in the future}
 \usage{
 locationservice_get_map_style_descriptor(MapName, Key = NULL)
 }
 \arguments{
 \item{MapName}{[required] The map resource to retrieve the style descriptor from.}
 
-\item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}
+\item{Key}{The optional \href{https://docs.aws.amazon.com/location/previous/developerguide/using-apikeys.html}{API key}
 to authorize the request.}
 }
 \description{
-Retrieves the map style descriptor from a map resource.
+This operation is no longer current and may be deprecated in the future. We recommend upgrading to \href{https://docs.aws.amazon.com/location/latest/APIReference/API_geomaps_GetStyleDescriptor.html}{\code{GetStyleDescriptor}} unless you require \code{Grab} data.
 
 See \url{https://www.paws-r-sdk.com/docs/locationservice_get_map_style_descriptor/} for full documentation.
 }

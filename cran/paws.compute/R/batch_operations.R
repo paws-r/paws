@@ -130,6 +130,9 @@ batch_cancel_job <- function(jobId, reason) {
 #' don't propagate to the underlying compute resources.
 #' @param eksConfiguration The details for the Amazon EKS cluster that supports the compute
 #' environment.
+#' 
+#' To create a compute environment that uses EKS resources, the caller must
+#' have permissions to call `eks:DescribeCluster`.
 #' @param context Reserved.
 #'
 #' @keywords internal
@@ -234,7 +237,7 @@ batch_create_consumable_resource <- function(consumableResourceName, totalQuanti
 #' priority value of `1`. All of the compute environments must be either
 #' EC2 (`EC2` or `SPOT`) or Fargate (`FARGATE` or `FARGATE_SPOT`); EC2 and
 #' Fargate compute environments can't be mixed.
-#' @param computeEnvironmentOrder &#91;required&#93; The set of compute environments mapped to a job queue and their order
+#' @param computeEnvironmentOrder The set of compute environments mapped to a job queue and their order
 #' relative to each other. The job scheduler uses this parameter to
 #' determine which compute environment runs a specific job. Compute
 #' environments must be in the `VALID` state before you can associate them
@@ -246,6 +249,13 @@ batch_create_consumable_resource <- function(consumableResourceName, totalQuanti
 #' All compute environments that are associated with a job queue must share
 #' the same architecture. Batch doesn't support mixing compute environment
 #' architecture types in a single job queue.
+#' @param serviceEnvironmentOrder A list of service environments that this job queue can use to allocate
+#' jobs. All serviceEnvironments must have the same type. A job queue can't
+#' have both a serviceEnvironmentOrder and a computeEnvironmentOrder field.
+#' @param jobQueueType The type of job queue. For service jobs that run on SageMaker Training,
+#' this value is `SAGEMAKER_TRAINING`. For regular container jobs, this
+#' value is `EKS`, `ECS`, or `ECS_FARGATE` depending on the compute
+#' environment.
 #' @param tags The tags that you apply to the job queue to help you categorize and
 #' organize your resources. Each tag consists of a key and an optional
 #' value. For more information, see [Tagging your Batch
@@ -260,7 +270,7 @@ batch_create_consumable_resource <- function(consumableResourceName, totalQuanti
 #' @keywords internal
 #'
 #' @rdname batch_create_job_queue
-batch_create_job_queue <- function(jobQueueName, state = NULL, schedulingPolicyArn = NULL, priority, computeEnvironmentOrder, tags = NULL, jobStateTimeLimitActions = NULL) {
+batch_create_job_queue <- function(jobQueueName, state = NULL, schedulingPolicyArn = NULL, priority, computeEnvironmentOrder = NULL, serviceEnvironmentOrder = NULL, jobQueueType = NULL, tags = NULL, jobStateTimeLimitActions = NULL) {
   op <- new_operation(
     name = "CreateJobQueue",
     http_method = "POST",
@@ -269,7 +279,7 @@ batch_create_job_queue <- function(jobQueueName, state = NULL, schedulingPolicyA
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .batch$create_job_queue_input(jobQueueName = jobQueueName, state = state, schedulingPolicyArn = schedulingPolicyArn, priority = priority, computeEnvironmentOrder = computeEnvironmentOrder, tags = tags, jobStateTimeLimitActions = jobStateTimeLimitActions)
+  input <- .batch$create_job_queue_input(jobQueueName = jobQueueName, state = state, schedulingPolicyArn = schedulingPolicyArn, priority = priority, computeEnvironmentOrder = computeEnvironmentOrder, serviceEnvironmentOrder = serviceEnvironmentOrder, jobQueueType = jobQueueType, tags = tags, jobStateTimeLimitActions = jobStateTimeLimitActions)
   output <- .batch$create_job_queue_output()
   config <- get_config()
   svc <- .batch$service(config, op)
@@ -321,6 +331,50 @@ batch_create_scheduling_policy <- function(name, fairsharePolicy = NULL, tags = 
   return(response)
 }
 .batch$operations$create_scheduling_policy <- batch_create_scheduling_policy
+
+#' Creates a service environment for running service jobs
+#'
+#' @description
+#' Creates a service environment for running service jobs. Service environments define capacity limits for specific service types such as SageMaker Training jobs.
+#'
+#' See [https://www.paws-r-sdk.com/docs/batch_create_service_environment/](https://www.paws-r-sdk.com/docs/batch_create_service_environment/) for full documentation.
+#'
+#' @param serviceEnvironmentName &#91;required&#93; The name for the service environment. It can be up to 128 characters
+#' long and can contain letters, numbers, hyphens (-), and underscores
+#' (_).
+#' @param serviceEnvironmentType &#91;required&#93; The type of service environment. For SageMaker Training jobs, specify
+#' `SAGEMAKER_TRAINING`.
+#' @param state The state of the service environment. Valid values are `ENABLED` and
+#' `DISABLED`. The default value is `ENABLED`.
+#' @param capacityLimits &#91;required&#93; The capacity limits for the service environment. The number of instances
+#' a job consumes is the total number of instances requested in the submit
+#' training job request resource configuration.
+#' @param tags The tags that you apply to the service environment to help you
+#' categorize and organize your resources. Each tag consists of a key and
+#' an optional value. For more information, see [Tagging your Batch
+#' resources](https://docs.aws.amazon.com/batch/latest/userguide/using-tags.html).
+#'
+#' @keywords internal
+#'
+#' @rdname batch_create_service_environment
+batch_create_service_environment <- function(serviceEnvironmentName, serviceEnvironmentType, state = NULL, capacityLimits, tags = NULL) {
+  op <- new_operation(
+    name = "CreateServiceEnvironment",
+    http_method = "POST",
+    http_path = "/v1/createserviceenvironment",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .batch$create_service_environment_input(serviceEnvironmentName = serviceEnvironmentName, serviceEnvironmentType = serviceEnvironmentType, state = state, capacityLimits = capacityLimits, tags = tags)
+  output <- .batch$create_service_environment_output()
+  config <- get_config()
+  svc <- .batch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$create_service_environment <- batch_create_service_environment
 
 #' Deletes an Batch compute environment
 #'
@@ -447,6 +501,37 @@ batch_delete_scheduling_policy <- function(arn) {
   return(response)
 }
 .batch$operations$delete_scheduling_policy <- batch_delete_scheduling_policy
+
+#' Deletes a Service environment
+#'
+#' @description
+#' Deletes a Service environment. Before you can delete a service environment, you must first set its state to `DISABLED` with the [`update_service_environment`][batch_update_service_environment] API operation and disassociate it from any job queues with the [`update_job_queue`][batch_update_job_queue] API operation.
+#'
+#' See [https://www.paws-r-sdk.com/docs/batch_delete_service_environment/](https://www.paws-r-sdk.com/docs/batch_delete_service_environment/) for full documentation.
+#'
+#' @param serviceEnvironment &#91;required&#93; The name or ARN of the service environment to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname batch_delete_service_environment
+batch_delete_service_environment <- function(serviceEnvironment) {
+  op <- new_operation(
+    name = "DeleteServiceEnvironment",
+    http_method = "POST",
+    http_path = "/v1/deleteserviceenvironment",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .batch$delete_service_environment_input(serviceEnvironment = serviceEnvironment)
+  output <- .batch$delete_service_environment_output()
+  config <- get_config()
+  svc <- .batch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$delete_service_environment <- batch_delete_service_environment
 
 #' Deregisters an Batch job definition
 #'
@@ -737,6 +822,89 @@ batch_describe_scheduling_policies <- function(arns) {
   return(response)
 }
 .batch$operations$describe_scheduling_policies <- batch_describe_scheduling_policies
+
+#' Describes one or more of your service environments
+#'
+#' @description
+#' Describes one or more of your service environments.
+#'
+#' See [https://www.paws-r-sdk.com/docs/batch_describe_service_environments/](https://www.paws-r-sdk.com/docs/batch_describe_service_environments/) for full documentation.
+#'
+#' @param serviceEnvironments An array of service environment names or ARN entries.
+#' @param maxResults The maximum number of results returned by
+#' [`describe_service_environments`][batch_describe_service_environments]
+#' in paginated output. When this parameter is used,
+#' [`describe_service_environments`][batch_describe_service_environments]
+#' only returns `maxResults` results in a single page and a `nextToken`
+#' response element. The remaining results of the initial request can be
+#' seen by sending another
+#' [`describe_service_environments`][batch_describe_service_environments]
+#' request with the returned `nextToken` value. This value can be between 1
+#' and 100. If this parameter isn't used, then
+#' [`describe_service_environments`][batch_describe_service_environments]
+#' returns up to 100 results and a `nextToken` value if applicable.
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' [`describe_service_environments`][batch_describe_service_environments]
+#' request where `maxResults` was used and the results exceeded the value
+#' of that parameter. Pagination continues from the end of the previous
+#' results that returned the `nextToken` value. This value is `null` when
+#' there are no more results to return.
+#' 
+#' Treat this token as an opaque identifier that's only used to retrieve
+#' the next items in a list and not for other programmatic purposes.
+#'
+#' @keywords internal
+#'
+#' @rdname batch_describe_service_environments
+batch_describe_service_environments <- function(serviceEnvironments = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeServiceEnvironments",
+    http_method = "POST",
+    http_path = "/v1/describeserviceenvironments",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "serviceEnvironments"),
+    stream_api = FALSE
+  )
+  input <- .batch$describe_service_environments_input(serviceEnvironments = serviceEnvironments, maxResults = maxResults, nextToken = nextToken)
+  output <- .batch$describe_service_environments_output()
+  config <- get_config()
+  svc <- .batch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$describe_service_environments <- batch_describe_service_environments
+
+#' The details of a service job
+#'
+#' @description
+#' The details of a service job.
+#'
+#' See [https://www.paws-r-sdk.com/docs/batch_describe_service_job/](https://www.paws-r-sdk.com/docs/batch_describe_service_job/) for full documentation.
+#'
+#' @param jobId &#91;required&#93; The job ID for the service job to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname batch_describe_service_job
+batch_describe_service_job <- function(jobId) {
+  op <- new_operation(
+    name = "DescribeServiceJob",
+    http_method = "POST",
+    http_path = "/v1/describeservicejob",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .batch$describe_service_job_input(jobId = jobId)
+  output <- .batch$describe_service_job_output()
+  config <- get_config()
+  svc <- .batch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$describe_service_job <- batch_describe_service_job
 
 #' Provides a list of the first 100 RUNNABLE jobs associated to a single
 #' job queue
@@ -1061,6 +1229,83 @@ batch_list_scheduling_policies <- function(maxResults = NULL, nextToken = NULL) 
 }
 .batch$operations$list_scheduling_policies <- batch_list_scheduling_policies
 
+#' Returns a list of service jobs for a specified job queue
+#'
+#' @description
+#' Returns a list of service jobs for a specified job queue.
+#'
+#' See [https://www.paws-r-sdk.com/docs/batch_list_service_jobs/](https://www.paws-r-sdk.com/docs/batch_list_service_jobs/) for full documentation.
+#'
+#' @param jobQueue The name or ARN of the job queue with which to list service jobs.
+#' @param jobStatus The job status with which to filter service jobs.
+#' @param maxResults The maximum number of results returned by
+#' [`list_service_jobs`][batch_list_service_jobs] in paginated output. When
+#' this parameter is used, [`list_service_jobs`][batch_list_service_jobs]
+#' only returns `maxResults` results in a single page and a `nextToken`
+#' response element. The remaining results of the initial request can be
+#' seen by sending another [`list_service_jobs`][batch_list_service_jobs]
+#' request with the returned `nextToken` value. This value can be between 1
+#' and 100. If this parameter isn't used, then
+#' [`list_service_jobs`][batch_list_service_jobs] returns up to 100 results
+#' and a `nextToken` value if applicable.
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' [`list_service_jobs`][batch_list_service_jobs] request where
+#' `maxResults` was used and the results exceeded the value of that
+#' parameter. Pagination continues from the end of the previous results
+#' that returned the `nextToken` value. This value is `null` when there are
+#' no more results to return.
+#' 
+#' Treat this token as an opaque identifier that's only used to retrieve
+#' the next items in a list and not for other programmatic purposes.
+#' @param filters The filter to apply to the query. Only one filter can be used at a time.
+#' When the filter is used, `jobStatus` is ignored. The results are sorted
+#' by the `createdAt` field, with the most recent jobs being first.
+#' 
+#' **JOB_NAME**
+#' 
+#' The value of the filter is a case-insensitive match for the job name. If
+#' the value ends with an asterisk (*), the filter matches any job name
+#' that begins with the string before the '*'. This corresponds to the
+#' `jobName` value. For example, `test1` matches both `Test1` and `test1`,
+#' and `test1*` matches both `test1` and `Test10`. When the `JOB_NAME`
+#' filter is used, the results are grouped by the job name and version.
+#' 
+#' **BEFORE_CREATED_AT**
+#' 
+#' The value for the filter is the time that's before the job was created.
+#' This corresponds to the `createdAt` value. The value is a string
+#' representation of the number of milliseconds since 00:00:00 UTC
+#' (midnight) on January 1, 1970.
+#' 
+#' **AFTER_CREATED_AT**
+#' 
+#' The value for the filter is the time that's after the job was created.
+#' This corresponds to the `createdAt` value. The value is a string
+#' representation of the number of milliseconds since 00:00:00 UTC
+#' (midnight) on January 1, 1970.
+#'
+#' @keywords internal
+#'
+#' @rdname batch_list_service_jobs
+batch_list_service_jobs <- function(jobQueue = NULL, jobStatus = NULL, maxResults = NULL, nextToken = NULL, filters = NULL) {
+  op <- new_operation(
+    name = "ListServiceJobs",
+    http_method = "POST",
+    http_path = "/v1/listservicejobs",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobSummaryList"),
+    stream_api = FALSE
+  )
+  input <- .batch$list_service_jobs_input(jobQueue = jobQueue, jobStatus = jobStatus, maxResults = maxResults, nextToken = nextToken, filters = filters)
+  output <- .batch$list_service_jobs_output()
+  config <- get_config()
+  svc <- .batch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$list_service_jobs <- batch_list_service_jobs
+
 #' Lists the tags for an Batch resource
 #'
 #' @description
@@ -1331,6 +1576,66 @@ batch_submit_job <- function(jobName, jobQueue, shareIdentifier = NULL, scheduli
 }
 .batch$operations$submit_job <- batch_submit_job
 
+#' Submits a service job to a specified job queue to run on SageMaker AI
+#'
+#' @description
+#' Submits a service job to a specified job queue to run on SageMaker AI. A service job is a unit of work that you submit to Batch for execution on SageMaker AI.
+#'
+#' See [https://www.paws-r-sdk.com/docs/batch_submit_service_job/](https://www.paws-r-sdk.com/docs/batch_submit_service_job/) for full documentation.
+#'
+#' @param jobName &#91;required&#93; The name of the service job. It can be up to 128 characters long. It can
+#' contain uppercase and lowercase letters, numbers, hyphens (-), and
+#' underscores (_).
+#' @param jobQueue &#91;required&#93; The job queue into which the service job is submitted. You can specify
+#' either the name or the ARN of the queue. The job queue must have the
+#' type `SAGEMAKER_TRAINING`.
+#' @param retryStrategy The retry strategy to use for failed service jobs that are submitted
+#' with this service job request.
+#' @param schedulingPriority The scheduling priority of the service job. Valid values are integers
+#' between 0 and 9999.
+#' @param serviceRequestPayload &#91;required&#93; The request, in JSON, for the service that the SubmitServiceJob
+#' operation is queueing.
+#' @param serviceJobType &#91;required&#93; The type of service job. For SageMaker Training jobs, specify
+#' `SAGEMAKER_TRAINING`.
+#' @param shareIdentifier The share identifier for the service job. Don't specify this parameter
+#' if the job queue doesn't have a fair-share scheduling policy. If the job
+#' queue has a fair-share scheduling policy, then this parameter must be
+#' specified.
+#' @param timeoutConfig The timeout configuration for the service job. If none is specified,
+#' Batch defers to the default timeout of the underlying service handling
+#' the job.
+#' @param tags The tags that you apply to the service job request. Each tag consists of
+#' a key and an optional value. For more information, see [Tagging your
+#' Batch
+#' resources](https://docs.aws.amazon.com/batch/latest/userguide/using-tags.html).
+#' @param clientToken A unique identifier for the request. This token is used to ensure
+#' idempotency of requests. If this parameter is specified and two submit
+#' requests with identical payloads and `clientToken`s are received, these
+#' requests are considered the same request and the second request is
+#' rejected.
+#'
+#' @keywords internal
+#'
+#' @rdname batch_submit_service_job
+batch_submit_service_job <- function(jobName, jobQueue, retryStrategy = NULL, schedulingPriority = NULL, serviceRequestPayload, serviceJobType, shareIdentifier = NULL, timeoutConfig = NULL, tags = NULL, clientToken = NULL) {
+  op <- new_operation(
+    name = "SubmitServiceJob",
+    http_method = "POST",
+    http_path = "/v1/submitservicejob",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .batch$submit_service_job_input(jobName = jobName, jobQueue = jobQueue, retryStrategy = retryStrategy, schedulingPriority = schedulingPriority, serviceRequestPayload = serviceRequestPayload, serviceJobType = serviceJobType, shareIdentifier = shareIdentifier, timeoutConfig = timeoutConfig, tags = tags, clientToken = clientToken)
+  output <- .batch$submit_service_job_output()
+  config <- get_config()
+  svc <- .batch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$submit_service_job <- batch_submit_service_job
+
 #' Associates the specified tags to a resource with the specified
 #' resourceArn
 #'
@@ -1407,6 +1712,41 @@ batch_terminate_job <- function(jobId, reason) {
   return(response)
 }
 .batch$operations$terminate_job <- batch_terminate_job
+
+#' Terminates a service job in a job queue
+#'
+#' @description
+#' Terminates a service job in a job queue.
+#'
+#' See [https://www.paws-r-sdk.com/docs/batch_terminate_service_job/](https://www.paws-r-sdk.com/docs/batch_terminate_service_job/) for full documentation.
+#'
+#' @param jobId &#91;required&#93; The service job ID of the service job to terminate.
+#' @param reason &#91;required&#93; A message to attach to the service job that explains the reason for
+#' canceling it. This message is returned by
+#' [`describe_service_job`][batch_describe_service_job] operations on the
+#' service job.
+#'
+#' @keywords internal
+#'
+#' @rdname batch_terminate_service_job
+batch_terminate_service_job <- function(jobId, reason) {
+  op <- new_operation(
+    name = "TerminateServiceJob",
+    http_method = "POST",
+    http_path = "/v1/terminateservicejob",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .batch$terminate_service_job_input(jobId = jobId, reason = reason)
+  output <- .batch$terminate_service_job_output()
+  config <- get_config()
+  svc <- .batch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$terminate_service_job <- batch_terminate_service_job
 
 #' Deletes specified tags from an Batch resource
 #'
@@ -1573,9 +1913,8 @@ batch_update_compute_environment <- function(computeEnvironment, state = NULL, u
 #' will be increased or reduced. Must be a non-negative value.
 #' @param clientToken If this parameter is specified and two update requests with identical
 #' payloads and `clientToken`s are received, these requests are considered
-#' the same request and the second request is rejected. A `clientToken` is
-#' valid for 8 hours or until one hour after the consumable resource is
-#' deleted, whichever is less.
+#' the same request. Both requests will succeed, but the update will only
+#' happen once. A `clientToken` is valid for 8 hours.
 #'
 #' @keywords internal
 #'
@@ -1636,6 +1975,9 @@ batch_update_consumable_resource <- function(consumableResource, operation = NUL
 #' All compute environments that are associated with a job queue must share
 #' the same architecture. Batch doesn't support mixing compute environment
 #' architecture types in a single job queue.
+#' @param serviceEnvironmentOrder The order of the service environment associated with the job queue. Job
+#' queues with a higher priority are evaluated first when associated with
+#' the same service environment.
 #' @param jobStateTimeLimitActions The set of actions that Batch perform on jobs that remain at the head of
 #' the job queue in the specified state longer than specified times. Batch
 #' will perform each action after `maxTimeSeconds` has passed. (**Note**:
@@ -1645,7 +1987,7 @@ batch_update_consumable_resource <- function(consumableResource, operation = NUL
 #' @keywords internal
 #'
 #' @rdname batch_update_job_queue
-batch_update_job_queue <- function(jobQueue, state = NULL, schedulingPolicyArn = NULL, priority = NULL, computeEnvironmentOrder = NULL, jobStateTimeLimitActions = NULL) {
+batch_update_job_queue <- function(jobQueue, state = NULL, schedulingPolicyArn = NULL, priority = NULL, computeEnvironmentOrder = NULL, serviceEnvironmentOrder = NULL, jobStateTimeLimitActions = NULL) {
   op <- new_operation(
     name = "UpdateJobQueue",
     http_method = "POST",
@@ -1654,7 +1996,7 @@ batch_update_job_queue <- function(jobQueue, state = NULL, schedulingPolicyArn =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .batch$update_job_queue_input(jobQueue = jobQueue, state = state, schedulingPolicyArn = schedulingPolicyArn, priority = priority, computeEnvironmentOrder = computeEnvironmentOrder, jobStateTimeLimitActions = jobStateTimeLimitActions)
+  input <- .batch$update_job_queue_input(jobQueue = jobQueue, state = state, schedulingPolicyArn = schedulingPolicyArn, priority = priority, computeEnvironmentOrder = computeEnvironmentOrder, serviceEnvironmentOrder = serviceEnvironmentOrder, jobStateTimeLimitActions = jobStateTimeLimitActions)
   output <- .batch$update_job_queue_output()
   config <- get_config()
   svc <- .batch$service(config, op)
@@ -1695,3 +2037,37 @@ batch_update_scheduling_policy <- function(arn, fairsharePolicy = NULL) {
   return(response)
 }
 .batch$operations$update_scheduling_policy <- batch_update_scheduling_policy
+
+#' Updates a service environment
+#'
+#' @description
+#' Updates a service environment. You can update the state of a service environment from `ENABLED` to `DISABLED` to prevent new service jobs from being placed in the service environment.
+#'
+#' See [https://www.paws-r-sdk.com/docs/batch_update_service_environment/](https://www.paws-r-sdk.com/docs/batch_update_service_environment/) for full documentation.
+#'
+#' @param serviceEnvironment &#91;required&#93; The name or ARN of the service environment to update.
+#' @param state The state of the service environment.
+#' @param capacityLimits The capacity limits for the service environment. This defines the
+#' maximum resources that can be used by service jobs in this environment.
+#'
+#' @keywords internal
+#'
+#' @rdname batch_update_service_environment
+batch_update_service_environment <- function(serviceEnvironment, state = NULL, capacityLimits = NULL) {
+  op <- new_operation(
+    name = "UpdateServiceEnvironment",
+    http_method = "POST",
+    http_path = "/v1/updateserviceenvironment",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .batch$update_service_environment_input(serviceEnvironment = serviceEnvironment, state = state, capacityLimits = capacityLimits)
+  output <- .batch$update_service_environment_output()
+  config <- get_config()
+  svc <- .batch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$update_service_environment <- batch_update_service_environment

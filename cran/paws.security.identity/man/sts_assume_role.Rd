@@ -44,7 +44,7 @@ session name when you assume the role. For more information, see
 The regex used to validate this parameter is a string of characters
 consisting of upper- and lower-case alphanumeric characters with no
 spaces. You can also include underscores or any of the following
-characters: =,.@-}
+characters: +=,.@-}
 
 \item{PolicyArns}{The Amazon Resource Names (ARNs) of the IAM managed policies that you
 want to use as managed session policies. The policies must exist in the
@@ -191,7 +191,7 @@ in the \emph{IAM User Guide}.
 The regex used to validate this parameter is a string of characters
 consisting of upper- and lower-case alphanumeric characters with no
 spaces. You can also include underscores or any of the following
-characters: =,.@:/-}
+characters: +=,.@:\\/-}
 
 \item{SerialNumber}{The identification number of the MFA device that is associated with the
 user who is making the \code{\link[=sts_assume_role]{assume_role}} call. Specify
@@ -204,7 +204,7 @@ Amazon Resource Name (ARN) for a virtual device (such as
 The regex used to validate this parameter is a string of characters
 consisting of upper- and lower-case alphanumeric characters with no
 spaces. You can also include underscores or any of the following
-characters: =,.@-}
+characters: +=/:,.@-}
 
 \item{TokenCode}{The value provided by the MFA device, if the trust policy of the role
 being assumed requires MFA. (In other words, if the policy includes a

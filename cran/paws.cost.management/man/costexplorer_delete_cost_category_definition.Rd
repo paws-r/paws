@@ -2,15 +2,15 @@
 % Please edit documentation in R/costexplorer_operations.R
 \name{costexplorer_delete_cost_category_definition}
 \alias{costexplorer_delete_cost_category_definition}
-\title{Deletes a Cost Category}
+\title{Deletes a cost category}
 \usage{
 costexplorer_delete_cost_category_definition(CostCategoryArn)
 }
 \arguments{
-\item{CostCategoryArn}{[required] The unique identifier for your Cost Category.}
+\item{CostCategoryArn}{[required] The unique identifier for your cost category.}
 }
 \description{
-Deletes a Cost Category. Expenses from this month going forward will no longer be categorized with this Cost Category.
+Deletes a cost category. Expenses from this month going forward will no longer be categorized with this cost category.
 
 See \url{https://www.paws-r-sdk.com/docs/costexplorer_delete_cost_category_definition/} for full documentation.
 }

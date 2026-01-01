@@ -6,8 +6,8 @@
 \usage{
 controltower_list_landing_zone_operations(
   filter = NULL,
-  maxResults = NULL,
-  nextToken = NULL
+  nextToken = NULL,
+  maxResults = NULL
 )
 }
 \arguments{
@@ -15,10 +15,10 @@ controltower_list_landing_zone_operations(
 \code{\link[=controltower_list_landing_zone_operations]{list_landing_zone_operations}}
 API that lets you select the types of landing zone operations to view.}
 
-\item{maxResults}{How many results to return per API call.}
-
 \item{nextToken}{The token to continue the list from a previous API call with the same
 parameters.}
+
+\item{maxResults}{How many results to return per API call.}
 }
 \description{
 Lists all landing zone operations from the past 90 days. Results are sorted by time, with the most recent operation first.

@@ -9,6 +9,7 @@ datazone_remove_policy_grant(
   domainIdentifier,
   entityIdentifier,
   entityType,
+  grantIdentifier = NULL,
   policyType,
   principal
 )
@@ -22,6 +23,9 @@ idempotency of the request.}
 \item{entityIdentifier}{[required] The ID of the entity from which you want to remove a policy grant.}
 
 \item{entityType}{[required] The type of the entity from which you want to remove a policy grant.}
+
+\item{grantIdentifier}{The ID of the policy grant that is to be removed from a specified
+entity.}
 
 \item{policyType}{[required] The type of the policy that you want to remove.}
 

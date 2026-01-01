@@ -31,8 +31,8 @@ notification rule.}
 \item{DetailType}{The level of detail to include in the notifications for this resource.
 BASIC will include only the contents of the event as it would appear in
 Amazon CloudWatch. FULL will include any supplemental information
-provided by AWS CodeStar Notifications and/or the service for the
-resource for which the notification is created.}
+provided by CodeStar Notifications and/or the service for the resource
+for which the notification is created.}
 }
 \description{
 Updates a notification rule for a resource. You can change the events that trigger the notification rule, the status of the rule, and the targets that receive the notifications.

@@ -4,13 +4,24 @@
 \alias{cloudwatchlogs_describe_resource_policies}
 \title{Lists the resource policies in this account}
 \usage{
-cloudwatchlogs_describe_resource_policies(nextToken = NULL, limit = NULL)
+cloudwatchlogs_describe_resource_policies(
+  nextToken = NULL,
+  limit = NULL,
+  resourceArn = NULL,
+  policyScope = NULL
+)
 }
 \arguments{
 \item{nextToken}{}
 
 \item{limit}{The maximum number of resource policies to be displayed with one call of
 this API.}
+
+\item{resourceArn}{The ARN of the CloudWatch Logs resource for which to query the resource
+policy.}
+
+\item{policyScope}{Specifies the scope of the resource policy. Valid values are \code{ACCOUNT}
+or \code{RESOURCE}. When not specified, defaults to \code{ACCOUNT}.}
 }
 \description{
 Lists the resource policies in this account.

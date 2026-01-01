@@ -9,7 +9,8 @@ connect_update_contact_evaluation(
   InstanceId,
   EvaluationId,
   Answers = NULL,
-  Notes = NULL
+  Notes = NULL,
+  UpdatedBy = NULL
 )
 }
 \arguments{
@@ -21,6 +22,8 @@ in the Amazon Resource Name (ARN) of the instance.}
 \item{Answers}{A map of question identifiers to answer value.}
 
 \item{Notes}{A map of question identifiers to note value.}
+
+\item{UpdatedBy}{The ID of the user who updated the contact evaluation.}
 }
 \description{
 Updates details about a contact evaluation in the specified Amazon Connect instance. A contact evaluation must be in draft state. Answers included in the request are merged with existing answers for the given evaluation. An answer or note can be deleted by passing an empty object (\code{{}}) to the question identifier.

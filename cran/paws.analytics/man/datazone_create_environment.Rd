@@ -12,7 +12,7 @@ datazone_create_environment(
   environmentAccountRegion = NULL,
   environmentBlueprintIdentifier = NULL,
   environmentConfigurationId = NULL,
-  environmentProfileIdentifier,
+  environmentProfileIdentifier = NULL,
   glossaryTerms = NULL,
   name,
   projectIdentifier,
@@ -35,7 +35,7 @@ created.}
 
 \item{environmentConfigurationId}{The configuration ID of the environment.}
 
-\item{environmentProfileIdentifier}{[required] The identifier of the environment profile that is used to create this
+\item{environmentProfileIdentifier}{The identifier of the environment profile that is used to create this
 Amazon DataZone environment.}
 
 \item{glossaryTerms}{The glossary terms that can be used in this Amazon DataZone environment.}

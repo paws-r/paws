@@ -11,7 +11,7 @@ NULL
 
 .opensearchserviceserverless$batch_get_collection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(collectionDetails = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), standbyReplicas = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE)), collectionEndpoint = structure(logical(0), tags = list(type = "string")), dashboardEndpoint = structure(logical(0), tags = list(type = "string")), failureCode = structure(logical(0), tags = list(type = "string")), failureMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), collectionErrorDetails = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), errorCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(collectionDetails = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), standbyReplicas = structure(logical(0), tags = list(type = "string")), vectorOptions = structure(list(ServerlessVectorAcceleration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE)), collectionEndpoint = structure(logical(0), tags = list(type = "string")), dashboardEndpoint = structure(logical(0), tags = list(type = "string")), fipsEndpoints = structure(list(collectionEndpoint = structure(logical(0), tags = list(type = "string")), dashboardEndpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), failureCode = structure(logical(0), tags = list(type = "string")), failureMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), collectionErrorDetails = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), errorCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -65,13 +65,25 @@ NULL
 
 .opensearchserviceserverless$create_collection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), standbyReplicas = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), standbyReplicas = structure(logical(0), tags = list(type = "string")), vectorOptions = structure(list(ServerlessVectorAcceleration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .opensearchserviceserverless$create_collection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(createCollectionDetail = structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), standbyReplicas = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(createCollectionDetail = structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), standbyReplicas = structure(logical(0), tags = list(type = "string")), vectorOptions = structure(list(ServerlessVectorAcceleration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opensearchserviceserverless$create_index_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), indexName = structure(logical(0), tags = list(type = "string")), indexSchema = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opensearchserviceserverless$create_index_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -89,13 +101,13 @@ NULL
 
 .opensearchserviceserverless$create_security_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), samlOptions = structure(list(metadata = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string")), openSearchServerlessEntityId = structure(logical(0), tags = list(type = "string")), sessionTimeout = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), iamIdentityCenterOptions = structure(list(instanceArn = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), samlOptions = structure(list(metadata = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string")), openSearchServerlessEntityId = structure(logical(0), tags = list(type = "string")), sessionTimeout = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), iamIdentityCenterOptions = structure(list(instanceArn = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), iamFederationOptions = structure(list(groupAttribute = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .opensearchserviceserverless$create_security_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(securityConfigDetail = structure(list(id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), configVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), samlOptions = structure(list(metadata = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string")), openSearchServerlessEntityId = structure(logical(0), tags = list(type = "string")), sessionTimeout = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), iamIdentityCenterOptions = structure(list(instanceArn = structure(logical(0), tags = list(type = "string")), applicationArn = structure(logical(0), tags = list(type = "string")), applicationName = structure(logical(0), tags = list(type = "string")), applicationDescription = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(securityConfigDetail = structure(list(id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), configVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), samlOptions = structure(list(metadata = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string")), openSearchServerlessEntityId = structure(logical(0), tags = list(type = "string")), sessionTimeout = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), iamIdentityCenterOptions = structure(list(instanceArn = structure(logical(0), tags = list(type = "string")), applicationArn = structure(logical(0), tags = list(type = "string")), applicationName = structure(logical(0), tags = list(type = "string")), applicationDescription = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), iamFederationOptions = structure(list(groupAttribute = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -144,6 +156,18 @@ NULL
 .opensearchserviceserverless$delete_collection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(deleteCollectionDetail = structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opensearchserviceserverless$delete_index_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), indexName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opensearchserviceserverless$delete_index_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -219,6 +243,18 @@ NULL
   return(populate(args, shape))
 }
 
+.opensearchserviceserverless$get_index_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), indexName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opensearchserviceserverless$get_index_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(indexSchema = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .opensearchserviceserverless$get_policies_stats_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
@@ -239,7 +275,7 @@ NULL
 
 .opensearchserviceserverless$get_security_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(securityConfigDetail = structure(list(id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), configVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), samlOptions = structure(list(metadata = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string")), openSearchServerlessEntityId = structure(logical(0), tags = list(type = "string")), sessionTimeout = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), iamIdentityCenterOptions = structure(list(instanceArn = structure(logical(0), tags = list(type = "string")), applicationArn = structure(logical(0), tags = list(type = "string")), applicationName = structure(logical(0), tags = list(type = "string")), applicationDescription = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(securityConfigDetail = structure(list(id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), configVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), samlOptions = structure(list(metadata = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string")), openSearchServerlessEntityId = structure(logical(0), tags = list(type = "string")), sessionTimeout = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), iamIdentityCenterOptions = structure(list(instanceArn = structure(logical(0), tags = list(type = "string")), applicationArn = structure(logical(0), tags = list(type = "string")), applicationName = structure(logical(0), tags = list(type = "string")), applicationDescription = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), iamFederationOptions = structure(list(groupAttribute = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -399,6 +435,18 @@ NULL
   return(populate(args, shape))
 }
 
+.opensearchserviceserverless$update_index_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), indexName = structure(logical(0), tags = list(type = "string")), indexSchema = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opensearchserviceserverless$update_index_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .opensearchserviceserverless$update_lifecycle_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), policyVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
@@ -413,13 +461,13 @@ NULL
 
 .opensearchserviceserverless$update_security_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), configVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), samlOptions = structure(list(metadata = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string")), openSearchServerlessEntityId = structure(logical(0), tags = list(type = "string")), sessionTimeout = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), iamIdentityCenterOptionsUpdates = structure(list(userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), configVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), samlOptions = structure(list(metadata = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string")), openSearchServerlessEntityId = structure(logical(0), tags = list(type = "string")), sessionTimeout = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), iamIdentityCenterOptionsUpdates = structure(list(userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), iamFederationOptions = structure(list(groupAttribute = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .opensearchserviceserverless$update_security_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(securityConfigDetail = structure(list(id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), configVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), samlOptions = structure(list(metadata = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string")), openSearchServerlessEntityId = structure(logical(0), tags = list(type = "string")), sessionTimeout = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), iamIdentityCenterOptions = structure(list(instanceArn = structure(logical(0), tags = list(type = "string")), applicationArn = structure(logical(0), tags = list(type = "string")), applicationName = structure(logical(0), tags = list(type = "string")), applicationDescription = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(securityConfigDetail = structure(list(id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), configVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), samlOptions = structure(list(metadata = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string")), openSearchServerlessEntityId = structure(logical(0), tags = list(type = "string")), sessionTimeout = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), iamIdentityCenterOptions = structure(list(instanceArn = structure(logical(0), tags = list(type = "string")), applicationArn = structure(logical(0), tags = list(type = "string")), applicationName = structure(logical(0), tags = list(type = "string")), applicationDescription = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), iamFederationOptions = structure(list(groupAttribute = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

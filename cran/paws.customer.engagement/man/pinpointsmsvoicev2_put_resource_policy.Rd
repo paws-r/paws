@@ -2,20 +2,20 @@
 % Please edit documentation in R/pinpointsmsvoicev2_operations.R
 \name{pinpointsmsvoicev2_put_resource_policy}
 \alias{pinpointsmsvoicev2_put_resource_policy}
-\title{Attaches a resource-based policy to a AWS End User Messaging SMS and
-Voice resource(phone number, sender Id, phone poll, or opt-out list)
-that is used for sharing the resource}
+\title{Attaches a resource-based policy to a End User Messaging SMS
+resource(phone number, sender Id, phone poll, or opt-out list) that is
+used for sharing the resource}
 \usage{
 pinpointsmsvoicev2_put_resource_policy(ResourceArn, Policy)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the AWS End User Messaging SMS and
-Voice resource to attach the resource-based policy to.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the End User Messaging SMS resource to
+attach the resource-based policy to.}
 
 \item{Policy}{[required] The JSON formatted resource-based policy to attach.}
 }
 \description{
-Attaches a resource-based policy to a AWS End User Messaging SMS and Voice resource(phone number, sender Id, phone poll, or opt-out list) that is used for sharing the resource. A shared resource can be a Pool, Opt-out list, Sender Id, or Phone number. For more information about resource-based policies, see \href{https://docs.aws.amazon.com/sms-voice/latest/userguide/shared-resources.html}{Working with shared resources} in the \emph{AWS End User Messaging SMS User Guide}.
+Attaches a resource-based policy to a End User Messaging SMS resource(phone number, sender Id, phone poll, or opt-out list) that is used for sharing the resource. A shared resource can be a Pool, Opt-out list, Sender Id, or Phone number. For more information about resource-based policies, see \href{https://docs.aws.amazon.com/sms-voice/latest/userguide/shared-resources.html}{Working with shared resources} in the \emph{End User Messaging SMS User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_put_resource_policy/} for full documentation.
 }

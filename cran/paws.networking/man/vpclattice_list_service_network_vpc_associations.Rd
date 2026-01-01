@@ -5,20 +5,20 @@
 \title{Lists the associations between a service network and a VPC}
 \usage{
 vpclattice_list_service_network_vpc_associations(
-  maxResults = NULL,
-  nextToken = NULL,
   serviceNetworkIdentifier = NULL,
-  vpcIdentifier = NULL
+  vpcIdentifier = NULL,
+  maxResults = NULL,
+  nextToken = NULL
 )
 }
 \arguments{
-\item{maxResults}{The maximum number of results to return.}
-
-\item{nextToken}{A pagination token for the next page of results.}
-
 \item{serviceNetworkIdentifier}{The ID or ARN of the service network.}
 
 \item{vpcIdentifier}{The ID or ARN of the VPC.}
+
+\item{maxResults}{The maximum number of results to return.}
+
+\item{nextToken}{A pagination token for the next page of results.}
 }
 \description{
 Lists the associations between a service network and a VPC. You can filter the list either by VPC or service network. You must provide either the ID of the service network identifier or the ID of the VPC.

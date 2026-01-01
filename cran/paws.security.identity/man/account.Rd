@@ -96,6 +96,7 @@ Operations for Amazon Web Services Account Management
 \link[=account_get_account_information]{get_account_information} \tab Retrieves information about the specified account including its account name, account ID, and account creation date and time\cr
 \link[=account_get_alternate_contact]{get_alternate_contact} \tab Retrieves the specified alternate contact attached to an Amazon Web Services account\cr
 \link[=account_get_contact_information]{get_contact_information} \tab Retrieves the primary contact information of an Amazon Web Services account\cr
+\link[=account_get_gov_cloud_account_information]{get_gov_cloud_account_information} \tab Retrieves information about the GovCloud account linked to the specified standard account (if it exists) including the GovCloud account ID and state\cr
 \link[=account_get_primary_email]{get_primary_email} \tab Retrieves the primary email address for the specified account\cr
 \link[=account_get_region_opt_status]{get_region_opt_status} \tab Retrieves the opt-in status of a particular Region\cr
 \link[=account_list_regions]{list_regions} \tab Lists all the Regions for a given account and their respective opt-in statuses\cr

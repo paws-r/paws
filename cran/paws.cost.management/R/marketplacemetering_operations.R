@@ -3,10 +3,11 @@
 #' @include marketplacemetering_service.R
 NULL
 
-#' The CustomerIdentifier parameter is scheduled for deprecation
+#' The CustomerIdentifier parameter is scheduled for deprecation on March
+#' 31, 2026
 #'
 #' @description
-#' The `CustomerIdentifier` parameter is scheduled for deprecation. Use `CustomerAWSAccountID` instead.
+#' The `CustomerIdentifier` parameter is scheduled for deprecation on March 31, 2026. Use `CustomerAWSAccountID` instead.
 #'
 #' See [https://www.paws-r-sdk.com/docs/marketplacemetering_batch_meter_usage/](https://www.paws-r-sdk.com/docs/marketplacemetering_batch_meter_usage/) for full documentation.
 #'
@@ -65,11 +66,25 @@ marketplacemetering_batch_meter_usage <- function(UsageRecords, ProductCode) {
 #' `UsageQuantity` of the [`meter_usage`][marketplacemetering_meter_usage]
 #' request, and each `UsageAllocation` must have a unique set of tags
 #' (include no tags).
+#' @param ClientToken Specifies a unique, case-sensitive identifier that you provide to ensure
+#' the idempotency of the request. This lets you safely retry the request
+#' without accidentally performing the same operation a second time.
+#' Passing the same value to a later call to an operation requires that you
+#' also pass the same value for all other parameters. We recommend that you
+#' use a [UUID type of
+#' value](https://en.wikipedia.org/wiki/Universally_unique_identifier).
+#' 
+#' If you don't provide this value, then Amazon Web Services generates a
+#' random one for you.
+#' 
+#' If you retry the operation with the same `ClientToken`, but with
+#' different parameters, the retry fails with an
+#' `IdempotencyConflictException` error.
 #'
 #' @keywords internal
 #'
 #' @rdname marketplacemetering_meter_usage
-marketplacemetering_meter_usage <- function(ProductCode, Timestamp, UsageDimension, UsageQuantity = NULL, DryRun = NULL, UsageAllocations = NULL) {
+marketplacemetering_meter_usage <- function(ProductCode, Timestamp, UsageDimension, UsageQuantity = NULL, DryRun = NULL, UsageAllocations = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "MeterUsage",
     http_method = "POST",
@@ -78,7 +93,7 @@ marketplacemetering_meter_usage <- function(ProductCode, Timestamp, UsageDimensi
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .marketplacemetering$meter_usage_input(ProductCode = ProductCode, Timestamp = Timestamp, UsageDimension = UsageDimension, UsageQuantity = UsageQuantity, DryRun = DryRun, UsageAllocations = UsageAllocations)
+  input <- .marketplacemetering$meter_usage_input(ProductCode = ProductCode, Timestamp = Timestamp, UsageDimension = UsageDimension, UsageQuantity = UsageQuantity, DryRun = DryRun, UsageAllocations = UsageAllocations, ClientToken = ClientToken)
   output <- .marketplacemetering$meter_usage_output()
   config <- get_config()
   svc <- .marketplacemetering$service(config, op)

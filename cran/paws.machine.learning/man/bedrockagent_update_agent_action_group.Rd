@@ -5,45 +5,30 @@
 \title{Updates the configuration for an action group for an agent}
 \usage{
 bedrockagent_update_agent_action_group(
-  actionGroupExecutor = NULL,
-  actionGroupId,
-  actionGroupName,
-  actionGroupState = NULL,
   agentId,
   agentVersion,
-  apiSchema = NULL,
+  actionGroupId,
+  actionGroupName,
   description = NULL,
-  functionSchema = NULL,
   parentActionGroupSignature = NULL,
-  parentActionGroupSignatureParams = NULL
+  parentActionGroupSignatureParams = NULL,
+  actionGroupExecutor = NULL,
+  actionGroupState = NULL,
+  apiSchema = NULL,
+  functionSchema = NULL
 )
 }
 \arguments{
-\item{actionGroupExecutor}{The Amazon Resource Name (ARN) of the Lambda function containing the
-business logic that is carried out upon invoking the action.}
-
-\item{actionGroupId}{[required] The unique identifier of the action group.}
-
-\item{actionGroupName}{[required] Specifies a new name for the action group.}
-
-\item{actionGroupState}{Specifies whether the action group is available for the agent to invoke
-or not when sending an
-\href{https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_InvokeAgent.html}{InvokeAgent}
-request.}
-
 \item{agentId}{[required] The unique identifier of the agent for which to update the action group.}
 
 \item{agentVersion}{[required] The unique identifier of the agent version for which to update the
 action group.}
 
-\item{apiSchema}{Contains either details about the S3 object containing the OpenAPI
-schema for the action group or the JSON or YAML-formatted payload
-defining the schema. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/agents-api-schema.html}{Action group OpenAPI schemas}.}
+\item{actionGroupId}{[required] The unique identifier of the action group.}
+
+\item{actionGroupName}{[required] Specifies a new name for the action group.}
 
 \item{description}{Specifies a new name for the action group.}
-
-\item{functionSchema}{Contains details about the function schema for the action group or the
-JSON or YAML-formatted payload defining the schema.}
 
 \item{parentActionGroupSignature}{Update the built-in or computer use action for this action group. If you
 specify a value, you must leave the \code{description}, \code{apiSchema}, and
@@ -86,6 +71,21 @@ reprompting the user for more information.}
 Computer use is a new Anthropic Claude model capability (in beta)
 available with Claude 3.7 Sonnet and Claude 3.5 Sonnet v2 only. For more
 information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/agents-computer-use.html}{Configure an Amazon Bedrock Agent to complete tasks with computer use tools}.}
+
+\item{actionGroupExecutor}{The Amazon Resource Name (ARN) of the Lambda function containing the
+business logic that is carried out upon invoking the action.}
+
+\item{actionGroupState}{Specifies whether the action group is available for the agent to invoke
+or not when sending an
+\href{https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_InvokeAgent.html}{InvokeAgent}
+request.}
+
+\item{apiSchema}{Contains either details about the S3 object containing the OpenAPI
+schema for the action group or the JSON or YAML-formatted payload
+defining the schema. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/agents-api-schema.html}{Action group OpenAPI schemas}.}
+
+\item{functionSchema}{Contains details about the function schema for the action group or the
+JSON or YAML-formatted payload defining the schema.}
 }
 \description{
 Updates the configuration for an action group for an agent.

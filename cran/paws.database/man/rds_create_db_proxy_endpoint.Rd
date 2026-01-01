@@ -10,7 +10,8 @@ rds_create_db_proxy_endpoint(
   VpcSubnetIds,
   VpcSecurityGroupIds = NULL,
   TargetRole = NULL,
-  Tags = NULL
+  Tags = NULL,
+  EndpointNetworkType = NULL
 )
 }
 \arguments{
@@ -33,6 +34,26 @@ is \code{READ_WRITE}. The only role that proxies for RDS for Microsoft SQL
 Server support is \code{READ_WRITE}.}
 
 \item{Tags}{}
+
+\item{EndpointNetworkType}{The network type of the DB proxy endpoint. The network type determines
+the IP version that the proxy endpoint supports.
+
+Valid values:
+\itemize{
+\item \code{IPV4} - The proxy endpoint supports IPv4 only.
+\item \code{IPV6} - The proxy endpoint supports IPv6 only.
+\item \code{DUAL} - The proxy endpoint supports both IPv4 and IPv6.
+}
+
+Default: \code{IPV4}
+
+Constraints:
+\itemize{
+\item If you specify \code{IPV6} or \code{DUAL}, the VPC and all subnets must have
+an IPv6 CIDR block.
+\item If you specify \code{IPV6} or \code{DUAL}, the VPC tenancy cannot be
+\code{dedicated}.
+}}
 }
 \description{
 Creates a \code{DBProxyEndpoint}. Only applies to proxies that are associated with Aurora DB clusters. You can use DB proxy endpoints to specify read/write or read-only access to the DB cluster. You can also use DB proxy endpoints to access a DB proxy through a different VPC than the proxy's default VPC.

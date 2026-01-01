@@ -2,7 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_search_place_index_for_position}
 \alias{locationservice_search_place_index_for_position}
-\title{Reverse geocodes a given coordinate and returns a legible address}
+\title{This operation is no longer current and may be deprecated in the future}
 \usage{
 locationservice_search_place_index_for_position(
   IndexName,
@@ -47,11 +47,11 @@ in the results will more likely be returned as \eqn{A\Theta\eta\nu\alpha}.
 If the data provider does not have a value for Greek, the result will be
 in a language that the provider does support.}
 
-\item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}
+\item{Key}{The optional \href{https://docs.aws.amazon.com/location/previous/developerguide/using-apikeys.html}{API key}
 to authorize the request.}
 }
 \description{
-Reverse geocodes a given coordinate and returns a legible address. Allows you to search for Places or points of interest near a given position.
+This operation is no longer current and may be deprecated in the future. We recommend you upgrade to \code{ReverseGeocode} or \code{SearchNearby} unless you require Grab data.
 
 See \url{https://www.paws-r-sdk.com/docs/locationservice_search_place_index_for_position/} for full documentation.
 }

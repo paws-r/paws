@@ -26,12 +26,24 @@ following limits:
 \item Routing profiles: 100
 \item Channels: 3 (VOICE, CHAT, and TASK channels are supported.)
 \item RoutingStepExpressions: 50
+\item AgentStatuses: 50
+\item Subtypes: 10
+\item ValidationTestTypes: 10
 }
 
 Metric data is retrieved only for the resources associated with the
 queues or routing profiles, and by any channels included in the filter.
 (You cannot filter by both queue AND routing profile.) You can include
 both resource IDs and resource ARNs in the same request.
+
+When using \code{AgentStatuses} as filter make sure Queues is added as
+primary filter.
+
+When using \code{Subtypes} as filter make sure Queues is added as primary
+filter.
+
+When using \code{ValidationTestTypes} as filter make sure Queues is added as
+primary filter.
 
 When using the \code{RoutingStepExpression} filter, you need to pass exactly
 one \code{QueueId}. The filter is also case sensitive so when using the
@@ -41,26 +53,40 @@ required.
 Currently tagging is only supported on the resources that are passed in
 the filter.}
 
-\item{Groupings}{The grouping applied to the metrics returned. For example, when grouped
-by \code{QUEUE}, the metrics returned apply to each queue rather than
-aggregated for all queues.
+\item{Groupings}{Defines the level of aggregation for metrics data by a dimension(s). Its
+similar to sorting items into buckets based on a common characteristic,
+then counting or calculating something for each bucket. For example,
+when grouped by \code{QUEUE}, the metrics returned apply to each queue rather
+than aggregated for all queues.
+
+The grouping list is an ordered list, with the first item in the list
+defined as the primary grouping. If no grouping is included in the
+request, the aggregation happens at the instance-level.
 \itemize{
 \item If you group by \code{CHANNEL}, you should include a Channels filter.
 VOICE, CHAT, and TASK channels are supported.
+\item If you group by \code{AGENT_STATUS}, you must include the \code{QUEUE} as the
+primary grouping and use queue filter. When you group by
+\code{AGENT_STATUS}, the only metric available is the \code{AGENTS_ONLINE}
+metric.
+\item If you group by \code{SUBTYPE} or \code{VALIDATION_TEST_TYPE} as secondary
+grouping then you must include \code{QUEUE} as primary grouping and use
+Queue as filter
 \item If you group by \code{ROUTING_PROFILE}, you must include either a queue
 or routing profile filter. In addition, a routing profile filter is
 required for metrics \code{CONTACTS_SCHEDULED}, \code{CONTACTS_IN_QUEUE}, and
 \code{ OLDEST_CONTACT_AGE}.
-\item If no \code{Grouping} is included in the request, a summary of metrics is
-returned.
 \item When using the \code{RoutingStepExpression} filter, group by
 \code{ROUTING_STEP_EXPRESSION} is required.
 }}
 
-\item{CurrentMetrics}{[required] The metrics to retrieve. Specify the name and unit for each metric. The
-following metrics are available. For a description of all the metrics,
-see \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html}{Metrics definitions}
+\item{CurrentMetrics}{[required] The metrics to retrieve. Specify the name or metricId, and unit for each
+metric. The following metrics are available. For a description of all
+the metrics, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html}{Metrics definitions}
 in the \emph{Amazon Connect Administrator Guide}.
+
+MetricId should be used to reference custom metrics or out of the box
+metrics as Arn. If using MetricId, the limit is 10 MetricId per request.
 
 \strong{AGENTS_AFTER_CONTACT_WORK}
 

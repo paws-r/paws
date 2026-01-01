@@ -4,12 +4,12 @@
 \alias{vpclattice_update_target_group}
 \title{Updates the specified target group}
 \usage{
-vpclattice_update_target_group(healthCheck, targetGroupIdentifier)
+vpclattice_update_target_group(targetGroupIdentifier, healthCheck)
 }
 \arguments{
-\item{healthCheck}{[required] The health check configuration.}
-
 \item{targetGroupIdentifier}{[required] The ID or ARN of the target group.}
+
+\item{healthCheck}{[required] The health check configuration.}
 }
 \description{
 Updates the specified target group.

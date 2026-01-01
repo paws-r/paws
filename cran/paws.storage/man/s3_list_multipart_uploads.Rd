@@ -62,6 +62,9 @@ the prefix parameter, then the substring starts at the beginning of the
 key. The keys that are grouped under \code{CommonPrefixes} result element are
 not returned elsewhere in the response.
 
+\code{CommonPrefixes} is filtered out from results if it is not
+lexicographically greater than the key-marker.
+
 \strong{Directory buckets} - For directory buckets, \code{/} is the only supported
 delimiter.}
 

@@ -7,6 +7,7 @@
 emrcontainers_create_security_configuration(
   clientToken,
   name,
+  containerProvider = NULL,
   securityConfigurationData,
   tags = NULL
 )
@@ -16,6 +17,8 @@ emrcontainers_create_security_configuration(
 configuration.}
 
 \item{name}{[required] The name of the security configuration.}
+
+\item{containerProvider}{The container provider associated with the security configuration.}
 
 \item{securityConfigurationData}{[required] Security configuration input for the request.}
 

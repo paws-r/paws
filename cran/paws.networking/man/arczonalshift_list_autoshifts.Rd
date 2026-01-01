@@ -5,14 +5,12 @@
 \title{Returns the autoshifts for an Amazon Web Services Region}
 \usage{
 arczonalshift_list_autoshifts(
-  maxResults = NULL,
   nextToken = NULL,
-  status = NULL
+  status = NULL,
+  maxResults = NULL
 )
 }
 \arguments{
-\item{maxResults}{The number of objects that you want to return with this call.}
-
 \item{nextToken}{Specifies that you want to receive the next page of results. Valid only
 if you received a \code{nextToken} response in the previous request. If you
 did, it indicates that more output is available. Set this parameter to
@@ -20,6 +18,8 @@ the value provided by the previous call's \code{nextToken} response to
 request the next page of results.}
 
 \item{status}{The status of the autoshift.}
+
+\item{maxResults}{The number of objects that you want to return with this call.}
 }
 \description{
 Returns the autoshifts for an Amazon Web Services Region. By default, the call returns only \code{ACTIVE} autoshifts. Optionally, you can specify the \code{status} parameter to return \code{COMPLETED} autoshifts.

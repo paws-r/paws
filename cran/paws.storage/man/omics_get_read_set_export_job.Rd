@@ -2,7 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_get_read_set_export_job}
 \alias{omics_get_read_set_export_job}
-\title{Gets information about a read set export job}
+\title{Retrieves status information about a read set export job and returns the
+data in JSON format}
 \usage{
 omics_get_read_set_export_job(sequenceStoreId, id)
 }
@@ -12,7 +13,7 @@ omics_get_read_set_export_job(sequenceStoreId, id)
 \item{id}{[required] The job's ID.}
 }
 \description{
-Gets information about a read set export job.
+Retrieves status information about a read set export job and returns the data in JSON format. Use this operation to actively monitor the progress of an export job.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_get_read_set_export_job/} for full documentation.
 }

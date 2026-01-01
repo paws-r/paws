@@ -248,12 +248,13 @@ apigatewayv2_create_deployment <- function(ApiId, Description = NULL, StageName 
 #' @param DomainName &#91;required&#93; The domain name.
 #' @param DomainNameConfigurations The domain name configurations.
 #' @param MutualTlsAuthentication The mutual TLS authentication configuration for a custom domain name.
+#' @param RoutingMode The routing mode.
 #' @param Tags The collection of tags associated with a domain name.
 #'
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_create_domain_name
-apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations = NULL, MutualTlsAuthentication = NULL, Tags = NULL) {
+apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations = NULL, MutualTlsAuthentication = NULL, RoutingMode = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDomainName",
     http_method = "POST",
@@ -262,7 +263,7 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .apigatewayv2$create_domain_name_input(DomainName = DomainName, DomainNameConfigurations = DomainNameConfigurations, MutualTlsAuthentication = MutualTlsAuthentication, Tags = Tags)
+  input <- .apigatewayv2$create_domain_name_input(DomainName = DomainName, DomainNameConfigurations = DomainNameConfigurations, MutualTlsAuthentication = MutualTlsAuthentication, RoutingMode = RoutingMode, Tags = Tags)
   output <- .apigatewayv2$create_domain_name_output()
   config <- get_config()
   svc <- .apigatewayv2$service(config, op)
@@ -537,6 +538,146 @@ apigatewayv2_create_model <- function(ApiId, ContentType = NULL, Description = N
 }
 .apigatewayv2$operations$create_model <- apigatewayv2_create_model
 
+#' Creates a portal
+#'
+#' @description
+#' Creates a portal.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_create_portal/](https://www.paws-r-sdk.com/docs/apigatewayv2_create_portal/) for full documentation.
+#'
+#' @param Authorization &#91;required&#93; The authentication configuration for the portal.
+#' @param EndpointConfiguration &#91;required&#93; The domain configuration for the portal. Use a default domain provided
+#' by API Gateway or provide a fully-qualified domain name that you own.
+#' @param IncludedPortalProductArns The ARNs of the portal products included in the portal.
+#' @param LogoUri The URI for the portal logo image that is displayed in the portal
+#' header.
+#' @param PortalContent &#91;required&#93; The content of the portal.
+#' @param RumAppMonitorName The name of the Amazon CloudWatch RUM app monitor for the portal.
+#' @param Tags The collection of tags. Each tag element is associated with a given
+#' resource.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_create_portal
+apigatewayv2_create_portal <- function(Authorization, EndpointConfiguration, IncludedPortalProductArns = NULL, LogoUri = NULL, PortalContent, RumAppMonitorName = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreatePortal",
+    http_method = "POST",
+    http_path = "/v2/portals",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$create_portal_input(Authorization = Authorization, EndpointConfiguration = EndpointConfiguration, IncludedPortalProductArns = IncludedPortalProductArns, LogoUri = LogoUri, PortalContent = PortalContent, RumAppMonitorName = RumAppMonitorName, Tags = Tags)
+  output <- .apigatewayv2$create_portal_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$create_portal <- apigatewayv2_create_portal
+
+#' Creates a new portal product
+#'
+#' @description
+#' Creates a new portal product.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_create_portal_product/](https://www.paws-r-sdk.com/docs/apigatewayv2_create_portal_product/) for full documentation.
+#'
+#' @param Description A description of the portal product.
+#' @param DisplayName &#91;required&#93; The name of the portal product as it appears in a published portal.
+#' @param Tags The collection of tags. Each tag element is associated with a given
+#' resource.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_create_portal_product
+apigatewayv2_create_portal_product <- function(Description = NULL, DisplayName, Tags = NULL) {
+  op <- new_operation(
+    name = "CreatePortalProduct",
+    http_method = "POST",
+    http_path = "/v2/portalproducts",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$create_portal_product_input(Description = Description, DisplayName = DisplayName, Tags = Tags)
+  output <- .apigatewayv2$create_portal_product_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$create_portal_product <- apigatewayv2_create_portal_product
+
+#' Creates a new product page for a portal product
+#'
+#' @description
+#' Creates a new product page for a portal product.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_create_product_page/](https://www.paws-r-sdk.com/docs/apigatewayv2_create_product_page/) for full documentation.
+#'
+#' @param DisplayContent &#91;required&#93; The content of the product page.
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_create_product_page
+apigatewayv2_create_product_page <- function(DisplayContent, PortalProductId) {
+  op <- new_operation(
+    name = "CreateProductPage",
+    http_method = "POST",
+    http_path = "/v2/portalproducts/{portalProductId}/productpages",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$create_product_page_input(DisplayContent = DisplayContent, PortalProductId = PortalProductId)
+  output <- .apigatewayv2$create_product_page_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$create_product_page <- apigatewayv2_create_product_page
+
+#' Creates a product REST endpoint page for a portal product
+#'
+#' @description
+#' Creates a product REST endpoint page for a portal product.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_create_product_rest_endpoint_page/](https://www.paws-r-sdk.com/docs/apigatewayv2_create_product_rest_endpoint_page/) for full documentation.
+#'
+#' @param DisplayContent The content of the product REST endpoint page.
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#' @param RestEndpointIdentifier &#91;required&#93; The REST endpoint identifier.
+#' @param TryItState The try it state of the product REST endpoint page.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_create_product_rest_endpoint_page
+apigatewayv2_create_product_rest_endpoint_page <- function(DisplayContent = NULL, PortalProductId, RestEndpointIdentifier, TryItState = NULL) {
+  op <- new_operation(
+    name = "CreateProductRestEndpointPage",
+    http_method = "POST",
+    http_path = "/v2/portalproducts/{portalProductId}/productrestendpointpages",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$create_product_rest_endpoint_page_input(DisplayContent = DisplayContent, PortalProductId = PortalProductId, RestEndpointIdentifier = RestEndpointIdentifier, TryItState = TryItState)
+  output <- .apigatewayv2$create_product_rest_endpoint_page_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$create_product_rest_endpoint_page <- apigatewayv2_create_product_rest_endpoint_page
+
 #' Creates a Route for an API
 #'
 #' @description
@@ -624,6 +765,45 @@ apigatewayv2_create_route_response <- function(ApiId, ModelSelectionExpression =
   return(response)
 }
 .apigatewayv2$operations$create_route_response <- apigatewayv2_create_route_response
+
+#' Creates a RoutingRule
+#'
+#' @description
+#' Creates a RoutingRule.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_create_routing_rule/](https://www.paws-r-sdk.com/docs/apigatewayv2_create_routing_rule/) for full documentation.
+#'
+#' @param Actions &#91;required&#93; Represents a routing rule action. The only supported action is
+#' invokeApi.
+#' @param Conditions &#91;required&#93; Represents a condition. Conditions can contain up to two matchHeaders
+#' conditions and one matchBasePaths conditions. API Gateway evaluates
+#' header conditions and base path conditions together. You can only use
+#' AND between header and base path conditions.
+#' @param DomainName &#91;required&#93; The domain name.
+#' @param DomainNameId The domain name ID.
+#' @param Priority &#91;required&#93; Represents the priority of the routing rule.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_create_routing_rule
+apigatewayv2_create_routing_rule <- function(Actions, Conditions, DomainName, DomainNameId = NULL, Priority) {
+  op <- new_operation(
+    name = "CreateRoutingRule",
+    http_method = "POST",
+    http_path = "/v2/domainnames/{domainName}/routingrules",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$create_routing_rule_input(Actions = Actions, Conditions = Conditions, DomainName = DomainName, DomainNameId = DomainNameId, Priority = Priority)
+  output <- .apigatewayv2$create_routing_rule_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$create_routing_rule <- apigatewayv2_create_routing_rule
 
 #' Creates a Stage for an API
 #'
@@ -1024,6 +1204,163 @@ apigatewayv2_delete_model <- function(ApiId, ModelId) {
 }
 .apigatewayv2$operations$delete_model <- apigatewayv2_delete_model
 
+#' Deletes a portal
+#'
+#' @description
+#' Deletes a portal.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_delete_portal/](https://www.paws-r-sdk.com/docs/apigatewayv2_delete_portal/) for full documentation.
+#'
+#' @param PortalId &#91;required&#93; The portal identifier.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_delete_portal
+apigatewayv2_delete_portal <- function(PortalId) {
+  op <- new_operation(
+    name = "DeletePortal",
+    http_method = "DELETE",
+    http_path = "/v2/portals/{portalId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$delete_portal_input(PortalId = PortalId)
+  output <- .apigatewayv2$delete_portal_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$delete_portal <- apigatewayv2_delete_portal
+
+#' Deletes a portal product
+#'
+#' @description
+#' Deletes a portal product.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_delete_portal_product/](https://www.paws-r-sdk.com/docs/apigatewayv2_delete_portal_product/) for full documentation.
+#'
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_delete_portal_product
+apigatewayv2_delete_portal_product <- function(PortalProductId) {
+  op <- new_operation(
+    name = "DeletePortalProduct",
+    http_method = "DELETE",
+    http_path = "/v2/portalproducts/{portalProductId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$delete_portal_product_input(PortalProductId = PortalProductId)
+  output <- .apigatewayv2$delete_portal_product_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$delete_portal_product <- apigatewayv2_delete_portal_product
+
+#' Deletes the sharing policy for a portal product
+#'
+#' @description
+#' Deletes the sharing policy for a portal product.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_delete_portal_product_sharing_policy/](https://www.paws-r-sdk.com/docs/apigatewayv2_delete_portal_product_sharing_policy/) for full documentation.
+#'
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_delete_portal_product_sharing_policy
+apigatewayv2_delete_portal_product_sharing_policy <- function(PortalProductId) {
+  op <- new_operation(
+    name = "DeletePortalProductSharingPolicy",
+    http_method = "DELETE",
+    http_path = "/v2/portalproducts/{portalProductId}/sharingpolicy",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$delete_portal_product_sharing_policy_input(PortalProductId = PortalProductId)
+  output <- .apigatewayv2$delete_portal_product_sharing_policy_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$delete_portal_product_sharing_policy <- apigatewayv2_delete_portal_product_sharing_policy
+
+#' Deletes a product page of a portal product
+#'
+#' @description
+#' Deletes a product page of a portal product.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_delete_product_page/](https://www.paws-r-sdk.com/docs/apigatewayv2_delete_product_page/) for full documentation.
+#'
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#' @param ProductPageId &#91;required&#93; The portal product identifier.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_delete_product_page
+apigatewayv2_delete_product_page <- function(PortalProductId, ProductPageId) {
+  op <- new_operation(
+    name = "DeleteProductPage",
+    http_method = "DELETE",
+    http_path = "/v2/portalproducts/{portalProductId}/productpages/{productPageId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$delete_product_page_input(PortalProductId = PortalProductId, ProductPageId = ProductPageId)
+  output <- .apigatewayv2$delete_product_page_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$delete_product_page <- apigatewayv2_delete_product_page
+
+#' Deletes a product REST endpoint page
+#'
+#' @description
+#' Deletes a product REST endpoint page.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_delete_product_rest_endpoint_page/](https://www.paws-r-sdk.com/docs/apigatewayv2_delete_product_rest_endpoint_page/) for full documentation.
+#'
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#' @param ProductRestEndpointPageId &#91;required&#93; The product REST endpoint identifier.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_delete_product_rest_endpoint_page
+apigatewayv2_delete_product_rest_endpoint_page <- function(PortalProductId, ProductRestEndpointPageId) {
+  op <- new_operation(
+    name = "DeleteProductRestEndpointPage",
+    http_method = "DELETE",
+    http_path = "/v2/portalproducts/{portalProductId}/productrestendpointpages/{productRestEndpointPageId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$delete_product_rest_endpoint_page_input(PortalProductId = PortalProductId, ProductRestEndpointPageId = ProductRestEndpointPageId)
+  output <- .apigatewayv2$delete_product_rest_endpoint_page_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$delete_product_rest_endpoint_page <- apigatewayv2_delete_product_rest_endpoint_page
+
 #' Deletes a Route
 #'
 #' @description
@@ -1156,6 +1493,39 @@ apigatewayv2_delete_route_settings <- function(ApiId, RouteKey, StageName) {
 }
 .apigatewayv2$operations$delete_route_settings <- apigatewayv2_delete_route_settings
 
+#' Deletes a routing rule
+#'
+#' @description
+#' Deletes a routing rule.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_delete_routing_rule/](https://www.paws-r-sdk.com/docs/apigatewayv2_delete_routing_rule/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The domain name.
+#' @param DomainNameId The domain name ID.
+#' @param RoutingRuleId &#91;required&#93; The routing rule ID.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_delete_routing_rule
+apigatewayv2_delete_routing_rule <- function(DomainName, DomainNameId = NULL, RoutingRuleId) {
+  op <- new_operation(
+    name = "DeleteRoutingRule",
+    http_method = "DELETE",
+    http_path = "/v2/domainnames/{domainName}/routingrules/{routingRuleId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$delete_routing_rule_input(DomainName = DomainName, DomainNameId = DomainNameId, RoutingRuleId = RoutingRuleId)
+  output <- .apigatewayv2$delete_routing_rule_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$delete_routing_rule <- apigatewayv2_delete_routing_rule
+
 #' Deletes a Stage
 #'
 #' @description
@@ -1262,6 +1632,37 @@ apigatewayv2_export_api <- function(ApiId, ExportVersion = NULL, IncludeExtensio
   return(response)
 }
 .apigatewayv2$operations$export_api <- apigatewayv2_export_api
+
+#' Deletes the publication of a portal portal
+#'
+#' @description
+#' Deletes the publication of a portal portal.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_disable_portal/](https://www.paws-r-sdk.com/docs/apigatewayv2_disable_portal/) for full documentation.
+#'
+#' @param PortalId &#91;required&#93; The portal identifier.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_disable_portal
+apigatewayv2_disable_portal <- function(PortalId) {
+  op <- new_operation(
+    name = "DisablePortal",
+    http_method = "DELETE",
+    http_path = "/v2/portals/{portalId}/publish",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$disable_portal_input(PortalId = PortalId)
+  output <- .apigatewayv2$disable_portal_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$disable_portal <- apigatewayv2_disable_portal
 
 #' Resets all authorizer cache entries on a stage
 #'
@@ -1855,6 +2256,167 @@ apigatewayv2_get_models <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
 }
 .apigatewayv2$operations$get_models <- apigatewayv2_get_models
 
+#' Gets a portal
+#'
+#' @description
+#' Gets a portal.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_portal/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_portal/) for full documentation.
+#'
+#' @param PortalId &#91;required&#93; The portal identifier.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_get_portal
+apigatewayv2_get_portal <- function(PortalId) {
+  op <- new_operation(
+    name = "GetPortal",
+    http_method = "GET",
+    http_path = "/v2/portals/{portalId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$get_portal_input(PortalId = PortalId)
+  output <- .apigatewayv2$get_portal_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$get_portal <- apigatewayv2_get_portal
+
+#' Gets a portal product
+#'
+#' @description
+#' Gets a portal product.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_portal_product/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_portal_product/) for full documentation.
+#'
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#' @param ResourceOwnerAccountId The account ID of the resource owner of the portal product.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_get_portal_product
+apigatewayv2_get_portal_product <- function(PortalProductId, ResourceOwnerAccountId = NULL) {
+  op <- new_operation(
+    name = "GetPortalProduct",
+    http_method = "GET",
+    http_path = "/v2/portalproducts/{portalProductId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$get_portal_product_input(PortalProductId = PortalProductId, ResourceOwnerAccountId = ResourceOwnerAccountId)
+  output <- .apigatewayv2$get_portal_product_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$get_portal_product <- apigatewayv2_get_portal_product
+
+#' Gets the sharing policy for a portal product
+#'
+#' @description
+#' Gets the sharing policy for a portal product.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_portal_product_sharing_policy/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_portal_product_sharing_policy/) for full documentation.
+#'
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_get_portal_product_sharing_policy
+apigatewayv2_get_portal_product_sharing_policy <- function(PortalProductId) {
+  op <- new_operation(
+    name = "GetPortalProductSharingPolicy",
+    http_method = "GET",
+    http_path = "/v2/portalproducts/{portalProductId}/sharingpolicy",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$get_portal_product_sharing_policy_input(PortalProductId = PortalProductId)
+  output <- .apigatewayv2$get_portal_product_sharing_policy_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$get_portal_product_sharing_policy <- apigatewayv2_get_portal_product_sharing_policy
+
+#' Gets a product page of a portal product
+#'
+#' @description
+#' Gets a product page of a portal product.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_product_page/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_product_page/) for full documentation.
+#'
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#' @param ProductPageId &#91;required&#93; The portal product identifier.
+#' @param ResourceOwnerAccountId The account ID of the resource owner of the portal product.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_get_product_page
+apigatewayv2_get_product_page <- function(PortalProductId, ProductPageId, ResourceOwnerAccountId = NULL) {
+  op <- new_operation(
+    name = "GetProductPage",
+    http_method = "GET",
+    http_path = "/v2/portalproducts/{portalProductId}/productpages/{productPageId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$get_product_page_input(PortalProductId = PortalProductId, ProductPageId = ProductPageId, ResourceOwnerAccountId = ResourceOwnerAccountId)
+  output <- .apigatewayv2$get_product_page_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$get_product_page <- apigatewayv2_get_product_page
+
+#' Gets a product REST endpoint page
+#'
+#' @description
+#' Gets a product REST endpoint page.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_product_rest_endpoint_page/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_product_rest_endpoint_page/) for full documentation.
+#'
+#' @param IncludeRawDisplayContent The query parameter to include raw display content.
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#' @param ProductRestEndpointPageId &#91;required&#93; The product REST endpoint identifier.
+#' @param ResourceOwnerAccountId The account ID of the resource owner of the portal product.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_get_product_rest_endpoint_page
+apigatewayv2_get_product_rest_endpoint_page <- function(IncludeRawDisplayContent = NULL, PortalProductId, ProductRestEndpointPageId, ResourceOwnerAccountId = NULL) {
+  op <- new_operation(
+    name = "GetProductRestEndpointPage",
+    http_method = "GET",
+    http_path = "/v2/portalproducts/{portalProductId}/productrestendpointpages/{productRestEndpointPageId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$get_product_rest_endpoint_page_input(IncludeRawDisplayContent = IncludeRawDisplayContent, PortalProductId = PortalProductId, ProductRestEndpointPageId = ProductRestEndpointPageId, ResourceOwnerAccountId = ResourceOwnerAccountId)
+  output <- .apigatewayv2$get_product_rest_endpoint_page_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$get_product_rest_endpoint_page <- apigatewayv2_get_product_rest_endpoint_page
+
 #' Gets a Route
 #'
 #' @description
@@ -1988,6 +2550,74 @@ apigatewayv2_get_routes <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
   return(response)
 }
 .apigatewayv2$operations$get_routes <- apigatewayv2_get_routes
+
+#' Gets a routing rule
+#'
+#' @description
+#' Gets a routing rule.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_routing_rule/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_routing_rule/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The domain name.
+#' @param DomainNameId The domain name ID.
+#' @param RoutingRuleId &#91;required&#93; The routing rule ID.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_get_routing_rule
+apigatewayv2_get_routing_rule <- function(DomainName, DomainNameId = NULL, RoutingRuleId) {
+  op <- new_operation(
+    name = "GetRoutingRule",
+    http_method = "GET",
+    http_path = "/v2/domainnames/{domainName}/routingrules/{routingRuleId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$get_routing_rule_input(DomainName = DomainName, DomainNameId = DomainNameId, RoutingRuleId = RoutingRuleId)
+  output <- .apigatewayv2$get_routing_rule_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$get_routing_rule <- apigatewayv2_get_routing_rule
+
+#' Lists routing rules
+#'
+#' @description
+#' Lists routing rules.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_list_routing_rules/](https://www.paws-r-sdk.com/docs/apigatewayv2_list_routing_rules/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The domain name.
+#' @param DomainNameId The domain name ID.
+#' @param MaxResults The maximum number of elements to be returned for this resource.
+#' @param NextToken The next page of elements from this collection. Not valid for the last
+#' element of the collection.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_list_routing_rules
+apigatewayv2_list_routing_rules <- function(DomainName, DomainNameId = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListRoutingRules",
+    http_method = "GET",
+    http_path = "/v2/domainnames/{domainName}/routingrules",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RoutingRules"),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$list_routing_rules_input(DomainName = DomainName, DomainNameId = DomainNameId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .apigatewayv2$list_routing_rules_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$list_routing_rules <- apigatewayv2_list_routing_rules
 
 #' Gets a Stage
 #'
@@ -2189,6 +2819,275 @@ apigatewayv2_import_api <- function(Basepath = NULL, Body, FailOnWarnings = NULL
   return(response)
 }
 .apigatewayv2$operations$import_api <- apigatewayv2_import_api
+
+#' Lists portal products
+#'
+#' @description
+#' Lists portal products.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_list_portal_products/](https://www.paws-r-sdk.com/docs/apigatewayv2_list_portal_products/) for full documentation.
+#'
+#' @param MaxResults The maximum number of elements to be returned for this resource.
+#' @param NextToken The next page of elements from this collection. Not valid for the last
+#' element of the collection.
+#' @param ResourceOwner The resource owner of the portal product.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_list_portal_products
+apigatewayv2_list_portal_products <- function(MaxResults = NULL, NextToken = NULL, ResourceOwner = NULL) {
+  op <- new_operation(
+    name = "ListPortalProducts",
+    http_method = "GET",
+    http_path = "/v2/portalproducts",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$list_portal_products_input(MaxResults = MaxResults, NextToken = NextToken, ResourceOwner = ResourceOwner)
+  output <- .apigatewayv2$list_portal_products_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$list_portal_products <- apigatewayv2_list_portal_products
+
+#' Lists portals
+#'
+#' @description
+#' Lists portals.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_list_portals/](https://www.paws-r-sdk.com/docs/apigatewayv2_list_portals/) for full documentation.
+#'
+#' @param MaxResults The maximum number of elements to be returned for this resource.
+#' @param NextToken The next page of elements from this collection. Not valid for the last
+#' element of the collection.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_list_portals
+apigatewayv2_list_portals <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListPortals",
+    http_method = "GET",
+    http_path = "/v2/portals",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$list_portals_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .apigatewayv2$list_portals_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$list_portals <- apigatewayv2_list_portals
+
+#' Lists the product pages for a portal product
+#'
+#' @description
+#' Lists the product pages for a portal product.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_list_product_pages/](https://www.paws-r-sdk.com/docs/apigatewayv2_list_product_pages/) for full documentation.
+#'
+#' @param MaxResults The maximum number of elements to be returned for this resource.
+#' @param NextToken The next page of elements from this collection. Not valid for the last
+#' element of the collection.
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#' @param ResourceOwnerAccountId The account ID of the resource owner of the portal product.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_list_product_pages
+apigatewayv2_list_product_pages <- function(MaxResults = NULL, NextToken = NULL, PortalProductId, ResourceOwnerAccountId = NULL) {
+  op <- new_operation(
+    name = "ListProductPages",
+    http_method = "GET",
+    http_path = "/v2/portalproducts/{portalProductId}/productpages",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$list_product_pages_input(MaxResults = MaxResults, NextToken = NextToken, PortalProductId = PortalProductId, ResourceOwnerAccountId = ResourceOwnerAccountId)
+  output <- .apigatewayv2$list_product_pages_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$list_product_pages <- apigatewayv2_list_product_pages
+
+#' Lists the product REST endpoint pages of a portal product
+#'
+#' @description
+#' Lists the product REST endpoint pages of a portal product.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_list_product_rest_endpoint_pages/](https://www.paws-r-sdk.com/docs/apigatewayv2_list_product_rest_endpoint_pages/) for full documentation.
+#'
+#' @param MaxResults The maximum number of elements to be returned for this resource.
+#' @param NextToken The next page of elements from this collection. Not valid for the last
+#' element of the collection.
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#' @param ResourceOwnerAccountId The account ID of the resource owner of the portal product.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_list_product_rest_endpoint_pages
+apigatewayv2_list_product_rest_endpoint_pages <- function(MaxResults = NULL, NextToken = NULL, PortalProductId, ResourceOwnerAccountId = NULL) {
+  op <- new_operation(
+    name = "ListProductRestEndpointPages",
+    http_method = "GET",
+    http_path = "/v2/portalproducts/{portalProductId}/productrestendpointpages",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$list_product_rest_endpoint_pages_input(MaxResults = MaxResults, NextToken = NextToken, PortalProductId = PortalProductId, ResourceOwnerAccountId = ResourceOwnerAccountId)
+  output <- .apigatewayv2$list_product_rest_endpoint_pages_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$list_product_rest_endpoint_pages <- apigatewayv2_list_product_rest_endpoint_pages
+
+#' Creates a portal preview
+#'
+#' @description
+#' Creates a portal preview.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_preview_portal/](https://www.paws-r-sdk.com/docs/apigatewayv2_preview_portal/) for full documentation.
+#'
+#' @param PortalId &#91;required&#93; The portal identifier.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_preview_portal
+apigatewayv2_preview_portal <- function(PortalId) {
+  op <- new_operation(
+    name = "PreviewPortal",
+    http_method = "POST",
+    http_path = "/v2/portals/{portalId}/preview",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$preview_portal_input(PortalId = PortalId)
+  output <- .apigatewayv2$preview_portal_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$preview_portal <- apigatewayv2_preview_portal
+
+#' Publishes a portal
+#'
+#' @description
+#' Publishes a portal.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_publish_portal/](https://www.paws-r-sdk.com/docs/apigatewayv2_publish_portal/) for full documentation.
+#'
+#' @param Description The description of the portal. When the portal is published, this
+#' description becomes the last published description.
+#' @param PortalId &#91;required&#93; The portal identifier.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_publish_portal
+apigatewayv2_publish_portal <- function(Description = NULL, PortalId) {
+  op <- new_operation(
+    name = "PublishPortal",
+    http_method = "POST",
+    http_path = "/v2/portals/{portalId}/publish",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$publish_portal_input(Description = Description, PortalId = PortalId)
+  output <- .apigatewayv2$publish_portal_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$publish_portal <- apigatewayv2_publish_portal
+
+#' Updates the sharing policy for a portal product
+#'
+#' @description
+#' Updates the sharing policy for a portal product.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_put_portal_product_sharing_policy/](https://www.paws-r-sdk.com/docs/apigatewayv2_put_portal_product_sharing_policy/) for full documentation.
+#'
+#' @param PolicyDocument &#91;required&#93; The product sharing policy.
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_put_portal_product_sharing_policy
+apigatewayv2_put_portal_product_sharing_policy <- function(PolicyDocument, PortalProductId) {
+  op <- new_operation(
+    name = "PutPortalProductSharingPolicy",
+    http_method = "PUT",
+    http_path = "/v2/portalproducts/{portalProductId}/sharingpolicy",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$put_portal_product_sharing_policy_input(PolicyDocument = PolicyDocument, PortalProductId = PortalProductId)
+  output <- .apigatewayv2$put_portal_product_sharing_policy_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$put_portal_product_sharing_policy <- apigatewayv2_put_portal_product_sharing_policy
+
+#' Updates a routing rule
+#'
+#' @description
+#' Updates a routing rule.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_put_routing_rule/](https://www.paws-r-sdk.com/docs/apigatewayv2_put_routing_rule/) for full documentation.
+#'
+#' @param Actions &#91;required&#93; The routing rule action.
+#' @param Conditions &#91;required&#93; The routing rule condition.
+#' @param DomainName &#91;required&#93; The domain name.
+#' @param DomainNameId The domain name ID.
+#' @param Priority &#91;required&#93; The routing rule priority.
+#' @param RoutingRuleId &#91;required&#93; The routing rule ID.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_put_routing_rule
+apigatewayv2_put_routing_rule <- function(Actions, Conditions, DomainName, DomainNameId = NULL, Priority, RoutingRuleId) {
+  op <- new_operation(
+    name = "PutRoutingRule",
+    http_method = "PUT",
+    http_path = "/v2/domainnames/{domainName}/routingrules/{routingRuleId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$put_routing_rule_input(Actions = Actions, Conditions = Conditions, DomainName = DomainName, DomainNameId = DomainNameId, Priority = Priority, RoutingRuleId = RoutingRuleId)
+  output <- .apigatewayv2$put_routing_rule_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$put_routing_rule <- apigatewayv2_put_routing_rule
 
 #' Puts an Api resource
 #'
@@ -2537,11 +3436,12 @@ apigatewayv2_update_deployment <- function(ApiId, DeploymentId, Description = NU
 #' @param DomainName &#91;required&#93; The domain name.
 #' @param DomainNameConfigurations The domain name configurations.
 #' @param MutualTlsAuthentication The mutual TLS authentication configuration for a custom domain name.
+#' @param RoutingMode The routing mode.
 #'
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_update_domain_name
-apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations = NULL, MutualTlsAuthentication = NULL) {
+apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations = NULL, MutualTlsAuthentication = NULL, RoutingMode = NULL) {
   op <- new_operation(
     name = "UpdateDomainName",
     http_method = "PATCH",
@@ -2550,7 +3450,7 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .apigatewayv2$update_domain_name_input(DomainName = DomainName, DomainNameConfigurations = DomainNameConfigurations, MutualTlsAuthentication = MutualTlsAuthentication)
+  input <- .apigatewayv2$update_domain_name_input(DomainName = DomainName, DomainNameConfigurations = DomainNameConfigurations, MutualTlsAuthentication = MutualTlsAuthentication, RoutingMode = RoutingMode)
   output <- .apigatewayv2$update_domain_name_output()
   config <- get_config()
   svc <- .apigatewayv2$service(config, op)
@@ -2828,6 +3728,145 @@ apigatewayv2_update_model <- function(ApiId, ContentType = NULL, Description = N
   return(response)
 }
 .apigatewayv2$operations$update_model <- apigatewayv2_update_model
+
+#' Updates a portal
+#'
+#' @description
+#' Updates a portal.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_update_portal/](https://www.paws-r-sdk.com/docs/apigatewayv2_update_portal/) for full documentation.
+#'
+#' @param Authorization The authorization of the portal.
+#' @param EndpointConfiguration Represents an endpoint configuration.
+#' @param IncludedPortalProductArns The ARNs of the portal products included in the portal.
+#' @param LogoUri The logo URI.
+#' @param PortalContent Contains the content that is visible to portal consumers including the
+#' themes, display names, and description.
+#' @param PortalId &#91;required&#93; The portal identifier.
+#' @param RumAppMonitorName The CloudWatch RUM app monitor name.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_update_portal
+apigatewayv2_update_portal <- function(Authorization = NULL, EndpointConfiguration = NULL, IncludedPortalProductArns = NULL, LogoUri = NULL, PortalContent = NULL, PortalId, RumAppMonitorName = NULL) {
+  op <- new_operation(
+    name = "UpdatePortal",
+    http_method = "PATCH",
+    http_path = "/v2/portals/{portalId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$update_portal_input(Authorization = Authorization, EndpointConfiguration = EndpointConfiguration, IncludedPortalProductArns = IncludedPortalProductArns, LogoUri = LogoUri, PortalContent = PortalContent, PortalId = PortalId, RumAppMonitorName = RumAppMonitorName)
+  output <- .apigatewayv2$update_portal_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$update_portal <- apigatewayv2_update_portal
+
+#' Updates the portal product
+#'
+#' @description
+#' Updates the portal product.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_update_portal_product/](https://www.paws-r-sdk.com/docs/apigatewayv2_update_portal_product/) for full documentation.
+#'
+#' @param Description The description.
+#' @param DisplayName The displayName.
+#' @param DisplayOrder The display order.
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_update_portal_product
+apigatewayv2_update_portal_product <- function(Description = NULL, DisplayName = NULL, DisplayOrder = NULL, PortalProductId) {
+  op <- new_operation(
+    name = "UpdatePortalProduct",
+    http_method = "PATCH",
+    http_path = "/v2/portalproducts/{portalProductId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$update_portal_product_input(Description = Description, DisplayName = DisplayName, DisplayOrder = DisplayOrder, PortalProductId = PortalProductId)
+  output <- .apigatewayv2$update_portal_product_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$update_portal_product <- apigatewayv2_update_portal_product
+
+#' Updates a product page of a portal product
+#'
+#' @description
+#' Updates a product page of a portal product.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_update_product_page/](https://www.paws-r-sdk.com/docs/apigatewayv2_update_product_page/) for full documentation.
+#'
+#' @param DisplayContent The content of the product page.
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#' @param ProductPageId &#91;required&#93; The portal product identifier.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_update_product_page
+apigatewayv2_update_product_page <- function(DisplayContent = NULL, PortalProductId, ProductPageId) {
+  op <- new_operation(
+    name = "UpdateProductPage",
+    http_method = "PATCH",
+    http_path = "/v2/portalproducts/{portalProductId}/productpages/{productPageId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$update_product_page_input(DisplayContent = DisplayContent, PortalProductId = PortalProductId, ProductPageId = ProductPageId)
+  output <- .apigatewayv2$update_product_page_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$update_product_page <- apigatewayv2_update_product_page
+
+#' Updates a product REST endpoint page
+#'
+#' @description
+#' Updates a product REST endpoint page.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_update_product_rest_endpoint_page/](https://www.paws-r-sdk.com/docs/apigatewayv2_update_product_rest_endpoint_page/) for full documentation.
+#'
+#' @param DisplayContent The display content.
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#' @param ProductRestEndpointPageId &#91;required&#93; The product REST endpoint identifier.
+#' @param TryItState The try it state of a product REST endpoint page.
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_update_product_rest_endpoint_page
+apigatewayv2_update_product_rest_endpoint_page <- function(DisplayContent = NULL, PortalProductId, ProductRestEndpointPageId, TryItState = NULL) {
+  op <- new_operation(
+    name = "UpdateProductRestEndpointPage",
+    http_method = "PATCH",
+    http_path = "/v2/portalproducts/{portalProductId}/productrestendpointpages/{productRestEndpointPageId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$update_product_rest_endpoint_page_input(DisplayContent = DisplayContent, PortalProductId = PortalProductId, ProductRestEndpointPageId = ProductRestEndpointPageId, TryItState = TryItState)
+  output <- .apigatewayv2$update_product_rest_endpoint_page_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$update_product_rest_endpoint_page <- apigatewayv2_update_product_rest_endpoint_page
 
 #' Updates a Route
 #'

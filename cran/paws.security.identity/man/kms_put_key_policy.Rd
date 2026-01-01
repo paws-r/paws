@@ -49,6 +49,16 @@ in the \emph{Amazon Web Services Identity and Access Management User
 Guide}.
 }
 
+If either of the required \code{Resource} or \code{Action} elements are missing
+from a key policy statement, the policy statement has no effect. When a
+key policy statement is missing one of these elements, the KMS console
+correctly reports an error, but the
+\code{\link[=kms_put_key_policy]{put_key_policy}} API request succeeds, even though
+the policy statement is ineffective.
+
+For more information on required key policy elements, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-overview.html#key-policy-elements}{Elements in a key policy}
+in the \emph{Key Management Service Developer Guide}.
+
 A key policy document can include only the following characters:
 \itemize{
 \item Printable ASCII characters from the space character (\code{U+0020})
@@ -58,6 +68,9 @@ character set (through \verb{U+00FF}).
 \item The tab (\code{U+0009}), line feed (\verb{U+000A}), and carriage return
 (\verb{U+000D}) special characters
 }
+
+If the key policy exceeds the length constraint, KMS returns a
+\code{LimitExceededException}.
 
 For information about key policies, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html}{Key policies in KMS}
 in the \emph{Key Management Service Developer Guide}.For help writing and

@@ -14,14 +14,14 @@ cloudformation_get_template_summary(
 )
 }
 \arguments{
-\item{TemplateBody}{Structure containing the template body with a minimum length of 1 byte
-and a maximum length of 51,200 bytes.
+\item{TemplateBody}{Structure that contains the template body with a minimum length of 1
+byte and a maximum length of 51,200 bytes.
 
 Conditional: You must specify only one of the following parameters:
 \code{StackName}, \code{StackSetName}, \code{TemplateBody}, or \code{TemplateURL}.}
 
-\item{TemplateURL}{The URL of a file containing the template body. The URL must point to a
-template (max size: 1 MB) that's located in an Amazon S3 bucket or a
+\item{TemplateURL}{The URL of a file that contains the template body. The URL must point to
+a template (max size: 1 MB) that's located in an Amazon S3 bucket or a
 Systems Manager document. The location for an Amazon S3 bucket must
 start with \verb{https://}.
 
@@ -36,7 +36,7 @@ the unique stack ID.
 Conditional: You must specify only one of the following parameters:
 \code{StackName}, \code{StackSetName}, \code{TemplateBody}, or \code{TemplateURL}.}
 
-\item{StackSetName}{The name or unique ID of the stack set from which the stack was created.
+\item{StackSetName}{The name or unique ID of the StackSet from which the stack was created.
 
 Conditional: You must specify only one of the following parameters:
 \code{StackName}, \code{StackSetName}, \code{TemplateBody}, or \code{TemplateURL}.}
@@ -45,7 +45,7 @@ Conditional: You must specify only one of the following parameters:
 account administrator in the organization's management account or as a
 delegated administrator in a member account.
 
-By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+By default, \code{SELF} is specified. Use \code{SELF} for StackSets with
 self-managed permissions.
 \itemize{
 \item If you are signed in to the management account, specify \code{SELF}.
@@ -63,7 +63,7 @@ in the \emph{CloudFormation User Guide}.
 action.}
 }
 \description{
-Returns information about a new or existing template. The \code{\link[=cloudformation_get_template_summary]{get_template_summary}} action is useful for viewing parameter information, such as default parameter values and parameter types, before you create or update a stack or stack set.
+Returns information about a new or existing template. The \code{\link[=cloudformation_get_template_summary]{get_template_summary}} action is useful for viewing parameter information, such as default parameter values and parameter types, before you create or update a stack or StackSet.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudformation_get_template_summary/} for full documentation.
 }

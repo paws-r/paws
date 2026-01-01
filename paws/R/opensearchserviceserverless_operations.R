@@ -4,12 +4,14 @@
 NULL
 
 #' Returns attributes for one or more collections, including the collection
-#' endpoint and the OpenSearch Dashboards endpoint
+#' endpoint, the OpenSearch Dashboards endpoint, and FIPS-compliant
+#' endpoints
 #'
 #' @description
 #' Returns attributes for one or more collections, including the collection
-#' endpoint and the OpenSearch Dashboards endpoint. For more information,
-#' see [Creating and managing Amazon OpenSearch Serverless
+#' endpoint, the OpenSearch Dashboards endpoint, and FIPS-compliant
+#' endpoints. For more information, see [Creating and managing Amazon
+#' OpenSearch Serverless
 #' collections](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html).
 #'
 #' @usage
@@ -36,10 +38,17 @@ NULL
 #'       arn = "string",
 #'       kmsKeyArn = "string",
 #'       standbyReplicas = "ENABLED"|"DISABLED",
+#'       vectorOptions = list(
+#'         ServerlessVectorAcceleration = "ENABLED"|"DISABLED"|"ALLOWED"
+#'       ),
 #'       createdDate = 123,
 #'       lastModifiedDate = 123,
 #'       collectionEndpoint = "string",
 #'       dashboardEndpoint = "string",
+#'       fipsEndpoints = list(
+#'         collectionEndpoint = "string",
+#'         dashboardEndpoint = "string"
+#'       ),
 #'       failureCode = "string",
 #'       failureMessage = "string"
 #'     )
@@ -399,7 +408,7 @@ opensearchserviceserverless_create_access_policy <- function(type, name, descrip
 #'
 #' @usage
 #' opensearchserviceserverless_create_collection(name, type, description,
-#'   tags, standbyReplicas, clientToken)
+#'   tags, standbyReplicas, vectorOptions, clientToken)
 #'
 #' @param name &#91;required&#93; Name of the collection.
 #' @param type The type of collection.
@@ -407,6 +416,7 @@ opensearchserviceserverless_create_access_policy <- function(type, name, descrip
 #' @param tags An arbitrary set of tags (key–value pairs) to associate with the
 #' OpenSearch Serverless collection.
 #' @param standbyReplicas Indicates whether standby replicas should be used for a collection.
+#' @param vectorOptions Configuration options for vector search capabilities in the collection.
 #' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #'
 #' @return
@@ -422,6 +432,9 @@ opensearchserviceserverless_create_access_policy <- function(type, name, descrip
 #'     arn = "string",
 #'     kmsKeyArn = "string",
 #'     standbyReplicas = "ENABLED"|"DISABLED",
+#'     vectorOptions = list(
+#'       ServerlessVectorAcceleration = "ENABLED"|"DISABLED"|"ALLOWED"
+#'     ),
 #'     createdDate = 123,
 #'     lastModifiedDate = 123
 #'   )
@@ -441,6 +454,9 @@ opensearchserviceserverless_create_access_policy <- function(type, name, descrip
 #'     )
 #'   ),
 #'   standbyReplicas = "ENABLED"|"DISABLED",
+#'   vectorOptions = list(
+#'     ServerlessVectorAcceleration = "ENABLED"|"DISABLED"|"ALLOWED"
+#'   ),
 #'   clientToken = "string"
 #' )
 #' ```
@@ -450,7 +466,7 @@ opensearchserviceserverless_create_access_policy <- function(type, name, descrip
 #' @rdname opensearchserviceserverless_create_collection
 #'
 #' @aliases opensearchserviceserverless_create_collection
-opensearchserviceserverless_create_collection <- function(name, type = NULL, description = NULL, tags = NULL, standbyReplicas = NULL, clientToken = NULL) {
+opensearchserviceserverless_create_collection <- function(name, type = NULL, description = NULL, tags = NULL, standbyReplicas = NULL, vectorOptions = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateCollection",
     http_method = "POST",
@@ -459,7 +475,7 @@ opensearchserviceserverless_create_collection <- function(name, type = NULL, des
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$create_collection_input(name = name, type = type, description = description, tags = tags, standbyReplicas = standbyReplicas, clientToken = clientToken)
+  input <- .opensearchserviceserverless$create_collection_input(name = name, type = type, description = description, tags = tags, standbyReplicas = standbyReplicas, vectorOptions = vectorOptions, clientToken = clientToken)
   output <- .opensearchserviceserverless$create_collection_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -468,6 +484,61 @@ opensearchserviceserverless_create_collection <- function(name, type = NULL, des
   return(response)
 }
 .opensearchserviceserverless$operations$create_collection <- opensearchserviceserverless_create_collection
+
+#' Creates an index within an OpenSearch Serverless collection
+#'
+#' @description
+#' Creates an index within an OpenSearch Serverless collection. Unlike
+#' other OpenSearch indexes, indexes created by this API are automatically
+#' configured to conduct automatic semantic enrichment ingestion and
+#' search. For more information, see [About automatic semantic
+#' enrichment](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html#serverless-semantic-enrichment)
+#' in the *OpenSearch User Guide*.
+#'
+#' @usage
+#' opensearchserviceserverless_create_index(id, indexName, indexSchema)
+#'
+#' @param id &#91;required&#93; The unique identifier of the collection in which to create the index.
+#' @param indexName &#91;required&#93; The name of the index to create. Index names must be lowercase and can't
+#' begin with underscores (_) or hyphens (-).
+#' @param indexSchema The JSON schema definition for the index, including field mappings and
+#' settings.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_index(
+#'   id = "string",
+#'   indexName = "string",
+#'   indexSchema = list()
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchserviceserverless_create_index
+#'
+#' @aliases opensearchserviceserverless_create_index
+opensearchserviceserverless_create_index <- function(id, indexName, indexSchema = NULL) {
+  op <- new_operation(
+    name = "CreateIndex",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchserviceserverless$create_index_input(id = id, indexName = indexName, indexSchema = indexSchema)
+  output <- .opensearchserviceserverless$create_index_output()
+  config <- get_config()
+  svc <- .opensearchserviceserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchserviceserverless$operations$create_index <- opensearchserviceserverless_create_index
 
 #' Creates a lifecyle policy to be applied to OpenSearch Serverless indexes
 #'
@@ -549,15 +620,19 @@ opensearchserviceserverless_create_lifecycle_policy <- function(type, name, desc
 #'
 #' @usage
 #' opensearchserviceserverless_create_security_config(type, name,
-#'   description, samlOptions, iamIdentityCenterOptions, clientToken)
+#'   description, samlOptions, iamIdentityCenterOptions,
+#'   iamFederationOptions, clientToken)
 #'
 #' @param type &#91;required&#93; The type of security configuration.
 #' @param name &#91;required&#93; The name of the security configuration.
 #' @param description A description of the security configuration.
 #' @param samlOptions Describes SAML options in in the form of a key-value map. This field is
-#' required if you specify `saml` for the `type` parameter.
+#' required if you specify `SAML` for the `type` parameter.
 #' @param iamIdentityCenterOptions Describes IAM Identity Center options in the form of a key-value map.
 #' This field is required if you specify iamidentitycenter for the type
+#' parameter.
+#' @param iamFederationOptions Describes IAM federation options in the form of a key-value map. This
+#' field is required if you specify `iamFederation` for the `type`
 #' parameter.
 #' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #'
@@ -567,7 +642,7 @@ opensearchserviceserverless_create_lifecycle_policy <- function(type, name, desc
 #' list(
 #'   securityConfigDetail = list(
 #'     id = "string",
-#'     type = "saml"|"iamidentitycenter",
+#'     type = "saml"|"iamidentitycenter"|"iamfederation",
 #'     configVersion = "string",
 #'     description = "string",
 #'     samlOptions = list(
@@ -585,6 +660,10 @@ opensearchserviceserverless_create_lifecycle_policy <- function(type, name, desc
 #'       userAttribute = "UserId"|"UserName"|"Email",
 #'       groupAttribute = "GroupId"|"GroupName"
 #'     ),
+#'     iamFederationOptions = list(
+#'       groupAttribute = "string",
+#'       userAttribute = "string"
+#'     ),
 #'     createdDate = 123,
 #'     lastModifiedDate = 123
 #'   )
@@ -594,7 +673,7 @@ opensearchserviceserverless_create_lifecycle_policy <- function(type, name, desc
 #' @section Request syntax:
 #' ```
 #' svc$create_security_config(
-#'   type = "saml"|"iamidentitycenter",
+#'   type = "saml"|"iamidentitycenter"|"iamfederation",
 #'   name = "string",
 #'   description = "string",
 #'   samlOptions = list(
@@ -609,6 +688,10 @@ opensearchserviceserverless_create_lifecycle_policy <- function(type, name, desc
 #'     userAttribute = "UserId"|"UserName"|"Email",
 #'     groupAttribute = "GroupId"|"GroupName"
 #'   ),
+#'   iamFederationOptions = list(
+#'     groupAttribute = "string",
+#'     userAttribute = "string"
+#'   ),
 #'   clientToken = "string"
 #' )
 #' ```
@@ -618,7 +701,7 @@ opensearchserviceserverless_create_lifecycle_policy <- function(type, name, desc
 #' @rdname opensearchserviceserverless_create_security_config
 #'
 #' @aliases opensearchserviceserverless_create_security_config
-opensearchserviceserverless_create_security_config <- function(type, name, description = NULL, samlOptions = NULL, iamIdentityCenterOptions = NULL, clientToken = NULL) {
+opensearchserviceserverless_create_security_config <- function(type, name, description = NULL, samlOptions = NULL, iamIdentityCenterOptions = NULL, iamFederationOptions = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateSecurityConfig",
     http_method = "POST",
@@ -627,7 +710,7 @@ opensearchserviceserverless_create_security_config <- function(type, name, descr
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$create_security_config_input(type = type, name = name, description = description, samlOptions = samlOptions, iamIdentityCenterOptions = iamIdentityCenterOptions, clientToken = clientToken)
+  input <- .opensearchserviceserverless$create_security_config_input(type = type, name = name, description = description, samlOptions = samlOptions, iamIdentityCenterOptions = iamIdentityCenterOptions, iamFederationOptions = iamFederationOptions, clientToken = clientToken)
   output <- .opensearchserviceserverless$create_security_config_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -896,6 +979,56 @@ opensearchserviceserverless_delete_collection <- function(id, clientToken = NULL
   return(response)
 }
 .opensearchserviceserverless$operations$delete_collection <- opensearchserviceserverless_delete_collection
+
+#' Deletes an index from an OpenSearch Serverless collection
+#'
+#' @description
+#' Deletes an index from an OpenSearch Serverless collection. Be aware that
+#' the index might be configured to conduct automatic semantic enrichment
+#' ingestion and search. For more information, see [About automatic
+#' semantic
+#' enrichment](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html#serverless-semantic-enrichment).
+#'
+#' @usage
+#' opensearchserviceserverless_delete_index(id, indexName)
+#'
+#' @param id &#91;required&#93; The unique identifier of the collection containing the index to delete.
+#' @param indexName &#91;required&#93; The name of the index to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_index(
+#'   id = "string",
+#'   indexName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchserviceserverless_delete_index
+#'
+#' @aliases opensearchserviceserverless_delete_index
+opensearchserviceserverless_delete_index <- function(id, indexName) {
+  op <- new_operation(
+    name = "DeleteIndex",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchserviceserverless$delete_index_input(id = id, indexName = indexName)
+  output <- .opensearchserviceserverless$delete_index_output()
+  config <- get_config()
+  svc <- .opensearchserviceserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchserviceserverless$operations$delete_index <- opensearchserviceserverless_delete_index
 
 #' Deletes an OpenSearch Serverless lifecycle policy
 #'
@@ -1217,6 +1350,62 @@ opensearchserviceserverless_get_account_settings <- function() {
 }
 .opensearchserviceserverless$operations$get_account_settings <- opensearchserviceserverless_get_account_settings
 
+#' Retrieves information about an index in an OpenSearch Serverless
+#' collection, including its schema definition
+#'
+#' @description
+#' Retrieves information about an index in an OpenSearch Serverless
+#' collection, including its schema definition. The index might be
+#' configured to conduct automatic semantic enrichment ingestion and
+#' search. For more information, see [About automatic semantic
+#' enrichment](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html#serverless-semantic-enrichment).
+#'
+#' @usage
+#' opensearchserviceserverless_get_index(id, indexName)
+#'
+#' @param id &#91;required&#93; The unique identifier of the collection containing the index.
+#' @param indexName &#91;required&#93; The name of the index to retrieve information about.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   indexSchema = list()
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_index(
+#'   id = "string",
+#'   indexName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchserviceserverless_get_index
+#'
+#' @aliases opensearchserviceserverless_get_index
+opensearchserviceserverless_get_index <- function(id, indexName) {
+  op <- new_operation(
+    name = "GetIndex",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchserviceserverless$get_index_input(id = id, indexName = indexName)
+  output <- .opensearchserviceserverless$get_index_output()
+  config <- get_config()
+  svc <- .opensearchserviceserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchserviceserverless$operations$get_index <- opensearchserviceserverless_get_index
+
 #' Returns statistical information about your OpenSearch Serverless access
 #' policies, security configurations, and security policies
 #'
@@ -1299,7 +1488,7 @@ opensearchserviceserverless_get_policies_stats <- function() {
 #' list(
 #'   securityConfigDetail = list(
 #'     id = "string",
-#'     type = "saml"|"iamidentitycenter",
+#'     type = "saml"|"iamidentitycenter"|"iamfederation",
 #'     configVersion = "string",
 #'     description = "string",
 #'     samlOptions = list(
@@ -1316,6 +1505,10 @@ opensearchserviceserverless_get_policies_stats <- function() {
 #'       applicationDescription = "string",
 #'       userAttribute = "UserId"|"UserName"|"Email",
 #'       groupAttribute = "GroupId"|"GroupName"
+#'     ),
+#'     iamFederationOptions = list(
+#'       groupAttribute = "string",
+#'       userAttribute = "string"
 #'     ),
 #'     createdDate = 123,
 #'     lastModifiedDate = 123
@@ -1681,7 +1874,7 @@ opensearchserviceserverless_list_lifecycle_policies <- function(type, resources 
 #'   securityConfigSummaries = list(
 #'     list(
 #'       id = "string",
-#'       type = "saml"|"iamidentitycenter",
+#'       type = "saml"|"iamidentitycenter"|"iamfederation",
 #'       configVersion = "string",
 #'       description = "string",
 #'       createdDate = 123,
@@ -1695,7 +1888,7 @@ opensearchserviceserverless_list_lifecycle_policies <- function(type, resources 
 #' @section Request syntax:
 #' ```
 #' svc$list_security_configs(
-#'   type = "saml"|"iamidentitycenter",
+#'   type = "saml"|"iamidentitycenter"|"iamfederation",
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -2241,6 +2434,60 @@ opensearchserviceserverless_update_collection <- function(id, description = NULL
 }
 .opensearchserviceserverless$operations$update_collection <- opensearchserviceserverless_update_collection
 
+#' Updates an existing index in an OpenSearch Serverless collection
+#'
+#' @description
+#' Updates an existing index in an OpenSearch Serverless collection. This
+#' operation allows you to modify the index schema, including adding new
+#' fields or changing field mappings. You can also enable automatic
+#' semantic enrichment ingestion and search. For more information, see
+#' [About automatic semantic
+#' enrichment](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html#serverless-semantic-enrichment).
+#'
+#' @usage
+#' opensearchserviceserverless_update_index(id, indexName, indexSchema)
+#'
+#' @param id &#91;required&#93; The unique identifier of the collection containing the index to update.
+#' @param indexName &#91;required&#93; The name of the index to update.
+#' @param indexSchema The updated JSON schema definition for the index, including field
+#' mappings and settings.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_index(
+#'   id = "string",
+#'   indexName = "string",
+#'   indexSchema = list()
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchserviceserverless_update_index
+#'
+#' @aliases opensearchserviceserverless_update_index
+opensearchserviceserverless_update_index <- function(id, indexName, indexSchema = NULL) {
+  op <- new_operation(
+    name = "UpdateIndex",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchserviceserverless$update_index_input(id = id, indexName = indexName, indexSchema = indexSchema)
+  output <- .opensearchserviceserverless$update_index_output()
+  config <- get_config()
+  svc <- .opensearchserviceserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchserviceserverless$operations$update_index <- opensearchserviceserverless_update_index
+
 #' Updates an OpenSearch Serverless access policy
 #'
 #' @description
@@ -2321,7 +2568,8 @@ opensearchserviceserverless_update_lifecycle_policy <- function(type, name, poli
 #'
 #' @usage
 #' opensearchserviceserverless_update_security_config(id, configVersion,
-#'   description, samlOptions, iamIdentityCenterOptionsUpdates, clientToken)
+#'   description, samlOptions, iamIdentityCenterOptionsUpdates,
+#'   iamFederationOptions, clientToken)
 #'
 #' @param id &#91;required&#93; The security configuration identifier. For SAML the ID will be
 #' `saml/<accountId>/<idpProviderName>`. For example,
@@ -2333,6 +2581,9 @@ opensearchserviceserverless_update_lifecycle_policy <- function(type, name, poli
 #' @param description A description of the security configuration.
 #' @param samlOptions SAML options in in the form of a key-value map.
 #' @param iamIdentityCenterOptionsUpdates Describes IAM Identity Center options in the form of a key-value map.
+#' @param iamFederationOptions Describes IAM federation options in the form of a key-value map for
+#' updating an existing security configuration. Use this field to modify
+#' IAM federation settings for the security configuration.
 #' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #'
 #' @return
@@ -2341,7 +2592,7 @@ opensearchserviceserverless_update_lifecycle_policy <- function(type, name, poli
 #' list(
 #'   securityConfigDetail = list(
 #'     id = "string",
-#'     type = "saml"|"iamidentitycenter",
+#'     type = "saml"|"iamidentitycenter"|"iamfederation",
 #'     configVersion = "string",
 #'     description = "string",
 #'     samlOptions = list(
@@ -2358,6 +2609,10 @@ opensearchserviceserverless_update_lifecycle_policy <- function(type, name, poli
 #'       applicationDescription = "string",
 #'       userAttribute = "UserId"|"UserName"|"Email",
 #'       groupAttribute = "GroupId"|"GroupName"
+#'     ),
+#'     iamFederationOptions = list(
+#'       groupAttribute = "string",
+#'       userAttribute = "string"
 #'     ),
 #'     createdDate = 123,
 #'     lastModifiedDate = 123
@@ -2382,6 +2637,10 @@ opensearchserviceserverless_update_lifecycle_policy <- function(type, name, poli
 #'     userAttribute = "UserId"|"UserName"|"Email",
 #'     groupAttribute = "GroupId"|"GroupName"
 #'   ),
+#'   iamFederationOptions = list(
+#'     groupAttribute = "string",
+#'     userAttribute = "string"
+#'   ),
 #'   clientToken = "string"
 #' )
 #' ```
@@ -2391,7 +2650,7 @@ opensearchserviceserverless_update_lifecycle_policy <- function(type, name, poli
 #' @rdname opensearchserviceserverless_update_security_config
 #'
 #' @aliases opensearchserviceserverless_update_security_config
-opensearchserviceserverless_update_security_config <- function(id, configVersion, description = NULL, samlOptions = NULL, iamIdentityCenterOptionsUpdates = NULL, clientToken = NULL) {
+opensearchserviceserverless_update_security_config <- function(id, configVersion, description = NULL, samlOptions = NULL, iamIdentityCenterOptionsUpdates = NULL, iamFederationOptions = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateSecurityConfig",
     http_method = "POST",
@@ -2400,7 +2659,7 @@ opensearchserviceserverless_update_security_config <- function(id, configVersion
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$update_security_config_input(id = id, configVersion = configVersion, description = description, samlOptions = samlOptions, iamIdentityCenterOptionsUpdates = iamIdentityCenterOptionsUpdates, clientToken = clientToken)
+  input <- .opensearchserviceserverless$update_security_config_input(id = id, configVersion = configVersion, description = description, samlOptions = samlOptions, iamIdentityCenterOptionsUpdates = iamIdentityCenterOptionsUpdates, iamFederationOptions = iamFederationOptions, clientToken = clientToken)
   output <- .opensearchserviceserverless$update_security_config_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)

@@ -2,8 +2,7 @@
 % Please edit documentation in R/kinesisanalyticsv2_operations.R
 \name{kinesisanalyticsv2_describe_application_operation}
 \alias{kinesisanalyticsv2_describe_application_operation}
-\title{Returns information about a specific operation performed on a Managed
-Service for Apache Flink application}
+\title{Provides a detailed description of a specified application operation}
 \usage{
 kinesisanalyticsv2_describe_application_operation(ApplicationName, OperationId)
 }
@@ -13,7 +12,7 @@ kinesisanalyticsv2_describe_application_operation(ApplicationName, OperationId)
 \item{OperationId}{[required]}
 }
 \description{
-Returns information about a specific operation performed on a Managed Service for Apache Flink application
+Provides a detailed description of a specified application operation. To see a list of all the operations of an application, invoke the \code{\link[=kinesisanalyticsv2_list_application_operations]{list_application_operations}} operation.
 
 See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_describe_application_operation/} for full documentation.
 }

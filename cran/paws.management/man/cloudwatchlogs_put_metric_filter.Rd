@@ -10,7 +10,9 @@ cloudwatchlogs_put_metric_filter(
   filterName,
   filterPattern,
   metricTransformations,
-  applyOnTransformedLogs = NULL
+  applyOnTransformedLogs = NULL,
+  fieldSelectionCriteria = NULL,
+  emitSystemFieldDimensions = NULL
 )
 }
 \arguments{
@@ -30,6 +32,18 @@ If the log group uses either a log-group level or account-level
 transformer, and you specify \code{true}, the metric filter will be applied
 on the transformed version of the log events instead of the original
 ingested log events.}
+
+\item{fieldSelectionCriteria}{A filter expression that specifies which log events should be processed
+by this metric filter based on system fields such as source account and
+source region. Uses selection criteria syntax with operators like \code{=},
+\code{!=}, \code{AND}, \code{OR}, \code{IN}, \verb{NOT IN}. Example: \verb{@aws.region = "us-east-1"}
+or \verb{@aws.account IN ["123456789012", "987654321098"]}. Maximum length:
+2000 characters.}
+
+\item{emitSystemFieldDimensions}{A list of system fields to emit as additional dimensions in the
+generated metrics. Valid values are \verb{@aws.account} and \verb{@aws.region}.
+These dimensions help identify the source of centralized log data and
+count toward the total dimension limit for metric filters.}
 }
 \description{
 Creates or updates a metric filter and associates it with the specified log group. With metric filters, you can configure rules to extract metric data from log events ingested through \code{\link[=cloudwatchlogs_put_log_events]{put_log_events}}.

@@ -2,11 +2,11 @@
 % Please edit documentation in R/datazone_operations.R
 \name{datazone_search_listings}
 \alias{datazone_search_listings}
-\title{Searches listings (records of an asset at a given time) in Amazon
-DataZone}
+\title{Searches listings in Amazon DataZone}
 \usage{
 datazone_search_listings(
   additionalAttributes = NULL,
+  aggregations = NULL,
   domainIdentifier,
   filters = NULL,
   maxResults = NULL,
@@ -18,6 +18,9 @@ datazone_search_listings(
 }
 \arguments{
 \item{additionalAttributes}{Specifies additional attributes for the search.}
+
+\item{aggregations}{Enables you to specify one or more attributes to compute and return
+counts grouped by field values.}
 
 \item{domainIdentifier}{[required] The identifier of the domain in which to search listings.}
 
@@ -45,7 +48,7 @@ results.}
 \item{sort}{Specifies the way for sorting the search results.}
 }
 \description{
-Searches listings (records of an asset at a given time) in Amazon DataZone.
+Searches listings in Amazon DataZone.
 
 See \url{https://www.paws-r-sdk.com/docs/datazone_search_listings/} for full documentation.
 }

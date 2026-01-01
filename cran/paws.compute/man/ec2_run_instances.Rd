@@ -60,8 +60,7 @@ in the \emph{Amazon EC2 User Guide}.}
 \item{ImageId}{The ID of the AMI. An AMI ID is required to launch an instance and must
 be specified here or in a launch template.}
 
-\item{InstanceType}{The instance type. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Amazon EC2 instance types}
-in the \emph{Amazon EC2 User Guide}.}
+\item{InstanceType}{The instance type. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/instancetypes/instance-types.html}{Amazon EC2 Instance Types Guide}.}
 
 \item{Ipv6AddressCount}{The number of IPv6 addresses to associate with the primary network
 interface. Amazon EC2 chooses the IPv6 addresses from the range of your
@@ -88,9 +87,7 @@ more information, see
 \href{https://docs.aws.amazon.com/linux/al2/ug/UserProvidedKernels.html}{PV-GRUB}
 in the \emph{Amazon EC2 User Guide}.}
 
-\item{KeyName}{The name of the key pair. You can create a key pair using
-\code{\link[=ec2_create_key_pair]{create_key_pair}} or
-\code{\link[=ec2_import_key_pair]{import_key_pair}}.
+\item{KeyName}{The name of the key pair. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html}{Create a key pair for your EC2 instance}.
 
 If you do not specify a key pair, you can't connect to the instance
 unless you choose an AMI that is configured to allow users another way
@@ -125,8 +122,7 @@ more information, see
 \href{https://docs.aws.amazon.com/linux/al2/ug/UserProvidedKernels.html}{PV-GRUB}
 in the \emph{Amazon EC2 User Guide}.}
 
-\item{SecurityGroupIds}{The IDs of the security groups. You can create a security group using
-\code{\link[=ec2_create_security_group]{create_security_group}}.
+\item{SecurityGroupIds}{The IDs of the security groups.
 
 If you specify a network interface, you must specify any security groups
 as part of the network interface instead of using this parameter.}
@@ -146,7 +142,7 @@ of the network interface instead of using this parameter.}
 \item{UserData}{The user data to make available to the instance. User data must be
 base64-encoded. Depending on the tool or SDK that you're using, the
 base64-encoding might be performed for you. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/}{Work with instance user data}.}
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html}{Run commands at launch using instance user data}.}
 
 \item{ElasticGpuSpecification}{An elastic GPU to associate with the instance.
 
@@ -211,11 +207,10 @@ the same instance.}
 \item{LicenseSpecifications}{The license configurations.}
 
 \item{MetadataOptions}{The metadata options for the instance. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html}{Instance metadata and user data}.}
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html}{Configure the Instance Metadata Service options}.}
 
 \item{EnclaveOptions}{Indicates whether the instance is enabled for Amazon Web Services Nitro
-Enclaves. For more information, see \href{https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave.html}{What is Amazon Web Services Nitro Enclaves?}
-in the \emph{Amazon Web Services Nitro Enclaves User Guide}.
+Enclaves. For more information, see \href{https://docs.aws.amazon.com/enclaves/latest/user/}{Amazon Web Services Nitro Enclaves User Guide}.
 
 You can't enable Amazon Web Services Nitro Enclaves and hibernation on
 the same instance.}
@@ -227,7 +222,7 @@ attaching an existing one.}
 \item{MaintenanceOptions}{The maintenance and recovery options for the instance.}
 
 \item{DisableApiStop}{Indicates whether an instance is enabled for stop protection. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html#Using_StopProtection}{Stop protection}.}
+information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-stop-protection.html}{Enable stop protection for your EC2 instances}.}
 
 \item{EnablePrimaryIpv6}{If you’re launching an instance into a dual-stack or IPv6-only subnet,
 you can enable assigning a primary IPv6 address. A primary IPv6 address
@@ -281,7 +276,7 @@ same request.}
 of the request. If you do not specify a client token, a randomly
 generated token is used for the request to ensure idempotency.
 
-For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring Idempotency}.
+For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency in Amazon EC2 API requests}.
 
 Constraints: Maximum 64 ASCII characters}
 

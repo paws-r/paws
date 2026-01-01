@@ -16,7 +16,8 @@ imagebuilder_create_component(
   uri = NULL,
   kmsKeyId = NULL,
   tags = NULL,
-  clientToken
+  clientToken,
+  dryRun = NULL
 )
 }
 \arguments{
@@ -63,13 +64,21 @@ component content up to your service quota.
 Alternatively, you can specify the YAML document inline, using the
 component \code{data} property. You cannot specify both properties.}
 
-\item{kmsKeyId}{The ID of the KMS key that is used to encrypt this component.}
+\item{kmsKeyId}{The Amazon Resource Name (ARN) that uniquely identifies the KMS key used
+to encrypt this component. This can be either the Key ARN or the Alias
+ARN. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN}{Key identifiers (KeyId)}
+in the \emph{Key Management Service Developer Guide}.}
 
 \item{tags}{The tags that apply to the component.}
 
 \item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of
 the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}
 in the \emph{Amazon EC2 API Reference}.}
+
+\item{dryRun}{Validates the required permissions for the operation and the request
+parameters, without actually making the request, and provides an error
+response. Upon a successful request, the error response is
+\code{DryRunOperationException}.}
 }
 \description{
 Creates a new component that can be used to build, validate, test, and assess your image. The component is based on a YAML document that you specify using exactly one of the following methods:

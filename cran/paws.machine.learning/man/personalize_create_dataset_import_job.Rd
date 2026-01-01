@@ -9,7 +9,7 @@ personalize_create_dataset_import_job(
   jobName,
   datasetArn,
   dataSource,
-  roleArn,
+  roleArn = NULL,
   tags = NULL,
   importMode = NULL,
   publishAttributionMetricsToS3 = NULL
@@ -22,7 +22,7 @@ personalize_create_dataset_import_job(
 
 \item{dataSource}{[required] The Amazon S3 bucket that contains the training data to import.}
 
-\item{roleArn}{[required] The ARN of the IAM role that has permissions to read from the Amazon S3
+\item{roleArn}{The ARN of the IAM role that has permissions to read from the Amazon S3
 data source.}
 
 \item{tags}{A list of

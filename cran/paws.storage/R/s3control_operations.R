@@ -204,7 +204,7 @@ s3control_create_access_grants_location <- function(AccountId, LocationScope, IA
 #' Creates an access point and associates it to a specified bucket
 #'
 #' @description
-#' Creates an access point and associates it to a specified bucket. For more information, see [Managing access to shared datasets in general purpose buckets with access points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html) or [Managing access to shared datasets in directory buckets with access points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets.html) in the *Amazon S3 User Guide*.
+#' Creates an access point and associates it to a specified bucket. For more information, see [Managing access to shared datasets with access points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html) or [Managing access to shared datasets in directory buckets with access points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets.html) in the *Amazon S3 User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_create_access_point/](https://www.paws-r-sdk.com/docs/s3control_create_access_point/) for full documentation.
 #'
@@ -218,7 +218,7 @@ s3control_create_access_grants_location <- function(AccountId, LocationScope, IA
 #' followed by `--xa-s3`. For more information, see [Managing access to
 #' shared datasets in directory buckets with access
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets.html)
-#' in the Amazon S3 User Guide.
+#' in the *Amazon S3 User Guide*.
 #' @param Bucket &#91;required&#93; The name of the bucket that you want to associate this access point
 #' with.
 #' 
@@ -253,14 +253,21 @@ s3control_create_access_grants_location <- function(AccountId, LocationScope, IA
 #' information, see [Managing access to shared datasets in directory
 #' buckets with access
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets.html)
-#' in the Amazon S3 User Guide.
+#' in the *Amazon S3 User Guide*.
 #' 
-#' Scope is not supported for access points for general purpose buckets.
+#' Scope is only supported for access points attached to directory buckets.
+#' @param Tags An array of tags that you can apply to an access point. Tags are
+#' key-value pairs of metadata used to control access to your access
+#' points. For more information about tags, see [Using tags with Amazon
+#' S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/tagging.html).
+#' For information about tagging access points, see [Using tags for
+#' attribute-based access control
+#' (ABAC)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/tagging.html#using-tags-for-abac).
 #'
 #' @keywords internal
 #'
 #' @rdname s3control_create_access_point
-s3control_create_access_point <- function(AccountId, Name, Bucket, VpcConfiguration = NULL, PublicAccessBlockConfiguration = NULL, BucketAccountId = NULL, Scope = NULL) {
+s3control_create_access_point <- function(AccountId, Name, Bucket, VpcConfiguration = NULL, PublicAccessBlockConfiguration = NULL, BucketAccountId = NULL, Scope = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateAccessPoint",
     http_method = "PUT",
@@ -269,7 +276,7 @@ s3control_create_access_point <- function(AccountId, Name, Bucket, VpcConfigurat
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3control$create_access_point_input(AccountId = AccountId, Name = Name, Bucket = Bucket, VpcConfiguration = VpcConfiguration, PublicAccessBlockConfiguration = PublicAccessBlockConfiguration, BucketAccountId = BucketAccountId, Scope = Scope)
+  input <- .s3control$create_access_point_input(AccountId = AccountId, Name = Name, Bucket = Bucket, VpcConfiguration = VpcConfiguration, PublicAccessBlockConfiguration = PublicAccessBlockConfiguration, BucketAccountId = BucketAccountId, Scope = Scope, Tags = Tags)
   output <- .s3control$create_access_point_output()
   config <- get_config()
   svc <- .s3control$service(config, op)
@@ -2630,11 +2637,15 @@ s3control_list_access_grants_locations <- function(AccountId, NextToken = NULL, 
 #' points, then the response will include a continuation token in the
 #' `NextToken` field that you can use to retrieve the next page of access
 #' points.
+#' @param DataSourceId The unique identifier for the data source of the access point.
+#' @param DataSourceType The type of the data source that the access point is attached to.
+#' Returns only access points attached to S3 buckets by default. To return
+#' all access points specify `DataSourceType` as `ALL`.
 #'
 #' @keywords internal
 #'
 #' @rdname s3control_list_access_points
-s3control_list_access_points <- function(AccountId, Bucket = NULL, NextToken = NULL, MaxResults = NULL) {
+s3control_list_access_points <- function(AccountId, Bucket = NULL, NextToken = NULL, MaxResults = NULL, DataSourceId = NULL, DataSourceType = NULL) {
   op <- new_operation(
     name = "ListAccessPoints",
     http_method = "GET",
@@ -2643,7 +2654,7 @@ s3control_list_access_points <- function(AccountId, Bucket = NULL, NextToken = N
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
-  input <- .s3control$list_access_points_input(AccountId = AccountId, Bucket = Bucket, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .s3control$list_access_points_input(AccountId = AccountId, Bucket = Bucket, NextToken = NextToken, MaxResults = MaxResults, DataSourceId = DataSourceId, DataSourceType = DataSourceType)
   output <- .s3control$list_access_points_output()
   config <- get_config()
   svc <- .s3control$service(config, op)
@@ -2964,18 +2975,18 @@ s3control_list_storage_lens_groups <- function(AccountId, NextToken = NULL) {
 }
 .s3control$operations$list_storage_lens_groups <- s3control_list_storage_lens_groups
 
-#' This operation allows you to list all the Amazon Web Services resource
-#' tags for a specified resource
+#' This operation allows you to list all of the tags for a specified
+#' resource
 #'
 #' @description
-#' This operation allows you to list all the Amazon Web Services resource tags for a specified resource. Each tag is a label consisting of a user-defined key and value. Tags can help you manage, identify, organize, search for, and filter resources.
+#' This operation allows you to list all of the tags for a specified resource. Each tag is a label consisting of a key and value. Tags can help you organize, track costs for, and control access to resources.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/s3control_list_tags_for_resource/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the resource owner.
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the S3 resource that you want to list
-#' the tags for. The tagged resource can be an S3 Storage Lens group or S3
-#' Access Grants instance, registered location, or grant.
+#' tags for. The tagged resource can be a directory bucket, S3 Storage Lens
+#' group or S3 Access Grants instance, registered location, or grant.
 #'
 #' @keywords internal
 #'
@@ -3093,10 +3104,10 @@ s3control_put_access_point_configuration_for_object_lambda <- function(AccountId
 #' `arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/accesspoint/reports-ap`.
 #' The value must be URL encoded.
 #' @param Policy &#91;required&#93; The policy that you want to apply to the specified access point. For
-#' more information about access point policies, see [Managing access to
-#' shared datasets in general purpose buckets with access
+#' more information about access point policies, see [Managing data access
+#' with Amazon S3 access
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html)
-#' or [Managing access to shared datasets in directory bucekts with access
+#' or [Managing access to shared datasets in directory buckets with access
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets.html)
 #' in the *Amazon S3 User Guide*.
 #'
@@ -3614,19 +3625,18 @@ s3control_submit_multi_region_access_point_routes <- function(AccountId, Mrap, R
 }
 .s3control$operations$submit_multi_region_access_point_routes <- s3control_submit_multi_region_access_point_routes
 
-#' Creates a new Amazon Web Services resource tag or updates an existing
-#' resource tag
+#' Creates a new user-defined tag or updates an existing tag
 #'
 #' @description
-#' Creates a new Amazon Web Services resource tag or updates an existing resource tag. Each tag is a label consisting of a user-defined key and value. Tags can help you manage, identify, organize, search for, and filter resources. You can add up to 50 Amazon Web Services resource tags for each S3 resource.
+#' Creates a new user-defined tag or updates an existing tag. Each tag is a label consisting of a key and value that is applied to your resource. Tags can help you organize, track costs for, and control access to your resources. You can add up to 50 Amazon Web Services resource tags for each S3 resource.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_tag_resource/](https://www.paws-r-sdk.com/docs/s3control_tag_resource/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID that created the S3 resource that
 #' you're trying to add tags to or the requester's account ID.
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the S3 resource that you're trying to
-#' add tags to. The tagged resource can be an S3 Storage Lens group or S3
-#' Access Grants instance, registered location, or grant.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the S3 resource that you're applying
+#' tags to. The tagged resource can be a directory bucket, S3 Storage Lens
+#' group or S3 Access Grants instance, registered location, or grant.
 #' @param Tags &#91;required&#93; The Amazon Web Services resource tags that you want to add to the
 #' specified S3 resource.
 #'
@@ -3652,18 +3662,19 @@ s3control_tag_resource <- function(AccountId, ResourceArn, Tags) {
 }
 .s3control$operations$tag_resource <- s3control_tag_resource
 
-#' This operation removes the specified Amazon Web Services resource tags
-#' from an S3 resource
+#' This operation removes the specified user-defined tags from an S3
+#' resource
 #'
 #' @description
-#' This operation removes the specified Amazon Web Services resource tags from an S3 resource. Each tag is a label consisting of a user-defined key and value. Tags can help you manage, identify, organize, search for, and filter resources.
+#' This operation removes the specified user-defined tags from an S3 resource. You can pass one or more tag keys.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_untag_resource/](https://www.paws-r-sdk.com/docs/s3control_untag_resource/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID that owns the resource that you're
 #' trying to remove the tags from.
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the S3 resource that you're trying to
-#' remove the tags from.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the S3 resource that you're removing
+#' tags from. The tagged resource can be a directory bucket, S3 Storage
+#' Lens group or S3 Access Grants instance, registered location, or grant.
 #' @param TagKeys &#91;required&#93; The array of tag key-value pairs that you're trying to remove from of
 #' the S3 resource.
 #'

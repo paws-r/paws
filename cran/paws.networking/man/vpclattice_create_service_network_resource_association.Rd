@@ -9,6 +9,7 @@ vpclattice_create_service_network_resource_association(
   clientToken = NULL,
   resourceConfigurationIdentifier,
   serviceNetworkIdentifier,
+  privateDnsEnabled = NULL,
   tags = NULL
 )
 }
@@ -25,7 +26,10 @@ network.}
 \item{serviceNetworkIdentifier}{[required] The ID of the service network to associate with the resource
 configuration.}
 
-\item{tags}{The tags for the association.}
+\item{privateDnsEnabled}{Indicates if private DNS is enabled for the service network resource
+association.}
+
+\item{tags}{A key-value pair to associate with a resource.}
 }
 \description{
 Associates the specified service network with the specified resource configuration. This allows the resource configuration to receive connections through the service network, including through a service network VPC endpoint.

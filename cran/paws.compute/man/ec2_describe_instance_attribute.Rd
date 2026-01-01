@@ -19,7 +19,7 @@ you have the required permissions, the error response is
 Note that the \code{enaSupport} attribute is not supported.}
 }
 \description{
-Describes the specified attribute of the specified instance. You can specify only one attribute at a time.
+Describes the specified attribute of the specified instance. You can specify only one attribute at a time. Available attributes include SQL license exemption configuration for instances registered with the SQL LE service.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_instance_attribute/} for full documentation.
 }

@@ -6,7 +6,8 @@
 \usage{
 s3_list_bucket_intelligent_tiering_configurations(
   Bucket,
-  ContinuationToken = NULL
+  ContinuationToken = NULL,
+  ExpectedBucketOwner = NULL
 )
 }
 \arguments{
@@ -15,6 +16,10 @@ or retrieve.}
 
 \item{ContinuationToken}{The \code{ContinuationToken} that represents a placeholder from where this
 request should begin.}
+
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
 This operation is not supported for directory buckets.

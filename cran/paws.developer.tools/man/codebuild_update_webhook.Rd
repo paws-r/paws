@@ -9,7 +9,8 @@ codebuild_update_webhook(
   branchFilter = NULL,
   rotateSecret = NULL,
   filterGroups = NULL,
-  buildType = NULL
+  buildType = NULL,
+  pullRequestBuildPolicy = NULL
 )
 }
 \arguments{
@@ -36,6 +37,11 @@ one \code{EVENT} \code{WebhookFilter}.}
 projects configured for Buildkite runner builds. For more information
 about CodeBuild-hosted Buildkite runner builds, see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/sample-runner-buildkite.html}{Tutorial: Configure a CodeBuild-hosted Buildkite runner}
 in the \emph{CodeBuild user guide}.}
+
+\item{pullRequestBuildPolicy}{A PullRequestBuildPolicy object that defines comment-based approval
+requirements for triggering builds on pull requests. This policy helps
+control when automated builds are executed based on contributor
+permissions and approval workflows.}
 }
 \description{
 Updates the webhook associated with an CodeBuild build project.

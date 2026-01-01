@@ -2,7 +2,7 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_get_finding_history}
 \alias{securityhub_get_finding_history}
-\title{Returns history for a Security Hub finding in the last 90 days}
+\title{Returns the history of a Security Hub finding}
 \usage{
 securityhub_get_finding_history(
   FindingIdentifier,
@@ -27,9 +27,9 @@ Security Hub returns finding history from the
 \href{https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_AwsSecurityFindingFilters.html#securityhub-Type-AwsSecurityFindingFilters-CreatedAt}{CreatedAt}
 timestamp of the finding to the \code{EndTime}. If you provide neither
 \code{StartTime} nor \code{EndTime}, Security Hub returns finding history from the
-CreatedAt timestamp of the finding to the time at which the API is
+\code{CreatedAt} timestamp of the finding to the time at which the API is
 called. In all of these scenarios, the response is limited to 100
-results, and the maximum time period is limited to 90 days.
+results.
 
 For more information about the validation and formatting of timestamp
 fields in Security Hub, see
@@ -47,9 +47,9 @@ Security Hub returns finding history from the
 \href{https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_AwsSecurityFindingFilters.html#securityhub-Type-AwsSecurityFindingFilters-CreatedAt}{CreatedAt}
 timestamp of the finding to the \code{EndTime}. If you provide neither
 \code{StartTime} nor \code{EndTime}, Security Hub returns finding history from the
-CreatedAt timestamp of the finding to the time at which the API is
+\code{CreatedAt} timestamp of the finding to the time at which the API is
 called. In all of these scenarios, the response is limited to 100
-results, and the maximum time period is limited to 90 days.
+results.
 
 For more information about the validation and formatting of timestamp
 fields in Security Hub, see
@@ -65,7 +65,7 @@ for each request.}
 Security Hub returns up to 100 results of finding history.}
 }
 \description{
-Returns history for a Security Hub finding in the last 90 days. The history includes changes made to any fields in the Amazon Web Services Security Finding Format (ASFF).
+Returns the history of a Security Hub finding. The history includes changes made to any fields in the Amazon Web Services Security Finding Format (ASFF) except top-level timestamp fields, such as the \code{CreatedAt} and \code{UpdatedAt} fields.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_get_finding_history/} for full documentation.
 }

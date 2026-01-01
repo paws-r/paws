@@ -30,7 +30,7 @@ operation. If you specify this header, the request fails with the HTTP
 status code \verb{501 Not Implemented}.}
 }
 \description{
-Returns the default encryption configuration for an Amazon S3 bucket. By default, all buckets have a default encryption configuration that uses server-side encryption with Amazon S3 managed keys (SSE-S3).
+Returns the default encryption configuration for an Amazon S3 bucket. By default, all buckets have a default encryption configuration that uses server-side encryption with Amazon S3 managed keys (SSE-S3). This operation also returns the \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ServerSideEncryptionRule.html#AmazonS3-Type-ServerSideEncryptionRule-BucketKeyEnabled}{BucketKeyEnabled} and \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ServerSideEncryptionRule.html#AmazonS3-Type-ServerSideEncryptionRule-BlockedEncryptionTypes}{BlockedEncryptionTypes} statuses.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_encryption/} for full documentation.
 }

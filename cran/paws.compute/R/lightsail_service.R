@@ -18,7 +18,7 @@ NULL
 #' Lightsail API, Command Line Interface (CLI), or SDKs. For more
 #' information about Lightsail concepts and tasks, see the [Amazon
 #' Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/lightsail-how-to-set-up-and-configure-aws-cli.html).
 #' 
 #' This API Reference provides detailed information about the actions, data
 #' types, parameters, and errors of the Lightsail service. For more

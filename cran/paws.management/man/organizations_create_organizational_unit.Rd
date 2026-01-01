@@ -7,8 +7,7 @@
 organizations_create_organizational_unit(ParentId, Name, Tags = NULL)
 }
 \arguments{
-\item{ParentId}{[required] The unique identifier (ID) of the parent root or OU that you want to
-create the new OU in.
+\item{ParentId}{[required] ID for the parent root or OU that you want to create the new OU in.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a parent ID
 string requires one of the following:

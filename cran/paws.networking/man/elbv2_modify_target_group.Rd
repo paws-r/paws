@@ -27,8 +27,8 @@ Network Load Balancers and Gateway Load Balancers, the default is TCP.
 The TCP protocol is not supported for health checks if the protocol of
 the target group is HTTP or HTTPS. It is supported for health checks
 only if the protocol of the target group is TCP, TLS, UDP, or TCP_UDP.
-The GENEVE, TLS, UDP, and TCP_UDP protocols are not supported for health
-checks.}
+The GENEVE, TLS, UDP, TCP_UDP, QUIC, and TCP_QUIC protocols are not
+supported for health checks.}
 
 \item{HealthCheckPort}{The port the load balancer uses when performing health checks on
 targets.}
@@ -42,7 +42,10 @@ targets.
 the format /package.service/method. The default is /Amazon Web
 Services.ALB/healthcheck.}
 
-\item{HealthCheckEnabled}{Indicates whether health checks are enabled.}
+\item{HealthCheckEnabled}{Indicates whether health checks are enabled. If the target type is
+\code{lambda}, health checks are disabled by default but can be enabled. If
+the target type is \code{instance}, \code{ip}, or \code{alb}, health checks are always
+enabled and can't be disabled.}
 
 \item{HealthCheckIntervalSeconds}{The approximate amount of time, in seconds, between health checks of an
 individual target.}

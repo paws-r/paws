@@ -2,18 +2,18 @@
 % Please edit documentation in R/healthlake_operations.R
 \name{healthlake_untag_resource}
 \alias{healthlake_untag_resource}
-\title{Removes tags from a data store}
+\title{Remove a user-specifed key and value tag from a data store}
 \usage{
 healthlake_untag_resource(ResourceARN, TagKeys)
 }
 \arguments{
-\item{ResourceARN}{[required] The Amazon Resource Name(ARN) of the data store for which tags are being
-removed.}
+\item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the data store from which tags are
+being removed.}
 
-\item{TagKeys}{[required] The keys for the tags to be removed from the HealthLake data store.}
+\item{TagKeys}{[required] The keys for the tags to be removed from the data store.}
 }
 \description{
-Removes tags from a data store.
+Remove a user-specifed key and value tag from a data store.
 
 See \url{https://www.paws-r-sdk.com/docs/healthlake_untag_resource/} for full documentation.
 }

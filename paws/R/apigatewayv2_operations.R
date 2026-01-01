@@ -441,11 +441,12 @@ apigatewayv2_create_deployment <- function(ApiId, Description = NULL, StageName 
 #'
 #' @usage
 #' apigatewayv2_create_domain_name(DomainName, DomainNameConfigurations,
-#'   MutualTlsAuthentication, Tags)
+#'   MutualTlsAuthentication, RoutingMode, Tags)
 #'
 #' @param DomainName &#91;required&#93; The domain name.
 #' @param DomainNameConfigurations The domain name configurations.
 #' @param MutualTlsAuthentication The mutual TLS authentication configuration for a custom domain name.
+#' @param RoutingMode The routing mode.
 #' @param Tags The collection of tags associated with a domain name.
 #'
 #' @return
@@ -454,6 +455,7 @@ apigatewayv2_create_deployment <- function(ApiId, Description = NULL, StageName 
 #' list(
 #'   ApiMappingSelectionExpression = "string",
 #'   DomainName = "string",
+#'   DomainNameArn = "string",
 #'   DomainNameConfigurations = list(
 #'     list(
 #'       ApiGatewayDomainName = "string",
@@ -478,6 +480,7 @@ apigatewayv2_create_deployment <- function(ApiId, Description = NULL, StageName 
 #'       "string"
 #'     )
 #'   ),
+#'   RoutingMode = "API_MAPPING_ONLY"|"ROUTING_RULE_ONLY"|"ROUTING_RULE_THEN_API_MAPPING",
 #'   Tags = list(
 #'     "string"
 #'   )
@@ -509,6 +512,7 @@ apigatewayv2_create_deployment <- function(ApiId, Description = NULL, StageName 
 #'     TruststoreUri = "string",
 #'     TruststoreVersion = "string"
 #'   ),
+#'   RoutingMode = "API_MAPPING_ONLY"|"ROUTING_RULE_ONLY"|"ROUTING_RULE_THEN_API_MAPPING",
 #'   Tags = list(
 #'     "string"
 #'   )
@@ -520,7 +524,7 @@ apigatewayv2_create_deployment <- function(ApiId, Description = NULL, StageName 
 #' @rdname apigatewayv2_create_domain_name
 #'
 #' @aliases apigatewayv2_create_domain_name
-apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations = NULL, MutualTlsAuthentication = NULL, Tags = NULL) {
+apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations = NULL, MutualTlsAuthentication = NULL, RoutingMode = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDomainName",
     http_method = "POST",
@@ -529,7 +533,7 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .apigatewayv2$create_domain_name_input(DomainName = DomainName, DomainNameConfigurations = DomainNameConfigurations, MutualTlsAuthentication = MutualTlsAuthentication, Tags = Tags)
+  input <- .apigatewayv2$create_domain_name_input(DomainName = DomainName, DomainNameConfigurations = DomainNameConfigurations, MutualTlsAuthentication = MutualTlsAuthentication, RoutingMode = RoutingMode, Tags = Tags)
   output <- .apigatewayv2$create_domain_name_output()
   config <- get_config()
   svc <- .apigatewayv2$service(config, op)
@@ -948,6 +952,390 @@ apigatewayv2_create_model <- function(ApiId, ContentType = NULL, Description = N
 }
 .apigatewayv2$operations$create_model <- apigatewayv2_create_model
 
+#' Creates a portal
+#'
+#' @description
+#' Creates a portal.
+#'
+#' @usage
+#' apigatewayv2_create_portal(Authorization, EndpointConfiguration,
+#'   IncludedPortalProductArns, LogoUri, PortalContent, RumAppMonitorName,
+#'   Tags)
+#'
+#' @param Authorization &#91;required&#93; The authentication configuration for the portal.
+#' @param EndpointConfiguration &#91;required&#93; The domain configuration for the portal. Use a default domain provided
+#' by API Gateway or provide a fully-qualified domain name that you own.
+#' @param IncludedPortalProductArns The ARNs of the portal products included in the portal.
+#' @param LogoUri The URI for the portal logo image that is displayed in the portal
+#' header.
+#' @param PortalContent &#91;required&#93; The content of the portal.
+#' @param RumAppMonitorName The name of the Amazon CloudWatch RUM app monitor for the portal.
+#' @param Tags The collection of tags. Each tag element is associated with a given
+#' resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Authorization = list(
+#'     CognitoConfig = list(
+#'       AppClientId = "string",
+#'       UserPoolArn = "string",
+#'       UserPoolDomain = "string"
+#'     ),
+#'     None = list()
+#'   ),
+#'   EndpointConfiguration = list(
+#'     CertificateArn = "string",
+#'     DomainName = "string",
+#'     PortalDefaultDomainName = "string",
+#'     PortalDomainHostedZoneId = "string"
+#'   ),
+#'   IncludedPortalProductArns = list(
+#'     "string"
+#'   ),
+#'   LastModified = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastPublished = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastPublishedDescription = "string",
+#'   PortalArn = "string",
+#'   PortalContent = list(
+#'     Description = "string",
+#'     DisplayName = "string",
+#'     Theme = list(
+#'       CustomColors = list(
+#'         AccentColor = "string",
+#'         BackgroundColor = "string",
+#'         ErrorValidationColor = "string",
+#'         HeaderColor = "string",
+#'         NavigationColor = "string",
+#'         TextColor = "string"
+#'       ),
+#'       LogoLastUploaded = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   PortalId = "string",
+#'   PublishStatus = "PUBLISHED"|"PUBLISH_IN_PROGRESS"|"PUBLISH_FAILED"|"DISABLED",
+#'   RumAppMonitorName = "string",
+#'   StatusException = list(
+#'     Exception = "string",
+#'     Message = "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_portal(
+#'   Authorization = list(
+#'     CognitoConfig = list(
+#'       AppClientId = "string",
+#'       UserPoolArn = "string",
+#'       UserPoolDomain = "string"
+#'     ),
+#'     None = list()
+#'   ),
+#'   EndpointConfiguration = list(
+#'     AcmManaged = list(
+#'       CertificateArn = "string",
+#'       DomainName = "string"
+#'     ),
+#'     None = list()
+#'   ),
+#'   IncludedPortalProductArns = list(
+#'     "string"
+#'   ),
+#'   LogoUri = "string",
+#'   PortalContent = list(
+#'     Description = "string",
+#'     DisplayName = "string",
+#'     Theme = list(
+#'       CustomColors = list(
+#'         AccentColor = "string",
+#'         BackgroundColor = "string",
+#'         ErrorValidationColor = "string",
+#'         HeaderColor = "string",
+#'         NavigationColor = "string",
+#'         TextColor = "string"
+#'       ),
+#'       LogoLastUploaded = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   RumAppMonitorName = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_create_portal
+#'
+#' @aliases apigatewayv2_create_portal
+apigatewayv2_create_portal <- function(Authorization, EndpointConfiguration, IncludedPortalProductArns = NULL, LogoUri = NULL, PortalContent, RumAppMonitorName = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreatePortal",
+    http_method = "POST",
+    http_path = "/v2/portals",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$create_portal_input(Authorization = Authorization, EndpointConfiguration = EndpointConfiguration, IncludedPortalProductArns = IncludedPortalProductArns, LogoUri = LogoUri, PortalContent = PortalContent, RumAppMonitorName = RumAppMonitorName, Tags = Tags)
+  output <- .apigatewayv2$create_portal_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$create_portal <- apigatewayv2_create_portal
+
+#' Creates a new portal product
+#'
+#' @description
+#' Creates a new portal product.
+#'
+#' @usage
+#' apigatewayv2_create_portal_product(Description, DisplayName, Tags)
+#'
+#' @param Description A description of the portal product.
+#' @param DisplayName &#91;required&#93; The name of the portal product as it appears in a published portal.
+#' @param Tags The collection of tags. Each tag element is associated with a given
+#' resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Description = "string",
+#'   DisplayName = "string",
+#'   DisplayOrder = list(
+#'     Contents = list(
+#'       list(
+#'         ProductRestEndpointPageArns = list(
+#'           "string"
+#'         ),
+#'         SectionName = "string"
+#'       )
+#'     ),
+#'     OverviewPageArn = "string",
+#'     ProductPageArns = list(
+#'       "string"
+#'     )
+#'   ),
+#'   LastModified = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   PortalProductArn = "string",
+#'   PortalProductId = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_portal_product(
+#'   Description = "string",
+#'   DisplayName = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_create_portal_product
+#'
+#' @aliases apigatewayv2_create_portal_product
+apigatewayv2_create_portal_product <- function(Description = NULL, DisplayName, Tags = NULL) {
+  op <- new_operation(
+    name = "CreatePortalProduct",
+    http_method = "POST",
+    http_path = "/v2/portalproducts",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$create_portal_product_input(Description = Description, DisplayName = DisplayName, Tags = Tags)
+  output <- .apigatewayv2$create_portal_product_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$create_portal_product <- apigatewayv2_create_portal_product
+
+#' Creates a new product page for a portal product
+#'
+#' @description
+#' Creates a new product page for a portal product.
+#'
+#' @usage
+#' apigatewayv2_create_product_page(DisplayContent, PortalProductId)
+#'
+#' @param DisplayContent &#91;required&#93; The content of the product page.
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DisplayContent = list(
+#'     Body = "string",
+#'     Title = "string"
+#'   ),
+#'   LastModified = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ProductPageArn = "string",
+#'   ProductPageId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_product_page(
+#'   DisplayContent = list(
+#'     Body = "string",
+#'     Title = "string"
+#'   ),
+#'   PortalProductId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_create_product_page
+#'
+#' @aliases apigatewayv2_create_product_page
+apigatewayv2_create_product_page <- function(DisplayContent, PortalProductId) {
+  op <- new_operation(
+    name = "CreateProductPage",
+    http_method = "POST",
+    http_path = "/v2/portalproducts/{portalProductId}/productpages",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$create_product_page_input(DisplayContent = DisplayContent, PortalProductId = PortalProductId)
+  output <- .apigatewayv2$create_product_page_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$create_product_page <- apigatewayv2_create_product_page
+
+#' Creates a product REST endpoint page for a portal product
+#'
+#' @description
+#' Creates a product REST endpoint page for a portal product.
+#'
+#' @usage
+#' apigatewayv2_create_product_rest_endpoint_page(DisplayContent,
+#'   PortalProductId, RestEndpointIdentifier, TryItState)
+#'
+#' @param DisplayContent The content of the product REST endpoint page.
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#' @param RestEndpointIdentifier &#91;required&#93; The REST endpoint identifier.
+#' @param TryItState The try it state of the product REST endpoint page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DisplayContent = list(
+#'     Body = "string",
+#'     Endpoint = "string",
+#'     OperationName = "string"
+#'   ),
+#'   LastModified = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ProductRestEndpointPageArn = "string",
+#'   ProductRestEndpointPageId = "string",
+#'   RestEndpointIdentifier = list(
+#'     IdentifierParts = list(
+#'       Method = "string",
+#'       Path = "string",
+#'       RestApiId = "string",
+#'       Stage = "string"
+#'     )
+#'   ),
+#'   Status = "AVAILABLE"|"IN_PROGRESS"|"FAILED",
+#'   StatusException = list(
+#'     Exception = "string",
+#'     Message = "string"
+#'   ),
+#'   TryItState = "ENABLED"|"DISABLED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_product_rest_endpoint_page(
+#'   DisplayContent = list(
+#'     None = list(),
+#'     Overrides = list(
+#'       Body = "string",
+#'       Endpoint = "string",
+#'       OperationName = "string"
+#'     )
+#'   ),
+#'   PortalProductId = "string",
+#'   RestEndpointIdentifier = list(
+#'     IdentifierParts = list(
+#'       Method = "string",
+#'       Path = "string",
+#'       RestApiId = "string",
+#'       Stage = "string"
+#'     )
+#'   ),
+#'   TryItState = "ENABLED"|"DISABLED"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_create_product_rest_endpoint_page
+#'
+#' @aliases apigatewayv2_create_product_rest_endpoint_page
+apigatewayv2_create_product_rest_endpoint_page <- function(DisplayContent = NULL, PortalProductId, RestEndpointIdentifier, TryItState = NULL) {
+  op <- new_operation(
+    name = "CreateProductRestEndpointPage",
+    http_method = "POST",
+    http_path = "/v2/portalproducts/{portalProductId}/productrestendpointpages",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$create_product_rest_endpoint_page_input(DisplayContent = DisplayContent, PortalProductId = PortalProductId, RestEndpointIdentifier = RestEndpointIdentifier, TryItState = TryItState)
+  output <- .apigatewayv2$create_product_rest_endpoint_page_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$create_product_rest_endpoint_page <- apigatewayv2_create_product_rest_endpoint_page
+
 #' Creates a Route for an API
 #'
 #' @description
@@ -1135,6 +1523,120 @@ apigatewayv2_create_route_response <- function(ApiId, ModelSelectionExpression =
   return(response)
 }
 .apigatewayv2$operations$create_route_response <- apigatewayv2_create_route_response
+
+#' Creates a RoutingRule
+#'
+#' @description
+#' Creates a RoutingRule.
+#'
+#' @usage
+#' apigatewayv2_create_routing_rule(Actions, Conditions, DomainName,
+#'   DomainNameId, Priority)
+#'
+#' @param Actions &#91;required&#93; Represents a routing rule action. The only supported action is
+#' invokeApi.
+#' @param Conditions &#91;required&#93; Represents a condition. Conditions can contain up to two matchHeaders
+#' conditions and one matchBasePaths conditions. API Gateway evaluates
+#' header conditions and base path conditions together. You can only use
+#' AND between header and base path conditions.
+#' @param DomainName &#91;required&#93; The domain name.
+#' @param DomainNameId The domain name ID.
+#' @param Priority &#91;required&#93; Represents the priority of the routing rule.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Actions = list(
+#'     list(
+#'       InvokeApi = list(
+#'         ApiId = "string",
+#'         Stage = "string",
+#'         StripBasePath = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   Conditions = list(
+#'     list(
+#'       MatchBasePaths = list(
+#'         AnyOf = list(
+#'           "string"
+#'         )
+#'       ),
+#'       MatchHeaders = list(
+#'         AnyOf = list(
+#'           list(
+#'             Header = "string",
+#'             ValueGlob = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Priority = 123,
+#'   RoutingRuleArn = "string",
+#'   RoutingRuleId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_routing_rule(
+#'   Actions = list(
+#'     list(
+#'       InvokeApi = list(
+#'         ApiId = "string",
+#'         Stage = "string",
+#'         StripBasePath = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   Conditions = list(
+#'     list(
+#'       MatchBasePaths = list(
+#'         AnyOf = list(
+#'           "string"
+#'         )
+#'       ),
+#'       MatchHeaders = list(
+#'         AnyOf = list(
+#'           list(
+#'             Header = "string",
+#'             ValueGlob = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   DomainName = "string",
+#'   DomainNameId = "string",
+#'   Priority = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_create_routing_rule
+#'
+#' @aliases apigatewayv2_create_routing_rule
+apigatewayv2_create_routing_rule <- function(Actions, Conditions, DomainName, DomainNameId = NULL, Priority) {
+  op <- new_operation(
+    name = "CreateRoutingRule",
+    http_method = "POST",
+    http_path = "/v2/domainnames/{domainName}/routingrules",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$create_routing_rule_input(Actions = Actions, Conditions = Conditions, DomainName = DomainName, DomainNameId = DomainNameId, Priority = Priority)
+  output <- .apigatewayv2$create_routing_rule_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$create_routing_rule <- apigatewayv2_create_routing_rule
 
 #' Creates a Stage for an API
 #'
@@ -1807,6 +2309,231 @@ apigatewayv2_delete_model <- function(ApiId, ModelId) {
 }
 .apigatewayv2$operations$delete_model <- apigatewayv2_delete_model
 
+#' Deletes a portal
+#'
+#' @description
+#' Deletes a portal.
+#'
+#' @usage
+#' apigatewayv2_delete_portal(PortalId)
+#'
+#' @param PortalId &#91;required&#93; The portal identifier.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_portal(
+#'   PortalId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_delete_portal
+#'
+#' @aliases apigatewayv2_delete_portal
+apigatewayv2_delete_portal <- function(PortalId) {
+  op <- new_operation(
+    name = "DeletePortal",
+    http_method = "DELETE",
+    http_path = "/v2/portals/{portalId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$delete_portal_input(PortalId = PortalId)
+  output <- .apigatewayv2$delete_portal_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$delete_portal <- apigatewayv2_delete_portal
+
+#' Deletes a portal product
+#'
+#' @description
+#' Deletes a portal product.
+#'
+#' @usage
+#' apigatewayv2_delete_portal_product(PortalProductId)
+#'
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_portal_product(
+#'   PortalProductId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_delete_portal_product
+#'
+#' @aliases apigatewayv2_delete_portal_product
+apigatewayv2_delete_portal_product <- function(PortalProductId) {
+  op <- new_operation(
+    name = "DeletePortalProduct",
+    http_method = "DELETE",
+    http_path = "/v2/portalproducts/{portalProductId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$delete_portal_product_input(PortalProductId = PortalProductId)
+  output <- .apigatewayv2$delete_portal_product_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$delete_portal_product <- apigatewayv2_delete_portal_product
+
+#' Deletes the sharing policy for a portal product
+#'
+#' @description
+#' Deletes the sharing policy for a portal product.
+#'
+#' @usage
+#' apigatewayv2_delete_portal_product_sharing_policy(PortalProductId)
+#'
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_portal_product_sharing_policy(
+#'   PortalProductId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_delete_portal_product_sharing_policy
+#'
+#' @aliases apigatewayv2_delete_portal_product_sharing_policy
+apigatewayv2_delete_portal_product_sharing_policy <- function(PortalProductId) {
+  op <- new_operation(
+    name = "DeletePortalProductSharingPolicy",
+    http_method = "DELETE",
+    http_path = "/v2/portalproducts/{portalProductId}/sharingpolicy",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$delete_portal_product_sharing_policy_input(PortalProductId = PortalProductId)
+  output <- .apigatewayv2$delete_portal_product_sharing_policy_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$delete_portal_product_sharing_policy <- apigatewayv2_delete_portal_product_sharing_policy
+
+#' Deletes a product page of a portal product
+#'
+#' @description
+#' Deletes a product page of a portal product.
+#'
+#' @usage
+#' apigatewayv2_delete_product_page(PortalProductId, ProductPageId)
+#'
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#' @param ProductPageId &#91;required&#93; The portal product identifier.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_product_page(
+#'   PortalProductId = "string",
+#'   ProductPageId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_delete_product_page
+#'
+#' @aliases apigatewayv2_delete_product_page
+apigatewayv2_delete_product_page <- function(PortalProductId, ProductPageId) {
+  op <- new_operation(
+    name = "DeleteProductPage",
+    http_method = "DELETE",
+    http_path = "/v2/portalproducts/{portalProductId}/productpages/{productPageId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$delete_product_page_input(PortalProductId = PortalProductId, ProductPageId = ProductPageId)
+  output <- .apigatewayv2$delete_product_page_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$delete_product_page <- apigatewayv2_delete_product_page
+
+#' Deletes a product REST endpoint page
+#'
+#' @description
+#' Deletes a product REST endpoint page.
+#'
+#' @usage
+#' apigatewayv2_delete_product_rest_endpoint_page(PortalProductId,
+#'   ProductRestEndpointPageId)
+#'
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#' @param ProductRestEndpointPageId &#91;required&#93; The product REST endpoint identifier.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_product_rest_endpoint_page(
+#'   PortalProductId = "string",
+#'   ProductRestEndpointPageId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_delete_product_rest_endpoint_page
+#'
+#' @aliases apigatewayv2_delete_product_rest_endpoint_page
+apigatewayv2_delete_product_rest_endpoint_page <- function(PortalProductId, ProductRestEndpointPageId) {
+  op <- new_operation(
+    name = "DeleteProductRestEndpointPage",
+    http_method = "DELETE",
+    http_path = "/v2/portalproducts/{portalProductId}/productrestendpointpages/{productRestEndpointPageId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$delete_product_rest_endpoint_page_input(PortalProductId = PortalProductId, ProductRestEndpointPageId = ProductRestEndpointPageId)
+  output <- .apigatewayv2$delete_product_rest_endpoint_page_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$delete_product_rest_endpoint_page <- apigatewayv2_delete_product_rest_endpoint_page
+
 #' Deletes a Route
 #'
 #' @description
@@ -1999,6 +2726,55 @@ apigatewayv2_delete_route_settings <- function(ApiId, RouteKey, StageName) {
 }
 .apigatewayv2$operations$delete_route_settings <- apigatewayv2_delete_route_settings
 
+#' Deletes a routing rule
+#'
+#' @description
+#' Deletes a routing rule.
+#'
+#' @usage
+#' apigatewayv2_delete_routing_rule(DomainName, DomainNameId,
+#'   RoutingRuleId)
+#'
+#' @param DomainName &#91;required&#93; The domain name.
+#' @param DomainNameId The domain name ID.
+#' @param RoutingRuleId &#91;required&#93; The routing rule ID.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_routing_rule(
+#'   DomainName = "string",
+#'   DomainNameId = "string",
+#'   RoutingRuleId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_delete_routing_rule
+#'
+#' @aliases apigatewayv2_delete_routing_rule
+apigatewayv2_delete_routing_rule <- function(DomainName, DomainNameId = NULL, RoutingRuleId) {
+  op <- new_operation(
+    name = "DeleteRoutingRule",
+    http_method = "DELETE",
+    http_path = "/v2/domainnames/{domainName}/routingrules/{routingRuleId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$delete_routing_rule_input(DomainName = DomainName, DomainNameId = DomainNameId, RoutingRuleId = RoutingRuleId)
+  output <- .apigatewayv2$delete_routing_rule_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$delete_routing_rule <- apigatewayv2_delete_routing_rule
+
 #' Deletes a Stage
 #'
 #' @description
@@ -2156,6 +2932,50 @@ apigatewayv2_export_api <- function(ApiId, ExportVersion = NULL, IncludeExtensio
   return(response)
 }
 .apigatewayv2$operations$export_api <- apigatewayv2_export_api
+
+#' Deletes the publication of a portal portal
+#'
+#' @description
+#' Deletes the publication of a portal portal.
+#'
+#' @usage
+#' apigatewayv2_disable_portal(PortalId)
+#'
+#' @param PortalId &#91;required&#93; The portal identifier.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disable_portal(
+#'   PortalId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_disable_portal
+#'
+#' @aliases apigatewayv2_disable_portal
+apigatewayv2_disable_portal <- function(PortalId) {
+  op <- new_operation(
+    name = "DisablePortal",
+    http_method = "DELETE",
+    http_path = "/v2/portals/{portalId}/publish",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$disable_portal_input(PortalId = PortalId)
+  output <- .apigatewayv2$disable_portal_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$disable_portal <- apigatewayv2_disable_portal
 
 #' Resets all authorizer cache entries on a stage
 #'
@@ -2790,6 +3610,7 @@ apigatewayv2_get_deployments <- function(ApiId, MaxResults = NULL, NextToken = N
 #' list(
 #'   ApiMappingSelectionExpression = "string",
 #'   DomainName = "string",
+#'   DomainNameArn = "string",
 #'   DomainNameConfigurations = list(
 #'     list(
 #'       ApiGatewayDomainName = "string",
@@ -2814,6 +3635,7 @@ apigatewayv2_get_deployments <- function(ApiId, MaxResults = NULL, NextToken = N
 #'       "string"
 #'     )
 #'   ),
+#'   RoutingMode = "API_MAPPING_ONLY"|"ROUTING_RULE_ONLY"|"ROUTING_RULE_THEN_API_MAPPING",
 #'   Tags = list(
 #'     "string"
 #'   )
@@ -2871,6 +3693,7 @@ apigatewayv2_get_domain_name <- function(DomainName) {
 #'     list(
 #'       ApiMappingSelectionExpression = "string",
 #'       DomainName = "string",
+#'       DomainNameArn = "string",
 #'       DomainNameConfigurations = list(
 #'         list(
 #'           ApiGatewayDomainName = "string",
@@ -2895,6 +3718,7 @@ apigatewayv2_get_domain_name <- function(DomainName) {
 #'           "string"
 #'         )
 #'       ),
+#'       RoutingMode = "API_MAPPING_ONLY"|"ROUTING_RULE_ONLY"|"ROUTING_RULE_THEN_API_MAPPING",
 #'       Tags = list(
 #'         "string"
 #'       )
@@ -3407,6 +4231,380 @@ apigatewayv2_get_models <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
 }
 .apigatewayv2$operations$get_models <- apigatewayv2_get_models
 
+#' Gets a portal
+#'
+#' @description
+#' Gets a portal.
+#'
+#' @usage
+#' apigatewayv2_get_portal(PortalId)
+#'
+#' @param PortalId &#91;required&#93; The portal identifier.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Authorization = list(
+#'     CognitoConfig = list(
+#'       AppClientId = "string",
+#'       UserPoolArn = "string",
+#'       UserPoolDomain = "string"
+#'     ),
+#'     None = list()
+#'   ),
+#'   EndpointConfiguration = list(
+#'     CertificateArn = "string",
+#'     DomainName = "string",
+#'     PortalDefaultDomainName = "string",
+#'     PortalDomainHostedZoneId = "string"
+#'   ),
+#'   IncludedPortalProductArns = list(
+#'     "string"
+#'   ),
+#'   LastModified = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastPublished = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastPublishedDescription = "string",
+#'   PortalArn = "string",
+#'   PortalContent = list(
+#'     Description = "string",
+#'     DisplayName = "string",
+#'     Theme = list(
+#'       CustomColors = list(
+#'         AccentColor = "string",
+#'         BackgroundColor = "string",
+#'         ErrorValidationColor = "string",
+#'         HeaderColor = "string",
+#'         NavigationColor = "string",
+#'         TextColor = "string"
+#'       ),
+#'       LogoLastUploaded = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   PortalId = "string",
+#'   Preview = list(
+#'     PreviewStatus = "PREVIEW_IN_PROGRESS"|"PREVIEW_FAILED"|"PREVIEW_READY",
+#'     PreviewUrl = "string",
+#'     StatusException = list(
+#'       Exception = "string",
+#'       Message = "string"
+#'     )
+#'   ),
+#'   PublishStatus = "PUBLISHED"|"PUBLISH_IN_PROGRESS"|"PUBLISH_FAILED"|"DISABLED",
+#'   RumAppMonitorName = "string",
+#'   StatusException = list(
+#'     Exception = "string",
+#'     Message = "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_portal(
+#'   PortalId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_get_portal
+#'
+#' @aliases apigatewayv2_get_portal
+apigatewayv2_get_portal <- function(PortalId) {
+  op <- new_operation(
+    name = "GetPortal",
+    http_method = "GET",
+    http_path = "/v2/portals/{portalId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$get_portal_input(PortalId = PortalId)
+  output <- .apigatewayv2$get_portal_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$get_portal <- apigatewayv2_get_portal
+
+#' Gets a portal product
+#'
+#' @description
+#' Gets a portal product.
+#'
+#' @usage
+#' apigatewayv2_get_portal_product(PortalProductId, ResourceOwnerAccountId)
+#'
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#' @param ResourceOwnerAccountId The account ID of the resource owner of the portal product.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Description = "string",
+#'   DisplayName = "string",
+#'   DisplayOrder = list(
+#'     Contents = list(
+#'       list(
+#'         ProductRestEndpointPageArns = list(
+#'           "string"
+#'         ),
+#'         SectionName = "string"
+#'       )
+#'     ),
+#'     OverviewPageArn = "string",
+#'     ProductPageArns = list(
+#'       "string"
+#'     )
+#'   ),
+#'   LastModified = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   PortalProductArn = "string",
+#'   PortalProductId = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_portal_product(
+#'   PortalProductId = "string",
+#'   ResourceOwnerAccountId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_get_portal_product
+#'
+#' @aliases apigatewayv2_get_portal_product
+apigatewayv2_get_portal_product <- function(PortalProductId, ResourceOwnerAccountId = NULL) {
+  op <- new_operation(
+    name = "GetPortalProduct",
+    http_method = "GET",
+    http_path = "/v2/portalproducts/{portalProductId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$get_portal_product_input(PortalProductId = PortalProductId, ResourceOwnerAccountId = ResourceOwnerAccountId)
+  output <- .apigatewayv2$get_portal_product_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$get_portal_product <- apigatewayv2_get_portal_product
+
+#' Gets the sharing policy for a portal product
+#'
+#' @description
+#' Gets the sharing policy for a portal product.
+#'
+#' @usage
+#' apigatewayv2_get_portal_product_sharing_policy(PortalProductId)
+#'
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PolicyDocument = "string",
+#'   PortalProductId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_portal_product_sharing_policy(
+#'   PortalProductId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_get_portal_product_sharing_policy
+#'
+#' @aliases apigatewayv2_get_portal_product_sharing_policy
+apigatewayv2_get_portal_product_sharing_policy <- function(PortalProductId) {
+  op <- new_operation(
+    name = "GetPortalProductSharingPolicy",
+    http_method = "GET",
+    http_path = "/v2/portalproducts/{portalProductId}/sharingpolicy",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$get_portal_product_sharing_policy_input(PortalProductId = PortalProductId)
+  output <- .apigatewayv2$get_portal_product_sharing_policy_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$get_portal_product_sharing_policy <- apigatewayv2_get_portal_product_sharing_policy
+
+#' Gets a product page of a portal product
+#'
+#' @description
+#' Gets a product page of a portal product.
+#'
+#' @usage
+#' apigatewayv2_get_product_page(PortalProductId, ProductPageId,
+#'   ResourceOwnerAccountId)
+#'
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#' @param ProductPageId &#91;required&#93; The portal product identifier.
+#' @param ResourceOwnerAccountId The account ID of the resource owner of the portal product.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DisplayContent = list(
+#'     Body = "string",
+#'     Title = "string"
+#'   ),
+#'   LastModified = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ProductPageArn = "string",
+#'   ProductPageId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_product_page(
+#'   PortalProductId = "string",
+#'   ProductPageId = "string",
+#'   ResourceOwnerAccountId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_get_product_page
+#'
+#' @aliases apigatewayv2_get_product_page
+apigatewayv2_get_product_page <- function(PortalProductId, ProductPageId, ResourceOwnerAccountId = NULL) {
+  op <- new_operation(
+    name = "GetProductPage",
+    http_method = "GET",
+    http_path = "/v2/portalproducts/{portalProductId}/productpages/{productPageId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$get_product_page_input(PortalProductId = PortalProductId, ProductPageId = ProductPageId, ResourceOwnerAccountId = ResourceOwnerAccountId)
+  output <- .apigatewayv2$get_product_page_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$get_product_page <- apigatewayv2_get_product_page
+
+#' Gets a product REST endpoint page
+#'
+#' @description
+#' Gets a product REST endpoint page.
+#'
+#' @usage
+#' apigatewayv2_get_product_rest_endpoint_page(IncludeRawDisplayContent,
+#'   PortalProductId, ProductRestEndpointPageId, ResourceOwnerAccountId)
+#'
+#' @param IncludeRawDisplayContent The query parameter to include raw display content.
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#' @param ProductRestEndpointPageId &#91;required&#93; The product REST endpoint identifier.
+#' @param ResourceOwnerAccountId The account ID of the resource owner of the portal product.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DisplayContent = list(
+#'     Body = "string",
+#'     Endpoint = "string",
+#'     OperationName = "string"
+#'   ),
+#'   LastModified = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ProductRestEndpointPageArn = "string",
+#'   ProductRestEndpointPageId = "string",
+#'   RawDisplayContent = "string",
+#'   RestEndpointIdentifier = list(
+#'     IdentifierParts = list(
+#'       Method = "string",
+#'       Path = "string",
+#'       RestApiId = "string",
+#'       Stage = "string"
+#'     )
+#'   ),
+#'   Status = "AVAILABLE"|"IN_PROGRESS"|"FAILED",
+#'   StatusException = list(
+#'     Exception = "string",
+#'     Message = "string"
+#'   ),
+#'   TryItState = "ENABLED"|"DISABLED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_product_rest_endpoint_page(
+#'   IncludeRawDisplayContent = "string",
+#'   PortalProductId = "string",
+#'   ProductRestEndpointPageId = "string",
+#'   ResourceOwnerAccountId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_get_product_rest_endpoint_page
+#'
+#' @aliases apigatewayv2_get_product_rest_endpoint_page
+apigatewayv2_get_product_rest_endpoint_page <- function(IncludeRawDisplayContent = NULL, PortalProductId, ProductRestEndpointPageId, ResourceOwnerAccountId = NULL) {
+  op <- new_operation(
+    name = "GetProductRestEndpointPage",
+    http_method = "GET",
+    http_path = "/v2/portalproducts/{portalProductId}/productrestendpointpages/{productRestEndpointPageId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$get_product_rest_endpoint_page_input(IncludeRawDisplayContent = IncludeRawDisplayContent, PortalProductId = PortalProductId, ProductRestEndpointPageId = ProductRestEndpointPageId, ResourceOwnerAccountId = ResourceOwnerAccountId)
+  output <- .apigatewayv2$get_product_rest_endpoint_page_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$get_product_rest_endpoint_page <- apigatewayv2_get_product_rest_endpoint_page
+
 #' Gets a Route
 #'
 #' @description
@@ -3690,6 +4888,177 @@ apigatewayv2_get_routes <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
   return(response)
 }
 .apigatewayv2$operations$get_routes <- apigatewayv2_get_routes
+
+#' Gets a routing rule
+#'
+#' @description
+#' Gets a routing rule.
+#'
+#' @usage
+#' apigatewayv2_get_routing_rule(DomainName, DomainNameId, RoutingRuleId)
+#'
+#' @param DomainName &#91;required&#93; The domain name.
+#' @param DomainNameId The domain name ID.
+#' @param RoutingRuleId &#91;required&#93; The routing rule ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Actions = list(
+#'     list(
+#'       InvokeApi = list(
+#'         ApiId = "string",
+#'         Stage = "string",
+#'         StripBasePath = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   Conditions = list(
+#'     list(
+#'       MatchBasePaths = list(
+#'         AnyOf = list(
+#'           "string"
+#'         )
+#'       ),
+#'       MatchHeaders = list(
+#'         AnyOf = list(
+#'           list(
+#'             Header = "string",
+#'             ValueGlob = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Priority = 123,
+#'   RoutingRuleArn = "string",
+#'   RoutingRuleId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_routing_rule(
+#'   DomainName = "string",
+#'   DomainNameId = "string",
+#'   RoutingRuleId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_get_routing_rule
+#'
+#' @aliases apigatewayv2_get_routing_rule
+apigatewayv2_get_routing_rule <- function(DomainName, DomainNameId = NULL, RoutingRuleId) {
+  op <- new_operation(
+    name = "GetRoutingRule",
+    http_method = "GET",
+    http_path = "/v2/domainnames/{domainName}/routingrules/{routingRuleId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$get_routing_rule_input(DomainName = DomainName, DomainNameId = DomainNameId, RoutingRuleId = RoutingRuleId)
+  output <- .apigatewayv2$get_routing_rule_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$get_routing_rule <- apigatewayv2_get_routing_rule
+
+#' Lists routing rules
+#'
+#' @description
+#' Lists routing rules.
+#'
+#' @usage
+#' apigatewayv2_list_routing_rules(DomainName, DomainNameId, MaxResults,
+#'   NextToken)
+#'
+#' @param DomainName &#91;required&#93; The domain name.
+#' @param DomainNameId The domain name ID.
+#' @param MaxResults The maximum number of elements to be returned for this resource.
+#' @param NextToken The next page of elements from this collection. Not valid for the last
+#' element of the collection.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   RoutingRules = list(
+#'     list(
+#'       Actions = list(
+#'         list(
+#'           InvokeApi = list(
+#'             ApiId = "string",
+#'             Stage = "string",
+#'             StripBasePath = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       Conditions = list(
+#'         list(
+#'           MatchBasePaths = list(
+#'             AnyOf = list(
+#'               "string"
+#'             )
+#'           ),
+#'           MatchHeaders = list(
+#'             AnyOf = list(
+#'               list(
+#'                 Header = "string",
+#'                 ValueGlob = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       Priority = 123,
+#'       RoutingRuleArn = "string",
+#'       RoutingRuleId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_routing_rules(
+#'   DomainName = "string",
+#'   DomainNameId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_list_routing_rules
+#'
+#' @aliases apigatewayv2_list_routing_rules
+apigatewayv2_list_routing_rules <- function(DomainName, DomainNameId = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListRoutingRules",
+    http_method = "GET",
+    http_path = "/v2/domainnames/{domainName}/routingrules",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RoutingRules"),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$list_routing_rules_input(DomainName = DomainName, DomainNameId = DomainNameId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .apigatewayv2$list_routing_rules_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$list_routing_rules <- apigatewayv2_list_routing_rules
 
 #' Gets a Stage
 #'
@@ -4164,6 +5533,589 @@ apigatewayv2_import_api <- function(Basepath = NULL, Body, FailOnWarnings = NULL
   return(response)
 }
 .apigatewayv2$operations$import_api <- apigatewayv2_import_api
+
+#' Lists portal products
+#'
+#' @description
+#' Lists portal products.
+#'
+#' @usage
+#' apigatewayv2_list_portal_products(MaxResults, NextToken, ResourceOwner)
+#'
+#' @param MaxResults The maximum number of elements to be returned for this resource.
+#' @param NextToken The next page of elements from this collection. Not valid for the last
+#' element of the collection.
+#' @param ResourceOwner The resource owner of the portal product.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       Description = "string",
+#'       DisplayName = "string",
+#'       LastModified = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PortalProductArn = "string",
+#'       PortalProductId = "string",
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_portal_products(
+#'   MaxResults = "string",
+#'   NextToken = "string",
+#'   ResourceOwner = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_list_portal_products
+#'
+#' @aliases apigatewayv2_list_portal_products
+apigatewayv2_list_portal_products <- function(MaxResults = NULL, NextToken = NULL, ResourceOwner = NULL) {
+  op <- new_operation(
+    name = "ListPortalProducts",
+    http_method = "GET",
+    http_path = "/v2/portalproducts",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$list_portal_products_input(MaxResults = MaxResults, NextToken = NextToken, ResourceOwner = ResourceOwner)
+  output <- .apigatewayv2$list_portal_products_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$list_portal_products <- apigatewayv2_list_portal_products
+
+#' Lists portals
+#'
+#' @description
+#' Lists portals.
+#'
+#' @usage
+#' apigatewayv2_list_portals(MaxResults, NextToken)
+#'
+#' @param MaxResults The maximum number of elements to be returned for this resource.
+#' @param NextToken The next page of elements from this collection. Not valid for the last
+#' element of the collection.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       Authorization = list(
+#'         CognitoConfig = list(
+#'           AppClientId = "string",
+#'           UserPoolArn = "string",
+#'           UserPoolDomain = "string"
+#'         ),
+#'         None = list()
+#'       ),
+#'       EndpointConfiguration = list(
+#'         CertificateArn = "string",
+#'         DomainName = "string",
+#'         PortalDefaultDomainName = "string",
+#'         PortalDomainHostedZoneId = "string"
+#'       ),
+#'       IncludedPortalProductArns = list(
+#'         "string"
+#'       ),
+#'       LastModified = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastPublished = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastPublishedDescription = "string",
+#'       PortalArn = "string",
+#'       PortalContent = list(
+#'         Description = "string",
+#'         DisplayName = "string",
+#'         Theme = list(
+#'           CustomColors = list(
+#'             AccentColor = "string",
+#'             BackgroundColor = "string",
+#'             ErrorValidationColor = "string",
+#'             HeaderColor = "string",
+#'             NavigationColor = "string",
+#'             TextColor = "string"
+#'           ),
+#'           LogoLastUploaded = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       PortalId = "string",
+#'       Preview = list(
+#'         PreviewStatus = "PREVIEW_IN_PROGRESS"|"PREVIEW_FAILED"|"PREVIEW_READY",
+#'         PreviewUrl = "string",
+#'         StatusException = list(
+#'           Exception = "string",
+#'           Message = "string"
+#'         )
+#'       ),
+#'       PublishStatus = "PUBLISHED"|"PUBLISH_IN_PROGRESS"|"PUBLISH_FAILED"|"DISABLED",
+#'       RumAppMonitorName = "string",
+#'       StatusException = list(
+#'         Exception = "string",
+#'         Message = "string"
+#'       ),
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_portals(
+#'   MaxResults = "string",
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_list_portals
+#'
+#' @aliases apigatewayv2_list_portals
+apigatewayv2_list_portals <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListPortals",
+    http_method = "GET",
+    http_path = "/v2/portals",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$list_portals_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .apigatewayv2$list_portals_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$list_portals <- apigatewayv2_list_portals
+
+#' Lists the product pages for a portal product
+#'
+#' @description
+#' Lists the product pages for a portal product.
+#'
+#' @usage
+#' apigatewayv2_list_product_pages(MaxResults, NextToken, PortalProductId,
+#'   ResourceOwnerAccountId)
+#'
+#' @param MaxResults The maximum number of elements to be returned for this resource.
+#' @param NextToken The next page of elements from this collection. Not valid for the last
+#' element of the collection.
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#' @param ResourceOwnerAccountId The account ID of the resource owner of the portal product.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       LastModified = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PageTitle = "string",
+#'       ProductPageArn = "string",
+#'       ProductPageId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_product_pages(
+#'   MaxResults = "string",
+#'   NextToken = "string",
+#'   PortalProductId = "string",
+#'   ResourceOwnerAccountId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_list_product_pages
+#'
+#' @aliases apigatewayv2_list_product_pages
+apigatewayv2_list_product_pages <- function(MaxResults = NULL, NextToken = NULL, PortalProductId, ResourceOwnerAccountId = NULL) {
+  op <- new_operation(
+    name = "ListProductPages",
+    http_method = "GET",
+    http_path = "/v2/portalproducts/{portalProductId}/productpages",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$list_product_pages_input(MaxResults = MaxResults, NextToken = NextToken, PortalProductId = PortalProductId, ResourceOwnerAccountId = ResourceOwnerAccountId)
+  output <- .apigatewayv2$list_product_pages_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$list_product_pages <- apigatewayv2_list_product_pages
+
+#' Lists the product REST endpoint pages of a portal product
+#'
+#' @description
+#' Lists the product REST endpoint pages of a portal product.
+#'
+#' @usage
+#' apigatewayv2_list_product_rest_endpoint_pages(MaxResults, NextToken,
+#'   PortalProductId, ResourceOwnerAccountId)
+#'
+#' @param MaxResults The maximum number of elements to be returned for this resource.
+#' @param NextToken The next page of elements from this collection. Not valid for the last
+#' element of the collection.
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#' @param ResourceOwnerAccountId The account ID of the resource owner of the portal product.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       Endpoint = "string",
+#'       LastModified = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       OperationName = "string",
+#'       ProductRestEndpointPageArn = "string",
+#'       ProductRestEndpointPageId = "string",
+#'       RestEndpointIdentifier = list(
+#'         IdentifierParts = list(
+#'           Method = "string",
+#'           Path = "string",
+#'           RestApiId = "string",
+#'           Stage = "string"
+#'         )
+#'       ),
+#'       Status = "AVAILABLE"|"IN_PROGRESS"|"FAILED",
+#'       StatusException = list(
+#'         Exception = "string",
+#'         Message = "string"
+#'       ),
+#'       TryItState = "ENABLED"|"DISABLED"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_product_rest_endpoint_pages(
+#'   MaxResults = "string",
+#'   NextToken = "string",
+#'   PortalProductId = "string",
+#'   ResourceOwnerAccountId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_list_product_rest_endpoint_pages
+#'
+#' @aliases apigatewayv2_list_product_rest_endpoint_pages
+apigatewayv2_list_product_rest_endpoint_pages <- function(MaxResults = NULL, NextToken = NULL, PortalProductId, ResourceOwnerAccountId = NULL) {
+  op <- new_operation(
+    name = "ListProductRestEndpointPages",
+    http_method = "GET",
+    http_path = "/v2/portalproducts/{portalProductId}/productrestendpointpages",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$list_product_rest_endpoint_pages_input(MaxResults = MaxResults, NextToken = NextToken, PortalProductId = PortalProductId, ResourceOwnerAccountId = ResourceOwnerAccountId)
+  output <- .apigatewayv2$list_product_rest_endpoint_pages_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$list_product_rest_endpoint_pages <- apigatewayv2_list_product_rest_endpoint_pages
+
+#' Creates a portal preview
+#'
+#' @description
+#' Creates a portal preview.
+#'
+#' @usage
+#' apigatewayv2_preview_portal(PortalId)
+#'
+#' @param PortalId &#91;required&#93; The portal identifier.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$preview_portal(
+#'   PortalId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_preview_portal
+#'
+#' @aliases apigatewayv2_preview_portal
+apigatewayv2_preview_portal <- function(PortalId) {
+  op <- new_operation(
+    name = "PreviewPortal",
+    http_method = "POST",
+    http_path = "/v2/portals/{portalId}/preview",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$preview_portal_input(PortalId = PortalId)
+  output <- .apigatewayv2$preview_portal_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$preview_portal <- apigatewayv2_preview_portal
+
+#' Publishes a portal
+#'
+#' @description
+#' Publishes a portal.
+#'
+#' @usage
+#' apigatewayv2_publish_portal(Description, PortalId)
+#'
+#' @param Description The description of the portal. When the portal is published, this
+#' description becomes the last published description.
+#' @param PortalId &#91;required&#93; The portal identifier.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$publish_portal(
+#'   Description = "string",
+#'   PortalId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_publish_portal
+#'
+#' @aliases apigatewayv2_publish_portal
+apigatewayv2_publish_portal <- function(Description = NULL, PortalId) {
+  op <- new_operation(
+    name = "PublishPortal",
+    http_method = "POST",
+    http_path = "/v2/portals/{portalId}/publish",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$publish_portal_input(Description = Description, PortalId = PortalId)
+  output <- .apigatewayv2$publish_portal_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$publish_portal <- apigatewayv2_publish_portal
+
+#' Updates the sharing policy for a portal product
+#'
+#' @description
+#' Updates the sharing policy for a portal product.
+#'
+#' @usage
+#' apigatewayv2_put_portal_product_sharing_policy(PolicyDocument,
+#'   PortalProductId)
+#'
+#' @param PolicyDocument &#91;required&#93; The product sharing policy.
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_portal_product_sharing_policy(
+#'   PolicyDocument = "string",
+#'   PortalProductId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_put_portal_product_sharing_policy
+#'
+#' @aliases apigatewayv2_put_portal_product_sharing_policy
+apigatewayv2_put_portal_product_sharing_policy <- function(PolicyDocument, PortalProductId) {
+  op <- new_operation(
+    name = "PutPortalProductSharingPolicy",
+    http_method = "PUT",
+    http_path = "/v2/portalproducts/{portalProductId}/sharingpolicy",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$put_portal_product_sharing_policy_input(PolicyDocument = PolicyDocument, PortalProductId = PortalProductId)
+  output <- .apigatewayv2$put_portal_product_sharing_policy_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$put_portal_product_sharing_policy <- apigatewayv2_put_portal_product_sharing_policy
+
+#' Updates a routing rule
+#'
+#' @description
+#' Updates a routing rule.
+#'
+#' @usage
+#' apigatewayv2_put_routing_rule(Actions, Conditions, DomainName,
+#'   DomainNameId, Priority, RoutingRuleId)
+#'
+#' @param Actions &#91;required&#93; The routing rule action.
+#' @param Conditions &#91;required&#93; The routing rule condition.
+#' @param DomainName &#91;required&#93; The domain name.
+#' @param DomainNameId The domain name ID.
+#' @param Priority &#91;required&#93; The routing rule priority.
+#' @param RoutingRuleId &#91;required&#93; The routing rule ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Actions = list(
+#'     list(
+#'       InvokeApi = list(
+#'         ApiId = "string",
+#'         Stage = "string",
+#'         StripBasePath = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   Conditions = list(
+#'     list(
+#'       MatchBasePaths = list(
+#'         AnyOf = list(
+#'           "string"
+#'         )
+#'       ),
+#'       MatchHeaders = list(
+#'         AnyOf = list(
+#'           list(
+#'             Header = "string",
+#'             ValueGlob = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Priority = 123,
+#'   RoutingRuleArn = "string",
+#'   RoutingRuleId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_routing_rule(
+#'   Actions = list(
+#'     list(
+#'       InvokeApi = list(
+#'         ApiId = "string",
+#'         Stage = "string",
+#'         StripBasePath = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   Conditions = list(
+#'     list(
+#'       MatchBasePaths = list(
+#'         AnyOf = list(
+#'           "string"
+#'         )
+#'       ),
+#'       MatchHeaders = list(
+#'         AnyOf = list(
+#'           list(
+#'             Header = "string",
+#'             ValueGlob = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   DomainName = "string",
+#'   DomainNameId = "string",
+#'   Priority = 123,
+#'   RoutingRuleId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_put_routing_rule
+#'
+#' @aliases apigatewayv2_put_routing_rule
+apigatewayv2_put_routing_rule <- function(Actions, Conditions, DomainName, DomainNameId = NULL, Priority, RoutingRuleId) {
+  op <- new_operation(
+    name = "PutRoutingRule",
+    http_method = "PUT",
+    http_path = "/v2/domainnames/{domainName}/routingrules/{routingRuleId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$put_routing_rule_input(Actions = Actions, Conditions = Conditions, DomainName = DomainName, DomainNameId = DomainNameId, Priority = Priority, RoutingRuleId = RoutingRuleId)
+  output <- .apigatewayv2$put_routing_rule_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$put_routing_rule <- apigatewayv2_put_routing_rule
 
 #' Puts an Api resource
 #'
@@ -4798,11 +6750,12 @@ apigatewayv2_update_deployment <- function(ApiId, DeploymentId, Description = NU
 #'
 #' @usage
 #' apigatewayv2_update_domain_name(DomainName, DomainNameConfigurations,
-#'   MutualTlsAuthentication)
+#'   MutualTlsAuthentication, RoutingMode)
 #'
 #' @param DomainName &#91;required&#93; The domain name.
 #' @param DomainNameConfigurations The domain name configurations.
 #' @param MutualTlsAuthentication The mutual TLS authentication configuration for a custom domain name.
+#' @param RoutingMode The routing mode.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4810,6 +6763,7 @@ apigatewayv2_update_deployment <- function(ApiId, DeploymentId, Description = NU
 #' list(
 #'   ApiMappingSelectionExpression = "string",
 #'   DomainName = "string",
+#'   DomainNameArn = "string",
 #'   DomainNameConfigurations = list(
 #'     list(
 #'       ApiGatewayDomainName = "string",
@@ -4834,6 +6788,7 @@ apigatewayv2_update_deployment <- function(ApiId, DeploymentId, Description = NU
 #'       "string"
 #'     )
 #'   ),
+#'   RoutingMode = "API_MAPPING_ONLY"|"ROUTING_RULE_ONLY"|"ROUTING_RULE_THEN_API_MAPPING",
 #'   Tags = list(
 #'     "string"
 #'   )
@@ -4864,7 +6819,8 @@ apigatewayv2_update_deployment <- function(ApiId, DeploymentId, Description = NU
 #'   MutualTlsAuthentication = list(
 #'     TruststoreUri = "string",
 #'     TruststoreVersion = "string"
-#'   )
+#'   ),
+#'   RoutingMode = "API_MAPPING_ONLY"|"ROUTING_RULE_ONLY"|"ROUTING_RULE_THEN_API_MAPPING"
 #' )
 #' ```
 #'
@@ -4873,7 +6829,7 @@ apigatewayv2_update_deployment <- function(ApiId, DeploymentId, Description = NU
 #' @rdname apigatewayv2_update_domain_name
 #'
 #' @aliases apigatewayv2_update_domain_name
-apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations = NULL, MutualTlsAuthentication = NULL) {
+apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations = NULL, MutualTlsAuthentication = NULL, RoutingMode = NULL) {
   op <- new_operation(
     name = "UpdateDomainName",
     http_method = "PATCH",
@@ -4882,7 +6838,7 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .apigatewayv2$update_domain_name_input(DomainName = DomainName, DomainNameConfigurations = DomainNameConfigurations, MutualTlsAuthentication = MutualTlsAuthentication)
+  input <- .apigatewayv2$update_domain_name_input(DomainName = DomainName, DomainNameConfigurations = DomainNameConfigurations, MutualTlsAuthentication = MutualTlsAuthentication, RoutingMode = RoutingMode)
   output <- .apigatewayv2$update_domain_name_output()
   config <- get_config()
   svc <- .apigatewayv2$service(config, op)
@@ -5308,6 +7264,403 @@ apigatewayv2_update_model <- function(ApiId, ContentType = NULL, Description = N
   return(response)
 }
 .apigatewayv2$operations$update_model <- apigatewayv2_update_model
+
+#' Updates a portal
+#'
+#' @description
+#' Updates a portal.
+#'
+#' @usage
+#' apigatewayv2_update_portal(Authorization, EndpointConfiguration,
+#'   IncludedPortalProductArns, LogoUri, PortalContent, PortalId,
+#'   RumAppMonitorName)
+#'
+#' @param Authorization The authorization of the portal.
+#' @param EndpointConfiguration Represents an endpoint configuration.
+#' @param IncludedPortalProductArns The ARNs of the portal products included in the portal.
+#' @param LogoUri The logo URI.
+#' @param PortalContent Contains the content that is visible to portal consumers including the
+#' themes, display names, and description.
+#' @param PortalId &#91;required&#93; The portal identifier.
+#' @param RumAppMonitorName The CloudWatch RUM app monitor name.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Authorization = list(
+#'     CognitoConfig = list(
+#'       AppClientId = "string",
+#'       UserPoolArn = "string",
+#'       UserPoolDomain = "string"
+#'     ),
+#'     None = list()
+#'   ),
+#'   EndpointConfiguration = list(
+#'     CertificateArn = "string",
+#'     DomainName = "string",
+#'     PortalDefaultDomainName = "string",
+#'     PortalDomainHostedZoneId = "string"
+#'   ),
+#'   IncludedPortalProductArns = list(
+#'     "string"
+#'   ),
+#'   LastModified = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastPublished = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastPublishedDescription = "string",
+#'   PortalArn = "string",
+#'   PortalContent = list(
+#'     Description = "string",
+#'     DisplayName = "string",
+#'     Theme = list(
+#'       CustomColors = list(
+#'         AccentColor = "string",
+#'         BackgroundColor = "string",
+#'         ErrorValidationColor = "string",
+#'         HeaderColor = "string",
+#'         NavigationColor = "string",
+#'         TextColor = "string"
+#'       ),
+#'       LogoLastUploaded = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   PortalId = "string",
+#'   Preview = list(
+#'     PreviewStatus = "PREVIEW_IN_PROGRESS"|"PREVIEW_FAILED"|"PREVIEW_READY",
+#'     PreviewUrl = "string",
+#'     StatusException = list(
+#'       Exception = "string",
+#'       Message = "string"
+#'     )
+#'   ),
+#'   PublishStatus = "PUBLISHED"|"PUBLISH_IN_PROGRESS"|"PUBLISH_FAILED"|"DISABLED",
+#'   RumAppMonitorName = "string",
+#'   StatusException = list(
+#'     Exception = "string",
+#'     Message = "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_portal(
+#'   Authorization = list(
+#'     CognitoConfig = list(
+#'       AppClientId = "string",
+#'       UserPoolArn = "string",
+#'       UserPoolDomain = "string"
+#'     ),
+#'     None = list()
+#'   ),
+#'   EndpointConfiguration = list(
+#'     AcmManaged = list(
+#'       CertificateArn = "string",
+#'       DomainName = "string"
+#'     ),
+#'     None = list()
+#'   ),
+#'   IncludedPortalProductArns = list(
+#'     "string"
+#'   ),
+#'   LogoUri = "string",
+#'   PortalContent = list(
+#'     Description = "string",
+#'     DisplayName = "string",
+#'     Theme = list(
+#'       CustomColors = list(
+#'         AccentColor = "string",
+#'         BackgroundColor = "string",
+#'         ErrorValidationColor = "string",
+#'         HeaderColor = "string",
+#'         NavigationColor = "string",
+#'         TextColor = "string"
+#'       ),
+#'       LogoLastUploaded = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   PortalId = "string",
+#'   RumAppMonitorName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_update_portal
+#'
+#' @aliases apigatewayv2_update_portal
+apigatewayv2_update_portal <- function(Authorization = NULL, EndpointConfiguration = NULL, IncludedPortalProductArns = NULL, LogoUri = NULL, PortalContent = NULL, PortalId, RumAppMonitorName = NULL) {
+  op <- new_operation(
+    name = "UpdatePortal",
+    http_method = "PATCH",
+    http_path = "/v2/portals/{portalId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$update_portal_input(Authorization = Authorization, EndpointConfiguration = EndpointConfiguration, IncludedPortalProductArns = IncludedPortalProductArns, LogoUri = LogoUri, PortalContent = PortalContent, PortalId = PortalId, RumAppMonitorName = RumAppMonitorName)
+  output <- .apigatewayv2$update_portal_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$update_portal <- apigatewayv2_update_portal
+
+#' Updates the portal product
+#'
+#' @description
+#' Updates the portal product.
+#'
+#' @usage
+#' apigatewayv2_update_portal_product(Description, DisplayName,
+#'   DisplayOrder, PortalProductId)
+#'
+#' @param Description The description.
+#' @param DisplayName The displayName.
+#' @param DisplayOrder The display order.
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Description = "string",
+#'   DisplayName = "string",
+#'   DisplayOrder = list(
+#'     Contents = list(
+#'       list(
+#'         ProductRestEndpointPageArns = list(
+#'           "string"
+#'         ),
+#'         SectionName = "string"
+#'       )
+#'     ),
+#'     OverviewPageArn = "string",
+#'     ProductPageArns = list(
+#'       "string"
+#'     )
+#'   ),
+#'   LastModified = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   PortalProductArn = "string",
+#'   PortalProductId = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_portal_product(
+#'   Description = "string",
+#'   DisplayName = "string",
+#'   DisplayOrder = list(
+#'     Contents = list(
+#'       list(
+#'         ProductRestEndpointPageArns = list(
+#'           "string"
+#'         ),
+#'         SectionName = "string"
+#'       )
+#'     ),
+#'     OverviewPageArn = "string",
+#'     ProductPageArns = list(
+#'       "string"
+#'     )
+#'   ),
+#'   PortalProductId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_update_portal_product
+#'
+#' @aliases apigatewayv2_update_portal_product
+apigatewayv2_update_portal_product <- function(Description = NULL, DisplayName = NULL, DisplayOrder = NULL, PortalProductId) {
+  op <- new_operation(
+    name = "UpdatePortalProduct",
+    http_method = "PATCH",
+    http_path = "/v2/portalproducts/{portalProductId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$update_portal_product_input(Description = Description, DisplayName = DisplayName, DisplayOrder = DisplayOrder, PortalProductId = PortalProductId)
+  output <- .apigatewayv2$update_portal_product_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$update_portal_product <- apigatewayv2_update_portal_product
+
+#' Updates a product page of a portal product
+#'
+#' @description
+#' Updates a product page of a portal product.
+#'
+#' @usage
+#' apigatewayv2_update_product_page(DisplayContent, PortalProductId,
+#'   ProductPageId)
+#'
+#' @param DisplayContent The content of the product page.
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#' @param ProductPageId &#91;required&#93; The portal product identifier.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DisplayContent = list(
+#'     Body = "string",
+#'     Title = "string"
+#'   ),
+#'   LastModified = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ProductPageArn = "string",
+#'   ProductPageId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_product_page(
+#'   DisplayContent = list(
+#'     Body = "string",
+#'     Title = "string"
+#'   ),
+#'   PortalProductId = "string",
+#'   ProductPageId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_update_product_page
+#'
+#' @aliases apigatewayv2_update_product_page
+apigatewayv2_update_product_page <- function(DisplayContent = NULL, PortalProductId, ProductPageId) {
+  op <- new_operation(
+    name = "UpdateProductPage",
+    http_method = "PATCH",
+    http_path = "/v2/portalproducts/{portalProductId}/productpages/{productPageId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$update_product_page_input(DisplayContent = DisplayContent, PortalProductId = PortalProductId, ProductPageId = ProductPageId)
+  output <- .apigatewayv2$update_product_page_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$update_product_page <- apigatewayv2_update_product_page
+
+#' Updates a product REST endpoint page
+#'
+#' @description
+#' Updates a product REST endpoint page.
+#'
+#' @usage
+#' apigatewayv2_update_product_rest_endpoint_page(DisplayContent,
+#'   PortalProductId, ProductRestEndpointPageId, TryItState)
+#'
+#' @param DisplayContent The display content.
+#' @param PortalProductId &#91;required&#93; The portal product identifier.
+#' @param ProductRestEndpointPageId &#91;required&#93; The product REST endpoint identifier.
+#' @param TryItState The try it state of a product REST endpoint page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DisplayContent = list(
+#'     Body = "string",
+#'     Endpoint = "string",
+#'     OperationName = "string"
+#'   ),
+#'   LastModified = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ProductRestEndpointPageArn = "string",
+#'   ProductRestEndpointPageId = "string",
+#'   RestEndpointIdentifier = list(
+#'     IdentifierParts = list(
+#'       Method = "string",
+#'       Path = "string",
+#'       RestApiId = "string",
+#'       Stage = "string"
+#'     )
+#'   ),
+#'   Status = "AVAILABLE"|"IN_PROGRESS"|"FAILED",
+#'   StatusException = list(
+#'     Exception = "string",
+#'     Message = "string"
+#'   ),
+#'   TryItState = "ENABLED"|"DISABLED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_product_rest_endpoint_page(
+#'   DisplayContent = list(
+#'     None = list(),
+#'     Overrides = list(
+#'       Body = "string",
+#'       Endpoint = "string",
+#'       OperationName = "string"
+#'     )
+#'   ),
+#'   PortalProductId = "string",
+#'   ProductRestEndpointPageId = "string",
+#'   TryItState = "ENABLED"|"DISABLED"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_update_product_rest_endpoint_page
+#'
+#' @aliases apigatewayv2_update_product_rest_endpoint_page
+apigatewayv2_update_product_rest_endpoint_page <- function(DisplayContent = NULL, PortalProductId, ProductRestEndpointPageId, TryItState = NULL) {
+  op <- new_operation(
+    name = "UpdateProductRestEndpointPage",
+    http_method = "PATCH",
+    http_path = "/v2/portalproducts/{portalProductId}/productrestendpointpages/{productRestEndpointPageId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigatewayv2$update_product_rest_endpoint_page_input(DisplayContent = DisplayContent, PortalProductId = PortalProductId, ProductRestEndpointPageId = ProductRestEndpointPageId, TryItState = TryItState)
+  output <- .apigatewayv2$update_product_rest_endpoint_page_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$update_product_rest_endpoint_page <- apigatewayv2_update_product_rest_endpoint_page
 
 #' Updates a Route
 #'

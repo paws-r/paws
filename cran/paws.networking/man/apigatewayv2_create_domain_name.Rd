@@ -8,6 +8,7 @@ apigatewayv2_create_domain_name(
   DomainName,
   DomainNameConfigurations = NULL,
   MutualTlsAuthentication = NULL,
+  RoutingMode = NULL,
   Tags = NULL
 )
 }
@@ -17,6 +18,8 @@ apigatewayv2_create_domain_name(
 \item{DomainNameConfigurations}{The domain name configurations.}
 
 \item{MutualTlsAuthentication}{The mutual TLS authentication configuration for a custom domain name.}
+
+\item{RoutingMode}{The routing mode.}
 
 \item{Tags}{The collection of tags associated with a domain name.}
 }

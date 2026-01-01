@@ -6,22 +6,19 @@
 portal}
 \usage{
 workspacesweb_list_sessions(
-  maxResults = NULL,
-  nextToken = NULL,
   portalId,
+  username = NULL,
   sessionId = NULL,
   sortBy = NULL,
   status = NULL,
-  username = NULL
+  maxResults = NULL,
+  nextToken = NULL
 )
 }
 \arguments{
-\item{maxResults}{The maximum number of results to be included in the next page.}
-
-\item{nextToken}{The pagination token used to retrieve the next page of results for this
-operation.}
-
 \item{portalId}{[required] The ID of the web portal for the sessions.}
+
+\item{username}{The username of the session.}
 
 \item{sessionId}{The ID of the session.}
 
@@ -29,7 +26,10 @@ operation.}
 
 \item{status}{The status of the session.}
 
-\item{username}{The username of the session.}
+\item{maxResults}{The maximum number of results to be included in the next page.}
+
+\item{nextToken}{The pagination token used to retrieve the next page of results for this
+operation.}
 }
 \description{
 Lists information for multiple secure browser sessions from a specific portal.

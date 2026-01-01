@@ -16,7 +16,7 @@ quicksight_create_iam_policy_assignment(
 }
 \arguments{
 \item{AwsAccountId}{[required] The ID of the Amazon Web Services account where you want to assign an
-IAM policy to Amazon QuickSight users or groups.}
+IAM policy to Amazon Quick Sight users or groups.}
 
 \item{AssignmentName}{[required] The name of the assignment, also called a rule. The name must be unique
 within the Amazon Web Services account.}
@@ -31,16 +31,16 @@ source.
 creating the data source.
 }}
 
-\item{PolicyArn}{The ARN for the IAM policy to apply to the Amazon QuickSight users and
+\item{PolicyArn}{The ARN for the IAM policy to apply to the Amazon Quick Sight users and
 groups specified in this assignment.}
 
-\item{Identities}{The Amazon QuickSight users, groups, or both that you want to assign the
-policy to.}
+\item{Identities}{The Amazon Quick Sight users, groups, or both that you want to assign
+the policy to.}
 
 \item{Namespace}{[required] The namespace that contains the assignment.}
 }
 \description{
-Creates an assignment with one specified IAM policy, identified by its Amazon Resource Name (ARN). This policy assignment is attached to the specified groups or users of Amazon QuickSight. Assignment names are unique per Amazon Web Services account. To avoid overwriting rules in other namespaces, use assignment names that are unique.
+Creates an assignment with one specified IAM policy, identified by its Amazon Resource Name (ARN). This policy assignment is attached to the specified groups or users of Amazon Quick Sight. Assignment names are unique per Amazon Web Services account. To avoid overwriting rules in other namespaces, use assignment names that are unique.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_create_iam_policy_assignment/} for full documentation.
 }

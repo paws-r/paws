@@ -23,15 +23,16 @@ specify a port for a Gateway Load Balancer.}
 
 \item{Protocol}{The protocol for connections from clients to the load balancer.
 Application Load Balancers support the HTTP and HTTPS protocols. Network
-Load Balancers support the TCP, TLS, UDP, and TCP_UDP protocols. You
-can’t change the protocol to UDP or TCP_UDP if dual-stack mode is
-enabled. You can't specify a protocol for a Gateway Load Balancer.}
+Load Balancers support the TCP, TLS, UDP, TCP_UDP, QUIC, and TCP_QUIC
+protocols. You can’t change the protocol to UDP, TCP_UDP, QUIC, or
+TCP_QUIC if dual-stack mode is enabled. You can't specify a protocol for
+a Gateway Load Balancer.}
 
 \item{SslPolicy}{[HTTPS and TLS listeners] The security policy that defines which
 protocols and ciphers are supported.
 
-For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies}{Security policies}
-in the \emph{Application Load Balancers Guide} or \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/#describe-ssl-policies}{Security policies}
+For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/describe-ssl-policies.html}{Security policies}
+in the \emph{Application Load Balancers Guide} or \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/describe-ssl-policies.html}{Security policies}
 in the \emph{Network Load Balancers Guide}.}
 
 \item{Certificates}{[HTTPS and TLS listeners] The default certificate for the listener.
@@ -51,10 +52,10 @@ possible values:
 \item \code{None}
 }
 
-For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/#alpn-policies}{ALPN policies}
+For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html#alpn-policies}{ALPN policies}
 in the \emph{Network Load Balancers Guide}.}
 
-\item{MutualAuthentication}{The mutual authentication configuration information.}
+\item{MutualAuthentication}{[HTTPS listeners] The mutual authentication configuration information.}
 }
 \description{
 Replaces the specified properties of the specified listener. Any properties that you do not specify remain unchanged.

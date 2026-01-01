@@ -332,11 +332,16 @@ opensearchservice_cancel_service_software_update <- function(DomainName) {
 #' @param appConfigs Configuration settings for the OpenSearch application, including
 #' administrative options.
 #' @param tagList 
+#' @param kmsKeyArn The Amazon Resource Name (ARN) of the KMS key used to encrypt the
+#' application's data at rest. If provided, the application uses your
+#' customer-managed key for encryption. If omitted, the application uses an
+#' AWS-managed key. The KMS key must be in the same region as the
+#' application.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchservice_create_application
-opensearchservice_create_application <- function(clientToken = NULL, name, dataSources = NULL, iamIdentityCenterOptions = NULL, appConfigs = NULL, tagList = NULL) {
+opensearchservice_create_application <- function(clientToken = NULL, name, dataSources = NULL, iamIdentityCenterOptions = NULL, appConfigs = NULL, tagList = NULL, kmsKeyArn = NULL) {
   op <- new_operation(
     name = "CreateApplication",
     http_method = "POST",
@@ -345,7 +350,7 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchservice$create_application_input(clientToken = clientToken, name = name, dataSources = dataSources, iamIdentityCenterOptions = iamIdentityCenterOptions, appConfigs = appConfigs, tagList = tagList)
+  input <- .opensearchservice$create_application_input(clientToken = clientToken, name = name, dataSources = dataSources, iamIdentityCenterOptions = iamIdentityCenterOptions, appConfigs = appConfigs, tagList = tagList, kmsKeyArn = kmsKeyArn)
   output <- .opensearchservice$create_application_output()
   config <- get_config()
   svc <- .opensearchservice$service(config, op)
@@ -457,6 +462,44 @@ opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, Cl
   return(response)
 }
 .opensearchservice$operations$create_domain <- opensearchservice_create_domain
+
+#' Creates an OpenSearch index with optional automatic semantic enrichment
+#' for specified text fields
+#'
+#' @description
+#' Creates an OpenSearch index with optional automatic semantic enrichment for specified text fields. Automatic semantic enrichment enables semantic search capabilities without requiring machine learning expertise, improving search relevance by up to 20% by understanding search intent and contextual meaning beyond keyword matching. The semantic enrichment process has zero impact on search latency as sparse encodings are stored directly within the index during indexing. For more information, see [Automatic semantic enrichment](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/opensearch-semantic-enrichment.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_create_index/](https://www.paws-r-sdk.com/docs/opensearchservice_create_index/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; 
+#' @param IndexName &#91;required&#93; The name of the index to create. Must be between 1 and 255 characters
+#' and follow OpenSearch naming conventions.
+#' @param IndexSchema &#91;required&#93; The JSON schema defining index mappings, settings, and semantic
+#' enrichment configuration. The schema specifies which text fields should
+#' be automatically enriched for semantic search capabilities and includes
+#' OpenSearch index configuration parameters.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_create_index
+opensearchservice_create_index <- function(DomainName, IndexName, IndexSchema) {
+  op <- new_operation(
+    name = "CreateIndex",
+    http_method = "POST",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/index",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$create_index_input(DomainName = DomainName, IndexName = IndexName, IndexSchema = IndexSchema)
+  output <- .opensearchservice$create_index_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$create_index <- opensearchservice_create_index
 
 #' Creates a new cross-cluster search connection from a source Amazon
 #' OpenSearch Service domain to a destination domain
@@ -726,6 +769,38 @@ opensearchservice_delete_inbound_connection <- function(ConnectionId) {
   return(response)
 }
 .opensearchservice$operations$delete_inbound_connection <- opensearchservice_delete_inbound_connection
+
+#' Deletes an OpenSearch index
+#'
+#' @description
+#' Deletes an OpenSearch index. This operation permanently removes the index and cannot be undone.
+#'
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_delete_index/](https://www.paws-r-sdk.com/docs/opensearchservice_delete_index/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; 
+#' @param IndexName &#91;required&#93; The name of the index to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_delete_index
+opensearchservice_delete_index <- function(DomainName, IndexName) {
+  op <- new_operation(
+    name = "DeleteIndex",
+    http_method = "DELETE",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/index/{IndexName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$delete_index_input(DomainName = DomainName, IndexName = IndexName)
+  output <- .opensearchservice$delete_index_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$delete_index <- opensearchservice_delete_index
 
 #' Allows the source Amazon OpenSearch Service domain owner to delete an
 #' existing outbound cross-cluster search connection
@@ -1403,10 +1478,10 @@ opensearchservice_dissociate_package <- function(PackageID, DomainName) {
 }
 .opensearchservice$operations$dissociate_package <- opensearchservice_dissociate_package
 
-#' Dissociates multiple packages from a domain simulatneously
+#' Dissociates multiple packages from a domain simultaneously
 #'
 #' @description
-#' Dissociates multiple packages from a domain simulatneously.
+#' Dissociates multiple packages from a domain simultaneously.
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchservice_dissociate_packages/](https://www.paws-r-sdk.com/docs/opensearchservice_dissociate_packages/) for full documentation.
 #'
@@ -1532,6 +1607,37 @@ opensearchservice_get_data_source <- function(DomainName, Name) {
 }
 .opensearchservice$operations$get_data_source <- opensearchservice_get_data_source
 
+#' Gets the ARN of the current default application
+#'
+#' @description
+#' Gets the ARN of the current default application.
+#'
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_get_default_application_setting/](https://www.paws-r-sdk.com/docs/opensearchservice_get_default_application_setting/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_get_default_application_setting
+opensearchservice_get_default_application_setting <- function() {
+  op <- new_operation(
+    name = "GetDefaultApplicationSetting",
+    http_method = "GET",
+    http_path = "/2021-01-01/opensearch/defaultApplicationSetting",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$get_default_application_setting_input()
+  output <- .opensearchservice$get_default_application_setting_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$get_default_application_setting <- opensearchservice_get_default_application_setting
+
 #' Returns detailed configuration information for a specific direct query
 #' data source in Amazon OpenSearch Service
 #'
@@ -1596,6 +1702,39 @@ opensearchservice_get_domain_maintenance_status <- function(DomainName, Maintena
   return(response)
 }
 .opensearchservice$operations$get_domain_maintenance_status <- opensearchservice_get_domain_maintenance_status
+
+#' Retrieves information about an OpenSearch index including its schema and
+#' semantic enrichment configuration
+#'
+#' @description
+#' Retrieves information about an OpenSearch index including its schema and semantic enrichment configuration. Use this operation to view the current index structure and semantic search settings.
+#'
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_get_index/](https://www.paws-r-sdk.com/docs/opensearchservice_get_index/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; 
+#' @param IndexName &#91;required&#93; The name of the index to retrieve information about.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_get_index
+opensearchservice_get_index <- function(DomainName, IndexName) {
+  op <- new_operation(
+    name = "GetIndex",
+    http_method = "GET",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/index/{IndexName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$get_index_input(DomainName = DomainName, IndexName = IndexName)
+  output <- .opensearchservice$get_index_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$get_index <- opensearchservice_get_index
 
 #' Returns a list of Amazon OpenSearch Service package versions, along with
 #' their creation time, commit message, and plugin properties (if the
@@ -2262,6 +2401,39 @@ opensearchservice_purchase_reserved_instance_offering <- function(ReservedInstan
 }
 .opensearchservice$operations$purchase_reserved_instance_offering <- opensearchservice_purchase_reserved_instance_offering
 
+#' Sets the default application to the application with the specified ARN
+#'
+#' @description
+#' Sets the default application to the application with the specified ARN.
+#'
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_put_default_application_setting/](https://www.paws-r-sdk.com/docs/opensearchservice_put_default_application_setting/) for full documentation.
+#'
+#' @param applicationArn &#91;required&#93; 
+#' @param setAsDefault &#91;required&#93; Set to true to set the specified ARN as the default application. Set to
+#' false to clear the default application.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_put_default_application_setting
+opensearchservice_put_default_application_setting <- function(applicationArn, setAsDefault) {
+  op <- new_operation(
+    name = "PutDefaultApplicationSetting",
+    http_method = "PUT",
+    http_path = "/2021-01-01/opensearch/defaultApplicationSetting",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$put_default_application_setting_input(applicationArn = applicationArn, setAsDefault = setAsDefault)
+  output <- .opensearchservice$put_default_application_setting_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$put_default_application_setting <- opensearchservice_put_default_application_setting
+
 #' Allows the remote Amazon OpenSearch Service domain owner to reject an
 #' inbound cross-cluster connection request
 #'
@@ -2650,6 +2822,41 @@ opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = N
   return(response)
 }
 .opensearchservice$operations$update_domain_config <- opensearchservice_update_domain_config
+
+#' Updates an existing OpenSearch index schema and semantic enrichment
+#' configuration
+#'
+#' @description
+#' Updates an existing OpenSearch index schema and semantic enrichment configuration. This operation allows modification of field mappings and semantic search settings for text fields. Changes to semantic enrichment configuration will apply to newly ingested documents.
+#'
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_update_index/](https://www.paws-r-sdk.com/docs/opensearchservice_update_index/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; 
+#' @param IndexName &#91;required&#93; The name of the index to update.
+#' @param IndexSchema &#91;required&#93; The updated JSON schema for the index including any changes to mappings,
+#' settings, and semantic enrichment configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_update_index
+opensearchservice_update_index <- function(DomainName, IndexName, IndexSchema) {
+  op <- new_operation(
+    name = "UpdateIndex",
+    http_method = "PUT",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/index/{IndexName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$update_index_input(DomainName = DomainName, IndexName = IndexName, IndexSchema = IndexSchema)
+  output <- .opensearchservice$update_index_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$update_index <- opensearchservice_update_index
 
 #' Updates a package for use with Amazon OpenSearch Service domains
 #'

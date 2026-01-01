@@ -224,7 +224,7 @@ common errors.
 \link[=rekognition_get_face_search]{get_face_search} \tab Gets the face search results for Amazon Rekognition Video face search started by StartFaceSearch\cr
 \link[=rekognition_get_label_detection]{get_label_detection} \tab Gets the label detection results of a Amazon Rekognition Video analysis started by StartLabelDetection\cr
 \link[=rekognition_get_media_analysis_job]{get_media_analysis_job} \tab Retrieves the results for a given media analysis job\cr
-\link[=rekognition_get_person_tracking]{get_person_tracking} \tab Gets the path tracking results of a Amazon Rekognition Video analysis started by StartPersonTracking\cr
+\link[=rekognition_get_person_tracking]{get_person_tracking} \tab End of support notice: On October 31, 2025, AWS will discontinue support for Amazon Rekognition People Pathing\cr
 \link[=rekognition_get_segment_detection]{get_segment_detection} \tab Gets the segment detection results of a Amazon Rekognition Video analysis started by StartSegmentDetection\cr
 \link[=rekognition_get_text_detection]{get_text_detection} \tab Gets the text detection results of a Amazon Rekognition Video analysis started by StartTextDetection\cr
 \link[=rekognition_index_faces]{index_faces} \tab Detects faces in the input image and adds them to the specified collection\cr
@@ -249,7 +249,7 @@ common errors.
 \link[=rekognition_start_face_search]{start_face_search} \tab Starts the asynchronous search for faces in a collection that match the faces of persons detected in a stored video\cr
 \link[=rekognition_start_label_detection]{start_label_detection} \tab Starts asynchronous detection of labels in a stored video\cr
 \link[=rekognition_start_media_analysis_job]{start_media_analysis_job} \tab Initiates a new media analysis job\cr
-\link[=rekognition_start_person_tracking]{start_person_tracking} \tab Starts the asynchronous tracking of a person's path in a stored video\cr
+\link[=rekognition_start_person_tracking]{start_person_tracking} \tab End of support notice: On October 31, 2025, AWS will discontinue support for Amazon Rekognition People Pathing\cr
 \link[=rekognition_start_project_version]{start_project_version} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 \link[=rekognition_start_segment_detection]{start_segment_detection} \tab Starts asynchronous detection of segment detection in a stored video\cr
 \link[=rekognition_start_stream_processor]{start_stream_processor} \tab Starts processing a stream processor\cr

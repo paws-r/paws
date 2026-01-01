@@ -26,7 +26,7 @@ NULL
 #' To install the Software Development Kits (SDKs), Integrated Development
 #' Environment (IDE) Toolkits, and command line tools that you can use to
 #' access the API, see [Tools for Amazon Web
-#' Services](https://aws.amazon.com/developer/tools/).
+#' Services](https://builder.aws.com/build/tools).
 #' 
 #' **Endpoints**
 #' 

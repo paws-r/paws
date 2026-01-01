@@ -61,7 +61,9 @@ A name must \emph{not} contain:
 \item brackets \verb{< > \{ \} [ ]}
 \item wildcard characters \verb{? *}
 \item special characters \verb{\\" # \% \\ ^ | ~ \\` $ & , ; : /}
-\item control characters (\verb{U+0000-001F}, \verb{U+007F-009F})
+\item control characters (\verb{U+0000-001F}, \verb{U+007F-009F}, \code{U+FFFE-FFFF})
+\item surrogates (\code{U+D800-DFFF})
+\item invalid characters (\verb{ U+10FFFF})
 }
 
 To enable logging with CloudWatch Logs, the name should only contain
@@ -72,16 +74,25 @@ To enable logging with CloudWatch Logs, the name should only contain
 \item{input}{The string that contains the JSON input data for the execution, for
 example:
 
-\verb{"input": "\{\\"first_name\\" : \\"test\\"\}"}
+\verb{"\{\\"first_name\\" : \\"Alejandro\\"\}"}
 
 If you don't include any JSON input data, you still must include the two
-braces, for example: \code{"input": "{}"}
+braces, for example: \code{"{}"}
 
 Length constraints apply to the payload size, and are expressed as bytes
 in UTF-8 encoding.}
 
 \item{traceHeader}{Passes the X-Ray trace header. The trace header can also be passed in
-the request payload.}
+the request payload.
+
+For X-Ray traces, all Amazon Web Services services use the
+\code{X-Amzn-Trace-Id} header from the HTTP request. Using the header is the
+preferred mechanism to identify a trace.
+\code{\link[=sfn_start_execution]{start_execution}} and
+\code{\link[=sfn_start_sync_execution]{start_sync_execution}} API operations can
+also use \code{traceHeader} from the body of the request payload. If \strong{both}
+sources are provided, Step Functions will use the \strong{header value}
+(preferred) over the value in the request body.}
 }
 \description{
 Starts a state machine execution.

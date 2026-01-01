@@ -53,7 +53,10 @@ must be the Outposts access point ARN or the access point alias. For
 more information about S3 on Outposts, see \href{https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
-\item{Delimiter}{A delimiter is a character that you use to group keys.}
+\item{Delimiter}{A delimiter is a character that you use to group keys.
+
+\code{CommonPrefixes} is filtered out from results if it is not
+lexicographically greater than the key-marker.}
 
 \item{EncodingType}{}
 

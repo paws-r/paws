@@ -4,7 +4,11 @@
 \alias{cleanroomsml_get_trained_model}
 \title{Returns information about a trained model}
 \usage{
-cleanroomsml_get_trained_model(trainedModelArn, membershipIdentifier)
+cleanroomsml_get_trained_model(
+  trainedModelArn,
+  membershipIdentifier,
+  versionIdentifier = NULL
+)
 }
 \arguments{
 \item{trainedModelArn}{[required] The Amazon Resource Name (ARN) of the trained model that you are
@@ -12,6 +16,10 @@ interested in.}
 
 \item{membershipIdentifier}{[required] The membership ID of the member that created the trained model that you
 are interested in.}
+
+\item{versionIdentifier}{The version identifier of the trained model to retrieve. If not
+specified, the operation returns information about the latest version of
+the trained model.}
 }
 \description{
 Returns information about a trained model.

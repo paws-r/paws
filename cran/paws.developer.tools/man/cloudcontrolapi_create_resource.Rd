@@ -61,7 +61,7 @@ For more information, see \href{https://docs.aws.amazon.com/cloudcontrolapi/late
 in the \emph{Amazon Web Services Cloud Control API User Guide}.
 
 For more information about the properties of a specific resource, refer
-to the related topic for the resource in the \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html}{Resource and property types reference}
+to the related topic for the resource in the \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-template-resource-type-ref.html}{Resource and property types reference}
 in the \emph{CloudFormation Users Guide}.}
 }
 \description{

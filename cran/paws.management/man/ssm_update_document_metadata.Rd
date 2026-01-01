@@ -2,8 +2,8 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_update_document_metadata}
 \alias{ssm_update_document_metadata}
-\title{Updates information related to approval reviews for a specific version
-of a change template in Change Manager}
+\title{Amazon Web Services Systems Manager Change Manager will no longer be
+open to new customers starting November 7, 2025}
 \usage{
 ssm_update_document_metadata(Name, DocumentVersion = NULL, DocumentReviews)
 }
@@ -16,7 +16,7 @@ updated.}
 \item{DocumentReviews}{[required] The change template review details to update.}
 }
 \description{
-Updates information related to approval reviews for a specific version of a change template in Change Manager.
+Amazon Web Services Systems Manager Change Manager will no longer be open to new customers starting November 7, 2025. If you would like to use Change Manager, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/change-manager-availability-change.html}{Amazon Web Services Systems Manager Change Manager availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/ssm_update_document_metadata/} for full documentation.
 }

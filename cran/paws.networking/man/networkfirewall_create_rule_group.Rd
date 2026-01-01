@@ -16,7 +16,8 @@ networkfirewall_create_rule_group(
   DryRun = NULL,
   EncryptionConfiguration = NULL,
   SourceMetadata = NULL,
-  AnalyzeRuleGroup = NULL
+  AnalyzeRuleGroup = NULL,
+  SummaryConfiguration = NULL
 )
 }
 \arguments{
@@ -118,6 +119,16 @@ rules in the rule group for rule behavior such as asymmetric routing. If
 set to \code{TRUE}, Network Firewall runs the analysis and then creates the
 rule group for you. To run the stateless rule group analyzer without
 creating the rule group, set \code{DryRun} to \code{TRUE}.}
+
+\item{SummaryConfiguration}{An object that contains a \code{RuleOptions} array of strings. You use
+\code{RuleOptions} to determine which of the following RuleSummary values are
+returned in response to
+\code{\link[=networkfirewall_describe_rule_group_summary]{describe_rule_group_summary}}.
+\itemize{
+\item \code{Metadata} - returns
+\item \code{Msg}
+\item \code{SID}
+}}
 }
 \description{
 Creates the specified stateless or stateful rule group, which includes the rules for network traffic inspection, a capacity setting, and tags.

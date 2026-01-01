@@ -136,7 +136,9 @@ NULL
 #'  \link[=athena_get_query_execution]{get_query_execution} \tab Returns information about a single execution of a query if you have access to the workgroup in which the query ran\cr
 #'  \link[=athena_get_query_results]{get_query_results} \tab Streams the results of a single query execution specified by QueryExecutionId from the Athena query results location in Amazon S3\cr
 #'  \link[=athena_get_query_runtime_statistics]{get_query_runtime_statistics} \tab Returns query execution runtime statistics related to a single execution of a query if you have access to the workgroup in which the query ran\cr
+#'  \link[=athena_get_resource_dashboard]{get_resource_dashboard} \tab Gets the Live UI/Persistence UI for a session\cr
 #'  \link[=athena_get_session]{get_session} \tab Gets the full details of a previously created session, including the session status and configuration\cr
+#'  \link[=athena_get_session_endpoint]{get_session_endpoint} \tab Gets a connection endpoint and authentication token for a given session Id\cr
 #'  \link[=athena_get_session_status]{get_session_status} \tab Gets the current status of a session\cr
 #'  \link[=athena_get_table_metadata]{get_table_metadata} \tab Returns table metadata for the specified catalog, database, and table\cr
 #'  \link[=athena_get_work_group]{get_work_group} \tab Returns information about the workgroup with the specified name\cr

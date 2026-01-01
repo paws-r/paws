@@ -31,21 +31,91 @@ uses:
 failed deliveries to HTTP/S endpoints.
 \item \code{DisplayName} – The display name to use for a topic with SMS
 subscriptions.
-\item \code{FifoTopic} – Set to true to create a FIFO topic.
 \item \code{Policy} – The policy that defines who can access your topic. By
 default, only the topic owner can publish or subscribe to the topic.
-\item \code{SignatureVersion} – The signature version corresponds to the
-hashing algorithm used while creating the signature of the
-notifications, subscription confirmations, or unsubscribe
-confirmation messages sent by Amazon SNS. By default,
-\code{SignatureVersion} is set to \code{1}.
 \item \code{TracingConfig} – Tracing mode of an Amazon SNS topic. By default
 \code{TracingConfig} is set to \code{PassThrough}, and the topic passes
 through the tracing header it receives from an Amazon SNS publisher
 to its subscriptions. If set to \code{Active}, Amazon SNS will vend X-Ray
 segment data to topic owner account if the sampled flag in the
 tracing header is true. This is only supported on standard topics.
+\item HTTP
+\itemize{
+\item \code{HTTPSuccessFeedbackRoleArn} – Indicates successful message
+delivery status for an Amazon SNS topic that is subscribed to an
+HTTP endpoint.
+\item \code{HTTPSuccessFeedbackSampleRate} – Indicates percentage of
+successful messages to sample for an Amazon SNS topic that is
+subscribed to an HTTP endpoint.
+\item \code{HTTPFailureFeedbackRoleArn} – Indicates failed message delivery
+status for an Amazon SNS topic that is subscribed to an HTTP
+endpoint.
 }
+\item Amazon Data Firehose
+\itemize{
+\item \code{FirehoseSuccessFeedbackRoleArn} – Indicates successful message
+delivery status for an Amazon SNS topic that is subscribed to an
+Amazon Data Firehose endpoint.
+\item \code{FirehoseSuccessFeedbackSampleRate} – Indicates percentage of
+successful messages to sample for an Amazon SNS topic that is
+subscribed to an Amazon Data Firehose endpoint.
+\item \code{FirehoseFailureFeedbackRoleArn} – Indicates failed message
+delivery status for an Amazon SNS topic that is subscribed to an
+Amazon Data Firehose endpoint.
+}
+\item Lambda
+\itemize{
+\item \code{LambdaSuccessFeedbackRoleArn} – Indicates successful message
+delivery status for an Amazon SNS topic that is subscribed to an
+Lambda endpoint.
+\item \code{LambdaSuccessFeedbackSampleRate} – Indicates percentage of
+successful messages to sample for an Amazon SNS topic that is
+subscribed to an Lambda endpoint.
+\item \code{LambdaFailureFeedbackRoleArn} – Indicates failed message
+delivery status for an Amazon SNS topic that is subscribed to an
+Lambda endpoint.
+}
+\item Platform application endpoint
+\itemize{
+\item \code{ApplicationSuccessFeedbackRoleArn} – Indicates successful
+message delivery status for an Amazon SNS topic that is
+subscribed to a platform application endpoint.
+\item \code{ApplicationSuccessFeedbackSampleRate} – Indicates percentage of
+successful messages to sample for an Amazon SNS topic that is
+subscribed to an platform application endpoint.
+\item \code{ApplicationFailureFeedbackRoleArn} – Indicates failed message
+delivery status for an Amazon SNS topic that is subscribed to an
+platform application endpoint.
+}
+
+In addition to being able to configure topic attributes for message
+delivery status of notification messages sent to Amazon SNS
+application endpoints, you can also configure application attributes
+for the delivery status of push notification messages sent to push
+notification services.
+
+For example, For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-msg-status.html}{Using Amazon SNS Application Attributes for Message Delivery Status}.
+\item Amazon SQS
+\itemize{
+\item \code{SQSSuccessFeedbackRoleArn} – Indicates successful message
+delivery status for an Amazon SNS topic that is subscribed to an
+Amazon SQS endpoint.
+\item \code{SQSSuccessFeedbackSampleRate} – Indicates percentage of
+successful messages to sample for an Amazon SNS topic that is
+subscribed to an Amazon SQS endpoint.
+\item \code{SQSFailureFeedbackRoleArn} – Indicates failed message delivery
+status for an Amazon SNS topic that is subscribed to an Amazon
+SQS endpoint.
+}
+}
+
+The \<ENDPOINT\>SuccessFeedbackRoleArn and
+\<ENDPOINT\>FailureFeedbackRoleArn attributes are used to give Amazon
+SNS write access to use CloudWatch Logs on your behalf. The
+\<ENDPOINT\>SuccessFeedbackSampleRate attribute is for specifying the
+sample rate percentage (0-100) of successfully delivered messages. After
+you configure the \<ENDPOINT\>FailureFeedbackRoleArn attribute, then all
+failed message deliveries generate CloudWatch Logs.
 
 The following attribute applies only to \href{https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html}{server-side encryption}:
 \itemize{

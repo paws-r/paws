@@ -20,8 +20,7 @@ you have the required permissions, the error response is
 
 \item{IpamResourceDiscoveryIds}{The IPAM resource discovery IDs.}
 
-\item{NextToken}{Specify the pagination token from a previous request to retrieve the
-next page of results.}
+\item{NextToken}{The token for the next page of results.}
 
 \item{MaxResults}{The maximum number of resource discoveries to return in one page of
 results.}

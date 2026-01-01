@@ -201,6 +201,7 @@ the user guide.
 \link[paws.database:rds_describe_db_instance_automated_backups]{describe_db_instance_automated_backups} \tab Displays backups for both current and deleted instances\cr
 \link[paws.database:rds_describe_db_instances]{describe_db_instances} \tab Describes provisioned RDS instances\cr
 \link[paws.database:rds_describe_db_log_files]{describe_db_log_files} \tab Returns a list of DB log files for the DB instance\cr
+\link[paws.database:rds_describe_db_major_engine_versions]{describe_db_major_engine_versions} \tab Describes the properties of specific major versions of DB engines\cr
 \link[paws.database:rds_describe_db_parameter_groups]{describe_db_parameter_groups} \tab Returns a list of DBParameterGroup descriptions\cr
 \link[paws.database:rds_describe_db_parameters]{describe_db_parameters} \tab Returns the detailed parameter list for a particular DB parameter group\cr
 \link[paws.database:rds_describe_db_proxies]{describe_db_proxies} \tab Returns information about DB proxies\cr

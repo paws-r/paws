@@ -1017,7 +1017,7 @@ configservice_describe_configuration_aggregators <- function(ConfigurationAggreg
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_configuration_recorder_status/](https://www.paws-r-sdk.com/docs/configservice_describe_configuration_recorder_status/) for full documentation.
 #'
 #' @param ConfigurationRecorderNames The name of the configuration recorder. If the name is not specified,
-#' the opertation returns the status for the customer managed configuration
+#' the operation returns the status for the customer managed configuration
 #' recorder configured for the account, if applicable.
 #' 
 #' When making a request to this operation, you can only specify one
@@ -1058,6 +1058,9 @@ configservice_describe_configuration_recorder_status <- function(ConfigurationRe
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_configuration_recorders/](https://www.paws-r-sdk.com/docs/configservice_describe_configuration_recorders/) for full documentation.
 #'
 #' @param ConfigurationRecorderNames A list of names of the configuration recorders that you want to specify.
+#' 
+#' When making a request to this operation, you can only specify one
+#' configuration recorder.
 #' @param ServicePrincipal For service-linked configuration recorders, you can use the service
 #' principal of the linked Amazon Web Services service to specify the
 #' configuration recorder.
@@ -2243,7 +2246,7 @@ configservice_get_organization_custom_rule_policy <- function(OrganizationConfig
 #' AWS::Config::ResourceCompliance resource type
 #'
 #' @description
-#' For accurate reporting on the compliance status, you must record the `AWS::Config::ResourceCompliance` resource type. For more information, see [Selecting Which Resources Config Records](https://docs.aws.amazon.com/config/latest/developerguide/select-resources.html).
+#' For accurate reporting on the compliance status, you must record the `AWS::Config::ResourceCompliance` resource type.
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_get_resource_config_history/](https://www.paws-r-sdk.com/docs/configservice_get_resource_config_history/) for full documentation.
 #'
@@ -2481,11 +2484,11 @@ configservice_list_conformance_pack_compliance_scores <- function(Filters = NULL
 }
 .configservice$operations$list_conformance_pack_compliance_scores <- configservice_list_conformance_pack_compliance_scores
 
-#' Accepts a resource type and returns a list of resource identifiers for
-#' the resources of that type
+#' Returns a list of resource resource identifiers for the specified
+#' resource types for the resources of that type
 #'
 #' @description
-#' Accepts a resource type and returns a list of resource identifiers for the resources of that type. A resource identifier includes the resource type, ID, and (if available) the custom resource name. The results consist of resources that Config has discovered, including those that Config is not currently recording. You can narrow the results to include only resources that have specific resource IDs or a resource name.
+#' Returns a list of resource resource identifiers for the specified resource types for the resources of that type. A *resource identifier* includes the resource type, ID, and (if available) the custom resource name.
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_list_discovered_resources/](https://www.paws-r-sdk.com/docs/configservice_list_discovered_resources/) for full documentation.
 #'
@@ -2806,7 +2809,7 @@ configservice_put_configuration_recorder <- function(ConfigurationRecorder, Tags
 #' [archived storage
 #' class](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html)
 #' if this parameter is passed.
-#' @param TemplateBody A string containing the full conformance pack template body. The
+#' @param TemplateBody A string that contains the full conformance pack template body. The
 #' structure containing the template body has a minimum length of 1 byte
 #' and a maximum length of 51,200 bytes.
 #' 
@@ -3029,9 +3032,9 @@ configservice_put_organization_config_rule <- function(OrganizationConfigRuleNam
 #' [archived storage
 #' class](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html)
 #' if this parameter is passed.
-#' @param TemplateBody A string containing full conformance pack template body. Structure
-#' containing the template body with a minimum length of 1 byte and a
-#' maximum length of 51,200 bytes.
+#' @param TemplateBody A string that contains the full conformance pack template body.
+#' Structure containing the template body with a minimum length of 1 byte
+#' and a maximum length of 51,200 bytes.
 #' @param DeliveryS3Bucket The name of the Amazon S3 bucket where Config stores conformance pack
 #' templates.
 #' 
@@ -3478,8 +3481,9 @@ configservice_start_remediation_execution <- function(ConfigRuleName, ResourceKe
 #'
 #' @param ResourceDetails &#91;required&#93; Returns a `ResourceDetails` object.
 #' @param EvaluationContext Returns an `EvaluationContext` object.
-#' @param EvaluationMode &#91;required&#93; The mode of an evaluation. The valid values for this API are `DETECTIVE`
-#' and `PROACTIVE`.
+#' @param EvaluationMode &#91;required&#93; The mode of an evaluation.
+#' 
+#' The only valid value for this API is `PROACTIVE`.
 #' @param EvaluationTimeout The timeout for an evaluation. The default is 900 seconds. You cannot
 #' specify a number greater than 3600. If you specify 0, Config uses the
 #' default.

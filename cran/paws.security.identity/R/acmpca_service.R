@@ -14,7 +14,7 @@ NULL
 #' the JSON response. Alternatively, you can use one of the Amazon Web
 #' Services SDKs to access an API that is tailored to the programming
 #' language or platform that you prefer. For more information, see [Amazon
-#' Web Services SDKs](https://aws.amazon.com/developer/tools/#SDKs).
+#' Web Services SDKs](https://builder.aws.com/build/tools#SDKs).
 #' 
 #' Each Amazon Web Services Private CA API operation has a quota that
 #' determines the number of times the operation can be called per second.

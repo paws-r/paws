@@ -41,10 +41,9 @@ lowercased letters.}
 
 \item{PolicyUsageFilter}{The policy usage method to use for filtering the results.
 
-To list only permissions policies,
-set \code{PolicyUsageFilter} to \code{PermissionsPolicy}. To list only the
-policies used to set permissions boundaries, set the value
-to \code{PermissionsBoundary}.
+To list only permissions policies, set \code{PolicyUsageFilter} to
+\code{PermissionsPolicy}. To list only the policies used to set permissions
+boundaries, set the value to \code{PermissionsBoundary}.
 
 This parameter is optional. If it is not included, all policies are
 returned.}

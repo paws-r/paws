@@ -23,7 +23,7 @@ you must also set a value for \code{ProvisionedThroughputInMibps}.}
 that you want to provision for a file system that you're creating.
 Required if \code{ThroughputMode} is set to \code{provisioned}. Valid values are
 1-3414 MiBps, with the upper limit depending on Region. To increase this
-limit, contact Amazon Web Services Support. For more information, see
+limit, contact Amazon Web ServicesSupport. For more information, see
 \href{https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits}{Amazon EFS quotas that you can increase}
 in the \emph{Amazon EFS User Guide}.}
 }

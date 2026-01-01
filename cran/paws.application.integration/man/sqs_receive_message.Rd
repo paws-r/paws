@@ -52,8 +52,7 @@ or
 \item \code{MessageDeduplicationId} – Returns the value provided by the
 producer that calls the \code{\link[=sqs_send_message]{send_message}} action.
 \item \code{MessageGroupId} – Returns the value provided by the producer that
-calls the \code{\link[=sqs_send_message]{send_message}} action. Messages with
-the same \code{MessageGroupId} are returned in sequence.
+calls the \code{\link[=sqs_send_message]{send_message}} action.
 \item \code{SequenceNumber} – Returns the value provided by Amazon SQS.
 }}
 
@@ -85,8 +84,7 @@ or
 \item \code{MessageDeduplicationId} – Returns the value provided by the
 producer that calls the \code{\link[=sqs_send_message]{send_message}} action.
 \item \code{MessageGroupId} – Returns the value provided by the producer that
-calls the \code{\link[=sqs_send_message]{send_message}} action. Messages with
-the same \code{MessageGroupId} are returned in sequence.
+calls the \code{\link[=sqs_send_message]{send_message}} action.
 \item \code{SequenceNumber} – Returns the value provided by Amazon SQS.
 }}
 
@@ -196,7 +194,8 @@ visibility timeout as necessary.
 \item While messages with a particular \code{MessageGroupId} are invisible, no
 more messages belonging to the same \code{MessageGroupId} are returned
 until the visibility timeout expires. You can still receive messages
-with another \code{MessageGroupId} as long as it is also visible.
+with another \code{MessageGroupId} from your FIFO queue as long as they
+are visible.
 \item If a caller of \code{\link[=sqs_receive_message]{receive_message}} can't track
 the \code{ReceiveRequestAttemptId}, no retries work until the original
 visibility timeout expires. As a result, delays might occur but the

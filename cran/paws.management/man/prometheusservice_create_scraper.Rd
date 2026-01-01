@@ -6,11 +6,11 @@
 \usage{
 prometheusservice_create_scraper(
   alias = NULL,
-  clientToken = NULL,
-  destination,
-  roleConfiguration = NULL,
   scrapeConfiguration,
   source,
+  destination,
+  roleConfiguration = NULL,
+  clientToken = NULL,
   tags = NULL
 )
 }
@@ -18,25 +18,26 @@ prometheusservice_create_scraper(
 \item{alias}{(optional) An alias to associate with the scraper. This is for your use,
 and does not need to be unique.}
 
-\item{clientToken}{(Optional) A unique, case-sensitive identifier that you can provide to
-ensure the idempotency of the request.}
+\item{scrapeConfiguration}{[required] The configuration file to use in the new scraper. For more information,
+see \href{https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html#AMP-collector-configuration}{Scraper configuration}
+in the \emph{Amazon Managed Service for Prometheus User Guide}.}
+
+\item{source}{[required] The Amazon EKS or Amazon Web Services cluster from which the scraper
+will collect metrics.}
 
 \item{destination}{[required] The Amazon Managed Service for Prometheus workspace to send metrics to.}
 
 \item{roleConfiguration}{Use this structure to enable cross-account access, so that you can use a
 target account to access Prometheus metrics from source accounts.}
 
-\item{scrapeConfiguration}{[required] The configuration file to use in the new scraper. For more information,
-see \href{https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html#AMP-collector-configuration}{Scraper configuration}
-in the \emph{Amazon Managed Service for Prometheus User Guide}.}
-
-\item{source}{[required] The Amazon EKS cluster from which the scraper will collect metrics.}
+\item{clientToken}{(Optional) A unique, case-sensitive identifier that you can provide to
+ensure the idempotency of the request.}
 
 \item{tags}{(Optional) The list of tag keys and values to associate with the
 scraper.}
 }
 \description{
-The \code{\link[=prometheusservice_create_scraper]{create_scraper}} operation creates a scraper to collect metrics. A scraper pulls metrics from Prometheus-compatible sources within an Amazon EKS cluster, and sends them to your Amazon Managed Service for Prometheus workspace. Scrapers are flexible, and can be configured to control what metrics are collected, the frequency of collection, what transformations are applied to the metrics, and more.
+The \code{\link[=prometheusservice_create_scraper]{create_scraper}} operation creates a scraper to collect metrics. A scraper pulls metrics from Prometheus-compatible sources and sends them to your Amazon Managed Service for Prometheus workspace. You can configure scrapers to collect metrics from Amazon EKS clusters, Amazon MSK clusters, or from VPC-based sources that support DNS-based service discovery. Scrapers are flexible, and can be configured to control what metrics are collected, the frequency of collection, what transformations are applied to the metrics, and more.
 
 See \url{https://www.paws-r-sdk.com/docs/prometheusservice_create_scraper/} for full documentation.
 }

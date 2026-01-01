@@ -11,7 +11,8 @@ ec2_modify_managed_prefix_list(
   PrefixListName = NULL,
   AddEntries = NULL,
   RemoveEntries = NULL,
-  MaxEntries = NULL
+  MaxEntries = NULL,
+  IpamPrefixListResolverSyncEnabled = NULL
 )
 }
 \arguments{
@@ -38,6 +39,11 @@ If any of the resources that reference the prefix list cannot support
 the new maximum size, the modify operation fails. Check the state
 message for the IDs of the first ten resources that do not support the
 new maximum size.}
+
+\item{IpamPrefixListResolverSyncEnabled}{Indicates whether synchronization with an IPAM prefix list resolver
+should be enabled for this managed prefix list. When enabled, the prefix
+list CIDRs are automatically updated based on the associated resolver's
+CIDR selection rules.}
 }
 \description{
 Modifies the specified managed prefix list.

@@ -513,11 +513,14 @@ glue_batch_get_workflows <- function(Names, IncludeGraph = NULL) {
 #' Annotate datapoints over time for a specific data quality statistic
 #'
 #' @description
-#' Annotate datapoints over time for a specific data quality statistic.
+#' Annotate datapoints over time for a specific data quality statistic. The API requires both profileID and statisticID as part of the InclusionAnnotation input. The API only works for a single statisticId across multiple profiles.
 #'
 #' See [https://www.paws-r-sdk.com/docs/glue_batch_put_data_quality_statistic_annotation/](https://www.paws-r-sdk.com/docs/glue_batch_put_data_quality_statistic_annotation/) for full documentation.
 #'
-#' @param InclusionAnnotations &#91;required&#93; A list of `DatapointInclusionAnnotation`'s.
+#' @param InclusionAnnotations &#91;required&#93; A list of `DatapointInclusionAnnotation`'s. The InclusionAnnotations
+#' must contain a profileId and statisticId. If there are multiple
+#' InclusionAnnotations, the list must refer to a single statisticId across
+#' multiple profileIds.
 #' @param ClientToken Client Token.
 #'
 #' @keywords internal
@@ -1239,6 +1242,44 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 }
 .glue$operations$create_dev_endpoint <- glue_create_dev_endpoint
 
+#' Creates a new Glue Identity Center configuration to enable integration
+#' between Glue and Amazon Web Services IAM Identity Center for
+#' authentication and authorization
+#'
+#' @description
+#' Creates a new Glue Identity Center configuration to enable integration between Glue and Amazon Web Services IAM Identity Center for authentication and authorization.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_create_glue_identity_center_configuration/](https://www.paws-r-sdk.com/docs/glue_create_glue_identity_center_configuration/) for full documentation.
+#'
+#' @param InstanceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Identity Center instance to be
+#' associated with the Glue configuration.
+#' @param Scopes A list of Identity Center scopes that define the permissions and access
+#' levels for the Glue configuration.
+#' @param UserBackgroundSessionsEnabled Specifies whether users can run background sessions when using Identity
+#' Center authentication with Glue services.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_create_glue_identity_center_configuration
+glue_create_glue_identity_center_configuration <- function(InstanceArn, Scopes = NULL, UserBackgroundSessionsEnabled = NULL) {
+  op <- new_operation(
+    name = "CreateGlueIdentityCenterConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$create_glue_identity_center_configuration_input(InstanceArn = InstanceArn, Scopes = Scopes, UserBackgroundSessionsEnabled = UserBackgroundSessionsEnabled)
+  output <- .glue$create_glue_identity_center_configuration_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$create_glue_identity_center_configuration <- glue_create_glue_identity_center_configuration
+
 #' Creates a Zero-ETL integration in the caller's account between two
 #' resources with Amazon Resource Names (ARNs): the SourceArn and TargetArn
 #'
@@ -1293,11 +1334,13 @@ glue_create_integration <- function(IntegrationName, SourceArn, TargetArn, Descr
 #' @param ResourceArn &#91;required&#93; The connection ARN of the source, or the database ARN of the target.
 #' @param SourceProcessingProperties The resource properties associated with the integration source.
 #' @param TargetProcessingProperties The resource properties associated with the integration target.
+#' @param Tags Metadata assigned to the resource consisting of a list of key-value
+#' pairs.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_create_integration_resource_property
-glue_create_integration_resource_property <- function(ResourceArn, SourceProcessingProperties = NULL, TargetProcessingProperties = NULL) {
+glue_create_integration_resource_property <- function(ResourceArn, SourceProcessingProperties = NULL, TargetProcessingProperties = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateIntegrationResourceProperty",
     http_method = "POST",
@@ -1306,7 +1349,7 @@ glue_create_integration_resource_property <- function(ResourceArn, SourceProcess
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$create_integration_resource_property_input(ResourceArn = ResourceArn, SourceProcessingProperties = SourceProcessingProperties, TargetProcessingProperties = TargetProcessingProperties)
+  input <- .glue$create_integration_resource_property_input(ResourceArn = ResourceArn, SourceProcessingProperties = SourceProcessingProperties, TargetProcessingProperties = TargetProcessingProperties, Tags = Tags)
   output <- .glue$create_integration_resource_property_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -1324,7 +1367,13 @@ glue_create_integration_resource_property <- function(ResourceArn, SourceProcess
 #'
 #' See [https://www.paws-r-sdk.com/docs/glue_create_integration_table_properties/](https://www.paws-r-sdk.com/docs/glue_create_integration_table_properties/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The connection ARN of the source, or the database ARN of the target.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the target table for which to create
+#' integration table properties. Currently, this API only supports creating
+#' integration table properties for target tables, and the provided ARN
+#' should be the ARN of the target table in the Glue Data Catalog. Support
+#' for creating integration table properties for source connections (using
+#' the connection ARN) is not yet implemented and will be added in a future
+#' release.
 #' @param TableName &#91;required&#93; The name of the table to be replicated.
 #' @param SourceTableConfig A structure for the source table configuration. See the
 #' `SourceTableConfig` structure to see list of supported source
@@ -1510,10 +1559,11 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'     most demanding transforms, aggregations, joins, and queries. This
 #'     worker type is available only for Glue version 3.0 or later Spark
 #'     ETL jobs in the following Amazon Web Services Regions: US East
-#'     (Ohio), US East (N. Virginia), US West (Oregon), Asia Pacific
+#'     (Ohio), US East (N. Virginia), US West (N. California), US West
+#'     (Oregon), Asia Pacific (Mumbai), Asia Pacific (Seoul), Asia Pacific
 #'     (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Canada
-#'     (Central), Europe (Frankfurt), Europe (Ireland), and Europe
-#'     (Stockholm).
+#'     (Central), Europe (Frankfurt), Europe (Ireland), Europe (London),
+#'     Europe (Spain), Europe (Stockholm), and South America (São Paulo).
 #' 
 #' -   For the `G.8X` worker type, each worker maps to 8 DPU (32 vCPUs, 128
 #'     GB of memory) with 512GB disk, and provides 1 executor per worker.
@@ -2066,7 +2116,9 @@ glue_create_session <- function(Id, Description = NULL, Role, Command, Timeout =
 #' supplied, the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The catalog database in which to create the new table. For Hive
 #' compatibility, this name is entirely lowercase.
-#' @param TableInput &#91;required&#93; The `TableInput` object that defines the metadata table to create in the
+#' @param Name The unique identifier for the table within the specified database that
+#' will be created in the Glue Data Catalog.
+#' @param TableInput The `TableInput` object that defines the metadata table to create in the
 #' catalog.
 #' @param PartitionIndexes A list of partition indexes, `PartitionIndex` structures, to create in
 #' the table.
@@ -2077,7 +2129,7 @@ glue_create_session <- function(Id, Description = NULL, Role, Command, Timeout =
 #' @keywords internal
 #'
 #' @rdname glue_create_table
-glue_create_table <- function(CatalogId = NULL, DatabaseName, TableInput, PartitionIndexes = NULL, TransactionId = NULL, OpenTableFormatInput = NULL) {
+glue_create_table <- function(CatalogId = NULL, DatabaseName, Name = NULL, TableInput = NULL, PartitionIndexes = NULL, TransactionId = NULL, OpenTableFormatInput = NULL) {
   op <- new_operation(
     name = "CreateTable",
     http_method = "POST",
@@ -2086,7 +2138,7 @@ glue_create_table <- function(CatalogId = NULL, DatabaseName, TableInput, Partit
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$create_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableInput = TableInput, PartitionIndexes = PartitionIndexes, TransactionId = TransactionId, OpenTableFormatInput = OpenTableFormatInput)
+  input <- .glue$create_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, TableInput = TableInput, PartitionIndexes = PartitionIndexes, TransactionId = TransactionId, OpenTableFormatInput = OpenTableFormatInput)
   output <- .glue$create_table_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -2690,6 +2742,38 @@ glue_delete_dev_endpoint <- function(EndpointName) {
 }
 .glue$operations$delete_dev_endpoint <- glue_delete_dev_endpoint
 
+#' Deletes the existing Glue Identity Center configuration, removing the
+#' integration between Glue and Amazon Web Services IAM Identity Center
+#'
+#' @description
+#' Deletes the existing Glue Identity Center configuration, removing the integration between Glue and Amazon Web Services IAM Identity Center.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_glue_identity_center_configuration/](https://www.paws-r-sdk.com/docs/glue_delete_glue_identity_center_configuration/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_glue_identity_center_configuration
+glue_delete_glue_identity_center_configuration <- function() {
+  op <- new_operation(
+    name = "DeleteGlueIdentityCenterConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$delete_glue_identity_center_configuration_input()
+  output <- .glue$delete_glue_identity_center_configuration_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_glue_identity_center_configuration <- glue_delete_glue_identity_center_configuration
+
 #' Deletes the specified Zero-ETL integration
 #'
 #' @description
@@ -2720,6 +2804,38 @@ glue_delete_integration <- function(IntegrationIdentifier) {
   return(response)
 }
 .glue$operations$delete_integration <- glue_delete_integration
+
+#' This API is used for deleting the ResourceProperty of the Glue
+#' connection (for the source) or Glue database ARN (for the target)
+#'
+#' @description
+#' This API is used for deleting the `ResourceProperty` of the Glue connection (for the source) or Glue database ARN (for the target).
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_integration_resource_property/](https://www.paws-r-sdk.com/docs/glue_delete_integration_resource_property/) for full documentation.
+#'
+#' @param ResourceArn &#91;required&#93; The connection ARN of the source, or the database ARN of the target.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_integration_resource_property
+glue_delete_integration_resource_property <- function(ResourceArn) {
+  op <- new_operation(
+    name = "DeleteIntegrationResourceProperty",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$delete_integration_resource_property_input(ResourceArn = ResourceArn)
+  output <- .glue$delete_integration_resource_property_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_integration_resource_property <- glue_delete_integration_resource_property
 
 #' Deletes the table properties that have been created for the tables that
 #' need to be replicated
@@ -4558,6 +4674,39 @@ glue_get_entity_records <- function(ConnectionName = NULL, CatalogId = NULL, Ent
 }
 .glue$operations$get_entity_records <- glue_get_entity_records
 
+#' Retrieves the current Glue Identity Center configuration details,
+#' including the associated Identity Center instance and application
+#' information
+#'
+#' @description
+#' Retrieves the current Glue Identity Center configuration details, including the associated Identity Center instance and application information.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_get_glue_identity_center_configuration/](https://www.paws-r-sdk.com/docs/glue_get_glue_identity_center_configuration/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_glue_identity_center_configuration
+glue_get_glue_identity_center_configuration <- function() {
+  op <- new_operation(
+    name = "GetGlueIdentityCenterConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$get_glue_identity_center_configuration_input()
+  output <- .glue$get_glue_identity_center_configuration_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_glue_identity_center_configuration <- glue_get_glue_identity_center_configuration
+
 #' This API is used for fetching the ResourceProperty of the Glue
 #' connection (for the source) or Glue database ARN (for the target)
 #'
@@ -4598,7 +4747,13 @@ glue_get_integration_resource_property <- function(ResourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/glue_get_integration_table_properties/](https://www.paws-r-sdk.com/docs/glue_get_integration_table_properties/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The connection ARN of the source, or the database ARN of the target.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the target table for which to retrieve
+#' integration table properties. Currently, this API only supports
+#' retrieving properties for target tables, and the provided ARN should be
+#' the ARN of the target table in the Glue Data Catalog. Support for
+#' retrieving integration table properties for source connections (using
+#' the connection ARN) is not yet implemented and will be added in a future
+#' release.
 #' @param TableName &#91;required&#93; The name of the table to be replicated.
 #'
 #' @keywords internal
@@ -5611,13 +5766,15 @@ glue_get_statement <- function(SessionId, Id, RequestOrigin = NULL) {
 #' @param QueryAsOfTime The time as of when to read the table contents. If not set, the most
 #' recent transaction commit time will be used. Cannot be specified along
 #' with `TransactionId`.
+#' @param AuditContext A structure containing the Lake Formation [audit
+#' context](https://docs.aws.amazon.com/glue/latest/webapi/API_AuditContext.html).
 #' @param IncludeStatusDetails Specifies whether to include status details related to a request to
 #' create or update an Glue Data Catalog view.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_get_table
-glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId = NULL, QueryAsOfTime = NULL, IncludeStatusDetails = NULL) {
+glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId = NULL, QueryAsOfTime = NULL, AuditContext = NULL, IncludeStatusDetails = NULL) {
   op <- new_operation(
     name = "GetTable",
     http_method = "POST",
@@ -5626,7 +5783,7 @@ glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$get_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime, IncludeStatusDetails = IncludeStatusDetails)
+  input <- .glue$get_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime, AuditContext = AuditContext, IncludeStatusDetails = IncludeStatusDetails)
   output <- .glue$get_table_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -5768,6 +5925,8 @@ glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, N
 #' @param QueryAsOfTime The time as of when to read the table contents. If not set, the most
 #' recent transaction commit time will be used. Cannot be specified along
 #' with `TransactionId`.
+#' @param AuditContext A structure containing the Lake Formation [audit
+#' context](https://docs.aws.amazon.com/glue/latest/webapi/API_AuditContext.html).
 #' @param IncludeStatusDetails Specifies whether to include status details related to a request to
 #' create or update an Glue Data Catalog view.
 #' @param AttributesToGet Specifies the table fields returned by the
@@ -5783,7 +5942,7 @@ glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, N
 #' @keywords internal
 #'
 #' @rdname glue_get_tables
-glue_get_tables <- function(CatalogId = NULL, DatabaseName, Expression = NULL, NextToken = NULL, MaxResults = NULL, TransactionId = NULL, QueryAsOfTime = NULL, IncludeStatusDetails = NULL, AttributesToGet = NULL) {
+glue_get_tables <- function(CatalogId = NULL, DatabaseName, Expression = NULL, NextToken = NULL, MaxResults = NULL, TransactionId = NULL, QueryAsOfTime = NULL, AuditContext = NULL, IncludeStatusDetails = NULL, AttributesToGet = NULL) {
   op <- new_operation(
     name = "GetTables",
     http_method = "POST",
@@ -5792,7 +5951,7 @@ glue_get_tables <- function(CatalogId = NULL, DatabaseName, Expression = NULL, N
     paginator = list(result_key = "TableList", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
-  input <- .glue$get_tables_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Expression = Expression, NextToken = NextToken, MaxResults = MaxResults, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime, IncludeStatusDetails = IncludeStatusDetails, AttributesToGet = AttributesToGet)
+  input <- .glue$get_tables_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Expression = Expression, NextToken = NextToken, MaxResults = MaxResults, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime, AuditContext = AuditContext, IncludeStatusDetails = IncludeStatusDetails, AttributesToGet = AttributesToGet)
   output <- .glue$get_tables_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -6232,13 +6391,19 @@ glue_get_user_defined_function <- function(CatalogId = NULL, DatabaseName, Funct
 #' will be returned.
 #' @param Pattern &#91;required&#93; An optional function-name pattern string that filters the function
 #' definitions returned.
+#' @param FunctionType An optional function-type pattern string that filters the function
+#' definitions returned from Amazon Redshift Federated Permissions Catalog.
+#' 
+#' Specify a value of `REGULAR_FUNCTION` or `STORED_PROCEDURE`. The
+#' `STORED_PROCEDURE` function type is only compatible with Amazon Redshift
+#' Federated Permissions Catalog.
 #' @param NextToken A continuation token, if this is a continuation call.
 #' @param MaxResults The maximum number of functions to return in one response.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_get_user_defined_functions
-glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName = NULL, Pattern, NextToken = NULL, MaxResults = NULL) {
+glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName = NULL, Pattern, FunctionType = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetUserDefinedFunctions",
     http_method = "POST",
@@ -6247,7 +6412,7 @@ glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName = NUL
     paginator = list(result_key = "UserDefinedFunctions", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
-  input <- .glue$get_user_defined_functions_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Pattern = Pattern, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .glue$get_user_defined_functions_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Pattern = Pattern, FunctionType = FunctionType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .glue$get_user_defined_functions_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -6900,6 +7065,39 @@ glue_list_entities <- function(ConnectionName = NULL, CatalogId = NULL, ParentEn
 }
 .glue$operations$list_entities <- glue_list_entities
 
+#' List integration resource properties for a single customer
+#'
+#' @description
+#' List integration resource properties for a single customer. It supports the filters, maxRecords and markers.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_list_integration_resource_properties/](https://www.paws-r-sdk.com/docs/glue_list_integration_resource_properties/) for full documentation.
+#'
+#' @param Marker This is the pagination token for next page, initial value is `null`.
+#' @param Filters A list of filters, supported filter Key is `SourceArn` and `TargetArn`.
+#' @param MaxRecords This is total number of items to be evaluated.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_integration_resource_properties
+glue_list_integration_resource_properties <- function(Marker = NULL, Filters = NULL, MaxRecords = NULL) {
+  op <- new_operation(
+    name = "ListIntegrationResourceProperties",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$list_integration_resource_properties_input(Marker = Marker, Filters = Filters, MaxRecords = MaxRecords)
+  output <- .glue$list_integration_resource_properties_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_integration_resource_properties <- glue_list_integration_resource_properties
+
 #' Retrieves the names of all job resources in this Amazon Web Services
 #' account, or the resources with the specified tag
 #'
@@ -7299,12 +7497,14 @@ glue_list_workflows <- function(NextToken = NULL, MaxResults = NULL) {
 #' @param IntegrationIdentifier &#91;required&#93; The Amazon Resource Name (ARN) for the integration.
 #' @param Description A description of the integration.
 #' @param DataFilter Selects source tables for the integration using Maxwell filter syntax.
+#' @param IntegrationConfig The configuration settings for the integration. Currently, only the
+#' RefreshInterval can be modified.
 #' @param IntegrationName A unique name for an integration in Glue.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_modify_integration
-glue_modify_integration <- function(IntegrationIdentifier, Description = NULL, DataFilter = NULL, IntegrationName = NULL) {
+glue_modify_integration <- function(IntegrationIdentifier, Description = NULL, DataFilter = NULL, IntegrationConfig = NULL, IntegrationName = NULL) {
   op <- new_operation(
     name = "ModifyIntegration",
     http_method = "POST",
@@ -7313,7 +7513,7 @@ glue_modify_integration <- function(IntegrationIdentifier, Description = NULL, D
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$modify_integration_input(IntegrationIdentifier = IntegrationIdentifier, Description = Description, DataFilter = DataFilter, IntegrationName = IntegrationName)
+  input <- .glue$modify_integration_input(IntegrationIdentifier = IntegrationIdentifier, Description = Description, DataFilter = DataFilter, IntegrationConfig = IntegrationConfig, IntegrationName = IntegrationName)
   output <- .glue$modify_integration_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -8261,11 +8461,15 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
 #' Only jobs with Glue version 3.0 and above and command type `glueetl`
 #' will be allowed to set `ExecutionClass` to `FLEX`. The flexible
 #' execution class is available for Spark jobs.
+#' @param ExecutionRoleSessionPolicy This inline session policy to the StartJobRun API allows you to
+#' dynamically restrict the permissions of the specified execution role for
+#' the scope of the job, without requiring the creation of additional IAM
+#' roles.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_start_job_run
-glue_start_job_run <- function(JobName, JobRunQueuingEnabled = NULL, JobRunId = NULL, Arguments = NULL, AllocatedCapacity = NULL, Timeout = NULL, MaxCapacity = NULL, SecurityConfiguration = NULL, NotificationProperty = NULL, WorkerType = NULL, NumberOfWorkers = NULL, ExecutionClass = NULL) {
+glue_start_job_run <- function(JobName, JobRunQueuingEnabled = NULL, JobRunId = NULL, Arguments = NULL, AllocatedCapacity = NULL, Timeout = NULL, MaxCapacity = NULL, SecurityConfiguration = NULL, NotificationProperty = NULL, WorkerType = NULL, NumberOfWorkers = NULL, ExecutionClass = NULL, ExecutionRoleSessionPolicy = NULL) {
   op <- new_operation(
     name = "StartJobRun",
     http_method = "POST",
@@ -8274,7 +8478,7 @@ glue_start_job_run <- function(JobName, JobRunQueuingEnabled = NULL, JobRunId = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$start_job_run_input(JobName = JobName, JobRunQueuingEnabled = JobRunQueuingEnabled, JobRunId = JobRunId, Arguments = Arguments, AllocatedCapacity = AllocatedCapacity, Timeout = Timeout, MaxCapacity = MaxCapacity, SecurityConfiguration = SecurityConfiguration, NotificationProperty = NotificationProperty, WorkerType = WorkerType, NumberOfWorkers = NumberOfWorkers, ExecutionClass = ExecutionClass)
+  input <- .glue$start_job_run_input(JobName = JobName, JobRunQueuingEnabled = JobRunQueuingEnabled, JobRunId = JobRunId, Arguments = Arguments, AllocatedCapacity = AllocatedCapacity, Timeout = Timeout, MaxCapacity = MaxCapacity, SecurityConfiguration = SecurityConfiguration, NotificationProperty = NotificationProperty, WorkerType = WorkerType, NumberOfWorkers = NumberOfWorkers, ExecutionClass = ExecutionClass, ExecutionRoleSessionPolicy = ExecutionRoleSessionPolicy)
   output <- .glue$start_job_run_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -9203,6 +9407,41 @@ glue_update_dev_endpoint <- function(EndpointName, PublicKey = NULL, AddPublicKe
 }
 .glue$operations$update_dev_endpoint <- glue_update_dev_endpoint
 
+#' Updates the existing Glue Identity Center configuration, allowing
+#' modification of scopes and permissions for the integration
+#'
+#' @description
+#' Updates the existing Glue Identity Center configuration, allowing modification of scopes and permissions for the integration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_update_glue_identity_center_configuration/](https://www.paws-r-sdk.com/docs/glue_update_glue_identity_center_configuration/) for full documentation.
+#'
+#' @param Scopes A list of Identity Center scopes that define the updated permissions and
+#' access levels for the Glue configuration.
+#' @param UserBackgroundSessionsEnabled Specifies whether users can run background sessions when using Identity
+#' Center authentication with Glue services.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_update_glue_identity_center_configuration
+glue_update_glue_identity_center_configuration <- function(Scopes = NULL, UserBackgroundSessionsEnabled = NULL) {
+  op <- new_operation(
+    name = "UpdateGlueIdentityCenterConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$update_glue_identity_center_configuration_input(Scopes = Scopes, UserBackgroundSessionsEnabled = UserBackgroundSessionsEnabled)
+  output <- .glue$update_glue_identity_center_configuration_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$update_glue_identity_center_configuration <- glue_update_glue_identity_center_configuration
+
 #' This API can be used for updating the ResourceProperty of the Glue
 #' connection (for the source) or Glue database ARN (for the target)
 #'
@@ -9592,7 +9831,9 @@ glue_update_source_control_from_job <- function(JobName = NULL, Provider = NULL,
 #' the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database in which the table resides. For Hive
 #' compatibility, this name is entirely lowercase.
-#' @param TableInput &#91;required&#93; An updated `TableInput` object to define the metadata table in the
+#' @param Name The unique identifier for the table within the specified database that
+#' will be created in the Glue Data Catalog.
+#' @param TableInput An updated `TableInput` object to define the metadata table in the
 #' catalog.
 #' @param SkipArchive By default, [`update_table`][glue_update_table] always creates an
 #' archived version of the table before updating it. However, if
@@ -9603,11 +9844,14 @@ glue_update_source_control_from_job <- function(JobName = NULL, Provider = NULL,
 #' @param ViewUpdateAction The operation to be performed when updating the view.
 #' @param Force A flag that can be set to true to ignore matching storage descriptor and
 #' subobject matching requirements.
+#' @param UpdateOpenTableFormatInput Input parameters for updating open table format tables in GlueData
+#' Catalog, serving as a wrapper for format-specific update operations such
+#' as Apache Iceberg.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_update_table
-glue_update_table <- function(CatalogId = NULL, DatabaseName, TableInput, SkipArchive = NULL, TransactionId = NULL, VersionId = NULL, ViewUpdateAction = NULL, Force = NULL) {
+glue_update_table <- function(CatalogId = NULL, DatabaseName, Name = NULL, TableInput = NULL, SkipArchive = NULL, TransactionId = NULL, VersionId = NULL, ViewUpdateAction = NULL, Force = NULL, UpdateOpenTableFormatInput = NULL) {
   op <- new_operation(
     name = "UpdateTable",
     http_method = "POST",
@@ -9616,7 +9860,7 @@ glue_update_table <- function(CatalogId = NULL, DatabaseName, TableInput, SkipAr
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$update_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableInput = TableInput, SkipArchive = SkipArchive, TransactionId = TransactionId, VersionId = VersionId, ViewUpdateAction = ViewUpdateAction, Force = Force)
+  input <- .glue$update_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, TableInput = TableInput, SkipArchive = SkipArchive, TransactionId = TransactionId, VersionId = VersionId, ViewUpdateAction = ViewUpdateAction, Force = Force, UpdateOpenTableFormatInput = UpdateOpenTableFormatInput)
   output <- .glue$update_table_output()
   config <- get_config()
   svc <- .glue$service(config, op)

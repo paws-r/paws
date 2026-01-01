@@ -2,41 +2,41 @@
 % Please edit documentation in R/arczonalshift_operations.R
 \name{arczonalshift_list_zonal_shifts}
 \alias{arczonalshift_list_zonal_shifts}
-\title{Lists all active and completed zonal shifts in Amazon Route 53
-Application Recovery Controller in your Amazon Web Services account in
-this Amazon Web Services Region}
+\title{Lists all active and completed zonal shifts in Amazon Application
+Recovery Controller in your Amazon Web Services account in this Amazon
+Web Services Region}
 \usage{
 arczonalshift_list_zonal_shifts(
-  maxResults = NULL,
   nextToken = NULL,
-  resourceIdentifier = NULL,
-  status = NULL
+  status = NULL,
+  maxResults = NULL,
+  resourceIdentifier = NULL
 )
 }
 \arguments{
-\item{maxResults}{The number of objects that you want to return with this call.}
-
 \item{nextToken}{Specifies that you want to receive the next page of results. Valid only
 if you received a \code{nextToken} response in the previous request. If you
 did, it indicates that more output is available. Set this parameter to
 the value provided by the previous call's \code{nextToken} response to
 request the next page of results.}
 
-\item{resourceIdentifier}{The identifier for the resource that you want to list zonal shifts for.
-The identifier is the Amazon Resource Name (ARN) for the resource.}
-
 \item{status}{A status for a zonal shift.
 
 The \code{Status} for a zonal shift can have one of the following values:
 \itemize{
-\item \strong{ACTIVE}: The zonal shift has been started and active.
+\item \strong{ACTIVE}: The zonal shift has been started and is active.
 \item \strong{EXPIRED}: The zonal shift has expired (the expiry time was
 exceeded).
 \item \strong{CANCELED}: The zonal shift was canceled.
 }}
+
+\item{maxResults}{The number of objects that you want to return with this call.}
+
+\item{resourceIdentifier}{The identifier for the resource that you want to list zonal shifts for.
+The identifier is the Amazon Resource Name (ARN) for the resource.}
 }
 \description{
-Lists all active and completed zonal shifts in Amazon Route 53 Application Recovery Controller in your Amazon Web Services account in this Amazon Web Services Region.
+Lists all active and completed zonal shifts in Amazon Application Recovery Controller in your Amazon Web Services account in this Amazon Web Services Region. \code{\link[=arczonalshift_list_zonal_shifts]{list_zonal_shifts}} returns customer-initiated zonal shifts, as well as practice run zonal shifts that ARC started on your behalf for zonal autoshift.
 
 See \url{https://www.paws-r-sdk.com/docs/arczonalshift_list_zonal_shifts/} for full documentation.
 }

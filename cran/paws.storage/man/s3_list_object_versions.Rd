@@ -25,7 +25,10 @@ contain the same string between the \code{prefix} and the first occurrence of
 the delimiter are grouped under a single result element in
 \code{CommonPrefixes}. These groups are counted as one result against the
 \code{max-keys} limitation. These keys are not returned elsewhere in the
-response.}
+response.
+
+\code{CommonPrefixes} is filtered out from results if it is not
+lexicographically greater than the key-marker.}
 
 \item{EncodingType}{}
 

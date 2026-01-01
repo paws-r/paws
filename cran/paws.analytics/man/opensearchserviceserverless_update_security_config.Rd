@@ -10,6 +10,7 @@ opensearchserviceserverless_update_security_config(
   description = NULL,
   samlOptions = NULL,
   iamIdentityCenterOptionsUpdates = NULL,
+  iamFederationOptions = NULL,
   clientToken = NULL
 )
 }
@@ -28,6 +29,10 @@ command.}
 \item{samlOptions}{SAML options in in the form of a key-value map.}
 
 \item{iamIdentityCenterOptionsUpdates}{Describes IAM Identity Center options in the form of a key-value map.}
+
+\item{iamFederationOptions}{Describes IAM federation options in the form of a key-value map for
+updating an existing security configuration. Use this field to modify
+IAM federation settings for the security configuration.}
 
 \item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
 }

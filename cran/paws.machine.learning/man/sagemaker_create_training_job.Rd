@@ -7,13 +7,13 @@
 sagemaker_create_training_job(
   TrainingJobName,
   HyperParameters = NULL,
-  AlgorithmSpecification,
+  AlgorithmSpecification = NULL,
   RoleArn,
   InputDataConfig = NULL,
   OutputDataConfig,
-  ResourceConfig,
+  ResourceConfig = NULL,
   VpcConfig = NULL,
-  StoppingCondition,
+  StoppingCondition = NULL,
   Tags = NULL,
   EnableNetworkIsolation = NULL,
   EnableInterContainerTrafficEncryption = NULL,
@@ -29,7 +29,10 @@ sagemaker_create_training_job(
   RetryStrategy = NULL,
   RemoteDebugConfig = NULL,
   InfraCheckConfig = NULL,
-  SessionChainingConfig = NULL
+  SessionChainingConfig = NULL,
+  ServerlessJobConfig = NULL,
+  MlflowConfig = NULL,
+  ModelPackageConfig = NULL
 )
 }
 \arguments{
@@ -53,7 +56,7 @@ exposure, unauthorized access, or compromise of your sensitive data if
 caused by any security-sensitive information included in the request
 hyperparameter variable or plain text fields.}
 
-\item{AlgorithmSpecification}{[required] The registry path of the Docker image that contains the training
+\item{AlgorithmSpecification}{The registry path of the Docker image that contains the training
 algorithm and algorithm-specific metadata, including the input mode. For
 more information about algorithms provided by SageMaker, see
 \href{https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html}{Algorithms}.
@@ -94,7 +97,7 @@ training job.}
 \item{OutputDataConfig}{[required] Specifies the path to the S3 location where you want to store model
 artifacts. SageMaker creates subfolders for the artifacts.}
 
-\item{ResourceConfig}{[required] The resources, including the ML compute instances and ML storage
+\item{ResourceConfig}{The resources, including the ML compute instances and ML storage
 volumes, to use for model training.
 
 ML storage volumes store model artifacts and incremental states.
@@ -110,7 +113,7 @@ object that specifies the VPC that you want your training job to connect
 to. Control access to and from your training container by configuring
 the VPC. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html}{Protect Training Jobs by Using an Amazon Virtual Private Cloud}.}
 
-\item{StoppingCondition}{[required] Specifies a limit to how long a model training job can run. It also
+\item{StoppingCondition}{Specifies a limit to how long a model training job can run. It also
 specifies how long a managed Spot training job has to complete. When the
 job reaches the time limit, SageMaker ends the training job. Use this
 API to cap model training costs.
@@ -194,6 +197,12 @@ for the training job.}
 
 \item{SessionChainingConfig}{Contains information about attribute-based access control (ABAC) for the
 training job.}
+
+\item{ServerlessJobConfig}{The configuration for serverless training jobs.}
+
+\item{MlflowConfig}{The MLflow configuration using SageMaker managed MLflow.}
+
+\item{ModelPackageConfig}{The configuration for the model package.}
 }
 \description{
 Starts a model training job. After training completes, SageMaker saves the resulting model artifacts to an Amazon S3 location that you specify.

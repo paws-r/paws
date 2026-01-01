@@ -59,11 +59,16 @@ kinesis_add_tags_to_stream <- function(StreamName = NULL, Tags, StreamARN = NULL
 #' a **provisioned** capacity mode for your data streams.
 #' @param Tags A set of up to 50 key-value pairs to use to create the tags. A tag
 #' consists of a required key and an optional value.
+#' @param WarmThroughputMiBps The target warm throughput in MB/s that the stream should be scaled to
+#' handle. This represents the throughput capacity that will be immediately
+#' available for write operations.
+#' @param MaxRecordSizeInKiB The maximum record size of a single record in kibibyte (KiB) that you
+#' can write to, and read from a stream.
 #'
 #' @keywords internal
 #'
 #' @rdname kinesis_create_stream
-kinesis_create_stream <- function(StreamName, ShardCount = NULL, StreamModeDetails = NULL, Tags = NULL) {
+kinesis_create_stream <- function(StreamName, ShardCount = NULL, StreamModeDetails = NULL, Tags = NULL, WarmThroughputMiBps = NULL, MaxRecordSizeInKiB = NULL) {
   op <- new_operation(
     name = "CreateStream",
     http_method = "POST",
@@ -72,7 +77,7 @@ kinesis_create_stream <- function(StreamName, ShardCount = NULL, StreamModeDetai
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kinesis$create_stream_input(StreamName = StreamName, ShardCount = ShardCount, StreamModeDetails = StreamModeDetails, Tags = Tags)
+  input <- .kinesis$create_stream_input(StreamName = StreamName, ShardCount = ShardCount, StreamModeDetails = StreamModeDetails, Tags = Tags, WarmThroughputMiBps = WarmThroughputMiBps, MaxRecordSizeInKiB = MaxRecordSizeInKiB)
   output <- .kinesis$create_stream_output()
   config <- get_config()
   svc <- .kinesis$service(config, op)
@@ -225,6 +230,37 @@ kinesis_deregister_stream_consumer <- function(StreamARN = NULL, ConsumerName = 
   return(response)
 }
 .kinesis$operations$deregister_stream_consumer <- kinesis_deregister_stream_consumer
+
+#' Describes the account-level settings for Amazon Kinesis Data Streams
+#'
+#' @description
+#' Describes the account-level settings for Amazon Kinesis Data Streams. This operation returns information about the minimum throughput billing commitments and other account-level configurations.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kinesis_describe_account_settings/](https://www.paws-r-sdk.com/docs/kinesis_describe_account_settings/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_describe_account_settings
+kinesis_describe_account_settings <- function() {
+  op <- new_operation(
+    name = "DescribeAccountSettings",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kinesis$describe_account_settings_input()
+  output <- .kinesis$describe_account_settings_output()
+  config <- get_config()
+  svc <- .kinesis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$describe_account_settings <- kinesis_describe_account_settings
 
 #' Describes the shard limits and usage for the account
 #'
@@ -980,7 +1016,7 @@ kinesis_merge_shards <- function(StreamName = NULL, ShardToMerge, AdjacentShardT
 #' Writes a single data record into an Amazon Kinesis data stream
 #'
 #' @description
-#' Writes a single data record into an Amazon Kinesis data stream. Call [`put_record`][kinesis_put_record] to send data into the stream for real-time ingestion and subsequent processing, one record at a time. Each shard can support writes up to 1,000 records per second, up to a maximum data write total of 1 MiB per second.
+#' Writes a single data record into an Amazon Kinesis data stream. Call [`put_record`][kinesis_put_record] to send data into the stream for real-time ingestion and subsequent processing, one record at a time. Each shard can support writes up to 1,000 records per second, up to a maximum data write total of 10 MiB per second.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kinesis_put_record/](https://www.paws-r-sdk.com/docs/kinesis_put_record/) for full documentation.
 #'
@@ -1423,6 +1459,76 @@ kinesis_untag_resource <- function(TagKeys, ResourceARN) {
 }
 .kinesis$operations$untag_resource <- kinesis_untag_resource
 
+#' Updates the account-level settings for Amazon Kinesis Data Streams
+#'
+#' @description
+#' Updates the account-level settings for Amazon Kinesis Data Streams.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kinesis_update_account_settings/](https://www.paws-r-sdk.com/docs/kinesis_update_account_settings/) for full documentation.
+#'
+#' @param MinimumThroughputBillingCommitment &#91;required&#93; Specifies the minimum throughput billing commitment configuration for
+#' your account.
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_update_account_settings
+kinesis_update_account_settings <- function(MinimumThroughputBillingCommitment) {
+  op <- new_operation(
+    name = "UpdateAccountSettings",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kinesis$update_account_settings_input(MinimumThroughputBillingCommitment = MinimumThroughputBillingCommitment)
+  output <- .kinesis$update_account_settings_output()
+  config <- get_config()
+  svc <- .kinesis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$update_account_settings <- kinesis_update_account_settings
+
+#' This allows you to update the MaxRecordSize of a single record that you
+#' can write to, and read from a stream
+#'
+#' @description
+#' This allows you to update the `MaxRecordSize` of a single record that you can write to, and read from a stream. You can ingest and digest single records up to 10240 KiB.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kinesis_update_max_record_size/](https://www.paws-r-sdk.com/docs/kinesis_update_max_record_size/) for full documentation.
+#'
+#' @param StreamARN The Amazon Resource Name (ARN) of the stream for the `MaxRecordSize`
+#' update.
+#' @param MaxRecordSizeInKiB &#91;required&#93; The maximum record size of a single record in KiB that you can write to,
+#' and read from a stream. Specify a value between 1024 and 10240 KiB (1 to
+#' 10 MiB). If you specify a value that is out of this range,
+#' [`update_max_record_size`][kinesis_update_max_record_size] sends back an
+#' `ValidationException` message.
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_update_max_record_size
+kinesis_update_max_record_size <- function(StreamARN = NULL, MaxRecordSizeInKiB) {
+  op <- new_operation(
+    name = "UpdateMaxRecordSize",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kinesis$update_max_record_size_input(StreamARN = StreamARN, MaxRecordSizeInKiB = MaxRecordSizeInKiB)
+  output <- .kinesis$update_max_record_size_output()
+  config <- get_config()
+  svc <- .kinesis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$update_max_record_size <- kinesis_update_max_record_size
+
 #' Updates the shard count of the specified stream to the specified number
 #' of shards
 #'
@@ -1484,11 +1590,15 @@ kinesis_update_shard_count <- function(StreamName = NULL, TargetShardCount, Scal
 #' Currently, in Kinesis Data Streams, you can choose between an
 #' **on-demand** capacity mode and a **provisioned** capacity mode for your
 #' data streams.
+#' @param WarmThroughputMiBps The target warm throughput in MB/s that the stream should be scaled to
+#' handle. This represents the throughput capacity that will be immediately
+#' available for write operations. This field is only valid when the stream
+#' mode is being updated to on-demand.
 #'
 #' @keywords internal
 #'
 #' @rdname kinesis_update_stream_mode
-kinesis_update_stream_mode <- function(StreamARN, StreamModeDetails) {
+kinesis_update_stream_mode <- function(StreamARN, StreamModeDetails, WarmThroughputMiBps = NULL) {
   op <- new_operation(
     name = "UpdateStreamMode",
     http_method = "POST",
@@ -1497,7 +1607,7 @@ kinesis_update_stream_mode <- function(StreamARN, StreamModeDetails) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kinesis$update_stream_mode_input(StreamARN = StreamARN, StreamModeDetails = StreamModeDetails)
+  input <- .kinesis$update_stream_mode_input(StreamARN = StreamARN, StreamModeDetails = StreamModeDetails, WarmThroughputMiBps = WarmThroughputMiBps)
   output <- .kinesis$update_stream_mode_output()
   config <- get_config()
   svc <- .kinesis$service(config, op)
@@ -1506,3 +1616,39 @@ kinesis_update_stream_mode <- function(StreamARN, StreamModeDetails) {
   return(response)
 }
 .kinesis$operations$update_stream_mode <- kinesis_update_stream_mode
+
+#' Updates the warm throughput configuration for the specified Amazon
+#' Kinesis Data Streams on-demand data stream
+#'
+#' @description
+#' Updates the warm throughput configuration for the specified Amazon Kinesis Data Streams on-demand data stream. This operation allows you to proactively scale your on-demand data stream to a specified throughput level, enabling better performance for sudden traffic spikes.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kinesis_update_stream_warm_throughput/](https://www.paws-r-sdk.com/docs/kinesis_update_stream_warm_throughput/) for full documentation.
+#'
+#' @param StreamARN The ARN of the stream to be updated.
+#' @param StreamName The name of the stream to be updated.
+#' @param WarmThroughputMiBps &#91;required&#93; The target warm throughput in MB/s that the stream should be scaled to
+#' handle. This represents the throughput capacity that will be immediately
+#' available for write operations.
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_update_stream_warm_throughput
+kinesis_update_stream_warm_throughput <- function(StreamARN = NULL, StreamName = NULL, WarmThroughputMiBps) {
+  op <- new_operation(
+    name = "UpdateStreamWarmThroughput",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kinesis$update_stream_warm_throughput_input(StreamARN = StreamARN, StreamName = StreamName, WarmThroughputMiBps = WarmThroughputMiBps)
+  output <- .kinesis$update_stream_warm_throughput_output()
+  config <- get_config()
+  svc <- .kinesis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$update_stream_warm_throughput <- kinesis_update_stream_warm_throughput

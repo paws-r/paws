@@ -17,7 +17,8 @@ backup_list_copy_jobs(
   ByCompleteBefore = NULL,
   ByCompleteAfter = NULL,
   ByParentJobId = NULL,
-  ByMessageCategory = NULL
+  ByMessageCategory = NULL,
+  BySourceRecoveryPointArn = NULL
 )
 }
 \arguments{
@@ -87,6 +88,8 @@ The the value ANY returns count of all message categories.
 
 \code{AGGREGATE_ALL} aggregates job counts for all message categories and
 returns the sum.}
+
+\item{BySourceRecoveryPointArn}{Filters copy jobs by the specified source recovery point ARN.}
 }
 \description{
 Returns metadata about your copy jobs.

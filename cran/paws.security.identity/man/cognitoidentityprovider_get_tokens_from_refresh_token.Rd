@@ -16,7 +16,8 @@ cognitoidentityprovider_get_tokens_from_refresh_token(
 \arguments{
 \item{RefreshToken}{[required] A valid refresh token that can authorize the request for new tokens.
 When refresh token rotation is active in the requested app client, this
-token is invalidated after the request is complete.}
+token is invalidated after the request is complete and after an optional
+grace period.}
 
 \item{ClientId}{[required] The app client that issued the refresh token to the user who wants to
 request new tokens.}

@@ -2,16 +2,16 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_describe_quick_sight_q_search_configuration}
 \alias{quicksight_describe_quick_sight_q_search_configuration}
-\title{Describes the state of a Amazon QuickSight Q Search configuration}
+\title{Describes the state of a Quick Sight Q Search configuration}
 \usage{
 quicksight_describe_quick_sight_q_search_configuration(AwsAccountId)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the Amazon
-QuickSight Q Search configuration that the user wants described.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the Quick Sight
+Q Search configuration that the user wants described.}
 }
 \description{
-Describes the state of a Amazon QuickSight Q Search configuration.
+Describes the state of a Quick Sight Q Search configuration.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_quick_sight_q_search_configuration/} for full documentation.
 }

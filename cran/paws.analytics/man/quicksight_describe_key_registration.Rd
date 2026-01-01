@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_describe_key_registration}
 \alias{quicksight_describe_key_registration}
-\title{Describes all customer managed key registrations in a Amazon QuickSight
+\title{Describes all customer managed key registrations in a Quick Sight
 account}
 \usage{
 quicksight_describe_key_registration(AwsAccountId, DefaultKeyOnly = NULL)
@@ -14,7 +14,7 @@ managed key registration that you want to describe.}
 \item{DefaultKeyOnly}{Determines whether the request returns the default key only.}
 }
 \description{
-Describes all customer managed key registrations in a Amazon QuickSight account.
+Describes all customer managed key registrations in a Quick Sight account.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_key_registration/} for full documentation.
 }

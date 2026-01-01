@@ -16,7 +16,10 @@ networkfirewall_create_firewall(
   Description = NULL,
   Tags = NULL,
   EncryptionConfiguration = NULL,
-  EnabledAnalysisTypes = NULL
+  EnabledAnalysisTypes = NULL,
+  TransitGatewayId = NULL,
+  AvailabilityZoneMappings = NULL,
+  AvailabilityZoneChangeProtection = NULL
 )
 }
 \arguments{
@@ -62,6 +65,42 @@ resources.}
 
 \item{EnabledAnalysisTypes}{An optional setting indicating the specific traffic analysis types to
 enable on the firewall.}
+
+\item{TransitGatewayId}{Required when creating a transit gateway-attached firewall. The unique
+identifier of the transit gateway to attach to this firewall. You can
+provide either a transit gateway from your account or one that has been
+shared with you through Resource Access Manager.
+
+After creating the firewall, you cannot change the transit gateway
+association. To use a different transit gateway, you must create a new
+firewall.
+
+For information about creating firewalls, see
+\code{\link[=networkfirewall_create_firewall]{create_firewall}}. For specific
+guidance about transit gateway-attached firewalls, see \href{https://docs.aws.amazon.com/network-firewall/latest/developerguide/tgw-firewall-considerations.html}{Considerations for transit gateway-attached firewalls}
+in the \emph{Network Firewall Developer Guide}.}
+
+\item{AvailabilityZoneMappings}{Required. The Availability Zones where you want to create firewall
+endpoints for a transit gateway-attached firewall. You must specify at
+least one Availability Zone. Consider enabling the firewall in every
+Availability Zone where you have workloads to maintain Availability Zone
+isolation.
+
+You can modify Availability Zones later using
+\code{\link[=networkfirewall_associate_availability_zones]{associate_availability_zones}}
+or
+\code{\link[=networkfirewall_disassociate_availability_zones]{disassociate_availability_zones}},
+but this may briefly disrupt traffic. The
+\code{AvailabilityZoneChangeProtection} setting controls whether you can make
+these modifications.}
+
+\item{AvailabilityZoneChangeProtection}{Optional. A setting indicating whether the firewall is protected against
+changes to its Availability Zone configuration. When set to \code{TRUE}, you
+cannot add or remove Availability Zones without first disabling this
+protection using
+\code{\link[=networkfirewall_update_availability_zone_change_protection]{update_availability_zone_change_protection}}.
+
+Default value: \code{FALSE}}
 }
 \description{
 Creates an Network Firewall Firewall and accompanying FirewallStatus for a VPC.

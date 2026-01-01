@@ -19,27 +19,46 @@ NULL
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   failedFindings = list(
-#'     list(
-#'       errorCode = "DUPLICATE_IDENTIFIER"|"ITEM_DOES_NOT_EXIST"|"INTERNAL_ERROR"|"INVALID_FINDING_ID"|"INVALID_SCAN_NAME",
-#'       findingId = "string",
-#'       message = "string",
-#'       scanName = "string"
-#'     )
-#'   ),
 #'   findings = list(
 #'     list(
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       description = "string",
-#'       detectorId = "string",
-#'       detectorName = "string",
-#'       detectorTags = list(
-#'         "string"
-#'       ),
 #'       generatorId = "string",
 #'       id = "string",
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       type = "string",
+#'       status = "Closed"|"Open"|"All",
+#'       resource = list(
+#'         id = "string",
+#'         subResourceId = "string"
+#'       ),
+#'       vulnerability = list(
+#'         referenceUrls = list(
+#'           "string"
+#'         ),
+#'         relatedVulnerabilities = list(
+#'           "string"
+#'         ),
+#'         id = "string",
+#'         filePath = list(
+#'           name = "string",
+#'           path = "string",
+#'           startLine = 123,
+#'           endLine = 123,
+#'           codeSnippet = list(
+#'             list(
+#'               number = 123,
+#'               content = "string"
+#'             )
+#'           )
+#'         ),
+#'         itemCount = 123
+#'       ),
+#'       severity = "Critical"|"High"|"Medium"|"Low"|"Info",
 #'       remediation = list(
 #'         recommendation = list(
 #'           text = "string",
@@ -47,45 +66,26 @@ NULL
 #'         ),
 #'         suggestedFixes = list(
 #'           list(
-#'             code = "string",
-#'             description = "string"
+#'             description = "string",
+#'             code = "string"
 #'           )
 #'         )
 #'       ),
-#'       resource = list(
-#'         id = "string",
-#'         subResourceId = "string"
-#'       ),
-#'       ruleId = "string",
-#'       severity = "Critical"|"High"|"Medium"|"Low"|"Info",
-#'       status = "Closed"|"Open"|"All",
 #'       title = "string",
-#'       type = "string",
-#'       updatedAt = as.POSIXct(
-#'         "2015-01-01"
+#'       detectorTags = list(
+#'         "string"
 #'       ),
-#'       vulnerability = list(
-#'         filePath = list(
-#'           codeSnippet = list(
-#'             list(
-#'               content = "string",
-#'               number = 123
-#'             )
-#'           ),
-#'           endLine = 123,
-#'           name = "string",
-#'           path = "string",
-#'           startLine = 123
-#'         ),
-#'         id = "string",
-#'         itemCount = 123,
-#'         referenceUrls = list(
-#'           "string"
-#'         ),
-#'         relatedVulnerabilities = list(
-#'           "string"
-#'         )
-#'       )
+#'       detectorId = "string",
+#'       detectorName = "string",
+#'       ruleId = "string"
+#'     )
+#'   ),
+#'   failedFindings = list(
+#'     list(
+#'       scanName = "string",
+#'       findingId = "string",
+#'       errorCode = "DUPLICATE_IDENTIFIER"|"ITEM_DOES_NOT_EXIST"|"INTERNAL_ERROR"|"INVALID_FINDING_ID"|"INVALID_SCAN_NAME",
+#'       message = "string"
 #'     )
 #'   )
 #' )
@@ -96,8 +96,8 @@ NULL
 #' svc$batch_get_findings(
 #'   findingIdentifiers = list(
 #'     list(
-#'       findingId = "string",
-#'       scanName = "string"
+#'       scanName = "string",
+#'       findingId = "string"
 #'     )
 #'   )
 #' )
@@ -133,13 +133,9 @@ codegurusecurity_batch_get_findings <- function(findingIdentifiers) {
 #' Use to create a scan using code uploaded to an Amazon S3 bucket.
 #'
 #' @usage
-#' codegurusecurity_create_scan(analysisType, clientToken, resourceId,
-#'   scanName, scanType, tags)
+#' codegurusecurity_create_scan(clientToken, resourceId, scanName,
+#'   scanType, analysisType, tags)
 #'
-#' @param analysisType The type of analysis you want CodeGuru Security to perform in the scan,
-#' either `Security` or `All`. The `Security` type only generates findings
-#' related to security. The `All` type generates both security findings and
-#' quality findings. Defaults to `Security` type if missing.
 #' @param clientToken The idempotency token for the request. Amazon CodeGuru Security uses
 #' this value to prevent the accidental creation of duplicate scans if
 #' there are failures and retries.
@@ -154,6 +150,10 @@ codegurusecurity_batch_get_findings <- function(findingIdentifiers) {
 #' detectors to analyze your code in near-real time. `Standard` scans have
 #' standard resource limits and use the full set of detectors to analyze
 #' your code.
+#' @param analysisType The type of analysis you want CodeGuru Security to perform in the scan,
+#' either `Security` or `All`. The `Security` type only generates findings
+#' related to security. The `All` type generates both security findings and
+#' quality findings. Defaults to `Security` type if missing.
 #' @param tags An array of key-value pairs used to tag a scan. A tag is a custom
 #' attribute label with two parts:
 #' 
@@ -168,26 +168,26 @@ codegurusecurity_batch_get_findings <- function(findingIdentifiers) {
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   scanName = "string",
+#'   runId = "string",
 #'   resourceId = list(
 #'     codeArtifactId = "string"
 #'   ),
-#'   runId = "string",
-#'   scanName = "string",
-#'   scanNameArn = "string",
-#'   scanState = "InProgress"|"Successful"|"Failed"
+#'   scanState = "InProgress"|"Successful"|"Failed",
+#'   scanNameArn = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_scan(
-#'   analysisType = "Security"|"All",
 #'   clientToken = "string",
 #'   resourceId = list(
 #'     codeArtifactId = "string"
 #'   ),
 #'   scanName = "string",
 #'   scanType = "Standard"|"Express",
+#'   analysisType = "Security"|"All",
 #'   tags = list(
 #'     "string"
 #'   )
@@ -199,7 +199,7 @@ codegurusecurity_batch_get_findings <- function(findingIdentifiers) {
 #' @rdname codegurusecurity_create_scan
 #'
 #' @aliases codegurusecurity_create_scan
-codegurusecurity_create_scan <- function(analysisType = NULL, clientToken = NULL, resourceId, scanName, scanType = NULL, tags = NULL) {
+codegurusecurity_create_scan <- function(clientToken = NULL, resourceId, scanName, scanType = NULL, analysisType = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateScan",
     http_method = "POST",
@@ -208,7 +208,7 @@ codegurusecurity_create_scan <- function(analysisType = NULL, clientToken = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .codegurusecurity$create_scan_input(analysisType = analysisType, clientToken = clientToken, resourceId = resourceId, scanName = scanName, scanType = scanType, tags = tags)
+  input <- .codegurusecurity$create_scan_input(clientToken = clientToken, resourceId = resourceId, scanName = scanName, scanType = scanType, analysisType = analysisType, tags = tags)
   output <- .codegurusecurity$create_scan_output()
   config <- get_config()
   svc <- .codegurusecurity$service(config, op)
@@ -241,11 +241,11 @@ codegurusecurity_create_scan <- function(analysisType = NULL, clientToken = NULL
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   codeArtifactId = "string",
+#'   s3Url = "string",
 #'   requestHeaders = list(
 #'     "string"
 #'   ),
-#'   s3Url = "string"
+#'   codeArtifactId = "string"
 #' )
 #' ```
 #'
@@ -335,18 +335,18 @@ codegurusecurity_get_account_configuration <- function() {
 #' Returns a list of all findings generated by a particular scan.
 #'
 #' @usage
-#' codegurusecurity_get_findings(maxResults, nextToken, scanName, status)
+#' codegurusecurity_get_findings(scanName, nextToken, maxResults, status)
 #'
+#' @param scanName &#91;required&#93; The name of the scan you want to retrieve findings from.
+#' @param nextToken A token to use for paginating results that are returned in the response.
+#' Set the value of this parameter to null for the first request. For
+#' subsequent calls, use the `nextToken` value returned from the previous
+#' request to continue listing results after the first page.
 #' @param maxResults The maximum number of results to return in the response. Use this
 #' parameter when paginating results. If additional results exist beyond
 #' the number you specify, the `nextToken` element is returned in the
 #' response. Use `nextToken` in a subsequent request to retrieve additional
 #' results. If not specified, returns 1000 results.
-#' @param nextToken A token to use for paginating results that are returned in the response.
-#' Set the value of this parameter to null for the first request. For
-#' subsequent calls, use the `nextToken` value returned from the previous
-#' request to continue listing results after the first page.
-#' @param scanName &#91;required&#93; The name of the scan you want to retrieve findings from.
 #' @param status The status of the findings you want to get. Pass either `Open`,
 #' `Closed`, or `All`.
 #'
@@ -360,13 +360,40 @@ codegurusecurity_get_account_configuration <- function() {
 #'         "2015-01-01"
 #'       ),
 #'       description = "string",
-#'       detectorId = "string",
-#'       detectorName = "string",
-#'       detectorTags = list(
-#'         "string"
-#'       ),
 #'       generatorId = "string",
 #'       id = "string",
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       type = "string",
+#'       status = "Closed"|"Open"|"All",
+#'       resource = list(
+#'         id = "string",
+#'         subResourceId = "string"
+#'       ),
+#'       vulnerability = list(
+#'         referenceUrls = list(
+#'           "string"
+#'         ),
+#'         relatedVulnerabilities = list(
+#'           "string"
+#'         ),
+#'         id = "string",
+#'         filePath = list(
+#'           name = "string",
+#'           path = "string",
+#'           startLine = 123,
+#'           endLine = 123,
+#'           codeSnippet = list(
+#'             list(
+#'               number = 123,
+#'               content = "string"
+#'             )
+#'           )
+#'         ),
+#'         itemCount = 123
+#'       ),
+#'       severity = "Critical"|"High"|"Medium"|"Low"|"Info",
 #'       remediation = list(
 #'         recommendation = list(
 #'           text = "string",
@@ -374,45 +401,18 @@ codegurusecurity_get_account_configuration <- function() {
 #'         ),
 #'         suggestedFixes = list(
 #'           list(
-#'             code = "string",
-#'             description = "string"
+#'             description = "string",
+#'             code = "string"
 #'           )
 #'         )
 #'       ),
-#'       resource = list(
-#'         id = "string",
-#'         subResourceId = "string"
-#'       ),
-#'       ruleId = "string",
-#'       severity = "Critical"|"High"|"Medium"|"Low"|"Info",
-#'       status = "Closed"|"Open"|"All",
 #'       title = "string",
-#'       type = "string",
-#'       updatedAt = as.POSIXct(
-#'         "2015-01-01"
+#'       detectorTags = list(
+#'         "string"
 #'       ),
-#'       vulnerability = list(
-#'         filePath = list(
-#'           codeSnippet = list(
-#'             list(
-#'               content = "string",
-#'               number = 123
-#'             )
-#'           ),
-#'           endLine = 123,
-#'           name = "string",
-#'           path = "string",
-#'           startLine = 123
-#'         ),
-#'         id = "string",
-#'         itemCount = 123,
-#'         referenceUrls = list(
-#'           "string"
-#'         ),
-#'         relatedVulnerabilities = list(
-#'           "string"
-#'         )
-#'       )
+#'       detectorId = "string",
+#'       detectorName = "string",
+#'       ruleId = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -422,9 +422,9 @@ codegurusecurity_get_account_configuration <- function() {
 #' @section Request syntax:
 #' ```
 #' svc$get_findings(
-#'   maxResults = 123,
-#'   nextToken = "string",
 #'   scanName = "string",
+#'   nextToken = "string",
+#'   maxResults = 123,
 #'   status = "Closed"|"Open"|"All"
 #' )
 #' ```
@@ -434,7 +434,7 @@ codegurusecurity_get_account_configuration <- function() {
 #' @rdname codegurusecurity_get_findings
 #'
 #' @aliases codegurusecurity_get_findings
-codegurusecurity_get_findings <- function(maxResults = NULL, nextToken = NULL, scanName, status = NULL) {
+codegurusecurity_get_findings <- function(scanName, nextToken = NULL, maxResults = NULL, status = NULL) {
   op <- new_operation(
     name = "GetFindings",
     http_method = "GET",
@@ -443,7 +443,7 @@ codegurusecurity_get_findings <- function(maxResults = NULL, nextToken = NULL, s
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings"),
     stream_api = FALSE
   )
-  input <- .codegurusecurity$get_findings_input(maxResults = maxResults, nextToken = nextToken, scanName = scanName, status = status)
+  input <- .codegurusecurity$get_findings_input(scanName = scanName, nextToken = nextToken, maxResults = maxResults, status = status)
   output <- .codegurusecurity$get_findings_output()
   config <- get_config()
   svc <- .codegurusecurity$service(config, op)
@@ -475,32 +475,32 @@ codegurusecurity_get_findings <- function(maxResults = NULL, nextToken = NULL, s
 #' ```
 #' list(
 #'   metricsSummary = list(
+#'     date = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     openFindings = list(
+#'       info = 123.0,
+#'       low = 123.0,
+#'       medium = 123.0,
+#'       high = 123.0,
+#'       critical = 123.0
+#'     ),
 #'     categoriesWithMostFindings = list(
 #'       list(
 #'         categoryName = "string",
 #'         findingNumber = 123
 #'       )
 #'     ),
-#'     date = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     openFindings = list(
-#'       critical = 123.0,
-#'       high = 123.0,
-#'       info = 123.0,
-#'       low = 123.0,
-#'       medium = 123.0
+#'     scansWithMostOpenFindings = list(
+#'       list(
+#'         scanName = "string",
+#'         findingNumber = 123
+#'       )
 #'     ),
 #'     scansWithMostOpenCriticalFindings = list(
 #'       list(
-#'         findingNumber = 123,
-#'         scanName = "string"
-#'       )
-#'     ),
-#'     scansWithMostOpenFindings = list(
-#'       list(
-#'         findingNumber = 123,
-#'         scanName = "string"
+#'         scanName = "string",
+#'         findingNumber = 123
 #'       )
 #'     )
 #'   )
@@ -548,39 +548,39 @@ codegurusecurity_get_metrics_summary <- function(date) {
 #' completed.
 #'
 #' @usage
-#' codegurusecurity_get_scan(runId, scanName)
+#' codegurusecurity_get_scan(scanName, runId)
 #'
+#' @param scanName &#91;required&#93; The name of the scan you want to view details about.
 #' @param runId UUID that identifies the individual scan run you want to view details
 #' about. You retrieve this when you call the
 #' [`create_scan`][codegurusecurity_create_scan] operation. Defaults to the
 #' latest scan run if missing.
-#' @param scanName &#91;required&#93; The name of the scan you want to view details about.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   analysisType = "Security"|"All",
+#'   scanName = "string",
+#'   runId = "string",
+#'   scanState = "InProgress"|"Successful"|"Failed",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   errorMessage = "string",
-#'   numberOfRevisions = 123,
-#'   runId = "string",
-#'   scanName = "string",
-#'   scanNameArn = "string",
-#'   scanState = "InProgress"|"Successful"|"Failed",
+#'   analysisType = "Security"|"All",
 #'   updatedAt = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   numberOfRevisions = 123,
+#'   scanNameArn = "string",
+#'   errorMessage = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$get_scan(
-#'   runId = "string",
-#'   scanName = "string"
+#'   scanName = "string",
+#'   runId = "string"
 #' )
 #' ```
 #'
@@ -589,7 +589,7 @@ codegurusecurity_get_metrics_summary <- function(date) {
 #' @rdname codegurusecurity_get_scan
 #'
 #' @aliases codegurusecurity_get_scan
-codegurusecurity_get_scan <- function(runId = NULL, scanName) {
+codegurusecurity_get_scan <- function(scanName, runId = NULL) {
   op <- new_operation(
     name = "GetScan",
     http_method = "GET",
@@ -598,7 +598,7 @@ codegurusecurity_get_scan <- function(runId = NULL, scanName) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .codegurusecurity$get_scan_input(runId = runId, scanName = scanName)
+  input <- .codegurusecurity$get_scan_input(scanName = scanName, runId = runId)
   output <- .codegurusecurity$get_scan_output()
   config <- get_config()
   svc <- .codegurusecurity$service(config, op)
@@ -616,22 +616,22 @@ codegurusecurity_get_scan <- function(runId = NULL, scanName) {
 #' range.
 #'
 #' @usage
-#' codegurusecurity_list_findings_metrics(endDate, maxResults, nextToken,
-#'   startDate)
+#' codegurusecurity_list_findings_metrics(nextToken, maxResults, startDate,
+#'   endDate)
 #'
-#' @param endDate &#91;required&#93; The end date of the interval which you want to retrieve metrics from.
-#' Round to the nearest day.
+#' @param nextToken A token to use for paginating results that are returned in the response.
+#' Set the value of this parameter to null for the first request. For
+#' subsequent calls, use the `nextToken` value returned from the previous
+#' request to continue listing results after the first page.
 #' @param maxResults The maximum number of results to return in the response. Use this
 #' parameter when paginating results. If additional results exist beyond
 #' the number you specify, the `nextToken` element is returned in the
 #' response. Use `nextToken` in a subsequent request to retrieve additional
 #' results. If not specified, returns 1000 results.
-#' @param nextToken A token to use for paginating results that are returned in the response.
-#' Set the value of this parameter to null for the first request. For
-#' subsequent calls, use the `nextToken` value returned from the previous
-#' request to continue listing results after the first page.
 #' @param startDate &#91;required&#93; The start date of the interval which you want to retrieve metrics from.
 #' Rounds to the nearest day.
+#' @param endDate &#91;required&#93; The end date of the interval which you want to retrieve metrics from.
+#' Round to the nearest day.
 #'
 #' @return
 #' A list with the following syntax:
@@ -639,36 +639,36 @@ codegurusecurity_get_scan <- function(runId = NULL, scanName) {
 #' list(
 #'   findingsMetrics = list(
 #'     list(
-#'       closedFindings = list(
-#'         critical = 123.0,
-#'         high = 123.0,
-#'         info = 123.0,
-#'         low = 123.0,
-#'         medium = 123.0
-#'       ),
 #'       date = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       meanTimeToClose = list(
-#'         critical = 123.0,
-#'         high = 123.0,
-#'         info = 123.0,
-#'         low = 123.0,
-#'         medium = 123.0
-#'       ),
 #'       newFindings = list(
-#'         critical = 123.0,
-#'         high = 123.0,
 #'         info = 123.0,
 #'         low = 123.0,
-#'         medium = 123.0
+#'         medium = 123.0,
+#'         high = 123.0,
+#'         critical = 123.0
+#'       ),
+#'       closedFindings = list(
+#'         info = 123.0,
+#'         low = 123.0,
+#'         medium = 123.0,
+#'         high = 123.0,
+#'         critical = 123.0
 #'       ),
 #'       openFindings = list(
-#'         critical = 123.0,
-#'         high = 123.0,
 #'         info = 123.0,
 #'         low = 123.0,
-#'         medium = 123.0
+#'         medium = 123.0,
+#'         high = 123.0,
+#'         critical = 123.0
+#'       ),
+#'       meanTimeToClose = list(
+#'         info = 123.0,
+#'         low = 123.0,
+#'         medium = 123.0,
+#'         high = 123.0,
+#'         critical = 123.0
 #'       )
 #'     )
 #'   ),
@@ -679,12 +679,12 @@ codegurusecurity_get_scan <- function(runId = NULL, scanName) {
 #' @section Request syntax:
 #' ```
 #' svc$list_findings_metrics(
-#'   endDate = as.POSIXct(
+#'   nextToken = "string",
+#'   maxResults = 123,
+#'   startDate = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   maxResults = 123,
-#'   nextToken = "string",
-#'   startDate = as.POSIXct(
+#'   endDate = as.POSIXct(
 #'     "2015-01-01"
 #'   )
 #' )
@@ -695,7 +695,7 @@ codegurusecurity_get_scan <- function(runId = NULL, scanName) {
 #' @rdname codegurusecurity_list_findings_metrics
 #'
 #' @aliases codegurusecurity_list_findings_metrics
-codegurusecurity_list_findings_metrics <- function(endDate, maxResults = NULL, nextToken = NULL, startDate) {
+codegurusecurity_list_findings_metrics <- function(nextToken = NULL, maxResults = NULL, startDate, endDate) {
   op <- new_operation(
     name = "ListFindingsMetrics",
     http_method = "GET",
@@ -704,7 +704,7 @@ codegurusecurity_list_findings_metrics <- function(endDate, maxResults = NULL, n
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findingsMetrics"),
     stream_api = FALSE
   )
-  input <- .codegurusecurity$list_findings_metrics_input(endDate = endDate, maxResults = maxResults, nextToken = nextToken, startDate = startDate)
+  input <- .codegurusecurity$list_findings_metrics_input(nextToken = nextToken, maxResults = maxResults, startDate = startDate, endDate = endDate)
   output <- .codegurusecurity$list_findings_metrics_output()
   config <- get_config()
   svc <- .codegurusecurity$service(config, op)
@@ -721,45 +721,45 @@ codegurusecurity_list_findings_metrics <- function(endDate, maxResults = NULL, n
 #' scans.
 #'
 #' @usage
-#' codegurusecurity_list_scans(maxResults, nextToken)
+#' codegurusecurity_list_scans(nextToken, maxResults)
 #'
+#' @param nextToken A token to use for paginating results that are returned in the response.
+#' Set the value of this parameter to null for the first request. For
+#' subsequent calls, use the `nextToken` value returned from the previous
+#' request to continue listing results after the first page.
 #' @param maxResults The maximum number of results to return in the response. Use this
 #' parameter when paginating results. If additional results exist beyond
 #' the number you specify, the `nextToken` element is returned in the
 #' response. Use `nextToken` in a subsequent request to retrieve additional
 #' results. If not specified, returns 100 results.
-#' @param nextToken A token to use for paginating results that are returned in the response.
-#' Set the value of this parameter to null for the first request. For
-#' subsequent calls, use the `nextToken` value returned from the previous
-#' request to continue listing results after the first page.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   nextToken = "string",
 #'   summaries = list(
 #'     list(
+#'       scanState = "InProgress"|"Successful"|"Failed",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       runId = "string",
-#'       scanName = "string",
-#'       scanNameArn = "string",
-#'       scanState = "InProgress"|"Successful"|"Failed",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       scanName = "string",
+#'       runId = "string",
+#'       scanNameArn = "string"
 #'     )
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_scans(
-#'   maxResults = 123,
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -768,7 +768,7 @@ codegurusecurity_list_findings_metrics <- function(endDate, maxResults = NULL, n
 #' @rdname codegurusecurity_list_scans
 #'
 #' @aliases codegurusecurity_list_scans
-codegurusecurity_list_scans <- function(maxResults = NULL, nextToken = NULL) {
+codegurusecurity_list_scans <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListScans",
     http_method = "GET",
@@ -777,7 +777,7 @@ codegurusecurity_list_scans <- function(maxResults = NULL, nextToken = NULL) {
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "summaries"),
     stream_api = FALSE
   )
-  input <- .codegurusecurity$list_scans_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .codegurusecurity$list_scans_input(nextToken = nextToken, maxResults = maxResults)
   output <- .codegurusecurity$list_scans_output()
   config <- get_config()
   svc <- .codegurusecurity$service(config, op)

@@ -414,12 +414,16 @@ s3control_create_access_grants_location <- function(AccountId, LocationScope, IA
 #'
 #' @description
 #' Creates an access point and associates it to a specified bucket. For
-#' more information, see [Managing access to shared datasets in general
-#' purpose buckets with access
+#' more information, see [Managing access to shared datasets with access
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html)
 #' or [Managing access to shared datasets in directory buckets with access
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets.html)
 #' in the *Amazon S3 User Guide*.
+#' 
+#' To create an access point and attach it to a volume on an Amazon FSx
+#' file system, see
+#' [CreateAndAttachS3AccessPoint](https://docs.aws.amazon.com/fsx/latest/APIReference/API_CreateAndAttachS3AccessPoint.html)
+#' in the *Amazon FSx API Reference*.
 #' 
 #' S3 on Outposts only supports VPC-style access points.
 #' 
@@ -451,7 +455,7 @@ s3control_create_access_grants_location <- function(AccountId, LocationScope, IA
 #'
 #' @usage
 #' s3control_create_access_point(AccountId, Name, Bucket, VpcConfiguration,
-#'   PublicAccessBlockConfiguration, BucketAccountId, Scope)
+#'   PublicAccessBlockConfiguration, BucketAccountId, Scope, Tags)
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID for the account that owns the
 #' specified access point.
@@ -463,7 +467,7 @@ s3control_create_access_grants_location <- function(AccountId, LocationScope, IA
 #' followed by `--xa-s3`. For more information, see [Managing access to
 #' shared datasets in directory buckets with access
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets.html)
-#' in the Amazon S3 User Guide.
+#' in the *Amazon S3 User Guide*.
 #' @param Bucket &#91;required&#93; The name of the bucket that you want to associate this access point
 #' with.
 #' 
@@ -498,9 +502,16 @@ s3control_create_access_grants_location <- function(AccountId, LocationScope, IA
 #' information, see [Managing access to shared datasets in directory
 #' buckets with access
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets.html)
-#' in the Amazon S3 User Guide.
+#' in the *Amazon S3 User Guide*.
 #' 
-#' Scope is not supported for access points for general purpose buckets.
+#' Scope is only supported for access points attached to directory buckets.
+#' @param Tags An array of tags that you can apply to an access point. Tags are
+#' key-value pairs of metadata used to control access to your access
+#' points. For more information about tags, see [Using tags with Amazon
+#' S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/tagging.html).
+#' For information about tagging access points, see [Using tags for
+#' attribute-based access control
+#' (ABAC)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/tagging.html#using-tags-for-abac).
 #'
 #' @return
 #' A list with the following syntax:
@@ -534,6 +545,12 @@ s3control_create_access_grants_location <- function(AccountId, LocationScope, IA
 #'     Permissions = list(
 #'       "GetObject"|"GetObjectAttributes"|"ListMultipartUploadParts"|"ListBucket"|"ListBucketMultipartUploads"|"PutObject"|"DeleteObject"|"AbortMultipartUpload"
 #'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -543,7 +560,7 @@ s3control_create_access_grants_location <- function(AccountId, LocationScope, IA
 #' @rdname s3control_create_access_point
 #'
 #' @aliases s3control_create_access_point
-s3control_create_access_point <- function(AccountId, Name, Bucket, VpcConfiguration = NULL, PublicAccessBlockConfiguration = NULL, BucketAccountId = NULL, Scope = NULL) {
+s3control_create_access_point <- function(AccountId, Name, Bucket, VpcConfiguration = NULL, PublicAccessBlockConfiguration = NULL, BucketAccountId = NULL, Scope = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateAccessPoint",
     http_method = "PUT",
@@ -552,7 +569,7 @@ s3control_create_access_point <- function(AccountId, Name, Bucket, VpcConfigurat
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3control$create_access_point_input(AccountId = AccountId, Name = Name, Bucket = Bucket, VpcConfiguration = VpcConfiguration, PublicAccessBlockConfiguration = PublicAccessBlockConfiguration, BucketAccountId = BucketAccountId, Scope = Scope)
+  input <- .s3control$create_access_point_input(AccountId = AccountId, Name = Name, Bucket = Bucket, VpcConfiguration = VpcConfiguration, PublicAccessBlockConfiguration = PublicAccessBlockConfiguration, BucketAccountId = BucketAccountId, Scope = Scope, Tags = Tags)
   output <- .s3control$create_access_point_output()
   config <- get_config()
   svc <- .s3control$service(config, op)
@@ -975,14 +992,19 @@ s3control_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguratio
 #'         Mode = "COMPLIANCE"|"GOVERNANCE"
 #'       )
 #'     ),
-#'     S3ReplicateObject = list()
+#'     S3ReplicateObject = list(),
+#'     S3ComputeObjectChecksum = list(
+#'       ChecksumAlgorithm = "CRC32"|"CRC32C"|"CRC64NVME"|"MD5"|"SHA1"|"SHA256",
+#'       ChecksumType = "FULL_OBJECT"|"COMPOSITE"
+#'     )
 #'   ),
 #'   Report = list(
 #'     Bucket = "string",
 #'     Format = "Report_CSV_20180820",
 #'     Enabled = TRUE|FALSE,
 #'     Prefix = "string",
-#'     ReportScope = "AllTasks"|"FailedTasksOnly"
+#'     ReportScope = "AllTasks"|"FailedTasksOnly",
+#'     ExpectedBucketOwner = "string"
 #'   ),
 #'   ClientRequestToken = "string",
 #'   Manifest = list(
@@ -1049,6 +1071,20 @@ s3control_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguratio
 #'         ObjectSizeLessThanBytes = 123,
 #'         MatchAnyStorageClass = list(
 #'           "STANDARD"|"STANDARD_IA"|"ONEZONE_IA"|"GLACIER"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"|"GLACIER_IR"
+#'         ),
+#'         MatchAnyObjectEncryption = list(
+#'           list(
+#'             SSES3 = list(),
+#'             SSEKMS = list(
+#'               KmsKeyArn = "string",
+#'               BucketKeyEnabled = TRUE|FALSE
+#'             ),
+#'             DSSEKMS = list(
+#'               KmsKeyArn = "string"
+#'             ),
+#'             SSEC = list(),
+#'             NOTSSE = list()
+#'           )
 #'         )
 #'       ),
 #'       EnableManifestOutput = TRUE|FALSE
@@ -2518,7 +2554,12 @@ s3control_delete_multi_region_access_point <- function(AccountId, ClientToken, D
 #' This operation is not supported by directory buckets.
 #' 
 #' Removes the `PublicAccessBlock` configuration for an Amazon Web Services
-#' account. For more information, see [Using Amazon S3 block public
+#' account. This operation might be restricted when the account is managed
+#' by organization-level Block Public Access policies. You’ll get an Access
+#' Denied (403) error when the account is managed by organization-level
+#' Block Public Access policies. Organization-level policies override
+#' account-level settings, preventing direct account-level modifications.
+#' For more information, see [Using Amazon S3 block public
 #' access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html).
 #' 
 #' Related actions include:
@@ -2906,7 +2947,11 @@ s3control_delete_storage_lens_group <- function(Name, AccountId) {
 #'           Mode = "COMPLIANCE"|"GOVERNANCE"
 #'         )
 #'       ),
-#'       S3ReplicateObject = list()
+#'       S3ReplicateObject = list(),
+#'       S3ComputeObjectChecksum = list(
+#'         ChecksumAlgorithm = "CRC32"|"CRC32C"|"CRC64NVME"|"MD5"|"SHA1"|"SHA256",
+#'         ChecksumType = "FULL_OBJECT"|"COMPOSITE"
+#'       )
 #'     ),
 #'     Priority = 123,
 #'     ProgressSummary = list(
@@ -2929,7 +2974,8 @@ s3control_delete_storage_lens_group <- function(Name, AccountId) {
 #'       Format = "Report_CSV_20180820",
 #'       Enabled = TRUE|FALSE,
 #'       Prefix = "string",
-#'       ReportScope = "AllTasks"|"FailedTasksOnly"
+#'       ReportScope = "AllTasks"|"FailedTasksOnly",
+#'       ExpectedBucketOwner = "string"
 #'     ),
 #'     CreationTime = as.POSIXct(
 #'       "2015-01-01"
@@ -2984,6 +3030,20 @@ s3control_delete_storage_lens_group <- function(Name, AccountId) {
 #'           ObjectSizeLessThanBytes = 123,
 #'           MatchAnyStorageClass = list(
 #'             "STANDARD"|"STANDARD_IA"|"ONEZONE_IA"|"GLACIER"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"|"GLACIER_IR"
+#'           ),
+#'           MatchAnyObjectEncryption = list(
+#'             list(
+#'               SSES3 = list(),
+#'               SSEKMS = list(
+#'                 KmsKeyArn = "string",
+#'                 BucketKeyEnabled = TRUE|FALSE
+#'               ),
+#'               DSSEKMS = list(
+#'                 KmsKeyArn = "string"
+#'               ),
+#'               SSEC = list(),
+#'               NOTSSE = list()
+#'             )
 #'           )
 #'         ),
 #'         EnableManifestOutput = TRUE|FALSE
@@ -3603,7 +3663,9 @@ s3control_get_access_grants_location <- function(AccountId, AccessGrantsLocation
 #'   Endpoints = list(
 #'     "string"
 #'   ),
-#'   BucketAccountId = "string"
+#'   BucketAccountId = "string",
+#'   DataSourceId = "string",
+#'   DataSourceType = "string"
 #' )
 #' ```
 #'
@@ -5388,8 +5450,9 @@ s3control_get_multi_region_access_point_routes <- function(AccountId, Mrap) {
 #' This operation is not supported by directory buckets.
 #' 
 #' Retrieves the `PublicAccessBlock` configuration for an Amazon Web
-#' Services account. For more information, see [Using Amazon S3 block
-#' public
+#' Services account. This operation returns the effective account-level
+#' configuration, which may inherit from organization-level policies. For
+#' more information, see [Using Amazon S3 block public
 #' access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html).
 #' 
 #' Related actions include:
@@ -5505,6 +5568,9 @@ s3control_get_public_access_block <- function(AccountId) {
 #'         ),
 #'         DetailedStatusCodesMetrics = list(
 #'           IsEnabled = TRUE|FALSE
+#'         ),
+#'         AdvancedPerformanceMetrics = list(
+#'           IsEnabled = TRUE|FALSE
 #'         )
 #'       ),
 #'       AdvancedCostOptimizationMetrics = list(
@@ -5514,6 +5580,9 @@ s3control_get_public_access_block <- function(AccountId) {
 #'         IsEnabled = TRUE|FALSE
 #'       ),
 #'       DetailedStatusCodesMetrics = list(
+#'         IsEnabled = TRUE|FALSE
+#'       ),
+#'       AdvancedPerformanceMetrics = list(
 #'         IsEnabled = TRUE|FALSE
 #'       ),
 #'       StorageLensGroupLevel = list(
@@ -5559,13 +5628,47 @@ s3control_get_public_access_block <- function(AccountId) {
 #'       ),
 #'       CloudWatchMetrics = list(
 #'         IsEnabled = TRUE|FALSE
+#'       ),
+#'       StorageLensTableDestination = list(
+#'         IsEnabled = TRUE|FALSE,
+#'         Encryption = list(
+#'           SSES3 = list(),
+#'           SSEKMS = list(
+#'             KeyId = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ExpandedPrefixesDataExport = list(
+#'       S3BucketDestination = list(
+#'         Format = "CSV"|"Parquet",
+#'         OutputSchemaVersion = "V_1",
+#'         AccountId = "string",
+#'         Arn = "string",
+#'         Prefix = "string",
+#'         Encryption = list(
+#'           SSES3 = list(),
+#'           SSEKMS = list(
+#'             KeyId = "string"
+#'           )
+#'         )
+#'       ),
+#'       StorageLensTableDestination = list(
+#'         IsEnabled = TRUE|FALSE,
+#'         Encryption = list(
+#'           SSES3 = list(),
+#'           SSEKMS = list(
+#'             KeyId = "string"
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     IsEnabled = TRUE|FALSE,
 #'     AwsOrg = list(
 #'       Arn = "string"
 #'     ),
-#'     StorageLensArn = "string"
+#'     StorageLensArn = "string",
+#'     PrefixDelimiter = "string"
 #'   )
 #' )
 #' ```
@@ -6093,12 +6196,14 @@ s3control_list_access_grants_locations <- function(AccountId, NextToken = NULL, 
 #' @description
 #' This operation is not supported by directory buckets.
 #' 
-#' Returns a list of the access points that are owned by the current
-#' account that's associated with the specified bucket. You can retrieve up
-#' to 1000 access points per call. If the specified bucket has more than
-#' 1,000 access points (or the number specified in `maxResults`, whichever
-#' is less), the response will include a continuation token that you can
-#' use to list the additional access points.
+#' Returns a list of the access points. You can retrieve up to 1,000 access
+#' points per call. If the call returns more than 1,000 access points (or
+#' the number specified in `maxResults`, whichever is less), the response
+#' will include a continuation token that you can use to list the
+#' additional access points.
+#' 
+#' Returns only access points attached to S3 buckets by default. To return
+#' all access points specify `DataSourceType` as `ALL`.
 #' 
 #' All Amazon S3 on Outposts REST API requests for this action require an
 #' additional parameter of `x-amz-outpost-id` to be passed with the
@@ -6120,7 +6225,8 @@ s3control_list_access_grants_locations <- function(AccountId, NextToken = NULL, 
 #' -   [`get_access_point`][s3control_get_access_point]
 #'
 #' @usage
-#' s3control_list_access_points(AccountId, Bucket, NextToken, MaxResults)
+#' s3control_list_access_points(AccountId, Bucket, NextToken, MaxResults,
+#'   DataSourceId, DataSourceType)
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID for the account that owns the
 #' specified access points.
@@ -6147,6 +6253,10 @@ s3control_list_access_grants_locations <- function(AccountId, NextToken = NULL, 
 #' points, then the response will include a continuation token in the
 #' `NextToken` field that you can use to retrieve the next page of access
 #' points.
+#' @param DataSourceId The unique identifier for the data source of the access point.
+#' @param DataSourceType The type of the data source that the access point is attached to.
+#' Returns only access points attached to S3 buckets by default. To return
+#' all access points specify `DataSourceType` as `ALL`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6162,7 +6272,9 @@ s3control_list_access_grants_locations <- function(AccountId, NextToken = NULL, 
 #'       Bucket = "string",
 #'       AccessPointArn = "string",
 #'       Alias = "string",
-#'       BucketAccountId = "string"
+#'       BucketAccountId = "string",
+#'       DataSourceId = "string",
+#'       DataSourceType = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -6175,7 +6287,9 @@ s3control_list_access_grants_locations <- function(AccountId, NextToken = NULL, 
 #'   AccountId = "string",
 #'   Bucket = "string",
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   DataSourceId = "string",
+#'   DataSourceType = "string"
 #' )
 #' ```
 #'
@@ -6184,7 +6298,7 @@ s3control_list_access_grants_locations <- function(AccountId, NextToken = NULL, 
 #' @rdname s3control_list_access_points
 #'
 #' @aliases s3control_list_access_points
-s3control_list_access_points <- function(AccountId, Bucket = NULL, NextToken = NULL, MaxResults = NULL) {
+s3control_list_access_points <- function(AccountId, Bucket = NULL, NextToken = NULL, MaxResults = NULL, DataSourceId = NULL, DataSourceType = NULL) {
   op <- new_operation(
     name = "ListAccessPoints",
     http_method = "GET",
@@ -6193,7 +6307,7 @@ s3control_list_access_points <- function(AccountId, Bucket = NULL, NextToken = N
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
-  input <- .s3control$list_access_points_input(AccountId = AccountId, Bucket = Bucket, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .s3control$list_access_points_input(AccountId = AccountId, Bucket = Bucket, NextToken = NextToken, MaxResults = MaxResults, DataSourceId = DataSourceId, DataSourceType = DataSourceType)
   output <- .s3control$list_access_points_output()
   config <- get_config()
   svc <- .s3control$service(config, op)
@@ -6254,7 +6368,9 @@ s3control_list_access_points <- function(AccountId, Bucket = NULL, NextToken = N
 #'       Bucket = "string",
 #'       AccessPointArn = "string",
 #'       Alias = "string",
-#'       BucketAccountId = "string"
+#'       BucketAccountId = "string",
+#'       DataSourceId = "string",
+#'       DataSourceType = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -6526,7 +6642,7 @@ s3control_list_caller_access_grants <- function(AccountId, GrantScope = NULL, Ne
 #'     list(
 #'       JobId = "string",
 #'       Description = "string",
-#'       Operation = "LambdaInvoke"|"S3PutObjectCopy"|"S3PutObjectAcl"|"S3PutObjectTagging"|"S3DeleteObjectTagging"|"S3InitiateRestoreObject"|"S3PutObjectLegalHold"|"S3PutObjectRetention"|"S3ReplicateObject",
+#'       Operation = "LambdaInvoke"|"S3PutObjectCopy"|"S3PutObjectAcl"|"S3PutObjectTagging"|"S3DeleteObjectTagging"|"S3InitiateRestoreObject"|"S3PutObjectLegalHold"|"S3PutObjectRetention"|"S3ReplicateObject"|"S3ComputeObjectChecksum",
 #'       Priority = 123,
 #'       Status = "Active"|"Cancelled"|"Cancelling"|"Complete"|"Completing"|"Failed"|"Failing"|"New"|"Paused"|"Pausing"|"Preparing"|"Ready"|"Suspended",
 #'       CreationTime = as.POSIXct(
@@ -6904,30 +7020,53 @@ s3control_list_storage_lens_groups <- function(AccountId, NextToken = NULL) {
 }
 .s3control$operations$list_storage_lens_groups <- s3control_list_storage_lens_groups
 
-#' This operation allows you to list all the Amazon Web Services resource
-#' tags for a specified resource
+#' This operation allows you to list all of the tags for a specified
+#' resource
 #'
 #' @description
-#' This operation allows you to list all the Amazon Web Services resource
-#' tags for a specified resource. Each tag is a label consisting of a
-#' user-defined key and value. Tags can help you manage, identify,
-#' organize, search for, and filter resources.
+#' This operation allows you to list all of the tags for a specified
+#' resource. Each tag is a label consisting of a key and value. Tags can
+#' help you organize, track costs for, and control access to resources.
+#' 
+#' This operation is only supported for the following Amazon S3 resources:
+#' 
+#' -   [General purpose
+#'     buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/buckets-tagging.html)
+#' 
+#' -   [Access Points for directory
+#'     buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-db-tagging.html)
+#' 
+#' -   [Access Points for general purpose
+#'     buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-tagging.html)
+#' 
+#' -   [Directory
+#'     buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-buckets-tagging.html)
+#' 
+#' -   [S3 Storage Lens
+#'     groups](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-lens-groups.html)
+#' 
+#' -   [S3 Access Grants instances, registered locations, and
+#'     grants](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-grants-tagging.html).
 #' 
 #' ### Permissions
 #' 
-#' You must have the `s3:ListTagsForResource` permission to use this
-#' operation.
+#' For general purpose buckets, access points for general purpose buckets,
+#' Storage Lens groups, and S3 Access Grants, you must have the
+#' `s3:ListTagsForResource` permission to use this operation.
 #' 
-#' This operation is only supported for [S3 Storage Lens
-#' groups](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-lens-groups.html)
-#' and for [S3 Access
-#' Grants](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-grants-tagging.html).
-#' The tagged resource can be an S3 Storage Lens group or S3 Access Grants
-#' instance, registered location, or grant.
+#' ### Directory bucket permissions
 #' 
-#' For more information about the required Storage Lens Groups permissions,
-#' see [Setting account permissions to use S3 Storage Lens
-#' groups](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_iam_permissions.html#storage_lens_groups_permissions).
+#' For directory buckets, you must have the `s3express:ListTagsForResource`
+#' permission to use this operation. For more information about directory
+#' buckets policies and permissions, see [Identity and Access Management
+#' (IAM) for S3 Express One
+#' Zone](https://docs.aws.amazon.com/AmazonS3/latest/userguide/) in the
+#' *Amazon S3 User Guide*.
+#' 
+#' ### HTTP Host header syntax
+#' 
+#' **Directory buckets** - The HTTP Host header syntax is
+#' `s3express-control.region.amazonaws.com`.
 #' 
 #' For information about S3 Tagging errors, see [List of Amazon S3 Tagging
 #' error
@@ -6938,8 +7077,8 @@ s3control_list_storage_lens_groups <- function(AccountId, NextToken = NULL) {
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the resource owner.
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the S3 resource that you want to list
-#' the tags for. The tagged resource can be an S3 Storage Lens group or S3
-#' Access Grants instance, registered location, or grant.
+#' tags for. The tagged resource can be a directory bucket, S3 Storage Lens
+#' group or S3 Access Grants instance, registered location, or grant.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7172,10 +7311,10 @@ s3control_put_access_point_configuration_for_object_lambda <- function(AccountId
 #' `arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/accesspoint/reports-ap`.
 #' The value must be URL encoded.
 #' @param Policy &#91;required&#93; The policy that you want to apply to the specified access point. For
-#' more information about access point policies, see [Managing access to
-#' shared datasets in general purpose buckets with access
+#' more information about access point policies, see [Managing data access
+#' with Amazon S3 access
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html)
-#' or [Managing access to shared datasets in directory bucekts with access
+#' or [Managing access to shared datasets in directory buckets with access
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets.html)
 #' in the *Amazon S3 User Guide*.
 #'
@@ -8252,7 +8391,12 @@ s3control_put_multi_region_access_point_policy <- function(AccountId, ClientToke
 #' This operation is not supported by directory buckets.
 #' 
 #' Creates or modifies the `PublicAccessBlock` configuration for an Amazon
-#' Web Services account. For this operation, users must have the
+#' Web Services account. This operation may be restricted when the account
+#' is managed by organization-level Block Public Access policies. You might
+#' get an Access Denied (403) error when the account is managed by
+#' organization-level Block Public Access policies. Organization-level
+#' policies override account-level settings, preventing direct
+#' account-level modifications. For this operation, users must have the
 #' `s3:PutAccountPublicAccessBlock` permission. For more information, see
 #' [Using Amazon S3 block public
 #' access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html).
@@ -8378,6 +8522,9 @@ s3control_put_public_access_block <- function(PublicAccessBlockConfiguration, Ac
 #'         ),
 #'         DetailedStatusCodesMetrics = list(
 #'           IsEnabled = TRUE|FALSE
+#'         ),
+#'         AdvancedPerformanceMetrics = list(
+#'           IsEnabled = TRUE|FALSE
 #'         )
 #'       ),
 #'       AdvancedCostOptimizationMetrics = list(
@@ -8387,6 +8534,9 @@ s3control_put_public_access_block <- function(PublicAccessBlockConfiguration, Ac
 #'         IsEnabled = TRUE|FALSE
 #'       ),
 #'       DetailedStatusCodesMetrics = list(
+#'         IsEnabled = TRUE|FALSE
+#'       ),
+#'       AdvancedPerformanceMetrics = list(
 #'         IsEnabled = TRUE|FALSE
 #'       ),
 #'       StorageLensGroupLevel = list(
@@ -8432,13 +8582,47 @@ s3control_put_public_access_block <- function(PublicAccessBlockConfiguration, Ac
 #'       ),
 #'       CloudWatchMetrics = list(
 #'         IsEnabled = TRUE|FALSE
+#'       ),
+#'       StorageLensTableDestination = list(
+#'         IsEnabled = TRUE|FALSE,
+#'         Encryption = list(
+#'           SSES3 = list(),
+#'           SSEKMS = list(
+#'             KeyId = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ExpandedPrefixesDataExport = list(
+#'       S3BucketDestination = list(
+#'         Format = "CSV"|"Parquet",
+#'         OutputSchemaVersion = "V_1",
+#'         AccountId = "string",
+#'         Arn = "string",
+#'         Prefix = "string",
+#'         Encryption = list(
+#'           SSES3 = list(),
+#'           SSEKMS = list(
+#'             KeyId = "string"
+#'           )
+#'         )
+#'       ),
+#'       StorageLensTableDestination = list(
+#'         IsEnabled = TRUE|FALSE,
+#'         Encryption = list(
+#'           SSES3 = list(),
+#'           SSEKMS = list(
+#'             KeyId = "string"
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     IsEnabled = TRUE|FALSE,
 #'     AwsOrg = list(
 #'       Arn = "string"
 #'     ),
-#'     StorageLensArn = "string"
+#'     StorageLensArn = "string",
+#'     PrefixDelimiter = "string"
 #'   ),
 #'   Tags = list(
 #'     list(
@@ -8630,30 +8814,54 @@ s3control_submit_multi_region_access_point_routes <- function(AccountId, Mrap, R
 }
 .s3control$operations$submit_multi_region_access_point_routes <- s3control_submit_multi_region_access_point_routes
 
-#' Creates a new Amazon Web Services resource tag or updates an existing
-#' resource tag
+#' Creates a new user-defined tag or updates an existing tag
 #'
 #' @description
-#' Creates a new Amazon Web Services resource tag or updates an existing
-#' resource tag. Each tag is a label consisting of a user-defined key and
-#' value. Tags can help you manage, identify, organize, search for, and
-#' filter resources. You can add up to 50 Amazon Web Services resource tags
-#' for each S3 resource.
+#' Creates a new user-defined tag or updates an existing tag. Each tag is a
+#' label consisting of a key and value that is applied to your resource.
+#' Tags can help you organize, track costs for, and control access to your
+#' resources. You can add up to 50 Amazon Web Services resource tags for
+#' each S3 resource.
 #' 
-#' This operation is only supported for [S3 Storage Lens
-#' groups](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-lens-groups.html)
-#' and for [S3 Access
-#' Grants](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-grants-tagging.html).
-#' The tagged resource can be an S3 Storage Lens group or S3 Access Grants
-#' instance, registered location, or grant.
+#' This operation is only supported for the following Amazon S3 resource:
+#' 
+#' -   [General purpose
+#'     buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/buckets-tagging.html)
+#' 
+#' -   [Access Points for directory
+#'     buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-db-tagging.html)
+#' 
+#' -   [Access Points for general purpose
+#'     buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-tagging.html)
+#' 
+#' -   [Directory
+#'     buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-buckets-tagging.html)
+#' 
+#' -   [S3 Storage Lens
+#'     groups](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-lens-groups.html)
+#' 
+#' -   [S3 Access Grants instances, registered locations, or
+#'     grants](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-grants-tagging.html).
 #' 
 #' ### Permissions
 #' 
-#' You must have the `s3:TagResource` permission to use this operation.
+#' For general purpose buckets, access points for general purpose buckets,
+#' Storage Lens groups, and S3 Access Grants, you must have the
+#' `s3:TagResource` permission to use this operation.
 #' 
-#' For more information about the required Storage Lens Groups permissions,
-#' see [Setting account permissions to use S3 Storage Lens
-#' groups](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_iam_permissions.html#storage_lens_groups_permissions).
+#' ### Directory bucket permissions
+#' 
+#' For directory buckets, you must have the `s3express:TagResource`
+#' permission to use this operation. For more information about directory
+#' buckets policies and permissions, see [Identity and Access Management
+#' (IAM) for S3 Express One
+#' Zone](https://docs.aws.amazon.com/AmazonS3/latest/userguide/) in the
+#' *Amazon S3 User Guide*.
+#' 
+#' ### HTTP Host header syntax
+#' 
+#' **Directory buckets** - The HTTP Host header syntax is
+#' `s3express-control.region.amazonaws.com`.
 #' 
 #' For information about S3 Tagging errors, see [List of Amazon S3 Tagging
 #' error
@@ -8664,9 +8872,9 @@ s3control_submit_multi_region_access_point_routes <- function(AccountId, Mrap, R
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID that created the S3 resource that
 #' you're trying to add tags to or the requester's account ID.
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the S3 resource that you're trying to
-#' add tags to. The tagged resource can be an S3 Storage Lens group or S3
-#' Access Grants instance, registered location, or grant.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the S3 resource that you're applying
+#' tags to. The tagged resource can be a directory bucket, S3 Storage Lens
+#' group or S3 Access Grants instance, registered location, or grant.
 #' @param Tags &#91;required&#93; The Amazon Web Services resource tags that you want to add to the
 #' specified S3 resource.
 #'
@@ -8711,29 +8919,52 @@ s3control_tag_resource <- function(AccountId, ResourceArn, Tags) {
 }
 .s3control$operations$tag_resource <- s3control_tag_resource
 
-#' This operation removes the specified Amazon Web Services resource tags
-#' from an S3 resource
+#' This operation removes the specified user-defined tags from an S3
+#' resource
 #'
 #' @description
-#' This operation removes the specified Amazon Web Services resource tags
-#' from an S3 resource. Each tag is a label consisting of a user-defined
-#' key and value. Tags can help you manage, identify, organize, search for,
-#' and filter resources.
+#' This operation removes the specified user-defined tags from an S3
+#' resource. You can pass one or more tag keys.
 #' 
-#' This operation is only supported for [S3 Storage Lens
-#' groups](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-lens-groups.html)
-#' and for [S3 Access
-#' Grants](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-grants-tagging.html).
-#' The tagged resource can be an S3 Storage Lens group or S3 Access Grants
-#' instance, registered location, or grant.
+#' This operation is only supported for the following Amazon S3 resources:
+#' 
+#' -   [General purpose
+#'     buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/buckets-tagging.html)
+#' 
+#' -   [Access Points for directory
+#'     buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-db-tagging.html)
+#' 
+#' -   [Access Points for general purpose
+#'     buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-tagging.html)
+#' 
+#' -   [Directory
+#'     buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-buckets-tagging.html)
+#' 
+#' -   [S3 Storage Lens
+#'     groups](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-lens-groups.html)
+#' 
+#' -   [S3 Access Grants instances, registered locations, and
+#'     grants](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-grants-tagging.html).
 #' 
 #' ### Permissions
 #' 
-#' You must have the `s3:UntagResource` permission to use this operation.
+#' For general purpose buckets, access points for general purpose buckets,
+#' Storage Lens groups, and S3 Access Grants, you must have the
+#' `s3:UntagResource` permission to use this operation.
 #' 
-#' For more information about the required Storage Lens Groups permissions,
-#' see [Setting account permissions to use S3 Storage Lens
-#' groups](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_iam_permissions.html#storage_lens_groups_permissions).
+#' ### Directory bucket permissions
+#' 
+#' For directory buckets, you must have the `s3express:UntagResource`
+#' permission to use this operation. For more information about directory
+#' buckets policies and permissions, see [Identity and Access Management
+#' (IAM) for S3 Express One
+#' Zone](https://docs.aws.amazon.com/AmazonS3/latest/userguide/) in the
+#' *Amazon S3 User Guide*.
+#' 
+#' ### HTTP Host header syntax
+#' 
+#' **Directory buckets** - The HTTP Host header syntax is
+#' `s3express-control.region.amazonaws.com`.
 #' 
 #' For information about S3 Tagging errors, see [List of Amazon S3 Tagging
 #' error
@@ -8744,8 +8975,9 @@ s3control_tag_resource <- function(AccountId, ResourceArn, Tags) {
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID that owns the resource that you're
 #' trying to remove the tags from.
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the S3 resource that you're trying to
-#' remove the tags from.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the S3 resource that you're removing
+#' tags from. The tagged resource can be a directory bucket, S3 Storage
+#' Lens group or S3 Access Grants instance, registered location, or grant.
 #' @param TagKeys &#91;required&#93; The array of tag key-value pairs that you're trying to remove from of
 #' the S3 resource.
 #'

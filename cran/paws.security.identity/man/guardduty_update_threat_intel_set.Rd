@@ -9,7 +9,8 @@ guardduty_update_threat_intel_set(
   ThreatIntelSetId,
   Name = NULL,
   Location = NULL,
-  Activate = NULL
+  Activate = NULL,
+  ExpectedBucketOwner = NULL
 )
 }
 \arguments{
@@ -28,6 +29,9 @@ the GuardDuty console, or run the
 
 \item{Activate}{The updated Boolean value that specifies whether the ThreateIntelSet is
 active or not.}
+
+\item{ExpectedBucketOwner}{The Amazon Web Services account ID that owns the Amazon S3 bucket
+specified in the \strong{location} parameter.}
 }
 \description{
 Updates the ThreatIntelSet specified by the ThreatIntelSet ID.

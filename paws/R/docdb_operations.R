@@ -346,13 +346,14 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 #' 
 #' Constraints:
 #' 
-#' -   Must specify a valid system snapshot in the *available* state.
+#' -   Must specify a valid cluster snapshot in the *available* state.
 #' 
-#' -   If the source snapshot is in the same Amazon Web Services Region as
-#'     the copy, specify a valid snapshot identifier.
+#' -   If the source cluster snapshot is in the same Amazon Web Services
+#'     Region as the copy, specify a valid snapshot identifier.
 #' 
-#' -   If the source snapshot is in a different Amazon Web Services Region
-#'     than the copy, specify a valid cluster snapshot ARN.
+#' -   If the source cluster snapshot is in a different Amazon Web Services
+#'     Region or owned by another Amazon Web Services account, specify the
+#'     snapshot ARN.
 #' 
 #' Example: `my-cluster-snapshot1`
 #' @param TargetDBClusterSnapshotIdentifier &#91;required&#93; The identifier of the new cluster snapshot to create from the source
@@ -512,8 +513,8 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #'   MasterUserPassword, PreferredBackupWindow, PreferredMaintenanceWindow,
 #'   Tags, StorageEncrypted, KmsKeyId, PreSignedUrl,
 #'   EnableCloudwatchLogsExports, DeletionProtection,
-#'   GlobalClusterIdentifier, StorageType, ManageMasterUserPassword,
-#'   MasterUserSecretKmsKeyId)
+#'   GlobalClusterIdentifier, StorageType, ServerlessV2ScalingConfiguration,
+#'   ManageMasterUserPassword, MasterUserSecretKmsKeyId, NetworkType)
 #'
 #' @param AvailabilityZones A list of Amazon EC2 Availability Zones that instances in the cluster
 #' can be created in.
@@ -635,9 +636,11 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' 
 #' Default value is `standard `
 #' 
-#' When you create a DocumentDB DB cluster with the storage type set to
-#' `iopt1`, the storage type is returned in the response. The storage type
-#' isn't returned when you set it to `standard`.
+#' When you create an Amazon DocumentDB cluster with the storage type set
+#' to `iopt1`, the storage type is returned in the response. The storage
+#' type isn't returned when you set it to `standard`.
+#' @param ServerlessV2ScalingConfiguration Contains the scaling configuration of an Amazon DocumentDB Serverless
+#' cluster.
 #' @param ManageMasterUserPassword Specifies whether to manage the master user password with Amazon Web
 #' Services Secrets Manager.
 #' 
@@ -662,6 +665,17 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' There is a default KMS key for your Amazon Web Services account. Your
 #' Amazon Web Services account has a different default KMS key for each
 #' Amazon Web Services Region.
+#' @param NetworkType The network type of the cluster.
+#' 
+#' The network type is determined by the `DBSubnetGroup` specified for the
+#' cluster. A `DBSubnetGroup` can support only the IPv4 protocol or the
+#' IPv4 and the IPv6 protocols (`DUAL`).
+#' 
+#' For more information, see [DocumentDB clusters in a
+#' VPC](https://docs.aws.amazon.com/documentdb/latest/developerguide/vpc-clusters.html)
+#' in the Amazon DocumentDB Developer Guide.
+#' 
+#' Valid Values: `IPV4` | `DUAL`
 #'
 #' @return
 #' A list with the following syntax:
@@ -729,12 +743,20 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #'       "string"
 #'     ),
 #'     DeletionProtection = TRUE|FALSE,
+#'     IOOptimizedNextAllowedModificationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     StorageType = "string",
+#'     ServerlessV2ScalingConfiguration = list(
+#'       MinCapacity = 123.0,
+#'       MaxCapacity = 123.0
+#'     ),
 #'     MasterUserSecret = list(
 #'       SecretArn = "string",
 #'       SecretStatus = "string",
 #'       KmsKeyId = "string"
-#'     )
+#'     ),
+#'     NetworkType = "string"
 #'   )
 #' )
 #' ```
@@ -774,8 +796,13 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #'   DeletionProtection = TRUE|FALSE,
 #'   GlobalClusterIdentifier = "string",
 #'   StorageType = "string",
+#'   ServerlessV2ScalingConfiguration = list(
+#'     MinCapacity = 123.0,
+#'     MaxCapacity = 123.0
+#'   ),
 #'   ManageMasterUserPassword = TRUE|FALSE,
-#'   MasterUserSecretKmsKeyId = "string"
+#'   MasterUserSecretKmsKeyId = "string",
+#'   NetworkType = "string"
 #' )
 #' ```
 #'
@@ -784,7 +811,7 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' @rdname docdb_create_db_cluster
 #'
 #' @aliases docdb_create_db_cluster
-docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername = NULL, MasterUserPassword = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, GlobalClusterIdentifier = NULL, StorageType = NULL, ManageMasterUserPassword = NULL, MasterUserSecretKmsKeyId = NULL) {
+docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername = NULL, MasterUserPassword = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, GlobalClusterIdentifier = NULL, StorageType = NULL, ServerlessV2ScalingConfiguration = NULL, ManageMasterUserPassword = NULL, MasterUserSecretKmsKeyId = NULL, NetworkType = NULL) {
   op <- new_operation(
     name = "CreateDBCluster",
     http_method = "POST",
@@ -793,7 +820,7 @@ docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPer
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .docdb$create_db_cluster_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, GlobalClusterIdentifier = GlobalClusterIdentifier, StorageType = StorageType, ManageMasterUserPassword = ManageMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId)
+  input <- .docdb$create_db_cluster_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, GlobalClusterIdentifier = GlobalClusterIdentifier, StorageType = StorageType, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, ManageMasterUserPassword = ManageMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId, NetworkType = NetworkType)
   output <- .docdb$create_db_cluster_output()
   config <- get_config()
   svc <- .docdb$service(config, op)
@@ -1119,7 +1146,10 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 #'           SubnetStatus = "string"
 #'         )
 #'       ),
-#'       DBSubnetGroupArn = "string"
+#'       DBSubnetGroupArn = "string",
+#'       SupportedNetworkTypes = list(
+#'         "string"
+#'       )
 #'     ),
 #'     PreferredMaintenanceWindow = "string",
 #'     PendingModifiedValues = list(
@@ -1270,7 +1300,10 @@ docdb_create_db_instance <- function(DBInstanceIdentifier, DBInstanceClass, Engi
 #'         SubnetStatus = "string"
 #'       )
 #'     ),
-#'     DBSubnetGroupArn = "string"
+#'     DBSubnetGroupArn = "string",
+#'     SupportedNetworkTypes = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1462,7 +1495,7 @@ docdb_create_event_subscription <- function(SubscriptionName, SnsTopicArn, Sourc
 #' @description
 #' Creates an Amazon DocumentDB global cluster that can span multiple
 #' multiple Amazon Web Services Regions. The global cluster contains one
-#' primary cluster with read-write capability, and up-to give read-only
+#' primary cluster with read-write capability, and up-to 10 read-only
 #' secondary clusters. Global clusters uses storage-based fast replication
 #' across regions with latencies less than one second, using dedicated
 #' infrastructure with no impact to your workload’s performance.
@@ -1511,7 +1544,20 @@ docdb_create_event_subscription <- function(SubscriptionName, SnsTopicArn, Sourc
 #'         Readers = list(
 #'           "string"
 #'         ),
-#'         IsWriter = TRUE|FALSE
+#'         IsWriter = TRUE|FALSE,
+#'         SynchronizationStatus = "connected"|"pending-resync"
+#'       )
+#'     ),
+#'     FailoverState = list(
+#'       Status = "pending"|"failing-over"|"cancelling",
+#'       FromDbClusterArn = "string",
+#'       ToDbClusterArn = "string",
+#'       IsDataLossAllowed = TRUE|FALSE
+#'     ),
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
 #'       )
 #'     )
 #'   )
@@ -1661,12 +1707,20 @@ docdb_create_global_cluster <- function(GlobalClusterIdentifier, SourceDBCluster
 #'       "string"
 #'     ),
 #'     DeletionProtection = TRUE|FALSE,
+#'     IOOptimizedNextAllowedModificationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     StorageType = "string",
+#'     ServerlessV2ScalingConfiguration = list(
+#'       MinCapacity = 123.0,
+#'       MaxCapacity = 123.0
+#'     ),
 #'     MasterUserSecret = list(
 #'       SecretArn = "string",
 #'       SecretStatus = "string",
 #'       KmsKeyId = "string"
-#'     )
+#'     ),
+#'     NetworkType = "string"
 #'   )
 #' )
 #' ```
@@ -1892,7 +1946,10 @@ docdb_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #'           SubnetStatus = "string"
 #'         )
 #'       ),
-#'       DBSubnetGroupArn = "string"
+#'       DBSubnetGroupArn = "string",
+#'       SupportedNetworkTypes = list(
+#'         "string"
+#'       )
 #'     ),
 #'     PreferredMaintenanceWindow = "string",
 #'     PendingModifiedValues = list(
@@ -2140,7 +2197,20 @@ docdb_delete_event_subscription <- function(SubscriptionName) {
 #'         Readers = list(
 #'           "string"
 #'         ),
-#'         IsWriter = TRUE|FALSE
+#'         IsWriter = TRUE|FALSE,
+#'         SynchronizationStatus = "connected"|"pending-resync"
+#'       )
+#'     ),
+#'     FailoverState = list(
+#'       Status = "pending"|"failing-over"|"cancelling",
+#'       FromDbClusterArn = "string",
+#'       ToDbClusterArn = "string",
+#'       IsDataLossAllowed = TRUE|FALSE
+#'     ),
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
 #'       )
 #'     )
 #'   )
@@ -2796,12 +2866,20 @@ docdb_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBCl
 #'         "string"
 #'       ),
 #'       DeletionProtection = TRUE|FALSE,
+#'       IOOptimizedNextAllowedModificationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
 #'       StorageType = "string",
+#'       ServerlessV2ScalingConfiguration = list(
+#'         MinCapacity = 123.0,
+#'         MaxCapacity = 123.0
+#'       ),
 #'       MasterUserSecret = list(
 #'         SecretArn = "string",
 #'         SecretStatus = "string",
 #'         KmsKeyId = "string"
-#'       )
+#'       ),
+#'       NetworkType = "string"
 #'     )
 #'   )
 #' )
@@ -2918,7 +2996,11 @@ docdb_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NUL
 #'       SupportedCACertificateIdentifiers = list(
 #'         "string"
 #'       ),
-#'       SupportsCertificateRotationWithoutRestart = TRUE|FALSE
+#'       SupportsCertificateRotationWithoutRestart = TRUE|FALSE,
+#'       ServerlessV2FeaturesSupport = list(
+#'         MinCapacity = 123.0,
+#'         MaxCapacity = 123.0
+#'       )
 #'     )
 #'   )
 #' )
@@ -3053,7 +3135,10 @@ docdb_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NUL
 #'             SubnetStatus = "string"
 #'           )
 #'         ),
-#'         DBSubnetGroupArn = "string"
+#'         DBSubnetGroupArn = "string",
+#'         SupportedNetworkTypes = list(
+#'           "string"
+#'         )
 #'       ),
 #'       PreferredMaintenanceWindow = "string",
 #'       PendingModifiedValues = list(
@@ -3203,7 +3288,10 @@ docdb_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters = N
 #'           SubnetStatus = "string"
 #'         )
 #'       ),
-#'       DBSubnetGroupArn = "string"
+#'       DBSubnetGroupArn = "string",
+#'       SupportedNetworkTypes = list(
+#'         "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -3696,7 +3784,20 @@ docdb_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, St
 #'           Readers = list(
 #'             "string"
 #'           ),
-#'           IsWriter = TRUE|FALSE
+#'           IsWriter = TRUE|FALSE,
+#'           SynchronizationStatus = "connected"|"pending-resync"
+#'         )
+#'       ),
+#'       FailoverState = list(
+#'         Status = "pending"|"failing-over"|"cancelling",
+#'         FromDbClusterArn = "string",
+#'         ToDbClusterArn = "string",
+#'         IsDataLossAllowed = TRUE|FALSE
+#'       ),
+#'       TagList = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
 #'         )
 #'       )
 #'     )
@@ -4045,12 +4146,20 @@ docdb_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL
 #'       "string"
 #'     ),
 #'     DeletionProtection = TRUE|FALSE,
+#'     IOOptimizedNextAllowedModificationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     StorageType = "string",
+#'     ServerlessV2ScalingConfiguration = list(
+#'       MinCapacity = 123.0,
+#'       MaxCapacity = 123.0
+#'     ),
 #'     MasterUserSecret = list(
 #'       SecretArn = "string",
 #'       SecretStatus = "string",
 #'       KmsKeyId = "string"
-#'     )
+#'     ),
+#'     NetworkType = "string"
 #'   )
 #' )
 #' ```
@@ -4165,7 +4274,20 @@ docdb_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInstan
 #'         Readers = list(
 #'           "string"
 #'         ),
-#'         IsWriter = TRUE|FALSE
+#'         IsWriter = TRUE|FALSE,
+#'         SynchronizationStatus = "connected"|"pending-resync"
+#'       )
+#'     ),
+#'     FailoverState = list(
+#'       Status = "pending"|"failing-over"|"cancelling",
+#'       FromDbClusterArn = "string",
+#'       ToDbClusterArn = "string",
+#'       IsDataLossAllowed = TRUE|FALSE
+#'     ),
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
 #'       )
 #'     )
 #'   )
@@ -4283,8 +4405,8 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #'   VpcSecurityGroupIds, Port, MasterUserPassword, PreferredBackupWindow,
 #'   PreferredMaintenanceWindow, CloudwatchLogsExportConfiguration,
 #'   EngineVersion, AllowMajorVersionUpgrade, DeletionProtection,
-#'   StorageType, ManageMasterUserPassword, MasterUserSecretKmsKeyId,
-#'   RotateMasterUserPassword)
+#'   StorageType, ServerlessV2ScalingConfiguration, ManageMasterUserPassword,
+#'   MasterUserSecretKmsKeyId, RotateMasterUserPassword, NetworkType)
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The cluster identifier for the cluster that is being modified. This
 #' parameter is not case sensitive.
@@ -4382,9 +4504,25 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' `aws docdb describe-db-engine-versions --engine docdb --query "DBEngineVersions[].EngineVersion"`
 #' @param AllowMajorVersionUpgrade A value that indicates whether major version upgrades are allowed.
 #' 
-#' Constraints: You must allow major version upgrades when specifying a
-#' value for the `EngineVersion` parameter that is a different major
-#' version than the DB cluster's current version.
+#' Constraints:
+#' 
+#' -   You must allow major version upgrades when specifying a value for
+#'     the `EngineVersion` parameter that is a different major version than
+#'     the cluster's current version.
+#' 
+#' -   Since some parameters are version specific, changing them requires
+#'     executing a new [`modify_db_cluster`][docdb_modify_db_cluster] API
+#'     call after the in-place MVU completes.
+#' 
+#' Performing an MVU directly impacts the following parameters:
+#' 
+#' -   `MasterUserPassword`
+#' 
+#' -   `NewDBClusterIdentifier`
+#' 
+#' -   `VpcSecurityGroupIds`
+#' 
+#' -   `Port`
 #' @param DeletionProtection Specifies whether this cluster can be deleted. If `DeletionProtection`
 #' is enabled, the cluster cannot be deleted unless it is modified and
 #' `DeletionProtection` is disabled. `DeletionProtection` protects clusters
@@ -4398,6 +4536,8 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' Valid values for storage type - `standard | iopt1`
 #' 
 #' Default value is `standard `
+#' @param ServerlessV2ScalingConfiguration Contains the scaling configuration of an Amazon DocumentDB Serverless
+#' cluster.
 #' @param ManageMasterUserPassword Specifies whether to manage the master user password with Amazon Web
 #' Services Secrets Manager. If the cluster doesn't manage the master user
 #' password with Amazon Web Services Secrets Manager, you can turn on this
@@ -4444,6 +4584,17 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' 
 #' Constraint: You must apply the change immediately when rotating the
 #' master user password.
+#' @param NetworkType The network type of the cluster.
+#' 
+#' The network type is determined by the `DBSubnetGroup` specified for the
+#' cluster. A `DBSubnetGroup` can support only the IPv4 protocol or the
+#' IPv4 and the IPv6 protocols (`DUAL`).
+#' 
+#' For more information, see [DocumentDB clusters in a
+#' VPC](https://docs.aws.amazon.com/documentdb/latest/developerguide/vpc-clusters.html)
+#' in the Amazon DocumentDB Developer Guide.
+#' 
+#' Valid Values: `IPV4` | `DUAL`
 #'
 #' @return
 #' A list with the following syntax:
@@ -4511,12 +4662,20 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #'       "string"
 #'     ),
 #'     DeletionProtection = TRUE|FALSE,
+#'     IOOptimizedNextAllowedModificationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     StorageType = "string",
+#'     ServerlessV2ScalingConfiguration = list(
+#'       MinCapacity = 123.0,
+#'       MaxCapacity = 123.0
+#'     ),
 #'     MasterUserSecret = list(
 #'       SecretArn = "string",
 #'       SecretStatus = "string",
 #'       KmsKeyId = "string"
-#'     )
+#'     ),
+#'     NetworkType = "string"
 #'   )
 #' )
 #' ```
@@ -4548,9 +4707,14 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #'   AllowMajorVersionUpgrade = TRUE|FALSE,
 #'   DeletionProtection = TRUE|FALSE,
 #'   StorageType = "string",
+#'   ServerlessV2ScalingConfiguration = list(
+#'     MinCapacity = 123.0,
+#'     MaxCapacity = 123.0
+#'   ),
 #'   ManageMasterUserPassword = TRUE|FALSE,
 #'   MasterUserSecretKmsKeyId = "string",
-#'   RotateMasterUserPassword = TRUE|FALSE
+#'   RotateMasterUserPassword = TRUE|FALSE,
+#'   NetworkType = "string"
 #' )
 #' ```
 #'
@@ -4559,7 +4723,7 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' @rdname docdb_modify_db_cluster
 #'
 #' @aliases docdb_modify_db_cluster
-docdb_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = NULL, ApplyImmediately = NULL, BackupRetentionPeriod = NULL, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, Port = NULL, MasterUserPassword = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, CloudwatchLogsExportConfiguration = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL, DeletionProtection = NULL, StorageType = NULL, ManageMasterUserPassword = NULL, MasterUserSecretKmsKeyId = NULL, RotateMasterUserPassword = NULL) {
+docdb_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = NULL, ApplyImmediately = NULL, BackupRetentionPeriod = NULL, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, Port = NULL, MasterUserPassword = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, CloudwatchLogsExportConfiguration = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL, DeletionProtection = NULL, StorageType = NULL, ServerlessV2ScalingConfiguration = NULL, ManageMasterUserPassword = NULL, MasterUserSecretKmsKeyId = NULL, RotateMasterUserPassword = NULL, NetworkType = NULL) {
   op <- new_operation(
     name = "ModifyDBCluster",
     http_method = "POST",
@@ -4568,7 +4732,7 @@ docdb_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .docdb$modify_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, NewDBClusterIdentifier = NewDBClusterIdentifier, ApplyImmediately = ApplyImmediately, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Port = Port, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, DeletionProtection = DeletionProtection, StorageType = StorageType, ManageMasterUserPassword = ManageMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId, RotateMasterUserPassword = RotateMasterUserPassword)
+  input <- .docdb$modify_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, NewDBClusterIdentifier = NewDBClusterIdentifier, ApplyImmediately = ApplyImmediately, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Port = Port, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, DeletionProtection = DeletionProtection, StorageType = StorageType, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, ManageMasterUserPassword = ManageMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId, RotateMasterUserPassword = RotateMasterUserPassword, NetworkType = NetworkType)
   output <- .docdb$modify_db_cluster_output()
   config <- get_config()
   svc <- .docdb$service(config, op)
@@ -4914,7 +5078,10 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #'           SubnetStatus = "string"
 #'         )
 #'       ),
-#'       DBSubnetGroupArn = "string"
+#'       DBSubnetGroupArn = "string",
+#'       SupportedNetworkTypes = list(
+#'         "string"
+#'       )
 #'     ),
 #'     PreferredMaintenanceWindow = "string",
 #'     PendingModifiedValues = list(
@@ -5058,7 +5225,10 @@ docdb_modify_db_instance <- function(DBInstanceIdentifier, DBInstanceClass = NUL
 #'         SubnetStatus = "string"
 #'       )
 #'     ),
-#'     DBSubnetGroupArn = "string"
+#'     DBSubnetGroupArn = "string",
+#'     SupportedNetworkTypes = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -5234,7 +5404,20 @@ docdb_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NULL
 #'         Readers = list(
 #'           "string"
 #'         ),
-#'         IsWriter = TRUE|FALSE
+#'         IsWriter = TRUE|FALSE,
+#'         SynchronizationStatus = "connected"|"pending-resync"
+#'       )
+#'     ),
+#'     FailoverState = list(
+#'       Status = "pending"|"failing-over"|"cancelling",
+#'       FromDbClusterArn = "string",
+#'       ToDbClusterArn = "string",
+#'       IsDataLossAllowed = TRUE|FALSE
+#'     ),
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
 #'       )
 #'     )
 #'   )
@@ -5339,7 +5522,10 @@ docdb_modify_global_cluster <- function(GlobalClusterIdentifier, NewGlobalCluste
 #'           SubnetStatus = "string"
 #'         )
 #'       ),
-#'       DBSubnetGroupArn = "string"
+#'       DBSubnetGroupArn = "string",
+#'       SupportedNetworkTypes = list(
+#'         "string"
+#'       )
 #'     ),
 #'     PreferredMaintenanceWindow = "string",
 #'     PendingModifiedValues = list(
@@ -5473,7 +5659,20 @@ docdb_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NULL)
 #'         Readers = list(
 #'           "string"
 #'         ),
-#'         IsWriter = TRUE|FALSE
+#'         IsWriter = TRUE|FALSE,
+#'         SynchronizationStatus = "connected"|"pending-resync"
+#'       )
+#'     ),
+#'     FailoverState = list(
+#'       Status = "pending"|"failing-over"|"cancelling",
+#'       FromDbClusterArn = "string",
+#'       ToDbClusterArn = "string",
+#'       IsDataLossAllowed = TRUE|FALSE
+#'     ),
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
 #'       )
 #'     )
 #'   )
@@ -5732,7 +5931,8 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #'   DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion, Port,
 #'   DBSubnetGroupName, VpcSecurityGroupIds, Tags, KmsKeyId,
 #'   EnableCloudwatchLogsExports, DeletionProtection,
-#'   DBClusterParameterGroupName, StorageType)
+#'   DBClusterParameterGroupName, ServerlessV2ScalingConfiguration,
+#'   StorageType, NetworkType)
 #'
 #' @param AvailabilityZones Provides the list of Amazon EC2 Availability Zones that instances in the
 #' restored DB cluster can be created in.
@@ -5811,6 +6011,8 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #' parameter group. The string must consist of from 1 to 255 letters,
 #' numbers or hyphens. Its first character must be a letter, and it cannot
 #' end with a hyphen or contain two consecutive hyphens.
+#' @param ServerlessV2ScalingConfiguration Contains the scaling configuration of an Amazon DocumentDB Serverless
+#' cluster.
 #' @param StorageType The storage type to associate with the DB cluster.
 #' 
 #' For information on storage types for Amazon DocumentDB clusters, see
@@ -5820,6 +6022,17 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #' Valid values for storage type - `standard | iopt1`
 #' 
 #' Default value is `standard `
+#' @param NetworkType The network type of the cluster.
+#' 
+#' The network type is determined by the `DBSubnetGroup` specified for the
+#' cluster. A `DBSubnetGroup` can support only the IPv4 protocol or the
+#' IPv4 and the IPv6 protocols (`DUAL`).
+#' 
+#' For more information, see [DocumentDB clusters in a
+#' VPC](https://docs.aws.amazon.com/documentdb/latest/developerguide/vpc-clusters.html)
+#' in the Amazon DocumentDB Developer Guide.
+#' 
+#' Valid Values: `IPV4` | `DUAL`
 #'
 #' @return
 #' A list with the following syntax:
@@ -5887,12 +6100,20 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #'       "string"
 #'     ),
 #'     DeletionProtection = TRUE|FALSE,
+#'     IOOptimizedNextAllowedModificationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     StorageType = "string",
+#'     ServerlessV2ScalingConfiguration = list(
+#'       MinCapacity = 123.0,
+#'       MaxCapacity = 123.0
+#'     ),
 #'     MasterUserSecret = list(
 #'       SecretArn = "string",
 #'       SecretStatus = "string",
 #'       KmsKeyId = "string"
-#'     )
+#'     ),
+#'     NetworkType = "string"
 #'   )
 #' )
 #' ```
@@ -5924,7 +6145,12 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #'   ),
 #'   DeletionProtection = TRUE|FALSE,
 #'   DBClusterParameterGroupName = "string",
-#'   StorageType = "string"
+#'   ServerlessV2ScalingConfiguration = list(
+#'     MinCapacity = 123.0,
+#'     MaxCapacity = 123.0
+#'   ),
+#'   StorageType = "string",
+#'   NetworkType = "string"
 #' )
 #' ```
 #'
@@ -5933,7 +6159,7 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #' @rdname docdb_restore_db_cluster_from_snapshot
 #'
 #' @aliases docdb_restore_db_cluster_from_snapshot
-docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion = NULL, Port = NULL, DBSubnetGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, DBClusterParameterGroupName = NULL, StorageType = NULL) {
+docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion = NULL, Port = NULL, DBSubnetGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, DBClusterParameterGroupName = NULL, ServerlessV2ScalingConfiguration = NULL, StorageType = NULL, NetworkType = NULL) {
   op <- new_operation(
     name = "RestoreDBClusterFromSnapshot",
     http_method = "POST",
@@ -5942,7 +6168,7 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .docdb$restore_db_cluster_from_snapshot_input(AvailabilityZones = AvailabilityZones, DBClusterIdentifier = DBClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, Engine = Engine, EngineVersion = EngineVersion, Port = Port, DBSubnetGroupName = DBSubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, DBClusterParameterGroupName = DBClusterParameterGroupName, StorageType = StorageType)
+  input <- .docdb$restore_db_cluster_from_snapshot_input(AvailabilityZones = AvailabilityZones, DBClusterIdentifier = DBClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, Engine = Engine, EngineVersion = EngineVersion, Port = Port, DBSubnetGroupName = DBSubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, DBClusterParameterGroupName = DBClusterParameterGroupName, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, StorageType = StorageType, NetworkType = NetworkType)
   output <- .docdb$restore_db_cluster_from_snapshot_output()
   config <- get_config()
   svc <- .docdb$service(config, op)
@@ -5966,7 +6192,7 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #'   RestoreType, SourceDBClusterIdentifier, RestoreToTime,
 #'   UseLatestRestorableTime, Port, DBSubnetGroupName, VpcSecurityGroupIds,
 #'   Tags, KmsKeyId, EnableCloudwatchLogsExports, DeletionProtection,
-#'   StorageType)
+#'   ServerlessV2ScalingConfiguration, StorageType, NetworkType)
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The name of the new cluster to be created.
 #' 
@@ -6065,6 +6291,8 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #' is enabled, the cluster cannot be deleted unless it is modified and
 #' `DeletionProtection` is disabled. `DeletionProtection` protects clusters
 #' from being accidentally deleted.
+#' @param ServerlessV2ScalingConfiguration Contains the scaling configuration of an Amazon DocumentDB Serverless
+#' cluster.
 #' @param StorageType The storage type to associate with the DB cluster.
 #' 
 #' For information on storage types for Amazon DocumentDB clusters, see
@@ -6074,6 +6302,17 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #' Valid values for storage type - `standard | iopt1`
 #' 
 #' Default value is `standard `
+#' @param NetworkType The network type of the cluster.
+#' 
+#' The network type is determined by the `DBSubnetGroup` specified for the
+#' cluster. A `DBSubnetGroup` can support only the IPv4 protocol or the
+#' IPv4 and the IPv6 protocols (`DUAL`).
+#' 
+#' For more information, see [DocumentDB clusters in a
+#' VPC](https://docs.aws.amazon.com/documentdb/latest/developerguide/vpc-clusters.html)
+#' in the Amazon DocumentDB Developer Guide.
+#' 
+#' Valid Values: `IPV4` | `DUAL`
 #'
 #' @return
 #' A list with the following syntax:
@@ -6141,12 +6380,20 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #'       "string"
 #'     ),
 #'     DeletionProtection = TRUE|FALSE,
+#'     IOOptimizedNextAllowedModificationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     StorageType = "string",
+#'     ServerlessV2ScalingConfiguration = list(
+#'       MinCapacity = 123.0,
+#'       MaxCapacity = 123.0
+#'     ),
 #'     MasterUserSecret = list(
 #'       SecretArn = "string",
 #'       SecretStatus = "string",
 #'       KmsKeyId = "string"
-#'     )
+#'     ),
+#'     NetworkType = "string"
 #'   )
 #' )
 #' ```
@@ -6177,7 +6424,12 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #'     "string"
 #'   ),
 #'   DeletionProtection = TRUE|FALSE,
-#'   StorageType = "string"
+#'   ServerlessV2ScalingConfiguration = list(
+#'     MinCapacity = 123.0,
+#'     MaxCapacity = 123.0
+#'   ),
+#'   StorageType = "string",
+#'   NetworkType = "string"
 #' )
 #' ```
 #'
@@ -6186,7 +6438,7 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #' @rdname docdb_restore_db_cluster_to_point_in_time
 #'
 #' @aliases docdb_restore_db_cluster_to_point_in_time
-docdb_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, RestoreType = NULL, SourceDBClusterIdentifier, RestoreToTime = NULL, UseLatestRestorableTime = NULL, Port = NULL, DBSubnetGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, StorageType = NULL) {
+docdb_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, RestoreType = NULL, SourceDBClusterIdentifier, RestoreToTime = NULL, UseLatestRestorableTime = NULL, Port = NULL, DBSubnetGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, ServerlessV2ScalingConfiguration = NULL, StorageType = NULL, NetworkType = NULL) {
   op <- new_operation(
     name = "RestoreDBClusterToPointInTime",
     http_method = "POST",
@@ -6195,7 +6447,7 @@ docdb_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Resto
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .docdb$restore_db_cluster_to_point_in_time_input(DBClusterIdentifier = DBClusterIdentifier, RestoreType = RestoreType, SourceDBClusterIdentifier = SourceDBClusterIdentifier, RestoreToTime = RestoreToTime, UseLatestRestorableTime = UseLatestRestorableTime, Port = Port, DBSubnetGroupName = DBSubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, StorageType = StorageType)
+  input <- .docdb$restore_db_cluster_to_point_in_time_input(DBClusterIdentifier = DBClusterIdentifier, RestoreType = RestoreType, SourceDBClusterIdentifier = SourceDBClusterIdentifier, RestoreToTime = RestoreToTime, UseLatestRestorableTime = UseLatestRestorableTime, Port = Port, DBSubnetGroupName = DBSubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, StorageType = StorageType, NetworkType = NetworkType)
   output <- .docdb$restore_db_cluster_to_point_in_time_output()
   config <- get_config()
   svc <- .docdb$service(config, op)
@@ -6284,12 +6536,20 @@ docdb_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Resto
 #'       "string"
 #'     ),
 #'     DeletionProtection = TRUE|FALSE,
+#'     IOOptimizedNextAllowedModificationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     StorageType = "string",
+#'     ServerlessV2ScalingConfiguration = list(
+#'       MinCapacity = 123.0,
+#'       MaxCapacity = 123.0
+#'     ),
 #'     MasterUserSecret = list(
 #'       SecretArn = "string",
 #'       SecretStatus = "string",
 #'       KmsKeyId = "string"
-#'     )
+#'     ),
+#'     NetworkType = "string"
 #'   )
 #' )
 #' ```
@@ -6405,12 +6665,20 @@ docdb_start_db_cluster <- function(DBClusterIdentifier) {
 #'       "string"
 #'     ),
 #'     DeletionProtection = TRUE|FALSE,
+#'     IOOptimizedNextAllowedModificationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     StorageType = "string",
+#'     ServerlessV2ScalingConfiguration = list(
+#'       MinCapacity = 123.0,
+#'       MaxCapacity = 123.0
+#'     ),
 #'     MasterUserSecret = list(
 #'       SecretArn = "string",
 #'       SecretStatus = "string",
 #'       KmsKeyId = "string"
-#'     )
+#'     ),
+#'     NetworkType = "string"
 #'   )
 #' )
 #' ```
@@ -6504,7 +6772,20 @@ docdb_stop_db_cluster <- function(DBClusterIdentifier) {
 #'         Readers = list(
 #'           "string"
 #'         ),
-#'         IsWriter = TRUE|FALSE
+#'         IsWriter = TRUE|FALSE,
+#'         SynchronizationStatus = "connected"|"pending-resync"
+#'       )
+#'     ),
+#'     FailoverState = list(
+#'       Status = "pending"|"failing-over"|"cancelling",
+#'       FromDbClusterArn = "string",
+#'       ToDbClusterArn = "string",
+#'       IsDataLossAllowed = TRUE|FALSE
+#'     ),
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
 #'       )
 #'     )
 #'   )

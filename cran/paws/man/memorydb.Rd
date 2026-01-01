@@ -116,6 +116,8 @@ structures, APIs, and commands.
 \link[paws.database:memorydb_describe_engine_versions]{describe_engine_versions} \tab Returns a list of the available Redis OSS engine versions\cr
 \link[paws.database:memorydb_describe_events]{describe_events} \tab Returns events related to clusters, security groups, and parameter groups\cr
 \link[paws.database:memorydb_describe_multi_region_clusters]{describe_multi_region_clusters} \tab Returns details about one or more multi-Region clusters\cr
+\link[paws.database:memorydb_describe_multi_region_parameter_groups]{describe_multi_region_parameter_groups} \tab Returns a list of multi-region parameter groups\cr
+\link[paws.database:memorydb_describe_multi_region_parameters]{describe_multi_region_parameters} \tab Returns the detailed parameter list for a particular multi-region parameter group\cr
 \link[paws.database:memorydb_describe_parameter_groups]{describe_parameter_groups} \tab Returns a list of parameter group descriptions\cr
 \link[paws.database:memorydb_describe_parameters]{describe_parameters} \tab Returns the detailed parameter list for a particular parameter group\cr
 \link[paws.database:memorydb_describe_reserved_nodes]{describe_reserved_nodes} \tab Returns information about reserved nodes for this account, or about a specified reserved node\cr

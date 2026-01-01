@@ -4,16 +4,16 @@
 \alias{bedrockagent_stop_ingestion_job}
 \title{Stops a currently running data ingestion job}
 \usage{
-bedrockagent_stop_ingestion_job(dataSourceId, ingestionJobId, knowledgeBaseId)
+bedrockagent_stop_ingestion_job(knowledgeBaseId, dataSourceId, ingestionJobId)
 }
 \arguments{
+\item{knowledgeBaseId}{[required] The unique identifier of the knowledge base for the data ingestion job
+you want to stop.}
+
 \item{dataSourceId}{[required] The unique identifier of the data source for the data ingestion job you
 want to stop.}
 
 \item{ingestionJobId}{[required] The unique identifier of the data ingestion job you want to stop.}
-
-\item{knowledgeBaseId}{[required] The unique identifier of the knowledge base for the data ingestion job
-you want to stop.}
 }
 \description{
 Stops a currently running data ingestion job. You can send a \code{\link[=bedrockagent_start_ingestion_job]{start_ingestion_job}} request again to ingest the rest of your data when you are ready.

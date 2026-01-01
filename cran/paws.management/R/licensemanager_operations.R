@@ -283,6 +283,80 @@ licensemanager_create_license <- function(LicenseName, ProductName, ProductSKU, 
 }
 .licensemanager$operations$create_license <- licensemanager_create_license
 
+#' Creates a license asset group
+#'
+#' @description
+#' Creates a license asset group.
+#'
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_create_license_asset_group/](https://www.paws-r-sdk.com/docs/licensemanager_create_license_asset_group/) for full documentation.
+#'
+#' @param Name &#91;required&#93; License asset group name.
+#' @param Description License asset group description.
+#' @param LicenseAssetGroupConfigurations &#91;required&#93; License asset group configurations.
+#' @param AssociatedLicenseAssetRulesetARNs &#91;required&#93; ARNs of associated license asset rulesets.
+#' @param Properties License asset group properties.
+#' @param Tags Tags to add to the license asset group.
+#' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_create_license_asset_group
+licensemanager_create_license_asset_group <- function(Name, Description = NULL, LicenseAssetGroupConfigurations, AssociatedLicenseAssetRulesetARNs, Properties = NULL, Tags = NULL, ClientToken) {
+  op <- new_operation(
+    name = "CreateLicenseAssetGroup",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanager$create_license_asset_group_input(Name = Name, Description = Description, LicenseAssetGroupConfigurations = LicenseAssetGroupConfigurations, AssociatedLicenseAssetRulesetARNs = AssociatedLicenseAssetRulesetARNs, Properties = Properties, Tags = Tags, ClientToken = ClientToken)
+  output <- .licensemanager$create_license_asset_group_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$create_license_asset_group <- licensemanager_create_license_asset_group
+
+#' Creates a license asset ruleset
+#'
+#' @description
+#' Creates a license asset ruleset.
+#'
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_create_license_asset_ruleset/](https://www.paws-r-sdk.com/docs/licensemanager_create_license_asset_ruleset/) for full documentation.
+#'
+#' @param Name &#91;required&#93; License asset ruleset name.
+#' @param Description License asset ruleset description.
+#' @param Rules &#91;required&#93; License asset rules.
+#' @param Tags Tags to add to the license asset ruleset.
+#' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_create_license_asset_ruleset
+licensemanager_create_license_asset_ruleset <- function(Name, Description = NULL, Rules, Tags = NULL, ClientToken) {
+  op <- new_operation(
+    name = "CreateLicenseAssetRuleset",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanager$create_license_asset_ruleset_input(Name = Name, Description = Description, Rules = Rules, Tags = Tags, ClientToken = ClientToken)
+  output <- .licensemanager$create_license_asset_ruleset_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$create_license_asset_ruleset <- licensemanager_create_license_asset_ruleset
+
 #' Creates a license configuration
 #'
 #' @description
@@ -319,11 +393,12 @@ licensemanager_create_license <- function(LicenseName, ProductName, ProductSKU, 
 #' @param Tags Tags to add to the license configuration.
 #' @param DisassociateWhenNotFound When true, disassociates a resource when software is uninstalled.
 #' @param ProductInformationList Product information.
+#' @param LicenseExpiry License configuration expiry.
 #'
 #' @keywords internal
 #'
 #' @rdname licensemanager_create_license_configuration
-licensemanager_create_license_configuration <- function(Name, Description = NULL, LicenseCountingType, LicenseCount = NULL, LicenseCountHardLimit = NULL, LicenseRules = NULL, Tags = NULL, DisassociateWhenNotFound = NULL, ProductInformationList = NULL) {
+licensemanager_create_license_configuration <- function(Name, Description = NULL, LicenseCountingType, LicenseCount = NULL, LicenseCountHardLimit = NULL, LicenseRules = NULL, Tags = NULL, DisassociateWhenNotFound = NULL, ProductInformationList = NULL, LicenseExpiry = NULL) {
   op <- new_operation(
     name = "CreateLicenseConfiguration",
     http_method = "POST",
@@ -332,7 +407,7 @@ licensemanager_create_license_configuration <- function(Name, Description = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .licensemanager$create_license_configuration_input(Name = Name, Description = Description, LicenseCountingType = LicenseCountingType, LicenseCount = LicenseCount, LicenseCountHardLimit = LicenseCountHardLimit, LicenseRules = LicenseRules, Tags = Tags, DisassociateWhenNotFound = DisassociateWhenNotFound, ProductInformationList = ProductInformationList)
+  input <- .licensemanager$create_license_configuration_input(Name = Name, Description = Description, LicenseCountingType = LicenseCountingType, LicenseCount = LicenseCount, LicenseCountHardLimit = LicenseCountHardLimit, LicenseRules = LicenseRules, Tags = Tags, DisassociateWhenNotFound = DisassociateWhenNotFound, ProductInformationList = ProductInformationList, LicenseExpiry = LicenseExpiry)
   output <- .licensemanager$create_license_configuration_output()
   config <- get_config()
   svc <- .licensemanager$service(config, op)
@@ -579,6 +654,68 @@ licensemanager_delete_license <- function(LicenseArn, SourceVersion) {
 }
 .licensemanager$operations$delete_license <- licensemanager_delete_license
 
+#' Deletes a license asset group
+#'
+#' @description
+#' Deletes a license asset group.
+#'
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_delete_license_asset_group/](https://www.paws-r-sdk.com/docs/licensemanager_delete_license_asset_group/) for full documentation.
+#'
+#' @param LicenseAssetGroupArn &#91;required&#93; Amazon Resource Name (ARN) of the license asset group.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_delete_license_asset_group
+licensemanager_delete_license_asset_group <- function(LicenseAssetGroupArn) {
+  op <- new_operation(
+    name = "DeleteLicenseAssetGroup",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanager$delete_license_asset_group_input(LicenseAssetGroupArn = LicenseAssetGroupArn)
+  output <- .licensemanager$delete_license_asset_group_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$delete_license_asset_group <- licensemanager_delete_license_asset_group
+
+#' Deletes a license asset ruleset
+#'
+#' @description
+#' Deletes a license asset ruleset.
+#'
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_delete_license_asset_ruleset/](https://www.paws-r-sdk.com/docs/licensemanager_delete_license_asset_ruleset/) for full documentation.
+#'
+#' @param LicenseAssetRulesetArn &#91;required&#93; Amazon Resource Name (ARN) of the license asset ruleset.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_delete_license_asset_ruleset
+licensemanager_delete_license_asset_ruleset <- function(LicenseAssetRulesetArn) {
+  op <- new_operation(
+    name = "DeleteLicenseAssetRuleset",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanager$delete_license_asset_ruleset_input(LicenseAssetRulesetArn = LicenseAssetRulesetArn)
+  output <- .licensemanager$delete_license_asset_ruleset_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$delete_license_asset_ruleset <- licensemanager_delete_license_asset_ruleset
+
 #' Deletes the specified license configuration
 #'
 #' @description
@@ -802,6 +939,68 @@ licensemanager_get_license <- function(LicenseArn, Version = NULL) {
 }
 .licensemanager$operations$get_license <- licensemanager_get_license
 
+#' Gets a license asset group
+#'
+#' @description
+#' Gets a license asset group.
+#'
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_get_license_asset_group/](https://www.paws-r-sdk.com/docs/licensemanager_get_license_asset_group/) for full documentation.
+#'
+#' @param LicenseAssetGroupArn &#91;required&#93; Amazon Resource Name (ARN) of the license asset group.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_get_license_asset_group
+licensemanager_get_license_asset_group <- function(LicenseAssetGroupArn) {
+  op <- new_operation(
+    name = "GetLicenseAssetGroup",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanager$get_license_asset_group_input(LicenseAssetGroupArn = LicenseAssetGroupArn)
+  output <- .licensemanager$get_license_asset_group_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$get_license_asset_group <- licensemanager_get_license_asset_group
+
+#' Gets a license asset ruleset
+#'
+#' @description
+#' Gets a license asset ruleset.
+#'
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_get_license_asset_ruleset/](https://www.paws-r-sdk.com/docs/licensemanager_get_license_asset_ruleset/) for full documentation.
+#'
+#' @param LicenseAssetRulesetArn &#91;required&#93; Amazon Resource Name (ARN) of the license asset ruleset.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_get_license_asset_ruleset
+licensemanager_get_license_asset_ruleset <- function(LicenseAssetRulesetArn) {
+  op <- new_operation(
+    name = "GetLicenseAssetRuleset",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanager$get_license_asset_ruleset_input(LicenseAssetRulesetArn = LicenseAssetRulesetArn)
+  output <- .licensemanager$get_license_asset_ruleset_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$get_license_asset_ruleset <- licensemanager_get_license_asset_ruleset
+
 #' Gets detailed information about the specified license configuration
 #'
 #' @description
@@ -957,6 +1156,41 @@ licensemanager_get_service_settings <- function() {
 }
 .licensemanager$operations$get_service_settings <- licensemanager_get_service_settings
 
+#' Lists assets for a license asset group
+#'
+#' @description
+#' Lists assets for a license asset group.
+#'
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_list_assets_for_license_asset_group/](https://www.paws-r-sdk.com/docs/licensemanager_list_assets_for_license_asset_group/) for full documentation.
+#'
+#' @param LicenseAssetGroupArn &#91;required&#93; Amazon Resource Name (ARN) of the license asset group.
+#' @param AssetType &#91;required&#93; Asset type. The possible values are `Instance` | `License` |
+#' `LicenseConfiguration`.
+#' @param MaxResults Maximum number of results to return in a single call.
+#' @param NextToken Token for the next set of results.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_list_assets_for_license_asset_group
+licensemanager_list_assets_for_license_asset_group <- function(LicenseAssetGroupArn, AssetType, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListAssetsForLicenseAssetGroup",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanager$list_assets_for_license_asset_group_input(LicenseAssetGroupArn = LicenseAssetGroupArn, AssetType = AssetType, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .licensemanager$list_assets_for_license_asset_group_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$list_assets_for_license_asset_group <- licensemanager_list_assets_for_license_asset_group
+
 #' Lists the resource associations for the specified license configuration
 #'
 #' @description
@@ -1067,6 +1301,78 @@ licensemanager_list_failures_for_license_configuration_operations <- function(Li
 }
 .licensemanager$operations$list_failures_for_license_configuration_operations <- licensemanager_list_failures_for_license_configuration_operations
 
+#' Lists license asset groups
+#'
+#' @description
+#' Lists license asset groups.
+#'
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_list_license_asset_groups/](https://www.paws-r-sdk.com/docs/licensemanager_list_license_asset_groups/) for full documentation.
+#'
+#' @param Filters Filters to scope the results. Following filters are supported
+#' 
+#' -   `LicenseAssetRulesetArn`
+#' @param MaxResults Maximum number of results to return in a single call.
+#' @param NextToken Token for the next set of results.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_list_license_asset_groups
+licensemanager_list_license_asset_groups <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListLicenseAssetGroups",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanager$list_license_asset_groups_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .licensemanager$list_license_asset_groups_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$list_license_asset_groups <- licensemanager_list_license_asset_groups
+
+#' Lists license asset rulesets
+#'
+#' @description
+#' Lists license asset rulesets.
+#'
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_list_license_asset_rulesets/](https://www.paws-r-sdk.com/docs/licensemanager_list_license_asset_rulesets/) for full documentation.
+#'
+#' @param Filters Filters to scope the results. Following filters are supported
+#' 
+#' -   `Name`
+#' @param ShowAWSManagedLicenseAssetRulesets Specifies whether to show License Manager managed license asset
+#' rulesets.
+#' @param MaxResults Maximum number of results to return in a single call.
+#' @param NextToken Token for the next set of results.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_list_license_asset_rulesets
+licensemanager_list_license_asset_rulesets <- function(Filters = NULL, ShowAWSManagedLicenseAssetRulesets = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListLicenseAssetRulesets",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanager$list_license_asset_rulesets_input(Filters = Filters, ShowAWSManagedLicenseAssetRulesets = ShowAWSManagedLicenseAssetRulesets, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .licensemanager$list_license_asset_rulesets_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$list_license_asset_rulesets <- licensemanager_list_license_asset_rulesets
+
 #' Lists the license configurations for your account
 #'
 #' @description
@@ -1111,6 +1417,40 @@ licensemanager_list_license_configurations <- function(LicenseConfigurationArns 
   return(response)
 }
 .licensemanager$operations$list_license_configurations <- licensemanager_list_license_configurations
+
+#' Lists license configurations for an organization
+#'
+#' @description
+#' Lists license configurations for an organization.
+#'
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_list_license_configurations_for_organization/](https://www.paws-r-sdk.com/docs/licensemanager_list_license_configurations_for_organization/) for full documentation.
+#'
+#' @param LicenseConfigurationArns License configuration ARNs.
+#' @param MaxResults Maximum number of results to return in a single call.
+#' @param NextToken Token for the next set of results.
+#' @param Filters Filters to scope the results.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_list_license_configurations_for_organization
+licensemanager_list_license_configurations_for_organization <- function(LicenseConfigurationArns = NULL, MaxResults = NULL, NextToken = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "ListLicenseConfigurationsForOrganization",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanager$list_license_configurations_for_organization_input(LicenseConfigurationArns = LicenseConfigurationArns, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
+  output <- .licensemanager$list_license_configurations_for_organization_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$list_license_configurations_for_organization <- licensemanager_list_license_configurations_for_organization
 
 #' Lists the license type conversion tasks for your account
 #'
@@ -1726,6 +2066,82 @@ licensemanager_untag_resource <- function(ResourceArn, TagKeys) {
 }
 .licensemanager$operations$untag_resource <- licensemanager_untag_resource
 
+#' Updates a license asset group
+#'
+#' @description
+#' Updates a license asset group.
+#'
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_update_license_asset_group/](https://www.paws-r-sdk.com/docs/licensemanager_update_license_asset_group/) for full documentation.
+#'
+#' @param Name License asset group name.
+#' @param Description License asset group description.
+#' @param LicenseAssetGroupConfigurations License asset group configurations.
+#' @param AssociatedLicenseAssetRulesetARNs &#91;required&#93; ARNs of associated license asset rulesets.
+#' @param Properties License asset group properties.
+#' @param LicenseAssetGroupArn &#91;required&#93; Amazon Resource Name (ARN) of the license asset group.
+#' @param Status License asset group status. The possible values are `ACTIVE` |
+#' `DISABLED`.
+#' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_update_license_asset_group
+licensemanager_update_license_asset_group <- function(Name = NULL, Description = NULL, LicenseAssetGroupConfigurations = NULL, AssociatedLicenseAssetRulesetARNs, Properties = NULL, LicenseAssetGroupArn, Status = NULL, ClientToken) {
+  op <- new_operation(
+    name = "UpdateLicenseAssetGroup",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanager$update_license_asset_group_input(Name = Name, Description = Description, LicenseAssetGroupConfigurations = LicenseAssetGroupConfigurations, AssociatedLicenseAssetRulesetARNs = AssociatedLicenseAssetRulesetARNs, Properties = Properties, LicenseAssetGroupArn = LicenseAssetGroupArn, Status = Status, ClientToken = ClientToken)
+  output <- .licensemanager$update_license_asset_group_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$update_license_asset_group <- licensemanager_update_license_asset_group
+
+#' Updates a license asset ruleset
+#'
+#' @description
+#' Updates a license asset ruleset.
+#'
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_update_license_asset_ruleset/](https://www.paws-r-sdk.com/docs/licensemanager_update_license_asset_ruleset/) for full documentation.
+#'
+#' @param Name License asset ruleset name.
+#' @param Description License asset ruleset description.
+#' @param Rules &#91;required&#93; License asset rules.
+#' @param LicenseAssetRulesetArn &#91;required&#93; Amazon Resource Name (ARN) of the license asset ruleset.
+#' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_update_license_asset_ruleset
+licensemanager_update_license_asset_ruleset <- function(Name = NULL, Description = NULL, Rules, LicenseAssetRulesetArn, ClientToken) {
+  op <- new_operation(
+    name = "UpdateLicenseAssetRuleset",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanager$update_license_asset_ruleset_input(Name = Name, Description = Description, Rules = Rules, LicenseAssetRulesetArn = LicenseAssetRulesetArn, ClientToken = ClientToken)
+  output <- .licensemanager$update_license_asset_ruleset_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$update_license_asset_ruleset <- licensemanager_update_license_asset_ruleset
+
 #' Modifies the attributes of an existing license configuration
 #'
 #' @description
@@ -1743,11 +2159,12 @@ licensemanager_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param Description New description of the license configuration.
 #' @param ProductInformationList New product information.
 #' @param DisassociateWhenNotFound When true, disassociates a resource when software is uninstalled.
+#' @param LicenseExpiry License configuration expiry time.
 #'
 #' @keywords internal
 #'
 #' @rdname licensemanager_update_license_configuration
-licensemanager_update_license_configuration <- function(LicenseConfigurationArn, LicenseConfigurationStatus = NULL, LicenseRules = NULL, LicenseCount = NULL, LicenseCountHardLimit = NULL, Name = NULL, Description = NULL, ProductInformationList = NULL, DisassociateWhenNotFound = NULL) {
+licensemanager_update_license_configuration <- function(LicenseConfigurationArn, LicenseConfigurationStatus = NULL, LicenseRules = NULL, LicenseCount = NULL, LicenseCountHardLimit = NULL, Name = NULL, Description = NULL, ProductInformationList = NULL, DisassociateWhenNotFound = NULL, LicenseExpiry = NULL) {
   op <- new_operation(
     name = "UpdateLicenseConfiguration",
     http_method = "POST",
@@ -1756,7 +2173,7 @@ licensemanager_update_license_configuration <- function(LicenseConfigurationArn,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .licensemanager$update_license_configuration_input(LicenseConfigurationArn = LicenseConfigurationArn, LicenseConfigurationStatus = LicenseConfigurationStatus, LicenseRules = LicenseRules, LicenseCount = LicenseCount, LicenseCountHardLimit = LicenseCountHardLimit, Name = Name, Description = Description, ProductInformationList = ProductInformationList, DisassociateWhenNotFound = DisassociateWhenNotFound)
+  input <- .licensemanager$update_license_configuration_input(LicenseConfigurationArn = LicenseConfigurationArn, LicenseConfigurationStatus = LicenseConfigurationStatus, LicenseRules = LicenseRules, LicenseCount = LicenseCount, LicenseCountHardLimit = LicenseCountHardLimit, Name = Name, Description = Description, ProductInformationList = ProductInformationList, DisassociateWhenNotFound = DisassociateWhenNotFound, LicenseExpiry = LicenseExpiry)
   output <- .licensemanager$update_license_configuration_output()
   config <- get_config()
   svc <- .licensemanager$service(config, op)
@@ -1857,11 +2274,12 @@ licensemanager_update_license_specifications_for_resource <- function(ResourceAr
 #' Manager alerts.
 #' @param OrganizationConfiguration Enables integration with Organizations for cross-account discovery.
 #' @param EnableCrossAccountsDiscovery Activates cross-account discovery.
+#' @param EnabledDiscoverySourceRegions Cross region discovery enabled source regions.
 #'
 #' @keywords internal
 #'
 #' @rdname licensemanager_update_service_settings
-licensemanager_update_service_settings <- function(S3BucketArn = NULL, SnsTopicArn = NULL, OrganizationConfiguration = NULL, EnableCrossAccountsDiscovery = NULL) {
+licensemanager_update_service_settings <- function(S3BucketArn = NULL, SnsTopicArn = NULL, OrganizationConfiguration = NULL, EnableCrossAccountsDiscovery = NULL, EnabledDiscoverySourceRegions = NULL) {
   op <- new_operation(
     name = "UpdateServiceSettings",
     http_method = "POST",
@@ -1870,7 +2288,7 @@ licensemanager_update_service_settings <- function(S3BucketArn = NULL, SnsTopicA
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .licensemanager$update_service_settings_input(S3BucketArn = S3BucketArn, SnsTopicArn = SnsTopicArn, OrganizationConfiguration = OrganizationConfiguration, EnableCrossAccountsDiscovery = EnableCrossAccountsDiscovery)
+  input <- .licensemanager$update_service_settings_input(S3BucketArn = S3BucketArn, SnsTopicArn = SnsTopicArn, OrganizationConfiguration = OrganizationConfiguration, EnableCrossAccountsDiscovery = EnableCrossAccountsDiscovery, EnabledDiscoverySourceRegions = EnabledDiscoverySourceRegions)
   output <- .licensemanager$update_service_settings_output()
   config <- get_config()
   svc <- .licensemanager$service(config, op)

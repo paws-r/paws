@@ -111,6 +111,46 @@ resourceexplorer_create_index <- function(ClientToken = NULL, Tags = NULL) {
 }
 .resourceexplorer$operations$create_index <- resourceexplorer_create_index
 
+#' Creates a Resource Explorer setup configuration across multiple Amazon
+#' Web Services Regions
+#'
+#' @description
+#' Creates a Resource Explorer setup configuration across multiple Amazon Web Services Regions. This operation sets up indexes and views in the specified Regions. This operation can also be used to set an aggregator Region for cross-Region resource search.
+#'
+#' See [https://www.paws-r-sdk.com/docs/resourceexplorer_create_resource_explorer_setup/](https://www.paws-r-sdk.com/docs/resourceexplorer_create_resource_explorer_setup/) for full documentation.
+#'
+#' @param RegionList &#91;required&#93; A list of Amazon Web Services Regions where Resource Explorer should be
+#' configured. Each Region in the list will have a user-owned index
+#' created.
+#' @param AggregatorRegions A list of Amazon Web Services Regions that should be configured as
+#' aggregator Regions. Aggregator Regions receive replicated index
+#' information from all other Regions where there is a user-owned index.
+#' @param ViewName &#91;required&#93; The name for the view to be created as part of the Resource Explorer
+#' setup. The view name must be unique within the Amazon Web Services
+#' account and Region.
+#'
+#' @keywords internal
+#'
+#' @rdname resourceexplorer_create_resource_explorer_setup
+resourceexplorer_create_resource_explorer_setup <- function(RegionList, AggregatorRegions = NULL, ViewName) {
+  op <- new_operation(
+    name = "CreateResourceExplorerSetup",
+    http_method = "POST",
+    http_path = "/CreateResourceExplorerSetup",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .resourceexplorer$create_resource_explorer_setup_input(RegionList = RegionList, AggregatorRegions = AggregatorRegions, ViewName = ViewName)
+  output <- .resourceexplorer$create_resource_explorer_setup_output()
+  config <- get_config()
+  svc <- .resourceexplorer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourceexplorer$operations$create_resource_explorer_setup <- resourceexplorer_create_resource_explorer_setup
+
 #' Creates a view that users can query by using the Search operation
 #'
 #' @description
@@ -123,6 +163,20 @@ resourceexplorer_create_index <- function(ClientToken = NULL, Tags = NULL) {
 #' that you generate a [UUID-type
 #' value](https://en.wikipedia.org/wiki/Universally_unique_identifier) to
 #' ensure the uniqueness of your views.
+#' @param ViewName &#91;required&#93; The name of the new view. This name appears in the list of views in
+#' Resource Explorer.
+#' 
+#' The name must be no more than 64 characters long, and can include
+#' letters, digits, and the dash (-) character. The name must be unique
+#' within its Amazon Web Services Region.
+#' @param IncludedProperties Specifies optional fields that you want included in search results from
+#' this view. It is a list of objects that each describe a field to
+#' include.
+#' 
+#' The default is an empty list, with no optional fields included in the
+#' results.
+#' @param Scope The root ARN of the account, an organizational unit (OU), or an
+#' organization ARN. If left empty, the default is account.
 #' @param Filters An array of strings that specify which resources are included in the
 #' results of queries made using this view. When you use this view in a
 #' [`search`][resourceexplorer_search] operation, the filter string is
@@ -142,26 +196,12 @@ resourceexplorer_create_index <- function(ClientToken = NULL, Tags = NULL) {
 #' `region:us* service:ec2 -tag:stage=prod` includes all Amazon EC2
 #' resources in any Amazon Web Services Region that begins with the letters
 #' `us` and is *not* tagged with a key `Stage` that has the value `prod`.
-#' @param IncludedProperties Specifies optional fields that you want included in search results from
-#' this view. It is a list of objects that each describe a field to
-#' include.
-#' 
-#' The default is an empty list, with no optional fields included in the
-#' results.
-#' @param Scope The root ARN of the account, an organizational unit (OU), or an
-#' organization ARN. If left empty, the default is account.
 #' @param Tags Tag key and value pairs that are attached to the view.
-#' @param ViewName &#91;required&#93; The name of the new view. This name appears in the list of views in
-#' Resource Explorer.
-#' 
-#' The name must be no more than 64 characters long, and can include
-#' letters, digits, and the dash (-) character. The name must be unique
-#' within its Amazon Web Services Region.
 #'
 #' @keywords internal
 #'
 #' @rdname resourceexplorer_create_view
-resourceexplorer_create_view <- function(ClientToken = NULL, Filters = NULL, IncludedProperties = NULL, Scope = NULL, Tags = NULL, ViewName) {
+resourceexplorer_create_view <- function(ClientToken = NULL, ViewName, IncludedProperties = NULL, Scope = NULL, Filters = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateView",
     http_method = "POST",
@@ -170,7 +210,7 @@ resourceexplorer_create_view <- function(ClientToken = NULL, Filters = NULL, Inc
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .resourceexplorer$create_view_input(ClientToken = ClientToken, Filters = Filters, IncludedProperties = IncludedProperties, Scope = Scope, Tags = Tags, ViewName = ViewName)
+  input <- .resourceexplorer$create_view_input(ClientToken = ClientToken, ViewName = ViewName, IncludedProperties = IncludedProperties, Scope = Scope, Filters = Filters, Tags = Tags)
   output <- .resourceexplorer$create_view_output()
   config <- get_config()
   svc <- .resourceexplorer$service(config, op)
@@ -213,6 +253,43 @@ resourceexplorer_delete_index <- function(Arn) {
   return(response)
 }
 .resourceexplorer$operations$delete_index <- resourceexplorer_delete_index
+
+#' Deletes a Resource Explorer setup configuration
+#'
+#' @description
+#' Deletes a Resource Explorer setup configuration. This operation removes indexes and views from the specified Regions or all Regions where Resource Explorer is configured.
+#'
+#' See [https://www.paws-r-sdk.com/docs/resourceexplorer_delete_resource_explorer_setup/](https://www.paws-r-sdk.com/docs/resourceexplorer_delete_resource_explorer_setup/) for full documentation.
+#'
+#' @param RegionList A list of Amazon Web Services Regions from which to delete the Resource
+#' Explorer configuration. If not specified, the operation uses the
+#' `DeleteInAllRegions` parameter to determine scope.
+#' @param DeleteInAllRegions Specifies whether to delete Resource Explorer configuration from all
+#' Regions where it is currently enabled. If this parameter is set to
+#' `true`, a value for `RegionList` must not be provided. Otherwise, the
+#' operation fails with a `ValidationException` error.
+#'
+#' @keywords internal
+#'
+#' @rdname resourceexplorer_delete_resource_explorer_setup
+resourceexplorer_delete_resource_explorer_setup <- function(RegionList = NULL, DeleteInAllRegions = NULL) {
+  op <- new_operation(
+    name = "DeleteResourceExplorerSetup",
+    http_method = "POST",
+    http_path = "/DeleteResourceExplorerSetup",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .resourceexplorer$delete_resource_explorer_setup_input(RegionList = RegionList, DeleteInAllRegions = DeleteInAllRegions)
+  output <- .resourceexplorer$delete_resource_explorer_setup_output()
+  config <- get_config()
+  svc <- .resourceexplorer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourceexplorer$operations$delete_resource_explorer_setup <- resourceexplorer_delete_resource_explorer_setup
 
 #' Deletes the specified view
 #'
@@ -407,6 +484,111 @@ resourceexplorer_get_managed_view <- function(ManagedViewArn) {
 }
 .resourceexplorer$operations$get_managed_view <- resourceexplorer_get_managed_view
 
+#' Retrieves the status and details of a Resource Explorer setup operation
+#'
+#' @description
+#' Retrieves the status and details of a Resource Explorer setup operation. This operation returns information about the progress of creating or deleting Resource Explorer configurations across Regions.
+#'
+#' See [https://www.paws-r-sdk.com/docs/resourceexplorer_get_resource_explorer_setup/](https://www.paws-r-sdk.com/docs/resourceexplorer_get_resource_explorer_setup/) for full documentation.
+#'
+#' @param TaskId &#91;required&#93; The unique identifier of the setup task to retrieve status information
+#' for. This ID is returned by
+#' [`create_resource_explorer_setup`][resourceexplorer_create_resource_explorer_setup]
+#' or
+#' [`delete_resource_explorer_setup`][resourceexplorer_delete_resource_explorer_setup]
+#' operations.
+#' @param MaxResults The maximum number of Region status results to return in a single
+#' response. Valid values are between `1` and `100`.
+#' @param NextToken The pagination token from a previous
+#' [`get_resource_explorer_setup`][resourceexplorer_get_resource_explorer_setup]
+#' response. Use this token to retrieve the next set of results.
+#'
+#' @keywords internal
+#'
+#' @rdname resourceexplorer_get_resource_explorer_setup
+resourceexplorer_get_resource_explorer_setup <- function(TaskId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetResourceExplorerSetup",
+    http_method = "POST",
+    http_path = "/GetResourceExplorerSetup",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Regions"),
+    stream_api = FALSE
+  )
+  input <- .resourceexplorer$get_resource_explorer_setup_input(TaskId = TaskId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .resourceexplorer$get_resource_explorer_setup_output()
+  config <- get_config()
+  svc <- .resourceexplorer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourceexplorer$operations$get_resource_explorer_setup <- resourceexplorer_get_resource_explorer_setup
+
+#' Retrieves information about the Resource Explorer index in the current
+#' Amazon Web Services Region
+#'
+#' @description
+#' Retrieves information about the Resource Explorer index in the current Amazon Web Services Region. This operation returns the ARN and type of the index if one exists.
+#'
+#' See [https://www.paws-r-sdk.com/docs/resourceexplorer_get_service_index/](https://www.paws-r-sdk.com/docs/resourceexplorer_get_service_index/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname resourceexplorer_get_service_index
+resourceexplorer_get_service_index <- function() {
+  op <- new_operation(
+    name = "GetServiceIndex",
+    http_method = "POST",
+    http_path = "/GetServiceIndex",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .resourceexplorer$get_service_index_input()
+  output <- .resourceexplorer$get_service_index_output()
+  config <- get_config()
+  svc <- .resourceexplorer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourceexplorer$operations$get_service_index <- resourceexplorer_get_service_index
+
+#' Retrieves details about a specific Resource Explorer service view
+#'
+#' @description
+#' Retrieves details about a specific Resource Explorer service view. This operation returns the configuration and properties of the specified view.
+#'
+#' See [https://www.paws-r-sdk.com/docs/resourceexplorer_get_service_view/](https://www.paws-r-sdk.com/docs/resourceexplorer_get_service_view/) for full documentation.
+#'
+#' @param ServiceViewArn &#91;required&#93; The Amazon Resource Name (ARN) of the service view to retrieve details
+#' for.
+#'
+#' @keywords internal
+#'
+#' @rdname resourceexplorer_get_service_view
+resourceexplorer_get_service_view <- function(ServiceViewArn) {
+  op <- new_operation(
+    name = "GetServiceView",
+    http_method = "POST",
+    http_path = "/GetServiceView",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .resourceexplorer$get_service_view_input(ServiceViewArn = ServiceViewArn)
+  output <- .resourceexplorer$get_service_view_output()
+  config <- get_config()
+  svc <- .resourceexplorer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourceexplorer$operations$get_service_view <- resourceexplorer_get_service_view
+
 #' Retrieves details of the specified view
 #'
 #' @description
@@ -449,6 +631,12 @@ resourceexplorer_get_view <- function(ViewArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/resourceexplorer_list_indexes/](https://www.paws-r-sdk.com/docs/resourceexplorer_list_indexes/) for full documentation.
 #'
+#' @param Type If specified, limits the output to only indexes of the specified Type,
+#' either `LOCAL` or `AGGREGATOR`.
+#' 
+#' Use this option to discover the aggregator index for your account.
+#' @param Regions If specified, limits the response to only information about the index in
+#' the specified list of Amazon Web Services Regions.
 #' @param MaxResults The maximum number of results that you want included on each page of the
 #' response. If you do not include this parameter, it defaults to a value
 #' appropriate to the operation. If additional items exist beyond those
@@ -465,17 +653,11 @@ resourceexplorer_get_view <- function(ViewArn) {
 #' indicates that more output is available. Set this parameter to the value
 #' of the previous call's `NextToken` response to indicate where the output
 #' should continue from. The pagination tokens expire after 24 hours.
-#' @param Regions If specified, limits the response to only information about the index in
-#' the specified list of Amazon Web Services Regions.
-#' @param Type If specified, limits the output to only indexes of the specified Type,
-#' either `LOCAL` or `AGGREGATOR`.
-#' 
-#' Use this option to discover the aggregator index for your account.
 #'
 #' @keywords internal
 #'
 #' @rdname resourceexplorer_list_indexes
-resourceexplorer_list_indexes <- function(MaxResults = NULL, NextToken = NULL, Regions = NULL, Type = NULL) {
+resourceexplorer_list_indexes <- function(Type = NULL, Regions = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListIndexes",
     http_method = "POST",
@@ -484,7 +666,7 @@ resourceexplorer_list_indexes <- function(MaxResults = NULL, NextToken = NULL, R
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Indexes"),
     stream_api = FALSE
   )
-  input <- .resourceexplorer$list_indexes_input(MaxResults = MaxResults, NextToken = NextToken, Regions = Regions, Type = Type)
+  input <- .resourceexplorer$list_indexes_input(Type = Type, Regions = Regions, MaxResults = MaxResults, NextToken = NextToken)
   output <- .resourceexplorer$list_indexes_output()
   config <- get_config()
   svc <- .resourceexplorer$service(config, op)
@@ -632,6 +814,13 @@ resourceexplorer_list_managed_views <- function(MaxResults = NULL, NextToken = N
 #' An API operation can return fewer results than the maximum even when
 #' there are more results available. You should check `NextToken` after
 #' every operation to ensure that you receive all of the results.
+#' @param ViewArn Specifies the Amazon resource name (ARN) of the view to use for the
+#' query. If you don't specify a value for this parameter, then the
+#' operation automatically uses the default view for the Amazon Web
+#' Services Region in which you called this operation. If the Region either
+#' doesn't have a default view or if you don't have permission to use the
+#' default view, then the operation fails with a 401 Unauthorized
+#' exception.
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
@@ -640,18 +829,11 @@ resourceexplorer_list_managed_views <- function(MaxResults = NULL, NextToken = N
 #' 
 #' The [`list_resources`][resourceexplorer_list_resources] operation does
 #' not generate a `NextToken` if you set `MaxResults` to 1000.
-#' @param ViewArn Specifies the Amazon resource name (ARN) of the view to use for the
-#' query. If you don't specify a value for this parameter, then the
-#' operation automatically uses the default view for the Amazon Web
-#' Services Region in which you called this operation. If the Region either
-#' doesn't have a default view or if you don't have permission to use the
-#' default view, then the operation fails with a 401 Unauthorized
-#' exception.
 #'
 #' @keywords internal
 #'
 #' @rdname resourceexplorer_list_resources
-resourceexplorer_list_resources <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL, ViewArn = NULL) {
+resourceexplorer_list_resources <- function(Filters = NULL, MaxResults = NULL, ViewArn = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListResources",
     http_method = "POST",
@@ -660,7 +842,7 @@ resourceexplorer_list_resources <- function(Filters = NULL, MaxResults = NULL, N
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Resources"),
     stream_api = FALSE
   )
-  input <- .resourceexplorer$list_resources_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, ViewArn = ViewArn)
+  input <- .resourceexplorer$list_resources_input(Filters = Filters, MaxResults = MaxResults, ViewArn = ViewArn, NextToken = NextToken)
   output <- .resourceexplorer$list_resources_output()
   config <- get_config()
   svc <- .resourceexplorer$service(config, op)
@@ -670,6 +852,121 @@ resourceexplorer_list_resources <- function(Filters = NULL, MaxResults = NULL, N
 }
 .resourceexplorer$operations$list_resources <- resourceexplorer_list_resources
 
+#' Lists all Resource Explorer indexes across the specified Amazon Web
+#' Services Regions
+#'
+#' @description
+#' Lists all Resource Explorer indexes across the specified Amazon Web Services Regions. This operation returns information about indexes including their ARNs, types, and Regions.
+#'
+#' See [https://www.paws-r-sdk.com/docs/resourceexplorer_list_service_indexes/](https://www.paws-r-sdk.com/docs/resourceexplorer_list_service_indexes/) for full documentation.
+#'
+#' @param Regions A list of Amazon Web Services Regions to include in the search for
+#' indexes. If not specified, indexes from all Regions are returned.
+#' @param MaxResults The maximum number of index results to return in a single response.
+#' Valid values are between `1` and `100`.
+#' @param NextToken The pagination token from a previous
+#' [`list_service_indexes`][resourceexplorer_list_service_indexes]
+#' response. Use this token to retrieve the next set of results.
+#'
+#' @keywords internal
+#'
+#' @rdname resourceexplorer_list_service_indexes
+resourceexplorer_list_service_indexes <- function(Regions = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListServiceIndexes",
+    http_method = "POST",
+    http_path = "/ListServiceIndexes",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Indexes"),
+    stream_api = FALSE
+  )
+  input <- .resourceexplorer$list_service_indexes_input(Regions = Regions, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .resourceexplorer$list_service_indexes_output()
+  config <- get_config()
+  svc <- .resourceexplorer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourceexplorer$operations$list_service_indexes <- resourceexplorer_list_service_indexes
+
+#' Lists all Resource Explorer service views available in the current
+#' Amazon Web Services account
+#'
+#' @description
+#' Lists all Resource Explorer service views available in the current Amazon Web Services account. This operation returns the ARNs of available service views.
+#'
+#' See [https://www.paws-r-sdk.com/docs/resourceexplorer_list_service_views/](https://www.paws-r-sdk.com/docs/resourceexplorer_list_service_views/) for full documentation.
+#'
+#' @param MaxResults The maximum number of service view results to return in a single
+#' response. Valid values are between `1` and `50`.
+#' @param NextToken The pagination token from a previous
+#' [`list_service_views`][resourceexplorer_list_service_views] response.
+#' Use this token to retrieve the next set of results.
+#'
+#' @keywords internal
+#'
+#' @rdname resourceexplorer_list_service_views
+resourceexplorer_list_service_views <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListServiceViews",
+    http_method = "POST",
+    http_path = "/ListServiceViews",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ServiceViews"),
+    stream_api = FALSE
+  )
+  input <- .resourceexplorer$list_service_views_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .resourceexplorer$list_service_views_output()
+  config <- get_config()
+  svc <- .resourceexplorer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourceexplorer$operations$list_service_views <- resourceexplorer_list_service_views
+
+#' Returns a list of Amazon Web Services services that have been granted
+#' streaming access to your Resource Explorer data
+#'
+#' @description
+#' Returns a list of Amazon Web Services services that have been granted streaming access to your Resource Explorer data. Streaming access allows Amazon Web Services services to receive real-time updates about your resources as they are indexed by Resource Explorer.
+#'
+#' See [https://www.paws-r-sdk.com/docs/resourceexplorer_list_streaming_access_for_services/](https://www.paws-r-sdk.com/docs/resourceexplorer_list_streaming_access_for_services/) for full documentation.
+#'
+#' @param MaxResults The maximum number of streaming access entries to return in the
+#' response. If there are more results available, the response includes a
+#' NextToken value that you can use in a subsequent call to get the next
+#' set of results. The value must be between 1 and 50. If you don't specify
+#' a value, the default is 50.
+#' @param NextToken The parameter for receiving additional results if you receive a
+#' `NextToken` response in a previous request. A `NextToken` response
+#' indicates that more output is available. Set this parameter to the value
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from. The pagination tokens expire after 24 hours.
+#'
+#' @keywords internal
+#'
+#' @rdname resourceexplorer_list_streaming_access_for_services
+resourceexplorer_list_streaming_access_for_services <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListStreamingAccessForServices",
+    http_method = "POST",
+    http_path = "/ListStreamingAccessForServices",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "StreamingAccessForServices"),
+    stream_api = FALSE
+  )
+  input <- .resourceexplorer$list_streaming_access_for_services_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .resourceexplorer$list_streaming_access_for_services_output()
+  config <- get_config()
+  svc <- .resourceexplorer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourceexplorer$operations$list_streaming_access_for_services <- resourceexplorer_list_streaming_access_for_services
+
 #' Retrieves a list of all resource types currently supported by Amazon Web
 #' Services Resource Explorer
 #'
@@ -678,6 +975,11 @@ resourceexplorer_list_resources <- function(Filters = NULL, MaxResults = NULL, N
 #'
 #' See [https://www.paws-r-sdk.com/docs/resourceexplorer_list_supported_resource_types/](https://www.paws-r-sdk.com/docs/resourceexplorer_list_supported_resource_types/) for full documentation.
 #'
+#' @param NextToken The parameter for receiving additional results if you receive a
+#' `NextToken` response in a previous request. A `NextToken` response
+#' indicates that more output is available. Set this parameter to the value
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from. The pagination tokens expire after 24 hours.
 #' @param MaxResults The maximum number of results that you want included on each page of the
 #' response. If you do not include this parameter, it defaults to a value
 #' appropriate to the operation. If additional items exist beyond those
@@ -689,16 +991,11 @@ resourceexplorer_list_resources <- function(Filters = NULL, MaxResults = NULL, N
 #' An API operation can return fewer results than the maximum even when
 #' there are more results available. You should check `NextToken` after
 #' every operation to ensure that you receive all of the results.
-#' @param NextToken The parameter for receiving additional results if you receive a
-#' `NextToken` response in a previous request. A `NextToken` response
-#' indicates that more output is available. Set this parameter to the value
-#' of the previous call's `NextToken` response to indicate where the output
-#' should continue from. The pagination tokens expire after 24 hours.
 #'
 #' @keywords internal
 #'
 #' @rdname resourceexplorer_list_supported_resource_types
-resourceexplorer_list_supported_resource_types <- function(MaxResults = NULL, NextToken = NULL) {
+resourceexplorer_list_supported_resource_types <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListSupportedResourceTypes",
     http_method = "POST",
@@ -707,7 +1004,7 @@ resourceexplorer_list_supported_resource_types <- function(MaxResults = NULL, Ne
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResourceTypes"),
     stream_api = FALSE
   )
-  input <- .resourceexplorer$list_supported_resource_types_input(MaxResults = MaxResults, NextToken = NextToken)
+  input <- .resourceexplorer$list_supported_resource_types_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .resourceexplorer$list_supported_resource_types_output()
   config <- get_config()
   svc <- .resourceexplorer$service(config, op)
@@ -758,6 +1055,11 @@ resourceexplorer_list_tags_for_resource <- function(resourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/resourceexplorer_list_views/](https://www.paws-r-sdk.com/docs/resourceexplorer_list_views/) for full documentation.
 #'
+#' @param NextToken The parameter for receiving additional results if you receive a
+#' `NextToken` response in a previous request. A `NextToken` response
+#' indicates that more output is available. Set this parameter to the value
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from. The pagination tokens expire after 24 hours.
 #' @param MaxResults The maximum number of results that you want included on each page of the
 #' response. If you do not include this parameter, it defaults to a value
 #' appropriate to the operation. If additional items exist beyond those
@@ -769,16 +1071,11 @@ resourceexplorer_list_tags_for_resource <- function(resourceArn) {
 #' An API operation can return fewer results than the maximum even when
 #' there are more results available. You should check `NextToken` after
 #' every operation to ensure that you receive all of the results.
-#' @param NextToken The parameter for receiving additional results if you receive a
-#' `NextToken` response in a previous request. A `NextToken` response
-#' indicates that more output is available. Set this parameter to the value
-#' of the previous call's `NextToken` response to indicate where the output
-#' should continue from. The pagination tokens expire after 24 hours.
 #'
 #' @keywords internal
 #'
 #' @rdname resourceexplorer_list_views
-resourceexplorer_list_views <- function(MaxResults = NULL, NextToken = NULL) {
+resourceexplorer_list_views <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListViews",
     http_method = "POST",
@@ -787,7 +1084,7 @@ resourceexplorer_list_views <- function(MaxResults = NULL, NextToken = NULL) {
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Views"),
     stream_api = FALSE
   )
-  input <- .resourceexplorer$list_views_input(MaxResults = MaxResults, NextToken = NextToken)
+  input <- .resourceexplorer$list_views_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .resourceexplorer$list_views_output()
   config <- get_config()
   svc <- .resourceexplorer$service(config, op)
@@ -805,22 +1102,6 @@ resourceexplorer_list_views <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/resourceexplorer_search/](https://www.paws-r-sdk.com/docs/resourceexplorer_search/) for full documentation.
 #'
-#' @param MaxResults The maximum number of results that you want included on each page of the
-#' response. If you do not include this parameter, it defaults to a value
-#' appropriate to the operation. If additional items exist beyond those
-#' included in the current response, the `NextToken` response element is
-#' present and has a value (is not null). Include that value as the
-#' `NextToken` request parameter in the next call to the operation to get
-#' the next part of the results.
-#' 
-#' An API operation can return fewer results than the maximum even when
-#' there are more results available. You should check `NextToken` after
-#' every operation to ensure that you receive all of the results.
-#' @param NextToken The parameter for receiving additional results if you receive a
-#' `NextToken` response in a previous request. A `NextToken` response
-#' indicates that more output is available. Set this parameter to the value
-#' of the previous call's `NextToken` response to indicate where the output
-#' should continue from. The pagination tokens expire after 24 hours.
 #' @param QueryString &#91;required&#93; A string that includes keywords and filters that specify the resources
 #' that you want to include in the results.
 #' 
@@ -834,6 +1115,17 @@ resourceexplorer_list_views <- function(MaxResults = NULL, NextToken = NULL) {
 #' The operation can return only the first 1,000 results. If the resource
 #' you want is not included, then use a different value for `QueryString`
 #' to refine the results.
+#' @param MaxResults The maximum number of results that you want included on each page of the
+#' response. If you do not include this parameter, it defaults to a value
+#' appropriate to the operation. If additional items exist beyond those
+#' included in the current response, the `NextToken` response element is
+#' present and has a value (is not null). Include that value as the
+#' `NextToken` request parameter in the next call to the operation to get
+#' the next part of the results.
+#' 
+#' An API operation can return fewer results than the maximum even when
+#' there are more results available. You should check `NextToken` after
+#' every operation to ensure that you receive all of the results.
 #' @param ViewArn Specifies the [Amazon resource name
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of the view to use for the query. If you don't specify a value for this
@@ -842,11 +1134,16 @@ resourceexplorer_list_views <- function(MaxResults = NULL, NextToken = NULL) {
 #' the Region either doesn't have a default view or if you don't have
 #' permission to use the default view, then the operation fails with a
 #' `401 Unauthorized` exception.
+#' @param NextToken The parameter for receiving additional results if you receive a
+#' `NextToken` response in a previous request. A `NextToken` response
+#' indicates that more output is available. Set this parameter to the value
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from. The pagination tokens expire after 24 hours.
 #'
 #' @keywords internal
 #'
 #' @rdname resourceexplorer_search
-resourceexplorer_search <- function(MaxResults = NULL, NextToken = NULL, QueryString, ViewArn = NULL) {
+resourceexplorer_search <- function(QueryString, MaxResults = NULL, ViewArn = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "Search",
     http_method = "POST",
@@ -855,7 +1152,7 @@ resourceexplorer_search <- function(MaxResults = NULL, NextToken = NULL, QuerySt
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Resources"),
     stream_api = FALSE
   )
-  input <- .resourceexplorer$search_input(MaxResults = MaxResults, NextToken = NextToken, QueryString = QueryString, ViewArn = ViewArn)
+  input <- .resourceexplorer$search_input(QueryString = QueryString, MaxResults = MaxResults, ViewArn = ViewArn, NextToken = NextToken)
   output <- .resourceexplorer$search_output()
   config <- get_config()
   svc <- .resourceexplorer$service(config, op)
@@ -873,15 +1170,15 @@ resourceexplorer_search <- function(MaxResults = NULL, NextToken = NULL, QuerySt
 #'
 #' See [https://www.paws-r-sdk.com/docs/resourceexplorer_tag_resource/](https://www.paws-r-sdk.com/docs/resourceexplorer_tag_resource/) for full documentation.
 #'
-#' @param Tags A list of tag key and value pairs that you want to attach to the
-#' specified view or index.
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the view or index that you want to
 #' attach tags to.
+#' @param Tags A list of tag key and value pairs that you want to attach to the
+#' specified view or index.
 #'
 #' @keywords internal
 #'
 #' @rdname resourceexplorer_tag_resource
-resourceexplorer_tag_resource <- function(Tags = NULL, resourceArn) {
+resourceexplorer_tag_resource <- function(resourceArn, Tags = NULL) {
   op <- new_operation(
     name = "TagResource",
     http_method = "POST",
@@ -890,7 +1187,7 @@ resourceexplorer_tag_resource <- function(Tags = NULL, resourceArn) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .resourceexplorer$tag_resource_input(Tags = Tags, resourceArn = resourceArn)
+  input <- .resourceexplorer$tag_resource_input(resourceArn = resourceArn, Tags = Tags)
   output <- .resourceexplorer$tag_resource_output()
   config <- get_config()
   svc <- .resourceexplorer$service(config, op)
@@ -980,6 +1277,15 @@ resourceexplorer_update_index_type <- function(Arn, Type) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/resourceexplorer_update_view/](https://www.paws-r-sdk.com/docs/resourceexplorer_update_view/) for full documentation.
 #'
+#' @param ViewArn &#91;required&#93; The [Amazon resource name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#' of the view that you want to modify.
+#' @param IncludedProperties Specifies optional fields that you want included in search results from
+#' this view. It is a list of objects that each describe a field to
+#' include.
+#' 
+#' The default is an empty list, with no optional fields included in the
+#' results.
 #' @param Filters An array of strings that specify which resources are included in the
 #' results of queries made using this view. When you use this view in a
 #' [`search`][resourceexplorer_search] operation, the filter string is
@@ -999,20 +1305,11 @@ resourceexplorer_update_index_type <- function(Arn, Type) {
 #' `region:us* service:ec2 -tag:stage=prod` includes all Amazon EC2
 #' resources in any Amazon Web Services Region that begins with the letters
 #' `us` and is *not* tagged with a key `Stage` that has the value `prod`.
-#' @param IncludedProperties Specifies optional fields that you want included in search results from
-#' this view. It is a list of objects that each describe a field to
-#' include.
-#' 
-#' The default is an empty list, with no optional fields included in the
-#' results.
-#' @param ViewArn &#91;required&#93; The [Amazon resource name
-#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
-#' of the view that you want to modify.
 #'
 #' @keywords internal
 #'
 #' @rdname resourceexplorer_update_view
-resourceexplorer_update_view <- function(Filters = NULL, IncludedProperties = NULL, ViewArn) {
+resourceexplorer_update_view <- function(ViewArn, IncludedProperties = NULL, Filters = NULL) {
   op <- new_operation(
     name = "UpdateView",
     http_method = "POST",
@@ -1021,7 +1318,7 @@ resourceexplorer_update_view <- function(Filters = NULL, IncludedProperties = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .resourceexplorer$update_view_input(Filters = Filters, IncludedProperties = IncludedProperties, ViewArn = ViewArn)
+  input <- .resourceexplorer$update_view_input(ViewArn = ViewArn, IncludedProperties = IncludedProperties, Filters = Filters)
   output <- .resourceexplorer$update_view_output()
   config <- get_config()
   svc <- .resourceexplorer$service(config, op)

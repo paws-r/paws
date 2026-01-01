@@ -6,10 +6,10 @@
 \usage{
 bedrockagent_create_knowledge_base(
   clientToken = NULL,
-  description = NULL,
-  knowledgeBaseConfiguration,
   name,
+  description = NULL,
   roleArn,
+  knowledgeBaseConfiguration,
   storageConfiguration = NULL,
   tags = NULL
 )
@@ -20,14 +20,14 @@ completes no more than one time. If this token matches a previous
 request, Amazon Bedrock ignores the request, but does not return an
 error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
 
-\item{description}{A description of the knowledge base.}
-
-\item{knowledgeBaseConfiguration}{[required] Contains details about the embeddings model used for the knowledge base.}
-
 \item{name}{[required] A name for the knowledge base.}
+
+\item{description}{A description of the knowledge base.}
 
 \item{roleArn}{[required] The Amazon Resource Name (ARN) of the IAM role with permissions to
 invoke API operations on the knowledge base.}
+
+\item{knowledgeBaseConfiguration}{[required] Contains details about the embeddings model used for the knowledge base.}
 
 \item{storageConfiguration}{Contains details about the configuration of the vector database used for
 the knowledge base.}

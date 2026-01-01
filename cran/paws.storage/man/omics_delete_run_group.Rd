@@ -2,7 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_delete_run_group}
 \alias{omics_delete_run_group}
-\title{Deletes a workflow run group}
+\title{Deletes a run group and returns a response with no body if the operation
+is successful}
 \usage{
 omics_delete_run_group(id)
 }
@@ -10,7 +11,7 @@ omics_delete_run_group(id)
 \item{id}{[required] The run group's ID.}
 }
 \description{
-Deletes a workflow run group.
+Deletes a run group and returns a response with no body if the operation is successful.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_delete_run_group/} for full documentation.
 }

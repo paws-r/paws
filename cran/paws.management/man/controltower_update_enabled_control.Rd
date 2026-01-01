@@ -4,13 +4,13 @@
 \alias{controltower_update_enabled_control}
 \title{Updates the configuration of an already enabled control}
 \usage{
-controltower_update_enabled_control(enabledControlIdentifier, parameters)
+controltower_update_enabled_control(parameters, enabledControlIdentifier)
 }
 \arguments{
-\item{enabledControlIdentifier}{[required] The ARN of the enabled control that will be updated.}
-
 \item{parameters}{[required] A key/value pair, where \code{Key} is of type \code{String} and \code{Value} is of type
 \code{Document}.}
+
+\item{enabledControlIdentifier}{[required] The ARN of the enabled control that will be updated.}
 }
 \description{
 Updates the configuration of an already enabled control.

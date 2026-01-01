@@ -12,7 +12,8 @@ NULL
 #'
 #' @param name &#91;required&#93; 
 #' @param connectInstanceId &#91;required&#93; 
-#' @param channelSubtypeConfig &#91;required&#93; 
+#' @param channelSubtypeConfig 
+#' @param type 
 #' @param source 
 #' @param connectCampaignFlowArn 
 #' @param schedule 
@@ -23,7 +24,7 @@ NULL
 #' @keywords internal
 #'
 #' @rdname connectcampaignservicev2_create_campaign
-connectcampaignservicev2_create_campaign <- function(name, connectInstanceId, channelSubtypeConfig, source = NULL, connectCampaignFlowArn = NULL, schedule = NULL, communicationTimeConfig = NULL, communicationLimitsOverride = NULL, tags = NULL) {
+connectcampaignservicev2_create_campaign <- function(name, connectInstanceId, channelSubtypeConfig = NULL, type = NULL, source = NULL, connectCampaignFlowArn = NULL, schedule = NULL, communicationTimeConfig = NULL, communicationLimitsOverride = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateCampaign",
     http_method = "PUT",
@@ -32,7 +33,7 @@ connectcampaignservicev2_create_campaign <- function(name, connectInstanceId, ch
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connectcampaignservicev2$create_campaign_input(name = name, connectInstanceId = connectInstanceId, channelSubtypeConfig = channelSubtypeConfig, source = source, connectCampaignFlowArn = connectCampaignFlowArn, schedule = schedule, communicationTimeConfig = communicationTimeConfig, communicationLimitsOverride = communicationLimitsOverride, tags = tags)
+  input <- .connectcampaignservicev2$create_campaign_input(name = name, connectInstanceId = connectInstanceId, channelSubtypeConfig = channelSubtypeConfig, type = type, source = source, connectCampaignFlowArn = connectCampaignFlowArn, schedule = schedule, communicationTimeConfig = communicationTimeConfig, communicationLimitsOverride = communicationLimitsOverride, tags = tags)
   output <- .connectcampaignservicev2$create_campaign_output()
   config <- get_config()
   svc <- .connectcampaignservicev2$service(config, op)
@@ -389,6 +390,37 @@ connectcampaignservicev2_get_connect_instance_config <- function(connectInstance
 }
 .connectcampaignservicev2$operations$get_connect_instance_config <- connectcampaignservicev2_get_connect_instance_config
 
+#' Get the instance communication limits
+#'
+#' @description
+#' Get the instance communication limits.
+#'
+#' See [https://www.paws-r-sdk.com/docs/connectcampaignservicev2_get_instance_communication_limits/](https://www.paws-r-sdk.com/docs/connectcampaignservicev2_get_instance_communication_limits/) for full documentation.
+#'
+#' @param connectInstanceId &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname connectcampaignservicev2_get_instance_communication_limits
+connectcampaignservicev2_get_instance_communication_limits <- function(connectInstanceId) {
+  op <- new_operation(
+    name = "GetInstanceCommunicationLimits",
+    http_method = "GET",
+    http_path = "/v2/connect-instance/{connectInstanceId}/communication-limits",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .connectcampaignservicev2$get_instance_communication_limits_input(connectInstanceId = connectInstanceId)
+  output <- .connectcampaignservicev2$get_instance_communication_limits_output()
+  config <- get_config()
+  svc <- .connectcampaignservicev2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectcampaignservicev2$operations$get_instance_communication_limits <- connectcampaignservicev2_get_instance_communication_limits
+
 #' Get the specific instance onboarding job status
 #'
 #' @description
@@ -581,6 +613,38 @@ connectcampaignservicev2_put_connect_instance_integration <- function(connectIns
   return(response)
 }
 .connectcampaignservicev2$operations$put_connect_instance_integration <- connectcampaignservicev2_put_connect_instance_integration
+
+#' Put the instance communication limits
+#'
+#' @description
+#' Put the instance communication limits. This API is idempotent.
+#'
+#' See [https://www.paws-r-sdk.com/docs/connectcampaignservicev2_put_instance_communication_limits/](https://www.paws-r-sdk.com/docs/connectcampaignservicev2_put_instance_communication_limits/) for full documentation.
+#'
+#' @param connectInstanceId &#91;required&#93; 
+#' @param communicationLimitsConfig &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname connectcampaignservicev2_put_instance_communication_limits
+connectcampaignservicev2_put_instance_communication_limits <- function(connectInstanceId, communicationLimitsConfig) {
+  op <- new_operation(
+    name = "PutInstanceCommunicationLimits",
+    http_method = "PUT",
+    http_path = "/v2/connect-instance/{connectInstanceId}/communication-limits",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .connectcampaignservicev2$put_instance_communication_limits_input(connectInstanceId = connectInstanceId, communicationLimitsConfig = communicationLimitsConfig)
+  output <- .connectcampaignservicev2$put_instance_communication_limits_output()
+  config <- get_config()
+  svc <- .connectcampaignservicev2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectcampaignservicev2$operations$put_instance_communication_limits <- connectcampaignservicev2_put_instance_communication_limits
 
 #' Creates outbound requests for the specified campaign Amazon Connect
 #' account

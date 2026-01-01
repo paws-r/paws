@@ -43,7 +43,8 @@ redshift_create_cluster(
   MasterPasswordSecretKmsKeyId = NULL,
   IpAddressType = NULL,
   MultiAZ = NULL,
-  RedshiftIdcApplicationArn = NULL
+  RedshiftIdcApplicationArn = NULL,
+  CatalogName = NULL
 )
 }
 \arguments{
@@ -339,6 +340,20 @@ Zones (AZ).}
 
 \item{RedshiftIdcApplicationArn}{The Amazon resource name (ARN) of the Amazon Redshift IAM Identity
 Center application.}
+
+\item{CatalogName}{The name of the Glue data catalog that will be associated with the
+cluster enabled with Amazon Redshift federated permissions.
+
+Constraints:
+\itemize{
+\item Must contain at least one lowercase letter.
+\item Can only contain lowercase letters (a-z), numbers (0-9), underscores
+(_), and hyphens (-).
+}
+
+Pattern: \verb{^[a-z0-9_-]*[a-z]+[a-z0-9_-]*$}
+
+Example: \code{my-catalog_01}}
 }
 \description{
 Creates a new cluster with the specified parameters.

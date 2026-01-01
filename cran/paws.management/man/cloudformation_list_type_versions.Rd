@@ -34,12 +34,8 @@ number of available results exceeds this maximum, the response includes
 a \code{NextToken} value that you can assign to the \code{NextToken} request
 parameter to get the next set of results.}
 
-\item{NextToken}{If the previous paginated request didn't return all of the remaining
-results, the response object's \code{NextToken} parameter value is set to a
-token. To retrieve the next set of results, call this action again and
-assign that token to the request object's \code{NextToken} parameter. If
-there are no remaining results, the previous response object's
-\code{NextToken} parameter is set to \code{null}.}
+\item{NextToken}{The token for the next set of items to return. (You received this token
+from a previous call.)}
 
 \item{DeprecatedStatus}{The deprecation status of the extension versions that you want to get
 summary information about.

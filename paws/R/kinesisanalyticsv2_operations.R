@@ -937,6 +937,10 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       ApplicationEncryptionConfigurationDescription = list(
+#'         KeyId = "string",
+#'         KeyType = "AWS_OWNED_KEY"|"CUSTOMER_MANAGED_KEY"
 #'       )
 #'     ),
 #'     CloudWatchLoggingOptionDescriptions = list(
@@ -1148,6 +1152,10 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
 #'           )
 #'         )
 #'       )
+#'     ),
+#'     ApplicationEncryptionConfiguration = list(
+#'       KeyId = "string",
+#'       KeyType = "AWS_OWNED_KEY"|"CUSTOMER_MANAGED_KEY"
 #'     )
 #'   ),
 #'   CloudWatchLoggingOptions = list(
@@ -2013,6 +2021,10 @@ kinesisanalyticsv2_delete_application_vpc_configuration <- function(ApplicationN
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       ApplicationEncryptionConfigurationDescription = list(
+#'         KeyId = "string",
+#'         KeyType = "AWS_OWNED_KEY"|"CUSTOMER_MANAGED_KEY"
 #'       )
 #'     ),
 #'     CloudWatchLoggingOptionDescriptions = list(
@@ -2070,12 +2082,15 @@ kinesisanalyticsv2_describe_application <- function(ApplicationName, IncludeAddi
 }
 .kinesisanalyticsv2$operations$describe_application <- kinesisanalyticsv2_describe_application
 
-#' Returns information about a specific operation performed on a Managed
-#' Service for Apache Flink application
+#' Provides a detailed description of a specified application operation
 #'
 #' @description
-#' Returns information about a specific operation performed on a Managed
-#' Service for Apache Flink application
+#' Provides a detailed description of a specified application operation. To
+#' see a list of all the operations of an application, invoke the
+#' [`list_application_operations`][kinesisanalyticsv2_list_application_operations]
+#' operation.
+#' 
+#' This operation is supported only for Managed Service for Apache Flink.
 #'
 #' @usage
 #' kinesisanalyticsv2_describe_application_operation(ApplicationName,
@@ -2167,7 +2182,11 @@ kinesisanalyticsv2_describe_application_operation <- function(ApplicationName, O
 #'     SnapshotCreationTimestamp = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0"|"FLINK-1_18"|"FLINK-1_19"|"FLINK-1_20"
+#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0"|"FLINK-1_18"|"FLINK-1_19"|"FLINK-1_20",
+#'     ApplicationEncryptionConfigurationDescription = list(
+#'       KeyId = "string",
+#'       KeyType = "AWS_OWNED_KEY"|"CUSTOMER_MANAGED_KEY"
+#'     )
 #'   )
 #' )
 #' ```
@@ -2452,6 +2471,10 @@ kinesisanalyticsv2_describe_application_snapshot <- function(ApplicationName, Sn
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       ApplicationEncryptionConfigurationDescription = list(
+#'         KeyId = "string",
+#'         KeyType = "AWS_OWNED_KEY"|"CUSTOMER_MANAGED_KEY"
 #'       )
 #'     ),
 #'     CloudWatchLoggingOptionDescriptions = list(
@@ -2624,12 +2647,19 @@ kinesisanalyticsv2_discover_input_schema <- function(ResourceARN = NULL, Service
 }
 .kinesisanalyticsv2$operations$discover_input_schema <- kinesisanalyticsv2_discover_input_schema
 
-#' Lists information about operations performed on a Managed Service for
-#' Apache Flink application
+#' Lists all the operations performed for the specified application such as
+#' UpdateApplication, StartApplication etc
 #'
 #' @description
-#' Lists information about operations performed on a Managed Service for
-#' Apache Flink application
+#' Lists all the operations performed for the specified application such as
+#' UpdateApplication, StartApplication etc. The response also includes a
+#' summary of the operation.
+#' 
+#' To get the complete description of a specific operation, invoke the
+#' [`describe_application_operation`][kinesisanalyticsv2_describe_application_operation]
+#' operation.
+#' 
+#' This operation is supported only for Managed Service for Apache Flink.
 #'
 #' @usage
 #' kinesisanalyticsv2_list_application_operations(ApplicationName, Limit,
@@ -2725,7 +2755,11 @@ kinesisanalyticsv2_list_application_operations <- function(ApplicationName, Limi
 #'       SnapshotCreationTimestamp = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0"|"FLINK-1_18"|"FLINK-1_19"|"FLINK-1_20"
+#'       RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0"|"FLINK-1_18"|"FLINK-1_19"|"FLINK-1_20",
+#'       ApplicationEncryptionConfigurationDescription = list(
+#'         KeyId = "string",
+#'         KeyType = "AWS_OWNED_KEY"|"CUSTOMER_MANAGED_KEY"
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -3216,6 +3250,10 @@ kinesisanalyticsv2_list_tags_for_resource <- function(ResourceARN) {
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       ApplicationEncryptionConfigurationDescription = list(
+#'         KeyId = "string",
+#'         KeyType = "AWS_OWNED_KEY"|"CUSTOMER_MANAGED_KEY"
 #'       )
 #'     ),
 #'     CloudWatchLoggingOptionDescriptions = list(
@@ -3798,6 +3836,10 @@ kinesisanalyticsv2_untag_resource <- function(ResourceARN, TagKeys) {
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       ApplicationEncryptionConfigurationDescription = list(
+#'         KeyId = "string",
+#'         KeyType = "AWS_OWNED_KEY"|"CUSTOMER_MANAGED_KEY"
 #'       )
 #'     ),
 #'     CloudWatchLoggingOptionDescriptions = list(
@@ -4012,6 +4054,10 @@ kinesisanalyticsv2_untag_resource <- function(ResourceARN, TagKeys) {
 #'           )
 #'         )
 #'       )
+#'     ),
+#'     ApplicationEncryptionConfigurationUpdate = list(
+#'       KeyIdUpdate = "string",
+#'       KeyTypeUpdate = "AWS_OWNED_KEY"|"CUSTOMER_MANAGED_KEY"
 #'     )
 #'   ),
 #'   ServiceExecutionRoleUpdate = "string",

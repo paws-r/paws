@@ -5,25 +5,23 @@ NULL
 #' AWSBillingConductor
 #'
 #' @description
-#' Amazon Web Services Billing Conductor is a fully managed service that
-#' you can use to customize a
-#' [proforma](https://docs.aws.amazon.com/billingconductor/latest/userguide/#eb-other-definitions)
+#' Billing Conductor is a fully managed service that you can use to
+#' customize a [pro
+#' forma](https://docs.aws.amazon.com/billingconductor/latest/userguide/#eb-other-definitions)
 #' version of your billing data each month, to accurately show or
-#' chargeback your end customers. Amazon Web Services Billing Conductor
-#' doesn't change the way you're billed by Amazon Web Services each month
-#' by design. Instead, it provides you with a mechanism to configure,
-#' generate, and display rates to certain customers over a given billing
-#' period. You can also analyze the difference between the rates you apply
-#' to your accounting groupings relative to your actual rates from Amazon
-#' Web Services. As a result of your Amazon Web Services Billing Conductor
-#' configuration, the payer account can also see the custom rate applied on
-#' the billing details page of the Amazon Web Services Billing console, or
-#' configure a cost and usage report per billing group.
+#' chargeback your end customers. Billing Conductor doesn't change the way
+#' you're billed by Amazon Web Services each month by design. Instead, it
+#' provides you with a mechanism to configure, generate, and display rates
+#' to certain customers over a given billing period. You can also analyze
+#' the difference between the rates you apply to your accounting groupings
+#' relative to your actual rates from Amazon Web Services. As a result of
+#' your Billing Conductor configuration, the payer account can also see the
+#' custom rate applied on the billing details page of the Billing console,
+#' or configure a cost and usage report per billing group.
 #' 
-#' This documentation shows how you can configure Amazon Web Services
-#' Billing Conductor using its API. For more information about using the
-#' Amazon Web Services Billing Conductor user interface, see the [Amazon
-#' Web Services Billing Conductor User
+#' This documentation shows how you can configure Billing Conductor by
+#' using its API. For more information about using the Billing Conductor
+#' user interface, see the [Billing Conductor User
 #' Guide](https://docs.aws.amazon.com/billingconductor/latest/userguide/what-is-billingconductor.html).
 #'
 #' @param
@@ -123,7 +121,7 @@ NULL
 #'  \link[=billingconductor_delete_pricing_rule]{delete_pricing_rule} \tab Deletes the pricing rule that's identified by the input Amazon Resource Name (ARN)\cr
 #'  \link[=billingconductor_disassociate_accounts]{disassociate_accounts} \tab Removes the specified list of account IDs from the given billing group\cr
 #'  \link[=billingconductor_disassociate_pricing_rules]{disassociate_pricing_rules} \tab Disassociates a list of pricing rules from a pricing plan\cr
-#'  \link[=billingconductor_get_billing_group_cost_report]{get_billing_group_cost_report} \tab Retrieves the margin summary report, which includes the Amazon Web Services cost and charged amount (pro forma cost) by Amazon Web Service for a specific billing group\cr
+#'  \link[=billingconductor_get_billing_group_cost_report]{get_billing_group_cost_report} \tab Retrieves the margin summary report, which includes the Amazon Web Services cost and charged amount (pro forma cost) by Amazon Web Services service for a specific billing group\cr
 #'  \link[=billingconductor_list_account_associations]{list_account_associations} \tab This is a paginated call to list linked accounts that are linked to the payer account for the specified time period\cr
 #'  \link[=billingconductor_list_billing_group_cost_reports]{list_billing_group_cost_reports} \tab A paginated call to retrieve a summary report of actual Amazon Web Services charges and the calculated Amazon Web Services charges based on the associated pricing plan of a billing group\cr
 #'  \link[=billingconductor_list_billing_groups]{list_billing_groups} \tab A paginated call to retrieve a list of billing groups for the given billing period\cr
@@ -176,7 +174,7 @@ billingconductor <- function(config = list(), credentials = list(), endpoint = N
   service_id = "billingconductor",
   api_version = "2021-07-30",
   signing_name = "billingconductor",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 

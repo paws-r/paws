@@ -2,7 +2,8 @@
 % Please edit documentation in R/appstream_operations.R
 \name{appstream_tag_resource}
 \alias{appstream_tag_resource}
-\title{Adds or overwrites one or more tags for the specified AppStream 2}
+\title{Adds or overwrites one or more tags for the specified WorkSpaces
+Applications resource}
 \usage{
 appstream_tag_resource(ResourceArn, Tags)
 }
@@ -21,7 +22,7 @@ representable in UTF-8, and the following special characters:
 _ . : / = + \\ - @}
 }
 \description{
-Adds or overwrites one or more tags for the specified AppStream 2.0 resource. You can tag AppStream 2.0 image builders, images, fleets, and stacks.
+Adds or overwrites one or more tags for the specified WorkSpaces Applications resource. You can tag WorkSpaces Applications image builders, images, fleets, and stacks.
 
 See \url{https://www.paws-r-sdk.com/docs/appstream_tag_resource/} for full documentation.
 }

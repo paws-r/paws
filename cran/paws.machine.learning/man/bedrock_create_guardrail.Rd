@@ -13,6 +13,7 @@ bedrock_create_guardrail(
   wordPolicyConfig = NULL,
   sensitiveInformationPolicyConfig = NULL,
   contextualGroundingPolicyConfig = NULL,
+  automatedReasoningPolicyConfig = NULL,
   crossRegionConfig = NULL,
   blockedInputMessaging,
   blockedOutputsMessaging,
@@ -36,6 +37,9 @@ bedrock_create_guardrail(
 
 \item{contextualGroundingPolicyConfig}{The contextual grounding policy configuration used to create a
 guardrail.}
+
+\item{automatedReasoningPolicyConfig}{Optional configuration for integrating Automated Reasoning policies with
+the new guardrail.}
 
 \item{crossRegionConfig}{The system-defined guardrail profile that you're using with your
 guardrail. Guardrail profiles define the destination Amazon Web Services

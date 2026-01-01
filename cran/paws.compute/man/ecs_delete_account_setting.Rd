@@ -17,11 +17,14 @@ for your Amazon ECS container instances is affected. If \code{awsvpcTrunking}
 is specified, the ENI limit for your Amazon ECS container instances is
 affected.}
 
-\item{principalArn}{The Amazon Resource Name (ARN) of the principal. It can be an user,
-role, or the root user. If you specify the root user, it disables the
-account setting for all users, roles, and the root user of the account
-unless a user or role explicitly overrides these settings. If this field
-is omitted, the setting is changed only for the authenticated user.}
+\item{principalArn}{The Amazon Resource Name (ARN) of the principal. It can be a user, role,
+or the root user. If you specify the root user, it disables the account
+setting for all users, roles, and the root user of the account unless a
+user or role explicitly overrides these settings. If this field is
+omitted, the setting is changed only for the authenticated user.
+
+In order to use this parameter, you must be the root user, or the
+principal.}
 }
 \description{
 Disables an account setting for a specified user, role, or the root user for an account.

@@ -4,12 +4,12 @@
 \alias{inspector2_start_cis_session}
 \title{Starts a CIS session}
 \usage{
-inspector2_start_cis_session(message, scanJobId)
+inspector2_start_cis_session(scanJobId, message)
 }
 \arguments{
-\item{message}{[required] The start CIS session message.}
-
 \item{scanJobId}{[required] A unique identifier for the scan job.}
+
+\item{message}{[required] The start CIS session message.}
 }
 \description{
 Starts a CIS session. This API is used by the Amazon Inspector SSM plugin to communicate with the Amazon Inspector service. The Amazon Inspector SSM plugin calls this API to start a CIS scan session for the scan ID supplied by the service.

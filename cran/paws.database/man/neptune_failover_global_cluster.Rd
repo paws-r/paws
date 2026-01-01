@@ -6,7 +6,9 @@
 \usage{
 neptune_failover_global_cluster(
   GlobalClusterIdentifier,
-  TargetDbClusterIdentifier
+  TargetDbClusterIdentifier,
+  AllowDataLoss = NULL,
+  Switchover = NULL
 )
 }
 \arguments{
@@ -20,6 +22,19 @@ database.}
 
 \item{TargetDbClusterIdentifier}{[required] The Amazon Resource Name (ARN) of the secondary Neptune DB cluster that
 you want to promote to primary for the global database.}
+
+\item{AllowDataLoss}{Specifies whether to allow data loss for this global database cluster
+operation. Allowing data loss triggers a global failover operation.
+
+If you don't specify \code{AllowDataLoss}, the global database cluster
+operation defaults to a switchover.
+
+Constraints:Can't be specified together with the \code{Switchover} parameter.}
+
+\item{Switchover}{Specifies whether to switch over this global database cluster.
+
+Constraints:Can't be specified together with the \code{AllowDataLoss}
+parameter.}
 }
 \description{
 Initiates the failover process for a Neptune global database.

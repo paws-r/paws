@@ -24,7 +24,7 @@ action.}
 \item{EventDestinationName}{[required] The name that identifies the event destination.}
 
 \item{MatchingEventTypes}{[required] An array of event types that determine which events to log. If "ALL" is
-used, then AWS End User Messaging SMS and Voice logs every event type.
+used, then End User Messaging SMS logs every event type.
 
 The \code{TEXT_SENT} event type is not supported.}
 

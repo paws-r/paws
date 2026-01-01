@@ -81,6 +81,18 @@ NULL
   return(populate(args, shape))
 }
 
+.account$get_gov_cloud_account_information_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(StandardAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.account$get_gov_cloud_account_information_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountState = structure(logical(0), tags = list(type = "string")), GovCloudAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .account$get_primary_email_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))

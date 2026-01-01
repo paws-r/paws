@@ -10,13 +10,13 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_associate_browser_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_associate_browser_settings/) for full documentation.
 #'
-#' @param browserSettingsArn &#91;required&#93; The ARN of the browser settings.
 #' @param portalArn &#91;required&#93; The ARN of the web portal.
+#' @param browserSettingsArn &#91;required&#93; The ARN of the browser settings.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_associate_browser_settings
-workspacesweb_associate_browser_settings <- function(browserSettingsArn, portalArn) {
+workspacesweb_associate_browser_settings <- function(portalArn, browserSettingsArn) {
   op <- new_operation(
     name = "AssociateBrowserSettings",
     http_method = "PUT",
@@ -25,7 +25,7 @@ workspacesweb_associate_browser_settings <- function(browserSettingsArn, portalA
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$associate_browser_settings_input(browserSettingsArn = browserSettingsArn, portalArn = portalArn)
+  input <- .workspacesweb$associate_browser_settings_input(portalArn = portalArn, browserSettingsArn = browserSettingsArn)
   output <- .workspacesweb$associate_browser_settings_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -42,13 +42,13 @@ workspacesweb_associate_browser_settings <- function(browserSettingsArn, portalA
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_associate_data_protection_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_associate_data_protection_settings/) for full documentation.
 #'
-#' @param dataProtectionSettingsArn &#91;required&#93; The ARN of the data protection settings.
 #' @param portalArn &#91;required&#93; The ARN of the web portal.
+#' @param dataProtectionSettingsArn &#91;required&#93; The ARN of the data protection settings.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_associate_data_protection_settings
-workspacesweb_associate_data_protection_settings <- function(dataProtectionSettingsArn, portalArn) {
+workspacesweb_associate_data_protection_settings <- function(portalArn, dataProtectionSettingsArn) {
   op <- new_operation(
     name = "AssociateDataProtectionSettings",
     http_method = "PUT",
@@ -57,7 +57,7 @@ workspacesweb_associate_data_protection_settings <- function(dataProtectionSetti
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$associate_data_protection_settings_input(dataProtectionSettingsArn = dataProtectionSettingsArn, portalArn = portalArn)
+  input <- .workspacesweb$associate_data_protection_settings_input(portalArn = portalArn, dataProtectionSettingsArn = dataProtectionSettingsArn)
   output <- .workspacesweb$associate_data_protection_settings_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -74,13 +74,13 @@ workspacesweb_associate_data_protection_settings <- function(dataProtectionSetti
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_associate_ip_access_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_associate_ip_access_settings/) for full documentation.
 #'
-#' @param ipAccessSettingsArn &#91;required&#93; The ARN of the IP access settings.
 #' @param portalArn &#91;required&#93; The ARN of the web portal.
+#' @param ipAccessSettingsArn &#91;required&#93; The ARN of the IP access settings.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_associate_ip_access_settings
-workspacesweb_associate_ip_access_settings <- function(ipAccessSettingsArn, portalArn) {
+workspacesweb_associate_ip_access_settings <- function(portalArn, ipAccessSettingsArn) {
   op <- new_operation(
     name = "AssociateIpAccessSettings",
     http_method = "PUT",
@@ -89,7 +89,7 @@ workspacesweb_associate_ip_access_settings <- function(ipAccessSettingsArn, port
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$associate_ip_access_settings_input(ipAccessSettingsArn = ipAccessSettingsArn, portalArn = portalArn)
+  input <- .workspacesweb$associate_ip_access_settings_input(portalArn = portalArn, ipAccessSettingsArn = ipAccessSettingsArn)
   output <- .workspacesweb$associate_ip_access_settings_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -106,13 +106,13 @@ workspacesweb_associate_ip_access_settings <- function(ipAccessSettingsArn, port
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_associate_network_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_associate_network_settings/) for full documentation.
 #'
-#' @param networkSettingsArn &#91;required&#93; The ARN of the network settings.
 #' @param portalArn &#91;required&#93; The ARN of the web portal.
+#' @param networkSettingsArn &#91;required&#93; The ARN of the network settings.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_associate_network_settings
-workspacesweb_associate_network_settings <- function(networkSettingsArn, portalArn) {
+workspacesweb_associate_network_settings <- function(portalArn, networkSettingsArn) {
   op <- new_operation(
     name = "AssociateNetworkSettings",
     http_method = "PUT",
@@ -121,7 +121,7 @@ workspacesweb_associate_network_settings <- function(networkSettingsArn, portalA
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$associate_network_settings_input(networkSettingsArn = networkSettingsArn, portalArn = portalArn)
+  input <- .workspacesweb$associate_network_settings_input(portalArn = portalArn, networkSettingsArn = networkSettingsArn)
   output <- .workspacesweb$associate_network_settings_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -130,6 +130,38 @@ workspacesweb_associate_network_settings <- function(networkSettingsArn, portalA
   return(response)
 }
 .workspacesweb$operations$associate_network_settings <- workspacesweb_associate_network_settings
+
+#' Associates a session logger with a portal
+#'
+#' @description
+#' Associates a session logger with a portal.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_associate_session_logger/](https://www.paws-r-sdk.com/docs/workspacesweb_associate_session_logger/) for full documentation.
+#'
+#' @param portalArn &#91;required&#93; The ARN of the portal to associate to the session logger ARN.
+#' @param sessionLoggerArn &#91;required&#93; The ARN of the session logger to associate to the portal ARN.
+#'
+#' @keywords internal
+#'
+#' @rdname workspacesweb_associate_session_logger
+workspacesweb_associate_session_logger <- function(portalArn, sessionLoggerArn) {
+  op <- new_operation(
+    name = "AssociateSessionLogger",
+    http_method = "PUT",
+    http_path = "/portals/{portalArn+}/sessionLogger",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .workspacesweb$associate_session_logger_input(portalArn = portalArn, sessionLoggerArn = sessionLoggerArn)
+  output <- .workspacesweb$associate_session_logger_output()
+  config <- get_config()
+  svc <- .workspacesweb$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspacesweb$operations$associate_session_logger <- workspacesweb_associate_session_logger
 
 #' Associates a trust store with a web portal
 #'
@@ -235,8 +267,11 @@ workspacesweb_associate_user_settings <- function(portalArn, userSettingsArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_create_browser_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_create_browser_settings/) for full documentation.
 #'
+#' @param tags The tags to add to the browser settings resource. A tag is a key-value
+#' pair.
+#' @param customerManagedKey The custom managed key of the browser settings.
 #' @param additionalEncryptionContext Additional encryption context of the browser settings.
-#' @param browserPolicy &#91;required&#93; A JSON string containing Chrome Enterprise policies that will be applied
+#' @param browserPolicy A JSON string containing Chrome Enterprise policies that will be applied
 #' to all streaming sessions.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Idempotency ensures that an API request
@@ -246,14 +281,14 @@ workspacesweb_associate_user_settings <- function(portalArn, userSettingsArn) {
 #' 
 #' If you do not specify a client token, one is automatically generated by
 #' the Amazon Web Services SDK.
-#' @param customerManagedKey The custom managed key of the browser settings.
-#' @param tags The tags to add to the browser settings resource. A tag is a key-value
-#' pair.
+#' @param webContentFilteringPolicy The policy that specifies which URLs end users are allowed to access or
+#' which URLs or domain categories they are restricted from accessing for
+#' enhanced security.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_create_browser_settings
-workspacesweb_create_browser_settings <- function(additionalEncryptionContext = NULL, browserPolicy, clientToken = NULL, customerManagedKey = NULL, tags = NULL) {
+workspacesweb_create_browser_settings <- function(tags = NULL, customerManagedKey = NULL, additionalEncryptionContext = NULL, browserPolicy = NULL, clientToken = NULL, webContentFilteringPolicy = NULL) {
   op <- new_operation(
     name = "CreateBrowserSettings",
     http_method = "POST",
@@ -262,7 +297,7 @@ workspacesweb_create_browser_settings <- function(additionalEncryptionContext = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$create_browser_settings_input(additionalEncryptionContext = additionalEncryptionContext, browserPolicy = browserPolicy, clientToken = clientToken, customerManagedKey = customerManagedKey, tags = tags)
+  input <- .workspacesweb$create_browser_settings_input(tags = tags, customerManagedKey = customerManagedKey, additionalEncryptionContext = additionalEncryptionContext, browserPolicy = browserPolicy, clientToken = clientToken, webContentFilteringPolicy = webContentFilteringPolicy)
   output <- .workspacesweb$create_browser_settings_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -280,7 +315,14 @@ workspacesweb_create_browser_settings <- function(additionalEncryptionContext = 
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_create_data_protection_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_create_data_protection_settings/) for full documentation.
 #'
+#' @param displayName The display name of the data protection settings.
+#' @param description The description of the data protection settings.
+#' @param tags The tags to add to the data protection settings resource. A tag is a
+#' key-value pair.
+#' @param customerManagedKey The custom managed key of the data protection settings.
 #' @param additionalEncryptionContext Additional encryption context of the data protection settings.
+#' @param inlineRedactionConfiguration The inline redaction configuration of the data protection settings that
+#' will be applied to all sessions.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Idempotency ensures that an API request
 #' completes only once. With an idempotent request, if the original request
@@ -289,18 +331,11 @@ workspacesweb_create_browser_settings <- function(additionalEncryptionContext = 
 #' 
 #' If you do not specify a client token, one is automatically generated by
 #' the Amazon Web Services SDK.
-#' @param customerManagedKey The custom managed key of the data protection settings.
-#' @param description The description of the data protection settings.
-#' @param displayName The display name of the data protection settings.
-#' @param inlineRedactionConfiguration The inline redaction configuration of the data protection settings that
-#' will be applied to all sessions.
-#' @param tags The tags to add to the data protection settings resource. A tag is a
-#' key-value pair.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_create_data_protection_settings
-workspacesweb_create_data_protection_settings <- function(additionalEncryptionContext = NULL, clientToken = NULL, customerManagedKey = NULL, description = NULL, displayName = NULL, inlineRedactionConfiguration = NULL, tags = NULL) {
+workspacesweb_create_data_protection_settings <- function(displayName = NULL, description = NULL, tags = NULL, customerManagedKey = NULL, additionalEncryptionContext = NULL, inlineRedactionConfiguration = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateDataProtectionSettings",
     http_method = "POST",
@@ -309,7 +344,7 @@ workspacesweb_create_data_protection_settings <- function(additionalEncryptionCo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$create_data_protection_settings_input(additionalEncryptionContext = additionalEncryptionContext, clientToken = clientToken, customerManagedKey = customerManagedKey, description = description, displayName = displayName, inlineRedactionConfiguration = inlineRedactionConfiguration, tags = tags)
+  input <- .workspacesweb$create_data_protection_settings_input(displayName = displayName, description = description, tags = tags, customerManagedKey = customerManagedKey, additionalEncryptionContext = additionalEncryptionContext, inlineRedactionConfiguration = inlineRedactionConfiguration, clientToken = clientToken)
   output <- .workspacesweb$create_data_protection_settings_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -327,14 +362,9 @@ workspacesweb_create_data_protection_settings <- function(additionalEncryptionCo
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_create_identity_provider/](https://www.paws-r-sdk.com/docs/workspacesweb_create_identity_provider/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. Idempotency ensures that an API request
-#' completes only once. With an idempotent request, if the original request
-#' completes successfully, subsequent retries with the same client token
-#' returns the result from the original successful request.
-#' 
-#' If you do not specify a client token, one is automatically generated by
-#' the Amazon Web Services SDK.
+#' @param portalArn &#91;required&#93; The ARN of the web portal.
+#' @param identityProviderName &#91;required&#93; The identity provider name.
+#' @param identityProviderType &#91;required&#93; The identity provider type.
 #' @param identityProviderDetails &#91;required&#93; The identity provider details. The following list describes the provider
 #' detail keys for each identity provider type.
 #' 
@@ -404,16 +434,21 @@ workspacesweb_create_data_protection_settings <- function(additionalEncryptionCo
 #'         `rsa-sha256`
 #' 
 #'     -   `EncryptedResponses` (boolean) *optional*
-#' @param identityProviderName &#91;required&#93; The identity provider name.
-#' @param identityProviderType &#91;required&#93; The identity provider type.
-#' @param portalArn &#91;required&#93; The ARN of the web portal.
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. Idempotency ensures that an API request
+#' completes only once. With an idempotent request, if the original request
+#' completes successfully, subsequent retries with the same client token
+#' returns the result from the original successful request.
+#' 
+#' If you do not specify a client token, one is automatically generated by
+#' the Amazon Web Services SDK.
 #' @param tags The tags to add to the identity provider resource. A tag is a key-value
 #' pair.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_create_identity_provider
-workspacesweb_create_identity_provider <- function(clientToken = NULL, identityProviderDetails, identityProviderName, identityProviderType, portalArn, tags = NULL) {
+workspacesweb_create_identity_provider <- function(portalArn, identityProviderName, identityProviderType, identityProviderDetails, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateIdentityProvider",
     http_method = "POST",
@@ -422,7 +457,7 @@ workspacesweb_create_identity_provider <- function(clientToken = NULL, identityP
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$create_identity_provider_input(clientToken = clientToken, identityProviderDetails = identityProviderDetails, identityProviderName = identityProviderName, identityProviderType = identityProviderType, portalArn = portalArn, tags = tags)
+  input <- .workspacesweb$create_identity_provider_input(portalArn = portalArn, identityProviderName = identityProviderName, identityProviderType = identityProviderType, identityProviderDetails = identityProviderDetails, clientToken = clientToken, tags = tags)
   output <- .workspacesweb$create_identity_provider_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -440,7 +475,13 @@ workspacesweb_create_identity_provider <- function(clientToken = NULL, identityP
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_create_ip_access_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_create_ip_access_settings/) for full documentation.
 #'
+#' @param displayName The display name of the IP access settings.
+#' @param description The description of the IP access settings.
+#' @param tags The tags to add to the IP access settings resource. A tag is a key-value
+#' pair.
+#' @param customerManagedKey The custom managed key of the IP access settings.
 #' @param additionalEncryptionContext Additional encryption context of the IP access settings.
+#' @param ipRules &#91;required&#93; The IP rules of the IP access settings.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Idempotency ensures that an API request
 #' completes only once. With an idempotent request, if the original request
@@ -449,17 +490,11 @@ workspacesweb_create_identity_provider <- function(clientToken = NULL, identityP
 #' 
 #' If you do not specify a client token, one is automatically generated by
 #' the Amazon Web Services SDK.
-#' @param customerManagedKey The custom managed key of the IP access settings.
-#' @param description The description of the IP access settings.
-#' @param displayName The display name of the IP access settings.
-#' @param ipRules &#91;required&#93; The IP rules of the IP access settings.
-#' @param tags The tags to add to the IP access settings resource. A tag is a key-value
-#' pair.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_create_ip_access_settings
-workspacesweb_create_ip_access_settings <- function(additionalEncryptionContext = NULL, clientToken = NULL, customerManagedKey = NULL, description = NULL, displayName = NULL, ipRules, tags = NULL) {
+workspacesweb_create_ip_access_settings <- function(displayName = NULL, description = NULL, tags = NULL, customerManagedKey = NULL, additionalEncryptionContext = NULL, ipRules, clientToken = NULL) {
   op <- new_operation(
     name = "CreateIpAccessSettings",
     http_method = "POST",
@@ -468,7 +503,7 @@ workspacesweb_create_ip_access_settings <- function(additionalEncryptionContext 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$create_ip_access_settings_input(additionalEncryptionContext = additionalEncryptionContext, clientToken = clientToken, customerManagedKey = customerManagedKey, description = description, displayName = displayName, ipRules = ipRules, tags = tags)
+  input <- .workspacesweb$create_ip_access_settings_input(displayName = displayName, description = description, tags = tags, customerManagedKey = customerManagedKey, additionalEncryptionContext = additionalEncryptionContext, ipRules = ipRules, clientToken = clientToken)
   output <- .workspacesweb$create_ip_access_settings_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -486,6 +521,14 @@ workspacesweb_create_ip_access_settings <- function(additionalEncryptionContext 
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_create_network_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_create_network_settings/) for full documentation.
 #'
+#' @param vpcId &#91;required&#93; The VPC that streaming instances will connect to.
+#' @param subnetIds &#91;required&#93; The subnets in which network interfaces are created to connect streaming
+#' instances to your VPC. At least two of these subnets must be in
+#' different availability zones.
+#' @param securityGroupIds &#91;required&#93; One or more security groups used to control access from streaming
+#' instances to your VPC.
+#' @param tags The tags to add to the network settings resource. A tag is a key-value
+#' pair.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Idempotency ensures that an API request
 #' completes only once. With an idempotent request, if the original request
@@ -494,19 +537,11 @@ workspacesweb_create_ip_access_settings <- function(additionalEncryptionContext 
 #' 
 #' If you do not specify a client token, one is automatically generated by
 #' the Amazon Web Services SDK.
-#' @param securityGroupIds &#91;required&#93; One or more security groups used to control access from streaming
-#' instances to your VPC.
-#' @param subnetIds &#91;required&#93; The subnets in which network interfaces are created to connect streaming
-#' instances to your VPC. At least two of these subnets must be in
-#' different availability zones.
-#' @param tags The tags to add to the network settings resource. A tag is a key-value
-#' pair.
-#' @param vpcId &#91;required&#93; The VPC that streaming instances will connect to.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_create_network_settings
-workspacesweb_create_network_settings <- function(clientToken = NULL, securityGroupIds, subnetIds, tags = NULL, vpcId) {
+workspacesweb_create_network_settings <- function(vpcId, subnetIds, securityGroupIds, tags = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateNetworkSettings",
     http_method = "POST",
@@ -515,7 +550,7 @@ workspacesweb_create_network_settings <- function(clientToken = NULL, securityGr
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$create_network_settings_input(clientToken = clientToken, securityGroupIds = securityGroupIds, subnetIds = subnetIds, tags = tags, vpcId = vpcId)
+  input <- .workspacesweb$create_network_settings_input(vpcId = vpcId, subnetIds = subnetIds, securityGroupIds = securityGroupIds, tags = tags, clientToken = clientToken)
   output <- .workspacesweb$create_network_settings_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -532,7 +567,19 @@ workspacesweb_create_network_settings <- function(clientToken = NULL, securityGr
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_create_portal/](https://www.paws-r-sdk.com/docs/workspacesweb_create_portal/) for full documentation.
 #'
+#' @param displayName The name of the web portal. This is not visible to users who log into
+#' the web portal.
+#' @param tags The tags to add to the web portal. A tag is a key-value pair.
+#' @param customerManagedKey The customer managed key of the web portal.
 #' @param additionalEncryptionContext The additional encryption context of the portal.
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. Idempotency ensures that an API request
+#' completes only once. With an idempotent request, if the original request
+#' completes successfully, subsequent retries with the same client token
+#' returns the result from the original successful request.
+#' 
+#' If you do not specify a client token, one is automatically generated by
+#' the Amazon Web Services SDK.
 #' @param authenticationType The type of authentication integration points used when signing into the
 #' web portal. Defaults to `Standard`.
 #' 
@@ -546,25 +593,13 @@ workspacesweb_create_network_settings <- function(clientToken = NULL, securityGr
 #' Center. Identity sources (including external identity provider
 #' integration), plus user and group access to your web portal, can be
 #' configured in the IAM Identity Center.
-#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. Idempotency ensures that an API request
-#' completes only once. With an idempotent request, if the original request
-#' completes successfully, subsequent retries with the same client token
-#' returns the result from the original successful request.
-#' 
-#' If you do not specify a client token, one is automatically generated by
-#' the Amazon Web Services SDK.
-#' @param customerManagedKey The customer managed key of the web portal.
-#' @param displayName The name of the web portal. This is not visible to users who log into
-#' the web portal.
 #' @param instanceType The type and resources of the underlying instance.
 #' @param maxConcurrentSessions The maximum number of concurrent sessions for the portal.
-#' @param tags The tags to add to the web portal. A tag is a key-value pair.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_create_portal
-workspacesweb_create_portal <- function(additionalEncryptionContext = NULL, authenticationType = NULL, clientToken = NULL, customerManagedKey = NULL, displayName = NULL, instanceType = NULL, maxConcurrentSessions = NULL, tags = NULL) {
+workspacesweb_create_portal <- function(displayName = NULL, tags = NULL, customerManagedKey = NULL, additionalEncryptionContext = NULL, clientToken = NULL, authenticationType = NULL, instanceType = NULL, maxConcurrentSessions = NULL) {
   op <- new_operation(
     name = "CreatePortal",
     http_method = "POST",
@@ -573,7 +608,7 @@ workspacesweb_create_portal <- function(additionalEncryptionContext = NULL, auth
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$create_portal_input(additionalEncryptionContext = additionalEncryptionContext, authenticationType = authenticationType, clientToken = clientToken, customerManagedKey = customerManagedKey, displayName = displayName, instanceType = instanceType, maxConcurrentSessions = maxConcurrentSessions, tags = tags)
+  input <- .workspacesweb$create_portal_input(displayName = displayName, tags = tags, customerManagedKey = customerManagedKey, additionalEncryptionContext = additionalEncryptionContext, clientToken = clientToken, authenticationType = authenticationType, instanceType = instanceType, maxConcurrentSessions = maxConcurrentSessions)
   output <- .workspacesweb$create_portal_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -583,6 +618,48 @@ workspacesweb_create_portal <- function(additionalEncryptionContext = NULL, auth
 }
 .workspacesweb$operations$create_portal <- workspacesweb_create_portal
 
+#' Creates a session logger
+#'
+#' @description
+#' Creates a session logger.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_create_session_logger/](https://www.paws-r-sdk.com/docs/workspacesweb_create_session_logger/) for full documentation.
+#'
+#' @param eventFilter &#91;required&#93; The filter that specifies the events to monitor.
+#' @param logConfiguration &#91;required&#93; The configuration that specifies where logs are delivered.
+#' @param displayName The human-readable display name for the session logger resource.
+#' @param customerManagedKey The custom managed key of the session logger.
+#' @param additionalEncryptionContext The additional encryption context of the session logger.
+#' @param tags The tags to add to the session logger.
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. Idempotency ensures that an API request
+#' completes only once. With an idempotent request, if the original request
+#' completes successfully, subsequent retries with the same client token
+#' returns the result from the original successful request. If you do not
+#' specify a client token, one is automatically generated by the AWS SDK.
+#'
+#' @keywords internal
+#'
+#' @rdname workspacesweb_create_session_logger
+workspacesweb_create_session_logger <- function(eventFilter, logConfiguration, displayName = NULL, customerManagedKey = NULL, additionalEncryptionContext = NULL, tags = NULL, clientToken = NULL) {
+  op <- new_operation(
+    name = "CreateSessionLogger",
+    http_method = "POST",
+    http_path = "/sessionLoggers",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .workspacesweb$create_session_logger_input(eventFilter = eventFilter, logConfiguration = logConfiguration, displayName = displayName, customerManagedKey = customerManagedKey, additionalEncryptionContext = additionalEncryptionContext, tags = tags, clientToken = clientToken)
+  output <- .workspacesweb$create_session_logger_output()
+  config <- get_config()
+  svc <- .workspacesweb$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspacesweb$operations$create_session_logger <- workspacesweb_create_session_logger
+
 #' Creates a trust store that can be associated with a web portal
 #'
 #' @description
@@ -591,6 +668,7 @@ workspacesweb_create_portal <- function(additionalEncryptionContext = NULL, auth
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_create_trust_store/](https://www.paws-r-sdk.com/docs/workspacesweb_create_trust_store/) for full documentation.
 #'
 #' @param certificateList &#91;required&#93; A list of CA certificates to be added to the trust store.
+#' @param tags The tags to add to the trust store. A tag is a key-value pair.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Idempotency ensures that an API request
 #' completes only once. With an idempotent request, if the original request
@@ -599,12 +677,11 @@ workspacesweb_create_portal <- function(additionalEncryptionContext = NULL, auth
 #' 
 #' If you do not specify a client token, one is automatically generated by
 #' the Amazon Web Services SDK.
-#' @param tags The tags to add to the trust store. A tag is a key-value pair.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_create_trust_store
-workspacesweb_create_trust_store <- function(certificateList, clientToken = NULL, tags = NULL) {
+workspacesweb_create_trust_store <- function(certificateList, tags = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateTrustStore",
     http_method = "POST",
@@ -613,7 +690,7 @@ workspacesweb_create_trust_store <- function(certificateList, clientToken = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$create_trust_store_input(certificateList = certificateList, clientToken = clientToken, tags = tags)
+  input <- .workspacesweb$create_trust_store_input(certificateList = certificateList, tags = tags, clientToken = clientToken)
   output <- .workspacesweb$create_trust_store_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -631,6 +708,9 @@ workspacesweb_create_trust_store <- function(certificateList, clientToken = NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_create_user_access_logging_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_create_user_access_logging_settings/) for full documentation.
 #'
+#' @param kinesisStreamArn &#91;required&#93; The ARN of the Kinesis stream.
+#' @param tags The tags to add to the user settings resource. A tag is a key-value
+#' pair.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Idempotency ensures that an API request
 #' completes only once. With an idempotent request, if the original request
@@ -639,14 +719,11 @@ workspacesweb_create_trust_store <- function(certificateList, clientToken = NULL
 #' 
 #' If you do not specify a client token, one is automatically generated by
 #' the Amazon Web Services SDK.
-#' @param kinesisStreamArn &#91;required&#93; The ARN of the Kinesis stream.
-#' @param tags The tags to add to the user settings resource. A tag is a key-value
-#' pair.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_create_user_access_logging_settings
-workspacesweb_create_user_access_logging_settings <- function(clientToken = NULL, kinesisStreamArn, tags = NULL) {
+workspacesweb_create_user_access_logging_settings <- function(kinesisStreamArn, tags = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateUserAccessLoggingSettings",
     http_method = "POST",
@@ -655,7 +732,7 @@ workspacesweb_create_user_access_logging_settings <- function(clientToken = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$create_user_access_logging_settings_input(clientToken = clientToken, kinesisStreamArn = kinesisStreamArn, tags = tags)
+  input <- .workspacesweb$create_user_access_logging_settings_input(kinesisStreamArn = kinesisStreamArn, tags = tags, clientToken = clientToken)
   output <- .workspacesweb$create_user_access_logging_settings_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -673,7 +750,22 @@ workspacesweb_create_user_access_logging_settings <- function(clientToken = NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_create_user_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_create_user_settings/) for full documentation.
 #'
-#' @param additionalEncryptionContext The additional encryption context of the user settings.
+#' @param copyAllowed &#91;required&#93; Specifies whether the user can copy text from the streaming session to
+#' the local device.
+#' @param pasteAllowed &#91;required&#93; Specifies whether the user can paste text from the local device to the
+#' streaming session.
+#' @param downloadAllowed &#91;required&#93; Specifies whether the user can download files from the streaming session
+#' to the local device.
+#' @param uploadAllowed &#91;required&#93; Specifies whether the user can upload files from the local device to the
+#' streaming session.
+#' @param printAllowed &#91;required&#93; Specifies whether the user can print to the local device.
+#' @param tags The tags to add to the user settings resource. A tag is a key-value
+#' pair.
+#' @param disconnectTimeoutInMinutes The amount of time that a streaming session remains active after users
+#' disconnect.
+#' @param idleDisconnectTimeoutInMinutes The amount of time that users can be idle (inactive) before they are
+#' disconnected from their streaming session and the disconnect timeout
+#' interval begins.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Idempotency ensures that an API request
 #' completes only once. With an idempotent request, if the original request
@@ -684,36 +776,27 @@ workspacesweb_create_user_access_logging_settings <- function(clientToken = NULL
 #' the Amazon Web Services SDK.
 #' @param cookieSynchronizationConfiguration The configuration that specifies which cookies should be synchronized
 #' from the end user's local browser to the remote browser.
-#' @param copyAllowed &#91;required&#93; Specifies whether the user can copy text from the streaming session to
-#' the local device.
 #' @param customerManagedKey The customer managed key used to encrypt sensitive information in the
 #' user settings.
+#' @param additionalEncryptionContext The additional encryption context of the user settings.
 #' @param deepLinkAllowed Specifies whether the user can use deep links that open automatically
 #' when connecting to a session.
-#' @param disconnectTimeoutInMinutes The amount of time that a streaming session remains active after users
-#' disconnect.
-#' @param downloadAllowed &#91;required&#93; Specifies whether the user can download files from the streaming session
-#' to the local device.
-#' @param idleDisconnectTimeoutInMinutes The amount of time that users can be idle (inactive) before they are
-#' disconnected from their streaming session and the disconnect timeout
-#' interval begins.
-#' @param pasteAllowed &#91;required&#93; Specifies whether the user can paste text from the local device to the
-#' streaming session.
-#' @param printAllowed &#91;required&#93; Specifies whether the user can print to the local device.
-#' @param tags The tags to add to the user settings resource. A tag is a key-value
-#' pair.
 #' @param toolbarConfiguration The configuration of the toolbar. This allows administrators to select
 #' the toolbar type and visual mode, set maximum display resolution for
 #' sessions, and choose which items are visible to end users during their
 #' sessions. If administrators do not modify these settings, end users
 #' retain control over their toolbar preferences.
-#' @param uploadAllowed &#91;required&#93; Specifies whether the user can upload files from the local device to the
-#' streaming session.
+#' @param brandingConfigurationInput The branding configuration input that customizes the appearance of the
+#' web portal for end users. This includes a custom logo, favicon,
+#' wallpaper, localized strings, color theme, and an optional terms of
+#' service.
+#' @param webAuthnAllowed Specifies whether the user can use WebAuthn redirection for passwordless
+#' login to websites within the streaming session.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_create_user_settings
-workspacesweb_create_user_settings <- function(additionalEncryptionContext = NULL, clientToken = NULL, cookieSynchronizationConfiguration = NULL, copyAllowed, customerManagedKey = NULL, deepLinkAllowed = NULL, disconnectTimeoutInMinutes = NULL, downloadAllowed, idleDisconnectTimeoutInMinutes = NULL, pasteAllowed, printAllowed, tags = NULL, toolbarConfiguration = NULL, uploadAllowed) {
+workspacesweb_create_user_settings <- function(copyAllowed, pasteAllowed, downloadAllowed, uploadAllowed, printAllowed, tags = NULL, disconnectTimeoutInMinutes = NULL, idleDisconnectTimeoutInMinutes = NULL, clientToken = NULL, cookieSynchronizationConfiguration = NULL, customerManagedKey = NULL, additionalEncryptionContext = NULL, deepLinkAllowed = NULL, toolbarConfiguration = NULL, brandingConfigurationInput = NULL, webAuthnAllowed = NULL) {
   op <- new_operation(
     name = "CreateUserSettings",
     http_method = "POST",
@@ -722,7 +805,7 @@ workspacesweb_create_user_settings <- function(additionalEncryptionContext = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$create_user_settings_input(additionalEncryptionContext = additionalEncryptionContext, clientToken = clientToken, cookieSynchronizationConfiguration = cookieSynchronizationConfiguration, copyAllowed = copyAllowed, customerManagedKey = customerManagedKey, deepLinkAllowed = deepLinkAllowed, disconnectTimeoutInMinutes = disconnectTimeoutInMinutes, downloadAllowed = downloadAllowed, idleDisconnectTimeoutInMinutes = idleDisconnectTimeoutInMinutes, pasteAllowed = pasteAllowed, printAllowed = printAllowed, tags = tags, toolbarConfiguration = toolbarConfiguration, uploadAllowed = uploadAllowed)
+  input <- .workspacesweb$create_user_settings_input(copyAllowed = copyAllowed, pasteAllowed = pasteAllowed, downloadAllowed = downloadAllowed, uploadAllowed = uploadAllowed, printAllowed = printAllowed, tags = tags, disconnectTimeoutInMinutes = disconnectTimeoutInMinutes, idleDisconnectTimeoutInMinutes = idleDisconnectTimeoutInMinutes, clientToken = clientToken, cookieSynchronizationConfiguration = cookieSynchronizationConfiguration, customerManagedKey = customerManagedKey, additionalEncryptionContext = additionalEncryptionContext, deepLinkAllowed = deepLinkAllowed, toolbarConfiguration = toolbarConfiguration, brandingConfigurationInput = brandingConfigurationInput, webAuthnAllowed = webAuthnAllowed)
   output <- .workspacesweb$create_user_settings_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -917,6 +1000,37 @@ workspacesweb_delete_portal <- function(portalArn) {
   return(response)
 }
 .workspacesweb$operations$delete_portal <- workspacesweb_delete_portal
+
+#' Deletes a session logger resource
+#'
+#' @description
+#' Deletes a session logger resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_delete_session_logger/](https://www.paws-r-sdk.com/docs/workspacesweb_delete_session_logger/) for full documentation.
+#'
+#' @param sessionLoggerArn &#91;required&#93; The ARN of the session logger.
+#'
+#' @keywords internal
+#'
+#' @rdname workspacesweb_delete_session_logger
+workspacesweb_delete_session_logger <- function(sessionLoggerArn) {
+  op <- new_operation(
+    name = "DeleteSessionLogger",
+    http_method = "DELETE",
+    http_path = "/sessionLoggers/{sessionLoggerArn+}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .workspacesweb$delete_session_logger_input(sessionLoggerArn = sessionLoggerArn)
+  output <- .workspacesweb$delete_session_logger_output()
+  config <- get_config()
+  svc <- .workspacesweb$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspacesweb$operations$delete_session_logger <- workspacesweb_delete_session_logger
 
 #' Deletes the trust store
 #'
@@ -1134,6 +1248,37 @@ workspacesweb_disassociate_network_settings <- function(portalArn) {
   return(response)
 }
 .workspacesweb$operations$disassociate_network_settings <- workspacesweb_disassociate_network_settings
+
+#' Disassociates a session logger from a portal
+#'
+#' @description
+#' Disassociates a session logger from a portal.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_disassociate_session_logger/](https://www.paws-r-sdk.com/docs/workspacesweb_disassociate_session_logger/) for full documentation.
+#'
+#' @param portalArn &#91;required&#93; The ARN of the portal to disassociate from the a session logger.
+#'
+#' @keywords internal
+#'
+#' @rdname workspacesweb_disassociate_session_logger
+workspacesweb_disassociate_session_logger <- function(portalArn) {
+  op <- new_operation(
+    name = "DisassociateSessionLogger",
+    http_method = "DELETE",
+    http_path = "/portals/{portalArn+}/sessionLogger",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .workspacesweb$disassociate_session_logger_input(portalArn = portalArn)
+  output <- .workspacesweb$disassociate_session_logger_output()
+  config <- get_config()
+  svc <- .workspacesweb$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspacesweb$operations$disassociate_session_logger <- workspacesweb_disassociate_session_logger
 
 #' Disassociates a trust store from a web portal
 #'
@@ -1509,6 +1654,37 @@ workspacesweb_get_session <- function(portalId, sessionId) {
 }
 .workspacesweb$operations$get_session <- workspacesweb_get_session
 
+#' Gets details about a specific session logger resource
+#'
+#' @description
+#' Gets details about a specific session logger resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_get_session_logger/](https://www.paws-r-sdk.com/docs/workspacesweb_get_session_logger/) for full documentation.
+#'
+#' @param sessionLoggerArn &#91;required&#93; The ARN of the session logger.
+#'
+#' @keywords internal
+#'
+#' @rdname workspacesweb_get_session_logger
+workspacesweb_get_session_logger <- function(sessionLoggerArn) {
+  op <- new_operation(
+    name = "GetSessionLogger",
+    http_method = "GET",
+    http_path = "/sessionLoggers/{sessionLoggerArn+}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .workspacesweb$get_session_logger_input(sessionLoggerArn = sessionLoggerArn)
+  output <- .workspacesweb$get_session_logger_output()
+  config <- get_config()
+  svc <- .workspacesweb$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspacesweb$operations$get_session_logger <- workspacesweb_get_session_logger
+
 #' Gets the trust store
 #'
 #' @description
@@ -1547,13 +1723,13 @@ workspacesweb_get_trust_store <- function(trustStoreArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_get_trust_store_certificate/](https://www.paws-r-sdk.com/docs/workspacesweb_get_trust_store_certificate/) for full documentation.
 #'
-#' @param thumbprint &#91;required&#93; The thumbprint of the trust store certificate.
 #' @param trustStoreArn &#91;required&#93; The ARN of the trust store certificate.
+#' @param thumbprint &#91;required&#93; The thumbprint of the trust store certificate.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_get_trust_store_certificate
-workspacesweb_get_trust_store_certificate <- function(thumbprint, trustStoreArn) {
+workspacesweb_get_trust_store_certificate <- function(trustStoreArn, thumbprint) {
   op <- new_operation(
     name = "GetTrustStoreCertificate",
     http_method = "GET",
@@ -1562,7 +1738,7 @@ workspacesweb_get_trust_store_certificate <- function(thumbprint, trustStoreArn)
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$get_trust_store_certificate_input(thumbprint = thumbprint, trustStoreArn = trustStoreArn)
+  input <- .workspacesweb$get_trust_store_certificate_input(trustStoreArn = trustStoreArn, thumbprint = thumbprint)
   output <- .workspacesweb$get_trust_store_certificate_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -1641,14 +1817,14 @@ workspacesweb_get_user_settings <- function(userSettingsArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_list_browser_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_list_browser_settings/) for full documentation.
 #'
-#' @param maxResults The maximum number of results to be included in the next page.
 #' @param nextToken The pagination token used to retrieve the next page of results for this
 #' operation.
+#' @param maxResults The maximum number of results to be included in the next page.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_list_browser_settings
-workspacesweb_list_browser_settings <- function(maxResults = NULL, nextToken = NULL) {
+workspacesweb_list_browser_settings <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListBrowserSettings",
     http_method = "GET",
@@ -1657,7 +1833,7 @@ workspacesweb_list_browser_settings <- function(maxResults = NULL, nextToken = N
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
-  input <- .workspacesweb$list_browser_settings_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .workspacesweb$list_browser_settings_input(nextToken = nextToken, maxResults = maxResults)
   output <- .workspacesweb$list_browser_settings_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -1674,14 +1850,14 @@ workspacesweb_list_browser_settings <- function(maxResults = NULL, nextToken = N
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_list_data_protection_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_list_data_protection_settings/) for full documentation.
 #'
-#' @param maxResults The maximum number of results to be included in the next page.
 #' @param nextToken The pagination token used to retrieve the next page of results for this
 #' operation.
+#' @param maxResults The maximum number of results to be included in the next page.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_list_data_protection_settings
-workspacesweb_list_data_protection_settings <- function(maxResults = NULL, nextToken = NULL) {
+workspacesweb_list_data_protection_settings <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListDataProtectionSettings",
     http_method = "GET",
@@ -1690,7 +1866,7 @@ workspacesweb_list_data_protection_settings <- function(maxResults = NULL, nextT
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "dataProtectionSettings"),
     stream_api = FALSE
   )
-  input <- .workspacesweb$list_data_protection_settings_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .workspacesweb$list_data_protection_settings_input(nextToken = nextToken, maxResults = maxResults)
   output <- .workspacesweb$list_data_protection_settings_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -1707,15 +1883,15 @@ workspacesweb_list_data_protection_settings <- function(maxResults = NULL, nextT
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_list_identity_providers/](https://www.paws-r-sdk.com/docs/workspacesweb_list_identity_providers/) for full documentation.
 #'
-#' @param maxResults The maximum number of results to be included in the next page.
 #' @param nextToken The pagination token used to retrieve the next page of results for this
 #' operation.
+#' @param maxResults The maximum number of results to be included in the next page.
 #' @param portalArn &#91;required&#93; The ARN of the web portal.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_list_identity_providers
-workspacesweb_list_identity_providers <- function(maxResults = NULL, nextToken = NULL, portalArn) {
+workspacesweb_list_identity_providers <- function(nextToken = NULL, maxResults = NULL, portalArn) {
   op <- new_operation(
     name = "ListIdentityProviders",
     http_method = "GET",
@@ -1724,7 +1900,7 @@ workspacesweb_list_identity_providers <- function(maxResults = NULL, nextToken =
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
-  input <- .workspacesweb$list_identity_providers_input(maxResults = maxResults, nextToken = nextToken, portalArn = portalArn)
+  input <- .workspacesweb$list_identity_providers_input(nextToken = nextToken, maxResults = maxResults, portalArn = portalArn)
   output <- .workspacesweb$list_identity_providers_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -1741,14 +1917,14 @@ workspacesweb_list_identity_providers <- function(maxResults = NULL, nextToken =
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_list_ip_access_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_list_ip_access_settings/) for full documentation.
 #'
-#' @param maxResults The maximum number of results to be included in the next page.
 #' @param nextToken The pagination token used to retrieve the next page of results for this
 #' operation.
+#' @param maxResults The maximum number of results to be included in the next page.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_list_ip_access_settings
-workspacesweb_list_ip_access_settings <- function(maxResults = NULL, nextToken = NULL) {
+workspacesweb_list_ip_access_settings <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListIpAccessSettings",
     http_method = "GET",
@@ -1757,7 +1933,7 @@ workspacesweb_list_ip_access_settings <- function(maxResults = NULL, nextToken =
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
-  input <- .workspacesweb$list_ip_access_settings_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .workspacesweb$list_ip_access_settings_input(nextToken = nextToken, maxResults = maxResults)
   output <- .workspacesweb$list_ip_access_settings_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -1774,14 +1950,14 @@ workspacesweb_list_ip_access_settings <- function(maxResults = NULL, nextToken =
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_list_network_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_list_network_settings/) for full documentation.
 #'
-#' @param maxResults The maximum number of results to be included in the next page.
 #' @param nextToken The pagination token used to retrieve the next page of results for this
 #' operation.
+#' @param maxResults The maximum number of results to be included in the next page.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_list_network_settings
-workspacesweb_list_network_settings <- function(maxResults = NULL, nextToken = NULL) {
+workspacesweb_list_network_settings <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListNetworkSettings",
     http_method = "GET",
@@ -1790,7 +1966,7 @@ workspacesweb_list_network_settings <- function(maxResults = NULL, nextToken = N
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
-  input <- .workspacesweb$list_network_settings_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .workspacesweb$list_network_settings_input(nextToken = nextToken, maxResults = maxResults)
   output <- .workspacesweb$list_network_settings_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -1807,14 +1983,14 @@ workspacesweb_list_network_settings <- function(maxResults = NULL, nextToken = N
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_list_portals/](https://www.paws-r-sdk.com/docs/workspacesweb_list_portals/) for full documentation.
 #'
-#' @param maxResults The maximum number of results to be included in the next page.
 #' @param nextToken The pagination token used to retrieve the next page of results for this
 #' operation.
+#' @param maxResults The maximum number of results to be included in the next page.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_list_portals
-workspacesweb_list_portals <- function(maxResults = NULL, nextToken = NULL) {
+workspacesweb_list_portals <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListPortals",
     http_method = "GET",
@@ -1823,7 +1999,7 @@ workspacesweb_list_portals <- function(maxResults = NULL, nextToken = NULL) {
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
-  input <- .workspacesweb$list_portals_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .workspacesweb$list_portals_input(nextToken = nextToken, maxResults = maxResults)
   output <- .workspacesweb$list_portals_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -1833,6 +2009,39 @@ workspacesweb_list_portals <- function(maxResults = NULL, nextToken = NULL) {
 }
 .workspacesweb$operations$list_portals <- workspacesweb_list_portals
 
+#' Lists all available session logger resources
+#'
+#' @description
+#' Lists all available session logger resources.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_list_session_loggers/](https://www.paws-r-sdk.com/docs/workspacesweb_list_session_loggers/) for full documentation.
+#'
+#' @param nextToken The pagination token used to retrieve the next page of results for this
+#' operation.
+#' @param maxResults The maximum number of results to be included in the next page.
+#'
+#' @keywords internal
+#'
+#' @rdname workspacesweb_list_session_loggers
+workspacesweb_list_session_loggers <- function(nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListSessionLoggers",
+    http_method = "GET",
+    http_path = "/sessionLoggers",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "sessionLoggers"),
+    stream_api = FALSE
+  )
+  input <- .workspacesweb$list_session_loggers_input(nextToken = nextToken, maxResults = maxResults)
+  output <- .workspacesweb$list_session_loggers_output()
+  config <- get_config()
+  svc <- .workspacesweb$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspacesweb$operations$list_session_loggers <- workspacesweb_list_session_loggers
+
 #' Lists information for multiple secure browser sessions from a specific
 #' portal
 #'
@@ -1841,19 +2050,19 @@ workspacesweb_list_portals <- function(maxResults = NULL, nextToken = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_list_sessions/](https://www.paws-r-sdk.com/docs/workspacesweb_list_sessions/) for full documentation.
 #'
-#' @param maxResults The maximum number of results to be included in the next page.
-#' @param nextToken The pagination token used to retrieve the next page of results for this
-#' operation.
 #' @param portalId &#91;required&#93; The ID of the web portal for the sessions.
+#' @param username The username of the session.
 #' @param sessionId The ID of the session.
 #' @param sortBy The method in which the returned sessions should be sorted.
 #' @param status The status of the session.
-#' @param username The username of the session.
+#' @param maxResults The maximum number of results to be included in the next page.
+#' @param nextToken The pagination token used to retrieve the next page of results for this
+#' operation.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_list_sessions
-workspacesweb_list_sessions <- function(maxResults = NULL, nextToken = NULL, portalId, sessionId = NULL, sortBy = NULL, status = NULL, username = NULL) {
+workspacesweb_list_sessions <- function(portalId, username = NULL, sessionId = NULL, sortBy = NULL, status = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListSessions",
     http_method = "GET",
@@ -1862,7 +2071,7 @@ workspacesweb_list_sessions <- function(maxResults = NULL, nextToken = NULL, por
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "sessions"),
     stream_api = FALSE
   )
-  input <- .workspacesweb$list_sessions_input(maxResults = maxResults, nextToken = nextToken, portalId = portalId, sessionId = sessionId, sortBy = sortBy, status = status, username = username)
+  input <- .workspacesweb$list_sessions_input(portalId = portalId, username = username, sessionId = sessionId, sortBy = sortBy, status = status, maxResults = maxResults, nextToken = nextToken)
   output <- .workspacesweb$list_sessions_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -1910,15 +2119,15 @@ workspacesweb_list_tags_for_resource <- function(resourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_list_trust_store_certificates/](https://www.paws-r-sdk.com/docs/workspacesweb_list_trust_store_certificates/) for full documentation.
 #'
-#' @param maxResults The maximum number of results to be included in the next page.
+#' @param trustStoreArn &#91;required&#93; The ARN of the trust store
 #' @param nextToken The pagination token used to retrieve the next page of results for this
 #' operation.
-#' @param trustStoreArn &#91;required&#93; The ARN of the trust store
+#' @param maxResults The maximum number of results to be included in the next page.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_list_trust_store_certificates
-workspacesweb_list_trust_store_certificates <- function(maxResults = NULL, nextToken = NULL, trustStoreArn) {
+workspacesweb_list_trust_store_certificates <- function(trustStoreArn, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListTrustStoreCertificates",
     http_method = "GET",
@@ -1927,7 +2136,7 @@ workspacesweb_list_trust_store_certificates <- function(maxResults = NULL, nextT
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
-  input <- .workspacesweb$list_trust_store_certificates_input(maxResults = maxResults, nextToken = nextToken, trustStoreArn = trustStoreArn)
+  input <- .workspacesweb$list_trust_store_certificates_input(trustStoreArn = trustStoreArn, nextToken = nextToken, maxResults = maxResults)
   output <- .workspacesweb$list_trust_store_certificates_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -1944,14 +2153,14 @@ workspacesweb_list_trust_store_certificates <- function(maxResults = NULL, nextT
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_list_trust_stores/](https://www.paws-r-sdk.com/docs/workspacesweb_list_trust_stores/) for full documentation.
 #'
-#' @param maxResults The maximum number of results to be included in the next page.
 #' @param nextToken The pagination token used to retrieve the next page of results for this
 #' operation.
+#' @param maxResults The maximum number of results to be included in the next page.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_list_trust_stores
-workspacesweb_list_trust_stores <- function(maxResults = NULL, nextToken = NULL) {
+workspacesweb_list_trust_stores <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListTrustStores",
     http_method = "GET",
@@ -1960,7 +2169,7 @@ workspacesweb_list_trust_stores <- function(maxResults = NULL, nextToken = NULL)
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
-  input <- .workspacesweb$list_trust_stores_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .workspacesweb$list_trust_stores_input(nextToken = nextToken, maxResults = maxResults)
   output <- .workspacesweb$list_trust_stores_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -1977,14 +2186,14 @@ workspacesweb_list_trust_stores <- function(maxResults = NULL, nextToken = NULL)
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_list_user_access_logging_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_list_user_access_logging_settings/) for full documentation.
 #'
-#' @param maxResults The maximum number of results to be included in the next page.
 #' @param nextToken The pagination token used to retrieve the next page of results for this
 #' operation.
+#' @param maxResults The maximum number of results to be included in the next page.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_list_user_access_logging_settings
-workspacesweb_list_user_access_logging_settings <- function(maxResults = NULL, nextToken = NULL) {
+workspacesweb_list_user_access_logging_settings <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListUserAccessLoggingSettings",
     http_method = "GET",
@@ -1993,7 +2202,7 @@ workspacesweb_list_user_access_logging_settings <- function(maxResults = NULL, n
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
-  input <- .workspacesweb$list_user_access_logging_settings_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .workspacesweb$list_user_access_logging_settings_input(nextToken = nextToken, maxResults = maxResults)
   output <- .workspacesweb$list_user_access_logging_settings_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -2010,14 +2219,14 @@ workspacesweb_list_user_access_logging_settings <- function(maxResults = NULL, n
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_list_user_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_list_user_settings/) for full documentation.
 #'
-#' @param maxResults The maximum number of results to be included in the next page.
 #' @param nextToken The pagination token used to retrieve the next page of results for this
 #' operation.
+#' @param maxResults The maximum number of results to be included in the next page.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_list_user_settings
-workspacesweb_list_user_settings <- function(maxResults = NULL, nextToken = NULL) {
+workspacesweb_list_user_settings <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListUserSettings",
     http_method = "GET",
@@ -2026,7 +2235,7 @@ workspacesweb_list_user_settings <- function(maxResults = NULL, nextToken = NULL
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
-  input <- .workspacesweb$list_user_settings_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .workspacesweb$list_user_settings_input(nextToken = nextToken, maxResults = maxResults)
   output <- .workspacesweb$list_user_settings_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -2043,6 +2252,8 @@ workspacesweb_list_user_settings <- function(maxResults = NULL, nextToken = NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_tag_resource/](https://www.paws-r-sdk.com/docs/workspacesweb_tag_resource/) for full documentation.
 #'
+#' @param resourceArn &#91;required&#93; The ARN of the resource.
+#' @param tags &#91;required&#93; The tags of the resource.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Idempotency ensures that an API request
 #' completes only once. With an idempotent request, if the original request
@@ -2051,13 +2262,11 @@ workspacesweb_list_user_settings <- function(maxResults = NULL, nextToken = NULL
 #' 
 #' If you do not specify a client token, one is automatically generated by
 #' the Amazon Web Services SDK.
-#' @param resourceArn &#91;required&#93; The ARN of the resource.
-#' @param tags &#91;required&#93; The tags of the resource.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_tag_resource
-workspacesweb_tag_resource <- function(clientToken = NULL, resourceArn, tags) {
+workspacesweb_tag_resource <- function(resourceArn, tags, clientToken = NULL) {
   op <- new_operation(
     name = "TagResource",
     http_method = "POST",
@@ -2066,7 +2275,7 @@ workspacesweb_tag_resource <- function(clientToken = NULL, resourceArn, tags) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$tag_resource_input(clientToken = clientToken, resourceArn = resourceArn, tags = tags)
+  input <- .workspacesweb$tag_resource_input(resourceArn = resourceArn, tags = tags, clientToken = clientToken)
   output <- .workspacesweb$tag_resource_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -2115,9 +2324,9 @@ workspacesweb_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_update_browser_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_update_browser_settings/) for full documentation.
 #'
+#' @param browserSettingsArn &#91;required&#93; The ARN of the browser settings.
 #' @param browserPolicy A JSON string containing Chrome Enterprise policies that will be applied
 #' to all streaming sessions.
-#' @param browserSettingsArn &#91;required&#93; The ARN of the browser settings.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Idempotency ensures that an API request
 #' completes only once. With an idempotent request, if the original request
@@ -2126,11 +2335,14 @@ workspacesweb_untag_resource <- function(resourceArn, tagKeys) {
 #' 
 #' If you do not specify a client token, one is automatically generated by
 #' the Amazon Web Services SDK.
+#' @param webContentFilteringPolicy The policy that specifies which URLs end users are allowed to access or
+#' which URLs or domain categories they are restricted from accessing for
+#' enhanced security.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_update_browser_settings
-workspacesweb_update_browser_settings <- function(browserPolicy = NULL, browserSettingsArn, clientToken = NULL) {
+workspacesweb_update_browser_settings <- function(browserSettingsArn, browserPolicy = NULL, clientToken = NULL, webContentFilteringPolicy = NULL) {
   op <- new_operation(
     name = "UpdateBrowserSettings",
     http_method = "PATCH",
@@ -2139,7 +2351,7 @@ workspacesweb_update_browser_settings <- function(browserPolicy = NULL, browserS
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$update_browser_settings_input(browserPolicy = browserPolicy, browserSettingsArn = browserSettingsArn, clientToken = clientToken)
+  input <- .workspacesweb$update_browser_settings_input(browserSettingsArn = browserSettingsArn, browserPolicy = browserPolicy, clientToken = clientToken, webContentFilteringPolicy = webContentFilteringPolicy)
   output <- .workspacesweb$update_browser_settings_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -2156,6 +2368,11 @@ workspacesweb_update_browser_settings <- function(browserPolicy = NULL, browserS
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_update_data_protection_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_update_data_protection_settings/) for full documentation.
 #'
+#' @param dataProtectionSettingsArn &#91;required&#93; The ARN of the data protection settings.
+#' @param inlineRedactionConfiguration The inline redaction configuration of the data protection settings that
+#' will be applied to all sessions.
+#' @param displayName The display name of the data protection settings.
+#' @param description The description of the data protection settings.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Idempotency ensures that an API request
 #' completes only once. With an idempotent request, if the original request
@@ -2164,16 +2381,11 @@ workspacesweb_update_browser_settings <- function(browserPolicy = NULL, browserS
 #' 
 #' If you do not specify a client token, one is automatically generated by
 #' the Amazon Web Services SDK.
-#' @param dataProtectionSettingsArn &#91;required&#93; The ARN of the data protection settings.
-#' @param description The description of the data protection settings.
-#' @param displayName The display name of the data protection settings.
-#' @param inlineRedactionConfiguration The inline redaction configuration of the data protection settings that
-#' will be applied to all sessions.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_update_data_protection_settings
-workspacesweb_update_data_protection_settings <- function(clientToken = NULL, dataProtectionSettingsArn, description = NULL, displayName = NULL, inlineRedactionConfiguration = NULL) {
+workspacesweb_update_data_protection_settings <- function(dataProtectionSettingsArn, inlineRedactionConfiguration = NULL, displayName = NULL, description = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateDataProtectionSettings",
     http_method = "PATCH",
@@ -2182,7 +2394,7 @@ workspacesweb_update_data_protection_settings <- function(clientToken = NULL, da
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$update_data_protection_settings_input(clientToken = clientToken, dataProtectionSettingsArn = dataProtectionSettingsArn, description = description, displayName = displayName, inlineRedactionConfiguration = inlineRedactionConfiguration)
+  input <- .workspacesweb$update_data_protection_settings_input(dataProtectionSettingsArn = dataProtectionSettingsArn, inlineRedactionConfiguration = inlineRedactionConfiguration, displayName = displayName, description = description, clientToken = clientToken)
   output <- .workspacesweb$update_data_protection_settings_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -2199,15 +2411,9 @@ workspacesweb_update_data_protection_settings <- function(clientToken = NULL, da
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_update_identity_provider/](https://www.paws-r-sdk.com/docs/workspacesweb_update_identity_provider/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. Idempotency ensures that an API request
-#' completes only once. With an idempotent request, if the original request
-#' completes successfully, subsequent retries with the same client token
-#' return the result from the original successful request.
-#' 
-#' If you do not specify a client token, one is automatically generated by
-#' the Amazon Web Services SDK.
 #' @param identityProviderArn &#91;required&#93; The ARN of the identity provider.
+#' @param identityProviderName The name of the identity provider.
+#' @param identityProviderType The type of the identity provider.
 #' @param identityProviderDetails The details of the identity provider. The following list describes the
 #' provider detail keys for each identity provider type.
 #' 
@@ -2277,13 +2483,19 @@ workspacesweb_update_data_protection_settings <- function(clientToken = NULL, da
 #'         `rsa-sha256`
 #' 
 #'     -   `EncryptedResponses` (boolean) *optional*
-#' @param identityProviderName The name of the identity provider.
-#' @param identityProviderType The type of the identity provider.
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. Idempotency ensures that an API request
+#' completes only once. With an idempotent request, if the original request
+#' completes successfully, subsequent retries with the same client token
+#' return the result from the original successful request.
+#' 
+#' If you do not specify a client token, one is automatically generated by
+#' the Amazon Web Services SDK.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_update_identity_provider
-workspacesweb_update_identity_provider <- function(clientToken = NULL, identityProviderArn, identityProviderDetails = NULL, identityProviderName = NULL, identityProviderType = NULL) {
+workspacesweb_update_identity_provider <- function(identityProviderArn, identityProviderName = NULL, identityProviderType = NULL, identityProviderDetails = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateIdentityProvider",
     http_method = "PATCH",
@@ -2292,7 +2504,7 @@ workspacesweb_update_identity_provider <- function(clientToken = NULL, identityP
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$update_identity_provider_input(clientToken = clientToken, identityProviderArn = identityProviderArn, identityProviderDetails = identityProviderDetails, identityProviderName = identityProviderName, identityProviderType = identityProviderType)
+  input <- .workspacesweb$update_identity_provider_input(identityProviderArn = identityProviderArn, identityProviderName = identityProviderName, identityProviderType = identityProviderType, identityProviderDetails = identityProviderDetails, clientToken = clientToken)
   output <- .workspacesweb$update_identity_provider_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -2309,6 +2521,10 @@ workspacesweb_update_identity_provider <- function(clientToken = NULL, identityP
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_update_ip_access_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_update_ip_access_settings/) for full documentation.
 #'
+#' @param ipAccessSettingsArn &#91;required&#93; The ARN of the IP access settings.
+#' @param displayName The display name of the IP access settings.
+#' @param description The description of the IP access settings.
+#' @param ipRules The updated IP rules of the IP access settings.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Idempotency ensures that an API request
 #' completes only once. With an idempotent request, if the original request
@@ -2317,15 +2533,11 @@ workspacesweb_update_identity_provider <- function(clientToken = NULL, identityP
 #' 
 #' If you do not specify a client token, one is automatically generated by
 #' the Amazon Web Services SDK.
-#' @param description The description of the IP access settings.
-#' @param displayName The display name of the IP access settings.
-#' @param ipAccessSettingsArn &#91;required&#93; The ARN of the IP access settings.
-#' @param ipRules The updated IP rules of the IP access settings.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_update_ip_access_settings
-workspacesweb_update_ip_access_settings <- function(clientToken = NULL, description = NULL, displayName = NULL, ipAccessSettingsArn, ipRules = NULL) {
+workspacesweb_update_ip_access_settings <- function(ipAccessSettingsArn, displayName = NULL, description = NULL, ipRules = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateIpAccessSettings",
     http_method = "PATCH",
@@ -2334,7 +2546,7 @@ workspacesweb_update_ip_access_settings <- function(clientToken = NULL, descript
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$update_ip_access_settings_input(clientToken = clientToken, description = description, displayName = displayName, ipAccessSettingsArn = ipAccessSettingsArn, ipRules = ipRules)
+  input <- .workspacesweb$update_ip_access_settings_input(ipAccessSettingsArn = ipAccessSettingsArn, displayName = displayName, description = description, ipRules = ipRules, clientToken = clientToken)
   output <- .workspacesweb$update_ip_access_settings_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -2351,6 +2563,13 @@ workspacesweb_update_ip_access_settings <- function(clientToken = NULL, descript
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_update_network_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_update_network_settings/) for full documentation.
 #'
+#' @param networkSettingsArn &#91;required&#93; The ARN of the network settings.
+#' @param vpcId The VPC that streaming instances will connect to.
+#' @param subnetIds The subnets in which network interfaces are created to connect streaming
+#' instances to your VPC. At least two of these subnets must be in
+#' different availability zones.
+#' @param securityGroupIds One or more security groups used to control access from streaming
+#' instances to your VPC.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Idempotency ensures that an API request
 #' completes only once. With an idempotent request, if the original request
@@ -2359,18 +2578,11 @@ workspacesweb_update_ip_access_settings <- function(clientToken = NULL, descript
 #' 
 #' If you do not specify a client token, one is automatically generated by
 #' the Amazon Web Services SDK.
-#' @param networkSettingsArn &#91;required&#93; The ARN of the network settings.
-#' @param securityGroupIds One or more security groups used to control access from streaming
-#' instances to your VPC.
-#' @param subnetIds The subnets in which network interfaces are created to connect streaming
-#' instances to your VPC. At least two of these subnets must be in
-#' different availability zones.
-#' @param vpcId The VPC that streaming instances will connect to.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_update_network_settings
-workspacesweb_update_network_settings <- function(clientToken = NULL, networkSettingsArn, securityGroupIds = NULL, subnetIds = NULL, vpcId = NULL) {
+workspacesweb_update_network_settings <- function(networkSettingsArn, vpcId = NULL, subnetIds = NULL, securityGroupIds = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateNetworkSettings",
     http_method = "PATCH",
@@ -2379,7 +2591,7 @@ workspacesweb_update_network_settings <- function(clientToken = NULL, networkSet
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$update_network_settings_input(clientToken = clientToken, networkSettingsArn = networkSettingsArn, securityGroupIds = securityGroupIds, subnetIds = subnetIds, vpcId = vpcId)
+  input <- .workspacesweb$update_network_settings_input(networkSettingsArn = networkSettingsArn, vpcId = vpcId, subnetIds = subnetIds, securityGroupIds = securityGroupIds, clientToken = clientToken)
   output <- .workspacesweb$update_network_settings_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -2396,6 +2608,9 @@ workspacesweb_update_network_settings <- function(clientToken = NULL, networkSet
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_update_portal/](https://www.paws-r-sdk.com/docs/workspacesweb_update_portal/) for full documentation.
 #'
+#' @param portalArn &#91;required&#93; The ARN of the web portal.
+#' @param displayName The name of the web portal. This is not visible to users who log into
+#' the web portal.
 #' @param authenticationType The type of authentication integration points used when signing into the
 #' web portal. Defaults to `Standard`.
 #' 
@@ -2409,16 +2624,13 @@ workspacesweb_update_network_settings <- function(clientToken = NULL, networkSet
 #' Center. Identity sources (including external identity provider
 #' integration), plus user and group access to your web portal, can be
 #' configured in the IAM Identity Center.
-#' @param displayName The name of the web portal. This is not visible to users who log into
-#' the web portal.
 #' @param instanceType The type and resources of the underlying instance.
 #' @param maxConcurrentSessions The maximum number of concurrent sessions for the portal.
-#' @param portalArn &#91;required&#93; The ARN of the web portal.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_update_portal
-workspacesweb_update_portal <- function(authenticationType = NULL, displayName = NULL, instanceType = NULL, maxConcurrentSessions = NULL, portalArn) {
+workspacesweb_update_portal <- function(portalArn, displayName = NULL, authenticationType = NULL, instanceType = NULL, maxConcurrentSessions = NULL) {
   op <- new_operation(
     name = "UpdatePortal",
     http_method = "PUT",
@@ -2427,7 +2639,7 @@ workspacesweb_update_portal <- function(authenticationType = NULL, displayName =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$update_portal_input(authenticationType = authenticationType, displayName = displayName, instanceType = instanceType, maxConcurrentSessions = maxConcurrentSessions, portalArn = portalArn)
+  input <- .workspacesweb$update_portal_input(portalArn = portalArn, displayName = displayName, authenticationType = authenticationType, instanceType = instanceType, maxConcurrentSessions = maxConcurrentSessions)
   output <- .workspacesweb$update_portal_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -2437,6 +2649,40 @@ workspacesweb_update_portal <- function(authenticationType = NULL, displayName =
 }
 .workspacesweb$operations$update_portal <- workspacesweb_update_portal
 
+#' Updates the details of a session logger
+#'
+#' @description
+#' Updates the details of a session logger.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_update_session_logger/](https://www.paws-r-sdk.com/docs/workspacesweb_update_session_logger/) for full documentation.
+#'
+#' @param sessionLoggerArn &#91;required&#93; The ARN of the session logger to update.
+#' @param eventFilter The updated eventFilter.
+#' @param logConfiguration The updated logConfiguration.
+#' @param displayName The updated display name.
+#'
+#' @keywords internal
+#'
+#' @rdname workspacesweb_update_session_logger
+workspacesweb_update_session_logger <- function(sessionLoggerArn, eventFilter = NULL, logConfiguration = NULL, displayName = NULL) {
+  op <- new_operation(
+    name = "UpdateSessionLogger",
+    http_method = "POST",
+    http_path = "/sessionLoggers/{sessionLoggerArn+}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .workspacesweb$update_session_logger_input(sessionLoggerArn = sessionLoggerArn, eventFilter = eventFilter, logConfiguration = logConfiguration, displayName = displayName)
+  output <- .workspacesweb$update_session_logger_output()
+  config <- get_config()
+  svc <- .workspacesweb$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspacesweb$operations$update_session_logger <- workspacesweb_update_session_logger
+
 #' Updates the trust store
 #'
 #' @description
@@ -2444,6 +2690,7 @@ workspacesweb_update_portal <- function(authenticationType = NULL, displayName =
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_update_trust_store/](https://www.paws-r-sdk.com/docs/workspacesweb_update_trust_store/) for full documentation.
 #'
+#' @param trustStoreArn &#91;required&#93; The ARN of the trust store.
 #' @param certificatesToAdd A list of CA certificates to add to the trust store.
 #' @param certificatesToDelete A list of CA certificates to delete from a trust store.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
@@ -2454,12 +2701,11 @@ workspacesweb_update_portal <- function(authenticationType = NULL, displayName =
 #' 
 #' If you do not specify a client token, one is automatically generated by
 #' the Amazon Web Services SDK.
-#' @param trustStoreArn &#91;required&#93; The ARN of the trust store.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_update_trust_store
-workspacesweb_update_trust_store <- function(certificatesToAdd = NULL, certificatesToDelete = NULL, clientToken = NULL, trustStoreArn) {
+workspacesweb_update_trust_store <- function(trustStoreArn, certificatesToAdd = NULL, certificatesToDelete = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateTrustStore",
     http_method = "PATCH",
@@ -2468,7 +2714,7 @@ workspacesweb_update_trust_store <- function(certificatesToAdd = NULL, certifica
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$update_trust_store_input(certificatesToAdd = certificatesToAdd, certificatesToDelete = certificatesToDelete, clientToken = clientToken, trustStoreArn = trustStoreArn)
+  input <- .workspacesweb$update_trust_store_input(trustStoreArn = trustStoreArn, certificatesToAdd = certificatesToAdd, certificatesToDelete = certificatesToDelete, clientToken = clientToken)
   output <- .workspacesweb$update_trust_store_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -2485,6 +2731,8 @@ workspacesweb_update_trust_store <- function(certificatesToAdd = NULL, certifica
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_update_user_access_logging_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_update_user_access_logging_settings/) for full documentation.
 #'
+#' @param userAccessLoggingSettingsArn &#91;required&#93; The ARN of the user access logging settings.
+#' @param kinesisStreamArn The ARN of the Kinesis stream.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Idempotency ensures that an API request
 #' completes only once. With an idempotent request, if the original request
@@ -2493,13 +2741,11 @@ workspacesweb_update_trust_store <- function(certificatesToAdd = NULL, certifica
 #' 
 #' If you do not specify a client token, one is automatically generated by
 #' the Amazon Web Services SDK.
-#' @param kinesisStreamArn The ARN of the Kinesis stream.
-#' @param userAccessLoggingSettingsArn &#91;required&#93; The ARN of the user access logging settings.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_update_user_access_logging_settings
-workspacesweb_update_user_access_logging_settings <- function(clientToken = NULL, kinesisStreamArn = NULL, userAccessLoggingSettingsArn) {
+workspacesweb_update_user_access_logging_settings <- function(userAccessLoggingSettingsArn, kinesisStreamArn = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateUserAccessLoggingSettings",
     http_method = "PATCH",
@@ -2508,7 +2754,7 @@ workspacesweb_update_user_access_logging_settings <- function(clientToken = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$update_user_access_logging_settings_input(clientToken = clientToken, kinesisStreamArn = kinesisStreamArn, userAccessLoggingSettingsArn = userAccessLoggingSettingsArn)
+  input <- .workspacesweb$update_user_access_logging_settings_input(userAccessLoggingSettingsArn = userAccessLoggingSettingsArn, kinesisStreamArn = kinesisStreamArn, clientToken = clientToken)
   output <- .workspacesweb$update_user_access_logging_settings_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -2525,6 +2771,21 @@ workspacesweb_update_user_access_logging_settings <- function(clientToken = NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspacesweb_update_user_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_update_user_settings/) for full documentation.
 #'
+#' @param userSettingsArn &#91;required&#93; The ARN of the user settings.
+#' @param copyAllowed Specifies whether the user can copy text from the streaming session to
+#' the local device.
+#' @param pasteAllowed Specifies whether the user can paste text from the local device to the
+#' streaming session.
+#' @param downloadAllowed Specifies whether the user can download files from the streaming session
+#' to the local device.
+#' @param uploadAllowed Specifies whether the user can upload files from the local device to the
+#' streaming session.
+#' @param printAllowed Specifies whether the user can print to the local device.
+#' @param disconnectTimeoutInMinutes The amount of time that a streaming session remains active after users
+#' disconnect.
+#' @param idleDisconnectTimeoutInMinutes The amount of time that users can be idle (inactive) before they are
+#' disconnected from their streaming session and the disconnect timeout
+#' interval begins.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Idempotency ensures that an API request
 #' completes only once. With an idempotent request, if the original request
@@ -2538,33 +2799,26 @@ workspacesweb_update_user_access_logging_settings <- function(clientToken = NULL
 #' 
 #' If the allowlist and blocklist are empty, the configuration becomes
 #' null.
-#' @param copyAllowed Specifies whether the user can copy text from the streaming session to
-#' the local device.
 #' @param deepLinkAllowed Specifies whether the user can use deep links that open automatically
 #' when connecting to a session.
-#' @param disconnectTimeoutInMinutes The amount of time that a streaming session remains active after users
-#' disconnect.
-#' @param downloadAllowed Specifies whether the user can download files from the streaming session
-#' to the local device.
-#' @param idleDisconnectTimeoutInMinutes The amount of time that users can be idle (inactive) before they are
-#' disconnected from their streaming session and the disconnect timeout
-#' interval begins.
-#' @param pasteAllowed Specifies whether the user can paste text from the local device to the
-#' streaming session.
-#' @param printAllowed Specifies whether the user can print to the local device.
 #' @param toolbarConfiguration The configuration of the toolbar. This allows administrators to select
 #' the toolbar type and visual mode, set maximum display resolution for
 #' sessions, and choose which items are visible to end users during their
 #' sessions. If administrators do not modify these settings, end users
 #' retain control over their toolbar preferences.
-#' @param uploadAllowed Specifies whether the user can upload files from the local device to the
-#' streaming session.
-#' @param userSettingsArn &#91;required&#93; The ARN of the user settings.
+#' @param brandingConfigurationInput The branding configuration that customizes the appearance of the web
+#' portal for end users. When updating user settings without an existing
+#' branding configuration, all fields (logo, favicon, wallpaper, localized
+#' strings, and color theme) are required except for terms of service. When
+#' updating user settings with an existing branding configuration, all
+#' fields are optional.
+#' @param webAuthnAllowed Specifies whether the user can use WebAuthn redirection for passwordless
+#' login to websites within the streaming session.
 #'
 #' @keywords internal
 #'
 #' @rdname workspacesweb_update_user_settings
-workspacesweb_update_user_settings <- function(clientToken = NULL, cookieSynchronizationConfiguration = NULL, copyAllowed = NULL, deepLinkAllowed = NULL, disconnectTimeoutInMinutes = NULL, downloadAllowed = NULL, idleDisconnectTimeoutInMinutes = NULL, pasteAllowed = NULL, printAllowed = NULL, toolbarConfiguration = NULL, uploadAllowed = NULL, userSettingsArn) {
+workspacesweb_update_user_settings <- function(userSettingsArn, copyAllowed = NULL, pasteAllowed = NULL, downloadAllowed = NULL, uploadAllowed = NULL, printAllowed = NULL, disconnectTimeoutInMinutes = NULL, idleDisconnectTimeoutInMinutes = NULL, clientToken = NULL, cookieSynchronizationConfiguration = NULL, deepLinkAllowed = NULL, toolbarConfiguration = NULL, brandingConfigurationInput = NULL, webAuthnAllowed = NULL) {
   op <- new_operation(
     name = "UpdateUserSettings",
     http_method = "PATCH",
@@ -2573,7 +2827,7 @@ workspacesweb_update_user_settings <- function(clientToken = NULL, cookieSynchro
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$update_user_settings_input(clientToken = clientToken, cookieSynchronizationConfiguration = cookieSynchronizationConfiguration, copyAllowed = copyAllowed, deepLinkAllowed = deepLinkAllowed, disconnectTimeoutInMinutes = disconnectTimeoutInMinutes, downloadAllowed = downloadAllowed, idleDisconnectTimeoutInMinutes = idleDisconnectTimeoutInMinutes, pasteAllowed = pasteAllowed, printAllowed = printAllowed, toolbarConfiguration = toolbarConfiguration, uploadAllowed = uploadAllowed, userSettingsArn = userSettingsArn)
+  input <- .workspacesweb$update_user_settings_input(userSettingsArn = userSettingsArn, copyAllowed = copyAllowed, pasteAllowed = pasteAllowed, downloadAllowed = downloadAllowed, uploadAllowed = uploadAllowed, printAllowed = printAllowed, disconnectTimeoutInMinutes = disconnectTimeoutInMinutes, idleDisconnectTimeoutInMinutes = idleDisconnectTimeoutInMinutes, clientToken = clientToken, cookieSynchronizationConfiguration = cookieSynchronizationConfiguration, deepLinkAllowed = deepLinkAllowed, toolbarConfiguration = toolbarConfiguration, brandingConfigurationInput = brandingConfigurationInput, webAuthnAllowed = webAuthnAllowed)
   output <- .workspacesweb$update_user_settings_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)

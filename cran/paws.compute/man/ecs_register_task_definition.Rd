@@ -109,32 +109,9 @@ is optional. Supported values are between \code{128} CPU units (\code{0.125}
 vCPUs) and \code{196608} CPU units (\code{192} vCPUs). If you do not specify a
 value, the parameter is ignored.
 
-If you're using the Fargate launch type, this field is required and you
-must use one of the following values, which determines your range of
-supported values for the \code{memory} parameter:
-
-The CPU units cannot be less than 1 vCPU when you use Windows containers
-on Fargate.
-\itemize{
-\item 256 (.25 vCPU) - Available \code{memory} values: 512 (0.5 GB), 1024 (1
-GB), 2048 (2 GB)
-\item 512 (.5 vCPU) - Available \code{memory} values: 1024 (1 GB), 2048 (2 GB),
-3072 (3 GB), 4096 (4 GB)
-\item 1024 (1 vCPU) - Available \code{memory} values: 2048 (2 GB), 3072 (3 GB),
-4096 (4 GB), 5120 (5 GB), 6144 (6 GB), 7168 (7 GB), 8192 (8 GB)
-\item 2048 (2 vCPU) - Available \code{memory} values: 4096 (4 GB) and 16384 (16
-GB) in increments of 1024 (1 GB)
-\item 4096 (4 vCPU) - Available \code{memory} values: 8192 (8 GB) and 30720 (30
-GB) in increments of 1024 (1 GB)
-\item 8192 (8 vCPU) - Available \code{memory} values: 16 GB and 60 GB in 4 GB
-increments
-
-This option requires Linux platform \verb{1.4.0} or later.
-\item 16384 (16vCPU) - Available \code{memory} values: 32GB and 120 GB in 8 GB
-increments
-
-This option requires Linux platform \verb{1.4.0} or later.
-}}
+This field is required for Fargate. For information about the valid
+values, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#task_size}{Task size}
+in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{memory}{The amount of memory (in MiB) used by the task. It can be expressed as
 an integer using MiB (for example ,\code{1024}) or as a string using GB (for
@@ -212,8 +189,8 @@ process namespace with the host Amazon EC2 instance.
 If \code{task} is specified, all containers within the specified task share
 the same process namespace.
 
-If no value is specified, the default is a private namespace for each
-container.
+If no value is specified, the The default is a private namespace for
+each container.
 
 If the \code{host} PID mode is used, there's a heightened risk of undesired
 process namespace exposure.
@@ -279,8 +256,7 @@ platforms:
 \item Windows platform version \verb{1.0.0} or later.
 }}
 
-\item{runtimePlatform}{The operating system that your tasks definitions run on. A platform
-family is specified only for tasks using the Fargate launch type.}
+\item{runtimePlatform}{The operating system that your tasks definitions run on.}
 
 \item{enableFaultInjection}{Enables fault injection when you register your task definition and
 allows for fault injection requests to be accepted from the task's

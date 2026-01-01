@@ -11,16 +11,16 @@ cloudformation_estimate_template_cost(
 )
 }
 \arguments{
-\item{TemplateBody}{Structure containing the template body with a minimum length of 1 byte
-and a maximum length of 51,200 bytes.
+\item{TemplateBody}{Structure that contains the template body with a minimum length of 1
+byte and a maximum length of 51,200 bytes.
 
 Conditional: You must pass \code{TemplateBody} or \code{TemplateURL}. If both are
 passed, only \code{TemplateBody} is used.}
 
-\item{TemplateURL}{The URL of a file containing the template body. The URL must point to a
-template that's located in an Amazon S3 bucket or a Systems Manager
+\item{TemplateURL}{The URL of a file that contains the template body. The URL must point to
+a template that's located in an Amazon S3 bucket or a Systems Manager
 document. The location for an Amazon S3 bucket must start with
-\verb{https://}.
+\verb{https://}. URLs from S3 static websites are not supported.
 
 Conditional: You must pass \code{TemplateURL} or \code{TemplateBody}. If both are
 passed, only \code{TemplateBody} is used.}

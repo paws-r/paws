@@ -24,6 +24,18 @@ test_that("describe_products", {
   expect_error(svc$describe_products(MaxResults = 20), NA)
 })
 
+test_that("describe_products_v2", {
+  expect_error(svc$describe_products_v2(), NA)
+})
+
+test_that("describe_products_v2", {
+  expect_error(svc$describe_products_v2(MaxResults = 20), NA)
+})
+
+test_that("describe_security_hub_v2", {
+  expect_error(svc$describe_security_hub_v2(), NA)
+})
+
 test_that("describe_standards", {
   expect_error(svc$describe_standards(), NA)
 })
@@ -32,12 +44,28 @@ test_that("describe_standards", {
   expect_error(svc$describe_standards(MaxResults = 20), NA)
 })
 
+test_that("list_aggregators_v2", {
+  expect_error(svc$list_aggregators_v2(), NA)
+})
+
+test_that("list_aggregators_v2", {
+  expect_error(svc$list_aggregators_v2(MaxResults = 20), NA)
+})
+
 test_that("list_automation_rules", {
   expect_error(svc$list_automation_rules(), NA)
 })
 
 test_that("list_automation_rules", {
   expect_error(svc$list_automation_rules(MaxResults = 20), NA)
+})
+
+test_that("list_automation_rules_v2", {
+  expect_error(svc$list_automation_rules_v2(), NA)
+})
+
+test_that("list_automation_rules_v2", {
+  expect_error(svc$list_automation_rules_v2(MaxResults = 20), NA)
 })
 
 test_that("list_configuration_policies", {
@@ -54,6 +82,14 @@ test_that("list_configuration_policy_associations", {
 
 test_that("list_configuration_policy_associations", {
   expect_error(svc$list_configuration_policy_associations(MaxResults = 20), NA)
+})
+
+test_that("list_connectors_v2", {
+  expect_error(svc$list_connectors_v2(), NA)
+})
+
+test_that("list_connectors_v2", {
+  expect_error(svc$list_connectors_v2(MaxResults = 20), NA)
 })
 
 test_that("list_enabled_products_for_import", {

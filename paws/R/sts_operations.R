@@ -150,7 +150,7 @@ NULL
 #' The regex used to validate this parameter is a string of characters
 #' consisting of upper- and lower-case alphanumeric characters with no
 #' spaces. You can also include underscores or any of the following
-#' characters: =,.@@-
+#' characters: +=,.@@-
 #' @param PolicyArns The Amazon Resource Names (ARNs) of the IAM managed policies that you
 #' want to use as managed session policies. The policies must exist in the
 #' same account as the role.
@@ -308,7 +308,7 @@ NULL
 #' The regex used to validate this parameter is a string of characters
 #' consisting of upper- and lower-case alphanumeric characters with no
 #' spaces. You can also include underscores or any of the following
-#' characters: =,.@@:/-
+#' characters: +=,.@@:\\/-
 #' @param SerialNumber The identification number of the MFA device that is associated with the
 #' user who is making the [`assume_role`][sts_assume_role] call. Specify
 #' this value if the trust policy of the role being assumed includes a
@@ -320,7 +320,7 @@ NULL
 #' The regex used to validate this parameter is a string of characters
 #' consisting of upper- and lower-case alphanumeric characters with no
 #' spaces. You can also include underscores or any of the following
-#' characters: =,.@@-
+#' characters: +=/:,.@@-
 #' @param TokenCode The value provided by the MFA device, if the trust policy of the role
 #' being assumed requires MFA. (In other words, if the policy includes a
 #' condition that tests for MFA). If the role being assumed requires MFA
@@ -491,6 +491,9 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' an access key ID, a secret access key, and a security token.
 #' Applications can use these temporary security credentials to sign calls
 #' to Amazon Web Services services.
+#' 
+#' AssumeRoleWithSAML will not work on IAM Identity Center managed roles.
+#' These roles' names start with `AWSReservedSSO_`.
 #' 
 #' **Session Duration**
 #' 
@@ -898,8 +901,8 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' (Optional) You can configure your IdP to pass attributes into your web
 #' identity token as session tags. Each session tag consists of a key name
 #' and an associated value. For more information about session tags, see
-#' [Passing Session Tags in
-#' STS](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html)
+#' [Passing session tags using
+#' AssumeRoleWithWebIdentity](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html#id_session-tags_adding-assume-role-idp)
 #' in the *IAM User Guide*.
 #' 
 #' You can pass up to 50 session tags. The plaintext session tag keys can’t
@@ -1186,7 +1189,10 @@ sts_assume_role_with_web_identity <- function(RoleArn, RoleSessionName, WebIdent
 #'
 #' @description
 #' Returns a set of short term credentials you can use to perform
-#' privileged tasks on a member account in your organization.
+#' privileged tasks on a member account in your organization. You must use
+#' credentials from an Organizations management account or a delegated
+#' administrator account for IAM to call [`assume_root`][sts_assume_root].
+#' You cannot use root user credentials to make this call.
 #' 
 #' Before you can launch a privileged session, you must have centralized
 #' root access in your organization. For steps to enable this feature, see
@@ -1203,14 +1209,25 @@ sts_assume_role_with_web_identity <- function(RoleArn, RoleSessionName, WebIdent
 #' tasks in
 #' CloudTrail](https://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-track-privileged-tasks.html)
 #' in the *IAM User Guide*.
+#' 
+#' When granting access to privileged tasks you should only grant the
+#' necessary permissions required to perform that task. For more
+#' information, see [Security best practices in
+#' IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html).
+#' In addition, you can use [service control
+#' policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
+#' (SCPs) to manage and limit permissions in your organization. See
+#' [General
+#' examples](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_examples_general.html)
+#' in the *Organizations User Guide* for more information on SCPs.
 #'
 #' @usage
 #' sts_assume_root(TargetPrincipal, TaskPolicyArn, DurationSeconds)
 #'
 #' @param TargetPrincipal &#91;required&#93; The member account principal ARN or account ID.
 #' @param TaskPolicyArn &#91;required&#93; The identity based policy that scopes the session to the privileged
-#' tasks that can be performed. You can use one of following Amazon Web
-#' Services managed policies to scope root session actions.
+#' tasks that can be performed. You must use one of following Amazon Web
+#' Services managed policies to scope root session actions:
 #' 
 #' -   [IAMAuditRootUserCredentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/security-iam-awsmanpol.html#security-iam-awsmanpol-IAMAuditRootUserCredentials)
 #' 
@@ -1531,6 +1548,70 @@ sts_get_caller_identity <- function() {
   return(response)
 }
 .sts$operations$get_caller_identity <- sts_get_caller_identity
+
+#' Exchanges a trade-in token for temporary Amazon Web Services credentials
+#' with the permissions associated with the assumed principal
+#'
+#' @description
+#' Exchanges a trade-in token for temporary Amazon Web Services credentials
+#' with the permissions associated with the assumed principal. This
+#' operation allows you to obtain credentials for a specific principal
+#' based on a trade-in token, enabling delegation of access to Amazon Web
+#' Services resources.
+#'
+#' @usage
+#' sts_get_delegated_access_token(TradeInToken)
+#'
+#' @param TradeInToken &#91;required&#93; The token to exchange for temporary Amazon Web Services credentials.
+#' This token must be valid and unexpired at the time of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Credentials = list(
+#'     AccessKeyId = "string",
+#'     SecretAccessKey = "string",
+#'     SessionToken = "string",
+#'     Expiration = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   PackedPolicySize = 123,
+#'   AssumedPrincipal = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_delegated_access_token(
+#'   TradeInToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sts_get_delegated_access_token
+#'
+#' @aliases sts_get_delegated_access_token
+sts_get_delegated_access_token <- function(TradeInToken) {
+  op <- new_operation(
+    name = "GetDelegatedAccessToken",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sts$get_delegated_access_token_input(TradeInToken = TradeInToken)
+  output <- .sts$get_delegated_access_token_output()
+  config <- get_config()
+  svc <- .sts$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sts$operations$get_delegated_access_token <- sts_get_delegated_access_token
 
 #' Returns a set of temporary security credentials (consisting of an access
 #' key ID, a secret access key, and a security token) for a user
@@ -2041,3 +2122,86 @@ sts_get_session_token <- function(DurationSeconds = NULL, SerialNumber = NULL, T
   return(response)
 }
 .sts$operations$get_session_token <- sts_get_session_token
+
+#' Returns a signed JSON Web Token (JWT) that represents the calling Amazon
+#' Web Services identity
+#'
+#' @description
+#' Returns a signed JSON Web Token (JWT) that represents the calling Amazon
+#' Web Services identity. The returned JWT can be used to authenticate with
+#' external services that support OIDC discovery. The token is signed by
+#' Amazon Web Services STS and can be publicly verified using the
+#' verification keys published at the issuer's JWKS endpoint.
+#'
+#' @usage
+#' sts_get_web_identity_token(Audience, DurationSeconds, SigningAlgorithm,
+#'   Tags)
+#'
+#' @param Audience &#91;required&#93; The intended recipient of the web identity token. This value populates
+#' the `aud` claim in the JWT and should identify the service or
+#' application that will validate and use the token. The external service
+#' should verify this claim to ensure the token was intended for their use.
+#' @param DurationSeconds The duration, in seconds, for which the JSON Web Token (JWT) will remain
+#' valid. The value can range from 60 seconds (1 minute) to 3600 seconds (1
+#' hour). If not specified, the default duration is 300 seconds (5
+#' minutes). The token is designed to be short-lived and should be used for
+#' proof of identity, then exchanged for credentials or short-lived tokens
+#' in the external service.
+#' @param SigningAlgorithm &#91;required&#93; The cryptographic algorithm to use for signing the JSON Web Token (JWT).
+#' Valid values are RS256 (RSA with SHA-256) and ES384 (ECDSA using P-384
+#' curve with SHA-384).
+#' @param Tags An optional list of tags to include in the JSON Web Token (JWT). These
+#' tags are added as custom claims to the JWT and can be used by the
+#' downstream service for authorization decisions.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WebIdentityToken = "string",
+#'   Expiration = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_web_identity_token(
+#'   Audience = list(
+#'     "string"
+#'   ),
+#'   DurationSeconds = 123,
+#'   SigningAlgorithm = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sts_get_web_identity_token
+#'
+#' @aliases sts_get_web_identity_token
+sts_get_web_identity_token <- function(Audience, DurationSeconds = NULL, SigningAlgorithm, Tags = NULL) {
+  op <- new_operation(
+    name = "GetWebIdentityToken",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sts$get_web_identity_token_input(Audience = Audience, DurationSeconds = DurationSeconds, SigningAlgorithm = SigningAlgorithm, Tags = Tags)
+  output <- .sts$get_web_identity_token_output()
+  config <- get_config()
+  svc <- .sts$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sts$operations$get_web_identity_token <- sts_get_web_identity_token

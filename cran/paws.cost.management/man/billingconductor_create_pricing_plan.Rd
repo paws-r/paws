@@ -14,8 +14,11 @@ billingconductor_create_pricing_plan(
 )
 }
 \arguments{
-\item{ClientToken}{The token that is needed to support idempotency. Idempotency isn't
-currently supported, but will be implemented in a future update.}
+\item{ClientToken}{A unique, case-sensitive identifier that you specify to ensure
+idempotency of the request. Idempotency ensures that an API request
+completes no more than one time. With an idempotent request, if the
+original request completes successfully, any subsequent retries complete
+successfully without performing any further actions.}
 
 \item{Name}{[required] The name of the pricing plan. The names must be unique to each pricing
 plan.}

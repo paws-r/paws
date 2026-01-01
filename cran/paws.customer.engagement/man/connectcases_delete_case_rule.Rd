@@ -4,12 +4,12 @@
 \alias{connectcases_delete_case_rule}
 \title{Deletes a case rule}
 \usage{
-connectcases_delete_case_rule(caseRuleId, domainId)
+connectcases_delete_case_rule(domainId, caseRuleId)
 }
 \arguments{
-\item{caseRuleId}{[required] Unique identifier of a case rule.}
-
 \item{domainId}{[required] Unique identifier of a Cases domain.}
+
+\item{caseRuleId}{[required] Unique identifier of a case rule.}
 }
 \description{
 Deletes a case rule. In the Amazon Connect admin website, case rules are known as \emph{case field conditions}. For more information about case field conditions, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html}{Add case field conditions to a case template}.

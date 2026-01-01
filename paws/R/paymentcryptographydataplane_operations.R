@@ -127,13 +127,13 @@ NULL
 #'       DiffieHellmanSymmetricKey = list(
 #'         CertificateAuthorityPublicKeyIdentifier = "string",
 #'         PublicKeyCertificate = "string",
-#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
+#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224",
 #'         KeyDerivationFunction = "NIST_SP800"|"ANSI_X963",
 #'         KeyDerivationHashAlgorithm = "SHA_256"|"SHA_384"|"SHA_512",
 #'         SharedInformation = "string"
 #'       )
 #'     ),
-#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"
+#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"|"HMAC"|"SHA_1"
 #'   )
 #' )
 #' ```
@@ -302,13 +302,13 @@ paymentcryptographydataplane_decrypt_data <- function(KeyIdentifier, CipherText,
 #'       DiffieHellmanSymmetricKey = list(
 #'         CertificateAuthorityPublicKeyIdentifier = "string",
 #'         PublicKeyCertificate = "string",
-#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
+#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224",
 #'         KeyDerivationFunction = "NIST_SP800"|"ANSI_X963",
 #'         KeyDerivationHashAlgorithm = "SHA_256"|"SHA_384"|"SHA_512",
 #'         SharedInformation = "string"
 #'       )
 #'     ),
-#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"
+#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"|"HMAC"|"SHA_1"
 #'   )
 #' )
 #' ```
@@ -336,6 +336,107 @@ paymentcryptographydataplane_encrypt_data <- function(KeyIdentifier, PlainText, 
   return(response)
 }
 .paymentcryptographydataplane$operations$encrypt_data <- paymentcryptographydataplane_encrypt_data
+
+#' Establishes node-to-node initialization between payment processing nodes
+#' such as an acquirer, issuer or payment network using Australian Standard
+#' 2805 (AS2805)
+#'
+#' @description
+#' Establishes node-to-node initialization between payment processing nodes
+#' such as an acquirer, issuer or payment network using Australian Standard
+#' 2805 (AS2805).
+#' 
+#' During node-to-node initialization, both communicating nodes must
+#' validate that they possess the correct Key Encrypting Keys (KEKs) before
+#' proceeding with session key exchange. In AS2805, the sending KEK (KEKs)
+#' of one node corresponds to the receiving KEK (KEKr) of its partner node.
+#' Each node uses its KEK to encrypt and decrypt session keys exchanged
+#' between the nodes. A KEK can be created or imported into Amazon Web
+#' Services Payment Cryptography using either the
+#' [CreateKey](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateKey.html)
+#' or
+#' [ImportKey](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html)
+#' operations.
+#' 
+#' The node initiating communication can use `GenerateAS2805KekValidation`
+#' to generate a combined KEK validation request and KEK validation
+#' response to send to the partnering node for validation. When invoked,
+#' the API internally generates a random sending key encrypted under KEKs
+#' and provides a receiving key encrypted under KEKr as response. The
+#' initiating node sends the response returned by this API to its partner
+#' for validation.
+#' 
+#' For information about valid keys for this operation, see [Understanding
+#' key
+#' attributes](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-validattributes.html)
+#' and [Key types for specific data
+#' operations](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html)
+#' in the *Amazon Web Services Payment Cryptography User Guide*.
+#' 
+#' **Cross-account use**: This operation can't be used across different
+#' Amazon Web Services accounts.
+#'
+#' @usage
+#' paymentcryptographydataplane_generate_as_2805_kek_validation(
+#'   KeyIdentifier, KekValidationType, RandomKeySendVariantMask)
+#'
+#' @param KeyIdentifier &#91;required&#93; The `keyARN` of sending KEK that Amazon Web Services Payment
+#' Cryptography uses for node-to-node initialization
+#' @param KekValidationType &#91;required&#93; Parameter information for generating a random key for KEK validation to
+#' perform node-to-node initialization.
+#' @param RandomKeySendVariantMask &#91;required&#93; The key variant to use for generating a random key for KEK validation
+#' during node-to-node initialization.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyArn = "string",
+#'   KeyCheckValue = "string",
+#'   RandomKeySend = "string",
+#'   RandomKeyReceive = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$generate_as_2805_kek_validation(
+#'   KeyIdentifier = "string",
+#'   KekValidationType = list(
+#'     KekValidationRequest = list(
+#'       DeriveKeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224"
+#'     ),
+#'     KekValidationResponse = list(
+#'       RandomKeySend = "string"
+#'     )
+#'   ),
+#'   RandomKeySendVariantMask = "VARIANT_MASK_82C0"|"VARIANT_MASK_82"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographydataplane_generate_as_2805_kek_validation
+#'
+#' @aliases paymentcryptographydataplane_generate_as_2805_kek_validation
+paymentcryptographydataplane_generate_as_2805_kek_validation <- function(KeyIdentifier, KekValidationType, RandomKeySendVariantMask) {
+  op <- new_operation(
+    name = "GenerateAs2805KekValidation",
+    http_method = "POST",
+    http_path = "/as2805kekvalidation/generate",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographydataplane$generate_as_2805_kek_validation_input(KeyIdentifier = KeyIdentifier, KekValidationType = KekValidationType, RandomKeySendVariantMask = RandomKeySendVariantMask)
+  output <- .paymentcryptographydataplane$generate_as_2805_kek_validation_output()
+  config <- get_config()
+  svc <- .paymentcryptographydataplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographydataplane$operations$generate_as_2805_kek_validation <- paymentcryptographydataplane_generate_as_2805_kek_validation
 
 #' Generates card-related validation data using algorithms such as Card
 #' Verification Values (CVV/CVV2), Dynamic Card Verification Values
@@ -486,8 +587,8 @@ paymentcryptographydataplane_generate_card_validation_data <- function(KeyIdenti
 #' You can use this operation to generate a DUPKT, CMAC, HMAC or EMV MAC by
 #' setting generation attributes and algorithm to the associated values.
 #' The MAC generation encryption key must have valid values for `KeyUsage`
-#' such as `TR31_M7_HMAC_KEY` for HMAC generation, and they key must have
-#' `KeyModesOfUse` set to `Generate` and `Verify`.
+#' such as `TR31_M7_HMAC_KEY` for HMAC generation, and the key must have
+#' `KeyModesOfUse` set to `Generate`.
 #' 
 #' For information about valid keys for this operation, see [Understanding
 #' key
@@ -530,7 +631,7 @@ paymentcryptographydataplane_generate_card_validation_data <- function(KeyIdenti
 #'   KeyIdentifier = "string",
 #'   MessageData = "string",
 #'   GenerationAttributes = list(
-#'     Algorithm = "ISO9797_ALGORITHM1"|"ISO9797_ALGORITHM3"|"CMAC"|"HMAC_SHA224"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512",
+#'     Algorithm = "ISO9797_ALGORITHM1"|"ISO9797_ALGORITHM3"|"CMAC"|"HMAC"|"HMAC_SHA224"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"AS2805_4_1",
 #'     EmvMac = list(
 #'       MajorKeyDerivationMode = "EMV_OPTION_A"|"EMV_OPTION_B",
 #'       PrimaryAccountNumber = "string",
@@ -812,12 +913,12 @@ paymentcryptographydataplane_generate_mac_emv_pin_change <- function(NewPinPekId
 #' asymmetric ECC key.
 #' @param GenerationAttributes &#91;required&#93; The attributes and values to use for PIN, PVV, or PIN Offset generation.
 #' @param PinDataLength The length of PIN under generation.
-#' @param PrimaryAccountNumber &#91;required&#93; The Primary Account Number (PAN), a unique identifier for a payment
+#' @param PrimaryAccountNumber The Primary Account Number (PAN), a unique identifier for a payment
 #' credit or debit card that associates the card with a specific account
 #' holder.
 #' @param PinBlockFormat &#91;required&#93; The PIN encoding format for pin data generation as specified in ISO
-#' 9564. Amazon Web Services Payment Cryptography supports `ISO_Format_0`
-#' and `ISO_Format_3`.
+#' 9564. Amazon Web Services Payment Cryptography supports `ISO_Format_0`,
+#' `ISO_Format_3` and `ISO_Format_4`.
 #' 
 #' The `ISO_Format_0` PIN block format is equivalent to the ANSI X9.8,
 #' VISA-1, and ECI-1 PIN block formats. It is similar to a VISA-4 PIN block
@@ -825,6 +926,9 @@ paymentcryptographydataplane_generate_mac_emv_pin_change <- function(NewPinPekId
 #' 
 #' The `ISO_Format_3` PIN block format is the same as `ISO_Format_0` except
 #' that the fill digits are random values from 10 to 15.
+#' 
+#' The `ISO_Format_4` PIN block format is the only one supporting AES
+#' encryption.
 #' @param EncryptionWrappedKey 
 #'
 #' @return
@@ -881,20 +985,20 @@ paymentcryptographydataplane_generate_mac_emv_pin_change <- function(NewPinPekId
 #'   ),
 #'   PinDataLength = 123,
 #'   PrimaryAccountNumber = "string",
-#'   PinBlockFormat = "ISO_FORMAT_0"|"ISO_FORMAT_3"|"ISO_FORMAT_4",
+#'   PinBlockFormat = "ISO_FORMAT_0"|"ISO_FORMAT_1"|"ISO_FORMAT_3"|"ISO_FORMAT_4",
 #'   EncryptionWrappedKey = list(
 #'     WrappedKeyMaterial = list(
 #'       Tr31KeyBlock = "string",
 #'       DiffieHellmanSymmetricKey = list(
 #'         CertificateAuthorityPublicKeyIdentifier = "string",
 #'         PublicKeyCertificate = "string",
-#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
+#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224",
 #'         KeyDerivationFunction = "NIST_SP800"|"ANSI_X963",
 #'         KeyDerivationHashAlgorithm = "SHA_256"|"SHA_384"|"SHA_512",
 #'         SharedInformation = "string"
 #'       )
 #'     ),
-#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"
+#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"|"HMAC"|"SHA_1"
 #'   )
 #' )
 #' ```
@@ -904,7 +1008,7 @@ paymentcryptographydataplane_generate_mac_emv_pin_change <- function(NewPinPekId
 #' @rdname paymentcryptographydataplane_generate_pin_data
 #'
 #' @aliases paymentcryptographydataplane_generate_pin_data
-paymentcryptographydataplane_generate_pin_data <- function(GenerationKeyIdentifier, EncryptionKeyIdentifier, GenerationAttributes, PinDataLength = NULL, PrimaryAccountNumber, PinBlockFormat, EncryptionWrappedKey = NULL) {
+paymentcryptographydataplane_generate_pin_data <- function(GenerationKeyIdentifier, EncryptionKeyIdentifier, GenerationAttributes, PinDataLength = NULL, PrimaryAccountNumber = NULL, PinBlockFormat, EncryptionWrappedKey = NULL) {
   op <- new_operation(
     name = "GeneratePinData",
     http_method = "POST",
@@ -1047,13 +1151,13 @@ paymentcryptographydataplane_generate_pin_data <- function(GenerationKeyIdentifi
 #'       DiffieHellmanSymmetricKey = list(
 #'         CertificateAuthorityPublicKeyIdentifier = "string",
 #'         PublicKeyCertificate = "string",
-#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
+#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224",
 #'         KeyDerivationFunction = "NIST_SP800"|"ANSI_X963",
 #'         KeyDerivationHashAlgorithm = "SHA_256"|"SHA_384"|"SHA_512",
 #'         SharedInformation = "string"
 #'       )
 #'     ),
-#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"
+#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"|"HMAC"|"SHA_1"
 #'   ),
 #'   OutgoingWrappedKey = list(
 #'     WrappedKeyMaterial = list(
@@ -1061,13 +1165,13 @@ paymentcryptographydataplane_generate_pin_data <- function(GenerationKeyIdentifi
 #'       DiffieHellmanSymmetricKey = list(
 #'         CertificateAuthorityPublicKeyIdentifier = "string",
 #'         PublicKeyCertificate = "string",
-#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
+#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224",
 #'         KeyDerivationFunction = "NIST_SP800"|"ANSI_X963",
 #'         KeyDerivationHashAlgorithm = "SHA_256"|"SHA_384"|"SHA_512",
 #'         SharedInformation = "string"
 #'       )
 #'     ),
-#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"
+#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"|"HMAC"|"SHA_1"
 #'   )
 #' )
 #' ```
@@ -1095,6 +1199,125 @@ paymentcryptographydataplane_re_encrypt_data <- function(IncomingKeyIdentifier, 
   return(response)
 }
 .paymentcryptographydataplane$operations$re_encrypt_data <- paymentcryptographydataplane_re_encrypt_data
+
+#' Translates an cryptographic key between different wrapping keys without
+#' importing the key into Amazon Web Services Payment Cryptography
+#'
+#' @description
+#' Translates an cryptographic key between different wrapping keys without
+#' importing the key into Amazon Web Services Payment Cryptography.
+#' 
+#' This operation can be used when key material is frequently rotated, such
+#' as during every card transaction, and there is a need to avoid importing
+#' short-lived keys into Amazon Web Services Payment Cryptography. It
+#' translates short-lived transaction keys such as
+#' [PEK](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/terminology.html#terms.pek)
+#' generated for each transaction and wrapped with an
+#' [ECDH](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/terminology.html#terms.ecdh)
+#' derived wrapping key to another
+#' [KEK](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/terminology.html#terms.kek)
+#' wrapping key.
+#' 
+#' Before using this operation, you must first request the public key
+#' certificate of the ECC key pair generated within Amazon Web Services
+#' Payment Cryptography to establish an ECDH key agreement. In
+#' `TranslateKeyData`, the service uses its own ECC key pair, public
+#' certificate of receiving ECC key pair, and the key derivation parameters
+#' to generate a derived key. The service uses this derived key to unwrap
+#' the incoming transaction key received as a TR31WrappedKeyBlock and
+#' re-wrap using a user provided KEK to generate an outgoing
+#' Tr31WrappedKeyBlock.
+#' 
+#' For information about valid keys for this operation, see [Understanding
+#' key
+#' attributes](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-validattributes.html)
+#' and [Key types for specific data
+#' operations](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html)
+#' in the *Amazon Web Services Payment Cryptography User Guide*.
+#' 
+#' **Cross-account use**: This operation can't be used across different
+#' Amazon Web Services accounts.
+#' 
+#' **Related operations:**
+#' 
+#' -   [CreateKey](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateKey.html)
+#' 
+#' -   [GetPublicCertificate](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetPublicKeyCertificate.html)
+#' 
+#' -   [ImportKey](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html)
+#'
+#' @usage
+#' paymentcryptographydataplane_translate_key_material(IncomingKeyMaterial,
+#'   OutgoingKeyMaterial, KeyCheckValueAlgorithm)
+#'
+#' @param IncomingKeyMaterial &#91;required&#93; Parameter information of the TR31WrappedKeyBlock containing the
+#' transaction key.
+#' @param OutgoingKeyMaterial &#91;required&#93; Parameter information of the wrapping key used to wrap the transaction
+#' key in the outgoing TR31WrappedKeyBlock.
+#' @param KeyCheckValueAlgorithm The key check value (KCV) algorithm used for calculating the KCV of the
+#' derived key.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WrappedKey = list(
+#'     WrappedKeyMaterial = "string",
+#'     KeyCheckValue = "string",
+#'     WrappedKeyMaterialFormat = "KEY_CRYPTOGRAM"|"TR31_KEY_BLOCK"|"TR34_KEY_BLOCK"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$translate_key_material(
+#'   IncomingKeyMaterial = list(
+#'     DiffieHellmanTr31KeyBlock = list(
+#'       PrivateKeyIdentifier = "string",
+#'       CertificateAuthorityPublicKeyIdentifier = "string",
+#'       PublicKeyCertificate = "string",
+#'       DeriveKeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224",
+#'       KeyDerivationFunction = "NIST_SP800"|"ANSI_X963",
+#'       KeyDerivationHashAlgorithm = "SHA_256"|"SHA_384"|"SHA_512",
+#'       DerivationData = list(
+#'         SharedInformation = "string"
+#'       ),
+#'       WrappedKeyBlock = "string"
+#'     )
+#'   ),
+#'   OutgoingKeyMaterial = list(
+#'     Tr31KeyBlock = list(
+#'       WrappingKeyIdentifier = "string"
+#'     )
+#'   ),
+#'   KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"|"HMAC"|"SHA_1"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographydataplane_translate_key_material
+#'
+#' @aliases paymentcryptographydataplane_translate_key_material
+paymentcryptographydataplane_translate_key_material <- function(IncomingKeyMaterial, OutgoingKeyMaterial, KeyCheckValueAlgorithm = NULL) {
+  op <- new_operation(
+    name = "TranslateKeyMaterial",
+    http_method = "POST",
+    http_path = "/keymaterial/translate",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographydataplane$translate_key_material_input(IncomingKeyMaterial = IncomingKeyMaterial, OutgoingKeyMaterial = OutgoingKeyMaterial, KeyCheckValueAlgorithm = KeyCheckValueAlgorithm)
+  output <- .paymentcryptographydataplane$translate_key_material_output()
+  config <- get_config()
+  svc <- .paymentcryptographydataplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographydataplane$operations$translate_key_material <- paymentcryptographydataplane_translate_key_material
 
 #' Translates encrypted PIN block from and to ISO 9564 formats 0,1,3,4
 #'
@@ -1132,7 +1355,7 @@ paymentcryptographydataplane_re_encrypt_data <- function(IncomingKeyIdentifier, 
 #' for use within the service. You can also use ECDH for reveal PIN,
 #' wherein the service translates the PIN block from PEK to a ECDH derived
 #' encryption key. For more information on establishing ECDH derived keys,
-#' see the [Generating
+#' see the [Creating
 #' keys](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/create-keys.html)
 #' in the *Amazon Web Services Payment Cryptography User Guide*.
 #' 
@@ -1168,7 +1391,7 @@ paymentcryptographydataplane_re_encrypt_data <- function(IncomingKeyIdentifier, 
 #'   OutgoingKeyIdentifier, IncomingTranslationAttributes,
 #'   OutgoingTranslationAttributes, EncryptedPinBlock,
 #'   IncomingDukptAttributes, OutgoingDukptAttributes, IncomingWrappedKey,
-#'   OutgoingWrappedKey)
+#'   OutgoingWrappedKey, IncomingAs2805Attributes)
 #'
 #' @param IncomingKeyIdentifier &#91;required&#93; The `keyARN` of the encryption key under which incoming PIN block data
 #' is encrypted. This key type can be PEK or BDK.
@@ -1193,6 +1416,8 @@ paymentcryptographydataplane_re_encrypt_data <- function(IncomingKeyIdentifier, 
 #' PIN block data is encrypted.
 #' @param OutgoingWrappedKey The WrappedKeyBlock containing the encryption key for encrypting
 #' outgoing PIN block data.
+#' @param IncomingAs2805Attributes The attributes and values to use for incoming AS2805 encryption key for
+#' PIN block translation.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1219,6 +1444,9 @@ paymentcryptographydataplane_re_encrypt_data <- function(IncomingKeyIdentifier, 
 #'     ),
 #'     IsoFormat4 = list(
 #'       PrimaryAccountNumber = "string"
+#'     ),
+#'     As2805Format0 = list(
+#'       PrimaryAccountNumber = "string"
 #'     )
 #'   ),
 #'   OutgoingTranslationAttributes = list(
@@ -1230,6 +1458,9 @@ paymentcryptographydataplane_re_encrypt_data <- function(IncomingKeyIdentifier, 
 #'       PrimaryAccountNumber = "string"
 #'     ),
 #'     IsoFormat4 = list(
+#'       PrimaryAccountNumber = "string"
+#'     ),
+#'     As2805Format0 = list(
 #'       PrimaryAccountNumber = "string"
 #'     )
 #'   ),
@@ -1250,13 +1481,13 @@ paymentcryptographydataplane_re_encrypt_data <- function(IncomingKeyIdentifier, 
 #'       DiffieHellmanSymmetricKey = list(
 #'         CertificateAuthorityPublicKeyIdentifier = "string",
 #'         PublicKeyCertificate = "string",
-#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
+#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224",
 #'         KeyDerivationFunction = "NIST_SP800"|"ANSI_X963",
 #'         KeyDerivationHashAlgorithm = "SHA_256"|"SHA_384"|"SHA_512",
 #'         SharedInformation = "string"
 #'       )
 #'     ),
-#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"
+#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"|"HMAC"|"SHA_1"
 #'   ),
 #'   OutgoingWrappedKey = list(
 #'     WrappedKeyMaterial = list(
@@ -1264,13 +1495,17 @@ paymentcryptographydataplane_re_encrypt_data <- function(IncomingKeyIdentifier, 
 #'       DiffieHellmanSymmetricKey = list(
 #'         CertificateAuthorityPublicKeyIdentifier = "string",
 #'         PublicKeyCertificate = "string",
-#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
+#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224",
 #'         KeyDerivationFunction = "NIST_SP800"|"ANSI_X963",
 #'         KeyDerivationHashAlgorithm = "SHA_256"|"SHA_384"|"SHA_512",
 #'         SharedInformation = "string"
 #'       )
 #'     ),
-#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"
+#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"|"HMAC"|"SHA_1"
+#'   ),
+#'   IncomingAs2805Attributes = list(
+#'     SystemTraceAuditNumber = "string",
+#'     TransactionAmount = "string"
 #'   )
 #' )
 #' ```
@@ -1280,7 +1515,7 @@ paymentcryptographydataplane_re_encrypt_data <- function(IncomingKeyIdentifier, 
 #' @rdname paymentcryptographydataplane_translate_pin_data
 #'
 #' @aliases paymentcryptographydataplane_translate_pin_data
-paymentcryptographydataplane_translate_pin_data <- function(IncomingKeyIdentifier, OutgoingKeyIdentifier, IncomingTranslationAttributes, OutgoingTranslationAttributes, EncryptedPinBlock, IncomingDukptAttributes = NULL, OutgoingDukptAttributes = NULL, IncomingWrappedKey = NULL, OutgoingWrappedKey = NULL) {
+paymentcryptographydataplane_translate_pin_data <- function(IncomingKeyIdentifier, OutgoingKeyIdentifier, IncomingTranslationAttributes, OutgoingTranslationAttributes, EncryptedPinBlock, IncomingDukptAttributes = NULL, OutgoingDukptAttributes = NULL, IncomingWrappedKey = NULL, OutgoingWrappedKey = NULL, IncomingAs2805Attributes = NULL) {
   op <- new_operation(
     name = "TranslatePinData",
     http_method = "POST",
@@ -1289,7 +1524,7 @@ paymentcryptographydataplane_translate_pin_data <- function(IncomingKeyIdentifie
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .paymentcryptographydataplane$translate_pin_data_input(IncomingKeyIdentifier = IncomingKeyIdentifier, OutgoingKeyIdentifier = OutgoingKeyIdentifier, IncomingTranslationAttributes = IncomingTranslationAttributes, OutgoingTranslationAttributes = OutgoingTranslationAttributes, EncryptedPinBlock = EncryptedPinBlock, IncomingDukptAttributes = IncomingDukptAttributes, OutgoingDukptAttributes = OutgoingDukptAttributes, IncomingWrappedKey = IncomingWrappedKey, OutgoingWrappedKey = OutgoingWrappedKey)
+  input <- .paymentcryptographydataplane$translate_pin_data_input(IncomingKeyIdentifier = IncomingKeyIdentifier, OutgoingKeyIdentifier = OutgoingKeyIdentifier, IncomingTranslationAttributes = IncomingTranslationAttributes, OutgoingTranslationAttributes = OutgoingTranslationAttributes, EncryptedPinBlock = EncryptedPinBlock, IncomingDukptAttributes = IncomingDukptAttributes, OutgoingDukptAttributes = OutgoingDukptAttributes, IncomingWrappedKey = IncomingWrappedKey, OutgoingWrappedKey = OutgoingWrappedKey, IncomingAs2805Attributes = IncomingAs2805Attributes)
   output <- .paymentcryptographydataplane$translate_pin_data_output()
   config <- get_config()
   svc <- .paymentcryptographydataplane$service(config, op)
@@ -1632,7 +1867,7 @@ paymentcryptographydataplane_verify_card_validation_data <- function(KeyIdentifi
 #'   MessageData = "string",
 #'   Mac = "string",
 #'   VerificationAttributes = list(
-#'     Algorithm = "ISO9797_ALGORITHM1"|"ISO9797_ALGORITHM3"|"CMAC"|"HMAC_SHA224"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512",
+#'     Algorithm = "ISO9797_ALGORITHM1"|"ISO9797_ALGORITHM3"|"CMAC"|"HMAC"|"HMAC_SHA224"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"AS2805_4_1",
 #'     EmvMac = list(
 #'       MajorKeyDerivationMode = "EMV_OPTION_A"|"EMV_OPTION_B",
 #'       PrimaryAccountNumber = "string",
@@ -1731,7 +1966,7 @@ paymentcryptographydataplane_verify_mac <- function(KeyIdentifier, MessageData, 
 #' @param VerificationAttributes &#91;required&#93; The attributes and values for PIN data verification.
 #' @param EncryptedPinBlock &#91;required&#93; The encrypted PIN block data that Amazon Web Services Payment
 #' Cryptography verifies.
-#' @param PrimaryAccountNumber &#91;required&#93; The Primary Account Number (PAN), a unique identifier for a payment
+#' @param PrimaryAccountNumber The Primary Account Number (PAN), a unique identifier for a payment
 #' credit or debit card that associates the card with a specific account
 #' holder.
 #' @param PinBlockFormat &#91;required&#93; The PIN encoding format for pin data generation as specified in ISO
@@ -1778,7 +2013,7 @@ paymentcryptographydataplane_verify_mac <- function(KeyIdentifier, MessageData, 
 #'   ),
 #'   EncryptedPinBlock = "string",
 #'   PrimaryAccountNumber = "string",
-#'   PinBlockFormat = "ISO_FORMAT_0"|"ISO_FORMAT_3"|"ISO_FORMAT_4",
+#'   PinBlockFormat = "ISO_FORMAT_0"|"ISO_FORMAT_1"|"ISO_FORMAT_3"|"ISO_FORMAT_4",
 #'   PinDataLength = 123,
 #'   DukptAttributes = list(
 #'     KeySerialNumber = "string",
@@ -1790,13 +2025,13 @@ paymentcryptographydataplane_verify_mac <- function(KeyIdentifier, MessageData, 
 #'       DiffieHellmanSymmetricKey = list(
 #'         CertificateAuthorityPublicKeyIdentifier = "string",
 #'         PublicKeyCertificate = "string",
-#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
+#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"|"HMAC_SHA256"|"HMAC_SHA384"|"HMAC_SHA512"|"HMAC_SHA224",
 #'         KeyDerivationFunction = "NIST_SP800"|"ANSI_X963",
 #'         KeyDerivationHashAlgorithm = "SHA_256"|"SHA_384"|"SHA_512",
 #'         SharedInformation = "string"
 #'       )
 #'     ),
-#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"
+#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"|"HMAC"|"SHA_1"
 #'   )
 #' )
 #' ```
@@ -1806,7 +2041,7 @@ paymentcryptographydataplane_verify_mac <- function(KeyIdentifier, MessageData, 
 #' @rdname paymentcryptographydataplane_verify_pin_data
 #'
 #' @aliases paymentcryptographydataplane_verify_pin_data
-paymentcryptographydataplane_verify_pin_data <- function(VerificationKeyIdentifier, EncryptionKeyIdentifier, VerificationAttributes, EncryptedPinBlock, PrimaryAccountNumber, PinBlockFormat, PinDataLength = NULL, DukptAttributes = NULL, EncryptionWrappedKey = NULL) {
+paymentcryptographydataplane_verify_pin_data <- function(VerificationKeyIdentifier, EncryptionKeyIdentifier, VerificationAttributes, EncryptedPinBlock, PrimaryAccountNumber = NULL, PinBlockFormat, PinDataLength = NULL, DukptAttributes = NULL, EncryptionWrappedKey = NULL) {
   op <- new_operation(
     name = "VerifyPinData",
     http_method = "POST",

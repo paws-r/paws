@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_generate_embed_url_for_registered_user_with_identity}
 \alias{quicksight_generate_embed_url_for_registered_user_with_identity}
-\title{Generates an embed URL that you can use to embed an Amazon QuickSight
+\title{Generates an embed URL that you can use to embed an Amazon Quick Sight
 experience in your website}
 \usage{
 quicksight_generate_embed_url_for_registered_user_with_identity(
@@ -22,7 +22,7 @@ quicksight_generate_embed_url_for_registered_user_with_identity(
 \item{AllowedDomains}{A list of domains to be allowed to generate the embed URL.}
 }
 \description{
-Generates an embed URL that you can use to embed an Amazon QuickSight experience in your website. This action can be used for any type of user that is registered in an Amazon QuickSight account that uses IAM Identity Center for authentication. This API requires \href{https://docs.aws.amazon.com/singlesignon/latest/userguide/trustedidentitypropagation-overview.html#types-identity-enhanced-iam-role-sessions}{identity-enhanced IAM Role sessions} for the authenticated user that the API call is being made for.
+Generates an embed URL that you can use to embed an Amazon Quick Sight experience in your website. This action can be used for any type of user that is registered in an Amazon Quick Sight account that uses IAM Identity Center for authentication. This API requires \href{https://docs.aws.amazon.com/singlesignon/latest/userguide/trustedidentitypropagation-overview.html#types-identity-enhanced-iam-role-sessions}{identity-enhanced IAM Role sessions} for the authenticated user that the API call is being made for.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_generate_embed_url_for_registered_user_with_identity/} for full documentation.
 }

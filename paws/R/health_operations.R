@@ -522,6 +522,9 @@ health_describe_entity_aggregates_for_organization <- function(eventArns, awsAcc
 #' ```
 #' svc$describe_event_aggregates(
 #'   filter = list(
+#'     actionabilities = list(
+#'       "ACTION_REQUIRED"|"ACTION_MAY_BE_REQUIRED"|"INFORMATIONAL"
+#'     ),
 #'     eventArns = list(
 #'       "string"
 #'     ),
@@ -583,6 +586,9 @@ health_describe_entity_aggregates_for_organization <- function(eventArns, awsAcc
 #'     ),
 #'     eventStatusCodes = list(
 #'       "open"|"closed"|"upcoming"
+#'     ),
+#'     personas = list(
+#'       "OPERATIONS"|"SECURITY"|"BILLING"
 #'     )
 #'   ),
 #'   aggregateField = "eventTypeCategory",
@@ -668,7 +674,11 @@ health_describe_event_aggregates <- function(filter = NULL, aggregateField, maxR
 #'           "2015-01-01"
 #'         ),
 #'         statusCode = "open"|"closed"|"upcoming",
-#'         eventScopeCode = "PUBLIC"|"ACCOUNT_SPECIFIC"|"NONE"
+#'         eventScopeCode = "PUBLIC"|"ACCOUNT_SPECIFIC"|"NONE",
+#'         actionability = "ACTION_REQUIRED"|"ACTION_MAY_BE_REQUIRED"|"INFORMATIONAL",
+#'         personas = list(
+#'           "OPERATIONS"|"SECURITY"|"BILLING"
+#'         )
 #'       ),
 #'       eventDescription = list(
 #'         latestDescription = "string"
@@ -800,7 +810,11 @@ health_describe_event_details <- function(eventArns, locale = NULL) {
 #'           "2015-01-01"
 #'         ),
 #'         statusCode = "open"|"closed"|"upcoming",
-#'         eventScopeCode = "PUBLIC"|"ACCOUNT_SPECIFIC"|"NONE"
+#'         eventScopeCode = "PUBLIC"|"ACCOUNT_SPECIFIC"|"NONE",
+#'         actionability = "ACTION_REQUIRED"|"ACTION_MAY_BE_REQUIRED"|"INFORMATIONAL",
+#'         personas = list(
+#'           "OPERATIONS"|"SECURITY"|"BILLING"
+#'         )
 #'       ),
 #'       eventDescription = list(
 #'         latestDescription = "string"
@@ -899,7 +913,11 @@ health_describe_event_details_for_organization <- function(organizationEventDeta
 #'     list(
 #'       service = "string",
 #'       code = "string",
-#'       category = "issue"|"accountNotification"|"scheduledChange"|"investigation"
+#'       category = "issue"|"accountNotification"|"scheduledChange"|"investigation",
+#'       actionability = "ACTION_REQUIRED"|"ACTION_MAY_BE_REQUIRED"|"INFORMATIONAL",
+#'       personas = list(
+#'         "OPERATIONS"|"SECURITY"|"BILLING"
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -918,6 +936,12 @@ health_describe_event_details_for_organization <- function(organizationEventDeta
 #'     ),
 #'     eventTypeCategories = list(
 #'       "issue"|"accountNotification"|"scheduledChange"|"investigation"
+#'     ),
+#'     actionabilities = list(
+#'       "ACTION_REQUIRED"|"ACTION_MAY_BE_REQUIRED"|"INFORMATIONAL"
+#'     ),
+#'     personas = list(
+#'       "OPERATIONS"|"SECURITY"|"BILLING"
 #'     )
 #'   ),
 #'   locale = "string",
@@ -1014,7 +1038,11 @@ health_describe_event_types <- function(filter = NULL, locale = NULL, nextToken 
 #'         "2015-01-01"
 #'       ),
 #'       statusCode = "open"|"closed"|"upcoming",
-#'       eventScopeCode = "PUBLIC"|"ACCOUNT_SPECIFIC"|"NONE"
+#'       eventScopeCode = "PUBLIC"|"ACCOUNT_SPECIFIC"|"NONE",
+#'       actionability = "ACTION_REQUIRED"|"ACTION_MAY_BE_REQUIRED"|"INFORMATIONAL",
+#'       personas = list(
+#'         "OPERATIONS"|"SECURITY"|"BILLING"
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1025,6 +1053,9 @@ health_describe_event_types <- function(filter = NULL, locale = NULL, nextToken 
 #' ```
 #' svc$describe_events(
 #'   filter = list(
+#'     actionabilities = list(
+#'       "ACTION_REQUIRED"|"ACTION_MAY_BE_REQUIRED"|"INFORMATIONAL"
+#'     ),
 #'     eventArns = list(
 #'       "string"
 #'     ),
@@ -1086,6 +1117,9 @@ health_describe_event_types <- function(filter = NULL, locale = NULL, nextToken 
 #'     ),
 #'     eventStatusCodes = list(
 #'       "open"|"closed"|"upcoming"
+#'     ),
+#'     personas = list(
+#'       "OPERATIONS"|"SECURITY"|"BILLING"
 #'     )
 #'   ),
 #'   nextToken = "string",
@@ -1186,7 +1220,11 @@ health_describe_events <- function(filter = NULL, nextToken = NULL, maxResults =
 #'       lastUpdatedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       statusCode = "open"|"closed"|"upcoming"
+#'       statusCode = "open"|"closed"|"upcoming",
+#'       actionability = "ACTION_REQUIRED"|"ACTION_MAY_BE_REQUIRED"|"INFORMATIONAL",
+#'       personas = list(
+#'         "OPERATIONS"|"SECURITY"|"BILLING"
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1197,6 +1235,9 @@ health_describe_events <- function(filter = NULL, nextToken = NULL, maxResults =
 #' ```
 #' svc$describe_events_for_organization(
 #'   filter = list(
+#'     actionabilities = list(
+#'       "ACTION_REQUIRED"|"ACTION_MAY_BE_REQUIRED"|"INFORMATIONAL"
+#'     ),
 #'     eventTypeCodes = list(
 #'       "string"
 #'     ),
@@ -1244,6 +1285,9 @@ health_describe_events <- function(filter = NULL, nextToken = NULL, maxResults =
 #'     ),
 #'     eventStatusCodes = list(
 #'       "open"|"closed"|"upcoming"
+#'     ),
+#'     personas = list(
+#'       "OPERATIONS"|"SECURITY"|"BILLING"
 #'     )
 #'   ),
 #'   nextToken = "string",

@@ -9,7 +9,8 @@ quicksight_create_topic(
   TopicId,
   Topic,
   Tags = NULL,
-  FolderArns = NULL
+  FolderArns = NULL,
+  CustomInstructions = NULL
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ Amazon Web Services Region for each Amazon Web Services account.}
 are assigned to the dataset.}
 
 \item{FolderArns}{The Folder ARN of the folder that you want the topic to reside in.}
+
+\item{CustomInstructions}{Custom instructions for the topic.}
 }
 \description{
 Creates a new Q topic.

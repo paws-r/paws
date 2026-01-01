@@ -11,13 +11,17 @@ NULL
 #' parameters specified in the manifest JSON file.
 #'
 #' @usage
-#' controltower_create_landing_zone(manifest, tags, version)
+#' controltower_create_landing_zone(version, remediationTypes, tags,
+#'   manifest)
 #'
-#' @param manifest &#91;required&#93; The manifest JSON file is a text file that describes your Amazon Web
+#' @param version &#91;required&#93; The landing zone version, for example, 3.0.
+#' @param remediationTypes Specifies the types of remediation actions to apply when creating the
+#' landing zone, such as automatic drift correction or compliance
+#' enforcement.
+#' @param tags Tags to be applied to the landing zone.
+#' @param manifest The manifest JSON file is a text file that describes your Amazon Web
 #' Services resources. For examples, review [Launch your landing
 #' zone](https://docs.aws.amazon.com/controltower/latest/userguide/lz-api-launch.html).
-#' @param tags Tags to be applied to the landing zone.
-#' @param version &#91;required&#93; The landing zone version, for example, 3.0.
 #'
 #' @return
 #' A list with the following syntax:
@@ -31,11 +35,14 @@ NULL
 #' @section Request syntax:
 #' ```
 #' svc$create_landing_zone(
-#'   manifest = list(),
+#'   version = "string",
+#'   remediationTypes = list(
+#'     "INHERITANCE_DRIFT"
+#'   ),
 #'   tags = list(
 #'     "string"
 #'   ),
-#'   version = "string"
+#'   manifest = list()
 #' )
 #' ```
 #'
@@ -44,7 +51,7 @@ NULL
 #' @rdname controltower_create_landing_zone
 #'
 #' @aliases controltower_create_landing_zone
-controltower_create_landing_zone <- function(manifest, tags = NULL, version) {
+controltower_create_landing_zone <- function(version, remediationTypes = NULL, tags = NULL, manifest = NULL) {
   op <- new_operation(
     name = "CreateLandingZone",
     http_method = "POST",
@@ -53,7 +60,7 @@ controltower_create_landing_zone <- function(manifest, tags = NULL, version) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .controltower$create_landing_zone_input(manifest = manifest, tags = tags, version = version)
+  input <- .controltower$create_landing_zone_input(version = version, remediationTypes = remediationTypes, tags = tags, manifest = manifest)
   output <- .controltower$create_landing_zone_output()
   config <- get_config()
   svc <- .controltower$service(config, op)
@@ -69,6 +76,11 @@ controltower_create_landing_zone <- function(manifest, tags = NULL, version) {
 #' Decommissions a landing zone. This API call starts an asynchronous
 #' operation that deletes Amazon Web Services Control Tower resources
 #' deployed in accounts managed by Amazon Web Services Control Tower.
+#' 
+#' Decommissioning a landing zone is a process with significant
+#' consequences, and it cannot be undone. We strongly recommend that you
+#' perform this decommissioning process only if you intend to stop using
+#' your landing zone.
 #'
 #' @usage
 #' controltower_delete_landing_zone(landingZoneIdentifier)
@@ -182,16 +194,19 @@ controltower_disable_baseline <- function(enabledBaselineIdentifier) {
 #' .
 #'
 #' @usage
-#' controltower_disable_control(controlIdentifier, targetIdentifier)
+#' controltower_disable_control(controlIdentifier, targetIdentifier,
+#'   enabledControlIdentifier)
 #'
-#' @param controlIdentifier &#91;required&#93; The ARN of the control. Only **Strongly recommended** and **Elective**
+#' @param controlIdentifier The ARN of the control. Only **Strongly recommended** and **Elective**
 #' controls are permitted, with the exception of the **Region deny**
 #' control. For information on how to find the `controlIdentifier`, see
 #' [the overview
 #' page](https://docs.aws.amazon.com/controltower/latest/APIReference/Welcome.html).
-#' @param targetIdentifier &#91;required&#93; The ARN of the organizational unit. For information on how to find the
+#' @param targetIdentifier The ARN of the organizational unit. For information on how to find the
 #' `targetIdentifier`, see [the overview
 #' page](https://docs.aws.amazon.com/controltower/latest/APIReference/Welcome.html).
+#' @param enabledControlIdentifier The ARN of the enabled control to be disabled, which uniquely identifies
+#' the control instance on the target organizational unit.
 #'
 #' @return
 #' A list with the following syntax:
@@ -205,7 +220,8 @@ controltower_disable_baseline <- function(enabledBaselineIdentifier) {
 #' ```
 #' svc$disable_control(
 #'   controlIdentifier = "string",
-#'   targetIdentifier = "string"
+#'   targetIdentifier = "string",
+#'   enabledControlIdentifier = "string"
 #' )
 #' ```
 #'
@@ -214,7 +230,7 @@ controltower_disable_baseline <- function(enabledBaselineIdentifier) {
 #' @rdname controltower_disable_control
 #'
 #' @aliases controltower_disable_control
-controltower_disable_control <- function(controlIdentifier, targetIdentifier) {
+controltower_disable_control <- function(controlIdentifier = NULL, targetIdentifier = NULL, enabledControlIdentifier = NULL) {
   op <- new_operation(
     name = "DisableControl",
     http_method = "POST",
@@ -223,7 +239,7 @@ controltower_disable_control <- function(controlIdentifier, targetIdentifier) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .controltower$disable_control_input(controlIdentifier = controlIdentifier, targetIdentifier = targetIdentifier)
+  input <- .controltower$disable_control_input(controlIdentifier = controlIdentifier, targetIdentifier = targetIdentifier, enabledControlIdentifier = enabledControlIdentifier)
   output <- .controltower$disable_control_output()
   config <- get_config()
   svc <- .controltower$service(config, op)
@@ -244,31 +260,30 @@ controltower_disable_control <- function(controlIdentifier, targetIdentifier) {
 #' .
 #'
 #' @usage
-#' controltower_enable_baseline(baselineIdentifier, baselineVersion,
-#'   parameters, tags, targetIdentifier)
+#' controltower_enable_baseline(baselineVersion, parameters,
+#'   baselineIdentifier, targetIdentifier, tags)
 #'
-#' @param baselineIdentifier &#91;required&#93; The ARN of the baseline to be enabled.
 #' @param baselineVersion &#91;required&#93; The specific version to be enabled of the specified baseline.
 #' @param parameters A list of `key-value` objects that specify enablement parameters, where
 #' `key` is a string and `value` is a document of any type.
-#' @param tags Tags associated with input to
-#' [`enable_baseline`][controltower_enable_baseline].
+#' @param baselineIdentifier &#91;required&#93; The ARN of the baseline to be enabled.
 #' @param targetIdentifier &#91;required&#93; The ARN of the target on which the baseline will be enabled. Only OUs
 #' are supported as targets.
+#' @param tags Tags associated with input to
+#' [`enable_baseline`][controltower_enable_baseline].
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   arn = "string",
-#'   operationIdentifier = "string"
+#'   operationIdentifier = "string",
+#'   arn = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$enable_baseline(
-#'   baselineIdentifier = "string",
 #'   baselineVersion = "string",
 #'   parameters = list(
 #'     list(
@@ -276,10 +291,11 @@ controltower_disable_control <- function(controlIdentifier, targetIdentifier) {
 #'       value = list()
 #'     )
 #'   ),
+#'   baselineIdentifier = "string",
+#'   targetIdentifier = "string",
 #'   tags = list(
 #'     "string"
-#'   ),
-#'   targetIdentifier = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -288,7 +304,7 @@ controltower_disable_control <- function(controlIdentifier, targetIdentifier) {
 #' @rdname controltower_enable_baseline
 #'
 #' @aliases controltower_enable_baseline
-controltower_enable_baseline <- function(baselineIdentifier, baselineVersion, parameters = NULL, tags = NULL, targetIdentifier) {
+controltower_enable_baseline <- function(baselineVersion, parameters = NULL, baselineIdentifier, targetIdentifier, tags = NULL) {
   op <- new_operation(
     name = "EnableBaseline",
     http_method = "POST",
@@ -297,7 +313,7 @@ controltower_enable_baseline <- function(baselineIdentifier, baselineVersion, pa
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .controltower$enable_baseline_input(baselineIdentifier = baselineIdentifier, baselineVersion = baselineVersion, parameters = parameters, tags = tags, targetIdentifier = targetIdentifier)
+  input <- .controltower$enable_baseline_input(baselineVersion = baselineVersion, parameters = parameters, baselineIdentifier = baselineIdentifier, targetIdentifier = targetIdentifier, tags = tags)
   output <- .controltower$enable_baseline_output()
   config <- get_config()
   svc <- .controltower$service(config, op)
@@ -319,27 +335,27 @@ controltower_enable_baseline <- function(baselineIdentifier, baselineVersion, pa
 #' .
 #'
 #' @usage
-#' controltower_enable_control(controlIdentifier, parameters, tags,
-#'   targetIdentifier)
+#' controltower_enable_control(controlIdentifier, targetIdentifier, tags,
+#'   parameters)
 #'
 #' @param controlIdentifier &#91;required&#93; The ARN of the control. Only **Strongly recommended** and **Elective**
 #' controls are permitted, with the exception of the **Region deny**
 #' control. For information on how to find the `controlIdentifier`, see
 #' [the overview
 #' page](https://docs.aws.amazon.com/controltower/latest/APIReference/Welcome.html).
-#' @param parameters A list of input parameter values, which are specified to configure the
-#' control when you enable it.
-#' @param tags Tags to be applied to the `EnabledControl` resource.
 #' @param targetIdentifier &#91;required&#93; The ARN of the organizational unit. For information on how to find the
 #' `targetIdentifier`, see [the overview
 #' page](https://docs.aws.amazon.com/controltower/latest/APIReference/Welcome.html).
+#' @param tags Tags to be applied to the `EnabledControl` resource.
+#' @param parameters A list of input parameter values, which are specified to configure the
+#' control when you enable it.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   arn = "string",
-#'   operationIdentifier = "string"
+#'   operationIdentifier = "string",
+#'   arn = "string"
 #' )
 #' ```
 #'
@@ -347,16 +363,16 @@ controltower_enable_baseline <- function(baselineIdentifier, baselineVersion, pa
 #' ```
 #' svc$enable_control(
 #'   controlIdentifier = "string",
+#'   targetIdentifier = "string",
+#'   tags = list(
+#'     "string"
+#'   ),
 #'   parameters = list(
 #'     list(
 #'       key = "string",
 #'       value = list()
 #'     )
-#'   ),
-#'   tags = list(
-#'     "string"
-#'   ),
-#'   targetIdentifier = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -365,7 +381,7 @@ controltower_enable_baseline <- function(baselineIdentifier, baselineVersion, pa
 #' @rdname controltower_enable_control
 #'
 #' @aliases controltower_enable_control
-controltower_enable_control <- function(controlIdentifier, parameters = NULL, tags = NULL, targetIdentifier) {
+controltower_enable_control <- function(controlIdentifier, targetIdentifier, tags = NULL, parameters = NULL) {
   op <- new_operation(
     name = "EnableControl",
     http_method = "POST",
@@ -374,7 +390,7 @@ controltower_enable_control <- function(controlIdentifier, parameters = NULL, ta
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .controltower$enable_control_input(controlIdentifier = controlIdentifier, parameters = parameters, tags = tags, targetIdentifier = targetIdentifier)
+  input <- .controltower$enable_control_input(controlIdentifier = controlIdentifier, targetIdentifier = targetIdentifier, tags = tags, parameters = parameters)
   output <- .controltower$enable_control_output()
   config <- get_config()
   svc <- .controltower$service(config, op)
@@ -404,8 +420,8 @@ controltower_enable_control <- function(controlIdentifier, parameters = NULL, ta
 #' ```
 #' list(
 #'   arn = "string",
-#'   description = "string",
-#'   name = "string"
+#'   name = "string",
+#'   description = "string"
 #' )
 #' ```
 #'
@@ -466,15 +482,15 @@ controltower_get_baseline <- function(baselineIdentifier) {
 #' ```
 #' list(
 #'   baselineOperation = list(
-#'     endTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
 #'     operationIdentifier = "string",
 #'     operationType = "ENABLE_BASELINE"|"DISABLE_BASELINE"|"UPDATE_ENABLED_BASELINE"|"RESET_ENABLED_BASELINE",
+#'     status = "SUCCEEDED"|"FAILED"|"IN_PROGRESS",
 #'     startTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     status = "SUCCEEDED"|"FAILED"|"IN_PROGRESS",
+#'     endTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     statusMessage = "string"
 #'   )
 #' )
@@ -534,19 +550,19 @@ controltower_get_baseline_operation <- function(operationIdentifier) {
 #' ```
 #' list(
 #'   controlOperation = list(
-#'     controlIdentifier = "string",
-#'     enabledControlIdentifier = "string",
-#'     endTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     operationIdentifier = "string",
 #'     operationType = "ENABLE_CONTROL"|"DISABLE_CONTROL"|"UPDATE_ENABLED_CONTROL"|"RESET_ENABLED_CONTROL",
 #'     startTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
+#'     endTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     status = "SUCCEEDED"|"FAILED"|"IN_PROGRESS",
 #'     statusMessage = "string",
-#'     targetIdentifier = "string"
+#'     operationIdentifier = "string",
+#'     controlIdentifier = "string",
+#'     targetIdentifier = "string",
+#'     enabledControlIdentifier = "string"
 #'   )
 #' )
 #' ```
@@ -610,18 +626,18 @@ controltower_get_control_operation <- function(operationIdentifier) {
 #'         )
 #'       )
 #'     ),
+#'     targetIdentifier = "string",
+#'     parentIdentifier = "string",
+#'     statusSummary = list(
+#'       status = "SUCCEEDED"|"FAILED"|"UNDER_CHANGE",
+#'       lastOperationIdentifier = "string"
+#'     ),
 #'     parameters = list(
 #'       list(
 #'         key = "string",
 #'         value = list()
 #'       )
-#'     ),
-#'     parentIdentifier = "string",
-#'     statusSummary = list(
-#'       lastOperationIdentifier = "string",
-#'       status = "SUCCEEDED"|"FAILED"|"UNDER_CHANGE"
-#'     ),
-#'     targetIdentifier = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -677,23 +693,32 @@ controltower_get_enabled_baseline <- function(enabledBaselineIdentifier) {
 #'   enabledControlDetails = list(
 #'     arn = "string",
 #'     controlIdentifier = "string",
+#'     targetIdentifier = "string",
+#'     statusSummary = list(
+#'       status = "SUCCEEDED"|"FAILED"|"UNDER_CHANGE",
+#'       lastOperationIdentifier = "string"
+#'     ),
 #'     driftStatusSummary = list(
-#'       driftStatus = "DRIFTED"|"IN_SYNC"|"NOT_CHECKING"|"UNKNOWN"
+#'       driftStatus = "DRIFTED"|"IN_SYNC"|"NOT_CHECKING"|"UNKNOWN",
+#'       types = list(
+#'         inheritance = list(
+#'           status = "DRIFTED"|"IN_SYNC"|"NOT_CHECKING"|"UNKNOWN"
+#'         ),
+#'         resource = list(
+#'           status = "DRIFTED"|"IN_SYNC"|"NOT_CHECKING"|"UNKNOWN"
+#'         )
+#'       )
+#'     ),
+#'     parentIdentifier = "string",
+#'     targetRegions = list(
+#'       list(
+#'         name = "string"
+#'       )
 #'     ),
 #'     parameters = list(
 #'       list(
 #'         key = "string",
 #'         value = list()
-#'       )
-#'     ),
-#'     statusSummary = list(
-#'       lastOperationIdentifier = "string",
-#'       status = "SUCCEEDED"|"FAILED"|"UNDER_CHANGE"
-#'     ),
-#'     targetIdentifier = "string",
-#'     targetRegions = list(
-#'       list(
-#'         name = "string"
 #'       )
 #'     )
 #'   )
@@ -747,14 +772,17 @@ controltower_get_enabled_control <- function(enabledControlIdentifier) {
 #' ```
 #' list(
 #'   landingZone = list(
+#'     version = "string",
+#'     remediationTypes = list(
+#'       "INHERITANCE_DRIFT"
+#'     ),
 #'     arn = "string",
+#'     status = "ACTIVE"|"PROCESSING"|"FAILED",
+#'     latestAvailableVersion = "string",
 #'     driftStatus = list(
 #'       status = "DRIFTED"|"IN_SYNC"
 #'     ),
-#'     latestAvailableVersion = "string",
-#'     manifest = list(),
-#'     status = "ACTIVE"|"PROCESSING"|"FAILED",
-#'     version = "string"
+#'     manifest = list()
 #'   )
 #' )
 #' ```
@@ -806,15 +834,15 @@ controltower_get_landing_zone <- function(landingZoneIdentifier) {
 #' ```
 #' list(
 #'   operationDetails = list(
-#'     endTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     operationIdentifier = "string",
 #'     operationType = "DELETE"|"CREATE"|"UPDATE"|"RESET",
+#'     operationIdentifier = "string",
+#'     status = "SUCCEEDED"|"FAILED"|"IN_PROGRESS",
 #'     startTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     status = "SUCCEEDED"|"FAILED"|"IN_PROGRESS",
+#'     endTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     statusMessage = "string"
 #'   )
 #' )
@@ -860,10 +888,10 @@ controltower_get_landing_zone_operation <- function(operationIdentifier) {
 #' .
 #'
 #' @usage
-#' controltower_list_baselines(maxResults, nextToken)
+#' controltower_list_baselines(nextToken, maxResults)
 #'
-#' @param maxResults The maximum number of results to be shown.
 #' @param nextToken A pagination token.
+#' @param maxResults The maximum number of results to be shown.
 #'
 #' @return
 #' A list with the following syntax:
@@ -872,8 +900,8 @@ controltower_get_landing_zone_operation <- function(operationIdentifier) {
 #'   baselines = list(
 #'     list(
 #'       arn = "string",
-#'       description = "string",
-#'       name = "string"
+#'       name = "string",
+#'       description = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -883,8 +911,8 @@ controltower_get_landing_zone_operation <- function(operationIdentifier) {
 #' @section Request syntax:
 #' ```
 #' svc$list_baselines(
-#'   maxResults = 123,
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -893,7 +921,7 @@ controltower_get_landing_zone_operation <- function(operationIdentifier) {
 #' @rdname controltower_list_baselines
 #'
 #' @aliases controltower_list_baselines
-controltower_list_baselines <- function(maxResults = NULL, nextToken = NULL) {
+controltower_list_baselines <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListBaselines",
     http_method = "POST",
@@ -902,7 +930,7 @@ controltower_list_baselines <- function(maxResults = NULL, nextToken = NULL) {
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "baselines"),
     stream_api = FALSE
   )
-  input <- .controltower$list_baselines_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .controltower$list_baselines_input(nextToken = nextToken, maxResults = maxResults)
   output <- .controltower$list_baselines_output()
   config <- get_config()
   svc <- .controltower$service(config, op)
@@ -920,13 +948,13 @@ controltower_list_baselines <- function(maxResults = NULL, nextToken = NULL) {
 #' examples](https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html#list-control-operations-api-examples).
 #'
 #' @usage
-#' controltower_list_control_operations(filter, maxResults, nextToken)
+#' controltower_list_control_operations(filter, nextToken, maxResults)
 #'
 #' @param filter An input filter for the
 #' [`list_control_operations`][controltower_list_control_operations] API
 #' that lets you select the types of control operations to view.
-#' @param maxResults The maximum number of results to be shown.
 #' @param nextToken A pagination token.
+#' @param maxResults The maximum number of results to be shown.
 #'
 #' @return
 #' A list with the following syntax:
@@ -934,19 +962,19 @@ controltower_list_baselines <- function(maxResults = NULL, nextToken = NULL) {
 #' list(
 #'   controlOperations = list(
 #'     list(
-#'       controlIdentifier = "string",
-#'       enabledControlIdentifier = "string",
-#'       endTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       operationIdentifier = "string",
 #'       operationType = "ENABLE_CONTROL"|"DISABLE_CONTROL"|"UPDATE_ENABLED_CONTROL"|"RESET_ENABLED_CONTROL",
 #'       startTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
+#'       endTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
 #'       status = "SUCCEEDED"|"FAILED"|"IN_PROGRESS",
 #'       statusMessage = "string",
-#'       targetIdentifier = "string"
+#'       operationIdentifier = "string",
+#'       controlIdentifier = "string",
+#'       targetIdentifier = "string",
+#'       enabledControlIdentifier = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -960,8 +988,8 @@ controltower_list_baselines <- function(maxResults = NULL, nextToken = NULL) {
 #'     controlIdentifiers = list(
 #'       "string"
 #'     ),
-#'     controlOperationTypes = list(
-#'       "ENABLE_CONTROL"|"DISABLE_CONTROL"|"UPDATE_ENABLED_CONTROL"|"RESET_ENABLED_CONTROL"
+#'     targetIdentifiers = list(
+#'       "string"
 #'     ),
 #'     enabledControlIdentifiers = list(
 #'       "string"
@@ -969,12 +997,12 @@ controltower_list_baselines <- function(maxResults = NULL, nextToken = NULL) {
 #'     statuses = list(
 #'       "SUCCEEDED"|"FAILED"|"IN_PROGRESS"
 #'     ),
-#'     targetIdentifiers = list(
-#'       "string"
+#'     controlOperationTypes = list(
+#'       "ENABLE_CONTROL"|"DISABLE_CONTROL"|"UPDATE_ENABLED_CONTROL"|"RESET_ENABLED_CONTROL"
 #'     )
 #'   ),
-#'   maxResults = 123,
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -983,7 +1011,7 @@ controltower_list_baselines <- function(maxResults = NULL, nextToken = NULL) {
 #' @rdname controltower_list_control_operations
 #'
 #' @aliases controltower_list_control_operations
-controltower_list_control_operations <- function(filter = NULL, maxResults = NULL, nextToken = NULL) {
+controltower_list_control_operations <- function(filter = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListControlOperations",
     http_method = "POST",
@@ -992,7 +1020,7 @@ controltower_list_control_operations <- function(filter = NULL, maxResults = NUL
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "controlOperations"),
     stream_api = FALSE
   )
-  input <- .controltower$list_control_operations_input(filter = filter, maxResults = maxResults, nextToken = nextToken)
+  input <- .controltower$list_control_operations_input(filter = filter, nextToken = nextToken, maxResults = maxResults)
   output <- .controltower$list_control_operations_output()
   config <- get_config()
   svc <- .controltower$service(config, op)
@@ -1013,16 +1041,16 @@ controltower_list_control_operations <- function(filter = NULL, maxResults = NUL
 #' .
 #'
 #' @usage
-#' controltower_list_enabled_baselines(filter, includeChildren, maxResults,
-#'   nextToken)
+#' controltower_list_enabled_baselines(filter, nextToken, maxResults,
+#'   includeChildren)
 #'
 #' @param filter A filter applied on the `ListEnabledBaseline` operation. Allowed filters
 #' are `baselineIdentifiers` and `targetIdentifiers`. The filter can be
 #' applied for either, or both.
+#' @param nextToken A pagination token.
+#' @param maxResults The maximum number of results to be shown.
 #' @param includeChildren A value that can be set to include the child enabled baselines in
 #' responses. The default value is false.
-#' @param maxResults The maximum number of results to be shown.
-#' @param nextToken A pagination token.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1040,12 +1068,12 @@ controltower_list_control_operations <- function(filter = NULL, maxResults = NUL
 #'           )
 #'         )
 #'       ),
+#'       targetIdentifier = "string",
 #'       parentIdentifier = "string",
 #'       statusSummary = list(
-#'         lastOperationIdentifier = "string",
-#'         status = "SUCCEEDED"|"FAILED"|"UNDER_CHANGE"
-#'       ),
-#'       targetIdentifier = "string"
+#'         status = "SUCCEEDED"|"FAILED"|"UNDER_CHANGE",
+#'         lastOperationIdentifier = "string"
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1056,11 +1084,11 @@ controltower_list_control_operations <- function(filter = NULL, maxResults = NUL
 #' ```
 #' svc$list_enabled_baselines(
 #'   filter = list(
-#'     baselineIdentifiers = list(
+#'     targetIdentifiers = list(
 #'       "string"
 #'     ),
-#'     inheritanceDriftStatuses = list(
-#'       "IN_SYNC"|"DRIFTED"
+#'     baselineIdentifiers = list(
+#'       "string"
 #'     ),
 #'     parentIdentifiers = list(
 #'       "string"
@@ -1068,13 +1096,13 @@ controltower_list_control_operations <- function(filter = NULL, maxResults = NUL
 #'     statuses = list(
 #'       "SUCCEEDED"|"FAILED"|"UNDER_CHANGE"
 #'     ),
-#'     targetIdentifiers = list(
-#'       "string"
+#'     inheritanceDriftStatuses = list(
+#'       "IN_SYNC"|"DRIFTED"
 #'     )
 #'   ),
-#'   includeChildren = TRUE|FALSE,
+#'   nextToken = "string",
 #'   maxResults = 123,
-#'   nextToken = "string"
+#'   includeChildren = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -1083,7 +1111,7 @@ controltower_list_control_operations <- function(filter = NULL, maxResults = NUL
 #' @rdname controltower_list_enabled_baselines
 #'
 #' @aliases controltower_list_enabled_baselines
-controltower_list_enabled_baselines <- function(filter = NULL, includeChildren = NULL, maxResults = NULL, nextToken = NULL) {
+controltower_list_enabled_baselines <- function(filter = NULL, nextToken = NULL, maxResults = NULL, includeChildren = NULL) {
   op <- new_operation(
     name = "ListEnabledBaselines",
     http_method = "POST",
@@ -1092,7 +1120,7 @@ controltower_list_enabled_baselines <- function(filter = NULL, includeChildren =
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "enabledBaselines"),
     stream_api = FALSE
   )
-  input <- .controltower$list_enabled_baselines_input(filter = filter, includeChildren = includeChildren, maxResults = maxResults, nextToken = nextToken)
+  input <- .controltower$list_enabled_baselines_input(filter = filter, nextToken = nextToken, maxResults = maxResults, includeChildren = includeChildren)
   output <- .controltower$list_enabled_baselines_output()
   config <- get_config()
   svc <- .controltower$service(config, op)
@@ -1113,18 +1141,20 @@ controltower_list_enabled_baselines <- function(filter = NULL, includeChildren =
 #' .
 #'
 #' @usage
-#' controltower_list_enabled_controls(filter, maxResults, nextToken,
-#'   targetIdentifier)
+#' controltower_list_enabled_controls(targetIdentifier, nextToken,
+#'   maxResults, filter, includeChildren)
 #'
-#' @param filter An input filter for the
-#' [`list_enabled_controls`][controltower_list_enabled_controls] API that
-#' lets you select the types of control operations to view.
-#' @param maxResults How many results to return per API call.
-#' @param nextToken The token to continue the list from a previous API call with the same
-#' parameters.
 #' @param targetIdentifier The ARN of the organizational unit. For information on how to find the
 #' `targetIdentifier`, see [the overview
 #' page](https://docs.aws.amazon.com/controltower/latest/APIReference/Welcome.html).
+#' @param nextToken The token to continue the list from a previous API call with the same
+#' parameters.
+#' @param maxResults How many results to return per API call.
+#' @param filter An input filter for the
+#' [`list_enabled_controls`][controltower_list_enabled_controls] API that
+#' lets you select the types of control operations to view.
+#' @param includeChildren A boolean value that determines whether to include enabled controls from
+#' child organizational units in the response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1134,14 +1164,23 @@ controltower_list_enabled_baselines <- function(filter = NULL, includeChildren =
 #'     list(
 #'       arn = "string",
 #'       controlIdentifier = "string",
-#'       driftStatusSummary = list(
-#'         driftStatus = "DRIFTED"|"IN_SYNC"|"NOT_CHECKING"|"UNKNOWN"
-#'       ),
+#'       targetIdentifier = "string",
 #'       statusSummary = list(
-#'         lastOperationIdentifier = "string",
-#'         status = "SUCCEEDED"|"FAILED"|"UNDER_CHANGE"
+#'         status = "SUCCEEDED"|"FAILED"|"UNDER_CHANGE",
+#'         lastOperationIdentifier = "string"
 #'       ),
-#'       targetIdentifier = "string"
+#'       driftStatusSummary = list(
+#'         driftStatus = "DRIFTED"|"IN_SYNC"|"NOT_CHECKING"|"UNKNOWN",
+#'         types = list(
+#'           inheritance = list(
+#'             status = "DRIFTED"|"IN_SYNC"|"NOT_CHECKING"|"UNKNOWN"
+#'           ),
+#'           resource = list(
+#'             status = "DRIFTED"|"IN_SYNC"|"NOT_CHECKING"|"UNKNOWN"
+#'           )
+#'         )
+#'       ),
+#'       parentIdentifier = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1151,20 +1190,30 @@ controltower_list_enabled_baselines <- function(filter = NULL, includeChildren =
 #' @section Request syntax:
 #' ```
 #' svc$list_enabled_controls(
+#'   targetIdentifier = "string",
+#'   nextToken = "string",
+#'   maxResults = 123,
 #'   filter = list(
 #'     controlIdentifiers = list(
 #'       "string"
 #'     ),
+#'     statuses = list(
+#'       "SUCCEEDED"|"FAILED"|"UNDER_CHANGE"
+#'     ),
 #'     driftStatuses = list(
 #'       "DRIFTED"|"IN_SYNC"|"NOT_CHECKING"|"UNKNOWN"
 #'     ),
-#'     statuses = list(
-#'       "SUCCEEDED"|"FAILED"|"UNDER_CHANGE"
+#'     parentIdentifiers = list(
+#'       "string"
+#'     ),
+#'     inheritanceDriftStatuses = list(
+#'       "DRIFTED"|"IN_SYNC"|"NOT_CHECKING"|"UNKNOWN"
+#'     ),
+#'     resourceDriftStatuses = list(
+#'       "DRIFTED"|"IN_SYNC"|"NOT_CHECKING"|"UNKNOWN"
 #'     )
 #'   ),
-#'   maxResults = 123,
-#'   nextToken = "string",
-#'   targetIdentifier = "string"
+#'   includeChildren = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -1173,7 +1222,7 @@ controltower_list_enabled_baselines <- function(filter = NULL, includeChildren =
 #' @rdname controltower_list_enabled_controls
 #'
 #' @aliases controltower_list_enabled_controls
-controltower_list_enabled_controls <- function(filter = NULL, maxResults = NULL, nextToken = NULL, targetIdentifier = NULL) {
+controltower_list_enabled_controls <- function(targetIdentifier = NULL, nextToken = NULL, maxResults = NULL, filter = NULL, includeChildren = NULL) {
   op <- new_operation(
     name = "ListEnabledControls",
     http_method = "POST",
@@ -1182,7 +1231,7 @@ controltower_list_enabled_controls <- function(filter = NULL, maxResults = NULL,
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "enabledControls"),
     stream_api = FALSE
   )
-  input <- .controltower$list_enabled_controls_input(filter = filter, maxResults = maxResults, nextToken = nextToken, targetIdentifier = targetIdentifier)
+  input <- .controltower$list_enabled_controls_input(targetIdentifier = targetIdentifier, nextToken = nextToken, maxResults = maxResults, filter = filter, includeChildren = includeChildren)
   output <- .controltower$list_enabled_controls_output()
   config <- get_config()
   svc <- .controltower$service(config, op)
@@ -1199,14 +1248,14 @@ controltower_list_enabled_controls <- function(filter = NULL, maxResults = NULL,
 #' sorted by time, with the most recent operation first.
 #'
 #' @usage
-#' controltower_list_landing_zone_operations(filter, maxResults, nextToken)
+#' controltower_list_landing_zone_operations(filter, nextToken, maxResults)
 #'
 #' @param filter An input filter for the
 #' [`list_landing_zone_operations`][controltower_list_landing_zone_operations]
 #' API that lets you select the types of landing zone operations to view.
-#' @param maxResults How many results to return per API call.
 #' @param nextToken The token to continue the list from a previous API call with the same
 #' parameters.
+#' @param maxResults How many results to return per API call.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1214,8 +1263,8 @@ controltower_list_enabled_controls <- function(filter = NULL, maxResults = NULL,
 #' list(
 #'   landingZoneOperations = list(
 #'     list(
-#'       operationIdentifier = "string",
 #'       operationType = "DELETE"|"CREATE"|"UPDATE"|"RESET",
+#'       operationIdentifier = "string",
 #'       status = "SUCCEEDED"|"FAILED"|"IN_PROGRESS"
 #'     )
 #'   ),
@@ -1227,15 +1276,15 @@ controltower_list_enabled_controls <- function(filter = NULL, maxResults = NULL,
 #' ```
 #' svc$list_landing_zone_operations(
 #'   filter = list(
-#'     statuses = list(
-#'       "SUCCEEDED"|"FAILED"|"IN_PROGRESS"
-#'     ),
 #'     types = list(
 #'       "DELETE"|"CREATE"|"UPDATE"|"RESET"
+#'     ),
+#'     statuses = list(
+#'       "SUCCEEDED"|"FAILED"|"IN_PROGRESS"
 #'     )
 #'   ),
-#'   maxResults = 123,
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -1244,7 +1293,7 @@ controltower_list_enabled_controls <- function(filter = NULL, maxResults = NULL,
 #' @rdname controltower_list_landing_zone_operations
 #'
 #' @aliases controltower_list_landing_zone_operations
-controltower_list_landing_zone_operations <- function(filter = NULL, maxResults = NULL, nextToken = NULL) {
+controltower_list_landing_zone_operations <- function(filter = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListLandingZoneOperations",
     http_method = "POST",
@@ -1253,7 +1302,7 @@ controltower_list_landing_zone_operations <- function(filter = NULL, maxResults 
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "landingZoneOperations"),
     stream_api = FALSE
   )
-  input <- .controltower$list_landing_zone_operations_input(filter = filter, maxResults = maxResults, nextToken = nextToken)
+  input <- .controltower$list_landing_zone_operations_input(filter = filter, nextToken = nextToken, maxResults = maxResults)
   output <- .controltower$list_landing_zone_operations_output()
   config <- get_config()
   svc <- .controltower$service(config, op)
@@ -1274,11 +1323,11 @@ controltower_list_landing_zone_operations <- function(filter = NULL, maxResults 
 #' Returns one landing zone ARN.
 #'
 #' @usage
-#' controltower_list_landing_zones(maxResults, nextToken)
+#' controltower_list_landing_zones(nextToken, maxResults)
 #'
-#' @param maxResults The maximum number of returned landing zone ARNs, which is one.
 #' @param nextToken The token to continue the list from a previous API call with the same
 #' parameters.
+#' @param maxResults The maximum number of returned landing zone ARNs, which is one.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1296,8 +1345,8 @@ controltower_list_landing_zone_operations <- function(filter = NULL, maxResults 
 #' @section Request syntax:
 #' ```
 #' svc$list_landing_zones(
-#'   maxResults = 123,
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -1306,7 +1355,7 @@ controltower_list_landing_zone_operations <- function(filter = NULL, maxResults 
 #' @rdname controltower_list_landing_zones
 #'
 #' @aliases controltower_list_landing_zones
-controltower_list_landing_zones <- function(maxResults = NULL, nextToken = NULL) {
+controltower_list_landing_zones <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListLandingZones",
     http_method = "POST",
@@ -1315,7 +1364,7 @@ controltower_list_landing_zones <- function(maxResults = NULL, nextToken = NULL)
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "landingZones"),
     stream_api = FALSE
   )
-  input <- .controltower$list_landing_zones_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .controltower$list_landing_zones_input(nextToken = nextToken, maxResults = maxResults)
   output <- .controltower$list_landing_zones_output()
   config <- get_config()
   svc <- .controltower$service(config, op)
@@ -1437,7 +1486,8 @@ controltower_reset_enabled_baseline <- function(enabledBaselineIdentifier) {
 #' Resets an enabled control
 #'
 #' @description
-#' Resets an enabled control.
+#' Resets an enabled control. Does not work for controls implemented with
+#' SCPs.
 #'
 #' @usage
 #' controltower_reset_enabled_control(enabledControlIdentifier)
@@ -1648,13 +1698,13 @@ controltower_untag_resource <- function(resourceArn, tagKeys) {
 #' .
 #'
 #' @usage
-#' controltower_update_enabled_baseline(baselineVersion,
-#'   enabledBaselineIdentifier, parameters)
+#' controltower_update_enabled_baseline(baselineVersion, parameters,
+#'   enabledBaselineIdentifier)
 #'
 #' @param baselineVersion &#91;required&#93; Specifies the new `Baseline` version, to which the `EnabledBaseline`
 #' should be updated.
-#' @param enabledBaselineIdentifier &#91;required&#93; Specifies the `EnabledBaseline` resource to be updated.
 #' @param parameters Parameters to apply when making an update.
+#' @param enabledBaselineIdentifier &#91;required&#93; Specifies the `EnabledBaseline` resource to be updated.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1668,13 +1718,13 @@ controltower_untag_resource <- function(resourceArn, tagKeys) {
 #' ```
 #' svc$update_enabled_baseline(
 #'   baselineVersion = "string",
-#'   enabledBaselineIdentifier = "string",
 #'   parameters = list(
 #'     list(
 #'       key = "string",
 #'       value = list()
 #'     )
-#'   )
+#'   ),
+#'   enabledBaselineIdentifier = "string"
 #' )
 #' ```
 #'
@@ -1683,7 +1733,7 @@ controltower_untag_resource <- function(resourceArn, tagKeys) {
 #' @rdname controltower_update_enabled_baseline
 #'
 #' @aliases controltower_update_enabled_baseline
-controltower_update_enabled_baseline <- function(baselineVersion, enabledBaselineIdentifier, parameters = NULL) {
+controltower_update_enabled_baseline <- function(baselineVersion, parameters = NULL, enabledBaselineIdentifier) {
   op <- new_operation(
     name = "UpdateEnabledBaseline",
     http_method = "POST",
@@ -1692,7 +1742,7 @@ controltower_update_enabled_baseline <- function(baselineVersion, enabledBaselin
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .controltower$update_enabled_baseline_input(baselineVersion = baselineVersion, enabledBaselineIdentifier = enabledBaselineIdentifier, parameters = parameters)
+  input <- .controltower$update_enabled_baseline_input(baselineVersion = baselineVersion, parameters = parameters, enabledBaselineIdentifier = enabledBaselineIdentifier)
   output <- .controltower$update_enabled_baseline_output()
   config <- get_config()
   svc <- .controltower$service(config, op)
@@ -1728,12 +1778,12 @@ controltower_update_enabled_baseline <- function(baselineVersion, enabledBaselin
 #' .
 #'
 #' @usage
-#' controltower_update_enabled_control(enabledControlIdentifier,
-#'   parameters)
+#' controltower_update_enabled_control(parameters,
+#'   enabledControlIdentifier)
 #'
-#' @param enabledControlIdentifier &#91;required&#93; The ARN of the enabled control that will be updated.
 #' @param parameters &#91;required&#93; A key/value pair, where `Key` is of type `String` and `Value` is of type
 #' `Document`.
+#' @param enabledControlIdentifier &#91;required&#93; The ARN of the enabled control that will be updated.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1746,13 +1796,13 @@ controltower_update_enabled_baseline <- function(baselineVersion, enabledBaselin
 #' @section Request syntax:
 #' ```
 #' svc$update_enabled_control(
-#'   enabledControlIdentifier = "string",
 #'   parameters = list(
 #'     list(
 #'       key = "string",
 #'       value = list()
 #'     )
-#'   )
+#'   ),
+#'   enabledControlIdentifier = "string"
 #' )
 #' ```
 #'
@@ -1761,7 +1811,7 @@ controltower_update_enabled_baseline <- function(baselineVersion, enabledBaselin
 #' @rdname controltower_update_enabled_control
 #'
 #' @aliases controltower_update_enabled_control
-controltower_update_enabled_control <- function(enabledControlIdentifier, parameters) {
+controltower_update_enabled_control <- function(parameters, enabledControlIdentifier) {
   op <- new_operation(
     name = "UpdateEnabledControl",
     http_method = "POST",
@@ -1770,7 +1820,7 @@ controltower_update_enabled_control <- function(enabledControlIdentifier, parame
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .controltower$update_enabled_control_input(enabledControlIdentifier = enabledControlIdentifier, parameters = parameters)
+  input <- .controltower$update_enabled_control_input(parameters = parameters, enabledControlIdentifier = enabledControlIdentifier)
   output <- .controltower$update_enabled_control_output()
   config <- get_config()
   svc <- .controltower$service(config, op)
@@ -1789,17 +1839,19 @@ controltower_update_enabled_control <- function(enabledControlIdentifier, parame
 #' file.
 #'
 #' @usage
-#' controltower_update_landing_zone(landingZoneIdentifier, manifest,
-#'   version)
+#' controltower_update_landing_zone(version, remediationTypes,
+#'   landingZoneIdentifier, manifest)
 #'
+#' @param version &#91;required&#93; The landing zone version, for example, 3.2.
+#' @param remediationTypes Specifies the types of remediation actions to apply when updating the
+#' landing zone configuration.
 #' @param landingZoneIdentifier &#91;required&#93; The unique identifier of the landing zone.
-#' @param manifest &#91;required&#93; The manifest file (JSON) is a text file that describes your Amazon Web
+#' @param manifest The manifest file (JSON) is a text file that describes your Amazon Web
 #' Services resources. For an example, review [Launch your landing
 #' zone](https://docs.aws.amazon.com/controltower/latest/userguide/lz-api-launch.html).
 #' The example manifest file contains each of the available parameters. The
 #' schema for the landing zone's JSON manifest file is not published, by
 #' design.
-#' @param version &#91;required&#93; The landing zone version, for example, 3.2.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1812,9 +1864,12 @@ controltower_update_enabled_control <- function(enabledControlIdentifier, parame
 #' @section Request syntax:
 #' ```
 #' svc$update_landing_zone(
+#'   version = "string",
+#'   remediationTypes = list(
+#'     "INHERITANCE_DRIFT"
+#'   ),
 #'   landingZoneIdentifier = "string",
-#'   manifest = list(),
-#'   version = "string"
+#'   manifest = list()
 #' )
 #' ```
 #'
@@ -1823,7 +1878,7 @@ controltower_update_enabled_control <- function(enabledControlIdentifier, parame
 #' @rdname controltower_update_landing_zone
 #'
 #' @aliases controltower_update_landing_zone
-controltower_update_landing_zone <- function(landingZoneIdentifier, manifest, version) {
+controltower_update_landing_zone <- function(version, remediationTypes = NULL, landingZoneIdentifier, manifest = NULL) {
   op <- new_operation(
     name = "UpdateLandingZone",
     http_method = "POST",
@@ -1832,7 +1887,7 @@ controltower_update_landing_zone <- function(landingZoneIdentifier, manifest, ve
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .controltower$update_landing_zone_input(landingZoneIdentifier = landingZoneIdentifier, manifest = manifest, version = version)
+  input <- .controltower$update_landing_zone_input(version = version, remediationTypes = remediationTypes, landingZoneIdentifier = landingZoneIdentifier, manifest = manifest)
   output <- .controltower$update_landing_zone_output()
   config <- get_config()
   svc <- .controltower$service(config, op)

@@ -8,8 +8,8 @@ specified StackStatusFilter}
 cloudformation_list_stacks(NextToken = NULL, StackStatusFilter = NULL)
 }
 \arguments{
-\item{NextToken}{A string that identifies the next page of stacks that you want to
-retrieve.}
+\item{NextToken}{The token for the next set of items to return. (You received this token
+from a previous call.)}
 
 \item{StackStatusFilter}{Stack status to use as a filter. Specify one or more stack status codes
 to list only stacks with the specified status codes. For a complete list

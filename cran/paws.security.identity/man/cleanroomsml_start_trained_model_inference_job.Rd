@@ -8,6 +8,7 @@ cleanroomsml_start_trained_model_inference_job(
   membershipIdentifier,
   name,
   trainedModelArn,
+  trainedModelVersionIdentifier = NULL,
   configuredModelAlgorithmAssociationArn = NULL,
   resourceConfig,
   outputConfiguration,
@@ -27,6 +28,10 @@ inference job.}
 
 \item{trainedModelArn}{[required] The Amazon Resource Name (ARN) of the trained model that is used for
 this trained model inference job.}
+
+\item{trainedModelVersionIdentifier}{The version identifier of the trained model to use for inference. This
+specifies which version of the trained model should be used to generate
+predictions on the input data.}
 
 \item{configuredModelAlgorithmAssociationArn}{The Amazon Resource Name (ARN) of the configured model algorithm
 association that is used for this trained model inference job.}

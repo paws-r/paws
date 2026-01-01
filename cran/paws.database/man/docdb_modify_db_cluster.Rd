@@ -20,9 +20,11 @@ docdb_modify_db_cluster(
   AllowMajorVersionUpgrade = NULL,
   DeletionProtection = NULL,
   StorageType = NULL,
+  ServerlessV2ScalingConfiguration = NULL,
   ManageMasterUserPassword = NULL,
   MasterUserSecretKmsKeyId = NULL,
-  RotateMasterUserPassword = NULL
+  RotateMasterUserPassword = NULL,
+  NetworkType = NULL
 )
 }
 \arguments{
@@ -133,9 +135,23 @@ the following command:
 
 \item{AllowMajorVersionUpgrade}{A value that indicates whether major version upgrades are allowed.
 
-Constraints: You must allow major version upgrades when specifying a
-value for the \code{EngineVersion} parameter that is a different major
-version than the DB cluster's current version.}
+Constraints:
+\itemize{
+\item You must allow major version upgrades when specifying a value for
+the \code{EngineVersion} parameter that is a different major version than
+the cluster's current version.
+\item Since some parameters are version specific, changing them requires
+executing a new \code{\link[=docdb_modify_db_cluster]{modify_db_cluster}} API
+call after the in-place MVU completes.
+}
+
+Performing an MVU directly impacts the following parameters:
+\itemize{
+\item \code{MasterUserPassword}
+\item \code{NewDBClusterIdentifier}
+\item \code{VpcSecurityGroupIds}
+\item \code{Port}
+}}
 
 \item{DeletionProtection}{Specifies whether this cluster can be deleted. If \code{DeletionProtection}
 is enabled, the cluster cannot be deleted unless it is modified and
@@ -151,6 +167,9 @@ Guide}.
 Valid values for storage type - \code{standard | iopt1}
 
 Default value is \code{standard }}
+
+\item{ServerlessV2ScalingConfiguration}{Contains the scaling configuration of an Amazon DocumentDB Serverless
+cluster.}
 
 \item{ManageMasterUserPassword}{Specifies whether to manage the master user password with Amazon Web
 Services Secrets Manager. If the cluster doesn't manage the master user
@@ -200,6 +219,17 @@ cluster. The secret value contains the updated password.
 
 Constraint: You must apply the change immediately when rotating the
 master user password.}
+
+\item{NetworkType}{The network type of the cluster.
+
+The network type is determined by the \code{DBSubnetGroup} specified for the
+cluster. A \code{DBSubnetGroup} can support only the IPv4 protocol or the
+IPv4 and the IPv6 protocols (\code{DUAL}).
+
+For more information, see \href{https://docs.aws.amazon.com/documentdb/latest/developerguide/vpc-clusters.html}{DocumentDB clusters in a VPC}
+in the Amazon DocumentDB Developer Guide.
+
+Valid Values: \code{IPV4} | \code{DUAL}}
 }
 \description{
 Modifies a setting for an Amazon DocumentDB cluster. You can change one or more database configuration parameters by specifying these parameters and the new values in the request.

@@ -6,23 +6,23 @@
 with a case}
 \usage{
 connectcases_create_related_item(
-  caseId,
-  content,
   domainId,
-  performedBy = NULL,
-  type
+  caseId,
+  type,
+  content,
+  performedBy = NULL
 )
 }
 \arguments{
+\item{domainId}{[required] The unique identifier of the Cases domain.}
+
 \item{caseId}{[required] A unique identifier of the case.}
+
+\item{type}{[required] The type of a related item.}
 
 \item{content}{[required] The content of a related item to be created.}
 
-\item{domainId}{[required] The unique identifier of the Cases domain.}
-
 \item{performedBy}{Represents the creator of the related item.}
-
-\item{type}{[required] The type of a related item.}
 }
 \description{
 Creates a related item (comments, tasks, and contacts) and associates it with a case.

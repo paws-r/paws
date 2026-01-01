@@ -31,15 +31,13 @@ worker assigns to the object. The \code{LabelAttributeName} must meet the
 following requirements.
 \itemize{
 \item The name can't end with "-metadata".
-\item If you are using one of the following \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html}{built-in task types},
-the attribute name \emph{must} end with "-ref". If the task type you are
-using is not listed below, the attribute name \emph{must not} end with
-"-ref".
+\item If you are using one of the \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html}{built-in task types}
+or one of the following, the attribute name \emph{must} end with "-ref".
 \itemize{
-\item Image semantic segmentation (\verb{SemanticSegmentation)}, and
-adjustment (\code{AdjustmentSemanticSegmentation}) and verification
-(\code{VerificationSemanticSegmentation}) labeling jobs for this task
-type.
+\item Image semantic segmentation (\verb{SemanticSegmentation)} and
+adjustment (\code{AdjustmentSemanticSegmentation}) labeling jobs for
+this task type. One exception is that verification
+(\code{VerificationSemanticSegmentation}) \emph{must not} end with -"ref".
 \item Video frame object detection (\code{VideoObjectDetection}), and
 adjustment and verification (\code{AdjustmentVideoObjectDetection})
 labeling jobs for this task type.

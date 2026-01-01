@@ -16,10 +16,9 @@ accessanalyzer_create_analyzer(
 \arguments{
 \item{analyzerName}{[required] The name of the analyzer to create.}
 
-\item{type}{[required] The type of analyzer to create. Only \code{ACCOUNT}, \code{ORGANIZATION},
-\code{ACCOUNT_UNUSED_ACCESS}, and \code{ORGANIZATION_UNUSED_ACCESS} analyzers are
-supported. You can create only one analyzer per account per Region. You
-can create up to 5 analyzers per organization per Region.}
+\item{type}{[required] The type of analyzer to create. You can create only one analyzer per
+account per Region. You can create up to 5 analyzers per organization
+per Region.}
 
 \item{archiveRules}{Specifies the archive rules to add for the analyzer. Archive rules
 automatically archive findings that meet the criteria you define for the
@@ -39,7 +38,8 @@ in length.}
 
 \item{configuration}{Specifies the configuration of the analyzer. If the analyzer is an
 unused access analyzer, the specified scope of unused access is used for
-the configuration.}
+the configuration. If the analyzer is an internal access analyzer, the
+specified internal access analysis rules are used for the configuration.}
 }
 \description{
 Creates an analyzer for your account.

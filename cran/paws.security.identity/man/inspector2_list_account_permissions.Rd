@@ -5,12 +5,14 @@
 \title{Lists the permissions an account has to configure Amazon Inspector}
 \usage{
 inspector2_list_account_permissions(
+  service = NULL,
   maxResults = NULL,
-  nextToken = NULL,
-  service = NULL
+  nextToken = NULL
 )
 }
 \arguments{
+\item{service}{The service scan type to check permissions for.}
+
 \item{maxResults}{The maximum number of results the response can return. If your request
 would return more than the maximum the response will return a
 \code{nextToken} value, use this value when you call the action again to get
@@ -22,11 +24,9 @@ action. If your response returns more than the \code{maxResults} maximum
 value it will also return a \code{nextToken} value. For subsequent calls, use
 the NextToken value returned from the previous request to continue
 listing results after the first page.}
-
-\item{service}{The service scan type to check permissions for.}
 }
 \description{
-Lists the permissions an account has to configure Amazon Inspector.
+Lists the permissions an account has to configure Amazon Inspector. If the account is a member account or standalone account with resources managed by an Organizations policy, the operation returns fewer permissions.
 
 See \url{https://www.paws-r-sdk.com/docs/inspector2_list_account_permissions/} for full documentation.
 }

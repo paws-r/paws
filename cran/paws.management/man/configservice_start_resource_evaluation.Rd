@@ -18,8 +18,9 @@ configservice_start_resource_evaluation(
 
 \item{EvaluationContext}{Returns an \code{EvaluationContext} object.}
 
-\item{EvaluationMode}{[required] The mode of an evaluation. The valid values for this API are \code{DETECTIVE}
-and \code{PROACTIVE}.}
+\item{EvaluationMode}{[required] The mode of an evaluation.
+
+The only valid value for this API is \code{PROACTIVE}.}
 
 \item{EvaluationTimeout}{The timeout for an evaluation. The default is 900 seconds. You cannot
 specify a number greater than 3600. If you specify 0, Config uses the

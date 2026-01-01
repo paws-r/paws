@@ -13,7 +13,9 @@ cleanroomsml_create_trained_model(
   environment = NULL,
   resourceConfig,
   stoppingCondition = NULL,
+  incrementalTrainingDataChannels = NULL,
   dataChannels,
+  trainingInputMode = NULL,
   description = NULL,
   kmsKeyArn = NULL,
   tags = NULL
@@ -35,8 +37,35 @@ You set hyperparameters before you start the learning process.}
 
 \item{stoppingCondition}{The criteria that is used to stop model training.}
 
+\item{incrementalTrainingDataChannels}{Specifies the incremental training data channels for the trained model.
+
+Incremental training allows you to create a new trained model with
+updates without retraining from scratch. You can specify up to one
+incremental training data channel that references a previously trained
+model and its version.
+
+Limit: Maximum of 20 channels total (including both
+\code{incrementalTrainingDataChannels} and \code{dataChannels}).}
+
 \item{dataChannels}{[required] Defines the data channels that are used as input for the trained model
-request.}
+request.
+
+Limit: Maximum of 20 channels total (including both \code{dataChannels} and
+\code{incrementalTrainingDataChannels}).}
+
+\item{trainingInputMode}{The input mode for accessing the training data. This parameter
+determines how the training data is made available to the training
+algorithm. Valid values are:
+\itemize{
+\item \code{File} - The training data is downloaded to the training instance
+and made available as files.
+\item \code{FastFile} - The training data is streamed directly from Amazon S3
+to the training algorithm, providing faster access for large
+datasets.
+\item \code{Pipe} - The training data is streamed to the training algorithm
+using named pipes, which can improve performance for certain
+algorithms.
+}}
 
 \item{description}{The description of the trained model.}
 

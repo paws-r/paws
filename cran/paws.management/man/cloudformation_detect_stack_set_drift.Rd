@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_detect_stack_set_drift}
 \alias{cloudformation_detect_stack_set_drift}
-\title{Detect drift on a stack set}
+\title{Detect drift on a StackSet}
 \usage{
 cloudformation_detect_stack_set_drift(
   StackSetName,
@@ -12,22 +12,22 @@ cloudformation_detect_stack_set_drift(
 )
 }
 \arguments{
-\item{StackSetName}{[required] The name of the stack set on which to perform the drift detection
+\item{StackSetName}{[required] The name of the StackSet on which to perform the drift detection
 operation.}
 
-\item{OperationPreferences}{The user-specified preferences for how CloudFormation performs a stack
-set operation.
+\item{OperationPreferences}{The user-specified preferences for how CloudFormation performs a
+StackSet operation.
 
 For more information about maximum concurrent accounts and failure
-tolerance, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html#stackset-ops-options}{Stack set operation options}.}
+tolerance, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options}{StackSet operation options}.}
 
-\item{OperationId}{\emph{The ID of the stack set operation.}}
+\item{OperationId}{\emph{The ID of the StackSet operation.}}
 
 \item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
 account administrator in the organization's management account or as a
 delegated administrator in a member account.
 
-By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+By default, \code{SELF} is specified. Use \code{SELF} for StackSets with
 self-managed permissions.
 \itemize{
 \item If you are signed in to the management account, specify \code{SELF}.
@@ -41,7 +41,7 @@ in the \emph{CloudFormation User Guide}.
 }}
 }
 \description{
-Detect drift on a stack set. When CloudFormation performs drift detection on a stack set, it performs drift detection on the stack associated with each stack instance in the stack set. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html}{Performing drift detection on CloudFormation StackSets}.
+Detect drift on a StackSet. When CloudFormation performs drift detection on a StackSet, it performs drift detection on the stack associated with each stack instance in the StackSet. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html}{Performing drift detection on CloudFormation StackSets}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudformation_detect_stack_set_drift/} for full documentation.
 }

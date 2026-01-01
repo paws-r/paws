@@ -6,17 +6,17 @@
 \usage{
 controltower_update_enabled_baseline(
   baselineVersion,
-  enabledBaselineIdentifier,
-  parameters = NULL
+  parameters = NULL,
+  enabledBaselineIdentifier
 )
 }
 \arguments{
 \item{baselineVersion}{[required] Specifies the new \code{Baseline} version, to which the \code{EnabledBaseline}
 should be updated.}
 
-\item{enabledBaselineIdentifier}{[required] Specifies the \code{EnabledBaseline} resource to be updated.}
-
 \item{parameters}{Parameters to apply when making an update.}
+
+\item{enabledBaselineIdentifier}{[required] Specifies the \code{EnabledBaseline} resource to be updated.}
 }
 \description{
 Updates an \code{EnabledBaseline} resource's applied parameters or version. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html}{\emph{the Amazon Web Services Control Tower User Guide}} .

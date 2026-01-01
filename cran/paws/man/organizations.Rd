@@ -62,10 +62,9 @@ more information about using this service, see the \href{https://docs.aws.amazon
 
 \strong{Support and feedback for Organizations}
 
-We welcome your feedback. Send your comments to
-\email{feedback-awsorganizations@amazon.com} or post your feedback and
-questions in the Organizations support forum. For more information about
-the Amazon Web Services support forums, see Forums Help.
+We welcome your feedback. You can post your feedback and questions in
+the Organizations support forum. For more information about the Amazon
+Web Services Support forums, see Forums Help.
 
 \strong{Endpoint to call When using the CLI or the Amazon Web Services SDK}
 
@@ -157,16 +156,16 @@ including how to turn it on and find your log files, see the \href{https://docs.
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.management:organizations_accept_handshake]{accept_handshake} \tab Sends a response to the originator of a handshake agreeing to the action proposed by the handshake request\cr
+\link[paws.management:organizations_accept_handshake]{accept_handshake} \tab Accepts a handshake by sending an ACCEPTED response to the sender\cr
 \link[paws.management:organizations_attach_policy]{attach_policy} \tab Attaches a policy to a root, an organizational unit (OU), or an individual account\cr
-\link[paws.management:organizations_cancel_handshake]{cancel_handshake} \tab Cancels a handshake\cr
+\link[paws.management:organizations_cancel_handshake]{cancel_handshake} \tab Cancels a Handshake\cr
 \link[paws.management:organizations_close_account]{close_account} \tab Closes an Amazon Web Services member account within an organization\cr
 \link[paws.management:organizations_create_account]{create_account} \tab Creates an Amazon Web Services account that is automatically a member of the organization whose credentials made the request\cr
 \link[paws.management:organizations_create_gov_cloud_account]{create_gov_cloud_account} \tab This action is available if all of the following are true:\cr
 \link[paws.management:organizations_create_organization]{create_organization} \tab Creates an Amazon Web Services organization\cr
 \link[paws.management:organizations_create_organizational_unit]{create_organizational_unit} \tab Creates an organizational unit (OU) within a root or parent OU\cr
 \link[paws.management:organizations_create_policy]{create_policy} \tab Creates a policy of a specified type that you can attach to a root, an organizational unit (OU), or an individual Amazon Web Services account\cr
-\link[paws.management:organizations_decline_handshake]{decline_handshake} \tab Declines a handshake request\cr
+\link[paws.management:organizations_decline_handshake]{decline_handshake} \tab Declines a Handshake\cr
 \link[paws.management:organizations_delete_organization]{delete_organization} \tab Deletes the organization\cr
 \link[paws.management:organizations_delete_organizational_unit]{delete_organizational_unit} \tab Deletes an organizational unit (OU) from a root or another OU\cr
 \link[paws.management:organizations_delete_policy]{delete_policy} \tab Deletes the specified policy from your organization\cr
@@ -175,11 +174,12 @@ including how to turn it on and find your log files, see the \href{https://docs.
 \link[paws.management:organizations_describe_account]{describe_account} \tab Retrieves Organizations-related information about the specified account\cr
 \link[paws.management:organizations_describe_create_account_status]{describe_create_account_status} \tab Retrieves the current status of an asynchronous request to create an account\cr
 \link[paws.management:organizations_describe_effective_policy]{describe_effective_policy} \tab Returns the contents of the effective policy for specified policy type and account\cr
-\link[paws.management:organizations_describe_handshake]{describe_handshake} \tab Retrieves information about a previously requested handshake\cr
+\link[paws.management:organizations_describe_handshake]{describe_handshake} \tab Returns details for a handshake\cr
 \link[paws.management:organizations_describe_organization]{describe_organization} \tab Retrieves information about the organization that the user's account belongs to\cr
 \link[paws.management:organizations_describe_organizational_unit]{describe_organizational_unit} \tab Retrieves information about an organizational unit (OU)\cr
 \link[paws.management:organizations_describe_policy]{describe_policy} \tab Retrieves information about a policy\cr
 \link[paws.management:organizations_describe_resource_policy]{describe_resource_policy} \tab Retrieves information about a resource policy\cr
+\link[paws.management:organizations_describe_responsibility_transfer]{describe_responsibility_transfer} \tab Returns details for a transfer\cr
 \link[paws.management:organizations_detach_policy]{detach_policy} \tab Detaches a policy from a target root, organizational unit (OU), or account\cr
 \link[paws.management:organizations_disable_aws_service_access]{disable_aws_service_access} \tab Disables the integration of an Amazon Web Services service (the service that is specified by ServicePrincipal) with Organizations\cr
 \link[paws.management:organizations_disable_policy_type]{disable_policy_type} \tab Disables an organizational policy type in a root\cr
@@ -187,17 +187,22 @@ including how to turn it on and find your log files, see the \href{https://docs.
 \link[paws.management:organizations_enable_aws_service_access]{enable_aws_service_access} \tab Provides an Amazon Web Services service (the service that is specified by ServicePrincipal) with permissions to view the structure of an organization, create a service-linked role in all the accounts in the organization, and allow the service to perform operations on behalf of the organization and its accounts\cr
 \link[paws.management:organizations_enable_policy_type]{enable_policy_type} \tab Enables a policy type in a root\cr
 \link[paws.management:organizations_invite_account_to_organization]{invite_account_to_organization} \tab Sends an invitation to another account to join your organization as a member account\cr
+\link[paws.management:organizations_invite_organization_to_transfer_responsibility]{invite_organization_to_transfer_responsibility} \tab Sends an invitation to another organization's management account to designate your account with the specified responsibilities for their organization\cr
 \link[paws.management:organizations_leave_organization]{leave_organization} \tab Removes a member account from its parent organization\cr
 \link[paws.management:organizations_list_accounts]{list_accounts} \tab Lists all the accounts in the organization\cr
 \link[paws.management:organizations_list_accounts_for_parent]{list_accounts_for_parent} \tab Lists the accounts in an organization that are contained by the specified target root or organizational unit (OU)\cr
+\link[paws.management:organizations_list_accounts_with_invalid_effective_policy]{list_accounts_with_invalid_effective_policy} \tab Lists all the accounts in an organization that have invalid effective policies\cr
 \link[paws.management:organizations_list_aws_service_access_for_organization]{list_aws_service_access_for_organization} \tab Returns a list of the Amazon Web Services services that you enabled to integrate with your organization\cr
 \link[paws.management:organizations_list_children]{list_children} \tab Lists all of the organizational units (OUs) or accounts that are contained in the specified parent OU or root\cr
 \link[paws.management:organizations_list_create_account_status]{list_create_account_status} \tab Lists the account creation requests that match the specified status that is currently being tracked for the organization\cr
 \link[paws.management:organizations_list_delegated_administrators]{list_delegated_administrators} \tab Lists the Amazon Web Services accounts that are designated as delegated administrators in this organization\cr
 \link[paws.management:organizations_list_delegated_services_for_account]{list_delegated_services_for_account} \tab List the Amazon Web Services services for which the specified account is a delegated administrator\cr
-\link[paws.management:organizations_list_handshakes_for_account]{list_handshakes_for_account} \tab Lists the current handshakes that are associated with the account of the requesting user\cr
-\link[paws.management:organizations_list_handshakes_for_organization]{list_handshakes_for_organization} \tab Lists the handshakes that are associated with the organization that the requesting user is part of\cr
+\link[paws.management:organizations_list_effective_policy_validation_errors]{list_effective_policy_validation_errors} \tab Lists all the validation errors on an effective policy for a specified account and policy type\cr
+\link[paws.management:organizations_list_handshakes_for_account]{list_handshakes_for_account} \tab Lists the recent handshakes that you have received\cr
+\link[paws.management:organizations_list_handshakes_for_organization]{list_handshakes_for_organization} \tab Lists the recent handshakes that you have sent\cr
+\link[paws.management:organizations_list_inbound_responsibility_transfers]{list_inbound_responsibility_transfers} \tab Lists transfers that allow you to manage the specified responsibilities for another organization\cr
 \link[paws.management:organizations_list_organizational_units_for_parent]{list_organizational_units_for_parent} \tab Lists the organizational units (OUs) in a parent organizational unit or root\cr
+\link[paws.management:organizations_list_outbound_responsibility_transfers]{list_outbound_responsibility_transfers} \tab Lists transfers that allow an account outside your organization to manage the specified responsibilities for your organization\cr
 \link[paws.management:organizations_list_parents]{list_parents} \tab Lists the root or organizational units (OUs) that serve as the immediate parent of the specified child OU or account\cr
 \link[paws.management:organizations_list_policies]{list_policies} \tab Retrieves the list of all policies in an organization of a specified type\cr
 \link[paws.management:organizations_list_policies_for_target]{list_policies_for_target} \tab Lists the policies that are directly attached to the specified target root, organizational unit (OU), or account\cr
@@ -209,9 +214,11 @@ including how to turn it on and find your log files, see the \href{https://docs.
 \link[paws.management:organizations_register_delegated_administrator]{register_delegated_administrator} \tab Enables the specified member account to administer the Organizations features of the specified Amazon Web Services service\cr
 \link[paws.management:organizations_remove_account_from_organization]{remove_account_from_organization} \tab Removes the specified account from the organization\cr
 \link[paws.management:organizations_tag_resource]{tag_resource} \tab Adds one or more tags to the specified resource\cr
+\link[paws.management:organizations_terminate_responsibility_transfer]{terminate_responsibility_transfer} \tab Ends a transfer\cr
 \link[paws.management:organizations_untag_resource]{untag_resource} \tab Removes any tags with the specified keys from the specified resource\cr
 \link[paws.management:organizations_update_organizational_unit]{update_organizational_unit} \tab Renames the specified organizational unit (OU)\cr
-\link[paws.management:organizations_update_policy]{update_policy} \tab Updates an existing policy with a new name, description, or content
+\link[paws.management:organizations_update_policy]{update_policy} \tab Updates an existing policy with a new name, description, or content\cr
+\link[paws.management:organizations_update_responsibility_transfer]{update_responsibility_transfer} \tab Updates a transfer
 }
 }
 

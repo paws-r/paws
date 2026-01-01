@@ -4,13 +4,13 @@
 \alias{workspacesweb_list_ip_access_settings}
 \title{Retrieves a list of IP access settings}
 \usage{
-workspacesweb_list_ip_access_settings(maxResults = NULL, nextToken = NULL)
+workspacesweb_list_ip_access_settings(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
-\item{maxResults}{The maximum number of results to be included in the next page.}
-
 \item{nextToken}{The pagination token used to retrieve the next page of results for this
 operation.}
+
+\item{maxResults}{The maximum number of results to be included in the next page.}
 }
 \description{
 Retrieves a list of IP access settings.

@@ -805,6 +805,16 @@ glue_batch_get_custom_entity_types <- function(Names) {
 #'           AdditionalOptions = list(
 #'             "string"
 #'           )
+#'         ),
+#'         DataQualityGlueTable = list(
+#'           DatabaseName = "string",
+#'           TableName = "string",
+#'           CatalogId = "string",
+#'           ConnectionName = "string",
+#'           AdditionalOptions = list(
+#'             "string"
+#'           ),
+#'           PreProcessingQuery = "string"
 #'         )
 #'       ),
 #'       RulesetName = "string",
@@ -827,7 +837,13 @@ glue_batch_get_custom_entity_types <- function(Names) {
 #'           EvaluatedMetrics = list(
 #'             123.0
 #'           ),
-#'           EvaluatedRule = "string"
+#'           EvaluatedRule = "string",
+#'           RuleMetrics = list(
+#'             123.0
+#'           ),
+#'           Labels = list(
+#'             "string"
+#'           )
 #'         )
 #'       ),
 #'       AnalyzerResults = list(
@@ -857,6 +873,14 @@ glue_batch_get_custom_entity_types <- function(Names) {
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       AggregatedMetrics = list(
+#'         TotalRowsProcessed = 123.0,
+#'         TotalRowsPassed = 123.0,
+#'         TotalRowsFailed = 123.0,
+#'         TotalRulesProcessed = 123.0,
+#'         TotalRulesPassed = 123.0,
+#'         TotalRulesFailed = 123.0
 #'       )
 #'     )
 #'   ),
@@ -1076,7 +1100,8 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -1108,7 +1133,8 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -1127,7 +1153,8 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -1136,7 +1163,19 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'           CatalogSource = list(
 #'             Name = "string",
 #'             Database = "string",
-#'             Table = "string"
+#'             Table = "string",
+#'             PartitionPredicate = "string",
+#'             OutputSchemas = list(
+#'               list(
+#'                 Columns = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
 #'           ),
 #'           RedshiftSource = list(
 #'             Name = "string",
@@ -1188,7 +1227,8 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -1221,7 +1261,8 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -1232,7 +1273,7 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'             Paths = list(
 #'               "string"
 #'             ),
-#'             CompressionType = "snappy"|"lzo"|"gzip"|"uncompressed"|"none",
+#'             CompressionType = "snappy"|"lzo"|"gzip"|"brotli"|"lz4"|"uncompressed"|"none",
 #'             Exclusions = list(
 #'               "string"
 #'             ),
@@ -1252,7 +1293,8 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -1266,7 +1308,12 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'           DynamoDBCatalogSource = list(
 #'             Name = "string",
 #'             Database = "string",
-#'             Table = "string"
+#'             Table = "string",
+#'             PitrEnabled = TRUE|FALSE,
+#'             AdditionalOptions = list(
+#'               DynamodbExport = "string",
+#'               DynamodbUnnestDDBJson = TRUE|FALSE
+#'             )
 #'           ),
 #'           JDBCConnectorTarget = list(
 #'             Name = "string",
@@ -1285,7 +1332,8 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -1307,7 +1355,8 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -1358,6 +1407,10 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'             SchemaChangePolicy = list(
 #'               EnableUpdateCatalog = TRUE|FALSE,
 #'               UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG"
+#'             ),
+#'             AutoDataQuality = list(
+#'               IsEnabled = TRUE|FALSE,
+#'               EvaluationContext = "string"
 #'             )
 #'           ),
 #'           S3GlueParquetTarget = list(
@@ -1371,12 +1424,17 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'               )
 #'             ),
 #'             Path = "string",
-#'             Compression = "snappy"|"lzo"|"gzip"|"uncompressed"|"none",
+#'             Compression = "snappy"|"lzo"|"gzip"|"brotli"|"lz4"|"uncompressed"|"none",
+#'             NumberTargetPartitions = "string",
 #'             SchemaChangePolicy = list(
 #'               EnableUpdateCatalog = TRUE|FALSE,
 #'               UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
 #'               Table = "string",
 #'               Database = "string"
+#'             ),
+#'             AutoDataQuality = list(
+#'               IsEnabled = TRUE|FALSE,
+#'               EvaluationContext = "string"
 #'             )
 #'           ),
 #'           S3DirectTarget = list(
@@ -1391,12 +1449,28 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'             ),
 #'             Path = "string",
 #'             Compression = "string",
-#'             Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta",
+#'             NumberTargetPartitions = "string",
+#'             Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta"|"iceberg"|"hyper"|"xml",
 #'             SchemaChangePolicy = list(
 #'               EnableUpdateCatalog = TRUE|FALSE,
 #'               UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
 #'               Table = "string",
 #'               Database = "string"
+#'             ),
+#'             AutoDataQuality = list(
+#'               IsEnabled = TRUE|FALSE,
+#'               EvaluationContext = "string"
+#'             ),
+#'             OutputSchemas = list(
+#'               list(
+#'                 Columns = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
+#'                   )
+#'                 )
+#'               )
 #'             )
 #'           ),
 #'           ApplyMapping = list(
@@ -1536,7 +1610,8 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -1559,7 +1634,8 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -1592,7 +1668,8 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'               EmitConsumerLagMetrics = "string",
 #'               StartingTimestamp = as.POSIXct(
 #'                 "2015-01-01"
-#'               )
+#'               ),
+#'               FanoutConsumerARN = "string"
 #'             ),
 #'             DataPreviewOptions = list(
 #'               PollingTime = 123,
@@ -1660,7 +1737,8 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'               EmitConsumerLagMetrics = "string",
 #'               StartingTimestamp = as.POSIXct(
 #'                 "2015-01-01"
-#'               )
+#'               ),
+#'               FanoutConsumerARN = "string"
 #'             ),
 #'             DataPreviewOptions = list(
 #'               PollingTime = 123,
@@ -1745,14 +1823,21 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'             Inputs = list(
 #'               "string"
 #'             ),
-#'             PiiType = "RowAudit"|"RowMasking"|"ColumnAudit"|"ColumnMasking",
+#'             PiiType = "RowAudit"|"RowHashing"|"RowMasking"|"RowPartialMasking"|"ColumnAudit"|"ColumnHashing"|"ColumnMasking",
 #'             EntityTypesToDetect = list(
 #'               "string"
 #'             ),
 #'             OutputColumnName = "string",
 #'             SampleFraction = 123.0,
 #'             ThresholdFraction = 123.0,
-#'             MaskValue = "string"
+#'             MaskValue = "string",
+#'             RedactText = "string",
+#'             RedactChar = "string",
+#'             MatchPattern = "string",
+#'             NumLeftCharsToExclude = 123,
+#'             NumRightCharsToExclude = 123,
+#'             DetectionParameters = "string",
+#'             DetectionSensitivity = "string"
 #'           ),
 #'           Aggregate = list(
 #'             Name = "string",
@@ -1863,6 +1948,32 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'             Database = "string",
 #'             Table = "string"
 #'           ),
+#'           Route = list(
+#'             Name = "string",
+#'             Inputs = list(
+#'               "string"
+#'             ),
+#'             GroupFiltersList = list(
+#'               list(
+#'                 GroupName = "string",
+#'                 Filters = list(
+#'                   list(
+#'                     Operation = "EQ"|"LT"|"GT"|"LTE"|"GTE"|"REGEX"|"ISNULL",
+#'                     Negated = TRUE|FALSE,
+#'                     Values = list(
+#'                       list(
+#'                         Type = "COLUMNEXTRACTED"|"CONSTANT",
+#'                         Value = list(
+#'                           "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 LogicalOperator = "AND"|"OR"
+#'               )
+#'             )
+#'           ),
 #'           DynamicTransform = list(
 #'             Name = "string",
 #'             TransformName = "string",
@@ -1890,7 +2001,8 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -1925,7 +2037,8 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -1943,7 +2056,8 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -1968,7 +2082,8 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -1992,6 +2107,21 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'             SchemaChangePolicy = list(
 #'               EnableUpdateCatalog = TRUE|FALSE,
 #'               UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG"
+#'             ),
+#'             AutoDataQuality = list(
+#'               IsEnabled = TRUE|FALSE,
+#'               EvaluationContext = "string"
+#'             ),
+#'             OutputSchemas = list(
+#'               list(
+#'                 Columns = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
+#'                   )
+#'                 )
+#'               )
 #'             )
 #'           ),
 #'           S3HudiDirectTarget = list(
@@ -2001,12 +2131,13 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'             ),
 #'             Path = "string",
 #'             Compression = "gzip"|"lzo"|"uncompressed"|"snappy",
+#'             NumberTargetPartitions = "string",
 #'             PartitionKeys = list(
 #'               list(
 #'                 "string"
 #'               )
 #'             ),
-#'             Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta",
+#'             Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta"|"iceberg"|"hyper"|"xml",
 #'             AdditionalOptions = list(
 #'               "string"
 #'             ),
@@ -2015,6 +2146,10 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'               UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
 #'               Table = "string",
 #'               Database = "string"
+#'             ),
+#'             AutoDataQuality = list(
+#'               IsEnabled = TRUE|FALSE,
+#'               EvaluationContext = "string"
 #'             )
 #'           ),
 #'           DirectJDBCSource = list(
@@ -2023,7 +2158,18 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'             Table = "string",
 #'             ConnectionName = "string",
 #'             ConnectionType = "sqlserver"|"mysql"|"oracle"|"postgresql"|"redshift",
-#'             RedshiftTmpDir = "string"
+#'             RedshiftTmpDir = "string",
+#'             OutputSchemas = list(
+#'               list(
+#'                 Columns = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
 #'           ),
 #'           S3CatalogDeltaSource = list(
 #'             Name = "string",
@@ -2037,7 +2183,8 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -2055,7 +2202,8 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -2080,7 +2228,8 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -2104,6 +2253,21 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'             SchemaChangePolicy = list(
 #'               EnableUpdateCatalog = TRUE|FALSE,
 #'               UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG"
+#'             ),
+#'             AutoDataQuality = list(
+#'               IsEnabled = TRUE|FALSE,
+#'               EvaluationContext = "string"
+#'             ),
+#'             OutputSchemas = list(
+#'               list(
+#'                 Columns = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
+#'                   )
+#'                 )
+#'               )
 #'             )
 #'           ),
 #'           S3DeltaDirectTarget = list(
@@ -2118,7 +2282,8 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'             ),
 #'             Path = "string",
 #'             Compression = "uncompressed"|"snappy",
-#'             Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta",
+#'             NumberTargetPartitions = "string",
+#'             Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta"|"iceberg"|"hyper"|"xml",
 #'             AdditionalOptions = list(
 #'               "string"
 #'             ),
@@ -2127,6 +2292,10 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'               UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
 #'               Table = "string",
 #'               Database = "string"
+#'             ),
+#'             AutoDataQuality = list(
+#'               IsEnabled = TRUE|FALSE,
+#'               EvaluationContext = "string"
 #'             )
 #'           ),
 #'           AmazonRedshiftSource = list(
@@ -2377,7 +2546,8 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -2445,7 +2615,8 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -2459,6 +2630,199 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'             ),
 #'             Inputs = list(
 #'               "string"
+#'             )
+#'           ),
+#'           S3CatalogIcebergSource = list(
+#'             Name = "string",
+#'             Database = "string",
+#'             Table = "string",
+#'             AdditionalIcebergOptions = list(
+#'               "string"
+#'             ),
+#'             OutputSchemas = list(
+#'               list(
+#'                 Columns = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           CatalogIcebergSource = list(
+#'             Name = "string",
+#'             Database = "string",
+#'             Table = "string",
+#'             AdditionalIcebergOptions = list(
+#'               "string"
+#'             ),
+#'             OutputSchemas = list(
+#'               list(
+#'                 Columns = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           S3IcebergCatalogTarget = list(
+#'             Name = "string",
+#'             Inputs = list(
+#'               "string"
+#'             ),
+#'             PartitionKeys = list(
+#'               list(
+#'                 "string"
+#'               )
+#'             ),
+#'             Table = "string",
+#'             Database = "string",
+#'             AdditionalOptions = list(
+#'               "string"
+#'             ),
+#'             SchemaChangePolicy = list(
+#'               EnableUpdateCatalog = TRUE|FALSE,
+#'               UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG"
+#'             ),
+#'             AutoDataQuality = list(
+#'               IsEnabled = TRUE|FALSE,
+#'               EvaluationContext = "string"
+#'             )
+#'           ),
+#'           S3IcebergDirectTarget = list(
+#'             Name = "string",
+#'             Inputs = list(
+#'               "string"
+#'             ),
+#'             PartitionKeys = list(
+#'               list(
+#'                 "string"
+#'               )
+#'             ),
+#'             Path = "string",
+#'             Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta"|"iceberg"|"hyper"|"xml",
+#'             AdditionalOptions = list(
+#'               "string"
+#'             ),
+#'             SchemaChangePolicy = list(
+#'               EnableUpdateCatalog = TRUE|FALSE,
+#'               UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
+#'               Table = "string",
+#'               Database = "string"
+#'             ),
+#'             AutoDataQuality = list(
+#'               IsEnabled = TRUE|FALSE,
+#'               EvaluationContext = "string"
+#'             ),
+#'             Compression = "gzip"|"lzo"|"uncompressed"|"snappy",
+#'             NumberTargetPartitions = "string",
+#'             OutputSchemas = list(
+#'               list(
+#'                 Columns = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           S3ExcelSource = list(
+#'             Name = "string",
+#'             Paths = list(
+#'               "string"
+#'             ),
+#'             CompressionType = "snappy"|"lzo"|"gzip"|"brotli"|"lz4"|"uncompressed"|"none",
+#'             Exclusions = list(
+#'               "string"
+#'             ),
+#'             GroupSize = "string",
+#'             GroupFiles = "string",
+#'             Recurse = TRUE|FALSE,
+#'             MaxBand = 123,
+#'             MaxFilesInBand = 123,
+#'             AdditionalOptions = list(
+#'               BoundedSize = 123,
+#'               BoundedFiles = 123,
+#'               EnableSamplePath = TRUE|FALSE,
+#'               SamplePath = "string"
+#'             ),
+#'             NumberRows = 123,
+#'             SkipFooter = 123,
+#'             OutputSchemas = list(
+#'               list(
+#'                 Columns = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           S3HyperDirectTarget = list(
+#'             Name = "string",
+#'             Inputs = list(
+#'               "string"
+#'             ),
+#'             Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta"|"iceberg"|"hyper"|"xml",
+#'             PartitionKeys = list(
+#'               list(
+#'                 "string"
+#'               )
+#'             ),
+#'             Path = "string",
+#'             Compression = "uncompressed",
+#'             SchemaChangePolicy = list(
+#'               EnableUpdateCatalog = TRUE|FALSE,
+#'               UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
+#'               Table = "string",
+#'               Database = "string"
+#'             ),
+#'             AutoDataQuality = list(
+#'               IsEnabled = TRUE|FALSE,
+#'               EvaluationContext = "string"
+#'             ),
+#'             OutputSchemas = list(
+#'               list(
+#'                 Columns = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           DynamoDBELTConnectorSource = list(
+#'             Name = "string",
+#'             ConnectionOptions = list(
+#'               DynamodbExport = "ddb"|"s3",
+#'               DynamodbUnnestDDBJson = TRUE|FALSE,
+#'               DynamodbTableArn = "string",
+#'               DynamodbS3Bucket = "string",
+#'               DynamodbS3Prefix = "string",
+#'               DynamodbS3BucketOwner = "string",
+#'               DynamodbStsRoleArn = "string"
+#'             ),
+#'             OutputSchemas = list(
+#'               list(
+#'                 Columns = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
+#'                   )
+#'                 )
+#'               )
 #'             )
 #'           )
 #'         )
@@ -2696,17 +3060,26 @@ glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, 
 #'           vpcConfiguration = list(
 #'             glueConnectionName = "string"
 #'           ),
+#'           compactionConfiguration = list(
+#'             icebergConfiguration = list(
+#'               strategy = "binpack"|"sort"|"z-order",
+#'               minInputFiles = 123,
+#'               deleteFileThreshold = 123
+#'             )
+#'           ),
 #'           retentionConfiguration = list(
 #'             icebergConfiguration = list(
 #'               snapshotRetentionPeriodInDays = 123,
 #'               numberOfSnapshotsToRetain = 123,
-#'               cleanExpiredFiles = TRUE|FALSE
+#'               cleanExpiredFiles = TRUE|FALSE,
+#'               runRateInHours = 123
 #'             )
 #'           ),
 #'           orphanFileDeletionConfiguration = list(
 #'             icebergConfiguration = list(
 #'               orphanFileRetentionPeriodInDays = 123,
-#'               location = "string"
+#'               location = "string",
+#'               runRateInHours = 123
 #'             )
 #'           )
 #'         ),
@@ -2734,6 +3107,7 @@ glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, 
 #'               JobDurationInHour = 123.0
 #'             )
 #'           ),
+#'           compactionStrategy = "binpack"|"sort"|"z-order",
 #'           retentionMetrics = list(
 #'             IcebergMetrics = list(
 #'               NumberOfDataFilesDeleted = 123,
@@ -2752,7 +3126,8 @@ glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, 
 #'               JobDurationInHour = 123.0
 #'             )
 #'           )
-#'         )
+#'         ),
+#'         configurationSource = "catalog"|"table"
 #'       )
 #'     )
 #'   ),
@@ -3060,7 +3435,8 @@ glue_batch_get_triggers <- function(TriggerNames) {
 #'                     ExecutionClass = "FLEX"|"STANDARD",
 #'                     MaintenanceWindow = "string",
 #'                     ProfileName = "string",
-#'                     StateDetail = "string"
+#'                     StateDetail = "string",
+#'                     ExecutionRoleSessionPolicy = "string"
 #'                   )
 #'                 )
 #'               ),
@@ -3187,7 +3563,8 @@ glue_batch_get_triggers <- function(TriggerNames) {
 #'                   ExecutionClass = "FLEX"|"STANDARD",
 #'                   MaintenanceWindow = "string",
 #'                   ProfileName = "string",
-#'                   StateDetail = "string"
+#'                   StateDetail = "string",
+#'                   ExecutionRoleSessionPolicy = "string"
 #'                 )
 #'               )
 #'             ),
@@ -3266,13 +3643,19 @@ glue_batch_get_workflows <- function(Names, IncludeGraph = NULL) {
 #' Annotate datapoints over time for a specific data quality statistic
 #'
 #' @description
-#' Annotate datapoints over time for a specific data quality statistic.
+#' Annotate datapoints over time for a specific data quality statistic. The
+#' API requires both profileID and statisticID as part of the
+#' InclusionAnnotation input. The API only works for a single statisticId
+#' across multiple profiles.
 #'
 #' @usage
 #' glue_batch_put_data_quality_statistic_annotation(InclusionAnnotations,
 #'   ClientToken)
 #'
-#' @param InclusionAnnotations &#91;required&#93; A list of `DatapointInclusionAnnotation`'s.
+#' @param InclusionAnnotations &#91;required&#93; A list of `DatapointInclusionAnnotation`'s. The InclusionAnnotations
+#' must contain a profileId and statisticId. If there are multiple
+#' InclusionAnnotations, the list must refer to a single statisticId across
+#' multiple profileIds.
 #' @param ClientToken Client Token.
 #'
 #' @return
@@ -3878,7 +4261,8 @@ glue_create_blueprint <- function(Name, Description = NULL, BlueprintLocation, T
 #'     Description = "string",
 #'     FederatedCatalog = list(
 #'       Identifier = "string",
-#'       ConnectionName = "string"
+#'       ConnectionName = "string",
+#'       ConnectionType = "string"
 #'     ),
 #'     Parameters = list(
 #'       "string"
@@ -3892,6 +4276,18 @@ glue_create_blueprint <- function(Name, Description = NULL, BlueprintLocation, T
 #'         DataTransferRole = "string",
 #'         KmsKey = "string",
 #'         CatalogType = "string"
+#'       ),
+#'       IcebergOptimizationProperties = list(
+#'         RoleArn = "string",
+#'         Compaction = list(
+#'           "string"
+#'         ),
+#'         Retention = list(
+#'           "string"
+#'         ),
+#'         OrphanFileDeletion = list(
+#'           "string"
+#'         )
 #'       ),
 #'       CustomProperties = list(
 #'         "string"
@@ -4127,7 +4523,7 @@ glue_create_column_statistics_task_settings <- function(DatabaseName, TableName,
 #'   ConnectionInput = list(
 #'     Name = "string",
 #'     Description = "string",
-#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE"|"VIEW_VALIDATION_REDSHIFT"|"VIEW_VALIDATION_ATHENA"|"GOOGLEADS"|"GOOGLESHEETS"|"GOOGLEANALYTICS4"|"SERVICENOW"|"MARKETO"|"SAPODATA"|"ZENDESK"|"JIRACLOUD"|"NETSUITEERP"|"HUBSPOT"|"FACEBOOKADS"|"INSTAGRAMADS"|"ZOHOCRM"|"SALESFORCEPARDOT"|"SALESFORCEMARKETINGCLOUD"|"SLACK"|"STRIPE"|"INTERCOM"|"SNAPCHATADS",
+#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE"|"VIEW_VALIDATION_REDSHIFT"|"VIEW_VALIDATION_ATHENA"|"GOOGLEADS"|"GOOGLESHEETS"|"GOOGLEANALYTICS4"|"SERVICENOW"|"MARKETO"|"SAPODATA"|"ZENDESK"|"JIRACLOUD"|"NETSUITEERP"|"HUBSPOT"|"FACEBOOKADS"|"INSTAGRAMADS"|"ZOHOCRM"|"SALESFORCEPARDOT"|"SALESFORCEMARKETINGCLOUD"|"ADOBEANALYTICS"|"SLACK"|"LINKEDIN"|"MIXPANEL"|"ASANA"|"STRIPE"|"SMARTSHEET"|"DATADOG"|"WOOCOMMERCE"|"INTERCOM"|"SNAPCHATADS"|"PAYPAL"|"QUICKBOOKS"|"FACEBOOKPAGEINSIGHTS"|"FRESHDESK"|"TWILIO"|"DOCUSIGNMONITOR"|"FRESHSALES"|"ZOOM"|"GOOGLESEARCHCONSOLE"|"SALESFORCECOMMERCECLOUD"|"SAPCONCUR"|"DYNATRACE"|"MICROSOFTDYNAMIC365FINANCEANDOPS"|"MICROSOFTTEAMS"|"BLACKBAUDRAISEREDGENXT"|"MAILCHIMP"|"GITLAB"|"PENDO"|"PRODUCTBOARD"|"CIRCLECI"|"PIPEDIVE"|"SENDGRID"|"AZURECOSMOS"|"AZURESQL"|"BIGQUERY"|"BLACKBAUD"|"CLOUDERAHIVE"|"CLOUDERAIMPALA"|"CLOUDWATCH"|"CLOUDWATCHMETRICS"|"CMDB"|"DATALAKEGEN2"|"DB2"|"DB2AS400"|"DOCUMENTDB"|"DOMO"|"DYNAMODB"|"GOOGLECLOUDSTORAGE"|"HBASE"|"KUSTOMER"|"MICROSOFTDYNAMICS365CRM"|"MONDAY"|"MYSQL"|"OKTA"|"OPENSEARCH"|"ORACLE"|"PIPEDRIVE"|"POSTGRESQL"|"SAPHANA"|"SQLSERVER"|"SYNAPSE"|"TERADATA"|"TERADATANOS"|"TIMESTREAM"|"TPCDS"|"VERTICA",
 #'     MatchCriteria = list(
 #'       "string"
 #'     ),
@@ -4605,7 +5001,8 @@ glue_create_data_quality_ruleset <- function(Name, Description = NULL, Ruleset, 
 #'     ),
 #'     FederatedDatabase = list(
 #'       Identifier = "string",
-#'       ConnectionName = "string"
+#'       ConnectionName = "string",
+#'       ConnectionType = "string"
 #'     )
 #'   ),
 #'   Tags = list(
@@ -4812,6 +5209,69 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 }
 .glue$operations$create_dev_endpoint <- glue_create_dev_endpoint
 
+#' Creates a new Glue Identity Center configuration to enable integration
+#' between Glue and Amazon Web Services IAM Identity Center for
+#' authentication and authorization
+#'
+#' @description
+#' Creates a new Glue Identity Center configuration to enable integration
+#' between Glue and Amazon Web Services IAM Identity Center for
+#' authentication and authorization.
+#'
+#' @usage
+#' glue_create_glue_identity_center_configuration(InstanceArn, Scopes,
+#'   UserBackgroundSessionsEnabled)
+#'
+#' @param InstanceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Identity Center instance to be
+#' associated with the Glue configuration.
+#' @param Scopes A list of Identity Center scopes that define the permissions and access
+#' levels for the Glue configuration.
+#' @param UserBackgroundSessionsEnabled Specifies whether users can run background sessions when using Identity
+#' Center authentication with Glue services.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_glue_identity_center_configuration(
+#'   InstanceArn = "string",
+#'   Scopes = list(
+#'     "string"
+#'   ),
+#'   UserBackgroundSessionsEnabled = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_create_glue_identity_center_configuration
+#'
+#' @aliases glue_create_glue_identity_center_configuration
+glue_create_glue_identity_center_configuration <- function(InstanceArn, Scopes = NULL, UserBackgroundSessionsEnabled = NULL) {
+  op <- new_operation(
+    name = "CreateGlueIdentityCenterConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$create_glue_identity_center_configuration_input(InstanceArn = InstanceArn, Scopes = Scopes, UserBackgroundSessionsEnabled = UserBackgroundSessionsEnabled)
+  output <- .glue$create_glue_identity_center_configuration_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$create_glue_identity_center_configuration <- glue_create_glue_identity_center_configuration
+
 #' Creates a Zero-ETL integration in the caller's account between two
 #' resources with Amazon Resource Names (ARNs): the SourceArn and TargetArn
 #'
@@ -4869,7 +5329,11 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #'   ),
 #'   DataFilter = "string",
 #'   IntegrationConfig = list(
-#'     RefreshInterval = "string"
+#'     RefreshInterval = "string",
+#'     SourceProperties = list(
+#'       "string"
+#'     ),
+#'     ContinuousSync = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -4893,7 +5357,11 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #'     )
 #'   ),
 #'   IntegrationConfig = list(
-#'     RefreshInterval = "string"
+#'     RefreshInterval = "string",
+#'     SourceProperties = list(
+#'       "string"
+#'     ),
+#'     ContinuousSync = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -4936,17 +5404,20 @@ glue_create_integration <- function(IntegrationName, SourceArn, TargetArn, Descr
 #'
 #' @usage
 #' glue_create_integration_resource_property(ResourceArn,
-#'   SourceProcessingProperties, TargetProcessingProperties)
+#'   SourceProcessingProperties, TargetProcessingProperties, Tags)
 #'
 #' @param ResourceArn &#91;required&#93; The connection ARN of the source, or the database ARN of the target.
 #' @param SourceProcessingProperties The resource properties associated with the integration source.
 #' @param TargetProcessingProperties The resource properties associated with the integration target.
+#' @param Tags Metadata assigned to the resource consisting of a list of key-value
+#' pairs.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   ResourceArn = "string",
+#'   ResourcePropertyArn = "string",
 #'   SourceProcessingProperties = list(
 #'     RoleArn = "string"
 #'   ),
@@ -4971,6 +5442,12 @@ glue_create_integration <- function(IntegrationName, SourceArn, TargetArn, Descr
 #'     KmsArn = "string",
 #'     ConnectionName = "string",
 #'     EventBusArn = "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -4980,7 +5457,7 @@ glue_create_integration <- function(IntegrationName, SourceArn, TargetArn, Descr
 #' @rdname glue_create_integration_resource_property
 #'
 #' @aliases glue_create_integration_resource_property
-glue_create_integration_resource_property <- function(ResourceArn, SourceProcessingProperties = NULL, TargetProcessingProperties = NULL) {
+glue_create_integration_resource_property <- function(ResourceArn, SourceProcessingProperties = NULL, TargetProcessingProperties = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateIntegrationResourceProperty",
     http_method = "POST",
@@ -4989,7 +5466,7 @@ glue_create_integration_resource_property <- function(ResourceArn, SourceProcess
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$create_integration_resource_property_input(ResourceArn = ResourceArn, SourceProcessingProperties = SourceProcessingProperties, TargetProcessingProperties = TargetProcessingProperties)
+  input <- .glue$create_integration_resource_property_input(ResourceArn = ResourceArn, SourceProcessingProperties = SourceProcessingProperties, TargetProcessingProperties = TargetProcessingProperties, Tags = Tags)
   output <- .glue$create_integration_resource_property_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -5015,7 +5492,13 @@ glue_create_integration_resource_property <- function(ResourceArn, SourceProcess
 #' glue_create_integration_table_properties(ResourceArn, TableName,
 #'   SourceTableConfig, TargetTableConfig)
 #'
-#' @param ResourceArn &#91;required&#93; The connection ARN of the source, or the database ARN of the target.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the target table for which to create
+#' integration table properties. Currently, this API only supports creating
+#' integration table properties for target tables, and the provided ARN
+#' should be the ARN of the target table in the Glue Data Catalog. Support
+#' for creating integration table properties for source connections (using
+#' the connection ARN) is not yet implemented and will be added in a future
+#' release.
 #' @param TableName &#91;required&#93; The name of the table to be replicated.
 #' @param SourceTableConfig A structure for the source table configuration. See the
 #' `SourceTableConfig` structure to see list of supported source
@@ -5045,7 +5528,8 @@ glue_create_integration_resource_property <- function(ResourceArn, SourceProcess
 #'     PartitionSpec = list(
 #'       list(
 #'         FieldName = "string",
-#'         FunctionSpec = "string"
+#'         FunctionSpec = "string",
+#'         ConversionSpec = "string"
 #'       )
 #'     ),
 #'     TargetTableName = "string"
@@ -5240,10 +5724,11 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'     most demanding transforms, aggregations, joins, and queries. This
 #'     worker type is available only for Glue version 3.0 or later Spark
 #'     ETL jobs in the following Amazon Web Services Regions: US East
-#'     (Ohio), US East (N. Virginia), US West (Oregon), Asia Pacific
+#'     (Ohio), US East (N. Virginia), US West (N. California), US West
+#'     (Oregon), Asia Pacific (Mumbai), Asia Pacific (Seoul), Asia Pacific
 #'     (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Canada
-#'     (Central), Europe (Frankfurt), Europe (Ireland), and Europe
-#'     (Stockholm).
+#'     (Central), Europe (Frankfurt), Europe (Ireland), Europe (London),
+#'     Europe (Spain), Europe (Stockholm), and South America (São Paulo).
 #' 
 #' -   For the `G.8X` worker type, each worker maps to 8 DPU (32 vCPUs, 128
 #'     GB of memory) with 512GB disk, and provides 1 executor per worker.
@@ -5351,7 +5836,8 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'             Columns = list(
 #'               list(
 #'                 Name = "string",
-#'                 Type = "string"
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
 #'               )
 #'             )
 #'           )
@@ -5383,7 +5869,8 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'             Columns = list(
 #'               list(
 #'                 Name = "string",
-#'                 Type = "string"
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
 #'               )
 #'             )
 #'           )
@@ -5402,7 +5889,8 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'             Columns = list(
 #'               list(
 #'                 Name = "string",
-#'                 Type = "string"
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
 #'               )
 #'             )
 #'           )
@@ -5411,7 +5899,19 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'       CatalogSource = list(
 #'         Name = "string",
 #'         Database = "string",
-#'         Table = "string"
+#'         Table = "string",
+#'         PartitionPredicate = "string",
+#'         OutputSchemas = list(
+#'           list(
+#'             Columns = list(
+#'               list(
+#'                 Name = "string",
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
+#'               )
+#'             )
+#'           )
+#'         )
 #'       ),
 #'       RedshiftSource = list(
 #'         Name = "string",
@@ -5463,7 +5963,8 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'             Columns = list(
 #'               list(
 #'                 Name = "string",
-#'                 Type = "string"
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
 #'               )
 #'             )
 #'           )
@@ -5496,7 +5997,8 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'             Columns = list(
 #'               list(
 #'                 Name = "string",
-#'                 Type = "string"
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
 #'               )
 #'             )
 #'           )
@@ -5507,7 +6009,7 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'         Paths = list(
 #'           "string"
 #'         ),
-#'         CompressionType = "snappy"|"lzo"|"gzip"|"uncompressed"|"none",
+#'         CompressionType = "snappy"|"lzo"|"gzip"|"brotli"|"lz4"|"uncompressed"|"none",
 #'         Exclusions = list(
 #'           "string"
 #'         ),
@@ -5527,7 +6029,8 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'             Columns = list(
 #'               list(
 #'                 Name = "string",
-#'                 Type = "string"
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
 #'               )
 #'             )
 #'           )
@@ -5541,7 +6044,12 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'       DynamoDBCatalogSource = list(
 #'         Name = "string",
 #'         Database = "string",
-#'         Table = "string"
+#'         Table = "string",
+#'         PitrEnabled = TRUE|FALSE,
+#'         AdditionalOptions = list(
+#'           DynamodbExport = "string",
+#'           DynamodbUnnestDDBJson = TRUE|FALSE
+#'         )
 #'       ),
 #'       JDBCConnectorTarget = list(
 #'         Name = "string",
@@ -5560,7 +6068,8 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'             Columns = list(
 #'               list(
 #'                 Name = "string",
-#'                 Type = "string"
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
 #'               )
 #'             )
 #'           )
@@ -5582,7 +6091,8 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'             Columns = list(
 #'               list(
 #'                 Name = "string",
-#'                 Type = "string"
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
 #'               )
 #'             )
 #'           )
@@ -5633,6 +6143,10 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'         SchemaChangePolicy = list(
 #'           EnableUpdateCatalog = TRUE|FALSE,
 #'           UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG"
+#'         ),
+#'         AutoDataQuality = list(
+#'           IsEnabled = TRUE|FALSE,
+#'           EvaluationContext = "string"
 #'         )
 #'       ),
 #'       S3GlueParquetTarget = list(
@@ -5646,12 +6160,17 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'           )
 #'         ),
 #'         Path = "string",
-#'         Compression = "snappy"|"lzo"|"gzip"|"uncompressed"|"none",
+#'         Compression = "snappy"|"lzo"|"gzip"|"brotli"|"lz4"|"uncompressed"|"none",
+#'         NumberTargetPartitions = "string",
 #'         SchemaChangePolicy = list(
 #'           EnableUpdateCatalog = TRUE|FALSE,
 #'           UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
 #'           Table = "string",
 #'           Database = "string"
+#'         ),
+#'         AutoDataQuality = list(
+#'           IsEnabled = TRUE|FALSE,
+#'           EvaluationContext = "string"
 #'         )
 #'       ),
 #'       S3DirectTarget = list(
@@ -5666,12 +6185,28 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'         ),
 #'         Path = "string",
 #'         Compression = "string",
-#'         Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta",
+#'         NumberTargetPartitions = "string",
+#'         Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta"|"iceberg"|"hyper"|"xml",
 #'         SchemaChangePolicy = list(
 #'           EnableUpdateCatalog = TRUE|FALSE,
 #'           UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
 #'           Table = "string",
 #'           Database = "string"
+#'         ),
+#'         AutoDataQuality = list(
+#'           IsEnabled = TRUE|FALSE,
+#'           EvaluationContext = "string"
+#'         ),
+#'         OutputSchemas = list(
+#'           list(
+#'             Columns = list(
+#'               list(
+#'                 Name = "string",
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       ApplyMapping = list(
@@ -5811,7 +6346,8 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'             Columns = list(
 #'               list(
 #'                 Name = "string",
-#'                 Type = "string"
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
 #'               )
 #'             )
 #'           )
@@ -5834,7 +6370,8 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'             Columns = list(
 #'               list(
 #'                 Name = "string",
-#'                 Type = "string"
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
 #'               )
 #'             )
 #'           )
@@ -5867,7 +6404,8 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'           EmitConsumerLagMetrics = "string",
 #'           StartingTimestamp = as.POSIXct(
 #'             "2015-01-01"
-#'           )
+#'           ),
+#'           FanoutConsumerARN = "string"
 #'         ),
 #'         DataPreviewOptions = list(
 #'           PollingTime = 123,
@@ -5935,7 +6473,8 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'           EmitConsumerLagMetrics = "string",
 #'           StartingTimestamp = as.POSIXct(
 #'             "2015-01-01"
-#'           )
+#'           ),
+#'           FanoutConsumerARN = "string"
 #'         ),
 #'         DataPreviewOptions = list(
 #'           PollingTime = 123,
@@ -6020,14 +6559,21 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'         Inputs = list(
 #'           "string"
 #'         ),
-#'         PiiType = "RowAudit"|"RowMasking"|"ColumnAudit"|"ColumnMasking",
+#'         PiiType = "RowAudit"|"RowHashing"|"RowMasking"|"RowPartialMasking"|"ColumnAudit"|"ColumnHashing"|"ColumnMasking",
 #'         EntityTypesToDetect = list(
 #'           "string"
 #'         ),
 #'         OutputColumnName = "string",
 #'         SampleFraction = 123.0,
 #'         ThresholdFraction = 123.0,
-#'         MaskValue = "string"
+#'         MaskValue = "string",
+#'         RedactText = "string",
+#'         RedactChar = "string",
+#'         MatchPattern = "string",
+#'         NumLeftCharsToExclude = 123,
+#'         NumRightCharsToExclude = 123,
+#'         DetectionParameters = "string",
+#'         DetectionSensitivity = "string"
 #'       ),
 #'       Aggregate = list(
 #'         Name = "string",
@@ -6138,6 +6684,32 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'         Database = "string",
 #'         Table = "string"
 #'       ),
+#'       Route = list(
+#'         Name = "string",
+#'         Inputs = list(
+#'           "string"
+#'         ),
+#'         GroupFiltersList = list(
+#'           list(
+#'             GroupName = "string",
+#'             Filters = list(
+#'               list(
+#'                 Operation = "EQ"|"LT"|"GT"|"LTE"|"GTE"|"REGEX"|"ISNULL",
+#'                 Negated = TRUE|FALSE,
+#'                 Values = list(
+#'                   list(
+#'                     Type = "COLUMNEXTRACTED"|"CONSTANT",
+#'                     Value = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             LogicalOperator = "AND"|"OR"
+#'           )
+#'         )
+#'       ),
 #'       DynamicTransform = list(
 #'         Name = "string",
 #'         TransformName = "string",
@@ -6165,7 +6737,8 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'             Columns = list(
 #'               list(
 #'                 Name = "string",
-#'                 Type = "string"
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
 #'               )
 #'             )
 #'           )
@@ -6200,7 +6773,8 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'             Columns = list(
 #'               list(
 #'                 Name = "string",
-#'                 Type = "string"
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
 #'               )
 #'             )
 #'           )
@@ -6218,7 +6792,8 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'             Columns = list(
 #'               list(
 #'                 Name = "string",
-#'                 Type = "string"
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
 #'               )
 #'             )
 #'           )
@@ -6243,7 +6818,8 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'             Columns = list(
 #'               list(
 #'                 Name = "string",
-#'                 Type = "string"
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
 #'               )
 #'             )
 #'           )
@@ -6267,6 +6843,21 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'         SchemaChangePolicy = list(
 #'           EnableUpdateCatalog = TRUE|FALSE,
 #'           UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG"
+#'         ),
+#'         AutoDataQuality = list(
+#'           IsEnabled = TRUE|FALSE,
+#'           EvaluationContext = "string"
+#'         ),
+#'         OutputSchemas = list(
+#'           list(
+#'             Columns = list(
+#'               list(
+#'                 Name = "string",
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       S3HudiDirectTarget = list(
@@ -6276,12 +6867,13 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'         ),
 #'         Path = "string",
 #'         Compression = "gzip"|"lzo"|"uncompressed"|"snappy",
+#'         NumberTargetPartitions = "string",
 #'         PartitionKeys = list(
 #'           list(
 #'             "string"
 #'           )
 #'         ),
-#'         Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta",
+#'         Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta"|"iceberg"|"hyper"|"xml",
 #'         AdditionalOptions = list(
 #'           "string"
 #'         ),
@@ -6290,6 +6882,10 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'           UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
 #'           Table = "string",
 #'           Database = "string"
+#'         ),
+#'         AutoDataQuality = list(
+#'           IsEnabled = TRUE|FALSE,
+#'           EvaluationContext = "string"
 #'         )
 #'       ),
 #'       DirectJDBCSource = list(
@@ -6298,7 +6894,18 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'         Table = "string",
 #'         ConnectionName = "string",
 #'         ConnectionType = "sqlserver"|"mysql"|"oracle"|"postgresql"|"redshift",
-#'         RedshiftTmpDir = "string"
+#'         RedshiftTmpDir = "string",
+#'         OutputSchemas = list(
+#'           list(
+#'             Columns = list(
+#'               list(
+#'                 Name = "string",
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
+#'               )
+#'             )
+#'           )
+#'         )
 #'       ),
 #'       S3CatalogDeltaSource = list(
 #'         Name = "string",
@@ -6312,7 +6919,8 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'             Columns = list(
 #'               list(
 #'                 Name = "string",
-#'                 Type = "string"
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
 #'               )
 #'             )
 #'           )
@@ -6330,7 +6938,8 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'             Columns = list(
 #'               list(
 #'                 Name = "string",
-#'                 Type = "string"
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
 #'               )
 #'             )
 #'           )
@@ -6355,7 +6964,8 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'             Columns = list(
 #'               list(
 #'                 Name = "string",
-#'                 Type = "string"
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
 #'               )
 #'             )
 #'           )
@@ -6379,6 +6989,21 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'         SchemaChangePolicy = list(
 #'           EnableUpdateCatalog = TRUE|FALSE,
 #'           UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG"
+#'         ),
+#'         AutoDataQuality = list(
+#'           IsEnabled = TRUE|FALSE,
+#'           EvaluationContext = "string"
+#'         ),
+#'         OutputSchemas = list(
+#'           list(
+#'             Columns = list(
+#'               list(
+#'                 Name = "string",
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       S3DeltaDirectTarget = list(
@@ -6393,7 +7018,8 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'         ),
 #'         Path = "string",
 #'         Compression = "uncompressed"|"snappy",
-#'         Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta",
+#'         NumberTargetPartitions = "string",
+#'         Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta"|"iceberg"|"hyper"|"xml",
 #'         AdditionalOptions = list(
 #'           "string"
 #'         ),
@@ -6402,6 +7028,10 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'           UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
 #'           Table = "string",
 #'           Database = "string"
+#'         ),
+#'         AutoDataQuality = list(
+#'           IsEnabled = TRUE|FALSE,
+#'           EvaluationContext = "string"
 #'         )
 #'       ),
 #'       AmazonRedshiftSource = list(
@@ -6652,7 +7282,8 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'             Columns = list(
 #'               list(
 #'                 Name = "string",
-#'                 Type = "string"
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
 #'               )
 #'             )
 #'           )
@@ -6720,7 +7351,8 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'             Columns = list(
 #'               list(
 #'                 Name = "string",
-#'                 Type = "string"
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
 #'               )
 #'             )
 #'           )
@@ -6734,6 +7366,199 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'         ),
 #'         Inputs = list(
 #'           "string"
+#'         )
+#'       ),
+#'       S3CatalogIcebergSource = list(
+#'         Name = "string",
+#'         Database = "string",
+#'         Table = "string",
+#'         AdditionalIcebergOptions = list(
+#'           "string"
+#'         ),
+#'         OutputSchemas = list(
+#'           list(
+#'             Columns = list(
+#'               list(
+#'                 Name = "string",
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       CatalogIcebergSource = list(
+#'         Name = "string",
+#'         Database = "string",
+#'         Table = "string",
+#'         AdditionalIcebergOptions = list(
+#'           "string"
+#'         ),
+#'         OutputSchemas = list(
+#'           list(
+#'             Columns = list(
+#'               list(
+#'                 Name = "string",
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       S3IcebergCatalogTarget = list(
+#'         Name = "string",
+#'         Inputs = list(
+#'           "string"
+#'         ),
+#'         PartitionKeys = list(
+#'           list(
+#'             "string"
+#'           )
+#'         ),
+#'         Table = "string",
+#'         Database = "string",
+#'         AdditionalOptions = list(
+#'           "string"
+#'         ),
+#'         SchemaChangePolicy = list(
+#'           EnableUpdateCatalog = TRUE|FALSE,
+#'           UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG"
+#'         ),
+#'         AutoDataQuality = list(
+#'           IsEnabled = TRUE|FALSE,
+#'           EvaluationContext = "string"
+#'         )
+#'       ),
+#'       S3IcebergDirectTarget = list(
+#'         Name = "string",
+#'         Inputs = list(
+#'           "string"
+#'         ),
+#'         PartitionKeys = list(
+#'           list(
+#'             "string"
+#'           )
+#'         ),
+#'         Path = "string",
+#'         Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta"|"iceberg"|"hyper"|"xml",
+#'         AdditionalOptions = list(
+#'           "string"
+#'         ),
+#'         SchemaChangePolicy = list(
+#'           EnableUpdateCatalog = TRUE|FALSE,
+#'           UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
+#'           Table = "string",
+#'           Database = "string"
+#'         ),
+#'         AutoDataQuality = list(
+#'           IsEnabled = TRUE|FALSE,
+#'           EvaluationContext = "string"
+#'         ),
+#'         Compression = "gzip"|"lzo"|"uncompressed"|"snappy",
+#'         NumberTargetPartitions = "string",
+#'         OutputSchemas = list(
+#'           list(
+#'             Columns = list(
+#'               list(
+#'                 Name = "string",
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       S3ExcelSource = list(
+#'         Name = "string",
+#'         Paths = list(
+#'           "string"
+#'         ),
+#'         CompressionType = "snappy"|"lzo"|"gzip"|"brotli"|"lz4"|"uncompressed"|"none",
+#'         Exclusions = list(
+#'           "string"
+#'         ),
+#'         GroupSize = "string",
+#'         GroupFiles = "string",
+#'         Recurse = TRUE|FALSE,
+#'         MaxBand = 123,
+#'         MaxFilesInBand = 123,
+#'         AdditionalOptions = list(
+#'           BoundedSize = 123,
+#'           BoundedFiles = 123,
+#'           EnableSamplePath = TRUE|FALSE,
+#'           SamplePath = "string"
+#'         ),
+#'         NumberRows = 123,
+#'         SkipFooter = 123,
+#'         OutputSchemas = list(
+#'           list(
+#'             Columns = list(
+#'               list(
+#'                 Name = "string",
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       S3HyperDirectTarget = list(
+#'         Name = "string",
+#'         Inputs = list(
+#'           "string"
+#'         ),
+#'         Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta"|"iceberg"|"hyper"|"xml",
+#'         PartitionKeys = list(
+#'           list(
+#'             "string"
+#'           )
+#'         ),
+#'         Path = "string",
+#'         Compression = "uncompressed",
+#'         SchemaChangePolicy = list(
+#'           EnableUpdateCatalog = TRUE|FALSE,
+#'           UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
+#'           Table = "string",
+#'           Database = "string"
+#'         ),
+#'         AutoDataQuality = list(
+#'           IsEnabled = TRUE|FALSE,
+#'           EvaluationContext = "string"
+#'         ),
+#'         OutputSchemas = list(
+#'           list(
+#'             Columns = list(
+#'               list(
+#'                 Name = "string",
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       DynamoDBELTConnectorSource = list(
+#'         Name = "string",
+#'         ConnectionOptions = list(
+#'           DynamodbExport = "ddb"|"s3",
+#'           DynamodbUnnestDDBJson = TRUE|FALSE,
+#'           DynamodbTableArn = "string",
+#'           DynamodbS3Bucket = "string",
+#'           DynamodbS3Prefix = "string",
+#'           DynamodbS3BucketOwner = "string",
+#'           DynamodbStsRoleArn = "string"
+#'         ),
+#'         OutputSchemas = list(
+#'           list(
+#'             Columns = list(
+#'               list(
+#'                 Name = "string",
+#'                 Type = "string",
+#'                 GlueStudioType = "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       )
 #'     )
@@ -7695,14 +8520,16 @@ glue_create_session <- function(Id, Description = NULL, Role, Command, Timeout =
 #' Creates a new table definition in the Data Catalog.
 #'
 #' @usage
-#' glue_create_table(CatalogId, DatabaseName, TableInput, PartitionIndexes,
-#'   TransactionId, OpenTableFormatInput)
+#' glue_create_table(CatalogId, DatabaseName, Name, TableInput,
+#'   PartitionIndexes, TransactionId, OpenTableFormatInput)
 #'
 #' @param CatalogId The ID of the Data Catalog in which to create the `Table`. If none is
 #' supplied, the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The catalog database in which to create the new table. For Hive
 #' compatibility, this name is entirely lowercase.
-#' @param TableInput &#91;required&#93; The `TableInput` object that defines the metadata table to create in the
+#' @param Name The unique identifier for the table within the specified database that
+#' will be created in the Glue Data Catalog.
+#' @param TableInput The `TableInput` object that defines the metadata table to create in the
 #' catalog.
 #' @param PartitionIndexes A list of partition indexes, `PartitionIndex` structures, to create in
 #' the table.
@@ -7718,6 +8545,7 @@ glue_create_session <- function(Id, Description = NULL, Role, Command, Timeout =
 #' svc$create_table(
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
+#'   Name = "string",
 #'   TableInput = list(
 #'     Name = "string",
 #'     Description = "string",
@@ -7823,8 +8651,15 @@ glue_create_session <- function(Id, Description = NULL, Role, Command, Timeout =
 #'           ViewExpandedText = "string"
 #'         )
 #'       ),
+#'       ViewVersionId = 123,
+#'       ViewVersionToken = "string",
+#'       RefreshSeconds = 123,
+#'       LastRefreshType = "FULL"|"INCREMENTAL",
 #'       SubObjects = list(
 #'         "string"
+#'       ),
+#'       SubObjectVersionIds = list(
+#'         123
 #'       )
 #'     )
 #'   ),
@@ -7840,7 +8675,53 @@ glue_create_session <- function(Id, Description = NULL, Role, Command, Timeout =
 #'   OpenTableFormatInput = list(
 #'     IcebergInput = list(
 #'       MetadataOperation = "CREATE",
-#'       Version = "string"
+#'       Version = "string",
+#'       CreateIcebergTableInput = list(
+#'         Location = "string",
+#'         Schema = list(
+#'           SchemaId = 123,
+#'           IdentifierFieldIds = list(
+#'             123
+#'           ),
+#'           Type = "struct",
+#'           Fields = list(
+#'             list(
+#'               Id = 123,
+#'               Name = "string",
+#'               Type = list(),
+#'               Required = TRUE|FALSE,
+#'               Doc = "string",
+#'               InitialDefault = list(),
+#'               WriteDefault = list()
+#'             )
+#'           )
+#'         ),
+#'         PartitionSpec = list(
+#'           Fields = list(
+#'             list(
+#'               SourceId = 123,
+#'               Transform = "string",
+#'               Name = "string",
+#'               FieldId = 123
+#'             )
+#'           ),
+#'           SpecId = 123
+#'         ),
+#'         WriteOrder = list(
+#'           OrderId = 123,
+#'           Fields = list(
+#'             list(
+#'               SourceId = 123,
+#'               Transform = "string",
+#'               Direction = "asc"|"desc",
+#'               NullOrder = "nulls-first"|"nulls-last"
+#'             )
+#'           )
+#'         ),
+#'         Properties = list(
+#'           "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -7851,7 +8732,7 @@ glue_create_session <- function(Id, Description = NULL, Role, Command, Timeout =
 #' @rdname glue_create_table
 #'
 #' @aliases glue_create_table
-glue_create_table <- function(CatalogId = NULL, DatabaseName, TableInput, PartitionIndexes = NULL, TransactionId = NULL, OpenTableFormatInput = NULL) {
+glue_create_table <- function(CatalogId = NULL, DatabaseName, Name = NULL, TableInput = NULL, PartitionIndexes = NULL, TransactionId = NULL, OpenTableFormatInput = NULL) {
   op <- new_operation(
     name = "CreateTable",
     http_method = "POST",
@@ -7860,7 +8741,7 @@ glue_create_table <- function(CatalogId = NULL, DatabaseName, TableInput, Partit
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$create_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableInput = TableInput, PartitionIndexes = PartitionIndexes, TransactionId = TransactionId, OpenTableFormatInput = OpenTableFormatInput)
+  input <- .glue$create_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, TableInput = TableInput, PartitionIndexes = PartitionIndexes, TransactionId = TransactionId, OpenTableFormatInput = OpenTableFormatInput)
   output <- .glue$create_table_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -7902,17 +8783,26 @@ glue_create_table <- function(CatalogId = NULL, DatabaseName, TableInput, Partit
 #'     vpcConfiguration = list(
 #'       glueConnectionName = "string"
 #'     ),
+#'     compactionConfiguration = list(
+#'       icebergConfiguration = list(
+#'         strategy = "binpack"|"sort"|"z-order",
+#'         minInputFiles = 123,
+#'         deleteFileThreshold = 123
+#'       )
+#'     ),
 #'     retentionConfiguration = list(
 #'       icebergConfiguration = list(
 #'         snapshotRetentionPeriodInDays = 123,
 #'         numberOfSnapshotsToRetain = 123,
-#'         cleanExpiredFiles = TRUE|FALSE
+#'         cleanExpiredFiles = TRUE|FALSE,
+#'         runRateInHours = 123
 #'       )
 #'     ),
 #'     orphanFileDeletionConfiguration = list(
 #'       icebergConfiguration = list(
 #'         orphanFileRetentionPeriodInDays = 123,
-#'         location = "string"
+#'         location = "string",
+#'         runRateInHours = 123
 #'       )
 #'     )
 #'   )
@@ -8165,6 +9055,7 @@ glue_create_usage_profile <- function(Name, Description = NULL, Configuration, T
 #'     FunctionName = "string",
 #'     ClassName = "string",
 #'     OwnerName = "string",
+#'     FunctionType = "REGULAR_FUNCTION"|"AGGREGATE_FUNCTION"|"STORED_PROCEDURE",
 #'     OwnerType = "USER"|"ROLE"|"GROUP",
 #'     ResourceUris = list(
 #'       list(
@@ -8883,6 +9774,50 @@ glue_delete_dev_endpoint <- function(EndpointName) {
 }
 .glue$operations$delete_dev_endpoint <- glue_delete_dev_endpoint
 
+#' Deletes the existing Glue Identity Center configuration, removing the
+#' integration between Glue and Amazon Web Services IAM Identity Center
+#'
+#' @description
+#' Deletes the existing Glue Identity Center configuration, removing the
+#' integration between Glue and Amazon Web Services IAM Identity Center.
+#'
+#' @usage
+#' glue_delete_glue_identity_center_configuration()
+#'
+
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_glue_identity_center_configuration()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_glue_identity_center_configuration
+#'
+#' @aliases glue_delete_glue_identity_center_configuration
+glue_delete_glue_identity_center_configuration <- function() {
+  op <- new_operation(
+    name = "DeleteGlueIdentityCenterConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$delete_glue_identity_center_configuration_input()
+  output <- .glue$delete_glue_identity_center_configuration_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_glue_identity_center_configuration <- glue_delete_glue_identity_center_configuration
+
 #' Deletes the specified Zero-ETL integration
 #'
 #' @description
@@ -8956,6 +9891,52 @@ glue_delete_integration <- function(IntegrationIdentifier) {
   return(response)
 }
 .glue$operations$delete_integration <- glue_delete_integration
+
+#' This API is used for deleting the ResourceProperty of the Glue
+#' connection (for the source) or Glue database ARN (for the target)
+#'
+#' @description
+#' This API is used for deleting the `ResourceProperty` of the Glue
+#' connection (for the source) or Glue database ARN (for the target).
+#'
+#' @usage
+#' glue_delete_integration_resource_property(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The connection ARN of the source, or the database ARN of the target.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_integration_resource_property(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_integration_resource_property
+#'
+#' @aliases glue_delete_integration_resource_property
+glue_delete_integration_resource_property <- function(ResourceArn) {
+  op <- new_operation(
+    name = "DeleteIntegrationResourceProperty",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$delete_integration_resource_property_input(ResourceArn = ResourceArn)
+  output <- .glue$delete_integration_resource_property_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_integration_resource_property <- glue_delete_integration_resource_property
 
 #' Deletes the table properties that have been created for the tables that
 #' need to be replicated
@@ -10381,7 +11362,11 @@ glue_describe_entity <- function(ConnectionName, CatalogId = NULL, EntityName, N
 #'         "2015-01-01"
 #'       ),
 #'       IntegrationConfig = list(
-#'         RefreshInterval = "string"
+#'         RefreshInterval = "string",
+#'         SourceProperties = list(
+#'           "string"
+#'         ),
+#'         ContinuousSync = TRUE|FALSE
 #'       ),
 #'       Errors = list(
 #'         list(
@@ -10472,7 +11457,11 @@ glue_describe_inbound_integrations <- function(IntegrationArn = NULL, Marker = N
 #'         "2015-01-01"
 #'       ),
 #'       IntegrationConfig = list(
-#'         RefreshInterval = "string"
+#'         RefreshInterval = "string",
+#'         SourceProperties = list(
+#'           "string"
+#'         ),
+#'         ContinuousSync = TRUE|FALSE
 #'       ),
 #'       Errors = list(
 #'         list(
@@ -10775,7 +11764,8 @@ glue_get_blueprint_runs <- function(BlueprintName, NextToken = NULL, MaxResults 
 #'     ),
 #'     FederatedCatalog = list(
 #'       Identifier = "string",
-#'       ConnectionName = "string"
+#'       ConnectionName = "string",
+#'       ConnectionType = "string"
 #'     ),
 #'     CatalogProperties = list(
 #'       DataLakeAccessProperties = list(
@@ -10787,6 +11777,21 @@ glue_get_blueprint_runs <- function(BlueprintName, NextToken = NULL, MaxResults 
 #'         RedshiftDatabaseName = "string",
 #'         StatusMessage = "string",
 #'         CatalogType = "string"
+#'       ),
+#'       IcebergOptimizationProperties = list(
+#'         RoleArn = "string",
+#'         Compaction = list(
+#'           "string"
+#'         ),
+#'         Retention = list(
+#'           "string"
+#'         ),
+#'         OrphanFileDeletion = list(
+#'           "string"
+#'         ),
+#'         LastUpdatedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
 #'       ),
 #'       CustomProperties = list(
 #'         "string"
@@ -10956,7 +11961,8 @@ glue_get_catalog_import_status <- function(CatalogId = NULL) {
 #'       ),
 #'       FederatedCatalog = list(
 #'         Identifier = "string",
-#'         ConnectionName = "string"
+#'         ConnectionName = "string",
+#'         ConnectionType = "string"
 #'       ),
 #'       CatalogProperties = list(
 #'         DataLakeAccessProperties = list(
@@ -10968,6 +11974,21 @@ glue_get_catalog_import_status <- function(CatalogId = NULL) {
 #'           RedshiftDatabaseName = "string",
 #'           StatusMessage = "string",
 #'           CatalogType = "string"
+#'         ),
+#'         IcebergOptimizationProperties = list(
+#'           RoleArn = "string",
+#'           Compaction = list(
+#'             "string"
+#'           ),
+#'           Retention = list(
+#'             "string"
+#'           ),
+#'           OrphanFileDeletion = list(
+#'             "string"
+#'           ),
+#'           LastUpdatedTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
 #'         ),
 #'         CustomProperties = list(
 #'           "string"
@@ -11800,7 +12821,7 @@ glue_get_column_statistics_task_settings <- function(DatabaseName, TableName) {
 #'   Connection = list(
 #'     Name = "string",
 #'     Description = "string",
-#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE"|"VIEW_VALIDATION_REDSHIFT"|"VIEW_VALIDATION_ATHENA"|"GOOGLEADS"|"GOOGLESHEETS"|"GOOGLEANALYTICS4"|"SERVICENOW"|"MARKETO"|"SAPODATA"|"ZENDESK"|"JIRACLOUD"|"NETSUITEERP"|"HUBSPOT"|"FACEBOOKADS"|"INSTAGRAMADS"|"ZOHOCRM"|"SALESFORCEPARDOT"|"SALESFORCEMARKETINGCLOUD"|"SLACK"|"STRIPE"|"INTERCOM"|"SNAPCHATADS",
+#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE"|"VIEW_VALIDATION_REDSHIFT"|"VIEW_VALIDATION_ATHENA"|"GOOGLEADS"|"GOOGLESHEETS"|"GOOGLEANALYTICS4"|"SERVICENOW"|"MARKETO"|"SAPODATA"|"ZENDESK"|"JIRACLOUD"|"NETSUITEERP"|"HUBSPOT"|"FACEBOOKADS"|"INSTAGRAMADS"|"ZOHOCRM"|"SALESFORCEPARDOT"|"SALESFORCEMARKETINGCLOUD"|"ADOBEANALYTICS"|"SLACK"|"LINKEDIN"|"MIXPANEL"|"ASANA"|"STRIPE"|"SMARTSHEET"|"DATADOG"|"WOOCOMMERCE"|"INTERCOM"|"SNAPCHATADS"|"PAYPAL"|"QUICKBOOKS"|"FACEBOOKPAGEINSIGHTS"|"FRESHDESK"|"TWILIO"|"DOCUSIGNMONITOR"|"FRESHSALES"|"ZOOM"|"GOOGLESEARCHCONSOLE"|"SALESFORCECOMMERCECLOUD"|"SAPCONCUR"|"DYNATRACE"|"MICROSOFTDYNAMIC365FINANCEANDOPS"|"MICROSOFTTEAMS"|"BLACKBAUDRAISEREDGENXT"|"MAILCHIMP"|"GITLAB"|"PENDO"|"PRODUCTBOARD"|"CIRCLECI"|"PIPEDIVE"|"SENDGRID"|"AZURECOSMOS"|"AZURESQL"|"BIGQUERY"|"BLACKBAUD"|"CLOUDERAHIVE"|"CLOUDERAIMPALA"|"CLOUDWATCH"|"CLOUDWATCHMETRICS"|"CMDB"|"DATALAKEGEN2"|"DB2"|"DB2AS400"|"DOCUMENTDB"|"DOMO"|"DYNAMODB"|"GOOGLECLOUDSTORAGE"|"HBASE"|"KUSTOMER"|"MICROSOFTDYNAMICS365CRM"|"MONDAY"|"MYSQL"|"OKTA"|"OPENSEARCH"|"ORACLE"|"PIPEDRIVE"|"POSTGRESQL"|"SAPHANA"|"SQLSERVER"|"SYNAPSE"|"TERADATA"|"TERADATANOS"|"TIMESTREAM"|"TPCDS"|"VERTICA",
 #'     MatchCriteria = list(
 #'       "string"
 #'     ),
@@ -11838,6 +12859,7 @@ glue_get_column_statistics_task_settings <- function(DatabaseName, TableName) {
 #'     AuthenticationConfiguration = list(
 #'       AuthenticationType = "BASIC"|"OAUTH2"|"CUSTOM"|"IAM",
 #'       SecretArn = "string",
+#'       KmsKeyArn = "string",
 #'       OAuth2Properties = list(
 #'         OAuth2GrantType = "AUTHORIZATION_CODE"|"CLIENT_CREDENTIALS"|"JWT_BEARER",
 #'         OAuth2ClientApplication = list(
@@ -11921,7 +12943,7 @@ glue_get_connection <- function(CatalogId = NULL, Name, HidePassword = NULL, App
 #'     list(
 #'       Name = "string",
 #'       Description = "string",
-#'       ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE"|"VIEW_VALIDATION_REDSHIFT"|"VIEW_VALIDATION_ATHENA"|"GOOGLEADS"|"GOOGLESHEETS"|"GOOGLEANALYTICS4"|"SERVICENOW"|"MARKETO"|"SAPODATA"|"ZENDESK"|"JIRACLOUD"|"NETSUITEERP"|"HUBSPOT"|"FACEBOOKADS"|"INSTAGRAMADS"|"ZOHOCRM"|"SALESFORCEPARDOT"|"SALESFORCEMARKETINGCLOUD"|"SLACK"|"STRIPE"|"INTERCOM"|"SNAPCHATADS",
+#'       ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE"|"VIEW_VALIDATION_REDSHIFT"|"VIEW_VALIDATION_ATHENA"|"GOOGLEADS"|"GOOGLESHEETS"|"GOOGLEANALYTICS4"|"SERVICENOW"|"MARKETO"|"SAPODATA"|"ZENDESK"|"JIRACLOUD"|"NETSUITEERP"|"HUBSPOT"|"FACEBOOKADS"|"INSTAGRAMADS"|"ZOHOCRM"|"SALESFORCEPARDOT"|"SALESFORCEMARKETINGCLOUD"|"ADOBEANALYTICS"|"SLACK"|"LINKEDIN"|"MIXPANEL"|"ASANA"|"STRIPE"|"SMARTSHEET"|"DATADOG"|"WOOCOMMERCE"|"INTERCOM"|"SNAPCHATADS"|"PAYPAL"|"QUICKBOOKS"|"FACEBOOKPAGEINSIGHTS"|"FRESHDESK"|"TWILIO"|"DOCUSIGNMONITOR"|"FRESHSALES"|"ZOOM"|"GOOGLESEARCHCONSOLE"|"SALESFORCECOMMERCECLOUD"|"SAPCONCUR"|"DYNATRACE"|"MICROSOFTDYNAMIC365FINANCEANDOPS"|"MICROSOFTTEAMS"|"BLACKBAUDRAISEREDGENXT"|"MAILCHIMP"|"GITLAB"|"PENDO"|"PRODUCTBOARD"|"CIRCLECI"|"PIPEDIVE"|"SENDGRID"|"AZURECOSMOS"|"AZURESQL"|"BIGQUERY"|"BLACKBAUD"|"CLOUDERAHIVE"|"CLOUDERAIMPALA"|"CLOUDWATCH"|"CLOUDWATCHMETRICS"|"CMDB"|"DATALAKEGEN2"|"DB2"|"DB2AS400"|"DOCUMENTDB"|"DOMO"|"DYNAMODB"|"GOOGLECLOUDSTORAGE"|"HBASE"|"KUSTOMER"|"MICROSOFTDYNAMICS365CRM"|"MONDAY"|"MYSQL"|"OKTA"|"OPENSEARCH"|"ORACLE"|"PIPEDRIVE"|"POSTGRESQL"|"SAPHANA"|"SQLSERVER"|"SYNAPSE"|"TERADATA"|"TERADATANOS"|"TIMESTREAM"|"TPCDS"|"VERTICA",
 #'       MatchCriteria = list(
 #'         "string"
 #'       ),
@@ -11959,6 +12981,7 @@ glue_get_connection <- function(CatalogId = NULL, Name, HidePassword = NULL, App
 #'       AuthenticationConfiguration = list(
 #'         AuthenticationType = "BASIC"|"OAUTH2"|"CUSTOM"|"IAM",
 #'         SecretArn = "string",
+#'         KmsKeyArn = "string",
 #'         OAuth2Properties = list(
 #'           OAuth2GrantType = "AUTHORIZATION_CODE"|"CLIENT_CREDENTIALS"|"JWT_BEARER",
 #'           OAuth2ClientApplication = list(
@@ -11989,7 +13012,7 @@ glue_get_connection <- function(CatalogId = NULL, Name, HidePassword = NULL, App
 #'     MatchCriteria = list(
 #'       "string"
 #'     ),
-#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE"|"VIEW_VALIDATION_REDSHIFT"|"VIEW_VALIDATION_ATHENA"|"GOOGLEADS"|"GOOGLESHEETS"|"GOOGLEANALYTICS4"|"SERVICENOW"|"MARKETO"|"SAPODATA"|"ZENDESK"|"JIRACLOUD"|"NETSUITEERP"|"HUBSPOT"|"FACEBOOKADS"|"INSTAGRAMADS"|"ZOHOCRM"|"SALESFORCEPARDOT"|"SALESFORCEMARKETINGCLOUD"|"SLACK"|"STRIPE"|"INTERCOM"|"SNAPCHATADS",
+#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE"|"VIEW_VALIDATION_REDSHIFT"|"VIEW_VALIDATION_ATHENA"|"GOOGLEADS"|"GOOGLESHEETS"|"GOOGLEANALYTICS4"|"SERVICENOW"|"MARKETO"|"SAPODATA"|"ZENDESK"|"JIRACLOUD"|"NETSUITEERP"|"HUBSPOT"|"FACEBOOKADS"|"INSTAGRAMADS"|"ZOHOCRM"|"SALESFORCEPARDOT"|"SALESFORCEMARKETINGCLOUD"|"ADOBEANALYTICS"|"SLACK"|"LINKEDIN"|"MIXPANEL"|"ASANA"|"STRIPE"|"SMARTSHEET"|"DATADOG"|"WOOCOMMERCE"|"INTERCOM"|"SNAPCHATADS"|"PAYPAL"|"QUICKBOOKS"|"FACEBOOKPAGEINSIGHTS"|"FRESHDESK"|"TWILIO"|"DOCUSIGNMONITOR"|"FRESHSALES"|"ZOOM"|"GOOGLESEARCHCONSOLE"|"SALESFORCECOMMERCECLOUD"|"SAPCONCUR"|"DYNATRACE"|"MICROSOFTDYNAMIC365FINANCEANDOPS"|"MICROSOFTTEAMS"|"BLACKBAUDRAISEREDGENXT"|"MAILCHIMP"|"GITLAB"|"PENDO"|"PRODUCTBOARD"|"CIRCLECI"|"PIPEDIVE"|"SENDGRID"|"AZURECOSMOS"|"AZURESQL"|"BIGQUERY"|"BLACKBAUD"|"CLOUDERAHIVE"|"CLOUDERAIMPALA"|"CLOUDWATCH"|"CLOUDWATCHMETRICS"|"CMDB"|"DATALAKEGEN2"|"DB2"|"DB2AS400"|"DOCUMENTDB"|"DOMO"|"DYNAMODB"|"GOOGLECLOUDSTORAGE"|"HBASE"|"KUSTOMER"|"MICROSOFTDYNAMICS365CRM"|"MONDAY"|"MYSQL"|"OKTA"|"OPENSEARCH"|"ORACLE"|"PIPEDRIVE"|"POSTGRESQL"|"SAPHANA"|"SQLSERVER"|"SYNAPSE"|"TERADATA"|"TERADATANOS"|"TIMESTREAM"|"TPCDS"|"VERTICA",
 #'     ConnectionSchemaVersion = 123
 #'   ),
 #'   HidePassword = TRUE|FALSE,
@@ -12723,6 +13746,16 @@ glue_get_data_quality_model_result <- function(StatisticId, ProfileId) {
 #'       AdditionalOptions = list(
 #'         "string"
 #'       )
+#'     ),
+#'     DataQualityGlueTable = list(
+#'       DatabaseName = "string",
+#'       TableName = "string",
+#'       CatalogId = "string",
+#'       ConnectionName = "string",
+#'       AdditionalOptions = list(
+#'         "string"
+#'       ),
+#'       PreProcessingQuery = "string"
 #'     )
 #'   ),
 #'   RulesetName = "string",
@@ -12745,7 +13778,13 @@ glue_get_data_quality_model_result <- function(StatisticId, ProfileId) {
 #'       EvaluatedMetrics = list(
 #'         123.0
 #'       ),
-#'       EvaluatedRule = "string"
+#'       EvaluatedRule = "string",
+#'       RuleMetrics = list(
+#'         123.0
+#'       ),
+#'       Labels = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   AnalyzerResults = list(
@@ -12775,6 +13814,14 @@ glue_get_data_quality_model_result <- function(StatisticId, ProfileId) {
 #'         )
 #'       )
 #'     )
+#'   ),
+#'   AggregatedMetrics = list(
+#'     TotalRowsProcessed = 123.0,
+#'     TotalRowsPassed = 123.0,
+#'     TotalRowsFailed = 123.0,
+#'     TotalRulesProcessed = 123.0,
+#'     TotalRulesPassed = 123.0,
+#'     TotalRulesFailed = 123.0
 #'   )
 #' )
 #' ```
@@ -12834,6 +13881,16 @@ glue_get_data_quality_result <- function(ResultId) {
 #'       AdditionalOptions = list(
 #'         "string"
 #'       )
+#'     ),
+#'     DataQualityGlueTable = list(
+#'       DatabaseName = "string",
+#'       TableName = "string",
+#'       CatalogId = "string",
+#'       ConnectionName = "string",
+#'       AdditionalOptions = list(
+#'         "string"
+#'       ),
+#'       PreProcessingQuery = "string"
 #'     )
 #'   ),
 #'   Role = "string",
@@ -12978,6 +14035,16 @@ glue_get_data_quality_ruleset <- function(Name) {
 #'       AdditionalOptions = list(
 #'         "string"
 #'       )
+#'     ),
+#'     DataQualityGlueTable = list(
+#'       DatabaseName = "string",
+#'       TableName = "string",
+#'       CatalogId = "string",
+#'       ConnectionName = "string",
+#'       AdditionalOptions = list(
+#'         "string"
+#'       ),
+#'       PreProcessingQuery = "string"
 #'     )
 #'   ),
 #'   Role = "string",
@@ -13016,6 +14083,16 @@ glue_get_data_quality_ruleset <- function(Name) {
 #'         AdditionalOptions = list(
 #'           "string"
 #'         )
+#'       ),
+#'       DataQualityGlueTable = list(
+#'         DatabaseName = "string",
+#'         TableName = "string",
+#'         CatalogId = "string",
+#'         ConnectionName = "string",
+#'         AdditionalOptions = list(
+#'           "string"
+#'         ),
+#'         PreProcessingQuery = "string"
 #'       )
 #'     )
 #'   )
@@ -13098,7 +14175,8 @@ glue_get_data_quality_ruleset_evaluation_run <- function(RunId) {
 #'     CatalogId = "string",
 #'     FederatedDatabase = list(
 #'       Identifier = "string",
-#'       ConnectionName = "string"
+#'       ConnectionName = "string",
+#'       ConnectionType = "string"
 #'     )
 #'   )
 #' )
@@ -13197,7 +14275,8 @@ glue_get_database <- function(CatalogId = NULL, Name) {
 #'       CatalogId = "string",
 #'       FederatedDatabase = list(
 #'         Identifier = "string",
-#'         ConnectionName = "string"
+#'         ConnectionName = "string",
+#'         ConnectionType = "string"
 #'       )
 #'     )
 #'   ),
@@ -13213,7 +14292,7 @@ glue_get_database <- function(CatalogId = NULL, Name) {
 #'   MaxResults = 123,
 #'   ResourceShareType = "FOREIGN"|"ALL"|"FEDERATED",
 #'   AttributesToGet = list(
-#'     "NAME"
+#'     "NAME"|"TARGET_DATABASE"
 #'   )
 #' )
 #' ```
@@ -13588,6 +14667,62 @@ glue_get_entity_records <- function(ConnectionName = NULL, CatalogId = NULL, Ent
 }
 .glue$operations$get_entity_records <- glue_get_entity_records
 
+#' Retrieves the current Glue Identity Center configuration details,
+#' including the associated Identity Center instance and application
+#' information
+#'
+#' @description
+#' Retrieves the current Glue Identity Center configuration details,
+#' including the associated Identity Center instance and application
+#' information.
+#'
+#' @usage
+#' glue_get_glue_identity_center_configuration()
+#'
+
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationArn = "string",
+#'   InstanceArn = "string",
+#'   Scopes = list(
+#'     "string"
+#'   ),
+#'   UserBackgroundSessionsEnabled = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_glue_identity_center_configuration()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_glue_identity_center_configuration
+#'
+#' @aliases glue_get_glue_identity_center_configuration
+glue_get_glue_identity_center_configuration <- function() {
+  op <- new_operation(
+    name = "GetGlueIdentityCenterConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$get_glue_identity_center_configuration_input()
+  output <- .glue$get_glue_identity_center_configuration_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_glue_identity_center_configuration <- glue_get_glue_identity_center_configuration
+
 #' This API is used for fetching the ResourceProperty of the Glue
 #' connection (for the source) or Glue database ARN (for the target)
 #'
@@ -13605,6 +14740,7 @@ glue_get_entity_records <- function(ConnectionName = NULL, CatalogId = NULL, Ent
 #' ```
 #' list(
 #'   ResourceArn = "string",
+#'   ResourcePropertyArn = "string",
 #'   SourceProcessingProperties = list(
 #'     RoleArn = "string"
 #'   ),
@@ -13659,7 +14795,13 @@ glue_get_integration_resource_property <- function(ResourceArn) {
 #' @usage
 #' glue_get_integration_table_properties(ResourceArn, TableName)
 #'
-#' @param ResourceArn &#91;required&#93; The connection ARN of the source, or the database ARN of the target.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the target table for which to retrieve
+#' integration table properties. Currently, this API only supports
+#' retrieving properties for target tables, and the provided ARN should be
+#' the ARN of the target table in the Glue Data Catalog. Support for
+#' retrieving integration table properties for source connections (using
+#' the connection ARN) is not yet implemented and will be added in a future
+#' release.
 #' @param TableName &#91;required&#93; The name of the table to be replicated.
 #'
 #' @return
@@ -13683,7 +14825,8 @@ glue_get_integration_resource_property <- function(ResourceArn) {
 #'     PartitionSpec = list(
 #'       list(
 #'         FieldName = "string",
-#'         FunctionSpec = "string"
+#'         FunctionSpec = "string",
+#'         ConversionSpec = "string"
 #'       )
 #'     ),
 #'     TargetTableName = "string"
@@ -13795,7 +14938,8 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -13827,7 +14971,8 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -13846,7 +14991,8 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -13855,7 +15001,19 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'         CatalogSource = list(
 #'           Name = "string",
 #'           Database = "string",
-#'           Table = "string"
+#'           Table = "string",
+#'           PartitionPredicate = "string",
+#'           OutputSchemas = list(
+#'             list(
+#'               Columns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
 #'         ),
 #'         RedshiftSource = list(
 #'           Name = "string",
@@ -13907,7 +15065,8 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -13940,7 +15099,8 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -13951,7 +15111,7 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'           Paths = list(
 #'             "string"
 #'           ),
-#'           CompressionType = "snappy"|"lzo"|"gzip"|"uncompressed"|"none",
+#'           CompressionType = "snappy"|"lzo"|"gzip"|"brotli"|"lz4"|"uncompressed"|"none",
 #'           Exclusions = list(
 #'             "string"
 #'           ),
@@ -13971,7 +15131,8 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -13985,7 +15146,12 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'         DynamoDBCatalogSource = list(
 #'           Name = "string",
 #'           Database = "string",
-#'           Table = "string"
+#'           Table = "string",
+#'           PitrEnabled = TRUE|FALSE,
+#'           AdditionalOptions = list(
+#'             DynamodbExport = "string",
+#'             DynamodbUnnestDDBJson = TRUE|FALSE
+#'           )
 #'         ),
 #'         JDBCConnectorTarget = list(
 #'           Name = "string",
@@ -14004,7 +15170,8 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -14026,7 +15193,8 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -14077,6 +15245,10 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'           SchemaChangePolicy = list(
 #'             EnableUpdateCatalog = TRUE|FALSE,
 #'             UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG"
+#'           ),
+#'           AutoDataQuality = list(
+#'             IsEnabled = TRUE|FALSE,
+#'             EvaluationContext = "string"
 #'           )
 #'         ),
 #'         S3GlueParquetTarget = list(
@@ -14090,12 +15262,17 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'             )
 #'           ),
 #'           Path = "string",
-#'           Compression = "snappy"|"lzo"|"gzip"|"uncompressed"|"none",
+#'           Compression = "snappy"|"lzo"|"gzip"|"brotli"|"lz4"|"uncompressed"|"none",
+#'           NumberTargetPartitions = "string",
 #'           SchemaChangePolicy = list(
 #'             EnableUpdateCatalog = TRUE|FALSE,
 #'             UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
 #'             Table = "string",
 #'             Database = "string"
+#'           ),
+#'           AutoDataQuality = list(
+#'             IsEnabled = TRUE|FALSE,
+#'             EvaluationContext = "string"
 #'           )
 #'         ),
 #'         S3DirectTarget = list(
@@ -14110,12 +15287,28 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'           ),
 #'           Path = "string",
 #'           Compression = "string",
-#'           Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta",
+#'           NumberTargetPartitions = "string",
+#'           Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta"|"iceberg"|"hyper"|"xml",
 #'           SchemaChangePolicy = list(
 #'             EnableUpdateCatalog = TRUE|FALSE,
 #'             UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
 #'             Table = "string",
 #'             Database = "string"
+#'           ),
+#'           AutoDataQuality = list(
+#'             IsEnabled = TRUE|FALSE,
+#'             EvaluationContext = "string"
+#'           ),
+#'           OutputSchemas = list(
+#'             list(
+#'               Columns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         ApplyMapping = list(
@@ -14255,7 +15448,8 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -14278,7 +15472,8 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -14311,7 +15506,8 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'             EmitConsumerLagMetrics = "string",
 #'             StartingTimestamp = as.POSIXct(
 #'               "2015-01-01"
-#'             )
+#'             ),
+#'             FanoutConsumerARN = "string"
 #'           ),
 #'           DataPreviewOptions = list(
 #'             PollingTime = 123,
@@ -14379,7 +15575,8 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'             EmitConsumerLagMetrics = "string",
 #'             StartingTimestamp = as.POSIXct(
 #'               "2015-01-01"
-#'             )
+#'             ),
+#'             FanoutConsumerARN = "string"
 #'           ),
 #'           DataPreviewOptions = list(
 #'             PollingTime = 123,
@@ -14464,14 +15661,21 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'           Inputs = list(
 #'             "string"
 #'           ),
-#'           PiiType = "RowAudit"|"RowMasking"|"ColumnAudit"|"ColumnMasking",
+#'           PiiType = "RowAudit"|"RowHashing"|"RowMasking"|"RowPartialMasking"|"ColumnAudit"|"ColumnHashing"|"ColumnMasking",
 #'           EntityTypesToDetect = list(
 #'             "string"
 #'           ),
 #'           OutputColumnName = "string",
 #'           SampleFraction = 123.0,
 #'           ThresholdFraction = 123.0,
-#'           MaskValue = "string"
+#'           MaskValue = "string",
+#'           RedactText = "string",
+#'           RedactChar = "string",
+#'           MatchPattern = "string",
+#'           NumLeftCharsToExclude = 123,
+#'           NumRightCharsToExclude = 123,
+#'           DetectionParameters = "string",
+#'           DetectionSensitivity = "string"
 #'         ),
 #'         Aggregate = list(
 #'           Name = "string",
@@ -14582,6 +15786,32 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'           Database = "string",
 #'           Table = "string"
 #'         ),
+#'         Route = list(
+#'           Name = "string",
+#'           Inputs = list(
+#'             "string"
+#'           ),
+#'           GroupFiltersList = list(
+#'             list(
+#'               GroupName = "string",
+#'               Filters = list(
+#'                 list(
+#'                   Operation = "EQ"|"LT"|"GT"|"LTE"|"GTE"|"REGEX"|"ISNULL",
+#'                   Negated = TRUE|FALSE,
+#'                   Values = list(
+#'                     list(
+#'                       Type = "COLUMNEXTRACTED"|"CONSTANT",
+#'                       Value = list(
+#'                         "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               LogicalOperator = "AND"|"OR"
+#'             )
+#'           )
+#'         ),
 #'         DynamicTransform = list(
 #'           Name = "string",
 #'           TransformName = "string",
@@ -14609,7 +15839,8 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -14644,7 +15875,8 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -14662,7 +15894,8 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -14687,7 +15920,8 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -14711,6 +15945,21 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'           SchemaChangePolicy = list(
 #'             EnableUpdateCatalog = TRUE|FALSE,
 #'             UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG"
+#'           ),
+#'           AutoDataQuality = list(
+#'             IsEnabled = TRUE|FALSE,
+#'             EvaluationContext = "string"
+#'           ),
+#'           OutputSchemas = list(
+#'             list(
+#'               Columns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         S3HudiDirectTarget = list(
@@ -14720,12 +15969,13 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'           ),
 #'           Path = "string",
 #'           Compression = "gzip"|"lzo"|"uncompressed"|"snappy",
+#'           NumberTargetPartitions = "string",
 #'           PartitionKeys = list(
 #'             list(
 #'               "string"
 #'             )
 #'           ),
-#'           Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta",
+#'           Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta"|"iceberg"|"hyper"|"xml",
 #'           AdditionalOptions = list(
 #'             "string"
 #'           ),
@@ -14734,6 +15984,10 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'             UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
 #'             Table = "string",
 #'             Database = "string"
+#'           ),
+#'           AutoDataQuality = list(
+#'             IsEnabled = TRUE|FALSE,
+#'             EvaluationContext = "string"
 #'           )
 #'         ),
 #'         DirectJDBCSource = list(
@@ -14742,7 +15996,18 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'           Table = "string",
 #'           ConnectionName = "string",
 #'           ConnectionType = "sqlserver"|"mysql"|"oracle"|"postgresql"|"redshift",
-#'           RedshiftTmpDir = "string"
+#'           RedshiftTmpDir = "string",
+#'           OutputSchemas = list(
+#'             list(
+#'               Columns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
 #'         ),
 #'         S3CatalogDeltaSource = list(
 #'           Name = "string",
@@ -14756,7 +16021,8 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -14774,7 +16040,8 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -14799,7 +16066,8 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -14823,6 +16091,21 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'           SchemaChangePolicy = list(
 #'             EnableUpdateCatalog = TRUE|FALSE,
 #'             UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG"
+#'           ),
+#'           AutoDataQuality = list(
+#'             IsEnabled = TRUE|FALSE,
+#'             EvaluationContext = "string"
+#'           ),
+#'           OutputSchemas = list(
+#'             list(
+#'               Columns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         S3DeltaDirectTarget = list(
@@ -14837,7 +16120,8 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'           ),
 #'           Path = "string",
 #'           Compression = "uncompressed"|"snappy",
-#'           Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta",
+#'           NumberTargetPartitions = "string",
+#'           Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta"|"iceberg"|"hyper"|"xml",
 #'           AdditionalOptions = list(
 #'             "string"
 #'           ),
@@ -14846,6 +16130,10 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'             UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
 #'             Table = "string",
 #'             Database = "string"
+#'           ),
+#'           AutoDataQuality = list(
+#'             IsEnabled = TRUE|FALSE,
+#'             EvaluationContext = "string"
 #'           )
 #'         ),
 #'         AmazonRedshiftSource = list(
@@ -15096,7 +16384,8 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -15164,7 +16453,8 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -15178,6 +16468,199 @@ glue_get_integration_table_properties <- function(ResourceArn, TableName) {
 #'           ),
 #'           Inputs = list(
 #'             "string"
+#'           )
+#'         ),
+#'         S3CatalogIcebergSource = list(
+#'           Name = "string",
+#'           Database = "string",
+#'           Table = "string",
+#'           AdditionalIcebergOptions = list(
+#'             "string"
+#'           ),
+#'           OutputSchemas = list(
+#'             list(
+#'               Columns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         CatalogIcebergSource = list(
+#'           Name = "string",
+#'           Database = "string",
+#'           Table = "string",
+#'           AdditionalIcebergOptions = list(
+#'             "string"
+#'           ),
+#'           OutputSchemas = list(
+#'             list(
+#'               Columns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         S3IcebergCatalogTarget = list(
+#'           Name = "string",
+#'           Inputs = list(
+#'             "string"
+#'           ),
+#'           PartitionKeys = list(
+#'             list(
+#'               "string"
+#'             )
+#'           ),
+#'           Table = "string",
+#'           Database = "string",
+#'           AdditionalOptions = list(
+#'             "string"
+#'           ),
+#'           SchemaChangePolicy = list(
+#'             EnableUpdateCatalog = TRUE|FALSE,
+#'             UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG"
+#'           ),
+#'           AutoDataQuality = list(
+#'             IsEnabled = TRUE|FALSE,
+#'             EvaluationContext = "string"
+#'           )
+#'         ),
+#'         S3IcebergDirectTarget = list(
+#'           Name = "string",
+#'           Inputs = list(
+#'             "string"
+#'           ),
+#'           PartitionKeys = list(
+#'             list(
+#'               "string"
+#'             )
+#'           ),
+#'           Path = "string",
+#'           Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta"|"iceberg"|"hyper"|"xml",
+#'           AdditionalOptions = list(
+#'             "string"
+#'           ),
+#'           SchemaChangePolicy = list(
+#'             EnableUpdateCatalog = TRUE|FALSE,
+#'             UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
+#'             Table = "string",
+#'             Database = "string"
+#'           ),
+#'           AutoDataQuality = list(
+#'             IsEnabled = TRUE|FALSE,
+#'             EvaluationContext = "string"
+#'           ),
+#'           Compression = "gzip"|"lzo"|"uncompressed"|"snappy",
+#'           NumberTargetPartitions = "string",
+#'           OutputSchemas = list(
+#'             list(
+#'               Columns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         S3ExcelSource = list(
+#'           Name = "string",
+#'           Paths = list(
+#'             "string"
+#'           ),
+#'           CompressionType = "snappy"|"lzo"|"gzip"|"brotli"|"lz4"|"uncompressed"|"none",
+#'           Exclusions = list(
+#'             "string"
+#'           ),
+#'           GroupSize = "string",
+#'           GroupFiles = "string",
+#'           Recurse = TRUE|FALSE,
+#'           MaxBand = 123,
+#'           MaxFilesInBand = 123,
+#'           AdditionalOptions = list(
+#'             BoundedSize = 123,
+#'             BoundedFiles = 123,
+#'             EnableSamplePath = TRUE|FALSE,
+#'             SamplePath = "string"
+#'           ),
+#'           NumberRows = 123,
+#'           SkipFooter = 123,
+#'           OutputSchemas = list(
+#'             list(
+#'               Columns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         S3HyperDirectTarget = list(
+#'           Name = "string",
+#'           Inputs = list(
+#'             "string"
+#'           ),
+#'           Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta"|"iceberg"|"hyper"|"xml",
+#'           PartitionKeys = list(
+#'             list(
+#'               "string"
+#'             )
+#'           ),
+#'           Path = "string",
+#'           Compression = "uncompressed",
+#'           SchemaChangePolicy = list(
+#'             EnableUpdateCatalog = TRUE|FALSE,
+#'             UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
+#'             Table = "string",
+#'             Database = "string"
+#'           ),
+#'           AutoDataQuality = list(
+#'             IsEnabled = TRUE|FALSE,
+#'             EvaluationContext = "string"
+#'           ),
+#'           OutputSchemas = list(
+#'             list(
+#'               Columns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         DynamoDBELTConnectorSource = list(
+#'           Name = "string",
+#'           ConnectionOptions = list(
+#'             DynamodbExport = "ddb"|"s3",
+#'             DynamodbUnnestDDBJson = TRUE|FALSE,
+#'             DynamodbTableArn = "string",
+#'             DynamodbS3Bucket = "string",
+#'             DynamodbS3Prefix = "string",
+#'             DynamodbS3BucketOwner = "string",
+#'             DynamodbStsRoleArn = "string"
+#'           ),
+#'           OutputSchemas = list(
+#'             list(
+#'               Columns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         )
 #'       )
@@ -15361,7 +16844,8 @@ glue_get_job_bookmark <- function(JobName, RunId = NULL) {
 #'     ExecutionClass = "FLEX"|"STANDARD",
 #'     MaintenanceWindow = "string",
 #'     ProfileName = "string",
-#'     StateDetail = "string"
+#'     StateDetail = "string",
+#'     ExecutionRoleSessionPolicy = "string"
 #'   )
 #' )
 #' ```
@@ -15463,7 +16947,8 @@ glue_get_job_run <- function(JobName, RunId, PredecessorsIncluded = NULL) {
 #'       ExecutionClass = "FLEX"|"STANDARD",
 #'       MaintenanceWindow = "string",
 #'       ProfileName = "string",
-#'       StateDetail = "string"
+#'       StateDetail = "string",
+#'       ExecutionRoleSessionPolicy = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -15577,7 +17062,8 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -15609,7 +17095,8 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -15628,7 +17115,8 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -15637,7 +17125,19 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'           CatalogSource = list(
 #'             Name = "string",
 #'             Database = "string",
-#'             Table = "string"
+#'             Table = "string",
+#'             PartitionPredicate = "string",
+#'             OutputSchemas = list(
+#'               list(
+#'                 Columns = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
 #'           ),
 #'           RedshiftSource = list(
 #'             Name = "string",
@@ -15689,7 +17189,8 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -15722,7 +17223,8 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -15733,7 +17235,7 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'             Paths = list(
 #'               "string"
 #'             ),
-#'             CompressionType = "snappy"|"lzo"|"gzip"|"uncompressed"|"none",
+#'             CompressionType = "snappy"|"lzo"|"gzip"|"brotli"|"lz4"|"uncompressed"|"none",
 #'             Exclusions = list(
 #'               "string"
 #'             ),
@@ -15753,7 +17255,8 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -15767,7 +17270,12 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'           DynamoDBCatalogSource = list(
 #'             Name = "string",
 #'             Database = "string",
-#'             Table = "string"
+#'             Table = "string",
+#'             PitrEnabled = TRUE|FALSE,
+#'             AdditionalOptions = list(
+#'               DynamodbExport = "string",
+#'               DynamodbUnnestDDBJson = TRUE|FALSE
+#'             )
 #'           ),
 #'           JDBCConnectorTarget = list(
 #'             Name = "string",
@@ -15786,7 +17294,8 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -15808,7 +17317,8 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -15859,6 +17369,10 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'             SchemaChangePolicy = list(
 #'               EnableUpdateCatalog = TRUE|FALSE,
 #'               UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG"
+#'             ),
+#'             AutoDataQuality = list(
+#'               IsEnabled = TRUE|FALSE,
+#'               EvaluationContext = "string"
 #'             )
 #'           ),
 #'           S3GlueParquetTarget = list(
@@ -15872,12 +17386,17 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'               )
 #'             ),
 #'             Path = "string",
-#'             Compression = "snappy"|"lzo"|"gzip"|"uncompressed"|"none",
+#'             Compression = "snappy"|"lzo"|"gzip"|"brotli"|"lz4"|"uncompressed"|"none",
+#'             NumberTargetPartitions = "string",
 #'             SchemaChangePolicy = list(
 #'               EnableUpdateCatalog = TRUE|FALSE,
 #'               UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
 #'               Table = "string",
 #'               Database = "string"
+#'             ),
+#'             AutoDataQuality = list(
+#'               IsEnabled = TRUE|FALSE,
+#'               EvaluationContext = "string"
 #'             )
 #'           ),
 #'           S3DirectTarget = list(
@@ -15892,12 +17411,28 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'             ),
 #'             Path = "string",
 #'             Compression = "string",
-#'             Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta",
+#'             NumberTargetPartitions = "string",
+#'             Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta"|"iceberg"|"hyper"|"xml",
 #'             SchemaChangePolicy = list(
 #'               EnableUpdateCatalog = TRUE|FALSE,
 #'               UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
 #'               Table = "string",
 #'               Database = "string"
+#'             ),
+#'             AutoDataQuality = list(
+#'               IsEnabled = TRUE|FALSE,
+#'               EvaluationContext = "string"
+#'             ),
+#'             OutputSchemas = list(
+#'               list(
+#'                 Columns = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
+#'                   )
+#'                 )
+#'               )
 #'             )
 #'           ),
 #'           ApplyMapping = list(
@@ -16037,7 +17572,8 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -16060,7 +17596,8 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -16093,7 +17630,8 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'               EmitConsumerLagMetrics = "string",
 #'               StartingTimestamp = as.POSIXct(
 #'                 "2015-01-01"
-#'               )
+#'               ),
+#'               FanoutConsumerARN = "string"
 #'             ),
 #'             DataPreviewOptions = list(
 #'               PollingTime = 123,
@@ -16161,7 +17699,8 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'               EmitConsumerLagMetrics = "string",
 #'               StartingTimestamp = as.POSIXct(
 #'                 "2015-01-01"
-#'               )
+#'               ),
+#'               FanoutConsumerARN = "string"
 #'             ),
 #'             DataPreviewOptions = list(
 #'               PollingTime = 123,
@@ -16246,14 +17785,21 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'             Inputs = list(
 #'               "string"
 #'             ),
-#'             PiiType = "RowAudit"|"RowMasking"|"ColumnAudit"|"ColumnMasking",
+#'             PiiType = "RowAudit"|"RowHashing"|"RowMasking"|"RowPartialMasking"|"ColumnAudit"|"ColumnHashing"|"ColumnMasking",
 #'             EntityTypesToDetect = list(
 #'               "string"
 #'             ),
 #'             OutputColumnName = "string",
 #'             SampleFraction = 123.0,
 #'             ThresholdFraction = 123.0,
-#'             MaskValue = "string"
+#'             MaskValue = "string",
+#'             RedactText = "string",
+#'             RedactChar = "string",
+#'             MatchPattern = "string",
+#'             NumLeftCharsToExclude = 123,
+#'             NumRightCharsToExclude = 123,
+#'             DetectionParameters = "string",
+#'             DetectionSensitivity = "string"
 #'           ),
 #'           Aggregate = list(
 #'             Name = "string",
@@ -16364,6 +17910,32 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'             Database = "string",
 #'             Table = "string"
 #'           ),
+#'           Route = list(
+#'             Name = "string",
+#'             Inputs = list(
+#'               "string"
+#'             ),
+#'             GroupFiltersList = list(
+#'               list(
+#'                 GroupName = "string",
+#'                 Filters = list(
+#'                   list(
+#'                     Operation = "EQ"|"LT"|"GT"|"LTE"|"GTE"|"REGEX"|"ISNULL",
+#'                     Negated = TRUE|FALSE,
+#'                     Values = list(
+#'                       list(
+#'                         Type = "COLUMNEXTRACTED"|"CONSTANT",
+#'                         Value = list(
+#'                           "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 LogicalOperator = "AND"|"OR"
+#'               )
+#'             )
+#'           ),
 #'           DynamicTransform = list(
 #'             Name = "string",
 #'             TransformName = "string",
@@ -16391,7 +17963,8 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -16426,7 +17999,8 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -16444,7 +18018,8 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -16469,7 +18044,8 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -16493,6 +18069,21 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'             SchemaChangePolicy = list(
 #'               EnableUpdateCatalog = TRUE|FALSE,
 #'               UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG"
+#'             ),
+#'             AutoDataQuality = list(
+#'               IsEnabled = TRUE|FALSE,
+#'               EvaluationContext = "string"
+#'             ),
+#'             OutputSchemas = list(
+#'               list(
+#'                 Columns = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
+#'                   )
+#'                 )
+#'               )
 #'             )
 #'           ),
 #'           S3HudiDirectTarget = list(
@@ -16502,12 +18093,13 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'             ),
 #'             Path = "string",
 #'             Compression = "gzip"|"lzo"|"uncompressed"|"snappy",
+#'             NumberTargetPartitions = "string",
 #'             PartitionKeys = list(
 #'               list(
 #'                 "string"
 #'               )
 #'             ),
-#'             Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta",
+#'             Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta"|"iceberg"|"hyper"|"xml",
 #'             AdditionalOptions = list(
 #'               "string"
 #'             ),
@@ -16516,6 +18108,10 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'               UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
 #'               Table = "string",
 #'               Database = "string"
+#'             ),
+#'             AutoDataQuality = list(
+#'               IsEnabled = TRUE|FALSE,
+#'               EvaluationContext = "string"
 #'             )
 #'           ),
 #'           DirectJDBCSource = list(
@@ -16524,7 +18120,18 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'             Table = "string",
 #'             ConnectionName = "string",
 #'             ConnectionType = "sqlserver"|"mysql"|"oracle"|"postgresql"|"redshift",
-#'             RedshiftTmpDir = "string"
+#'             RedshiftTmpDir = "string",
+#'             OutputSchemas = list(
+#'               list(
+#'                 Columns = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
 #'           ),
 #'           S3CatalogDeltaSource = list(
 #'             Name = "string",
@@ -16538,7 +18145,8 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -16556,7 +18164,8 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -16581,7 +18190,8 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -16605,6 +18215,21 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'             SchemaChangePolicy = list(
 #'               EnableUpdateCatalog = TRUE|FALSE,
 #'               UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG"
+#'             ),
+#'             AutoDataQuality = list(
+#'               IsEnabled = TRUE|FALSE,
+#'               EvaluationContext = "string"
+#'             ),
+#'             OutputSchemas = list(
+#'               list(
+#'                 Columns = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
+#'                   )
+#'                 )
+#'               )
 #'             )
 #'           ),
 #'           S3DeltaDirectTarget = list(
@@ -16619,7 +18244,8 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'             ),
 #'             Path = "string",
 #'             Compression = "uncompressed"|"snappy",
-#'             Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta",
+#'             NumberTargetPartitions = "string",
+#'             Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta"|"iceberg"|"hyper"|"xml",
 #'             AdditionalOptions = list(
 #'               "string"
 #'             ),
@@ -16628,6 +18254,10 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'               UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
 #'               Table = "string",
 #'               Database = "string"
+#'             ),
+#'             AutoDataQuality = list(
+#'               IsEnabled = TRUE|FALSE,
+#'               EvaluationContext = "string"
 #'             )
 #'           ),
 #'           AmazonRedshiftSource = list(
@@ -16878,7 +18508,8 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -16946,7 +18577,8 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'                 Columns = list(
 #'                   list(
 #'                     Name = "string",
-#'                     Type = "string"
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
 #'                   )
 #'                 )
 #'               )
@@ -16960,6 +18592,199 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'             ),
 #'             Inputs = list(
 #'               "string"
+#'             )
+#'           ),
+#'           S3CatalogIcebergSource = list(
+#'             Name = "string",
+#'             Database = "string",
+#'             Table = "string",
+#'             AdditionalIcebergOptions = list(
+#'               "string"
+#'             ),
+#'             OutputSchemas = list(
+#'               list(
+#'                 Columns = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           CatalogIcebergSource = list(
+#'             Name = "string",
+#'             Database = "string",
+#'             Table = "string",
+#'             AdditionalIcebergOptions = list(
+#'               "string"
+#'             ),
+#'             OutputSchemas = list(
+#'               list(
+#'                 Columns = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           S3IcebergCatalogTarget = list(
+#'             Name = "string",
+#'             Inputs = list(
+#'               "string"
+#'             ),
+#'             PartitionKeys = list(
+#'               list(
+#'                 "string"
+#'               )
+#'             ),
+#'             Table = "string",
+#'             Database = "string",
+#'             AdditionalOptions = list(
+#'               "string"
+#'             ),
+#'             SchemaChangePolicy = list(
+#'               EnableUpdateCatalog = TRUE|FALSE,
+#'               UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG"
+#'             ),
+#'             AutoDataQuality = list(
+#'               IsEnabled = TRUE|FALSE,
+#'               EvaluationContext = "string"
+#'             )
+#'           ),
+#'           S3IcebergDirectTarget = list(
+#'             Name = "string",
+#'             Inputs = list(
+#'               "string"
+#'             ),
+#'             PartitionKeys = list(
+#'               list(
+#'                 "string"
+#'               )
+#'             ),
+#'             Path = "string",
+#'             Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta"|"iceberg"|"hyper"|"xml",
+#'             AdditionalOptions = list(
+#'               "string"
+#'             ),
+#'             SchemaChangePolicy = list(
+#'               EnableUpdateCatalog = TRUE|FALSE,
+#'               UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
+#'               Table = "string",
+#'               Database = "string"
+#'             ),
+#'             AutoDataQuality = list(
+#'               IsEnabled = TRUE|FALSE,
+#'               EvaluationContext = "string"
+#'             ),
+#'             Compression = "gzip"|"lzo"|"uncompressed"|"snappy",
+#'             NumberTargetPartitions = "string",
+#'             OutputSchemas = list(
+#'               list(
+#'                 Columns = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           S3ExcelSource = list(
+#'             Name = "string",
+#'             Paths = list(
+#'               "string"
+#'             ),
+#'             CompressionType = "snappy"|"lzo"|"gzip"|"brotli"|"lz4"|"uncompressed"|"none",
+#'             Exclusions = list(
+#'               "string"
+#'             ),
+#'             GroupSize = "string",
+#'             GroupFiles = "string",
+#'             Recurse = TRUE|FALSE,
+#'             MaxBand = 123,
+#'             MaxFilesInBand = 123,
+#'             AdditionalOptions = list(
+#'               BoundedSize = 123,
+#'               BoundedFiles = 123,
+#'               EnableSamplePath = TRUE|FALSE,
+#'               SamplePath = "string"
+#'             ),
+#'             NumberRows = 123,
+#'             SkipFooter = 123,
+#'             OutputSchemas = list(
+#'               list(
+#'                 Columns = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           S3HyperDirectTarget = list(
+#'             Name = "string",
+#'             Inputs = list(
+#'               "string"
+#'             ),
+#'             Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta"|"iceberg"|"hyper"|"xml",
+#'             PartitionKeys = list(
+#'               list(
+#'                 "string"
+#'               )
+#'             ),
+#'             Path = "string",
+#'             Compression = "uncompressed",
+#'             SchemaChangePolicy = list(
+#'               EnableUpdateCatalog = TRUE|FALSE,
+#'               UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
+#'               Table = "string",
+#'               Database = "string"
+#'             ),
+#'             AutoDataQuality = list(
+#'               IsEnabled = TRUE|FALSE,
+#'               EvaluationContext = "string"
+#'             ),
+#'             OutputSchemas = list(
+#'               list(
+#'                 Columns = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           DynamoDBELTConnectorSource = list(
+#'             Name = "string",
+#'             ConnectionOptions = list(
+#'               DynamodbExport = "ddb"|"s3",
+#'               DynamodbUnnestDDBJson = TRUE|FALSE,
+#'               DynamodbTableArn = "string",
+#'               DynamodbS3Bucket = "string",
+#'               DynamodbS3Prefix = "string",
+#'               DynamodbS3BucketOwner = "string",
+#'               DynamodbStsRoleArn = "string"
+#'             ),
+#'             OutputSchemas = list(
+#'               list(
+#'                 Columns = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Type = "string",
+#'                     GlueStudioType = "string"
+#'                   )
+#'                 )
+#'               )
 #'             )
 #'           )
 #'         )
@@ -18986,7 +20811,7 @@ glue_get_statement <- function(SessionId, Id, RequestOrigin = NULL) {
 #'
 #' @usage
 #' glue_get_table(CatalogId, DatabaseName, Name, TransactionId,
-#'   QueryAsOfTime, IncludeStatusDetails)
+#'   QueryAsOfTime, AuditContext, IncludeStatusDetails)
 #'
 #' @param CatalogId The ID of the Data Catalog where the table resides. If none is provided,
 #' the Amazon Web Services account ID is used by default.
@@ -18998,6 +20823,8 @@ glue_get_statement <- function(SessionId, Id, RequestOrigin = NULL) {
 #' @param QueryAsOfTime The time as of when to read the table contents. If not set, the most
 #' recent transaction commit time will be used. Cannot be specified along
 #' with `TransactionId`.
+#' @param AuditContext A structure containing the Lake Formation [audit
+#' context](https://docs.aws.amazon.com/glue/latest/webapi/API_AuditContext.html).
 #' @param IncludeStatusDetails Specifies whether to include status details related to a request to
 #' create or update an Glue Data Catalog view.
 #'
@@ -19112,13 +20939,21 @@ glue_get_statement <- function(SessionId, Id, RequestOrigin = NULL) {
 #'     FederatedTable = list(
 #'       Identifier = "string",
 #'       DatabaseIdentifier = "string",
-#'       ConnectionName = "string"
+#'       ConnectionName = "string",
+#'       ConnectionType = "string"
 #'     ),
 #'     ViewDefinition = list(
 #'       IsProtected = TRUE|FALSE,
 #'       Definer = "string",
+#'       ViewVersionId = 123,
+#'       ViewVersionToken = "string",
+#'       RefreshSeconds = 123,
+#'       LastRefreshType = "FULL"|"INCREMENTAL",
 #'       SubObjects = list(
 #'         "string"
+#'       ),
+#'       SubObjectVersionIds = list(
+#'         123
 #'       ),
 #'       Representations = list(
 #'         list(
@@ -19132,6 +20967,7 @@ glue_get_statement <- function(SessionId, Id, RequestOrigin = NULL) {
 #'       )
 #'     ),
 #'     IsMultiDialectView = TRUE|FALSE,
+#'     IsMaterializedView = TRUE|FALSE,
 #'     Status = list(
 #'       RequestedBy = "string",
 #'       UpdatedBy = "string",
@@ -19180,6 +21016,13 @@ glue_get_statement <- function(SessionId, Id, RequestOrigin = NULL) {
 #'   QueryAsOfTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
+#'   AuditContext = list(
+#'     AdditionalAuditContext = "string",
+#'     RequestedColumns = list(
+#'       "string"
+#'     ),
+#'     AllColumnsRequested = TRUE|FALSE
+#'   ),
 #'   IncludeStatusDetails = TRUE|FALSE
 #' )
 #' ```
@@ -19189,7 +21032,7 @@ glue_get_statement <- function(SessionId, Id, RequestOrigin = NULL) {
 #' @rdname glue_get_table
 #'
 #' @aliases glue_get_table
-glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId = NULL, QueryAsOfTime = NULL, IncludeStatusDetails = NULL) {
+glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId = NULL, QueryAsOfTime = NULL, AuditContext = NULL, IncludeStatusDetails = NULL) {
   op <- new_operation(
     name = "GetTable",
     http_method = "POST",
@@ -19198,7 +21041,7 @@ glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$get_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime, IncludeStatusDetails = IncludeStatusDetails)
+  input <- .glue$get_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime, AuditContext = AuditContext, IncludeStatusDetails = IncludeStatusDetails)
   output <- .glue$get_table_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -19238,17 +21081,26 @@ glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId =
 #'       vpcConfiguration = list(
 #'         glueConnectionName = "string"
 #'       ),
+#'       compactionConfiguration = list(
+#'         icebergConfiguration = list(
+#'           strategy = "binpack"|"sort"|"z-order",
+#'           minInputFiles = 123,
+#'           deleteFileThreshold = 123
+#'         )
+#'       ),
 #'       retentionConfiguration = list(
 #'         icebergConfiguration = list(
 #'           snapshotRetentionPeriodInDays = 123,
 #'           numberOfSnapshotsToRetain = 123,
-#'           cleanExpiredFiles = TRUE|FALSE
+#'           cleanExpiredFiles = TRUE|FALSE,
+#'           runRateInHours = 123
 #'         )
 #'       ),
 #'       orphanFileDeletionConfiguration = list(
 #'         icebergConfiguration = list(
 #'           orphanFileRetentionPeriodInDays = 123,
-#'           location = "string"
+#'           location = "string",
+#'           runRateInHours = 123
 #'         )
 #'       )
 #'     ),
@@ -19276,6 +21128,7 @@ glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId =
 #'           JobDurationInHour = 123.0
 #'         )
 #'       ),
+#'       compactionStrategy = "binpack"|"sort"|"z-order",
 #'       retentionMetrics = list(
 #'         IcebergMetrics = list(
 #'           NumberOfDataFilesDeleted = 123,
@@ -19294,7 +21147,8 @@ glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId =
 #'           JobDurationInHour = 123.0
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     configurationSource = "catalog"|"table"
 #'   )
 #' )
 #' ```
@@ -19462,13 +21316,21 @@ glue_get_table_optimizer <- function(CatalogId, DatabaseName, TableName, Type) {
 #'       FederatedTable = list(
 #'         Identifier = "string",
 #'         DatabaseIdentifier = "string",
-#'         ConnectionName = "string"
+#'         ConnectionName = "string",
+#'         ConnectionType = "string"
 #'       ),
 #'       ViewDefinition = list(
 #'         IsProtected = TRUE|FALSE,
 #'         Definer = "string",
+#'         ViewVersionId = 123,
+#'         ViewVersionToken = "string",
+#'         RefreshSeconds = 123,
+#'         LastRefreshType = "FULL"|"INCREMENTAL",
 #'         SubObjects = list(
 #'           "string"
+#'         ),
+#'         SubObjectVersionIds = list(
+#'           123
 #'         ),
 #'         Representations = list(
 #'           list(
@@ -19482,6 +21344,7 @@ glue_get_table_optimizer <- function(CatalogId, DatabaseName, TableName, Type) {
 #'         )
 #'       ),
 #'       IsMultiDialectView = TRUE|FALSE,
+#'       IsMaterializedView = TRUE|FALSE,
 #'       Status = list(
 #'         RequestedBy = "string",
 #'         UpdatedBy = "string",
@@ -19689,13 +21552,21 @@ glue_get_table_version <- function(CatalogId = NULL, DatabaseName, TableName, Ve
 #'         FederatedTable = list(
 #'           Identifier = "string",
 #'           DatabaseIdentifier = "string",
-#'           ConnectionName = "string"
+#'           ConnectionName = "string",
+#'           ConnectionType = "string"
 #'         ),
 #'         ViewDefinition = list(
 #'           IsProtected = TRUE|FALSE,
 #'           Definer = "string",
+#'           ViewVersionId = 123,
+#'           ViewVersionToken = "string",
+#'           RefreshSeconds = 123,
+#'           LastRefreshType = "FULL"|"INCREMENTAL",
 #'           SubObjects = list(
 #'             "string"
+#'           ),
+#'           SubObjectVersionIds = list(
+#'             123
 #'           ),
 #'           Representations = list(
 #'             list(
@@ -19709,6 +21580,7 @@ glue_get_table_version <- function(CatalogId = NULL, DatabaseName, TableName, Ve
 #'           )
 #'         ),
 #'         IsMultiDialectView = TRUE|FALSE,
+#'         IsMaterializedView = TRUE|FALSE,
 #'         Status = list(
 #'           RequestedBy = "string",
 #'           UpdatedBy = "string",
@@ -19795,8 +21667,8 @@ glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, N
 #'
 #' @usage
 #' glue_get_tables(CatalogId, DatabaseName, Expression, NextToken,
-#'   MaxResults, TransactionId, QueryAsOfTime, IncludeStatusDetails,
-#'   AttributesToGet)
+#'   MaxResults, TransactionId, QueryAsOfTime, AuditContext,
+#'   IncludeStatusDetails, AttributesToGet)
 #'
 #' @param CatalogId The ID of the Data Catalog where the tables reside. If none is provided,
 #' the Amazon Web Services account ID is used by default.
@@ -19810,6 +21682,8 @@ glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, N
 #' @param QueryAsOfTime The time as of when to read the table contents. If not set, the most
 #' recent transaction commit time will be used. Cannot be specified along
 #' with `TransactionId`.
+#' @param AuditContext A structure containing the Lake Formation [audit
+#' context](https://docs.aws.amazon.com/glue/latest/webapi/API_AuditContext.html).
 #' @param IncludeStatusDetails Specifies whether to include status details related to a request to
 #' create or update an Glue Data Catalog view.
 #' @param AttributesToGet Specifies the table fields returned by the
@@ -19934,13 +21808,21 @@ glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, N
 #'       FederatedTable = list(
 #'         Identifier = "string",
 #'         DatabaseIdentifier = "string",
-#'         ConnectionName = "string"
+#'         ConnectionName = "string",
+#'         ConnectionType = "string"
 #'       ),
 #'       ViewDefinition = list(
 #'         IsProtected = TRUE|FALSE,
 #'         Definer = "string",
+#'         ViewVersionId = 123,
+#'         ViewVersionToken = "string",
+#'         RefreshSeconds = 123,
+#'         LastRefreshType = "FULL"|"INCREMENTAL",
 #'         SubObjects = list(
 #'           "string"
+#'         ),
+#'         SubObjectVersionIds = list(
+#'           123
 #'         ),
 #'         Representations = list(
 #'           list(
@@ -19954,6 +21836,7 @@ glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, N
 #'         )
 #'       ),
 #'       IsMultiDialectView = TRUE|FALSE,
+#'       IsMaterializedView = TRUE|FALSE,
 #'       Status = list(
 #'         RequestedBy = "string",
 #'         UpdatedBy = "string",
@@ -20006,6 +21889,13 @@ glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, N
 #'   QueryAsOfTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
+#'   AuditContext = list(
+#'     AdditionalAuditContext = "string",
+#'     RequestedColumns = list(
+#'       "string"
+#'     ),
+#'     AllColumnsRequested = TRUE|FALSE
+#'   ),
 #'   IncludeStatusDetails = TRUE|FALSE,
 #'   AttributesToGet = list(
 #'     "NAME"|"TABLE_TYPE"
@@ -20018,7 +21908,7 @@ glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, N
 #' @rdname glue_get_tables
 #'
 #' @aliases glue_get_tables
-glue_get_tables <- function(CatalogId = NULL, DatabaseName, Expression = NULL, NextToken = NULL, MaxResults = NULL, TransactionId = NULL, QueryAsOfTime = NULL, IncludeStatusDetails = NULL, AttributesToGet = NULL) {
+glue_get_tables <- function(CatalogId = NULL, DatabaseName, Expression = NULL, NextToken = NULL, MaxResults = NULL, TransactionId = NULL, QueryAsOfTime = NULL, AuditContext = NULL, IncludeStatusDetails = NULL, AttributesToGet = NULL) {
   op <- new_operation(
     name = "GetTables",
     http_method = "POST",
@@ -20027,7 +21917,7 @@ glue_get_tables <- function(CatalogId = NULL, DatabaseName, Expression = NULL, N
     paginator = list(result_key = "TableList", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
-  input <- .glue$get_tables_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Expression = Expression, NextToken = NextToken, MaxResults = MaxResults, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime, IncludeStatusDetails = IncludeStatusDetails, AttributesToGet = AttributesToGet)
+  input <- .glue$get_tables_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Expression = Expression, NextToken = NextToken, MaxResults = MaxResults, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime, AuditContext = AuditContext, IncludeStatusDetails = IncludeStatusDetails, AttributesToGet = AttributesToGet)
   output <- .glue$get_tables_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -20896,13 +22786,21 @@ glue_get_unfiltered_partitions_metadata <- function(Region = NULL, CatalogId, Da
 #'     FederatedTable = list(
 #'       Identifier = "string",
 #'       DatabaseIdentifier = "string",
-#'       ConnectionName = "string"
+#'       ConnectionName = "string",
+#'       ConnectionType = "string"
 #'     ),
 #'     ViewDefinition = list(
 #'       IsProtected = TRUE|FALSE,
 #'       Definer = "string",
+#'       ViewVersionId = 123,
+#'       ViewVersionToken = "string",
+#'       RefreshSeconds = 123,
+#'       LastRefreshType = "FULL"|"INCREMENTAL",
 #'       SubObjects = list(
 #'         "string"
+#'       ),
+#'       SubObjectVersionIds = list(
+#'         123
 #'       ),
 #'       Representations = list(
 #'         list(
@@ -20916,6 +22814,7 @@ glue_get_unfiltered_partitions_metadata <- function(Region = NULL, CatalogId, Da
 #'       )
 #'     ),
 #'     IsMultiDialectView = TRUE|FALSE,
+#'     IsMaterializedView = TRUE|FALSE,
 #'     Status = list(
 #'       RequestedBy = "string",
 #'       UpdatedBy = "string",
@@ -20963,6 +22862,7 @@ glue_get_unfiltered_partitions_metadata <- function(Region = NULL, CatalogId, Da
 #'   ),
 #'   QueryAuthorizationId = "string",
 #'   IsMultiDialectView = TRUE|FALSE,
+#'   IsMaterializedView = TRUE|FALSE,
 #'   ResourceArn = "string",
 #'   IsProtected = TRUE|FALSE,
 #'   Permissions = list(
@@ -21137,6 +23037,7 @@ glue_get_usage_profile <- function(Name) {
 #'     DatabaseName = "string",
 #'     ClassName = "string",
 #'     OwnerName = "string",
+#'     FunctionType = "REGULAR_FUNCTION"|"AGGREGATE_FUNCTION"|"STORED_PROCEDURE",
 #'     OwnerType = "USER"|"ROLE"|"GROUP",
 #'     CreateTime = as.POSIXct(
 #'       "2015-01-01"
@@ -21192,7 +23093,7 @@ glue_get_user_defined_function <- function(CatalogId = NULL, DatabaseName, Funct
 #'
 #' @usage
 #' glue_get_user_defined_functions(CatalogId, DatabaseName, Pattern,
-#'   NextToken, MaxResults)
+#'   FunctionType, NextToken, MaxResults)
 #'
 #' @param CatalogId The ID of the Data Catalog where the functions to be retrieved are
 #' located. If none is provided, the Amazon Web Services account ID is used
@@ -21202,6 +23103,12 @@ glue_get_user_defined_function <- function(CatalogId = NULL, DatabaseName, Funct
 #' will be returned.
 #' @param Pattern &#91;required&#93; An optional function-name pattern string that filters the function
 #' definitions returned.
+#' @param FunctionType An optional function-type pattern string that filters the function
+#' definitions returned from Amazon Redshift Federated Permissions Catalog.
+#' 
+#' Specify a value of `REGULAR_FUNCTION` or `STORED_PROCEDURE`. The
+#' `STORED_PROCEDURE` function type is only compatible with Amazon Redshift
+#' Federated Permissions Catalog.
 #' @param NextToken A continuation token, if this is a continuation call.
 #' @param MaxResults The maximum number of functions to return in one response.
 #'
@@ -21215,6 +23122,7 @@ glue_get_user_defined_function <- function(CatalogId = NULL, DatabaseName, Funct
 #'       DatabaseName = "string",
 #'       ClassName = "string",
 #'       OwnerName = "string",
+#'       FunctionType = "REGULAR_FUNCTION"|"AGGREGATE_FUNCTION"|"STORED_PROCEDURE",
 #'       OwnerType = "USER"|"ROLE"|"GROUP",
 #'       CreateTime = as.POSIXct(
 #'         "2015-01-01"
@@ -21238,6 +23146,7 @@ glue_get_user_defined_function <- function(CatalogId = NULL, DatabaseName, Funct
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   Pattern = "string",
+#'   FunctionType = "REGULAR_FUNCTION"|"AGGREGATE_FUNCTION"|"STORED_PROCEDURE",
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -21248,7 +23157,7 @@ glue_get_user_defined_function <- function(CatalogId = NULL, DatabaseName, Funct
 #' @rdname glue_get_user_defined_functions
 #'
 #' @aliases glue_get_user_defined_functions
-glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName = NULL, Pattern, NextToken = NULL, MaxResults = NULL) {
+glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName = NULL, Pattern, FunctionType = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetUserDefinedFunctions",
     http_method = "POST",
@@ -21257,7 +23166,7 @@ glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName = NUL
     paginator = list(result_key = "UserDefinedFunctions", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
-  input <- .glue$get_user_defined_functions_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Pattern = Pattern, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .glue$get_user_defined_functions_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Pattern = Pattern, FunctionType = FunctionType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .glue$get_user_defined_functions_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -21413,7 +23322,8 @@ glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName = NUL
 #'                   ExecutionClass = "FLEX"|"STANDARD",
 #'                   MaintenanceWindow = "string",
 #'                   ProfileName = "string",
-#'                   StateDetail = "string"
+#'                   StateDetail = "string",
+#'                   ExecutionRoleSessionPolicy = "string"
 #'                 )
 #'               )
 #'             ),
@@ -21540,7 +23450,8 @@ glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName = NUL
 #'                 ExecutionClass = "FLEX"|"STANDARD",
 #'                 MaintenanceWindow = "string",
 #'                 ProfileName = "string",
-#'                 StateDetail = "string"
+#'                 StateDetail = "string",
+#'                 ExecutionRoleSessionPolicy = "string"
 #'               )
 #'             )
 #'           ),
@@ -21745,7 +23656,8 @@ glue_get_workflow <- function(Name, IncludeGraph = NULL) {
 #'                 ExecutionClass = "FLEX"|"STANDARD",
 #'                 MaintenanceWindow = "string",
 #'                 ProfileName = "string",
-#'                 StateDetail = "string"
+#'                 StateDetail = "string",
+#'                 ExecutionRoleSessionPolicy = "string"
 #'               )
 #'             )
 #'           ),
@@ -22004,7 +23916,8 @@ glue_get_workflow_run_properties <- function(Name, RunId) {
 #'                   ExecutionClass = "FLEX"|"STANDARD",
 #'                   MaintenanceWindow = "string",
 #'                   ProfileName = "string",
-#'                   StateDetail = "string"
+#'                   StateDetail = "string",
+#'                   ExecutionRoleSessionPolicy = "string"
 #'                 )
 #'               )
 #'             ),
@@ -22257,8 +24170,13 @@ glue_list_column_statistics_task_runs <- function(MaxResults = NULL, NextToken =
 #' list(
 #'   ConnectionTypes = list(
 #'     list(
-#'       ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE"|"VIEW_VALIDATION_REDSHIFT"|"VIEW_VALIDATION_ATHENA"|"GOOGLEADS"|"GOOGLESHEETS"|"GOOGLEANALYTICS4"|"SERVICENOW"|"MARKETO"|"SAPODATA"|"ZENDESK"|"JIRACLOUD"|"NETSUITEERP"|"HUBSPOT"|"FACEBOOKADS"|"INSTAGRAMADS"|"ZOHOCRM"|"SALESFORCEPARDOT"|"SALESFORCEMARKETINGCLOUD"|"SLACK"|"STRIPE"|"INTERCOM"|"SNAPCHATADS",
+#'       ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE"|"VIEW_VALIDATION_REDSHIFT"|"VIEW_VALIDATION_ATHENA"|"GOOGLEADS"|"GOOGLESHEETS"|"GOOGLEANALYTICS4"|"SERVICENOW"|"MARKETO"|"SAPODATA"|"ZENDESK"|"JIRACLOUD"|"NETSUITEERP"|"HUBSPOT"|"FACEBOOKADS"|"INSTAGRAMADS"|"ZOHOCRM"|"SALESFORCEPARDOT"|"SALESFORCEMARKETINGCLOUD"|"ADOBEANALYTICS"|"SLACK"|"LINKEDIN"|"MIXPANEL"|"ASANA"|"STRIPE"|"SMARTSHEET"|"DATADOG"|"WOOCOMMERCE"|"INTERCOM"|"SNAPCHATADS"|"PAYPAL"|"QUICKBOOKS"|"FACEBOOKPAGEINSIGHTS"|"FRESHDESK"|"TWILIO"|"DOCUSIGNMONITOR"|"FRESHSALES"|"ZOOM"|"GOOGLESEARCHCONSOLE"|"SALESFORCECOMMERCECLOUD"|"SAPCONCUR"|"DYNATRACE"|"MICROSOFTDYNAMIC365FINANCEANDOPS"|"MICROSOFTTEAMS"|"BLACKBAUDRAISEREDGENXT"|"MAILCHIMP"|"GITLAB"|"PENDO"|"PRODUCTBOARD"|"CIRCLECI"|"PIPEDIVE"|"SENDGRID"|"AZURECOSMOS"|"AZURESQL"|"BIGQUERY"|"BLACKBAUD"|"CLOUDERAHIVE"|"CLOUDERAIMPALA"|"CLOUDWATCH"|"CLOUDWATCHMETRICS"|"CMDB"|"DATALAKEGEN2"|"DB2"|"DB2AS400"|"DOCUMENTDB"|"DOMO"|"DYNAMODB"|"GOOGLECLOUDSTORAGE"|"HBASE"|"KUSTOMER"|"MICROSOFTDYNAMICS365CRM"|"MONDAY"|"MYSQL"|"OKTA"|"OPENSEARCH"|"ORACLE"|"PIPEDRIVE"|"POSTGRESQL"|"SAPHANA"|"SQLSERVER"|"SYNAPSE"|"TERADATA"|"TERADATANOS"|"TIMESTREAM"|"TPCDS"|"VERTICA",
+#'       DisplayName = "string",
+#'       Vendor = "string",
 #'       Description = "string",
+#'       Categories = list(
+#'         "string"
+#'       ),
 #'       Capabilities = list(
 #'         SupportedAuthenticationTypes = list(
 #'           "BASIC"|"OAUTH2"|"CUSTOM"|"IAM"
@@ -22268,6 +24186,15 @@ glue_list_column_statistics_task_runs <- function(MaxResults = NULL, NextToken =
 #'         ),
 #'         SupportedComputeEnvironments = list(
 #'           "SPARK"|"ATHENA"|"PYTHON"
+#'         )
+#'       ),
+#'       LogoUrl = "string",
+#'       ConnectionTypeVariants = list(
+#'         list(
+#'           ConnectionTypeVariantName = "string",
+#'           DisplayName = "string",
+#'           Description = "string",
+#'           LogoUrl = "string"
 #'         )
 #'       )
 #'     )
@@ -22564,6 +24491,16 @@ glue_list_custom_entity_types <- function(NextToken = NULL, MaxResults = NULL, T
 #'           AdditionalOptions = list(
 #'             "string"
 #'           )
+#'         ),
+#'         DataQualityGlueTable = list(
+#'           DatabaseName = "string",
+#'           TableName = "string",
+#'           CatalogId = "string",
+#'           ConnectionName = "string",
+#'           AdditionalOptions = list(
+#'             "string"
+#'           ),
+#'           PreProcessingQuery = "string"
 #'         )
 #'       ),
 #'       JobName = "string",
@@ -22590,6 +24527,16 @@ glue_list_custom_entity_types <- function(NextToken = NULL, MaxResults = NULL, T
 #'         AdditionalOptions = list(
 #'           "string"
 #'         )
+#'       ),
+#'       DataQualityGlueTable = list(
+#'         DatabaseName = "string",
+#'         TableName = "string",
+#'         CatalogId = "string",
+#'         ConnectionName = "string",
+#'         AdditionalOptions = list(
+#'           "string"
+#'         ),
+#'         PreProcessingQuery = "string"
 #'       )
 #'     ),
 #'     JobName = "string",
@@ -22663,6 +24610,16 @@ glue_list_data_quality_results <- function(Filter = NULL, NextToken = NULL, MaxR
 #'           AdditionalOptions = list(
 #'             "string"
 #'           )
+#'         ),
+#'         DataQualityGlueTable = list(
+#'           DatabaseName = "string",
+#'           TableName = "string",
+#'           CatalogId = "string",
+#'           ConnectionName = "string",
+#'           AdditionalOptions = list(
+#'             "string"
+#'           ),
+#'           PreProcessingQuery = "string"
 #'         )
 #'       )
 #'     )
@@ -22684,6 +24641,16 @@ glue_list_data_quality_results <- function(Filter = NULL, NextToken = NULL, MaxR
 #'         AdditionalOptions = list(
 #'           "string"
 #'         )
+#'       ),
+#'       DataQualityGlueTable = list(
+#'         DatabaseName = "string",
+#'         TableName = "string",
+#'         CatalogId = "string",
+#'         ConnectionName = "string",
+#'         AdditionalOptions = list(
+#'           "string"
+#'         ),
+#'         PreProcessingQuery = "string"
 #'       )
 #'     ),
 #'     StartedBefore = as.POSIXct(
@@ -22757,6 +24724,16 @@ glue_list_data_quality_rule_recommendation_runs <- function(Filter = NULL, NextT
 #'           AdditionalOptions = list(
 #'             "string"
 #'           )
+#'         ),
+#'         DataQualityGlueTable = list(
+#'           DatabaseName = "string",
+#'           TableName = "string",
+#'           CatalogId = "string",
+#'           ConnectionName = "string",
+#'           AdditionalOptions = list(
+#'             "string"
+#'           ),
+#'           PreProcessingQuery = "string"
 #'         )
 #'       )
 #'     )
@@ -22778,6 +24755,16 @@ glue_list_data_quality_rule_recommendation_runs <- function(Filter = NULL, NextT
 #'         AdditionalOptions = list(
 #'           "string"
 #'         )
+#'       ),
+#'       DataQualityGlueTable = list(
+#'         DatabaseName = "string",
+#'         TableName = "string",
+#'         CatalogId = "string",
+#'         ConnectionName = "string",
+#'         AdditionalOptions = list(
+#'           "string"
+#'         ),
+#'         PreProcessingQuery = "string"
 #'       )
 #'     ),
 #'     StartedBefore = as.POSIXct(
@@ -23230,6 +25217,82 @@ glue_list_entities <- function(ConnectionName = NULL, CatalogId = NULL, ParentEn
   return(response)
 }
 .glue$operations$list_entities <- glue_list_entities
+
+#' List integration resource properties for a single customer
+#'
+#' @description
+#' List integration resource properties for a single customer. It supports
+#' the filters, maxRecords and markers.
+#'
+#' @usage
+#' glue_list_integration_resource_properties(Marker, Filters, MaxRecords)
+#'
+#' @param Marker This is the pagination token for next page, initial value is `null`.
+#' @param Filters A list of filters, supported filter Key is `SourceArn` and `TargetArn`.
+#' @param MaxRecords This is total number of items to be evaluated.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IntegrationResourcePropertyList = list(
+#'     list(
+#'       ResourceArn = "string",
+#'       ResourcePropertyArn = "string",
+#'       SourceProcessingProperties = list(
+#'         RoleArn = "string"
+#'       ),
+#'       TargetProcessingProperties = list(
+#'         RoleArn = "string",
+#'         KmsArn = "string",
+#'         ConnectionName = "string",
+#'         EventBusArn = "string"
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_integration_resource_properties(
+#'   Marker = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxRecords = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_integration_resource_properties
+#'
+#' @aliases glue_list_integration_resource_properties
+glue_list_integration_resource_properties <- function(Marker = NULL, Filters = NULL, MaxRecords = NULL) {
+  op <- new_operation(
+    name = "ListIntegrationResourceProperties",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$list_integration_resource_properties_input(Marker = Marker, Filters = Filters, MaxRecords = MaxRecords)
+  output <- .glue$list_integration_resource_properties_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_integration_resource_properties <- glue_list_integration_resource_properties
 
 #' Retrieves the names of all job resources in this Amazon Web Services
 #' account, or the resources with the specified tag
@@ -23835,6 +25898,7 @@ glue_list_statements <- function(SessionId, RequestOrigin = NULL, NextToken = NU
 #'           JobDurationInHour = 123.0
 #'         )
 #'       ),
+#'       compactionStrategy = "binpack"|"sort"|"z-order",
 #'       retentionMetrics = list(
 #'         IcebergMetrics = list(
 #'           NumberOfDataFilesDeleted = 123,
@@ -24089,11 +26153,13 @@ glue_list_workflows <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @usage
 #' glue_modify_integration(IntegrationIdentifier, Description, DataFilter,
-#'   IntegrationName)
+#'   IntegrationConfig, IntegrationName)
 #'
 #' @param IntegrationIdentifier &#91;required&#93; The Amazon Resource Name (ARN) for the integration.
 #' @param Description A description of the integration.
 #' @param DataFilter Selects source tables for the integration using Maxwell filter syntax.
+#' @param IntegrationConfig The configuration settings for the integration. Currently, only the
+#' RefreshInterval can be modified.
 #' @param IntegrationName A unique name for an integration in Glue.
 #'
 #' @return
@@ -24125,7 +26191,14 @@ glue_list_workflows <- function(NextToken = NULL, MaxResults = NULL) {
 #'       ErrorMessage = "string"
 #'     )
 #'   ),
-#'   DataFilter = "string"
+#'   DataFilter = "string",
+#'   IntegrationConfig = list(
+#'     RefreshInterval = "string",
+#'     SourceProperties = list(
+#'       "string"
+#'     ),
+#'     ContinuousSync = TRUE|FALSE
+#'   )
 #' )
 #' ```
 #'
@@ -24135,6 +26208,13 @@ glue_list_workflows <- function(NextToken = NULL, MaxResults = NULL) {
 #'   IntegrationIdentifier = "string",
 #'   Description = "string",
 #'   DataFilter = "string",
+#'   IntegrationConfig = list(
+#'     RefreshInterval = "string",
+#'     SourceProperties = list(
+#'       "string"
+#'     ),
+#'     ContinuousSync = TRUE|FALSE
+#'   ),
 #'   IntegrationName = "string"
 #' )
 #' ```
@@ -24144,7 +26224,7 @@ glue_list_workflows <- function(NextToken = NULL, MaxResults = NULL) {
 #' @rdname glue_modify_integration
 #'
 #' @aliases glue_modify_integration
-glue_modify_integration <- function(IntegrationIdentifier, Description = NULL, DataFilter = NULL, IntegrationName = NULL) {
+glue_modify_integration <- function(IntegrationIdentifier, Description = NULL, DataFilter = NULL, IntegrationConfig = NULL, IntegrationName = NULL) {
   op <- new_operation(
     name = "ModifyIntegration",
     http_method = "POST",
@@ -24153,7 +26233,7 @@ glue_modify_integration <- function(IntegrationIdentifier, Description = NULL, D
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$modify_integration_input(IntegrationIdentifier = IntegrationIdentifier, Description = Description, DataFilter = DataFilter, IntegrationName = IntegrationName)
+  input <- .glue$modify_integration_input(IntegrationIdentifier = IntegrationIdentifier, Description = Description, DataFilter = DataFilter, IntegrationConfig = IntegrationConfig, IntegrationName = IntegrationName)
   output <- .glue$modify_integration_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -25070,13 +27150,21 @@ glue_run_statement <- function(SessionId, Code, RequestOrigin = NULL) {
 #'       FederatedTable = list(
 #'         Identifier = "string",
 #'         DatabaseIdentifier = "string",
-#'         ConnectionName = "string"
+#'         ConnectionName = "string",
+#'         ConnectionType = "string"
 #'       ),
 #'       ViewDefinition = list(
 #'         IsProtected = TRUE|FALSE,
 #'         Definer = "string",
+#'         ViewVersionId = 123,
+#'         ViewVersionToken = "string",
+#'         RefreshSeconds = 123,
+#'         LastRefreshType = "FULL"|"INCREMENTAL",
 #'         SubObjects = list(
 #'           "string"
+#'         ),
+#'         SubObjectVersionIds = list(
+#'           123
 #'         ),
 #'         Representations = list(
 #'           list(
@@ -25090,6 +27178,7 @@ glue_run_statement <- function(SessionId, Code, RequestOrigin = NULL) {
 #'         )
 #'       ),
 #'       IsMultiDialectView = TRUE|FALSE,
+#'       IsMaterializedView = TRUE|FALSE,
 #'       Status = list(
 #'         RequestedBy = "string",
 #'         UpdatedBy = "string",
@@ -25490,6 +27579,16 @@ glue_start_crawler_schedule <- function(CrawlerName) {
 #'       AdditionalOptions = list(
 #'         "string"
 #'       )
+#'     ),
+#'     DataQualityGlueTable = list(
+#'       DatabaseName = "string",
+#'       TableName = "string",
+#'       CatalogId = "string",
+#'       ConnectionName = "string",
+#'       AdditionalOptions = list(
+#'         "string"
+#'       ),
+#'       PreProcessingQuery = "string"
 #'     )
 #'   ),
 #'   Role = "string",
@@ -25574,6 +27673,16 @@ glue_start_data_quality_rule_recommendation_run <- function(DataSource, Role, Nu
 #'       AdditionalOptions = list(
 #'         "string"
 #'       )
+#'     ),
+#'     DataQualityGlueTable = list(
+#'       DatabaseName = "string",
+#'       TableName = "string",
+#'       CatalogId = "string",
+#'       ConnectionName = "string",
+#'       AdditionalOptions = list(
+#'         "string"
+#'       ),
+#'       PreProcessingQuery = "string"
 #'     )
 #'   ),
 #'   Role = "string",
@@ -25598,6 +27707,16 @@ glue_start_data_quality_rule_recommendation_run <- function(DataSource, Role, Nu
 #'         AdditionalOptions = list(
 #'           "string"
 #'         )
+#'       ),
+#'       DataQualityGlueTable = list(
+#'         DatabaseName = "string",
+#'         TableName = "string",
+#'         CatalogId = "string",
+#'         ConnectionName = "string",
+#'         AdditionalOptions = list(
+#'           "string"
+#'         ),
+#'         PreProcessingQuery = "string"
 #'       )
 #'     )
 #'   )
@@ -25788,7 +27907,8 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
 #' @usage
 #' glue_start_job_run(JobName, JobRunQueuingEnabled, JobRunId, Arguments,
 #'   AllocatedCapacity, Timeout, MaxCapacity, SecurityConfiguration,
-#'   NotificationProperty, WorkerType, NumberOfWorkers, ExecutionClass)
+#'   NotificationProperty, WorkerType, NumberOfWorkers, ExecutionClass,
+#'   ExecutionRoleSessionPolicy)
 #'
 #' @param JobName &#91;required&#93; The name of the job definition to use.
 #' @param JobRunQueuingEnabled Specifies whether job run queuing is enabled for the job run.
@@ -25926,6 +28046,10 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
 #' Only jobs with Glue version 3.0 and above and command type `glueetl`
 #' will be allowed to set `ExecutionClass` to `FLEX`. The flexible
 #' execution class is available for Spark jobs.
+#' @param ExecutionRoleSessionPolicy This inline session policy to the StartJobRun API allows you to
+#' dynamically restrict the permissions of the specified execution role for
+#' the scope of the job, without requiring the creation of additional IAM
+#' roles.
 #'
 #' @return
 #' A list with the following syntax:
@@ -25953,7 +28077,8 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
 #'   ),
 #'   WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
 #'   NumberOfWorkers = 123,
-#'   ExecutionClass = "FLEX"|"STANDARD"
+#'   ExecutionClass = "FLEX"|"STANDARD",
+#'   ExecutionRoleSessionPolicy = "string"
 #' )
 #' ```
 #'
@@ -25962,7 +28087,7 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
 #' @rdname glue_start_job_run
 #'
 #' @aliases glue_start_job_run
-glue_start_job_run <- function(JobName, JobRunQueuingEnabled = NULL, JobRunId = NULL, Arguments = NULL, AllocatedCapacity = NULL, Timeout = NULL, MaxCapacity = NULL, SecurityConfiguration = NULL, NotificationProperty = NULL, WorkerType = NULL, NumberOfWorkers = NULL, ExecutionClass = NULL) {
+glue_start_job_run <- function(JobName, JobRunQueuingEnabled = NULL, JobRunId = NULL, Arguments = NULL, AllocatedCapacity = NULL, Timeout = NULL, MaxCapacity = NULL, SecurityConfiguration = NULL, NotificationProperty = NULL, WorkerType = NULL, NumberOfWorkers = NULL, ExecutionClass = NULL, ExecutionRoleSessionPolicy = NULL) {
   op <- new_operation(
     name = "StartJobRun",
     http_method = "POST",
@@ -25971,7 +28096,7 @@ glue_start_job_run <- function(JobName, JobRunQueuingEnabled = NULL, JobRunId = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$start_job_run_input(JobName = JobName, JobRunQueuingEnabled = JobRunQueuingEnabled, JobRunId = JobRunId, Arguments = Arguments, AllocatedCapacity = AllocatedCapacity, Timeout = Timeout, MaxCapacity = MaxCapacity, SecurityConfiguration = SecurityConfiguration, NotificationProperty = NotificationProperty, WorkerType = WorkerType, NumberOfWorkers = NumberOfWorkers, ExecutionClass = ExecutionClass)
+  input <- .glue$start_job_run_input(JobName = JobName, JobRunQueuingEnabled = JobRunQueuingEnabled, JobRunId = JobRunId, Arguments = Arguments, AllocatedCapacity = AllocatedCapacity, Timeout = Timeout, MaxCapacity = MaxCapacity, SecurityConfiguration = SecurityConfiguration, NotificationProperty = NotificationProperty, WorkerType = WorkerType, NumberOfWorkers = NumberOfWorkers, ExecutionClass = ExecutionClass, ExecutionRoleSessionPolicy = ExecutionRoleSessionPolicy)
   output <- .glue$start_job_run_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -26063,6 +28188,11 @@ glue_start_ml_evaluation_task_run <- function(TransformId) {
 #' [`start_import_labels_task_run`][glue_start_import_labels_task_run]
 #' finishes, all future runs of the machine learning transform will use the
 #' new and improved labels and perform a higher-quality transformation.
+#' 
+#' Note: The role used to write the generated labeling set to the
+#' `OutputS3Path` is the role associated with the Machine Learning
+#' Transform, specified in the
+#' [`create_ml_transform`][glue_create_ml_transform] API.
 #'
 #' @usage
 #' glue_start_ml_labeling_set_generation_task_run(TransformId,
@@ -26635,7 +28765,7 @@ glue_tag_resource <- function(ResourceArn, TagsToAdd) {
 #'   ConnectionName = "string",
 #'   CatalogId = "string",
 #'   TestConnectionInput = list(
-#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE"|"VIEW_VALIDATION_REDSHIFT"|"VIEW_VALIDATION_ATHENA"|"GOOGLEADS"|"GOOGLESHEETS"|"GOOGLEANALYTICS4"|"SERVICENOW"|"MARKETO"|"SAPODATA"|"ZENDESK"|"JIRACLOUD"|"NETSUITEERP"|"HUBSPOT"|"FACEBOOKADS"|"INSTAGRAMADS"|"ZOHOCRM"|"SALESFORCEPARDOT"|"SALESFORCEMARKETINGCLOUD"|"SLACK"|"STRIPE"|"INTERCOM"|"SNAPCHATADS",
+#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE"|"VIEW_VALIDATION_REDSHIFT"|"VIEW_VALIDATION_ATHENA"|"GOOGLEADS"|"GOOGLESHEETS"|"GOOGLEANALYTICS4"|"SERVICENOW"|"MARKETO"|"SAPODATA"|"ZENDESK"|"JIRACLOUD"|"NETSUITEERP"|"HUBSPOT"|"FACEBOOKADS"|"INSTAGRAMADS"|"ZOHOCRM"|"SALESFORCEPARDOT"|"SALESFORCEMARKETINGCLOUD"|"ADOBEANALYTICS"|"SLACK"|"LINKEDIN"|"MIXPANEL"|"ASANA"|"STRIPE"|"SMARTSHEET"|"DATADOG"|"WOOCOMMERCE"|"INTERCOM"|"SNAPCHATADS"|"PAYPAL"|"QUICKBOOKS"|"FACEBOOKPAGEINSIGHTS"|"FRESHDESK"|"TWILIO"|"DOCUSIGNMONITOR"|"FRESHSALES"|"ZOOM"|"GOOGLESEARCHCONSOLE"|"SALESFORCECOMMERCECLOUD"|"SAPCONCUR"|"DYNATRACE"|"MICROSOFTDYNAMIC365FINANCEANDOPS"|"MICROSOFTTEAMS"|"BLACKBAUDRAISEREDGENXT"|"MAILCHIMP"|"GITLAB"|"PENDO"|"PRODUCTBOARD"|"CIRCLECI"|"PIPEDIVE"|"SENDGRID"|"AZURECOSMOS"|"AZURESQL"|"BIGQUERY"|"BLACKBAUD"|"CLOUDERAHIVE"|"CLOUDERAIMPALA"|"CLOUDWATCH"|"CLOUDWATCHMETRICS"|"CMDB"|"DATALAKEGEN2"|"DB2"|"DB2AS400"|"DOCUMENTDB"|"DOMO"|"DYNAMODB"|"GOOGLECLOUDSTORAGE"|"HBASE"|"KUSTOMER"|"MICROSOFTDYNAMICS365CRM"|"MONDAY"|"MYSQL"|"OKTA"|"OPENSEARCH"|"ORACLE"|"PIPEDRIVE"|"POSTGRESQL"|"SAPHANA"|"SQLSERVER"|"SYNAPSE"|"TERADATA"|"TERADATANOS"|"TIMESTREAM"|"TPCDS"|"VERTICA",
 #'     ConnectionProperties = list(
 #'       "string"
 #'     ),
@@ -26825,7 +28955,8 @@ glue_update_blueprint <- function(Name, Description = NULL, BlueprintLocation) {
 #'     Description = "string",
 #'     FederatedCatalog = list(
 #'       Identifier = "string",
-#'       ConnectionName = "string"
+#'       ConnectionName = "string",
+#'       ConnectionType = "string"
 #'     ),
 #'     Parameters = list(
 #'       "string"
@@ -26839,6 +28970,18 @@ glue_update_blueprint <- function(Name, Description = NULL, BlueprintLocation) {
 #'         DataTransferRole = "string",
 #'         KmsKey = "string",
 #'         CatalogType = "string"
+#'       ),
+#'       IcebergOptimizationProperties = list(
+#'         RoleArn = "string",
+#'         Compaction = list(
+#'           "string"
+#'         ),
+#'         Retention = list(
+#'           "string"
+#'         ),
+#'         OrphanFileDeletion = list(
+#'           "string"
+#'         )
 #'       ),
 #'       CustomProperties = list(
 #'         "string"
@@ -27441,7 +29584,7 @@ glue_update_column_statistics_task_settings <- function(DatabaseName, TableName,
 #'   ConnectionInput = list(
 #'     Name = "string",
 #'     Description = "string",
-#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE"|"VIEW_VALIDATION_REDSHIFT"|"VIEW_VALIDATION_ATHENA"|"GOOGLEADS"|"GOOGLESHEETS"|"GOOGLEANALYTICS4"|"SERVICENOW"|"MARKETO"|"SAPODATA"|"ZENDESK"|"JIRACLOUD"|"NETSUITEERP"|"HUBSPOT"|"FACEBOOKADS"|"INSTAGRAMADS"|"ZOHOCRM"|"SALESFORCEPARDOT"|"SALESFORCEMARKETINGCLOUD"|"SLACK"|"STRIPE"|"INTERCOM"|"SNAPCHATADS",
+#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE"|"VIEW_VALIDATION_REDSHIFT"|"VIEW_VALIDATION_ATHENA"|"GOOGLEADS"|"GOOGLESHEETS"|"GOOGLEANALYTICS4"|"SERVICENOW"|"MARKETO"|"SAPODATA"|"ZENDESK"|"JIRACLOUD"|"NETSUITEERP"|"HUBSPOT"|"FACEBOOKADS"|"INSTAGRAMADS"|"ZOHOCRM"|"SALESFORCEPARDOT"|"SALESFORCEMARKETINGCLOUD"|"ADOBEANALYTICS"|"SLACK"|"LINKEDIN"|"MIXPANEL"|"ASANA"|"STRIPE"|"SMARTSHEET"|"DATADOG"|"WOOCOMMERCE"|"INTERCOM"|"SNAPCHATADS"|"PAYPAL"|"QUICKBOOKS"|"FACEBOOKPAGEINSIGHTS"|"FRESHDESK"|"TWILIO"|"DOCUSIGNMONITOR"|"FRESHSALES"|"ZOOM"|"GOOGLESEARCHCONSOLE"|"SALESFORCECOMMERCECLOUD"|"SAPCONCUR"|"DYNATRACE"|"MICROSOFTDYNAMIC365FINANCEANDOPS"|"MICROSOFTTEAMS"|"BLACKBAUDRAISEREDGENXT"|"MAILCHIMP"|"GITLAB"|"PENDO"|"PRODUCTBOARD"|"CIRCLECI"|"PIPEDIVE"|"SENDGRID"|"AZURECOSMOS"|"AZURESQL"|"BIGQUERY"|"BLACKBAUD"|"CLOUDERAHIVE"|"CLOUDERAIMPALA"|"CLOUDWATCH"|"CLOUDWATCHMETRICS"|"CMDB"|"DATALAKEGEN2"|"DB2"|"DB2AS400"|"DOCUMENTDB"|"DOMO"|"DYNAMODB"|"GOOGLECLOUDSTORAGE"|"HBASE"|"KUSTOMER"|"MICROSOFTDYNAMICS365CRM"|"MONDAY"|"MYSQL"|"OKTA"|"OPENSEARCH"|"ORACLE"|"PIPEDRIVE"|"POSTGRESQL"|"SAPHANA"|"SQLSERVER"|"SYNAPSE"|"TERADATA"|"TERADATANOS"|"TIMESTREAM"|"TPCDS"|"VERTICA",
 #'     MatchCriteria = list(
 #'       "string"
 #'     ),
@@ -27866,7 +30009,8 @@ glue_update_data_quality_ruleset <- function(Name, Description = NULL, Ruleset =
 #'     ),
 #'     FederatedDatabase = list(
 #'       Identifier = "string",
-#'       ConnectionName = "string"
+#'       ConnectionName = "string",
+#'       ConnectionType = "string"
 #'     )
 #'   )
 #' )
@@ -27980,6 +30124,59 @@ glue_update_dev_endpoint <- function(EndpointName, PublicKey = NULL, AddPublicKe
 }
 .glue$operations$update_dev_endpoint <- glue_update_dev_endpoint
 
+#' Updates the existing Glue Identity Center configuration, allowing
+#' modification of scopes and permissions for the integration
+#'
+#' @description
+#' Updates the existing Glue Identity Center configuration, allowing
+#' modification of scopes and permissions for the integration.
+#'
+#' @usage
+#' glue_update_glue_identity_center_configuration(Scopes,
+#'   UserBackgroundSessionsEnabled)
+#'
+#' @param Scopes A list of Identity Center scopes that define the updated permissions and
+#' access levels for the Glue configuration.
+#' @param UserBackgroundSessionsEnabled Specifies whether users can run background sessions when using Identity
+#' Center authentication with Glue services.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_glue_identity_center_configuration(
+#'   Scopes = list(
+#'     "string"
+#'   ),
+#'   UserBackgroundSessionsEnabled = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_update_glue_identity_center_configuration
+#'
+#' @aliases glue_update_glue_identity_center_configuration
+glue_update_glue_identity_center_configuration <- function(Scopes = NULL, UserBackgroundSessionsEnabled = NULL) {
+  op <- new_operation(
+    name = "UpdateGlueIdentityCenterConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$update_glue_identity_center_configuration_input(Scopes = Scopes, UserBackgroundSessionsEnabled = UserBackgroundSessionsEnabled)
+  output <- .glue$update_glue_identity_center_configuration_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$update_glue_identity_center_configuration <- glue_update_glue_identity_center_configuration
+
 #' This API can be used for updating the ResourceProperty of the Glue
 #' connection (for the source) or Glue database ARN (for the target)
 #'
@@ -28003,6 +30200,7 @@ glue_update_dev_endpoint <- function(EndpointName, PublicKey = NULL, AddPublicKe
 #' ```
 #' list(
 #'   ResourceArn = "string",
+#'   ResourcePropertyArn = "string",
 #'   SourceProcessingProperties = list(
 #'     RoleArn = "string"
 #'   ),
@@ -28102,7 +30300,8 @@ glue_update_integration_resource_property <- function(ResourceArn, SourceProcess
 #'     PartitionSpec = list(
 #'       list(
 #'         FieldName = "string",
-#'         FunctionSpec = "string"
+#'         FunctionSpec = "string",
+#'         ConversionSpec = "string"
 #'       )
 #'     ),
 #'     TargetTableName = "string"
@@ -28210,7 +30409,8 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -28242,7 +30442,8 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -28261,7 +30462,8 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -28270,7 +30472,19 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'         CatalogSource = list(
 #'           Name = "string",
 #'           Database = "string",
-#'           Table = "string"
+#'           Table = "string",
+#'           PartitionPredicate = "string",
+#'           OutputSchemas = list(
+#'             list(
+#'               Columns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
 #'         ),
 #'         RedshiftSource = list(
 #'           Name = "string",
@@ -28322,7 +30536,8 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -28355,7 +30570,8 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -28366,7 +30582,7 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'           Paths = list(
 #'             "string"
 #'           ),
-#'           CompressionType = "snappy"|"lzo"|"gzip"|"uncompressed"|"none",
+#'           CompressionType = "snappy"|"lzo"|"gzip"|"brotli"|"lz4"|"uncompressed"|"none",
 #'           Exclusions = list(
 #'             "string"
 #'           ),
@@ -28386,7 +30602,8 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -28400,7 +30617,12 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'         DynamoDBCatalogSource = list(
 #'           Name = "string",
 #'           Database = "string",
-#'           Table = "string"
+#'           Table = "string",
+#'           PitrEnabled = TRUE|FALSE,
+#'           AdditionalOptions = list(
+#'             DynamodbExport = "string",
+#'             DynamodbUnnestDDBJson = TRUE|FALSE
+#'           )
 #'         ),
 #'         JDBCConnectorTarget = list(
 #'           Name = "string",
@@ -28419,7 +30641,8 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -28441,7 +30664,8 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -28492,6 +30716,10 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'           SchemaChangePolicy = list(
 #'             EnableUpdateCatalog = TRUE|FALSE,
 #'             UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG"
+#'           ),
+#'           AutoDataQuality = list(
+#'             IsEnabled = TRUE|FALSE,
+#'             EvaluationContext = "string"
 #'           )
 #'         ),
 #'         S3GlueParquetTarget = list(
@@ -28505,12 +30733,17 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'             )
 #'           ),
 #'           Path = "string",
-#'           Compression = "snappy"|"lzo"|"gzip"|"uncompressed"|"none",
+#'           Compression = "snappy"|"lzo"|"gzip"|"brotli"|"lz4"|"uncompressed"|"none",
+#'           NumberTargetPartitions = "string",
 #'           SchemaChangePolicy = list(
 #'             EnableUpdateCatalog = TRUE|FALSE,
 #'             UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
 #'             Table = "string",
 #'             Database = "string"
+#'           ),
+#'           AutoDataQuality = list(
+#'             IsEnabled = TRUE|FALSE,
+#'             EvaluationContext = "string"
 #'           )
 #'         ),
 #'         S3DirectTarget = list(
@@ -28525,12 +30758,28 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'           ),
 #'           Path = "string",
 #'           Compression = "string",
-#'           Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta",
+#'           NumberTargetPartitions = "string",
+#'           Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta"|"iceberg"|"hyper"|"xml",
 #'           SchemaChangePolicy = list(
 #'             EnableUpdateCatalog = TRUE|FALSE,
 #'             UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
 #'             Table = "string",
 #'             Database = "string"
+#'           ),
+#'           AutoDataQuality = list(
+#'             IsEnabled = TRUE|FALSE,
+#'             EvaluationContext = "string"
+#'           ),
+#'           OutputSchemas = list(
+#'             list(
+#'               Columns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         ApplyMapping = list(
@@ -28670,7 +30919,8 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -28693,7 +30943,8 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -28726,7 +30977,8 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'             EmitConsumerLagMetrics = "string",
 #'             StartingTimestamp = as.POSIXct(
 #'               "2015-01-01"
-#'             )
+#'             ),
+#'             FanoutConsumerARN = "string"
 #'           ),
 #'           DataPreviewOptions = list(
 #'             PollingTime = 123,
@@ -28794,7 +31046,8 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'             EmitConsumerLagMetrics = "string",
 #'             StartingTimestamp = as.POSIXct(
 #'               "2015-01-01"
-#'             )
+#'             ),
+#'             FanoutConsumerARN = "string"
 #'           ),
 #'           DataPreviewOptions = list(
 #'             PollingTime = 123,
@@ -28879,14 +31132,21 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'           Inputs = list(
 #'             "string"
 #'           ),
-#'           PiiType = "RowAudit"|"RowMasking"|"ColumnAudit"|"ColumnMasking",
+#'           PiiType = "RowAudit"|"RowHashing"|"RowMasking"|"RowPartialMasking"|"ColumnAudit"|"ColumnHashing"|"ColumnMasking",
 #'           EntityTypesToDetect = list(
 #'             "string"
 #'           ),
 #'           OutputColumnName = "string",
 #'           SampleFraction = 123.0,
 #'           ThresholdFraction = 123.0,
-#'           MaskValue = "string"
+#'           MaskValue = "string",
+#'           RedactText = "string",
+#'           RedactChar = "string",
+#'           MatchPattern = "string",
+#'           NumLeftCharsToExclude = 123,
+#'           NumRightCharsToExclude = 123,
+#'           DetectionParameters = "string",
+#'           DetectionSensitivity = "string"
 #'         ),
 #'         Aggregate = list(
 #'           Name = "string",
@@ -28997,6 +31257,32 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'           Database = "string",
 #'           Table = "string"
 #'         ),
+#'         Route = list(
+#'           Name = "string",
+#'           Inputs = list(
+#'             "string"
+#'           ),
+#'           GroupFiltersList = list(
+#'             list(
+#'               GroupName = "string",
+#'               Filters = list(
+#'                 list(
+#'                   Operation = "EQ"|"LT"|"GT"|"LTE"|"GTE"|"REGEX"|"ISNULL",
+#'                   Negated = TRUE|FALSE,
+#'                   Values = list(
+#'                     list(
+#'                       Type = "COLUMNEXTRACTED"|"CONSTANT",
+#'                       Value = list(
+#'                         "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               LogicalOperator = "AND"|"OR"
+#'             )
+#'           )
+#'         ),
 #'         DynamicTransform = list(
 #'           Name = "string",
 #'           TransformName = "string",
@@ -29024,7 +31310,8 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -29059,7 +31346,8 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -29077,7 +31365,8 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -29102,7 +31391,8 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -29126,6 +31416,21 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'           SchemaChangePolicy = list(
 #'             EnableUpdateCatalog = TRUE|FALSE,
 #'             UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG"
+#'           ),
+#'           AutoDataQuality = list(
+#'             IsEnabled = TRUE|FALSE,
+#'             EvaluationContext = "string"
+#'           ),
+#'           OutputSchemas = list(
+#'             list(
+#'               Columns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         S3HudiDirectTarget = list(
@@ -29135,12 +31440,13 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'           ),
 #'           Path = "string",
 #'           Compression = "gzip"|"lzo"|"uncompressed"|"snappy",
+#'           NumberTargetPartitions = "string",
 #'           PartitionKeys = list(
 #'             list(
 #'               "string"
 #'             )
 #'           ),
-#'           Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta",
+#'           Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta"|"iceberg"|"hyper"|"xml",
 #'           AdditionalOptions = list(
 #'             "string"
 #'           ),
@@ -29149,6 +31455,10 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'             UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
 #'             Table = "string",
 #'             Database = "string"
+#'           ),
+#'           AutoDataQuality = list(
+#'             IsEnabled = TRUE|FALSE,
+#'             EvaluationContext = "string"
 #'           )
 #'         ),
 #'         DirectJDBCSource = list(
@@ -29157,7 +31467,18 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'           Table = "string",
 #'           ConnectionName = "string",
 #'           ConnectionType = "sqlserver"|"mysql"|"oracle"|"postgresql"|"redshift",
-#'           RedshiftTmpDir = "string"
+#'           RedshiftTmpDir = "string",
+#'           OutputSchemas = list(
+#'             list(
+#'               Columns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
 #'         ),
 #'         S3CatalogDeltaSource = list(
 #'           Name = "string",
@@ -29171,7 +31492,8 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -29189,7 +31511,8 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -29214,7 +31537,8 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -29238,6 +31562,21 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'           SchemaChangePolicy = list(
 #'             EnableUpdateCatalog = TRUE|FALSE,
 #'             UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG"
+#'           ),
+#'           AutoDataQuality = list(
+#'             IsEnabled = TRUE|FALSE,
+#'             EvaluationContext = "string"
+#'           ),
+#'           OutputSchemas = list(
+#'             list(
+#'               Columns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         S3DeltaDirectTarget = list(
@@ -29252,7 +31591,8 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'           ),
 #'           Path = "string",
 #'           Compression = "uncompressed"|"snappy",
-#'           Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta",
+#'           NumberTargetPartitions = "string",
+#'           Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta"|"iceberg"|"hyper"|"xml",
 #'           AdditionalOptions = list(
 #'             "string"
 #'           ),
@@ -29261,6 +31601,10 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'             UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
 #'             Table = "string",
 #'             Database = "string"
+#'           ),
+#'           AutoDataQuality = list(
+#'             IsEnabled = TRUE|FALSE,
+#'             EvaluationContext = "string"
 #'           )
 #'         ),
 #'         AmazonRedshiftSource = list(
@@ -29511,7 +31855,8 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -29579,7 +31924,8 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'               Columns = list(
 #'                 list(
 #'                   Name = "string",
-#'                   Type = "string"
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
 #'                 )
 #'               )
 #'             )
@@ -29593,6 +31939,199 @@ glue_update_integration_table_properties <- function(ResourceArn, TableName, Sou
 #'           ),
 #'           Inputs = list(
 #'             "string"
+#'           )
+#'         ),
+#'         S3CatalogIcebergSource = list(
+#'           Name = "string",
+#'           Database = "string",
+#'           Table = "string",
+#'           AdditionalIcebergOptions = list(
+#'             "string"
+#'           ),
+#'           OutputSchemas = list(
+#'             list(
+#'               Columns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         CatalogIcebergSource = list(
+#'           Name = "string",
+#'           Database = "string",
+#'           Table = "string",
+#'           AdditionalIcebergOptions = list(
+#'             "string"
+#'           ),
+#'           OutputSchemas = list(
+#'             list(
+#'               Columns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         S3IcebergCatalogTarget = list(
+#'           Name = "string",
+#'           Inputs = list(
+#'             "string"
+#'           ),
+#'           PartitionKeys = list(
+#'             list(
+#'               "string"
+#'             )
+#'           ),
+#'           Table = "string",
+#'           Database = "string",
+#'           AdditionalOptions = list(
+#'             "string"
+#'           ),
+#'           SchemaChangePolicy = list(
+#'             EnableUpdateCatalog = TRUE|FALSE,
+#'             UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG"
+#'           ),
+#'           AutoDataQuality = list(
+#'             IsEnabled = TRUE|FALSE,
+#'             EvaluationContext = "string"
+#'           )
+#'         ),
+#'         S3IcebergDirectTarget = list(
+#'           Name = "string",
+#'           Inputs = list(
+#'             "string"
+#'           ),
+#'           PartitionKeys = list(
+#'             list(
+#'               "string"
+#'             )
+#'           ),
+#'           Path = "string",
+#'           Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta"|"iceberg"|"hyper"|"xml",
+#'           AdditionalOptions = list(
+#'             "string"
+#'           ),
+#'           SchemaChangePolicy = list(
+#'             EnableUpdateCatalog = TRUE|FALSE,
+#'             UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
+#'             Table = "string",
+#'             Database = "string"
+#'           ),
+#'           AutoDataQuality = list(
+#'             IsEnabled = TRUE|FALSE,
+#'             EvaluationContext = "string"
+#'           ),
+#'           Compression = "gzip"|"lzo"|"uncompressed"|"snappy",
+#'           NumberTargetPartitions = "string",
+#'           OutputSchemas = list(
+#'             list(
+#'               Columns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         S3ExcelSource = list(
+#'           Name = "string",
+#'           Paths = list(
+#'             "string"
+#'           ),
+#'           CompressionType = "snappy"|"lzo"|"gzip"|"brotli"|"lz4"|"uncompressed"|"none",
+#'           Exclusions = list(
+#'             "string"
+#'           ),
+#'           GroupSize = "string",
+#'           GroupFiles = "string",
+#'           Recurse = TRUE|FALSE,
+#'           MaxBand = 123,
+#'           MaxFilesInBand = 123,
+#'           AdditionalOptions = list(
+#'             BoundedSize = 123,
+#'             BoundedFiles = 123,
+#'             EnableSamplePath = TRUE|FALSE,
+#'             SamplePath = "string"
+#'           ),
+#'           NumberRows = 123,
+#'           SkipFooter = 123,
+#'           OutputSchemas = list(
+#'             list(
+#'               Columns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         S3HyperDirectTarget = list(
+#'           Name = "string",
+#'           Inputs = list(
+#'             "string"
+#'           ),
+#'           Format = "json"|"csv"|"avro"|"orc"|"parquet"|"hudi"|"delta"|"iceberg"|"hyper"|"xml",
+#'           PartitionKeys = list(
+#'             list(
+#'               "string"
+#'             )
+#'           ),
+#'           Path = "string",
+#'           Compression = "uncompressed",
+#'           SchemaChangePolicy = list(
+#'             EnableUpdateCatalog = TRUE|FALSE,
+#'             UpdateBehavior = "UPDATE_IN_DATABASE"|"LOG",
+#'             Table = "string",
+#'             Database = "string"
+#'           ),
+#'           AutoDataQuality = list(
+#'             IsEnabled = TRUE|FALSE,
+#'             EvaluationContext = "string"
+#'           ),
+#'           OutputSchemas = list(
+#'             list(
+#'               Columns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         DynamoDBELTConnectorSource = list(
+#'           Name = "string",
+#'           ConnectionOptions = list(
+#'             DynamodbExport = "ddb"|"s3",
+#'             DynamodbUnnestDDBJson = TRUE|FALSE,
+#'             DynamodbTableArn = "string",
+#'             DynamodbS3Bucket = "string",
+#'             DynamodbS3Prefix = "string",
+#'             DynamodbS3BucketOwner = "string",
+#'             DynamodbStsRoleArn = "string"
+#'           ),
+#'           OutputSchemas = list(
+#'             list(
+#'               Columns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Type = "string",
+#'                   GlueStudioType = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         )
 #'       )
@@ -30190,14 +32729,17 @@ glue_update_source_control_from_job <- function(JobName = NULL, Provider = NULL,
 #' Updates a metadata table in the Data Catalog.
 #'
 #' @usage
-#' glue_update_table(CatalogId, DatabaseName, TableInput, SkipArchive,
-#'   TransactionId, VersionId, ViewUpdateAction, Force)
+#' glue_update_table(CatalogId, DatabaseName, Name, TableInput,
+#'   SkipArchive, TransactionId, VersionId, ViewUpdateAction, Force,
+#'   UpdateOpenTableFormatInput)
 #'
 #' @param CatalogId The ID of the Data Catalog where the table resides. If none is provided,
 #' the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database in which the table resides. For Hive
 #' compatibility, this name is entirely lowercase.
-#' @param TableInput &#91;required&#93; An updated `TableInput` object to define the metadata table in the
+#' @param Name The unique identifier for the table within the specified database that
+#' will be created in the Glue Data Catalog.
+#' @param TableInput An updated `TableInput` object to define the metadata table in the
 #' catalog.
 #' @param SkipArchive By default, [`update_table`][glue_update_table] always creates an
 #' archived version of the table before updating it. However, if
@@ -30208,6 +32750,9 @@ glue_update_source_control_from_job <- function(JobName = NULL, Provider = NULL,
 #' @param ViewUpdateAction The operation to be performed when updating the view.
 #' @param Force A flag that can be set to true to ignore matching storage descriptor and
 #' subobject matching requirements.
+#' @param UpdateOpenTableFormatInput Input parameters for updating open table format tables in GlueData
+#' Catalog, serving as a wrapper for format-specific update operations such
+#' as Apache Iceberg.
 #'
 #' @return
 #' An empty list.
@@ -30217,6 +32762,7 @@ glue_update_source_control_from_job <- function(JobName = NULL, Provider = NULL,
 #' svc$update_table(
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
+#'   Name = "string",
 #'   TableInput = list(
 #'     Name = "string",
 #'     Description = "string",
@@ -30322,8 +32868,15 @@ glue_update_source_control_from_job <- function(JobName = NULL, Provider = NULL,
 #'           ViewExpandedText = "string"
 #'         )
 #'       ),
+#'       ViewVersionId = 123,
+#'       ViewVersionToken = "string",
+#'       RefreshSeconds = 123,
+#'       LastRefreshType = "FULL"|"INCREMENTAL",
 #'       SubObjects = list(
 #'         "string"
+#'       ),
+#'       SubObjectVersionIds = list(
+#'         123
 #'       )
 #'     )
 #'   ),
@@ -30331,7 +32884,71 @@ glue_update_source_control_from_job <- function(JobName = NULL, Provider = NULL,
 #'   TransactionId = "string",
 #'   VersionId = "string",
 #'   ViewUpdateAction = "ADD"|"REPLACE"|"ADD_OR_REPLACE"|"DROP",
-#'   Force = TRUE|FALSE
+#'   Force = TRUE|FALSE,
+#'   UpdateOpenTableFormatInput = list(
+#'     UpdateIcebergInput = list(
+#'       UpdateIcebergTableInput = list(
+#'         Updates = list(
+#'           list(
+#'             Schema = list(
+#'               SchemaId = 123,
+#'               IdentifierFieldIds = list(
+#'                 123
+#'               ),
+#'               Type = "struct",
+#'               Fields = list(
+#'                 list(
+#'                   Id = 123,
+#'                   Name = "string",
+#'                   Type = list(),
+#'                   Required = TRUE|FALSE,
+#'                   Doc = "string",
+#'                   InitialDefault = list(),
+#'                   WriteDefault = list()
+#'                 )
+#'               )
+#'             ),
+#'             PartitionSpec = list(
+#'               Fields = list(
+#'                 list(
+#'                   SourceId = 123,
+#'                   Transform = "string",
+#'                   Name = "string",
+#'                   FieldId = 123
+#'                 )
+#'               ),
+#'               SpecId = 123
+#'             ),
+#'             SortOrder = list(
+#'               OrderId = 123,
+#'               Fields = list(
+#'                 list(
+#'                   SourceId = 123,
+#'                   Transform = "string",
+#'                   Direction = "asc"|"desc",
+#'                   NullOrder = "nulls-first"|"nulls-last"
+#'                 )
+#'               )
+#'             ),
+#'             Location = "string",
+#'             Properties = list(
+#'               "string"
+#'             ),
+#'             Action = "add-schema"|"set-current-schema"|"add-spec"|"set-default-spec"|"add-sort-order"|"set-default-sort-order"|"set-location"|"set-properties"|"remove-properties"|"add-encryption-key"|"remove-encryption-key",
+#'             EncryptionKey = list(
+#'               KeyId = "string",
+#'               EncryptedKeyMetadata = "string",
+#'               EncryptedById = "string",
+#'               Properties = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             KeyId = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -30340,7 +32957,7 @@ glue_update_source_control_from_job <- function(JobName = NULL, Provider = NULL,
 #' @rdname glue_update_table
 #'
 #' @aliases glue_update_table
-glue_update_table <- function(CatalogId = NULL, DatabaseName, TableInput, SkipArchive = NULL, TransactionId = NULL, VersionId = NULL, ViewUpdateAction = NULL, Force = NULL) {
+glue_update_table <- function(CatalogId = NULL, DatabaseName, Name = NULL, TableInput = NULL, SkipArchive = NULL, TransactionId = NULL, VersionId = NULL, ViewUpdateAction = NULL, Force = NULL, UpdateOpenTableFormatInput = NULL) {
   op <- new_operation(
     name = "UpdateTable",
     http_method = "POST",
@@ -30349,7 +32966,7 @@ glue_update_table <- function(CatalogId = NULL, DatabaseName, TableInput, SkipAr
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$update_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableInput = TableInput, SkipArchive = SkipArchive, TransactionId = TransactionId, VersionId = VersionId, ViewUpdateAction = ViewUpdateAction, Force = Force)
+  input <- .glue$update_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, TableInput = TableInput, SkipArchive = SkipArchive, TransactionId = TransactionId, VersionId = VersionId, ViewUpdateAction = ViewUpdateAction, Force = Force, UpdateOpenTableFormatInput = UpdateOpenTableFormatInput)
   output <- .glue$update_table_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -30391,17 +33008,26 @@ glue_update_table <- function(CatalogId = NULL, DatabaseName, TableInput, SkipAr
 #'     vpcConfiguration = list(
 #'       glueConnectionName = "string"
 #'     ),
+#'     compactionConfiguration = list(
+#'       icebergConfiguration = list(
+#'         strategy = "binpack"|"sort"|"z-order",
+#'         minInputFiles = 123,
+#'         deleteFileThreshold = 123
+#'       )
+#'     ),
 #'     retentionConfiguration = list(
 #'       icebergConfiguration = list(
 #'         snapshotRetentionPeriodInDays = 123,
 #'         numberOfSnapshotsToRetain = 123,
-#'         cleanExpiredFiles = TRUE|FALSE
+#'         cleanExpiredFiles = TRUE|FALSE,
+#'         runRateInHours = 123
 #'       )
 #'     ),
 #'     orphanFileDeletionConfiguration = list(
 #'       icebergConfiguration = list(
 #'         orphanFileRetentionPeriodInDays = 123,
-#'         location = "string"
+#'         location = "string",
+#'         runRateInHours = 123
 #'       )
 #'     )
 #'   )
@@ -30666,6 +33292,7 @@ glue_update_usage_profile <- function(Name, Description = NULL, Configuration) {
 #'     FunctionName = "string",
 #'     ClassName = "string",
 #'     OwnerName = "string",
+#'     FunctionType = "REGULAR_FUNCTION"|"AGGREGATE_FUNCTION"|"STORED_PROCEDURE",
 #'     OwnerType = "USER"|"ROLE"|"GROUP",
 #'     ResourceUris = list(
 #'       list(

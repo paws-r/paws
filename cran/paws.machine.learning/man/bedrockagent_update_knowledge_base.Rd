@@ -6,27 +6,27 @@
 specify}
 \usage{
 bedrockagent_update_knowledge_base(
-  description = NULL,
-  knowledgeBaseConfiguration,
   knowledgeBaseId,
   name,
+  description = NULL,
   roleArn,
+  knowledgeBaseConfiguration,
   storageConfiguration = NULL
 )
 }
 \arguments{
-\item{description}{Specifies a new description for the knowledge base.}
-
-\item{knowledgeBaseConfiguration}{[required] Specifies the configuration for the embeddings model used for the
-knowledge base. You must use the same configuration as when the
-knowledge base was created.}
-
 \item{knowledgeBaseId}{[required] The unique identifier of the knowledge base to update.}
 
 \item{name}{[required] Specifies a new name for the knowledge base.}
 
+\item{description}{Specifies a new description for the knowledge base.}
+
 \item{roleArn}{[required] Specifies a different Amazon Resource Name (ARN) of the IAM role with
 permissions to invoke API operations on the knowledge base.}
+
+\item{knowledgeBaseConfiguration}{[required] Specifies the configuration for the embeddings model used for the
+knowledge base. You must use the same configuration as when the
+knowledge base was created.}
 
 \item{storageConfiguration}{Specifies the configuration for the vector store used for the knowledge
 base. You must use the same configuration as when the knowledge base was

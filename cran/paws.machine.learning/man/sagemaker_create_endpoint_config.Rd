@@ -16,7 +16,8 @@ sagemaker_create_endpoint_config(
   ShadowProductionVariants = NULL,
   ExecutionRoleArn = NULL,
   VpcConfig = NULL,
-  EnableNetworkIsolation = NULL
+  EnableNetworkIsolation = NULL,
+  MetricsConfig = NULL
 )
 }
 \arguments{
@@ -93,6 +94,8 @@ action must have the \code{iam:PassRole} permission.}
 \item{EnableNetworkIsolation}{Sets whether all model containers deployed to the endpoint are isolated.
 If they are, no inbound or outbound network calls can be made to or from
 the model containers.}
+
+\item{MetricsConfig}{The configuration parameters for utilization metrics.}
 }
 \description{
 Creates an endpoint configuration that SageMaker hosting services uses to deploy models. In the configuration, you identify one or more models, created using the \code{\link[=sagemaker_create_model]{create_model}} API, to deploy and the resources that you want SageMaker to provision. Then you call the \code{\link[=sagemaker_create_endpoint]{create_endpoint}} API.

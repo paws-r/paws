@@ -538,8 +538,7 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'     \<, \>, and -. Other printable special characters cannot be used in
 #'     the AUTH token.
 #' 
-#' For more information, see [AUTH
-#' password](https://redis.io/docs/latest/commands/auth/) at
+#' For more information, see AUTH password at
 #' http://redis.io/commands/AUTH.
 #' @param OutpostMode Specifies whether the nodes in the cluster are created in a single
 #' outpost or across multiple outposts.
@@ -1063,8 +1062,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #'     \<, \>, and -. Other printable special characters cannot be used in
 #'     the AUTH token.
 #' 
-#' For more information, see [AUTH
-#' password](https://redis.io/docs/latest/commands/auth/) at
+#' For more information, see AUTH password at
 #' http://redis.io/commands/AUTH.
 #' @param TransitEncryptionEnabled A flag that enables in-transit encryption when set to `true`.
 #' 
@@ -3471,8 +3469,7 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' -   Cannot contain any of the following characters: '/', '"', or '@@',
 #'     '%'
 #' 
-#' For more information, see AUTH password at
-#' [AUTH](https://redis.io/docs/latest/commands/auth/).
+#' For more information, see AUTH password at AUTH.
 #' @param AuthTokenUpdateStrategy Specifies the strategy to use to update the AUTH token. This parameter
 #' must be specified with the `auth-token` parameter. Possible values:
 #' 
@@ -3762,8 +3759,7 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #' -   Cannot contain any of the following characters: '/', '"', or '@@',
 #'     '%'
 #' 
-#' For more information, see AUTH password at
-#' [AUTH](https://redis.io/docs/latest/commands/auth/).
+#' For more information, see AUTH password at AUTH.
 #' @param AuthTokenUpdateStrategy Specifies the strategy to use to update the AUTH token. This parameter
 #' must be specified with the `auth-token` parameter. Possible values:
 #' 

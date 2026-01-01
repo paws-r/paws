@@ -9,7 +9,8 @@ guardduty_create_publishing_destination(
   DetectorId,
   DestinationType,
   DestinationProperties,
-  ClientToken = NULL
+  ClientToken = NULL,
+  Tags = NULL
 )
 }
 \arguments{
@@ -27,6 +28,8 @@ Amazon S3 buckets are supported.}
 destination and the KMS key used for encryption.}
 
 \item{ClientToken}{The idempotency token for the request.}
+
+\item{Tags}{The tags to be added to a new publishing destination resource.}
 }
 \description{
 Creates a publishing destination where you can export your GuardDuty findings. Before you start exporting the findings, the destination resource must exist.

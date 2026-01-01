@@ -7,7 +7,8 @@
 connect_update_contact_flow_module_content(
   InstanceId,
   ContactFlowModuleId,
-  Content
+  Content = NULL,
+  Settings = NULL
 )
 }
 \arguments{
@@ -16,8 +17,10 @@ in the Amazon Resource Name (ARN) of the instance.}
 
 \item{ContactFlowModuleId}{[required] The identifier of the flow module.}
 
-\item{Content}{[required] The JSON string that represents the content of the flow. For an example,
+\item{Content}{The JSON string that represents the content of the flow. For an example,
 see \href{https://docs.aws.amazon.com/connect/latest/APIReference/flow-language-example.html}{Example flow in Amazon Connect Flow language}.}
+
+\item{Settings}{Serialized JSON string of the flow module Settings schema.}
 }
 \description{
 Updates specified flow module for the specified Amazon Connect instance.

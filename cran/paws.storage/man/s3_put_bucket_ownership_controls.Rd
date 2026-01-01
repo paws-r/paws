@@ -8,7 +8,8 @@ s3_put_bucket_ownership_controls(
   Bucket,
   ContentMD5 = NULL,
   ExpectedBucketOwner = NULL,
-  OwnershipControls
+  OwnershipControls,
+  ChecksumAlgorithm = NULL
 )
 }
 \arguments{
@@ -27,6 +28,17 @@ with the HTTP status code \verb{403 Forbidden} (access denied).}
 
 \item{OwnershipControls}{[required] The \code{OwnershipControls} (BucketOwnerEnforced, BucketOwnerPreferred, or
 ObjectWriter) that you want to apply to this Amazon S3 bucket.}
+
+\item{ChecksumAlgorithm}{Indicates the algorithm used to create the checksum for the object when
+you use the SDK. This header will not provide any additional
+functionality if you don't use the SDK. When you send this header, there
+must be a corresponding \code{x-amz-checksum-algorithm } header sent.
+Otherwise, Amazon S3 fails the request with the HTTP status code
+\verb{400 Bad Request}. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.
+
+If you provide an individual checksum, Amazon S3 ignores any provided
+\code{ChecksumAlgorithm} parameter.}
 }
 \description{
 This operation is not supported for directory buckets.

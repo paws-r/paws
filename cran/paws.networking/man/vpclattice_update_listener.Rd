@@ -5,17 +5,17 @@
 \title{Updates the specified listener for the specified service}
 \usage{
 vpclattice_update_listener(
-  defaultAction,
+  serviceIdentifier,
   listenerIdentifier,
-  serviceIdentifier
+  defaultAction
 )
 }
 \arguments{
-\item{defaultAction}{[required] The action for the default rule.}
+\item{serviceIdentifier}{[required] The ID or ARN of the service.}
 
 \item{listenerIdentifier}{[required] The ID or ARN of the listener.}
 
-\item{serviceIdentifier}{[required] The ID or ARN of the service.}
+\item{defaultAction}{[required] The action for the default rule.}
 }
 \description{
 Updates the specified listener for the specified service.

@@ -26,7 +26,8 @@ appstream_update_fleet(
   MaxConcurrentSessions = NULL,
   UsbDeviceFilterStrings = NULL,
   SessionScriptS3Location = NULL,
-  MaxSessionsPerInstance = NULL
+  MaxSessionsPerInstance = NULL,
+  RootVolumeConfig = NULL
 )
 }
 \arguments{
@@ -60,20 +61,33 @@ instance types are available:
 \item stream.memory.z1d.3xlarge
 \item stream.memory.z1d.6xlarge
 \item stream.memory.z1d.12xlarge
-\item stream.graphics-design.large
-\item stream.graphics-design.xlarge
-\item stream.graphics-design.2xlarge
-\item stream.graphics-design.4xlarge
-\item stream.graphics-desktop.2xlarge
 \item stream.graphics.g4dn.xlarge
 \item stream.graphics.g4dn.2xlarge
 \item stream.graphics.g4dn.4xlarge
 \item stream.graphics.g4dn.8xlarge
 \item stream.graphics.g4dn.12xlarge
 \item stream.graphics.g4dn.16xlarge
-\item stream.graphics-pro.4xlarge
-\item stream.graphics-pro.8xlarge
-\item stream.graphics-pro.16xlarge
+\item stream.graphics.g5.xlarge
+\item stream.graphics.g5.2xlarge
+\item stream.graphics.g5.4xlarge
+\item stream.graphics.g5.8xlarge
+\item stream.graphics.g5.16xlarge
+\item stream.graphics.g5.12xlarge
+\item stream.graphics.g5.24xlarge
+\item stream.graphics.g6.xlarge
+\item stream.graphics.g6.2xlarge
+\item stream.graphics.g6.4xlarge
+\item stream.graphics.g6.8xlarge
+\item stream.graphics.g6.16xlarge
+\item stream.graphics.g6.12xlarge
+\item stream.graphics.g6.24xlarge
+\item stream.graphics.gr6.4xlarge
+\item stream.graphics.gr6.8xlarge
+\item stream.graphics.g6f.large
+\item stream.graphics.g6f.xlarge
+\item stream.graphics.g6f.2xlarge
+\item stream.graphics.g6f.4xlarge
+\item stream.graphics.gr6f.4xlarge
 }
 
 The following instance types are available for Elastic fleets:
@@ -150,21 +164,21 @@ after 2 minutes of inactivity.}
 assume a role, a fleet instance calls the AWS Security Token Service
 (STS) \code{AssumeRole} API operation and passes the ARN of the role to use.
 The operation creates a new session with temporary credentials.
-AppStream 2.0 retrieves the temporary credentials and creates the
-\strong{appstream_machine_role} credential profile on the instance.
+WorkSpaces Applications retrieves the temporary credentials and creates
+the \strong{appstream_machine_role} credential profile on the instance.
 
-For more information, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html}{Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming Instances}
-in the \emph{Amazon AppStream 2.0 Administration Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html}{Using an IAM Role to Grant Permissions to Applications and Scripts Running on WorkSpaces Applications Streaming Instances}
+in the \emph{Amazon WorkSpaces Applications Administration Guide}.}
 
-\item{StreamView}{The AppStream 2.0 view that is displayed to your users when they stream
-from the fleet. When \code{APP} is specified, only the windows of
+\item{StreamView}{The WorkSpaces Applications view that is displayed to your users when
+they stream from the fleet. When \code{APP} is specified, only the windows of
 applications opened by users display. When \code{DESKTOP} is specified, the
 standard desktop that is provided by the operating system displays.
 
 The default value is \code{APP}.}
 
-\item{Platform}{The platform of the fleet. WINDOWS_SERVER_2019 and AMAZON_LINUX2 are
-supported for Elastic fleets.}
+\item{Platform}{The platform of the fleet. WINDOWS_SERVER_2019, AMAZON_LINUX2 and
+UBUNTU_PRO_2404 are supported for Elastic fleets.}
 
 \item{MaxConcurrentSessions}{The maximum number of concurrent sessions for a fleet.}
 
@@ -177,6 +191,9 @@ applies to Elastic fleets.}
 
 \item{MaxSessionsPerInstance}{The maximum number of user sessions on an instance. This only applies to
 multi-session fleets.}
+
+\item{RootVolumeConfig}{The updated configuration for the root volume of fleet instances. Note
+that volume size cannot be decreased below the image volume size.}
 }
 \description{
 Updates the specified fleet.

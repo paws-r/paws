@@ -34,6 +34,20 @@ NULL
 #' -   **Composition** — Controls the look of the outputs, including how
 #'     participants are positioned in the video.
 #' 
+#' For participant replication:
+#' 
+#' -   **Source stage** — The stage where the participant originally
+#'     joined, which is used as the source for replication.
+#' 
+#' -   **Destination stage** — The stage to which the participant is
+#'     replicated.
+#' 
+#' -   **Replicated participant** — A participant in a stage that is
+#'     replicated to one or more destination stages.
+#' 
+#' -   **Replica participant** — A participant in a destination stage that
+#'     is replicated from another stage (the source stage).
+#' 
 #' For more information about your IVS live stream, also see [Getting
 #' Started with Amazon IVS Real-Time
 #' Streaming](https://docs.aws.amazon.com/ivs/latest/RealTimeUserGuide/getting-started.html).
@@ -170,6 +184,7 @@ NULL
 #'  \link[=ivsrealtime_list_encoder_configurations]{list_encoder_configurations} \tab Gets summary information about all EncoderConfigurations in your account, in the AWS region where the API request is processed\cr
 #'  \link[=ivsrealtime_list_ingest_configurations]{list_ingest_configurations} \tab Lists all IngestConfigurations in your account, in the AWS region where the API request is processed\cr
 #'  \link[=ivsrealtime_list_participant_events]{list_participant_events} \tab Lists events for a specified participant that occurred during a specified stage session\cr
+#'  \link[=ivsrealtime_list_participant_replicas]{list_participant_replicas} \tab Lists all the replicas for a participant from a source stage\cr
 #'  \link[=ivsrealtime_list_participants]{list_participants} \tab Lists all participants in a specified stage session\cr
 #'  \link[=ivsrealtime_list_public_keys]{list_public_keys} \tab Gets summary information about all public keys in your account, in the AWS region where the API request is processed\cr
 #'  \link[=ivsrealtime_list_stages]{list_stages} \tab Gets summary information about all stages in your account, in the AWS region where the API request is processed\cr
@@ -177,7 +192,9 @@ NULL
 #'  \link[=ivsrealtime_list_storage_configurations]{list_storage_configurations} \tab Gets summary information about all storage configurations in your account, in the AWS region where the API request is processed\cr
 #'  \link[=ivsrealtime_list_tags_for_resource]{list_tags_for_resource} \tab Gets information about AWS tags for the specified ARN\cr
 #'  \link[=ivsrealtime_start_composition]{start_composition} \tab Starts a Composition from a stage based on the configuration provided in the request\cr
+#'  \link[=ivsrealtime_start_participant_replication]{start_participant_replication} \tab Starts replicating a publishing participant from a source stage to a destination stage\cr
 #'  \link[=ivsrealtime_stop_composition]{stop_composition} \tab Stops and deletes a Composition resource\cr
+#'  \link[=ivsrealtime_stop_participant_replication]{stop_participant_replication} \tab Stops a replicated participant session\cr
 #'  \link[=ivsrealtime_tag_resource]{tag_resource} \tab Adds or updates tags for the AWS resource with the specified ARN\cr
 #'  \link[=ivsrealtime_untag_resource]{untag_resource} \tab Removes tags from the resource with the specified ARN\cr
 #'  \link[=ivsrealtime_update_ingest_configuration]{update_ingest_configuration} \tab Updates a specified IngestConfiguration\cr

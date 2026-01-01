@@ -19,11 +19,12 @@ case sensitive.
 
 Constraints:
 \itemize{
-\item Must specify a valid system snapshot in the \emph{available} state.
-\item If the source snapshot is in the same Amazon Web Services Region as
-the copy, specify a valid snapshot identifier.
-\item If the source snapshot is in a different Amazon Web Services Region
-than the copy, specify a valid cluster snapshot ARN.
+\item Must specify a valid cluster snapshot in the \emph{available} state.
+\item If the source cluster snapshot is in the same Amazon Web Services
+Region as the copy, specify a valid snapshot identifier.
+\item If the source cluster snapshot is in a different Amazon Web Services
+Region or owned by another Amazon Web Services account, specify the
+snapshot ARN.
 }
 
 Example: \code{my-cluster-snapshot1}}

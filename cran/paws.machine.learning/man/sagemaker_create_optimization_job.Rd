@@ -9,6 +9,7 @@ sagemaker_create_optimization_job(
   RoleArn,
   ModelSource,
   DeploymentInstanceType,
+  MaxInstanceCount = NULL,
   OptimizationEnvironment = NULL,
   OptimizationConfigs,
   OutputConfig,
@@ -39,6 +40,8 @@ this role to Amazon SageMaker AI, the caller of this API must have the
 
 \item{DeploymentInstanceType}{[required] The type of instance that hosts the optimized model that you create with
 the optimization job.}
+
+\item{MaxInstanceCount}{The maximum number of instances to use for the optimization job.}
 
 \item{OptimizationEnvironment}{The environment variables to set in the model container.}
 

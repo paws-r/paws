@@ -2,7 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_cancel_run}
 \alias{omics_cancel_run}
-\title{Cancels a run}
+\title{Cancels a run using its ID and returns a response with no body if the
+operation is successful}
 \usage{
 omics_cancel_run(id)
 }
@@ -10,7 +11,7 @@ omics_cancel_run(id)
 \item{id}{[required] The run's ID.}
 }
 \description{
-Cancels a run.
+Cancels a run using its ID and returns a response with no body if the operation is successful. To confirm that the run has been cancelled, use the \code{\link[=omics_list_runs]{list_runs}} API operation to check that it is no longer listed.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_cancel_run/} for full documentation.
 }

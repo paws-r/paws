@@ -3,6 +3,40 @@
 #' @include bedrockdataautomation_service.R
 NULL
 
+#' Copies a Blueprint from one stage to another
+#'
+#' @description
+#' Copies a Blueprint from one stage to another
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockdataautomation_copy_blueprint_stage/](https://www.paws-r-sdk.com/docs/bedrockdataautomation_copy_blueprint_stage/) for full documentation.
+#'
+#' @param blueprintArn &#91;required&#93; Blueprint to be copied
+#' @param sourceStage &#91;required&#93; Source stage to copy from
+#' @param targetStage &#91;required&#93; Target stage to copy to
+#' @param clientToken Client token for idempotency
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockdataautomation_copy_blueprint_stage
+bedrockdataautomation_copy_blueprint_stage <- function(blueprintArn, sourceStage, targetStage, clientToken = NULL) {
+  op <- new_operation(
+    name = "CopyBlueprintStage",
+    http_method = "PUT",
+    http_path = "/blueprints/{blueprintArn}/copy-stage",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockdataautomation$copy_blueprint_stage_input(blueprintArn = blueprintArn, sourceStage = sourceStage, targetStage = targetStage, clientToken = clientToken)
+  output <- .bedrockdataautomation$copy_blueprint_stage_output()
+  config <- get_config()
+  svc <- .bedrockdataautomation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockdataautomation$operations$copy_blueprint_stage <- bedrockdataautomation_copy_blueprint_stage
+
 #' Creates an Amazon Bedrock Data Automation Blueprint
 #'
 #' @description
@@ -83,6 +117,7 @@ bedrockdataautomation_create_blueprint_version <- function(blueprintArn, clientT
 #' @param projectName &#91;required&#93; 
 #' @param projectDescription 
 #' @param projectStage 
+#' @param projectType 
 #' @param standardOutputConfiguration &#91;required&#93; 
 #' @param customOutputConfiguration 
 #' @param overrideConfiguration 
@@ -93,7 +128,7 @@ bedrockdataautomation_create_blueprint_version <- function(blueprintArn, clientT
 #' @keywords internal
 #'
 #' @rdname bedrockdataautomation_create_data_automation_project
-bedrockdataautomation_create_data_automation_project <- function(projectName, projectDescription = NULL, projectStage = NULL, standardOutputConfiguration, customOutputConfiguration = NULL, overrideConfiguration = NULL, clientToken = NULL, encryptionConfiguration = NULL, tags = NULL) {
+bedrockdataautomation_create_data_automation_project <- function(projectName, projectDescription = NULL, projectStage = NULL, projectType = NULL, standardOutputConfiguration, customOutputConfiguration = NULL, overrideConfiguration = NULL, clientToken = NULL, encryptionConfiguration = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateDataAutomationProject",
     http_method = "PUT",
@@ -102,7 +137,7 @@ bedrockdataautomation_create_data_automation_project <- function(projectName, pr
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockdataautomation$create_data_automation_project_input(projectName = projectName, projectDescription = projectDescription, projectStage = projectStage, standardOutputConfiguration = standardOutputConfiguration, customOutputConfiguration = customOutputConfiguration, overrideConfiguration = overrideConfiguration, clientToken = clientToken, encryptionConfiguration = encryptionConfiguration, tags = tags)
+  input <- .bedrockdataautomation$create_data_automation_project_input(projectName = projectName, projectDescription = projectDescription, projectStage = projectStage, projectType = projectType, standardOutputConfiguration = standardOutputConfiguration, customOutputConfiguration = customOutputConfiguration, overrideConfiguration = overrideConfiguration, clientToken = clientToken, encryptionConfiguration = encryptionConfiguration, tags = tags)
   output <- .bedrockdataautomation$create_data_automation_project_output()
   config <- get_config()
   svc <- .bedrockdataautomation$service(config, op)
@@ -208,6 +243,37 @@ bedrockdataautomation_get_blueprint <- function(blueprintArn, blueprintVersion =
 }
 .bedrockdataautomation$operations$get_blueprint <- bedrockdataautomation_get_blueprint
 
+#' API used to get blueprint optimization status
+#'
+#' @description
+#' API used to get blueprint optimization status.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockdataautomation_get_blueprint_optimization_status/](https://www.paws-r-sdk.com/docs/bedrockdataautomation_get_blueprint_optimization_status/) for full documentation.
+#'
+#' @param invocationArn &#91;required&#93; Invocation arn.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockdataautomation_get_blueprint_optimization_status
+bedrockdataautomation_get_blueprint_optimization_status <- function(invocationArn) {
+  op <- new_operation(
+    name = "GetBlueprintOptimizationStatus",
+    http_method = "POST",
+    http_path = "/getBlueprintOptimizationStatus/{invocationArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockdataautomation$get_blueprint_optimization_status_input(invocationArn = invocationArn)
+  output <- .bedrockdataautomation$get_blueprint_optimization_status_output()
+  config <- get_config()
+  svc <- .bedrockdataautomation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockdataautomation$operations$get_blueprint_optimization_status <- bedrockdataautomation_get_blueprint_optimization_status
+
 #' Gets an existing Amazon Bedrock Data Automation Project
 #'
 #' @description
@@ -239,6 +305,42 @@ bedrockdataautomation_get_data_automation_project <- function(projectArn, projec
   return(response)
 }
 .bedrockdataautomation$operations$get_data_automation_project <- bedrockdataautomation_get_data_automation_project
+
+#' Invoke an async job to perform Blueprint Optimization
+#'
+#' @description
+#' Invoke an async job to perform Blueprint Optimization
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockdataautomation_invoke_blueprint_optimization_async/](https://www.paws-r-sdk.com/docs/bedrockdataautomation_invoke_blueprint_optimization_async/) for full documentation.
+#'
+#' @param blueprint &#91;required&#93; Blueprint to be optimized
+#' @param samples &#91;required&#93; List of Blueprint Optimization Samples
+#' @param outputConfiguration &#91;required&#93; Output configuration where the results should be placed
+#' @param dataAutomationProfileArn &#91;required&#93; Data automation profile ARN
+#' @param encryptionConfiguration Encryption configuration.
+#' @param tags List of tags.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockdataautomation_invoke_blueprint_optimization_async
+bedrockdataautomation_invoke_blueprint_optimization_async <- function(blueprint, samples, outputConfiguration, dataAutomationProfileArn, encryptionConfiguration = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "InvokeBlueprintOptimizationAsync",
+    http_method = "POST",
+    http_path = "/invokeBlueprintOptimizationAsync",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockdataautomation$invoke_blueprint_optimization_async_input(blueprint = blueprint, samples = samples, outputConfiguration = outputConfiguration, dataAutomationProfileArn = dataAutomationProfileArn, encryptionConfiguration = encryptionConfiguration, tags = tags)
+  output <- .bedrockdataautomation$invoke_blueprint_optimization_async_output()
+  config <- get_config()
+  svc <- .bedrockdataautomation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockdataautomation$operations$invoke_blueprint_optimization_async <- bedrockdataautomation_invoke_blueprint_optimization_async
 
 #' Lists all existing Amazon Bedrock Data Automation Blueprints
 #'

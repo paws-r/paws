@@ -16,7 +16,8 @@ glue_start_job_run(
   NotificationProperty = NULL,
   WorkerType = NULL,
   NumberOfWorkers = NULL,
-  ExecutionClass = NULL
+  ExecutionClass = NULL,
+  ExecutionRoleSessionPolicy = NULL
 )
 }
 \arguments{
@@ -159,6 +160,11 @@ whose start and completion times may vary.
 Only jobs with Glue version 3.0 and above and command type \code{glueetl}
 will be allowed to set \code{ExecutionClass} to \code{FLEX}. The flexible
 execution class is available for Spark jobs.}
+
+\item{ExecutionRoleSessionPolicy}{This inline session policy to the StartJobRun API allows you to
+dynamically restrict the permissions of the specified execution role for
+the scope of the job, without requiring the creation of additional IAM
+roles.}
 }
 \description{
 Starts a job run using a job definition.

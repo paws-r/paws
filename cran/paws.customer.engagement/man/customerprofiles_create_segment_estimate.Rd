@@ -4,12 +4,18 @@
 \alias{customerprofiles_create_segment_estimate}
 \title{Creates a segment estimate query}
 \usage{
-customerprofiles_create_segment_estimate(DomainName, SegmentQuery)
+customerprofiles_create_segment_estimate(
+  DomainName,
+  SegmentQuery = NULL,
+  SegmentSqlQuery = NULL
+)
 }
 \arguments{
 \item{DomainName}{[required] The unique name of the domain.}
 
-\item{SegmentQuery}{[required] The segment query for calculating a segment estimate.}
+\item{SegmentQuery}{The segment query for calculating a segment estimate.}
+
+\item{SegmentSqlQuery}{The segment SQL query.}
 }
 \description{
 Creates a segment estimate query.

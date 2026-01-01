@@ -10,18 +10,18 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_associate_agent_collaborator/](https://www.paws-r-sdk.com/docs/bedrockagent_associate_agent_collaborator/) for full documentation.
 #'
-#' @param agentDescriptor &#91;required&#93; The alias of the collaborator agent.
 #' @param agentId &#91;required&#93; The agent's ID.
 #' @param agentVersion &#91;required&#93; An agent version.
-#' @param clientToken A client token.
-#' @param collaborationInstruction &#91;required&#93; Instruction for the collaborator.
+#' @param agentDescriptor &#91;required&#93; The alias of the collaborator agent.
 #' @param collaboratorName &#91;required&#93; A name for the collaborator.
+#' @param collaborationInstruction &#91;required&#93; Instruction for the collaborator.
 #' @param relayConversationHistory A relay conversation history for the collaborator.
+#' @param clientToken A client token.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_associate_agent_collaborator
-bedrockagent_associate_agent_collaborator <- function(agentDescriptor, agentId, agentVersion, clientToken = NULL, collaborationInstruction, collaboratorName, relayConversationHistory = NULL) {
+bedrockagent_associate_agent_collaborator <- function(agentId, agentVersion, agentDescriptor, collaboratorName, collaborationInstruction, relayConversationHistory = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "AssociateAgentCollaborator",
     http_method = "PUT",
@@ -30,7 +30,7 @@ bedrockagent_associate_agent_collaborator <- function(agentDescriptor, agentId, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$associate_agent_collaborator_input(agentDescriptor = agentDescriptor, agentId = agentId, agentVersion = agentVersion, clientToken = clientToken, collaborationInstruction = collaborationInstruction, collaboratorName = collaboratorName, relayConversationHistory = relayConversationHistory)
+  input <- .bedrockagent$associate_agent_collaborator_input(agentId = agentId, agentVersion = agentVersion, agentDescriptor = agentDescriptor, collaboratorName = collaboratorName, collaborationInstruction = collaborationInstruction, relayConversationHistory = relayConversationHistory, clientToken = clientToken)
   output <- .bedrockagent$associate_agent_collaborator_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -51,8 +51,8 @@ bedrockagent_associate_agent_collaborator <- function(agentDescriptor, agentId, 
 #' knowledge base.
 #' @param agentVersion &#91;required&#93; The version of the agent with which you want to associate the knowledge
 #' base.
-#' @param description &#91;required&#93; A description of what the agent should use the knowledge base for.
 #' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base to associate with the agent.
+#' @param description &#91;required&#93; A description of what the agent should use the knowledge base for.
 #' @param knowledgeBaseState Specifies whether to use the knowledge base or not when sending an
 #' [InvokeAgent](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_InvokeAgent.html)
 #' request.
@@ -60,7 +60,7 @@ bedrockagent_associate_agent_collaborator <- function(agentDescriptor, agentId, 
 #' @keywords internal
 #'
 #' @rdname bedrockagent_associate_agent_knowledge_base
-bedrockagent_associate_agent_knowledge_base <- function(agentId, agentVersion, description, knowledgeBaseId, knowledgeBaseState = NULL) {
+bedrockagent_associate_agent_knowledge_base <- function(agentId, agentVersion, knowledgeBaseId, description, knowledgeBaseState = NULL) {
   op <- new_operation(
     name = "AssociateAgentKnowledgeBase",
     http_method = "PUT",
@@ -69,7 +69,7 @@ bedrockagent_associate_agent_knowledge_base <- function(agentId, agentVersion, d
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$associate_agent_knowledge_base_input(agentId = agentId, agentVersion = agentVersion, description = description, knowledgeBaseId = knowledgeBaseId, knowledgeBaseState = knowledgeBaseState)
+  input <- .bedrockagent$associate_agent_knowledge_base_input(agentId = agentId, agentVersion = agentVersion, knowledgeBaseId = knowledgeBaseId, description = description, knowledgeBaseState = knowledgeBaseState)
   output <- .bedrockagent$associate_agent_knowledge_base_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -88,19 +88,14 @@ bedrockagent_associate_agent_knowledge_base <- function(agentId, agentVersion, d
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_create_agent/](https://www.paws-r-sdk.com/docs/bedrockagent_create_agent/) for full documentation.
 #'
-#' @param agentCollaboration The agent's collaboration role.
 #' @param agentName &#91;required&#93; A name for the agent that you create.
-#' @param agentResourceRoleArn The Amazon Resource Name (ARN) of the IAM role with permissions to
-#' invoke API operations on the agent.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
-#' @param customOrchestration Contains details of the custom orchestration configured for the agent.
-#' @param customerEncryptionKeyArn The Amazon Resource Name (ARN) of the KMS key with which to encrypt the
-#' agent.
-#' @param description A description of the agent.
+#' @param instruction Instructions that tell the agent what it should do and how it should
+#' interact with users.
 #' @param foundationModel The identifier for the model that you want to be used for orchestration
 #' by the agent you create.
 #' 
@@ -137,28 +132,33 @@ bedrockagent_associate_agent_knowledge_base <- function(agentId, agentVersion, d
 #'     from a successful call to
 #'     [CreateModelImportJob](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_CreateModelImportJob.html)
 #'     or from the Imported models page in the Amazon Bedrock console.
-#' @param guardrailConfiguration The unique Guardrail configuration assigned to the agent when it is
-#' created.
+#' @param description A description of the agent.
+#' @param orchestrationType Specifies the type of orchestration strategy for the agent. This is set
+#' to `DEFAULT` orchestration type, by default.
+#' @param customOrchestration Contains details of the custom orchestration configured for the agent.
 #' @param idleSessionTTLInSeconds The number of seconds for which Amazon Bedrock keeps information about a
 #' user's conversation with the agent.
 #' 
 #' A user interaction remains active for the amount of time specified. If
 #' no conversation occurs during this time, the session expires and Amazon
 #' Bedrock deletes any data provided before the timeout.
-#' @param instruction Instructions that tell the agent what it should do and how it should
-#' interact with users.
-#' @param memoryConfiguration Contains the details of the memory configured for the agent.
-#' @param orchestrationType Specifies the type of orchestration strategy for the agent. This is set
-#' to `DEFAULT` orchestration type, by default.
+#' @param agentResourceRoleArn The Amazon Resource Name (ARN) of the IAM role with permissions to
+#' invoke API operations on the agent.
+#' @param customerEncryptionKeyArn The Amazon Resource Name (ARN) of the KMS key with which to encrypt the
+#' agent.
+#' @param tags Any tags that you want to attach to the agent.
 #' @param promptOverrideConfiguration Contains configurations to override prompts in different parts of an
 #' agent sequence. For more information, see [Advanced
 #' prompts](https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts.html).
-#' @param tags Any tags that you want to attach to the agent.
+#' @param guardrailConfiguration The unique Guardrail configuration assigned to the agent when it is
+#' created.
+#' @param memoryConfiguration Contains the details of the memory configured for the agent.
+#' @param agentCollaboration The agent's collaboration role.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_create_agent
-bedrockagent_create_agent <- function(agentCollaboration = NULL, agentName, agentResourceRoleArn = NULL, clientToken = NULL, customOrchestration = NULL, customerEncryptionKeyArn = NULL, description = NULL, foundationModel = NULL, guardrailConfiguration = NULL, idleSessionTTLInSeconds = NULL, instruction = NULL, memoryConfiguration = NULL, orchestrationType = NULL, promptOverrideConfiguration = NULL, tags = NULL) {
+bedrockagent_create_agent <- function(agentName, clientToken = NULL, instruction = NULL, foundationModel = NULL, description = NULL, orchestrationType = NULL, customOrchestration = NULL, idleSessionTTLInSeconds = NULL, agentResourceRoleArn = NULL, customerEncryptionKeyArn = NULL, tags = NULL, promptOverrideConfiguration = NULL, guardrailConfiguration = NULL, memoryConfiguration = NULL, agentCollaboration = NULL) {
   op <- new_operation(
     name = "CreateAgent",
     http_method = "PUT",
@@ -167,7 +167,7 @@ bedrockagent_create_agent <- function(agentCollaboration = NULL, agentName, agen
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$create_agent_input(agentCollaboration = agentCollaboration, agentName = agentName, agentResourceRoleArn = agentResourceRoleArn, clientToken = clientToken, customOrchestration = customOrchestration, customerEncryptionKeyArn = customerEncryptionKeyArn, description = description, foundationModel = foundationModel, guardrailConfiguration = guardrailConfiguration, idleSessionTTLInSeconds = idleSessionTTLInSeconds, instruction = instruction, memoryConfiguration = memoryConfiguration, orchestrationType = orchestrationType, promptOverrideConfiguration = promptOverrideConfiguration, tags = tags)
+  input <- .bedrockagent$create_agent_input(agentName = agentName, clientToken = clientToken, instruction = instruction, foundationModel = foundationModel, description = description, orchestrationType = orchestrationType, customOrchestration = customOrchestration, idleSessionTTLInSeconds = idleSessionTTLInSeconds, agentResourceRoleArn = agentResourceRoleArn, customerEncryptionKeyArn = customerEncryptionKeyArn, tags = tags, promptOverrideConfiguration = promptOverrideConfiguration, guardrailConfiguration = guardrailConfiguration, memoryConfiguration = memoryConfiguration, agentCollaboration = agentCollaboration)
   output <- .bedrockagent$create_agent_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -184,29 +184,15 @@ bedrockagent_create_agent <- function(agentCollaboration = NULL, agentName, agen
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_create_agent_action_group/](https://www.paws-r-sdk.com/docs/bedrockagent_create_agent_action_group/) for full documentation.
 #'
-#' @param actionGroupExecutor The Amazon Resource Name (ARN) of the Lambda function containing the
-#' business logic that is carried out upon invoking the action or the
-#' custom control method for handling the information elicited from the
-#' user.
-#' @param actionGroupName &#91;required&#93; The name to give the action group.
-#' @param actionGroupState Specifies whether the action group is available for the agent to invoke
-#' or not when sending an
-#' [InvokeAgent](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_InvokeAgent.html)
-#' request.
 #' @param agentId &#91;required&#93; The unique identifier of the agent for which to create the action group.
 #' @param agentVersion &#91;required&#93; The version of the agent for which to create the action group.
-#' @param apiSchema Contains either details about the S3 object containing the OpenAPI
-#' schema for the action group or the JSON or YAML-formatted payload
-#' defining the schema. For more information, see [Action group OpenAPI
-#' schemas](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-api-schema.html).
+#' @param actionGroupName &#91;required&#93; The name to give the action group.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param description A description of the action group.
-#' @param functionSchema Contains details about the function schema for the action group or the
-#' JSON or YAML-formatted payload defining the schema.
 #' @param parentActionGroupSignature Specify a built-in or computer use action for this action group. If you
 #' specify a value, you must leave the `description`, `apiSchema`, and
 #' `actionGroupExecutor` fields empty for this action group.
@@ -246,11 +232,25 @@ bedrockagent_create_agent <- function(agentCollaboration = NULL, agentName, agen
 #' only. For more information, see [Configure an Amazon Bedrock Agent to
 #' complete tasks with computer use
 #' tools](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-computer-use.html).
+#' @param actionGroupExecutor The Amazon Resource Name (ARN) of the Lambda function containing the
+#' business logic that is carried out upon invoking the action or the
+#' custom control method for handling the information elicited from the
+#' user.
+#' @param apiSchema Contains either details about the S3 object containing the OpenAPI
+#' schema for the action group or the JSON or YAML-formatted payload
+#' defining the schema. For more information, see [Action group OpenAPI
+#' schemas](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-api-schema.html).
+#' @param actionGroupState Specifies whether the action group is available for the agent to invoke
+#' or not when sending an
+#' [InvokeAgent](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_InvokeAgent.html)
+#' request.
+#' @param functionSchema Contains details about the function schema for the action group or the
+#' JSON or YAML-formatted payload defining the schema.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_create_agent_action_group
-bedrockagent_create_agent_action_group <- function(actionGroupExecutor = NULL, actionGroupName, actionGroupState = NULL, agentId, agentVersion, apiSchema = NULL, clientToken = NULL, description = NULL, functionSchema = NULL, parentActionGroupSignature = NULL, parentActionGroupSignatureParams = NULL) {
+bedrockagent_create_agent_action_group <- function(agentId, agentVersion, actionGroupName, clientToken = NULL, description = NULL, parentActionGroupSignature = NULL, parentActionGroupSignatureParams = NULL, actionGroupExecutor = NULL, apiSchema = NULL, actionGroupState = NULL, functionSchema = NULL) {
   op <- new_operation(
     name = "CreateAgentActionGroup",
     http_method = "PUT",
@@ -259,7 +259,7 @@ bedrockagent_create_agent_action_group <- function(actionGroupExecutor = NULL, a
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$create_agent_action_group_input(actionGroupExecutor = actionGroupExecutor, actionGroupName = actionGroupName, actionGroupState = actionGroupState, agentId = agentId, agentVersion = agentVersion, apiSchema = apiSchema, clientToken = clientToken, description = description, functionSchema = functionSchema, parentActionGroupSignature = parentActionGroupSignature, parentActionGroupSignatureParams = parentActionGroupSignatureParams)
+  input <- .bedrockagent$create_agent_action_group_input(agentId = agentId, agentVersion = agentVersion, actionGroupName = actionGroupName, clientToken = clientToken, description = description, parentActionGroupSignature = parentActionGroupSignature, parentActionGroupSignatureParams = parentActionGroupSignatureParams, actionGroupExecutor = actionGroupExecutor, apiSchema = apiSchema, actionGroupState = actionGroupState, functionSchema = functionSchema)
   output <- .bedrockagent$create_agent_action_group_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -276,8 +276,8 @@ bedrockagent_create_agent_action_group <- function(actionGroupExecutor = NULL, a
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_create_agent_alias/](https://www.paws-r-sdk.com/docs/bedrockagent_create_agent_alias/) for full documentation.
 #'
-#' @param agentAliasName &#91;required&#93; The name of the alias.
 #' @param agentId &#91;required&#93; The unique identifier of the agent.
+#' @param agentAliasName &#91;required&#93; The name of the alias.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
@@ -290,7 +290,7 @@ bedrockagent_create_agent_action_group <- function(actionGroupExecutor = NULL, a
 #' @keywords internal
 #'
 #' @rdname bedrockagent_create_agent_alias
-bedrockagent_create_agent_alias <- function(agentAliasName, agentId, clientToken = NULL, description = NULL, routingConfiguration = NULL, tags = NULL) {
+bedrockagent_create_agent_alias <- function(agentId, agentAliasName, clientToken = NULL, description = NULL, routingConfiguration = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateAgentAlias",
     http_method = "PUT",
@@ -299,7 +299,7 @@ bedrockagent_create_agent_alias <- function(agentAliasName, agentId, clientToken
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$create_agent_alias_input(agentAliasName = agentAliasName, agentId = agentId, clientToken = clientToken, description = description, routingConfiguration = routingConfiguration, tags = tags)
+  input <- .bedrockagent$create_agent_alias_input(agentId = agentId, agentAliasName = agentAliasName, clientToken = clientToken, description = description, routingConfiguration = routingConfiguration, tags = tags)
   output <- .bedrockagent$create_agent_alias_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -316,11 +316,16 @@ bedrockagent_create_agent_alias <- function(agentAliasName, agentId, clientToken
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_create_data_source/](https://www.paws-r-sdk.com/docs/bedrockagent_create_data_source/) for full documentation.
 #'
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base to which to add the data
+#' source.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' @param name &#91;required&#93; The name of the data source.
+#' @param description A description of the data source.
+#' @param dataSourceConfiguration &#91;required&#93; The connection configuration for the data source.
 #' @param dataDeletionPolicy The data deletion policy for the data source.
 #' 
 #' You can set the data deletion policy to:
@@ -335,18 +340,13 @@ bedrockagent_create_agent_alias <- function(agentAliasName, agentId, clientToken
 #'     vector embeddings upon deletion of a knowledge base or data source
 #'     resource. Note that the **vector store itself is not deleted** if
 #'     you delete a knowledge base or data source resource.
-#' @param dataSourceConfiguration &#91;required&#93; The connection configuration for the data source.
-#' @param description A description of the data source.
-#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base to which to add the data
-#' source.
-#' @param name &#91;required&#93; The name of the data source.
 #' @param serverSideEncryptionConfiguration Contains details about the server-side encryption for the data source.
 #' @param vectorIngestionConfiguration Contains details about how to ingest the documents in the data source.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_create_data_source
-bedrockagent_create_data_source <- function(clientToken = NULL, dataDeletionPolicy = NULL, dataSourceConfiguration, description = NULL, knowledgeBaseId, name, serverSideEncryptionConfiguration = NULL, vectorIngestionConfiguration = NULL) {
+bedrockagent_create_data_source <- function(knowledgeBaseId, clientToken = NULL, name, description = NULL, dataSourceConfiguration, dataDeletionPolicy = NULL, serverSideEncryptionConfiguration = NULL, vectorIngestionConfiguration = NULL) {
   op <- new_operation(
     name = "CreateDataSource",
     http_method = "PUT",
@@ -355,7 +355,7 @@ bedrockagent_create_data_source <- function(clientToken = NULL, dataDeletionPoli
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$create_data_source_input(clientToken = clientToken, dataDeletionPolicy = dataDeletionPolicy, dataSourceConfiguration = dataSourceConfiguration, description = description, knowledgeBaseId = knowledgeBaseId, name = name, serverSideEncryptionConfiguration = serverSideEncryptionConfiguration, vectorIngestionConfiguration = vectorIngestionConfiguration)
+  input <- .bedrockagent$create_data_source_input(knowledgeBaseId = knowledgeBaseId, clientToken = clientToken, name = name, description = description, dataSourceConfiguration = dataSourceConfiguration, dataDeletionPolicy = dataDeletionPolicy, serverSideEncryptionConfiguration = serverSideEncryptionConfiguration, vectorIngestionConfiguration = vectorIngestionConfiguration)
   output <- .bedrockagent$create_data_source_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -373,20 +373,20 @@ bedrockagent_create_data_source <- function(clientToken = NULL, dataDeletionPoli
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_create_flow/](https://www.paws-r-sdk.com/docs/bedrockagent_create_flow/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive identifier to ensure that the API request
-#' completes no more than one time. If this token matches a previous
-#' request, Amazon Bedrock ignores the request, but does not return an
-#' error. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
-#' @param customerEncryptionKeyArn The Amazon Resource Name (ARN) of the KMS key to encrypt the flow.
-#' @param definition A definition of the nodes and connections between nodes in the flow.
+#' @param name &#91;required&#93; A name for the flow.
 #' @param description A description for the flow.
 #' @param executionRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the service role with permissions to
 #' create and manage a flow. For more information, see [Create a service
 #' role for flows in Amazon
 #' Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-permissions.html)
 #' in the Amazon Bedrock User Guide.
-#' @param name &#91;required&#93; A name for the flow.
+#' @param customerEncryptionKeyArn The Amazon Resource Name (ARN) of the KMS key to encrypt the flow.
+#' @param definition A definition of the nodes and connections between nodes in the flow.
+#' @param clientToken A unique, case-sensitive identifier to ensure that the API request
+#' completes no more than one time. If this token matches a previous
+#' request, Amazon Bedrock ignores the request, but does not return an
+#' error. For more information, see [Ensuring
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param tags Any tags that you want to attach to the flow. For more information, see
 #' [Tagging resources in Amazon
 #' Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html).
@@ -394,7 +394,7 @@ bedrockagent_create_data_source <- function(clientToken = NULL, dataDeletionPoli
 #' @keywords internal
 #'
 #' @rdname bedrockagent_create_flow
-bedrockagent_create_flow <- function(clientToken = NULL, customerEncryptionKeyArn = NULL, definition = NULL, description = NULL, executionRoleArn, name, tags = NULL) {
+bedrockagent_create_flow <- function(name, description = NULL, executionRoleArn, customerEncryptionKeyArn = NULL, definition = NULL, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateFlow",
     http_method = "POST",
@@ -403,7 +403,7 @@ bedrockagent_create_flow <- function(clientToken = NULL, customerEncryptionKeyAr
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$create_flow_input(clientToken = clientToken, customerEncryptionKeyArn = customerEncryptionKeyArn, definition = definition, description = description, executionRoleArn = executionRoleArn, name = name, tags = tags)
+  input <- .bedrockagent$create_flow_input(name = name, description = description, executionRoleArn = executionRoleArn, customerEncryptionKeyArn = customerEncryptionKeyArn, definition = definition, clientToken = clientToken, tags = tags)
   output <- .bedrockagent$create_flow_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -420,15 +420,17 @@ bedrockagent_create_flow <- function(clientToken = NULL, customerEncryptionKeyAr
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_create_flow_alias/](https://www.paws-r-sdk.com/docs/bedrockagent_create_flow_alias/) for full documentation.
 #'
+#' @param name &#91;required&#93; A name for the alias.
+#' @param description A description for the alias.
+#' @param routingConfiguration &#91;required&#93; Contains information about the version to which to map the alias.
+#' @param concurrencyConfiguration The configuration that specifies how nodes in the flow are executed in
+#' parallel.
+#' @param flowIdentifier &#91;required&#93; The unique identifier of the flow for which to create an alias.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
-#' @param description A description for the alias.
-#' @param flowIdentifier &#91;required&#93; The unique identifier of the flow for which to create an alias.
-#' @param name &#91;required&#93; A name for the alias.
-#' @param routingConfiguration &#91;required&#93; Contains information about the version to which to map the alias.
 #' @param tags Any tags that you want to attach to the alias of the flow. For more
 #' information, see [Tagging resources in Amazon
 #' Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html).
@@ -436,7 +438,7 @@ bedrockagent_create_flow <- function(clientToken = NULL, customerEncryptionKeyAr
 #' @keywords internal
 #'
 #' @rdname bedrockagent_create_flow_alias
-bedrockagent_create_flow_alias <- function(clientToken = NULL, description = NULL, flowIdentifier, name, routingConfiguration, tags = NULL) {
+bedrockagent_create_flow_alias <- function(name, description = NULL, routingConfiguration, concurrencyConfiguration = NULL, flowIdentifier, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateFlowAlias",
     http_method = "POST",
@@ -445,7 +447,7 @@ bedrockagent_create_flow_alias <- function(clientToken = NULL, description = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$create_flow_alias_input(clientToken = clientToken, description = description, flowIdentifier = flowIdentifier, name = name, routingConfiguration = routingConfiguration, tags = tags)
+  input <- .bedrockagent$create_flow_alias_input(name = name, description = description, routingConfiguration = routingConfiguration, concurrencyConfiguration = concurrencyConfiguration, flowIdentifier = flowIdentifier, clientToken = clientToken, tags = tags)
   output <- .bedrockagent$create_flow_alias_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -462,18 +464,18 @@ bedrockagent_create_flow_alias <- function(clientToken = NULL, description = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_create_flow_version/](https://www.paws-r-sdk.com/docs/bedrockagent_create_flow_version/) for full documentation.
 #'
+#' @param flowIdentifier &#91;required&#93; The unique identifier of the flow that you want to create a version of.
+#' @param description A description of the version of the flow.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
-#' @param description A description of the version of the flow.
-#' @param flowIdentifier &#91;required&#93; The unique identifier of the flow that you want to create a version of.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_create_flow_version
-bedrockagent_create_flow_version <- function(clientToken = NULL, description = NULL, flowIdentifier) {
+bedrockagent_create_flow_version <- function(flowIdentifier, description = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateFlowVersion",
     http_method = "POST",
@@ -482,7 +484,7 @@ bedrockagent_create_flow_version <- function(clientToken = NULL, description = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$create_flow_version_input(clientToken = clientToken, description = description, flowIdentifier = flowIdentifier)
+  input <- .bedrockagent$create_flow_version_input(flowIdentifier = flowIdentifier, description = description, clientToken = clientToken)
   output <- .bedrockagent$create_flow_version_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -504,11 +506,11 @@ bedrockagent_create_flow_version <- function(clientToken = NULL, description = N
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
-#' @param description A description of the knowledge base.
-#' @param knowledgeBaseConfiguration &#91;required&#93; Contains details about the embeddings model used for the knowledge base.
 #' @param name &#91;required&#93; A name for the knowledge base.
+#' @param description A description of the knowledge base.
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role with permissions to
 #' invoke API operations on the knowledge base.
+#' @param knowledgeBaseConfiguration &#91;required&#93; Contains details about the embeddings model used for the knowledge base.
 #' @param storageConfiguration Contains details about the configuration of the vector database used for
 #' the knowledge base.
 #' @param tags Specify the key-value pairs for the tags that you want to attach to your
@@ -517,7 +519,7 @@ bedrockagent_create_flow_version <- function(clientToken = NULL, description = N
 #' @keywords internal
 #'
 #' @rdname bedrockagent_create_knowledge_base
-bedrockagent_create_knowledge_base <- function(clientToken = NULL, description = NULL, knowledgeBaseConfiguration, name, roleArn, storageConfiguration = NULL, tags = NULL) {
+bedrockagent_create_knowledge_base <- function(clientToken = NULL, name, description = NULL, roleArn, knowledgeBaseConfiguration, storageConfiguration = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateKnowledgeBase",
     http_method = "PUT",
@@ -526,7 +528,7 @@ bedrockagent_create_knowledge_base <- function(clientToken = NULL, description =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$create_knowledge_base_input(clientToken = clientToken, description = description, knowledgeBaseConfiguration = knowledgeBaseConfiguration, name = name, roleArn = roleArn, storageConfiguration = storageConfiguration, tags = tags)
+  input <- .bedrockagent$create_knowledge_base_input(clientToken = clientToken, name = name, description = description, roleArn = roleArn, knowledgeBaseConfiguration = knowledgeBaseConfiguration, storageConfiguration = storageConfiguration, tags = tags)
   output <- .bedrockagent$create_knowledge_base_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -543,28 +545,28 @@ bedrockagent_create_knowledge_base <- function(clientToken = NULL, description =
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_create_prompt/](https://www.paws-r-sdk.com/docs/bedrockagent_create_prompt/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive identifier to ensure that the API request
-#' completes no more than one time. If this token matches a previous
-#' request, Amazon Bedrock ignores the request, but does not return an
-#' error. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' @param name &#91;required&#93; A name for the prompt.
+#' @param description A description for the prompt.
 #' @param customerEncryptionKeyArn The Amazon Resource Name (ARN) of the KMS key to encrypt the prompt.
 #' @param defaultVariant The name of the default variant for the prompt. This value must match
 #' the `name` field in the relevant
 #' [PromptVariant](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent_PromptVariant.html)
 #' object.
-#' @param description A description for the prompt.
-#' @param name &#91;required&#93; A name for the prompt.
+#' @param variants A list of objects, each containing details about a variant of the
+#' prompt.
+#' @param clientToken A unique, case-sensitive identifier to ensure that the API request
+#' completes no more than one time. If this token matches a previous
+#' request, Amazon Bedrock ignores the request, but does not return an
+#' error. For more information, see [Ensuring
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param tags Any tags that you want to attach to the prompt. For more information,
 #' see [Tagging resources in Amazon
 #' Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html).
-#' @param variants A list of objects, each containing details about a variant of the
-#' prompt.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_create_prompt
-bedrockagent_create_prompt <- function(clientToken = NULL, customerEncryptionKeyArn = NULL, defaultVariant = NULL, description = NULL, name, tags = NULL, variants = NULL) {
+bedrockagent_create_prompt <- function(name, description = NULL, customerEncryptionKeyArn = NULL, defaultVariant = NULL, variants = NULL, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreatePrompt",
     http_method = "POST",
@@ -573,7 +575,7 @@ bedrockagent_create_prompt <- function(clientToken = NULL, customerEncryptionKey
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$create_prompt_input(clientToken = clientToken, customerEncryptionKeyArn = customerEncryptionKeyArn, defaultVariant = defaultVariant, description = description, name = name, tags = tags, variants = variants)
+  input <- .bedrockagent$create_prompt_input(name = name, description = description, customerEncryptionKeyArn = customerEncryptionKeyArn, defaultVariant = defaultVariant, variants = variants, clientToken = clientToken, tags = tags)
   output <- .bedrockagent$create_prompt_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -591,14 +593,14 @@ bedrockagent_create_prompt <- function(clientToken = NULL, customerEncryptionKey
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_create_prompt_version/](https://www.paws-r-sdk.com/docs/bedrockagent_create_prompt_version/) for full documentation.
 #'
+#' @param promptIdentifier &#91;required&#93; The unique identifier of the prompt that you want to create a version
+#' of.
+#' @param description A description for the version of the prompt.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
-#' @param description A description for the version of the prompt.
-#' @param promptIdentifier &#91;required&#93; The unique identifier of the prompt that you want to create a version
-#' of.
 #' @param tags Any tags that you want to attach to the version of the prompt. For more
 #' information, see [Tagging resources in Amazon
 #' Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html).
@@ -606,7 +608,7 @@ bedrockagent_create_prompt <- function(clientToken = NULL, customerEncryptionKey
 #' @keywords internal
 #'
 #' @rdname bedrockagent_create_prompt_version
-bedrockagent_create_prompt_version <- function(clientToken = NULL, description = NULL, promptIdentifier, tags = NULL) {
+bedrockagent_create_prompt_version <- function(promptIdentifier, description = NULL, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreatePromptVersion",
     http_method = "POST",
@@ -615,7 +617,7 @@ bedrockagent_create_prompt_version <- function(clientToken = NULL, description =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$create_prompt_version_input(clientToken = clientToken, description = description, promptIdentifier = promptIdentifier, tags = tags)
+  input <- .bedrockagent$create_prompt_version_input(promptIdentifier = promptIdentifier, description = description, clientToken = clientToken, tags = tags)
   output <- .bedrockagent$create_prompt_version_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -666,9 +668,9 @@ bedrockagent_delete_agent <- function(agentId, skipResourceInUseCheck = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_delete_agent_action_group/](https://www.paws-r-sdk.com/docs/bedrockagent_delete_agent_action_group/) for full documentation.
 #'
-#' @param actionGroupId &#91;required&#93; The unique identifier of the action group to delete.
 #' @param agentId &#91;required&#93; The unique identifier of the agent that the action group belongs to.
 #' @param agentVersion &#91;required&#93; The version of the agent that the action group belongs to.
+#' @param actionGroupId &#91;required&#93; The unique identifier of the action group to delete.
 #' @param skipResourceInUseCheck By default, this value is `false` and deletion is stopped if the
 #' resource is in use. If you set it to `true`, the resource will be
 #' deleted even if the resource is in use.
@@ -676,7 +678,7 @@ bedrockagent_delete_agent <- function(agentId, skipResourceInUseCheck = NULL) {
 #' @keywords internal
 #'
 #' @rdname bedrockagent_delete_agent_action_group
-bedrockagent_delete_agent_action_group <- function(actionGroupId, agentId, agentVersion, skipResourceInUseCheck = NULL) {
+bedrockagent_delete_agent_action_group <- function(agentId, agentVersion, actionGroupId, skipResourceInUseCheck = NULL) {
   op <- new_operation(
     name = "DeleteAgentActionGroup",
     http_method = "DELETE",
@@ -685,7 +687,7 @@ bedrockagent_delete_agent_action_group <- function(actionGroupId, agentId, agent
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$delete_agent_action_group_input(actionGroupId = actionGroupId, agentId = agentId, agentVersion = agentVersion, skipResourceInUseCheck = skipResourceInUseCheck)
+  input <- .bedrockagent$delete_agent_action_group_input(agentId = agentId, agentVersion = agentVersion, actionGroupId = actionGroupId, skipResourceInUseCheck = skipResourceInUseCheck)
   output <- .bedrockagent$delete_agent_action_group_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -702,13 +704,13 @@ bedrockagent_delete_agent_action_group <- function(actionGroupId, agentId, agent
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_delete_agent_alias/](https://www.paws-r-sdk.com/docs/bedrockagent_delete_agent_alias/) for full documentation.
 #'
-#' @param agentAliasId &#91;required&#93; The unique identifier of the alias to delete.
 #' @param agentId &#91;required&#93; The unique identifier of the agent that the alias belongs to.
+#' @param agentAliasId &#91;required&#93; The unique identifier of the alias to delete.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_delete_agent_alias
-bedrockagent_delete_agent_alias <- function(agentAliasId, agentId) {
+bedrockagent_delete_agent_alias <- function(agentId, agentAliasId) {
   op <- new_operation(
     name = "DeleteAgentAlias",
     http_method = "DELETE",
@@ -717,7 +719,7 @@ bedrockagent_delete_agent_alias <- function(agentAliasId, agentId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$delete_agent_alias_input(agentAliasId = agentAliasId, agentId = agentId)
+  input <- .bedrockagent$delete_agent_alias_input(agentId = agentId, agentAliasId = agentAliasId)
   output <- .bedrockagent$delete_agent_alias_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -769,14 +771,14 @@ bedrockagent_delete_agent_version <- function(agentId, agentVersion, skipResourc
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_delete_data_source/](https://www.paws-r-sdk.com/docs/bedrockagent_delete_data_source/) for full documentation.
 #'
-#' @param dataSourceId &#91;required&#93; The unique identifier of the data source to delete.
 #' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base from which to delete the
 #' data source.
+#' @param dataSourceId &#91;required&#93; The unique identifier of the data source to delete.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_delete_data_source
-bedrockagent_delete_data_source <- function(dataSourceId, knowledgeBaseId) {
+bedrockagent_delete_data_source <- function(knowledgeBaseId, dataSourceId) {
   op <- new_operation(
     name = "DeleteDataSource",
     http_method = "DELETE",
@@ -785,7 +787,7 @@ bedrockagent_delete_data_source <- function(dataSourceId, knowledgeBaseId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$delete_data_source_input(dataSourceId = dataSourceId, knowledgeBaseId = knowledgeBaseId)
+  input <- .bedrockagent$delete_data_source_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId)
   output <- .bedrockagent$delete_data_source_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -836,13 +838,13 @@ bedrockagent_delete_flow <- function(flowIdentifier, skipResourceInUseCheck = NU
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_delete_flow_alias/](https://www.paws-r-sdk.com/docs/bedrockagent_delete_flow_alias/) for full documentation.
 #'
-#' @param aliasIdentifier &#91;required&#93; The unique identifier of the alias to be deleted.
 #' @param flowIdentifier &#91;required&#93; The unique identifier of the flow that the alias belongs to.
+#' @param aliasIdentifier &#91;required&#93; The unique identifier of the alias to be deleted.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_delete_flow_alias
-bedrockagent_delete_flow_alias <- function(aliasIdentifier, flowIdentifier) {
+bedrockagent_delete_flow_alias <- function(flowIdentifier, aliasIdentifier) {
   op <- new_operation(
     name = "DeleteFlowAlias",
     http_method = "DELETE",
@@ -851,7 +853,7 @@ bedrockagent_delete_flow_alias <- function(aliasIdentifier, flowIdentifier) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$delete_flow_alias_input(aliasIdentifier = aliasIdentifier, flowIdentifier = flowIdentifier)
+  input <- .bedrockagent$delete_flow_alias_input(flowIdentifier = flowIdentifier, aliasIdentifier = aliasIdentifier)
   output <- .bedrockagent$delete_flow_alias_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -935,21 +937,21 @@ bedrockagent_delete_knowledge_base <- function(knowledgeBaseId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_delete_knowledge_base_documents/](https://www.paws-r-sdk.com/docs/bedrockagent_delete_knowledge_base_documents/) for full documentation.
 #'
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base that is connected to the
+#' data source.
+#' @param dataSourceId &#91;required&#93; The unique identifier of the data source that contains the documents.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
-#' @param dataSourceId &#91;required&#93; The unique identifier of the data source that contains the documents.
 #' @param documentIdentifiers &#91;required&#93; A list of objects, each of which contains information to identify a
 #' document to delete.
-#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base that is connected to the
-#' data source.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_delete_knowledge_base_documents
-bedrockagent_delete_knowledge_base_documents <- function(clientToken = NULL, dataSourceId, documentIdentifiers, knowledgeBaseId) {
+bedrockagent_delete_knowledge_base_documents <- function(knowledgeBaseId, dataSourceId, clientToken = NULL, documentIdentifiers) {
   op <- new_operation(
     name = "DeleteKnowledgeBaseDocuments",
     http_method = "POST",
@@ -958,7 +960,7 @@ bedrockagent_delete_knowledge_base_documents <- function(clientToken = NULL, dat
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$delete_knowledge_base_documents_input(clientToken = clientToken, dataSourceId = dataSourceId, documentIdentifiers = documentIdentifiers, knowledgeBaseId = knowledgeBaseId)
+  input <- .bedrockagent$delete_knowledge_base_documents_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId, clientToken = clientToken, documentIdentifiers = documentIdentifiers)
   output <- .bedrockagent$delete_knowledge_base_documents_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -1107,14 +1109,14 @@ bedrockagent_get_agent <- function(agentId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_get_agent_action_group/](https://www.paws-r-sdk.com/docs/bedrockagent_get_agent_action_group/) for full documentation.
 #'
-#' @param actionGroupId &#91;required&#93; The unique identifier of the action group for which to get information.
 #' @param agentId &#91;required&#93; The unique identifier of the agent that the action group belongs to.
 #' @param agentVersion &#91;required&#93; The version of the agent that the action group belongs to.
+#' @param actionGroupId &#91;required&#93; The unique identifier of the action group for which to get information.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_get_agent_action_group
-bedrockagent_get_agent_action_group <- function(actionGroupId, agentId, agentVersion) {
+bedrockagent_get_agent_action_group <- function(agentId, agentVersion, actionGroupId) {
   op <- new_operation(
     name = "GetAgentActionGroup",
     http_method = "GET",
@@ -1123,7 +1125,7 @@ bedrockagent_get_agent_action_group <- function(actionGroupId, agentId, agentVer
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$get_agent_action_group_input(actionGroupId = actionGroupId, agentId = agentId, agentVersion = agentVersion)
+  input <- .bedrockagent$get_agent_action_group_input(agentId = agentId, agentVersion = agentVersion, actionGroupId = actionGroupId)
   output <- .bedrockagent$get_agent_action_group_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -1140,14 +1142,14 @@ bedrockagent_get_agent_action_group <- function(actionGroupId, agentId, agentVer
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_get_agent_alias/](https://www.paws-r-sdk.com/docs/bedrockagent_get_agent_alias/) for full documentation.
 #'
-#' @param agentAliasId &#91;required&#93; The unique identifier of the alias for which to get information.
 #' @param agentId &#91;required&#93; The unique identifier of the agent to which the alias to get information
 #' belongs.
+#' @param agentAliasId &#91;required&#93; The unique identifier of the alias for which to get information.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_get_agent_alias
-bedrockagent_get_agent_alias <- function(agentAliasId, agentId) {
+bedrockagent_get_agent_alias <- function(agentId, agentAliasId) {
   op <- new_operation(
     name = "GetAgentAlias",
     http_method = "GET",
@@ -1156,7 +1158,7 @@ bedrockagent_get_agent_alias <- function(agentAliasId, agentId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$get_agent_alias_input(agentAliasId = agentAliasId, agentId = agentId)
+  input <- .bedrockagent$get_agent_alias_input(agentId = agentId, agentAliasId = agentAliasId)
   output <- .bedrockagent$get_agent_alias_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -1272,13 +1274,13 @@ bedrockagent_get_agent_version <- function(agentId, agentVersion) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_get_data_source/](https://www.paws-r-sdk.com/docs/bedrockagent_get_data_source/) for full documentation.
 #'
-#' @param dataSourceId &#91;required&#93; The unique identifier of the data source.
 #' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base for the data source.
+#' @param dataSourceId &#91;required&#93; The unique identifier of the data source.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_get_data_source
-bedrockagent_get_data_source <- function(dataSourceId, knowledgeBaseId) {
+bedrockagent_get_data_source <- function(knowledgeBaseId, dataSourceId) {
   op <- new_operation(
     name = "GetDataSource",
     http_method = "GET",
@@ -1287,7 +1289,7 @@ bedrockagent_get_data_source <- function(dataSourceId, knowledgeBaseId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$get_data_source_input(dataSourceId = dataSourceId, knowledgeBaseId = knowledgeBaseId)
+  input <- .bedrockagent$get_data_source_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId)
   output <- .bedrockagent$get_data_source_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -1335,13 +1337,13 @@ bedrockagent_get_flow <- function(flowIdentifier) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_get_flow_alias/](https://www.paws-r-sdk.com/docs/bedrockagent_get_flow_alias/) for full documentation.
 #'
-#' @param aliasIdentifier &#91;required&#93; The unique identifier of the alias for which to retrieve information.
 #' @param flowIdentifier &#91;required&#93; The unique identifier of the flow that the alias belongs to.
+#' @param aliasIdentifier &#91;required&#93; The unique identifier of the alias for which to retrieve information.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_get_flow_alias
-bedrockagent_get_flow_alias <- function(aliasIdentifier, flowIdentifier) {
+bedrockagent_get_flow_alias <- function(flowIdentifier, aliasIdentifier) {
   op <- new_operation(
     name = "GetFlowAlias",
     http_method = "GET",
@@ -1350,7 +1352,7 @@ bedrockagent_get_flow_alias <- function(aliasIdentifier, flowIdentifier) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$get_flow_alias_input(aliasIdentifier = aliasIdentifier, flowIdentifier = flowIdentifier)
+  input <- .bedrockagent$get_flow_alias_input(flowIdentifier = flowIdentifier, aliasIdentifier = aliasIdentifier)
   output <- .bedrockagent$get_flow_alias_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -1399,17 +1401,17 @@ bedrockagent_get_flow_version <- function(flowIdentifier, flowVersion) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_get_ingestion_job/](https://www.paws-r-sdk.com/docs/bedrockagent_get_ingestion_job/) for full documentation.
 #'
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base for the data ingestion job
+#' you want to get information on.
 #' @param dataSourceId &#91;required&#93; The unique identifier of the data source for the data ingestion job you
 #' want to get information on.
 #' @param ingestionJobId &#91;required&#93; The unique identifier of the data ingestion job you want to get
 #' information on.
-#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base for the data ingestion job
-#' you want to get information on.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_get_ingestion_job
-bedrockagent_get_ingestion_job <- function(dataSourceId, ingestionJobId, knowledgeBaseId) {
+bedrockagent_get_ingestion_job <- function(knowledgeBaseId, dataSourceId, ingestionJobId) {
   op <- new_operation(
     name = "GetIngestionJob",
     http_method = "GET",
@@ -1418,7 +1420,7 @@ bedrockagent_get_ingestion_job <- function(dataSourceId, ingestionJobId, knowled
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$get_ingestion_job_input(dataSourceId = dataSourceId, ingestionJobId = ingestionJobId, knowledgeBaseId = knowledgeBaseId)
+  input <- .bedrockagent$get_ingestion_job_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId, ingestionJobId = ingestionJobId)
   output <- .bedrockagent$get_ingestion_job_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -1428,10 +1430,10 @@ bedrockagent_get_ingestion_job <- function(dataSourceId, ingestionJobId, knowled
 }
 .bedrockagent$operations$get_ingestion_job <- bedrockagent_get_ingestion_job
 
-#' Gets information about a knoweldge base
+#' Gets information about a knowledge base
 #'
 #' @description
-#' Gets information about a knoweldge base.
+#' Gets information about a knowledge base.
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_get_knowledge_base/](https://www.paws-r-sdk.com/docs/bedrockagent_get_knowledge_base/) for full documentation.
 #'
@@ -1468,16 +1470,16 @@ bedrockagent_get_knowledge_base <- function(knowledgeBaseId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_get_knowledge_base_documents/](https://www.paws-r-sdk.com/docs/bedrockagent_get_knowledge_base_documents/) for full documentation.
 #'
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base that is connected to the
+#' data source.
 #' @param dataSourceId &#91;required&#93; The unique identifier of the data source that contains the documents.
 #' @param documentIdentifiers &#91;required&#93; A list of objects, each of which contains information to identify a
 #' document for which to retrieve information.
-#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base that is connected to the
-#' data source.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_get_knowledge_base_documents
-bedrockagent_get_knowledge_base_documents <- function(dataSourceId, documentIdentifiers, knowledgeBaseId) {
+bedrockagent_get_knowledge_base_documents <- function(knowledgeBaseId, dataSourceId, documentIdentifiers) {
   op <- new_operation(
     name = "GetKnowledgeBaseDocuments",
     http_method = "POST",
@@ -1486,7 +1488,7 @@ bedrockagent_get_knowledge_base_documents <- function(dataSourceId, documentIden
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$get_knowledge_base_documents_input(dataSourceId = dataSourceId, documentIdentifiers = documentIdentifiers, knowledgeBaseId = knowledgeBaseId)
+  input <- .bedrockagent$get_knowledge_base_documents_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId, documentIdentifiers = documentIdentifiers)
   output <- .bedrockagent$get_knowledge_base_documents_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -1540,22 +1542,22 @@ bedrockagent_get_prompt <- function(promptIdentifier, promptVersion = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_ingest_knowledge_base_documents/](https://www.paws-r-sdk.com/docs/bedrockagent_ingest_knowledge_base_documents/) for full documentation.
 #'
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base to ingest the documents
+#' into.
+#' @param dataSourceId &#91;required&#93; The unique identifier of the data source connected to the knowledge base
+#' that you're adding documents to.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
-#' @param dataSourceId &#91;required&#93; The unique identifier of the data source connected to the knowledge base
-#' that you're adding documents to.
 #' @param documents &#91;required&#93; A list of objects, each of which contains information about the
 #' documents to add.
-#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base to ingest the documents
-#' into.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_ingest_knowledge_base_documents
-bedrockagent_ingest_knowledge_base_documents <- function(clientToken = NULL, dataSourceId, documents, knowledgeBaseId) {
+bedrockagent_ingest_knowledge_base_documents <- function(knowledgeBaseId, dataSourceId, clientToken = NULL, documents) {
   op <- new_operation(
     name = "IngestKnowledgeBaseDocuments",
     http_method = "PUT",
@@ -1564,7 +1566,7 @@ bedrockagent_ingest_knowledge_base_documents <- function(clientToken = NULL, dat
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$ingest_knowledge_base_documents_input(clientToken = clientToken, dataSourceId = dataSourceId, documents = documents, knowledgeBaseId = knowledgeBaseId)
+  input <- .bedrockagent$ingest_knowledge_base_documents_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId, clientToken = clientToken, documents = documents)
   output <- .bedrockagent$ingest_knowledge_base_documents_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -1965,11 +1967,12 @@ bedrockagent_list_flows <- function(maxResults = NULL, nextToken = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_list_ingestion_jobs/](https://www.paws-r-sdk.com/docs/bedrockagent_list_ingestion_jobs/) for full documentation.
 #'
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base for the list of data
+#' ingestion jobs.
 #' @param dataSourceId &#91;required&#93; The unique identifier of the data source for the list of data ingestion
 #' jobs.
 #' @param filters Contains information about the filters for filtering the data.
-#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base for the list of data
-#' ingestion jobs.
+#' @param sortBy Contains details about how to sort the data.
 #' @param maxResults The maximum number of results to return in the response. If the total
 #' number of results is greater than this value, use the token returned in
 #' the response in the `nextToken` field when making another request to
@@ -1977,12 +1980,11 @@ bedrockagent_list_flows <- function(maxResults = NULL, nextToken = NULL) {
 #' @param nextToken If the total number of results is greater than the `maxResults` value
 #' provided in the request, enter the token returned in the `nextToken`
 #' field in the response in this field to return the next batch of results.
-#' @param sortBy Contains details about how to sort the data.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_list_ingestion_jobs
-bedrockagent_list_ingestion_jobs <- function(dataSourceId, filters = NULL, knowledgeBaseId, maxResults = NULL, nextToken = NULL, sortBy = NULL) {
+bedrockagent_list_ingestion_jobs <- function(knowledgeBaseId, dataSourceId, filters = NULL, sortBy = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListIngestionJobs",
     http_method = "POST",
@@ -1991,7 +1993,7 @@ bedrockagent_list_ingestion_jobs <- function(dataSourceId, filters = NULL, knowl
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "ingestionJobSummaries"),
     stream_api = FALSE
   )
-  input <- .bedrockagent$list_ingestion_jobs_input(dataSourceId = dataSourceId, filters = filters, knowledgeBaseId = knowledgeBaseId, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy)
+  input <- .bedrockagent$list_ingestion_jobs_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId, filters = filters, sortBy = sortBy, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagent$list_ingestion_jobs_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -2009,9 +2011,9 @@ bedrockagent_list_ingestion_jobs <- function(dataSourceId, filters = NULL, knowl
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_list_knowledge_base_documents/](https://www.paws-r-sdk.com/docs/bedrockagent_list_knowledge_base_documents/) for full documentation.
 #'
-#' @param dataSourceId &#91;required&#93; The unique identifier of the data source that contains the documents.
 #' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base that is connected to the
 #' data source.
+#' @param dataSourceId &#91;required&#93; The unique identifier of the data source that contains the documents.
 #' @param maxResults The maximum number of results to return in the response. If the total
 #' number of results is greater than this value, use the token returned in
 #' the response in the `nextToken` field when making another request to
@@ -2023,7 +2025,7 @@ bedrockagent_list_ingestion_jobs <- function(dataSourceId, filters = NULL, knowl
 #' @keywords internal
 #'
 #' @rdname bedrockagent_list_knowledge_base_documents
-bedrockagent_list_knowledge_base_documents <- function(dataSourceId, knowledgeBaseId, maxResults = NULL, nextToken = NULL) {
+bedrockagent_list_knowledge_base_documents <- function(knowledgeBaseId, dataSourceId, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListKnowledgeBaseDocuments",
     http_method = "POST",
@@ -2032,7 +2034,7 @@ bedrockagent_list_knowledge_base_documents <- function(dataSourceId, knowledgeBa
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "documentDetails"),
     stream_api = FALSE
   )
-  input <- .bedrockagent$list_knowledge_base_documents_input(dataSourceId = dataSourceId, knowledgeBaseId = knowledgeBaseId, maxResults = maxResults, nextToken = nextToken)
+  input <- .bedrockagent$list_knowledge_base_documents_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagent$list_knowledge_base_documents_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -2089,6 +2091,9 @@ bedrockagent_list_knowledge_bases <- function(maxResults = NULL, nextToken = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_list_prompts/](https://www.paws-r-sdk.com/docs/bedrockagent_list_prompts/) for full documentation.
 #'
+#' @param promptIdentifier The unique identifier of the prompt for whose versions you want to
+#' return information. Omit this field to list information about all
+#' prompts in an account.
 #' @param maxResults The maximum number of results to return in the response. If the total
 #' number of results is greater than this value, use the token returned in
 #' the response in the `nextToken` field when making another request to
@@ -2096,14 +2101,11 @@ bedrockagent_list_knowledge_bases <- function(maxResults = NULL, nextToken = NUL
 #' @param nextToken If the total number of results is greater than the `maxResults` value
 #' provided in the request, enter the token returned in the `nextToken`
 #' field in the response in this field to return the next batch of results.
-#' @param promptIdentifier The unique identifier of the prompt for whose versions you want to
-#' return information. Omit this field to list information about all
-#' prompts in an account.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_list_prompts
-bedrockagent_list_prompts <- function(maxResults = NULL, nextToken = NULL, promptIdentifier = NULL) {
+bedrockagent_list_prompts <- function(promptIdentifier = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListPrompts",
     http_method = "GET",
@@ -2112,7 +2114,7 @@ bedrockagent_list_prompts <- function(maxResults = NULL, nextToken = NULL, promp
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "promptSummaries"),
     stream_api = FALSE
   )
-  input <- .bedrockagent$list_prompts_input(maxResults = maxResults, nextToken = nextToken, promptIdentifier = promptIdentifier)
+  input <- .bedrockagent$list_prompts_input(promptIdentifier = promptIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagent$list_prompts_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -2224,20 +2226,20 @@ bedrockagent_prepare_flow <- function(flowIdentifier) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_start_ingestion_job/](https://www.paws-r-sdk.com/docs/bedrockagent_start_ingestion_job/) for full documentation.
 #'
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base for the data ingestion job.
+#' @param dataSourceId &#91;required&#93; The unique identifier of the data source you want to ingest into your
+#' knowledge base.
 #' @param clientToken A unique, case-sensitive identifier to ensure that the API request
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
-#' @param dataSourceId &#91;required&#93; The unique identifier of the data source you want to ingest into your
-#' knowledge base.
 #' @param description A description of the data ingestion job.
-#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base for the data ingestion job.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_start_ingestion_job
-bedrockagent_start_ingestion_job <- function(clientToken = NULL, dataSourceId, description = NULL, knowledgeBaseId) {
+bedrockagent_start_ingestion_job <- function(knowledgeBaseId, dataSourceId, clientToken = NULL, description = NULL) {
   op <- new_operation(
     name = "StartIngestionJob",
     http_method = "PUT",
@@ -2246,7 +2248,7 @@ bedrockagent_start_ingestion_job <- function(clientToken = NULL, dataSourceId, d
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$start_ingestion_job_input(clientToken = clientToken, dataSourceId = dataSourceId, description = description, knowledgeBaseId = knowledgeBaseId)
+  input <- .bedrockagent$start_ingestion_job_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId, clientToken = clientToken, description = description)
   output <- .bedrockagent$start_ingestion_job_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -2263,16 +2265,16 @@ bedrockagent_start_ingestion_job <- function(clientToken = NULL, dataSourceId, d
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_stop_ingestion_job/](https://www.paws-r-sdk.com/docs/bedrockagent_stop_ingestion_job/) for full documentation.
 #'
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base for the data ingestion job
+#' you want to stop.
 #' @param dataSourceId &#91;required&#93; The unique identifier of the data source for the data ingestion job you
 #' want to stop.
 #' @param ingestionJobId &#91;required&#93; The unique identifier of the data ingestion job you want to stop.
-#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base for the data ingestion job
-#' you want to stop.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_stop_ingestion_job
-bedrockagent_stop_ingestion_job <- function(dataSourceId, ingestionJobId, knowledgeBaseId) {
+bedrockagent_stop_ingestion_job <- function(knowledgeBaseId, dataSourceId, ingestionJobId) {
   op <- new_operation(
     name = "StopIngestionJob",
     http_method = "POST",
@@ -2281,7 +2283,7 @@ bedrockagent_stop_ingestion_job <- function(dataSourceId, ingestionJobId, knowle
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$stop_ingestion_job_input(dataSourceId = dataSourceId, ingestionJobId = ingestionJobId, knowledgeBaseId = knowledgeBaseId)
+  input <- .bedrockagent$stop_ingestion_job_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId, ingestionJobId = ingestionJobId)
   output <- .bedrockagent$stop_ingestion_job_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -2364,15 +2366,10 @@ bedrockagent_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_update_agent/](https://www.paws-r-sdk.com/docs/bedrockagent_update_agent/) for full documentation.
 #'
-#' @param agentCollaboration The agent's collaboration role.
 #' @param agentId &#91;required&#93; The unique identifier of the agent.
 #' @param agentName &#91;required&#93; Specifies a new name for the agent.
-#' @param agentResourceRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role with permissions to
-#' invoke API operations on the agent.
-#' @param customOrchestration Contains details of the custom orchestration configured for the agent.
-#' @param customerEncryptionKeyArn The Amazon Resource Name (ARN) of the KMS key with which to encrypt the
-#' agent.
-#' @param description Specifies a new description of the agent.
+#' @param instruction Specifies new instructions that tell the agent what it should do and how
+#' it should interact with users.
 #' @param foundationModel &#91;required&#93; The identifier for the model that you want to be used for orchestration
 #' by the agent you create.
 #' 
@@ -2409,27 +2406,32 @@ bedrockagent_untag_resource <- function(resourceArn, tagKeys) {
 #'     from a successful call to
 #'     [CreateModelImportJob](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_CreateModelImportJob.html)
 #'     or from the Imported models page in the Amazon Bedrock console.
-#' @param guardrailConfiguration The unique Guardrail configuration assigned to the agent when it is
-#' updated.
+#' @param description Specifies a new description of the agent.
+#' @param orchestrationType Specifies the type of orchestration strategy for the agent. This is set
+#' to `DEFAULT` orchestration type, by default.
+#' @param customOrchestration Contains details of the custom orchestration configured for the agent.
 #' @param idleSessionTTLInSeconds The number of seconds for which Amazon Bedrock keeps information about a
 #' user's conversation with the agent.
 #' 
 #' A user interaction remains active for the amount of time specified. If
 #' no conversation occurs during this time, the session expires and Amazon
 #' Bedrock deletes any data provided before the timeout.
-#' @param instruction Specifies new instructions that tell the agent what it should do and how
-#' it should interact with users.
-#' @param memoryConfiguration Specifies the new memory configuration for the agent.
-#' @param orchestrationType Specifies the type of orchestration strategy for the agent. This is set
-#' to `DEFAULT` orchestration type, by default.
+#' @param agentResourceRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role with permissions to
+#' invoke API operations on the agent.
+#' @param customerEncryptionKeyArn The Amazon Resource Name (ARN) of the KMS key with which to encrypt the
+#' agent.
 #' @param promptOverrideConfiguration Contains configurations to override prompts in different parts of an
 #' agent sequence. For more information, see [Advanced
 #' prompts](https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts.html).
+#' @param guardrailConfiguration The unique Guardrail configuration assigned to the agent when it is
+#' updated.
+#' @param memoryConfiguration Specifies the new memory configuration for the agent.
+#' @param agentCollaboration The agent's collaboration role.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_update_agent
-bedrockagent_update_agent <- function(agentCollaboration = NULL, agentId, agentName, agentResourceRoleArn, customOrchestration = NULL, customerEncryptionKeyArn = NULL, description = NULL, foundationModel, guardrailConfiguration = NULL, idleSessionTTLInSeconds = NULL, instruction = NULL, memoryConfiguration = NULL, orchestrationType = NULL, promptOverrideConfiguration = NULL) {
+bedrockagent_update_agent <- function(agentId, agentName, instruction = NULL, foundationModel, description = NULL, orchestrationType = NULL, customOrchestration = NULL, idleSessionTTLInSeconds = NULL, agentResourceRoleArn, customerEncryptionKeyArn = NULL, promptOverrideConfiguration = NULL, guardrailConfiguration = NULL, memoryConfiguration = NULL, agentCollaboration = NULL) {
   op <- new_operation(
     name = "UpdateAgent",
     http_method = "PUT",
@@ -2438,7 +2440,7 @@ bedrockagent_update_agent <- function(agentCollaboration = NULL, agentId, agentN
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$update_agent_input(agentCollaboration = agentCollaboration, agentId = agentId, agentName = agentName, agentResourceRoleArn = agentResourceRoleArn, customOrchestration = customOrchestration, customerEncryptionKeyArn = customerEncryptionKeyArn, description = description, foundationModel = foundationModel, guardrailConfiguration = guardrailConfiguration, idleSessionTTLInSeconds = idleSessionTTLInSeconds, instruction = instruction, memoryConfiguration = memoryConfiguration, orchestrationType = orchestrationType, promptOverrideConfiguration = promptOverrideConfiguration)
+  input <- .bedrockagent$update_agent_input(agentId = agentId, agentName = agentName, instruction = instruction, foundationModel = foundationModel, description = description, orchestrationType = orchestrationType, customOrchestration = customOrchestration, idleSessionTTLInSeconds = idleSessionTTLInSeconds, agentResourceRoleArn = agentResourceRoleArn, customerEncryptionKeyArn = customerEncryptionKeyArn, promptOverrideConfiguration = promptOverrideConfiguration, guardrailConfiguration = guardrailConfiguration, memoryConfiguration = memoryConfiguration, agentCollaboration = agentCollaboration)
   output <- .bedrockagent$update_agent_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -2455,24 +2457,12 @@ bedrockagent_update_agent <- function(agentCollaboration = NULL, agentId, agentN
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_update_agent_action_group/](https://www.paws-r-sdk.com/docs/bedrockagent_update_agent_action_group/) for full documentation.
 #'
-#' @param actionGroupExecutor The Amazon Resource Name (ARN) of the Lambda function containing the
-#' business logic that is carried out upon invoking the action.
-#' @param actionGroupId &#91;required&#93; The unique identifier of the action group.
-#' @param actionGroupName &#91;required&#93; Specifies a new name for the action group.
-#' @param actionGroupState Specifies whether the action group is available for the agent to invoke
-#' or not when sending an
-#' [InvokeAgent](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_InvokeAgent.html)
-#' request.
 #' @param agentId &#91;required&#93; The unique identifier of the agent for which to update the action group.
 #' @param agentVersion &#91;required&#93; The unique identifier of the agent version for which to update the
 #' action group.
-#' @param apiSchema Contains either details about the S3 object containing the OpenAPI
-#' schema for the action group or the JSON or YAML-formatted payload
-#' defining the schema. For more information, see [Action group OpenAPI
-#' schemas](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-api-schema.html).
+#' @param actionGroupId &#91;required&#93; The unique identifier of the action group.
+#' @param actionGroupName &#91;required&#93; Specifies a new name for the action group.
 #' @param description Specifies a new name for the action group.
-#' @param functionSchema Contains details about the function schema for the action group or the
-#' JSON or YAML-formatted payload defining the schema.
 #' @param parentActionGroupSignature Update the built-in or computer use action for this action group. If you
 #' specify a value, you must leave the `description`, `apiSchema`, and
 #' `actionGroupExecutor` fields empty for this action group.
@@ -2519,11 +2509,23 @@ bedrockagent_update_agent <- function(agentCollaboration = NULL, agentId, agentN
 #' information, see [Configure an Amazon Bedrock Agent to complete tasks
 #' with computer use
 #' tools](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-computer-use.html).
+#' @param actionGroupExecutor The Amazon Resource Name (ARN) of the Lambda function containing the
+#' business logic that is carried out upon invoking the action.
+#' @param actionGroupState Specifies whether the action group is available for the agent to invoke
+#' or not when sending an
+#' [InvokeAgent](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_InvokeAgent.html)
+#' request.
+#' @param apiSchema Contains either details about the S3 object containing the OpenAPI
+#' schema for the action group or the JSON or YAML-formatted payload
+#' defining the schema. For more information, see [Action group OpenAPI
+#' schemas](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-api-schema.html).
+#' @param functionSchema Contains details about the function schema for the action group or the
+#' JSON or YAML-formatted payload defining the schema.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_update_agent_action_group
-bedrockagent_update_agent_action_group <- function(actionGroupExecutor = NULL, actionGroupId, actionGroupName, actionGroupState = NULL, agentId, agentVersion, apiSchema = NULL, description = NULL, functionSchema = NULL, parentActionGroupSignature = NULL, parentActionGroupSignatureParams = NULL) {
+bedrockagent_update_agent_action_group <- function(agentId, agentVersion, actionGroupId, actionGroupName, description = NULL, parentActionGroupSignature = NULL, parentActionGroupSignatureParams = NULL, actionGroupExecutor = NULL, actionGroupState = NULL, apiSchema = NULL, functionSchema = NULL) {
   op <- new_operation(
     name = "UpdateAgentActionGroup",
     http_method = "PUT",
@@ -2532,7 +2534,7 @@ bedrockagent_update_agent_action_group <- function(actionGroupExecutor = NULL, a
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$update_agent_action_group_input(actionGroupExecutor = actionGroupExecutor, actionGroupId = actionGroupId, actionGroupName = actionGroupName, actionGroupState = actionGroupState, agentId = agentId, agentVersion = agentVersion, apiSchema = apiSchema, description = description, functionSchema = functionSchema, parentActionGroupSignature = parentActionGroupSignature, parentActionGroupSignatureParams = parentActionGroupSignatureParams)
+  input <- .bedrockagent$update_agent_action_group_input(agentId = agentId, agentVersion = agentVersion, actionGroupId = actionGroupId, actionGroupName = actionGroupName, description = description, parentActionGroupSignature = parentActionGroupSignature, parentActionGroupSignatureParams = parentActionGroupSignatureParams, actionGroupExecutor = actionGroupExecutor, actionGroupState = actionGroupState, apiSchema = apiSchema, functionSchema = functionSchema)
   output <- .bedrockagent$update_agent_action_group_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -2549,16 +2551,22 @@ bedrockagent_update_agent_action_group <- function(actionGroupExecutor = NULL, a
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_update_agent_alias/](https://www.paws-r-sdk.com/docs/bedrockagent_update_agent_alias/) for full documentation.
 #'
+#' @param agentId &#91;required&#93; The unique identifier of the agent.
 #' @param agentAliasId &#91;required&#93; The unique identifier of the alias.
 #' @param agentAliasName &#91;required&#93; Specifies a new name for the alias.
-#' @param agentId &#91;required&#93; The unique identifier of the agent.
 #' @param description Specifies a new description for the alias.
 #' @param routingConfiguration Contains details about the routing configuration of the alias.
+#' @param aliasInvocationState The invocation state for the agent alias. To pause the agent alias, set
+#' the value to `REJECT_INVOCATIONS`. To start the agent alias running
+#' again, set the value to `ACCEPT_INVOCATIONS`. Use the
+#' [`get_agent_alias`][bedrockagent_get_agent_alias], or
+#' [`list_agent_aliases`][bedrockagent_list_agent_aliases], operation to
+#' get the invocation state of an agent alias.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_update_agent_alias
-bedrockagent_update_agent_alias <- function(agentAliasId, agentAliasName, agentId, description = NULL, routingConfiguration = NULL) {
+bedrockagent_update_agent_alias <- function(agentId, agentAliasId, agentAliasName, description = NULL, routingConfiguration = NULL, aliasInvocationState = NULL) {
   op <- new_operation(
     name = "UpdateAgentAlias",
     http_method = "PUT",
@@ -2567,7 +2575,7 @@ bedrockagent_update_agent_alias <- function(agentAliasId, agentAliasName, agentI
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$update_agent_alias_input(agentAliasId = agentAliasId, agentAliasName = agentAliasName, agentId = agentId, description = description, routingConfiguration = routingConfiguration)
+  input <- .bedrockagent$update_agent_alias_input(agentId = agentId, agentAliasId = agentAliasId, agentAliasName = agentAliasName, description = description, routingConfiguration = routingConfiguration, aliasInvocationState = aliasInvocationState)
   output <- .bedrockagent$update_agent_alias_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -2584,18 +2592,18 @@ bedrockagent_update_agent_alias <- function(agentAliasId, agentAliasName, agentI
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_update_agent_collaborator/](https://www.paws-r-sdk.com/docs/bedrockagent_update_agent_collaborator/) for full documentation.
 #'
-#' @param agentDescriptor &#91;required&#93; An agent descriptor for the agent collaborator.
 #' @param agentId &#91;required&#93; The agent's ID.
 #' @param agentVersion &#91;required&#93; The agent's version.
-#' @param collaborationInstruction &#91;required&#93; Instruction for the collaborator.
 #' @param collaboratorId &#91;required&#93; The collaborator's ID.
+#' @param agentDescriptor &#91;required&#93; An agent descriptor for the agent collaborator.
 #' @param collaboratorName &#91;required&#93; The collaborator's name.
+#' @param collaborationInstruction &#91;required&#93; Instruction for the collaborator.
 #' @param relayConversationHistory A relay conversation history for the collaborator.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_update_agent_collaborator
-bedrockagent_update_agent_collaborator <- function(agentDescriptor, agentId, agentVersion, collaborationInstruction, collaboratorId, collaboratorName, relayConversationHistory = NULL) {
+bedrockagent_update_agent_collaborator <- function(agentId, agentVersion, collaboratorId, agentDescriptor, collaboratorName, collaborationInstruction, relayConversationHistory = NULL) {
   op <- new_operation(
     name = "UpdateAgentCollaborator",
     http_method = "PUT",
@@ -2604,7 +2612,7 @@ bedrockagent_update_agent_collaborator <- function(agentDescriptor, agentId, age
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$update_agent_collaborator_input(agentDescriptor = agentDescriptor, agentId = agentId, agentVersion = agentVersion, collaborationInstruction = collaborationInstruction, collaboratorId = collaboratorId, collaboratorName = collaboratorName, relayConversationHistory = relayConversationHistory)
+  input <- .bedrockagent$update_agent_collaborator_input(agentId = agentId, agentVersion = agentVersion, collaboratorId = collaboratorId, agentDescriptor = agentDescriptor, collaboratorName = collaboratorName, collaborationInstruction = collaborationInstruction, relayConversationHistory = relayConversationHistory)
   output <- .bedrockagent$update_agent_collaborator_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -2626,10 +2634,10 @@ bedrockagent_update_agent_collaborator <- function(agentDescriptor, agentId, age
 #' that you want to update.
 #' @param agentVersion &#91;required&#93; The version of the agent associated with the knowledge base that you
 #' want to update.
-#' @param description Specifies a new description for the knowledge base associated with an
-#' agent.
 #' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base that has been associated
 #' with an agent.
+#' @param description Specifies a new description for the knowledge base associated with an
+#' agent.
 #' @param knowledgeBaseState Specifies whether the agent uses the knowledge base or not when sending
 #' an
 #' [InvokeAgent](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_InvokeAgent.html)
@@ -2638,7 +2646,7 @@ bedrockagent_update_agent_collaborator <- function(agentDescriptor, agentId, age
 #' @keywords internal
 #'
 #' @rdname bedrockagent_update_agent_knowledge_base
-bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, description = NULL, knowledgeBaseId, knowledgeBaseState = NULL) {
+bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, knowledgeBaseId, description = NULL, knowledgeBaseState = NULL) {
   op <- new_operation(
     name = "UpdateAgentKnowledgeBase",
     http_method = "PUT",
@@ -2647,7 +2655,7 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, desc
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$update_agent_knowledge_base_input(agentId = agentId, agentVersion = agentVersion, description = description, knowledgeBaseId = knowledgeBaseId, knowledgeBaseState = knowledgeBaseState)
+  input <- .bedrockagent$update_agent_knowledge_base_input(agentId = agentId, agentVersion = agentVersion, knowledgeBaseId = knowledgeBaseId, description = description, knowledgeBaseState = knowledgeBaseState)
   output <- .bedrockagent$update_agent_knowledge_base_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -2664,20 +2672,20 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, desc
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_update_data_source/](https://www.paws-r-sdk.com/docs/bedrockagent_update_data_source/) for full documentation.
 #'
-#' @param dataDeletionPolicy The data deletion policy for the data source that you want to update.
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base for the data source.
+#' @param dataSourceId &#91;required&#93; The unique identifier of the data source.
+#' @param name &#91;required&#93; Specifies a new name for the data source.
+#' @param description Specifies a new description for the data source.
 #' @param dataSourceConfiguration &#91;required&#93; The connection configuration for the data source that you want to
 #' update.
-#' @param dataSourceId &#91;required&#93; The unique identifier of the data source.
-#' @param description Specifies a new description for the data source.
-#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base for the data source.
-#' @param name &#91;required&#93; Specifies a new name for the data source.
+#' @param dataDeletionPolicy The data deletion policy for the data source that you want to update.
 #' @param serverSideEncryptionConfiguration Contains details about server-side encryption of the data source.
 #' @param vectorIngestionConfiguration Contains details about how to ingest the documents in the data source.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_update_data_source
-bedrockagent_update_data_source <- function(dataDeletionPolicy = NULL, dataSourceConfiguration, dataSourceId, description = NULL, knowledgeBaseId, name, serverSideEncryptionConfiguration = NULL, vectorIngestionConfiguration = NULL) {
+bedrockagent_update_data_source <- function(knowledgeBaseId, dataSourceId, name, description = NULL, dataSourceConfiguration, dataDeletionPolicy = NULL, serverSideEncryptionConfiguration = NULL, vectorIngestionConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateDataSource",
     http_method = "PUT",
@@ -2686,7 +2694,7 @@ bedrockagent_update_data_source <- function(dataDeletionPolicy = NULL, dataSourc
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$update_data_source_input(dataDeletionPolicy = dataDeletionPolicy, dataSourceConfiguration = dataSourceConfiguration, dataSourceId = dataSourceId, description = description, knowledgeBaseId = knowledgeBaseId, name = name, serverSideEncryptionConfiguration = serverSideEncryptionConfiguration, vectorIngestionConfiguration = vectorIngestionConfiguration)
+  input <- .bedrockagent$update_data_source_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId, name = name, description = description, dataSourceConfiguration = dataSourceConfiguration, dataDeletionPolicy = dataDeletionPolicy, serverSideEncryptionConfiguration = serverSideEncryptionConfiguration, vectorIngestionConfiguration = vectorIngestionConfiguration)
   output <- .bedrockagent$update_data_source_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -2703,22 +2711,22 @@ bedrockagent_update_data_source <- function(dataDeletionPolicy = NULL, dataSourc
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_update_flow/](https://www.paws-r-sdk.com/docs/bedrockagent_update_flow/) for full documentation.
 #'
-#' @param customerEncryptionKeyArn The Amazon Resource Name (ARN) of the KMS key to encrypt the flow.
-#' @param definition A definition of the nodes and the connections between the nodes in the
-#' flow.
+#' @param name &#91;required&#93; A name for the flow.
 #' @param description A description for the flow.
 #' @param executionRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the service role with permissions to
 #' create and manage a flow. For more information, see [Create a service
 #' role for flows in Amazon
 #' Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-permissions.html)
 #' in the Amazon Bedrock User Guide.
+#' @param customerEncryptionKeyArn The Amazon Resource Name (ARN) of the KMS key to encrypt the flow.
+#' @param definition A definition of the nodes and the connections between the nodes in the
+#' flow.
 #' @param flowIdentifier &#91;required&#93; The unique identifier of the flow.
-#' @param name &#91;required&#93; A name for the flow.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_update_flow
-bedrockagent_update_flow <- function(customerEncryptionKeyArn = NULL, definition = NULL, description = NULL, executionRoleArn, flowIdentifier, name) {
+bedrockagent_update_flow <- function(name, description = NULL, executionRoleArn, customerEncryptionKeyArn = NULL, definition = NULL, flowIdentifier) {
   op <- new_operation(
     name = "UpdateFlow",
     http_method = "PUT",
@@ -2727,7 +2735,7 @@ bedrockagent_update_flow <- function(customerEncryptionKeyArn = NULL, definition
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$update_flow_input(customerEncryptionKeyArn = customerEncryptionKeyArn, definition = definition, description = description, executionRoleArn = executionRoleArn, flowIdentifier = flowIdentifier, name = name)
+  input <- .bedrockagent$update_flow_input(name = name, description = description, executionRoleArn = executionRoleArn, customerEncryptionKeyArn = customerEncryptionKeyArn, definition = definition, flowIdentifier = flowIdentifier)
   output <- .bedrockagent$update_flow_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -2744,16 +2752,18 @@ bedrockagent_update_flow <- function(customerEncryptionKeyArn = NULL, definition
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_update_flow_alias/](https://www.paws-r-sdk.com/docs/bedrockagent_update_flow_alias/) for full documentation.
 #'
-#' @param aliasIdentifier &#91;required&#93; The unique identifier of the alias.
-#' @param description A description for the alias.
-#' @param flowIdentifier &#91;required&#93; The unique identifier of the flow.
 #' @param name &#91;required&#93; The name of the alias.
+#' @param description A description for the alias.
 #' @param routingConfiguration &#91;required&#93; Contains information about the version to which to map the alias.
+#' @param concurrencyConfiguration The configuration that specifies how nodes in the flow are executed in
+#' parallel.
+#' @param flowIdentifier &#91;required&#93; The unique identifier of the flow.
+#' @param aliasIdentifier &#91;required&#93; The unique identifier of the alias.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_update_flow_alias
-bedrockagent_update_flow_alias <- function(aliasIdentifier, description = NULL, flowIdentifier, name, routingConfiguration) {
+bedrockagent_update_flow_alias <- function(name, description = NULL, routingConfiguration, concurrencyConfiguration = NULL, flowIdentifier, aliasIdentifier) {
   op <- new_operation(
     name = "UpdateFlowAlias",
     http_method = "PUT",
@@ -2762,7 +2772,7 @@ bedrockagent_update_flow_alias <- function(aliasIdentifier, description = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$update_flow_alias_input(aliasIdentifier = aliasIdentifier, description = description, flowIdentifier = flowIdentifier, name = name, routingConfiguration = routingConfiguration)
+  input <- .bedrockagent$update_flow_alias_input(name = name, description = description, routingConfiguration = routingConfiguration, concurrencyConfiguration = concurrencyConfiguration, flowIdentifier = flowIdentifier, aliasIdentifier = aliasIdentifier)
   output <- .bedrockagent$update_flow_alias_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -2780,14 +2790,14 @@ bedrockagent_update_flow_alias <- function(aliasIdentifier, description = NULL, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_update_knowledge_base/](https://www.paws-r-sdk.com/docs/bedrockagent_update_knowledge_base/) for full documentation.
 #'
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base to update.
+#' @param name &#91;required&#93; Specifies a new name for the knowledge base.
 #' @param description Specifies a new description for the knowledge base.
+#' @param roleArn &#91;required&#93; Specifies a different Amazon Resource Name (ARN) of the IAM role with
+#' permissions to invoke API operations on the knowledge base.
 #' @param knowledgeBaseConfiguration &#91;required&#93; Specifies the configuration for the embeddings model used for the
 #' knowledge base. You must use the same configuration as when the
 #' knowledge base was created.
-#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base to update.
-#' @param name &#91;required&#93; Specifies a new name for the knowledge base.
-#' @param roleArn &#91;required&#93; Specifies a different Amazon Resource Name (ARN) of the IAM role with
-#' permissions to invoke API operations on the knowledge base.
 #' @param storageConfiguration Specifies the configuration for the vector store used for the knowledge
 #' base. You must use the same configuration as when the knowledge base was
 #' created.
@@ -2795,7 +2805,7 @@ bedrockagent_update_flow_alias <- function(aliasIdentifier, description = NULL, 
 #' @keywords internal
 #'
 #' @rdname bedrockagent_update_knowledge_base
-bedrockagent_update_knowledge_base <- function(description = NULL, knowledgeBaseConfiguration, knowledgeBaseId, name, roleArn, storageConfiguration = NULL) {
+bedrockagent_update_knowledge_base <- function(knowledgeBaseId, name, description = NULL, roleArn, knowledgeBaseConfiguration, storageConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateKnowledgeBase",
     http_method = "PUT",
@@ -2804,7 +2814,7 @@ bedrockagent_update_knowledge_base <- function(description = NULL, knowledgeBase
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$update_knowledge_base_input(description = description, knowledgeBaseConfiguration = knowledgeBaseConfiguration, knowledgeBaseId = knowledgeBaseId, name = name, roleArn = roleArn, storageConfiguration = storageConfiguration)
+  input <- .bedrockagent$update_knowledge_base_input(knowledgeBaseId = knowledgeBaseId, name = name, description = description, roleArn = roleArn, knowledgeBaseConfiguration = knowledgeBaseConfiguration, storageConfiguration = storageConfiguration)
   output <- .bedrockagent$update_knowledge_base_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -2821,21 +2831,21 @@ bedrockagent_update_knowledge_base <- function(description = NULL, knowledgeBase
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockagent_update_prompt/](https://www.paws-r-sdk.com/docs/bedrockagent_update_prompt/) for full documentation.
 #'
+#' @param name &#91;required&#93; A name for the prompt.
+#' @param description A description for the prompt.
 #' @param customerEncryptionKeyArn The Amazon Resource Name (ARN) of the KMS key to encrypt the prompt.
 #' @param defaultVariant The name of the default variant for the prompt. This value must match
 #' the `name` field in the relevant
 #' [PromptVariant](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent_PromptVariant.html)
 #' object.
-#' @param description A description for the prompt.
-#' @param name &#91;required&#93; A name for the prompt.
-#' @param promptIdentifier &#91;required&#93; The unique identifier of the prompt.
 #' @param variants A list of objects, each containing details about a variant of the
 #' prompt.
+#' @param promptIdentifier &#91;required&#93; The unique identifier of the prompt.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagent_update_prompt
-bedrockagent_update_prompt <- function(customerEncryptionKeyArn = NULL, defaultVariant = NULL, description = NULL, name, promptIdentifier, variants = NULL) {
+bedrockagent_update_prompt <- function(name, description = NULL, customerEncryptionKeyArn = NULL, defaultVariant = NULL, variants = NULL, promptIdentifier) {
   op <- new_operation(
     name = "UpdatePrompt",
     http_method = "PUT",
@@ -2844,7 +2854,7 @@ bedrockagent_update_prompt <- function(customerEncryptionKeyArn = NULL, defaultV
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$update_prompt_input(customerEncryptionKeyArn = customerEncryptionKeyArn, defaultVariant = defaultVariant, description = description, name = name, promptIdentifier = promptIdentifier, variants = variants)
+  input <- .bedrockagent$update_prompt_input(name = name, description = description, customerEncryptionKeyArn = customerEncryptionKeyArn, defaultVariant = defaultVariant, variants = variants, promptIdentifier = promptIdentifier)
   output <- .bedrockagent$update_prompt_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)

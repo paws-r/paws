@@ -300,22 +300,23 @@ directconnect_associate_hosted_connection <- function(connectionId, parentConnec
 .directconnect$operations$associate_hosted_connection <- directconnect_associate_hosted_connection
 
 #' Associates a MAC Security (MACsec) Connection Key Name (CKN)/
-#' Connectivity Association Key (CAK) pair with an Direct Connect dedicated
-#' connection
+#' Connectivity Association Key (CAK) pair with a Direct Connect connection
 #'
 #' @description
-#' Associates a MAC Security (MACsec) Connection Key Name (CKN)/ Connectivity Association Key (CAK) pair with an Direct Connect dedicated connection.
+#' Associates a MAC Security (MACsec) Connection Key Name (CKN)/ Connectivity Association Key (CAK) pair with a Direct Connect connection.
 #'
 #' See [https://www.paws-r-sdk.com/docs/directconnect_associate_mac_sec_key/](https://www.paws-r-sdk.com/docs/directconnect_associate_mac_sec_key/) for full documentation.
 #'
-#' @param connectionId &#91;required&#93; The ID of the dedicated connection (dxcon-xxxx), or the ID of the LAG
-#' (dxlag-xxxx).
+#' @param connectionId &#91;required&#93; The ID of the dedicated connection (dxcon-xxxx), interconnect
+#' (dxcon-xxxx), or LAG (dxlag-xxxx).
 #' 
-#' You can use [`describe_connections`][directconnect_describe_connections]
-#' or [`describe_lags`][directconnect_describe_lags] to retrieve connection
+#' You can use
+#' [`describe_connections`][directconnect_describe_connections],
+#' [`describe_interconnects`][directconnect_describe_interconnects], or
+#' [`describe_lags`][directconnect_describe_lags] to retrieve connection
 #' ID.
 #' @param secretARN The Amazon Resource Name (ARN) of the MAC Security (MACsec) secret key
-#' to associate with the dedicated connection.
+#' to associate with the connection.
 #' 
 #' You can use [`describe_connections`][directconnect_describe_connections]
 #' or [`describe_lags`][directconnect_describe_lags] to retrieve the MAC
@@ -323,8 +324,7 @@ directconnect_associate_hosted_connection <- function(connectionId, parentConnec
 #' 
 #' If you use this request parameter, you do not use the `ckn` and `cak`
 #' request parameters.
-#' @param ckn The MAC Security (MACsec) CKN to associate with the dedicated
-#' connection.
+#' @param ckn The MAC Security (MACsec) CKN to associate with the connection.
 #' 
 #' You can create the CKN/CAK pair using an industry standard tool.
 #' 
@@ -332,8 +332,7 @@ directconnect_associate_hosted_connection <- function(connectionId, parentConnec
 #' 
 #' If you use this request parameter, you must use the `cak` request
 #' parameter and not use the `secretARN` request parameter.
-#' @param cak The MAC Security (MACsec) CAK to associate with the dedicated
-#' connection.
+#' @param cak The MAC Security (MACsec) CAK to associate with the connection.
 #' 
 #' You can create the CKN/CAK pair using an industry standard tool.
 #' 
@@ -610,10 +609,11 @@ directconnect_create_bgp_peer <- function(virtualInterfaceId = NULL, newBGPPeer 
 #' @param requestMACSec Indicates whether you want the connection to support MAC Security
 #' (MACsec).
 #' 
-#' MAC Security (MACsec) is only available on dedicated connections. For
-#' information about MAC Security (MACsec) prerequisties, see [MACsec
-#' prerequisties](https://docs.aws.amazon.com/directconnect/latest/UserGuide/#mac-sec-prerequisites)
-#' in the *Direct Connect User Guide*.
+#' MAC Security (MACsec) is unavailable on hosted connections. For
+#' information about MAC Security (MACsec) prerequisites, see [MAC Security
+#' in Direct
+#' Connect](https://docs.aws.amazon.com/directconnect/latest/UserGuide/) in
+#' the *Direct Connect User Guide*.
 #'
 #' @keywords internal
 #'
@@ -769,11 +769,13 @@ directconnect_create_direct_connect_gateway_association_proposal <- function(dir
 #' @param lagId The ID of the LAG.
 #' @param tags The tags to associate with the interconnect.
 #' @param providerName The name of the service provider associated with the interconnect.
+#' @param requestMACSec Indicates whether you want the interconnect to support MAC Security
+#' (MACsec).
 #'
 #' @keywords internal
 #'
 #' @rdname directconnect_create_interconnect
-directconnect_create_interconnect <- function(interconnectName, bandwidth, location, lagId = NULL, tags = NULL, providerName = NULL) {
+directconnect_create_interconnect <- function(interconnectName, bandwidth, location, lagId = NULL, tags = NULL, providerName = NULL, requestMACSec = NULL) {
   op <- new_operation(
     name = "CreateInterconnect",
     http_method = "POST",
@@ -782,7 +784,7 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directconnect$create_interconnect_input(interconnectName = interconnectName, bandwidth = bandwidth, location = location, lagId = lagId, tags = tags, providerName = providerName)
+  input <- .directconnect$create_interconnect_input(interconnectName = interconnectName, bandwidth = bandwidth, location = location, lagId = lagId, tags = tags, providerName = providerName, requestMACSec = requestMACSec)
   output <- .directconnect$create_interconnect_output()
   config <- get_config()
   svc <- .directconnect$service(config, op)
@@ -948,15 +950,36 @@ directconnect_create_transit_virtual_interface <- function(connectionId, newTran
 #' See [https://www.paws-r-sdk.com/docs/directconnect_delete_bgp_peer/](https://www.paws-r-sdk.com/docs/directconnect_delete_bgp_peer/) for full documentation.
 #'
 #' @param virtualInterfaceId The ID of the virtual interface.
-#' @param asn The autonomous system (AS) number for Border Gateway Protocol (BGP)
+#' @param asn The autonomous system number (ASN). The valid range is from 1 to
+#' 2147483646 for Border Gateway Protocol (BGP) configuration. If you
+#' provide a number greater than the maximum, an error is returned. Use
+#' `asnLong` instead.
+#' 
+#' You can use `asnLong` or `asn`, but not both. We recommend using
+#' `asnLong` as it supports a greater pool of numbers.
+#' 
+#' -   The `asnLong` attribute accepts both ASN and long ASN ranges.
+#' 
+#' -   If you provide a value in the same API call for both `asn` and
+#'     `asnLong`, the API will only accept the value for `asnLong`.
+#' @param asnLong The long ASN for the BGP peer to be deleted from a Direct Connect
+#' virtual interface. The valid range is from 1 to 4294967294 for BGP
 #' configuration.
+#' 
+#' You can use `asnLong` or `asn`, but not both. We recommend using
+#' `asnLong` as it supports a greater pool of numbers.
+#' 
+#' -   The `asnLong` attribute accepts both ASN and long ASN ranges.
+#' 
+#' -   If you provide a value in the same API call for both `asn` and
+#'     `asnLong`, the API will only accept the value for `asnLong`.
 #' @param customerAddress The IP address assigned to the customer interface.
 #' @param bgpPeerId The ID of the BGP peer.
 #'
 #' @keywords internal
 #'
 #' @rdname directconnect_delete_bgp_peer
-directconnect_delete_bgp_peer <- function(virtualInterfaceId = NULL, asn = NULL, customerAddress = NULL, bgpPeerId = NULL) {
+directconnect_delete_bgp_peer <- function(virtualInterfaceId = NULL, asn = NULL, asnLong = NULL, customerAddress = NULL, bgpPeerId = NULL) {
   op <- new_operation(
     name = "DeleteBGPPeer",
     http_method = "POST",
@@ -965,7 +988,7 @@ directconnect_delete_bgp_peer <- function(virtualInterfaceId = NULL, asn = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directconnect$delete_bgp_peer_input(virtualInterfaceId = virtualInterfaceId, asn = asn, customerAddress = customerAddress, bgpPeerId = bgpPeerId)
+  input <- .directconnect$delete_bgp_peer_input(virtualInterfaceId = virtualInterfaceId, asn = asn, asnLong = asnLong, customerAddress = customerAddress, bgpPeerId = bgpPeerId)
   output <- .directconnect$delete_bgp_peer_output()
   config <- get_config()
   svc <- .directconnect$service(config, op)
@@ -1241,11 +1264,18 @@ directconnect_describe_connection_loa <- function(connectionId, providerName = N
 #' See [https://www.paws-r-sdk.com/docs/directconnect_describe_connections/](https://www.paws-r-sdk.com/docs/directconnect_describe_connections/) for full documentation.
 #'
 #' @param connectionId The ID of the connection.
+#' @param maxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#' 
+#' If `MaxResults` is given a value larger than 100, only 100 results are
+#' returned.
+#' @param nextToken The token for the next page of results.
 #'
 #' @keywords internal
 #'
 #' @rdname directconnect_describe_connections
-directconnect_describe_connections <- function(connectionId = NULL) {
+directconnect_describe_connections <- function(connectionId = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeConnections",
     http_method = "POST",
@@ -1254,7 +1284,7 @@ directconnect_describe_connections <- function(connectionId = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directconnect$describe_connections_input(connectionId = connectionId)
+  input <- .directconnect$describe_connections_input(connectionId = connectionId, maxResults = maxResults, nextToken = nextToken)
   output <- .directconnect$describe_connections_output()
   config <- get_config()
   svc <- .directconnect$service(config, op)
@@ -1499,11 +1529,18 @@ directconnect_describe_direct_connect_gateways <- function(directConnectGatewayI
 #' See [https://www.paws-r-sdk.com/docs/directconnect_describe_hosted_connections/](https://www.paws-r-sdk.com/docs/directconnect_describe_hosted_connections/) for full documentation.
 #'
 #' @param connectionId &#91;required&#93; The ID of the interconnect or LAG.
+#' @param maxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#' 
+#' If `MaxResults` is given a value larger than 100, only 100 results are
+#' returned.
+#' @param nextToken The token for the next page of results.
 #'
 #' @keywords internal
 #'
 #' @rdname directconnect_describe_hosted_connections
-directconnect_describe_hosted_connections <- function(connectionId) {
+directconnect_describe_hosted_connections <- function(connectionId, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeHostedConnections",
     http_method = "POST",
@@ -1512,7 +1549,7 @@ directconnect_describe_hosted_connections <- function(connectionId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directconnect$describe_hosted_connections_input(connectionId = connectionId)
+  input <- .directconnect$describe_hosted_connections_input(connectionId = connectionId, maxResults = maxResults, nextToken = nextToken)
   output <- .directconnect$describe_hosted_connections_output()
   config <- get_config()
   svc <- .directconnect$service(config, op)
@@ -1567,11 +1604,18 @@ directconnect_describe_interconnect_loa <- function(interconnectId, providerName
 #' See [https://www.paws-r-sdk.com/docs/directconnect_describe_interconnects/](https://www.paws-r-sdk.com/docs/directconnect_describe_interconnects/) for full documentation.
 #'
 #' @param interconnectId The ID of the interconnect.
+#' @param maxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#' 
+#' If `MaxResults` is given a value larger than 100, only 100 results are
+#' returned.
+#' @param nextToken The token for the next page of results.
 #'
 #' @keywords internal
 #'
 #' @rdname directconnect_describe_interconnects
-directconnect_describe_interconnects <- function(interconnectId = NULL) {
+directconnect_describe_interconnects <- function(interconnectId = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeInterconnects",
     http_method = "POST",
@@ -1580,7 +1624,7 @@ directconnect_describe_interconnects <- function(interconnectId = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directconnect$describe_interconnects_input(interconnectId = interconnectId)
+  input <- .directconnect$describe_interconnects_input(interconnectId = interconnectId, maxResults = maxResults, nextToken = nextToken)
   output <- .directconnect$describe_interconnects_output()
   config <- get_config()
   svc <- .directconnect$service(config, op)
@@ -1598,11 +1642,18 @@ directconnect_describe_interconnects <- function(interconnectId = NULL) {
 #' See [https://www.paws-r-sdk.com/docs/directconnect_describe_lags/](https://www.paws-r-sdk.com/docs/directconnect_describe_lags/) for full documentation.
 #'
 #' @param lagId The ID of the LAG.
+#' @param maxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#' 
+#' If `MaxResults` is given a value larger than 100, only 100 results are
+#' returned.
+#' @param nextToken The token for the next page of results.
 #'
 #' @keywords internal
 #'
 #' @rdname directconnect_describe_lags
-directconnect_describe_lags <- function(lagId = NULL) {
+directconnect_describe_lags <- function(lagId = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeLags",
     http_method = "POST",
@@ -1611,7 +1662,7 @@ directconnect_describe_lags <- function(lagId = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directconnect$describe_lags_input(lagId = lagId)
+  input <- .directconnect$describe_lags_input(lagId = lagId, maxResults = maxResults, nextToken = nextToken)
   output <- .directconnect$describe_lags_output()
   config <- get_config()
   svc <- .directconnect$service(config, op)
@@ -1795,11 +1846,18 @@ directconnect_describe_virtual_gateways <- function() {
 #'
 #' @param connectionId The ID of the connection.
 #' @param virtualInterfaceId The ID of the virtual interface.
+#' @param maxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#' 
+#' If `MaxResults` is given a value larger than 100, only 100 results are
+#' returned.
+#' @param nextToken The token for the next page of results.
 #'
 #' @keywords internal
 #'
 #' @rdname directconnect_describe_virtual_interfaces
-directconnect_describe_virtual_interfaces <- function(connectionId = NULL, virtualInterfaceId = NULL) {
+directconnect_describe_virtual_interfaces <- function(connectionId = NULL, virtualInterfaceId = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeVirtualInterfaces",
     http_method = "POST",
@@ -1808,7 +1866,7 @@ directconnect_describe_virtual_interfaces <- function(connectionId = NULL, virtu
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directconnect$describe_virtual_interfaces_input(connectionId = connectionId, virtualInterfaceId = virtualInterfaceId)
+  input <- .directconnect$describe_virtual_interfaces_input(connectionId = connectionId, virtualInterfaceId = virtualInterfaceId, maxResults = maxResults, nextToken = nextToken)
   output <- .directconnect$describe_virtual_interfaces_output()
   config <- get_config()
   svc <- .directconnect$service(config, op)
@@ -1851,18 +1909,20 @@ directconnect_disassociate_connection_from_lag <- function(connectionId, lagId) 
 .directconnect$operations$disassociate_connection_from_lag <- directconnect_disassociate_connection_from_lag
 
 #' Removes the association between a MAC Security (MACsec) security key and
-#' an Direct Connect dedicated connection
+#' a Direct Connect connection
 #'
 #' @description
-#' Removes the association between a MAC Security (MACsec) security key and an Direct Connect dedicated connection.
+#' Removes the association between a MAC Security (MACsec) security key and a Direct Connect connection.
 #'
 #' See [https://www.paws-r-sdk.com/docs/directconnect_disassociate_mac_sec_key/](https://www.paws-r-sdk.com/docs/directconnect_disassociate_mac_sec_key/) for full documentation.
 #'
-#' @param connectionId &#91;required&#93; The ID of the dedicated connection (dxcon-xxxx), or the ID of the LAG
-#' (dxlag-xxxx).
+#' @param connectionId &#91;required&#93; The ID of the dedicated connection (dxcon-xxxx), interconnect
+#' (dxcon-xxxx), or LAG (dxlag-xxxx).
 #' 
-#' You can use [`describe_connections`][directconnect_describe_connections]
-#' or [`describe_lags`][directconnect_describe_lags] to retrieve connection
+#' You can use
+#' [`describe_connections`][directconnect_describe_connections],
+#' [`describe_interconnects`][directconnect_describe_interconnects], or
+#' [`describe_lags`][directconnect_describe_lags] to retrieve connection
 #' ID.
 #' @param secretARN &#91;required&#93; The Amazon Resource Name (ARN) of the MAC Security (MACsec) secret key.
 #' 
@@ -2067,14 +2127,14 @@ directconnect_untag_resource <- function(resourceArn, tagKeys) {
 }
 .directconnect$operations$untag_resource <- directconnect_untag_resource
 
-#' Updates the Direct Connect dedicated connection configuration
+#' Updates the Direct Connect connection configuration
 #'
 #' @description
-#' Updates the Direct Connect dedicated connection configuration.
+#' Updates the Direct Connect connection configuration.
 #'
 #' See [https://www.paws-r-sdk.com/docs/directconnect_update_connection/](https://www.paws-r-sdk.com/docs/directconnect_update_connection/) for full documentation.
 #'
-#' @param connectionId &#91;required&#93; The ID of the dedicated connection.
+#' @param connectionId &#91;required&#93; The ID of the connection.
 #' 
 #' You can use [`describe_connections`][directconnect_describe_connections]
 #' to retrieve the connection ID.

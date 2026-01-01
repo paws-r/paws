@@ -28,7 +28,8 @@ types with the specified prefix.}
 
 \item{TagValue}{If specified, the returned resources will have a matching tag value.}
 
-\item{NextToken}{A string that identifies the next page of resource scan results.}
+\item{NextToken}{The token for the next set of items to return. (You received this token
+from a previous call.)}
 
 \item{MaxResults}{If the number of available results exceeds this maximum, the response
 includes a \code{NextToken} value that you can use for the \code{NextToken}

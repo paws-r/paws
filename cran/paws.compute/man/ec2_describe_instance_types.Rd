@@ -33,6 +33,10 @@ latest generation instance type of an instance family (\code{true} |
 \code{false}).
 \item \code{dedicated-hosts-supported} - Indicates whether the instance type
 supports Dedicated Hosts. (\code{true} | \code{false})
+\item \code{ebs-info.attachment-limit-type} - The type of Amazon EBS volume
+attachment limit (\code{shared} | \code{dedicated}).
+\item \code{ebs-info.maximum-ebs-attachments} - The maximum number of Amazon
+EBS volumes that can be attached to the instance type.
 \item \verb{ebs-info.ebs-optimized-info.baseline-bandwidth-in-mbps} - The
 baseline bandwidth performance for an EBS-optimized instance type,
 in Mbps.
@@ -58,8 +62,9 @@ supported (\code{supported} | \code{unsupported}).
 \item \code{ebs-info.nvme-support} - Indicates whether non-volatile memory
 express (NVMe) is supported for EBS volumes (\code{required} |
 \code{supported} | \code{unsupported}).
-\item \code{free-tier-eligible} - Indicates whether the instance type is
-eligible to use in the free tier (\code{true} | \code{false}).
+\item \code{free-tier-eligible} - A Boolean that indicates whether this
+instance type can be used under the Amazon Web Services Free Tier
+(\code{true} | \code{false}).
 \item \code{hibernation-supported} - Indicates whether On-Demand hibernation is
 supported (\code{true} | \code{false}).
 \item \code{hypervisor} - The hypervisor (\code{nitro} | \code{xen}).
@@ -119,6 +124,8 @@ supported (\code{supported} | \code{unsupported}).
 in GHz.
 \item \code{processor-info.supported-features} - The supported CPU features
 (\code{amd-sev-snp}).
+\item \code{reboot-migration-support} - Indicates whether enabling reboot
+migration is supported (\code{supported} | \code{unsupported}).
 \item \code{supported-boot-mode} - The boot mode (\code{legacy-bios} | \code{uefi}).
 \item \code{supported-root-device-type} - The root device type (\code{ebs} |
 \code{instance-store}).

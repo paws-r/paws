@@ -7,8 +7,8 @@
 prometheusservice_create_workspace(
   alias = NULL,
   clientToken = NULL,
-  kmsKeyArn = NULL,
-  tags = NULL
+  tags = NULL,
+  kmsKeyArn = NULL
 )
 }
 \arguments{
@@ -21,12 +21,12 @@ be trimmed from the value used.}
 \item{clientToken}{A unique identifier that you can provide to ensure the idempotency of
 the request. Case-sensitive.}
 
+\item{tags}{The list of tag keys and values to associate with the workspace.}
+
 \item{kmsKeyArn}{(optional) The ARN for a customer managed KMS key to use for encrypting
 data within your workspace. For more information about using your own
 key in your workspace, see \href{https://docs.aws.amazon.com/prometheus/latest/userguide/encryption-at-rest-Amazon-Service-Prometheus.html}{Encryption at rest}
 in the \emph{Amazon Managed Service for Prometheus User Guide}.}
-
-\item{tags}{The list of tag keys and values to associate with the workspace.}
 }
 \description{
 Creates a Prometheus workspace. A workspace is a logical space dedicated to the storage and querying of Prometheus metrics. You can have one or more workspaces in each Region in your account.

@@ -7,6 +7,7 @@ is either running or stopped}
 \usage{
 ec2_create_image(
   TagSpecifications = NULL,
+  SnapshotLocation = NULL,
   DryRun = NULL,
   InstanceId,
   Name,
@@ -30,6 +31,19 @@ If you specify other values for \code{ResourceType}, the request fails.
 
 To tag an AMI or snapshot after it has been created, see
 \code{\link[=ec2_create_tags]{create_tags}}.}
+
+\item{SnapshotLocation}{Only supported for instances in Local Zones. If the source instance is
+not in a Local Zone, omit this parameter.
+
+The Amazon S3 location where the snapshots will be stored.
+\itemize{
+\item To create local snapshots in the same Local Zone as the source
+instance, specify \code{local}.
+\item To create regional snapshots in the parent Region of the Local Zone,
+specify \code{regional} or omit this parameter.
+}
+
+Default: \code{regional}}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -72,8 +86,7 @@ size of the source instance.
 snapshots. To create an AMI with volumes or snapshots that have a
 different encryption status (for example, where the source volume
 and snapshots are unencrypted, and you want to create an AMI with
-encrypted volumes or snapshots), use the
-\code{\link[=ec2_copy_image]{copy_image}} action.
+encrypted volumes or snapshots), copy the image instead.
 \item The only option that can be changed for existing mappings or
 snapshots is \code{DeleteOnTermination}.
 }}

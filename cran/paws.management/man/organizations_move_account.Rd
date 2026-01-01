@@ -8,13 +8,13 @@ unit (OU) to the specified destination parent root or OU}
 organizations_move_account(AccountId, SourceParentId, DestinationParentId)
 }
 \arguments{
-\item{AccountId}{[required] The unique identifier (ID) of the account that you want to move.
+\item{AccountId}{[required] ID for the account that you want to move.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for an account
 ID string requires exactly 12 digits.}
 
-\item{SourceParentId}{[required] The unique identifier (ID) of the root or organizational unit that you
-want to move the account from.
+\item{SourceParentId}{[required] ID for the root or organizational unit that you want to move the account
+from.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a parent ID
 string requires one of the following:
@@ -27,8 +27,8 @@ root that the OU is in). This string is followed by a second "-"
 dash and from 8 to 32 additional lowercase letters or digits.
 }}
 
-\item{DestinationParentId}{[required] The unique identifier (ID) of the root or organizational unit that you
-want to move the account to.
+\item{DestinationParentId}{[required] ID for the root or organizational unit that you want to move the account
+to.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a parent ID
 string requires one of the following:

@@ -87,6 +87,9 @@ attributes by using \code{computeConfiguration}. CodeBuild will select
 the cheapest instance that satisfies your specified attributes. For
 more information, see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment-reserved-capacity.types}{Reserved capacity environment types}
 in the \emph{CodeBuild User Guide}.
+\item \code{CUSTOM_INSTANCE_TYPE}: Specify the instance type for your compute
+fleet. For a list of supported instance types, see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment-reserved-capacity.instance-types}{Supported instance families}
+in the \emph{CodeBuild User Guide}.
 \item \code{BUILD_GENERAL1_SMALL}: Use up to 4 GiB memory and 2 vCPUs for
 builds.
 \item \code{BUILD_GENERAL1_MEDIUM}: Use up to 8 GiB memory and 4 vCPUs for
@@ -139,7 +142,8 @@ For more information, see \href{https://docs.aws.amazon.com/codebuild/latest/use
 in the \emph{CodeBuild User Guide.}}
 
 \item{computeConfiguration}{The compute configuration of the compute fleet. This is only required if
-\code{computeType} is set to \code{ATTRIBUTE_BASED_COMPUTE}.}
+\code{computeType} is set to \code{ATTRIBUTE_BASED_COMPUTE} or
+\code{CUSTOM_INSTANCE_TYPE}.}
 
 \item{scalingConfiguration}{The scaling configuration of the compute fleet.}
 

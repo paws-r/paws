@@ -9,7 +9,8 @@ lightsail_update_bucket(
   accessRules = NULL,
   versioning = NULL,
   readonlyAccessAccounts = NULL,
-  accessLogConfig = NULL
+  accessLogConfig = NULL,
+  cors = NULL
 )
 }
 \arguments{
@@ -35,6 +36,14 @@ You can give a maximum of 10 Amazon Web Services accounts access to a
 bucket.}
 
 \item{accessLogConfig}{An object that describes the access log configuration for the bucket.}
+
+\item{cors}{Sets the cross-origin resource sharing (CORS) configuration for your
+bucket. If a CORS configuration exists, it is replaced with the
+specified configuration. For AWS CLI operations, this parameter can also
+be passed as a file. For more information, see \href{https://docs.aws.amazon.com/lightsail/latest/userguide/configure-cors.html}{Configuring cross-origin resource sharing (CORS)}.
+
+CORS information is only returned in a response when you update the CORS
+policy.}
 }
 \description{
 Updates an existing Amazon Lightsail bucket.

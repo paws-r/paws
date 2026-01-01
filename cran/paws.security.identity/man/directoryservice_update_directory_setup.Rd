@@ -2,29 +2,34 @@
 % Please edit documentation in R/directoryservice_operations.R
 \name{directoryservice_update_directory_setup}
 \alias{directoryservice_update_directory_setup}
-\title{Updates the directory for a particular update type}
+\title{Updates directory configuration for the specified update type}
 \usage{
 directoryservice_update_directory_setup(
   DirectoryId,
   UpdateType,
   OSUpdateSettings = NULL,
+  DirectorySizeUpdateSettings = NULL,
+  NetworkUpdateSettings = NULL,
   CreateSnapshotBeforeUpdate = NULL
 )
 }
 \arguments{
-\item{DirectoryId}{[required] The identifier of the directory on which you want to perform the update.}
+\item{DirectoryId}{[required] The identifier of the directory to update.}
 
-\item{UpdateType}{[required] The type of update that needs to be performed on the directory. For
-example, OS.}
+\item{UpdateType}{[required] The type of update to perform on the directory.}
 
-\item{OSUpdateSettings}{The settings for the OS update that needs to be performed on the
-directory.}
+\item{OSUpdateSettings}{Operating system configuration to apply during the directory update
+operation.}
 
-\item{CreateSnapshotBeforeUpdate}{The boolean that specifies if a snapshot for the directory needs to be
-taken before updating the directory.}
+\item{DirectorySizeUpdateSettings}{Directory size configuration to apply during the update operation.}
+
+\item{NetworkUpdateSettings}{Network configuration to apply during the directory update operation.}
+
+\item{CreateSnapshotBeforeUpdate}{Specifies whether to create a directory snapshot before performing the
+update.}
 }
 \description{
-Updates the directory for a particular update type.
+Updates directory configuration for the specified update type.
 
 See \url{https://www.paws-r-sdk.com/docs/directoryservice_update_directory_setup/} for full documentation.
 }

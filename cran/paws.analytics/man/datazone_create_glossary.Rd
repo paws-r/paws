@@ -10,7 +10,8 @@ datazone_create_glossary(
   domainIdentifier,
   name,
   owningProjectIdentifier,
-  status = NULL
+  status = NULL,
+  usageRestrictions = NULL
 )
 }
 \arguments{
@@ -27,6 +28,8 @@ created.}
 \item{owningProjectIdentifier}{[required] The ID of the project that currently owns business glossary.}
 
 \item{status}{The status of this business glossary.}
+
+\item{usageRestrictions}{The usage restriction of the restricted glossary.}
 }
 \description{
 Creates an Amazon DataZone business glossary.

@@ -3,6 +3,16 @@
 #' @include iam_service.R
 NULL
 
+.iam$accept_delegation_request_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DelegationRequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$accept_delegation_request_output <- function(...) {
+  list()
+}
+
 .iam$add_client_id_to_open_id_connect_provider_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(OpenIDConnectProviderArn = structure(logical(0), tags = list(type = "string")), ClientID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -30,6 +40,16 @@ NULL
 }
 
 .iam$add_user_to_group_output <- function(...) {
+  list()
+}
+
+.iam$associate_delegation_request_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DelegationRequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$associate_delegation_request_output <- function(...) {
   list()
 }
 
@@ -93,6 +113,18 @@ NULL
 
 .iam$create_account_alias_output <- function(...) {
   list()
+}
+
+.iam$create_delegation_request_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OwnerAccountId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Permissions = structure(list(PolicyTemplateArn = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), RequestMessage = structure(logical(0), tags = list(type = "string")), RequestorWorkflowId = structure(logical(0), tags = list(type = "string")), RedirectUrl = structure(logical(0), tags = list(type = "string")), NotificationChannel = structure(logical(0), tags = list(type = "string")), SessionDuration = structure(logical(0), tags = list(type = "integer")), OnlySendByOwner = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$create_delegation_request_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConsoleDeepLink = structure(logical(0), tags = list(type = "string")), DelegationRequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "CreateDelegationRequestResult"))
+  return(populate(args, shape))
 }
 
 .iam$create_group_input <- function(...) {
@@ -205,13 +237,13 @@ NULL
 
 .iam$create_service_specific_credential_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UserName = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(UserName = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), CredentialAgeDays = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .iam$create_service_specific_credential_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceSpecificCredential = structure(list(CreateDate = structure(logical(0), tags = list(type = "timestamp")), ServiceName = structure(logical(0), tags = list(type = "string")), ServiceUserName = structure(logical(0), tags = list(type = "string")), ServicePassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ServiceSpecificCredentialId = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", resultWrapper = "CreateServiceSpecificCredentialResult"))
+  shape <- structure(list(ServiceSpecificCredential = structure(list(CreateDate = structure(logical(0), tags = list(type = "timestamp")), ExpirationDate = structure(logical(0), tags = list(type = "timestamp")), ServiceName = structure(logical(0), tags = list(type = "string")), ServiceUserName = structure(logical(0), tags = list(type = "string")), ServicePassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ServiceCredentialAlias = structure(logical(0), tags = list(type = "string")), ServiceCredentialSecret = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ServiceSpecificCredentialId = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", resultWrapper = "CreateServiceSpecificCredentialResult"))
   return(populate(args, shape))
 }
 
@@ -533,6 +565,14 @@ NULL
   return(populate(args, shape))
 }
 
+.iam$disable_outbound_web_identity_federation_input <- function(...) {
+  list()
+}
+
+.iam$disable_outbound_web_identity_federation_output <- function(...) {
+  list()
+}
+
 .iam$enable_mfa_device_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(UserName = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), AuthenticationCode1 = structure(logical(0), tags = list(type = "string")), AuthenticationCode2 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -564,6 +604,16 @@ NULL
 .iam$enable_organizations_root_sessions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), EnabledFeatures = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "EnableOrganizationsRootSessionsResult"))
+  return(populate(args, shape))
+}
+
+.iam$enable_outbound_web_identity_federation_input <- function(...) {
+  list()
+}
+
+.iam$enable_outbound_web_identity_federation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IssuerIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "EnableOutboundWebIdentityFederationResult"))
   return(populate(args, shape))
 }
 
@@ -679,6 +729,18 @@ NULL
   return(populate(args, shape))
 }
 
+.iam$get_delegation_request_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DelegationRequestId = structure(logical(0), tags = list(type = "string")), DelegationPermissionCheck = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$get_delegation_request_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DelegationRequest = structure(list(DelegationRequestId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), RequestMessage = structure(logical(0), tags = list(type = "string")), Permissions = structure(list(PolicyTemplateArn = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), PermissionPolicy = structure(logical(0), tags = list(type = "string")), RolePermissionRestrictionArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), OwnerId = structure(logical(0), tags = list(type = "string")), ApproverId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), ExpirationTime = structure(logical(0), tags = list(type = "timestamp")), RequestorId = structure(logical(0), tags = list(type = "string")), RequestorName = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), SessionDuration = structure(logical(0), tags = list(type = "integer")), RedirectUrl = structure(logical(0), tags = list(type = "string")), Notes = structure(logical(0), tags = list(type = "string")), RejectionReason = structure(logical(0), tags = list(type = "string")), OnlySendByOwner = structure(logical(0), tags = list(type = "boolean")), UpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), PermissionCheckStatus = structure(logical(0), tags = list(type = "string")), PermissionCheckResult = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "GetDelegationRequestResult"))
+  return(populate(args, shape))
+}
+
 .iam$get_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GroupName = structure(logical(0), tags = list(type = "string")), Marker = structure(logical(0), tags = list(type = "string")), MaxItems = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
@@ -700,6 +762,18 @@ NULL
 .iam$get_group_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GroupName = structure(logical(0), tags = list(type = "string")), PolicyName = structure(logical(0), tags = list(type = "string")), PolicyDocument = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "GetGroupPolicyResult"))
+  return(populate(args, shape))
+}
+
+.iam$get_human_readable_summary_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EntityArn = structure(logical(0), tags = list(type = "string")), Locale = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$get_human_readable_summary_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SummaryContent = structure(logical(0), tags = list(type = "string")), Locale = structure(logical(0), tags = list(type = "string")), SummaryState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "GetHumanReadableSummaryResult"))
   return(populate(args, shape))
 }
 
@@ -760,6 +834,16 @@ NULL
 .iam$get_organizations_access_report_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(JobStatus = structure(logical(0), tags = list(type = "string")), JobCreationDate = structure(logical(0), tags = list(type = "timestamp")), JobCompletionDate = structure(logical(0), tags = list(type = "timestamp")), NumberOfServicesAccessible = structure(logical(0), tags = list(type = "integer")), NumberOfServicesNotAccessed = structure(logical(0), tags = list(type = "integer")), AccessDetails = structure(list(structure(list(ServiceName = structure(logical(0), tags = list(type = "string")), ServiceNamespace = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string")), EntityPath = structure(logical(0), tags = list(type = "string")), LastAuthenticatedTime = structure(logical(0), tags = list(type = "timestamp")), TotalAuthenticatedEntities = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), IsTruncated = structure(logical(0), tags = list(type = "boolean")), Marker = structure(logical(0), tags = list(type = "string")), ErrorDetails = structure(list(Message = structure(logical(0), tags = list(type = "string")), Code = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", resultWrapper = "GetOrganizationsAccessReportResult"))
+  return(populate(args, shape))
+}
+
+.iam$get_outbound_web_identity_federation_info_input <- function(...) {
+  list()
+}
+
+.iam$get_outbound_web_identity_federation_info_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IssuerIdentifier = structure(logical(0), tags = list(type = "string")), JwtVendingEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure", resultWrapper = "GetOutboundWebIdentityFederationInfoResult"))
   return(populate(args, shape))
 }
 
@@ -964,6 +1048,18 @@ NULL
 .iam$list_attached_user_policies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(AttachedPolicies = structure(list(structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IsTruncated = structure(logical(0), tags = list(type = "boolean")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListAttachedUserPoliciesResult"))
+  return(populate(args, shape))
+}
+
+.iam$list_delegation_requests_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), Marker = structure(logical(0), tags = list(type = "string")), MaxItems = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$list_delegation_requests_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DelegationRequests = structure(list(structure(list(DelegationRequestId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), RequestMessage = structure(logical(0), tags = list(type = "string")), Permissions = structure(list(PolicyTemplateArn = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), PermissionPolicy = structure(logical(0), tags = list(type = "string")), RolePermissionRestrictionArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), OwnerId = structure(logical(0), tags = list(type = "string")), ApproverId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), ExpirationTime = structure(logical(0), tags = list(type = "timestamp")), RequestorId = structure(logical(0), tags = list(type = "string")), RequestorName = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), SessionDuration = structure(logical(0), tags = list(type = "integer")), RedirectUrl = structure(logical(0), tags = list(type = "string")), Notes = structure(logical(0), tags = list(type = "string")), RejectionReason = structure(logical(0), tags = list(type = "string")), OnlySendByOwner = structure(logical(0), tags = list(type = "boolean")), UpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string")), isTruncated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure", resultWrapper = "ListDelegationRequestsResult"))
   return(populate(args, shape))
 }
 
@@ -1257,13 +1353,13 @@ NULL
 
 .iam$list_service_specific_credentials_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UserName = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(UserName = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), AllUsers = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Marker = structure(logical(0), tags = list(type = "string")), MaxItems = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .iam$list_service_specific_credentials_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceSpecificCredentials = structure(list(structure(list(UserName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ServiceUserName = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), ServiceSpecificCredentialId = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "ListServiceSpecificCredentialsResult"))
+  shape <- structure(list(ServiceSpecificCredentials = structure(list(structure(list(UserName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ServiceUserName = structure(logical(0), tags = list(type = "string")), ServiceCredentialAlias = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), ExpirationDate = structure(logical(0), tags = list(type = "timestamp")), ServiceSpecificCredentialId = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string")), IsTruncated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure", resultWrapper = "ListServiceSpecificCredentialsResult"))
   return(populate(args, shape))
 }
 
@@ -1377,6 +1473,16 @@ NULL
   list()
 }
 
+.iam$reject_delegation_request_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DelegationRequestId = structure(logical(0), tags = list(type = "string")), Notes = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$reject_delegation_request_output <- function(...) {
+  list()
+}
+
 .iam$remove_client_id_from_open_id_connect_provider_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(OpenIDConnectProviderArn = structure(logical(0), tags = list(type = "string")), ClientID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -1415,7 +1521,7 @@ NULL
 
 .iam$reset_service_specific_credential_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceSpecificCredential = structure(list(CreateDate = structure(logical(0), tags = list(type = "timestamp")), ServiceName = structure(logical(0), tags = list(type = "string")), ServiceUserName = structure(logical(0), tags = list(type = "string")), ServicePassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ServiceSpecificCredentialId = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", resultWrapper = "ResetServiceSpecificCredentialResult"))
+  shape <- structure(list(ServiceSpecificCredential = structure(list(CreateDate = structure(logical(0), tags = list(type = "timestamp")), ExpirationDate = structure(logical(0), tags = list(type = "timestamp")), ServiceName = structure(logical(0), tags = list(type = "string")), ServiceUserName = structure(logical(0), tags = list(type = "string")), ServicePassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ServiceCredentialAlias = structure(logical(0), tags = list(type = "string")), ServiceCredentialSecret = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ServiceSpecificCredentialId = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", resultWrapper = "ResetServiceSpecificCredentialResult"))
   return(populate(args, shape))
 }
 
@@ -1426,6 +1532,16 @@ NULL
 }
 
 .iam$resync_mfa_device_output <- function(...) {
+  list()
+}
+
+.iam$send_delegation_token_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DelegationRequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$send_delegation_token_output <- function(...) {
   list()
 }
 
@@ -1660,6 +1776,16 @@ NULL
 }
 
 .iam$update_assume_role_policy_output <- function(...) {
+  list()
+}
+
+.iam$update_delegation_request_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DelegationRequestId = structure(logical(0), tags = list(type = "string")), Notes = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$update_delegation_request_output <- function(...) {
   list()
 }
 

@@ -2,7 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_start_read_set_activation_job}
 \alias{omics_start_read_set_activation_job}
-\title{Activates an archived read set}
+\title{Activates an archived read set and returns its metadata in a JSON
+formatted output}
 \usage{
 omics_start_read_set_activation_job(
   sequenceStoreId,
@@ -19,7 +20,7 @@ each job.}
 \item{sources}{[required] The job's source files.}
 }
 \description{
-Activates an archived read set. To reduce storage charges, Amazon Omics archives unused read sets after 30 days.
+Activates an archived read set and returns its metadata in a JSON formatted output. AWS HealthOmics automatically archives unused read sets after 30 days. To monitor the status of your read set activation job, use the \code{\link[=omics_get_read_set_activation_job]{get_read_set_activation_job}} operation.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_start_read_set_activation_job/} for full documentation.
 }

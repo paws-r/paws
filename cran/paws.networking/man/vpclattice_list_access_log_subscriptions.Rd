@@ -6,17 +6,17 @@
 service}
 \usage{
 vpclattice_list_access_log_subscriptions(
+  resourceIdentifier,
   maxResults = NULL,
-  nextToken = NULL,
-  resourceIdentifier
+  nextToken = NULL
 )
 }
 \arguments{
+\item{resourceIdentifier}{[required] The ID or ARN of the service network or service.}
+
 \item{maxResults}{The maximum number of results to return.}
 
 \item{nextToken}{A pagination token for the next page of results.}
-
-\item{resourceIdentifier}{[required] The ID or ARN of the service network or service.}
 }
 \description{
 Lists the access log subscriptions for the specified service network or service.

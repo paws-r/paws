@@ -45,11 +45,9 @@ NULL
 #' IAM Identity Center OIDC implementation, see *Considerations for Using
 #' this Guide* in the [IAM Identity Center OIDC API
 #' Reference](https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html).
-#' @param scope The list of scopes for which authorization is requested. The access
-#' token that is issued is limited to the scopes that are granted. If this
-#' value is not specified, IAM Identity Center authorizes all scopes that
-#' are configured for the client during the call to
-#' [`register_client`][ssooidc_register_client].
+#' @param scope The list of scopes for which authorization is requested. This parameter
+#' has no effect; the access token will always include all scopes
+#' configured during client registration.
 #' @param redirectUri Used only when calling this API for the Authorization Code grant type.
 #' This value specifies the location of the client or application that has
 #' registered to receive the authorization code.
@@ -110,15 +108,25 @@ ssooidc_create_token <- function(clientId, clientSecret, grantType, deviceCode =
 }
 .ssooidc$operations$create_token <- ssooidc_create_token
 
-#' Creates and returns access and refresh tokens for clients and
-#' applications that are authenticated using IAM entities
+#' Creates and returns access and refresh tokens for authorized client
+#' applications that are authenticated using any IAM entity, such as a
+#' service role or user
 #'
 #' @description
-#' Creates and returns access and refresh tokens for clients and
-#' applications that are authenticated using IAM entities. The access token
-#' can be used to fetch short-lived credentials for the assigned Amazon Web
-#' Services accounts or to access application APIs using `bearer`
-#' authentication.
+#' Creates and returns access and refresh tokens for authorized client
+#' applications that are authenticated using any IAM entity, such as a
+#' service role or user. These tokens might contain defined scopes that
+#' specify permissions such as `read:profile` or `write:data`. Through
+#' downscoping, you can use the scopes parameter to request tokens with
+#' reduced permissions compared to the original client application's
+#' permissions or, if applicable, the refresh token's scopes. The access
+#' token can be used to fetch short-lived credentials for the assigned
+#' Amazon Web Services accounts or to access application APIs using
+#' `bearer` authentication.
+#' 
+#' This API is used with Signature Version 4. For more information, see
+#' [Amazon Web Services Signature Version 4 for API
+#' Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #'
 #' @usage
 #' ssooidc_create_token_with_iam(clientId, grantType, code, refreshToken,

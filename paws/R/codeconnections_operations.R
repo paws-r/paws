@@ -41,7 +41,7 @@ NULL
 #' @section Request syntax:
 #' ```
 #' svc$create_connection(
-#'   ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'   ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged"|"AzureDevOps",
 #'   ConnectionName = "string",
 #'   Tags = list(
 #'     list(
@@ -125,7 +125,7 @@ codeconnections_create_connection <- function(ProviderType = NULL, ConnectionNam
 #' ```
 #' svc$create_host(
 #'   Name = "string",
-#'   ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'   ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged"|"AzureDevOps",
 #'   ProviderEndpoint = "string",
 #'   VpcConfiguration = list(
 #'     VpcId = "string",
@@ -198,7 +198,7 @@ codeconnections_create_host <- function(Name, ProviderType, ProviderEndpoint, Vp
 #'     ConnectionArn = "string",
 #'     EncryptionKeyArn = "string",
 #'     OwnerId = "string",
-#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged"|"AzureDevOps",
 #'     RepositoryLinkArn = "string",
 #'     RepositoryLinkId = "string",
 #'     RepositoryName = "string"
@@ -289,7 +289,7 @@ codeconnections_create_repository_link <- function(ConnectionArn, OwnerId, Repos
 #'     Branch = "string",
 #'     ConfigFile = "string",
 #'     OwnerId = "string",
-#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged"|"AzureDevOps",
 #'     RepositoryLinkId = "string",
 #'     RepositoryName = "string",
 #'     ResourceName = "string",
@@ -548,7 +548,7 @@ codeconnections_delete_sync_configuration <- function(SyncType, ResourceName) {
 #'   Connection = list(
 #'     ConnectionName = "string",
 #'     ConnectionArn = "string",
-#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged"|"AzureDevOps",
 #'     OwnerAccountId = "string",
 #'     ConnectionStatus = "PENDING"|"AVAILABLE"|"ERROR",
 #'     HostArn = "string"
@@ -605,7 +605,7 @@ codeconnections_get_connection <- function(ConnectionArn) {
 #' list(
 #'   Name = "string",
 #'   Status = "string",
-#'   ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'   ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged"|"AzureDevOps",
 #'   ProviderEndpoint = "string",
 #'   VpcConfiguration = list(
 #'     VpcId = "string",
@@ -671,7 +671,7 @@ codeconnections_get_host <- function(HostArn) {
 #'     ConnectionArn = "string",
 #'     EncryptionKeyArn = "string",
 #'     OwnerId = "string",
-#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged"|"AzureDevOps",
 #'     RepositoryLinkArn = "string",
 #'     RepositoryLinkId = "string",
 #'     RepositoryName = "string"
@@ -804,7 +804,7 @@ codeconnections_get_repository_sync_status <- function(Branch, RepositoryLinkId,
 #'     Directory = "string",
 #'     OwnerId = "string",
 #'     RepositoryName = "string",
-#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged"|"AzureDevOps",
 #'     Sha = "string"
 #'   ),
 #'   LatestSuccessfulSync = list(
@@ -823,7 +823,7 @@ codeconnections_get_repository_sync_status <- function(Branch, RepositoryLinkId,
 #'       Directory = "string",
 #'       OwnerId = "string",
 #'       RepositoryName = "string",
-#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged"|"AzureDevOps",
 #'       Sha = "string"
 #'     ),
 #'     StartedAt = as.POSIXct(
@@ -835,7 +835,7 @@ codeconnections_get_repository_sync_status <- function(Branch, RepositoryLinkId,
 #'       Directory = "string",
 #'       OwnerId = "string",
 #'       RepositoryName = "string",
-#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged"|"AzureDevOps",
 #'       Sha = "string"
 #'     ),
 #'     Target = "string"
@@ -856,7 +856,7 @@ codeconnections_get_repository_sync_status <- function(Branch, RepositoryLinkId,
 #'       Directory = "string",
 #'       OwnerId = "string",
 #'       RepositoryName = "string",
-#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged"|"AzureDevOps",
 #'       Sha = "string"
 #'     ),
 #'     StartedAt = as.POSIXct(
@@ -868,7 +868,7 @@ codeconnections_get_repository_sync_status <- function(Branch, RepositoryLinkId,
 #'       Directory = "string",
 #'       OwnerId = "string",
 #'       RepositoryName = "string",
-#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged"|"AzureDevOps",
 #'       Sha = "string"
 #'     ),
 #'     Target = "string"
@@ -1009,7 +1009,7 @@ codeconnections_get_sync_blocker_summary <- function(SyncType, ResourceName) {
 #'     Branch = "string",
 #'     ConfigFile = "string",
 #'     OwnerId = "string",
-#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged"|"AzureDevOps",
 #'     RepositoryLinkId = "string",
 #'     RepositoryName = "string",
 #'     ResourceName = "string",
@@ -1082,7 +1082,7 @@ codeconnections_get_sync_configuration <- function(SyncType, ResourceName) {
 #'     list(
 #'       ConnectionName = "string",
 #'       ConnectionArn = "string",
-#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged"|"AzureDevOps",
 #'       OwnerAccountId = "string",
 #'       ConnectionStatus = "PENDING"|"AVAILABLE"|"ERROR",
 #'       HostArn = "string"
@@ -1095,7 +1095,7 @@ codeconnections_get_sync_configuration <- function(SyncType, ResourceName) {
 #' @section Request syntax:
 #' ```
 #' svc$list_connections(
-#'   ProviderTypeFilter = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'   ProviderTypeFilter = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged"|"AzureDevOps",
 #'   HostArnFilter = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -1149,7 +1149,7 @@ codeconnections_list_connections <- function(ProviderTypeFilter = NULL, HostArnF
 #'     list(
 #'       Name = "string",
 #'       HostArn = "string",
-#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged"|"AzureDevOps",
 #'       ProviderEndpoint = "string",
 #'       VpcConfiguration = list(
 #'         VpcId = "string",
@@ -1223,7 +1223,7 @@ codeconnections_list_hosts <- function(MaxResults = NULL, NextToken = NULL) {
 #'       ConnectionArn = "string",
 #'       EncryptionKeyArn = "string",
 #'       OwnerId = "string",
-#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged"|"AzureDevOps",
 #'       RepositoryLinkArn = "string",
 #'       RepositoryLinkId = "string",
 #'       RepositoryName = "string"
@@ -1355,7 +1355,7 @@ codeconnections_list_repository_sync_definitions <- function(RepositoryLinkId, S
 #'       Branch = "string",
 #'       ConfigFile = "string",
 #'       OwnerId = "string",
-#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged"|"AzureDevOps",
 #'       RepositoryLinkId = "string",
 #'       RepositoryName = "string",
 #'       ResourceName = "string",
@@ -1649,7 +1649,7 @@ codeconnections_update_host <- function(HostArn, ProviderEndpoint = NULL, VpcCon
 #'     ConnectionArn = "string",
 #'     EncryptionKeyArn = "string",
 #'     OwnerId = "string",
-#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged"|"AzureDevOps",
 #'     RepositoryLinkArn = "string",
 #'     RepositoryLinkId = "string",
 #'     RepositoryName = "string"
@@ -1801,7 +1801,7 @@ codeconnections_update_sync_blocker <- function(Id, SyncType, ResourceName, Reso
 #'     Branch = "string",
 #'     ConfigFile = "string",
 #'     OwnerId = "string",
-#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged"|"AzureDevOps",
 #'     RepositoryLinkId = "string",
 #'     RepositoryName = "string",
 #'     ResourceName = "string",

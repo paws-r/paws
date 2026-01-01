@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_list_users}
 \alias{quicksight_list_users}
-\title{Returns a list of all of the Amazon QuickSight users belonging to this
+\title{Returns a list of all of the Amazon Quick Sight users belonging to this
 account}
 \usage{
 quicksight_list_users(
@@ -15,7 +15,7 @@ quicksight_list_users(
 \arguments{
 \item{AwsAccountId}{[required] The ID for the Amazon Web Services account that the user is in.
 Currently, you use the ID for the Amazon Web Services account that
-contains your Amazon QuickSight account.}
+contains your Amazon Quick Sight account.}
 
 \item{NextToken}{A pagination token that can be used in a subsequent request.}
 
@@ -24,7 +24,7 @@ contains your Amazon QuickSight account.}
 \item{Namespace}{[required] The namespace. Currently, you should set this to \code{default}.}
 }
 \description{
-Returns a list of all of the Amazon QuickSight users belonging to this account.
+Returns a list of all of the Amazon Quick Sight users belonging to this account.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_list_users/} for full documentation.
 }

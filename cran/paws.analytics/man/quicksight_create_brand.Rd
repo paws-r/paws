@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_create_brand}
 \alias{quicksight_create_brand}
-\title{Creates an Amazon QuickSight brand}
+\title{Creates an Quick Sight brand}
 \usage{
 quicksight_create_brand(
   AwsAccountId,
@@ -14,14 +14,14 @@ quicksight_create_brand(
 \arguments{
 \item{AwsAccountId}{[required] The ID of the Amazon Web Services account that owns the brand.}
 
-\item{BrandId}{[required] The ID of the Amazon QuickSight brand.}
+\item{BrandId}{[required] The ID of the Quick Suite brand.}
 
 \item{BrandDefinition}{The definition of the brand.}
 
 \item{Tags}{A map of the key-value pairs that are assigned to the brand.}
 }
 \description{
-Creates an Amazon QuickSight brand.
+Creates an Quick Sight brand.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_create_brand/} for full documentation.
 }

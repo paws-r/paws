@@ -13,7 +13,8 @@ licensemanager_create_license_configuration(
   LicenseRules = NULL,
   Tags = NULL,
   DisassociateWhenNotFound = NULL,
-  ProductInformationList = NULL
+  ProductInformationList = NULL,
+  LicenseExpiry = NULL
 )
 }
 \arguments{
@@ -52,6 +53,8 @@ for \code{honorVcpuOptimization} are \code{True} and \code{False}.}
 \item{DisassociateWhenNotFound}{When true, disassociates a resource when software is uninstalled.}
 
 \item{ProductInformationList}{Product information.}
+
+\item{LicenseExpiry}{License configuration expiry.}
 }
 \description{
 Creates a license configuration.

@@ -29,7 +29,7 @@ NULL
 #' Alternatively, you can use one of the Amazon Web Services SDKs to access
 #' an API that's tailored to the programming language or platform that
 #' you're using. For more information, see [Amazon Web Services
-#' SDKs](https://aws.amazon.com/developer/tools/#SDKs).
+#' SDKs](https://builder.aws.com/build/tools#SDKs).
 #' 
 #' For descriptions of Network Firewall features, including and
 #' step-by-step instructions on how to use them through the Network
@@ -76,20 +76,30 @@ NULL
 #'     firewall endpoint, create a subnet for the sole use of Network
 #'     Firewall.
 #' 
-#' 3.  In Network Firewall, create stateless and stateful rule groups, to
-#'     define the components of the network traffic filtering behavior that
-#'     you want your firewall to have.
+#' 3.  In Network Firewall, define the firewall behavior as follows:
 #' 
-#' 4.  In Network Firewall, create a firewall policy that uses your rule
-#'     groups and specifies additional default traffic filtering behavior.
+#'     1.  Create stateless and stateful rule groups, to define the
+#'         components of the network traffic filtering behavior that you
+#'         want your firewall to have.
 #' 
-#' 5.  In Network Firewall, create a firewall and specify your new firewall
+#'     2.  Create a firewall policy that uses your rule groups and
+#'         specifies additional default traffic filtering behavior.
+#' 
+#' 4.  In Network Firewall, create a firewall and specify your new firewall
 #'     policy and VPC subnets. Network Firewall creates a firewall endpoint
 #'     in each subnet that you specify, with the behavior that's defined in
 #'     the firewall policy.
 #' 
-#' 6.  In Amazon VPC, use ingress routing enhancements to route traffic
+#' 5.  In Amazon VPC, use ingress routing enhancements to route traffic
 #'     through the new firewall endpoints.
+#' 
+#' After your firewall is established, you can add firewall endpoints for
+#' new Availability Zones by following the prior steps for the Amazon VPC
+#' setup and firewall subnet definitions. You can also add endpoints to
+#' Availability Zones that you're using in the firewall, either for the
+#' same VPC or for another VPC, by following the prior steps for the Amazon
+#' VPC setup, and defining the new VPC subnets as VPC endpoint
+#' associations.
 #'
 #' @param
 #' config
@@ -167,32 +177,55 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- networkfirewall()
-#' svc$associate_firewall_policy(
+#' svc$accept_network_firewall_transit_gateway_attachment(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=networkfirewall_accept_network_firewall_transit_gateway_attachment]{accept_network_firewall_transit_gateway_attachment} \tab Accepts a transit gateway attachment request for Network Firewall\cr
+#'  \link[=networkfirewall_associate_availability_zones]{associate_availability_zones} \tab Associates the specified Availability Zones with a transit gateway-attached firewall\cr
 #'  \link[=networkfirewall_associate_firewall_policy]{associate_firewall_policy} \tab Associates a FirewallPolicy to a Firewall\cr
 #'  \link[=networkfirewall_associate_subnets]{associate_subnets} \tab Associates the specified subnets in the Amazon VPC to the firewall\cr
+#'  \link[=networkfirewall_attach_rule_groups_to_proxy_configuration]{attach_rule_groups_to_proxy_configuration} \tab Attaches ProxyRuleGroup resources to a ProxyConfiguration\cr
 #'  \link[=networkfirewall_create_firewall]{create_firewall} \tab Creates an Network Firewall Firewall and accompanying FirewallStatus for a VPC\cr
 #'  \link[=networkfirewall_create_firewall_policy]{create_firewall_policy} \tab Creates the firewall policy for the firewall according to the specifications\cr
+#'  \link[=networkfirewall_create_proxy]{create_proxy} \tab Creates an Network Firewall Proxy\cr
+#'  \link[=networkfirewall_create_proxy_configuration]{create_proxy_configuration} \tab Creates an Network Firewall ProxyConfiguration\cr
+#'  \link[=networkfirewall_create_proxy_rule_group]{create_proxy_rule_group} \tab Creates an Network Firewall ProxyRuleGroup\cr
+#'  \link[=networkfirewall_create_proxy_rules]{create_proxy_rules} \tab Creates Network Firewall ProxyRule resources\cr
 #'  \link[=networkfirewall_create_rule_group]{create_rule_group} \tab Creates the specified stateless or stateful rule group, which includes the rules for network traffic inspection, a capacity setting, and tags\cr
 #'  \link[=networkfirewall_create_tls_inspection_configuration]{create_tls_inspection_configuration} \tab Creates an Network Firewall TLS inspection configuration\cr
+#'  \link[=networkfirewall_create_vpc_endpoint_association]{create_vpc_endpoint_association} \tab Creates a firewall endpoint for an Network Firewall firewall\cr
 #'  \link[=networkfirewall_delete_firewall]{delete_firewall} \tab Deletes the specified Firewall and its FirewallStatus\cr
 #'  \link[=networkfirewall_delete_firewall_policy]{delete_firewall_policy} \tab Deletes the specified FirewallPolicy\cr
+#'  \link[=networkfirewall_delete_network_firewall_transit_gateway_attachment]{delete_network_firewall_transit_gateway_attachment} \tab Deletes a transit gateway attachment from a Network Firewall\cr
+#'  \link[=networkfirewall_delete_proxy]{delete_proxy} \tab Deletes the specified Proxy\cr
+#'  \link[=networkfirewall_delete_proxy_configuration]{delete_proxy_configuration} \tab Deletes the specified ProxyConfiguration\cr
+#'  \link[=networkfirewall_delete_proxy_rule_group]{delete_proxy_rule_group} \tab Deletes the specified ProxyRuleGroup\cr
+#'  \link[=networkfirewall_delete_proxy_rules]{delete_proxy_rules} \tab Deletes the specified ProxyRule(s)\cr
 #'  \link[=networkfirewall_delete_resource_policy]{delete_resource_policy} \tab Deletes a resource policy that you created in a PutResourcePolicy request\cr
 #'  \link[=networkfirewall_delete_rule_group]{delete_rule_group} \tab Deletes the specified RuleGroup\cr
 #'  \link[=networkfirewall_delete_tls_inspection_configuration]{delete_tls_inspection_configuration} \tab Deletes the specified TLSInspectionConfiguration\cr
+#'  \link[=networkfirewall_delete_vpc_endpoint_association]{delete_vpc_endpoint_association} \tab Deletes the specified VpcEndpointAssociation\cr
 #'  \link[=networkfirewall_describe_firewall]{describe_firewall} \tab Returns the data objects for the specified firewall\cr
+#'  \link[=networkfirewall_describe_firewall_metadata]{describe_firewall_metadata} \tab Returns the high-level information about a firewall, including the Availability Zones where the Firewall is currently in use\cr
 #'  \link[=networkfirewall_describe_firewall_policy]{describe_firewall_policy} \tab Returns the data objects for the specified firewall policy\cr
 #'  \link[=networkfirewall_describe_flow_operation]{describe_flow_operation} \tab Returns key information about a specific flow operation\cr
 #'  \link[=networkfirewall_describe_logging_configuration]{describe_logging_configuration} \tab Returns the logging configuration for the specified firewall\cr
+#'  \link[=networkfirewall_describe_proxy]{describe_proxy} \tab Returns the data objects for the specified proxy\cr
+#'  \link[=networkfirewall_describe_proxy_configuration]{describe_proxy_configuration} \tab Returns the data objects for the specified proxy configuration\cr
+#'  \link[=networkfirewall_describe_proxy_rule]{describe_proxy_rule} \tab Returns the data objects for the specified proxy configuration for the specified proxy rule group\cr
+#'  \link[=networkfirewall_describe_proxy_rule_group]{describe_proxy_rule_group} \tab Returns the data objects for the specified proxy rule group\cr
 #'  \link[=networkfirewall_describe_resource_policy]{describe_resource_policy} \tab Retrieves a resource policy that you created in a PutResourcePolicy request\cr
 #'  \link[=networkfirewall_describe_rule_group]{describe_rule_group} \tab Returns the data objects for the specified rule group\cr
 #'  \link[=networkfirewall_describe_rule_group_metadata]{describe_rule_group_metadata} \tab High-level information about a rule group, returned by operations like create and describe\cr
+#'  \link[=networkfirewall_describe_rule_group_summary]{describe_rule_group_summary} \tab Returns detailed information for a stateful rule group\cr
 #'  \link[=networkfirewall_describe_tls_inspection_configuration]{describe_tls_inspection_configuration} \tab Returns the data objects for the specified TLS inspection configuration\cr
+#'  \link[=networkfirewall_describe_vpc_endpoint_association]{describe_vpc_endpoint_association} \tab Returns the data object for the specified VPC endpoint association\cr
+#'  \link[=networkfirewall_detach_rule_groups_from_proxy_configuration]{detach_rule_groups_from_proxy_configuration} \tab Detaches ProxyRuleGroup resources from a ProxyConfiguration\cr
+#'  \link[=networkfirewall_disassociate_availability_zones]{disassociate_availability_zones} \tab Removes the specified Availability Zone associations from a transit gateway-attached firewall\cr
 #'  \link[=networkfirewall_disassociate_subnets]{disassociate_subnets} \tab Removes the specified subnet associations from the firewall\cr
 #'  \link[=networkfirewall_get_analysis_report_results]{get_analysis_report_results} \tab The results of a COMPLETED analysis report generated with StartAnalysisReport\cr
 #'  \link[=networkfirewall_list_analysis_reports]{list_analysis_reports} \tab Returns a list of all traffic analysis reports generated within the last 30 days\cr
@@ -200,15 +233,21 @@ NULL
 #'  \link[=networkfirewall_list_firewalls]{list_firewalls} \tab Retrieves the metadata for the firewalls that you have defined\cr
 #'  \link[=networkfirewall_list_flow_operation_results]{list_flow_operation_results} \tab Returns the results of a specific flow operation\cr
 #'  \link[=networkfirewall_list_flow_operations]{list_flow_operations} \tab Returns a list of all flow operations ran in a specific firewall\cr
+#'  \link[=networkfirewall_list_proxies]{list_proxies} \tab Retrieves the metadata for the proxies that you have defined\cr
+#'  \link[=networkfirewall_list_proxy_configurations]{list_proxy_configurations} \tab Retrieves the metadata for the proxy configuration that you have defined\cr
+#'  \link[=networkfirewall_list_proxy_rule_groups]{list_proxy_rule_groups} \tab Retrieves the metadata for the proxy rule groups that you have defined\cr
 #'  \link[=networkfirewall_list_rule_groups]{list_rule_groups} \tab Retrieves the metadata for the rule groups that you have defined\cr
 #'  \link[=networkfirewall_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the tags associated with the specified resource\cr
 #'  \link[=networkfirewall_list_tls_inspection_configurations]{list_tls_inspection_configurations} \tab Retrieves the metadata for the TLS inspection configurations that you have defined\cr
-#'  \link[=networkfirewall_put_resource_policy]{put_resource_policy} \tab Creates or updates an IAM policy for your rule group or firewall policy\cr
+#'  \link[=networkfirewall_list_vpc_endpoint_associations]{list_vpc_endpoint_associations} \tab Retrieves the metadata for the VPC endpoint associations that you have defined\cr
+#'  \link[=networkfirewall_put_resource_policy]{put_resource_policy} \tab Creates or updates an IAM policy for your rule group, firewall policy, or firewall\cr
+#'  \link[=networkfirewall_reject_network_firewall_transit_gateway_attachment]{reject_network_firewall_transit_gateway_attachment} \tab Rejects a transit gateway attachment request for Network Firewall\cr
 #'  \link[=networkfirewall_start_analysis_report]{start_analysis_report} \tab Generates a traffic analysis report for the timeframe and traffic type you specify\cr
 #'  \link[=networkfirewall_start_flow_capture]{start_flow_capture} \tab Begins capturing the flows in a firewall, according to the filters you define\cr
 #'  \link[=networkfirewall_start_flow_flush]{start_flow_flush} \tab Begins the flushing of traffic from the firewall, according to the filters you define\cr
 #'  \link[=networkfirewall_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
 #'  \link[=networkfirewall_untag_resource]{untag_resource} \tab Removes the tags with the specified keys from the specified resource\cr
+#'  \link[=networkfirewall_update_availability_zone_change_protection]{update_availability_zone_change_protection} \tab Modifies the AvailabilityZoneChangeProtection setting for a transit gateway-attached firewall\cr
 #'  \link[=networkfirewall_update_firewall_analysis_settings]{update_firewall_analysis_settings} \tab Enables specific types of firewall analysis on a specific firewall you define\cr
 #'  \link[=networkfirewall_update_firewall_delete_protection]{update_firewall_delete_protection} \tab Modifies the flag, DeleteProtection, which indicates whether it is possible to delete the firewall\cr
 #'  \link[=networkfirewall_update_firewall_description]{update_firewall_description} \tab Modifies the description for the specified firewall\cr
@@ -216,6 +255,11 @@ NULL
 #'  \link[=networkfirewall_update_firewall_policy]{update_firewall_policy} \tab Updates the properties of the specified firewall policy\cr
 #'  \link[=networkfirewall_update_firewall_policy_change_protection]{update_firewall_policy_change_protection} \tab Modifies the flag, ChangeProtection, which indicates whether it is possible to change the firewall\cr
 #'  \link[=networkfirewall_update_logging_configuration]{update_logging_configuration} \tab Sets the logging configuration for the specified firewall\cr
+#'  \link[=networkfirewall_update_proxy]{update_proxy} \tab Updates the properties of the specified proxy\cr
+#'  \link[=networkfirewall_update_proxy_configuration]{update_proxy_configuration} \tab Updates the properties of the specified proxy configuration\cr
+#'  \link[=networkfirewall_update_proxy_rule]{update_proxy_rule} \tab Updates the properties of the specified proxy rule\cr
+#'  \link[=networkfirewall_update_proxy_rule_group_priorities]{update_proxy_rule_group_priorities} \tab Updates proxy rule group priorities within a proxy configuration\cr
+#'  \link[=networkfirewall_update_proxy_rule_priorities]{update_proxy_rule_priorities} \tab Updates proxy rule priorities within a proxy rule group\cr
 #'  \link[=networkfirewall_update_rule_group]{update_rule_group} \tab Updates the rule settings for the specified rule group\cr
 #'  \link[=networkfirewall_update_subnet_change_protection]{update_subnet_change_protection} \tab Update subnet change protection\cr
 #'  \link[=networkfirewall_update_tls_inspection_configuration]{update_tls_inspection_configuration} \tab Updates the TLS inspection configuration settings for the specified TLS inspection configuration

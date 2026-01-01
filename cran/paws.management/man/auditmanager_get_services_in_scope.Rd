@@ -2,13 +2,13 @@
 % Please edit documentation in R/auditmanager_operations.R
 \name{auditmanager_get_services_in_scope}
 \alias{auditmanager_get_services_in_scope}
-\title{Gets a list of the Amazon Web Services from which Audit Manager can
-collect evidence}
+\title{Gets a list of the Amazon Web Services services from which Audit Manager
+can collect evidence}
 \usage{
 auditmanager_get_services_in_scope()
 }
 \description{
-Gets a list of the Amazon Web Services from which Audit Manager can collect evidence.
+Gets a list of the Amazon Web Services services from which Audit Manager can collect evidence.
 
 See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_services_in_scope/} for full documentation.
 }

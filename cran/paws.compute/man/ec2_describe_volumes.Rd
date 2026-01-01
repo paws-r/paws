@@ -35,6 +35,8 @@ attached to.
 | \code{detaching}).
 \item \code{availability-zone} - The Availability Zone in which the volume was
 created.
+\item \code{availability-zone-id} - The ID of the Availability Zone in which
+the volume was created.
 \item \code{create-time} - The time stamp when the volume was created.
 \item \code{encrypted} - Indicates whether the volume is encrypted (\code{true} |
 \code{false})

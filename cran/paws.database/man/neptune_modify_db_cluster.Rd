@@ -171,12 +171,15 @@ in the \emph{Amazon Neptune User Guide}.}
 
 Valid Values:
 \itemize{
-\item \code{standard | iopt1}
-}
+\item \strong{\code{standard}}   –   ( \emph{the default} ) Configures cost-effective
+database storage for applications with moderate to small I/O usage.
+\item \strong{\code{iopt1}}   –   Enables \href{https://docs.aws.amazon.com/neptune/latest/userguide/storage-types.html#provisioned-iops-storage}{I/O-Optimized storage}
+that's designed to meet the needs of I/O-intensive graph workloads
+that require predictable pricing with low I/O latency and consistent
+I/O throughput.
 
-Default:
-\itemize{
-\item \code{standard}
+Neptune I/O-Optimized storage is only available starting with engine
+release 1.3.0.0.
 }}
 }
 \description{

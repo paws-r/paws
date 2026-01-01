@@ -111,7 +111,7 @@ locations associated with those Regions.
 \link[=directconnect_allocate_transit_virtual_interface]{allocate_transit_virtual_interface} \tab Provisions a transit virtual interface to be owned by the specified Amazon Web Services account\cr
 \link[=directconnect_associate_connection_with_lag]{associate_connection_with_lag} \tab Associates an existing connection with a link aggregation group (LAG)\cr
 \link[=directconnect_associate_hosted_connection]{associate_hosted_connection} \tab Associates a hosted connection and its virtual interfaces with a link aggregation group (LAG) or interconnect\cr
-\link[=directconnect_associate_mac_sec_key]{associate_mac_sec_key} \tab Associates a MAC Security (MACsec) Connection Key Name (CKN)/ Connectivity Association Key (CAK) pair with an Direct Connect dedicated connection\cr
+\link[=directconnect_associate_mac_sec_key]{associate_mac_sec_key} \tab Associates a MAC Security (MACsec) Connection Key Name (CKN)/ Connectivity Association Key (CAK) pair with a Direct Connect connection\cr
 \link[=directconnect_associate_virtual_interface]{associate_virtual_interface} \tab Associates a virtual interface with a specified link aggregation group (LAG) or connection\cr
 \link[=directconnect_confirm_connection]{confirm_connection} \tab Confirms the creation of the specified hosted connection on an interconnect\cr
 \link[=directconnect_confirm_customer_agreement]{confirm_customer_agreement} \tab The confirmation of the terms of agreement when creating the connection/link aggregation group (LAG)\cr
@@ -155,13 +155,13 @@ locations associated with those Regions.
 \link[=directconnect_describe_virtual_gateways]{describe_virtual_gateways} \tab Deprecated\cr
 \link[=directconnect_describe_virtual_interfaces]{describe_virtual_interfaces} \tab Displays all virtual interfaces for an Amazon Web Services account\cr
 \link[=directconnect_disassociate_connection_from_lag]{disassociate_connection_from_lag} \tab Disassociates a connection from a link aggregation group (LAG)\cr
-\link[=directconnect_disassociate_mac_sec_key]{disassociate_mac_sec_key} \tab Removes the association between a MAC Security (MACsec) security key and an Direct Connect dedicated connection\cr
+\link[=directconnect_disassociate_mac_sec_key]{disassociate_mac_sec_key} \tab Removes the association between a MAC Security (MACsec) security key and a Direct Connect connection\cr
 \link[=directconnect_list_virtual_interface_test_history]{list_virtual_interface_test_history} \tab Lists the virtual interface failover test history\cr
 \link[=directconnect_start_bgp_failover_test]{start_bgp_failover_test} \tab Starts the virtual interface failover test that verifies your configuration meets your resiliency requirements by placing the BGP peering session in the DOWN state\cr
 \link[=directconnect_stop_bgp_failover_test]{stop_bgp_failover_test} \tab Stops the virtual interface failover test\cr
 \link[=directconnect_tag_resource]{tag_resource} \tab Adds the specified tags to the specified Direct Connect resource\cr
 \link[=directconnect_untag_resource]{untag_resource} \tab Removes one or more tags from the specified Direct Connect resource\cr
-\link[=directconnect_update_connection]{update_connection} \tab Updates the Direct Connect dedicated connection configuration\cr
+\link[=directconnect_update_connection]{update_connection} \tab Updates the Direct Connect connection configuration\cr
 \link[=directconnect_update_direct_connect_gateway]{update_direct_connect_gateway} \tab Updates the name of a current Direct Connect gateway\cr
 \link[=directconnect_update_direct_connect_gateway_association]{update_direct_connect_gateway_association} \tab Updates the specified attributes of the Direct Connect gateway association\cr
 \link[=directconnect_update_lag]{update_lag} \tab Updates the attributes of the specified link aggregation group (LAG)\cr

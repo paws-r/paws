@@ -195,8 +195,8 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #' 
 #' -   `MaximumMessageSize` – The limit of how many bytes a message can
 #'     contain before Amazon SQS rejects it. Valid values: An integer from
-#'     1,024 bytes (1 KiB) to 262,144 bytes (256 KiB). Default: 262,144
-#'     (256 KiB).
+#'     1,024 bytes (1 KiB) to 1,048,576 bytes (1 MiB). Default: 1,048,576
+#'     bytes (1 MiB).
 #' 
 #' -   `MessageRetentionPeriod` – The length of time, in seconds, for which
 #'     Amazon SQS retains a message. Valid values: An integer from 60
@@ -1014,8 +1014,7 @@ sqs_purge_queue <- function(QueueUrl) {
 #'     producer that calls the [`send_message`][sqs_send_message] action.
 #' 
 #' -   `MessageGroupId` – Returns the value provided by the producer that
-#'     calls the [`send_message`][sqs_send_message] action. Messages with
-#'     the same `MessageGroupId` are returned in sequence.
+#'     calls the [`send_message`][sqs_send_message] action.
 #' 
 #' -   `SequenceNumber` – Returns the value provided by Amazon SQS.
 #' @param MessageSystemAttributeNames A list of attributes that need to be returned along with each message.
@@ -1055,8 +1054,7 @@ sqs_purge_queue <- function(QueueUrl) {
 #'     producer that calls the [`send_message`][sqs_send_message] action.
 #' 
 #' -   `MessageGroupId` – Returns the value provided by the producer that
-#'     calls the [`send_message`][sqs_send_message] action. Messages with
-#'     the same `MessageGroupId` are returned in sequence.
+#'     calls the [`send_message`][sqs_send_message] action.
 #' 
 #' -   `SequenceNumber` – Returns the value provided by Amazon SQS.
 #' @param MessageAttributeNames The name of the message attribute, where *N* is the index.
@@ -1172,7 +1170,8 @@ sqs_purge_queue <- function(QueueUrl) {
 #' -   While messages with a particular `MessageGroupId` are invisible, no
 #'     more messages belonging to the same `MessageGroupId` are returned
 #'     until the visibility timeout expires. You can still receive messages
-#'     with another `MessageGroupId` as long as it is also visible.
+#'     with another `MessageGroupId` from your FIFO queue as long as they
+#'     are visible.
 #' 
 #' -   If a caller of [`receive_message`][sqs_receive_message] can't track
 #'     the `ReceiveRequestAttemptId`, no retries work until the original
@@ -1258,7 +1257,7 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' 
 #' Queue URLs and names are case-sensitive.
 #' @param MessageBody &#91;required&#93; The message to send. The minimum size is one character. The maximum size
-#' is 256 KiB.
+#' is 1 MiB or 1,048,576 bytes
 #' 
 #' A message can include only XML, JSON, and unformatted text. The
 #' following Unicode characters are allowed. For more information, see the
@@ -1268,10 +1267,10 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' `#x9` | `#xA` | `#xD` | `#x20` to `#xD7FF` | `#xE000` to `#xFFFD` |
 #' `#x10000` to `#x10FFFF`
 #' 
-#' Amazon SQS does not throw an exception or completely reject the message
-#' if it contains invalid characters. Instead, it replaces those invalid
-#' characters with `U+FFFD` before storing the message in the queue, as
-#' long as the message body contains at least one valid character.
+#' If a message contains characters outside the allowed set, Amazon SQS
+#' rejects the message and returns an InvalidMessageContents error. Ensure
+#' that your message body includes only valid characters to avoid this
+#' exception.
 #' @param DelaySeconds The length of time, in seconds, for which to delay a specific message.
 #' Valid values: 0 to 900. Maximum: 15 minutes. Messages with a positive
 #' `DelaySeconds` value become available for processing after the delay
@@ -1349,25 +1348,48 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' MessageDeduplicationId
 #' Property](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagededuplicationid-property.html)
 #' in the *Amazon SQS Developer Guide*.
-#' @param MessageGroupId This parameter applies only to FIFO (first-in-first-out) queues.
+#' @param MessageGroupId `MessageGroupId` is an attribute used in Amazon SQS FIFO
+#' (First-In-First-Out) and standard queues. In FIFO queues,
+#' `MessageGroupId` organizes messages into distinct groups. Messages
+#' within the same message group are always processed one at a time, in
+#' strict order, ensuring that no two messages from the same group are
+#' processed simultaneously. In standard queues, using `MessageGroupId`
+#' enables fair queues. It is used to identify the tenant a message belongs
+#' to, helping maintain consistent message dwell time across all tenants
+#' during noisy neighbor events. Unlike FIFO queues, messages with the same
+#' `MessageGroupId` can be processed in parallel, maintaining the high
+#' throughput of standard queues.
 #' 
-#' The tag that specifies that a message belongs to a specific message
-#' group. Messages that belong to the same message group are processed in a
-#' FIFO manner (however, messages in different message groups might be
-#' processed out of order). To interleave multiple ordered streams within a
-#' single queue, use `MessageGroupId` values (for example, session data for
-#' multiple users). In this scenario, multiple consumers can process the
-#' queue, but the session data of each user is processed in a FIFO fashion.
+#' -   **FIFO queues:** `MessageGroupId` acts as the tag that specifies
+#'     that a message belongs to a specific message group. Messages that
+#'     belong to the same message group are processed in a FIFO manner
+#'     (however, messages in different message groups might be processed
+#'     out of order). To interleave multiple ordered streams within a
+#'     single queue, use `MessageGroupId` values (for example, session data
+#'     for multiple users). In this scenario, multiple consumers can
+#'     process the queue, but the session data of each user is processed in
+#'     a FIFO fashion.
 #' 
-#' -   You must associate a non-empty `MessageGroupId` with a message. If
-#'     you don't provide a `MessageGroupId`, the action fails.
+#'     If you do not provide a `MessageGroupId` when sending a message to a
+#'     FIFO queue, the action fails.
 #' 
-#' -   [`receive_message`][sqs_receive_message] might return messages with
+#'     [`receive_message`][sqs_receive_message] might return messages with
 #'     multiple `MessageGroupId` values. For each `MessageGroupId`, the
-#'     messages are sorted by time sent. The caller can't specify a
-#'     `MessageGroupId`.
+#'     messages are sorted by time sent.
 #' 
-#' The maximum length of `MessageGroupId` is 128 characters. Valid values:
+#' -   **Standard queues:**Use `MessageGroupId` in standard queues to
+#'     enable fair queues. The `MessageGroupId` identifies the tenant a
+#'     message belongs to. A tenant can be any entity that shares a queue
+#'     with others, such as your customer, a client application, or a
+#'     request type. When one tenant sends a disproportionately large
+#'     volume of messages or has messages that require longer processing
+#'     time, fair queues ensure other tenants' messages maintain low dwell
+#'     time. This preserves quality of service for all tenants while
+#'     maintaining the scalability and throughput of standard queues. We
+#'     recommend that you include a `MessageGroupId` in all messages when
+#'     using fair queues.
+#' 
+#' The length of `MessageGroupId` is 128 characters. Valid values:
 #' alphanumeric characters and punctuation
 #' `` (!\"#$%&\'()*+,-./:;<=>?@@[\]^_\`{|}~) ``.
 #' 
@@ -1375,9 +1397,6 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' MessageGroupId
 #' Property](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagegroupid-property.html)
 #' in the *Amazon SQS Developer Guide*.
-#' 
-#' `MessageGroupId` is required for FIFO queues. You can't use it for
-#' Standard queues.
 #'
 #' @keywords internal
 #'
@@ -1459,8 +1478,8 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #' 
 #' -   `MaximumMessageSize` – The limit of how many bytes a message can
 #'     contain before Amazon SQS rejects it. Valid values: An integer from
-#'     1,024 bytes (1 KiB) up to 262,144 bytes (256 KiB). Default: 262,144
-#'     (256 KiB).
+#'     1,024 bytes (1 KiB) up to 1,048,576 bytes (1 MiB). Default:
+#'     1,048,576 bytes (1 MiB).
 #' 
 #' -   `MessageRetentionPeriod` – The length of time, in seconds, for which
 #'     Amazon SQS retains a message. Valid values: An integer representing

@@ -2,8 +2,8 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_create_role_membership}
 \alias{quicksight_create_role_membership}
-\title{Use CreateRoleMembership to add an existing Amazon QuickSight group to
-an existing role}
+\title{Use CreateRoleMembership to add an existing Quick Sight group to an
+existing role}
 \usage{
 quicksight_create_role_membership(MemberName, AwsAccountId, Namespace, Role)
 }
@@ -12,15 +12,15 @@ quicksight_create_role_membership(MemberName, AwsAccountId, Namespace, Role)
 
 \item{AwsAccountId}{[required] The ID for the Amazon Web Services account that you want to create a
 group in. The Amazon Web Services account ID that you provide must be
-the same Amazon Web Services account that contains your Amazon
-QuickSight account.}
+the same Amazon Web Services account that contains your Amazon Quick
+Sight account.}
 
 \item{Namespace}{[required] The namespace that the role belongs to.}
 
 \item{Role}{[required] The role that you want to add a group to.}
 }
 \description{
-Use \code{\link[=quicksight_create_role_membership]{create_role_membership}} to add an existing Amazon QuickSight group to an existing role.
+Use \code{\link[=quicksight_create_role_membership]{create_role_membership}} to add an existing Quick Sight group to an existing role.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_create_role_membership/} for full documentation.
 }

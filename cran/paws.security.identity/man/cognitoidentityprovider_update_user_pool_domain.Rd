@@ -22,7 +22,7 @@ updating.}
 
 \item{ManagedLoginVersion}{A version number that indicates the state of managed login for your
 domain. Version \code{1} is hosted UI (classic). Version \code{2} is the newer
-managed login with the branding designer. For more information, see
+managed login with the branding editor. For more information, see
 \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-managed-login.html}{Managed login}.}
 
 \item{CustomDomainConfig}{The configuration for a custom domain that hosts managed login for your

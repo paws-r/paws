@@ -11,7 +11,8 @@ directoryservice_create_microsoft_ad(
   Description = NULL,
   VpcSettings,
   Edition = NULL,
-  Tags = NULL
+  Tags = NULL,
+  NetworkType = NULL
 )
 }
 \arguments{
@@ -41,6 +42,9 @@ created.}
 \code{Enterprise}. \code{Enterprise} is the default.}
 
 \item{Tags}{The tags to be assigned to the Managed Microsoft AD directory.}
+
+\item{NetworkType}{The network type for your domain. The default value is \code{IPv4} or \code{IPv6}
+based on the provided subnet capabilities.}
 }
 \description{
 Creates a Microsoft AD directory in the Amazon Web Services Cloud. For more information, see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_microsoft_ad.html}{Managed Microsoft AD} in the \emph{Directory Service Admin Guide}.

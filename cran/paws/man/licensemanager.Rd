@@ -102,6 +102,8 @@ across multiple Amazon Web Services accounts and on-premises servers.
 \link[paws.management:licensemanager_create_grant]{create_grant} \tab Creates a grant for the specified license\cr
 \link[paws.management:licensemanager_create_grant_version]{create_grant_version} \tab Creates a new version of the specified grant\cr
 \link[paws.management:licensemanager_create_license]{create_license} \tab Creates a license\cr
+\link[paws.management:licensemanager_create_license_asset_group]{create_license_asset_group} \tab Creates a license asset group\cr
+\link[paws.management:licensemanager_create_license_asset_ruleset]{create_license_asset_ruleset} \tab Creates a license asset ruleset\cr
 \link[paws.management:licensemanager_create_license_configuration]{create_license_configuration} \tab Creates a license configuration\cr
 \link[paws.management:licensemanager_create_license_conversion_task_for_resource]{create_license_conversion_task_for_resource} \tab Creates a new license conversion task\cr
 \link[paws.management:licensemanager_create_license_manager_report_generator]{create_license_manager_report_generator} \tab Creates a report generator\cr
@@ -109,6 +111,8 @@ across multiple Amazon Web Services accounts and on-premises servers.
 \link[paws.management:licensemanager_create_token]{create_token} \tab Creates a long-lived token\cr
 \link[paws.management:licensemanager_delete_grant]{delete_grant} \tab Deletes the specified grant\cr
 \link[paws.management:licensemanager_delete_license]{delete_license} \tab Deletes the specified license\cr
+\link[paws.management:licensemanager_delete_license_asset_group]{delete_license_asset_group} \tab Deletes a license asset group\cr
+\link[paws.management:licensemanager_delete_license_asset_ruleset]{delete_license_asset_ruleset} \tab Deletes a license asset ruleset\cr
 \link[paws.management:licensemanager_delete_license_configuration]{delete_license_configuration} \tab Deletes the specified license configuration\cr
 \link[paws.management:licensemanager_delete_license_manager_report_generator]{delete_license_manager_report_generator} \tab Deletes the specified report generator\cr
 \link[paws.management:licensemanager_delete_token]{delete_token} \tab Deletes the specified token\cr
@@ -116,15 +120,21 @@ across multiple Amazon Web Services accounts and on-premises servers.
 \link[paws.management:licensemanager_get_access_token]{get_access_token} \tab Gets a temporary access token to use with AssumeRoleWithWebIdentity\cr
 \link[paws.management:licensemanager_get_grant]{get_grant} \tab Gets detailed information about the specified grant\cr
 \link[paws.management:licensemanager_get_license]{get_license} \tab Gets detailed information about the specified license\cr
+\link[paws.management:licensemanager_get_license_asset_group]{get_license_asset_group} \tab Gets a license asset group\cr
+\link[paws.management:licensemanager_get_license_asset_ruleset]{get_license_asset_ruleset} \tab Gets a license asset ruleset\cr
 \link[paws.management:licensemanager_get_license_configuration]{get_license_configuration} \tab Gets detailed information about the specified license configuration\cr
 \link[paws.management:licensemanager_get_license_conversion_task]{get_license_conversion_task} \tab Gets information about the specified license type conversion task\cr
 \link[paws.management:licensemanager_get_license_manager_report_generator]{get_license_manager_report_generator} \tab Gets information about the specified report generator\cr
 \link[paws.management:licensemanager_get_license_usage]{get_license_usage} \tab Gets detailed information about the usage of the specified license\cr
 \link[paws.management:licensemanager_get_service_settings]{get_service_settings} \tab Gets the License Manager settings for the current Region\cr
+\link[paws.management:licensemanager_list_assets_for_license_asset_group]{list_assets_for_license_asset_group} \tab Lists assets for a license asset group\cr
 \link[paws.management:licensemanager_list_associations_for_license_configuration]{list_associations_for_license_configuration} \tab Lists the resource associations for the specified license configuration\cr
 \link[paws.management:licensemanager_list_distributed_grants]{list_distributed_grants} \tab Lists the grants distributed for the specified license\cr
 \link[paws.management:licensemanager_list_failures_for_license_configuration_operations]{list_failures_for_license_configuration_operations} \tab Lists the license configuration operations that failed\cr
+\link[paws.management:licensemanager_list_license_asset_groups]{list_license_asset_groups} \tab Lists license asset groups\cr
+\link[paws.management:licensemanager_list_license_asset_rulesets]{list_license_asset_rulesets} \tab Lists license asset rulesets\cr
 \link[paws.management:licensemanager_list_license_configurations]{list_license_configurations} \tab Lists the license configurations for your account\cr
+\link[paws.management:licensemanager_list_license_configurations_for_organization]{list_license_configurations_for_organization} \tab Lists license configurations for an organization\cr
 \link[paws.management:licensemanager_list_license_conversion_tasks]{list_license_conversion_tasks} \tab Lists the license type conversion tasks for your account\cr
 \link[paws.management:licensemanager_list_license_manager_report_generators]{list_license_manager_report_generators} \tab Lists the report generators for your account\cr
 \link[paws.management:licensemanager_list_licenses]{list_licenses} \tab Lists the licenses for your account\cr
@@ -141,6 +151,8 @@ across multiple Amazon Web Services accounts and on-premises servers.
 \link[paws.management:licensemanager_reject_grant]{reject_grant} \tab Rejects the specified grant\cr
 \link[paws.management:licensemanager_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
 \link[paws.management:licensemanager_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource\cr
+\link[paws.management:licensemanager_update_license_asset_group]{update_license_asset_group} \tab Updates a license asset group\cr
+\link[paws.management:licensemanager_update_license_asset_ruleset]{update_license_asset_ruleset} \tab Updates a license asset ruleset\cr
 \link[paws.management:licensemanager_update_license_configuration]{update_license_configuration} \tab Modifies the attributes of an existing license configuration\cr
 \link[paws.management:licensemanager_update_license_manager_report_generator]{update_license_manager_report_generator} \tab Updates a report generator\cr
 \link[paws.management:licensemanager_update_license_specifications_for_resource]{update_license_specifications_for_resource} \tab Adds or removes the specified license configurations for the specified Amazon Web Services resource\cr

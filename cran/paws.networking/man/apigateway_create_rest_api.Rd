@@ -15,7 +15,9 @@ apigateway_create_rest_api(
   endpointConfiguration = NULL,
   policy = NULL,
   tags = NULL,
-  disableExecuteApiEndpoint = NULL
+  disableExecuteApiEndpoint = NULL,
+  securityPolicy = NULL,
+  endpointAccessMode = NULL
 )
 }
 \arguments{
@@ -57,6 +59,12 @@ start with \verb{aws:}. The tag value can be up to 256 characters.}
 default \verb{https://\{api_id\}.execute-api.\{region\}.amazonaws.com} endpoint.
 To require that clients use a custom domain name to invoke your API,
 disable the default endpoint}
+
+\item{securityPolicy}{The Transport Layer Security (TLS) version + cipher suite for this
+RestApi.}
+
+\item{endpointAccessMode}{The endpoint access mode of the RestApi. Only available for RestApis
+that use security policies that start with \code{SecurityPolicy_}.}
 }
 \description{
 Creates a new RestApi resource.

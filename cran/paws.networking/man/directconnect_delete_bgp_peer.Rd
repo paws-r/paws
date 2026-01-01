@@ -8,6 +8,7 @@ the specified customer address and ASN}
 directconnect_delete_bgp_peer(
   virtualInterfaceId = NULL,
   asn = NULL,
+  asnLong = NULL,
   customerAddress = NULL,
   bgpPeerId = NULL
 )
@@ -15,8 +16,30 @@ directconnect_delete_bgp_peer(
 \arguments{
 \item{virtualInterfaceId}{The ID of the virtual interface.}
 
-\item{asn}{The autonomous system (AS) number for Border Gateway Protocol (BGP)
-configuration.}
+\item{asn}{The autonomous system number (ASN). The valid range is from 1 to
+2147483646 for Border Gateway Protocol (BGP) configuration. If you
+provide a number greater than the maximum, an error is returned. Use
+\code{asnLong} instead.
+
+You can use \code{asnLong} or \code{asn}, but not both. We recommend using
+\code{asnLong} as it supports a greater pool of numbers.
+\itemize{
+\item The \code{asnLong} attribute accepts both ASN and long ASN ranges.
+\item If you provide a value in the same API call for both \code{asn} and
+\code{asnLong}, the API will only accept the value for \code{asnLong}.
+}}
+
+\item{asnLong}{The long ASN for the BGP peer to be deleted from a Direct Connect
+virtual interface. The valid range is from 1 to 4294967294 for BGP
+configuration.
+
+You can use \code{asnLong} or \code{asn}, but not both. We recommend using
+\code{asnLong} as it supports a greater pool of numbers.
+\itemize{
+\item The \code{asnLong} attribute accepts both ASN and long ASN ranges.
+\item If you provide a value in the same API call for both \code{asn} and
+\code{asnLong}, the API will only accept the value for \code{asnLong}.
+}}
 
 \item{customerAddress}{The IP address assigned to the customer interface.}
 

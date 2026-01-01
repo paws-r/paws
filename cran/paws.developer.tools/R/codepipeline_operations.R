@@ -666,6 +666,45 @@ codepipeline_list_action_types <- function(actionOwnerFilter = NULL, nextToken =
 }
 .codepipeline$operations$list_action_types <- codepipeline_list_action_types
 
+#' Lists the targets for the deploy action
+#'
+#' @description
+#' Lists the targets for the deploy action.
+#'
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_list_deploy_action_execution_targets/](https://www.paws-r-sdk.com/docs/codepipeline_list_deploy_action_execution_targets/) for full documentation.
+#'
+#' @param pipelineName The name of the pipeline with the deploy action.
+#' @param actionExecutionId &#91;required&#93; The execution ID for the deploy action.
+#' @param filters Filters the targets for a specified deploy action.
+#' @param maxResults The maximum number of results to return in a single call. To retrieve
+#' the remaining results, make another call with the returned nextToken
+#' value.
+#' @param nextToken An identifier that was returned from the previous list action types
+#' call, which can be used to return the next set of action types in the
+#' list.
+#'
+#' @keywords internal
+#'
+#' @rdname codepipeline_list_deploy_action_execution_targets
+codepipeline_list_deploy_action_execution_targets <- function(pipelineName = NULL, actionExecutionId, filters = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListDeployActionExecutionTargets",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "targets"),
+    stream_api = FALSE
+  )
+  input <- .codepipeline$list_deploy_action_execution_targets_input(pipelineName = pipelineName, actionExecutionId = actionExecutionId, filters = filters, maxResults = maxResults, nextToken = nextToken)
+  output <- .codepipeline$list_deploy_action_execution_targets_output()
+  config <- get_config()
+  svc <- .codepipeline$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codepipeline$operations$list_deploy_action_execution_targets <- codepipeline_list_deploy_action_execution_targets
+
 #' Gets a summary of the most recent executions for a pipeline
 #'
 #' @description

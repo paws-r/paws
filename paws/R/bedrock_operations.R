@@ -70,6 +70,576 @@ bedrock_batch_delete_evaluation_job <- function(jobIdentifiers) {
 }
 .bedrock$operations$batch_delete_evaluation_job <- bedrock_batch_delete_evaluation_job
 
+#' Cancels a running Automated Reasoning policy build workflow
+#'
+#' @description
+#' Cancels a running Automated Reasoning policy build workflow. This stops
+#' the policy generation process and prevents further processing of the
+#' source documents.
+#'
+#' @usage
+#' bedrock_cancel_automated_reasoning_policy_build_workflow(policyArn,
+#'   buildWorkflowId)
+#'
+#' @param policyArn &#91;required&#93; The Amazon Resource Name (ARN) of the Automated Reasoning policy whose
+#' build workflow you want to cancel.
+#' @param buildWorkflowId &#91;required&#93; The unique identifier of the build workflow to cancel. You can get this
+#' ID from the StartAutomatedReasoningPolicyBuildWorkflow response or by
+#' listing build workflows.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$cancel_automated_reasoning_policy_build_workflow(
+#'   policyArn = "string",
+#'   buildWorkflowId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_cancel_automated_reasoning_policy_build_workflow
+#'
+#' @aliases bedrock_cancel_automated_reasoning_policy_build_workflow
+bedrock_cancel_automated_reasoning_policy_build_workflow <- function(policyArn, buildWorkflowId) {
+  op <- new_operation(
+    name = "CancelAutomatedReasoningPolicyBuildWorkflow",
+    http_method = "POST",
+    http_path = "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}/cancel",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$cancel_automated_reasoning_policy_build_workflow_input(policyArn = policyArn, buildWorkflowId = buildWorkflowId)
+  output <- .bedrock$cancel_automated_reasoning_policy_build_workflow_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$cancel_automated_reasoning_policy_build_workflow <- bedrock_cancel_automated_reasoning_policy_build_workflow
+
+#' Creates an Automated Reasoning policy for Amazon Bedrock Guardrails
+#'
+#' @description
+#' Creates an Automated Reasoning policy for Amazon Bedrock Guardrails.
+#' Automated Reasoning policies use mathematical techniques to detect
+#' hallucinations, suggest corrections, and highlight unstated assumptions
+#' in the responses of your GenAI application.
+#' 
+#' To create a policy, you upload a source document that describes the
+#' rules that you're encoding. Automated Reasoning extracts important
+#' concepts from the source document that will become variables in the
+#' policy and infers policy rules.
+#'
+#' @usage
+#' bedrock_create_automated_reasoning_policy(name, description,
+#'   clientRequestToken, policyDefinition, kmsKeyId, tags)
+#'
+#' @param name &#91;required&#93; A unique name for the Automated Reasoning policy. The name must be
+#' between 1 and 63 characters and can contain letters, numbers, hyphens,
+#' and underscores.
+#' @param description A description of the Automated Reasoning policy. Use this to provide
+#' context about the policy's purpose and the types of validations it
+#' performs.
+#' @param clientRequestToken A unique, case-sensitive identifier to ensure that the operation
+#' completes no more than once. If this token matches a previous request,
+#' Amazon Bedrock ignores the request but doesn't return an error.
+#' @param policyDefinition The policy definition that contains the formal logic rules, variables,
+#' and custom variable types used to validate foundation model responses in
+#' your application.
+#' @param kmsKeyId The identifier of the KMS key to use for encrypting the automated
+#' reasoning policy and its associated artifacts. If you don't specify a
+#' KMS key, Amazon Bedrock uses an KMS managed key for encryption. For
+#' enhanced security and control, you can specify a customer managed KMS
+#' key.
+#' @param tags A list of tags to associate with the Automated Reasoning policy. Tags
+#' help you organize and manage your policies.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policyArn = "string",
+#'   version = "string",
+#'   name = "string",
+#'   description = "string",
+#'   definitionHash = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_automated_reasoning_policy(
+#'   name = "string",
+#'   description = "string",
+#'   clientRequestToken = "string",
+#'   policyDefinition = list(
+#'     version = "string",
+#'     types = list(
+#'       list(
+#'         name = "string",
+#'         description = "string",
+#'         values = list(
+#'           list(
+#'             value = "string",
+#'             description = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     rules = list(
+#'       list(
+#'         id = "string",
+#'         expression = "string",
+#'         alternateExpression = "string"
+#'       )
+#'     ),
+#'     variables = list(
+#'       list(
+#'         name = "string",
+#'         type = "string",
+#'         description = "string"
+#'       )
+#'     )
+#'   ),
+#'   kmsKeyId = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_create_automated_reasoning_policy
+#'
+#' @aliases bedrock_create_automated_reasoning_policy
+bedrock_create_automated_reasoning_policy <- function(name, description = NULL, clientRequestToken = NULL, policyDefinition = NULL, kmsKeyId = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateAutomatedReasoningPolicy",
+    http_method = "POST",
+    http_path = "/automated-reasoning-policies",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$create_automated_reasoning_policy_input(name = name, description = description, clientRequestToken = clientRequestToken, policyDefinition = policyDefinition, kmsKeyId = kmsKeyId, tags = tags)
+  output <- .bedrock$create_automated_reasoning_policy_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$create_automated_reasoning_policy <- bedrock_create_automated_reasoning_policy
+
+#' Creates a test for an Automated Reasoning policy
+#'
+#' @description
+#' Creates a test for an Automated Reasoning policy. Tests validate that
+#' your policy works as expected by providing sample inputs and expected
+#' outcomes. Use tests to verify policy behavior before deploying to
+#' production.
+#'
+#' @usage
+#' bedrock_create_automated_reasoning_policy_test_case(policyArn,
+#'   guardContent, queryContent, expectedAggregatedFindingsResult,
+#'   clientRequestToken, confidenceThreshold)
+#'
+#' @param policyArn &#91;required&#93; The Amazon Resource Name (ARN) of the Automated Reasoning policy for
+#' which to create the test.
+#' @param guardContent &#91;required&#93; The output content that's validated by the Automated Reasoning policy.
+#' This represents the foundation model response that will be checked for
+#' accuracy.
+#' @param queryContent The input query or prompt that generated the content. This provides
+#' context for the validation.
+#' @param expectedAggregatedFindingsResult &#91;required&#93; The expected result of the Automated Reasoning check. Valid values
+#' include: , TOO_COMPLEX, and NO_TRANSLATIONS.
+#' 
+#' -   `VALID` - The claims are true. The claims are implied by the
+#'     premises and the Automated Reasoning policy. Given the Automated
+#'     Reasoning policy and premises, it is not possible for these claims
+#'     to be false. In other words, there are no alternative answers that
+#'     are true that contradict the claims.
+#' 
+#' -   `INVALID` - The claims are false. The claims are not implied by the
+#'     premises and Automated Reasoning policy. Furthermore, there exists
+#'     different claims that are consistent with the premises and Automated
+#'     Reasoning policy.
+#' 
+#' -   `SATISFIABLE` - The claims can be true or false. It depends on what
+#'     assumptions are made for the claim to be implied from the premises
+#'     and Automated Reasoning policy rules. In this situation, different
+#'     assumptions can make input claims false and alternative claims true.
+#' 
+#' -   `IMPOSSIBLE` - Automated Reasoning can’t make a statement about the
+#'     claims. This can happen if the premises are logically incorrect, or
+#'     if there is a conflict within the Automated Reasoning policy itself.
+#' 
+#' -   `TRANSLATION_AMBIGUOUS` - Detected an ambiguity in the translation
+#'     meant it would be unsound to continue with validity checking.
+#'     Additional context or follow-up questions might be needed to get
+#'     translation to succeed.
+#' 
+#' -   `TOO_COMPLEX` - The input contains too much information for
+#'     Automated Reasoning to process within its latency limits.
+#' 
+#' -   `NO_TRANSLATIONS` - Identifies that some or all of the input prompt
+#'     wasn't translated into logic. This can happen if the input isn't
+#'     relevant to the Automated Reasoning policy, or if the policy doesn't
+#'     have variables to model relevant input. If Automated Reasoning can't
+#'     translate anything, you get a single `NO_TRANSLATIONS` finding. You
+#'     might also see a `NO_TRANSLATIONS` (along with other findings) if
+#'     some part of the validation isn't translated.
+#' @param clientRequestToken A unique, case-sensitive identifier to ensure that the operation
+#' completes no more than one time. If this token matches a previous
+#' request, Amazon Bedrock ignores the request, but does not return an
+#' error.
+#' @param confidenceThreshold The minimum confidence level for logic validation. Content that meets
+#' the threshold is considered a high-confidence finding that can be
+#' validated.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policyArn = "string",
+#'   testCaseId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_automated_reasoning_policy_test_case(
+#'   policyArn = "string",
+#'   guardContent = "string",
+#'   queryContent = "string",
+#'   expectedAggregatedFindingsResult = "VALID"|"INVALID"|"SATISFIABLE"|"IMPOSSIBLE"|"TRANSLATION_AMBIGUOUS"|"TOO_COMPLEX"|"NO_TRANSLATION",
+#'   clientRequestToken = "string",
+#'   confidenceThreshold = 123.0
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_create_automated_reasoning_policy_test_case
+#'
+#' @aliases bedrock_create_automated_reasoning_policy_test_case
+bedrock_create_automated_reasoning_policy_test_case <- function(policyArn, guardContent, queryContent = NULL, expectedAggregatedFindingsResult, clientRequestToken = NULL, confidenceThreshold = NULL) {
+  op <- new_operation(
+    name = "CreateAutomatedReasoningPolicyTestCase",
+    http_method = "POST",
+    http_path = "/automated-reasoning-policies/{policyArn}/test-cases",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$create_automated_reasoning_policy_test_case_input(policyArn = policyArn, guardContent = guardContent, queryContent = queryContent, expectedAggregatedFindingsResult = expectedAggregatedFindingsResult, clientRequestToken = clientRequestToken, confidenceThreshold = confidenceThreshold)
+  output <- .bedrock$create_automated_reasoning_policy_test_case_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$create_automated_reasoning_policy_test_case <- bedrock_create_automated_reasoning_policy_test_case
+
+#' Creates a new version of an existing Automated Reasoning policy
+#'
+#' @description
+#' Creates a new version of an existing Automated Reasoning policy. This
+#' allows you to iterate on your policy rules while maintaining previous
+#' versions for rollback or comparison purposes.
+#'
+#' @usage
+#' bedrock_create_automated_reasoning_policy_version(policyArn,
+#'   clientRequestToken, lastUpdatedDefinitionHash, tags)
+#'
+#' @param policyArn &#91;required&#93; The Amazon Resource Name (ARN) of the Automated Reasoning policy for
+#' which to create a version.
+#' @param clientRequestToken A unique, case-sensitive identifier to ensure that the operation
+#' completes no more than one time. If this token matches a previous
+#' request, Amazon Bedrock ignores the request, but does not return an
+#' error.
+#' @param lastUpdatedDefinitionHash &#91;required&#93; The hash of the current policy definition used as a concurrency token to
+#' ensure the policy hasn't been modified since you last retrieved it.
+#' @param tags A list of tags to associate with the policy version.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policyArn = "string",
+#'   version = "string",
+#'   name = "string",
+#'   description = "string",
+#'   definitionHash = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_automated_reasoning_policy_version(
+#'   policyArn = "string",
+#'   clientRequestToken = "string",
+#'   lastUpdatedDefinitionHash = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_create_automated_reasoning_policy_version
+#'
+#' @aliases bedrock_create_automated_reasoning_policy_version
+bedrock_create_automated_reasoning_policy_version <- function(policyArn, clientRequestToken = NULL, lastUpdatedDefinitionHash, tags = NULL) {
+  op <- new_operation(
+    name = "CreateAutomatedReasoningPolicyVersion",
+    http_method = "POST",
+    http_path = "/automated-reasoning-policies/{policyArn}/versions",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$create_automated_reasoning_policy_version_input(policyArn = policyArn, clientRequestToken = clientRequestToken, lastUpdatedDefinitionHash = lastUpdatedDefinitionHash, tags = tags)
+  output <- .bedrock$create_automated_reasoning_policy_version_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$create_automated_reasoning_policy_version <- bedrock_create_automated_reasoning_policy_version
+
+#' Creates a new custom model in Amazon Bedrock
+#'
+#' @description
+#' Creates a new custom model in Amazon Bedrock. After the model is active,
+#' you can use it for inference.
+#' 
+#' To use the model for inference, you must purchase Provisioned Throughput
+#' for it. You can't use On-demand inference with these custom models. For
+#' more information about Provisioned Throughput, see [Provisioned
+#' Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html).
+#' 
+#' The model appears in [`list_custom_models`][bedrock_list_custom_models]
+#' with a `customizationType` of `imported`. To track the status of the new
+#' model, you use the [`get_custom_model`][bedrock_get_custom_model] API
+#' operation. The model can be in the following states:
+#' 
+#' -   `Creating` - Initial state during validation and registration
+#' 
+#' -   `Active` - Model is ready for use in inference
+#' 
+#' -   `Failed` - Creation process encountered an error
+#' 
+#' **Related APIs**
+#' 
+#' -   [`get_custom_model`][bedrock_get_custom_model]
+#' 
+#' -   [`list_custom_models`][bedrock_list_custom_models]
+#' 
+#' -   [`delete_custom_model`][bedrock_delete_custom_model]
+#'
+#' @usage
+#' bedrock_create_custom_model(modelName, modelSourceConfig,
+#'   modelKmsKeyArn, roleArn, modelTags, clientRequestToken)
+#'
+#' @param modelName &#91;required&#93; A unique name for the custom model.
+#' @param modelSourceConfig &#91;required&#93; The data source for the model. The Amazon S3 URI in the model source
+#' must be for the Amazon-managed Amazon S3 bucket containing your model
+#' artifacts.
+#' @param modelKmsKeyArn The Amazon Resource Name (ARN) of the customer managed KMS key to
+#' encrypt the custom model. If you don't provide a KMS key, Amazon Bedrock
+#' uses an Amazon Web Services-managed KMS key to encrypt the model.
+#' 
+#' If you provide a customer managed KMS key, your Amazon Bedrock service
+#' role must have permissions to use it. For more information see
+#' [Encryption of imported
+#' models](https://docs.aws.amazon.com/bedrock/latest/userguide/encryption-import-model.html).
+#' @param roleArn The Amazon Resource Name (ARN) of an IAM service role that Amazon
+#' Bedrock assumes to perform tasks on your behalf. This role must have
+#' permissions to access the Amazon S3 bucket containing your model
+#' artifacts and the KMS key (if specified). For more information, see
+#' [Setting up an IAM service role for importing
+#' models](https://docs.aws.amazon.com/bedrock/latest/userguide/model-import-iam-role.html)
+#' in the Amazon Bedrock User Guide.
+#' @param modelTags A list of key-value pairs to associate with the custom model resource.
+#' You can use these tags to organize and identify your resources.
+#' 
+#' For more information, see [Tagging
+#' resources](https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html)
+#' in the [Amazon Bedrock User
+#' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' @param clientRequestToken A unique, case-sensitive identifier to ensure that the API request
+#' completes no more than one time. If this token matches a previous
+#' request, Amazon Bedrock ignores the request, but does not return an
+#' error. For more information, see [Ensuring
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   modelArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_custom_model(
+#'   modelName = "string",
+#'   modelSourceConfig = list(
+#'     s3DataSource = list(
+#'       s3Uri = "string"
+#'     )
+#'   ),
+#'   modelKmsKeyArn = "string",
+#'   roleArn = "string",
+#'   modelTags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   clientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_create_custom_model
+#'
+#' @aliases bedrock_create_custom_model
+bedrock_create_custom_model <- function(modelName, modelSourceConfig, modelKmsKeyArn = NULL, roleArn = NULL, modelTags = NULL, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "CreateCustomModel",
+    http_method = "POST",
+    http_path = "/custom-models/create-custom-model",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$create_custom_model_input(modelName = modelName, modelSourceConfig = modelSourceConfig, modelKmsKeyArn = modelKmsKeyArn, roleArn = roleArn, modelTags = modelTags, clientRequestToken = clientRequestToken)
+  output <- .bedrock$create_custom_model_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$create_custom_model <- bedrock_create_custom_model
+
+#' Deploys a custom model for on-demand inference in Amazon Bedrock
+#'
+#' @description
+#' Deploys a custom model for on-demand inference in Amazon Bedrock. After
+#' you deploy your custom model, you use the deployment's Amazon Resource
+#' Name (ARN) as the `modelId` parameter when you submit prompts and
+#' generate responses with model inference.
+#' 
+#' For more information about setting up on-demand inference for custom
+#' models, see [Set up inference for a custom
+#' model](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-use.html).
+#' 
+#' The following actions are related to the
+#' [`create_custom_model_deployment`][bedrock_create_custom_model_deployment]
+#' operation:
+#' 
+#' -   [`get_custom_model_deployment`][bedrock_get_custom_model_deployment]
+#' 
+#' -   [`list_custom_model_deployments`][bedrock_list_custom_model_deployments]
+#' 
+#' -   [`delete_custom_model_deployment`][bedrock_delete_custom_model_deployment]
+#'
+#' @usage
+#' bedrock_create_custom_model_deployment(modelDeploymentName, modelArn,
+#'   description, tags, clientRequestToken)
+#'
+#' @param modelDeploymentName &#91;required&#93; The name for the custom model deployment. The name must be unique within
+#' your Amazon Web Services account and Region.
+#' @param modelArn &#91;required&#93; The Amazon Resource Name (ARN) of the custom model to deploy for
+#' on-demand inference. The custom model must be in the `Active` state.
+#' @param description A description for the custom model deployment to help you identify its
+#' purpose.
+#' @param tags Tags to assign to the custom model deployment. You can use tags to
+#' organize and track your Amazon Web Services resources for cost
+#' allocation and management purposes.
+#' @param clientRequestToken A unique, case-sensitive identifier to ensure that the operation
+#' completes no more than one time. If this token matches a previous
+#' request, Amazon Bedrock ignores the request, but does not return an
+#' error. For more information, see [Ensuring
+#' idempotency](https://docs.aws.amazon.com/bedrock/latest/userguide/).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   customModelDeploymentArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_custom_model_deployment(
+#'   modelDeploymentName = "string",
+#'   modelArn = "string",
+#'   description = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   clientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_create_custom_model_deployment
+#'
+#' @aliases bedrock_create_custom_model_deployment
+bedrock_create_custom_model_deployment <- function(modelDeploymentName, modelArn, description = NULL, tags = NULL, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "CreateCustomModelDeployment",
+    http_method = "POST",
+    http_path = "/model-customization/custom-model-deployments",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$create_custom_model_deployment_input(modelDeploymentName = modelDeploymentName, modelArn = modelArn, description = description, tags = tags, clientRequestToken = clientRequestToken)
+  output <- .bedrock$create_custom_model_deployment_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$create_custom_model_deployment <- bedrock_create_custom_model_deployment
+
 #' Creates an evaluation job
 #'
 #' @description
@@ -286,6 +856,43 @@ bedrock_batch_delete_evaluation_job <- function(jobIdentifiers) {
 #'                   orAll = list(
 #'                     list()
 #'                   )
+#'                 ),
+#'                 implicitFilterConfiguration = list(
+#'                   metadataAttributes = list(
+#'                     list(
+#'                       key = "string",
+#'                       type = "STRING"|"NUMBER"|"BOOLEAN"|"STRING_LIST",
+#'                       description = "string"
+#'                     )
+#'                   ),
+#'                   modelArn = "string"
+#'                 ),
+#'                 rerankingConfiguration = list(
+#'                   type = "BEDROCK_RERANKING_MODEL",
+#'                   bedrockRerankingConfiguration = list(
+#'                     modelConfiguration = list(
+#'                       modelArn = "string",
+#'                       additionalModelRequestFields = list(
+#'                         list()
+#'                       )
+#'                     ),
+#'                     numberOfRerankedResults = 123,
+#'                     metadataConfiguration = list(
+#'                       selectionMode = "SELECTIVE"|"ALL",
+#'                       selectiveModeConfiguration = list(
+#'                         fieldsToInclude = list(
+#'                           list(
+#'                             fieldName = "string"
+#'                           )
+#'                         ),
+#'                         fieldsToExclude = list(
+#'                           list(
+#'                             fieldName = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
 #'                 )
 #'               )
 #'             )
@@ -349,6 +956,43 @@ bedrock_batch_delete_evaluation_job <- function(jobIdentifiers) {
 #'                     ),
 #'                     orAll = list(
 #'                       list()
+#'                     )
+#'                   ),
+#'                   implicitFilterConfiguration = list(
+#'                     metadataAttributes = list(
+#'                       list(
+#'                         key = "string",
+#'                         type = "STRING"|"NUMBER"|"BOOLEAN"|"STRING_LIST",
+#'                         description = "string"
+#'                       )
+#'                     ),
+#'                     modelArn = "string"
+#'                   ),
+#'                   rerankingConfiguration = list(
+#'                     type = "BEDROCK_RERANKING_MODEL",
+#'                     bedrockRerankingConfiguration = list(
+#'                       modelConfiguration = list(
+#'                         modelArn = "string",
+#'                         additionalModelRequestFields = list(
+#'                           list()
+#'                         )
+#'                       ),
+#'                       numberOfRerankedResults = 123,
+#'                       metadataConfiguration = list(
+#'                         selectionMode = "SELECTIVE"|"ALL",
+#'                         selectiveModeConfiguration = list(
+#'                           fieldsToInclude = list(
+#'                             list(
+#'                               fieldName = "string"
+#'                             )
+#'                           ),
+#'                           fieldsToExclude = list(
+#'                             list(
+#'                               fieldName = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
 #'                     )
 #'                   )
 #'                 )
@@ -462,6 +1106,57 @@ bedrock_create_evaluation_job <- function(jobName, jobDescription = NULL, client
 }
 .bedrock$operations$create_evaluation_job <- bedrock_create_evaluation_job
 
+#' Request a model access agreement for the specified model
+#'
+#' @description
+#' Request a model access agreement for the specified model.
+#'
+#' @usage
+#' bedrock_create_foundation_model_agreement(offerToken, modelId)
+#'
+#' @param offerToken &#91;required&#93; An offer token encapsulates the information for an offer.
+#' @param modelId &#91;required&#93; Model Id of the model for the access request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   modelId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_foundation_model_agreement(
+#'   offerToken = "string",
+#'   modelId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_create_foundation_model_agreement
+#'
+#' @aliases bedrock_create_foundation_model_agreement
+bedrock_create_foundation_model_agreement <- function(offerToken, modelId) {
+  op <- new_operation(
+    name = "CreateFoundationModelAgreement",
+    http_method = "POST",
+    http_path = "/create-foundation-model-agreement",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$create_foundation_model_agreement_input(offerToken = offerToken, modelId = modelId)
+  output <- .bedrock$create_foundation_model_agreement_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$create_foundation_model_agreement <- bedrock_create_foundation_model_agreement
+
 #' Creates a guardrail to block topics and to implement safeguards for your
 #' generative AI applications
 #'
@@ -499,9 +1194,9 @@ bedrock_create_evaluation_job <- function(jobName, jobDescription = NULL, client
 #' @usage
 #' bedrock_create_guardrail(name, description, topicPolicyConfig,
 #'   contentPolicyConfig, wordPolicyConfig, sensitiveInformationPolicyConfig,
-#'   contextualGroundingPolicyConfig, crossRegionConfig,
-#'   blockedInputMessaging, blockedOutputsMessaging, kmsKeyId, tags,
-#'   clientRequestToken)
+#'   contextualGroundingPolicyConfig, automatedReasoningPolicyConfig,
+#'   crossRegionConfig, blockedInputMessaging, blockedOutputsMessaging,
+#'   kmsKeyId, tags, clientRequestToken)
 #'
 #' @param name &#91;required&#93; The name to give the guardrail.
 #' @param description A description of the guardrail.
@@ -511,6 +1206,8 @@ bedrock_create_evaluation_job <- function(jobName, jobDescription = NULL, client
 #' @param sensitiveInformationPolicyConfig The sensitive information policy to configure for the guardrail.
 #' @param contextualGroundingPolicyConfig The contextual grounding policy configuration used to create a
 #' guardrail.
+#' @param automatedReasoningPolicyConfig Optional configuration for integrating Automated Reasoning policies with
+#' the new guardrail.
 #' @param crossRegionConfig The system-defined guardrail profile that you're using with your
 #' guardrail. Guardrail profiles define the destination Amazon Web Services
 #' Regions where guardrail inference requests can be automatically routed.
@@ -560,6 +1257,9 @@ bedrock_create_evaluation_job <- function(jobName, jobDescription = NULL, client
 #'         inputEnabled = TRUE|FALSE,
 #'         outputEnabled = TRUE|FALSE
 #'       )
+#'     ),
+#'     tierConfig = list(
+#'       tierName = "CLASSIC"|"STANDARD"
 #'     )
 #'   ),
 #'   contentPolicyConfig = list(
@@ -579,6 +1279,9 @@ bedrock_create_evaluation_job <- function(jobName, jobDescription = NULL, client
 #'         inputEnabled = TRUE|FALSE,
 #'         outputEnabled = TRUE|FALSE
 #'       )
+#'     ),
+#'     tierConfig = list(
+#'       tierName = "CLASSIC"|"STANDARD"
 #'     )
 #'   ),
 #'   wordPolicyConfig = list(
@@ -635,6 +1338,12 @@ bedrock_create_evaluation_job <- function(jobName, jobDescription = NULL, client
 #'       )
 #'     )
 #'   ),
+#'   automatedReasoningPolicyConfig = list(
+#'     policies = list(
+#'       "string"
+#'     ),
+#'     confidenceThreshold = 123.0
+#'   ),
 #'   crossRegionConfig = list(
 #'     guardrailProfileIdentifier = "string"
 #'   ),
@@ -656,7 +1365,7 @@ bedrock_create_evaluation_job <- function(jobName, jobDescription = NULL, client
 #' @rdname bedrock_create_guardrail
 #'
 #' @aliases bedrock_create_guardrail
-bedrock_create_guardrail <- function(name, description = NULL, topicPolicyConfig = NULL, contentPolicyConfig = NULL, wordPolicyConfig = NULL, sensitiveInformationPolicyConfig = NULL, contextualGroundingPolicyConfig = NULL, crossRegionConfig = NULL, blockedInputMessaging, blockedOutputsMessaging, kmsKeyId = NULL, tags = NULL, clientRequestToken = NULL) {
+bedrock_create_guardrail <- function(name, description = NULL, topicPolicyConfig = NULL, contentPolicyConfig = NULL, wordPolicyConfig = NULL, sensitiveInformationPolicyConfig = NULL, contextualGroundingPolicyConfig = NULL, automatedReasoningPolicyConfig = NULL, crossRegionConfig = NULL, blockedInputMessaging, blockedOutputsMessaging, kmsKeyId = NULL, tags = NULL, clientRequestToken = NULL) {
   op <- new_operation(
     name = "CreateGuardrail",
     http_method = "POST",
@@ -665,7 +1374,7 @@ bedrock_create_guardrail <- function(name, description = NULL, topicPolicyConfig
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrock$create_guardrail_input(name = name, description = description, topicPolicyConfig = topicPolicyConfig, contentPolicyConfig = contentPolicyConfig, wordPolicyConfig = wordPolicyConfig, sensitiveInformationPolicyConfig = sensitiveInformationPolicyConfig, contextualGroundingPolicyConfig = contextualGroundingPolicyConfig, crossRegionConfig = crossRegionConfig, blockedInputMessaging = blockedInputMessaging, blockedOutputsMessaging = blockedOutputsMessaging, kmsKeyId = kmsKeyId, tags = tags, clientRequestToken = clientRequestToken)
+  input <- .bedrock$create_guardrail_input(name = name, description = description, topicPolicyConfig = topicPolicyConfig, contentPolicyConfig = contentPolicyConfig, wordPolicyConfig = wordPolicyConfig, sensitiveInformationPolicyConfig = sensitiveInformationPolicyConfig, contextualGroundingPolicyConfig = contextualGroundingPolicyConfig, automatedReasoningPolicyConfig = automatedReasoningPolicyConfig, crossRegionConfig = crossRegionConfig, blockedInputMessaging = blockedInputMessaging, blockedOutputsMessaging = blockedOutputsMessaging, kmsKeyId = kmsKeyId, tags = tags, clientRequestToken = clientRequestToken)
   output <- .bedrock$create_guardrail_output()
   config <- get_config()
   svc <- .bedrock$service(config, op)
@@ -1094,7 +1803,7 @@ bedrock_create_model_copy_job <- function(sourceModelArn, targetModelName, model
 #'   roleArn = "string",
 #'   clientRequestToken = "string",
 #'   baseModelIdentifier = "string",
-#'   customizationType = "FINE_TUNING"|"CONTINUED_PRE_TRAINING"|"DISTILLATION",
+#'   customizationType = "FINE_TUNING"|"CONTINUED_PRE_TRAINING"|"DISTILLATION"|"REINFORCEMENT_FINE_TUNING"|"IMPORTED",
 #'   customModelKmsKeyId = "string",
 #'   jobTags = list(
 #'     list(
@@ -1171,6 +1880,23 @@ bedrock_create_model_copy_job <- function(sourceModelArn, targetModelName, model
 #'       teacherModelConfig = list(
 #'         teacherModelIdentifier = "string",
 #'         maxResponseLengthForInference = 123
+#'       )
+#'     ),
+#'     rftConfig = list(
+#'       graderConfig = list(
+#'         lambdaGrader = list(
+#'           lambdaArn = "string"
+#'         )
+#'       ),
+#'       hyperParameters = list(
+#'         epochCount = 123,
+#'         batchSize = 123,
+#'         learningRate = 123.0,
+#'         maxPromptLength = 123,
+#'         trainingSamplePerPrompt = 123,
+#'         inferenceMaxTokens = 123,
+#'         reasoningEffort = "low"|"medium"|"high",
+#'         evalInterval = 123
 #'       )
 #'     )
 #'   )
@@ -1547,8 +2273,8 @@ bedrock_create_prompt_router <- function(clientRequestToken = NULL, promptRouter
 #' 
 #' Custom models support all levels of commitment. To see which base models
 #' support no commitment, see [Supported regions and models for Provisioned
-#' Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/pt-supported.html)
-#' in the [Amazon Bedrock User
+#' Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/) in
+#' the [Amazon Bedrock User
 #' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html)
 #' @param tags Tags to associate with this Provisioned Throughput.
 #'
@@ -1601,6 +2327,171 @@ bedrock_create_provisioned_model_throughput <- function(clientRequestToken = NUL
 }
 .bedrock$operations$create_provisioned_model_throughput <- bedrock_create_provisioned_model_throughput
 
+#' Deletes an Automated Reasoning policy or policy version
+#'
+#' @description
+#' Deletes an Automated Reasoning policy or policy version. This operation
+#' is idempotent. If you delete a policy more than once, each call
+#' succeeds. Deleting a policy removes it permanently and cannot be undone.
+#'
+#' @usage
+#' bedrock_delete_automated_reasoning_policy(policyArn, force)
+#'
+#' @param policyArn &#91;required&#93; The Amazon Resource Name (ARN) of the Automated Reasoning policy to
+#' delete.
+#' @param force Specifies whether to force delete the automated reasoning policy even if
+#' it has active resources. When `false`, Amazon Bedrock validates if all
+#' artifacts have been deleted (e.g. policy version, test case, test
+#' result) for a policy before deletion. When `true`, Amazon Bedrock will
+#' delete the policy and all its artifacts without validation. Default is
+#' `false`.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_automated_reasoning_policy(
+#'   policyArn = "string",
+#'   force = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_delete_automated_reasoning_policy
+#'
+#' @aliases bedrock_delete_automated_reasoning_policy
+bedrock_delete_automated_reasoning_policy <- function(policyArn, force = NULL) {
+  op <- new_operation(
+    name = "DeleteAutomatedReasoningPolicy",
+    http_method = "DELETE",
+    http_path = "/automated-reasoning-policies/{policyArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$delete_automated_reasoning_policy_input(policyArn = policyArn, force = force)
+  output <- .bedrock$delete_automated_reasoning_policy_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$delete_automated_reasoning_policy <- bedrock_delete_automated_reasoning_policy
+
+#' Deletes an Automated Reasoning policy build workflow and its associated
+#' artifacts
+#'
+#' @description
+#' Deletes an Automated Reasoning policy build workflow and its associated
+#' artifacts. This permanently removes the workflow history and any
+#' generated assets.
+#'
+#' @usage
+#' bedrock_delete_automated_reasoning_policy_build_workflow(policyArn,
+#'   buildWorkflowId, lastUpdatedAt)
+#'
+#' @param policyArn &#91;required&#93; The Amazon Resource Name (ARN) of the Automated Reasoning policy whose
+#' build workflow you want to delete.
+#' @param buildWorkflowId &#91;required&#93; The unique identifier of the build workflow to delete.
+#' @param lastUpdatedAt &#91;required&#93; The timestamp when the build workflow was last updated. This is used for
+#' optimistic concurrency control to prevent accidental deletion of
+#' workflows that have been modified.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_automated_reasoning_policy_build_workflow(
+#'   policyArn = "string",
+#'   buildWorkflowId = "string",
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_delete_automated_reasoning_policy_build_workflow
+#'
+#' @aliases bedrock_delete_automated_reasoning_policy_build_workflow
+bedrock_delete_automated_reasoning_policy_build_workflow <- function(policyArn, buildWorkflowId, lastUpdatedAt) {
+  op <- new_operation(
+    name = "DeleteAutomatedReasoningPolicyBuildWorkflow",
+    http_method = "DELETE",
+    http_path = "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$delete_automated_reasoning_policy_build_workflow_input(policyArn = policyArn, buildWorkflowId = buildWorkflowId, lastUpdatedAt = lastUpdatedAt)
+  output <- .bedrock$delete_automated_reasoning_policy_build_workflow_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$delete_automated_reasoning_policy_build_workflow <- bedrock_delete_automated_reasoning_policy_build_workflow
+
+#' Deletes an Automated Reasoning policy test
+#'
+#' @description
+#' Deletes an Automated Reasoning policy test. This operation is
+#' idempotent; if you delete a test more than once, each call succeeds.
+#'
+#' @usage
+#' bedrock_delete_automated_reasoning_policy_test_case(policyArn,
+#'   testCaseId, lastUpdatedAt)
+#'
+#' @param policyArn &#91;required&#93; The Amazon Resource Name (ARN) of the Automated Reasoning policy that
+#' contains the test.
+#' @param testCaseId &#91;required&#93; The unique identifier of the test to delete.
+#' @param lastUpdatedAt &#91;required&#93; The timestamp when the test was last updated. This is used as a
+#' concurrency token to prevent conflicting modifications.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_automated_reasoning_policy_test_case(
+#'   policyArn = "string",
+#'   testCaseId = "string",
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_delete_automated_reasoning_policy_test_case
+#'
+#' @aliases bedrock_delete_automated_reasoning_policy_test_case
+bedrock_delete_automated_reasoning_policy_test_case <- function(policyArn, testCaseId, lastUpdatedAt) {
+  op <- new_operation(
+    name = "DeleteAutomatedReasoningPolicyTestCase",
+    http_method = "DELETE",
+    http_path = "/automated-reasoning-policies/{policyArn}/test-cases/{testCaseId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$delete_automated_reasoning_policy_test_case_input(policyArn = policyArn, testCaseId = testCaseId, lastUpdatedAt = lastUpdatedAt)
+  output <- .bedrock$delete_automated_reasoning_policy_test_case_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$delete_automated_reasoning_policy_test_case <- bedrock_delete_automated_reasoning_policy_test_case
+
 #' Deletes a custom model that you created earlier
 #'
 #' @description
@@ -1648,6 +2539,151 @@ bedrock_delete_custom_model <- function(modelIdentifier) {
   return(response)
 }
 .bedrock$operations$delete_custom_model <- bedrock_delete_custom_model
+
+#' Deletes a custom model deployment
+#'
+#' @description
+#' Deletes a custom model deployment. This operation stops the deployment
+#' and removes it from your account. After deletion, the deployment ARN can
+#' no longer be used for inference requests.
+#' 
+#' The following actions are related to the
+#' [`delete_custom_model_deployment`][bedrock_delete_custom_model_deployment]
+#' operation:
+#' 
+#' -   [`create_custom_model_deployment`][bedrock_create_custom_model_deployment]
+#' 
+#' -   [`get_custom_model_deployment`][bedrock_get_custom_model_deployment]
+#' 
+#' -   [`list_custom_model_deployments`][bedrock_list_custom_model_deployments]
+#'
+#' @usage
+#' bedrock_delete_custom_model_deployment(customModelDeploymentIdentifier)
+#'
+#' @param customModelDeploymentIdentifier &#91;required&#93; The Amazon Resource Name (ARN) or name of the custom model deployment to
+#' delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_custom_model_deployment(
+#'   customModelDeploymentIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_delete_custom_model_deployment
+#'
+#' @aliases bedrock_delete_custom_model_deployment
+bedrock_delete_custom_model_deployment <- function(customModelDeploymentIdentifier) {
+  op <- new_operation(
+    name = "DeleteCustomModelDeployment",
+    http_method = "DELETE",
+    http_path = "/model-customization/custom-model-deployments/{customModelDeploymentIdentifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$delete_custom_model_deployment_input(customModelDeploymentIdentifier = customModelDeploymentIdentifier)
+  output <- .bedrock$delete_custom_model_deployment_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$delete_custom_model_deployment <- bedrock_delete_custom_model_deployment
+
+#' Deletes the account-level enforced guardrail configuration
+#'
+#' @description
+#' Deletes the account-level enforced guardrail configuration.
+#'
+#' @usage
+#' bedrock_delete_enforced_guardrail_configuration(configId)
+#'
+#' @param configId &#91;required&#93; Unique ID for the account enforced configuration.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_enforced_guardrail_configuration(
+#'   configId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_delete_enforced_guardrail_configuration
+#'
+#' @aliases bedrock_delete_enforced_guardrail_configuration
+bedrock_delete_enforced_guardrail_configuration <- function(configId) {
+  op <- new_operation(
+    name = "DeleteEnforcedGuardrailConfiguration",
+    http_method = "DELETE",
+    http_path = "/enforcedGuardrailsConfiguration/{configId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$delete_enforced_guardrail_configuration_input(configId = configId)
+  output <- .bedrock$delete_enforced_guardrail_configuration_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$delete_enforced_guardrail_configuration <- bedrock_delete_enforced_guardrail_configuration
+
+#' Delete the model access agreement for the specified model
+#'
+#' @description
+#' Delete the model access agreement for the specified model.
+#'
+#' @usage
+#' bedrock_delete_foundation_model_agreement(modelId)
+#'
+#' @param modelId &#91;required&#93; Model Id of the model access to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_foundation_model_agreement(
+#'   modelId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_delete_foundation_model_agreement
+#'
+#' @aliases bedrock_delete_foundation_model_agreement
+bedrock_delete_foundation_model_agreement <- function(modelId) {
+  op <- new_operation(
+    name = "DeleteFoundationModelAgreement",
+    http_method = "POST",
+    http_path = "/delete-foundation-model-agreement",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$delete_foundation_model_agreement_input(modelId = modelId)
+  output <- .bedrock$delete_foundation_model_agreement_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$delete_foundation_model_agreement <- bedrock_delete_foundation_model_agreement
 
 #' Deletes a guardrail
 #'
@@ -2025,12 +3061,1161 @@ bedrock_deregister_marketplace_model_endpoint <- function(endpointArn) {
 }
 .bedrock$operations$deregister_marketplace_model_endpoint <- bedrock_deregister_marketplace_model_endpoint
 
+#' Exports the policy definition for an Automated Reasoning policy version
+#'
+#' @description
+#' Exports the policy definition for an Automated Reasoning policy version.
+#' Returns the complete policy definition including rules, variables, and
+#' custom variable types in a structured format.
+#'
+#' @usage
+#' bedrock_export_automated_reasoning_policy_version(policyArn)
+#'
+#' @param policyArn &#91;required&#93; The Amazon Resource Name (ARN) of the Automated Reasoning policy to
+#' export. Can be either the unversioned ARN for the draft policy or a
+#' versioned ARN for a specific policy version.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policyDefinition = list(
+#'     version = "string",
+#'     types = list(
+#'       list(
+#'         name = "string",
+#'         description = "string",
+#'         values = list(
+#'           list(
+#'             value = "string",
+#'             description = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     rules = list(
+#'       list(
+#'         id = "string",
+#'         expression = "string",
+#'         alternateExpression = "string"
+#'       )
+#'     ),
+#'     variables = list(
+#'       list(
+#'         name = "string",
+#'         type = "string",
+#'         description = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$export_automated_reasoning_policy_version(
+#'   policyArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_export_automated_reasoning_policy_version
+#'
+#' @aliases bedrock_export_automated_reasoning_policy_version
+bedrock_export_automated_reasoning_policy_version <- function(policyArn) {
+  op <- new_operation(
+    name = "ExportAutomatedReasoningPolicyVersion",
+    http_method = "GET",
+    http_path = "/automated-reasoning-policies/{policyArn}/export",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$export_automated_reasoning_policy_version_input(policyArn = policyArn)
+  output <- .bedrock$export_automated_reasoning_policy_version_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$export_automated_reasoning_policy_version <- bedrock_export_automated_reasoning_policy_version
+
+#' Retrieves details about an Automated Reasoning policy or policy version
+#'
+#' @description
+#' Retrieves details about an Automated Reasoning policy or policy version.
+#' Returns information including the policy definition, metadata, and
+#' timestamps.
+#'
+#' @usage
+#' bedrock_get_automated_reasoning_policy(policyArn)
+#'
+#' @param policyArn &#91;required&#93; The Amazon Resource Name (ARN) of the Automated Reasoning policy to
+#' retrieve. Can be either the unversioned ARN for the draft policy or an
+#' ARN for a specific policy version.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policyArn = "string",
+#'   name = "string",
+#'   version = "string",
+#'   policyId = "string",
+#'   description = "string",
+#'   definitionHash = "string",
+#'   kmsKeyArn = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_automated_reasoning_policy(
+#'   policyArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_get_automated_reasoning_policy
+#'
+#' @aliases bedrock_get_automated_reasoning_policy
+bedrock_get_automated_reasoning_policy <- function(policyArn) {
+  op <- new_operation(
+    name = "GetAutomatedReasoningPolicy",
+    http_method = "GET",
+    http_path = "/automated-reasoning-policies/{policyArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$get_automated_reasoning_policy_input(policyArn = policyArn)
+  output <- .bedrock$get_automated_reasoning_policy_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$get_automated_reasoning_policy <- bedrock_get_automated_reasoning_policy
+
+#' Retrieves the current annotations for an Automated Reasoning policy
+#' build workflow
+#'
+#' @description
+#' Retrieves the current annotations for an Automated Reasoning policy
+#' build workflow. Annotations contain corrections to the rules, variables
+#' and types to be applied to the policy.
+#'
+#' @usage
+#' bedrock_get_automated_reasoning_policy_annotations(policyArn,
+#'   buildWorkflowId)
+#'
+#' @param policyArn &#91;required&#93; The Amazon Resource Name (ARN) of the Automated Reasoning policy whose
+#' annotations you want to retrieve.
+#' @param buildWorkflowId &#91;required&#93; The unique identifier of the build workflow whose annotations you want
+#' to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policyArn = "string",
+#'   name = "string",
+#'   buildWorkflowId = "string",
+#'   annotations = list(
+#'     list(
+#'       addType = list(
+#'         name = "string",
+#'         description = "string",
+#'         values = list(
+#'           list(
+#'             value = "string",
+#'             description = "string"
+#'           )
+#'         )
+#'       ),
+#'       updateType = list(
+#'         name = "string",
+#'         newName = "string",
+#'         description = "string",
+#'         values = list(
+#'           list(
+#'             addTypeValue = list(
+#'               value = "string",
+#'               description = "string"
+#'             ),
+#'             updateTypeValue = list(
+#'               value = "string",
+#'               newValue = "string",
+#'               description = "string"
+#'             ),
+#'             deleteTypeValue = list(
+#'               value = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       deleteType = list(
+#'         name = "string"
+#'       ),
+#'       addVariable = list(
+#'         name = "string",
+#'         type = "string",
+#'         description = "string"
+#'       ),
+#'       updateVariable = list(
+#'         name = "string",
+#'         newName = "string",
+#'         description = "string"
+#'       ),
+#'       deleteVariable = list(
+#'         name = "string"
+#'       ),
+#'       addRule = list(
+#'         expression = "string"
+#'       ),
+#'       updateRule = list(
+#'         ruleId = "string",
+#'         expression = "string"
+#'       ),
+#'       deleteRule = list(
+#'         ruleId = "string"
+#'       ),
+#'       addRuleFromNaturalLanguage = list(
+#'         naturalLanguage = "string"
+#'       ),
+#'       updateFromRulesFeedback = list(
+#'         ruleIds = list(
+#'           "string"
+#'         ),
+#'         feedback = "string"
+#'       ),
+#'       updateFromScenarioFeedback = list(
+#'         ruleIds = list(
+#'           "string"
+#'         ),
+#'         scenarioExpression = "string",
+#'         feedback = "string"
+#'       ),
+#'       ingestContent = list(
+#'         content = "string"
+#'       )
+#'     )
+#'   ),
+#'   annotationSetHash = "string",
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_automated_reasoning_policy_annotations(
+#'   policyArn = "string",
+#'   buildWorkflowId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_get_automated_reasoning_policy_annotations
+#'
+#' @aliases bedrock_get_automated_reasoning_policy_annotations
+bedrock_get_automated_reasoning_policy_annotations <- function(policyArn, buildWorkflowId) {
+  op <- new_operation(
+    name = "GetAutomatedReasoningPolicyAnnotations",
+    http_method = "GET",
+    http_path = "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}/annotations",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$get_automated_reasoning_policy_annotations_input(policyArn = policyArn, buildWorkflowId = buildWorkflowId)
+  output <- .bedrock$get_automated_reasoning_policy_annotations_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$get_automated_reasoning_policy_annotations <- bedrock_get_automated_reasoning_policy_annotations
+
+#' Retrieves detailed information about an Automated Reasoning policy build
+#' workflow, including its status, configuration, and metadata
+#'
+#' @description
+#' Retrieves detailed information about an Automated Reasoning policy build
+#' workflow, including its status, configuration, and metadata.
+#'
+#' @usage
+#' bedrock_get_automated_reasoning_policy_build_workflow(policyArn,
+#'   buildWorkflowId)
+#'
+#' @param policyArn &#91;required&#93; The Amazon Resource Name (ARN) of the Automated Reasoning policy whose
+#' build workflow you want to retrieve.
+#' @param buildWorkflowId &#91;required&#93; The unique identifier of the build workflow to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policyArn = "string",
+#'   buildWorkflowId = "string",
+#'   status = "SCHEDULED"|"CANCEL_REQUESTED"|"PREPROCESSING"|"BUILDING"|"TESTING"|"COMPLETED"|"FAILED"|"CANCELLED",
+#'   buildWorkflowType = "INGEST_CONTENT"|"REFINE_POLICY"|"IMPORT_POLICY",
+#'   documentName = "string",
+#'   documentContentType = "pdf"|"txt",
+#'   documentDescription = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_automated_reasoning_policy_build_workflow(
+#'   policyArn = "string",
+#'   buildWorkflowId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_get_automated_reasoning_policy_build_workflow
+#'
+#' @aliases bedrock_get_automated_reasoning_policy_build_workflow
+bedrock_get_automated_reasoning_policy_build_workflow <- function(policyArn, buildWorkflowId) {
+  op <- new_operation(
+    name = "GetAutomatedReasoningPolicyBuildWorkflow",
+    http_method = "GET",
+    http_path = "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$get_automated_reasoning_policy_build_workflow_input(policyArn = policyArn, buildWorkflowId = buildWorkflowId)
+  output <- .bedrock$get_automated_reasoning_policy_build_workflow_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$get_automated_reasoning_policy_build_workflow <- bedrock_get_automated_reasoning_policy_build_workflow
+
+#' Retrieves the resulting assets from a completed Automated Reasoning
+#' policy build workflow, including build logs, quality reports, and
+#' generated policy artifacts
+#'
+#' @description
+#' Retrieves the resulting assets from a completed Automated Reasoning
+#' policy build workflow, including build logs, quality reports, and
+#' generated policy artifacts.
+#'
+#' @usage
+#' bedrock_get_automated_reasoning_policy_build_workflow_result_assets(
+#'   policyArn, buildWorkflowId, assetType)
+#'
+#' @param policyArn &#91;required&#93; The Amazon Resource Name (ARN) of the Automated Reasoning policy whose
+#' build workflow assets you want to retrieve.
+#' @param buildWorkflowId &#91;required&#93; The unique identifier of the build workflow whose result assets you want
+#' to retrieve.
+#' @param assetType &#91;required&#93; The type of asset to retrieve (e.g., BUILD_LOG, QUALITY_REPORT,
+#' POLICY_DEFINITION).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policyArn = "string",
+#'   buildWorkflowId = "string",
+#'   buildWorkflowAssets = list(
+#'     policyDefinition = list(
+#'       version = "string",
+#'       types = list(
+#'         list(
+#'           name = "string",
+#'           description = "string",
+#'           values = list(
+#'             list(
+#'               value = "string",
+#'               description = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       rules = list(
+#'         list(
+#'           id = "string",
+#'           expression = "string",
+#'           alternateExpression = "string"
+#'         )
+#'       ),
+#'       variables = list(
+#'         list(
+#'           name = "string",
+#'           type = "string",
+#'           description = "string"
+#'         )
+#'       )
+#'     ),
+#'     qualityReport = list(
+#'       typeCount = 123,
+#'       variableCount = 123,
+#'       ruleCount = 123,
+#'       unusedTypes = list(
+#'         "string"
+#'       ),
+#'       unusedTypeValues = list(
+#'         list(
+#'           typeName = "string",
+#'           valueName = "string"
+#'         )
+#'       ),
+#'       unusedVariables = list(
+#'         "string"
+#'       ),
+#'       conflictingRules = list(
+#'         "string"
+#'       ),
+#'       disjointRuleSets = list(
+#'         list(
+#'           variables = list(
+#'             "string"
+#'           ),
+#'           rules = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     buildLog = list(
+#'       entries = list(
+#'         list(
+#'           annotation = list(
+#'             addType = list(
+#'               name = "string",
+#'               description = "string",
+#'               values = list(
+#'                 list(
+#'                   value = "string",
+#'                   description = "string"
+#'                 )
+#'               )
+#'             ),
+#'             updateType = list(
+#'               name = "string",
+#'               newName = "string",
+#'               description = "string",
+#'               values = list(
+#'                 list(
+#'                   addTypeValue = list(
+#'                     value = "string",
+#'                     description = "string"
+#'                   ),
+#'                   updateTypeValue = list(
+#'                     value = "string",
+#'                     newValue = "string",
+#'                     description = "string"
+#'                   ),
+#'                   deleteTypeValue = list(
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             deleteType = list(
+#'               name = "string"
+#'             ),
+#'             addVariable = list(
+#'               name = "string",
+#'               type = "string",
+#'               description = "string"
+#'             ),
+#'             updateVariable = list(
+#'               name = "string",
+#'               newName = "string",
+#'               description = "string"
+#'             ),
+#'             deleteVariable = list(
+#'               name = "string"
+#'             ),
+#'             addRule = list(
+#'               expression = "string"
+#'             ),
+#'             updateRule = list(
+#'               ruleId = "string",
+#'               expression = "string"
+#'             ),
+#'             deleteRule = list(
+#'               ruleId = "string"
+#'             ),
+#'             addRuleFromNaturalLanguage = list(
+#'               naturalLanguage = "string"
+#'             ),
+#'             updateFromRulesFeedback = list(
+#'               ruleIds = list(
+#'                 "string"
+#'               ),
+#'               feedback = "string"
+#'             ),
+#'             updateFromScenarioFeedback = list(
+#'               ruleIds = list(
+#'                 "string"
+#'               ),
+#'               scenarioExpression = "string",
+#'               feedback = "string"
+#'             ),
+#'             ingestContent = list(
+#'               content = "string"
+#'             )
+#'           ),
+#'           status = "APPLIED"|"FAILED",
+#'           buildSteps = list(
+#'             list(
+#'               context = list(
+#'                 planning = list(),
+#'                 mutation = list(
+#'                   addType = list(
+#'                     type = list(
+#'                       name = "string",
+#'                       description = "string",
+#'                       values = list(
+#'                         list(
+#'                           value = "string",
+#'                           description = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   updateType = list(
+#'                     type = list(
+#'                       name = "string",
+#'                       description = "string",
+#'                       values = list(
+#'                         list(
+#'                           value = "string",
+#'                           description = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   deleteType = list(
+#'                     name = "string"
+#'                   ),
+#'                   addVariable = list(
+#'                     variable = list(
+#'                       name = "string",
+#'                       type = "string",
+#'                       description = "string"
+#'                     )
+#'                   ),
+#'                   updateVariable = list(
+#'                     variable = list(
+#'                       name = "string",
+#'                       type = "string",
+#'                       description = "string"
+#'                     )
+#'                   ),
+#'                   deleteVariable = list(
+#'                     name = "string"
+#'                   ),
+#'                   addRule = list(
+#'                     rule = list(
+#'                       id = "string",
+#'                       expression = "string",
+#'                       alternateExpression = "string"
+#'                     )
+#'                   ),
+#'                   updateRule = list(
+#'                     rule = list(
+#'                       id = "string",
+#'                       expression = "string",
+#'                       alternateExpression = "string"
+#'                     )
+#'                   ),
+#'                   deleteRule = list(
+#'                     id = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               priorElement = list(
+#'                 policyDefinitionVariable = list(
+#'                   name = "string",
+#'                   type = "string",
+#'                   description = "string"
+#'                 ),
+#'                 policyDefinitionType = list(
+#'                   name = "string",
+#'                   description = "string",
+#'                   values = list(
+#'                     list(
+#'                       value = "string",
+#'                       description = "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 policyDefinitionRule = list(
+#'                   id = "string",
+#'                   expression = "string",
+#'                   alternateExpression = "string"
+#'                 )
+#'               ),
+#'               messages = list(
+#'                 list(
+#'                   message = "string",
+#'                   messageType = "INFO"|"WARNING"|"ERROR"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     generatedTestCases = list(
+#'       generatedTestCases = list(
+#'         list(
+#'           queryContent = "string",
+#'           guardContent = "string",
+#'           expectedAggregatedFindingsResult = "VALID"|"INVALID"|"SATISFIABLE"|"IMPOSSIBLE"|"TRANSLATION_AMBIGUOUS"|"TOO_COMPLEX"|"NO_TRANSLATION"
+#'         )
+#'       )
+#'     ),
+#'     policyScenarios = list(
+#'       policyScenarios = list(
+#'         list(
+#'           expression = "string",
+#'           alternateExpression = "string",
+#'           expectedResult = "VALID"|"INVALID"|"SATISFIABLE"|"IMPOSSIBLE"|"TRANSLATION_AMBIGUOUS"|"TOO_COMPLEX"|"NO_TRANSLATION",
+#'           ruleIds = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_automated_reasoning_policy_build_workflow_result_assets(
+#'   policyArn = "string",
+#'   buildWorkflowId = "string",
+#'   assetType = "BUILD_LOG"|"QUALITY_REPORT"|"POLICY_DEFINITION"|"GENERATED_TEST_CASES"|"POLICY_SCENARIOS"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_get_autom_reaso_polic_build_workf_resul_asset
+#'
+#' @aliases bedrock_get_automated_reasoning_policy_build_workflow_result_assets
+bedrock_get_automated_reasoning_policy_build_workflow_result_assets <- function(policyArn, buildWorkflowId, assetType) {
+  op <- new_operation(
+    name = "GetAutomatedReasoningPolicyBuildWorkflowResultAssets",
+    http_method = "GET",
+    http_path = "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}/result-assets",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$get_automated_reasoning_policy_build_workflow_result_assets_input(policyArn = policyArn, buildWorkflowId = buildWorkflowId, assetType = assetType)
+  output <- .bedrock$get_automated_reasoning_policy_build_workflow_result_assets_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$get_automated_reasoning_policy_build_workflow_result_assets <- bedrock_get_automated_reasoning_policy_build_workflow_result_assets
+
+#' Retrieves the next test scenario for validating an Automated Reasoning
+#' policy
+#'
+#' @description
+#' Retrieves the next test scenario for validating an Automated Reasoning
+#' policy. This is used during the interactive policy refinement process to
+#' test policy behavior.
+#'
+#' @usage
+#' bedrock_get_automated_reasoning_policy_next_scenario(policyArn,
+#'   buildWorkflowId)
+#'
+#' @param policyArn &#91;required&#93; The Amazon Resource Name (ARN) of the Automated Reasoning policy for
+#' which you want to get the next test scenario.
+#' @param buildWorkflowId &#91;required&#93; The unique identifier of the build workflow associated with the test
+#' scenarios.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policyArn = "string",
+#'   scenario = list(
+#'     expression = "string",
+#'     alternateExpression = "string",
+#'     expectedResult = "VALID"|"INVALID"|"SATISFIABLE"|"IMPOSSIBLE"|"TRANSLATION_AMBIGUOUS"|"TOO_COMPLEX"|"NO_TRANSLATION",
+#'     ruleIds = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_automated_reasoning_policy_next_scenario(
+#'   policyArn = "string",
+#'   buildWorkflowId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_get_automated_reasoning_policy_next_scenario
+#'
+#' @aliases bedrock_get_automated_reasoning_policy_next_scenario
+bedrock_get_automated_reasoning_policy_next_scenario <- function(policyArn, buildWorkflowId) {
+  op <- new_operation(
+    name = "GetAutomatedReasoningPolicyNextScenario",
+    http_method = "GET",
+    http_path = "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}/scenarios",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$get_automated_reasoning_policy_next_scenario_input(policyArn = policyArn, buildWorkflowId = buildWorkflowId)
+  output <- .bedrock$get_automated_reasoning_policy_next_scenario_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$get_automated_reasoning_policy_next_scenario <- bedrock_get_automated_reasoning_policy_next_scenario
+
+#' Retrieves details about a specific Automated Reasoning policy test
+#'
+#' @description
+#' Retrieves details about a specific Automated Reasoning policy test.
+#'
+#' @usage
+#' bedrock_get_automated_reasoning_policy_test_case(policyArn, testCaseId)
+#'
+#' @param policyArn &#91;required&#93; The Amazon Resource Name (ARN) of the Automated Reasoning policy that
+#' contains the test.
+#' @param testCaseId &#91;required&#93; The unique identifier of the test to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policyArn = "string",
+#'   testCase = list(
+#'     testCaseId = "string",
+#'     guardContent = "string",
+#'     queryContent = "string",
+#'     expectedAggregatedFindingsResult = "VALID"|"INVALID"|"SATISFIABLE"|"IMPOSSIBLE"|"TRANSLATION_AMBIGUOUS"|"TOO_COMPLEX"|"NO_TRANSLATION",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     confidenceThreshold = 123.0
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_automated_reasoning_policy_test_case(
+#'   policyArn = "string",
+#'   testCaseId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_get_automated_reasoning_policy_test_case
+#'
+#' @aliases bedrock_get_automated_reasoning_policy_test_case
+bedrock_get_automated_reasoning_policy_test_case <- function(policyArn, testCaseId) {
+  op <- new_operation(
+    name = "GetAutomatedReasoningPolicyTestCase",
+    http_method = "GET",
+    http_path = "/automated-reasoning-policies/{policyArn}/test-cases/{testCaseId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$get_automated_reasoning_policy_test_case_input(policyArn = policyArn, testCaseId = testCaseId)
+  output <- .bedrock$get_automated_reasoning_policy_test_case_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$get_automated_reasoning_policy_test_case <- bedrock_get_automated_reasoning_policy_test_case
+
+#' Retrieves the test result for a specific Automated Reasoning policy test
+#'
+#' @description
+#' Retrieves the test result for a specific Automated Reasoning policy
+#' test. Returns detailed validation findings and execution status.
+#'
+#' @usage
+#' bedrock_get_automated_reasoning_policy_test_result(policyArn,
+#'   buildWorkflowId, testCaseId)
+#'
+#' @param policyArn &#91;required&#93; The Amazon Resource Name (ARN) of the Automated Reasoning policy.
+#' @param buildWorkflowId &#91;required&#93; The build workflow identifier. The build workflow must display a
+#' `COMPLETED` status to get results.
+#' @param testCaseId &#91;required&#93; The unique identifier of the test for which to retrieve results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   testResult = list(
+#'     testCase = list(
+#'       testCaseId = "string",
+#'       guardContent = "string",
+#'       queryContent = "string",
+#'       expectedAggregatedFindingsResult = "VALID"|"INVALID"|"SATISFIABLE"|"IMPOSSIBLE"|"TRANSLATION_AMBIGUOUS"|"TOO_COMPLEX"|"NO_TRANSLATION",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       confidenceThreshold = 123.0
+#'     ),
+#'     policyArn = "string",
+#'     testRunStatus = "NOT_STARTED"|"SCHEDULED"|"IN_PROGRESS"|"COMPLETED"|"FAILED",
+#'     testFindings = list(
+#'       list(
+#'         valid = list(
+#'           translation = list(
+#'             premises = list(
+#'               list(
+#'                 logic = "string",
+#'                 naturalLanguage = "string"
+#'               )
+#'             ),
+#'             claims = list(
+#'               list(
+#'                 logic = "string",
+#'                 naturalLanguage = "string"
+#'               )
+#'             ),
+#'             untranslatedPremises = list(
+#'               list(
+#'                 text = "string"
+#'               )
+#'             ),
+#'             untranslatedClaims = list(
+#'               list(
+#'                 text = "string"
+#'               )
+#'             ),
+#'             confidence = 123.0
+#'           ),
+#'           claimsTrueScenario = list(
+#'             statements = list(
+#'               list(
+#'                 logic = "string",
+#'                 naturalLanguage = "string"
+#'               )
+#'             )
+#'           ),
+#'           supportingRules = list(
+#'             list(
+#'               id = "string",
+#'               policyVersionArn = "string"
+#'             )
+#'           ),
+#'           logicWarning = list(
+#'             type = "ALWAYS_TRUE"|"ALWAYS_FALSE",
+#'             premises = list(
+#'               list(
+#'                 logic = "string",
+#'                 naturalLanguage = "string"
+#'               )
+#'             ),
+#'             claims = list(
+#'               list(
+#'                 logic = "string",
+#'                 naturalLanguage = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         invalid = list(
+#'           translation = list(
+#'             premises = list(
+#'               list(
+#'                 logic = "string",
+#'                 naturalLanguage = "string"
+#'               )
+#'             ),
+#'             claims = list(
+#'               list(
+#'                 logic = "string",
+#'                 naturalLanguage = "string"
+#'               )
+#'             ),
+#'             untranslatedPremises = list(
+#'               list(
+#'                 text = "string"
+#'               )
+#'             ),
+#'             untranslatedClaims = list(
+#'               list(
+#'                 text = "string"
+#'               )
+#'             ),
+#'             confidence = 123.0
+#'           ),
+#'           contradictingRules = list(
+#'             list(
+#'               id = "string",
+#'               policyVersionArn = "string"
+#'             )
+#'           ),
+#'           logicWarning = list(
+#'             type = "ALWAYS_TRUE"|"ALWAYS_FALSE",
+#'             premises = list(
+#'               list(
+#'                 logic = "string",
+#'                 naturalLanguage = "string"
+#'               )
+#'             ),
+#'             claims = list(
+#'               list(
+#'                 logic = "string",
+#'                 naturalLanguage = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         satisfiable = list(
+#'           translation = list(
+#'             premises = list(
+#'               list(
+#'                 logic = "string",
+#'                 naturalLanguage = "string"
+#'               )
+#'             ),
+#'             claims = list(
+#'               list(
+#'                 logic = "string",
+#'                 naturalLanguage = "string"
+#'               )
+#'             ),
+#'             untranslatedPremises = list(
+#'               list(
+#'                 text = "string"
+#'               )
+#'             ),
+#'             untranslatedClaims = list(
+#'               list(
+#'                 text = "string"
+#'               )
+#'             ),
+#'             confidence = 123.0
+#'           ),
+#'           claimsTrueScenario = list(
+#'             statements = list(
+#'               list(
+#'                 logic = "string",
+#'                 naturalLanguage = "string"
+#'               )
+#'             )
+#'           ),
+#'           claimsFalseScenario = list(
+#'             statements = list(
+#'               list(
+#'                 logic = "string",
+#'                 naturalLanguage = "string"
+#'               )
+#'             )
+#'           ),
+#'           logicWarning = list(
+#'             type = "ALWAYS_TRUE"|"ALWAYS_FALSE",
+#'             premises = list(
+#'               list(
+#'                 logic = "string",
+#'                 naturalLanguage = "string"
+#'               )
+#'             ),
+#'             claims = list(
+#'               list(
+#'                 logic = "string",
+#'                 naturalLanguage = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         impossible = list(
+#'           translation = list(
+#'             premises = list(
+#'               list(
+#'                 logic = "string",
+#'                 naturalLanguage = "string"
+#'               )
+#'             ),
+#'             claims = list(
+#'               list(
+#'                 logic = "string",
+#'                 naturalLanguage = "string"
+#'               )
+#'             ),
+#'             untranslatedPremises = list(
+#'               list(
+#'                 text = "string"
+#'               )
+#'             ),
+#'             untranslatedClaims = list(
+#'               list(
+#'                 text = "string"
+#'               )
+#'             ),
+#'             confidence = 123.0
+#'           ),
+#'           contradictingRules = list(
+#'             list(
+#'               id = "string",
+#'               policyVersionArn = "string"
+#'             )
+#'           ),
+#'           logicWarning = list(
+#'             type = "ALWAYS_TRUE"|"ALWAYS_FALSE",
+#'             premises = list(
+#'               list(
+#'                 logic = "string",
+#'                 naturalLanguage = "string"
+#'               )
+#'             ),
+#'             claims = list(
+#'               list(
+#'                 logic = "string",
+#'                 naturalLanguage = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         translationAmbiguous = list(
+#'           options = list(
+#'             list(
+#'               translations = list(
+#'                 list(
+#'                   premises = list(
+#'                     list(
+#'                       logic = "string",
+#'                       naturalLanguage = "string"
+#'                     )
+#'                   ),
+#'                   claims = list(
+#'                     list(
+#'                       logic = "string",
+#'                       naturalLanguage = "string"
+#'                     )
+#'                   ),
+#'                   untranslatedPremises = list(
+#'                     list(
+#'                       text = "string"
+#'                     )
+#'                   ),
+#'                   untranslatedClaims = list(
+#'                     list(
+#'                       text = "string"
+#'                     )
+#'                   ),
+#'                   confidence = 123.0
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           differenceScenarios = list(
+#'             list(
+#'               statements = list(
+#'                 list(
+#'                   logic = "string",
+#'                   naturalLanguage = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         tooComplex = list(),
+#'         noTranslations = list()
+#'       )
+#'     ),
+#'     testRunResult = "PASSED"|"FAILED",
+#'     aggregatedTestFindingsResult = "VALID"|"INVALID"|"SATISFIABLE"|"IMPOSSIBLE"|"TRANSLATION_AMBIGUOUS"|"TOO_COMPLEX"|"NO_TRANSLATION",
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_automated_reasoning_policy_test_result(
+#'   policyArn = "string",
+#'   buildWorkflowId = "string",
+#'   testCaseId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_get_automated_reasoning_policy_test_result
+#'
+#' @aliases bedrock_get_automated_reasoning_policy_test_result
+bedrock_get_automated_reasoning_policy_test_result <- function(policyArn, buildWorkflowId, testCaseId) {
+  op <- new_operation(
+    name = "GetAutomatedReasoningPolicyTestResult",
+    http_method = "GET",
+    http_path = "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}/test-cases/{testCaseId}/test-results",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$get_automated_reasoning_policy_test_result_input(policyArn = policyArn, buildWorkflowId = buildWorkflowId, testCaseId = testCaseId)
+  output <- .bedrock$get_automated_reasoning_policy_test_result_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$get_automated_reasoning_policy_test_result <- bedrock_get_automated_reasoning_policy_test_result
+
 #' Get the properties associated with a Amazon Bedrock custom model that
 #' you have created
 #'
 #' @description
 #' Get the properties associated with a Amazon Bedrock custom model that
-#' you have created.For more information, see [Custom
+#' you have created. For more information, see [Custom
 #' models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html)
 #' in the [Amazon Bedrock User
 #' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
@@ -2049,7 +4234,7 @@ bedrock_deregister_marketplace_model_endpoint <- function(endpointArn) {
 #'   jobName = "string",
 #'   jobArn = "string",
 #'   baseModelArn = "string",
-#'   customizationType = "FINE_TUNING"|"CONTINUED_PRE_TRAINING"|"DISTILLATION",
+#'   customizationType = "FINE_TUNING"|"CONTINUED_PRE_TRAINING"|"DISTILLATION"|"REINFORCEMENT_FINE_TUNING"|"IMPORTED",
 #'   modelKmsKeyArn = "string",
 #'   hyperParameters = list(
 #'     "string"
@@ -2118,8 +4303,27 @@ bedrock_deregister_marketplace_model_endpoint <- function(endpointArn) {
 #'         teacherModelIdentifier = "string",
 #'         maxResponseLengthForInference = 123
 #'       )
+#'     ),
+#'     rftConfig = list(
+#'       graderConfig = list(
+#'         lambdaGrader = list(
+#'           lambdaArn = "string"
+#'         )
+#'       ),
+#'       hyperParameters = list(
+#'         epochCount = 123,
+#'         batchSize = 123,
+#'         learningRate = 123.0,
+#'         maxPromptLength = 123,
+#'         trainingSamplePerPrompt = 123,
+#'         inferenceMaxTokens = 123,
+#'         reasoningEffort = "low"|"medium"|"high",
+#'         evalInterval = 123
+#'       )
 #'     )
-#'   )
+#'   ),
+#'   modelStatus = "Active"|"Creating"|"Failed",
+#'   failureMessage = "string"
 #' )
 #' ```
 #'
@@ -2153,6 +4357,84 @@ bedrock_get_custom_model <- function(modelIdentifier) {
   return(response)
 }
 .bedrock$operations$get_custom_model <- bedrock_get_custom_model
+
+#' Retrieves information about a custom model deployment, including its
+#' status, configuration, and metadata
+#'
+#' @description
+#' Retrieves information about a custom model deployment, including its
+#' status, configuration, and metadata. Use this operation to monitor the
+#' deployment status and retrieve details needed for inference requests.
+#' 
+#' The following actions are related to the
+#' [`get_custom_model_deployment`][bedrock_get_custom_model_deployment]
+#' operation:
+#' 
+#' -   [`create_custom_model_deployment`][bedrock_create_custom_model_deployment]
+#' 
+#' -   [`list_custom_model_deployments`][bedrock_list_custom_model_deployments]
+#' 
+#' -   [`delete_custom_model_deployment`][bedrock_delete_custom_model_deployment]
+#'
+#' @usage
+#' bedrock_get_custom_model_deployment(customModelDeploymentIdentifier)
+#'
+#' @param customModelDeploymentIdentifier &#91;required&#93; The Amazon Resource Name (ARN) or name of the custom model deployment to
+#' retrieve information about.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   customModelDeploymentArn = "string",
+#'   modelDeploymentName = "string",
+#'   modelArn = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   status = "Creating"|"Active"|"Failed",
+#'   description = "string",
+#'   updateDetails = list(
+#'     modelArn = "string",
+#'     updateStatus = "Updating"|"UpdateCompleted"|"UpdateFailed"
+#'   ),
+#'   failureMessage = "string",
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_custom_model_deployment(
+#'   customModelDeploymentIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_get_custom_model_deployment
+#'
+#' @aliases bedrock_get_custom_model_deployment
+bedrock_get_custom_model_deployment <- function(customModelDeploymentIdentifier) {
+  op <- new_operation(
+    name = "GetCustomModelDeployment",
+    http_method = "GET",
+    http_path = "/model-customization/custom-model-deployments/{customModelDeploymentIdentifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$get_custom_model_deployment_input(customModelDeploymentIdentifier = customModelDeploymentIdentifier)
+  output <- .bedrock$get_custom_model_deployment_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$get_custom_model_deployment <- bedrock_get_custom_model_deployment
 
 #' Gets information about an evaluation job, such as the status of the job
 #'
@@ -2330,6 +4612,43 @@ bedrock_get_custom_model <- function(modelIdentifier) {
 #'                   orAll = list(
 #'                     list()
 #'                   )
+#'                 ),
+#'                 implicitFilterConfiguration = list(
+#'                   metadataAttributes = list(
+#'                     list(
+#'                       key = "string",
+#'                       type = "STRING"|"NUMBER"|"BOOLEAN"|"STRING_LIST",
+#'                       description = "string"
+#'                     )
+#'                   ),
+#'                   modelArn = "string"
+#'                 ),
+#'                 rerankingConfiguration = list(
+#'                   type = "BEDROCK_RERANKING_MODEL",
+#'                   bedrockRerankingConfiguration = list(
+#'                     modelConfiguration = list(
+#'                       modelArn = "string",
+#'                       additionalModelRequestFields = list(
+#'                         list()
+#'                       )
+#'                     ),
+#'                     numberOfRerankedResults = 123,
+#'                     metadataConfiguration = list(
+#'                       selectionMode = "SELECTIVE"|"ALL",
+#'                       selectiveModeConfiguration = list(
+#'                         fieldsToInclude = list(
+#'                           list(
+#'                             fieldName = "string"
+#'                           )
+#'                         ),
+#'                         fieldsToExclude = list(
+#'                           list(
+#'                             fieldName = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
 #'                 )
 #'               )
 #'             )
@@ -2393,6 +4712,43 @@ bedrock_get_custom_model <- function(modelIdentifier) {
 #'                     ),
 #'                     orAll = list(
 #'                       list()
+#'                     )
+#'                   ),
+#'                   implicitFilterConfiguration = list(
+#'                     metadataAttributes = list(
+#'                       list(
+#'                         key = "string",
+#'                         type = "STRING"|"NUMBER"|"BOOLEAN"|"STRING_LIST",
+#'                         description = "string"
+#'                       )
+#'                     ),
+#'                     modelArn = "string"
+#'                   ),
+#'                   rerankingConfiguration = list(
+#'                     type = "BEDROCK_RERANKING_MODEL",
+#'                     bedrockRerankingConfiguration = list(
+#'                       modelConfiguration = list(
+#'                         modelArn = "string",
+#'                         additionalModelRequestFields = list(
+#'                           list()
+#'                         )
+#'                       ),
+#'                       numberOfRerankedResults = 123,
+#'                       metadataConfiguration = list(
+#'                         selectionMode = "SELECTIVE"|"ALL",
+#'                         selectiveModeConfiguration = list(
+#'                           fieldsToInclude = list(
+#'                             list(
+#'                               fieldName = "string"
+#'                             )
+#'                           ),
+#'                           fieldsToExclude = list(
+#'                             list(
+#'                               fieldName = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
 #'                     )
 #'                   )
 #'                 )
@@ -2592,6 +4948,62 @@ bedrock_get_foundation_model <- function(modelIdentifier) {
 }
 .bedrock$operations$get_foundation_model <- bedrock_get_foundation_model
 
+#' Get information about the Foundation model availability
+#'
+#' @description
+#' Get information about the Foundation model availability.
+#'
+#' @usage
+#' bedrock_get_foundation_model_availability(modelId)
+#'
+#' @param modelId &#91;required&#93; The model Id of the foundation model.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   modelId = "string",
+#'   agreementAvailability = list(
+#'     status = "AVAILABLE"|"PENDING"|"NOT_AVAILABLE"|"ERROR",
+#'     errorMessage = "string"
+#'   ),
+#'   authorizationStatus = "AUTHORIZED"|"NOT_AUTHORIZED",
+#'   entitlementAvailability = "AVAILABLE"|"NOT_AVAILABLE",
+#'   regionAvailability = "AVAILABLE"|"NOT_AVAILABLE"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_foundation_model_availability(
+#'   modelId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_get_foundation_model_availability
+#'
+#' @aliases bedrock_get_foundation_model_availability
+bedrock_get_foundation_model_availability <- function(modelId) {
+  op <- new_operation(
+    name = "GetFoundationModelAvailability",
+    http_method = "GET",
+    http_path = "/foundation-model-availability/{modelId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$get_foundation_model_availability_input(modelId = modelId)
+  output <- .bedrock$get_foundation_model_availability_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$get_foundation_model_availability <- bedrock_get_foundation_model_availability
+
 #' Gets details about a guardrail
 #'
 #' @description
@@ -2630,6 +5042,9 @@ bedrock_get_foundation_model <- function(modelIdentifier) {
 #'         inputEnabled = TRUE|FALSE,
 #'         outputEnabled = TRUE|FALSE
 #'       )
+#'     ),
+#'     tier = list(
+#'       tierName = "CLASSIC"|"STANDARD"
 #'     )
 #'   ),
 #'   contentPolicy = list(
@@ -2649,6 +5064,9 @@ bedrock_get_foundation_model <- function(modelIdentifier) {
 #'         inputEnabled = TRUE|FALSE,
 #'         outputEnabled = TRUE|FALSE
 #'       )
+#'     ),
+#'     tier = list(
+#'       tierName = "CLASSIC"|"STANDARD"
 #'     )
 #'   ),
 #'   wordPolicy = list(
@@ -2704,6 +5122,12 @@ bedrock_get_foundation_model <- function(modelIdentifier) {
 #'         enabled = TRUE|FALSE
 #'       )
 #'     )
+#'   ),
+#'   automatedReasoningPolicy = list(
+#'     policies = list(
+#'       "string"
+#'     ),
+#'     confidenceThreshold = 123.0
 #'   ),
 #'   crossRegionDetails = list(
 #'     guardrailProfileId = "string",
@@ -3072,7 +5496,6 @@ bedrock_get_model_copy_job <- function(jobArn) {
 #'   clientRequestToken = "string",
 #'   roleArn = "string",
 #'   status = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
-#'   failureMessage = "string",
 #'   statusDetails = list(
 #'     validationDetails = list(
 #'       status = "InProgress"|"Completed"|"Stopping"|"Stopped"|"Failed"|"NotStarted",
@@ -3102,6 +5525,7 @@ bedrock_get_model_copy_job <- function(jobArn) {
 #'       )
 #'     )
 #'   ),
+#'   failureMessage = "string",
 #'   creationTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -3162,7 +5586,7 @@ bedrock_get_model_copy_job <- function(jobArn) {
 #'   outputDataConfig = list(
 #'     s3Uri = "string"
 #'   ),
-#'   customizationType = "FINE_TUNING"|"CONTINUED_PRE_TRAINING"|"DISTILLATION",
+#'   customizationType = "FINE_TUNING"|"CONTINUED_PRE_TRAINING"|"DISTILLATION"|"REINFORCEMENT_FINE_TUNING"|"IMPORTED",
 #'   outputModelKmsKeyArn = "string",
 #'   trainingMetrics = list(
 #'     trainingLoss = 123.0
@@ -3185,6 +5609,23 @@ bedrock_get_model_copy_job <- function(jobArn) {
 #'       teacherModelConfig = list(
 #'         teacherModelIdentifier = "string",
 #'         maxResponseLengthForInference = 123
+#'       )
+#'     ),
+#'     rftConfig = list(
+#'       graderConfig = list(
+#'         lambdaGrader = list(
+#'           lambdaArn = "string"
+#'         )
+#'       ),
+#'       hyperParameters = list(
+#'         epochCount = 123,
+#'         batchSize = 123,
+#'         learningRate = 123.0,
+#'         maxPromptLength = 123,
+#'         trainingSamplePerPrompt = 123,
+#'         inferenceMaxTokens = 123,
+#'         reasoningEffort = "low"|"medium"|"high",
+#'         evalInterval = 123
 #'       )
 #'     )
 #'   )
@@ -3427,7 +5868,8 @@ bedrock_get_model_invocation_job <- function(jobIdentifier) {
 #'     textDataDeliveryEnabled = TRUE|FALSE,
 #'     imageDataDeliveryEnabled = TRUE|FALSE,
 #'     embeddingDataDeliveryEnabled = TRUE|FALSE,
-#'     videoDataDeliveryEnabled = TRUE|FALSE
+#'     videoDataDeliveryEnabled = TRUE|FALSE,
+#'     audioDataDeliveryEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -3602,6 +6044,725 @@ bedrock_get_provisioned_model_throughput <- function(provisionedModelId) {
 }
 .bedrock$operations$get_provisioned_model_throughput <- bedrock_get_provisioned_model_throughput
 
+#' Get usecase for model access
+#'
+#' @description
+#' Get usecase for model access.
+#'
+#' @usage
+#' bedrock_get_use_case_for_model_access()
+#'
+
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   formData = raw
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_use_case_for_model_access()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_get_use_case_for_model_access
+#'
+#' @aliases bedrock_get_use_case_for_model_access
+bedrock_get_use_case_for_model_access <- function() {
+  op <- new_operation(
+    name = "GetUseCaseForModelAccess",
+    http_method = "GET",
+    http_path = "/use-case-for-model-access",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$get_use_case_for_model_access_input()
+  output <- .bedrock$get_use_case_for_model_access_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$get_use_case_for_model_access <- bedrock_get_use_case_for_model_access
+
+#' Lists all Automated Reasoning policies in your account, with optional
+#' filtering by policy ARN
+#'
+#' @description
+#' Lists all Automated Reasoning policies in your account, with optional
+#' filtering by policy ARN. This helps you manage and discover existing
+#' policies.
+#'
+#' @usage
+#' bedrock_list_automated_reasoning_policies(policyArn, nextToken,
+#'   maxResults)
+#'
+#' @param policyArn Optional filter to list only the policy versions with the specified
+#' Amazon Resource Name (ARN). If not provided, the DRAFT versions for all
+#' policies are listed.
+#' @param nextToken The pagination token from a previous request to retrieve the next page
+#' of results.
+#' @param maxResults The maximum number of policies to return in a single call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   automatedReasoningPolicySummaries = list(
+#'     list(
+#'       policyArn = "string",
+#'       name = "string",
+#'       description = "string",
+#'       version = "string",
+#'       policyId = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_automated_reasoning_policies(
+#'   policyArn = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_list_automated_reasoning_policies
+#'
+#' @aliases bedrock_list_automated_reasoning_policies
+bedrock_list_automated_reasoning_policies <- function(policyArn = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListAutomatedReasoningPolicies",
+    http_method = "GET",
+    http_path = "/automated-reasoning-policies",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "automatedReasoningPolicySummaries"),
+    stream_api = FALSE
+  )
+  input <- .bedrock$list_automated_reasoning_policies_input(policyArn = policyArn, nextToken = nextToken, maxResults = maxResults)
+  output <- .bedrock$list_automated_reasoning_policies_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$list_automated_reasoning_policies <- bedrock_list_automated_reasoning_policies
+
+#' Lists all build workflows for an Automated Reasoning policy, showing the
+#' history of policy creation and modification attempts
+#'
+#' @description
+#' Lists all build workflows for an Automated Reasoning policy, showing the
+#' history of policy creation and modification attempts.
+#'
+#' @usage
+#' bedrock_list_automated_reasoning_policy_build_workflows(policyArn,
+#'   nextToken, maxResults)
+#'
+#' @param policyArn &#91;required&#93; The Amazon Resource Name (ARN) of the Automated Reasoning policy whose
+#' build workflows you want to list.
+#' @param nextToken A pagination token from a previous request to continue listing build
+#' workflows from where the previous request left off.
+#' @param maxResults The maximum number of build workflows to return in a single response.
+#' Valid range is 1-100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   automatedReasoningPolicyBuildWorkflowSummaries = list(
+#'     list(
+#'       policyArn = "string",
+#'       buildWorkflowId = "string",
+#'       status = "SCHEDULED"|"CANCEL_REQUESTED"|"PREPROCESSING"|"BUILDING"|"TESTING"|"COMPLETED"|"FAILED"|"CANCELLED",
+#'       buildWorkflowType = "INGEST_CONTENT"|"REFINE_POLICY"|"IMPORT_POLICY",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_automated_reasoning_policy_build_workflows(
+#'   policyArn = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_list_automated_reasoning_policy_build_workflows
+#'
+#' @aliases bedrock_list_automated_reasoning_policy_build_workflows
+bedrock_list_automated_reasoning_policy_build_workflows <- function(policyArn, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListAutomatedReasoningPolicyBuildWorkflows",
+    http_method = "GET",
+    http_path = "/automated-reasoning-policies/{policyArn}/build-workflows",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "automatedReasoningPolicyBuildWorkflowSummaries"),
+    stream_api = FALSE
+  )
+  input <- .bedrock$list_automated_reasoning_policy_build_workflows_input(policyArn = policyArn, nextToken = nextToken, maxResults = maxResults)
+  output <- .bedrock$list_automated_reasoning_policy_build_workflows_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$list_automated_reasoning_policy_build_workflows <- bedrock_list_automated_reasoning_policy_build_workflows
+
+#' Lists tests for an Automated Reasoning policy
+#'
+#' @description
+#' Lists tests for an Automated Reasoning policy. We recommend using
+#' pagination to ensure that the operation returns quickly and
+#' successfully.
+#'
+#' @usage
+#' bedrock_list_automated_reasoning_policy_test_cases(policyArn, nextToken,
+#'   maxResults)
+#'
+#' @param policyArn &#91;required&#93; The Amazon Resource Name (ARN) of the Automated Reasoning policy for
+#' which to list tests.
+#' @param nextToken The pagination token from a previous request to retrieve the next page
+#' of results.
+#' @param maxResults The maximum number of tests to return in a single call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   testCases = list(
+#'     list(
+#'       testCaseId = "string",
+#'       guardContent = "string",
+#'       queryContent = "string",
+#'       expectedAggregatedFindingsResult = "VALID"|"INVALID"|"SATISFIABLE"|"IMPOSSIBLE"|"TRANSLATION_AMBIGUOUS"|"TOO_COMPLEX"|"NO_TRANSLATION",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       confidenceThreshold = 123.0
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_automated_reasoning_policy_test_cases(
+#'   policyArn = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_list_automated_reasoning_policy_test_cases
+#'
+#' @aliases bedrock_list_automated_reasoning_policy_test_cases
+bedrock_list_automated_reasoning_policy_test_cases <- function(policyArn, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListAutomatedReasoningPolicyTestCases",
+    http_method = "GET",
+    http_path = "/automated-reasoning-policies/{policyArn}/test-cases",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "testCases"),
+    stream_api = FALSE
+  )
+  input <- .bedrock$list_automated_reasoning_policy_test_cases_input(policyArn = policyArn, nextToken = nextToken, maxResults = maxResults)
+  output <- .bedrock$list_automated_reasoning_policy_test_cases_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$list_automated_reasoning_policy_test_cases <- bedrock_list_automated_reasoning_policy_test_cases
+
+#' Lists test results for an Automated Reasoning policy, showing how the
+#' policy performed against various test scenarios and validation checks
+#'
+#' @description
+#' Lists test results for an Automated Reasoning policy, showing how the
+#' policy performed against various test scenarios and validation checks.
+#'
+#' @usage
+#' bedrock_list_automated_reasoning_policy_test_results(policyArn,
+#'   buildWorkflowId, nextToken, maxResults)
+#'
+#' @param policyArn &#91;required&#93; The Amazon Resource Name (ARN) of the Automated Reasoning policy whose
+#' test results you want to list.
+#' @param buildWorkflowId &#91;required&#93; The unique identifier of the build workflow whose test results you want
+#' to list.
+#' @param nextToken A pagination token from a previous request to continue listing test
+#' results from where the previous request left off.
+#' @param maxResults The maximum number of test results to return in a single response. Valid
+#' range is 1-100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   testResults = list(
+#'     list(
+#'       testCase = list(
+#'         testCaseId = "string",
+#'         guardContent = "string",
+#'         queryContent = "string",
+#'         expectedAggregatedFindingsResult = "VALID"|"INVALID"|"SATISFIABLE"|"IMPOSSIBLE"|"TRANSLATION_AMBIGUOUS"|"TOO_COMPLEX"|"NO_TRANSLATION",
+#'         createdAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         updatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         confidenceThreshold = 123.0
+#'       ),
+#'       policyArn = "string",
+#'       testRunStatus = "NOT_STARTED"|"SCHEDULED"|"IN_PROGRESS"|"COMPLETED"|"FAILED",
+#'       testFindings = list(
+#'         list(
+#'           valid = list(
+#'             translation = list(
+#'               premises = list(
+#'                 list(
+#'                   logic = "string",
+#'                   naturalLanguage = "string"
+#'                 )
+#'               ),
+#'               claims = list(
+#'                 list(
+#'                   logic = "string",
+#'                   naturalLanguage = "string"
+#'                 )
+#'               ),
+#'               untranslatedPremises = list(
+#'                 list(
+#'                   text = "string"
+#'                 )
+#'               ),
+#'               untranslatedClaims = list(
+#'                 list(
+#'                   text = "string"
+#'                 )
+#'               ),
+#'               confidence = 123.0
+#'             ),
+#'             claimsTrueScenario = list(
+#'               statements = list(
+#'                 list(
+#'                   logic = "string",
+#'                   naturalLanguage = "string"
+#'                 )
+#'               )
+#'             ),
+#'             supportingRules = list(
+#'               list(
+#'                 id = "string",
+#'                 policyVersionArn = "string"
+#'               )
+#'             ),
+#'             logicWarning = list(
+#'               type = "ALWAYS_TRUE"|"ALWAYS_FALSE",
+#'               premises = list(
+#'                 list(
+#'                   logic = "string",
+#'                   naturalLanguage = "string"
+#'                 )
+#'               ),
+#'               claims = list(
+#'                 list(
+#'                   logic = "string",
+#'                   naturalLanguage = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           invalid = list(
+#'             translation = list(
+#'               premises = list(
+#'                 list(
+#'                   logic = "string",
+#'                   naturalLanguage = "string"
+#'                 )
+#'               ),
+#'               claims = list(
+#'                 list(
+#'                   logic = "string",
+#'                   naturalLanguage = "string"
+#'                 )
+#'               ),
+#'               untranslatedPremises = list(
+#'                 list(
+#'                   text = "string"
+#'                 )
+#'               ),
+#'               untranslatedClaims = list(
+#'                 list(
+#'                   text = "string"
+#'                 )
+#'               ),
+#'               confidence = 123.0
+#'             ),
+#'             contradictingRules = list(
+#'               list(
+#'                 id = "string",
+#'                 policyVersionArn = "string"
+#'               )
+#'             ),
+#'             logicWarning = list(
+#'               type = "ALWAYS_TRUE"|"ALWAYS_FALSE",
+#'               premises = list(
+#'                 list(
+#'                   logic = "string",
+#'                   naturalLanguage = "string"
+#'                 )
+#'               ),
+#'               claims = list(
+#'                 list(
+#'                   logic = "string",
+#'                   naturalLanguage = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           satisfiable = list(
+#'             translation = list(
+#'               premises = list(
+#'                 list(
+#'                   logic = "string",
+#'                   naturalLanguage = "string"
+#'                 )
+#'               ),
+#'               claims = list(
+#'                 list(
+#'                   logic = "string",
+#'                   naturalLanguage = "string"
+#'                 )
+#'               ),
+#'               untranslatedPremises = list(
+#'                 list(
+#'                   text = "string"
+#'                 )
+#'               ),
+#'               untranslatedClaims = list(
+#'                 list(
+#'                   text = "string"
+#'                 )
+#'               ),
+#'               confidence = 123.0
+#'             ),
+#'             claimsTrueScenario = list(
+#'               statements = list(
+#'                 list(
+#'                   logic = "string",
+#'                   naturalLanguage = "string"
+#'                 )
+#'               )
+#'             ),
+#'             claimsFalseScenario = list(
+#'               statements = list(
+#'                 list(
+#'                   logic = "string",
+#'                   naturalLanguage = "string"
+#'                 )
+#'               )
+#'             ),
+#'             logicWarning = list(
+#'               type = "ALWAYS_TRUE"|"ALWAYS_FALSE",
+#'               premises = list(
+#'                 list(
+#'                   logic = "string",
+#'                   naturalLanguage = "string"
+#'                 )
+#'               ),
+#'               claims = list(
+#'                 list(
+#'                   logic = "string",
+#'                   naturalLanguage = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           impossible = list(
+#'             translation = list(
+#'               premises = list(
+#'                 list(
+#'                   logic = "string",
+#'                   naturalLanguage = "string"
+#'                 )
+#'               ),
+#'               claims = list(
+#'                 list(
+#'                   logic = "string",
+#'                   naturalLanguage = "string"
+#'                 )
+#'               ),
+#'               untranslatedPremises = list(
+#'                 list(
+#'                   text = "string"
+#'                 )
+#'               ),
+#'               untranslatedClaims = list(
+#'                 list(
+#'                   text = "string"
+#'                 )
+#'               ),
+#'               confidence = 123.0
+#'             ),
+#'             contradictingRules = list(
+#'               list(
+#'                 id = "string",
+#'                 policyVersionArn = "string"
+#'               )
+#'             ),
+#'             logicWarning = list(
+#'               type = "ALWAYS_TRUE"|"ALWAYS_FALSE",
+#'               premises = list(
+#'                 list(
+#'                   logic = "string",
+#'                   naturalLanguage = "string"
+#'                 )
+#'               ),
+#'               claims = list(
+#'                 list(
+#'                   logic = "string",
+#'                   naturalLanguage = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           translationAmbiguous = list(
+#'             options = list(
+#'               list(
+#'                 translations = list(
+#'                   list(
+#'                     premises = list(
+#'                       list(
+#'                         logic = "string",
+#'                         naturalLanguage = "string"
+#'                       )
+#'                     ),
+#'                     claims = list(
+#'                       list(
+#'                         logic = "string",
+#'                         naturalLanguage = "string"
+#'                       )
+#'                     ),
+#'                     untranslatedPremises = list(
+#'                       list(
+#'                         text = "string"
+#'                       )
+#'                     ),
+#'                     untranslatedClaims = list(
+#'                       list(
+#'                         text = "string"
+#'                       )
+#'                     ),
+#'                     confidence = 123.0
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             differenceScenarios = list(
+#'               list(
+#'                 statements = list(
+#'                   list(
+#'                     logic = "string",
+#'                     naturalLanguage = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           tooComplex = list(),
+#'           noTranslations = list()
+#'         )
+#'       ),
+#'       testRunResult = "PASSED"|"FAILED",
+#'       aggregatedTestFindingsResult = "VALID"|"INVALID"|"SATISFIABLE"|"IMPOSSIBLE"|"TRANSLATION_AMBIGUOUS"|"TOO_COMPLEX"|"NO_TRANSLATION",
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_automated_reasoning_policy_test_results(
+#'   policyArn = "string",
+#'   buildWorkflowId = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_list_automated_reasoning_policy_test_results
+#'
+#' @aliases bedrock_list_automated_reasoning_policy_test_results
+bedrock_list_automated_reasoning_policy_test_results <- function(policyArn, buildWorkflowId, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListAutomatedReasoningPolicyTestResults",
+    http_method = "GET",
+    http_path = "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}/test-results",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "testResults"),
+    stream_api = FALSE
+  )
+  input <- .bedrock$list_automated_reasoning_policy_test_results_input(policyArn = policyArn, buildWorkflowId = buildWorkflowId, nextToken = nextToken, maxResults = maxResults)
+  output <- .bedrock$list_automated_reasoning_policy_test_results_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$list_automated_reasoning_policy_test_results <- bedrock_list_automated_reasoning_policy_test_results
+
+#' Lists custom model deployments in your account
+#'
+#' @description
+#' Lists custom model deployments in your account. You can filter the
+#' results by creation time, name, status, and associated model. Use this
+#' operation to manage and monitor your custom model deployments.
+#' 
+#' We recommend using pagination to ensure that the operation returns
+#' quickly and successfully.
+#' 
+#' The following actions are related to the
+#' [`list_custom_model_deployments`][bedrock_list_custom_model_deployments]
+#' operation:
+#' 
+#' -   [`create_custom_model_deployment`][bedrock_create_custom_model_deployment]
+#' 
+#' -   [`get_custom_model_deployment`][bedrock_get_custom_model_deployment]
+#' 
+#' -   [`delete_custom_model_deployment`][bedrock_delete_custom_model_deployment]
+#'
+#' @usage
+#' bedrock_list_custom_model_deployments(createdBefore, createdAfter,
+#'   nameContains, maxResults, nextToken, sortBy, sortOrder, statusEquals,
+#'   modelArnEquals)
+#'
+#' @param createdBefore Filters deployments created before the specified date and time.
+#' @param createdAfter Filters deployments created after the specified date and time.
+#' @param nameContains Filters deployments whose names contain the specified string.
+#' @param maxResults The maximum number of results to return in a single call.
+#' @param nextToken The token for the next set of results. Use this token to retrieve
+#' additional results when the response is truncated.
+#' @param sortBy The field to sort the results by. The only supported value is
+#' `CreationTime`.
+#' @param sortOrder The sort order for the results. Valid values are `Ascending` and
+#' `Descending`. Default is `Descending`.
+#' @param statusEquals Filters deployments by status. Valid values are `CREATING`, `ACTIVE`,
+#' and `FAILED`.
+#' @param modelArnEquals Filters deployments by the Amazon Resource Name (ARN) of the associated
+#' custom model.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   modelDeploymentSummaries = list(
+#'     list(
+#'       customModelDeploymentArn = "string",
+#'       customModelDeploymentName = "string",
+#'       modelArn = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "Creating"|"Active"|"Failed",
+#'       lastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       failureMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_custom_model_deployments(
+#'   createdBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   nameContains = "string",
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   sortBy = "CreationTime",
+#'   sortOrder = "Ascending"|"Descending",
+#'   statusEquals = "Creating"|"Active"|"Failed",
+#'   modelArnEquals = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_list_custom_model_deployments
+#'
+#' @aliases bedrock_list_custom_model_deployments
+bedrock_list_custom_model_deployments <- function(createdBefore = NULL, createdAfter = NULL, nameContains = NULL, maxResults = NULL, nextToken = NULL, sortBy = NULL, sortOrder = NULL, statusEquals = NULL, modelArnEquals = NULL) {
+  op <- new_operation(
+    name = "ListCustomModelDeployments",
+    http_method = "GET",
+    http_path = "/model-customization/custom-model-deployments",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "modelDeploymentSummaries"),
+    stream_api = FALSE
+  )
+  input <- .bedrock$list_custom_model_deployments_input(createdBefore = createdBefore, createdAfter = createdAfter, nameContains = nameContains, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder, statusEquals = statusEquals, modelArnEquals = modelArnEquals)
+  output <- .bedrock$list_custom_model_deployments_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$list_custom_model_deployments <- bedrock_list_custom_model_deployments
+
 #' Returns a list of the custom models that you have created with the
 #' CreateModelCustomizationJob operation
 #'
@@ -3618,7 +6779,7 @@ bedrock_get_provisioned_model_throughput <- function(provisionedModelId) {
 #' @usage
 #' bedrock_list_custom_models(creationTimeBefore, creationTimeAfter,
 #'   nameContains, baseModelArnEquals, foundationModelArnEquals, maxResults,
-#'   nextToken, sortBy, sortOrder, isOwned)
+#'   nextToken, sortBy, sortOrder, isOwned, modelStatus)
 #'
 #' @param creationTimeBefore Return custom models created before the specified time.
 #' @param creationTimeAfter Return custom models created after the specified time.
@@ -3638,6 +6799,17 @@ bedrock_get_provisioned_model_throughput <- function(provisionedModelId) {
 #' @param sortOrder The sort order of the results.
 #' @param isOwned Return custom models depending on if the current account owns them
 #' (`true`) or if they were shared with the current account (`false`).
+#' @param modelStatus The status of them model to filter results by. Possible values include:
+#' 
+#' -   `Creating` - Include only models that are currently being created
+#'     and validated.
+#' 
+#' -   `Active` - Include only models that have been successfully created
+#'     and are ready for use.
+#' 
+#' -   `Failed` - Include only models where the creation process failed.
+#' 
+#' If you don't specify a status, the API returns models in all states.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3653,8 +6825,9 @@ bedrock_get_provisioned_model_throughput <- function(provisionedModelId) {
 #'       ),
 #'       baseModelArn = "string",
 #'       baseModelName = "string",
-#'       customizationType = "FINE_TUNING"|"CONTINUED_PRE_TRAINING"|"DISTILLATION",
-#'       ownerAccountId = "string"
+#'       customizationType = "FINE_TUNING"|"CONTINUED_PRE_TRAINING"|"DISTILLATION"|"REINFORCEMENT_FINE_TUNING"|"IMPORTED",
+#'       ownerAccountId = "string",
+#'       modelStatus = "Active"|"Creating"|"Failed"
 #'     )
 #'   )
 #' )
@@ -3676,7 +6849,8 @@ bedrock_get_provisioned_model_throughput <- function(provisionedModelId) {
 #'   nextToken = "string",
 #'   sortBy = "CreationTime",
 #'   sortOrder = "Ascending"|"Descending",
-#'   isOwned = TRUE|FALSE
+#'   isOwned = TRUE|FALSE,
+#'   modelStatus = "Active"|"Creating"|"Failed"
 #' )
 #' ```
 #'
@@ -3685,7 +6859,7 @@ bedrock_get_provisioned_model_throughput <- function(provisionedModelId) {
 #' @rdname bedrock_list_custom_models
 #'
 #' @aliases bedrock_list_custom_models
-bedrock_list_custom_models <- function(creationTimeBefore = NULL, creationTimeAfter = NULL, nameContains = NULL, baseModelArnEquals = NULL, foundationModelArnEquals = NULL, maxResults = NULL, nextToken = NULL, sortBy = NULL, sortOrder = NULL, isOwned = NULL) {
+bedrock_list_custom_models <- function(creationTimeBefore = NULL, creationTimeAfter = NULL, nameContains = NULL, baseModelArnEquals = NULL, foundationModelArnEquals = NULL, maxResults = NULL, nextToken = NULL, sortBy = NULL, sortOrder = NULL, isOwned = NULL, modelStatus = NULL) {
   op <- new_operation(
     name = "ListCustomModels",
     http_method = "GET",
@@ -3694,7 +6868,7 @@ bedrock_list_custom_models <- function(creationTimeBefore = NULL, creationTimeAf
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "modelSummaries"),
     stream_api = FALSE
   )
-  input <- .bedrock$list_custom_models_input(creationTimeBefore = creationTimeBefore, creationTimeAfter = creationTimeAfter, nameContains = nameContains, baseModelArnEquals = baseModelArnEquals, foundationModelArnEquals = foundationModelArnEquals, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder, isOwned = isOwned)
+  input <- .bedrock$list_custom_models_input(creationTimeBefore = creationTimeBefore, creationTimeAfter = creationTimeAfter, nameContains = nameContains, baseModelArnEquals = baseModelArnEquals, foundationModelArnEquals = foundationModelArnEquals, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder, isOwned = isOwned, modelStatus = modelStatus)
   output <- .bedrock$list_custom_models_output()
   config <- get_config()
   svc <- .bedrock$service(config, op)
@@ -3703,6 +6877,73 @@ bedrock_list_custom_models <- function(creationTimeBefore = NULL, creationTimeAf
   return(response)
 }
 .bedrock$operations$list_custom_models <- bedrock_list_custom_models
+
+#' Lists the account-level enforced guardrail configurations
+#'
+#' @description
+#' Lists the account-level enforced guardrail configurations.
+#'
+#' @usage
+#' bedrock_list_enforced_guardrails_configuration(nextToken)
+#'
+#' @param nextToken Opaque continuation token of previous paginated response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   guardrailsConfig = list(
+#'     list(
+#'       configId = "string",
+#'       guardrailArn = "string",
+#'       guardrailId = "string",
+#'       inputTags = "HONOR"|"IGNORE",
+#'       guardrailVersion = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       createdBy = "string",
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updatedBy = "string",
+#'       owner = "ACCOUNT"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_enforced_guardrails_configuration(
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_list_enforced_guardrails_configuration
+#'
+#' @aliases bedrock_list_enforced_guardrails_configuration
+bedrock_list_enforced_guardrails_configuration <- function(nextToken = NULL) {
+  op <- new_operation(
+    name = "ListEnforcedGuardrailsConfiguration",
+    http_method = "GET",
+    http_path = "/enforcedGuardrailsConfiguration",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "guardrailsConfig"),
+    stream_api = FALSE
+  )
+  input <- .bedrock$list_enforced_guardrails_configuration_input(nextToken = nextToken)
+  output <- .bedrock$list_enforced_guardrails_configuration_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$list_enforced_guardrails_configuration <- bedrock_list_enforced_guardrails_configuration
 
 #' Lists all existing evaluation jobs
 #'
@@ -3824,6 +7065,84 @@ bedrock_list_evaluation_jobs <- function(creationTimeAfter = NULL, creationTimeB
   return(response)
 }
 .bedrock$operations$list_evaluation_jobs <- bedrock_list_evaluation_jobs
+
+#' Get the offers associated with the specified model
+#'
+#' @description
+#' Get the offers associated with the specified model.
+#'
+#' @usage
+#' bedrock_list_foundation_model_agreement_offers(modelId, offerType)
+#'
+#' @param modelId &#91;required&#93; Model Id of the foundation model.
+#' @param offerType Type of offer associated with the model.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   modelId = "string",
+#'   offers = list(
+#'     list(
+#'       offerId = "string",
+#'       offerToken = "string",
+#'       termDetails = list(
+#'         usageBasedPricingTerm = list(
+#'           rateCard = list(
+#'             list(
+#'               dimension = "string",
+#'               price = "string",
+#'               description = "string",
+#'               unit = "string"
+#'             )
+#'           )
+#'         ),
+#'         legalTerm = list(
+#'           url = "string"
+#'         ),
+#'         supportTerm = list(
+#'           refundPolicyDescription = "string"
+#'         ),
+#'         validityTerm = list(
+#'           agreementDuration = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_foundation_model_agreement_offers(
+#'   modelId = "string",
+#'   offerType = "ALL"|"PUBLIC"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_list_foundation_model_agreement_offers
+#'
+#' @aliases bedrock_list_foundation_model_agreement_offers
+bedrock_list_foundation_model_agreement_offers <- function(modelId, offerType = NULL) {
+  op <- new_operation(
+    name = "ListFoundationModelAgreementOffers",
+    http_method = "GET",
+    http_path = "/list-foundation-model-agreement-offers/{modelId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$list_foundation_model_agreement_offers_input(modelId = modelId, offerType = offerType)
+  output <- .bedrock$list_foundation_model_agreement_offers_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$list_foundation_model_agreement_offers <- bedrock_list_foundation_model_agreement_offers
 
 #' Lists Amazon Bedrock foundation models that you can use
 #'
@@ -4407,9 +7726,6 @@ bedrock_list_model_copy_jobs <- function(creationTimeAfter = NULL, creationTimeB
 #'       baseModelArn = "string",
 #'       jobName = "string",
 #'       status = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
-#'       lastModifiedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
 #'       statusDetails = list(
 #'         validationDetails = list(
 #'           status = "InProgress"|"Completed"|"Stopping"|"Stopped"|"Failed"|"NotStarted",
@@ -4439,6 +7755,9 @@ bedrock_list_model_copy_jobs <- function(creationTimeAfter = NULL, creationTimeB
 #'           )
 #'         )
 #'       ),
+#'       lastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
 #'       creationTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -4447,7 +7766,7 @@ bedrock_list_model_copy_jobs <- function(creationTimeAfter = NULL, creationTimeB
 #'       ),
 #'       customModelArn = "string",
 #'       customModelName = "string",
-#'       customizationType = "FINE_TUNING"|"CONTINUED_PRE_TRAINING"|"DISTILLATION"
+#'       customizationType = "FINE_TUNING"|"CONTINUED_PRE_TRAINING"|"DISTILLATION"|"REINFORCEMENT_FINE_TUNING"|"IMPORTED"
 #'     )
 #'   )
 #' )
@@ -4648,7 +7967,7 @@ bedrock_list_model_import_jobs <- function(creationTimeAfter = NULL, creationTim
 #' 
 #' -   Failed – This job has failed. Check the failure message for any
 #'     further details. For further assistance, reach out to the Amazon Web
-#'     ServicesSupport Center.
+#'     Services Support Center.
 #' 
 #' -   Stopped – This job was stopped by a user.
 #' 
@@ -5009,6 +8328,66 @@ bedrock_list_tags_for_resource <- function(resourceARN) {
 }
 .bedrock$operations$list_tags_for_resource <- bedrock_list_tags_for_resource
 
+#' Sets the account-level enforced guardrail configuration
+#'
+#' @description
+#' Sets the account-level enforced guardrail configuration.
+#'
+#' @usage
+#' bedrock_put_enforced_guardrail_configuration(configId,
+#'   guardrailInferenceConfig)
+#'
+#' @param configId Unique ID for the account enforced configuration.
+#' @param guardrailInferenceConfig &#91;required&#93; Account-level enforced guardrail input configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   configId = "string",
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updatedBy = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_enforced_guardrail_configuration(
+#'   configId = "string",
+#'   guardrailInferenceConfig = list(
+#'     guardrailIdentifier = "string",
+#'     guardrailVersion = "string",
+#'     inputTags = "HONOR"|"IGNORE"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_put_enforced_guardrail_configuration
+#'
+#' @aliases bedrock_put_enforced_guardrail_configuration
+bedrock_put_enforced_guardrail_configuration <- function(configId = NULL, guardrailInferenceConfig) {
+  op <- new_operation(
+    name = "PutEnforcedGuardrailConfiguration",
+    http_method = "PUT",
+    http_path = "/enforcedGuardrailsConfiguration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$put_enforced_guardrail_configuration_input(configId = configId, guardrailInferenceConfig = guardrailInferenceConfig)
+  output <- .bedrock$put_enforced_guardrail_configuration_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$put_enforced_guardrail_configuration <- bedrock_put_enforced_guardrail_configuration
+
 #' Set the configuration values for model invocation logging
 #'
 #' @description
@@ -5041,7 +8420,8 @@ bedrock_list_tags_for_resource <- function(resourceARN) {
 #'     textDataDeliveryEnabled = TRUE|FALSE,
 #'     imageDataDeliveryEnabled = TRUE|FALSE,
 #'     embeddingDataDeliveryEnabled = TRUE|FALSE,
-#'     videoDataDeliveryEnabled = TRUE|FALSE
+#'     videoDataDeliveryEnabled = TRUE|FALSE,
+#'     audioDataDeliveryEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -5069,6 +8449,50 @@ bedrock_put_model_invocation_logging_configuration <- function(loggingConfig) {
   return(response)
 }
 .bedrock$operations$put_model_invocation_logging_configuration <- bedrock_put_model_invocation_logging_configuration
+
+#' Put usecase for model access
+#'
+#' @description
+#' Put usecase for model access.
+#'
+#' @usage
+#' bedrock_put_use_case_for_model_access(formData)
+#'
+#' @param formData &#91;required&#93; Put customer profile Request.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_use_case_for_model_access(
+#'   formData = raw
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_put_use_case_for_model_access
+#'
+#' @aliases bedrock_put_use_case_for_model_access
+bedrock_put_use_case_for_model_access <- function(formData) {
+  op <- new_operation(
+    name = "PutUseCaseForModelAccess",
+    http_method = "POST",
+    http_path = "/use-case-for-model-access",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$put_use_case_for_model_access_input(formData = formData)
+  output <- .bedrock$put_use_case_for_model_access_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$put_use_case_for_model_access <- bedrock_put_use_case_for_model_access
 
 #' Registers an existing Amazon SageMaker endpoint with Amazon Bedrock
 #' Marketplace, allowing it to be used with Amazon Bedrock APIs
@@ -5154,6 +8578,257 @@ bedrock_register_marketplace_model_endpoint <- function(endpointIdentifier, mode
   return(response)
 }
 .bedrock$operations$register_marketplace_model_endpoint <- bedrock_register_marketplace_model_endpoint
+
+#' Starts a new build workflow for an Automated Reasoning policy
+#'
+#' @description
+#' Starts a new build workflow for an Automated Reasoning policy. This
+#' initiates the process of analyzing source documents and generating
+#' policy rules, variables, and types.
+#'
+#' @usage
+#' bedrock_start_automated_reasoning_policy_build_workflow(policyArn,
+#'   buildWorkflowType, clientRequestToken, sourceContent)
+#'
+#' @param policyArn &#91;required&#93; The Amazon Resource Name (ARN) of the Automated Reasoning policy for
+#' which to start the build workflow.
+#' @param buildWorkflowType &#91;required&#93; The type of build workflow to start (e.g., DOCUMENT_INGESTION for
+#' processing new documents, POLICY_REPAIR for fixing existing policies).
+#' @param clientRequestToken A unique, case-sensitive identifier to ensure that the operation
+#' completes no more than once. If this token matches a previous request,
+#' Amazon Bedrock ignores the request but doesn't return an error.
+#' @param sourceContent &#91;required&#93; The source content for the build workflow, such as documents to analyze
+#' or repair instructions for existing policies.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policyArn = "string",
+#'   buildWorkflowId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_automated_reasoning_policy_build_workflow(
+#'   policyArn = "string",
+#'   buildWorkflowType = "INGEST_CONTENT"|"REFINE_POLICY"|"IMPORT_POLICY",
+#'   clientRequestToken = "string",
+#'   sourceContent = list(
+#'     policyDefinition = list(
+#'       version = "string",
+#'       types = list(
+#'         list(
+#'           name = "string",
+#'           description = "string",
+#'           values = list(
+#'             list(
+#'               value = "string",
+#'               description = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       rules = list(
+#'         list(
+#'           id = "string",
+#'           expression = "string",
+#'           alternateExpression = "string"
+#'         )
+#'       ),
+#'       variables = list(
+#'         list(
+#'           name = "string",
+#'           type = "string",
+#'           description = "string"
+#'         )
+#'       )
+#'     ),
+#'     workflowContent = list(
+#'       documents = list(
+#'         list(
+#'           document = raw,
+#'           documentContentType = "pdf"|"txt",
+#'           documentName = "string",
+#'           documentDescription = "string"
+#'         )
+#'       ),
+#'       policyRepairAssets = list(
+#'         annotations = list(
+#'           list(
+#'             addType = list(
+#'               name = "string",
+#'               description = "string",
+#'               values = list(
+#'                 list(
+#'                   value = "string",
+#'                   description = "string"
+#'                 )
+#'               )
+#'             ),
+#'             updateType = list(
+#'               name = "string",
+#'               newName = "string",
+#'               description = "string",
+#'               values = list(
+#'                 list(
+#'                   addTypeValue = list(
+#'                     value = "string",
+#'                     description = "string"
+#'                   ),
+#'                   updateTypeValue = list(
+#'                     value = "string",
+#'                     newValue = "string",
+#'                     description = "string"
+#'                   ),
+#'                   deleteTypeValue = list(
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             deleteType = list(
+#'               name = "string"
+#'             ),
+#'             addVariable = list(
+#'               name = "string",
+#'               type = "string",
+#'               description = "string"
+#'             ),
+#'             updateVariable = list(
+#'               name = "string",
+#'               newName = "string",
+#'               description = "string"
+#'             ),
+#'             deleteVariable = list(
+#'               name = "string"
+#'             ),
+#'             addRule = list(
+#'               expression = "string"
+#'             ),
+#'             updateRule = list(
+#'               ruleId = "string",
+#'               expression = "string"
+#'             ),
+#'             deleteRule = list(
+#'               ruleId = "string"
+#'             ),
+#'             addRuleFromNaturalLanguage = list(
+#'               naturalLanguage = "string"
+#'             ),
+#'             updateFromRulesFeedback = list(
+#'               ruleIds = list(
+#'                 "string"
+#'               ),
+#'               feedback = "string"
+#'             ),
+#'             updateFromScenarioFeedback = list(
+#'               ruleIds = list(
+#'                 "string"
+#'               ),
+#'               scenarioExpression = "string",
+#'               feedback = "string"
+#'             ),
+#'             ingestContent = list(
+#'               content = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_start_automated_reasoning_policy_build_workflow
+#'
+#' @aliases bedrock_start_automated_reasoning_policy_build_workflow
+bedrock_start_automated_reasoning_policy_build_workflow <- function(policyArn, buildWorkflowType, clientRequestToken = NULL, sourceContent) {
+  op <- new_operation(
+    name = "StartAutomatedReasoningPolicyBuildWorkflow",
+    http_method = "POST",
+    http_path = "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowType}/start",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$start_automated_reasoning_policy_build_workflow_input(policyArn = policyArn, buildWorkflowType = buildWorkflowType, clientRequestToken = clientRequestToken, sourceContent = sourceContent)
+  output <- .bedrock$start_automated_reasoning_policy_build_workflow_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$start_automated_reasoning_policy_build_workflow <- bedrock_start_automated_reasoning_policy_build_workflow
+
+#' Initiates a test workflow to validate Automated Reasoning policy tests
+#'
+#' @description
+#' Initiates a test workflow to validate Automated Reasoning policy tests.
+#' The workflow executes the specified tests against the policy and
+#' generates validation results.
+#'
+#' @usage
+#' bedrock_start_automated_reasoning_policy_test_workflow(policyArn,
+#'   buildWorkflowId, testCaseIds, clientRequestToken)
+#'
+#' @param policyArn &#91;required&#93; The Amazon Resource Name (ARN) of the Automated Reasoning policy to
+#' test.
+#' @param buildWorkflowId &#91;required&#93; The build workflow identifier. The build workflow must show a
+#' `COMPLETED` status before running tests.
+#' @param testCaseIds The list of test identifiers to run. If not provided, all tests for the
+#' policy are run.
+#' @param clientRequestToken A unique, case-sensitive identifier to ensure that the operation
+#' completes no more than one time. If this token matches a previous
+#' request, Amazon Bedrock ignores the request but doesn't return an error.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policyArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_automated_reasoning_policy_test_workflow(
+#'   policyArn = "string",
+#'   buildWorkflowId = "string",
+#'   testCaseIds = list(
+#'     "string"
+#'   ),
+#'   clientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_start_automated_reasoning_policy_test_workflow
+#'
+#' @aliases bedrock_start_automated_reasoning_policy_test_workflow
+bedrock_start_automated_reasoning_policy_test_workflow <- function(policyArn, buildWorkflowId, testCaseIds = NULL, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "StartAutomatedReasoningPolicyTestWorkflow",
+    http_method = "POST",
+    http_path = "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}/test-workflows",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$start_automated_reasoning_policy_test_workflow_input(policyArn = policyArn, buildWorkflowId = buildWorkflowId, testCaseIds = testCaseIds, clientRequestToken = clientRequestToken)
+  output <- .bedrock$start_automated_reasoning_policy_test_workflow_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$start_automated_reasoning_policy_test_workflow <- bedrock_start_automated_reasoning_policy_test_workflow
 
 #' Stops an evaluation job that is current being created or running
 #'
@@ -5399,6 +9074,377 @@ bedrock_untag_resource <- function(resourceARN, tagKeys) {
 }
 .bedrock$operations$untag_resource <- bedrock_untag_resource
 
+#' Updates an existing Automated Reasoning policy with new rules,
+#' variables, or configuration
+#'
+#' @description
+#' Updates an existing Automated Reasoning policy with new rules,
+#' variables, or configuration. This creates a new version of the policy
+#' while preserving the previous version.
+#'
+#' @usage
+#' bedrock_update_automated_reasoning_policy(policyArn, policyDefinition,
+#'   name, description)
+#'
+#' @param policyArn &#91;required&#93; The Amazon Resource Name (ARN) of the Automated Reasoning policy to
+#' update. This must be the ARN of a draft policy.
+#' @param policyDefinition &#91;required&#93; The updated policy definition containing the formal logic rules,
+#' variables, and types.
+#' @param name The updated name for the Automated Reasoning policy.
+#' @param description The updated description for the Automated Reasoning policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policyArn = "string",
+#'   name = "string",
+#'   definitionHash = "string",
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_automated_reasoning_policy(
+#'   policyArn = "string",
+#'   policyDefinition = list(
+#'     version = "string",
+#'     types = list(
+#'       list(
+#'         name = "string",
+#'         description = "string",
+#'         values = list(
+#'           list(
+#'             value = "string",
+#'             description = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     rules = list(
+#'       list(
+#'         id = "string",
+#'         expression = "string",
+#'         alternateExpression = "string"
+#'       )
+#'     ),
+#'     variables = list(
+#'       list(
+#'         name = "string",
+#'         type = "string",
+#'         description = "string"
+#'       )
+#'     )
+#'   ),
+#'   name = "string",
+#'   description = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_update_automated_reasoning_policy
+#'
+#' @aliases bedrock_update_automated_reasoning_policy
+bedrock_update_automated_reasoning_policy <- function(policyArn, policyDefinition, name = NULL, description = NULL) {
+  op <- new_operation(
+    name = "UpdateAutomatedReasoningPolicy",
+    http_method = "PATCH",
+    http_path = "/automated-reasoning-policies/{policyArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$update_automated_reasoning_policy_input(policyArn = policyArn, policyDefinition = policyDefinition, name = name, description = description)
+  output <- .bedrock$update_automated_reasoning_policy_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$update_automated_reasoning_policy <- bedrock_update_automated_reasoning_policy
+
+#' Updates the annotations for an Automated Reasoning policy build workflow
+#'
+#' @description
+#' Updates the annotations for an Automated Reasoning policy build
+#' workflow. This allows you to modify extracted rules, variables, and
+#' types before finalizing the policy.
+#'
+#' @usage
+#' bedrock_update_automated_reasoning_policy_annotations(policyArn,
+#'   buildWorkflowId, annotations, lastUpdatedAnnotationSetHash)
+#'
+#' @param policyArn &#91;required&#93; The Amazon Resource Name (ARN) of the Automated Reasoning policy whose
+#' annotations you want to update.
+#' @param buildWorkflowId &#91;required&#93; The unique identifier of the build workflow whose annotations you want
+#' to update.
+#' @param annotations &#91;required&#93; The updated annotations containing modified rules, variables, and types
+#' for the policy.
+#' @param lastUpdatedAnnotationSetHash &#91;required&#93; The hash value of the annotation set that you're updating. This is used
+#' for optimistic concurrency control to prevent conflicting updates.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policyArn = "string",
+#'   buildWorkflowId = "string",
+#'   annotationSetHash = "string",
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_automated_reasoning_policy_annotations(
+#'   policyArn = "string",
+#'   buildWorkflowId = "string",
+#'   annotations = list(
+#'     list(
+#'       addType = list(
+#'         name = "string",
+#'         description = "string",
+#'         values = list(
+#'           list(
+#'             value = "string",
+#'             description = "string"
+#'           )
+#'         )
+#'       ),
+#'       updateType = list(
+#'         name = "string",
+#'         newName = "string",
+#'         description = "string",
+#'         values = list(
+#'           list(
+#'             addTypeValue = list(
+#'               value = "string",
+#'               description = "string"
+#'             ),
+#'             updateTypeValue = list(
+#'               value = "string",
+#'               newValue = "string",
+#'               description = "string"
+#'             ),
+#'             deleteTypeValue = list(
+#'               value = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       deleteType = list(
+#'         name = "string"
+#'       ),
+#'       addVariable = list(
+#'         name = "string",
+#'         type = "string",
+#'         description = "string"
+#'       ),
+#'       updateVariable = list(
+#'         name = "string",
+#'         newName = "string",
+#'         description = "string"
+#'       ),
+#'       deleteVariable = list(
+#'         name = "string"
+#'       ),
+#'       addRule = list(
+#'         expression = "string"
+#'       ),
+#'       updateRule = list(
+#'         ruleId = "string",
+#'         expression = "string"
+#'       ),
+#'       deleteRule = list(
+#'         ruleId = "string"
+#'       ),
+#'       addRuleFromNaturalLanguage = list(
+#'         naturalLanguage = "string"
+#'       ),
+#'       updateFromRulesFeedback = list(
+#'         ruleIds = list(
+#'           "string"
+#'         ),
+#'         feedback = "string"
+#'       ),
+#'       updateFromScenarioFeedback = list(
+#'         ruleIds = list(
+#'           "string"
+#'         ),
+#'         scenarioExpression = "string",
+#'         feedback = "string"
+#'       ),
+#'       ingestContent = list(
+#'         content = "string"
+#'       )
+#'     )
+#'   ),
+#'   lastUpdatedAnnotationSetHash = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_update_automated_reasoning_policy_annotations
+#'
+#' @aliases bedrock_update_automated_reasoning_policy_annotations
+bedrock_update_automated_reasoning_policy_annotations <- function(policyArn, buildWorkflowId, annotations, lastUpdatedAnnotationSetHash) {
+  op <- new_operation(
+    name = "UpdateAutomatedReasoningPolicyAnnotations",
+    http_method = "PATCH",
+    http_path = "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}/annotations",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$update_automated_reasoning_policy_annotations_input(policyArn = policyArn, buildWorkflowId = buildWorkflowId, annotations = annotations, lastUpdatedAnnotationSetHash = lastUpdatedAnnotationSetHash)
+  output <- .bedrock$update_automated_reasoning_policy_annotations_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$update_automated_reasoning_policy_annotations <- bedrock_update_automated_reasoning_policy_annotations
+
+#' Updates an existing Automated Reasoning policy test
+#'
+#' @description
+#' Updates an existing Automated Reasoning policy test. You can modify the
+#' content, query, expected result, and confidence threshold.
+#'
+#' @usage
+#' bedrock_update_automated_reasoning_policy_test_case(policyArn,
+#'   testCaseId, guardContent, queryContent, lastUpdatedAt,
+#'   expectedAggregatedFindingsResult, confidenceThreshold,
+#'   clientRequestToken)
+#'
+#' @param policyArn &#91;required&#93; The Amazon Resource Name (ARN) of the Automated Reasoning policy that
+#' contains the test.
+#' @param testCaseId &#91;required&#93; The unique identifier of the test to update.
+#' @param guardContent &#91;required&#93; The updated content to be validated by the Automated Reasoning policy.
+#' @param queryContent The updated input query or prompt that generated the content.
+#' @param lastUpdatedAt &#91;required&#93; The timestamp when the test was last updated. This is used as a
+#' concurrency token to prevent conflicting modifications.
+#' @param expectedAggregatedFindingsResult &#91;required&#93; The updated expected result of the Automated Reasoning check.
+#' @param confidenceThreshold The updated minimum confidence level for logic validation. If null is
+#' provided, the threshold will be removed.
+#' @param clientRequestToken A unique, case-sensitive identifier to ensure that the operation
+#' completes no more than one time. If this token matches a previous
+#' request, Amazon Bedrock ignores the request, but does not return an
+#' error.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policyArn = "string",
+#'   testCaseId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_automated_reasoning_policy_test_case(
+#'   policyArn = "string",
+#'   testCaseId = "string",
+#'   guardContent = "string",
+#'   queryContent = "string",
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   expectedAggregatedFindingsResult = "VALID"|"INVALID"|"SATISFIABLE"|"IMPOSSIBLE"|"TRANSLATION_AMBIGUOUS"|"TOO_COMPLEX"|"NO_TRANSLATION",
+#'   confidenceThreshold = 123.0,
+#'   clientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_update_automated_reasoning_policy_test_case
+#'
+#' @aliases bedrock_update_automated_reasoning_policy_test_case
+bedrock_update_automated_reasoning_policy_test_case <- function(policyArn, testCaseId, guardContent, queryContent = NULL, lastUpdatedAt, expectedAggregatedFindingsResult, confidenceThreshold = NULL, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "UpdateAutomatedReasoningPolicyTestCase",
+    http_method = "PATCH",
+    http_path = "/automated-reasoning-policies/{policyArn}/test-cases/{testCaseId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$update_automated_reasoning_policy_test_case_input(policyArn = policyArn, testCaseId = testCaseId, guardContent = guardContent, queryContent = queryContent, lastUpdatedAt = lastUpdatedAt, expectedAggregatedFindingsResult = expectedAggregatedFindingsResult, confidenceThreshold = confidenceThreshold, clientRequestToken = clientRequestToken)
+  output <- .bedrock$update_automated_reasoning_policy_test_case_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$update_automated_reasoning_policy_test_case <- bedrock_update_automated_reasoning_policy_test_case
+
+#' Updates a custom model deployment with a new custom model
+#'
+#' @description
+#' Updates a custom model deployment with a new custom model. This allows
+#' you to deploy updated models without creating new deployment endpoints.
+#'
+#' @usage
+#' bedrock_update_custom_model_deployment(modelArn,
+#'   customModelDeploymentIdentifier)
+#'
+#' @param modelArn &#91;required&#93; ARN of the new custom model to deploy. This replaces the currently
+#' deployed model.
+#' @param customModelDeploymentIdentifier &#91;required&#93; Identifier of the custom model deployment to update with the new custom
+#' model.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   customModelDeploymentArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_custom_model_deployment(
+#'   modelArn = "string",
+#'   customModelDeploymentIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_update_custom_model_deployment
+#'
+#' @aliases bedrock_update_custom_model_deployment
+bedrock_update_custom_model_deployment <- function(modelArn, customModelDeploymentIdentifier) {
+  op <- new_operation(
+    name = "UpdateCustomModelDeployment",
+    http_method = "PATCH",
+    http_path = "/model-customization/custom-model-deployments/{customModelDeploymentIdentifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$update_custom_model_deployment_input(modelArn = modelArn, customModelDeploymentIdentifier = customModelDeploymentIdentifier)
+  output <- .bedrock$update_custom_model_deployment_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$update_custom_model_deployment <- bedrock_update_custom_model_deployment
+
 #' Updates a guardrail with the values you specify
 #'
 #' @description
@@ -5446,8 +9492,8 @@ bedrock_untag_resource <- function(resourceARN, tagKeys) {
 #' bedrock_update_guardrail(guardrailIdentifier, name, description,
 #'   topicPolicyConfig, contentPolicyConfig, wordPolicyConfig,
 #'   sensitiveInformationPolicyConfig, contextualGroundingPolicyConfig,
-#'   crossRegionConfig, blockedInputMessaging, blockedOutputsMessaging,
-#'   kmsKeyId)
+#'   automatedReasoningPolicyConfig, crossRegionConfig,
+#'   blockedInputMessaging, blockedOutputsMessaging, kmsKeyId)
 #'
 #' @param guardrailIdentifier &#91;required&#93; The unique identifier of the guardrail. This can be an ID or the ARN.
 #' @param name &#91;required&#93; A name for the guardrail.
@@ -5458,6 +9504,8 @@ bedrock_untag_resource <- function(resourceARN, tagKeys) {
 #' @param sensitiveInformationPolicyConfig The sensitive information policy to configure for the guardrail.
 #' @param contextualGroundingPolicyConfig The contextual grounding policy configuration used to update a
 #' guardrail.
+#' @param automatedReasoningPolicyConfig Updated configuration for Automated Reasoning policies associated with
+#' the guardrail.
 #' @param crossRegionConfig The system-defined guardrail profile that you're using with your
 #' guardrail. Guardrail profiles define the destination Amazon Web Services
 #' Regions where guardrail inference requests can be automatically routed.
@@ -5501,6 +9549,9 @@ bedrock_untag_resource <- function(resourceARN, tagKeys) {
 #'         inputEnabled = TRUE|FALSE,
 #'         outputEnabled = TRUE|FALSE
 #'       )
+#'     ),
+#'     tierConfig = list(
+#'       tierName = "CLASSIC"|"STANDARD"
 #'     )
 #'   ),
 #'   contentPolicyConfig = list(
@@ -5520,6 +9571,9 @@ bedrock_untag_resource <- function(resourceARN, tagKeys) {
 #'         inputEnabled = TRUE|FALSE,
 #'         outputEnabled = TRUE|FALSE
 #'       )
+#'     ),
+#'     tierConfig = list(
+#'       tierName = "CLASSIC"|"STANDARD"
 #'     )
 #'   ),
 #'   wordPolicyConfig = list(
@@ -5576,6 +9630,12 @@ bedrock_untag_resource <- function(resourceARN, tagKeys) {
 #'       )
 #'     )
 #'   ),
+#'   automatedReasoningPolicyConfig = list(
+#'     policies = list(
+#'       "string"
+#'     ),
+#'     confidenceThreshold = 123.0
+#'   ),
 #'   crossRegionConfig = list(
 #'     guardrailProfileIdentifier = "string"
 #'   ),
@@ -5590,7 +9650,7 @@ bedrock_untag_resource <- function(resourceARN, tagKeys) {
 #' @rdname bedrock_update_guardrail
 #'
 #' @aliases bedrock_update_guardrail
-bedrock_update_guardrail <- function(guardrailIdentifier, name, description = NULL, topicPolicyConfig = NULL, contentPolicyConfig = NULL, wordPolicyConfig = NULL, sensitiveInformationPolicyConfig = NULL, contextualGroundingPolicyConfig = NULL, crossRegionConfig = NULL, blockedInputMessaging, blockedOutputsMessaging, kmsKeyId = NULL) {
+bedrock_update_guardrail <- function(guardrailIdentifier, name, description = NULL, topicPolicyConfig = NULL, contentPolicyConfig = NULL, wordPolicyConfig = NULL, sensitiveInformationPolicyConfig = NULL, contextualGroundingPolicyConfig = NULL, automatedReasoningPolicyConfig = NULL, crossRegionConfig = NULL, blockedInputMessaging, blockedOutputsMessaging, kmsKeyId = NULL) {
   op <- new_operation(
     name = "UpdateGuardrail",
     http_method = "PUT",
@@ -5599,7 +9659,7 @@ bedrock_update_guardrail <- function(guardrailIdentifier, name, description = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrock$update_guardrail_input(guardrailIdentifier = guardrailIdentifier, name = name, description = description, topicPolicyConfig = topicPolicyConfig, contentPolicyConfig = contentPolicyConfig, wordPolicyConfig = wordPolicyConfig, sensitiveInformationPolicyConfig = sensitiveInformationPolicyConfig, contextualGroundingPolicyConfig = contextualGroundingPolicyConfig, crossRegionConfig = crossRegionConfig, blockedInputMessaging = blockedInputMessaging, blockedOutputsMessaging = blockedOutputsMessaging, kmsKeyId = kmsKeyId)
+  input <- .bedrock$update_guardrail_input(guardrailIdentifier = guardrailIdentifier, name = name, description = description, topicPolicyConfig = topicPolicyConfig, contentPolicyConfig = contentPolicyConfig, wordPolicyConfig = wordPolicyConfig, sensitiveInformationPolicyConfig = sensitiveInformationPolicyConfig, contextualGroundingPolicyConfig = contextualGroundingPolicyConfig, automatedReasoningPolicyConfig = automatedReasoningPolicyConfig, crossRegionConfig = crossRegionConfig, blockedInputMessaging = blockedInputMessaging, blockedOutputsMessaging = blockedOutputsMessaging, kmsKeyId = kmsKeyId)
   output <- .bedrock$update_guardrail_output()
   config <- get_config()
   svc <- .bedrock$service(config, op)

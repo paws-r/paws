@@ -5,16 +5,16 @@
 \title{Creates a software bill of materials (SBOM) report}
 \usage{
 inspector2_create_sbom_export(
-  reportFormat,
   resourceFilterCriteria = NULL,
+  reportFormat,
   s3Destination
 )
 }
 \arguments{
-\item{reportFormat}{[required] The output format for the software bill of materials (SBOM) report.}
-
 \item{resourceFilterCriteria}{The resource filter criteria for the software bill of materials (SBOM)
 report.}
+
+\item{reportFormat}{[required] The output format for the software bill of materials (SBOM) report.}
 
 \item{s3Destination}{[required] Contains details of the Amazon S3 bucket and KMS key used to export
 findings.}

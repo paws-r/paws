@@ -3,8 +3,8 @@
 \name{arczonalshift_get_managed_resource}
 \alias{arczonalshift_get_managed_resource}
 \title{Get information about a resource that's been registered for zonal shifts
-with Amazon Route 53 Application Recovery Controller in this Amazon Web
-Services Region}
+with Amazon Application Recovery Controller in this Amazon Web Services
+Region}
 \usage{
 arczonalshift_get_managed_resource(resourceIdentifier)
 }
@@ -12,11 +12,17 @@ arczonalshift_get_managed_resource(resourceIdentifier)
 \item{resourceIdentifier}{[required] The identifier for the resource that Amazon Web Services shifts traffic
 for. The identifier is the Amazon Resource Name (ARN) for the resource.
 
-At this time, supported resources are Network Load Balancers and
-Application Load Balancers with cross-zone load balancing turned off.}
+Amazon Application Recovery Controller currently supports enabling the
+following resources for zonal shift and zonal autoshift:
+\itemize{
+\item \href{https://docs.aws.amazon.com/r53recovery/latest/dg/arc-zonal-shift.resource-types.ec2-auto-scaling-groups.html}{Amazon EC2 Auto Scaling groups}
+\item \href{https://docs.aws.amazon.com/r53recovery/latest/dg/arc-zonal-shift.resource-types.eks.html}{Amazon Elastic Kubernetes Service}
+\item \href{https://docs.aws.amazon.com/r53recovery/latest/dg/arc-zonal-shift.resource-types.app-load-balancers.html}{Application Load Balancer}
+\item \href{https://docs.aws.amazon.com/r53recovery/latest/dg/arc-zonal-shift.resource-types.network-load-balancers.html}{Network Load Balancer}
+}}
 }
 \description{
-Get information about a resource that's been registered for zonal shifts with Amazon Route 53 Application Recovery Controller in this Amazon Web Services Region. Resources that are registered for zonal shifts are managed resources in ARC. You can start zonal shifts and configure zonal autoshift for managed resources.
+Get information about a resource that's been registered for zonal shifts with Amazon Application Recovery Controller in this Amazon Web Services Region. Resources that are registered for zonal shifts are managed resources in ARC. You can start zonal shifts and configure zonal autoshift for managed resources.
 
 See \url{https://www.paws-r-sdk.com/docs/arczonalshift_get_managed_resource/} for full documentation.
 }

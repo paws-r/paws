@@ -6,8 +6,8 @@
 \usage{
 controltower_list_control_operations(
   filter = NULL,
-  maxResults = NULL,
-  nextToken = NULL
+  nextToken = NULL,
+  maxResults = NULL
 )
 }
 \arguments{
@@ -15,9 +15,9 @@ controltower_list_control_operations(
 \code{\link[=controltower_list_control_operations]{list_control_operations}} API
 that lets you select the types of control operations to view.}
 
-\item{maxResults}{The maximum number of results to be shown.}
-
 \item{nextToken}{A pagination token.}
+
+\item{maxResults}{The maximum number of results to be shown.}
 }
 \description{
 Provides a list of operations in progress or queued. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html#list-control-operations-api-examples}{ListControlOperation examples}.

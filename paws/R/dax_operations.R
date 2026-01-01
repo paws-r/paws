@@ -14,7 +14,7 @@ NULL
 #'   ReplicationFactor, AvailabilityZones, SubnetGroupName, SecurityGroupIds,
 #'   PreferredMaintenanceWindow, NotificationTopicArn, IamRoleArn,
 #'   ParameterGroupName, Tags, SSESpecification,
-#'   ClusterEndpointEncryptionType)
+#'   ClusterEndpointEncryptionType, NetworkType)
 #'
 #' @param ClusterName &#91;required&#93; The cluster identifier. This parameter is stored as a lowercase string.
 #' 
@@ -35,7 +35,8 @@ NULL
 #' replicas). `If the AvailabilityZones` parameter is provided, its length
 #' must equal the `ReplicationFactor`.
 #' 
-#' AWS recommends that you have at least two read replicas per cluster.
+#' Amazon Web Services recommends that you have at least two read replicas
+#' per cluster.
 #' @param AvailabilityZones The Availability Zones (AZs) in which the cluster nodes will reside
 #' after the cluster has been created or updated. If provided, the length
 #' of this list must equal the `ReplicationFactor` parameter. If you omit
@@ -91,6 +92,18 @@ NULL
 #' -   `NONE` for no encryption
 #' 
 #' -   `TLS` for Transport Layer Security
+#' @param NetworkType Specifies the IP protocol(s) the cluster uses for network
+#' communications. Values are:
+#' 
+#' -   `ipv4` - The cluster is accessible only through IPv4 addresses
+#' 
+#' -   `ipv6` - The cluster is accessible only through IPv6 addresses
+#' 
+#' -   `dual_stack` - The cluster is accessible through both IPv4 and IPv6
+#'     addresses.
+#' 
+#' If no explicit `NetworkType` is provided, the network type is derived
+#' based on the subnet group's configuration.
 #'
 #' @return
 #' A list with the following syntax:
@@ -151,7 +164,8 @@ NULL
 #'     SSEDescription = list(
 #'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
 #'     ),
-#'     ClusterEndpointEncryptionType = "NONE"|"TLS"
+#'     ClusterEndpointEncryptionType = "NONE"|"TLS",
+#'     NetworkType = "ipv4"|"ipv6"|"dual_stack"
 #'   )
 #' )
 #' ```
@@ -183,7 +197,8 @@ NULL
 #'   SSESpecification = list(
 #'     Enabled = TRUE|FALSE
 #'   ),
-#'   ClusterEndpointEncryptionType = "NONE"|"TLS"
+#'   ClusterEndpointEncryptionType = "NONE"|"TLS",
+#'   NetworkType = "ipv4"|"ipv6"|"dual_stack"
 #' )
 #' ```
 #'
@@ -192,7 +207,7 @@ NULL
 #' @rdname dax_create_cluster
 #'
 #' @aliases dax_create_cluster
-dax_create_cluster <- function(ClusterName, NodeType, Description = NULL, ReplicationFactor, AvailabilityZones = NULL, SubnetGroupName = NULL, SecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL, IamRoleArn, ParameterGroupName = NULL, Tags = NULL, SSESpecification = NULL, ClusterEndpointEncryptionType = NULL) {
+dax_create_cluster <- function(ClusterName, NodeType, Description = NULL, ReplicationFactor, AvailabilityZones = NULL, SubnetGroupName = NULL, SecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL, IamRoleArn, ParameterGroupName = NULL, Tags = NULL, SSESpecification = NULL, ClusterEndpointEncryptionType = NULL, NetworkType = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
@@ -201,7 +216,7 @@ dax_create_cluster <- function(ClusterName, NodeType, Description = NULL, Replic
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .dax$create_cluster_input(ClusterName = ClusterName, NodeType = NodeType, Description = Description, ReplicationFactor = ReplicationFactor, AvailabilityZones = AvailabilityZones, SubnetGroupName = SubnetGroupName, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, IamRoleArn = IamRoleArn, ParameterGroupName = ParameterGroupName, Tags = Tags, SSESpecification = SSESpecification, ClusterEndpointEncryptionType = ClusterEndpointEncryptionType)
+  input <- .dax$create_cluster_input(ClusterName = ClusterName, NodeType = NodeType, Description = Description, ReplicationFactor = ReplicationFactor, AvailabilityZones = AvailabilityZones, SubnetGroupName = SubnetGroupName, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, IamRoleArn = IamRoleArn, ParameterGroupName = ParameterGroupName, Tags = Tags, SSESpecification = SSESpecification, ClusterEndpointEncryptionType = ClusterEndpointEncryptionType, NetworkType = NetworkType)
   output <- .dax$create_cluster_output()
   config <- get_config()
   svc <- .dax$service(config, op)
@@ -290,8 +305,14 @@ dax_create_parameter_group <- function(ParameterGroupName, Description = NULL) {
 #'     Subnets = list(
 #'       list(
 #'         SubnetIdentifier = "string",
-#'         SubnetAvailabilityZone = "string"
+#'         SubnetAvailabilityZone = "string",
+#'         SupportedNetworkTypes = list(
+#'           "ipv4"|"ipv6"|"dual_stack"
+#'         )
 #'       )
+#'     ),
+#'     SupportedNetworkTypes = list(
+#'       "ipv4"|"ipv6"|"dual_stack"
 #'     )
 #'   )
 #' )
@@ -410,7 +431,8 @@ dax_create_subnet_group <- function(SubnetGroupName, Description = NULL, SubnetI
 #'     SSEDescription = list(
 #'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
 #'     ),
-#'     ClusterEndpointEncryptionType = "NONE"|"TLS"
+#'     ClusterEndpointEncryptionType = "NONE"|"TLS",
+#'     NetworkType = "ipv4"|"ipv6"|"dual_stack"
 #'   )
 #' )
 #' ```
@@ -525,7 +547,8 @@ dax_decrease_replication_factor <- function(ClusterName, NewReplicationFactor, A
 #'     SSEDescription = list(
 #'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
 #'     ),
-#'     ClusterEndpointEncryptionType = "NONE"|"TLS"
+#'     ClusterEndpointEncryptionType = "NONE"|"TLS",
+#'     NetworkType = "ipv4"|"ipv6"|"dual_stack"
 #'   )
 #' )
 #' ```
@@ -761,7 +784,8 @@ dax_delete_subnet_group <- function(SubnetGroupName) {
 #'       SSEDescription = list(
 #'         Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
 #'       ),
-#'       ClusterEndpointEncryptionType = "NONE"|"TLS"
+#'       ClusterEndpointEncryptionType = "NONE"|"TLS",
+#'       NetworkType = "ipv4"|"ipv6"|"dual_stack"
 #'     )
 #'   )
 #' )
@@ -1161,8 +1185,14 @@ dax_describe_parameters <- function(ParameterGroupName, Source = NULL, MaxResult
 #'       Subnets = list(
 #'         list(
 #'           SubnetIdentifier = "string",
-#'           SubnetAvailabilityZone = "string"
+#'           SubnetAvailabilityZone = "string",
+#'           SupportedNetworkTypes = list(
+#'             "ipv4"|"ipv6"|"dual_stack"
+#'           )
 #'         )
+#'       ),
+#'       SupportedNetworkTypes = list(
+#'         "ipv4"|"ipv6"|"dual_stack"
 #'       )
 #'     )
 #'   )
@@ -1279,7 +1309,8 @@ dax_describe_subnet_groups <- function(SubnetGroupNames = NULL, MaxResults = NUL
 #'     SSEDescription = list(
 #'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
 #'     ),
-#'     ClusterEndpointEncryptionType = "NONE"|"TLS"
+#'     ClusterEndpointEncryptionType = "NONE"|"TLS",
+#'     NetworkType = "ipv4"|"ipv6"|"dual_stack"
 #'   )
 #' )
 #' ```
@@ -1454,7 +1485,8 @@ dax_list_tags <- function(ResourceName, NextToken = NULL) {
 #'     SSEDescription = list(
 #'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
 #'     ),
-#'     ClusterEndpointEncryptionType = "NONE"|"TLS"
+#'     ClusterEndpointEncryptionType = "NONE"|"TLS",
+#'     NetworkType = "ipv4"|"ipv6"|"dual_stack"
 #'   )
 #' )
 #' ```
@@ -1701,7 +1733,8 @@ dax_untag_resource <- function(ResourceName, TagKeys) {
 #'     SSEDescription = list(
 #'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
 #'     ),
-#'     ClusterEndpointEncryptionType = "NONE"|"TLS"
+#'     ClusterEndpointEncryptionType = "NONE"|"TLS",
+#'     NetworkType = "ipv4"|"ipv6"|"dual_stack"
 #'   )
 #' )
 #' ```
@@ -1834,8 +1867,14 @@ dax_update_parameter_group <- function(ParameterGroupName, ParameterNameValues) 
 #'     Subnets = list(
 #'       list(
 #'         SubnetIdentifier = "string",
-#'         SubnetAvailabilityZone = "string"
+#'         SubnetAvailabilityZone = "string",
+#'         SupportedNetworkTypes = list(
+#'           "ipv4"|"ipv6"|"dual_stack"
+#'         )
 #'       )
+#'     ),
+#'     SupportedNetworkTypes = list(
+#'       "ipv4"|"ipv6"|"dual_stack"
 #'     )
 #'   )
 #' )

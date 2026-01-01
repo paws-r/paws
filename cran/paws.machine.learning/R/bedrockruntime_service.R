@@ -94,6 +94,7 @@ NULL
 #'  \link[=bedrockruntime_apply_guardrail]{apply_guardrail} \tab The action to apply a guardrail\cr
 #'  \link[=bedrockruntime_converse]{converse} \tab Sends messages to the specified Amazon Bedrock model\cr
 #'  \link[=bedrockruntime_converse_stream]{converse_stream} \tab Sends messages to the specified Amazon Bedrock model and returns the response in a stream\cr
+#'  \link[=bedrockruntime_count_tokens]{count_tokens} \tab Returns the token count for a given inference request\cr
 #'  \link[=bedrockruntime_get_async_invoke]{get_async_invoke} \tab Retrieve information about an asynchronous invocation\cr
 #'  \link[=bedrockruntime_invoke_model]{invoke_model} \tab Invokes the specified Amazon Bedrock model to run inference using the prompt and inference parameters provided in the request body\cr
 #'  \link[=bedrockruntime_invoke_model_with_bidirectional_stream]{invoke_model_with_bidirectional_stream} \tab Invoke the specified Amazon Bedrock model to run inference using the bidirectional stream\cr

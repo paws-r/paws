@@ -29,8 +29,13 @@ subnet.
 [Application Load Balancers on Local Zones] You can specify subnets
 from one or more Local Zones.
 
-[Network Load Balancers and Gateway Load Balancers] You can specify
-subnets from one or more Availability Zones.}
+[Network Load Balancers] You can specify subnets from one or more
+Availability Zones.
+
+[Gateway Load Balancers] You can specify subnets from one or more
+Availability Zones. You must include all subnets that were enabled
+previously, with their existing configurations, plus any additional
+subnets.}
 
 \item{SubnetMappings}{The IDs of the public subnets. You can specify only one subnet per
 Availability Zone. You must specify either subnets or subnet mappings.

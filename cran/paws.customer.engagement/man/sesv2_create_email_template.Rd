@@ -4,13 +4,16 @@
 \alias{sesv2_create_email_template}
 \title{Creates an email template}
 \usage{
-sesv2_create_email_template(TemplateName, TemplateContent)
+sesv2_create_email_template(TemplateName, TemplateContent, Tags = NULL)
 }
 \arguments{
 \item{TemplateName}{[required] The name of the template.}
 
 \item{TemplateContent}{[required] The content of the email template, composed of a subject line, an HTML
 part, and a text-only part.}
+
+\item{Tags}{An array of objects that define the tags (keys and values) to associate
+with the email template.}
 }
 \description{
 Creates an email template. Email templates enable you to send personalized email to one or more destinations in a single API operation. For more information, see the \href{https://docs.aws.amazon.com/ses/latest/dg/send-personalized-email-api.html}{Amazon SES Developer Guide}.

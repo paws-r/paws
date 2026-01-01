@@ -5,7 +5,7 @@ NULL
 
 .prometheusservice$create_alert_manager_definition_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), data = structure(logical(0), tags = list(type = "blob")), workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string")), data = structure(logical(0), tags = list(type = "blob")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -15,9 +15,21 @@ NULL
   return(populate(args, shape))
 }
 
+.prometheusservice$create_anomaly_detector_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string")), alias = structure(logical(0), tags = list(type = "string")), evaluationIntervalInSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), missingDataAction = structure(list(markAsAnomaly = structure(logical(0), tags = list(type = "boolean", box = TRUE)), skip = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure", union = TRUE)), configuration = structure(list(randomCutForest = structure(list(query = structure(logical(0), tags = list(type = "string")), shingleSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), sampleSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), ignoreNearExpectedFromAbove = structure(list(amount = structure(logical(0), tags = list(type = "double", box = TRUE)), ratio = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure", union = TRUE)), ignoreNearExpectedFromBelow = structure(list(amount = structure(logical(0), tags = list(type = "double", box = TRUE)), ratio = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.prometheusservice$create_anomaly_detector_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(anomalyDetectorId = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .prometheusservice$create_logging_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), logGroupArn = structure(logical(0), tags = list(type = "string")), workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string")), logGroupArn = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -27,45 +39,57 @@ NULL
   return(populate(args, shape))
 }
 
+.prometheusservice$create_query_logging_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string")), destinations = structure(list(structure(list(cloudWatchLogs = structure(list(logGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), filters = structure(list(qspThreshold = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.prometheusservice$create_query_logging_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(status = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .prometheusservice$create_rule_groups_namespace_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), data = structure(logical(0), tags = list(type = "blob")), name = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string")), name = structure(logical(0), tags = list(type = "string")), data = structure(logical(0), tags = list(type = "blob")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .prometheusservice$create_rule_groups_namespace_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .prometheusservice$create_scraper_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(alias = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), destination = structure(list(ampConfiguration = structure(list(workspaceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), roleConfiguration = structure(list(sourceRoleArn = structure(logical(0), tags = list(type = "string")), targetRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), scrapeConfiguration = structure(list(configurationBlob = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure", union = TRUE)), source = structure(list(eksConfiguration = structure(list(clusterArn = structure(logical(0), tags = list(type = "string")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(alias = structure(logical(0), tags = list(type = "string")), scrapeConfiguration = structure(list(configurationBlob = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure", union = TRUE)), source = structure(list(eksConfiguration = structure(list(clusterArn = structure(logical(0), tags = list(type = "string")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), vpcConfiguration = structure(list(securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), destination = structure(list(ampConfiguration = structure(list(workspaceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), roleConfiguration = structure(list(sourceRoleArn = structure(logical(0), tags = list(type = "string")), targetRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .prometheusservice$create_scraper_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), scraperId = structure(logical(0), tags = list(type = "string")), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(scraperId = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .prometheusservice$create_workspace_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(alias = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(alias = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .prometheusservice$create_workspace_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), workspaceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .prometheusservice$delete_alert_manager_definition_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string")), workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -73,9 +97,19 @@ NULL
   list()
 }
 
+.prometheusservice$delete_anomaly_detector_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string")), anomalyDetectorId = structure(logical(0), tags = list(location = "uri", locationName = "anomalyDetectorId", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.prometheusservice$delete_anomaly_detector_output <- function(...) {
+  list()
+}
+
 .prometheusservice$delete_logging_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string")), workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -83,9 +117,29 @@ NULL
   list()
 }
 
+.prometheusservice$delete_query_logging_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.prometheusservice$delete_query_logging_configuration_output <- function(...) {
+  list()
+}
+
+.prometheusservice$delete_resource_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string")), revisionId = structure(logical(0), tags = list(location = "querystring", locationName = "revisionId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.prometheusservice$delete_resource_policy_output <- function(...) {
+  list()
+}
+
 .prometheusservice$delete_rule_groups_namespace_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string")), name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string")), name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -95,7 +149,7 @@ NULL
 
 .prometheusservice$delete_scraper_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string")), scraperId = structure(logical(0), tags = list(location = "uri", locationName = "scraperId", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(scraperId = structure(logical(0), tags = list(location = "uri", locationName = "scraperId", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -105,9 +159,19 @@ NULL
   return(populate(args, shape))
 }
 
+.prometheusservice$delete_scraper_logging_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(scraperId = structure(logical(0), tags = list(location = "uri", locationName = "scraperId", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.prometheusservice$delete_scraper_logging_configuration_output <- function(...) {
+  list()
+}
+
 .prometheusservice$delete_workspace_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string")), workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -123,7 +187,19 @@ NULL
 
 .prometheusservice$describe_alert_manager_definition_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(alertManagerDefinition = structure(list(createdAt = structure(logical(0), tags = list(type = "timestamp")), data = structure(logical(0), tags = list(type = "blob")), modifiedAt = structure(logical(0), tags = list(type = "timestamp")), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(alertManagerDefinition = structure(list(status = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), data = structure(logical(0), tags = list(type = "blob")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.prometheusservice$describe_anomaly_detector_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string")), anomalyDetectorId = structure(logical(0), tags = list(location = "uri", locationName = "anomalyDetectorId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.prometheusservice$describe_anomaly_detector_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(anomalyDetector = structure(list(arn = structure(logical(0), tags = list(type = "string")), anomalyDetectorId = structure(logical(0), tags = list(type = "string")), alias = structure(logical(0), tags = list(type = "string")), evaluationIntervalInSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), missingDataAction = structure(list(markAsAnomaly = structure(logical(0), tags = list(type = "boolean", box = TRUE)), skip = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure", union = TRUE)), configuration = structure(list(randomCutForest = structure(list(query = structure(logical(0), tags = list(type = "string")), shingleSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), sampleSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), ignoreNearExpectedFromAbove = structure(list(amount = structure(logical(0), tags = list(type = "double", box = TRUE)), ratio = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure", union = TRUE)), ignoreNearExpectedFromBelow = structure(list(amount = structure(logical(0), tags = list(type = "double", box = TRUE)), ratio = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -135,19 +211,43 @@ NULL
 
 .prometheusservice$describe_logging_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(loggingConfiguration = structure(list(createdAt = structure(logical(0), tags = list(type = "timestamp")), logGroupArn = structure(logical(0), tags = list(type = "string")), modifiedAt = structure(logical(0), tags = list(type = "timestamp")), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), workspace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(loggingConfiguration = structure(list(status = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), workspace = structure(logical(0), tags = list(type = "string")), logGroupArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.prometheusservice$describe_query_logging_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.prometheusservice$describe_query_logging_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(queryLoggingConfiguration = structure(list(status = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), workspace = structure(logical(0), tags = list(type = "string")), destinations = structure(list(structure(list(cloudWatchLogs = structure(list(logGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), filters = structure(list(qspThreshold = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.prometheusservice$describe_resource_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.prometheusservice$describe_resource_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(policyDocument = structure(logical(0), tags = list(type = "string")), policyStatus = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .prometheusservice$describe_rule_groups_namespace_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string")), name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .prometheusservice$describe_rule_groups_namespace_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ruleGroupsNamespace = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), data = structure(logical(0), tags = list(type = "blob")), modifiedAt = structure(logical(0), tags = list(type = "timestamp")), name = structure(logical(0), tags = list(type = "string")), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ruleGroupsNamespace = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), data = structure(logical(0), tags = list(type = "blob")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -159,7 +259,19 @@ NULL
 
 .prometheusservice$describe_scraper_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(scraper = structure(list(alias = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), destination = structure(list(ampConfiguration = structure(list(workspaceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), roleArn = structure(logical(0), tags = list(type = "string")), roleConfiguration = structure(list(sourceRoleArn = structure(logical(0), tags = list(type = "string")), targetRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), scrapeConfiguration = structure(list(configurationBlob = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure", union = TRUE)), scraperId = structure(logical(0), tags = list(type = "string")), source = structure(list(eksConfiguration = structure(list(clusterArn = structure(logical(0), tags = list(type = "string")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), statusReason = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(scraper = structure(list(alias = structure(logical(0), tags = list(type = "string")), scraperId = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp")), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), statusReason = structure(logical(0), tags = list(type = "string")), scrapeConfiguration = structure(list(configurationBlob = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure", union = TRUE)), source = structure(list(eksConfiguration = structure(list(clusterArn = structure(logical(0), tags = list(type = "string")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), vpcConfiguration = structure(list(securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), destination = structure(list(ampConfiguration = structure(list(workspaceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), roleConfiguration = structure(list(sourceRoleArn = structure(logical(0), tags = list(type = "string")), targetRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.prometheusservice$describe_scraper_logging_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(scraperId = structure(logical(0), tags = list(location = "uri", locationName = "scraperId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.prometheusservice$describe_scraper_logging_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(status = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), scraperId = structure(logical(0), tags = list(type = "string")), loggingDestination = structure(list(cloudWatchLogs = structure(list(logGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), scraperComponents = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), config = structure(list(options = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), modifiedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -171,7 +283,7 @@ NULL
 
 .prometheusservice$describe_workspace_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workspace = structure(list(alias = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), prometheusEndpoint = structure(logical(0), tags = list(type = "string")), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), workspaceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(workspace = structure(list(workspaceId = structure(logical(0), tags = list(type = "string")), alias = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), prometheusEndpoint = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -183,7 +295,7 @@ NULL
 
 .prometheusservice$describe_workspace_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workspaceConfiguration = structure(list(limitsPerLabelSet = structure(list(structure(list(labelSet = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), limits = structure(list(maxSeries = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), retentionPeriodInDays = structure(logical(0), tags = list(type = "integer", box = TRUE)), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(workspaceConfiguration = structure(list(status = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), limitsPerLabelSet = structure(list(structure(list(limits = structure(list(maxSeries = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure")), labelSet = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), retentionPeriodInDays = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -199,27 +311,39 @@ NULL
   return(populate(args, shape))
 }
 
+.prometheusservice$list_anomaly_detectors_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string")), alias = structure(logical(0), tags = list(location = "querystring", locationName = "alias", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.prometheusservice$list_anomaly_detectors_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(anomalyDetectors = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), anomalyDetectorId = structure(logical(0), tags = list(type = "string")), alias = structure(logical(0), tags = list(type = "string")), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .prometheusservice$list_rule_groups_namespaces_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), name = structure(logical(0), tags = list(location = "querystring", locationName = "name", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string")), name = structure(logical(0), tags = list(location = "querystring", locationName = "name", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .prometheusservice$list_rule_groups_namespaces_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), ruleGroupsNamespaces = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp")), name = structure(logical(0), tags = list(type = "string")), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(ruleGroupsNamespaces = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .prometheusservice$list_scrapers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(filters = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(location = "querystring", type = "map")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(filters = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(location = "querystring", type = "map")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .prometheusservice$list_scrapers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), scrapers = structure(list(structure(list(alias = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), destination = structure(list(ampConfiguration = structure(list(workspaceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), roleArn = structure(logical(0), tags = list(type = "string")), roleConfiguration = structure(list(sourceRoleArn = structure(logical(0), tags = list(type = "string")), targetRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), scraperId = structure(logical(0), tags = list(type = "string")), source = structure(list(eksConfiguration = structure(list(clusterArn = structure(logical(0), tags = list(type = "string")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), statusReason = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(scrapers = structure(list(structure(list(alias = structure(logical(0), tags = list(type = "string")), scraperId = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp")), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), statusReason = structure(logical(0), tags = list(type = "string")), source = structure(list(eksConfiguration = structure(list(clusterArn = structure(logical(0), tags = list(type = "string")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), vpcConfiguration = structure(list(securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), destination = structure(list(ampConfiguration = structure(list(workspaceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), roleConfiguration = structure(list(sourceRoleArn = structure(logical(0), tags = list(type = "string")), targetRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -237,19 +361,19 @@ NULL
 
 .prometheusservice$list_workspaces_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(alias = structure(logical(0), tags = list(location = "querystring", locationName = "alias", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), alias = structure(logical(0), tags = list(location = "querystring", locationName = "alias", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .prometheusservice$list_workspaces_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), workspaces = structure(list(structure(list(alias = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), workspaceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(workspaces = structure(list(structure(list(workspaceId = structure(logical(0), tags = list(type = "string")), alias = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .prometheusservice$put_alert_manager_definition_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), data = structure(logical(0), tags = list(type = "blob")), workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string")), data = structure(logical(0), tags = list(type = "blob")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -259,15 +383,39 @@ NULL
   return(populate(args, shape))
 }
 
+.prometheusservice$put_anomaly_detector_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string")), anomalyDetectorId = structure(logical(0), tags = list(location = "uri", locationName = "anomalyDetectorId", type = "string")), evaluationIntervalInSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), missingDataAction = structure(list(markAsAnomaly = structure(logical(0), tags = list(type = "boolean", box = TRUE)), skip = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure", union = TRUE)), configuration = structure(list(randomCutForest = structure(list(query = structure(logical(0), tags = list(type = "string")), shingleSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), sampleSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), ignoreNearExpectedFromAbove = structure(list(amount = structure(logical(0), tags = list(type = "double", box = TRUE)), ratio = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure", union = TRUE)), ignoreNearExpectedFromBelow = structure(list(amount = structure(logical(0), tags = list(type = "double", box = TRUE)), ratio = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.prometheusservice$put_anomaly_detector_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(anomalyDetectorId = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.prometheusservice$put_resource_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string")), policyDocument = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), revisionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.prometheusservice$put_resource_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(policyStatus = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .prometheusservice$put_rule_groups_namespace_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), data = structure(logical(0), tags = list(type = "blob")), name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string")), name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), data = structure(logical(0), tags = list(type = "blob")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .prometheusservice$put_rule_groups_namespace_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -297,7 +445,7 @@ NULL
 
 .prometheusservice$update_logging_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), logGroupArn = structure(logical(0), tags = list(type = "string")), workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string")), logGroupArn = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -307,21 +455,45 @@ NULL
   return(populate(args, shape))
 }
 
+.prometheusservice$update_query_logging_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string")), destinations = structure(list(structure(list(cloudWatchLogs = structure(list(logGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), filters = structure(list(qspThreshold = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.prometheusservice$update_query_logging_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(status = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .prometheusservice$update_scraper_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(alias = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), destination = structure(list(ampConfiguration = structure(list(workspaceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), roleConfiguration = structure(list(sourceRoleArn = structure(logical(0), tags = list(type = "string")), targetRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), scrapeConfiguration = structure(list(configurationBlob = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure", union = TRUE)), scraperId = structure(logical(0), tags = list(location = "uri", locationName = "scraperId", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(scraperId = structure(logical(0), tags = list(location = "uri", locationName = "scraperId", type = "string")), alias = structure(logical(0), tags = list(type = "string")), scrapeConfiguration = structure(list(configurationBlob = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure", union = TRUE)), destination = structure(list(ampConfiguration = structure(list(workspaceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), roleConfiguration = structure(list(sourceRoleArn = structure(logical(0), tags = list(type = "string")), targetRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .prometheusservice$update_scraper_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), scraperId = structure(logical(0), tags = list(type = "string")), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(scraperId = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.prometheusservice$update_scraper_logging_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(scraperId = structure(logical(0), tags = list(location = "uri", locationName = "scraperId", type = "string")), loggingDestination = structure(list(cloudWatchLogs = structure(list(logGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), scraperComponents = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), config = structure(list(options = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.prometheusservice$update_scraper_logging_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(status = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .prometheusservice$update_workspace_alias_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(alias = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string")), alias = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -331,7 +503,7 @@ NULL
 
 .prometheusservice$update_workspace_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), limitsPerLabelSet = structure(list(structure(list(labelSet = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), limits = structure(list(maxSeries = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), retentionPeriodInDays = structure(logical(0), tags = list(type = "integer", box = TRUE)), workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), limitsPerLabelSet = structure(list(structure(list(limits = structure(list(maxSeries = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure")), labelSet = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), retentionPeriodInDays = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -7,8 +7,8 @@
 inspector2_update_cis_scan_configuration(
   scanConfigurationArn,
   scanName = NULL,
-  schedule = NULL,
   securityLevel = NULL,
+  schedule = NULL,
   targets = NULL
 )
 }
@@ -17,10 +17,10 @@ inspector2_update_cis_scan_configuration(
 
 \item{scanName}{The scan name for the CIS scan configuration.}
 
-\item{schedule}{The schedule for the CIS scan configuration.}
-
 \item{securityLevel}{The security level for the CIS scan configuration. Security level refers
 to the Benchmark levels that CIS assigns to a profile.}
+
+\item{schedule}{The schedule for the CIS scan configuration.}
 
 \item{targets}{The targets for the CIS scan configuration.}
 }

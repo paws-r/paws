@@ -2,8 +2,8 @@
 % Please edit documentation in R/s3tables_operations.R
 \name{s3tables_put_table_bucket_policy}
 \alias{s3tables_put_table_bucket_policy}
-\title{Creates a new maintenance configuration or replaces an existing table
-bucket policy for a table bucket}
+\title{Creates a new table bucket policy or replaces an existing table bucket
+policy for a table bucket}
 \usage{
 s3tables_put_table_bucket_policy(tableBucketARN, resourcePolicy)
 }
@@ -13,7 +13,7 @@ s3tables_put_table_bucket_policy(tableBucketARN, resourcePolicy)
 \item{resourcePolicy}{[required] The \code{JSON} that defines the policy.}
 }
 \description{
-Creates a new maintenance configuration or replaces an existing table bucket policy for a table bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-bucket-policy.html#table-bucket-policy-add}{Adding a table bucket policy} in the \emph{Amazon Simple Storage Service User Guide}.
+Creates a new table bucket policy or replaces an existing table bucket policy for a table bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-bucket-policy.html#table-bucket-policy-add}{Adding a table bucket policy} in the \emph{Amazon Simple Storage Service User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/s3tables_put_table_bucket_policy/} for full documentation.
 }

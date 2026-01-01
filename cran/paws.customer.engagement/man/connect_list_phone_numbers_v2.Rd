@@ -26,8 +26,8 @@ your account in the same Amazon Web Services Region as the request.}
 claimed to. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
 in the Amazon Resource Name (ARN) of the instance. If both \code{TargetArn}
 and \code{InstanceId} are not provided, this API lists numbers claimed to all
-the Amazon Connect instances belonging to your account in the same AWS
-Region as the request.}
+the Amazon Connect instances belonging to your account in the same
+Amazon Web Services Region as the request.}
 
 \item{MaxResults}{The maximum number of results to return per page.}
 

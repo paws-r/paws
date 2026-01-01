@@ -3,7 +3,8 @@
 \name{appstream_describe_directory_configs}
 \alias{appstream_describe_directory_configs}
 \title{Retrieves a list that describes one or more specified Directory Config
-objects for AppStream 2}
+objects for WorkSpaces Applications, if the names for these objects are
+provided}
 \usage{
 appstream_describe_directory_configs(
   DirectoryNames = NULL,
@@ -20,7 +21,7 @@ appstream_describe_directory_configs(
 this operation. If this value is null, it retrieves the first page.}
 }
 \description{
-Retrieves a list that describes one or more specified Directory Config objects for AppStream 2.0, if the names for these objects are provided. Otherwise, all Directory Config objects in the account are described. These objects include the configuration information required to join fleets and image builders to Microsoft Active Directory domains.
+Retrieves a list that describes one or more specified Directory Config objects for WorkSpaces Applications, if the names for these objects are provided. Otherwise, all Directory Config objects in the account are described. These objects include the configuration information required to join fleets and image builders to Microsoft Active Directory domains.
 
 See \url{https://www.paws-r-sdk.com/docs/appstream_describe_directory_configs/} for full documentation.
 }

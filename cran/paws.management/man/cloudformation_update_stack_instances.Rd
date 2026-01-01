@@ -17,18 +17,17 @@ cloudformation_update_stack_instances(
 )
 }
 \arguments{
-\item{StackSetName}{[required] The name or unique ID of the stack set associated with the stack
+\item{StackSetName}{[required] The name or unique ID of the StackSet associated with the stack
 instances.}
 
 \item{Accounts}{[Self-managed permissions] The account IDs of one or more Amazon Web
-Services accounts for which you want to update parameter values for
-stack instances. The overridden parameter values will be applied to all
-stack instances in the specified accounts and Amazon Web Services
-Regions.
+Services accounts in which you want to update parameter values for stack
+instances. The overridden parameter values will be applied to all stack
+instances in the specified accounts and Amazon Web Services Regions.
 
 You can specify \code{Accounts} or \code{DeploymentTargets}, but not both.}
 
-\item{DeploymentTargets}{[Service-managed permissions] The Organizations accounts for which you
+\item{DeploymentTargets}{[Service-managed permissions] The Organizations accounts in which you
 want to update parameter values for stack instances. If your update
 targets OUs, the overridden parameter values only apply to the accounts
 that are currently in the target OUs and their child OUs. Accounts added
@@ -56,33 +55,33 @@ and specify its value.
 the parameter and specify \code{UsePreviousValue} as \code{true}. (You can't
 specify both a value and set \code{UsePreviousValue} to \code{true}.)
 \item To set an overridden parameter back to the value specified in the
-stack set, specify a parameter list but don't include the parameter
+StackSet, specify a parameter list but don't include the parameter
 in the list.
 \item To leave all parameters set to their present values, don't specify
 this property at all.
 }
 
-During stack set updates, any parameter values overridden for a stack
+During StackSet updates, any parameter values overridden for a stack
 instance aren't updated, but retain their overridden value.
 
 You can only override the parameter \emph{values} that are specified in the
-stack set; to add or delete a parameter itself, use
+StackSet. To add or delete a parameter itself, use
 \code{\link[=cloudformation_update_stack_set]{update_stack_set}} to update the
-stack set template. If you add a parameter to a template, before you can
-override the parameter value specified in the stack set you must first
+StackSet template. If you add a parameter to a template, before you can
+override the parameter value specified in the StackSet you must first
 use \code{\link[=cloudformation_update_stack_set]{update_stack_set}} to update all
 stack instances with the updated template and parameter value specified
-in the stack set. Once a stack instance has been updated with the new
+in the StackSet. Once a stack instance has been updated with the new
 parameter, you can then override the parameter value using
 \code{\link[=cloudformation_update_stack_instances]{update_stack_instances}}.}
 
-\item{OperationPreferences}{Preferences for how CloudFormation performs this stack set operation.}
+\item{OperationPreferences}{Preferences for how CloudFormation performs this StackSet operation.}
 
-\item{OperationId}{The unique identifier for this stack set operation.
+\item{OperationId}{The unique identifier for this StackSet operation.
 
 The operation ID also functions as an idempotency token, to ensure that
-CloudFormation performs the stack set operation only once, even if you
-retry the request multiple times. You might retry stack set operation
+CloudFormation performs the StackSet operation only once, even if you
+retry the request multiple times. You might retry StackSet operation
 requests to ensure that CloudFormation successfully received them.
 
 If you don't specify an operation ID, the SDK generates one
@@ -92,7 +91,7 @@ automatically.}
 account administrator in the organization's management account or as a
 delegated administrator in a member account.
 
-By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+By default, \code{SELF} is specified. Use \code{SELF} for StackSets with
 self-managed permissions.
 \itemize{
 \item If you are signed in to the management account, specify \code{SELF}.

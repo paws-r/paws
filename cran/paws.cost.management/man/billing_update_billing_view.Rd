@@ -20,7 +20,7 @@ billing view.}
 \item{description}{The description of the billing view.}
 
 \item{dataFilterExpression}{See
-\href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html}{Expression}.
+\href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_Expression.html}{Expression}.
 Billing view only supports \code{LINKED_ACCOUNT} and \code{Tags}.}
 }
 \description{

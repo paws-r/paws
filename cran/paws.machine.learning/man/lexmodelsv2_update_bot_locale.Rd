@@ -11,7 +11,10 @@ lexmodelsv2_update_bot_locale(
   description = NULL,
   nluIntentConfidenceThreshold,
   voiceSettings = NULL,
-  generativeAISettings = NULL
+  unifiedSpeechSettings = NULL,
+  speechRecognitionSettings = NULL,
+  generativeAISettings = NULL,
+  speechDetectionSensitivity = NULL
 )
 }
 \arguments{
@@ -32,10 +35,19 @@ list of possible intents for an utterance.}
 \item{voiceSettings}{The new Amazon Polly voice Amazon Lex should use for voice interaction
 with the user.}
 
+\item{unifiedSpeechSettings}{Updated unified speech settings to apply to the bot locale.}
+
+\item{speechRecognitionSettings}{Updated speech-to-text settings to apply to the bot locale.}
+
 \item{generativeAISettings}{Contains settings for generative AI features powered by Amazon Bedrock
 for your bot locale. Use this object to turn generative AI features on
 and off. Pricing may differ if you turn a feature on. For more
 information, see LINK.}
+
+\item{speechDetectionSensitivity}{The new sensitivity level for voice activity detection (VAD) in the bot
+locale. This setting helps optimize speech recognition accuracy by
+adjusting how the system responds to background noise during voice
+interactions.}
 }
 \description{
 Updates the settings that a bot has for a specific locale.

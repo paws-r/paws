@@ -8,7 +8,8 @@ security patching}
 sagemaker_update_cluster_software(
   ClusterName,
   InstanceGroups = NULL,
-  DeploymentConfig = NULL
+  DeploymentConfig = NULL,
+  ImageId = NULL
 )
 }
 \arguments{
@@ -18,6 +19,32 @@ HyperPod cluster you want to update for security patching.}
 \item{InstanceGroups}{The array of instance groups for which to update AMI versions.}
 
 \item{DeploymentConfig}{The configuration to use when updating the AMI versions.}
+
+\item{ImageId}{When configuring your HyperPod cluster, you can specify an image ID
+using one of the following options:
+\itemize{
+\item \code{HyperPodPublicAmiId}: Use a HyperPod public AMI
+\item \code{CustomAmiId}: Use your custom AMI
+\item \code{default}: Use the default latest system image
+}
+
+If you choose to use a custom AMI (\code{CustomAmiId}), ensure it meets the
+following requirements:
+\itemize{
+\item Encryption: The custom AMI must be unencrypted.
+\item Ownership: The custom AMI must be owned by the same Amazon Web
+Services account that is creating the HyperPod cluster.
+\item Volume support: Only the primary AMI snapshot volume is supported;
+additional AMI volumes are not supported.
+}
+
+When updating the instance group's AMI through the
+\code{\link[=sagemaker_update_cluster_software]{update_cluster_software}}
+operation, if an instance group uses a custom AMI, you must provide an
+\code{ImageId} or use the default as input. Note that if you don't specify an
+instance group in your
+\code{\link[=sagemaker_update_cluster_software]{update_cluster_software}} request,
+then all of the instance groups are patched with the specified image.}
 }
 \description{
 Updates the platform software of a SageMaker HyperPod cluster for security patching. To learn how to use this API, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod-operate-slurm.html#sagemaker-hyperpod-operate-cli-command-update-cluster-software}{Update the SageMaker HyperPod platform software of a cluster}.

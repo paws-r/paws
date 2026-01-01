@@ -2046,6 +2046,148 @@ memorydb_describe_multi_region_clusters <- function(MultiRegionClusterName = NUL
 }
 .memorydb$operations$describe_multi_region_clusters <- memorydb_describe_multi_region_clusters
 
+#' Returns a list of multi-region parameter groups
+#'
+#' @description
+#' Returns a list of multi-region parameter groups.
+#'
+#' @usage
+#' memorydb_describe_multi_region_parameter_groups(
+#'   MultiRegionParameterGroupName, MaxResults, NextToken)
+#'
+#' @param MultiRegionParameterGroupName The request for information on a specific multi-region parameter group.
+#' @param MaxResults The maximum number of records to include in the response. If more
+#' records exist than the specified MaxResults value, a token is included
+#' in the response so that the remaining results can be retrieved.
+#' @param NextToken An optional token returned from a prior request. Use this token for
+#' pagination of results from this action. If this parameter is specified,
+#' the response includes only results beyond the token, up to the value
+#' specified by MaxResults.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   MultiRegionParameterGroups = list(
+#'     list(
+#'       Name = "string",
+#'       Family = "string",
+#'       Description = "string",
+#'       ARN = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_multi_region_parameter_groups(
+#'   MultiRegionParameterGroupName = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname memorydb_describe_multi_region_parameter_groups
+#'
+#' @aliases memorydb_describe_multi_region_parameter_groups
+memorydb_describe_multi_region_parameter_groups <- function(MultiRegionParameterGroupName = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeMultiRegionParameterGroups",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .memorydb$describe_multi_region_parameter_groups_input(MultiRegionParameterGroupName = MultiRegionParameterGroupName, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .memorydb$describe_multi_region_parameter_groups_output()
+  config <- get_config()
+  svc <- .memorydb$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.memorydb$operations$describe_multi_region_parameter_groups <- memorydb_describe_multi_region_parameter_groups
+
+#' Returns the detailed parameter list for a particular multi-region
+#' parameter group
+#'
+#' @description
+#' Returns the detailed parameter list for a particular multi-region
+#' parameter group.
+#'
+#' @usage
+#' memorydb_describe_multi_region_parameters(MultiRegionParameterGroupName,
+#'   Source, MaxResults, NextToken)
+#'
+#' @param MultiRegionParameterGroupName &#91;required&#93; The name of the multi-region parameter group to return details for.
+#' @param Source The parameter types to return. Valid values: user | system |
+#' engine-default
+#' @param MaxResults The maximum number of records to include in the response. If more
+#' records exist than the specified MaxResults value, a token is included
+#' in the response so that the remaining results can be retrieved.
+#' @param NextToken An optional token returned from a prior request. Use this token for
+#' pagination of results from this action. If this parameter is specified,
+#' the response includes only results beyond the token, up to the value
+#' specified by MaxResults.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   MultiRegionParameters = list(
+#'     list(
+#'       Name = "string",
+#'       Value = "string",
+#'       Description = "string",
+#'       Source = "string",
+#'       DataType = "string",
+#'       AllowedValues = "string",
+#'       MinimumEngineVersion = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_multi_region_parameters(
+#'   MultiRegionParameterGroupName = "string",
+#'   Source = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname memorydb_describe_multi_region_parameters
+#'
+#' @aliases memorydb_describe_multi_region_parameters
+memorydb_describe_multi_region_parameters <- function(MultiRegionParameterGroupName, Source = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeMultiRegionParameters",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .memorydb$describe_multi_region_parameters_input(MultiRegionParameterGroupName = MultiRegionParameterGroupName, Source = Source, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .memorydb$describe_multi_region_parameters_output()
+  config <- get_config()
+  svc <- .memorydb$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.memorydb$operations$describe_multi_region_parameters <- memorydb_describe_multi_region_parameters
+
 #' Returns a list of parameter group descriptions
 #'
 #' @description

@@ -36,7 +36,7 @@ For example:
 
 \item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.
 
-To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your KMS API calls}
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your permissions}
 in the \emph{Key Management Service Developer Guide}.}
 }
 \description{

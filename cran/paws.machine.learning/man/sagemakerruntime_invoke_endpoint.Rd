@@ -2,9 +2,9 @@
 % Please edit documentation in R/sagemakerruntime_operations.R
 \name{sagemakerruntime_invoke_endpoint}
 \alias{sagemakerruntime_invoke_endpoint}
-\title{After you deploy a model into production using Amazon SageMaker hosting
-services, your client applications use this API to get inferences from
-the model hosted at the specified endpoint}
+\title{After you deploy a model into production using Amazon SageMaker AI
+hosting services, your client applications use this API to get
+inferences from the model hosted at the specified endpoint}
 \usage{
 sagemakerruntime_invoke_endpoint(
   EndpointName,
@@ -28,8 +28,8 @@ endpoint using the
 API.}
 
 \item{Body}{[required] Provides input data, in the format specified in the \code{ContentType}
-request header. Amazon SageMaker passes all of the data in the body to
-the model.
+request header. Amazon SageMaker AI passes all of the data in the body
+to the model.
 
 For information about the format of the request body, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html}{Common Data Formats-Inference}.}
 
@@ -39,7 +39,7 @@ For information about the format of the request body, see \href{https://docs.aws
 container.}
 
 \item{CustomAttributes}{Provides additional information about a request for an inference
-submitted to a model hosted at an Amazon SageMaker endpoint. The
+submitted to a model hosted at an Amazon SageMaker AI endpoint. The
 information is an opaque value that is forwarded verbatim. You could use
 this value, for example, to provide an ID that you can use to track a
 request or to provide other metadata that a service endpoint was
@@ -54,7 +54,7 @@ represents the trace ID, your model can prepend the custom attribute
 with \verb{Trace ID:} in your post-processing function.
 
 This feature is currently supported in the Amazon Web Services SDKs but
-not in the Amazon SageMaker Python SDK.}
+not in the Amazon SageMaker AI Python SDK.}
 
 \item{TargetModel}{The model to request for inference when invoking a multi-model endpoint.}
 
@@ -96,11 +96,11 @@ model. When you create a session with a stateful model, the model must
 create the session ID and set the expiration time. The model must also
 provide that information in the response to your request. You can get
 the ID and timestamp from the \code{NewSessionId} response parameter. For any
-subsequent request where you specify that session ID, SageMaker routes
-the request to the same instance that supports the session.}
+subsequent request where you specify that session ID, SageMaker AI
+routes the request to the same instance that supports the session.}
 }
 \description{
-After you deploy a model into production using Amazon SageMaker hosting services, your client applications use this API to get inferences from the model hosted at the specified endpoint.
+After you deploy a model into production using Amazon SageMaker AI hosting services, your client applications use this API to get inferences from the model hosted at the specified endpoint.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemakerruntime_invoke_endpoint/} for full documentation.
 }

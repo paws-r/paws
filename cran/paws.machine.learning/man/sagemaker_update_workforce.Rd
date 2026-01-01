@@ -8,7 +8,8 @@ sagemaker_update_workforce(
   WorkforceName,
   SourceIpConfig = NULL,
   OidcConfig = NULL,
-  WorkforceVpcConfig = NULL
+  WorkforceVpcConfig = NULL,
+  IpAddressType = NULL
 )
 }
 \arguments{
@@ -26,6 +27,9 @@ Maximum: Ten CIDR values}
 configuration for a workforce made using your own IdP.}
 
 \item{WorkforceVpcConfig}{Use this parameter to update your VPC configuration for a workforce.}
+
+\item{IpAddressType}{Use this parameter to specify whether you want \code{IPv4} only or
+\code{dualstack} (\code{IPv4} and \code{IPv6}) to support your labeling workforce.}
 }
 \description{
 Use this operation to update your workforce. You can use this operation to require that workers use specific IP addresses to work on tasks and to update your OpenID Connect (OIDC) Identity Provider (IdP) workforce configuration.

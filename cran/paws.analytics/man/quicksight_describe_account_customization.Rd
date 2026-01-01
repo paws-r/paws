@@ -3,8 +3,7 @@
 \name{quicksight_describe_account_customization}
 \alias{quicksight_describe_account_customization}
 \title{Describes the customizations associated with the provided Amazon Web
-Services account and Amazon Amazon QuickSight namespace in an Amazon Web
-Services Region}
+Services account and Amazon Quick Sight namespace}
 \usage{
 quicksight_describe_account_customization(
   AwsAccountId,
@@ -14,20 +13,20 @@ quicksight_describe_account_customization(
 }
 \arguments{
 \item{AwsAccountId}{[required] The ID for the Amazon Web Services account that you want to describe
-Amazon QuickSight customizations for.}
+Quick Sight customizations for.}
 
-\item{Namespace}{The Amazon QuickSight namespace that you want to describe Amazon
-QuickSight customizations for.}
+\item{Namespace}{The Quick Sight namespace that you want to describe Quick Sight
+customizations for.}
 
 \item{Resolved}{The \code{Resolved} flag works with the other parameters to determine which
-view of Amazon QuickSight customizations is returned. You can add this
-flag to your command to use the same view that Amazon QuickSight uses to
-identify which customizations to apply to the console. Omit this flag,
-or set it to \code{no-resolved}, to reveal customizations that are configured
-at different levels.}
+view of Quick Sight customizations is returned. You can add this flag to
+your command to use the same view that Quick Sight uses to identify
+which customizations to apply to the console. Omit this flag, or set it
+to \code{no-resolved}, to reveal customizations that are configured at
+different levels.}
 }
 \description{
-Describes the customizations associated with the provided Amazon Web Services account and Amazon Amazon QuickSight namespace in an Amazon Web Services Region. The Amazon QuickSight console evaluates which customizations to apply by running this API operation with the \code{Resolved} flag included.
+Describes the customizations associated with the provided Amazon Web Services account and Amazon Quick Sight namespace. The Quick Sight console evaluates which customizations to apply by running this API operation with the \code{Resolved} flag included.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_account_customization/} for full documentation.
 }

@@ -16,22 +16,24 @@ ec2_copy_image(
   CopyImageTags = NULL,
   TagSpecifications = NULL,
   SnapshotCopyCompletionDurationMinutes = NULL,
+  DestinationAvailabilityZone = NULL,
+  DestinationAvailabilityZoneId = NULL,
   DryRun = NULL
 )
 }
 \arguments{
 \item{ClientToken}{Unique, case-sensitive identifier you provide to ensure idempotency of
-the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}
+the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency in Amazon EC2 API requests}
 in the \emph{Amazon EC2 API Reference}.}
 
-\item{Description}{A description for the new AMI in the destination Region.}
+\item{Description}{A description for the new AMI.}
 
-\item{Encrypted}{Specifies whether the destination snapshots of the copied image should
-be encrypted. You can encrypt a copy of an unencrypted snapshot, but you
-cannot create an unencrypted copy of an encrypted snapshot. The default
-KMS key for Amazon EBS is used unless you specify a non-default Key
-Management Service (KMS) KMS key using \code{KmsKeyId}. For more information,
-see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIEncryption.html}{Use encryption with EBS-backed AMIs}
+\item{Encrypted}{Specifies whether to encrypt the snapshots of the copied image.
+
+You can encrypt a copy of an unencrypted snapshot, but you cannot create
+an unencrypted copy of an encrypted snapshot. The default KMS key for
+Amazon EBS is used unless you specify a non-default Key Management
+Service (KMS) KMS key using \code{KmsKeyId}. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIEncryption.html}{Use encryption with EBS-backed AMIs}
 in the \emph{Amazon EC2 User Guide}.}
 
 \item{KmsKeyId}{The identifier of the symmetric Key Management Service (KMS) KMS key to
@@ -57,25 +59,29 @@ The specified KMS key must exist in the destination Region.
 
 Amazon EBS does not support asymmetric KMS keys.}
 
-\item{Name}{[required] The name of the new AMI in the destination Region.}
+\item{Name}{[required] The name of the new AMI.}
 
 \item{SourceImageId}{[required] The ID of the AMI to copy.}
 
 \item{SourceRegion}{[required] The name of the Region that contains the AMI to copy.}
 
-\item{DestinationOutpostArn}{The Amazon Resource Name (ARN) of the Outpost to which to copy the AMI.
+\item{DestinationOutpostArn}{The Amazon Resource Name (ARN) of the Outpost for the new AMI.
+
 Only specify this parameter when copying an AMI from an Amazon Web
 Services Region to an Outpost. The AMI must be in the Region of the
-destination Outpost. You cannot copy an AMI from an Outpost to a Region,
+destination Outpost. You can't copy an AMI from an Outpost to a Region,
 from one Outpost to another, or within the same Outpost.
 
 For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/snapshots-outposts.html#copy-amis}{Copy AMIs from an Amazon Web Services Region to an Outpost}
-in the \emph{Amazon EBS User Guide}.}
+in the \emph{Amazon EBS User Guide}.
 
-\item{CopyImageTags}{Indicates whether to include your user-defined AMI tags when copying the
-AMI.
+Only one of \code{DestinationAvailabilityZone},
+\code{DestinationAvailabilityZoneId}, or \code{DestinationOutpostArn} can be
+specified.}
 
-The following tags will not be copied:
+\item{CopyImageTags}{Specifies whether to copy your user-defined AMI tags to the new AMI.
+
+The following tags are not be copied:
 \itemize{
 \item System tags (prefixed with \verb{aws:})
 \item For public and shared AMIs, user-defined tags that are attached by
@@ -100,13 +106,29 @@ To tag an AMI or snapshot after it has been created, see
 \item{SnapshotCopyCompletionDurationMinutes}{Specify a completion duration, in 15 minute increments, to initiate a
 time-based AMI copy. The specified completion duration applies to each
 of the snapshots associated with the AMI. Each snapshot associated with
-the AMI will be completed within the specified completion duration,
-regardless of their size.
+the AMI will be completed within the specified completion duration, with
+copy throughput automatically adjusted for each snapshot based on its
+size to meet the timing target.
 
 If you do not specify a value, the AMI copy operation is completed on a
 best-effort basis.
 
-For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/time-based-copies.html}{Time-based copies}.}
+This parameter is not supported when copying an AMI to or from a Local
+Zone, or to an Outpost.
+
+For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/time-based-copies.html}{Time-based copies for Amazon EBS snapshots and EBS-backed AMIs}.}
+
+\item{DestinationAvailabilityZone}{The Local Zone for the new AMI (for example, \verb{cn-north-1-pkx-1a}).
+
+Only one of \code{DestinationAvailabilityZone},
+\code{DestinationAvailabilityZoneId}, or \code{DestinationOutpostArn} can be
+specified.}
+
+\item{DestinationAvailabilityZoneId}{The ID of the Local Zone for the new AMI (for example, \code{cnn1-pkx1-az1}).
+
+Only one of \code{DestinationAvailabilityZone},
+\code{DestinationAvailabilityZoneId}, or \code{DestinationOutpostArn} can be
+specified.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -114,7 +136,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Initiates an AMI copy operation. You can copy an AMI from one Region to another, or from a Region to an Outpost. You can't copy an AMI from an Outpost to a Region, from one Outpost to another, or within the same Outpost. To copy an AMI to another partition, see \code{\link[=ec2_create_store_image_task]{create_store_image_task}}.
+Initiates an AMI copy operation. You must specify the source AMI ID and both the source and destination locations. The copy operation must be initiated in the destination Region.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_copy_image/} for full documentation.
 }

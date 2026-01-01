@@ -27,7 +27,7 @@ in the \emph{IAM User Guide}. Choose the name of the service to view details
 for that service. In the first paragraph, find the service prefix. For
 example, \verb{(service prefix: a4b)}. For more information about service
 namespaces, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#genref-aws-service-namespaces}{Amazon Web Services service namespaces}
-in the \emph{Amazon Web Services General Reference}.}
+in the \emph{Amazon Web Services General Reference}.}
 
 \item{MaxItems}{Use this only when paginating results to indicate the maximum number of
 items you want in the response. If additional items exist beyond the

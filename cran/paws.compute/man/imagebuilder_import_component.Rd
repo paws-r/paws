@@ -57,7 +57,10 @@ must have permission to access the Amazon S3 bucket. If you use Amazon
 S3, you can specify component content up to your service quota. Either
 \code{data} or \code{uri} can be used to specify the data within the component.}
 
-\item{kmsKeyId}{The ID of the KMS key that should be used to encrypt this component.}
+\item{kmsKeyId}{The Amazon Resource Name (ARN) that uniquely identifies the KMS key used
+to encrypt this component. This can be either the Key ARN or the Alias
+ARN. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN}{Key identifiers (KeyId)}
+in the \emph{Key Management Service Developer Guide}.}
 
 \item{tags}{The tags of the component.}
 

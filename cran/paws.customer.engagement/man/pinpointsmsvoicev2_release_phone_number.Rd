@@ -12,8 +12,8 @@ can use
 \code{\link[=pinpointsmsvoicev2_describe_phone_numbers]{describe_phone_numbers}} to
 get the values for PhoneNumberId and PhoneNumberArn.
 
-If you are using a shared AWS End User Messaging SMS and Voice resource
-then you must use the full Amazon Resource Name(ARN).}
+If you are using a shared End User Messaging SMS resource then you must
+use the full Amazon Resource Name(ARN).}
 }
 \description{
 Releases an existing origination phone number in your account. Once released, a phone number is no longer available for sending messages.

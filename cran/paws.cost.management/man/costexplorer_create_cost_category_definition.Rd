@@ -2,7 +2,7 @@
 % Please edit documentation in R/costexplorer_operations.R
 \name{costexplorer_create_cost_category_definition}
 \alias{costexplorer_create_cost_category_definition}
-\title{Creates a new Cost Category with the requested name and rules}
+\title{Creates a new cost category with the requested name and rules}
 \usage{
 costexplorer_create_cost_category_definition(
   Name,
@@ -17,21 +17,21 @@ costexplorer_create_cost_category_definition(
 \arguments{
 \item{Name}{[required]}
 
-\item{EffectiveStart}{The Cost Category's effective start date. It can only be a billing start
+\item{EffectiveStart}{The cost category's effective start date. It can only be a billing start
 date (first day of the month). If the date isn't provided, it's the
 first day of the current month. Dates can't be before the previous
 twelve months, or in the future.}
 
 \item{RuleVersion}{[required]}
 
-\item{Rules}{[required] The Cost Category rules used to categorize costs. For more information,
+\item{Rules}{[required] The cost category rules used to categorize costs. For more information,
 see
 \href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategoryRule.html}{CostCategoryRule}.}
 
 \item{DefaultValue}{}
 
-\item{SplitChargeRules}{The split charge rules used to allocate your charges between your Cost
-Category values.}
+\item{SplitChargeRules}{The split charge rules used to allocate your charges between your cost
+category values.}
 
 \item{ResourceTags}{An optional list of tags to associate with the specified
 \href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategory.html}{\code{CostCategory}}
@@ -55,7 +55,7 @@ for Amazon Web Services use
 }}
 }
 \description{
-Creates a new Cost Category with the requested name and rules.
+Creates a new cost category with the requested name and rules.
 
 See \url{https://www.paws-r-sdk.com/docs/costexplorer_create_cost_category_definition/} for full documentation.
 }

@@ -2,8 +2,8 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_list_stack_sets}
 \alias{cloudformation_list_stack_sets}
-\title{Returns summary information about stack sets that are associated with
-the user}
+\title{Returns summary information about StackSets that are associated with the
+user}
 \usage{
 cloudformation_list_stack_sets(
   NextToken = NULL,
@@ -13,27 +13,22 @@ cloudformation_list_stack_sets(
 )
 }
 \arguments{
-\item{NextToken}{If the previous paginated request didn't return all the remaining
-results, the response object's \code{NextToken} parameter value is set to a
-token. To retrieve the next set of results, call
-\code{\link[=cloudformation_list_stack_sets]{list_stack_sets}} again and assign
-that token to the request object's \code{NextToken} parameter. If there are
-no remaining results, the previous response object's \code{NextToken}
-parameter is set to \code{null}.}
+\item{NextToken}{The token for the next set of items to return. (You received this token
+from a previous call.)}
 
 \item{MaxResults}{The maximum number of results to be returned with a single call. If the
 number of available results exceeds this maximum, the response includes
 a \code{NextToken} value that you can assign to the \code{NextToken} request
 parameter to get the next set of results.}
 
-\item{Status}{The status of the stack sets that you want to get summary information
+\item{Status}{The status of the StackSets that you want to get summary information
 about.}
 
 \item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
 account administrator in the management account or as a delegated
 administrator in a member account.
 
-By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+By default, \code{SELF} is specified. Use \code{SELF} for StackSets with
 self-managed permissions.
 \itemize{
 \item If you are signed in to the management account, specify \code{SELF}.
@@ -47,7 +42,7 @@ in the \emph{CloudFormation User Guide}.
 }}
 }
 \description{
-Returns summary information about stack sets that are associated with the user.
+Returns summary information about StackSets that are associated with the user.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudformation_list_stack_sets/} for full documentation.
 }

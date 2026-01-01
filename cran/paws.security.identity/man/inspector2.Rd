@@ -97,6 +97,8 @@ Amazon ECR, and Amazon Web Services Lambda environments.
 
 \tabular{ll}{
 \link[=inspector2_associate_member]{associate_member} \tab Associates an Amazon Web Services account with an Amazon Inspector delegated administrator\cr
+\link[=inspector2_batch_associate_code_security_scan_configuration]{batch_associate_code_security_scan_configuration} \tab Associates multiple code repositories with an Amazon Inspector code security scan configuration\cr
+\link[=inspector2_batch_disassociate_code_security_scan_configuration]{batch_disassociate_code_security_scan_configuration} \tab Disassociates multiple code repositories from an Amazon Inspector code security scan configuration\cr
 \link[=inspector2_batch_get_account_status]{batch_get_account_status} \tab Retrieves the Amazon Inspector status of multiple Amazon Web Services accounts within your environment\cr
 \link[=inspector2_batch_get_code_snippet]{batch_get_code_snippet} \tab Retrieves code snippets from findings that Amazon Inspector detected code vulnerabilities in\cr
 \link[=inspector2_batch_get_finding_details]{batch_get_finding_details} \tab Gets vulnerability details for findings\cr
@@ -106,10 +108,14 @@ Amazon ECR, and Amazon Web Services Lambda environments.
 \link[=inspector2_cancel_findings_report]{cancel_findings_report} \tab Cancels the given findings report\cr
 \link[=inspector2_cancel_sbom_export]{cancel_sbom_export} \tab Cancels a software bill of materials (SBOM) report\cr
 \link[=inspector2_create_cis_scan_configuration]{create_cis_scan_configuration} \tab Creates a CIS scan configuration\cr
+\link[=inspector2_create_code_security_integration]{create_code_security_integration} \tab Creates a code security integration with a source code repository provider\cr
+\link[=inspector2_create_code_security_scan_configuration]{create_code_security_scan_configuration} \tab Creates a scan configuration for code security scanning\cr
 \link[=inspector2_create_filter]{create_filter} \tab Creates a filter resource using specified filter criteria\cr
 \link[=inspector2_create_findings_report]{create_findings_report} \tab Creates a finding report\cr
 \link[=inspector2_create_sbom_export]{create_sbom_export} \tab Creates a software bill of materials (SBOM) report\cr
 \link[=inspector2_delete_cis_scan_configuration]{delete_cis_scan_configuration} \tab Deletes a CIS scan configuration\cr
+\link[=inspector2_delete_code_security_integration]{delete_code_security_integration} \tab Deletes a code security integration\cr
+\link[=inspector2_delete_code_security_scan_configuration]{delete_code_security_scan_configuration} \tab Deletes a code security scan configuration\cr
 \link[=inspector2_delete_filter]{delete_filter} \tab Deletes a filter resource\cr
 \link[=inspector2_describe_organization_configuration]{describe_organization_configuration} \tab Describe Amazon Inspector configuration settings for an Amazon Web Services organization\cr
 \link[=inspector2_disable]{disable} \tab Disables Amazon Inspector scans for one or more Amazon Web Services accounts\cr
@@ -119,6 +125,10 @@ Amazon ECR, and Amazon Web Services Lambda environments.
 \link[=inspector2_enable_delegated_admin_account]{enable_delegated_admin_account} \tab Enables the Amazon Inspector delegated administrator for your Organizations organization\cr
 \link[=inspector2_get_cis_scan_report]{get_cis_scan_report} \tab Retrieves a CIS scan report\cr
 \link[=inspector2_get_cis_scan_result_details]{get_cis_scan_result_details} \tab Retrieves CIS scan result details\cr
+\link[=inspector2_get_clusters_for_image]{get_clusters_for_image} \tab Returns a list of clusters and metadata associated with an image\cr
+\link[=inspector2_get_code_security_integration]{get_code_security_integration} \tab Retrieves information about a code security integration\cr
+\link[=inspector2_get_code_security_scan]{get_code_security_scan} \tab Retrieves information about a specific code security scan\cr
+\link[=inspector2_get_code_security_scan_configuration]{get_code_security_scan_configuration} \tab Retrieves information about a code security scan configuration\cr
 \link[=inspector2_get_configuration]{get_configuration} \tab Retrieves setting configurations for Inspector scans\cr
 \link[=inspector2_get_delegated_admin_account]{get_delegated_admin_account} \tab Retrieves information about the Amazon Inspector delegated administrator for your organization\cr
 \link[=inspector2_get_ec_2_deep_inspection_configuration]{get_ec_2_deep_inspection_configuration} \tab Retrieves the activation status of Amazon Inspector deep inspection and custom paths associated with your account\cr
@@ -131,6 +141,9 @@ Amazon ECR, and Amazon Web Services Lambda environments.
 \link[=inspector2_list_cis_scan_results_aggregated_by_checks]{list_cis_scan_results_aggregated_by_checks} \tab Lists scan results aggregated by checks\cr
 \link[=inspector2_list_cis_scan_results_aggregated_by_target_resource]{list_cis_scan_results_aggregated_by_target_resource} \tab Lists scan results aggregated by a target resource\cr
 \link[=inspector2_list_cis_scans]{list_cis_scans} \tab Returns a CIS scan list\cr
+\link[=inspector2_list_code_security_integrations]{list_code_security_integrations} \tab Lists all code security integrations in your account\cr
+\link[=inspector2_list_code_security_scan_configuration_associations]{list_code_security_scan_configuration_associations} \tab Lists the associations between code repositories and Amazon Inspector code security scan configurations\cr
+\link[=inspector2_list_code_security_scan_configurations]{list_code_security_scan_configurations} \tab Lists all code security scan configurations in your account\cr
 \link[=inspector2_list_coverage]{list_coverage} \tab Lists coverage details for your environment\cr
 \link[=inspector2_list_coverage_statistics]{list_coverage_statistics} \tab Lists Amazon Inspector coverage statistics for your environment\cr
 \link[=inspector2_list_delegated_admin_accounts]{list_delegated_admin_accounts} \tab Lists information about the Amazon Inspector delegated administrator of your organization\cr
@@ -145,10 +158,13 @@ Amazon ECR, and Amazon Web Services Lambda environments.
 \link[=inspector2_send_cis_session_health]{send_cis_session_health} \tab Sends a CIS session health\cr
 \link[=inspector2_send_cis_session_telemetry]{send_cis_session_telemetry} \tab Sends a CIS session telemetry\cr
 \link[=inspector2_start_cis_session]{start_cis_session} \tab Starts a CIS session\cr
+\link[=inspector2_start_code_security_scan]{start_code_security_scan} \tab Initiates a code security scan on a specified repository\cr
 \link[=inspector2_stop_cis_session]{stop_cis_session} \tab Stops a CIS session\cr
 \link[=inspector2_tag_resource]{tag_resource} \tab Adds tags to a resource\cr
 \link[=inspector2_untag_resource]{untag_resource} \tab Removes tags from a resource\cr
 \link[=inspector2_update_cis_scan_configuration]{update_cis_scan_configuration} \tab Updates a CIS scan configuration\cr
+\link[=inspector2_update_code_security_integration]{update_code_security_integration} \tab Updates an existing code security integration\cr
+\link[=inspector2_update_code_security_scan_configuration]{update_code_security_scan_configuration} \tab Updates an existing code security scan configuration\cr
 \link[=inspector2_update_configuration]{update_configuration} \tab Updates setting configurations for your Amazon Inspector account\cr
 \link[=inspector2_update_ec_2_deep_inspection_configuration]{update_ec_2_deep_inspection_configuration} \tab Activates, deactivates Amazon Inspector deep inspection, or updates custom paths for your account\cr
 \link[=inspector2_update_encryption_key]{update_encryption_key} \tab Updates an encryption key\cr

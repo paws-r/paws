@@ -12,7 +12,7 @@ cloudwatchlogs_delete_account_policy(policyName, policyType)
 \item{policyType}{[required] The type of policy to delete.}
 }
 \description{
-Deletes a CloudWatch Logs account policy. This stops the account-wide policy from applying to log groups in the account. If you delete a data protection policy or subscription filter policy, any log-group level policies of those types remain in effect.
+Deletes a CloudWatch Logs account policy. This stops the account-wide policy from applying to log groups or data sources in the account. If you delete a data protection policy or subscription filter policy, any log-group level policies of those types remain in effect. This operation supports deletion of data source-based field index policies, including facet configurations, in addition to log group-based policies.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_account_policy/} for full documentation.
 }

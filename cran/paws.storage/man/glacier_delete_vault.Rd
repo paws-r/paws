@@ -9,14 +9,14 @@ glacier_delete_vault(accountId, vaultName)
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the
 vault. You can either specify an AWS account ID or optionally a single
-'\code{-}' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+'\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID
 associated with the credentials used to sign the request. If you use an
 account ID, do not include any hyphens ('-') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
 }
 \description{
-This operation deletes a vault. Amazon S3 Glacier will delete a vault only if there are no archives in the vault as of the last inventory and there have been no writes to the vault since the last inventory. If either of these conditions is not satisfied, the vault deletion fails (that is, the vault is not removed) and Amazon S3 Glacier returns an error. You can use \code{\link[=glacier_describe_vault]{describe_vault}} to return the number of archives in a vault, and you can use \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html}{Initiate a Job (POST jobs)} to initiate a new inventory retrieval for a vault. The inventory contains the archive IDs you use to delete archives using \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-delete.html}{Delete Archive (DELETE archive)}.
+This operation deletes a vault. Amazon Glacier will delete a vault only if there are no archives in the vault as of the last inventory and there have been no writes to the vault since the last inventory. If either of these conditions is not satisfied, the vault deletion fails (that is, the vault is not removed) and Amazon Glacier returns an error. You can use \code{\link[=glacier_describe_vault]{describe_vault}} to return the number of archives in a vault, and you can use \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html}{Initiate a Job (POST jobs)} to initiate a new inventory retrieval for a vault. The inventory contains the archive IDs you use to delete archives using \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-delete.html}{Delete Archive (DELETE archive)}.
 
 See \url{https://www.paws-r-sdk.com/docs/glacier_delete_vault/} for full documentation.
 }

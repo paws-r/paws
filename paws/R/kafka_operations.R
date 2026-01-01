@@ -69,12 +69,15 @@ kafka_batch_associate_scram_secret <- function(ClusterArn, SecretArnList) {
 #' Creates a new MSK cluster.
 #'
 #' @usage
-#' kafka_create_cluster(BrokerNodeGroupInfo, ClientAuthentication,
-#'   ClusterName, ConfigurationInfo, EncryptionInfo, EnhancedMonitoring,
-#'   OpenMonitoring, KafkaVersion, LoggingInfo, NumberOfBrokerNodes, Tags,
-#'   StorageMode)
+#' kafka_create_cluster(BrokerNodeGroupInfo, Rebalancing,
+#'   ClientAuthentication, ClusterName, ConfigurationInfo, EncryptionInfo,
+#'   EnhancedMonitoring, OpenMonitoring, KafkaVersion, LoggingInfo,
+#'   NumberOfBrokerNodes, Tags, StorageMode)
 #'
 #' @param BrokerNodeGroupInfo &#91;required&#93; Information about the broker nodes in the cluster.
+#' @param Rebalancing Specifies if intelligent rebalancing should be turned on for the new MSK
+#' Provisioned cluster with Express brokers. By default, intelligent
+#' rebalancing status is ACTIVE for all new clusters.
 #' @param ClientAuthentication Includes all client authentication related information.
 #' @param ClusterName &#91;required&#93; The name of the cluster.
 #' @param ConfigurationInfo Represents the configuration that you want MSK to use for the brokers in
@@ -144,6 +147,9 @@ kafka_batch_associate_scram_secret <- function(ClusterArn, SecretArnList) {
 #'     ZoneIds = list(
 #'       "string"
 #'     )
+#'   ),
+#'   Rebalancing = list(
+#'     Status = "PAUSED"|"ACTIVE"
 #'   ),
 #'   ClientAuthentication = list(
 #'     Sasl = list(
@@ -220,7 +226,7 @@ kafka_batch_associate_scram_secret <- function(ClusterArn, SecretArnList) {
 #' @rdname kafka_create_cluster
 #'
 #' @aliases kafka_create_cluster
-kafka_create_cluster <- function(BrokerNodeGroupInfo, ClientAuthentication = NULL, ClusterName, ConfigurationInfo = NULL, EncryptionInfo = NULL, EnhancedMonitoring = NULL, OpenMonitoring = NULL, KafkaVersion, LoggingInfo = NULL, NumberOfBrokerNodes, Tags = NULL, StorageMode = NULL) {
+kafka_create_cluster <- function(BrokerNodeGroupInfo, Rebalancing = NULL, ClientAuthentication = NULL, ClusterName, ConfigurationInfo = NULL, EncryptionInfo = NULL, EnhancedMonitoring = NULL, OpenMonitoring = NULL, KafkaVersion, LoggingInfo = NULL, NumberOfBrokerNodes, Tags = NULL, StorageMode = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
@@ -229,7 +235,7 @@ kafka_create_cluster <- function(BrokerNodeGroupInfo, ClientAuthentication = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kafka$create_cluster_input(BrokerNodeGroupInfo = BrokerNodeGroupInfo, ClientAuthentication = ClientAuthentication, ClusterName = ClusterName, ConfigurationInfo = ConfigurationInfo, EncryptionInfo = EncryptionInfo, EnhancedMonitoring = EnhancedMonitoring, OpenMonitoring = OpenMonitoring, KafkaVersion = KafkaVersion, LoggingInfo = LoggingInfo, NumberOfBrokerNodes = NumberOfBrokerNodes, Tags = Tags, StorageMode = StorageMode)
+  input <- .kafka$create_cluster_input(BrokerNodeGroupInfo = BrokerNodeGroupInfo, Rebalancing = Rebalancing, ClientAuthentication = ClientAuthentication, ClusterName = ClusterName, ConfigurationInfo = ConfigurationInfo, EncryptionInfo = EncryptionInfo, EnhancedMonitoring = EnhancedMonitoring, OpenMonitoring = OpenMonitoring, KafkaVersion = KafkaVersion, LoggingInfo = LoggingInfo, NumberOfBrokerNodes = NumberOfBrokerNodes, Tags = Tags, StorageMode = StorageMode)
   output <- .kafka$create_cluster_output()
   config <- get_config()
   svc <- .kafka$service(config, op)
@@ -312,6 +318,9 @@ kafka_create_cluster <- function(BrokerNodeGroupInfo, ClientAuthentication = NUL
 #'       ZoneIds = list(
 #'         "string"
 #'       )
+#'     ),
+#'     Rebalancing = list(
+#'       Status = "PAUSED"|"ACTIVE"
 #'     ),
 #'     ClientAuthentication = list(
 #'       Sasl = list(
@@ -1006,6 +1015,9 @@ kafka_delete_vpc_connection <- function(Arn) {
 #'         "string"
 #'       )
 #'     ),
+#'     Rebalancing = list(
+#'       Status = "PAUSED"|"ACTIVE"
+#'     ),
 #'     ClientAuthentication = list(
 #'       Sasl = list(
 #'         Scram = list(
@@ -1196,6 +1208,9 @@ kafka_describe_cluster <- function(ClusterArn) {
 #'         ZoneIds = list(
 #'           "string"
 #'         )
+#'       ),
+#'       Rebalancing = list(
+#'         Status = "PAUSED"|"ACTIVE"
 #'       ),
 #'       CurrentBrokerSoftwareInfo = list(
 #'         ConfigurationArn = "string",
@@ -1459,6 +1474,9 @@ kafka_describe_cluster_v2 <- function(ClusterArn) {
 #'         DeletedBrokerIds = list(
 #'           123.0
 #'         )
+#'       ),
+#'       Rebalancing = list(
+#'         Status = "PAUSED"|"ACTIVE"
 #'       )
 #'     ),
 #'     TargetClusterInfo = list(
@@ -1563,6 +1581,9 @@ kafka_describe_cluster_v2 <- function(ClusterArn) {
 #'         DeletedBrokerIds = list(
 #'           123.0
 #'         )
+#'       ),
+#'       Rebalancing = list(
+#'         Status = "PAUSED"|"ACTIVE"
 #'       )
 #'     ),
 #'     VpcConnectionInfo = list(
@@ -1752,6 +1773,9 @@ kafka_describe_cluster_operation <- function(ClusterOperationArn) {
 #'           DeletedBrokerIds = list(
 #'             123.0
 #'           )
+#'         ),
+#'         Rebalancing = list(
+#'           Status = "PAUSED"|"ACTIVE"
 #'         )
 #'       ),
 #'       TargetClusterInfo = list(
@@ -1856,6 +1880,9 @@ kafka_describe_cluster_operation <- function(ClusterOperationArn) {
 #'           DeletedBrokerIds = list(
 #'             123.0
 #'           )
+#'         ),
+#'         Rebalancing = list(
+#'           Status = "PAUSED"|"ACTIVE"
 #'         )
 #'       ),
 #'       VpcConnectionInfo = list(
@@ -2157,6 +2184,133 @@ kafka_describe_replicator <- function(ReplicatorArn) {
   return(response)
 }
 .kafka$operations$describe_replicator <- kafka_describe_replicator
+
+#' Returns topic details of this topic on a MSK cluster
+#'
+#' @description
+#' Returns topic details of this topic on a MSK cluster.
+#'
+#' @usage
+#' kafka_describe_topic(ClusterArn, TopicName)
+#'
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+#' @param TopicName &#91;required&#93; The Kafka topic name that uniquely identifies the topic.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TopicArn = "string",
+#'   TopicName = "string",
+#'   ReplicationFactor = 123,
+#'   PartitionCount = 123,
+#'   Configs = "string",
+#'   Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_topic(
+#'   ClusterArn = "string",
+#'   TopicName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_describe_topic
+#'
+#' @aliases kafka_describe_topic
+kafka_describe_topic <- function(ClusterArn, TopicName) {
+  op <- new_operation(
+    name = "DescribeTopic",
+    http_method = "GET",
+    http_path = "/v1/clusters/{clusterArn}/topics/{topicName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kafka$describe_topic_input(ClusterArn = ClusterArn, TopicName = TopicName)
+  output <- .kafka$describe_topic_output()
+  config <- get_config()
+  svc <- .kafka$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$describe_topic <- kafka_describe_topic
+
+#' Returns partition details of this topic on a MSK cluster
+#'
+#' @description
+#' Returns partition details of this topic on a MSK cluster.
+#'
+#' @usage
+#' kafka_describe_topic_partitions(ClusterArn, TopicName, MaxResults,
+#'   NextToken)
+#'
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+#' @param TopicName &#91;required&#93; The Kafka topic name that uniquely identifies the topic.
+#' @param MaxResults The maximum number of results to return in the response. If there are
+#' more results, the response includes a NextToken parameter.
+#' @param NextToken The paginated results marker. When the result of the operation is
+#' truncated, the call returns NextToken in the response. To get the next
+#' batch, provide this token in your next request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Partitions = list(
+#'     list(
+#'       Partition = 123,
+#'       Leader = 123,
+#'       Replicas = list(
+#'         123
+#'       ),
+#'       Isr = list(
+#'         123
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_topic_partitions(
+#'   ClusterArn = "string",
+#'   TopicName = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_describe_topic_partitions
+#'
+#' @aliases kafka_describe_topic_partitions
+kafka_describe_topic_partitions <- function(ClusterArn, TopicName, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeTopicPartitions",
+    http_method = "GET",
+    http_path = "/v1/clusters/{clusterArn}/topics/{topicName}/partitions",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Partitions"),
+    stream_api = FALSE
+  )
+  input <- .kafka$describe_topic_partitions_input(ClusterArn = ClusterArn, TopicName = TopicName, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .kafka$describe_topic_partitions_output()
+  config <- get_config()
+  svc <- .kafka$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$describe_topic_partitions <- kafka_describe_topic_partitions
 
 #' Returns a description of this MSK VPC connection
 #'
@@ -2604,6 +2758,9 @@ kafka_get_cluster_policy <- function(ClusterArn) {
 #'           DeletedBrokerIds = list(
 #'             123.0
 #'           )
+#'         ),
+#'         Rebalancing = list(
+#'           Status = "PAUSED"|"ACTIVE"
 #'         )
 #'       ),
 #'       TargetClusterInfo = list(
@@ -2708,6 +2865,9 @@ kafka_get_cluster_policy <- function(ClusterArn) {
 #'           DeletedBrokerIds = list(
 #'             123.0
 #'           )
+#'         ),
+#'         Rebalancing = list(
+#'           Status = "PAUSED"|"ACTIVE"
 #'         )
 #'       ),
 #'       VpcConnectionInfo = list(
@@ -2894,6 +3054,9 @@ kafka_list_cluster_operations_v2 <- function(ClusterArn, MaxResults = NULL, Next
 #'         ZoneIds = list(
 #'           "string"
 #'         )
+#'       ),
+#'       Rebalancing = list(
+#'         Status = "PAUSED"|"ACTIVE"
 #'       ),
 #'       ClientAuthentication = list(
 #'         Sasl = list(
@@ -3096,6 +3259,9 @@ kafka_list_clusters <- function(ClusterNameFilter = NULL, MaxResults = NULL, Nex
 #'           ZoneIds = list(
 #'             "string"
 #'           )
+#'         ),
+#'         Rebalancing = list(
+#'           Status = "PAUSED"|"ACTIVE"
 #'         ),
 #'         CurrentBrokerSoftwareInfo = list(
 #'           ConfigurationArn = "string",
@@ -3775,6 +3941,73 @@ kafka_list_client_vpc_connections <- function(ClusterArn, MaxResults = NULL, Nex
   return(response)
 }
 .kafka$operations$list_client_vpc_connections <- kafka_list_client_vpc_connections
+
+#' List topics in a MSK cluster
+#'
+#' @description
+#' List topics in a MSK cluster.
+#'
+#' @usage
+#' kafka_list_topics(ClusterArn, MaxResults, NextToken, TopicNameFilter)
+#'
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+#' @param MaxResults The maximum number of results to return in the response. If there are
+#' more results, the response includes a NextToken parameter.
+#' @param NextToken The paginated results marker. When the result of the operation is
+#' truncated, the call returns NextToken in the response. To get the next
+#' batch, provide this token in your next request.
+#' @param TopicNameFilter Returns topics starting with given name.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Topics = list(
+#'     list(
+#'       TopicArn = "string",
+#'       TopicName = "string",
+#'       ReplicationFactor = 123,
+#'       PartitionCount = 123,
+#'       OutOfSyncReplicaCount = 123
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_topics(
+#'   ClusterArn = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   TopicNameFilter = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_list_topics
+#'
+#' @aliases kafka_list_topics
+kafka_list_topics <- function(ClusterArn, MaxResults = NULL, NextToken = NULL, TopicNameFilter = NULL) {
+  op <- new_operation(
+    name = "ListTopics",
+    http_method = "GET",
+    http_path = "/v1/clusters/{clusterArn}/topics",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Topics"),
+    stream_api = FALSE
+  )
+  input <- .kafka$list_topics_input(ClusterArn = ClusterArn, MaxResults = MaxResults, NextToken = NextToken, TopicNameFilter = TopicNameFilter)
+  output <- .kafka$list_topics_output()
+  config <- get_config()
+  svc <- .kafka$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$list_topics <- kafka_list_topics
 
 #' Returns a list of all the VPC connections in this Region
 #'
@@ -4639,6 +4872,66 @@ kafka_update_monitoring <- function(ClusterArn, CurrentVersion, EnhancedMonitori
   return(response)
 }
 .kafka$operations$update_monitoring <- kafka_update_monitoring
+
+#' Use this resource to update the intelligent rebalancing status of an
+#' Amazon MSK Provisioned cluster with Express brokers
+#'
+#' @description
+#' Use this resource to update the intelligent rebalancing status of an
+#' Amazon MSK Provisioned cluster with Express brokers.
+#'
+#' @usage
+#' kafka_update_rebalancing(ClusterArn, CurrentVersion, Rebalancing)
+#'
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) of the cluster.
+#' @param CurrentVersion &#91;required&#93; The current version of the cluster.
+#' @param Rebalancing &#91;required&#93; Specifies if intelligent rebalancing should be turned on for your
+#' cluster. The default intelligent rebalancing status is ACTIVE for all
+#' new MSK Provisioned clusters that you create with Express brokers.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClusterArn = "string",
+#'   ClusterOperationArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_rebalancing(
+#'   ClusterArn = "string",
+#'   CurrentVersion = "string",
+#'   Rebalancing = list(
+#'     Status = "PAUSED"|"ACTIVE"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_update_rebalancing
+#'
+#' @aliases kafka_update_rebalancing
+kafka_update_rebalancing <- function(ClusterArn, CurrentVersion, Rebalancing) {
+  op <- new_operation(
+    name = "UpdateRebalancing",
+    http_method = "PUT",
+    http_path = "/v1/clusters/{clusterArn}/rebalancing",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kafka$update_rebalancing_input(ClusterArn = ClusterArn, CurrentVersion = CurrentVersion, Rebalancing = Rebalancing)
+  output <- .kafka$update_rebalancing_output()
+  config <- get_config()
+  svc <- .kafka$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$update_rebalancing <- kafka_update_rebalancing
 
 #' Updates replication info of a replicator
 #'

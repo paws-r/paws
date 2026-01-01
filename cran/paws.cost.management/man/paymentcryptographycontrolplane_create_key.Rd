@@ -12,7 +12,8 @@ paymentcryptographycontrolplane_create_key(
   Exportable,
   Enabled = NULL,
   Tags = NULL,
-  DeriveKeyUsage = NULL
+  DeriveKeyUsage = NULL,
+  ReplicationRegions = NULL
 )
 }
 \arguments{
@@ -54,8 +55,13 @@ other output.
 Tagging or untagging an Amazon Web Services Payment Cryptography key can
 allow or deny permission to the key.}
 
-\item{DeriveKeyUsage}{The cryptographic usage of an ECDH derived key as defined in section
-A.5.2 of the TR-31 spec.}
+\item{DeriveKeyUsage}{The intended cryptographic usage of keys derived from the ECC key pair
+to be created.
+
+After creating an ECC key pair, you cannot change the intended
+cryptographic usage of keys derived from it using ECDH.}
+
+\item{ReplicationRegions}{}
 }
 \description{
 Creates an Amazon Web Services Payment Cryptography key, a logical representation of a cryptographic key, that is unique in your account and Amazon Web Services Region. You use keys for cryptographic functions such as encryption and decryption.

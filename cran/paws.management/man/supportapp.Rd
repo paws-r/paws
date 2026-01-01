@@ -73,7 +73,7 @@ Guide}:
 \itemize{
 \item \href{https://docs.aws.amazon.com/awssupport/latest/user/aws-support-app-for-slack.html}{Amazon Web Services Support App in Slack}
 \item \href{https://docs.aws.amazon.com/awssupport/latest/user/joining-a-live-chat-session.html}{Joining a live chat session with Amazon Web Services Support}
-\item \href{https://docs.aws.amazon.com/awssupport/latest/user/service-quota-increase.html}{Requesting service quota increases}
+\item \href{https://docs.aws.amazon.com/awssupport/latest/user/}{Requesting service quota increases}
 \item \href{https://docs.aws.amazon.com/awssupport/latest/user/support-app-commands.html}{Amazon Web Services Support App commands in Slack}
 }
 

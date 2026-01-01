@@ -17,11 +17,13 @@ NULL
 #' @param ExclusiveStartShardId The shard ID of the first item that this operation will evaluate. Use
 #' the value that was returned for `LastEvaluatedShardId` in the previous
 #' operation.
+#' @param ShardFilter This optional field contains the filter definition for the
+#' [`describe_stream`][dynamodbstreams_describe_stream] API.
 #'
 #' @keywords internal
 #'
 #' @rdname dynamodbstreams_describe_stream
-dynamodbstreams_describe_stream <- function(StreamArn, Limit = NULL, ExclusiveStartShardId = NULL) {
+dynamodbstreams_describe_stream <- function(StreamArn, Limit = NULL, ExclusiveStartShardId = NULL, ShardFilter = NULL) {
   op <- new_operation(
     name = "DescribeStream",
     http_method = "POST",
@@ -30,7 +32,7 @@ dynamodbstreams_describe_stream <- function(StreamArn, Limit = NULL, ExclusiveSt
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .dynamodbstreams$describe_stream_input(StreamArn = StreamArn, Limit = Limit, ExclusiveStartShardId = ExclusiveStartShardId)
+  input <- .dynamodbstreams$describe_stream_input(StreamArn = StreamArn, Limit = Limit, ExclusiveStartShardId = ExclusiveStartShardId, ShardFilter = ShardFilter)
   output <- .dynamodbstreams$describe_stream_output()
   config <- get_config()
   svc <- .dynamodbstreams$service(config, op)

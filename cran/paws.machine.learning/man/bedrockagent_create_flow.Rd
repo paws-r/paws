@@ -6,24 +6,17 @@
 steps to yield an output}
 \usage{
 bedrockagent_create_flow(
-  clientToken = NULL,
-  customerEncryptionKeyArn = NULL,
-  definition = NULL,
+  name,
   description = NULL,
   executionRoleArn,
-  name,
+  customerEncryptionKeyArn = NULL,
+  definition = NULL,
+  clientToken = NULL,
   tags = NULL
 )
 }
 \arguments{
-\item{clientToken}{A unique, case-sensitive identifier to ensure that the API request
-completes no more than one time. If this token matches a previous
-request, Amazon Bedrock ignores the request, but does not return an
-error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
-
-\item{customerEncryptionKeyArn}{The Amazon Resource Name (ARN) of the KMS key to encrypt the flow.}
-
-\item{definition}{A definition of the nodes and connections between nodes in the flow.}
+\item{name}{[required] A name for the flow.}
 
 \item{description}{A description for the flow.}
 
@@ -31,7 +24,14 @@ error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/de
 create and manage a flow. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/flows-permissions.html}{Create a service role for flows in Amazon Bedrock}
 in the Amazon Bedrock User Guide.}
 
-\item{name}{[required] A name for the flow.}
+\item{customerEncryptionKeyArn}{The Amazon Resource Name (ARN) of the KMS key to encrypt the flow.}
+
+\item{definition}{A definition of the nodes and connections between nodes in the flow.}
+
+\item{clientToken}{A unique, case-sensitive identifier to ensure that the API request
+completes no more than one time. If this token matches a previous
+request, Amazon Bedrock ignores the request, but does not return an
+error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
 
 \item{tags}{Any tags that you want to attach to the flow. For more information, see
 \href{https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html}{Tagging resources in Amazon Bedrock}.}

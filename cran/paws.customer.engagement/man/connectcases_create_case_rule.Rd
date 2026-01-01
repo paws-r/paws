@@ -4,14 +4,14 @@
 \alias{connectcases_create_case_rule}
 \title{Creates a new case rule}
 \usage{
-connectcases_create_case_rule(description = NULL, domainId, name, rule)
+connectcases_create_case_rule(domainId, name, description = NULL, rule)
 }
 \arguments{
-\item{description}{The description of a case rule.}
-
 \item{domainId}{[required] Unique identifier of a Cases domain.}
 
 \item{name}{[required] Name of the case rule.}
+
+\item{description}{The description of a case rule.}
 
 \item{rule}{[required] Represents what rule type should take place, under what conditions.}
 }

@@ -8,6 +8,10 @@ test_that("list_account_aliases", {
   expect_error(svc$list_account_aliases(), NA)
 })
 
+test_that("list_delegation_requests", {
+  expect_error(svc$list_delegation_requests(), NA)
+})
+
 test_that("list_groups", {
   expect_error(svc$list_groups(), NA)
 })

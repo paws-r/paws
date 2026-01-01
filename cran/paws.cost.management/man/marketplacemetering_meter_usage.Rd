@@ -10,7 +10,8 @@ marketplacemetering_meter_usage(
   UsageDimension,
   UsageQuantity = NULL,
   DryRun = NULL,
-  UsageAllocations = NULL
+  UsageAllocations = NULL,
+  ClientToken = NULL
 )
 }
 \arguments{
@@ -38,6 +39,20 @@ The sum of all \code{UsageAllocation} quantities must equal the
 \code{UsageQuantity} of the \code{\link[=marketplacemetering_meter_usage]{meter_usage}}
 request, and each \code{UsageAllocation} must have a unique set of tags
 (include no tags).}
+
+\item{ClientToken}{Specifies a unique, case-sensitive identifier that you provide to ensure
+the idempotency of the request. This lets you safely retry the request
+without accidentally performing the same operation a second time.
+Passing the same value to a later call to an operation requires that you
+also pass the same value for all other parameters. We recommend that you
+use a \href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID type of value}.
+
+If you don't provide this value, then Amazon Web Services generates a
+random one for you.
+
+If you retry the operation with the same \code{ClientToken}, but with
+different parameters, the retry fails with an
+\code{IdempotencyConflictException} error.}
 }
 \description{
 API to emit metering records. For identical requests, the API is idempotent and returns the metering record ID. This is used for metering flexible consumption pricing (FCP) Amazon Machine Images (AMI) and container products.

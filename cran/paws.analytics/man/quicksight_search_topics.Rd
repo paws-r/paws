@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_search_topics}
 \alias{quicksight_search_topics}
-\title{Searches for any Q topic that exists in an Amazon QuickSight account}
+\title{Searches for any Q topic that exists in an Quick Suite account}
 \usage{
 quicksight_search_topics(
   AwsAccountId,
@@ -23,7 +23,7 @@ results.}
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
 \description{
-Searches for any Q topic that exists in an Amazon QuickSight account.
+Searches for any Q topic that exists in an Quick Suite account.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_search_topics/} for full documentation.
 }

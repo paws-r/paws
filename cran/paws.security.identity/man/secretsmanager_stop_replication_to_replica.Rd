@@ -8,7 +8,9 @@ promotes the replica to a primary secret in the replica Region}
 secretsmanager_stop_replication_to_replica(SecretId)
 }
 \arguments{
-\item{SecretId}{[required] The ARN of the primary secret.}
+\item{SecretId}{[required] The name of the secret or the replica ARN. The replica ARN is the same
+as the original primary secret ARN expect the Region is changed to the
+replica Region.}
 }
 \description{
 Removes the link between the replica secret and the primary secret and promotes the replica to a primary secret in the replica Region.

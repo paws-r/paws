@@ -22,7 +22,7 @@ previous response in the next request to retrieve the next set of
 results.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to change. To request access to this API, contact Amazon Web ServicesSupport.
+This API is in preview release for Amazon Connect and is subject to change. To request access to this API, contact Amazon Web Services Support.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_list_authentication_profiles/} for full documentation.
 }

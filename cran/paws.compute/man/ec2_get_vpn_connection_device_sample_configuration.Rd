@@ -10,6 +10,7 @@ ec2_get_vpn_connection_device_sample_configuration(
   VpnConnectionId,
   VpnConnectionDeviceTypeId,
   InternetKeyExchangeVersion = NULL,
+  SampleType = NULL,
   DryRun = NULL
 )
 }
@@ -24,6 +25,10 @@ API.}
 \item{InternetKeyExchangeVersion}{The IKE version to be used in the sample configuration file for your
 customer gateway device. You can specify one of the following versions:
 \code{ikev1} or \code{ikev2}.}
+
+\item{SampleType}{The type of sample configuration to generate. Valid values are
+"compatibility" (includes IKEv1) or "recommended" (throws
+UnsupportedOperationException for IKEv1).}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

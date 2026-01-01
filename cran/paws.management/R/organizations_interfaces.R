@@ -173,7 +173,7 @@ NULL
 
 .organizations$describe_account_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Account = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Status = structure(logical(0), tags = list(type = "string")), JoinedMethod = structure(logical(0), tags = list(type = "string")), JoinedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Account = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Status = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), JoinedMethod = structure(logical(0), tags = list(type = "string")), JoinedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -257,6 +257,18 @@ NULL
   return(populate(args, shape))
 }
 
+.organizations$describe_responsibility_transfer_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.organizations$describe_responsibility_transfer_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResponsibilityTransfer = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Id = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Source = structure(list(ManagementAccountId = structure(logical(0), tags = list(type = "string")), ManagementAccountEmail = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), Target = structure(list(ManagementAccountId = structure(logical(0), tags = list(type = "string")), ManagementAccountEmail = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), StartTimestamp = structure(logical(0), tags = list(type = "timestamp")), EndTimestamp = structure(logical(0), tags = list(type = "timestamp")), ActiveHandshakeId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .organizations$detach_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(PolicyId = structure(logical(0), tags = list(type = "string")), TargetId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -335,6 +347,18 @@ NULL
   return(populate(args, shape))
 }
 
+.organizations$invite_organization_to_transfer_responsibility_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Type = structure(logical(0), tags = list(type = "string")), Target = structure(list(Id = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Notes = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), StartTimestamp = structure(logical(0), tags = list(type = "timestamp")), SourceName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.organizations$invite_organization_to_transfer_responsibility_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Handshake = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Parties = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), State = structure(logical(0), tags = list(type = "string")), RequestedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ExpirationTimestamp = structure(logical(0), tags = list(type = "timestamp")), Action = structure(logical(0), tags = list(type = "string")), Resources = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string")), Resources = structure(logical(0), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .organizations$leave_organization_input <- function(...) {
   list()
 }
@@ -363,7 +387,7 @@ NULL
 
 .organizations$list_accounts_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Accounts = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Status = structure(logical(0), tags = list(type = "string")), JoinedMethod = structure(logical(0), tags = list(type = "string")), JoinedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Accounts = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Status = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), JoinedMethod = structure(logical(0), tags = list(type = "string")), JoinedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -375,7 +399,19 @@ NULL
 
 .organizations$list_accounts_for_parent_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Accounts = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Status = structure(logical(0), tags = list(type = "string")), JoinedMethod = structure(logical(0), tags = list(type = "string")), JoinedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Accounts = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Status = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), JoinedMethod = structure(logical(0), tags = list(type = "string")), JoinedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.organizations$list_accounts_with_invalid_effective_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(PolicyType = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.organizations$list_accounts_with_invalid_effective_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Accounts = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Status = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), JoinedMethod = structure(logical(0), tags = list(type = "string")), JoinedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), PolicyType = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -411,7 +447,7 @@ NULL
 
 .organizations$list_delegated_administrators_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DelegatedAdministrators = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Status = structure(logical(0), tags = list(type = "string")), JoinedMethod = structure(logical(0), tags = list(type = "string")), JoinedTimestamp = structure(logical(0), tags = list(type = "timestamp")), DelegationEnabledDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DelegatedAdministrators = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Status = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), JoinedMethod = structure(logical(0), tags = list(type = "string")), JoinedTimestamp = structure(logical(0), tags = list(type = "timestamp")), DelegationEnabledDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -424,6 +460,18 @@ NULL
 .organizations$list_delegated_services_for_account_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DelegatedServices = structure(list(structure(list(ServicePrincipal = structure(logical(0), tags = list(type = "string")), DelegationEnabledDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.organizations$list_effective_policy_validation_errors_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string")), PolicyType = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.organizations$list_effective_policy_validation_errors_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string")), PolicyType = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), EvaluationTimestamp = structure(logical(0), tags = list(type = "timestamp")), NextToken = structure(logical(0), tags = list(type = "string")), EffectivePolicyValidationErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), PathToError = structure(logical(0), tags = list(type = "string")), ContributingPolicies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -451,6 +499,18 @@ NULL
   return(populate(args, shape))
 }
 
+.organizations$list_inbound_responsibility_transfers_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Type = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.organizations$list_inbound_responsibility_transfers_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResponsibilityTransfers = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Id = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Source = structure(list(ManagementAccountId = structure(logical(0), tags = list(type = "string")), ManagementAccountEmail = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), Target = structure(list(ManagementAccountId = structure(logical(0), tags = list(type = "string")), ManagementAccountEmail = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), StartTimestamp = structure(logical(0), tags = list(type = "timestamp")), EndTimestamp = structure(logical(0), tags = list(type = "timestamp")), ActiveHandshakeId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .organizations$list_organizational_units_for_parent_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ParentId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
@@ -460,6 +520,18 @@ NULL
 .organizations$list_organizational_units_for_parent_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(OrganizationalUnits = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.organizations$list_outbound_responsibility_transfers_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Type = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.organizations$list_outbound_responsibility_transfers_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResponsibilityTransfers = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Id = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Source = structure(list(ManagementAccountId = structure(logical(0), tags = list(type = "string")), ManagementAccountEmail = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), Target = structure(list(ManagementAccountId = structure(logical(0), tags = list(type = "string")), ManagementAccountEmail = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), StartTimestamp = structure(logical(0), tags = list(type = "timestamp")), EndTimestamp = structure(logical(0), tags = list(type = "timestamp")), ActiveHandshakeId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -587,6 +659,18 @@ NULL
   list()
 }
 
+.organizations$terminate_responsibility_transfer_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), EndTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.organizations$terminate_responsibility_transfer_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResponsibilityTransfer = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Id = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Source = structure(list(ManagementAccountId = structure(logical(0), tags = list(type = "string")), ManagementAccountEmail = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), Target = structure(list(ManagementAccountId = structure(logical(0), tags = list(type = "string")), ManagementAccountEmail = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), StartTimestamp = structure(logical(0), tags = list(type = "timestamp")), EndTimestamp = structure(logical(0), tags = list(type = "timestamp")), ActiveHandshakeId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .organizations$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -618,5 +702,17 @@ NULL
 .organizations$update_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Policy = structure(list(PolicySummary = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), AwsManaged = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Content = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.organizations$update_responsibility_transfer_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.organizations$update_responsibility_transfer_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResponsibilityTransfer = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Id = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Source = structure(list(ManagementAccountId = structure(logical(0), tags = list(type = "string")), ManagementAccountEmail = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), Target = structure(list(ManagementAccountId = structure(logical(0), tags = list(type = "string")), ManagementAccountEmail = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), StartTimestamp = structure(logical(0), tags = list(type = "timestamp")), EndTimestamp = structure(logical(0), tags = list(type = "timestamp")), ActiveHandshakeId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

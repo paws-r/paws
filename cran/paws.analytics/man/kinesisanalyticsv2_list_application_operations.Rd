@@ -2,8 +2,8 @@
 % Please edit documentation in R/kinesisanalyticsv2_operations.R
 \name{kinesisanalyticsv2_list_application_operations}
 \alias{kinesisanalyticsv2_list_application_operations}
-\title{Lists information about operations performed on a Managed Service for
-Apache Flink application}
+\title{Lists all the operations performed for the specified application such as
+UpdateApplication, StartApplication etc}
 \usage{
 kinesisanalyticsv2_list_application_operations(
   ApplicationName,
@@ -25,7 +25,7 @@ kinesisanalyticsv2_list_application_operations(
 \item{OperationStatus}{}
 }
 \description{
-Lists information about operations performed on a Managed Service for Apache Flink application
+Lists all the operations performed for the specified application such as UpdateApplication, StartApplication etc. The response also includes a summary of the operation.
 
 See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_list_application_operations/} for full documentation.
 }

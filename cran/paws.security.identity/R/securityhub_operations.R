@@ -371,10 +371,10 @@ securityhub_batch_update_automation_rules <- function(UpdateAutomationRulesReque
 .securityhub$operations$batch_update_automation_rules <- securityhub_batch_update_automation_rules
 
 #' Used by Security Hub customers to update information about their
-#' investigation into a finding
+#' investigation into one or more findings
 #'
 #' @description
-#' Used by Security Hub customers to update information about their investigation into a finding. Requested by administrator accounts or member accounts. Administrator accounts can update findings for their account and their member accounts. Member accounts can update findings for their account.
+#' Used by Security Hub customers to update information about their investigation into one or more findings. Requested by administrator accounts or member accounts. Administrator accounts can update findings for their account and their member accounts. A member account can update findings only for their own account. Administrator and member accounts can use this operation to update the following fields and objects for one or more findings:
 #'
 #' See [https://www.paws-r-sdk.com/docs/securityhub_batch_update_findings/](https://www.paws-r-sdk.com/docs/securityhub_batch_update_findings/) for full documentation.
 #'
@@ -454,6 +454,52 @@ securityhub_batch_update_findings <- function(FindingIdentifiers, Note = NULL, S
 }
 .securityhub$operations$batch_update_findings <- securityhub_batch_update_findings
 
+#' Used by customers to update information about their investigation into a
+#' finding
+#'
+#' @description
+#' Used by customers to update information about their investigation into a finding. Requested by delegated administrator accounts or member accounts. Delegated administrator accounts can update findings for their account and their member accounts. Member accounts can update findings for their account. [`batch_update_findings`][securityhub_batch_update_findings] and `BatchUpdateFindingV2` both use `securityhub:BatchUpdateFindings` in the `Action` element of an IAM policy statement. You must have permission to perform the `securityhub:BatchUpdateFindings` action. Updates from [`batch_update_findings_v2`][securityhub_batch_update_findings_v2] don't affect the value of f`inding_info.modified_time`, `finding_info.modified_time_dt`, `time`, `time_dt for a finding`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_batch_update_findings_v2/](https://www.paws-r-sdk.com/docs/securityhub_batch_update_findings_v2/) for full documentation.
+#'
+#' @param MetadataUids The list of finding `metadata.uid` to indicate findings to update.
+#' Finding `metadata.uid` is a globally unique identifier associated with
+#' the finding. Customers cannot use `MetadataUids` together with
+#' `FindingIdentifiers`.
+#' @param FindingIdentifiers Provides information to identify a specific V2 finding.
+#' @param Comment The updated value for a user provided comment about the finding. Minimum
+#' character length 1. Maximum character length 512.
+#' @param SeverityId The updated value for the normalized severity identifier. The severity
+#' ID is an integer with the allowed enum values \[0, 1, 2, 3, 4, 5, 99\].
+#' When customer provides the updated severity ID, the string sibling
+#' severity will automatically be updated in the finding.
+#' @param StatusId The updated value for the normalized status identifier. The status ID is
+#' an integer with the allowed enum values \[0, 1, 2, 3, 4, 5, 6, 99\].
+#' When customer provides the updated status ID, the string sibling status
+#' will automatically be updated in the finding.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_batch_update_findings_v2
+securityhub_batch_update_findings_v2 <- function(MetadataUids = NULL, FindingIdentifiers = NULL, Comment = NULL, SeverityId = NULL, StatusId = NULL) {
+  op <- new_operation(
+    name = "BatchUpdateFindingsV2",
+    http_method = "PATCH",
+    http_path = "/findingsv2/batchupdatev2",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$batch_update_findings_v2_input(MetadataUids = MetadataUids, FindingIdentifiers = FindingIdentifiers, Comment = Comment, SeverityId = SeverityId, StatusId = StatusId)
+  output <- .securityhub$batch_update_findings_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$batch_update_findings_v2 <- securityhub_batch_update_findings_v2
+
 #' For a batch of security controls and standards, this operation updates
 #' the enablement status of a control in a standard
 #'
@@ -525,6 +571,40 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 }
 .securityhub$operations$create_action_target <- securityhub_create_action_target
 
+#' Enables aggregation across Amazon Web Services Regions
+#'
+#' @description
+#' Enables aggregation across Amazon Web Services Regions.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_create_aggregator_v2/](https://www.paws-r-sdk.com/docs/securityhub_create_aggregator_v2/) for full documentation.
+#'
+#' @param RegionLinkingMode &#91;required&#93; Determines how Regions are linked to an Aggregator V2.
+#' @param LinkedRegions The list of Regions that are linked to the aggregation Region.
+#' @param Tags A list of key-value pairs to be applied to the AggregatorV2.
+#' @param ClientToken A unique identifier used to ensure idempotency.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_create_aggregator_v2
+securityhub_create_aggregator_v2 <- function(RegionLinkingMode, LinkedRegions = NULL, Tags = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateAggregatorV2",
+    http_method = "POST",
+    http_path = "/aggregatorv2/create",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$create_aggregator_v2_input(RegionLinkingMode = RegionLinkingMode, LinkedRegions = LinkedRegions, Tags = Tags, ClientToken = ClientToken)
+  output <- .securityhub$create_aggregator_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$create_aggregator_v2 <- securityhub_create_aggregator_v2
+
 #' Creates an automation rule based on input parameters
 #'
 #' @description
@@ -579,6 +659,44 @@ securityhub_create_automation_rule <- function(Tags = NULL, RuleStatus = NULL, R
 }
 .securityhub$operations$create_automation_rule <- securityhub_create_automation_rule
 
+#' Creates a V2 automation rule
+#'
+#' @description
+#' Creates a V2 automation rule.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_create_automation_rule_v2/](https://www.paws-r-sdk.com/docs/securityhub_create_automation_rule_v2/) for full documentation.
+#'
+#' @param RuleName &#91;required&#93; The name of the V2 automation rule.
+#' @param RuleStatus The status of the V2 automation rule.
+#' @param Description &#91;required&#93; A description of the V2 automation rule.
+#' @param RuleOrder &#91;required&#93; The value for the rule priority.
+#' @param Criteria &#91;required&#93; The filtering type and configuration of the automation rule.
+#' @param Actions &#91;required&#93; A list of actions to be performed when the rule criteria is met.
+#' @param Tags A list of key-value pairs associated with the V2 automation rule.
+#' @param ClientToken A unique identifier used to ensure idempotency.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_create_automation_rule_v2
+securityhub_create_automation_rule_v2 <- function(RuleName, RuleStatus = NULL, Description, RuleOrder, Criteria, Actions, Tags = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateAutomationRuleV2",
+    http_method = "POST",
+    http_path = "/automationrulesv2/create",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$create_automation_rule_v2_input(RuleName = RuleName, RuleStatus = RuleStatus, Description = Description, RuleOrder = RuleOrder, Criteria = Criteria, Actions = Actions, Tags = Tags, ClientToken = ClientToken)
+  output <- .securityhub$create_automation_rule_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$create_automation_rule_v2 <- securityhub_create_automation_rule_v2
+
 #' Creates a configuration policy with the defined configuration
 #'
 #' @description
@@ -624,6 +742,43 @@ securityhub_create_configuration_policy <- function(Name, Description = NULL, Co
   return(response)
 }
 .securityhub$operations$create_configuration_policy <- securityhub_create_configuration_policy
+
+#' Grants permission to create a connectorV2 based on input parameters
+#'
+#' @description
+#' Grants permission to create a connectorV2 based on input parameters.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_create_connector_v2/](https://www.paws-r-sdk.com/docs/securityhub_create_connector_v2/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The unique name of the connectorV2.
+#' @param Description The description of the connectorV2.
+#' @param Provider &#91;required&#93; The third-party provider’s service configuration.
+#' @param KmsKeyArn The Amazon Resource Name (ARN) of KMS key used to encrypt secrets for
+#' the connectorV2.
+#' @param Tags The tags to add to the connectorV2 when you create.
+#' @param ClientToken A unique identifier used to ensure idempotency.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_create_connector_v2
+securityhub_create_connector_v2 <- function(Name, Description = NULL, Provider, KmsKeyArn = NULL, Tags = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateConnectorV2",
+    http_method = "POST",
+    http_path = "/connectorsv2",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$create_connector_v2_input(Name = Name, Description = Description, Provider = Provider, KmsKeyArn = KmsKeyArn, Tags = Tags, ClientToken = ClientToken)
+  output <- .securityhub$create_connector_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$create_connector_v2 <- securityhub_create_connector_v2
 
 #' The aggregation Region is now called the home Region
 #'
@@ -765,6 +920,43 @@ securityhub_create_members <- function(AccountDetails) {
 }
 .securityhub$operations$create_members <- securityhub_create_members
 
+#' Grants permission to create a ticket in the chosen ITSM based on finding
+#' information for the provided finding metadata UID
+#'
+#' @description
+#' Grants permission to create a ticket in the chosen ITSM based on finding information for the provided finding metadata UID.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_create_ticket_v2/](https://www.paws-r-sdk.com/docs/securityhub_create_ticket_v2/) for full documentation.
+#'
+#' @param ConnectorId &#91;required&#93; The UUID of the connectorV2 to identify connectorV2 resource.
+#' @param FindingMetadataUid &#91;required&#93; The the unique ID for the finding.
+#' @param ClientToken The client idempotency token.
+#' @param Mode The mode for ticket creation. When set to DRYRUN, the ticket is created
+#' using a Security Hub owned template test finding to verify the
+#' integration is working correctly.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_create_ticket_v2
+securityhub_create_ticket_v2 <- function(ConnectorId, FindingMetadataUid, ClientToken = NULL, Mode = NULL) {
+  op <- new_operation(
+    name = "CreateTicketV2",
+    http_method = "POST",
+    http_path = "/ticketsv2",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$create_ticket_v2_input(ConnectorId = ConnectorId, FindingMetadataUid = FindingMetadataUid, ClientToken = ClientToken, Mode = Mode)
+  output <- .securityhub$create_ticket_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$create_ticket_v2 <- securityhub_create_ticket_v2
+
 #' We recommend using Organizations instead of Security Hub invitations to
 #' manage your member accounts
 #'
@@ -829,6 +1021,68 @@ securityhub_delete_action_target <- function(ActionTargetArn) {
 }
 .securityhub$operations$delete_action_target <- securityhub_delete_action_target
 
+#' Deletes the Aggregator V2
+#'
+#' @description
+#' Deletes the Aggregator V2.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_delete_aggregator_v2/](https://www.paws-r-sdk.com/docs/securityhub_delete_aggregator_v2/) for full documentation.
+#'
+#' @param AggregatorV2Arn &#91;required&#93; The ARN of the Aggregator V2.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_delete_aggregator_v2
+securityhub_delete_aggregator_v2 <- function(AggregatorV2Arn) {
+  op <- new_operation(
+    name = "DeleteAggregatorV2",
+    http_method = "DELETE",
+    http_path = "/aggregatorv2/delete/{AggregatorV2Arn+}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$delete_aggregator_v2_input(AggregatorV2Arn = AggregatorV2Arn)
+  output <- .securityhub$delete_aggregator_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$delete_aggregator_v2 <- securityhub_delete_aggregator_v2
+
+#' Deletes a V2 automation rule
+#'
+#' @description
+#' Deletes a V2 automation rule.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_delete_automation_rule_v2/](https://www.paws-r-sdk.com/docs/securityhub_delete_automation_rule_v2/) for full documentation.
+#'
+#' @param Identifier &#91;required&#93; The ARN of the V2 automation rule.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_delete_automation_rule_v2
+securityhub_delete_automation_rule_v2 <- function(Identifier) {
+  op <- new_operation(
+    name = "DeleteAutomationRuleV2",
+    http_method = "DELETE",
+    http_path = "/automationrulesv2/{Identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$delete_automation_rule_v2_input(Identifier = Identifier)
+  output <- .securityhub$delete_automation_rule_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$delete_automation_rule_v2 <- securityhub_delete_automation_rule_v2
+
 #' Deletes a configuration policy
 #'
 #' @description
@@ -860,6 +1114,37 @@ securityhub_delete_configuration_policy <- function(Identifier) {
   return(response)
 }
 .securityhub$operations$delete_configuration_policy <- securityhub_delete_configuration_policy
+
+#' Grants permission to delete a connectorV2
+#'
+#' @description
+#' Grants permission to delete a connectorV2.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_delete_connector_v2/](https://www.paws-r-sdk.com/docs/securityhub_delete_connector_v2/) for full documentation.
+#'
+#' @param ConnectorId &#91;required&#93; The UUID of the connectorV2 to identify connectorV2 resource.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_delete_connector_v2
+securityhub_delete_connector_v2 <- function(ConnectorId) {
+  op <- new_operation(
+    name = "DeleteConnectorV2",
+    http_method = "DELETE",
+    http_path = "/connectorsv2/{ConnectorId+}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$delete_connector_v2_input(ConnectorId = ConnectorId)
+  output <- .securityhub$delete_connector_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$delete_connector_v2 <- securityhub_delete_connector_v2
 
 #' The aggregation Region is now called the home Region
 #'
@@ -1132,6 +1417,72 @@ securityhub_describe_products <- function(NextToken = NULL, MaxResults = NULL, P
 }
 .securityhub$operations$describe_products <- securityhub_describe_products
 
+#' Gets information about the product integration
+#'
+#' @description
+#' Gets information about the product integration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_describe_products_v2/](https://www.paws-r-sdk.com/docs/securityhub_describe_products_v2/) for full documentation.
+#'
+#' @param NextToken The token required for pagination. On your first call, set the value of
+#' this parameter to `NULL`. For subsequent calls, to continue listing
+#' data, set the value of this parameter to the value returned in the
+#' previous response.
+#' @param MaxResults The maximum number of results to return.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_describe_products_v2
+securityhub_describe_products_v2 <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeProductsV2",
+    http_method = "GET",
+    http_path = "/productsV2",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProductsV2"),
+    stream_api = FALSE
+  )
+  input <- .securityhub$describe_products_v2_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .securityhub$describe_products_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$describe_products_v2 <- securityhub_describe_products_v2
+
+#' Returns details about the service resource in your account
+#'
+#' @description
+#' Returns details about the service resource in your account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_describe_security_hub_v2/](https://www.paws-r-sdk.com/docs/securityhub_describe_security_hub_v2/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_describe_security_hub_v2
+securityhub_describe_security_hub_v2 <- function() {
+  op <- new_operation(
+    name = "DescribeSecurityHubV2",
+    http_method = "GET",
+    http_path = "/hubv2",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$describe_security_hub_v2_input()
+  output <- .securityhub$describe_security_hub_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$describe_security_hub_v2 <- securityhub_describe_security_hub_v2
+
 #' Returns a list of the available standards in Security Hub
 #'
 #' @description
@@ -1252,11 +1603,13 @@ securityhub_disable_import_findings_for_product <- function(ProductSubscriptionA
 #'
 #' @param AdminAccountId &#91;required&#93; The Amazon Web Services account identifier of the Security Hub
 #' administrator account.
+#' @param Feature The feature for which the delegated admin account is disabled. Defaults
+#' to Security Hub if not specified.
 #'
 #' @keywords internal
 #'
 #' @rdname securityhub_disable_organization_admin_account
-securityhub_disable_organization_admin_account <- function(AdminAccountId) {
+securityhub_disable_organization_admin_account <- function(AdminAccountId, Feature = NULL) {
   op <- new_operation(
     name = "DisableOrganizationAdminAccount",
     http_method = "POST",
@@ -1265,7 +1618,7 @@ securityhub_disable_organization_admin_account <- function(AdminAccountId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .securityhub$disable_organization_admin_account_input(AdminAccountId = AdminAccountId)
+  input <- .securityhub$disable_organization_admin_account_input(AdminAccountId = AdminAccountId, Feature = Feature)
   output <- .securityhub$disable_organization_admin_account_output()
   config <- get_config()
   svc <- .securityhub$service(config, op)
@@ -1306,6 +1659,38 @@ securityhub_disable_security_hub <- function() {
   return(response)
 }
 .securityhub$operations$disable_security_hub <- securityhub_disable_security_hub
+
+#' Disable the service for the current Amazon Web Services Region or
+#' specified Amazon Web Services Region
+#'
+#' @description
+#' Disable the service for the current Amazon Web Services Region or specified Amazon Web Services Region.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_disable_security_hub_v2/](https://www.paws-r-sdk.com/docs/securityhub_disable_security_hub_v2/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_disable_security_hub_v2
+securityhub_disable_security_hub_v2 <- function() {
+  op <- new_operation(
+    name = "DisableSecurityHubV2",
+    http_method = "DELETE",
+    http_path = "/hubv2",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$disable_security_hub_v2_input()
+  output <- .securityhub$disable_security_hub_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$disable_security_hub_v2 <- securityhub_disable_security_hub_v2
 
 #' Disassociates the current Security Hub member account from the
 #' associated administrator account
@@ -1443,11 +1828,13 @@ securityhub_enable_import_findings_for_product <- function(ProductArn) {
 #'
 #' @param AdminAccountId &#91;required&#93; The Amazon Web Services account identifier of the account to designate
 #' as the Security Hub administrator account.
+#' @param Feature The feature for which the delegated admin account is enabled. Defaults
+#' to Security Hub if not specified.
 #'
 #' @keywords internal
 #'
 #' @rdname securityhub_enable_organization_admin_account
-securityhub_enable_organization_admin_account <- function(AdminAccountId) {
+securityhub_enable_organization_admin_account <- function(AdminAccountId, Feature = NULL) {
   op <- new_operation(
     name = "EnableOrganizationAdminAccount",
     http_method = "POST",
@@ -1456,7 +1843,7 @@ securityhub_enable_organization_admin_account <- function(AdminAccountId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .securityhub$enable_organization_admin_account_input(AdminAccountId = AdminAccountId)
+  input <- .securityhub$enable_organization_admin_account_input(AdminAccountId = AdminAccountId, Feature = Feature)
   output <- .securityhub$enable_organization_admin_account_output()
   config <- get_config()
   svc <- .securityhub$service(config, op)
@@ -1517,6 +1904,38 @@ securityhub_enable_security_hub <- function(Tags = NULL, EnableDefaultStandards 
 }
 .securityhub$operations$enable_security_hub <- securityhub_enable_security_hub
 
+#' Enables the service in account for the current Amazon Web Services
+#' Region or specified Amazon Web Services Region
+#'
+#' @description
+#' Enables the service in account for the current Amazon Web Services Region or specified Amazon Web Services Region.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_enable_security_hub_v2/](https://www.paws-r-sdk.com/docs/securityhub_enable_security_hub_v2/) for full documentation.
+#'
+#' @param Tags The tags to add to the hub V2 resource when you enable Security Hub.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_enable_security_hub_v2
+securityhub_enable_security_hub_v2 <- function(Tags = NULL) {
+  op <- new_operation(
+    name = "EnableSecurityHubV2",
+    http_method = "POST",
+    http_path = "/hubv2",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$enable_security_hub_v2_input(Tags = Tags)
+  output <- .securityhub$enable_security_hub_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$enable_security_hub_v2 <- securityhub_enable_security_hub_v2
+
 #' Provides the details for the Security Hub administrator account for the
 #' current member account
 #'
@@ -1548,6 +1967,68 @@ securityhub_get_administrator_account <- function() {
   return(response)
 }
 .securityhub$operations$get_administrator_account <- securityhub_get_administrator_account
+
+#' Returns the configuration of the specified Aggregator V2
+#'
+#' @description
+#' Returns the configuration of the specified Aggregator V2.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_get_aggregator_v2/](https://www.paws-r-sdk.com/docs/securityhub_get_aggregator_v2/) for full documentation.
+#'
+#' @param AggregatorV2Arn &#91;required&#93; The ARN of the Aggregator V2.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_get_aggregator_v2
+securityhub_get_aggregator_v2 <- function(AggregatorV2Arn) {
+  op <- new_operation(
+    name = "GetAggregatorV2",
+    http_method = "GET",
+    http_path = "/aggregatorv2/get/{AggregatorV2Arn+}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$get_aggregator_v2_input(AggregatorV2Arn = AggregatorV2Arn)
+  output <- .securityhub$get_aggregator_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$get_aggregator_v2 <- securityhub_get_aggregator_v2
+
+#' Returns an automation rule for the V2 service
+#'
+#' @description
+#' Returns an automation rule for the V2 service.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_get_automation_rule_v2/](https://www.paws-r-sdk.com/docs/securityhub_get_automation_rule_v2/) for full documentation.
+#'
+#' @param Identifier &#91;required&#93; The ARN of the V2 automation rule.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_get_automation_rule_v2
+securityhub_get_automation_rule_v2 <- function(Identifier) {
+  op <- new_operation(
+    name = "GetAutomationRuleV2",
+    http_method = "GET",
+    http_path = "/automationrulesv2/{Identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$get_automation_rule_v2_input(Identifier = Identifier)
+  output <- .securityhub$get_automation_rule_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$get_automation_rule_v2 <- securityhub_get_automation_rule_v2
 
 #' Provides information about a configuration policy
 #'
@@ -1613,6 +2094,38 @@ securityhub_get_configuration_policy_association <- function(Target) {
   return(response)
 }
 .securityhub$operations$get_configuration_policy_association <- securityhub_get_configuration_policy_association
+
+#' Grants permission to retrieve details for a connectorV2 based on
+#' connector id
+#'
+#' @description
+#' Grants permission to retrieve details for a connectorV2 based on connector id.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_get_connector_v2/](https://www.paws-r-sdk.com/docs/securityhub_get_connector_v2/) for full documentation.
+#'
+#' @param ConnectorId &#91;required&#93; The UUID of the connectorV2 to identify connectorV2 resource.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_get_connector_v2
+securityhub_get_connector_v2 <- function(ConnectorId) {
+  op <- new_operation(
+    name = "GetConnectorV2",
+    http_method = "GET",
+    http_path = "/connectorsv2/{ConnectorId+}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$get_connector_v2_input(ConnectorId = ConnectorId)
+  output <- .securityhub$get_connector_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$get_connector_v2 <- securityhub_get_connector_v2
 
 #' Returns a list of the standards that are currently enabled
 #'
@@ -1687,10 +2200,10 @@ securityhub_get_finding_aggregator <- function(FindingAggregatorArn) {
 }
 .securityhub$operations$get_finding_aggregator <- securityhub_get_finding_aggregator
 
-#' Returns history for a Security Hub finding in the last 90 days
+#' Returns the history of a Security Hub finding
 #'
 #' @description
-#' Returns history for a Security Hub finding in the last 90 days. The history includes changes made to any fields in the Amazon Web Services Security Finding Format (ASFF).
+#' Returns the history of a Security Hub finding. The history includes changes made to any fields in the Amazon Web Services Security Finding Format (ASFF) except top-level timestamp fields, such as the `CreatedAt` and `UpdatedAt` fields.
 #'
 #' See [https://www.paws-r-sdk.com/docs/securityhub_get_finding_history/](https://www.paws-r-sdk.com/docs/securityhub_get_finding_history/) for full documentation.
 #'
@@ -1707,9 +2220,9 @@ securityhub_get_finding_aggregator <- function(FindingAggregatorArn) {
 #' [CreatedAt](https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_AwsSecurityFindingFilters.html#securityhub-Type-AwsSecurityFindingFilters-CreatedAt)
 #' timestamp of the finding to the `EndTime`. If you provide neither
 #' `StartTime` nor `EndTime`, Security Hub returns finding history from the
-#' CreatedAt timestamp of the finding to the time at which the API is
+#' `CreatedAt` timestamp of the finding to the time at which the API is
 #' called. In all of these scenarios, the response is limited to 100
-#' results, and the maximum time period is limited to 90 days.
+#' results.
 #' 
 #' For more information about the validation and formatting of timestamp
 #' fields in Security Hub, see
@@ -1726,9 +2239,9 @@ securityhub_get_finding_aggregator <- function(FindingAggregatorArn) {
 #' [CreatedAt](https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_AwsSecurityFindingFilters.html#securityhub-Type-AwsSecurityFindingFilters-CreatedAt)
 #' timestamp of the finding to the `EndTime`. If you provide neither
 #' `StartTime` nor `EndTime`, Security Hub returns finding history from the
-#' CreatedAt timestamp of the finding to the time at which the API is
+#' `CreatedAt` timestamp of the finding to the time at which the API is
 #' called. In all of these scenarios, the response is limited to 100
-#' results, and the maximum time period is limited to 90 days.
+#' results.
 #' 
 #' For more information about the validation and formatting of timestamp
 #' fields in Security Hub, see
@@ -1762,6 +2275,42 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
   return(response)
 }
 .securityhub$operations$get_finding_history <- securityhub_get_finding_history
+
+#' Returns aggregated statistical data about findings
+#'
+#' @description
+#' Returns aggregated statistical data about findings. [`get_finding_statistics_v2`][securityhub_get_finding_statistics_v2] use `securityhub:GetAdhocInsightResults` in the `Action` element of an IAM policy statement. You must have permission to perform the `s` action.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_get_finding_statistics_v2/](https://www.paws-r-sdk.com/docs/securityhub_get_finding_statistics_v2/) for full documentation.
+#'
+#' @param GroupByRules &#91;required&#93; Specifies how security findings should be aggregated and organized in
+#' the statistical analysis. It can accept up to 5 `groupBy` fields in a
+#' single call.
+#' @param SortOrder Orders the aggregation count in descending or ascending order.
+#' Descending order is the default.
+#' @param MaxStatisticResults The maximum number of results to be returned.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_get_finding_statistics_v2
+securityhub_get_finding_statistics_v2 <- function(GroupByRules, SortOrder = NULL, MaxStatisticResults = NULL) {
+  op <- new_operation(
+    name = "GetFindingStatisticsV2",
+    http_method = "POST",
+    http_path = "/findingsv2/statistics",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$get_finding_statistics_v2_input(GroupByRules = GroupByRules, SortOrder = SortOrder, MaxStatisticResults = MaxStatisticResults)
+  output <- .securityhub$get_finding_statistics_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$get_finding_statistics_v2 <- securityhub_get_finding_statistics_v2
 
 #' Returns a list of findings that match the specified criteria
 #'
@@ -1810,6 +2359,84 @@ securityhub_get_findings <- function(Filters = NULL, SortCriteria = NULL, NextTo
   return(response)
 }
 .securityhub$operations$get_findings <- securityhub_get_findings
+
+#' Returns findings trend data based on the specified criteria
+#'
+#' @description
+#' Returns findings trend data based on the specified criteria. This operation helps you analyze patterns and changes in findings over time.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_get_findings_trends_v2/](https://www.paws-r-sdk.com/docs/securityhub_get_findings_trends_v2/) for full documentation.
+#'
+#' @param Filters The filters to apply to the findings trend data.
+#' @param StartTime &#91;required&#93; The starting timestamp for the time period to analyze findings trends,
+#' in ISO 8601 format.
+#' @param EndTime &#91;required&#93; The ending timestamp for the time period to analyze findings trends, in
+#' ISO 8601 format.
+#' @param NextToken The token to use for paginating results. This value is returned in the
+#' response if more results are available.
+#' @param MaxResults The maximum number of trend data points to return in a single response.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_get_findings_trends_v2
+securityhub_get_findings_trends_v2 <- function(Filters = NULL, StartTime, EndTime, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "GetFindingsTrendsV2",
+    http_method = "POST",
+    http_path = "/findingsTrendsv2",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrendsMetrics"),
+    stream_api = FALSE
+  )
+  input <- .securityhub$get_findings_trends_v2_input(Filters = Filters, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .securityhub$get_findings_trends_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$get_findings_trends_v2 <- securityhub_get_findings_trends_v2
+
+#' Return a list of findings that match the specified criteria
+#'
+#' @description
+#' Return a list of findings that match the specified criteria. [`get_findings`][securityhub_get_findings] and [`get_findings_v2`][securityhub_get_findings_v2] both use `securityhub:GetFindings` in the `Action` element of an IAM policy statement. You must have permission to perform the `securityhub:GetFindings` action.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_get_findings_v2/](https://www.paws-r-sdk.com/docs/securityhub_get_findings_v2/) for full documentation.
+#'
+#' @param Filters The finding attributes used to define a condition to filter the returned
+#' OCSF findings. You can filter up to 10 composite filters. For each
+#' filter type inside of a composite filter, you can provide up to 20
+#' filters.
+#' @param SortCriteria The finding attributes used to sort the list of returned findings.
+#' @param NextToken The token required for pagination. On your first call, set the value of
+#' this parameter to `NULL`. For subsequent calls, to continue listing
+#' data, set the value of this parameter to the value returned in the
+#' previous response.
+#' @param MaxResults The maximum number of results to return.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_get_findings_v2
+securityhub_get_findings_v2 <- function(Filters = NULL, SortCriteria = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "GetFindingsV2",
+    http_method = "POST",
+    http_path = "/findingsv2",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Findings"),
+    stream_api = FALSE
+  )
+  input <- .securityhub$get_findings_v2_input(Filters = Filters, SortCriteria = SortCriteria, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .securityhub$get_findings_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$get_findings_v2 <- securityhub_get_findings_v2
 
 #' Lists the results of the Security Hub insight specified by the insight
 #' ARN
@@ -1980,6 +2607,116 @@ securityhub_get_members <- function(AccountIds) {
 }
 .securityhub$operations$get_members <- securityhub_get_members
 
+#' Retrieves statistical information about Amazon Web Services resources
+#' and their associated security findings
+#'
+#' @description
+#' Retrieves statistical information about Amazon Web Services resources and their associated security findings.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_get_resources_statistics_v2/](https://www.paws-r-sdk.com/docs/securityhub_get_resources_statistics_v2/) for full documentation.
+#'
+#' @param GroupByRules &#91;required&#93; How resource statistics should be aggregated and organized in the
+#' response.
+#' @param SortOrder Sorts aggregated statistics.
+#' @param MaxStatisticResults The maximum number of results to be returned.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_get_resources_statistics_v2
+securityhub_get_resources_statistics_v2 <- function(GroupByRules, SortOrder = NULL, MaxStatisticResults = NULL) {
+  op <- new_operation(
+    name = "GetResourcesStatisticsV2",
+    http_method = "POST",
+    http_path = "/resourcesv2/statistics",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$get_resources_statistics_v2_input(GroupByRules = GroupByRules, SortOrder = SortOrder, MaxStatisticResults = MaxStatisticResults)
+  output <- .securityhub$get_resources_statistics_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$get_resources_statistics_v2 <- securityhub_get_resources_statistics_v2
+
+#' Returns resource trend data based on the specified criteria
+#'
+#' @description
+#' Returns resource trend data based on the specified criteria. This operation helps you analyze patterns and changes in resource compliance over time.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_get_resources_trends_v2/](https://www.paws-r-sdk.com/docs/securityhub_get_resources_trends_v2/) for full documentation.
+#'
+#' @param Filters The filters to apply to the resources trend data.
+#' @param StartTime &#91;required&#93; The starting timestamp for the time period to analyze resources trends,
+#' in ISO 8601 format.
+#' @param EndTime &#91;required&#93; The ending timestamp for the time period to analyze resources trends, in
+#' ISO 8601 format.
+#' @param NextToken The token to use for paginating results. This value is returned in the
+#' response if more results are available.
+#' @param MaxResults The maximum number of trend data points to return in a single response.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_get_resources_trends_v2
+securityhub_get_resources_trends_v2 <- function(Filters = NULL, StartTime, EndTime, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "GetResourcesTrendsV2",
+    http_method = "POST",
+    http_path = "/resourcesTrendsv2",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrendsMetrics"),
+    stream_api = FALSE
+  )
+  input <- .securityhub$get_resources_trends_v2_input(Filters = Filters, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .securityhub$get_resources_trends_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$get_resources_trends_v2 <- securityhub_get_resources_trends_v2
+
+#' Returns a list of resources
+#'
+#' @description
+#' Returns a list of resources.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_get_resources_v2/](https://www.paws-r-sdk.com/docs/securityhub_get_resources_v2/) for full documentation.
+#'
+#' @param Filters Filters resources based on a set of criteria.
+#' @param SortCriteria The finding attributes used to sort the list of returned findings.
+#' @param NextToken The token required for pagination. On your first call, set the value of
+#' this parameter to `NULL`. For subsequent calls, to continue listing
+#' data, set the value of this parameter to the value returned in the
+#' previous response.
+#' @param MaxResults The maximum number of results to return.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_get_resources_v2
+securityhub_get_resources_v2 <- function(Filters = NULL, SortCriteria = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "GetResourcesV2",
+    http_method = "POST",
+    http_path = "/resourcesv2",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Resources"),
+    stream_api = FALSE
+  )
+  input <- .securityhub$get_resources_v2_input(Filters = Filters, SortCriteria = SortCriteria, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .securityhub$get_resources_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$get_resources_v2 <- securityhub_get_resources_v2
+
 #' Retrieves the definition of a security control
 #'
 #' @description
@@ -2045,6 +2782,41 @@ securityhub_invite_members <- function(AccountIds) {
 }
 .securityhub$operations$invite_members <- securityhub_invite_members
 
+#' Retrieves a list of V2 aggregators
+#'
+#' @description
+#' Retrieves a list of V2 aggregators.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_list_aggregators_v2/](https://www.paws-r-sdk.com/docs/securityhub_list_aggregators_v2/) for full documentation.
+#'
+#' @param NextToken The token required for pagination. On your first call, set the value of
+#' this parameter to `NULL`. For subsequent calls, to continue listing
+#' data, set the value of this parameter to the value returned in the
+#' previous response.
+#' @param MaxResults The maximum number of results to return.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_list_aggregators_v2
+securityhub_list_aggregators_v2 <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListAggregatorsV2",
+    http_method = "GET",
+    http_path = "/aggregatorv2/list",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AggregatorsV2"),
+    stream_api = FALSE
+  )
+  input <- .securityhub$list_aggregators_v2_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .securityhub$list_aggregators_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$list_aggregators_v2 <- securityhub_list_aggregators_v2
+
 #' A list of automation rules and their metadata for the calling account
 #'
 #' @description
@@ -2080,6 +2852,41 @@ securityhub_list_automation_rules <- function(NextToken = NULL, MaxResults = NUL
   return(response)
 }
 .securityhub$operations$list_automation_rules <- securityhub_list_automation_rules
+
+#' Returns a list of automation rules and metadata for the calling account
+#'
+#' @description
+#' Returns a list of automation rules and metadata for the calling account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_list_automation_rules_v2/](https://www.paws-r-sdk.com/docs/securityhub_list_automation_rules_v2/) for full documentation.
+#'
+#' @param NextToken The token required for pagination. On your first call, set the value of
+#' this parameter to `NULL`. For subsequent calls, to continue listing
+#' data, set the value of this parameter to the value returned in the
+#' previous response.
+#' @param MaxResults The maximum number of results to return.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_list_automation_rules_v2
+securityhub_list_automation_rules_v2 <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListAutomationRulesV2",
+    http_method = "GET",
+    http_path = "/automationrulesv2/list",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$list_automation_rules_v2_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .securityhub$list_automation_rules_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$list_automation_rules_v2 <- securityhub_list_automation_rules_v2
 
 #' Lists the configuration policies that the Security Hub delegated
 #' administrator has created for your organization
@@ -2181,6 +2988,41 @@ securityhub_list_configuration_policy_associations <- function(NextToken = NULL,
   return(response)
 }
 .securityhub$operations$list_configuration_policy_associations <- securityhub_list_configuration_policy_associations
+
+#' Grants permission to retrieve a list of connectorsV2 and their metadata
+#' for the calling account
+#'
+#' @description
+#' Grants permission to retrieve a list of connectorsV2 and their metadata for the calling account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_list_connectors_v2/](https://www.paws-r-sdk.com/docs/securityhub_list_connectors_v2/) for full documentation.
+#'
+#' @param NextToken The pagination token per the Amazon Web Services Pagination standard
+#' @param MaxResults The maximum number of results to be returned.
+#' @param ProviderName The name of the third-party provider.
+#' @param ConnectorStatus The status for the connectorV2.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_list_connectors_v2
+securityhub_list_connectors_v2 <- function(NextToken = NULL, MaxResults = NULL, ProviderName = NULL, ConnectorStatus = NULL) {
+  op <- new_operation(
+    name = "ListConnectorsV2",
+    http_method = "GET",
+    http_path = "/connectorsv2",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$list_connectors_v2_input(NextToken = NextToken, MaxResults = MaxResults, ProviderName = ProviderName, ConnectorStatus = ConnectorStatus)
+  output <- .securityhub$list_connectors_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$list_connectors_v2 <- securityhub_list_connectors_v2
 
 #' Lists all findings-generating solutions (products) that you are
 #' subscribed to receive findings from in Security Hub
@@ -2357,11 +3199,13 @@ securityhub_list_members <- function(OnlyAssociated = NULL, MaxResults = NULL, N
 #' operation, set the value of this parameter to `NULL`. For subsequent
 #' calls to the operation, to continue listing data, set the value of this
 #' parameter to the value returned from the previous response.
+#' @param Feature The feature where the delegated administrator account is listed.
+#' Defaults to Security Hub if not specified.
 #'
 #' @keywords internal
 #'
 #' @rdname securityhub_list_organization_admin_accounts
-securityhub_list_organization_admin_accounts <- function(MaxResults = NULL, NextToken = NULL) {
+securityhub_list_organization_admin_accounts <- function(MaxResults = NULL, NextToken = NULL, Feature = NULL) {
   op <- new_operation(
     name = "ListOrganizationAdminAccounts",
     http_method = "GET",
@@ -2370,7 +3214,7 @@ securityhub_list_organization_admin_accounts <- function(MaxResults = NULL, Next
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AdminAccounts"),
     stream_api = FALSE
   )
-  input <- .securityhub$list_organization_admin_accounts_input(MaxResults = MaxResults, NextToken = NextToken)
+  input <- .securityhub$list_organization_admin_accounts_input(MaxResults = MaxResults, NextToken = NextToken, Feature = Feature)
   output <- .securityhub$list_organization_admin_accounts_output()
   config <- get_config()
   svc <- .securityhub$service(config, op)
@@ -2492,6 +3336,41 @@ securityhub_list_tags_for_resource <- function(ResourceArn) {
   return(response)
 }
 .securityhub$operations$list_tags_for_resource <- securityhub_list_tags_for_resource
+
+#' Grants permission to complete the authorization based on input
+#' parameters
+#'
+#' @description
+#' Grants permission to complete the authorization based on input parameters.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_register_connector_v2/](https://www.paws-r-sdk.com/docs/securityhub_register_connector_v2/) for full documentation.
+#'
+#' @param AuthCode &#91;required&#93; The authCode retrieved from authUrl to complete the OAuth 2.0
+#' authorization code flow.
+#' @param AuthState &#91;required&#93; The authState retrieved from authUrl to complete the OAuth 2.0
+#' authorization code flow.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_register_connector_v2
+securityhub_register_connector_v2 <- function(AuthCode, AuthState) {
+  op <- new_operation(
+    name = "RegisterConnectorV2",
+    http_method = "POST",
+    http_path = "/connectorsv2/register",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$register_connector_v2_input(AuthCode = AuthCode, AuthState = AuthState)
+  output <- .securityhub$register_connector_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$register_connector_v2 <- securityhub_register_connector_v2
 
 #' Associates a target account, organizational unit, or the root with a
 #' specified configuration
@@ -2666,6 +3545,77 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 }
 .securityhub$operations$update_action_target <- securityhub_update_action_target
 
+#' Udpates the configuration for the Aggregator V2
+#'
+#' @description
+#' Udpates the configuration for the Aggregator V2.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_update_aggregator_v2/](https://www.paws-r-sdk.com/docs/securityhub_update_aggregator_v2/) for full documentation.
+#'
+#' @param AggregatorV2Arn &#91;required&#93; The ARN of the Aggregator V2.
+#' @param RegionLinkingMode &#91;required&#93; Determines how Amazon Web Services Regions should be linked to the
+#' Aggregator V2.
+#' @param LinkedRegions A list of Amazon Web Services Regions linked to the aggegation Region.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_update_aggregator_v2
+securityhub_update_aggregator_v2 <- function(AggregatorV2Arn, RegionLinkingMode, LinkedRegions = NULL) {
+  op <- new_operation(
+    name = "UpdateAggregatorV2",
+    http_method = "PATCH",
+    http_path = "/aggregatorv2/update/{AggregatorV2Arn+}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$update_aggregator_v2_input(AggregatorV2Arn = AggregatorV2Arn, RegionLinkingMode = RegionLinkingMode, LinkedRegions = LinkedRegions)
+  output <- .securityhub$update_aggregator_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$update_aggregator_v2 <- securityhub_update_aggregator_v2
+
+#' Updates a V2 automation rule
+#'
+#' @description
+#' Updates a V2 automation rule.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_update_automation_rule_v2/](https://www.paws-r-sdk.com/docs/securityhub_update_automation_rule_v2/) for full documentation.
+#'
+#' @param Identifier &#91;required&#93; The ARN of the automation rule.
+#' @param RuleStatus The status of the automation rule.
+#' @param RuleOrder Represents a value for the rule priority.
+#' @param Description A description of the automation rule.
+#' @param RuleName The name of the automation rule.
+#' @param Criteria The filtering type and configuration of the automation rule.
+#' @param Actions A list of actions to be performed when the rule criteria is met.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_update_automation_rule_v2
+securityhub_update_automation_rule_v2 <- function(Identifier, RuleStatus = NULL, RuleOrder = NULL, Description = NULL, RuleName = NULL, Criteria = NULL, Actions = NULL) {
+  op <- new_operation(
+    name = "UpdateAutomationRuleV2",
+    http_method = "PATCH",
+    http_path = "/automationrulesv2/{Identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$update_automation_rule_v2_input(Identifier = Identifier, RuleStatus = RuleStatus, RuleOrder = RuleOrder, Description = Description, RuleName = RuleName, Criteria = Criteria, Actions = Actions)
+  output <- .securityhub$update_automation_rule_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$update_automation_rule_v2 <- securityhub_update_automation_rule_v2
+
 #' Updates a configuration policy
 #'
 #' @description
@@ -2715,6 +3665,40 @@ securityhub_update_configuration_policy <- function(Identifier, Name = NULL, Des
   return(response)
 }
 .securityhub$operations$update_configuration_policy <- securityhub_update_configuration_policy
+
+#' Grants permission to update a connectorV2 based on its id and input
+#' parameters
+#'
+#' @description
+#' Grants permission to update a connectorV2 based on its id and input parameters.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_update_connector_v2/](https://www.paws-r-sdk.com/docs/securityhub_update_connector_v2/) for full documentation.
+#'
+#' @param ConnectorId &#91;required&#93; The UUID of the connectorV2 to identify connectorV2 resource.
+#' @param Description The description of the connectorV2.
+#' @param Provider The third-party provider’s service configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_update_connector_v2
+securityhub_update_connector_v2 <- function(ConnectorId, Description = NULL, Provider = NULL) {
+  op <- new_operation(
+    name = "UpdateConnectorV2",
+    http_method = "PATCH",
+    http_path = "/connectorsv2/{ConnectorId+}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$update_connector_v2_input(ConnectorId = ConnectorId, Description = Description, Provider = Provider)
+  output <- .securityhub$update_connector_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$update_connector_v2 <- securityhub_update_connector_v2
 
 #' The aggregation Region is now called the home Region
 #'

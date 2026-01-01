@@ -6,8 +6,8 @@
 \usage{
 prometheusservice_list_scrapers(
   filters = NULL,
-  maxResults = NULL,
-  nextToken = NULL
+  nextToken = NULL,
+  maxResults = NULL
 )
 }
 \arguments{
@@ -29,14 +29,14 @@ of the workspace in a query:
 If this is included, it filters the results to only the scrapers that
 match the filter.}
 
+\item{nextToken}{(Optional) The token for the next set of items to return. (You received
+this token from a previous call.)}
+
 \item{maxResults}{Optional) The maximum number of scrapers to return in one
 \code{\link[=prometheusservice_list_scrapers]{list_scrapers}} operation. The range
 is 1-1000.
 
 If you omit this parameter, the default of 100 is used.}
-
-\item{nextToken}{(Optional) The token for the next set of items to return. (You received
-this token from a previous call.)}
 }
 \description{
 The \code{\link[=prometheusservice_list_scrapers]{list_scrapers}} operation lists all of the scrapers in your account. This includes scrapers being created or deleted. You can optionally filter the returned list.

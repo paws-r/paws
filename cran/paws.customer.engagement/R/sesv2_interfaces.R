@@ -29,7 +29,7 @@ NULL
 
 .sesv2$create_configuration_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(type = "string")), TrackingOptions = structure(list(CustomRedirectDomain = structure(logical(0), tags = list(type = "string")), HttpsPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DeliveryOptions = structure(list(TlsPolicy = structure(logical(0), tags = list(type = "string")), SendingPoolName = structure(logical(0), tags = list(type = "string")), MaxDeliverySeconds = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), ReputationOptions = structure(list(ReputationMetricsEnabled = structure(logical(0), tags = list(type = "boolean")), LastFreshStart = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), SendingOptions = structure(list(SendingEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SuppressionOptions = structure(list(SuppressedReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), VdmOptions = structure(list(DashboardOptions = structure(list(EngagementMetrics = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), GuardianOptions = structure(list(OptimizedSharedDelivery = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ArchivingOptions = structure(list(ArchiveArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(type = "string")), TrackingOptions = structure(list(CustomRedirectDomain = structure(logical(0), tags = list(type = "string")), HttpsPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DeliveryOptions = structure(list(TlsPolicy = structure(logical(0), tags = list(type = "string")), SendingPoolName = structure(logical(0), tags = list(type = "string")), MaxDeliverySeconds = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), ReputationOptions = structure(list(ReputationMetricsEnabled = structure(logical(0), tags = list(type = "boolean")), LastFreshStart = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), SendingOptions = structure(list(SendingEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SuppressionOptions = structure(list(SuppressedReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ValidationOptions = structure(list(ConditionThreshold = structure(list(ConditionThresholdEnabled = structure(logical(0), tags = list(type = "string")), OverallConfidenceThreshold = structure(list(ConfidenceVerdictThreshold = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), VdmOptions = structure(list(DashboardOptions = structure(list(EngagementMetrics = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), GuardianOptions = structure(list(OptimizedSharedDelivery = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ArchivingOptions = structure(list(ArchiveArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -77,7 +77,7 @@ NULL
 
 .sesv2$create_custom_verification_email_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TemplateName = structure(logical(0), tags = list(type = "string")), FromEmailAddress = structure(logical(0), tags = list(type = "string")), TemplateSubject = structure(logical(0), tags = list(type = "string")), TemplateContent = structure(logical(0), tags = list(type = "string")), SuccessRedirectionURL = structure(logical(0), tags = list(type = "string")), FailureRedirectionURL = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(TemplateName = structure(logical(0), tags = list(type = "string")), FromEmailAddress = structure(logical(0), tags = list(type = "string")), TemplateSubject = structure(logical(0), tags = list(type = "string")), TemplateContent = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SuccessRedirectionURL = structure(logical(0), tags = list(type = "string")), FailureRedirectionURL = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -119,7 +119,7 @@ NULL
 
 .sesv2$create_email_identity_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IdentityType = structure(logical(0), tags = list(type = "string")), VerifiedForSendingStatus = structure(logical(0), tags = list(type = "boolean")), DkimAttributes = structure(list(SigningEnabled = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string")), Tokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigningAttributesOrigin = structure(logical(0), tags = list(type = "string")), NextSigningKeyLength = structure(logical(0), tags = list(type = "string")), CurrentSigningKeyLength = structure(logical(0), tags = list(type = "string")), LastKeyGenerationTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(IdentityType = structure(logical(0), tags = list(type = "string")), VerifiedForSendingStatus = structure(logical(0), tags = list(type = "boolean")), DkimAttributes = structure(list(SigningEnabled = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string")), Tokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigningHostedZone = structure(logical(0), tags = list(type = "string")), SigningAttributesOrigin = structure(logical(0), tags = list(type = "string")), NextSigningKeyLength = structure(logical(0), tags = list(type = "string")), CurrentSigningKeyLength = structure(logical(0), tags = list(type = "string")), LastKeyGenerationTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -137,7 +137,7 @@ NULL
 
 .sesv2$create_email_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TemplateName = structure(logical(0), tags = list(type = "string")), TemplateContent = structure(list(Subject = structure(logical(0), tags = list(type = "string")), Text = structure(logical(0), tags = list(type = "string")), Html = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(TemplateName = structure(logical(0), tags = list(type = "string")), TemplateContent = structure(list(Subject = structure(logical(0), tags = list(type = "string")), Text = structure(logical(0), tags = list(type = "string")), Html = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -180,6 +180,30 @@ NULL
 .sesv2$create_multi_region_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Status = structure(logical(0), tags = list(type = "string")), EndpointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$create_tenant_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TenantName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$create_tenant_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TenantName = structure(logical(0), tags = list(type = "string")), TenantId = structure(logical(0), tags = list(type = "string")), TenantArn = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SendingStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$create_tenant_resource_association_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TenantName = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$create_tenant_resource_association_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -315,6 +339,30 @@ NULL
   return(populate(args, shape))
 }
 
+.sesv2$delete_tenant_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TenantName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$delete_tenant_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$delete_tenant_resource_association_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TenantName = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$delete_tenant_resource_association_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .sesv2$get_account_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
@@ -323,7 +371,7 @@ NULL
 
 .sesv2$get_account_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DedicatedIpAutoWarmupEnabled = structure(logical(0), tags = list(type = "boolean")), EnforcementStatus = structure(logical(0), tags = list(type = "string")), ProductionAccessEnabled = structure(logical(0), tags = list(type = "boolean")), SendQuota = structure(list(Max24HourSend = structure(logical(0), tags = list(type = "double")), MaxSendRate = structure(logical(0), tags = list(type = "double")), SentLast24Hours = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), SendingEnabled = structure(logical(0), tags = list(type = "boolean")), SuppressionAttributes = structure(list(SuppressedReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Details = structure(list(MailType = structure(logical(0), tags = list(type = "string")), WebsiteURL = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ContactLanguage = structure(logical(0), tags = list(type = "string")), UseCaseDescription = structure(logical(0), tags = list(type = "string", deprecated = TRUE, deprecatedMessage = "Use case description is optional and deprecated", sensitive = TRUE)), AdditionalContactEmailAddresses = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list", sensitive = TRUE)), ReviewDetails = structure(list(Status = structure(logical(0), tags = list(type = "string")), CaseId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), VdmAttributes = structure(list(VdmEnabled = structure(logical(0), tags = list(type = "string")), DashboardAttributes = structure(list(EngagementMetrics = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), GuardianAttributes = structure(list(OptimizedSharedDelivery = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(DedicatedIpAutoWarmupEnabled = structure(logical(0), tags = list(type = "boolean")), EnforcementStatus = structure(logical(0), tags = list(type = "string")), ProductionAccessEnabled = structure(logical(0), tags = list(type = "boolean")), SendQuota = structure(list(Max24HourSend = structure(logical(0), tags = list(type = "double")), MaxSendRate = structure(logical(0), tags = list(type = "double")), SentLast24Hours = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), SendingEnabled = structure(logical(0), tags = list(type = "boolean")), SuppressionAttributes = structure(list(SuppressedReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ValidationAttributes = structure(list(ConditionThreshold = structure(list(ConditionThresholdEnabled = structure(logical(0), tags = list(type = "string")), OverallConfidenceThreshold = structure(list(ConfidenceVerdictThreshold = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), Details = structure(list(MailType = structure(logical(0), tags = list(type = "string")), WebsiteURL = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ContactLanguage = structure(logical(0), tags = list(type = "string")), UseCaseDescription = structure(logical(0), tags = list(type = "string", deprecated = TRUE, deprecatedMessage = "Use case description is optional and deprecated", sensitive = TRUE)), AdditionalContactEmailAddresses = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list", sensitive = TRUE)), ReviewDetails = structure(list(Status = structure(logical(0), tags = list(type = "string")), CaseId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), VdmAttributes = structure(list(VdmEnabled = structure(logical(0), tags = list(type = "string")), DashboardAttributes = structure(list(EngagementMetrics = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), GuardianAttributes = structure(list(OptimizedSharedDelivery = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -347,7 +395,7 @@ NULL
 
 .sesv2$get_configuration_set_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(type = "string")), TrackingOptions = structure(list(CustomRedirectDomain = structure(logical(0), tags = list(type = "string")), HttpsPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DeliveryOptions = structure(list(TlsPolicy = structure(logical(0), tags = list(type = "string")), SendingPoolName = structure(logical(0), tags = list(type = "string")), MaxDeliverySeconds = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), ReputationOptions = structure(list(ReputationMetricsEnabled = structure(logical(0), tags = list(type = "boolean")), LastFreshStart = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), SendingOptions = structure(list(SendingEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SuppressionOptions = structure(list(SuppressedReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), VdmOptions = structure(list(DashboardOptions = structure(list(EngagementMetrics = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), GuardianOptions = structure(list(OptimizedSharedDelivery = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ArchivingOptions = structure(list(ArchiveArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(type = "string")), TrackingOptions = structure(list(CustomRedirectDomain = structure(logical(0), tags = list(type = "string")), HttpsPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DeliveryOptions = structure(list(TlsPolicy = structure(logical(0), tags = list(type = "string")), SendingPoolName = structure(logical(0), tags = list(type = "string")), MaxDeliverySeconds = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), ReputationOptions = structure(list(ReputationMetricsEnabled = structure(logical(0), tags = list(type = "boolean")), LastFreshStart = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), SendingOptions = structure(list(SendingEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SuppressionOptions = structure(list(SuppressedReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ValidationOptions = structure(list(ConditionThreshold = structure(list(ConditionThresholdEnabled = structure(logical(0), tags = list(type = "string")), OverallConfidenceThreshold = structure(list(ConfidenceVerdictThreshold = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), VdmOptions = structure(list(DashboardOptions = structure(list(EngagementMetrics = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), GuardianOptions = structure(list(OptimizedSharedDelivery = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ArchivingOptions = structure(list(ArchiveArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -395,7 +443,7 @@ NULL
 
 .sesv2$get_custom_verification_email_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TemplateName = structure(logical(0), tags = list(type = "string")), FromEmailAddress = structure(logical(0), tags = list(type = "string")), TemplateSubject = structure(logical(0), tags = list(type = "string")), TemplateContent = structure(logical(0), tags = list(type = "string")), SuccessRedirectionURL = structure(logical(0), tags = list(type = "string")), FailureRedirectionURL = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(TemplateName = structure(logical(0), tags = list(type = "string")), FromEmailAddress = structure(logical(0), tags = list(type = "string")), TemplateSubject = structure(logical(0), tags = list(type = "string")), TemplateContent = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SuccessRedirectionURL = structure(logical(0), tags = list(type = "string")), FailureRedirectionURL = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -483,6 +531,18 @@ NULL
   return(populate(args, shape))
 }
 
+.sesv2$get_email_address_insights_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EmailAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$get_email_address_insights_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MailboxValidation = structure(list(IsValid = structure(list(ConfidenceVerdict = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Evaluations = structure(list(HasValidSyntax = structure(list(ConfidenceVerdict = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HasValidDnsRecords = structure(list(ConfidenceVerdict = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MailboxExists = structure(list(ConfidenceVerdict = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IsRoleAddress = structure(list(ConfidenceVerdict = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IsDisposable = structure(list(ConfidenceVerdict = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IsRandomInput = structure(list(ConfidenceVerdict = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .sesv2$get_email_identity_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(EmailIdentity = structure(logical(0), tags = list(location = "uri", locationName = "EmailIdentity", type = "string"))), tags = list(type = "structure"))
@@ -491,7 +551,7 @@ NULL
 
 .sesv2$get_email_identity_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IdentityType = structure(logical(0), tags = list(type = "string")), FeedbackForwardingStatus = structure(logical(0), tags = list(type = "boolean")), VerifiedForSendingStatus = structure(logical(0), tags = list(type = "boolean")), DkimAttributes = structure(list(SigningEnabled = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string")), Tokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigningAttributesOrigin = structure(logical(0), tags = list(type = "string")), NextSigningKeyLength = structure(logical(0), tags = list(type = "string")), CurrentSigningKeyLength = structure(logical(0), tags = list(type = "string")), LastKeyGenerationTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), MailFromAttributes = structure(list(MailFromDomain = structure(logical(0), tags = list(type = "string")), MailFromDomainStatus = structure(logical(0), tags = list(type = "string")), BehaviorOnMxFailure = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Policies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ConfigurationSetName = structure(logical(0), tags = list(type = "string")), VerificationStatus = structure(logical(0), tags = list(type = "string")), VerificationInfo = structure(list(LastCheckedTimestamp = structure(logical(0), tags = list(type = "timestamp")), LastSuccessTimestamp = structure(logical(0), tags = list(type = "timestamp")), ErrorType = structure(logical(0), tags = list(type = "string")), SOARecord = structure(list(PrimaryNameServer = structure(logical(0), tags = list(type = "string")), AdminEmail = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(IdentityType = structure(logical(0), tags = list(type = "string")), FeedbackForwardingStatus = structure(logical(0), tags = list(type = "boolean")), VerifiedForSendingStatus = structure(logical(0), tags = list(type = "boolean")), DkimAttributes = structure(list(SigningEnabled = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string")), Tokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigningHostedZone = structure(logical(0), tags = list(type = "string")), SigningAttributesOrigin = structure(logical(0), tags = list(type = "string")), NextSigningKeyLength = structure(logical(0), tags = list(type = "string")), CurrentSigningKeyLength = structure(logical(0), tags = list(type = "string")), LastKeyGenerationTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), MailFromAttributes = structure(list(MailFromDomain = structure(logical(0), tags = list(type = "string")), MailFromDomainStatus = structure(logical(0), tags = list(type = "string")), BehaviorOnMxFailure = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Policies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ConfigurationSetName = structure(logical(0), tags = list(type = "string")), VerificationStatus = structure(logical(0), tags = list(type = "string")), VerificationInfo = structure(list(LastCheckedTimestamp = structure(logical(0), tags = list(type = "timestamp")), LastSuccessTimestamp = structure(logical(0), tags = list(type = "timestamp")), ErrorType = structure(logical(0), tags = list(type = "string")), SOARecord = structure(list(PrimaryNameServer = structure(logical(0), tags = list(type = "string")), AdminEmail = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -515,7 +575,7 @@ NULL
 
 .sesv2$get_email_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TemplateName = structure(logical(0), tags = list(type = "string")), TemplateContent = structure(list(Subject = structure(logical(0), tags = list(type = "string")), Text = structure(logical(0), tags = list(type = "string")), Html = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(TemplateName = structure(logical(0), tags = list(type = "string")), TemplateContent = structure(list(Subject = structure(logical(0), tags = list(type = "string")), Text = structure(logical(0), tags = list(type = "string")), Html = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -567,6 +627,18 @@ NULL
   return(populate(args, shape))
 }
 
+.sesv2$get_reputation_entity_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ReputationEntityReference = structure(logical(0), tags = list(location = "uri", locationName = "ReputationEntityReference", type = "string")), ReputationEntityType = structure(logical(0), tags = list(location = "uri", locationName = "ReputationEntityType", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$get_reputation_entity_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ReputationEntity = structure(list(ReputationEntityReference = structure(logical(0), tags = list(type = "string")), ReputationEntityType = structure(logical(0), tags = list(type = "string")), ReputationManagementPolicy = structure(logical(0), tags = list(type = "string")), CustomerManagedStatus = structure(list(Status = structure(logical(0), tags = list(type = "string")), Cause = structure(logical(0), tags = list(type = "string")), LastUpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), AwsSesManagedStatus = structure(list(Status = structure(logical(0), tags = list(type = "string")), Cause = structure(logical(0), tags = list(type = "string")), LastUpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), SendingStatusAggregate = structure(logical(0), tags = list(type = "string")), ReputationImpact = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .sesv2$get_suppressed_destination_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(EmailAddress = structure(logical(0), tags = list(location = "uri", locationName = "EmailAddress", type = "string"))), tags = list(type = "structure"))
@@ -576,6 +648,18 @@ NULL
 .sesv2$get_suppressed_destination_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(SuppressedDestination = structure(list(EmailAddress = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string")), LastUpdateTime = structure(logical(0), tags = list(type = "timestamp")), Attributes = structure(list(MessageId = structure(logical(0), tags = list(type = "string")), FeedbackId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$get_tenant_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TenantName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$get_tenant_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tenant = structure(list(TenantName = structure(logical(0), tags = list(type = "string")), TenantId = structure(logical(0), tags = list(type = "string")), TenantArn = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SendingStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -735,6 +819,30 @@ NULL
   return(populate(args, shape))
 }
 
+.sesv2$list_reputation_entities_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Filter = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), NextToken = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$list_reputation_entities_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ReputationEntities = structure(list(structure(list(ReputationEntityReference = structure(logical(0), tags = list(type = "string")), ReputationEntityType = structure(logical(0), tags = list(type = "string")), ReputationManagementPolicy = structure(logical(0), tags = list(type = "string")), CustomerManagedStatus = structure(list(Status = structure(logical(0), tags = list(type = "string")), Cause = structure(logical(0), tags = list(type = "string")), LastUpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), AwsSesManagedStatus = structure(list(Status = structure(logical(0), tags = list(type = "string")), Cause = structure(logical(0), tags = list(type = "string")), LastUpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), SendingStatusAggregate = structure(logical(0), tags = list(type = "string")), ReputationImpact = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$list_resource_tenants_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$list_resource_tenants_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceTenants = structure(list(structure(list(TenantName = structure(logical(0), tags = list(type = "string")), TenantId = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), AssociatedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .sesv2$list_suppressed_destinations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Reasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "Reason", type = "list")), StartDate = structure(logical(0), tags = list(location = "querystring", locationName = "StartDate", type = "timestamp")), EndDate = structure(logical(0), tags = list(location = "querystring", locationName = "EndDate", type = "timestamp")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), PageSize = structure(logical(0), tags = list(location = "querystring", locationName = "PageSize", type = "integer"))), tags = list(type = "structure"))
@@ -756,6 +864,30 @@ NULL
 .sesv2$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$list_tenant_resources_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TenantName = structure(logical(0), tags = list(type = "string")), Filter = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), PageSize = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$list_tenant_resources_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TenantResources = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$list_tenants_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$list_tenants_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tenants = structure(list(structure(list(TenantName = structure(logical(0), tags = list(type = "string")), TenantId = structure(logical(0), tags = list(type = "string")), TenantArn = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -797,7 +929,7 @@ NULL
 
 .sesv2$put_account_suppression_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SuppressedReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(SuppressedReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ValidationAttributes = structure(list(ConditionThreshold = structure(list(ConditionThresholdEnabled = structure(logical(0), tags = list(type = "string")), OverallConfidenceThreshold = structure(list(ConfidenceVerdictThreshold = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -869,7 +1001,7 @@ NULL
 
 .sesv2$put_configuration_set_suppression_options_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(location = "uri", locationName = "ConfigurationSetName", type = "string")), SuppressedReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(location = "uri", locationName = "ConfigurationSetName", type = "string")), SuppressedReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ValidationOptions = structure(list(ConditionThreshold = structure(list(ConditionThresholdEnabled = structure(logical(0), tags = list(type = "string")), OverallConfidenceThreshold = structure(list(ConfidenceVerdictThreshold = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -983,7 +1115,7 @@ NULL
 
 .sesv2$put_email_identity_dkim_signing_attributes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DkimStatus = structure(logical(0), tags = list(type = "string")), DkimTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(DkimStatus = structure(logical(0), tags = list(type = "string")), DkimTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigningHostedZone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1025,7 +1157,7 @@ NULL
 
 .sesv2$send_bulk_email_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FromEmailAddress = structure(logical(0), tags = list(type = "string")), FromEmailAddressIdentityArn = structure(logical(0), tags = list(type = "string")), ReplyToAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), FeedbackForwardingEmailAddress = structure(logical(0), tags = list(type = "string")), FeedbackForwardingEmailAddressIdentityArn = structure(logical(0), tags = list(type = "string")), DefaultEmailTags = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DefaultContent = structure(list(Template = structure(list(TemplateName = structure(logical(0), tags = list(type = "string")), TemplateArn = structure(logical(0), tags = list(type = "string")), TemplateContent = structure(list(Subject = structure(logical(0), tags = list(type = "string")), Text = structure(logical(0), tags = list(type = "string")), Html = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TemplateData = structure(logical(0), tags = list(type = "string")), Headers = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Attachments = structure(list(structure(list(RawContent = structure(logical(0), tags = list(type = "blob")), ContentDisposition = structure(logical(0), tags = list(type = "string")), FileName = structure(logical(0), tags = list(type = "string")), ContentDescription = structure(logical(0), tags = list(type = "string")), ContentId = structure(logical(0), tags = list(type = "string")), ContentTransferEncoding = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), BulkEmailEntries = structure(list(structure(list(Destination = structure(list(ToAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CcAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), BccAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ReplacementTags = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ReplacementEmailContent = structure(list(ReplacementTemplate = structure(list(ReplacementTemplateData = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ReplacementHeaders = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ConfigurationSetName = structure(logical(0), tags = list(type = "string")), EndpointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(FromEmailAddress = structure(logical(0), tags = list(type = "string")), FromEmailAddressIdentityArn = structure(logical(0), tags = list(type = "string")), ReplyToAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), FeedbackForwardingEmailAddress = structure(logical(0), tags = list(type = "string")), FeedbackForwardingEmailAddressIdentityArn = structure(logical(0), tags = list(type = "string")), DefaultEmailTags = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DefaultContent = structure(list(Template = structure(list(TemplateName = structure(logical(0), tags = list(type = "string")), TemplateArn = structure(logical(0), tags = list(type = "string")), TemplateContent = structure(list(Subject = structure(logical(0), tags = list(type = "string")), Text = structure(logical(0), tags = list(type = "string")), Html = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TemplateData = structure(logical(0), tags = list(type = "string")), Headers = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Attachments = structure(list(structure(list(RawContent = structure(logical(0), tags = list(type = "blob")), ContentDisposition = structure(logical(0), tags = list(type = "string")), FileName = structure(logical(0), tags = list(type = "string")), ContentDescription = structure(logical(0), tags = list(type = "string")), ContentId = structure(logical(0), tags = list(type = "string")), ContentTransferEncoding = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), BulkEmailEntries = structure(list(structure(list(Destination = structure(list(ToAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CcAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), BccAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ReplacementTags = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ReplacementEmailContent = structure(list(ReplacementTemplate = structure(list(ReplacementTemplateData = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ReplacementHeaders = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ConfigurationSetName = structure(logical(0), tags = list(type = "string")), EndpointId = structure(logical(0), tags = list(type = "string")), TenantName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1049,7 +1181,7 @@ NULL
 
 .sesv2$send_email_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FromEmailAddress = structure(logical(0), tags = list(type = "string")), FromEmailAddressIdentityArn = structure(logical(0), tags = list(type = "string")), Destination = structure(list(ToAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CcAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), BccAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ReplyToAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), FeedbackForwardingEmailAddress = structure(logical(0), tags = list(type = "string")), FeedbackForwardingEmailAddressIdentityArn = structure(logical(0), tags = list(type = "string")), Content = structure(list(Simple = structure(list(Subject = structure(list(Data = structure(logical(0), tags = list(type = "string")), Charset = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Body = structure(list(Text = structure(list(Data = structure(logical(0), tags = list(type = "string")), Charset = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Html = structure(list(Data = structure(logical(0), tags = list(type = "string")), Charset = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Headers = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Attachments = structure(list(structure(list(RawContent = structure(logical(0), tags = list(type = "blob")), ContentDisposition = structure(logical(0), tags = list(type = "string")), FileName = structure(logical(0), tags = list(type = "string")), ContentDescription = structure(logical(0), tags = list(type = "string")), ContentId = structure(logical(0), tags = list(type = "string")), ContentTransferEncoding = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Raw = structure(list(Data = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure")), Template = structure(list(TemplateName = structure(logical(0), tags = list(type = "string")), TemplateArn = structure(logical(0), tags = list(type = "string")), TemplateContent = structure(list(Subject = structure(logical(0), tags = list(type = "string")), Text = structure(logical(0), tags = list(type = "string")), Html = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TemplateData = structure(logical(0), tags = list(type = "string")), Headers = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Attachments = structure(list(structure(list(RawContent = structure(logical(0), tags = list(type = "blob")), ContentDisposition = structure(logical(0), tags = list(type = "string")), FileName = structure(logical(0), tags = list(type = "string")), ContentDescription = structure(logical(0), tags = list(type = "string")), ContentId = structure(logical(0), tags = list(type = "string")), ContentTransferEncoding = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), EmailTags = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ConfigurationSetName = structure(logical(0), tags = list(type = "string")), EndpointId = structure(logical(0), tags = list(type = "string")), ListManagementOptions = structure(list(ContactListName = structure(logical(0), tags = list(type = "string")), TopicName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(FromEmailAddress = structure(logical(0), tags = list(type = "string")), FromEmailAddressIdentityArn = structure(logical(0), tags = list(type = "string")), Destination = structure(list(ToAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CcAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), BccAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ReplyToAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), FeedbackForwardingEmailAddress = structure(logical(0), tags = list(type = "string")), FeedbackForwardingEmailAddressIdentityArn = structure(logical(0), tags = list(type = "string")), Content = structure(list(Simple = structure(list(Subject = structure(list(Data = structure(logical(0), tags = list(type = "string")), Charset = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Body = structure(list(Text = structure(list(Data = structure(logical(0), tags = list(type = "string")), Charset = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Html = structure(list(Data = structure(logical(0), tags = list(type = "string")), Charset = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Headers = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Attachments = structure(list(structure(list(RawContent = structure(logical(0), tags = list(type = "blob")), ContentDisposition = structure(logical(0), tags = list(type = "string")), FileName = structure(logical(0), tags = list(type = "string")), ContentDescription = structure(logical(0), tags = list(type = "string")), ContentId = structure(logical(0), tags = list(type = "string")), ContentTransferEncoding = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Raw = structure(list(Data = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure")), Template = structure(list(TemplateName = structure(logical(0), tags = list(type = "string")), TemplateArn = structure(logical(0), tags = list(type = "string")), TemplateContent = structure(list(Subject = structure(logical(0), tags = list(type = "string")), Text = structure(logical(0), tags = list(type = "string")), Html = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TemplateData = structure(logical(0), tags = list(type = "string")), Headers = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Attachments = structure(list(structure(list(RawContent = structure(logical(0), tags = list(type = "blob")), ContentDisposition = structure(logical(0), tags = list(type = "string")), FileName = structure(logical(0), tags = list(type = "string")), ContentDescription = structure(logical(0), tags = list(type = "string")), ContentId = structure(logical(0), tags = list(type = "string")), ContentTransferEncoding = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), EmailTags = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ConfigurationSetName = structure(logical(0), tags = list(type = "string")), EndpointId = structure(logical(0), tags = list(type = "string")), TenantName = structure(logical(0), tags = list(type = "string")), ListManagementOptions = structure(list(ContactListName = structure(logical(0), tags = list(type = "string")), TopicName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1162,6 +1294,30 @@ NULL
 }
 
 .sesv2$update_email_template_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$update_reputation_entity_customer_managed_status_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ReputationEntityType = structure(logical(0), tags = list(location = "uri", locationName = "ReputationEntityType", type = "string")), ReputationEntityReference = structure(logical(0), tags = list(location = "uri", locationName = "ReputationEntityReference", type = "string")), SendingStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$update_reputation_entity_customer_managed_status_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$update_reputation_entity_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ReputationEntityType = structure(logical(0), tags = list(location = "uri", locationName = "ReputationEntityType", type = "string")), ReputationEntityReference = structure(logical(0), tags = list(location = "uri", locationName = "ReputationEntityReference", type = "string")), ReputationEntityPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$update_reputation_entity_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

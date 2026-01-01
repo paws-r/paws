@@ -24,7 +24,8 @@ cloudformation_create_change_set(
   ResourcesToImport = NULL,
   IncludeNestedStacks = NULL,
   OnStackFailure = NULL,
-  ImportExistingResources = NULL
+  ImportExistingResources = NULL,
+  DeploymentMode = NULL
 )
 }
 \arguments{
@@ -38,18 +39,32 @@ minimum length of 1 byte and a maximum length of 51,200 bytes.
 CloudFormation generates the change set by comparing this template with
 the template of the stack that you specified.
 
-Conditional: You must specify only \code{TemplateBody} or \code{TemplateURL}.}
+Conditional: You must specify only one of the following parameters:
+\code{TemplateBody}, \code{TemplateURL}, or set the \code{UsePreviousTemplate} to
+\code{true}.}
 
 \item{TemplateURL}{The URL of the file that contains the revised template. The URL must
 point to a template (max size: 1 MB) that's located in an Amazon S3
 bucket or a Systems Manager document. CloudFormation generates the
 change set by comparing this template with the stack that you specified.
-The location for an Amazon S3 bucket must start with \verb{https://}.
+The location for an Amazon S3 bucket must start with \verb{https://}. URLs
+from S3 static websites are not supported.
 
-Conditional: You must specify only \code{TemplateBody} or \code{TemplateURL}.}
+Conditional: You must specify only one of the following parameters:
+\code{TemplateBody}, \code{TemplateURL}, or set the \code{UsePreviousTemplate} to
+\code{true}.}
 
 \item{UsePreviousTemplate}{Whether to reuse the template that's associated with the stack to create
-the change set.}
+the change set.
+
+When using templates with the \code{AWS::LanguageExtensions} transform,
+provide the template instead of using \code{UsePreviousTemplate} to ensure
+new parameter values and Systems Manager parameter updates are applied
+correctly. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/transform-aws-languageextensions.html}{AWS::LanguageExtensions transform}.
+
+Conditional: You must specify only one of the following parameters:
+\code{TemplateBody}, \code{TemplateURL}, or set the \code{UsePreviousTemplate} to
+\code{true}.}
 
 \item{Parameters}{A list of \code{Parameter} structures that specify input parameters for the
 change set. For more information, see the Parameter data type.}
@@ -61,7 +76,7 @@ stack.
 \item \code{CAPABILITY_IAM} and \code{CAPABILITY_NAMED_IAM}
 
 Some stack templates might include resources that can affect
-permissions in your Amazon Web Services account; for example, by
+permissions in your Amazon Web Services account, for example, by
 creating new IAM users. For those stacks, you must explicitly
 acknowledge this by specifying one of these capabilities.
 
@@ -79,14 +94,14 @@ If your stack template contains these resources, we suggest that you
 review all permissions associated with them and edit their
 permissions if necessary.
 \itemize{
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html}{AWS::IAM::AccessKey}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html}{AWS::IAM::Group}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-managedpolicy.html}{AWS::IAM::ManagedPolicy}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html}{AWS::IAM::Policy}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html}{AWS::IAM::Role}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html}{AWS::IAM::User}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html}{AWS::IAM::UserToGroupAddition}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-accesskey.html}{AWS::IAM::AccessKey}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-group.html}{AWS::IAM::Group}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-managedpolicy.html}{AWS::IAM::ManagedPolicy}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-policy.html}{AWS::IAM::Policy}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-role.html}{AWS::IAM::Role}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-user.html}{AWS::IAM::User}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-usertogroupaddition.html}{AWS::IAM::UserToGroupAddition}
 }
 
 For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html#using-iam-capabilities}{Acknowledging IAM resources in CloudFormation templates}.
@@ -102,9 +117,9 @@ your stack template contains one or more macros, and you choose to
 create a stack directly from the processed template, without first
 reviewing the resulting changes in a change set, you must
 acknowledge this capability. This includes the
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-include.html}{AWS::Include}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/transform-aws-include.html}{AWS::Include}
 and
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html}{AWS::Serverless}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/transform-aws-serverless.html}{AWS::Serverless}
 transforms, which are macros hosted by CloudFormation.
 
 This capacity doesn't apply to creating change sets, and specifying
@@ -123,15 +138,14 @@ For more information about macros, see \href{https://docs.aws.amazon.com/AWSClou
 Only one of the \code{Capabilities} and \code{ResourceType} parameters can be
 specified.}
 
-\item{ResourceTypes}{The template resource types that you have permissions to work with if
-you execute this change set, such as \verb{AWS::EC2::Instance},
-\verb{AWS::EC2::*}, or \code{Custom::MyCustomInstance}.
+\item{ResourceTypes}{Specifies which resource types you can work with, such as
+\verb{AWS::EC2::Instance} or \code{Custom::MyCustomInstance}.
 
 If the list of resource types doesn't include a resource type that
 you're updating, the stack update fails. By default, CloudFormation
 grants permissions to all resource types. IAM uses this parameter for
 condition keys in IAM policies for CloudFormation. For more information,
-see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html}{Control access with Identity and Access Management}
+see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html}{Control CloudFormation access with Identity and Access Management}
 in the \emph{CloudFormation User Guide}.
 
 Only one of the \code{Capabilities} and \code{ResourceType} parameters can be
@@ -224,13 +238,26 @@ For nested stacks, when the \code{OnStackFailure} parameter is set to
 stack will cause the parent stack creation to fail and all stacks to be
 deleted.}
 
-\item{ImportExistingResources}{Indicates if the change set imports resources that already exist.
+\item{ImportExistingResources}{Indicates if the change set auto-imports resources that already exist.
+For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/import-resources-automatically.html}{Import Amazon Web Services resources into a CloudFormation stack automatically}
+in the \emph{CloudFormation User Guide}.
 
 This parameter can only import resources that have custom names in
-templates. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-name.html}{name type}
+templates. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-properties-name.html}{name type}
 in the \emph{CloudFormation User Guide}. To import resources that do not
-accept custom names, such as EC2 instances, use the resource import
-feature instead. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/import-resources.html}{Import Amazon Web Services resources into a CloudFormation stack with a resource import}
+accept custom names, such as EC2 instances, use the \code{ResourcesToImport}
+parameter instead.}
+
+\item{DeploymentMode}{Determines how CloudFormation handles configuration drift during
+deployment.
+\itemize{
+\item \code{REVERT_DRIFT} – Creates a drift-aware change set that brings actual
+resource states in line with template definitions. Provides a
+three-way comparison between actual state, previous deployment
+state, and desired state.
+}
+
+For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/drift-aware-change-sets.html}{Using drift-aware change sets}
 in the \emph{CloudFormation User Guide}.}
 }
 \description{

@@ -21,23 +21,8 @@ vault’s events; for example,
 \code{arn:aws:sns:us-west-2:111122223333:MyVaultTopic}.}
 
 \item{BackupVaultEvents}{[required] An array of events that indicate the status of jobs to back up resources
-to the backup vault.
-
-For common use cases and code samples, see \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/}{Using Amazon SNS to track Backup events}.
-
-The following events are supported:
-\itemize{
-\item \code{BACKUP_JOB_STARTED} | \code{BACKUP_JOB_COMPLETED}
-\item \code{COPY_JOB_STARTED} | \code{COPY_JOB_SUCCESSFUL} | \code{COPY_JOB_FAILED}
-\item \code{RESTORE_JOB_STARTED} | \code{RESTORE_JOB_COMPLETED} |
-\code{RECOVERY_POINT_MODIFIED}
-\item \code{S3_BACKUP_OBJECT_FAILED} | \code{S3_RESTORE_OBJECT_FAILED}
-}
-
-The list below includes both supported events and deprecated events that
-are no longer in use (for reference). Deprecated events do not return
-statuses or notifications. Refer to the list above for the supported
-events.}
+to the backup vault. For the list of supported events, common use cases,
+and code samples, see \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/backup-notifications.html}{Notification options with Backup}.}
 }
 \description{
 Turns on notifications on a backup vault for the specified topic and events.

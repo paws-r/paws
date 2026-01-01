@@ -21,7 +21,7 @@ Suggests:
     testthat
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Collate: 
     'athena_service.R'
     'athena_interfaces.R'

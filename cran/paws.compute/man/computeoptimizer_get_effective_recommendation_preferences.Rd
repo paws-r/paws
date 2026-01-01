@@ -9,8 +9,8 @@ computeoptimizer_get_effective_recommendation_preferences(resourceArn)
 }
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource for which to confirm
-effective recommendation preferences. Only EC2 instance and Auto Scaling
-group ARNs are currently supported.}
+effective recommendation preferences. Only EC2 instance and Amazon EC2
+Auto Scaling group ARNs are currently supported.}
 }
 \description{
 Returns the recommendation preferences that are in effect for a given resource, such as enhanced infrastructure metrics. Considers all applicable preferences that you might have set at the resource, account, and organization level.

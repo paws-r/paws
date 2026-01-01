@@ -2,7 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_list_maps}
 \alias{locationservice_list_maps}
-\title{Lists map resources in your Amazon Web Services account}
+\title{This operation is no longer current and may be deprecated in the future}
 \usage{
 locationservice_list_maps(MaxResults = NULL, NextToken = NULL)
 }
@@ -17,7 +17,7 @@ response. If no token is provided, the default page is the first page.
 Default value: \code{null}}
 }
 \description{
-Lists map resources in your Amazon Web Services account.
+This operation is no longer current and may be deprecated in the future. We recommend upgrading to the Maps API V2 unless you require \code{Grab} data.
 
 See \url{https://www.paws-r-sdk.com/docs/locationservice_list_maps/} for full documentation.
 }

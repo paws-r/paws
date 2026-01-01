@@ -2,9 +2,9 @@
 % Please edit documentation in R/paymentcryptographycontrolplane_operations.R
 \name{paymentcryptographycontrolplane_get_key}
 \alias{paymentcryptographycontrolplane_get_key}
-\title{Gets the key material for an Amazon Web Services Payment Cryptography
-key, including the immutable and mutable data specified when the key was
-created}
+\title{Gets the key metadata for an Amazon Web Services Payment Cryptography
+key, including the immutable and mutable attributes specified when the
+key was created}
 \usage{
 paymentcryptographycontrolplane_get_key(KeyIdentifier)
 }
@@ -12,7 +12,7 @@ paymentcryptographycontrolplane_get_key(KeyIdentifier)
 \item{KeyIdentifier}{[required] The \code{KeyARN} of the Amazon Web Services Payment Cryptography key.}
 }
 \description{
-Gets the key material for an Amazon Web Services Payment Cryptography key, including the immutable and mutable data specified when the key was created.
+Gets the key metadata for an Amazon Web Services Payment Cryptography key, including the immutable and mutable attributes specified when the key was created. Returns key metadata including attributes, state, and timestamps, but does not return the actual cryptographic key material.
 
 See \url{https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_get_key/} for full documentation.
 }

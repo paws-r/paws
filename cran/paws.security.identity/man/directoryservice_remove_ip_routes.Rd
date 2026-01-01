@@ -4,13 +4,19 @@
 \alias{directoryservice_remove_ip_routes}
 \title{Removes IP address blocks from a directory}
 \usage{
-directoryservice_remove_ip_routes(DirectoryId, CidrIps)
+directoryservice_remove_ip_routes(
+  DirectoryId,
+  CidrIps = NULL,
+  CidrIpv6s = NULL
+)
 }
 \arguments{
 \item{DirectoryId}{[required] Identifier (ID) of the directory from which you want to remove the IP
 addresses.}
 
-\item{CidrIps}{[required] IP address blocks that you want to remove.}
+\item{CidrIps}{IP address blocks that you want to remove.}
+
+\item{CidrIpv6s}{IPv6 address blocks that you want to remove.}
 }
 \description{
 Removes IP address blocks from a directory.

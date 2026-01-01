@@ -22,7 +22,7 @@ results.}
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
 \description{
-Lists the history of SPICE ingestions for a dataset.
+Lists the history of SPICE ingestions for a dataset. Limited to 5 TPS per user and 25 TPS per account.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_list_ingestions/} for full documentation.
 }

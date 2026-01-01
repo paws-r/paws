@@ -9,7 +9,8 @@ sagemaker_update_project(
   ProjectName,
   ProjectDescription = NULL,
   ServiceCatalogProvisioningUpdateDetails = NULL,
-  Tags = NULL
+  Tags = NULL,
+  TemplateProvidersToUpdate = NULL
 )
 }
 \arguments{
@@ -28,6 +29,8 @@ owner, or environment. For more information, see \href{https://docs.aws.amazon.c
 In addition, the project must have tag update constraints set in order
 to include this parameter in the request. For more information, see
 \href{https://docs.aws.amazon.com/servicecatalog/latest/adminguide/constraints-resourceupdate.html}{Amazon Web Services Service Catalog Tag Update Constraints}.}
+
+\item{TemplateProvidersToUpdate}{The template providers to update in the project.}
 }
 \description{
 Updates a machine learning (ML) project that is created from a template that sets up an ML pipeline from training to deploying an approved model.

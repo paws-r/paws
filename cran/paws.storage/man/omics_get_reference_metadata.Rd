@@ -2,7 +2,7 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_get_reference_metadata}
 \alias{omics_get_reference_metadata}
-\title{Gets information about a genome reference's metadata}
+\title{Retrieves metadata for a reference genome}
 \usage{
 omics_get_reference_metadata(id, referenceStoreId)
 }
@@ -12,7 +12,7 @@ omics_get_reference_metadata(id, referenceStoreId)
 \item{referenceStoreId}{[required] The reference's reference store ID.}
 }
 \description{
-Gets information about a genome reference's metadata.
+Retrieves metadata for a reference genome. This operation returns the number of parts, part size, and MD5 of an entire file. This operation does not return tags. To retrieve the list of tags for a read set, use the \code{\link[=omics_list_tags_for_resource]{list_tags_for_resource}} API operation.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_get_reference_metadata/} for full documentation.
 }

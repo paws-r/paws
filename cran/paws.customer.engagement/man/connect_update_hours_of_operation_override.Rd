@@ -31,7 +31,7 @@ start time, and end time.}
 
 \item{EffectiveFrom}{The date from when the hours of operation override would be effective.}
 
-\item{EffectiveTill}{The date till when the hours of operation override would be effective.}
+\item{EffectiveTill}{The date until the hours of operation override is effective.}
 }
 \description{
 Update the hours of operation override.

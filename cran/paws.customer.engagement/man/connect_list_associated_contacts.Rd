@@ -18,12 +18,7 @@ in the Amazon Resource Name (ARN) of the instance.}
 
 \item{ContactId}{[required] The identifier of the contact in this instance of Amazon Connect.}
 
-\item{MaxResults}{The maximum number of results to return per page.
-
-The maximum number of results to return per page. The default MaxResult
-size is 25.
-
-Valid Range: Minimum value of 1. Maximum value of 100.}
+\item{MaxResults}{The maximum number of results to return per page.}
 
 \item{NextToken}{The token for the next set of results. Use the value returned in the
 previous response in the next request to retrieve the next set of

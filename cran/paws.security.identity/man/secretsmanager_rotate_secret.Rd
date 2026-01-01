@@ -9,6 +9,8 @@ secretsmanager_rotate_secret(
   ClientRequestToken = NULL,
   RotationLambdaARN = NULL,
   RotationRules = NULL,
+  ExternalSecretRotationMetadata = NULL,
+  ExternalSecretRotationRoleArn = NULL,
   RotateImmediately = NULL
 )
 }
@@ -45,19 +47,47 @@ For secrets that use \emph{managed rotation}, omit this field. For more
 information, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotate-secrets_managed.html}{Managed rotation}
 in the \emph{Secrets Manager User Guide}.}
 
-\item{RotationRules}{A structure that defines the rotation configuration for this secret.}
+\item{RotationRules}{A structure that defines the rotation configuration for this secret.
+
+When changing an existing rotation schedule and setting
+\code{RotateImmediately} to \code{false}:
+\itemize{
+\item If using \code{AutomaticallyAfterDays} or a \code{ScheduleExpression} with
+\code{rate()}, the previously scheduled rotation might still occur.
+\item To prevent unintended rotations, use a \code{ScheduleExpression} with
+\code{cron()} for granular control over rotation windows.
+}}
+
+\item{ExternalSecretRotationMetadata}{The metadata needed to successfully rotate a managed external secret. A
+list of key value pairs in JSON format specified by the partner. For
+more information about the required information, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/managed-external-secrets.html}{Using Secrets Manager managed external secrets}}
+
+\item{ExternalSecretRotationRoleArn}{The Amazon Resource Name (ARN) of the role that allows Secrets Manager
+to rotate a secret held by a third-party partner. For more information,
+see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/mes-security.html}{Security and permissions}.}
 
 \item{RotateImmediately}{Specifies whether to rotate the secret immediately or wait until the
 next scheduled rotation window. The rotation schedule is defined in
 RotateSecretRequest$RotationRules.
 
-For secrets that use a Lambda rotation function to rotate, if you don't
-immediately rotate the secret, Secrets Manager tests the rotation
-configuration by running the \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotate-secrets_lambda-functions.html#rotate-secrets_lambda-functions-code}{\code{testSecret} step}
-of the Lambda rotation function. The test creates an \code{AWSPENDING}
+The default for \code{RotateImmediately} is \code{true}. If you don't specify this
+value, Secrets Manager rotates the secret immediately.
+
+If you set \code{RotateImmediately} to \code{false}, Secrets Manager tests the
+rotation configuration by running the \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html#rotate-secrets_how}{\code{testSecret} step}
+of the Lambda rotation function. This test creates an \code{AWSPENDING}
 version of the secret and then removes it.
 
-By default, Secrets Manager rotates the secret immediately.}
+When changing an existing rotation schedule and setting
+\code{RotateImmediately} to \code{false}:
+\itemize{
+\item If using \code{AutomaticallyAfterDays} or a \code{ScheduleExpression} with
+\code{rate()}, the previously scheduled rotation might still occur.
+\item To prevent unintended rotations, use a \code{ScheduleExpression} with
+\code{cron()} for granular control over rotation windows.
+}
+
+Rotation is an asynchronous process. For more information, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html#rotate-secrets_how}{How rotation works}.}
 }
 \description{
 Configures and starts the asynchronous process of rotating the secret. For information about rotation, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html}{Rotate secrets} in the \emph{Secrets Manager User Guide}. If you include the configuration parameters, the operation sets the values for the secret and then immediately starts a rotation. If you don't include the configuration parameters, the operation starts a rotation with the values already stored in the secret.

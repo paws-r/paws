@@ -680,7 +680,8 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'               ),
 #'               JA4Fingerprint = list(
 #'                 FallbackBehavior = "MATCH"|"NO_MATCH"
-#'               )
+#'               ),
+#'               ASN = list()
 #'             )
 #'           )
 #'         ),
@@ -832,6 +833,20 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'                   )
 #'                 ),
 #'                 EnableRegexInPath = TRUE|FALSE
+#'               ),
+#'               AWSManagedRulesAntiDDoSRuleSet = list(
+#'                 ClientSideActionConfig = list(
+#'                   Challenge = list(
+#'                     UsageOfAction = "ENABLED"|"DISABLED",
+#'                     Sensitivity = "LOW"|"MEDIUM"|"HIGH",
+#'                     ExemptUriRegularExpressions = list(
+#'                       list(
+#'                         RegexString = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 SensitivityToBlock = "LOW"|"MEDIUM"|"HIGH"
 #'               )
 #'             )
 #'           ),
@@ -970,6 +985,15 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'               Priority = 123,
 #'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
+#'           )
+#'         ),
+#'         AsnMatchStatement = list(
+#'           AsnList = list(
+#'             123
+#'           ),
+#'           ForwardedIPConfig = list(
+#'             HeaderName = "string",
+#'             FallbackBehavior = "MATCH"|"NO_MATCH"
 #'           )
 #'         )
 #'       ),
@@ -1986,7 +2010,8 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'               ),
 #'               JA4Fingerprint = list(
 #'                 FallbackBehavior = "MATCH"|"NO_MATCH"
-#'               )
+#'               ),
+#'               ASN = list()
 #'             )
 #'           )
 #'         ),
@@ -2138,6 +2163,20 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'                   )
 #'                 ),
 #'                 EnableRegexInPath = TRUE|FALSE
+#'               ),
+#'               AWSManagedRulesAntiDDoSRuleSet = list(
+#'                 ClientSideActionConfig = list(
+#'                   Challenge = list(
+#'                     UsageOfAction = "ENABLED"|"DISABLED",
+#'                     Sensitivity = "LOW"|"MEDIUM"|"HIGH",
+#'                     ExemptUriRegularExpressions = list(
+#'                       list(
+#'                         RegexString = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 SensitivityToBlock = "LOW"|"MEDIUM"|"HIGH"
 #'               )
 #'             )
 #'           ),
@@ -2276,6 +2315,15 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'               Priority = 123,
 #'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
+#'           )
+#'         ),
+#'         AsnMatchStatement = list(
+#'           AsnList = list(
+#'             123
+#'           ),
+#'           ForwardedIPConfig = list(
+#'             HeaderName = "string",
+#'             FallbackBehavior = "MATCH"|"NO_MATCH"
 #'           )
 #'         )
 #'       ),
@@ -2433,7 +2481,8 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' @usage
 #' wafv2_create_web_acl(Name, Scope, DefaultAction, Description, Rules,
 #'   VisibilityConfig, DataProtectionConfig, Tags, CustomResponseBodies,
-#'   CaptchaConfig, ChallengeConfig, TokenDomains, AssociationConfig)
+#'   CaptchaConfig, ChallengeConfig, TokenDomains, AssociationConfig,
+#'   OnSourceDDoSProtectionConfig, ApplicationConfig)
 #'
 #' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after
 #' you create it.
@@ -2513,6 +2562,15 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' 
 #' For Application Load Balancer and AppSync, the limit is fixed at 8 KB
 #' (8,192 bytes).
+#' @param OnSourceDDoSProtectionConfig Specifies the type of DDoS protection to apply to web request data for a
+#' web ACL. For most scenarios, it is recommended to use the default
+#' protection level, `ACTIVE_UNDER_DDOS`. If a web ACL is associated with
+#' multiple Application Load Balancers, the changes you make to DDoS
+#' protection in that web ACL will apply to all associated Application Load
+#' Balancers.
+#' @param ApplicationConfig Configures the ability for the WAF console to store and retrieve
+#' application attributes during the web ACL creation process. Application
+#' attributes help WAF give recommendations for protection packs.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3078,7 +3136,8 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'               ),
 #'               JA4Fingerprint = list(
 #'                 FallbackBehavior = "MATCH"|"NO_MATCH"
-#'               )
+#'               ),
+#'               ASN = list()
 #'             )
 #'           )
 #'         ),
@@ -3230,6 +3289,20 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'                   )
 #'                 ),
 #'                 EnableRegexInPath = TRUE|FALSE
+#'               ),
+#'               AWSManagedRulesAntiDDoSRuleSet = list(
+#'                 ClientSideActionConfig = list(
+#'                   Challenge = list(
+#'                     UsageOfAction = "ENABLED"|"DISABLED",
+#'                     Sensitivity = "LOW"|"MEDIUM"|"HIGH",
+#'                     ExemptUriRegularExpressions = list(
+#'                       list(
+#'                         RegexString = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 SensitivityToBlock = "LOW"|"MEDIUM"|"HIGH"
 #'               )
 #'             )
 #'           ),
@@ -3368,6 +3441,15 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'               Priority = 123,
 #'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
+#'           )
+#'         ),
+#'         AsnMatchStatement = list(
+#'           AsnList = list(
+#'             123
+#'           ),
+#'           ForwardedIPConfig = list(
+#'             HeaderName = "string",
+#'             FallbackBehavior = "MATCH"|"NO_MATCH"
 #'           )
 #'         )
 #'       ),
@@ -3511,6 +3593,19 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'         DefaultSizeInspectionLimit = "KB_16"|"KB_32"|"KB_48"|"KB_64"
 #'       )
 #'     )
+#'   ),
+#'   OnSourceDDoSProtectionConfig = list(
+#'     ALBLowReputationMode = "ACTIVE_UNDER_DDOS"|"ALWAYS_ON"
+#'   ),
+#'   ApplicationConfig = list(
+#'     Attributes = list(
+#'       list(
+#'         Name = "string",
+#'         Values = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -3520,7 +3615,7 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' @rdname wafv2_create_web_acl
 #'
 #' @aliases wafv2_create_web_acl
-wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, DataProtectionConfig = NULL, Tags = NULL, CustomResponseBodies = NULL, CaptchaConfig = NULL, ChallengeConfig = NULL, TokenDomains = NULL, AssociationConfig = NULL) {
+wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, DataProtectionConfig = NULL, Tags = NULL, CustomResponseBodies = NULL, CaptchaConfig = NULL, ChallengeConfig = NULL, TokenDomains = NULL, AssociationConfig = NULL, OnSourceDDoSProtectionConfig = NULL, ApplicationConfig = NULL) {
   op <- new_operation(
     name = "CreateWebACL",
     http_method = "POST",
@@ -3529,7 +3624,7 @@ wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .wafv2$create_web_acl_input(Name = Name, Scope = Scope, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, DataProtectionConfig = DataProtectionConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig)
+  input <- .wafv2$create_web_acl_input(Name = Name, Scope = Scope, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, DataProtectionConfig = DataProtectionConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig, OnSourceDDoSProtectionConfig = OnSourceDDoSProtectionConfig, ApplicationConfig = ApplicationConfig)
   output <- .wafv2$create_web_acl_output()
   config <- get_config()
   svc <- .wafv2$service(config, op)
@@ -3754,6 +3849,13 @@ wafv2_delete_ip_set <- function(Name, Scope, Id, LockToken) {
 #' services](https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html)
 #' in the *Amazon Security Lake user guide*.
 #' 
+#' The log scope `CLOUDWATCH_TELEMETRY_RULE_MANAGED` indicates a
+#' configuration that is managed through Amazon CloudWatch Logs for
+#' telemetry data collection and analysis. For information, see [What is
+#' Amazon CloudWatch Logs
+#' ?](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html)
+#' in the *Amazon CloudWatch Logs user guide*.
+#' 
 #' Default: `CUSTOMER`
 #'
 #' @return
@@ -3764,7 +3866,7 @@ wafv2_delete_ip_set <- function(Name, Scope, Id, LockToken) {
 #' svc$delete_logging_configuration(
 #'   ResourceArn = "string",
 #'   LogType = "WAF_LOGS",
-#'   LogScope = "CUSTOMER"|"SECURITY_LAKE"
+#'   LogScope = "CUSTOMER"|"SECURITY_LAKE"|"CLOUDWATCH_TELEMETRY_RULE_MANAGED"
 #' )
 #' ```
 #'
@@ -4683,6 +4785,13 @@ wafv2_get_ip_set <- function(Name, Scope, Id) {
 #' services](https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html)
 #' in the *Amazon Security Lake user guide*.
 #' 
+#' The log scope `CLOUDWATCH_TELEMETRY_RULE_MANAGED` indicates a
+#' configuration that is managed through Amazon CloudWatch Logs for
+#' telemetry data collection and analysis. For information, see [What is
+#' Amazon CloudWatch Logs
+#' ?](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html)
+#' in the *Amazon CloudWatch Logs user guide*.
+#' 
 #' Default: `CUSTOMER`
 #'
 #' @return
@@ -4781,7 +4890,7 @@ wafv2_get_ip_set <- function(Name, Scope, Id) {
 #'       DefaultBehavior = "KEEP"|"DROP"
 #'     ),
 #'     LogType = "WAF_LOGS",
-#'     LogScope = "CUSTOMER"|"SECURITY_LAKE"
+#'     LogScope = "CUSTOMER"|"SECURITY_LAKE"|"CLOUDWATCH_TELEMETRY_RULE_MANAGED"
 #'   )
 #' )
 #' ```
@@ -4791,7 +4900,7 @@ wafv2_get_ip_set <- function(Name, Scope, Id) {
 #' svc$get_logging_configuration(
 #'   ResourceArn = "string",
 #'   LogType = "WAF_LOGS",
-#'   LogScope = "CUSTOMER"|"SECURITY_LAKE"
+#'   LogScope = "CUSTOMER"|"SECURITY_LAKE"|"CLOUDWATCH_TELEMETRY_RULE_MANAGED"
 #' )
 #' ```
 #'
@@ -5784,7 +5893,8 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'                 ),
 #'                 JA4Fingerprint = list(
 #'                   FallbackBehavior = "MATCH"|"NO_MATCH"
-#'                 )
+#'                 ),
+#'                 ASN = list()
 #'               )
 #'             )
 #'           ),
@@ -5936,6 +6046,20 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'                     )
 #'                   ),
 #'                   EnableRegexInPath = TRUE|FALSE
+#'                 ),
+#'                 AWSManagedRulesAntiDDoSRuleSet = list(
+#'                   ClientSideActionConfig = list(
+#'                     Challenge = list(
+#'                       UsageOfAction = "ENABLED"|"DISABLED",
+#'                       Sensitivity = "LOW"|"MEDIUM"|"HIGH",
+#'                       ExemptUriRegularExpressions = list(
+#'                         list(
+#'                           RegexString = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   SensitivityToBlock = "LOW"|"MEDIUM"|"HIGH"
 #'                 )
 #'               )
 #'             ),
@@ -6074,6 +6198,15 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'                 Priority = 123,
 #'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'               )
+#'             )
+#'           ),
+#'           AsnMatchStatement = list(
+#'             AsnList = list(
+#'               123
+#'             ),
+#'             ForwardedIPConfig = list(
+#'               HeaderName = "string",
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           )
 #'         ),
@@ -6960,7 +7093,8 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                 ),
 #'                 JA4Fingerprint = list(
 #'                   FallbackBehavior = "MATCH"|"NO_MATCH"
-#'                 )
+#'                 ),
+#'                 ASN = list()
 #'               )
 #'             )
 #'           ),
@@ -7112,6 +7246,20 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                     )
 #'                   ),
 #'                   EnableRegexInPath = TRUE|FALSE
+#'                 ),
+#'                 AWSManagedRulesAntiDDoSRuleSet = list(
+#'                   ClientSideActionConfig = list(
+#'                     Challenge = list(
+#'                       UsageOfAction = "ENABLED"|"DISABLED",
+#'                       Sensitivity = "LOW"|"MEDIUM"|"HIGH",
+#'                       ExemptUriRegularExpressions = list(
+#'                         list(
+#'                           RegexString = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   SensitivityToBlock = "LOW"|"MEDIUM"|"HIGH"
 #'                 )
 #'               )
 #'             ),
@@ -7250,6 +7398,15 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                 Priority = 123,
 #'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'               )
+#'             )
+#'           ),
+#'           AsnMatchStatement = list(
+#'             AsnList = list(
+#'               123
+#'             ),
+#'             ForwardedIPConfig = list(
+#'               HeaderName = "string",
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           )
 #'         ),
@@ -7893,7 +8050,8 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                     ),
 #'                     JA4Fingerprint = list(
 #'                       FallbackBehavior = "MATCH"|"NO_MATCH"
-#'                     )
+#'                     ),
+#'                     ASN = list()
 #'                   )
 #'                 )
 #'               ),
@@ -7986,6 +8144,15 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                     Priority = 123,
 #'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'                   )
+#'                 )
+#'               ),
+#'               AsnMatchStatement = list(
+#'                 AsnList = list(
+#'                   123
+#'                 ),
+#'                 ForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                 )
 #'               )
 #'             ),
@@ -8114,6 +8281,20 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                     )
 #'                   ),
 #'                   EnableRegexInPath = TRUE|FALSE
+#'                 ),
+#'                 AWSManagedRulesAntiDDoSRuleSet = list(
+#'                   ClientSideActionConfig = list(
+#'                     Challenge = list(
+#'                       UsageOfAction = "ENABLED"|"DISABLED",
+#'                       Sensitivity = "LOW"|"MEDIUM"|"HIGH",
+#'                       ExemptUriRegularExpressions = list(
+#'                         list(
+#'                           RegexString = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   SensitivityToBlock = "LOW"|"MEDIUM"|"HIGH"
 #'                 )
 #'               )
 #'             ),
@@ -8795,7 +8976,8 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                     ),
 #'                     JA4Fingerprint = list(
 #'                       FallbackBehavior = "MATCH"|"NO_MATCH"
-#'                     )
+#'                     ),
+#'                     ASN = list()
 #'                   )
 #'                 )
 #'               ),
@@ -8888,6 +9070,15 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                     Priority = 123,
 #'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'                   )
+#'                 )
+#'               ),
+#'               AsnMatchStatement = list(
+#'                 AsnList = list(
+#'                   123
+#'                 ),
+#'                 ForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                 )
 #'               )
 #'             ),
@@ -9016,6 +9207,20 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                     )
 #'                   ),
 #'                   EnableRegexInPath = TRUE|FALSE
+#'                 ),
+#'                 AWSManagedRulesAntiDDoSRuleSet = list(
+#'                   ClientSideActionConfig = list(
+#'                     Challenge = list(
+#'                       UsageOfAction = "ENABLED"|"DISABLED",
+#'                       Sensitivity = "LOW"|"MEDIUM"|"HIGH",
+#'                       ExemptUriRegularExpressions = list(
+#'                         list(
+#'                           RegexString = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   SensitivityToBlock = "LOW"|"MEDIUM"|"HIGH"
 #'                 )
 #'               )
 #'             ),
@@ -9195,7 +9400,20 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'         )
 #'       )
 #'     ),
-#'     RetrofittedByFirewallManager = TRUE|FALSE
+#'     RetrofittedByFirewallManager = TRUE|FALSE,
+#'     OnSourceDDoSProtectionConfig = list(
+#'       ALBLowReputationMode = "ACTIVE_UNDER_DDOS"|"ALWAYS_ON"
+#'     ),
+#'     ApplicationConfig = list(
+#'       Attributes = list(
+#'         list(
+#'           Name = "string",
+#'           Values = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   LockToken = "string",
 #'   ApplicationIntegrationURL = "string"
@@ -9841,7 +10059,8 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                 ),
 #'                 JA4Fingerprint = list(
 #'                   FallbackBehavior = "MATCH"|"NO_MATCH"
-#'                 )
+#'                 ),
+#'                 ASN = list()
 #'               )
 #'             )
 #'           ),
@@ -9993,6 +10212,20 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                     )
 #'                   ),
 #'                   EnableRegexInPath = TRUE|FALSE
+#'                 ),
+#'                 AWSManagedRulesAntiDDoSRuleSet = list(
+#'                   ClientSideActionConfig = list(
+#'                     Challenge = list(
+#'                       UsageOfAction = "ENABLED"|"DISABLED",
+#'                       Sensitivity = "LOW"|"MEDIUM"|"HIGH",
+#'                       ExemptUriRegularExpressions = list(
+#'                         list(
+#'                           RegexString = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   SensitivityToBlock = "LOW"|"MEDIUM"|"HIGH"
 #'                 )
 #'               )
 #'             ),
@@ -10131,6 +10364,15 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                 Priority = 123,
 #'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'               )
+#'             )
+#'           ),
+#'           AsnMatchStatement = list(
+#'             AsnList = list(
+#'               123
+#'             ),
+#'             ForwardedIPConfig = list(
+#'               HeaderName = "string",
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           )
 #'         ),
@@ -10774,7 +11016,8 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                     ),
 #'                     JA4Fingerprint = list(
 #'                       FallbackBehavior = "MATCH"|"NO_MATCH"
-#'                     )
+#'                     ),
+#'                     ASN = list()
 #'                   )
 #'                 )
 #'               ),
@@ -10867,6 +11110,15 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                     Priority = 123,
 #'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'                   )
+#'                 )
+#'               ),
+#'               AsnMatchStatement = list(
+#'                 AsnList = list(
+#'                   123
+#'                 ),
+#'                 ForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                 )
 #'               )
 #'             ),
@@ -10995,6 +11247,20 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                     )
 #'                   ),
 #'                   EnableRegexInPath = TRUE|FALSE
+#'                 ),
+#'                 AWSManagedRulesAntiDDoSRuleSet = list(
+#'                   ClientSideActionConfig = list(
+#'                     Challenge = list(
+#'                       UsageOfAction = "ENABLED"|"DISABLED",
+#'                       Sensitivity = "LOW"|"MEDIUM"|"HIGH",
+#'                       ExemptUriRegularExpressions = list(
+#'                         list(
+#'                           RegexString = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   SensitivityToBlock = "LOW"|"MEDIUM"|"HIGH"
 #'                 )
 #'               )
 #'             ),
@@ -11676,7 +11942,8 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                     ),
 #'                     JA4Fingerprint = list(
 #'                       FallbackBehavior = "MATCH"|"NO_MATCH"
-#'                     )
+#'                     ),
+#'                     ASN = list()
 #'                   )
 #'                 )
 #'               ),
@@ -11769,6 +12036,15 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                     Priority = 123,
 #'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'                   )
+#'                 )
+#'               ),
+#'               AsnMatchStatement = list(
+#'                 AsnList = list(
+#'                   123
+#'                 ),
+#'                 ForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                 )
 #'               )
 #'             ),
@@ -11897,6 +12173,20 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                     )
 #'                   ),
 #'                   EnableRegexInPath = TRUE|FALSE
+#'                 ),
+#'                 AWSManagedRulesAntiDDoSRuleSet = list(
+#'                   ClientSideActionConfig = list(
+#'                     Challenge = list(
+#'                       UsageOfAction = "ENABLED"|"DISABLED",
+#'                       Sensitivity = "LOW"|"MEDIUM"|"HIGH",
+#'                       ExemptUriRegularExpressions = list(
+#'                         list(
+#'                           RegexString = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   SensitivityToBlock = "LOW"|"MEDIUM"|"HIGH"
 #'                 )
 #'               )
 #'             ),
@@ -12076,7 +12366,20 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'         )
 #'       )
 #'     ),
-#'     RetrofittedByFirewallManager = TRUE|FALSE
+#'     RetrofittedByFirewallManager = TRUE|FALSE,
+#'     OnSourceDDoSProtectionConfig = list(
+#'       ALBLowReputationMode = "ACTIVE_UNDER_DDOS"|"ALWAYS_ON"
+#'     ),
+#'     ApplicationConfig = list(
+#'       Attributes = list(
+#'         list(
+#'           Name = "string",
+#'           Values = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -12485,6 +12788,13 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' services](https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html)
 #' in the *Amazon Security Lake user guide*.
 #' 
+#' The log scope `CLOUDWATCH_TELEMETRY_RULE_MANAGED` indicates a
+#' configuration that is managed through Amazon CloudWatch Logs for
+#' telemetry data collection and analysis. For information, see [What is
+#' Amazon CloudWatch Logs
+#' ?](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html)
+#' in the *Amazon CloudWatch Logs user guide*.
+#' 
 #' Default: `CUSTOMER`
 #'
 #' @return
@@ -12584,7 +12894,7 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #'         DefaultBehavior = "KEEP"|"DROP"
 #'       ),
 #'       LogType = "WAF_LOGS",
-#'       LogScope = "CUSTOMER"|"SECURITY_LAKE"
+#'       LogScope = "CUSTOMER"|"SECURITY_LAKE"|"CLOUDWATCH_TELEMETRY_RULE_MANAGED"
 #'     )
 #'   ),
 #'   NextMarker = "string"
@@ -12597,7 +12907,7 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #'   Scope = "CLOUDFRONT"|"REGIONAL",
 #'   NextMarker = "string",
 #'   Limit = 123,
-#'   LogScope = "CUSTOMER"|"SECURITY_LAKE"
+#'   LogScope = "CUSTOMER"|"SECURITY_LAKE"|"CLOUDWATCH_TELEMETRY_RULE_MANAGED"
 #' )
 #' ```
 #'
@@ -13342,7 +13652,7 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #'       DefaultBehavior = "KEEP"|"DROP"
 #'     ),
 #'     LogType = "WAF_LOGS",
-#'     LogScope = "CUSTOMER"|"SECURITY_LAKE"
+#'     LogScope = "CUSTOMER"|"SECURITY_LAKE"|"CLOUDWATCH_TELEMETRY_RULE_MANAGED"
 #'   )
 #' )
 #' ```
@@ -13442,7 +13752,7 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #'       DefaultBehavior = "KEEP"|"DROP"
 #'     ),
 #'     LogType = "WAF_LOGS",
-#'     LogScope = "CUSTOMER"|"SECURITY_LAKE"
+#'     LogScope = "CUSTOMER"|"SECURITY_LAKE"|"CLOUDWATCH_TELEMETRY_RULE_MANAGED"
 #'   )
 #' )
 #' ```
@@ -14798,7 +15108,8 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'               ),
 #'               JA4Fingerprint = list(
 #'                 FallbackBehavior = "MATCH"|"NO_MATCH"
-#'               )
+#'               ),
+#'               ASN = list()
 #'             )
 #'           )
 #'         ),
@@ -14950,6 +15261,20 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'                   )
 #'                 ),
 #'                 EnableRegexInPath = TRUE|FALSE
+#'               ),
+#'               AWSManagedRulesAntiDDoSRuleSet = list(
+#'                 ClientSideActionConfig = list(
+#'                   Challenge = list(
+#'                     UsageOfAction = "ENABLED"|"DISABLED",
+#'                     Sensitivity = "LOW"|"MEDIUM"|"HIGH",
+#'                     ExemptUriRegularExpressions = list(
+#'                       list(
+#'                         RegexString = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 SensitivityToBlock = "LOW"|"MEDIUM"|"HIGH"
 #'               )
 #'             )
 #'           ),
@@ -15088,6 +15413,15 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'               Priority = 123,
 #'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
+#'           )
+#'         ),
+#'         AsnMatchStatement = list(
+#'           AsnList = list(
+#'             123
+#'           ),
+#'           ForwardedIPConfig = list(
+#'             HeaderName = "string",
+#'             FallbackBehavior = "MATCH"|"NO_MATCH"
 #'           )
 #'         )
 #'       ),
@@ -15279,7 +15613,8 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' @usage
 #' wafv2_update_web_acl(Name, Scope, Id, DefaultAction, Description, Rules,
 #'   VisibilityConfig, DataProtectionConfig, LockToken, CustomResponseBodies,
-#'   CaptchaConfig, ChallengeConfig, TokenDomains, AssociationConfig)
+#'   CaptchaConfig, ChallengeConfig, TokenDomains, AssociationConfig,
+#'   OnSourceDDoSProtectionConfig, ApplicationConfig)
 #'
 #' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after
 #' you create it.
@@ -15369,6 +15704,25 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' 
 #' For Application Load Balancer and AppSync, the limit is fixed at 8 KB
 #' (8,192 bytes).
+#' @param OnSourceDDoSProtectionConfig Specifies the type of DDoS protection to apply to web request data for a
+#' web ACL. For most scenarios, it is recommended to use the default
+#' protection level, `ACTIVE_UNDER_DDOS`. If a web ACL is associated with
+#' multiple Application Load Balancers, the changes you make to DDoS
+#' protection in that web ACL will apply to all associated Application Load
+#' Balancers.
+#' @param ApplicationConfig Configures the ability for the WAF console to store and retrieve
+#' application attributes. Application attributes help WAF give
+#' recommendations for protection packs.
+#' 
+#' When using [`update_web_acl`][wafv2_update_web_acl], `ApplicationConfig`
+#' follows these rules:
+#' 
+#' -   If you omit `ApplicationConfig` from the request, all existing
+#'     entries in the web ACL are retained.
+#' 
+#' -   If you include `ApplicationConfig`, entries must match the existing
+#'     values exactly. Any attempt to modify existing entries will result
+#'     in an error.
 #'
 #' @return
 #' A list with the following syntax:
@@ -15929,7 +16283,8 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'               ),
 #'               JA4Fingerprint = list(
 #'                 FallbackBehavior = "MATCH"|"NO_MATCH"
-#'               )
+#'               ),
+#'               ASN = list()
 #'             )
 #'           )
 #'         ),
@@ -16081,6 +16436,20 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'                   )
 #'                 ),
 #'                 EnableRegexInPath = TRUE|FALSE
+#'               ),
+#'               AWSManagedRulesAntiDDoSRuleSet = list(
+#'                 ClientSideActionConfig = list(
+#'                   Challenge = list(
+#'                     UsageOfAction = "ENABLED"|"DISABLED",
+#'                     Sensitivity = "LOW"|"MEDIUM"|"HIGH",
+#'                     ExemptUriRegularExpressions = list(
+#'                       list(
+#'                         RegexString = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 SensitivityToBlock = "LOW"|"MEDIUM"|"HIGH"
 #'               )
 #'             )
 #'           ),
@@ -16220,6 +16589,15 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
 #'           )
+#'         ),
+#'         AsnMatchStatement = list(
+#'           AsnList = list(
+#'             123
+#'           ),
+#'           ForwardedIPConfig = list(
+#'             HeaderName = "string",
+#'             FallbackBehavior = "MATCH"|"NO_MATCH"
+#'           )
 #'         )
 #'       ),
 #'       Action = list(
@@ -16357,6 +16735,19 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'         DefaultSizeInspectionLimit = "KB_16"|"KB_32"|"KB_48"|"KB_64"
 #'       )
 #'     )
+#'   ),
+#'   OnSourceDDoSProtectionConfig = list(
+#'     ALBLowReputationMode = "ACTIVE_UNDER_DDOS"|"ALWAYS_ON"
+#'   ),
+#'   ApplicationConfig = list(
+#'     Attributes = list(
+#'       list(
+#'         Name = "string",
+#'         Values = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -16366,7 +16757,7 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' @rdname wafv2_update_web_acl
 #'
 #' @aliases wafv2_update_web_acl
-wafv2_update_web_acl <- function(Name, Scope, Id, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, DataProtectionConfig = NULL, LockToken, CustomResponseBodies = NULL, CaptchaConfig = NULL, ChallengeConfig = NULL, TokenDomains = NULL, AssociationConfig = NULL) {
+wafv2_update_web_acl <- function(Name, Scope, Id, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, DataProtectionConfig = NULL, LockToken, CustomResponseBodies = NULL, CaptchaConfig = NULL, ChallengeConfig = NULL, TokenDomains = NULL, AssociationConfig = NULL, OnSourceDDoSProtectionConfig = NULL, ApplicationConfig = NULL) {
   op <- new_operation(
     name = "UpdateWebACL",
     http_method = "POST",
@@ -16375,7 +16766,7 @@ wafv2_update_web_acl <- function(Name, Scope, Id, DefaultAction, Description = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .wafv2$update_web_acl_input(Name = Name, Scope = Scope, Id = Id, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, DataProtectionConfig = DataProtectionConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig)
+  input <- .wafv2$update_web_acl_input(Name = Name, Scope = Scope, Id = Id, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, DataProtectionConfig = DataProtectionConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig, OnSourceDDoSProtectionConfig = OnSourceDDoSProtectionConfig, ApplicationConfig = ApplicationConfig)
   output <- .wafv2$update_web_acl_output()
   config <- get_config()
   svc <- .wafv2$service(config, op)

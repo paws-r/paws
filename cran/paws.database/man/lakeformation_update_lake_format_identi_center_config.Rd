@@ -7,6 +7,7 @@
 lakeformation_update_lake_formation_identity_center_configuration(
   CatalogId = NULL,
   ShareRecipients = NULL,
+  ServiceIntegrations = NULL,
   ApplicationStatus = NULL,
   ExternalFiltering = NULL
 )
@@ -30,6 +31,9 @@ recipients and the resource share remain unchanged.
 
 If the \code{ShareRecipients} value is an empty list, then the existing share
 recipients list will be cleared, and the resource share will be deleted.}
+
+\item{ServiceIntegrations}{A list of service integrations for enabling trusted identity propagation
+with external services such as Redshift.}
 
 \item{ApplicationStatus}{Allows to enable or disable the IAM Identity Center connection.}
 

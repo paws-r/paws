@@ -15,8 +15,8 @@ pinpointsmsvoicev2_disassociate_origination_identity(
 \item{PoolId}{[required] The unique identifier for the pool to disassociate with the origination
 identity. This value can be either the PoolId or PoolArn.
 
-If you are using a shared AWS End User Messaging SMS and Voice resource
-then you must use the full Amazon Resource Name(ARN).}
+If you are using a shared End User Messaging SMS resource then you must
+use the full Amazon Resource Name(ARN).}
 
 \item{OriginationIdentity}{[required] The origination identity to use such as a PhoneNumberId, PhoneNumberArn,
 SenderId or SenderIdArn. You can use
@@ -25,8 +25,8 @@ find the values for PhoneNumberId and PhoneNumberArn, or use
 \code{\link[=pinpointsmsvoicev2_describe_sender_ids]{describe_sender_ids}} to get
 the values for SenderId and SenderIdArn.
 
-If you are using a shared AWS End User Messaging SMS and Voice resource
-then you must use the full Amazon Resource Name(ARN).}
+If you are using a shared End User Messaging SMS resource then you must
+use the full Amazon Resource Name(ARN).}
 
 \item{IsoCountryCode}{[required] The two-character code, in ISO 3166-1 alpha-2 format, for the country or
 region.}

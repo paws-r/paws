@@ -17,11 +17,9 @@ connect_search_hours_of_operation_overrides(
 
 \item{NextToken}{The token for the next set of results. Use the value returned in the
 previous response in the next request to retrieve the next set of
-results. Length Constraints: Minimum length of 1. Maximum length of
-2500.}
+results.}
 
-\item{MaxResults}{The maximum number of results to return per page. Valid Range: Minimum
-value of 1. Maximum value of 100.}
+\item{MaxResults}{The maximum number of results to return per page.}
 
 \item{SearchFilter}{}
 

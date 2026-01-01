@@ -4,7 +4,10 @@
 \alias{sesv2_put_account_suppression_attributes}
 \title{Change the settings for the account-level suppression list}
 \usage{
-sesv2_put_account_suppression_attributes(SuppressedReasons = NULL)
+sesv2_put_account_suppression_attributes(
+  SuppressedReasons = NULL,
+  ValidationAttributes = NULL
+)
 }
 \arguments{
 \item{SuppressedReasons}{A list that contains the reasons that email addresses will be
@@ -18,6 +21,9 @@ a complaint.
 for your account when a message sent to that address results in a
 hard bounce.
 }}
+
+\item{ValidationAttributes}{An object that contains additional suppression attributes for your
+account.}
 }
 \description{
 Change the settings for the account-level suppression list.

@@ -317,7 +317,7 @@ NULL
 
 .ssoadmin$describe_instance_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceArn = structure(logical(0), tags = list(type = "string")), IdentityStoreId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), CreatedDate = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceArn = structure(logical(0), tags = list(type = "string")), IdentityStoreId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), CreatedDate = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), EncryptionConfigurationDetails = structure(list(KeyType = structure(logical(0), tags = list(type = "string")), KmsKeyArn = structure(logical(0), tags = list(type = "string")), EncryptionStatus = structure(logical(0), tags = list(type = "string")), EncryptionStatusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -438,6 +438,18 @@ NULL
 .ssoadmin$get_application_grant_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Grant = structure(list(AuthorizationCode = structure(list(RedirectUris = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), JwtBearer = structure(list(AuthorizedTokenIssuers = structure(list(structure(list(TrustedTokenIssuerArn = structure(logical(0), tags = list(type = "string")), AuthorizedAudiences = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), RefreshToken = structure(list(), tags = list(type = "structure")), TokenExchange = structure(list(), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssoadmin$get_application_session_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssoadmin$get_application_session_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(UserBackgroundSessionApplicationStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -629,7 +641,7 @@ NULL
 
 .ssoadmin$list_instances_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Instances = structure(list(structure(list(InstanceArn = structure(logical(0), tags = list(type = "string")), IdentityStoreId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), CreatedDate = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Instances = structure(list(structure(list(InstanceArn = structure(logical(0), tags = list(type = "string")), IdentityStoreId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), CreatedDate = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -759,6 +771,18 @@ NULL
   list()
 }
 
+.ssoadmin$put_application_session_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ApplicationArn = structure(logical(0), tags = list(type = "string")), UserBackgroundSessionApplicationStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssoadmin$put_application_session_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .ssoadmin$put_inline_policy_to_permission_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(InstanceArn = structure(logical(0), tags = list(type = "string")), PermissionSetArn = structure(logical(0), tags = list(type = "string")), InlinePolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -821,7 +845,7 @@ NULL
 
 .ssoadmin$update_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), InstanceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), InstanceArn = structure(logical(0), tags = list(type = "string")), EncryptionConfiguration = structure(list(KeyType = structure(logical(0), tags = list(type = "string")), KmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

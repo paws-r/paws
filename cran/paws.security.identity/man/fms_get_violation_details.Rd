@@ -24,7 +24,7 @@ can get violation details for the following policy types:
 
 \item{ResourceId}{[required] The ID of the resource that has violations.}
 
-\item{ResourceType}{[required] The resource type. This is in the format shown in the \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html}{Amazon Web Services Resource Types Reference}.
+\item{ResourceType}{[required] The resource type. This is in the format shown in the \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-template-resource-type-ref.html}{Amazon Web Services Resource Types Reference}.
 Supported resource types are: \verb{AWS::WAFv2::WebACL},
 \verb{AWS::EC2::Instance}, \verb{AWS::EC2::NetworkInterface},
 \verb{AWS::EC2::SecurityGroup}, \verb{AWS::NetworkFirewall::FirewallPolicy}, and

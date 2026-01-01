@@ -15,8 +15,8 @@ account of the identity used to call the operation. To use this
 parameter, the caller must be an identity in the \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account}{organization's management account}
 or a delegated administrator account. The specified account ID must be a
 member account in the same organization. The organization must have \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html}{all features enabled},
-and the organization must have \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html}{trusted access}
-enabled for the Account Management service, and optionally a \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin}{delegated admin}
+and the organization must have \href{https://docs.aws.amazon.com/organizations/latest/userguide/services-that-can-integrate-account.html}{trusted access}
+enabled for the Account Management service, and optionally a \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin}{delegated administrator}
 account assigned.
 
 The management account can't specify its own \code{AccountId}. It must call

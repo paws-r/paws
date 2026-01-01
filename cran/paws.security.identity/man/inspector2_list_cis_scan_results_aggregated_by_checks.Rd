@@ -5,28 +5,28 @@
 \title{Lists scan results aggregated by checks}
 \usage{
 inspector2_list_cis_scan_results_aggregated_by_checks(
-  filterCriteria = NULL,
-  maxResults = NULL,
-  nextToken = NULL,
   scanArn,
+  filterCriteria = NULL,
   sortBy = NULL,
-  sortOrder = NULL
+  sortOrder = NULL,
+  nextToken = NULL,
+  maxResults = NULL
 )
 }
 \arguments{
-\item{filterCriteria}{The filter criteria.}
-
-\item{maxResults}{The maximum number of scan results aggregated by checks to be returned
-in a single page of results.}
-
-\item{nextToken}{The pagination token from a previous request that's used to retrieve the
-next page of results.}
-
 \item{scanArn}{[required] The scan ARN.}
+
+\item{filterCriteria}{The filter criteria.}
 
 \item{sortBy}{The sort by order.}
 
 \item{sortOrder}{The sort order.}
+
+\item{nextToken}{The pagination token from a previous request that's used to retrieve the
+next page of results.}
+
+\item{maxResults}{The maximum number of scan results aggregated by checks to be returned
+in a single page of results.}
 }
 \description{
 Lists scan results aggregated by checks.

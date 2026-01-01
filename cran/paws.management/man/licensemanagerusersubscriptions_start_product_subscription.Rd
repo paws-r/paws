@@ -6,16 +6,15 @@
 provider}
 \usage{
 licensemanagerusersubscriptions_start_product_subscription(
-  Domain = NULL,
+  Username,
   IdentityProvider,
   Product,
-  Tags = NULL,
-  Username
+  Domain = NULL,
+  Tags = NULL
 )
 }
 \arguments{
-\item{Domain}{The domain name of the Active Directory that contains the user for whom
-to start the product subscription.}
+\item{Username}{[required] The user name from the identity provider of the user.}
 
 \item{IdentityProvider}{[required] An object that specifies details for the identity provider.}
 
@@ -24,9 +23,10 @@ to start the product subscription.}
 Valid values: \code{VISUAL_STUDIO_ENTERPRISE} | \code{VISUAL_STUDIO_PROFESSIONAL}
 | \code{OFFICE_PROFESSIONAL_PLUS} | \code{REMOTE_DESKTOP_SERVICES}}
 
-\item{Tags}{The tags that apply to the product subscription.}
+\item{Domain}{The domain name of the Active Directory that contains the user for whom
+to start the product subscription.}
 
-\item{Username}{[required] The user name from the identity provider of the user.}
+\item{Tags}{The tags that apply to the product subscription.}
 }
 \description{
 Starts a product subscription for a user with the specified identity provider.

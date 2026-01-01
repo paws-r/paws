@@ -53,10 +53,10 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-This AWS CodeStar Notifications API Reference provides descriptions and
-usage examples of the operations and data types for the AWS CodeStar
-Notifications API. You can use the AWS CodeStar Notifications API to
-work with the following objects:
+This CodeStar Notifications API Reference provides descriptions and
+usage examples of the operations and data types for the CodeStar
+Notifications API. You can use the CodeStar Notifications API to work
+with the following objects:
 
 Notification rules, by calling the following:
 \itemize{
@@ -103,8 +103,7 @@ account.
 removes a tag from a notification rule in your account.
 }
 
-For information about how to use AWS CodeStar Notifications, see the
-\href{https://docs.aws.amazon.com/dtconsole/latest/userguide/what-is-dtconsole.html}{Amazon Web Services Developer Tools Console User Guide}.
+For information about how to use CodeStar Notifications, see the \href{https://docs.aws.amazon.com/dtconsole/latest/userguide/what-is-dtconsole.html}{Amazon Web Services Developer Tools Console User Guide}.
 }
 \section{Service syntax}{
 
@@ -153,9 +152,9 @@ For information about how to use AWS CodeStar Notifications, see the
 \link[paws.developer.tools:codestarnotifications_list_notification_rules]{list_notification_rules} \tab Returns a list of the notification rules for an Amazon Web Services account\cr
 \link[paws.developer.tools:codestarnotifications_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of the tags associated with a notification rule\cr
 \link[paws.developer.tools:codestarnotifications_list_targets]{list_targets} \tab Returns a list of the notification rule targets for an Amazon Web Services account\cr
-\link[paws.developer.tools:codestarnotifications_subscribe]{subscribe} \tab Creates an association between a notification rule and an Chatbot topic or Chatbot client so that the associated target can receive notifications when the events described in the rule are triggered\cr
+\link[paws.developer.tools:codestarnotifications_subscribe]{subscribe} \tab Creates an association between a notification rule and an Amazon Q Developer in chat applications topic or Amazon Q Developer in chat applications client so that the associated target can receive notifications when the events described in the rule are triggered\cr
 \link[paws.developer.tools:codestarnotifications_tag_resource]{tag_resource} \tab Associates a set of provided tags with a notification rule\cr
-\link[paws.developer.tools:codestarnotifications_unsubscribe]{unsubscribe} \tab Removes an association between a notification rule and an Chatbot topic so that subscribers to that topic stop receiving notifications when the events described in the rule are triggered\cr
+\link[paws.developer.tools:codestarnotifications_unsubscribe]{unsubscribe} \tab Removes an association between a notification rule and an Amazon Q Developer in chat applications topic so that subscribers to that topic stop receiving notifications when the events described in the rule are triggered\cr
 \link[paws.developer.tools:codestarnotifications_untag_resource]{untag_resource} \tab Removes the association between one or more provided tags and a notification rule\cr
 \link[paws.developer.tools:codestarnotifications_update_notification_rule]{update_notification_rule} \tab Updates a notification rule for a resource
 }

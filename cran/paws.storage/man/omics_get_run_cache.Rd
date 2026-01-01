@@ -2,7 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_get_run_cache}
 \alias{omics_get_run_cache}
-\title{Retrieve the details for the specified run cache}
+\title{Retrieves detailed information about the specified run cache using its
+ID}
 \usage{
 omics_get_run_cache(id)
 }
@@ -10,7 +11,7 @@ omics_get_run_cache(id)
 \item{id}{[required] The identifier of the run cache to retrieve.}
 }
 \description{
-Retrieve the details for the specified run cache.
+Retrieves detailed information about the specified run cache using its ID.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_get_run_cache/} for full documentation.
 }

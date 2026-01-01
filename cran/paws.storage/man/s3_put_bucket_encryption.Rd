@@ -62,7 +62,7 @@ operation. If you specify this header, the request fails with the HTTP
 status code \verb{501 Not Implemented}.}
 }
 \description{
-This operation configures default encryption and Amazon S3 Bucket Keys for an existing bucket.
+This operation configures default encryption and Amazon S3 Bucket Keys for an existing bucket. You can also \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_BlockedEncryptionTypes.html}{block encryption types} using this operation.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_encryption/} for full documentation.
 }

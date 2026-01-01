@@ -10,8 +10,8 @@ pinpointsmsvoicev2_delete_opted_out_number(OptOutListName, OptedOutNumber)
 \arguments{
 \item{OptOutListName}{[required] The OptOutListName or OptOutListArn to remove the phone number from.
 
-If you are using a shared AWS End User Messaging SMS and Voice resource
-then you must use the full Amazon Resource Name(ARN).}
+If you are using a shared End User Messaging SMS resource then you must
+use the full Amazon Resource Name(ARN).}
 
 \item{OptedOutNumber}{[required] The phone number, in E.164 format, to remove from the OptOutList.}
 }

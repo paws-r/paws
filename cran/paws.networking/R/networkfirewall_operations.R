@@ -3,6 +3,96 @@
 #' @include networkfirewall_service.R
 NULL
 
+#' Accepts a transit gateway attachment request for Network Firewall
+#'
+#' @description
+#' Accepts a transit gateway attachment request for Network Firewall. When you accept the attachment request, Network Firewall creates the necessary routing components to enable traffic flow between the transit gateway and firewall endpoints.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_accept_network_firewall_transit_gateway_attachment/](https://www.paws-r-sdk.com/docs/networkfirewall_accept_network_firewall_transit_gateway_attachment/) for full documentation.
+#'
+#' @param TransitGatewayAttachmentId &#91;required&#93; Required. The unique identifier of the transit gateway attachment to
+#' accept. This ID is returned in the response when creating a transit
+#' gateway-attached firewall.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_accep_netwo_firew_trans_gatew_attac
+networkfirewall_accept_network_firewall_transit_gateway_attachment <- function(TransitGatewayAttachmentId) {
+  op <- new_operation(
+    name = "AcceptNetworkFirewallTransitGatewayAttachment",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$accept_network_firewall_transit_gateway_attachment_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId)
+  output <- .networkfirewall$accept_network_firewall_transit_gateway_attachment_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$accept_network_firewall_transit_gateway_attachment <- networkfirewall_accept_network_firewall_transit_gateway_attachment
+
+#' Associates the specified Availability Zones with a transit
+#' gateway-attached firewall
+#'
+#' @description
+#' Associates the specified Availability Zones with a transit gateway-attached firewall. For each Availability Zone, Network Firewall creates a firewall endpoint to process traffic. You can specify one or more Availability Zones where you want to deploy the firewall.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_associate_availability_zones/](https://www.paws-r-sdk.com/docs/networkfirewall_associate_availability_zones/) for full documentation.
+#'
+#' @param UpdateToken An optional token that you can use for optimistic locking. Network
+#' Firewall returns a token to your requests that access the firewall. The
+#' token marks the state of the firewall resource at the time of the
+#' request.
+#' 
+#' To make an unconditional change to the firewall, omit the token in your
+#' update request. Without the token, Network Firewall performs your
+#' updates regardless of whether the firewall has changed since you last
+#' retrieved it.
+#' 
+#' To make a conditional change to the firewall, provide the token in your
+#' update request. Network Firewall uses the token to ensure that the
+#' firewall hasn't changed since you last retrieved it. If it has changed,
+#' the operation fails with an `InvalidTokenException`. If this happens,
+#' retrieve the firewall again to get a current copy of it with a new
+#' token. Reapply your changes as needed, then try the operation again
+#' using the new token.
+#' @param FirewallArn The Amazon Resource Name (ARN) of the firewall.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param FirewallName The descriptive name of the firewall. You can't change the name of a
+#' firewall after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param AvailabilityZoneMappings &#91;required&#93; Required. The Availability Zones where you want to create firewall
+#' endpoints. You must specify at least one Availability Zone.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_associate_availability_zones
+networkfirewall_associate_availability_zones <- function(UpdateToken = NULL, FirewallArn = NULL, FirewallName = NULL, AvailabilityZoneMappings) {
+  op <- new_operation(
+    name = "AssociateAvailabilityZones",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$associate_availability_zones_input(UpdateToken = UpdateToken, FirewallArn = FirewallArn, FirewallName = FirewallName, AvailabilityZoneMappings = AvailabilityZoneMappings)
+  output <- .networkfirewall$associate_availability_zones_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$associate_availability_zones <- networkfirewall_associate_availability_zones
+
 #' Associates a FirewallPolicy to a Firewall
 #'
 #' @description
@@ -113,6 +203,55 @@ networkfirewall_associate_subnets <- function(UpdateToken = NULL, FirewallArn = 
 }
 .networkfirewall$operations$associate_subnets <- networkfirewall_associate_subnets
 
+#' Attaches ProxyRuleGroup resources to a ProxyConfiguration
+#'
+#' @description
+#' Attaches ProxyRuleGroup resources to a ProxyConfiguration
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_attach_rule_groups_to_proxy_configuration/](https://www.paws-r-sdk.com/docs/networkfirewall_attach_rule_groups_to_proxy_configuration/) for full documentation.
+#'
+#' @param ProxyConfigurationName The descriptive name of the proxy configuration. You can't change the
+#' name of a proxy configuration after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param ProxyConfigurationArn The Amazon Resource Name (ARN) of a proxy configuration.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param RuleGroups &#91;required&#93; The proxy rule group(s) to attach to the proxy configuration
+#' @param UpdateToken &#91;required&#93; A token used for optimistic locking. Network Firewall returns a token to
+#' your requests that access the proxy configuration. The token marks the
+#' state of the proxy configuration resource at the time of the request.
+#' 
+#' To make changes to the proxy configuration, you provide the token in
+#' your request. Network Firewall uses the token to ensure that the proxy
+#' configuration hasn't changed since you last retrieved it. If it has
+#' changed, the operation fails with an `InvalidTokenException`. If this
+#' happens, retrieve the proxy configuration again to get a current copy of
+#' it with a current token. Reapply your changes as needed, then try the
+#' operation again using the new token.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_attach_rule_groups_to_proxy_configuration
+networkfirewall_attach_rule_groups_to_proxy_configuration <- function(ProxyConfigurationName = NULL, ProxyConfigurationArn = NULL, RuleGroups, UpdateToken) {
+  op <- new_operation(
+    name = "AttachRuleGroupsToProxyConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$attach_rule_groups_to_proxy_configuration_input(ProxyConfigurationName = ProxyConfigurationName, ProxyConfigurationArn = ProxyConfigurationArn, RuleGroups = RuleGroups, UpdateToken = UpdateToken)
+  output <- .networkfirewall$attach_rule_groups_to_proxy_configuration_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$attach_rule_groups_to_proxy_configuration <- networkfirewall_attach_rule_groups_to_proxy_configuration
+
 #' Creates an Network Firewall Firewall and accompanying FirewallStatus for
 #' a VPC
 #'
@@ -153,11 +292,46 @@ networkfirewall_associate_subnets <- function(UpdateToken = NULL, FirewallArn = 
 #' resources.
 #' @param EnabledAnalysisTypes An optional setting indicating the specific traffic analysis types to
 #' enable on the firewall.
+#' @param TransitGatewayId Required when creating a transit gateway-attached firewall. The unique
+#' identifier of the transit gateway to attach to this firewall. You can
+#' provide either a transit gateway from your account or one that has been
+#' shared with you through Resource Access Manager.
+#' 
+#' After creating the firewall, you cannot change the transit gateway
+#' association. To use a different transit gateway, you must create a new
+#' firewall.
+#' 
+#' For information about creating firewalls, see
+#' [`create_firewall`][networkfirewall_create_firewall]. For specific
+#' guidance about transit gateway-attached firewalls, see [Considerations
+#' for transit gateway-attached
+#' firewalls](https://docs.aws.amazon.com/network-firewall/latest/developerguide/tgw-firewall-considerations.html)
+#' in the *Network Firewall Developer Guide*.
+#' @param AvailabilityZoneMappings Required. The Availability Zones where you want to create firewall
+#' endpoints for a transit gateway-attached firewall. You must specify at
+#' least one Availability Zone. Consider enabling the firewall in every
+#' Availability Zone where you have workloads to maintain Availability Zone
+#' isolation.
+#' 
+#' You can modify Availability Zones later using
+#' [`associate_availability_zones`][networkfirewall_associate_availability_zones]
+#' or
+#' [`disassociate_availability_zones`][networkfirewall_disassociate_availability_zones],
+#' but this may briefly disrupt traffic. The
+#' `AvailabilityZoneChangeProtection` setting controls whether you can make
+#' these modifications.
+#' @param AvailabilityZoneChangeProtection Optional. A setting indicating whether the firewall is protected against
+#' changes to its Availability Zone configuration. When set to `TRUE`, you
+#' cannot add or remove Availability Zones without first disabling this
+#' protection using
+#' [`update_availability_zone_change_protection`][networkfirewall_update_availability_zone_change_protection].
+#' 
+#' Default value: `FALSE`
 #'
 #' @keywords internal
 #'
 #' @rdname networkfirewall_create_firewall
-networkfirewall_create_firewall <- function(FirewallName, FirewallPolicyArn, VpcId = NULL, SubnetMappings = NULL, DeleteProtection = NULL, SubnetChangeProtection = NULL, FirewallPolicyChangeProtection = NULL, Description = NULL, Tags = NULL, EncryptionConfiguration = NULL, EnabledAnalysisTypes = NULL) {
+networkfirewall_create_firewall <- function(FirewallName, FirewallPolicyArn, VpcId = NULL, SubnetMappings = NULL, DeleteProtection = NULL, SubnetChangeProtection = NULL, FirewallPolicyChangeProtection = NULL, Description = NULL, Tags = NULL, EncryptionConfiguration = NULL, EnabledAnalysisTypes = NULL, TransitGatewayId = NULL, AvailabilityZoneMappings = NULL, AvailabilityZoneChangeProtection = NULL) {
   op <- new_operation(
     name = "CreateFirewall",
     http_method = "POST",
@@ -166,7 +340,7 @@ networkfirewall_create_firewall <- function(FirewallName, FirewallPolicyArn, Vpc
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .networkfirewall$create_firewall_input(FirewallName = FirewallName, FirewallPolicyArn = FirewallPolicyArn, VpcId = VpcId, SubnetMappings = SubnetMappings, DeleteProtection = DeleteProtection, SubnetChangeProtection = SubnetChangeProtection, FirewallPolicyChangeProtection = FirewallPolicyChangeProtection, Description = Description, Tags = Tags, EncryptionConfiguration = EncryptionConfiguration, EnabledAnalysisTypes = EnabledAnalysisTypes)
+  input <- .networkfirewall$create_firewall_input(FirewallName = FirewallName, FirewallPolicyArn = FirewallPolicyArn, VpcId = VpcId, SubnetMappings = SubnetMappings, DeleteProtection = DeleteProtection, SubnetChangeProtection = SubnetChangeProtection, FirewallPolicyChangeProtection = FirewallPolicyChangeProtection, Description = Description, Tags = Tags, EncryptionConfiguration = EncryptionConfiguration, EnabledAnalysisTypes = EnabledAnalysisTypes, TransitGatewayId = TransitGatewayId, AvailabilityZoneMappings = AvailabilityZoneMappings, AvailabilityZoneChangeProtection = AvailabilityZoneChangeProtection)
   output <- .networkfirewall$create_firewall_output()
   config <- get_config()
   svc <- .networkfirewall$service(config, op)
@@ -226,6 +400,168 @@ networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallP
   return(response)
 }
 .networkfirewall$operations$create_firewall_policy <- networkfirewall_create_firewall_policy
+
+#' Creates an Network Firewall Proxy
+#'
+#' @description
+#' Creates an Network Firewall Proxy
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_create_proxy/](https://www.paws-r-sdk.com/docs/networkfirewall_create_proxy/) for full documentation.
+#'
+#' @param ProxyName &#91;required&#93; The descriptive name of the proxy. You can't change the name of a proxy
+#' after you create it.
+#' @param NatGatewayId &#91;required&#93; A unique identifier for the NAT gateway to use with proxy resources.
+#' @param ProxyConfigurationName The descriptive name of the proxy configuration. You can't change the
+#' name of a proxy configuration after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param ProxyConfigurationArn The Amazon Resource Name (ARN) of a proxy configuration.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param ListenerProperties Listener properties for HTTP and HTTPS traffic.
+#' @param TlsInterceptProperties &#91;required&#93; TLS decryption on traffic to filter on attributes in the HTTP header.
+#' @param Tags The key:value pairs to associate with the resource.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_create_proxy
+networkfirewall_create_proxy <- function(ProxyName, NatGatewayId, ProxyConfigurationName = NULL, ProxyConfigurationArn = NULL, ListenerProperties = NULL, TlsInterceptProperties, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateProxy",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$create_proxy_input(ProxyName = ProxyName, NatGatewayId = NatGatewayId, ProxyConfigurationName = ProxyConfigurationName, ProxyConfigurationArn = ProxyConfigurationArn, ListenerProperties = ListenerProperties, TlsInterceptProperties = TlsInterceptProperties, Tags = Tags)
+  output <- .networkfirewall$create_proxy_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$create_proxy <- networkfirewall_create_proxy
+
+#' Creates an Network Firewall ProxyConfiguration
+#'
+#' @description
+#' Creates an Network Firewall ProxyConfiguration
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_create_proxy_configuration/](https://www.paws-r-sdk.com/docs/networkfirewall_create_proxy_configuration/) for full documentation.
+#'
+#' @param ProxyConfigurationName &#91;required&#93; The descriptive name of the proxy configuration. You can't change the
+#' name of a proxy configuration after you create it.
+#' @param Description A description of the proxy configuration.
+#' @param RuleGroupNames The proxy rule group name(s) to attach to the proxy configuration.
+#' 
+#' You must specify the ARNs or the names, and you can specify both.
+#' @param RuleGroupArns The proxy rule group arn(s) to attach to the proxy configuration.
+#' 
+#' You must specify the ARNs or the names, and you can specify both.
+#' @param DefaultRulePhaseActions &#91;required&#93; Evaluation points in the traffic flow where rules are applied. There are
+#' three phases in a traffic where the rule match is applied.
+#' @param Tags The key:value pairs to associate with the resource.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_create_proxy_configuration
+networkfirewall_create_proxy_configuration <- function(ProxyConfigurationName, Description = NULL, RuleGroupNames = NULL, RuleGroupArns = NULL, DefaultRulePhaseActions, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateProxyConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$create_proxy_configuration_input(ProxyConfigurationName = ProxyConfigurationName, Description = Description, RuleGroupNames = RuleGroupNames, RuleGroupArns = RuleGroupArns, DefaultRulePhaseActions = DefaultRulePhaseActions, Tags = Tags)
+  output <- .networkfirewall$create_proxy_configuration_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$create_proxy_configuration <- networkfirewall_create_proxy_configuration
+
+#' Creates an Network Firewall ProxyRuleGroup
+#'
+#' @description
+#' Creates an Network Firewall ProxyRuleGroup
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_create_proxy_rule_group/](https://www.paws-r-sdk.com/docs/networkfirewall_create_proxy_rule_group/) for full documentation.
+#'
+#' @param ProxyRuleGroupName &#91;required&#93; The descriptive name of the proxy rule group. You can't change the name
+#' of a proxy rule group after you create it.
+#' @param Description A description of the proxy rule group.
+#' @param Rules Individual rules that define match conditions and actions for
+#' application-layer traffic. Rules specify what to inspect (domains,
+#' headers, methods) and what action to take (allow, deny, alert).
+#' @param Tags The key:value pairs to associate with the resource.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_create_proxy_rule_group
+networkfirewall_create_proxy_rule_group <- function(ProxyRuleGroupName, Description = NULL, Rules = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateProxyRuleGroup",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$create_proxy_rule_group_input(ProxyRuleGroupName = ProxyRuleGroupName, Description = Description, Rules = Rules, Tags = Tags)
+  output <- .networkfirewall$create_proxy_rule_group_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$create_proxy_rule_group <- networkfirewall_create_proxy_rule_group
+
+#' Creates Network Firewall ProxyRule resources
+#'
+#' @description
+#' Creates Network Firewall ProxyRule resources.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_create_proxy_rules/](https://www.paws-r-sdk.com/docs/networkfirewall_create_proxy_rules/) for full documentation.
+#'
+#' @param ProxyRuleGroupArn The Amazon Resource Name (ARN) of a proxy rule group.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param ProxyRuleGroupName The descriptive name of the proxy rule group. You can't change the name
+#' of a proxy rule group after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param Rules &#91;required&#93; Individual rules that define match conditions and actions for
+#' application-layer traffic. Rules specify what to inspect (domains,
+#' headers, methods) and what action to take (allow, deny, alert).
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_create_proxy_rules
+networkfirewall_create_proxy_rules <- function(ProxyRuleGroupArn = NULL, ProxyRuleGroupName = NULL, Rules) {
+  op <- new_operation(
+    name = "CreateProxyRules",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$create_proxy_rules_input(ProxyRuleGroupArn = ProxyRuleGroupArn, ProxyRuleGroupName = ProxyRuleGroupName, Rules = Rules)
+  output <- .networkfirewall$create_proxy_rules_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$create_proxy_rules <- networkfirewall_create_proxy_rules
 
 #' Creates the specified stateless or stateful rule group, which includes
 #' the rules for network traffic inspection, a capacity setting, and tags
@@ -324,11 +660,21 @@ networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallP
 #' set to `TRUE`, Network Firewall runs the analysis and then creates the
 #' rule group for you. To run the stateless rule group analyzer without
 #' creating the rule group, set `DryRun` to `TRUE`.
+#' @param SummaryConfiguration An object that contains a `RuleOptions` array of strings. You use
+#' `RuleOptions` to determine which of the following RuleSummary values are
+#' returned in response to
+#' [`describe_rule_group_summary`][networkfirewall_describe_rule_group_summary].
+#' 
+#' -   `Metadata` - returns
+#' 
+#' -   `Msg`
+#' 
+#' -   `SID`
 #'
 #' @keywords internal
 #'
 #' @rdname networkfirewall_create_rule_group
-networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, Rules = NULL, Type, Description = NULL, Capacity, Tags = NULL, DryRun = NULL, EncryptionConfiguration = NULL, SourceMetadata = NULL, AnalyzeRuleGroup = NULL) {
+networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, Rules = NULL, Type, Description = NULL, Capacity, Tags = NULL, DryRun = NULL, EncryptionConfiguration = NULL, SourceMetadata = NULL, AnalyzeRuleGroup = NULL, SummaryConfiguration = NULL) {
   op <- new_operation(
     name = "CreateRuleGroup",
     http_method = "POST",
@@ -337,7 +683,7 @@ networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, R
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .networkfirewall$create_rule_group_input(RuleGroupName = RuleGroupName, RuleGroup = RuleGroup, Rules = Rules, Type = Type, Description = Description, Capacity = Capacity, Tags = Tags, DryRun = DryRun, EncryptionConfiguration = EncryptionConfiguration, SourceMetadata = SourceMetadata, AnalyzeRuleGroup = AnalyzeRuleGroup)
+  input <- .networkfirewall$create_rule_group_input(RuleGroupName = RuleGroupName, RuleGroup = RuleGroup, Rules = Rules, Type = Type, Description = Description, Capacity = Capacity, Tags = Tags, DryRun = DryRun, EncryptionConfiguration = EncryptionConfiguration, SourceMetadata = SourceMetadata, AnalyzeRuleGroup = AnalyzeRuleGroup, SummaryConfiguration = SummaryConfiguration)
   output <- .networkfirewall$create_rule_group_output()
   config <- get_config()
   svc <- .networkfirewall$service(config, op)
@@ -401,6 +747,42 @@ networkfirewall_create_tls_inspection_configuration <- function(TLSInspectionCon
   return(response)
 }
 .networkfirewall$operations$create_tls_inspection_configuration <- networkfirewall_create_tls_inspection_configuration
+
+#' Creates a firewall endpoint for an Network Firewall firewall
+#'
+#' @description
+#' Creates a firewall endpoint for an Network Firewall firewall. This type of firewall endpoint is independent of the firewall endpoints that you specify in the `Firewall` itself, and you define it in addition to those endpoints after the firewall has been created. You can define a VPC endpoint association using a different VPC than the one you used in the firewall specifications.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_create_vpc_endpoint_association/](https://www.paws-r-sdk.com/docs/networkfirewall_create_vpc_endpoint_association/) for full documentation.
+#'
+#' @param FirewallArn &#91;required&#93; The Amazon Resource Name (ARN) of the firewall.
+#' @param VpcId &#91;required&#93; The unique identifier of the VPC where you want to create a firewall
+#' endpoint.
+#' @param SubnetMapping &#91;required&#93; 
+#' @param Description A description of the VPC endpoint association.
+#' @param Tags The key:value pairs to associate with the resource.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_create_vpc_endpoint_association
+networkfirewall_create_vpc_endpoint_association <- function(FirewallArn, VpcId, SubnetMapping, Description = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateVpcEndpointAssociation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$create_vpc_endpoint_association_input(FirewallArn = FirewallArn, VpcId = VpcId, SubnetMapping = SubnetMapping, Description = Description, Tags = Tags)
+  output <- .networkfirewall$create_vpc_endpoint_association_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$create_vpc_endpoint_association <- networkfirewall_create_vpc_endpoint_association
 
 #' Deletes the specified Firewall and its FirewallStatus
 #'
@@ -475,6 +857,188 @@ networkfirewall_delete_firewall_policy <- function(FirewallPolicyName = NULL, Fi
   return(response)
 }
 .networkfirewall$operations$delete_firewall_policy <- networkfirewall_delete_firewall_policy
+
+#' Deletes a transit gateway attachment from a Network Firewall
+#'
+#' @description
+#' Deletes a transit gateway attachment from a Network Firewall. Either the firewall owner or the transit gateway owner can delete the attachment.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_delete_network_firewall_transit_gateway_attachment/](https://www.paws-r-sdk.com/docs/networkfirewall_delete_network_firewall_transit_gateway_attachment/) for full documentation.
+#'
+#' @param TransitGatewayAttachmentId &#91;required&#93; Required. The unique identifier of the transit gateway attachment to
+#' delete.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_delet_netwo_firew_trans_gatew_attac
+networkfirewall_delete_network_firewall_transit_gateway_attachment <- function(TransitGatewayAttachmentId) {
+  op <- new_operation(
+    name = "DeleteNetworkFirewallTransitGatewayAttachment",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$delete_network_firewall_transit_gateway_attachment_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId)
+  output <- .networkfirewall$delete_network_firewall_transit_gateway_attachment_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$delete_network_firewall_transit_gateway_attachment <- networkfirewall_delete_network_firewall_transit_gateway_attachment
+
+#' Deletes the specified Proxy
+#'
+#' @description
+#' Deletes the specified Proxy.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_delete_proxy/](https://www.paws-r-sdk.com/docs/networkfirewall_delete_proxy/) for full documentation.
+#'
+#' @param NatGatewayId &#91;required&#93; The NAT Gateway the proxy is attached to.
+#' @param ProxyName The descriptive name of the proxy. You can't change the name of a proxy
+#' after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param ProxyArn The Amazon Resource Name (ARN) of a proxy.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_delete_proxy
+networkfirewall_delete_proxy <- function(NatGatewayId, ProxyName = NULL, ProxyArn = NULL) {
+  op <- new_operation(
+    name = "DeleteProxy",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$delete_proxy_input(NatGatewayId = NatGatewayId, ProxyName = ProxyName, ProxyArn = ProxyArn)
+  output <- .networkfirewall$delete_proxy_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$delete_proxy <- networkfirewall_delete_proxy
+
+#' Deletes the specified ProxyConfiguration
+#'
+#' @description
+#' Deletes the specified ProxyConfiguration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_delete_proxy_configuration/](https://www.paws-r-sdk.com/docs/networkfirewall_delete_proxy_configuration/) for full documentation.
+#'
+#' @param ProxyConfigurationName The descriptive name of the proxy configuration. You can't change the
+#' name of a proxy configuration after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param ProxyConfigurationArn The Amazon Resource Name (ARN) of a proxy configuration.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_delete_proxy_configuration
+networkfirewall_delete_proxy_configuration <- function(ProxyConfigurationName = NULL, ProxyConfigurationArn = NULL) {
+  op <- new_operation(
+    name = "DeleteProxyConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$delete_proxy_configuration_input(ProxyConfigurationName = ProxyConfigurationName, ProxyConfigurationArn = ProxyConfigurationArn)
+  output <- .networkfirewall$delete_proxy_configuration_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$delete_proxy_configuration <- networkfirewall_delete_proxy_configuration
+
+#' Deletes the specified ProxyRuleGroup
+#'
+#' @description
+#' Deletes the specified ProxyRuleGroup.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_delete_proxy_rule_group/](https://www.paws-r-sdk.com/docs/networkfirewall_delete_proxy_rule_group/) for full documentation.
+#'
+#' @param ProxyRuleGroupName The descriptive name of the proxy rule group. You can't change the name
+#' of a proxy rule group after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param ProxyRuleGroupArn The Amazon Resource Name (ARN) of a proxy rule group.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_delete_proxy_rule_group
+networkfirewall_delete_proxy_rule_group <- function(ProxyRuleGroupName = NULL, ProxyRuleGroupArn = NULL) {
+  op <- new_operation(
+    name = "DeleteProxyRuleGroup",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$delete_proxy_rule_group_input(ProxyRuleGroupName = ProxyRuleGroupName, ProxyRuleGroupArn = ProxyRuleGroupArn)
+  output <- .networkfirewall$delete_proxy_rule_group_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$delete_proxy_rule_group <- networkfirewall_delete_proxy_rule_group
+
+#' Deletes the specified ProxyRule(s)
+#'
+#' @description
+#' Deletes the specified ProxyRule(s). currently attached to a ProxyRuleGroup
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_delete_proxy_rules/](https://www.paws-r-sdk.com/docs/networkfirewall_delete_proxy_rules/) for full documentation.
+#'
+#' @param ProxyRuleGroupArn The Amazon Resource Name (ARN) of a proxy rule group.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param ProxyRuleGroupName The descriptive name of the proxy rule group. You can't change the name
+#' of a proxy rule group after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param Rules &#91;required&#93; The proxy rule(s) to remove from the existing proxy rule group.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_delete_proxy_rules
+networkfirewall_delete_proxy_rules <- function(ProxyRuleGroupArn = NULL, ProxyRuleGroupName = NULL, Rules) {
+  op <- new_operation(
+    name = "DeleteProxyRules",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$delete_proxy_rules_input(ProxyRuleGroupArn = ProxyRuleGroupArn, ProxyRuleGroupName = ProxyRuleGroupName, Rules = Rules)
+  output <- .networkfirewall$delete_proxy_rules_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$delete_proxy_rules <- networkfirewall_delete_proxy_rules
 
 #' Deletes a resource policy that you created in a PutResourcePolicy
 #' request
@@ -589,6 +1153,37 @@ networkfirewall_delete_tls_inspection_configuration <- function(TLSInspectionCon
 }
 .networkfirewall$operations$delete_tls_inspection_configuration <- networkfirewall_delete_tls_inspection_configuration
 
+#' Deletes the specified VpcEndpointAssociation
+#'
+#' @description
+#' Deletes the specified VpcEndpointAssociation.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_delete_vpc_endpoint_association/](https://www.paws-r-sdk.com/docs/networkfirewall_delete_vpc_endpoint_association/) for full documentation.
+#'
+#' @param VpcEndpointAssociationArn &#91;required&#93; The Amazon Resource Name (ARN) of a VPC endpoint association.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_delete_vpc_endpoint_association
+networkfirewall_delete_vpc_endpoint_association <- function(VpcEndpointAssociationArn) {
+  op <- new_operation(
+    name = "DeleteVpcEndpointAssociation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$delete_vpc_endpoint_association_input(VpcEndpointAssociationArn = VpcEndpointAssociationArn)
+  output <- .networkfirewall$delete_vpc_endpoint_association_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$delete_vpc_endpoint_association <- networkfirewall_delete_vpc_endpoint_association
+
 #' Returns the data objects for the specified firewall
 #'
 #' @description
@@ -625,6 +1220,38 @@ networkfirewall_describe_firewall <- function(FirewallName = NULL, FirewallArn =
   return(response)
 }
 .networkfirewall$operations$describe_firewall <- networkfirewall_describe_firewall
+
+#' Returns the high-level information about a firewall, including the
+#' Availability Zones where the Firewall is currently in use
+#'
+#' @description
+#' Returns the high-level information about a firewall, including the Availability Zones where the Firewall is currently in use.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_describe_firewall_metadata/](https://www.paws-r-sdk.com/docs/networkfirewall_describe_firewall_metadata/) for full documentation.
+#'
+#' @param FirewallArn The Amazon Resource Name (ARN) of the firewall.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_describe_firewall_metadata
+networkfirewall_describe_firewall_metadata <- function(FirewallArn = NULL) {
+  op <- new_operation(
+    name = "DescribeFirewallMetadata",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$describe_firewall_metadata_input(FirewallArn = FirewallArn)
+  output <- .networkfirewall$describe_firewall_metadata_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$describe_firewall_metadata <- networkfirewall_describe_firewall_metadata
 
 #' Returns the data objects for the specified firewall policy
 #'
@@ -676,13 +1303,15 @@ networkfirewall_describe_firewall_policy <- function(FirewallPolicyName = NULL, 
 #' 
 #' Defines the scope a flow operation. You can use up to 20 filters to
 #' configure a single flow operation.
+#' @param VpcEndpointAssociationArn The Amazon Resource Name (ARN) of a VPC endpoint association.
+#' @param VpcEndpointId A unique identifier for the primary endpoint associated with a firewall.
 #' @param FlowOperationId &#91;required&#93; A unique identifier for the flow operation. This ID is returned in the
 #' responses to start and list commands. You provide to describe commands.
 #'
 #' @keywords internal
 #'
 #' @rdname networkfirewall_describe_flow_operation
-networkfirewall_describe_flow_operation <- function(FirewallArn, AvailabilityZone = NULL, FlowOperationId) {
+networkfirewall_describe_flow_operation <- function(FirewallArn, AvailabilityZone = NULL, VpcEndpointAssociationArn = NULL, VpcEndpointId = NULL, FlowOperationId) {
   op <- new_operation(
     name = "DescribeFlowOperation",
     http_method = "POST",
@@ -691,7 +1320,7 @@ networkfirewall_describe_flow_operation <- function(FirewallArn, AvailabilityZon
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .networkfirewall$describe_flow_operation_input(FirewallArn = FirewallArn, AvailabilityZone = AvailabilityZone, FlowOperationId = FlowOperationId)
+  input <- .networkfirewall$describe_flow_operation_input(FirewallArn = FirewallArn, AvailabilityZone = AvailabilityZone, VpcEndpointAssociationArn = VpcEndpointAssociationArn, VpcEndpointId = VpcEndpointId, FlowOperationId = FlowOperationId)
   output <- .networkfirewall$describe_flow_operation_output()
   config <- get_config()
   svc <- .networkfirewall$service(config, op)
@@ -737,6 +1366,157 @@ networkfirewall_describe_logging_configuration <- function(FirewallArn = NULL, F
   return(response)
 }
 .networkfirewall$operations$describe_logging_configuration <- networkfirewall_describe_logging_configuration
+
+#' Returns the data objects for the specified proxy
+#'
+#' @description
+#' Returns the data objects for the specified proxy.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_describe_proxy/](https://www.paws-r-sdk.com/docs/networkfirewall_describe_proxy/) for full documentation.
+#'
+#' @param ProxyName The descriptive name of the proxy. You can't change the name of a proxy
+#' after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param ProxyArn The Amazon Resource Name (ARN) of a proxy.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_describe_proxy
+networkfirewall_describe_proxy <- function(ProxyName = NULL, ProxyArn = NULL) {
+  op <- new_operation(
+    name = "DescribeProxy",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$describe_proxy_input(ProxyName = ProxyName, ProxyArn = ProxyArn)
+  output <- .networkfirewall$describe_proxy_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$describe_proxy <- networkfirewall_describe_proxy
+
+#' Returns the data objects for the specified proxy configuration
+#'
+#' @description
+#' Returns the data objects for the specified proxy configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_describe_proxy_configuration/](https://www.paws-r-sdk.com/docs/networkfirewall_describe_proxy_configuration/) for full documentation.
+#'
+#' @param ProxyConfigurationName The descriptive name of the proxy configuration. You can't change the
+#' name of a proxy configuration after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param ProxyConfigurationArn The Amazon Resource Name (ARN) of a proxy configuration.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_describe_proxy_configuration
+networkfirewall_describe_proxy_configuration <- function(ProxyConfigurationName = NULL, ProxyConfigurationArn = NULL) {
+  op <- new_operation(
+    name = "DescribeProxyConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$describe_proxy_configuration_input(ProxyConfigurationName = ProxyConfigurationName, ProxyConfigurationArn = ProxyConfigurationArn)
+  output <- .networkfirewall$describe_proxy_configuration_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$describe_proxy_configuration <- networkfirewall_describe_proxy_configuration
+
+#' Returns the data objects for the specified proxy configuration for the
+#' specified proxy rule group
+#'
+#' @description
+#' Returns the data objects for the specified proxy configuration for the specified proxy rule group.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_describe_proxy_rule/](https://www.paws-r-sdk.com/docs/networkfirewall_describe_proxy_rule/) for full documentation.
+#'
+#' @param ProxyRuleName &#91;required&#93; The descriptive name of the proxy rule. You can't change the name of a
+#' proxy rule after you create it.
+#' @param ProxyRuleGroupName The descriptive name of the proxy rule group. You can't change the name
+#' of a proxy rule group after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param ProxyRuleGroupArn The Amazon Resource Name (ARN) of a proxy rule group.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_describe_proxy_rule
+networkfirewall_describe_proxy_rule <- function(ProxyRuleName, ProxyRuleGroupName = NULL, ProxyRuleGroupArn = NULL) {
+  op <- new_operation(
+    name = "DescribeProxyRule",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$describe_proxy_rule_input(ProxyRuleName = ProxyRuleName, ProxyRuleGroupName = ProxyRuleGroupName, ProxyRuleGroupArn = ProxyRuleGroupArn)
+  output <- .networkfirewall$describe_proxy_rule_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$describe_proxy_rule <- networkfirewall_describe_proxy_rule
+
+#' Returns the data objects for the specified proxy rule group
+#'
+#' @description
+#' Returns the data objects for the specified proxy rule group.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_describe_proxy_rule_group/](https://www.paws-r-sdk.com/docs/networkfirewall_describe_proxy_rule_group/) for full documentation.
+#'
+#' @param ProxyRuleGroupName The descriptive name of the proxy rule group. You can't change the name
+#' of a proxy rule group after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param ProxyRuleGroupArn The Amazon Resource Name (ARN) of a proxy rule group.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_describe_proxy_rule_group
+networkfirewall_describe_proxy_rule_group <- function(ProxyRuleGroupName = NULL, ProxyRuleGroupArn = NULL) {
+  op <- new_operation(
+    name = "DescribeProxyRuleGroup",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$describe_proxy_rule_group_input(ProxyRuleGroupName = ProxyRuleGroupName, ProxyRuleGroupArn = ProxyRuleGroupArn)
+  output <- .networkfirewall$describe_proxy_rule_group_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$describe_proxy_rule_group <- networkfirewall_describe_proxy_rule_group
 
 #' Retrieves a resource policy that you created in a PutResourcePolicy
 #' request
@@ -862,6 +1642,49 @@ networkfirewall_describe_rule_group_metadata <- function(RuleGroupName = NULL, R
 }
 .networkfirewall$operations$describe_rule_group_metadata <- networkfirewall_describe_rule_group_metadata
 
+#' Returns detailed information for a stateful rule group
+#'
+#' @description
+#' Returns detailed information for a stateful rule group.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_describe_rule_group_summary/](https://www.paws-r-sdk.com/docs/networkfirewall_describe_rule_group_summary/) for full documentation.
+#'
+#' @param RuleGroupName The descriptive name of the rule group. You can't change the name of a
+#' rule group after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param RuleGroupArn Required. The Amazon Resource Name (ARN) of the rule group.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param Type The type of rule group you want a summary for. This is a required field.
+#' 
+#' Valid value: `STATEFUL`
+#' 
+#' Note that `STATELESS` exists but is not currently supported. If you
+#' provide `STATELESS`, an exception is returned.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_describe_rule_group_summary
+networkfirewall_describe_rule_group_summary <- function(RuleGroupName = NULL, RuleGroupArn = NULL, Type = NULL) {
+  op <- new_operation(
+    name = "DescribeRuleGroupSummary",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$describe_rule_group_summary_input(RuleGroupName = RuleGroupName, RuleGroupArn = RuleGroupArn, Type = Type)
+  output <- .networkfirewall$describe_rule_group_summary_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$describe_rule_group_summary <- networkfirewall_describe_rule_group_summary
+
 #' Returns the data objects for the specified TLS inspection configuration
 #'
 #' @description
@@ -898,6 +1721,144 @@ networkfirewall_describe_tls_inspection_configuration <- function(TLSInspectionC
   return(response)
 }
 .networkfirewall$operations$describe_tls_inspection_configuration <- networkfirewall_describe_tls_inspection_configuration
+
+#' Returns the data object for the specified VPC endpoint association
+#'
+#' @description
+#' Returns the data object for the specified VPC endpoint association.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_describe_vpc_endpoint_association/](https://www.paws-r-sdk.com/docs/networkfirewall_describe_vpc_endpoint_association/) for full documentation.
+#'
+#' @param VpcEndpointAssociationArn &#91;required&#93; The Amazon Resource Name (ARN) of a VPC endpoint association.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_describe_vpc_endpoint_association
+networkfirewall_describe_vpc_endpoint_association <- function(VpcEndpointAssociationArn) {
+  op <- new_operation(
+    name = "DescribeVpcEndpointAssociation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$describe_vpc_endpoint_association_input(VpcEndpointAssociationArn = VpcEndpointAssociationArn)
+  output <- .networkfirewall$describe_vpc_endpoint_association_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$describe_vpc_endpoint_association <- networkfirewall_describe_vpc_endpoint_association
+
+#' Detaches ProxyRuleGroup resources from a ProxyConfiguration
+#'
+#' @description
+#' Detaches ProxyRuleGroup resources from a ProxyConfiguration
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_detach_rule_groups_from_proxy_configuration/](https://www.paws-r-sdk.com/docs/networkfirewall_detach_rule_groups_from_proxy_configuration/) for full documentation.
+#'
+#' @param ProxyConfigurationName The descriptive name of the proxy configuration. You can't change the
+#' name of a proxy configuration after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param ProxyConfigurationArn The Amazon Resource Name (ARN) of a proxy configuration.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param RuleGroupNames The proxy rule group names to detach from the proxy configuration
+#' @param RuleGroupArns The proxy rule group arns to detach from the proxy configuration
+#' @param UpdateToken &#91;required&#93; A token used for optimistic locking. Network Firewall returns a token to
+#' your requests that access the proxy configuration. The token marks the
+#' state of the proxy configuration resource at the time of the request.
+#' 
+#' To make changes to the proxy configuration, you provide the token in
+#' your request. Network Firewall uses the token to ensure that the proxy
+#' configuration hasn't changed since you last retrieved it. If it has
+#' changed, the operation fails with an `InvalidTokenException`. If this
+#' happens, retrieve the proxy configuration again to get a current copy of
+#' it with a current token. Reapply your changes as needed, then try the
+#' operation again using the new token.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_detach_rule_groups_from_proxy_configuration
+networkfirewall_detach_rule_groups_from_proxy_configuration <- function(ProxyConfigurationName = NULL, ProxyConfigurationArn = NULL, RuleGroupNames = NULL, RuleGroupArns = NULL, UpdateToken) {
+  op <- new_operation(
+    name = "DetachRuleGroupsFromProxyConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$detach_rule_groups_from_proxy_configuration_input(ProxyConfigurationName = ProxyConfigurationName, ProxyConfigurationArn = ProxyConfigurationArn, RuleGroupNames = RuleGroupNames, RuleGroupArns = RuleGroupArns, UpdateToken = UpdateToken)
+  output <- .networkfirewall$detach_rule_groups_from_proxy_configuration_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$detach_rule_groups_from_proxy_configuration <- networkfirewall_detach_rule_groups_from_proxy_configuration
+
+#' Removes the specified Availability Zone associations from a transit
+#' gateway-attached firewall
+#'
+#' @description
+#' Removes the specified Availability Zone associations from a transit gateway-attached firewall. This removes the firewall endpoints from these Availability Zones and stops traffic filtering in those zones. Before removing an Availability Zone, ensure you've updated your transit gateway route tables to redirect traffic appropriately.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_disassociate_availability_zones/](https://www.paws-r-sdk.com/docs/networkfirewall_disassociate_availability_zones/) for full documentation.
+#'
+#' @param UpdateToken An optional token that you can use for optimistic locking. Network
+#' Firewall returns a token to your requests that access the firewall. The
+#' token marks the state of the firewall resource at the time of the
+#' request.
+#' 
+#' To make an unconditional change to the firewall, omit the token in your
+#' update request. Without the token, Network Firewall performs your
+#' updates regardless of whether the firewall has changed since you last
+#' retrieved it.
+#' 
+#' To make a conditional change to the firewall, provide the token in your
+#' update request. Network Firewall uses the token to ensure that the
+#' firewall hasn't changed since you last retrieved it. If it has changed,
+#' the operation fails with an `InvalidTokenException`. If this happens,
+#' retrieve the firewall again to get a current copy of it with a new
+#' token. Reapply your changes as needed, then try the operation again
+#' using the new token.
+#' @param FirewallArn The Amazon Resource Name (ARN) of the firewall.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param FirewallName The descriptive name of the firewall. You can't change the name of a
+#' firewall after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param AvailabilityZoneMappings &#91;required&#93; Required. The Availability Zones to remove from the firewall's
+#' configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_disassociate_availability_zones
+networkfirewall_disassociate_availability_zones <- function(UpdateToken = NULL, FirewallArn = NULL, FirewallName = NULL, AvailabilityZoneMappings) {
+  op <- new_operation(
+    name = "DisassociateAvailabilityZones",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$disassociate_availability_zones_input(UpdateToken = UpdateToken, FirewallArn = FirewallArn, FirewallName = FirewallName, AvailabilityZoneMappings = AvailabilityZoneMappings)
+  output <- .networkfirewall$disassociate_availability_zones_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$disassociate_availability_zones <- networkfirewall_disassociate_availability_zones
 
 #' Removes the specified subnet associations from the firewall
 #'
@@ -1155,11 +2116,13 @@ networkfirewall_list_firewalls <- function(NextToken = NULL, VpcIds = NULL, MaxR
 #' 
 #' Defines the scope a flow operation. You can use up to 20 filters to
 #' configure a single flow operation.
+#' @param VpcEndpointId A unique identifier for the primary endpoint associated with a firewall.
+#' @param VpcEndpointAssociationArn The Amazon Resource Name (ARN) of a VPC endpoint association.
 #'
 #' @keywords internal
 #'
 #' @rdname networkfirewall_list_flow_operation_results
-networkfirewall_list_flow_operation_results <- function(FirewallArn, FlowOperationId, NextToken = NULL, MaxResults = NULL, AvailabilityZone = NULL) {
+networkfirewall_list_flow_operation_results <- function(FirewallArn, FlowOperationId, NextToken = NULL, MaxResults = NULL, AvailabilityZone = NULL, VpcEndpointId = NULL, VpcEndpointAssociationArn = NULL) {
   op <- new_operation(
     name = "ListFlowOperationResults",
     http_method = "POST",
@@ -1168,7 +2131,7 @@ networkfirewall_list_flow_operation_results <- function(FirewallArn, FlowOperati
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Flows"),
     stream_api = FALSE
   )
-  input <- .networkfirewall$list_flow_operation_results_input(FirewallArn = FirewallArn, FlowOperationId = FlowOperationId, NextToken = NextToken, MaxResults = MaxResults, AvailabilityZone = AvailabilityZone)
+  input <- .networkfirewall$list_flow_operation_results_input(FirewallArn = FirewallArn, FlowOperationId = FlowOperationId, NextToken = NextToken, MaxResults = MaxResults, AvailabilityZone = AvailabilityZone, VpcEndpointId = VpcEndpointId, VpcEndpointAssociationArn = VpcEndpointAssociationArn)
   output <- .networkfirewall$list_flow_operation_results_output()
   config <- get_config()
   svc <- .networkfirewall$service(config, op)
@@ -1191,6 +2154,8 @@ networkfirewall_list_flow_operation_results <- function(FirewallArn, FlowOperati
 #' 
 #' Defines the scope a flow operation. You can use up to 20 filters to
 #' configure a single flow operation.
+#' @param VpcEndpointAssociationArn The Amazon Resource Name (ARN) of a VPC endpoint association.
+#' @param VpcEndpointId A unique identifier for the primary endpoint associated with a firewall.
 #' @param FlowOperationType An optional string that defines whether any or all operation types are
 #' returned.
 #' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
@@ -1206,7 +2171,7 @@ networkfirewall_list_flow_operation_results <- function(FirewallArn, FlowOperati
 #' @keywords internal
 #'
 #' @rdname networkfirewall_list_flow_operations
-networkfirewall_list_flow_operations <- function(FirewallArn, AvailabilityZone = NULL, FlowOperationType = NULL, NextToken = NULL, MaxResults = NULL) {
+networkfirewall_list_flow_operations <- function(FirewallArn, AvailabilityZone = NULL, VpcEndpointAssociationArn = NULL, VpcEndpointId = NULL, FlowOperationType = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListFlowOperations",
     http_method = "POST",
@@ -1215,7 +2180,7 @@ networkfirewall_list_flow_operations <- function(FirewallArn, AvailabilityZone =
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FlowOperations"),
     stream_api = FALSE
   )
-  input <- .networkfirewall$list_flow_operations_input(FirewallArn = FirewallArn, AvailabilityZone = AvailabilityZone, FlowOperationType = FlowOperationType, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .networkfirewall$list_flow_operations_input(FirewallArn = FirewallArn, AvailabilityZone = AvailabilityZone, VpcEndpointAssociationArn = VpcEndpointAssociationArn, VpcEndpointId = VpcEndpointId, FlowOperationType = FlowOperationType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .networkfirewall$list_flow_operations_output()
   config <- get_config()
   svc <- .networkfirewall$service(config, op)
@@ -1224,6 +2189,123 @@ networkfirewall_list_flow_operations <- function(FirewallArn, AvailabilityZone =
   return(response)
 }
 .networkfirewall$operations$list_flow_operations <- networkfirewall_list_flow_operations
+
+#' Retrieves the metadata for the proxies that you have defined
+#'
+#' @description
+#' Retrieves the metadata for the proxies that you have defined. Depending on your setting for max results and the number of proxies, a single call might not return the full list.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_list_proxies/](https://www.paws-r-sdk.com/docs/networkfirewall_list_proxies/) for full documentation.
+#'
+#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
+#' number of objects that are still available for retrieval exceeds the
+#' maximum you requested, Network Firewall returns a `NextToken` value in
+#' the response. To retrieve the next batch of objects, use the token
+#' returned from the prior request in your next request.
+#' @param MaxResults The maximum number of objects that you want Network Firewall to return
+#' for this request. If more objects are available, in the response,
+#' Network Firewall provides a `NextToken` value that you can use in a
+#' subsequent call to get the next batch of objects.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_list_proxies
+networkfirewall_list_proxies <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListProxies",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Proxies"),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$list_proxies_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .networkfirewall$list_proxies_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$list_proxies <- networkfirewall_list_proxies
+
+#' Retrieves the metadata for the proxy configuration that you have defined
+#'
+#' @description
+#' Retrieves the metadata for the proxy configuration that you have defined. Depending on your setting for max results and the number of proxy configurations, a single call might not return the full list.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_list_proxy_configurations/](https://www.paws-r-sdk.com/docs/networkfirewall_list_proxy_configurations/) for full documentation.
+#'
+#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
+#' number of objects that are still available for retrieval exceeds the
+#' maximum you requested, Network Firewall returns a `NextToken` value in
+#' the response. To retrieve the next batch of objects, use the token
+#' returned from the prior request in your next request.
+#' @param MaxResults The maximum number of objects that you want Network Firewall to return
+#' for this request. If more objects are available, in the response,
+#' Network Firewall provides a `NextToken` value that you can use in a
+#' subsequent call to get the next batch of objects.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_list_proxy_configurations
+networkfirewall_list_proxy_configurations <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListProxyConfigurations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProxyConfigurations"),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$list_proxy_configurations_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .networkfirewall$list_proxy_configurations_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$list_proxy_configurations <- networkfirewall_list_proxy_configurations
+
+#' Retrieves the metadata for the proxy rule groups that you have defined
+#'
+#' @description
+#' Retrieves the metadata for the proxy rule groups that you have defined. Depending on your setting for max results and the number of proxy rule groups, a single call might not return the full list.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_list_proxy_rule_groups/](https://www.paws-r-sdk.com/docs/networkfirewall_list_proxy_rule_groups/) for full documentation.
+#'
+#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
+#' number of objects that are still available for retrieval exceeds the
+#' maximum you requested, Network Firewall returns a `NextToken` value in
+#' the response. To retrieve the next batch of objects, use the token
+#' returned from the prior request in your next request.
+#' @param MaxResults The maximum number of objects that you want Network Firewall to return
+#' for this request. If more objects are available, in the response,
+#' Network Firewall provides a `NextToken` value that you can use in a
+#' subsequent call to get the next batch of objects.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_list_proxy_rule_groups
+networkfirewall_list_proxy_rule_groups <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListProxyRuleGroups",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProxyRuleGroups"),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$list_proxy_rule_groups_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .networkfirewall$list_proxy_rule_groups_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$list_proxy_rule_groups <- networkfirewall_list_proxy_rule_groups
 
 #' Retrieves the metadata for the rule groups that you have defined
 #'
@@ -1246,6 +2328,9 @@ networkfirewall_list_flow_operations <- function(FirewallArn, AvailabilityZone =
 #' `MANAGED` returns all available managed rule groups.
 #' @param ManagedType Indicates the general category of the Amazon Web Services managed rule
 #' group.
+#' @param SubscriptionStatus Filters the results to show only rule groups with the specified
+#' subscription status. Use this to find subscribed or unsubscribed rule
+#' groups.
 #' @param Type Indicates whether the rule group is stateless or stateful. If the rule
 #' group is stateless, it contains stateless rules. If it is stateful, it
 #' contains stateful rules.
@@ -1253,7 +2338,7 @@ networkfirewall_list_flow_operations <- function(FirewallArn, AvailabilityZone =
 #' @keywords internal
 #'
 #' @rdname networkfirewall_list_rule_groups
-networkfirewall_list_rule_groups <- function(NextToken = NULL, MaxResults = NULL, Scope = NULL, ManagedType = NULL, Type = NULL) {
+networkfirewall_list_rule_groups <- function(NextToken = NULL, MaxResults = NULL, Scope = NULL, ManagedType = NULL, SubscriptionStatus = NULL, Type = NULL) {
   op <- new_operation(
     name = "ListRuleGroups",
     http_method = "POST",
@@ -1262,7 +2347,7 @@ networkfirewall_list_rule_groups <- function(NextToken = NULL, MaxResults = NULL
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RuleGroups"),
     stream_api = FALSE
   )
-  input <- .networkfirewall$list_rule_groups_input(NextToken = NextToken, MaxResults = MaxResults, Scope = Scope, ManagedType = ManagedType, Type = Type)
+  input <- .networkfirewall$list_rule_groups_input(NextToken = NextToken, MaxResults = MaxResults, Scope = Scope, ManagedType = ManagedType, SubscriptionStatus = SubscriptionStatus, Type = Type)
   output <- .networkfirewall$list_rule_groups_output()
   config <- get_config()
   svc <- .networkfirewall$service(config, op)
@@ -1352,17 +2437,62 @@ networkfirewall_list_tags_for_resource <- function(NextToken = NULL, MaxResults 
 }
 .networkfirewall$operations$list_tags_for_resource <- networkfirewall_list_tags_for_resource
 
-#' Creates or updates an IAM policy for your rule group or firewall policy
+#' Retrieves the metadata for the VPC endpoint associations that you have
+#' defined
 #'
 #' @description
-#' Creates or updates an IAM policy for your rule group or firewall policy. Use this to share rule groups and firewall policies between accounts. This operation works in conjunction with the Amazon Web Services Resource Access Manager (RAM) service to manage resource sharing for Network Firewall.
+#' Retrieves the metadata for the VPC endpoint associations that you have defined. If you specify a fireawll, this returns only the endpoint associations for that firewall.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_list_vpc_endpoint_associations/](https://www.paws-r-sdk.com/docs/networkfirewall_list_vpc_endpoint_associations/) for full documentation.
+#'
+#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
+#' number of objects that are still available for retrieval exceeds the
+#' maximum you requested, Network Firewall returns a `NextToken` value in
+#' the response. To retrieve the next batch of objects, use the token
+#' returned from the prior request in your next request.
+#' @param MaxResults The maximum number of objects that you want Network Firewall to return
+#' for this request. If more objects are available, in the response,
+#' Network Firewall provides a `NextToken` value that you can use in a
+#' subsequent call to get the next batch of objects.
+#' @param FirewallArn The Amazon Resource Name (ARN) of the firewall.
+#' 
+#' If you don't specify this, Network Firewall retrieves all VPC endpoint
+#' associations that you have defined.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_list_vpc_endpoint_associations
+networkfirewall_list_vpc_endpoint_associations <- function(NextToken = NULL, MaxResults = NULL, FirewallArn = NULL) {
+  op <- new_operation(
+    name = "ListVpcEndpointAssociations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "VpcEndpointAssociations"),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$list_vpc_endpoint_associations_input(NextToken = NextToken, MaxResults = MaxResults, FirewallArn = FirewallArn)
+  output <- .networkfirewall$list_vpc_endpoint_associations_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$list_vpc_endpoint_associations <- networkfirewall_list_vpc_endpoint_associations
+
+#' Creates or updates an IAM policy for your rule group, firewall policy,
+#' or firewall
+#'
+#' @description
+#' Creates or updates an IAM policy for your rule group, firewall policy, or firewall. Use this to share these resources between accounts. This operation works in conjunction with the Amazon Web Services Resource Access Manager (RAM) service to manage resource sharing for Network Firewall.
 #'
 #' See [https://www.paws-r-sdk.com/docs/networkfirewall_put_resource_policy/](https://www.paws-r-sdk.com/docs/networkfirewall_put_resource_policy/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the account that you want to share
-#' rule groups and firewall policies with.
+#' your Network Firewall resources with.
 #' @param Policy &#91;required&#93; The IAM policy statement that lists the accounts that you want to share
-#' your rule group or firewall policy with and the operations that you want
+#' your Network Firewall resources with and the operations that you want
 #' the accounts to be able to perform.
 #' 
 #' For a rule group resource, you can specify the following operations in
@@ -1381,9 +2511,18 @@ networkfirewall_list_tags_for_resource <- function(NextToken = NULL, MaxResults 
 #' 
 #' -   network-firewall:ListFirewallPolicies
 #' 
+#' For a firewall resource, you can specify the following operations in the
+#' Actions section of the statement:
+#' 
+#' -   network-firewall:CreateVpcEndpointAssociation
+#' 
+#' -   network-firewall:DescribeFirewallMetadata
+#' 
+#' -   network-firewall:ListFirewalls
+#' 
 #' In the Resource section of the statement, you specify the ARNs for the
-#' rule groups and firewall policies that you want to share with the
-#' account that you specified in `Arn`.
+#' Network Firewall resources that you want to share with the account that
+#' you specified in `Arn`.
 #'
 #' @keywords internal
 #'
@@ -1406,6 +2545,39 @@ networkfirewall_put_resource_policy <- function(ResourceArn, Policy) {
   return(response)
 }
 .networkfirewall$operations$put_resource_policy <- networkfirewall_put_resource_policy
+
+#' Rejects a transit gateway attachment request for Network Firewall
+#'
+#' @description
+#' Rejects a transit gateway attachment request for Network Firewall. When you reject the attachment request, Network Firewall cancels the creation of routing components between the transit gateway and firewall endpoints.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_reject_network_firewall_transit_gateway_attachment/](https://www.paws-r-sdk.com/docs/networkfirewall_reject_network_firewall_transit_gateway_attachment/) for full documentation.
+#'
+#' @param TransitGatewayAttachmentId &#91;required&#93; Required. The unique identifier of the transit gateway attachment to
+#' reject. This ID is returned in the response when creating a transit
+#' gateway-attached firewall.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_rejec_netwo_firew_trans_gatew_attac
+networkfirewall_reject_network_firewall_transit_gateway_attachment <- function(TransitGatewayAttachmentId) {
+  op <- new_operation(
+    name = "RejectNetworkFirewallTransitGatewayAttachment",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$reject_network_firewall_transit_gateway_attachment_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId)
+  output <- .networkfirewall$reject_network_firewall_transit_gateway_attachment_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$reject_network_firewall_transit_gateway_attachment <- networkfirewall_reject_network_firewall_transit_gateway_attachment
 
 #' Generates a traffic analysis report for the timeframe and traffic type
 #' you specify
@@ -1460,6 +2632,8 @@ networkfirewall_start_analysis_report <- function(FirewallName = NULL, FirewallA
 #' 
 #' Defines the scope a flow operation. You can use up to 20 filters to
 #' configure a single flow operation.
+#' @param VpcEndpointAssociationArn The Amazon Resource Name (ARN) of a VPC endpoint association.
+#' @param VpcEndpointId A unique identifier for the primary endpoint associated with a firewall.
 #' @param MinimumFlowAgeInSeconds The reqested `FlowOperation` ignores flows with an age (in seconds)
 #' lower than `MinimumFlowAgeInSeconds`. You provide this for start
 #' commands.
@@ -1472,7 +2646,7 @@ networkfirewall_start_analysis_report <- function(FirewallName = NULL, FirewallA
 #' @keywords internal
 #'
 #' @rdname networkfirewall_start_flow_capture
-networkfirewall_start_flow_capture <- function(FirewallArn, AvailabilityZone = NULL, MinimumFlowAgeInSeconds = NULL, FlowFilters) {
+networkfirewall_start_flow_capture <- function(FirewallArn, AvailabilityZone = NULL, VpcEndpointAssociationArn = NULL, VpcEndpointId = NULL, MinimumFlowAgeInSeconds = NULL, FlowFilters) {
   op <- new_operation(
     name = "StartFlowCapture",
     http_method = "POST",
@@ -1481,7 +2655,7 @@ networkfirewall_start_flow_capture <- function(FirewallArn, AvailabilityZone = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .networkfirewall$start_flow_capture_input(FirewallArn = FirewallArn, AvailabilityZone = AvailabilityZone, MinimumFlowAgeInSeconds = MinimumFlowAgeInSeconds, FlowFilters = FlowFilters)
+  input <- .networkfirewall$start_flow_capture_input(FirewallArn = FirewallArn, AvailabilityZone = AvailabilityZone, VpcEndpointAssociationArn = VpcEndpointAssociationArn, VpcEndpointId = VpcEndpointId, MinimumFlowAgeInSeconds = MinimumFlowAgeInSeconds, FlowFilters = FlowFilters)
   output <- .networkfirewall$start_flow_capture_output()
   config <- get_config()
   svc <- .networkfirewall$service(config, op)
@@ -1505,6 +2679,8 @@ networkfirewall_start_flow_capture <- function(FirewallArn, AvailabilityZone = N
 #' 
 #' Defines the scope a flow operation. You can use up to 20 filters to
 #' configure a single flow operation.
+#' @param VpcEndpointAssociationArn The Amazon Resource Name (ARN) of a VPC endpoint association.
+#' @param VpcEndpointId A unique identifier for the primary endpoint associated with a firewall.
 #' @param MinimumFlowAgeInSeconds The reqested `FlowOperation` ignores flows with an age (in seconds)
 #' lower than `MinimumFlowAgeInSeconds`. You provide this for start
 #' commands.
@@ -1514,7 +2690,7 @@ networkfirewall_start_flow_capture <- function(FirewallArn, AvailabilityZone = N
 #' @keywords internal
 #'
 #' @rdname networkfirewall_start_flow_flush
-networkfirewall_start_flow_flush <- function(FirewallArn, AvailabilityZone = NULL, MinimumFlowAgeInSeconds = NULL, FlowFilters) {
+networkfirewall_start_flow_flush <- function(FirewallArn, AvailabilityZone = NULL, VpcEndpointAssociationArn = NULL, VpcEndpointId = NULL, MinimumFlowAgeInSeconds = NULL, FlowFilters) {
   op <- new_operation(
     name = "StartFlowFlush",
     http_method = "POST",
@@ -1523,7 +2699,7 @@ networkfirewall_start_flow_flush <- function(FirewallArn, AvailabilityZone = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .networkfirewall$start_flow_flush_input(FirewallArn = FirewallArn, AvailabilityZone = AvailabilityZone, MinimumFlowAgeInSeconds = MinimumFlowAgeInSeconds, FlowFilters = FlowFilters)
+  input <- .networkfirewall$start_flow_flush_input(FirewallArn = FirewallArn, AvailabilityZone = AvailabilityZone, VpcEndpointAssociationArn = VpcEndpointAssociationArn, VpcEndpointId = VpcEndpointId, MinimumFlowAgeInSeconds = MinimumFlowAgeInSeconds, FlowFilters = FlowFilters)
   output <- .networkfirewall$start_flow_flush_output()
   config <- get_config()
   svc <- .networkfirewall$service(config, op)
@@ -1596,6 +2772,66 @@ networkfirewall_untag_resource <- function(ResourceArn, TagKeys) {
   return(response)
 }
 .networkfirewall$operations$untag_resource <- networkfirewall_untag_resource
+
+#' Modifies the AvailabilityZoneChangeProtection setting for a transit
+#' gateway-attached firewall
+#'
+#' @description
+#' Modifies the `AvailabilityZoneChangeProtection` setting for a transit gateway-attached firewall. When enabled, this setting prevents accidental changes to the firewall's Availability Zone configuration. This helps protect against disrupting traffic flow in production environments.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_update_availability_zone_change_protection/](https://www.paws-r-sdk.com/docs/networkfirewall_update_availability_zone_change_protection/) for full documentation.
+#'
+#' @param UpdateToken An optional token that you can use for optimistic locking. Network
+#' Firewall returns a token to your requests that access the firewall. The
+#' token marks the state of the firewall resource at the time of the
+#' request.
+#' 
+#' To make an unconditional change to the firewall, omit the token in your
+#' update request. Without the token, Network Firewall performs your
+#' updates regardless of whether the firewall has changed since you last
+#' retrieved it.
+#' 
+#' To make a conditional change to the firewall, provide the token in your
+#' update request. Network Firewall uses the token to ensure that the
+#' firewall hasn't changed since you last retrieved it. If it has changed,
+#' the operation fails with an `InvalidTokenException`. If this happens,
+#' retrieve the firewall again to get a current copy of it with a new
+#' token. Reapply your changes as needed, then try the operation again
+#' using the new token.
+#' @param FirewallArn The Amazon Resource Name (ARN) of the firewall.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param FirewallName The descriptive name of the firewall. You can't change the name of a
+#' firewall after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param AvailabilityZoneChangeProtection &#91;required&#93; A setting indicating whether the firewall is protected against changes
+#' to the subnet associations. Use this setting to protect against
+#' accidentally modifying the subnet associations for a firewall that is in
+#' use. When you create a firewall, the operation initializes this setting
+#' to `TRUE`.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_update_availability_zone_change_protection
+networkfirewall_update_availability_zone_change_protection <- function(UpdateToken = NULL, FirewallArn = NULL, FirewallName = NULL, AvailabilityZoneChangeProtection) {
+  op <- new_operation(
+    name = "UpdateAvailabilityZoneChangeProtection",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$update_availability_zone_change_protection_input(UpdateToken = UpdateToken, FirewallArn = FirewallArn, FirewallName = FirewallName, AvailabilityZoneChangeProtection = AvailabilityZoneChangeProtection)
+  output <- .networkfirewall$update_availability_zone_change_protection_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$update_availability_zone_change_protection <- networkfirewall_update_availability_zone_change_protection
 
 #' Enables specific types of firewall analysis on a specific firewall you
 #' define
@@ -1966,11 +3202,22 @@ networkfirewall_update_firewall_policy_change_protection <- function(UpdateToken
 #' You must specify the ARN or the name, and you can specify both.
 #' @param LoggingConfiguration Defines how Network Firewall performs logging for a firewall. If you
 #' omit this setting, Network Firewall disables logging for the firewall.
+#' @param EnableMonitoringDashboard A boolean that lets you enable or disable the detailed firewall
+#' monitoring dashboard on the firewall.
+#' 
+#' The monitoring dashboard provides comprehensive visibility into your
+#' firewall's flow logs and alert logs. After you enable detailed
+#' monitoring, you can access these dashboards directly from the
+#' **Monitoring** page of the Network Firewall console.
+#' 
+#' Specify `TRUE` to enable the the detailed monitoring dashboard on the
+#' firewall. Specify `FALSE` to disable the the detailed monitoring
+#' dashboard on the firewall.
 #'
 #' @keywords internal
 #'
 #' @rdname networkfirewall_update_logging_configuration
-networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, FirewallName = NULL, LoggingConfiguration = NULL) {
+networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, FirewallName = NULL, LoggingConfiguration = NULL, EnableMonitoringDashboard = NULL) {
   op <- new_operation(
     name = "UpdateLoggingConfiguration",
     http_method = "POST",
@@ -1979,7 +3226,7 @@ networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, Fir
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .networkfirewall$update_logging_configuration_input(FirewallArn = FirewallArn, FirewallName = FirewallName, LoggingConfiguration = LoggingConfiguration)
+  input <- .networkfirewall$update_logging_configuration_input(FirewallArn = FirewallArn, FirewallName = FirewallName, LoggingConfiguration = LoggingConfiguration, EnableMonitoringDashboard = EnableMonitoringDashboard)
   output <- .networkfirewall$update_logging_configuration_output()
   config <- get_config()
   svc <- .networkfirewall$service(config, op)
@@ -1988,6 +3235,267 @@ networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, Fir
   return(response)
 }
 .networkfirewall$operations$update_logging_configuration <- networkfirewall_update_logging_configuration
+
+#' Updates the properties of the specified proxy
+#'
+#' @description
+#' Updates the properties of the specified proxy.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_update_proxy/](https://www.paws-r-sdk.com/docs/networkfirewall_update_proxy/) for full documentation.
+#'
+#' @param NatGatewayId &#91;required&#93; The NAT Gateway the proxy is attached to.
+#' @param ProxyName The descriptive name of the proxy. You can't change the name of a proxy
+#' after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param ProxyArn The Amazon Resource Name (ARN) of a proxy.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param ListenerPropertiesToAdd Listener properties for HTTP and HTTPS traffic to add.
+#' @param ListenerPropertiesToRemove Listener properties for HTTP and HTTPS traffic to remove.
+#' @param TlsInterceptProperties TLS decryption on traffic to filter on attributes in the HTTP header.
+#' @param UpdateToken &#91;required&#93; A token used for optimistic locking. Network Firewall returns a token to
+#' your requests that access the proxy. The token marks the state of the
+#' proxy resource at the time of the request.
+#' 
+#' To make changes to the proxy, you provide the token in your request.
+#' Network Firewall uses the token to ensure that the proxy hasn't changed
+#' since you last retrieved it. If it has changed, the operation fails with
+#' an `InvalidTokenException`. If this happens, retrieve the proxy again to
+#' get a current copy of it with a current token. Reapply your changes as
+#' needed, then try the operation again using the new token.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_update_proxy
+networkfirewall_update_proxy <- function(NatGatewayId, ProxyName = NULL, ProxyArn = NULL, ListenerPropertiesToAdd = NULL, ListenerPropertiesToRemove = NULL, TlsInterceptProperties = NULL, UpdateToken) {
+  op <- new_operation(
+    name = "UpdateProxy",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$update_proxy_input(NatGatewayId = NatGatewayId, ProxyName = ProxyName, ProxyArn = ProxyArn, ListenerPropertiesToAdd = ListenerPropertiesToAdd, ListenerPropertiesToRemove = ListenerPropertiesToRemove, TlsInterceptProperties = TlsInterceptProperties, UpdateToken = UpdateToken)
+  output <- .networkfirewall$update_proxy_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$update_proxy <- networkfirewall_update_proxy
+
+#' Updates the properties of the specified proxy configuration
+#'
+#' @description
+#' Updates the properties of the specified proxy configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_update_proxy_configuration/](https://www.paws-r-sdk.com/docs/networkfirewall_update_proxy_configuration/) for full documentation.
+#'
+#' @param ProxyConfigurationName The descriptive name of the proxy configuration. You can't change the
+#' name of a proxy configuration after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param ProxyConfigurationArn The Amazon Resource Name (ARN) of a proxy configuration.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param DefaultRulePhaseActions &#91;required&#93; Evaluation points in the traffic flow where rules are applied. There are
+#' three phases in a traffic where the rule match is applied.
+#' @param UpdateToken &#91;required&#93; A token used for optimistic locking. Network Firewall returns a token to
+#' your requests that access the proxy configuration. The token marks the
+#' state of the proxy configuration resource at the time of the request.
+#' 
+#' To make changes to the proxy configuration, you provide the token in
+#' your request. Network Firewall uses the token to ensure that the proxy
+#' configuration hasn't changed since you last retrieved it. If it has
+#' changed, the operation fails with an `InvalidTokenException`. If this
+#' happens, retrieve the proxy configuration again to get a current copy of
+#' it with a current token. Reapply your changes as needed, then try the
+#' operation again using the new token.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_update_proxy_configuration
+networkfirewall_update_proxy_configuration <- function(ProxyConfigurationName = NULL, ProxyConfigurationArn = NULL, DefaultRulePhaseActions, UpdateToken) {
+  op <- new_operation(
+    name = "UpdateProxyConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$update_proxy_configuration_input(ProxyConfigurationName = ProxyConfigurationName, ProxyConfigurationArn = ProxyConfigurationArn, DefaultRulePhaseActions = DefaultRulePhaseActions, UpdateToken = UpdateToken)
+  output <- .networkfirewall$update_proxy_configuration_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$update_proxy_configuration <- networkfirewall_update_proxy_configuration
+
+#' Updates the properties of the specified proxy rule
+#'
+#' @description
+#' Updates the properties of the specified proxy rule.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_update_proxy_rule/](https://www.paws-r-sdk.com/docs/networkfirewall_update_proxy_rule/) for full documentation.
+#'
+#' @param ProxyRuleGroupName The descriptive name of the proxy rule group. You can't change the name
+#' of a proxy rule group after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param ProxyRuleGroupArn The Amazon Resource Name (ARN) of a proxy rule group.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param ProxyRuleName &#91;required&#93; The descriptive name of the proxy rule. You can't change the name of a
+#' proxy rule after you create it.
+#' @param Description A description of the proxy rule.
+#' @param Action Depending on the match action, the proxy either stops the evaluation (if
+#' the action is terminal - allow or deny), or continues it (if the action
+#' is alert) until it matches a rule with a terminal action.
+#' @param AddConditions Proxy rule conditions to add. Match criteria that specify what traffic
+#' attributes to examine. Conditions include operators (StringEquals,
+#' StringLike) and values to match against.
+#' @param RemoveConditions Proxy rule conditions to remove. Match criteria that specify what
+#' traffic attributes to examine. Conditions include operators
+#' (StringEquals, StringLike) and values to match against.
+#' @param UpdateToken &#91;required&#93; A token used for optimistic locking. Network Firewall returns a token to
+#' your requests that access the proxy rule. The token marks the state of
+#' the proxy rule resource at the time of the request.
+#' 
+#' To make changes to the proxy rule, you provide the token in your
+#' request. Network Firewall uses the token to ensure that the proxy rule
+#' hasn't changed since you last retrieved it. If it has changed, the
+#' operation fails with an `InvalidTokenException`. If this happens,
+#' retrieve the proxy rule again to get a current copy of it with a current
+#' token. Reapply your changes as needed, then try the operation again
+#' using the new token.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_update_proxy_rule
+networkfirewall_update_proxy_rule <- function(ProxyRuleGroupName = NULL, ProxyRuleGroupArn = NULL, ProxyRuleName, Description = NULL, Action = NULL, AddConditions = NULL, RemoveConditions = NULL, UpdateToken) {
+  op <- new_operation(
+    name = "UpdateProxyRule",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$update_proxy_rule_input(ProxyRuleGroupName = ProxyRuleGroupName, ProxyRuleGroupArn = ProxyRuleGroupArn, ProxyRuleName = ProxyRuleName, Description = Description, Action = Action, AddConditions = AddConditions, RemoveConditions = RemoveConditions, UpdateToken = UpdateToken)
+  output <- .networkfirewall$update_proxy_rule_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$update_proxy_rule <- networkfirewall_update_proxy_rule
+
+#' Updates proxy rule group priorities within a proxy configuration
+#'
+#' @description
+#' Updates proxy rule group priorities within a proxy configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_update_proxy_rule_group_priorities/](https://www.paws-r-sdk.com/docs/networkfirewall_update_proxy_rule_group_priorities/) for full documentation.
+#'
+#' @param ProxyConfigurationName The descriptive name of the proxy configuration. You can't change the
+#' name of a proxy configuration after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param ProxyConfigurationArn The Amazon Resource Name (ARN) of a proxy configuration.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param RuleGroups &#91;required&#93; proxy rule group resources to update to new positions.
+#' @param UpdateToken &#91;required&#93; A token used for optimistic locking. Network Firewall returns a token to
+#' your requests that access the proxy configuration. The token marks the
+#' state of the proxy configuration resource at the time of the request.
+#' 
+#' To make changes to the proxy configuration, you provide the token in
+#' your request. Network Firewall uses the token to ensure that the proxy
+#' configuration hasn't changed since you last retrieved it. If it has
+#' changed, the operation fails with an `InvalidTokenException`. If this
+#' happens, retrieve the proxy configuration again to get a current copy of
+#' it with a current token. Reapply your changes as needed, then try the
+#' operation again using the new token.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_update_proxy_rule_group_priorities
+networkfirewall_update_proxy_rule_group_priorities <- function(ProxyConfigurationName = NULL, ProxyConfigurationArn = NULL, RuleGroups, UpdateToken) {
+  op <- new_operation(
+    name = "UpdateProxyRuleGroupPriorities",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$update_proxy_rule_group_priorities_input(ProxyConfigurationName = ProxyConfigurationName, ProxyConfigurationArn = ProxyConfigurationArn, RuleGroups = RuleGroups, UpdateToken = UpdateToken)
+  output <- .networkfirewall$update_proxy_rule_group_priorities_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$update_proxy_rule_group_priorities <- networkfirewall_update_proxy_rule_group_priorities
+
+#' Updates proxy rule priorities within a proxy rule group
+#'
+#' @description
+#' Updates proxy rule priorities within a proxy rule group.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_update_proxy_rule_priorities/](https://www.paws-r-sdk.com/docs/networkfirewall_update_proxy_rule_priorities/) for full documentation.
+#'
+#' @param ProxyRuleGroupName The descriptive name of the proxy rule group. You can't change the name
+#' of a proxy rule group after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param ProxyRuleGroupArn The Amazon Resource Name (ARN) of a proxy rule group.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param RuleGroupRequestPhase &#91;required&#93; Evaluation points in the traffic flow where rules are applied. There are
+#' three phases in a traffic where the rule match is applied.
+#' @param Rules &#91;required&#93; proxy rule resources to update to new positions.
+#' @param UpdateToken &#91;required&#93; A token used for optimistic locking. Network Firewall returns a token to
+#' your requests that access the proxy rule group. The token marks the
+#' state of the proxy rule group resource at the time of the request.
+#' 
+#' To make changes to the proxy rule group, you provide the token in your
+#' request. Network Firewall uses the token to ensure that the proxy rule
+#' group hasn't changed since you last retrieved it. If it has changed, the
+#' operation fails with an `InvalidTokenException`. If this happens,
+#' retrieve the proxy rule group again to get a current copy of it with a
+#' current token. Reapply your changes as needed, then try the operation
+#' again using the new token.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_update_proxy_rule_priorities
+networkfirewall_update_proxy_rule_priorities <- function(ProxyRuleGroupName = NULL, ProxyRuleGroupArn = NULL, RuleGroupRequestPhase, Rules, UpdateToken) {
+  op <- new_operation(
+    name = "UpdateProxyRulePriorities",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$update_proxy_rule_priorities_input(ProxyRuleGroupName = ProxyRuleGroupName, ProxyRuleGroupArn = ProxyRuleGroupArn, RuleGroupRequestPhase = RuleGroupRequestPhase, Rules = Rules, UpdateToken = UpdateToken)
+  output <- .networkfirewall$update_proxy_rule_priorities_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$update_proxy_rule_priorities <- networkfirewall_update_proxy_rule_priorities
 
 #' Updates the rule settings for the specified rule group
 #'
@@ -2059,11 +3567,15 @@ networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, Fir
 #' set to `TRUE`, Network Firewall runs the analysis and then updates the
 #' rule group for you. To run the stateless rule group analyzer without
 #' updating the rule group, set `DryRun` to `TRUE`.
+#' @param SummaryConfiguration Updates the selected summary configuration for a rule group.
+#' 
+#' Changes affect subsequent responses from
+#' [`describe_rule_group_summary`][networkfirewall_describe_rule_group_summary].
 #'
 #' @keywords internal
 #'
 #' @rdname networkfirewall_update_rule_group
-networkfirewall_update_rule_group <- function(UpdateToken, RuleGroupArn = NULL, RuleGroupName = NULL, RuleGroup = NULL, Rules = NULL, Type = NULL, Description = NULL, DryRun = NULL, EncryptionConfiguration = NULL, SourceMetadata = NULL, AnalyzeRuleGroup = NULL) {
+networkfirewall_update_rule_group <- function(UpdateToken, RuleGroupArn = NULL, RuleGroupName = NULL, RuleGroup = NULL, Rules = NULL, Type = NULL, Description = NULL, DryRun = NULL, EncryptionConfiguration = NULL, SourceMetadata = NULL, AnalyzeRuleGroup = NULL, SummaryConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateRuleGroup",
     http_method = "POST",
@@ -2072,7 +3584,7 @@ networkfirewall_update_rule_group <- function(UpdateToken, RuleGroupArn = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .networkfirewall$update_rule_group_input(UpdateToken = UpdateToken, RuleGroupArn = RuleGroupArn, RuleGroupName = RuleGroupName, RuleGroup = RuleGroup, Rules = Rules, Type = Type, Description = Description, DryRun = DryRun, EncryptionConfiguration = EncryptionConfiguration, SourceMetadata = SourceMetadata, AnalyzeRuleGroup = AnalyzeRuleGroup)
+  input <- .networkfirewall$update_rule_group_input(UpdateToken = UpdateToken, RuleGroupArn = RuleGroupArn, RuleGroupName = RuleGroupName, RuleGroup = RuleGroup, Rules = Rules, Type = Type, Description = Description, DryRun = DryRun, EncryptionConfiguration = EncryptionConfiguration, SourceMetadata = SourceMetadata, AnalyzeRuleGroup = AnalyzeRuleGroup, SummaryConfiguration = SummaryConfiguration)
   output <- .networkfirewall$update_rule_group_output()
   config <- get_config()
   svc <- .networkfirewall$service(config, op)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_list_route_calculators}
 \alias{locationservice_list_route_calculators}
-\title{Lists route calculator resources in your Amazon Web Services account}
+\title{This operation is no longer current and may be deprecated in the future}
 \usage{
 locationservice_list_route_calculators(MaxResults = NULL, NextToken = NULL)
 }
@@ -17,7 +17,7 @@ response. If no token is provided, the default page is the first page.
 Default Value: \code{null}}
 }
 \description{
-Lists route calculator resources in your Amazon Web Services account.
+This operation is no longer current and may be deprecated in the future. We recommend you upgrade to the Routes API V2 unless you require Grab data.
 
 See \url{https://www.paws-r-sdk.com/docs/locationservice_list_route_calculators/} for full documentation.
 }

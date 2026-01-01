@@ -2,7 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_list_reference_import_jobs}
 \alias{omics_list_reference_import_jobs}
-\title{Retrieves a list of reference import jobs}
+\title{Retrieves the metadata of one or more reference import jobs for a
+reference store}
 \usage{
 omics_list_reference_import_jobs(
   maxResults = NULL,
@@ -22,7 +23,7 @@ next page of results.}
 \item{filter}{A filter to apply to the list.}
 }
 \description{
-Retrieves a list of reference import jobs.
+Retrieves the metadata of one or more reference import jobs for a reference store.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_list_reference_import_jobs/} for full documentation.
 }

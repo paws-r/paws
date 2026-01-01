@@ -13,8 +13,11 @@ servicediscovery_register_instance(
 )
 }
 \arguments{
-\item{ServiceId}{[required] The ID of the service that you want to use for settings for the
-instance.}
+\item{ServiceId}{[required] The ID or Amazon Resource Name (ARN) of the service that you want to use
+for settings for the instance. For services created in a shared
+namespace, specify the service ARN. For more information about shared
+namespaces, see \href{https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html}{Cross-account Cloud Map namespace sharing}
+in the \emph{Cloud Map Developer Guide}.}
 
 \item{InstanceId}{[required] An identifier that you want to associate with the instance. Note the
 following:

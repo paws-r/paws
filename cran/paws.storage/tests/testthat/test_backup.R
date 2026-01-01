@@ -135,3 +135,27 @@ test_that("list_restore_testing_plans", {
 test_that("list_restore_testing_plans", {
   expect_error(svc$list_restore_testing_plans(MaxResults = 20), NA)
 })
+
+test_that("list_scan_job_summaries", {
+  expect_error(svc$list_scan_job_summaries(), NA)
+})
+
+test_that("list_scan_job_summaries", {
+  expect_error(svc$list_scan_job_summaries(MaxResults = 20), NA)
+})
+
+test_that("list_scan_jobs", {
+  expect_error(svc$list_scan_jobs(), NA)
+})
+
+test_that("list_scan_jobs", {
+  expect_error(svc$list_scan_jobs(MaxResults = 20), NA)
+})
+
+test_that("list_tiering_configurations", {
+  expect_error(svc$list_tiering_configurations(), NA)
+})
+
+test_that("list_tiering_configurations", {
+  expect_error(svc$list_tiering_configurations(MaxResults = 20), NA)
+})

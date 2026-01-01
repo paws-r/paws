@@ -32,7 +32,7 @@ you specify an existing tag key with a different tag value, KMS replaces
 the current tag value with the specified one.}
 }
 \description{
-Adds or edits tags on a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed key}.
+Adds or edits tags on a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-mgn-key}{customer managed key}.
 
 See \url{https://www.paws-r-sdk.com/docs/kms_tag_resource/} for full documentation.
 }

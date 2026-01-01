@@ -7,13 +7,14 @@
 codestarnotifications_delete_target(TargetAddress, ForceUnsubscribeAll = NULL)
 }
 \arguments{
-\item{TargetAddress}{[required] The Amazon Resource Name (ARN) of the Chatbot topic or Chatbot client to
+\item{TargetAddress}{[required] The Amazon Resource Name (ARN) of the Amazon Q Developer in chat
+applications topic or Amazon Q Developer in chat applications client to
 delete.}
 
 \item{ForceUnsubscribeAll}{A Boolean value that can be used to delete all associations with this
-Chatbot topic. The default value is FALSE. If set to TRUE, all
-associations between that target and every notification rule in your
-Amazon Web Services account are deleted.}
+Amazon Q Developer in chat applications topic. The default value is
+FALSE. If set to TRUE, all associations between that target and every
+notification rule in your Amazon Web Services account are deleted.}
 }
 \description{
 Deletes a specified target for notifications.

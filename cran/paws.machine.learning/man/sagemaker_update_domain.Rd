@@ -12,7 +12,8 @@ sagemaker_update_domain(
   DefaultSpaceSettings = NULL,
   SubnetIds = NULL,
   AppNetworkAccessType = NULL,
-  TagPropagation = NULL
+  TagPropagation = NULL,
+  VpcId = NULL
 )
 }
 \arguments{
@@ -54,6 +55,13 @@ is provided as part of the same request.}
 
 \item{TagPropagation}{Indicates whether custom tag propagation is supported for the domain.
 Defaults to \code{DISABLED}.}
+
+\item{VpcId}{The identifier for the VPC used by the domain for network communication.
+Use this field only when adding VPC configuration to a SageMaker AI
+domain used in Amazon SageMaker Unified Studio that was created without
+VPC settings. SageMaker AI doesn't automatically apply VPC updates to
+existing applications. Stop and restart your applications to apply the
+changes.}
 }
 \description{
 Updates the default settings for new user profiles in the domain.

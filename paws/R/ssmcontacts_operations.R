@@ -153,8 +153,13 @@ ssmcontacts_activate_contact_channel <- function(ContactChannelId, ActivationCod
 #' @param Alias &#91;required&#93; The short name to quickly identify a contact or escalation plan. The
 #' contact alias must be unique and identifiable.
 #' @param DisplayName The full name of the contact or escalation plan.
-#' @param Type &#91;required&#93; To create an escalation plan use `ESCALATION`. To create a contact use
-#' `PERSONAL`.
+#' @param Type &#91;required&#93; The type of contact to create.
+#' 
+#' -   `PERSONAL`: A single, individual contact.
+#' 
+#' -   `ESCALATION`: An escalation plan.
+#' 
+#' -   `ONCALL_SCHEDULE`: An on-call schedule.
 #' @param Plan &#91;required&#93; A list of stages. A contact has an engagement plan with stages that
 #' contact specified contact channels. An escalation plan uses stages that
 #' contact specified contacts.
@@ -358,6 +363,9 @@ ssmcontacts_create_contact_channel <- function(ContactId, Name, Type, DeliveryAd
 #' @param Name &#91;required&#93; The name of the rotation.
 #' @param ContactIds &#91;required&#93; The Amazon Resource Names (ARNs) of the contacts to add to the rotation.
 #' 
+#' Only the `PERSONAL` contact type is supported. The contact types
+#' `ESCALATION` and `ONCALL_SCHEDULE` are not supported for this operation.
+#' 
 #' The order that you list the contacts in is their shift order in the
 #' rotation schedule. To change the order of the contact's shifts, use the
 #' [`update_rotation`][ssmcontacts_update_rotation] operation.
@@ -368,8 +376,7 @@ ssmcontacts_create_contact_channel <- function(ContactId, Name, Type, DeliveryAd
 #' Database](https://www.iana.org/time-zones) on the IANA website.
 #' 
 #' Designators for time zones that don’t support Daylight Savings Time
-#' rules, such as Pacific Standard Time (PST) and Pacific Daylight Time
-#' (PDT), are not supported.
+#' rules, such as Pacific Standard Time (PST), are not supported.
 #' @param Recurrence &#91;required&#93; Information about the rule that specifies when a shift's team members
 #' rotate.
 #' @param Tags Optional metadata to assign to the rotation. Tags enable you to
@@ -608,10 +615,11 @@ ssmcontacts_deactivate_contact_channel <- function(ContactChannelId) {
 #'
 #' @description
 #' To remove a contact from Incident Manager, you can delete the contact.
-#' Deleting a contact removes them from all escalation plans and related
-#' response plans. Deleting an escalation plan removes it from all related
-#' response plans. You will have to recreate the contact and its contact
-#' channels before you can use it again.
+#' However, deleting a contact does not remove it from escalation plans and
+#' related response plans. Deleting an escalation plan also does not remove
+#' it from all related response plans. To modify an escalation plan, we
+#' recommend using the [`update_contact`][ssmcontacts_update_contact]
+#' action to specify a different existing contact.
 #'
 #' @usage
 #' ssmcontacts_delete_contact(ContactId)
@@ -661,14 +669,15 @@ ssmcontacts_delete_contact <- function(ContactId) {
 }
 .ssmcontacts$operations$delete_contact <- ssmcontacts_delete_contact
 
-#' To no longer receive engagements on a contact channel, you can delete
-#' the channel from a contact
+#' To stop receiving engagements on a contact channel, you can delete the
+#' channel from a contact
 #'
 #' @description
-#' To no longer receive engagements on a contact channel, you can delete
-#' the channel from a contact. Deleting the contact channel removes it from
-#' the contact's engagement plan. If you delete the only contact channel
-#' for a contact, you won't be able to engage that contact during an
+#' To stop receiving engagements on a contact channel, you can delete the
+#' channel from a contact. Deleting the contact channel does not remove it
+#' from the contact's engagement plan, but the stage that includes the
+#' channel will be ignored. If you delete the only contact channel for a
+#' contact, you'll no longer be able to engage that contact during an
 #' incident.
 #'
 #' @usage
@@ -1429,8 +1438,7 @@ ssmcontacts_list_contact_channels <- function(ContactId, NextToken = NULL, MaxRe
 #' @param MaxResults The maximum number of contacts and escalation plans per page of results.
 #' @param AliasPrefix Used to list only contacts who's aliases start with the specified
 #' prefix.
-#' @param Type The type of contact. A contact is type `PERSONAL` and an escalation plan
-#' is type `ESCALATION`.
+#' @param Type The type of contact.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2322,15 +2330,18 @@ ssmcontacts_list_rotations <- function(RotationNamePrefix = NULL, NextToken = NU
 }
 .ssmcontacts$operations$list_rotations <- ssmcontacts_list_rotations
 
-#' Lists the tags of an escalation plan or contact
+#' Lists the tags of a contact, escalation plan, rotation, or on-call
+#' schedule
 #'
 #' @description
-#' Lists the tags of an escalation plan or contact.
+#' Lists the tags of a contact, escalation plan, rotation, or on-call
+#' schedule.
 #'
 #' @usage
 #' ssmcontacts_list_tags_for_resource(ResourceARN)
 #'
-#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the contact or escalation plan.
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the contact, escalation plan,
+#' rotation, or on-call schedule.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2983,6 +2994,9 @@ ssmcontacts_update_contact_channel <- function(ContactChannelId, Name = NULL, De
 #' @param ContactIds The Amazon Resource Names (ARNs) of the contacts to include in the
 #' updated rotation.
 #' 
+#' Only the `PERSONAL` contact type is supported. The contact types
+#' `ESCALATION` and `ONCALL_SCHEDULE` are not supported for this operation.
+#' 
 #' The order in which you list the contacts is their shift order in the
 #' rotation schedule.
 #' @param StartTime The date and time the rotation goes into effect.
@@ -2993,8 +3007,7 @@ ssmcontacts_update_contact_channel <- function(ContactChannelId, Name = NULL, De
 #' website.
 #' 
 #' Designators for time zones that don’t support Daylight Savings Time
-#' Rules, such as Pacific Standard Time (PST) and Pacific Daylight Time
-#' (PDT), aren't supported.
+#' Rules, such as Pacific Standard Time (PST), aren't supported.
 #' @param Recurrence &#91;required&#93; Information about how long the updated rotation lasts before restarting
 #' at the beginning of the shift order.
 #'

@@ -13,8 +13,8 @@ organizations_list_policies_for_target(
 )
 }
 \arguments{
-\item{TargetId}{[required] The unique identifier (ID) of the root, organizational unit, or account
-whose policies you want to list.
+\item{TargetId}{[required] ID for the root, organizational unit, or account whose policies you want
+to list.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a target ID
 string requires one of the following:
@@ -38,6 +38,12 @@ must specify one of the following values:
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG_POLICY}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_chatbot.html}{CHATBOT_POLICY}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES_OPT_OUT_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_security_hub.html}{SECURITYHUB_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_upgrade_rollout.html}{UPGRADE_ROLLOUT_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_inspector.html}{INSPECTOR_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_bedrock.html}{BEDROCK_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_s3.html}{S3_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_network_security_director.html}{NETWORK_SECURITY_DIRECTOR_POLICY}
 }}
 
 \item{NextToken}{The parameter for receiving additional results if you receive a
@@ -46,16 +52,9 @@ indicates that more output is available. Set this parameter to the value
 of the previous call's \code{NextToken} response to indicate where the output
 should continue from.}
 
-\item{MaxResults}{The total number of results that you want included on each page of the
-response. If you do not include this parameter, it defaults to a value
-that is specific to the operation. If additional items exist beyond the
-maximum you specify, the \code{NextToken} response element is present and has
-a value (is not null). Include that value as the \code{NextToken} request
-parameter in the next call to the operation to get the next part of the
-results. Note that Organizations might return fewer results than the
-maximum even when there are more results available. You should check
-\code{NextToken} after every operation to ensure that you receive all of the
-results.}
+\item{MaxResults}{The maximum number of items to return in the response. If more results
+exist than the specified \code{MaxResults} value, a token is included in the
+response so that you can retrieve the remaining results.}
 }
 \description{
 Lists the policies that are directly attached to the specified target root, organizational unit (OU), or account. You must specify the policy type that you want included in the returned list.

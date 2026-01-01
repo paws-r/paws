@@ -13,7 +13,7 @@ cloudformation_describe_stack_instance(
 )
 }
 \arguments{
-\item{StackSetName}{[required] The name or the unique stack ID of the stack set that you want to get
+\item{StackSetName}{[required] The name or the unique stack ID of the StackSet that you want to get
 stack instance information for.}
 
 \item{StackInstanceAccount}{[required] The ID of an Amazon Web Services account that's associated with this
@@ -25,7 +25,7 @@ stack instance.}
 account administrator in the organization's management account or as a
 delegated administrator in a member account.
 
-By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+By default, \code{SELF} is specified. Use \code{SELF} for StackSets with
 self-managed permissions.
 \itemize{
 \item If you are signed in to the management account, specify \code{SELF}.

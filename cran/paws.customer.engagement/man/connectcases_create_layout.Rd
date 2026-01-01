@@ -4,15 +4,15 @@
 \alias{connectcases_create_layout}
 \title{Creates a layout in the Cases domain}
 \usage{
-connectcases_create_layout(content, domainId, name)
+connectcases_create_layout(domainId, name, content)
 }
 \arguments{
-\item{content}{[required] Information about which fields will be present in the layout, and
-information about the order of the fields.}
-
 \item{domainId}{[required] The unique identifier of the Cases domain.}
 
 \item{name}{[required] The name of the layout. It must be unique for the Cases domain.}
+
+\item{content}{[required] Information about which fields will be present in the layout, and
+information about the order of the fields.}
 }
 \description{
 Creates a layout in the Cases domain. Layouts define the following configuration in the top section and More Info tab of the Cases user interface:

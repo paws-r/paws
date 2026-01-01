@@ -102,11 +102,15 @@ bases.
 \link[paws.machine.learning:bedrockagentruntime_end_session]{end_session} \tab Ends the session\cr
 \link[paws.machine.learning:bedrockagentruntime_generate_query]{generate_query} \tab Generates an SQL query from a natural language query\cr
 \link[paws.machine.learning:bedrockagentruntime_get_agent_memory]{get_agent_memory} \tab Gets the sessions stored in the memory of the agent\cr
+\link[paws.machine.learning:bedrockagentruntime_get_execution_flow_snapshot]{get_execution_flow_snapshot} \tab Retrieves the flow definition snapshot used for a flow execution\cr
+\link[paws.machine.learning:bedrockagentruntime_get_flow_execution]{get_flow_execution} \tab Retrieves details about a specific flow execution, including its status, start and end times, and any errors that occurred during execution\cr
 \link[paws.machine.learning:bedrockagentruntime_get_invocation_step]{get_invocation_step} \tab Retrieves the details of a specific invocation step within an invocation in a session\cr
 \link[paws.machine.learning:bedrockagentruntime_get_session]{get_session} \tab Retrieves details about a specific session\cr
 \link[paws.machine.learning:bedrockagentruntime_invoke_agent]{invoke_agent} \tab Sends a prompt for the agent to process and respond to\cr
 \link[paws.machine.learning:bedrockagentruntime_invoke_flow]{invoke_flow} \tab Invokes an alias of a flow to run the inputs that you specify and return the output of each node as a stream\cr
 \link[paws.machine.learning:bedrockagentruntime_invoke_inline_agent]{invoke_inline_agent} \tab Invokes an inline Amazon Bedrock agent using the configurations you provide with the request\cr
+\link[paws.machine.learning:bedrockagentruntime_list_flow_execution_events]{list_flow_execution_events} \tab Lists events that occurred during a flow execution\cr
+\link[paws.machine.learning:bedrockagentruntime_list_flow_executions]{list_flow_executions} \tab Lists all executions of a flow\cr
 \link[paws.machine.learning:bedrockagentruntime_list_invocations]{list_invocations} \tab Lists all invocations associated with a specific session\cr
 \link[paws.machine.learning:bedrockagentruntime_list_invocation_steps]{list_invocation_steps} \tab Lists all invocation steps associated with a session and optionally, an invocation within the session\cr
 \link[paws.machine.learning:bedrockagentruntime_list_sessions]{list_sessions} \tab Lists all sessions in your Amazon Web Services account\cr
@@ -117,6 +121,8 @@ bases.
 \link[paws.machine.learning:bedrockagentruntime_retrieve]{retrieve} \tab Queries a knowledge base and retrieves information from it\cr
 \link[paws.machine.learning:bedrockagentruntime_retrieve_and_generate]{retrieve_and_generate} \tab Queries a knowledge base and generates responses based on the retrieved results and using the specified foundation model or inference profile\cr
 \link[paws.machine.learning:bedrockagentruntime_retrieve_and_generate_stream]{retrieve_and_generate_stream} \tab Queries a knowledge base and generates responses based on the retrieved results, with output in streaming format\cr
+\link[paws.machine.learning:bedrockagentruntime_start_flow_execution]{start_flow_execution} \tab Starts an execution of an Amazon Bedrock flow\cr
+\link[paws.machine.learning:bedrockagentruntime_stop_flow_execution]{stop_flow_execution} \tab Stops an Amazon Bedrock flow's execution\cr
 \link[paws.machine.learning:bedrockagentruntime_tag_resource]{tag_resource} \tab Associate tags with a resource\cr
 \link[paws.machine.learning:bedrockagentruntime_untag_resource]{untag_resource} \tab Remove tags from a resource\cr
 \link[paws.machine.learning:bedrockagentruntime_update_session]{update_session} \tab Updates the metadata or encryption settings of a session

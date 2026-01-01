@@ -9,7 +9,8 @@ ec2_create_ipam_scope(
   IpamId,
   Description = NULL,
   TagSpecifications = NULL,
-  ClientToken = NULL
+  ClientToken = NULL,
+  ExternalAuthorityConfiguration = NULL
 )
 }
 \arguments{
@@ -30,6 +31,18 @@ for the filter value.}
 
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
+
+\item{ExternalAuthorityConfiguration}{The configuration that links an Amazon VPC IPAM scope to an external
+authority system. It specifies the type of external system and the
+external resource identifier that identifies your account or instance in
+that system.
+
+In IPAM, an external authority is a third-party IP address management
+system that provides CIDR blocks when you provision address space for
+top-level IPAM pools. This allows you to use your existing IP management
+system to control which address ranges are allocated to Amazon Web
+Services while using Amazon VPC IPAM to manage subnets within those
+ranges.}
 }
 \description{
 Create an IPAM scope. In IPAM, a scope is the highest-level container within IPAM. An IPAM contains two default scopes. Each scope represents the IP space for a single network. The private scope is intended for all private IP address space. The public scope is intended for all public IP address space. Scopes enable you to reuse IP addresses across multiple unconnected networks without causing IP address overlap or conflict.

@@ -3,16 +3,16 @@
 \name{pinpointsmsvoicev2_get_resource_policy}
 \alias{pinpointsmsvoicev2_get_resource_policy}
 \title{Retrieves the JSON text of the resource-based policy document attached
-to the AWS End User Messaging SMS and Voice resource}
+to the End User Messaging SMS resource}
 \usage{
 pinpointsmsvoicev2_get_resource_policy(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the AWS End User Messaging SMS and
-Voice resource attached to the resource-based policy.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the End User Messaging SMS resource
+attached to the resource-based policy.}
 }
 \description{
-Retrieves the JSON text of the resource-based policy document attached to the AWS End User Messaging SMS and Voice resource. A shared resource can be a Pool, Opt-out list, Sender Id, or Phone number.
+Retrieves the JSON text of the resource-based policy document attached to the End User Messaging SMS resource. A shared resource can be a Pool, Opt-out list, Sender Id, or Phone number.
 
 See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_get_resource_policy/} for full documentation.
 }

@@ -19,8 +19,7 @@ connect_create_email_address(
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
 in the Amazon Resource Name (ARN) of the instance.}
 
-\item{EmailAddress}{[required] The email address with the instance, in
-[^\\s@]+@[^\\s@]+\\.[^\\s@]+ format.}
+\item{EmailAddress}{[required] The email address, including the domain.}
 
 \item{DisplayName}{The display name of email address}
 

@@ -9,8 +9,7 @@ ecs_describe_tasks(cluster = NULL, tasks, include = NULL)
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that
 hosts the task or tasks to describe. If you do not specify a cluster,
-the default cluster is assumed. This parameter is required. If you do
-not specify a value, the \code{default} cluster is used.}
+the default cluster is assumed.}
 
 \item{tasks}{[required] A list of up to 100 task IDs or full ARN entries.}
 

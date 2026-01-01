@@ -5,29 +5,29 @@
 \title{Updates the configurations for a data source connector}
 \usage{
 bedrockagent_update_data_source(
-  dataDeletionPolicy = NULL,
-  dataSourceConfiguration,
-  dataSourceId,
-  description = NULL,
   knowledgeBaseId,
+  dataSourceId,
   name,
+  description = NULL,
+  dataSourceConfiguration,
+  dataDeletionPolicy = NULL,
   serverSideEncryptionConfiguration = NULL,
   vectorIngestionConfiguration = NULL
 )
 }
 \arguments{
-\item{dataDeletionPolicy}{The data deletion policy for the data source that you want to update.}
+\item{knowledgeBaseId}{[required] The unique identifier of the knowledge base for the data source.}
+
+\item{dataSourceId}{[required] The unique identifier of the data source.}
+
+\item{name}{[required] Specifies a new name for the data source.}
+
+\item{description}{Specifies a new description for the data source.}
 
 \item{dataSourceConfiguration}{[required] The connection configuration for the data source that you want to
 update.}
 
-\item{dataSourceId}{[required] The unique identifier of the data source.}
-
-\item{description}{Specifies a new description for the data source.}
-
-\item{knowledgeBaseId}{[required] The unique identifier of the knowledge base for the data source.}
-
-\item{name}{[required] Specifies a new name for the data source.}
+\item{dataDeletionPolicy}{The data deletion policy for the data source that you want to update.}
 
 \item{serverSideEncryptionConfiguration}{Contains details about server-side encryption of the data source.}
 

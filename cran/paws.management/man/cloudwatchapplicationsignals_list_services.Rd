@@ -34,10 +34,7 @@ this parameter, the default of 50 is used.}
 the next set of services.}
 
 \item{IncludeLinkedAccounts}{If you are using this operation in a monitoring account, specify \code{true}
-to include services from source accounts in the returned data.
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{ </p>
-}\if{html}{\out{</div>}}}
+to include services from source accounts in the returned data.}
 
 \item{AwsAccountId}{Amazon Web Services Account ID.}
 }

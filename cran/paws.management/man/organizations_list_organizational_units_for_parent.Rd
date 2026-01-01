@@ -12,8 +12,7 @@ organizations_list_organizational_units_for_parent(
 )
 }
 \arguments{
-\item{ParentId}{[required] The unique identifier (ID) of the root or OU whose child OUs you want to
-list.
+\item{ParentId}{[required] ID for the root or OU whose child OUs you want to list.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a parent ID
 string requires one of the following:
@@ -32,16 +31,9 @@ indicates that more output is available. Set this parameter to the value
 of the previous call's \code{NextToken} response to indicate where the output
 should continue from.}
 
-\item{MaxResults}{The total number of results that you want included on each page of the
-response. If you do not include this parameter, it defaults to a value
-that is specific to the operation. If additional items exist beyond the
-maximum you specify, the \code{NextToken} response element is present and has
-a value (is not null). Include that value as the \code{NextToken} request
-parameter in the next call to the operation to get the next part of the
-results. Note that Organizations might return fewer results than the
-maximum even when there are more results available. You should check
-\code{NextToken} after every operation to ensure that you receive all of the
-results.}
+\item{MaxResults}{The maximum number of items to return in the response. If more results
+exist than the specified \code{MaxResults} value, a token is included in the
+response so that you can retrieve the remaining results.}
 }
 \description{
 Lists the organizational units (OUs) in a parent organizational unit or root.

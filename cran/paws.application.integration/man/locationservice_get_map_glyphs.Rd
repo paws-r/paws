@@ -2,7 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_get_map_glyphs}
 \alias{locationservice_get_map_glyphs}
-\title{Retrieves glyphs used to display labels on a map}
+\title{This operation is no longer current and may be deprecated in the future}
 \usage{
 locationservice_get_map_glyphs(
   MapName,
@@ -18,7 +18,7 @@ locationservice_get_map_glyphs(
 preference. For example, \verb{Noto Sans Regular, Arial Unicode}.
 
 Valid font stacks for
-\href{https://docs.aws.amazon.com/location/latest/developerguide/}{Esri}
+\href{https://docs.aws.amazon.com/location/previous/developerguide/esri.html}{Esri}
 styles:
 \itemize{
 \item VectorEsriDarkGrayCanvas – \verb{Ubuntu Medium Italic} | \verb{Ubuntu Medium}
@@ -33,7 +33,7 @@ styles:
 \verb{Arial Bold}
 }
 
-Valid font stacks for \href{https://docs.aws.amazon.com/location/latest/developerguide/}{HERE Technologies}
+Valid font stacks for \href{https://docs.aws.amazon.com/location/previous/developerguide/HERE.html}{HERE Technologies}
 styles:
 \itemize{
 \item VectorHereContrast – \verb{Fira GO Regular} | \verb{Fira GO Bold}
@@ -44,14 +44,14 @@ HybridHereExploreSatellite – \verb{Fira GO Italic} | \verb{Fira GO Map} |
 }
 
 Valid font stacks for
-\href{https://docs.aws.amazon.com/location/latest/developerguide/}{GrabMaps}
+\href{https://docs.aws.amazon.com/location/previous/developerguide/grab.html}{GrabMaps}
 styles:
 \itemize{
 \item VectorGrabStandardLight, VectorGrabStandardDark –
 \verb{Noto Sans Regular} | \verb{Noto Sans Medium} | \verb{Noto Sans Bold}
 }
 
-Valid font stacks for \href{https://docs.aws.amazon.com/location/latest/developerguide/}{Open Data}
+Valid font stacks for \href{https://docs.aws.amazon.com/location/previous/developerguide/open-data.html}{Open Data}
 styles:
 \itemize{
 \item VectorOpenDataStandardLight, VectorOpenDataStandardDark,
@@ -79,11 +79,11 @@ The fonts used by the Open Data map styles are combined fonts that use
 contain 256 characters. For example, 0–255 includes all characters from
 range \code{U+0000} to \verb{00FF}. Must be aligned to multiples of 256.}
 
-\item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}
+\item{Key}{The optional \href{https://docs.aws.amazon.com/location/previous/developerguide/using-apikeys.html}{API key}
 to authorize the request.}
 }
 \description{
-Retrieves glyphs used to display labels on a map.
+This operation is no longer current and may be deprecated in the future. We recommend upgrading to \href{https://docs.aws.amazon.com/location/latest/APIReference/API_geomaps_GetGlyphs.html}{\code{GetGlyphs}} unless you require \code{Grab} data.
 
 See \url{https://www.paws-r-sdk.com/docs/locationservice_get_map_glyphs/} for full documentation.
 }

@@ -14,7 +14,10 @@ ec2_describe_fast_snapshot_restores(
 \arguments{
 \item{Filters}{The filters. The possible values are:
 \itemize{
-\item \code{availability-zone}: The Availability Zone of the snapshot.
+\item \code{availability-zone}: The Availability Zone of the snapshot. For
+example, \verb{us-east-2a}.
+\item \code{availability-zone-id}: The ID of the Availability Zone of the
+snapshot. For example, \code{use2-az1}.
 \item \code{owner-id}: The ID of the Amazon Web Services account that enabled
 fast snapshot restore on the snapshot.
 \item \code{snapshot-id}: The ID of the snapshot.

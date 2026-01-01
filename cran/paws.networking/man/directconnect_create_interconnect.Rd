@@ -11,7 +11,8 @@ directconnect_create_interconnect(
   location,
   lagId = NULL,
   tags = NULL,
-  providerName = NULL
+  providerName = NULL,
+  requestMACSec = NULL
 )
 }
 \arguments{
@@ -26,6 +27,9 @@ directconnect_create_interconnect(
 \item{tags}{The tags to associate with the interconnect.}
 
 \item{providerName}{The name of the service provider associated with the interconnect.}
+
+\item{requestMACSec}{Indicates whether you want the interconnect to support MAC Security
+(MACsec).}
 }
 \description{
 Creates an interconnect between an Direct Connect Partner's network and a specific Direct Connect location.

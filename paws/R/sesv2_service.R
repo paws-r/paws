@@ -114,6 +114,8 @@ NULL
 #'  \link[=sesv2_create_export_job]{create_export_job} \tab Creates an export job for a data source and destination\cr
 #'  \link[=sesv2_create_import_job]{create_import_job} \tab Creates an import job for a data destination\cr
 #'  \link[=sesv2_create_multi_region_endpoint]{create_multi_region_endpoint} \tab Creates a multi-region endpoint (global-endpoint)\cr
+#'  \link[=sesv2_create_tenant]{create_tenant} \tab Create a tenant\cr
+#'  \link[=sesv2_create_tenant_resource_association]{create_tenant_resource_association} \tab Associate a resource with a tenant\cr
 #'  \link[=sesv2_delete_configuration_set]{delete_configuration_set} \tab Delete an existing configuration set\cr
 #'  \link[=sesv2_delete_configuration_set_event_destination]{delete_configuration_set_event_destination} \tab Delete an event destination\cr
 #'  \link[=sesv2_delete_contact]{delete_contact} \tab Removes a contact from a contact list\cr
@@ -125,6 +127,8 @@ NULL
 #'  \link[=sesv2_delete_email_template]{delete_email_template} \tab Deletes an email template\cr
 #'  \link[=sesv2_delete_multi_region_endpoint]{delete_multi_region_endpoint} \tab Deletes a multi-region endpoint (global-endpoint)\cr
 #'  \link[=sesv2_delete_suppressed_destination]{delete_suppressed_destination} \tab Removes an email address from the suppression list for your account\cr
+#'  \link[=sesv2_delete_tenant]{delete_tenant} \tab Delete an existing tenant\cr
+#'  \link[=sesv2_delete_tenant_resource_association]{delete_tenant_resource_association} \tab Delete an association between a tenant and a resource\cr
 #'  \link[=sesv2_get_account]{get_account} \tab Obtain information about the email-sending status and capabilities of your Amazon SES account in the current Amazon Web Services Region\cr
 #'  \link[=sesv2_get_blacklist_reports]{get_blacklist_reports} \tab Retrieve a list of the blacklists that your dedicated IP addresses appear on\cr
 #'  \link[=sesv2_get_configuration_set]{get_configuration_set} \tab Get information about an existing configuration set, including the dedicated IP pool that it's associated with, whether or not it's enabled for sending email, and more\cr
@@ -139,6 +143,7 @@ NULL
 #'  \link[=sesv2_get_deliverability_test_report]{get_deliverability_test_report} \tab Retrieve the results of a predictive inbox placement test\cr
 #'  \link[=sesv2_get_domain_deliverability_campaign]{get_domain_deliverability_campaign} \tab Retrieve all the deliverability data for a specific campaign\cr
 #'  \link[=sesv2_get_domain_statistics_report]{get_domain_statistics_report} \tab Retrieve inbox placement and engagement rates for the domains that you use to send email\cr
+#'  \link[=sesv2_get_email_address_insights]{get_email_address_insights} \tab Provides validation insights about a specific email address, including syntax validation, DNS record checks, mailbox existence, and other deliverability factors\cr
 #'  \link[=sesv2_get_email_identity]{get_email_identity} \tab Provides information about a specific identity, including the identity's verification status, sending authorization policies, its DKIM authentication status, and its custom Mail-From settings\cr
 #'  \link[=sesv2_get_email_identity_policies]{get_email_identity_policies} \tab Returns the requested sending authorization policies for the given identity (an email address or a domain)\cr
 #'  \link[=sesv2_get_email_template]{get_email_template} \tab Displays the template object (which includes the subject line, HTML part and text part) for the template you specify\cr
@@ -146,7 +151,9 @@ NULL
 #'  \link[=sesv2_get_import_job]{get_import_job} \tab Provides information about an import job\cr
 #'  \link[=sesv2_get_message_insights]{get_message_insights} \tab Provides information about a specific message, including the from address, the subject, the recipient address, email tags, as well as events associated with the message\cr
 #'  \link[=sesv2_get_multi_region_endpoint]{get_multi_region_endpoint} \tab Displays the multi-region endpoint (global-endpoint) configuration\cr
+#'  \link[=sesv2_get_reputation_entity]{get_reputation_entity} \tab Retrieve information about a specific reputation entity, including its reputation management policy, customer-managed status, Amazon Web Services Amazon SES-managed status, and aggregate sending status\cr
 #'  \link[=sesv2_get_suppressed_destination]{get_suppressed_destination} \tab Retrieves information about a specific email address that's on the suppression list for your account\cr
+#'  \link[=sesv2_get_tenant]{get_tenant} \tab Get information about a specific tenant, including the tenant's name, ID, ARN, creation timestamp, tags, and sending status\cr
 #'  \link[=sesv2_list_configuration_sets]{list_configuration_sets} \tab List all of the configuration sets associated with your account in the current region\cr
 #'  \link[=sesv2_list_contact_lists]{list_contact_lists} \tab Lists all of the contact lists available\cr
 #'  \link[=sesv2_list_contacts]{list_contacts} \tab Lists the contacts present in a specific contact list\cr
@@ -160,8 +167,12 @@ NULL
 #'  \link[=sesv2_list_import_jobs]{list_import_jobs} \tab Lists all of the import jobs\cr
 #'  \link[=sesv2_list_multi_region_endpoints]{list_multi_region_endpoints} \tab List the multi-region endpoints (global-endpoints)\cr
 #'  \link[=sesv2_list_recommendations]{list_recommendations} \tab Lists the recommendations present in your Amazon SES account in the current Amazon Web Services Region\cr
+#'  \link[=sesv2_list_reputation_entities]{list_reputation_entities} \tab List reputation entities in your Amazon SES account in the current Amazon Web Services Region\cr
+#'  \link[=sesv2_list_resource_tenants]{list_resource_tenants} \tab List all tenants associated with a specific resource\cr
 #'  \link[=sesv2_list_suppressed_destinations]{list_suppressed_destinations} \tab Retrieves a list of email addresses that are on the suppression list for your account\cr
 #'  \link[=sesv2_list_tags_for_resource]{list_tags_for_resource} \tab Retrieve a list of the tags (keys and values) that are associated with a specified resource\cr
+#'  \link[=sesv2_list_tenant_resources]{list_tenant_resources} \tab List all resources associated with a specific tenant\cr
+#'  \link[=sesv2_list_tenants]{list_tenants} \tab List all tenants associated with your account in the current Amazon Web Services Region\cr
 #'  \link[=sesv2_put_account_dedicated_ip_warmup_attributes]{put_account_dedicated_ip_warmup_attributes} \tab Enable or disable the automatic warm-up feature for dedicated IP addresses\cr
 #'  \link[=sesv2_put_account_details]{put_account_details} \tab Update your Amazon SES account details\cr
 #'  \link[=sesv2_put_account_sending_attributes]{put_account_sending_attributes} \tab Enable or disable the ability of your account to send email\cr
@@ -195,7 +206,9 @@ NULL
 #'  \link[=sesv2_update_contact_list]{update_contact_list} \tab Updates contact list metadata\cr
 #'  \link[=sesv2_update_custom_verification_email_template]{update_custom_verification_email_template} \tab Updates an existing custom verification email template\cr
 #'  \link[=sesv2_update_email_identity_policy]{update_email_identity_policy} \tab Updates the specified sending authorization policy for the given identity (an email address or a domain)\cr
-#'  \link[=sesv2_update_email_template]{update_email_template} \tab Updates an email template
+#'  \link[=sesv2_update_email_template]{update_email_template} \tab Updates an email template\cr
+#'  \link[=sesv2_update_reputation_entity_customer_managed_status]{update_reputation_entity_customer_managed_status} \tab Update the customer-managed sending status for a reputation entity\cr
+#'  \link[=sesv2_update_reputation_entity_policy]{update_reputation_entity_policy} \tab Update the reputation management policy for a reputation entity
 #' }
 #'
 #' @return

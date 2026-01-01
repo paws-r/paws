@@ -12,7 +12,7 @@ kms_disable_key_rotation(KeyId)
 automatic rotation of \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html#asymmetric-cmks}{asymmetric KMS keys},
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/hmac.html}{HMAC KMS keys},
 KMS keys with \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{imported key material},
-or KMS keys in a \href{https://docs.aws.amazon.com/kms/latest/developerguide/}{custom key store}.
+or KMS keys in a \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html}{custom key store}.
 
 Specify the key ID or key ARN of the KMS key.
 
@@ -27,7 +27,7 @@ To get the key ID and key ARN for a KMS key, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 }
 \description{
-Disables \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html}{automatic rotation of the key material} of the specified symmetric encryption KMS key.
+Disables \href{https://docs.aws.amazon.com/kms/latest/developerguide/}{automatic rotation of the key material} of the specified symmetric encryption KMS key.
 
 See \url{https://www.paws-r-sdk.com/docs/kms_disable_key_rotation/} for full documentation.
 }

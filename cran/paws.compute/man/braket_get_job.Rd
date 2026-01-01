@@ -2,17 +2,18 @@
 % Please edit documentation in R/braket_operations.R
 \name{braket_get_job}
 \alias{braket_get_job}
-\title{Retrieves the specified Amazon Braket job}
+\title{Retrieves the specified Amazon Braket hybrid job}
 \usage{
-braket_get_job(additionalAttributeNames = NULL, jobArn)
+braket_get_job(jobArn, additionalAttributeNames = NULL)
 }
 \arguments{
-\item{additionalAttributeNames}{A list of attributes to return information for.}
+\item{jobArn}{[required] The ARN of the hybrid job to retrieve.}
 
-\item{jobArn}{[required] The ARN of the job to retrieve.}
+\item{additionalAttributeNames}{A list of attributes to return additional information for. Only the
+QueueInfo additional attribute name is currently supported.}
 }
 \description{
-Retrieves the specified Amazon Braket job.
+Retrieves the specified Amazon Braket hybrid job.
 
 See \url{https://www.paws-r-sdk.com/docs/braket_get_job/} for full documentation.
 }

@@ -10,6 +10,7 @@ ecr_create_repository_creation_template(
   encryptionConfiguration = NULL,
   resourceTags = NULL,
   imageTagMutability = NULL,
+  imageTagMutabilityExclusionFilters = NULL,
   repositoryPolicy = NULL,
   lifecyclePolicy = NULL,
   appliedFor,
@@ -48,6 +49,9 @@ image tags to be overwritten. If \code{IMMUTABLE} is specified, all image
 tags within the repository will be immutable which will prevent them
 from being overwritten.}
 
+\item{imageTagMutabilityExclusionFilters}{A list of filters that specify which image tags should be excluded from
+the repository creation template's image tag mutability setting.}
+
 \item{repositoryPolicy}{The repository policy to apply to repositories created using the
 template. A repository policy is a permissions policy associated with a
 repository to control access permissions.}
@@ -55,8 +59,8 @@ repository to control access permissions.}
 \item{lifecyclePolicy}{The lifecycle policy to use for repositories created using the template.}
 
 \item{appliedFor}{[required] A list of enumerable strings representing the Amazon ECR repository
-creation scenarios that this template will apply towards. The two
-supported scenarios are \code{PULL_THROUGH_CACHE} and \code{REPLICATION}}
+creation scenarios that this template will apply towards. The supported
+scenarios are \code{PULL_THROUGH_CACHE}, \code{REPLICATION}, and \code{CREATE_ON_PUSH}}
 
 \item{customRoleArn}{The ARN of the role to be assumed by Amazon ECR. This role must be in
 the same account as the registry that you are configuring. Amazon ECR

@@ -5,22 +5,14 @@
 \title{Creates a service network}
 \usage{
 vpclattice_create_service_network(
-  authType = NULL,
   clientToken = NULL,
   name,
-  sharingConfig = NULL,
-  tags = NULL
+  authType = NULL,
+  tags = NULL,
+  sharingConfig = NULL
 )
 }
 \arguments{
-\item{authType}{The type of IAM policy.
-\itemize{
-\item \code{NONE}: The resource does not use an IAM policy. This is the
-default.
-\item \code{AWS_IAM}: The resource uses an IAM policy. When this type is used,
-auth is enabled and an auth policy is required.
-}}
-
 \item{clientToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. If you retry a request that completed
 successfully using the same client token and parameters, the retry
@@ -32,9 +24,17 @@ The valid characters are a-z, 0-9, and hyphens (-). You can't use a
 hyphen as the first or last character, or immediately after another
 hyphen.}
 
-\item{sharingConfig}{Specify if the service network should be enabled for sharing.}
+\item{authType}{The type of IAM policy.
+\itemize{
+\item \code{NONE}: The resource does not use an IAM policy. This is the
+default.
+\item \code{AWS_IAM}: The resource uses an IAM policy. When this type is used,
+auth is enabled and an auth policy is required.
+}}
 
 \item{tags}{The tags for the service network.}
+
+\item{sharingConfig}{Specify if the service network should be enabled for sharing.}
 }
 \description{
 Creates a service network. A service network is a logical boundary for a collection of services. You can associate services and VPCs with a service network.

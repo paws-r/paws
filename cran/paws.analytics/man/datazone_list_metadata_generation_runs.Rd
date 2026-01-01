@@ -9,6 +9,7 @@ datazone_list_metadata_generation_runs(
   maxResults = NULL,
   nextToken = NULL,
   status = NULL,
+  targetIdentifier = NULL,
   type = NULL
 )
 }
@@ -30,6 +31,8 @@ specify this NextToken value in a subsequent call to
 ListMetadataGenerationRuns to list the next set of revisions.}
 
 \item{status}{The status of the metadata generation runs.}
+
+\item{targetIdentifier}{The target ID for which you want to list metadata generation runs.}
 
 \item{type}{The type of the metadata generation runs.}
 }

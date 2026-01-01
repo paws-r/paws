@@ -1073,11 +1073,17 @@ athena_get_query_execution <- function(QueryExecutionId) {
 #' of pages, pass in the `NextToken` from the response object of the
 #' previous page call.
 #' @param MaxResults The maximum number of results (rows) to return in this request.
+#' @param QueryResultType When you set this to `DATA_ROWS` or empty,
+#' [`get_query_results`][athena_get_query_results] returns the query
+#' results in rows. If set to `DATA_MANIFEST`, it returns the manifest file
+#' in rows. Only the query types `CREATE TABLE AS SELECT`, `UNLOAD`, and
+#' `INSERT` can generate a manifest file. If you use `DATA_MANIFEST` for
+#' other query types, the query will fail.
 #'
 #' @keywords internal
 #'
 #' @rdname athena_get_query_results
-athena_get_query_results <- function(QueryExecutionId, NextToken = NULL, MaxResults = NULL) {
+athena_get_query_results <- function(QueryExecutionId, NextToken = NULL, MaxResults = NULL, QueryResultType = NULL) {
   op <- new_operation(
     name = "GetQueryResults",
     http_method = "POST",
@@ -1086,7 +1092,7 @@ athena_get_query_results <- function(QueryExecutionId, NextToken = NULL, MaxResu
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResultSet.Rows", non_aggregate_keys = list( "ResultSet.ResultSetMetadata", "UpdateCount")),
     stream_api = FALSE
   )
-  input <- .athena$get_query_results_input(QueryExecutionId = QueryExecutionId, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .athena$get_query_results_input(QueryExecutionId = QueryExecutionId, NextToken = NextToken, MaxResults = MaxResults, QueryResultType = QueryResultType)
   output <- .athena$get_query_results_output()
   config <- get_config()
   svc <- .athena$service(config, op)
@@ -1100,7 +1106,7 @@ athena_get_query_results <- function(QueryExecutionId, NextToken = NULL, MaxResu
 #' of a query if you have access to the workgroup in which the query ran
 #'
 #' @description
-#' Returns query execution runtime statistics related to a single execution of a query if you have access to the workgroup in which the query ran. Statistics from the `Timeline` section of the response object are available as soon as QueryExecutionStatus$State is in a SUCCEEDED or FAILED state. The remaining non-timeline statistics in the response (like stage-level input and output row count and data size) are updated asynchronously and may not be available immediately after a query completes. The non-timeline statistics are also not included when a query has row-level filters defined in Lake Formation.
+#' Returns query execution runtime statistics related to a single execution of a query if you have access to the workgroup in which the query ran. Statistics from the `Timeline` section of the response object are available as soon as QueryExecutionStatus$State is in a SUCCEEDED or FAILED state. The remaining non-timeline statistics in the response (like stage-level input and output row count and data size) are updated asynchronously and may not be available immediately after a query completes or, in some cases, may not be returned. The non-timeline statistics are also not included when a query has row-level filters defined in Lake Formation.
 #'
 #' See [https://www.paws-r-sdk.com/docs/athena_get_query_runtime_statistics/](https://www.paws-r-sdk.com/docs/athena_get_query_runtime_statistics/) for full documentation.
 #'
@@ -1127,6 +1133,37 @@ athena_get_query_runtime_statistics <- function(QueryExecutionId) {
   return(response)
 }
 .athena$operations$get_query_runtime_statistics <- athena_get_query_runtime_statistics
+
+#' Gets the Live UI/Persistence UI for a session
+#'
+#' @description
+#' Gets the Live UI/Persistence UI for a session.
+#'
+#' See [https://www.paws-r-sdk.com/docs/athena_get_resource_dashboard/](https://www.paws-r-sdk.com/docs/athena_get_resource_dashboard/) for full documentation.
+#'
+#' @param ResourceARN &#91;required&#93; The The Amazon Resource Name (ARN) for a session.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_get_resource_dashboard
+athena_get_resource_dashboard <- function(ResourceARN) {
+  op <- new_operation(
+    name = "GetResourceDashboard",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .athena$get_resource_dashboard_input(ResourceARN = ResourceARN)
+  output <- .athena$get_resource_dashboard_output()
+  config <- get_config()
+  svc <- .athena$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$get_resource_dashboard <- athena_get_resource_dashboard
 
 #' Gets the full details of a previously created session, including the
 #' session status and configuration
@@ -1159,6 +1196,38 @@ athena_get_session <- function(SessionId) {
   return(response)
 }
 .athena$operations$get_session <- athena_get_session
+
+#' Gets a connection endpoint and authentication token for a given session
+#' Id
+#'
+#' @description
+#' Gets a connection endpoint and authentication token for a given session Id.
+#'
+#' See [https://www.paws-r-sdk.com/docs/athena_get_session_endpoint/](https://www.paws-r-sdk.com/docs/athena_get_session_endpoint/) for full documentation.
+#'
+#' @param SessionId &#91;required&#93; The session ID.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_get_session_endpoint
+athena_get_session_endpoint <- function(SessionId) {
+  op <- new_operation(
+    name = "GetSessionEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .athena$get_session_endpoint_input(SessionId = SessionId)
+  output <- .athena$get_session_endpoint_output()
+  config <- get_config()
+  svc <- .athena$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$get_session_endpoint <- athena_get_session_endpoint
 
 #' Gets the current status of a session
 #'
@@ -2066,11 +2135,12 @@ athena_start_calculation_execution <- function(SessionId, Description = NULL, Ca
 #' sequentially to the parameters in the query in the order in which the
 #' parameters occur.
 #' @param ResultReuseConfiguration Specifies the query result reuse behavior for the query.
+#' @param EngineConfiguration 
 #'
 #' @keywords internal
 #'
 #' @rdname athena_start_query_execution
-athena_start_query_execution <- function(QueryString, ClientRequestToken = NULL, QueryExecutionContext = NULL, ResultConfiguration = NULL, WorkGroup = NULL, ExecutionParameters = NULL, ResultReuseConfiguration = NULL) {
+athena_start_query_execution <- function(QueryString, ClientRequestToken = NULL, QueryExecutionContext = NULL, ResultConfiguration = NULL, WorkGroup = NULL, ExecutionParameters = NULL, ResultReuseConfiguration = NULL, EngineConfiguration = NULL) {
   op <- new_operation(
     name = "StartQueryExecution",
     http_method = "POST",
@@ -2079,7 +2149,7 @@ athena_start_query_execution <- function(QueryString, ClientRequestToken = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .athena$start_query_execution_input(QueryString = QueryString, ClientRequestToken = ClientRequestToken, QueryExecutionContext = QueryExecutionContext, ResultConfiguration = ResultConfiguration, WorkGroup = WorkGroup, ExecutionParameters = ExecutionParameters, ResultReuseConfiguration = ResultReuseConfiguration)
+  input <- .athena$start_query_execution_input(QueryString = QueryString, ClientRequestToken = ClientRequestToken, QueryExecutionContext = QueryExecutionContext, ResultConfiguration = ResultConfiguration, WorkGroup = WorkGroup, ExecutionParameters = ExecutionParameters, ResultReuseConfiguration = ResultReuseConfiguration, EngineConfiguration = EngineConfiguration)
   output <- .athena$start_query_execution_output()
   config <- get_config()
   svc <- .athena$service(config, op)
@@ -2100,6 +2170,11 @@ athena_start_query_execution <- function(QueryString, ClientRequestToken = NULL,
 #' @param WorkGroup &#91;required&#93; The workgroup to which the session belongs.
 #' @param EngineConfiguration &#91;required&#93; Contains engine data processing unit (DPU) configuration settings and
 #' parameter mappings.
+#' @param ExecutionRole The ARN of the execution role used to access user resources for Spark
+#' sessions and Identity Center enabled workgroups. This property applies
+#' only to Spark enabled workgroups and Identity Center enabled workgroups.
+#' @param MonitoringConfiguration Contains the configuration settings for managed log persistence,
+#' delivering logs to Amazon S3 buckets, Amazon CloudWatch log groups etc.
 #' @param NotebookVersion The notebook version. This value is supplied automatically for notebook
 #' sessions in the Athena console and is not required for programmatic
 #' session access. The only valid notebook version is
@@ -2118,11 +2193,13 @@ athena_start_query_execution <- function(QueryString, ClientRequestToken = NULL,
 #' token for users. If you are not using the Amazon Web Services SDK or the
 #' Amazon Web Services CLI, you must provide this token or the action will
 #' fail.
+#' @param Tags A list of comma separated tags to add to the session that is created.
+#' @param CopyWorkGroupTags Copies the tags from the Workgroup to the Session when.
 #'
 #' @keywords internal
 #'
 #' @rdname athena_start_session
-athena_start_session <- function(Description = NULL, WorkGroup, EngineConfiguration, NotebookVersion = NULL, SessionIdleTimeoutInMinutes = NULL, ClientRequestToken = NULL) {
+athena_start_session <- function(Description = NULL, WorkGroup, EngineConfiguration, ExecutionRole = NULL, MonitoringConfiguration = NULL, NotebookVersion = NULL, SessionIdleTimeoutInMinutes = NULL, ClientRequestToken = NULL, Tags = NULL, CopyWorkGroupTags = NULL) {
   op <- new_operation(
     name = "StartSession",
     http_method = "POST",
@@ -2131,7 +2208,7 @@ athena_start_session <- function(Description = NULL, WorkGroup, EngineConfigurat
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .athena$start_session_input(Description = Description, WorkGroup = WorkGroup, EngineConfiguration = EngineConfiguration, NotebookVersion = NotebookVersion, SessionIdleTimeoutInMinutes = SessionIdleTimeoutInMinutes, ClientRequestToken = ClientRequestToken)
+  input <- .athena$start_session_input(Description = Description, WorkGroup = WorkGroup, EngineConfiguration = EngineConfiguration, ExecutionRole = ExecutionRole, MonitoringConfiguration = MonitoringConfiguration, NotebookVersion = NotebookVersion, SessionIdleTimeoutInMinutes = SessionIdleTimeoutInMinutes, ClientRequestToken = ClientRequestToken, Tags = Tags, CopyWorkGroupTags = CopyWorkGroupTags)
   output <- .athena$start_session_output()
   config <- get_config()
   svc <- .athena$service(config, op)

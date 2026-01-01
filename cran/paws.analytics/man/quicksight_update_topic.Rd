@@ -4,7 +4,12 @@
 \alias{quicksight_update_topic}
 \title{Updates a topic}
 \usage{
-quicksight_update_topic(AwsAccountId, TopicId, Topic)
+quicksight_update_topic(
+  AwsAccountId,
+  TopicId,
+  Topic,
+  CustomInstructions = NULL
+)
 }
 \arguments{
 \item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the topic that
@@ -14,6 +19,8 @@ you want to update.}
 Amazon Web Services Region for each Amazon Web Services account.}
 
 \item{Topic}{[required] The definition of the topic that you want to update.}
+
+\item{CustomInstructions}{Custom instructions for the topic.}
 }
 \description{
 Updates a topic.

@@ -9,6 +9,7 @@ sesv2_create_custom_verification_email_template(
   FromEmailAddress,
   TemplateSubject,
   TemplateContent,
+  Tags = NULL,
   SuccessRedirectionURL,
   FailureRedirectionURL
 )
@@ -24,6 +25,9 @@ sesv2_create_custom_verification_email_template(
 email must be less than 10 MB. The message body may contain HTML, with
 some limitations. For more information, see \href{https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom-faq}{Custom verification email frequently asked questions}
 in the \emph{Amazon SES Developer Guide}.}
+
+\item{Tags}{An array of objects that define the tags (keys and values) to associate
+with the custom verification email template.}
 
 \item{SuccessRedirectionURL}{[required] The URL that the recipient of the verification email is sent to if his
 or her address is successfully verified.}

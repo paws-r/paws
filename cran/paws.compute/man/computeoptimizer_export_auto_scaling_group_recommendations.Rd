@@ -2,7 +2,7 @@
 % Please edit documentation in R/computeoptimizer_operations.R
 \name{computeoptimizer_export_auto_scaling_group_recommendations}
 \alias{computeoptimizer_export_auto_scaling_group_recommendations}
-\title{Exports optimization recommendations for Auto Scaling groups}
+\title{Exports optimization recommendations for Amazon EC2 Auto Scaling groups}
 \usage{
 computeoptimizer_export_auto_scaling_group_recommendations(
   accountIds = NULL,
@@ -15,8 +15,8 @@ computeoptimizer_export_auto_scaling_group_recommendations(
 )
 }
 \arguments{
-\item{accountIds}{The IDs of the Amazon Web Services accounts for which to export Auto
-Scaling group recommendations.
+\item{accountIds}{The IDs of the Amazon Web Services accounts for which to export Amazon
+EC2 Auto Scaling group recommendations.
 
 If your account is the management account of an organization, use this
 parameter to specify the member account for which you want to export
@@ -31,7 +31,7 @@ this parameter, or the include member accounts parameter, is omitted.
 You can specify multiple account IDs per request.}
 
 \item{filters}{An array of objects to specify a filter that exports a more specific set
-of Auto Scaling group recommendations.}
+of Amazon EC2 Auto Scaling group recommendations.}
 
 \item{fieldsToExport}{The recommendations data to include in the export file. For more
 information about the fields that can be exported, see \href{https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html#exported-files}{Exported files}
@@ -72,11 +72,11 @@ parameter. The parameters are mutually exclusive.
 Recommendations for member accounts are not included in the export if
 this parameter, or the account IDs parameter, is omitted.}
 
-\item{recommendationPreferences}{An object to specify the preferences for the Auto Scaling group
-recommendations to export.}
+\item{recommendationPreferences}{An object to specify the preferences for the Amazon EC2 Auto Scaling
+group recommendations to export.}
 }
 \description{
-Exports optimization recommendations for Auto Scaling groups.
+Exports optimization recommendations for Amazon EC2 Auto Scaling groups.
 
 See \url{https://www.paws-r-sdk.com/docs/computeoptimizer_export_auto_scaling_group_recommendations/} for full documentation.
 }

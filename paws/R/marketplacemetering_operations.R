@@ -3,11 +3,12 @@
 #' @include marketplacemetering_service.R
 NULL
 
-#' The CustomerIdentifier parameter is scheduled for deprecation
+#' The CustomerIdentifier parameter is scheduled for deprecation on March
+#' 31, 2026
 #'
 #' @description
-#' The `CustomerIdentifier` parameter is scheduled for deprecation. Use
-#' `CustomerAWSAccountID` instead.
+#' The `CustomerIdentifier` parameter is scheduled for deprecation on March
+#' 31, 2026. Use `CustomerAWSAccountID` instead.
 #' 
 #' These parameters are mutually exclusive. You can't specify both
 #' `CustomerIdentifier` and `CustomerAWSAccountID` in the same request.
@@ -181,9 +182,15 @@ marketplacemetering_batch_meter_usage <- function(UsageRecords, ProductCode) {
 #' multiple usage allocations, to provide customers with usage data split
 #' into buckets by tags that you define (or allow the customer to define).
 #' 
-#' Usage records are expected to be submitted as quickly as possible after
-#' the event that is being recorded, and are not accepted more than 6 hours
-#' after the event.
+#' Submit usage records to report events from the previous hour. If you
+#' submit records that are greater than six hours after events occur, the
+#' records won’t be accepted. The timestamp in your request determines when
+#' an event is recorded. You can only report usage once per hour for each
+#' dimension. For AMI-based products, this is per dimension and per EC2
+#' instance. For container products, this is per dimension and per ECS task
+#' or EKS pod. You can’t modify values after they’re recorded. If you
+#' report usage before the current hour ends, you will be unable to report
+#' additional usage until the next hour begins.
 #' 
 #' For Amazon Web Services Regions that support
 #' [`meter_usage`][marketplacemetering_meter_usage], see [MeterUsage Region
@@ -194,7 +201,7 @@ marketplacemetering_batch_meter_usage <- function(UsageRecords, ProductCode) {
 #'
 #' @usage
 #' marketplacemetering_meter_usage(ProductCode, Timestamp, UsageDimension,
-#'   UsageQuantity, DryRun, UsageAllocations)
+#'   UsageQuantity, DryRun, UsageAllocations, ClientToken)
 #'
 #' @param ProductCode &#91;required&#93; Product code is used to uniquely identify a product in Amazon Web
 #' Services Marketplace. The product code should be the same as the one
@@ -215,6 +222,20 @@ marketplacemetering_batch_meter_usage <- function(UsageRecords, ProductCode) {
 #' `UsageQuantity` of the [`meter_usage`][marketplacemetering_meter_usage]
 #' request, and each `UsageAllocation` must have a unique set of tags
 #' (include no tags).
+#' @param ClientToken Specifies a unique, case-sensitive identifier that you provide to ensure
+#' the idempotency of the request. This lets you safely retry the request
+#' without accidentally performing the same operation a second time.
+#' Passing the same value to a later call to an operation requires that you
+#' also pass the same value for all other parameters. We recommend that you
+#' use a [UUID type of
+#' value](https://en.wikipedia.org/wiki/Universally_unique_identifier).
+#' 
+#' If you don't provide this value, then Amazon Web Services generates a
+#' random one for you.
+#' 
+#' If you retry the operation with the same `ClientToken`, but with
+#' different parameters, the retry fails with an
+#' `IdempotencyConflictException` error.
 #'
 #' @return
 #' A list with the following syntax:
@@ -244,7 +265,8 @@ marketplacemetering_batch_meter_usage <- function(UsageRecords, ProductCode) {
 #'         )
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   ClientToken = "string"
 #' )
 #' ```
 #'
@@ -253,7 +275,7 @@ marketplacemetering_batch_meter_usage <- function(UsageRecords, ProductCode) {
 #' @rdname marketplacemetering_meter_usage
 #'
 #' @aliases marketplacemetering_meter_usage
-marketplacemetering_meter_usage <- function(ProductCode, Timestamp, UsageDimension, UsageQuantity = NULL, DryRun = NULL, UsageAllocations = NULL) {
+marketplacemetering_meter_usage <- function(ProductCode, Timestamp, UsageDimension, UsageQuantity = NULL, DryRun = NULL, UsageAllocations = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "MeterUsage",
     http_method = "POST",
@@ -262,7 +284,7 @@ marketplacemetering_meter_usage <- function(ProductCode, Timestamp, UsageDimensi
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .marketplacemetering$meter_usage_input(ProductCode = ProductCode, Timestamp = Timestamp, UsageDimension = UsageDimension, UsageQuantity = UsageQuantity, DryRun = DryRun, UsageAllocations = UsageAllocations)
+  input <- .marketplacemetering$meter_usage_input(ProductCode = ProductCode, Timestamp = Timestamp, UsageDimension = UsageDimension, UsageQuantity = UsageQuantity, DryRun = DryRun, UsageAllocations = UsageAllocations, ClientToken = ClientToken)
   output <- .marketplacemetering$meter_usage_output()
   config <- get_config()
   svc <- .marketplacemetering$service(config, op)

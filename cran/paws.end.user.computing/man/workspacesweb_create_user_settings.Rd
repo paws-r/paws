@@ -6,24 +6,48 @@
 portal}
 \usage{
 workspacesweb_create_user_settings(
-  additionalEncryptionContext = NULL,
-  clientToken = NULL,
-  cookieSynchronizationConfiguration = NULL,
   copyAllowed,
-  customerManagedKey = NULL,
-  deepLinkAllowed = NULL,
-  disconnectTimeoutInMinutes = NULL,
-  downloadAllowed,
-  idleDisconnectTimeoutInMinutes = NULL,
   pasteAllowed,
+  downloadAllowed,
+  uploadAllowed,
   printAllowed,
   tags = NULL,
+  disconnectTimeoutInMinutes = NULL,
+  idleDisconnectTimeoutInMinutes = NULL,
+  clientToken = NULL,
+  cookieSynchronizationConfiguration = NULL,
+  customerManagedKey = NULL,
+  additionalEncryptionContext = NULL,
+  deepLinkAllowed = NULL,
   toolbarConfiguration = NULL,
-  uploadAllowed
+  brandingConfigurationInput = NULL,
+  webAuthnAllowed = NULL
 )
 }
 \arguments{
-\item{additionalEncryptionContext}{The additional encryption context of the user settings.}
+\item{copyAllowed}{[required] Specifies whether the user can copy text from the streaming session to
+the local device.}
+
+\item{pasteAllowed}{[required] Specifies whether the user can paste text from the local device to the
+streaming session.}
+
+\item{downloadAllowed}{[required] Specifies whether the user can download files from the streaming session
+to the local device.}
+
+\item{uploadAllowed}{[required] Specifies whether the user can upload files from the local device to the
+streaming session.}
+
+\item{printAllowed}{[required] Specifies whether the user can print to the local device.}
+
+\item{tags}{The tags to add to the user settings resource. A tag is a key-value
+pair.}
+
+\item{disconnectTimeoutInMinutes}{The amount of time that a streaming session remains active after users
+disconnect.}
+
+\item{idleDisconnectTimeoutInMinutes}{The amount of time that users can be idle (inactive) before they are
+disconnected from their streaming session and the disconnect timeout
+interval begins.}
 
 \item{clientToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. Idempotency ensures that an API request
@@ -37,32 +61,13 @@ the Amazon Web Services SDK.}
 \item{cookieSynchronizationConfiguration}{The configuration that specifies which cookies should be synchronized
 from the end user's local browser to the remote browser.}
 
-\item{copyAllowed}{[required] Specifies whether the user can copy text from the streaming session to
-the local device.}
-
 \item{customerManagedKey}{The customer managed key used to encrypt sensitive information in the
 user settings.}
 
+\item{additionalEncryptionContext}{The additional encryption context of the user settings.}
+
 \item{deepLinkAllowed}{Specifies whether the user can use deep links that open automatically
 when connecting to a session.}
-
-\item{disconnectTimeoutInMinutes}{The amount of time that a streaming session remains active after users
-disconnect.}
-
-\item{downloadAllowed}{[required] Specifies whether the user can download files from the streaming session
-to the local device.}
-
-\item{idleDisconnectTimeoutInMinutes}{The amount of time that users can be idle (inactive) before they are
-disconnected from their streaming session and the disconnect timeout
-interval begins.}
-
-\item{pasteAllowed}{[required] Specifies whether the user can paste text from the local device to the
-streaming session.}
-
-\item{printAllowed}{[required] Specifies whether the user can print to the local device.}
-
-\item{tags}{The tags to add to the user settings resource. A tag is a key-value
-pair.}
 
 \item{toolbarConfiguration}{The configuration of the toolbar. This allows administrators to select
 the toolbar type and visual mode, set maximum display resolution for
@@ -70,8 +75,13 @@ sessions, and choose which items are visible to end users during their
 sessions. If administrators do not modify these settings, end users
 retain control over their toolbar preferences.}
 
-\item{uploadAllowed}{[required] Specifies whether the user can upload files from the local device to the
-streaming session.}
+\item{brandingConfigurationInput}{The branding configuration input that customizes the appearance of the
+web portal for end users. This includes a custom logo, favicon,
+wallpaper, localized strings, color theme, and an optional terms of
+service.}
+
+\item{webAuthnAllowed}{Specifies whether the user can use WebAuthn redirection for passwordless
+login to websites within the streaming session.}
 }
 \description{
 Creates a user settings resource that can be associated with a web portal. Once associated with a web portal, user settings control how users can transfer data between a streaming session and the their local devices.

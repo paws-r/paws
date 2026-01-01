@@ -2,7 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_describe_map}
 \alias{locationservice_describe_map}
-\title{Retrieves the map resource details}
+\title{This operation is no longer current and may be deprecated in the future}
 \usage{
 locationservice_describe_map(MapName)
 }
@@ -10,7 +10,7 @@ locationservice_describe_map(MapName)
 \item{MapName}{[required] The name of the map resource.}
 }
 \description{
-Retrieves the map resource details.
+This operation is no longer current and may be deprecated in the future. We recommend upgrading to the Maps API V2 unless you require \code{Grab} data.
 
 See \url{https://www.paws-r-sdk.com/docs/locationservice_describe_map/} for full documentation.
 }

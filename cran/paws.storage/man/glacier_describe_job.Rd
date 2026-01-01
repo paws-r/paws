@@ -5,14 +5,14 @@
 \title{This operation returns information about a job you previously initiated,
 including the job initiation date, the user who initiated the job, the
 job status code/message and the Amazon SNS topic to notify after Amazon
-S3 Glacier (Glacier) completes the job}
+Glacier (Glacier) completes the job}
 \usage{
 glacier_describe_job(accountId, vaultName, jobId)
 }
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the
 vault. You can either specify an AWS account ID or optionally a single
-'\code{-}' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+'\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID
 associated with the credentials used to sign the request. If you use an
 account ID, do not include any hyphens ('-') in the ID.}
 
@@ -21,7 +21,7 @@ account ID, do not include any hyphens ('-') in the ID.}
 \item{jobId}{[required] The ID of the job to describe.}
 }
 \description{
-This operation returns information about a job you previously initiated, including the job initiation date, the user who initiated the job, the job status code/message and the Amazon SNS topic to notify after Amazon S3 Glacier (Glacier) completes the job. For more information about initiating a job, see \code{\link[=glacier_initiate_job]{initiate_job}}.
+This operation returns information about a job you previously initiated, including the job initiation date, the user who initiated the job, the job status code/message and the Amazon SNS topic to notify after Amazon Glacier (Glacier) completes the job. For more information about initiating a job, see \code{\link[=glacier_initiate_job]{initiate_job}}.
 
 See \url{https://www.paws-r-sdk.com/docs/glacier_describe_job/} for full documentation.
 }

@@ -12,9 +12,18 @@ connectparticipant_send_message(
 )
 }
 \arguments{
-\item{ContentType}{[required] The type of the content. Supported types are \code{text/plain},
+\item{ContentType}{[required] The type of the content. Possible types are \code{text/plain},
 \code{text/markdown}, \code{application/json}, and
-\code{application/vnd.amazonaws.connect.message.interactive.response}.}
+\code{application/vnd.amazonaws.connect.message.interactive.response}.
+
+Supported types on the contact are configured through
+\code{SupportedMessagingContentTypes} on
+\href{https://docs.aws.amazon.com/connect/latest/APIReference/API_StartChatContact.html}{StartChatContact}
+and
+\href{https://docs.aws.amazon.com/connect/latest/APIReference/API_StartOutboundChatContact.html}{StartOutboundChatContact}.
+
+For Apple Messages for Business, SMS, and WhatsApp Business Messaging
+contacts, only \code{text/plain} is supported.}
 
 \item{Content}{[required] The content of the message.
 \itemize{

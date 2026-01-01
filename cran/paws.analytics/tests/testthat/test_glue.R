@@ -108,6 +108,10 @@ test_that("list_entities", {
   expect_error(svc$list_entities(), NA)
 })
 
+test_that("list_integration_resource_properties", {
+  expect_error(svc$list_integration_resource_properties(), NA)
+})
+
 test_that("list_jobs", {
   expect_error(svc$list_jobs(), NA)
 })

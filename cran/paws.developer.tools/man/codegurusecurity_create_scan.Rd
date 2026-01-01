@@ -5,20 +5,15 @@
 \title{Use to create a scan using code uploaded to an Amazon S3 bucket}
 \usage{
 codegurusecurity_create_scan(
-  analysisType = NULL,
   clientToken = NULL,
   resourceId,
   scanName,
   scanType = NULL,
+  analysisType = NULL,
   tags = NULL
 )
 }
 \arguments{
-\item{analysisType}{The type of analysis you want CodeGuru Security to perform in the scan,
-either \code{Security} or \code{All}. The \code{Security} type only generates findings
-related to security. The \code{All} type generates both security findings and
-quality findings. Defaults to \code{Security} type if missing.}
-
 \item{clientToken}{The idempotency token for the request. Amazon CodeGuru Security uses
 this value to prevent the accidental creation of duplicate scans if
 there are failures and retries.}
@@ -36,6 +31,11 @@ type if missing.
 detectors to analyze your code in near-real time. \code{Standard} scans have
 standard resource limits and use the full set of detectors to analyze
 your code.}
+
+\item{analysisType}{The type of analysis you want CodeGuru Security to perform in the scan,
+either \code{Security} or \code{All}. The \code{Security} type only generates findings
+related to security. The \code{All} type generates both security findings and
+quality findings. Defaults to \code{Security} type if missing.}
 
 \item{tags}{An array of key-value pairs used to tag a scan. A tag is a custom
 attribute label with two parts:

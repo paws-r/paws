@@ -22,8 +22,8 @@ delivery of all messages in the queue is delayed. Valid values: An
 integer from 0 to 900 (15 minutes). Default: 0.
 \item \code{MaximumMessageSize} – The limit of how many bytes a message can
 contain before Amazon SQS rejects it. Valid values: An integer from
-1,024 bytes (1 KiB) up to 262,144 bytes (256 KiB). Default: 262,144
-(256 KiB).
+1,024 bytes (1 KiB) up to 1,048,576 bytes (1 MiB). Default:
+1,048,576 bytes (1 MiB).
 \item \code{MessageRetentionPeriod} – The length of time, in seconds, for which
 Amazon SQS retains a message. Valid values: An integer representing
 seconds, from 60 (1 minute) to 1,209,600 (14 days). Default: 345,600

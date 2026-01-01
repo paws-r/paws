@@ -7,7 +7,8 @@
 cloudwatchlogs_put_delivery_destination(
   name,
   outputFormat = NULL,
-  deliveryDestinationConfiguration,
+  deliveryDestinationConfiguration = NULL,
+  deliveryDestinationType = NULL,
   tags = NULL
 )
 }
@@ -17,15 +18,34 @@ delivery destinations in your account.}
 
 \item{outputFormat}{The format for the logs that this delivery destination will receive.}
 
-\item{deliveryDestinationConfiguration}{[required] A structure that contains the ARN of the Amazon Web Services resource
-that will receive the logs.}
+\item{deliveryDestinationConfiguration}{A structure that contains the ARN of the Amazon Web Services resource
+that will receive the logs.
+
+\code{deliveryDestinationConfiguration} is required for CloudWatch Logs,
+Amazon S3, Firehose log delivery destinations and not required for X-Ray
+trace delivery destinations. \code{deliveryDestinationType} is needed for
+X-Ray trace delivery destinations but not required for other logs
+delivery destinations.}
+
+\item{deliveryDestinationType}{The type of delivery destination. This parameter specifies the target
+service where log data will be delivered. Valid values include:
+\itemize{
+\item \code{S3} - Amazon S3 for long-term storage and analytics
+\item \code{CWL} - CloudWatch Logs for centralized log management
+\item \code{FH} - Amazon Kinesis Data Firehose for real-time data streaming
+\item \code{XRAY} - Amazon Web Services X-Ray for distributed tracing and
+application monitoring
+}
+
+The delivery destination type determines the format and configuration
+options available for log delivery.}
 
 \item{tags}{An optional list of key-value pairs to associate with the resource.
 
 For more information about tagging, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}}
 }
 \description{
-Creates or updates a logical \emph{delivery destination}. A delivery destination is an Amazon Web Services resource that represents an Amazon Web Services service that logs can be sent to. CloudWatch Logs, Amazon S3, and Firehose are supported as logs delivery destinations.
+Creates or updates a logical \emph{delivery destination}. A delivery destination is an Amazon Web Services resource that represents an Amazon Web Services service that logs can be sent to. CloudWatch Logs, Amazon S3, and Firehose are supported as logs delivery destinations and X-Ray as the trace delivery destination.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_delivery_destination/} for full documentation.
 }

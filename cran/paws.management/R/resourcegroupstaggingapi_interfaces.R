@@ -63,6 +63,18 @@ NULL
   return(populate(args, shape))
 }
 
+.resourcegroupstaggingapi$list_required_tags_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.resourcegroupstaggingapi$list_required_tags_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RequiredTags = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), CloudFormationResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ReportingTagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .resourcegroupstaggingapi$start_report_creation_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(S3Bucket = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))

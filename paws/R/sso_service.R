@@ -25,8 +25,7 @@ NULL
 #' Android. The SDKs provide a convenient way to create programmatic access
 #' to IAM Identity Center and other AWS services. For more information
 #' about the AWS SDKs, including how to download and install them, see
-#' [Tools for Amazon Web
-#' Services](https://aws.amazon.com/developer/tools/).
+#' [Tools for Amazon Web Services](https://builder.aws.com/build/tools).
 #'
 #' @param
 #' config

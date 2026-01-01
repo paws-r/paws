@@ -34,7 +34,7 @@ asset changes caused by the failed job.
 
 If you choose \code{DO_NOTHING}, failed import jobs will not attempt to roll
 back any asset changes caused by the failed job, possibly keeping the
-Amazon QuickSight account in an inconsistent state.}
+Amazon Quick Sight account in an inconsistent state.}
 
 \item{OverridePermissions}{Optional permission overrides that are applied to the resource
 configuration before import.}

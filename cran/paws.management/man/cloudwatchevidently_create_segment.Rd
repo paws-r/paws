@@ -17,7 +17,7 @@ cloudwatchevidently_create_segment(
 \item{name}{[required] A name for the segment.}
 
 \item{pattern}{[required] The pattern to use for the segment. For more information about pattern
-syntax, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html#CloudWatch-Evidently-segments-syntax.html}{Segment rule pattern syntax}.}
+syntax, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/#CloudWatch-Evidently-segments-syntax.html}{Segment rule pattern syntax}.}
 
 \item{tags}{Assigns one or more tags (key-value pairs) to the segment.
 

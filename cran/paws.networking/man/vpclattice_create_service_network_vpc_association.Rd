@@ -6,10 +6,12 @@
 \usage{
 vpclattice_create_service_network_vpc_association(
   clientToken = NULL,
-  securityGroupIds = NULL,
   serviceNetworkIdentifier,
+  vpcIdentifier,
+  privateDnsEnabled = NULL,
+  securityGroupIds = NULL,
   tags = NULL,
-  vpcIdentifier
+  dnsOptions = NULL
 )
 }
 \arguments{
@@ -19,18 +21,22 @@ successfully using the same client token and parameters, the retry
 succeeds without performing any actions. If the parameters aren't
 identical, the retry fails.}
 
+\item{serviceNetworkIdentifier}{[required] The ID or ARN of the service network. You must use an ARN if the
+resources are in different accounts.}
+
+\item{vpcIdentifier}{[required] The ID of the VPC.}
+
+\item{privateDnsEnabled}{Indicates if private DNS is enabled for the VPC association.}
+
 \item{securityGroupIds}{The IDs of the security groups. Security groups aren't added by default.
 You can add a security group to apply network level controls to control
 which resources in a VPC are allowed to access the service network and
 its services. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html}{Control traffic to resources using security groups}
 in the \emph{Amazon VPC User Guide}.}
 
-\item{serviceNetworkIdentifier}{[required] The ID or ARN of the service network. You must use an ARN if the
-resources are in different accounts.}
-
 \item{tags}{The tags for the association.}
 
-\item{vpcIdentifier}{[required] The ID of the VPC.}
+\item{dnsOptions}{DNS options for the service network VPC association.}
 }
 \description{
 Associates a VPC with a service network. When you associate a VPC with the service network, it enables all the resources within that VPC to be clients and communicate with other services in the service network. For more information, see \href{https://docs.aws.amazon.com/vpc-lattice/latest/ug/service-network-associations.html#service-network-vpc-associations}{Manage VPC associations} in the \emph{Amazon VPC Lattice User Guide}.

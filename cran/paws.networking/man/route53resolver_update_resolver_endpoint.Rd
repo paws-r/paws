@@ -10,7 +10,9 @@ route53resolver_update_resolver_endpoint(
   Name = NULL,
   ResolverEndpointType = NULL,
   UpdateIpAddresses = NULL,
-  Protocols = NULL
+  Protocols = NULL,
+  RniEnhancedMetricsEnabled = NULL,
+  TargetNameServerMetricsEnabled = NULL
 )
 }
 \arguments{
@@ -28,9 +30,9 @@ IPv4 to dual-stack. If you don't specify an IPv6 address, one will be
 automatically chosen from your subnet.}
 
 \item{Protocols}{The protocols you want to use for the endpoint. DoH-FIPS is applicable
-for inbound endpoints only.
+for default inbound endpoints only.
 
-For an inbound endpoint you can apply the protocols as follows:
+For a default inbound endpoint you can apply the protocols as follows:
 \itemize{
 \item Do53 and DoH in combination.
 \item Do53 and DoH-FIPS in combination.
@@ -39,6 +41,8 @@ For an inbound endpoint you can apply the protocols as follows:
 \item DoH-FIPS alone.
 \item None, which is treated as Do53.
 }
+
+For a delegation inbound endpoint you can use Do53 only.
 
 For an outbound endpoint you can apply the protocols as follows:
 \itemize{
@@ -54,6 +58,25 @@ incoming traffic that relies on Do53. To change the protocol from Do53
 to DoH, or DoH-FIPS, you must first enable both Do53 and DoH, or Do53
 and DoH-FIPS, to make sure that all incoming traffic has transferred to
 using the DoH protocol, or DoH-FIPS, and then remove the Do53.}
+
+\item{RniEnhancedMetricsEnabled}{Updates whether RNI enhanced metrics are enabled for the Resolver
+endpoints. When set to true, one-minute granular metrics are published
+in CloudWatch for each RNI associated with this endpoint. When set to
+false, metrics are not published.
+
+Standard CloudWatch pricing and charges are applied for using the Route
+53 Resolver endpoint RNI enhanced metrics. For more information, see
+\href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/monitoring-resolver-with-cloudwatch.html}{Detailed metrics}.}
+
+\item{TargetNameServerMetricsEnabled}{Updates whether target name server metrics are enabled for the outbound
+Resolver endpoints. When set to true, one-minute granular metrics are
+published in CloudWatch for each target name server associated with this
+endpoint. When set to false, metrics are not published. This setting is
+not supported for inbound Resolver endpoints.
+
+Standard CloudWatch pricing and charges are applied for using the Route
+53 Resolver endpoint target name server metrics. For more information,
+see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/monitoring-resolver-with-cloudwatch.html}{Detailed metrics}.}
 }
 \description{
 Updates the name, or endpoint type for an inbound or an outbound Resolver endpoint. You can only update between IPV4 and DUALSTACK, IPV6 endpoint type can't be updated to other type.

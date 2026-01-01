@@ -118,13 +118,18 @@ recent events in the CloudTrail console. For more information, see the
 \section{Operations}{
 
 \tabular{ll}{
+\link[=paymentcryptographycontrolplane_add_key_replication_regions]{add_key_replication_regions} \tab Adds replication Amazon Web Services Regions to an existing Amazon Web Services Payment Cryptography key, enabling the key to be used for cryptographic operations in additional Amazon Web Services Regions\cr
 \link[=paymentcryptographycontrolplane_create_alias]{create_alias} \tab Creates an alias, or a friendly name, for an Amazon Web Services Payment Cryptography key\cr
 \link[=paymentcryptographycontrolplane_create_key]{create_key} \tab Creates an Amazon Web Services Payment Cryptography key, a logical representation of a cryptographic key, that is unique in your account and Amazon Web Services Region\cr
 \link[=paymentcryptographycontrolplane_delete_alias]{delete_alias} \tab Deletes the alias, but doesn't affect the underlying key\cr
 \link[=paymentcryptographycontrolplane_delete_key]{delete_key} \tab Deletes the key material and metadata associated with Amazon Web Services Payment Cryptography key\cr
+\link[=paymentcryptographycontrolplane_disable_default_key_replication_regions]{disable_default_key_replication_regions} \tab Disables Multi-Region key replication settings for the specified Amazon Web Services Regions in your Amazon Web Services account, preventing new keys from being automatically replicated to those regions\cr
+\link[=paymentcryptographycontrolplane_enable_default_key_replication_regions]{enable_default_key_replication_regions} \tab Enables Multi-Region key replication settings for your Amazon Web Services account, causing new keys to be automatically replicated to the specified Amazon Web Services Regions when created\cr
 \link[=paymentcryptographycontrolplane_export_key]{export_key} \tab Exports a key from Amazon Web Services Payment Cryptography\cr
 \link[=paymentcryptographycontrolplane_get_alias]{get_alias} \tab Gets the Amazon Web Services Payment Cryptography key associated with the alias\cr
-\link[=paymentcryptographycontrolplane_get_key]{get_key} \tab Gets the key material for an Amazon Web Services Payment Cryptography key, including the immutable and mutable data specified when the key was created\cr
+\link[=paymentcryptographycontrolplane_get_certificate_signing_request]{get_certificate_signing_request} \tab Creates a certificate signing request (CSR) from a key pair\cr
+\link[=paymentcryptographycontrolplane_get_default_key_replication_regions]{get_default_key_replication_regions} \tab Retrieves the list of Amazon Web Services Regions where Multi-Region key replication is currently enabled for your Amazon Web Services account\cr
+\link[=paymentcryptographycontrolplane_get_key]{get_key} \tab Gets the key metadata for an Amazon Web Services Payment Cryptography key, including the immutable and mutable attributes specified when the key was created\cr
 \link[=paymentcryptographycontrolplane_get_parameters_for_export]{get_parameters_for_export} \tab Gets the export token and the signing key certificate to initiate a TR-34 key export from Amazon Web Services Payment Cryptography\cr
 \link[=paymentcryptographycontrolplane_get_parameters_for_import]{get_parameters_for_import} \tab Gets the import token and the wrapping key certificate in PEM format (base64 encoded) to initiate a TR-34 WrappedKeyBlock or a RSA WrappedKeyCryptogram import into Amazon Web Services Payment Cryptography\cr
 \link[=paymentcryptographycontrolplane_get_public_key_certificate]{get_public_key_certificate} \tab Gets the public key certificate of the asymmetric key pair that exists within Amazon Web Services Payment Cryptography\cr
@@ -132,6 +137,7 @@ recent events in the CloudTrail console. For more information, see the
 \link[=paymentcryptographycontrolplane_list_aliases]{list_aliases} \tab Lists the aliases for all keys in the caller's Amazon Web Services account and Amazon Web Services Region\cr
 \link[=paymentcryptographycontrolplane_list_keys]{list_keys} \tab Lists the keys in the caller's Amazon Web Services account and Amazon Web Services Region\cr
 \link[=paymentcryptographycontrolplane_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for an Amazon Web Services resource\cr
+\link[=paymentcryptographycontrolplane_remove_key_replication_regions]{remove_key_replication_regions} \tab Removes Replication Regions from an existing Amazon Web Services Payment Cryptography key, disabling the key's availability for cryptographic operations in the specified Amazon Web Services Regions\cr
 \link[=paymentcryptographycontrolplane_restore_key]{restore_key} \tab Cancels a scheduled key deletion during the waiting period\cr
 \link[=paymentcryptographycontrolplane_start_key_usage]{start_key_usage} \tab Enables an Amazon Web Services Payment Cryptography key, which makes it active for cryptographic operations within Amazon Web Services Payment Cryptography\cr
 \link[=paymentcryptographycontrolplane_stop_key_usage]{stop_key_usage} \tab Disables an Amazon Web Services Payment Cryptography key, which makes it inactive within Amazon Web Services Payment Cryptography\cr
@@ -144,7 +150,7 @@ recent events in the CloudTrail console. For more information, see the
 \examples{
 \dontrun{
 svc <- paymentcryptographycontrolplane()
-svc$create_alias(
+svc$add_key_replication_regions(
   Foo = 123
 )
 }

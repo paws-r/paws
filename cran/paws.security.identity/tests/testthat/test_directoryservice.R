@@ -16,6 +16,10 @@ test_that("describe_trusts", {
   expect_error(svc$describe_trusts(), NA)
 })
 
+test_that("list_ad_assessments", {
+  expect_error(svc$list_ad_assessments(), NA)
+})
+
 test_that("list_log_subscriptions", {
   expect_error(svc$list_log_subscriptions(), NA)
 })

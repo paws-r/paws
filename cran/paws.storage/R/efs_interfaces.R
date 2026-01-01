@@ -29,13 +29,13 @@ NULL
 
 .efs$create_mount_target_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FileSystemId = structure(logical(0), tags = list(type = "string")), SubnetId = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string")), SecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(FileSystemId = structure(logical(0), tags = list(type = "string")), SubnetId = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string")), Ipv6Address = structure(logical(0), tags = list(type = "string")), IpAddressType = structure(logical(0), tags = list(type = "string")), SecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .efs$create_mount_target_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), MountTargetId = structure(logical(0), tags = list(type = "string")), FileSystemId = structure(logical(0), tags = list(type = "string")), SubnetId = structure(logical(0), tags = list(type = "string")), LifeCycleState = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string")), NetworkInterfaceId = structure(logical(0), tags = list(type = "string")), AvailabilityZoneId = structure(logical(0), tags = list(type = "string")), AvailabilityZoneName = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), MountTargetId = structure(logical(0), tags = list(type = "string")), FileSystemId = structure(logical(0), tags = list(type = "string")), SubnetId = structure(logical(0), tags = list(type = "string")), LifeCycleState = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string")), Ipv6Address = structure(logical(0), tags = list(type = "string")), NetworkInterfaceId = structure(logical(0), tags = list(type = "string")), AvailabilityZoneId = structure(logical(0), tags = list(type = "string")), AvailabilityZoneName = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -213,7 +213,7 @@ NULL
 
 .efs$describe_mount_targets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Marker = structure(logical(0), tags = list(type = "string")), MountTargets = structure(list(structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), MountTargetId = structure(logical(0), tags = list(type = "string")), FileSystemId = structure(logical(0), tags = list(type = "string")), SubnetId = structure(logical(0), tags = list(type = "string")), LifeCycleState = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string")), NetworkInterfaceId = structure(logical(0), tags = list(type = "string")), AvailabilityZoneId = structure(logical(0), tags = list(type = "string")), AvailabilityZoneName = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Marker = structure(logical(0), tags = list(type = "string")), MountTargets = structure(list(structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), MountTargetId = structure(logical(0), tags = list(type = "string")), FileSystemId = structure(logical(0), tags = list(type = "string")), SubnetId = structure(logical(0), tags = list(type = "string")), LifeCycleState = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string")), Ipv6Address = structure(logical(0), tags = list(type = "string")), NetworkInterfaceId = structure(logical(0), tags = list(type = "string")), AvailabilityZoneId = structure(logical(0), tags = list(type = "string")), AvailabilityZoneName = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

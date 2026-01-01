@@ -40,6 +40,14 @@ test_that("describe_file_systems", {
   expect_error(svc$describe_file_systems(MaxResults = 20), NA)
 })
 
+test_that("describe_s3_access_point_attachments", {
+  expect_error(svc$describe_s3_access_point_attachments(), NA)
+})
+
+test_that("describe_s3_access_point_attachments", {
+  expect_error(svc$describe_s3_access_point_attachments(MaxResults = 20), NA)
+})
+
 test_that("describe_shared_vpc_configuration", {
   expect_error(svc$describe_shared_vpc_configuration(), NA)
 })

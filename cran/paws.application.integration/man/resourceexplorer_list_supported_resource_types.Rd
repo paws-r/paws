@@ -6,11 +6,17 @@
 Services Resource Explorer}
 \usage{
 resourceexplorer_list_supported_resource_types(
-  MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  MaxResults = NULL
 )
 }
 \arguments{
+\item{NextToken}{The parameter for receiving additional results if you receive a
+\code{NextToken} response in a previous request. A \code{NextToken} response
+indicates that more output is available. Set this parameter to the value
+of the previous call's \code{NextToken} response to indicate where the output
+should continue from. The pagination tokens expire after 24 hours.}
+
 \item{MaxResults}{The maximum number of results that you want included on each page of the
 response. If you do not include this parameter, it defaults to a value
 appropriate to the operation. If additional items exist beyond those
@@ -22,12 +28,6 @@ the next part of the results.
 An API operation can return fewer results than the maximum even when
 there are more results available. You should check \code{NextToken} after
 every operation to ensure that you receive all of the results.}
-
-\item{NextToken}{The parameter for receiving additional results if you receive a
-\code{NextToken} response in a previous request. A \code{NextToken} response
-indicates that more output is available. Set this parameter to the value
-of the previous call's \code{NextToken} response to indicate where the output
-should continue from. The pagination tokens expire after 24 hours.}
 }
 \description{
 Retrieves a list of all resource types currently supported by Amazon Web Services Resource Explorer.

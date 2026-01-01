@@ -94,7 +94,7 @@ Valid Values: \code{neptune}}
 
 \item{EngineVersion}{The version number of the database engine to use for the new DB cluster.
 
-Example: \verb{1.0.2.1}}
+Example: \verb{1.2.1.0}}
 
 \item{Port}{The port number on which the instances in the DB cluster accept
 connections.
@@ -197,21 +197,22 @@ in the \emph{Amazon Neptune User Guide}.}
 \item{GlobalClusterIdentifier}{The ID of the Neptune global database to which this new DB cluster
 should be added.}
 
-\item{StorageType}{The storage type to associate with the DB cluster.
+\item{StorageType}{The storage type for the new DB cluster.
 
 Valid Values:
 \itemize{
-\item \code{standard | iopt1}
-}
+\item \strong{\code{standard}}   –   ( \emph{the default} ) Configures cost-effective
+database storage for applications with moderate to small I/O usage.
+When set to \code{standard}, the storage type is not returned in the
+response.
+\item \strong{\code{iopt1}}   –   Enables \href{https://docs.aws.amazon.com/neptune/latest/userguide/storage-types.html#provisioned-iops-storage}{I/O-Optimized storage}
+that's designed to meet the needs of I/O-intensive graph workloads
+that require predictable pricing with low I/O latency and consistent
+I/O throughput.
 
-Default:
-\itemize{
-\item \code{standard}
-}
-
-When you create a Neptune cluster with the storage type set to \code{iopt1},
-the storage type is returned in the response. The storage type isn't
-returned when you set it to \code{standard}.}
+Neptune I/O-Optimized storage is only available starting with engine
+release 1.3.0.0.
+}}
 }
 \description{
 Creates a new Amazon Neptune DB cluster.

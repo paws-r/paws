@@ -66,7 +66,7 @@ For more information about load balancer TLS policies, see \href{https://docs.aw
 in the \emph{Amazon Lightsail Developer Guide}.}
 }
 \description{
-Creates a Lightsail load balancer. To learn more about deciding whether to load balance your application, see \href{https://docs.aws.amazon.com/lightsail/latest/userguide/configure-lightsail-instances-for-load-balancing.html}{Configure your Lightsail instances for load balancing}. You can create up to 5 load balancers per AWS Region in your account.
+Creates a Lightsail load balancer. To learn more about deciding whether to load balance your application, see \href{https://docs.aws.amazon.com/lightsail/latest/userguide/configure-lightsail-instances-for-load-balancing.html}{Configure your Lightsail instances for load balancing}. You can create up to 10 load balancers per AWS Region in your account.
 
 See \url{https://www.paws-r-sdk.com/docs/lightsail_create_load_balancer/} for full documentation.
 }

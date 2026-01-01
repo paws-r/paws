@@ -12,7 +12,9 @@ cloudwatchlogs_put_subscription_filter(
   destinationArn,
   roleArn = NULL,
   distribution = NULL,
-  applyOnTransformedLogs = NULL
+  applyOnTransformedLogs = NULL,
+  fieldSelectionCriteria = NULL,
+  emitSystemFields = NULL
 )
 }
 \arguments{
@@ -62,6 +64,19 @@ If the log group uses either a log-group level or account-level
 transformer, and you specify \code{true}, the subscription filter will be
 applied on the transformed version of the log events instead of the
 original ingested log events.}
+
+\item{fieldSelectionCriteria}{A filter expression that specifies which log events should be processed
+by this subscription filter based on system fields such as source
+account and source region. Uses selection criteria syntax with operators
+like \code{=}, \code{!=}, \code{AND}, \code{OR}, \code{IN}, \verb{NOT IN}. Example:
+\verb{@aws.region NOT IN ["cn-north-1"]} or
+\verb{@aws.account = "123456789012" AND @aws.region = "us-east-1"}. Maximum
+length: 2000 characters.}
+
+\item{emitSystemFields}{A list of system fields to include in the log events sent to the
+subscription destination. Valid values are \verb{@aws.account} and
+\verb{@aws.region}. These fields provide source information for centralized
+log data in the forwarded payload.}
 }
 \description{
 Creates or updates a subscription filter and associates it with the specified log group. With subscription filters, you can subscribe to a real-time stream of log events ingested through \code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} and have them delivered to a specific destination. When log events are sent to the receiving service, they are Base64 encoded and compressed with the GZIP format.

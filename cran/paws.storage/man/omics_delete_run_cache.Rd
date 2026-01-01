@@ -2,7 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_delete_run_cache}
 \alias{omics_delete_run_cache}
-\title{Delete a run cache}
+\title{Deletes a run cache and returns a response with no body if the operation
+is successful}
 \usage{
 omics_delete_run_cache(id)
 }
@@ -10,7 +11,7 @@ omics_delete_run_cache(id)
 \item{id}{[required] Run cache identifier for the cache you want to delete.}
 }
 \description{
-Delete a run cache. This action removes the cache metadata stored in the service account, but doesn't delete the data in Amazon S3. You can access the cache data in Amazon S3, for inspection or to troubleshoot issues. You can remove old cache data using standard S3 \code{Delete} operations.
+Deletes a run cache and returns a response with no body if the operation is successful. This action removes the cache metadata stored in the service account, but does not delete the data in Amazon S3. You can access the cache data in Amazon S3, for inspection or to troubleshoot issues. You can remove old cache data using standard S3 \code{Delete} operations.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_delete_run_cache/} for full documentation.
 }

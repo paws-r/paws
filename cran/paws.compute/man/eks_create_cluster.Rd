@@ -21,7 +21,9 @@ eks_create_cluster(
   zonalShiftConfig = NULL,
   remoteNetworkConfig = NULL,
   computeConfig = NULL,
-  storageConfig = NULL
+  storageConfig = NULL,
+  deletionProtection = NULL,
+  controlPlaneScalingConfig = NULL
 )
 }
 \arguments{
@@ -81,7 +83,8 @@ Amazon EKS clusters on the Amazon Web Services cloud.}
 \item{bootstrapSelfManagedAddons}{If you set this value to \code{False} when creating a cluster, the default
 networking add-ons will not be installed.
 
-The default networking addons include vpc-cni, coredns, and kube-proxy.
+The default networking add-ons include \code{vpc-cni}, \code{coredns}, and
+\code{kube-proxy}.
 
 Use this option when you plan to install third-party alternative add-ons
 or self-manage the default networking add-ons.}
@@ -121,6 +124,14 @@ Web Services account}
 creating your EKS Auto Mode cluster. If the block storage capability is
 enabled, EKS Auto Mode will create and delete EBS volumes in your Amazon
 Web Services account.}
+
+\item{deletionProtection}{Indicates whether to enable deletion protection for the cluster. When
+enabled, the cluster cannot be deleted unless deletion protection is
+first disabled. This helps prevent accidental cluster deletion. Default
+value is \code{false}.}
+
+\item{controlPlaneScalingConfig}{The control plane scaling tier configuration. For more information, see
+EKS Provisioned Control Plane in the Amazon EKS User Guide.}
 }
 \description{
 Creates an Amazon EKS control plane.

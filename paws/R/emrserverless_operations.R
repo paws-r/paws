@@ -9,10 +9,13 @@ NULL
 #' Cancels a job run.
 #'
 #' @usage
-#' emrserverless_cancel_job_run(applicationId, jobRunId)
+#' emrserverless_cancel_job_run(applicationId, jobRunId,
+#'   shutdownGracePeriodInSeconds)
 #'
 #' @param applicationId &#91;required&#93; The ID of the application on which the job run will be canceled.
 #' @param jobRunId &#91;required&#93; The ID of the job run to cancel.
+#' @param shutdownGracePeriodInSeconds The duration in seconds to wait before forcefully terminating the job
+#' after cancellation is requested.
 #'
 #' @return
 #' A list with the following syntax:
@@ -27,7 +30,8 @@ NULL
 #' ```
 #' svc$cancel_job_run(
 #'   applicationId = "string",
-#'   jobRunId = "string"
+#'   jobRunId = "string",
+#'   shutdownGracePeriodInSeconds = 123
 #' )
 #' ```
 #'
@@ -36,7 +40,7 @@ NULL
 #' @rdname emrserverless_cancel_job_run
 #'
 #' @aliases emrserverless_cancel_job_run
-emrserverless_cancel_job_run <- function(applicationId, jobRunId) {
+emrserverless_cancel_job_run <- function(applicationId, jobRunId, shutdownGracePeriodInSeconds = NULL) {
   op <- new_operation(
     name = "CancelJobRun",
     http_method = "DELETE",
@@ -45,7 +49,7 @@ emrserverless_cancel_job_run <- function(applicationId, jobRunId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .emrserverless$cancel_job_run_input(applicationId = applicationId, jobRunId = jobRunId)
+  input <- .emrserverless$cancel_job_run_input(applicationId = applicationId, jobRunId = jobRunId, shutdownGracePeriodInSeconds = shutdownGracePeriodInSeconds)
   output <- .emrserverless$cancel_job_run_output()
   config <- get_config()
   svc <- .emrserverless$service(config, op)
@@ -66,7 +70,8 @@ emrserverless_cancel_job_run <- function(applicationId, jobRunId) {
 #'   autoStopConfiguration, networkConfiguration, architecture,
 #'   imageConfiguration, workerTypeSpecifications, runtimeConfiguration,
 #'   monitoringConfiguration, interactiveConfiguration,
-#'   schedulerConfiguration)
+#'   schedulerConfiguration, identityCenterConfiguration,
+#'   jobLevelCostAllocationConfiguration)
 #'
 #' @param name The name of the application.
 #' @param releaseLabel &#91;required&#93; The Amazon EMR release associated with the application.
@@ -105,6 +110,11 @@ emrserverless_cancel_job_run <- function(applicationId, jobRunId) {
 #' cases to use when running an application.
 #' @param schedulerConfiguration The scheduler configuration for batch and streaming jobs running on this
 #' application. Supported with release labels emr-7.0.0 and above.
+#' @param identityCenterConfiguration The IAM Identity Center Configuration accepts the Identity Center
+#' instance parameter required to enable trusted identity propagation. This
+#' configuration allows identity propagation between integrated services
+#' and the Identity Center instance.
+#' @param jobLevelCostAllocationConfiguration The configuration object that enables job level cost allocation.
 #'
 #' @return
 #' A list with the following syntax:
@@ -208,6 +218,13 @@ emrserverless_cancel_job_run <- function(applicationId, jobRunId) {
 #'   schedulerConfiguration = list(
 #'     queueTimeoutMinutes = 123,
 #'     maxConcurrentRuns = 123
+#'   ),
+#'   identityCenterConfiguration = list(
+#'     identityCenterInstanceArn = "string",
+#'     userBackgroundSessionsEnabled = TRUE|FALSE
+#'   ),
+#'   jobLevelCostAllocationConfiguration = list(
+#'     enabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -217,7 +234,7 @@ emrserverless_cancel_job_run <- function(applicationId, jobRunId) {
 #' @rdname emrserverless_create_application
 #'
 #' @aliases emrserverless_create_application
-emrserverless_create_application <- function(name = NULL, releaseLabel, type, clientToken, initialCapacity = NULL, maximumCapacity = NULL, tags = NULL, autoStartConfiguration = NULL, autoStopConfiguration = NULL, networkConfiguration = NULL, architecture = NULL, imageConfiguration = NULL, workerTypeSpecifications = NULL, runtimeConfiguration = NULL, monitoringConfiguration = NULL, interactiveConfiguration = NULL, schedulerConfiguration = NULL) {
+emrserverless_create_application <- function(name = NULL, releaseLabel, type, clientToken, initialCapacity = NULL, maximumCapacity = NULL, tags = NULL, autoStartConfiguration = NULL, autoStopConfiguration = NULL, networkConfiguration = NULL, architecture = NULL, imageConfiguration = NULL, workerTypeSpecifications = NULL, runtimeConfiguration = NULL, monitoringConfiguration = NULL, interactiveConfiguration = NULL, schedulerConfiguration = NULL, identityCenterConfiguration = NULL, jobLevelCostAllocationConfiguration = NULL) {
   op <- new_operation(
     name = "CreateApplication",
     http_method = "POST",
@@ -226,7 +243,7 @@ emrserverless_create_application <- function(name = NULL, releaseLabel, type, cl
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .emrserverless$create_application_input(name = name, releaseLabel = releaseLabel, type = type, clientToken = clientToken, initialCapacity = initialCapacity, maximumCapacity = maximumCapacity, tags = tags, autoStartConfiguration = autoStartConfiguration, autoStopConfiguration = autoStopConfiguration, networkConfiguration = networkConfiguration, architecture = architecture, imageConfiguration = imageConfiguration, workerTypeSpecifications = workerTypeSpecifications, runtimeConfiguration = runtimeConfiguration, monitoringConfiguration = monitoringConfiguration, interactiveConfiguration = interactiveConfiguration, schedulerConfiguration = schedulerConfiguration)
+  input <- .emrserverless$create_application_input(name = name, releaseLabel = releaseLabel, type = type, clientToken = clientToken, initialCapacity = initialCapacity, maximumCapacity = maximumCapacity, tags = tags, autoStartConfiguration = autoStartConfiguration, autoStopConfiguration = autoStopConfiguration, networkConfiguration = networkConfiguration, architecture = architecture, imageConfiguration = imageConfiguration, workerTypeSpecifications = workerTypeSpecifications, runtimeConfiguration = runtimeConfiguration, monitoringConfiguration = monitoringConfiguration, interactiveConfiguration = interactiveConfiguration, schedulerConfiguration = schedulerConfiguration, identityCenterConfiguration = identityCenterConfiguration, jobLevelCostAllocationConfiguration = jobLevelCostAllocationConfiguration)
   output <- .emrserverless$create_application_output()
   config <- get_config()
   svc <- .emrserverless$service(config, op)
@@ -396,6 +413,14 @@ emrserverless_delete_application <- function(applicationId) {
 #'     schedulerConfiguration = list(
 #'       queueTimeoutMinutes = 123,
 #'       maxConcurrentRuns = 123
+#'     ),
+#'     identityCenterConfiguration = list(
+#'       identityCenterInstanceArn = "string",
+#'       identityCenterApplicationArn = "string",
+#'       userBackgroundSessionsEnabled = TRUE|FALSE
+#'     ),
+#'     jobLevelCostAllocationConfiguration = list(
+#'       enabled = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -531,6 +556,12 @@ emrserverless_get_dashboard_for_job_run <- function(applicationId, jobRunId, att
 #'       "2015-01-01"
 #'     ),
 #'     executionRole = "string",
+#'     executionIamPolicy = list(
+#'       policy = "string",
+#'       policyArns = list(
+#'         "string"
+#'       )
+#'     ),
 #'     state = "SUBMITTED"|"PENDING"|"SCHEDULED"|"RUNNING"|"SUCCESS"|"FAILED"|"CANCELLING"|"CANCELLED"|"QUEUED",
 #'     stateDetails = "string",
 #'     releaseLabel = "string",
@@ -1021,13 +1052,16 @@ emrserverless_start_application <- function(applicationId) {
 #'
 #' @usage
 #' emrserverless_start_job_run(applicationId, clientToken,
-#'   executionRoleArn, jobDriver, configurationOverrides, tags,
-#'   executionTimeoutMinutes, name, mode, retryPolicy)
+#'   executionRoleArn, executionIamPolicy, jobDriver, configurationOverrides,
+#'   tags, executionTimeoutMinutes, name, mode, retryPolicy)
 #'
 #' @param applicationId &#91;required&#93; The ID of the application on which to run the job.
 #' @param clientToken &#91;required&#93; The client idempotency token of the job run to start. Its value must be
 #' unique for each request.
 #' @param executionRoleArn &#91;required&#93; The execution role ARN for the job run.
+#' @param executionIamPolicy You can pass an optional IAM policy. The resulting job IAM role
+#' permissions will be an intersection of this policy and the policy
+#' associated with your job execution role.
 #' @param jobDriver The job driver for the job run.
 #' @param configurationOverrides The configuration overrides for the job run.
 #' @param tags The tags assigned to the job run.
@@ -1053,6 +1087,12 @@ emrserverless_start_application <- function(applicationId) {
 #'   applicationId = "string",
 #'   clientToken = "string",
 #'   executionRoleArn = "string",
+#'   executionIamPolicy = list(
+#'     policy = "string",
+#'     policyArns = list(
+#'       "string"
+#'     )
+#'   ),
 #'   jobDriver = list(
 #'     sparkSubmit = list(
 #'       entryPoint = "string",
@@ -1120,7 +1160,7 @@ emrserverless_start_application <- function(applicationId) {
 #' @rdname emrserverless_start_job_run
 #'
 #' @aliases emrserverless_start_job_run
-emrserverless_start_job_run <- function(applicationId, clientToken, executionRoleArn, jobDriver = NULL, configurationOverrides = NULL, tags = NULL, executionTimeoutMinutes = NULL, name = NULL, mode = NULL, retryPolicy = NULL) {
+emrserverless_start_job_run <- function(applicationId, clientToken, executionRoleArn, executionIamPolicy = NULL, jobDriver = NULL, configurationOverrides = NULL, tags = NULL, executionTimeoutMinutes = NULL, name = NULL, mode = NULL, retryPolicy = NULL) {
   op <- new_operation(
     name = "StartJobRun",
     http_method = "POST",
@@ -1129,7 +1169,7 @@ emrserverless_start_job_run <- function(applicationId, clientToken, executionRol
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .emrserverless$start_job_run_input(applicationId = applicationId, clientToken = clientToken, executionRoleArn = executionRoleArn, jobDriver = jobDriver, configurationOverrides = configurationOverrides, tags = tags, executionTimeoutMinutes = executionTimeoutMinutes, name = name, mode = mode, retryPolicy = retryPolicy)
+  input <- .emrserverless$start_job_run_input(applicationId = applicationId, clientToken = clientToken, executionRoleArn = executionRoleArn, executionIamPolicy = executionIamPolicy, jobDriver = jobDriver, configurationOverrides = configurationOverrides, tags = tags, executionTimeoutMinutes = executionTimeoutMinutes, name = name, mode = mode, retryPolicy = retryPolicy)
   output <- .emrserverless$start_job_run_output()
   config <- get_config()
   svc <- .emrserverless$service(config, op)
@@ -1303,7 +1343,8 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #'   autoStopConfiguration, networkConfiguration, architecture,
 #'   imageConfiguration, workerTypeSpecifications, interactiveConfiguration,
 #'   releaseLabel, runtimeConfiguration, monitoringConfiguration,
-#'   schedulerConfiguration)
+#'   schedulerConfiguration, identityCenterConfiguration,
+#'   jobLevelCostAllocationConfiguration)
 #'
 #' @param applicationId &#91;required&#93; The ID of the application to update.
 #' @param clientToken &#91;required&#93; The client idempotency token of the application to update. Its value
@@ -1341,6 +1382,11 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #' @param monitoringConfiguration The configuration setting for monitoring.
 #' @param schedulerConfiguration The scheduler configuration for batch and streaming jobs running on this
 #' application. Supported with release labels emr-7.0.0 and above.
+#' @param identityCenterConfiguration Specifies the IAM Identity Center configuration used to enable or
+#' disable trusted identity propagation. When provided, this configuration
+#' determines how the application interacts with IAM Identity Center for
+#' user authentication and access control.
+#' @param jobLevelCostAllocationConfiguration The configuration object that enables job level cost allocation.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1447,6 +1493,14 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #'     schedulerConfiguration = list(
 #'       queueTimeoutMinutes = 123,
 #'       maxConcurrentRuns = 123
+#'     ),
+#'     identityCenterConfiguration = list(
+#'       identityCenterInstanceArn = "string",
+#'       identityCenterApplicationArn = "string",
+#'       userBackgroundSessionsEnabled = TRUE|FALSE
+#'     ),
+#'     jobLevelCostAllocationConfiguration = list(
+#'       enabled = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -1540,6 +1594,13 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #'   schedulerConfiguration = list(
 #'     queueTimeoutMinutes = 123,
 #'     maxConcurrentRuns = 123
+#'   ),
+#'   identityCenterConfiguration = list(
+#'     identityCenterInstanceArn = "string",
+#'     userBackgroundSessionsEnabled = TRUE|FALSE
+#'   ),
+#'   jobLevelCostAllocationConfiguration = list(
+#'     enabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -1549,7 +1610,7 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #' @rdname emrserverless_update_application
 #'
 #' @aliases emrserverless_update_application
-emrserverless_update_application <- function(applicationId, clientToken, initialCapacity = NULL, maximumCapacity = NULL, autoStartConfiguration = NULL, autoStopConfiguration = NULL, networkConfiguration = NULL, architecture = NULL, imageConfiguration = NULL, workerTypeSpecifications = NULL, interactiveConfiguration = NULL, releaseLabel = NULL, runtimeConfiguration = NULL, monitoringConfiguration = NULL, schedulerConfiguration = NULL) {
+emrserverless_update_application <- function(applicationId, clientToken, initialCapacity = NULL, maximumCapacity = NULL, autoStartConfiguration = NULL, autoStopConfiguration = NULL, networkConfiguration = NULL, architecture = NULL, imageConfiguration = NULL, workerTypeSpecifications = NULL, interactiveConfiguration = NULL, releaseLabel = NULL, runtimeConfiguration = NULL, monitoringConfiguration = NULL, schedulerConfiguration = NULL, identityCenterConfiguration = NULL, jobLevelCostAllocationConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateApplication",
     http_method = "PATCH",
@@ -1558,7 +1619,7 @@ emrserverless_update_application <- function(applicationId, clientToken, initial
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .emrserverless$update_application_input(applicationId = applicationId, clientToken = clientToken, initialCapacity = initialCapacity, maximumCapacity = maximumCapacity, autoStartConfiguration = autoStartConfiguration, autoStopConfiguration = autoStopConfiguration, networkConfiguration = networkConfiguration, architecture = architecture, imageConfiguration = imageConfiguration, workerTypeSpecifications = workerTypeSpecifications, interactiveConfiguration = interactiveConfiguration, releaseLabel = releaseLabel, runtimeConfiguration = runtimeConfiguration, monitoringConfiguration = monitoringConfiguration, schedulerConfiguration = schedulerConfiguration)
+  input <- .emrserverless$update_application_input(applicationId = applicationId, clientToken = clientToken, initialCapacity = initialCapacity, maximumCapacity = maximumCapacity, autoStartConfiguration = autoStartConfiguration, autoStopConfiguration = autoStopConfiguration, networkConfiguration = networkConfiguration, architecture = architecture, imageConfiguration = imageConfiguration, workerTypeSpecifications = workerTypeSpecifications, interactiveConfiguration = interactiveConfiguration, releaseLabel = releaseLabel, runtimeConfiguration = runtimeConfiguration, monitoringConfiguration = monitoringConfiguration, schedulerConfiguration = schedulerConfiguration, identityCenterConfiguration = identityCenterConfiguration, jobLevelCostAllocationConfiguration = jobLevelCostAllocationConfiguration)
   output <- .emrserverless$update_application_output()
   config <- get_config()
   svc <- .emrserverless$service(config, op)

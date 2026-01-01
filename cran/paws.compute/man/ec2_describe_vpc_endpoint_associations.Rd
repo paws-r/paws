@@ -35,8 +35,6 @@ associated service network. Only VPC endpoints of type service
 network will be returned.
 \item \code{resource-configuration-group-arn} - The Amazon Resource Name (ARN)
 of the resource configuration of type GROUP.
-\item \code{service-network-resource-association-id} - The ID of the
-association.
 }}
 
 \item{MaxResults}{The maximum page size.}

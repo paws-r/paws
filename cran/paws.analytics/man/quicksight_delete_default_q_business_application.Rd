@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_delete_default_q_business_application}
 \alias{quicksight_delete_default_q_business_application}
-\title{Deletes a linked Amazon Q Business application from an Amazon QuickSight
+\title{Deletes a linked Amazon Q Business application from an Quick Sight
 account}
 \usage{
 quicksight_delete_default_q_business_application(
@@ -11,16 +11,16 @@ quicksight_delete_default_q_business_application(
 )
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the Amazon QuickSight account that you want to disconnect from
-a Amazon Q Business application.}
+\item{AwsAccountId}{[required] The ID of the Quick Sight account that you want to disconnect from a
+Amazon Q Business application.}
 
-\item{Namespace}{The Amazon QuickSight namespace that you want to delete a linked Amazon
-Q Business application from. If this field is left blank, the Amazon Q
+\item{Namespace}{The Quick Sight namespace that you want to delete a linked Amazon Q
+Business application from. If this field is left blank, the Amazon Q
 Business application is deleted from the default namespace. Currently,
 the default namespace is the only valid value for this parameter.}
 }
 \description{
-Deletes a linked Amazon Q Business application from an Amazon QuickSight account
+Deletes a linked Amazon Q Business application from an Quick Sight account
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_delete_default_q_business_application/} for full documentation.
 }

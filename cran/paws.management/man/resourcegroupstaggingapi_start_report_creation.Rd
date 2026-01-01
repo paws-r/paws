@@ -12,10 +12,10 @@ resourcegroupstaggingapi_start_report_creation(S3Bucket)
 \item{S3Bucket}{[required] The name of the Amazon S3 bucket where the report will be stored; for
 example:
 
-\code{awsexamplebucket}
+\code{amzn-s3-demo-bucket}
 
 For more information on S3 bucket requirements, including an example
-bucket policy, see the example S3 bucket policy on this page.}
+bucket policy, see the example Amazon S3 bucket policy on this page.}
 }
 \description{
 Generates a report that lists all tagged resources in the accounts across your organization and tells whether each resource is compliant with the effective tag policy. Compliance data is refreshed daily. The report is generated asynchronously.

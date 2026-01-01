@@ -26,8 +26,10 @@ docdb_create_db_cluster(
   DeletionProtection = NULL,
   GlobalClusterIdentifier = NULL,
   StorageType = NULL,
+  ServerlessV2ScalingConfiguration = NULL,
   ManageMasterUserPassword = NULL,
-  MasterUserSecretKmsKeyId = NULL
+  MasterUserSecretKmsKeyId = NULL,
+  NetworkType = NULL
 )
 }
 \arguments{
@@ -167,9 +169,12 @@ Valid values for storage type - \code{standard | iopt1}
 
 Default value is \code{standard }
 
-When you create a DocumentDB DB cluster with the storage type set to
-\code{iopt1}, the storage type is returned in the response. The storage type
-isn't returned when you set it to \code{standard}.}
+When you create an Amazon DocumentDB cluster with the storage type set
+to \code{iopt1}, the storage type is returned in the response. The storage
+type isn't returned when you set it to \code{standard}.}
+
+\item{ServerlessV2ScalingConfiguration}{Contains the scaling configuration of an Amazon DocumentDB Serverless
+cluster.}
 
 \item{ManageMasterUserPassword}{Specifies whether to manage the master user password with Amazon Web
 Services Secrets Manager.
@@ -196,6 +201,17 @@ a customer managed KMS key.
 There is a default KMS key for your Amazon Web Services account. Your
 Amazon Web Services account has a different default KMS key for each
 Amazon Web Services Region.}
+
+\item{NetworkType}{The network type of the cluster.
+
+The network type is determined by the \code{DBSubnetGroup} specified for the
+cluster. A \code{DBSubnetGroup} can support only the IPv4 protocol or the
+IPv4 and the IPv6 protocols (\code{DUAL}).
+
+For more information, see \href{https://docs.aws.amazon.com/documentdb/latest/developerguide/vpc-clusters.html}{DocumentDB clusters in a VPC}
+in the Amazon DocumentDB Developer Guide.
+
+Valid Values: \code{IPV4} | \code{DUAL}}
 }
 \description{
 Creates a new Amazon DocumentDB cluster.

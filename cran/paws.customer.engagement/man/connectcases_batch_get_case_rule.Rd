@@ -4,12 +4,12 @@
 \alias{connectcases_batch_get_case_rule}
 \title{Gets a batch of case rules}
 \usage{
-connectcases_batch_get_case_rule(caseRules, domainId)
+connectcases_batch_get_case_rule(domainId, caseRules)
 }
 \arguments{
-\item{caseRules}{[required] List of case rule identifiers.}
-
 \item{domainId}{[required] Unique identifier of a Cases domain.}
+
+\item{caseRules}{[required] A list of case rule identifiers.}
 }
 \description{
 Gets a batch of case rules. In the Amazon Connect admin website, case rules are known as \emph{case field conditions}. For more information about case field conditions, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html}{Add case field conditions to a case template}.

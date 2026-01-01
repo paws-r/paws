@@ -21,7 +21,7 @@ Suggests:
     testthat
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Collate: 
     'dax_service.R'
     'dax_interfaces.R'
@@ -56,12 +56,6 @@ Collate:
     'neptunedata_service.R'
     'neptunedata_interfaces.R'
     'neptunedata_operations.R'
-    'qldb_service.R'
-    'qldb_interfaces.R'
-    'qldb_operations.R'
-    'qldbsession_service.R'
-    'qldbsession_interfaces.R'
-    'qldbsession_operations.R'
     'rds_service.R'
     'rds_operations.R'
     'rds_custom.R'

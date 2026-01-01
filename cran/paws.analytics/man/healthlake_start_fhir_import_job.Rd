@@ -2,7 +2,7 @@
 % Please edit documentation in R/healthlake_operations.R
 \name{healthlake_start_fhir_import_job}
 \alias{healthlake_start_fhir_import_job}
-\title{Begins a FHIR Import job}
+\title{Start importing bulk FHIR data into an ACTIVE data store}
 \usage{
 healthlake_start_fhir_import_job(
   JobName = NULL,
@@ -10,26 +10,28 @@ healthlake_start_fhir_import_job(
   JobOutputDataConfig,
   DatastoreId,
   DataAccessRoleArn,
-  ClientToken = NULL
+  ClientToken = NULL,
+  ValidationLevel = NULL
 )
 }
 \arguments{
-\item{JobName}{The name of the FHIR Import job in the StartFHIRImport job request.}
+\item{JobName}{The import job name.}
 
-\item{InputDataConfig}{[required] The input properties of the FHIR Import job in the StartFHIRImport job
-request.}
+\item{InputDataConfig}{[required] The input properties for the import job request.}
 
 \item{JobOutputDataConfig}{[required]}
 
-\item{DatastoreId}{[required] The AWS-generated data store ID.}
+\item{DatastoreId}{[required] The data store identifier.}
 
-\item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) that gives AWS HealthLake access
-permission.}
+\item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) that grants access permission to AWS
+HealthLake.}
 
-\item{ClientToken}{Optional user provided token used for ensuring idempotency.}
+\item{ClientToken}{The optional user-provided token used for ensuring API idempotency.}
+
+\item{ValidationLevel}{The validation level of the import job.}
 }
 \description{
-Begins a FHIR Import job.
+Start importing bulk FHIR data into an ACTIVE data store. The import job imports FHIR data found in the \code{InputDataConfig} object and stores processing results in the \code{JobOutputDataConfig} object.
 
 See \url{https://www.paws-r-sdk.com/docs/healthlake_start_fhir_import_job/} for full documentation.
 }

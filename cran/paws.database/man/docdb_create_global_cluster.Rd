@@ -35,7 +35,7 @@ the global cluster you are creating.}
 \item{StorageEncrypted}{The storage encryption setting for the new global cluster.}
 }
 \description{
-Creates an Amazon DocumentDB global cluster that can span multiple multiple Amazon Web Services Regions. The global cluster contains one primary cluster with read-write capability, and up-to give read-only secondary clusters. Global clusters uses storage-based fast replication across regions with latencies less than one second, using dedicated infrastructure with no impact to your workload’s performance.
+Creates an Amazon DocumentDB global cluster that can span multiple multiple Amazon Web Services Regions. The global cluster contains one primary cluster with read-write capability, and up-to 10 read-only secondary clusters. Global clusters uses storage-based fast replication across regions with latencies less than one second, using dedicated infrastructure with no impact to your workload’s performance.
 
 See \url{https://www.paws-r-sdk.com/docs/docdb_create_global_cluster/} for full documentation.
 }

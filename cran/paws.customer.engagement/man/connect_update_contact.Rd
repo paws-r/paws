@@ -40,8 +40,9 @@ Attribute keys can include only alphanumeric, -, and _.
 
 This field can be used to show channel subtype, such as \code{connect:Guide}.
 
-Currently Contact Expiry is the only segment attribute which can be
-updated by using the UpdateContact API.}
+Contact Expiry, and user-defined attributes (String - String) that are
+defined in predefined attributes, can be updated by using the
+UpdateContact API.}
 
 \item{QueueInfo}{Information about the queue associated with a contact. This parameter
 can only be updated for external audio contacts. It is used when you

@@ -10,9 +10,8 @@ cloudformation_list_imports(ExportName, NextToken = NULL)
 \item{ExportName}{[required] The name of the exported output value. CloudFormation returns the stack
 names that are importing this value.}
 
-\item{NextToken}{A string (provided by the \code{\link[=cloudformation_list_imports]{list_imports}}
-response output) that identifies the next page of stacks that are
-importing the specified exported output value.}
+\item{NextToken}{The token for the next set of items to return. (You received this token
+from a previous call.)}
 }
 \description{
 Lists all stacks that are importing an exported output value. To modify or remove an exported output value, first use this action to see which stacks are using it. To see the exported output values in your account, see \code{\link[=cloudformation_list_exports]{list_exports}}.

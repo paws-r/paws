@@ -117,10 +117,10 @@ savingsplans_delete_queued_savings_plan <- function(savingsPlanId) {
 }
 .savingsplans$operations$delete_queued_savings_plan <- savingsplans_delete_queued_savings_plan
 
-#' Describes the rates for the specified Savings Plan
+#' Describes the rates for a specific, existing Savings Plan
 #'
 #' @description
-#' Describes the rates for the specified Savings Plan.
+#' Describes the rates for a specific, existing Savings Plan.
 #'
 #' @usage
 #' savingsplans_describe_savings_plan_rates(savingsPlanId, filters,
@@ -140,10 +140,10 @@ savingsplans_delete_queued_savings_plan <- function(savingsPlanId) {
 #'   searchResults = list(
 #'     list(
 #'       rate = "string",
-#'       currency = "CNY"|"USD",
-#'       unit = "Hrs"|"Lambda-GB-Second"|"Request",
-#'       productType = "EC2"|"Fargate"|"Lambda"|"SageMaker",
-#'       serviceCode = "AmazonEC2"|"AmazonECS"|"AmazonEKS"|"AWSLambda"|"AmazonSageMaker",
+#'       currency = "CNY"|"USD"|"EUR",
+#'       unit = "Hrs"|"Lambda-GB-Second"|"Request"|"ACU-Hr"|"ReadRequestUnits"|"WriteRequestUnits"|"ReadCapacityUnit-Hrs"|"WriteCapacityUnit-Hrs"|"ReplicatedWriteRequestUnits"|"ReplicatedWriteCapacityUnit-Hrs"|"GB-Hours"|"DPU"|"ElastiCacheProcessingUnit"|"DCU-Hr"|"NCU-hr",
+#'       productType = "EC2"|"Fargate"|"Lambda"|"SageMaker"|"RDS"|"DSQL"|"DynamoDB"|"ElastiCache"|"DocDB"|"Neptune"|"Timestream"|"Keyspaces"|"DMS",
+#'       serviceCode = "AmazonEC2"|"AmazonECS"|"AmazonEKS"|"AWSLambda"|"AmazonSageMaker"|"AmazonRDS"|"AuroraDSQL"|"AmazonDynamoDB"|"AmazonElastiCache"|"AmazonDocDB"|"AmazonNeptune"|"AmazonTimestream"|"AmazonMCS"|"AWSDatabaseMigrationSvc",
 #'       usageType = "string",
 #'       operation = "string",
 #'       properties = list(
@@ -231,12 +231,12 @@ savingsplans_describe_savings_plan_rates <- function(savingsPlanId, filters = NU
 #'       state = "payment-pending"|"payment-failed"|"active"|"retired"|"queued"|"queued-deleted"|"pending-return"|"returned",
 #'       region = "string",
 #'       ec2InstanceFamily = "string",
-#'       savingsPlanType = "Compute"|"EC2Instance"|"SageMaker",
+#'       savingsPlanType = "Compute"|"EC2Instance"|"SageMaker"|"Database",
 #'       paymentOption = "All Upfront"|"Partial Upfront"|"No Upfront",
 #'       productTypes = list(
-#'         "EC2"|"Fargate"|"Lambda"|"SageMaker"
+#'         "EC2"|"Fargate"|"Lambda"|"SageMaker"|"RDS"|"DSQL"|"DynamoDB"|"ElastiCache"|"DocDB"|"Neptune"|"Timestream"|"Keyspaces"|"DMS"
 #'       ),
-#'       currency = "CNY"|"USD",
+#'       currency = "CNY"|"USD"|"EUR",
 #'       commitment = "string",
 #'       upfrontPaymentAmount = "string",
 #'       recurringPaymentAmount = "string",
@@ -267,7 +267,7 @@ savingsplans_describe_savings_plan_rates <- function(savingsPlanId, filters = NU
 #'   ),
 #'   filters = list(
 #'     list(
-#'       name = "region"|"ec2-instance-family"|"commitment"|"upfront"|"term"|"savings-plan-type"|"payment-option"|"start"|"end",
+#'       name = "region"|"ec2-instance-family"|"commitment"|"upfront"|"term"|"savings-plan-type"|"payment-option"|"start"|"end"|"instance-family",
 #'       values = list(
 #'         "string"
 #'       )
@@ -300,10 +300,12 @@ savingsplans_describe_savings_plans <- function(savingsPlanArns = NULL, savingsP
 }
 .savingsplans$operations$describe_savings_plans <- savingsplans_describe_savings_plans
 
-#' Describes the offering rates for the specified Savings Plans
+#' Describes the offering rates for Savings Plans you might want to
+#' purchase
 #'
 #' @description
-#' Describes the offering rates for the specified Savings Plans.
+#' Describes the offering rates for Savings Plans you might want to
+#' purchase.
 #'
 #' @usage
 #' savingsplans_describe_savings_plans_offering_rates(
@@ -333,15 +335,15 @@ savingsplans_describe_savings_plans <- function(savingsPlanArns = NULL, savingsP
 #'       savingsPlanOffering = list(
 #'         offeringId = "string",
 #'         paymentOption = "All Upfront"|"Partial Upfront"|"No Upfront",
-#'         planType = "Compute"|"EC2Instance"|"SageMaker",
+#'         planType = "Compute"|"EC2Instance"|"SageMaker"|"Database",
 #'         durationSeconds = 123,
-#'         currency = "CNY"|"USD",
+#'         currency = "CNY"|"USD"|"EUR",
 #'         planDescription = "string"
 #'       ),
 #'       rate = "string",
-#'       unit = "Hrs"|"Lambda-GB-Second"|"Request",
-#'       productType = "EC2"|"Fargate"|"Lambda"|"SageMaker",
-#'       serviceCode = "AmazonEC2"|"AmazonECS"|"AmazonEKS"|"AWSLambda"|"AmazonSageMaker",
+#'       unit = "Hrs"|"Lambda-GB-Second"|"Request"|"ACU-Hr"|"ReadRequestUnits"|"WriteRequestUnits"|"ReadCapacityUnit-Hrs"|"WriteCapacityUnit-Hrs"|"ReplicatedWriteRequestUnits"|"ReplicatedWriteCapacityUnit-Hrs"|"GB-Hours"|"DPU"|"ElastiCacheProcessingUnit"|"DCU-Hr"|"NCU-hr",
+#'       productType = "EC2"|"Fargate"|"Lambda"|"SageMaker"|"RDS"|"DSQL"|"DynamoDB"|"ElastiCache"|"DocDB"|"Neptune"|"Timestream"|"Keyspaces"|"DMS",
+#'       serviceCode = "AmazonEC2"|"AmazonECS"|"AmazonEKS"|"AWSLambda"|"AmazonSageMaker"|"AmazonRDS"|"AuroraDSQL"|"AmazonDynamoDB"|"AmazonElastiCache"|"AmazonDocDB"|"AmazonNeptune"|"AmazonTimestream"|"AmazonMCS"|"AWSDatabaseMigrationSvc",
 #'       usageType = "string",
 #'       operation = "string",
 #'       properties = list(
@@ -366,13 +368,13 @@ savingsplans_describe_savings_plans <- function(savingsPlanArns = NULL, savingsP
 #'     "All Upfront"|"Partial Upfront"|"No Upfront"
 #'   ),
 #'   savingsPlanTypes = list(
-#'     "Compute"|"EC2Instance"|"SageMaker"
+#'     "Compute"|"EC2Instance"|"SageMaker"|"Database"
 #'   ),
 #'   products = list(
-#'     "EC2"|"Fargate"|"Lambda"|"SageMaker"
+#'     "EC2"|"Fargate"|"Lambda"|"SageMaker"|"RDS"|"DSQL"|"DynamoDB"|"ElastiCache"|"DocDB"|"Neptune"|"Timestream"|"Keyspaces"|"DMS"
 #'   ),
 #'   serviceCodes = list(
-#'     "AmazonEC2"|"AmazonECS"|"AmazonEKS"|"AWSLambda"|"AmazonSageMaker"
+#'     "AmazonEC2"|"AmazonECS"|"AmazonEKS"|"AWSLambda"|"AmazonSageMaker"|"AmazonRDS"|"AuroraDSQL"|"AmazonDynamoDB"|"AmazonElastiCache"|"AmazonDocDB"|"AmazonNeptune"|"AmazonTimestream"|"AmazonMCS"|"AWSDatabaseMigrationSvc"
 #'   ),
 #'   usageTypes = list(
 #'     "string"
@@ -452,13 +454,13 @@ savingsplans_describe_savings_plans_offering_rates <- function(savingsPlanOfferi
 #'     list(
 #'       offeringId = "string",
 #'       productTypes = list(
-#'         "EC2"|"Fargate"|"Lambda"|"SageMaker"
+#'         "EC2"|"Fargate"|"Lambda"|"SageMaker"|"RDS"|"DSQL"|"DynamoDB"|"ElastiCache"|"DocDB"|"Neptune"|"Timestream"|"Keyspaces"|"DMS"
 #'       ),
-#'       planType = "Compute"|"EC2Instance"|"SageMaker",
+#'       planType = "Compute"|"EC2Instance"|"SageMaker"|"Database",
 #'       description = "string",
 #'       paymentOption = "All Upfront"|"Partial Upfront"|"No Upfront",
 #'       durationSeconds = 123,
-#'       currency = "CNY"|"USD",
+#'       currency = "CNY"|"USD"|"EUR",
 #'       serviceCode = "string",
 #'       usageType = "string",
 #'       operation = "string",
@@ -483,15 +485,15 @@ savingsplans_describe_savings_plans_offering_rates <- function(savingsPlanOfferi
 #'   paymentOptions = list(
 #'     "All Upfront"|"Partial Upfront"|"No Upfront"
 #'   ),
-#'   productType = "EC2"|"Fargate"|"Lambda"|"SageMaker",
+#'   productType = "EC2"|"Fargate"|"Lambda"|"SageMaker"|"RDS"|"DSQL"|"DynamoDB"|"ElastiCache"|"DocDB"|"Neptune"|"Timestream"|"Keyspaces"|"DMS",
 #'   planTypes = list(
-#'     "Compute"|"EC2Instance"|"SageMaker"
+#'     "Compute"|"EC2Instance"|"SageMaker"|"Database"
 #'   ),
 #'   durations = list(
 #'     123
 #'   ),
 #'   currencies = list(
-#'     "CNY"|"USD"
+#'     "CNY"|"USD"|"EUR"
 #'   ),
 #'   descriptions = list(
 #'     "string"

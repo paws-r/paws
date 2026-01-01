@@ -2,7 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_get_map_tile}
 \alias{locationservice_get_map_tile}
-\title{Retrieves a vector data tile from the map resource}
+\title{This operation is no longer current and may be deprecated in the future}
 \usage{
 locationservice_get_map_tile(MapName, Z, X, Y, Key = NULL)
 }
@@ -15,11 +15,11 @@ locationservice_get_map_tile(MapName, Z, X, Y, Key = NULL)
 
 \item{Y}{[required] The Y axis value for the map tile.}
 
-\item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}
+\item{Key}{The optional \href{https://docs.aws.amazon.com/location/previous/developerguide/using-apikeys.html}{API key}
 to authorize the request.}
 }
 \description{
-Retrieves a vector data tile from the map resource. Map tiles are used by clients to render a map. they're addressed using a grid arrangement with an X coordinate, Y coordinate, and Z (zoom) level.
+This operation is no longer current and may be deprecated in the future. We recommend upgrading to \href{https://docs.aws.amazon.com/location/latest/APIReference/API_geomaps_GetTile.html}{\code{GetTile}} unless you require \code{Grab} data.
 
 See \url{https://www.paws-r-sdk.com/docs/locationservice_get_map_tile/} for full documentation.
 }

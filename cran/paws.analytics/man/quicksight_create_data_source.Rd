@@ -31,25 +31,25 @@ Region for each Amazon Web Services account.}
 
 Use \code{AMAZON_ELASTICSEARCH} for Amazon OpenSearch Service.}
 
-\item{DataSourceParameters}{The parameters that Amazon QuickSight uses to connect to your underlying
-source.}
+\item{DataSourceParameters}{The parameters that Amazon Quick Sight uses to connect to your
+underlying source.}
 
-\item{Credentials}{The credentials Amazon QuickSight that uses to connect to your
+\item{Credentials}{The credentials Amazon Quick Sight that uses to connect to your
 underlying source. Currently, only credentials based on user name and
 password are supported.}
 
 \item{Permissions}{A list of resource permissions on the data source.}
 
-\item{VpcConnectionProperties}{Use this parameter only when you want Amazon QuickSight to use a VPC
+\item{VpcConnectionProperties}{Use this parameter only when you want Amazon Quick Sight to use a VPC
 connection when connecting to your underlying source.}
 
-\item{SslProperties}{Secure Socket Layer (SSL) properties that apply when Amazon QuickSight
+\item{SslProperties}{Secure Socket Layer (SSL) properties that apply when Amazon Quick Sight
 connects to your underlying source.}
 
 \item{Tags}{Contains a map of the key-value pairs for the resource tag or tags
 assigned to the data source.}
 
-\item{FolderArns}{When you create the data source, Amazon QuickSight adds the data source
+\item{FolderArns}{When you create the data source, Amazon Quick Sight adds the data source
 to these folders.}
 }
 \description{

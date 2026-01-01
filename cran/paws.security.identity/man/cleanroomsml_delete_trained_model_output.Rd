@@ -2,9 +2,13 @@
 % Please edit documentation in R/cleanroomsml_operations.R
 \name{cleanroomsml_delete_trained_model_output}
 \alias{cleanroomsml_delete_trained_model_output}
-\title{Deletes the output of a trained model}
+\title{Deletes the model artifacts stored by the service}
 \usage{
-cleanroomsml_delete_trained_model_output(trainedModelArn, membershipIdentifier)
+cleanroomsml_delete_trained_model_output(
+  trainedModelArn,
+  membershipIdentifier,
+  versionIdentifier = NULL
+)
 }
 \arguments{
 \item{trainedModelArn}{[required] The Amazon Resource Name (ARN) of the trained model whose output you
@@ -12,9 +16,13 @@ want to delete.}
 
 \item{membershipIdentifier}{[required] The membership ID of the member that is deleting the trained model
 output.}
+
+\item{versionIdentifier}{The version identifier of the trained model to delete. If not specified,
+the operation will delete the base version of the trained model. When
+specified, only the particular version will be deleted.}
 }
 \description{
-Deletes the output of a trained model.
+Deletes the model artifacts stored by the service.
 
 See \url{https://www.paws-r-sdk.com/docs/cleanroomsml_delete_trained_model_output/} for full documentation.
 }

@@ -28,15 +28,15 @@ cloudformation_update_stack(
 \arguments{
 \item{StackName}{[required] The name or unique stack ID of the stack to update.}
 
-\item{TemplateBody}{Structure containing the template body with a minimum length of 1 byte
-and a maximum length of 51,200 bytes.
+\item{TemplateBody}{Structure that contains the template body with a minimum length of 1
+byte and a maximum length of 51,200 bytes.
 
 Conditional: You must specify only one of the following parameters:
 \code{TemplateBody}, \code{TemplateURL}, or set the \code{UsePreviousTemplate} to
 \code{true}.}
 
-\item{TemplateURL}{The URL of a file containing the template body. The URL must point to a
-template that's located in an Amazon S3 bucket or a Systems Manager
+\item{TemplateURL}{The URL of a file that contains the template body. The URL must point to
+a template that's located in an Amazon S3 bucket or a Systems Manager
 document. The location for an Amazon S3 bucket must start with
 \verb{https://}.
 
@@ -47,12 +47,17 @@ Conditional: You must specify only one of the following parameters:
 \item{UsePreviousTemplate}{Reuse the existing template that is associated with the stack that you
 are updating.
 
+When using templates with the \code{AWS::LanguageExtensions} transform,
+provide the template instead of using \code{UsePreviousTemplate} to ensure
+new parameter values and Systems Manager parameter updates are applied
+correctly. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/transform-aws-languageextensions.html}{AWS::LanguageExtensions transform}.
+
 Conditional: You must specify only one of the following parameters:
 \code{TemplateBody}, \code{TemplateURL}, or set the \code{UsePreviousTemplate} to
 \code{true}.}
 
-\item{StackPolicyDuringUpdateBody}{Structure containing the temporary overriding stack policy body. You can
-specify either the \code{StackPolicyDuringUpdateBody} or the
+\item{StackPolicyDuringUpdateBody}{Structure that contains the temporary overriding stack policy body. You
+can specify either the \code{StackPolicyDuringUpdateBody} or the
 \code{StackPolicyDuringUpdateURL} parameter, but not both.
 
 If you want to update protected resources, specify a temporary
@@ -60,12 +65,14 @@ overriding stack policy during this update. If you don't specify a stack
 policy, the current policy that is associated with the stack will be
 used.}
 
-\item{StackPolicyDuringUpdateURL}{Location of a file containing the temporary overriding stack policy. The
-URL must point to a policy (max size: 16KB) located in an S3 bucket in
-the same Region as the stack. The location for an Amazon S3 bucket must
-start with \verb{https://}. You can specify either the
-\code{StackPolicyDuringUpdateBody} or the \code{StackPolicyDuringUpdateURL}
-parameter, but not both.
+\item{StackPolicyDuringUpdateURL}{Location of a file that contains the temporary overriding stack policy.
+The URL must point to a policy (max size: 16KB) located in an S3 bucket
+in the same Region as the stack. The location for an Amazon S3 bucket
+must start with \verb{https://}. URLs from S3 static websites are not
+supported.
+
+You can specify either the \code{StackPolicyDuringUpdateBody} or the
+\code{StackPolicyDuringUpdateURL} parameter, but not both.
 
 If you want to update protected resources, specify a temporary
 overriding stack policy during this update. If you don't specify a stack
@@ -102,14 +109,14 @@ If your stack template contains these resources, we suggest that you
 review all permissions associated with them and edit their
 permissions if necessary.
 \itemize{
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html}{AWS::IAM::AccessKey}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html}{AWS::IAM::Group}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-managedpolicy.html}{AWS::IAM::ManagedPolicy}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html}{AWS::IAM::Policy}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html}{AWS::IAM::Role}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html}{AWS::IAM::User}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html}{AWS::IAM::UserToGroupAddition}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-accesskey.html}{AWS::IAM::AccessKey}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-group.html}{AWS::IAM::Group}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-managedpolicy.html}{AWS::IAM::ManagedPolicy}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-policy.html}{AWS::IAM::Policy}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-role.html}{AWS::IAM::Role}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-user.html}{AWS::IAM::User}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-usertogroupaddition.html}{AWS::IAM::UserToGroupAddition}
 }
 
 For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html#using-iam-capabilities}{Acknowledging IAM resources in CloudFormation templates}.
@@ -125,9 +132,9 @@ your stack template contains one or more macros, and you choose to
 update a stack directly from the processed template, without first
 reviewing the resulting changes in a change set, you must
 acknowledge this capability. This includes the
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-include.html}{AWS::Include}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/transform-aws-include.html}{AWS::Include}
 and
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html}{AWS::Serverless}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/transform-aws-serverless.html}{AWS::Serverless}
 transforms, which are macros hosted by CloudFormation.
 
 If you want to update a stack from a stack template that contains
@@ -148,15 +155,14 @@ For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/la
 Only one of the \code{Capabilities} and \code{ResourceType} parameters can be
 specified.}
 
-\item{ResourceTypes}{The template resource types that you have permissions to work with for
-this update stack action, such as \verb{AWS::EC2::Instance}, \verb{AWS::EC2::*},
-or \code{Custom::MyCustomInstance}.
+\item{ResourceTypes}{Specifies which resource types you can work with, such as
+\verb{AWS::EC2::Instance} or \code{Custom::MyCustomInstance}.
 
 If the list of resource types doesn't include a resource that you're
 updating, the stack update fails. By default, CloudFormation grants
 permissions to all resource types. IAM uses this parameter for
 CloudFormation-specific condition keys in IAM policies. For more
-information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html}{Control access with Identity and Access Management}.
+information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html}{Control CloudFormation access with Identity and Access Management}.
 
 Only one of the \code{Capabilities} and \code{ResourceType} parameters can be
 specified.}
@@ -178,19 +184,21 @@ credentials.}
 creation and updating operations, and for the specified monitoring
 period afterwards.}
 
-\item{StackPolicyBody}{Structure containing a new stack policy body. You can specify either the
-\code{StackPolicyBody} or the \code{StackPolicyURL} parameter, but not both.
+\item{StackPolicyBody}{Structure that contains a new stack policy body. You can specify either
+the \code{StackPolicyBody} or the \code{StackPolicyURL} parameter, but not both.
 
 You might update the stack policy, for example, in order to protect a
 new resource that you created during a stack update. If you don't
 specify a stack policy, the current policy that is associated with the
 stack is unchanged.}
 
-\item{StackPolicyURL}{Location of a file containing the updated stack policy. The URL must
+\item{StackPolicyURL}{Location of a file that contains the updated stack policy. The URL must
 point to a policy (max size: 16KB) located in an S3 bucket in the same
 Region as the stack. The location for an Amazon S3 bucket must start
-with \verb{https://}. You can specify either the \code{StackPolicyBody} or the
-\code{StackPolicyURL} parameter, but not both.
+with \verb{https://}. URLs from S3 static websites are not supported.
+
+You can specify either the \code{StackPolicyBody} or the \code{StackPolicyURL}
+parameter, but not both.
 
 You might update the stack policy, for example, in order to protect a
 new resource that you created during a stack update. If you don't

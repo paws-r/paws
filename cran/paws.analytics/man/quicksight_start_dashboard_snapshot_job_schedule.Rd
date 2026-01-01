@@ -19,7 +19,7 @@ job is executed in.}
 for.}
 
 \item{ScheduleId}{[required] The ID of the schedule that you want to start a snapshot job schedule
-for. The schedule ID can be found in the Amazon QuickSight console in
+for. The schedule ID can be found in the Amazon Quick Sight console in
 the \strong{Schedules} pane of the dashboard that the schedule is configured
 for.}
 }

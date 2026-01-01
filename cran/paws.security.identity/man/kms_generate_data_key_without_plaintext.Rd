@@ -52,7 +52,7 @@ encryption context is supported only on operations with symmetric
 encryption KMS keys. On operations with symmetric encryption KMS keys,
 an encryption context is optional, but it is strongly recommended.
 
-For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption context}
+For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html}{Encryption context}
 in the \emph{Key Management Service Developer Guide}.}
 
 \item{KeySpec}{The length of the data key. Use \code{AES_128} to generate a 128-bit
@@ -68,12 +68,12 @@ the \code{KeySpec} field instead of this one.}
 Use a grant token when your permission to call this operation comes from
 a new grant that has not yet achieved \emph{eventual consistency}. For more
 information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token}
-and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token}{Using a grant token}
+and \href{https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html}{Using a grant token}
 in the \emph{Key Management Service Developer Guide}.}
 
 \item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.
 
-To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your KMS API calls}
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your permissions}
 in the \emph{Key Management Service Developer Guide}.}
 }
 \description{

@@ -2,10 +2,8 @@
 % Please edit documentation in R/cloudfront_operations.R
 \name{cloudfront_list_conflicting_aliases}
 \alias{cloudfront_list_conflicting_aliases}
-\title{Gets a list of aliases (also called CNAMEs or alternate domain names)
-that conflict or overlap with the provided alias, and the associated
-CloudFront distributions and Amazon Web Services accounts for each
-conflicting alias}
+\title{The ListConflictingAliases API operation only supports standard
+distributions}
 \usage{
 cloudfront_list_conflicting_aliases(
   DistributionId,
@@ -15,8 +13,8 @@ cloudfront_list_conflicting_aliases(
 )
 }
 \arguments{
-\item{DistributionId}{[required] The ID of a distribution in your account that has an attached SSL/TLS
-certificate that includes the provided alias.}
+\item{DistributionId}{[required] The ID of a standard distribution in your account that has an attached
+TLS certificate that includes the provided alias.}
 
 \item{Alias}{[required] The alias (also called a CNAME) to search for conflicting aliases.}
 
@@ -29,7 +27,7 @@ current page's response.}
 \item{MaxItems}{The maximum number of conflicting aliases that you want in the response.}
 }
 \description{
-Gets a list of aliases (also called CNAMEs or alternate domain names) that conflict or overlap with the provided alias, and the associated CloudFront distributions and Amazon Web Services accounts for each conflicting alias. In the returned list, the distribution and account IDs are partially hidden, which allows you to identify the distributions and accounts that you own, but helps to protect the information of ones that you don't own.
+The \code{\link[=cloudfront_list_conflicting_aliases]{list_conflicting_aliases}} API operation only supports standard distributions. To list domain conflicts for both standard distributions and distribution tenants, we recommend that you use the \code{\link[=cloudfront_list_domain_conflicts]{list_domain_conflicts}} API operation instead.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudfront_list_conflicting_aliases/} for full documentation.
 }

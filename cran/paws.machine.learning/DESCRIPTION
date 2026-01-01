@@ -22,7 +22,7 @@ Suggests:
     testthat
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Collate: 
     'augmentedairuntime_service.R'
     'augmentedairuntime_interfaces.R'
@@ -75,9 +75,6 @@ Collate:
     'lookoutequipment_service.R'
     'lookoutequipment_interfaces.R'
     'lookoutequipment_operations.R'
-    'lookoutmetrics_service.R'
-    'lookoutmetrics_interfaces.R'
-    'lookoutmetrics_operations.R'
     'machinelearning_service.R'
     'machinelearning_interfaces.R'
     'machinelearning_operations.R'

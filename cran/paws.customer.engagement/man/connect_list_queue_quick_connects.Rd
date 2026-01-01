@@ -2,8 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_list_queue_quick_connects}
 \alias{connect_list_queue_quick_connects}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Lists the quick connects associated with a queue}
 \usage{
 connect_list_queue_quick_connects(
   InstanceId,
@@ -26,7 +25,7 @@ results.}
 size is 100.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to change.
+Lists the quick connects associated with a queue.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_list_queue_quick_connects/} for full documentation.
 }

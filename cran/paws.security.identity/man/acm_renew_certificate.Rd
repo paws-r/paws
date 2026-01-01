@@ -15,7 +15,7 @@ must be of the form:
 For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}.}
 }
 \description{
-Renews an eligible ACM certificate. At this time, only exported private certificates can be renewed with this operation. In order to renew your Amazon Web Services Private CA certificates with ACM, you must first \href{https://docs.aws.amazon.com/privateca/latest/userguide/}{grant the ACM service principal permission to do so}. For more information, see \href{https://docs.aws.amazon.com/acm/latest/userguide/}{Testing Managed Renewal} in the ACM User Guide.
+Renews an \href{https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html}{eligible ACM certificate}. In order to renew your Amazon Web Services Private CA certificates with ACM, you must first \href{https://docs.aws.amazon.com/privateca/latest/userguide/}{grant the ACM service principal permission to do so}. For more information, see \href{https://docs.aws.amazon.com/acm/latest/userguide/}{Testing Managed Renewal} in the ACM User Guide.
 
 See \url{https://www.paws-r-sdk.com/docs/acm_renew_certificate/} for full documentation.
 }

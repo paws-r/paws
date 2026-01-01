@@ -9,6 +9,7 @@ personalize_create_solution(
   performHPO = NULL,
   performAutoML = NULL,
   performAutoTraining = NULL,
+  performIncrementalUpdate = NULL,
   recipeArn = NULL,
   datasetGroupArn,
   eventType = NULL,
@@ -55,6 +56,12 @@ Resource Name (ARN) with the
 \code{\link[=personalize_list_solution_versions]{list_solution_versions}} API
 operation. To get its status, use the
 \code{\link[=personalize_describe_solution_version]{describe_solution_version}}.}
+
+\item{performIncrementalUpdate}{Whether to perform incremental training updates on your model. When
+enabled, this allows the model to learn from new data more frequently
+without requiring full retraining, which enables near real-time
+personalization. This parameter is supported only for solutions that use
+the semantic-similarity recipe.}
 
 \item{recipeArn}{The Amazon Resource Name (ARN) of the recipe to use for model training.
 This is required when \code{performAutoML} is false. For information about

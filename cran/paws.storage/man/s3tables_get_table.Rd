@@ -4,15 +4,22 @@
 \alias{s3tables_get_table}
 \title{Gets details about a table}
 \usage{
-s3tables_get_table(tableBucketARN, namespace, name)
+s3tables_get_table(
+  tableBucketARN = NULL,
+  namespace = NULL,
+  name = NULL,
+  tableArn = NULL
+)
 }
 \arguments{
-\item{tableBucketARN}{[required] The Amazon Resource Name (ARN) of the table bucket associated with the
+\item{tableBucketARN}{The Amazon Resource Name (ARN) of the table bucket associated with the
 table.}
 
-\item{namespace}{[required] The name of the namespace the table is associated with.}
+\item{namespace}{The name of the namespace the table is associated with.}
 
-\item{name}{[required] The name of the table.}
+\item{name}{The name of the table.}
+
+\item{tableArn}{The Amazon Resource Name (ARN) of the table.}
 }
 \description{
 Gets details about a table. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-tables.html}{S3 Tables} in the \emph{Amazon Simple Storage Service User Guide}.

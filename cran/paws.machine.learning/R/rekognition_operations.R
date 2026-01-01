@@ -6,7 +6,7 @@ NULL
 #' Associates one or more faces with an existing UserID
 #'
 #' @description
-#' Associates one or more faces with an existing UserID. Takes an array of `FaceIds`. Each `FaceId` that are present in the `FaceIds` list is associated with the provided UserID. The maximum number of total `FaceIds` per UserID is 100.
+#' Associates one or more faces with an existing UserID. Takes an array of `FaceIds`. Each `FaceId` that are present in the `FaceIds` list is associated with the provided UserID. The number of FaceIds that can be used as input in a single request is limited to 100.
 #'
 #' See [https://www.paws-r-sdk.com/docs/rekognition_associate_faces/](https://www.paws-r-sdk.com/docs/rekognition_associate_faces/) for full documentation.
 #'
@@ -1623,11 +1623,11 @@ rekognition_get_media_analysis_job <- function(JobId) {
 }
 .rekognition$operations$get_media_analysis_job <- rekognition_get_media_analysis_job
 
-#' Gets the path tracking results of a Amazon Rekognition Video analysis
-#' started by StartPersonTracking
+#' End of support notice: On October 31, 2025, AWS will discontinue support
+#' for Amazon Rekognition People Pathing
 #'
 #' @description
-#' Gets the path tracking results of a Amazon Rekognition Video analysis started by [`start_person_tracking`][rekognition_start_person_tracking].
+#' *End of support notice:* On October 31, 2025, AWS will discontinue support for Amazon Rekognition People Pathing. After October 31, 2025, you will no longer be able to use the Rekognition People Pathing capability. For more information, visit this [blog post](https://aws.amazon.com/blogs/machine-learning/transitioning-from-amazon-rekognition-people-pathing-exploring-other-alternatives/).
 #'
 #' See [https://www.paws-r-sdk.com/docs/rekognition_get_person_tracking/](https://www.paws-r-sdk.com/docs/rekognition_get_person_tracking/) for full documentation.
 #'
@@ -2727,10 +2727,11 @@ rekognition_start_media_analysis_job <- function(ClientRequestToken = NULL, JobN
 }
 .rekognition$operations$start_media_analysis_job <- rekognition_start_media_analysis_job
 
-#' Starts the asynchronous tracking of a person's path in a stored video
+#' End of support notice: On October 31, 2025, AWS will discontinue support
+#' for Amazon Rekognition People Pathing
 #'
 #' @description
-#' Starts the asynchronous tracking of a person's path in a stored video.
+#' *End of support notice:* On October 31, 2025, AWS will discontinue support for Amazon Rekognition People Pathing. After October 31, 2025, you will no longer be able to use the Rekognition People Pathing capability. For more information, visit this [blog post](https://aws.amazon.com/blogs/machine-learning/transitioning-from-amazon-rekognition-people-pathing-exploring-other-alternatives/).
 #'
 #' See [https://www.paws-r-sdk.com/docs/rekognition_start_person_tracking/](https://www.paws-r-sdk.com/docs/rekognition_start_person_tracking/) for full documentation.
 #'

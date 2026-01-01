@@ -2,7 +2,8 @@
 % Please edit documentation in R/appstream_operations.R
 \name{appstream_list_tags_for_resource}
 \alias{appstream_list_tags_for_resource}
-\title{Retrieves a list of all tags for the specified AppStream 2}
+\title{Retrieves a list of all tags for the specified WorkSpaces Applications
+resource}
 \usage{
 appstream_list_tags_for_resource(ResourceArn)
 }
@@ -10,7 +11,7 @@ appstream_list_tags_for_resource(ResourceArn)
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
 }
 \description{
-Retrieves a list of all tags for the specified AppStream 2.0 resource. You can tag AppStream 2.0 image builders, images, fleets, and stacks.
+Retrieves a list of all tags for the specified WorkSpaces Applications resource. You can tag WorkSpaces Applications image builders, images, fleets, and stacks.
 
 See \url{https://www.paws-r-sdk.com/docs/appstream_list_tags_for_resource/} for full documentation.
 }

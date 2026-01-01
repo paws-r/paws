@@ -2,8 +2,8 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_get_person_tracking}
 \alias{rekognition_get_person_tracking}
-\title{Gets the path tracking results of a Amazon Rekognition Video analysis
-started by StartPersonTracking}
+\title{End of support notice: On October 31, 2025, AWS will discontinue support
+for Amazon Rekognition People Pathing}
 \usage{
 rekognition_get_person_tracking(
   JobId,
@@ -33,7 +33,7 @@ person are sorted by detection confidence. The default sort is by
 \code{TIMESTAMP}.}
 }
 \description{
-Gets the path tracking results of a Amazon Rekognition Video analysis started by \code{\link[=rekognition_start_person_tracking]{start_person_tracking}}.
+\emph{End of support notice:} On October 31, 2025, AWS will discontinue support for Amazon Rekognition People Pathing. After October 31, 2025, you will no longer be able to use the Rekognition People Pathing capability. For more information, visit this \href{https://aws.amazon.com/blogs/machine-learning/transitioning-from-amazon-rekognition-people-pathing-exploring-other-alternatives/}{blog post}.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_get_person_tracking/} for full documentation.
 }

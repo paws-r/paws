@@ -15,7 +15,8 @@ lambda_update_function_code(
   DryRun = NULL,
   RevisionId = NULL,
   Architectures = NULL,
-  SourceKMSKeyArn = NULL
+  SourceKMSKeyArn = NULL,
+  PublishTo = NULL
 )
 }
 \arguments{
@@ -69,6 +70,8 @@ value is \code{x86_64}.}
 used to encrypt your function's .zip deployment package. If you don't
 provide a customer managed key, Lambda uses an Amazon Web Services
 managed key.}
+
+\item{PublishTo}{Specifies where to publish the function version or configuration.}
 }
 \description{
 Updates a Lambda function's code. If code signing is enabled for the function, the code package must be signed by a trusted publisher. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-codesigning.html}{Configuring code signing for Lambda}.

@@ -9,11 +9,18 @@ NULL
 #' Submits a request to cancel the trained model job.
 #'
 #' @usage
-#' cleanroomsml_cancel_trained_model(membershipIdentifier, trainedModelArn)
+#' cleanroomsml_cancel_trained_model(membershipIdentifier, trainedModelArn,
+#'   versionIdentifier)
 #'
 #' @param membershipIdentifier &#91;required&#93; The membership ID of the trained model job that you want to cancel.
 #' @param trainedModelArn &#91;required&#93; The Amazon Resource Name (ARN) of the trained model job that you want to
 #' cancel.
+#' @param versionIdentifier The version identifier of the trained model to cancel. This parameter
+#' allows you to specify which version of the trained model you want to
+#' cancel when multiple versions exist.
+#' 
+#' If `versionIdentifier` is not specified, the base model will be
+#' cancelled.
 #'
 #' @return
 #' An empty list.
@@ -22,7 +29,8 @@ NULL
 #' ```
 #' svc$cancel_trained_model(
 #'   membershipIdentifier = "string",
-#'   trainedModelArn = "string"
+#'   trainedModelArn = "string",
+#'   versionIdentifier = "string"
 #' )
 #' ```
 #'
@@ -31,7 +39,7 @@ NULL
 #' @rdname cleanroomsml_cancel_trained_model
 #'
 #' @aliases cleanroomsml_cancel_trained_model
-cleanroomsml_cancel_trained_model <- function(membershipIdentifier, trainedModelArn) {
+cleanroomsml_cancel_trained_model <- function(membershipIdentifier, trainedModelArn, versionIdentifier = NULL) {
   op <- new_operation(
     name = "CancelTrainedModel",
     http_method = "PATCH",
@@ -40,7 +48,7 @@ cleanroomsml_cancel_trained_model <- function(membershipIdentifier, trainedModel
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cleanroomsml$cancel_trained_model_input(membershipIdentifier = membershipIdentifier, trainedModelArn = trainedModelArn)
+  input <- .cleanroomsml$cancel_trained_model_input(membershipIdentifier = membershipIdentifier, trainedModelArn = trainedModelArn, versionIdentifier = versionIdentifier)
   output <- .cleanroomsml$cancel_trained_model_output()
   config <- get_config()
   svc <- .cleanroomsml$service(config, op)
@@ -536,11 +544,26 @@ cleanroomsml_create_configured_model_algorithm <- function(name, description = N
 #'             allowedAccountIds = list(
 #'               "string"
 #'             ),
-#'             filterPattern = "string"
+#'             filterPattern = "string",
+#'             logType = "ALL"|"ERROR_SUMMARY",
+#'             logRedactionConfiguration = list(
+#'               entitiesToRedact = list(
+#'                 "ALL_PERSONALLY_IDENTIFIABLE_INFORMATION"|"NUMBERS"|"CUSTOM"
+#'               ),
+#'               customEntityConfig = list(
+#'                 customDataIdentifiers = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         containerMetrics = list(
 #'           noiseLevel = "HIGH"|"MEDIUM"|"LOW"|"NONE"
+#'         ),
+#'         maxArtifactSize = list(
+#'           unit = "GB",
+#'           value = 123.0
 #'         )
 #'       ),
 #'       trainedModelExports = list(
@@ -558,7 +581,18 @@ cleanroomsml_create_configured_model_algorithm <- function(name, description = N
 #'             allowedAccountIds = list(
 #'               "string"
 #'             ),
-#'             filterPattern = "string"
+#'             filterPattern = "string",
+#'             logType = "ALL"|"ERROR_SUMMARY",
+#'             logRedactionConfiguration = list(
+#'               entitiesToRedact = list(
+#'                 "ALL_PERSONALLY_IDENTIFIABLE_INFORMATION"|"NUMBERS"|"CUSTOM"
+#'               ),
+#'               customEntityConfig = list(
+#'                 customDataIdentifiers = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         maxOutputSize = list(
@@ -679,7 +713,8 @@ cleanroomsml_create_configured_model_algorithm_association <- function(membershi
 #'             type = "CR.1X"|"CR.4X",
 #'             number = 123
 #'           )
-#'         )
+#'         ),
+#'         resultFormat = "CSV"|"PARQUET"
 #'       )
 #'     ),
 #'     roleArn = "string"
@@ -728,8 +763,8 @@ cleanroomsml_create_ml_input_channel <- function(membershipIdentifier, configure
 #' @usage
 #' cleanroomsml_create_trained_model(membershipIdentifier, name,
 #'   configuredModelAlgorithmAssociationArn, hyperparameters, environment,
-#'   resourceConfig, stoppingCondition, dataChannels, description, kmsKeyArn,
-#'   tags)
+#'   resourceConfig, stoppingCondition, incrementalTrainingDataChannels,
+#'   dataChannels, trainingInputMode, description, kmsKeyArn, tags)
 #'
 #' @param membershipIdentifier &#91;required&#93; The membership ID of the member that is creating the trained model.
 #' @param name &#91;required&#93; The name of the trained model.
@@ -739,8 +774,34 @@ cleanroomsml_create_ml_input_channel <- function(membershipIdentifier, configure
 #' @param environment The environment variables to set in the Docker container.
 #' @param resourceConfig &#91;required&#93; Information about the EC2 resources that are used to train this model.
 #' @param stoppingCondition The criteria that is used to stop model training.
+#' @param incrementalTrainingDataChannels Specifies the incremental training data channels for the trained model.
+#' 
+#' Incremental training allows you to create a new trained model with
+#' updates without retraining from scratch. You can specify up to one
+#' incremental training data channel that references a previously trained
+#' model and its version.
+#' 
+#' Limit: Maximum of 20 channels total (including both
+#' `incrementalTrainingDataChannels` and `dataChannels`).
 #' @param dataChannels &#91;required&#93; Defines the data channels that are used as input for the trained model
 #' request.
+#' 
+#' Limit: Maximum of 20 channels total (including both `dataChannels` and
+#' `incrementalTrainingDataChannels`).
+#' @param trainingInputMode The input mode for accessing the training data. This parameter
+#' determines how the training data is made available to the training
+#' algorithm. Valid values are:
+#' 
+#' -   `File` - The training data is downloaded to the training instance
+#'     and made available as files.
+#' 
+#' -   `FastFile` - The training data is streamed directly from Amazon S3
+#'     to the training algorithm, providing faster access for large
+#'     datasets.
+#' 
+#' -   `Pipe` - The training data is streamed to the training algorithm
+#'     using named pipes, which can improve performance for certain
+#'     algorithms.
 #' @param description The description of the trained model.
 #' @param kmsKeyArn The Amazon Resource Name (ARN) of the KMS key. This key is used to
 #' encrypt and decrypt customer-owned data in the trained ML model and the
@@ -780,7 +841,8 @@ cleanroomsml_create_ml_input_channel <- function(membershipIdentifier, configure
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   trainedModelArn = "string"
+#'   trainedModelArn = "string",
+#'   versionIdentifier = "string"
 #' )
 #' ```
 #'
@@ -798,18 +860,27 @@ cleanroomsml_create_ml_input_channel <- function(membershipIdentifier, configure
 #'   ),
 #'   resourceConfig = list(
 #'     instanceCount = 123,
-#'     instanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge"|"ml.p5.48xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.trn1n.32xlarge"|"ml.m6i.large"|"ml.m6i.xlarge"|"ml.m6i.2xlarge"|"ml.m6i.4xlarge"|"ml.m6i.8xlarge"|"ml.m6i.12xlarge"|"ml.m6i.16xlarge"|"ml.m6i.24xlarge"|"ml.m6i.32xlarge"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.8xlarge"|"ml.c6i.4xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.8xlarge"|"ml.r5d.12xlarge"|"ml.r5d.16xlarge"|"ml.r5d.24xlarge"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge",
+#'     instanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge"|"ml.p5.48xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.trn1n.32xlarge"|"ml.m6i.large"|"ml.m6i.xlarge"|"ml.m6i.2xlarge"|"ml.m6i.4xlarge"|"ml.m6i.8xlarge"|"ml.m6i.12xlarge"|"ml.m6i.16xlarge"|"ml.m6i.24xlarge"|"ml.m6i.32xlarge"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.8xlarge"|"ml.c6i.4xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.8xlarge"|"ml.r5d.12xlarge"|"ml.r5d.16xlarge"|"ml.r5d.24xlarge"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.c7i.large"|"ml.c7i.xlarge"|"ml.c7i.2xlarge"|"ml.c7i.4xlarge"|"ml.c7i.8xlarge"|"ml.c7i.12xlarge"|"ml.c7i.16xlarge"|"ml.c7i.24xlarge"|"ml.c7i.48xlarge"|"ml.m7i.large"|"ml.m7i.xlarge"|"ml.m7i.2xlarge"|"ml.m7i.4xlarge"|"ml.m7i.8xlarge"|"ml.m7i.12xlarge"|"ml.m7i.16xlarge"|"ml.m7i.24xlarge"|"ml.m7i.48xlarge"|"ml.r7i.large"|"ml.r7i.xlarge"|"ml.r7i.2xlarge"|"ml.r7i.4xlarge"|"ml.r7i.8xlarge"|"ml.r7i.12xlarge"|"ml.r7i.16xlarge"|"ml.r7i.24xlarge"|"ml.r7i.48xlarge"|"ml.g6.xlarge"|"ml.g6.2xlarge"|"ml.g6.4xlarge"|"ml.g6.8xlarge"|"ml.g6.12xlarge"|"ml.g6.16xlarge"|"ml.g6.24xlarge"|"ml.g6.48xlarge"|"ml.g6e.xlarge"|"ml.g6e.2xlarge"|"ml.g6e.4xlarge"|"ml.g6e.8xlarge"|"ml.g6e.12xlarge"|"ml.g6e.16xlarge"|"ml.g6e.24xlarge"|"ml.g6e.48xlarge"|"ml.p5en.48xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge",
 #'     volumeSizeInGB = 123
 #'   ),
 #'   stoppingCondition = list(
 #'     maxRuntimeInSeconds = 123
 #'   ),
-#'   dataChannels = list(
+#'   incrementalTrainingDataChannels = list(
 #'     list(
-#'       mlInputChannelArn = "string",
+#'       trainedModelArn = "string",
+#'       versionIdentifier = "string",
 #'       channelName = "string"
 #'     )
 #'   ),
+#'   dataChannels = list(
+#'     list(
+#'       mlInputChannelArn = "string",
+#'       channelName = "string",
+#'       s3DataDistributionType = "FullyReplicated"|"ShardedByS3Key"
+#'     )
+#'   ),
+#'   trainingInputMode = "File"|"FastFile"|"Pipe",
 #'   description = "string",
 #'   kmsKeyArn = "string",
 #'   tags = list(
@@ -823,7 +894,7 @@ cleanroomsml_create_ml_input_channel <- function(membershipIdentifier, configure
 #' @rdname cleanroomsml_create_trained_model
 #'
 #' @aliases cleanroomsml_create_trained_model
-cleanroomsml_create_trained_model <- function(membershipIdentifier, name, configuredModelAlgorithmAssociationArn, hyperparameters = NULL, environment = NULL, resourceConfig, stoppingCondition = NULL, dataChannels, description = NULL, kmsKeyArn = NULL, tags = NULL) {
+cleanroomsml_create_trained_model <- function(membershipIdentifier, name, configuredModelAlgorithmAssociationArn, hyperparameters = NULL, environment = NULL, resourceConfig, stoppingCondition = NULL, incrementalTrainingDataChannels = NULL, dataChannels, trainingInputMode = NULL, description = NULL, kmsKeyArn = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateTrainedModel",
     http_method = "POST",
@@ -832,7 +903,7 @@ cleanroomsml_create_trained_model <- function(membershipIdentifier, name, config
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cleanroomsml$create_trained_model_input(membershipIdentifier = membershipIdentifier, name = name, configuredModelAlgorithmAssociationArn = configuredModelAlgorithmAssociationArn, hyperparameters = hyperparameters, environment = environment, resourceConfig = resourceConfig, stoppingCondition = stoppingCondition, dataChannels = dataChannels, description = description, kmsKeyArn = kmsKeyArn, tags = tags)
+  input <- .cleanroomsml$create_trained_model_input(membershipIdentifier = membershipIdentifier, name = name, configuredModelAlgorithmAssociationArn = configuredModelAlgorithmAssociationArn, hyperparameters = hyperparameters, environment = environment, resourceConfig = resourceConfig, stoppingCondition = stoppingCondition, incrementalTrainingDataChannels = incrementalTrainingDataChannels, dataChannels = dataChannels, trainingInputMode = trainingInputMode, description = description, kmsKeyArn = kmsKeyArn, tags = tags)
   output <- .cleanroomsml$create_trained_model_output()
   config <- get_config()
   svc <- .cleanroomsml$service(config, op)
@@ -1339,19 +1410,22 @@ cleanroomsml_delete_ml_input_channel_data <- function(mlInputChannelArn, members
 }
 .cleanroomsml$operations$delete_ml_input_channel_data <- cleanroomsml_delete_ml_input_channel_data
 
-#' Deletes the output of a trained model
+#' Deletes the model artifacts stored by the service
 #'
 #' @description
-#' Deletes the output of a trained model.
+#' Deletes the model artifacts stored by the service.
 #'
 #' @usage
 #' cleanroomsml_delete_trained_model_output(trainedModelArn,
-#'   membershipIdentifier)
+#'   membershipIdentifier, versionIdentifier)
 #'
 #' @param trainedModelArn &#91;required&#93; The Amazon Resource Name (ARN) of the trained model whose output you
 #' want to delete.
 #' @param membershipIdentifier &#91;required&#93; The membership ID of the member that is deleting the trained model
 #' output.
+#' @param versionIdentifier The version identifier of the trained model to delete. If not specified,
+#' the operation will delete the base version of the trained model. When
+#' specified, only the particular version will be deleted.
 #'
 #' @return
 #' An empty list.
@@ -1360,7 +1434,8 @@ cleanroomsml_delete_ml_input_channel_data <- function(mlInputChannelArn, members
 #' ```
 #' svc$delete_trained_model_output(
 #'   trainedModelArn = "string",
-#'   membershipIdentifier = "string"
+#'   membershipIdentifier = "string",
+#'   versionIdentifier = "string"
 #' )
 #' ```
 #'
@@ -1369,7 +1444,7 @@ cleanroomsml_delete_ml_input_channel_data <- function(mlInputChannelArn, members
 #' @rdname cleanroomsml_delete_trained_model_output
 #'
 #' @aliases cleanroomsml_delete_trained_model_output
-cleanroomsml_delete_trained_model_output <- function(trainedModelArn, membershipIdentifier) {
+cleanroomsml_delete_trained_model_output <- function(trainedModelArn, membershipIdentifier, versionIdentifier = NULL) {
   op <- new_operation(
     name = "DeleteTrainedModelOutput",
     http_method = "DELETE",
@@ -1378,7 +1453,7 @@ cleanroomsml_delete_trained_model_output <- function(trainedModelArn, membership
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cleanroomsml$delete_trained_model_output_input(trainedModelArn = trainedModelArn, membershipIdentifier = membershipIdentifier)
+  input <- .cleanroomsml$delete_trained_model_output_input(trainedModelArn = trainedModelArn, membershipIdentifier = membershipIdentifier, versionIdentifier = versionIdentifier)
   output <- .cleanroomsml$delete_trained_model_output_output()
   config <- get_config()
   svc <- .cleanroomsml$service(config, op)
@@ -1654,11 +1729,26 @@ cleanroomsml_get_audience_model <- function(audienceModelArn) {
 #'             allowedAccountIds = list(
 #'               "string"
 #'             ),
-#'             filterPattern = "string"
+#'             filterPattern = "string",
+#'             logType = "ALL"|"ERROR_SUMMARY",
+#'             logRedactionConfiguration = list(
+#'               entitiesToRedact = list(
+#'                 "ALL_PERSONALLY_IDENTIFIABLE_INFORMATION"|"NUMBERS"|"CUSTOM"
+#'               ),
+#'               customEntityConfig = list(
+#'                 customDataIdentifiers = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         containerMetrics = list(
 #'           noiseLevel = "HIGH"|"MEDIUM"|"LOW"|"NONE"
+#'         ),
+#'         maxArtifactSize = list(
+#'           unit = "GB",
+#'           value = 123.0
 #'         )
 #'       ),
 #'       trainedModelExports = list(
@@ -1676,7 +1766,18 @@ cleanroomsml_get_audience_model <- function(audienceModelArn) {
 #'             allowedAccountIds = list(
 #'               "string"
 #'             ),
-#'             filterPattern = "string"
+#'             filterPattern = "string",
+#'             logType = "ALL"|"ERROR_SUMMARY",
+#'             logRedactionConfiguration = list(
+#'               entitiesToRedact = list(
+#'                 "ALL_PERSONALLY_IDENTIFIABLE_INFORMATION"|"NUMBERS"|"CUSTOM"
+#'               ),
+#'               customEntityConfig = list(
+#'                 customDataIdentifiers = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         maxOutputSize = list(
@@ -1740,13 +1841,6 @@ cleanroomsml_get_collaboration_configured_model_algorithm_association <- functio
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   createTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   updateTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   creatorAccountId = "string",
 #'   membershipIdentifier = "string",
 #'   collaborationIdentifier = "string",
 #'   mlInputChannelArn = "string",
@@ -1761,7 +1855,61 @@ cleanroomsml_get_collaboration_configured_model_algorithm_association <- functio
 #'   ),
 #'   retentionInDays = 123,
 #'   numberOfRecords = 123,
-#'   description = "string"
+#'   privacyBudgets = list(
+#'     accessBudgets = list(
+#'       list(
+#'         resourceArn = "string",
+#'         details = list(
+#'           list(
+#'             startTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             endTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             remainingBudget = 123,
+#'             budget = 123,
+#'             budgetType = "CALENDAR_DAY"|"CALENDAR_MONTH"|"CALENDAR_WEEK"|"LIFETIME",
+#'             autoRefresh = "ENABLED"|"DISABLED"
+#'           )
+#'         ),
+#'         aggregateRemainingBudget = 123
+#'       )
+#'     )
+#'   ),
+#'   description = "string",
+#'   syntheticDataConfiguration = list(
+#'     syntheticDataParameters = list(
+#'       epsilon = 123.0,
+#'       maxMembershipInferenceAttackScore = 123.0,
+#'       columnClassification = list(
+#'         columnMapping = list(
+#'           list(
+#'             columnName = "string",
+#'             columnType = "CATEGORICAL"|"NUMERICAL",
+#'             isPredictiveValue = TRUE|FALSE
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     syntheticDataEvaluationScores = list(
+#'       dataPrivacyScores = list(
+#'         membershipInferenceAttackScores = list(
+#'           list(
+#'             attackVersion = "DISTANCE_TO_CLOSEST_RECORD_V1",
+#'             score = 123.0
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   createTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   creatorAccountId = "string"
 #' )
 #' ```
 #'
@@ -1804,12 +1952,15 @@ cleanroomsml_get_collaboration_ml_input_channel <- function(mlInputChannelArn, c
 #'
 #' @usage
 #' cleanroomsml_get_collaboration_trained_model(trainedModelArn,
-#'   collaborationIdentifier)
+#'   collaborationIdentifier, versionIdentifier)
 #'
 #' @param trainedModelArn &#91;required&#93; The Amazon Resource Name (ARN) of the trained model that you want to
 #' return information about.
 #' @param collaborationIdentifier &#91;required&#93; The collaboration ID that contains the trained model that you want to
 #' return information about.
+#' @param versionIdentifier The version identifier of the trained model to retrieve. If not
+#' specified, the operation returns information about the latest version of
+#' the trained model.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1818,6 +1969,14 @@ cleanroomsml_get_collaboration_ml_input_channel <- function(mlInputChannelArn, c
 #'   membershipIdentifier = "string",
 #'   collaborationIdentifier = "string",
 #'   trainedModelArn = "string",
+#'   versionIdentifier = "string",
+#'   incrementalTrainingDataChannels = list(
+#'     list(
+#'       channelName = "string",
+#'       versionIdentifier = "string",
+#'       modelName = "string"
+#'     )
+#'   ),
 #'   name = "string",
 #'   description = "string",
 #'   status = "CREATE_PENDING"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"ACTIVE"|"DELETE_PENDING"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"INACTIVE"|"CANCEL_PENDING"|"CANCEL_IN_PROGRESS"|"CANCEL_FAILED",
@@ -1828,9 +1987,10 @@ cleanroomsml_get_collaboration_ml_input_channel <- function(mlInputChannelArn, c
 #'   configuredModelAlgorithmAssociationArn = "string",
 #'   resourceConfig = list(
 #'     instanceCount = 123,
-#'     instanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge"|"ml.p5.48xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.trn1n.32xlarge"|"ml.m6i.large"|"ml.m6i.xlarge"|"ml.m6i.2xlarge"|"ml.m6i.4xlarge"|"ml.m6i.8xlarge"|"ml.m6i.12xlarge"|"ml.m6i.16xlarge"|"ml.m6i.24xlarge"|"ml.m6i.32xlarge"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.8xlarge"|"ml.c6i.4xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.8xlarge"|"ml.r5d.12xlarge"|"ml.r5d.16xlarge"|"ml.r5d.24xlarge"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge",
+#'     instanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge"|"ml.p5.48xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.trn1n.32xlarge"|"ml.m6i.large"|"ml.m6i.xlarge"|"ml.m6i.2xlarge"|"ml.m6i.4xlarge"|"ml.m6i.8xlarge"|"ml.m6i.12xlarge"|"ml.m6i.16xlarge"|"ml.m6i.24xlarge"|"ml.m6i.32xlarge"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.8xlarge"|"ml.c6i.4xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.8xlarge"|"ml.r5d.12xlarge"|"ml.r5d.16xlarge"|"ml.r5d.24xlarge"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.c7i.large"|"ml.c7i.xlarge"|"ml.c7i.2xlarge"|"ml.c7i.4xlarge"|"ml.c7i.8xlarge"|"ml.c7i.12xlarge"|"ml.c7i.16xlarge"|"ml.c7i.24xlarge"|"ml.c7i.48xlarge"|"ml.m7i.large"|"ml.m7i.xlarge"|"ml.m7i.2xlarge"|"ml.m7i.4xlarge"|"ml.m7i.8xlarge"|"ml.m7i.12xlarge"|"ml.m7i.16xlarge"|"ml.m7i.24xlarge"|"ml.m7i.48xlarge"|"ml.r7i.large"|"ml.r7i.xlarge"|"ml.r7i.2xlarge"|"ml.r7i.4xlarge"|"ml.r7i.8xlarge"|"ml.r7i.12xlarge"|"ml.r7i.16xlarge"|"ml.r7i.24xlarge"|"ml.r7i.48xlarge"|"ml.g6.xlarge"|"ml.g6.2xlarge"|"ml.g6.4xlarge"|"ml.g6.8xlarge"|"ml.g6.12xlarge"|"ml.g6.16xlarge"|"ml.g6.24xlarge"|"ml.g6.48xlarge"|"ml.g6e.xlarge"|"ml.g6e.2xlarge"|"ml.g6e.4xlarge"|"ml.g6e.8xlarge"|"ml.g6e.12xlarge"|"ml.g6e.16xlarge"|"ml.g6e.24xlarge"|"ml.g6e.48xlarge"|"ml.p5en.48xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge",
 #'     volumeSizeInGB = 123
 #'   ),
+#'   trainingInputMode = "File"|"FastFile"|"Pipe",
 #'   stoppingCondition = list(
 #'     maxRuntimeInSeconds = 123
 #'   ),
@@ -1853,7 +2013,8 @@ cleanroomsml_get_collaboration_ml_input_channel <- function(mlInputChannelArn, c
 #' ```
 #' svc$get_collaboration_trained_model(
 #'   trainedModelArn = "string",
-#'   collaborationIdentifier = "string"
+#'   collaborationIdentifier = "string",
+#'   versionIdentifier = "string"
 #' )
 #' ```
 #'
@@ -1862,7 +2023,7 @@ cleanroomsml_get_collaboration_ml_input_channel <- function(mlInputChannelArn, c
 #' @rdname cleanroomsml_get_collaboration_trained_model
 #'
 #' @aliases cleanroomsml_get_collaboration_trained_model
-cleanroomsml_get_collaboration_trained_model <- function(trainedModelArn, collaborationIdentifier) {
+cleanroomsml_get_collaboration_trained_model <- function(trainedModelArn, collaborationIdentifier, versionIdentifier = NULL) {
   op <- new_operation(
     name = "GetCollaborationTrainedModel",
     http_method = "GET",
@@ -1871,7 +2032,7 @@ cleanroomsml_get_collaboration_trained_model <- function(trainedModelArn, collab
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cleanroomsml$get_collaboration_trained_model_input(trainedModelArn = trainedModelArn, collaborationIdentifier = collaborationIdentifier)
+  input <- .cleanroomsml$get_collaboration_trained_model_input(trainedModelArn = trainedModelArn, collaborationIdentifier = collaborationIdentifier, versionIdentifier = versionIdentifier)
   output <- .cleanroomsml$get_collaboration_trained_model_output()
   config <- get_config()
   svc <- .cleanroomsml$service(config, op)
@@ -2134,11 +2295,26 @@ cleanroomsml_get_configured_model_algorithm <- function(configuredModelAlgorithm
 #'             allowedAccountIds = list(
 #'               "string"
 #'             ),
-#'             filterPattern = "string"
+#'             filterPattern = "string",
+#'             logType = "ALL"|"ERROR_SUMMARY",
+#'             logRedactionConfiguration = list(
+#'               entitiesToRedact = list(
+#'                 "ALL_PERSONALLY_IDENTIFIABLE_INFORMATION"|"NUMBERS"|"CUSTOM"
+#'               ),
+#'               customEntityConfig = list(
+#'                 customDataIdentifiers = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         containerMetrics = list(
 #'           noiseLevel = "HIGH"|"MEDIUM"|"LOW"|"NONE"
+#'         ),
+#'         maxArtifactSize = list(
+#'           unit = "GB",
+#'           value = 123.0
 #'         )
 #'       ),
 #'       trainedModelExports = list(
@@ -2156,7 +2332,18 @@ cleanroomsml_get_configured_model_algorithm <- function(configuredModelAlgorithm
 #'             allowedAccountIds = list(
 #'               "string"
 #'             ),
-#'             filterPattern = "string"
+#'             filterPattern = "string",
+#'             logType = "ALL"|"ERROR_SUMMARY",
+#'             logRedactionConfiguration = list(
+#'               entitiesToRedact = list(
+#'                 "ALL_PERSONALLY_IDENTIFIABLE_INFORMATION"|"NUMBERS"|"CUSTOM"
+#'               ),
+#'               customEntityConfig = list(
+#'                 customDataIdentifiers = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         maxOutputSize = list(
@@ -2287,14 +2474,74 @@ cleanroomsml_get_ml_configuration <- function(membershipIdentifier) {
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   membershipIdentifier = "string",
+#'   collaborationIdentifier = "string",
+#'   mlInputChannelArn = "string",
+#'   name = "string",
+#'   configuredModelAlgorithmAssociations = list(
+#'     "string"
+#'   ),
+#'   status = "CREATE_PENDING"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"ACTIVE"|"DELETE_PENDING"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"INACTIVE",
+#'   statusDetails = list(
+#'     statusCode = "string",
+#'     message = "string"
+#'   ),
+#'   retentionInDays = 123,
+#'   numberOfRecords = 123,
+#'   privacyBudgets = list(
+#'     accessBudgets = list(
+#'       list(
+#'         resourceArn = "string",
+#'         details = list(
+#'           list(
+#'             startTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             endTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             remainingBudget = 123,
+#'             budget = 123,
+#'             budgetType = "CALENDAR_DAY"|"CALENDAR_MONTH"|"CALENDAR_WEEK"|"LIFETIME",
+#'             autoRefresh = "ENABLED"|"DISABLED"
+#'           )
+#'         ),
+#'         aggregateRemainingBudget = 123
+#'       )
+#'     )
+#'   ),
+#'   description = "string",
+#'   syntheticDataConfiguration = list(
+#'     syntheticDataParameters = list(
+#'       epsilon = 123.0,
+#'       maxMembershipInferenceAttackScore = 123.0,
+#'       columnClassification = list(
+#'         columnMapping = list(
+#'           list(
+#'             columnName = "string",
+#'             columnType = "CATEGORICAL"|"NUMERICAL",
+#'             isPredictiveValue = TRUE|FALSE
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     syntheticDataEvaluationScores = list(
+#'       dataPrivacyScores = list(
+#'         membershipInferenceAttackScores = list(
+#'           list(
+#'             attackVersion = "DISTANCE_TO_CLOSEST_RECORD_V1",
+#'             score = 123.0
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
 #'   createTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   updateTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   membershipIdentifier = "string",
-#'   collaborationIdentifier = "string",
 #'   inputChannel = list(
 #'     dataSource = list(
 #'       protectedQueryInputParameters = list(
@@ -2310,27 +2557,15 @@ cleanroomsml_get_ml_configuration <- function(membershipIdentifier) {
 #'             type = "CR.1X"|"CR.4X",
 #'             number = 123
 #'           )
-#'         )
+#'         ),
+#'         resultFormat = "CSV"|"PARQUET"
 #'       )
 #'     ),
 #'     roleArn = "string"
 #'   ),
 #'   protectedQueryIdentifier = "string",
-#'   mlInputChannelArn = "string",
-#'   name = "string",
-#'   configuredModelAlgorithmAssociations = list(
-#'     "string"
-#'   ),
-#'   status = "CREATE_PENDING"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"ACTIVE"|"DELETE_PENDING"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"INACTIVE",
-#'   statusDetails = list(
-#'     statusCode = "string",
-#'     message = "string"
-#'   ),
-#'   retentionInDays = 123,
-#'   numberOfRecords = 123,
 #'   numberOfFiles = 123.0,
 #'   sizeInGb = 123.0,
-#'   description = "string",
 #'   kmsKeyArn = "string",
 #'   tags = list(
 #'     "string"
@@ -2376,12 +2611,16 @@ cleanroomsml_get_ml_input_channel <- function(mlInputChannelArn, membershipIdent
 #' Returns information about a trained model.
 #'
 #' @usage
-#' cleanroomsml_get_trained_model(trainedModelArn, membershipIdentifier)
+#' cleanroomsml_get_trained_model(trainedModelArn, membershipIdentifier,
+#'   versionIdentifier)
 #'
 #' @param trainedModelArn &#91;required&#93; The Amazon Resource Name (ARN) of the trained model that you are
 #' interested in.
 #' @param membershipIdentifier &#91;required&#93; The membership ID of the member that created the trained model that you
 #' are interested in.
+#' @param versionIdentifier The version identifier of the trained model to retrieve. If not
+#' specified, the operation returns information about the latest version of
+#' the trained model.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2390,6 +2629,14 @@ cleanroomsml_get_ml_input_channel <- function(mlInputChannelArn, membershipIdent
 #'   membershipIdentifier = "string",
 #'   collaborationIdentifier = "string",
 #'   trainedModelArn = "string",
+#'   versionIdentifier = "string",
+#'   incrementalTrainingDataChannels = list(
+#'     list(
+#'       channelName = "string",
+#'       versionIdentifier = "string",
+#'       modelName = "string"
+#'     )
+#'   ),
 #'   name = "string",
 #'   description = "string",
 #'   status = "CREATE_PENDING"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"ACTIVE"|"DELETE_PENDING"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"INACTIVE"|"CANCEL_PENDING"|"CANCEL_IN_PROGRESS"|"CANCEL_FAILED",
@@ -2400,9 +2647,10 @@ cleanroomsml_get_ml_input_channel <- function(mlInputChannelArn, membershipIdent
 #'   configuredModelAlgorithmAssociationArn = "string",
 #'   resourceConfig = list(
 #'     instanceCount = 123,
-#'     instanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge"|"ml.p5.48xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.trn1n.32xlarge"|"ml.m6i.large"|"ml.m6i.xlarge"|"ml.m6i.2xlarge"|"ml.m6i.4xlarge"|"ml.m6i.8xlarge"|"ml.m6i.12xlarge"|"ml.m6i.16xlarge"|"ml.m6i.24xlarge"|"ml.m6i.32xlarge"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.8xlarge"|"ml.c6i.4xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.8xlarge"|"ml.r5d.12xlarge"|"ml.r5d.16xlarge"|"ml.r5d.24xlarge"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge",
+#'     instanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge"|"ml.p5.48xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.trn1n.32xlarge"|"ml.m6i.large"|"ml.m6i.xlarge"|"ml.m6i.2xlarge"|"ml.m6i.4xlarge"|"ml.m6i.8xlarge"|"ml.m6i.12xlarge"|"ml.m6i.16xlarge"|"ml.m6i.24xlarge"|"ml.m6i.32xlarge"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.8xlarge"|"ml.c6i.4xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.8xlarge"|"ml.r5d.12xlarge"|"ml.r5d.16xlarge"|"ml.r5d.24xlarge"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.c7i.large"|"ml.c7i.xlarge"|"ml.c7i.2xlarge"|"ml.c7i.4xlarge"|"ml.c7i.8xlarge"|"ml.c7i.12xlarge"|"ml.c7i.16xlarge"|"ml.c7i.24xlarge"|"ml.c7i.48xlarge"|"ml.m7i.large"|"ml.m7i.xlarge"|"ml.m7i.2xlarge"|"ml.m7i.4xlarge"|"ml.m7i.8xlarge"|"ml.m7i.12xlarge"|"ml.m7i.16xlarge"|"ml.m7i.24xlarge"|"ml.m7i.48xlarge"|"ml.r7i.large"|"ml.r7i.xlarge"|"ml.r7i.2xlarge"|"ml.r7i.4xlarge"|"ml.r7i.8xlarge"|"ml.r7i.12xlarge"|"ml.r7i.16xlarge"|"ml.r7i.24xlarge"|"ml.r7i.48xlarge"|"ml.g6.xlarge"|"ml.g6.2xlarge"|"ml.g6.4xlarge"|"ml.g6.8xlarge"|"ml.g6.12xlarge"|"ml.g6.16xlarge"|"ml.g6.24xlarge"|"ml.g6.48xlarge"|"ml.g6e.xlarge"|"ml.g6e.2xlarge"|"ml.g6e.4xlarge"|"ml.g6e.8xlarge"|"ml.g6e.12xlarge"|"ml.g6e.16xlarge"|"ml.g6e.24xlarge"|"ml.g6e.48xlarge"|"ml.p5en.48xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge",
 #'     volumeSizeInGB = 123
 #'   ),
+#'   trainingInputMode = "File"|"FastFile"|"Pipe",
 #'   stoppingCondition = list(
 #'     maxRuntimeInSeconds = 123
 #'   ),
@@ -2430,7 +2678,8 @@ cleanroomsml_get_ml_input_channel <- function(mlInputChannelArn, membershipIdent
 #'   dataChannels = list(
 #'     list(
 #'       mlInputChannelArn = "string",
-#'       channelName = "string"
+#'       channelName = "string",
+#'       s3DataDistributionType = "FullyReplicated"|"ShardedByS3Key"
 #'     )
 #'   )
 #' )
@@ -2440,7 +2689,8 @@ cleanroomsml_get_ml_input_channel <- function(mlInputChannelArn, membershipIdent
 #' ```
 #' svc$get_trained_model(
 #'   trainedModelArn = "string",
-#'   membershipIdentifier = "string"
+#'   membershipIdentifier = "string",
+#'   versionIdentifier = "string"
 #' )
 #' ```
 #'
@@ -2449,7 +2699,7 @@ cleanroomsml_get_ml_input_channel <- function(mlInputChannelArn, membershipIdent
 #' @rdname cleanroomsml_get_trained_model
 #'
 #' @aliases cleanroomsml_get_trained_model
-cleanroomsml_get_trained_model <- function(trainedModelArn, membershipIdentifier) {
+cleanroomsml_get_trained_model <- function(trainedModelArn, membershipIdentifier, versionIdentifier = NULL) {
   op <- new_operation(
     name = "GetTrainedModel",
     http_method = "GET",
@@ -2458,7 +2708,7 @@ cleanroomsml_get_trained_model <- function(trainedModelArn, membershipIdentifier
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cleanroomsml$get_trained_model_input(trainedModelArn = trainedModelArn, membershipIdentifier = membershipIdentifier)
+  input <- .cleanroomsml$get_trained_model_input(trainedModelArn = trainedModelArn, membershipIdentifier = membershipIdentifier, versionIdentifier = versionIdentifier)
   output <- .cleanroomsml$get_trained_model_output()
   config <- get_config()
   svc <- .cleanroomsml$service(config, op)
@@ -2497,8 +2747,9 @@ cleanroomsml_get_trained_model <- function(trainedModelArn, membershipIdentifier
 #'   name = "string",
 #'   status = "CREATE_PENDING"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"ACTIVE"|"CANCEL_PENDING"|"CANCEL_IN_PROGRESS"|"CANCEL_FAILED"|"INACTIVE",
 #'   trainedModelArn = "string",
+#'   trainedModelVersionIdentifier = "string",
 #'   resourceConfig = list(
-#'     instanceType = "ml.r7i.48xlarge"|"ml.r6i.16xlarge"|"ml.m6i.xlarge"|"ml.m5.4xlarge"|"ml.p2.xlarge"|"ml.m4.16xlarge"|"ml.r7i.16xlarge"|"ml.m7i.xlarge"|"ml.m6i.12xlarge"|"ml.r7i.8xlarge"|"ml.r7i.large"|"ml.m7i.12xlarge"|"ml.m6i.24xlarge"|"ml.m7i.24xlarge"|"ml.r6i.8xlarge"|"ml.r6i.large"|"ml.g5.2xlarge"|"ml.m5.large"|"ml.p3.16xlarge"|"ml.m7i.48xlarge"|"ml.m6i.16xlarge"|"ml.p2.16xlarge"|"ml.g5.4xlarge"|"ml.m7i.16xlarge"|"ml.c4.2xlarge"|"ml.c5.2xlarge"|"ml.c6i.32xlarge"|"ml.c4.4xlarge"|"ml.g5.8xlarge"|"ml.c6i.xlarge"|"ml.c5.4xlarge"|"ml.g4dn.xlarge"|"ml.c7i.xlarge"|"ml.c6i.12xlarge"|"ml.g4dn.12xlarge"|"ml.c7i.12xlarge"|"ml.c6i.24xlarge"|"ml.g4dn.2xlarge"|"ml.c7i.24xlarge"|"ml.c7i.2xlarge"|"ml.c4.8xlarge"|"ml.c6i.2xlarge"|"ml.g4dn.4xlarge"|"ml.c7i.48xlarge"|"ml.c7i.4xlarge"|"ml.c6i.16xlarge"|"ml.c5.9xlarge"|"ml.g4dn.16xlarge"|"ml.c7i.16xlarge"|"ml.c6i.4xlarge"|"ml.c5.xlarge"|"ml.c4.xlarge"|"ml.g4dn.8xlarge"|"ml.c7i.8xlarge"|"ml.c7i.large"|"ml.g5.xlarge"|"ml.c6i.8xlarge"|"ml.c6i.large"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.m7i.2xlarge"|"ml.c5.18xlarge"|"ml.g5.48xlarge"|"ml.m6i.2xlarge"|"ml.g5.16xlarge"|"ml.m7i.4xlarge"|"ml.p3.2xlarge"|"ml.r6i.32xlarge"|"ml.m6i.4xlarge"|"ml.m5.xlarge"|"ml.m4.10xlarge"|"ml.r6i.xlarge"|"ml.m5.12xlarge"|"ml.m4.xlarge"|"ml.r7i.2xlarge"|"ml.r7i.xlarge"|"ml.r6i.12xlarge"|"ml.m5.24xlarge"|"ml.r7i.12xlarge"|"ml.m7i.8xlarge"|"ml.m7i.large"|"ml.r6i.24xlarge"|"ml.r6i.2xlarge"|"ml.m4.2xlarge"|"ml.r7i.24xlarge"|"ml.r7i.4xlarge"|"ml.m6i.8xlarge"|"ml.m6i.large"|"ml.m5.2xlarge"|"ml.p2.8xlarge"|"ml.r6i.4xlarge"|"ml.m6i.32xlarge"|"ml.p3.8xlarge"|"ml.m4.4xlarge",
+#'     instanceType = "ml.r7i.48xlarge"|"ml.r6i.16xlarge"|"ml.m6i.xlarge"|"ml.m5.4xlarge"|"ml.p2.xlarge"|"ml.m4.16xlarge"|"ml.r7i.16xlarge"|"ml.m7i.xlarge"|"ml.m6i.12xlarge"|"ml.r7i.8xlarge"|"ml.r7i.large"|"ml.m7i.12xlarge"|"ml.m6i.24xlarge"|"ml.m7i.24xlarge"|"ml.r6i.8xlarge"|"ml.r6i.large"|"ml.g5.2xlarge"|"ml.m5.large"|"ml.m7i.48xlarge"|"ml.m6i.16xlarge"|"ml.p2.16xlarge"|"ml.g5.4xlarge"|"ml.m7i.16xlarge"|"ml.c4.2xlarge"|"ml.c5.2xlarge"|"ml.c6i.32xlarge"|"ml.c4.4xlarge"|"ml.g5.8xlarge"|"ml.c6i.xlarge"|"ml.c5.4xlarge"|"ml.g4dn.xlarge"|"ml.c7i.xlarge"|"ml.c6i.12xlarge"|"ml.g4dn.12xlarge"|"ml.c7i.12xlarge"|"ml.c6i.24xlarge"|"ml.g4dn.2xlarge"|"ml.c7i.24xlarge"|"ml.c7i.2xlarge"|"ml.c4.8xlarge"|"ml.c6i.2xlarge"|"ml.g4dn.4xlarge"|"ml.c7i.48xlarge"|"ml.c7i.4xlarge"|"ml.c6i.16xlarge"|"ml.c5.9xlarge"|"ml.g4dn.16xlarge"|"ml.c7i.16xlarge"|"ml.c6i.4xlarge"|"ml.c5.xlarge"|"ml.c4.xlarge"|"ml.g4dn.8xlarge"|"ml.c7i.8xlarge"|"ml.c7i.large"|"ml.g5.xlarge"|"ml.c6i.8xlarge"|"ml.c6i.large"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.m7i.2xlarge"|"ml.c5.18xlarge"|"ml.g5.48xlarge"|"ml.m6i.2xlarge"|"ml.g5.16xlarge"|"ml.m7i.4xlarge"|"ml.r6i.32xlarge"|"ml.m6i.4xlarge"|"ml.m5.xlarge"|"ml.m4.10xlarge"|"ml.r6i.xlarge"|"ml.m5.12xlarge"|"ml.m4.xlarge"|"ml.r7i.2xlarge"|"ml.r7i.xlarge"|"ml.r6i.12xlarge"|"ml.m5.24xlarge"|"ml.r7i.12xlarge"|"ml.m7i.8xlarge"|"ml.m7i.large"|"ml.r6i.24xlarge"|"ml.r6i.2xlarge"|"ml.m4.2xlarge"|"ml.r7i.24xlarge"|"ml.r7i.4xlarge"|"ml.m6i.8xlarge"|"ml.m6i.large"|"ml.m5.2xlarge"|"ml.p2.8xlarge"|"ml.r6i.4xlarge"|"ml.m6i.32xlarge"|"ml.m4.4xlarge"|"ml.p3.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge",
 #'     instanceCount = 123
 #'   ),
 #'   outputConfiguration = list(
@@ -3034,7 +3285,8 @@ cleanroomsml_list_collaboration_ml_input_channels <- function(nextToken = NULL, 
 #'
 #' @usage
 #' cleanroomsml_list_collaboration_trained_model_export_jobs(nextToken,
-#'   maxResults, collaborationIdentifier, trainedModelArn)
+#'   maxResults, collaborationIdentifier, trainedModelArn,
+#'   trainedModelVersionIdentifier)
 #'
 #' @param nextToken The token value retrieved from a previous call to access the next page
 #' of results.
@@ -3043,6 +3295,9 @@ cleanroomsml_list_collaboration_ml_input_channels <- function(nextToken = NULL, 
 #' model export jobs that you are interested in.
 #' @param trainedModelArn &#91;required&#93; The Amazon Resource Name (ARN) of the trained model that was used to
 #' create the export jobs that you are interested in.
+#' @param trainedModelVersionIdentifier The version identifier of the trained model to filter export jobs by.
+#' When specified, only export jobs for this specific version of the
+#' trained model are returned.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3073,6 +3328,7 @@ cleanroomsml_list_collaboration_ml_input_channels <- function(nextToken = NULL, 
 #'       description = "string",
 #'       creatorAccountId = "string",
 #'       trainedModelArn = "string",
+#'       trainedModelVersionIdentifier = "string",
 #'       membershipIdentifier = "string",
 #'       collaborationIdentifier = "string"
 #'     )
@@ -3086,7 +3342,8 @@ cleanroomsml_list_collaboration_ml_input_channels <- function(nextToken = NULL, 
 #'   nextToken = "string",
 #'   maxResults = 123,
 #'   collaborationIdentifier = "string",
-#'   trainedModelArn = "string"
+#'   trainedModelArn = "string",
+#'   trainedModelVersionIdentifier = "string"
 #' )
 #' ```
 #'
@@ -3095,7 +3352,7 @@ cleanroomsml_list_collaboration_ml_input_channels <- function(nextToken = NULL, 
 #' @rdname cleanroomsml_list_collaboration_trained_model_export_jobs
 #'
 #' @aliases cleanroomsml_list_collaboration_trained_model_export_jobs
-cleanroomsml_list_collaboration_trained_model_export_jobs <- function(nextToken = NULL, maxResults = NULL, collaborationIdentifier, trainedModelArn) {
+cleanroomsml_list_collaboration_trained_model_export_jobs <- function(nextToken = NULL, maxResults = NULL, collaborationIdentifier, trainedModelArn, trainedModelVersionIdentifier = NULL) {
   op <- new_operation(
     name = "ListCollaborationTrainedModelExportJobs",
     http_method = "GET",
@@ -3104,7 +3361,7 @@ cleanroomsml_list_collaboration_trained_model_export_jobs <- function(nextToken 
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "collaborationTrainedModelExportJobs"),
     stream_api = FALSE
   )
-  input <- .cleanroomsml$list_collaboration_trained_model_export_jobs_input(nextToken = nextToken, maxResults = maxResults, collaborationIdentifier = collaborationIdentifier, trainedModelArn = trainedModelArn)
+  input <- .cleanroomsml$list_collaboration_trained_model_export_jobs_input(nextToken = nextToken, maxResults = maxResults, collaborationIdentifier = collaborationIdentifier, trainedModelArn = trainedModelArn, trainedModelVersionIdentifier = trainedModelVersionIdentifier)
   output <- .cleanroomsml$list_collaboration_trained_model_export_jobs_output()
   config <- get_config()
   svc <- .cleanroomsml$service(config, op)
@@ -3123,7 +3380,8 @@ cleanroomsml_list_collaboration_trained_model_export_jobs <- function(nextToken 
 #'
 #' @usage
 #' cleanroomsml_list_collaboration_trained_model_inference_jobs(nextToken,
-#'   maxResults, collaborationIdentifier, trainedModelArn)
+#'   maxResults, collaborationIdentifier, trainedModelArn,
+#'   trainedModelVersionIdentifier)
 #'
 #' @param nextToken The token value retrieved from a previous call to access the next page
 #' of results.
@@ -3132,6 +3390,9 @@ cleanroomsml_list_collaboration_trained_model_export_jobs <- function(nextToken 
 #' model inference jobs that you are interested in.
 #' @param trainedModelArn The Amazon Resource Name (ARN) of the trained model that was used to
 #' create the trained model inference jobs that you are interested in.
+#' @param trainedModelVersionIdentifier The version identifier of the trained model to filter inference jobs by.
+#' When specified, only inference jobs that used this specific version of
+#' the trained model are returned.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3144,6 +3405,7 @@ cleanroomsml_list_collaboration_trained_model_export_jobs <- function(nextToken 
 #'       configuredModelAlgorithmAssociationArn = "string",
 #'       membershipIdentifier = "string",
 #'       trainedModelArn = "string",
+#'       trainedModelVersionIdentifier = "string",
 #'       collaborationIdentifier = "string",
 #'       status = "CREATE_PENDING"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"ACTIVE"|"CANCEL_PENDING"|"CANCEL_IN_PROGRESS"|"CANCEL_FAILED"|"INACTIVE",
 #'       outputConfiguration = list(
@@ -3178,7 +3440,8 @@ cleanroomsml_list_collaboration_trained_model_export_jobs <- function(nextToken 
 #'   nextToken = "string",
 #'   maxResults = 123,
 #'   collaborationIdentifier = "string",
-#'   trainedModelArn = "string"
+#'   trainedModelArn = "string",
+#'   trainedModelVersionIdentifier = "string"
 #' )
 #' ```
 #'
@@ -3187,7 +3450,7 @@ cleanroomsml_list_collaboration_trained_model_export_jobs <- function(nextToken 
 #' @rdname cleanroomsml_list_collaboration_trained_model_inference_jobs
 #'
 #' @aliases cleanroomsml_list_collaboration_trained_model_inference_jobs
-cleanroomsml_list_collaboration_trained_model_inference_jobs <- function(nextToken = NULL, maxResults = NULL, collaborationIdentifier, trainedModelArn = NULL) {
+cleanroomsml_list_collaboration_trained_model_inference_jobs <- function(nextToken = NULL, maxResults = NULL, collaborationIdentifier, trainedModelArn = NULL, trainedModelVersionIdentifier = NULL) {
   op <- new_operation(
     name = "ListCollaborationTrainedModelInferenceJobs",
     http_method = "GET",
@@ -3196,7 +3459,7 @@ cleanroomsml_list_collaboration_trained_model_inference_jobs <- function(nextTok
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "collaborationTrainedModelInferenceJobs"),
     stream_api = FALSE
   )
-  input <- .cleanroomsml$list_collaboration_trained_model_inference_jobs_input(nextToken = nextToken, maxResults = maxResults, collaborationIdentifier = collaborationIdentifier, trainedModelArn = trainedModelArn)
+  input <- .cleanroomsml$list_collaboration_trained_model_inference_jobs_input(nextToken = nextToken, maxResults = maxResults, collaborationIdentifier = collaborationIdentifier, trainedModelArn = trainedModelArn, trainedModelVersionIdentifier = trainedModelVersionIdentifier)
   output <- .cleanroomsml$list_collaboration_trained_model_inference_jobs_output()
   config <- get_config()
   svc <- .cleanroomsml$service(config, op)
@@ -3236,6 +3499,14 @@ cleanroomsml_list_collaboration_trained_model_inference_jobs <- function(nextTok
 #'       ),
 #'       trainedModelArn = "string",
 #'       name = "string",
+#'       versionIdentifier = "string",
+#'       incrementalTrainingDataChannels = list(
+#'         list(
+#'           channelName = "string",
+#'           versionIdentifier = "string",
+#'           modelName = "string"
+#'         )
+#'       ),
 #'       description = "string",
 #'       membershipIdentifier = "string",
 #'       collaborationIdentifier = "string",
@@ -3629,7 +3900,7 @@ cleanroomsml_list_tags_for_resource <- function(resourceArn) {
 #'
 #' @usage
 #' cleanroomsml_list_trained_model_inference_jobs(nextToken, maxResults,
-#'   membershipIdentifier, trainedModelArn)
+#'   membershipIdentifier, trainedModelArn, trainedModelVersionIdentifier)
 #'
 #' @param nextToken The token value retrieved from a previous call to access the next page
 #' of results.
@@ -3637,6 +3908,9 @@ cleanroomsml_list_tags_for_resource <- function(resourceArn) {
 #' @param membershipIdentifier &#91;required&#93; The membership
 #' @param trainedModelArn The Amazon Resource Name (ARN) of a trained model that was used to
 #' create the trained model inference jobs that you are interested in.
+#' @param trainedModelVersionIdentifier The version identifier of the trained model to filter inference jobs by.
+#' When specified, only inference jobs that used this specific version of
+#' the trained model are returned.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3649,6 +3923,7 @@ cleanroomsml_list_tags_for_resource <- function(resourceArn) {
 #'       configuredModelAlgorithmAssociationArn = "string",
 #'       membershipIdentifier = "string",
 #'       trainedModelArn = "string",
+#'       trainedModelVersionIdentifier = "string",
 #'       collaborationIdentifier = "string",
 #'       status = "CREATE_PENDING"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"ACTIVE"|"CANCEL_PENDING"|"CANCEL_IN_PROGRESS"|"CANCEL_FAILED"|"INACTIVE",
 #'       outputConfiguration = list(
@@ -3682,7 +3957,8 @@ cleanroomsml_list_tags_for_resource <- function(resourceArn) {
 #'   nextToken = "string",
 #'   maxResults = 123,
 #'   membershipIdentifier = "string",
-#'   trainedModelArn = "string"
+#'   trainedModelArn = "string",
+#'   trainedModelVersionIdentifier = "string"
 #' )
 #' ```
 #'
@@ -3691,7 +3967,7 @@ cleanroomsml_list_tags_for_resource <- function(resourceArn) {
 #' @rdname cleanroomsml_list_trained_model_inference_jobs
 #'
 #' @aliases cleanroomsml_list_trained_model_inference_jobs
-cleanroomsml_list_trained_model_inference_jobs <- function(nextToken = NULL, maxResults = NULL, membershipIdentifier, trainedModelArn = NULL) {
+cleanroomsml_list_trained_model_inference_jobs <- function(nextToken = NULL, maxResults = NULL, membershipIdentifier, trainedModelArn = NULL, trainedModelVersionIdentifier = NULL) {
   op <- new_operation(
     name = "ListTrainedModelInferenceJobs",
     http_method = "GET",
@@ -3700,7 +3976,7 @@ cleanroomsml_list_trained_model_inference_jobs <- function(nextToken = NULL, max
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "trainedModelInferenceJobs"),
     stream_api = FALSE
   )
-  input <- .cleanroomsml$list_trained_model_inference_jobs_input(nextToken = nextToken, maxResults = maxResults, membershipIdentifier = membershipIdentifier, trainedModelArn = trainedModelArn)
+  input <- .cleanroomsml$list_trained_model_inference_jobs_input(nextToken = nextToken, maxResults = maxResults, membershipIdentifier = membershipIdentifier, trainedModelArn = trainedModelArn, trainedModelVersionIdentifier = trainedModelVersionIdentifier)
   output <- .cleanroomsml$list_trained_model_inference_jobs_output()
   config <- get_config()
   svc <- .cleanroomsml$service(config, op)
@@ -3709,6 +3985,100 @@ cleanroomsml_list_trained_model_inference_jobs <- function(nextToken = NULL, max
   return(response)
 }
 .cleanroomsml$operations$list_trained_model_inference_jobs <- cleanroomsml_list_trained_model_inference_jobs
+
+#' Returns a list of trained model versions for a specified trained model
+#'
+#' @description
+#' Returns a list of trained model versions for a specified trained model.
+#' This operation allows you to view all versions of a trained model,
+#' including information about their status and creation details. You can
+#' use this to track the evolution of your trained models and select
+#' specific versions for inference or further training.
+#'
+#' @usage
+#' cleanroomsml_list_trained_model_versions(nextToken, maxResults,
+#'   membershipIdentifier, trainedModelArn, status)
+#'
+#' @param nextToken The pagination token from a previous
+#' [`list_trained_model_versions`][cleanroomsml_list_trained_model_versions]
+#' request. Use this token to retrieve the next page of results.
+#' @param maxResults The maximum number of trained model versions to return in a single page.
+#' The default value is 10, and the maximum value is 100.
+#' @param membershipIdentifier &#91;required&#93; The membership identifier for the collaboration that contains the
+#' trained model.
+#' @param trainedModelArn &#91;required&#93; The Amazon Resource Name (ARN) of the trained model for which to list
+#' versions.
+#' @param status Filter the results to only include trained model versions with the
+#' specified status. Valid values include `CREATE_PENDING`,
+#' `CREATE_IN_PROGRESS`, `ACTIVE`, `CREATE_FAILED`, and others.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   trainedModels = list(
+#'     list(
+#'       createTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       trainedModelArn = "string",
+#'       versionIdentifier = "string",
+#'       incrementalTrainingDataChannels = list(
+#'         list(
+#'           channelName = "string",
+#'           versionIdentifier = "string",
+#'           modelName = "string"
+#'         )
+#'       ),
+#'       name = "string",
+#'       description = "string",
+#'       membershipIdentifier = "string",
+#'       collaborationIdentifier = "string",
+#'       status = "CREATE_PENDING"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"ACTIVE"|"DELETE_PENDING"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"INACTIVE"|"CANCEL_PENDING"|"CANCEL_IN_PROGRESS"|"CANCEL_FAILED",
+#'       configuredModelAlgorithmAssociationArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_trained_model_versions(
+#'   nextToken = "string",
+#'   maxResults = 123,
+#'   membershipIdentifier = "string",
+#'   trainedModelArn = "string",
+#'   status = "CREATE_PENDING"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"ACTIVE"|"DELETE_PENDING"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"INACTIVE"|"CANCEL_PENDING"|"CANCEL_IN_PROGRESS"|"CANCEL_FAILED"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cleanroomsml_list_trained_model_versions
+#'
+#' @aliases cleanroomsml_list_trained_model_versions
+cleanroomsml_list_trained_model_versions <- function(nextToken = NULL, maxResults = NULL, membershipIdentifier, trainedModelArn, status = NULL) {
+  op <- new_operation(
+    name = "ListTrainedModelVersions",
+    http_method = "GET",
+    http_path = "/memberships/{membershipIdentifier}/trained-models/{trainedModelArn}/versions",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "trainedModels"),
+    stream_api = FALSE
+  )
+  input <- .cleanroomsml$list_trained_model_versions_input(nextToken = nextToken, maxResults = maxResults, membershipIdentifier = membershipIdentifier, trainedModelArn = trainedModelArn, status = status)
+  output <- .cleanroomsml$list_trained_model_versions_output()
+  config <- get_config()
+  svc <- .cleanroomsml$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cleanroomsml$operations$list_trained_model_versions <- cleanroomsml_list_trained_model_versions
 
 #' Returns a list of trained models
 #'
@@ -3739,6 +4109,14 @@ cleanroomsml_list_trained_model_inference_jobs <- function(nextToken = NULL, max
 #'         "2015-01-01"
 #'       ),
 #'       trainedModelArn = "string",
+#'       versionIdentifier = "string",
+#'       incrementalTrainingDataChannels = list(
+#'         list(
+#'           channelName = "string",
+#'           versionIdentifier = "string",
+#'           modelName = "string"
+#'         )
+#'       ),
 #'       name = "string",
 #'       description = "string",
 #'       membershipIdentifier = "string",
@@ -4142,11 +4520,15 @@ cleanroomsml_start_audience_generation_job <- function(name, configuredAudienceM
 #'
 #' @usage
 #' cleanroomsml_start_trained_model_export_job(name, trainedModelArn,
-#'   membershipIdentifier, outputConfiguration, description)
+#'   trainedModelVersionIdentifier, membershipIdentifier,
+#'   outputConfiguration, description)
 #'
 #' @param name &#91;required&#93; The name of the trained model export job.
 #' @param trainedModelArn &#91;required&#93; The Amazon Resource Name (ARN) of the trained model that you want to
 #' export.
+#' @param trainedModelVersionIdentifier The version identifier of the trained model to export. This specifies
+#' which version of the trained model should be exported to the specified
+#' destination.
 #' @param membershipIdentifier &#91;required&#93; The membership ID of the member that is receiving the exported trained
 #' model artifacts.
 #' @param outputConfiguration &#91;required&#93; The output configuration information for the trained model export job.
@@ -4160,6 +4542,7 @@ cleanroomsml_start_audience_generation_job <- function(name, configuredAudienceM
 #' svc$start_trained_model_export_job(
 #'   name = "string",
 #'   trainedModelArn = "string",
+#'   trainedModelVersionIdentifier = "string",
 #'   membershipIdentifier = "string",
 #'   outputConfiguration = list(
 #'     members = list(
@@ -4177,7 +4560,7 @@ cleanroomsml_start_audience_generation_job <- function(name, configuredAudienceM
 #' @rdname cleanroomsml_start_trained_model_export_job
 #'
 #' @aliases cleanroomsml_start_trained_model_export_job
-cleanroomsml_start_trained_model_export_job <- function(name, trainedModelArn, membershipIdentifier, outputConfiguration, description = NULL) {
+cleanroomsml_start_trained_model_export_job <- function(name, trainedModelArn, trainedModelVersionIdentifier = NULL, membershipIdentifier, outputConfiguration, description = NULL) {
   op <- new_operation(
     name = "StartTrainedModelExportJob",
     http_method = "POST",
@@ -4186,7 +4569,7 @@ cleanroomsml_start_trained_model_export_job <- function(name, trainedModelArn, m
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cleanroomsml$start_trained_model_export_job_input(name = name, trainedModelArn = trainedModelArn, membershipIdentifier = membershipIdentifier, outputConfiguration = outputConfiguration, description = description)
+  input <- .cleanroomsml$start_trained_model_export_job_input(name = name, trainedModelArn = trainedModelArn, trainedModelVersionIdentifier = trainedModelVersionIdentifier, membershipIdentifier = membershipIdentifier, outputConfiguration = outputConfiguration, description = description)
   output <- .cleanroomsml$start_trained_model_export_job_output()
   config <- get_config()
   svc <- .cleanroomsml$service(config, op)
@@ -4204,8 +4587,9 @@ cleanroomsml_start_trained_model_export_job <- function(name, trainedModelArn, m
 #'
 #' @usage
 #' cleanroomsml_start_trained_model_inference_job(membershipIdentifier,
-#'   name, trainedModelArn, configuredModelAlgorithmAssociationArn,
-#'   resourceConfig, outputConfiguration, dataSource, description,
+#'   name, trainedModelArn, trainedModelVersionIdentifier,
+#'   configuredModelAlgorithmAssociationArn, resourceConfig,
+#'   outputConfiguration, dataSource, description,
 #'   containerExecutionParameters, environment, kmsKeyArn, tags)
 #'
 #' @param membershipIdentifier &#91;required&#93; The membership ID of the membership that contains the trained model
@@ -4213,6 +4597,9 @@ cleanroomsml_start_trained_model_export_job <- function(name, trainedModelArn, m
 #' @param name &#91;required&#93; The name of the trained model inference job.
 #' @param trainedModelArn &#91;required&#93; The Amazon Resource Name (ARN) of the trained model that is used for
 #' this trained model inference job.
+#' @param trainedModelVersionIdentifier The version identifier of the trained model to use for inference. This
+#' specifies which version of the trained model should be used to generate
+#' predictions on the input data.
 #' @param configuredModelAlgorithmAssociationArn The Amazon Resource Name (ARN) of the configured model algorithm
 #' association that is used for this trained model inference job.
 #' @param resourceConfig &#91;required&#93; Defines the resource configuration for the trained model inference job.
@@ -4271,9 +4658,10 @@ cleanroomsml_start_trained_model_export_job <- function(name, trainedModelArn, m
 #'   membershipIdentifier = "string",
 #'   name = "string",
 #'   trainedModelArn = "string",
+#'   trainedModelVersionIdentifier = "string",
 #'   configuredModelAlgorithmAssociationArn = "string",
 #'   resourceConfig = list(
-#'     instanceType = "ml.r7i.48xlarge"|"ml.r6i.16xlarge"|"ml.m6i.xlarge"|"ml.m5.4xlarge"|"ml.p2.xlarge"|"ml.m4.16xlarge"|"ml.r7i.16xlarge"|"ml.m7i.xlarge"|"ml.m6i.12xlarge"|"ml.r7i.8xlarge"|"ml.r7i.large"|"ml.m7i.12xlarge"|"ml.m6i.24xlarge"|"ml.m7i.24xlarge"|"ml.r6i.8xlarge"|"ml.r6i.large"|"ml.g5.2xlarge"|"ml.m5.large"|"ml.p3.16xlarge"|"ml.m7i.48xlarge"|"ml.m6i.16xlarge"|"ml.p2.16xlarge"|"ml.g5.4xlarge"|"ml.m7i.16xlarge"|"ml.c4.2xlarge"|"ml.c5.2xlarge"|"ml.c6i.32xlarge"|"ml.c4.4xlarge"|"ml.g5.8xlarge"|"ml.c6i.xlarge"|"ml.c5.4xlarge"|"ml.g4dn.xlarge"|"ml.c7i.xlarge"|"ml.c6i.12xlarge"|"ml.g4dn.12xlarge"|"ml.c7i.12xlarge"|"ml.c6i.24xlarge"|"ml.g4dn.2xlarge"|"ml.c7i.24xlarge"|"ml.c7i.2xlarge"|"ml.c4.8xlarge"|"ml.c6i.2xlarge"|"ml.g4dn.4xlarge"|"ml.c7i.48xlarge"|"ml.c7i.4xlarge"|"ml.c6i.16xlarge"|"ml.c5.9xlarge"|"ml.g4dn.16xlarge"|"ml.c7i.16xlarge"|"ml.c6i.4xlarge"|"ml.c5.xlarge"|"ml.c4.xlarge"|"ml.g4dn.8xlarge"|"ml.c7i.8xlarge"|"ml.c7i.large"|"ml.g5.xlarge"|"ml.c6i.8xlarge"|"ml.c6i.large"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.m7i.2xlarge"|"ml.c5.18xlarge"|"ml.g5.48xlarge"|"ml.m6i.2xlarge"|"ml.g5.16xlarge"|"ml.m7i.4xlarge"|"ml.p3.2xlarge"|"ml.r6i.32xlarge"|"ml.m6i.4xlarge"|"ml.m5.xlarge"|"ml.m4.10xlarge"|"ml.r6i.xlarge"|"ml.m5.12xlarge"|"ml.m4.xlarge"|"ml.r7i.2xlarge"|"ml.r7i.xlarge"|"ml.r6i.12xlarge"|"ml.m5.24xlarge"|"ml.r7i.12xlarge"|"ml.m7i.8xlarge"|"ml.m7i.large"|"ml.r6i.24xlarge"|"ml.r6i.2xlarge"|"ml.m4.2xlarge"|"ml.r7i.24xlarge"|"ml.r7i.4xlarge"|"ml.m6i.8xlarge"|"ml.m6i.large"|"ml.m5.2xlarge"|"ml.p2.8xlarge"|"ml.r6i.4xlarge"|"ml.m6i.32xlarge"|"ml.p3.8xlarge"|"ml.m4.4xlarge",
+#'     instanceType = "ml.r7i.48xlarge"|"ml.r6i.16xlarge"|"ml.m6i.xlarge"|"ml.m5.4xlarge"|"ml.p2.xlarge"|"ml.m4.16xlarge"|"ml.r7i.16xlarge"|"ml.m7i.xlarge"|"ml.m6i.12xlarge"|"ml.r7i.8xlarge"|"ml.r7i.large"|"ml.m7i.12xlarge"|"ml.m6i.24xlarge"|"ml.m7i.24xlarge"|"ml.r6i.8xlarge"|"ml.r6i.large"|"ml.g5.2xlarge"|"ml.m5.large"|"ml.m7i.48xlarge"|"ml.m6i.16xlarge"|"ml.p2.16xlarge"|"ml.g5.4xlarge"|"ml.m7i.16xlarge"|"ml.c4.2xlarge"|"ml.c5.2xlarge"|"ml.c6i.32xlarge"|"ml.c4.4xlarge"|"ml.g5.8xlarge"|"ml.c6i.xlarge"|"ml.c5.4xlarge"|"ml.g4dn.xlarge"|"ml.c7i.xlarge"|"ml.c6i.12xlarge"|"ml.g4dn.12xlarge"|"ml.c7i.12xlarge"|"ml.c6i.24xlarge"|"ml.g4dn.2xlarge"|"ml.c7i.24xlarge"|"ml.c7i.2xlarge"|"ml.c4.8xlarge"|"ml.c6i.2xlarge"|"ml.g4dn.4xlarge"|"ml.c7i.48xlarge"|"ml.c7i.4xlarge"|"ml.c6i.16xlarge"|"ml.c5.9xlarge"|"ml.g4dn.16xlarge"|"ml.c7i.16xlarge"|"ml.c6i.4xlarge"|"ml.c5.xlarge"|"ml.c4.xlarge"|"ml.g4dn.8xlarge"|"ml.c7i.8xlarge"|"ml.c7i.large"|"ml.g5.xlarge"|"ml.c6i.8xlarge"|"ml.c6i.large"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.m7i.2xlarge"|"ml.c5.18xlarge"|"ml.g5.48xlarge"|"ml.m6i.2xlarge"|"ml.g5.16xlarge"|"ml.m7i.4xlarge"|"ml.r6i.32xlarge"|"ml.m6i.4xlarge"|"ml.m5.xlarge"|"ml.m4.10xlarge"|"ml.r6i.xlarge"|"ml.m5.12xlarge"|"ml.m4.xlarge"|"ml.r7i.2xlarge"|"ml.r7i.xlarge"|"ml.r6i.12xlarge"|"ml.m5.24xlarge"|"ml.r7i.12xlarge"|"ml.m7i.8xlarge"|"ml.m7i.large"|"ml.r6i.24xlarge"|"ml.r6i.2xlarge"|"ml.m4.2xlarge"|"ml.r7i.24xlarge"|"ml.r7i.4xlarge"|"ml.m6i.8xlarge"|"ml.m6i.large"|"ml.m5.2xlarge"|"ml.p2.8xlarge"|"ml.r6i.4xlarge"|"ml.m6i.32xlarge"|"ml.m4.4xlarge"|"ml.p3.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge",
 #'     instanceCount = 123
 #'   ),
 #'   outputConfiguration = list(
@@ -4306,7 +4694,7 @@ cleanroomsml_start_trained_model_export_job <- function(name, trainedModelArn, m
 #' @rdname cleanroomsml_start_trained_model_inference_job
 #'
 #' @aliases cleanroomsml_start_trained_model_inference_job
-cleanroomsml_start_trained_model_inference_job <- function(membershipIdentifier, name, trainedModelArn, configuredModelAlgorithmAssociationArn = NULL, resourceConfig, outputConfiguration, dataSource, description = NULL, containerExecutionParameters = NULL, environment = NULL, kmsKeyArn = NULL, tags = NULL) {
+cleanroomsml_start_trained_model_inference_job <- function(membershipIdentifier, name, trainedModelArn, trainedModelVersionIdentifier = NULL, configuredModelAlgorithmAssociationArn = NULL, resourceConfig, outputConfiguration, dataSource, description = NULL, containerExecutionParameters = NULL, environment = NULL, kmsKeyArn = NULL, tags = NULL) {
   op <- new_operation(
     name = "StartTrainedModelInferenceJob",
     http_method = "POST",
@@ -4315,7 +4703,7 @@ cleanroomsml_start_trained_model_inference_job <- function(membershipIdentifier,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cleanroomsml$start_trained_model_inference_job_input(membershipIdentifier = membershipIdentifier, name = name, trainedModelArn = trainedModelArn, configuredModelAlgorithmAssociationArn = configuredModelAlgorithmAssociationArn, resourceConfig = resourceConfig, outputConfiguration = outputConfiguration, dataSource = dataSource, description = description, containerExecutionParameters = containerExecutionParameters, environment = environment, kmsKeyArn = kmsKeyArn, tags = tags)
+  input <- .cleanroomsml$start_trained_model_inference_job_input(membershipIdentifier = membershipIdentifier, name = name, trainedModelArn = trainedModelArn, trainedModelVersionIdentifier = trainedModelVersionIdentifier, configuredModelAlgorithmAssociationArn = configuredModelAlgorithmAssociationArn, resourceConfig = resourceConfig, outputConfiguration = outputConfiguration, dataSource = dataSource, description = description, containerExecutionParameters = containerExecutionParameters, environment = environment, kmsKeyArn = kmsKeyArn, tags = tags)
   output <- .cleanroomsml$start_trained_model_inference_job_output()
   config <- get_config()
   svc <- .cleanroomsml$service(config, op)

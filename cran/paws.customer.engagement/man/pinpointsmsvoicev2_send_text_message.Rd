@@ -27,8 +27,8 @@ pinpointsmsvoicev2_send_text_message(
 PhoneNumber, PhoneNumberId, PhoneNumberArn, SenderId, SenderIdArn,
 PoolId, or PoolArn.
 
-If you are using a shared AWS End User Messaging SMS and Voice resource
-then you must use the full Amazon Resource Name(ARN).}
+If you are using a shared End User Messaging SMS resource then you must
+use the full Amazon Resource Name(ARN).}
 
 \item{MessageBody}{The body of the text message.}
 
@@ -74,7 +74,7 @@ to the end recipient. You are not charged for using \code{DryRun}.
 The Message Parts per Second (MPS) limit when using \code{DryRun} is five. If
 your origination identity has a lower MPS limit then the lower MPS limit
 is used. For more information about MPS limits, see \href{https://docs.aws.amazon.com/sms-voice/latest/userguide/sms-limitations-mps.html}{Message Parts per Second (MPS) limits}
-in the \emph{AWS End User Messaging SMS User Guide}..}
+in the \emph{End User Messaging SMS User Guide}..}
 
 \item{ProtectConfigurationId}{The unique identifier for the protect configuration.}
 

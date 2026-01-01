@@ -19,7 +19,7 @@ connect_delete_hours_of_operation_override(
 \item{HoursOfOperationOverrideId}{[required] The identifier for the hours of operation override.}
 }
 \description{
-Deletes an hours of operation override in an Amazon Connect hours of operation resource
+Deletes an hours of operation override in an Amazon Connect hours of operation resource.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_delete_hours_of_operation_override/} for full documentation.
 }

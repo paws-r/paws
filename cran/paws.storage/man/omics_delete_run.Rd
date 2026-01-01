@@ -2,7 +2,8 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_delete_run}
 \alias{omics_delete_run}
-\title{Deletes a workflow run}
+\title{Deletes a run and returns a response with no body if the operation is
+successful}
 \usage{
 omics_delete_run(id)
 }
@@ -10,7 +11,7 @@ omics_delete_run(id)
 \item{id}{[required] The run's ID.}
 }
 \description{
-Deletes a workflow run.
+Deletes a run and returns a response with no body if the operation is successful. You can only delete a run that has reached a \code{COMPLETED}, \code{FAILED}, or \code{CANCELLED} stage. A completed run has delivered an output, or was cancelled and resulted in no output. When you delete a run, only the metadata associated with the run is deleted. The run outputs remain in Amazon S3 and logs remain in CloudWatch.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_delete_run/} for full documentation.
 }

@@ -50,21 +50,21 @@ NULL
 #' issue only one. If you change the idempotency token for each call,
 #' Amazon Web Services Private CA recognizes that you are requesting
 #' multiple certificate authorities.
-#' @param KeyStorageSecurityStandard Specifies a cryptographic key management compliance standard used for
-#' handling CA keys.
+#' @param KeyStorageSecurityStandard Specifies a cryptographic key management compliance standard for
+#' handling and protecting CA keys.
 #' 
 #' Default: FIPS_140_2_LEVEL_3_OR_HIGHER
 #' 
-#' Some Amazon Web Services Regions do not support the default. When
-#' creating a CA in these Regions, you must provide
-#' `FIPS_140_2_LEVEL_2_OR_HIGHER` as the argument for
-#' `KeyStorageSecurityStandard`. Failure to do this results in an
-#' `InvalidArgsException` with the message, "A certificate authority cannot
-#' be created in this region with the specified security standard."
+#' Some Amazon Web Services Regions don't support the default value. When
+#' you create a CA in these Regions, you must use `CCPC_LEVEL_1_OR_HIGHER`
+#' for the `KeyStorageSecurityStandard` parameter. If you don't, the
+#' operation returns an `InvalidArgsException` with this message: "A
+#' certificate authority cannot be created in this region with the
+#' specified security standard."
 #' 
-#' For information about security standard support in various Regions, see
-#' [Storage and security compliance of Amazon Web Services Private CA
-#' private
+#' For information about security standard support in different Amazon Web
+#' Services Regions, see [Storage and security compliance of Amazon Web
+#' Services Private CA private
 #' keys](https://docs.aws.amazon.com/privateca/latest/userguide/data-protection.html#private-keys).
 #' @param Tags Key-value pairs that will be attached to the new private CA. You can
 #' associate up to 50 tags with a private CA. For information using tags
@@ -373,7 +373,7 @@ acmpca_describe_certificate_authority_audit_report <- function(CertificateAuthor
 #' with you
 #'
 #' @description
-#' Retrieves a certificate from your private CA or one that has been shared with you. The ARN of the certificate is returned when you call the [`issue_certificate`][acmpca_issue_certificate] action. You must specify both the ARN of your private CA and the ARN of the issued certificate when calling the **GetCertificate** action. You can retrieve the certificate if it is in the **ISSUED** state. You can call the [`create_certificate_authority_audit_report`][acmpca_create_certificate_authority_audit_report] action to create a report that contains information about all of the certificates issued and revoked by your private CA.
+#' Retrieves a certificate from your private CA or one that has been shared with you. The ARN of the certificate is returned when you call the [`issue_certificate`][acmpca_issue_certificate] action. You must specify both the ARN of your private CA and the ARN of the issued certificate when calling the **GetCertificate** action. You can retrieve the certificate if it is in the **ISSUED**, **EXPIRED**, or **REVOKED** state. You can call the [`create_certificate_authority_audit_report`][acmpca_create_certificate_authority_audit_report] action to create a report that contains information about all of the certificates issued and revoked by your private CA.
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_get_certificate/](https://www.paws-r-sdk.com/docs/acmpca_get_certificate/) for full documentation.
 #'
@@ -489,8 +489,6 @@ acmpca_get_certificate_authority_csr <- function(CertificateAuthorityArn) {
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Number (ARN) of the private CA that will have its
 #' policy retrieved. You can find the CA's ARN by calling the
 #' ListCertificateAuthorities action.
-#' 
-#'      </p> 
 #'
 #' @keywords internal
 #'

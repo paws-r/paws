@@ -60,6 +60,160 @@ inspector2_associate_member <- function(accountId) {
 }
 .inspector2$operations$associate_member <- inspector2_associate_member
 
+#' Associates multiple code repositories with an Amazon Inspector code
+#' security scan configuration
+#'
+#' @description
+#' Associates multiple code repositories with an Amazon Inspector code
+#' security scan configuration.
+#'
+#' @usage
+#' inspector2_batch_associate_code_security_scan_configuration(
+#'   associateConfigurationRequests)
+#'
+#' @param associateConfigurationRequests &#91;required&#93; A list of code repositories to associate with the specified scan
+#' configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   failedAssociations = list(
+#'     list(
+#'       scanConfigurationArn = "string",
+#'       resource = list(
+#'         projectId = "string"
+#'       ),
+#'       statusCode = "INTERNAL_ERROR"|"ACCESS_DENIED"|"SCAN_CONFIGURATION_NOT_FOUND"|"INVALID_INPUT"|"RESOURCE_NOT_FOUND"|"QUOTA_EXCEEDED",
+#'       statusMessage = "string"
+#'     )
+#'   ),
+#'   successfulAssociations = list(
+#'     list(
+#'       scanConfigurationArn = "string",
+#'       resource = list(
+#'         projectId = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_associate_code_security_scan_configuration(
+#'   associateConfigurationRequests = list(
+#'     list(
+#'       scanConfigurationArn = "string",
+#'       resource = list(
+#'         projectId = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_batch_associate_code_security_scan_configuration
+#'
+#' @aliases inspector2_batch_associate_code_security_scan_configuration
+inspector2_batch_associate_code_security_scan_configuration <- function(associateConfigurationRequests) {
+  op <- new_operation(
+    name = "BatchAssociateCodeSecurityScanConfiguration",
+    http_method = "POST",
+    http_path = "/codesecurity/scan-configuration/batch/associate",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$batch_associate_code_security_scan_configuration_input(associateConfigurationRequests = associateConfigurationRequests)
+  output <- .inspector2$batch_associate_code_security_scan_configuration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$batch_associate_code_security_scan_configuration <- inspector2_batch_associate_code_security_scan_configuration
+
+#' Disassociates multiple code repositories from an Amazon Inspector code
+#' security scan configuration
+#'
+#' @description
+#' Disassociates multiple code repositories from an Amazon Inspector code
+#' security scan configuration.
+#'
+#' @usage
+#' inspector2_batch_disassociate_code_security_scan_configuration(
+#'   disassociateConfigurationRequests)
+#'
+#' @param disassociateConfigurationRequests &#91;required&#93; A list of code repositories to disassociate from the specified scan
+#' configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   failedAssociations = list(
+#'     list(
+#'       scanConfigurationArn = "string",
+#'       resource = list(
+#'         projectId = "string"
+#'       ),
+#'       statusCode = "INTERNAL_ERROR"|"ACCESS_DENIED"|"SCAN_CONFIGURATION_NOT_FOUND"|"INVALID_INPUT"|"RESOURCE_NOT_FOUND"|"QUOTA_EXCEEDED",
+#'       statusMessage = "string"
+#'     )
+#'   ),
+#'   successfulAssociations = list(
+#'     list(
+#'       scanConfigurationArn = "string",
+#'       resource = list(
+#'         projectId = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_disassociate_code_security_scan_configuration(
+#'   disassociateConfigurationRequests = list(
+#'     list(
+#'       scanConfigurationArn = "string",
+#'       resource = list(
+#'         projectId = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_batch_disass_code_securi_scan_config
+#'
+#' @aliases inspector2_batch_disassociate_code_security_scan_configuration
+inspector2_batch_disassociate_code_security_scan_configuration <- function(disassociateConfigurationRequests) {
+  op <- new_operation(
+    name = "BatchDisassociateCodeSecurityScanConfiguration",
+    http_method = "POST",
+    http_path = "/codesecurity/scan-configuration/batch/disassociate",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$batch_disassociate_code_security_scan_configuration_input(disassociateConfigurationRequests = disassociateConfigurationRequests)
+  output <- .inspector2$batch_disassociate_code_security_scan_configuration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$batch_disassociate_code_security_scan_configuration <- inspector2_batch_disassociate_code_security_scan_configuration
+
 #' Retrieves the Amazon Inspector status of multiple Amazon Web Services
 #' accounts within your environment
 #'
@@ -80,47 +234,53 @@ inspector2_associate_member <- function(accountId) {
 #'   accounts = list(
 #'     list(
 #'       accountId = "string",
+#'       state = list(
+#'         status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
+#'         errorCode = "ALREADY_ENABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS"|"SUSPEND_IN_PROGRESS"|"RESOURCE_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"SSM_UNAVAILABLE"|"SSM_THROTTLED"|"EVENTBRIDGE_UNAVAILABLE"|"EVENTBRIDGE_THROTTLED"|"RESOURCE_SCAN_NOT_DISABLED"|"DISASSOCIATE_ALL_MEMBERS"|"ACCOUNT_IS_ISOLATED"|"EC2_SSM_RESOURCE_DATA_SYNC_LIMIT_EXCEEDED"|"EC2_SSM_ASSOCIATION_VERSION_LIMIT_EXCEEDED"|"BLOCKED_BY_ORGANIZATION_POLICY",
+#'         errorMessage = "string"
+#'       ),
 #'       resourceState = list(
 #'         ec2 = list(
-#'           errorCode = "ALREADY_ENABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS"|"SUSPEND_IN_PROGRESS"|"RESOURCE_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"SSM_UNAVAILABLE"|"SSM_THROTTLED"|"EVENTBRIDGE_UNAVAILABLE"|"EVENTBRIDGE_THROTTLED"|"RESOURCE_SCAN_NOT_DISABLED"|"DISASSOCIATE_ALL_MEMBERS"|"ACCOUNT_IS_ISOLATED"|"EC2_SSM_RESOURCE_DATA_SYNC_LIMIT_EXCEEDED"|"EC2_SSM_ASSOCIATION_VERSION_LIMIT_EXCEEDED",
-#'           errorMessage = "string",
-#'           status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
+#'           status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
+#'           errorCode = "ALREADY_ENABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS"|"SUSPEND_IN_PROGRESS"|"RESOURCE_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"SSM_UNAVAILABLE"|"SSM_THROTTLED"|"EVENTBRIDGE_UNAVAILABLE"|"EVENTBRIDGE_THROTTLED"|"RESOURCE_SCAN_NOT_DISABLED"|"DISASSOCIATE_ALL_MEMBERS"|"ACCOUNT_IS_ISOLATED"|"EC2_SSM_RESOURCE_DATA_SYNC_LIMIT_EXCEEDED"|"EC2_SSM_ASSOCIATION_VERSION_LIMIT_EXCEEDED"|"BLOCKED_BY_ORGANIZATION_POLICY",
+#'           errorMessage = "string"
 #'         ),
 #'         ecr = list(
-#'           errorCode = "ALREADY_ENABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS"|"SUSPEND_IN_PROGRESS"|"RESOURCE_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"SSM_UNAVAILABLE"|"SSM_THROTTLED"|"EVENTBRIDGE_UNAVAILABLE"|"EVENTBRIDGE_THROTTLED"|"RESOURCE_SCAN_NOT_DISABLED"|"DISASSOCIATE_ALL_MEMBERS"|"ACCOUNT_IS_ISOLATED"|"EC2_SSM_RESOURCE_DATA_SYNC_LIMIT_EXCEEDED"|"EC2_SSM_ASSOCIATION_VERSION_LIMIT_EXCEEDED",
-#'           errorMessage = "string",
-#'           status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
+#'           status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
+#'           errorCode = "ALREADY_ENABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS"|"SUSPEND_IN_PROGRESS"|"RESOURCE_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"SSM_UNAVAILABLE"|"SSM_THROTTLED"|"EVENTBRIDGE_UNAVAILABLE"|"EVENTBRIDGE_THROTTLED"|"RESOURCE_SCAN_NOT_DISABLED"|"DISASSOCIATE_ALL_MEMBERS"|"ACCOUNT_IS_ISOLATED"|"EC2_SSM_RESOURCE_DATA_SYNC_LIMIT_EXCEEDED"|"EC2_SSM_ASSOCIATION_VERSION_LIMIT_EXCEEDED"|"BLOCKED_BY_ORGANIZATION_POLICY",
+#'           errorMessage = "string"
 #'         ),
 #'         lambda = list(
-#'           errorCode = "ALREADY_ENABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS"|"SUSPEND_IN_PROGRESS"|"RESOURCE_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"SSM_UNAVAILABLE"|"SSM_THROTTLED"|"EVENTBRIDGE_UNAVAILABLE"|"EVENTBRIDGE_THROTTLED"|"RESOURCE_SCAN_NOT_DISABLED"|"DISASSOCIATE_ALL_MEMBERS"|"ACCOUNT_IS_ISOLATED"|"EC2_SSM_RESOURCE_DATA_SYNC_LIMIT_EXCEEDED"|"EC2_SSM_ASSOCIATION_VERSION_LIMIT_EXCEEDED",
-#'           errorMessage = "string",
-#'           status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
+#'           status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
+#'           errorCode = "ALREADY_ENABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS"|"SUSPEND_IN_PROGRESS"|"RESOURCE_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"SSM_UNAVAILABLE"|"SSM_THROTTLED"|"EVENTBRIDGE_UNAVAILABLE"|"EVENTBRIDGE_THROTTLED"|"RESOURCE_SCAN_NOT_DISABLED"|"DISASSOCIATE_ALL_MEMBERS"|"ACCOUNT_IS_ISOLATED"|"EC2_SSM_RESOURCE_DATA_SYNC_LIMIT_EXCEEDED"|"EC2_SSM_ASSOCIATION_VERSION_LIMIT_EXCEEDED"|"BLOCKED_BY_ORGANIZATION_POLICY",
+#'           errorMessage = "string"
 #'         ),
 #'         lambdaCode = list(
-#'           errorCode = "ALREADY_ENABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS"|"SUSPEND_IN_PROGRESS"|"RESOURCE_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"SSM_UNAVAILABLE"|"SSM_THROTTLED"|"EVENTBRIDGE_UNAVAILABLE"|"EVENTBRIDGE_THROTTLED"|"RESOURCE_SCAN_NOT_DISABLED"|"DISASSOCIATE_ALL_MEMBERS"|"ACCOUNT_IS_ISOLATED"|"EC2_SSM_RESOURCE_DATA_SYNC_LIMIT_EXCEEDED"|"EC2_SSM_ASSOCIATION_VERSION_LIMIT_EXCEEDED",
-#'           errorMessage = "string",
-#'           status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
+#'           status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
+#'           errorCode = "ALREADY_ENABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS"|"SUSPEND_IN_PROGRESS"|"RESOURCE_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"SSM_UNAVAILABLE"|"SSM_THROTTLED"|"EVENTBRIDGE_UNAVAILABLE"|"EVENTBRIDGE_THROTTLED"|"RESOURCE_SCAN_NOT_DISABLED"|"DISASSOCIATE_ALL_MEMBERS"|"ACCOUNT_IS_ISOLATED"|"EC2_SSM_RESOURCE_DATA_SYNC_LIMIT_EXCEEDED"|"EC2_SSM_ASSOCIATION_VERSION_LIMIT_EXCEEDED"|"BLOCKED_BY_ORGANIZATION_POLICY",
+#'           errorMessage = "string"
+#'         ),
+#'         codeRepository = list(
+#'           status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
+#'           errorCode = "ALREADY_ENABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS"|"SUSPEND_IN_PROGRESS"|"RESOURCE_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"SSM_UNAVAILABLE"|"SSM_THROTTLED"|"EVENTBRIDGE_UNAVAILABLE"|"EVENTBRIDGE_THROTTLED"|"RESOURCE_SCAN_NOT_DISABLED"|"DISASSOCIATE_ALL_MEMBERS"|"ACCOUNT_IS_ISOLATED"|"EC2_SSM_RESOURCE_DATA_SYNC_LIMIT_EXCEEDED"|"EC2_SSM_ASSOCIATION_VERSION_LIMIT_EXCEEDED"|"BLOCKED_BY_ORGANIZATION_POLICY",
+#'           errorMessage = "string"
 #'         )
-#'       ),
-#'       state = list(
-#'         errorCode = "ALREADY_ENABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS"|"SUSPEND_IN_PROGRESS"|"RESOURCE_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"SSM_UNAVAILABLE"|"SSM_THROTTLED"|"EVENTBRIDGE_UNAVAILABLE"|"EVENTBRIDGE_THROTTLED"|"RESOURCE_SCAN_NOT_DISABLED"|"DISASSOCIATE_ALL_MEMBERS"|"ACCOUNT_IS_ISOLATED"|"EC2_SSM_RESOURCE_DATA_SYNC_LIMIT_EXCEEDED"|"EC2_SSM_ASSOCIATION_VERSION_LIMIT_EXCEEDED",
-#'         errorMessage = "string",
-#'         status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
 #'       )
 #'     )
 #'   ),
 #'   failedAccounts = list(
 #'     list(
 #'       accountId = "string",
-#'       errorCode = "ALREADY_ENABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS"|"SUSPEND_IN_PROGRESS"|"RESOURCE_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"SSM_UNAVAILABLE"|"SSM_THROTTLED"|"EVENTBRIDGE_UNAVAILABLE"|"EVENTBRIDGE_THROTTLED"|"RESOURCE_SCAN_NOT_DISABLED"|"DISASSOCIATE_ALL_MEMBERS"|"ACCOUNT_IS_ISOLATED"|"EC2_SSM_RESOURCE_DATA_SYNC_LIMIT_EXCEEDED"|"EC2_SSM_ASSOCIATION_VERSION_LIMIT_EXCEEDED",
-#'       errorMessage = "string",
+#'       status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
 #'       resourceStatus = list(
 #'         ec2 = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
 #'         ecr = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
 #'         lambda = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
-#'         lambdaCode = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
+#'         lambdaCode = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
+#'         codeRepository = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
 #'       ),
-#'       status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
+#'       errorCode = "ALREADY_ENABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS"|"SUSPEND_IN_PROGRESS"|"RESOURCE_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"SSM_UNAVAILABLE"|"SSM_THROTTLED"|"EVENTBRIDGE_UNAVAILABLE"|"EVENTBRIDGE_THROTTLED"|"RESOURCE_SCAN_NOT_DISABLED"|"DISASSOCIATE_ALL_MEMBERS"|"ACCOUNT_IS_ISOLATED"|"EC2_SSM_RESOURCE_DATA_SYNC_LIMIT_EXCEEDED"|"EC2_SSM_ASSOCIATION_VERSION_LIMIT_EXCEEDED"|"BLOCKED_BY_ORGANIZATION_POLICY",
+#'       errorMessage = "string"
 #'     )
 #'   )
 #' )
@@ -178,28 +338,28 @@ inspector2_batch_get_account_status <- function(accountIds = NULL) {
 #' list(
 #'   codeSnippetResults = list(
 #'     list(
+#'       findingArn = "string",
+#'       startLine = 123,
+#'       endLine = 123,
 #'       codeSnippet = list(
 #'         list(
 #'           content = "string",
 #'           lineNumber = 123
 #'         )
 #'       ),
-#'       endLine = 123,
-#'       findingArn = "string",
-#'       startLine = 123,
 #'       suggestedFixes = list(
 #'         list(
-#'           code = "string",
-#'           description = "string"
+#'           description = "string",
+#'           code = "string"
 #'         )
 #'       )
 #'     )
 #'   ),
 #'   errors = list(
 #'     list(
+#'       findingArn = "string",
 #'       errorCode = "INTERNAL_ERROR"|"ACCESS_DENIED"|"CODE_SNIPPET_NOT_FOUND"|"INVALID_INPUT",
-#'       errorMessage = "string",
-#'       findingArn = "string"
+#'       errorMessage = "string"
 #'     )
 #'   )
 #' )
@@ -252,54 +412,54 @@ inspector2_batch_get_code_snippet <- function(findingArns) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   errors = list(
-#'     list(
-#'       errorCode = "INTERNAL_ERROR"|"ACCESS_DENIED"|"FINDING_DETAILS_NOT_FOUND"|"INVALID_INPUT",
-#'       errorMessage = "string",
-#'       findingArn = "string"
-#'     )
-#'   ),
 #'   findingDetails = list(
 #'     list(
+#'       findingArn = "string",
 #'       cisaData = list(
-#'         action = "string",
 #'         dateAdded = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
 #'         dateDue = as.POSIXct(
 #'           "2015-01-01"
+#'         ),
+#'         action = "string"
+#'       ),
+#'       riskScore = 123,
+#'       evidences = list(
+#'         list(
+#'           evidenceRule = "string",
+#'           evidenceDetail = "string",
+#'           severity = "string"
 #'         )
+#'       ),
+#'       ttps = list(
+#'         "string"
+#'       ),
+#'       tools = list(
+#'         "string"
+#'       ),
+#'       exploitObserved = list(
+#'         lastSeen = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         firstSeen = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       referenceUrls = list(
+#'         "string"
 #'       ),
 #'       cwes = list(
 #'         "string"
 #'       ),
-#'       epssScore = 123.0,
-#'       evidences = list(
-#'         list(
-#'           evidenceDetail = "string",
-#'           evidenceRule = "string",
-#'           severity = "string"
-#'         )
-#'       ),
-#'       exploitObserved = list(
-#'         firstSeen = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         lastSeen = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       ),
+#'       epssScore = 123.0
+#'     )
+#'   ),
+#'   errors = list(
+#'     list(
 #'       findingArn = "string",
-#'       referenceUrls = list(
-#'         "string"
-#'       ),
-#'       riskScore = 123,
-#'       tools = list(
-#'         "string"
-#'       ),
-#'       ttps = list(
-#'         "string"
-#'       )
+#'       errorCode = "INTERNAL_ERROR"|"ACCESS_DENIED"|"FINDING_DETAILS_NOT_FOUND"|"INVALID_INPUT",
+#'       errorMessage = "string"
 #'     )
 #'   )
 #' )
@@ -357,14 +517,14 @@ inspector2_batch_get_finding_details <- function(findingArns) {
 #'       accountId = "string",
 #'       freeTrialInfo = list(
 #'         list(
-#'           end = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
+#'           type = "EC2"|"ECR"|"LAMBDA"|"LAMBDA_CODE"|"CODE_REPOSITORY",
 #'           start = as.POSIXct(
 #'             "2015-01-01"
 #'           ),
-#'           status = "ACTIVE"|"INACTIVE",
-#'           type = "EC2"|"ECR"|"LAMBDA"|"LAMBDA_CODE"
+#'           end = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           status = "ACTIVE"|"INACTIVE"
 #'         )
 #'       )
 #'     )
@@ -425,8 +585,6 @@ inspector2_batch_get_free_trial_info <- function(accountIds) {
 #'
 #' @param accountIds The unique identifiers for the Amazon Web Services accounts to retrieve
 #' Amazon Inspector deep inspection activation status for.
-#' 
-#'      </p> 
 #'
 #' @return
 #' A list with the following syntax:
@@ -435,8 +593,8 @@ inspector2_batch_get_free_trial_info <- function(accountIds) {
 #'   accountIds = list(
 #'     list(
 #'       accountId = "string",
-#'       errorMessage = "string",
-#'       status = "ACTIVATED"|"DEACTIVATED"|"PENDING"|"FAILED"
+#'       status = "ACTIVATED"|"DEACTIVATED"|"PENDING"|"FAILED",
+#'       errorMessage = "string"
 #'     )
 #'   ),
 #'   failedAccountIds = list(
@@ -503,8 +661,8 @@ inspector2_batch_get_member_ec_2_deep_inspection_status <- function(accountIds =
 #'   accountIds = list(
 #'     list(
 #'       accountId = "string",
-#'       errorMessage = "string",
-#'       status = "ACTIVATED"|"DEACTIVATED"|"PENDING"|"FAILED"
+#'       status = "ACTIVATED"|"DEACTIVATED"|"PENDING"|"FAILED",
+#'       errorMessage = "string"
 #'     )
 #'   ),
 #'   failedAccountIds = list(
@@ -657,15 +815,15 @@ inspector2_cancel_sbom_export <- function(reportId) {
 #' Creates a CIS scan configuration.
 #'
 #' @usage
-#' inspector2_create_cis_scan_configuration(scanName, schedule,
-#'   securityLevel, tags, targets)
+#' inspector2_create_cis_scan_configuration(scanName, securityLevel,
+#'   schedule, targets, tags)
 #'
 #' @param scanName &#91;required&#93; The scan name for the CIS scan configuration.
-#' @param schedule &#91;required&#93; The schedule for the CIS scan configuration.
 #' @param securityLevel &#91;required&#93; The security level for the CIS scan configuration. Security level refers
 #' to the Benchmark levels that CIS assigns to a profile.
-#' @param tags The tags for the CIS scan configuration.
+#' @param schedule &#91;required&#93; The schedule for the CIS scan configuration.
 #' @param targets &#91;required&#93; The targets for the CIS scan configuration.
+#' @param tags The tags for the CIS scan configuration.
 #'
 #' @return
 #' A list with the following syntax:
@@ -679,34 +837,31 @@ inspector2_cancel_sbom_export <- function(reportId) {
 #' ```
 #' svc$create_cis_scan_configuration(
 #'   scanName = "string",
+#'   securityLevel = "LEVEL_1"|"LEVEL_2",
 #'   schedule = list(
+#'     oneTime = list(),
 #'     daily = list(
 #'       startTime = list(
 #'         timeOfDay = "string",
 #'         timezone = "string"
 #'       )
 #'     ),
-#'     monthly = list(
-#'       day = "SUN"|"MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT",
+#'     weekly = list(
 #'       startTime = list(
 #'         timeOfDay = "string",
 #'         timezone = "string"
-#'       )
-#'     ),
-#'     oneTime = list(),
-#'     weekly = list(
+#'       ),
 #'       days = list(
 #'         "SUN"|"MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT"
-#'       ),
+#'       )
+#'     ),
+#'     monthly = list(
 #'       startTime = list(
 #'         timeOfDay = "string",
 #'         timezone = "string"
-#'       )
+#'       ),
+#'       day = "SUN"|"MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT"
 #'     )
-#'   ),
-#'   securityLevel = "LEVEL_1"|"LEVEL_2",
-#'   tags = list(
-#'     "string"
 #'   ),
 #'   targets = list(
 #'     accountIds = list(
@@ -717,6 +872,9 @@ inspector2_cancel_sbom_export <- function(reportId) {
 #'         "string"
 #'       )
 #'     )
+#'   ),
+#'   tags = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -726,7 +884,7 @@ inspector2_cancel_sbom_export <- function(reportId) {
 #' @rdname inspector2_create_cis_scan_configuration
 #'
 #' @aliases inspector2_create_cis_scan_configuration
-inspector2_create_cis_scan_configuration <- function(scanName, schedule, securityLevel, tags = NULL, targets) {
+inspector2_create_cis_scan_configuration <- function(scanName, securityLevel, schedule, targets, tags = NULL) {
   op <- new_operation(
     name = "CreateCisScanConfiguration",
     http_method = "POST",
@@ -735,7 +893,7 @@ inspector2_create_cis_scan_configuration <- function(scanName, schedule, securit
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$create_cis_scan_configuration_input(scanName = scanName, schedule = schedule, securityLevel = securityLevel, tags = tags, targets = targets)
+  input <- .inspector2$create_cis_scan_configuration_input(scanName = scanName, securityLevel = securityLevel, schedule = schedule, targets = targets, tags = tags)
   output <- .inspector2$create_cis_scan_configuration_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -744,6 +902,161 @@ inspector2_create_cis_scan_configuration <- function(scanName, schedule, securit
   return(response)
 }
 .inspector2$operations$create_cis_scan_configuration <- inspector2_create_cis_scan_configuration
+
+#' Creates a code security integration with a source code repository
+#' provider
+#'
+#' @description
+#' Creates a code security integration with a source code repository
+#' provider.
+#' 
+#' After calling the
+#' [`create_code_security_integration`][inspector2_create_code_security_integration]
+#' operation, you complete authentication and authorization with your
+#' provider. Next you call the
+#' [`update_code_security_integration`][inspector2_update_code_security_integration]
+#' operation to provide the `details` to complete the integration setup
+#'
+#' @usage
+#' inspector2_create_code_security_integration(name, type, details, tags)
+#'
+#' @param name &#91;required&#93; The name of the code security integration.
+#' @param type &#91;required&#93; The type of repository provider for the integration.
+#' @param details The integration details specific to the repository provider type.
+#' @param tags The tags to apply to the code security integration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   integrationArn = "string",
+#'   status = "PENDING"|"IN_PROGRESS"|"ACTIVE"|"INACTIVE"|"DISABLING",
+#'   authorizationUrl = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_code_security_integration(
+#'   name = "string",
+#'   type = "GITLAB_SELF_MANAGED"|"GITHUB",
+#'   details = list(
+#'     gitlabSelfManaged = list(
+#'       instanceUrl = "string",
+#'       accessToken = "string"
+#'     )
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_create_code_security_integration
+#'
+#' @aliases inspector2_create_code_security_integration
+inspector2_create_code_security_integration <- function(name, type, details = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateCodeSecurityIntegration",
+    http_method = "POST",
+    http_path = "/codesecurity/integration/create",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$create_code_security_integration_input(name = name, type = type, details = details, tags = tags)
+  output <- .inspector2$create_code_security_integration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$create_code_security_integration <- inspector2_create_code_security_integration
+
+#' Creates a scan configuration for code security scanning
+#'
+#' @description
+#' Creates a scan configuration for code security scanning.
+#'
+#' @usage
+#' inspector2_create_code_security_scan_configuration(name, level,
+#'   configuration, scopeSettings, tags)
+#'
+#' @param name &#91;required&#93; The name of the scan configuration.
+#' @param level &#91;required&#93; The security level for the scan configuration.
+#' @param configuration &#91;required&#93; The configuration settings for the code security scan.
+#' @param scopeSettings The scope settings that define which repositories will be scanned.
+#' Include this parameter to create a default scan configuration. Otherwise
+#' Amazon Inspector creates a general scan configuration.
+#' 
+#' A default scan configuration automatically applies to all existing and
+#' future projects imported into Amazon Inspector. Use the
+#' [`batch_associate_code_security_scan_configuration`][inspector2_batch_associate_code_security_scan_configuration]
+#' operation to associate a general scan configuration with projects.
+#' @param tags The tags to apply to the scan configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   scanConfigurationArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_code_security_scan_configuration(
+#'   name = "string",
+#'   level = "ORGANIZATION"|"ACCOUNT",
+#'   configuration = list(
+#'     periodicScanConfiguration = list(
+#'       frequency = "WEEKLY"|"MONTHLY"|"NEVER",
+#'       frequencyExpression = "string"
+#'     ),
+#'     continuousIntegrationScanConfiguration = list(
+#'       supportedEvents = list(
+#'         "PULL_REQUEST"|"PUSH"
+#'       )
+#'     ),
+#'     ruleSetCategories = list(
+#'       "SAST"|"IAC"|"SCA"
+#'     )
+#'   ),
+#'   scopeSettings = list(
+#'     projectSelectionScope = "ALL"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_create_code_security_scan_configuration
+#'
+#' @aliases inspector2_create_code_security_scan_configuration
+inspector2_create_code_security_scan_configuration <- function(name, level, configuration, scopeSettings = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateCodeSecurityScanConfiguration",
+    http_method = "POST",
+    http_path = "/codesecurity/scan-configuration/create",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$create_code_security_scan_configuration_input(name = name, level = level, configuration = configuration, scopeSettings = scopeSettings, tags = tags)
+  output <- .inspector2$create_code_security_scan_configuration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$create_code_security_scan_configuration <- inspector2_create_code_security_scan_configuration
 
 #' Creates a filter resource using specified filter criteria
 #'
@@ -754,7 +1067,7 @@ inspector2_create_cis_scan_configuration <- function(scanName, schedule, securit
 #'
 #' @usage
 #' inspector2_create_filter(action, description, filterCriteria, name,
-#'   reason, tags)
+#'   tags, reason)
 #'
 #' @param action &#91;required&#93; Defines the action that is to be applied to the findings that match the
 #' filter.
@@ -763,8 +1076,8 @@ inspector2_create_cis_scan_configuration <- function(scanName, schedule, securit
 #' @param name &#91;required&#93; The name of the filter. Minimum length of 3. Maximum length of 64. Valid
 #' characters include alphanumeric characters, dot (.), underscore (_),
 #' and dash (-). Spaces are not allowed.
-#' @param reason The reason for creating the filter.
 #' @param tags A list of tags for the filter.
+#' @param reason The reason for creating the filter.
 #'
 #' @return
 #' A list with the following syntax:
@@ -780,7 +1093,296 @@ inspector2_create_cis_scan_configuration <- function(scanName, schedule, securit
 #'   action = "NONE"|"SUPPRESS",
 #'   description = "string",
 #'   filterCriteria = list(
+#'     findingArn = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
 #'     awsAccountId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     findingType = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     severity = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     firstObservedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     lastObservedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     updatedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     findingStatus = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     title = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     inspectorScore = list(
+#'       list(
+#'         upperInclusive = 123.0,
+#'         lowerInclusive = 123.0
+#'       )
+#'     ),
+#'     resourceType = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     resourceId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     resourceTags = list(
+#'       list(
+#'         comparison = "EQUALS",
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ec2InstanceImageId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ec2InstanceVpcId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ec2InstanceSubnetId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImagePushedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     ecrImageArchitecture = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImageRegistry = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImageRepositoryName = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImageTags = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImageHash = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImageLastInUseAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     ecrImageInUseCount = list(
+#'       list(
+#'         upperInclusive = 123.0,
+#'         lowerInclusive = 123.0
+#'       )
+#'     ),
+#'     portRange = list(
+#'       list(
+#'         beginInclusive = 123,
+#'         endInclusive = 123
+#'       )
+#'     ),
+#'     networkProtocol = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     componentId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     componentType = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     vulnerabilityId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     vulnerabilitySource = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     vendorSeverity = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     vulnerablePackages = list(
+#'       list(
+#'         name = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         version = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         epoch = list(
+#'           upperInclusive = 123.0,
+#'           lowerInclusive = 123.0
+#'         ),
+#'         release = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         architecture = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         sourceLayerHash = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         sourceLambdaLayerArn = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         filePath = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       )
+#'     ),
+#'     relatedVulnerabilities = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     fixAvailable = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionName = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionLayers = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionRuntime = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionLastModifiedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     lambdaFunctionExecutionRoleArn = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     exploitAvailable = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'         value = "string"
@@ -804,291 +1406,30 @@ inspector2_create_cis_scan_configuration <- function(scanName, schedule, securit
 #'         value = "string"
 #'       )
 #'     ),
-#'     componentId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     componentType = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ec2InstanceImageId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ec2InstanceSubnetId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ec2InstanceVpcId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrImageArchitecture = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrImageHash = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrImagePushedAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     ecrImageRegistry = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrImageRepositoryName = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrImageTags = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
 #'     epssScore = list(
 #'       list(
-#'         lowerInclusive = 123.0,
-#'         upperInclusive = 123.0
+#'         upperInclusive = 123.0,
+#'         lowerInclusive = 123.0
 #'       )
 #'     ),
-#'     exploitAvailable = list(
+#'     codeRepositoryProjectName = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'         value = "string"
 #'       )
 #'     ),
-#'     findingArn = list(
+#'     codeRepositoryProviderType = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'         value = "string"
-#'       )
-#'     ),
-#'     findingStatus = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     findingType = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     firstObservedAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     fixAvailable = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     inspectorScore = list(
-#'       list(
-#'         lowerInclusive = 123.0,
-#'         upperInclusive = 123.0
-#'       )
-#'     ),
-#'     lambdaFunctionExecutionRoleArn = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     lambdaFunctionLastModifiedAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     lambdaFunctionLayers = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     lambdaFunctionName = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     lambdaFunctionRuntime = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     lastObservedAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     networkProtocol = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     portRange = list(
-#'       list(
-#'         beginInclusive = 123,
-#'         endInclusive = 123
-#'       )
-#'     ),
-#'     relatedVulnerabilities = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     resourceId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     resourceTags = list(
-#'       list(
-#'         comparison = "EQUALS",
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     resourceType = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     severity = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     title = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     updatedAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     vendorSeverity = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     vulnerabilityId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     vulnerabilitySource = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     vulnerablePackages = list(
-#'       list(
-#'         architecture = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         epoch = list(
-#'           lowerInclusive = 123.0,
-#'           upperInclusive = 123.0
-#'         ),
-#'         filePath = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         name = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         release = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         sourceLambdaLayerArn = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         sourceLayerHash = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         version = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         )
 #'       )
 #'     )
 #'   ),
 #'   name = "string",
-#'   reason = "string",
 #'   tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   reason = "string"
 #' )
 #' ```
 #'
@@ -1097,7 +1438,7 @@ inspector2_create_cis_scan_configuration <- function(scanName, schedule, securit
 #' @rdname inspector2_create_filter
 #'
 #' @aliases inspector2_create_filter
-inspector2_create_filter <- function(action, description = NULL, filterCriteria, name, reason = NULL, tags = NULL) {
+inspector2_create_filter <- function(action, description = NULL, filterCriteria, name, tags = NULL, reason = NULL) {
   op <- new_operation(
     name = "CreateFilter",
     http_method = "POST",
@@ -1106,7 +1447,7 @@ inspector2_create_filter <- function(action, description = NULL, filterCriteria,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$create_filter_input(action = action, description = description, filterCriteria = filterCriteria, name = name, reason = reason, tags = tags)
+  input <- .inspector2$create_filter_input(action = action, description = description, filterCriteria = filterCriteria, name = name, tags = tags, reason = reason)
   output <- .inspector2$create_filter_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -1143,7 +1484,296 @@ inspector2_create_filter <- function(action, description = NULL, filterCriteria,
 #' ```
 #' svc$create_findings_report(
 #'   filterCriteria = list(
+#'     findingArn = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
 #'     awsAccountId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     findingType = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     severity = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     firstObservedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     lastObservedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     updatedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     findingStatus = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     title = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     inspectorScore = list(
+#'       list(
+#'         upperInclusive = 123.0,
+#'         lowerInclusive = 123.0
+#'       )
+#'     ),
+#'     resourceType = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     resourceId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     resourceTags = list(
+#'       list(
+#'         comparison = "EQUALS",
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ec2InstanceImageId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ec2InstanceVpcId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ec2InstanceSubnetId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImagePushedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     ecrImageArchitecture = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImageRegistry = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImageRepositoryName = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImageTags = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImageHash = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImageLastInUseAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     ecrImageInUseCount = list(
+#'       list(
+#'         upperInclusive = 123.0,
+#'         lowerInclusive = 123.0
+#'       )
+#'     ),
+#'     portRange = list(
+#'       list(
+#'         beginInclusive = 123,
+#'         endInclusive = 123
+#'       )
+#'     ),
+#'     networkProtocol = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     componentId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     componentType = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     vulnerabilityId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     vulnerabilitySource = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     vendorSeverity = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     vulnerablePackages = list(
+#'       list(
+#'         name = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         version = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         epoch = list(
+#'           upperInclusive = 123.0,
+#'           lowerInclusive = 123.0
+#'         ),
+#'         release = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         architecture = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         sourceLayerHash = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         sourceLambdaLayerArn = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         filePath = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       )
+#'     ),
+#'     relatedVulnerabilities = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     fixAvailable = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionName = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionLayers = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionRuntime = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionLastModifiedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     lambdaFunctionExecutionRoleArn = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     exploitAvailable = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'         value = "string"
@@ -1167,283 +1797,22 @@ inspector2_create_filter <- function(action, description = NULL, filterCriteria,
 #'         value = "string"
 #'       )
 #'     ),
-#'     componentId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     componentType = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ec2InstanceImageId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ec2InstanceSubnetId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ec2InstanceVpcId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrImageArchitecture = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrImageHash = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrImagePushedAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     ecrImageRegistry = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrImageRepositoryName = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrImageTags = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
 #'     epssScore = list(
 #'       list(
-#'         lowerInclusive = 123.0,
-#'         upperInclusive = 123.0
+#'         upperInclusive = 123.0,
+#'         lowerInclusive = 123.0
 #'       )
 #'     ),
-#'     exploitAvailable = list(
+#'     codeRepositoryProjectName = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'         value = "string"
 #'       )
 #'     ),
-#'     findingArn = list(
+#'     codeRepositoryProviderType = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'         value = "string"
-#'       )
-#'     ),
-#'     findingStatus = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     findingType = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     firstObservedAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     fixAvailable = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     inspectorScore = list(
-#'       list(
-#'         lowerInclusive = 123.0,
-#'         upperInclusive = 123.0
-#'       )
-#'     ),
-#'     lambdaFunctionExecutionRoleArn = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     lambdaFunctionLastModifiedAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     lambdaFunctionLayers = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     lambdaFunctionName = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     lambdaFunctionRuntime = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     lastObservedAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     networkProtocol = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     portRange = list(
-#'       list(
-#'         beginInclusive = 123,
-#'         endInclusive = 123
-#'       )
-#'     ),
-#'     relatedVulnerabilities = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     resourceId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     resourceTags = list(
-#'       list(
-#'         comparison = "EQUALS",
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     resourceType = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     severity = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     title = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     updatedAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     vendorSeverity = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     vulnerabilityId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     vulnerabilitySource = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     vulnerablePackages = list(
-#'       list(
-#'         architecture = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         epoch = list(
-#'           lowerInclusive = 123.0,
-#'           upperInclusive = 123.0
-#'         ),
-#'         filePath = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         name = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         release = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         sourceLambdaLayerArn = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         sourceLayerHash = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         version = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         )
 #'       )
 #'     )
 #'   ),
@@ -1486,12 +1855,12 @@ inspector2_create_findings_report <- function(filterCriteria = NULL, reportForma
 #' Creates a software bill of materials (SBOM) report.
 #'
 #' @usage
-#' inspector2_create_sbom_export(reportFormat, resourceFilterCriteria,
+#' inspector2_create_sbom_export(resourceFilterCriteria, reportFormat,
 #'   s3Destination)
 #'
-#' @param reportFormat &#91;required&#93; The output format for the software bill of materials (SBOM) report.
 #' @param resourceFilterCriteria The resource filter criteria for the software bill of materials (SBOM)
 #' report.
+#' @param reportFormat &#91;required&#93; The output format for the software bill of materials (SBOM) report.
 #' @param s3Destination &#91;required&#93; Contains details of the Amazon S3 bucket and KMS key used to export
 #' findings.
 #'
@@ -1506,7 +1875,6 @@ inspector2_create_findings_report <- function(filterCriteria = NULL, reportForma
 #' @section Request syntax:
 #' ```
 #' svc$create_sbom_export(
-#'   reportFormat = "CYCLONEDX_1_4"|"SPDX_2_3",
 #'   resourceFilterCriteria = list(
 #'     accountId = list(
 #'       list(
@@ -1514,14 +1882,13 @@ inspector2_create_findings_report <- function(filterCriteria = NULL, reportForma
 #'         value = "string"
 #'       )
 #'     ),
-#'     ec2InstanceTags = list(
+#'     resourceId = list(
 #'       list(
-#'         comparison = "EQUALS",
-#'         key = "string",
+#'         comparison = "EQUALS"|"NOT_EQUALS",
 #'         value = "string"
 #'       )
 #'     ),
-#'     ecrImageTags = list(
+#'     resourceType = list(
 #'       list(
 #'         comparison = "EQUALS"|"NOT_EQUALS",
 #'         value = "string"
@@ -1539,26 +1906,28 @@ inspector2_create_findings_report <- function(filterCriteria = NULL, reportForma
 #'         value = "string"
 #'       )
 #'     ),
-#'     lambdaFunctionTags = list(
+#'     ecrImageTags = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ec2InstanceTags = list(
 #'       list(
 #'         comparison = "EQUALS",
 #'         key = "string",
 #'         value = "string"
 #'       )
 #'     ),
-#'     resourceId = list(
+#'     lambdaFunctionTags = list(
 #'       list(
-#'         comparison = "EQUALS"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     resourceType = list(
-#'       list(
-#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         comparison = "EQUALS",
+#'         key = "string",
 #'         value = "string"
 #'       )
 #'     )
 #'   ),
+#'   reportFormat = "CYCLONEDX_1_4"|"SPDX_2_3",
 #'   s3Destination = list(
 #'     bucketName = "string",
 #'     keyPrefix = "string",
@@ -1572,7 +1941,7 @@ inspector2_create_findings_report <- function(filterCriteria = NULL, reportForma
 #' @rdname inspector2_create_sbom_export
 #'
 #' @aliases inspector2_create_sbom_export
-inspector2_create_sbom_export <- function(reportFormat, resourceFilterCriteria = NULL, s3Destination) {
+inspector2_create_sbom_export <- function(resourceFilterCriteria = NULL, reportFormat, s3Destination) {
   op <- new_operation(
     name = "CreateSbomExport",
     http_method = "POST",
@@ -1581,7 +1950,7 @@ inspector2_create_sbom_export <- function(reportFormat, resourceFilterCriteria =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$create_sbom_export_input(reportFormat = reportFormat, resourceFilterCriteria = resourceFilterCriteria, s3Destination = s3Destination)
+  input <- .inspector2$create_sbom_export_input(resourceFilterCriteria = resourceFilterCriteria, reportFormat = reportFormat, s3Destination = s3Destination)
   output <- .inspector2$create_sbom_export_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -1639,6 +2008,105 @@ inspector2_delete_cis_scan_configuration <- function(scanConfigurationArn) {
   return(response)
 }
 .inspector2$operations$delete_cis_scan_configuration <- inspector2_delete_cis_scan_configuration
+
+#' Deletes a code security integration
+#'
+#' @description
+#' Deletes a code security integration.
+#'
+#' @usage
+#' inspector2_delete_code_security_integration(integrationArn)
+#'
+#' @param integrationArn &#91;required&#93; The Amazon Resource Name (ARN) of the code security integration to
+#' delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   integrationArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_code_security_integration(
+#'   integrationArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_delete_code_security_integration
+#'
+#' @aliases inspector2_delete_code_security_integration
+inspector2_delete_code_security_integration <- function(integrationArn) {
+  op <- new_operation(
+    name = "DeleteCodeSecurityIntegration",
+    http_method = "POST",
+    http_path = "/codesecurity/integration/delete",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$delete_code_security_integration_input(integrationArn = integrationArn)
+  output <- .inspector2$delete_code_security_integration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$delete_code_security_integration <- inspector2_delete_code_security_integration
+
+#' Deletes a code security scan configuration
+#'
+#' @description
+#' Deletes a code security scan configuration.
+#'
+#' @usage
+#' inspector2_delete_code_security_scan_configuration(scanConfigurationArn)
+#'
+#' @param scanConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the scan configuration to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   scanConfigurationArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_code_security_scan_configuration(
+#'   scanConfigurationArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_delete_code_security_scan_configuration
+#'
+#' @aliases inspector2_delete_code_security_scan_configuration
+inspector2_delete_code_security_scan_configuration <- function(scanConfigurationArn) {
+  op <- new_operation(
+    name = "DeleteCodeSecurityScanConfiguration",
+    http_method = "POST",
+    http_path = "/codesecurity/scan-configuration/delete",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$delete_code_security_scan_configuration_input(scanConfigurationArn = scanConfigurationArn)
+  output <- .inspector2$delete_code_security_scan_configuration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$delete_code_security_scan_configuration <- inspector2_delete_code_security_scan_configuration
 
 #' Deletes a filter resource
 #'
@@ -1709,7 +2177,8 @@ inspector2_delete_filter <- function(arn) {
 #'     ec2 = TRUE|FALSE,
 #'     ecr = TRUE|FALSE,
 #'     lambda = TRUE|FALSE,
-#'     lambdaCode = TRUE|FALSE
+#'     lambdaCode = TRUE|FALSE,
+#'     codeRepository = TRUE|FALSE
 #'   ),
 #'   maxAccountLimitReached = TRUE|FALSE
 #' )
@@ -1765,27 +2234,29 @@ inspector2_describe_organization_configuration <- function() {
 #'   accounts = list(
 #'     list(
 #'       accountId = "string",
+#'       status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
 #'       resourceStatus = list(
 #'         ec2 = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
 #'         ecr = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
 #'         lambda = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
-#'         lambdaCode = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
-#'       ),
-#'       status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
+#'         lambdaCode = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
+#'         codeRepository = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
+#'       )
 #'     )
 #'   ),
 #'   failedAccounts = list(
 #'     list(
 #'       accountId = "string",
-#'       errorCode = "ALREADY_ENABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS"|"SUSPEND_IN_PROGRESS"|"RESOURCE_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"SSM_UNAVAILABLE"|"SSM_THROTTLED"|"EVENTBRIDGE_UNAVAILABLE"|"EVENTBRIDGE_THROTTLED"|"RESOURCE_SCAN_NOT_DISABLED"|"DISASSOCIATE_ALL_MEMBERS"|"ACCOUNT_IS_ISOLATED"|"EC2_SSM_RESOURCE_DATA_SYNC_LIMIT_EXCEEDED"|"EC2_SSM_ASSOCIATION_VERSION_LIMIT_EXCEEDED",
-#'       errorMessage = "string",
+#'       status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
 #'       resourceStatus = list(
 #'         ec2 = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
 #'         ecr = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
 #'         lambda = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
-#'         lambdaCode = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
+#'         lambdaCode = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
+#'         codeRepository = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
 #'       ),
-#'       status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
+#'       errorCode = "ALREADY_ENABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS"|"SUSPEND_IN_PROGRESS"|"RESOURCE_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"SSM_UNAVAILABLE"|"SSM_THROTTLED"|"EVENTBRIDGE_UNAVAILABLE"|"EVENTBRIDGE_THROTTLED"|"RESOURCE_SCAN_NOT_DISABLED"|"DISASSOCIATE_ALL_MEMBERS"|"ACCOUNT_IS_ISOLATED"|"EC2_SSM_RESOURCE_DATA_SYNC_LIMIT_EXCEEDED"|"EC2_SSM_ASSOCIATION_VERSION_LIMIT_EXCEEDED"|"BLOCKED_BY_ORGANIZATION_POLICY",
+#'       errorMessage = "string"
 #'     )
 #'   )
 #' )
@@ -1798,7 +2269,7 @@ inspector2_describe_organization_configuration <- function() {
 #'     "string"
 #'   ),
 #'   resourceTypes = list(
-#'     "EC2"|"ECR"|"LAMBDA"|"LAMBDA_CODE"
+#'     "EC2"|"ECR"|"LAMBDA"|"LAMBDA_CODE"|"CODE_REPOSITORY"
 #'   )
 #' )
 #' ```
@@ -1939,11 +2410,11 @@ inspector2_disassociate_member <- function(accountId) {
 #' accounts.
 #'
 #' @usage
-#' inspector2_enable(accountIds, clientToken, resourceTypes)
+#' inspector2_enable(accountIds, resourceTypes, clientToken)
 #'
 #' @param accountIds A list of account IDs you want to enable Amazon Inspector scans for.
-#' @param clientToken The idempotency token for the request.
 #' @param resourceTypes &#91;required&#93; The resource scan types you want to enable.
+#' @param clientToken The idempotency token for the request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1952,27 +2423,29 @@ inspector2_disassociate_member <- function(accountId) {
 #'   accounts = list(
 #'     list(
 #'       accountId = "string",
+#'       status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
 #'       resourceStatus = list(
 #'         ec2 = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
 #'         ecr = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
 #'         lambda = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
-#'         lambdaCode = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
-#'       ),
-#'       status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
+#'         lambdaCode = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
+#'         codeRepository = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
+#'       )
 #'     )
 #'   ),
 #'   failedAccounts = list(
 #'     list(
 #'       accountId = "string",
-#'       errorCode = "ALREADY_ENABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS"|"SUSPEND_IN_PROGRESS"|"RESOURCE_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"SSM_UNAVAILABLE"|"SSM_THROTTLED"|"EVENTBRIDGE_UNAVAILABLE"|"EVENTBRIDGE_THROTTLED"|"RESOURCE_SCAN_NOT_DISABLED"|"DISASSOCIATE_ALL_MEMBERS"|"ACCOUNT_IS_ISOLATED"|"EC2_SSM_RESOURCE_DATA_SYNC_LIMIT_EXCEEDED"|"EC2_SSM_ASSOCIATION_VERSION_LIMIT_EXCEEDED",
-#'       errorMessage = "string",
+#'       status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
 #'       resourceStatus = list(
 #'         ec2 = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
 #'         ecr = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
 #'         lambda = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
-#'         lambdaCode = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
+#'         lambdaCode = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
+#'         codeRepository = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
 #'       ),
-#'       status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
+#'       errorCode = "ALREADY_ENABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS"|"SUSPEND_IN_PROGRESS"|"RESOURCE_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"SSM_UNAVAILABLE"|"SSM_THROTTLED"|"EVENTBRIDGE_UNAVAILABLE"|"EVENTBRIDGE_THROTTLED"|"RESOURCE_SCAN_NOT_DISABLED"|"DISASSOCIATE_ALL_MEMBERS"|"ACCOUNT_IS_ISOLATED"|"EC2_SSM_RESOURCE_DATA_SYNC_LIMIT_EXCEEDED"|"EC2_SSM_ASSOCIATION_VERSION_LIMIT_EXCEEDED"|"BLOCKED_BY_ORGANIZATION_POLICY",
+#'       errorMessage = "string"
 #'     )
 #'   )
 #' )
@@ -1984,10 +2457,10 @@ inspector2_disassociate_member <- function(accountId) {
 #'   accountIds = list(
 #'     "string"
 #'   ),
-#'   clientToken = "string",
 #'   resourceTypes = list(
-#'     "EC2"|"ECR"|"LAMBDA"|"LAMBDA_CODE"
-#'   )
+#'     "EC2"|"ECR"|"LAMBDA"|"LAMBDA_CODE"|"CODE_REPOSITORY"
+#'   ),
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -1996,7 +2469,7 @@ inspector2_disassociate_member <- function(accountId) {
 #' @rdname inspector2_enable
 #'
 #' @aliases inspector2_enable
-inspector2_enable <- function(accountIds = NULL, clientToken = NULL, resourceTypes) {
+inspector2_enable <- function(accountIds = NULL, resourceTypes, clientToken = NULL) {
   op <- new_operation(
     name = "Enable",
     http_method = "POST",
@@ -2005,7 +2478,7 @@ inspector2_enable <- function(accountIds = NULL, clientToken = NULL, resourceTyp
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$enable_input(accountIds = accountIds, clientToken = clientToken, resourceTypes = resourceTypes)
+  input <- .inspector2$enable_input(accountIds = accountIds, resourceTypes = resourceTypes, clientToken = clientToken)
   output <- .inspector2$enable_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -2023,12 +2496,12 @@ inspector2_enable <- function(accountIds = NULL, clientToken = NULL, resourceTyp
 #' Organizations organization.
 #'
 #' @usage
-#' inspector2_enable_delegated_admin_account(clientToken,
-#'   delegatedAdminAccountId)
+#' inspector2_enable_delegated_admin_account(delegatedAdminAccountId,
+#'   clientToken)
 #'
-#' @param clientToken The idempotency token for the request.
 #' @param delegatedAdminAccountId &#91;required&#93; The Amazon Web Services account ID of the Amazon Inspector delegated
 #' administrator.
+#' @param clientToken The idempotency token for the request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2041,8 +2514,8 @@ inspector2_enable <- function(accountIds = NULL, clientToken = NULL, resourceTyp
 #' @section Request syntax:
 #' ```
 #' svc$enable_delegated_admin_account(
-#'   clientToken = "string",
-#'   delegatedAdminAccountId = "string"
+#'   delegatedAdminAccountId = "string",
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -2051,7 +2524,7 @@ inspector2_enable <- function(accountIds = NULL, clientToken = NULL, resourceTyp
 #' @rdname inspector2_enable_delegated_admin_account
 #'
 #' @aliases inspector2_enable_delegated_admin_account
-inspector2_enable_delegated_admin_account <- function(clientToken = NULL, delegatedAdminAccountId) {
+inspector2_enable_delegated_admin_account <- function(delegatedAdminAccountId, clientToken = NULL) {
   op <- new_operation(
     name = "EnableDelegatedAdminAccount",
     http_method = "POST",
@@ -2060,7 +2533,7 @@ inspector2_enable_delegated_admin_account <- function(clientToken = NULL, delega
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$enable_delegated_admin_account_input(clientToken = clientToken, delegatedAdminAccountId = delegatedAdminAccountId)
+  input <- .inspector2$enable_delegated_admin_account_input(delegatedAdminAccountId = delegatedAdminAccountId, clientToken = clientToken)
   output <- .inspector2$enable_delegated_admin_account_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -2076,30 +2549,30 @@ inspector2_enable_delegated_admin_account <- function(clientToken = NULL, delega
 #' Retrieves a CIS scan report.
 #'
 #' @usage
-#' inspector2_get_cis_scan_report(reportFormat, scanArn, targetAccounts)
+#' inspector2_get_cis_scan_report(scanArn, targetAccounts, reportFormat)
 #'
-#' @param reportFormat The format of the report. Valid values are `PDF` and `CSV`. If no value
-#' is specified, the report format defaults to `PDF`.
 #' @param scanArn &#91;required&#93; The scan ARN.
 #' @param targetAccounts The target accounts.
+#' @param reportFormat The format of the report. Valid values are `PDF` and `CSV`. If no value
+#' is specified, the report format defaults to `PDF`.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   status = "SUCCEEDED"|"FAILED"|"IN_PROGRESS",
-#'   url = "string"
+#'   url = "string",
+#'   status = "SUCCEEDED"|"FAILED"|"IN_PROGRESS"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$get_cis_scan_report(
-#'   reportFormat = "PDF"|"CSV",
 #'   scanArn = "string",
 #'   targetAccounts = list(
 #'     "string"
-#'   )
+#'   ),
+#'   reportFormat = "PDF"|"CSV"
 #' )
 #' ```
 #'
@@ -2108,7 +2581,7 @@ inspector2_enable_delegated_admin_account <- function(clientToken = NULL, delega
 #' @rdname inspector2_get_cis_scan_report
 #'
 #' @aliases inspector2_get_cis_scan_report
-inspector2_get_cis_scan_report <- function(reportFormat = NULL, scanArn, targetAccounts = NULL) {
+inspector2_get_cis_scan_report <- function(scanArn, targetAccounts = NULL, reportFormat = NULL) {
   op <- new_operation(
     name = "GetCisScanReport",
     http_method = "POST",
@@ -2117,7 +2590,7 @@ inspector2_get_cis_scan_report <- function(reportFormat = NULL, scanArn, targetA
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$get_cis_scan_report_input(reportFormat = reportFormat, scanArn = scanArn, targetAccounts = targetAccounts)
+  input <- .inspector2$get_cis_scan_report_input(scanArn = scanArn, targetAccounts = targetAccounts, reportFormat = reportFormat)
   output <- .inspector2$get_cis_scan_report_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -2133,65 +2606,67 @@ inspector2_get_cis_scan_report <- function(reportFormat = NULL, scanArn, targetA
 #' Retrieves CIS scan result details.
 #'
 #' @usage
-#' inspector2_get_cis_scan_result_details(accountId, filterCriteria,
-#'   maxResults, nextToken, scanArn, sortBy, sortOrder, targetResourceId)
+#' inspector2_get_cis_scan_result_details(scanArn, targetResourceId,
+#'   accountId, filterCriteria, sortBy, sortOrder, nextToken, maxResults)
 #'
+#' @param scanArn &#91;required&#93; The scan ARN.
+#' @param targetResourceId &#91;required&#93; The target resource ID.
 #' @param accountId &#91;required&#93; The account ID.
 #' @param filterCriteria The filter criteria.
-#' @param maxResults The maximum number of CIS scan result details to be returned in a single
-#' page of results.
-#' @param nextToken The pagination token from a previous request that's used to retrieve the
-#' next page of results.
-#' @param scanArn &#91;required&#93; The scan ARN.
 #' @param sortBy The sort by order.
 #' @param sortOrder The sort order.
-#' @param targetResourceId &#91;required&#93; The target resource ID.
+#' @param nextToken The pagination token from a previous request that's used to retrieve the
+#' next page of results.
+#' @param maxResults The maximum number of CIS scan result details to be returned in a single
+#' page of results.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   nextToken = "string",
 #'   scanResultDetails = list(
 #'     list(
-#'       accountId = "string",
-#'       checkDescription = "string",
-#'       checkId = "string",
-#'       findingArn = "string",
-#'       level = "LEVEL_1"|"LEVEL_2",
-#'       platform = "string",
-#'       remediation = "string",
 #'       scanArn = "string",
+#'       accountId = "string",
+#'       targetResourceId = "string",
+#'       platform = "string",
 #'       status = "PASSED"|"FAILED"|"SKIPPED",
 #'       statusReason = "string",
-#'       targetResourceId = "string",
-#'       title = "string"
+#'       checkId = "string",
+#'       title = "string",
+#'       checkDescription = "string",
+#'       remediation = "string",
+#'       level = "LEVEL_1"|"LEVEL_2",
+#'       findingArn = "string"
 #'     )
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$get_cis_scan_result_details(
+#'   scanArn = "string",
+#'   targetResourceId = "string",
 #'   accountId = "string",
 #'   filterCriteria = list(
+#'     findingStatusFilters = list(
+#'       list(
+#'         comparison = "EQUALS",
+#'         value = "PASSED"|"FAILED"|"SKIPPED"
+#'       )
+#'     ),
 #'     checkIdFilters = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'         value = "string"
 #'       )
 #'     ),
-#'     findingArnFilters = list(
+#'     titleFilters = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'         value = "string"
-#'       )
-#'     ),
-#'     findingStatusFilters = list(
-#'       list(
-#'         comparison = "EQUALS",
-#'         value = "PASSED"|"FAILED"|"SKIPPED"
 #'       )
 #'     ),
 #'     securityLevelFilters = list(
@@ -2200,19 +2675,17 @@ inspector2_get_cis_scan_report <- function(reportFormat = NULL, scanArn, targetA
 #'         value = "LEVEL_1"|"LEVEL_2"
 #'       )
 #'     ),
-#'     titleFilters = list(
+#'     findingArnFilters = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'         value = "string"
 #'       )
 #'     )
 #'   ),
-#'   maxResults = 123,
-#'   nextToken = "string",
-#'   scanArn = "string",
 #'   sortBy = "CHECK_ID"|"STATUS",
 #'   sortOrder = "ASC"|"DESC",
-#'   targetResourceId = "string"
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -2221,7 +2694,7 @@ inspector2_get_cis_scan_report <- function(reportFormat = NULL, scanArn, targetA
 #' @rdname inspector2_get_cis_scan_result_details
 #'
 #' @aliases inspector2_get_cis_scan_result_details
-inspector2_get_cis_scan_result_details <- function(accountId, filterCriteria = NULL, maxResults = NULL, nextToken = NULL, scanArn, sortBy = NULL, sortOrder = NULL, targetResourceId) {
+inspector2_get_cis_scan_result_details <- function(scanArn, targetResourceId, accountId, filterCriteria = NULL, sortBy = NULL, sortOrder = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetCisScanResultDetails",
     http_method = "POST",
@@ -2230,7 +2703,7 @@ inspector2_get_cis_scan_result_details <- function(accountId, filterCriteria = N
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scanResultDetails"),
     stream_api = FALSE
   )
-  input <- .inspector2$get_cis_scan_result_details_input(accountId = accountId, filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken, scanArn = scanArn, sortBy = sortBy, sortOrder = sortOrder, targetResourceId = targetResourceId)
+  input <- .inspector2$get_cis_scan_result_details_input(scanArn = scanArn, targetResourceId = targetResourceId, accountId = accountId, filterCriteria = filterCriteria, sortBy = sortBy, sortOrder = sortOrder, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector2$get_cis_scan_result_details_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -2239,6 +2712,303 @@ inspector2_get_cis_scan_result_details <- function(accountId, filterCriteria = N
   return(response)
 }
 .inspector2$operations$get_cis_scan_result_details <- inspector2_get_cis_scan_result_details
+
+#' Returns a list of clusters and metadata associated with an image
+#'
+#' @description
+#' Returns a list of clusters and metadata associated with an image.
+#'
+#' @usage
+#' inspector2_get_clusters_for_image(filter, maxResults, nextToken)
+#'
+#' @param filter &#91;required&#93; The resource Id for the Amazon ECR image.
+#' @param maxResults The maximum number of results to be returned in a single page of
+#' results.
+#' @param nextToken The pagination token from a previous request used to retrieve the next
+#' page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   cluster = list(
+#'     list(
+#'       clusterArn = "string",
+#'       clusterDetails = list(
+#'         list(
+#'           lastInUse = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           runningUnitCount = 123,
+#'           stoppedUnitCount = 123,
+#'           clusterMetadata = list(
+#'             awsEcsMetadataDetails = list(
+#'               detailsGroup = "string",
+#'               taskDefinitionArn = "string"
+#'             ),
+#'             awsEksMetadataDetails = list(
+#'               namespace = "string",
+#'               workloadInfoList = list(
+#'                 list(
+#'                   name = "string",
+#'                   type = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_clusters_for_image(
+#'   filter = list(
+#'     resourceId = "string"
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_get_clusters_for_image
+#'
+#' @aliases inspector2_get_clusters_for_image
+inspector2_get_clusters_for_image <- function(filter, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "GetClustersForImage",
+    http_method = "POST",
+    http_path = "/cluster/get",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "cluster"),
+    stream_api = FALSE
+  )
+  input <- .inspector2$get_clusters_for_image_input(filter = filter, maxResults = maxResults, nextToken = nextToken)
+  output <- .inspector2$get_clusters_for_image_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$get_clusters_for_image <- inspector2_get_clusters_for_image
+
+#' Retrieves information about a code security integration
+#'
+#' @description
+#' Retrieves information about a code security integration.
+#'
+#' @usage
+#' inspector2_get_code_security_integration(integrationArn, tags)
+#'
+#' @param integrationArn &#91;required&#93; The Amazon Resource Name (ARN) of the code security integration to
+#' retrieve.
+#' @param tags The tags associated with the code security integration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   integrationArn = "string",
+#'   name = "string",
+#'   type = "GITLAB_SELF_MANAGED"|"GITHUB",
+#'   status = "PENDING"|"IN_PROGRESS"|"ACTIVE"|"INACTIVE"|"DISABLING",
+#'   statusReason = "string",
+#'   createdOn = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdateOn = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   authorizationUrl = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_code_security_integration(
+#'   integrationArn = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_get_code_security_integration
+#'
+#' @aliases inspector2_get_code_security_integration
+inspector2_get_code_security_integration <- function(integrationArn, tags = NULL) {
+  op <- new_operation(
+    name = "GetCodeSecurityIntegration",
+    http_method = "POST",
+    http_path = "/codesecurity/integration/get",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$get_code_security_integration_input(integrationArn = integrationArn, tags = tags)
+  output <- .inspector2$get_code_security_integration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$get_code_security_integration <- inspector2_get_code_security_integration
+
+#' Retrieves information about a specific code security scan
+#'
+#' @description
+#' Retrieves information about a specific code security scan.
+#'
+#' @usage
+#' inspector2_get_code_security_scan(resource, scanId)
+#'
+#' @param resource &#91;required&#93; The resource identifier for the code repository that was scanned.
+#' @param scanId &#91;required&#93; The unique identifier of the scan to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   scanId = "string",
+#'   resource = list(
+#'     projectId = "string"
+#'   ),
+#'   accountId = "string",
+#'   status = "IN_PROGRESS"|"SUCCESSFUL"|"FAILED"|"SKIPPED",
+#'   statusReason = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastCommitId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_code_security_scan(
+#'   resource = list(
+#'     projectId = "string"
+#'   ),
+#'   scanId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_get_code_security_scan
+#'
+#' @aliases inspector2_get_code_security_scan
+inspector2_get_code_security_scan <- function(resource, scanId) {
+  op <- new_operation(
+    name = "GetCodeSecurityScan",
+    http_method = "POST",
+    http_path = "/codesecurity/scan/get",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$get_code_security_scan_input(resource = resource, scanId = scanId)
+  output <- .inspector2$get_code_security_scan_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$get_code_security_scan <- inspector2_get_code_security_scan
+
+#' Retrieves information about a code security scan configuration
+#'
+#' @description
+#' Retrieves information about a code security scan configuration.
+#'
+#' @usage
+#' inspector2_get_code_security_scan_configuration(scanConfigurationArn)
+#'
+#' @param scanConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the scan configuration to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   scanConfigurationArn = "string",
+#'   name = "string",
+#'   configuration = list(
+#'     periodicScanConfiguration = list(
+#'       frequency = "WEEKLY"|"MONTHLY"|"NEVER",
+#'       frequencyExpression = "string"
+#'     ),
+#'     continuousIntegrationScanConfiguration = list(
+#'       supportedEvents = list(
+#'         "PULL_REQUEST"|"PUSH"
+#'       )
+#'     ),
+#'     ruleSetCategories = list(
+#'       "SAST"|"IAC"|"SCA"
+#'     )
+#'   ),
+#'   level = "ORGANIZATION"|"ACCOUNT",
+#'   scopeSettings = list(
+#'     projectSelectionScope = "ALL"
+#'   ),
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_code_security_scan_configuration(
+#'   scanConfigurationArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_get_code_security_scan_configuration
+#'
+#' @aliases inspector2_get_code_security_scan_configuration
+inspector2_get_code_security_scan_configuration <- function(scanConfigurationArn) {
+  op <- new_operation(
+    name = "GetCodeSecurityScanConfiguration",
+    http_method = "POST",
+    http_path = "/codesecurity/scan-configuration/get",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$get_code_security_scan_configuration_input(scanConfigurationArn = scanConfigurationArn)
+  output <- .inspector2$get_code_security_scan_configuration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$get_code_security_scan_configuration <- inspector2_get_code_security_scan_configuration
 
 #' Retrieves setting configurations for Inspector scans
 #'
@@ -2254,20 +3024,21 @@ inspector2_get_cis_scan_result_details <- function(accountId, filterCriteria = N
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   ec2Configuration = list(
-#'     scanModeState = list(
-#'       scanMode = "EC2_SSM_AGENT_BASED"|"EC2_HYBRID",
-#'       scanModeStatus = "SUCCESS"|"PENDING"
-#'     )
-#'   ),
 #'   ecrConfiguration = list(
 #'     rescanDurationState = list(
-#'       pullDateRescanDuration = "DAYS_14"|"DAYS_30"|"DAYS_60"|"DAYS_90"|"DAYS_180",
 #'       rescanDuration = "LIFETIME"|"DAYS_30"|"DAYS_180"|"DAYS_14"|"DAYS_60"|"DAYS_90",
 #'       status = "SUCCESS"|"PENDING"|"FAILED",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       pullDateRescanDuration = "DAYS_14"|"DAYS_30"|"DAYS_60"|"DAYS_90"|"DAYS_180",
+#'       pullDateRescanMode = "LAST_PULL_DATE"|"LAST_IN_USE_AT"
+#'     )
+#'   ),
+#'   ec2Configuration = list(
+#'     scanModeState = list(
+#'       scanMode = "EC2_SSM_AGENT_BASED"|"EC2_HYBRID",
+#'       scanModeStatus = "SUCCESS"|"PENDING"
 #'     )
 #'   )
 #' )
@@ -2370,14 +3141,14 @@ inspector2_get_delegated_admin_account <- function() {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   errorMessage = "string",
-#'   orgPackagePaths = list(
-#'     "string"
-#'   ),
 #'   packagePaths = list(
 #'     "string"
 #'   ),
-#'   status = "ACTIVATED"|"DEACTIVATED"|"PENDING"|"FAILED"
+#'   orgPackagePaths = list(
+#'     "string"
+#'   ),
+#'   status = "ACTIVATED"|"DEACTIVATED"|"PENDING"|"FAILED",
+#'   errorMessage = "string"
 #' )
 #' ```
 #'
@@ -2416,10 +3187,10 @@ inspector2_get_ec_2_deep_inspection_configuration <- function() {
 #' Gets an encryption key.
 #'
 #' @usage
-#' inspector2_get_encryption_key(resourceType, scanType)
+#' inspector2_get_encryption_key(scanType, resourceType)
 #'
-#' @param resourceType &#91;required&#93; The resource type the key encrypts.
 #' @param scanType &#91;required&#93; The scan type the key encrypts.
+#' @param resourceType &#91;required&#93; The resource type the key encrypts.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2432,8 +3203,8 @@ inspector2_get_ec_2_deep_inspection_configuration <- function() {
 #' @section Request syntax:
 #' ```
 #' svc$get_encryption_key(
-#'   resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_ECR_REPOSITORY"|"AWS_LAMBDA_FUNCTION",
-#'   scanType = "NETWORK"|"PACKAGE"|"CODE"
+#'   scanType = "NETWORK"|"PACKAGE"|"CODE",
+#'   resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_ECR_REPOSITORY"|"AWS_LAMBDA_FUNCTION"|"CODE_REPOSITORY"
 #' )
 #' ```
 #'
@@ -2442,7 +3213,7 @@ inspector2_get_ec_2_deep_inspection_configuration <- function() {
 #' @rdname inspector2_get_encryption_key
 #'
 #' @aliases inspector2_get_encryption_key
-inspector2_get_encryption_key <- function(resourceType, scanType) {
+inspector2_get_encryption_key <- function(scanType, resourceType) {
   op <- new_operation(
     name = "GetEncryptionKey",
     http_method = "GET",
@@ -2451,7 +3222,7 @@ inspector2_get_encryption_key <- function(resourceType, scanType) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$get_encryption_key_input(resourceType = resourceType, scanType = scanType)
+  input <- .inspector2$get_encryption_key_input(scanType = scanType, resourceType = resourceType)
   output <- .inspector2$get_encryption_key_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -2475,15 +3246,306 @@ inspector2_get_encryption_key <- function(resourceType, scanType) {
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   reportId = "string",
+#'   status = "SUCCEEDED"|"IN_PROGRESS"|"CANCELLED"|"FAILED",
+#'   errorCode = "INTERNAL_ERROR"|"INVALID_PERMISSIONS"|"NO_FINDINGS_FOUND"|"BUCKET_NOT_FOUND"|"INCOMPATIBLE_BUCKET_REGION"|"MALFORMED_KMS_KEY",
+#'   errorMessage = "string",
 #'   destination = list(
 #'     bucketName = "string",
 #'     keyPrefix = "string",
 #'     kmsKeyArn = "string"
 #'   ),
-#'   errorCode = "INTERNAL_ERROR"|"INVALID_PERMISSIONS"|"NO_FINDINGS_FOUND"|"BUCKET_NOT_FOUND"|"INCOMPATIBLE_BUCKET_REGION"|"MALFORMED_KMS_KEY",
-#'   errorMessage = "string",
 #'   filterCriteria = list(
+#'     findingArn = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
 #'     awsAccountId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     findingType = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     severity = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     firstObservedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     lastObservedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     updatedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     findingStatus = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     title = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     inspectorScore = list(
+#'       list(
+#'         upperInclusive = 123.0,
+#'         lowerInclusive = 123.0
+#'       )
+#'     ),
+#'     resourceType = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     resourceId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     resourceTags = list(
+#'       list(
+#'         comparison = "EQUALS",
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ec2InstanceImageId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ec2InstanceVpcId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ec2InstanceSubnetId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImagePushedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     ecrImageArchitecture = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImageRegistry = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImageRepositoryName = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImageTags = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImageHash = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImageLastInUseAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     ecrImageInUseCount = list(
+#'       list(
+#'         upperInclusive = 123.0,
+#'         lowerInclusive = 123.0
+#'       )
+#'     ),
+#'     portRange = list(
+#'       list(
+#'         beginInclusive = 123,
+#'         endInclusive = 123
+#'       )
+#'     ),
+#'     networkProtocol = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     componentId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     componentType = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     vulnerabilityId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     vulnerabilitySource = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     vendorSeverity = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     vulnerablePackages = list(
+#'       list(
+#'         name = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         version = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         epoch = list(
+#'           upperInclusive = 123.0,
+#'           lowerInclusive = 123.0
+#'         ),
+#'         release = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         architecture = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         sourceLayerHash = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         sourceLambdaLayerArn = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         filePath = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       )
+#'     ),
+#'     relatedVulnerabilities = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     fixAvailable = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionName = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionLayers = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionRuntime = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionLastModifiedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     lambdaFunctionExecutionRoleArn = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     exploitAvailable = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'         value = "string"
@@ -2507,288 +3569,25 @@ inspector2_get_encryption_key <- function(resourceType, scanType) {
 #'         value = "string"
 #'       )
 #'     ),
-#'     componentId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     componentType = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ec2InstanceImageId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ec2InstanceSubnetId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ec2InstanceVpcId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrImageArchitecture = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrImageHash = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrImagePushedAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     ecrImageRegistry = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrImageRepositoryName = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrImageTags = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
 #'     epssScore = list(
 #'       list(
-#'         lowerInclusive = 123.0,
-#'         upperInclusive = 123.0
+#'         upperInclusive = 123.0,
+#'         lowerInclusive = 123.0
 #'       )
 #'     ),
-#'     exploitAvailable = list(
+#'     codeRepositoryProjectName = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'         value = "string"
 #'       )
 #'     ),
-#'     findingArn = list(
+#'     codeRepositoryProviderType = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'         value = "string"
-#'       )
-#'     ),
-#'     findingStatus = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     findingType = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     firstObservedAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     fixAvailable = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     inspectorScore = list(
-#'       list(
-#'         lowerInclusive = 123.0,
-#'         upperInclusive = 123.0
-#'       )
-#'     ),
-#'     lambdaFunctionExecutionRoleArn = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     lambdaFunctionLastModifiedAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     lambdaFunctionLayers = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     lambdaFunctionName = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     lambdaFunctionRuntime = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     lastObservedAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     networkProtocol = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     portRange = list(
-#'       list(
-#'         beginInclusive = 123,
-#'         endInclusive = 123
-#'       )
-#'     ),
-#'     relatedVulnerabilities = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     resourceId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     resourceTags = list(
-#'       list(
-#'         comparison = "EQUALS",
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     resourceType = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     severity = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     title = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     updatedAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     vendorSeverity = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     vulnerabilityId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     vulnerabilitySource = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     vulnerablePackages = list(
-#'       list(
-#'         architecture = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         epoch = list(
-#'           lowerInclusive = 123.0,
-#'           upperInclusive = 123.0
-#'         ),
-#'         filePath = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         name = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         release = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         sourceLambdaLayerArn = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         sourceLayerHash = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         version = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         )
 #'       )
 #'     )
-#'   ),
-#'   reportId = "string",
-#'   status = "SUCCEEDED"|"IN_PROGRESS"|"CANCELLED"|"FAILED"
+#'   )
 #' )
 #' ```
 #'
@@ -2840,8 +3639,8 @@ inspector2_get_findings_report_status <- function(reportId = NULL) {
 #' list(
 #'   member = list(
 #'     accountId = "string",
-#'     delegatedAdminAccountId = "string",
 #'     relationshipStatus = "CREATED"|"INVITED"|"DISABLED"|"ENABLED"|"REMOVED"|"RESIGNED"|"DELETED"|"EMAIL_VERIFICATION_IN_PROGRESS"|"EMAIL_VERIFICATION_FAILED"|"REGION_DISABLED"|"ACCOUNT_SUSPENDED"|"CANNOT_CREATE_DETECTOR_IN_ORG_MASTER",
+#'     delegatedAdminAccountId = "string",
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     )
@@ -2894,8 +3693,16 @@ inspector2_get_member <- function(accountId) {
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   reportId = "string",
+#'   format = "CYCLONEDX_1_4"|"SPDX_2_3",
+#'   status = "SUCCEEDED"|"IN_PROGRESS"|"CANCELLED"|"FAILED",
 #'   errorCode = "INTERNAL_ERROR"|"INVALID_PERMISSIONS"|"NO_FINDINGS_FOUND"|"BUCKET_NOT_FOUND"|"INCOMPATIBLE_BUCKET_REGION"|"MALFORMED_KMS_KEY",
 #'   errorMessage = "string",
+#'   s3Destination = list(
+#'     bucketName = "string",
+#'     keyPrefix = "string",
+#'     kmsKeyArn = "string"
+#'   ),
 #'   filterCriteria = list(
 #'     accountId = list(
 #'       list(
@@ -2903,14 +3710,13 @@ inspector2_get_member <- function(accountId) {
 #'         value = "string"
 #'       )
 #'     ),
-#'     ec2InstanceTags = list(
+#'     resourceId = list(
 #'       list(
-#'         comparison = "EQUALS",
-#'         key = "string",
+#'         comparison = "EQUALS"|"NOT_EQUALS",
 #'         value = "string"
 #'       )
 #'     ),
-#'     ecrImageTags = list(
+#'     resourceType = list(
 #'       list(
 #'         comparison = "EQUALS"|"NOT_EQUALS",
 #'         value = "string"
@@ -2928,34 +3734,27 @@ inspector2_get_member <- function(accountId) {
 #'         value = "string"
 #'       )
 #'     ),
-#'     lambdaFunctionTags = list(
+#'     ecrImageTags = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ec2InstanceTags = list(
 #'       list(
 #'         comparison = "EQUALS",
 #'         key = "string",
 #'         value = "string"
 #'       )
 #'     ),
-#'     resourceId = list(
+#'     lambdaFunctionTags = list(
 #'       list(
-#'         comparison = "EQUALS"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     resourceType = list(
-#'       list(
-#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         comparison = "EQUALS",
+#'         key = "string",
 #'         value = "string"
 #'       )
 #'     )
-#'   ),
-#'   format = "CYCLONEDX_1_4"|"SPDX_2_3",
-#'   reportId = "string",
-#'   s3Destination = list(
-#'     bucketName = "string",
-#'     keyPrefix = "string",
-#'     kmsKeyArn = "string"
-#'   ),
-#'   status = "SUCCEEDED"|"IN_PROGRESS"|"CANCELLED"|"FAILED"
+#'   )
 #' )
 #' ```
 #'
@@ -2993,11 +3792,15 @@ inspector2_get_sbom_export <- function(reportId) {
 #' Lists the permissions an account has to configure Amazon Inspector
 #'
 #' @description
-#' Lists the permissions an account has to configure Amazon Inspector.
+#' Lists the permissions an account has to configure Amazon Inspector. If
+#' the account is a member account or standalone account with resources
+#' managed by an Organizations policy, the operation returns fewer
+#' permissions.
 #'
 #' @usage
-#' inspector2_list_account_permissions(maxResults, nextToken, service)
+#' inspector2_list_account_permissions(service, maxResults, nextToken)
 #'
+#' @param service The service scan type to check permissions for.
 #' @param maxResults The maximum number of results the response can return. If your request
 #' would return more than the maximum the response will return a
 #' `nextToken` value, use this value when you call the action again to get
@@ -3008,28 +3811,27 @@ inspector2_get_sbom_export <- function(reportId) {
 #' value it will also return a `nextToken` value. For subsequent calls, use
 #' the NextToken value returned from the previous request to continue
 #' listing results after the first page.
-#' @param service The service scan type to check permissions for.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   nextToken = "string",
 #'   permissions = list(
 #'     list(
-#'       operation = "ENABLE_SCANNING"|"DISABLE_SCANNING"|"ENABLE_REPOSITORY"|"DISABLE_REPOSITORY",
-#'       service = "EC2"|"ECR"|"LAMBDA"
+#'       service = "EC2"|"ECR"|"LAMBDA",
+#'       operation = "ENABLE_SCANNING"|"DISABLE_SCANNING"|"ENABLE_REPOSITORY"|"DISABLE_REPOSITORY"
 #'     )
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_account_permissions(
+#'   service = "EC2"|"ECR"|"LAMBDA",
 #'   maxResults = 123,
-#'   nextToken = "string",
-#'   service = "EC2"|"ECR"|"LAMBDA"
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -3038,7 +3840,7 @@ inspector2_get_sbom_export <- function(reportId) {
 #' @rdname inspector2_list_account_permissions
 #'
 #' @aliases inspector2_list_account_permissions
-inspector2_list_account_permissions <- function(maxResults = NULL, nextToken = NULL, service = NULL) {
+inspector2_list_account_permissions <- function(service = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListAccountPermissions",
     http_method = "POST",
@@ -3047,7 +3849,7 @@ inspector2_list_account_permissions <- function(maxResults = NULL, nextToken = N
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "permissions"),
     stream_api = FALSE
   )
-  input <- .inspector2$list_account_permissions_input(maxResults = maxResults, nextToken = nextToken, service = service)
+  input <- .inspector2$list_account_permissions_input(service = service, maxResults = maxResults, nextToken = nextToken)
   output <- .inspector2$list_account_permissions_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -3063,55 +3865,51 @@ inspector2_list_account_permissions <- function(maxResults = NULL, nextToken = N
 #' Lists CIS scan configurations.
 #'
 #' @usage
-#' inspector2_list_cis_scan_configurations(filterCriteria, maxResults,
-#'   nextToken, sortBy, sortOrder)
+#' inspector2_list_cis_scan_configurations(filterCriteria, sortBy,
+#'   sortOrder, nextToken, maxResults)
 #'
 #' @param filterCriteria The CIS scan configuration filter criteria.
-#' @param maxResults The maximum number of CIS scan configurations to be returned in a single
-#' page of results.
-#' @param nextToken The pagination token from a previous request that's used to retrieve the
-#' next page of results.
 #' @param sortBy The CIS scan configuration sort by order.
 #' @param sortOrder The CIS scan configuration sort order order.
+#' @param nextToken The pagination token from a previous request that's used to retrieve the
+#' next page of results.
+#' @param maxResults The maximum number of CIS scan configurations to be returned in a single
+#' page of results.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   nextToken = "string",
 #'   scanConfigurations = list(
 #'     list(
-#'       ownerId = "string",
 #'       scanConfigurationArn = "string",
+#'       ownerId = "string",
 #'       scanName = "string",
+#'       securityLevel = "LEVEL_1"|"LEVEL_2",
 #'       schedule = list(
+#'         oneTime = list(),
 #'         daily = list(
 #'           startTime = list(
 #'             timeOfDay = "string",
 #'             timezone = "string"
 #'           )
 #'         ),
-#'         monthly = list(
-#'           day = "SUN"|"MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT",
+#'         weekly = list(
 #'           startTime = list(
 #'             timeOfDay = "string",
 #'             timezone = "string"
-#'           )
-#'         ),
-#'         oneTime = list(),
-#'         weekly = list(
+#'           ),
 #'           days = list(
 #'             "SUN"|"MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT"
-#'           ),
+#'           )
+#'         ),
+#'         monthly = list(
 #'           startTime = list(
 #'             timeOfDay = "string",
 #'             timezone = "string"
-#'           )
+#'           ),
+#'           day = "SUN"|"MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT"
 #'         )
-#'       ),
-#'       securityLevel = "LEVEL_1"|"LEVEL_2",
-#'       tags = list(
-#'         "string"
 #'       ),
 #'       targets = list(
 #'         accountIds = list(
@@ -3122,9 +3920,13 @@ inspector2_list_account_permissions <- function(maxResults = NULL, nextToken = N
 #'             "string"
 #'           )
 #'         )
+#'       ),
+#'       tags = list(
+#'         "string"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -3132,12 +3934,6 @@ inspector2_list_account_permissions <- function(maxResults = NULL, nextToken = N
 #' ```
 #' svc$list_cis_scan_configurations(
 #'   filterCriteria = list(
-#'     scanConfigurationArnFilters = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
 #'     scanNameFilters = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
@@ -3150,12 +3946,18 @@ inspector2_list_account_permissions <- function(maxResults = NULL, nextToken = N
 #'         key = "string",
 #'         value = "string"
 #'       )
+#'     ),
+#'     scanConfigurationArnFilters = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
 #'     )
 #'   ),
-#'   maxResults = 123,
-#'   nextToken = "string",
 #'   sortBy = "SCAN_NAME"|"SCAN_CONFIGURATION_ARN",
-#'   sortOrder = "ASC"|"DESC"
+#'   sortOrder = "ASC"|"DESC",
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -3164,7 +3966,7 @@ inspector2_list_account_permissions <- function(maxResults = NULL, nextToken = N
 #' @rdname inspector2_list_cis_scan_configurations
 #'
 #' @aliases inspector2_list_cis_scan_configurations
-inspector2_list_cis_scan_configurations <- function(filterCriteria = NULL, maxResults = NULL, nextToken = NULL, sortBy = NULL, sortOrder = NULL) {
+inspector2_list_cis_scan_configurations <- function(filterCriteria = NULL, sortBy = NULL, sortOrder = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListCisScanConfigurations",
     http_method = "POST",
@@ -3173,7 +3975,7 @@ inspector2_list_cis_scan_configurations <- function(filterCriteria = NULL, maxRe
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scanConfigurations"),
     stream_api = FALSE
   )
-  input <- .inspector2$list_cis_scan_configurations_input(filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
+  input <- .inspector2$list_cis_scan_configurations_input(filterCriteria = filterCriteria, sortBy = sortBy, sortOrder = sortOrder, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector2$list_cis_scan_configurations_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -3189,17 +3991,17 @@ inspector2_list_cis_scan_configurations <- function(filterCriteria = NULL, maxRe
 #' Lists scan results aggregated by checks.
 #'
 #' @usage
-#' inspector2_list_cis_scan_results_aggregated_by_checks(filterCriteria,
-#'   maxResults, nextToken, scanArn, sortBy, sortOrder)
+#' inspector2_list_cis_scan_results_aggregated_by_checks(scanArn,
+#'   filterCriteria, sortBy, sortOrder, nextToken, maxResults)
 #'
-#' @param filterCriteria The filter criteria.
-#' @param maxResults The maximum number of scan results aggregated by checks to be returned
-#' in a single page of results.
-#' @param nextToken The pagination token from a previous request that's used to retrieve the
-#' next page of results.
 #' @param scanArn &#91;required&#93; The scan ARN.
+#' @param filterCriteria The filter criteria.
 #' @param sortBy The sort by order.
 #' @param sortOrder The sort order.
+#' @param nextToken The pagination token from a previous request that's used to retrieve the
+#' next page of results.
+#' @param maxResults The maximum number of scan results aggregated by checks to be returned
+#' in a single page of results.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3207,18 +4009,18 @@ inspector2_list_cis_scan_configurations <- function(filterCriteria = NULL, maxRe
 #' list(
 #'   checkAggregations = list(
 #'     list(
-#'       accountId = "string",
-#'       checkDescription = "string",
-#'       checkId = "string",
-#'       level = "LEVEL_1"|"LEVEL_2",
-#'       platform = "string",
 #'       scanArn = "string",
+#'       checkId = "string",
+#'       title = "string",
+#'       checkDescription = "string",
+#'       level = "LEVEL_1"|"LEVEL_2",
+#'       accountId = "string",
 #'       statusCounts = list(
 #'         failed = 123,
-#'         passed = 123,
-#'         skipped = 123
+#'         skipped = 123,
+#'         passed = 123
 #'       ),
-#'       title = "string"
+#'       platform = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -3228,6 +4030,7 @@ inspector2_list_cis_scan_configurations <- function(filterCriteria = NULL, maxRe
 #' @section Request syntax:
 #' ```
 #' svc$list_cis_scan_results_aggregated_by_checks(
+#'   scanArn = "string",
 #'   filterCriteria = list(
 #'     accountIdFilters = list(
 #'       list(
@@ -3241,10 +4044,10 @@ inspector2_list_cis_scan_configurations <- function(filterCriteria = NULL, maxRe
 #'         value = "string"
 #'       )
 #'     ),
-#'     failedResourcesFilters = list(
+#'     titleFilters = list(
 #'       list(
-#'         lowerInclusive = 123,
-#'         upperInclusive = 123
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
 #'       )
 #'     ),
 #'     platformFilters = list(
@@ -3253,24 +4056,23 @@ inspector2_list_cis_scan_configurations <- function(filterCriteria = NULL, maxRe
 #'         value = "string"
 #'       )
 #'     ),
+#'     failedResourcesFilters = list(
+#'       list(
+#'         upperInclusive = 123,
+#'         lowerInclusive = 123
+#'       )
+#'     ),
 #'     securityLevelFilters = list(
 #'       list(
 #'         comparison = "EQUALS",
 #'         value = "LEVEL_1"|"LEVEL_2"
 #'       )
-#'     ),
-#'     titleFilters = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
 #'     )
 #'   ),
-#'   maxResults = 123,
-#'   nextToken = "string",
-#'   scanArn = "string",
 #'   sortBy = "CHECK_ID"|"TITLE"|"PLATFORM"|"FAILED_COUNTS"|"SECURITY_LEVEL",
-#'   sortOrder = "ASC"|"DESC"
+#'   sortOrder = "ASC"|"DESC",
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -3279,7 +4081,7 @@ inspector2_list_cis_scan_configurations <- function(filterCriteria = NULL, maxRe
 #' @rdname inspector2_list_cis_scan_results_aggregated_by_checks
 #'
 #' @aliases inspector2_list_cis_scan_results_aggregated_by_checks
-inspector2_list_cis_scan_results_aggregated_by_checks <- function(filterCriteria = NULL, maxResults = NULL, nextToken = NULL, scanArn, sortBy = NULL, sortOrder = NULL) {
+inspector2_list_cis_scan_results_aggregated_by_checks <- function(scanArn, filterCriteria = NULL, sortBy = NULL, sortOrder = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListCisScanResultsAggregatedByChecks",
     http_method = "POST",
@@ -3288,7 +4090,7 @@ inspector2_list_cis_scan_results_aggregated_by_checks <- function(filterCriteria
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "checkAggregations"),
     stream_api = FALSE
   )
-  input <- .inspector2$list_cis_scan_results_aggregated_by_checks_input(filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken, scanArn = scanArn, sortBy = sortBy, sortOrder = sortOrder)
+  input <- .inspector2$list_cis_scan_results_aggregated_by_checks_input(scanArn = scanArn, filterCriteria = filterCriteria, sortBy = sortBy, sortOrder = sortOrder, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector2$list_cis_scan_results_aggregated_by_checks_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -3304,69 +4106,52 @@ inspector2_list_cis_scan_results_aggregated_by_checks <- function(filterCriteria
 #' Lists scan results aggregated by a target resource.
 #'
 #' @usage
-#' inspector2_list_cis_scan_results_aggregated_by_target_resource(
-#'   filterCriteria, maxResults, nextToken, scanArn, sortBy, sortOrder)
+#' inspector2_list_cis_scan_results_aggregated_by_target_resource(scanArn,
+#'   filterCriteria, sortBy, sortOrder, nextToken, maxResults)
 #'
-#' @param filterCriteria The filter criteria.
-#' @param maxResults The maximum number of scan results aggregated by a target resource to be
-#' returned in a single page of results.
-#' @param nextToken The pagination token from a previous request that's used to retrieve the
-#' next page of results.
 #' @param scanArn &#91;required&#93; The scan ARN.
+#' @param filterCriteria The filter criteria.
 #' @param sortBy The sort by order.
 #' @param sortOrder The sort order.
+#' @param nextToken The pagination token from a previous request that's used to retrieve the
+#' next page of results.
+#' @param maxResults The maximum number of scan results aggregated by a target resource to be
+#' returned in a single page of results.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   nextToken = "string",
 #'   targetResourceAggregations = list(
 #'     list(
-#'       accountId = "string",
-#'       platform = "string",
 #'       scanArn = "string",
-#'       statusCounts = list(
-#'         failed = 123,
-#'         passed = 123,
-#'         skipped = 123
-#'       ),
 #'       targetResourceId = "string",
+#'       accountId = "string",
 #'       targetResourceTags = list(
 #'         list(
 #'           "string"
 #'         )
 #'       ),
+#'       statusCounts = list(
+#'         failed = 123,
+#'         skipped = 123,
+#'         passed = 123
+#'       ),
+#'       platform = "string",
 #'       targetStatus = "TIMED_OUT"|"CANCELLED"|"COMPLETED",
 #'       targetStatusReason = "SCAN_IN_PROGRESS"|"UNSUPPORTED_OS"|"SSM_UNMANAGED"
 #'     )
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_cis_scan_results_aggregated_by_target_resource(
+#'   scanArn = "string",
 #'   filterCriteria = list(
 #'     accountIdFilters = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     checkIdFilters = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     failedChecksFilters = list(
-#'       list(
-#'         lowerInclusive = 123,
-#'         upperInclusive = 123
-#'       )
-#'     ),
-#'     platformFilters = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'         value = "string"
@@ -3376,6 +4161,12 @@ inspector2_list_cis_scan_results_aggregated_by_checks <- function(filterCriteria
 #'       list(
 #'         comparison = "EQUALS",
 #'         value = "PASSED"|"FAILED"|"SKIPPED"
+#'       )
+#'     ),
+#'     checkIdFilters = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
 #'       )
 #'     ),
 #'     targetResourceIdFilters = list(
@@ -3391,6 +4182,12 @@ inspector2_list_cis_scan_results_aggregated_by_checks <- function(filterCriteria
 #'         value = "string"
 #'       )
 #'     ),
+#'     platformFilters = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
 #'     targetStatusFilters = list(
 #'       list(
 #'         comparison = "EQUALS",
@@ -3402,13 +4199,18 @@ inspector2_list_cis_scan_results_aggregated_by_checks <- function(filterCriteria
 #'         comparison = "EQUALS",
 #'         value = "SCAN_IN_PROGRESS"|"UNSUPPORTED_OS"|"SSM_UNMANAGED"
 #'       )
+#'     ),
+#'     failedChecksFilters = list(
+#'       list(
+#'         upperInclusive = 123,
+#'         lowerInclusive = 123
+#'       )
 #'     )
 #'   ),
-#'   maxResults = 123,
-#'   nextToken = "string",
-#'   scanArn = "string",
 #'   sortBy = "RESOURCE_ID"|"FAILED_COUNTS"|"ACCOUNT_ID"|"PLATFORM"|"TARGET_STATUS"|"TARGET_STATUS_REASON",
-#'   sortOrder = "ASC"|"DESC"
+#'   sortOrder = "ASC"|"DESC",
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -3417,7 +4219,7 @@ inspector2_list_cis_scan_results_aggregated_by_checks <- function(filterCriteria
 #' @rdname inspector2_list_cis_scan_resul_aggre_by_targe_resou
 #'
 #' @aliases inspector2_list_cis_scan_results_aggregated_by_target_resource
-inspector2_list_cis_scan_results_aggregated_by_target_resource <- function(filterCriteria = NULL, maxResults = NULL, nextToken = NULL, scanArn, sortBy = NULL, sortOrder = NULL) {
+inspector2_list_cis_scan_results_aggregated_by_target_resource <- function(scanArn, filterCriteria = NULL, sortBy = NULL, sortOrder = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListCisScanResultsAggregatedByTargetResource",
     http_method = "POST",
@@ -3426,7 +4228,7 @@ inspector2_list_cis_scan_results_aggregated_by_target_resource <- function(filte
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "targetResourceAggregations"),
     stream_api = FALSE
   )
-  input <- .inspector2$list_cis_scan_results_aggregated_by_target_resource_input(filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken, scanArn = scanArn, sortBy = sortBy, sortOrder = sortOrder)
+  input <- .inspector2$list_cis_scan_results_aggregated_by_target_resource_input(scanArn = scanArn, filterCriteria = filterCriteria, sortBy = sortBy, sortOrder = sortOrder, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector2$list_cis_scan_results_aggregated_by_target_resource_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -3442,34 +4244,32 @@ inspector2_list_cis_scan_results_aggregated_by_target_resource <- function(filte
 #' Returns a CIS scan list.
 #'
 #' @usage
-#' inspector2_list_cis_scans(detailLevel, filterCriteria, maxResults,
-#'   nextToken, sortBy, sortOrder)
+#' inspector2_list_cis_scans(filterCriteria, detailLevel, sortBy,
+#'   sortOrder, nextToken, maxResults)
 #'
-#' @param detailLevel The detail applied to the CIS scan.
 #' @param filterCriteria The CIS scan filter criteria.
-#' @param maxResults The maximum number of results to be returned.
-#' @param nextToken The pagination token from a previous request that's used to retrieve the
-#' next page of results.
+#' @param detailLevel The detail applied to the CIS scan.
 #' @param sortBy The CIS scans sort by order.
 #' @param sortOrder The CIS scans sort order.
+#' @param nextToken The pagination token from a previous request that's used to retrieve the
+#' next page of results.
+#' @param maxResults The maximum number of results to be returned.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   nextToken = "string",
 #'   scans = list(
 #'     list(
-#'       failedChecks = 123,
 #'       scanArn = "string",
 #'       scanConfigurationArn = "string",
+#'       status = "FAILED"|"COMPLETED"|"CANCELLED"|"IN_PROGRESS",
+#'       scanName = "string",
 #'       scanDate = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       scanName = "string",
-#'       scheduledBy = "string",
-#'       securityLevel = "LEVEL_1"|"LEVEL_2",
-#'       status = "FAILED"|"COMPLETED"|"CANCELLED"|"IN_PROGRESS",
+#'       failedChecks = 123,
+#'       totalChecks = 123,
 #'       targets = list(
 #'         accountIds = list(
 #'           "string"
@@ -3480,27 +4280,41 @@ inspector2_list_cis_scan_results_aggregated_by_target_resource <- function(filte
 #'           )
 #'         )
 #'       ),
-#'       totalChecks = 123
+#'       scheduledBy = "string",
+#'       securityLevel = "LEVEL_1"|"LEVEL_2"
 #'     )
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_cis_scans(
-#'   detailLevel = "ORGANIZATION"|"MEMBER",
 #'   filterCriteria = list(
-#'     failedChecksFilters = list(
-#'       list(
-#'         lowerInclusive = 123,
-#'         upperInclusive = 123
-#'       )
-#'     ),
-#'     scanArnFilters = list(
+#'     scanNameFilters = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'         value = "string"
+#'       )
+#'     ),
+#'     targetResourceTagFilters = list(
+#'       list(
+#'         comparison = "EQUALS",
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     targetResourceIdFilters = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     scanStatusFilters = list(
+#'       list(
+#'         comparison = "EQUALS",
+#'         value = "FAILED"|"COMPLETED"|"CANCELLED"|"IN_PROGRESS"
 #'       )
 #'     ),
 #'     scanAtFilters = list(
@@ -3519,16 +4333,10 @@ inspector2_list_cis_scan_results_aggregated_by_target_resource <- function(filte
 #'         value = "string"
 #'       )
 #'     ),
-#'     scanNameFilters = list(
+#'     scanArnFilters = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'         value = "string"
-#'       )
-#'     ),
-#'     scanStatusFilters = list(
-#'       list(
-#'         comparison = "EQUALS",
-#'         value = "FAILED"|"COMPLETED"|"CANCELLED"|"IN_PROGRESS"
 #'       )
 #'     ),
 #'     scheduledByFilters = list(
@@ -3537,30 +4345,24 @@ inspector2_list_cis_scan_results_aggregated_by_target_resource <- function(filte
 #'         value = "string"
 #'       )
 #'     ),
+#'     failedChecksFilters = list(
+#'       list(
+#'         upperInclusive = 123,
+#'         lowerInclusive = 123
+#'       )
+#'     ),
 #'     targetAccountIdFilters = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'         value = "string"
 #'       )
-#'     ),
-#'     targetResourceIdFilters = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     targetResourceTagFilters = list(
-#'       list(
-#'         comparison = "EQUALS",
-#'         key = "string",
-#'         value = "string"
-#'       )
 #'     )
 #'   ),
-#'   maxResults = 123,
-#'   nextToken = "string",
+#'   detailLevel = "ORGANIZATION"|"MEMBER",
 #'   sortBy = "STATUS"|"SCHEDULED_BY"|"SCAN_START_DATE"|"FAILED_CHECKS",
-#'   sortOrder = "ASC"|"DESC"
+#'   sortOrder = "ASC"|"DESC",
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -3569,7 +4371,7 @@ inspector2_list_cis_scan_results_aggregated_by_target_resource <- function(filte
 #' @rdname inspector2_list_cis_scans
 #'
 #' @aliases inspector2_list_cis_scans
-inspector2_list_cis_scans <- function(detailLevel = NULL, filterCriteria = NULL, maxResults = NULL, nextToken = NULL, sortBy = NULL, sortOrder = NULL) {
+inspector2_list_cis_scans <- function(filterCriteria = NULL, detailLevel = NULL, sortBy = NULL, sortOrder = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListCisScans",
     http_method = "POST",
@@ -3578,7 +4380,7 @@ inspector2_list_cis_scans <- function(detailLevel = NULL, filterCriteria = NULL,
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scans"),
     stream_api = FALSE
   )
-  input <- .inspector2$list_cis_scans_input(detailLevel = detailLevel, filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
+  input <- .inspector2$list_cis_scans_input(filterCriteria = filterCriteria, detailLevel = detailLevel, sortBy = sortBy, sortOrder = sortOrder, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector2$list_cis_scans_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -3588,16 +4390,231 @@ inspector2_list_cis_scans <- function(detailLevel = NULL, filterCriteria = NULL,
 }
 .inspector2$operations$list_cis_scans <- inspector2_list_cis_scans
 
+#' Lists all code security integrations in your account
+#'
+#' @description
+#' Lists all code security integrations in your account.
+#'
+#' @usage
+#' inspector2_list_code_security_integrations(nextToken, maxResults)
+#'
+#' @param nextToken A token to use for paginating results that are returned in the response.
+#' Set the value of this parameter to null for the first request. For
+#' subsequent calls, use the NextToken value returned from the previous
+#' request to continue listing results after the first page.
+#' @param maxResults The maximum number of results to return in a single call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   integrations = list(
+#'     list(
+#'       integrationArn = "string",
+#'       name = "string",
+#'       type = "GITLAB_SELF_MANAGED"|"GITHUB",
+#'       status = "PENDING"|"IN_PROGRESS"|"ACTIVE"|"INACTIVE"|"DISABLING",
+#'       statusReason = "string",
+#'       createdOn = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdateOn = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_code_security_integrations(
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_list_code_security_integrations
+#'
+#' @aliases inspector2_list_code_security_integrations
+inspector2_list_code_security_integrations <- function(nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListCodeSecurityIntegrations",
+    http_method = "POST",
+    http_path = "/codesecurity/integration/list",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$list_code_security_integrations_input(nextToken = nextToken, maxResults = maxResults)
+  output <- .inspector2$list_code_security_integrations_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$list_code_security_integrations <- inspector2_list_code_security_integrations
+
+#' Lists the associations between code repositories and Amazon Inspector
+#' code security scan configurations
+#'
+#' @description
+#' Lists the associations between code repositories and Amazon Inspector
+#' code security scan configurations.
+#'
+#' @usage
+#' inspector2_list_code_security_scan_configuration_associations(
+#'   scanConfigurationArn, nextToken, maxResults)
+#'
+#' @param scanConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the scan configuration to list
+#' associations for.
+#' @param nextToken A token to use for paginating results that are returned in the response.
+#' Set the value of this parameter to null for the first request to a list
+#' action. For subsequent calls, use the `NextToken` value returned from
+#' the previous request to continue listing results after the first page.
+#' @param maxResults The maximum number of results to return in the response. If your request
+#' would return more than the maximum the response will return a
+#' `nextToken` value, use this value when you call the action again to get
+#' the remaining results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   associations = list(
+#'     list(
+#'       resource = list(
+#'         projectId = "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_code_security_scan_configuration_associations(
+#'   scanConfigurationArn = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_list_code_securi_scan_config_associ
+#'
+#' @aliases inspector2_list_code_security_scan_configuration_associations
+inspector2_list_code_security_scan_configuration_associations <- function(scanConfigurationArn, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListCodeSecurityScanConfigurationAssociations",
+    http_method = "POST",
+    http_path = "/codesecurity/scan-configuration/associations/list",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$list_code_security_scan_configuration_associations_input(scanConfigurationArn = scanConfigurationArn, nextToken = nextToken, maxResults = maxResults)
+  output <- .inspector2$list_code_security_scan_configuration_associations_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$list_code_security_scan_configuration_associations <- inspector2_list_code_security_scan_configuration_associations
+
+#' Lists all code security scan configurations in your account
+#'
+#' @description
+#' Lists all code security scan configurations in your account.
+#'
+#' @usage
+#' inspector2_list_code_security_scan_configurations(nextToken, maxResults)
+#'
+#' @param nextToken A token to use for paginating results that are returned in the response.
+#' Set the value of this parameter to null for the first request. For
+#' subsequent calls, use the NextToken value returned from the previous
+#' request to continue listing results after the first page.
+#' @param maxResults The maximum number of results to return in a single call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   configurations = list(
+#'     list(
+#'       scanConfigurationArn = "string",
+#'       name = "string",
+#'       ownerAccountId = "string",
+#'       periodicScanFrequency = "WEEKLY"|"MONTHLY"|"NEVER",
+#'       frequencyExpression = "string",
+#'       continuousIntegrationScanSupportedEvents = list(
+#'         "PULL_REQUEST"|"PUSH"
+#'       ),
+#'       ruleSetCategories = list(
+#'         "SAST"|"IAC"|"SCA"
+#'       ),
+#'       scopeSettings = list(
+#'         projectSelectionScope = "ALL"
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_code_security_scan_configurations(
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_list_code_security_scan_configurations
+#'
+#' @aliases inspector2_list_code_security_scan_configurations
+inspector2_list_code_security_scan_configurations <- function(nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListCodeSecurityScanConfigurations",
+    http_method = "POST",
+    http_path = "/codesecurity/scan-configuration/list",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$list_code_security_scan_configurations_input(nextToken = nextToken, maxResults = maxResults)
+  output <- .inspector2$list_code_security_scan_configurations_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$list_code_security_scan_configurations <- inspector2_list_code_security_scan_configurations
+
 #' Lists coverage details for your environment
 #'
 #' @description
 #' Lists coverage details for your environment.
 #'
 #' @usage
-#' inspector2_list_coverage(filterCriteria, maxResults, nextToken)
+#' inspector2_list_coverage(maxResults, nextToken, filterCriteria)
 #'
-#' @param filterCriteria An object that contains details on the filters to apply to the coverage
-#' data for your environment.
 #' @param maxResults The maximum number of results the response can return. If your request
 #' would return more than the maximum the response will return a
 #' `nextToken` value, use this value when you call the action again to get
@@ -3608,128 +4625,125 @@ inspector2_list_cis_scans <- function(detailLevel = NULL, filterCriteria = NULL,
 #' value it will also return a `nextToken` value. For subsequent calls, use
 #' the `nextToken` value returned from the previous request to continue
 #' listing results after the first page.
+#' @param filterCriteria An object that contains details on the filters to apply to the coverage
+#' data for your environment.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   nextToken = "string",
 #'   coveredResources = list(
 #'     list(
-#'       accountId = "string",
-#'       lastScannedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
+#'       resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_ECR_REPOSITORY"|"AWS_LAMBDA_FUNCTION"|"CODE_REPOSITORY",
 #'       resourceId = "string",
+#'       accountId = "string",
+#'       scanType = "NETWORK"|"PACKAGE"|"CODE",
+#'       scanStatus = list(
+#'         statusCode = "ACTIVE"|"INACTIVE",
+#'         reason = "PENDING_INITIAL_SCAN"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"UNMANAGED_EC2_INSTANCE"|"UNSUPPORTED_OS"|"SCAN_ELIGIBILITY_EXPIRED"|"RESOURCE_TERMINATED"|"SUCCESSFUL"|"NO_RESOURCES_FOUND"|"IMAGE_SIZE_EXCEEDED"|"SCAN_FREQUENCY_MANUAL"|"SCAN_FREQUENCY_SCAN_ON_PUSH"|"EC2_INSTANCE_STOPPED"|"PENDING_DISABLE"|"NO_INVENTORY"|"STALE_INVENTORY"|"EXCLUDED_BY_TAG"|"UNSUPPORTED_RUNTIME"|"UNSUPPORTED_MEDIA_TYPE"|"UNSUPPORTED_CONFIG_FILE"|"DEEP_INSPECTION_PACKAGE_COLLECTION_LIMIT_EXCEEDED"|"DEEP_INSPECTION_DAILY_SSM_INVENTORY_LIMIT_EXCEEDED"|"DEEP_INSPECTION_COLLECTION_TIME_LIMIT_EXCEEDED"|"DEEP_INSPECTION_NO_INVENTORY"|"AGENTLESS_INSTANCE_STORAGE_LIMIT_EXCEEDED"|"AGENTLESS_INSTANCE_COLLECTION_TIME_LIMIT_EXCEEDED"|"PENDING_REVIVAL_SCAN"|"INTEGRATION_CONNECTION_LOST"|"ACCESS_DENIED_TO_ENCRYPTION_KEY"|"UNSUPPORTED_LANGUAGE"|"NO_SCAN_CONFIGURATION_ASSOCIATED"|"SCAN_IN_PROGRESS"|"IMAGE_ARCHIVED"|"UNSUPPORTED_CODE_ARTIFACTS"
+#'       ),
 #'       resourceMetadata = list(
-#'         ec2 = list(
-#'           amiId = "string",
-#'           platform = "WINDOWS"|"LINUX"|"UNKNOWN"|"MACOS",
-#'           tags = list(
-#'             "string"
-#'           )
-#'         ),
-#'         ecrImage = list(
-#'           imagePulledAt = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           tags = list(
-#'             "string"
-#'           )
-#'         ),
 #'         ecrRepository = list(
 #'           name = "string",
 #'           scanFrequency = "MANUAL"|"SCAN_ON_PUSH"|"CONTINUOUS_SCAN"
 #'         ),
+#'         ecrImage = list(
+#'           tags = list(
+#'             "string"
+#'           ),
+#'           imagePulledAt = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           lastInUseAt = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           inUseCount = 123
+#'         ),
+#'         ec2 = list(
+#'           tags = list(
+#'             "string"
+#'           ),
+#'           amiId = "string",
+#'           platform = "WINDOWS"|"LINUX"|"UNKNOWN"|"MACOS"
+#'         ),
 #'         lambdaFunction = list(
-#'           functionName = "string",
 #'           functionTags = list(
 #'             "string"
 #'           ),
 #'           layers = list(
 #'             "string"
 #'           ),
+#'           functionName = "string",
 #'           runtime = "NODEJS"|"NODEJS_12_X"|"NODEJS_14_X"|"NODEJS_16_X"|"JAVA_8"|"JAVA_8_AL2"|"JAVA_11"|"PYTHON_3_7"|"PYTHON_3_8"|"PYTHON_3_9"|"UNSUPPORTED"|"NODEJS_18_X"|"GO_1_X"|"JAVA_17"|"PYTHON_3_10"|"PYTHON_3_11"|"DOTNETCORE_3_1"|"DOTNET_6"|"DOTNET_7"|"RUBY_2_7"|"RUBY_3_2"
+#'         ),
+#'         codeRepository = list(
+#'           projectName = "string",
+#'           integrationArn = "string",
+#'           providerType = "string",
+#'           providerTypeVisibility = "string",
+#'           lastScannedCommitId = "string",
+#'           scanConfiguration = list(
+#'             periodicScanConfigurations = list(
+#'               list(
+#'                 frequencyExpression = "string",
+#'                 ruleSetCategories = list(
+#'                   "SAST"|"IAC"|"SCA"
+#'                 )
+#'               )
+#'             ),
+#'             continuousIntegrationScanConfigurations = list(
+#'               list(
+#'                 supportedEvent = "PULL_REQUEST"|"PUSH",
+#'                 ruleSetCategories = list(
+#'                   "SAST"|"IAC"|"SCA"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           onDemandScan = list(
+#'             lastScannedCommitId = "string",
+#'             lastScanAt = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             scanStatus = list(
+#'               statusCode = "ACTIVE"|"INACTIVE",
+#'               reason = "PENDING_INITIAL_SCAN"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"UNMANAGED_EC2_INSTANCE"|"UNSUPPORTED_OS"|"SCAN_ELIGIBILITY_EXPIRED"|"RESOURCE_TERMINATED"|"SUCCESSFUL"|"NO_RESOURCES_FOUND"|"IMAGE_SIZE_EXCEEDED"|"SCAN_FREQUENCY_MANUAL"|"SCAN_FREQUENCY_SCAN_ON_PUSH"|"EC2_INSTANCE_STOPPED"|"PENDING_DISABLE"|"NO_INVENTORY"|"STALE_INVENTORY"|"EXCLUDED_BY_TAG"|"UNSUPPORTED_RUNTIME"|"UNSUPPORTED_MEDIA_TYPE"|"UNSUPPORTED_CONFIG_FILE"|"DEEP_INSPECTION_PACKAGE_COLLECTION_LIMIT_EXCEEDED"|"DEEP_INSPECTION_DAILY_SSM_INVENTORY_LIMIT_EXCEEDED"|"DEEP_INSPECTION_COLLECTION_TIME_LIMIT_EXCEEDED"|"DEEP_INSPECTION_NO_INVENTORY"|"AGENTLESS_INSTANCE_STORAGE_LIMIT_EXCEEDED"|"AGENTLESS_INSTANCE_COLLECTION_TIME_LIMIT_EXCEEDED"|"PENDING_REVIVAL_SCAN"|"INTEGRATION_CONNECTION_LOST"|"ACCESS_DENIED_TO_ENCRYPTION_KEY"|"UNSUPPORTED_LANGUAGE"|"NO_SCAN_CONFIGURATION_ASSOCIATED"|"SCAN_IN_PROGRESS"|"IMAGE_ARCHIVED"|"UNSUPPORTED_CODE_ARTIFACTS"
+#'             )
+#'           )
 #'         )
 #'       ),
-#'       resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_ECR_REPOSITORY"|"AWS_LAMBDA_FUNCTION",
-#'       scanMode = "EC2_SSM_AGENT_BASED"|"EC2_AGENTLESS",
-#'       scanStatus = list(
-#'         reason = "PENDING_INITIAL_SCAN"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"UNMANAGED_EC2_INSTANCE"|"UNSUPPORTED_OS"|"SCAN_ELIGIBILITY_EXPIRED"|"RESOURCE_TERMINATED"|"SUCCESSFUL"|"NO_RESOURCES_FOUND"|"IMAGE_SIZE_EXCEEDED"|"SCAN_FREQUENCY_MANUAL"|"SCAN_FREQUENCY_SCAN_ON_PUSH"|"EC2_INSTANCE_STOPPED"|"PENDING_DISABLE"|"NO_INVENTORY"|"STALE_INVENTORY"|"EXCLUDED_BY_TAG"|"UNSUPPORTED_RUNTIME"|"UNSUPPORTED_MEDIA_TYPE"|"UNSUPPORTED_CONFIG_FILE"|"DEEP_INSPECTION_PACKAGE_COLLECTION_LIMIT_EXCEEDED"|"DEEP_INSPECTION_DAILY_SSM_INVENTORY_LIMIT_EXCEEDED"|"DEEP_INSPECTION_COLLECTION_TIME_LIMIT_EXCEEDED"|"DEEP_INSPECTION_NO_INVENTORY"|"AGENTLESS_INSTANCE_STORAGE_LIMIT_EXCEEDED"|"AGENTLESS_INSTANCE_COLLECTION_TIME_LIMIT_EXCEEDED",
-#'         statusCode = "ACTIVE"|"INACTIVE"
+#'       lastScannedAt = as.POSIXct(
+#'         "2015-01-01"
 #'       ),
-#'       scanType = "NETWORK"|"PACKAGE"|"CODE"
+#'       scanMode = "EC2_SSM_AGENT_BASED"|"EC2_AGENTLESS"
 #'     )
-#'   ),
-#'   nextToken = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_coverage(
+#'   maxResults = 123,
+#'   nextToken = "string",
 #'   filterCriteria = list(
+#'     scanStatusCode = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     scanStatusReason = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
 #'     accountId = list(
 #'       list(
 #'         comparison = "EQUALS"|"NOT_EQUALS",
 #'         value = "string"
-#'       )
-#'     ),
-#'     ec2InstanceTags = list(
-#'       list(
-#'         comparison = "EQUALS",
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrImageTags = list(
-#'       list(
-#'         comparison = "EQUALS"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrRepositoryName = list(
-#'       list(
-#'         comparison = "EQUALS"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     imagePulledAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     lambdaFunctionName = list(
-#'       list(
-#'         comparison = "EQUALS"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     lambdaFunctionRuntime = list(
-#'       list(
-#'         comparison = "EQUALS"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     lambdaFunctionTags = list(
-#'       list(
-#'         comparison = "EQUALS",
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     lastScannedAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
 #'       )
 #'     ),
 #'     resourceId = list(
@@ -3744,33 +4758,117 @@ inspector2_list_cis_scans <- function(detailLevel = NULL, filterCriteria = NULL,
 #'         value = "string"
 #'       )
 #'     ),
+#'     scanType = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrRepositoryName = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImageTags = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ec2InstanceTags = list(
+#'       list(
+#'         comparison = "EQUALS",
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionName = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionTags = list(
+#'       list(
+#'         comparison = "EQUALS",
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionRuntime = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lastScannedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
 #'     scanMode = list(
 #'       list(
 #'         comparison = "EQUALS"|"NOT_EQUALS",
 #'         value = "string"
 #'       )
 #'     ),
-#'     scanStatusCode = list(
+#'     imagePulledAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     ecrImageLastInUseAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     ecrImageInUseCount = list(
+#'       list(
+#'         upperInclusive = 123,
+#'         lowerInclusive = 123
+#'       )
+#'     ),
+#'     codeRepositoryProjectName = list(
 #'       list(
 #'         comparison = "EQUALS"|"NOT_EQUALS",
 #'         value = "string"
 #'       )
 #'     ),
-#'     scanStatusReason = list(
+#'     codeRepositoryProviderType = list(
 #'       list(
 #'         comparison = "EQUALS"|"NOT_EQUALS",
 #'         value = "string"
 #'       )
 #'     ),
-#'     scanType = list(
+#'     codeRepositoryProviderTypeVisibility = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lastScannedCommitId = list(
 #'       list(
 #'         comparison = "EQUALS"|"NOT_EQUALS",
 #'         value = "string"
 #'       )
 #'     )
-#'   ),
-#'   maxResults = 123,
-#'   nextToken = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -3779,7 +4877,7 @@ inspector2_list_cis_scans <- function(detailLevel = NULL, filterCriteria = NULL,
 #' @rdname inspector2_list_coverage
 #'
 #' @aliases inspector2_list_coverage
-inspector2_list_coverage <- function(filterCriteria = NULL, maxResults = NULL, nextToken = NULL) {
+inspector2_list_coverage <- function(maxResults = NULL, nextToken = NULL, filterCriteria = NULL) {
   op <- new_operation(
     name = "ListCoverage",
     http_method = "POST",
@@ -3788,7 +4886,7 @@ inspector2_list_coverage <- function(filterCriteria = NULL, maxResults = NULL, n
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "coveredResources"),
     stream_api = FALSE
   )
-  input <- .inspector2$list_coverage_input(filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken)
+  input <- .inspector2$list_coverage_input(maxResults = maxResults, nextToken = nextToken, filterCriteria = filterCriteria)
   output <- .inspector2$list_coverage_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -3824,8 +4922,8 @@ inspector2_list_coverage <- function(filterCriteria = NULL, maxResults = NULL, n
 #'       groupKey = "SCAN_STATUS_CODE"|"SCAN_STATUS_REASON"|"ACCOUNT_ID"|"RESOURCE_TYPE"|"ECR_REPOSITORY_NAME"
 #'     )
 #'   ),
-#'   nextToken = "string",
-#'   totalCounts = 123
+#'   totalCounts = 123,
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -3833,68 +4931,22 @@ inspector2_list_coverage <- function(filterCriteria = NULL, maxResults = NULL, n
 #' ```
 #' svc$list_coverage_statistics(
 #'   filterCriteria = list(
+#'     scanStatusCode = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     scanStatusReason = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
 #'     accountId = list(
 #'       list(
 #'         comparison = "EQUALS"|"NOT_EQUALS",
 #'         value = "string"
-#'       )
-#'     ),
-#'     ec2InstanceTags = list(
-#'       list(
-#'         comparison = "EQUALS",
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrImageTags = list(
-#'       list(
-#'         comparison = "EQUALS"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrRepositoryName = list(
-#'       list(
-#'         comparison = "EQUALS"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     imagePulledAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     lambdaFunctionName = list(
-#'       list(
-#'         comparison = "EQUALS"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     lambdaFunctionRuntime = list(
-#'       list(
-#'         comparison = "EQUALS"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     lambdaFunctionTags = list(
-#'       list(
-#'         comparison = "EQUALS",
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     lastScannedAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
 #'       )
 #'     ),
 #'     resourceId = list(
@@ -3909,25 +4961,111 @@ inspector2_list_coverage <- function(filterCriteria = NULL, maxResults = NULL, n
 #'         value = "string"
 #'       )
 #'     ),
+#'     scanType = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrRepositoryName = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImageTags = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ec2InstanceTags = list(
+#'       list(
+#'         comparison = "EQUALS",
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionName = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionTags = list(
+#'       list(
+#'         comparison = "EQUALS",
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionRuntime = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lastScannedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
 #'     scanMode = list(
 #'       list(
 #'         comparison = "EQUALS"|"NOT_EQUALS",
 #'         value = "string"
 #'       )
 #'     ),
-#'     scanStatusCode = list(
+#'     imagePulledAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     ecrImageLastInUseAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     ecrImageInUseCount = list(
+#'       list(
+#'         upperInclusive = 123,
+#'         lowerInclusive = 123
+#'       )
+#'     ),
+#'     codeRepositoryProjectName = list(
 #'       list(
 #'         comparison = "EQUALS"|"NOT_EQUALS",
 #'         value = "string"
 #'       )
 #'     ),
-#'     scanStatusReason = list(
+#'     codeRepositoryProviderType = list(
 #'       list(
 #'         comparison = "EQUALS"|"NOT_EQUALS",
 #'         value = "string"
 #'       )
 #'     ),
-#'     scanType = list(
+#'     codeRepositoryProviderTypeVisibility = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lastScannedCommitId = list(
 #'       list(
 #'         comparison = "EQUALS"|"NOT_EQUALS",
 #'         value = "string"
@@ -4036,20 +5174,20 @@ inspector2_list_delegated_admin_accounts <- function(maxResults = NULL, nextToke
 #' Lists the filters associated with your account.
 #'
 #' @usage
-#' inspector2_list_filters(action, arns, maxResults, nextToken)
+#' inspector2_list_filters(arns, action, nextToken, maxResults)
 #'
-#' @param action The action the filter applies to matched findings.
 #' @param arns The Amazon resource number (ARN) of the filter.
-#' @param maxResults The maximum number of results the response can return. If your request
-#' would return more than the maximum the response will return a
-#' `nextToken` value, use this value when you call the action again to get
-#' the remaining results.
+#' @param action The action the filter applies to matched findings.
 #' @param nextToken A token to use for paginating results that are returned in the response.
 #' Set the value of this parameter to null for the first request to a list
 #' action. If your response returns more than the `maxResults` maximum
 #' value it will also return a `nextToken` value. For subsequent calls, use
 #' the `nextToken` value returned from the previous request to continue
 #' listing results after the first page.
+#' @param maxResults The maximum number of results the response can return. If your request
+#' would return more than the maximum the response will return a
+#' `nextToken` value, use this value when you call the action again to get
+#' the remaining results.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4057,13 +5195,300 @@ inspector2_list_delegated_admin_accounts <- function(maxResults = NULL, nextToke
 #' list(
 #'   filters = list(
 #'     list(
-#'       action = "NONE"|"SUPPRESS",
 #'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
+#'       ownerId = "string",
+#'       name = "string",
 #'       criteria = list(
+#'         findingArn = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
 #'         awsAccountId = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         findingType = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         severity = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         firstObservedAt = list(
+#'           list(
+#'             startInclusive = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             endInclusive = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         lastObservedAt = list(
+#'           list(
+#'             startInclusive = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             endInclusive = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         updatedAt = list(
+#'           list(
+#'             startInclusive = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             endInclusive = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         findingStatus = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         title = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         inspectorScore = list(
+#'           list(
+#'             upperInclusive = 123.0,
+#'             lowerInclusive = 123.0
+#'           )
+#'         ),
+#'         resourceType = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         resourceId = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         resourceTags = list(
+#'           list(
+#'             comparison = "EQUALS",
+#'             key = "string",
+#'             value = "string"
+#'           )
+#'         ),
+#'         ec2InstanceImageId = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         ec2InstanceVpcId = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         ec2InstanceSubnetId = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         ecrImagePushedAt = list(
+#'           list(
+#'             startInclusive = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             endInclusive = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         ecrImageArchitecture = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         ecrImageRegistry = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         ecrImageRepositoryName = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         ecrImageTags = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         ecrImageHash = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         ecrImageLastInUseAt = list(
+#'           list(
+#'             startInclusive = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             endInclusive = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         ecrImageInUseCount = list(
+#'           list(
+#'             upperInclusive = 123.0,
+#'             lowerInclusive = 123.0
+#'           )
+#'         ),
+#'         portRange = list(
+#'           list(
+#'             beginInclusive = 123,
+#'             endInclusive = 123
+#'           )
+#'         ),
+#'         networkProtocol = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         componentId = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         componentType = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         vulnerabilityId = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         vulnerabilitySource = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         vendorSeverity = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         vulnerablePackages = list(
+#'           list(
+#'             name = list(
+#'               comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'               value = "string"
+#'             ),
+#'             version = list(
+#'               comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'               value = "string"
+#'             ),
+#'             epoch = list(
+#'               upperInclusive = 123.0,
+#'               lowerInclusive = 123.0
+#'             ),
+#'             release = list(
+#'               comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'               value = "string"
+#'             ),
+#'             architecture = list(
+#'               comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'               value = "string"
+#'             ),
+#'             sourceLayerHash = list(
+#'               comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'               value = "string"
+#'             ),
+#'             sourceLambdaLayerArn = list(
+#'               comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'               value = "string"
+#'             ),
+#'             filePath = list(
+#'               comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'               value = "string"
+#'             )
+#'           )
+#'         ),
+#'         relatedVulnerabilities = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         fixAvailable = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         lambdaFunctionName = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         lambdaFunctionLayers = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         lambdaFunctionRuntime = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         lambdaFunctionLastModifiedAt = list(
+#'           list(
+#'             startInclusive = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             endInclusive = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         lambdaFunctionExecutionRoleArn = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         exploitAvailable = list(
 #'           list(
 #'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'             value = "string"
@@ -4087,295 +5512,36 @@ inspector2_list_delegated_admin_accounts <- function(maxResults = NULL, nextToke
 #'             value = "string"
 #'           )
 #'         ),
-#'         componentId = list(
-#'           list(
-#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'             value = "string"
-#'           )
-#'         ),
-#'         componentType = list(
-#'           list(
-#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'             value = "string"
-#'           )
-#'         ),
-#'         ec2InstanceImageId = list(
-#'           list(
-#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'             value = "string"
-#'           )
-#'         ),
-#'         ec2InstanceSubnetId = list(
-#'           list(
-#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'             value = "string"
-#'           )
-#'         ),
-#'         ec2InstanceVpcId = list(
-#'           list(
-#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'             value = "string"
-#'           )
-#'         ),
-#'         ecrImageArchitecture = list(
-#'           list(
-#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'             value = "string"
-#'           )
-#'         ),
-#'         ecrImageHash = list(
-#'           list(
-#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'             value = "string"
-#'           )
-#'         ),
-#'         ecrImagePushedAt = list(
-#'           list(
-#'             endInclusive = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
-#'             startInclusive = as.POSIXct(
-#'               "2015-01-01"
-#'             )
-#'           )
-#'         ),
-#'         ecrImageRegistry = list(
-#'           list(
-#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'             value = "string"
-#'           )
-#'         ),
-#'         ecrImageRepositoryName = list(
-#'           list(
-#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'             value = "string"
-#'           )
-#'         ),
-#'         ecrImageTags = list(
-#'           list(
-#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'             value = "string"
-#'           )
-#'         ),
 #'         epssScore = list(
 #'           list(
-#'             lowerInclusive = 123.0,
-#'             upperInclusive = 123.0
+#'             upperInclusive = 123.0,
+#'             lowerInclusive = 123.0
 #'           )
 #'         ),
-#'         exploitAvailable = list(
+#'         codeRepositoryProjectName = list(
 #'           list(
 #'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'             value = "string"
 #'           )
 #'         ),
-#'         findingArn = list(
+#'         codeRepositoryProviderType = list(
 #'           list(
 #'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'             value = "string"
-#'           )
-#'         ),
-#'         findingStatus = list(
-#'           list(
-#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'             value = "string"
-#'           )
-#'         ),
-#'         findingType = list(
-#'           list(
-#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'             value = "string"
-#'           )
-#'         ),
-#'         firstObservedAt = list(
-#'           list(
-#'             endInclusive = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
-#'             startInclusive = as.POSIXct(
-#'               "2015-01-01"
-#'             )
-#'           )
-#'         ),
-#'         fixAvailable = list(
-#'           list(
-#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'             value = "string"
-#'           )
-#'         ),
-#'         inspectorScore = list(
-#'           list(
-#'             lowerInclusive = 123.0,
-#'             upperInclusive = 123.0
-#'           )
-#'         ),
-#'         lambdaFunctionExecutionRoleArn = list(
-#'           list(
-#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'             value = "string"
-#'           )
-#'         ),
-#'         lambdaFunctionLastModifiedAt = list(
-#'           list(
-#'             endInclusive = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
-#'             startInclusive = as.POSIXct(
-#'               "2015-01-01"
-#'             )
-#'           )
-#'         ),
-#'         lambdaFunctionLayers = list(
-#'           list(
-#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'             value = "string"
-#'           )
-#'         ),
-#'         lambdaFunctionName = list(
-#'           list(
-#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'             value = "string"
-#'           )
-#'         ),
-#'         lambdaFunctionRuntime = list(
-#'           list(
-#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'             value = "string"
-#'           )
-#'         ),
-#'         lastObservedAt = list(
-#'           list(
-#'             endInclusive = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
-#'             startInclusive = as.POSIXct(
-#'               "2015-01-01"
-#'             )
-#'           )
-#'         ),
-#'         networkProtocol = list(
-#'           list(
-#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'             value = "string"
-#'           )
-#'         ),
-#'         portRange = list(
-#'           list(
-#'             beginInclusive = 123,
-#'             endInclusive = 123
-#'           )
-#'         ),
-#'         relatedVulnerabilities = list(
-#'           list(
-#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'             value = "string"
-#'           )
-#'         ),
-#'         resourceId = list(
-#'           list(
-#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'             value = "string"
-#'           )
-#'         ),
-#'         resourceTags = list(
-#'           list(
-#'             comparison = "EQUALS",
-#'             key = "string",
-#'             value = "string"
-#'           )
-#'         ),
-#'         resourceType = list(
-#'           list(
-#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'             value = "string"
-#'           )
-#'         ),
-#'         severity = list(
-#'           list(
-#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'             value = "string"
-#'           )
-#'         ),
-#'         title = list(
-#'           list(
-#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'             value = "string"
-#'           )
-#'         ),
-#'         updatedAt = list(
-#'           list(
-#'             endInclusive = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
-#'             startInclusive = as.POSIXct(
-#'               "2015-01-01"
-#'             )
-#'           )
-#'         ),
-#'         vendorSeverity = list(
-#'           list(
-#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'             value = "string"
-#'           )
-#'         ),
-#'         vulnerabilityId = list(
-#'           list(
-#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'             value = "string"
-#'           )
-#'         ),
-#'         vulnerabilitySource = list(
-#'           list(
-#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'             value = "string"
-#'           )
-#'         ),
-#'         vulnerablePackages = list(
-#'           list(
-#'             architecture = list(
-#'               comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'               value = "string"
-#'             ),
-#'             epoch = list(
-#'               lowerInclusive = 123.0,
-#'               upperInclusive = 123.0
-#'             ),
-#'             filePath = list(
-#'               comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'               value = "string"
-#'             ),
-#'             name = list(
-#'               comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'               value = "string"
-#'             ),
-#'             release = list(
-#'               comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'               value = "string"
-#'             ),
-#'             sourceLambdaLayerArn = list(
-#'               comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'               value = "string"
-#'             ),
-#'             sourceLayerHash = list(
-#'               comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'               value = "string"
-#'             ),
-#'             version = list(
-#'               comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'               value = "string"
-#'             )
 #'           )
 #'         )
 #'       ),
-#'       description = "string",
-#'       name = "string",
-#'       ownerId = "string",
-#'       reason = "string",
-#'       tags = list(
-#'         "string"
+#'       action = "NONE"|"SUPPRESS",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
 #'       ),
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       description = "string",
+#'       reason = "string",
+#'       tags = list(
+#'         "string"
 #'       )
 #'     )
 #'   ),
@@ -4386,12 +5552,12 @@ inspector2_list_delegated_admin_accounts <- function(maxResults = NULL, nextToke
 #' @section Request syntax:
 #' ```
 #' svc$list_filters(
-#'   action = "NONE"|"SUPPRESS",
 #'   arns = list(
 #'     "string"
 #'   ),
-#'   maxResults = 123,
-#'   nextToken = "string"
+#'   action = "NONE"|"SUPPRESS",
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -4400,7 +5566,7 @@ inspector2_list_delegated_admin_accounts <- function(maxResults = NULL, nextToke
 #' @rdname inspector2_list_filters
 #'
 #' @aliases inspector2_list_filters
-inspector2_list_filters <- function(action = NULL, arns = NULL, maxResults = NULL, nextToken = NULL) {
+inspector2_list_filters <- function(arns = NULL, action = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListFilters",
     http_method = "POST",
@@ -4409,7 +5575,7 @@ inspector2_list_filters <- function(action = NULL, arns = NULL, maxResults = NUL
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "filters"),
     stream_api = FALSE
   )
-  input <- .inspector2$list_filters_input(action = action, arns = arns, maxResults = maxResults, nextToken = nextToken)
+  input <- .inspector2$list_filters_input(arns = arns, action = action, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector2$list_filters_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -4427,180 +5593,201 @@ inspector2_list_filters <- function(action = NULL, arns = NULL, maxResults = NUL
 #' criteria.
 #'
 #' @usage
-#' inspector2_list_finding_aggregations(accountIds, aggregationRequest,
-#'   aggregationType, maxResults, nextToken)
+#' inspector2_list_finding_aggregations(aggregationType, nextToken,
+#'   maxResults, accountIds, aggregationRequest)
 #'
-#' @param accountIds The Amazon Web Services account IDs to retrieve finding aggregation data
-#' for.
-#' @param aggregationRequest Details of the aggregation request that is used to filter your
-#' aggregation results.
 #' @param aggregationType &#91;required&#93; The type of the aggregation request.
-#' @param maxResults The maximum number of results the response can return. If your request
-#' would return more than the maximum the response will return a
-#' `nextToken` value, use this value when you call the action again to get
-#' the remaining results.
 #' @param nextToken A token to use for paginating results that are returned in the response.
 #' Set the value of this parameter to null for the first request to a list
 #' action. If your response returns more than the `maxResults` maximum
 #' value it will also return a `nextToken` value. For subsequent calls, use
 #' the `nextToken` value returned from the previous request to continue
 #' listing results after the first page.
+#' @param maxResults The maximum number of results the response can return. If your request
+#' would return more than the maximum the response will return a
+#' `nextToken` value, use this value when you call the action again to get
+#' the remaining results.
+#' @param accountIds The Amazon Web Services account IDs to retrieve finding aggregation data
+#' for.
+#' @param aggregationRequest Details of the aggregation request that is used to filter your
+#' aggregation results.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   aggregationType = "FINDING_TYPE"|"PACKAGE"|"TITLE"|"REPOSITORY"|"AMI"|"AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER"|"IMAGE_LAYER"|"ACCOUNT"|"AWS_LAMBDA_FUNCTION"|"LAMBDA_LAYER",
-#'   nextToken = "string",
+#'   aggregationType = "FINDING_TYPE"|"PACKAGE"|"TITLE"|"REPOSITORY"|"AMI"|"AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER"|"IMAGE_LAYER"|"ACCOUNT"|"AWS_LAMBDA_FUNCTION"|"LAMBDA_LAYER"|"CODE_REPOSITORY",
 #'   responses = list(
 #'     list(
 #'       accountAggregation = list(
 #'         accountId = "string",
-#'         exploitAvailableCount = 123,
-#'         fixAvailableCount = 123,
 #'         severityCounts = list(
 #'           all = 123,
-#'           critical = 123,
+#'           medium = 123,
 #'           high = 123,
-#'           medium = 123
-#'         )
+#'           critical = 123
+#'         ),
+#'         exploitAvailableCount = 123,
+#'         fixAvailableCount = 123
 #'       ),
 #'       amiAggregation = list(
-#'         accountId = "string",
-#'         affectedInstances = 123,
 #'         ami = "string",
+#'         accountId = "string",
 #'         severityCounts = list(
 #'           all = 123,
-#'           critical = 123,
+#'           medium = 123,
 #'           high = 123,
-#'           medium = 123
-#'         )
+#'           critical = 123
+#'         ),
+#'         affectedInstances = 123
 #'       ),
 #'       awsEcrContainerAggregation = list(
-#'         accountId = "string",
-#'         architecture = "string",
+#'         resourceId = "string",
 #'         imageSha = "string",
+#'         repository = "string",
+#'         architecture = "string",
 #'         imageTags = list(
 #'           "string"
 #'         ),
-#'         repository = "string",
-#'         resourceId = "string",
+#'         accountId = "string",
 #'         severityCounts = list(
 #'           all = 123,
-#'           critical = 123,
+#'           medium = 123,
 #'           high = 123,
-#'           medium = 123
-#'         )
+#'           critical = 123
+#'         ),
+#'         lastInUseAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         inUseCount = 123
 #'       ),
 #'       ec2InstanceAggregation = list(
-#'         accountId = "string",
-#'         ami = "string",
 #'         instanceId = "string",
+#'         ami = "string",
+#'         operatingSystem = "string",
 #'         instanceTags = list(
 #'           "string"
 #'         ),
-#'         networkFindings = 123,
-#'         operatingSystem = "string",
+#'         accountId = "string",
 #'         severityCounts = list(
 #'           all = 123,
-#'           critical = 123,
+#'           medium = 123,
 #'           high = 123,
-#'           medium = 123
-#'         )
+#'           critical = 123
+#'         ),
+#'         networkFindings = 123
 #'       ),
 #'       findingTypeAggregation = list(
 #'         accountId = "string",
-#'         exploitAvailableCount = 123,
-#'         fixAvailableCount = 123,
 #'         severityCounts = list(
 #'           all = 123,
-#'           critical = 123,
+#'           medium = 123,
 #'           high = 123,
-#'           medium = 123
-#'         )
+#'           critical = 123
+#'         ),
+#'         exploitAvailableCount = 123,
+#'         fixAvailableCount = 123
 #'       ),
 #'       imageLayerAggregation = list(
-#'         accountId = "string",
-#'         layerHash = "string",
 #'         repository = "string",
 #'         resourceId = "string",
-#'         severityCounts = list(
-#'           all = 123,
-#'           critical = 123,
-#'           high = 123,
-#'           medium = 123
-#'         )
-#'       ),
-#'       lambdaFunctionAggregation = list(
+#'         layerHash = "string",
 #'         accountId = "string",
-#'         functionName = "string",
-#'         lambdaTags = list(
-#'           "string"
-#'         ),
-#'         lastModifiedAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         resourceId = "string",
-#'         runtime = "string",
 #'         severityCounts = list(
 #'           all = 123,
-#'           critical = 123,
+#'           medium = 123,
 #'           high = 123,
-#'           medium = 123
-#'         )
-#'       ),
-#'       lambdaLayerAggregation = list(
-#'         accountId = "string",
-#'         functionName = "string",
-#'         layerArn = "string",
-#'         resourceId = "string",
-#'         severityCounts = list(
-#'           all = 123,
-#'           critical = 123,
-#'           high = 123,
-#'           medium = 123
+#'           critical = 123
 #'         )
 #'       ),
 #'       packageAggregation = list(
-#'         accountId = "string",
 #'         packageName = "string",
+#'         accountId = "string",
 #'         severityCounts = list(
 #'           all = 123,
-#'           critical = 123,
+#'           medium = 123,
 #'           high = 123,
-#'           medium = 123
+#'           critical = 123
 #'         )
 #'       ),
 #'       repositoryAggregation = list(
-#'         accountId = "string",
-#'         affectedImages = 123,
 #'         repository = "string",
+#'         accountId = "string",
 #'         severityCounts = list(
 #'           all = 123,
-#'           critical = 123,
+#'           medium = 123,
 #'           high = 123,
-#'           medium = 123
-#'         )
+#'           critical = 123
+#'         ),
+#'         affectedImages = 123
 #'       ),
 #'       titleAggregation = list(
+#'         title = "string",
+#'         vulnerabilityId = "string",
 #'         accountId = "string",
 #'         severityCounts = list(
 #'           all = 123,
-#'           critical = 123,
+#'           medium = 123,
 #'           high = 123,
-#'           medium = 123
+#'           critical = 123
+#'         )
+#'       ),
+#'       lambdaLayerAggregation = list(
+#'         functionName = "string",
+#'         resourceId = "string",
+#'         layerArn = "string",
+#'         accountId = "string",
+#'         severityCounts = list(
+#'           all = 123,
+#'           medium = 123,
+#'           high = 123,
+#'           critical = 123
+#'         )
+#'       ),
+#'       lambdaFunctionAggregation = list(
+#'         resourceId = "string",
+#'         functionName = "string",
+#'         runtime = "string",
+#'         lambdaTags = list(
+#'           "string"
 #'         ),
-#'         title = "string",
-#'         vulnerabilityId = "string"
+#'         accountId = "string",
+#'         severityCounts = list(
+#'           all = 123,
+#'           medium = 123,
+#'           high = 123,
+#'           critical = 123
+#'         ),
+#'         lastModifiedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       codeRepositoryAggregation = list(
+#'         projectNames = "string",
+#'         providerType = "string",
+#'         severityCounts = list(
+#'           all = 123,
+#'           medium = 123,
+#'           high = 123,
+#'           critical = 123
+#'         ),
+#'         exploitAvailableActiveFindingsCount = 123,
+#'         fixAvailableActiveFindingsCount = 123,
+#'         accountId = "string",
+#'         resourceId = "string"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_finding_aggregations(
+#'   aggregationType = "FINDING_TYPE"|"PACKAGE"|"TITLE"|"REPOSITORY"|"AMI"|"AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER"|"IMAGE_LAYER"|"ACCOUNT"|"AWS_LAMBDA_FUNCTION"|"LAMBDA_LAYER"|"CODE_REPOSITORY",
+#'   nextToken = "string",
+#'   maxResults = 123,
 #'   accountIds = list(
 #'     list(
 #'       comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
@@ -4610,9 +5797,9 @@ inspector2_list_filters <- function(action = NULL, arns = NULL, maxResults = NUL
 #'   aggregationRequest = list(
 #'     accountAggregation = list(
 #'       findingType = "NETWORK_REACHABILITY"|"PACKAGE_VULNERABILITY"|"CODE_VULNERABILITY",
-#'       resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_LAMBDA_FUNCTION",
-#'       sortBy = "CRITICAL"|"HIGH"|"ALL",
-#'       sortOrder = "ASC"|"DESC"
+#'       resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_LAMBDA_FUNCTION"|"CODE_REPOSITORY",
+#'       sortOrder = "ASC"|"DESC",
+#'       sortBy = "CRITICAL"|"HIGH"|"ALL"
 #'     ),
 #'     amiAggregation = list(
 #'       amis = list(
@@ -4621,11 +5808,11 @@ inspector2_list_filters <- function(action = NULL, arns = NULL, maxResults = NUL
 #'           value = "string"
 #'         )
 #'       ),
-#'       sortBy = "CRITICAL"|"HIGH"|"ALL"|"AFFECTED_INSTANCES",
-#'       sortOrder = "ASC"|"DESC"
+#'       sortOrder = "ASC"|"DESC",
+#'       sortBy = "CRITICAL"|"HIGH"|"ALL"|"AFFECTED_INSTANCES"
 #'     ),
 #'     awsEcrContainerAggregation = list(
-#'       architectures = list(
+#'       resourceIds = list(
 #'         list(
 #'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'           value = "string"
@@ -4637,29 +5824,51 @@ inspector2_list_filters <- function(action = NULL, arns = NULL, maxResults = NUL
 #'           value = "string"
 #'         )
 #'       ),
-#'       imageTags = list(
-#'         list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         )
-#'       ),
 #'       repositories = list(
 #'         list(
 #'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'           value = "string"
 #'         )
 #'       ),
-#'       resourceIds = list(
+#'       architectures = list(
 #'         list(
 #'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'           value = "string"
 #'         )
 #'       ),
+#'       imageTags = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       sortOrder = "ASC"|"DESC",
 #'       sortBy = "CRITICAL"|"HIGH"|"ALL",
-#'       sortOrder = "ASC"|"DESC"
+#'       lastInUseAt = list(
+#'         list(
+#'           startInclusive = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           endInclusive = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       inUseCount = list(
+#'         list(
+#'           upperInclusive = 123.0,
+#'           lowerInclusive = 123.0
+#'         )
+#'       )
 #'     ),
 #'     ec2InstanceAggregation = list(
 #'       amis = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       operatingSystems = list(
 #'         list(
 #'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'           value = "string"
@@ -4678,28 +5887,16 @@ inspector2_list_filters <- function(action = NULL, arns = NULL, maxResults = NUL
 #'           value = "string"
 #'         )
 #'       ),
-#'       operatingSystems = list(
-#'         list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         )
-#'       ),
-#'       sortBy = "NETWORK_FINDINGS"|"CRITICAL"|"HIGH"|"ALL",
-#'       sortOrder = "ASC"|"DESC"
+#'       sortOrder = "ASC"|"DESC",
+#'       sortBy = "NETWORK_FINDINGS"|"CRITICAL"|"HIGH"|"ALL"
 #'     ),
 #'     findingTypeAggregation = list(
 #'       findingType = "NETWORK_REACHABILITY"|"PACKAGE_VULNERABILITY"|"CODE_VULNERABILITY",
-#'       resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_LAMBDA_FUNCTION",
-#'       sortBy = "CRITICAL"|"HIGH"|"ALL",
-#'       sortOrder = "ASC"|"DESC"
+#'       resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_LAMBDA_FUNCTION"|"CODE_REPOSITORY",
+#'       sortOrder = "ASC"|"DESC",
+#'       sortBy = "CRITICAL"|"HIGH"|"ALL"
 #'     ),
 #'     imageLayerAggregation = list(
-#'       layerHashes = list(
-#'         list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         )
-#'       ),
 #'       repositories = list(
 #'         list(
 #'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
@@ -4712,11 +5909,89 @@ inspector2_list_filters <- function(action = NULL, arns = NULL, maxResults = NUL
 #'           value = "string"
 #'         )
 #'       ),
+#'       layerHashes = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       sortOrder = "ASC"|"DESC",
+#'       sortBy = "CRITICAL"|"HIGH"|"ALL"
+#'     ),
+#'     packageAggregation = list(
+#'       packageNames = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       sortOrder = "ASC"|"DESC",
+#'       sortBy = "CRITICAL"|"HIGH"|"ALL"
+#'     ),
+#'     repositoryAggregation = list(
+#'       repositories = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       sortOrder = "ASC"|"DESC",
+#'       sortBy = "CRITICAL"|"HIGH"|"ALL"|"AFFECTED_IMAGES"
+#'     ),
+#'     titleAggregation = list(
+#'       titles = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       vulnerabilityIds = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_LAMBDA_FUNCTION"|"CODE_REPOSITORY",
+#'       sortOrder = "ASC"|"DESC",
 #'       sortBy = "CRITICAL"|"HIGH"|"ALL",
-#'       sortOrder = "ASC"|"DESC"
+#'       findingType = "NETWORK_REACHABILITY"|"PACKAGE_VULNERABILITY"|"CODE_VULNERABILITY"
+#'     ),
+#'     lambdaLayerAggregation = list(
+#'       functionNames = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       resourceIds = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       layerArns = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       sortOrder = "ASC"|"DESC",
+#'       sortBy = "CRITICAL"|"HIGH"|"ALL"
 #'     ),
 #'     lambdaFunctionAggregation = list(
+#'       resourceIds = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
 #'       functionNames = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       runtimes = list(
 #'         list(
 #'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'           value = "string"
@@ -4729,85 +6004,32 @@ inspector2_list_filters <- function(action = NULL, arns = NULL, maxResults = NUL
 #'           value = "string"
 #'         )
 #'       ),
-#'       resourceIds = list(
-#'         list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         )
-#'       ),
-#'       runtimes = list(
-#'         list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         )
-#'       ),
-#'       sortBy = "CRITICAL"|"HIGH"|"ALL",
-#'       sortOrder = "ASC"|"DESC"
-#'     ),
-#'     lambdaLayerAggregation = list(
-#'       functionNames = list(
-#'         list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         )
-#'       ),
-#'       layerArns = list(
-#'         list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         )
-#'       ),
-#'       resourceIds = list(
-#'         list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         )
-#'       ),
-#'       sortBy = "CRITICAL"|"HIGH"|"ALL",
-#'       sortOrder = "ASC"|"DESC"
-#'     ),
-#'     packageAggregation = list(
-#'       packageNames = list(
-#'         list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         )
-#'       ),
-#'       sortBy = "CRITICAL"|"HIGH"|"ALL",
-#'       sortOrder = "ASC"|"DESC"
-#'     ),
-#'     repositoryAggregation = list(
-#'       repositories = list(
-#'         list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         )
-#'       ),
-#'       sortBy = "CRITICAL"|"HIGH"|"ALL"|"AFFECTED_IMAGES",
-#'       sortOrder = "ASC"|"DESC"
-#'     ),
-#'     titleAggregation = list(
-#'       findingType = "NETWORK_REACHABILITY"|"PACKAGE_VULNERABILITY"|"CODE_VULNERABILITY",
-#'       resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_LAMBDA_FUNCTION",
-#'       sortBy = "CRITICAL"|"HIGH"|"ALL",
 #'       sortOrder = "ASC"|"DESC",
-#'       titles = list(
+#'       sortBy = "CRITICAL"|"HIGH"|"ALL"
+#'     ),
+#'     codeRepositoryAggregation = list(
+#'       projectNames = list(
 #'         list(
 #'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'           value = "string"
 #'         )
 #'       ),
-#'       vulnerabilityIds = list(
+#'       providerTypes = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       sortOrder = "ASC"|"DESC",
+#'       sortBy = "CRITICAL"|"HIGH"|"ALL",
+#'       resourceIds = list(
 #'         list(
 #'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'           value = "string"
 #'         )
 #'       )
 #'     )
-#'   ),
-#'   aggregationType = "FINDING_TYPE"|"PACKAGE"|"TITLE"|"REPOSITORY"|"AMI"|"AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER"|"IMAGE_LAYER"|"ACCOUNT"|"AWS_LAMBDA_FUNCTION"|"LAMBDA_LAYER",
-#'   maxResults = 123,
-#'   nextToken = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -4816,7 +6038,7 @@ inspector2_list_filters <- function(action = NULL, arns = NULL, maxResults = NUL
 #' @rdname inspector2_list_finding_aggregations
 #'
 #' @aliases inspector2_list_finding_aggregations
-inspector2_list_finding_aggregations <- function(accountIds = NULL, aggregationRequest = NULL, aggregationType, maxResults = NULL, nextToken = NULL) {
+inspector2_list_finding_aggregations <- function(aggregationType, nextToken = NULL, maxResults = NULL, accountIds = NULL, aggregationRequest = NULL) {
   op <- new_operation(
     name = "ListFindingAggregations",
     http_method = "POST",
@@ -4825,7 +6047,7 @@ inspector2_list_finding_aggregations <- function(accountIds = NULL, aggregationR
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "responses"),
     stream_api = FALSE
   )
-  input <- .inspector2$list_finding_aggregations_input(accountIds = accountIds, aggregationRequest = aggregationRequest, aggregationType = aggregationType, maxResults = maxResults, nextToken = nextToken)
+  input <- .inspector2$list_finding_aggregations_input(aggregationType = aggregationType, nextToken = nextToken, maxResults = maxResults, accountIds = accountIds, aggregationRequest = aggregationRequest)
   output <- .inspector2$list_finding_aggregations_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -4841,10 +6063,9 @@ inspector2_list_finding_aggregations <- function(accountIds = NULL, aggregationR
 #' Lists findings for your environment.
 #'
 #' @usage
-#' inspector2_list_findings(filterCriteria, maxResults, nextToken,
+#' inspector2_list_findings(maxResults, nextToken, filterCriteria,
 #'   sortCriteria)
 #'
-#' @param filterCriteria Details on the filters to apply to your finding results.
 #' @param maxResults The maximum number of results the response can return. If your request
 #' would return more than the maximum the response will return a
 #' `nextToken` value, use this value when you call the action again to get
@@ -4855,138 +6076,50 @@ inspector2_list_finding_aggregations <- function(accountIds = NULL, aggregationR
 #' value it will also return a `nextToken` value. For subsequent calls, use
 #' the `nextToken` value returned from the previous request to continue
 #' listing results after the first page.
+#' @param filterCriteria Details on the filters to apply to your finding results.
 #' @param sortCriteria Details on the sort criteria to apply to your finding results.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   nextToken = "string",
 #'   findings = list(
 #'     list(
+#'       findingArn = "string",
 #'       awsAccountId = "string",
-#'       codeVulnerabilityDetails = list(
-#'         cwes = list(
-#'           "string"
-#'         ),
-#'         detectorId = "string",
-#'         detectorName = "string",
-#'         detectorTags = list(
-#'           "string"
-#'         ),
-#'         filePath = list(
-#'           endLine = 123,
-#'           fileName = "string",
-#'           filePath = "string",
-#'           startLine = 123
-#'         ),
-#'         referenceUrls = list(
-#'           "string"
-#'         ),
-#'         ruleId = "string",
-#'         sourceLambdaLayerArn = "string"
-#'       ),
+#'       type = "NETWORK_REACHABILITY"|"PACKAGE_VULNERABILITY"|"CODE_VULNERABILITY",
 #'       description = "string",
-#'       epss = list(
-#'         score = 123.0
-#'       ),
-#'       exploitAvailable = "YES"|"NO",
-#'       exploitabilityDetails = list(
-#'         lastKnownExploitAt = as.POSIXct(
-#'           "2015-01-01"
+#'       title = "string",
+#'       remediation = list(
+#'         recommendation = list(
+#'           text = "string",
+#'           Url = "string"
 #'         )
 #'       ),
-#'       findingArn = "string",
+#'       severity = "INFORMATIONAL"|"LOW"|"MEDIUM"|"HIGH"|"CRITICAL"|"UNTRIAGED",
 #'       firstObservedAt = as.POSIXct(
 #'         "2015-01-01"
-#'       ),
-#'       fixAvailable = "YES"|"NO"|"PARTIAL",
-#'       inspectorScore = 123.0,
-#'       inspectorScoreDetails = list(
-#'         adjustedCvss = list(
-#'           adjustments = list(
-#'             list(
-#'               metric = "string",
-#'               reason = "string"
-#'             )
-#'           ),
-#'           cvssSource = "string",
-#'           score = 123.0,
-#'           scoreSource = "string",
-#'           scoringVector = "string",
-#'           version = "string"
-#'         )
 #'       ),
 #'       lastObservedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       networkReachabilityDetails = list(
-#'         networkPath = list(
-#'           steps = list(
-#'             list(
-#'               componentArn = "string",
-#'               componentId = "string",
-#'               componentType = "string"
-#'             )
-#'           )
-#'         ),
-#'         openPortRange = list(
-#'           begin = 123,
-#'           end = 123
-#'         ),
-#'         protocol = "TCP"|"UDP"
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
 #'       ),
-#'       packageVulnerabilityDetails = list(
-#'         cvss = list(
-#'           list(
-#'             baseScore = 123.0,
-#'             scoringVector = "string",
-#'             source = "string",
-#'             version = "string"
-#'           )
-#'         ),
-#'         referenceUrls = list(
-#'           "string"
-#'         ),
-#'         relatedVulnerabilities = list(
-#'           "string"
-#'         ),
-#'         source = "string",
-#'         sourceUrl = "string",
-#'         vendorCreatedAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         vendorSeverity = "string",
-#'         vendorUpdatedAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         vulnerabilityId = "string",
-#'         vulnerablePackages = list(
-#'           list(
-#'             arch = "string",
-#'             epoch = 123,
-#'             filePath = "string",
-#'             fixedInVersion = "string",
-#'             name = "string",
-#'             packageManager = "BUNDLER"|"CARGO"|"COMPOSER"|"NPM"|"NUGET"|"PIPENV"|"POETRY"|"YARN"|"GOBINARY"|"GOMOD"|"JAR"|"OS"|"PIP"|"PYTHONPKG"|"NODEPKG"|"POM"|"GEMSPEC"|"DOTNET_CORE",
-#'             release = "string",
-#'             remediation = "string",
-#'             sourceLambdaLayerArn = "string",
-#'             sourceLayerHash = "string",
-#'             version = "string"
-#'           )
-#'         )
-#'       ),
-#'       remediation = list(
-#'         recommendation = list(
-#'           Url = "string",
-#'           text = "string"
-#'         )
-#'       ),
+#'       status = "ACTIVE"|"SUPPRESSED"|"CLOSED",
 #'       resources = list(
 #'         list(
+#'           type = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_ECR_REPOSITORY"|"AWS_LAMBDA_FUNCTION"|"CODE_REPOSITORY",
+#'           id = "string",
+#'           partition = "string",
+#'           region = "string",
+#'           tags = list(
+#'             "string"
+#'           ),
 #'           details = list(
 #'             awsEc2Instance = list(
-#'               iamInstanceProfileArn = "string",
+#'               type = "string",
 #'               imageId = "string",
 #'               ipV4Addresses = list(
 #'                 "string"
@@ -4995,82 +6128,471 @@ inspector2_list_finding_aggregations <- function(accountIds = NULL, aggregationR
 #'                 "string"
 #'               ),
 #'               keyName = "string",
+#'               iamInstanceProfileArn = "string",
+#'               vpcId = "string",
+#'               subnetId = "string",
 #'               launchedAt = as.POSIXct(
 #'                 "2015-01-01"
 #'               ),
-#'               platform = "string",
-#'               subnetId = "string",
-#'               type = "string",
-#'               vpcId = "string"
+#'               platform = "string"
 #'             ),
 #'             awsEcrContainerImage = list(
-#'               architecture = "string",
-#'               author = "string",
-#'               imageHash = "string",
+#'               repositoryName = "string",
 #'               imageTags = list(
 #'                 "string"
 #'               ),
-#'               platform = "string",
 #'               pushedAt = as.POSIXct(
 #'                 "2015-01-01"
 #'               ),
+#'               author = "string",
+#'               architecture = "string",
+#'               imageHash = "string",
 #'               registry = "string",
-#'               repositoryName = "string"
-#'             ),
-#'             awsLambdaFunction = list(
-#'               architectures = list(
-#'                 "X86_64"|"ARM64"
-#'               ),
-#'               codeSha256 = "string",
-#'               executionRoleArn = "string",
-#'               functionName = "string",
-#'               lastModifiedAt = as.POSIXct(
+#'               platform = "string",
+#'               lastInUseAt = as.POSIXct(
 #'                 "2015-01-01"
 #'               ),
+#'               inUseCount = 123
+#'             ),
+#'             awsLambdaFunction = list(
+#'               functionName = "string",
+#'               runtime = "NODEJS"|"NODEJS_12_X"|"NODEJS_14_X"|"NODEJS_16_X"|"JAVA_8"|"JAVA_8_AL2"|"JAVA_11"|"PYTHON_3_7"|"PYTHON_3_8"|"PYTHON_3_9"|"UNSUPPORTED"|"NODEJS_18_X"|"GO_1_X"|"JAVA_17"|"PYTHON_3_10"|"PYTHON_3_11"|"DOTNETCORE_3_1"|"DOTNET_6"|"DOTNET_7"|"RUBY_2_7"|"RUBY_3_2",
+#'               codeSha256 = "string",
+#'               version = "string",
+#'               executionRoleArn = "string",
 #'               layers = list(
 #'                 "string"
 #'               ),
-#'               packageType = "IMAGE"|"ZIP",
-#'               runtime = "NODEJS"|"NODEJS_12_X"|"NODEJS_14_X"|"NODEJS_16_X"|"JAVA_8"|"JAVA_8_AL2"|"JAVA_11"|"PYTHON_3_7"|"PYTHON_3_8"|"PYTHON_3_9"|"UNSUPPORTED"|"NODEJS_18_X"|"GO_1_X"|"JAVA_17"|"PYTHON_3_10"|"PYTHON_3_11"|"DOTNETCORE_3_1"|"DOTNET_6"|"DOTNET_7"|"RUBY_2_7"|"RUBY_3_2",
-#'               version = "string",
 #'               vpcConfig = list(
-#'                 securityGroupIds = list(
-#'                   "string"
-#'                 ),
 #'                 subnetIds = list(
 #'                   "string"
 #'                 ),
+#'                 securityGroupIds = list(
+#'                   "string"
+#'                 ),
 #'                 vpcId = "string"
+#'               ),
+#'               packageType = "IMAGE"|"ZIP",
+#'               architectures = list(
+#'                 "X86_64"|"ARM64"
+#'               ),
+#'               lastModifiedAt = as.POSIXct(
+#'                 "2015-01-01"
 #'               )
+#'             ),
+#'             codeRepository = list(
+#'               projectName = "string",
+#'               integrationArn = "string",
+#'               providerType = "GITHUB"|"GITLAB_SELF_MANAGED"
 #'             )
-#'           ),
-#'           id = "string",
-#'           partition = "string",
-#'           region = "string",
-#'           tags = list(
-#'             "string"
-#'           ),
-#'           type = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_ECR_REPOSITORY"|"AWS_LAMBDA_FUNCTION"
+#'           )
 #'         )
 #'       ),
-#'       severity = "INFORMATIONAL"|"LOW"|"MEDIUM"|"HIGH"|"CRITICAL"|"UNTRIAGED",
-#'       status = "ACTIVE"|"SUPPRESSED"|"CLOSED",
-#'       title = "string",
-#'       type = "NETWORK_REACHABILITY"|"PACKAGE_VULNERABILITY"|"CODE_VULNERABILITY",
-#'       updatedAt = as.POSIXct(
-#'         "2015-01-01"
+#'       inspectorScore = 123.0,
+#'       inspectorScoreDetails = list(
+#'         adjustedCvss = list(
+#'           scoreSource = "string",
+#'           cvssSource = "string",
+#'           version = "string",
+#'           score = 123.0,
+#'           scoringVector = "string",
+#'           adjustments = list(
+#'             list(
+#'               metric = "string",
+#'               reason = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       networkReachabilityDetails = list(
+#'         openPortRange = list(
+#'           begin = 123,
+#'           end = 123
+#'         ),
+#'         protocol = "TCP"|"UDP",
+#'         networkPath = list(
+#'           steps = list(
+#'             list(
+#'               componentId = "string",
+#'               componentType = "string",
+#'               componentArn = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       packageVulnerabilityDetails = list(
+#'         vulnerabilityId = "string",
+#'         vulnerablePackages = list(
+#'           list(
+#'             name = "string",
+#'             version = "string",
+#'             sourceLayerHash = "string",
+#'             epoch = 123,
+#'             release = "string",
+#'             arch = "string",
+#'             packageManager = "BUNDLER"|"CARGO"|"COMPOSER"|"NPM"|"NUGET"|"PIPENV"|"POETRY"|"YARN"|"GOBINARY"|"GOMOD"|"JAR"|"OS"|"PIP"|"PYTHONPKG"|"NODEPKG"|"POM"|"GEMSPEC"|"DOTNET_CORE",
+#'             filePath = "string",
+#'             fixedInVersion = "string",
+#'             remediation = "string",
+#'             sourceLambdaLayerArn = "string"
+#'           )
+#'         ),
+#'         source = "string",
+#'         cvss = list(
+#'           list(
+#'             baseScore = 123.0,
+#'             scoringVector = "string",
+#'             version = "string",
+#'             source = "string"
+#'           )
+#'         ),
+#'         relatedVulnerabilities = list(
+#'           "string"
+#'         ),
+#'         sourceUrl = "string",
+#'         vendorSeverity = "string",
+#'         vendorCreatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         vendorUpdatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         referenceUrls = list(
+#'           "string"
+#'         )
+#'       ),
+#'       fixAvailable = "YES"|"NO"|"PARTIAL",
+#'       exploitAvailable = "YES"|"NO",
+#'       exploitabilityDetails = list(
+#'         lastKnownExploitAt = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       codeVulnerabilityDetails = list(
+#'         filePath = list(
+#'           fileName = "string",
+#'           filePath = "string",
+#'           startLine = 123,
+#'           endLine = 123
+#'         ),
+#'         detectorTags = list(
+#'           "string"
+#'         ),
+#'         referenceUrls = list(
+#'           "string"
+#'         ),
+#'         ruleId = "string",
+#'         sourceLambdaLayerArn = "string",
+#'         detectorId = "string",
+#'         detectorName = "string",
+#'         cwes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       epss = list(
+#'         score = 123.0
 #'       )
 #'     )
-#'   ),
-#'   nextToken = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_findings(
+#'   maxResults = 123,
+#'   nextToken = "string",
 #'   filterCriteria = list(
+#'     findingArn = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
 #'     awsAccountId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     findingType = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     severity = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     firstObservedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     lastObservedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     updatedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     findingStatus = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     title = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     inspectorScore = list(
+#'       list(
+#'         upperInclusive = 123.0,
+#'         lowerInclusive = 123.0
+#'       )
+#'     ),
+#'     resourceType = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     resourceId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     resourceTags = list(
+#'       list(
+#'         comparison = "EQUALS",
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ec2InstanceImageId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ec2InstanceVpcId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ec2InstanceSubnetId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImagePushedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     ecrImageArchitecture = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImageRegistry = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImageRepositoryName = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImageTags = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImageHash = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImageLastInUseAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     ecrImageInUseCount = list(
+#'       list(
+#'         upperInclusive = 123.0,
+#'         lowerInclusive = 123.0
+#'       )
+#'     ),
+#'     portRange = list(
+#'       list(
+#'         beginInclusive = 123,
+#'         endInclusive = 123
+#'       )
+#'     ),
+#'     networkProtocol = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     componentId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     componentType = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     vulnerabilityId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     vulnerabilitySource = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     vendorSeverity = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     vulnerablePackages = list(
+#'       list(
+#'         name = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         version = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         epoch = list(
+#'           upperInclusive = 123.0,
+#'           lowerInclusive = 123.0
+#'         ),
+#'         release = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         architecture = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         sourceLayerHash = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         sourceLambdaLayerArn = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         filePath = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       )
+#'     ),
+#'     relatedVulnerabilities = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     fixAvailable = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionName = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionLayers = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionRuntime = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionLastModifiedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     lambdaFunctionExecutionRoleArn = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     exploitAvailable = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'         value = "string"
@@ -5094,288 +6616,25 @@ inspector2_list_finding_aggregations <- function(accountIds = NULL, aggregationR
 #'         value = "string"
 #'       )
 #'     ),
-#'     componentId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     componentType = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ec2InstanceImageId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ec2InstanceSubnetId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ec2InstanceVpcId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrImageArchitecture = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrImageHash = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrImagePushedAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     ecrImageRegistry = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrImageRepositoryName = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrImageTags = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
 #'     epssScore = list(
 #'       list(
-#'         lowerInclusive = 123.0,
-#'         upperInclusive = 123.0
+#'         upperInclusive = 123.0,
+#'         lowerInclusive = 123.0
 #'       )
 #'     ),
-#'     exploitAvailable = list(
+#'     codeRepositoryProjectName = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'         value = "string"
 #'       )
 #'     ),
-#'     findingArn = list(
+#'     codeRepositoryProviderType = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'         value = "string"
-#'       )
-#'     ),
-#'     findingStatus = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     findingType = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     firstObservedAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     fixAvailable = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     inspectorScore = list(
-#'       list(
-#'         lowerInclusive = 123.0,
-#'         upperInclusive = 123.0
-#'       )
-#'     ),
-#'     lambdaFunctionExecutionRoleArn = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     lambdaFunctionLastModifiedAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     lambdaFunctionLayers = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     lambdaFunctionName = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     lambdaFunctionRuntime = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     lastObservedAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     networkProtocol = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     portRange = list(
-#'       list(
-#'         beginInclusive = 123,
-#'         endInclusive = 123
-#'       )
-#'     ),
-#'     relatedVulnerabilities = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     resourceId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     resourceTags = list(
-#'       list(
-#'         comparison = "EQUALS",
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     resourceType = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     severity = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     title = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     updatedAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     vendorSeverity = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     vulnerabilityId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     vulnerabilitySource = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     vulnerablePackages = list(
-#'       list(
-#'         architecture = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         epoch = list(
-#'           lowerInclusive = 123.0,
-#'           upperInclusive = 123.0
-#'         ),
-#'         filePath = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         name = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         release = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         sourceLambdaLayerArn = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         sourceLayerHash = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         version = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         )
 #'       )
 #'     )
 #'   ),
-#'   maxResults = 123,
-#'   nextToken = "string",
 #'   sortCriteria = list(
 #'     field = "AWS_ACCOUNT_ID"|"FINDING_TYPE"|"SEVERITY"|"FIRST_OBSERVED_AT"|"LAST_OBSERVED_AT"|"FINDING_STATUS"|"RESOURCE_TYPE"|"ECR_IMAGE_PUSHED_AT"|"ECR_IMAGE_REPOSITORY_NAME"|"ECR_IMAGE_REGISTRY"|"NETWORK_PROTOCOL"|"COMPONENT_TYPE"|"VULNERABILITY_ID"|"VULNERABILITY_SOURCE"|"INSPECTOR_SCORE"|"VENDOR_SEVERITY"|"EPSS_SCORE",
 #'     sortOrder = "ASC"|"DESC"
@@ -5388,7 +6647,7 @@ inspector2_list_finding_aggregations <- function(accountIds = NULL, aggregationR
 #' @rdname inspector2_list_findings
 #'
 #' @aliases inspector2_list_findings
-inspector2_list_findings <- function(filterCriteria = NULL, maxResults = NULL, nextToken = NULL, sortCriteria = NULL) {
+inspector2_list_findings <- function(maxResults = NULL, nextToken = NULL, filterCriteria = NULL, sortCriteria = NULL) {
   op <- new_operation(
     name = "ListFindings",
     http_method = "POST",
@@ -5397,7 +6656,7 @@ inspector2_list_findings <- function(filterCriteria = NULL, maxResults = NULL, n
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings"),
     stream_api = FALSE
   )
-  input <- .inspector2$list_findings_input(filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken, sortCriteria = sortCriteria)
+  input <- .inspector2$list_findings_input(maxResults = maxResults, nextToken = nextToken, filterCriteria = filterCriteria, sortCriteria = sortCriteria)
   output <- .inspector2$list_findings_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -5415,8 +6674,10 @@ inspector2_list_findings <- function(filterCriteria = NULL, maxResults = NULL, n
 #' administrator for your organization.
 #'
 #' @usage
-#' inspector2_list_members(maxResults, nextToken, onlyAssociated)
+#' inspector2_list_members(onlyAssociated, maxResults, nextToken)
 #'
+#' @param onlyAssociated Specifies whether to list only currently associated members if `True` or
+#' to list all members within the organization if `False`.
 #' @param maxResults The maximum number of results the response can return. If your request
 #' would return more than the maximum the response will return a
 #' `nextToken` value, use this value when you call the action again to get
@@ -5427,8 +6688,6 @@ inspector2_list_findings <- function(filterCriteria = NULL, maxResults = NULL, n
 #' value it will also return a `nextToken` value. For subsequent calls, use
 #' the `nextToken` value returned from the previous request to continue
 #' listing results after the first page.
-#' @param onlyAssociated Specifies whether to list only currently associated members if `True` or
-#' to list all members within the organization if `False`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5437,8 +6696,8 @@ inspector2_list_findings <- function(filterCriteria = NULL, maxResults = NULL, n
 #'   members = list(
 #'     list(
 #'       accountId = "string",
-#'       delegatedAdminAccountId = "string",
 #'       relationshipStatus = "CREATED"|"INVITED"|"DISABLED"|"ENABLED"|"REMOVED"|"RESIGNED"|"DELETED"|"EMAIL_VERIFICATION_IN_PROGRESS"|"EMAIL_VERIFICATION_FAILED"|"REGION_DISABLED"|"ACCOUNT_SUSPENDED"|"CANNOT_CREATE_DETECTOR_IN_ORG_MASTER",
+#'       delegatedAdminAccountId = "string",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -5451,9 +6710,9 @@ inspector2_list_findings <- function(filterCriteria = NULL, maxResults = NULL, n
 #' @section Request syntax:
 #' ```
 #' svc$list_members(
+#'   onlyAssociated = TRUE|FALSE,
 #'   maxResults = 123,
-#'   nextToken = "string",
-#'   onlyAssociated = TRUE|FALSE
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -5462,7 +6721,7 @@ inspector2_list_findings <- function(filterCriteria = NULL, maxResults = NULL, n
 #' @rdname inspector2_list_members
 #'
 #' @aliases inspector2_list_members
-inspector2_list_members <- function(maxResults = NULL, nextToken = NULL, onlyAssociated = NULL) {
+inspector2_list_members <- function(onlyAssociated = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListMembers",
     http_method = "POST",
@@ -5471,7 +6730,7 @@ inspector2_list_members <- function(maxResults = NULL, nextToken = NULL, onlyAss
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "members"),
     stream_api = FALSE
   )
-  input <- .inspector2$list_members_input(maxResults = maxResults, nextToken = nextToken, onlyAssociated = onlyAssociated)
+  input <- .inspector2$list_members_input(onlyAssociated = onlyAssociated, maxResults = maxResults, nextToken = nextToken)
   output <- .inspector2$list_members_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -5538,9 +6797,8 @@ inspector2_list_tags_for_resource <- function(resourceArn) {
 #' Lists the Amazon Inspector usage totals over the last 30 days.
 #'
 #' @usage
-#' inspector2_list_usage_totals(accountIds, maxResults, nextToken)
+#' inspector2_list_usage_totals(maxResults, nextToken, accountIds)
 #'
-#' @param accountIds The Amazon Web Services account IDs to retrieve usage totals for.
 #' @param maxResults The maximum number of results the response can return. If your request
 #' would return more than the maximum the response will return a
 #' `nextToken` value, use this value when you call the action again to get
@@ -5551,6 +6809,7 @@ inspector2_list_tags_for_resource <- function(resourceArn) {
 #' value it will also return a `nextToken` value. For subsequent calls, use
 #' the `nextToken` value returned from the previous request to continue
 #' listing results after the first page.
+#' @param accountIds The Amazon Web Services account IDs to retrieve usage totals for.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5562,10 +6821,10 @@ inspector2_list_tags_for_resource <- function(resourceArn) {
 #'       accountId = "string",
 #'       usage = list(
 #'         list(
-#'           currency = "USD",
-#'           estimatedMonthlyCost = 123.0,
+#'           type = "EC2_INSTANCE_HOURS"|"ECR_INITIAL_SCAN"|"ECR_RESCAN"|"LAMBDA_FUNCTION_HOURS"|"LAMBDA_FUNCTION_CODE_HOURS"|"CODE_REPOSITORY_SAST"|"CODE_REPOSITORY_IAC"|"CODE_REPOSITORY_SCA"|"EC2_AGENTLESS_INSTANCE_HOURS",
 #'           total = 123.0,
-#'           type = "EC2_INSTANCE_HOURS"|"ECR_INITIAL_SCAN"|"ECR_RESCAN"|"LAMBDA_FUNCTION_HOURS"|"LAMBDA_FUNCTION_CODE_HOURS"
+#'           estimatedMonthlyCost = 123.0,
+#'           currency = "USD"
 #'         )
 #'       )
 #'     )
@@ -5576,11 +6835,11 @@ inspector2_list_tags_for_resource <- function(resourceArn) {
 #' @section Request syntax:
 #' ```
 #' svc$list_usage_totals(
+#'   maxResults = 123,
+#'   nextToken = "string",
 #'   accountIds = list(
 #'     "string"
-#'   ),
-#'   maxResults = 123,
-#'   nextToken = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -5589,7 +6848,7 @@ inspector2_list_tags_for_resource <- function(resourceArn) {
 #' @rdname inspector2_list_usage_totals
 #'
 #' @aliases inspector2_list_usage_totals
-inspector2_list_usage_totals <- function(accountIds = NULL, maxResults = NULL, nextToken = NULL) {
+inspector2_list_usage_totals <- function(maxResults = NULL, nextToken = NULL, accountIds = NULL) {
   op <- new_operation(
     name = "ListUsageTotals",
     http_method = "POST",
@@ -5598,7 +6857,7 @@ inspector2_list_usage_totals <- function(accountIds = NULL, maxResults = NULL, n
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "totals"),
     stream_api = FALSE
   )
-  input <- .inspector2$list_usage_totals_input(accountIds = accountIds, maxResults = maxResults, nextToken = nextToken)
+  input <- .inspector2$list_usage_totals_input(maxResults = maxResults, nextToken = nextToken, accountIds = accountIds)
   output <- .inspector2$list_usage_totals_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -5615,10 +6874,10 @@ inspector2_list_usage_totals <- function(accountIds = NULL, maxResults = NULL, n
 #' encrypted by an Amazon Web Services owned key.
 #'
 #' @usage
-#' inspector2_reset_encryption_key(resourceType, scanType)
+#' inspector2_reset_encryption_key(scanType, resourceType)
 #'
-#' @param resourceType &#91;required&#93; The resource type the key encrypts.
 #' @param scanType &#91;required&#93; The scan type the key encrypts.
+#' @param resourceType &#91;required&#93; The resource type the key encrypts.
 #'
 #' @return
 #' An empty list.
@@ -5626,8 +6885,8 @@ inspector2_list_usage_totals <- function(accountIds = NULL, maxResults = NULL, n
 #' @section Request syntax:
 #' ```
 #' svc$reset_encryption_key(
-#'   resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_ECR_REPOSITORY"|"AWS_LAMBDA_FUNCTION",
-#'   scanType = "NETWORK"|"PACKAGE"|"CODE"
+#'   scanType = "NETWORK"|"PACKAGE"|"CODE",
+#'   resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_ECR_REPOSITORY"|"AWS_LAMBDA_FUNCTION"|"CODE_REPOSITORY"
 #' )
 #' ```
 #'
@@ -5636,7 +6895,7 @@ inspector2_list_usage_totals <- function(accountIds = NULL, maxResults = NULL, n
 #' @rdname inspector2_reset_encryption_key
 #'
 #' @aliases inspector2_reset_encryption_key
-inspector2_reset_encryption_key <- function(resourceType, scanType) {
+inspector2_reset_encryption_key <- function(scanType, resourceType) {
   op <- new_operation(
     name = "ResetEncryptionKey",
     http_method = "PUT",
@@ -5645,7 +6904,7 @@ inspector2_reset_encryption_key <- function(resourceType, scanType) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$reset_encryption_key_input(resourceType = resourceType, scanType = scanType)
+  input <- .inspector2$reset_encryption_key_input(scanType = scanType, resourceType = resourceType)
   output <- .inspector2$reset_encryption_key_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -5673,9 +6932,23 @@ inspector2_reset_encryption_key <- function(resourceType, scanType) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   nextToken = "string",
 #'   vulnerabilities = list(
 #'     list(
+#'       id = "string",
+#'       cwes = list(
+#'         "string"
+#'       ),
+#'       cisaData = list(
+#'         dateAdded = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         dateDue = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         action = "string"
+#'       ),
+#'       source = "NVD",
+#'       description = "string",
 #'       atigData = list(
 #'         firstSeen = as.POSIXct(
 #'           "2015-01-01"
@@ -5690,16 +6963,8 @@ inspector2_reset_encryption_key <- function(resourceType, scanType) {
 #'           "string"
 #'         )
 #'       ),
-#'       cisaData = list(
-#'         action = "string",
-#'         dateAdded = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         dateDue = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       ),
-#'       cvss2 = list(
+#'       vendorSeverity = "string",
+#'       cvss4 = list(
 #'         baseScore = 123.0,
 #'         scoringVector = "string"
 #'       ),
@@ -5707,42 +6972,40 @@ inspector2_reset_encryption_key <- function(resourceType, scanType) {
 #'         baseScore = 123.0,
 #'         scoringVector = "string"
 #'       ),
-#'       cwes = list(
+#'       relatedVulnerabilities = list(
 #'         "string"
 #'       ),
-#'       description = "string",
+#'       cvss2 = list(
+#'         baseScore = 123.0,
+#'         scoringVector = "string"
+#'       ),
+#'       vendorCreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       vendorUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       sourceUrl = "string",
+#'       referenceUrls = list(
+#'         "string"
+#'       ),
+#'       exploitObserved = list(
+#'         lastSeen = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         firstSeen = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
 #'       detectionPlatforms = list(
 #'         "string"
 #'       ),
 #'       epss = list(
 #'         score = 123.0
-#'       ),
-#'       exploitObserved = list(
-#'         firstSeen = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         lastSeen = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       ),
-#'       id = "string",
-#'       referenceUrls = list(
-#'         "string"
-#'       ),
-#'       relatedVulnerabilities = list(
-#'         "string"
-#'       ),
-#'       source = "NVD",
-#'       sourceUrl = "string",
-#'       vendorCreatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       vendorSeverity = "string",
-#'       vendorUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -5840,11 +7103,11 @@ inspector2_send_cis_session_health <- function(scanJobId, sessionToken) {
 #' scan ID supplied by the service.
 #'
 #' @usage
-#' inspector2_send_cis_session_telemetry(messages, scanJobId, sessionToken)
+#' inspector2_send_cis_session_telemetry(scanJobId, sessionToken, messages)
 #'
-#' @param messages &#91;required&#93; The CIS session telemetry messages.
 #' @param scanJobId &#91;required&#93; A unique identifier for the scan job.
 #' @param sessionToken &#91;required&#93; The unique token that identifies the CIS session.
+#' @param messages &#91;required&#93; The CIS session telemetry messages.
 #'
 #' @return
 #' An empty list.
@@ -5852,15 +7115,15 @@ inspector2_send_cis_session_health <- function(scanJobId, sessionToken) {
 #' @section Request syntax:
 #' ```
 #' svc$send_cis_session_telemetry(
+#'   scanJobId = "string",
+#'   sessionToken = "string",
 #'   messages = list(
 #'     list(
-#'       cisRuleDetails = raw,
 #'       ruleId = "string",
-#'       status = "FAILED"|"PASSED"|"NOT_EVALUATED"|"INFORMATIONAL"|"UNKNOWN"|"NOT_APPLICABLE"|"ERROR"
+#'       status = "FAILED"|"PASSED"|"NOT_EVALUATED"|"INFORMATIONAL"|"UNKNOWN"|"NOT_APPLICABLE"|"ERROR",
+#'       cisRuleDetails = raw
 #'     )
-#'   ),
-#'   scanJobId = "string",
-#'   sessionToken = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -5869,7 +7132,7 @@ inspector2_send_cis_session_health <- function(scanJobId, sessionToken) {
 #' @rdname inspector2_send_cis_session_telemetry
 #'
 #' @aliases inspector2_send_cis_session_telemetry
-inspector2_send_cis_session_telemetry <- function(messages, scanJobId, sessionToken) {
+inspector2_send_cis_session_telemetry <- function(scanJobId, sessionToken, messages) {
   op <- new_operation(
     name = "SendCisSessionTelemetry",
     http_method = "PUT",
@@ -5878,7 +7141,7 @@ inspector2_send_cis_session_telemetry <- function(messages, scanJobId, sessionTo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$send_cis_session_telemetry_input(messages = messages, scanJobId = scanJobId, sessionToken = sessionToken)
+  input <- .inspector2$send_cis_session_telemetry_input(scanJobId = scanJobId, sessionToken = sessionToken, messages = messages)
   output <- .inspector2$send_cis_session_telemetry_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -5897,10 +7160,10 @@ inspector2_send_cis_session_telemetry <- function(messages, scanJobId, sessionTo
 #' scan ID supplied by the service.
 #'
 #' @usage
-#' inspector2_start_cis_session(message, scanJobId)
+#' inspector2_start_cis_session(scanJobId, message)
 #'
-#' @param message &#91;required&#93; The start CIS session message.
 #' @param scanJobId &#91;required&#93; A unique identifier for the scan job.
+#' @param message &#91;required&#93; The start CIS session message.
 #'
 #' @return
 #' An empty list.
@@ -5908,10 +7171,10 @@ inspector2_send_cis_session_telemetry <- function(messages, scanJobId, sessionTo
 #' @section Request syntax:
 #' ```
 #' svc$start_cis_session(
+#'   scanJobId = "string",
 #'   message = list(
 #'     sessionToken = "string"
-#'   ),
-#'   scanJobId = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -5920,7 +7183,7 @@ inspector2_send_cis_session_telemetry <- function(messages, scanJobId, sessionTo
 #' @rdname inspector2_start_cis_session
 #'
 #' @aliases inspector2_start_cis_session
-inspector2_start_cis_session <- function(message, scanJobId) {
+inspector2_start_cis_session <- function(scanJobId, message) {
   op <- new_operation(
     name = "StartCisSession",
     http_method = "PUT",
@@ -5929,7 +7192,7 @@ inspector2_start_cis_session <- function(message, scanJobId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$start_cis_session_input(message = message, scanJobId = scanJobId)
+  input <- .inspector2$start_cis_session_input(scanJobId = scanJobId, message = message)
   output <- .inspector2$start_cis_session_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -5938,6 +7201,61 @@ inspector2_start_cis_session <- function(message, scanJobId) {
   return(response)
 }
 .inspector2$operations$start_cis_session <- inspector2_start_cis_session
+
+#' Initiates a code security scan on a specified repository
+#'
+#' @description
+#' Initiates a code security scan on a specified repository.
+#'
+#' @usage
+#' inspector2_start_code_security_scan(clientToken, resource)
+#'
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#' @param resource &#91;required&#93; The resource identifier for the code repository to scan.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   scanId = "string",
+#'   status = "IN_PROGRESS"|"SUCCESSFUL"|"FAILED"|"SKIPPED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_code_security_scan(
+#'   clientToken = "string",
+#'   resource = list(
+#'     projectId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_start_code_security_scan
+#'
+#' @aliases inspector2_start_code_security_scan
+inspector2_start_code_security_scan <- function(clientToken = NULL, resource) {
+  op <- new_operation(
+    name = "StartCodeSecurityScan",
+    http_method = "POST",
+    http_path = "/codesecurity/scan/start",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$start_code_security_scan_input(clientToken = clientToken, resource = resource)
+  output <- .inspector2$start_code_security_scan_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$start_code_security_scan <- inspector2_start_code_security_scan
 
 #' Stops a CIS session
 #'
@@ -5948,11 +7266,11 @@ inspector2_start_cis_session <- function(message, scanJobId) {
 #' supplied by the service.
 #'
 #' @usage
-#' inspector2_stop_cis_session(message, scanJobId, sessionToken)
+#' inspector2_stop_cis_session(scanJobId, sessionToken, message)
 #'
-#' @param message &#91;required&#93; The stop CIS session message.
 #' @param scanJobId &#91;required&#93; A unique identifier for the scan job.
 #' @param sessionToken &#91;required&#93; The unique token that identifies the CIS session.
+#' @param message &#91;required&#93; The stop CIS session message.
 #'
 #' @return
 #' An empty list.
@@ -5960,29 +7278,29 @@ inspector2_start_cis_session <- function(message, scanJobId) {
 #' @section Request syntax:
 #' ```
 #' svc$stop_cis_session(
+#'   scanJobId = "string",
+#'   sessionToken = "string",
 #'   message = list(
-#'     benchmarkProfile = "string",
-#'     benchmarkVersion = "string",
+#'     status = "SUCCESS"|"FAILED"|"INTERRUPTED"|"UNSUPPORTED_OS",
+#'     reason = "string",
+#'     progress = list(
+#'       totalChecks = 123,
+#'       successfulChecks = 123,
+#'       failedChecks = 123,
+#'       notEvaluatedChecks = 123,
+#'       unknownChecks = 123,
+#'       notApplicableChecks = 123,
+#'       informationalChecks = 123,
+#'       errorChecks = 123
+#'     ),
 #'     computePlatform = list(
-#'       product = "string",
 #'       vendor = "string",
+#'       product = "string",
 #'       version = "string"
 #'     ),
-#'     progress = list(
-#'       errorChecks = 123,
-#'       failedChecks = 123,
-#'       informationalChecks = 123,
-#'       notApplicableChecks = 123,
-#'       notEvaluatedChecks = 123,
-#'       successfulChecks = 123,
-#'       totalChecks = 123,
-#'       unknownChecks = 123
-#'     ),
-#'     reason = "string",
-#'     status = "SUCCESS"|"FAILED"|"INTERRUPTED"|"UNSUPPORTED_OS"
-#'   ),
-#'   scanJobId = "string",
-#'   sessionToken = "string"
+#'     benchmarkVersion = "string",
+#'     benchmarkProfile = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -5991,7 +7309,7 @@ inspector2_start_cis_session <- function(message, scanJobId) {
 #' @rdname inspector2_stop_cis_session
 #'
 #' @aliases inspector2_stop_cis_session
-inspector2_stop_cis_session <- function(message, scanJobId, sessionToken) {
+inspector2_stop_cis_session <- function(scanJobId, sessionToken, message) {
   op <- new_operation(
     name = "StopCisSession",
     http_method = "PUT",
@@ -6000,7 +7318,7 @@ inspector2_stop_cis_session <- function(message, scanJobId, sessionToken) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$stop_cis_session_input(message = message, scanJobId = scanJobId, sessionToken = sessionToken)
+  input <- .inspector2$stop_cis_session_input(scanJobId = scanJobId, sessionToken = sessionToken, message = message)
   output <- .inspector2$stop_cis_session_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -6113,13 +7431,13 @@ inspector2_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @usage
 #' inspector2_update_cis_scan_configuration(scanConfigurationArn, scanName,
-#'   schedule, securityLevel, targets)
+#'   securityLevel, schedule, targets)
 #'
 #' @param scanConfigurationArn &#91;required&#93; The CIS scan configuration ARN.
 #' @param scanName The scan name for the CIS scan configuration.
-#' @param schedule The schedule for the CIS scan configuration.
 #' @param securityLevel The security level for the CIS scan configuration. Security level refers
 #' to the Benchmark levels that CIS assigns to a profile.
+#' @param schedule The schedule for the CIS scan configuration.
 #' @param targets The targets for the CIS scan configuration.
 #'
 #' @return
@@ -6135,32 +7453,32 @@ inspector2_untag_resource <- function(resourceArn, tagKeys) {
 #' svc$update_cis_scan_configuration(
 #'   scanConfigurationArn = "string",
 #'   scanName = "string",
+#'   securityLevel = "LEVEL_1"|"LEVEL_2",
 #'   schedule = list(
+#'     oneTime = list(),
 #'     daily = list(
 #'       startTime = list(
 #'         timeOfDay = "string",
 #'         timezone = "string"
 #'       )
 #'     ),
-#'     monthly = list(
-#'       day = "SUN"|"MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT",
+#'     weekly = list(
 #'       startTime = list(
 #'         timeOfDay = "string",
 #'         timezone = "string"
-#'       )
-#'     ),
-#'     oneTime = list(),
-#'     weekly = list(
+#'       ),
 #'       days = list(
 #'         "SUN"|"MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT"
-#'       ),
+#'       )
+#'     ),
+#'     monthly = list(
 #'       startTime = list(
 #'         timeOfDay = "string",
 #'         timezone = "string"
-#'       )
+#'       ),
+#'       day = "SUN"|"MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT"
 #'     )
 #'   ),
-#'   securityLevel = "LEVEL_1"|"LEVEL_2",
 #'   targets = list(
 #'     accountIds = list(
 #'       "string"
@@ -6179,7 +7497,7 @@ inspector2_untag_resource <- function(resourceArn, tagKeys) {
 #' @rdname inspector2_update_cis_scan_configuration
 #'
 #' @aliases inspector2_update_cis_scan_configuration
-inspector2_update_cis_scan_configuration <- function(scanConfigurationArn, scanName = NULL, schedule = NULL, securityLevel = NULL, targets = NULL) {
+inspector2_update_cis_scan_configuration <- function(scanConfigurationArn, scanName = NULL, securityLevel = NULL, schedule = NULL, targets = NULL) {
   op <- new_operation(
     name = "UpdateCisScanConfiguration",
     http_method = "POST",
@@ -6188,7 +7506,7 @@ inspector2_update_cis_scan_configuration <- function(scanConfigurationArn, scanN
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$update_cis_scan_configuration_input(scanConfigurationArn = scanConfigurationArn, scanName = scanName, schedule = schedule, securityLevel = securityLevel, targets = targets)
+  input <- .inspector2$update_cis_scan_configuration_input(scanConfigurationArn = scanConfigurationArn, scanName = scanName, securityLevel = securityLevel, schedule = schedule, targets = targets)
   output <- .inspector2$update_cis_scan_configuration_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -6197,6 +7515,140 @@ inspector2_update_cis_scan_configuration <- function(scanConfigurationArn, scanN
   return(response)
 }
 .inspector2$operations$update_cis_scan_configuration <- inspector2_update_cis_scan_configuration
+
+#' Updates an existing code security integration
+#'
+#' @description
+#' Updates an existing code security integration.
+#' 
+#' After calling the
+#' [`create_code_security_integration`][inspector2_create_code_security_integration]
+#' operation, you complete authentication and authorization with your
+#' provider. Next you call the
+#' [`update_code_security_integration`][inspector2_update_code_security_integration]
+#' operation to provide the `details` to complete the integration setup
+#'
+#' @usage
+#' inspector2_update_code_security_integration(integrationArn, details)
+#'
+#' @param integrationArn &#91;required&#93; The Amazon Resource Name (ARN) of the code security integration to
+#' update.
+#' @param details &#91;required&#93; The updated integration details specific to the repository provider
+#' type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   integrationArn = "string",
+#'   status = "PENDING"|"IN_PROGRESS"|"ACTIVE"|"INACTIVE"|"DISABLING"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_code_security_integration(
+#'   integrationArn = "string",
+#'   details = list(
+#'     gitlabSelfManaged = list(
+#'       authCode = "string"
+#'     ),
+#'     github = list(
+#'       code = "string",
+#'       installationId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_update_code_security_integration
+#'
+#' @aliases inspector2_update_code_security_integration
+inspector2_update_code_security_integration <- function(integrationArn, details) {
+  op <- new_operation(
+    name = "UpdateCodeSecurityIntegration",
+    http_method = "POST",
+    http_path = "/codesecurity/integration/update",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$update_code_security_integration_input(integrationArn = integrationArn, details = details)
+  output <- .inspector2$update_code_security_integration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$update_code_security_integration <- inspector2_update_code_security_integration
+
+#' Updates an existing code security scan configuration
+#'
+#' @description
+#' Updates an existing code security scan configuration.
+#'
+#' @usage
+#' inspector2_update_code_security_scan_configuration(scanConfigurationArn,
+#'   configuration)
+#'
+#' @param scanConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the scan configuration to update.
+#' @param configuration &#91;required&#93; The updated configuration settings for the code security scan.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   scanConfigurationArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_code_security_scan_configuration(
+#'   scanConfigurationArn = "string",
+#'   configuration = list(
+#'     periodicScanConfiguration = list(
+#'       frequency = "WEEKLY"|"MONTHLY"|"NEVER",
+#'       frequencyExpression = "string"
+#'     ),
+#'     continuousIntegrationScanConfiguration = list(
+#'       supportedEvents = list(
+#'         "PULL_REQUEST"|"PUSH"
+#'       )
+#'     ),
+#'     ruleSetCategories = list(
+#'       "SAST"|"IAC"|"SCA"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_update_code_security_scan_configuration
+#'
+#' @aliases inspector2_update_code_security_scan_configuration
+inspector2_update_code_security_scan_configuration <- function(scanConfigurationArn, configuration) {
+  op <- new_operation(
+    name = "UpdateCodeSecurityScanConfiguration",
+    http_method = "POST",
+    http_path = "/codesecurity/scan-configuration/update",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .inspector2$update_code_security_scan_configuration_input(scanConfigurationArn = scanConfigurationArn, configuration = configuration)
+  output <- .inspector2$update_code_security_scan_configuration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$update_code_security_scan_configuration <- inspector2_update_code_security_scan_configuration
 
 #' Updates setting configurations for your Amazon Inspector account
 #'
@@ -6207,11 +7659,11 @@ inspector2_update_cis_scan_configuration <- function(scanConfigurationArn, scanN
 #' organization cannot update this setting.
 #'
 #' @usage
-#' inspector2_update_configuration(ec2Configuration, ecrConfiguration)
+#' inspector2_update_configuration(ecrConfiguration, ec2Configuration)
 #'
-#' @param ec2Configuration Specifies how the Amazon EC2 automated scan will be updated for your
-#' environment.
 #' @param ecrConfiguration Specifies how the ECR automated re-scan will be updated for your
+#' environment.
+#' @param ec2Configuration Specifies how the Amazon EC2 automated scan will be updated for your
 #' environment.
 #'
 #' @return
@@ -6220,12 +7672,13 @@ inspector2_update_cis_scan_configuration <- function(scanConfigurationArn, scanN
 #' @section Request syntax:
 #' ```
 #' svc$update_configuration(
+#'   ecrConfiguration = list(
+#'     rescanDuration = "LIFETIME"|"DAYS_30"|"DAYS_180"|"DAYS_14"|"DAYS_60"|"DAYS_90",
+#'     pullDateRescanDuration = "DAYS_14"|"DAYS_30"|"DAYS_60"|"DAYS_90"|"DAYS_180",
+#'     pullDateRescanMode = "LAST_PULL_DATE"|"LAST_IN_USE_AT"
+#'   ),
 #'   ec2Configuration = list(
 #'     scanMode = "EC2_SSM_AGENT_BASED"|"EC2_HYBRID"
-#'   ),
-#'   ecrConfiguration = list(
-#'     pullDateRescanDuration = "DAYS_14"|"DAYS_30"|"DAYS_60"|"DAYS_90"|"DAYS_180",
-#'     rescanDuration = "LIFETIME"|"DAYS_30"|"DAYS_180"|"DAYS_14"|"DAYS_60"|"DAYS_90"
 #'   )
 #' )
 #' ```
@@ -6235,7 +7688,7 @@ inspector2_update_cis_scan_configuration <- function(scanConfigurationArn, scanN
 #' @rdname inspector2_update_configuration
 #'
 #' @aliases inspector2_update_configuration
-inspector2_update_configuration <- function(ec2Configuration = NULL, ecrConfiguration = NULL) {
+inspector2_update_configuration <- function(ecrConfiguration = NULL, ec2Configuration = NULL) {
   op <- new_operation(
     name = "UpdateConfiguration",
     http_method = "POST",
@@ -6244,7 +7697,7 @@ inspector2_update_configuration <- function(ec2Configuration = NULL, ecrConfigur
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$update_configuration_input(ec2Configuration = ec2Configuration, ecrConfiguration = ecrConfiguration)
+  input <- .inspector2$update_configuration_input(ecrConfiguration = ecrConfiguration, ec2Configuration = ec2Configuration)
   output <- .inspector2$update_configuration_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -6277,14 +7730,14 @@ inspector2_update_configuration <- function(ec2Configuration = NULL, ecrConfigur
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   errorMessage = "string",
-#'   orgPackagePaths = list(
-#'     "string"
-#'   ),
 #'   packagePaths = list(
 #'     "string"
 #'   ),
-#'   status = "ACTIVATED"|"DEACTIVATED"|"PENDING"|"FAILED"
+#'   orgPackagePaths = list(
+#'     "string"
+#'   ),
+#'   status = "ACTIVATED"|"DEACTIVATED"|"PENDING"|"FAILED",
+#'   errorMessage = "string"
 #' )
 #' ```
 #'
@@ -6329,11 +7782,11 @@ inspector2_update_ec_2_deep_inspection_configuration <- function(activateDeepIns
 #' Amazon Web Services owned key is being used for encryption.
 #'
 #' @usage
-#' inspector2_update_encryption_key(kmsKeyId, resourceType, scanType)
+#' inspector2_update_encryption_key(kmsKeyId, scanType, resourceType)
 #'
 #' @param kmsKeyId &#91;required&#93; A KMS key ID for the encryption key.
-#' @param resourceType &#91;required&#93; The resource type for the encryption key.
 #' @param scanType &#91;required&#93; The scan type for the encryption key.
+#' @param resourceType &#91;required&#93; The resource type for the encryption key.
 #'
 #' @return
 #' An empty list.
@@ -6342,8 +7795,8 @@ inspector2_update_ec_2_deep_inspection_configuration <- function(activateDeepIns
 #' ```
 #' svc$update_encryption_key(
 #'   kmsKeyId = "string",
-#'   resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_ECR_REPOSITORY"|"AWS_LAMBDA_FUNCTION",
-#'   scanType = "NETWORK"|"PACKAGE"|"CODE"
+#'   scanType = "NETWORK"|"PACKAGE"|"CODE",
+#'   resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_ECR_REPOSITORY"|"AWS_LAMBDA_FUNCTION"|"CODE_REPOSITORY"
 #' )
 #' ```
 #'
@@ -6352,7 +7805,7 @@ inspector2_update_ec_2_deep_inspection_configuration <- function(activateDeepIns
 #' @rdname inspector2_update_encryption_key
 #'
 #' @aliases inspector2_update_encryption_key
-inspector2_update_encryption_key <- function(kmsKeyId, resourceType, scanType) {
+inspector2_update_encryption_key <- function(kmsKeyId, scanType, resourceType) {
   op <- new_operation(
     name = "UpdateEncryptionKey",
     http_method = "PUT",
@@ -6361,7 +7814,7 @@ inspector2_update_encryption_key <- function(kmsKeyId, resourceType, scanType) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$update_encryption_key_input(kmsKeyId = kmsKeyId, resourceType = resourceType, scanType = scanType)
+  input <- .inspector2$update_encryption_key_input(kmsKeyId = kmsKeyId, scanType = scanType, resourceType = resourceType)
   output <- .inspector2$update_encryption_key_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -6379,15 +7832,15 @@ inspector2_update_encryption_key <- function(kmsKeyId, resourceType, scanType) {
 #' the filter.
 #'
 #' @usage
-#' inspector2_update_filter(action, description, filterArn, filterCriteria,
-#'   name, reason)
+#' inspector2_update_filter(action, description, filterCriteria, name,
+#'   filterArn, reason)
 #'
 #' @param action Specifies the action that is to be applied to the findings that match
 #' the filter.
 #' @param description A description of the filter.
-#' @param filterArn &#91;required&#93; The Amazon Resource Number (ARN) of the filter to update.
 #' @param filterCriteria Defines the criteria to be update in the filter.
 #' @param name The name of the filter.
+#' @param filterArn &#91;required&#93; The Amazon Resource Number (ARN) of the filter to update.
 #' @param reason The reason the filter was updated.
 #'
 #' @return
@@ -6403,9 +7856,297 @@ inspector2_update_encryption_key <- function(kmsKeyId, resourceType, scanType) {
 #' svc$update_filter(
 #'   action = "NONE"|"SUPPRESS",
 #'   description = "string",
-#'   filterArn = "string",
 #'   filterCriteria = list(
+#'     findingArn = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
 #'     awsAccountId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     findingType = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     severity = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     firstObservedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     lastObservedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     updatedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     findingStatus = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     title = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     inspectorScore = list(
+#'       list(
+#'         upperInclusive = 123.0,
+#'         lowerInclusive = 123.0
+#'       )
+#'     ),
+#'     resourceType = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     resourceId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     resourceTags = list(
+#'       list(
+#'         comparison = "EQUALS",
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ec2InstanceImageId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ec2InstanceVpcId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ec2InstanceSubnetId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImagePushedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     ecrImageArchitecture = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImageRegistry = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImageRepositoryName = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImageTags = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImageHash = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     ecrImageLastInUseAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     ecrImageInUseCount = list(
+#'       list(
+#'         upperInclusive = 123.0,
+#'         lowerInclusive = 123.0
+#'       )
+#'     ),
+#'     portRange = list(
+#'       list(
+#'         beginInclusive = 123,
+#'         endInclusive = 123
+#'       )
+#'     ),
+#'     networkProtocol = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     componentId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     componentType = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     vulnerabilityId = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     vulnerabilitySource = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     vendorSeverity = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     vulnerablePackages = list(
+#'       list(
+#'         name = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         version = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         epoch = list(
+#'           upperInclusive = 123.0,
+#'           lowerInclusive = 123.0
+#'         ),
+#'         release = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         architecture = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         sourceLayerHash = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         sourceLambdaLayerArn = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         filePath = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       )
+#'     ),
+#'     relatedVulnerabilities = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     fixAvailable = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionName = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionLayers = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionRuntime = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionLastModifiedAt = list(
+#'       list(
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     lambdaFunctionExecutionRoleArn = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     exploitAvailable = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'         value = "string"
@@ -6429,287 +8170,27 @@ inspector2_update_encryption_key <- function(kmsKeyId, resourceType, scanType) {
 #'         value = "string"
 #'       )
 #'     ),
-#'     componentId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     componentType = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ec2InstanceImageId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ec2InstanceSubnetId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ec2InstanceVpcId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrImageArchitecture = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrImageHash = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrImagePushedAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     ecrImageRegistry = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrImageRepositoryName = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     ecrImageTags = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
 #'     epssScore = list(
 #'       list(
-#'         lowerInclusive = 123.0,
-#'         upperInclusive = 123.0
+#'         upperInclusive = 123.0,
+#'         lowerInclusive = 123.0
 #'       )
 #'     ),
-#'     exploitAvailable = list(
+#'     codeRepositoryProjectName = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'         value = "string"
 #'       )
 #'     ),
-#'     findingArn = list(
+#'     codeRepositoryProviderType = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'         value = "string"
-#'       )
-#'     ),
-#'     findingStatus = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     findingType = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     firstObservedAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     fixAvailable = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     inspectorScore = list(
-#'       list(
-#'         lowerInclusive = 123.0,
-#'         upperInclusive = 123.0
-#'       )
-#'     ),
-#'     lambdaFunctionExecutionRoleArn = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     lambdaFunctionLastModifiedAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     lambdaFunctionLayers = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     lambdaFunctionName = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     lambdaFunctionRuntime = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     lastObservedAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     networkProtocol = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     portRange = list(
-#'       list(
-#'         beginInclusive = 123,
-#'         endInclusive = 123
-#'       )
-#'     ),
-#'     relatedVulnerabilities = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     resourceId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     resourceTags = list(
-#'       list(
-#'         comparison = "EQUALS",
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     resourceType = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     severity = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     title = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     updatedAt = list(
-#'       list(
-#'         endInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startInclusive = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     vendorSeverity = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     vulnerabilityId = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     vulnerabilitySource = list(
-#'       list(
-#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'         value = "string"
-#'       )
-#'     ),
-#'     vulnerablePackages = list(
-#'       list(
-#'         architecture = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         epoch = list(
-#'           lowerInclusive = 123.0,
-#'           upperInclusive = 123.0
-#'         ),
-#'         filePath = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         name = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         release = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         sourceLambdaLayerArn = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         sourceLayerHash = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         ),
-#'         version = list(
-#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
-#'           value = "string"
-#'         )
 #'       )
 #'     )
 #'   ),
 #'   name = "string",
+#'   filterArn = "string",
 #'   reason = "string"
 #' )
 #' ```
@@ -6719,7 +8200,7 @@ inspector2_update_encryption_key <- function(kmsKeyId, resourceType, scanType) {
 #' @rdname inspector2_update_filter
 #'
 #' @aliases inspector2_update_filter
-inspector2_update_filter <- function(action = NULL, description = NULL, filterArn, filterCriteria = NULL, name = NULL, reason = NULL) {
+inspector2_update_filter <- function(action = NULL, description = NULL, filterCriteria = NULL, name = NULL, filterArn, reason = NULL) {
   op <- new_operation(
     name = "UpdateFilter",
     http_method = "POST",
@@ -6728,7 +8209,7 @@ inspector2_update_filter <- function(action = NULL, description = NULL, filterAr
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .inspector2$update_filter_input(action = action, description = description, filterArn = filterArn, filterCriteria = filterCriteria, name = name, reason = reason)
+  input <- .inspector2$update_filter_input(action = action, description = description, filterCriteria = filterCriteria, name = name, filterArn = filterArn, reason = reason)
   output <- .inspector2$update_filter_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -6808,7 +8289,8 @@ inspector2_update_org_ec_2_deep_inspection_configuration <- function(orgPackageP
 #'     ec2 = TRUE|FALSE,
 #'     ecr = TRUE|FALSE,
 #'     lambda = TRUE|FALSE,
-#'     lambdaCode = TRUE|FALSE
+#'     lambdaCode = TRUE|FALSE,
+#'     codeRepository = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -6820,7 +8302,8 @@ inspector2_update_org_ec_2_deep_inspection_configuration <- function(orgPackageP
 #'     ec2 = TRUE|FALSE,
 #'     ecr = TRUE|FALSE,
 #'     lambda = TRUE|FALSE,
-#'     lambdaCode = TRUE|FALSE
+#'     lambdaCode = TRUE|FALSE,
+#'     codeRepository = TRUE|FALSE
 #'   )
 #' )
 #' ```

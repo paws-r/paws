@@ -19,10 +19,8 @@ to describe.}
 \item{StackName}{If you specified the name of a change set, specify the stack name or ID
 (ARN) of the change set you want to describe.}
 
-\item{NextToken}{A string (provided by the
-\code{\link[=cloudformation_describe_change_set]{describe_change_set}} response
-output) that identifies the next page of information that you want to
-retrieve.}
+\item{NextToken}{The token for the next set of items to return. (You received this token
+from a previous call.)}
 
 \item{IncludePropertyValues}{If \code{true}, the returned changes include detailed changes in the property
 values.}

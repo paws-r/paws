@@ -9,7 +9,8 @@ backup_create_logically_air_gapped_backup_vault(
   BackupVaultTags = NULL,
   CreatorRequestId = NULL,
   MinRetentionDays,
-  MaxRetentionDays
+  MaxRetentionDays,
+  EncryptionKeyArn = NULL
 )
 }
 \arguments{
@@ -30,6 +31,11 @@ retains its recovery points.
 The minimum value accepted is 7 days.}
 
 \item{MaxRetentionDays}{[required] The maximum retention period that the vault retains its recovery points.}
+
+\item{EncryptionKeyArn}{The ARN of the customer-managed KMS key to use for encrypting the
+logically air-gapped backup vault. If not specified, the vault will be
+encrypted with an Amazon Web Services-owned key managed by Amazon Web
+Services Backup.}
 }
 \description{
 Creates a logical container to where backups may be copied.

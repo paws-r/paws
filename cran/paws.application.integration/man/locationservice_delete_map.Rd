@@ -2,7 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_delete_map}
 \alias{locationservice_delete_map}
-\title{Deletes a map resource from your Amazon Web Services account}
+\title{This operation is no longer current and may be deprecated in the future}
 \usage{
 locationservice_delete_map(MapName)
 }
@@ -10,7 +10,7 @@ locationservice_delete_map(MapName)
 \item{MapName}{[required] The name of the map resource to be deleted.}
 }
 \description{
-Deletes a map resource from your Amazon Web Services account.
+This operation is no longer current and may be deprecated in the future. We recommend upgrading to the Maps API V2 unless you require \code{Grab} data.
 
 See \url{https://www.paws-r-sdk.com/docs/locationservice_delete_map/} for full documentation.
 }

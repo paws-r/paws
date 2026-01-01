@@ -2,8 +2,8 @@
 % Please edit documentation in R/iam_operations.R
 \name{iam_delete_login_profile}
 \alias{iam_delete_login_profile}
-\title{Deletes the password for the specified IAM user, For more information,
-see Managing passwords for IAM users}
+\title{Deletes the password for the specified IAM user or root user, For more
+information, see Managing passwords for IAM users}
 \usage{
 iam_delete_login_profile(UserName = NULL)
 }
@@ -21,7 +21,7 @@ consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
 \description{
-Deletes the password for the specified IAM user, For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html}{Managing passwords for IAM users}.
+Deletes the password for the specified IAM user or root user, For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html}{Managing passwords for IAM users}.
 
 See \url{https://www.paws-r-sdk.com/docs/iam_delete_login_profile/} for full documentation.
 }

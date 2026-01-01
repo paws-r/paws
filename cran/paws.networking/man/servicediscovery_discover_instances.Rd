@@ -10,15 +10,16 @@ servicediscovery_discover_instances(
   MaxResults = NULL,
   QueryParameters = NULL,
   OptionalParameters = NULL,
-  HealthStatus = NULL
+  HealthStatus = NULL,
+  OwnerAccount = NULL
 )
 }
 \arguments{
-\item{NamespaceName}{[required] The \code{HttpName} name of the namespace. It's found in the \code{HttpProperties}
-member of the \code{Properties} member of the namespace. In most cases,
-\code{Name} and \code{HttpName} match. However, if you reuse \code{Name} for namespace
-creation, a generated hash is added to \code{HttpName} to distinguish the
-two.}
+\item{NamespaceName}{[required] The \code{HttpName} name of the namespace. The \code{HttpName} is found in the
+\code{HttpProperties} member of the \code{Properties} member of the namespace. In
+most cases, \code{Name} and \code{HttpName} match. However, if you reuse \code{Name}
+for namespace creation, a generated hash is added to \code{HttpName} to
+distinguish the two.}
 
 \item{ServiceName}{[required] The name of the service that you specified when you registered the
 instance.}
@@ -60,6 +61,11 @@ Returns all instances.
 
 Returns healthy instances, unless none are reporting a healthy state. In
 that case, return all instances. This is also called failing open.}
+
+\item{OwnerAccount}{The ID of the Amazon Web Services account that owns the namespace
+associated with the instance, as specified in the namespace
+\code{ResourceOwner} field. For instances associated with namespaces that are
+shared with your account, you must specify an \code{OwnerAccount}.}
 }
 \description{
 Discovers registered instances for a specified namespace and service. You can use \code{\link[=servicediscovery_discover_instances]{discover_instances}} to discover instances for any type of namespace. \code{\link[=servicediscovery_discover_instances]{discover_instances}} returns a randomized list of instances allowing customers to distribute traffic evenly across instances. For public and private DNS namespaces, you can also use DNS queries to discover instances.
