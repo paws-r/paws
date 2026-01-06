@@ -98,7 +98,9 @@ service_description <- function(api) {
     return("")
   }
   if (length(desc) > 1) {
-    if (desc[1] == service_title(api)) desc <- desc[-1]
+    if (desc[1] == service_title(api)) {
+      desc <- desc[-1]
+    }
     if (desc[1] == "") desc <- desc[-1]
   }
   desc <- comment(paste(desc, collapse = "\n"), "#'")
@@ -294,8 +296,13 @@ service_return <- function(api) {
 # e.g. rest-json -> restjson.
 protocol_package <- function(api) {
   protocol <- api$metadata$protocol
-  if (protocol == "json") protocol <- "jsonrpc" else if (protocol == "ec2")
-    protocol <- "ec2query" else protocol <- gsub("\\-", "", protocol)
+  if (protocol == "json") {
+    protocol <- "jsonrpc"
+  } else if (protocol == "ec2") {
+    protocol <- "ec2query"
+  } else {
+    protocol <- gsub("\\-", "", protocol)
+  }
   quoted(protocol)
 }
 
@@ -304,8 +311,12 @@ protocol_package <- function(api) {
 # run time.
 signing_name <- function(api) {
   name <- api$metadata$signingName
-  if (is.null(name)) name <- api$metadata$endpointPrefix
-  if (is.null(name)) return("NULL")
+  if (is.null(name)) {
+    name <- api$metadata$endpointPrefix
+  }
+  if (is.null(name)) {
+    return("NULL")
+  }
   quoted(name)
 }
 
@@ -318,20 +329,26 @@ endpoints <- function(api) {
 # Returns the API's version, or "" if none.
 api_version <- function(api) {
   version <- api$metadata$apiVersion
-  if (is.null(version)) version <- ""
+  if (is.null(version)) {
+    version <- ""
+  }
   quoted(version)
 }
 
 # Returns the JSON version for the API, or "" if none.
 json_version <- function(api) {
   version <- api$metadata$jsonVersion
-  if (is.null(version)) version <- ""
+  if (is.null(version)) {
+    version <- ""
+  }
   quoted(version)
 }
 
 # Returns the target prefix for the API, or "" if none.
 target_prefix <- function(api) {
   prefix <- api$metadata$targetPrefix
-  if (is.null(prefix)) prefix <- ""
+  if (is.null(prefix)) {
+    prefix <- ""
+  }
   quoted(prefix)
 }

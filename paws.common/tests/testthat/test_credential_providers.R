@@ -97,10 +97,7 @@ test_that("get_bearer_token_for_service", {
 
 test_that("get_bearer_env_var_name", {
   # Test basic signing name
-  expect_equal(
-    get_bearer_env_var_name("bedrock"),
-    "AWS_BEARER_TOKEN_BEDROCK"
-  )
+  expect_equal(get_bearer_env_var_name("bedrock"), "AWS_BEARER_TOKEN_BEDROCK")
 
   # Test signing name with hyphens (should be replaced with underscores)
   expect_equal(
@@ -109,10 +106,7 @@ test_that("get_bearer_env_var_name", {
   )
 
   # Test signing name with spaces (should be replaced with underscores)
-  expect_equal(
-    get_bearer_env_var_name("test service"),
-    "AWS_BEARER_TOKEN_TEST_SERVICE"
-  )
+  expect_equal(get_bearer_env_var_name("test service"), "AWS_BEARER_TOKEN_TEST_SERVICE")
 
   # Test signing name with mixed case (should be uppercased)
   expect_equal(

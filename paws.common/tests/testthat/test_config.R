@@ -734,12 +734,28 @@ test_that("set_partition_name", {
   aws_isof <- "us-isof-east-1"
   made_up <- c("region", "dummy_region")
 
-  for (region in aws) expect_equal(set_partition_name(region), "aws")
-  for (region in aws_cn) expect_equal(set_partition_name(region), "aws-cn")
-  for (region in aws_us_gov) expect_equal(set_partition_name(region), "aws-us-gov")
-  for (region in aws_iso) expect_equal(set_partition_name(region), "aws-iso")
-  for (region in aws_isob) expect_equal(set_partition_name(region), "aws-iso-b")
-  for (region in aws_isoe) expect_equal(set_partition_name(region), "aws-iso-e")
-  for (region in aws_isof) expect_equal(set_partition_name(region), "aws-iso-f")
-  for (region in made_up) expect_equal(set_partition_name(region), "")
+  for (region in aws) {
+    expect_equal(set_partition_name(region), "aws")
+  }
+  for (region in aws_cn) {
+    expect_equal(set_partition_name(region), "aws-cn")
+  }
+  for (region in aws_us_gov) {
+    expect_equal(set_partition_name(region), "aws-us-gov")
+  }
+  for (region in aws_iso) {
+    expect_equal(set_partition_name(region), "aws-iso")
+  }
+  for (region in aws_isob) {
+    expect_equal(set_partition_name(region), "aws-iso-b")
+  }
+  for (region in aws_isoe) {
+    expect_equal(set_partition_name(region), "aws-iso-e")
+  }
+  for (region in aws_isof) {
+    expect_equal(set_partition_name(region), "aws-iso-f")
+  }
+  for (region in made_up) {
+    expect_equal(set_partition_name(region), "")
+  }
 })

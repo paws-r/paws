@@ -54,7 +54,9 @@ make_doc_title <- function(operation) {
 # Make the description documentation.
 make_doc_desc <- function(operation, api) {
   docs <- convert(operation$documentation, package_name(api), links = get_links(api))
-  if (length(docs) == 1 && docs == "") docs <- get_operation_title(operation)
+  if (length(docs) == 1 && docs == "") {
+    docs <- get_operation_title(operation)
+  }
   description <- glue::glue("#' {docs}")
   description <- glue::glue_collapse(description, sep = "\n")
   description <- paste("#' @description", description, sep = "\n")
@@ -271,7 +273,9 @@ first_paragraph <- function(x) {
 
 # Get the first sentence from a block of text.
 first_sentence <- function(x) {
-  if (is.list(x)) x <- as.character(x)
+  if (is.list(x)) {
+    x <- as.character(x)
+  }
   if (length(x) == 1 && x == "") {
     return("")
   }
@@ -628,7 +632,9 @@ list_to_string <- function(x, quote = TRUE) {
     } else {
       s <- value
     }
-    if (i > 1) s <- paste0(", ", s)
+    if (i > 1) {
+      s <- paste0(", ", s)
+    }
     result <- paste0(result, s)
   }
   result <- paste0(result, ")")

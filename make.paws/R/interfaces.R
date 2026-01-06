@@ -44,7 +44,9 @@ make_interface <- function(name, shape_data, api) {
   shape <- make_shape(list(shape = shape_name), api)
   shape <- tag_del(shape, c("enum", "min", "max", "pattern"))
   for (key in names(shape_data)) {
-    if (key == "shape") next
+    if (key == "shape") {
+      next
+    }
     shape <- tag_add(shape, stats::setNames(shape_data[[key]], key))
   }
   interface <- render(interface_template, name = name, shape = get_structure(shape))
@@ -114,7 +116,9 @@ make_shape_structure <- function(shape, api, path) {
     member <- members[[member_name]]
     make_shape(member, api, path)
   })
-  if (!rlang::is_empty(member_names)) names(proto) <- member_names
+  if (!rlang::is_empty(member_names)) {
+    names(proto) <- member_names
+  }
   return(proto)
 }
 

@@ -53,19 +53,22 @@ test_that("get_bearer_token_for_service returns service-specific token", {
   orig_token <- Sys.getenv("AWS_BEARER_TOKEN", unset = NA)
 
   # Ensure cleanup happens
-  on.exit({
-    if (is.na(orig_bedrock)) {
-      Sys.unsetenv("AWS_BEARER_TOKEN_BEDROCK")
-    } else {
-      Sys.setenv("AWS_BEARER_TOKEN_BEDROCK" = orig_bedrock)
-    }
-    if (is.na(orig_token)) {
-      Sys.unsetenv("AWS_BEARER_TOKEN")
-    } else {
-      Sys.setenv("AWS_BEARER_TOKEN" = orig_token)
-    }
-    paws_reset_cache()
-  }, add = TRUE)
+  on.exit(
+    {
+      if (is.na(orig_bedrock)) {
+        Sys.unsetenv("AWS_BEARER_TOKEN_BEDROCK")
+      } else {
+        Sys.setenv("AWS_BEARER_TOKEN_BEDROCK" = orig_bedrock)
+      }
+      if (is.na(orig_token)) {
+        Sys.unsetenv("AWS_BEARER_TOKEN")
+      } else {
+        Sys.setenv("AWS_BEARER_TOKEN" = orig_token)
+      }
+      paws_reset_cache()
+    },
+    add = TRUE
+  )
 
   Sys.setenv(
     "AWS_BEARER_TOKEN_BEDROCK" = "bedrock-specific-token",
@@ -79,11 +82,14 @@ test_that("get_bearer_token_for_service returns service-specific token", {
 })
 
 test_that("get_bearer_token_for_service falls back to generic token", {
-  withr::local_envvar(list(
-    "AWS_BEARER_TOKEN" = "generic-token",
-    "AWS_BEARER_TOKEN_BEDROCK" = NA,
-    "AWS_BEARER_TOKEN_BEDROCK_EXPIRATION" = NA
-  ), .local_envir = environment())
+  withr::local_envvar(
+    list(
+      "AWS_BEARER_TOKEN" = "generic-token",
+      "AWS_BEARER_TOKEN_BEDROCK" = NA,
+      "AWS_BEARER_TOKEN_BEDROCK_EXPIRATION" = NA
+    ),
+    .local_envir = environment()
+  )
 
   paws_reset_cache() # Clear caches AFTER setting env vars
 
@@ -95,11 +101,14 @@ test_that("get_bearer_token_for_service falls back to generic token", {
 test_that("get_bearer_token_for_service handles service-specific expiration", {
   test_expiration <- format(Sys.time() + 7200, "%Y-%m-%dT%H:%M:%SZ", tz = "GMT")
 
-  withr::local_envvar(list(
-    "AWS_BEARER_TOKEN_BEDROCK" = "bedrock-token",
-    "AWS_BEARER_TOKEN_BEDROCK_EXPIRATION" = test_expiration,
-    "AWS_BEARER_TOKEN" = NA
-  ), .local_envir = environment())
+  withr::local_envvar(
+    list(
+      "AWS_BEARER_TOKEN_BEDROCK" = "bedrock-token",
+      "AWS_BEARER_TOKEN_BEDROCK_EXPIRATION" = test_expiration,
+      "AWS_BEARER_TOKEN" = NA
+    ),
+    .local_envir = environment()
+  )
 
   paws_reset_cache() # Clear caches AFTER setting env vars
 
@@ -111,11 +120,14 @@ test_that("get_bearer_token_for_service handles service-specific expiration", {
 })
 
 test_that("get_bearer_token_for_service returns NULL when no tokens available", {
-  withr::local_envvar(list(
-    "AWS_BEARER_TOKEN" = NA,
-    "AWS_BEARER_TOKEN_BEDROCK" = NA,
-    "AWS_BEARER_TOKEN_BEDROCK_EXPIRATION" = NA
-  ), .local_envir = environment())
+  withr::local_envvar(
+    list(
+      "AWS_BEARER_TOKEN" = NA,
+      "AWS_BEARER_TOKEN_BEDROCK" = NA,
+      "AWS_BEARER_TOKEN_BEDROCK_EXPIRATION" = NA
+    ),
+    .local_envir = environment()
+  )
 
   paws_reset_cache() # Clear caches AFTER setting env vars
 
@@ -244,11 +256,14 @@ test_that("bearer_sign_request_handler clears Authorization for anonymous", {
 
 # Test integration with V4 signer
 test_that("v4_sign_request_handler uses bearer auth for bedrock with token", {
-  withr::local_envvar(list(
-    "AWS_BEARER_TOKEN" = "integration-test-token",
-    "AWS_BEARER_TOKEN_BEDROCK" = NA,
-    "AWS_BEARER_TOKEN_BEDROCK_EXPIRATION" = NA
-  ), .local_envir = environment())
+  withr::local_envvar(
+    list(
+      "AWS_BEARER_TOKEN" = "integration-test-token",
+      "AWS_BEARER_TOKEN_BEDROCK" = NA,
+      "AWS_BEARER_TOKEN_BEDROCK_EXPIRATION" = NA
+    ),
+    .local_envir = environment()
+  )
 
   paws_reset_cache() # Clear caches AFTER setting env vars
 
@@ -330,11 +345,14 @@ test_that("v4_sign_request_handler uses V4 signing for S3 even with bearer token
 })
 
 test_that("v4_sign_request_handler uses V4 signing when no bearer token for bedrock", {
-  withr::local_envvar(list(
-    "AWS_BEARER_TOKEN" = NA,
-    "AWS_BEARER_TOKEN_BEDROCK" = NA,
-    "AWS_BEARER_TOKEN_BEDROCK_EXPIRATION" = NA
-  ), .local_envir = environment())
+  withr::local_envvar(
+    list(
+      "AWS_BEARER_TOKEN" = NA,
+      "AWS_BEARER_TOKEN_BEDROCK" = NA,
+      "AWS_BEARER_TOKEN_BEDROCK_EXPIRATION" = NA
+    ),
+    .local_envir = environment()
+  )
 
   paws_reset_cache() # Clear caches AFTER setting env vars
 
@@ -377,10 +395,13 @@ test_that("v4_sign_request_handler uses V4 signing when no bearer token for bedr
 })
 
 test_that("v4_sign_request_handler uses service-specific token over generic token", {
-  withr::local_envvar(list(
-    "AWS_BEARER_TOKEN" = "generic-token",
-    "AWS_BEARER_TOKEN_BEDROCK" = "bedrock-specific-token"
-  ), .local_envir = environment())
+  withr::local_envvar(
+    list(
+      "AWS_BEARER_TOKEN" = "generic-token",
+      "AWS_BEARER_TOKEN_BEDROCK" = "bedrock-specific-token"
+    ),
+    .local_envir = environment()
+  )
 
   metadata <- list(
     endpoints = list(
