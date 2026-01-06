@@ -54,9 +54,15 @@ get_testable_operations <- function(api) {
   i <- 1
   for (operation in api$operations) {
     name <- get_operation_name(operation)
-    if (!any(startsWith(name, c("describe", "list")))) next
-    if (skipped_operation(operation, api)) next
-    if (has_required_params(operation, api)) next
+    if (!any(startsWith(name, c("describe", "list")))) {
+      next
+    }
+    if (skipped_operation(operation, api)) {
+      next
+    }
+    if (has_required_params(operation, api)) {
+      next
+    }
     testable_operations[[i]] <- operation
     i <- i + 1
   }

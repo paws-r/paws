@@ -44,7 +44,9 @@ write_description_category <- function(
   )
   for (key in names(contents)) {
     value <- contents[[key]]
-    if (length(value) == 0 || is.character(value) && value == "") next
+    if (length(value) == 0 || is.character(value) && value == "") {
+      next
+    }
     f$set(key, value)
   }
   f$normalize()

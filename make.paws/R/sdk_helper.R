@@ -243,11 +243,11 @@ paws_check_pkg_size <- function(
   dir_info[,
     c("status", "percentage") := list(
       fcase(
-        get("size") > threshold,
-        "ERROR",
-        get("size") > threshold * .75,
-        "WARNING",
-        get("size") <= threshold * .75,
+        get("size") > threshold        ,
+        "ERROR"                        ,
+        get("size") > threshold * .75  ,
+        "WARNING"                      ,
+        get("size") <= threshold * .75 ,
         "OK"
       ),
       paste(round(as.numeric(get("size") / threshold) * 100, 2), "%")
@@ -375,39 +375,22 @@ paws_build_cran_comments <- function(
 
   dir_info[,
     "cran_comment" := fcase(
-      is.na(get("errors")) & is.na(get("warnings")) & is.na(get("notes")),
-      "There were no ERRORs, WARNINGs, or Notes.",
-      is.na(get("errors")) & is.na(get("warnings")) & !is.na(get("notes")),
-      sprintf("There were no ERRORs, or WARNINGs.\nNotes:\n%s", get("notes")),
-      is.na(get("errors")) & !is.na(get("warnings")) & !is.na(get("notes")),
-      sprintf(
-        "There were no ERRORs.\nWarnings:%s\nNotes:\n%s",
-        get("warnings"),
-        get("notes")
-      ),
-      is.na(get("errors")) & !is.na(get("warnings")) & is.na(get("notes")),
-      sprintf("There were no ERRORs or Notes.\nWarnings:%s", warnings),
-      !is.na(get("errors")) & !is.na(get("warnings")) & !is.na(get("notes")),
-      sprintf(
-        "Errors:\n%s\nWarnings:\n%s\nNotes:\n%s",
-        get("errors"),
-        get("warnings"),
-        get("notes")
-      ),
-      !is.na(get("errors")) & is.na(get("warnings")) & is.na(get("notes")),
-      sprintf("There was no WARNINGS or Notes.\nErrors:\n%s", get("errors")),
-      !is.na(get("errors")) & !is.na(get("warnings")) & is.na(get("notes")),
-      sprintf(
-        "There was no WARNINGS.\nErrors:\n%s\nNotes:\n%s",
-        get("errors"),
-        get("notes")
-      ),
-      !is.na(get("errors")) & !is.na(get("warnings")) & !is.na(get("notes")),
-      sprintf(
-        "There was no NOTES.\nErrors:\n%s\nNotes:\n%s",
-        get("errors"),
-        get("warnings")
-      )
+      is.na(get("errors")) & is.na(get("warnings")) & is.na(get("notes"))                             ,
+      "There were no ERRORs, WARNINGs, or Notes."                                                     ,
+      is.na(get("errors")) & is.na(get("warnings")) & !is.na(get("notes"))                            ,
+      sprintf("There were no ERRORs, or WARNINGs.\nNotes:\n%s", get("notes"))                         ,
+      is.na(get("errors")) & !is.na(get("warnings")) & !is.na(get("notes"))                           ,
+      sprintf("There were no ERRORs.\nWarnings:%s\nNotes:\n%s", get("warnings"), get("notes"))        ,
+      is.na(get("errors")) & !is.na(get("warnings")) & is.na(get("notes"))                            ,
+      sprintf("There were no ERRORs or Notes.\nWarnings:%s", warnings)                                ,
+      !is.na(get("errors")) & !is.na(get("warnings")) & !is.na(get("notes"))                          ,
+      sprintf("Errors:\n%s\nWarnings:\n%s\nNotes:\n%s", get("errors"), get("warnings"), get("notes")) ,
+      !is.na(get("errors")) & is.na(get("warnings")) & is.na(get("notes"))                            ,
+      sprintf("There was no WARNINGS or Notes.\nErrors:\n%s", get("errors"))                          ,
+      !is.na(get("errors")) & !is.na(get("warnings")) & is.na(get("notes"))                           ,
+      sprintf("There was no WARNINGS.\nErrors:\n%s\nNotes:\n%s", get("errors"), get("notes"))         ,
+      !is.na(get("errors")) & !is.na(get("warnings")) & !is.na(get("notes"))                          ,
+      sprintf("There was no NOTES.\nErrors:\n%s\nNotes:\n%s", get("errors"), get("warnings"))
     )
   ]
 
@@ -576,7 +559,9 @@ remove_html_span_r <- function(files) {
     result <- readLines(file)
     start_idx <- grep("<span", result, perl = T)
     end_idx <- grep("</span>", result, perl = T)
-    if (length(start_idx) == 0) next
+    if (length(start_idx) == 0) {
+      next
+    }
     idx_ranges <- lapply(1:length(start_idx), \(x) start_idx[x]:end_idx[x])
     for (idx_range in idx_ranges) {
       line <- paste(result[idx_range], collapse = "\n")
@@ -601,7 +586,9 @@ remove_html_span_rd <- function(files) {
     result <- readLines(file)
     start_idx <- grep("<span", result, perl = T)
     end_idx <- grep("</span>", result, perl = T)
-    if (length(start_idx) == 0) next
+    if (length(start_idx) == 0) {
+      next
+    }
     idx_ranges <- lapply(1:length(start_idx), \(x) start_idx[x]:end_idx[x])
     for (idx_range in idx_ranges) {
       line <- paste(result[idx_range], collapse = "\n")
@@ -703,7 +690,9 @@ list_paws_pkgs <- function(in_dir = "../cran", pkg_list = list()) {
   pkgs <- file.path(in_dir, c("paws", active_pkgs))
 
   # filter on pkg list
-  if (any(nzchar(pkg_list))) pkgs <- pkgs[basename(pkgs) %in% pkg_list]
+  if (any(nzchar(pkg_list))) {
+    pkgs <- pkgs[basename(pkgs) %in% pkg_list]
+  }
   return(pkgs)
 }
 

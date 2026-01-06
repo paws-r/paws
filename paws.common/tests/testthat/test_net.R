@@ -21,9 +21,9 @@ test_that("connect_timeout", {
     url = parse_url("https://example.com:81"),
     connect_timeout = 1
   )
-  quietly <- function(expr)
-    suppressMessages(tryCatch(expr, error = function(e) {
-    }))
+  quietly <- function(expr) {
+    suppressMessages(tryCatch(expr, error = function(e) {}))
+  }
   time <- system.time({
     quietly(issue(req))
   })
@@ -38,9 +38,9 @@ test_that("timeout", {
     url = parse_url("https://example.com:81"),
     timeout = 1
   )
-  quietly <- function(expr)
-    suppressMessages(tryCatch(expr, error = function(e) {
-    }))
+  quietly <- function(expr) {
+    suppressMessages(tryCatch(expr, error = function(e) {}))
+  }
   time <- system.time({
     quietly(issue(req))
   })
