@@ -81,7 +81,6 @@ Collate:
     'mock_bindings.R'
     'onLoad.R'
     'paginate.R'
-    'populate.R'
     'populateutil.R'
     'queryutil.R'
     'request.R'
