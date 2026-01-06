@@ -14,6 +14,9 @@ recursive_interface <- function() {
   ))
 }
 
+# Empty template interface for testing
+empty_struct_interface <- structure(list(), tags = list(type = "structure"))
+
 test_that("populate handles scalar with empty interface", {
   result <- populate(123.456, list())
 
