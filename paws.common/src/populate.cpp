@@ -36,7 +36,7 @@ inline TypeCode get_type_code(SEXP x) {
   if (tags_attr != R_NilValue && Rf_isVectorList(tags_attr)) {
     // Find "type" element in named list - optimized for common case where "type" is first
     SEXP names = Rf_getAttrib(tags_attr, R_NamesSymbol);
-    if (names != R_NilValue) {
+    if (names != R_NilValue && Rf_isString(names)) {
       int n = Rf_length(tags_attr);
 
       // Fast path: check if "type" is the first element (most common case)
