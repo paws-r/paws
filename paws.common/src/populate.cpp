@@ -1,5 +1,4 @@
 #include <Rcpp.h>
-#include <unordered_map>
 using namespace Rcpp;
 
 // Forward declaration
@@ -18,25 +17,15 @@ enum TypeCode {
   TYPE_SCALAR = 4
 };
 
-// Type code cache using SEXP pointer as key
-static std::unordered_map<SEXP, TypeCode> type_code_cache;
-
-// Get type code with caching
+// Get type code for an R object based on its tags attribute
 inline TypeCode get_type_code(SEXP x) {
-  // Check cache first
-  auto cached = type_code_cache.find(x);
-  if (cached != type_code_cache.end()) {
-    return cached->second;
-  }
-
-  // Not in cache, compute it
   SEXP tags_attr = Rf_getAttrib(x, s_tags);
   TypeCode result = TYPE_SCALAR;
 
   if (tags_attr != R_NilValue && Rf_isVectorList(tags_attr)) {
     // Find "type" element in named list - optimized for common case where "type" is first
     SEXP names = Rf_getAttrib(tags_attr, R_NamesSymbol);
-    if (names != R_NilValue) {
+    if (names != R_NilValue && Rf_isString(names)) {
       int n = Rf_length(tags_attr);
 
       // Fast path: check if "type" is the first element (most common case)
@@ -89,11 +78,6 @@ inline TypeCode get_type_code(SEXP x) {
         }
       }
     }
-  }
-
-  // Cache the result - limit cache size to prevent unbounded growth
-  if (type_code_cache.size() < 10000) {
-    type_code_cache[x] = result;
   }
 
   return result;
