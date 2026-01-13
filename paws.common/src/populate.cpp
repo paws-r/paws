@@ -422,46 +422,91 @@ SEXP populate_map_cpp(SEXP input, SEXP interface, SEXP parent) {
   return result;
 }
 
+// Helper function to copy all attributes from one object to another
+inline void copy_all_attributes(SEXP to, SEXP from) {
+  // We need to iterate through attributes using the public API
+  // Get class attribute if it exists
+  SEXP class_attr = Rf_getAttrib(from, R_ClassSymbol);
+  if (class_attr != R_NilValue) {
+    Rf_setAttrib(to, R_ClassSymbol, class_attr);
+  }
+
+  // Get names attribute if it exists
+  SEXP names_attr = Rf_getAttrib(from, R_NamesSymbol);
+  if (names_attr != R_NilValue) {
+    Rf_setAttrib(to, R_NamesSymbol, names_attr);
+  }
+
+  // Get dim attribute if it exists
+  SEXP dim_attr = Rf_getAttrib(from, R_DimSymbol);
+  if (dim_attr != R_NilValue) {
+    Rf_setAttrib(to, R_DimSymbol, dim_attr);
+  }
+
+  // Get dimnames attribute if it exists
+  SEXP dimnames_attr = Rf_getAttrib(from, R_DimNamesSymbol);
+  if (dimnames_attr != R_NilValue) {
+    Rf_setAttrib(to, R_DimNamesSymbol, dimnames_attr);
+  }
+
+  // Get tags attribute (custom attribute used by paws)
+  SEXP tags_attr = Rf_getAttrib(from, s_tags);
+  if (tags_attr != R_NilValue) {
+    Rf_setAttrib(to, s_tags, tags_attr);
+  }
+
+  // Get row.names attribute if it exists
+  SEXP rownames_attr = Rf_getAttrib(from, R_RowNamesSymbol);
+  if (rownames_attr != R_NilValue) {
+    Rf_setAttrib(to, R_RowNamesSymbol, rownames_attr);
+  }
+
+  // Use Rf_copyMostAttrib for remaining attributes
+  // This is the API-approved way to copy attributes
+  Rf_copyMostAttrib(from, to);
+}
+
 // Optimized populate scalar - avoid unnecessary List conversions
 SEXP populate_scalar_cpp(SEXP input, SEXP interface, SEXP parent) {
   // Handle NULL input - R behavior: setting attributes on NULL creates empty list
   if (input == R_NilValue) {
-    SEXP interface_attrs = ATTRIB(interface);
-    if (interface_attrs != R_NilValue) {
-      // Create empty list and set attributes from interface
+    // Check if interface has any attributes by testing common ones
+    SEXP tags_attr = Rf_getAttrib(interface, s_tags);
+    SEXP class_attr = Rf_getAttrib(interface, R_ClassSymbol);
+    SEXP names_attr = Rf_getAttrib(interface, R_NamesSymbol);
+
+    if (tags_attr != R_NilValue || class_attr != R_NilValue || names_attr != R_NilValue) {
+      // Create empty list and copy attributes from interface
       SEXP result = PROTECT(Rf_allocVector(VECSXP, 0));
-      SET_ATTRIB(result, Rf_duplicate(interface_attrs));
+      copy_all_attributes(result, interface);
       UNPROTECT(1);
       return result;
     }
     return interface;
   }
 
-  // Fast path: if interface has no attributes, just return input as-is
-  SEXP interface_attrs = ATTRIB(interface);
-  if (interface_attrs == R_NilValue) {
+  // Fast path: if interface has no common attributes, just return input as-is
+  SEXP tags_attr = Rf_getAttrib(interface, s_tags);
+  SEXP class_attr = Rf_getAttrib(interface, R_ClassSymbol);
+  SEXP names_attr = Rf_getAttrib(interface, R_NamesSymbol);
+
+  if (tags_attr == R_NilValue && class_attr == R_NilValue && names_attr == R_NilValue) {
     return input;
   }
 
   // Get input attributes
-  SEXP input_attrs = ATTRIB(input);
+  SEXP input_tags = Rf_getAttrib(input, s_tags);
+  SEXP input_class = Rf_getAttrib(input, R_ClassSymbol);
+  SEXP input_names = Rf_getAttrib(input, R_NamesSymbol);
 
   // If input has no attributes and it's a scalar (not a list), we can avoid duplication
-  if (input_attrs == R_NilValue && !Rf_isVectorList(input)) {
+  if (input_tags == R_NilValue && input_class == R_NilValue &&
+      input_names == R_NilValue && !Rf_isVectorList(input)) {
     // Check if interface only has "tags" attribute (common case)
-    bool only_tags = true;
-    int attr_count = 0;
-    for (SEXP a = interface_attrs; a != R_NilValue; a = CDR(a)) {
-      attr_count++;
-      if (TAG(a) != s_tags) {
-        only_tags = false;
-      }
-    }
-
-    if (only_tags && attr_count == 1) {
+    if (tags_attr != R_NilValue && class_attr == R_NilValue && names_attr == R_NilValue) {
       // Just copy the tags attribute - lightweight operation
       SEXP result = PROTECT(Rf_shallow_duplicate(input));
-      Rf_setAttrib(result, s_tags, Rf_getAttrib(interface, s_tags));
+      Rf_setAttrib(result, s_tags, tags_attr);
       UNPROTECT(1);
       return result;
     }
@@ -470,21 +515,8 @@ SEXP populate_scalar_cpp(SEXP input, SEXP interface, SEXP parent) {
   // General case: clone and merge attributes
   SEXP result = PROTECT(Rf_duplicate(input));
 
-  // If input has no attributes, just copy interface attributes
-  if (input_attrs == R_NilValue) {
-    SET_ATTRIB(result, Rf_duplicate(interface_attrs));
-    UNPROTECT(1);
-    return result;
-  }
-
-  // Override with interface attributes - walk the pairlist directly
-  for (SEXP a = interface_attrs; a != R_NilValue; a = CDR(a)) {
-    SEXP tag = TAG(a);
-    if (tag != R_NilValue) {
-      // Set or override attribute
-      Rf_setAttrib(result, tag, CAR(a));
-    }
-  }
+  // Copy all attributes from interface to result
+  copy_all_attributes(result, interface);
 
   UNPROTECT(1);
   return result;
