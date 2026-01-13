@@ -642,6 +642,8 @@ paws_update_version <- function(dir = "../cran", version) {
 check_pkgs <- function(pkgs, keep_notes = FALSE) {
   # Check package locally
   mirai::daemons(parallel::detectCores(), .compute = "build_check")
+  on.exit(mirai::daemons(0, .compute = "build_check"))
+
   checks <- mirai::mirai_map(
     pkgs,
     devtools::check_built,
