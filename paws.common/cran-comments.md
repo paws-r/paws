@@ -1,5 +1,5 @@
 ## Submission
-This release addresses unit test timezone issue
+This release fixes C++ compilation issues on older R versions and improves handling of nested structures in DynamoDB operations
 
 ## Test environments
 
